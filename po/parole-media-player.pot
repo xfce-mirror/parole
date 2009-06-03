@@ -1,0 +1,107 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-06-03 10:35+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../data/parole-media-player.desktop.in.h:1
+msgid "Xfce Media Player"
+msgstr ""
+
+#: ../src/gst.c:548
+msgid "Error in changing state to ready"
+msgstr ""
+
+#: ../src/gst.c:595
+msgid ""
+"Unable to load playbin GStreamer plugin, check your GStreamer installation"
+msgstr ""
+
+#: ../src/gst.c:605
+msgid ""
+"Unable to load xvimagesink GStreamer plugin, check your GStreamer "
+"installation"
+msgstr ""
+
+#: ../src/mediachooser.c:420
+msgid "Audio and video"
+msgstr ""
+
+#: ../src/mediachooser.c:447
+msgid "Add media files"
+msgstr ""
+
+#: ../src/mediachooser.c:447
+msgid "Open media file"
+msgstr ""
+
+#: ../src/mediachooser.c:452
+msgid "Open location"
+msgstr ""
+
+#: ../src/mediachooser.c:532
+msgid "Open location of media file or live stream"
+msgstr ""
+
+#: ../src/medialist.c:274
+msgid "Media list"
+msgstr ""
+
+#: ../src/player.c:164 ../src/statusbar.c:119 ../src/statusbar.c:121
+msgid "Playing"
+msgstr ""
+
+#: ../src/player.c:165
+msgid "Media stream is not seekable"
+msgstr ""
+
+#: ../src/player.c:179 ../src/player.c:192
+msgid "Paused"
+msgstr ""
+
+#: ../src/player.c:210
+msgid "Stopped"
+msgstr ""
+
+#: ../src/sidebar.c:137
+msgid ""
+"<b>Media \n"
+"player\n"
+"</b>"
+msgstr ""
+
+#: ../src/sidebar.c:147
+msgid ""
+"<b>Audio \n"
+"recorder\n"
+"</b>"
+msgstr ""
+
+#: ../src/sidebar.c:158
+msgid ""
+"<b>Audio \n"
+"converter\n"
+"</b>"
+msgstr ""
+
+#: ../src/sidebar.c:168
+msgid ""
+"<b>Albums\n"
+"</b>"
+msgstr ""
+
+#: ../src/statusbar.c:131
+msgid "Buffering"
+msgstr ""
