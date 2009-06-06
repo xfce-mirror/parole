@@ -81,6 +81,11 @@ void			parole_gst_null_state	   (ParoleGst *gst);
 void			parole_gst_seek		   (ParoleGst *gst,
 						    gdouble pos);
 
+void			parole_gst_set_volume      (ParoleGst *gst,
+						    gdouble value);
+						    
+gdouble			parole_gst_get_volume	   (ParoleGst *gst);
+
 G_END_DECLS
 
 #endif /* __PAROLE_GST_H */

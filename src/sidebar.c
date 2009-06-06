@@ -140,27 +140,6 @@ parole_sidebar_setup (ParoleSidebar *sidebar)
 	g_object_unref (pix);
 	
     /*
-     * Recoreder tab
-     */
-    pix = xfce_themed_icon_load ("gnome-sound-recorder", 24);
-    gtk_list_store_append (list_store, &iter);
-    gtk_list_store_set (list_store, &iter, PIXBUF_COL, pix, NAME_COL, _("<b>Audio \nrecorder\n</b>"), NOTEBOOK_NUMBER, i, -1);
-    i++;
-    if ( pix )
-	g_object_unref (pix);
-	
-	
-    /*
-     * Converter tab
-     */
-    pix = xfce_themed_icon_load ("soundconverter", 24);
-    gtk_list_store_append (list_store, &iter);
-    gtk_list_store_set (list_store, &iter, PIXBUF_COL, pix, NAME_COL, _("<b>Audio \nconverter\n</b>"), NOTEBOOK_NUMBER, i, -1);
-    i++;
-    if ( pix )
-	g_object_unref (pix);
-	
-    /*
      * Album
      */
     pix = xfce_themed_icon_load ("", 24);
@@ -172,7 +151,6 @@ parole_sidebar_setup (ParoleSidebar *sidebar)
 	
     g_signal_connect_swapped (G_OBJECT (sidebar->priv->treeview), "cursor_changed",
 			      G_CALLBACK (parole_sidebar_cursor_changed_cb), sidebar);
-    
     
     sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (sidebar->priv->treeview));
     path = gtk_tree_path_new_first ();

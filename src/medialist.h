@@ -51,25 +51,28 @@ typedef struct
 {
     GObjectClass  		 parent_class;
     
-    void			(*media_activated)		 (ParoleMediaList *list,
-								  GtkTreeRowReference *row);
+    void			(*media_activated)		    (ParoleMediaList *list,
+								     GtkTreeRowReference *row);
+								  
+    void			(*media_cursor_changed)		    (ParoleMediaList *list,
+								     gboolean media_selected);
     
 } ParoleMediaListClass;
 
-GType        			 parole_media_list_get_type        (void) G_GNUC_CONST;
-ParoleMediaList       		*parole_media_list_new             (void);
+GType        			 parole_media_list_get_type         (void) G_GNUC_CONST;
+ParoleMediaList       		*parole_media_list_new              (void);
 
-GtkTreeRowReference		*parole_media_list_get_selected_row(ParoleMediaList *list);
+GtkTreeRowReference		*parole_media_list_get_selected_row (ParoleMediaList *list);
 
-GtkTreeRowReference             *parole_media_list_get_next_row    (ParoleMediaList *list,
-								  GtkTreeRowReference *row);
+GtkTreeRowReference             *parole_media_list_get_next_row     (ParoleMediaList *list,
+								     GtkTreeRowReference *row);
 
-void				 parole_media_list_set_row_pixbuf  (ParoleMediaList *list,
-								  GtkTreeRowReference *row,
-								  GdkPixbuf *pix);
+void				 parole_media_list_set_row_pixbuf   (ParoleMediaList *list,
+								     GtkTreeRowReference *row,
+								     GdkPixbuf *pix);
 								  
-void				 parole_media_list_set_visible 	 (ParoleMediaList *list,
-								  gboolean visible);
+void				 parole_media_list_set_visible 	    (ParoleMediaList *list,
+								     gboolean visible);
 
 G_END_DECLS
 

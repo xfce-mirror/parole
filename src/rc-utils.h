@@ -21,11 +21,23 @@
 #ifndef __RC_UTILS_
 #define __RC_UTILS_
 
-gboolean 		read_bool_entry 		(const gchar *property);
+void			parole_rc_write_entry_bool	(const gchar *property,
+							 gboolean value);
 
-const gchar	       *read_string_entry 		(const gchar *property);
-
-void 			write_string_entry		(const gchar *property, 
+void			parole_rc_write_entry_int	(const gchar *property,
+							 gint value);
+							 
+void 			parole_rc_write_entry_string	(const gchar *property, 
 							 const gchar *value);
+							 
+gboolean 		parole_rc_read_entry_bool	(const gchar *property,
+							 gboolean fallback);
+
+gint			parole_rc_read_entry_int	(const gchar *property,
+							 gint fallback);
+
+const gchar	       *parole_rc_read_entry_string	(const gchar *property,
+							 const gchar *fallback);
+
 
 #endif /* __RC_UTILS_ */

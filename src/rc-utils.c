@@ -46,24 +46,56 @@ open_resource_file (gboolean readonly)
     return rc;
 }
 
-gboolean read_bool_entry (const gchar *property)
+void parole_rc_write_entry_bool (const gchar *property, gboolean value)
 {
-    XfceRc *rc = open_resource_file (TRUE);
+    XfceRc *rc = open_resource_file (FALSE);
     
-    return xfce_rc_read_bool_entry (rc, property, TRUE);
+    xfce_rc_write_bool_entry (rc, property, value);
+    xfce_rc_close (rc);
 }
 
-const gchar *read_string_entry (const gchar *property)
+void parole_rc_write_entry_int (const gchar *property, gint value)
 {
-    XfceRc *rc = open_resource_file (TRUE);
+    XfceRc *rc = open_resource_file (FALSE);
     
-    return xfce_rc_read_entry (rc, property, NULL);
+    xfce_rc_write_int_entry (rc, property, value);
+    xfce_rc_close (rc);
 }
 
-void write_string_entry	(const gchar *property, const gchar *value)
+void parole_rc_write_entry_string	(const gchar *property, const gchar *value)
 {
     XfceRc *rc = open_resource_file (FALSE);
     
     xfce_rc_write_entry (rc, property, value);
     xfce_rc_close (rc);
+}
+
+gboolean parole_rc_read_entry_bool (const gchar *property, gboolean fallback)
+{
+    XfceRc *rc = open_resource_file (TRUE);
+    
+    if ( rc )
+	return xfce_rc_read_bool_entry (rc, property, TRUE);
+	
+    return fallback;
+}
+
+gint parole_rc_read_entry_int (const gchar *property, gint fallback)
+{
+    XfceRc *rc = open_resource_file (TRUE);
+    
+    if ( rc )
+	return xfce_rc_read_int_entry (rc, property, fallback);
+	
+    return fallback;
+}
+
+const gchar *parole_rc_read_entry_string (const gchar *property, const gchar *fallback)
+{
+    XfceRc *rc = open_resource_file (TRUE);
+    
+    if ( rc )
+        return xfce_rc_read_entry (rc, property, NULL);
+	
+    return fallback;
 }

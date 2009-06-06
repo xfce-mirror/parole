@@ -399,7 +399,7 @@ parole_media_chooser_current_folder_changed_cb (GtkWidget *widget, gpointer data
     
     if ( folder )
     {
-	write_string_entry ("media-chooser-folder", folder);
+	parole_rc_write_entry_string ("media-chooser-folder", folder);
 	g_free (folder);
     }
 }
@@ -424,7 +424,7 @@ parole_media_chooser_create_chooser (gboolean multiple)
     
     gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (chooser), filter);
 
-    folder = read_string_entry ("media-chooser-folder");
+    folder = parole_rc_read_entry_string ("media-chooser-folder", NULL);
     
     if ( folder )
 	gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (chooser), folder);

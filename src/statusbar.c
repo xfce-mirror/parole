@@ -136,3 +136,8 @@ void parole_statusbar_set_buffering (ParoleStatusbar *bar, gint percentage)
     gtk_widget_show (bar->priv->progress);
     g_free (buff);
 }
+
+void parole_statusbar_set_full_screen (ParoleStatusbar *bar, gboolean full_screen)
+{
+    
+}

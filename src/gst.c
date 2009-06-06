@@ -44,7 +44,7 @@
 (G_TYPE_INSTANCE_GET_PRIVATE ((o), PAROLE_TYPE_GST, ParoleGstPrivate))
 
 static void	parole_gst_play_file_internal 	(ParoleGst *gst);
-static void     parole_gst_change_state 		(ParoleGst *gst, 
+static void     parole_gst_change_state 	(ParoleGst *gst, 
 						 GstState new);
 
 struct ParoleGstPrivate
@@ -57,7 +57,7 @@ struct ParoleGstPrivate
     GstState      state;
     GstState      target;
     
-    ParoleStream   *stream;
+    ParoleStream *stream;
     gulong	  tick_id;
     gboolean      seeking;
     
@@ -255,20 +255,21 @@ static gboolean
 parole_gst_expose_event (GtkWidget *widget, GdkEventExpose *ev)
 {
     ParoleGst *gst;
-    
+
     if ( ev && ev->count > 0 )
 	return TRUE;
 
     gst = PAROLE_GST (widget);
 
-    g_mutex_lock (gst->priv->lock);
     parole_gst_set_x_overlay (gst);
-    g_mutex_unlock (gst->priv->lock);
 
     if ( gst->priv->state < GST_STATE_PAUSED )
 	parole_gst_draw_logo (gst);
     else 
+    {
+	TRACE ("Exposing GST");
 	gst_x_overlay_expose (GST_X_OVERLAY (gst->priv->video_sink));
+    }
 	
     return TRUE;
 }
@@ -376,7 +377,7 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 {
     if ( gst->priv->state != new )
     {
-	TRACE ("State change %d", new);
+	TRACE ("State change new %i old %i pending %i", new, old, pending);
 	
 	gst->priv->state = new;
 
@@ -602,10 +603,15 @@ parole_gst_construct (GObject *object)
     
     if ( G_UNLIKELY (gst->priv->video_sink == NULL) )
     {
-	xfce_err (_("Unable to load xvimagesink GStreamer plugin"
-		    ", check your GStreamer installation"));
-		    
-	g_error ("xvimagesink load failed");
+	g_debug ("xvimagesink not found, trying to load ximagesink"); 
+	gst->priv->video_sink = gst_element_factory_make ("ximagesink", "video");
+	
+	if ( G_UNLIKELY (gst->priv->video_sink == NULL) )
+	{
+	    xfce_err (_("Unable to load video GStreamer plugin"
+		      ", check your GStreamer installation"));
+	    g_error ("ximagesink load failed");
+	}
     }
     
     gst->priv->vis_sink = gst_element_factory_make ("goom", "vis");
@@ -818,4 +824,21 @@ void parole_gst_seek (ParoleGst *gst, gdouble pos)
     {
 	g_warning ("Failed to seek element");
     }
+}
+
+void parole_gst_set_volume (ParoleGst *gst, gdouble value)
+{
+    g_object_set (G_OBJECT (gst->priv->playbin),
+		  "volume", value,
+		  NULL);
+}
+						    
+gdouble	parole_gst_get_volume (ParoleGst *gst)
+{
+    gdouble volume;
+    
+    g_object_get (G_OBJECT (gst->priv->playbin),
+		  "volume", &volume,
+		  NULL);
+    return volume;
 }

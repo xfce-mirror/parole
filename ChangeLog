@@ -1,2 +1,10 @@
+2009-06-06: Ali aliov@xfce.org
+	* Button to hide/show playlist.
+	* Fallback to ximagesink if xvimagesink is not found.
+	* set the play button hidden if there is no media
+	in the medialist rows.
+	* Provide clear menu in the playlist to clear all media
+	* Volume range for changing volume.
+
 2009-06-03: 10:30 Ali aliov@xfce.org
 	* Initial import of parole, Juste une parole.

@@ -53,10 +53,12 @@ XDT_I18N([@LINGUAS@])
 #          Check for required packages 		      #
 #=====================================================#
 m4_define([gtk_minimum_version], [2.16.0])
-m4_define([glib_minimum_version], [2.16.0]) 
+m4_define([glib_minimum_version], [2.16.0])
+m4_define([gstreamer_minimum_version], [0.10.11])
+
 m4_define([dbus_minimum_version], [0.60])
 m4_define([dbus_glib_minimum_version], [0.70])
-m4_define([gstreamer_minimum_version], [0.10.11])
+
 m4_define([libxfcegui4_minimum_version],[4.6.0])
 m4_define([libxfce4util_minimum_version],[4.6.0])
 
