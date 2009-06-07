@@ -39,6 +39,7 @@
 #include "mediachooser.h"
 #include "sidebar.h"
 #include "statusbar.h"
+#include "screensaver.h"
 #include "rc-utils.h"
 #include "enum-glib.h"
 #include "enum-gtypes.h"
@@ -75,6 +76,7 @@ struct ParolePlayerPrivate
     ParoleMediaList	*list;
     ParoleSidebar       *sidebar;
     ParoleStatusbar     *status;
+    ParoleScreenSaver   *screen_saver;
 };
 
 G_DEFINE_TYPE (ParolePlayer, parole_player, G_TYPE_OBJECT)
@@ -293,7 +295,13 @@ out:
 static void
 parole_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream, ParoleMediaState state, ParolePlayer *player)
 {
+    gboolean has_video;
+    
     PAROLE_DEBUG_ENUM ("State callback", state, ENUM_GTYPE_MEDIA_STATE);
+    
+    g_object_get (G_OBJECT (stream),
+		  "has-video", &has_video,
+		  NULL);
     
     if ( state == PAROLE_MEDIA_STATE_PLAYING )
     {
@@ -313,6 +321,12 @@ parole_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream, Parole
     {
 	parole_player_stopped (player);
     }
+    
+    if ( state == PAROLE_MEDIA_STATE_PLAYING && has_video )
+	parole_screen_saver_inhibit (player->priv->screen_saver);
+    else
+	parole_screen_saver_uninhibit (player->priv->screen_saver);
+    
 }
 
 static void
@@ -346,6 +360,10 @@ parole_player_range_button_release (GtkWidget *widget, GdkEventButton *ev, Parol
 static gboolean
 parole_player_range_button_press (GtkWidget *widget, GdkEventButton *ev, ParolePlayer *player)
 {
+    gdouble value;
+    
+    value = gtk_range_get_value (GTK_RANGE (player->priv->range));
+    
     if ( ev->button == 3 )
     {
 	player->priv->user_seeking = FALSE;
@@ -373,6 +391,7 @@ parole_player_error_cb (ParoleGst *gst, const gchar *error, ParolePlayer *player
 {
     xfce_err ("%s", error);
     parole_player_stopped (player);
+    parole_screen_saver_uninhibit (player->priv->screen_saver);
 }
 
 static void
@@ -652,6 +671,7 @@ parole_player_finalize (GObject *object)
     g_object_unref (player->priv->gst);
     g_object_unref (player->priv->sidebar);
     g_object_unref (player->priv->status);
+    g_object_unref (player->priv->screen_saver);
 
     G_OBJECT_CLASS (parole_player_parent_class)->finalize (object);
 }
@@ -685,6 +705,7 @@ parole_player_init (ParolePlayer *player)
     
     player->priv->sidebar = parole_sidebar_new ();
     player->priv->status = parole_statusbar_new ();
+    player->priv->screen_saver = parole_screen_saver_new ();
     
     player->priv->state = PAROLE_MEDIA_STATE_STOPPED;
     player->priv->user_seeking = FALSE;

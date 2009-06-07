@@ -29,6 +29,8 @@ parole_media_player_SOURCES =			\
 	mediafile.h				\
 	mediachooser.c				\
 	mediachooser.h				\
+	screensaver.c				\
+	screensaver.h				\
 	rc-utils.c				\
 	rc-utils.h				\
 	debug.c					\

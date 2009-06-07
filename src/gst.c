@@ -395,7 +395,7 @@ parole_gst_query_capabilities (ParoleGst *gst)
 }
 
 static void
-parole_gst_query_info (ParoleGst *gst)
+parole_gst_query_duration (ParoleGst *gst)
 {
     gint64 absolute_duration = 0;
     gdouble duration = 0;
@@ -417,6 +417,50 @@ parole_gst_query_info (ParoleGst *gst)
 }
 
 static void
+parole_gst_query_info (ParoleGst *gst)
+{
+    const GList *info = NULL;
+    GObject *obj;
+    GParamSpec *pspec;
+    GEnumValue *val;
+    gint type;
+    
+    
+    g_object_get (G_OBJECT (gst->priv->playbin),
+		  "stream-info", &info,
+		  NULL);
+		  
+    for ( ; info != NULL; info = info->next )
+    {
+	obj = info->data;
+	
+	g_object_get (obj,
+		      "type", &type,
+		      NULL);
+	
+	pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (obj), "type");
+	val = g_enum_get_value (G_PARAM_SPEC_ENUM (pspec)->enum_class, type);
+	
+	if ( g_ascii_strcasecmp (val->value_name, "video") == 0 ||
+	     g_ascii_strcasecmp (val->value_nick, "video") == 0)
+	{
+	    TRACE ("Stream has video");
+	    g_object_set (G_OBJECT (gst->priv->stream),
+			  "has-video", TRUE,
+			  NULL);
+	}
+	if ( g_ascii_strcasecmp (val->value_name, "audio") == 0 ||
+	     g_ascii_strcasecmp (val->value_nick, "audio") == 0)
+	{
+	    TRACE ("Stream has audio");
+	    g_object_set (G_OBJECT (gst->priv->stream),
+			  "has-audio", TRUE,
+			  NULL);
+	}
+    }
+}
+
+static void
 parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState pending)
 {
     if ( gst->priv->state != new )
@@ -434,6 +478,7 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 	{
 	    case GST_STATE_PLAYING:
 		parole_gst_query_capabilities (gst);
+		parole_gst_query_duration (gst);
 		parole_gst_query_info (gst);
 		g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
 			       gst->priv->stream, PAROLE_MEDIA_STATE_PLAYING);

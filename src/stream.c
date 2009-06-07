@@ -37,11 +37,14 @@
 struct ParoleStreamPrivate
 {
     /*Properties*/
-    gpointer media_file;
-    gboolean live;
-    gboolean seekable;
-    gdouble   duration;
-    gint64  absolute_duration;
+    gpointer 	media_file;
+    
+    gboolean 	has_audio;
+    gboolean    has_video;
+    gboolean 	live;
+    gboolean 	seekable;
+    gdouble   	duration;
+    gint64  	absolute_duration;
     
 };
 
@@ -50,6 +53,8 @@ enum
     PROP_0,
     PROP_MEDIA_FILE,
     PROP_LIVE,
+    PROP_HAS_AUDIO,
+    PROP_HAS_VIDEO,
     PROP_SEEKABLE,
     PROP_DURATION,
     PROP_ABSOLUTE_DURATION
@@ -69,6 +74,12 @@ static void parole_stream_set_property (GObject *object,
     {
 	case PROP_LIVE:
 	    stream->priv->live = g_value_get_boolean (value);
+	    break;
+	case PROP_HAS_AUDIO:
+	    stream->priv->has_audio = g_value_get_boolean (value);
+	    break;
+	case PROP_HAS_VIDEO:
+	    stream->priv->has_video = g_value_get_boolean (value);
 	    break;
 	case PROP_MEDIA_FILE:
 	    stream->priv->media_file = g_value_get_object (value);
@@ -100,6 +111,12 @@ static void parole_stream_get_property (GObject *object,
     {
 	case PROP_LIVE:
 	    g_value_set_boolean (value, stream->priv->live);
+	    break;
+	case PROP_HAS_AUDIO:
+	    g_value_set_boolean (value, stream->priv->has_audio);
+	    break;
+	case PROP_HAS_VIDEO:
+	    g_value_set_boolean (value, stream->priv->has_video);
 	    break;
 	case PROP_MEDIA_FILE:
 	    g_value_set_object (value, stream->priv->media_file);
@@ -148,6 +165,20 @@ parole_stream_class_init (ParoleStreamClass *klass)
 							  NULL, NULL,
 							  PAROLE_TYPE_MEDIA_FILE,
 							  G_PARAM_READWRITE));
+    
+    g_object_class_install_property (object_class,
+				     PROP_HAS_AUDIO,
+				     g_param_spec_boolean ("has-audio",
+							   NULL, NULL,
+							   FALSE,
+							   G_PARAM_READWRITE));
+    
+    g_object_class_install_property (object_class,
+				     PROP_HAS_VIDEO,
+				     g_param_spec_boolean ("has-video",
+							   NULL, NULL,
+							   FALSE,
+							   G_PARAM_READWRITE));
     
     g_object_class_install_property (object_class,
 				     PROP_LIVE,
@@ -203,6 +234,8 @@ void parole_stream_init_properties (ParoleStream *stream)
 {
     stream->priv->live = FALSE;
     stream->priv->seekable = FALSE;
+    stream->priv->has_audio = FALSE;
+    stream->priv->has_video = FALSE;
     stream->priv->absolute_duration = 0;
     stream->priv->duration = 0;
     

@@ -1,4 +1,7 @@
 2009-06-07: Ali aliov@xfce.org
+	* Reset screen saver counter if we are playing a movie
+
+2009-06-07: Ali aliov@xfce.org
 	* Change playbin state to NULL on errors.
 	* Hide statusbar+menubar when full screen mode.
 	* Hide cursor on vidoe output when playing.
