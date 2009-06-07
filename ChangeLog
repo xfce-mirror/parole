@@ -1,3 +1,8 @@
+2009-06-07: Ali aliov@xfce.org
+	* Change playbin state to NULL on errors.
+	* Hide statusbar+menubar when full screen mode.
+	* Hide cursor on vidoe output when playing.
+
 2009-06-06: Ali aliov@xfce.org
 	* Button to hide/show playlist.
 	* Fallback to ximagesink if xvimagesink is not found.

@@ -58,6 +58,8 @@ struct ParolePlayerPrivate
     
     GtkWidget		*volume;
     GtkWidget		*volume_image;
+    GtkWidget		*menu_bar;
+    GtkWidget		*play_box;
     
     gboolean             exit;
     
@@ -428,6 +430,9 @@ parole_player_full_screen_menu_item_activate (ParolePlayer *player)
     {
 	parole_media_list_set_visible (player->priv->list, TRUE);
 	parole_sidebar_set_visible (player->priv->sidebar, TRUE);
+	parole_statusbar_set_visible (player->priv->status, TRUE);
+	gtk_widget_show (player->priv->menu_bar);
+	gtk_widget_show (player->priv->play_box);
 	player->priv->full_screen = FALSE;
 	gtk_window_unfullscreen (GTK_WINDOW (player->priv->window));
     }
@@ -435,6 +440,9 @@ parole_player_full_screen_menu_item_activate (ParolePlayer *player)
     {
 	parole_media_list_set_visible (player->priv->list, FALSE);
 	parole_sidebar_set_visible (player->priv->sidebar, FALSE);
+	parole_statusbar_set_visible (player->priv->status, FALSE);
+	gtk_widget_hide (player->priv->menu_bar);
+	gtk_widget_hide (player->priv->play_box);
 	player->priv->full_screen = TRUE;
 	gtk_window_fullscreen (GTK_WINDOW (player->priv->window));
     }
@@ -527,6 +535,22 @@ parole_player_gst_widget_button_press (GtkWidget *widget, GdkEventButton *ev, Pa
 	return TRUE;
     }
     
+    return FALSE;
+}
+
+static gboolean
+parole_player_gst_widget_motion_notify_event (GtkWidget *widget, GdkEventMotion *ev, ParolePlayer *player)
+{
+    gint pointer_y;
+
+    if ( player->priv->full_screen )
+    {
+	pointer_y = (gint) ev->y;
+	if ( pointer_y >= widget->allocation.height - 10 )
+	    gtk_widget_show (player->priv->play_box);
+	else
+	    gtk_widget_hide (player->priv->play_box);
+    }
     return FALSE;
 }
 
@@ -684,6 +708,9 @@ parole_player_init (ParolePlayer *player)
     g_signal_connect (G_OBJECT (player->priv->gst), "button_release_event",
 		      G_CALLBACK (parole_player_gst_widget_button_press), player);
     
+    g_signal_connect (G_OBJECT (player->priv->gst), "motion_notify_event",
+		      G_CALLBACK (parole_player_gst_widget_motion_notify_event), player);
+    
     player->priv->row = NULL;
     
     gtk_box_pack_start (GTK_BOX (gtk_builder_get_object (builder, "output")), player->priv->gst,
@@ -744,7 +771,10 @@ parole_player_init (ParolePlayer *player)
 			      
     g_signal_connect_swapped (gtk_builder_get_object (builder, "menu-exit"), "activate",
 			      G_CALLBACK (parole_player_menu_exit_cb), player);
-		      
+    
+    player->priv->menu_bar = GTK_WIDGET (gtk_builder_get_object (builder, "menubar"));
+    player->priv->play_box = GTK_WIDGET (gtk_builder_get_object (builder, "play-box"));
+    
     gtk_widget_show_all (player->priv->window);
     
     g_object_unref (builder);

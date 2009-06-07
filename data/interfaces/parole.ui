@@ -12,7 +12,7 @@
         <property name="orientation">vertical</property>
         <property name="spacing">4</property>
         <child>
-          <object class="GtkMenuBar" id="menubar1">
+          <object class="GtkMenuBar" id="menubar">
             <property name="visible">True</property>
             <child>
               <object class="GtkMenuItem" id="file-menu">
@@ -153,7 +153,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkVBox" id="vbox4">
+                                  <object class="GtkVBox" id="play-box">
                                     <property name="visible">True</property>
                                     <property name="orientation">vertical</property>
                                     <property name="spacing">5</property>

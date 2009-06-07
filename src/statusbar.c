@@ -38,6 +38,7 @@
 
 struct ParoleStatusbarPrivate
 {
+    GtkWidget *box;
     GtkWidget *progress;
     GtkWidget *label;
     
@@ -89,6 +90,7 @@ parole_statusbar_init (ParoleStatusbar *statusbar)
     gtk_widget_show (box);
     gtk_widget_show (statusbar->priv->label);
     g_object_unref (builder);
+    statusbar->priv->box = box;
 }
 
 ParoleStatusbar *
@@ -137,7 +139,7 @@ void parole_statusbar_set_buffering (ParoleStatusbar *bar, gint percentage)
     g_free (buff);
 }
 
-void parole_statusbar_set_full_screen (ParoleStatusbar *bar, gboolean full_screen)
+void parole_statusbar_set_visible (ParoleStatusbar *bar, gboolean visible)
 {
-    
+    visible ? gtk_widget_show (bar->priv->box) : gtk_widget_hide (bar->priv->box);
 }

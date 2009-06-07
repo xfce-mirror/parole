@@ -60,8 +60,8 @@ void				parole_statusbar_set_position    (ParoleStatusbar *bar,
 void				parole_statusbar_set_buffering   (ParoleStatusbar *bar,
 								  gint percentage);
 
-void				parole_statusbar_set_full_screen (ParoleStatusbar *bar,
-								  gboolean full_screen);
+void				parole_statusbar_set_visible 	 (ParoleStatusbar *bar,
+								  gboolean visible);
 
 G_END_DECLS
 

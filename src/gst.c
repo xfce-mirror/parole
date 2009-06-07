@@ -40,13 +40,14 @@
 #include "enum-gtypes.h"
 #include "gmarshal.h"
 
+#define HIDE_WINDOW_CURSOR_TIMEOUT 3.0f
+
 #define PAROLE_GST_GET_PRIVATE(o) \
 (G_TYPE_INSTANCE_GET_PRIVATE ((o), PAROLE_TYPE_GST, ParoleGstPrivate))
 
 static void	parole_gst_play_file_internal 	(ParoleGst *gst);
 static void     parole_gst_change_state 	(ParoleGst *gst, 
 						 GstState new);
-
 struct ParoleGstPrivate
 {
     GstElement	 *playbin;
@@ -63,6 +64,7 @@ struct ParoleGstPrivate
     
     GdkPixbuf    *logo;
     GdkCursor    *busy_cursor;
+    GTimer	 *hidecursor_timer;
 };
 
 enum
@@ -102,6 +104,44 @@ parole_gst_finalize (GObject *object)
 }
 
 static void
+parole_gst_set_invisible_cursor (GdkWindow *window)
+{
+    GdkBitmap *empty_bitmap;
+    GdkCursor *cursor;
+    GdkColor  color;
+    
+    char cursor_bits[] = { 0x0 }; 
+
+    color.red = color.green = color.blue = 0;
+    color.pixel = 0;
+
+    empty_bitmap = gdk_bitmap_create_from_data (window,
+		   cursor_bits,
+		   1, 1);
+
+    cursor = gdk_cursor_new_from_pixmap (empty_bitmap,
+					 empty_bitmap,
+					 &color,
+					 &color, 0, 0);
+
+    gdk_window_set_cursor (window, cursor);
+
+    gdk_cursor_unref (cursor);
+
+    g_object_unref (empty_bitmap);
+}
+
+static void 
+parole_gst_set_cursor_visible (ParoleGst *gst, gboolean visible)
+{
+    if ( visible )
+	gdk_window_set_cursor (GTK_WIDGET (gst)->window, 
+			       gst->priv->target == gst->priv->state ? NULL : gst->priv->busy_cursor);
+    else
+	parole_gst_set_invisible_cursor (GTK_WIDGET (gst)->window);
+}
+
+static void
 parole_gst_set_window_cursor (GdkWindow *window, GdkCursor *cursor)
 {
     if ( window )
@@ -138,7 +178,9 @@ parole_gst_realize (GtkWidget *widget)
     attr.event_mask = gtk_widget_get_events (widget) | 
                       GDK_EXPOSURE_MASK |
 	              GDK_BUTTON_PRESS_MASK | 
-                      GDK_BUTTON_RELEASE_MASK;
+                      GDK_BUTTON_RELEASE_MASK | 
+		      GDK_POINTER_MOTION_MASK |
+		      GDK_KEY_PRESS_MASK;
 		      
     mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL | GDK_WA_COLORMAP;
 	
@@ -305,6 +347,9 @@ parole_gst_tick_timeout (gpointer data)
     g_signal_emit (G_OBJECT (gst), signals [MEDIA_PROGRESSED], 0, gst->priv->stream, value);
 
 out:
+    if ( g_timer_elapsed (gst->priv->hidecursor_timer, NULL ) > HIDE_WINDOW_CURSOR_TIMEOUT )
+	parole_gst_set_cursor_visible (gst, FALSE);
+	
     return TRUE;
 }
 
@@ -324,7 +369,6 @@ parole_gst_tick (ParoleGst *gst)
         g_source_remove (gst->priv->tick_id);
 	gst->priv->tick_id = 0;
     }    
-	    
 }
 
 static void
@@ -456,6 +500,8 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
 	    GError *error = NULL;
 	    gchar *debug;
 	    parole_gst_set_window_cursor (GTK_WIDGET (gst)->window, NULL);
+	    gst->priv->target = GST_STATE_NULL;
+	    parole_gst_change_state (gst, GST_STATE_NULL);
 	    gst_message_parse_error (msg, &error, &debug);
 	    TRACE ("*** ERROR %s : %s ***", error->message, debug);
 	    g_signal_emit (G_OBJECT (gst), signals [ERROR], 0, error->message);
@@ -631,6 +677,23 @@ parole_gst_construct (GObject *object)
     parole_gst_load_logo (gst);
 }
 
+static gboolean
+parole_gst_motion_notify_event (GtkWidget *widget, GdkEventMotion *ev)
+{
+    ParoleGst *gst;
+    gboolean ret = FALSE;
+    
+    gst = PAROLE_GST (widget);
+    
+    g_timer_reset (gst->priv->hidecursor_timer);
+    parole_gst_set_cursor_visible (gst, TRUE);
+    
+    if (GTK_WIDGET_CLASS (parole_gst_parent_class)->motion_notify_event)
+	ret |= GTK_WIDGET_CLASS (parole_gst_parent_class)->motion_notify_event (widget, ev);
+
+    return ret;
+}
+
 static void
 parole_gst_class_init (ParoleGstClass *klass)
 {
@@ -644,6 +707,7 @@ parole_gst_class_init (ParoleGstClass *klass)
     widget_class->show = parole_gst_show;
     widget_class->size_allocate = parole_gst_size_allocate;
     widget_class->expose_event = parole_gst_expose_event;
+    widget_class->motion_notify_event = parole_gst_motion_notify_event;
 
     signals[MEDIA_STATE] = 
         g_signal_new ("media-state",
@@ -699,6 +763,7 @@ parole_gst_init (ParoleGst *gst)
     gst->priv->stream = parole_stream_new ();
     gst->priv->tick_id = 0;
     gst->priv->busy_cursor = gdk_cursor_new (GDK_WATCH);
+    gst->priv->hidecursor_timer = g_timer_new ();
     
     GTK_WIDGET_SET_FLAGS (GTK_WIDGET (gst), GTK_CAN_FOCUS);
     

@@ -533,9 +533,11 @@ void parole_media_list_set_visible (ParoleMediaList *list, gboolean visible)
     {
 	if ( !list->priv->hidden )
 	    gtk_widget_show_all (GTK_WIDGET (list->priv->box));
+	gtk_widget_show (list->priv->hide_show);
     }
     else
     {
 	gtk_widget_hide_all (GTK_WIDGET (list->priv->box));
+	gtk_widget_hide (list->priv->hide_show);
     }
 }
