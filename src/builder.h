@@ -26,24 +26,9 @@
 
 G_BEGIN_DECLS
 
-#define PAROLE_TYPE_BUILDER        (parole_builder_get_type () )
-#define PAROLE_BUILDER(o)          (G_TYPE_CHECK_INSTANCE_CAST ((o), XFMP_TYPE_BUILDER, ParoleBuilder))
-#define PAROLE_IS_BUILDER(o)       (G_TYPE_CHECK_INSTANCE_TYPE ((o), XFMP_TYPE_BUILDER))
+GtkBuilder       	       *parole_builder_get_main_interface       (void);
 
-typedef struct
-{
-    GtkBuilder         		parent;
-    
-} ParoleBuilder;
-
-typedef struct
-{
-    GtkBuilderClass 		parent_class;
-    
-} ParoleBuilderClass;
-
-GType        			parole_builder_get_type        (void) G_GNUC_CONST;
-GtkBuilder       	       *parole_builder_new             (void);
+GtkBuilder		       *parole_builder_new_from_file   		(const gchar *file);
 
 G_END_DECLS
 

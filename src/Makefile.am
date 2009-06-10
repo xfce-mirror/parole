@@ -6,11 +6,15 @@ GENERATED_FILES =				\
 	enum-gtypes.c				\
 	enum-gtypes.h
 
+MOD_FLAGS = 					\
+	-export_dynamic 			\
+	-avoid-version 				\
+	-module 				\
+	-no-undefined
+
 parole_media_player_SOURCES =			\
 	main.c					\
 	$(GENERATED_FILES)			\
-	manager.c				\
-	manager.h				\
 	sidebar.c				\
 	sidebar.h				\
 	player.c				\
@@ -29,6 +33,8 @@ parole_media_player_SOURCES =			\
 	mediafile.h				\
 	mediachooser.c				\
 	mediachooser.h				\
+	filters.c				\
+	filters.h				\
 	screensaver.c				\
 	screensaver.h				\
 	rc-utils.c				\
@@ -40,6 +46,7 @@ parole_media_player_CFLAGS =			\
 	-I$(top_srcdir)				\
 	-DLOCALEDIR=\"$(localedir)\"		\
 	-DG_LOG_DOMAIN=\"parole-media-player\"	\
+	-export-dynamic				\
 	$(GTK_CFLAGS)                           \
         $(GLIB_CFLAGS)                          \
         $(GOBJECT_CFLAGS)                       \

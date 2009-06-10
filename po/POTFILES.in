@@ -1,4 +1,7 @@
 data/interfaces/parole.ui
+data/interfaces/mediachooser.ui
+data/interfaces/playlist.ui
+data/interfaces/openlocation.ui
 data/parole-media-player.desktop.in
 src/gst.c
 src/builder.c
@@ -7,3 +10,4 @@ src/medialist.c
 src/player.c
 src/sidebar.c
 src/statusbar.c
+src/filters.c

@@ -42,14 +42,15 @@ typedef struct ParoleMediaListPrivate ParoleMediaListPrivate;
 
 typedef struct
 {
-    GObject         		 parent;
+    GtkVBox         		 parent;
+    
     ParoleMediaListPrivate     	*priv;
     
 } ParoleMediaList;
 
 typedef struct
 {
-    GObjectClass  		 parent_class;
+    GtkVBoxClass  		 parent_class;
     
     void			(*media_activated)		    (ParoleMediaList *list,
 								     GtkTreeRowReference *row);
@@ -60,7 +61,8 @@ typedef struct
 } ParoleMediaListClass;
 
 GType        			 parole_media_list_get_type         (void) G_GNUC_CONST;
-ParoleMediaList       		*parole_media_list_new              (void);
+
+GtkWidget       		*parole_media_list_new              (void);
 
 GtkTreeRowReference		*parole_media_list_get_selected_row (ParoleMediaList *list);
 
@@ -71,9 +73,10 @@ void				 parole_media_list_set_row_pixbuf   (ParoleMediaList *list,
 								     GtkTreeRowReference *row,
 								     GdkPixbuf *pix);
 								  
-void				 parole_media_list_set_visible 	    (ParoleMediaList *list,
-								     gboolean visible);
+void				 parole_media_list_open		    (ParoleMediaList *list,
+								     gboolean multiple);
 
+void			         parole_media_list_open_location    (ParoleMediaList *list);
 G_END_DECLS
 
 #endif /* __PAROLE_MEDIA_LIST_H */

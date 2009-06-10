@@ -39,11 +39,11 @@
 #include <dbus/dbus-glib.h>
 #include <dbus/dbus-glib-lowlevel.h>
 
-#include "manager.h"
+#include "player.h"
 
 int main (int argc, char **argv)
 {
-    ParoleManager *manager;
+    ParolePlayer *player;
     
     if ( !g_thread_supported () )
 	g_thread_init (NULL);
@@ -51,14 +51,13 @@ int main (int argc, char **argv)
     gtk_init (&argc, &argv);
     gst_init (&argc, &argv);
     
-    manager = parole_manager_new ();
+    player = parole_player_new ();
     
     gdk_notify_startup_complete ();
     
     gtk_main ();
-    
-    g_object_unref (manager);
+
     gst_deinit ();
-    
+
     return 0;
 }

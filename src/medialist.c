@@ -37,6 +37,39 @@
 #include "mediachooser.h"
 #include "builder.h"
 
+/*
+ * Callbacks for GtkBuilder
+ */
+void		parole_media_list_media_up_clicked_cb 	(GtkButton *button, 
+							 ParoleMediaList *list);
+							 
+void		parole_media_list_media_down_clicked_cb (GtkButton *button, 
+							 ParoleMediaList *list);
+							 
+void		parole_media_list_add_clicked_cb 	(GtkButton *button, 
+							 ParoleMediaList *list);
+							 
+void		parole_media_list_remove_clicked_cb 	(GtkButton *button, 
+							 ParoleMediaList *list);
+
+void		parole_media_list_row_activated_cb 	(GtkTreeView *view, 
+							 GtkTreePath *path,
+							 GtkTreeViewColumn *col, 
+							 ParoleMediaList *list);
+
+void		parole_media_list_cursor_changed_cb 	(GtkTreeView *view, 
+							 ParoleMediaList *list);
+
+gboolean	parole_media_list_button_release_event  (GtkWidget *widget, 
+							 GdkEventButton *ev, 
+							 ParoleMediaList *list);
+/*
+ * End of GtkBuilder callbacks
+ */
+
+
+#define PLAYLIST_FILE INTERFACES_DIR "/playlist.ui"
+
 #define PAROLE_MEDIA_LIST_GET_PRIVATE(o) \
 (G_TYPE_INSTANCE_GET_PRIVATE ((o), PAROLE_TYPE_MEDIA_LIST, ParoleMediaListPrivate))
 
@@ -44,12 +77,7 @@ struct ParoleMediaListPrivate
 {
     GtkWidget 	  	*view;
     GtkWidget		*box;
-    
-    GtkWidget		*hide_show;
-    gboolean		 hidden;
-    
     GtkListStore	*store;
-    ParoleMediaChooser 	*chooser;
 };
 
 enum
@@ -61,7 +89,7 @@ enum
 
 static guint signals [LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE (ParoleMediaList, parole_media_list, G_TYPE_OBJECT)
+G_DEFINE_TYPE (ParoleMediaList, parole_media_list, GTK_TYPE_VBOX)
 
 static void
 parole_media_list_add (ParoleMediaList *list, ParoleMediaFile *file, gboolean emit)
@@ -117,13 +145,44 @@ parole_media_list_files_opened_cb (ParoleMediaChooser *chooser, GSList *files, P
 }
 
 static void
-parole_media_list_add_clicked_cb (ParoleMediaList *list)
+parole_media_list_open_internal (ParoleMediaList *list, gboolean multiple)
 {
-    parole_media_chooser_open (list->priv->chooser, TRUE);
+    GtkWidget *chooser;
+    
+    chooser = parole_media_chooser_open_local (gtk_widget_get_toplevel (GTK_WIDGET (list)), 
+					       multiple);
+					       
+    if ( multiple )
+	g_signal_connect (G_OBJECT (chooser), "media_files_opened",
+		          G_CALLBACK (parole_media_list_files_opened_cb), list);
+    else
+	g_signal_connect (G_OBJECT (chooser), "media_file_opened",
+		          G_CALLBACK (parole_media_list_file_opened_cb), list);
+    
+    gtk_widget_show_all (GTK_WIDGET (chooser));
 }
 
 static void
-parole_media_list_remove_clicked_cb (ParoleMediaList *list)
+parole_media_list_open_location_internal (ParoleMediaList *list)
+{
+    GtkWidget *chooser;
+    
+    chooser = parole_media_chooser_open_location (gtk_widget_get_toplevel (GTK_WIDGET (list)));
+					       
+    g_signal_connect (G_OBJECT (chooser), "media_file_opened",
+		          G_CALLBACK (parole_media_list_file_opened_cb), list);
+    
+    gtk_widget_show_all (GTK_WIDGET (chooser));
+}
+
+void
+parole_media_list_add_clicked_cb (GtkButton *button, ParoleMediaList *list)
+{
+    parole_media_list_open_internal (list, TRUE);
+}
+
+void
+parole_media_list_remove_clicked_cb (GtkButton *button, ParoleMediaList *list)
 {
     GtkTreeSelection *sel;
     GtkTreeIter iter;
@@ -149,8 +208,8 @@ parole_media_list_remove_clicked_cb (ParoleMediaList *list)
 	g_signal_emit (G_OBJECT (list), signals [MEDIA_CURSOR_CHANGED], 0, FALSE);
 }
 
-static void
-parole_media_list_media_down_clicked_cb (ParoleMediaList *list)
+void
+parole_media_list_media_down_clicked_cb (GtkButton *button, ParoleMediaList *list)
 {
     GtkTreeSelection *sel;
     GtkTreeIter iter;
@@ -181,8 +240,8 @@ parole_media_list_media_down_clicked_cb (ParoleMediaList *list)
     gtk_tree_iter_free (pos_iter);
 }
 
-static void
-parole_media_list_media_up_clicked_cb (ParoleMediaList *list)
+void
+parole_media_list_media_up_clicked_cb (GtkButton *button, ParoleMediaList *list)
 {
     GtkTreeSelection *sel;
     GtkTreeIter iter;
@@ -216,9 +275,9 @@ parole_media_list_media_up_clicked_cb (ParoleMediaList *list)
     gtk_tree_iter_free (pos_iter);
 }
 
-static void
-parole_media_list_row_activated (GtkTreeView *view, GtkTreePath *path, 
-			       GtkTreeViewColumn *col, ParoleMediaList *list)
+void
+parole_media_list_row_activated_cb (GtkTreeView *view, GtkTreePath *path, 
+				    GtkTreeViewColumn *col, ParoleMediaList *list)
 {
     GtkTreeModel *model;
     GtkTreeRowReference *row;
@@ -231,7 +290,7 @@ parole_media_list_row_activated (GtkTreeView *view, GtkTreePath *path,
     g_signal_emit (G_OBJECT (list), signals [MEDIA_ACTIVATED], 0, row);
 }
 
-static void
+void
 parole_media_list_cursor_changed_cb (GtkTreeView *view, ParoleMediaList *list)
 {
     GtkTreeSelection *sel;
@@ -279,10 +338,9 @@ parole_media_list_show_menu (ParoleMediaList *list, guint button, guint activate
                     button, activate_time);
 }
 
-static gboolean
+gboolean
 parole_media_list_button_release_event (GtkWidget *widget, GdkEventButton *ev, ParoleMediaList *list)
 {
-    
     if ( ev->button == 3 )
     {
 	parole_media_list_show_menu (list, ev->button, ev->time);
@@ -298,8 +356,6 @@ parole_media_list_finalize (GObject *object)
     ParoleMediaList *list;
 
     list = PAROLE_MEDIA_LIST (object);
-
-    g_object_unref (list->priv->chooser);
 
     G_OBJECT_CLASS (parole_media_list_parent_class)->finalize (object);
 }
@@ -359,106 +415,45 @@ parole_media_list_setup_view (ParoleMediaList *list)
     gtk_tree_view_append_column (GTK_TREE_VIEW (list->priv->view), col);
     gtk_tree_view_column_set_title (col, _("Media list"));
     
-    g_signal_connect (G_OBJECT (list->priv->view), "row_activated",
-		      G_CALLBACK (parole_media_list_row_activated), list);
-
-    g_signal_connect (G_OBJECT (list->priv->view), "cursor_changed",
-		      G_CALLBACK (parole_media_list_cursor_changed_cb), list);
-    
-    g_signal_connect (G_OBJECT (list->priv->view), "button_release_event",
-		      G_CALLBACK (parole_media_list_button_release_event), list);
-    
     list->priv->store = list_store;
-}
-
-static void
-parole_media_show_or_hide (ParoleMediaList *list)
-{
-    GtkWidget *img;
-    
-    g_object_get (G_OBJECT (list->priv->hide_show),
-		  "image", &img,
-		  NULL);
-		  
-    if ( list->priv->hidden )
-    {
-	g_object_set (G_OBJECT (img),
-		      "stock", GTK_STOCK_GO_FORWARD,
-		      NULL);
-		      
-	list->priv->hidden = FALSE;
-	gtk_widget_show_all (list->priv->box);
-	gtk_widget_set_tooltip_text (GTK_WIDGET (list->priv->hide_show), _("Hide playlist"));
-    }
-    else
-    {
-	g_object_set (G_OBJECT (img),
-		      "stock", GTK_STOCK_GO_BACK,
-		      NULL);
-		      
-	gtk_widget_hide_all (list->priv->box);
-	gtk_widget_set_tooltip_text (GTK_WIDGET (list->priv->hide_show), _("Show playlist"));
-	
-	list->priv->hidden = TRUE;
-    }
-    g_object_unref (img);
 }
 
 static void
 parole_media_list_init (ParoleMediaList *list)
 {
     GtkBuilder *builder;
+    GtkWidget  *box;
     
     list->priv = PAROLE_MEDIA_LIST_GET_PRIVATE (list);
     
-    list->priv->hidden = TRUE;
-    
-    builder = parole_builder_new ();
+    builder = parole_builder_new_from_file (PLAYLIST_FILE);
     
     list->priv->view = GTK_WIDGET (gtk_builder_get_object (builder, "media-list"));
-    list->priv->box = GTK_WIDGET (gtk_builder_get_object (builder, "list-box"));
+    box = GTK_WIDGET (gtk_builder_get_object (builder, "playlist-box"));
     
     parole_media_list_setup_view (list);
+    
+    gtk_builder_connect_signals (builder, list);
 
-    g_signal_connect_swapped (gtk_builder_get_object (builder, "add-media"), "clicked",
-			      G_CALLBACK (parole_media_list_add_clicked_cb), list);
-    
-    g_signal_connect_swapped (gtk_builder_get_object (builder, "remove-media"), "clicked",
-			      G_CALLBACK (parole_media_list_remove_clicked_cb), list);
-    
-    g_signal_connect_swapped (gtk_builder_get_object (builder, "media-down"), "clicked",
-			      G_CALLBACK (parole_media_list_media_down_clicked_cb), list);
-			      
-    g_signal_connect_swapped (gtk_builder_get_object (builder, "media-up"), "clicked",
-			      G_CALLBACK (parole_media_list_media_up_clicked_cb), list);
-    
-    list->priv->hide_show = GTK_WIDGET (gtk_builder_get_object (builder, "show-hide-list"));
-    
-    parole_media_show_or_hide (list);
-    
-    g_signal_connect_swapped (G_OBJECT (list->priv->hide_show), "clicked",
-			      G_CALLBACK (parole_media_show_or_hide), list);
-		    
+    gtk_box_pack_start (GTK_BOX (list), box, TRUE, TRUE, 0);
 
-    list->priv->chooser = parole_media_chooser_new ();
-    
-    g_signal_connect (G_OBJECT (list->priv->chooser), "media_file_opened",
-		      G_CALLBACK (parole_media_list_file_opened_cb), list);
-		      
-    g_signal_connect (G_OBJECT (list->priv->chooser), "media_files_opened",
-		      G_CALLBACK (parole_media_list_files_opened_cb), list);
-    
     g_object_unref (builder);
+    
+    gtk_widget_show_all (GTK_WIDGET (list));
 }
 
-ParoleMediaList *
+GtkWidget *
 parole_media_list_new (void)
 {
     ParoleMediaList *list = NULL;
     list = g_object_new (PAROLE_TYPE_MEDIA_LIST, NULL);
-    return list;
+    return GTK_WIDGET (list);
 }
 
+/*
+ * Public functions.
+ * 
+ */
 GtkTreeRowReference *parole_media_list_get_next_row (ParoleMediaList *list, GtkTreeRowReference *row)
 {
     GtkTreeRowReference *next;
@@ -524,20 +519,12 @@ void parole_media_list_set_row_pixbuf  (ParoleMediaList *list, GtkTreeRowReferen
     }
 }
 
-/*
- * Called by ParolePlay when going to full screen mode
- */
-void parole_media_list_set_visible (ParoleMediaList *list, gboolean visible)
+void parole_media_list_open (ParoleMediaList *list, gboolean multiple)
 {
-    if ( visible )
-    {
-	if ( !list->priv->hidden )
-	    gtk_widget_show_all (GTK_WIDGET (list->priv->box));
-	gtk_widget_show (list->priv->hide_show);
-    }
-    else
-    {
-	gtk_widget_hide_all (GTK_WIDGET (list->priv->box));
-	gtk_widget_hide (list->priv->hide_show);
-    }
+    parole_media_list_open_internal (list, multiple);
+}
+
+void parole_media_list_open_location (ParoleMediaList *list)
+{
+    parole_media_list_open_location_internal (list);
 }

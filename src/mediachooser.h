@@ -22,6 +22,8 @@
 #define __PAROLE_MEDIA_CHOOSER_H
 
 #include <glib-object.h>
+#include <gtk/gtk.h>
+
 #include "mediafile.h"
 
 G_BEGIN_DECLS
@@ -34,14 +36,13 @@ typedef struct ParoleMediaChooserPrivate ParoleMediaChooserPrivate;
 
 typedef struct
 {
-    GObject         		 parent;
-    ParoleMediaChooserPrivate     *priv;
+    GtkDialog         		 parent;
     
 } ParoleMediaChooser;
 
 typedef struct
 {
-    GObjectClass 		 parent_class;
+    GtkDialogClass 		 parent_class;
     
     void			 (*media_files_opened)		    (ParoleMediaChooser *chooser,
 								     GPtrArray *array);
@@ -52,12 +53,11 @@ typedef struct
 } ParoleMediaChooserClass;
 
 GType        			 parole_media_chooser_get_type      (void) G_GNUC_CONST;
-ParoleMediaChooser       	*parole_media_chooser_new           (void);
 
-void				 parole_media_chooser_open	    (ParoleMediaChooser *chooser,
+GtkWidget			*parole_media_chooser_open_local    (GtkWidget *parent,
 								     gboolean multiple);
 								     
-void				 parole_media_chooser_open_location (ParoleMediaChooser *chooser);
+GtkWidget			*parole_media_chooser_open_location (GtkWidget *parent);
 
 G_END_DECLS
 

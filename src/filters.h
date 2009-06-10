@@ -18,35 +18,16 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_MANAGER_H
-#define __PAROLE_MANAGER_H
+#ifndef __PAROLE_FILTERS_H
+#define __PAROLE_FILTERS_H
 
-#include <glib-object.h>
+#include <gtk/gtk.h>
 
-G_BEGIN_DECLS
+GtkFileFilter 		*parole_get_supported_audio_filter	(void);
 
-#define PAROLE_TYPE_MANAGER        (parole_manager_get_type () )
-#define PAROLE_MANAGER(o)          (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_MANAGER, ParoleManager))
-#define PAROLE_IS_MANAGER(o)       (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_MANAGER))
+GtkFileFilter 		*parole_get_supported_video_filter	(void);
 
-typedef struct ParoleManagerPrivate ParoleManagerPrivate;
+GtkFileFilter 		*parole_get_supported_media_filter	(void);
 
-typedef struct
-{
-    GObject         		 parent;
-    ParoleManagerPrivate     	*priv;
-    
-} ParoleManager;
 
-typedef struct
-{
-    GObjectClass 		 parent_class;
-    
-} ParoleManagerClass;
-
-GType        			 parole_manager_get_type        (void) G_GNUC_CONST;
-ParoleManager       	        *parole_manager_new             (void);
-
-G_END_DECLS
-
-#endif /* __PAROLE_MANAGER_H */
+#endif /* PAROLE_FILTERS_H */

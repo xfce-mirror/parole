@@ -26,17 +26,18 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <gdk/gdkkeysyms.h>
+#include <gtk/gtk.h>
+
 #include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
-
-#include <gtk/gtk.h>
 
 #include "player.h"
 #include "builder.h"
 #include "gst.h"
 #include "medialist.h"
-#include "mediafile.h"
 #include "mediachooser.h"
+#include "mediafile.h"
 #include "sidebar.h"
 #include "statusbar.h"
 #include "screensaver.h"
@@ -45,14 +46,76 @@
 #include "enum-gtypes.h"
 #include "debug.h"
 
+/*
+ * GtkBuilder Callbacks
+ */
+gboolean	parole_player_range_button_press 	(GtkWidget *widget, 
+							 GdkEventButton *ev, 
+							 ParolePlayer *player);
+
+gboolean	parole_player_range_button_release	(GtkWidget *widget,
+							 GdkEventButton *ev,
+							 ParolePlayer *player);
+
+void            parole_player_range_value_changed       (GtkRange *range, 
+							 ParolePlayer *player);
+
+void            parole_player_play_pause_clicked        (GtkButton *button, 
+							 ParolePlayer *player);
+
+void            parole_player_stop_clicked              (GtkButton *button, 
+							 ParolePlayer *player);
+
+void            parole_player_destroy_cb                (GtkObject *window, 
+							 ParolePlayer *player);
+
+void		parole_player_show_hide_playlist	(GtkButton *button,
+							 ParolePlayer *player);
+
+/*Menu items callbacks*/
+void            parole_player_menu_open_cb              (GtkWidget *widget, 
+							 ParolePlayer *player);
+
+void            parole_player_menu_open_location_cb     (GtkWidget *widget, 
+							 ParolePlayer *player);
+
+void            parole_player_menu_add_cb               (GtkWidget *widget, 
+							 ParolePlayer *player);
+
+void            parole_player_menu_exit_cb              (GtkWidget *widget,
+							 ParolePlayer *player);
+
+
+void            parole_player_volume_value_changed_cb   (GtkRange *range, 
+							 ParolePlayer *player);
+
+void		parole_player_full_screen_activated_cb  (GtkWidget *widget,
+							 ParolePlayer *player);
+
+gboolean	parole_player_key_press 		(GtkWidget *widget, 
+							 GdkEventKey *ev, 
+							 ParolePlayer *player);
+/*
+ * End of GtkBuilder Callbacks
+ */
+
+#define INTERFACE_FILE INTERFACES_DIR "/parole.ui"
+
 #define PAROLE_PLAYER_GET_PRIVATE(o) \
 (G_TYPE_INSTANCE_GET_PRIVATE ((o), PAROLE_TYPE_PLAYER, ParolePlayerPrivate))
 
 struct ParolePlayerPrivate
 {
+    ParoleMediaList	*list;
+    ParoleSidebar       *sidebar;
+    ParoleStatusbar     *status;
+    ParoleScreenSaver   *screen_saver;
+
     GtkWidget 		*gst;
+
     GtkWidget 		*window;
-    
+    GtkWidget		*playlist_box;
+    GtkWidget		*show_hide_playlist;
     GtkWidget		*play_pause;
     GtkWidget		*stop;
     GtkWidget		*range;
@@ -61,7 +124,7 @@ struct ParolePlayerPrivate
     GtkWidget		*volume_image;
     GtkWidget		*menu_bar;
     GtkWidget		*play_box;
-    
+     
     gboolean             exit;
     
     gboolean		 full_screen;
@@ -72,14 +135,42 @@ struct ParolePlayerPrivate
     gboolean		 buffering;
     
     GtkTreeRowReference *row;
-    
-    ParoleMediaList	*list;
-    ParoleSidebar       *sidebar;
-    ParoleStatusbar     *status;
-    ParoleScreenSaver   *screen_saver;
+        
 };
 
 G_DEFINE_TYPE (ParolePlayer, parole_player, G_TYPE_OBJECT)
+
+void parole_player_show_hide_playlist (GtkButton *button, ParolePlayer *player)
+{
+    GtkWidget *img;
+    gboolean   visible;
+    
+    g_object_get (G_OBJECT (player->priv->show_hide_playlist),
+		  "image", &img,
+		  NULL);
+
+    visible = GTK_WIDGET_VISIBLE (player->priv->playlist_box);
+
+    if ( !visible )
+    {
+	g_object_set (G_OBJECT (img),
+		      "stock", GTK_STOCK_GO_FORWARD,
+		      NULL);
+		      
+	gtk_widget_show_all (player->priv->playlist_box);
+	gtk_widget_set_tooltip_text (GTK_WIDGET (player->priv->show_hide_playlist), _("Hide playlist"));
+    }
+    else
+    {
+	g_object_set (G_OBJECT (img),
+		      "stock", GTK_STOCK_GO_BACK,
+		      NULL);
+		      
+	gtk_widget_hide_all (player->priv->playlist_box);
+	gtk_widget_set_tooltip_text (GTK_WIDGET (player->priv->show_hide_playlist), _("Show playlist"));
+    }
+    g_object_unref (img);
+}
 
 static void
 parole_player_change_range_value (ParolePlayer *player, gdouble value)
@@ -154,6 +245,24 @@ parole_player_set_playpause_widget_image (GtkWidget *widget, const gchar *stock_
     g_object_set (G_OBJECT (img),
 		  "stock", stock_id,
 		  NULL);
+
+    g_object_unref (img);
+}
+
+static void
+parole_player_set_playpause_button_image (GtkWidget *widget, const gchar *stock_id)
+{
+    GtkWidget *img;
+    
+    g_object_get (G_OBJECT (widget),
+		  "image", &img,
+		  NULL);
+		  
+    g_object_set (G_OBJECT (img),
+		  "stock", stock_id,
+		  NULL);
+
+    g_object_unref (img);
 }
 
 static void
@@ -168,21 +277,21 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
     
     parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, pix);
     
-    gtk_widget_set_sensitive (player->priv->play_pause, TRUE);
-    gtk_widget_set_sensitive (player->priv->stop, TRUE);
-    
-    parole_player_set_playpause_widget_image (player->priv->play_pause, GTK_STOCK_MEDIA_PAUSE);
-    
     g_object_get (G_OBJECT (stream),
 		  "seekable", &seekable,
 		  "duration", &duration,
 		  NULL);
 		  
+    gtk_widget_set_sensitive (player->priv->play_pause, TRUE);
+    gtk_widget_set_sensitive (player->priv->stop, TRUE);
+    
+    parole_player_set_playpause_button_image (player->priv->play_pause, GTK_STOCK_MEDIA_PAUSE);
+    
     gtk_widget_set_sensitive (player->priv->range, seekable);
     
     if ( seekable )
     {
-	parole_statusbar_set_duration (player->priv->status, duration );
+	parole_statusbar_set_duration (player->priv->status, duration);
 	gtk_range_set_range (GTK_RANGE (player->priv->range), 0, duration);
     }
     else
@@ -223,8 +332,8 @@ parole_player_paused (ParolePlayer *player)
 static void
 parole_player_quit (ParolePlayer *player)
 {
-    g_object_unref (player);
     gtk_widget_destroy (player->priv->window);
+    g_object_unref (player);
     gtk_main_quit ();
 }
 
@@ -299,6 +408,11 @@ parole_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream, Parole
     
     PAROLE_DEBUG_ENUM ("State callback", state, ENUM_GTYPE_MEDIA_STATE);
     
+    if ( state == PAROLE_MEDIA_STATE_PLAYING && has_video )
+	parole_screen_saver_inhibit (player->priv->screen_saver);
+    else
+	parole_screen_saver_uninhibit (player->priv->screen_saver);
+
     g_object_get (G_OBJECT (stream),
 		  "has-video", &has_video,
 		  NULL);
@@ -320,17 +434,11 @@ parole_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream, Parole
     else
     {
 	parole_player_stopped (player);
-    }
-    
-    if ( state == PAROLE_MEDIA_STATE_PLAYING && has_video )
-	parole_screen_saver_inhibit (player->priv->screen_saver);
-    else
-	parole_screen_saver_uninhibit (player->priv->screen_saver);
-    
+    }  
 }
 
-static void
-parole_player_play_pause_clicked (ParolePlayer *player)
+void
+parole_player_play_pause_clicked (GtkButton *button, ParolePlayer *player)
 {
     if ( player->priv->state == PAROLE_MEDIA_STATE_PLAYING )
 	parole_gst_pause (PAROLE_GST (player->priv->gst));
@@ -340,13 +448,13 @@ parole_player_play_pause_clicked (ParolePlayer *player)
 	parole_player_play_selected_row (player);
 }
 
-static void
-parole_player_stop_clicked (ParolePlayer *player)
+void
+parole_player_stop_clicked (GtkButton *button, ParolePlayer *player)
 {
     parole_gst_stop (PAROLE_GST (player->priv->gst));
 }
 
-static gboolean
+gboolean
 parole_player_range_button_release (GtkWidget *widget, GdkEventButton *ev, ParolePlayer *player)
 {
     if ( ev->button == 3 )
@@ -357,7 +465,7 @@ parole_player_range_button_release (GtkWidget *widget, GdkEventButton *ev, Parol
     return FALSE;
 }
 
-static gboolean
+gboolean
 parole_player_range_button_press (GtkWidget *widget, GdkEventButton *ev, ParolePlayer *player)
 {
     gdouble value;
@@ -372,7 +480,7 @@ parole_player_range_button_press (GtkWidget *widget, GdkEventButton *ev, ParoleP
     return FALSE;
 }
 
-static void
+void
 parole_player_range_value_changed (GtkRange *range, ParolePlayer *player)
 {
     gdouble value;
@@ -390,8 +498,8 @@ static void
 parole_player_error_cb (ParoleGst *gst, const gchar *error, ParolePlayer *player)
 {
     xfce_err ("%s", error);
-    parole_player_stopped (player);
     parole_screen_saver_uninhibit (player->priv->screen_saver);
+    parole_player_stopped (player);
 }
 
 static void
@@ -411,7 +519,7 @@ parole_player_buffering_cb (ParoleGst *gst, const ParoleStream *stream, gint per
     }
 }
 
-static void
+void
 parole_player_destroy_cb (GtkObject *window, ParolePlayer *player)
 {
     player->priv->exit = TRUE;
@@ -447,24 +555,31 @@ parole_player_full_screen_menu_item_activate (ParolePlayer *player)
 {
     if ( player->priv->full_screen )
     {
-	parole_media_list_set_visible (player->priv->list, TRUE);
+        
 	parole_sidebar_set_visible (player->priv->sidebar, TRUE);
 	parole_statusbar_set_visible (player->priv->status, TRUE);
-	gtk_widget_show (player->priv->menu_bar);
 	gtk_widget_show (player->priv->play_box);
-	player->priv->full_screen = FALSE;
+	gtk_widget_show (player->priv->menu_bar);
+	gtk_widget_show (player->priv->playlist_box);
 	gtk_window_unfullscreen (GTK_WINDOW (player->priv->window));
+	player->priv->full_screen = FALSE;
     }
     else
     {
-	parole_media_list_set_visible (player->priv->list, FALSE);
+        
 	parole_sidebar_set_visible (player->priv->sidebar, FALSE);
 	parole_statusbar_set_visible (player->priv->status, FALSE);
-	gtk_widget_hide (player->priv->menu_bar);
 	gtk_widget_hide (player->priv->play_box);
-	player->priv->full_screen = TRUE;
+	gtk_widget_hide (player->priv->menu_bar);
+	gtk_widget_hide (player->priv->playlist_box);
 	gtk_window_fullscreen (GTK_WINDOW (player->priv->window));
+	player->priv->full_screen = TRUE;
     }
+}
+
+void parole_player_full_screen_activated_cb (GtkWidget *widget, ParolePlayer *player)
+{
+    parole_player_full_screen_menu_item_activate (player);
 }
 
 static void
@@ -573,46 +688,26 @@ parole_player_gst_widget_motion_notify_event (GtkWidget *widget, GdkEventMotion 
     return FALSE;
 }
 
-static void
-parole_player_open_media_chooser (gboolean multiple)
+void
+parole_player_menu_open_cb (GtkWidget *widget, ParolePlayer *player)
 {
-    ParoleMediaChooser *chooser;
-    
-    chooser = parole_media_chooser_new ();
-    
-    parole_media_chooser_open (chooser, multiple);
-    
-    /*
-     * We drop the reference here as the object is 
-     * referenced in the medialist which will send events
-     * about media files added by the media chooser.
-     */
-    g_object_unref (chooser);
+    parole_media_list_open (player->priv->list, FALSE);
 }
 
-static void
-parole_player_menu_open_cb (ParolePlayer *player)
+void
+parole_player_menu_open_location_cb (GtkWidget *widget, ParolePlayer *player)
 {
-    parole_player_open_media_chooser (FALSE);
+    parole_media_list_open_location (player->priv->list);
 }
 
-static void
-parole_player_menu_open_location_cb (ParolePlayer *player)
+void
+parole_player_menu_add_cb (GtkWidget *widget, ParolePlayer *player)
 {
-    ParoleMediaChooser *chooser;
-    chooser = parole_media_chooser_new ();
-    parole_media_chooser_open_location (chooser);
-    g_object_unref (chooser);
+    parole_media_list_open (player->priv->list, TRUE);
 }
 
-static void
-parole_player_menu_add_cb (ParolePlayer *player)
-{
-    parole_player_open_media_chooser (TRUE);
-}
-
-static void
-parole_player_menu_exit_cb (ParolePlayer *player)
+void
+parole_player_menu_exit_cb (GtkWidget *widget, ParolePlayer *player)
 {
     parole_player_destroy_cb (NULL, player);
 }
@@ -631,15 +726,12 @@ parole_player_get_volume_icon_name (gdouble value)
 }
 
 static void
-parole_player_change_volume (ParolePlayer *player, gdouble value)
+parole_player_set_volume_image (ParolePlayer *player, gdouble value)
 {
     GdkPixbuf *icon;
 
-    parole_gst_set_volume (PAROLE_GST (player->priv->gst), value);
-    
     icon = xfce_themed_icon_load (parole_player_get_volume_icon_name (value), 
 				  player->priv->volume_image->allocation.width);
-    
     if ( icon )
     {
 	g_object_set (G_OBJECT (player->priv->volume_image),
@@ -650,10 +742,17 @@ parole_player_change_volume (ParolePlayer *player, gdouble value)
 }
 
 static void
-parole_player_volume_value_changed_cb (ParolePlayer *player)
+parole_player_change_volume (ParolePlayer *player, gdouble value)
+{
+    parole_gst_set_volume (PAROLE_GST (player->priv->gst), value);
+    parole_player_set_volume_image (player, value);
+}
+
+void
+parole_player_volume_value_changed_cb (GtkRange *range, ParolePlayer *player)
 {
     gdouble value;
-    value = gtk_range_get_value (GTK_RANGE (player->priv->volume));
+    value = gtk_range_get_value (range);
     parole_player_change_volume (player, value);
     parole_rc_write_entry_int ("volume", (gint)(value * 100));
 }
@@ -667,7 +766,6 @@ parole_player_finalize (GObject *object)
 
     TRACE ("start");
 
-    g_object_unref (player->priv->list);
     g_object_unref (player->priv->gst);
     g_object_unref (player->priv->sidebar);
     g_object_unref (player->priv->status);
@@ -686,6 +784,18 @@ parole_player_class_init (ParolePlayerClass *klass)
     g_type_class_add_private (klass, sizeof (ParolePlayerPrivate));
 }
 
+gboolean
+parole_player_key_press (GtkWidget *widget, GdkEventKey *ev, ParolePlayer *player)
+{
+    if ( ev->keyval == GDK_F11 )
+    {
+	parole_player_full_screen_menu_item_activate (player);
+	return TRUE;
+    }
+    
+    return FALSE;
+}
+
 static void
 parole_player_init (ParolePlayer *player)
 {
@@ -693,19 +803,20 @@ parole_player_init (ParolePlayer *player)
     
     player->priv = PAROLE_PLAYER_GET_PRIVATE (player);
     
-    builder = parole_builder_new ();
+    builder = parole_builder_get_main_interface ();
     
     player->priv->gst = parole_gst_new ();
     /*
      * Since ParoleGst is derived from GtkWidget and packed in the media output
      * box the destroy event on the window will destroy the ParoleGst widget
-     * se we ref it to clean up the gst objects before quitting.
+     * so we ref it to clean up the gst objects before quitting.
      */
     g_object_ref (player->priv->gst);
     
     player->priv->sidebar = parole_sidebar_new ();
     player->priv->status = parole_statusbar_new ();
     player->priv->screen_saver = parole_screen_saver_new ();
+    player->priv->list = PAROLE_MEDIA_LIST (parole_media_list_new ());
     
     player->priv->state = PAROLE_MEDIA_STATE_STOPPED;
     player->priv->user_seeking = FALSE;
@@ -713,7 +824,11 @@ parole_player_init (ParolePlayer *player)
     player->priv->exit = FALSE;
     player->priv->full_screen = FALSE;
     player->priv->buffering = FALSE;
+    player->priv->row = NULL;
     
+    /*
+     * Gst signals
+     */
     g_signal_connect (G_OBJECT (player->priv->gst), "media_state",
 		      G_CALLBACK (parole_player_media_state_cb), player);
 		      
@@ -732,81 +847,58 @@ parole_player_init (ParolePlayer *player)
     g_signal_connect (G_OBJECT (player->priv->gst), "motion_notify_event",
 		      G_CALLBACK (parole_player_gst_widget_motion_notify_event), player);
     
-    player->priv->row = NULL;
-    
-    gtk_box_pack_start (GTK_BOX (gtk_builder_get_object (builder, "output")), player->priv->gst,
-			TRUE, TRUE, 0);
-			
-    gtk_widget_realize (player->priv->gst);
-    gtk_widget_show (player->priv->gst);
-    
     player->priv->window = GTK_WIDGET (gtk_builder_get_object (builder, "main-window"));
     
-    g_signal_connect (G_OBJECT (player->priv->window), "destroy",
-		      G_CALLBACK (parole_player_destroy_cb), player);
-    
-    player->priv->stop = GTK_WIDGET (gtk_builder_get_object (builder, "stop"));
     player->priv->play_pause = GTK_WIDGET (gtk_builder_get_object (builder, "play-pause"));
+    player->priv->stop = GTK_WIDGET (gtk_builder_get_object (builder, "stop"));
     player->priv->range = GTK_WIDGET (gtk_builder_get_object (builder, "scale"));
-    
-    g_signal_connect (G_OBJECT (player->priv->range), "button_press_event",
-		      G_CALLBACK (parole_player_range_button_press), player);
-		      
-    g_signal_connect (G_OBJECT (player->priv->range), "button_release_event",
-		      G_CALLBACK (parole_player_range_button_release), player);
-    
-    g_signal_connect (G_OBJECT (player->priv->range), "value_changed",
-		      G_CALLBACK (parole_player_range_value_changed), player);
-    
-    g_signal_connect_swapped (G_OBJECT (player->priv->stop), "clicked",
-			      G_CALLBACK (parole_player_stop_clicked), player);
-		      
-    g_signal_connect_swapped (G_OBJECT (player->priv->play_pause), "clicked",
-			      G_CALLBACK (parole_player_play_pause_clicked), player);
-			      
-    /*
-     * Volume range and volume image
-     */
     
     player->priv->volume = GTK_WIDGET (gtk_builder_get_object (builder, "volume"));
     player->priv->volume_image = GTK_WIDGET (gtk_builder_get_object (builder, "volume-image"));
-    gtk_range_set_range (GTK_RANGE (player->priv->volume), 0, 1.0);
-    
-    g_signal_connect_swapped (G_OBJECT (player->priv->volume), "value_changed",
-			      G_CALLBACK (parole_player_volume_value_changed_cb), player);
-    gtk_range_set_value (GTK_RANGE (player->priv->volume), (gdouble) (parole_rc_read_entry_int ("volume", 100)/100.));
-    parole_player_change_volume (player, (gdouble) (parole_rc_read_entry_int ("volume", 100)/100.));
-    
-
-    /*
-     * Connect to the menu items from the menu bar
-     */
-    g_signal_connect_swapped (gtk_builder_get_object (builder, "menu-open"), "activate",
-			      G_CALLBACK (parole_player_menu_open_cb), player);
-			      
-    g_signal_connect_swapped (gtk_builder_get_object (builder, "menu-open-location"), "activate",
-			      G_CALLBACK (parole_player_menu_open_location_cb), player);
-			      
-    g_signal_connect_swapped (gtk_builder_get_object (builder, "menu-add"), "activate",
-			      G_CALLBACK (parole_player_menu_add_cb), player);
-			      
-    g_signal_connect_swapped (gtk_builder_get_object (builder, "menu-exit"), "activate",
-			      G_CALLBACK (parole_player_menu_exit_cb), player);
     
     player->priv->menu_bar = GTK_WIDGET (gtk_builder_get_object (builder, "menubar"));
     player->priv->play_box = GTK_WIDGET (gtk_builder_get_object (builder, "play-box"));
+    player->priv->playlist_box = GTK_WIDGET (gtk_builder_get_object (builder, "list-box"));
+    player->priv->show_hide_playlist = GTK_WIDGET (gtk_builder_get_object (builder, "show-hide-list"));
     
+    gtk_range_set_range (GTK_RANGE (player->priv->volume), 0, 1.0);
+    
+    gtk_range_set_value (GTK_RANGE (player->priv->volume), 
+			 (gdouble) (parole_rc_read_entry_int ("volume", 100)/100.));
+    
+    /*
+     * Pack the playlist.
+     */
+    gtk_container_add (GTK_CONTAINER (player->priv->playlist_box), GTK_WIDGET (player->priv->list));
+    
+    /*
+     * Pack Sidebar.
+     */
+    
+    
+    /*
+     * Pack the statusbar.
+     */
     gtk_widget_show_all (player->priv->window);
     
-    g_object_unref (builder);
+    gtk_box_pack_start (GTK_BOX (gtk_builder_get_object (builder, "output")), 
+			player->priv->gst,
+			TRUE, TRUE, 0);
     
-    player->priv->list = parole_media_list_new ();
+    gtk_widget_realize (player->priv->gst);
+    gtk_widget_show (player->priv->gst);
+
+    parole_player_change_volume (player, 
+				 (gdouble) (parole_rc_read_entry_int ("volume", 100)/100.));
 
     g_signal_connect (player->priv->list, "media_activated",
 		      G_CALLBACK (parole_player_media_activated_cb), player);
 		      
     g_signal_connect (player->priv->list, "media_cursor_changed",
 		      G_CALLBACK (parole_player_media_cursor_changed_cb), player);
+
+    gtk_builder_connect_signals (builder, player);
+    g_object_unref (builder);
 }
 
 ParolePlayer *

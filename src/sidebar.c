@@ -165,7 +165,7 @@ parole_sidebar_init (ParoleSidebar *sidebar)
     
     sidebar->priv = PAROLE_SIDEBAR_GET_PRIVATE (sidebar);
     
-    builder = parole_builder_new ();
+    builder = parole_builder_get_main_interface ();
     
     sidebar->priv->visible = TRUE;
     sidebar->priv->treeview = GTK_WIDGET (gtk_builder_get_object (builder, "treeview"));

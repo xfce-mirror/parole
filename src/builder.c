@@ -33,33 +33,10 @@
 
 #define INTERFACE_FILE INTERFACES_DIR "/parole.ui"
 
-G_DEFINE_TYPE (ParoleBuilder, parole_builder, GTK_TYPE_BUILDER)
-
 static gpointer parole_builder_object = NULL;
 
-static void
-parole_builder_class_init (ParoleBuilderClass *klass)
-{
-
-}
-
-static void
-parole_builder_init (ParoleBuilder *builder)
-{
-    GError *error = NULL;
-    
-    gtk_builder_add_from_file (GTK_BUILDER (builder),
-			       INTERFACE_FILE,
-			       &error);
-    if ( error )
-    {
-	xfce_err ("%s : %s", error->message, _("Check your Parole installation"));
-	g_error ("%s", error->message);
-    }
-}
-
 GtkBuilder *
-parole_builder_new (void)
+parole_builder_get_main_interface (void)
 {
     if ( parole_builder_object != NULL )
     {
@@ -67,9 +44,31 @@ parole_builder_new (void)
     }
     else
     {
-	parole_builder_object = g_object_new (PAROLE_TYPE_BUILDER, NULL);
+	parole_builder_object = parole_builder_new_from_file (INTERFACE_FILE);
+	if ( G_UNLIKELY (parole_builder_object == NULL ) )
+	    g_error ("Unable to load interface file from %s : Check you parole installation", INTERFACE_FILE);
 	g_object_add_weak_pointer (parole_builder_object, &parole_builder_object);
     }
     
     return GTK_BUILDER (parole_builder_object);
+}
+
+GtkBuilder *parole_builder_new_from_file   (const gchar *file)
+{
+    GtkBuilder *builder;
+    GError *error = NULL;
+
+    builder = gtk_builder_new ();
+    
+    gtk_builder_add_from_file (GTK_BUILDER (builder),
+			       file,
+			       &error);
+			       
+    if ( error )
+    {
+	xfce_err ("%s : %s", error->message, _("Check your Parole installation"));
+	g_error_free (error);
+    }
+    
+    return builder;
 }

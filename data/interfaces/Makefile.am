@@ -1,5 +1,8 @@
 interfaces =					\
-	parole.ui
+	parole.ui				\
+	playlist.ui				\
+	mediachooser.ui				\
+	openlocation.ui
 
 interfaces_DATA = 				\
 	$(interfaces)

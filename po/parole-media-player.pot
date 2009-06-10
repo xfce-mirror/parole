@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-03 10:35+0200\n"
+"POT-Creation-Date: 2009-06-10 20:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,61 +17,68 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../data/parole-media-player.desktop.in.h:1
-msgid "Xfce Media Player"
+msgid "Parole Media Player"
 msgstr ""
 
-#: ../src/gst.c:548
+#: ../src/gst.c:640
 msgid "Error in changing state to ready"
 msgstr ""
 
-#: ../src/gst.c:595
+#: ../src/gst.c:687
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 
-#: ../src/gst.c:605
+#: ../src/gst.c:702
 msgid ""
-"Unable to load xvimagesink GStreamer plugin, check your GStreamer "
-"installation"
+"Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 
-#: ../src/mediachooser.c:420
-msgid "Audio and video"
+#: ../src/builder.c:69
+msgid "Check your Parole installation"
 msgstr ""
 
-#: ../src/mediachooser.c:447
+#: ../src/mediachooser.c:433
 msgid "Add media files"
 msgstr ""
 
-#: ../src/mediachooser.c:447
+#: ../src/mediachooser.c:433
 msgid "Open media file"
 msgstr ""
 
-#: ../src/mediachooser.c:452
-msgid "Open location"
+#: ../src/mediachooser.c:450
+msgid "Add"
 msgstr ""
 
-#: ../src/mediachooser.c:532
-msgid "Open location of media file or live stream"
+#: ../src/mediachooser.c:450
+msgid "Open"
 msgstr ""
 
-#: ../src/medialist.c:274
+#: ../src/medialist.c:416
 msgid "Media list"
 msgstr ""
 
-#: ../src/player.c:164 ../src/statusbar.c:119 ../src/statusbar.c:121
+#: ../src/player.c:161
+msgid "Hide playlist"
+msgstr ""
+
+#: ../src/player.c:170
+msgid "Show playlist"
+msgstr ""
+
+#: ../src/player.c:299 ../src/statusbar.c:121 ../src/statusbar.c:123
 msgid "Playing"
 msgstr ""
 
-#: ../src/player.c:165
+#: ../src/player.c:300
 msgid "Media stream is not seekable"
 msgstr ""
 
-#: ../src/player.c:179 ../src/player.c:192
+#: ../src/player.c:316 ../src/player.c:329
 msgid "Paused"
 msgstr ""
 
-#: ../src/player.c:210
+#: ../src/player.c:347
 msgid "Stopped"
 msgstr ""
 
@@ -84,24 +91,22 @@ msgstr ""
 
 #: ../src/sidebar.c:147
 msgid ""
-"<b>Audio \n"
-"recorder\n"
-"</b>"
-msgstr ""
-
-#: ../src/sidebar.c:158
-msgid ""
-"<b>Audio \n"
-"converter\n"
-"</b>"
-msgstr ""
-
-#: ../src/sidebar.c:168
-msgid ""
 "<b>Albums\n"
 "</b>"
 msgstr ""
 
-#: ../src/statusbar.c:131
+#: ../src/statusbar.c:133
 msgid "Buffering"
+msgstr ""
+
+#: ../src/filters.c:47
+msgid "Audio files"
+msgstr ""
+
+#: ../src/filters.c:63
+msgid "Video files"
+msgstr ""
+
+#: ../src/filters.c:78
+msgid "Audio and video"
 msgstr ""

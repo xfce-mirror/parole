@@ -76,7 +76,7 @@ parole_statusbar_init (ParoleStatusbar *statusbar)
     statusbar->priv = PAROLE_STATUSBAR_GET_PRIVATE (statusbar);
     statusbar->priv->duration = 0;
     
-    builder = parole_builder_new ();
+    builder = parole_builder_get_main_interface ();
     
     box = GTK_WIDGET (gtk_builder_get_object (builder, "statusbox"));
     
