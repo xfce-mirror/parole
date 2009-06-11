@@ -37,6 +37,7 @@
 #include <gdk/gdkx.h>
 
 #include "gst.h"
+#include "utils.h"
 #include "enum-gtypes.h"
 #include "gmarshal.h"
 
@@ -63,7 +64,6 @@ struct ParoleGstPrivate
     gboolean      seeking;
     
     GdkPixbuf    *logo;
-    GdkCursor    *busy_cursor;
     GTimer	 *hidecursor_timer;
 };
 
@@ -95,7 +95,6 @@ parole_gst_finalize (GObject *object)
     parole_stream_init_properties (gst->priv->stream);
     g_object_unref (gst->priv->stream);
     g_object_unref (gst->priv->playbin);
-    gdk_cursor_unref (gst->priv->busy_cursor);
     
     g_object_unref (gst->priv->logo);
     g_mutex_free (gst->priv->lock);
@@ -103,42 +102,16 @@ parole_gst_finalize (GObject *object)
     G_OBJECT_CLASS (parole_gst_parent_class)->finalize (object);
 }
 
-static void
-parole_gst_set_invisible_cursor (GdkWindow *window)
-{
-    GdkBitmap *empty_bitmap;
-    GdkCursor *cursor;
-    GdkColor  color;
-    
-    char cursor_bits[] = { 0x0 }; 
-
-    color.red = color.green = color.blue = 0;
-    color.pixel = 0;
-
-    empty_bitmap = gdk_bitmap_create_from_data (window,
-		   cursor_bits,
-		   1, 1);
-
-    cursor = gdk_cursor_new_from_pixmap (empty_bitmap,
-					 empty_bitmap,
-					 &color,
-					 &color, 0, 0);
-
-    gdk_window_set_cursor (window, cursor);
-
-    gdk_cursor_unref (cursor);
-
-    g_object_unref (empty_bitmap);
-}
-
 static void 
 parole_gst_set_cursor_visible (ParoleGst *gst, gboolean visible)
 {
     if ( visible )
-	gdk_window_set_cursor (GTK_WIDGET (gst)->window, 
-			       gst->priv->target == gst->priv->state ? NULL : gst->priv->busy_cursor);
+    {
+	gst->priv->target == gst->priv->state ? gdk_window_set_cursor (GTK_WIDGET (gst)->window, NULL):
+						parole_window_busy_cursor (GTK_WIDGET (gst)->window);
+    }
     else
-	parole_gst_set_invisible_cursor (GTK_WIDGET (gst)->window);
+	parole_window_invisible_cursor (GTK_WIDGET (gst)->window);
 }
 
 static void
@@ -463,52 +436,49 @@ parole_gst_query_info (ParoleGst *gst)
 static void
 parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState pending)
 {
-    if ( gst->priv->state != new )
-    {
-	TRACE ("State change new %i old %i pending %i", new, old, pending);
-	
-	gst->priv->state = new;
+    TRACE ("State change new %i old %i pending %i", new, old, pending);
 
-	parole_gst_tick (gst);
-	
-	if ( gst->priv->target == new )
-	    parole_gst_set_window_cursor (GTK_WIDGET (gst)->window, NULL);
-	
-	switch (gst->priv->state)
+    gst->priv->state = new;
+
+    parole_gst_tick (gst);
+    
+    if ( gst->priv->target == new )
+	parole_gst_set_window_cursor (GTK_WIDGET (gst)->window, NULL);
+    
+    switch (gst->priv->state)
+    {
+	case GST_STATE_PLAYING:
+	    parole_gst_query_capabilities (gst);
+	    parole_gst_query_duration (gst);
+	    parole_gst_query_info (gst);
+	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
+			   gst->priv->stream, PAROLE_MEDIA_STATE_PLAYING);
+	    break;
+	case GST_STATE_PAUSED:
+	    parole_gst_set_x_overlay (gst);
+	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
+			   gst->priv->stream, PAROLE_MEDIA_STATE_PAUSED);
+	    break;
+	default:
 	{
-	    case GST_STATE_PLAYING:
-		parole_gst_query_capabilities (gst);
-		parole_gst_query_duration (gst);
-		parole_gst_query_info (gst);
-		g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
-			       gst->priv->stream, PAROLE_MEDIA_STATE_PLAYING);
-		break;
-	    case GST_STATE_PAUSED:
-		parole_gst_set_x_overlay (gst);
-		g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
-			       gst->priv->stream, PAROLE_MEDIA_STATE_PAUSED);
-		break;
-	    default:
+	    if ( gst->priv->target == GST_STATE_PLAYING)
 	    {
-		if ( gst->priv->target == GST_STATE_PLAYING)
-		{
-		    parole_gst_play_file_internal (gst);
-		}
-		else if ( gst->priv->target == GST_STATE_PAUSED)
-		{
-		    parole_gst_change_state (gst, GST_STATE_PAUSED);
-		}
-		else if ( gst->priv->target == GST_STATE_READY)
-		{
-		    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
-			       gst->priv->stream, PAROLE_MEDIA_STATE_STOPPED);
-		    parole_gst_draw_logo (gst);
-		}
-		else if ( gst->priv->target == GST_STATE_NULL )
-		{
-		    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
-			       gst->priv->stream, PAROLE_MEDIA_STATE_STOPPED);
-		}
+		parole_gst_play_file_internal (gst);
+	    }
+	    else if ( gst->priv->target == GST_STATE_PAUSED)
+	    {
+		parole_gst_change_state (gst, GST_STATE_PAUSED);
+	    }
+	    else if ( gst->priv->target == GST_STATE_READY)
+	    {
+		g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
+			   gst->priv->stream, PAROLE_MEDIA_STATE_STOPPED);
+		parole_gst_draw_logo (gst);
+	    }
+	    else if ( gst->priv->target == GST_STATE_NULL )
+	    {
+		g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
+			   gst->priv->stream, PAROLE_MEDIA_STATE_STOPPED);
 	    }
 	}
     }
@@ -629,14 +599,16 @@ parole_gst_change_state (ParoleGst *gst, GstState new)
     {
 	case GST_STATE_CHANGE_SUCCESS:
 	    parole_gst_evaluate_state (gst, 
-				     GST_STATE_RETURN (gst->priv->playbin),
-				     GST_STATE (gst->priv->playbin),
-				     GST_STATE_PENDING (gst->priv->playbin));
+				       GST_STATE_RETURN (gst->priv->playbin),
+				       GST_STATE (gst->priv->playbin),
+				       GST_STATE_PENDING (gst->priv->playbin));
 	    break;
 	case GST_STATE_CHANGE_ASYNC:
 	    TRACE ("State will change async");
 	    break;
 	case GST_STATE_CHANGE_FAILURE:
+	    gst->priv->target = GST_STATE_NULL;
+	    parole_gst_change_state (gst, GST_STATE_NULL);
 	    g_signal_emit (G_OBJECT (gst), signals [ERROR], 0, _("Error in changing state to ready"));
 	    break;
 	case GST_STATE_CHANGE_NO_PREROLL:
@@ -807,7 +779,6 @@ parole_gst_init (ParoleGst *gst)
     gst->priv->lock = g_mutex_new ();
     gst->priv->stream = parole_stream_new ();
     gst->priv->tick_id = 0;
-    gst->priv->busy_cursor = gdk_cursor_new (GDK_WATCH);
     gst->priv->hidecursor_timer = g_timer_new ();
     
     GTK_WIDGET_SET_FLAGS (GTK_WIDGET (gst), GTK_CAN_FOCUS);
@@ -841,7 +812,7 @@ void parole_gst_play_file (ParoleGst *gst, ParoleMediaFile *file)
 
     g_mutex_unlock (gst->priv->lock);
     
-    parole_gst_set_window_cursor (GTK_WIDGET (gst)->window, gst->priv->busy_cursor);
+    parole_window_busy_cursor (GTK_WIDGET (gst)->window);
     
     if ( gst->priv->state < GST_STATE_PAUSED )
 	parole_gst_play_file_internal (gst);
@@ -857,7 +828,7 @@ void parole_gst_pause (ParoleGst *gst)
     
     g_mutex_unlock (gst->priv->lock);
 
-    parole_gst_set_window_cursor (GTK_WIDGET (gst)->window, gst->priv->busy_cursor);
+    parole_window_busy_cursor (GTK_WIDGET (gst)->window);
     parole_gst_change_state (gst, GST_STATE_PAUSED);
 }
 
@@ -869,7 +840,7 @@ void parole_gst_resume (ParoleGst *gst)
     
     g_mutex_unlock (gst->priv->lock);
 
-    parole_gst_set_window_cursor (GTK_WIDGET (gst)->window, gst->priv->busy_cursor);
+    parole_window_busy_cursor (GTK_WIDGET (gst)->window);
     parole_gst_change_state (gst, GST_STATE_PLAYING);
 }
 
@@ -882,7 +853,7 @@ void parole_gst_stop (ParoleGst *gst)
     
     g_mutex_unlock (gst->priv->lock);
 
-    parole_gst_set_window_cursor (GTK_WIDGET (gst)->window, gst->priv->busy_cursor);
+    parole_window_busy_cursor (GTK_WIDGET (gst)->window);
     
     parole_gst_change_state (gst, GST_STATE_READY);
 }
@@ -895,8 +866,8 @@ void parole_gst_null_state (ParoleGst *gst)
     gst->priv->target = GST_STATE_NULL;
     
     g_mutex_unlock (gst->priv->lock);
-    
-    parole_gst_set_window_cursor (GTK_WIDGET (gst)->window, gst->priv->busy_cursor);
+
+    parole_window_busy_cursor (GTK_WIDGET (gst)->window);
     
     parole_gst_change_state (gst, GST_STATE_NULL);
 }

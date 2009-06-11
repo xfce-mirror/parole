@@ -1,4 +1,9 @@
-2009-06-17: Ali aliov@xfce.org
+2009-06-11: Ali aliov@xfce.org
+	* Fix a bug in processing state change in Gst.
+	* Added utils.{c,h} with window cursor functions.
+	* Fix the date of the previous ChangeLog commit message.
+
+2009-06-10: Ali aliov@xfce.org
 	* Split the GtkBuilder interface files into multiple files.
 
 2009-06-07: Ali aliov@xfce.org

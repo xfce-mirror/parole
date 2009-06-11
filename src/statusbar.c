@@ -83,7 +83,11 @@ parole_statusbar_init (ParoleStatusbar *statusbar)
     statusbar->priv->progress = gtk_progress_bar_new ();
     gtk_widget_hide (statusbar->priv->progress);
     statusbar->priv->label = gtk_label_new (NULL);
-    
+
+    gtk_misc_set_alignment (GTK_MISC (statusbar->priv->label), 0.0, 0.5);
+
+    gtk_widget_set_size_request (statusbar->priv->progress, 180, 20);
+
     gtk_box_pack_start (GTK_BOX (box), statusbar->priv->label, FALSE, FALSE, 0);
     gtk_box_pack_start (GTK_BOX (box), statusbar->priv->progress, FALSE, FALSE, 0);
 

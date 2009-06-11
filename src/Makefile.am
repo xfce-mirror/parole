@@ -39,6 +39,8 @@ parole_media_player_SOURCES =			\
 	screensaver.h				\
 	rc-utils.c				\
 	rc-utils.h				\
+	utils.c					\
+	utils.h					\
 	debug.c					\
 	debug.h
 

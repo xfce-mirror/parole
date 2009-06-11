@@ -37,6 +37,7 @@
 #include "mediafile.h"
 #include "filters.h"
 #include "rc-utils.h"
+#include "utils.h"
 
 /*
  * GtkBuilder Callbacks
@@ -384,6 +385,7 @@ parole_media_chooser_open (GtkWidget *widget, ParoleMediaChooser *chooser)
     }
     else
     {
+	parole_window_busy_cursor (GTK_WIDGET (chooser)->window);
 	parole_media_chooser_add_many (chooser, file_chooser);
 	parole_media_chooser_close (NULL, chooser);
     }
