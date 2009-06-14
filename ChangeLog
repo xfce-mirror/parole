@@ -1,3 +1,8 @@
+2009-06-14: Ali aliov@xfce.org
+	* Added code for configurations.
+	* By default visualizations are disabled when playing audio files.
+	* User now can select between multiple Gst visualizations plugins.
+
 2009-06-11: Ali aliov@xfce.org
 	* Fix a bug in processing state change in Gst.
 	* Added utils.{c,h} with window cursor functions.

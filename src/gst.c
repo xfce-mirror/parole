@@ -38,6 +38,7 @@
 
 #include "gst.h"
 #include "utils.h"
+#include "conf.h"
 #include "enum-gtypes.h"
 #include "gmarshal.h"
 
@@ -65,6 +66,10 @@ struct ParoleGstPrivate
     
     GdkPixbuf    *logo;
     GTimer	 *hidecursor_timer;
+    
+    ParoleConf   *conf;
+    gboolean	  update;
+    gboolean      with_vis;
 };
 
 enum
@@ -98,6 +103,8 @@ parole_gst_finalize (GObject *object)
     
     g_object_unref (gst->priv->logo);
     g_mutex_free (gst->priv->lock);
+
+    g_object_unref (gst->priv->conf);
 
     G_OBJECT_CLASS (parole_gst_parent_class)->finalize (object);
 }
@@ -278,7 +285,7 @@ parole_gst_expose_event (GtkWidget *widget, GdkEventExpose *ev)
 
     parole_gst_set_x_overlay (gst);
 
-    if ( gst->priv->state < GST_STATE_PAUSED )
+    if ( gst->priv->state < GST_STATE_PAUSED || !gst->priv->with_vis)
 	parole_gst_draw_logo (gst);
     else 
     {
@@ -434,6 +441,37 @@ parole_gst_query_info (ParoleGst *gst)
 }
 
 static void
+parole_gst_update_vis (ParoleGst *gst)
+{
+    gchar *vis_name;
+    
+    g_object_get (G_OBJECT (gst->priv->conf),
+		  "vis-enabled", &gst->priv->with_vis,
+		  "vis-name", &vis_name,
+		  NULL);
+
+    TRACE ("Vis name %s enabled %d\n", vis_name, gst->priv->with_vis);
+    
+    if ( gst->priv->with_vis )
+    {
+	gst->priv->vis_sink = gst_element_factory_make (vis_name, "vis");
+	g_object_set (G_OBJECT (gst->priv->playbin),
+		      "vis-plugin", gst->priv->vis_sink,
+		      NULL);
+    }
+    else
+    {
+	g_object_set (G_OBJECT (gst->priv->playbin),
+		      "vis-plugin", NULL,
+		      NULL);
+	gtk_widget_queue_draw (GTK_WIDGET (gst));
+    }
+
+    gst->priv->update = FALSE;
+    g_free (vis_name);
+}
+
+static void
 parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState pending)
 {
     TRACE ("State change new %i old %i pending %i", new, old, pending);
@@ -441,6 +479,9 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
     gst->priv->state = new;
 
     parole_gst_tick (gst);
+
+    if ( gst->priv->update && new == GST_STATE_NULL)
+	parole_gst_update_vis (gst);
     
     if ( gst->priv->target == new )
 	parole_gst_set_window_cursor (GTK_WIDGET (gst)->window, NULL);
@@ -455,12 +496,16 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 			   gst->priv->stream, PAROLE_MEDIA_STATE_PLAYING);
 	    break;
 	case GST_STATE_PAUSED:
-	    parole_gst_set_x_overlay (gst);
+	    if ( gst->priv->target == GST_STATE_PLAYING )
+		parole_gst_set_x_overlay (gst);
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
 			   gst->priv->stream, PAROLE_MEDIA_STATE_PAUSED);
 	    break;
 	default:
 	{
+	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
+			   gst->priv->stream, PAROLE_MEDIA_STATE_STOPPED);
+
 	    if ( gst->priv->target == GST_STATE_PLAYING)
 	    {
 		parole_gst_play_file_internal (gst);
@@ -471,14 +516,7 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 	    }
 	    else if ( gst->priv->target == GST_STATE_READY)
 	    {
-		g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
-			   gst->priv->stream, PAROLE_MEDIA_STATE_STOPPED);
 		parole_gst_draw_logo (gst);
-	    }
-	    else if ( gst->priv->target == GST_STATE_NULL )
-	    {
-		g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
-			   gst->priv->stream, PAROLE_MEDIA_STATE_STOPPED);
 	    }
 	}
     }
@@ -677,11 +715,10 @@ parole_gst_construct (GObject *object)
 	}
     }
     
-    gst->priv->vis_sink = gst_element_factory_make ("goom", "vis");
+    parole_gst_update_vis (gst);
     
     g_object_set (G_OBJECT (gst->priv->playbin),
 		  "video-sink", gst->priv->video_sink,
-		  "vis-plugin", gst->priv->vis_sink,
 		  NULL);
 
     /*
@@ -709,6 +746,15 @@ parole_gst_motion_notify_event (GtkWidget *widget, GdkEventMotion *ev)
 	ret |= GTK_WIDGET_CLASS (parole_gst_parent_class)->motion_notify_event (widget, ev);
 
     return ret;
+}
+
+static void
+parole_gst_conf_notify_cb (GObject *object, GParamSpec *spec, ParoleGst *gst)
+{
+    if ( !g_strcmp0 ("vis-enabled", spec->name) || !g_strcmp0 ("vis-name", spec->name))
+    {
+	gst->priv->update = TRUE;
+    }
 }
 
 static void
@@ -780,6 +826,13 @@ parole_gst_init (ParoleGst *gst)
     gst->priv->stream = parole_stream_new ();
     gst->priv->tick_id = 0;
     gst->priv->hidecursor_timer = g_timer_new ();
+    gst->priv->update = FALSE;
+    gst->priv->vis_sink = NULL;
+    
+    gst->priv->conf = parole_conf_new ();
+    
+    g_signal_connect (G_OBJECT (gst->priv->conf), "notify",
+		      G_CALLBACK (parole_gst_conf_notify_cb), gst);
     
     GTK_WIDGET_SET_FLAGS (GTK_WIDGET (gst), GTK_CAN_FOCUS);
     
@@ -816,7 +869,9 @@ void parole_gst_play_file (ParoleGst *gst, ParoleMediaFile *file)
     
     if ( gst->priv->state < GST_STATE_PAUSED )
 	parole_gst_play_file_internal (gst);
-    else
+    else if ( gst->priv->update )
+	parole_gst_change_state (gst, GST_STATE_NULL);
+    else 
 	parole_gst_change_state (gst, GST_STATE_READY);
 }
 

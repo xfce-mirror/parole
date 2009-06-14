@@ -18,8 +18,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_UTILS_
-#define __PAROLE_UTILS_
+#ifndef __PAROLE_UTILS_H_
+#define __PAROLE_UTILS_H_
 
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>

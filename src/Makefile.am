@@ -23,6 +23,8 @@ parole_media_player_SOURCES =			\
 	stream.h				\
 	gst.c					\
 	gst.h					\
+	vis.c					\
+	vis.h					\
 	statusbar.c				\
 	statusbar.h				\
 	builder.c				\
@@ -37,6 +39,10 @@ parole_media_player_SOURCES =			\
 	filters.h				\
 	screensaver.c				\
 	screensaver.h				\
+	conf.c					\
+	conf.h					\
+	conf-dialog.c				\
+	conf-dialog.h				\
 	rc-utils.c				\
 	rc-utils.h				\
 	utils.c					\

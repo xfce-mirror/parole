@@ -41,7 +41,10 @@
 #include "sidebar.h"
 #include "statusbar.h"
 #include "screensaver.h"
+#include "conf-dialog.h"
+#include "conf.h"
 #include "rc-utils.h"
+#include "utils.h"
 #include "enum-glib.h"
 #include "enum-gtypes.h"
 #include "debug.h"
@@ -85,12 +88,16 @@ void            parole_player_menu_add_cb               (GtkWidget *widget,
 void            parole_player_menu_exit_cb              (GtkWidget *widget,
 							 ParolePlayer *player);
 
+void		parole_player_open_preferences_cb	(GtkWidget *widget,
+							 ParolePlayer *player);
 
 void            parole_player_volume_value_changed_cb   (GtkRange *range, 
 							 ParolePlayer *player);
 
 void		parole_player_full_screen_activated_cb  (GtkWidget *widget,
 							 ParolePlayer *player);
+
+
 
 gboolean	parole_player_key_press 		(GtkWidget *widget, 
 							 GdkEventKey *ev, 
@@ -349,8 +356,8 @@ parole_player_stopped (ParolePlayer *player)
     gtk_widget_set_sensitive (player->priv->play_pause, FALSE);
     gtk_widget_set_sensitive (player->priv->stop, FALSE);
 
-    gtk_widget_set_sensitive (player->priv->range, FALSE);
     parole_player_change_range_value (player, 0);
+    gtk_widget_set_sensitive (player->priv->range, FALSE);
 
     parole_player_set_playpause_widget_image (player->priv->play_pause, GTK_STOCK_MEDIA_PLAY);
     
@@ -387,7 +394,7 @@ parole_player_play_next (ParolePlayer *player)
 	if ( row )
 	{
 	    parole_player_media_activated_cb (player->priv->list, row, player);
-	    goto out;
+	    return;
 	}
 	else
 	{
@@ -396,9 +403,7 @@ parole_player_play_next (ParolePlayer *player)
 	}
     }
 
-    parole_gst_stop (PAROLE_GST (player->priv->gst));
-out:
-    ;
+    parole_player_stopped (player);
 }
 
 static void
@@ -425,16 +430,15 @@ parole_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream, Parole
     {
 	parole_player_paused (player);
     }
+    else if ( state == PAROLE_MEDIA_STATE_STOPPED )
+    {
+	parole_player_stopped (player);
+    }
     else if ( state == PAROLE_MEDIA_STATE_FINISHED )
     {
 	TRACE ("***Playback finished***");
-	parole_player_stopped (player);
 	parole_player_play_next (player);
     }
-    else
-    {
-	parole_player_stopped (player);
-    }  
 }
 
 void
@@ -522,6 +526,8 @@ parole_player_buffering_cb (ParoleGst *gst, const ParoleStream *stream, gint per
 void
 parole_player_destroy_cb (GtkObject *window, ParolePlayer *player)
 {
+    parole_window_busy_cursor (GTK_WIDGET (window)->window);
+    
     player->priv->exit = TRUE;
     parole_gst_null_state (PAROLE_GST (player->priv->gst));
 }
@@ -704,6 +710,15 @@ void
 parole_player_menu_add_cb (GtkWidget *widget, ParolePlayer *player)
 {
     parole_media_list_open (player->priv->list, TRUE);
+}
+
+void parole_player_open_preferences_cb	(GtkWidget *widget, ParolePlayer *player)
+{
+    ParoleConfDialog *dialog;
+    
+    dialog = parole_conf_dialog_new ();
+    
+    parole_conf_dialog_open (dialog, player->priv->window);
 }
 
 void

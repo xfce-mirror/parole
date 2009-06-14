@@ -1,5 +1,6 @@
 interfaces =					\
 	parole.ui				\
+	parole-settings.ui			\
 	playlist.ui				\
 	mediachooser.ui				\
 	openlocation.ui

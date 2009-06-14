@@ -18,18 +18,14 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_ENUM_GLIB_H
-#define __PAROLE_ENUM_GLIB_H
+#ifndef __PAROLE_VIS_H_
+#define __PAROLE_VIS_H_
 
-typedef enum
-{
-    PAROLE_MEDIA_STATE_PAUSED,
-    PAROLE_MEDIA_STATE_PLAYING,
-    PAROLE_MEDIA_STATE_STOPPED,
-    PAROLE_MEDIA_STATE_FINISHED
-    
-} ParoleMediaState;
+#include <gst/gst.h>
+#include <glib.h>
 
+GHashTable        *parole_vis_get_plugins			(void);
 
+//GstElement	*parole_vis_get_for_name		(void)
 
-#endif  /*__PAROLE_ENUM_GLIB_H*/
+#endif /* __PAROLE_VIS_H_ */

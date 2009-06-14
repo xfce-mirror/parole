@@ -29,48 +29,45 @@
 #include <gst/gst.h>
 #include <glib.h>
 
-#include "utils.h"
+#include "vis.h"
 
-void parole_window_busy_cursor		(GdkWindow *window)
+static gboolean
+parole_vis_filter (GstPluginFeature *feature, gpointer data)
 {
-    GdkCursor *cursor;
+    GstElementFactory *factory;
     
-    if ( G_UNLIKELY (window == NULL) )
-	return;
+    if ( !GST_IS_ELEMENT_FACTORY (feature) )
+	return FALSE;
 	
-    cursor = gdk_cursor_new (GDK_WATCH);
-    gdk_window_set_cursor (window, cursor);
-    gdk_cursor_unref (cursor);
-
-    gdk_flush ();
+    factory = GST_ELEMENT_FACTORY (feature);
+    
+    if ( !g_strrstr (gst_element_factory_get_klass (factory), "Visualization"))
+	return FALSE;
+	
+    return TRUE;
 }
 
-void parole_window_invisible_cursor		(GdkWindow *window)
+static void
+parole_vis_get_name (GstElementFactory *factory, GHashTable **hash)
 {
-    GdkBitmap *empty_bitmap;
-    GdkCursor *cursor;
-    GdkColor  color;
+    g_hash_table_insert (*hash, g_strdup (gst_element_factory_get_longname (factory)), factory);
+}
 
-    char cursor_bits[] = { 0x0 }; 
+GHashTable *parole_vis_get_plugins (void)
+{
+    GList *plugins = NULL;
+    GHashTable *hash;
     
-    if ( G_UNLIKELY (window == NULL) )
-	return;
-	
-    color.red = color.green = color.blue = 0;
-    color.pixel = 0;
-
-    empty_bitmap = gdk_bitmap_create_from_data (window,
-		   cursor_bits,
-		   1, 1);
-
-    cursor = gdk_cursor_new_from_pixmap (empty_bitmap,
-					 empty_bitmap,
-					 &color,
-					 &color, 0, 0);
-
-    gdk_window_set_cursor (window, cursor);
-
-    gdk_cursor_unref (cursor);
-
-    g_object_unref (empty_bitmap);
+    hash = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, NULL);
+    
+    plugins = gst_registry_feature_filter (gst_registry_get_default (),
+					   parole_vis_filter,
+					   FALSE,
+					   NULL);
+					   
+    g_list_foreach (plugins, (GFunc) parole_vis_get_name, &hash);
+    
+    gst_plugin_feature_list_free (plugins);
+    
+    return hash;
 }
