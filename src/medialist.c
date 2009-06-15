@@ -36,6 +36,8 @@
 #include "mediafile.h"
 #include "mediachooser.h"
 #include "builder.h"
+#include "filters.h"
+#include "utils.h"
 
 /*
  * Callbacks for GtkBuilder
@@ -54,7 +56,7 @@ void		parole_media_list_remove_clicked_cb 	(GtkButton *button,
 
 void		parole_media_list_row_activated_cb 	(GtkTreeView *view, 
 							 GtkTreePath *path,
-							 GtkTreeViewColumn *col, 
+							 GtkTreeViewColumn *col,
 							 ParoleMediaList *list);
 
 void		parole_media_list_cursor_changed_cb 	(GtkTreeView *view, 
@@ -62,6 +64,15 @@ void		parole_media_list_cursor_changed_cb 	(GtkTreeView *view,
 
 gboolean	parole_media_list_button_release_event  (GtkWidget *widget, 
 							 GdkEventButton *ev, 
+							 ParoleMediaList *list);
+							 
+void		parole_media_list_drag_data_received_cb (GtkWidget *widget,
+							 GdkDragContext *drag_context,
+							 gint x,
+							 gint y,
+							 GtkSelectionData *data,
+							 guint info,
+							 guint drag_time,
 							 ParoleMediaList *list);
 /*
  * End of GtkBuilder callbacks
@@ -85,6 +96,12 @@ enum
     MEDIA_ACTIVATED,
     MEDIA_CURSOR_CHANGED,
     LAST_SIGNAL
+};
+
+static GtkTargetEntry target_entry[] =
+{
+    { "STRING",        0, 0 },
+    { "text/uri-list", 0, 1 },
 };
 
 static guint signals [LAST_SIGNAL] = { 0 };
@@ -173,6 +190,49 @@ parole_media_list_open_location_internal (ParoleMediaList *list)
 		          G_CALLBACK (parole_media_list_file_opened_cb), list);
     
     gtk_widget_show_all (GTK_WIDGET (chooser));
+}
+
+void	parole_media_list_drag_data_received_cb (GtkWidget *widget,
+						 GdkDragContext *drag_context,
+						 gint x,
+						 gint y,
+						 GtkSelectionData *data,
+						 guint info,
+						 guint drag_time,
+						 ParoleMediaList *list)
+{
+    GtkFileFilter *filter;
+    ParoleMediaFile *file;
+    gchar **uri_list;
+    gchar *path;
+    guint i;
+    guint len;
+    gboolean ret = FALSE;
+    
+    uri_list = g_uri_list_extract_uris ((const gchar *)data->data);
+    filter = parole_get_supported_media_filter ();
+    g_object_ref_sink (filter);
+    
+    for ( i = 0; uri_list[i] != NULL; i++)
+    {
+	GSList *file_list = NULL;
+	path = g_filename_from_uri (uri_list[i], NULL, NULL);
+	parole_get_media_files (filter, path, &file_list);
+	
+	file_list = g_slist_sort (file_list, (GCompareFunc) thunar_file_compare_by_name);
+	
+	for ( len = 0; len < g_slist_length (file_list); len++)
+	{
+	    file = g_slist_nth_data (file_list, len);
+	    parole_media_list_add (list, file, FALSE);
+	    ret = TRUE;
+	}
+	g_slist_free (file_list);
+    }
+    
+    g_object_unref (filter);
+    
+    gtk_drag_finish (drag_context, ret, FALSE, drag_time);
 }
 
 void
@@ -394,7 +454,7 @@ parole_media_list_setup_view (ParoleMediaList *list)
     GtkListStore *list_store;
     GtkTreeViewColumn *col;
     GtkCellRenderer *renderer;
-    
+
     list_store = gtk_list_store_new (COL_NUMBERS, GDK_TYPE_PIXBUF, G_TYPE_STRING, G_TYPE_OBJECT);
 
     gtk_tree_view_set_model (GTK_TREE_VIEW (list->priv->view), GTK_TREE_MODEL(list_store));
@@ -414,6 +474,9 @@ parole_media_list_setup_view (ParoleMediaList *list)
     
     gtk_tree_view_append_column (GTK_TREE_VIEW (list->priv->view), col);
     gtk_tree_view_column_set_title (col, _("Media list"));
+
+    gtk_drag_dest_set (list->priv->view, GTK_DEST_DEFAULT_ALL, target_entry, G_N_ELEMENTS (target_entry),
+                       GDK_ACTION_COPY | GDK_ACTION_MOVE);
     
     list->priv->store = list_store;
 }

@@ -88,3 +88,61 @@ GtkFileFilter 		*parole_get_supported_media_filter	(void)
     
     return filter;
 }
+
+gboolean parole_file_filter (GtkFileFilter *filter, ParoleMediaFile *file)
+{
+    GtkFileFilterInfo filter_info;
+
+    gboolean ret;
+    
+    filter_info.display_name = parole_media_file_get_display_name (file);
+    filter_info.mime_type = parole_media_file_get_content_type (file);
+    
+    filter_info.contains = GTK_FILE_FILTER_DISPLAY_NAME | GTK_FILE_FILTER_MIME_TYPE;
+    
+    ret = gtk_file_filter_filter (filter, &filter_info);
+
+    return ret;
+}
+
+void parole_get_media_files (GtkFileFilter *filter, const gchar *path, GSList **list)
+{
+    GDir *dir;
+    const gchar *name;
+    ParoleMediaFile *file;
+    
+    if ( g_file_test (path, G_FILE_TEST_IS_REGULAR ) )
+    {
+	file = parole_media_file_new (path);
+	if ( parole_file_filter (filter, file) )
+	    *list = g_slist_append (*list, file);
+	else
+	    g_object_unref (file);
+    }
+    else if ( g_file_test (path, G_FILE_TEST_IS_DIR ) )
+    {
+	dir = g_dir_open (path, 0, NULL);
+    
+	if ( G_UNLIKELY (dir == NULL) )
+	    return;
+	
+	while ( (name = g_dir_read_name (dir)) )
+	{
+	    gchar *path_internal = g_strdup_printf ("%s/%s", path, name);
+	    if ( g_file_test (path, G_FILE_TEST_IS_DIR) )
+	    {
+		parole_get_media_files (filter, path_internal, list);
+	    }
+	    else if ( g_file_test (path, G_FILE_TEST_IS_REGULAR) )
+	    {
+		file = parole_media_file_new (path_internal);
+		if ( parole_file_filter (filter, file) )
+		    *list = g_slist_append (*list, file);
+		else
+		    g_object_unref (file);
+	    }
+	    g_free (path_internal);
+	}
+	g_dir_close (dir);
+    }
+}

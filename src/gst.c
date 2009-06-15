@@ -935,6 +935,8 @@ void parole_gst_seek (ParoleGst *gst, gdouble pos)
     gboolean seekable;
     gboolean ret;
 
+    TRACE ("Seeking");
+
     g_object_get (G_OBJECT (gst->priv->stream),
 		  "absolute-duration", &absolute_duration,
 		  "duration", &duration,

@@ -1,3 +1,8 @@
+2008-06-15: 20:00 Ali aliov@xfce.org
+	* Add support for drag and drop in the media list view, it can now
+	handle dropping of a single file or list of files or a folder 
+	contains media files/other subfolders with media files.
+
 2009-06-15: Ali aliov@xfce.org
 	* Clear the play pixbuf when finishing playing a list.
 	* Added mime type functions to generate mime types supported

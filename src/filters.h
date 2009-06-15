@@ -22,6 +22,7 @@
 #define __PAROLE_FILTERS_H
 
 #include <gtk/gtk.h>
+#include "mediafile.h"
 
 GtkFileFilter 		*parole_get_supported_audio_filter	(void);
 
@@ -29,5 +30,11 @@ GtkFileFilter 		*parole_get_supported_video_filter	(void);
 
 GtkFileFilter 		*parole_get_supported_media_filter	(void);
 
+gboolean		 parole_file_filter			(GtkFileFilter *filter,
+								 ParoleMediaFile *file);
+
+void			 parole_get_media_files			(GtkFileFilter *filter,
+								 const gchar *path,
+								 GSList **list);
 
 #endif /* PAROLE_FILTERS_H */

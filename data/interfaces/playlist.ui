@@ -20,6 +20,7 @@
             <signal name="cursor_changed" handler="parole_media_list_cursor_changed_cb"/>
             <signal name="row_activated" handler="parole_media_list_row_activated_cb"/>
             <signal name="button_release_event" handler="parole_media_list_button_release_event"/>
+            <signal name="drag_data_received" handler="parole_media_list_drag_data_received_cb"/>
           </object>
         </child>
       </object>

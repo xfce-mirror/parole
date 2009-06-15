@@ -24,8 +24,13 @@
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 
+#include "mediafile.h"
+
 void		parole_window_busy_cursor		(GdkWindow *window);
 
 void		parole_window_invisible_cursor		(GdkWindow *window);
 
+gint            thunar_file_compare_by_name 		(ParoleMediaFile *file_a,
+							 ParoleMediaFile *file_b,
+							 gboolean         case_sensitive);
 #endif /* __PAROLE_UTILS_ */

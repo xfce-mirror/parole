@@ -231,7 +231,11 @@ parole_player_media_cursor_changed_cb (ParoleMediaList *list, gboolean media_sel
 static void
 parole_player_media_progressed_cb (ParoleGst *gst, const ParoleStream *stream, gdouble value, ParolePlayer *player)
 {
-    if ( !player->priv->user_seeking && value > 0)
+#ifdef DEBUG
+    g_return_if_fail (value > 0);
+#endif
+    
+    if ( !player->priv->user_seeking && player->priv->state == PAROLE_MEDIA_STATE_PLAYING )
     {
 	parole_player_change_range_value (player, value);
     }
@@ -319,6 +323,8 @@ parole_player_paused (ParolePlayer *player)
     
     player->priv->state = PAROLE_MEDIA_STATE_PAUSED;
     
+    TRACE ("Player paused");
+    
     if ( !player->priv->buffering )
 	parole_statusbar_set_text (player->priv->status, _("Paused"));
 	
@@ -399,6 +405,7 @@ parole_player_play_next (ParolePlayer *player)
 	}
 	else
 	{
+	    TRACE ("No remaining media in the list");
 	    gtk_tree_row_reference_free (player->priv->row);
 	    player->priv->row = NULL;
 	}
