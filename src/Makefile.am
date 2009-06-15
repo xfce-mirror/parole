@@ -52,6 +52,7 @@ parole_media_player_SOURCES =			\
 
 parole_media_player_CFLAGS =			\
 	-I$(top_srcdir)				\
+	-I$(top_srcdir)/data/mime		\
 	-DLOCALEDIR=\"$(localedir)\"		\
 	-DG_LOG_DOMAIN=\"parole-media-player\"	\
 	-export-dynamic				\

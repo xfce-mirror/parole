@@ -375,13 +375,14 @@ parole_media_chooser_open (GtkWidget *widget, ParoleMediaChooser *chooser)
     if ( multiple == FALSE )
     {
 	filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (file_chooser));
-	parole_media_chooser_close (NULL, chooser);
+	
 	if ( G_LIKELY (filename != NULL ) )
 	{
 	    file = parole_media_file_new (filename);
 	    g_signal_emit (G_OBJECT (chooser), signals [MEDIA_FILE_OPENED], 0, file);
 	    g_free (filename);
 	}
+	parole_media_chooser_close (NULL, chooser);
     }
     else
     {
@@ -397,7 +398,7 @@ parole_media_chooser_open_location_cb (GtkButton *bt, ParoleMediaChooser *choose
     ParoleMediaFile *file;
     GtkWidget *entry;
     const gchar *location;
-    
+
     entry = GTK_WIDGET (g_object_get_data (G_OBJECT (chooser), "entry"));
     location = gtk_entry_get_text (GTK_ENTRY (entry));
     

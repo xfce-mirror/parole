@@ -1,5 +1,6 @@
-SUBDIRS = src 		\
-	  data  	\
+SUBDIRS =  		\
+	  data		\
+	  src  		\
 	  po
 
 EXTRA_DIST = \

@@ -1,7 +1,8 @@
 SUBDIRS = 		\
 	interfaces	\
 	pixmaps		\
-	icons
+	icons		\
+	mime
 
 #
 # .desktop file

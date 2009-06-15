@@ -30,10 +30,7 @@
 #include <glib.h>
 
 #include "filters.h"
-
-/*
- * Of course those are temporary filters.
- */
+#include "data/mime/parole-mime-types.h"
 
 /*
  * Supported Audio formats.
@@ -41,12 +38,14 @@
 GtkFileFilter 		*parole_get_supported_audio_filter	(void)
 {
     GtkFileFilter *filter;
+    guint i;
     
     filter = gtk_file_filter_new ();
     
-    gtk_file_filter_set_name (filter, _("Audio files"));
+    gtk_file_filter_set_name (filter, _("Supported audio"));
     
-    gtk_file_filter_add_mime_type (filter, "audio/*");
+    for ( i = 0; i < G_N_ELEMENTS (audio_mime_types); i++)
+	gtk_file_filter_add_mime_type (filter, audio_mime_types[i]);
     
     return filter;
 }
@@ -57,12 +56,14 @@ GtkFileFilter 		*parole_get_supported_audio_filter	(void)
 GtkFileFilter 		*parole_get_supported_video_filter	(void)
 {
     GtkFileFilter *filter;
+    guint i;
     
     filter = gtk_file_filter_new ();
     
-    gtk_file_filter_set_name (filter, _("Video files"));
+    gtk_file_filter_set_name (filter, _("Supported video"));
     
-    gtk_file_filter_add_mime_type (filter, "video/*");
+    for ( i = 0; i < G_N_ELEMENTS (video_mime_types); i++)
+	gtk_file_filter_add_mime_type (filter, video_mime_types[i]);
     
     return filter;
 }
@@ -73,12 +74,17 @@ GtkFileFilter 		*parole_get_supported_video_filter	(void)
 GtkFileFilter 		*parole_get_supported_media_filter	(void)
 {
     GtkFileFilter *filter;
+    guint i;
+    
     filter = gtk_file_filter_new ();
     
-    gtk_file_filter_set_name (filter, _("Audio and video"));
+    gtk_file_filter_set_name (filter, _("Supported audio and video"));
     
-    gtk_file_filter_add_mime_type (filter, "video/*");
-    gtk_file_filter_add_mime_type (filter, "audio/*");
+    for ( i = 0; i < G_N_ELEMENTS (audio_mime_types); i++)
+	gtk_file_filter_add_mime_type (filter, audio_mime_types[i]);
+	
+    for ( i = 0; i < G_N_ELEMENTS (video_mime_types); i++)
+	gtk_file_filter_add_mime_type (filter, video_mime_types[i]);
     
     return filter;
 }

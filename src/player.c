@@ -389,6 +389,7 @@ parole_player_play_next (ParolePlayer *player)
     
     if ( player->priv->row )
     {
+	parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, NULL);
 	row = parole_media_list_get_next_row (player->priv->list, player->priv->row);
 	
 	if ( row )

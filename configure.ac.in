@@ -116,11 +116,12 @@ XDT_FEATURE_DEBUG
 
 AC_OUTPUT([
 Makefile
-src/Makefile
 data/Makefile
 data/pixmaps/Makefile
 data/interfaces/Makefile
 data/icons/Makefile
+data/mime/Makefile
+src/Makefile
 po/Makefile.in
 ])
 
