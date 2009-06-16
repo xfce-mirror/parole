@@ -35,7 +35,6 @@
 #include "player.h"
 #include "builder.h"
 #include "gst.h"
-#include "medialist.h"
 #include "mediachooser.h"
 #include "mediafile.h"
 #include "sidebar.h"
@@ -930,4 +929,9 @@ parole_player_new (void)
     ParolePlayer *player = NULL;
     player = g_object_new (PAROLE_TYPE_PLAYER, NULL);
     return player;
+}
+
+ParoleMediaList	*parole_player_get_media_list (ParolePlayer *player)
+{
+    return player->priv->list;
 }

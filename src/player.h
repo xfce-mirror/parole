@@ -22,6 +22,7 @@
 #define __PAROLE_PLAYER_H
 
 #include <glib-object.h>
+#include "medialist.h"
 
 G_BEGIN_DECLS
 
@@ -46,6 +47,8 @@ typedef struct
 
 GType        			 parole_player_get_type        (void) G_GNUC_CONST;
 ParolePlayer       		*parole_player_new             (void);
+
+ParoleMediaList			*parole_player_get_media_list  (ParolePlayer *player);
 
 G_END_DECLS
 

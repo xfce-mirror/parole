@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-15 12:41+0200\n"
+"POT-Creation-Date: 2009-06-16 12:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,8 +16,17 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../data/parole-media-player.desktop.in.h:1
+#: ../data/desktop/parole.desktop.in.in.h:1
 msgid "Parole Media Player"
+msgstr ""
+
+#: ../src/main.c:83
+msgid "Media to play"
+msgstr ""
+
+#: ../src/main.c:99
+#, c-format
+msgid "Type '%s --help' for usage."
 msgstr ""
 
 #: ../src/gst.c:650
@@ -38,47 +47,47 @@ msgstr ""
 msgid "Check your Parole installation"
 msgstr ""
 
-#: ../src/mediachooser.c:436
+#: ../src/mediachooser.c:205
 msgid "Add media files"
 msgstr ""
 
-#: ../src/mediachooser.c:436
+#: ../src/mediachooser.c:205
 msgid "Open media file"
 msgstr ""
 
-#: ../src/mediachooser.c:453
+#: ../src/mediachooser.c:222
 msgid "Add"
 msgstr ""
 
-#: ../src/mediachooser.c:453
+#: ../src/mediachooser.c:222
 msgid "Open"
 msgstr ""
 
-#: ../src/medialist.c:416
+#: ../src/medialist.c:508
 msgid "Media list"
 msgstr ""
 
-#: ../src/player.c:168
+#: ../src/player.c:167
 msgid "Hide playlist"
 msgstr ""
 
-#: ../src/player.c:177
+#: ../src/player.c:176
 msgid "Show playlist"
 msgstr ""
 
-#: ../src/player.c:306 ../src/statusbar.c:125 ../src/statusbar.c:127
+#: ../src/player.c:309 ../src/statusbar.c:125 ../src/statusbar.c:127
 msgid "Playing"
 msgstr ""
 
-#: ../src/player.c:307
+#: ../src/player.c:310
 msgid "Media stream is not seekable"
 msgstr ""
 
-#: ../src/player.c:323 ../src/player.c:336
+#: ../src/player.c:328 ../src/player.c:341
 msgid "Paused"
 msgstr ""
 
-#: ../src/player.c:354
+#: ../src/player.c:359
 msgid "Stopped"
 msgstr ""
 

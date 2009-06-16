@@ -3,7 +3,8 @@ data/interfaces/mediachooser.ui
 data/interfaces/playlist.ui
 data/interfaces/openlocation.ui
 data/interfaces/parole-settings.ui
-data/parole-media-player.desktop.in
+data/desktop/parole.desktop.in.in
+src/main.c
 src/gst.c
 src/builder.c
 src/mediachooser.c

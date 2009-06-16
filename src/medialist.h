@@ -77,6 +77,10 @@ void				 parole_media_list_open		    (ParoleMediaList *list,
 								     gboolean multiple);
 
 void			         parole_media_list_open_location    (ParoleMediaList *list);
+
+void				 parole_media_list_add_files        (ParoleMediaList *list,
+								     gchar **filenames);
+
 G_END_DECLS
 
 #endif /* __PAROLE_MEDIA_LIST_H */

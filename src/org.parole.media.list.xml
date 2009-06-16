@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<node name="/">
+    <interface name="org.Parole.Media.Player">
+        <annotation name="org.freedesktop.DBus.GLib.CSymbol"
+                    value="parole_media_list_dbus"/>
+        <annotation name="org.freedesktop.DBus.GLib.ClientCSymbol"
+                    value="parole_media_list_dbus_client"/>
+
+    <method name="AddFiles">
+      <arg type="as" name="files" direction="in"/>
+    </method>
+
+    </interface>
+</node>

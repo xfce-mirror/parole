@@ -38,6 +38,10 @@
 #include "builder.h"
 #include "filters.h"
 #include "utils.h"
+#include "dbus.h"
+
+static void 	parole_media_list_dbus_class_init (ParoleMediaListClass *klass);
+static void 	parole_media_list_dbus_init 	  (ParoleMediaList      *list);
 
 /*
  * Callbacks for GtkBuilder
@@ -192,6 +196,42 @@ parole_media_list_open_location_internal (ParoleMediaList *list)
     gtk_widget_show_all (GTK_WIDGET (chooser));
 }
 
+static gboolean
+parole_media_list_add_by_path (ParoleMediaList *list, const gchar *path)
+{
+    GSList *file_list = NULL;
+    GtkFileFilter *filter;
+    ParoleMediaFile *file;
+    guint len;
+    gboolean ret = FALSE;
+    
+    filter = parole_get_supported_media_filter ();
+    g_object_ref_sink (filter);
+    
+    parole_get_media_files (filter, path, &file_list);
+    file_list = g_slist_sort (file_list, (GCompareFunc) thunar_file_compare_by_name);
+    
+    for ( len = 0; len < g_slist_length (file_list); len++)
+    {
+	file = g_slist_nth_data (file_list, len);
+	parole_media_list_add (list, file, FALSE);
+	ret = TRUE;
+    }
+    
+    g_object_unref (filter);
+    g_slist_free (file_list);
+    return ret;
+}
+
+static void
+parole_media_list_add_by_uri (ParoleMediaList *list, const gchar *uri)
+{
+    ParoleMediaFile *file;
+    TRACE ("uri %s", uri);
+    file = parole_media_file_new (uri);
+    parole_media_list_add (list, file, FALSE);
+}
+
 void	parole_media_list_drag_data_received_cb (GtkWidget *widget,
 						 GdkDragContext *drag_context,
 						 gint x,
@@ -201,38 +241,28 @@ void	parole_media_list_drag_data_received_cb (GtkWidget *widget,
 						 guint drag_time,
 						 ParoleMediaList *list)
 {
-    GtkFileFilter *filter;
-    ParoleMediaFile *file;
     gchar **uri_list;
     gchar *path;
     guint i;
-    guint len;
-    gboolean ret = FALSE;
+    guint added = 0;
+    
+    parole_window_busy_cursor (GTK_WIDGET (list)->window);
     
     uri_list = g_uri_list_extract_uris ((const gchar *)data->data);
-    filter = parole_get_supported_media_filter ();
-    g_object_ref_sink (filter);
     
     for ( i = 0; uri_list[i] != NULL; i++)
     {
-	GSList *file_list = NULL;
 	path = g_filename_from_uri (uri_list[i], NULL, NULL);
-	parole_get_media_files (filter, path, &file_list);
-	
-	file_list = g_slist_sort (file_list, (GCompareFunc) thunar_file_compare_by_name);
-	
-	for ( len = 0; len < g_slist_length (file_list); len++)
-	{
-	    file = g_slist_nth_data (file_list, len);
-	    parole_media_list_add (list, file, FALSE);
-	    ret = TRUE;
-	}
-	g_slist_free (file_list);
+	if ( parole_media_list_add_by_path (list, path) )
+	    added++;
+	    
+	g_free (path);
     }
-    
-    g_object_unref (filter);
-    
-    gtk_drag_finish (drag_context, ret, FALSE, drag_time);
+
+    g_strfreev (uri_list);
+
+    gdk_window_set_cursor (GTK_WIDGET (list)->window, NULL);
+    gtk_drag_finish (drag_context, added == i ? TRUE : FALSE, FALSE, drag_time);
 }
 
 void
@@ -446,6 +476,8 @@ parole_media_list_class_init (ParoleMediaListClass *klass)
                       G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
 
     g_type_class_add_private (klass, sizeof (ParoleMediaListPrivate));
+    
+    parole_media_list_dbus_class_init (klass);
 }
 
 static void
@@ -503,6 +535,8 @@ parole_media_list_init (ParoleMediaList *list)
     g_object_unref (builder);
     
     gtk_widget_show_all (GTK_WIDGET (list));
+    
+    parole_media_list_dbus_init (list);
 }
 
 GtkWidget *
@@ -590,4 +624,53 @@ void parole_media_list_open (ParoleMediaList *list, gboolean multiple)
 void parole_media_list_open_location (ParoleMediaList *list)
 {
     parole_media_list_open_location_internal (list);
+}
+
+void parole_media_list_add_files (ParoleMediaList *list, gchar **filenames)
+{
+    guint i;
+    
+    for ( i = 0; filenames && filenames[i] != NULL; i++)
+    {
+	TRACE ("Adding file %s\n", filenames [i]);
+	if ( g_str_has_prefix (filenames[i], "file:") )
+	    parole_media_list_add_by_uri (list, filenames[i]);
+	else
+	    parole_media_list_add_by_path (list, filenames[i]);
+    }
+}
+
+static gboolean	 parole_media_list_dbus_add_files (ParoleMediaList *list,
+					           gchar **in_files,
+						   GError **error);
+
+#include "org.parole.media.list.h"
+
+/*
+ * DBus server implementation
+ */
+static void 
+parole_media_list_dbus_class_init (ParoleMediaListClass *klass)
+{
+    dbus_g_object_type_install_info (G_TYPE_FROM_CLASS (klass),
+				     &dbus_glib_parole_media_list_object_info);
+}
+
+static void
+parole_media_list_dbus_init (ParoleMediaList *list)
+{
+    dbus_g_connection_register_g_object (parole_g_session_bus_get (),
+					 PAROLE_DBUS_PATH,
+					 G_OBJECT (list));
+}
+
+static gboolean	 parole_media_list_dbus_add_files (ParoleMediaList *list,
+						   gchar **in_files,
+						   GError **error)
+{
+    TRACE ("Adding files for DBus request");
+    
+    parole_media_list_add_files (list, in_files);
+    
+    return TRUE;
 }

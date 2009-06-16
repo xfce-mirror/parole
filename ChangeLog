@@ -1,4 +1,12 @@
-2008-06-15: 20:00 Ali aliov@xfce.org
+2009-06-16: 11:30 Ali aliov@xfce.org
+	* Show busy cursor when dropping files in the media list view.
+	* Fix the date in previous commit (2009 instead of 2008).
+	* Added command line to add media files to list.
+	* DBus interface for adding media files from a file manager
+	if Parole is already running.
+	* Add mime type handled by Parole in the desktop file.
+
+2009-06-15: 20:00 Ali aliov@xfce.org
 	* Add support for drag and drop in the media list view, it can now
 	handle dropping of a single file or list of files or a folder 
 	contains media files/other subfolders with media files.

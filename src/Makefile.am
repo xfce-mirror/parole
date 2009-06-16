@@ -4,7 +4,8 @@ GENERATED_FILES =				\
 	gmarshal.c				\
 	gmarshal.h				\
 	enum-gtypes.c				\
-	enum-gtypes.h
+	enum-gtypes.h				\
+	org.parole.media.list.h
 
 MOD_FLAGS = 					\
 	-export_dynamic 			\
@@ -47,6 +48,8 @@ parole_media_player_SOURCES =			\
 	rc-utils.h				\
 	utils.c					\
 	utils.h					\
+	dbus.c					\
+	dbus.h					\
 	debug.c					\
 	debug.h
 
@@ -89,10 +92,7 @@ parole_glib_header =				\
 if MAINTAINER_MODE
 
 BUILT_SOURCES = 				\
-	gmarshal.c				\
-	gmarshal.h				\
-	enum-gtypes.c				\
-	enum-gtypes.h
+	$(GENERATED_FILES)
 
 gmarshal.c: gmarshal.list
 	echo "#include \"gmarshal.h\"" > $@ && \
@@ -122,6 +122,9 @@ enum-gtypes.c: enum-gtypes.h
                 enum-glib.h ) > xgen \
         && cp xgen enum-gtypes.c  \
         && rm -f xgen xgen~
+
+org.parole.media.list.h: $(srcdir)/org.parole.media.list.xml
+	dbus-binding-tool --mode=glib-server --prefix=parole_media_list $< >$@
 
 endif
 
