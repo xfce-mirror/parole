@@ -63,8 +63,6 @@ struct ParoleGstPrivate
     
     ParoleStream *stream;
     gulong	  tick_id;
-    gboolean      seeking;
-    
     GdkPixbuf    *logo;
     GTimer	 *hidecursor_timer;
     
@@ -278,15 +276,20 @@ static gboolean
 parole_gst_expose_event (GtkWidget *widget, GdkEventExpose *ev)
 {
     ParoleGst *gst;
+    gboolean playing_video;
 
     if ( ev && ev->count > 0 )
 	return TRUE;
 
     gst = PAROLE_GST (widget);
 
+    g_object_get (G_OBJECT (gst->priv->stream),
+		  "has-video", &playing_video,
+		  NULL);
+
     parole_gst_set_x_overlay (gst);
 
-    if ( gst->priv->state < GST_STATE_PAUSED || !gst->priv->with_vis)
+    if ( (gst->priv->state < GST_STATE_PAUSED || !gst->priv->with_vis) && !playing_video)
 	parole_gst_draw_logo (gst);
     else 
     {

@@ -1,3 +1,7 @@
+2009-06-18: 18:00 Ali aliov@xfce.org
+	* Make sure to don't draw the logo on expose event
+	when playing a movie stream.
+
 2009-06-18: 12:00 Ali aliov@xfce.org
 	* Fix uri command line handling.
 	* Automatically load subtitle.
