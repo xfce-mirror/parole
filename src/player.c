@@ -71,6 +71,10 @@ void            parole_player_stop_clicked              (GtkButton *button,
 void            parole_player_destroy_cb                (GtkObject *window, 
 							 ParolePlayer *player);
 
+gboolean	parole_player_delete_event_cb		(GtkWidget *widget, 
+							 GdkEvent *ev,
+							 ParolePlayer *player);
+
 void		parole_player_show_hide_playlist	(GtkButton *button,
 							 ParolePlayer *player);
 
@@ -525,18 +529,25 @@ parole_player_buffering_cb (ParoleGst *gst, const ParoleStream *stream, gint per
     {
 	player->priv->buffering = TRUE;
 	parole_statusbar_set_buffering (player->priv->status, percentage);
+	
 	if ( player->priv->state == PAROLE_MEDIA_STATE_PLAYING )
 	    parole_gst_pause (PAROLE_GST (player->priv->gst));
     }
 }
 
-void
-parole_player_destroy_cb (GtkObject *window, ParolePlayer *player)
+gboolean parole_player_delete_event_cb (GtkWidget *widget, GdkEvent *ev, ParolePlayer *player)
 {
-    parole_window_busy_cursor (GTK_WIDGET (window)->window);
+    parole_window_busy_cursor (GTK_WIDGET (player->priv->window)->window);
     
     player->priv->exit = TRUE;
     parole_gst_null_state (PAROLE_GST (player->priv->gst));
+    
+    return TRUE;
+}
+
+void
+parole_player_destroy_cb (GtkObject *window, ParolePlayer *player)
+{
 }
 
 static void
@@ -731,7 +742,7 @@ void parole_player_open_preferences_cb	(GtkWidget *widget, ParolePlayer *player)
 void
 parole_player_menu_exit_cb (GtkWidget *widget, ParolePlayer *player)
 {
-    parole_player_destroy_cb (NULL, player);
+    parole_player_delete_event_cb (NULL, NULL, player);
 }
 
 static const gchar *

@@ -28,6 +28,7 @@
 
 #include <gtk/gtk.h>
 #include <glib.h>
+#include <gio/gio.h>
 
 #include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
@@ -129,6 +130,7 @@ parole_media_list_add (ParoleMediaList *list, ParoleMediaFile *file, gboolean em
 			NAME_COL, parole_media_file_get_display_name (file),
 			DATA_COL, file,
 			-1);
+    
     if ( emit )
     {
 	path = gtk_tree_model_get_path (GTK_TREE_MODEL (list_store), &iter);

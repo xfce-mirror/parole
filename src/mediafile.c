@@ -60,7 +60,7 @@ parole_media_file_finalize (GObject *object)
 
     file = PAROLE_MEDIA_FILE (object);
     
-    TRACE ("Media file finalized %s", file->priv->display_name);
+    TRACE ("file finalized %s", file->priv->display_name);
     
     if ( file->priv->path )
 	g_free (file->priv->path);
@@ -131,7 +131,7 @@ parole_media_file_constructed (GObject *object)
 			      0,
 			      NULL,
 			      &error);
-    
+
     if ( error )
     {
 #ifdef DEBUG
@@ -141,7 +141,7 @@ parole_media_file_constructed (GObject *object)
 	file->priv->display_name = g_file_get_basename (gfile);
 	goto out;
     }
-    
+
     file->priv->display_name = g_strdup (g_file_info_get_display_name (info));
     file->priv->mime_type = g_strdup (g_file_info_get_content_type (info));
     

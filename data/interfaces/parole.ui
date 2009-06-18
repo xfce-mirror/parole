@@ -8,6 +8,7 @@
     <property name="default_height">440</property>
     <signal name="destroy" handler="parole_player_destroy_cb"/>
     <signal name="key_press_event" handler="parole_player_key_press"/>
+    <signal name="delete_event" handler="parole_player_delete_event_cb"/>
     <child>
       <object class="GtkVBox" id="vbox1">
         <property name="visible">True</property>

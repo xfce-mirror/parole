@@ -75,7 +75,7 @@ gboolean parole_rc_read_entry_bool (const gchar *property, gboolean fallback)
     XfceRc *rc = open_resource_file (TRUE);
     
     if ( rc )
-	return xfce_rc_read_bool_entry (rc, property, TRUE);
+	return xfce_rc_read_bool_entry (rc, property, fallback);
 	
     return fallback;
 }
@@ -95,7 +95,7 @@ const gchar *parole_rc_read_entry_string (const gchar *property, const gchar *fa
     XfceRc *rc = open_resource_file (TRUE);
     
     if ( rc )
-        return xfce_rc_read_entry (rc, property, NULL);
+        return xfce_rc_read_entry (rc, property, fallback);
 	
     return fallback;
 }

@@ -29,7 +29,20 @@
 #include <gst/gst.h>
 #include <glib.h>
 
+#include <libxfce4util/libxfce4util.h>
+
 #include "utils.h"
+
+/* List from xine-lib's demux_sputext.c */
+static const char subtitle_ext[][4] = {
+	"asc",
+	"txt",
+	"sub",
+	"srt",
+	"smi",
+	"ssa",
+	"ass"
+};
 
 void parole_window_busy_cursor		(GdkWindow *window)
 {
@@ -243,4 +256,93 @@ thunar_file_compare_by_name (ParoleMediaFile *file_a,
 	return (g_unichar_tolower (ac) > g_unichar_tolower (bc)) ? 1 : -1;
     else
 	return (ac > bc) ? 1 : -1;
+}
+
+static gchar *
+parole_get_name_without_extension (const gchar *name)
+{
+    guint len, suffix;
+    gchar *ret;
+    
+    len = strlen (name);
+    
+    for ( suffix = len -1; suffix > 0;  suffix--)
+    {
+	if ( name [suffix] == '.' )
+	    break;
+    }
+    
+    ret = g_strndup (name, sizeof (char) * (suffix));
+    return ret;
+}
+
+static gchar *
+parole_get_subtitle_in_dir (const gchar *dir_path, const gchar *file)
+{
+    gchar *sub_path = NULL;
+    gchar *file_no_ext;
+    guint i;
+    
+    file_no_ext = parole_get_name_without_extension (file);
+    
+    for ( i = 0; i < G_N_ELEMENTS (subtitle_ext); i++)
+    {
+	sub_path = g_strdup_printf ("%s/%s.%s", dir_path, file_no_ext, subtitle_ext[i]);
+	
+	if ( g_file_test (sub_path, G_FILE_TEST_EXISTS | G_FILE_TEST_IS_REGULAR ) )
+	    break;
+
+	g_free (sub_path);
+	sub_path = NULL;
+    }
+    g_free (file_no_ext);
+    
+    return sub_path;
+}
+
+gchar *parole_get_subtitle_path (const gchar *uri)
+{
+    GFile *file, *parent;
+    GFileInfo *info;
+    GError *error = NULL;
+    gchar *path;
+    gchar *file_name;
+    gchar *ret = NULL;
+    
+    file = g_file_new_for_commandline_arg (uri);
+    parent = g_file_get_parent (file);
+    
+    if ( !parent )
+    {
+	g_object_unref (file);
+	return NULL;
+    }
+    
+    info = g_file_query_info (file, 
+			      "standard::*,",
+			      0,
+			      NULL,
+			      &error);
+    
+    if ( error )
+    {
+	g_warning ("%s: \n", error->message);
+	g_error_free (error);
+	return NULL;
+    }
+    
+    file_name = g_strdup (g_file_info_get_display_name (info));
+    
+    path = g_file_get_path (parent);
+    
+    ret = parole_get_subtitle_in_dir (path, file_name);
+
+    g_object_unref (file);
+    g_object_unref (parent);
+    g_object_unref (info);
+    
+    g_free (file_name);
+    g_free (path);
+    
+    return ret;
 }

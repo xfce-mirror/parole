@@ -35,15 +35,22 @@
  * GtkBuilder Callbacks
  */
 
-void		parole_conf_dialog_response_cb		 (GtkDialog *dialog, 
-							  gint response_id, 
-							  ParoleConfDialog *self);
+void		parole_conf_dialog_response_cb		 	(GtkDialog *dialog, 
+								 gint response_id, 
+								 ParoleConfDialog *self);
 							  
-void		parole_conf_dialog_enable_vis_changed_cb (GtkToggleButton *widget,
-							  ParoleConfDialog *self);
+void		parole_conf_dialog_enable_vis_changed_cb 	(GtkToggleButton *widget,
+								 ParoleConfDialog *self);
 
-void		parole_conf_dialog_vis_plugin_changed_cb (GtkComboBox *widget,
-							  ParoleConfDialog *self);
+void		parole_conf_dialog_vis_plugin_changed_cb 	(GtkComboBox *widget,
+								 ParoleConfDialog *self);
+
+void		parole_conf_dialog_font_set_cb		 	(GtkFontButton *button,
+								 ParoleConfDialog *self);
+
+void		parole_conf_dialog_enable_subtitle_changed_cb 	(GtkToggleButton *widget,
+							         ParoleConfDialog *self);
+							       
 /*
  * End of GtkBuilder callbacks
  */
@@ -60,6 +67,8 @@ struct ParoleConfDialogPrivate
     
     GtkWidget  *vis_combox;
     GtkWidget  *toggle_vis;
+    GtkWidget  *toggle_subtitle;
+    GtkWidget  *font_button;
 };
 
 G_DEFINE_TYPE (ParoleConfDialog, parole_conf_dialog, G_TYPE_OBJECT)
@@ -113,6 +122,27 @@ void parole_conf_dialog_vis_plugin_changed_cb (GtkComboBox *widget,  ParoleConfD
     }
     
     g_free (active);
+}
+
+void parole_conf_dialog_font_set_cb (GtkFontButton *button, ParoleConfDialog *self)
+{
+    g_object_set (G_OBJECT (self->priv->conf), 
+		  "subtitle-font", gtk_font_button_get_font_name (button),
+		  NULL);
+}
+
+void parole_conf_dialog_enable_subtitle_changed_cb (GtkToggleButton *widget, ParoleConfDialog *self)
+{
+    gboolean active;
+    
+    active = gtk_toggle_button_get_active (widget);
+    
+    g_object_set (G_OBJECT (self->priv->conf),
+		  "enable-subtitle", active,
+		  NULL);
+    
+    gtk_widget_set_sensitive (self->priv->font_button, active);
+    
 }
 
 static void
@@ -193,19 +223,29 @@ parole_conf_dialog_set_defaults (ParoleConfDialog *self)
 {
     GtkTreeModel *model;
     gboolean vis_enabled;
-        
+    gboolean subtitle;
+    gchar *subtitle_font;
+    
     g_object_get (G_OBJECT (self->priv->conf),
 		  "vis-enabled", &vis_enabled,
+		  "enable-subtitle", &subtitle,
+		  "subtitle-font", &subtitle_font,
 		  NULL);
 
     gtk_widget_set_sensitive (self->priv->vis_combox, vis_enabled);
+    gtk_widget_set_sensitive (self->priv->font_button, subtitle);
+    
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (self->priv->toggle_vis), vis_enabled);
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (self->priv->toggle_subtitle), subtitle);
     
     model = gtk_combo_box_get_model (GTK_COMBO_BOX (self->priv->vis_combox));
 
     gtk_tree_model_foreach (model, 
 			    (GtkTreeModelForeachFunc) parole_conf_dialog_set_default_vis_plugin,
 			    self);
+			    
+    gtk_font_button_set_font_name (GTK_FONT_BUTTON (self->priv->font_button), subtitle_font);
+    g_free (subtitle_font);
 }
 
 ParoleConfDialog *
@@ -226,7 +266,10 @@ void parole_conf_dialog_open (ParoleConfDialog *self, GtkWidget *parent)
     
     dialog = GTK_WIDGET (gtk_builder_get_object (builder, "settings-dialog"));
     combox = GTK_WIDGET (gtk_builder_get_object (builder, "vis-combobox"));
+    
     self->priv->toggle_vis = GTK_WIDGET (gtk_builder_get_object (builder, "enable-vis"));
+    self->priv->toggle_subtitle = GTK_WIDGET (gtk_builder_get_object (builder, "enable-subtitle"));
+    self->priv->font_button = GTK_WIDGET (gtk_builder_get_object (builder, "fontbutton"));
     
     g_hash_table_foreach (self->priv->vis_plugins, (GHFunc) parole_conf_dialog_add_vis_plugins, combox);
     

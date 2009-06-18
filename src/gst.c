@@ -39,6 +39,7 @@
 #include "gst.h"
 #include "utils.h"
 #include "conf.h"
+#include "utils.h"
 #include "enum-gtypes.h"
 #include "gmarshal.h"
 
@@ -397,6 +398,67 @@ parole_gst_query_duration (ParoleGst *gst)
 }
 
 static void
+parole_gst_set_subtitle_font (ParoleGst *gst)
+{
+    gchar *font;
+    
+    g_object_get (G_OBJECT (gst->priv->conf),
+		  "subtitle-font", &font,
+		  NULL);
+    
+    TRACE ("Setting subtitle font %s\n", font);
+    
+    g_object_set (G_OBJECT (gst->priv->playbin),
+		  "subtitle-font-desc", font,
+		  NULL);
+    g_free (font);
+}
+
+static void
+parole_gst_set_subtitle_encoding (ParoleGst *gst)
+{
+    g_object_set (G_OBJECT (gst->priv->playbin), 
+                  "subtitle-encoding", "UTF-8",
+		  NULL);
+}
+
+static void
+parole_gst_load_subtitle (ParoleGst *gst)
+{
+    ParoleMediaFile *file;
+    const gchar *uri;
+    gchar *sub;
+    gchar *sub_uri;
+    gboolean sub_enabled;
+    
+    g_object_get (G_OBJECT (gst->priv->conf),
+		  "enable-subtitle", &sub_enabled,
+		  NULL);
+		  
+    if ( !sub_enabled )
+	return;
+	
+    g_object_get (G_OBJECT (gst->priv->stream),
+		  "media-file", &file,
+		  NULL);
+	
+    uri = parole_media_file_get_uri (file);
+    sub = parole_get_subtitle_path (uri);
+
+    if ( sub )
+    {
+	TRACE ("Found subtitle with path %s", sub);
+	sub_uri = g_filename_to_uri (sub, NULL, NULL);
+	g_object_set (G_OBJECT (gst->priv->playbin),
+		      "suburi", sub_uri,
+		      NULL);
+	g_free (sub);
+	g_free (sub_uri);
+    }
+    g_object_unref (file);
+}
+
+static void
 parole_gst_query_info (ParoleGst *gst)
 {
     const GList *info = NULL;
@@ -404,7 +466,7 @@ parole_gst_query_info (ParoleGst *gst)
     GParamSpec *pspec;
     GEnumValue *val;
     gint type;
-    
+    gboolean has_video = FALSE;
     
     g_object_get (G_OBJECT (gst->priv->playbin),
 		  "stream-info", &info,
@@ -428,6 +490,7 @@ parole_gst_query_info (ParoleGst *gst)
 	    g_object_set (G_OBJECT (gst->priv->stream),
 			  "has-video", TRUE,
 			  NULL);
+	    has_video = TRUE;
 	}
 	if ( g_ascii_strcasecmp (val->value_name, "audio") == 0 ||
 	     g_ascii_strcasecmp (val->value_nick, "audio") == 0)
@@ -438,6 +501,9 @@ parole_gst_query_info (ParoleGst *gst)
 			  NULL);
 	}
     }
+    
+    if ( !has_video )
+	gtk_widget_queue_draw (GTK_WIDGET (gst));
 }
 
 static void
@@ -489,9 +555,10 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
     switch (gst->priv->state)
     {
 	case GST_STATE_PLAYING:
-	    parole_gst_query_capabilities (gst);
 	    parole_gst_query_duration (gst);
+	    parole_gst_query_capabilities (gst);
 	    parole_gst_query_info (gst);
+	    
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
 			   gst->priv->stream, PAROLE_MEDIA_STATE_PLAYING);
 	    break;
@@ -675,10 +742,12 @@ parole_gst_play_file_internal (ParoleGst *gst)
     
     g_object_set (G_OBJECT (gst->priv->playbin),
 		  "uri", parole_media_file_get_uri (file),
+		  "suburi", NULL,
 		  NULL);
-		  
+
+    parole_gst_load_subtitle (gst);
+	    
     parole_gst_change_state (gst, GST_STATE_PLAYING);
-    
     g_object_unref (file);
 }
 
@@ -729,6 +798,9 @@ parole_gst_construct (GObject *object)
     g_object_unref (bus);
     
     parole_gst_load_logo (gst);
+    
+    parole_gst_set_subtitle_encoding (gst);
+    parole_gst_set_subtitle_font (gst);
 }
 
 static gboolean
@@ -755,6 +827,8 @@ parole_gst_conf_notify_cb (GObject *object, GParamSpec *spec, ParoleGst *gst)
     {
 	gst->priv->update = TRUE;
     }
+    else if ( !g_strcmp0 ("subtitle-font", spec->name ) && gst->priv->state >= GST_STATE_PAUSED )
+	parole_gst_set_subtitle_font (gst);
 }
 
 static void

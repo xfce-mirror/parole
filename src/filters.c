@@ -129,11 +129,11 @@ void parole_get_media_files (GtkFileFilter *filter, const gchar *path, GSList **
 	while ( (name = g_dir_read_name (dir)) )
 	{
 	    gchar *path_internal = g_strdup_printf ("%s/%s", path, name);
-	    if ( g_file_test (path, G_FILE_TEST_IS_DIR) )
+	    if ( g_file_test (path_internal, G_FILE_TEST_IS_DIR) )
 	    {
 		parole_get_media_files (filter, path_internal, list);
 	    }
-	    else if ( g_file_test (path, G_FILE_TEST_IS_REGULAR) )
+	    else if ( g_file_test (path_internal, G_FILE_TEST_IS_REGULAR) )
 	    {
 		file = parole_media_file_new (path_internal);
 		if ( parole_file_filter (filter, file) )
