@@ -110,7 +110,7 @@ void parole_get_media_files (GtkFileFilter *filter, const gchar *path, GSList **
     GDir *dir;
     const gchar *name;
     ParoleMediaFile *file;
-    
+    TRACE ("path %s", path);
     if ( g_file_test (path, G_FILE_TEST_IS_REGULAR ) )
     {
 	file = parole_media_file_new (path);

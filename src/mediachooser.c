@@ -91,6 +91,7 @@ media_chooser_folder_changed_cb (GtkWidget *widget, gpointer data)
 static void
 parole_media_chooser_sort_and_emit (ParoleMediaChooser *chooser, GSList **list)
 {
+    TRACE ("Start");
     *list = g_slist_sort (*list, (GCompareFunc) thunar_file_compare_by_name);
     
     g_signal_emit (G_OBJECT (chooser), signals [MEDIA_FILES_OPENED], 0, *list);
@@ -100,7 +101,6 @@ static void
 parole_media_chooser_add_many (ParoleMediaChooser *chooser, GtkWidget *file_chooser)
 {
     GSList *files;
-    GSList *media_files = NULL;
     GtkFileFilter *filter;
     gchar *file;
     guint    i;
@@ -116,6 +116,7 @@ parole_media_chooser_add_many (ParoleMediaChooser *chooser, GtkWidget *file_choo
     
     for ( i = 0; i < len; i++)
     {
+	GSList *media_files = NULL;
 	file = g_slist_nth_data (files, i);
 	parole_get_media_files (filter, file, &media_files);
 	parole_media_chooser_sort_and_emit (chooser, &media_files);

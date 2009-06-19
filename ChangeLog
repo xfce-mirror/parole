@@ -1,3 +1,7 @@
+2009-06-19: 13:00 Ali aliov@xfce.org
+	* Fix stupid bug causing a crash 
+	when adding multiple media files to the list.
+
 2009-06-18: 18:00 Ali aliov@xfce.org
 	* Make sure to don't draw the logo on expose event
 	when playing a movie stream.
