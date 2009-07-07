@@ -258,7 +258,7 @@ thunar_file_compare_by_name (ParoleMediaFile *file_a,
 	return (ac > bc) ? 1 : -1;
 }
 
-static gchar *
+gchar *
 parole_get_name_without_extension (const gchar *name)
 {
     guint len, suffix;

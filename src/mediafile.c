@@ -134,11 +134,16 @@ parole_media_file_constructed (GObject *object)
 
     if ( error )
     {
-#ifdef DEBUG
-	g_warning ("Unable to read file info %s :", error->message);
-#endif
-	g_error_free (error);
-	file->priv->display_name = g_file_get_basename (gfile);
+	if ( G_LIKELY (error->code == G_IO_ERROR_NOT_SUPPORTED) )
+	{
+	    g_error_free (error);
+	    file->priv->display_name = g_file_get_basename (gfile);
+	}
+	else
+	{
+	    file->priv->display_name = g_strdup (file->priv->path);
+	}
+	g_warning ("Unable to read file info %s", error->message);
 	goto out;
     }
 

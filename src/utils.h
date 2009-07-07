@@ -33,7 +33,9 @@ void		parole_window_invisible_cursor		(GdkWindow *window);
 gint            thunar_file_compare_by_name 		(ParoleMediaFile *file_a,
 							 ParoleMediaFile *file_b,
 							 gboolean         case_sensitive);
-							 
-gchar          *parole_get_subtitle_path		(const gchar *uri);
+
+gchar          *parole_get_name_without_extension 	(const gchar *name)G_GNUC_MALLOC G_GNUC_WARN_UNUSED_RESULT;
+
+gchar          *parole_get_subtitle_path		(const gchar *uri) G_GNUC_MALLOC G_GNUC_WARN_UNUSED_RESULT;
 
 #endif /* __PAROLE_UTILS_ */

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-16 12:25+0200\n"
+"POT-Creation-Date: 2009-07-07 09:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,29 +16,121 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: ../data/interfaces/parole.ui.h:1
+msgid "Albums"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:2
+msgid "Audio converter"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:3
+msgid "Audio recorder"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:4
+msgid "Media player"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:5
+msgid "Nothing yet."
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:6
+msgid "_Edit"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:7
+msgid "_File"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:8
+msgid "_Help"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:9
+msgid "_View"
+msgstr ""
+
+#: ../data/interfaces/mediachooser.ui.h:1
+#: ../data/interfaces/openlocation.ui.h:2
+#: ../data/interfaces/parole-settings.ui.h:10
+msgid "gtk-close"
+msgstr ""
+
+#: ../data/interfaces/openlocation.ui.h:1
+msgid "Open location of media file or live stream"
+msgstr ""
+
+#: ../data/interfaces/openlocation.ui.h:3
+msgid "gtk-open"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:1
+msgid "<b>Audio</b>"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:2
+msgid "<b>Display</b>"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:3
+msgid "<b>Subtitles</b>"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:4
+msgid "Automatically load subtitle when playing movie file"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:5
+msgid ""
+"Changing this will take effect after parole is restarted or a new media file "
+"is loaded."
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:6
+msgid "Enable visualization when playing audio file"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:7
+msgid "Encoding: "
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:8
+msgid "Font:"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:9
+msgid "Visualization type:"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:11
+msgid "gtk-help"
+msgstr ""
+
 #: ../data/desktop/parole.desktop.in.in.h:1
 msgid "Parole Media Player"
 msgstr ""
 
-#: ../src/main.c:83
+#: ../src/main.c:97
 msgid "Media to play"
 msgstr ""
 
-#: ../src/main.c:99
+#: ../src/main.c:113
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr ""
 
-#: ../src/gst.c:650
+#: ../src/gst.c:726
 msgid "Error in changing state to ready"
 msgstr ""
 
-#: ../src/gst.c:697
+#: ../src/gst.c:775
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 
-#: ../src/gst.c:712
+#: ../src/gst.c:790
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
@@ -47,47 +139,47 @@ msgstr ""
 msgid "Check your Parole installation"
 msgstr ""
 
-#: ../src/mediachooser.c:205
+#: ../src/mediachooser.c:197
 msgid "Add media files"
 msgstr ""
 
-#: ../src/mediachooser.c:205
+#: ../src/mediachooser.c:197
 msgid "Open media file"
 msgstr ""
 
-#: ../src/mediachooser.c:222
+#: ../src/mediachooser.c:214
 msgid "Add"
 msgstr ""
 
-#: ../src/mediachooser.c:222
+#: ../src/mediachooser.c:214
 msgid "Open"
 msgstr ""
 
-#: ../src/medialist.c:508
+#: ../src/medialist.c:503
 msgid "Media list"
 msgstr ""
 
-#: ../src/player.c:167
+#: ../src/player.c:171
 msgid "Hide playlist"
 msgstr ""
 
-#: ../src/player.c:176
+#: ../src/player.c:180
 msgid "Show playlist"
 msgstr ""
 
-#: ../src/player.c:309 ../src/statusbar.c:125 ../src/statusbar.c:127
+#: ../src/player.c:313 ../src/statusbar.c:125 ../src/statusbar.c:127
 msgid "Playing"
 msgstr ""
 
-#: ../src/player.c:310
+#: ../src/player.c:314
 msgid "Media stream is not seekable"
 msgstr ""
 
-#: ../src/player.c:328 ../src/player.c:341
+#: ../src/player.c:332 ../src/player.c:345
 msgid "Paused"
 msgstr ""
 
-#: ../src/player.c:359
+#: ../src/player.c:363
 msgid "Stopped"
 msgstr ""
 
@@ -108,14 +200,14 @@ msgstr ""
 msgid "Buffering"
 msgstr ""
 
-#: ../src/filters.c:45
-msgid "Supported audio"
+#: ../src/filters.c:46
+msgid "Audio"
 msgstr ""
 
-#: ../src/filters.c:63
-msgid "Supported video"
+#: ../src/filters.c:64
+msgid "Video"
 msgstr ""
 
-#: ../src/filters.c:81
-msgid "Supported audio and video"
+#: ../src/filters.c:82
+msgid "Audio and video"
 msgstr ""

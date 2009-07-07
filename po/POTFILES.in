@@ -1,8 +1,9 @@
-data/interfaces/parole.ui
-data/interfaces/mediachooser.ui
-data/interfaces/playlist.ui
-data/interfaces/openlocation.ui
-data/interfaces/parole-settings.ui
+[encoding: UTF-8]
+[type: gettext/glade]data/interfaces/parole.ui
+[type: gettext/glade]data/interfaces/mediachooser.ui
+[type: gettext/glade]data/interfaces/playlist.ui
+[type: gettext/glade]data/interfaces/openlocation.ui
+[type: gettext/glade]data/interfaces/parole-settings.ui
 data/desktop/parole.desktop.in.in
 src/main.c
 src/gst.c

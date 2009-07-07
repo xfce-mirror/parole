@@ -30,6 +30,7 @@
 #include <glib.h>
 
 #include "filters.h"
+#include "utils.h"
 #include "data/mime/parole-mime-types.h"
 
 /*
@@ -42,7 +43,7 @@ GtkFileFilter 		*parole_get_supported_audio_filter	(void)
     
     filter = gtk_file_filter_new ();
     
-    gtk_file_filter_set_name (filter, _("Supported audio"));
+    gtk_file_filter_set_name (filter, _("Audio"));
     
     for ( i = 0; i < G_N_ELEMENTS (audio_mime_types); i++)
 	gtk_file_filter_add_mime_type (filter, audio_mime_types[i]);
@@ -60,7 +61,7 @@ GtkFileFilter 		*parole_get_supported_video_filter	(void)
     
     filter = gtk_file_filter_new ();
     
-    gtk_file_filter_set_name (filter, _("Supported video"));
+    gtk_file_filter_set_name (filter, _("Video"));
     
     for ( i = 0; i < G_N_ELEMENTS (video_mime_types); i++)
 	gtk_file_filter_add_mime_type (filter, video_mime_types[i]);
@@ -78,7 +79,7 @@ GtkFileFilter 		*parole_get_supported_media_filter	(void)
     
     filter = gtk_file_filter_new ();
     
-    gtk_file_filter_set_name (filter, _("Supported audio and video"));
+    gtk_file_filter_set_name (filter, _("Audio and video"));
     
     for ( i = 0; i < G_N_ELEMENTS (audio_mime_types); i++)
 	gtk_file_filter_add_mime_type (filter, audio_mime_types[i]);
@@ -107,10 +108,11 @@ gboolean parole_file_filter (GtkFileFilter *filter, ParoleMediaFile *file)
 
 void parole_get_media_files (GtkFileFilter *filter, const gchar *path, GSList **list)
 {
+    GSList *list_internal = NULL;
     GDir *dir;
     const gchar *name;
     ParoleMediaFile *file;
-    TRACE ("path %s", path);
+
     if ( g_file_test (path, G_FILE_TEST_IS_REGULAR ) )
     {
 	file = parole_media_file_new (path);
@@ -137,12 +139,14 @@ void parole_get_media_files (GtkFileFilter *filter, const gchar *path, GSList **
 	    {
 		file = parole_media_file_new (path_internal);
 		if ( parole_file_filter (filter, file) )
-		    *list = g_slist_append (*list, file);
+		    list_internal = g_slist_append (list_internal, file);
 		else
 		    g_object_unref (file);
 	    }
 	    g_free (path_internal);
 	}
+	list_internal = g_slist_sort (list_internal, (GCompareFunc) thunar_file_compare_by_name);
 	g_dir_close (dir);
+	*list = g_slist_concat (*list, list_internal);
     }
 }

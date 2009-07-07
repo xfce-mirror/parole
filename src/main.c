@@ -50,18 +50,18 @@ parole_send_files (gchar **filenames)
     GFile *file;
     DBusGConnection *bus;
     DBusGProxy *proxy;
-    gchar **out_uris;
+    gchar **out_paths;
     GError *error = NULL;
     guint i;
     
     bus = parole_g_session_bus_get ();
     
-    out_uris = g_new (gchar *, g_strv_length (filenames));
+    out_paths = g_new (gchar *, g_strv_length (filenames));
     
     for ( i = 0; filenames && filenames[i]; i++)
     {
 	file = g_file_new_for_commandline_arg (filenames[i]);
-	out_uris[i] = g_file_get_uri (file);
+	out_paths[i] = g_file_get_path (file);
 	g_object_unref (file);
     }
     
@@ -71,7 +71,7 @@ parole_send_files (gchar **filenames)
 				       PAROLE_DBUS_INTERFACE);
 				       
     dbus_g_proxy_call (proxy, "AddFiles", &error,
-		       G_TYPE_STRV, out_uris,
+		       G_TYPE_STRV, out_paths,
 		       G_TYPE_INVALID,
 		       G_TYPE_INVALID);
 		       
@@ -83,7 +83,7 @@ parole_send_files (gchar **filenames)
     
     g_object_unref (proxy);
     dbus_g_connection_unref (bus);
-    g_strfreev (out_uris);
+    g_strfreev (out_paths);
 }
 
 int main (int argc, char **argv)

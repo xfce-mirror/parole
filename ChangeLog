@@ -1,3 +1,18 @@
+2009-07-08 9:00 Ali aliov@xfce.org
+	* data/interfaces/playlist.ui disable media list horizontal scrolling.
+	* po/POTFILES.in fix missing strings in the interface files.
+	* src/gst.c apply the overlay at the correct time, the fix possible  X 
+	sync error when playing media files.
+	* src/mediafile.c check for error code for the unhandled Gfile info,
+	G_IO_ERROR_NOT_SUPPORTED occurs when we try to read info of an unsupported
+	location.
+	* src/filters.c sort media files that belong to the same dir only.
+	* src/main.c send media files by path instead of uri to the running
+	instance of the media player.
+	* src/medialist.c fix a bug adding folder contains media file.
+	from the command line.
+	* src/medialist.c Enable ellipsize of the text renderer.
+
 2009-06-19: 13:00 Ali aliov@xfce.org
 	* Fix stupid bug causing a crash 
 	when adding multiple media files to the list.

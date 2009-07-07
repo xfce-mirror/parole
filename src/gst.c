@@ -554,6 +554,9 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
     
     if ( gst->priv->target == new )
 	parole_gst_set_window_cursor (GTK_WIDGET (gst)->window, NULL);
+
+    if ( gst->priv->target == GST_STATE_PLAYING && pending >= GST_STATE_READY)
+	parole_gst_set_x_overlay (gst);
     
     switch (gst->priv->state)
     {
@@ -566,13 +569,10 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 			   gst->priv->stream, PAROLE_MEDIA_STATE_PLAYING);
 	    break;
 	case GST_STATE_PAUSED:
-	    if ( gst->priv->target == GST_STATE_PLAYING )
-		parole_gst_set_x_overlay (gst);
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
 			   gst->priv->stream, PAROLE_MEDIA_STATE_PAUSED);
 	    break;
-	default:
-	{
+	case GST_STATE_READY:
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
 			   gst->priv->stream, PAROLE_MEDIA_STATE_STOPPED);
 
@@ -588,7 +588,13 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 	    {
 		parole_gst_draw_logo (gst);
 	    }
-	}
+	    break;
+	case GST_STATE_NULL:
+	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
+			   gst->priv->stream, PAROLE_MEDIA_STATE_STOPPED);
+	    break;
+	default:
+	    break;
     }
 }
 
