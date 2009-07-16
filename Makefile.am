@@ -1,7 +1,11 @@
 SUBDIRS =  		\
-	  data		\
-	  src  		\
-	  po
+	data		\
+	common		\
+	parole 		\
+	plugins		\
+	docs		\
+	po
+
 
 EXTRA_DIST = \
 	intltool-extract.in \

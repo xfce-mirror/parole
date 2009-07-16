@@ -5,8 +5,31 @@ interfaces =					\
 	mediachooser.ui				\
 	openlocation.ui
 
-interfaces_DATA = 				\
-	$(interfaces)
+interfaces_h = 					\
+	$(interfaces:.ui=_ui.h)
+
+if MAINTAINER_MODE
+BUILT_SOURCES = $(interfaces_h)
+
+parole_ui.h: parole.ui
+	exo-csource --static --strip-comments --strip-content --name=parole_ui $< > $@
+
+parole-settings_ui.h: parole-settings.ui
+	exo-csource --static --strip-comments --strip-content --name=parole_settings_ui $< > $@
+
+playlist_ui.h: playlist.ui
+	exo-csource --static --strip-comments --strip-content --name=playlist_ui $< > $@
+
+mediachooser_ui.h: mediachooser.ui
+	exo-csource --static --strip-comments --strip-content --name=mediachooser_ui $< > $@
+
+openlocation_ui.h: openlocation.ui
+	exo-csource --static --strip-comments --strip-content --name=openlocation_ui $< > $@
+endif
+
+DISTCLEANFILES =				\
+	$(interfaces_h)
 
 EXTRA_DIST =					\
-	$(interfaces)
+	$(interfaces)				\
+	$(interfaces_h)

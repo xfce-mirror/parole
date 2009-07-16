@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-07 09:09+0200\n"
+"POT-Creation-Date: 2009-07-16 16:57+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,34 +21,30 @@ msgid "Albums"
 msgstr ""
 
 #: ../data/interfaces/parole.ui.h:2
-msgid "Audio converter"
-msgstr ""
-
-#: ../data/interfaces/parole.ui.h:3
-msgid "Audio recorder"
-msgstr ""
-
-#: ../data/interfaces/parole.ui.h:4
 msgid "Media player"
 msgstr ""
 
-#: ../data/interfaces/parole.ui.h:5
+#: ../data/interfaces/parole.ui.h:3
 msgid "Nothing yet."
 msgstr ""
 
-#: ../data/interfaces/parole.ui.h:6
+#: ../data/interfaces/parole.ui.h:4
+msgid "Plugins"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:5
 msgid "_Edit"
 msgstr ""
 
-#: ../data/interfaces/parole.ui.h:7
-msgid "_File"
-msgstr ""
-
-#: ../data/interfaces/parole.ui.h:8
+#: ../data/interfaces/parole.ui.h:6
 msgid "_Help"
 msgstr ""
 
-#: ../data/interfaces/parole.ui.h:9
+#: ../data/interfaces/parole.ui.h:7
+msgid "_Media"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:8
 msgid "_View"
 msgstr ""
 
@@ -108,106 +104,149 @@ msgstr ""
 msgid "gtk-help"
 msgstr ""
 
-#: ../data/desktop/parole.desktop.in.in.h:1
+#: ../data/desktop/parole.desktop.in.in.h:1 ../parole/parole-player.c:156
 msgid "Parole Media Player"
 msgstr ""
 
-#: ../src/main.c:97
+#: ../parole/main.c:103
+msgid "Open a new instance"
+msgstr ""
+
+#: ../parole/main.c:104
 msgid "Media to play"
 msgstr ""
 
-#: ../src/main.c:113
+#: ../parole/main.c:120
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr ""
 
-#: ../src/gst.c:726
+#: ../parole/parole-gst.c:787
 msgid "Error in changing state to ready"
 msgstr ""
 
-#: ../src/gst.c:775
+#: ../parole/parole-gst.c:836
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 
-#: ../src/gst.c:790
+#: ../parole/parole-gst.c:851
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 
-#: ../src/builder.c:69
-msgid "Check your Parole installation"
-msgstr ""
-
-#: ../src/mediachooser.c:197
+#: ../parole/parole-mediachooser.c:203
 msgid "Add media files"
 msgstr ""
 
-#: ../src/mediachooser.c:197
+#: ../parole/parole-mediachooser.c:203
 msgid "Open media file"
 msgstr ""
 
-#: ../src/mediachooser.c:214
+#: ../parole/parole-mediachooser.c:220
 msgid "Add"
 msgstr ""
 
-#: ../src/mediachooser.c:214
+#: ../parole/parole-mediachooser.c:220
 msgid "Open"
 msgstr ""
 
-#: ../src/medialist.c:503
+#: ../parole/parole-medialist.c:506
 msgid "Media list"
 msgstr ""
 
-#: ../src/player.c:171
+#: ../parole/parole-player.c:177
 msgid "Hide playlist"
 msgstr ""
 
-#: ../src/player.c:180
+#: ../parole/parole-player.c:186
 msgid "Show playlist"
 msgstr ""
 
-#: ../src/player.c:313 ../src/statusbar.c:125 ../src/statusbar.c:127
+#: ../parole/parole-player.c:319 ../parole/parole-statusbar.c:126
+#: ../parole/parole-statusbar.c:128
 msgid "Playing"
 msgstr ""
 
-#: ../src/player.c:314
+#: ../parole/parole-player.c:320
 msgid "Media stream is not seekable"
 msgstr ""
 
-#: ../src/player.c:332 ../src/player.c:345
+#: ../parole/parole-player.c:338 ../parole/parole-player.c:351
 msgid "Paused"
 msgstr ""
 
-#: ../src/player.c:363
+#: ../parole/parole-player.c:369
 msgid "Stopped"
 msgstr ""
 
-#: ../src/sidebar.c:137
+#: ../parole/parole-player.c:931
+msgid "Playlist"
+msgstr ""
+
+#: ../parole/parole-sidebar.c:138
 msgid ""
 "<b>Media \n"
 "player\n"
 "</b>"
 msgstr ""
 
-#: ../src/sidebar.c:147
+#: ../parole/parole-sidebar.c:148
 msgid ""
 "<b>Albums\n"
 "</b>"
 msgstr ""
 
-#: ../src/statusbar.c:137
+#: ../parole/parole-statusbar.c:138
 msgid "Buffering"
 msgstr ""
 
-#: ../src/filters.c:46
+#: ../parole/parole-filters.c:46
 msgid "Audio"
 msgstr ""
 
-#: ../src/filters.c:64
+#: ../parole/parole-filters.c:64
 msgid "Video"
 msgstr ""
 
-#: ../src/filters.c:82
+#: ../parole/parole-filters.c:82
 msgid "Audio and video"
+msgstr ""
+
+#: ../plugins/properties/stream-properties.c:40
+#: ../plugins/properties/stream-properties.c:41
+#: ../plugins/properties/stream-properties.c:42
+#: ../plugins/properties/stream-properties.c:43
+#: ../plugins/properties/stream-properties.c:44
+msgid "Unknown"
+msgstr ""
+
+#: ../plugins/properties/stream-properties.c:66
+msgid "Title:"
+msgstr ""
+
+#: ../plugins/properties/stream-properties.c:89
+msgid "Artist:"
+msgstr ""
+
+#: ../plugins/properties/stream-properties.c:112
+msgid "Album:"
+msgstr ""
+
+#: ../plugins/properties/stream-properties.c:135
+msgid "Year:"
+msgstr ""
+
+#: ../plugins/properties/stream-properties.c:158
+msgid "Comment:"
+msgstr ""
+
+#. Construct function
+#: ../plugins/properties/stream-properties.c:284
+msgid "Properties"
+msgstr ""
+
+#. Title
+#: ../plugins/properties/stream-properties.c:285
+msgid "Read media properties"
 msgstr ""

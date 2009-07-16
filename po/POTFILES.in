@@ -5,12 +5,12 @@
 [type: gettext/glade]data/interfaces/openlocation.ui
 [type: gettext/glade]data/interfaces/parole-settings.ui
 data/desktop/parole.desktop.in.in
-src/main.c
-src/gst.c
-src/builder.c
-src/mediachooser.c
-src/medialist.c
-src/player.c
-src/sidebar.c
-src/statusbar.c
-src/filters.c
+parole/main.c
+parole/parole-gst.c
+parole/parole-mediachooser.c
+parole/parole-medialist.c
+parole/parole-player.c
+parole/parole-sidebar.c
+parole/parole-statusbar.c
+parole/parole-filters.c
+plugins/properties/stream-properties.c

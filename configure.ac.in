@@ -1,4 +1,6 @@
 m4_define([intltool_minimum_version], [0.31])
+m4_define([parole_verinfo],  [0:1:0])
+m4_define([parole_version_api],  [0])
 m4_define([parole_version_major],  [0])
 m4_define([parole_version_minor],  [1])
 m4_define([parole_version_micro],  [0])
@@ -34,6 +36,20 @@ AC_PROG_INTLTOOL([intltool_minimum_version], [no-xml])
 # ===================================================== #
 AC_DISABLE_STATIC
 AC_PROG_LIBTOOL
+
+# ===================================================== #
+#               Version information                     #
+# ===================================================== #
+PAROLE_VERINFO=parole_verinfo()
+PAROLE_VERSION_API=parole_version_api()
+PAROLE_VERSION_MAJOR=parole_version_major()
+PAROLE_VERSION_MINOR=parole_version_minor()
+PAROLE_VERSION_MICRO=parole_version_micro()
+AC_SUBST([PAROLE_VERINFO])
+AC_SUBST([PAROLE_VERSION_API])
+AC_SUBST([PAROLE_VERSION_MAJOR])
+AC_SUBST([PAROLE_VERSION_MINOR])
+AC_SUBST([PAROLE_VERSION_MICRO])
 
 # ==================================================== #
 #   Check for headers needed for standard interfaces   #
@@ -92,27 +108,39 @@ XDT_CHECK_OPTIONAL_PACKAGE([LIBNOTIFY],
 
 # Taken from Gnome system tools
 #=======================================================#
-#              Pixmaps and interface files              #
+#              Pixmaps  files              		#
 #=======================================================#
 if test "x${prefix}" = "xNONE"; then
   AC_DEFINE_UNQUOTED(PIXMAPS_DIR, "${ac_default_prefix}/${DATADIRNAME}/${PACKAGE}/pixmaps", [pixmaps directory])
   pixmapsdir="${ac_default_prefix}/${DATADIRNAME}/${PACKAGE}/pixmaps"
-  AC_DEFINE_UNQUOTED(INTERFACES_DIR, "${ac_default_prefix}/${DATADIRNAME}/${PACKAGE}/ui", [path where UI files will be installed])
-  interfacesdir="${ac_default_prefix}/${DATADIRNAME}/${PACKAGE}/ui"
 else
   AC_DEFINE_UNQUOTED(PIXMAPS_DIR, "${prefix}/${DATADIRNAME}/${PACKAGE}/pixmaps", [pixmaps directory])
   pixmapsdir="${prefix}/${DATADIRNAME}/${PACKAGE}/pixmaps"
-  AC_DEFINE_UNQUOTED(INTERFACES_DIR, "${prefix}/${DATADIRNAME}/${PACKAGE}/ui", [path where UI files will be installed])
-  interfacesdir="${prefix}/${DATADIRNAME}/${PACKAGE}/ui"
 fi
 
 AC_SUBST(pixmapsdir)
-AC_SUBST(interfacesdir)
+
+#=======================================================#
+#              Check plugins to build                   #
+#=======================================================#
+
+# Stream Properties plugin.
+#--------------------------
+AC_ARG_ENABLE([properties-plugin], AC_HELP_STRING([--disable-properties-plugin], [Don't build parole stream properties plugin]),
+  [ac_properties_plugin=$enableval], [ac_properties_plugin=yes])
+AC_MSG_CHECKING([whether to build the Parole stream properties plugin])
+AM_CONDITIONAL([PAROLE_PROPERTIES_PLUGIN], [test x"$ac_properties_plugin" = x"yes"])
+AC_MSG_RESULT([$ac_properties_plugin])
 
 #=======================================================#
 #              Check for debugging support              #
 #=======================================================#
 XDT_FEATURE_DEBUG
+
+#=======================================================#
+#              Check for Gtk doc	                #
+#=======================================================#
+GTK_DOC_CHECK(1.9)
 
 AC_OUTPUT([
 Makefile
@@ -122,20 +150,30 @@ data/interfaces/Makefile
 data/icons/Makefile
 data/mime/Makefile
 data/desktop/Makefile
-src/Makefile
+common/Makefile
+parole/Makefile
+plugins/Makefile
+plugins/properties/Makefile
+docs/Makefile
+docs/plugin-api/version.xml
+docs/plugin-api/Makefile
 po/Makefile.in
 ])
 
 echo "
---------------------------------------------------
+------------------------------------------------------
             Parole Media Player $VERSION
         ====================================
  
-        prefix:                 $prefix
-	interface_dir		$interfacesdir
-	pixmapsdir		$pixmapsdir
-	Notification		$LIBNOTIFY_FOUND
-        Debug        support:   $enable_debug
---------------------------------------------------
+        prefix:                 	$prefix
+	pixmapsdir:			$pixmapsdir
+	Notification:			$LIBNOTIFY_FOUND
+        Debug:   			$enable_debug
+	Building plugin api docs:       ${enable_gtk_doc}
+	
+	    Plugins to build:
+	    -----------------
+	Stream Properties plugin:       ${ac_properties_plugin}
+------------------------------------------------------
 
 Configuration finished, type make to compile"

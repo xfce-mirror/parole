@@ -1,0 +1,5 @@
+SUBDIRS = 
+
+if PAROLE_PROPERTIES_PLUGIN
+SUBDIRS+=properties
+endif
