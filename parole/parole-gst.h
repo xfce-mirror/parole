@@ -25,7 +25,6 @@
 #include <gtk/gtk.h>
 
 #include "parole-stream.h"
-#include "parole-mediafile.h"
 
 G_BEGIN_DECLS
 
@@ -80,10 +79,11 @@ typedef struct
 } ParoleGstClass;
 
 GType        		parole_gst_get_type        (void) G_GNUC_CONST;
+
 GtkWidget      	       *parole_gst_new             (void);
 
-void		        parole_gst_play_file       (ParoleGst *gst,
-					            ParoleMediaFile *file);
+void		        parole_gst_play_uri        (ParoleGst *gst,
+					            const gchar *uri);
 
 void			parole_gst_pause           (ParoleGst *gst);
 

@@ -129,7 +129,7 @@ int main (int argc, char **argv)
         return EXIT_FAILURE;
     }
 
-    if ( parole_dbus_name_has_owner (PAROLE_DBUS_NAME) )
+    if ( !new_instance && parole_dbus_name_has_owner (PAROLE_DBUS_NAME) )
     {
 	TRACE ("Parole is already running");
 	if ( filenames && filenames[0] != NULL )

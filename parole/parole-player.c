@@ -40,6 +40,7 @@
 #include "parole-gst.h"
 #include "parole-mediachooser.h"
 #include "parole-mediafile.h"
+#include "parole-disc.h"
 #include "parole-statusbar.h"
 #include "parole-screensaver.h"
 #include "parole-conf-dialog.h"
@@ -119,6 +120,7 @@ struct ParolePlayerPrivate
 {
     ParoleMediaList	*list;
     ParoleStatusbar     *status;
+    ParoleDisc          *disc;
     ParoleScreenSaver   *screen_saver;
     ParoleSidebar       *sidebar;
 
@@ -197,12 +199,8 @@ parole_player_change_range_value (ParolePlayer *player, gdouble value)
 }
 
 static void
-parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *row, ParolePlayer *player)
+parole_player_reset (ParolePlayer *player)
 {
-    ParoleMediaFile *file;
-    GtkTreeIter iter;
-    GtkTreeModel *model;
-
     parole_player_change_range_value (player, 0);
 
     if ( player->priv->row )
@@ -211,6 +209,16 @@ parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *ro
 	gtk_tree_row_reference_free (player->priv->row);
 	player->priv->row = NULL;
     }
+}
+
+static void
+parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *row, ParolePlayer *player)
+{
+    ParoleMediaFile *file;
+    GtkTreeIter iter;
+    GtkTreeModel *model;
+
+    parole_player_reset (player);
     
     player->priv->row = row;
     model = gtk_tree_row_reference_get_model (row);
@@ -223,10 +231,17 @@ parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *ro
 	{
 	    TRACE ("Trying to play media file %s", parole_media_file_get_uri (file));
 	    gtk_widget_set_sensitive (player->priv->stop, TRUE);
-	    parole_gst_play_file (PAROLE_GST (player->priv->gst), file);
+	    parole_gst_play_uri (PAROLE_GST (player->priv->gst), parole_media_file_get_uri (file));
 	    g_object_unref (file);
 	}
     }
+}
+
+static void
+parole_player_disc_selected_cb (ParoleDisc *disc, const gchar *uri, ParolePlayer *player)
+{
+    parole_player_reset (player);
+    parole_gst_play_uri (PAROLE_GST (player->priv->gst), uri);
 }
 
 static void
@@ -823,6 +838,7 @@ parole_player_finalize (GObject *object)
 
     g_object_unref (player->priv->gst);
     g_object_unref (player->priv->status);
+    g_object_unref (player->priv->disc);
     g_object_unref (player->priv->screen_saver);
     g_object_unref (player->priv->sidebar);
 
@@ -867,8 +883,13 @@ parole_player_init (ParolePlayer *player)
      * so we ref it to clean up the gst objects before quitting.
      */
     g_object_ref (player->priv->gst);
+    
     player->priv->sidebar = parole_sidebar_new ();
     player->priv->status = parole_statusbar_new ();
+    player->priv->disc = parole_disc_new ();
+    g_signal_connect (player->priv->disc, "disc-selected",
+		      G_CALLBACK (parole_player_disc_selected_cb), player);
+		      
     player->priv->screen_saver = parole_screen_saver_new ();
     player->priv->list = PAROLE_MEDIA_LIST (parole_media_list_new ());
     

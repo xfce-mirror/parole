@@ -48,8 +48,7 @@ typedef struct _ParoleStreamPrivate ParoleStreamPrivate;
 struct _ParoleStreamPrivate
 {
     /*Properties*/
-    gpointer 	media_file;
-    
+    gchar      *uri;
     gboolean 	has_audio;
     gboolean    has_video;
     gboolean 	live;
@@ -67,7 +66,7 @@ struct _ParoleStreamPrivate
 enum
 {
     PROP_0,
-    PROP_MEDIA_FILE,
+    PROP_URI,
     PROP_LIVE,
     PROP_HAS_AUDIO,
     PROP_HAS_VIDEO,
@@ -93,6 +92,9 @@ static void parole_stream_set_property (GObject *object,
 
     switch (prop_id)
     {
+	case PROP_URI:
+	    PAROLE_STREAM_GET_PRIVATE (stream)->uri = g_value_dup_string (value);
+	    break;
 	case PROP_LIVE:
 	    PAROLE_STREAM_GET_PRIVATE (stream)->live = g_value_get_boolean (value);
 	    break;
@@ -101,9 +103,6 @@ static void parole_stream_set_property (GObject *object,
 	    break;
 	case PROP_HAS_VIDEO:
 	    PAROLE_STREAM_GET_PRIVATE (stream)->has_video = g_value_get_boolean (value);
-	    break;
-	case PROP_MEDIA_FILE:
-	    PAROLE_STREAM_GET_PRIVATE (stream)->media_file = g_value_get_object (value);
 	    break;
 	case PROP_SEEKABLE:
 	    PAROLE_STREAM_GET_PRIVATE (stream)->seekable = g_value_get_boolean (value);
@@ -145,6 +144,9 @@ static void parole_stream_get_property (GObject *object,
 
     switch (prop_id)
     {
+	case PROP_URI:
+	    g_value_set_string (value, PAROLE_STREAM_GET_PRIVATE (stream)->uri);
+	    break;
 	case PROP_LIVE:
 	    g_value_set_boolean (value, PAROLE_STREAM_GET_PRIVATE (stream)->live);
 	    break;
@@ -153,9 +155,6 @@ static void parole_stream_get_property (GObject *object,
 	    break;
 	case PROP_HAS_VIDEO:
 	    g_value_set_boolean (value, PAROLE_STREAM_GET_PRIVATE (stream)->has_video);
-	    break;
-	case PROP_MEDIA_FILE:
-	    g_value_set_object (value, PAROLE_STREAM_GET_PRIVATE (stream)->media_file);
 	    break;
 	case PROP_SEEKABLE:
 	    g_value_set_boolean (value, PAROLE_STREAM_GET_PRIVATE (stream)->seekable);
@@ -191,13 +190,10 @@ static void
 parole_stream_finalize (GObject *object)
 {
     ParoleStream *stream;
-    ParoleStreamPrivate *priv;
 
     stream = PAROLE_STREAM (object);
-    priv = PAROLE_STREAM_GET_PRIVATE (stream);
-
-    if ( priv->media_file )
-	g_object_unref (priv->media_file);
+    
+    parole_stream_init_properties (stream);
 
     G_OBJECT_CLASS (parole_stream_parent_class)->finalize (object);
 }
@@ -213,17 +209,17 @@ parole_stream_class_init (ParoleStreamClass *klass)
     object_class->set_property = parole_stream_set_property;
 
     /**
-     * ParoleStream:media-file:
+     * ParoleStream:uri:
      * 
-     * Currently playing #ParoleMediaFile.
+     * Currently loaded uri.
      * 
      * Since: 0.1 
      **/
     g_object_class_install_property (object_class,
-				     PROP_MEDIA_FILE,
-				     g_param_spec_object ("media-file",
+				     PROP_URI,
+				     g_param_spec_string ("uri",
 							  NULL, NULL,
-							  PAROLE_TYPE_MEDIA_FILE,
+							  NULL,
 							  G_PARAM_READWRITE));
     
     /**
@@ -389,10 +385,6 @@ parole_stream_class_init (ParoleStreamClass *klass)
 static void
 parole_stream_init (ParoleStream *stream)
 {
-    ParoleStreamPrivate *priv;
-    priv = PAROLE_STREAM_GET_PRIVATE (stream);
-
-    priv->media_file = NULL;
     parole_stream_init_properties (stream);
 }
 
@@ -409,6 +401,7 @@ void parole_stream_init_properties (ParoleStream *stream)
     ParoleStreamPrivate *priv;
     
     priv = PAROLE_STREAM_GET_PRIVATE (stream);
+    
     priv->live = FALSE;
     priv->seekable = FALSE;
     priv->has_audio = FALSE;
@@ -416,14 +409,10 @@ void parole_stream_init_properties (ParoleStream *stream)
     priv->absolute_duration = 0;
     priv->duration = 0;
     
-    if ( priv->media_file )
-	g_object_unref (priv->media_file);
-	
     PAROLE_STREAM_FREE_STR_PROP (priv->title);
+    PAROLE_STREAM_FREE_STR_PROP (priv->uri);
     PAROLE_STREAM_FREE_STR_PROP (priv->artist);
     PAROLE_STREAM_FREE_STR_PROP (priv->year);
     PAROLE_STREAM_FREE_STR_PROP (priv->album);
     PAROLE_STREAM_FREE_STR_PROP (priv->comment);
-	
-    priv->media_file = NULL;
 }

@@ -70,11 +70,12 @@ NOINST_HFILES =					\
 	parole-conf-dialog.h			\
 	parole-rc-utils.h			\
 	parole-utils.h				\
+	parole-disc.h				\
 	parole-dbus.h				\
 	parole-medialist.h			\
 	parole-debug.h				\
 	parole-plugins-manager.h		\
-	parole-module.h
+	parole-module.h	
 
 libparole_headers =				\
 	$(INST_HFILES)
@@ -102,6 +103,7 @@ libparole_la_SOURCES =				\
 	parole-screensaver.c			\
 	parole-conf.c				\
 	parole-conf-dialog.c			\
+	parole-disc.c				\
 	parole-rc-utils.c			\
 	parole-utils.c				\
 	parole-dbus.c				\

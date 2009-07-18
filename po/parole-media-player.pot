@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-16 16:57+0200\n"
+"POT-Creation-Date: 2009-07-19 00:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -104,7 +104,7 @@ msgstr ""
 msgid "gtk-help"
 msgstr ""
 
-#: ../data/desktop/parole.desktop.in.in.h:1 ../parole/parole-player.c:156
+#: ../data/desktop/parole.desktop.in.in.h:1 ../parole/parole-player.c:158
 msgid "Parole Media Player"
 msgstr ""
 
@@ -121,16 +121,16 @@ msgstr ""
 msgid "Type '%s --help' for usage."
 msgstr ""
 
-#: ../parole/parole-gst.c:787
+#: ../parole/parole-gst.c:786
 msgid "Error in changing state to ready"
 msgstr ""
 
-#: ../parole/parole-gst.c:836
+#: ../parole/parole-gst.c:835
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 
-#: ../parole/parole-gst.c:851
+#: ../parole/parole-gst.c:850
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
@@ -155,32 +155,32 @@ msgstr ""
 msgid "Media list"
 msgstr ""
 
-#: ../parole/parole-player.c:177
+#: ../parole/parole-player.c:179
 msgid "Hide playlist"
 msgstr ""
 
-#: ../parole/parole-player.c:186
+#: ../parole/parole-player.c:188
 msgid "Show playlist"
 msgstr ""
 
-#: ../parole/parole-player.c:319 ../parole/parole-statusbar.c:126
-#: ../parole/parole-statusbar.c:128
+#: ../parole/parole-player.c:334 ../parole/parole-statusbar.c:131
+#: ../parole/parole-statusbar.c:133
 msgid "Playing"
 msgstr ""
 
-#: ../parole/parole-player.c:320
+#: ../parole/parole-player.c:335
 msgid "Media stream is not seekable"
 msgstr ""
 
-#: ../parole/parole-player.c:338 ../parole/parole-player.c:351
+#: ../parole/parole-player.c:353 ../parole/parole-player.c:366
 msgid "Paused"
 msgstr ""
 
-#: ../parole/parole-player.c:369
+#: ../parole/parole-player.c:384
 msgid "Stopped"
 msgstr ""
 
-#: ../parole/parole-player.c:931
+#: ../parole/parole-player.c:952
 msgid "Playlist"
 msgstr ""
 
@@ -197,7 +197,7 @@ msgid ""
 "</b>"
 msgstr ""
 
-#: ../parole/parole-statusbar.c:138
+#: ../parole/parole-statusbar.c:143
 msgid "Buffering"
 msgstr ""
 

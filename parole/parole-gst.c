@@ -30,6 +30,7 @@
 
 #include <gst/gst.h>
 #include <gst/interfaces/xoverlay.h>
+#include <gst/interfaces/navigation.h>
 
 #include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
@@ -429,8 +430,7 @@ parole_gst_set_subtitle_encoding (ParoleGst *gst)
 static void
 parole_gst_load_subtitle (ParoleGst *gst)
 {
-    ParoleMediaFile *file;
-    const gchar *uri;
+    gchar *uri;
     gchar *sub;
     gchar *sub_uri;
     gboolean sub_enabled;
@@ -443,10 +443,9 @@ parole_gst_load_subtitle (ParoleGst *gst)
 	return;
 	
     g_object_get (G_OBJECT (gst->priv->stream),
-		  "media-file", &file,
+		  "uri", &uri,
 		  NULL);
 	
-    uri = parole_media_file_get_uri (file);
     sub = parole_get_subtitle_path (uri);
 
     if ( sub )
@@ -459,7 +458,7 @@ parole_gst_load_subtitle (ParoleGst *gst)
 	g_free (sub);
 	g_free (sub_uri);
     }
-    g_object_unref (file);
+    g_free (uri);
 }
 
 static void
@@ -797,7 +796,7 @@ parole_gst_change_state (ParoleGst *gst, GstState new)
 static void
 parole_gst_play_file_internal (ParoleGst *gst)
 {
-    ParoleMediaFile *file;
+    gchar *uri;
     
     TRACE ("Start");
     
@@ -807,18 +806,18 @@ parole_gst_play_file_internal (ParoleGst *gst)
     }
     
     g_object_get (G_OBJECT (gst->priv->stream),
-		  "media-file", &file,
+		  "uri", &uri,
 		  NULL);
     
     g_object_set (G_OBJECT (gst->priv->playbin),
-		  "uri", parole_media_file_get_uri (file),
+		  "uri", uri,
 		  "suburi", NULL,
 		  NULL);
 
     parole_gst_load_subtitle (gst);
 	    
     parole_gst_change_state (gst, GST_STATE_PLAYING);
-    g_object_unref (file);
+    g_free (uri);
 }
 
 static void
@@ -890,6 +889,60 @@ parole_gst_motion_notify_event (GtkWidget *widget, GdkEventMotion *ev)
     return ret;
 }
 
+static gboolean
+parole_gst_button_press_event (GtkWidget *widget, GdkEventButton *ev)
+{
+    ParoleGst *gst;
+    GstNavigation *nav;
+    gboolean playing_video;
+    gboolean ret = FALSE;
+    
+    gst = PAROLE_GST (widget);
+    
+    g_object_get (G_OBJECT (gst->priv->stream),
+		  "has-video", &playing_video,
+		  NULL);
+    
+    if ( gst->priv->state == GST_STATE_PLAYING && playing_video)
+    {
+	nav = GST_NAVIGATION (gst->priv->video_sink);
+	gst_navigation_send_mouse_event (nav, "mouse-button-press", ev->button, ev->x, ev->y);
+	ret = TRUE;
+    }
+    
+    if (GTK_WIDGET_CLASS (parole_gst_parent_class)->button_press_event)
+	ret |= GTK_WIDGET_CLASS (parole_gst_parent_class)->button_press_event (widget, ev);
+
+    return ret;
+}
+
+static gboolean
+parole_gst_button_release_event (GtkWidget *widget, GdkEventButton *ev)
+{
+    ParoleGst *gst;
+    GstNavigation *nav;
+    gboolean playing_video;
+    gboolean ret = FALSE;
+    
+    gst = PAROLE_GST (widget);
+    
+    g_object_get (G_OBJECT (gst->priv->stream),
+		  "has-video", &playing_video,
+		  NULL);
+    
+    if ( gst->priv->state == GST_STATE_PLAYING && playing_video)
+    {
+	nav = GST_NAVIGATION (gst->priv->video_sink);
+	gst_navigation_send_mouse_event (nav, "mouse-button-release", ev->button, ev->x, ev->y);
+	ret = TRUE;
+    }
+    
+    if (GTK_WIDGET_CLASS (parole_gst_parent_class)->button_release_event)
+	ret |= GTK_WIDGET_CLASS (parole_gst_parent_class)->button_release_event (widget, ev);
+
+    return ret;
+}
+
 static void
 parole_gst_conf_notify_cb (GObject *object, GParamSpec *spec, ParoleGst *gst)
 {
@@ -915,6 +968,8 @@ parole_gst_class_init (ParoleGstClass *klass)
     widget_class->size_allocate = parole_gst_size_allocate;
     widget_class->expose_event = parole_gst_expose_event;
     widget_class->motion_notify_event = parole_gst_motion_notify_event;
+    widget_class->button_press_event = parole_gst_button_press_event;
+    widget_class->button_release_event = parole_gst_button_release_event;
 
     signals[MEDIA_STATE] = 
         g_signal_new ("media-state",
@@ -1015,7 +1070,7 @@ parole_gst_new (void)
     return GTK_WIDGET (parole_gst_object);
 }
 
-void parole_gst_play_file (ParoleGst *gst, ParoleMediaFile *file)
+void parole_gst_play_uri (ParoleGst *gst, const gchar *uri)
 {
     g_mutex_lock (gst->priv->lock);
     
@@ -1024,7 +1079,7 @@ void parole_gst_play_file (ParoleGst *gst, ParoleMediaFile *file)
     parole_stream_init_properties (gst->priv->stream);
     
     g_object_set (G_OBJECT (gst->priv->stream),
-	          "media-file", g_object_ref (file),
+	          "uri", uri,
 		  NULL);
 
     g_mutex_unlock (gst->priv->lock);

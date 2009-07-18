@@ -1,3 +1,12 @@
+2009-07-19: 01:00  Ali aliov@xfce.org
+	* Parole now can play DVD/VCD.
+	* parole/parole-stream.c no need to hold a reference to 
+	ParoleMediaFile	object.
+	* Change the flag of dbus_request_name to 
+	DBUS_NAME_FLAG_ALLOW_REPLACEMENT to make the -i (new instance) 
+	command line working and opening a new instance, such a way 
+	if the old instance exists the new one will take the DBus name.
+
 2009-07-16: Ali aliov@xfce.org
         * Parole now has a simple plugin interface. (not yet complete).
 	* plugins/properties: media properties plugin (Read only,
