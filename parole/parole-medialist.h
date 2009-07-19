@@ -57,6 +57,9 @@ typedef struct
 								  
     void			(*media_cursor_changed)		    (ParoleMediaList *list,
 								     gboolean media_selected);
+								     
+    void			(*uri_opened)			    (ParoleMediaList *list,
+								     const gchar *uri);
     
 } ParoleMediaListClass;
 

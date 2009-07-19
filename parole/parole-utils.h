@@ -38,4 +38,6 @@ gchar          *parole_get_name_without_extension 	(const gchar *name)G_GNUC_MAL
 
 gchar          *parole_get_subtitle_path		(const gchar *uri) G_GNUC_MALLOC G_GNUC_WARN_UNUSED_RESULT;
 
+gboolean	parole_is_uri_disc			(const gchar *uri);
+
 #endif /* __PAROLE_UTILS_ */

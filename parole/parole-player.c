@@ -245,11 +245,17 @@ parole_player_disc_selected_cb (ParoleDisc *disc, const gchar *uri, ParolePlayer
 }
 
 static void
+parole_player_uri_opened_cb (ParoleMediaList *list, const gchar *uri, ParolePlayer *player)
+{
+    parole_player_reset (player);
+    parole_gst_play_uri (PAROLE_GST (player->priv->gst), uri);
+}
+
+static void
 parole_player_media_cursor_changed_cb (ParoleMediaList *list, gboolean media_selected, ParolePlayer *player)
 {
     if (!player->priv->state != PAROLE_MEDIA_STATE_PLAYING)
 	gtk_widget_set_sensitive (player->priv->play_pause, media_selected);
-	
 }
 
 static void
@@ -971,6 +977,9 @@ parole_player_init (ParolePlayer *player)
 		      
     g_signal_connect (player->priv->list, "media_cursor_changed",
 		      G_CALLBACK (parole_player_media_cursor_changed_cb), player);
+		      
+    g_signal_connect (player->priv->list, "uri-opened",
+		      G_CALLBACK (parole_player_uri_opened_cb), player);
 
     gtk_builder_connect_signals (builder, player);
     g_object_unref (builder);
@@ -987,4 +996,9 @@ parole_player_new (void)
 ParoleMediaList	*parole_player_get_media_list (ParolePlayer *player)
 {
     return player->priv->list;
+}
+
+void parole_player_play_uri_disc (ParolePlayer *player, const gchar *uri)
+{
+    parole_player_disc_selected_cb (NULL, uri, player);
 }

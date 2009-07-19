@@ -161,7 +161,6 @@ parole_media_chooser_open (GtkWidget *widget, ParoleMediaChooser *chooser)
 void
 parole_media_chooser_open_location_cb (GtkButton *bt, ParoleMediaChooser *chooser)
 {
-    ParoleMediaFile *file;
     GtkWidget *entry;
     const gchar *location;
 
@@ -173,9 +172,9 @@ parole_media_chooser_open_location_cb (GtkButton *bt, ParoleMediaChooser *choose
 
     TRACE ("Location %s", location);
 
-    file = parole_media_file_new (location);
     gtk_widget_hide (GTK_WIDGET (chooser));
-    g_signal_emit (G_OBJECT (chooser), signals [MEDIA_FILE_OPENED], 0, file);
+    g_signal_emit (G_OBJECT (chooser), signals [LOCATION_OPENED], 0, location);
+    
 out:
     parole_media_chooser_close (NULL, chooser);
 }
@@ -286,6 +285,15 @@ parole_media_chooser_class_init (ParoleMediaChooserClass *klass)
                       NULL, NULL,
                       g_cclosure_marshal_VOID__OBJECT,
                       G_TYPE_NONE, 1, G_TYPE_OBJECT);
+
+    signals[LOCATION_OPENED] = 
+        g_signal_new("location-opened",
+                      PAROLE_TYPE_MEDIA_CHOOSER,
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET (ParoleMediaChooserClass, location_opened),
+                      NULL, NULL,
+                      g_cclosure_marshal_VOID__STRING,
+                      G_TYPE_NONE, 1, G_TYPE_STRING);
 
     object_class->finalize = parole_media_chooser_finalize;
 }

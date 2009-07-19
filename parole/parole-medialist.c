@@ -103,6 +103,7 @@ enum
 {
     MEDIA_ACTIVATED,
     MEDIA_CURSOR_CHANGED,
+    URI_OPENED,
     LAST_SIGNAL
 };
 
@@ -123,7 +124,7 @@ parole_media_list_add (ParoleMediaList *list, ParoleMediaFile *file, gboolean em
     GtkTreePath *path;
     GtkTreeRowReference *row;
     GtkTreeIter iter;
-			      
+    
     list_store = GTK_LIST_STORE (gtk_tree_view_get_model (GTK_TREE_VIEW (list->priv->view)));
     
     gtk_list_store_append (list_store, &iter);
@@ -171,6 +172,22 @@ parole_media_list_files_opened_cb (ParoleMediaChooser *chooser, GSList *files, P
 }
 
 static void
+parole_media_list_location_opened_cb (ParoleMediaChooser *chooser, const gchar *location, ParoleMediaList *list)
+{
+    ParoleMediaFile *file;
+    
+    if ( parole_is_uri_disc (location) )
+    {
+	g_signal_emit (G_OBJECT (list), signals [URI_OPENED], 0, location);
+    }
+    else
+    {
+	file = parole_media_file_new (location);
+	parole_media_list_add (list, file, TRUE);
+    }
+}
+
+static void
 parole_media_list_open_internal (ParoleMediaList *list, gboolean multiple)
 {
     GtkWidget *chooser;
@@ -195,8 +212,8 @@ parole_media_list_open_location_internal (ParoleMediaList *list)
     
     chooser = parole_media_chooser_open_location (gtk_widget_get_toplevel (GTK_WIDGET (list)));
 					       
-    g_signal_connect (G_OBJECT (chooser), "media_file_opened",
-		          G_CALLBACK (parole_media_list_file_opened_cb), list);
+    g_signal_connect (G_OBJECT (chooser), "location-opened",
+		          G_CALLBACK (parole_media_list_location_opened_cb), list);
     
     gtk_widget_show_all (GTK_WIDGET (chooser));
 }
@@ -470,6 +487,15 @@ parole_media_list_class_init (ParoleMediaListClass *klass)
                       g_cclosure_marshal_VOID__BOOLEAN,
                       G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
 
+    signals[URI_OPENED] = 
+        g_signal_new ("uri-opened",
+                      PAROLE_TYPE_MEDIA_LIST,
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET (ParoleMediaListClass, uri_opened),
+                      NULL, NULL,
+                      g_cclosure_marshal_VOID__STRING,
+                      G_TYPE_NONE, 1, G_TYPE_STRING);
+
     g_type_class_add_private (klass, sizeof (ParoleMediaListPrivate));
     
     parole_media_list_dbus_class_init (klass);
@@ -663,6 +689,10 @@ static gboolean	 parole_media_list_dbus_add_files (ParoleMediaList *list,
 					           gchar **in_files,
 						   GError **error);
 
+static gboolean  parole_media_list_dbus_play_disc (ParoleMediaList *list,
+						   gchar *in_uri,
+						   GError **error);
+
 #include "org.parole.media.list.h"
 
 /*
@@ -691,5 +721,17 @@ static gboolean	 parole_media_list_dbus_add_files (ParoleMediaList *list,
     
     parole_media_list_add_files (list, in_files);
     
+    return TRUE;
+}
+
+static gboolean  parole_media_list_dbus_play_disc (ParoleMediaList *list,
+						   gchar *in_uri,
+						   GError **error)
+{
+    TRACE ("uri : %s", in_uri);
+    
+    if ( parole_is_uri_disc (in_uri) )
+	g_signal_emit (G_OBJECT (list), signals [URI_OPENED], 0, in_uri);
+	
     return TRUE;
 }

@@ -49,6 +49,9 @@ typedef struct
 								     
     void			 (*media_file_opened)		    (ParoleMediaChooser *chooser,
 								     ParoleMediaFile *file);
+								     
+    void			 (*location_opened)		    (ParoleMediaChooser *chooser,
+								     const gchar *address);
     
 } ParoleMediaChooserClass;
 

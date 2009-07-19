@@ -11,5 +11,9 @@
       <arg type="as" name="files" direction="in"/>
     </method>
 
+    <method name="PlayDisc">
+	<arg type="s" name="uri" direction="in"/>
+    </method>
+
     </interface>
 </node>

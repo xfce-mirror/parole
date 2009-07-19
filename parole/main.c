@@ -47,45 +47,77 @@
 #include "parole-builder.h"
 
 static void
-parole_send_files (gchar **filenames)
+parole_send_play_disc (DBusGProxy *proxy, const gchar *uri)
+{
+    GError *error = NULL;
+    
+    dbus_g_proxy_call (proxy, "PlayDisc", &error,
+		       G_TYPE_STRING, uri,
+		       G_TYPE_INVALID,
+		       G_TYPE_INVALID);
+		       
+    if ( error )
+    {
+	g_critical ("Unable to send uri to Parole: %s", error->message);
+	g_error_free (error);
+    }
+}
+
+static void
+parole_send_files (DBusGProxy *proxy, gchar **filenames)
 {
     GFile *file;
-    DBusGConnection *bus;
-    DBusGProxy *proxy;
     gchar **out_paths;
     GError *error = NULL;
     guint i;
-    
-    bus = parole_g_session_bus_get ();
-    
-    out_paths = g_new (gchar *, g_strv_length (filenames));
-    
+
+    out_paths = g_new0 (gchar *, g_strv_length (filenames));
+
     for ( i = 0; filenames && filenames[i]; i++)
     {
 	file = g_file_new_for_commandline_arg (filenames[i]);
 	out_paths[i] = g_file_get_path (file);
 	g_object_unref (file);
     }
-    
-    proxy = dbus_g_proxy_new_for_name (bus, 
-				       PAROLE_DBUS_NAME,
-				       PAROLE_DBUS_PATH,
-				       PAROLE_DBUS_INTERFACE);
-				       
+
     dbus_g_proxy_call (proxy, "AddFiles", &error,
 		       G_TYPE_STRV, out_paths,
 		       G_TYPE_INVALID,
 		       G_TYPE_INVALID);
+		       
 		       
     if ( error )
     {
 	g_critical ("Unable to send media files to Parole: %s", error->message);
 	g_error_free (error);
     }
+
+    g_strfreev (out_paths);
+}
+
+static void
+parole_send (gchar **filenames)
+{
+    DBusGConnection *bus;
+    DBusGProxy *proxy;
     
+    bus = parole_g_session_bus_get ();
+    
+    proxy = dbus_g_proxy_new_for_name (bus, 
+				       PAROLE_DBUS_NAME,
+				       PAROLE_DBUS_PATH,
+				       PAROLE_DBUS_INTERFACE);
+	
+    if ( !proxy )
+	g_error ("Unable to create proxy for %s", PAROLE_DBUS_NAME);
+	
+    if ( g_strv_length (filenames) == 1 && parole_is_uri_disc (filenames[0]))
+	parole_send_play_disc (proxy, filenames[0]);
+    else
+	parole_send_files (proxy, filenames);
+	
     g_object_unref (proxy);
     dbus_g_connection_unref (bus);
-    g_strfreev (out_paths);
 }
 
 int main (int argc, char **argv)
@@ -133,7 +165,7 @@ int main (int argc, char **argv)
     {
 	TRACE ("Parole is already running");
 	if ( filenames && filenames[0] != NULL )
-	    parole_send_files (filenames);
+	    parole_send (filenames);
     }
     else
     {
@@ -143,9 +175,16 @@ int main (int argc, char **argv)
 
 	if ( filenames && filenames[0] != NULL )
 	{
-	    ParoleMediaList *list;
-	    list = parole_player_get_media_list (player);
-	    parole_media_list_add_files (list, filenames);
+	    if ( g_strv_length (filenames) == 1 && parole_is_uri_disc (filenames[0]))
+	    {
+		parole_player_play_uri_disc (player, filenames[0]);
+	    }
+	    else
+	    {
+		ParoleMediaList *list;
+		list = parole_player_get_media_list (player);
+		parole_media_list_add_files (list, filenames);
+	    }
 	}
 	plugins = parole_plugins_manager_new ();
 	parole_plugins_manager_load_plugins (plugins);

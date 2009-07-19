@@ -346,3 +346,13 @@ gchar *parole_get_subtitle_path (const gchar *uri)
     
     return ret;
 }
+
+gboolean
+parole_is_uri_disc (const gchar *uri)
+{
+    if (   !g_strcmp0 (uri, "dvd:/")  || !g_strcmp0 (uri, "vcd:/") 
+        || !g_strcmp0 (uri, "svcd:/") || !g_strcmp0 (uri, "cdda:/"))
+	return TRUE;
+    else
+	return FALSE;
+}
