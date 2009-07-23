@@ -327,10 +327,12 @@ parole_gst_tick_timeout (gpointer data)
     
     if ( G_UNLIKELY (format != GST_FORMAT_TIME ) )
 	goto out;
-	
-    value = ( pos / ((gdouble) 60 * 1000 * 1000 * 1000 ));
-    
-    g_signal_emit (G_OBJECT (gst), signals [MEDIA_PROGRESSED], 0, gst->priv->stream, value);
+
+    if ( gst->priv->state == GST_STATE_PLAYING )
+    {
+	value = ( pos / ((gdouble) 60 * 1000 * 1000 * 1000 ));
+	g_signal_emit (G_OBJECT (gst), signals [MEDIA_PROGRESSED], 0, gst->priv->stream, value);
+    }
 
 out:
     if ( g_timer_elapsed (gst->priv->hidecursor_timer, NULL ) > HIDE_WINDOW_CURSOR_TIMEOUT )

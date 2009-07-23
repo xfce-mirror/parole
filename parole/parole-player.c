@@ -32,14 +32,13 @@
 #include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
 
-#include "common/parole-builder.h"
-#include "common/parole-about.h"
+#include "parole-builder.h"
+#include "parole-about.h"
 
 #include "parole-player.h"
-#include "parole-sidebar.h"
 #include "parole-gst.h"
 #include "parole-mediachooser.h"
-#include "parole-mediafile.h"
+#include "parole-file.h"
 #include "parole-disc.h"
 #include "parole-statusbar.h"
 #include "parole-screensaver.h"
@@ -81,9 +80,6 @@ void		parole_player_show_hide_playlist	(GtkButton *button,
 							 ParolePlayer *player);
 
 /*Menu items callbacks*/
-void            parole_player_menu_open_cb              (GtkWidget *widget, 
-							 ParolePlayer *player);
-
 void            parole_player_menu_open_location_cb     (GtkWidget *widget, 
 							 ParolePlayer *player);
 
@@ -122,7 +118,6 @@ struct ParolePlayerPrivate
     ParoleStatusbar     *status;
     ParoleDisc          *disc;
     ParoleScreenSaver   *screen_saver;
-    ParoleSidebar       *sidebar;
 
     GtkWidget 		*gst;
 
@@ -214,7 +209,7 @@ parole_player_reset (ParolePlayer *player)
 static void
 parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *row, ParolePlayer *player)
 {
-    ParoleMediaFile *file;
+    ParoleFile *file;
     GtkTreeIter iter;
     GtkTreeModel *model;
 
@@ -229,9 +224,9 @@ parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *ro
 	
 	if ( file )
 	{
-	    TRACE ("Trying to play media file %s", parole_media_file_get_uri (file));
+	    TRACE ("Trying to play media file %s", parole_file_get_uri (file));
 	    gtk_widget_set_sensitive (player->priv->stop, TRUE);
-	    parole_gst_play_uri (PAROLE_GST (player->priv->gst), parole_media_file_get_uri (file));
+	    parole_gst_play_uri (PAROLE_GST (player->priv->gst), parole_file_get_uri (file));
 	    g_object_unref (file);
 	}
     }
@@ -624,7 +619,6 @@ parole_player_full_screen_menu_item_activate (ParolePlayer *player)
 {
     if ( player->priv->full_screen )
     {
-	parole_sidebar_set_visible (player->priv->sidebar, TRUE); 
 	parole_statusbar_set_visible (player->priv->status, TRUE);
 	gtk_widget_show (player->priv->play_box);
 	gtk_widget_show (player->priv->menu_bar);
@@ -634,7 +628,6 @@ parole_player_full_screen_menu_item_activate (ParolePlayer *player)
     }
     else
     {
-	parole_sidebar_set_visible (player->priv->sidebar, FALSE); 
 	parole_statusbar_set_visible (player->priv->status, FALSE);
 	gtk_widget_hide (player->priv->play_box);
 	gtk_widget_hide (player->priv->menu_bar);
@@ -756,12 +749,6 @@ parole_player_gst_widget_motion_notify_event (GtkWidget *widget, GdkEventMotion 
 }
 
 void
-parole_player_menu_open_cb (GtkWidget *widget, ParolePlayer *player)
-{
-    parole_media_list_open (player->priv->list, FALSE);
-}
-
-void
 parole_player_menu_open_location_cb (GtkWidget *widget, ParolePlayer *player)
 {
     parole_media_list_open_location (player->priv->list);
@@ -770,7 +757,7 @@ parole_player_menu_open_location_cb (GtkWidget *widget, ParolePlayer *player)
 void
 parole_player_menu_add_cb (GtkWidget *widget, ParolePlayer *player)
 {
-    parole_media_list_open (player->priv->list, TRUE);
+    parole_media_list_open (player->priv->list);
 }
 
 void parole_player_open_preferences_cb	(GtkWidget *widget, ParolePlayer *player)
@@ -846,7 +833,6 @@ parole_player_finalize (GObject *object)
     g_object_unref (player->priv->status);
     g_object_unref (player->priv->disc);
     g_object_unref (player->priv->screen_saver);
-    g_object_unref (player->priv->sidebar);
 
     G_OBJECT_CLASS (parole_player_parent_class)->finalize (object);
 }
@@ -890,7 +876,6 @@ parole_player_init (ParolePlayer *player)
      */
     g_object_ref (player->priv->gst);
     
-    player->priv->sidebar = parole_sidebar_new ();
     player->priv->status = parole_statusbar_new ();
     player->priv->disc = parole_disc_new ();
     g_signal_connect (player->priv->disc, "disc-selected",

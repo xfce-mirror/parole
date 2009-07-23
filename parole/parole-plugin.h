@@ -25,7 +25,6 @@
 #include <gtk/gtk.h>
 
 #include <parole/parole-stream.h>
-#include <parole/parole-mediafile.h>
 
 G_BEGIN_DECLS
 
@@ -87,9 +86,6 @@ void			     parole_plugin_pack_widget	   (ParolePlugin *plugin,
 gboolean		     parole_plugin_play_uri        (ParolePlugin *plugin,
 							    const gchar *uri);
 
-gboolean		     parole_plugin_play_file       (ParolePlugin *plugin,
-							    ParoleMediaFile *file);
-							    
 gboolean		     parole_plugin_pause_playing   (ParolePlugin *plugin);
 
 gboolean		     parole_plugin_resume          (ParolePlugin *plugin);

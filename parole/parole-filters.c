@@ -31,7 +31,18 @@
 
 #include "parole-filters.h"
 #include "parole-utils.h"
+#include "parole-pl-parser.h"
 #include "data/mime/parole-mime-types.h"
+
+static char *playlist_mime_types[] = {
+    "text/plain",
+    "audio/x-mpegurl",
+    "audio/playlist",
+    "audio/x-scpls",
+    "audio/x-ms-asx",
+    "application/xml",
+    "application/xspf+xml",
+};
 
 /*
  * Supported Audio formats.
@@ -90,14 +101,45 @@ GtkFileFilter 		*parole_get_supported_media_filter	(void)
     return filter;
 }
 
-gboolean parole_file_filter (GtkFileFilter *filter, ParoleMediaFile *file)
+GtkFileFilter *parole_get_supported_files_filter (void)
+{
+    GtkFileFilter *filter;
+    guint i;
+    
+    filter = parole_get_supported_media_filter ();
+    
+    gtk_file_filter_set_name (filter, _("All supported files"));
+    
+    for ( i = 0; i < G_N_ELEMENTS (playlist_mime_types); i++)
+	gtk_file_filter_add_mime_type (filter, playlist_mime_types[i]);
+    
+    return filter;
+    
+}
+
+GtkFileFilter 	*parole_get_supported_playlist_filter	(void)
+{
+    GtkFileFilter *filter;
+    guint i;
+    
+    filter = gtk_file_filter_new ();
+    
+    gtk_file_filter_set_name (filter, _("Playlist files"));
+    
+    for ( i = 0; i < G_N_ELEMENTS (playlist_mime_types); i++)
+	gtk_file_filter_add_mime_type (filter, playlist_mime_types[i]);
+    
+    return filter;
+}
+
+gboolean parole_file_filter (GtkFileFilter *filter, ParoleFile *file)
 {
     GtkFileFilterInfo filter_info;
 
     gboolean ret;
     
-    filter_info.display_name = parole_media_file_get_display_name (file);
-    filter_info.mime_type = parole_media_file_get_content_type (file);
+    filter_info.display_name = parole_file_get_display_name (file);
+    filter_info.mime_type = parole_file_get_content_type (file);
     
     filter_info.contains = GTK_FILE_FILTER_DISPLAY_NAME | GTK_FILE_FILTER_MIME_TYPE;
     
@@ -108,16 +150,32 @@ gboolean parole_file_filter (GtkFileFilter *filter, ParoleMediaFile *file)
 
 void parole_get_media_files (GtkFileFilter *filter, const gchar *path, GSList **list)
 {
+    GtkFileFilter *playlist_filter;
     GSList *list_internal = NULL;
+    GSList *playlist = NULL;
     GDir *dir;
     const gchar *name;
-    ParoleMediaFile *file;
+    ParoleFile *file;
+
+    playlist_filter = parole_get_supported_playlist_filter ();
+    g_object_ref_sink (playlist_filter);
 
     if ( g_file_test (path, G_FILE_TEST_IS_REGULAR ) )
     {
-	file = parole_media_file_new (path);
-	if ( parole_file_filter (filter, file) )
+	file = parole_file_new (path);
+	if ( parole_file_filter (playlist_filter, file) )
+	{
+	    playlist = parole_pl_parser_load_file (path);
+	    g_object_unref (file);
+	    if ( playlist)
+	    {
+		*list = g_slist_concat (*list, playlist);
+	    }
+	}
+	else if ( parole_file_filter (filter, file) )
+	{
 	    *list = g_slist_append (*list, file);
+	}
 	else
 	    g_object_unref (file);
     }
@@ -137,9 +195,20 @@ void parole_get_media_files (GtkFileFilter *filter, const gchar *path, GSList **
 	    }
 	    else if ( g_file_test (path_internal, G_FILE_TEST_IS_REGULAR) )
 	    {
-		file = parole_media_file_new (path_internal);
-		if ( parole_file_filter (filter, file) )
+		file = parole_file_new (path_internal);
+		if ( parole_file_filter (playlist_filter, file) )
+		{
+		    playlist = parole_pl_parser_load_file (path);
+		    g_object_unref (file);
+		    if ( playlist)
+		    {
+			*list = g_slist_concat (*list, playlist);
+		    }
+		}
+		else if ( parole_file_filter (filter, file) )
+		{
 		    list_internal = g_slist_append (list_internal, file);
+		}
 		else
 		    g_object_unref (file);
 	    }
@@ -149,4 +218,6 @@ void parole_get_media_files (GtkFileFilter *filter, const gchar *path, GSList **
 	g_dir_close (dir);
 	*list = g_slist_concat (*list, list_internal);
     }
+    
+    g_object_unref (playlist_filter);
 }

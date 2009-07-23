@@ -46,12 +46,13 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="remove-media">
+          <object class="GtkButton" id="save-playlist">
             <property name="visible">True</property>
+            <property name="sensitive">False</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="image">image2</property>
-            <signal name="clicked" handler="parole_media_list_remove_clicked_cb"/>
+            <property name="image">image5</property>
+            <signal name="clicked" handler="parole_media_list_save_cb"/>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -59,12 +60,13 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="media-up">
+          <object class="GtkButton" id="remove-media">
             <property name="visible">True</property>
+            <property name="sensitive">False</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="image">image3</property>
-            <signal name="clicked" handler="parole_media_list_media_up_clicked_cb"/>
+            <property name="image">image2</property>
+            <signal name="clicked" handler="parole_media_list_remove_clicked_cb"/>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -72,8 +74,23 @@
           </packing>
         </child>
         <child>
+          <object class="GtkButton" id="media-up">
+            <property name="visible">True</property>
+            <property name="sensitive">False</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="image">image3</property>
+            <signal name="clicked" handler="parole_media_list_media_up_clicked_cb"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="position">3</property>
+          </packing>
+        </child>
+        <child>
           <object class="GtkButton" id="media-down">
             <property name="visible">True</property>
+            <property name="sensitive">False</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="image">image4</property>
@@ -81,7 +98,7 @@
           </object>
           <packing>
             <property name="expand">False</property>
-            <property name="position">3</property>
+            <property name="position">4</property>
           </packing>
         </child>
       </object>
@@ -107,5 +124,9 @@
   <object class="GtkImage" id="image4">
     <property name="visible">True</property>
     <property name="stock">gtk-go-down</property>
+  </object>
+  <object class="GtkImage" id="image5">
+    <property name="visible">True</property>
+    <property name="stock">gtk-save-as</property>
   </object>
 </interface>

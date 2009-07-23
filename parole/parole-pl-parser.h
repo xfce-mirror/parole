@@ -18,38 +18,31 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_SIDEBAR_H
-#define __PAROLE_SIDEBAR_H
+#ifndef __PAROLE_PL_PARSER_H
+#define __PAROLE_PL_PARSER_H
 
-#include <glib-object.h>
+#include <glib.h>
 
 G_BEGIN_DECLS
 
-#define PAROLE_TYPE_SIDEBAR        (parole_sidebar_get_type () )
-#define PAROLE_SIDEBAR(o)          (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_SIDEBAR, ParoleSidebar))
-#define PAROLE_IS_SIDEBAR(o)       (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_SIDEBAR))
-
-typedef struct ParoleSidebarPrivate ParoleSidebarPrivate;
-
-typedef struct
+typedef enum
 {
-    GObject         	 	parent;
-    ParoleSidebarPrivate       *priv;
+    PAROLE_PL_FORMAT_UNKNOWN,
+    PAROLE_PL_FORMAT_M3U,
+    PAROLE_PL_FORMAT_PLS,
+    PAROLE_PL_FORMAT_ASX,
+    PAROLE_PL_FORMAT_XSPF
     
-} ParoleSidebar;
+} ParolePlFormat;
 
-typedef struct
-{
-    GObjectClass 	 	parent_class;
-    
-} ParoleSidebarClass;
+ParolePlFormat		 parole_pl_parser_guess_format_from_extension   (const gchar *filename);
 
-GType        		 	parole_sidebar_get_type        (void) G_GNUC_CONST;
-ParoleSidebar       	       *parole_sidebar_new             (void);
+GSList 			*parole_pl_parser_load_file		        (const gchar *filename);
 
-void				parole_sidebar_set_visible     (ParoleSidebar *sidebar,
-							        gboolean visible);
+gboolean		 parole_pl_parser_save_file		        (GSList *files,
+								         const gchar *filename,
+									 ParolePlFormat format);
 
 G_END_DECLS
 
-#endif /* __PAROLE_SIDEBAR_H */
+#endif /* __PAROLE_PL_PARSER_H */

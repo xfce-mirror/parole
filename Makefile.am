@@ -1,6 +1,5 @@
 SUBDIRS =  		\
 	data		\
-	common		\
 	parole 		\
 	plugins		\
 	docs		\

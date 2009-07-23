@@ -30,8 +30,7 @@
 
 #include <libxfcegui4/libxfcegui4.h>
 
-#include "common/parole-builder.h"
-
+#include "parole-builder.h"
 #include "parole-statusbar.h"
 
 #define PAROLE_STATUSBAR_GET_PRIVATE(o) \

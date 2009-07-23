@@ -29,7 +29,7 @@
 #include <glib.h>
 
 #include "parole-stream.h"
-#include "parole-mediafile.h"
+#include "parole-file.h"
 
 #define PAROLE_STREAM_GET_PRIVATE(o) \
 (G_TYPE_INSTANCE_GET_PRIVATE ((o), PAROLE_TYPE_STREAM, ParoleStreamPrivate))

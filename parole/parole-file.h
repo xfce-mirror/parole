@@ -25,34 +25,37 @@
 
 G_BEGIN_DECLS
 
-#define PAROLE_TYPE_MEDIA_FILE        (parole_media_file_get_type () )
-#define PAROLE_MEDIA_FILE(o)          (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_MEDIA_FILE, ParoleMediaFile))
-#define PAROLE_IS_MEDIA_FILE(o)       (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_MEDIA_FILE))
+#define PAROLE_TYPE_FILE        (parole_file_get_type () )
+#define PAROLE_FILE(o)          (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_FILE, ParoleFile))
+#define PAROLE_IS_FILE(o)       (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_FILE))
 
-typedef struct _ParoleMediaFile      ParoleMediaFile;
-typedef struct _ParoleMediaFileClass ParoleMediaFileClass;
+typedef struct _ParoleFile      ParoleFile;
+typedef struct _ParoleFileClass ParoleFileClass;
 
-struct _ParoleMediaFile
+struct _ParoleFile
 {
     GObject         		parent;
 };
 
-struct _ParoleMediaFileClass
+struct _ParoleFileClass
 {
     GObjectClass 		parent_class;
 };
 
-GType        			parole_media_file_get_type        	(void) G_GNUC_CONST;
+GType        			parole_file_get_type        	  (void) G_GNUC_CONST;
 
-ParoleMediaFile       	       *parole_media_file_new             	(const gchar *filename);
+ParoleFile       	       *parole_file_new             	  (const gchar *filename);
 
-const gchar   G_CONST_RETURN   *parole_media_file_get_file_name 	(const ParoleMediaFile *file) G_GNUC_PURE;
+ParoleFile       	       *parole_file_new_with_display_name (const gchar *filename,
+								   const gchar *display_name);
 
-const gchar   G_CONST_RETURN   *parole_media_file_get_display_name 	(const ParoleMediaFile *file) G_GNUC_PURE;
+const gchar   G_CONST_RETURN   *parole_file_get_file_name 	  (const ParoleFile *file) G_GNUC_PURE;
 
-const gchar   G_CONST_RETURN   *parole_media_file_get_uri 		(const ParoleMediaFile *file) G_GNUC_PURE;
+const gchar   G_CONST_RETURN   *parole_file_get_display_name 	  (const ParoleFile *file) G_GNUC_PURE;
 
-const gchar   G_CONST_RETURN   *parole_media_file_get_content_type      (const ParoleMediaFile *file) G_GNUC_PURE;
+const gchar   G_CONST_RETURN   *parole_file_get_uri 		  (const ParoleFile *file) G_GNUC_PURE;
+
+const gchar   G_CONST_RETURN   *parole_file_get_content_type      (const ParoleFile *file) G_GNUC_PURE;
 
 G_END_DECLS
 

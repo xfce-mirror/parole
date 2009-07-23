@@ -31,9 +31,8 @@
 
 #include <libxfce4util/libxfce4util.h>
 
-#include "common/parole-builder.h"
-
 #include "parole-disc.h"
+#include "parole-builder.h"
 
 static void parole_disc_finalize   (GObject *object);
 

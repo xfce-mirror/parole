@@ -31,7 +31,7 @@
         <property name="layout_style">end</property>
         <child>
           <object class="GtkButton" id="close">
-            <property name="label" translatable="yes">gtk-close</property>
+            <property name="label" translatable="no">gtk-close</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -46,7 +46,7 @@
         </child>
         <child>
           <object class="GtkButton" id="open">
-            <property name="label" translatable="yes">gtk-open</property>
+            <property name="label" translatable="no">gtk-open</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>

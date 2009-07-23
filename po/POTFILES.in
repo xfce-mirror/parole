@@ -4,13 +4,16 @@
 [type: gettext/glade]data/interfaces/playlist.ui
 [type: gettext/glade]data/interfaces/openlocation.ui
 [type: gettext/glade]data/interfaces/parole-settings.ui
+[type: gettext/glade]data/interfaces/save-playlist.ui
 data/desktop/parole.desktop.in.in
 parole/main.c
 parole/parole-gst.c
 parole/parole-mediachooser.c
 parole/parole-medialist.c
 parole/parole-player.c
-parole/parole-sidebar.c
 parole/parole-statusbar.c
 parole/parole-filters.c
+parole/parole-pl-parser.c
+parole/parole-about.c
+parole/parole-disc.c
 plugins/properties/stream-properties.c

@@ -27,7 +27,6 @@
 #include <string.h>
 
 #include "parole-plugin.h"
-#include "parole-medialist.h"
 #include "parole-plugins-manager.h"
 #include "parole-gst.h"
 #include "gmarshal.h"
@@ -386,23 +385,6 @@ void parole_plugin_pack_widget (ParolePlugin *plugin, GtkWidget *widget, ParoleP
  **/
 gboolean parole_plugin_play_uri (ParolePlugin *plugin, const gchar *uri)
 {
-    
-    
-    return TRUE;
-}
-
-/**
- * parole_plugin_play_file:
- * @plugin: a #ParolePlugin.
- * @file: a #ParoleMefiaFile to play.
- * 
- * Play a #ParoleMediaFile.
- * 
- * Returns: TRUE on success, FALSE otherwise.
- **/
-gboolean parole_plugin_play_file (ParolePlugin *plugin, ParoleMediaFile *file)
-{
-    
     
     
     return TRUE;

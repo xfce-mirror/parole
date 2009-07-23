@@ -3,7 +3,8 @@ interfaces =					\
 	parole-settings.ui			\
 	playlist.ui				\
 	mediachooser.ui				\
-	openlocation.ui
+	openlocation.ui				\
+	save-playlist.ui
 
 interfaces_h = 					\
 	$(interfaces:.ui=_ui.h)
@@ -25,6 +26,10 @@ mediachooser_ui.h: mediachooser.ui
 
 openlocation_ui.h: openlocation.ui
 	exo-csource --static --strip-comments --strip-content --name=openlocation_ui $< > $@
+
+save-playlist_ui.h: save-playlist.ui
+	exo-csource --static --strip-comments --strip-content --name=save_playlist_ui $< > $@
+
 endif
 
 DISTCLEANFILES =				\

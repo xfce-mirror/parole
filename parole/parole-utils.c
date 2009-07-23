@@ -125,8 +125,8 @@ compare_by_name_using_number (const gchar *ap,
  * 
  */
 gint
-thunar_file_compare_by_name (ParoleMediaFile *file_a,
-                             ParoleMediaFile *file_b,
+thunar_file_compare_by_name (ParoleFile *file_a,
+                             ParoleFile *file_b,
                              gboolean         case_sensitive)
 {
     const gchar *ap;
@@ -136,8 +136,8 @@ thunar_file_compare_by_name (ParoleMediaFile *file_a,
 
 
     /* we compare only the display names (UTF-8!) */
-    ap = parole_media_file_get_display_name (file_a);
-    bp = parole_media_file_get_display_name (file_b);
+    ap = parole_file_get_display_name (file_a);
+    bp = parole_file_get_display_name (file_b);
 
     /* check if we should ignore case */
     if (G_LIKELY (case_sensitive))
@@ -207,7 +207,7 @@ thunar_file_compare_by_name (ParoleMediaFile *file_a,
 	/* a second case is '20 file' and '2file', where comparison by number
 	 * makes sense, if the previous char for both strings is a digit.
 	 */
-	if (ap > parole_media_file_get_display_name (file_a) && bp > parole_media_file_get_display_name (file_b)
+	if (ap > parole_file_get_display_name (file_a) && bp > parole_file_get_display_name (file_b)
 	    && g_ascii_isdigit (*(ap - 1)) && g_ascii_isdigit (*(bp - 1)))
         {
 	    return compare_by_name_using_number (ap - 1, bp - 1);

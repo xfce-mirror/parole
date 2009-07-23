@@ -24,8 +24,6 @@
 #include <glib-object.h>
 #include <gtk/gtk.h>
 
-#include "parole-mediafile.h"
-
 G_BEGIN_DECLS
 
 #define PAROLE_TYPE_MEDIA_CHOOSER        (parole_media_chooser_get_type () )
@@ -47,9 +45,6 @@ typedef struct
     void			 (*media_files_opened)		    (ParoleMediaChooser *chooser,
 								     GPtrArray *array);
 								     
-    void			 (*media_file_opened)		    (ParoleMediaChooser *chooser,
-								     ParoleMediaFile *file);
-								     
     void			 (*location_opened)		    (ParoleMediaChooser *chooser,
 								     const gchar *address);
     
@@ -57,8 +52,7 @@ typedef struct
 
 GType        			 parole_media_chooser_get_type      (void) G_GNUC_CONST;
 
-GtkWidget			*parole_media_chooser_open_local    (GtkWidget *parent,
-								     gboolean multiple);
+GtkWidget			*parole_media_chooser_open_local    (GtkWidget *parent);
 								     
 GtkWidget			*parole_media_chooser_open_location (GtkWidget *parent);
 

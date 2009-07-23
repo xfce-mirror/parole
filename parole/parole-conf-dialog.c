@@ -26,9 +26,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "common/parole-builder.h"
 #include "interfaces/parole-settings_ui.h"
 
+#include "parole-builder.h"
 #include "parole-conf-dialog.h"
 #include "parole-conf.h"
 #include "parole-vis.h"

@@ -30,8 +30,7 @@
 
 #include <libxfce4util/libxfce4util.h>
 
-#include "common/parole-builder.h"
-
+#include "parole-builder.h"
 #include "parole-plugins-manager.h"
 #include "parole-module.h"
 

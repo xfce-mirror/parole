@@ -29,14 +29,14 @@
 #include <glib.h>
 #include <gio/gio.h>
 
-#include "parole-mediafile.h"
+#include "parole-file.h"
 
-#define PAROLE_MEDIA_FILE_GET_PRIVATE(o) \
-(G_TYPE_INSTANCE_GET_PRIVATE ((o), PAROLE_TYPE_MEDIA_FILE, ParoleMediaFilePrivate))
+#define PAROLE_FILE_GET_PRIVATE(o) \
+(G_TYPE_INSTANCE_GET_PRIVATE ((o), PAROLE_TYPE_FILE, ParoleFilePrivate))
 
-typedef struct _ParoleMediaFilePrivate ParoleMediaFilePrivate;
+typedef struct _ParoleFilePrivate ParoleFilePrivate;
 
-struct _ParoleMediaFilePrivate
+struct _ParoleFilePrivate
 {
     gchar 	*filename;
     gchar 	*display_name;
@@ -54,18 +54,18 @@ enum
     PROP_CONTENT_TYPE
 };
 
-G_DEFINE_TYPE (ParoleMediaFile, parole_media_file, G_TYPE_OBJECT)
+G_DEFINE_TYPE (ParoleFile, parole_file, G_TYPE_OBJECT)
 
 static void
-parole_media_file_finalize (GObject *object)
+parole_file_finalize (GObject *object)
 {
-    ParoleMediaFile *file;
-    ParoleMediaFilePrivate *priv;
+    ParoleFile *file;
+    ParoleFilePrivate *priv;
 
-    file = PAROLE_MEDIA_FILE (object);
-    priv = PAROLE_MEDIA_FILE_GET_PRIVATE (file);
+    file = PAROLE_FILE (object);
+    priv = PAROLE_FILE_GET_PRIVATE (file);
     
-    g_debug ("media file object finalized %s", priv->display_name);
+    g_debug ("File object finalized %s", priv->display_name);
     
     if ( priv->filename )
 	g_free (priv->filename);
@@ -79,48 +79,23 @@ parole_media_file_finalize (GObject *object)
     if ( priv->content_type )
 	g_free (priv->content_type);
     
-    G_OBJECT_CLASS (parole_media_file_parent_class)->finalize (object);
+    G_OBJECT_CLASS (parole_file_parent_class)->finalize (object);
 }
 
 static void
-parole_media_file_set_property (GObject *object, guint prop_id, 
+parole_file_set_property (GObject *object, guint prop_id, 
 			      const GValue *value, GParamSpec *pspec)
 {
-    ParoleMediaFile *file;
-    file = PAROLE_MEDIA_FILE (object);
+    ParoleFile *file;
+    file = PAROLE_FILE (object);
     
     switch (prop_id)
     {
 	case PROP_PATH:
-	    PAROLE_MEDIA_FILE_GET_PRIVATE (file)->filename = g_strdup (g_value_get_string (value));
-	    break;
-	default:
-	    G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-	    break;
-    }
-}
-
-static void
-parole_media_file_get_property (GObject *object, guint prop_id, 
-			      GValue *value, GParamSpec *pspec)
-{
-    ParoleMediaFile *file;
-
-    file = PAROLE_MEDIA_FILE (object);
-    
-    switch (prop_id)
-    {
-	case PROP_PATH:
-	    g_value_set_string (value, PAROLE_MEDIA_FILE_GET_PRIVATE (file)->filename);
-	    break;
-	case PROP_URI:
-	    g_value_set_string (value, PAROLE_MEDIA_FILE_GET_PRIVATE (file)->filename);
-	    break;
-	case PROP_CONTENT_TYPE:
-	    g_value_set_string (value, PAROLE_MEDIA_FILE_GET_PRIVATE (file)->content_type);
+	    PAROLE_FILE_GET_PRIVATE (file)->filename = g_value_dup_string (value);
 	    break;
 	case PROP_DISPLAY_NAME:
-	    g_value_set_string (value, PAROLE_MEDIA_FILE_GET_PRIVATE (file)->display_name);
+	    PAROLE_FILE_GET_PRIVATE (file)->display_name = g_value_dup_string (value);
 	    break;
 	default:
 	    G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -129,16 +104,44 @@ parole_media_file_get_property (GObject *object, guint prop_id,
 }
 
 static void
-parole_media_file_constructed (GObject *object)
+parole_file_get_property (GObject *object, guint prop_id, 
+			      GValue *value, GParamSpec *pspec)
+{
+    ParoleFile *file;
+
+    file = PAROLE_FILE (object);
+    
+    switch (prop_id)
+    {
+	case PROP_PATH:
+	    g_value_set_string (value, PAROLE_FILE_GET_PRIVATE (file)->filename);
+	    break;
+	case PROP_URI:
+	    g_value_set_string (value, PAROLE_FILE_GET_PRIVATE (file)->filename);
+	    break;
+	case PROP_CONTENT_TYPE:
+	    g_value_set_string (value, PAROLE_FILE_GET_PRIVATE (file)->content_type);
+	    break;
+	case PROP_DISPLAY_NAME:
+	    g_value_set_string (value, PAROLE_FILE_GET_PRIVATE (file)->display_name);
+	    break;
+	default:
+	    G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+	    break;
+    }
+}
+
+static void
+parole_file_constructed (GObject *object)
 {
     GFile *gfile;
     GFileInfo *info;
-    ParoleMediaFile *file;
-    ParoleMediaFilePrivate *priv;
+    ParoleFile *file;
+    ParoleFilePrivate *priv;
     GError *error = NULL;
     
-    file = PAROLE_MEDIA_FILE (object);
-    priv = PAROLE_MEDIA_FILE_GET_PRIVATE (file);
+    file = PAROLE_FILE (object);
+    priv = PAROLE_FILE_GET_PRIVATE (file);
     
     gfile = g_file_new_for_commandline_arg (priv->filename);
 
@@ -153,7 +156,8 @@ parole_media_file_constructed (GObject *object)
 	if ( G_LIKELY (error->code == G_IO_ERROR_NOT_SUPPORTED) )
 	{
 	    g_error_free (error);
-	    priv->display_name = g_file_get_basename (gfile);
+	    if ( !priv->display_name )
+	        priv->display_name = g_file_get_basename (gfile);
 	}
 	else
 	{
@@ -163,7 +167,9 @@ parole_media_file_constructed (GObject *object)
 	goto out;
     }
 
-    priv->display_name = g_strdup (g_file_info_get_display_name (info));
+    if (!priv->display_name)
+	priv->display_name = g_strdup (g_file_info_get_display_name (info));
+
     priv->content_type = g_strdup (g_file_info_get_content_type (info));
     
     g_object_unref (info);
@@ -173,18 +179,18 @@ out:
 }
 
 static void
-parole_media_file_class_init (ParoleMediaFileClass *klass)
+parole_file_class_init (ParoleFileClass *klass)
 {
     GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-    object_class->finalize = parole_media_file_finalize;
+    object_class->finalize = parole_file_finalize;
     
-    object_class->constructed = parole_media_file_constructed;
-    object_class->set_property = parole_media_file_set_property;
-    object_class->get_property = parole_media_file_get_property;
+    object_class->constructed = parole_file_constructed;
+    object_class->set_property = parole_file_set_property;
+    object_class->get_property = parole_file_get_property;
 
     /**
-     * ParoleMediaFile:filename:
+     * ParoleFile:filename:
      * 
      * The filename of the file.
      * 
@@ -199,7 +205,7 @@ parole_media_file_class_init (ParoleMediaFileClass *klass)
 							  G_PARAM_READWRITE));
 
     /**
-     * ParoleMediaFile:display-name:
+     * ParoleFile:display-name:
      * 
      * a UTF-8 name that can be displayed in the UI.
      * 
@@ -210,10 +216,11 @@ parole_media_file_class_init (ParoleMediaFileClass *klass)
 				     g_param_spec_string ("display-name",
 							  NULL, NULL,
 							  NULL,
-							  G_PARAM_READABLE));
+							  G_PARAM_CONSTRUCT_ONLY|
+							  G_PARAM_READWRITE));
 
     /**
-     * ParoleMediaFile:uri:
+     * ParoleFile:uri:
      * 
      * The Uri of the file.
      * 
@@ -227,7 +234,7 @@ parole_media_file_class_init (ParoleMediaFileClass *klass)
 							  G_PARAM_READABLE));
 
     /**
-     * ParoleMediaFile:content-type:
+     * ParoleFile:content-type:
      * 
      * The content type of the file.
      * 
@@ -240,15 +247,15 @@ parole_media_file_class_init (ParoleMediaFileClass *klass)
 							  NULL,
 							  G_PARAM_READABLE));
 
-    g_type_class_add_private (klass, sizeof (ParoleMediaFilePrivate));
+    g_type_class_add_private (klass, sizeof (ParoleFilePrivate));
 }
 
 static void
-parole_media_file_init (ParoleMediaFile *file)
+parole_file_init (ParoleFile *file)
 {
-    ParoleMediaFilePrivate *priv;
+    ParoleFilePrivate *priv;
     
-    priv = PAROLE_MEDIA_FILE_GET_PRIVATE (file);
+    priv = PAROLE_FILE_GET_PRIVATE (file);
 
     priv->filename         = NULL;
     priv->display_name = NULL;
@@ -257,77 +264,88 @@ parole_media_file_init (ParoleMediaFile *file)
 }
 
 /**
- * parole_media_file_new:
+ * parole_file_new:
  * @filename: filename.
  * 
  * 
  * 
- * Returns: A new #ParoleMediaFile object.
+ * Returns: A new #ParoleFile object.
  **/
-ParoleMediaFile *
-parole_media_file_new (const gchar *filename)
+ParoleFile *
+parole_file_new (const gchar *filename)
 {
-    ParoleMediaFile *file = NULL;
-    file = g_object_new (PAROLE_TYPE_MEDIA_FILE, "filename", filename, NULL);
+    ParoleFile *file = NULL;
+    file = g_object_new (PAROLE_TYPE_FILE, "filename", filename, NULL);
+    return file;
+}
+
+ParoleFile *
+parole_file_new_with_display_name (const gchar *filename, const gchar *display_name)
+{
+    ParoleFile *file = NULL;
+    file = g_object_new (PAROLE_TYPE_FILE, 
+			 "filename", filename, 
+			 "display-name", display_name, 
+			 NULL);
     return file;
 }
 
 /**
- * parole_media_file_get_file_name:
- * @file: a #ParoleMediaFile.
+ * parole_file_get_file_name:
+ * @file: a #ParoleFile.
  *  
  * 
  * Returns: A string containing the file name.
  **/
 const gchar *
-parole_media_file_get_file_name (const ParoleMediaFile *file)
+parole_file_get_file_name (const ParoleFile *file)
 {
-    g_return_val_if_fail (PAROLE_IS_MEDIA_FILE (file), NULL);
+    g_return_val_if_fail (PAROLE_IS_FILE (file), NULL);
     
-    return PAROLE_MEDIA_FILE_GET_PRIVATE (file)->filename;
+    return PAROLE_FILE_GET_PRIVATE (file)->filename;
 }
 
 /**
- * parole_media_file_get_display_name:
- * @file: a #ParoleMediaFile.
+ * parole_file_get_display_name:
+ * @file: a #ParoleFile.
  *  
  * 
  * Returns: A string containing the display name.
  **/
 const gchar *
-parole_media_file_get_display_name (const ParoleMediaFile *file)
+parole_file_get_display_name (const ParoleFile *file)
 {
-    g_return_val_if_fail (PAROLE_IS_MEDIA_FILE (file), NULL);
+    g_return_val_if_fail (PAROLE_IS_FILE (file), NULL);
     
-    return PAROLE_MEDIA_FILE_GET_PRIVATE (file)->display_name;
+    return PAROLE_FILE_GET_PRIVATE (file)->display_name;
 }
 
 /**
- * parole_media_file_get_uri:
- * @file: a #ParoleMediaFile.
+ * parole_file_get_uri:
+ * @file: a #ParoleFile.
  *  
  * 
  * Returns: A string containing the file uri.
  **/
 const gchar *
-parole_media_file_get_uri (const ParoleMediaFile *file)
+parole_file_get_uri (const ParoleFile *file)
 {
-    g_return_val_if_fail (PAROLE_IS_MEDIA_FILE (file), NULL);
+    g_return_val_if_fail (PAROLE_IS_FILE (file), NULL);
     
-    return PAROLE_MEDIA_FILE_GET_PRIVATE (file)->uri;
+    return PAROLE_FILE_GET_PRIVATE (file)->uri;
 }
 
 /**
- * parole_media_file_get_content_type:
- * @file: a #ParoleMediaFile.
+ * parole_file_get_content_type:
+ * @file: a #ParoleFile.
  *  
  * 
  * Returns: A string containing the content type of the file.
  **/
 const gchar *
-parole_media_file_get_content_type (const ParoleMediaFile *file) 
+parole_file_get_content_type (const ParoleFile *file) 
 {
-    g_return_val_if_fail (PAROLE_IS_MEDIA_FILE (file), NULL);
+    g_return_val_if_fail (PAROLE_IS_FILE (file), NULL);
     
-    return PAROLE_MEDIA_FILE_GET_PRIVATE (file)->content_type;
+    return PAROLE_FILE_GET_PRIVATE (file)->content_type;
 }

@@ -63,4 +63,4 @@ void		parole_debug_enum_full   (const gchar *func,
 
 G_END_DECLS
 
-#endif /* __XFPM_DEBUG_H */
+#endif /* __PAROLE_DEBUG_H */

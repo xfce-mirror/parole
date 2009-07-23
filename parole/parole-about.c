@@ -33,10 +33,9 @@
 static void
 parole_link_browser (GtkAboutDialog *about, const gchar *link, gpointer data)
 {
-    gchar *cmd = g_strdup_printf ("%s %s","xfbrowser4", link);
+    gchar *cmd = g_strdup_printf ("%s %s", "xdg-open", link);
     g_spawn_command_line_async (cmd, NULL);
     g_free (cmd);
-        
 }
 
 static void

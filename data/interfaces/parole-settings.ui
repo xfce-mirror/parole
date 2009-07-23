@@ -234,7 +234,7 @@
             <property name="visible">True</property>
             <child>
               <object class="GtkButton" id="help">
-                <property name="label" translatable="yes">gtk-help</property>
+                <property name="label" translatable="no">gtk-help</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -248,7 +248,7 @@
             </child>
             <child>
               <object class="GtkButton" id="close">
-                <property name="label" translatable="yes">gtk-close</property>
+                <property name="label" translatable="no">gtk-close</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>

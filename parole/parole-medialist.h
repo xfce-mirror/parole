@@ -80,8 +80,7 @@ void				 parole_media_list_set_row_name     (ParoleMediaList *list,
 							             GtkTreeRowReference *row,
 								     const gchar *name);
 
-void				 parole_media_list_open		    (ParoleMediaList *list,
-								     gboolean multiple);
+void				 parole_media_list_open		    (ParoleMediaList *list);
 
 void			         parole_media_list_open_location    (ParoleMediaList *list);
 

@@ -5,7 +5,6 @@ noinst_LTLIBRARIES =                    	\
 
 INCLUDES =					\
 	-I$(top_srcdir)				\
-	-I$(top_srcdir)/common			\
 	-I$(top_srcdir)/data			\
 	-I$(top_srcdir)/data/mime		\
 	-DLOCALEDIR=\"$(localedir)\"		\
@@ -30,7 +29,6 @@ PAROLE_LDFLAGS =				\
 	-export-symbols-regex "^[[^_]].*"
 
 PAROLE_LIBS = 					\
-	$(top_srcdir)/common/libparolecommon.la \
 	$(GTK_LIBS)                             \
         $(GLIB_LIBS)                            \
         $(GOBJECT_LIBS)                         \
@@ -54,7 +52,7 @@ GENERATED_FILES =				\
 INST_HFILES =					\
 	parole.h				\
 	parole-plugin.h				\
-	parole-mediafile.h			\
+	parole-file.h				\
 	parole-stream.h
 
 NOINST_HFILES =					\
@@ -62,7 +60,6 @@ NOINST_HFILES =					\
 	parole-gst.h				\
 	parole-vis.h				\
 	parole-statusbar.h			\
-	parole-sidebar.h			\
 	parole-mediachooser.h			\
 	parole-filters.h			\
 	parole-screensaver.h			\
@@ -75,7 +72,10 @@ NOINST_HFILES =					\
 	parole-medialist.h			\
 	parole-debug.h				\
 	parole-plugins-manager.h		\
-	parole-module.h	
+	parole-module.h				\
+	parole-pl-parser.h			\
+	parole-about.h				\
+	parole-builder.h
 
 libparole_headers =				\
 	$(INST_HFILES)
@@ -93,9 +93,8 @@ libparole_la_SOURCES =				\
 	parole-player.c				\
 	parole-gst.c				\
 	parole-stream.c				\
-	parole-mediafile.c			\
+	parole-file.c				\
 	parole-vis.c				\
-	parole-sidebar.c			\
 	parole-statusbar.c			\
 	parole-medialist.c			\
 	parole-mediachooser.c			\
@@ -110,7 +109,10 @@ libparole_la_SOURCES =				\
 	parole-debug.c				\
 	parole-plugins-manager.c		\
 	parole-plugin.c				\
-	parole-module.c
+	parole-module.c				\
+	parole-pl-parser.c			\
+	parole-about.c				\
+	parole-builder.c
 
 libparole_la_LDFLAGS =				\
 	$(PAROLE_LDFLAGS)
@@ -130,7 +132,8 @@ parole_media_player_LDFLAGS =			\
 
 parole_glib_enum_headers =			\
 	parole-gst.h				\
-	parole-plugin.h
+	parole-plugin.h				\
+	parole-pl-parser.h
 
 if MAINTAINER_MODE
 
@@ -162,6 +165,7 @@ enum-gtypes.c: $(parole_glib_enum_headers) Makefile
 		--fhead "#include \"enum-gtypes.h\"\n\n" \
 		--fhead "#include \"parole-gst.h\"\n\n" \
 		--fhead "#include \"parole-plugin.h\"\n\n" \
+		--fhead "#include \"parole-pl-parser.h\"\n\n" \
 		--fprod "\n/* enumerations from \"@filename@\" */" \
 		--vhead "GType\n@enum_name@_get_type (void)\n{\n  static GType etype = 0;\n  if (etype == 0) {\n    static const G@Type@Value values[] = {" \
 		--vprod "      { @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \

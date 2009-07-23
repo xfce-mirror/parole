@@ -22,7 +22,19 @@
 #define __PAROLE_FILTERS_H
 
 #include <gtk/gtk.h>
-#include "parole-mediafile.h"
+
+#include "parole-file.h"
+
+G_BEGIN_DECLS
+
+typedef enum
+{
+    PAROLE_FILE_UNKNOWN,
+    PAROLE_FILE_AUDIO,
+    PAROLE_FILE_VIDEO,
+    PAROLE_FILE_PLAYLIST
+    
+} ParoleFileFormat;
 
 GtkFileFilter 		*parole_get_supported_audio_filter	(void);
 
@@ -30,11 +42,19 @@ GtkFileFilter 		*parole_get_supported_video_filter	(void);
 
 GtkFileFilter 		*parole_get_supported_media_filter	(void);
 
+GtkFileFilter 		*parole_get_supported_files_filter	(void);
+
+GtkFileFilter 		*parole_get_supported_playlist_filter	(void);
+
 gboolean		 parole_file_filter			(GtkFileFilter *filter,
-								 ParoleMediaFile *file);
+								 ParoleFile *file);
+
+ParoleFileFormat	 parole_file_guess_format		(ParoleFile *file);
 
 void			 parole_get_media_files			(GtkFileFilter *filter,
 								 const gchar *path,
 								 GSList **list);
+
+G_END_DECLS
 
 #endif /* PAROLE_FILTERS_H */

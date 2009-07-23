@@ -32,17 +32,15 @@
 #include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
 
-#include "common/parole-builder.h"
 #include "interfaces/mediachooser_ui.h"
 #include "interfaces/openlocation_ui.h"
 
 #include "parole-mediachooser.h"
-
-#include "parole-mediafile.h"
+#include "parole-builder.h"
+#include "parole-file.h"
 #include "parole-filters.h"
 #include "parole-rc-utils.h"
 #include "parole-utils.h"
-
 
 /*
  * GtkBuilder Callbacks
@@ -59,13 +57,9 @@ void	media_chooser_folder_changed_cb (GtkWidget *widget,
 void	parole_media_chooser_open_location_cb (GtkButton *bt, 
 					       ParoleMediaChooser *chooser);
 
-#define MEDIA_CHOOSER_INTERFACE_FILE INTERFACES_DIR "/mediachooser.ui"
-#define OPEN_LOCATION_INTERFACE_FILE INTERFACES_DIR "/openlocation.ui"
-
 enum
 {
     MEDIA_FILES_OPENED,
-    MEDIA_FILE_OPENED,
     LOCATION_OPENED,
     LAST_SIGNAL
 };
@@ -94,7 +88,7 @@ media_chooser_folder_changed_cb (GtkWidget *widget, gpointer data)
 }
 
 static void
-parole_media_chooser_add_many (ParoleMediaChooser *chooser, GtkWidget *file_chooser)
+parole_media_chooser_add (ParoleMediaChooser *chooser, GtkWidget *file_chooser)
 {
     GSList *files;
     GtkFileFilter *filter;
@@ -126,36 +120,13 @@ parole_media_chooser_add_many (ParoleMediaChooser *chooser, GtkWidget *file_choo
 void
 parole_media_chooser_open (GtkWidget *widget, ParoleMediaChooser *chooser)
 {
-    ParoleMediaFile *file;
     GtkWidget *file_chooser;
-    gboolean  multiple;
-    gchar *filename;
 
     file_chooser = GTK_WIDGET (g_object_get_data (G_OBJECT (chooser), "file-chooser"));
     
-    multiple = gtk_file_chooser_get_select_multiple (GTK_FILE_CHOOSER (file_chooser));
-    
-    /*
-     * Emit one file opened
-     */
-    if ( multiple == FALSE )
-    {
-	filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (file_chooser));
-	
-	if ( G_LIKELY (filename != NULL ) )
-	{
-	    file = parole_media_file_new (filename);
-	    g_signal_emit (G_OBJECT (chooser), signals [MEDIA_FILE_OPENED], 0, file);
-	    g_free (filename);
-	}
-	parole_media_chooser_close (NULL, chooser);
-    }
-    else
-    {
-	parole_window_busy_cursor (GTK_WIDGET (chooser)->window);
-	parole_media_chooser_add_many (chooser, file_chooser);
-	parole_media_chooser_close (NULL, chooser);
-    }
+    parole_window_busy_cursor (GTK_WIDGET (chooser)->window);
+    parole_media_chooser_add (chooser, file_chooser);
+    parole_media_chooser_close (NULL, chooser);
 }
 
 void
@@ -180,7 +151,7 @@ out:
 }
 
 static void
-parole_media_chooser_open_internal (GtkWidget *chooser, gboolean multiple)
+parole_media_chooser_open_internal (GtkWidget *chooser)
 {
     ParoleMediaChooser *media_chooser;
     GtkWidget   *vbox;
@@ -199,24 +170,26 @@ parole_media_chooser_open_internal (GtkWidget *chooser, gboolean multiple)
     vbox = GTK_WIDGET (gtk_builder_get_object (builder, "vbox"));
     open = GTK_WIDGET (gtk_builder_get_object (builder, "open"));
     
-    gtk_window_set_title (GTK_WINDOW (chooser), multiple == TRUE ? _("Add media files") : _("Open media file"));
+    gtk_window_set_title (GTK_WINDOW (chooser), _("Add media files"));
 
+    gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (file_chooser), parole_get_supported_files_filter ());
     gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (file_chooser), parole_get_supported_media_filter ());
     gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (file_chooser), parole_get_supported_audio_filter ());
     gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (file_chooser), parole_get_supported_video_filter ());
+    gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (file_chooser), parole_get_supported_playlist_filter ());
 
     folder = parole_rc_read_entry_string ("media-chooser-folder", NULL);
     
     if ( folder )
 	gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (file_chooser), folder);
     
-    gtk_file_chooser_set_select_multiple (GTK_FILE_CHOOSER (file_chooser), multiple);
+    gtk_file_chooser_set_select_multiple (GTK_FILE_CHOOSER (file_chooser), TRUE);
     
-    img = gtk_image_new_from_stock (multiple ? GTK_STOCK_ADD : GTK_STOCK_OPEN, GTK_ICON_SIZE_BUTTON);
+    img = gtk_image_new_from_stock (GTK_STOCK_ADD, GTK_ICON_SIZE_BUTTON);
     
     g_object_set (G_OBJECT (open),
 		  "image", img,
-		  "label", multiple ? _("Add") : _("Open"),
+		  "label", _("Add"),
 		  NULL);
     
     g_object_set_data (G_OBJECT (chooser), "file-chooser", file_chooser);
@@ -277,15 +250,6 @@ parole_media_chooser_class_init (ParoleMediaChooserClass *klass)
                       g_cclosure_marshal_VOID__POINTER,
                       G_TYPE_NONE, 1, G_TYPE_POINTER);
 
-    signals[MEDIA_FILE_OPENED] = 
-        g_signal_new("media-file-opened",
-                      PAROLE_TYPE_MEDIA_CHOOSER,
-                      G_SIGNAL_RUN_LAST,
-                      G_STRUCT_OFFSET (ParoleMediaChooserClass, media_file_opened),
-                      NULL, NULL,
-                      g_cclosure_marshal_VOID__OBJECT,
-                      G_TYPE_NONE, 1, G_TYPE_OBJECT);
-
     signals[LOCATION_OPENED] = 
         g_signal_new("location-opened",
                       PAROLE_TYPE_MEDIA_CHOOSER,
@@ -317,13 +281,13 @@ parole_media_chooser_new (GtkWidget *parent)
     return GTK_WIDGET (chooser);
 }
 
-GtkWidget *parole_media_chooser_open_local (GtkWidget *parent, gboolean multiple)
+GtkWidget *parole_media_chooser_open_local (GtkWidget *parent)
 {
     GtkWidget *dialog;
     
     dialog = parole_media_chooser_new (parent);
 	
-    parole_media_chooser_open_internal (dialog, multiple);
+    parole_media_chooser_open_internal (dialog);
     gtk_window_set_default_size (GTK_WINDOW (dialog), 680, 480);
     
     return dialog;
