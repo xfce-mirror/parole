@@ -68,26 +68,26 @@ static void parole_conf_set_property (GObject *object,
 	case PROP_VIS_ENABLED:
 	    conf->priv->enable_vis = g_value_get_boolean (value);
 	    g_object_notify (G_OBJECT (conf), "vis-enabled");
-	    parole_rc_write_entry_bool ("VIS_ENABLED", conf->priv->enable_vis);
+	    parole_rc_write_entry_bool ("VIS_ENABLED", PAROLE_RC_GROUP_GENERAL, conf->priv->enable_vis);
 	    break;
 	case PROP_VIS_NAME:
 	    if ( conf->priv->vis_sink )
 		g_free (conf->priv->vis_sink);
 	    conf->priv->vis_sink = g_strdup (g_value_get_string (value));
 	    g_object_notify (G_OBJECT (conf), "vis-name");
-	    parole_rc_write_entry_string ("VIS_NAME", conf->priv->vis_sink);
+	    parole_rc_write_entry_string ("VIS_NAME", PAROLE_RC_GROUP_GENERAL, conf->priv->vis_sink);
 	    break;
 	case PROP_SUBTITLE_ENABLED:
 	    conf->priv->enable_subtitle = g_value_get_boolean (value);
 	    g_object_notify (G_OBJECT (conf), "enable-subtitle");
-	    parole_rc_write_entry_bool ("ENABLE_SUBTITLE", conf->priv->enable_subtitle);
+	    parole_rc_write_entry_bool ("ENABLE_SUBTITLE", PAROLE_RC_GROUP_GENERAL, conf->priv->enable_subtitle);
 	    break;
 	case PROP_SUBTITLE_FONT:
 	    if ( conf->priv->subtitle_font )
 		g_free (conf->priv->subtitle_font);
 	    conf->priv->subtitle_font = g_strdup (g_value_get_string (value));
 	    g_object_notify (G_OBJECT (conf), "subtitle-font");
-	    parole_rc_write_entry_string ("SUBTITLE_FONT", conf->priv->subtitle_font);
+	    parole_rc_write_entry_string ("SUBTITLE_FONT", PAROLE_RC_GROUP_GENERAL, conf->priv->subtitle_font);
 	    break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -182,10 +182,10 @@ parole_conf_init (ParoleConf *conf)
 {
     conf->priv = PAROLE_CONF_GET_PRIVATE (conf);
     
-    conf->priv->enable_vis = parole_rc_read_entry_bool ("VIS_ENABLED", FALSE);
-    conf->priv->vis_sink   = g_strdup (parole_rc_read_entry_string ("VIS_NAME", "none"));
-    conf->priv->enable_subtitle = parole_rc_read_entry_bool ("ENABLE_SUBTITLE", TRUE);
-    conf->priv->subtitle_font = g_strdup (parole_rc_read_entry_string ("SUBTITLE_FONT", "Sans 12"));
+    conf->priv->enable_vis = parole_rc_read_entry_bool ("VIS_ENABLED", PAROLE_RC_GROUP_GENERAL, FALSE);
+    conf->priv->vis_sink   = g_strdup (parole_rc_read_entry_string ("VIS_NAME", PAROLE_RC_GROUP_GENERAL, "none"));
+    conf->priv->enable_subtitle = parole_rc_read_entry_bool ("ENABLE_SUBTITLE", PAROLE_RC_GROUP_GENERAL, TRUE);
+    conf->priv->subtitle_font = g_strdup (parole_rc_read_entry_string ("SUBTITLE_FONT", PAROLE_RC_GROUP_GENERAL, "Sans 12"));
 }
 
 ParoleConf *

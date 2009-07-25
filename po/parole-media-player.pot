@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-23 23:27+0200\n"
+"POT-Creation-Date: 2009-07-26 01:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,8 +48,24 @@ msgstr ""
 msgid "_View"
 msgstr ""
 
-#: ../data/interfaces/openlocation.ui.h:1
-msgid "Open location of media file or live stream"
+#: ../data/interfaces/plugins.ui.h:1
+msgid "<b>Author:</b>"
+msgstr ""
+
+#: ../data/interfaces/plugins.ui.h:2
+msgid "<b>Copyright:</b>"
+msgstr ""
+
+#: ../data/interfaces/plugins.ui.h:3
+msgid "<b>Description:</b>"
+msgstr ""
+
+#: ../data/interfaces/plugins.ui.h:4
+msgid "<b>Site:</b>"
+msgstr ""
+
+#: ../data/interfaces/plugins.ui.h:5
+msgid "gtk-close"
 msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:1
@@ -98,7 +114,7 @@ msgstr ""
 msgid "Select File Types (By Extension)"
 msgstr ""
 
-#: ../data/desktop/parole.desktop.in.in.h:1 ../parole/parole-player.c:153
+#: ../data/desktop/parole.desktop.in.in.h:1 ../parole/parole-player.c:154
 msgid "Parole Media Player"
 msgstr ""
 
@@ -129,12 +145,20 @@ msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 
-#: ../parole/parole-mediachooser.c:173
+#: ../parole/parole-mediachooser.c:171
 msgid "Add media files"
 msgstr ""
 
-#: ../parole/parole-mediachooser.c:192
+#: ../parole/parole-mediachooser.c:190
 msgid "Add"
+msgstr ""
+
+#: ../parole/parole-mediachooser.c:210
+msgid "Open location..."
+msgstr ""
+
+#: ../parole/parole-mediachooser.c:212
+msgid "Open location of media file or live stream"
 msgstr ""
 
 #: ../parole/parole-medialist.c:380
@@ -149,7 +173,7 @@ msgstr ""
 msgid "Unknown playlist format, Please select a support playlist format"
 msgstr ""
 
-#: ../parole/parole-medialist.c:455 ../parole/parole-player.c:943
+#: ../parole/parole-medialist.c:455 ../parole/parole-player.c:953
 msgid "Playlist"
 msgstr ""
 
@@ -173,28 +197,28 @@ msgstr ""
 msgid "Media list"
 msgstr ""
 
-#: ../parole/parole-player.c:174
+#: ../parole/parole-player.c:175
 msgid "Hide playlist"
 msgstr ""
 
-#: ../parole/parole-player.c:183
+#: ../parole/parole-player.c:184
 msgid "Show playlist"
 msgstr ""
 
-#: ../parole/parole-player.c:335 ../parole/parole-statusbar.c:125
+#: ../parole/parole-player.c:336 ../parole/parole-statusbar.c:125
 #: ../parole/parole-statusbar.c:127
 msgid "Playing"
 msgstr ""
 
-#: ../parole/parole-player.c:336
+#: ../parole/parole-player.c:337
 msgid "Media stream is not seekable"
 msgstr ""
 
-#: ../parole/parole-player.c:354 ../parole/parole-player.c:367
+#: ../parole/parole-player.c:355 ../parole/parole-player.c:368
 msgid "Paused"
 msgstr ""
 
-#: ../parole/parole-player.c:385
+#: ../parole/parole-player.c:386
 msgid "Stopped"
 msgstr ""
 

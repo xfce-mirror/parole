@@ -23,6 +23,7 @@
 
 #include <glib-object.h>
 
+#include "parole.h"
 #include "parole-plugin.h"
 
 G_BEGIN_DECLS
@@ -38,8 +39,13 @@ typedef struct
     GTypeModule       	     parent;
     
     GModule		    *mod;
+    ParolePlugin            *plugin;
+    ParolePluginDesc        *desc;
+    gboolean		     enabled;
     
     ParolePlugin	   *(*constructor)		   (void);
+    
+    ParolePluginDesc	   *(*get_plugin_description)	   (void);
     
 } ParoleModule;
 
@@ -52,6 +58,9 @@ typedef struct
 GType        		     parole_module_get_type        (void) G_GNUC_CONST;
 
 ParoleModule       	    *parole_module_new             (const gchar *filename);
+
+void			     parole_module_set_active      (ParoleModule *module,
+							    gboolean active);
 
 G_END_DECLS
 

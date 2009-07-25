@@ -34,7 +34,6 @@ static gboolean
 parole_module_load (GTypeModule *gtype_module)
 {
     ParoleModule *module;
-    ParolePlugin *plugin;
     
     module = PAROLE_MODULE (gtype_module);
     
@@ -46,16 +45,15 @@ parole_module_load (GTypeModule *gtype_module)
 	return FALSE;
     }
     
-    if ( !g_module_symbol (module->mod, "parole_plugin_constructor", (gpointer) &module->constructor) )
+    if ( !g_module_symbol (module->mod, "parole_plugin_constructor", (gpointer) &module->constructor) || 
+         !g_module_symbol (module->mod, "parole_plugin_get_description", (gpointer) &module->get_plugin_description))
     {
-	g_critical ("Plugin %s missing required constructor symbol", gtype_module->name);
+	g_critical ("Plugin %s missing required symbols", gtype_module->name);
 	g_module_close (module->mod);
 	return FALSE;
     }
     
-    plugin = (*module->constructor) ();
-    
-    g_object_set_data (G_OBJECT (module), "plugin", plugin);
+    module->desc = (*module->get_plugin_description) ();
     
     return TRUE;
 }
@@ -64,18 +62,11 @@ static void
 parole_module_unload (GTypeModule *gtype_module)
 {
     ParoleModule *module;
-    ParolePlugin *plugin;
     
     module = PAROLE_MODULE (gtype_module);
 
-    plugin = g_object_get_data (G_OBJECT (module), "plugin");
+    parole_module_set_active (module, FALSE);
 
-    if (plugin)
-    {
-	g_signal_emit_by_name (G_OBJECT (plugin), "free-data", 0);
-	g_object_unref (plugin);
-    }
-    
     g_module_close (module->mod);
     module->constructor = NULL;
 }
@@ -92,6 +83,11 @@ parole_module_class_init (ParoleModuleClass *klass)
 static void
 parole_module_init (ParoleModule *module)
 {
+    module->mod = NULL;
+    module->constructor = NULL;
+    module->get_plugin_description = NULL;
+    module->plugin = NULL;
+    module->desc = NULL;
 }
 
 ParoleModule *
@@ -104,4 +100,26 @@ parole_module_new (const gchar *filename)
     g_type_module_set_name (G_TYPE_MODULE (module), filename);
     
     return module;
+}
+
+void parole_module_set_active (ParoleModule *module, gboolean active)
+{
+    if ( active )
+    {
+	g_return_if_fail (module->constructor != NULL);
+	
+	module->plugin = (*module->constructor) ();
+    
+	module->enabled = TRUE;
+    }
+    else
+    {
+	if ( module->plugin ) 
+	{
+	    g_signal_emit_by_name (G_OBJECT (module->plugin), "free-data", 0);
+	    g_object_unref (module->plugin);
+	    module->plugin = NULL;
+	}
+	module->enabled = FALSE;
+    }
 }

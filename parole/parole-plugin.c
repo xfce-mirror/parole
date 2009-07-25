@@ -56,9 +56,9 @@ struct _ParolePluginPrivate
     gchar *title;
     gchar *author;
     gchar *desc;
-    
+
+    GtkWidget *widget;
     gboolean packed;
-    
     
     /* sig id's*/
     gulong gst_sig1;
@@ -177,7 +177,7 @@ parole_plugin_class_init (ParolePluginClass *klass)
 							  G_PARAM_CONSTRUCT_ONLY));
 
     /**
-     * ParolePlugin:desc:
+     * ParolePlugin:description:
      * 
      * Description of the plugin.
      * 
@@ -185,7 +185,7 @@ parole_plugin_class_init (ParolePluginClass *klass)
      **/
     g_object_class_install_property (object_class,
                                      PROP_DESC,
-                                     g_param_spec_string ("desc",
+                                     g_param_spec_string ("description",
                                                           NULL, NULL,
                                                           NULL,
                                                           G_PARAM_READWRITE|
@@ -218,6 +218,7 @@ parole_plugin_init (ParolePlugin *plugin)
     
     priv->title  = NULL;
     priv->packed = FALSE;
+    priv->widget = NULL;
     
     priv->gst = PAROLE_GST (parole_gst_new ());
     
@@ -300,6 +301,9 @@ parole_plugin_finalize (GObject *object)
     
     if ( priv->title )
 	g_free (priv->title);
+	
+    if ( priv->packed && GTK_IS_WIDGET (priv->widget))
+	gtk_widget_destroy (GTK_WIDGET (priv->widget));
 
     G_OBJECT_CLASS (parole_plugin_parent_class)->finalize (object);
 }
@@ -320,7 +324,7 @@ parole_plugin_new (const gchar *title, const gchar *desc, const gchar *author)
     
     plugin = g_object_new (PAROLE_TYPE_PLUGIN, 
 			   "title", title, 
-			   "desc", desc,
+			   "description", desc,
 			   "author", author,
 			   NULL);
     return plugin;
@@ -372,6 +376,7 @@ void parole_plugin_pack_widget (ParolePlugin *plugin, GtkWidget *widget, ParoleP
     g_object_unref (manager);
     
     priv->packed = TRUE;
+    priv->widget = widget;
 }
 
 /**

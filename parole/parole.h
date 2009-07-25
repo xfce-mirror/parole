@@ -20,7 +20,16 @@
 
 #include <parole/parole-plugin.h>
 
-ParolePlugin     *parole_plugin_constructor     (void);
+typedef struct
+{
+    gchar *title;
+    gchar *desc;
+    gchar *author;
+    
+} ParolePluginDesc;
+
+ParolePluginDesc     *parole_plugin_get_description  (void);
+ParolePlugin         *parole_plugin_constructor      (void);
 
 /**
  * ParolePluginConstruct:
@@ -40,14 +49,23 @@ typedef void 	(*ParolePluginConstruct)	(ParolePlugin *plugin);
  * @author: author.
  * 
  **/
-#define PAROLE_PLUGIN_CONSTRUCT(construct, title, desc, author)		\
-    G_MODULE_EXPORT ParolePlugin *parole_plugin_constructor (void)	\
-    {									\
-	ParolePlugin *plugin;						\
-	ParolePluginConstruct constructor 				\
-	    = (ParolePluginConstruct) construct;			\
-									\
-	plugin = parole_plugin_new (title, desc, author);		\
-	constructor (plugin);						\
-	return plugin;							\
+#define PAROLE_PLUGIN_CONSTRUCT(construct, p_title, p_desc, p_author)	   \
+    G_MODULE_EXPORT ParolePluginDesc *parole_plugin_get_description (void) \
+    {									   \
+	ParolePluginDesc *plugin_desc;					   \
+	plugin_desc = g_new0 (ParolePluginDesc, 1);			   \
+	plugin_desc->author = (p_author);				   \
+	plugin_desc->title =  (p_title);				   \
+	plugin_desc->desc =  (p_desc);					   \
+	return plugin_desc;						   \
+    }								 	   \
+    G_MODULE_EXPORT ParolePlugin  *parole_plugin_constructor (void)	   \
+    {									   \
+	ParolePlugin *plugin;						   \
+	ParolePluginConstruct constructor 				   \
+	    = (ParolePluginConstruct) construct;			   \
+									   \
+	plugin = parole_plugin_new (p_title, p_desc, p_author);		   \
+	constructor (plugin);						   \
+	return plugin;							   \
     }

@@ -33,7 +33,6 @@
 #include <libxfcegui4/libxfcegui4.h>
 
 #include "interfaces/mediachooser_ui.h"
-#include "interfaces/openlocation_ui.h"
 
 #include "parole-mediachooser.h"
 #include "parole-builder.h"
@@ -54,9 +53,6 @@ void	parole_media_chooser_close	(GtkWidget *widget,
 void	media_chooser_folder_changed_cb (GtkWidget *widget, 
 					 gpointer data);
 
-void	parole_media_chooser_open_location_cb (GtkButton *bt, 
-					       ParoleMediaChooser *chooser);
-
 enum
 {
     MEDIA_FILES_OPENED,
@@ -68,8 +64,7 @@ static guint signals [LAST_SIGNAL] = { 0 };
 
 G_DEFINE_TYPE (ParoleMediaChooser, parole_media_chooser, GTK_TYPE_DIALOG)
 
-void
-parole_media_chooser_close (GtkWidget *widget, ParoleMediaChooser *chooser)
+void parole_media_chooser_close	(GtkWidget *widget, ParoleMediaChooser *chooser)
 {
     gtk_widget_destroy (GTK_WIDGET (chooser));
 }
@@ -82,7 +77,7 @@ media_chooser_folder_changed_cb (GtkWidget *widget, gpointer data)
     
     if ( folder )
     {
-	parole_rc_write_entry_string ("media-chooser-folder", folder);
+	parole_rc_write_entry_string ("media-chooser-folder", PAROLE_RC_GROUP_GENERAL, folder);
 	g_free (folder);
     }
 }
@@ -126,28 +121,31 @@ parole_media_chooser_open (GtkWidget *widget, ParoleMediaChooser *chooser)
     
     parole_window_busy_cursor (GTK_WIDGET (chooser)->window);
     parole_media_chooser_add (chooser, file_chooser);
-    parole_media_chooser_close (NULL, chooser);
+    gtk_widget_destroy (GTK_WIDGET (chooser));
 }
 
-void
-parole_media_chooser_open_location_cb (GtkButton *bt, ParoleMediaChooser *chooser)
+static void
+parole_media_chooser_open_location_cb (GtkDialog *dialog, gint response_id, ParoleMediaChooser *chooser)
 {
     GtkWidget *entry;
     const gchar *location;
 
-    entry = GTK_WIDGET (g_object_get_data (G_OBJECT (chooser), "entry"));
-    location = gtk_entry_get_text (GTK_ENTRY (entry));
-    
-    if ( !location || strlen (location) == 0)
-	goto out;
+    if ( response_id == GTK_RESPONSE_OK )
+    {
+	entry = GTK_WIDGET (g_object_get_data (G_OBJECT (chooser), "entry"));
+	location = gtk_entry_get_text (GTK_ENTRY (entry));
+	
+	if ( !location || strlen (location) == 0)
+	    goto out;
 
-    TRACE ("Location %s", location);
+	TRACE ("Location %s", location);
 
-    gtk_widget_hide (GTK_WIDGET (chooser));
-    g_signal_emit (G_OBJECT (chooser), signals [LOCATION_OPENED], 0, location);
-    
-out:
-    parole_media_chooser_close (NULL, chooser);
+	gtk_widget_hide (GTK_WIDGET (chooser));
+	g_signal_emit (G_OBJECT (chooser), signals [LOCATION_OPENED], 0, location);
+    }
+
+    out:
+	gtk_widget_destroy (GTK_WIDGET (dialog));
 }
 
 static void
@@ -178,7 +176,7 @@ parole_media_chooser_open_internal (GtkWidget *chooser)
     gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (file_chooser), parole_get_supported_video_filter ());
     gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (file_chooser), parole_get_supported_playlist_filter ());
 
-    folder = parole_rc_read_entry_string ("media-chooser-folder", NULL);
+    folder = parole_rc_read_entry_string ("media-chooser-folder", PAROLE_RC_GROUP_GENERAL, NULL);
     
     if ( folder )
 	gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (file_chooser), folder);
@@ -197,7 +195,7 @@ parole_media_chooser_open_internal (GtkWidget *chooser)
     gtk_container_add (GTK_CONTAINER (GTK_DIALOG (media_chooser)->vbox), vbox);
     gtk_builder_connect_signals (builder, chooser);
     g_signal_connect (chooser, "destroy",
-		      G_CALLBACK (parole_media_chooser_close), chooser);
+		      G_CALLBACK (gtk_widget_destroy), chooser);
 		      
     g_object_unref (builder);
 }
@@ -205,25 +203,45 @@ parole_media_chooser_open_internal (GtkWidget *chooser)
 static void
 parole_media_chooser_open_location_internal (GtkWidget *chooser)
 {
-    GtkBuilder *builder;
-    GtkWidget *vbox;
-    GtkWidget *open;
+    GtkWidget *label;
     GtkWidget *entry;
+    GtkWidget *vbox;
     
-    builder = parole_builder_new_from_string (openlocation_ui, openlocation_ui_length);
+    gtk_window_set_title (GTK_WINDOW (chooser), _("Open location..."));
     
-    vbox = GTK_WIDGET (gtk_builder_get_object (builder, "vbox"));
-    entry = GTK_WIDGET (gtk_builder_get_object (builder, "entry"));
-    open = GTK_WIDGET (gtk_builder_get_object (builder, "open"));
+    label = gtk_label_new (_("Open location of media file or live stream"));
+    
+    entry = gtk_entry_new ();
+    
+    gtk_entry_set_activates_default (GTK_ENTRY (entry), TRUE);
     
     g_object_set_data (G_OBJECT (chooser), "entry", entry);
     
-    gtk_container_add (GTK_CONTAINER (GTK_DIALOG (chooser)->vbox), vbox);
+    vbox = gtk_vbox_new (TRUE, 4);
     
-    gtk_builder_connect_signals (builder, chooser);
-    g_signal_connect (chooser, "destroy",
-		      G_CALLBACK (parole_media_chooser_close), chooser);
-    g_object_unref (builder);
+    gtk_box_pack_start (GTK_BOX (vbox), label, TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (vbox), entry, TRUE, TRUE, 0);
+    
+    gtk_box_pack_start (GTK_BOX (GTK_DIALOG (chooser)->vbox),
+			vbox,
+			TRUE,   
+			TRUE,
+			0);   
+    
+    gtk_dialog_add_buttons (GTK_DIALOG (chooser), 
+			    GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+			    GTK_STOCK_OPEN, GTK_RESPONSE_OK,
+			    NULL);
+    
+    gtk_dialog_set_default_response (GTK_DIALOG (chooser), GTK_RESPONSE_OK);
+    
+    g_signal_connect (chooser, "delete-event",
+		      G_CALLBACK (gtk_widget_destroy), chooser);
+		      
+    g_signal_connect (chooser, "response",
+		      G_CALLBACK (parole_media_chooser_open_location_cb), chooser);
+		      
+    gtk_widget_show_all (GTK_WIDGET (chooser));
 }
 
 static void

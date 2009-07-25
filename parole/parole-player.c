@@ -122,7 +122,8 @@ struct ParolePlayerPrivate
     GtkWidget 		*gst;
 
     GtkWidget 		*window;
-    GtkWidget		*playlist_box;
+    GtkWidget		*playlist_nt;
+    GtkWidget		*main_nt;	/*Main notebook*/
     GtkWidget		*show_hide_playlist;
     GtkWidget		*play_pause;
     GtkWidget		*stop;
@@ -162,7 +163,7 @@ void parole_player_show_hide_playlist (GtkButton *button, ParolePlayer *player)
 		  "image", &img,
 		  NULL);
 
-    visible = GTK_WIDGET_VISIBLE (player->priv->playlist_box);
+    visible = GTK_WIDGET_VISIBLE (player->priv->playlist_nt);
 
     if ( !visible )
     {
@@ -170,7 +171,7 @@ void parole_player_show_hide_playlist (GtkButton *button, ParolePlayer *player)
 		      "stock", GTK_STOCK_GO_FORWARD,
 		      NULL);
 		      
-	gtk_widget_show_all (player->priv->playlist_box);
+	gtk_widget_show_all (player->priv->playlist_nt);
 	gtk_widget_set_tooltip_text (GTK_WIDGET (player->priv->show_hide_playlist), _("Hide playlist"));
     }
     else
@@ -179,7 +180,7 @@ void parole_player_show_hide_playlist (GtkButton *button, ParolePlayer *player)
 		      "stock", GTK_STOCK_GO_BACK,
 		      NULL);
 		      
-	gtk_widget_hide_all (player->priv->playlist_box);
+	gtk_widget_hide_all (player->priv->playlist_nt);
 	gtk_widget_set_tooltip_text (GTK_WIDGET (player->priv->show_hide_playlist), _("Show playlist"));
     }
     g_object_unref (img);
@@ -617,13 +618,18 @@ parole_player_previous_menu_item_activate (ParolePlayer *player)
 static void
 parole_player_full_screen_menu_item_activate (ParolePlayer *player)
 {
+    static gint current_page = 0;
+    
     if ( player->priv->full_screen )
     {
 	parole_statusbar_set_visible (player->priv->status, TRUE);
 	gtk_widget_show (player->priv->play_box);
 	gtk_widget_show (player->priv->menu_bar);
-	gtk_widget_show (player->priv->playlist_box);
+	gtk_widget_show (player->priv->playlist_nt);
+	gtk_widget_show (player->priv->show_hide_playlist);
+	gtk_notebook_set_show_tabs (GTK_NOTEBOOK (player->priv->main_nt), TRUE);
 	gtk_window_unfullscreen (GTK_WINDOW (player->priv->window));
+	gtk_notebook_set_current_page (GTK_NOTEBOOK (player->priv->playlist_nt), current_page);
 	player->priv->full_screen = FALSE;
     }
     else
@@ -631,7 +637,10 @@ parole_player_full_screen_menu_item_activate (ParolePlayer *player)
 	parole_statusbar_set_visible (player->priv->status, FALSE);
 	gtk_widget_hide (player->priv->play_box);
 	gtk_widget_hide (player->priv->menu_bar);
-	gtk_widget_hide (player->priv->playlist_box);
+	gtk_widget_hide (player->priv->playlist_nt);
+	gtk_widget_hide (player->priv->show_hide_playlist);
+	current_page = gtk_notebook_get_current_page (GTK_NOTEBOOK (player->priv->playlist_nt));
+	gtk_notebook_set_show_tabs (GTK_NOTEBOOK (player->priv->main_nt), FALSE);
 	gtk_window_fullscreen (GTK_WINDOW (player->priv->window));
 	player->priv->full_screen = TRUE;
     }
@@ -817,7 +826,7 @@ parole_player_volume_value_changed_cb (GtkRange *range, ParolePlayer *player)
     gdouble value;
     value = gtk_range_get_value (range);
     parole_player_change_volume (player, value);
-    parole_rc_write_entry_int ("volume", (gint)(value * 100));
+    parole_rc_write_entry_int ("volume", PAROLE_RC_GROUP_GENERAL, (gint)(value * 100));
 }
 
 static void
@@ -917,6 +926,7 @@ parole_player_init (ParolePlayer *player)
 		      G_CALLBACK (parole_player_gst_widget_motion_notify_event), player);
     
     player->priv->window = GTK_WIDGET (gtk_builder_get_object (builder, "main-window"));
+    player->priv->main_nt = GTK_WIDGET (gtk_builder_get_object (builder, "main-notebook"));
     
     player->priv->play_pause = GTK_WIDGET (gtk_builder_get_object (builder, "play-pause"));
     player->priv->stop = GTK_WIDGET (gtk_builder_get_object (builder, "stop"));
@@ -927,18 +937,18 @@ parole_player_init (ParolePlayer *player)
     
     player->priv->menu_bar = GTK_WIDGET (gtk_builder_get_object (builder, "menubar"));
     player->priv->play_box = GTK_WIDGET (gtk_builder_get_object (builder, "play-box"));
-    player->priv->playlist_box = GTK_WIDGET (gtk_builder_get_object (builder, "notebook-playlist"));
+    player->priv->playlist_nt = GTK_WIDGET (gtk_builder_get_object (builder, "notebook-playlist"));
     player->priv->show_hide_playlist = GTK_WIDGET (gtk_builder_get_object (builder, "show-hide-list"));
     
     gtk_range_set_range (GTK_RANGE (player->priv->volume), 0, 1.0);
     
     gtk_range_set_value (GTK_RANGE (player->priv->volume), 
-			 (gdouble) (parole_rc_read_entry_int ("volume", 100)/100.));
+			 (gdouble) (parole_rc_read_entry_int ("volume", PAROLE_RC_GROUP_GENERAL, 100)/100.));
     
     /*
      * Pack the playlist.
      */
-    gtk_notebook_append_page (GTK_NOTEBOOK (player->priv->playlist_box), 
+    gtk_notebook_append_page (GTK_NOTEBOOK (player->priv->playlist_nt), 
 			      GTK_WIDGET (player->priv->list),
 			      gtk_label_new (_("Playlist")));
     
@@ -955,7 +965,7 @@ parole_player_init (ParolePlayer *player)
     gtk_widget_show (player->priv->gst);
 
     parole_player_change_volume (player, 
-				 (gdouble) (parole_rc_read_entry_int ("volume", 100)/100.));
+				 (gdouble) (parole_rc_read_entry_int ("volume", PAROLE_RC_GROUP_GENERAL, 100)/100.));
 
     g_signal_connect (player->priv->list, "media_activated",
 		      G_CALLBACK (parole_player_media_activated_cb), player);
