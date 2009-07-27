@@ -41,6 +41,7 @@
 #include "parole-medialist.h"
 #include "parole-file.h"
 #include "parole-mediachooser.h"
+#include "parole-open-location.h"
 
 #include "parole-filters.h"
 #include "parole-pl-parser.h"
@@ -224,7 +225,7 @@ parole_media_list_files_opened_cb (ParoleMediaChooser *chooser, GSList *files, P
 }
 
 static void
-parole_media_list_location_opened_cb (ParoleMediaChooser *chooser, const gchar *location, ParoleMediaList *list)
+parole_media_list_location_opened_cb (ParoleOpenLocation *obj, const gchar *location, ParoleMediaList *list)
 {
     ParoleFile *file;
     
@@ -255,14 +256,14 @@ parole_media_list_open_internal (ParoleMediaList *list)
 static void
 parole_media_list_open_location_internal (ParoleMediaList *list)
 {
-    GtkWidget *chooser;
+    GtkWidget *location;
     
-    chooser = parole_media_chooser_open_location (gtk_widget_get_toplevel (GTK_WIDGET (list)));
+    location = parole_open_location (gtk_widget_get_toplevel (GTK_WIDGET (list)));
 					       
-    g_signal_connect (G_OBJECT (chooser), "location-opened",
+    g_signal_connect (G_OBJECT (location), "location-opened",
 		          G_CALLBACK (parole_media_list_location_opened_cb), list);
     
-    gtk_widget_show_all (GTK_WIDGET (chooser));
+    gtk_widget_show_all (GTK_WIDGET (location));
 }
 
 static gboolean

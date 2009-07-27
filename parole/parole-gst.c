@@ -70,6 +70,7 @@ struct ParoleGstPrivate
     ParoleConf   *conf;
     gboolean	  update;
     gboolean      with_vis;
+    gboolean      buffering;
 };
 
 enum
@@ -278,6 +279,7 @@ static gboolean
 parole_gst_expose_event (GtkWidget *widget, GdkEventExpose *ev)
 {
     ParoleGst *gst;
+    
     gboolean playing_video;
 
     if ( ev && ev->count > 0 )
@@ -291,7 +293,7 @@ parole_gst_expose_event (GtkWidget *widget, GdkEventExpose *ev)
 
     parole_gst_set_x_overlay (gst);
 
-    if ( (gst->priv->state < GST_STATE_PAUSED || !gst->priv->with_vis) && !playing_video)
+    if ( (gst->priv->state < GST_STATE_PAUSED || !gst->priv->with_vis ) && !playing_video && !gst->priv->buffering)
 	parole_gst_draw_logo (gst);
     else 
     {
@@ -718,6 +720,8 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
 	    TRACE ("Buffering %d %%", per);
 	    g_signal_emit (G_OBJECT (gst), signals [BUFFERING], 0, 
 			   gst->priv->stream, per);
+			   
+	    gst->priv->buffering = per != 100;
 	    break;
 	}
 	case GST_MESSAGE_STATE_CHANGED:
@@ -1069,6 +1073,7 @@ parole_gst_init (ParoleGst *gst)
     gst->priv->hidecursor_timer = g_timer_new ();
     gst->priv->update = FALSE;
     gst->priv->vis_sink = NULL;
+    gst->priv->buffering = FALSE;
     
     gst->priv->conf = parole_conf_new ();
     

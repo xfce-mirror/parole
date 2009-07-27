@@ -485,9 +485,10 @@ void parole_plugins_manager_pack (ParolePluginsManager *manager, ParolePlugin *p
 	gtk_notebook_append_page (GTK_NOTEBOOK (manager->priv->list_nt), widget, gtk_label_new (title));
 	gtk_widget_show_all (widget);
     }
-    else if ( container == PAROLE_PLUGIN_CONTAINER_VIEW )
+    else if ( container == PAROLE_PLUGIN_CONTAINER_MAIN_VIEW )
     {
-	
+	gtk_notebook_append_page (GTK_NOTEBOOK (manager->priv->main_nt), widget, gtk_label_new (title));
+	gtk_widget_show_all (widget);
     }
     
     if ( title )

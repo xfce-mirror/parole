@@ -1,3 +1,11 @@
+2009-07-27: 22:00 Ali aliov@xfce.org
+	* Fix a wrong pixbuf name introduced in the previous commit.
+	* Add missing support for packing plugins in the main notebook.
+	* Add GStreamer dependency in the README file.
+	* parole-gst.c don't draw logo on expose when buffering.
+	* added parole-open-location.{c,h} added parole open location
+	to handle location open with entry completion.
+	
 2009-07-27: 18:00 Ali aliov@xfce.org
 	* Don't show notebook tabs if we have one page.
 	* Added subtitle font encoding support, encodings code taken from

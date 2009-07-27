@@ -54,5 +54,9 @@ const gchar	       *parole_rc_read_entry_string	(const gchar *property,
 
 gchar	       	      **parole_rc_read_entry_list	(const gchar *property,
 							 const gchar *group);
+
+gchar                 **parole_get_history	        (void);
+
+void			parole_insert_line_history	(const gchar *line);		
 							 
 #endif /* __RC_UTILS_ */

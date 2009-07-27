@@ -33,6 +33,7 @@
 #include "parole-rc-utils.h"
 
 #define MEDIA_PLAYER_RESOURCE_FILE 	"xfce4/parole/parole-media-player.rc"
+#define HISTORY_FILE 			"xfce4/parole/history"
 
 static XfceRc *
 open_resource_file (const gchar *group, gboolean readonly)
@@ -136,4 +137,43 @@ gchar **parole_rc_read_entry_list (const gchar *property, const gchar *group)
     }
     
     return ret_val;
+}
+
+gchar **parole_get_history (void)
+{
+    gchar **lines = NULL;
+    gchar *history = NULL;
+    gchar *contents = NULL;
+    gsize length = 0;
+    
+    history = xfce_resource_lookup (XFCE_RESOURCE_CACHE, HISTORY_FILE);
+    
+    if (history && g_file_get_contents (history, &contents, &length, NULL)) 
+    {
+        lines = g_strsplit (contents, "\n", -1);
+        g_free (contents);
+    }
+    
+    g_free (history);
+    
+    return lines;
+}
+
+void parole_insert_line_history (const gchar *line)
+{
+    gchar *history = NULL;
+    
+    history = xfce_resource_save_location (XFCE_RESOURCE_CACHE, HISTORY_FILE, TRUE);
+    
+    if ( history ) 
+    {
+	FILE *f;
+	f = fopen (history, "a");
+	fprintf (f, "%s\n", line);
+	fclose (f);
+    }
+    else
+	g_warning ("Unable to open cache file");
+ 
+     g_free (history);
 }

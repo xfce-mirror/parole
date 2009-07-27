@@ -38,7 +38,7 @@ typedef struct _ParolePluginClass   ParolePluginClass;
 typedef enum
 {
     PAROLE_PLUGIN_CONTAINER_PLAYLIST,
-    PAROLE_PLUGIN_CONTAINER_VIEW
+    PAROLE_PLUGIN_CONTAINER_MAIN_VIEW
 } ParolePluginContainer;
 
 

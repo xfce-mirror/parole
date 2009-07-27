@@ -305,6 +305,48 @@ parole_player_set_playpause_button_image (GtkWidget *widget, const gchar *stock_
 }
 
 static void
+parole_player_save_uri (ParolePlayer *player, const ParoleStream *stream)
+{
+    ParoleMediaType media_type;
+    gchar *uri;
+    gboolean save = TRUE;
+    gchar **lines = NULL;
+    guint i;
+    
+    g_object_get (G_OBJECT (stream),
+		  "media-type", &media_type,
+		  NULL);
+		  
+    if ( media_type == PAROLE_MEDIA_TYPE_LOCAL_FILE )
+	return;
+	
+    lines = parole_get_history ();
+    
+    g_object_get (G_OBJECT (stream),
+		  "uri", &uri,
+		  NULL);
+    if (lines )
+    {
+	for ( i = 0; lines[i]; i++)
+	{
+	    if ( !g_strcmp0 (lines[i], uri) )
+	    {
+		save = FALSE;
+		break;
+	    }   
+	}
+    }
+    
+    if ( save )
+    {
+	parole_insert_line_history (uri);
+    }
+    
+    g_strfreev (lines);
+    g_free (uri);
+}
+
+static void
 parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
 {
     GdkPixbuf *pix = NULL;
@@ -312,7 +354,10 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
     gboolean seekable;
     
     player->priv->state = PAROLE_MEDIA_STATE_PLAYING;
-    pix = xfce_themed_icon_load (GTK_STOCK_MEDIA_PLAY, 16);
+    pix = xfce_themed_icon_load ("player_play", 16);
+    
+    if ( !pix )
+	pix = xfce_themed_icon_load ("gtk-media-play-ltr", 16);
     
     parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, pix);
     
@@ -342,6 +387,8 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
 
     if ( pix )
 	g_object_unref (pix);
+	
+    parole_player_save_uri (player, stream);
 }
 
 static void

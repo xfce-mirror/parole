@@ -56,7 +56,6 @@ void	media_chooser_folder_changed_cb (GtkWidget *widget,
 enum
 {
     MEDIA_FILES_OPENED,
-    LOCATION_OPENED,
     LAST_SIGNAL
 };
 
@@ -125,30 +124,6 @@ parole_media_chooser_open (GtkWidget *widget, ParoleMediaChooser *chooser)
 }
 
 static void
-parole_media_chooser_open_location_cb (GtkDialog *dialog, gint response_id, ParoleMediaChooser *chooser)
-{
-    GtkWidget *entry;
-    const gchar *location;
-
-    if ( response_id == GTK_RESPONSE_OK )
-    {
-	entry = GTK_WIDGET (g_object_get_data (G_OBJECT (chooser), "entry"));
-	location = gtk_entry_get_text (GTK_ENTRY (entry));
-	
-	if ( !location || strlen (location) == 0)
-	    goto out;
-
-	TRACE ("Location %s", location);
-
-	gtk_widget_hide (GTK_WIDGET (chooser));
-	g_signal_emit (G_OBJECT (chooser), signals [LOCATION_OPENED], 0, location);
-    }
-
-    out:
-	gtk_widget_destroy (GTK_WIDGET (dialog));
-}
-
-static void
 parole_media_chooser_open_internal (GtkWidget *chooser)
 {
     ParoleMediaChooser *media_chooser;
@@ -201,56 +176,8 @@ parole_media_chooser_open_internal (GtkWidget *chooser)
 }
 
 static void
-parole_media_chooser_open_location_internal (GtkWidget *chooser)
-{
-    GtkWidget *label;
-    GtkWidget *entry;
-    GtkWidget *vbox;
-    
-    gtk_window_set_title (GTK_WINDOW (chooser), _("Open location..."));
-    
-    label = gtk_label_new (_("Open location of media file or live stream"));
-    
-    entry = gtk_entry_new ();
-    
-    gtk_entry_set_activates_default (GTK_ENTRY (entry), TRUE);
-    
-    g_object_set_data (G_OBJECT (chooser), "entry", entry);
-    
-    vbox = gtk_vbox_new (TRUE, 4);
-    
-    gtk_box_pack_start (GTK_BOX (vbox), label, TRUE, TRUE, 0);
-    gtk_box_pack_start (GTK_BOX (vbox), entry, TRUE, TRUE, 0);
-    
-    gtk_box_pack_start (GTK_BOX (GTK_DIALOG (chooser)->vbox),
-			vbox,
-			TRUE,   
-			TRUE,
-			0);   
-    
-    gtk_dialog_add_buttons (GTK_DIALOG (chooser), 
-			    GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-			    GTK_STOCK_OPEN, GTK_RESPONSE_OK,
-			    NULL);
-    
-    gtk_dialog_set_default_response (GTK_DIALOG (chooser), GTK_RESPONSE_OK);
-    
-    g_signal_connect (chooser, "delete-event",
-		      G_CALLBACK (gtk_widget_destroy), chooser);
-		      
-    g_signal_connect (chooser, "response",
-		      G_CALLBACK (parole_media_chooser_open_location_cb), chooser);
-		      
-    gtk_widget_show_all (GTK_WIDGET (chooser));
-}
-
-static void
 parole_media_chooser_finalize (GObject *object)
 {
-    ParoleMediaChooser *parole_media_chooser;
-
-    parole_media_chooser = PAROLE_MEDIA_CHOOSER (object);
-
     G_OBJECT_CLASS (parole_media_chooser_parent_class)->finalize (object);
 }
 
@@ -268,15 +195,6 @@ parole_media_chooser_class_init (ParoleMediaChooserClass *klass)
                       g_cclosure_marshal_VOID__POINTER,
                       G_TYPE_NONE, 1, G_TYPE_POINTER);
 
-    signals[LOCATION_OPENED] = 
-        g_signal_new("location-opened",
-                      PAROLE_TYPE_MEDIA_CHOOSER,
-                      G_SIGNAL_RUN_LAST,
-                      G_STRUCT_OFFSET (ParoleMediaChooserClass, location_opened),
-                      NULL, NULL,
-                      g_cclosure_marshal_VOID__STRING,
-                      G_TYPE_NONE, 1, G_TYPE_STRING);
-
     object_class->finalize = parole_media_chooser_finalize;
 }
 
@@ -286,8 +204,7 @@ parole_media_chooser_init (ParoleMediaChooser *chooser)
     gtk_window_set_modal (GTK_WINDOW (chooser), TRUE);
 }
 
-static GtkWidget *
-parole_media_chooser_new (GtkWidget *parent)
+GtkWidget *parole_media_chooser_open_local (GtkWidget *parent)
 {
     ParoleMediaChooser *chooser;
         
@@ -296,28 +213,9 @@ parole_media_chooser_new (GtkWidget *parent)
     if ( parent )
 	gtk_window_set_transient_for (GTK_WINDOW (chooser), GTK_WINDOW (parent));
     
+    parole_media_chooser_open_internal (GTK_WIDGET (chooser));
+    
+    gtk_window_set_default_size (GTK_WINDOW (chooser), 680, 480);
+
     return GTK_WIDGET (chooser);
-}
-
-GtkWidget *parole_media_chooser_open_local (GtkWidget *parent)
-{
-    GtkWidget *dialog;
-    
-    dialog = parole_media_chooser_new (parent);
-	
-    parole_media_chooser_open_internal (dialog);
-    gtk_window_set_default_size (GTK_WINDOW (dialog), 680, 480);
-    
-    return dialog;
-}
-
-GtkWidget *parole_media_chooser_open_location (GtkWidget *parent)
-{
-    GtkWidget *dialog;
-    
-    dialog = parole_media_chooser_new (parent);
-	
-    parole_media_chooser_open_location_internal (dialog);
-    
-    return dialog;
 }
