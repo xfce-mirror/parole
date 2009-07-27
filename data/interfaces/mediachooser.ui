@@ -7,9 +7,6 @@
     <property name="orientation">vertical</property>
     <property name="spacing">10</property>
     <child>
-      <placeholder/>
-    </child>
-    <child>
       <object class="GtkFileChooserWidget" id="filechooserwidget">
         <property name="visible">True</property>
         <property name="border_width">5</property>
@@ -18,7 +15,7 @@
         <signal name="current_folder_changed" handler="media_chooser_folder_changed_cb"/>
       </object>
       <packing>
-        <property name="position">1</property>
+        <property name="position">0</property>
       </packing>
     </child>
     <child>
@@ -59,7 +56,7 @@
       </object>
       <packing>
         <property name="expand">False</property>
-        <property name="position">2</property>
+        <property name="position">1</property>
       </packing>
     </child>
   </object>

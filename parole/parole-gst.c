@@ -424,9 +424,17 @@ parole_gst_set_subtitle_font (ParoleGst *gst)
 static void
 parole_gst_set_subtitle_encoding (ParoleGst *gst)
 {
-    g_object_set (G_OBJECT (gst->priv->playbin), 
-                  "subtitle-encoding", "UTF-8",
+    gchar *encoding;
+    
+    g_object_get (G_OBJECT (gst->priv->conf),
+		  "subtitle-encoding", &encoding,
 		  NULL);
+    
+    g_object_set (G_OBJECT (gst->priv->playbin), 
+                  "subtitle-encoding", encoding,
+		  NULL);
+		  
+    g_free (encoding);
 }
 
 static void
@@ -516,6 +524,7 @@ parole_gst_update_vis (ParoleGst *gst)
 {
     gchar *vis_name;
     
+    TRACE ("start");
     g_object_get (G_OBJECT (gst->priv->conf),
 		  "vis-enabled", &gst->priv->with_vis,
 		  "vis-name", &vis_name,
@@ -540,6 +549,7 @@ parole_gst_update_vis (ParoleGst *gst)
 
     gst->priv->update = FALSE;
     g_free (vis_name);
+    TRACE ("end");
 }
 
 static void
@@ -551,15 +561,9 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 
     parole_gst_tick (gst);
 
-    if ( gst->priv->update && new == GST_STATE_NULL)
-	parole_gst_update_vis (gst);
-    
     if ( gst->priv->target == new )
 	parole_gst_set_window_cursor (GTK_WIDGET (gst)->window, NULL);
 
-    if ( gst->priv->target == GST_STATE_PLAYING && pending >= GST_STATE_READY)
-	parole_gst_set_x_overlay (gst);
-    
     switch (gst->priv->state)
     {
 	case GST_STATE_PLAYING:
@@ -576,6 +580,12 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 			   gst->priv->stream, PAROLE_MEDIA_STATE_PAUSED);
 	    break;
 	case GST_STATE_READY:
+	    if ( gst->priv->update)
+		parole_gst_update_vis (gst);
+		
+	    if ( gst->priv->target == GST_STATE_PLAYING)
+		parole_gst_set_x_overlay (gst);
+	
 	    gst->priv->media_state = PAROLE_MEDIA_STATE_STOPPED;
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
 			   gst->priv->stream, PAROLE_MEDIA_STATE_STOPPED);
@@ -956,12 +966,23 @@ parole_gst_button_release_event (GtkWidget *widget, GdkEventButton *ev)
 static void
 parole_gst_conf_notify_cb (GObject *object, GParamSpec *spec, ParoleGst *gst)
 {
-    if ( !g_strcmp0 ("vis-enabled", spec->name) || !g_strcmp0 ("vis-name", spec->name))
+    TRACE ("spec->name=%s\n", spec->name);
+    
+    if ( !g_strcmp0 ("vis-enabled", spec->name) || !g_strcmp0 ("vis-name", spec->name) )
     {
 	gst->priv->update = TRUE;
     }
-    else if ( !g_strcmp0 ("subtitle-font", spec->name ) && gst->priv->state >= GST_STATE_PAUSED )
+    else if ( !g_strcmp0 ("subtitle-font", spec->name) || !g_strcmp0 ("enable-subtitle", spec->name)  )
+    {
 	parole_gst_set_subtitle_font (gst);
+    }
+    else if (!g_strcmp0 ("subtitle-encoding", spec->name) )
+    {
+	parole_gst_set_subtitle_encoding (gst);
+    }
+    
+    
+
 }
 
 static void
@@ -1099,8 +1120,6 @@ void parole_gst_play_uri (ParoleGst *gst, const gchar *uri)
     
     if ( gst->priv->state < GST_STATE_PAUSED )
 	parole_gst_play_file_internal (gst);
-    else if ( gst->priv->update )
-	parole_gst_change_state (gst, GST_STATE_NULL);
     else 
 	parole_gst_change_state (gst, GST_STATE_READY);
 }

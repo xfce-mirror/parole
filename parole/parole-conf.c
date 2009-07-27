@@ -40,6 +40,7 @@ struct ParoleConfPrivate
     gboolean 	 enable_vis;
     gboolean	 enable_subtitle;
     gchar	*subtitle_font;
+    gchar       *subtitle_encoding;
 };
 
 static gpointer parole_conf_object = NULL;
@@ -53,6 +54,7 @@ enum
     PROP_VIS_NAME,
     PROP_SUBTITLE_ENABLED,
     PROP_SUBTITLE_FONT,
+    PROP_SUBTITLE_ENCODING
 };
 
 static void parole_conf_set_property (GObject *object,
@@ -70,10 +72,17 @@ static void parole_conf_set_property (GObject *object,
 	    g_object_notify (G_OBJECT (conf), "vis-enabled");
 	    parole_rc_write_entry_bool ("VIS_ENABLED", PAROLE_RC_GROUP_GENERAL, conf->priv->enable_vis);
 	    break;
+	case PROP_SUBTITLE_ENCODING:
+	    if ( conf->priv->subtitle_encoding )
+		g_free (conf->priv->subtitle_encoding);
+	    conf->priv->subtitle_encoding = g_value_dup_string (value);
+	    g_object_notify (G_OBJECT (conf), "subtitle-encoding");
+	    parole_rc_write_entry_string ("SUBTITLE_ENCODING", PAROLE_RC_GROUP_GENERAL, conf->priv->subtitle_encoding);
+	    break;
 	case PROP_VIS_NAME:
 	    if ( conf->priv->vis_sink )
 		g_free (conf->priv->vis_sink);
-	    conf->priv->vis_sink = g_strdup (g_value_get_string (value));
+	    conf->priv->vis_sink = g_value_dup_string (value);
 	    g_object_notify (G_OBJECT (conf), "vis-name");
 	    parole_rc_write_entry_string ("VIS_NAME", PAROLE_RC_GROUP_GENERAL, conf->priv->vis_sink);
 	    break;
@@ -85,7 +94,7 @@ static void parole_conf_set_property (GObject *object,
 	case PROP_SUBTITLE_FONT:
 	    if ( conf->priv->subtitle_font )
 		g_free (conf->priv->subtitle_font);
-	    conf->priv->subtitle_font = g_strdup (g_value_get_string (value));
+	    conf->priv->subtitle_font = g_value_dup_string (value);
 	    g_object_notify (G_OBJECT (conf), "subtitle-font");
 	    parole_rc_write_entry_string ("SUBTITLE_FONT", PAROLE_RC_GROUP_GENERAL, conf->priv->subtitle_font);
 	    break;
@@ -105,6 +114,9 @@ static void parole_conf_get_property (GObject *object,
 
     switch (prop_id)
     {
+	case PROP_SUBTITLE_ENCODING:
+	    g_value_set_string (value, conf->priv->subtitle_encoding);
+	    break;
 	case PROP_VIS_ENABLED:
 	    g_value_set_boolean (value, conf->priv->enable_vis);
 	    break;
@@ -161,6 +173,13 @@ parole_conf_class_init (ParoleConfClass *klass)
                                                            G_PARAM_READWRITE));
 
     g_object_class_install_property (object_class,
+                                     PROP_SUBTITLE_ENCODING,
+                                     g_param_spec_string  ("subtitle-encoding",
+                                                           NULL, NULL,
+                                                           NULL,
+                                                           G_PARAM_READWRITE));
+
+    g_object_class_install_property (object_class,
                                      PROP_SUBTITLE_ENABLED,
                                      g_param_spec_boolean ("enable-subtitle",
                                                            NULL, NULL,
@@ -186,6 +205,7 @@ parole_conf_init (ParoleConf *conf)
     conf->priv->vis_sink   = g_strdup (parole_rc_read_entry_string ("VIS_NAME", PAROLE_RC_GROUP_GENERAL, "none"));
     conf->priv->enable_subtitle = parole_rc_read_entry_bool ("ENABLE_SUBTITLE", PAROLE_RC_GROUP_GENERAL, TRUE);
     conf->priv->subtitle_font = g_strdup (parole_rc_read_entry_string ("SUBTITLE_FONT", PAROLE_RC_GROUP_GENERAL, "Sans 12"));
+    conf->priv->subtitle_encoding = g_strdup (parole_rc_read_entry_string ("SUBTITLE_ENCODING", PAROLE_RC_GROUP_GENERAL, "UTF8"));
 }
 
 ParoleConf *

@@ -315,6 +315,107 @@ parole_plugins_manager_show_plugins_pref (GtkWidget *widget, ParolePluginsManage
     gtk_tree_path_free (path);
 }
 
+static void
+parole_plugins_manager_set_show_tabs (GtkNotebook *nt)
+{
+    gint npages;
+    npages = gtk_notebook_get_n_pages (nt);
+    gtk_notebook_set_show_tabs (nt, npages > 1);
+}
+
+static void
+parole_plugins_manager_page_added_cb (GtkContainer *container, GtkWidget *widget, gpointer data)
+{
+    parole_plugins_manager_set_show_tabs (GTK_NOTEBOOK (container));
+}
+
+static void
+parole_plugins_manager_page_removed_cb (GtkContainer *container, GtkWidget *widget, gpointer data)
+{
+    parole_plugins_manager_set_show_tabs (GTK_NOTEBOOK (container));
+}
+
+static void
+parole_plugins_manager_class_init (ParolePluginsManagerClass *klass)
+{
+    GObjectClass *object_class = G_OBJECT_CLASS (klass);
+
+    object_class->finalize = parole_plugins_manager_finalize;
+
+    g_type_class_add_private (klass, sizeof (ParolePluginsManagerPrivate));
+}
+
+static void
+parole_plugins_manager_init (ParolePluginsManager *manager)
+{
+    ParolePlugin *plugin;
+    GtkBuilder *builder;
+    
+    manager->priv = PAROLE_PLUGINS_MANAGER_GET_PRIVATE (manager);
+    
+    manager->priv->array = g_ptr_array_new ();
+    
+    builder = parole_builder_get_main_interface ();
+    
+    manager->priv->list_nt = GTK_WIDGET (gtk_builder_get_object (builder, "notebook-playlist"));
+    manager->priv->main_nt = GTK_WIDGET (gtk_builder_get_object (builder, "main-notebook"));
+    
+    g_signal_connect (manager->priv->list_nt, "page-added",
+		      G_CALLBACK (parole_plugins_manager_page_added_cb), NULL);
+    
+    g_signal_connect (manager->priv->list_nt, "page-removed",
+		      G_CALLBACK (parole_plugins_manager_page_removed_cb), NULL);
+		      
+    g_signal_connect (manager->priv->main_nt, "page-added",
+		      G_CALLBACK (parole_plugins_manager_page_added_cb), NULL);
+    
+    g_signal_connect (manager->priv->main_nt, "page-removed",
+		      G_CALLBACK (parole_plugins_manager_page_removed_cb), NULL);
+		      
+    g_signal_connect (gtk_builder_get_object (builder, "plugins-menu-item"), "activate",
+		      G_CALLBACK (parole_plugins_manager_show_plugins_pref), manager);
+		     
+    parole_plugins_manager_set_show_tabs (GTK_NOTEBOOK (manager->priv->list_nt));
+    parole_plugins_manager_set_show_tabs (GTK_NOTEBOOK (manager->priv->main_nt));
+    
+    g_object_unref (builder);
+    
+    plugin = parole_plugin_new (NULL, NULL, NULL);
+    g_object_unref (plugin);
+}
+
+static void
+parole_plugins_manager_finalize (GObject *object)
+{
+    ParolePluginsManager *manager;
+
+    manager = PAROLE_PLUGINS_MANAGER (object);
+    
+    g_ptr_array_foreach (manager->priv->array, 
+		        (GFunc)parole_plugins_manager_unload_all, NULL);
+    g_ptr_array_free (manager->priv->array, TRUE);
+
+    G_OBJECT_CLASS (parole_plugins_manager_parent_class)->finalize (object);
+}
+
+ParolePluginsManager *
+parole_plugins_manager_new (void)
+{
+    static gpointer parole_plugins_manager_object = NULL;
+    
+    if ( G_LIKELY (parole_plugins_manager_object != NULL) )
+    {
+	g_object_ref (parole_plugins_manager_object);
+    }
+    else
+    {
+	parole_plugins_manager_object = g_object_new (PAROLE_TYPE_PLUGINS_MANAGER, NULL);
+	g_object_add_weak_pointer (parole_plugins_manager_object, &parole_plugins_manager_object);
+    }
+    
+    return PAROLE_PLUGINS_MANAGER (parole_plugins_manager_object);
+}
+
 void 
 parole_plugins_manager_load_plugins (ParolePluginsManager *manager)
 {
@@ -368,72 +469,6 @@ parole_plugins_manager_load_plugins (ParolePluginsManager *manager)
 	}
     }
     g_dir_close (dir);
-}
-
-static void
-parole_plugins_manager_class_init (ParolePluginsManagerClass *klass)
-{
-    GObjectClass *object_class = G_OBJECT_CLASS (klass);
-
-    object_class->finalize = parole_plugins_manager_finalize;
-
-    g_type_class_add_private (klass, sizeof (ParolePluginsManagerPrivate));
-}
-
-static void
-parole_plugins_manager_init (ParolePluginsManager *manager)
-{
-    ParolePlugin *plugin;
-    GtkBuilder *builder;
-    
-    manager->priv = PAROLE_PLUGINS_MANAGER_GET_PRIVATE (manager);
-    
-    manager->priv->array = g_ptr_array_new ();
-    
-    builder = parole_builder_get_main_interface ();
-    
-    manager->priv->list_nt = GTK_WIDGET (gtk_builder_get_object (builder, "notebook-playlist"));
-    manager->priv->main_nt = GTK_WIDGET (gtk_builder_get_object (builder, "main-notebook"));
-    
-    g_signal_connect (gtk_builder_get_object (builder, "plugins-menu-item"), "activate",
-		      G_CALLBACK (parole_plugins_manager_show_plugins_pref), manager);
-		     
-    g_object_unref (builder);
-    
-    plugin = parole_plugin_new (NULL, NULL, NULL);
-    g_object_unref (plugin);
-}
-
-static void
-parole_plugins_manager_finalize (GObject *object)
-{
-    ParolePluginsManager *manager;
-
-    manager = PAROLE_PLUGINS_MANAGER (object);
-    
-    g_ptr_array_foreach (manager->priv->array, 
-		        (GFunc)parole_plugins_manager_unload_all, NULL);
-    g_ptr_array_free (manager->priv->array, TRUE);
-
-    G_OBJECT_CLASS (parole_plugins_manager_parent_class)->finalize (object);
-}
-
-ParolePluginsManager *
-parole_plugins_manager_new (void)
-{
-    static gpointer parole_plugins_manager_object = NULL;
-    
-    if ( G_LIKELY (parole_plugins_manager_object != NULL) )
-    {
-	g_object_ref (parole_plugins_manager_object);
-    }
-    else
-    {
-	parole_plugins_manager_object = g_object_new (PAROLE_TYPE_PLUGINS_MANAGER, NULL);
-	g_object_add_weak_pointer (parole_plugins_manager_object, &parole_plugins_manager_object);
-    }
-    
-    return PAROLE_PLUGINS_MANAGER (parole_plugins_manager_object);
 }
 
 void parole_plugins_manager_pack (ParolePluginsManager *manager, ParolePlugin *plugin,

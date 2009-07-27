@@ -1,3 +1,12 @@
+2009-07-27: 18:00 Ali aliov@xfce.org
+	* Don't show notebook tabs if we have one page.
+	* Added subtitle font encoding support, encodings code taken from
+	gnome-terminal
+	* Fix changing state to play when user select another
+	visualization plugin.
+	* data/interfaces/mediachooser.ui Remove empty box.
+	* Update TODO and pot file.
+
 2009-07-27: 15:36 Ali aliov@xfce.org
 	* Added system tray icon plugin, with optional notification
 	support.

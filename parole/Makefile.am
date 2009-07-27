@@ -75,7 +75,8 @@ NOINST_HFILES =					\
 	parole-module.h				\
 	parole-pl-parser.h			\
 	parole-about.h				\
-	parole-builder.h
+	parole-builder.h			\
+	parole-subtitle-encoding.h
 
 libparole_headers =				\
 	$(INST_HFILES)
@@ -112,7 +113,8 @@ libparole_la_SOURCES =				\
 	parole-module.c				\
 	parole-pl-parser.c			\
 	parole-about.c				\
-	parole-builder.c
+	parole-builder.c			\
+	parole-subtitle-encoding.c
 
 libparole_la_LDFLAGS =				\
 	$(PAROLE_LDFLAGS)
