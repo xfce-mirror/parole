@@ -1,3 +1,11 @@
+2009-07-27: 15:36 Ali aliov@xfce.org
+	* Added system tray icon plugin, with optional notification
+	support.
+	* plugins, Now have optional configure dialog.
+	* Added some home made icons and a logo.
+	* Always set the stop button sensitive when we are trying to play
+	a media file, this gives the possibility to cancel at any time.
+
 2009-07-26: 01:15 Ali aliov@xfce.org
 	* Provides a dialog to load/unload plugins.
 	* data/interfaces/ Mark some gtk labels as non-translatable+default

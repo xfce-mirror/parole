@@ -37,12 +37,38 @@
 #include "parole-plugins-manager.h"
 #include "parole-module.h"
 
+typedef struct
+{
+    ParolePluginsManager *manager;
+
+    GtkWidget *window;
+    GtkWidget *view;
+    GtkListStore *store;
+    GtkWidget *desc;
+    GtkWidget *author;
+    GtkWidget *copyright;
+    GtkWidget *site;
+    GtkWidget *about;
+    GtkWidget *configure;
+    
+} PrefData;
+
+void parole_plugins_manager_pref_response_cb		(GtkDialog *dialog,
+							 gint reponse_id,
+							 PrefData *pref);
+
 void parole_plugins_manager_cell_toggled_cb 		(GtkCellRendererToggle *cell_renderer, 
 							 gchar *path, 
-							 ParolePluginsManager *manager);
+							 PrefData *pref);
 
 void parole_plugins_manager_tree_cursor_changed_cb	(GtkTreeView *view,
-							 ParolePluginsManager *manager);
+							 PrefData *pref);
+
+void parole_plugins_manager_show_configure		(GtkButton *button,
+							 PrefData *pref);
+
+void parole_plugins_manager_show_about			(GtkButton *button,
+							 PrefData *pref);
 
 static void parole_plugins_manager_finalize   (GObject *object);
 
@@ -65,6 +91,59 @@ enum
     COL_PLUGIN,
     COL_DATA
 };
+
+void parole_plugins_manager_pref_response_cb		(GtkDialog *dialog,
+							 gint reponse_id,
+							 PrefData *pref)
+{
+    gtk_widget_destroy (GTK_WIDGET (dialog));
+    g_free (pref);
+}
+
+static ParoleModule *
+parole_plugins_manager_get_selected_module (PrefData *pref)
+{
+    ParoleModule *module;
+    GtkTreeSelection *sel;
+    GtkTreeModel     *model;
+    GtkTreeIter       iter;
+
+    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (pref->view));
+
+    if ( !gtk_tree_selection_get_selected (sel, &model, &iter))
+        return NULL;
+
+    gtk_tree_model_get (model,
+                        &iter,
+                        COL_DATA,
+                        &module,
+                        -1);
+    return module;
+}
+
+void parole_plugins_manager_show_configure (GtkButton *button, PrefData *pref)
+{
+    ParoleModule *module;
+    
+    module = parole_plugins_manager_get_selected_module (pref);
+    
+    if ( !module )
+	return;
+	
+    g_signal_emit_by_name (G_OBJECT (module->plugin), "configure", pref->window);
+}
+
+void parole_plugins_manager_show_about (GtkButton *button, PrefData *pref)
+{
+    ParoleModule *module;
+    
+    module = parole_plugins_manager_get_selected_module (pref);
+    
+    if ( !module )
+	return;
+	
+    g_signal_emit_by_name (G_OBJECT (module->plugin), "about", pref->window);
+}
 
 static void
 parole_plugins_manager_save_rc (gchar *filename, gboolean active)
@@ -112,20 +191,17 @@ parole_plugins_manager_save_rc (gchar *filename, gboolean active)
 void 
 parole_plugins_manager_cell_toggled_cb (GtkCellRendererToggle *cell_renderer, 
 					gchar *path_str, 
-					ParolePluginsManager *manager)
+					PrefData *pref)
 {
     ParoleModule *module;
-    GtkListStore *store;
     GtkTreeIter iter;
     GtkTreePath *path;
     gboolean active;
 
-    store = g_object_get_data (G_OBJECT (manager), "liststore");
-
     path = gtk_tree_path_new_from_string (path_str);
     
-    gtk_tree_model_get_iter (GTK_TREE_MODEL (store), &iter, path);
-    gtk_tree_model_get (GTK_TREE_MODEL (store), &iter, 
+    gtk_tree_model_get_iter (GTK_TREE_MODEL (pref->store), &iter, path);
+    gtk_tree_model_get (GTK_TREE_MODEL (pref->store), &iter, 
 		        COL_ACTIVE, &active, 
 			COL_DATA, &module,
 			-1);
@@ -134,7 +210,7 @@ parole_plugins_manager_cell_toggled_cb (GtkCellRendererToggle *cell_renderer,
     
     parole_module_set_active (module, active);
     
-    gtk_list_store_set (GTK_LIST_STORE (store), &iter, 
+    gtk_list_store_set (GTK_LIST_STORE (pref->store), &iter, 
 			COL_ACTIVE, active,
 			-1);
 			
@@ -144,36 +220,29 @@ parole_plugins_manager_cell_toggled_cb (GtkCellRendererToggle *cell_renderer,
 }
 
 void parole_plugins_manager_tree_cursor_changed_cb (GtkTreeView *view,
-						    ParolePluginsManager *manager)
+						    PrefData *pref)
 {
     ParoleModule *module;
-    GtkWidget *desc;
-    GtkWidget *author;
-    GtkWidget *copyright;
-    GtkWidget *site;
-    GtkTreeSelection *sel;
-    GtkTreeModel     *model;
-    GtkTreeIter       iter;
+    gboolean configurable = FALSE, show_about = FALSE;
 
-    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (view));
-
-    if ( !gtk_tree_selection_get_selected (sel, &model, &iter))
-        return;
-
-    gtk_tree_model_get (model,
-                        &iter,
-                        COL_DATA,
-                        &module,
-                        -1);
-
+    module = parole_plugins_manager_get_selected_module (pref);
     
-    desc = g_object_get_data (G_OBJECT (manager), "desc");
-    author = g_object_get_data (G_OBJECT (manager), "author");
-    copyright = g_object_get_data (G_OBJECT (manager), "copyright");
-    site = g_object_get_data (G_OBJECT (manager), "site");
+    if ( !module )
+	return;
     
-    gtk_label_set_text (GTK_LABEL (desc), module->desc->desc);
-    gtk_label_set_text (GTK_LABEL (author), module->desc->author);
+    gtk_label_set_text (GTK_LABEL (pref->desc), module->desc->desc);
+    gtk_label_set_text (GTK_LABEL (pref->author), module->desc->author);
+    
+    if ( module->enabled )
+    {
+	g_object_get (G_OBJECT (module->plugin),
+		      "configurable", &configurable,
+		      "show-about", &show_about,
+		      NULL);
+    }
+    
+    gtk_widget_set_sensitive (pref->about, show_about);
+    gtk_widget_set_sensitive (pref->configure, configurable);
 }
 
 static void
@@ -191,36 +260,31 @@ static void
 parole_plugins_manager_show_plugins_pref (GtkWidget *widget, ParolePluginsManager *manager)
 {
     GtkBuilder *builder;
-    GtkWidget *view;
-    GtkWidget *window;
-    GtkWidget *desc;
-    GtkWidget *author;
-    GtkWidget *copyright;
-    GtkWidget *site;
     GtkTreeSelection *sel;
-    GtkListStore *store;
     GtkTreePath *path;
     GtkTreeIter iter;
     guint i;
     
+    PrefData *pref;
     builder = parole_builder_new_from_string (plugins_ui, plugins_ui_length);
     
-    window = GTK_WIDGET (gtk_builder_get_object (builder, "dialog"));
-    view = GTK_WIDGET (gtk_builder_get_object (builder, "treeview"));
-    store = GTK_LIST_STORE (gtk_builder_get_object (builder, "liststore"));
+    pref = g_new0 (PrefData, 1);
     
-    desc = GTK_WIDGET (gtk_builder_get_object (builder, "description"));
-    author = GTK_WIDGET (gtk_builder_get_object (builder, "author"));
-    copyright = GTK_WIDGET (gtk_builder_get_object (builder, "copyright"));
-    site = GTK_WIDGET (gtk_builder_get_object (builder, "site"));
+    pref->window = GTK_WIDGET (gtk_builder_get_object (builder, "dialog"));
+    pref->view = GTK_WIDGET (gtk_builder_get_object (builder, "treeview"));
     
-    g_object_set_data (G_OBJECT (manager), "liststore", store);
-    g_object_set_data (G_OBJECT (manager), "desc", desc);
-    g_object_set_data (G_OBJECT (manager), "author", author);
-    g_object_set_data (G_OBJECT (manager), "copyright", copyright);
-    g_object_set_data (G_OBJECT (manager), "site", site);
+    pref->manager = manager;
+    pref->store = GTK_LIST_STORE (gtk_builder_get_object (builder, "liststore"));
     
-    gtk_window_set_transient_for (GTK_WINDOW (window), GTK_WINDOW (gtk_widget_get_toplevel (manager->priv->main_nt)));
+    pref->desc = GTK_WIDGET (gtk_builder_get_object (builder, "description"));
+    pref->author = GTK_WIDGET (gtk_builder_get_object (builder, "author"));
+    pref->copyright = GTK_WIDGET (gtk_builder_get_object (builder, "copyright"));
+    pref->site = GTK_WIDGET (gtk_builder_get_object (builder, "site"));
+    
+    pref->about = GTK_WIDGET (gtk_builder_get_object (builder, "about"));
+    pref->configure = GTK_WIDGET (gtk_builder_get_object (builder, "configure"));
+    
+    gtk_window_set_transient_for (GTK_WINDOW (pref->window), GTK_WINDOW (gtk_widget_get_toplevel (manager->priv->main_nt)));
 
     for ( i = 0; i < manager->priv->array->len; i++)
     {
@@ -229,8 +293,8 @@ parole_plugins_manager_show_plugins_pref (GtkWidget *widget, ParolePluginsManage
 	
 	if ( module->desc )
 	{
-	    gtk_list_store_append (store, &iter);
-	    gtk_list_store_set (store, &iter, 
+	    gtk_list_store_append (pref->store, &iter);
+	    gtk_list_store_set (pref->store, &iter, 
 			        COL_ACTIVE, module->enabled, 
 				COL_PLUGIN, module->desc->title, 
 				COL_DATA, module,
@@ -238,18 +302,17 @@ parole_plugins_manager_show_plugins_pref (GtkWidget *widget, ParolePluginsManage
 	}
     }
     
-    gtk_builder_connect_signals (builder, manager);
-    gtk_widget_show_all (window);
+    gtk_builder_connect_signals (builder, pref);
+    gtk_widget_show_all (pref->window);
     g_object_unref (builder);
     
-    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (view));
+    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (pref->view));
 
     path = gtk_tree_path_new_from_string ("0");
 
     gtk_tree_selection_select_path (sel, path);
-    gtk_tree_view_set_cursor (GTK_TREE_VIEW (view), path, NULL, FALSE);
+    gtk_tree_view_set_cursor (GTK_TREE_VIEW (pref->view), path, NULL, FALSE);
     gtk_tree_path_free (path);
-    
 }
 
 void 

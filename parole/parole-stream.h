@@ -29,6 +29,18 @@ G_BEGIN_DECLS
 #define PAROLE_STREAM(o)          (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_STREAM, ParoleStream))
 #define PAROLE_IS_STREAM(o)       (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_STREAM))
 
+typedef enum
+{
+    PAROLE_MEDIA_TYPE_UNKNOWN,
+    PAROLE_MEDIA_TYPE_LOCAL_FILE,
+    PAROLE_MEDIA_TYPE_CDDA,
+    PAROLE_MEDIA_TYPE_VCD,
+    PAROLE_MEDIA_TYPE_SVCD,
+    PAROLE_MEDIA_TYPE_DVD,
+    PAROLE_MEDIA_TYPE_REMOTE
+    
+} ParoleMediaType;
+
 typedef struct _ParoleStream      ParoleStream;
 typedef struct _ParoleStreamClass ParoleStreamClass;
 

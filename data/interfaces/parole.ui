@@ -6,9 +6,10 @@
     <property name="window_position">center</property>
     <property name="default_width">780</property>
     <property name="default_height">480</property>
+    <property name="icon_name">parole</property>
     <signal name="destroy" handler="parole_player_destroy_cb"/>
     <signal name="key_press_event" handler="parole_player_key_press"/>
-    <signal name="delete_event" handler="parole_player_delete_event_cb"/>
+    <signal name="delete_event" handler="parole_player_delete_event_cb" after="yes"/>
     <child>
       <object class="GtkVBox" id="vbox1">
         <property name="visible">True</property>

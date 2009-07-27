@@ -28,7 +28,6 @@
 
 #include <glib.h>
 
-#include <gst/gst.h>
 #include <gst/interfaces/xoverlay.h>
 #include <gst/interfaces/navigation.h>
 
@@ -61,6 +60,7 @@ struct ParoleGstPrivate
     GMutex       *lock;
     GstState      state;
     GstState      target;
+    ParoleMediaState media_state;
     
     ParoleStream *stream;
     gulong	  tick_id;
@@ -566,15 +566,17 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 	    parole_gst_query_duration (gst);
 	    parole_gst_query_capabilities (gst);
 	    parole_gst_query_info (gst);
-	    
+	    gst->priv->media_state = PAROLE_MEDIA_STATE_PLAYING;
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
 			   gst->priv->stream, PAROLE_MEDIA_STATE_PLAYING);
 	    break;
 	case GST_STATE_PAUSED:
+	    gst->priv->media_state = PAROLE_MEDIA_STATE_PAUSED;
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
 			   gst->priv->stream, PAROLE_MEDIA_STATE_PAUSED);
 	    break;
 	case GST_STATE_READY:
+	    gst->priv->media_state = PAROLE_MEDIA_STATE_STOPPED;
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
 			   gst->priv->stream, PAROLE_MEDIA_STATE_STOPPED);
 
@@ -592,6 +594,7 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 	    }
 	    break;
 	case GST_STATE_NULL:
+	    gst->priv->media_state = PAROLE_MEDIA_STATE_STOPPED;
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
 			   gst->priv->stream, PAROLE_MEDIA_STATE_STOPPED);
 	    break;
@@ -662,6 +665,10 @@ parole_gst_get_meta_data (ParoleGst *gst, GstTagList *tag)
 	g_free (str);
     }
 
+    g_object_set (G_OBJECT (gst->priv->stream),
+		  "tag-available", TRUE,
+		  NULL);
+		  
     g_signal_emit (G_OBJECT (gst), signals [MEDIA_TAG], 0, gst->priv->stream);
 }
 
@@ -676,6 +683,7 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
     {
         case GST_MESSAGE_EOS:
 	    TRACE ("End of stream");
+	    gst->priv->media_state = PAROLE_MEDIA_STATE_FINISHED;
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
 			       gst->priv->stream, PAROLE_MEDIA_STATE_FINISHED);
 	    break;
@@ -1033,6 +1041,7 @@ parole_gst_init (ParoleGst *gst)
     
     gst->priv->state = GST_STATE_VOID_PENDING;
     gst->priv->target = GST_STATE_VOID_PENDING;
+    gst->priv->media_state = PAROLE_MEDIA_STATE_STOPPED;
     gst->priv->lock = g_mutex_new ();
     gst->priv->stream = parole_stream_new ();
     gst->priv->tick_id = 0;
@@ -1200,4 +1209,19 @@ gdouble	parole_gst_get_volume (ParoleGst *gst)
 		  "volume", &volume,
 		  NULL);
     return volume;
+}
+
+ParoleMediaState parole_gst_get_state (ParoleGst *gst)
+{
+    return gst->priv->media_state;
+}
+
+GstState parole_gst_get_gst_state (ParoleGst *gst)
+{
+    return gst->priv->state;
+}
+
+GstState parole_gst_get_gst_target_state (ParoleGst *gst)
+{
+    return gst->priv->target;
 }

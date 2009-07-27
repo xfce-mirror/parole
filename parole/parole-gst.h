@@ -22,6 +22,7 @@
 #define __PAROLE_GST_H
 
 #include <glib-object.h>
+#include <gst/gst.h>
 #include <gtk/gtk.h>
 
 #include "parole-stream.h"
@@ -100,6 +101,12 @@ void			parole_gst_set_volume      (ParoleGst *gst,
 						    gdouble value);
 						    
 gdouble			parole_gst_get_volume	   (ParoleGst *gst);
+
+ParoleMediaState        parole_gst_get_state	   (ParoleGst *gst);
+
+GstState	        parole_gst_get_gst_state   (ParoleGst *gst);
+
+GstState	        parole_gst_get_gst_target_state (ParoleGst *gst);
 
 G_END_DECLS
 

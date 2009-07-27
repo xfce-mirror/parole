@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-26 01:16+0200\n"
+"POT-Creation-Date: 2009-07-27 16:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,7 +65,19 @@ msgid "<b>Site:</b>"
 msgstr ""
 
 #: ../data/interfaces/plugins.ui.h:5
+msgid "Parole Plugins Preferences"
+msgstr ""
+
+#: ../data/interfaces/plugins.ui.h:6
+msgid "gtk-about"
+msgstr ""
+
+#: ../data/interfaces/plugins.ui.h:7
 msgid "gtk-close"
+msgstr ""
+
+#: ../data/interfaces/plugins.ui.h:8
+msgid "gtk-properties"
 msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:1
@@ -131,16 +143,16 @@ msgstr ""
 msgid "Type '%s --help' for usage."
 msgstr ""
 
-#: ../parole/parole-gst.c:788
+#: ../parole/parole-gst.c:796
 msgid "Error in changing state to ready"
 msgstr ""
 
-#: ../parole/parole-gst.c:837
+#: ../parole/parole-gst.c:845
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 
-#: ../parole/parole-gst.c:852
+#: ../parole/parole-gst.c:860
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
@@ -173,7 +185,7 @@ msgstr ""
 msgid "Unknown playlist format, Please select a support playlist format"
 msgstr ""
 
-#: ../parole/parole-medialist.c:455 ../parole/parole-player.c:953
+#: ../parole/parole-medialist.c:455 ../parole/parole-player.c:963
 msgid "Playlist"
 msgstr ""
 
@@ -205,20 +217,20 @@ msgstr ""
 msgid "Show playlist"
 msgstr ""
 
-#: ../parole/parole-player.c:336 ../parole/parole-statusbar.c:125
+#: ../parole/parole-player.c:338 ../parole/parole-statusbar.c:125
 #: ../parole/parole-statusbar.c:127
 msgid "Playing"
 msgstr ""
 
-#: ../parole/parole-player.c:337
+#: ../parole/parole-player.c:339
 msgid "Media stream is not seekable"
 msgstr ""
 
-#: ../parole/parole-player.c:355 ../parole/parole-player.c:368
+#: ../parole/parole-player.c:357 ../parole/parole-player.c:370
 msgid "Paused"
 msgstr ""
 
-#: ../parole/parole-player.c:386
+#: ../parole/parole-player.c:388
 msgid "Stopped"
 msgstr ""
 
@@ -254,40 +266,66 @@ msgstr ""
 msgid "Play Disc"
 msgstr ""
 
-#: ../plugins/properties/stream-properties.c:40
-#: ../plugins/properties/stream-properties.c:41
-#: ../plugins/properties/stream-properties.c:42
-#: ../plugins/properties/stream-properties.c:43
 #: ../plugins/properties/stream-properties.c:44
+#: ../plugins/properties/stream-properties.c:45
+#: ../plugins/properties/stream-properties.c:46
+#: ../plugins/properties/stream-properties.c:47
+#: ../plugins/properties/stream-properties.c:48
 msgid "Unknown"
 msgstr ""
 
-#: ../plugins/properties/stream-properties.c:66
+#: ../plugins/properties/stream-properties.c:70
 msgid "Title:"
 msgstr ""
 
-#: ../plugins/properties/stream-properties.c:89
+#: ../plugins/properties/stream-properties.c:93
 msgid "Artist:"
 msgstr ""
 
-#: ../plugins/properties/stream-properties.c:112
+#: ../plugins/properties/stream-properties.c:116
 msgid "Album:"
 msgstr ""
 
-#: ../plugins/properties/stream-properties.c:135
+#: ../plugins/properties/stream-properties.c:139
 msgid "Year:"
 msgstr ""
 
-#: ../plugins/properties/stream-properties.c:158
+#: ../plugins/properties/stream-properties.c:162
 msgid "Comment:"
 msgstr ""
 
 #. Construct function
-#: ../plugins/properties/stream-properties.c:284
+#: ../plugins/properties/stream-properties.c:288
 msgid "Properties"
 msgstr ""
 
 #. Title
-#: ../plugins/properties/stream-properties.c:285
+#: ../plugins/properties/stream-properties.c:289
 msgid "Read media properties"
+msgstr ""
+
+#: ../plugins/tray/tray-icon.c:203
+msgid "<b>Playing:</b>"
+msgstr ""
+
+#: ../plugins/tray/tray-icon.c:203
+msgid "<b>Duration:</b>"
+msgstr ""
+
+#: ../plugins/tray/tray-icon.c:328
+msgid "Tray icon plugin"
+msgstr ""
+
+#: ../plugins/tray/tray-icon.c:337
+msgid "Enable notification"
+msgstr ""
+
+#. Construct function
+#: ../plugins/tray/tray-icon.c:408
+msgid "Tray icon"
+msgstr ""
+
+#. Title
+#: ../plugins/tray/tray-icon.c:409
+msgid "Show icon in the system tray"
 msgstr ""

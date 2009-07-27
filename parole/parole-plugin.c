@@ -60,6 +60,9 @@ struct _ParolePluginPrivate
     GtkWidget *widget;
     gboolean packed;
     
+    gboolean configurable;
+    gboolean show_about;
+    
     /* sig id's*/
     gulong gst_sig1;
     gulong gst_sig2;
@@ -70,7 +73,9 @@ enum
     PROP_0,
     PROP_TITLE,
     PROP_DESC,
-    PROP_AUTHOR
+    PROP_AUTHOR,
+    PROP_CONFIGURABLE,
+    PROP_SHOW_ABOUT
 };
 
 enum
@@ -78,6 +83,8 @@ enum
     STATE_CHANGED,
     TAG_MESSAGE,
     FREE_DATA,
+    CONFIGURE,
+    ABOUT,
     LAST_SIGNAL
 };
 
@@ -162,6 +169,42 @@ parole_plugin_class_init (ParolePluginClass *klass)
                       G_TYPE_NONE, 0, G_TYPE_NONE);
 
     /**
+     * ParolePlugin::configure:
+     * @plugin: the object which received the signal.
+     * 
+     * Emitted when the user click the configure button in the plugins
+     * configuration dialog.
+     * 
+     * Since: 0.1 
+     **/
+    signals [CONFIGURE] = 
+        g_signal_new ("configure",
+                      PAROLE_TYPE_PLUGIN,
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET(ParolePluginClass, configure),
+                      NULL, NULL,
+                      g_cclosure_marshal_VOID__OBJECT,
+                      G_TYPE_NONE, 1, GTK_TYPE_WIDGET);
+
+    /**
+     * ParolePlugin::configure:
+     * @plugin: the object which received the signal.
+     * 
+     * Emitted when the user click the configure button in the plugins
+     * configuration dialog.
+     * 
+     * Since: 0.1 
+     **/
+    signals [ABOUT] = 
+        g_signal_new ("about",
+                      PAROLE_TYPE_PLUGIN,
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET(ParolePluginClass, about),
+                      NULL, NULL,
+                      g_cclosure_marshal_VOID__OBJECT,
+                      G_TYPE_NONE, 1, GTK_TYPE_WIDGET);
+
+    /**
      * ParolePlugin:title:
      * 
      * Title to display for this plugin.
@@ -205,7 +248,33 @@ parole_plugin_class_init (ParolePluginClass *klass)
                                                           NULL,
                                                           G_PARAM_READWRITE|
 							  G_PARAM_CONSTRUCT_ONLY));
+							
+    /**
+     * ParolePlugin:configurable:
+     * 
+     * 
+     * Since: 0.1 
+     **/
+    g_object_class_install_property (object_class,
+                                     PROP_CONFIGURABLE,
+                                     g_param_spec_boolean ("configurable",
+                                                           NULL, NULL,
+                                                           FALSE,
+                                                           G_PARAM_READWRITE));
 							  
+    /**
+     * ParolePlugin:show-about:
+     * 
+     * 
+     * Since: 0.1 
+     **/
+    g_object_class_install_property (object_class,
+                                     PROP_SHOW_ABOUT,
+                                     g_param_spec_boolean ("show-about",
+                                                           NULL, NULL,
+                                                           FALSE,
+                                                           G_PARAM_READWRITE));
+							   
     g_type_class_add_private (klass, sizeof (ParolePluginPrivate));
 }
 
@@ -219,6 +288,7 @@ parole_plugin_init (ParolePlugin *plugin)
     priv->title  = NULL;
     priv->packed = FALSE;
     priv->widget = NULL;
+    priv->configurable = FALSE;
     
     priv->gst = PAROLE_GST (parole_gst_new ());
     
@@ -248,6 +318,12 @@ static void parole_plugin_set_property (GObject *object,
 	case PROP_AUTHOR:
 	    PAROLE_PLUGIN_GET_PRIVATE (plugin)->author = g_value_dup_string (value);
 	    break;
+	case PROP_CONFIGURABLE:
+	    PAROLE_PLUGIN_GET_PRIVATE (plugin)->configurable = g_value_get_boolean (value);
+	    break;
+	case PROP_SHOW_ABOUT:
+	    PAROLE_PLUGIN_GET_PRIVATE (plugin)->show_about = g_value_get_boolean (value);
+	    break;
 	default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
             break;
@@ -273,6 +349,12 @@ static void parole_plugin_get_property (GObject *object,
 	    break;
 	case PROP_AUTHOR:
 	    g_value_set_string (value, PAROLE_PLUGIN_GET_PRIVATE (plugin)->author);
+	    break;
+	case PROP_CONFIGURABLE:
+	    g_value_set_boolean (value, PAROLE_PLUGIN_GET_PRIVATE (plugin)->configurable);
+	    break;
+	case PROP_SHOW_ABOUT:
+	    g_value_set_boolean (value, PAROLE_PLUGIN_GET_PRIVATE (plugin)->show_about);
 	    break;
 	default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -340,9 +422,13 @@ parole_plugin_new (const gchar *title, const gchar *desc, const gchar *author)
  **/
 GtkWidget *parole_plugin_get_main_window (ParolePlugin *plugin)
 {
+    ParolePluginPrivate *priv;
     
+    g_return_val_if_fail (PAROLE_IS_PLUGIN (plugin), NULL);
     
-    return NULL;
+    priv = PAROLE_PLUGIN_GET_PRIVATE (plugin);
+    
+    return gtk_widget_get_toplevel (GTK_WIDGET (priv->gst));
 }
 
 /**
@@ -380,6 +466,83 @@ void parole_plugin_pack_widget (ParolePlugin *plugin, GtkWidget *widget, ParoleP
 }
 
 /**
+ * parole_plugin_get_state:
+ * @plugin: a #ParolePlugin.
+ * 
+ * 
+ * 
+ * Returns: The current state of the media player.
+ **/
+ParoleState parole_plugin_get_state (ParolePlugin *plugin)
+{
+    ParolePluginPrivate *priv;
+    
+    g_return_val_if_fail (PAROLE_IS_PLUGIN (plugin), PAROLE_STATE_STOPPED);
+    
+    priv = PAROLE_PLUGIN_GET_PRIVATE (plugin);
+    
+    return parole_gst_get_state (priv->gst);
+}
+
+/**
+ * parole_plugin_get_is_configurable:
+ * @plugin: a #ParolePlugin.
+ * 
+ * 
+ * 
+ * Returns: Whether the plugin is configurable.
+ **/
+gboolean parole_plugin_get_is_configurable (ParolePlugin *plugin)
+{
+    g_return_val_if_fail (PAROLE_IS_PLUGIN (plugin), FALSE);
+    
+    return PAROLE_PLUGIN_GET_PRIVATE (plugin)->configurable;
+}
+
+/**
+ * parole_plugin_set_is_configurable:
+ * @plugin: a #ParolePlugin.
+ * 
+ * 
+ * 
+ **/
+void parole_plugin_set_is_configurable (ParolePlugin *plugin, gboolean is_configurable)
+{
+    g_return_if_fail (PAROLE_IS_PLUGIN (plugin));
+    
+    PAROLE_PLUGIN_GET_PRIVATE (plugin)->configurable = is_configurable;
+}
+
+/**
+ * parole_plugin_get_show_about:
+ * @plugin: a #ParolePlugin.
+ * 
+ * 
+ * 
+ * Returns:
+ **/
+gboolean parole_plugin_get_show_about (ParolePlugin *plugin)
+{
+    g_return_val_if_fail (PAROLE_IS_PLUGIN (plugin), FALSE);
+    
+    return PAROLE_PLUGIN_GET_PRIVATE (plugin)->show_about;
+}
+
+/**
+ * parole_plugin_set_show_about:
+ * @plugin: a #ParolePlugin.
+ * 
+ * 
+ * 
+ **/
+void parole_plugin_set_show_about (ParolePlugin *plugin, gboolean show_about)
+{
+    g_return_if_fail (PAROLE_IS_PLUGIN (plugin));
+    
+    PAROLE_PLUGIN_GET_PRIVATE (plugin)->show_about = show_about;
+}
+
+/**
  * parole_plugin_play_uri:
  * @plugin: a #ParolePlugin.
  * @uri: uri of the file to play.
@@ -396,44 +559,52 @@ gboolean parole_plugin_play_uri (ParolePlugin *plugin, const gchar *uri)
 }
 
 /**
- * parole_plugin_pause_playing:
+ * parole_plugin_pause_playback:
  * @plugin: a #ParolePlugin.
  * 
  * Causes the media player to pause any playback.
  * 
  * Returns: TRUE on success, FALSE otherwise.
  **/
-gboolean parole_plugin_pause_playing (ParolePlugin *plugin)
+gboolean parole_plugin_pause_playback (ParolePlugin *plugin)
 {
+    g_return_val_if_fail (PAROLE_IS_PLUGIN (plugin), FALSE);
+    
+    parole_gst_pause (PAROLE_PLUGIN_GET_PRIVATE (plugin)->gst);
     
     return TRUE;
 }
 
 /**
- * parole_plugin_pause_playing:
+ * parole_plugin_pause_playback:
  * @plugin: a #ParolePlugin.
  * 
  * Causes the media player to resume playing the currently paused stream.
  * 
  * Returns: TRUE on success, FALSE otherwise.
  **/
-gboolean  parole_plugin_resume (ParolePlugin *plugin)
+gboolean  parole_plugin_resume_playback (ParolePlugin *plugin)
 {
+    g_return_val_if_fail (PAROLE_IS_PLUGIN (plugin), FALSE);
     
+    parole_gst_resume (PAROLE_PLUGIN_GET_PRIVATE (plugin)->gst);
     
     return TRUE;
-}
-	
+}	
+
 /**
- * parole_plugin_stop_playing:
+ * parole_plugin_stop_playback:
  * @plugin: a #ParolePlugin.
  * 
  * Causes the media player to stop any playback.
  * 
  * Returns: TRUE on success, FALSE otherwise.
  **/
-gboolean parole_plugin_stop_playing (ParolePlugin *plugin)
+gboolean parole_plugin_stop_playback (ParolePlugin *plugin)
 {
+    g_return_val_if_fail (PAROLE_IS_PLUGIN (plugin), FALSE);
+    
+    parole_gst_stop (PAROLE_PLUGIN_GET_PRIVATE (plugin)->gst);
     
     return TRUE;
 }

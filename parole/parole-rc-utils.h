@@ -22,7 +22,7 @@
 #define __RC_UTILS_
 
 #define PAROLE_RC_GROUP_GENERAL		"General"
-#define PAROLE_RC_GROUP_PLUGINS		"General"
+#define PAROLE_RC_GROUP_PLUGINS		"Plugins"
 
 void			parole_rc_write_entry_bool	(const gchar *property,
 							 const gchar *group,

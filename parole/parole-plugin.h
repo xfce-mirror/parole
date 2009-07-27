@@ -45,7 +45,7 @@ typedef enum
 typedef enum
 {
     
-    PAROLE_STATE_STOPPED,
+    PAROLE_STATE_STOPPED = 0,
     PAROLE_STATE_PLAYBACK_FINISHED,
     PAROLE_STATE_PAUSED,
     PAROLE_STATE_PLAYING
@@ -61,39 +61,57 @@ struct _ParolePluginClass
 {
     GObjectClass 	     parent_class;
     
-    void		    (*state_changed)		   (ParolePlugin *plugin,
-						            const ParoleStream *stream,
-							    ParoleState state);
+    void		    (*state_changed)		   		(ParolePlugin *plugin,
+									 const ParoleStream *stream,
+									 ParoleState state);
     
-    void		    (*tag_message)                 (ParolePlugin *plugin,
-							    const ParoleStream *stream);
+    void		    (*tag_message)                 		(ParolePlugin *plugin,
+									 const ParoleStream *stream);
     
-    void		    (*free_data)		   (ParolePlugin *plugin);
+    void		    (*free_data)		   		(ParolePlugin *plugin);
+    
+    void		    (*configure)				(ParolePlugin *plugin,
+									 GtkWidget *widget);
+    
+    void		    (*about)					(ParolePlugin *plugin,
+									 GtkWidget *widget);
 };
 
-GType        		     parole_plugin_get_type        (void) G_GNUC_CONST;
+GType        		     parole_plugin_get_type        		(void) G_GNUC_CONST;
 
-ParolePlugin       	    *parole_plugin_new             (const gchar *title,
-							    const gchar *desc, 
-							    const gchar *author);
+ParolePlugin       	    *parole_plugin_new             		(const gchar *title,
+								         const gchar *desc, 
+									 const gchar *author);
 
-GtkWidget		    *parole_plugin_get_main_window (ParolePlugin *plugin);
+GtkWidget		    *parole_plugin_get_main_window 		(ParolePlugin *plugin);
 
-void			     parole_plugin_pack_widget	   (ParolePlugin *plugin,
-							    GtkWidget *widget,
-							    ParolePluginContainer container);
+void			     parole_plugin_pack_widget	   		(ParolePlugin *plugin,
+									 GtkWidget *widget,
+									 ParolePluginContainer container);
 
-gboolean		     parole_plugin_play_uri        (ParolePlugin *plugin,
-							    const gchar *uri);
+ParoleState		     parole_plugin_get_state	   		(ParolePlugin *plugin);
 
-gboolean		     parole_plugin_pause_playing   (ParolePlugin *plugin);
+gboolean		     parole_plugin_get_is_configurable 		(ParolePlugin *plugin);
 
-gboolean		     parole_plugin_resume          (ParolePlugin *plugin);
+void			     parole_plugin_set_is_configurable 		(ParolePlugin *plugin,
+									 gboolean is_configurable);
+
+gboolean		     parole_plugin_get_show_about 		(ParolePlugin *plugin);
+
+void			     parole_plugin_set_show_about 		(ParolePlugin *plugin,
+									 gboolean show_about);
+
+gboolean		     parole_plugin_play_uri        		(ParolePlugin *plugin,
+									 const gchar *uri);
+
+gboolean		     parole_plugin_pause_playback   		(ParolePlugin *plugin);
+
+gboolean		     parole_plugin_resume_playback     		(ParolePlugin *plugin);
 							    
-gboolean		     parole_plugin_stop_playing    (ParolePlugin *plugin);
+gboolean		     parole_plugin_stop_playback    		(ParolePlugin *plugin);
 
-gboolean		     parole_plugin_seek            (ParolePlugin *plugin,
-						            gdouble pos);
+gboolean		     parole_plugin_seek            		(ParolePlugin *plugin,
+									 gdouble pos);
 
 G_END_DECLS
 

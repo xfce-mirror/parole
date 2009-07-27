@@ -116,7 +116,7 @@ void parole_module_set_active (ParoleModule *module, gboolean active)
     {
 	if ( module->plugin ) 
 	{
-	    g_signal_emit_by_name (G_OBJECT (module->plugin), "free-data", 0);
+	    g_signal_emit_by_name (G_OBJECT (module->plugin), "free-data");
 	    g_object_unref (module->plugin);
 	    module->plugin = NULL;
 	}

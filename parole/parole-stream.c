@@ -30,6 +30,7 @@
 
 #include "parole-stream.h"
 #include "parole-file.h"
+#include "enum-gtypes.h"
 
 #define PAROLE_STREAM_GET_PRIVATE(o) \
 (G_TYPE_INSTANCE_GET_PRIVATE ((o), PAROLE_TYPE_STREAM, ParoleStreamPrivate))
@@ -53,6 +54,7 @@ struct _ParoleStreamPrivate
     gboolean    has_video;
     gboolean 	live;
     gboolean 	seekable;
+    gboolean 	tag_available;
     gdouble   	duration;
     gint64  	absolute_duration;
     
@@ -61,6 +63,7 @@ struct _ParoleStreamPrivate
     gchar      *year;
     gchar      *album;
     gchar      *comment;
+    ParoleMediaType media_type; 
 };
 
 enum
@@ -68,9 +71,11 @@ enum
     PROP_0,
     PROP_URI,
     PROP_LIVE,
+    PROP_MEDIA_TYPE,
     PROP_HAS_AUDIO,
     PROP_HAS_VIDEO,
     PROP_SEEKABLE,
+    PROP_TAG_AVAILABLE,
     PROP_DURATION,
     PROP_ABSOLUTE_DURATION,
     PROP_TITLE,
@@ -81,6 +86,32 @@ enum
 };
 
 G_DEFINE_TYPE (ParoleStream, parole_stream, G_TYPE_OBJECT)
+
+static void
+parole_stream_get_media_type_from_uri (ParoleStream *stream, const gchar *uri)
+{
+    GValue val = { 0, };
+    
+    ParoleMediaType type = PAROLE_MEDIA_TYPE_UNKNOWN;
+    
+    if ( g_str_has_prefix (uri, "file:/") )
+	type = PAROLE_MEDIA_TYPE_LOCAL_FILE;
+    else if ( g_str_has_prefix (uri, "dvd:/") )
+	type = PAROLE_MEDIA_TYPE_DVD;
+    else if ( g_str_has_prefix (uri, "vcd:") )
+	type = PAROLE_MEDIA_TYPE_VCD;
+    else if ( g_str_has_prefix (uri, "svcd:/") )
+	type = PAROLE_MEDIA_TYPE_SVCD;
+    else if ( g_str_has_prefix (uri, "cdda:/") )
+	type = PAROLE_MEDIA_TYPE_CDDA;
+    else 
+	type = PAROLE_MEDIA_TYPE_UNKNOWN;
+    
+    g_value_init (&val, ENUM_GTYPE_MEDIA_TYPE);
+    g_value_set_enum (&val, type);
+    g_object_set_property (G_OBJECT (stream), "media-type", &val);
+    g_value_unset (&val);
+}
 
 static void parole_stream_set_property (GObject *object,
 				        guint prop_id,
@@ -93,10 +124,18 @@ static void parole_stream_set_property (GObject *object,
     switch (prop_id)
     {
 	case PROP_URI:
-	    PAROLE_STREAM_GET_PRIVATE (stream)->uri = g_value_dup_string (value);
+	{
+	    ParoleStreamPrivate *priv;
+	    priv = PAROLE_STREAM_GET_PRIVATE (stream);
+	    priv->uri = g_value_dup_string (value);
+	    parole_stream_get_media_type_from_uri (stream, priv->uri);
 	    break;
+	}
 	case PROP_LIVE:
 	    PAROLE_STREAM_GET_PRIVATE (stream)->live = g_value_get_boolean (value);
+	    break;
+	case PROP_MEDIA_TYPE:
+	    PAROLE_STREAM_GET_PRIVATE (stream)->media_type = g_value_get_enum (value);
 	    break;
 	case PROP_HAS_AUDIO:
 	    PAROLE_STREAM_GET_PRIVATE (stream)->has_audio = g_value_get_boolean (value);
@@ -106,6 +145,9 @@ static void parole_stream_set_property (GObject *object,
 	    break;
 	case PROP_SEEKABLE:
 	    PAROLE_STREAM_GET_PRIVATE (stream)->seekable = g_value_get_boolean (value);
+	    break;
+	case PROP_TAG_AVAILABLE:
+	    PAROLE_STREAM_GET_PRIVATE (stream)->tag_available = g_value_get_boolean (value);
 	    break;
 	case PROP_DURATION:
 	    PAROLE_STREAM_GET_PRIVATE (stream)->duration = g_value_get_double (value);
@@ -150,6 +192,9 @@ static void parole_stream_get_property (GObject *object,
 	case PROP_LIVE:
 	    g_value_set_boolean (value, PAROLE_STREAM_GET_PRIVATE (stream)->live);
 	    break;
+	case PROP_MEDIA_TYPE:
+	    g_value_set_enum (value, PAROLE_STREAM_GET_PRIVATE (stream)->media_type);
+	    break;
 	case PROP_HAS_AUDIO:
 	    g_value_set_boolean (value, PAROLE_STREAM_GET_PRIVATE (stream)->has_audio);
 	    break;
@@ -161,6 +206,9 @@ static void parole_stream_get_property (GObject *object,
 	    break;
 	case PROP_DURATION:
 	    g_value_set_double (value, PAROLE_STREAM_GET_PRIVATE (stream)->duration);
+	    break;
+	case PROP_TAG_AVAILABLE:
+	    g_value_set_double (value, PAROLE_STREAM_GET_PRIVATE (stream)->tag_available);
 	    break;
 	case PROP_ABSOLUTE_DURATION:
 	    g_value_set_int64 (value, PAROLE_STREAM_GET_PRIVATE (stream)->absolute_duration);
@@ -264,6 +312,21 @@ parole_stream_class_init (ParoleStreamClass *klass)
 							   G_PARAM_READWRITE));
 
     /**
+     * ParoleStream:media-type:
+     * 
+     *
+     * 
+     * Since: 0.1 
+     **/
+    g_object_class_install_property (object_class,
+				     PROP_MEDIA_TYPE,
+				     g_param_spec_enum ("media-type",
+							NULL, NULL,
+							ENUM_GTYPE_MEDIA_TYPE,
+							PAROLE_MEDIA_TYPE_UNKNOWN,
+							G_PARAM_READWRITE));
+
+    /**
      * ParoleStream:seekable:
      * 
      * Whether the stream is seekable, for example live 
@@ -292,6 +355,20 @@ parole_stream_class_init (ParoleStreamClass *klass)
 							 0, G_MAXDOUBLE,
 							 0,
 							 G_PARAM_READWRITE));
+
+    /**
+     * ParoleStream:tag-available:
+     * 
+     * Whether tags information are available on the current stream.
+     * 
+     * Since: 0.1 
+     **/
+    g_object_class_install_property (object_class,
+				     PROP_SEEKABLE,
+				     g_param_spec_boolean ("tag-available",
+							   NULL, NULL,
+							   FALSE,
+							   G_PARAM_READWRITE));
 
     /**
      * ParoleStream:absolute-duration:
@@ -408,6 +485,8 @@ void parole_stream_init_properties (ParoleStream *stream)
     priv->has_video = FALSE;
     priv->absolute_duration = 0;
     priv->duration = 0;
+    priv->tag_available = FALSE;
+    priv->media_type = PAROLE_MEDIA_TYPE_UNKNOWN;
     
     PAROLE_STREAM_FREE_STR_PROP (priv->title);
     PAROLE_STREAM_FREE_STR_PROP (priv->uri);

@@ -133,7 +133,8 @@ parole_media_player_LDFLAGS =			\
 parole_glib_enum_headers =			\
 	parole-gst.h				\
 	parole-plugin.h				\
-	parole-pl-parser.h
+	parole-pl-parser.h			\
+	parole-stream.h
 
 if MAINTAINER_MODE
 
@@ -166,6 +167,7 @@ enum-gtypes.c: $(parole_glib_enum_headers) Makefile
 		--fhead "#include \"parole-gst.h\"\n\n" \
 		--fhead "#include \"parole-plugin.h\"\n\n" \
 		--fhead "#include \"parole-pl-parser.h\"\n\n" \
+		--fhead "#include \"parole-stream.h\"\n\n" \
 		--fprod "\n/* enumerations from \"@filename@\" */" \
 		--vhead "GType\n@enum_name@_get_type (void)\n{\n  static GType etype = 0;\n  if (etype == 0) {\n    static const G@Type@Value values[] = {" \
 		--vprod "      { @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \

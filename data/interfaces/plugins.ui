@@ -14,9 +14,15 @@
   </object>
   <object class="GtkDialog" id="dialog">
     <property name="border_width">5</property>
+    <property name="title" translatable="yes">Parole Plugins Preferences</property>
+    <property name="default_width">300</property>
+    <property name="default_height">220</property>
+    <property name="destroy_with_parent">True</property>
     <property name="type_hint">normal</property>
+    <property name="skip_taskbar_hint">True</property>
+    <property name="skip_pager_hint">True</property>
     <property name="has_separator">False</property>
-    <signal name="response" handler="gtk_widget_destroy"/>
+    <signal name="response" handler="parole_plugins_manager_pref_response_cb"/>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox1">
         <property name="visible">True</property>
@@ -25,7 +31,7 @@
         <child>
           <object class="GtkHBox" id="hbox1">
             <property name="visible">True</property>
-            <property name="spacing">5</property>
+            <property name="spacing">10</property>
             <child>
               <object class="GtkViewport" id="viewport1">
                 <property name="visible">True</property>
@@ -72,42 +78,129 @@
               </packing>
             </child>
             <child>
-              <object class="GtkVSeparator" id="vseparator1">
+              <object class="GtkVBox" id="vbox1">
                 <property name="visible">True</property>
                 <property name="orientation">vertical</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkVBox" id="vbox2">
-                <property name="visible">True</property>
-                <property name="orientation">vertical</property>
-                <property name="spacing">6</property>
+                <property name="spacing">10</property>
                 <child>
-                  <object class="GtkHBox" id="hbox5">
+                  <object class="GtkVBox" id="vbox2">
                     <property name="visible">True</property>
-                    <property name="spacing">4</property>
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">6</property>
                     <child>
-                      <object class="GtkLabel" id="label1">
+                      <object class="GtkHBox" id="hbox5">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">&lt;b&gt;Description:&lt;/b&gt;</property>
-                        <property name="use_markup">True</property>
+                        <property name="spacing">4</property>
+                        <child>
+                          <object class="GtkLabel" id="label1">
+                            <property name="visible">True</property>
+                            <property name="label" translatable="yes">&lt;b&gt;Description:&lt;/b&gt;</property>
+                            <property name="use_markup">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="description">
+                            <property name="visible">True</property>
+                          </object>
+                          <packing>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
                         <property name="position">0</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="description">
+                      <object class="GtkHBox" id="hbox4">
                         <property name="visible">True</property>
+                        <property name="spacing">4</property>
+                        <child>
+                          <object class="GtkLabel" id="label2">
+                            <property name="visible">True</property>
+                            <property name="label" translatable="yes">&lt;b&gt;Author:&lt;/b&gt;</property>
+                            <property name="use_markup">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="author">
+                            <property name="visible">True</property>
+                          </object>
+                          <packing>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
                       </object>
                       <packing>
                         <property name="position">1</property>
                       </packing>
+                    </child>
+                    <child>
+                      <object class="GtkHBox" id="hbox3">
+                        <property name="visible">True</property>
+                        <property name="spacing">4</property>
+                        <child>
+                          <object class="GtkLabel" id="label3">
+                            <property name="visible">True</property>
+                            <property name="label" translatable="yes">&lt;b&gt;Copyright:&lt;/b&gt;</property>
+                            <property name="use_markup">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="copyright">
+                            <property name="visible">True</property>
+                          </object>
+                          <packing>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkHBox" id="hbox2">
+                        <property name="visible">True</property>
+                        <property name="spacing">4</property>
+                        <child>
+                          <object class="GtkLabel" id="label4">
+                            <property name="visible">True</property>
+                            <property name="label" translatable="yes">&lt;b&gt;Site:&lt;/b&gt;</property>
+                            <property name="use_markup">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="site">
+                            <property name="visible">True</property>
+                          </object>
+                          <packing>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="position">3</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <placeholder/>
                     </child>
                   </object>
                   <packing>
@@ -115,23 +208,30 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkHBox" id="hbox4">
+                  <object class="GtkHBox" id="hbox6">
                     <property name="visible">True</property>
-                    <property name="spacing">4</property>
+                    <property name="spacing">10</property>
                     <child>
-                      <object class="GtkLabel" id="label2">
+                      <object class="GtkButton" id="configure">
+                        <property name="label" translatable="yes">gtk-properties</property>
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">&lt;b&gt;Author:&lt;/b&gt;</property>
-                        <property name="use_markup">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="use_stock">True</property>
+                        <signal name="clicked" handler="parole_plugins_manager_show_configure"/>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
                         <property name="position">0</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="author">
+                      <object class="GtkButton" id="about">
+                        <property name="label" translatable="yes">gtk-about</property>
                         <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="use_stock">True</property>
+                        <signal name="clicked" handler="parole_plugins_manager_show_about"/>
                       </object>
                       <packing>
                         <property name="position">1</property>
@@ -142,65 +242,9 @@
                     <property name="position">1</property>
                   </packing>
                 </child>
-                <child>
-                  <object class="GtkHBox" id="hbox3">
-                    <property name="visible">True</property>
-                    <property name="spacing">4</property>
-                    <child>
-                      <object class="GtkLabel" id="label3">
-                        <property name="visible">True</property>
-                        <property name="label" translatable="yes">&lt;b&gt;Copyright:&lt;/b&gt;</property>
-                        <property name="use_markup">True</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="copyright">
-                        <property name="visible">True</property>
-                      </object>
-                      <packing>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="position">2</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkHBox" id="hbox2">
-                    <property name="visible">True</property>
-                    <property name="spacing">4</property>
-                    <child>
-                      <object class="GtkLabel" id="label4">
-                        <property name="visible">True</property>
-                        <property name="label" translatable="yes">&lt;b&gt;Site:&lt;/b&gt;</property>
-                        <property name="use_markup">True</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="site">
-                        <property name="visible">True</property>
-                      </object>
-                      <packing>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="position">3</property>
-                  </packing>
-                </child>
               </object>
               <packing>
-                <property name="position">2</property>
+                <property name="position">1</property>
               </packing>
             </child>
           </object>
