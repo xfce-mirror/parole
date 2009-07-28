@@ -1,4 +1,10 @@
-2009-07-28: Ali aliov@xfce.org
+2009-07-28: 13:00 Ali aliov@xfce.org
+	* Implement shuffle and repeat mode.
+	* Only hide cursor when we are playing a video.
+	* Better full screen support.
+	* Change popup size on screen size change in fullscreen mode.
+
+2009-07-28: 10:00 Ali aliov@xfce.org
 	* tray-icon plugin: Show the base filename if we don't have
 	the tag title.
 	* main.c: Added show_version function+reorder calls of gst_init and

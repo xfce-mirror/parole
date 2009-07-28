@@ -41,6 +41,9 @@ struct ParoleConfPrivate
     gboolean	 enable_subtitle;
     gchar	*subtitle_font;
     gchar       *subtitle_encoding;
+    
+    gboolean     repeat;
+    gboolean     shuffle;
 };
 
 static gpointer parole_conf_object = NULL;
@@ -54,7 +57,9 @@ enum
     PROP_VIS_NAME,
     PROP_SUBTITLE_ENABLED,
     PROP_SUBTITLE_FONT,
-    PROP_SUBTITLE_ENCODING
+    PROP_SUBTITLE_ENCODING,
+    PROP_REPEAT,
+    PROP_SHUFFLE
 };
 
 static void parole_conf_set_property (GObject *object,
@@ -98,6 +103,16 @@ static void parole_conf_set_property (GObject *object,
 	    g_object_notify (G_OBJECT (conf), "subtitle-font");
 	    parole_rc_write_entry_string ("SUBTITLE_FONT", PAROLE_RC_GROUP_GENERAL, conf->priv->subtitle_font);
 	    break;
+	case PROP_REPEAT:
+	    conf->priv->repeat = g_value_get_boolean (value);
+	    g_object_notify (G_OBJECT (conf), "repeat");
+	    parole_rc_write_entry_bool ("REPEAT", PAROLE_RC_GROUP_GENERAL, conf->priv->repeat);
+	    break;
+	case PROP_SHUFFLE:
+	    conf->priv->shuffle = g_value_get_boolean (value);
+	    g_object_notify (G_OBJECT (conf), "shuffle");
+	    parole_rc_write_entry_bool ("SHUFFLE", PAROLE_RC_GROUP_GENERAL, conf->priv->shuffle);
+	    break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
             break;
@@ -129,6 +144,12 @@ static void parole_conf_get_property (GObject *object,
 	case PROP_SUBTITLE_FONT:
 	    g_value_set_string (value, conf->priv->subtitle_font);
 	    break;
+	case PROP_REPEAT:
+	    g_value_set_boolean (value, conf->priv->repeat);
+	    break;
+	case PROP_SHUFFLE:
+	    g_value_set_boolean (value, conf->priv->shuffle);
+	    break;
 	default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
             break;
@@ -144,6 +165,7 @@ parole_conf_finalize (GObject *object)
     
     g_free (conf->priv->vis_sink);
     g_free (conf->priv->subtitle_font);
+    g_free (conf->priv->subtitle_encoding);
 
     G_OBJECT_CLASS (parole_conf_parent_class)->finalize (object);
 }
@@ -193,6 +215,20 @@ parole_conf_class_init (ParoleConfClass *klass)
                                                            NULL,
                                                            G_PARAM_READWRITE));
     
+    g_object_class_install_property (object_class,
+                                     PROP_REPEAT,
+                                     g_param_spec_boolean ("repeat",
+                                                           NULL, NULL,
+                                                           FALSE,
+                                                           G_PARAM_READWRITE));
+    
+    g_object_class_install_property (object_class,
+                                     PROP_SHUFFLE,
+                                     g_param_spec_boolean ("shuffle",
+                                                           NULL, NULL,
+                                                           FALSE,
+                                                           G_PARAM_READWRITE));
+    
     g_type_class_add_private (klass, sizeof (ParoleConfPrivate));
 }
 
@@ -206,6 +242,8 @@ parole_conf_init (ParoleConf *conf)
     conf->priv->enable_subtitle = parole_rc_read_entry_bool ("ENABLE_SUBTITLE", PAROLE_RC_GROUP_GENERAL, TRUE);
     conf->priv->subtitle_font = g_strdup (parole_rc_read_entry_string ("SUBTITLE_FONT", PAROLE_RC_GROUP_GENERAL, "Sans 12"));
     conf->priv->subtitle_encoding = g_strdup (parole_rc_read_entry_string ("SUBTITLE_ENCODING", PAROLE_RC_GROUP_GENERAL, "UTF8"));
+    conf->priv->repeat = parole_rc_read_entry_bool ("REPEAT", PAROLE_RC_GROUP_GENERAL, FALSE);
+    conf->priv->shuffle = parole_rc_read_entry_bool ("SHUFFLE", PAROLE_RC_GROUP_GENERAL, FALSE);
 }
 
 ParoleConf *

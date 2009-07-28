@@ -325,8 +325,13 @@ parole_gst_tick_timeout (gpointer data)
     gint64 pos;
     GstFormat format = GST_FORMAT_TIME;
     gdouble value;
+    gboolean video;
     
     gst = PAROLE_GST (data);
+    
+    g_object_get (G_OBJECT (gst->priv->stream),
+		  "has-video", &video,
+		  NULL);
     
     gst_element_query_position (gst->priv->playbin, &format, &pos);
     
@@ -340,7 +345,7 @@ parole_gst_tick_timeout (gpointer data)
     }
 
 out:
-    if ( g_timer_elapsed (gst->priv->hidecursor_timer, NULL ) > HIDE_WINDOW_CURSOR_TIMEOUT )
+    if ( g_timer_elapsed (gst->priv->hidecursor_timer, NULL ) > HIDE_WINDOW_CURSOR_TIMEOUT && video)
 	parole_gst_set_cursor_visible (gst, FALSE);
 	
     return TRUE;

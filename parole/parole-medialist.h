@@ -70,7 +70,10 @@ GtkWidget       		*parole_media_list_new              (void);
 GtkTreeRowReference		*parole_media_list_get_selected_row (ParoleMediaList *list);
 
 GtkTreeRowReference             *parole_media_list_get_next_row     (ParoleMediaList *list,
-								     GtkTreeRowReference *row);
+								     GtkTreeRowReference *row,
+								     gboolean repeat);
+
+GtkTreeRowReference		*parole_media_list_get_row_random   (ParoleMediaList *list);
 
 void				 parole_media_list_set_row_pixbuf   (ParoleMediaList *list,
 								     GtkTreeRowReference *row,
