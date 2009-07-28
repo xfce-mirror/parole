@@ -66,6 +66,8 @@ struct _ParolePluginPrivate
     /* sig id's*/
     gulong gst_sig1;
     gulong gst_sig2;
+    gulong gst_sig3;
+    gulong gst_sig4;
 };
 
 enum
@@ -82,6 +84,8 @@ enum
 {
     STATE_CHANGED,
     TAG_MESSAGE,
+    PROGRESSED,
+    BUFFERING,
     FREE_DATA,
     CONFIGURE,
     ABOUT,
@@ -103,6 +107,20 @@ static void
 parole_plugin_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePlugin *plugin)
 {
     g_signal_emit (G_OBJECT (plugin), signals [TAG_MESSAGE], 0, stream);
+}
+
+static void
+parole_plugin_buffering_changed_cb (ParoleGst *gst, const ParoleStream *stream, 
+				    gint percentage, ParolePlugin *plugin)
+{
+    g_signal_emit (G_OBJECT (plugin), signals [BUFFERING], 0, stream, percentage);
+}
+
+static void
+parole_plugin_media_progressed_cb (ParoleGst *gst, const ParoleStream *stream,
+				   gdouble value, ParolePlugin *plugin)
+{
+    g_signal_emit (G_OBJECT (plugin), signals [PROGRESSED], 0, stream, value);
 }
 
 static void
@@ -148,6 +166,40 @@ parole_plugin_class_init (ParolePluginClass *klass)
                       NULL, NULL,
 		      g_cclosure_marshal_VOID__OBJECT,
                       G_TYPE_NONE, 1, PAROLE_TYPE_STREAM);
+	
+    /**
+     * ParolePlugin::progressed:
+     * @plugin: the object which received the signal.
+     * @stream: a #ParoleStream.
+     * 
+     * Since: 0.1 
+     **/
+    signals[PROGRESSED] = 
+        g_signal_new ("progressed",
+                      PAROLE_TYPE_PLUGIN,
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET (ParolePluginClass, progressed),
+                      NULL, NULL,
+                      _gmarshal_VOID__OBJECT_DOUBLE,
+                      G_TYPE_NONE, 2, 
+		      G_TYPE_OBJECT, G_TYPE_DOUBLE);
+
+    /**
+     * ParolePlugin::buffering:
+     * @plugin: the object which received the signal.
+     * @stream: a #ParoleStream.
+     * 
+     * Since: 0.1 
+     **/
+    signals[BUFFERING] = 
+        g_signal_new ("buffering",
+                      PAROLE_TYPE_PLUGIN,
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET (ParolePluginClass, buffering),
+                      NULL, NULL,
+                      _gmarshal_VOID__OBJECT_INT,
+                      G_TYPE_NONE, 2, 
+		      G_TYPE_OBJECT, G_TYPE_INT);
 
     /**
      * ParolePlugin::free-data:
@@ -297,6 +349,12 @@ parole_plugin_init (ParolePlugin *plugin)
 		      
     priv->gst_sig2 = g_signal_connect (G_OBJECT (priv->gst), "media-tag",
 				       G_CALLBACK (parole_plugin_media_tag_cb), plugin);
+				       
+    priv->gst_sig3 = g_signal_connect (G_OBJECT (priv->gst), "buffering",
+				       G_CALLBACK (parole_plugin_buffering_changed_cb), plugin);
+				       
+    priv->gst_sig4 = g_signal_connect (G_OBJECT (priv->gst), "media-progressed",
+				       G_CALLBACK (parole_plugin_media_progressed_cb), plugin);
 }
 
 static void parole_plugin_set_property (GObject *object,
@@ -378,7 +436,13 @@ parole_plugin_finalize (GObject *object)
 	    g_signal_handler_disconnect (priv->gst, priv->gst_sig1);
 
 	if ( g_signal_handler_is_connected (priv->gst, priv->gst_sig2)) 
-	g_signal_handler_disconnect (priv->gst, priv->gst_sig2);
+	    g_signal_handler_disconnect (priv->gst, priv->gst_sig2);
+	    
+	if ( g_signal_handler_is_connected (priv->gst, priv->gst_sig3)) 
+	    g_signal_handler_disconnect (priv->gst, priv->gst_sig3);
+	    
+	if ( g_signal_handler_is_connected (priv->gst, priv->gst_sig4)) 
+	    g_signal_handler_disconnect (priv->gst, priv->gst_sig4);
     }
     
     if ( priv->title )
@@ -553,7 +617,10 @@ void parole_plugin_set_show_about (ParolePlugin *plugin, gboolean show_about)
  **/
 gboolean parole_plugin_play_uri (ParolePlugin *plugin, const gchar *uri)
 {
+    g_return_val_if_fail (PAROLE_IS_PLUGIN (plugin), FALSE);
+    g_return_val_if_fail (PAROLE_IS_PLUGIN (uri != NULL), FALSE);
     
+    parole_gst_play_uri (PAROLE_PLUGIN_GET_PRIVATE (plugin)->gst, uri);
     
     return TRUE;
 }
@@ -620,7 +687,9 @@ gboolean parole_plugin_stop_playback (ParolePlugin *plugin)
  **/
 gboolean parole_plugin_seek (ParolePlugin *plugin, gdouble pos)
 {
+    g_return_val_if_fail (PAROLE_IS_PLUGIN (plugin), FALSE);
     
+    parole_gst_seek (PAROLE_PLUGIN_GET_PRIVATE (plugin)->gst, pos);
     
     return TRUE;
 }

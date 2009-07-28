@@ -348,7 +348,6 @@ parole_plugins_manager_class_init (ParolePluginsManagerClass *klass)
 static void
 parole_plugins_manager_init (ParolePluginsManager *manager)
 {
-    ParolePlugin *plugin;
     GtkBuilder *builder;
     
     manager->priv = PAROLE_PLUGINS_MANAGER_GET_PRIVATE (manager);
@@ -379,9 +378,6 @@ parole_plugins_manager_init (ParolePluginsManager *manager)
     parole_plugins_manager_set_show_tabs (GTK_NOTEBOOK (manager->priv->main_nt));
     
     g_object_unref (builder);
-    
-    plugin = parole_plugin_new (NULL, NULL, NULL);
-    g_object_unref (plugin);
 }
 
 static void

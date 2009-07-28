@@ -67,7 +67,15 @@ struct _ParolePluginClass
     
     void		    (*tag_message)                 		(ParolePlugin *plugin,
 									 const ParoleStream *stream);
-    
+
+    void		    (*progressed)	 			(ParolePlugin *gst,
+									 const ParoleStream *stream,
+									 gdouble value);
+
+    void		    (*buffering)		 		(ParolePlugin *plugin,
+									 const ParoleStream *stream,
+									 gint percentage);
+						  
     void		    (*free_data)		   		(ParolePlugin *plugin);
     
     void		    (*configure)				(ParolePlugin *plugin,

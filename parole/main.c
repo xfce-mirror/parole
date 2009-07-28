@@ -46,6 +46,18 @@
 #include "parole-dbus.h"
 #include "parole-builder.h"
 
+static void G_GNUC_NORETURN
+show_version (void)
+{
+    g_print (_("\n"
+             "Parole Media Player %s\n\n"
+             "Part of the Xfce Goodies Project\n"
+             "http://goodies.xfce.org\n\n"
+             "Licensed under the GNU GPL.\n\n"), VERSION);
+
+    exit (EXIT_SUCCESS);
+}
+
 static void
 parole_send_play_disc (DBusGProxy *proxy, const gchar *uri)
 {
@@ -129,10 +141,12 @@ int main (int argc, char **argv)
     GError *error = NULL;
     gchar **filenames = NULL;
     gboolean new_instance = FALSE;
+    gboolean version = FALSE;
     
     GOptionEntry option_entries[] = 
     {
 	{"new-instance", 'i', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &new_instance, N_("Open a new instance"), NULL },
+	{ "version", 'V', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &version, N_("Version information"), NULL },
 	{G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, &filenames, N_("Media to play"), NULL},
         { NULL, },
     };
@@ -141,8 +155,6 @@ int main (int argc, char **argv)
 	g_thread_init (NULL);
 
     xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
-    
-    gst_init (&argc, &argv);
     
     if ( !gtk_init_with_args (&argc, &argv, (gchar *)"", option_entries, (gchar *)PACKAGE, &error))
     {
@@ -160,6 +172,11 @@ int main (int argc, char **argv)
 
         return EXIT_FAILURE;
     }
+
+    if ( version )
+	show_version ();
+
+    gst_init (NULL, NULL);
 
     if ( !new_instance && parole_dbus_name_has_owner (PAROLE_DBUS_NAME) )
     {

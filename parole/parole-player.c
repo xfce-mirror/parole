@@ -267,9 +267,6 @@ parole_player_media_progressed_cb (ParoleGst *gst, const ParoleStream *stream, g
     {
 	parole_player_change_range_value (player, value);
     }
-    parole_statusbar_set_position (player->priv->status, 
-				   player->priv->state == PAROLE_MEDIA_STATE_PLAYING,
-				   value);
 }
 
 static void
@@ -375,12 +372,10 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
     
     if ( seekable )
     {
-	parole_statusbar_set_duration (player->priv->status, duration);
 	gtk_range_set_range (GTK_RANGE (player->priv->range), 0, duration);
     }
     else
     {
-	parole_statusbar_set_text (player->priv->status, _("Playing"));
 	gtk_widget_set_tooltip_text (GTK_WIDGET (player->priv->range), _("Media stream is not seekable"));
 	parole_player_change_range_value (player, 0);
     }
@@ -400,9 +395,6 @@ parole_player_paused (ParolePlayer *player)
     
     TRACE ("Player paused");
     
-    if ( !player->priv->buffering )
-	parole_statusbar_set_text (player->priv->status, _("Paused"));
-	
     pix = xfce_themed_icon_load ("gtk-media-pause", 16);
     parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, pix);
     
@@ -414,7 +406,6 @@ parole_player_paused (ParolePlayer *player)
     if ( pix )
 	g_object_unref (pix);
 	
-    parole_statusbar_set_text (player->priv->status, _("Paused"));
 }
 
 static void
@@ -431,8 +422,6 @@ parole_player_stopped (ParolePlayer *player)
     TRACE ("Player stopped");
     
     player->priv->state = PAROLE_MEDIA_STATE_STOPPED;
-    
-    parole_statusbar_set_text (player->priv->status, _("Stopped"));
     
     gtk_widget_set_sensitive (player->priv->play_pause, FALSE);
     
@@ -626,7 +615,6 @@ parole_player_buffering_cb (ParoleGst *gst, const ParoleStream *stream, gint per
     else
     {
 	player->priv->buffering = TRUE;
-	parole_statusbar_set_buffering (player->priv->status, percentage);
 	
 	if ( player->priv->state == PAROLE_MEDIA_STATE_PLAYING )
 	    parole_gst_pause (PAROLE_GST (player->priv->gst));

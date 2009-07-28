@@ -45,20 +45,8 @@ typedef struct
 } ParoleStatusbarClass;
 
 GType        			parole_statusbar_get_type        (void) G_GNUC_CONST;
+
 ParoleStatusbar       	       *parole_statusbar_new             (void);
-
-void				parole_statusbar_set_text	 (ParoleStatusbar *bar,
-								  const gchar *text);
-
-void				parole_statusbar_set_duration    (ParoleStatusbar *bar,
-								  gdouble duration);
-
-void				parole_statusbar_set_position    (ParoleStatusbar *bar,
-							          gboolean playing,
-							          gdouble position);
-							    
-void				parole_statusbar_set_buffering   (ParoleStatusbar *bar,
-								  gint percentage);
 
 void				parole_statusbar_set_visible 	 (ParoleStatusbar *bar,
 								  gboolean visible);

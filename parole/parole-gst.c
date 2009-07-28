@@ -56,6 +56,7 @@ struct ParoleGstPrivate
     GstElement	 *playbin;
     GstElement   *video_sink;
     GstElement   *vis_sink;
+    GstBus       *bus;
     
     GMutex       *lock;
     GstState      state;
@@ -100,8 +101,10 @@ parole_gst_finalize (GObject *object)
 	g_source_remove (gst->priv->tick_id);
 	
     parole_stream_init_properties (gst->priv->stream);
+    
     g_object_unref (gst->priv->stream);
     g_object_unref (gst->priv->playbin);
+    g_object_unref (gst->priv->bus);
     
     g_object_unref (gst->priv->logo);
     g_mutex_free (gst->priv->lock);
@@ -442,10 +445,18 @@ parole_gst_set_subtitle_encoding (ParoleGst *gst)
 static void
 parole_gst_load_subtitle (ParoleGst *gst)
 {
+    ParoleMediaType type;
     gchar *uri;
     gchar *sub;
     gchar *sub_uri;
     gboolean sub_enabled;
+    
+    g_object_get (G_OBJECT (gst->priv->stream),
+		  "media-type", &type,
+		  NULL);
+    
+    if ( type != PAROLE_MEDIA_TYPE_LOCAL_FILE )
+	return;
     
     g_object_get (G_OBJECT (gst->priv->conf),
 		  "enable-subtitle", &sub_enabled,
@@ -458,6 +469,7 @@ parole_gst_load_subtitle (ParoleGst *gst)
 		  "uri", &uri,
 		  NULL);
 	
+    
     sub = parole_get_subtitle_path (uri);
 
     if ( sub )
@@ -585,9 +597,6 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 	    if ( gst->priv->update)
 		parole_gst_update_vis (gst);
 		
-	    if ( gst->priv->target == GST_STATE_PLAYING)
-		parole_gst_set_x_overlay (gst);
-	
 	    gst->priv->media_state = PAROLE_MEDIA_STATE_STOPPED;
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
 			   gst->priv->stream, PAROLE_MEDIA_STATE_STOPPED);
@@ -616,7 +625,7 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 }
 
 static void
-parole_gst_handle_element_message (ParoleGst *gst, GstMessage *message)
+parole_gst_element_message_sync (GstBus *bus, GstMessage *message, ParoleGst *gst)
 {
     if ( !message->structure )
 	goto out;
@@ -705,12 +714,14 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
 	    gchar *debug;
 	    parole_gst_set_window_cursor (GTK_WIDGET (gst)->window, NULL);
 	    gst->priv->target = GST_STATE_NULL;
+	    gst->priv->buffering = FALSE;
 	    parole_gst_change_state (gst, GST_STATE_NULL);
 	    gst_message_parse_error (msg, &error, &debug);
 	    TRACE ("*** ERROR %s : %s ***", error->message, debug);
 	    g_signal_emit (G_OBJECT (gst), signals [ERROR], 0, error->message);
 	    g_error_free (error);
 	    g_free (debug);
+	    gtk_widget_queue_draw (GTK_WIDGET (gst));
 	    break;
 	}
 	case GST_MESSAGE_BUFFERING:
@@ -767,9 +778,6 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
 	case GST_MESSAGE_APPLICATION:
 	    TRACE ("Application message");
 	    break;
-	case GST_MESSAGE_ELEMENT:
-	    parole_gst_handle_element_message (gst, msg);
-	    break;
 	case GST_MESSAGE_SEGMENT_START:
 	    break;
 	case GST_MESSAGE_DURATION:
@@ -804,10 +812,9 @@ parole_gst_change_state (ParoleGst *gst, GstState new)
 	case GST_STATE_CHANGE_ASYNC:
 	    TRACE ("State will change async");
 	    break;
+	
 	case GST_STATE_CHANGE_FAILURE:
-	    gst->priv->target = GST_STATE_NULL;
-	    parole_gst_change_state (gst, GST_STATE_NULL);
-	    g_signal_emit (G_OBJECT (gst), signals [ERROR], 0, _("Error in changing state to ready"));
+	    TRACE ("Error will be handled async");
 	    break;
 	case GST_STATE_CHANGE_NO_PREROLL:
 	    TRACE ("State change no_preroll");
@@ -815,6 +822,16 @@ parole_gst_change_state (ParoleGst *gst, GstState new)
 	default:
 	    break;
     }
+}
+
+static void
+parole_gst_stream_info_notify_cb (GObject * obj, GParamSpec * pspec, ParoleGst *gst)
+{
+    GstMessage *msg;
+    TRACE ("Stream info changed?");
+    msg = gst_message_new_application (GST_OBJECT (gst->priv->playbin),
+				       gst_structure_new ("notify-streaminfo", NULL));
+    gst_element_post_message (gst->priv->playbin, msg);
 }
 
 static void
@@ -848,7 +865,6 @@ static void
 parole_gst_construct (GObject *object)
 {
     ParoleGst *gst;
-    GstBus *bus;
     
     gst = PAROLE_GST (object);
     
@@ -886,12 +902,25 @@ parole_gst_construct (GObject *object)
     /*
      * Listen to the bus events.
      */
-    bus = gst_pipeline_get_bus (GST_PIPELINE (gst->priv->playbin));
-    gst_bus_add_watch (bus, parole_gst_bus_event, gst);
-    g_object_unref (bus);
+    gst->priv->bus = gst_element_get_bus (gst->priv->playbin);
+    gst_bus_add_signal_watch (gst->priv->bus);
     
+    g_signal_connect (gst->priv->bus, "message",
+		      G_CALLBACK (parole_gst_bus_event), gst);
+		      
+    /* Handling 'prepare-xwindow-id' message async causes XSync error in some occasions
+     * So we handle this message synchronously*/
+    gst_bus_set_sync_handler (gst->priv->bus, gst_bus_sync_signal_handler, gst);
+    g_signal_connect (gst->priv->bus, "sync-message::element",
+		      G_CALLBACK (parole_gst_element_message_sync), gst);
+
+    /*
+     * Handle stream info changes, this can happen on live/radio stream.
+     */
+    g_signal_connect (gst->priv->playbin, "notify::stream-info",
+		      G_CALLBACK (parole_gst_stream_info_notify_cb), gst);
+      
     parole_gst_load_logo (gst);
-    
     parole_gst_set_subtitle_encoding (gst);
     parole_gst_set_subtitle_font (gst);
 }
@@ -984,9 +1013,6 @@ parole_gst_conf_notify_cb (GObject *object, GParamSpec *spec, ParoleGst *gst)
     {
 	parole_gst_set_subtitle_encoding (gst);
     }
-    
-    
-
 }
 
 static void

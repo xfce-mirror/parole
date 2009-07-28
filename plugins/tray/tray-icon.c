@@ -193,6 +193,25 @@ notify_playing (PluginData *data, const ParoleStream *stream)
 		  "live", &live,
 		  "media-type", &media_type,
 		  NULL);
+
+    if ( !title )
+    {
+	gchar *uri;
+	gchar *filename;
+	g_object_get (G_OBJECT (stream),
+		      "uri", &uri,
+		      NULL);
+		      
+	filename = g_filename_from_uri (uri, NULL, NULL);
+	g_free (uri);
+	if ( filename )
+	{
+	    title  = g_path_get_basename (filename);
+	    g_free (filename);
+	    if ( !title )
+		return;
+	}
+    }
     
     if ( live || media_type != PAROLE_MEDIA_TYPE_LOCAL_FILE )
     {
