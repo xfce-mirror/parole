@@ -47,6 +47,7 @@
 #include "parole-conf.h"
 #include "parole-rc-utils.h"
 #include "parole-utils.h"
+#include "parole-session.h"
 #include "enum-gtypes.h"
 #include "parole-debug.h"
 
@@ -146,6 +147,7 @@ struct ParolePlayerPrivate
     ParoleScreenSaver   *screen_saver;
     ParoleConf          *conf;
     ParoleDiscMenu      *disc_menu;
+    ParoleSession       *session;
 
     GtkWidget 		*gst;
 
@@ -1190,6 +1192,13 @@ parole_player_key_press (GtkWidget *widget, GdkEventKey *ev, ParolePlayer *playe
 }
 
 static void
+parole_player_session_die_cb (ParolePlayer *player)
+{
+    player->priv->exit = TRUE;
+    parole_gst_terminate (PAROLE_GST (player->priv->gst));
+}
+
+static void
 parole_player_init (ParolePlayer *player)
 {
     GtkBuilder *builder;
@@ -1201,6 +1210,10 @@ parole_player_init (ParolePlayer *player)
     builder = parole_builder_get_main_interface ();
     
     player->priv->conf = parole_conf_new ();
+    player->priv->session = parole_session_get ();
+    
+    g_signal_connect_swapped (player->priv->session, "die",
+			      G_CALLBACK (parole_player_session_die_cb), player);
     
     player->priv->gst = parole_gst_new ();
     /*

@@ -29,6 +29,16 @@ G_BEGIN_DECLS
 #define PAROLE_CONF(o)          (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_CONF, ParoleConf))
 #define PAROLE_IS_CONF(o)       (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_CONF))
 
+typedef enum
+{
+    PAROLE_ASPECT_RATIO_AUTO ,
+    PAROLE_ASPECT_RATIO_SQUARE,
+    PAROLE_ASPECT_RATIO_4_3,
+    PAROLE_ASPECT_RATIO_0,
+    PAROLE_ASPECT_RATIO_DVB
+	
+} ParoleAspectRatio;
+    
 typedef struct ParoleConfPrivate ParoleConfPrivate;
 
 typedef struct
@@ -45,6 +55,7 @@ typedef struct
 } ParoleConfClass;
 
 GType        			 parole_conf_get_type        (void) G_GNUC_CONST;
+
 ParoleConf       		*parole_conf_new             (void);
 
 G_END_DECLS

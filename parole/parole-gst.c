@@ -545,6 +545,59 @@ parole_gst_load_subtitle (ParoleGst *gst)
 }
 
 static void
+parole_gst_set_size (GtkWidget *widget, gint w, gint h)
+{
+    GdkScreen *screen;
+    GtkWidget *toplevel;
+    gint monitor;
+    
+    toplevel = gtk_widget_get_toplevel (widget);
+    
+    gtk_widget_set_size_request (GTK_WIDGET (widget), w, h);
+    
+    screen = gtk_window_get_screen (GTK_WINDOW (toplevel));
+    
+    monitor = gdk_screen_get_monitor_at_window (screen, toplevel->window),
+    
+    xfce_gtk_window_center_on_monitor (GTK_WINDOW (toplevel), screen, monitor);
+}
+
+static void
+parole_gst_get_pad_capabilities (GObject *object, GParamSpec *pspec, ParoleGst *gst)
+{
+    GstPad *pad;
+    GstStructure *st;
+    gint width;
+    gint height;
+    gint num;
+    gint den;
+    const GValue *value;
+    
+    pad = GST_PAD (object);
+    
+    st = gst_caps_get_structure (GST_PAD_CAPS (pad), 0);
+    
+    if ( st )
+    {
+	gst_structure_get_int (st, "width", &width);
+	gst_structure_get_int (st, "height", &height);
+	TRACE ("Caps width=%d height=%d\n", width, height);
+	
+	g_object_set (G_OBJECT (gst->priv->stream),
+		      "video-width", width,
+		      "video-height", height,
+		      NULL);
+	parole_gst_set_size (GTK_WIDGET (gst), width, height);
+	if ( ( value = gst_structure_get_value (st, "pixel-aspect-ratio")) )
+	{
+	    num = gst_value_get_fraction_numerator (value),
+	    den = gst_value_get_fraction_denominator (value);
+	    TRACE ("FIXME: Use these value num=%d den=%d \n", num, den);
+	}
+    }
+}
+
+static void
 parole_gst_query_info (ParoleGst *gst)
 {
     const GList *info = NULL;
@@ -572,6 +625,26 @@ parole_gst_query_info (ParoleGst *gst)
 	if ( g_ascii_strcasecmp (val->value_name, "video") == 0 ||
 	     g_ascii_strcasecmp (val->value_nick, "video") == 0)
 	{
+	    GstPad *pad = NULL;
+	    
+	    g_object_get (G_OBJECT (obj), 
+			  "object", &pad, 
+			  NULL);
+	    
+	    if ( pad )
+	    {
+		if ( GST_PAD_CAPS (pad) )
+		{
+		    parole_gst_get_pad_capabilities (G_OBJECT (pad), NULL, gst);
+		}
+		else
+		{
+		    g_signal_connect (pad, "notify::caps",
+				      G_CALLBACK (parole_gst_get_pad_capabilities),
+				      gst);
+		}
+		g_object_unref (pad);
+	    }
 	    TRACE ("Stream has video");
 	    g_object_set (G_OBJECT (gst->priv->stream),
 			  "has-video", TRUE,
@@ -1013,8 +1086,10 @@ parole_gst_construct (GObject *object)
     g_signal_connect (gst->priv->bus, "message",
 		      G_CALLBACK (parole_gst_bus_event), gst);
 		      
-    /* Handling 'prepare-xwindow-id' message async causes XSync error in some occasions
-     * So we handle this message synchronously*/
+    /* 
+     * Handling 'prepare-xwindow-id' message async causes XSync 
+     * error in some occasions So we handle this message synchronously
+     */
     gst_bus_set_sync_handler (gst->priv->bus, gst_bus_sync_signal_handler, gst);
     g_signal_connect (gst->priv->bus, "sync-message::element",
 		      G_CALLBACK (parole_gst_element_message_sync), gst);
@@ -1257,6 +1332,11 @@ parole_gst_new (void)
     
     if ( G_LIKELY (parole_gst_object != NULL ) )
     {
+	/* 
+	 * Don't increase the reference count of this object as 
+	 * we need it to be destroyed immediately when the main 
+	 * window is destroyed.
+	 */
 	//g_object_ref (parole_gst_object);
     }
     else
@@ -1338,6 +1418,26 @@ void parole_gst_terminate (ParoleGst *gst)
     g_mutex_unlock (gst->priv->lock);
 
     parole_window_busy_cursor (GTK_WIDGET (gst)->window);
+    
+    if ( gst->priv->state == GST_STATE_PLAYING )
+    {
+	gdouble volume;
+	gdouble step;
+	volume = parole_gst_get_volume (gst);
+	/*
+	 * Like amarok, reduce the sound slowley then exit.
+	 */
+	if ( volume != 0 )
+	{
+	    while ( volume > 0 )
+	    {
+		step = volume - volume / 10;
+		parole_gst_set_volume (gst, step < 0.01 ? 0 : step);
+		volume = parole_gst_get_volume (gst);
+		g_usleep (30000);
+	    }
+	}
+    }
     
     parole_gst_change_state (gst, GST_STATE_NULL);
 }

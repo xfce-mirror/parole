@@ -78,7 +78,8 @@ NOINST_HFILES =					\
 	parole-builder.h			\
 	parole-subtitle-encoding.h		\
 	parole-open-location.h			\
-	parole-disc-menu.h
+	parole-disc-menu.h			\
+	parole-session.h
 
 libparole_headers =				\
 	$(INST_HFILES)
@@ -118,7 +119,8 @@ libparole_la_SOURCES =				\
 	parole-builder.c			\
 	parole-subtitle-encoding.c		\
 	parole-open-location.c			\
-	parole-disc-menu.c
+	parole-disc-menu.c			\
+	parole-session.c
 
 libparole_la_LDFLAGS =				\
 	$(PAROLE_LDFLAGS)

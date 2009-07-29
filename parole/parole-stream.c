@@ -56,6 +56,8 @@ struct _ParoleStreamPrivate
     gboolean 	seekable;
     gboolean 	tag_available;
     gdouble   	duration;
+    gint        video_w;
+    gint        video_h;
     gint64  	absolute_duration;
     
     gchar      *title;
@@ -63,6 +65,7 @@ struct _ParoleStreamPrivate
     gchar      *year;
     gchar      *album;
     gchar      *comment;
+    
     ParoleMediaType media_type; 
 };
 
@@ -78,6 +81,8 @@ enum
     PROP_TAG_AVAILABLE,
     PROP_DURATION,
     PROP_ABSOLUTE_DURATION,
+    PROP_VIDEO_WIDTH,
+    PROP_VIDEO_HEIGHT,
     PROP_TITLE,
     PROP_ARTIST,
     PROP_YEAR,
@@ -155,6 +160,12 @@ static void parole_stream_set_property (GObject *object,
 	case PROP_ABSOLUTE_DURATION:
 	    PAROLE_STREAM_GET_PRIVATE (stream)->absolute_duration = g_value_get_int64 (value);
 	    break;
+	case PROP_VIDEO_HEIGHT:
+	    PAROLE_STREAM_GET_PRIVATE (stream)->video_h = g_value_get_int (value);
+	    break;
+	case PROP_VIDEO_WIDTH:
+	    PAROLE_STREAM_GET_PRIVATE (stream)->video_w = g_value_get_int (value);
+	    break;
 	case PROP_TITLE:
 	    PAROLE_STREAM_DUP_GVALUE_STRING (PAROLE_STREAM_GET_PRIVATE (stream)->title, value);
 	    break;
@@ -212,6 +223,12 @@ static void parole_stream_get_property (GObject *object,
 	    break;
 	case PROP_ABSOLUTE_DURATION:
 	    g_value_set_int64 (value, PAROLE_STREAM_GET_PRIVATE (stream)->absolute_duration);
+	    break;
+	case PROP_VIDEO_HEIGHT:
+	    g_value_set_int (value, PAROLE_STREAM_GET_PRIVATE (stream)->video_h);
+	    break;
+	case PROP_VIDEO_WIDTH:
+	    g_value_set_int (value, PAROLE_STREAM_GET_PRIVATE (stream)->video_w);
 	    break;
 	case PROP_TITLE:
 	    g_value_set_string (value, PAROLE_STREAM_GET_PRIVATE (stream)->title);
@@ -386,6 +403,36 @@ parole_stream_class_init (ParoleStreamClass *klass)
 							  G_PARAM_READWRITE));
 
     /**
+     * ParoleStream:video-width:
+     * 
+     * 
+     * 
+     * Since: 0.1 
+     **/
+    g_object_class_install_property (object_class,
+				     PROP_VIDEO_WIDTH,
+				     g_param_spec_int    ("video-width",
+							  NULL, NULL,
+							  0, G_MAXINT,
+							  0,
+							  G_PARAM_READWRITE));
+							  
+    /**
+     * ParoleStream:video-height:
+     * 
+     * 
+     * 
+     * Since: 0.1 
+     **/
+    g_object_class_install_property (object_class,
+				     PROP_VIDEO_HEIGHT,
+				     g_param_spec_int    ("video-height",
+							  NULL, NULL,
+							  0, G_MAXINT,
+							  0,
+							  G_PARAM_READWRITE));
+							  
+    /**
      * ParoleStream:title:
      * 
      * 
@@ -487,6 +534,8 @@ void parole_stream_init_properties (ParoleStream *stream)
     priv->duration = 0;
     priv->tag_available = FALSE;
     priv->media_type = PAROLE_MEDIA_TYPE_UNKNOWN;
+    priv->video_h = 0;
+    priv->video_w = 0;
     
     PAROLE_STREAM_FREE_STR_PROP (priv->title);
     PAROLE_STREAM_FREE_STR_PROP (priv->uri);
