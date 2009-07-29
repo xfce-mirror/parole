@@ -134,6 +134,46 @@
               </object>
             </child>
             <child>
+              <object class="GtkMenuItem" id="sound">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Sound</property>
+                <property name="use_underline">True</property>
+                <child type="submenu">
+                  <object class="GtkMenu" id="menu1">
+                    <property name="visible">True</property>
+                    <child>
+                      <object class="GtkImageMenuItem" id="imagemenuitem1">
+                        <property name="label" translatable="yes">Mute</property>
+                        <property name="visible">True</property>
+                        <property name="image">image12</property>
+                        <property name="use_stock">False</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImageMenuItem" id="imagemenuitem2">
+                        <property name="label" translatable="yes">Volume Up</property>
+                        <property name="visible">True</property>
+                        <property name="image">image11</property>
+                        <property name="use_stock">False</property>
+                        <accelerator key="plus" signal="activate"/>
+                        <signal name="activate" handler="parole_player_volume_up"/>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImageMenuItem" id="imagemenuitem3">
+                        <property name="label" translatable="yes">Volume Down</property>
+                        <property name="visible">True</property>
+                        <property name="image">image10</property>
+                        <property name="use_stock">False</property>
+                        <accelerator key="minus" signal="activate"/>
+                        <signal name="activate" handler="parole_player_volume_down"/>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
               <object class="GtkMenuItem" id="help-menu">
                 <property name="visible">True</property>
                 <property name="right_justified">True</property>
@@ -283,6 +323,7 @@
                                         <signal name="button_press_event" handler="parole_player_range_button_press"/>
                                         <signal name="value_changed" handler="parole_player_range_value_changed"/>
                                         <signal name="button_release_event" handler="parole_player_range_button_release"/>
+                                        <signal name="scroll_event" handler="parole_player_scroll_event_cb"/>
                                       </object>
                                       <packing>
                                         <property name="expand">False</property>
@@ -310,6 +351,7 @@
                                                     <property name="image">image6</property>
                                                     <property name="relief">none</property>
                                                     <property name="focus_on_click">False</property>
+                                                    <signal name="clicked" handler="parole_player_seekb_cb"/>
                                                   </object>
                                                   <packing>
                                                     <property name="expand">False</property>
@@ -359,6 +401,7 @@
                                                     <property name="image">image9</property>
                                                     <property name="relief">none</property>
                                                     <property name="focus_on_click">False</property>
+                                                    <signal name="clicked" handler="parole_player_seekf_cb"/>
                                                   </object>
                                                   <packing>
                                                     <property name="expand">False</property>
@@ -578,5 +621,17 @@
   <object class="GtkImage" id="image18">
     <property name="visible">True</property>
     <property name="stock">gtk-go-forward</property>
+  </object>
+  <object class="GtkImage" id="image10">
+    <property name="visible">True</property>
+    <property name="icon_name">audio-volume-low</property>
+  </object>
+  <object class="GtkImage" id="image11">
+    <property name="visible">True</property>
+    <property name="icon_name">audio-volume-high</property>
+  </object>
+  <object class="GtkImage" id="image12">
+    <property name="visible">True</property>
+    <property name="icon_name">audio-volume-muted</property>
   </object>
 </interface>

@@ -174,3 +174,8 @@ parole_disc_menu_new (void)
     menu = g_object_new (PAROLE_TYPE_DISC_MENU, NULL);
     return menu;
 }
+
+gboolean parole_disc_menu_visible	 (ParoleDiscMenu *menu)
+{
+    return (GTK_WIDGET_VISIBLE (menu->priv->next_chapter));
+}

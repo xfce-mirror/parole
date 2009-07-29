@@ -70,9 +70,16 @@ struct ParoleGstPrivate
     GTimer	 *hidecursor_timer;
     
     ParoleConf   *conf;
-    gboolean	  update;
+    gboolean	  update_vis;
     gboolean      with_vis;
     gboolean      buffering;
+    gboolean      update_color_balance;
+    
+    
+    /*
+     * xvimage sink has brightness+hue+aturation+contrast.
+     */
+    gboolean	  xvimage_sink;
 };
 
 enum
@@ -260,6 +267,45 @@ parole_gst_draw_logo (ParoleGst *gst)
 
     gdk_pixbuf_unref (pix);
     gdk_window_end_paint (GTK_WIDGET (gst)->window);
+}
+
+static void
+parole_gst_set_video_color_balance (ParoleGst *gst)
+{
+    GstElement *video_sink;
+    
+    gint brightness_value;
+    gint contrast_value;
+    gint hue_value;
+    gint saturation_value;
+	
+    if ( !gst->priv->xvimage_sink )
+	return;
+	
+    g_object_get (G_OBJECT (gst->priv->playbin),
+		  "video-sink", &video_sink,
+		  NULL);
+    
+    if ( !video_sink )
+	return;
+	
+    g_object_get (G_OBJECT (gst->priv->conf),
+		  "brightness", &brightness_value,
+		  "contrast", &contrast_value,
+		  "hue", &hue_value,
+		  "saturation", &saturation_value,
+		  NULL);
+    
+    g_object_set (G_OBJECT (video_sink),
+		  "brightness", brightness_value,
+		  "contrast", contrast_value,
+		  "hue", hue_value,
+		  "saturation", saturation_value,
+		  NULL);
+		  
+    g_object_unref (G_OBJECT (video_sink));
+    
+    gst->priv->update_color_balance = FALSE;
 }
 
 static void
@@ -581,7 +627,7 @@ parole_gst_update_vis (ParoleGst *gst)
 	gtk_widget_queue_draw (GTK_WIDGET (gst));
     }
 
-    gst->priv->update = FALSE;
+    gst->priv->update_vis = FALSE;
     g_free (vis_name);
     TRACE ("end");
 }
@@ -612,13 +658,15 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 		parole_gst_query_capabilities (gst);
 		parole_gst_query_info (gst);
 	    }
-
+	    if ( gst->priv->update_color_balance && gst->priv->target == GST_STATE_PLAYING )
+		parole_gst_set_video_color_balance (gst);
+		
 	    gst->priv->media_state = PAROLE_MEDIA_STATE_PAUSED;
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
 			   gst->priv->stream, PAROLE_MEDIA_STATE_PAUSED);
 	    break;
 	case GST_STATE_READY:
-	    if ( gst->priv->update)
+	    if ( gst->priv->update_vis)
 		parole_gst_update_vis (gst);
 		
 	    gst->priv->media_state = PAROLE_MEDIA_STATE_STOPPED;
@@ -664,6 +712,7 @@ static void
 parole_gst_get_meta_data (ParoleGst *gst, GstTagList *tag)
 {
     gchar *str;
+    GDate *date;
     
     if ( gst_tag_list_get_string_index (tag, GST_TAG_TITLE, 0, &str) )
     {
@@ -683,12 +732,16 @@ parole_gst_get_meta_data (ParoleGst *gst, GstTagList *tag)
 	g_free (str);
     }
     
-    if ( gst_tag_list_get_string_index (tag, GST_TAG_DATE, 0, &str) )
+    if ( gst_tag_list_get_date (tag, GST_TAG_DATE, &date) )
     {
+	
+	str = g_strdup_printf ("%d", g_date_get_year (date));
 	TRACE ("year:%s", str);
+	
 	g_object_set (G_OBJECT (gst->priv->stream),
 		      "year", str,
 		      NULL);
+	g_date_free (date);
 	g_free (str);
     }
     
@@ -930,9 +983,10 @@ parole_gst_construct (GObject *object)
     }
     
     gst->priv->video_sink = gst_element_factory_make ("xvimagesink", "video");
-    
+    gst->priv->xvimage_sink = TRUE;
     if ( G_UNLIKELY (gst->priv->video_sink == NULL) )
     {
+	gst->priv->xvimage_sink = FALSE;
 	g_debug ("xvimagesink not found, trying to load ximagesink"); 
 	gst->priv->video_sink = gst_element_factory_make ("ximagesink", "video");
 	
@@ -1073,11 +1127,9 @@ parole_gst_change_dvd_chapter (ParoleGst *gst, gint level)
 static void
 parole_gst_conf_notify_cb (GObject *object, GParamSpec *spec, ParoleGst *gst)
 {
-    TRACE ("spec->name=%s\n", spec->name);
-    
     if ( !g_strcmp0 ("vis-enabled", spec->name) || !g_strcmp0 ("vis-name", spec->name) )
     {
-	gst->priv->update = TRUE;
+	gst->priv->update_vis = TRUE;
     }
     else if ( !g_strcmp0 ("subtitle-font", spec->name) || !g_strcmp0 ("enable-subtitle", spec->name)  )
     {
@@ -1086,6 +1138,14 @@ parole_gst_conf_notify_cb (GObject *object, GParamSpec *spec, ParoleGst *gst)
     else if (!g_strcmp0 ("subtitle-encoding", spec->name) )
     {
 	parole_gst_set_subtitle_encoding (gst);
+    }
+    else if ( !g_strcmp0 ("brightness", spec->name) || !g_strcmp0 ("hue", spec->name) ||
+	      !g_strcmp0 ("contrast", spec->name) || !g_strcmp0 ("saturation", spec->name) )
+    {
+	gst->priv->update_color_balance = TRUE;
+	
+	if ( gst->priv->state >= GST_STATE_PAUSED )
+	    parole_gst_set_video_color_balance (gst);
     }
 }
 
@@ -1171,9 +1231,10 @@ parole_gst_init (ParoleGst *gst)
     gst->priv->stream = parole_stream_new ();
     gst->priv->tick_id = 0;
     gst->priv->hidecursor_timer = g_timer_new ();
-    gst->priv->update = FALSE;
+    gst->priv->update_vis = FALSE;
     gst->priv->vis_sink = NULL;
     gst->priv->buffering = FALSE;
+    gst->priv->update_color_balance = TRUE;
     
     gst->priv->conf = parole_conf_new ();
     
@@ -1267,7 +1328,7 @@ void parole_gst_stop (ParoleGst *gst)
     parole_gst_change_state (gst, GST_STATE_READY);
 }
 
-void parole_gst_null_state (ParoleGst *gst)
+void parole_gst_terminate (ParoleGst *gst)
 {
     g_mutex_lock (gst->priv->lock);
     
@@ -1358,4 +1419,32 @@ void parole_gst_next_dvd_chapter (ParoleGst *gst)
 void parole_gst_prev_dvd_chapter (ParoleGst *gst)
 {
     parole_gst_change_dvd_chapter (gst, -1);
+}
+
+gdouble	parole_gst_get_stream_duration (ParoleGst *gst)
+{
+    gdouble dur;
+    
+    g_object_get (G_OBJECT (gst->priv->stream),
+		  "duration", &dur,
+		  NULL);
+    return dur;
+}
+
+gdouble parole_gst_get_stream_position (ParoleGst *gst)
+{
+    GstFormat format = GST_FORMAT_TIME;
+    gdouble value;
+    gint64 pos;
+    
+    gst_element_query_position (gst->priv->playbin, &format, &pos);
+    
+    value = ( pos / ((gdouble) 60 * 1000 * 1000 * 1000 ));
+    
+    return value;
+}
+
+gboolean parole_gst_get_is_xvimage_sink (ParoleGst *gst)
+{
+    return gst->priv->xvimage_sink;
 }

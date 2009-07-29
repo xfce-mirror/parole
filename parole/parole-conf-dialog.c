@@ -28,6 +28,7 @@
 
 #include "interfaces/parole-settings_ui.h"
 
+#include "parole-gst.h"
 #include "parole-builder.h"
 #include "parole-conf-dialog.h"
 #include "parole-conf.h"
@@ -56,6 +57,21 @@ void		parole_conf_dialog_enable_subtitle_changed_cb 	(GtkToggleButton *widget,
 	
 void		parole_conf_dialog_subtitle_encoding_changed_cb (GtkComboBox *widget,
 								 ParoleConfDialog *self);
+
+void		brightness_value_changed_cb			(GtkRange *range,
+								 ParoleConfDialog *self);
+
+void		contrast_value_changed_cb			(GtkRange *range,
+								 ParoleConfDialog *self);
+
+void		hue_value_changed_cb				(GtkRange *range,
+								 ParoleConfDialog *self);
+
+void		saturation_value_changed_cb			(GtkRange *range,
+								 ParoleConfDialog *self);
+
+void 	        reset_color_clicked_cb 			        (GtkButton *button, 
+								 ParoleConfDialog *self);
 /*
  * End of GtkBuilder callbacks
  */
@@ -74,6 +90,10 @@ struct ParoleConfDialogPrivate
     GtkWidget  *toggle_subtitle;
     GtkWidget  *font_button;
     GtkWidget  *encoding;
+    GtkWidget  *brightness;
+    GtkWidget  *contrast;
+    GtkWidget  *hue;
+    GtkWidget  *saturation;
 };
 
 G_DEFINE_TYPE (ParoleConfDialog, parole_conf_dialog, G_TYPE_OBJECT)
@@ -83,6 +103,15 @@ parole_conf_dialog_destroy (GtkWidget *widget, ParoleConfDialog *self)
 {
     gtk_widget_destroy (widget);
     g_object_unref (self);
+}
+
+void reset_color_clicked_cb (GtkButton *button, ParoleConfDialog *self)
+{
+    gtk_range_set_value (GTK_RANGE (self->priv->brightness), 0);
+    gtk_range_set_value (GTK_RANGE (self->priv->contrast), 0);
+    gtk_range_set_value (GTK_RANGE (self->priv->hue), 0);
+    gtk_range_set_value (GTK_RANGE (self->priv->saturation), 0);
+    
 }
 
 void parole_conf_dialog_response_cb (GtkDialog *dialog, gint response_id, ParoleConfDialog *self)
@@ -115,6 +144,38 @@ void parole_conf_dialog_enable_vis_changed_cb (GtkToggleButton *widget, ParoleCo
 		  NULL);
     
     gtk_widget_set_sensitive (self->priv->vis_combox, active);
+}
+
+static void
+set_effect_value (ParoleConfDialog *self, GtkRange *range, const gchar *name)
+{
+    gint value;
+    
+    value = gtk_range_get_value (range);
+    
+    g_object_set (G_OBJECT (self->priv->conf),	
+		  name, value,
+		  NULL);
+}
+
+void brightness_value_changed_cb (GtkRange *range, ParoleConfDialog *self)
+{
+    set_effect_value (self, range, "brightness");
+}
+
+void contrast_value_changed_cb (GtkRange *range, ParoleConfDialog *self)
+{
+    set_effect_value (self, range, "contrast");
+}
+
+void hue_value_changed_cb (GtkRange *range, ParoleConfDialog *self)
+{
+    set_effect_value (self, range, "hue");
+}
+
+void saturation_value_changed_cb (GtkRange *range, ParoleConfDialog *self)
+{
+    set_effect_value (self, range, "saturation");
 }
 
 void parole_conf_dialog_vis_plugin_changed_cb (GtkComboBox *widget,  ParoleConfDialog *self)
@@ -279,6 +340,7 @@ void parole_conf_dialog_open (ParoleConfDialog *self, GtkWidget *parent)
     GtkBuilder *builder;
     GtkWidget  *dialog;
     GtkWidget  *combox;
+    gboolean    with_display;
     
     builder = parole_builder_new_from_string (parole_settings_ui, parole_settings_ui_length);
     
@@ -300,8 +362,46 @@ void parole_conf_dialog_open (ParoleConfDialog *self, GtkWidget *parent)
 
     parole_conf_dialog_set_defaults (self);
     
+    with_display = parole_gst_get_is_xvimage_sink (PAROLE_GST (parole_gst_new ()));
+    
+    if ( !with_display )
+    {
+	gtk_widget_hide (GTK_WIDGET (gtk_builder_get_object (builder, "frame-display")));
+    }
+    else
+    {
+	gint brightness_value;
+	gint contrast_value;
+	gint hue_value;
+	gint saturation_value;
+	
+	self->priv->brightness = GTK_WIDGET (gtk_builder_get_object (builder, "brightness"));
+	self->priv->contrast = GTK_WIDGET (gtk_builder_get_object (builder, "contrast"));
+	self->priv->hue = GTK_WIDGET (gtk_builder_get_object (builder, "hue"));
+	self->priv->saturation = GTK_WIDGET (gtk_builder_get_object (builder, "saturation"));
+	
+	gtk_range_set_range (GTK_RANGE (self->priv->brightness), -1000, 1000);
+	gtk_range_set_range (GTK_RANGE (self->priv->contrast), -1000, 1000);
+	gtk_range_set_range (GTK_RANGE (self->priv->saturation), -1000, 1000);
+	gtk_range_set_range (GTK_RANGE (self->priv->hue), -1000, 1000);
+
+	g_object_get (G_OBJECT (self->priv->conf),
+		      "brightness", &brightness_value,
+		      "contrast", &contrast_value,
+		      "hue", &hue_value,
+		      "saturation", &saturation_value,
+		      NULL);
+	
+	gtk_range_set_value (GTK_RANGE (self->priv->brightness), brightness_value);
+	gtk_range_set_value (GTK_RANGE (self->priv->contrast), contrast_value);
+	gtk_range_set_value (GTK_RANGE (self->priv->hue), hue_value);
+	gtk_range_set_value (GTK_RANGE (self->priv->saturation), saturation_value);
+	
+    }
+    
     gtk_builder_connect_signals (builder, self);
     
     g_object_unref (builder);
-    gtk_widget_show_all (dialog);
+    
+    gtk_widget_show (dialog);
 }

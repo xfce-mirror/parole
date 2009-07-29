@@ -46,6 +46,8 @@ GType        			parole_disc_menu_get_type        (void) G_GNUC_CONST;
 
 ParoleDiscMenu                 *parole_disc_menu_new             (void);
 
+gboolean			parole_disc_menu_visible	 (ParoleDiscMenu *menu);
+
 G_END_DECLS
 
 #endif /* __PAROLE_DISC_MENU_H */

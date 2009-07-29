@@ -92,7 +92,7 @@ void			parole_gst_resume          	(ParoleGst *gst);
 
 void			parole_gst_stop            	(ParoleGst *gst);
 
-void			parole_gst_null_state	   	(ParoleGst *gst);
+void			parole_gst_terminate	   	(ParoleGst *gst);
 
 void			parole_gst_seek		   	(ParoleGst *gst,
 							 gdouble pos);
@@ -111,6 +111,12 @@ GstState	        parole_gst_get_gst_target_state (ParoleGst *gst);
 void			parole_gst_next_dvd_chapter 	(ParoleGst *gst);
 
 void			parole_gst_prev_dvd_chapter 	(ParoleGst *gst);
+
+gdouble			parole_gst_get_stream_duration	(ParoleGst *gst);
+
+gdouble			parole_gst_get_stream_position  (ParoleGst *gst);
+
+gboolean		parole_gst_get_is_xvimage_sink  (ParoleGst *gst);
 
 G_END_DECLS
 

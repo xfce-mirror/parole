@@ -44,6 +44,11 @@ struct ParoleConfPrivate
     
     gboolean     repeat;
     gboolean     shuffle;
+    
+    gint         brightness;
+    gint         contrast;
+    gint         hue;
+    gint         saturation;
 };
 
 static gpointer parole_conf_object = NULL;
@@ -59,7 +64,11 @@ enum
     PROP_SUBTITLE_FONT,
     PROP_SUBTITLE_ENCODING,
     PROP_REPEAT,
-    PROP_SHUFFLE
+    PROP_SHUFFLE,
+    PROP_BRIGHTNESS,
+    PROP_CONTRAST,
+    PROP_HUE,
+    PROP_SATURATION
 };
 
 static void parole_conf_set_property (GObject *object,
@@ -74,49 +83,63 @@ static void parole_conf_set_property (GObject *object,
     {
 	case PROP_VIS_ENABLED:
 	    conf->priv->enable_vis = g_value_get_boolean (value);
-	    g_object_notify (G_OBJECT (conf), "vis-enabled");
+	    g_object_notify (G_OBJECT (conf), pspec->name);
 	    parole_rc_write_entry_bool ("VIS_ENABLED", PAROLE_RC_GROUP_GENERAL, conf->priv->enable_vis);
 	    break;
 	case PROP_SUBTITLE_ENCODING:
 	    if ( conf->priv->subtitle_encoding )
 		g_free (conf->priv->subtitle_encoding);
 	    conf->priv->subtitle_encoding = g_value_dup_string (value);
-	    g_object_notify (G_OBJECT (conf), "subtitle-encoding");
 	    parole_rc_write_entry_string ("SUBTITLE_ENCODING", PAROLE_RC_GROUP_GENERAL, conf->priv->subtitle_encoding);
 	    break;
 	case PROP_VIS_NAME:
 	    if ( conf->priv->vis_sink )
 		g_free (conf->priv->vis_sink);
 	    conf->priv->vis_sink = g_value_dup_string (value);
-	    g_object_notify (G_OBJECT (conf), "vis-name");
 	    parole_rc_write_entry_string ("VIS_NAME", PAROLE_RC_GROUP_GENERAL, conf->priv->vis_sink);
 	    break;
 	case PROP_SUBTITLE_ENABLED:
 	    conf->priv->enable_subtitle = g_value_get_boolean (value);
-	    g_object_notify (G_OBJECT (conf), "enable-subtitle");
 	    parole_rc_write_entry_bool ("ENABLE_SUBTITLE", PAROLE_RC_GROUP_GENERAL, conf->priv->enable_subtitle);
 	    break;
 	case PROP_SUBTITLE_FONT:
 	    if ( conf->priv->subtitle_font )
 		g_free (conf->priv->subtitle_font);
 	    conf->priv->subtitle_font = g_value_dup_string (value);
-	    g_object_notify (G_OBJECT (conf), "subtitle-font");
 	    parole_rc_write_entry_string ("SUBTITLE_FONT", PAROLE_RC_GROUP_GENERAL, conf->priv->subtitle_font);
 	    break;
 	case PROP_REPEAT:
 	    conf->priv->repeat = g_value_get_boolean (value);
-	    g_object_notify (G_OBJECT (conf), "repeat");
 	    parole_rc_write_entry_bool ("REPEAT", PAROLE_RC_GROUP_GENERAL, conf->priv->repeat);
 	    break;
 	case PROP_SHUFFLE:
 	    conf->priv->shuffle = g_value_get_boolean (value);
-	    g_object_notify (G_OBJECT (conf), "shuffle");
 	    parole_rc_write_entry_bool ("SHUFFLE", PAROLE_RC_GROUP_GENERAL, conf->priv->shuffle);
+	    break;
+	case PROP_SATURATION:
+	    conf->priv->saturation = g_value_get_int (value);
+	    parole_rc_write_entry_int ("SATURATION", PAROLE_RC_GROUP_GENERAL, conf->priv->saturation);
+	    break;
+	case PROP_HUE:
+	    conf->priv->hue = g_value_get_int (value);
+	    parole_rc_write_entry_int ("HUE", PAROLE_RC_GROUP_GENERAL, conf->priv->hue);
+	    break;
+	case PROP_CONTRAST:
+	    conf->priv->contrast = g_value_get_int (value);
+	    parole_rc_write_entry_int ("CONTRAST", PAROLE_RC_GROUP_GENERAL, conf->priv->contrast);
+	    break;
+	case PROP_BRIGHTNESS:
+	    conf->priv->brightness = g_value_get_int (value);
+	    parole_rc_write_entry_int ("BRIGHTNESS", PAROLE_RC_GROUP_GENERAL, conf->priv->brightness);
 	    break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-            break;
+            goto out;
     }
+    g_object_notify (G_OBJECT (conf), pspec->name);
+    
+out:
+    ;
 }
 
 static void parole_conf_get_property (GObject *object,
@@ -149,6 +172,18 @@ static void parole_conf_get_property (GObject *object,
 	    break;
 	case PROP_SHUFFLE:
 	    g_value_set_boolean (value, conf->priv->shuffle);
+	    break;
+	case PROP_SATURATION:
+	    g_value_set_int (value, conf->priv->saturation);
+	    break;
+	case PROP_HUE:
+	    g_value_set_int (value, conf->priv->hue);
+	    break;
+	case PROP_CONTRAST:
+	    g_value_set_int (value, conf->priv->contrast);
+	    break;
+	case PROP_BRIGHTNESS:
+	    g_value_set_int (value, conf->priv->brightness);
 	    break;
 	default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -229,6 +264,41 @@ parole_conf_class_init (ParoleConfClass *klass)
                                                            FALSE,
                                                            G_PARAM_READWRITE));
     
+    
+    g_object_class_install_property (object_class,
+                                     PROP_CONTRAST,
+                                     g_param_spec_int ("contrast",
+                                                       NULL, NULL,
+                                                       -1000,
+						       1000,
+						       0,
+                                                       G_PARAM_READWRITE));
+							   
+    g_object_class_install_property (object_class,
+                                     PROP_HUE,
+                                     g_param_spec_int ("hue",
+                                                       NULL, NULL,
+                                                       -1000,
+						       1000,
+						       0,
+                                                       G_PARAM_READWRITE));
+    g_object_class_install_property (object_class,
+                                     PROP_SATURATION,
+                                     g_param_spec_int ("saturation",
+                                                       NULL, NULL,
+                                                       -1000,
+						       1000,
+						       0,
+                                                       G_PARAM_READWRITE));
+    g_object_class_install_property (object_class,
+                                     PROP_BRIGHTNESS,
+                                     g_param_spec_int ("brightness",
+                                                       NULL, NULL,
+                                                       -1000,
+						       1000,
+						       0,
+                                                       G_PARAM_READWRITE));
+						       
     g_type_class_add_private (klass, sizeof (ParoleConfPrivate));
 }
 
@@ -244,6 +314,10 @@ parole_conf_init (ParoleConf *conf)
     conf->priv->subtitle_encoding = g_strdup (parole_rc_read_entry_string ("SUBTITLE_ENCODING", PAROLE_RC_GROUP_GENERAL, "UTF8"));
     conf->priv->repeat = parole_rc_read_entry_bool ("REPEAT", PAROLE_RC_GROUP_GENERAL, FALSE);
     conf->priv->shuffle = parole_rc_read_entry_bool ("SHUFFLE", PAROLE_RC_GROUP_GENERAL, FALSE);
+    conf->priv->saturation = parole_rc_read_entry_int ("SATURATION", PAROLE_RC_GROUP_GENERAL, 0);
+    conf->priv->hue = parole_rc_read_entry_int ("HUE", PAROLE_RC_GROUP_GENERAL, 0);
+    conf->priv->contrast = parole_rc_read_entry_int ("CONTRAST", PAROLE_RC_GROUP_GENERAL, 0);
+    conf->priv->brightness = parole_rc_read_entry_int ("BRIGHTNESS", PAROLE_RC_GROUP_GENERAL, 0);
 }
 
 ParoleConf *
