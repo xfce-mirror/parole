@@ -40,6 +40,7 @@
 #include "parole-utils.h"
 #include "parole-conf.h"
 #include "parole-utils.h"
+#include "parole-debug.h"
 #include "enum-gtypes.h"
 #include "gmarshal.h"
 
@@ -384,12 +385,11 @@ parole_gst_query_capabilities (ParoleGst *gst)
 				 &seekable,
 				 NULL,
 				 NULL);
-    }
-    gst_query_unref (query);
-    
-    g_object_set (G_OBJECT (gst->priv->stream),
+	g_object_set (G_OBJECT (gst->priv->stream),
 	          "seekable", seekable,
 		  NULL);
+    }
+    gst_query_unref (query);
 }
 
 static void
@@ -397,6 +397,7 @@ parole_gst_query_duration (ParoleGst *gst)
 {
     gint64 absolute_duration = 0;
     gdouble duration = 0;
+    gboolean live;
     
     GstFormat gst_time = GST_FORMAT_TIME;
     
@@ -407,9 +408,12 @@ parole_gst_query_duration (ParoleGst *gst)
     if (gst_time == GST_FORMAT_TIME)
     {
 	duration =  absolute_duration / ((gdouble) 60 * 1000 * 1000 * 1000);
+	live = ( absolute_duration == 0 );
+	TRACE ("Duration %e is_live=%d", duration, live);
 	g_object_set (G_OBJECT (gst->priv->stream),
 		      "absolute-duration", absolute_duration,
 		      "duration", duration,
+		      "live", live,
 		      NULL);
     }
 }
@@ -455,12 +459,16 @@ parole_gst_load_subtitle (ParoleGst *gst)
     gchar *sub;
     gchar *sub_uri;
     gboolean sub_enabled;
+    gboolean has_video;
     
     g_object_get (G_OBJECT (gst->priv->stream),
 		  "media-type", &type,
+		  "has-video",  &has_video,
 		  NULL);
     
-    if ( type != PAROLE_MEDIA_TYPE_LOCAL_FILE )
+    PAROLE_DEBUG_ENUM_FULL (type, ENUM_GTYPE_MEDIA_TYPE, " has_video=%d", has_video);
+    
+    if ( type != PAROLE_MEDIA_TYPE_LOCAL_FILE || !has_video)
 	return;
     
     g_object_get (G_OBJECT (gst->priv->conf),
@@ -539,6 +547,13 @@ parole_gst_query_info (ParoleGst *gst)
 }
 
 static void
+parole_gst_update_stream_info (ParoleGst *gst)
+{
+    TRACE ("Updating stream info");
+    parole_gst_query_info (gst);
+}
+
+static void
 parole_gst_update_vis (ParoleGst *gst)
 {
     gchar *vis_name;
@@ -586,14 +601,18 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
     switch (gst->priv->state)
     {
 	case GST_STATE_PLAYING:
-	    parole_gst_query_duration (gst);
-	    parole_gst_query_capabilities (gst);
-	    parole_gst_query_info (gst);
 	    gst->priv->media_state = PAROLE_MEDIA_STATE_PLAYING;
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
 			   gst->priv->stream, PAROLE_MEDIA_STATE_PLAYING);
 	    break;
 	case GST_STATE_PAUSED:
+	    if ( old == GST_STATE_READY )
+	    {
+		parole_gst_query_duration (gst);
+		parole_gst_query_capabilities (gst);
+		parole_gst_query_info (gst);
+	    }
+
 	    gst->priv->media_state = PAROLE_MEDIA_STATE_PAUSED;
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
 			   gst->priv->stream, PAROLE_MEDIA_STATE_PAUSED);
@@ -606,7 +625,7 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
 			   gst->priv->stream, PAROLE_MEDIA_STATE_STOPPED);
 
-	    if ( gst->priv->target == GST_STATE_PLAYING)
+	    if ( gst->priv->target == GST_STATE_PLAYING && pending != GST_STATE_PLAYING)
 	    {
 		parole_gst_play_file_internal (gst);
 	    }
@@ -698,6 +717,28 @@ parole_gst_get_meta_data (ParoleGst *gst, GstTagList *tag)
     g_signal_emit (G_OBJECT (gst), signals [MEDIA_TAG], 0, gst->priv->stream);
 }
 
+static void
+parole_gst_application_message (ParoleGst *gst, GstMessage *msg)
+{
+    const gchar *name;
+
+    name = gst_structure_get_name (msg->structure);
+    
+    if ( !name )
+	return;
+	
+    TRACE ("Application message : %s", name);
+    
+    if ( !g_strcmp0 (name, "notify-streaminfo") )
+    {
+	parole_gst_update_stream_info (gst);
+    }
+    else 
+    {
+	//FIXME: Handle video size message.
+    }
+}
+
 static gboolean
 parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
 {
@@ -749,11 +790,7 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
 		parole_gst_evaluate_state (gst, old, new, pending);
 	    break;
 	}
-	case GST_MESSAGE_WARNING:
-	    break;
-	case GST_MESSAGE_INFO:
-	    TRACE ("Info message:");
-	    break;
+	
 	case GST_MESSAGE_TAG:
 	{
 	    GstTagList *tag_list;
@@ -764,6 +801,20 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
 	    gst_tag_list_free (tag_list);
 	    break;
 	}
+	case GST_MESSAGE_APPLICATION:
+	    parole_gst_application_message (gst, msg);
+	    break;
+	case GST_MESSAGE_DURATION:
+	    TRACE ("Duration message");
+	    parole_gst_query_duration (gst);
+	    break;
+	case GST_MESSAGE_ELEMENT:
+	    break;
+	case GST_MESSAGE_WARNING:
+	    break;
+	case GST_MESSAGE_INFO:
+	    TRACE ("Info message:");
+	    break;
 	case GST_MESSAGE_STATE_DIRTY:
 	    TRACE ("Stream is dirty");
 	    break;
@@ -780,12 +831,7 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
 	case GST_MESSAGE_STREAM_STATUS:
 	    TRACE ("Stream status");
 	    break;
-	case GST_MESSAGE_APPLICATION:
-	    TRACE ("Application message");
-	    break;
 	case GST_MESSAGE_SEGMENT_START:
-	    break;
-	case GST_MESSAGE_DURATION:
 	    break;
 	case GST_MESSAGE_LATENCY:
 	    break;
@@ -833,7 +879,7 @@ static void
 parole_gst_stream_info_notify_cb (GObject * obj, GParamSpec * pspec, ParoleGst *gst)
 {
     GstMessage *msg;
-    TRACE ("Stream info changed?");
+    TRACE ("Stream info changed");
     msg = gst_message_new_application (GST_OBJECT (gst->priv->playbin),
 				       gst_structure_new ("notify-streaminfo", NULL));
     gst_element_post_message (gst->priv->playbin, msg);
@@ -999,6 +1045,29 @@ parole_gst_button_release_event (GtkWidget *widget, GdkEventButton *ev)
 	ret |= GTK_WIDGET_CLASS (parole_gst_parent_class)->button_release_event (widget, ev);
 
     return ret;
+}
+
+static void
+parole_gst_change_dvd_chapter (ParoleGst *gst, gint level)
+{
+    GstFormat format;
+    gint64 val;
+    
+    format = gst_format_get_by_nick ("chapter");
+    
+    if ( format != GST_FORMAT_UNDEFINED )
+    {
+	if ( gst_element_query_position (gst->priv->playbin, &format, &val) )
+	{
+	    val += level;
+	    gst_element_seek (gst->priv->playbin, 1.0, format, 
+			      GST_SEEK_FLAG_FLUSH, GST_SEEK_TYPE_SET, 
+			      val,
+			      GST_SEEK_TYPE_NONE,
+			      0);
+	}
+    }
+    
 }
 
 static void
@@ -1279,4 +1348,14 @@ GstState parole_gst_get_gst_state (ParoleGst *gst)
 GstState parole_gst_get_gst_target_state (ParoleGst *gst)
 {
     return gst->priv->target;
+}
+
+void parole_gst_next_dvd_chapter (ParoleGst *gst)
+{
+    parole_gst_change_dvd_chapter (gst, 1);
+}
+
+void parole_gst_prev_dvd_chapter (ParoleGst *gst)
+{
+    parole_gst_change_dvd_chapter (gst, -1);
 }

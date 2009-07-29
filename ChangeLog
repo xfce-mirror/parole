@@ -1,3 +1,11 @@
+2009-07-29: 09:30 Ali aliov@xfce.org
+	* Added ParoleDiscMenu to show a DVD menu when playing DVD.
+	* Query media capabilities on paused state.
+	* parole-file.c get rid of a useless warning.
+	* parole-statusbar.c properly set text info of live streams.
+	* parole-gst.c optimize a bit the way we query stream info+
+	added support for seeking to DVD chapters.
+	
 2009-07-28: 13:00 Ali aliov@xfce.org
 	* Implement shuffle and repeat mode.
 	* Only hide cursor when we are playing a video.

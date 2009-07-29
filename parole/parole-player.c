@@ -40,6 +40,7 @@
 #include "parole-mediachooser.h"
 #include "parole-file.h"
 #include "parole-disc.h"
+#include "parole-disc-menu.h"
 #include "parole-statusbar.h"
 #include "parole-screensaver.h"
 #include "parole-conf-dialog.h"
@@ -125,6 +126,7 @@ struct ParolePlayerPrivate
     ParoleDisc          *disc;
     ParoleScreenSaver   *screen_saver;
     ParoleConf          *conf;
+    ParoleDiscMenu      *disc_menu;
 
     GtkWidget 		*gst;
 
@@ -710,10 +712,12 @@ parole_player_move_fs_window (ParolePlayer *player)
 static void
 parole_player_full_screen_menu_item_activate (ParolePlayer *player)
 {
+    gint npages;
     static gint current_page = 0;
     
     if ( player->priv->full_screen )
     {
+	npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (player->priv->main_nt));
 	gtk_widget_reparent (player->priv->play_box, player->priv->control);
 	gtk_widget_hide (player->priv->fs_window);
 	parole_statusbar_set_visible (player->priv->status, TRUE);
@@ -723,7 +727,8 @@ parole_player_full_screen_menu_item_activate (ParolePlayer *player)
 	gtk_widget_show (player->priv->show_hide_playlist);
 	gtk_widget_hide (player->priv->leave_fs);
 	
-	gtk_notebook_set_show_tabs (GTK_NOTEBOOK (player->priv->main_nt), TRUE);
+	gtk_notebook_set_show_tabs (GTK_NOTEBOOK (player->priv->main_nt), npages > 1);
+	
 	gtk_window_unfullscreen (GTK_WINDOW (player->priv->window));
 	gtk_notebook_set_current_page (GTK_NOTEBOOK (player->priv->playlist_nt), current_page);
 	player->priv->full_screen = FALSE;
@@ -1001,6 +1006,7 @@ parole_player_finalize (GObject *object)
     g_object_unref (player->priv->gst);
     g_object_unref (player->priv->status);
     g_object_unref (player->priv->disc);
+    g_object_unref (player->priv->disc_menu);
     g_object_unref (player->priv->conf);
     g_object_unref (player->priv->screen_saver);
     
@@ -1057,6 +1063,8 @@ parole_player_init (ParolePlayer *player)
     g_signal_connect (player->priv->disc, "disc-selected",
 		      G_CALLBACK (parole_player_disc_selected_cb), player);
 		      
+    player->priv->disc_menu = parole_disc_menu_new ();
+    
     player->priv->screen_saver = parole_screen_saver_new ();
     player->priv->list = PAROLE_MEDIA_LIST (parole_media_list_new ());
     

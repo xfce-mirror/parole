@@ -162,8 +162,8 @@ parole_file_constructed (GObject *object)
 	else
 	{
 	    priv->display_name = g_strdup (priv->filename);
+	    g_warning ("Unable to read file info %s", error->message);
 	}
-	g_warning ("Unable to read file info %s", error->message);
 	goto out;
     }
 
@@ -173,6 +173,7 @@ parole_file_constructed (GObject *object)
     priv->content_type = g_strdup (g_file_info_get_content_type (info));
     
     g_object_unref (info);
+    
 out:
     priv->uri = g_file_get_uri (gfile);
     g_object_unref (gfile);

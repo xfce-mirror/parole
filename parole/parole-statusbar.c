@@ -100,6 +100,7 @@ static void parole_statusbar_set_text (ParoleStatusbar *bar, const ParoleStream 
 {
     gchar *text = NULL;
     gchar *title = NULL;
+    gchar *uri = NULL;
     gboolean live;
     
     if ( state >= PAROLE_STATE_PAUSED )
@@ -107,21 +108,27 @@ static void parole_statusbar_set_text (ParoleStatusbar *bar, const ParoleStream 
 	g_object_get (G_OBJECT (stream),
 		      "title", &title,
 		      "live", &live,
+		      "uri", &uri,
 		      NULL);
 		      
+	if ( live )
+	{
+	    text = g_strdup_printf ("%s '%s'", _("Live stream:"), uri);
+	    gtk_label_set_text (GTK_LABEL (bar->priv->label_text), text);
+	    g_free (text);
+	    g_free (uri);
+	    if ( title )
+		g_free (title);
+	    return;
+	}
+	
 	if ( !title )
 	{
-	    gchar *uri;
 	    gchar *filename;
-	    g_object_get (G_OBJECT (stream),
-			  "uri", &uri,
-			  NULL);
-			  
-	    if ( !uri )
+	    if ( G_UNLIKELY (uri == NULL) )
 		goto out;
-		
+	    
 	    filename = g_filename_from_uri (uri, NULL, NULL);
-	    g_free (uri);
 	    
 	    if ( filename )
 	    {
@@ -129,12 +136,16 @@ static void parole_statusbar_set_text (ParoleStatusbar *bar, const ParoleStream 
 		g_free (filename);
 	    }
 	    else
+	    {
+		TRACE ("Unable to set statusbar title");
 		goto out;
+	    }
 	}
 	
-	text = g_strdup_printf ("%s %s", live ? _("Live stream") : " ", title);
+	text = g_strdup_printf ("%s", title);
 	gtk_label_set_text (GTK_LABEL (bar->priv->label_text), text);
 	g_free (text);
+	g_free (uri);
 	return;
     }
 	
@@ -157,6 +168,9 @@ parole_statusbar_state_changed_cb (ParolePlugin *gst, const ParoleStream *stream
 	statusbar->priv->duration = 0;
 	statusbar->priv->pos = 0;
     }
+	
+    if ( state < PAROLE_STATE_PAUSED ) 
+	gtk_widget_hide (statusbar->priv->progress);
 	
     parole_statusbar_set_text (statusbar, stream, state);
     parole_statusbar_set_duration (statusbar, state, statusbar->priv->pos);

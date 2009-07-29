@@ -59,54 +59,58 @@ typedef struct
 {
     GtkWidgetClass 	parent_class;
     
-    void		(*media_state)		 (ParoleGst *gst,
-						  const ParoleStream *stream,
-						  ParoleMediaState state);
+    void		(*media_state)		 	(ParoleGst *gst,
+							 const ParoleStream *stream,
+							 ParoleMediaState state);
 						  
-    void		(*media_progressed)	 (ParoleGst *gst,
-					          const ParoleStream *stream,
-						  gdouble value);
+    void		(*media_progressed)	 	(ParoleGst *gst,
+						         const ParoleStream *stream,
+							 gdouble value);
     
-    void		(*buffering)		 (ParoleGst *gst,
-					          const ParoleStream *stream,
-						  gint percentage);
+    void		(*buffering)		 	(ParoleGst *gst,
+							 const ParoleStream *stream,
+							 gint percentage);
     
-    void		(*media_tag)		 (ParoleGst *gst,
-						  const ParoleStream *stream);
+    void		(*media_tag)		 	(ParoleGst *gst,
+							 const ParoleStream *stream);
     
-    void		(*error)		 (ParoleGst *gst,
-						  const gchar *error);
+    void		(*error)		 	(ParoleGst *gst,
+							 const gchar *error);
     
 } ParoleGstClass;
 
-GType        		parole_gst_get_type        (void) G_GNUC_CONST;
+GType        		parole_gst_get_type        	(void) G_GNUC_CONST;
 
-GtkWidget      	       *parole_gst_new             (void);
+GtkWidget      	       *parole_gst_new             	(void);
 
-void		        parole_gst_play_uri        (ParoleGst *gst,
-					            const gchar *uri);
+void		        parole_gst_play_uri        	(ParoleGst *gst,
+							 const gchar *uri);
 
-void			parole_gst_pause           (ParoleGst *gst);
+void			parole_gst_pause           	(ParoleGst *gst);
 
-void			parole_gst_resume          (ParoleGst *gst);
+void			parole_gst_resume          	(ParoleGst *gst);
 
-void			parole_gst_stop            (ParoleGst *gst);
+void			parole_gst_stop            	(ParoleGst *gst);
 
-void			parole_gst_null_state	   (ParoleGst *gst);
+void			parole_gst_null_state	   	(ParoleGst *gst);
 
-void			parole_gst_seek		   (ParoleGst *gst,
-						    gdouble pos);
+void			parole_gst_seek		   	(ParoleGst *gst,
+							 gdouble pos);
 
-void			parole_gst_set_volume      (ParoleGst *gst,
-						    gdouble value);
+void			parole_gst_set_volume      	(ParoleGst *gst,
+							 gdouble value);
 						    
-gdouble			parole_gst_get_volume	   (ParoleGst *gst);
+gdouble			parole_gst_get_volume	   	(ParoleGst *gst);
 
-ParoleMediaState        parole_gst_get_state	   (ParoleGst *gst);
+ParoleMediaState        parole_gst_get_state	   	(ParoleGst *gst);
 
-GstState	        parole_gst_get_gst_state   (ParoleGst *gst);
+GstState	        parole_gst_get_gst_state   	(ParoleGst *gst);
 
 GstState	        parole_gst_get_gst_target_state (ParoleGst *gst);
+
+void			parole_gst_next_dvd_chapter 	(ParoleGst *gst);
+
+void			parole_gst_prev_dvd_chapter 	(ParoleGst *gst);
 
 G_END_DECLS
 

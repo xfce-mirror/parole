@@ -142,7 +142,7 @@ parole_disc_add_mount_to_menu (ParoleDisc *disc, GMount *mount)
 				"uri", data->uri,
 				(GDestroyNotify) g_free);
 	
-	gtk_menu_shell_insert (GTK_MENU_SHELL (disc->priv->media_menu), data->mi, 3);
+	gtk_menu_shell_insert (GTK_MENU_SHELL (disc->priv->media_menu), data->mi, 2);
 	g_signal_connect (data->mi, "activate",
 			  G_CALLBACK (parole_disc_media_activate_cb), disc);
 	g_free (label);

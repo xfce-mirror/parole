@@ -168,6 +168,7 @@
               <object class="GtkNotebook" id="main-notebook">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="show_tabs">False</property>
                 <property name="scrollable">True</property>
                 <property name="group_id">0</property>
                 <child>
@@ -204,6 +205,76 @@
                                     <property name="orientation">vertical</property>
                                     <property name="spacing">5</property>
                                     <child>
+                                      <object class="GtkHBox" id="dvd-box">
+                                        <property name="visible">True</property>
+                                        <child>
+                                          <object class="GtkButton" id="prev-chapter">
+                                            <property name="label" translatable="yes">Previous Chapter</property>
+                                            <property name="can_focus">True</property>
+                                            <property name="receives_default">True</property>
+                                            <property name="no_show_all">True</property>
+                                            <property name="image">image1</property>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="position">0</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkButton" id="dvd-menu">
+                                            <property name="label" translatable="yes">DVD Menu</property>
+                                            <property name="can_focus">True</property>
+                                            <property name="receives_default">True</property>
+                                            <property name="no_show_all">True</property>
+                                            <property name="image">image2</property>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="position">1</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkButton" id="chapter-menu">
+                                            <property name="label" translatable="yes">Chapter Menu</property>
+                                            <property name="can_focus">True</property>
+                                            <property name="receives_default">True</property>
+                                            <property name="no_show_all">True</property>
+                                            <property name="image">image3</property>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="position">2</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkButton" id="next-chapter">
+                                            <property name="label" translatable="yes">Next Chapter</property>
+                                            <property name="can_focus">True</property>
+                                            <property name="receives_default">True</property>
+                                            <property name="no_show_all">True</property>
+                                            <property name="image">image4</property>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="position">3</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <placeholder/>
+                                        </child>
+                                        <child>
+                                          <placeholder/>
+                                        </child>
+                                        <child>
+                                          <placeholder/>
+                                        </child>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="position">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
                                       <object class="GtkHScale" id="scale">
                                         <property name="visible">True</property>
                                         <property name="sensitive">False</property>
@@ -215,7 +286,7 @@
                                       </object>
                                       <packing>
                                         <property name="expand">False</property>
-                                        <property name="position">0</property>
+                                        <property name="position">1</property>
                                       </packing>
                                     </child>
                                     <child>
@@ -373,7 +444,7 @@
                                       </object>
                                       <packing>
                                         <property name="expand">False</property>
-                                        <property name="position">1</property>
+                                        <property name="position">2</property>
                                       </packing>
                                     </child>
                                   </object>
@@ -471,9 +542,26 @@
     <property name="visible">True</property>
     <property name="stock">gtk-network</property>
   </object>
-  <object class="GtkImage" id="image6">
+  <object class="GtkImage" id="image1">
     <property name="visible">True</property>
     <property name="stock">gtk-media-previous</property>
+  </object>
+  <object class="GtkImage" id="image2">
+    <property name="visible">True</property>
+    <property name="stock">gtk-index</property>
+  </object>
+  <object class="GtkImage" id="image3">
+    <property name="visible">True</property>
+    <property name="no_show_all">True</property>
+    <property name="stock">gtk-index</property>
+  </object>
+  <object class="GtkImage" id="image4">
+    <property name="visible">True</property>
+    <property name="stock">gtk-media-next</property>
+  </object>
+  <object class="GtkImage" id="image6">
+    <property name="visible">True</property>
+    <property name="stock">gtk-media-rewind</property>
   </object>
   <object class="GtkImage" id="image7">
     <property name="visible">True</property>
@@ -485,7 +573,7 @@
   </object>
   <object class="GtkImage" id="image9">
     <property name="visible">True</property>
-    <property name="stock">gtk-media-next</property>
+    <property name="stock">gtk-media-forward</property>
   </object>
   <object class="GtkImage" id="image18">
     <property name="visible">True</property>
