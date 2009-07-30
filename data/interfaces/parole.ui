@@ -9,6 +9,7 @@
     <property name="icon_name">parole</property>
     <signal name="destroy" handler="parole_player_destroy_cb"/>
     <signal name="key_press_event" handler="parole_player_key_press"/>
+    <signal name="configure_event" handler="parole_player_configure_event_cb"/>
     <signal name="delete_event" handler="parole_player_delete_event_cb" after="yes"/>
     <child>
       <object class="GtkVBox" id="vbox1">
@@ -120,6 +121,82 @@
                   <object class="GtkMenu" id="menu2">
                     <property name="visible">True</property>
                     <child>
+                      <object class="GtkMenuItem" id="menuitem1">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Aspect Ratio</property>
+                        <property name="use_underline">True</property>
+                        <child type="submenu">
+                          <object class="GtkMenu" id="menu5">
+                            <property name="visible">True</property>
+                            <child>
+                              <object class="GtkRadioMenuItem" id="ratio_none">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">None</property>
+                                <property name="use_underline">True</property>
+                                <property name="draw_as_radio">True</property>
+                                <signal name="toggled" handler="ratio_none_toggled_cb"/>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkRadioMenuItem" id="ratio_auto">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">Auto</property>
+                                <property name="use_underline">True</property>
+                                <property name="draw_as_radio">True</property>
+                                <property name="group">ratio_none</property>
+                                <signal name="toggled" handler="ratio_auto_toggled_cb"/>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkRadioMenuItem" id="ratio_square">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">Square</property>
+                                <property name="use_underline">True</property>
+                                <property name="draw_as_radio">True</property>
+                                <property name="group">ratio_none</property>
+                                <signal name="toggled" handler="ratio_square_toggled_cb"/>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkRadioMenuItem" id="ratio_4_3">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">4:3 (TV)</property>
+                                <property name="use_underline">True</property>
+                                <property name="draw_as_radio">True</property>
+                                <property name="group">ratio_none</property>
+                                <signal name="toggled" handler="ratio_4_3_toggled_cb"/>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkRadioMenuItem" id="ratio_16_9">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">16:9 (Widescreen)</property>
+                                <property name="use_underline">True</property>
+                                <property name="draw_as_radio">True</property>
+                                <property name="group">ratio_none</property>
+                                <signal name="toggled" handler="ratio_16_9_toggled_cb"/>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkRadioMenuItem" id="ratio_20_9">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">20:9 (DVB)</property>
+                                <property name="use_underline">True</property>
+                                <property name="draw_as_radio">True</property>
+                                <property name="group">ratio_none</property>
+                                <signal name="toggled" handler="ratio_20_9_toggled_cb"/>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSeparatorMenuItem" id="separatormenuitem3">
+                        <property name="visible">True</property>
+                      </object>
+                    </child>
+                    <child>
                       <object class="GtkImageMenuItem" id="fullscreen-menu">
                         <property name="label">gtk-fullscreen</property>
                         <property name="visible">True</property>
@@ -227,6 +304,7 @@
                             <child>
                               <object class="GtkHBox" id="output">
                                 <property name="visible">True</property>
+                                <property name="app_paintable">True</property>
                                 <child>
                                   <placeholder/>
                                 </child>

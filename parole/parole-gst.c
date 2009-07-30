@@ -31,6 +31,8 @@
 #include <gst/interfaces/xoverlay.h>
 #include <gst/interfaces/navigation.h>
 
+#include <gst/video/video.h>
+
 #include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
 
@@ -75,6 +77,7 @@ struct ParoleGstPrivate
     gboolean      buffering;
     gboolean      update_color_balance;
     
+    ParoleAspectRatio aspect_ratio;
     
     /*
      * xvimage sink has brightness+hue+aturation+contrast.
@@ -113,7 +116,7 @@ parole_gst_finalize (GObject *object)
     g_object_unref (gst->priv->stream);
     g_object_unref (gst->priv->playbin);
     g_object_unref (gst->priv->bus);
-    
+ 
     g_object_unref (gst->priv->logo);
     g_mutex_free (gst->priv->lock);
 
@@ -144,7 +147,22 @@ parole_gst_set_window_cursor (GdkWindow *window, GdkCursor *cursor)
 static gboolean
 parole_gst_configure_event_cb (GtkWidget *widget, GdkEventConfigure *ev, ParoleGst *gst)
 {
+    return FALSE;
+}
+
+static gboolean
+parole_gst_parent_expose_event (GtkWidget *w, GdkEventExpose *ev, ParoleGst *gst)
+{
+    cairo_t *cr;
     
+    cr = gdk_cairo_create (w->window);
+    
+    cairo_set_source_rgb (cr, 0.0f, 0.0f, 0.0f);
+    
+    cairo_rectangle (cr, w->allocation.x, w->allocation.y, w->allocation.width, w->allocation.height);
+    
+    cairo_fill (cr);
+    cairo_destroy (cr);
     
     return FALSE;
 }
@@ -190,6 +208,9 @@ parole_gst_realize (GtkWidget *widget)
     
     g_signal_connect (gtk_widget_get_toplevel (widget), "configure_event",
 		      G_CALLBACK (parole_gst_configure_event_cb), gst);
+		      
+    g_signal_connect (gtk_widget_get_parent (widget), "expose_event",
+		      G_CALLBACK (parole_gst_parent_expose_event), gst);
 }
 
 static void
@@ -206,6 +227,85 @@ parole_gst_show (GtkWidget *widget)
 }
 
 static void
+parole_gst_get_video_output_size (ParoleGst *gst, gint *ret_w, gint *ret_h)
+{
+    /*
+     * Default values returned if:
+     * 1) We are not playing.
+     * 2) Playing audio.
+     * 3) Playing video but we don't have its correct size yet.
+     */
+    *ret_w = GTK_WIDGET (gst)->allocation.width;
+    *ret_h = GTK_WIDGET (gst)->allocation.height;
+		
+    if ( gst->priv->state >= GST_STATE_PAUSED )
+    {
+	gboolean has_video;
+	guint video_w, video_h;
+	guint video_par_n, video_par_d;
+	guint dar_n, dar_d;
+	
+	g_object_get (G_OBJECT (gst->priv->stream),
+		      "has-video", &has_video,
+		      "video-width", &video_w,
+		      "video-height", &video_h,
+		      NULL);
+		      
+	if ( has_video )
+	{
+	    if ( video_w != 0 && video_h != 0 )
+	    {
+		switch ( gst->priv->aspect_ratio )
+		{
+		    case PAROLE_ASPECT_RATIO_NONE:
+			return;
+		    case PAROLE_ASPECT_RATIO_AUTO:
+			*ret_w = video_w;
+			*ret_h = video_h;
+			return;
+		    case PAROLE_ASPECT_RATIO_SQUARE:
+			video_par_n = 1;
+			video_par_d = 1;
+			break;
+		    case PAROLE_ASPECT_RATIO_16_9:
+			video_par_n = 16 * video_h;
+			video_par_d = 9 * video_w;
+			break;
+		    case PAROLE_ASPECT_RATIO_4_3:
+			video_par_n = 4 * video_h;
+			video_par_d = 3 * video_w;
+			break;
+		    case PAROLE_ASPECT_RATIO_DVB:
+			video_par_n = 20 * video_h;
+			video_par_d = 9 * video_w;
+			break;
+		    default:
+			return;
+		}
+		
+		if ( gst_video_calculate_display_ratio (&dar_n, &dar_d,
+							video_w, video_h,
+							video_par_n, video_par_d,
+							1, 1) )
+		{
+		    if (video_w % dar_n == 0) 
+		    {
+			*ret_w = video_w;
+			*ret_h = (guint) gst_util_uint64_scale (video_w, dar_d, dar_n);
+		    } 
+		    else 
+		    {
+			*ret_w = (guint) gst_util_uint64_scale (video_h, dar_n, dar_d);
+			*ret_h = video_w;
+		    }
+		    TRACE ("Got best video size %dx%d\n", *ret_w, *ret_h);
+		}
+	    }
+	}
+    }
+}
+
+static void
 parole_gst_size_allocate (GtkWidget *widget, GtkAllocation *allocation)
 {
     g_return_if_fail (allocation != NULL);
@@ -214,9 +314,30 @@ parole_gst_size_allocate (GtkWidget *widget, GtkAllocation *allocation)
 
     if ( GTK_WIDGET_REALIZED (widget) )
     {
+	gint w, h;
+	gdouble ratio, width, height;
+	
+	w = allocation->width;
+	h = allocation->height;
+	
+	parole_gst_get_video_output_size (PAROLE_GST (widget), &w, &h);
+
+	width = w;
+	height = h;
+
+	if ( (gdouble) allocation->width / width > allocation->height / height)
+	    ratio = (gdouble) allocation->height / height;
+	else
+	    ratio = (gdouble) allocation->width / width;
+
+	width *= ratio;
+	height *= ratio;
+
 	gdk_window_move_resize (widget->window,
-                                allocation->x, allocation->y,
-                                allocation->width, allocation->height);
+                                allocation->x + (allocation->width - width)/2, 
+				allocation->y + (allocation->height - height)/2,
+                                width, 
+				height);
 				
 	gtk_widget_queue_draw (widget);
     }
@@ -343,7 +464,8 @@ parole_gst_expose_event (GtkWidget *widget, GdkEventExpose *ev)
 
     parole_gst_set_x_overlay (gst);
 
-    if ( (gst->priv->state < GST_STATE_PAUSED || !gst->priv->with_vis ) && !playing_video && !gst->priv->buffering)
+    if ( (gst->priv->state < GST_STATE_PAUSED || !gst->priv->with_vis ) && 
+	!playing_video && !gst->priv->buffering)
 	parole_gst_draw_logo (gst);
     else 
     {
@@ -545,24 +667,6 @@ parole_gst_load_subtitle (ParoleGst *gst)
 }
 
 static void
-parole_gst_set_size (GtkWidget *widget, gint w, gint h)
-{
-    GdkScreen *screen;
-    GtkWidget *toplevel;
-    gint monitor;
-    
-    toplevel = gtk_widget_get_toplevel (widget);
-    
-    gtk_widget_set_size_request (GTK_WIDGET (widget), w, h);
-    
-    screen = gtk_window_get_screen (GTK_WINDOW (toplevel));
-    
-    monitor = gdk_screen_get_monitor_at_window (screen, toplevel->window),
-    
-    xfce_gtk_window_center_on_monitor (GTK_WINDOW (toplevel), screen, monitor);
-}
-
-static void
 parole_gst_get_pad_capabilities (GObject *object, GParamSpec *pspec, ParoleGst *gst)
 {
     GstPad *pad;
@@ -587,13 +691,17 @@ parole_gst_get_pad_capabilities (GObject *object, GParamSpec *pspec, ParoleGst *
 		      "video-width", width,
 		      "video-height", height,
 		      NULL);
-	parole_gst_set_size (GTK_WIDGET (gst), width, height);
+
 	if ( ( value = gst_structure_get_value (st, "pixel-aspect-ratio")) )
 	{
 	    num = gst_value_get_fraction_numerator (value),
 	    den = gst_value_get_fraction_denominator (value);
 	    TRACE ("FIXME: Use these value num=%d den=%d \n", num, den);
 	}
+		      
+	parole_gst_get_video_output_size (gst, &width, &height);
+	
+	parole_gst_size_allocate (GTK_WIDGET (gst), &GTK_WIDGET (gst)->allocation);
     }
 }
 
@@ -756,6 +864,7 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 	    }
 	    else if ( gst->priv->target == GST_STATE_READY)
 	    {
+		parole_gst_size_allocate (GTK_WIDGET (gst), &GTK_WIDGET (gst)->allocation);
 		parole_gst_draw_logo (gst);
 	    }
 	    break;
@@ -859,9 +968,9 @@ parole_gst_application_message (ParoleGst *gst, GstMessage *msg)
     {
 	parole_gst_update_stream_info (gst);
     }
-    else 
+    else if ( !g_strcmp0 (name, "video-size") )
     {
-	//FIXME: Handle video size message.
+	parole_gst_size_allocate (GTK_WIDGET (gst), &GTK_WIDGET (gst)->allocation);
     }
 }
 
@@ -1103,6 +1212,7 @@ parole_gst_construct (GObject *object)
     parole_gst_load_logo (gst);
     parole_gst_set_subtitle_encoding (gst);
     parole_gst_set_subtitle_font (gst);
+    
 }
 
 static gboolean
@@ -1222,6 +1332,14 @@ parole_gst_conf_notify_cb (GObject *object, GParamSpec *spec, ParoleGst *gst)
 	if ( gst->priv->state >= GST_STATE_PAUSED )
 	    parole_gst_set_video_color_balance (gst);
     }
+    else if ( !g_strcmp0 ("aspect-ratio", spec->name) )
+    {
+	g_object_get (G_OBJECT (gst->priv->conf),
+		      "aspect-ratio", &gst->priv->aspect_ratio,
+		      NULL);
+		  
+	parole_gst_size_allocate (GTK_WIDGET (gst), &GTK_WIDGET (gst)->allocation);
+    }
 }
 
 static void
@@ -1312,6 +1430,10 @@ parole_gst_init (ParoleGst *gst)
     gst->priv->update_color_balance = TRUE;
     
     gst->priv->conf = parole_conf_new ();
+    
+    g_object_get (G_OBJECT (gst->priv->conf),
+		  "aspect-ratio", &gst->priv->aspect_ratio,
+		  NULL);
     
     g_signal_connect (G_OBJECT (gst->priv->conf), "notify",
 		      G_CALLBACK (parole_gst_conf_notify_cb), gst);
@@ -1434,7 +1556,7 @@ void parole_gst_terminate (ParoleGst *gst)
 		step = volume - volume / 10;
 		parole_gst_set_volume (gst, step < 0.01 ? 0 : step);
 		volume = parole_gst_get_volume (gst);
-		g_usleep (30000);
+		g_usleep (35000);
 	    }
 	}
     }

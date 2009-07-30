@@ -30,6 +30,7 @@
 
 #include "parole-conf.h"
 #include "parole-rc-utils.h"
+#include "enum-gtypes.h"
 
 #define PAROLE_CONF_GET_PRIVATE(o) \
 (G_TYPE_INSTANCE_GET_PRIVATE ((o), PAROLE_TYPE_CONF, ParoleConfPrivate))
@@ -49,6 +50,9 @@ struct ParoleConfPrivate
     gint         contrast;
     gint         hue;
     gint         saturation;
+    ParoleAspectRatio aspect_ratio;
+    gint 	 window_width;
+    gint	 window_height;
 };
 
 static gpointer parole_conf_object = NULL;
@@ -68,7 +72,11 @@ enum
     PROP_BRIGHTNESS,
     PROP_CONTRAST,
     PROP_HUE,
-    PROP_SATURATION
+    PROP_SATURATION,
+    PROP_ASPECT_RATIO,
+    PROP_WINDOW_WIDTH,
+    PROP_WINDOW_HEIGHT,
+    N_PROP
 };
 
 static void parole_conf_set_property (GObject *object,
@@ -132,6 +140,18 @@ static void parole_conf_set_property (GObject *object,
 	    conf->priv->brightness = g_value_get_int (value);
 	    parole_rc_write_entry_int ("BRIGHTNESS", PAROLE_RC_GROUP_GENERAL, conf->priv->brightness);
 	    break;
+	case PROP_ASPECT_RATIO:
+	    conf->priv->aspect_ratio = g_value_get_enum (value);
+	    parole_rc_write_entry_int ("ASPECT_RATIO", PAROLE_RC_GROUP_GENERAL, conf->priv->aspect_ratio);
+	    break;
+	case PROP_WINDOW_WIDTH:
+	    conf->priv->window_width = g_value_get_int (value);
+	    parole_rc_write_entry_int ("WINDOW_WIDTH", PAROLE_RC_GROUP_GENERAL, conf->priv->window_width);
+	    break;
+	case PROP_WINDOW_HEIGHT:
+	    conf->priv->window_height = g_value_get_int (value);
+	    parole_rc_write_entry_int ("WINDOW_HEIGHT", PAROLE_RC_GROUP_GENERAL, conf->priv->window_height);
+	    break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
             goto out;
@@ -184,6 +204,15 @@ static void parole_conf_get_property (GObject *object,
 	    break;
 	case PROP_BRIGHTNESS:
 	    g_value_set_int (value, conf->priv->brightness);
+	    break;
+	case PROP_ASPECT_RATIO:
+	    g_value_set_enum (value, conf->priv->aspect_ratio);
+	    break;
+	case PROP_WINDOW_WIDTH:
+	    g_value_set_int (value, conf->priv->window_width);
+	    break;
+	case PROP_WINDOW_HEIGHT:
+	    g_value_set_int (value, conf->priv->window_height);
 	    break;
 	default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -299,6 +328,32 @@ parole_conf_class_init (ParoleConfClass *klass)
 						       0,
                                                        G_PARAM_READWRITE));
 						       
+    g_object_class_install_property (object_class,
+                                     PROP_ASPECT_RATIO,
+                                     g_param_spec_enum ("aspect-ratio",
+                                                        NULL, NULL,
+							ENUM_GTYPE_ASPECT_RATIO,
+							PAROLE_ASPECT_RATIO_NONE,
+                                                        G_PARAM_READWRITE));
+						       
+    g_object_class_install_property (object_class,
+                                     PROP_WINDOW_WIDTH,
+                                     g_param_spec_int ("window-width",
+                                                       NULL, NULL,
+                                                       320,
+						       G_MAXINT16,
+						       780,
+                                                       G_PARAM_READWRITE));
+						       
+    g_object_class_install_property (object_class,
+                                     PROP_WINDOW_HEIGHT,
+                                     g_param_spec_int ("window-height",
+                                                       NULL, NULL,
+                                                       220,
+						       G_MAXINT16,
+						       480,
+                                                       G_PARAM_READWRITE));
+						       
     g_type_class_add_private (klass, sizeof (ParoleConfPrivate));
 }
 
@@ -318,6 +373,9 @@ parole_conf_init (ParoleConf *conf)
     conf->priv->hue = parole_rc_read_entry_int ("HUE", PAROLE_RC_GROUP_GENERAL, 0);
     conf->priv->contrast = parole_rc_read_entry_int ("CONTRAST", PAROLE_RC_GROUP_GENERAL, 0);
     conf->priv->brightness = parole_rc_read_entry_int ("BRIGHTNESS", PAROLE_RC_GROUP_GENERAL, 0);
+    conf->priv->aspect_ratio = parole_rc_read_entry_int ("ASPECT_RATIO", PAROLE_RC_GROUP_GENERAL, PAROLE_ASPECT_RATIO_NONE);
+    conf->priv->window_width = parole_rc_read_entry_int ("WINDOW_WIDTH", PAROLE_RC_GROUP_GENERAL, 780);
+    conf->priv->window_height = parole_rc_read_entry_int ("WINDOW_HEIGHT", PAROLE_RC_GROUP_GENERAL, 480);
 }
 
 ParoleConf *

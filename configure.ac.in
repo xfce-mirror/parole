@@ -89,6 +89,7 @@ XDT_CHECK_PACKAGE([GIO], [gio-2.0], [glib_minimum_version])
 
 XDT_CHECK_PACKAGE([GST], [gstreamer-0.10], [gstreamer_minimum_version])
 XDT_CHECK_PACKAGE([GST_BASE], [gstreamer-base-0.10], [gstreamer_minimum_version])
+XDT_CHECK_PACKAGE([GST_VIDEO], [gstreamer-video-0.10], [gstreamer_minimum_version])
 XDT_CHECK_PACKAGE([GST_INTERFACES], [gstreamer-interfaces-0.10], [gstreamer_minimum_version])
 
 XDT_CHECK_PACKAGE([DBUS], [dbus-1], [dbus_minimum_version])

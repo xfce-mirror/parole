@@ -20,6 +20,7 @@ INCLUDES =					\
         $(LIBXFCE4GUI_CFLAGS)                   \
         $(LIBXFCE4UTIL_CFLAGS)			\
 	$(GST_CFLAGS)				\
+	$(GST_VIDEO_CFLAGS)			\
 	$(GST_BASE_CFLAGS)			\
 	$(GST_INTERFACES_CFLAGS)
 
@@ -40,6 +41,7 @@ PAROLE_LIBS = 					\
         $(LIBXFCE4UTIL_LIBS)			\
 	$(GST_LIBS)				\
 	$(GST_BASE_LIBS)			\
+	$(GST_VIDEO_LIBS)			\
 	$(GST_INTERFACES_LIBS)
 
 GENERATED_FILES =				\
@@ -142,7 +144,8 @@ parole_glib_enum_headers =			\
 	parole-gst.h				\
 	parole-plugin.h				\
 	parole-pl-parser.h			\
-	parole-stream.h
+	parole-stream.h				\
+	parole-conf.h
 
 if MAINTAINER_MODE
 
@@ -176,6 +179,7 @@ enum-gtypes.c: $(parole_glib_enum_headers) Makefile
 		--fhead "#include \"parole-plugin.h\"\n\n" \
 		--fhead "#include \"parole-pl-parser.h\"\n\n" \
 		--fhead "#include \"parole-stream.h\"\n\n" \
+		--fhead "#include \"parole-conf.h\"\n\n" \
 		--fprod "\n/* enumerations from \"@filename@\" */" \
 		--vhead "GType\n@enum_name@_get_type (void)\n{\n  static GType etype = 0;\n  if (etype == 0) {\n    static const G@Type@Value values[] = {" \
 		--vprod "      { @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \

@@ -54,6 +54,10 @@
 /*
  * GtkBuilder Callbacks
  */
+gboolean        parole_player_configure_event_cb        (GtkWidget *widget, 
+							 GdkEventConfigure *ev, 
+							 ParolePlayer *player);
+							 
 gboolean	parole_player_range_button_press 	(GtkWidget *widget, 
 							 GdkEventButton *ev, 
 							 ParolePlayer *player);
@@ -128,6 +132,27 @@ void		parole_player_shuffle_toggled_cb	(GtkWidget *widget,
 void		parole_player_repeat_toggled_cb		(GtkWidget *widget,
 							 ParolePlayer *player);
 
+/*
+ * Aspect ratio
+ */
+void		ratio_none_toggled_cb			(GtkWidget *widget,
+							 ParolePlayer *player);
+
+void		ratio_auto_toggled_cb			(GtkWidget *widget,
+							 ParolePlayer *player);
+
+void		ratio_square_toggled_cb			(GtkWidget *widget,
+							 ParolePlayer *player);
+
+void		ratio_4_3_toggled_cb			(GtkWidget *widget,
+							 ParolePlayer *player);
+
+void		ratio_16_9_toggled_cb			(GtkWidget *widget,
+							 ParolePlayer *player);
+
+void		ratio_20_9_toggled_cb			(GtkWidget *widget,
+							 ParolePlayer *player);
+
 void	        parole_show_about			(GtkWidget *widget);
 
 gboolean	parole_player_key_press 		(GtkWidget *widget, 
@@ -191,6 +216,48 @@ G_DEFINE_TYPE (ParolePlayer, parole_player, G_TYPE_OBJECT)
 void parole_show_about	(GtkWidget *widget)
 {
     parole_about (_("Parole Media Player"));
+}
+
+void ratio_none_toggled_cb (GtkWidget *widget, ParolePlayer *player)
+{
+    g_object_set (G_OBJECT (player->priv->conf),
+		  "aspect-ratio", PAROLE_ASPECT_RATIO_NONE,
+		  NULL);
+}
+
+void ratio_auto_toggled_cb (GtkWidget *widget, ParolePlayer *player)
+{
+    g_object_set (G_OBJECT (player->priv->conf),
+		  "aspect-ratio", PAROLE_ASPECT_RATIO_AUTO,
+		  NULL);
+}
+
+void ratio_square_toggled_cb (GtkWidget *widget, ParolePlayer *player)
+{
+     g_object_set (G_OBJECT (player->priv->conf),
+		  "aspect-ratio", PAROLE_ASPECT_RATIO_SQUARE,
+		  NULL);
+}
+
+void ratio_4_3_toggled_cb (GtkWidget *widget, ParolePlayer *player)
+{
+    g_object_set (G_OBJECT (player->priv->conf),
+		  "aspect-ratio", PAROLE_ASPECT_RATIO_4_3,
+		  NULL);
+}
+
+void ratio_16_9_toggled_cb (GtkWidget *widget, ParolePlayer *player)
+{
+    g_object_set (G_OBJECT (player->priv->conf),
+		  "aspect-ratio", PAROLE_ASPECT_RATIO_16_9,
+		  NULL);
+}
+
+void ratio_20_9_toggled_cb (GtkWidget *widget, ParolePlayer *player)
+{
+    g_object_set (G_OBJECT (player->priv->conf),
+		  "aspect-ratio", PAROLE_ASPECT_RATIO_DVB,
+		  NULL);
 }
 
 void parole_player_show_hide_playlist (GtkButton *button, ParolePlayer *player)
@@ -779,7 +846,6 @@ parole_player_move_fs_window (ParolePlayer *player)
 				     gdk_screen_get_monitor_at_window (screen, player->priv->window->window),
 				     &rect);
     
-    
     gtk_window_resize (GTK_WINDOW (player->priv->fs_window), 
 		       rect.width, 
 		       player->priv->play_box->allocation.width);
@@ -1111,7 +1177,7 @@ parole_player_volume_down (GtkWidget *widget, ParolePlayer *player)
 
 void parole_player_volume_muted (GtkWidget *widget, ParolePlayer *player)
 {
-    
+    gtk_range_set_value (GTK_RANGE (player->priv->volume), 0);
 }
 
 static void
@@ -1199,10 +1265,68 @@ parole_player_session_die_cb (ParolePlayer *player)
 }
 
 static void
+parole_gst_set_default_aspect_ratio (ParolePlayer *player, GtkBuilder *builder)
+{
+    ParoleAspectRatio ratio;
+    const gchar *widget_name;
+    
+    g_object_get (G_OBJECT (player->priv->conf),
+		  "aspect-ratio", &ratio,
+		  NULL);
+		  
+    switch (ratio )
+    {
+	case PAROLE_ASPECT_RATIO_NONE:
+	    widget_name = "ratio_none";
+	    break;
+	case PAROLE_ASPECT_RATIO_AUTO:
+	    widget_name = "ratio_auto";
+	    break;
+	case PAROLE_ASPECT_RATIO_SQUARE:
+	    widget_name = "ratio_square";
+	    break;
+	case PAROLE_ASPECT_RATIO_16_9:
+	    widget_name = "ratio_16_9";
+	    break;
+	case PAROLE_ASPECT_RATIO_4_3:
+	    widget_name = "ratio_4_3";
+	    break;
+	case PAROLE_ASPECT_RATIO_DVB:
+	    widget_name = "ratio_20_9";
+	    break;
+	default:
+	    g_warn_if_reached ();
+	    return;
+    }
+	
+    gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (gtk_builder_get_object (builder, widget_name)), 
+				    TRUE);
+}
+
+gboolean
+parole_player_configure_event_cb (GtkWidget *widget, GdkEventConfigure *ev, ParolePlayer *player)
+{
+    gint w,h;
+    
+    if ( !player->priv->full_screen )
+    {
+	gtk_window_get_size (GTK_WINDOW (widget), &w, &h);
+	g_object_set (G_OBJECT (player->priv->conf),
+		      "window-width", w,
+		      "window-height", h,
+		      NULL);
+    }
+    
+    return FALSE;
+}
+
+static void
 parole_player_init (ParolePlayer *player)
 {
     GtkBuilder *builder;
     GdkScreen *screen;
+    gint w, h;
+    
     gboolean repeat, shuffle;
     
     player->priv = PAROLE_PLAYER_GET_PRIVATE (player);
@@ -1296,10 +1420,14 @@ parole_player_init (ParolePlayer *player)
     gtk_notebook_append_page (GTK_NOTEBOOK (player->priv->playlist_nt), 
 			      GTK_WIDGET (player->priv->list),
 			      gtk_label_new (_("Playlist")));
+			      
+    g_object_get (G_OBJECT (player->priv->conf),
+		  "window-width", &w,
+		  "window-height", &h,
+		  NULL);
     
-    /*
-     * Pack the statusbar.
-     */
+    gtk_window_set_default_size (GTK_WINDOW (player->priv->window), w, h);
+    
     gtk_widget_show_all (player->priv->window);
     
     gtk_box_pack_start (GTK_BOX (gtk_builder_get_object (builder, "output")), 
@@ -1335,6 +1463,8 @@ parole_player_init (ParolePlayer *player)
     player->priv->fs_window = gtk_window_new (GTK_WINDOW_POPUP);
     gtk_window_set_skip_pager_hint (GTK_WINDOW (player->priv->fs_window), TRUE);
     gtk_window_set_skip_taskbar_hint (GTK_WINDOW (player->priv->fs_window), TRUE);
+
+    parole_gst_set_default_aspect_ratio (player, builder);
 	
     gtk_builder_connect_signals (builder, player);
     
