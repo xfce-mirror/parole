@@ -52,8 +52,13 @@
 (G_TYPE_INSTANCE_GET_PRIVATE ((o), PAROLE_TYPE_GST, ParoleGstPrivate))
 
 static void	parole_gst_play_file_internal 	(ParoleGst *gst);
+
 static void     parole_gst_change_state 	(ParoleGst *gst, 
 						 GstState new);
+						 
+static void     parole_gst_seek_cdda_track	(ParoleGst *gst,
+						 gint track) G_GNUC_UNUSED;
+
 struct ParoleGstPrivate
 {
     GstElement	 *playbin;
@@ -116,11 +121,10 @@ parole_gst_finalize (GObject *object)
     g_object_unref (gst->priv->stream);
     g_object_unref (gst->priv->playbin);
     g_object_unref (gst->priv->bus);
- 
-    g_object_unref (gst->priv->logo);
-    g_mutex_free (gst->priv->lock);
-
     g_object_unref (gst->priv->conf);
+    g_object_unref (gst->priv->logo);
+    
+    g_mutex_free (gst->priv->lock);
 
     G_OBJECT_CLASS (parole_gst_parent_class)->finalize (object);
 }
@@ -561,13 +565,46 @@ parole_gst_query_capabilities (ParoleGst *gst)
 }
 
 static void
+parole_gst_query_cdda_tracks (ParoleGst *gst)
+{
+    GstFormat format;
+    gint64 duration;
+    gint tracks;
+    
+    format = gst_format_get_by_nick ("track");
+    
+    if ( format != GST_FORMAT_UNDEFINED )
+    {
+	gst_element_query_duration (gst->priv->playbin, &format, &duration);
+	
+	tracks = (gint) duration;
+	
+	TRACE ("CDDA source has %d tacks", tracks);
+	
+	g_object_set (G_OBJECT (gst->priv->stream),
+		      "num-tracks", tracks,
+		      NULL);
+    }
+}
+
+static void
 parole_gst_query_duration (ParoleGst *gst)
 {
+    ParoleMediaType media_type;
     gint64 absolute_duration = 0;
     gdouble duration = 0;
     gboolean live;
     
-    GstFormat gst_time = GST_FORMAT_TIME;
+    GstFormat gst_time;
+    
+    g_object_get (G_OBJECT (gst->priv->stream),
+		  "media-type", &media_type,
+		  NULL);
+    
+    if ( media_type == PAROLE_MEDIA_TYPE_CDDA )
+	parole_gst_query_cdda_tracks (gst);
+    
+    gst_time = GST_FORMAT_TIME;
     
     gst_element_query_duration (gst->priv->playbin, 
 				&gst_time,
@@ -577,7 +614,9 @@ parole_gst_query_duration (ParoleGst *gst)
     {
 	duration =  absolute_duration / ((gdouble) 60 * 1000 * 1000 * 1000);
 	live = ( absolute_duration == 0 );
+	
 	TRACE ("Duration %e is_live=%d", duration, live);
+	
 	g_object_set (G_OBJECT (gst->priv->stream),
 		      "absolute-duration", absolute_duration,
 		      "duration", duration,
@@ -817,7 +856,7 @@ static void
 parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState pending)
 {
     TRACE ("State change new %i old %i pending %i", new, old, pending);
-
+    
     gst->priv->state = new;
 
     parole_gst_tick (gst);
@@ -828,10 +867,12 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
     switch (gst->priv->state)
     {
 	case GST_STATE_PLAYING:
+	{
 	    gst->priv->media_state = PAROLE_MEDIA_STATE_PLAYING;
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
 			   gst->priv->stream, PAROLE_MEDIA_STATE_PLAYING);
 	    break;
+	}
 	case GST_STATE_PAUSED:
 	    if ( old == GST_STATE_READY )
 	    {
@@ -839,8 +880,11 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 		parole_gst_query_capabilities (gst);
 		parole_gst_query_info (gst);
 	    }
-	    if ( gst->priv->update_color_balance && gst->priv->target == GST_STATE_PLAYING )
-		parole_gst_set_video_color_balance (gst);
+	    if ( gst->priv->target == GST_STATE_PLAYING )
+	    {
+		if ( gst->priv->update_color_balance )
+		    parole_gst_set_video_color_balance (gst);
+	    }
 		
 	    gst->priv->media_state = PAROLE_MEDIA_STATE_PAUSED;
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
@@ -891,7 +935,25 @@ out:
 }
 
 static void
-parole_gst_get_meta_data (ParoleGst *gst, GstTagList *tag)
+parole_gst_get_meta_data_cdda (ParoleGst *gst, GstTagList *tag)
+{
+    guint num_tracks;
+    guint track;
+    
+    if (gst_tag_list_get_uint (tag, GST_TAG_TRACK_NUMBER, &track) &&
+	gst_tag_list_get_uint (tag, GST_TAG_TRACK_COUNT, &num_tracks))
+    {
+	g_object_set (G_OBJECT (gst->priv->stream),
+		      "num-tracks", num_tracks,
+		      "track", track,
+		      NULL);
+	TRACE ("num_tracks=%i track=%i", num_tracks, track);
+	g_signal_emit (G_OBJECT (gst), signals [MEDIA_TAG], 0, gst->priv->stream);
+    }
+}
+
+static void
+parole_gst_get_meta_data_local_file (ParoleGst *gst, GstTagList *tag)
 {
     gchar *str;
     GDate *date;
@@ -950,6 +1012,29 @@ parole_gst_get_meta_data (ParoleGst *gst, GstTagList *tag)
 		  NULL);
 		  
     g_signal_emit (G_OBJECT (gst), signals [MEDIA_TAG], 0, gst->priv->stream);
+    
+}
+
+static void
+parole_gst_get_meta_data (ParoleGst *gst, GstTagList *tag)
+{
+    ParoleMediaType media_type;
+    
+    g_object_get (G_OBJECT (gst->priv->stream),
+		  "media-type", &media_type,
+		  NULL);
+    
+    switch ( media_type )
+    {
+	case PAROLE_MEDIA_TYPE_LOCAL_FILE:
+	    parole_gst_get_meta_data_local_file (gst, tag);
+	    break;
+	case PAROLE_MEDIA_TYPE_CDDA:
+	    parole_gst_get_meta_data_cdda (gst, tag);
+	    break;
+	default:
+	    break;
+    }
 }
 
 static void
@@ -984,11 +1069,36 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
     switch (GST_MESSAGE_TYPE (msg))
     {
         case GST_MESSAGE_EOS:
+	{
+	    ParoleMediaType media_type;
+	    gint current_track;
+	    
 	    TRACE ("End of stream");
+	    
+	    g_object_get (G_OBJECT (gst->priv->stream),
+			  "media-type", &media_type,
+			  NULL);
+	    if ( media_type == PAROLE_MEDIA_TYPE_CDDA )
+	    {
+		gint num_tracks;
+		g_object_get (G_OBJECT (gst->priv->stream),
+			      "num-tracks", &num_tracks,
+			      "track", &current_track,
+			      NULL);
+			  
+		TRACE ("------------------Current track %d Number of tracks %d", current_track, num_tracks);
+		if ( num_tracks != current_track )
+		{
+		    parole_gst_seek_cdda_track (gst, current_track);
+		    break;
+		}
+	    }
+		
 	    gst->priv->media_state = PAROLE_MEDIA_STATE_FINISHED;
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
 			       gst->priv->stream, PAROLE_MEDIA_STATE_FINISHED);
 	    break;
+	}
 	case GST_MESSAGE_ERROR:
 	{
 	    GError *error = NULL;
@@ -1286,27 +1396,70 @@ parole_gst_button_release_event (GtkWidget *widget, GdkEventButton *ev)
     return ret;
 }
 
+static void     parole_gst_seek_cdda_track	(ParoleGst *gst,
+						 gint track)
+{
+    TRACE ("Track %d", track);
+    
+    if ( !gst_element_seek (gst->priv->playbin, 1.0, gst_format_get_by_nick ("track"), 
+			    GST_SEEK_FLAG_FLUSH, GST_SEEK_TYPE_SET, 
+			    track,
+			    GST_SEEK_TYPE_NONE,
+			    0) )
+	g_warning ("Seek to track %d failed ", track);
+}
+
+static void
+parole_gst_seek_by_format (ParoleGst *gst, GstFormat format, gint step)
+{
+    gint64 val = 1;
+    
+    if ( gst_element_query_position (gst->priv->playbin, &format, &val) )
+    {
+	val += step;
+	if ( !gst_element_seek (gst->priv->playbin, 1.0, format, 
+				GST_SEEK_FLAG_FLUSH, GST_SEEK_TYPE_SET, 
+			        val,
+			        GST_SEEK_TYPE_NONE,
+			        0) )
+	{
+	    g_warning ("Seek failed : %s", gst_format_get_name (format));
+	}
+    }
+    else
+    {
+	g_warning ("Failed to query element position: %s", gst_format_get_name (format));
+    }
+}
+
 static void
 parole_gst_change_dvd_chapter (ParoleGst *gst, gint level)
 {
     GstFormat format;
-    gint64 val;
-    
+
+    // FIXME: Do we really need to get the nich each time?
     format = gst_format_get_by_nick ("chapter");
     
-    if ( format != GST_FORMAT_UNDEFINED )
-    {
-	if ( gst_element_query_position (gst->priv->playbin, &format, &val) )
-	{
-	    val += level;
-	    gst_element_seek (gst->priv->playbin, 1.0, format, 
-			      GST_SEEK_FLAG_FLUSH, GST_SEEK_TYPE_SET, 
-			      val,
-			      GST_SEEK_TYPE_NONE,
-			      0);
-	}
-    }
+    parole_gst_seek_by_format (gst, format, level);
+}
+
+static void
+parole_gst_change_cdda_track (ParoleGst *gst, gint level)
+{
+    GstFormat format;
     
+    format = gst_format_get_by_nick ("track");
+    
+    parole_gst_seek_by_format (gst, format, level);
+}
+
+ParoleMediaType	parole_gst_get_current_stream_type (ParoleGst *gst)
+{
+    ParoleMediaType type;
+    g_object_get (G_OBJECT (gst->priv->stream),
+		  "media-type", &type,
+		  NULL);
+    return type;
 }
 
 static void
@@ -1560,7 +1713,6 @@ void parole_gst_terminate (ParoleGst *gst)
 	    }
 	}
     }
-    
     parole_gst_change_state (gst, GST_STATE_NULL);
 }
 
@@ -1641,6 +1793,33 @@ void parole_gst_next_dvd_chapter (ParoleGst *gst)
 void parole_gst_prev_dvd_chapter (ParoleGst *gst)
 {
     parole_gst_change_dvd_chapter (gst, -1);
+}
+
+void parole_gst_next_cdda_track (ParoleGst *gst)
+{
+    parole_gst_change_cdda_track (gst, 1);
+}
+
+void parole_gst_prev_cdda_track (ParoleGst *gst)
+{
+    parole_gst_change_cdda_track (gst, -1);
+}
+
+gint parole_gst_get_current_cdda_track (ParoleGst *gst)
+{
+    GstFormat format;
+    gint64 pos;
+    gint ret_val = 1;
+    
+    format = gst_format_get_by_nick ("track");
+    
+    if ( gst_element_query_position (gst->priv->playbin, &format, &pos) )
+    {
+	TRACE ("Pos %lld", pos);
+	ret_val = (gint) pos;
+    }
+	
+    return ret_val;
 }
 
 gdouble	parole_gst_get_stream_duration (ParoleGst *gst)

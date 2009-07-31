@@ -26,6 +26,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <libxfce4util/libxfce4util.h>
+
 #include "parole-disc-menu.h"
 #include "parole-builder.h"
 #include "parole-statusbar.h"
@@ -39,11 +41,13 @@ static void parole_disc_menu_finalize   (GObject *object);
 struct ParoleDiscMenuPrivate
 {
     ParoleGst   *gst;
-    
+    ParoleMediaType current_media_type;
     GtkWidget	*next_chapter;
     GtkWidget	*prev_chapter;
     GtkWidget	*dvd_menu;
     GtkWidget	*chapter_menu;
+    GtkWidget	*info;
+    GtkWidget   *eventboxinfo;
 };
 
 G_DEFINE_TYPE (ParoleDiscMenu, parole_disc_menu, G_TYPE_OBJECT)
@@ -53,15 +57,23 @@ parole_disc_menu_hide (ParoleDiscMenu *menu)
 {
     gtk_widget_hide (menu->priv->next_chapter);
     gtk_widget_hide (menu->priv->prev_chapter);
+    gtk_widget_hide (menu->priv->info);
+    gtk_widget_hide (menu->priv->eventboxinfo);
     //gtk_widget_hide (menu->priv->dvd_menu);
     //gtk_widget_hide (menu->priv->chapter_menu);
 }
 
 static void
-parole_disc_menu_show (ParoleDiscMenu *menu)
+parole_disc_menu_show (ParoleDiscMenu *menu, gboolean show_label)
 {
     gtk_widget_show (menu->priv->next_chapter);
     gtk_widget_show (menu->priv->prev_chapter);
+    
+    if ( show_label )
+    {
+	gtk_widget_show (menu->priv->eventboxinfo);
+	gtk_widget_show (menu->priv->info);
+    }
    //gtk_widget_show (menu->priv->dvd_menu);
    //gtk_widget_show (menu->priv->chapter_menu);
     
@@ -75,40 +87,71 @@ parole_disc_menu_media_state_cb (ParoleGst *gst, const ParoleStream *stream,
     
     if ( state < PAROLE_MEDIA_STATE_PAUSED )
     {
+	gtk_label_set_markup (GTK_LABEL (menu->priv->info), NULL);
 	parole_disc_menu_hide (menu);
     }
-    else
+    else if ( state == PAROLE_MEDIA_STATE_PLAYING )
     {
 	g_object_get (G_OBJECT (stream),
 		      "media-type", &media_type,
 		      NULL);
+	
 	if ( media_type == PAROLE_MEDIA_TYPE_DVD )
 	{
-	    parole_disc_menu_show (menu);
+	    gtk_button_set_label (GTK_BUTTON (menu->priv->next_chapter), _("Next Chapter"));
+	    gtk_button_set_label (GTK_BUTTON (menu->priv->prev_chapter), _("Previous Chapter"));
+	    parole_disc_menu_show (menu, FALSE);
 	}
+	else if ( media_type == PAROLE_MEDIA_TYPE_CDDA )
+	{
+	    guint num_tracks;
+	    guint current;
+	    gchar *text;
+	    gtk_button_set_label (GTK_BUTTON (menu->priv->next_chapter), _("Next Track"));
+	    gtk_button_set_label (GTK_BUTTON (menu->priv->prev_chapter), _("Previous Track"));
+	    
+	    g_object_get (G_OBJECT (stream),
+			  "num-tracks", &num_tracks,
+			  "track", &current,
+			  NULL);
+			  
+	    text = g_strdup_printf ("<span font_desc='sans 8' font_size='xx-large' color='#510DEC'>%s %i/%i</span>", _("Playing Track"), current, num_tracks);
+	    
+	    gtk_label_set_markup (GTK_LABEL (menu->priv->info), text);
+	    
+	    g_free (text);
+	    parole_disc_menu_show (menu, TRUE);
+	}
+	menu->priv->current_media_type = media_type;
     }
 }
 
 static void
-parole_disc_next_chapter_cb (ParoleDiscMenu *menu)
+parole_disc_menu_next_chapter_cb (ParoleDiscMenu *menu)
 {
-    parole_gst_next_dvd_chapter (menu->priv->gst);
+    if ( menu->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD )
+	parole_gst_next_dvd_chapter (menu->priv->gst);
+    else if ( menu->priv->current_media_type == PAROLE_MEDIA_TYPE_CDDA)
+	parole_gst_next_cdda_track (menu->priv->gst);
 }
 
 static void
-parole_disc_prev_chapter_cb (ParoleDiscMenu *menu)
+parole_disc_menu_prev_chapter_cb (ParoleDiscMenu *menu)
 {
-    parole_gst_prev_dvd_chapter (menu->priv->gst);
+    if ( menu->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD )
+	parole_gst_prev_dvd_chapter (menu->priv->gst);
+    else if ( menu->priv->current_media_type == PAROLE_MEDIA_TYPE_CDDA)
+	parole_gst_prev_cdda_track (menu->priv->gst);
 }
 
 static void
-parole_disc_dvd_menu_cb (ParoleDiscMenu *menu)
+parole_disc_menu_dvd_menu_cb (ParoleDiscMenu *menu)
 {
     
 }
 
 static void
-parole_disc_chapter_menu_cb (ParoleDiscMenu *menu)
+parole_disc_menu_chapter_menu_cb (ParoleDiscMenu *menu)
 {
     
 }
@@ -127,6 +170,8 @@ static void
 parole_disc_menu_init (ParoleDiscMenu *menu)
 {
     GtkBuilder *builder;
+    GdkColor color;
+    
     menu->priv = PAROLE_DISC_MENU_GET_PRIVATE (menu);
     
     builder = parole_builder_get_main_interface ();
@@ -135,19 +180,25 @@ parole_disc_menu_init (ParoleDiscMenu *menu)
     menu->priv->prev_chapter = GTK_WIDGET (gtk_builder_get_object (builder, "prev-chapter"));
     menu->priv->chapter_menu = GTK_WIDGET (gtk_builder_get_object (builder, "chapter-menu"));
     menu->priv->dvd_menu = GTK_WIDGET (gtk_builder_get_object (builder, "dvd-menu"));
+    menu->priv->info = GTK_WIDGET (gtk_builder_get_object (builder, "info"));
+    menu->priv->eventboxinfo = GTK_WIDGET (gtk_builder_get_object (builder, "eventboxinfo"));
     
+    gdk_color_parse ("black", &color);
+    gtk_widget_modify_bg (menu->priv->eventboxinfo, GTK_STATE_NORMAL, &color);
+
+    menu->priv->current_media_type = PAROLE_MEDIA_TYPE_UNKNOWN;
     
     g_signal_connect_swapped (menu->priv->next_chapter, "clicked",
-			      G_CALLBACK (parole_disc_next_chapter_cb), menu);
+			      G_CALLBACK (parole_disc_menu_next_chapter_cb), menu);
     
     g_signal_connect_swapped (menu->priv->prev_chapter, "clicked",
-			      G_CALLBACK (parole_disc_prev_chapter_cb), menu);
+			      G_CALLBACK (parole_disc_menu_prev_chapter_cb), menu);
 			      
     g_signal_connect_swapped (menu->priv->dvd_menu, "clicked",
-			      G_CALLBACK (parole_disc_dvd_menu_cb), menu);
+			      G_CALLBACK (parole_disc_menu_dvd_menu_cb), menu);
     
     g_signal_connect_swapped (menu->priv->chapter_menu, "clicked",
-			      G_CALLBACK (parole_disc_chapter_menu_cb), menu);
+			      G_CALLBACK (parole_disc_menu_chapter_menu_cb), menu);
 			      
     menu->priv->gst = PAROLE_GST (parole_gst_new ());
     
@@ -178,4 +229,14 @@ parole_disc_menu_new (void)
 gboolean parole_disc_menu_visible	 (ParoleDiscMenu *menu)
 {
     return (GTK_WIDGET_VISIBLE (menu->priv->next_chapter));
+}
+
+void parole_disc_menu_seek_next (ParoleDiscMenu *menu)
+{
+    parole_disc_menu_next_chapter_cb (menu);
+}
+
+void parole_disc_menu_seek_prev (ParoleDiscMenu *menu)
+{
+    parole_disc_menu_prev_chapter_cb (menu);
 }

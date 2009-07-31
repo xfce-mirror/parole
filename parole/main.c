@@ -59,6 +59,14 @@ show_version (void)
 }
 
 static void
+parole_sig_handler (gint sig, gpointer data)
+{
+    ParolePlayer *player = (ParolePlayer *) data;
+
+    parole_player_terminate (player);
+}
+
+static void
 parole_send_play_disc (DBusGProxy *proxy, const gchar *uri)
 {
     GError *error = NULL;
@@ -203,6 +211,27 @@ int main (int argc, char **argv)
 		parole_media_list_add_files (list, filenames);
 	    }
 	}
+	
+	if ( xfce_posix_signal_handler_init (&error)) 
+	{
+	    xfce_posix_signal_handler_set_handler(SIGHUP,
+						  parole_sig_handler,
+						  player, NULL);
+
+	    xfce_posix_signal_handler_set_handler(SIGINT,
+						  parole_sig_handler,
+						  player, NULL);
+
+	    xfce_posix_signal_handler_set_handler(SIGTERM,
+						  parole_sig_handler,
+						  player, NULL);
+	} 
+	else 
+	{
+	    g_warning ("Unable to set up POSIX signal handlers: %s", error->message);
+	    g_error_free (error);
+	}
+
 	plugins = parole_plugins_manager_new ();
 	parole_plugins_manager_load_plugins (plugins);
 	g_object_unref (builder);

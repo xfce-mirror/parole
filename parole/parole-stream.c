@@ -59,7 +59,8 @@ struct _ParoleStreamPrivate
     gint        video_w;
     gint        video_h;
     gint64  	absolute_duration;
-    
+    guint	tracks;
+    guint        track;
     gchar      *title;
     gchar      *artist;
     gchar      *year;
@@ -78,6 +79,8 @@ enum
     PROP_HAS_AUDIO,
     PROP_HAS_VIDEO,
     PROP_SEEKABLE,
+    PROP_TRACKS,
+    PROP_TRACK,
     PROP_TAG_AVAILABLE,
     PROP_DURATION,
     PROP_ABSOLUTE_DURATION,
@@ -109,6 +112,8 @@ parole_stream_get_media_type_from_uri (ParoleStream *stream, const gchar *uri)
 	type = PAROLE_MEDIA_TYPE_SVCD;
     else if ( g_str_has_prefix (uri, "cdda:/") )
 	type = PAROLE_MEDIA_TYPE_CDDA;
+    else if ( g_str_has_prefix (uri, "dvb:/") )
+	type = PAROLE_MEDIA_TYPE_DVB;
     else 
 	type = PAROLE_MEDIA_TYPE_UNKNOWN;
     
@@ -150,6 +155,12 @@ static void parole_stream_set_property (GObject *object,
 	    break;
 	case PROP_SEEKABLE:
 	    PAROLE_STREAM_GET_PRIVATE (stream)->seekable = g_value_get_boolean (value);
+	    break;
+	case PROP_TRACKS:
+	    PAROLE_STREAM_GET_PRIVATE (stream)->tracks = g_value_get_uint (value);
+	    break;
+	case PROP_TRACK:
+	    PAROLE_STREAM_GET_PRIVATE (stream)->track = g_value_get_uint (value);
 	    break;
 	case PROP_TAG_AVAILABLE:
 	    PAROLE_STREAM_GET_PRIVATE (stream)->tag_available = g_value_get_boolean (value);
@@ -217,6 +228,12 @@ static void parole_stream_get_property (GObject *object,
 	    break;
 	case PROP_DURATION:
 	    g_value_set_double (value, PAROLE_STREAM_GET_PRIVATE (stream)->duration);
+	    break;
+	case PROP_TRACKS:
+	    g_value_set_uint (value, PAROLE_STREAM_GET_PRIVATE (stream)->tracks);
+	    break;
+	case PROP_TRACK:
+	    g_value_set_uint (value, PAROLE_STREAM_GET_PRIVATE (stream)->track);
 	    break;
 	case PROP_TAG_AVAILABLE:
 	    g_value_set_double (value, PAROLE_STREAM_GET_PRIVATE (stream)->tag_available);
@@ -431,7 +448,36 @@ parole_stream_class_init (ParoleStreamClass *klass)
 							  0, G_MAXINT,
 							  0,
 							  G_PARAM_READWRITE));
+	
+    /**
+     * ParoleStream:num-tracks:
+     * 
+     * Number of tracks in the cdda source, only valid if
+     * ParoleStream:media-type: is PAROLE_MEDIA_TYPE_CDDA.
+     * 
+     * Since: 0.1 
+     **/
+    g_object_class_install_property (object_class,
+				     PROP_TRACKS,
+				     g_param_spec_uint   ("num-tracks",
+							  NULL, NULL,
+							  1, 99,
+							  1,
+							  G_PARAM_READWRITE));
 							  
+    /**
+     * ParoleStream:track:
+     * 
+     * 
+     * Since: 0.1 
+     **/
+    g_object_class_install_property (object_class,
+				     PROP_TRACK,
+				     g_param_spec_uint   ("track",
+							  NULL, NULL,
+							  1, 99,
+							  1,
+							  G_PARAM_READWRITE));
     /**
      * ParoleStream:title:
      * 
@@ -536,6 +582,8 @@ void parole_stream_init_properties (ParoleStream *stream)
     priv->media_type = PAROLE_MEDIA_TYPE_UNKNOWN;
     priv->video_h = 0;
     priv->video_w = 0;
+    priv->tracks = 1;
+    priv->track = 1;
     
     PAROLE_STREAM_FREE_STR_PROP (priv->title);
     PAROLE_STREAM_FREE_STR_PROP (priv->uri);

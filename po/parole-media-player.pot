@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-27 18:02+0200\n"
+"POT-Creation-Date: 2009-07-31 23:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,27 +17,104 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../data/interfaces/parole.ui.h:1
-msgid "Media player"
+msgid "16:9 (Widescreen)"
 msgstr ""
 
 #: ../data/interfaces/parole.ui.h:2
-msgid "Plugins"
+msgid "20:9 (DVB)"
 msgstr ""
 
 #: ../data/interfaces/parole.ui.h:3
-msgid "_Edit"
+msgid "4:3 (TV)"
 msgstr ""
 
 #: ../data/interfaces/parole.ui.h:4
-msgid "_Help"
+msgid "Aspect Ratio"
 msgstr ""
 
 #: ../data/interfaces/parole.ui.h:5
-msgid "_Media"
+msgid "Auto"
 msgstr ""
 
 #: ../data/interfaces/parole.ui.h:6
+msgid "Chapter Menu"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:7
+msgid "DVD Menu"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:8
+msgid "Media player"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:9
+msgid "Mute"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:10 ../parole/parole-player.c:991
+msgid "Next Chapter"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:11
+msgid "None"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:12 ../data/desktop/parole.desktop.in.in.h:1
+#: ../parole/parole-player.c:220
+msgid "Parole Media Player"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:13
+msgid "Plugins"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:14 ../parole/parole-player.c:1003
+msgid "Previous Chapter"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:15
+msgid "Repeat"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:16
+msgid "Shuffle"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:17
+msgid "Sound"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:18
+msgid "Square"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:19
+msgid "Volume Down"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:20
+msgid "Volume Up"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:21
+msgid "_Edit"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:22
+msgid "_Help"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:23
+msgid "_Media"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:24
 msgid "_View"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:25
+msgid "gtk-leave-fullscreen"
 msgstr ""
 
 #: ../data/interfaces/plugins.ui.h:1
@@ -85,7 +162,7 @@ msgid "<b>Subtitles</b>"
 msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:4
-msgid "Automatically load subtitle when playing movie file"
+msgid "Automatically load subtitles when playing movie file"
 msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:5
@@ -93,25 +170,23 @@ msgid "Brightness:"
 msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:6
-msgid ""
-"Changing this will take effect after parole is restarted or a new media file "
-"is loaded."
-msgstr ""
-
-#: ../data/interfaces/parole-settings.ui.h:7
 msgid "Contrast:"
 msgstr ""
 
-#: ../data/interfaces/parole-settings.ui.h:8
+#: ../data/interfaces/parole-settings.ui.h:7
 msgid "Enable visualization when playing audio file"
 msgstr ""
 
-#: ../data/interfaces/parole-settings.ui.h:9
+#: ../data/interfaces/parole-settings.ui.h:8
 msgid "Encoding: "
 msgstr ""
 
-#: ../data/interfaces/parole-settings.ui.h:10
+#: ../data/interfaces/parole-settings.ui.h:9
 msgid "Font:"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:10
+msgid "Hue:"
 msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:11
@@ -123,6 +198,14 @@ msgid "Parole Settings"
 msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:13
+msgid "Reset To Defaults"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:14
+msgid "Saturation:"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:15
 msgid "Visualization type:"
 msgstr ""
 
@@ -134,116 +217,134 @@ msgstr ""
 msgid "Select File Types (By Extension)"
 msgstr ""
 
-#: ../data/desktop/parole.desktop.in.in.h:1 ../parole/parole-player.c:154
-msgid "Parole Media Player"
+#: ../parole/main.c:52
+#, c-format
+msgid ""
+"\n"
+"Parole Media Player %s\n"
+"\n"
+"Part of the Xfce Goodies Project\n"
+"http://goodies.xfce.org\n"
+"\n"
+"Licensed under the GNU GPL.\n"
+"\n"
 msgstr ""
 
-#: ../parole/main.c:135
+#: ../parole/main.c:156
 msgid "Open a new instance"
 msgstr ""
 
-#: ../parole/main.c:136
+#: ../parole/main.c:157
+msgid "Version information"
+msgstr ""
+
+#: ../parole/main.c:158
 msgid "Media to play"
 msgstr ""
 
-#: ../parole/main.c:152
+#: ../parole/main.c:172
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr ""
 
-#: ../parole/parole-gst.c:806
-msgid "Error in changing state to ready"
-msgstr ""
-
-#: ../parole/parole-gst.c:855
+#: ../parole/parole-gst.c:1271
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 
-#: ../parole/parole-gst.c:870
+#: ../parole/parole-gst.c:1287
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 
-#: ../parole/parole-mediachooser.c:171
+#: ../parole/parole-mediachooser.c:154
 msgid "Add media files"
 msgstr ""
 
-#: ../parole/parole-mediachooser.c:190
+#: ../parole/parole-mediachooser.c:173
 msgid "Add"
 msgstr ""
 
-#: ../parole/parole-mediachooser.c:210
-msgid "Open location..."
-msgstr ""
-
-#: ../parole/parole-mediachooser.c:212
-msgid "Open location of media file or live stream"
-msgstr ""
-
-#: ../parole/parole-medialist.c:380
+#: ../parole/parole-medialist.c:381
 msgid "Error saving playlist file"
 msgstr ""
 
-#: ../parole/parole-medialist.c:380
+#: ../parole/parole-medialist.c:381
 msgid "Permission denied"
 msgstr ""
 
-#: ../parole/parole-medialist.c:389
+#: ../parole/parole-medialist.c:390
 msgid "Unknown playlist format, Please select a support playlist format"
 msgstr ""
 
-#: ../parole/parole-medialist.c:455 ../parole/parole-player.c:963
+#: ../parole/parole-medialist.c:456 ../parole/parole-player.c:1461
 msgid "Playlist"
 msgstr ""
 
-#: ../parole/parole-medialist.c:462
+#: ../parole/parole-medialist.c:463
 msgid "M3U Playlists"
 msgstr ""
 
-#: ../parole/parole-medialist.c:470
+#: ../parole/parole-medialist.c:471
 msgid "PLS Playlists"
 msgstr ""
 
-#: ../parole/parole-medialist.c:478
+#: ../parole/parole-medialist.c:479
 msgid "Advanced Stream Redirector"
 msgstr ""
 
-#: ../parole/parole-medialist.c:486
+#: ../parole/parole-medialist.c:487
 msgid "Shareable Playlist"
 msgstr ""
 
-#: ../parole/parole-medialist.c:760
+#: ../parole/parole-medialist.c:788
 msgid "Media list"
 msgstr ""
 
-#: ../parole/parole-player.c:175
+#: ../parole/parole-player.c:283
 msgid "Hide playlist"
 msgstr ""
 
-#: ../parole/parole-player.c:184
+#: ../parole/parole-player.c:292
 msgid "Show playlist"
 msgstr ""
 
-#: ../parole/parole-player.c:338 ../parole/parole-statusbar.c:125
-#: ../parole/parole-statusbar.c:127
-msgid "Playing"
-msgstr ""
-
-#: ../parole/parole-player.c:339
+#: ../parole/parole-player.c:501
 msgid "Media stream is not seekable"
 msgstr ""
 
-#: ../parole/parole-player.c:357 ../parole/parole-player.c:370
-msgid "Paused"
+#.
+#. * Next chapter menu item
+#.
+#: ../parole/parole-player.c:991
+msgid "Next Track"
 msgstr ""
 
-#: ../parole/parole-player.c:388
+#.
+#. * Previous chapter menu item
+#.
+#: ../parole/parole-player.c:1003
+msgid "Previous Track"
+msgstr ""
+
+#: ../parole/parole-statusbar.c:59
+msgid "Buffering"
+msgstr ""
+
+#: ../parole/parole-statusbar.c:76
 msgid "Stopped"
 msgstr ""
 
-#: ../parole/parole-statusbar.c:137
-msgid "Buffering"
+#: ../parole/parole-statusbar.c:80
+msgid "Finished"
+msgstr ""
+
+#: ../parole/parole-statusbar.c:87 ../parole/parole-statusbar.c:95
+msgid "Paused"
+msgstr ""
+
+#: ../parole/parole-statusbar.c:116
+msgid "Live stream:"
 msgstr ""
 
 #: ../parole/parole-filters.c:57
@@ -270,7 +371,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 
-#: ../parole/parole-disc.c:131
+#: ../parole/parole-disc.c:168
 msgid "Play Disc"
 msgstr ""
 
@@ -441,6 +542,14 @@ msgstr ""
 msgid "Vietnamese"
 msgstr ""
 
+#: ../parole/parole-open-location.c:171
+msgid "Open location..."
+msgstr ""
+
+#: ../parole/parole-open-location.c:173
+msgid "Open location of media file or live stream"
+msgstr ""
+
 #: ../plugins/properties/stream-properties.c:44
 #: ../plugins/properties/stream-properties.c:45
 #: ../plugins/properties/stream-properties.c:46
@@ -479,28 +588,28 @@ msgstr ""
 msgid "Read media properties"
 msgstr ""
 
-#: ../plugins/tray/tray-icon.c:203
+#: ../plugins/tray/tray-icon.c:222
 msgid "<b>Playing:</b>"
 msgstr ""
 
-#: ../plugins/tray/tray-icon.c:203
+#: ../plugins/tray/tray-icon.c:222
 msgid "<b>Duration:</b>"
 msgstr ""
 
-#: ../plugins/tray/tray-icon.c:328
+#: ../plugins/tray/tray-icon.c:347
 msgid "Tray icon plugin"
 msgstr ""
 
-#: ../plugins/tray/tray-icon.c:337
+#: ../plugins/tray/tray-icon.c:356
 msgid "Enable notification"
 msgstr ""
 
 #. Construct function
-#: ../plugins/tray/tray-icon.c:408
+#: ../plugins/tray/tray-icon.c:427
 msgid "Tray icon"
 msgstr ""
 
 #. Title
-#: ../plugins/tray/tray-icon.c:409
+#: ../plugins/tray/tray-icon.c:428
 msgid "Show icon in the system tray"
 msgstr ""

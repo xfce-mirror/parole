@@ -350,8 +350,8 @@ gchar *parole_get_subtitle_path (const gchar *uri)
 gboolean
 parole_is_uri_disc (const gchar *uri)
 {
-    if (   !g_strcmp0 (uri, "dvd:/")  || !g_strcmp0 (uri, "vcd:/") 
-        || !g_strcmp0 (uri, "svcd:/") || !g_strcmp0 (uri, "cdda:/"))
+    if (   g_str_has_prefix (uri, "dvd:/")  || g_str_has_prefix (uri, "vcd:/") 
+        || g_str_has_prefix (uri, "svcd:/") || g_str_has_prefix (uri, "cdda:/"))
 	return TRUE;
     else
 	return FALSE;

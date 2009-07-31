@@ -28,19 +28,15 @@
 
 #include <glib.h>
 
-#include <libxfce4util/libxfce4util.h>
-
 #include "parole-rc-utils.h"
 
-#define MEDIA_PLAYER_RESOURCE_FILE 	"xfce4/parole/parole-media-player.rc"
-#define HISTORY_FILE 			"xfce4/parole/history"
-
-static XfceRc *
-open_resource_file (const gchar *group, gboolean readonly)
+XfceRc *
+parole_get_resource_file (const gchar *group, gboolean readonly)
 {
     gchar *file;
     XfceRc *rc;
-    file = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, MEDIA_PLAYER_RESOURCE_FILE, TRUE);
+    
+    file = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, PAROLE_RESOURCE_FILE, TRUE);
     rc = xfce_rc_simple_open (file, readonly);
     
     if (rc)
@@ -53,7 +49,7 @@ open_resource_file (const gchar *group, gboolean readonly)
 
 void parole_rc_write_entry_bool (const gchar *property, const gchar *group, gboolean value)
 {
-    XfceRc *rc = open_resource_file (group, FALSE);
+    XfceRc *rc = parole_get_resource_file (group, FALSE);
     
     xfce_rc_write_bool_entry (rc, property, value);
     xfce_rc_close (rc);
@@ -61,7 +57,7 @@ void parole_rc_write_entry_bool (const gchar *property, const gchar *group, gboo
 
 void parole_rc_write_entry_int (const gchar *property, const gchar *group, gint value)
 {
-    XfceRc *rc = open_resource_file (group, FALSE);
+    XfceRc *rc = parole_get_resource_file (group, FALSE);
     
     xfce_rc_write_int_entry (rc, property, value);
     xfce_rc_close (rc);
@@ -69,7 +65,7 @@ void parole_rc_write_entry_int (const gchar *property, const gchar *group, gint 
 
 void parole_rc_write_entry_string (const gchar *property, const gchar *group, const gchar *value)
 {
-    XfceRc *rc = open_resource_file (group, FALSE);
+    XfceRc *rc = parole_get_resource_file (group, FALSE);
     
     xfce_rc_write_entry (rc, property, value);
     xfce_rc_close (rc);
@@ -77,7 +73,7 @@ void parole_rc_write_entry_string (const gchar *property, const gchar *group, co
 
 void parole_rc_write_entry_list (const gchar *property, const gchar *group, gchar **value)
 {
-    XfceRc *rc = open_resource_file (group, FALSE);
+    XfceRc *rc = parole_get_resource_file (group, FALSE);
     
     xfce_rc_write_list_entry (rc, property, value, ";");
     xfce_rc_close (rc);
@@ -85,7 +81,7 @@ void parole_rc_write_entry_list (const gchar *property, const gchar *group, gcha
 
 gboolean parole_rc_read_entry_bool (const gchar *property, const gchar *group, gboolean fallback)
 {
-    XfceRc *rc = open_resource_file (group, TRUE);
+    XfceRc *rc = parole_get_resource_file (group, TRUE);
     gboolean ret_val = fallback;
     
     if ( rc )
@@ -99,7 +95,7 @@ gboolean parole_rc_read_entry_bool (const gchar *property, const gchar *group, g
 
 gint parole_rc_read_entry_int (const gchar *property, const gchar *group, gint fallback)
 {
-    XfceRc *rc = open_resource_file (group, TRUE);
+    XfceRc *rc = parole_get_resource_file (group, TRUE);
     gint ret_val = fallback;
     
     if ( rc )
@@ -114,7 +110,7 @@ gint parole_rc_read_entry_int (const gchar *property, const gchar *group, gint f
 const gchar *parole_rc_read_entry_string (const gchar *property, const gchar *group, const gchar *fallback)
 {
     const gchar *ret_val = fallback;
-    XfceRc *rc = open_resource_file (group, TRUE);
+    XfceRc *rc = parole_get_resource_file (group, TRUE);
     
     if ( rc )
     {
@@ -128,7 +124,7 @@ const gchar *parole_rc_read_entry_string (const gchar *property, const gchar *gr
 gchar **parole_rc_read_entry_list (const gchar *property, const gchar *group)
 {
     gchar **ret_val = NULL;
-    XfceRc *rc = open_resource_file (group, TRUE);
+    XfceRc *rc = parole_get_resource_file (group, TRUE);
     
     if ( rc )
     {
@@ -146,7 +142,7 @@ gchar **parole_get_history (void)
     gchar *contents = NULL;
     gsize length = 0;
     
-    history = xfce_resource_lookup (XFCE_RESOURCE_CACHE, HISTORY_FILE);
+    history = xfce_resource_lookup (XFCE_RESOURCE_CACHE, PAROLE_HISTORY_FILE);
     
     if (history && g_file_get_contents (history, &contents, &length, NULL)) 
     {
@@ -163,7 +159,7 @@ void parole_insert_line_history (const gchar *line)
 {
     gchar *history = NULL;
     
-    history = xfce_resource_save_location (XFCE_RESOURCE_CACHE, HISTORY_FILE, TRUE);
+    history = xfce_resource_save_location (XFCE_RESOURCE_CACHE, PAROLE_HISTORY_FILE, TRUE);
     
     if ( history ) 
     {

@@ -10,18 +10,11 @@ INCLUDES =					\
 	-DLOCALEDIR=\"$(localedir)\"		\
 	-DG_LOG_DOMAIN=\"parole\"		\
 	-DPAROLE_PLUGINS_DIR=\"$(libdir)/parole-$(PAROLE_VERSION_API)\"\
-	$(GTK_CFLAGS)                           \
-        $(GLIB_CFLAGS)                          \
-        $(GOBJECT_CFLAGS)                       \
         $(GTHREAD_CFLAGS)                       \
 	$(GIO_CFLAGS)				\
-        $(DBUS_CFLAGS)                          \
         $(DBUS_GLIB_CFLAGS)                     \
         $(LIBXFCE4GUI_CFLAGS)                   \
-        $(LIBXFCE4UTIL_CFLAGS)			\
-	$(GST_CFLAGS)				\
 	$(GST_VIDEO_CFLAGS)			\
-	$(GST_BASE_CFLAGS)			\
 	$(GST_INTERFACES_CFLAGS)
 
 PAROLE_LDFLAGS =				\
@@ -30,17 +23,10 @@ PAROLE_LDFLAGS =				\
 	-export-symbols-regex "^[[^_]].*"
 
 PAROLE_LIBS = 					\
-	$(GTK_LIBS)                             \
-        $(GLIB_LIBS)                            \
-        $(GOBJECT_LIBS)                         \
         $(GTHREAD_LIBS)                         \
 	$(GIO_LIBS)				\
-        $(DBUS_LIBS)                            \
         $(DBUS_GLIB_LIBS)                       \
         $(LIBXFCE4GUI_LIBS)                     \
-        $(LIBXFCE4UTIL_LIBS)			\
-	$(GST_LIBS)				\
-	$(GST_BASE_LIBS)			\
 	$(GST_VIDEO_LIBS)			\
 	$(GST_INTERFACES_LIBS)
 
@@ -134,8 +120,7 @@ parole_media_player_SOURCES =			\
 	main.c
 
 parole_media_player_LDADD =			\
-	libparole.la				\
-	$(PAROLE_LIBS)
+	libparole.la
 
 parole_media_player_LDFLAGS =			\
 	$(PAROLE_LDFLAGS)
@@ -167,9 +152,9 @@ stamp-enum-gtypes.h: $(parole_glib_enum_headers) Makefile
 		--fprod "/* enumerations from \"@filename@\" */\n" \
 		--vhead "GType @enum_name@_get_type (void);\n#define ENUM_GTYPE_@ENUMSHORT@ (@enum_name@_get_type())\n" \
 		--ftail "G_END_DECLS\n\n#endif /* __ENUM_GTYPES_H__ */" \
-		$(parole_glib_enum_headers) ) > xgen-enum \
-	&& (cmp -s xgen-enum enum-gtypes.h || cp xgen-enum enum-gtypes.h) \
-	&& rm -f xgen-enum \
+		$(parole_glib_enum_headers) ) > xgen-enum.h \
+	&& (cmp -s xgen-enum.h enum-gtypes.h || cp xgen-enum.h enum-gtypes.h) \
+	&& rm -f xgen-enum.h \
 	&& echo timestamp > $(@F)
 
 enum-gtypes.c: $(parole_glib_enum_headers) Makefile
@@ -184,9 +169,9 @@ enum-gtypes.c: $(parole_glib_enum_headers) Makefile
 		--vhead "GType\n@enum_name@_get_type (void)\n{\n  static GType etype = 0;\n  if (etype == 0) {\n    static const G@Type@Value values[] = {" \
 		--vprod "      { @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \
 		--vtail "      { 0, NULL, NULL }\n    };\n    etype = g_@type@_register_static (\"@EnumName@\", values);\n  }\n  return etype;\n}\n" \
-		$(parole_glib_enum_headers) ) >> xgen-enum \
-	&& cp xgen-enum enum-gtypes.c \
-	&& rm -f xgen-enum
+		$(parole_glib_enum_headers) ) >> xgen-enum.c \
+	&& cp xgen-enum.c enum-gtypes.c \
+	&& rm -f xgen-enum.c
 
 org.parole.media.list.h: $(srcdir)/org.parole.media.list.xml
 	dbus-binding-tool --mode=glib-server --prefix=parole_media_list $< >$@

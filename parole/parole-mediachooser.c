@@ -53,6 +53,9 @@ void	parole_media_chooser_close	(GtkWidget *widget,
 void	media_chooser_folder_changed_cb (GtkWidget *widget, 
 					 gpointer data);
 
+void	media_chooser_file_activate_cb  (GtkFileChooser *filechooser,
+					 ParoleMediaChooser *chooser);
+
 enum
 {
     MEDIA_FILES_OPENED,
@@ -121,6 +124,11 @@ parole_media_chooser_open (GtkWidget *widget, ParoleMediaChooser *chooser)
     parole_window_busy_cursor (GTK_WIDGET (chooser)->window);
     parole_media_chooser_add (chooser, file_chooser);
     gtk_widget_destroy (GTK_WIDGET (chooser));
+}
+
+void media_chooser_file_activate_cb (GtkFileChooser *filechooser, ParoleMediaChooser *chooser)
+{
+    parole_media_chooser_open (NULL, chooser);
 }
 
 static void

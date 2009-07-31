@@ -3,6 +3,7 @@
   <requires lib="gtk+" version="2.16"/>
   <!-- interface-naming-policy project-wide -->
   <object class="GtkWindow" id="main-window">
+    <property name="title" translatable="yes">Parole Media Player</property>
     <property name="window_position">center</property>
     <property name="default_width">780</property>
     <property name="default_height">480</property>
@@ -219,7 +220,7 @@
                   <object class="GtkMenu" id="menu1">
                     <property name="visible">True</property>
                     <child>
-                      <object class="GtkImageMenuItem" id="imagemenuitem1">
+                      <object class="GtkImageMenuItem" id="volume-mute-menu">
                         <property name="label" translatable="yes">Mute</property>
                         <property name="visible">True</property>
                         <property name="image">image12</property>
@@ -227,7 +228,7 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="imagemenuitem2">
+                      <object class="GtkImageMenuItem" id="volume-up-menu">
                         <property name="label" translatable="yes">Volume Up</property>
                         <property name="visible">True</property>
                         <property name="image">image11</property>
@@ -237,7 +238,7 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="imagemenuitem3">
+                      <object class="GtkImageMenuItem" id="volume-down-menu">
                         <property name="label" translatable="yes">Volume Down</property>
                         <property name="visible">True</property>
                         <property name="image">image10</property>
@@ -286,6 +287,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="show_tabs">False</property>
+                <property name="show_border">False</property>
                 <property name="scrollable">True</property>
                 <property name="group_id">0</property>
                 <child>
@@ -378,13 +380,18 @@
                                           </packing>
                                         </child>
                                         <child>
-                                          <placeholder/>
-                                        </child>
-                                        <child>
-                                          <placeholder/>
-                                        </child>
-                                        <child>
-                                          <placeholder/>
+                                          <object class="GtkEventBox" id="eventboxinfo">
+                                            <property name="no_show_all">True</property>
+                                            <child>
+                                              <object class="GtkLabel" id="info">
+                                                <property name="no_show_all">True</property>
+                                                <property name="use_markup">True</property>
+                                              </object>
+                                            </child>
+                                          </object>
+                                          <packing>
+                                            <property name="position">4</property>
+                                          </packing>
                                         </child>
                                       </object>
                                       <packing>

@@ -21,8 +21,16 @@
 #ifndef __RC_UTILS_
 #define __RC_UTILS_
 
+#include <libxfce4util/libxfce4util.h>
+
+#define PAROLE_RESOURCE_FILE 		"xfce4/parole/parole-media-player.rc"
+#define PAROLE_HISTORY_FILE 		"xfce4/parole/history"
+
 #define PAROLE_RC_GROUP_GENERAL		"General"
 #define PAROLE_RC_GROUP_PLUGINS		"Plugins"
+
+XfceRc                 *parole_get_resource_file        (const gchar *group, 
+							 gboolean readonly);
 
 void			parole_rc_write_entry_bool	(const gchar *property,
 							 const gchar *group,

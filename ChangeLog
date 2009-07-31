@@ -1,3 +1,16 @@
+2009-07-31: 11:30 Ali aliov@xfce.org
+	* Support for Recent played media files.
+	* Better configuration loading based GValues.
+	* Register posix signal handler.
+	* Much better cdda support.
+	* Patch the makefile by Enrico Tröger to fix issue with 
+	generating the enum types.
+	* Fix the sound image menu items size.
+	* Double clicks a file close the media chooser dialog.
+	* Remove grey border in fullscreen mode.
+	* Set the main window name to Parole Media Player.
+	* Fix the expander packing style in the savelist chooser.
+	
 2009-07-30: Ali aliov@xfce.org
 	* Supports for Aspect ratio views.
 	* Remember the size of the main window set.

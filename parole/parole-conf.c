@@ -37,22 +37,7 @@
 
 struct ParoleConfPrivate
 {
-    gchar 	*vis_sink;
-    gboolean 	 enable_vis;
-    gboolean	 enable_subtitle;
-    gchar	*subtitle_font;
-    gchar       *subtitle_encoding;
-    
-    gboolean     repeat;
-    gboolean     shuffle;
-    
-    gint         brightness;
-    gint         contrast;
-    gint         hue;
-    gint         saturation;
-    ParoleAspectRatio aspect_ratio;
-    gint 	 window_width;
-    gint	 window_height;
+    GValue      *values;
 };
 
 static gpointer parole_conf_object = NULL;
@@ -85,81 +70,43 @@ static void parole_conf_set_property (GObject *object,
 				      GParamSpec *pspec)
 {
     ParoleConf *conf;
+    GValue *dst;
+    GValue save_dst = { 0, };
+     
     conf = PAROLE_CONF (object);
+   
+    dst = conf->priv->values + prop_id;
 
-    switch (prop_id)
+    if ( !G_IS_VALUE (dst) )
     {
-	case PROP_VIS_ENABLED:
-	    conf->priv->enable_vis = g_value_get_boolean (value);
-	    g_object_notify (G_OBJECT (conf), pspec->name);
-	    parole_rc_write_entry_bool ("VIS_ENABLED", PAROLE_RC_GROUP_GENERAL, conf->priv->enable_vis);
-	    break;
-	case PROP_SUBTITLE_ENCODING:
-	    if ( conf->priv->subtitle_encoding )
-		g_free (conf->priv->subtitle_encoding);
-	    conf->priv->subtitle_encoding = g_value_dup_string (value);
-	    parole_rc_write_entry_string ("SUBTITLE_ENCODING", PAROLE_RC_GROUP_GENERAL, conf->priv->subtitle_encoding);
-	    break;
-	case PROP_VIS_NAME:
-	    if ( conf->priv->vis_sink )
-		g_free (conf->priv->vis_sink);
-	    conf->priv->vis_sink = g_value_dup_string (value);
-	    parole_rc_write_entry_string ("VIS_NAME", PAROLE_RC_GROUP_GENERAL, conf->priv->vis_sink);
-	    break;
-	case PROP_SUBTITLE_ENABLED:
-	    conf->priv->enable_subtitle = g_value_get_boolean (value);
-	    parole_rc_write_entry_bool ("ENABLE_SUBTITLE", PAROLE_RC_GROUP_GENERAL, conf->priv->enable_subtitle);
-	    break;
-	case PROP_SUBTITLE_FONT:
-	    if ( conf->priv->subtitle_font )
-		g_free (conf->priv->subtitle_font);
-	    conf->priv->subtitle_font = g_value_dup_string (value);
-	    parole_rc_write_entry_string ("SUBTITLE_FONT", PAROLE_RC_GROUP_GENERAL, conf->priv->subtitle_font);
-	    break;
-	case PROP_REPEAT:
-	    conf->priv->repeat = g_value_get_boolean (value);
-	    parole_rc_write_entry_bool ("REPEAT", PAROLE_RC_GROUP_GENERAL, conf->priv->repeat);
-	    break;
-	case PROP_SHUFFLE:
-	    conf->priv->shuffle = g_value_get_boolean (value);
-	    parole_rc_write_entry_bool ("SHUFFLE", PAROLE_RC_GROUP_GENERAL, conf->priv->shuffle);
-	    break;
-	case PROP_SATURATION:
-	    conf->priv->saturation = g_value_get_int (value);
-	    parole_rc_write_entry_int ("SATURATION", PAROLE_RC_GROUP_GENERAL, conf->priv->saturation);
-	    break;
-	case PROP_HUE:
-	    conf->priv->hue = g_value_get_int (value);
-	    parole_rc_write_entry_int ("HUE", PAROLE_RC_GROUP_GENERAL, conf->priv->hue);
-	    break;
-	case PROP_CONTRAST:
-	    conf->priv->contrast = g_value_get_int (value);
-	    parole_rc_write_entry_int ("CONTRAST", PAROLE_RC_GROUP_GENERAL, conf->priv->contrast);
-	    break;
-	case PROP_BRIGHTNESS:
-	    conf->priv->brightness = g_value_get_int (value);
-	    parole_rc_write_entry_int ("BRIGHTNESS", PAROLE_RC_GROUP_GENERAL, conf->priv->brightness);
-	    break;
-	case PROP_ASPECT_RATIO:
-	    conf->priv->aspect_ratio = g_value_get_enum (value);
-	    parole_rc_write_entry_int ("ASPECT_RATIO", PAROLE_RC_GROUP_GENERAL, conf->priv->aspect_ratio);
-	    break;
-	case PROP_WINDOW_WIDTH:
-	    conf->priv->window_width = g_value_get_int (value);
-	    parole_rc_write_entry_int ("WINDOW_WIDTH", PAROLE_RC_GROUP_GENERAL, conf->priv->window_width);
-	    break;
-	case PROP_WINDOW_HEIGHT:
-	    conf->priv->window_height = g_value_get_int (value);
-	    parole_rc_write_entry_int ("WINDOW_HEIGHT", PAROLE_RC_GROUP_GENERAL, conf->priv->window_height);
-	    break;
-        default:
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-            goto out;
+	g_value_init (dst, pspec->value_type);
+	g_param_value_set_default (pspec, dst);
     }
-    g_object_notify (G_OBJECT (conf), pspec->name);
-    
-out:
-    ;
+
+    if ( g_param_values_cmp (pspec, value, dst) != 0 )
+    {
+	g_value_copy (value, dst);
+	g_object_notify (object, pspec->name);
+	
+	if ( pspec->value_type != G_TYPE_STRING )
+	{
+	    g_value_init (&save_dst, G_TYPE_STRING);
+		
+	    if ( G_LIKELY (g_value_transform (value, &save_dst)) )
+	    {
+		g_object_set_property (G_OBJECT (conf), pspec->name, &save_dst);
+		parole_rc_write_entry_string (pspec->name, PAROLE_RC_GROUP_GENERAL, g_value_get_string (&save_dst));
+	    }
+	    else
+		g_warning ("Unable to save property : %s", pspec->name);
+		
+	    g_value_unset (&save_dst);
+	}
+	else
+	{	
+	    parole_rc_write_entry_string (pspec->name, PAROLE_RC_GROUP_GENERAL, g_value_get_string (value));
+	}
+    }
 }
 
 static void parole_conf_get_property (GObject *object,
@@ -168,55 +115,22 @@ static void parole_conf_get_property (GObject *object,
 				      GParamSpec *pspec)
 {
     ParoleConf *conf;
+    GValue *src;
+    
     conf = PAROLE_CONF (object);
-
-    switch (prop_id)
+    
+    src = conf->priv->values + prop_id;
+    
+    if (G_VALUE_HOLDS (src, pspec->value_type))
     {
-	case PROP_SUBTITLE_ENCODING:
-	    g_value_set_string (value, conf->priv->subtitle_encoding);
-	    break;
-	case PROP_VIS_ENABLED:
-	    g_value_set_boolean (value, conf->priv->enable_vis);
-	    break;
-	case PROP_VIS_NAME:
-	    g_value_set_string (value, conf->priv->vis_sink);
-	    break;
-	case PROP_SUBTITLE_ENABLED:
-	    g_value_set_boolean (value, conf->priv->enable_subtitle);
-	    break;
-	case PROP_SUBTITLE_FONT:
-	    g_value_set_string (value, conf->priv->subtitle_font);
-	    break;
-	case PROP_REPEAT:
-	    g_value_set_boolean (value, conf->priv->repeat);
-	    break;
-	case PROP_SHUFFLE:
-	    g_value_set_boolean (value, conf->priv->shuffle);
-	    break;
-	case PROP_SATURATION:
-	    g_value_set_int (value, conf->priv->saturation);
-	    break;
-	case PROP_HUE:
-	    g_value_set_int (value, conf->priv->hue);
-	    break;
-	case PROP_CONTRAST:
-	    g_value_set_int (value, conf->priv->contrast);
-	    break;
-	case PROP_BRIGHTNESS:
-	    g_value_set_int (value, conf->priv->brightness);
-	    break;
-	case PROP_ASPECT_RATIO:
-	    g_value_set_enum (value, conf->priv->aspect_ratio);
-	    break;
-	case PROP_WINDOW_WIDTH:
-	    g_value_set_int (value, conf->priv->window_width);
-	    break;
-	case PROP_WINDOW_HEIGHT:
-	    g_value_set_int (value, conf->priv->window_height);
-	    break;
-	default:
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-            break;
+	if (G_LIKELY (pspec->value_type == G_TYPE_STRING))
+	    g_value_set_static_string (value, g_value_get_string (src));
+	else
+	    g_value_copy (src, value);
+    }
+    else
+    {
+	g_param_value_set_default (pspec, value);
     }
 }
 
@@ -224,14 +138,49 @@ static void
 parole_conf_finalize (GObject *object)
 {
     ParoleConf *conf;
+    guint i;
 
     conf = PAROLE_CONF (object);
     
-    g_free (conf->priv->vis_sink);
-    g_free (conf->priv->subtitle_font);
-    g_free (conf->priv->subtitle_encoding);
+    for ( i = 0; i < N_PROP; i++)
+    {
+        if ( G_IS_VALUE (conf->priv->values + i) )
+            g_value_unset (conf->priv->values + i);
+    }
+    
+    g_free (conf->priv->values);
 
     G_OBJECT_CLASS (parole_conf_parent_class)->finalize (object);
+    
+}
+
+static void
+transform_string_to_boolean (const GValue *src,
+                             GValue       *dst)
+{
+    g_value_set_boolean (dst, !g_strcmp0 (g_value_get_string (src), "TRUE"));
+}
+
+static void
+transform_string_to_int (const GValue *src,
+			 GValue       *dst)
+{
+    g_value_set_int (dst, strtol (g_value_get_string (src), NULL, 10));
+}
+
+static void
+transform_string_to_enum (const GValue *src,
+                          GValue       *dst)
+{
+    GEnumClass *genum_class;
+    GEnumValue *genum_value;
+
+    genum_class = g_type_class_peek (G_VALUE_TYPE (dst));
+    genum_value = g_enum_get_value_by_name (genum_class, g_value_get_string (src));
+    
+    if (G_UNLIKELY (genum_value == NULL))
+	genum_value = genum_class->values;
+    g_value_set_enum (dst, genum_value->value);
 }
 
 static void
@@ -244,6 +193,15 @@ parole_conf_class_init (ParoleConfClass *klass)
     object_class->get_property = parole_conf_get_property;
     object_class->set_property = parole_conf_set_property;
 
+    if (!g_value_type_transformable (G_TYPE_STRING, G_TYPE_INT))
+	g_value_register_transform_func (G_TYPE_STRING, G_TYPE_INT, transform_string_to_int);
+
+    if (!g_value_type_transformable (G_TYPE_STRING, G_TYPE_BOOLEAN))
+	g_value_register_transform_func (G_TYPE_STRING, G_TYPE_BOOLEAN, transform_string_to_boolean);
+    
+    if (!g_value_type_transformable (G_TYPE_STRING, ENUM_GTYPE_ASPECT_RATIO))
+	g_value_register_transform_func (G_TYPE_STRING, ENUM_GTYPE_ASPECT_RATIO, transform_string_to_enum);
+	
     g_object_class_install_property (object_class,
                                      PROP_VIS_ENABLED,
                                      g_param_spec_boolean ("vis-enabled",
@@ -255,28 +213,28 @@ parole_conf_class_init (ParoleConfClass *klass)
                                      PROP_VIS_NAME,
                                      g_param_spec_string  ("vis-name",
                                                            NULL, NULL,
-                                                           NULL,
+                                                           "none",
                                                            G_PARAM_READWRITE));
 
     g_object_class_install_property (object_class,
                                      PROP_SUBTITLE_ENCODING,
                                      g_param_spec_string  ("subtitle-encoding",
                                                            NULL, NULL,
-                                                           NULL,
+                                                           "UTF-8",
                                                            G_PARAM_READWRITE));
 
     g_object_class_install_property (object_class,
                                      PROP_SUBTITLE_ENABLED,
                                      g_param_spec_boolean ("enable-subtitle",
                                                            NULL, NULL,
-                                                           FALSE,
+                                                           TRUE,
                                                            G_PARAM_READWRITE));
 							   
     g_object_class_install_property (object_class,
                                      PROP_SUBTITLE_FONT,
                                      g_param_spec_string  ("subtitle-font",
                                                            NULL, NULL,
-                                                           NULL,
+                                                           "Sans 12",
                                                            G_PARAM_READWRITE));
     
     g_object_class_install_property (object_class,
@@ -358,24 +316,77 @@ parole_conf_class_init (ParoleConfClass *klass)
 }
 
 static void
+parole_conf_load (ParoleConf *conf)
+{
+    XfceRc *rc;
+    const gchar *name;
+    const gchar *str;
+    GParamSpec  **pspecs, *pspec;
+    guint nspecs, i;
+    GValue src = { 0, }, dst = { 0, };
+    
+    rc = parole_get_resource_file (PAROLE_RC_GROUP_GENERAL, TRUE);
+    
+    if ( G_UNLIKELY (rc == NULL ) )
+    {
+	g_warning ("Unable to lookup rc file in : %s\n", PAROLE_RESOURCE_FILE);
+	return;
+    }
+
+    g_object_freeze_notify (G_OBJECT (conf));
+    
+    pspecs = g_object_class_list_properties (G_OBJECT_GET_CLASS (conf), &nspecs);
+
+    g_value_init (&src, G_TYPE_STRING);
+    
+    for ( i = 0; i < nspecs; i++)
+    {
+	pspec = pspecs[i];
+	name = g_param_spec_get_name (pspec);
+	
+	str = xfce_rc_read_entry (rc, pspec->name, NULL);
+	
+	if ( str )
+	{
+	    g_value_set_static_string (&src, str);
+	    
+	    if ( pspec->value_type == G_TYPE_STRING )
+	    {
+		g_object_set_property (G_OBJECT (conf), name, &src);
+	    }
+	    else
+	    {
+		g_value_init (&dst, G_PARAM_SPEC_VALUE_TYPE (pspec));
+		
+		if ( G_LIKELY (g_value_transform (&src, &dst)))
+		{
+		    g_object_set_property (G_OBJECT (conf), name, &dst);
+		}
+		else
+		{
+		    g_warning ("Unable to load property %s", name);
+		}
+		    
+		g_value_unset (&dst);
+	    }
+	}
+    }
+    
+    xfce_rc_close (rc);
+    g_value_unset (&src);
+    g_object_thaw_notify (G_OBJECT (conf));
+    g_free (pspecs);
+}
+
+static void
 parole_conf_init (ParoleConf *conf)
 {
     conf->priv = PAROLE_CONF_GET_PRIVATE (conf);
     
-    conf->priv->enable_vis = parole_rc_read_entry_bool ("VIS_ENABLED", PAROLE_RC_GROUP_GENERAL, FALSE);
-    conf->priv->vis_sink   = g_strdup (parole_rc_read_entry_string ("VIS_NAME", PAROLE_RC_GROUP_GENERAL, "none"));
-    conf->priv->enable_subtitle = parole_rc_read_entry_bool ("ENABLE_SUBTITLE", PAROLE_RC_GROUP_GENERAL, TRUE);
-    conf->priv->subtitle_font = g_strdup (parole_rc_read_entry_string ("SUBTITLE_FONT", PAROLE_RC_GROUP_GENERAL, "Sans 12"));
-    conf->priv->subtitle_encoding = g_strdup (parole_rc_read_entry_string ("SUBTITLE_ENCODING", PAROLE_RC_GROUP_GENERAL, "UTF8"));
-    conf->priv->repeat = parole_rc_read_entry_bool ("REPEAT", PAROLE_RC_GROUP_GENERAL, FALSE);
-    conf->priv->shuffle = parole_rc_read_entry_bool ("SHUFFLE", PAROLE_RC_GROUP_GENERAL, FALSE);
-    conf->priv->saturation = parole_rc_read_entry_int ("SATURATION", PAROLE_RC_GROUP_GENERAL, 0);
-    conf->priv->hue = parole_rc_read_entry_int ("HUE", PAROLE_RC_GROUP_GENERAL, 0);
-    conf->priv->contrast = parole_rc_read_entry_int ("CONTRAST", PAROLE_RC_GROUP_GENERAL, 0);
-    conf->priv->brightness = parole_rc_read_entry_int ("BRIGHTNESS", PAROLE_RC_GROUP_GENERAL, 0);
-    conf->priv->aspect_ratio = parole_rc_read_entry_int ("ASPECT_RATIO", PAROLE_RC_GROUP_GENERAL, PAROLE_ASPECT_RATIO_NONE);
-    conf->priv->window_width = parole_rc_read_entry_int ("WINDOW_WIDTH", PAROLE_RC_GROUP_GENERAL, 780);
-    conf->priv->window_height = parole_rc_read_entry_int ("WINDOW_HEIGHT", PAROLE_RC_GROUP_GENERAL, 480);
+    conf->priv->values = g_new0 (GValue, N_PROP);
+    
+    parole_conf_load (conf);
+    
 }
 
 ParoleConf *

@@ -112,6 +112,14 @@ void			parole_gst_next_dvd_chapter 	(ParoleGst *gst);
 
 void			parole_gst_prev_dvd_chapter 	(ParoleGst *gst);
 
+void			parole_gst_next_cdda_track 	(ParoleGst *gst);
+
+void			parole_gst_prev_cdda_track 	(ParoleGst *gst);
+
+gint			parole_gst_get_current_cdda_track (ParoleGst *gst);
+
+ParoleMediaType		parole_gst_get_current_stream_type (ParoleGst *gst);
+
 gdouble			parole_gst_get_stream_duration	(ParoleGst *gst);
 
 gdouble			parole_gst_get_stream_position  (ParoleGst *gst);

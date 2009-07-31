@@ -48,6 +48,10 @@ ParoleDiscMenu                 *parole_disc_menu_new             (void);
 
 gboolean			parole_disc_menu_visible	 (ParoleDiscMenu *menu);
 
+void				parole_disc_menu_seek_next	 (ParoleDiscMenu *menu);
+
+void				parole_disc_menu_seek_prev	 (ParoleDiscMenu *menu);
+
 G_END_DECLS
 
 #endif /* __PAROLE_DISC_MENU_H */
