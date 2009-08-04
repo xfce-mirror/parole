@@ -533,6 +533,7 @@ parole_player_paused (ParolePlayer *player)
 static void
 parole_player_quit (ParolePlayer *player)
 {
+    parole_media_list_save_list (player->priv->list);
     gtk_widget_destroy (player->priv->window);
     g_object_unref (player);
     gtk_main_quit ();

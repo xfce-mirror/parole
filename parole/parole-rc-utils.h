@@ -65,6 +65,15 @@ gchar	       	      **parole_rc_read_entry_list	(const gchar *property,
 
 gchar                 **parole_get_history	        (void);
 
+gchar                 **parole_get_history_full	        (const gchar *relpath);
+
 void			parole_insert_line_history	(const gchar *line);		
-							 
+
+void			parole_insert_line_history_full	(const gchar *relpath,
+							 const gchar *line);		
+
+void 			parole_clear_history_file	(void);
+
+void 			parole_clear_history_file_full  (const gchar *relpath);
+
 #endif /* __RC_UTILS_ */

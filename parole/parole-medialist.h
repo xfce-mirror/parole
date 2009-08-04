@@ -90,6 +90,8 @@ void			         parole_media_list_open_location    (ParoleMediaList *list);
 void				 parole_media_list_add_files        (ParoleMediaList *list,
 								     gchar **filenames);
 
+void				 parole_media_list_save_list	    (ParoleMediaList *list);
+
 G_END_DECLS
 
 #endif /* __PAROLE_MEDIA_LIST_H */

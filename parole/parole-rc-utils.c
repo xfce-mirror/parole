@@ -135,14 +135,14 @@ gchar **parole_rc_read_entry_list (const gchar *property, const gchar *group)
     return ret_val;
 }
 
-gchar **parole_get_history (void)
+gchar **parole_get_history_full	(const gchar *relpath)
 {
     gchar **lines = NULL;
     gchar *history = NULL;
     gchar *contents = NULL;
     gsize length = 0;
     
-    history = xfce_resource_lookup (XFCE_RESOURCE_CACHE, PAROLE_HISTORY_FILE);
+    history = xfce_resource_lookup (XFCE_RESOURCE_CACHE, relpath);
     
     if (history && g_file_get_contents (history, &contents, &length, NULL)) 
     {
@@ -155,11 +155,21 @@ gchar **parole_get_history (void)
     return lines;
 }
 
+gchar **parole_get_history (void)
+{
+    return parole_get_history_full (PAROLE_HISTORY_FILE);
+}
+
 void parole_insert_line_history (const gchar *line)
+{
+    parole_insert_line_history_full (PAROLE_HISTORY_FILE, line);
+}
+
+void parole_insert_line_history_full (const gchar *relpath, const gchar *line)
 {
     gchar *history = NULL;
     
-    history = xfce_resource_save_location (XFCE_RESOURCE_CACHE, PAROLE_HISTORY_FILE, TRUE);
+    history = xfce_resource_save_location (XFCE_RESOURCE_CACHE, relpath, TRUE);
     
     if ( history ) 
     {
@@ -167,9 +177,28 @@ void parole_insert_line_history (const gchar *line)
 	f = fopen (history, "a");
 	fprintf (f, "%s\n", line);
 	fclose (f);
+	g_free (history);
     }
     else
 	g_warning ("Unable to open cache file");
- 
-     g_free (history);
+}
+
+void parole_clear_history_file (void)
+{
+    parole_clear_history_file_full (PAROLE_HISTORY_FILE);
+}
+
+void parole_clear_history_file_full (const gchar *relpath)
+{
+    gchar *history = NULL;
+    
+    history = xfce_resource_save_location (XFCE_RESOURCE_CACHE, relpath, FALSE);
+    
+    if ( history )
+    {
+	FILE *f;
+	f = fopen (history, "w");
+	fclose (f);
+	g_free (history);
+    }
 }

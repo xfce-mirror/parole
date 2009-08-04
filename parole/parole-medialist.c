@@ -46,7 +46,10 @@
 #include "parole-filters.h"
 #include "parole-pl-parser.h"
 #include "parole-utils.h"
+#include "parole-rc-utils.h"
 #include "parole-dbus.h"
+
+#define PAROLE_AUTO_SAVED_PLAYLIST 	"xfce4/parole/auto-saved-playlist.m3u"
 
 typedef struct
 {
@@ -645,11 +648,39 @@ parole_media_list_clear_list (ParoleMediaList *list)
 }
 
 static void
+save_list_activated_cb (GtkWidget *mi)
+{
+    gboolean active;
+    
+    active = gtk_check_menu_item_get_active (GTK_CHECK_MENU_ITEM (mi));
+    
+    parole_rc_write_entry_bool ("SAVE_LIST_ON_EXIT", PAROLE_RC_GROUP_GENERAL, active);
+}
+
+static void
 parole_media_list_show_menu (ParoleMediaList *list, guint button, guint activate_time)
 {
     GtkWidget *menu, *mi;
 
     menu = gtk_menu_new ();
+    
+    mi = gtk_check_menu_item_new_with_label (_("Remember playlist"));
+    gtk_widget_set_sensitive (mi, TRUE);
+    gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (mi),
+				    parole_rc_read_entry_bool ("SAVE_LIST_ON_EXIT", 
+							        PAROLE_RC_GROUP_GENERAL, 
+								FALSE));
+    g_signal_connect (mi, "activate",
+                      G_CALLBACK (save_list_activated_cb), NULL);
+			      
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+    
+    gtk_widget_show (mi);
+    
+    mi = gtk_separator_menu_item_new ();
+    gtk_widget_show (mi);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+    
     
     /* Clear */
     mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_CLEAR, NULL);
@@ -798,6 +829,8 @@ parole_media_list_init (ParoleMediaList *list)
 {
     GtkBuilder *builder;
     GtkWidget  *box;
+    gboolean    load_saved_list;
+    GSList     *fileslist = NULL;
     
     list->priv = PAROLE_MEDIA_LIST_GET_PRIVATE (list);
     
@@ -822,6 +855,33 @@ parole_media_list_init (ParoleMediaList *list)
     gtk_widget_show_all (GTK_WIDGET (list));
     
     parole_media_list_dbus_init (list);
+    
+    load_saved_list = parole_rc_read_entry_bool ("SAVE_LIST_ON_EXIT", PAROLE_RC_GROUP_GENERAL, FALSE);
+    
+    if ( load_saved_list )
+    {
+	gchar *playlist_file;
+	playlist_file = xfce_resource_save_location (XFCE_RESOURCE_DATA, 
+			 		             PAROLE_AUTO_SAVED_PLAYLIST, 
+						     FALSE);
+	if ( playlist_file )
+	{
+	    fileslist = parole_pl_parser_load_file (playlist_file);
+	    g_free (playlist_file);
+	    if ( fileslist )
+	    {
+		guint i, len;
+		len = g_slist_length (fileslist);
+		for ( i = 0; i < len; i++)
+		{
+		    ParoleFile *file;
+		    file = g_slist_nth_data (fileslist, i);
+		    parole_media_list_add (list, file, FALSE);
+		}
+		g_slist_free (fileslist);
+	    }
+	}
+    }
 }
 
 GtkWidget *
@@ -976,6 +1036,35 @@ void parole_media_list_add_files (ParoleMediaList *list, gchar **filenames)
     
     for ( i = 0; filenames && filenames[i] != NULL; i++)
 	    parole_media_list_add_by_path (list, filenames[i], i == 0 ? TRUE : FALSE);
+}
+
+void parole_media_list_save_list (ParoleMediaList *list)
+{
+    gboolean save;
+    
+    save = parole_rc_read_entry_bool ("SAVE_LIST_ON_EXIT", PAROLE_RC_GROUP_GENERAL, FALSE);
+    
+    if ( save )
+    {
+	GSList *fileslist;
+	gchar *history;
+
+	history = xfce_resource_save_location (XFCE_RESOURCE_DATA, PAROLE_AUTO_SAVED_PLAYLIST , TRUE);
+	
+	if ( !history )
+	{
+	    g_warning ("Failed to save playlist");
+	    return;
+	}
+	
+	fileslist = parole_media_list_get_files (list);
+	if ( g_slist_length (fileslist) > 0 )
+	{
+	    parole_pl_parser_save_file (fileslist, history, PAROLE_PL_FORMAT_M3U);
+	    g_slist_foreach (fileslist, (GFunc) g_object_unref, NULL);
+	}
+	g_slist_free (fileslist);
+    }
 }
 
 static gboolean	 parole_media_list_dbus_add_files (ParoleMediaList *list,
