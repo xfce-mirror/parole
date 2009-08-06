@@ -1,3 +1,25 @@
+2009-08-06: 14:30 Ali aliov@xfce.org
+	* parole-gst.c Implement a timeout handler to check state change
+	failure, can potentially happen on live streams.
+	* Change the about dialog.
+	* Change the version from 0.1 to 0.1.90 as the first stable
+	version should be 0.2
+	* parole-disc.c code to correctly checks if cd drive has a cdda,
+	this is a Linux specific thing.
+	* parole-gst.c the buffering bit when we force a stop state while
+	stream is buffering.
+	* parole-openlocation.c button to clear history of open locations.
+	* plugins/ Added a simple window title plugin to change
+	the title of the main window to the current playing stream.
+	* Set All the popup pos to be always center on parent.
+	* parole-plugin.c get rid of some useless code+properly
+	free the plugin data in finalize.
+	* parole-module.c fix a small memory leak.
+	* parole.h Support for site in the description of the plugin.
+	* parole-statusbar.c hide the separator when going to 
+	fullscreen mode.
+	* Update the POTFILES.in and the .pot files.
+
 2009-08-04: 18:00 Ali aliov@xfce.org
 	* Added option to remember the currently loaded media 
 	files in the playlist view.

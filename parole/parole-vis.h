@@ -26,6 +26,4 @@
 
 GHashTable        *parole_vis_get_plugins			(void);
 
-//GstElement	*parole_vis_get_for_name		(void)
-
 #endif /* __PAROLE_VIS_H_ */

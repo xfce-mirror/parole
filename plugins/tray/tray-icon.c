@@ -162,7 +162,7 @@ tray_activate_cb (GtkStatusIcon *tray, PluginData *data)
     if ( GTK_WIDGET_VISIBLE (data->window) )
 	gtk_widget_hide (data->window);
     else
-	gtk_window_present (GTK_WINDOW (data->window));
+	gtk_widget_show (data->window);
 }
 
 #ifdef HAVE_LIBNOTIFY
@@ -426,4 +426,5 @@ construct (ParolePlugin *plugin)
 PAROLE_PLUGIN_CONSTRUCT (construct,                  	    /* Construct function */
 			 _("Tray icon"),            	    /* Title */
 			 _("Show icon in the system tray"), /* Description */
-			 "Ali Abdallah");            	    /* Author */
+			 "Copyright \302\251 2009 Ali Abdallah aliov@xfce.org", /* Author */
+			 "http://goodies.xfce.org/projects/applications/parole-media-player"); /* Site */

@@ -27,54 +27,53 @@
 #include <string.h>
 
 #include <libxfce4util/libxfce4util.h>
+#include <libxfcegui4/libxfcegui4.h>
 
 #include "parole-about.h"
 
-static void
-parole_link_browser (GtkAboutDialog *about, const gchar *link, gpointer data)
-{
-    gchar *cmd = g_strdup_printf ("%s %s", "xdg-open", link);
-    g_spawn_command_line_async (cmd, NULL);
-    g_free (cmd);
-}
-
-static void
-parole_link_mailto (GtkAboutDialog *about, const gchar *link, gpointer data)
-{
-    gchar *cmd = g_strdup_printf( "%s %s", "xdg-email", link);
-
-    g_spawn_command_line_async (cmd, NULL);
-    
-    g_free (cmd);
-}
-
 void  parole_about (const gchar *package)
 {
-    const gchar* authors[3] = 
-    {
-	"Ali Abdallah <aliov@xfce.org>", 
-	 NULL
-    };
-							    
-    static const gchar *documenters[] =
-    {
-	"Ali Abdallah <aliov@xfce.org>",
-	NULL,
-    };
-    
+    XfceAboutInfo *info;
+    GtkWidget *dialog;
+    gint x, y;
+    GdkPixbuf *icon;
+    guint n;
 
-    gtk_about_dialog_set_url_hook (parole_link_browser, NULL, NULL);
-    gtk_about_dialog_set_email_hook (parole_link_mailto, NULL, NULL);
+    static const struct
+    {
+	gchar *name, *email, *language;
+    } 	
+    translators[] = 
+    {
+	{"", "", "",},
+    };
+
+    info = xfce_about_info_new ("Parole", VERSION, _("Parole Media Player"),
+                                XFCE_COPYRIGHT_TEXT ("2009", "Ali Abdallah"), 
+				XFCE_LICENSE_GPL);
+
+    xfce_about_info_set_homepage (info, "http://goodies.xfce.org/projects/applications/parole-media-player");
+    xfce_about_info_add_credit (info, "Ali Abdallah", "aliov@xfce.org", _("Author/Maintainer"));
+  
+
+    for (n = 0; n < G_N_ELEMENTS (translators); ++n) 
+    {
+	gchar *s;
+	s = g_strdup_printf (_("Translator (%s)"), translators[n].language);
+	xfce_about_info_add_credit (info, translators[n].name, translators[n].email, s);
+	g_free (s);
+    }
+
+    gtk_icon_size_lookup (GTK_ICON_SIZE_DIALOG, &x, &y);
+    icon = xfce_themed_icon_load ("parole", x);
     
-    gtk_show_about_dialog (NULL,
-		           "authors", authors,
-			   "copyright", "Copyright \302\251 2009 Ali Abdallah",
-			   "destroy-with-parent", TRUE,
-			   "documenters", documenters,
-			   "license", XFCE_LICENSE_GPL,
-			   "name", package,
-			   "translator-credits", _("translator-credits"),
-			   "version", PACKAGE_VERSION,
-			   "website", "http://goodies.xfce.org",
-			   NULL);
+    dialog = xfce_about_dialog_new_with_values (NULL, info, icon);
+    
+    if (icon)
+	g_object_unref (G_OBJECT (icon));
+	
+    gtk_dialog_run (GTK_DIALOG (dialog));
+    gtk_widget_destroy (dialog);
+
+    xfce_about_info_free (info);
 }

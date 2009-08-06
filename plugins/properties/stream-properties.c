@@ -287,4 +287,5 @@ construct (ParolePlugin *plugin)
 PAROLE_PLUGIN_CONSTRUCT (construct,                  /* Construct function */
 			 _("Properties"),            /* Title */
 			 _("Read media properties"), /* Description */
-			 "Ali Abdallah");            /* Author */
+			 "Copyright \302\251 2009 Ali Abdallah aliov@xfce.org",            /* Author */
+			 "http://goodies.xfce.org/projects/applications/parole-media-player"); /* Site */

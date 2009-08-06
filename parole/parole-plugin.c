@@ -56,12 +56,12 @@ struct _ParolePluginPrivate
     gchar *title;
     gchar *author;
     gchar *desc;
+    gchar *site;
 
     GtkWidget *widget;
     gboolean packed;
     
     gboolean configurable;
-    gboolean show_about;
     
     /* sig id's*/
     gulong gst_sig1;
@@ -76,8 +76,8 @@ enum
     PROP_TITLE,
     PROP_DESC,
     PROP_AUTHOR,
-    PROP_CONFIGURABLE,
-    PROP_SHOW_ABOUT
+    PROP_SITE,
+    PROP_CONFIGURABLE
 };
 
 enum
@@ -88,7 +88,6 @@ enum
     BUFFERING,
     FREE_DATA,
     CONFIGURE,
-    ABOUT,
     LAST_SIGNAL
 };
 
@@ -139,7 +138,7 @@ parole_plugin_class_init (ParolePluginClass *klass)
      * @stream: a #ParoleStream.
      * @state: the new state.
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     signals[STATE_CHANGED] = 
         g_signal_new ("state-changed",
@@ -156,7 +155,7 @@ parole_plugin_class_init (ParolePluginClass *klass)
      * @plugin: the object which received the signal.
      * @stream: a #ParoleStream.
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     signals[TAG_MESSAGE] = 
         g_signal_new ("tag-message",
@@ -172,7 +171,7 @@ parole_plugin_class_init (ParolePluginClass *klass)
      * @plugin: the object which received the signal.
      * @stream: a #ParoleStream.
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     signals[PROGRESSED] = 
         g_signal_new ("progressed",
@@ -189,7 +188,7 @@ parole_plugin_class_init (ParolePluginClass *klass)
      * @plugin: the object which received the signal.
      * @stream: a #ParoleStream.
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     signals[BUFFERING] = 
         g_signal_new ("buffering",
@@ -209,7 +208,7 @@ parole_plugin_class_init (ParolePluginClass *klass)
      * any dynamiclly allocated memory should be freed in this signal
      * handler.
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     signals [FREE_DATA] = 
         g_signal_new ("free-data",
@@ -227,7 +226,7 @@ parole_plugin_class_init (ParolePluginClass *klass)
      * Emitted when the user click the configure button in the plugins
      * configuration dialog.
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     signals [CONFIGURE] = 
         g_signal_new ("configure",
@@ -239,29 +238,11 @@ parole_plugin_class_init (ParolePluginClass *klass)
                       G_TYPE_NONE, 1, GTK_TYPE_WIDGET);
 
     /**
-     * ParolePlugin::configure:
-     * @plugin: the object which received the signal.
-     * 
-     * Emitted when the user click the configure button in the plugins
-     * configuration dialog.
-     * 
-     * Since: 0.1 
-     **/
-    signals [ABOUT] = 
-        g_signal_new ("about",
-                      PAROLE_TYPE_PLUGIN,
-                      G_SIGNAL_RUN_LAST,
-                      G_STRUCT_OFFSET(ParolePluginClass, about),
-                      NULL, NULL,
-                      g_cclosure_marshal_VOID__OBJECT,
-                      G_TYPE_NONE, 1, GTK_TYPE_WIDGET);
-
-    /**
      * ParolePlugin:title:
      * 
      * Title to display for this plugin.
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
                                      PROP_TITLE,
@@ -276,7 +257,7 @@ parole_plugin_class_init (ParolePluginClass *klass)
      * 
      * Description of the plugin.
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
                                      PROP_DESC,
@@ -291,11 +272,26 @@ parole_plugin_class_init (ParolePluginClass *klass)
      * 
      * Author of the plugin.
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
                                      PROP_AUTHOR,
                                      g_param_spec_string ("author",
+                                                          NULL, NULL,
+                                                          NULL,
+                                                          G_PARAM_READWRITE|
+							  G_PARAM_CONSTRUCT_ONLY));
+    
+    /**
+     * ParolePlugin:site:
+     * 
+     * The website of the plugin.
+     * 
+     * Since: 0.2 
+     **/
+    g_object_class_install_property (object_class,
+                                     PROP_SITE,
+                                     g_param_spec_string ("site",
                                                           NULL, NULL,
                                                           NULL,
                                                           G_PARAM_READWRITE|
@@ -305,7 +301,7 @@ parole_plugin_class_init (ParolePluginClass *klass)
      * ParolePlugin:configurable:
      * 
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
                                      PROP_CONFIGURABLE,
@@ -314,19 +310,6 @@ parole_plugin_class_init (ParolePluginClass *klass)
                                                            FALSE,
                                                            G_PARAM_READWRITE));
 							  
-    /**
-     * ParolePlugin:show-about:
-     * 
-     * 
-     * Since: 0.1 
-     **/
-    g_object_class_install_property (object_class,
-                                     PROP_SHOW_ABOUT,
-                                     g_param_spec_boolean ("show-about",
-                                                           NULL, NULL,
-                                                           FALSE,
-                                                           G_PARAM_READWRITE));
-							   
     g_type_class_add_private (klass, sizeof (ParolePluginPrivate));
 }
 
@@ -338,6 +321,9 @@ parole_plugin_init (ParolePlugin *plugin)
     priv = PAROLE_PLUGIN_GET_PRIVATE (plugin);
     
     priv->title  = NULL;
+    priv->desc   = NULL;
+    priv->author = NULL;
+    priv->site   = NULL;
     priv->packed = FALSE;
     priv->widget = NULL;
     priv->configurable = FALSE;
@@ -376,11 +362,11 @@ static void parole_plugin_set_property (GObject *object,
 	case PROP_AUTHOR:
 	    PAROLE_PLUGIN_GET_PRIVATE (plugin)->author = g_value_dup_string (value);
 	    break;
+	case PROP_SITE:
+	    PAROLE_PLUGIN_GET_PRIVATE (plugin)->site = g_value_dup_string (value);
+	    break;
 	case PROP_CONFIGURABLE:
 	    PAROLE_PLUGIN_GET_PRIVATE (plugin)->configurable = g_value_get_boolean (value);
-	    break;
-	case PROP_SHOW_ABOUT:
-	    PAROLE_PLUGIN_GET_PRIVATE (plugin)->show_about = g_value_get_boolean (value);
 	    break;
 	default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -408,11 +394,11 @@ static void parole_plugin_get_property (GObject *object,
 	case PROP_AUTHOR:
 	    g_value_set_string (value, PAROLE_PLUGIN_GET_PRIVATE (plugin)->author);
 	    break;
+	case PROP_SITE:
+	    g_value_set_string (value, PAROLE_PLUGIN_GET_PRIVATE (plugin)->site);
+	    break;
 	case PROP_CONFIGURABLE:
 	    g_value_set_boolean (value, PAROLE_PLUGIN_GET_PRIVATE (plugin)->configurable);
-	    break;
-	case PROP_SHOW_ABOUT:
-	    g_value_set_boolean (value, PAROLE_PLUGIN_GET_PRIVATE (plugin)->show_about);
 	    break;
 	default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -448,6 +434,15 @@ parole_plugin_finalize (GObject *object)
     if ( priv->title )
 	g_free (priv->title);
 	
+    if ( priv->desc )
+	g_free (priv->desc);
+	
+    if ( priv->author )
+	g_free (priv->author);
+	
+    if ( priv->site )
+	g_free (priv->site);
+	
     if ( priv->packed && GTK_IS_WIDGET (priv->widget))
 	gtk_widget_destroy (GTK_WIDGET (priv->widget));
 
@@ -464,7 +459,7 @@ parole_plugin_finalize (GObject *object)
  * Returns: A new #ParolePlugin object.
  **/
 ParolePlugin *
-parole_plugin_new (const gchar *title, const gchar *desc, const gchar *author)
+parole_plugin_new (const gchar *title, const gchar *desc, const gchar *author, const gchar *website)
 {
     ParolePlugin *plugin = NULL;
     
@@ -472,6 +467,7 @@ parole_plugin_new (const gchar *title, const gchar *desc, const gchar *author)
 			   "title", title, 
 			   "description", desc,
 			   "author", author,
+			   "site", website,
 			   NULL);
     return plugin;
 }
@@ -575,35 +571,6 @@ void parole_plugin_set_is_configurable (ParolePlugin *plugin, gboolean is_config
     g_return_if_fail (PAROLE_IS_PLUGIN (plugin));
     
     PAROLE_PLUGIN_GET_PRIVATE (plugin)->configurable = is_configurable;
-}
-
-/**
- * parole_plugin_get_show_about:
- * @plugin: a #ParolePlugin.
- * 
- * 
- * 
- * Returns:
- **/
-gboolean parole_plugin_get_show_about (ParolePlugin *plugin)
-{
-    g_return_val_if_fail (PAROLE_IS_PLUGIN (plugin), FALSE);
-    
-    return PAROLE_PLUGIN_GET_PRIVATE (plugin)->show_about;
-}
-
-/**
- * parole_plugin_set_show_about:
- * @plugin: a #ParolePlugin.
- * 
- * 
- * 
- **/
-void parole_plugin_set_show_about (ParolePlugin *plugin, gboolean show_about)
-{
-    g_return_if_fail (PAROLE_IS_PLUGIN (plugin));
-    
-    PAROLE_PLUGIN_GET_PRIVATE (plugin)->show_about = show_about;
 }
 
 /**

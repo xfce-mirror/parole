@@ -55,9 +55,12 @@ static void	parole_gst_play_file_internal 	(ParoleGst *gst);
 
 static void     parole_gst_change_state 	(ParoleGst *gst, 
 						 GstState new);
+
+static void	parole_gst_terminate_internal   (ParoleGst *gst, 
+						 gboolean fade_sound);
 						 
 static void     parole_gst_seek_cdda_track	(ParoleGst *gst,
-						 gint track) G_GNUC_UNUSED;
+						 gint track);
 
 struct ParoleGstPrivate
 {
@@ -83,6 +86,7 @@ struct ParoleGstPrivate
     gboolean      update_color_balance;
     
     ParoleAspectRatio aspect_ratio;
+    gulong	  state_change_id;
     
     /*
      * xvimage sink has brightness+hue+aturation+contrast.
@@ -565,29 +569,6 @@ parole_gst_query_capabilities (ParoleGst *gst)
 }
 
 static void
-parole_gst_query_cdda_tracks (ParoleGst *gst)
-{
-    GstFormat format;
-    gint64 duration;
-    gint tracks;
-    
-    format = gst_format_get_by_nick ("track");
-    
-    if ( format != GST_FORMAT_UNDEFINED )
-    {
-	gst_element_query_duration (gst->priv->playbin, &format, &duration);
-	
-	tracks = (gint) duration;
-	
-	TRACE ("CDDA source has %d tacks", tracks);
-	
-	g_object_set (G_OBJECT (gst->priv->stream),
-		      "num-tracks", tracks,
-		      NULL);
-    }
-}
-
-static void
 parole_gst_query_duration (ParoleGst *gst)
 {
     ParoleMediaType media_type;
@@ -600,9 +581,6 @@ parole_gst_query_duration (ParoleGst *gst)
     g_object_get (G_OBJECT (gst->priv->stream),
 		  "media-type", &media_type,
 		  NULL);
-    
-    if ( media_type == PAROLE_MEDIA_TYPE_CDDA )
-	parole_gst_query_cdda_tracks (gst);
     
     gst_time = GST_FORMAT_TIME;
     
@@ -718,6 +696,9 @@ parole_gst_get_pad_capabilities (GObject *object, GParamSpec *pspec, ParoleGst *
     
     pad = GST_PAD (object);
     
+    if ( !GST_IS_PAD (pad) || !GST_PAD_CAPS (pad) )
+	return;
+    
     st = gst_caps_get_structure (GST_PAD_CAPS (pad), 0);
     
     if ( st )
@@ -735,7 +716,7 @@ parole_gst_get_pad_capabilities (GObject *object, GParamSpec *pspec, ParoleGst *
 	{
 	    num = gst_value_get_fraction_numerator (value),
 	    den = gst_value_get_fraction_denominator (value);
-	    TRACE ("FIXME: Use these value num=%d den=%d \n", num, den);
+	    TRACE ("FIXME: Use these values num=%d den=%d \n", num, den);
 	}
 		      
 	parole_gst_get_video_output_size (gst, &width, &height);
@@ -780,7 +761,7 @@ parole_gst_query_info (ParoleGst *gst)
 	    
 	    if ( pad )
 	    {
-		if ( GST_PAD_CAPS (pad) )
+		if ( GST_IS_PAD (pad) && GST_PAD_CAPS (pad) )
 		{
 		    parole_gst_get_pad_capabilities (G_OBJECT (pad), NULL, gst);
 		}
@@ -862,7 +843,11 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
     parole_gst_tick (gst);
 
     if ( gst->priv->target == new )
+    {
 	parole_gst_set_window_cursor (GTK_WIDGET (gst)->window, NULL);
+	if ( gst->priv->state_change_id != 0 )
+	    g_source_remove (gst->priv->state_change_id);
+    }
 
     switch (gst->priv->state)
     {
@@ -891,6 +876,7 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 			   gst->priv->stream, PAROLE_MEDIA_STATE_PAUSED);
 	    break;
 	case GST_STATE_READY:
+	    gst->priv->buffering = FALSE;
 	    if ( gst->priv->update_vis)
 		parole_gst_update_vis (gst);
 		
@@ -913,6 +899,7 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 	    }
 	    break;
 	case GST_STATE_NULL:
+	    gst->priv->buffering = FALSE;
 	    gst->priv->media_state = PAROLE_MEDIA_STATE_STOPPED;
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
 			   gst->priv->stream, PAROLE_MEDIA_STATE_STOPPED);
@@ -1086,7 +1073,7 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
 			      "track", &current_track,
 			      NULL);
 			  
-		TRACE ("------------------Current track %d Number of tracks %d", current_track, num_tracks);
+		TRACE ("Current track %d Number of tracks %d", current_track, num_tracks);
 		if ( num_tracks != current_track )
 		{
 		    parole_gst_seek_cdda_track (gst, current_track);
@@ -1462,6 +1449,65 @@ ParoleMediaType	parole_gst_get_current_stream_type (ParoleGst *gst)
     return type;
 }
 
+static gboolean
+parole_gst_check_state_change_timeout (gpointer data)
+{
+    ParoleGst *gst;
+    
+    gst = PAROLE_GST (data);
+
+    TRACE ("target =%d current state=%d", gst->priv->target, gst->priv->state);
+    
+    if ( gst->priv->state != gst->priv->target )
+    {
+	gboolean ret_val = 
+	    xfce_confirm (_("The stream is tacking too much time to load"), GTK_STOCK_OK, _("Stop"));
+	    
+	if ( ret_val )
+	{
+	    parole_gst_terminate_internal (gst, FALSE);
+	    gst->priv->state_change_id = 0;
+	    return FALSE;
+	}
+    }
+    return TRUE;
+}
+
+static void
+parole_gst_terminate_internal (ParoleGst *gst, gboolean fade_sound)
+{
+    g_mutex_lock (gst->priv->lock);
+    
+    parole_stream_init_properties (gst->priv->stream);
+    gst->priv->target = GST_STATE_NULL;
+    
+    g_mutex_unlock (gst->priv->lock);
+
+    parole_window_busy_cursor (GTK_WIDGET (gst)->window);
+    
+    if ( fade_sound && gst->priv->state == GST_STATE_PLAYING )
+    {
+	gdouble volume;
+	gdouble step;
+	volume = parole_gst_get_volume (gst);
+	/*
+	 * Like amarok, reduce the sound slowley then exit.
+	 */
+	if ( volume != 0 )
+	{
+	    while ( volume > 0 )
+	    {
+		step = volume - volume / 10;
+		parole_gst_set_volume (gst, step < 0.01 ? 0 : step);
+		volume = parole_gst_get_volume (gst);
+		g_usleep (35000);
+	    }
+	}
+    }
+    
+    parole_gst_change_state (gst, GST_STATE_NULL);
+}
+
 static void
 parole_gst_conf_notify_cb (GObject *object, GParamSpec *spec, ParoleGst *gst)
 {
@@ -1581,6 +1627,7 @@ parole_gst_init (ParoleGst *gst)
     gst->priv->vis_sink = NULL;
     gst->priv->buffering = FALSE;
     gst->priv->update_color_balance = TRUE;
+    gst->priv->state_change_id = 0;
     
     gst->priv->conf = parole_conf_new ();
     
@@ -1628,17 +1675,20 @@ void parole_gst_play_uri (ParoleGst *gst, const gchar *uri)
     g_mutex_lock (gst->priv->lock);
     
     gst->priv->target = GST_STATE_PLAYING;
-    
     parole_stream_init_properties (gst->priv->stream);
-    
     g_object_set (G_OBJECT (gst->priv->stream),
 	          "uri", uri,
 		  NULL);
 
     g_mutex_unlock (gst->priv->lock);
     
-    parole_window_busy_cursor (GTK_WIDGET (gst)->window);
+    if ( gst->priv->state_change_id == 0 )
+	gst->priv->state_change_id = g_timeout_add_seconds (20, 
+							    (GSourceFunc) parole_gst_check_state_change_timeout, 
+							    gst);
     
+    parole_window_busy_cursor (GTK_WIDGET (gst)->window);
+
     if ( gst->priv->state < GST_STATE_PAUSED )
 	parole_gst_play_file_internal (gst);
     else 
@@ -1685,35 +1735,7 @@ void parole_gst_stop (ParoleGst *gst)
 
 void parole_gst_terminate (ParoleGst *gst)
 {
-    g_mutex_lock (gst->priv->lock);
-    
-    parole_stream_init_properties (gst->priv->stream);
-    gst->priv->target = GST_STATE_NULL;
-    
-    g_mutex_unlock (gst->priv->lock);
-
-    parole_window_busy_cursor (GTK_WIDGET (gst)->window);
-    
-    if ( gst->priv->state == GST_STATE_PLAYING )
-    {
-	gdouble volume;
-	gdouble step;
-	volume = parole_gst_get_volume (gst);
-	/*
-	 * Like amarok, reduce the sound slowley then exit.
-	 */
-	if ( volume != 0 )
-	{
-	    while ( volume > 0 )
-	    {
-		step = volume - volume / 10;
-		parole_gst_set_volume (gst, step < 0.01 ? 0 : step);
-		volume = parole_gst_get_volume (gst);
-		g_usleep (35000);
-	    }
-	}
-    }
-    parole_gst_change_state (gst, GST_STATE_NULL);
+    parole_gst_terminate_internal (gst, TRUE);
 }
 
 void parole_gst_seek (ParoleGst *gst, gdouble pos)
@@ -1722,7 +1744,6 @@ void parole_gst_seek (ParoleGst *gst, gdouble pos)
     gint64 absolute_duration;
     gdouble duration;
     gboolean seekable;
-    gboolean ret;
 
     TRACE ("Seeking");
 
@@ -1740,17 +1761,12 @@ void parole_gst_seek (ParoleGst *gst, gdouble pos)
 	
     seek = (gint64) (pos * absolute_duration) / duration;
     
-    ret = gst_element_seek (gst->priv->playbin,
-			    1.0,
-			    GST_FORMAT_TIME,
-			    GST_SEEK_FLAG_KEY_UNIT | GST_SEEK_FLAG_FLUSH,
-			    GST_SEEK_TYPE_SET, seek,
-			    GST_SEEK_TYPE_NONE, GST_CLOCK_TIME_NONE);
-			    
-    if ( !ret )
-    {
-	g_warning ("Failed to seek element");
-    }
+    g_warn_if_fail ( gst_element_seek (gst->priv->playbin,
+				       1.0,
+				       GST_FORMAT_TIME,
+				       GST_SEEK_FLAG_KEY_UNIT | GST_SEEK_FLAG_FLUSH,
+				       GST_SEEK_TYPE_SET, seek,
+				       GST_SEEK_TYPE_NONE, GST_CLOCK_TIME_NONE));
 }
 
 void parole_gst_set_volume (ParoleGst *gst, gdouble value)

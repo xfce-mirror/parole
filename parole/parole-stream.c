@@ -295,7 +295,7 @@ parole_stream_class_init (ParoleStreamClass *klass)
      * 
      * Currently loaded uri.
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
 				     PROP_URI,
@@ -309,7 +309,7 @@ parole_stream_class_init (ParoleStreamClass *klass)
      * 
      * Whether the stream has audio.
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
 				     PROP_HAS_AUDIO,
@@ -322,7 +322,7 @@ parole_stream_class_init (ParoleStreamClass *klass)
      * 
      * Whether the stream has video.
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
 				     PROP_HAS_VIDEO,
@@ -336,7 +336,7 @@ parole_stream_class_init (ParoleStreamClass *klass)
      * 
      * Whether the stream is a live stream.
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
 				     PROP_LIVE,
@@ -350,7 +350,7 @@ parole_stream_class_init (ParoleStreamClass *klass)
      * 
      *
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
 				     PROP_MEDIA_TYPE,
@@ -366,7 +366,7 @@ parole_stream_class_init (ParoleStreamClass *klass)
      * Whether the stream is seekable, for example live 
      * streams are not seekable.
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
 				     PROP_SEEKABLE,
@@ -380,7 +380,7 @@ parole_stream_class_init (ParoleStreamClass *klass)
      * 
      * 
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
 				     PROP_DURATION,
@@ -395,7 +395,7 @@ parole_stream_class_init (ParoleStreamClass *klass)
      * 
      * Whether tags information are available on the current stream.
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
 				     PROP_SEEKABLE,
@@ -409,7 +409,7 @@ parole_stream_class_init (ParoleStreamClass *klass)
      * 
      * 
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
 				     PROP_ABSOLUTE_DURATION,
@@ -424,7 +424,7 @@ parole_stream_class_init (ParoleStreamClass *klass)
      * 
      * 
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
 				     PROP_VIDEO_WIDTH,
@@ -439,7 +439,7 @@ parole_stream_class_init (ParoleStreamClass *klass)
      * 
      * 
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
 				     PROP_VIDEO_HEIGHT,
@@ -455,7 +455,7 @@ parole_stream_class_init (ParoleStreamClass *klass)
      * Number of tracks in the cdda source, only valid if
      * ParoleStream:media-type: is PAROLE_MEDIA_TYPE_CDDA.
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
 				     PROP_TRACKS,
@@ -469,7 +469,7 @@ parole_stream_class_init (ParoleStreamClass *klass)
      * ParoleStream:track:
      * 
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
 				     PROP_TRACK,
@@ -483,7 +483,7 @@ parole_stream_class_init (ParoleStreamClass *klass)
      * 
      * 
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
 				     PROP_TITLE,
@@ -498,7 +498,7 @@ parole_stream_class_init (ParoleStreamClass *klass)
      * 
      * 
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
 				     PROP_ARTIST,
@@ -512,7 +512,7 @@ parole_stream_class_init (ParoleStreamClass *klass)
      * 
      * 
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
 				     PROP_YEAR,
@@ -526,7 +526,7 @@ parole_stream_class_init (ParoleStreamClass *klass)
      * 
      * 
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
 				     PROP_ALBUM,
@@ -540,7 +540,7 @@ parole_stream_class_init (ParoleStreamClass *klass)
      * 
      * 
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
 				     PROP_COMMENT,

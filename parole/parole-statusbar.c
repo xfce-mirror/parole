@@ -44,6 +44,7 @@ struct ParoleStatusbarPrivate
     GtkWidget    *progress;
     GtkWidget    *label_text;
     GtkWidget    *label_duration;
+    GtkWidget    *sep;
     
     gdouble       duration;
     gdouble       pos;
@@ -241,7 +242,7 @@ parole_statusbar_init (ParoleStatusbar *statusbar)
     GtkBuilder *builder;
     
     statusbar->priv = PAROLE_STATUSBAR_GET_PRIVATE (statusbar);
-    statusbar->priv->plugin = parole_plugin_new (NULL, NULL, NULL);
+    statusbar->priv->plugin = parole_plugin_new (NULL, NULL, NULL, NULL);
     
     statusbar->priv->duration = 0;
     statusbar->priv->pos = 0;
@@ -249,6 +250,8 @@ parole_statusbar_init (ParoleStatusbar *statusbar)
     builder = parole_builder_get_main_interface ();
     
     box = GTK_WIDGET (gtk_builder_get_object (builder, "statusbox"));
+    
+    statusbar->priv->sep = GTK_WIDGET (gtk_builder_get_object (builder, "status-sep"));
     
     statusbar->priv->progress = gtk_progress_bar_new ();
     gtk_widget_hide (statusbar->priv->progress);
@@ -305,5 +308,14 @@ parole_statusbar_new (void)
 
 void parole_statusbar_set_visible (ParoleStatusbar *bar, gboolean visible)
 {
-    visible ? gtk_widget_show (bar->priv->box) : gtk_widget_hide (bar->priv->box);
+    if ( visible )
+    {
+	gtk_widget_show (bar->priv->sep);
+	gtk_widget_show (bar->priv->box);
+    }
+    else
+    {
+	gtk_widget_hide (bar->priv->sep);
+	gtk_widget_hide (bar->priv->box);
+    }
 }

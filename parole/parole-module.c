@@ -69,6 +69,11 @@ parole_module_unload (GTypeModule *gtype_module)
 
     g_module_close (module->mod);
     module->constructor = NULL;
+    
+    if ( module->desc )
+    {
+	g_free (module->desc);
+    }
 }
 
 static void

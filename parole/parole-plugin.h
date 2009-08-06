@@ -80,16 +80,14 @@ struct _ParolePluginClass
     
     void		    (*configure)				(ParolePlugin *plugin,
 									 GtkWidget *widget);
-    
-    void		    (*about)					(ParolePlugin *plugin,
-									 GtkWidget *widget);
 };
 
 GType        		     parole_plugin_get_type        		(void) G_GNUC_CONST;
 
 ParolePlugin       	    *parole_plugin_new             		(const gchar *title,
 								         const gchar *desc, 
-									 const gchar *author);
+									 const gchar *author,
+									 const gchar *website);
 
 GtkWidget		    *parole_plugin_get_main_window 		(ParolePlugin *plugin);
 
@@ -105,9 +103,6 @@ void			     parole_plugin_set_is_configurable 		(ParolePlugin *plugin,
 									 gboolean is_configurable);
 
 gboolean		     parole_plugin_get_show_about 		(ParolePlugin *plugin);
-
-void			     parole_plugin_set_show_about 		(ParolePlugin *plugin,
-									 gboolean show_about);
 
 gboolean		     parole_plugin_play_uri        		(ParolePlugin *plugin,
 									 const gchar *uri);

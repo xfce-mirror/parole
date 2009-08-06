@@ -220,7 +220,8 @@ GtkWidget *parole_media_chooser_open_local (GtkWidget *parent)
     
     if ( parent )
 	gtk_window_set_transient_for (GTK_WINDOW (chooser), GTK_WINDOW (parent));
-    
+	
+    gtk_window_set_position (GTK_WINDOW (chooser), GTK_WIN_POS_CENTER_ON_PARENT);
     parole_media_chooser_open_internal (GTK_WIDGET (chooser));
     
     gtk_window_set_default_size (GTK_WINDOW (chooser), 680, 480);

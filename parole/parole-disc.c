@@ -26,6 +26,15 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <fcntl.h>
+#include <unistd.h>
+#include <sys/stat.h>
+#include <sys/ioctl.h>
+
+#if defined(__linux__)
+#include <linux/cdrom.h>
+#endif
+
 #include <gio/gio.h>
 #include <gtk/gtk.h>
 
@@ -179,6 +188,53 @@ got_cdda:
 }
 
 static void
+parole_disc_check_cdrom (ParoleDisc *disc, GVolume *volume)
+{
+#if defined(__linux__)
+    gint fd;
+    gchar *device;
+    gint drive;
+    
+    device = g_volume_get_identifier (volume, G_VOLUME_IDENTIFIER_KIND_UNIX_DEVICE);
+    TRACE ("device : %s", device);
+    
+    if ( (fd = open (device, O_RDONLY)) < 0 )
+    {
+	g_debug ("Failed to open device : %s", device);
+	disc->priv->needs_update = TRUE;
+	goto out;
+    }
+    
+    if ( (drive = ioctl (fd, CDROM_DRIVE_STATUS, NULL)) )
+    {
+	if ( drive == CDS_DRIVE_NOT_READY )
+	{
+	    g_print ("Drive :%s is not yet ready\n", device);
+	    disc->priv->needs_update = TRUE;
+	    goto out;
+	}
+	if ( drive == CDS_DISC_OK )
+	{
+	    if ( (drive = ioctl (fd, CDROM_DISC_STATUS, NULL)) > 0 )
+	    {
+		if ( drive == CDS_AUDIO || drive == CDS_MIXED )
+		{
+		    MountData *data;
+		    data = parole_disc_get_mount_data (disc, g_volume_get_name (volume), "cdda:/", PAROLE_DISC_CDDA);
+		    g_ptr_array_add (disc->priv->array, data);
+		}
+	    }
+	}
+    }
+    
+    close (fd);
+out:
+    g_free (device);
+    
+#endif /* if defined(__linux__) */
+}
+
+static void
 parole_disc_add_drive (ParoleDisc *disc, GDrive *drive)
 {
     GList *list;
@@ -203,6 +259,11 @@ parole_disc_add_drive (ParoleDisc *disc, GDrive *drive)
 	    parole_disc_add_mount_to_menu (disc, mount);
 	    g_object_unref (mount);
 	}
+	else
+	{
+	    /* Could be a cdda?*/
+	    parole_disc_check_cdrom (disc, volume);
+	}
     }
     
     g_list_foreach (list, (GFunc) g_object_unref, NULL);
@@ -219,6 +280,12 @@ parole_disc_get_drives (ParoleDisc *disc)
     list = g_volume_monitor_get_connected_drives (disc->priv->monitor);
     
     len = g_list_length (list);
+
+    /*
+     * Set the update flag here because it can be set later to TRUE
+     * in case a device is not yet ready.
+     */
+    disc->priv->needs_update = FALSE;
     
     for ( i = 0; i < len; i++)
     {
@@ -231,7 +298,6 @@ parole_disc_get_drives (ParoleDisc *disc)
     
     g_list_foreach (list, (GFunc) g_object_unref, NULL);
     g_list_free (list);
-    disc->priv->needs_update = FALSE;
 }
 
 static void
@@ -246,6 +312,7 @@ parole_disc_monitor_changed_cb (GVolumeMonitor *monitor, gpointer *device, Parol
 {
     guint i;
     
+    TRACE ("Changed");
     for ( i = 0 ; i < disc->priv->array->len; i++)
     {
 	MountData *data;
@@ -302,6 +369,12 @@ parole_disc_init (ParoleDisc *disc)
 		      G_CALLBACK (parole_disc_monitor_changed_cb), disc);
 		      
     g_signal_connect (G_OBJECT (disc->priv->monitor), "mount-removed",
+		      G_CALLBACK (parole_disc_monitor_changed_cb), disc);
+    
+    g_signal_connect (G_OBJECT (disc->priv->monitor), "drive-disconnected",
+		      G_CALLBACK (parole_disc_monitor_changed_cb), disc);
+    
+    g_signal_connect (G_OBJECT (disc->priv->monitor), "drive-eject-button",
 		      G_CALLBACK (parole_disc_monitor_changed_cb), disc);
     
     disc->priv->media_menu = GTK_WIDGET (gtk_builder_get_object (builder, "media-menu"));

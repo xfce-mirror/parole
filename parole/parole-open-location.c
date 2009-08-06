@@ -154,12 +154,22 @@ parole_open_location_finalize (GObject *object)
     G_OBJECT_CLASS (parole_open_location_parent_class)->finalize (object);
 }
 
+static void
+parole_open_location_clear_history (GtkTreeModel *model)
+{
+    parole_clear_history_file ();
+    gtk_list_store_clear (GTK_LIST_STORE (model));
+}
+
 GtkWidget *parole_open_location (GtkWidget *parent)
 {
     GtkEntryCompletion *cmpl;
     GtkTreeModel *model;
     GtkWidget *label;
+    GtkWidget *clear;
+    GtkWidget *img;
     GtkWidget *vbox;
+    GtkWidget *hbox;
     
     ParoleOpenLocation *self = NULL;
     
@@ -169,33 +179,51 @@ GtkWidget *parole_open_location (GtkWidget *parent)
 	gtk_window_set_transient_for (GTK_WINDOW (self), GTK_WINDOW (parent));
     
     gtk_window_set_title (GTK_WINDOW (self), _("Open location..."));
+    gtk_window_set_default_size (GTK_WINDOW (self), 360, 40);
+    gtk_window_set_position (GTK_WINDOW (self), GTK_WIN_POS_CENTER_ON_PARENT);
     
-    label = gtk_label_new (_("Open location of media file or live stream"));
+    label = gtk_label_new (NULL);
+    gtk_label_set_markup (GTK_LABEL (label), _("<b>Open location of media file or live stream:</b>"));
     
     self->priv->entry = gtk_entry_new ();
     model = parole_open_location_get_completion_model ();
     
     gtk_entry_set_activates_default (GTK_ENTRY (self->priv->entry), TRUE);
-    cmpl = gtk_entry_completion_new();
+    cmpl = gtk_entry_completion_new ();
     
     gtk_entry_set_completion (GTK_ENTRY (self->priv->entry), cmpl);
     gtk_entry_completion_set_model (cmpl, model);
+    
     gtk_entry_completion_set_text_column (cmpl, 0);
     gtk_entry_completion_set_match_func (cmpl, 
 					 (GtkEntryCompletionMatchFunc) parole_open_location_match, 
 					 model, 
 					 NULL);
 	
+    img = gtk_image_new_from_stock (GTK_STOCK_CLEAR, GTK_ICON_SIZE_BUTTON);
+    
+    clear = gtk_button_new_with_label (_("Clear history"));
+    g_signal_connect_swapped (clear, "clicked",
+			      G_CALLBACK (parole_open_location_clear_history), model);
+
+    g_object_set (G_OBJECT (clear),
+		  "image", img,
+		  NULL);
+
     vbox = gtk_vbox_new (TRUE, 4);
+    hbox = gtk_hbox_new (FALSE, 8);
     
     gtk_box_pack_start (GTK_BOX (vbox), label, TRUE, TRUE, 0);
-    gtk_box_pack_start (GTK_BOX (vbox), self->priv->entry, TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
+    
+    gtk_box_pack_start (GTK_BOX (hbox), self->priv->entry, TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (hbox), clear, FALSE, FALSE, 0);
     
     gtk_box_pack_start (GTK_BOX (GTK_DIALOG (self)->vbox),
 			vbox,
 			TRUE,   
 			TRUE,
-			0);   
+			10);   
     
     gtk_dialog_add_buttons (GTK_DIALOG (self), 
 			    GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
