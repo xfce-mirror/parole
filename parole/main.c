@@ -54,7 +54,6 @@ show_version (void)
              "Part of the Xfce Goodies Project\n"
              "http://goodies.xfce.org\n\n"
              "Licensed under the GNU GPL.\n\n"), VERSION);
-
     exit (EXIT_SUCCESS);
 }
 
@@ -145,7 +144,8 @@ int main (int argc, char **argv)
     ParolePlayer *player;
     ParolePluginsManager *plugins;
     GtkBuilder *builder;
-    
+    GOptionContext *ctx;
+    GOptionGroup *gst_option_group;
     GError *error = NULL;
     gchar **filenames = NULL;
     gboolean new_instance = FALSE;
@@ -164,28 +164,30 @@ int main (int argc, char **argv)
 
     xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
     
-    if ( !gtk_init_with_args (&argc, &argv, (gchar *)"", option_entries, (gchar *)PACKAGE, &error))
+    gtk_init (&argc, &argv);
+    
+    ctx = g_option_context_new (NULL);
+    
+    gst_option_group = gst_init_get_option_group ();
+    g_option_context_add_main_entries (ctx, option_entries, GETTEXT_PACKAGE);
+    g_option_context_set_translation_domain (ctx, GETTEXT_PACKAGE);
+    g_option_context_add_group (ctx, gst_option_group);
+
+    g_option_context_add_group (ctx, gtk_get_option_group (TRUE));
+    
+    if ( !g_option_context_parse (ctx, &argc, &argv, &error) ) 
     {
-	if (G_LIKELY (error) ) 
-        {
-            g_printerr ("%s: %s.\n", G_LOG_DOMAIN, error->message);
-            g_printerr (_("Type '%s --help' for usage."), G_LOG_DOMAIN);
-            g_printerr ("\n");
-            g_error_free (error);
-        }
-        else
-        {
-            g_error ("Unable to open display.");
-        }
-
-        return EXIT_FAILURE;
+	g_print ("%s\n", error->message);
+	g_print ("Type %s --help to list all available command line options", argv[0]);
+	g_error_free (error);
+	g_option_context_free (ctx);
+	return EXIT_FAILURE;
     }
-
+    g_option_context_free (ctx);
+    
     if ( version )
 	show_version ();
-
-    gst_init (NULL, NULL);
-
+	
     if ( !new_instance && parole_dbus_name_has_owner (PAROLE_DBUS_NAME) )
     {
 	TRACE ("Parole is already running");

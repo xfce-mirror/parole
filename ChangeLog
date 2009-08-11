@@ -1,3 +1,9 @@
+2009-08-11: aliov@xfce.org
+	* main.c show gtk and gst command line options.
+	* parole-medialist.c, allow multiple selection, so handle list up 
+	and down+remove when multiple rows are selected.
+	* Show a button for fast tracks selection when playing cdda.
+
 2009-08-06: 14:30 Ali aliov@xfce.org
 	* parole-gst.c Implement a timeout handler to check state change
 	failure, can potentially happen on live streams.

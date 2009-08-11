@@ -42,12 +42,18 @@ struct ParoleDiscMenuPrivate
 {
     ParoleGst   *gst;
     ParoleMediaType current_media_type;
+    
+    GtkWidget	*disc_track;
+    GtkWidget   *disc_box;
+    
     GtkWidget	*next_chapter;
     GtkWidget	*prev_chapter;
     GtkWidget	*dvd_menu;
     GtkWidget	*chapter_menu;
     GtkWidget	*info;
     GtkWidget   *eventboxinfo;
+    
+    guint tracks;
 };
 
 G_DEFINE_TYPE (ParoleDiscMenu, parole_disc_menu, G_TYPE_OBJECT)
@@ -55,10 +61,12 @@ G_DEFINE_TYPE (ParoleDiscMenu, parole_disc_menu, G_TYPE_OBJECT)
 static void
 parole_disc_menu_hide (ParoleDiscMenu *menu)
 {
+    gtk_widget_hide (menu->priv->disc_track);
     gtk_widget_hide (menu->priv->next_chapter);
     gtk_widget_hide (menu->priv->prev_chapter);
     gtk_widget_hide (menu->priv->info);
     gtk_widget_hide (menu->priv->eventboxinfo);
+    gtk_widget_hide (menu->priv->disc_box);
     //gtk_widget_hide (menu->priv->dvd_menu);
     //gtk_widget_hide (menu->priv->chapter_menu);
 }
@@ -73,9 +81,12 @@ parole_disc_menu_show (ParoleDiscMenu *menu, gboolean show_label)
     {
 	gtk_widget_show (menu->priv->eventboxinfo);
 	gtk_widget_show (menu->priv->info);
+	gtk_widget_show (menu->priv->disc_track);
     }
+    
    //gtk_widget_show (menu->priv->dvd_menu);
-   //gtk_widget_show (menu->priv->chapter_menu);
+   //gtk_widget_show (menu->priv->dvd_menu);
+   gtk_widget_show (menu->priv->disc_box);
     
 }
 
@@ -84,6 +95,7 @@ parole_disc_menu_media_state_cb (ParoleGst *gst, const ParoleStream *stream,
 				 ParoleMediaState state, ParoleDiscMenu *menu)
 {
     ParoleMediaType media_type;
+    menu->priv->tracks = 0;
     
     if ( state < PAROLE_MEDIA_STATE_PAUSED )
     {
@@ -121,6 +133,7 @@ parole_disc_menu_media_state_cb (ParoleGst *gst, const ParoleStream *stream,
 	    
 	    g_free (text);
 	    parole_disc_menu_show (menu, TRUE);
+	    menu->priv->tracks = num_tracks;
 	}
 	menu->priv->current_media_type = media_type;
     }
@@ -157,6 +170,58 @@ parole_disc_menu_chapter_menu_cb (ParoleDiscMenu *menu)
 }
 
 static void
+track_menu_item_activated_cb (GtkWidget *widget, ParoleDiscMenu *menu)
+{
+    guint track;
+    
+    track = GPOINTER_TO_UINT ( g_object_get_data (G_OBJECT (widget), "track"));
+    
+    parole_gst_seek_cdda (menu->priv->gst, track);
+}
+
+static void
+parole_disc_menu_show_disc_track_menu (ParoleDiscMenu *disc_menu, guint button, guint activate_time)
+{
+    GtkWidget *menu, *mi, *img;
+    gchar track[128];
+    guint i;
+    
+    menu = gtk_menu_new ();
+    
+    for ( i = 0; i < disc_menu->priv->tracks; i++)
+    {
+	img = gtk_image_new_from_stock (GTK_STOCK_CDROM, GTK_ICON_SIZE_MENU);
+	g_snprintf (track, 128, _("Track %i"), i+1);
+	mi = gtk_image_menu_item_new_with_label (track);
+	gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi), img);
+	gtk_widget_show (mi);
+	gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+	g_object_set_data (G_OBJECT (mi), "track", GUINT_TO_POINTER (i+1));
+	g_signal_connect (mi, "activate",
+		          G_CALLBACK (track_menu_item_activated_cb), disc_menu);
+    }
+    
+    g_signal_connect_swapped (menu, "selection-done",
+			      G_CALLBACK (gtk_widget_destroy), menu);
+    
+    gtk_menu_popup (GTK_MENU (menu), 
+		    NULL, NULL,
+		    NULL, NULL,
+		    button, activate_time);
+}
+
+static gboolean
+parole_disc_menu_show_disc_track (GtkWidget *widget, GdkEventButton *ev, ParoleDiscMenu *menu)
+{
+    if ( ev->button == 1 )
+    {
+	parole_disc_menu_show_disc_track_menu (menu, ev->button, ev->time);
+    }
+    
+    return FALSE;
+}
+
+static void
 parole_disc_menu_class_init (ParoleDiscMenuClass *klass)
 {
     GObjectClass *object_class = G_OBJECT_CLASS (klass);
@@ -174,19 +239,28 @@ parole_disc_menu_init (ParoleDiscMenu *menu)
     
     menu->priv = PAROLE_DISC_MENU_GET_PRIVATE (menu);
     
+    menu->priv->tracks = 0;
+    
     builder = parole_builder_get_main_interface ();
     
+    menu->priv->disc_track = GTK_WIDGET (gtk_builder_get_object (builder, "select-track"));
     menu->priv->next_chapter = GTK_WIDGET (gtk_builder_get_object (builder, "next-chapter"));
     menu->priv->prev_chapter = GTK_WIDGET (gtk_builder_get_object (builder, "prev-chapter"));
     menu->priv->chapter_menu = GTK_WIDGET (gtk_builder_get_object (builder, "chapter-menu"));
     menu->priv->dvd_menu = GTK_WIDGET (gtk_builder_get_object (builder, "dvd-menu"));
     menu->priv->info = GTK_WIDGET (gtk_builder_get_object (builder, "info"));
     menu->priv->eventboxinfo = GTK_WIDGET (gtk_builder_get_object (builder, "eventboxinfo"));
+    menu->priv->disc_box = GTK_WIDGET (gtk_builder_get_object (builder, "disc-box"));
     
     gdk_color_parse ("black", &color);
+    
     gtk_widget_modify_bg (menu->priv->eventboxinfo, GTK_STATE_NORMAL, &color);
+    gtk_widget_modify_bg (menu->priv->disc_box, GTK_STATE_NORMAL, &color);
 
     menu->priv->current_media_type = PAROLE_MEDIA_TYPE_UNKNOWN;
+    
+    g_signal_connect (menu->priv->disc_track, "button-press-event",
+		      G_CALLBACK (parole_disc_menu_show_disc_track), menu);
     
     g_signal_connect_swapped (menu->priv->next_chapter, "clicked",
 			      G_CALLBACK (parole_disc_menu_next_chapter_cb), menu);
@@ -226,7 +300,7 @@ parole_disc_menu_new (void)
     return menu;
 }
 
-gboolean parole_disc_menu_visible	 (ParoleDiscMenu *menu)
+gboolean parole_disc_menu_visible (ParoleDiscMenu *menu)
 {
     return (GTK_WIDGET_VISIBLE (menu->priv->next_chapter));
 }
@@ -239,4 +313,8 @@ void parole_disc_menu_seek_next (ParoleDiscMenu *menu)
 void parole_disc_menu_seek_prev (ParoleDiscMenu *menu)
 {
     parole_disc_menu_prev_chapter_cb (menu);
+}
+
+void parole_disc_menu_set_fullscreen (ParoleDiscMenu *menu, gboolean fullscreen)
+{
 }

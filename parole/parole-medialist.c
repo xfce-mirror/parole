@@ -74,6 +74,14 @@ static struct
 static void 	parole_media_list_dbus_class_init (ParoleMediaListClass *klass);
 static void 	parole_media_list_dbus_init 	  (ParoleMediaList      *list);
 
+static GtkTreeRowReference * 
+    parole_media_list_get_row_reference_from_iter (ParoleMediaList *list, 
+						   GtkTreeIter *iter, 
+						   gboolean select_path);
+
+static void 	parole_media_list_select_path 	  (ParoleMediaList *list, 
+						   GtkTreePath *path);
+
 /*
  * Callbacks for GtkBuilder
  */
@@ -95,9 +103,6 @@ void		parole_media_list_remove_clicked_cb 	(GtkButton *button,
 void		parole_media_list_row_activated_cb 	(GtkTreeView *view, 
 							 GtkTreePath *path,
 							 GtkTreeViewColumn *col,
-							 ParoleMediaList *list);
-
-void		parole_media_list_cursor_changed_cb 	(GtkTreeView *view, 
 							 ParoleMediaList *list);
 
 gboolean	parole_media_list_button_release_event  (GtkWidget *widget, 
@@ -133,6 +138,7 @@ struct ParoleMediaListPrivate
     GtkWidget 	  	*view;
     GtkWidget		*box;
     GtkListStore	*store;
+    GtkTreeSelection    *sel;
     
     GtkWidget		*remove;
     GtkWidget		*up;
@@ -361,7 +367,34 @@ void parole_media_list_close_save_dialog_cb (GtkButton *button, ParolePlaylistSa
     gtk_widget_destroy (GTK_WIDGET (data->chooser));
     g_free (data);
 }
-						    
+
+static GtkTreeRowReference *
+parole_media_list_get_first_selected_row (ParoleMediaList *list)
+{
+    GtkTreeModel *model;
+    GtkTreeRowReference *row = NULL;
+    GtkTreeIter iter;
+    GList *path_list = NULL;
+    
+    path_list = gtk_tree_selection_get_selected_rows (list->priv->sel, &model);
+    
+    if ( g_list_length (path_list) > 0 )
+    {
+	GtkTreePath *path;
+	path = g_list_nth_data (path_list, 0);
+	
+	if ( G_LIKELY (gtk_tree_model_get_iter (model, &iter, path) == TRUE ))
+	{
+	    row = parole_media_list_get_row_reference_from_iter (list, &iter, FALSE);
+	}
+    }
+    
+    g_list_foreach (path_list, (GFunc)gtk_tree_path_free, NULL);
+    g_list_free (path_list);
+    
+    return row;
+}
+
 void parole_media_list_save_playlist_cb (GtkButton *button, ParolePlaylistSave *data)
 {
     ParolePlFormat format = PAROLE_PL_FORMAT_UNKNOWN;
@@ -503,27 +536,72 @@ void parole_media_list_save_cb (GtkButton *button, ParoleMediaList *list)
     g_object_unref (builder);
 }
 
+static GList *
+parole_media_list_path_to_row_list (GList *path_list, GtkTreeModel *model)
+{
+    GList *row_list = NULL;
+    guint len, i;
+    
+    len = g_list_length (path_list);
+    
+    for ( i = 0; i < len; i++)
+    {
+	GtkTreePath *path;
+	GtkTreeRowReference *row;
+	
+	path = g_list_nth_data (path_list, i);
+	
+	row = gtk_tree_row_reference_new (model, path);
+	path = gtk_tree_row_reference_get_path (row);
+	row_list = g_list_append (row_list, row);
+    }
+    
+    return row_list;
+}
+
 void
 parole_media_list_remove_clicked_cb (GtkButton *button, ParoleMediaList *list)
 {
-    GtkTreeSelection *sel;
+    GtkTreeModel *model;
+    GList *path_list = NULL;
+    GList *row_list = NULL;
     GtkTreeIter iter;
     gint nch;
+    guint len, i;
     
-    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (list->priv->view));
-    
-    if ( !gtk_tree_selection_get_selected (sel, NULL, &iter) )
-	return;
+    path_list = gtk_tree_selection_get_selected_rows (list->priv->sel, &model);
 	
-    gtk_list_store_remove (list->priv->store,
-			   &iter);
-
+    row_list = parole_media_list_path_to_row_list (path_list, model);
+    
+    g_list_foreach (path_list, (GFunc) gtk_tree_path_free, NULL);
+    g_list_free (path_list);
+    
+    len = g_list_length (row_list);
+    
+    for ( i = 0; i < len; i++)
+    {
+	GtkTreePath *path;
+	GtkTreeRowReference *row;
+	row = g_list_nth_data (row_list, i);
+	path = gtk_tree_row_reference_get_path (row);
+    
+	if ( G_LIKELY (gtk_tree_model_get_iter (model, &iter, path) == TRUE ) )
+	{
+	    gtk_list_store_remove (GTK_LIST_STORE (model),
+				   &iter);
+	}
+    }
+    
+    g_list_foreach (row_list, (GFunc) gtk_tree_row_reference_free, NULL);
+    g_list_free (row_list);
+    
     /*
      * Returns the number of children that iter has. 
      * As a special case, if iter is NULL, 
      * then the number of toplevel nodes is returned. Gtk API doc.
      */
     nch = gtk_tree_model_iter_n_children (GTK_TREE_MODEL (list->priv->store), NULL); 
+    
     if ( nch == 0)
     {
 	parole_media_list_set_widget_sensitive (list, FALSE);
@@ -540,71 +618,175 @@ parole_media_list_remove_clicked_cb (GtkButton *button, ParoleMediaList *list)
     }
 }
 
-void
-parole_media_list_media_down_clicked_cb (GtkButton *button, ParoleMediaList *list)
+static void
+parole_media_list_move_one_down (GtkListStore *store, GtkTreeIter *iter)
 {
-    GtkTreeSelection *sel;
-    GtkTreeIter iter;
     GtkTreeIter *pos_iter;
     
-    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (list->priv->view));
-    
-    if ( !gtk_tree_selection_get_selected (sel, NULL, &iter) )
-	return;
-    
     /* Save the selected iter to the selected row */
-    pos_iter = gtk_tree_iter_copy (&iter);
+    pos_iter = gtk_tree_iter_copy (iter);
 
     /* We are on the last node in the list!*/
-    if ( !gtk_tree_model_iter_next (GTK_TREE_MODEL (list->priv->store), &iter) )
+    if ( !gtk_tree_model_iter_next (GTK_TREE_MODEL (store), iter) )
     {
 	/* Return false if tree is empty*/
-	if (gtk_tree_model_get_iter_first (GTK_TREE_MODEL (list->priv->store), &iter))
+	if (gtk_tree_model_get_iter_first (GTK_TREE_MODEL (store), iter))
 	{
-	    gtk_list_store_move_before (GTK_LIST_STORE (list->priv->store), pos_iter, &iter);
+	    gtk_list_store_move_before (GTK_LIST_STORE (store), pos_iter, iter);
 	}
     }
     else
     {
-	gtk_list_store_move_after (GTK_LIST_STORE (list->priv->store), pos_iter, &iter);
+	gtk_list_store_move_after (GTK_LIST_STORE (store), pos_iter, iter);
     }
     
     gtk_tree_iter_free (pos_iter);
 }
 
-void
-parole_media_list_media_up_clicked_cb (GtkButton *button, ParoleMediaList *list)
+static void
+parole_media_list_move_many_down (GList *path_list, GtkTreeModel *model)
 {
-    GtkTreeSelection *sel;
+    GList *row_list = NULL;
     GtkTreeIter iter;
+    guint len;
+    guint i;
+    
+    row_list = parole_media_list_path_to_row_list (path_list, model);
+    
+    len = g_list_length (row_list);
+    
+    for ( i = 0; i < len; i++)
+    {
+	GtkTreeRowReference *row;
+	GtkTreePath *path;
+	
+	row = g_list_nth_data (row_list, i);
+	
+	path = gtk_tree_row_reference_get_path (row);
+	
+	if ( G_LIKELY (gtk_tree_model_get_iter (model, &iter, path) ) )
+	{
+	    parole_media_list_move_one_down (GTK_LIST_STORE (model), &iter);
+	}
+    }
+    
+    g_list_foreach (row_list, (GFunc) gtk_tree_row_reference_free, NULL);
+    g_list_free (row_list);
+}
+
+void
+parole_media_list_media_down_clicked_cb (GtkButton *button, ParoleMediaList *list)
+{
+    GtkTreeIter iter;
+    GList *path_list = NULL;
+    GtkTreeModel *model;
+    guint len;
+    
+    path_list = gtk_tree_selection_get_selected_rows (list->priv->sel, &model);
+
+    len = g_list_length (path_list);
+
+    if ( len == 1 )
+    {
+	GtkTreePath *path;
+	path = g_list_nth_data (path_list, 0);
+	if ( G_LIKELY (gtk_tree_model_get_iter (model, &iter, path)) )
+	    parole_media_list_move_one_down (list->priv->store, &iter);
+    }
+    else
+    {
+	parole_media_list_move_many_down (path_list, model);
+    }
+    
+    g_list_foreach (path_list, (GFunc) gtk_tree_path_free, NULL);
+    g_list_free (path_list);
+}
+
+static void
+parole_media_list_move_one_up (GtkListStore *store, GtkTreeIter *iter)
+{
     GtkTreePath *path;
     GtkTreeIter *pos_iter;
     
-    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (list->priv->view));
-    
-    if ( !gtk_tree_selection_get_selected (sel, NULL, &iter) )
-	return;
-	
     /* Save the selected iter to the selected row */
-    pos_iter = gtk_tree_iter_copy (&iter);
+    pos_iter = gtk_tree_iter_copy (iter);
     
-    path = gtk_tree_model_get_path (GTK_TREE_MODEL (list->priv->store), &iter);
+    path = gtk_tree_model_get_path (GTK_TREE_MODEL (store), iter);
     
     /* We are on the top of the list */
     if ( !gtk_tree_path_prev (path) )
     {
 	/* Passing NULL as the last argument will cause this call to move 
 	 * the iter to the end of the list, Gtk API doc*/
-	gtk_list_store_move_before (GTK_LIST_STORE (list->priv->store), &iter, NULL);
+	gtk_list_store_move_before (GTK_LIST_STORE (store), iter, NULL);
     }
     else
     {
-	if (gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path))
-	    gtk_list_store_move_before (GTK_LIST_STORE (list->priv->store), pos_iter, &iter);
+	if (gtk_tree_model_get_iter (GTK_TREE_MODEL (store), iter, path))
+	    gtk_list_store_move_before (GTK_LIST_STORE (store), pos_iter, iter);
     }
     
     gtk_tree_path_free (path);
     gtk_tree_iter_free (pos_iter);
+}
+
+static void
+parole_media_list_move_many_up (GList *path_list, GtkTreeModel *model)
+{
+    GList *row_list = NULL;
+    GtkTreeIter iter;
+    guint len;
+    guint i;
+    
+    row_list = parole_media_list_path_to_row_list (path_list, model);
+    
+    len = g_list_length (row_list);
+    
+    for ( i = 0; i < len; i++)
+    {
+	GtkTreeRowReference *row;
+	GtkTreePath *path;
+	
+	row = g_list_nth_data (row_list, i);
+	
+	path = gtk_tree_row_reference_get_path (row);
+	
+	if ( G_LIKELY (gtk_tree_model_get_iter (model, &iter, path) ) )
+	{
+	    parole_media_list_move_one_up (GTK_LIST_STORE (model), &iter);
+	}
+    }
+    
+    g_list_foreach (row_list, (GFunc) gtk_tree_row_reference_free, NULL);
+    g_list_free (row_list);
+}
+
+void
+parole_media_list_media_up_clicked_cb (GtkButton *button, ParoleMediaList *list)
+{
+    GtkTreeIter iter;
+    GList *path_list = NULL;
+    GtkTreeModel *model;
+    guint len;
+    
+    path_list = gtk_tree_selection_get_selected_rows (list->priv->sel, &model);
+
+    len = g_list_length (path_list);
+
+    if ( len == 1 )
+    {
+	GtkTreePath *path;
+	path = g_list_nth_data (path_list, 0);
+	if ( G_LIKELY (gtk_tree_model_get_iter (model, &iter, path)) )
+	    parole_media_list_move_one_up (list->priv->store, &iter);
+    }
+    else
+    {
+	parole_media_list_move_many_up (path_list, model);
+    }
+    
+    g_list_foreach (path_list, (GFunc) gtk_tree_path_free, NULL);
+    g_list_free (path_list);
 }
 
 void
@@ -622,22 +804,11 @@ parole_media_list_row_activated_cb (GtkTreeView *view, GtkTreePath *path,
     g_signal_emit (G_OBJECT (list), signals [MEDIA_ACTIVATED], 0, row);
 }
 
-void
-parole_media_list_cursor_changed_cb (GtkTreeView *view, ParoleMediaList *list)
+static void
+parole_media_list_selection_changed_cb (GtkTreeSelection *sel, ParoleMediaList *list)
 {
-    GtkTreeSelection *sel;
-    GtkTreeIter iter;
-    
-    sel = gtk_tree_view_get_selection (view);
-    
-    if ( !gtk_tree_selection_get_selected (sel, NULL, &iter ) )
-    {
-	g_signal_emit (G_OBJECT (list), signals [MEDIA_CURSOR_CHANGED], 0, FALSE);
-    }
-    else
-    {
-	g_signal_emit (G_OBJECT (list), signals [MEDIA_CURSOR_CHANGED], 0, TRUE);
-    }
+    g_signal_emit (G_OBJECT (list), signals [MEDIA_CURSOR_CHANGED], 0,
+		   gtk_tree_selection_count_selected_rows (sel) > 0); 
 }
 
 static void
@@ -715,10 +886,7 @@ parole_media_list_button_release_event (GtkWidget *widget, GdkEventButton *ev, P
 static void
 parole_media_list_select_path (ParoleMediaList *list, GtkTreePath *path)
 {
-    GtkTreeSelection *sel;
-    
-    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (list->priv->view));
-    gtk_tree_selection_select_path (sel, path);
+    gtk_tree_selection_select_path (list->priv->sel, path);
     gtk_tree_view_set_cursor (GTK_TREE_VIEW (list->priv->view), path, NULL, FALSE);
 }
 
@@ -791,6 +959,7 @@ parole_media_list_class_init (ParoleMediaListClass *klass)
 static void
 parole_media_list_setup_view (ParoleMediaList *list)
 {
+    GtkTreeSelection *sel;
     GtkListStore *list_store;
     GtkTreeViewColumn *col;
     GtkCellRenderer *renderer;
@@ -821,6 +990,12 @@ parole_media_list_setup_view (ParoleMediaList *list)
     gtk_drag_dest_set (list->priv->view, GTK_DEST_DEFAULT_ALL, target_entry, G_N_ELEMENTS (target_entry),
                        GDK_ACTION_COPY | GDK_ACTION_MOVE);
     
+    list->priv->sel = sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (list->priv->view));
+    gtk_tree_selection_set_mode (sel, GTK_SELECTION_MULTIPLE);
+    
+    g_signal_connect (sel, "changed",
+		      G_CALLBACK (parole_media_list_selection_changed_cb), list);
+    
     list->priv->store = list_store;
 }
 
@@ -837,6 +1012,7 @@ parole_media_list_init (ParoleMediaList *list)
     builder = parole_builder_new_from_string (playlist_ui, playlist_ui_length);
     
     list->priv->view = GTK_WIDGET (gtk_builder_get_object (builder, "media-list"));
+    
     box = GTK_WIDGET (gtk_builder_get_object (builder, "playlist-box"));
     
     parole_media_list_setup_view (list);
@@ -974,16 +1150,7 @@ GtkTreeRowReference *parole_media_list_get_row_random (ParoleMediaList *list)
 
 GtkTreeRowReference *parole_media_list_get_selected_row (ParoleMediaList *list)
 {
-    GtkTreeModel *model;
-    GtkTreeSelection *sel;
-    GtkTreeIter iter;
-    
-    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (list->priv->view));
-    
-    if (!gtk_tree_selection_get_selected (sel, &model, &iter))
-	return NULL;
-    
-    return parole_media_list_get_row_reference_from_iter (list, &iter, TRUE);
+    return parole_media_list_get_first_selected_row (list);
 }
 
 void parole_media_list_set_row_pixbuf  (ParoleMediaList *list, GtkTreeRowReference *row, GdkPixbuf *pix)

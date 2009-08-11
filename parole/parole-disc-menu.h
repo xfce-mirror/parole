@@ -52,6 +52,9 @@ void				parole_disc_menu_seek_next	 (ParoleDiscMenu *menu);
 
 void				parole_disc_menu_seek_prev	 (ParoleDiscMenu *menu);
 
+void				parole_disc_menu_set_fullscreen  (ParoleDiscMenu *menu,
+								  gboolean fullscreen);
+
 G_END_DECLS
 
 #endif /* __PAROLE_DISC_MENU_H */

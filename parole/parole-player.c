@@ -881,6 +881,7 @@ parole_player_full_screen_menu_item_activate (ParolePlayer *player)
 	gtk_widget_reparent (player->priv->play_box, player->priv->control);
 	gtk_widget_hide (player->priv->fs_window);
 	parole_statusbar_set_visible (player->priv->status, TRUE);
+	parole_disc_menu_set_fullscreen (player->priv->disc_menu, FALSE);
 	gtk_widget_show (player->priv->play_box);
 	gtk_widget_show (player->priv->menu_bar);
 	gtk_widget_show (player->priv->playlist_nt);
@@ -895,6 +896,7 @@ parole_player_full_screen_menu_item_activate (ParolePlayer *player)
     }
     else
     {
+	parole_disc_menu_set_fullscreen (player->priv->disc_menu, TRUE);
 	parole_player_move_fs_window (player);
 	gtk_widget_reparent (player->priv->play_box, player->priv->fs_window);
 	
@@ -908,6 +910,7 @@ parole_player_full_screen_menu_item_activate (ParolePlayer *player)
 	
 	current_page = gtk_notebook_get_current_page (GTK_NOTEBOOK (player->priv->playlist_nt));
 	gtk_notebook_set_show_tabs (GTK_NOTEBOOK (player->priv->main_nt), FALSE);
+	
 	gtk_window_fullscreen (GTK_WINDOW (player->priv->window));
 	player->priv->full_screen = TRUE;
     }
@@ -1244,7 +1247,12 @@ gboolean
 parole_player_key_press (GtkWidget *widget, GdkEventKey *ev, ParolePlayer *player)
 {
     gboolean ret_val = FALSE;
-    
+/*
+    gchar *key;
+    key = gdk_keyval_name (ev->keyval);
+    g_print ("Key Press 0x%X:%s on widget=%s\n", ev->keyval, key, gtk_widget_get_name (widget));
+*/
+
     switch (ev->keyval)
     {
 	case GDK_F11:
@@ -1270,11 +1278,13 @@ parole_player_key_press (GtkWidget *widget, GdkEventKey *ev, ParolePlayer *playe
 		parole_player_seekb_cb (NULL, player);
 	    ret_val = TRUE;
 	    break;
+	case GDK_space:
+	    parole_player_play_pause_clicked (NULL, player);
+	    ret_val = TRUE;
+	    break;
 	default:
 	    break;
     }
-    
-    g_print ("Key Press 0x%X\n", ev->keyval);
     
     return ret_val;
 }
@@ -1428,6 +1438,11 @@ parole_player_init (ParolePlayer *player)
     
     g_signal_connect (G_OBJECT (player->priv->gst), "motion-notify-event",
 		      G_CALLBACK (parole_player_gst_widget_motion_notify_event), player);
+    
+    /*
+    g_signal_connect (G_OBJECT (player->priv->gst), "key-press-event",
+		      G_CALLBACK (parole_player_key_press), player);
+    */
     
     player->priv->window = GTK_WIDGET (gtk_builder_get_object (builder, "main-window"));
     player->priv->main_nt = GTK_WIDGET (gtk_builder_get_object (builder, "main-notebook"));

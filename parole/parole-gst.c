@@ -644,16 +644,12 @@ parole_gst_load_subtitle (ParoleGst *gst)
     gchar *sub;
     gchar *sub_uri;
     gboolean sub_enabled;
-    gboolean has_video;
     
     g_object_get (G_OBJECT (gst->priv->stream),
 		  "media-type", &type,
-		  "has-video",  &has_video,
 		  NULL);
     
-    PAROLE_DEBUG_ENUM_FULL (type, ENUM_GTYPE_MEDIA_TYPE, " has_video=%d", has_video);
-    
-    if ( type != PAROLE_MEDIA_TYPE_LOCAL_FILE || !has_video)
+    if ( type != PAROLE_MEDIA_TYPE_LOCAL_FILE)
 	return;
     
     g_object_get (G_OBJECT (gst->priv->conf),
@@ -1182,6 +1178,8 @@ parole_gst_change_state (ParoleGst *gst, GstState new)
 {
     GstStateChangeReturn ret;
 
+    TRACE ("Changing state to %d", new);
+    
     ret = gst_element_set_state (GST_ELEMENT (gst->priv->playbin), new);
     
     switch (ret)
@@ -1233,14 +1231,16 @@ parole_gst_play_file_internal (ParoleGst *gst)
 		  "uri", &uri,
 		  NULL);
     
+    TRACE ("Processing uri : %s", uri);
+    
     g_object_set (G_OBJECT (gst->priv->playbin),
 		  "uri", uri,
 		  "suburi", NULL,
 		  NULL);
 
     parole_gst_load_subtitle (gst);
-	    
     parole_gst_change_state (gst, GST_STATE_PLAYING);
+    
     g_free (uri);
 }
 
@@ -1670,6 +1670,21 @@ parole_gst_new (void)
     return GTK_WIDGET (parole_gst_object);
 }
 
+static gboolean
+parole_gst_play_idle (gpointer data)
+{
+    ParoleGst *gst;
+    
+    gst = PAROLE_GST (data);
+    
+    if ( gst->priv->state < GST_STATE_PAUSED )
+	parole_gst_play_file_internal (gst);
+    else 
+	parole_gst_change_state (gst, GST_STATE_READY);
+    
+    return FALSE;
+}
+
 void parole_gst_play_uri (ParoleGst *gst, const gchar *uri)
 {
     g_mutex_lock (gst->priv->lock);
@@ -1689,10 +1704,8 @@ void parole_gst_play_uri (ParoleGst *gst, const gchar *uri)
     
     parole_window_busy_cursor (GTK_WIDGET (gst)->window);
 
-    if ( gst->priv->state < GST_STATE_PAUSED )
-	parole_gst_play_file_internal (gst);
-    else 
-	parole_gst_change_state (gst, GST_STATE_READY);
+    g_idle_add ((GSourceFunc) parole_gst_play_idle, gst);
+    
 }
 
 void parole_gst_pause (ParoleGst *gst)
@@ -1819,6 +1832,15 @@ void parole_gst_next_cdda_track (ParoleGst *gst)
 void parole_gst_prev_cdda_track (ParoleGst *gst)
 {
     parole_gst_change_cdda_track (gst, -1);
+}
+
+void parole_gst_seek_cdda	(ParoleGst *gst, guint track_num)
+{
+    gint current_track;
+    
+    current_track = parole_gst_get_current_cdda_track (gst);
+    
+    parole_gst_change_cdda_track (gst, (gint) track_num - current_track -1);
 }
 
 gint parole_gst_get_current_cdda_track (ParoleGst *gst)

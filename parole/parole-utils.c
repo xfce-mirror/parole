@@ -312,6 +312,8 @@ gchar *parole_get_subtitle_path (const gchar *uri)
     file = g_file_new_for_commandline_arg (uri);
     parent = g_file_get_parent (file);
     
+    TRACE ("uri : %s", uri);
+    
     if ( !parent )
     {
 	g_object_unref (file);

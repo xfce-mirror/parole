@@ -116,6 +116,9 @@ void			parole_gst_next_cdda_track 	(ParoleGst *gst);
 
 void			parole_gst_prev_cdda_track 	(ParoleGst *gst);
 
+void			parole_gst_seek_cdda	 	(ParoleGst *gst,
+							 guint track_num);
+
 gint			parole_gst_get_current_cdda_track (ParoleGst *gst);
 
 ParoleMediaType		parole_gst_get_current_stream_type (ParoleGst *gst);
