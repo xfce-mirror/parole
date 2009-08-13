@@ -86,6 +86,10 @@ GtkWidget      	       *parole_gst_new             	(void);
 void		        parole_gst_play_uri        	(ParoleGst *gst,
 							 const gchar *uri);
 
+void		        parole_gst_play_device_uri     	(ParoleGst *gst,
+							 const gchar *uri,
+							 const gchar *device);
+
 void			parole_gst_pause           	(ParoleGst *gst);
 
 void			parole_gst_resume          	(ParoleGst *gst);

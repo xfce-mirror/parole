@@ -53,7 +53,8 @@ typedef struct
     GObjectClass 	   parent_class;
     
     void		   (*disc_selected)	       (ParoleDisc *disc,
-							const gchar *uri);
+							const gchar *uri,
+							const gchar *device);
     
 } ParoleDiscClass;
 

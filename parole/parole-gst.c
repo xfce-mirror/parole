@@ -77,6 +77,7 @@ struct ParoleGstPrivate
     ParoleStream *stream;
     gulong	  tick_id;
     GdkPixbuf    *logo;
+    gchar        *device;
     GTimer	 *hidecursor_timer;
     
     ParoleConf   *conf;
@@ -127,6 +128,9 @@ parole_gst_finalize (GObject *object)
     g_object_unref (gst->priv->bus);
     g_object_unref (gst->priv->conf);
     g_object_unref (gst->priv->logo);
+    
+    if ( gst->priv->device )
+	g_free (gst->priv->device);
     
     g_mutex_free (gst->priv->lock);
 
@@ -1216,6 +1220,27 @@ parole_gst_stream_info_notify_cb (GObject * obj, GParamSpec * pspec, ParoleGst *
 }
 
 static void
+parole_gst_source_notify_cb (GObject *obj, GParamSpec *pspec, ParoleGst *gst)
+{
+    GObject *source;
+    
+    g_object_get (obj, 
+		  "source", &source,
+		  NULL);
+
+    if ( source )
+    {
+	if ( G_LIKELY (gst->priv->device) )
+	{
+	    g_object_set (source, 
+			  "device", gst->priv->device,
+			  NULL);
+	}
+	g_object_unref (source);
+    }
+}
+
+static void
 parole_gst_play_file_internal (ParoleGst *gst)
 {
     gchar *uri;
@@ -1306,6 +1331,10 @@ parole_gst_construct (GObject *object)
     g_signal_connect (gst->priv->playbin, "notify::stream-info",
 		      G_CALLBACK (parole_gst_stream_info_notify_cb), gst);
       
+      
+    g_signal_connect (gst->priv->playbin, "notify::source",
+		      G_CALLBACK (parole_gst_source_notify_cb), gst);
+
     parole_gst_load_logo (gst);
     parole_gst_set_subtitle_encoding (gst);
     parole_gst_set_subtitle_font (gst);
@@ -1628,6 +1657,7 @@ parole_gst_init (ParoleGst *gst)
     gst->priv->buffering = FALSE;
     gst->priv->update_color_balance = TRUE;
     gst->priv->state_change_id = 0;
+    gst->priv->device = NULL;
     
     gst->priv->conf = parole_conf_new ();
     
@@ -1705,7 +1735,21 @@ void parole_gst_play_uri (ParoleGst *gst, const gchar *uri)
     parole_window_busy_cursor (GTK_WIDGET (gst)->window);
 
     g_idle_add ((GSourceFunc) parole_gst_play_idle, gst);
+}
+
+void parole_gst_play_device_uri (ParoleGst *gst, const gchar *uri, const gchar *device)
+{
+    TRACE ("device : %s", device);
     
+    if ( gst->priv->device )
+    {
+	g_free (gst->priv->device);
+	gst->priv->device = NULL;
+    }
+    
+    gst->priv->device = g_strdup (device);
+    
+    parole_gst_play_uri (gst, uri);
 }
 
 void parole_gst_pause (ParoleGst *gst)

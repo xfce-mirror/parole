@@ -347,11 +347,12 @@ parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *ro
 }
 
 static void
-parole_player_disc_selected_cb (ParoleDisc *disc, const gchar *uri, ParolePlayer *player)
+parole_player_disc_selected_cb (ParoleDisc *disc, const gchar *uri, const gchar *device, ParolePlayer *player)
 {
     parole_player_reset (player);
     gtk_widget_set_sensitive (player->priv->stop, TRUE);
-    parole_gst_play_uri (PAROLE_GST (player->priv->gst), uri);
+    
+    parole_gst_play_device_uri (PAROLE_GST (player->priv->gst), uri, device);
 }
 
 static void
@@ -1545,7 +1546,7 @@ ParoleMediaList	*parole_player_get_media_list (ParolePlayer *player)
 
 void parole_player_play_uri_disc (ParolePlayer *player, const gchar *uri)
 {
-    parole_player_disc_selected_cb (NULL, uri, player);
+    parole_player_disc_selected_cb (NULL, uri, NULL, player);
 }
 
 void parole_player_terminate (ParolePlayer *player)
