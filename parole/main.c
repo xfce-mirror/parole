@@ -190,7 +190,7 @@ int main (int argc, char **argv)
 	
     if ( !new_instance && parole_dbus_name_has_owner (PAROLE_DBUS_NAME) )
     {
-	TRACE ("Parole is already running");
+	g_print (_("Parole is already running, use -i to open a new instance\n"));
 	if ( filenames && filenames[0] != NULL )
 	    parole_send (filenames);
     }
