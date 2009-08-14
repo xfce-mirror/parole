@@ -98,6 +98,8 @@ void			parole_gst_stop            	(ParoleGst *gst);
 
 void			parole_gst_terminate	   	(ParoleGst *gst);
 
+void			parole_gst_shutdown	   	(ParoleGst *gst);
+
 void			parole_gst_seek		   	(ParoleGst *gst,
 							 gdouble pos);
 

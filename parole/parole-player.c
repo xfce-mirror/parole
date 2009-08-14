@@ -535,6 +535,7 @@ static void
 parole_player_quit (ParolePlayer *player)
 {
     parole_media_list_save_list (player->priv->list);
+    parole_gst_shutdown (PAROLE_GST (player->priv->gst));
     gtk_widget_destroy (player->priv->window);
     g_object_unref (player);
     gtk_main_quit ();
@@ -1222,7 +1223,6 @@ parole_player_finalize (GObject *object)
 
     TRACE ("start");
 
-    g_object_unref (player->priv->gst);
     g_object_unref (player->priv->status);
     g_object_unref (player->priv->disc);
     g_object_unref (player->priv->disc_menu);
@@ -1388,12 +1388,6 @@ parole_player_init (ParolePlayer *player)
 			      G_CALLBACK (parole_player_session_die_cb), player);
     
     player->priv->gst = parole_gst_new ();
-    /*
-     * Since ParoleGst is derived from GtkWidget and packed in the media output
-     * box the destroy event on the window will destroy the ParoleGst widget
-     * so we ref it to clean up the gst objects before quitting.
-     */
-    g_object_ref (player->priv->gst);
     
     player->priv->status = parole_statusbar_new ();
     player->priv->disc = parole_disc_new ();

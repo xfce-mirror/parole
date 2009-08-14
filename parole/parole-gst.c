@@ -93,6 +93,9 @@ struct ParoleGstPrivate
      * xvimage sink has brightness+hue+aturation+contrast.
      */
     gboolean	  xvimage_sink;
+    
+    gulong	  sig1;
+    gulong	  sig2;
 };
 
 enum
@@ -124,8 +127,6 @@ parole_gst_finalize (GObject *object)
     parole_stream_init_properties (gst->priv->stream);
     
     g_object_unref (gst->priv->stream);
-    g_object_unref (gst->priv->playbin);
-    g_object_unref (gst->priv->bus);
     g_object_unref (gst->priv->conf);
     g_object_unref (gst->priv->logo);
     
@@ -1314,16 +1315,18 @@ parole_gst_construct (GObject *object)
     gst->priv->bus = gst_element_get_bus (gst->priv->playbin);
     gst_bus_add_signal_watch (gst->priv->bus);
     
-    g_signal_connect (gst->priv->bus, "message",
-		      G_CALLBACK (parole_gst_bus_event), gst);
+    gst->priv->sig1 =
+	g_signal_connect (gst->priv->bus, "message",
+			  G_CALLBACK (parole_gst_bus_event), gst);
 		      
     /* 
      * Handling 'prepare-xwindow-id' message async causes XSync 
      * error in some occasions So we handle this message synchronously
      */
     gst_bus_set_sync_handler (gst->priv->bus, gst_bus_sync_signal_handler, gst);
-    g_signal_connect (gst->priv->bus, "sync-message::element",
-		      G_CALLBACK (parole_gst_element_message_sync), gst);
+    gst->priv->sig2 =
+	g_signal_connect (gst->priv->bus, "sync-message::element",
+			  G_CALLBACK (parole_gst_element_message_sync), gst);
 
     /*
      * Handle stream info changes, this can happen on live/radio stream.
@@ -1793,6 +1796,24 @@ void parole_gst_stop (ParoleGst *gst)
 void parole_gst_terminate (ParoleGst *gst)
 {
     parole_gst_terminate_internal (gst, TRUE);
+}
+
+void parole_gst_shutdown (ParoleGst *gst)
+{
+    if ( g_signal_handler_is_connected (gst->priv->playbin, gst->priv->sig1) )
+        g_signal_handler_disconnect (gst->priv->playbin, gst->priv->sig1);
+        
+    if ( g_signal_handler_is_connected (gst->priv->playbin, gst->priv->sig2) )
+        g_signal_handler_disconnect (gst->priv->playbin, gst->priv->sig2);
+
+    g_object_unref (gst->priv->bus);
+    
+    if ( gst->priv->vis_sink )
+        g_object_unref (gst->priv->vis_sink);
+        
+    gst_element_set_state (gst->priv->playbin, GST_STATE_VOID_PENDING);
+
+    g_object_unref (gst->priv->playbin);
 }
 
 void parole_gst_seek (ParoleGst *gst, gdouble pos)
