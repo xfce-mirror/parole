@@ -257,11 +257,14 @@ parole_gst_get_video_output_size (ParoleGst *gst, gint *ret_w, gint *ret_h)
 	guint video_w, video_h;
 	guint video_par_n, video_par_d;
 	guint dar_n, dar_d;
+	guint disp_par_n, disp_par_d;
 	
 	g_object_get (G_OBJECT (gst->priv->stream),
 		      "has-video", &has_video,
 		      "video-width", &video_w,
 		      "video-height", &video_h,
+		      "disp-par-n", &disp_par_n,
+		      "disp-par-d", &disp_par_d,
 		      NULL);
 		      
 	if ( has_video )
@@ -299,7 +302,7 @@ parole_gst_get_video_output_size (ParoleGst *gst, gint *ret_w, gint *ret_h)
 		if ( gst_video_calculate_display_ratio (&dar_n, &dar_d,
 							video_w, video_h,
 							video_par_n, video_par_d,
-							1, 1) )
+							disp_par_n, disp_par_d) )
 		{
 		    if (video_w % dar_n == 0) 
 		    {
@@ -311,7 +314,7 @@ parole_gst_get_video_output_size (ParoleGst *gst, gint *ret_w, gint *ret_h)
 			*ret_w = (guint) gst_util_uint64_scale (video_h, dar_n, dar_d);
 			*ret_h = video_w;
 		    }
-		    TRACE ("Got best video size %dx%d\n", *ret_w, *ret_h);
+		    TRACE ("Got best video size %dx%d fraction, %d/%d\n", *ret_w, *ret_h, disp_par_n, disp_par_d);
 		}
 	    }
 	}
@@ -691,8 +694,8 @@ parole_gst_get_pad_capabilities (GObject *object, GParamSpec *pspec, ParoleGst *
     GstStructure *st;
     gint width;
     gint height;
-    gint num;
-    gint den;
+    guint num;
+    guint den;
     const GValue *value;
     
     pad = GST_PAD (object);
@@ -715,13 +718,15 @@ parole_gst_get_pad_capabilities (GObject *object, GParamSpec *pspec, ParoleGst *
 
 	if ( ( value = gst_structure_get_value (st, "pixel-aspect-ratio")) )
 	{
-	    num = gst_value_get_fraction_numerator (value),
-	    den = gst_value_get_fraction_denominator (value);
-	    TRACE ("FIXME: Use these values num=%d den=%d \n", num, den);
+	    num = (guint) gst_value_get_fraction_numerator (value),
+	    den = (guint) gst_value_get_fraction_denominator (value);
+	    g_object_set (G_OBJECT (gst->priv->stream),
+			  "disp-par-n", num,
+			  "disp-par-d", den,
+			  NULL);
 	}
 		      
 	parole_gst_get_video_output_size (gst, &width, &height);
-	
 	parole_gst_size_allocate (GTK_WIDGET (gst), &GTK_WIDGET (gst)->allocation);
     }
 }

@@ -60,7 +60,9 @@ struct _ParoleStreamPrivate
     gint        video_h;
     gint64  	absolute_duration;
     guint	tracks;
-    guint        track;
+    guint       track;
+    guint	disp_par_n;
+    guint	disp_par_d;
     gchar      *title;
     gchar      *artist;
     gchar      *year;
@@ -79,6 +81,8 @@ enum
     PROP_HAS_AUDIO,
     PROP_HAS_VIDEO,
     PROP_SEEKABLE,
+    PROP_DISP_PAR_N,
+    PROP_DISP_PAR_D,
     PROP_TRACKS,
     PROP_TRACK,
     PROP_TAG_AVAILABLE,
@@ -156,6 +160,12 @@ static void parole_stream_set_property (GObject *object,
 	case PROP_SEEKABLE:
 	    PAROLE_STREAM_GET_PRIVATE (stream)->seekable = g_value_get_boolean (value);
 	    break;
+	case PROP_DISP_PAR_D:
+	    PAROLE_STREAM_GET_PRIVATE (stream)->disp_par_d = g_value_get_uint (value);
+	    break;
+	case PROP_DISP_PAR_N:
+	    PAROLE_STREAM_GET_PRIVATE (stream)->disp_par_n = g_value_get_uint (value);
+	    break;
 	case PROP_TRACKS:
 	    PAROLE_STREAM_GET_PRIVATE (stream)->tracks = g_value_get_uint (value);
 	    break;
@@ -225,6 +235,12 @@ static void parole_stream_get_property (GObject *object,
 	    break;
 	case PROP_SEEKABLE:
 	    g_value_set_boolean (value, PAROLE_STREAM_GET_PRIVATE (stream)->seekable);
+	    break;
+	case PROP_DISP_PAR_D:
+	    g_value_set_uint (value, PAROLE_STREAM_GET_PRIVATE (stream)->disp_par_d);
+	    break;
+	case PROP_DISP_PAR_N:
+	    g_value_set_uint (value, PAROLE_STREAM_GET_PRIVATE (stream)->disp_par_n);
 	    break;
 	case PROP_DURATION:
 	    g_value_set_double (value, PAROLE_STREAM_GET_PRIVATE (stream)->duration);
@@ -420,6 +436,36 @@ parole_stream_class_init (ParoleStreamClass *klass)
 							  G_PARAM_READWRITE));
 
     /**
+     * ParoleStream:disp-par-n:
+     * 
+     * 
+     * 
+     * Since: 0.2 
+     **/
+    g_object_class_install_property (object_class,
+				     PROP_DISP_PAR_N,
+				     g_param_spec_uint ("disp-par-n",
+							NULL, NULL,
+							1, G_MAXUINT,
+							1,
+							G_PARAM_READWRITE));
+							  
+    /**
+     * ParoleStream:disp-par-n:
+     * 
+     * 
+     * 
+     * Since: 0.2 
+     **/
+    g_object_class_install_property (object_class,
+				     PROP_DISP_PAR_D,
+				     g_param_spec_uint ("disp-par-d",
+							NULL, NULL,
+							1, G_MAXUINT,
+							1,
+							G_PARAM_READWRITE));
+							
+    /**
      * ParoleStream:video-width:
      * 
      * 
@@ -584,6 +630,8 @@ void parole_stream_init_properties (ParoleStream *stream)
     priv->video_w = 0;
     priv->tracks = 1;
     priv->track = 1;
+    priv->disp_par_n = 1;
+    priv->disp_par_d = 1;
     
     PAROLE_STREAM_FREE_STR_PROP (priv->title);
     PAROLE_STREAM_FREE_STR_PROP (priv->uri);
