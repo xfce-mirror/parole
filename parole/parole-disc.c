@@ -71,7 +71,7 @@ G_DEFINE_TYPE (ParoleDisc, parole_disc, G_TYPE_OBJECT)
 typedef struct
 {
     GtkWidget      *mi;
-    gchar          *uri; /*Freed in (GDestroyNotify) in the data set below*/
+    gchar          *uri;
     gchar          *device;
     ParoleDiscKind  kind;
     
@@ -128,9 +128,8 @@ parole_disc_get_mount_data (ParoleDisc *disc,
     gtk_widget_show (data->mi);
     gtk_widget_show (img);
 	
-    g_object_set_data_full (G_OBJECT (data->mi),
-			    "mount-data", data,
-			    (GDestroyNotify) free_mount_data);
+    g_object_set_data (G_OBJECT (data->mi),
+		      "mount-data", data);
 	
     gtk_menu_shell_insert (GTK_MENU_SHELL (disc->priv->media_menu), data->mi, 2);
     
