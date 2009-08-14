@@ -127,6 +127,27 @@ AC_ARG_ENABLE([properties-plugin], AC_HELP_STRING([--disable-properties-plugin],
 AC_MSG_CHECKING([whether to build the Parole stream properties plugin])
 AM_CONDITIONAL([PAROLE_PROPERTIES_PLUGIN], [test x"$ac_properties_plugin" = x"yes"])
 AC_MSG_RESULT([$ac_properties_plugin])
+TAGLIB_FOUND="no"
+if test x"$ac_properties_plugin" = x"yes"; then
+    XDT_CHECK_OPTIONAL_PACKAGE([TAGLIB], 
+    [taglib], [1.4],
+    [taglib], 
+    [tag lib], [yes])
+fi
+if test x"$TAGLIB_FOUND" = x"yes"; then
+TAGLIBC_LIBS=""
+TAGLIBC_CFLAGS=""
+AC_CHECK_LIB([tag_c], [taglib_file_new],
+[
+    AC_CHECK_HEADER([taglib/tag_c.h],
+    [
+	TAGLIBC_LIBS="-ltag_c"
+	AC_DEFINE([HAVE_TAGLIBC], [1], [Define to 1 if tag_c is found])
+    ])
+], [-lm])
+AC_SUBST([TAGLIBC_CFLAGS])
+AC_SUBST([TAGLIBC_LIBS])
+fi
 
 # Tray plugin.
 #--------------------------
@@ -197,7 +218,7 @@ echo "
 	
 	Plugins to build:
 	=================
-	Stream Properties:       	${ac_properties_plugin}
+	Stream Properties:       	${ac_properties_plugin} (With taglib $TAGLIB_FOUND)
 	System Tray icon:       	${ac_tray_plugin} (With notification $LIBNOTIFY_FOUND)
 	Window title:			${ac_window_title_plugin}
 ------------------------------------------------------

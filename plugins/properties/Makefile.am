@@ -16,7 +16,11 @@ stream_properties_la_SOURCES =			\
 
 stream_properties_la_CFLAGS =			\
 	$(PLATFORM_CFLAGS)			\
-	$(GTK_CFLAGS)
+	$(GTK_CFLAGS)				\
+	$(TAGLIBC_CFLAGS)
+
+stream_properties_la_LIBADD =			\
+	$(TAGLIBC_LIBS)
 
 stream_properties_la_LDFLAGS =			\
 	-avoid-version				\
