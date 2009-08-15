@@ -291,7 +291,7 @@
                 <property name="scrollable">True</property>
                 <property name="group_id">0</property>
                 <child>
-                  <object class="GtkVBox" id="vbox3">
+                  <object class="GtkVBox" id="main-box">
                     <property name="visible">True</property>
                     <property name="orientation">vertical</property>
                     <property name="spacing">5</property>
@@ -495,7 +495,6 @@
                                                     <property name="image">image8</property>
                                                     <property name="relief">none</property>
                                                     <property name="focus_on_click">False</property>
-                                                    <accelerator key="space" signal="activate"/>
                                                     <signal name="clicked" handler="parole_player_play_pause_clicked"/>
                                                   </object>
                                                   <packing>
@@ -627,6 +626,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="scrollable">True</property>
+                            <property name="enable_popup">True</property>
                           </object>
                           <packing>
                             <property name="resize">False</property>

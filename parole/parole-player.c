@@ -194,6 +194,7 @@ struct ParolePlayerPrivate
     GtkWidget		*control; /* contains all play button*/
     GtkWidget		*leave_fs;
     
+    GtkWidget		*main_box;
     
     GtkWidget		*volume;
     GtkWidget		*volume_image;
@@ -1247,13 +1248,26 @@ parole_player_class_init (ParolePlayerClass *klass)
 gboolean
 parole_player_key_press (GtkWidget *widget, GdkEventKey *ev, ParolePlayer *player)
 {
+    GtkWidget *focused;
+    
     gboolean ret_val = FALSE;
 /*
     gchar *key;
     key = gdk_keyval_name (ev->keyval);
     g_print ("Key Press 0x%X:%s on widget=%s\n", ev->keyval, key, gtk_widget_get_name (widget));
 */
-
+    focused = gtk_window_get_focus (GTK_WINDOW (player->priv->window));
+    
+    if ( focused )
+    {
+	if ( ( gtk_widget_is_ancestor (focused, player->priv->playlist_nt) ) ||
+	     ( gtk_widget_is_ancestor (focused, player->priv->main_nt) && 
+	       !gtk_widget_is_ancestor (focused, player->priv->main_box) ))
+	{
+	    return FALSE;
+	}
+    }
+    
     switch (ev->keyval)
     {
 	case GDK_F11:
@@ -1458,6 +1472,7 @@ parole_player_init (ParolePlayer *player)
     player->priv->show_hide_playlist = GTK_WIDGET (gtk_builder_get_object (builder, "show-hide-list"));
     player->priv->control = GTK_WIDGET (gtk_builder_get_object (builder, "control"));
     player->priv->leave_fs = GTK_WIDGET (gtk_builder_get_object (builder, "leave_fs"));
+    player->priv->main_box = GTK_WIDGET (gtk_builder_get_object (builder, "main-box"));
     
     gtk_range_set_range (GTK_RANGE (player->priv->volume), 0, 1.0);
     
