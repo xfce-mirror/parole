@@ -26,6 +26,10 @@
 #include <stdlib.h>
 #include <string.h>
 
+#ifdef HAVE_XF86_KEYSYM
+#include <X11/XF86keysym.h>
+#endif
+
 #include <gdk/gdkkeysyms.h>
 #include <gtk/gtk.h>
 
@@ -1324,11 +1328,37 @@ parole_player_key_press (GtkWidget *widget, GdkEventKey *ev, ParolePlayer *playe
     key = gdk_keyval_name (ev->keyval);
     g_print ("Key Press 0x%X:%s on widget=%s\n", ev->keyval, key, gtk_widget_get_name (widget));
 */
+
     switch (ev->keyval)
     {
 	case GDK_F11:
 	    parole_player_full_screen_menu_item_activate (player);
 	    return TRUE;
+#ifdef HAVE_XF86_KEYSYM
+	case XF86XK_AudioPlay:
+	    parole_player_play_pause_clicked (NULL, player);
+	    return TRUE;
+	case XF86XK_AudioStop:
+	    parole_player_stop_clicked (NULL, player);
+	    return TRUE;
+	case XF86XK_AudioRaiseVolume:
+	    parole_player_volume_up (NULL, player);
+	    return TRUE;
+	case XF86XK_AudioLowerVolume:
+	    parole_player_volume_down (NULL, player);
+	    return TRUE;
+	case XF86XK_AudioMute:
+	    parole_player_volume_muted (NULL, player);
+	    return TRUE;
+	case XF86XK_AudioPrev:
+	    parole_disc_menu_seek_prev (player->priv->disc_menu);
+	    return TRUE;
+	case XF86XK_AudioNext:
+	    parole_disc_menu_seek_next (player->priv->disc_menu);
+	    return TRUE;
+#endif /* HAVE_XF86_KEYSYM */
+	default:
+	    break;
     }
     
     return parole_player_handle_key_press (ev, player);

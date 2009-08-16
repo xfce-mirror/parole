@@ -117,6 +117,16 @@ fi
 AC_SUBST(pixmapsdir)
 
 #=======================================================#
+#      	       Check XF86keysysm            		#
+#=======================================================#
+# Check for the AudioPlay sym other should exist
+# if this one exists.
+AC_CHECK_DECL(XF86XK_AudioPlay,have_XF86XK_AudioPlay=1,have_XF86XK_AudioPlay=0,[#include <X11/XF86keysym.h>])
+if test "x${ac_cv_have_decl_XF86XK_AudioPlay}" != "xno"; then
+  AC_DEFINE(HAVE_XF86_KEYSYM, 1, [Define if XF86keysysm.h is available])
+fi
+
+#=======================================================#
 #              Check plugins to build                   #
 #=======================================================#
 
