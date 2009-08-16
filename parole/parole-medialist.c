@@ -27,6 +27,7 @@
 #include <string.h>
 
 #include <gtk/gtk.h>
+#include <gdk/gdkkeysyms.h>
 #include <glib.h>
 #include <glib/gstdio.h>
 #include <gio/gio.h>
@@ -116,6 +117,10 @@ void		parole_media_list_drag_data_received_cb (GtkWidget *widget,
 							 GtkSelectionData *data,
 							 guint info,
 							 guint drag_time,
+							 ParoleMediaList *list);
+
+gboolean	parole_media_list_key_press		(GtkWidget *widget, 
+							 GdkEventKey *ev, 
 							 ParoleMediaList *list);
 
 void		parole_media_list_format_cursor_changed_cb (GtkTreeView *view,
@@ -354,6 +359,16 @@ void	parole_media_list_drag_data_received_cb (GtkWidget *widget,
 
     gdk_window_set_cursor (GTK_WIDGET (list)->window, NULL);
     gtk_drag_finish (drag_context, added == i ? TRUE : FALSE, FALSE, drag_time);
+}
+
+gboolean parole_media_list_key_press (GtkWidget *widget, GdkEventKey *ev, ParoleMediaList *list)
+{
+    if ( ev->keyval == GDK_Delete )
+    {
+	parole_media_list_remove_clicked_cb (NULL, list);
+	return TRUE;
+    }
+    return FALSE;
 }
 
 void

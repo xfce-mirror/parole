@@ -1042,15 +1042,22 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
 }
 
 static gboolean
-parole_player_gst_widget_button_press (GtkWidget *widget, GdkEventButton *ev, ParolePlayer *player)
+parole_player_gst_widget_button_release (GtkWidget *widget, GdkEventButton *ev, ParolePlayer *player)
 {
-    if ( ev->button  == 3)
+    gboolean ret_val = FALSE;
+    
+    if ( ev->button == 3 )
     {
 	parole_player_show_menu (player, ev->button, ev->time);
-	return TRUE;
+	ret_val = TRUE;
+    }
+    else if ( ev->button == 1 )
+    {
+	gtk_widget_grab_focus (widget);
+	ret_val = TRUE;
     }
     
-    return FALSE;
+    return ret_val;
 }
 
 static gboolean parole_player_hide_fs_window (gpointer data)
@@ -1245,17 +1252,13 @@ parole_player_class_init (ParolePlayerClass *klass)
     g_type_class_add_private (klass, sizeof (ParolePlayerPrivate));
 }
 
-gboolean
-parole_player_key_press (GtkWidget *widget, GdkEventKey *ev, ParolePlayer *player)
+static gboolean
+parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
 {
     GtkWidget *focused;
     
     gboolean ret_val = FALSE;
-/*
-    gchar *key;
-    key = gdk_keyval_name (ev->keyval);
-    g_print ("Key Press 0x%X:%s on widget=%s\n", ev->keyval, key, gtk_widget_get_name (widget));
-*/
+    
     focused = gtk_window_get_focus (GTK_WINDOW (player->priv->window));
     
     if ( focused )
@@ -1271,11 +1274,19 @@ parole_player_key_press (GtkWidget *widget, GdkEventKey *ev, ParolePlayer *playe
     switch (ev->keyval)
     {
 	case GDK_F11:
+	case GDK_f:
+	case GDK_F:
 	    parole_player_full_screen_menu_item_activate (player);
 	    ret_val = TRUE;
 	    break;
-	case GDK_plus :
+	case GDK_plus:
 	    parole_player_volume_up (NULL, player);
+	    ret_val = TRUE;
+	    break;
+	case GDK_space:
+	case GDK_p:
+	case GDK_P:
+	    parole_player_play_pause_clicked (NULL, player);
 	    ret_val = TRUE;
 	    break;
 	case GDK_minus:
@@ -1293,8 +1304,9 @@ parole_player_key_press (GtkWidget *widget, GdkEventKey *ev, ParolePlayer *playe
 		parole_player_seekb_cb (NULL, player);
 	    ret_val = TRUE;
 	    break;
-	case GDK_space:
-	    parole_player_play_pause_clicked (NULL, player);
+	case GDK_s:
+	case GDK_S:
+	    parole_player_stop_clicked (NULL, player);
 	    ret_val = TRUE;
 	    break;
 	default:
@@ -1302,6 +1314,24 @@ parole_player_key_press (GtkWidget *widget, GdkEventKey *ev, ParolePlayer *playe
     }
     
     return ret_val;
+}
+
+gboolean
+parole_player_key_press (GtkWidget *widget, GdkEventKey *ev, ParolePlayer *player)
+{
+/*
+    gchar *key;
+    key = gdk_keyval_name (ev->keyval);
+    g_print ("Key Press 0x%X:%s on widget=%s\n", ev->keyval, key, gtk_widget_get_name (widget));
+*/
+    switch (ev->keyval)
+    {
+	case GDK_F11:
+	    parole_player_full_screen_menu_item_activate (player);
+	    return TRUE;
+    }
+    
+    return parole_player_handle_key_press (ev, player);
 }
 
 static void
@@ -1442,16 +1472,11 @@ parole_player_init (ParolePlayer *player)
     g_signal_connect (G_OBJECT (player->priv->gst), "buffering",
 		      G_CALLBACK (parole_player_buffering_cb), player);
     
-    g_signal_connect (G_OBJECT (player->priv->gst), "button-release-event",
-		      G_CALLBACK (parole_player_gst_widget_button_press), player);
+    g_signal_connect_after (G_OBJECT (player->priv->gst), "button-release-event",
+			    G_CALLBACK (parole_player_gst_widget_button_release), player);
     
     g_signal_connect (G_OBJECT (player->priv->gst), "motion-notify-event",
 		      G_CALLBACK (parole_player_gst_widget_motion_notify_event), player);
-    
-    /*
-    g_signal_connect (G_OBJECT (player->priv->gst), "key-press-event",
-		      G_CALLBACK (parole_player_key_press), player);
-    */
     
     player->priv->window = GTK_WIDGET (gtk_builder_get_object (builder, "main-window"));
     player->priv->main_nt = GTK_WIDGET (gtk_builder_get_object (builder, "main-notebook"));
