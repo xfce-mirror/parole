@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-14 18:51+0200\n"
+"POT-Creation-Date: 2009-08-16 16:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,7 +44,7 @@ msgstr ""
 msgid "DVD Menu"
 msgstr ""
 
-#: ../data/interfaces/parole.ui.h:8 ../parole/parole-player.c:283
+#: ../data/interfaces/parole.ui.h:8 ../parole/parole-player.c:288
 msgid "Hide playlist"
 msgstr ""
 
@@ -56,7 +56,7 @@ msgstr ""
 msgid "Mute"
 msgstr ""
 
-#: ../data/interfaces/parole.ui.h:11 ../parole/parole-player.c:997
+#: ../data/interfaces/parole.ui.h:11 ../parole/parole-player.c:1002
 #: ../parole/parole-disc-menu.c:113
 msgid "Next Chapter"
 msgstr ""
@@ -66,7 +66,7 @@ msgid "None"
 msgstr ""
 
 #: ../data/interfaces/parole.ui.h:13 ../data/desktop/parole.desktop.in.in.h:1
-#: ../parole/parole-player.c:220 ../parole/parole-about.c:51
+#: ../parole/parole-player.c:225 ../parole/parole-about.c:51
 #: ../plugins/window-title/window-title.c:40
 msgid "Parole Media Player"
 msgstr ""
@@ -75,7 +75,7 @@ msgstr ""
 msgid "Plugins"
 msgstr ""
 
-#: ../data/interfaces/parole.ui.h:15 ../parole/parole-player.c:1009
+#: ../data/interfaces/parole.ui.h:15 ../parole/parole-player.c:1014
 #: ../parole/parole-disc-menu.c:114
 msgid "Previous Chapter"
 msgstr ""
@@ -276,65 +276,65 @@ msgstr ""
 msgid "Add"
 msgstr ""
 
-#: ../parole/parole-medialist.c:417
+#: ../parole/parole-medialist.c:432
 msgid "Error saving playlist file"
 msgstr ""
 
-#: ../parole/parole-medialist.c:417
+#: ../parole/parole-medialist.c:432
 msgid "Permission denied"
 msgstr ""
 
-#: ../parole/parole-medialist.c:426
+#: ../parole/parole-medialist.c:441
 msgid "Unknown playlist format, Please select a support playlist format"
 msgstr ""
 
-#: ../parole/parole-medialist.c:492 ../parole/parole-player.c:1472
+#: ../parole/parole-medialist.c:507 ../parole/parole-player.c:1542
 msgid "Playlist"
 msgstr ""
 
-#: ../parole/parole-medialist.c:499
+#: ../parole/parole-medialist.c:514
 msgid "M3U Playlists"
 msgstr ""
 
-#: ../parole/parole-medialist.c:507
+#: ../parole/parole-medialist.c:522
 msgid "PLS Playlists"
 msgstr ""
 
-#: ../parole/parole-medialist.c:515
+#: ../parole/parole-medialist.c:530
 msgid "Advanced Stream Redirector"
 msgstr ""
 
-#: ../parole/parole-medialist.c:523
+#: ../parole/parole-medialist.c:538
 msgid "Shareable Playlist"
 msgstr ""
 
-#: ../parole/parole-medialist.c:838
+#: ../parole/parole-medialist.c:853
 msgid "Remember playlist"
 msgstr ""
 
-#: ../parole/parole-medialist.c:988
+#: ../parole/parole-medialist.c:1003
 msgid "Media list"
 msgstr ""
 
-#: ../parole/parole-player.c:292
+#: ../parole/parole-player.c:297
 msgid "Show playlist"
 msgstr ""
 
-#: ../parole/parole-player.c:502
+#: ../parole/parole-player.c:507
 msgid "Media stream is not seekable"
 msgstr ""
 
 #.
 #. * Next chapter menu item
 #.
-#: ../parole/parole-player.c:997 ../parole/parole-disc-menu.c:122
+#: ../parole/parole-player.c:1002 ../parole/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr ""
 
 #.
 #. * Previous chapter menu item
 #.
-#: ../parole/parole-player.c:1009 ../parole/parole-disc-menu.c:123
+#: ../parole/parole-player.c:1014 ../parole/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr ""
 
@@ -387,7 +387,7 @@ msgstr ""
 msgid "Translator (%s)"
 msgstr ""
 
-#: ../parole/parole-disc.c:203
+#: ../parole/parole-disc.c:202
 msgid "Play Disc"
 msgstr ""
 
@@ -577,6 +577,14 @@ msgstr ""
 #: ../parole/parole-disc-menu.c:194
 #, c-format
 msgid "Track %i"
+msgstr ""
+
+#: ../parole/parole-plugins-manager.c:227
+msgid "Visit Website"
+msgstr ""
+
+#: ../parole/parole-plugins-manager.c:285
+msgid "Visite Website"
 msgstr ""
 
 #: ../plugins/properties/stream-properties.c:121

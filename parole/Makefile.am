@@ -1,4 +1,4 @@
-bin_PROGRAMS = parole-media-player
+bin_PROGRAMS = parole
 
 noinst_LTLIBRARIES =                    	\
         libparole.la
@@ -116,13 +116,13 @@ libparole_la_LDFLAGS =				\
 libparole_la_LIBADD =				\
 	$(PAROLE_LIBS)
 
-parole_media_player_SOURCES =			\
+parole_SOURCES =				\
 	main.c
 
-parole_media_player_LDADD =			\
+parole_LDADD =					\
 	libparole.la
 
-parole_media_player_LDFLAGS =			\
+parole_LDFLAGS =				\
 	$(PAROLE_LDFLAGS)
 
 parole_glib_enum_headers =			\

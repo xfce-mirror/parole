@@ -5,10 +5,10 @@ m4_define([parole_version_major],  [0])
 m4_define([parole_version_minor],  [1])
 m4_define([parole_version_micro],  [90])
 m4_define([parole_version_build],  [r@REVISION@])
-m4_define([parole_version_tag], [svn])
+m4_define([parole_version_tag], [])
 m4_define([parole_version], [parole_version_major().parole_version_minor().parole_version_micro()ifelse(parole_version_tag(), [svn], [parole_version_tag().parole_version_build()], [parole_version_tag()])])
 
-AC_INIT([parole-media-player], [parole_version], [aliov@xfce.org])
+AC_INIT([parole], [parole_version], [aliov@xfce.org])
 AC_PREREQ(2.59c)
 
 AM_INIT_AUTOMAKE([1.8 dist-bzip2 tar-ustar])
