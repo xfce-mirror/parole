@@ -367,6 +367,7 @@ tag_message_cb (ParolePlugin *plugin, const ParoleStream *stream, PluginData *da
 {
     gchar *str = NULL;
 #ifdef HAVE_TAGLIBC
+    ParoleMediaType media_type;
     gchar *uri = NULL;
     GError *error = NULL;
 #endif
@@ -375,6 +376,7 @@ tag_message_cb (ParolePlugin *plugin, const ParoleStream *stream, PluginData *da
 		  "title", &str,
 #ifdef HAVE_TAGLIBC
 		  "uri", &uri,
+		  "media-type", &media_type,
 #endif
 		  NULL);
     
@@ -391,22 +393,25 @@ tag_message_cb (ParolePlugin *plugin, const ParoleStream *stream, PluginData *da
 	data->tag_file = NULL;
     }
     
-    data->filename = g_filename_from_uri (uri, NULL, &error);
-    
-    if ( G_UNLIKELY (error) )
+    if ( media_type == PAROLE_MEDIA_TYPE_LOCAL_FILE )
     {
-	g_critical ("Unablet to convert uri : %s to filename : %s", uri, error->message);
-	g_error_free (error);
-	disable_tag_save (data->save);
-    }
-    else
-    {
-	data->tag_file = taglib_file_new (data->filename);
+	data->filename = g_filename_from_uri (uri, NULL, &error);
 	
-	if ( !data->tag_file )
+	if ( G_UNLIKELY (error) )
+	{
+	    g_critical ("Unablet to convert uri : %s to filename : %s", uri, error->message);
+	    g_error_free (error);
 	    disable_tag_save (data->save);
+	}
 	else
-	    enable_tag_save (data->save);
+	{
+	    data->tag_file = taglib_file_new (data->filename);
+	    
+	    if ( !data->tag_file )
+		disable_tag_save (data->save);
+	    else
+		enable_tag_save (data->save);
+	}
     }
 #endif
 
