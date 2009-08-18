@@ -118,7 +118,6 @@ parole_session_init (ParoleSession *session)
 	return;
     }
     
-    session->priv->managed 	   = session_init (session->priv->client);
     session->priv->client->die     = parole_session_die;
 }
 
@@ -155,9 +154,18 @@ parole_session_get (void)
     return PAROLE_SESSION (parole_session_obj);
 }
 
+void parole_session_real_init       (ParoleSession *session)
+{
+    g_return_if_fail (PAROLE_IS_SESSION (session));
+    g_return_if_fail (session->priv->managed == FALSE);
+    
+    session->priv->managed = session_init (session->priv->client);
+}
+
 void parole_session_set_client_id (ParoleSession *session, const gchar *client_id)
 {
     g_return_if_fail (PAROLE_IS_SESSION (session));
+    g_return_if_fail (session->priv->managed == FALSE);
     
     if ( G_UNLIKELY (session->priv->client == NULL) )
 	return;

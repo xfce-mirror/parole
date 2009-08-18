@@ -43,6 +43,7 @@
 #include "parole-player.h"
 #include "parole-plugins-manager.h"
 #include "parole-utils.h"
+#include "parole-session.h"
 #include "parole-dbus.h"
 #include "parole-builder.h"
 
@@ -142,6 +143,7 @@ parole_send (gchar **filenames)
 int main (int argc, char **argv)
 {
     ParolePlayer *player;
+    ParoleSession *session;
     ParolePluginsManager *plugins;
     GtkBuilder *builder;
     GOptionContext *ctx;
@@ -150,11 +152,13 @@ int main (int argc, char **argv)
     gchar **filenames = NULL;
     gboolean new_instance = FALSE;
     gboolean version = FALSE;
+    gchar    *client_id = NULL;
     
     GOptionEntry option_entries[] = 
     {
 	{"new-instance", 'i', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &new_instance, N_("Open a new instance"), NULL },
 	{ "version", 'V', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &version, N_("Version information"), NULL },
+	{ "sm-client-id", 0, G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_STRING, &client_id, NULL, NULL },
 	{G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, &filenames, N_("Media to play"), NULL},
         { NULL, },
     };
@@ -198,6 +202,12 @@ int main (int argc, char **argv)
     {
 	builder = parole_builder_get_main_interface ();
 	parole_dbus_register_name (PAROLE_DBUS_NAME);
+	session = parole_session_get ();
+	
+	if ( client_id )
+	    parole_session_set_client_id (session, client_id);
+	    
+	parole_session_real_init (session);
 	player = parole_player_new ();
 
 	if ( filenames && filenames[0] != NULL )
@@ -243,6 +253,7 @@ int main (int argc, char **argv)
 	
 	parole_dbus_release_name (PAROLE_DBUS_NAME);
 	g_object_unref (plugins);
+	g_object_unref (session);
     }
 
     gst_deinit ();

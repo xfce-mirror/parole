@@ -52,6 +52,8 @@ GType        			parole_session_get_type        (void) G_GNUC_CONST;
 
 ParoleSession       	       *parole_session_get             (void);
 
+void				parole_session_real_init       (ParoleSession *session);
+
 void 				parole_session_set_client_id   (ParoleSession *session, 
 								const gchar *client_id);
 G_END_DECLS
