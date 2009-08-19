@@ -254,7 +254,6 @@
             <child>
               <object class="GtkMenuItem" id="help-menu">
                 <property name="visible">True</property>
-                <property name="right_justified">True</property>
                 <property name="label" translatable="yes">_Help</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
@@ -303,6 +302,7 @@
                           <object class="GtkVBox" id="vbox8">
                             <property name="visible">True</property>
                             <property name="orientation">vertical</property>
+                            <property name="spacing">5</property>
                             <child>
                               <object class="GtkHBox" id="output">
                                 <property name="visible">True</property>
@@ -320,150 +320,32 @@
                                 <property name="visible">True</property>
                                 <property name="orientation">vertical</property>
                                 <child>
-                                  <object class="GtkVBox" id="play-box">
+                                  <object class="GtkAlignment" id="alignment1">
                                     <property name="visible">True</property>
-                                    <property name="orientation">vertical</property>
-                                    <property name="spacing">5</property>
+                                    <property name="top_padding">3</property>
+                                    <property name="bottom_padding">3</property>
+                                    <property name="left_padding">6</property>
+                                    <property name="right_padding">6</property>
                                     <child>
-                                      <object class="GtkEventBox" id="disc-box">
-                                        <property name="no_show_all">True</property>
-                                        <child>
-                                          <object class="GtkHBox" id="disc-menu-box">
-                                            <property name="visible">True</property>
-                                            <property name="spacing">5</property>
-                                            <child>
-                                              <object class="GtkButton" id="prev-chapter">
-                                                <property name="label" translatable="yes">Previous Chapter</property>
-                                                <property name="can_focus">False</property>
-                                                <property name="receives_default">False</property>
-                                                <property name="no_show_all">True</property>
-                                                <property name="image">image1</property>
-                                                <property name="relief">none</property>
-                                              </object>
-                                              <packing>
-                                                <property name="expand">False</property>
-                                                <property name="position">0</property>
-                                              </packing>
-                                            </child>
-                                            <child>
-                                              <object class="GtkButton" id="dvd-menu">
-                                                <property name="label" translatable="yes">DVD Menu</property>
-                                                <property name="can_focus">False</property>
-                                                <property name="receives_default">False</property>
-                                                <property name="no_show_all">True</property>
-                                                <property name="image">image2</property>
-                                                <property name="relief">none</property>
-                                              </object>
-                                              <packing>
-                                                <property name="expand">False</property>
-                                                <property name="position">1</property>
-                                              </packing>
-                                            </child>
-                                            <child>
-                                              <object class="GtkButton" id="chapter-menu">
-                                                <property name="label" translatable="yes">Chapter Menu</property>
-                                                <property name="can_focus">False</property>
-                                                <property name="receives_default">False</property>
-                                                <property name="no_show_all">True</property>
-                                                <property name="image">image3</property>
-                                                <property name="relief">none</property>
-                                              </object>
-                                              <packing>
-                                                <property name="expand">False</property>
-                                                <property name="position">2</property>
-                                              </packing>
-                                            </child>
-                                            <child>
-                                              <object class="GtkEventBox" id="eventboxinfo">
-                                                <property name="no_show_all">True</property>
-                                                <child>
-                                                  <object class="GtkLabel" id="info">
-                                                    <property name="no_show_all">True</property>
-                                                    <property name="use_markup">True</property>
-                                                  </object>
-                                                </child>
-                                              </object>
-                                              <packing>
-                                                <property name="position">3</property>
-                                              </packing>
-                                            </child>
-                                            <child>
-                                              <placeholder/>
-                                            </child>
-                                            <child>
-                                              <object class="GtkButton" id="select-track">
-                                                <property name="label" translatable="yes">Select Track</property>
-                                                <property name="can_focus">False</property>
-                                                <property name="receives_default">False</property>
-                                                <property name="no_show_all">True</property>
-                                                <property name="image">image13</property>
-                                                <property name="relief">none</property>
-                                              </object>
-                                              <packing>
-                                                <property name="expand">False</property>
-                                                <property name="position">5</property>
-                                              </packing>
-                                            </child>
-                                            <child>
-                                              <object class="GtkButton" id="next-chapter">
-                                                <property name="label" translatable="yes">Next Chapter</property>
-                                                <property name="can_focus">False</property>
-                                                <property name="receives_default">False</property>
-                                                <property name="no_show_all">True</property>
-                                                <property name="image">image4</property>
-                                                <property name="relief">none</property>
-                                              </object>
-                                              <packing>
-                                                <property name="expand">False</property>
-                                                <property name="position">6</property>
-                                              </packing>
-                                            </child>
-                                          </object>
-                                        </child>
-                                      </object>
-                                      <packing>
-                                        <property name="expand">False</property>
-                                        <property name="position">0</property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <object class="GtkHScale" id="scale">
+                                      <object class="GtkVBox" id="play-box">
                                         <property name="visible">True</property>
-                                        <property name="sensitive">False</property>
-                                        <property name="can_focus">True</property>
-                                        <property name="draw_value">False</property>
-                                        <signal name="button_press_event" handler="parole_player_range_button_press"/>
-                                        <signal name="value_changed" handler="parole_player_range_value_changed"/>
-                                        <signal name="button_release_event" handler="parole_player_range_button_release"/>
-                                        <signal name="scroll_event" handler="parole_player_scroll_event_cb"/>
-                                      </object>
-                                      <packing>
-                                        <property name="expand">False</property>
-                                        <property name="position">1</property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <object class="GtkHBox" id="hbox7">
-                                        <property name="visible">True</property>
+                                        <property name="orientation">vertical</property>
+                                        <property name="spacing">5</property>
                                         <child>
-                                          <object class="GtkVBox" id="vbox6">
-                                            <property name="visible">True</property>
-                                            <property name="orientation">vertical</property>
-                                            <property name="spacing">5</property>
+                                          <object class="GtkEventBox" id="disc-box">
+                                            <property name="no_show_all">True</property>
                                             <child>
-                                              <object class="GtkHBox" id="hbox6">
+                                              <object class="GtkHBox" id="disc-menu-box">
                                                 <property name="visible">True</property>
                                                 <property name="spacing">5</property>
                                                 <child>
-                                                  <object class="GtkButton" id="back">
-                                                    <property name="visible">True</property>
-                                                    <property name="sensitive">False</property>
+                                                  <object class="GtkButton" id="prev-chapter">
+                                                    <property name="label" translatable="yes">Previous Chapter</property>
                                                     <property name="can_focus">True</property>
                                                     <property name="receives_default">True</property>
-                                                    <property name="image">image6</property>
+                                                    <property name="no_show_all">True</property>
+                                                    <property name="image">image1</property>
                                                     <property name="relief">none</property>
-                                                    <property name="focus_on_click">False</property>
-                                                    <signal name="clicked" handler="parole_player_seekb_cb"/>
                                                   </object>
                                                   <packing>
                                                     <property name="expand">False</property>
@@ -471,15 +353,13 @@
                                                   </packing>
                                                 </child>
                                                 <child>
-                                                  <object class="GtkButton" id="stop">
-                                                    <property name="visible">True</property>
-                                                    <property name="sensitive">False</property>
+                                                  <object class="GtkButton" id="dvd-menu">
+                                                    <property name="label" translatable="yes">DVD Menu</property>
                                                     <property name="can_focus">True</property>
                                                     <property name="receives_default">True</property>
-                                                    <property name="image">image7</property>
+                                                    <property name="no_show_all">True</property>
+                                                    <property name="image">image2</property>
                                                     <property name="relief">none</property>
-                                                    <property name="focus_on_click">False</property>
-                                                    <signal name="clicked" handler="parole_player_stop_clicked"/>
                                                   </object>
                                                   <packing>
                                                     <property name="expand">False</property>
@@ -487,15 +367,13 @@
                                                   </packing>
                                                 </child>
                                                 <child>
-                                                  <object class="GtkButton" id="play-pause">
-                                                    <property name="visible">True</property>
-                                                    <property name="sensitive">False</property>
+                                                  <object class="GtkButton" id="chapter-menu">
+                                                    <property name="label" translatable="yes">Chapter Menu</property>
                                                     <property name="can_focus">True</property>
                                                     <property name="receives_default">True</property>
-                                                    <property name="image">image8</property>
+                                                    <property name="no_show_all">True</property>
+                                                    <property name="image">image3</property>
                                                     <property name="relief">none</property>
-                                                    <property name="focus_on_click">False</property>
-                                                    <signal name="clicked" handler="parole_player_play_pause_clicked"/>
                                                   </object>
                                                   <packing>
                                                     <property name="expand">False</property>
@@ -503,29 +381,96 @@
                                                   </packing>
                                                 </child>
                                                 <child>
-                                                  <object class="GtkButton" id="forward">
-                                                    <property name="visible">True</property>
-                                                    <property name="sensitive">False</property>
-                                                    <property name="can_focus">True</property>
-                                                    <property name="receives_default">True</property>
-                                                    <property name="image">image9</property>
-                                                    <property name="relief">none</property>
-                                                    <property name="focus_on_click">False</property>
-                                                    <signal name="clicked" handler="parole_player_seekf_cb"/>
+                                                  <object class="GtkEventBox" id="eventboxinfo">
+                                                    <property name="no_show_all">True</property>
+                                                    <child>
+                                                      <object class="GtkLabel" id="info">
+                                                        <property name="no_show_all">True</property>
+                                                        <property name="use_markup">True</property>
+                                                      </object>
+                                                    </child>
                                                   </object>
                                                   <packing>
-                                                    <property name="expand">False</property>
                                                     <property name="position">3</property>
                                                   </packing>
                                                 </child>
                                                 <child>
-                                                  <object class="GtkHBox" id="hbox8">
+                                                  <placeholder/>
+                                                </child>
+                                                <child>
+                                                  <object class="GtkButton" id="select-track">
+                                                    <property name="label" translatable="yes">Select Track</property>
+                                                    <property name="can_focus">True</property>
+                                                    <property name="receives_default">True</property>
+                                                    <property name="no_show_all">True</property>
+                                                    <property name="image">image13</property>
+                                                    <property name="relief">none</property>
+                                                  </object>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="position">5</property>
+                                                  </packing>
+                                                </child>
+                                                <child>
+                                                  <object class="GtkButton" id="next-chapter">
+                                                    <property name="label" translatable="yes">Next Chapter</property>
+                                                    <property name="can_focus">True</property>
+                                                    <property name="receives_default">True</property>
+                                                    <property name="no_show_all">True</property>
+                                                    <property name="image">image4</property>
+                                                    <property name="relief">none</property>
+                                                  </object>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="position">6</property>
+                                                  </packing>
+                                                </child>
+                                              </object>
+                                            </child>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="position">0</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkHScale" id="scale">
+                                            <property name="visible">True</property>
+                                            <property name="sensitive">False</property>
+                                            <property name="can_focus">True</property>
+                                            <property name="draw_value">False</property>
+                                            <signal name="button_press_event" handler="parole_player_range_button_press"/>
+                                            <signal name="value_changed" handler="parole_player_range_value_changed"/>
+                                            <signal name="button_release_event" handler="parole_player_range_button_release"/>
+                                            <signal name="scroll_event" handler="parole_player_scroll_event_cb"/>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="position">1</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkHBox" id="hbox7">
+                                            <property name="visible">True</property>
+                                            <child>
+                                              <object class="GtkVBox" id="vbox6">
+                                                <property name="visible">True</property>
+                                                <property name="orientation">vertical</property>
+                                                <property name="spacing">5</property>
+                                                <child>
+                                                  <object class="GtkHBox" id="hbox6">
                                                     <property name="visible">True</property>
                                                     <property name="spacing">5</property>
                                                     <child>
-                                                      <object class="GtkImage" id="volume-image">
+                                                      <object class="GtkButton" id="back">
                                                         <property name="visible">True</property>
-                                                        <property name="stock">gtk-missing-image</property>
+                                                        <property name="sensitive">False</property>
+                                                        <property name="can_focus">True</property>
+                                                        <property name="receives_default">True</property>
+                                                        <property name="image">image6</property>
+                                                        <property name="relief">none</property>
+                                                        <property name="focus_on_click">False</property>
+                                                        <signal name="clicked" handler="parole_player_seekb_cb"/>
                                                       </object>
                                                       <packing>
                                                         <property name="expand">False</property>
@@ -533,25 +478,92 @@
                                                       </packing>
                                                     </child>
                                                     <child>
-                                                      <object class="GtkHScale" id="volume">
-                                                        <property name="width_request">100</property>
-                                                        <property name="height_request">10</property>
+                                                      <object class="GtkButton" id="stop">
                                                         <property name="visible">True</property>
+                                                        <property name="sensitive">False</property>
                                                         <property name="can_focus">True</property>
-                                                        <property name="show_fill_level">True</property>
-                                                        <property name="draw_value">False</property>
-                                                        <signal name="value_changed" handler="parole_player_volume_value_changed_cb"/>
+                                                        <property name="receives_default">True</property>
+                                                        <property name="image">image7</property>
+                                                        <property name="relief">none</property>
+                                                        <property name="focus_on_click">False</property>
+                                                        <signal name="clicked" handler="parole_player_stop_clicked"/>
                                                       </object>
                                                       <packing>
                                                         <property name="expand">False</property>
                                                         <property name="position">1</property>
                                                       </packing>
                                                     </child>
+                                                    <child>
+                                                      <object class="GtkButton" id="play-pause">
+                                                        <property name="visible">True</property>
+                                                        <property name="sensitive">False</property>
+                                                        <property name="can_focus">True</property>
+                                                        <property name="receives_default">True</property>
+                                                        <property name="image">image8</property>
+                                                        <property name="relief">none</property>
+                                                        <property name="focus_on_click">False</property>
+                                                        <signal name="clicked" handler="parole_player_play_pause_clicked"/>
+                                                      </object>
+                                                      <packing>
+                                                        <property name="expand">False</property>
+                                                        <property name="position">2</property>
+                                                      </packing>
+                                                    </child>
+                                                    <child>
+                                                      <object class="GtkButton" id="forward">
+                                                        <property name="visible">True</property>
+                                                        <property name="sensitive">False</property>
+                                                        <property name="can_focus">True</property>
+                                                        <property name="receives_default">True</property>
+                                                        <property name="image">image9</property>
+                                                        <property name="relief">none</property>
+                                                        <property name="focus_on_click">False</property>
+                                                        <signal name="clicked" handler="parole_player_seekf_cb"/>
+                                                      </object>
+                                                      <packing>
+                                                        <property name="expand">False</property>
+                                                        <property name="position">3</property>
+                                                      </packing>
+                                                    </child>
+                                                    <child>
+                                                      <object class="GtkHBox" id="hbox8">
+                                                        <property name="visible">True</property>
+                                                        <property name="spacing">5</property>
+                                                        <child>
+                                                          <object class="GtkImage" id="volume-image">
+                                                            <property name="visible">True</property>
+                                                            <property name="stock">gtk-missing-image</property>
+                                                          </object>
+                                                          <packing>
+                                                            <property name="expand">False</property>
+                                                            <property name="position">0</property>
+                                                          </packing>
+                                                        </child>
+                                                        <child>
+                                                          <object class="GtkHScale" id="volume">
+                                                            <property name="width_request">100</property>
+                                                            <property name="height_request">10</property>
+                                                            <property name="visible">True</property>
+                                                            <property name="can_focus">True</property>
+                                                            <property name="show_fill_level">True</property>
+                                                            <property name="draw_value">False</property>
+                                                            <signal name="value_changed" handler="parole_player_volume_value_changed_cb"/>
+                                                          </object>
+                                                          <packing>
+                                                            <property name="expand">False</property>
+                                                            <property name="position">1</property>
+                                                          </packing>
+                                                        </child>
+                                                      </object>
+                                                      <packing>
+                                                        <property name="padding">30</property>
+                                                        <property name="pack_type">end</property>
+                                                        <property name="position">4</property>
+                                                      </packing>
+                                                    </child>
                                                   </object>
                                                   <packing>
-                                                    <property name="padding">30</property>
-                                                    <property name="pack_type">end</property>
-                                                    <property name="position">4</property>
+                                                    <property name="position">0</property>
                                                   </packing>
                                                 </child>
                                               </object>
@@ -559,53 +571,48 @@
                                                 <property name="position">0</property>
                                               </packing>
                                             </child>
-                                          </object>
-                                          <packing>
-                                            <property name="position">0</property>
-                                          </packing>
-                                        </child>
-                                        <child>
-                                          <object class="GtkButton" id="leave_fs">
-                                            <property name="label" translatable="yes">gtk-leave-fullscreen</property>
-                                            <property name="can_focus">True</property>
-                                            <property name="receives_default">True</property>
-                                            <property name="no_show_all">True</property>
-                                            <property name="relief">none</property>
-                                            <property name="use_stock">True</property>
-                                            <signal name="clicked" handler="parole_player_leave_fs_cb"/>
+                                            <child>
+                                              <object class="GtkButton" id="leave_fs">
+                                                <property name="label" translatable="yes">gtk-leave-fullscreen</property>
+                                                <property name="can_focus">True</property>
+                                                <property name="receives_default">True</property>
+                                                <property name="no_show_all">True</property>
+                                                <property name="relief">none</property>
+                                                <property name="use_stock">True</property>
+                                                <signal name="clicked" handler="parole_player_leave_fs_cb"/>
+                                              </object>
+                                              <packing>
+                                                <property name="expand">False</property>
+                                                <property name="position">2</property>
+                                              </packing>
+                                            </child>
+                                            <child>
+                                              <object class="GtkButton" id="show-hide-list">
+                                                <property name="visible">True</property>
+                                                <property name="can_focus">True</property>
+                                                <property name="receives_default">True</property>
+                                                <property name="no_show_all">True</property>
+                                                <property name="image">image18</property>
+                                                <property name="relief">none</property>
+                                                <signal name="clicked" handler="parole_player_show_hide_playlist"/>
+                                              </object>
+                                              <packing>
+                                                <property name="expand">False</property>
+                                                <property name="fill">False</property>
+                                                <property name="pack_type">end</property>
+                                                <property name="position">1</property>
+                                              </packing>
+                                            </child>
                                           </object>
                                           <packing>
                                             <property name="expand">False</property>
                                             <property name="position">2</property>
                                           </packing>
                                         </child>
-                                        <child>
-                                          <object class="GtkButton" id="show-hide-list">
-                                            <property name="visible">True</property>
-                                            <property name="can_focus">True</property>
-                                            <property name="receives_default">True</property>
-                                            <property name="no_show_all">True</property>
-                                            <property name="tooltip_text" translatable="yes">Hide playlist</property>
-                                            <property name="image">image18</property>
-                                            <property name="relief">none</property>
-                                            <signal name="clicked" handler="parole_player_show_hide_playlist"/>
-                                          </object>
-                                          <packing>
-                                            <property name="expand">False</property>
-                                            <property name="fill">False</property>
-                                            <property name="pack_type">end</property>
-                                            <property name="position">1</property>
-                                          </packing>
-                                        </child>
                                       </object>
-                                      <packing>
-                                        <property name="expand">False</property>
-                                        <property name="position">2</property>
-                                      </packing>
                                     </child>
                                   </object>
                                   <packing>
-                                    <property name="expand">False</property>
                                     <property name="position">0</property>
                                   </packing>
                                 </child>
@@ -622,11 +629,20 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkNotebook" id="notebook-playlist">
+                          <object class="GtkAlignment" id="alignment2">
                             <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="scrollable">True</property>
-                            <property name="enable_popup">True</property>
+                            <property name="top_padding">6</property>
+                            <property name="bottom_padding">6</property>
+                            <property name="left_padding">4</property>
+                            <property name="right_padding">6</property>
+                            <child>
+                              <object class="GtkNotebook" id="notebook-playlist">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="show_border">False</property>
+                                <property name="scrollable">True</property>
+                              </object>
+                            </child>
                           </object>
                           <packing>
                             <property name="resize">False</property>
@@ -720,9 +736,26 @@
     <property name="visible">True</property>
     <property name="icon_name">audio-volume-muted</property>
   </object>
-  <object class="GtkImage" id="image18">
+  <object class="GtkImage" id="image1">
     <property name="visible">True</property>
-    <property name="stock">gtk-go-forward</property>
+    <property name="stock">gtk-media-previous</property>
+  </object>
+  <object class="GtkImage" id="image2">
+    <property name="visible">True</property>
+    <property name="stock">gtk-index</property>
+  </object>
+  <object class="GtkImage" id="image3">
+    <property name="visible">True</property>
+    <property name="no_show_all">True</property>
+    <property name="stock">gtk-index</property>
+  </object>
+  <object class="GtkImage" id="image13">
+    <property name="visible">True</property>
+    <property name="stock">gtk-cdrom</property>
+  </object>
+  <object class="GtkImage" id="image4">
+    <property name="visible">True</property>
+    <property name="stock">gtk-media-next</property>
   </object>
   <object class="GtkImage" id="image6">
     <property name="visible">True</property>
@@ -740,25 +773,8 @@
     <property name="visible">True</property>
     <property name="stock">gtk-media-forward</property>
   </object>
-  <object class="GtkImage" id="image1">
+  <object class="GtkImage" id="image18">
     <property name="visible">True</property>
-    <property name="stock">gtk-media-previous</property>
-  </object>
-  <object class="GtkImage" id="image2">
-    <property name="visible">True</property>
-    <property name="stock">gtk-index</property>
-  </object>
-  <object class="GtkImage" id="image3">
-    <property name="visible">True</property>
-    <property name="no_show_all">True</property>
-    <property name="stock">gtk-index</property>
-  </object>
-  <object class="GtkImage" id="image4">
-    <property name="visible">True</property>
-    <property name="stock">gtk-media-next</property>
-  </object>
-  <object class="GtkImage" id="image13">
-    <property name="visible">True</property>
-    <property name="stock">gtk-cdrom</property>
+    <property name="stock">gtk-go-forward</property>
   </object>
 </interface>
