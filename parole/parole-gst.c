@@ -1537,7 +1537,7 @@ parole_gst_terminate_internal (ParoleGst *gst, gboolean fade_sound)
 		step = volume - volume / 10;
 		parole_gst_set_volume (gst, step < 0.01 ? 0 : step);
 		volume = parole_gst_get_volume (gst);
-		g_usleep (35000);
+		g_usleep (40000);
 	    }
 	}
     }

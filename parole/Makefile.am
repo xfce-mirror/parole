@@ -35,7 +35,8 @@ GENERATED_FILES =				\
 	gmarshal.h				\
 	enum-gtypes.c				\
 	enum-gtypes.h				\
-	org.parole.media.list.h
+	org.parole.media.list.h			\
+	org.parole.media.player.h
 
 INST_HFILES =					\
 	parole.h				\
@@ -175,6 +176,9 @@ enum-gtypes.c: $(parole_glib_enum_headers) Makefile
 
 org.parole.media.list.h: $(srcdir)/org.parole.media.list.xml
 	dbus-binding-tool --mode=glib-server --prefix=parole_media_list $< >$@
+
+org.parole.media.player.h: $(srcdir)/org.parole.media.player.xml
+	dbus-binding-tool --mode=glib-server --prefix=parole_player $< >$@
 
 endif
 

@@ -36,11 +36,14 @@
 #include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
 
+#include <dbus/dbus-glib.h>
+
 #include "parole-builder.h"
 #include "parole-about.h"
 
 #include "parole-player.h"
 #include "parole-gst.h"
+#include "parole-dbus.h"
 #include "parole-mediachooser.h"
 #include "parole-file.h"
 #include "parole-disc.h"
@@ -54,6 +57,12 @@
 #include "parole-session.h"
 #include "enum-gtypes.h"
 #include "parole-debug.h"
+
+/*
+ * DBus Glib init
+ */
+static void parole_player_dbus_class_init (ParolePlayerClass *klass);
+static void parole_player_dbus_init       (ParolePlayer *player);
 
 /*
  * GtkBuilder Callbacks
@@ -371,7 +380,7 @@ parole_player_uri_opened_cb (ParoleMediaList *list, const gchar *uri, ParolePlay
 static void
 parole_player_media_cursor_changed_cb (ParoleMediaList *list, gboolean media_selected, ParolePlayer *player)
 {
-    if (!player->priv->state != PAROLE_MEDIA_STATE_PLAYING)
+    if (player->priv->state != PAROLE_MEDIA_STATE_PLAYING)
 	gtk_widget_set_sensitive (player->priv->play_pause, media_selected);
 }
 
@@ -594,7 +603,7 @@ parole_player_play_selected_row (ParolePlayer *player)
 }
 
 static void
-parole_player_play_next (ParolePlayer *player)
+parole_player_play_next (ParolePlayer *player, gboolean allow_shuffle)
 {
     gboolean repeat, shuffle;
     
@@ -609,10 +618,37 @@ parole_player_play_next (ParolePlayer *player)
     {
 	parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, NULL);
 	
-	if ( shuffle )
+	if ( shuffle && allow_shuffle )
 	    row = parole_media_list_get_row_random (player->priv->list);
 	else
 	    row = parole_media_list_get_next_row (player->priv->list, player->priv->row, repeat);
+	
+	if ( row )
+	{
+	    parole_player_media_activated_cb (player->priv->list, row, player);
+	    return;
+	}
+	else
+	{
+	    TRACE ("No remaining media in the list");
+	    gtk_tree_row_reference_free (player->priv->row);
+	    player->priv->row = NULL;
+	}
+    }
+
+    parole_gst_stop (PAROLE_GST (player->priv->gst));
+}
+
+static void
+parole_player_play_prev (ParolePlayer *player)
+{
+    GtkTreeRowReference *row;
+    
+    if ( player->priv->row )
+    {
+	parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, NULL);
+	
+	row = parole_media_list_get_prev_row (player->priv->list, player->priv->row);
 	
 	if ( row )
 	{
@@ -661,7 +697,7 @@ parole_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream, Parole
     else if ( state == PAROLE_MEDIA_STATE_FINISHED )
     {
 	TRACE ("***Playback finished***");
-	parole_player_play_next (player);
+	parole_player_play_next (player, TRUE);
     }
 }
 
@@ -1254,6 +1290,8 @@ parole_player_class_init (ParolePlayerClass *klass)
     object_class->finalize = parole_player_finalize;
 
     g_type_class_add_private (klass, sizeof (ParolePlayerPrivate));
+    
+    parole_player_dbus_class_init (klass);
 }
 
 static gboolean
@@ -1351,10 +1389,12 @@ parole_player_key_press (GtkWidget *widget, GdkEventKey *ev, ParolePlayer *playe
 	    parole_player_volume_muted (NULL, player);
 	    return TRUE;
 	case XF86XK_AudioPrev:
-	    parole_disc_menu_seek_prev (player->priv->disc_menu);
+	    if ( !parole_disc_menu_seek_prev (player->priv->disc_menu))
+		parole_player_play_prev (player);
 	    return TRUE;
 	case XF86XK_AudioNext:
-	    parole_disc_menu_seek_next (player->priv->disc_menu);
+	    if ( !parole_disc_menu_seek_next (player->priv->disc_menu))
+		parole_player_play_next (player, FALSE);
 	    return TRUE;
 #endif /* HAVE_XF86_KEYSYM */
 	default:
@@ -1593,6 +1633,8 @@ parole_player_init (ParolePlayer *player)
 		      G_CALLBACK (parole_player_screen_size_change_changed_cb), player);
     
     g_object_unref (builder);
+    
+    parole_player_dbus_init (player);
 }
 
 ParolePlayer *
@@ -1616,4 +1658,120 @@ void parole_player_play_uri_disc (ParolePlayer *player, const gchar *uri)
 void parole_player_terminate (ParolePlayer *player)
 {
     parole_player_delete_event_cb (NULL, NULL, player);
+}
+
+
+static gboolean	parole_player_dbus_play (ParolePlayer *player,
+					 GError *error);
+
+static gboolean	parole_player_dbus_stop (ParolePlayer *player,
+					 GError *error);
+
+static gboolean	parole_player_dbus_next_track (ParolePlayer *player,
+					       GError *error);
+
+static gboolean	parole_player_dbus_prev_track (ParolePlayer *player,
+					       GError *error);
+
+static gboolean	parole_player_dbus_seek_forward (ParolePlayer *player,
+					         GError *error);
+
+static gboolean	parole_player_dbus_seek_backward (ParolePlayer *player,
+					          GError *error);
+
+static gboolean	parole_player_dbus_raise_volume (ParolePlayer *player,
+						 GError *error);
+
+static gboolean	parole_player_dbus_lower_volume (ParolePlayer *player,
+						 GError *error);
+					 
+static gboolean	parole_player_dbus_mute (ParolePlayer *player,
+					 GError *error);
+
+#include "org.parole.media.player.h"
+
+/*
+ * DBus server implementation
+ */
+static void 
+parole_player_dbus_class_init (ParolePlayerClass *klass)
+{
+    
+    dbus_g_object_type_install_info (G_TYPE_FROM_CLASS (klass),
+				     &dbus_glib_parole_player_object_info);
+				     
+}
+
+static void
+parole_player_dbus_init (ParolePlayer *player)
+{
+    dbus_g_connection_register_g_object (parole_g_session_bus_get (),
+					 PAROLE_DBUS_PATH,
+					 G_OBJECT (player));
+}
+
+static gboolean	parole_player_dbus_play (ParolePlayer *player,
+					 GError *error)
+{
+    
+    parole_player_play_pause_clicked (NULL, player);
+    return TRUE;
+}
+
+static gboolean	parole_player_dbus_stop (ParolePlayer *player,
+					 GError *error)
+{
+    parole_gst_stop (PAROLE_GST (player->priv->gst));
+    return TRUE;
+}
+
+static gboolean	parole_player_dbus_next_track (ParolePlayer *player,
+					       GError *error)
+{
+    if ( !parole_disc_menu_seek_next (player->priv->disc_menu))
+	parole_player_play_next (player, FALSE);
+    return TRUE;
+}
+
+static gboolean	parole_player_dbus_prev_track (ParolePlayer *player,
+					       GError *error)
+{
+    if ( !parole_disc_menu_seek_prev (player->priv->disc_menu))
+	parole_player_play_prev (player);
+    return TRUE;
+}
+
+static gboolean	parole_player_dbus_seek_forward (ParolePlayer *player,
+					         GError *error)
+{
+    parole_player_seekf_cb (NULL, player);
+    return TRUE;
+}
+
+static gboolean	parole_player_dbus_seek_backward (ParolePlayer *player,
+					          GError *error)
+{
+    parole_player_seekb_cb (NULL, player);
+    return TRUE;
+}
+					 
+static gboolean	parole_player_dbus_raise_volume (ParolePlayer *player,
+						 GError *error)
+{
+    parole_player_volume_up (NULL, player);
+    return TRUE;
+}
+
+static gboolean	parole_player_dbus_lower_volume (ParolePlayer *player,
+						 GError *error)
+{
+    parole_player_volume_down (NULL, player);
+    return TRUE;
+}
+					 
+static gboolean	parole_player_dbus_mute (ParolePlayer *player,
+					 GError *error)
+{
+    gtk_range_set_value (GTK_RANGE (player->priv->volume), 0);
+    return TRUE;
 }

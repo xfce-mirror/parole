@@ -57,6 +57,25 @@ parole_g_session_bus_get	(void)
     return bus;
 }
 
+DBusGProxy *
+parole_get_proxy (void)
+{
+    DBusGConnection *bus;
+    DBusGProxy *proxy;
+    
+    bus = parole_g_session_bus_get ();
+    
+    proxy = dbus_g_proxy_new_for_name (bus, 
+				       PAROLE_DBUS_NAME,
+				       PAROLE_DBUS_PATH,
+				       PAROLE_DBUS_INTERFACE);
+	
+    if ( !proxy )
+	g_error ("Unable to create proxy for %s", PAROLE_DBUS_NAME);
+	
+    return proxy;
+}
+
 gboolean	parole_dbus_name_has_owner		(const gchar *name)
 {
     DBusError error;

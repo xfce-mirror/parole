@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <node name="/">
-    <interface name="org.Parole.Media.Player">
+    <interface name="org.Parole.Media.List">
         <annotation name="org.freedesktop.DBus.GLib.CSymbol"
                     value="parole_media_list_dbus"/>
         <annotation name="org.freedesktop.DBus.GLib.ClientCSymbol"
@@ -11,7 +11,7 @@
       <arg type="as" name="files" direction="in"/>
     </method>
 
-    <method name="PlayDisc">
+    <method name="AddDisc">
 	<arg type="s" name="uri" direction="in"/>
     </method>
 

@@ -305,14 +305,28 @@ gboolean parole_disc_menu_visible (ParoleDiscMenu *menu)
     return (GTK_WIDGET_VISIBLE (menu->priv->next_chapter));
 }
 
-void parole_disc_menu_seek_next (ParoleDiscMenu *menu)
+gboolean parole_disc_menu_seek_next (ParoleDiscMenu *menu)
 {
-    parole_disc_menu_next_chapter_cb (menu);
+    if ( menu->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD ||
+	 menu->priv->current_media_type == PAROLE_MEDIA_TYPE_CDDA )
+    {
+	parole_disc_menu_next_chapter_cb (menu);
+	return TRUE;
+    }
+    
+    return FALSE;
 }
 
-void parole_disc_menu_seek_prev (ParoleDiscMenu *menu)
+gboolean parole_disc_menu_seek_prev (ParoleDiscMenu *menu)
 {
-    parole_disc_menu_prev_chapter_cb (menu);
+    if ( menu->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD ||
+	 menu->priv->current_media_type == PAROLE_MEDIA_TYPE_CDDA )
+    {
+	parole_disc_menu_prev_chapter_cb (menu);
+	return TRUE;
+    }
+    
+    return FALSE;
 }
 
 void parole_disc_menu_set_fullscreen (ParoleDiscMenu *menu, gboolean fullscreen)

@@ -25,9 +25,12 @@
 
 #define PAROLE_DBUS_NAME	"org.Parole.Media.Player"
 #define PAROLE_DBUS_PATH	"/org/Parole/Media/Player"
+#define PAROLE_DBUS_LIST_PATH	"/org/Parole/Media/List"
 #define PAROLE_DBUS_INTERFACE	"org.Parole.Media.Player"
 
 DBusGConnection 	*parole_g_session_bus_get		(void);
+
+DBusGProxy              *parole_get_proxy 		        (void);
 
 gboolean		 parole_dbus_name_has_owner		(const gchar *name);
 

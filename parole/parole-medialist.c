@@ -1132,6 +1132,35 @@ GtkTreeRowReference *parole_media_list_get_next_row (ParoleMediaList *list,
     return next;
 }
 
+GtkTreeRowReference *parole_media_list_get_prev_row (ParoleMediaList *list,
+						     GtkTreeRowReference *row)
+{
+    GtkTreeRowReference *prev = NULL;
+    GtkTreePath *path;
+    GtkTreeIter iter;
+    
+    g_return_val_if_fail (row != NULL, NULL);
+
+    if ( !gtk_tree_row_reference_valid (row) )
+	return NULL;
+    
+    path = gtk_tree_row_reference_get_path (row);
+    
+    gtk_tree_path_prev (path);
+    
+    if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path))
+    {
+	prev = gtk_tree_row_reference_new (GTK_TREE_MODEL (list->priv->store), path);
+	parole_media_list_select_path (list, path);
+    }
+    else
+	prev = row;
+    
+    gtk_tree_path_free (path);
+    
+    return prev;
+}
+
 GtkTreeRowReference *parole_media_list_get_row_random (ParoleMediaList *list)
 {
     GtkTreeRowReference *row = NULL;
@@ -1253,9 +1282,9 @@ static gboolean	 parole_media_list_dbus_add_files (ParoleMediaList *list,
 					           gchar **in_files,
 						   GError **error);
 
-static gboolean  parole_media_list_dbus_play_disc (ParoleMediaList *list,
-						   gchar *in_uri,
-						   GError **error);
+static gboolean  parole_media_list_dbus_add_disc (ParoleMediaList *list,
+						  gchar *in_uri,
+						  GError **error);
 
 #include "org.parole.media.list.h"
 
@@ -1273,7 +1302,7 @@ static void
 parole_media_list_dbus_init (ParoleMediaList *list)
 {
     dbus_g_connection_register_g_object (parole_g_session_bus_get (),
-					 PAROLE_DBUS_PATH,
+					 PAROLE_DBUS_LIST_PATH,
 					 G_OBJECT (list));
 }
 
@@ -1288,9 +1317,9 @@ static gboolean	 parole_media_list_dbus_add_files (ParoleMediaList *list,
     return TRUE;
 }
 
-static gboolean  parole_media_list_dbus_play_disc (ParoleMediaList *list,
-						   gchar *in_uri,
-						   GError **error)
+static gboolean  parole_media_list_dbus_add_disc (ParoleMediaList *list,
+						  gchar *in_uri,
+						  GError **error)
 {
     TRACE ("uri : %s", in_uri);
     

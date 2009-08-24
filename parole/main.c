@@ -118,15 +118,9 @@ parole_send_files (DBusGProxy *proxy, gchar **filenames)
 static void
 parole_send (gchar **filenames)
 {
-    DBusGConnection *bus;
     DBusGProxy *proxy;
     
-    bus = parole_g_session_bus_get ();
-    
-    proxy = dbus_g_proxy_new_for_name (bus, 
-				       PAROLE_DBUS_NAME,
-				       PAROLE_DBUS_PATH,
-				       PAROLE_DBUS_INTERFACE);
+    proxy = parole_get_proxy ();
 	
     if ( !proxy )
 	g_error ("Unable to create proxy for %s", PAROLE_DBUS_NAME);
@@ -137,7 +131,28 @@ parole_send (gchar **filenames)
 	parole_send_files (proxy, filenames);
 	
     g_object_unref (proxy);
-    dbus_g_connection_unref (bus);
+}
+
+static void
+parole_send_message (const gchar *message)
+{
+    DBusGProxy *proxy;
+    GError *error = NULL;
+    
+    proxy = parole_get_proxy ();
+    
+    dbus_g_proxy_call (proxy, message, &error,
+		       G_TYPE_INVALID,
+		       G_TYPE_INVALID);
+		       
+    if ( error )
+    {
+	g_critical ("Failed to send message : %s : %s", message, error->message);
+	g_error_free (error);
+    }
+    
+    g_object_unref (proxy);
+
 }
 
 int main (int argc, char **argv)
@@ -149,14 +164,33 @@ int main (int argc, char **argv)
     GOptionContext *ctx;
     GOptionGroup *gst_option_group;
     GError *error = NULL;
+    
     gchar **filenames = NULL;
     gboolean new_instance = FALSE;
     gboolean version = FALSE;
+    gboolean play = FALSE;
+    gboolean stop = FALSE;
+    gboolean next_track = FALSE;
+    gboolean prev_track = FALSE;
+    gboolean seek_f = FALSE;
+    gboolean seek_b = FALSE;
+    gboolean raise_volume = FALSE;
+    gboolean lower_volume = FALSE;
+    gboolean mute = FALSE;
     gchar    *client_id = NULL;
     
     GOptionEntry option_entries[] = 
     {
-	{"new-instance", 'i', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &new_instance, N_("Open a new instance"), NULL },
+	{ "new-instance", 'i', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &new_instance, N_("Open a new instance"), NULL },
+	{ "play", 'p', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &play, N_("Play or pause if already playing"), NULL },
+	{ "stop", 's', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &stop, N_("Stop playing"), NULL },
+	{ "next-track", 'N', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &next_track, N_("Next track"), NULL },
+	{ "previous-track", 'P', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &prev_track, N_("Previous track"), NULL },
+	{ "seek-f", 'f', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &seek_f, N_("Seek forward"), NULL },
+	{ "seek-b", 'b', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &seek_b, N_("Seek Backward"), NULL },
+	{ "raise-volume", 'r', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &raise_volume, N_("Raise volume"), NULL },
+	{ "lower-volume", 'l', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &lower_volume, N_("Lower volume"), NULL },
+	{ "mute", 'm', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &mute, N_("Mute volume"), NULL },
 	{ "version", 'V', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &version, N_("Version information"), NULL },
 	{ "sm-client-id", 0, G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_STRING, &client_id, NULL, NULL },
 	{G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, &filenames, N_("Media to play"), NULL},
@@ -195,8 +229,36 @@ int main (int argc, char **argv)
     if ( !new_instance && parole_dbus_name_has_owner (PAROLE_DBUS_NAME) )
     {
 	g_print (_("Parole is already running, use -i to open a new instance\n"));
+	
 	if ( filenames && filenames[0] != NULL )
 	    parole_send (filenames);
+	
+	if ( play )
+	    parole_send_message ("Play");
+	    
+	if ( stop )
+	    parole_send_message ("Stop");
+	    
+	if ( next_track )
+	    parole_send_message ("NextTrack");
+	
+	if ( prev_track )
+	    parole_send_message ("PrevTrack");
+	    
+	if ( seek_f )
+	    parole_send_message ("SeekForward");
+	    
+	if ( seek_b )
+	    parole_send_message ("SeekBackward");
+	    
+	if ( raise_volume )
+	    parole_send_message ("RaiseVolume");
+	    
+	if ( lower_volume )
+	    parole_send_message ("LowerVolume");
+	    
+	if ( mute )
+	    parole_send_message ("Mute");
     }
     else
     {
