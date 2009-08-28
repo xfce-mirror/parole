@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <node name="/">
-    <interface name="org.Parole.Media.Player">
+    <interface name="org.Parole.Player">
         <annotation name="org.freedesktop.DBus.GLib.CSymbol"
-                    value="parole_media_player_dbus"/>
+                    value="parole_player_dbus"/>
         <annotation name="org.freedesktop.DBus.GLib.ClientCSymbol"
-                    value="parole_media_player_dbus_client"/>
+                    value="parole_player_dbus_client"/>
 
     <method name="Play">
     </method>
