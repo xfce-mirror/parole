@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <node name="/">
-    <interface name="org.Parole.Player">
+    <interface name="org.Parole.Media.Player">
         <annotation name="org.freedesktop.DBus.GLib.CSymbol"
                     value="parole_player_dbus"/>
         <annotation name="org.freedesktop.DBus.GLib.ClientCSymbol"
