@@ -1,0 +1,671 @@
+# Russian translations for parole-media-player package.
+# Copyright (C) 2009 the parole-media-player's copyright holder
+# This file is distributed under the same license as the parole-media-player package.
+# Anatoly Chernov <aichernov@umail.ru>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: Parole 0.1.90git.rALT0.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-08-16 16:02+0200\n"
+"PO-Revision-Date: 2009-08-28 07:47+0400\n"
+"Last-Translator: Anatoly Chernov <aichernov@umail.ru>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../data/interfaces/parole.ui.h:1
+msgid "16:9 (Widescreen)"
+msgstr "16:9 (Широкий экран)"
+
+#: ../data/interfaces/parole.ui.h:2
+msgid "20:9 (DVB)"
+msgstr "20:9 (DVB)"
+
+#: ../data/interfaces/parole.ui.h:3
+msgid "4:3 (TV)"
+msgstr "4:3 (TV)"
+
+#: ../data/interfaces/parole.ui.h:4
+msgid "Aspect Ratio"
+msgstr "Формат экрана"
+
+#: ../data/interfaces/parole.ui.h:5
+msgid "Auto"
+msgstr "Авто"
+
+#: ../data/interfaces/parole.ui.h:6
+msgid "Chapter Menu"
+msgstr "Меню раздела"
+
+#: ../data/interfaces/parole.ui.h:7
+msgid "DVD Menu"
+msgstr "DVD Меню"
+
+#: ../data/interfaces/parole.ui.h:8 ../parole/parole-player.c:288
+msgid "Hide playlist"
+msgstr "Убрать плей-лист"
+
+#: ../data/interfaces/parole.ui.h:9
+msgid "Media player"
+msgstr "Media player"
+
+#: ../data/interfaces/parole.ui.h:10
+msgid "Mute"
+msgstr "Приглушить"
+
+#: ../data/interfaces/parole.ui.h:11 ../parole/parole-player.c:1002
+#: ../parole/parole-disc-menu.c:113
+msgid "Next Chapter"
+msgstr "След. раздел"
+
+#: ../data/interfaces/parole.ui.h:12
+msgid "None"
+msgstr "Нет"
+
+#: ../data/interfaces/parole.ui.h:13 ../data/desktop/parole.desktop.in.in.h:1
+#: ../parole/parole-player.c:225 ../parole/parole-about.c:51
+#: ../plugins/window-title/window-title.c:40
+msgid "Parole Media Player"
+msgstr "Parole Media Player"
+
+#: ../data/interfaces/parole.ui.h:14
+msgid "Plugins"
+msgstr "Плагины"
+
+#: ../data/interfaces/parole.ui.h:15 ../parole/parole-player.c:1014
+#: ../parole/parole-disc-menu.c:114
+msgid "Previous Chapter"
+msgstr "Пред. раздел"
+
+#: ../data/interfaces/parole.ui.h:16
+msgid "Repeat"
+msgstr "Повтор"
+
+#: ../data/interfaces/parole.ui.h:17
+msgid "Select Track"
+msgstr "Выбрать трек"
+
+#: ../data/interfaces/parole.ui.h:18
+msgid "Shuffle"
+msgstr "Случайный выбор"
+
+#: ../data/interfaces/parole.ui.h:19
+msgid "Sound"
+msgstr "Звук"
+
+#: ../data/interfaces/parole.ui.h:20
+msgid "Square"
+msgstr "Квадрат"
+
+#: ../data/interfaces/parole.ui.h:21
+msgid "Volume Down"
+msgstr "Тише"
+
+#: ../data/interfaces/parole.ui.h:22
+msgid "Volume Up"
+msgstr "Громче"
+
+#: ../data/interfaces/parole.ui.h:23
+msgid "_Edit"
+msgstr "_Правка"
+
+#: ../data/interfaces/parole.ui.h:24
+msgid "_Help"
+msgstr "_Помощь"
+
+#: ../data/interfaces/parole.ui.h:25
+msgid "_Media"
+msgstr "_Фильм"
+
+#: ../data/interfaces/parole.ui.h:26
+msgid "_View"
+msgstr "_Вид"
+
+#: ../data/interfaces/parole.ui.h:27
+msgid "gtk-leave-fullscreen"
+msgstr "Покинуть полноэкранный режим"
+
+#: ../data/interfaces/plugins.ui.h:1
+msgid "<b>Author:</b>"
+msgstr "<b>Автор:</b>"
+
+#: ../data/interfaces/plugins.ui.h:2
+msgid "<b>Description:</b>"
+msgstr "<b>Описание:</b>"
+
+#: ../data/interfaces/plugins.ui.h:3
+msgid "<b>Site:</b>"
+msgstr "<b>Сайт:</b>"
+
+#: ../data/interfaces/plugins.ui.h:4
+msgid "Parole Plugins Preferences"
+msgstr "Свойства плагинов"
+
+#: ../data/interfaces/plugins.ui.h:5
+msgid "gtk-close"
+msgstr "Закрыть"
+
+#: ../data/interfaces/plugins.ui.h:6
+msgid "gtk-properties"
+msgstr "Свойства"
+
+#: ../data/interfaces/parole-settings.ui.h:1
+msgid "<b>Audio</b>"
+msgstr "<b>Звук</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:2
+msgid "<b>Display</b>"
+msgstr "<b>Экран</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:3
+msgid "<b>Subtitles</b>"
+msgstr "<b>Субтитры</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:4
+msgid "Automatically load subtitles when playing movie file"
+msgstr "Автоматически загружать субтитры при проигрывании"
+
+#: ../data/interfaces/parole-settings.ui.h:5
+msgid "Brightness:"
+msgstr "Яркость:"
+
+#: ../data/interfaces/parole-settings.ui.h:6
+msgid "Contrast:"
+msgstr "Контрастность:"
+
+#: ../data/interfaces/parole-settings.ui.h:7
+msgid "Enable visualization when playing audio file"
+msgstr "Включить визуальные эффекты при проигрывании аудио"
+
+#: ../data/interfaces/parole-settings.ui.h:8
+msgid "Encoding: "
+msgstr "Кодировка:"
+
+#: ../data/interfaces/parole-settings.ui.h:9
+msgid "Font:"
+msgstr "Шрифт:"
+
+#: ../data/interfaces/parole-settings.ui.h:10
+msgid "Hue:"
+msgstr "Оттенок"
+
+#: ../data/interfaces/parole-settings.ui.h:11
+msgid "Media Player Settings"
+msgstr "Установки медиаплейера"
+
+#: ../data/interfaces/parole-settings.ui.h:12
+msgid "Parole Settings"
+msgstr "Установки parole"
+
+#: ../data/interfaces/parole-settings.ui.h:13
+msgid "Reset To Defaults"
+msgstr "По умолчанию"
+
+#: ../data/interfaces/parole-settings.ui.h:14
+msgid "Saturation:"
+msgstr "Насыщенность:"
+
+#: ../data/interfaces/parole-settings.ui.h:15
+msgid "Visualization type:"
+msgstr "Тип визуализации:"
+
+#: ../data/interfaces/save-playlist.ui.h:1
+msgid "By Extension"
+msgstr "По расширению"
+
+#: ../data/interfaces/save-playlist.ui.h:2
+msgid "Select File Types (By Extension)"
+msgstr "Выбрать тип файла (по расширению)"
+
+#: ../parole/main.c:52
+#, c-format
+msgid ""
+"\n"
+"Parole Media Player %s\n"
+"\n"
+"Part of the Xfce Goodies Project\n"
+"http://goodies.xfce.org\n"
+"\n"
+"Licensed under the GNU GPL.\n"
+"\n"
+msgstr ""
+
+#: ../parole/main.c:156
+msgid "Open a new instance"
+msgstr ""
+
+#: ../parole/main.c:157
+msgid "Version information"
+msgstr "Версия"
+
+#: ../parole/main.c:158
+msgid "Media to play"
+msgstr "Объект для проигрывания"
+
+#: ../parole/main.c:193
+#, c-format
+msgid "Parole is already running, use -i to open a new instance\n"
+msgstr ""
+
+#: ../parole/parole-gst.c:1289
+msgid ""
+"Unable to load playbin GStreamer plugin, check your GStreamer installation"
+msgstr ""
+
+#: ../parole/parole-gst.c:1305
+msgid ""
+"Unable to load video GStreamer plugin, check your GStreamer installation"
+msgstr ""
+
+#: ../parole/parole-gst.c:1501
+msgid "The stream is tacking too much time to load"
+msgstr "Поток требует много времени для загрузки"
+
+#: ../parole/parole-gst.c:1501
+msgid "Stop"
+msgstr "Стоп"
+
+#: ../parole/parole-mediachooser.c:154
+msgid "Add media files"
+msgstr "Добавить медиа-файл"
+
+#: ../parole/parole-mediachooser.c:173
+msgid "Add"
+msgstr "Добавить"
+
+#: ../parole/parole-medialist.c:432
+msgid "Error saving playlist file"
+msgstr "Ошибка сохранения плей-листа"
+
+#: ../parole/parole-medialist.c:432
+msgid "Permission denied"
+msgstr "Отказано в доступе"
+
+#: ../parole/parole-medialist.c:441
+msgid "Unknown playlist format, Please select a support playlist format"
+msgstr "Неизвестный формат плей-листа, выбирите поддерживаемый формат"
+
+#: ../parole/parole-medialist.c:507 ../parole/parole-player.c:1542
+msgid "Playlist"
+msgstr "Плей-лист"
+
+#: ../parole/parole-medialist.c:514
+msgid "M3U Playlists"
+msgstr "M3U Плей-листы"
+
+#: ../parole/parole-medialist.c:522
+msgid "PLS Playlists"
+msgstr "PLS Плей-листы"
+
+#: ../parole/parole-medialist.c:530
+msgid "Advanced Stream Redirector"
+msgstr ""
+
+#: ../parole/parole-medialist.c:538
+msgid "Shareable Playlist"
+msgstr "Расшаренный плейлист"
+
+#: ../parole/parole-medialist.c:853
+msgid "Remember playlist"
+msgstr "Запомнить плей-лист"
+
+#: ../parole/parole-medialist.c:1003
+msgid "Media list"
+msgstr "Список файлов"
+
+#: ../parole/parole-player.c:297
+msgid "Show playlist"
+msgstr "Показать плей-лист"
+
+#: ../parole/parole-player.c:507
+msgid "Media stream is not seekable"
+msgstr "Поток недоступен для просмотра"
+
+#.
+#. * Next chapter menu item
+#.
+#: ../parole/parole-player.c:1002 ../parole/parole-disc-menu.c:122
+msgid "Next Track"
+msgstr "Следующий трек"
+
+#.
+#. * Previous chapter menu item
+#.
+#: ../parole/parole-player.c:1014 ../parole/parole-disc-menu.c:123
+msgid "Previous Track"
+msgstr "Предыдущий трек"
+
+#: ../parole/parole-statusbar.c:60
+msgid "Buffering"
+msgstr "Буферорование"
+
+#: ../parole/parole-statusbar.c:77
+msgid "Stopped"
+msgstr "Остановлено"
+
+#: ../parole/parole-statusbar.c:81
+msgid "Finished"
+msgstr "Закончено"
+
+#: ../parole/parole-statusbar.c:88 ../parole/parole-statusbar.c:96
+msgid "Paused"
+msgstr "Пауза"
+
+#: ../parole/parole-statusbar.c:117
+msgid "Live stream:"
+msgstr "Поток:"
+
+#: ../parole/parole-filters.c:57
+msgid "Audio"
+msgstr "Звук"
+
+#: ../parole/parole-filters.c:75
+msgid "Video"
+msgstr "Видео"
+
+#: ../parole/parole-filters.c:93
+msgid "Audio and video"
+msgstr "Звук и видео"
+
+#: ../parole/parole-filters.c:111
+msgid "All supported files"
+msgstr "Все поддерживаемые файлы"
+
+#: ../parole/parole-filters.c:127
+msgid "Playlist files"
+msgstr "Файлы плей-листов"
+
+#: ../parole/parole-about.c:56
+msgid "Author/Maintainer"
+msgstr "Автор/Маинтейнер"
+
+#: ../parole/parole-about.c:62
+#, c-format
+msgid "Translator (%s)"
+msgstr "Переводчик (%s)"
+
+#: ../parole/parole-disc.c:202
+msgid "Play Disc"
+msgstr "Проигрывать диск"
+
+#: ../parole/parole-subtitle-encoding.c:165
+msgid "Current Locale"
+msgstr "Текущая локаль"
+
+#: ../parole/parole-subtitle-encoding.c:168
+#: ../parole/parole-subtitle-encoding.c:170
+#: ../parole/parole-subtitle-encoding.c:172
+#: ../parole/parole-subtitle-encoding.c:174
+msgid "Arabic"
+msgstr "Арабский"
+
+#: ../parole/parole-subtitle-encoding.c:177
+msgid "Armenian"
+msgstr "Армянский"
+
+#: ../parole/parole-subtitle-encoding.c:180
+#: ../parole/parole-subtitle-encoding.c:182
+#: ../parole/parole-subtitle-encoding.c:184
+msgid "Baltic"
+msgstr ""
+
+#: ../parole/parole-subtitle-encoding.c:187
+msgid "Celtic"
+msgstr "Кельтский"
+
+#: ../parole/parole-subtitle-encoding.c:190
+#: ../parole/parole-subtitle-encoding.c:192
+#: ../parole/parole-subtitle-encoding.c:194
+#: ../parole/parole-subtitle-encoding.c:196
+msgid "Central European"
+msgstr ""
+
+#: ../parole/parole-subtitle-encoding.c:199
+#: ../parole/parole-subtitle-encoding.c:201
+#: ../parole/parole-subtitle-encoding.c:203
+#: ../parole/parole-subtitle-encoding.c:205
+msgid "Chinese Simplified"
+msgstr "Китайский упрощенный"
+
+#: ../parole/parole-subtitle-encoding.c:208
+#: ../parole/parole-subtitle-encoding.c:210
+#: ../parole/parole-subtitle-encoding.c:212
+msgid "Chinese Traditional"
+msgstr "Китайский традиционный"
+
+#: ../parole/parole-subtitle-encoding.c:215
+msgid "Croatian"
+msgstr ""
+
+#: ../parole/parole-subtitle-encoding.c:218
+#: ../parole/parole-subtitle-encoding.c:220
+#: ../parole/parole-subtitle-encoding.c:222
+#: ../parole/parole-subtitle-encoding.c:224
+#: ../parole/parole-subtitle-encoding.c:226
+#: ../parole/parole-subtitle-encoding.c:228
+msgid "Cyrillic"
+msgstr "Кириллица"
+
+#: ../parole/parole-subtitle-encoding.c:231
+msgid "Cyrillic/Russian"
+msgstr "Кириллица/Росиия"
+
+#: ../parole/parole-subtitle-encoding.c:234
+#: ../parole/parole-subtitle-encoding.c:236
+msgid "Cyrillic/Ukrainian"
+msgstr "Кириллица/Украина"
+
+#: ../parole/parole-subtitle-encoding.c:239
+msgid "Georgian"
+msgstr "Грузинский"
+
+#: ../parole/parole-subtitle-encoding.c:242
+#: ../parole/parole-subtitle-encoding.c:244
+#: ../parole/parole-subtitle-encoding.c:246
+msgid "Greek"
+msgstr "Греческий"
+
+#: ../parole/parole-subtitle-encoding.c:249
+msgid "Gujarati"
+msgstr ""
+
+#: ../parole/parole-subtitle-encoding.c:252
+msgid "Gurmukhi"
+msgstr ""
+
+#: ../parole/parole-subtitle-encoding.c:255
+#: ../parole/parole-subtitle-encoding.c:257
+#: ../parole/parole-subtitle-encoding.c:259
+#: ../parole/parole-subtitle-encoding.c:261
+msgid "Hebrew"
+msgstr ""
+
+#: ../parole/parole-subtitle-encoding.c:264
+msgid "Hebrew Visual"
+msgstr ""
+
+#: ../parole/parole-subtitle-encoding.c:267
+msgid "Hindi"
+msgstr "Хинди"
+
+#: ../parole/parole-subtitle-encoding.c:270
+msgid "Icelandic"
+msgstr ""
+
+#: ../parole/parole-subtitle-encoding.c:273
+#: ../parole/parole-subtitle-encoding.c:275
+#: ../parole/parole-subtitle-encoding.c:277
+msgid "Japanese"
+msgstr "Японский"
+
+#: ../parole/parole-subtitle-encoding.c:280
+#: ../parole/parole-subtitle-encoding.c:282
+#: ../parole/parole-subtitle-encoding.c:284
+#: ../parole/parole-subtitle-encoding.c:286
+msgid "Korean"
+msgstr "Корейский"
+
+#: ../parole/parole-subtitle-encoding.c:289
+msgid "Nordic"
+msgstr ""
+
+#: ../parole/parole-subtitle-encoding.c:292
+msgid "Persian"
+msgstr ""
+
+#: ../parole/parole-subtitle-encoding.c:295
+#: ../parole/parole-subtitle-encoding.c:297
+msgid "Romanian"
+msgstr ""
+
+#: ../parole/parole-subtitle-encoding.c:300
+msgid "South European"
+msgstr ""
+
+#: ../parole/parole-subtitle-encoding.c:303
+msgid "Thai"
+msgstr ""
+
+#: ../parole/parole-subtitle-encoding.c:306
+#: ../parole/parole-subtitle-encoding.c:308
+#: ../parole/parole-subtitle-encoding.c:310
+#: ../parole/parole-subtitle-encoding.c:312
+msgid "Turkish"
+msgstr "Турецкий"
+
+#: ../parole/parole-subtitle-encoding.c:315
+#: ../parole/parole-subtitle-encoding.c:317
+#: ../parole/parole-subtitle-encoding.c:319
+#: ../parole/parole-subtitle-encoding.c:321
+#: ../parole/parole-subtitle-encoding.c:323
+msgid "Unicode"
+msgstr "Юникод"
+
+#: ../parole/parole-subtitle-encoding.c:326
+#: ../parole/parole-subtitle-encoding.c:328
+#: ../parole/parole-subtitle-encoding.c:330
+#: ../parole/parole-subtitle-encoding.c:332
+#: ../parole/parole-subtitle-encoding.c:334
+msgid "Western"
+msgstr ""
+
+#: ../parole/parole-subtitle-encoding.c:337
+#: ../parole/parole-subtitle-encoding.c:339
+#: ../parole/parole-subtitle-encoding.c:341
+msgid "Vietnamese"
+msgstr "Вьетнамский"
+
+#: ../parole/parole-open-location.c:181
+msgid "Open location..."
+msgstr "Открыть адрес..."
+
+#: ../parole/parole-open-location.c:186
+msgid "<b>Open location of media file or live stream:</b>"
+msgstr "<b>Открыть адрес медиа-файла или потока:</b>"
+
+#: ../parole/parole-open-location.c:205
+msgid "Clear history"
+msgstr "Очистить историю"
+
+#: ../parole/parole-disc-menu.c:130
+msgid "Playing Track"
+msgstr "Проигрывается трек"
+
+#: ../parole/parole-disc-menu.c:194
+#, c-format
+msgid "Track %i"
+msgstr "Трек %i"
+
+#: ../parole/parole-plugins-manager.c:227
+msgid "Visit Website"
+msgstr "Посетить Вебсайт"
+
+#: ../parole/parole-plugins-manager.c:285
+msgid "Visite Website"
+msgstr "Посетить Вебсайт"
+
+#: ../plugins/properties/stream-properties.c:121
+#: ../plugins/properties/stream-properties.c:122
+#: ../plugins/properties/stream-properties.c:123
+#: ../plugins/properties/stream-properties.c:124
+msgid "Unknown"
+msgstr "Неизвестный"
+
+#: ../plugins/properties/stream-properties.c:220
+msgid "Title:"
+msgstr "Заголовок:"
+
+#: ../plugins/properties/stream-properties.c:243
+msgid "Artist:"
+msgstr "Исполнитель:"
+
+#: ../plugins/properties/stream-properties.c:266
+msgid "Album:"
+msgstr "Альбом:"
+
+#: ../plugins/properties/stream-properties.c:289
+msgid "Year:"
+msgstr "Год:"
+
+#: ../plugins/properties/stream-properties.c:307
+msgid "General"
+msgstr "Основные"
+
+#: ../plugins/properties/stream-properties.c:354
+msgid "Stream doesn't support tags changes"
+msgstr "Поток не поддерживает изменения тэгов"
+
+#: ../plugins/properties/stream-properties.c:361
+msgid "Save media tags changes"
+msgstr "Сохранить изменения медиа-тэгов"
+
+#. Construct function
+#: ../plugins/properties/stream-properties.c:485
+msgid "Properties"
+msgstr "Свойства"
+
+#. Title
+#: ../plugins/properties/stream-properties.c:486
+msgid "Read media properties"
+msgstr "Показать свойства медиа-файла (устройства)"
+
+#: ../plugins/tray/tray-icon.c:222
+msgid "<b>Playing:</b>"
+msgstr "<b>Проигрывание:</b>"
+
+#: ../plugins/tray/tray-icon.c:222
+msgid "<b>Duration:</b>"
+msgstr "<b>Продолжительность:</b>"
+
+#: ../plugins/tray/tray-icon.c:347
+msgid "Tray icon plugin"
+msgstr ""
+
+#: ../plugins/tray/tray-icon.c:356
+msgid "Enable notification"
+msgstr "Разрешить нотификацию"
+
+#. Construct function
+#: ../plugins/tray/tray-icon.c:427
+msgid "Tray icon"
+msgstr "Иконка в трее"
+
+#. Title
+#: ../plugins/tray/tray-icon.c:428
+msgid "Show icon in the system tray"
+msgstr "Показать иконку плейера в трее"
+
+#. Construct function
+#: ../plugins/window-title/window-title.c:102
+msgid "Window title"
+msgstr "Заголовок окна"
+
+#. Title
+#: ../plugins/window-title/window-title.c:103
+msgid ""
+"Set the main window name to the current\n"
+" playing media name."
+msgstr ""
+"Установить имя главного окна в соответствии\n"
+"с именем воспроизводимого файла."

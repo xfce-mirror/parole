@@ -366,7 +366,7 @@ configure_cb (ParolePlugin *plugin, GtkWidget *widget, PluginData *data)
 		      G_CALLBACK (gtk_widget_destroy), NULL);
     gtk_widget_show_all (dialog);
 }
-#endif
+#endif /*HAVE_LIBNOTIFY*/
 
 G_MODULE_EXPORT static void
 construct (ParolePlugin *plugin)
@@ -375,7 +375,7 @@ construct (ParolePlugin *plugin)
     GdkPixbuf *pix;
     
     data = g_new0 (PluginData, 1);
-    data->n = NULL;
+
     data->state = PAROLE_STATE_STOPPED;
     
     data->window = parole_plugin_get_main_window (plugin);
@@ -385,6 +385,7 @@ construct (ParolePlugin *plugin)
     data->menu = NULL;
 
 #ifdef HAVE_LIBNOTIFY
+    data->n = NULL;
     notify_init ("parole-tray-icon");
     data->enabled = notify_enabled ();
     data->notify = TRUE;
