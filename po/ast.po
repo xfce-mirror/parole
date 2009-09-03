@@ -1,0 +1,691 @@
+# Asturian translations of parole.po
+# Astur <malditoastur@gmail.com>, 2009.
+# Asturian translations for parole-media-player package.
+# Copyright (C) 2009 the parole-media-player's copyright holder
+# This file is distributed under the same license as the parole-media-player package.
+msgid ""
+msgstr ""
+"Project-Id-Version: ast\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-08-16 16:02+0200\n"
+"PO-Revision-Date: 2009-09-03 13:51+0100\n"
+"Last-Translator: astur <malditoastur@gmail.com>\n"
+"Language-Team: Asturian <alministradores@softastur.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Language: Asturian\n"
+
+#: ../data/interfaces/parole.ui.h:1
+msgid "16:9 (Widescreen)"
+msgstr "16:9 (Widescreen)"
+
+#: ../data/interfaces/parole.ui.h:2
+msgid "20:9 (DVB)"
+msgstr "20:9 (DVB)"
+
+#: ../data/interfaces/parole.ui.h:3
+msgid "4:3 (TV)"
+msgstr "4:3 (TV)"
+
+#: ../data/interfaces/parole.ui.h:4
+msgid "Aspect Ratio"
+msgstr "Співвідношення сторін"
+
+#: ../data/interfaces/parole.ui.h:5
+msgid "Auto"
+msgstr "Auto"
+
+#: ../data/interfaces/parole.ui.h:6
+msgid "Chapter Menu"
+msgstr "Menú Capítulu"
+
+#: ../data/interfaces/parole.ui.h:7
+msgid "DVD Menu"
+msgstr "DVD Menú"
+
+#: ../data/interfaces/parole.ui.h:8
+#: ../parole/parole-player.c:288
+msgid "Hide playlist"
+msgstr "Anubrir llista de reproducción"
+
+#: ../data/interfaces/parole.ui.h:9
+msgid "Media player"
+msgstr "Media player"
+
+#: ../data/interfaces/parole.ui.h:10
+msgid "Mute"
+msgstr "Silenciar"
+
+#: ../data/interfaces/parole.ui.h:11
+#: ../parole/parole-player.c:1002
+#: ../parole/parole-disc-menu.c:113
+msgid "Next Chapter"
+msgstr "Siguiente Capítulu Chapter"
+
+#: ../data/interfaces/parole.ui.h:12
+msgid "None"
+msgstr "Dengún"
+
+#: ../data/interfaces/parole.ui.h:13
+#: ../data/desktop/parole.desktop.in.in.h:1
+#: ../parole/parole-player.c:225
+#: ../parole/parole-about.c:51
+#: ../plugins/window-title/window-title.c:40
+msgid "Parole Media Player"
+msgstr "Parole Media Player"
+
+#: ../data/interfaces/parole.ui.h:14
+msgid "Plugins"
+msgstr "Plugins"
+
+#: ../data/interfaces/parole.ui.h:15
+#: ../parole/parole-player.c:1014
+#: ../parole/parole-disc-menu.c:114
+msgid "Previous Chapter"
+msgstr "Capítulu Previu"
+
+#: ../data/interfaces/parole.ui.h:16
+msgid "Repeat"
+msgstr "Repetir"
+
+#: ../data/interfaces/parole.ui.h:17
+msgid "Select Track"
+msgstr "Seleicionar pista"
+
+#: ../data/interfaces/parole.ui.h:18
+msgid "Shuffle"
+msgstr "Al debalu"
+
+#: ../data/interfaces/parole.ui.h:19
+msgid "Sound"
+msgstr "Soníu"
+
+#: ../data/interfaces/parole.ui.h:20
+msgid "Square"
+msgstr "Cuadráu"
+
+#: ../data/interfaces/parole.ui.h:21
+msgid "Volume Down"
+msgstr "Baxar Volume"
+
+#: ../data/interfaces/parole.ui.h:22
+msgid "Volume Up"
+msgstr "Xubir Volume"
+
+#: ../data/interfaces/parole.ui.h:23
+msgid "_Edit"
+msgstr "_Editar"
+
+#: ../data/interfaces/parole.ui.h:24
+msgid "_Help"
+msgstr "_Aida"
+
+#: ../data/interfaces/parole.ui.h:25
+msgid "_Media"
+msgstr "_Media"
+
+#: ../data/interfaces/parole.ui.h:26
+msgid "_View"
+msgstr "_Ver"
+
+#: ../data/interfaces/parole.ui.h:27
+msgid "gtk-leave-fullscreen"
+msgstr "gtk-leave-fullscreen"
+
+#: ../data/interfaces/plugins.ui.h:1
+msgid "<b>Author:</b>"
+msgstr "<b>Autor:</b>"
+
+#: ../data/interfaces/plugins.ui.h:2
+msgid "<b>Description:</b>"
+msgstr "<b>Descripción:</b>"
+
+#: ../data/interfaces/plugins.ui.h:3
+msgid "<b>Site:</b>"
+msgstr "<b>Sitiu:</b>"
+
+#: ../data/interfaces/plugins.ui.h:4
+msgid "Parole Plugins Preferences"
+msgstr "Preferencies de Complementos de Parole"
+
+#: ../data/interfaces/plugins.ui.h:5
+msgid "gtk-close"
+msgstr "gtk-close"
+
+#: ../data/interfaces/plugins.ui.h:6
+msgid "gtk-properties"
+msgstr "gtk-properties"
+
+#: ../data/interfaces/parole-settings.ui.h:1
+msgid "<b>Audio</b>"
+msgstr "<b>Audio</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:2
+msgid "<b>Display</b>"
+msgstr "<b>Pantalla</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:3
+msgid "<b>Subtitles</b>"
+msgstr "<b>Subtítulos</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:4
+msgid "Automatically load subtitles when playing movie file"
+msgstr "Cargar subtítulos automáticamente al reproducción el ficheru de video"
+
+#: ../data/interfaces/parole-settings.ui.h:5
+msgid "Brightness:"
+msgstr "Rellumu:"
+
+#: ../data/interfaces/parole-settings.ui.h:6
+msgid "Contrast:"
+msgstr "Contraste:"
+
+#: ../data/interfaces/parole-settings.ui.h:7
+msgid "Enable visualization when playing audio file"
+msgstr "Activar visualización cuando se reproduz el ficheru d'audio file"
+
+#: ../data/interfaces/parole-settings.ui.h:8
+msgid "Encoding: "
+msgstr "Codificando:"
+
+#: ../data/interfaces/parole-settings.ui.h:9
+msgid "Font:"
+msgstr "Fonte:"
+
+#: ../data/interfaces/parole-settings.ui.h:10
+msgid "Hue:"
+msgstr "Matiz:"
+
+#: ../data/interfaces/parole-settings.ui.h:11
+msgid "Media Player Settings"
+msgstr "Axustes del Reproductor de Medios"
+
+#: ../data/interfaces/parole-settings.ui.h:12
+msgid "Parole Settings"
+msgstr "Axustes de Parole"
+
+#: ../data/interfaces/parole-settings.ui.h:13
+msgid "Reset To Defaults"
+msgstr "Resetear a los valores predefiníos"
+
+#: ../data/interfaces/parole-settings.ui.h:14
+msgid "Saturation:"
+msgstr "Saturación:"
+
+#: ../data/interfaces/parole-settings.ui.h:15
+msgid "Visualization type:"
+msgstr "Triba de visualización:"
+
+#: ../data/interfaces/save-playlist.ui.h:1
+msgid "By Extension"
+msgstr "Por estensión"
+
+#: ../data/interfaces/save-playlist.ui.h:2
+msgid "Select File Types (By Extension)"
+msgstr "Esbillar tribes de ficheros (Por estensión)"
+
+#: ../parole/main.c:52
+#, c-format
+msgid ""
+"\n"
+"Parole Media Player %s\n"
+"\n"
+"Part of the Xfce Goodies Project\n"
+"http://goodies.xfce.org\n"
+"\n"
+"Licensed under the GNU GPL.\n"
+"\n"
+msgstr ""
+"\n"
+"Parole Media Player %s\n"
+"\n"
+"Parte del Xfce Goodies Project\n"
+"http://goodies.xfce.org\n"
+"\n"
+"Llicenciáu baxo la GNU GPL.\n"
+"\n"
+
+#: ../parole/main.c:156
+msgid "Open a new instance"
+msgstr "Abrir nueva instancia"
+
+#: ../parole/main.c:157
+msgid "Version information"
+msgstr "Información de versión"
+
+#: ../parole/main.c:158
+msgid "Media to play"
+msgstr "Mediu a reproducir"
+
+#: ../parole/main.c:193
+#, c-format
+msgid "Parole is already running, use -i to open a new instance\n"
+msgstr "Parole yá ta executándose, use -i p'abrir una nueva instancia\n"
+
+#: ../parole/parole-gst.c:1289
+msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
+msgstr "Nun pudo cargase'l complementu playbin GStreamer, comprebe la so instalación de GStreamer"
+
+#: ../parole/parole-gst.c:1305
+msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
+msgstr "Nun pudo cargase'l complementu video GStreamer, comprebe la so instalación de GStreamer"
+
+#: ../parole/parole-gst.c:1501
+msgid "The stream is tacking too much time to load"
+msgstr "El fluxu ta llevando enforma tiempu pa cargar"
+
+#: ../parole/parole-gst.c:1501
+msgid "Stop"
+msgstr "Parar"
+
+#: ../parole/parole-mediachooser.c:154
+msgid "Add media files"
+msgstr "Amestar ficheros multimedia"
+
+#: ../parole/parole-mediachooser.c:173
+msgid "Add"
+msgstr "Amestar"
+
+#: ../parole/parole-medialist.c:432
+msgid "Error saving playlist file"
+msgstr "Fallu atroxando la llista de reproducción"
+
+#: ../parole/parole-medialist.c:432
+msgid "Permission denied"
+msgstr "Permisu torgáu"
+
+#: ../parole/parole-medialist.c:441
+msgid "Unknown playlist format, Please select a support playlist format"
+msgstr "Formatu de llista desconocíu, por favor esbille una llista con formatu sofitáu téunicamente"
+
+#: ../parole/parole-medialist.c:507
+#: ../parole/parole-player.c:1542
+msgid "Playlist"
+msgstr "Llista de reproducción"
+
+#: ../parole/parole-medialist.c:514
+msgid "M3U Playlists"
+msgstr "Llista - M3U"
+
+#: ../parole/parole-medialist.c:522
+msgid "PLS Playlists"
+msgstr "Llista - PLS"
+
+#: ../parole/parole-medialist.c:530
+msgid "Advanced Stream Redirector"
+msgstr "Redireutor de Fluxu Avanzáu"
+
+#: ../parole/parole-medialist.c:538
+msgid "Shareable Playlist"
+msgstr "Llista de reproducción compartible"
+
+#: ../parole/parole-medialist.c:853
+msgid "Remember playlist"
+msgstr "Remembrar llista de reproducción"
+
+#: ../parole/parole-medialist.c:1003
+msgid "Media list"
+msgstr "Llista de Medios"
+
+#: ../parole/parole-player.c:297
+msgid "Show playlist"
+msgstr "Amosar llista de reproducción"
+
+#: ../parole/parole-player.c:507
+msgid "Media stream is not seekable"
+msgstr "Nun s'alcuentra el Fluxu (stream) de Medios"
+
+#.
+#. * Next chapter menu item
+#.
+#: ../parole/parole-player.c:1002
+#: ../parole/parole-disc-menu.c:122
+msgid "Next Track"
+msgstr "Siguiente pista"
+
+#.
+#. * Previous chapter menu item
+#.
+#: ../parole/parole-player.c:1014
+#: ../parole/parole-disc-menu.c:123
+msgid "Previous Track"
+msgstr "Pista previa"
+
+#: ../parole/parole-statusbar.c:60
+msgid "Buffering"
+msgstr "Atroxando nel buffer"
+
+#: ../parole/parole-statusbar.c:77
+msgid "Stopped"
+msgstr "Paráu"
+
+#: ../parole/parole-statusbar.c:81
+msgid "Finished"
+msgstr "Fináu"
+
+#: ../parole/parole-statusbar.c:88
+#: ../parole/parole-statusbar.c:96
+msgid "Paused"
+msgstr "Posáu"
+
+#: ../parole/parole-statusbar.c:117
+msgid "Live stream:"
+msgstr "Fluxu en direutu:"
+
+#: ../parole/parole-filters.c:57
+msgid "Audio"
+msgstr "Audio"
+
+#: ../parole/parole-filters.c:75
+msgid "Video"
+msgstr "Video"
+
+#: ../parole/parole-filters.c:93
+msgid "Audio and video"
+msgstr "Audio y video"
+
+#: ../parole/parole-filters.c:111
+msgid "All supported files"
+msgstr "Tolos ficheros soportaos"
+
+#: ../parole/parole-filters.c:127
+msgid "Playlist files"
+msgstr "Ficheros de llistes de reproducción"
+
+#: ../parole/parole-about.c:56
+msgid "Author/Maintainer"
+msgstr "Autor/Caltenedor"
+
+#: ../parole/parole-about.c:62
+#, c-format
+msgid "Translator (%s)"
+msgstr "Traductor (%s)"
+
+#: ../parole/parole-disc.c:202
+msgid "Play Disc"
+msgstr "Reproducir Discu"
+
+#: ../parole/parole-subtitle-encoding.c:165
+msgid "Current Locale"
+msgstr "Locale Actual"
+
+#: ../parole/parole-subtitle-encoding.c:168
+#: ../parole/parole-subtitle-encoding.c:170
+#: ../parole/parole-subtitle-encoding.c:172
+#: ../parole/parole-subtitle-encoding.c:174
+msgid "Arabic"
+msgstr "Árabe"
+
+#: ../parole/parole-subtitle-encoding.c:177
+msgid "Armenian"
+msgstr "Armeniu"
+
+#: ../parole/parole-subtitle-encoding.c:180
+#: ../parole/parole-subtitle-encoding.c:182
+#: ../parole/parole-subtitle-encoding.c:184
+msgid "Baltic"
+msgstr "Bálticu"
+
+#: ../parole/parole-subtitle-encoding.c:187
+msgid "Celtic"
+msgstr "Célticu"
+
+#: ../parole/parole-subtitle-encoding.c:190
+#: ../parole/parole-subtitle-encoding.c:192
+#: ../parole/parole-subtitle-encoding.c:194
+#: ../parole/parole-subtitle-encoding.c:196
+msgid "Central European"
+msgstr "Centrueuropéu"
+
+#: ../parole/parole-subtitle-encoding.c:199
+#: ../parole/parole-subtitle-encoding.c:201
+#: ../parole/parole-subtitle-encoding.c:203
+#: ../parole/parole-subtitle-encoding.c:205
+msgid "Chinese Simplified"
+msgstr "Chinu simplificáu"
+
+#: ../parole/parole-subtitle-encoding.c:208
+#: ../parole/parole-subtitle-encoding.c:210
+#: ../parole/parole-subtitle-encoding.c:212
+msgid "Chinese Traditional"
+msgstr "Chinu tradicional"
+
+#: ../parole/parole-subtitle-encoding.c:215
+msgid "Croatian"
+msgstr "Croata"
+
+#: ../parole/parole-subtitle-encoding.c:218
+#: ../parole/parole-subtitle-encoding.c:220
+#: ../parole/parole-subtitle-encoding.c:222
+#: ../parole/parole-subtitle-encoding.c:224
+#: ../parole/parole-subtitle-encoding.c:226
+#: ../parole/parole-subtitle-encoding.c:228
+msgid "Cyrillic"
+msgstr "Cirílicu"
+
+#: ../parole/parole-subtitle-encoding.c:231
+msgid "Cyrillic/Russian"
+msgstr "Cirílicu/Rusu"
+
+#: ../parole/parole-subtitle-encoding.c:234
+#: ../parole/parole-subtitle-encoding.c:236
+msgid "Cyrillic/Ukrainian"
+msgstr "Cirílicu/Ucranianu"
+
+#: ../parole/parole-subtitle-encoding.c:239
+msgid "Georgian"
+msgstr "Xorxanu"
+
+#: ../parole/parole-subtitle-encoding.c:242
+#: ../parole/parole-subtitle-encoding.c:244
+#: ../parole/parole-subtitle-encoding.c:246
+msgid "Greek"
+msgstr "Griegu"
+
+#: ../parole/parole-subtitle-encoding.c:249
+msgid "Gujarati"
+msgstr "Gujarati"
+
+#: ../parole/parole-subtitle-encoding.c:252
+msgid "Gurmukhi"
+msgstr "Gurmukhi"
+
+#: ../parole/parole-subtitle-encoding.c:255
+#: ../parole/parole-subtitle-encoding.c:257
+#: ../parole/parole-subtitle-encoding.c:259
+#: ../parole/parole-subtitle-encoding.c:261
+msgid "Hebrew"
+msgstr "Hebréu"
+
+#: ../parole/parole-subtitle-encoding.c:264
+msgid "Hebrew Visual"
+msgstr "Hebréu Visual"
+
+#: ../parole/parole-subtitle-encoding.c:267
+msgid "Hindi"
+msgstr "Hindi"
+
+#: ../parole/parole-subtitle-encoding.c:270
+msgid "Icelandic"
+msgstr "Islandés"
+
+#: ../parole/parole-subtitle-encoding.c:273
+#: ../parole/parole-subtitle-encoding.c:275
+#: ../parole/parole-subtitle-encoding.c:277
+msgid "Japanese"
+msgstr "Xaponés"
+
+#: ../parole/parole-subtitle-encoding.c:280
+#: ../parole/parole-subtitle-encoding.c:282
+#: ../parole/parole-subtitle-encoding.c:284
+#: ../parole/parole-subtitle-encoding.c:286
+msgid "Korean"
+msgstr "Coreanu"
+
+#: ../parole/parole-subtitle-encoding.c:289
+msgid "Nordic"
+msgstr "Nórdicu"
+
+#: ../parole/parole-subtitle-encoding.c:292
+msgid "Persian"
+msgstr "Persa"
+
+#: ../parole/parole-subtitle-encoding.c:295
+#: ../parole/parole-subtitle-encoding.c:297
+msgid "Romanian"
+msgstr "Rumanu"
+
+#: ../parole/parole-subtitle-encoding.c:300
+msgid "South European"
+msgstr "Sureuropéu"
+
+#: ../parole/parole-subtitle-encoding.c:303
+msgid "Thai"
+msgstr "Thai"
+
+#: ../parole/parole-subtitle-encoding.c:306
+#: ../parole/parole-subtitle-encoding.c:308
+#: ../parole/parole-subtitle-encoding.c:310
+#: ../parole/parole-subtitle-encoding.c:312
+msgid "Turkish"
+msgstr "Turcu"
+
+#: ../parole/parole-subtitle-encoding.c:315
+#: ../parole/parole-subtitle-encoding.c:317
+#: ../parole/parole-subtitle-encoding.c:319
+#: ../parole/parole-subtitle-encoding.c:321
+#: ../parole/parole-subtitle-encoding.c:323
+msgid "Unicode"
+msgstr "Unicode"
+
+#: ../parole/parole-subtitle-encoding.c:326
+#: ../parole/parole-subtitle-encoding.c:328
+#: ../parole/parole-subtitle-encoding.c:330
+#: ../parole/parole-subtitle-encoding.c:332
+#: ../parole/parole-subtitle-encoding.c:334
+msgid "Western"
+msgstr "Western"
+
+#: ../parole/parole-subtitle-encoding.c:337
+#: ../parole/parole-subtitle-encoding.c:339
+#: ../parole/parole-subtitle-encoding.c:341
+msgid "Vietnamese"
+msgstr "Vietnamita"
+
+#: ../parole/parole-open-location.c:181
+msgid "Open location..."
+msgstr "Abrir llugar..."
+
+#: ../parole/parole-open-location.c:186
+msgid "<b>Open location of media file or live stream:</b>"
+msgstr "<b>Abrir llugar del ficheru multimedia o fluxu:</b>"
+
+#: ../parole/parole-open-location.c:205
+msgid "Clear history"
+msgstr "Llimpiar hestorial"
+
+#: ../parole/parole-disc-menu.c:130
+msgid "Playing Track"
+msgstr "Reproducir Pista"
+
+#: ../parole/parole-disc-menu.c:194
+#, c-format
+msgid "Track %i"
+msgstr "Pista %i"
+
+#: ../parole/parole-plugins-manager.c:227
+msgid "Visit Website"
+msgstr "Visitar Páxina Web"
+
+#: ../parole/parole-plugins-manager.c:285
+msgid "Visite Website"
+msgstr "Visite Páxina Web"
+
+#: ../plugins/properties/stream-properties.c:121
+#: ../plugins/properties/stream-properties.c:122
+#: ../plugins/properties/stream-properties.c:123
+#: ../plugins/properties/stream-properties.c:124
+msgid "Unknown"
+msgstr "Desconocíu"
+
+#: ../plugins/properties/stream-properties.c:220
+msgid "Title:"
+msgstr "Títulu:"
+
+#: ../plugins/properties/stream-properties.c:243
+msgid "Artist:"
+msgstr "Artista:"
+
+#: ../plugins/properties/stream-properties.c:266
+msgid "Album:"
+msgstr "Álbum:"
+
+#: ../plugins/properties/stream-properties.c:289
+msgid "Year:"
+msgstr "Añu:"
+
+#: ../plugins/properties/stream-properties.c:307
+msgid "General"
+msgstr "Xeneral"
+
+#: ../plugins/properties/stream-properties.c:354
+msgid "Stream doesn't support tags changes"
+msgstr "El fluxu nun almite cambeos d'etiquetes"
+
+#: ../plugins/properties/stream-properties.c:361
+msgid "Save media tags changes"
+msgstr "Atroxar cambeos d'etiquetes del mediu"
+
+#. Construct function
+#: ../plugins/properties/stream-properties.c:485
+msgid "Properties"
+msgstr "Propiedaes"
+
+#. Title
+#: ../plugins/properties/stream-properties.c:486
+msgid "Read media properties"
+msgstr "Lleer Propiedaes del Mediu"
+
+#: ../plugins/tray/tray-icon.c:222
+msgid "<b>Playing:</b>"
+msgstr "<b>Reproduciendo:</b>"
+
+#: ../plugins/tray/tray-icon.c:222
+msgid "<b>Duration:</b>"
+msgstr "<b>Duración:</b>"
+
+#: ../plugins/tray/tray-icon.c:347
+msgid "Tray icon plugin"
+msgstr "complementu d'iconu de bandexa"
+
+#: ../plugins/tray/tray-icon.c:356
+msgid "Enable notification"
+msgstr "Activar notificación"
+
+#. Construct function
+#: ../plugins/tray/tray-icon.c:427
+msgid "Tray icon"
+msgstr "Iconu de bandexa"
+
+#. Title
+#: ../plugins/tray/tray-icon.c:428
+msgid "Show icon in the system tray"
+msgstr "Amosar iconu na estaya de la bandexa del sistema"
+
+#. Construct function
+#: ../plugins/window-title/window-title.c:102
+msgid "Window title"
+msgstr "Títulu de la ventana"
+
+#. Title
+#: ../plugins/window-title/window-title.c:103
+msgid ""
+"Set the main window name to the current\n"
+" playing media name."
+msgstr ""
+"Afitar el nome de la ventana principal al\n"
+" nome actual del mediu en reproducción."
+
