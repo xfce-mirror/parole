@@ -230,6 +230,14 @@ msgid ""
 "Licensed under the GNU GPL.\n"
 "\n"
 msgstr ""
+"\n"
+"Мультимедийный проигрыватель Parole %s\n"
+"\n"
+"Является частью проекта Xfce Goodies\n"
+"http://goodies.xfce.org\n"
+"\n"
+"Лицензия GNU GPL.\n"
+"\n"
 
 #: ../parole/main.c:156
 msgid "Open a new instance"
@@ -408,7 +416,7 @@ msgstr "Армянский"
 #: ../parole/parole-subtitle-encoding.c:182
 #: ../parole/parole-subtitle-encoding.c:184
 msgid "Baltic"
-msgstr ""
+msgstr "Индо-европейские"
 
 #: ../parole/parole-subtitle-encoding.c:187
 msgid "Celtic"
@@ -640,11 +648,11 @@ msgstr "<b>Продолжительность:</b>"
 
 #: ../plugins/tray/tray-icon.c:347
 msgid "Tray icon plugin"
-msgstr ""
+msgstr "Модуль отображения значка в системном лотке"
 
 #: ../plugins/tray/tray-icon.c:356
 msgid "Enable notification"
-msgstr "Разрешить нотификацию"
+msgstr "Разрешить уведомления"
 
 #. Construct function
 #: ../plugins/tray/tray-icon.c:427
