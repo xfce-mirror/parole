@@ -44,7 +44,7 @@ msgstr "DVD Меню"
 
 #: ../data/interfaces/parole.ui.h:8 ../parole/parole-player.c:288
 msgid "Hide playlist"
-msgstr "Убрать плей-лист"
+msgstr "Убрать список воспроизведения"
 
 #: ../data/interfaces/parole.ui.h:9
 msgid "Media player"
@@ -71,7 +71,7 @@ msgstr "Parole Media Player"
 
 #: ../data/interfaces/parole.ui.h:14
 msgid "Plugins"
-msgstr "Плагины"
+msgstr "Модули..."
 
 #: ../data/interfaces/parole.ui.h:15 ../parole/parole-player.c:1014
 #: ../parole/parole-disc-menu.c:114
@@ -188,7 +188,7 @@ msgstr "Шрифт:"
 
 #: ../data/interfaces/parole-settings.ui.h:10
 msgid "Hue:"
-msgstr "Оттенок"
+msgstr "Оттенок:"
 
 #: ../data/interfaces/parole-settings.ui.h:11
 msgid "Media Player Settings"
@@ -233,7 +233,7 @@ msgstr ""
 
 #: ../parole/main.c:156
 msgid "Open a new instance"
-msgstr ""
+msgstr "Новое окно"
 
 #: ../parole/main.c:157
 msgid "Version information"
@@ -246,17 +246,17 @@ msgstr "Объект для проигрывания"
 #: ../parole/main.c:193
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
-msgstr ""
+msgstr "Проигрыватель уже запущен, используйте опцию -i чтобы открыть новое окно.\n"
 
 #: ../parole/parole-gst.c:1289
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
-msgstr ""
+msgstr "Невозможно загрузить плагин GStreamer 'playbin'. Проверьте, все ли необходимые пакеты у вас установлены."
 
 #: ../parole/parole-gst.c:1305
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
-msgstr ""
+msgstr "Невозможно загрузить плагин GStreamer для работы с видео. Проверьте, все ли необходимые пакеты у вас установлены."
 
 #: ../parole/parole-gst.c:1501
 msgid "The stream is tacking too much time to load"
@@ -276,7 +276,7 @@ msgstr "Добавить"
 
 #: ../parole/parole-medialist.c:432
 msgid "Error saving playlist file"
-msgstr "Ошибка сохранения плей-листа"
+msgstr "Ошибка сохранения списка воспроизведения"
 
 #: ../parole/parole-medialist.c:432
 msgid "Permission denied"
@@ -284,31 +284,31 @@ msgstr "Отказано в доступе"
 
 #: ../parole/parole-medialist.c:441
 msgid "Unknown playlist format, Please select a support playlist format"
-msgstr "Неизвестный формат плей-листа, выбирите поддерживаемый формат"
+msgstr "Неизвестный формат списка воспроизведения, выбирите поддерживаемый формат"
 
 #: ../parole/parole-medialist.c:507 ../parole/parole-player.c:1542
 msgid "Playlist"
-msgstr "Плей-лист"
+msgstr "Список воспроизведения"
 
 #: ../parole/parole-medialist.c:514
 msgid "M3U Playlists"
-msgstr "M3U Плей-листы"
+msgstr "M3U списки воспроизведения"
 
 #: ../parole/parole-medialist.c:522
 msgid "PLS Playlists"
-msgstr "PLS Плей-листы"
+msgstr "PLS списки воспроизведения"
 
 #: ../parole/parole-medialist.c:530
 msgid "Advanced Stream Redirector"
-msgstr ""
+msgstr "Расширенный кодировщик потока"
 
 #: ../parole/parole-medialist.c:538
 msgid "Shareable Playlist"
-msgstr "Расшаренный плейлист"
+msgstr "Публикуемый список воспроизведения"
 
 #: ../parole/parole-medialist.c:853
 msgid "Remember playlist"
-msgstr "Запомнить плей-лист"
+msgstr "Запомнить список воспроизведения"
 
 #: ../parole/parole-medialist.c:1003
 msgid "Media list"
@@ -316,7 +316,7 @@ msgstr "Список файлов"
 
 #: ../parole/parole-player.c:297
 msgid "Show playlist"
-msgstr "Показать плей-лист"
+msgstr "Показать список воспроизведения"
 
 #: ../parole/parole-player.c:507
 msgid "Media stream is not seekable"
@@ -338,7 +338,7 @@ msgstr "Предыдущий трек"
 
 #: ../parole/parole-statusbar.c:60
 msgid "Buffering"
-msgstr "Буферорование"
+msgstr "Буферизация"
 
 #: ../parole/parole-statusbar.c:77
 msgid "Stopped"
@@ -374,11 +374,11 @@ msgstr "Все поддерживаемые файлы"
 
 #: ../parole/parole-filters.c:127
 msgid "Playlist files"
-msgstr "Файлы плей-листов"
+msgstr "Файлы списков воспроизведения"
 
 #: ../parole/parole-about.c:56
 msgid "Author/Maintainer"
-msgstr "Автор/Маинтейнер"
+msgstr "Автор/Майнтейнер"
 
 #: ../parole/parole-about.c:62
 #, c-format
@@ -419,7 +419,7 @@ msgstr "Кельтский"
 #: ../parole/parole-subtitle-encoding.c:194
 #: ../parole/parole-subtitle-encoding.c:196
 msgid "Central European"
-msgstr ""
+msgstr "Центрально-европейские"
 
 #: ../parole/parole-subtitle-encoding.c:199
 #: ../parole/parole-subtitle-encoding.c:201
@@ -436,7 +436,7 @@ msgstr "Китайский традиционный"
 
 #: ../parole/parole-subtitle-encoding.c:215
 msgid "Croatian"
-msgstr ""
+msgstr "Хорватский"
 
 #: ../parole/parole-subtitle-encoding.c:218
 #: ../parole/parole-subtitle-encoding.c:220
@@ -468,22 +468,22 @@ msgstr "Греческий"
 
 #: ../parole/parole-subtitle-encoding.c:249
 msgid "Gujarati"
-msgstr ""
+msgstr "Гуджарати"
 
 #: ../parole/parole-subtitle-encoding.c:252
 msgid "Gurmukhi"
-msgstr ""
+msgstr "Гурмукхи"
 
 #: ../parole/parole-subtitle-encoding.c:255
 #: ../parole/parole-subtitle-encoding.c:257
 #: ../parole/parole-subtitle-encoding.c:259
 #: ../parole/parole-subtitle-encoding.c:261
 msgid "Hebrew"
-msgstr ""
+msgstr "Иврит"
 
 #: ../parole/parole-subtitle-encoding.c:264
 msgid "Hebrew Visual"
-msgstr ""
+msgstr "Иврит"
 
 #: ../parole/parole-subtitle-encoding.c:267
 msgid "Hindi"
@@ -491,7 +491,7 @@ msgstr "Хинди"
 
 #: ../parole/parole-subtitle-encoding.c:270
 msgid "Icelandic"
-msgstr ""
+msgstr "Исландский"
 
 #: ../parole/parole-subtitle-encoding.c:273
 #: ../parole/parole-subtitle-encoding.c:275
@@ -508,24 +508,24 @@ msgstr "Корейский"
 
 #: ../parole/parole-subtitle-encoding.c:289
 msgid "Nordic"
-msgstr ""
+msgstr "Сканское наречие"
 
 #: ../parole/parole-subtitle-encoding.c:292
 msgid "Persian"
-msgstr ""
+msgstr "Парси́"
 
 #: ../parole/parole-subtitle-encoding.c:295
 #: ../parole/parole-subtitle-encoding.c:297
 msgid "Romanian"
-msgstr ""
+msgstr "Румынский"
 
 #: ../parole/parole-subtitle-encoding.c:300
 msgid "South European"
-msgstr ""
+msgstr "Южно-европейские"
 
 #: ../parole/parole-subtitle-encoding.c:303
 msgid "Thai"
-msgstr ""
+msgstr "Тайский"
 
 #: ../parole/parole-subtitle-encoding.c:306
 #: ../parole/parole-subtitle-encoding.c:308
@@ -548,7 +548,7 @@ msgstr "Юникод"
 #: ../parole/parole-subtitle-encoding.c:332
 #: ../parole/parole-subtitle-encoding.c:334
 msgid "Western"
-msgstr ""
+msgstr "Австралийские наречия"
 
 #: ../parole/parole-subtitle-encoding.c:337
 #: ../parole/parole-subtitle-encoding.c:339
@@ -649,12 +649,12 @@ msgstr "Разрешить нотификацию"
 #. Construct function
 #: ../plugins/tray/tray-icon.c:427
 msgid "Tray icon"
-msgstr "Иконка в трее"
+msgstr "Иконка в в системном лотке"
 
 #. Title
 #: ../plugins/tray/tray-icon.c:428
 msgid "Show icon in the system tray"
-msgstr "Показать иконку плейера в трее"
+msgstr "Показать иконку плейера в системном лотке"
 
 #. Construct function
 #: ../plugins/window-title/window-title.c:102
