@@ -71,6 +71,10 @@ void				 parole_media_list_load             (ParoleMediaList *list);
 
 gboolean			 parole_media_list_is_selected_row  (ParoleMediaList *list);
 
+gboolean			 parole_media_list_is_empty	    (ParoleMediaList *list);
+
+GtkTreeRowReference             *parole_media_list_get_first_row    (ParoleMediaList *list);
+
 GtkTreeRowReference		*parole_media_list_get_selected_row (ParoleMediaList *list);
 
 GtkTreeRowReference             *parole_media_list_get_next_row     (ParoleMediaList *list,

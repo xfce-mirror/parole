@@ -381,8 +381,11 @@ parole_player_uri_opened_cb (ParoleMediaList *list, const gchar *uri, ParolePlay
 static void
 parole_player_media_cursor_changed_cb (ParoleMediaList *list, gboolean media_selected, ParolePlayer *player)
 {
-    if (player->priv->state != PAROLE_MEDIA_STATE_PLAYING)
-	gtk_widget_set_sensitive (player->priv->play_pause, media_selected);
+    if (player->priv->state < PAROLE_MEDIA_STATE_PAUSED)
+    {
+	gtk_widget_set_sensitive (player->priv->play_pause, 
+				  media_selected || !parole_media_list_is_empty (player->priv->list));
+    }
 }
 
 static void
@@ -564,7 +567,8 @@ parole_player_stopped (ParolePlayer *player)
     player->priv->state = PAROLE_MEDIA_STATE_STOPPED;
     
     gtk_widget_set_sensitive (player->priv->play_pause, 
-			      parole_media_list_is_selected_row (player->priv->list));
+			      parole_media_list_is_selected_row (player->priv->list) || 
+			      !parole_media_list_is_empty (player->priv->list));
     
     /* 
      * Set the stop widget insensitive only if we are not going to got to playing
@@ -599,10 +603,11 @@ parole_player_play_selected_row (ParolePlayer *player)
     
     row = parole_media_list_get_selected_row (player->priv->list);
     
+    if ( row == NULL )
+	row = parole_media_list_get_first_row (player->priv->list);
+    
     if ( row )
-    {
 	parole_player_media_activated_cb (player->priv->list, row, player);
-    }
 }
 
 static void

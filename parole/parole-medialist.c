@@ -1203,6 +1203,26 @@ gboolean parole_media_list_is_selected_row  (ParoleMediaList *list)
     return gtk_tree_selection_count_selected_rows (list->priv->sel) > 0;
 }
 
+gboolean parole_media_list_is_empty (ParoleMediaList *list)
+{
+    GtkTreeIter iter;
+    
+    return !gtk_tree_model_get_iter_first (GTK_TREE_MODEL (list->priv->store), &iter);
+}
+
+GtkTreeRowReference *parole_media_list_get_first_row (ParoleMediaList *list)
+{
+    GtkTreeRowReference *row = NULL;
+    GtkTreeIter iter;
+    
+    if ( gtk_tree_model_get_iter_first (GTK_TREE_MODEL (list->priv->store), &iter) )
+    {
+	row = parole_media_list_get_row_reference_from_iter (list, &iter, TRUE);
+    }
+    
+    return row;
+}
+
 GtkTreeRowReference *parole_media_list_get_selected_row (ParoleMediaList *list)
 {
     return parole_media_list_get_first_selected_row (list);
