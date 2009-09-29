@@ -67,6 +67,8 @@ GType        			 parole_media_list_get_type         (void) G_GNUC_CONST;
 
 GtkWidget       		*parole_media_list_new              (void);
 
+void				 parole_media_list_load             (ParoleMediaList *list);
+
 GtkTreeRowReference		*parole_media_list_get_selected_row (ParoleMediaList *list);
 
 GtkTreeRowReference             *parole_media_list_get_next_row     (ParoleMediaList *list,

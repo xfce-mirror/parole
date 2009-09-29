@@ -179,7 +179,7 @@ parole_media_list_set_widget_sensitive (ParoleMediaList *list, gboolean sensitiv
 }
 
 static void
-parole_media_list_add (ParoleMediaList *list, ParoleFile *file, gboolean emit)
+parole_media_list_add (ParoleMediaList *list, ParoleFile *file, gboolean emit, gboolean select_row)
 {
     GtkListStore *list_store;
     GtkTreePath *path;
@@ -203,7 +203,16 @@ parole_media_list_add (ParoleMediaList *list, ParoleFile *file, gboolean emit)
 	row = gtk_tree_row_reference_new (GTK_TREE_MODEL (list_store), path);
 	gtk_tree_path_free (path);
 	g_signal_emit (G_OBJECT (list), signals [MEDIA_ACTIVATED], 0, row);
+	gtk_tree_row_reference_free (row);
     }
+  
+    if ( select_row )
+    {
+	path = gtk_tree_model_get_path (GTK_TREE_MODEL (list_store), &iter);
+	parole_media_list_select_path (list, path);
+	gtk_tree_path_free (path);
+    }
+    
     /*
      * Unref it as the list store will have
      * a reference anyway.
@@ -211,6 +220,7 @@ parole_media_list_add (ParoleMediaList *list, ParoleFile *file, gboolean emit)
     g_object_unref (file);
     
     nch = gtk_tree_model_iter_n_children (GTK_TREE_MODEL (list->priv->store), NULL); 
+    
     if ( nch == 1 )
     {
 	gtk_widget_set_sensitive (list->priv->up, FALSE);
@@ -220,6 +230,7 @@ parole_media_list_add (ParoleMediaList *list, ParoleFile *file, gboolean emit)
     }
     else
 	parole_media_list_set_widget_sensitive (list, TRUE);
+	
 }
 
 static void
@@ -231,10 +242,16 @@ parole_media_list_files_opened_cb (ParoleMediaChooser *chooser, GSList *files, P
     
     len = g_slist_length (files);
     
-    for ( i = 0; i < len; i++)
+    if ( len != 0 )
+    {
+	file = g_slist_nth_data (files, 0);
+	parole_media_list_add (list, file, FALSE, TRUE);
+    }
+    
+    for ( i = 1; i < len; i++)
     {
 	file = g_slist_nth_data (files, i);
-	parole_media_list_add (list, file, FALSE);
+	parole_media_list_add (list, file, FALSE, FALSE);
     }
 }
 
@@ -250,7 +267,7 @@ parole_media_list_location_opened_cb (ParoleOpenLocation *obj, const gchar *loca
     else
     {
 	file = parole_file_new (location);
-	parole_media_list_add (list, file, TRUE);
+	parole_media_list_add (list, file, TRUE, TRUE);
     }
 }
 
@@ -285,7 +302,6 @@ parole_media_list_add_by_path (ParoleMediaList *list, const gchar *path, gboolea
 {
     GSList *file_list = NULL;
     GtkFileFilter *filter;
-    ParoleFile *file;
     guint len;
     gboolean ret = FALSE;
     
@@ -294,12 +310,9 @@ parole_media_list_add_by_path (ParoleMediaList *list, const gchar *path, gboolea
     
     parole_get_media_files (filter, path, &file_list);
     
-    for ( len = 0; len < g_slist_length (file_list); len++)
-    {
-	file = g_slist_nth_data (file_list, len);
-	parole_media_list_add (list, file, len == 0 ? emit : FALSE);
-	ret = TRUE;
-    }
+    parole_media_list_files_opened_cb (NULL, file_list, list);
+    len = g_slist_length (file_list);
+    ret = len == 0 ? FALSE : TRUE;
     
     g_object_unref (filter);
     g_slist_free (file_list);
@@ -1019,8 +1032,6 @@ parole_media_list_init (ParoleMediaList *list)
 {
     GtkBuilder *builder;
     GtkWidget  *box;
-    gboolean    load_saved_list;
-    GSList     *fileslist = NULL;
     
     list->priv = PAROLE_MEDIA_LIST_GET_PRIVATE (list);
     
@@ -1046,33 +1057,6 @@ parole_media_list_init (ParoleMediaList *list)
     gtk_widget_show_all (GTK_WIDGET (list));
     
     parole_media_list_dbus_init (list);
-    
-    load_saved_list = parole_rc_read_entry_bool ("SAVE_LIST_ON_EXIT", PAROLE_RC_GROUP_GENERAL, FALSE);
-    
-    if ( load_saved_list )
-    {
-	gchar *playlist_file;
-	playlist_file = xfce_resource_save_location (XFCE_RESOURCE_DATA, 
-			 		             PAROLE_AUTO_SAVED_PLAYLIST, 
-						     FALSE);
-	if ( playlist_file )
-	{
-	    fileslist = parole_pl_parser_load_file (playlist_file);
-	    g_free (playlist_file);
-	    if ( fileslist )
-	    {
-		guint i, len;
-		len = g_slist_length (fileslist);
-		for ( i = 0; i < len; i++)
-		{
-		    ParoleFile *file;
-		    file = g_slist_nth_data (fileslist, i);
-		    parole_media_list_add (list, file, FALSE);
-		}
-		g_slist_free (fileslist);
-	    }
-	}
-    }
 }
 
 GtkWidget *
@@ -1093,10 +1077,32 @@ parole_media_list_new (void)
     return GTK_WIDGET (list);
 }
 
-/*
- * Public functions.
- * 
- */
+void parole_media_list_load (ParoleMediaList *list)
+{
+    gboolean    load_saved_list;
+    GSList     *fileslist = NULL;
+    
+    load_saved_list = parole_rc_read_entry_bool ("SAVE_LIST_ON_EXIT", PAROLE_RC_GROUP_GENERAL, FALSE);
+    
+    if ( load_saved_list )
+    {
+	gchar *playlist_file;
+	
+	playlist_file = xfce_resource_save_location (XFCE_RESOURCE_DATA, 
+			 		             PAROLE_AUTO_SAVED_PLAYLIST, 
+						     FALSE);
+	if ( playlist_file )
+	{
+	    fileslist = parole_pl_parser_load_file (playlist_file);
+	    g_free (playlist_file);
+	    
+	    parole_media_list_files_opened_cb (NULL, fileslist, list);
+	    g_slist_free (fileslist);
+	}
+    }
+    
+}
+
 GtkTreeRowReference *parole_media_list_get_next_row (ParoleMediaList *list, 
 						     GtkTreeRowReference *row,
 						     gboolean repeat)

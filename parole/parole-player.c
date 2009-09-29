@@ -343,7 +343,8 @@ parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *ro
 
     parole_player_reset (player);
     
-    player->priv->row = row;
+    player->priv->row = gtk_tree_row_reference_copy (row);
+    
     model = gtk_tree_row_reference_get_model (row);
     
     if ( gtk_tree_model_get_iter (model, &iter, gtk_tree_row_reference_get_path (row)) )
@@ -1608,7 +1609,12 @@ parole_player_init (ParolePlayer *player)
 		      
     g_signal_connect (player->priv->list, "uri-opened",
 		      G_CALLBACK (parole_player_uri_opened_cb), player);
-
+    
+    /*
+     * Load auto saved media list.
+     */
+    parole_media_list_load (player->priv->list);
+    
     g_object_get (G_OBJECT (player->priv->conf),
 		  "repeat", &repeat,
 		  "shuffle", &shuffle,
