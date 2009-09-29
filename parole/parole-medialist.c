@@ -1198,6 +1198,11 @@ GtkTreeRowReference *parole_media_list_get_row_random (ParoleMediaList *list)
     return row;
 }
 
+gboolean parole_media_list_is_selected_row  (ParoleMediaList *list)
+{
+    return gtk_tree_selection_count_selected_rows (list->priv->sel) > 0;
+}
+
 GtkTreeRowReference *parole_media_list_get_selected_row (ParoleMediaList *list)
 {
     return parole_media_list_get_first_selected_row (list);
