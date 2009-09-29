@@ -58,7 +58,7 @@ parole_g_session_bus_get	(void)
 }
 
 DBusGProxy *
-parole_get_proxy (void)
+parole_get_proxy (const gchar *path, const gchar *iface)
 {
     DBusGConnection *bus;
     DBusGProxy *proxy;
@@ -67,8 +67,8 @@ parole_get_proxy (void)
     
     proxy = dbus_g_proxy_new_for_name (bus, 
 				       PAROLE_DBUS_NAME,
-				       PAROLE_DBUS_PATH,
-				       PAROLE_DBUS_INTERFACE);
+				       path,
+				       iface);
 	
     if ( !proxy )
 	g_error ("Unable to create proxy for %s", PAROLE_DBUS_NAME);

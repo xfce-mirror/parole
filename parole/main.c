@@ -120,7 +120,7 @@ parole_send (gchar **filenames)
 {
     DBusGProxy *proxy;
     
-    proxy = parole_get_proxy ();
+    proxy = parole_get_proxy (PAROLE_DBUS_PLAYLIST_PATH, PAROLE_DBUS_PLAYLIST_INTERFACE);
 	
     if ( !proxy )
 	g_error ("Unable to create proxy for %s", PAROLE_DBUS_NAME);
@@ -139,7 +139,7 @@ parole_send_message (const gchar *message)
     DBusGProxy *proxy;
     GError *error = NULL;
     
-    proxy = parole_get_proxy ();
+    proxy = parole_get_proxy (PAROLE_DBUS_PATH, PAROLE_DBUS_INTERFACE);
     
     dbus_g_proxy_call (proxy, message, &error,
 		       G_TYPE_INVALID,

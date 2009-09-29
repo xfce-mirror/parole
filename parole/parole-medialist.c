@@ -1302,7 +1302,7 @@ static void
 parole_media_list_dbus_init (ParoleMediaList *list)
 {
     dbus_g_connection_register_g_object (parole_g_session_bus_get (),
-					 PAROLE_DBUS_LIST_PATH,
+					 PAROLE_DBUS_PLAYLIST_PATH,
 					 G_OBJECT (list));
 }
 
