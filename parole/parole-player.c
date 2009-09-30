@@ -488,6 +488,7 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
     gboolean seekable;
     
     player->priv->state = PAROLE_MEDIA_STATE_PLAYING;
+    
     pix = xfce_themed_icon_load ("player_play", 16);
     
     if ( !pix )
@@ -536,7 +537,7 @@ parole_player_paused (ParolePlayer *player)
     
     TRACE ("Player paused");
     
-    pix = xfce_themed_icon_load ("gtk-media-pause", 16);
+    pix = xfce_themed_icon_load (GTK_STOCK_MEDIA_PAUSE, 16);
     parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, pix);
     
     gtk_widget_set_sensitive (player->priv->play_pause, TRUE);
