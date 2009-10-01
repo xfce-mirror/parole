@@ -1513,6 +1513,8 @@ parole_gst_check_state_change_timeout (gpointer data)
 static void
 parole_gst_terminate_internal (ParoleGst *gst, gboolean fade_sound)
 {
+    gboolean playing_video;
+    
     g_mutex_lock (gst->priv->lock);
     
     parole_stream_init_properties (gst->priv->stream);
@@ -1522,7 +1524,11 @@ parole_gst_terminate_internal (ParoleGst *gst, gboolean fade_sound)
 
     parole_window_busy_cursor (GTK_WIDGET (gst)->window);
     
-    if ( fade_sound && gst->priv->state == GST_STATE_PLAYING )
+    g_object_get (G_OBJECT (gst->priv->stream), 
+		  "has-video", &playing_video,
+		  NULL);
+    
+    if ( fade_sound && gst->priv->state == GST_STATE_PLAYING && playing_video )
     {
 	gdouble volume;
 	gdouble step;
