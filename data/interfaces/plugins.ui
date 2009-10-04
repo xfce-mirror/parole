@@ -174,7 +174,7 @@
                     <property name="spacing">10</property>
                     <child>
                       <object class="GtkButton" id="configure">
-                        <property name="label" translatable="yes">gtk-properties</property>
+                        <property name="label">gtk-properties</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
@@ -214,7 +214,7 @@
             </child>
             <child>
               <object class="GtkButton" id="close">
-                <property name="label" translatable="yes">gtk-close</property>
+                <property name="label">gtk-close</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>

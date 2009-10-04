@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parole 0.1.90svn.r07906\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-06 14:27+0200\n"
+"POT-Creation-Date: 2009-10-04 16:25+0000\n"
 "PO-Revision-Date: 2009-08-17 17:08+0200\n"
 "Last-Translator: Robert Hartl <hartl.robert@gmail.com>\n"
 "Language-Team: slovak <sk-i18n@lists.linux.sk>\n"
@@ -42,45 +42,46 @@ msgstr "Ponuka kapitol"
 msgid "DVD Menu"
 msgstr "Ponuka DVD"
 
-#: ../data/interfaces/parole.ui.h:8 ../parole/parole-player.c:283
-msgid "Hide playlist"
-msgstr "Skryť zoznam skladieb"
-
-#: ../data/interfaces/parole.ui.h:9
+#: ../data/interfaces/parole.ui.h:8
 msgid "Media player"
 msgstr "Prehrávač médií"
 
-#: ../data/interfaces/parole.ui.h:10
+#: ../data/interfaces/parole.ui.h:9
 msgid "Mute"
 msgstr "Stlmiť"
 
-#: ../data/interfaces/parole.ui.h:11 ../parole/parole-player.c:992
-#: ../parole/parole-disc-menu.c:101
+#: ../data/interfaces/parole.ui.h:10 ../parole/parole-player.c:1047
+#: ../parole/parole-disc-menu.c:113
 msgid "Next Chapter"
 msgstr "Ďalšia kapitola"
 
-#: ../data/interfaces/parole.ui.h:12
+#: ../data/interfaces/parole.ui.h:11
 msgid "None"
 msgstr ""
 
-#: ../data/interfaces/parole.ui.h:13 ../data/desktop/parole.desktop.in.in.h:1
-#: ../parole/parole-player.c:220 ../parole/parole-about.c:51
+#: ../data/interfaces/parole.ui.h:12 ../data/desktop/parole.desktop.in.in.h:1
+#: ../parole/parole-player.c:234 ../parole/parole-about.c:51
 #: ../plugins/window-title/window-title.c:40
 msgid "Parole Media Player"
 msgstr "Parole Media Player"
 
-#: ../data/interfaces/parole.ui.h:14
+#: ../data/interfaces/parole.ui.h:13
 msgid "Plugins"
 msgstr "Zasuvné moduly"
 
-#: ../data/interfaces/parole.ui.h:15 ../parole/parole-player.c:1004
-#: ../parole/parole-disc-menu.c:102
+#: ../data/interfaces/parole.ui.h:14 ../parole/parole-player.c:1059
+#: ../parole/parole-disc-menu.c:114
 msgid "Previous Chapter"
 msgstr "Predchádzajúca kapitola"
 
-#: ../data/interfaces/parole.ui.h:16
+#: ../data/interfaces/parole.ui.h:15
 msgid "Repeat"
 msgstr "Opakovať"
+
+#: ../data/interfaces/parole.ui.h:16
+#, fuzzy
+msgid "Select Track"
+msgstr "Ďalšia skladba"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "Shuffle"
@@ -118,10 +119,6 @@ msgstr "_Médiá"
 msgid "_View"
 msgstr "_Zobraziť"
 
-#: ../data/interfaces/parole.ui.h:26
-msgid "gtk-leave-fullscreen"
-msgstr "gtk-leave-fullscreen"
-
 #: ../data/interfaces/plugins.ui.h:1
 msgid "<b>Author:</b>"
 msgstr "<b>Autor:</b>"
@@ -137,14 +134,6 @@ msgstr "<b>Stránka:</b>"
 #: ../data/interfaces/plugins.ui.h:4
 msgid "Parole Plugins Preferences"
 msgstr "Možnosti zásuvných modulov Parole"
-
-#: ../data/interfaces/plugins.ui.h:5
-msgid "gtk-close"
-msgstr "gtk-close"
-
-#: ../data/interfaces/plugins.ui.h:6
-msgid "gtk-properties"
-msgstr "gtk-properties"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "<b>Audio</b>"
@@ -214,7 +203,7 @@ msgstr "podľa prípony"
 msgid "Select File Types (By Extension)"
 msgstr ""
 
-#: ../parole/main.c:52
+#: ../parole/main.c:53
 #, c-format
 msgid ""
 "\n"
@@ -235,38 +224,77 @@ msgstr ""
 "Licensed under the GNU GPL.\n"
 "\n"
 
-#: ../parole/main.c:156
+#: ../parole/main.c:184
 msgid "Open a new instance"
 msgstr ""
 
-#: ../parole/main.c:157
+#: ../parole/main.c:185
+msgid "Play or pause if already playing"
+msgstr ""
+
+#: ../parole/main.c:186
+#, fuzzy
+msgid "Stop playing"
+msgstr "Zobraziť zoznam skladieb"
+
+#: ../parole/main.c:187
+#, fuzzy
+msgid "Next track"
+msgstr "Ďalšia skladba"
+
+#: ../parole/main.c:188
+#, fuzzy
+msgid "Previous track"
+msgstr "Predchádzajúca skladba"
+
+#: ../parole/main.c:189
+msgid "Seek forward"
+msgstr ""
+
+#: ../parole/main.c:190
+msgid "Seek Backward"
+msgstr ""
+
+#: ../parole/main.c:191
+msgid "Raise volume"
+msgstr ""
+
+#: ../parole/main.c:192
+msgid "Lower volume"
+msgstr ""
+
+#: ../parole/main.c:193
+msgid "Mute volume"
+msgstr ""
+
+#: ../parole/main.c:194
 msgid "Version information"
 msgstr "Informácia o verzií"
 
-#: ../parole/main.c:158
+#: ../parole/main.c:196
 msgid "Media to play"
 msgstr ""
 
-#: ../parole/main.c:172
+#: ../parole/main.c:231
 #, c-format
-msgid "Type '%s --help' for usage."
+msgid "Parole is already running, use -i to open a new instance\n"
 msgstr ""
 
-#: ../parole/parole-gst.c:1258
+#: ../parole/parole-gst.c:1289
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 
-#: ../parole/parole-gst.c:1274
+#: ../parole/parole-gst.c:1305
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 
-#: ../parole/parole-gst.c:1464
-msgid "The stream is tacking too much time to load"
+#: ../parole/parole-gst.c:1501
+msgid "The stream is taking too much time to load"
 msgstr ""
 
-#: ../parole/parole-gst.c:1464
+#: ../parole/parole-gst.c:1501
 msgid "Stop"
 msgstr "Zastaviť"
 
@@ -278,65 +306,69 @@ msgstr "Pridať mediálne súbory"
 msgid "Add"
 msgstr "Pridať"
 
-#: ../parole/parole-medialist.c:384
+#: ../parole/parole-medialist.c:445
 msgid "Error saving playlist file"
 msgstr "Chyba pri ukladaní súboru zoznamu skladieb"
 
-#: ../parole/parole-medialist.c:384
+#: ../parole/parole-medialist.c:445
 msgid "Permission denied"
 msgstr "Povolenie zamietnuté"
 
-#: ../parole/parole-medialist.c:393
+#: ../parole/parole-medialist.c:454
 msgid "Unknown playlist format, Please select a support playlist format"
 msgstr "Neznámy formát zoznamu skladieb. Vyberte prosím podporovaný formát"
 
-#: ../parole/parole-medialist.c:459 ../parole/parole-player.c:1462
+#: ../parole/parole-medialist.c:520 ../parole/parole-player.c:1591
 msgid "Playlist"
 msgstr "Zoznam skladieb"
 
-#: ../parole/parole-medialist.c:466
+#: ../parole/parole-medialist.c:527
 msgid "M3U Playlists"
 msgstr "Zoznamy skladieb M3U"
 
-#: ../parole/parole-medialist.c:474
+#: ../parole/parole-medialist.c:535
 msgid "PLS Playlists"
 msgstr "Zoznamy skladieb PLS"
 
-#: ../parole/parole-medialist.c:482
+#: ../parole/parole-medialist.c:543
 msgid "Advanced Stream Redirector"
 msgstr ""
 
-#: ../parole/parole-medialist.c:490
+#: ../parole/parole-medialist.c:551
 msgid "Shareable Playlist"
 msgstr ""
 
-#: ../parole/parole-medialist.c:667
+#: ../parole/parole-medialist.c:866
 msgid "Remember playlist"
 msgstr "Zapamätať zoznam skladieb"
 
-#: ../parole/parole-medialist.c:819
+#: ../parole/parole-medialist.c:1016
 msgid "Media list"
 msgstr "Zoznam médií"
 
-#: ../parole/parole-player.c:292
+#: ../parole/parole-player.c:297
+msgid "Hide playlist"
+msgstr "Skryť zoznam skladieb"
+
+#: ../parole/parole-player.c:306
 msgid "Show playlist"
 msgstr "Zobraziť zoznam skladieb"
 
-#: ../parole/parole-player.c:501
+#: ../parole/parole-player.c:521
 msgid "Media stream is not seekable"
 msgstr ""
 
 #.
 #. * Next chapter menu item
 #.
-#: ../parole/parole-player.c:992 ../parole/parole-disc-menu.c:110
+#: ../parole/parole-player.c:1047 ../parole/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr "Ďalšia skladba"
 
 #.
 #. * Previous chapter menu item
 #.
-#: ../parole/parole-player.c:1004 ../parole/parole-disc-menu.c:111
+#: ../parole/parole-player.c:1059 ../parole/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr "Predchádzajúca skladba"
 
@@ -389,7 +421,7 @@ msgstr "Autor/Správca"
 msgid "Translator (%s)"
 msgstr "Prekladatelia (%s)"
 
-#: ../parole/parole-disc.c:177
+#: ../parole/parole-disc.c:202
 msgid "Play Disc"
 msgstr "Prehrať disk"
 
@@ -572,45 +604,62 @@ msgstr ""
 msgid "Clear history"
 msgstr "Zmazať históriu"
 
-#: ../parole/parole-disc-menu.c:118
+#: ../parole/parole-disc-menu.c:130
 msgid "Playing Track"
 msgstr "Prehrávaná skladba"
 
-#: ../plugins/properties/stream-properties.c:44
-#: ../plugins/properties/stream-properties.c:45
-#: ../plugins/properties/stream-properties.c:46
-#: ../plugins/properties/stream-properties.c:47
-#: ../plugins/properties/stream-properties.c:48
+#: ../parole/parole-disc-menu.c:194
+#, c-format
+msgid "Track %i"
+msgstr ""
+
+#: ../parole/parole-plugins-manager.c:227
+#: ../parole/parole-plugins-manager.c:285
+msgid "Visit Website"
+msgstr ""
+
+#: ../plugins/properties/stream-properties.c:121
+#: ../plugins/properties/stream-properties.c:122
+#: ../plugins/properties/stream-properties.c:123
+#: ../plugins/properties/stream-properties.c:124
 msgid "Unknown"
 msgstr "Neznáme"
 
-#: ../plugins/properties/stream-properties.c:70
+#: ../plugins/properties/stream-properties.c:220
 msgid "Title:"
 msgstr "Názov:"
 
-#: ../plugins/properties/stream-properties.c:93
+#: ../plugins/properties/stream-properties.c:243
 msgid "Artist:"
 msgstr "Umelec:"
 
-#: ../plugins/properties/stream-properties.c:116
+#: ../plugins/properties/stream-properties.c:266
 msgid "Album:"
 msgstr "Album:"
 
-#: ../plugins/properties/stream-properties.c:139
+#: ../plugins/properties/stream-properties.c:289
 msgid "Year:"
 msgstr "Rok:"
 
-#: ../plugins/properties/stream-properties.c:162
-msgid "Comment:"
-msgstr "Komentár:"
+#: ../plugins/properties/stream-properties.c:307
+msgid "General"
+msgstr ""
+
+#: ../plugins/properties/stream-properties.c:354
+msgid "Stream doesn't support tags changes"
+msgstr ""
+
+#: ../plugins/properties/stream-properties.c:361
+msgid "Save media tags changes"
+msgstr ""
 
 #. Construct function
-#: ../plugins/properties/stream-properties.c:288
+#: ../plugins/properties/stream-properties.c:490
 msgid "Properties"
 msgstr "Vlastnosti"
 
 #. Title
-#: ../plugins/properties/stream-properties.c:289
+#: ../plugins/properties/stream-properties.c:491
 msgid "Read media properties"
 msgstr ""
 
@@ -622,21 +671,21 @@ msgstr "<b>Prehrávanie:</b>"
 msgid "<b>Duration:</b>"
 msgstr "<b>Trvanie:</b>"
 
-#: ../plugins/tray/tray-icon.c:347
+#: ../plugins/tray/tray-icon.c:370
 msgid "Tray icon plugin"
 msgstr ""
 
-#: ../plugins/tray/tray-icon.c:356
+#: ../plugins/tray/tray-icon.c:379
 msgid "Enable notification"
 msgstr "Povoliť oznamovanie"
 
 #. Construct function
-#: ../plugins/tray/tray-icon.c:427
+#: ../plugins/tray/tray-icon.c:451
 msgid "Tray icon"
 msgstr ""
 
 #. Title
-#: ../plugins/tray/tray-icon.c:428
+#: ../plugins/tray/tray-icon.c:452
 msgid "Show icon in the system tray"
 msgstr ""
 
@@ -651,3 +700,15 @@ msgid ""
 "Set the main window name to the current\n"
 " playing media name."
 msgstr ""
+
+#~ msgid "gtk-leave-fullscreen"
+#~ msgstr "gtk-leave-fullscreen"
+
+#~ msgid "gtk-close"
+#~ msgstr "gtk-close"
+
+#~ msgid "gtk-properties"
+#~ msgstr "gtk-properties"
+
+#~ msgid "Comment:"
+#~ msgstr "Komentár:"

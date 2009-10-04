@@ -282,7 +282,7 @@ parole_plugins_manager_show_plugins_pref (GtkWidget *widget, ParolePluginsManage
 #if GTK_CHECK_VERSION (2, 18, 0)
     pref->site = gtk_label_new (NULL);
 #else
-    pref->site = gtk_link_button_new_with_label (" ", _("Visite Website"));
+    pref->site = gtk_link_button_new_with_label (" ", _("Visit Website"));
 #endif
     
     gtk_box_pack_start (GTK_BOX (site_box), pref->site, FALSE, FALSE, 0);

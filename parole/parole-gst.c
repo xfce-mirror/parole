@@ -1498,7 +1498,7 @@ parole_gst_check_state_change_timeout (gpointer data)
     if ( gst->priv->state != gst->priv->target )
     {
 	gboolean ret_val = 
-	    xfce_confirm (_("The stream is tacking too much time to load"), GTK_STOCK_OK, _("Stop"));
+	    xfce_confirm (_("The stream is taking too much time to load"), GTK_STOCK_OK, _("Stop"));
 	    
 	if ( ret_val )
 	{
