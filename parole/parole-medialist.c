@@ -245,7 +245,7 @@ parole_media_list_files_opened_cb (ParoleMediaChooser *chooser, GSList *files, P
     if ( len != 0 )
     {
 	file = g_slist_nth_data (files, 0);
-	parole_media_list_add (list, file, FALSE, TRUE);
+	parole_media_list_add (list, file, TRUE, TRUE);
     }
     
     for ( i = 1; i < len; i++)
