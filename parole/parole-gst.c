@@ -1528,7 +1528,7 @@ parole_gst_terminate_internal (ParoleGst *gst, gboolean fade_sound)
 		  "has-video", &playing_video,
 		  NULL);
     
-    if ( fade_sound && gst->priv->state == GST_STATE_PLAYING && playing_video )
+    if ( fade_sound && gst->priv->state == GST_STATE_PLAYING && !playing_video )
     {
 	gdouble volume;
 	gdouble step;

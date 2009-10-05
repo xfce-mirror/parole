@@ -87,6 +87,7 @@ media_chooser_folder_changed_cb (GtkWidget *widget, gpointer data)
 static void
 parole_media_chooser_add (ParoleMediaChooser *chooser, GtkWidget *file_chooser)
 {
+    GSList *media_files = NULL;
     GSList *files;
     GtkFileFilter *filter;
     gchar *file;
@@ -103,12 +104,12 @@ parole_media_chooser_add (ParoleMediaChooser *chooser, GtkWidget *file_chooser)
     
     for ( i = 0; i < len; i++)
     {
-	GSList *media_files = NULL;
 	file = g_slist_nth_data (files, i);
 	parole_get_media_files (filter, file, &media_files);
-	g_signal_emit (G_OBJECT (chooser), signals [MEDIA_FILES_OPENED], 0, media_files);
-	g_slist_free (media_files);
     }
+    
+    g_signal_emit (G_OBJECT (chooser), signals [MEDIA_FILES_OPENED], 0, media_files);
+    g_slist_free (media_files);
     
     g_slist_foreach (files, (GFunc) g_free, NULL);
     g_slist_free (files);
