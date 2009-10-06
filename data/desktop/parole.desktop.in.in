@@ -3,6 +3,6 @@ _Name=Parole Media Player
 Icon=parole
 Exec=parole %F
 Terminal=false
-Type=Application;
+Type=Application
 Categories=GTK;AudioVideo;Player;Video;
 StartupNotify=true
