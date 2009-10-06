@@ -297,11 +297,10 @@ tag_message_cb (ParolePlugin *plugin, const ParoleStream *stream, PluginData *da
 #endif
 }
 
-#ifdef HAVE_LIBNOTIFY
 static gboolean
-notify_enabled (void)
+read_entry_bool (const gchar *entry, gboolean fallback)
 {
-    gboolean ret_val = TRUE;
+    gboolean ret_val = fallback;
     gchar *file;
     XfceRc *rc;
     
@@ -311,9 +310,32 @@ notify_enabled (void)
     
     if ( rc )
     {
-	ret_val = xfce_rc_read_bool_entry (rc, "NOTIFY", TRUE);
+	ret_val = xfce_rc_read_bool_entry (rc, entry, fallback);
 	xfce_rc_close (rc);
     }
+    
+    return ret_val;
+}
+
+static void
+write_entry_bool (const gchar *entry, gboolean value)
+{
+    gchar *file;
+    XfceRc *rc;
+    
+    file = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, RESOURCE_FILE, TRUE);
+    rc = xfce_rc_simple_open (file, FALSE);
+    g_free (file);
+    
+    xfce_rc_write_bool_entry (rc, entry, value);
+    xfce_rc_close (rc);
+}
+
+#ifdef HAVE_LIBNOTIFY
+static gboolean
+notify_enabled (void)
+{
+    gboolean ret_val = read_entry_bool ("NOTIFY", TRUE);
     
     return ret_val;
 }
@@ -322,19 +344,19 @@ static void
 notify_toggled_cb (GtkToggleButton *bt, PluginData *data)
 {
     gboolean active;
-    gchar *file;
-    XfceRc *rc;
-    
-    file = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, RESOURCE_FILE, TRUE);
-    rc = xfce_rc_simple_open (file, FALSE);
-    g_free (file);
-    
     active = gtk_toggle_button_get_active (bt);
-    
     data->enabled = active;
     
-    xfce_rc_write_bool_entry (rc, "NOTIFY", active);
-    xfce_rc_close (rc);
+    write_entry_bool ("NOTIFY", active);
+}
+#endif /*HAVE_LIBNOTIFY*/
+
+static void
+hide_on_delete_toggled_cb (GtkWidget *widget, gpointer data)
+{
+    gboolean toggled;
+    toggled = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget));
+    write_entry_bool ("MINIMIZE_TO_TRAY", toggled);
 }
 
 static void
@@ -342,7 +364,11 @@ configure_cb (ParolePlugin *plugin, GtkWidget *widget, PluginData *data)
 {
     GtkWidget *dialog;
     GtkWidget *content_area;
+#ifdef HAVE_LIBNOTIFY
     GtkWidget *check;
+#endif
+    GtkWidget *hide_on_delete;
+    gboolean hide_on_delete_b;
     
     dialog = gtk_dialog_new_with_buttons (_("Tray icon plugin"), 
 					  GTK_WINDOW (widget),
@@ -353,20 +379,110 @@ configure_cb (ParolePlugin *plugin, GtkWidget *widget, PluginData *data)
 
     content_area = gtk_dialog_get_content_area (GTK_DIALOG (dialog));
     
+#ifdef HAVE_LIBNOTIFY    
     check = gtk_check_button_new_with_label (_("Enable notification"));
-    
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check), data->enabled);
-    
     g_signal_connect (check, "toggled",
 		      G_CALLBACK (notify_toggled_cb), data);
+    gtk_box_pack_start_defaults (GTK_BOX (content_area), check) ;
     
-    gtk_container_add (GTK_CONTAINER (content_area), check);
+#endif /*HAVE_LIBNOTIFY*/
+
+    hide_on_delete_b = read_entry_bool ("MINIMIZE_TO_TRAY", TRUE);
+    hide_on_delete = gtk_check_button_new_with_label (_("Always minimize to tray when window is closed"));
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (hide_on_delete), hide_on_delete_b);
     
+    g_signal_connect (hide_on_delete, "toggled",
+		      G_CALLBACK (hide_on_delete_toggled_cb), NULL);
+    
+    gtk_box_pack_start_defaults (GTK_BOX (content_area), hide_on_delete);
+	
     g_signal_connect (dialog, "response",
 		      G_CALLBACK (gtk_widget_destroy), NULL);
+    
     gtk_widget_show_all (dialog);
 }
-#endif /*HAVE_LIBNOTIFY*/
+
+static void
+action_on_hide_confirmed_cb (GtkWidget *widget, gpointer data)
+{
+    gboolean toggled;
+    
+    toggled = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget));
+    
+    write_entry_bool ("ACTION_CONFIRMED_ON_DELETE", toggled);
+}
+
+static gboolean
+delete_event_cb (GtkWidget *widget, GdkEvent *ev, PluginData *data)
+{
+    GtkWidget *dialog, *check, *content_area, *label;
+    GtkWidget *quit, *minimize, *cancel, *img;
+    gboolean confirmed, ret_val = TRUE, minimize_to_tray;
+    
+    confirmed = read_entry_bool ("ACTION_CONFIRMED_ON_DELETE", FALSE);
+    minimize_to_tray = read_entry_bool ("MINIMIZE_TO_TRAY", TRUE);
+    
+    if ( confirmed )
+    {
+	return minimize_to_tray ? gtk_widget_hide_on_delete (widget) : FALSE;
+    }
+    
+    dialog = gtk_dialog_new_with_buttons (_("Minimize to tray?"), NULL, GTK_DIALOG_MODAL,
+					  NULL);
+    
+    gtk_dialog_set_default_response (GTK_DIALOG (dialog),
+				     GTK_RESPONSE_OK);
+			
+    minimize = gtk_button_new_with_label (_("Minimize to tray"));
+    img = gtk_image_new_from_stock (GTK_STOCK_GO_DOWN, GTK_ICON_SIZE_BUTTON);
+    gtk_button_set_image (GTK_BUTTON (minimize), img);
+    gtk_widget_show (minimize);
+    gtk_dialog_add_action_widget (GTK_DIALOG (dialog), minimize, GTK_RESPONSE_OK);
+    
+    quit = gtk_button_new_from_stock (GTK_STOCK_QUIT);
+    gtk_widget_show (quit);
+    gtk_dialog_add_action_widget (GTK_DIALOG (dialog), quit, GTK_RESPONSE_CLOSE);
+    
+    cancel = gtk_button_new_from_stock (GTK_STOCK_CANCEL);
+    gtk_widget_show (cancel);
+    gtk_dialog_add_action_widget (GTK_DIALOG (dialog), cancel, GTK_RESPONSE_CANCEL);
+    
+    content_area = gtk_dialog_get_content_area (GTK_DIALOG (dialog));
+    
+    label = gtk_label_new (_("Are you sure you want to quit Parole"));
+    gtk_widget_show (label);
+    gtk_box_pack_start_defaults (GTK_BOX (content_area), label) ;
+    
+    check = gtk_check_button_new_with_mnemonic (_("Remember my choice"));
+    gtk_widget_show (check);
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check), FALSE);
+    
+    g_signal_connect (check, "toggled",
+		      G_CALLBACK (action_on_hide_confirmed_cb), NULL);
+		      
+    gtk_box_pack_start_defaults (GTK_BOX (content_area),
+			         check) ;
+
+    switch ( gtk_dialog_run (GTK_DIALOG (dialog)) )
+    {
+	case GTK_RESPONSE_OK:
+	    gtk_widget_hide_on_delete (widget);
+	    break;
+	case GTK_RESPONSE_CLOSE:
+	    ret_val = FALSE;
+	    break;
+	case GTK_RESPONSE_CANCEL:
+	    ret_val = TRUE;
+	    break;
+	default:
+	    ret_val = TRUE;
+	    break;
+    }
+    
+    gtk_widget_destroy (dialog);
+    return ret_val;
+}
 
 G_MODULE_EXPORT static void
 construct (ParolePlugin *plugin)
@@ -406,7 +522,7 @@ construct (ParolePlugin *plugin)
 		      G_CALLBACK (tray_activate_cb), data);
     
     data->sig = g_signal_connect (data->window, "delete-event",
-			          G_CALLBACK (gtk_widget_hide_on_delete), NULL);
+			          G_CALLBACK (delete_event_cb), NULL);
 				  
     g_signal_connect (plugin, "free-data",
 		      G_CALLBACK (free_data_cb), data);
