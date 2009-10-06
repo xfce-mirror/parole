@@ -223,7 +223,7 @@ GtkWidget *parole_open_location (GtkWidget *parent)
 			vbox,
 			TRUE,   
 			TRUE,
-			10);   
+			0);   
     
     gtk_dialog_add_buttons (GTK_DIALOG (self), 
 			    GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,

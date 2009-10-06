@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <interface>
   <requires lib="gtk+" version="2.16"/>
+  <!-- interface-requires xfce4 0.0 -->
   <!-- interface-naming-policy project-wide -->
   <object class="GtkListStore" id="liststore">
     <columns>
@@ -12,20 +13,21 @@
       <column type="GObject"/>
     </columns>
   </object>
-  <object class="GtkDialog" id="dialog">
+  <object class="XfceTitledDialog" id="dialog">
     <property name="border_width">5</property>
-    <property name="title" translatable="yes">Parole Plugins Preferences</property>
-    <property name="window_position">center-on-parent</property>
+    <property name="title" translatable="yes">Parole Plugins</property>
     <property name="default_width">300</property>
     <property name="default_height">220</property>
     <property name="destroy_with_parent">True</property>
+    <property name="icon_name">parole</property>
     <property name="type_hint">normal</property>
     <property name="skip_taskbar_hint">True</property>
     <property name="skip_pager_hint">True</property>
     <property name="has_separator">False</property>
+    <property name="subtitle" translatable="yes">Media Player plugins</property>
     <signal name="response" handler="parole_plugins_manager_pref_response_cb"/>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox1">
+      <object class="GtkVBox" id="dialog-vbox2">
         <property name="visible">True</property>
         <property name="orientation">vertical</property>
         <property name="spacing">2</property>
@@ -206,7 +208,7 @@
           </packing>
         </child>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area1">
+          <object class="GtkHButtonBox" id="dialog-action_area2">
             <property name="visible">True</property>
             <property name="layout_style">end</property>
             <child>
