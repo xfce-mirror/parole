@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parole 0.1.90svn.r07906\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-04 16:25+0000\n"
+"POT-Creation-Date: 2009-10-06 10:11+0000\n"
 "PO-Revision-Date: 2009-08-17 17:08+0200\n"
 "Last-Translator: Robert Hartl <hartl.robert@gmail.com>\n"
 "Language-Team: slovak <sk-i18n@lists.linux.sk>\n"
@@ -132,7 +132,13 @@ msgid "<b>Site:</b>"
 msgstr "<b>Stránka:</b>"
 
 #: ../data/interfaces/plugins.ui.h:4
-msgid "Parole Plugins Preferences"
+#, fuzzy
+msgid "Media Player plugins"
+msgstr "Nastavenia prehrávača médií"
+
+#: ../data/interfaces/plugins.ui.h:5
+#, fuzzy
+msgid "Parole Plugins"
 msgstr "Možnosti zásuvných modulov Parole"
 
 #: ../data/interfaces/parole-settings.ui.h:1
@@ -298,11 +304,11 @@ msgstr ""
 msgid "Stop"
 msgstr "Zastaviť"
 
-#: ../parole/parole-mediachooser.c:154
+#: ../parole/parole-mediachooser.c:155
 msgid "Add media files"
 msgstr "Pridať mediálne súbory"
 
-#: ../parole/parole-mediachooser.c:173
+#: ../parole/parole-mediachooser.c:174
 msgid "Add"
 msgstr "Pridať"
 
@@ -671,21 +677,42 @@ msgstr "<b>Prehrávanie:</b>"
 msgid "<b>Duration:</b>"
 msgstr "<b>Trvanie:</b>"
 
-#: ../plugins/tray/tray-icon.c:370
+#: ../plugins/tray/tray-icon.c:373
 msgid "Tray icon plugin"
 msgstr ""
 
-#: ../plugins/tray/tray-icon.c:379
+#: ../plugins/tray/tray-icon.c:383
 msgid "Enable notification"
 msgstr "Povoliť oznamovanie"
 
+#: ../plugins/tray/tray-icon.c:392
+msgid "Always minimize to tray when window is closed"
+msgstr ""
+
+#: ../plugins/tray/tray-icon.c:431
+msgid "Minimize to tray?"
+msgstr ""
+
+#: ../plugins/tray/tray-icon.c:437
+msgid "Minimize to tray"
+msgstr ""
+
+#: ../plugins/tray/tray-icon.c:453
+msgid "Are you sure you want to quit Parole"
+msgstr ""
+
+#: ../plugins/tray/tray-icon.c:457
+#, fuzzy
+msgid "Remember my choice"
+msgstr "Zapamätať zoznam skladieb"
+
 #. Construct function
-#: ../plugins/tray/tray-icon.c:451
+#: ../plugins/tray/tray-icon.c:544
 msgid "Tray icon"
 msgstr ""
 
 #. Title
-#: ../plugins/tray/tray-icon.c:452
+#: ../plugins/tray/tray-icon.c:545
 msgid "Show icon in the system tray"
 msgstr ""
 

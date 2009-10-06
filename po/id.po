@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-04 16:25+0000\n"
+"POT-Creation-Date: 2009-10-06 10:11+0000\n"
 "PO-Revision-Date: 2009-08-27 04:28+0700\n"
 "Last-Translator: Andhika Padmawan <andhika.padmawan@gmail.com>\n"
 "Language-Team: Indonesian <translation-team-id@lists.sourceforge.net>\n"
@@ -132,7 +132,13 @@ msgid "<b>Site:</b>"
 msgstr "<b>Situs:</b>"
 
 #: ../data/interfaces/plugins.ui.h:4
-msgid "Parole Plugins Preferences"
+#, fuzzy
+msgid "Media Player plugins"
+msgstr "Pengaturan Pemutar Media"
+
+#: ../data/interfaces/plugins.ui.h:5
+#, fuzzy
+msgid "Parole Plugins"
 msgstr "Pengaturan Plugin Parole"
 
 #: ../data/interfaces/parole-settings.ui.h:1
@@ -301,11 +307,11 @@ msgstr "Arus menghabiskan terlalu banyak waktu untuk dimuat"
 msgid "Stop"
 msgstr "Stop"
 
-#: ../parole/parole-mediachooser.c:154
+#: ../parole/parole-mediachooser.c:155
 msgid "Add media files"
 msgstr "Tambah berkas media"
 
-#: ../parole/parole-mediachooser.c:173
+#: ../parole/parole-mediachooser.c:174
 msgid "Add"
 msgstr "Tambah"
 
@@ -676,21 +682,42 @@ msgstr "<b>Memutar:</b>"
 msgid "<b>Duration:</b>"
 msgstr "<b>Durasi:</b>"
 
-#: ../plugins/tray/tray-icon.c:370
+#: ../plugins/tray/tray-icon.c:373
 msgid "Tray icon plugin"
 msgstr "Baki plugin ikon"
 
-#: ../plugins/tray/tray-icon.c:379
+#: ../plugins/tray/tray-icon.c:383
 msgid "Enable notification"
 msgstr "Aktifkan notifikasi"
 
+#: ../plugins/tray/tray-icon.c:392
+msgid "Always minimize to tray when window is closed"
+msgstr ""
+
+#: ../plugins/tray/tray-icon.c:431
+msgid "Minimize to tray?"
+msgstr ""
+
+#: ../plugins/tray/tray-icon.c:437
+msgid "Minimize to tray"
+msgstr ""
+
+#: ../plugins/tray/tray-icon.c:453
+msgid "Are you sure you want to quit Parole"
+msgstr ""
+
+#: ../plugins/tray/tray-icon.c:457
+#, fuzzy
+msgid "Remember my choice"
+msgstr "Ingat senarai putar"
+
 #. Construct function
-#: ../plugins/tray/tray-icon.c:451
+#: ../plugins/tray/tray-icon.c:544
 msgid "Tray icon"
 msgstr "Baki ikon"
 
 #. Title
-#: ../plugins/tray/tray-icon.c:452
+#: ../plugins/tray/tray-icon.c:545
 msgid "Show icon in the system tray"
 msgstr "Tampilkan ikon di baki sistem"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole 0.1.90\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 00:43+0900\n"
+"POT-Creation-Date: 2009-10-06 10:11+0000\n"
 "PO-Revision-Date: 2009-10-06 00:40+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
@@ -135,7 +135,13 @@ msgid "<b>Site:</b>"
 msgstr "<b>サイト:</b>"
 
 #: ../data/interfaces/plugins.ui.h:4
-msgid "Parole Plugins Preferences"
+#, fuzzy
+msgid "Media Player plugins"
+msgstr "メディアプレーヤー設定"
+
+#: ../data/interfaces/plugins.ui.h:5
+#, fuzzy
+msgid "Parole Plugins"
 msgstr "Parole プラグイン設定"
 
 #: ../data/interfaces/parole-settings.ui.h:1
@@ -304,11 +310,11 @@ msgstr "このストリームを読み込むにはかなり時間がかかりま
 msgid "Stop"
 msgstr "停止"
 
-#: ../parole/parole-mediachooser.c:154
+#: ../parole/parole-mediachooser.c:155
 msgid "Add media files"
 msgstr "メディアファイルの追加"
 
-#: ../parole/parole-mediachooser.c:173
+#: ../parole/parole-mediachooser.c:174
 msgid "Add"
 msgstr "追加"
 
@@ -677,21 +683,42 @@ msgstr "<b>再生中:</b>"
 msgid "<b>Duration:</b>"
 msgstr "<b>時間:</b>"
 
-#: ../plugins/tray/tray-icon.c:347
+#: ../plugins/tray/tray-icon.c:373
 msgid "Tray icon plugin"
 msgstr "トレイアイコンプラグイン"
 
-#: ../plugins/tray/tray-icon.c:356
+#: ../plugins/tray/tray-icon.c:383
 msgid "Enable notification"
 msgstr "通知を有効にする"
 
+#: ../plugins/tray/tray-icon.c:392
+msgid "Always minimize to tray when window is closed"
+msgstr ""
+
+#: ../plugins/tray/tray-icon.c:431
+msgid "Minimize to tray?"
+msgstr ""
+
+#: ../plugins/tray/tray-icon.c:437
+msgid "Minimize to tray"
+msgstr ""
+
+#: ../plugins/tray/tray-icon.c:453
+msgid "Are you sure you want to quit Parole"
+msgstr ""
+
+#: ../plugins/tray/tray-icon.c:457
+#, fuzzy
+msgid "Remember my choice"
+msgstr "プレイリストを記憶"
+
 #. Construct function
-#: ../plugins/tray/tray-icon.c:428
+#: ../plugins/tray/tray-icon.c:544
 msgid "Tray icon"
 msgstr "トレイアイコン"
 
 #. Title
-#: ../plugins/tray/tray-icon.c:429
+#: ../plugins/tray/tray-icon.c:545
 msgid "Show icon in the system tray"
 msgstr "システムトレイにアイコンを表示します"
 

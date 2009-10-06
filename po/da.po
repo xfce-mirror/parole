@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole 0.1.90\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-04 16:25+0000\n"
+"POT-Creation-Date: 2009-10-06 10:11+0000\n"
 "PO-Revision-Date: 2009-08-23 23:08+0100\n"
 "Last-Translator: Per Kongstad <p_kongstad@op.pl>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -134,7 +134,13 @@ msgid "<b>Site:</b>"
 msgstr "<b>Side:</b>"
 
 #: ../data/interfaces/plugins.ui.h:4
-msgid "Parole Plugins Preferences"
+#, fuzzy
+msgid "Media Player plugins"
+msgstr "Indstillinger til medieafspiller"
+
+#: ../data/interfaces/plugins.ui.h:5
+#, fuzzy
+msgid "Parole Plugins"
 msgstr "Indstillinger af udvidelsesmoduler til parole"
 
 #: ../data/interfaces/parole-settings.ui.h:1
@@ -305,11 +311,11 @@ msgstr "Det tager for lang tid at indlæse strømmen"
 msgid "Stop"
 msgstr "Stop"
 
-#: ../parole/parole-mediachooser.c:154
+#: ../parole/parole-mediachooser.c:155
 msgid "Add media files"
 msgstr "Tilføj mediefiler"
 
-#: ../parole/parole-mediachooser.c:173
+#: ../parole/parole-mediachooser.c:174
 msgid "Add"
 msgstr "Tilføj"
 
@@ -679,21 +685,42 @@ msgstr "<b>Afspiller:</b>"
 msgid "<b>Duration:</b>"
 msgstr "<b>Varighed:</b>"
 
-#: ../plugins/tray/tray-icon.c:370
+#: ../plugins/tray/tray-icon.c:373
 msgid "Tray icon plugin"
 msgstr "Udvidelsesmodul til statusikon"
 
-#: ../plugins/tray/tray-icon.c:379
+#: ../plugins/tray/tray-icon.c:383
 msgid "Enable notification"
 msgstr "Slå påmindelse til"
 
+#: ../plugins/tray/tray-icon.c:392
+msgid "Always minimize to tray when window is closed"
+msgstr ""
+
+#: ../plugins/tray/tray-icon.c:431
+msgid "Minimize to tray?"
+msgstr ""
+
+#: ../plugins/tray/tray-icon.c:437
+msgid "Minimize to tray"
+msgstr ""
+
+#: ../plugins/tray/tray-icon.c:453
+msgid "Are you sure you want to quit Parole"
+msgstr ""
+
+#: ../plugins/tray/tray-icon.c:457
+#, fuzzy
+msgid "Remember my choice"
+msgstr "Husk spilleliste"
+
 #. Construct function
-#: ../plugins/tray/tray-icon.c:451
+#: ../plugins/tray/tray-icon.c:544
 msgid "Tray icon"
 msgstr "Statusikon"
 
 #. Title
-#: ../plugins/tray/tray-icon.c:452
+#: ../plugins/tray/tray-icon.c:545
 msgid "Show icon in the system tray"
 msgstr "Vis ikon i proceslinien"
 

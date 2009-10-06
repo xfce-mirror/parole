@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parole 0.1.90git.rALT0.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-04 16:25+0000\n"
+"POT-Creation-Date: 2009-10-06 10:11+0000\n"
 "PO-Revision-Date: 2009-08-28 07:47+0400\n"
 "Last-Translator: Anatoly Chernov <aichernov@umail.ru>\n"
 "Language-Team: \n"
@@ -131,7 +131,13 @@ msgid "<b>Site:</b>"
 msgstr "<b>Сайт:</b>"
 
 #: ../data/interfaces/plugins.ui.h:4
-msgid "Parole Plugins Preferences"
+#, fuzzy
+msgid "Media Player plugins"
+msgstr "Установки медиаплейера"
+
+#: ../data/interfaces/plugins.ui.h:5
+#, fuzzy
+msgid "Parole Plugins"
 msgstr "Свойства плагинов"
 
 #: ../data/interfaces/parole-settings.ui.h:1
@@ -303,11 +309,11 @@ msgstr "Поток требует много времени для загруз�
 msgid "Stop"
 msgstr "Стоп"
 
-#: ../parole/parole-mediachooser.c:154
+#: ../parole/parole-mediachooser.c:155
 msgid "Add media files"
 msgstr "Добавить медиа-файл"
 
-#: ../parole/parole-mediachooser.c:173
+#: ../parole/parole-mediachooser.c:174
 msgid "Add"
 msgstr "Добавить"
 
@@ -677,21 +683,42 @@ msgstr "<b>Проигрывание:</b>"
 msgid "<b>Duration:</b>"
 msgstr "<b>Продолжительность:</b>"
 
-#: ../plugins/tray/tray-icon.c:370
+#: ../plugins/tray/tray-icon.c:373
 msgid "Tray icon plugin"
 msgstr "Модуль отображения значка в системном лотке"
 
-#: ../plugins/tray/tray-icon.c:379
+#: ../plugins/tray/tray-icon.c:383
 msgid "Enable notification"
 msgstr "Разрешить уведомления"
 
+#: ../plugins/tray/tray-icon.c:392
+msgid "Always minimize to tray when window is closed"
+msgstr ""
+
+#: ../plugins/tray/tray-icon.c:431
+msgid "Minimize to tray?"
+msgstr ""
+
+#: ../plugins/tray/tray-icon.c:437
+msgid "Minimize to tray"
+msgstr ""
+
+#: ../plugins/tray/tray-icon.c:453
+msgid "Are you sure you want to quit Parole"
+msgstr ""
+
+#: ../plugins/tray/tray-icon.c:457
+#, fuzzy
+msgid "Remember my choice"
+msgstr "Запомнить список воспроизведения"
+
 #. Construct function
-#: ../plugins/tray/tray-icon.c:451
+#: ../plugins/tray/tray-icon.c:544
 msgid "Tray icon"
 msgstr "Иконка в в системном лотке"
 
 #. Title
-#: ../plugins/tray/tray-icon.c:452
+#: ../plugins/tray/tray-icon.c:545
 msgid "Show icon in the system tray"
 msgstr "Показать иконку плейера в системном лотке"
 
