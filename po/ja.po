@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole 0.1.90\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 10:11+0000\n"
-"PO-Revision-Date: 2009-10-06 00:40+0900\n"
+"POT-Creation-Date: 2009-10-06 18:17+0900\n"
+"PO-Revision-Date: 2009-10-06 18:17+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -100,11 +100,11 @@ msgstr "スクエア"
 
 #: ../data/interfaces/parole.ui.h:20
 msgid "Volume Down"
-msgstr "ボリュームを上げる"
+msgstr "ボリュームを下げる"
 
 #: ../data/interfaces/parole.ui.h:21
 msgid "Volume Up"
-msgstr "ボリュームを下げる"
+msgstr "ボリュームを上げる"
 
 #: ../data/interfaces/parole.ui.h:22
 msgid "_Edit"
@@ -135,14 +135,12 @@ msgid "<b>Site:</b>"
 msgstr "<b>サイト:</b>"
 
 #: ../data/interfaces/plugins.ui.h:4
-#, fuzzy
 msgid "Media Player plugins"
-msgstr "メディアプレーヤー設定"
+msgstr "メディアプレーヤープラグイン"
 
 #: ../data/interfaces/plugins.ui.h:5
-#, fuzzy
 msgid "Parole Plugins"
-msgstr "Parole プラグイン設定"
+msgstr "Parole プラグイン"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "<b>Audio</b>"
@@ -174,7 +172,7 @@ msgstr "音楽再生時に視覚化を有効にする"
 
 #: ../data/interfaces/parole-settings.ui.h:8
 msgid "Encoding: "
-msgstr "エンコーディング:"
+msgstr "エンコーディング: "
 
 #: ../data/interfaces/parole-settings.ui.h:9
 msgid "Font:"
@@ -210,7 +208,7 @@ msgstr "拡張子"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "Select File Types (By Extension)"
-msgstr "タイルタイプの選択 (拡張子で)"
+msgstr "ファイルタイプの選択 (拡張子で)"
 
 #: ../parole/main.c:53
 #, c-format
@@ -239,7 +237,7 @@ msgstr "新しいインスタンスを開く"
 
 #: ../parole/main.c:185
 msgid "Play or pause if already playing"
-msgstr "再生中のコンテンツの一時停止/再生"
+msgstr "再生中のコンテンツの再生/一時停止"
 
 #: ../parole/main.c:186
 msgid "Stop playing"
@@ -299,7 +297,7 @@ msgstr ""
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
-"video GStreamer プラグインを読み込めません。GStreamer がただしくいんすとーる"
+"video GStreamer プラグインを読み込めません。GStreamer がただしくインストール"
 "されていることを確認してください。"
 
 #: ../parole/parole-gst.c:1501
@@ -693,24 +691,23 @@ msgstr "通知を有効にする"
 
 #: ../plugins/tray/tray-icon.c:392
 msgid "Always minimize to tray when window is closed"
-msgstr ""
+msgstr "ウィンドウが閉じられた時常にトレイに最小化する"
 
 #: ../plugins/tray/tray-icon.c:431
 msgid "Minimize to tray?"
-msgstr ""
+msgstr "トレイに最小化しますか?"
 
 #: ../plugins/tray/tray-icon.c:437
 msgid "Minimize to tray"
-msgstr ""
+msgstr "トレイに最小化"
 
 #: ../plugins/tray/tray-icon.c:453
 msgid "Are you sure you want to quit Parole"
-msgstr ""
+msgstr "Parole を終了してもよろしいですか?"
 
 #: ../plugins/tray/tray-icon.c:457
-#, fuzzy
 msgid "Remember my choice"
-msgstr "プレイリストを記憶"
+msgstr "選択を記憶する"
 
 #. Construct function
 #: ../plugins/tray/tray-icon.c:544
