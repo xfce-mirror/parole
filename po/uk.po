@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 10:11+0000\n"
+"POT-Creation-Date: 2009-10-06 15:54+0000\n"
 "PO-Revision-Date: 2009-08-30 20:32+0300\n"
 "Last-Translator: Motsyo Gennadi <drool@altlinux.ru>\n"
 "Language-Team: Ukrainian\n"
@@ -117,6 +117,11 @@ msgid "_Media"
 msgstr "_Фільм"
 
 #: ../data/interfaces/parole.ui.h:25
+#, fuzzy
+msgid "_Open location"
+msgstr "Відкрити місцезнаходження..."
+
+#: ../data/interfaces/parole.ui.h:26
 msgid "_View"
 msgstr "_Вигляд"
 
@@ -133,14 +138,23 @@ msgid "<b>Site:</b>"
 msgstr "<b>Сайт:</b>"
 
 #: ../data/interfaces/plugins.ui.h:4
+msgid "Enabled"
+msgstr ""
+
+#: ../data/interfaces/plugins.ui.h:5
 #, fuzzy
 msgid "Media Player plugins"
 msgstr "Налаштування програвача"
 
-#: ../data/interfaces/plugins.ui.h:5
+#: ../data/interfaces/plugins.ui.h:6
 #, fuzzy
 msgid "Parole Plugins"
 msgstr "Властивості плагінів"
+
+#: ../data/interfaces/plugins.ui.h:7
+#, fuzzy
+msgid "Plugin"
+msgstr "Плагіни"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "<b>Audio</b>"
@@ -390,6 +404,11 @@ msgstr "Відтворено"
 #: ../parole/parole-statusbar.c:88 ../parole/parole-statusbar.c:96
 msgid "Paused"
 msgstr "Пауза"
+
+#: ../parole/parole-statusbar.c:88
+#, fuzzy
+msgid "Playing"
+msgstr "Відтворюється трек"
 
 #: ../parole/parole-statusbar.c:117
 msgid "Live stream:"

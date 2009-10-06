@@ -50,7 +50,7 @@
                     <child>
                       <object class="GtkTreeViewColumn" id="treeviewcolumn1">
                         <property name="resizable">True</property>
-                        <property name="title">Enabled</property>
+                        <property name="title" translatable="yes">Enabled</property>
                         <property name="clickable">True</property>
                         <child>
                           <object class="GtkCellRendererToggle" id="cellrenderertoggle">
@@ -64,7 +64,7 @@
                     </child>
                     <child>
                       <object class="GtkTreeViewColumn" id="treeviewcolumn2">
-                        <property name="title">Plugin</property>
+                        <property name="title" translatable="yes">Plugin</property>
                         <child>
                           <object class="GtkCellRendererText" id="cellrenderertext1"/>
                           <attributes>

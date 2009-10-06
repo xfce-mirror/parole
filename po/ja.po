@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole 0.1.90\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 18:17+0900\n"
+"POT-Creation-Date: 2009-10-06 15:54+0000\n"
 "PO-Revision-Date: 2009-10-06 18:17+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
@@ -119,6 +119,11 @@ msgid "_Media"
 msgstr "メディア(_M)"
 
 #: ../data/interfaces/parole.ui.h:25
+#, fuzzy
+msgid "_Open location"
+msgstr "場所を開く..."
+
+#: ../data/interfaces/parole.ui.h:26
 msgid "_View"
 msgstr "表示(_V)"
 
@@ -135,12 +140,21 @@ msgid "<b>Site:</b>"
 msgstr "<b>サイト:</b>"
 
 #: ../data/interfaces/plugins.ui.h:4
+msgid "Enabled"
+msgstr ""
+
+#: ../data/interfaces/plugins.ui.h:5
 msgid "Media Player plugins"
 msgstr "メディアプレーヤープラグイン"
 
-#: ../data/interfaces/plugins.ui.h:5
+#: ../data/interfaces/plugins.ui.h:6
 msgid "Parole Plugins"
 msgstr "Parole プラグイン"
+
+#: ../data/interfaces/plugins.ui.h:7
+#, fuzzy
+msgid "Plugin"
+msgstr "プラグイン"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "<b>Audio</b>"
@@ -397,6 +411,11 @@ msgstr "終了"
 #: ../parole/parole-statusbar.c:88 ../parole/parole-statusbar.c:96
 msgid "Paused"
 msgstr "一時停止"
+
+#: ../parole/parole-statusbar.c:88
+#, fuzzy
+msgid "Playing"
+msgstr "再生中のトラック"
 
 #: ../parole/parole-statusbar.c:117
 msgid "Live stream:"

@@ -85,7 +85,7 @@ parole_statusbar_set_duration (ParoleStatusbar *bar, ParoleState state, gdouble 
 	if ( bar->priv->duration != 0)
 	{
 	    text = g_strdup_printf ("%s %4.2f/%4.2f", 
-				    state == PAROLE_STATE_PAUSED ? _("Paused") : ("Playing"), position, bar->priv->duration);
+				    state == PAROLE_STATE_PAUSED ? _("Paused") : _("Playing"), position, bar->priv->duration);
 	}
 	if ( text )
 	{

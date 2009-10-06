@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parole Media Player Turkish Translation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 10:11+0000\n"
+"POT-Creation-Date: 2009-10-06 15:54+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Samed Beyribey <ras0ir@eventualis.org>\n"
 "Language-Team: Xfce-TR <xfce-tr@googlegroups.com>\n"
@@ -111,6 +111,11 @@ msgid "_Media"
 msgstr "_Ortam"
 
 #: ../data/interfaces/parole.ui.h:25
+#, fuzzy
+msgid "_Open location"
+msgstr "Konum aç..."
+
+#: ../data/interfaces/parole.ui.h:26
 msgid "_View"
 msgstr "_Görünüm"
 
@@ -127,14 +132,23 @@ msgid "<b>Site:</b>"
 msgstr "<b>Site:</b>"
 
 #: ../data/interfaces/plugins.ui.h:4
+msgid "Enabled"
+msgstr ""
+
+#: ../data/interfaces/plugins.ui.h:5
 #, fuzzy
 msgid "Media Player plugins"
 msgstr "Ortam Oynatıcı Ayarları"
 
-#: ../data/interfaces/plugins.ui.h:5
+#: ../data/interfaces/plugins.ui.h:6
 #, fuzzy
 msgid "Parole Plugins"
 msgstr "Parole Eklenti Seçenekleri"
+
+#: ../data/interfaces/plugins.ui.h:7
+#, fuzzy
+msgid "Plugin"
+msgstr "Eklentiler"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "<b>Audio</b>"
@@ -393,6 +407,11 @@ msgstr "Sona erdi"
 #: ../parole/parole-statusbar.c:88 ../parole/parole-statusbar.c:96
 msgid "Paused"
 msgstr "Durdurulmuş"
+
+#: ../parole/parole-statusbar.c:88
+#, fuzzy
+msgid "Playing"
+msgstr "Oynatılan Parça"
 
 #: ../parole/parole-statusbar.c:117
 msgid "Live stream:"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 10:11+0000\n"
+"POT-Creation-Date: 2009-10-06 15:54+0000\n"
 "PO-Revision-Date: 2009-08-27 04:28+0700\n"
 "Last-Translator: Andhika Padmawan <andhika.padmawan@gmail.com>\n"
 "Language-Team: Indonesian <translation-team-id@lists.sourceforge.net>\n"
@@ -116,6 +116,11 @@ msgid "_Media"
 msgstr "_Media"
 
 #: ../data/interfaces/parole.ui.h:25
+#, fuzzy
+msgid "_Open location"
+msgstr "Buka lokasi..."
+
+#: ../data/interfaces/parole.ui.h:26
 msgid "_View"
 msgstr "_Tampilan"
 
@@ -132,14 +137,23 @@ msgid "<b>Site:</b>"
 msgstr "<b>Situs:</b>"
 
 #: ../data/interfaces/plugins.ui.h:4
+msgid "Enabled"
+msgstr ""
+
+#: ../data/interfaces/plugins.ui.h:5
 #, fuzzy
 msgid "Media Player plugins"
 msgstr "Pengaturan Pemutar Media"
 
-#: ../data/interfaces/plugins.ui.h:5
+#: ../data/interfaces/plugins.ui.h:6
 #, fuzzy
 msgid "Parole Plugins"
 msgstr "Pengaturan Plugin Parole"
+
+#: ../data/interfaces/plugins.ui.h:7
+#, fuzzy
+msgid "Plugin"
+msgstr "Plugin"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "<b>Audio</b>"
@@ -398,6 +412,11 @@ msgstr "Selesai"
 #: ../parole/parole-statusbar.c:88 ../parole/parole-statusbar.c:96
 msgid "Paused"
 msgstr "Jeda"
+
+#: ../parole/parole-statusbar.c:88
+#, fuzzy
+msgid "Playing"
+msgstr "Memutar Jalur"
 
 #: ../parole/parole-statusbar.c:117
 msgid "Live stream:"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole 0.1.90\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 10:11+0000\n"
+"POT-Creation-Date: 2009-10-06 15:54+0000\n"
 "PO-Revision-Date: 2009-08-23 23:08+0100\n"
 "Last-Translator: Per Kongstad <p_kongstad@op.pl>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -118,6 +118,11 @@ msgid "_Media"
 msgstr "_Medie"
 
 #: ../data/interfaces/parole.ui.h:25
+#, fuzzy
+msgid "_Open location"
+msgstr "Åbn sted..."
+
+#: ../data/interfaces/parole.ui.h:26
 msgid "_View"
 msgstr "_Vis"
 
@@ -134,14 +139,23 @@ msgid "<b>Site:</b>"
 msgstr "<b>Side:</b>"
 
 #: ../data/interfaces/plugins.ui.h:4
+msgid "Enabled"
+msgstr ""
+
+#: ../data/interfaces/plugins.ui.h:5
 #, fuzzy
 msgid "Media Player plugins"
 msgstr "Indstillinger til medieafspiller"
 
-#: ../data/interfaces/plugins.ui.h:5
+#: ../data/interfaces/plugins.ui.h:6
 #, fuzzy
 msgid "Parole Plugins"
 msgstr "Indstillinger af udvidelsesmoduler til parole"
+
+#: ../data/interfaces/plugins.ui.h:7
+#, fuzzy
+msgid "Plugin"
+msgstr "Udvidelsesmoduler"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "<b>Audio</b>"
@@ -401,6 +415,11 @@ msgstr "Afsluttet"
 #: ../parole/parole-statusbar.c:88 ../parole/parole-statusbar.c:96
 msgid "Paused"
 msgstr "Pause"
+
+#: ../parole/parole-statusbar.c:88
+#, fuzzy
+msgid "Playing"
+msgstr "Afspiller spor"
 
 #: ../parole/parole-statusbar.c:117
 msgid "Live stream:"

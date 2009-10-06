@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parole 0.1.90svn.r07906\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 10:11+0000\n"
+"POT-Creation-Date: 2009-10-06 15:54+0000\n"
 "PO-Revision-Date: 2009-08-17 17:08+0200\n"
 "Last-Translator: Robert Hartl <hartl.robert@gmail.com>\n"
 "Language-Team: slovak <sk-i18n@lists.linux.sk>\n"
@@ -116,6 +116,11 @@ msgid "_Media"
 msgstr "_Médiá"
 
 #: ../data/interfaces/parole.ui.h:25
+#, fuzzy
+msgid "_Open location"
+msgstr "Otvoriť umiestnenie..."
+
+#: ../data/interfaces/parole.ui.h:26
 msgid "_View"
 msgstr "_Zobraziť"
 
@@ -132,14 +137,23 @@ msgid "<b>Site:</b>"
 msgstr "<b>Stránka:</b>"
 
 #: ../data/interfaces/plugins.ui.h:4
+msgid "Enabled"
+msgstr ""
+
+#: ../data/interfaces/plugins.ui.h:5
 #, fuzzy
 msgid "Media Player plugins"
 msgstr "Nastavenia prehrávača médií"
 
-#: ../data/interfaces/plugins.ui.h:5
+#: ../data/interfaces/plugins.ui.h:6
 #, fuzzy
 msgid "Parole Plugins"
 msgstr "Možnosti zásuvných modulov Parole"
+
+#: ../data/interfaces/plugins.ui.h:7
+#, fuzzy
+msgid "Plugin"
+msgstr "Zasuvné moduly"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "<b>Audio</b>"
@@ -393,6 +407,11 @@ msgstr "Ukončené"
 #: ../parole/parole-statusbar.c:88 ../parole/parole-statusbar.c:96
 msgid "Paused"
 msgstr "Pozastavené"
+
+#: ../parole/parole-statusbar.c:88
+#, fuzzy
+msgid "Playing"
+msgstr "Prehrávaná skladba"
 
 #: ../parole/parole-statusbar.c:117
 msgid "Live stream:"
