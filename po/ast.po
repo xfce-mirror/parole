@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ast\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 10:11+0000\n"
-"PO-Revision-Date: 2009-09-03 13:51+0100\n"
+"POT-Creation-Date: 2009-10-06 10:12+0000\n"
+"PO-Revision-Date: 2009-10-06 13:58+0100\n"
 "Last-Translator: astur <malditoastur@gmail.com>\n"
 "Language-Team: Asturian <alministradores@softastur.org>\n"
 "MIME-Version: 1.0\n"
@@ -54,7 +54,8 @@ msgstr "Media player"
 msgid "Mute"
 msgstr "Silenciar"
 
-#: ../data/interfaces/parole.ui.h:10 ../parole/parole-player.c:1047
+#: ../data/interfaces/parole.ui.h:10
+#: ../parole/parole-player.c:1047
 #: ../parole/parole-disc-menu.c:113
 msgid "Next Chapter"
 msgstr "Siguiente Capítulu Chapter"
@@ -63,8 +64,10 @@ msgstr "Siguiente Capítulu Chapter"
 msgid "None"
 msgstr "Dengún"
 
-#: ../data/interfaces/parole.ui.h:12 ../data/desktop/parole.desktop.in.in.h:1
-#: ../parole/parole-player.c:234 ../parole/parole-about.c:51
+#: ../data/interfaces/parole.ui.h:12
+#: ../data/desktop/parole.desktop.in.in.h:1
+#: ../parole/parole-player.c:234
+#: ../parole/parole-about.c:51
 #: ../plugins/window-title/window-title.c:40
 msgid "Parole Media Player"
 msgstr "Parole Media Player"
@@ -73,7 +76,8 @@ msgstr "Parole Media Player"
 msgid "Plugins"
 msgstr "Plugins"
 
-#: ../data/interfaces/parole.ui.h:14 ../parole/parole-player.c:1059
+#: ../data/interfaces/parole.ui.h:14
+#: ../parole/parole-player.c:1059
 #: ../parole/parole-disc-menu.c:114
 msgid "Previous Chapter"
 msgstr "Capítulu Previu"
@@ -135,14 +139,12 @@ msgid "<b>Site:</b>"
 msgstr "<b>Sitiu:</b>"
 
 #: ../data/interfaces/plugins.ui.h:4
-#, fuzzy
 msgid "Media Player plugins"
-msgstr "Axustes del Reproductor de Medios"
+msgstr "Plugins del Reproductor de Medios"
 
 #: ../data/interfaces/plugins.ui.h:5
-#, fuzzy
 msgid "Parole Plugins"
-msgstr "Preferencies de Complementos de Parole"
+msgstr "Plugins de Parole"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "<b>Audio</b>"
@@ -239,42 +241,39 @@ msgstr "Abrir nueva instancia"
 
 #: ../parole/main.c:185
 msgid "Play or pause if already playing"
-msgstr ""
+msgstr "Reproducir o posar"
 
 #: ../parole/main.c:186
-#, fuzzy
 msgid "Stop playing"
-msgstr "Amosar llista de reproducción"
+msgstr "Detener reproducción"
 
 #: ../parole/main.c:187
-#, fuzzy
 msgid "Next track"
 msgstr "Siguiente pista"
 
 #: ../parole/main.c:188
-#, fuzzy
 msgid "Previous track"
 msgstr "Pista previa"
 
 #: ../parole/main.c:189
 msgid "Seek forward"
-msgstr ""
+msgstr "Guetar haza alantre"
 
 #: ../parole/main.c:190
 msgid "Seek Backward"
-msgstr ""
+msgstr "Guetar haza atrás"
 
 #: ../parole/main.c:191
 msgid "Raise volume"
-msgstr ""
+msgstr "Xubir el volume"
 
 #: ../parole/main.c:192
 msgid "Lower volume"
-msgstr ""
+msgstr "Menor volume"
 
 #: ../parole/main.c:193
 msgid "Mute volume"
-msgstr ""
+msgstr "Silenciar"
 
 #: ../parole/main.c:194
 msgid "Version information"
@@ -290,21 +289,14 @@ msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole yá ta executándose, use -i p'abrir una nueva instancia\n"
 
 #: ../parole/parole-gst.c:1289
-msgid ""
-"Unable to load playbin GStreamer plugin, check your GStreamer installation"
-msgstr ""
-"Nun pudo cargase'l complementu playbin GStreamer, comprebe la so instalación "
-"de GStreamer"
+msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
+msgstr "Nun pudo cargase'l complementu playbin GStreamer, comprebe la so instalación de GStreamer"
 
 #: ../parole/parole-gst.c:1305
-msgid ""
-"Unable to load video GStreamer plugin, check your GStreamer installation"
-msgstr ""
-"Nun pudo cargase'l complementu video GStreamer, comprebe la so instalación "
-"de GStreamer"
+msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
+msgstr "Nun pudo cargase'l complementu video GStreamer, comprebe la so instalación de GStreamer"
 
 #: ../parole/parole-gst.c:1501
-#, fuzzy
 msgid "The stream is taking too much time to load"
 msgstr "El fluxu ta llevando enforma tiempu pa cargar"
 
@@ -330,11 +322,10 @@ msgstr "Permisu torgáu"
 
 #: ../parole/parole-medialist.c:454
 msgid "Unknown playlist format, Please select a support playlist format"
-msgstr ""
-"Formatu de llista desconocíu, por favor esbille una llista con formatu "
-"sofitáu téunicamente"
+msgstr "Formatu de llista desconocíu, por favor esbille una llista con formatu sofitáu téunicamente"
 
-#: ../parole/parole-medialist.c:520 ../parole/parole-player.c:1591
+#: ../parole/parole-medialist.c:520
+#: ../parole/parole-player.c:1591
 msgid "Playlist"
 msgstr "Llista de reproducción"
 
@@ -377,14 +368,16 @@ msgstr "Nun s'alcuentra el Fluxu (stream) de Medios"
 #.
 #. * Next chapter menu item
 #.
-#: ../parole/parole-player.c:1047 ../parole/parole-disc-menu.c:122
+#: ../parole/parole-player.c:1047
+#: ../parole/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr "Siguiente pista"
 
 #.
 #. * Previous chapter menu item
 #.
-#: ../parole/parole-player.c:1059 ../parole/parole-disc-menu.c:123
+#: ../parole/parole-player.c:1059
+#: ../parole/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr "Pista previa"
 
@@ -400,7 +393,8 @@ msgstr "Paráu"
 msgid "Finished"
 msgstr "Fináu"
 
-#: ../parole/parole-statusbar.c:88 ../parole/parole-statusbar.c:96
+#: ../parole/parole-statusbar.c:88
+#: ../parole/parole-statusbar.c:96
 msgid "Paused"
 msgstr "Posáu"
 
@@ -697,24 +691,23 @@ msgstr "Activar notificación"
 
 #: ../plugins/tray/tray-icon.c:392
 msgid "Always minimize to tray when window is closed"
-msgstr ""
+msgstr "Minimizar siempres a la bandexa cuando se zarra la ventana"
 
 #: ../plugins/tray/tray-icon.c:431
 msgid "Minimize to tray?"
-msgstr ""
+msgstr "Minimizar a la bandexa?"
 
 #: ../plugins/tray/tray-icon.c:437
 msgid "Minimize to tray"
-msgstr ""
+msgstr "Minimizar a la bandexa"
 
 #: ../plugins/tray/tray-icon.c:453
 msgid "Are you sure you want to quit Parole"
-msgstr ""
+msgstr "Daveres quies quitar Parole?"
 
 #: ../plugins/tray/tray-icon.c:457
-#, fuzzy
 msgid "Remember my choice"
-msgstr "Remembrar llista de reproducción"
+msgstr "Remembrar la mio eleición"
 
 #. Construct function
 #: ../plugins/tray/tray-icon.c:544
@@ -742,12 +735,10 @@ msgstr ""
 
 #~ msgid "gtk-leave-fullscreen"
 #~ msgstr "gtk-leave-fullscreen"
-
 #~ msgid "gtk-close"
 #~ msgstr "gtk-close"
-
 #~ msgid "gtk-properties"
 #~ msgstr "gtk-properties"
-
 #~ msgid "Visite Website"
 #~ msgstr "Visite Páxina Web"
+
