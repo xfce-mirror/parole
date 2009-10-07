@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole 0.1.90\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 15:54+0000\n"
-"PO-Revision-Date: 2009-08-23 23:08+0100\n"
+"POT-Creation-Date: 2009-10-06 10:12+0000\n"
+"PO-Revision-Date: 2009-10-07 09:31+0100\n"
 "Last-Translator: Per Kongstad <p_kongstad@op.pl>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -53,7 +53,8 @@ msgstr "Medieafspiller"
 msgid "Mute"
 msgstr "Slå lyd fra"
 
-#: ../data/interfaces/parole.ui.h:10 ../parole/parole-player.c:1047
+#: ../data/interfaces/parole.ui.h:10
+#: ../parole/parole-player.c:1047
 #: ../parole/parole-disc-menu.c:113
 msgid "Next Chapter"
 msgstr "Næste kapitel"
@@ -62,8 +63,10 @@ msgstr "Næste kapitel"
 msgid "None"
 msgstr "Ingen"
 
-#: ../data/interfaces/parole.ui.h:12 ../data/desktop/parole.desktop.in.in.h:1
-#: ../parole/parole-player.c:234 ../parole/parole-about.c:51
+#: ../data/interfaces/parole.ui.h:12
+#: ../data/desktop/parole.desktop.in.in.h:1
+#: ../parole/parole-player.c:234
+#: ../parole/parole-about.c:51
 #: ../plugins/window-title/window-title.c:40
 msgid "Parole Media Player"
 msgstr "Parole medieafspiller"
@@ -72,7 +75,8 @@ msgstr "Parole medieafspiller"
 msgid "Plugins"
 msgstr "Udvidelsesmoduler"
 
-#: ../data/interfaces/parole.ui.h:14 ../parole/parole-player.c:1059
+#: ../data/interfaces/parole.ui.h:14
+#: ../parole/parole-player.c:1059
 #: ../parole/parole-disc-menu.c:114
 msgid "Previous Chapter"
 msgstr "Tidligere kapitel"
@@ -118,11 +122,6 @@ msgid "_Media"
 msgstr "_Medie"
 
 #: ../data/interfaces/parole.ui.h:25
-#, fuzzy
-msgid "_Open location"
-msgstr "Åbn sted..."
-
-#: ../data/interfaces/parole.ui.h:26
 msgid "_View"
 msgstr "_Vis"
 
@@ -139,23 +138,12 @@ msgid "<b>Site:</b>"
 msgstr "<b>Side:</b>"
 
 #: ../data/interfaces/plugins.ui.h:4
-msgid "Enabled"
-msgstr ""
+msgid "Media Player plugins"
+msgstr "Udvidelsesmoduler til medieafspiller"
 
 #: ../data/interfaces/plugins.ui.h:5
-#, fuzzy
-msgid "Media Player plugins"
-msgstr "Indstillinger til medieafspiller"
-
-#: ../data/interfaces/plugins.ui.h:6
-#, fuzzy
 msgid "Parole Plugins"
-msgstr "Indstillinger af udvidelsesmoduler til parole"
-
-#: ../data/interfaces/plugins.ui.h:7
-#, fuzzy
-msgid "Plugin"
-msgstr "Udvidelsesmoduler"
+msgstr "Udvidelsesmoduler til Parole"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "<b>Audio</b>"
@@ -252,42 +240,39 @@ msgstr "Åbn en ny instans"
 
 #: ../parole/main.c:185
 msgid "Play or pause if already playing"
-msgstr ""
+msgstr "Afspil eller pause hvis allerede afspiller"
 
 #: ../parole/main.c:186
-#, fuzzy
 msgid "Stop playing"
-msgstr "Vis spilleliste"
+msgstr "Afbryd afspilning"
 
 #: ../parole/main.c:187
-#, fuzzy
 msgid "Next track"
 msgstr "Næste spor"
 
 #: ../parole/main.c:188
-#, fuzzy
 msgid "Previous track"
 msgstr "Forrige spor"
 
 #: ../parole/main.c:189
 msgid "Seek forward"
-msgstr ""
+msgstr "Søg fremad"
 
 #: ../parole/main.c:190
 msgid "Seek Backward"
-msgstr ""
+msgstr "Søg tilbage"
 
 #: ../parole/main.c:191
 msgid "Raise volume"
-msgstr ""
+msgstr "Forøg lydstyrke"
 
 #: ../parole/main.c:192
 msgid "Lower volume"
-msgstr ""
+msgstr "Formindsk lydstyrke"
 
 #: ../parole/main.c:193
 msgid "Mute volume"
-msgstr ""
+msgstr "Mute lydstyrke"
 
 #: ../parole/main.c:194
 msgid "Version information"
@@ -303,21 +288,14 @@ msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole kører allerede. Brug -i for at åbne en my instans\n"
 
 #: ../parole/parole-gst.c:1289
-msgid ""
-"Unable to load playbin GStreamer plugin, check your GStreamer installation"
-msgstr ""
-"Kunne ikke indlæse udvidelsesmodulet playbin GStreamer. Kontrollér din "
-"installation af GStreamer"
+msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
+msgstr "Kunne ikke indlæse udvidelsesmodulet playbin GStreamer. Kontrollér din installation af GStreamer"
 
 #: ../parole/parole-gst.c:1305
-msgid ""
-"Unable to load video GStreamer plugin, check your GStreamer installation"
-msgstr ""
-"Kunne ikke indlæse udvidelsesmodulet video GStreamer. Kontrollér din "
-"installation af GStreamer"
+msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
+msgstr "Kunne ikke indlæse udvidelsesmodulet video GStreamer. Kontrollér din installation af GStreamer"
 
 #: ../parole/parole-gst.c:1501
-#, fuzzy
 msgid "The stream is taking too much time to load"
 msgstr "Det tager for lang tid at indlæse strømmen"
 
@@ -343,10 +321,10 @@ msgstr "Adgang nægtet"
 
 #: ../parole/parole-medialist.c:454
 msgid "Unknown playlist format, Please select a support playlist format"
-msgstr ""
-"Ukendt format af spilleliste. Vælg et understøttet format til spilleliste"
+msgstr "Ukendt format af spilleliste. Vælg et understøttet format til spilleliste"
 
-#: ../parole/parole-medialist.c:520 ../parole/parole-player.c:1591
+#: ../parole/parole-medialist.c:520
+#: ../parole/parole-player.c:1591
 msgid "Playlist"
 msgstr "Spilleliste"
 
@@ -389,14 +367,16 @@ msgstr "Mediestrømmen er ikke søgbar"
 #.
 #. * Next chapter menu item
 #.
-#: ../parole/parole-player.c:1047 ../parole/parole-disc-menu.c:122
+#: ../parole/parole-player.c:1047
+#: ../parole/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr "Næste spor"
 
 #.
 #. * Previous chapter menu item
 #.
-#: ../parole/parole-player.c:1059 ../parole/parole-disc-menu.c:123
+#: ../parole/parole-player.c:1059
+#: ../parole/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr "Forrige spor"
 
@@ -412,14 +392,10 @@ msgstr "Stoppet"
 msgid "Finished"
 msgstr "Afsluttet"
 
-#: ../parole/parole-statusbar.c:88 ../parole/parole-statusbar.c:96
+#: ../parole/parole-statusbar.c:88
+#: ../parole/parole-statusbar.c:96
 msgid "Paused"
 msgstr "Pause"
-
-#: ../parole/parole-statusbar.c:88
-#, fuzzy
-msgid "Playing"
-msgstr "Afspiller spor"
 
 #: ../parole/parole-statusbar.c:117
 msgid "Live stream:"
@@ -714,24 +690,23 @@ msgstr "Slå påmindelse til"
 
 #: ../plugins/tray/tray-icon.c:392
 msgid "Always minimize to tray when window is closed"
-msgstr ""
+msgstr "Minimér altid til statusfelt når vindue er lukket"
 
 #: ../plugins/tray/tray-icon.c:431
 msgid "Minimize to tray?"
-msgstr ""
+msgstr "Minimér til statusfelt?"
 
 #: ../plugins/tray/tray-icon.c:437
 msgid "Minimize to tray"
-msgstr ""
+msgstr "Minimér til statusfelt"
 
 #: ../plugins/tray/tray-icon.c:453
 msgid "Are you sure you want to quit Parole"
-msgstr ""
+msgstr "Er du sikker på, at du vil afbryde Parole"
 
 #: ../plugins/tray/tray-icon.c:457
-#, fuzzy
 msgid "Remember my choice"
-msgstr "Husk spilleliste"
+msgstr "Husk mit valg"
 
 #. Construct function
 #: ../plugins/tray/tray-icon.c:544
@@ -759,12 +734,10 @@ msgstr ""
 
 #~ msgid "gtk-leave-fullscreen"
 #~ msgstr "gtk-forlad-fuldskærm"
-
 #~ msgid "gtk-close"
 #~ msgstr "gtk-afslut"
-
 #~ msgid "gtk-properties"
 #~ msgstr "gtk-egenskaber"
-
 #~ msgid "Visite Website"
 #~ msgstr "Besøg netstedet"
+
