@@ -52,7 +52,7 @@ void  parole_about (const gchar *package)
                                 XFCE_COPYRIGHT_TEXT ("2009", "Ali Abdallah"), 
 				XFCE_LICENSE_GPL);
 
-    xfce_about_info_set_homepage (info, "http://goodies.xfce.org/projects/applications/parole-media-player");
+    xfce_about_info_set_homepage (info, "http://goodies.xfce.org/projects/applications/parole");
     xfce_about_info_add_credit (info, "Ali Abdallah", "aliov@xfce.org", _("Author/Maintainer"));
   
 
@@ -69,11 +69,12 @@ void  parole_about (const gchar *package)
     
     dialog = xfce_about_dialog_new_with_values (NULL, info, icon);
     
-    if (icon)
-	g_object_unref (G_OBJECT (icon));
 	
     gtk_dialog_run (GTK_DIALOG (dialog));
     gtk_widget_destroy (dialog);
 
     xfce_about_info_free (info);
+    
+    if (icon)
+	g_object_unref (G_OBJECT (icon));
 }

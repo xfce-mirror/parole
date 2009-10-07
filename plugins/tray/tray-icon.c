@@ -544,4 +544,4 @@ PAROLE_PLUGIN_CONSTRUCT (construct,                  	    /* Construct function 
 			 _("Tray icon"),            	    /* Title */
 			 _("Show icon in the system tray"), /* Description */
 			 "Copyright \302\251 2009 Ali Abdallah aliov@xfce.org", /* Author */
-			 "http://goodies.xfce.org/projects/applications/parole-media-player"); /* Site */
+			 "http://goodies.xfce.org/projects/applications/parole"); /* Site */

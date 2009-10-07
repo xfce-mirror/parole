@@ -103,4 +103,4 @@ PAROLE_PLUGIN_CONSTRUCT (construct,                  /* Construct function */
 			 _("Set the main window name to the current\n"
 			  " playing media name."),    /* Description */
 			  "Copyright \302\251 2009 Sarah Hijazi",            /* Author */
-			  "http://goodies.xfce.org/projects/applications/parole-media-player");            /* site */
+			  "http://goodies.xfce.org/projects/applications/parole");            /* site */
