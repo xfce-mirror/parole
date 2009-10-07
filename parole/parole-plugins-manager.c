@@ -227,6 +227,7 @@ void parole_plugins_manager_tree_cursor_changed_cb (GtkTreeView *view,
     site_text = g_strdup_printf ("<a href=\"%s\">%s</a>", module->desc->site, _("Visit Website"));
     gtk_label_set_markup (GTK_LABEL (pref->site), site_text);
     g_free (site_text);
+
 #else
     gtk_link_button_set_uri (GTK_LINK_BUTTON (pref->site), module->desc->site);
 #endif
@@ -253,6 +254,24 @@ parole_plugins_manager_unload_all (gpointer data, gpointer user_data)
     g_type_module_unuse (G_TYPE_MODULE (data));
     g_object_unref (G_OBJECT (module));
 }
+
+#if !GTK_CHECK_VERSION (2, 18, 0)
+static void
+parole_plugins_manager_open_plugins_website (GtkLinkButton *bt, const gchar *link, gpointer data)
+{
+    gchar *cmd;
+    
+    cmd = g_strdup_printf ("%s %s","xdg-open", link);
+    
+    if ( !g_spawn_command_line_async (cmd, NULL) )
+    {
+        g_free (cmd);
+        cmd = g_strdup_printf ("%s %s","xfbrowser4", link);
+        g_spawn_command_line_async (cmd, NULL);
+    }
+    g_free (cmd);
+}
+#endif
 
 static void
 parole_plugins_manager_show_plugins_pref (GtkWidget *widget, ParolePluginsManager *manager)
@@ -283,6 +302,8 @@ parole_plugins_manager_show_plugins_pref (GtkWidget *widget, ParolePluginsManage
     pref->site = gtk_label_new (NULL);
 #else
     pref->site = gtk_link_button_new_with_label (" ", _("Visit Website"));
+    gtk_link_button_set_uri_hook ((GtkLinkButtonUriFunc) parole_plugins_manager_open_plugins_website,
+				  NULL, NULL);
 #endif
     
     gtk_box_pack_start (GTK_BOX (site_box), pref->site, FALSE, FALSE, 0);
