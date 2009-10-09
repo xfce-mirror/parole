@@ -23,7 +23,7 @@
 
 #include <gtk/gtk.h>
 
-void 		parole_about	(const gchar *package);
+void 		parole_about	(void);
 
 
 #endif /* __PAROLE_ABOUT_H */
