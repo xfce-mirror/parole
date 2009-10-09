@@ -358,3 +358,24 @@ parole_is_uri_disc (const gchar *uri)
     else
 	return FALSE;
 }
+
+GdkPixbuf *parole_icon_load (const gchar *icon_name, gint size)
+{
+    GdkPixbuf *pix = NULL;
+    GError *error = NULL;
+    
+    pix = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (), 
+				    icon_name, 
+				    size,
+				    GTK_ICON_LOOKUP_USE_BUILTIN,
+				    &error);
+				    
+    if ( error )
+    {
+	g_warning ("Unable to load icon : %s : %s", icon_name, error->message);
+	g_error_free (error);
+    }
+    
+    return pix;
+    
+}

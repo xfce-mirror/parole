@@ -30,8 +30,9 @@
 #include <libxfcegui4/libxfcegui4.h>
 
 #include "parole-about.h"
+#include "parole-utils.h"
 
-void  parole_about (const gchar *package)
+void  parole_about (void)
 {
     XfceAboutInfo *info;
     GtkWidget *dialog;
@@ -65,7 +66,7 @@ void  parole_about (const gchar *package)
     }
 
     gtk_icon_size_lookup (GTK_ICON_SIZE_DIALOG, &x, &y);
-    icon = xfce_themed_icon_load ("parole", x);
+    icon = parole_icon_load ("parole", x);
     
     dialog = xfce_about_dialog_new_with_values (NULL, info, icon);
     

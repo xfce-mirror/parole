@@ -40,4 +40,7 @@ gchar          *parole_get_subtitle_path		(const gchar *uri) G_GNUC_MALLOC G_GNU
 
 gboolean	parole_is_uri_disc			(const gchar *uri);
 
+GdkPixbuf      *parole_icon_load			(const gchar *icon_name,
+							 gint size);
+
 #endif /* __PAROLE_UTILS_ */

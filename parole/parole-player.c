@@ -231,7 +231,7 @@ G_DEFINE_TYPE (ParolePlayer, parole_player, G_TYPE_OBJECT)
 
 void parole_show_about	(GtkWidget *widget)
 {
-    parole_about (_("Parole Media Player"));
+    parole_about ();
 }
 
 void ratio_none_toggled_cb (GtkWidget *widget, ParolePlayer *player)
@@ -489,10 +489,10 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
     
     player->priv->state = PAROLE_MEDIA_STATE_PLAYING;
     
-    pix = xfce_themed_icon_load ("player_play", 16);
+    pix = parole_icon_load ("player_play", 16);
     
     if ( !pix )
-	pix = xfce_themed_icon_load ("gtk-media-play-ltr", 16);
+	pix = parole_icon_load ("gtk-media-play-ltr", 16);
     
     parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, pix);
     
@@ -537,7 +537,7 @@ parole_player_paused (ParolePlayer *player)
     
     TRACE ("Player paused");
     
-    pix = xfce_themed_icon_load (GTK_STOCK_MEDIA_PAUSE, 16);
+    pix = parole_icon_load (GTK_STOCK_MEDIA_PAUSE, 16);
     parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, pix);
     
     gtk_widget_set_sensitive (player->priv->play_pause, TRUE);
@@ -1216,8 +1216,8 @@ parole_player_set_volume_image (ParolePlayer *player, gdouble value)
 {
     GdkPixbuf *icon;
 
-    icon = xfce_themed_icon_load (parole_player_get_volume_icon_name (value), 
-				  player->priv->volume_image->allocation.width);
+    icon = parole_icon_load (parole_player_get_volume_icon_name (value), 
+			     player->priv->volume_image->allocation.width);
     if ( icon )
     {
 	g_object_set (G_OBJECT (player->priv->volume_image),
