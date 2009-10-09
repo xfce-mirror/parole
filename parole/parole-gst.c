@@ -1819,9 +1819,6 @@ void parole_gst_shutdown (ParoleGst *gst)
 
     g_object_unref (gst->priv->bus);
     
-    if ( gst->priv->vis_sink )
-        g_object_unref (gst->priv->vis_sink);
-        
     gst_element_set_state (gst->priv->playbin, GST_STATE_VOID_PENDING);
 
     g_object_unref (gst->priv->playbin);
