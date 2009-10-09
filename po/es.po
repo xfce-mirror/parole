@@ -8,11 +8,11 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-10-06 15:54+0000\n"
-"PO-Revision-Date: 2009-09-06 02:22-0300\n"
+"PO-Revision-Date: 2009-10-07 17:56-0300\n"
 "Last-Translator: elega <elega@elega.com.ar>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../data/interfaces/parole.ui.h:1
@@ -51,7 +51,8 @@ msgstr "Reproductor de medios"
 msgid "Mute"
 msgstr "Silencio"
 
-#: ../data/interfaces/parole.ui.h:10 ../parole/parole-player.c:1047
+#: ../data/interfaces/parole.ui.h:10
+#: ../parole/parole-player.c:1047
 #: ../parole/parole-disc-menu.c:113
 msgid "Next Chapter"
 msgstr "Capítulo suguiente"
@@ -60,17 +61,20 @@ msgstr "Capítulo suguiente"
 msgid "None"
 msgstr "Ninguno"
 
-#: ../data/interfaces/parole.ui.h:12 ../data/desktop/parole.desktop.in.in.h:1
-#: ../parole/parole-player.c:234 ../parole/parole-about.c:51
+#: ../data/interfaces/parole.ui.h:12
+#: ../data/desktop/parole.desktop.in.in.h:1
+#: ../parole/parole-player.c:234
+#: ../parole/parole-about.c:51
 #: ../plugins/window-title/window-title.c:40
 msgid "Parole Media Player"
-msgstr "Reporductor de medio Parole"
+msgstr "Reporductor de medios Parole"
 
 #: ../data/interfaces/parole.ui.h:13
 msgid "Plugins"
 msgstr "Complementos"
 
-#: ../data/interfaces/parole.ui.h:14 ../parole/parole-player.c:1059
+#: ../data/interfaces/parole.ui.h:14
+#: ../parole/parole-player.c:1059
 #: ../parole/parole-disc-menu.c:114
 msgid "Previous Chapter"
 msgstr "Capítulo anterior"
@@ -93,7 +97,7 @@ msgstr "Sonido"
 
 #: ../data/interfaces/parole.ui.h:19
 msgid "Square"
-msgstr ""
+msgstr "Cuadrado"
 
 #: ../data/interfaces/parole.ui.h:20
 msgid "Volume Down"
@@ -113,16 +117,15 @@ msgstr "_Ayuda"
 
 #: ../data/interfaces/parole.ui.h:24
 msgid "_Media"
-msgstr ""
+msgstr "_Medios"
 
 #: ../data/interfaces/parole.ui.h:25
-#, fuzzy
 msgid "_Open location"
-msgstr "Abrir ubicación..."
+msgstr "_Abrir una ubicación"
 
 #: ../data/interfaces/parole.ui.h:26
 msgid "_View"
-msgstr ":Ver"
+msgstr "_Ver"
 
 #: ../data/interfaces/plugins.ui.h:1
 msgid "<b>Author:</b>"
@@ -138,22 +141,19 @@ msgstr "<b>Sitio:</b>"
 
 #: ../data/interfaces/plugins.ui.h:4
 msgid "Enabled"
-msgstr ""
+msgstr "Habilitar"
 
 #: ../data/interfaces/plugins.ui.h:5
-#, fuzzy
 msgid "Media Player plugins"
-msgstr "Configuración del reproductor de medios"
+msgstr "Complementos del reproductor de medios"
 
 #: ../data/interfaces/plugins.ui.h:6
-#, fuzzy
 msgid "Parole Plugins"
-msgstr "Preferencias de complementos Parole"
+msgstr "Complementos Parole"
 
 #: ../data/interfaces/plugins.ui.h:7
-#, fuzzy
 msgid "Plugin"
-msgstr "Complementos"
+msgstr "Complemento"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "<b>Audio</b>"
@@ -236,7 +236,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Reproductor de medio Parole  %s\n"
+"Reproductor de medios Parole  %s\n"
 "\n"
 "Parte del proyecto Xfce Goodies\n"
 "http://goodies.xfce.org\n"
@@ -250,42 +250,39 @@ msgstr "Abrir una nueva instancia"
 
 #: ../parole/main.c:185
 msgid "Play or pause if already playing"
-msgstr ""
+msgstr "Reproducir o pausar, si ya se está reproduciendo"
 
 #: ../parole/main.c:186
-#, fuzzy
 msgid "Stop playing"
-msgstr "Mostrar lista de repoducción"
+msgstr "Detener repoducción"
 
 #: ../parole/main.c:187
-#, fuzzy
 msgid "Next track"
-msgstr "Siguiente"
+msgstr "Siguiente pista"
 
 #: ../parole/main.c:188
-#, fuzzy
 msgid "Previous track"
-msgstr "Anterior"
+msgstr "Anterior pista"
 
 #: ../parole/main.c:189
 msgid "Seek forward"
-msgstr ""
+msgstr "Avanzar"
 
 #: ../parole/main.c:190
 msgid "Seek Backward"
-msgstr ""
+msgstr "Retroceder"
 
 #: ../parole/main.c:191
 msgid "Raise volume"
-msgstr ""
+msgstr "Elevar volumen"
 
 #: ../parole/main.c:192
 msgid "Lower volume"
-msgstr ""
+msgstr "Menor volumen"
 
 #: ../parole/main.c:193
 msgid "Mute volume"
-msgstr ""
+msgstr "Silenciar"
 
 #: ../parole/main.c:194
 msgid "Version information"
@@ -293,31 +290,24 @@ msgstr "Información de la versión"
 
 #: ../parole/main.c:196
 msgid "Media to play"
-msgstr ""
+msgstr "Medios a reproducir"
 
 #: ../parole/main.c:231
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
-msgstr ""
-"Parole ya se está ejecutando, utilice -i para abrir una nueva instancia\n"
+msgstr "Parole ya se está ejecutando, utilice -i para abrir una nueva instancia\n"
 
 #: ../parole/parole-gst.c:1289
-msgid ""
-"Unable to load playbin GStreamer plugin, check your GStreamer installation"
-msgstr ""
-"No se puede cargar el complemento playbin GStreamer, compruebe su "
-"instalación de GStreamer"
+msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
+msgstr "No se puede cargar el complemento playbin GStreamer, compruebe su instalación de GStreamer"
 
 #: ../parole/parole-gst.c:1305
-msgid ""
-"Unable to load video GStreamer plugin, check your GStreamer installation"
-msgstr ""
-"No se puede cargar el complemento de vídeo GStreamer, compruebe su "
-"instalación de GStreamer"
+msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
+msgstr "No se puede cargar el complemento de vídeo GStreamer, compruebe su instalación de GStreamer"
 
 #: ../parole/parole-gst.c:1501
 msgid "The stream is taking too much time to load"
-msgstr ""
+msgstr "El stream está demorando demasiado tiempo para cargar"
 
 #: ../parole/parole-gst.c:1501
 msgid "Stop"
@@ -341,11 +331,10 @@ msgstr "Permiso denegado"
 
 #: ../parole/parole-medialist.c:454
 msgid "Unknown playlist format, Please select a support playlist format"
-msgstr ""
-"Formato de lista de reproducción desconocido, por favor seleccione un "
-"formato soportado de lista de reproducción"
+msgstr "Formato de lista de reproducción desconocido, por favor seleccione un formato soportado de lista de reproducción"
 
-#: ../parole/parole-medialist.c:520 ../parole/parole-player.c:1591
+#: ../parole/parole-medialist.c:520
+#: ../parole/parole-player.c:1591
 msgid "Playlist"
 msgstr "Lista de reproducción"
 
@@ -359,11 +348,11 @@ msgstr "Lista de reproducción PLS"
 
 #: ../parole/parole-medialist.c:543
 msgid "Advanced Stream Redirector"
-msgstr ""
+msgstr "Stream Redirector avanzada"
 
 #: ../parole/parole-medialist.c:551
 msgid "Shareable Playlist"
-msgstr ""
+msgstr "Lista de reproducción compartible"
 
 #: ../parole/parole-medialist.c:866
 msgid "Remember playlist"
@@ -371,7 +360,7 @@ msgstr "Recordar lista de reproducción"
 
 #: ../parole/parole-medialist.c:1016
 msgid "Media list"
-msgstr ""
+msgstr "Lista de medios"
 
 #: ../parole/parole-player.c:297
 msgid "Hide playlist"
@@ -383,19 +372,21 @@ msgstr "Mostrar lista de repoducción"
 
 #: ../parole/parole-player.c:521
 msgid "Media stream is not seekable"
-msgstr ""
+msgstr "Stream de medios no se puede buscar"
 
 #.
 #. * Next chapter menu item
 #.
-#: ../parole/parole-player.c:1047 ../parole/parole-disc-menu.c:122
+#: ../parole/parole-player.c:1047
+#: ../parole/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr "Siguiente"
 
 #.
 #. * Previous chapter menu item
 #.
-#: ../parole/parole-player.c:1059 ../parole/parole-disc-menu.c:123
+#: ../parole/parole-player.c:1059
+#: ../parole/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr "Anterior"
 
@@ -411,18 +402,18 @@ msgstr "Detenido"
 msgid "Finished"
 msgstr "Finalizado"
 
-#: ../parole/parole-statusbar.c:88 ../parole/parole-statusbar.c:96
+#: ../parole/parole-statusbar.c:88
+#: ../parole/parole-statusbar.c:96
 msgid "Paused"
 msgstr "Pausado"
 
 #: ../parole/parole-statusbar.c:88
-#, fuzzy
 msgid "Playing"
-msgstr "Reproduciendo pista"
+msgstr "Reproduciendo"
 
 #: ../parole/parole-statusbar.c:117
 msgid "Live stream:"
-msgstr ""
+msgstr "Stream en vivo:"
 
 #: ../parole/parole-filters.c:57
 msgid "Audio"
@@ -630,11 +621,11 @@ msgstr "Abrir ubicación..."
 
 #: ../parole/parole-open-location.c:186
 msgid "<b>Open location of media file or live stream:</b>"
-msgstr ""
+msgstr "<b>Abrir una ubicación de archivos de medios o un stream en vivo:</b>"
 
 #: ../parole/parole-open-location.c:205
 msgid "Clear history"
-msgstr "Borrar el historial"
+msgstr "Borrar historial"
 
 #: ../parole/parole-disc-menu.c:130
 msgid "Playing Track"
@@ -648,7 +639,7 @@ msgstr "Pista %i"
 #: ../parole/parole-plugins-manager.c:227
 #: ../parole/parole-plugins-manager.c:285
 msgid "Visit Website"
-msgstr "Visite el sitio web"
+msgstr "Ir al sitio web"
 
 #: ../plugins/properties/stream-properties.c:121
 #: ../plugins/properties/stream-properties.c:122
@@ -679,11 +670,11 @@ msgstr "General"
 
 #: ../plugins/properties/stream-properties.c:354
 msgid "Stream doesn't support tags changes"
-msgstr ""
+msgstr "Stream no soporta cambios de etiquetas"
 
 #: ../plugins/properties/stream-properties.c:361
 msgid "Save media tags changes"
-msgstr ""
+msgstr "Guardar los cambios de etiquetas"
 
 #. Construct function
 #: ../plugins/properties/stream-properties.c:490
@@ -693,7 +684,7 @@ msgstr "Propiedades"
 #. Title
 #: ../plugins/properties/stream-properties.c:491
 msgid "Read media properties"
-msgstr ""
+msgstr "Leer propiedades de medios"
 
 #: ../plugins/tray/tray-icon.c:222
 msgid "<b>Playing:</b>"
@@ -713,24 +704,23 @@ msgstr "Activar notificaciones"
 
 #: ../plugins/tray/tray-icon.c:392
 msgid "Always minimize to tray when window is closed"
-msgstr ""
+msgstr "Minimizar siempre a la bandeja al cerrar la ventana"
 
 #: ../plugins/tray/tray-icon.c:431
 msgid "Minimize to tray?"
-msgstr ""
+msgstr "¿Minimizar a la bandeja?"
 
 #: ../plugins/tray/tray-icon.c:437
 msgid "Minimize to tray"
-msgstr ""
+msgstr "Minimizar a la bandeja"
 
 #: ../plugins/tray/tray-icon.c:453
 msgid "Are you sure you want to quit Parole"
-msgstr ""
+msgstr "¿Está seguro de querer salir de Parole?\t"
 
 #: ../plugins/tray/tray-icon.c:457
-#, fuzzy
 msgid "Remember my choice"
-msgstr "Recordar lista de reproducción"
+msgstr "Recordar mi elección"
 
 #. Construct function
 #: ../plugins/tray/tray-icon.c:544
@@ -753,6 +743,9 @@ msgid ""
 "Set the main window name to the current\n"
 " playing media name."
 msgstr ""
+"Establecer el nombre de la ventana principal con el nombre\n"
+"de la reproducción actual."
 
 #~ msgid "Visite Website"
 #~ msgstr "Visite el sitio web"
+

@@ -6,10 +6,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parole 0.1.90svn.r07906\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 15:54+0000\n"
-"PO-Revision-Date: 2009-08-17 17:08+0200\n"
+"POT-Creation-Date: 2009-10-06 10:12+0000\n"
+"PO-Revision-Date: 2009-10-08 12:33+0200\n"
 "Last-Translator: Robert Hartl <hartl.robert@gmail.com>\n"
-"Language-Team: slovak <sk-i18n@lists.linux.sk>\n"
+"Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8-bit\n"
@@ -57,7 +57,7 @@ msgstr "Ďalšia kapitola"
 
 #: ../data/interfaces/parole.ui.h:11
 msgid "None"
-msgstr ""
+msgstr "Žiadny"
 
 #: ../data/interfaces/parole.ui.h:12 ../data/desktop/parole.desktop.in.in.h:1
 #: ../parole/parole-player.c:234 ../parole/parole-about.c:51
@@ -79,9 +79,8 @@ msgid "Repeat"
 msgstr "Opakovať"
 
 #: ../data/interfaces/parole.ui.h:16
-#, fuzzy
 msgid "Select Track"
-msgstr "Ďalšia skladba"
+msgstr "Vybrať skladbu"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "Shuffle"
@@ -116,11 +115,6 @@ msgid "_Media"
 msgstr "_Médiá"
 
 #: ../data/interfaces/parole.ui.h:25
-#, fuzzy
-msgid "_Open location"
-msgstr "Otvoriť umiestnenie..."
-
-#: ../data/interfaces/parole.ui.h:26
 msgid "_View"
 msgstr "_Zobraziť"
 
@@ -137,23 +131,12 @@ msgid "<b>Site:</b>"
 msgstr "<b>Stránka:</b>"
 
 #: ../data/interfaces/plugins.ui.h:4
-msgid "Enabled"
-msgstr ""
+msgid "Media Player plugins"
+msgstr "Zásuvné moduly prehrávača médií"
 
 #: ../data/interfaces/plugins.ui.h:5
-#, fuzzy
-msgid "Media Player plugins"
-msgstr "Nastavenia prehrávača médií"
-
-#: ../data/interfaces/plugins.ui.h:6
-#, fuzzy
 msgid "Parole Plugins"
-msgstr "Možnosti zásuvných modulov Parole"
-
-#: ../data/interfaces/plugins.ui.h:7
-#, fuzzy
-msgid "Plugin"
-msgstr "Zasuvné moduly"
+msgstr "Zásuvné moduly Parole"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "<b>Audio</b>"
@@ -221,7 +204,7 @@ msgstr "podľa prípony"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "Select File Types (By Extension)"
-msgstr ""
+msgstr "Vyberte typy súborov (podľa prípony)"
 
 #: ../parole/main.c:53
 #, c-format
@@ -246,24 +229,21 @@ msgstr ""
 
 #: ../parole/main.c:184
 msgid "Open a new instance"
-msgstr ""
+msgstr "Otvoriť novú inštanciu"
 
 #: ../parole/main.c:185
 msgid "Play or pause if already playing"
 msgstr ""
 
 #: ../parole/main.c:186
-#, fuzzy
 msgid "Stop playing"
-msgstr "Zobraziť zoznam skladieb"
+msgstr "Zastaviť prehrávanie"
 
 #: ../parole/main.c:187
-#, fuzzy
 msgid "Next track"
 msgstr "Ďalšia skladba"
 
 #: ../parole/main.c:188
-#, fuzzy
 msgid "Previous track"
 msgstr "Predchádzajúca skladba"
 
@@ -277,15 +257,15 @@ msgstr ""
 
 #: ../parole/main.c:191
 msgid "Raise volume"
-msgstr ""
+msgstr "Zosilniť hlasitosť"
 
 #: ../parole/main.c:192
 msgid "Lower volume"
-msgstr ""
+msgstr "Stíšiť hlasitosť"
 
 #: ../parole/main.c:193
 msgid "Mute volume"
-msgstr ""
+msgstr "Stlmiť hlasitosť"
 
 #: ../parole/main.c:194
 msgid "Version information"
@@ -293,7 +273,7 @@ msgstr "Informácia o verzií"
 
 #: ../parole/main.c:196
 msgid "Media to play"
-msgstr ""
+msgstr "Média na prehrávanie"
 
 #: ../parole/main.c:231
 #, c-format
@@ -407,11 +387,6 @@ msgstr "Ukončené"
 #: ../parole/parole-statusbar.c:88 ../parole/parole-statusbar.c:96
 msgid "Paused"
 msgstr "Pozastavené"
-
-#: ../parole/parole-statusbar.c:88
-#, fuzzy
-msgid "Playing"
-msgstr "Prehrávaná skladba"
 
 #: ../parole/parole-statusbar.c:117
 msgid "Live stream:"
@@ -623,7 +598,7 @@ msgstr "Otvoriť umiestnenie..."
 
 #: ../parole/parole-open-location.c:186
 msgid "<b>Open location of media file or live stream:</b>"
-msgstr ""
+msgstr "<b>Otvoriť umiestnenie mediálneho súboru alebo živého prúdu:</b>"
 
 #: ../parole/parole-open-location.c:205
 msgid "Clear history"
@@ -636,12 +611,12 @@ msgstr "Prehrávaná skladba"
 #: ../parole/parole-disc-menu.c:194
 #, c-format
 msgid "Track %i"
-msgstr ""
+msgstr "Skladba %i"
 
 #: ../parole/parole-plugins-manager.c:227
 #: ../parole/parole-plugins-manager.c:285
 msgid "Visit Website"
-msgstr ""
+msgstr "Navštíviť webovú stránku"
 
 #: ../plugins/properties/stream-properties.c:121
 #: ../plugins/properties/stream-properties.c:122
@@ -668,7 +643,7 @@ msgstr "Rok:"
 
 #: ../plugins/properties/stream-properties.c:307
 msgid "General"
-msgstr ""
+msgstr "Všeobcené"
 
 #: ../plugins/properties/stream-properties.c:354
 msgid "Stream doesn't support tags changes"
@@ -698,7 +673,7 @@ msgstr "<b>Trvanie:</b>"
 
 #: ../plugins/tray/tray-icon.c:373
 msgid "Tray icon plugin"
-msgstr ""
+msgstr "Modul ikony v oznamovacej oblasti"
 
 #: ../plugins/tray/tray-icon.c:383
 msgid "Enable notification"
@@ -706,34 +681,33 @@ msgstr "Povoliť oznamovanie"
 
 #: ../plugins/tray/tray-icon.c:392
 msgid "Always minimize to tray when window is closed"
-msgstr ""
+msgstr "Vždy minimalizovať to oznamovacej oblasti, pri zavretí okna"
 
 #: ../plugins/tray/tray-icon.c:431
 msgid "Minimize to tray?"
-msgstr ""
+msgstr "Minimalizovať do oznamovacej oblasti?"
 
 #: ../plugins/tray/tray-icon.c:437
 msgid "Minimize to tray"
-msgstr ""
+msgstr "Minimalizovať do oznamovacej oblasti"
 
 #: ../plugins/tray/tray-icon.c:453
 msgid "Are you sure you want to quit Parole"
-msgstr ""
+msgstr "Naozaj chcete ukončiť Parole"
 
 #: ../plugins/tray/tray-icon.c:457
-#, fuzzy
 msgid "Remember my choice"
-msgstr "Zapamätať zoznam skladieb"
+msgstr "Zapamätať môj výber"
 
 #. Construct function
 #: ../plugins/tray/tray-icon.c:544
 msgid "Tray icon"
-msgstr ""
+msgstr "Ikona v oznamovacej oblasti"
 
 #. Title
 #: ../plugins/tray/tray-icon.c:545
 msgid "Show icon in the system tray"
-msgstr ""
+msgstr "Zobrazovanie ikony v oznamovacej oblasti"
 
 #. Construct function
 #: ../plugins/window-title/window-title.c:102
