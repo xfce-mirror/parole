@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole 0.1.90\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 15:54+0000\n"
-"PO-Revision-Date: 2009-10-06 18:17+0900\n"
+"POT-Creation-Date: 2009-10-11 16:25+0900\n"
+"PO-Revision-Date: 2009-10-08 21:31+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -64,8 +64,7 @@ msgid "None"
 msgstr "なし"
 
 #: ../data/interfaces/parole.ui.h:12 ../data/desktop/parole.desktop.in.in.h:1
-#: ../parole/parole-player.c:234 ../parole/parole-about.c:51
-#: ../plugins/window-title/window-title.c:40
+#: ../parole/parole-about.c:52 ../plugins/window-title/window-title.c:40
 msgid "Parole Media Player"
 msgstr "Parole Media Player"
 
@@ -119,9 +118,8 @@ msgid "_Media"
 msgstr "メディア(_M)"
 
 #: ../data/interfaces/parole.ui.h:25
-#, fuzzy
 msgid "_Open location"
-msgstr "場所を開く..."
+msgstr "場所を開く(_O)"
 
 #: ../data/interfaces/parole.ui.h:26
 msgid "_View"
@@ -141,7 +139,7 @@ msgstr "<b>サイト:</b>"
 
 #: ../data/interfaces/plugins.ui.h:4
 msgid "Enabled"
-msgstr ""
+msgstr "有効"
 
 #: ../data/interfaces/plugins.ui.h:5
 msgid "Media Player plugins"
@@ -152,7 +150,6 @@ msgid "Parole Plugins"
 msgstr "Parole プラグイン"
 
 #: ../data/interfaces/plugins.ui.h:7
-#, fuzzy
 msgid "Plugin"
 msgstr "プラグイン"
 
@@ -413,9 +410,8 @@ msgid "Paused"
 msgstr "一時停止"
 
 #: ../parole/parole-statusbar.c:88
-#, fuzzy
 msgid "Playing"
-msgstr "再生中のトラック"
+msgstr "再生中"
 
 #: ../parole/parole-statusbar.c:117
 msgid "Live stream:"
@@ -441,11 +437,11 @@ msgstr "すべてのサポートファイル"
 msgid "Playlist files"
 msgstr "プレイリストファイル"
 
-#: ../parole/parole-about.c:56
+#: ../parole/parole-about.c:57
 msgid "Author/Maintainer"
 msgstr "作者/メンテナ"
 
-#: ../parole/parole-about.c:62
+#: ../parole/parole-about.c:63
 #, c-format
 msgid "Translator (%s)"
 msgstr "翻訳者 (%s)"
@@ -643,7 +639,7 @@ msgid "Track %i"
 msgstr "トラック %i"
 
 #: ../parole/parole-plugins-manager.c:227
-#: ../parole/parole-plugins-manager.c:285
+#: ../parole/parole-plugins-manager.c:304
 msgid "Visit Website"
 msgstr "ウェブサイトへ"
 
@@ -710,7 +706,7 @@ msgstr "通知を有効にする"
 
 #: ../plugins/tray/tray-icon.c:392
 msgid "Always minimize to tray when window is closed"
-msgstr "ウィンドウが閉じられた時常にトレイに最小化する"
+msgstr "ウィンドウが閉じられた時、常にトレイに最小化する"
 
 #: ../plugins/tray/tray-icon.c:431
 msgid "Minimize to tray?"
