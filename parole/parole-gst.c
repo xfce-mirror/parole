@@ -1515,18 +1515,16 @@ parole_gst_terminate_internal (ParoleGst *gst, gboolean fade_sound)
 {
     gboolean playing_video;
     
-    g_mutex_lock (gst->priv->lock);
-    
-    parole_stream_init_properties (gst->priv->stream);
-    gst->priv->target = GST_STATE_NULL;
-    
-    g_mutex_unlock (gst->priv->lock);
-
-    parole_window_busy_cursor (GTK_WIDGET (gst)->window);
-    
     g_object_get (G_OBJECT (gst->priv->stream), 
 		  "has-video", &playing_video,
 		  NULL);
+    
+    g_mutex_lock (gst->priv->lock);
+    gst->priv->target = GST_STATE_NULL;
+    parole_stream_init_properties (gst->priv->stream);
+    g_mutex_unlock (gst->priv->lock);
+
+    parole_window_busy_cursor (GTK_WIDGET (gst)->window);
     
     if ( fade_sound && gst->priv->state == GST_STATE_PLAYING && !playing_video )
     {
