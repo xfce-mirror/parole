@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 15:54+0000\n"
+"POT-Creation-Date: 2009-10-14 19:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,8 +62,7 @@ msgid "None"
 msgstr ""
 
 #: ../data/interfaces/parole.ui.h:12 ../data/desktop/parole.desktop.in.in.h:1
-#: ../parole/parole-player.c:234 ../parole/parole-about.c:51
-#: ../plugins/window-title/window-title.c:40
+#: ../parole/parole-about.c:52 ../plugins/window-title/window-title.c:40
 msgid "Parole Media Player"
 msgstr ""
 
@@ -281,7 +280,7 @@ msgstr ""
 msgid "Media to play"
 msgstr ""
 
-#: ../parole/main.c:231
+#: ../parole/main.c:233
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr ""
@@ -422,11 +421,11 @@ msgstr ""
 msgid "Playlist files"
 msgstr ""
 
-#: ../parole/parole-about.c:56
+#: ../parole/parole-about.c:57
 msgid "Author/Maintainer"
 msgstr ""
 
-#: ../parole/parole-about.c:62
+#: ../parole/parole-about.c:63
 #, c-format
 msgid "Translator (%s)"
 msgstr ""
@@ -624,7 +623,7 @@ msgid "Track %i"
 msgstr ""
 
 #: ../parole/parole-plugins-manager.c:227
-#: ../parole/parole-plugins-manager.c:285
+#: ../parole/parole-plugins-manager.c:304
 msgid "Visit Website"
 msgstr ""
 
