@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole 1.9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 10:12+0000\n"
+"POT-Creation-Date: 2009-10-14 19:53+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Sérgio Marques <smarquespt@gmail.com>\n"
 "Language-Team: Portuguese\n"
@@ -65,8 +65,7 @@ msgstr "Nenhum"
 
 #: ../data/interfaces/parole.ui.h:12
 #: ../data/desktop/parole.desktop.in.in.h:1
-#: ../parole/parole-player.c:234
-#: ../parole/parole-about.c:51
+#: ../parole/parole-about.c:52
 #: ../plugins/window-title/window-title.c:40
 msgid "Parole Media Player"
 msgstr "Reprodutor Multimédia Parole"
@@ -122,6 +121,10 @@ msgid "_Media"
 msgstr "_Multimédia"
 
 #: ../data/interfaces/parole.ui.h:25
+msgid "_Open location"
+msgstr "_Abrir localização"
+
+#: ../data/interfaces/parole.ui.h:26
 msgid "_View"
 msgstr "_Ver"
 
@@ -138,12 +141,20 @@ msgid "<b>Site:</b>"
 msgstr "<b>Sítio:</b>"
 
 #: ../data/interfaces/plugins.ui.h:4
+msgid "Enabled"
+msgstr "Activado"
+
+#: ../data/interfaces/plugins.ui.h:5
 msgid "Media Player plugins"
 msgstr "Plugins de Reprodutor"
 
-#: ../data/interfaces/plugins.ui.h:5
+#: ../data/interfaces/plugins.ui.h:6
 msgid "Parole Plugins"
 msgstr "Parole Plugins"
+
+#: ../data/interfaces/plugins.ui.h:7
+msgid "Plugin"
+msgstr "Plugin"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "<b>Audio</b>"
@@ -282,7 +293,7 @@ msgstr "Informação sobre versão"
 msgid "Media to play"
 msgstr "Ficheiro a reproduzir"
 
-#: ../parole/main.c:231
+#: ../parole/main.c:233
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "O Parole já está a ser executado. Use -i para abrir uma nova instância\n"
@@ -397,6 +408,10 @@ msgstr "Concluído"
 msgid "Paused"
 msgstr "Pausado"
 
+#: ../parole/parole-statusbar.c:88
+msgid "Playing"
+msgstr "Reproduzindo"
+
 #: ../parole/parole-statusbar.c:117
 msgid "Live stream:"
 msgstr "Transmissão ao vivo:"
@@ -421,11 +436,11 @@ msgstr "Todos os ficheiros suportados"
 msgid "Playlist files"
 msgstr "Listas de reprodução"
 
-#: ../parole/parole-about.c:56
+#: ../parole/parole-about.c:57
 msgid "Author/Maintainer"
 msgstr "Autor/Desenvolvimento"
 
-#: ../parole/parole-about.c:62
+#: ../parole/parole-about.c:63
 #, c-format
 msgid "Translator (%s)"
 msgstr "Tradutor (%s)"
@@ -623,7 +638,7 @@ msgid "Track %i"
 msgstr "Faixa %i"
 
 #: ../parole/parole-plugins-manager.c:227
-#: ../parole/parole-plugins-manager.c:285
+#: ../parole/parole-plugins-manager.c:304
 msgid "Visit Website"
 msgstr "Visitar Sítio Web"
 
