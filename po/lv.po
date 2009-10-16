@@ -3,13 +3,12 @@
 #
 # Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>, 2009.
 # Rihards Prieditis <rprieditis@gmail.com>, 2009.
-
 msgid ""
 msgstr ""
 "Project-Id-Version:parole\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-04-18 16:27+0200\n"
-"PO-Revision-Date: 2009-10-16 14:09+0100\n"
+"PO-Revision-Date: 2009-10-16 14:24+0100\n"
 "Last-Translator: Rihards Prieditis <rprieditis@gmail.com>\n"
 "Language-Team: Latvian <translation-team-lv@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -679,7 +678,7 @@ msgstr "<b>Ilgums:</b>"
 
 #: ../plugins/tray/tray-icon.c:373
 msgid "Tray icon plugin"
-msgstr "Paziņojuma lauka ikonas spraudnis"
+msgstr "Paziņojuma joslas ikonas spraudnis"
 
 #: ../plugins/tray/tray-icon.c:383
 msgid "Enable notification"
@@ -687,15 +686,15 @@ msgstr "Ieslēgt paziņojumus"
 
 #: ../plugins/tray/tray-icon.c:392
 msgid "Always minimize to tray when window is closed"
-msgstr "Vienmēr minimizēt uz sistēmas joslu, kad logs tiek aizvērts"
+msgstr "Vienmēr minimizēt uz paziņojuma joslu, kad logs tiek aizvērts"
 
 #: ../plugins/tray/tray-icon.c:431
 msgid "Minimize to tray?"
-msgstr "Minimizēt uz sistēmas joslu?"
+msgstr "Minimizēt uz paziņojuma joslu?"
 
 #: ../plugins/tray/tray-icon.c:437
 msgid "Minimize to tray"
-msgstr "Minimizēt uz sistēmas joslu"
+msgstr "Minimizēt uz paziņojuma joslu"
 
 #: ../plugins/tray/tray-icon.c:453
 msgid "Are you sure you want to quit Parole"
@@ -708,12 +707,12 @@ msgstr "Atcerēties manu izvēli"
 #. Construct function
 #: ../plugins/tray/tray-icon.c:544
 msgid "Tray icon"
-msgstr "Paplātes ikona"
+msgstr "Paziņojuma joslas ikona"
 
 #. Title
 #: ../plugins/tray/tray-icon.c:545
 msgid "Show icon in the system tray"
-msgstr "Rādīt ikonu uz paplātes"
+msgstr "Rādīt ikonu paziņojumu joslā"
 
 #. Construct function
 #: ../plugins/window-title/window-title.c:102
