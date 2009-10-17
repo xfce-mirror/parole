@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parole 0.1.90git.rALT0.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 15:54+0000\n"
-"PO-Revision-Date: 2009-08-28 07:47+0400\n"
-"Last-Translator: Anatoly Chernov <aichernov@umail.ru>\n"
+"POT-Creation-Date: 2009-10-14 19:53+0000\n"
+"PO-Revision-Date: 2009-10-17 22:56+0300\n"
+"Last-Translator: Vlad Vasilev <lortwer@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -50,7 +50,8 @@ msgstr "Media player"
 msgid "Mute"
 msgstr "Приглушить"
 
-#: ../data/interfaces/parole.ui.h:10 ../parole/parole-player.c:1047
+#: ../data/interfaces/parole.ui.h:10
+#: ../parole/parole-player.c:1047
 #: ../parole/parole-disc-menu.c:113
 msgid "Next Chapter"
 msgstr "След. раздел"
@@ -59,8 +60,9 @@ msgstr "След. раздел"
 msgid "None"
 msgstr "Нет"
 
-#: ../data/interfaces/parole.ui.h:12 ../data/desktop/parole.desktop.in.in.h:1
-#: ../parole/parole-player.c:234 ../parole/parole-about.c:51
+#: ../data/interfaces/parole.ui.h:12
+#: ../data/desktop/parole.desktop.in.in.h:1
+#: ../parole/parole-about.c:52
 #: ../plugins/window-title/window-title.c:40
 msgid "Parole Media Player"
 msgstr "Parole Media Player"
@@ -69,7 +71,8 @@ msgstr "Parole Media Player"
 msgid "Plugins"
 msgstr "Модули..."
 
-#: ../data/interfaces/parole.ui.h:14 ../parole/parole-player.c:1059
+#: ../data/interfaces/parole.ui.h:14
+#: ../parole/parole-player.c:1059
 #: ../parole/parole-disc-menu.c:114
 msgid "Previous Chapter"
 msgstr "Пред. раздел"
@@ -137,7 +140,7 @@ msgstr "<b>Сайт:</b>"
 
 #: ../data/interfaces/plugins.ui.h:4
 msgid "Enabled"
-msgstr ""
+msgstr "Включено"
 
 #: ../data/interfaces/plugins.ui.h:5
 #, fuzzy
@@ -249,7 +252,7 @@ msgstr "Новое окно"
 
 #: ../parole/main.c:185
 msgid "Play or pause if already playing"
-msgstr ""
+msgstr "Воспроизвести или приостановить, если уже воспроизводится"
 
 #: ../parole/main.c:186
 #, fuzzy
@@ -268,23 +271,23 @@ msgstr "Предыдущий трек"
 
 #: ../parole/main.c:189
 msgid "Seek forward"
-msgstr ""
+msgstr "Искать вперед"
 
 #: ../parole/main.c:190
 msgid "Seek Backward"
-msgstr ""
+msgstr "Искать назад"
 
 #: ../parole/main.c:191
 msgid "Raise volume"
-msgstr ""
+msgstr "Увеличить громкость"
 
 #: ../parole/main.c:192
 msgid "Lower volume"
-msgstr ""
+msgstr "Уменьшить громкость"
 
 #: ../parole/main.c:193
 msgid "Mute volume"
-msgstr ""
+msgstr "Приглушить звук"
 
 #: ../parole/main.c:194
 msgid "Version information"
@@ -294,30 +297,22 @@ msgstr "Версия"
 msgid "Media to play"
 msgstr "Объект для проигрывания"
 
-#: ../parole/main.c:231
+#: ../parole/main.c:233
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
-msgstr ""
-"Проигрыватель уже запущен, используйте опцию -i чтобы открыть новое окно.\n"
+msgstr "Проигрыватель уже запущен, используйте опцию -i чтобы открыть новое окно.\n"
 
 #: ../parole/parole-gst.c:1289
-msgid ""
-"Unable to load playbin GStreamer plugin, check your GStreamer installation"
-msgstr ""
-"Невозможно загрузить плагин GStreamer 'playbin'. Проверьте, все ли "
-"необходимые пакеты у вас установлены."
+msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
+msgstr "Невозможно загрузить плагин GStreamer 'playbin'. Проверьте, все ли необходимые пакеты у вас установлены."
 
 #: ../parole/parole-gst.c:1305
-msgid ""
-"Unable to load video GStreamer plugin, check your GStreamer installation"
-msgstr ""
-"Невозможно загрузить плагин GStreamer для работы с видео. Проверьте, все ли "
-"необходимые пакеты у вас установлены."
+msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
+msgstr "Невозможно загрузить плагин GStreamer для работы с видео. Проверьте, все ли необходимые пакеты у вас установлены."
 
 #: ../parole/parole-gst.c:1501
-#, fuzzy
 msgid "The stream is taking too much time to load"
-msgstr "Поток требует много времени для загрузки"
+msgstr "Поток требует слишком много времени для загрузки"
 
 #: ../parole/parole-gst.c:1501
 msgid "Stop"
@@ -341,10 +336,10 @@ msgstr "Отказано в доступе"
 
 #: ../parole/parole-medialist.c:454
 msgid "Unknown playlist format, Please select a support playlist format"
-msgstr ""
-"Неизвестный формат списка воспроизведения, выбирите поддерживаемый формат"
+msgstr "Неизвестный формат списка воспроизведения, выбирите поддерживаемый формат"
 
-#: ../parole/parole-medialist.c:520 ../parole/parole-player.c:1591
+#: ../parole/parole-medialist.c:520
+#: ../parole/parole-player.c:1591
 msgid "Playlist"
 msgstr "Список воспроизведения"
 
@@ -387,14 +382,16 @@ msgstr "Поток недоступен для просмотра"
 #.
 #. * Next chapter menu item
 #.
-#: ../parole/parole-player.c:1047 ../parole/parole-disc-menu.c:122
+#: ../parole/parole-player.c:1047
+#: ../parole/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr "Следующий трек"
 
 #.
 #. * Previous chapter menu item
 #.
-#: ../parole/parole-player.c:1059 ../parole/parole-disc-menu.c:123
+#: ../parole/parole-player.c:1059
+#: ../parole/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr "Предыдущий трек"
 
@@ -410,7 +407,8 @@ msgstr "Остановлено"
 msgid "Finished"
 msgstr "Закончено"
 
-#: ../parole/parole-statusbar.c:88 ../parole/parole-statusbar.c:96
+#: ../parole/parole-statusbar.c:88
+#: ../parole/parole-statusbar.c:96
 msgid "Paused"
 msgstr "Пауза"
 
@@ -443,11 +441,11 @@ msgstr "Все поддерживаемые файлы"
 msgid "Playlist files"
 msgstr "Файлы списков воспроизведения"
 
-#: ../parole/parole-about.c:56
+#: ../parole/parole-about.c:57
 msgid "Author/Maintainer"
 msgstr "Автор/Майнтейнер"
 
-#: ../parole/parole-about.c:62
+#: ../parole/parole-about.c:63
 #, c-format
 msgid "Translator (%s)"
 msgstr "Переводчик (%s)"
@@ -645,7 +643,7 @@ msgid "Track %i"
 msgstr "Трек %i"
 
 #: ../parole/parole-plugins-manager.c:227
-#: ../parole/parole-plugins-manager.c:285
+#: ../parole/parole-plugins-manager.c:304
 msgid "Visit Website"
 msgstr "Посетить Вебсайт"
 
@@ -712,19 +710,19 @@ msgstr "Разрешить уведомления"
 
 #: ../plugins/tray/tray-icon.c:392
 msgid "Always minimize to tray when window is closed"
-msgstr ""
+msgstr "Всегда сворачивать в трей, когда окно закрыто"
 
 #: ../plugins/tray/tray-icon.c:431
 msgid "Minimize to tray?"
-msgstr ""
+msgstr "Свернуть в трей?"
 
 #: ../plugins/tray/tray-icon.c:437
 msgid "Minimize to tray"
-msgstr ""
+msgstr "Свернуть в трей"
 
 #: ../plugins/tray/tray-icon.c:453
 msgid "Are you sure you want to quit Parole"
-msgstr ""
+msgstr "Вы уверены, что хотите выйти?"
 
 #: ../plugins/tray/tray-icon.c:457
 #, fuzzy
@@ -757,12 +755,10 @@ msgstr ""
 
 #~ msgid "gtk-leave-fullscreen"
 #~ msgstr "Покинуть полноэкранный режим"
-
 #~ msgid "gtk-close"
 #~ msgstr "Закрыть"
-
 #~ msgid "gtk-properties"
 #~ msgstr "Свойства"
-
 #~ msgid "Visite Website"
 #~ msgstr "Посетить Вебсайт"
+
