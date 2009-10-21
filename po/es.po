@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-10-06 15:54+0000\n"
-"PO-Revision-Date: 2009-10-07 17:56-0300\n"
+"PO-Revision-Date: 2009-10-15 17:09-0300\n"
 "Last-Translator: elega <elega@elega.com.ar>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -67,7 +67,7 @@ msgstr "Ninguno"
 #: ../parole/parole-about.c:51
 #: ../plugins/window-title/window-title.c:40
 msgid "Parole Media Player"
-msgstr "Reporductor de medios Parole"
+msgstr "Reproductor de medios Parole"
 
 #: ../data/interfaces/parole.ui.h:13
 msgid "Plugins"
@@ -684,7 +684,7 @@ msgstr "Propiedades"
 #. Title
 #: ../plugins/properties/stream-properties.c:491
 msgid "Read media properties"
-msgstr "Leer propiedades de medios"
+msgstr "Lee las propiedades de los medios"
 
 #: ../plugins/tray/tray-icon.c:222
 msgid "<b>Playing:</b>"
@@ -730,7 +730,7 @@ msgstr "Icono de la bandeja"
 #. Title
 #: ../plugins/tray/tray-icon.c:545
 msgid "Show icon in the system tray"
-msgstr "Mostrar ícono en la bandeja del sistema"
+msgstr "Muestra un ícono en la bandeja del sistema"
 
 #. Construct function
 #: ../plugins/window-title/window-title.c:102
@@ -743,7 +743,7 @@ msgid ""
 "Set the main window name to the current\n"
 " playing media name."
 msgstr ""
-"Establecer el nombre de la ventana principal con el nombre\n"
+"Establece el nombre de la ventana principal con el nombre\n"
 "de la reproducción actual."
 
 #~ msgid "Visite Website"
