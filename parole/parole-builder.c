@@ -26,6 +26,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <libxfce4util/libxfce4util.h>
+
 #include "interfaces/parole_ui.h"
 #include "parole-builder.h"
 
@@ -47,32 +49,21 @@ parole_builder_get_main_interface (void)
     return GTK_BUILDER (parole_builder_object);
 }
 
-GtkBuilder *parole_builder_new_from_file (const gchar *file)
-{
-    GtkBuilder *builder;
-    GError *error = NULL;
-
-    builder = gtk_builder_new ();
-    
-    gtk_builder_add_from_file (GTK_BUILDER (builder),
-			       file,
-			       &error);
-			       
-    if ( error )
-    {
-	g_critical ("%s", error->message);
-	g_error_free (error);
-    }
-    
-    return builder;
-}
-
 GtkBuilder *parole_builder_new_from_string (const gchar *ui, gsize length)
 {
     GError *error = NULL;
     GtkBuilder *builder;
     
     builder = gtk_builder_new ();
+
+    /*
+     * Set the locale before loading the GtkBuilder interface definition
+     * probably this will be fixed in libxfce4util's side so keep a version 
+     * check.
+     */
+#if LIBXFCE4UTIL_CHECK_VERSION (4, 6, 1)
+    xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
+#endif
     
     gtk_builder_add_from_string (builder, ui, length, &error);
     

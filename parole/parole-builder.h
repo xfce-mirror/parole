@@ -28,8 +28,6 @@ G_BEGIN_DECLS
 
 GtkBuilder       	       *parole_builder_get_main_interface       (void);
 
-GtkBuilder		       *parole_builder_new_from_file   		(const gchar *file);
-
 GtkBuilder		       *parole_builder_new_from_string 		(const gchar *ui,
 									 gsize length);
 
