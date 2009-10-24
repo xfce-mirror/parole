@@ -433,6 +433,8 @@ parole_gst_set_video_color_balance (ParoleGst *gst)
 		  "saturation", &saturation_value,
 		  NULL);
     
+    TRACE ("Setting video color balance");
+    
     g_object_set (G_OBJECT (video_sink),
 		  "brightness", brightness_value,
 		  "contrast", contrast_value,
@@ -448,6 +450,7 @@ parole_gst_set_video_color_balance (ParoleGst *gst)
 static void
 parole_gst_set_x_overlay (ParoleGst *gst)
 {
+    
     GstElement *video_sink;
     
     g_object_get (G_OBJECT (gst->priv->playbin),
@@ -460,6 +463,7 @@ parole_gst_set_x_overlay (ParoleGst *gst)
 				  GDK_WINDOW_XWINDOW (GTK_WIDGET (gst)->window));
     
     gst_object_unref (video_sink);
+    
 }
 
 static gboolean
@@ -1313,7 +1317,7 @@ parole_gst_construct (GObject *object)
     g_object_set (G_OBJECT (gst->priv->playbin),
 		  "video-sink", gst->priv->video_sink,
 		  NULL);
-
+    
     /*
      * Listen to the bus events.
      */

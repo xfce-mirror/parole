@@ -682,15 +682,15 @@ parole_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream, Parole
     
     PAROLE_DEBUG_ENUM ("State callback", state, ENUM_GTYPE_MEDIA_STATE);
     
+    g_object_get (G_OBJECT (stream),
+		  "has-video", &has_video,
+		  NULL);
+    
     if ( state == PAROLE_MEDIA_STATE_PLAYING && has_video )
 	parole_screen_saver_inhibit (player->priv->screen_saver);
     else
 	parole_screen_saver_uninhibit (player->priv->screen_saver);
 
-    g_object_get (G_OBJECT (stream),
-		  "has-video", &has_video,
-		  NULL);
-    
     if ( state == PAROLE_MEDIA_STATE_PLAYING )
     {
 	parole_player_playing (player, stream);

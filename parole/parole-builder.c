@@ -58,12 +58,8 @@ GtkBuilder *parole_builder_new_from_string (const gchar *ui, gsize length)
 
     /*
      * Set the locale before loading the GtkBuilder interface definition
-     * probably this will be fixed in libxfce4util's side so keep a version 
-     * check.
      */
-#if LIBXFCE4UTIL_CHECK_VERSION (4, 6, 1)
     xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
-#endif
     
     gtk_builder_add_from_string (builder, ui, length, &error);
     
