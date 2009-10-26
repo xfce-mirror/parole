@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: ast\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-10-04 10:38:54+02:00\n"
-"PO-Revision-Date: 2009-10-04 11:48+0100\n"
-"Last-Translator: Steve Dodier <sidnioulz@gmail.com>\n"
+"PO-Revision-Date: 2009-10-26 18:27+0100\n"
+"Last-Translator: Douart Patrick <patrick.2@laposte.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -42,7 +42,6 @@ msgid "Chapter Menu"
 msgstr "Menu des Chapitres"
 
 #: ../data/interfaces/parole.ui.h:7
-#, fuzzy
 msgid "DVD Menu"
 msgstr "Menu du DVD"
 
@@ -56,7 +55,6 @@ msgid "Media player"
 msgstr "Lecteur Média"
 
 #: ../data/interfaces/parole.ui.h:10
-#, fuzzy
 msgid "Mute"
 msgstr "Mettre en sourdine"
 
@@ -67,7 +65,6 @@ msgid "Next Chapter"
 msgstr "Chapitre Suivant"
 
 #: ../data/interfaces/parole.ui.h:12
-#, fuzzy
 msgid "None"
 msgstr "Aucun"
 
@@ -94,14 +91,12 @@ msgid "Repeat"
 msgstr "Répéter"
 
 #: ../data/interfaces/parole.ui.h:17
-#, fuzzy
 msgid "Select Track"
 msgstr "Sélectionner une Piste"
 
 #: ../data/interfaces/parole.ui.h:18
-#, fuzzy
 msgid "Shuffle"
-msgstr "Mélanger"
+msgstr "Aléatoire"
 
 #: ../data/interfaces/parole.ui.h:19
 msgid "Sound"
@@ -148,7 +143,6 @@ msgid "<b>Description:</b>"
 msgstr "<b>Description :</b>"
 
 #: ../data/interfaces/plugins.ui.h:3
-#, fuzzy
 msgid "<b>Site:</b>"
 msgstr "<b>Site :</b>"
 
@@ -205,16 +199,14 @@ msgid "Hue:"
 msgstr "Teinte :"
 
 #: ../data/interfaces/parole-settings.ui.h:11
-#, fuzzy
 msgid "Media Player Settings"
-msgstr "Paramètres du Lecteur Média"
+msgstr "Paramètres du Lecteur Multimédia"
 
 #: ../data/interfaces/parole-settings.ui.h:12
 msgid "Parole Settings"
 msgstr "Paramètres de Parole"
 
 #: ../data/interfaces/parole-settings.ui.h:13
-#, fuzzy
 msgid "Reset To Defaults"
 msgstr "Réinitialiser "
 
@@ -235,7 +227,7 @@ msgid "Select File Types (By Extension)"
 msgstr "Sélectionner des Types de Fichiers (Par Extension)"
 
 #: ../parole/main.c:52
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "\n"
 "Parole Media Player %s\n"
@@ -247,9 +239,9 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Lecteur Média Parole %s\n"
+"Lecteur Multimédia Parole %s\n"
 "\n"
-"Membre du Projet des Goodies Xfce\n"
+"Une partie du projet \"goodies' d' Xfce \n"
 "http://goodies.xfce.org\n"
 "\n"
 "Sous licence GNU GPL.\n"
@@ -273,35 +265,30 @@ msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole est déjà en cours de fonctionnement. Utilisez -i pour ouvrir une nouvelle instance\n"
 
 #: ../parole/parole-gst.c:1289
-#, fuzzy
 msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr "Impossible de charger le greffon de lecture GStreamer, vérifiez votre installation de GStreamer"
 
 #: ../parole/parole-gst.c:1305
-#, fuzzy
 msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr "Impossible de charger le greffon vidéo GStreamer, vérifiez votre installation de GStreamer"
 
 #: ../parole/parole-gst.c:1501
-#, fuzzy
 msgid "The stream is tacking too much time to load"
-msgstr "Le flux met trop de temps à charger"
+msgstr "Le flux met trop de temps à se charger"
 
 #: ../parole/parole-gst.c:1501
 msgid "Stop"
 msgstr "Arrêt"
 
 #: ../parole/parole-mediachooser.c:154
-#, fuzzy
 msgid "Add media files"
-msgstr "Ajouter des fichiers média"
+msgstr "Ajouter des fichiers multimédia"
 
 #: ../parole/parole-mediachooser.c:173
 msgid "Add"
 msgstr "Ajouter"
 
 #: ../parole/parole-medialist.c:432
-#, fuzzy
 msgid "Error saving playlist file"
 msgstr "Erreur lors de la sauvegarde de la liste de lecture"
 
@@ -310,7 +297,6 @@ msgid "Permission denied"
 msgstr "Permission non accordée"
 
 #: ../parole/parole-medialist.c:441
-#, fuzzy
 msgid "Unknown playlist format, Please select a support playlist format"
 msgstr "Format de liste de lecture inconnu, Veuillez sélectionner un format de liste de lecture pris en charge"
 
@@ -343,7 +329,6 @@ msgid "Remember playlist"
 msgstr "Se souvenir de la liste de lecture"
 
 #: ../parole/parole-medialist.c:1003
-#, fuzzy
 msgid "Media list"
 msgstr "Liste de médias"
 
@@ -373,7 +358,6 @@ msgid "Previous Track"
 msgstr "Piste Précédente"
 
 #: ../parole/parole-statusbar.c:60
-#, fuzzy
 msgid "Buffering"
 msgstr "Mise en tampon"
 
@@ -408,7 +392,6 @@ msgid "Audio and video"
 msgstr "Audio et vidéo"
 
 #: ../parole/parole-filters.c:111
-#, fuzzy
 msgid "All supported files"
 msgstr "Tous les fichiers pris en charge"
 
@@ -421,12 +404,11 @@ msgid "Author/Maintainer"
 msgstr "Auteur / Mainteneur"
 
 #: ../parole/parole-about.c:62
-#, fuzzy, c-format
+#, c-format
 msgid "Translator (%s)"
 msgstr "Traducteur (%s)"
 
 #: ../parole/parole-disc.c:202
-#, fuzzy
 msgid "Play Disc"
 msgstr "Lire un Disque"
 
@@ -632,7 +614,6 @@ msgstr "Visiter le Site Web"
 #: ../plugins/properties/stream-properties.c:122
 #: ../plugins/properties/stream-properties.c:123
 #: ../plugins/properties/stream-properties.c:124
-#, fuzzy
 msgid "Unknown"
 msgstr "Inconnu"
 
@@ -672,12 +653,10 @@ msgstr "Propriétés"
 
 #. Title
 #: ../plugins/properties/stream-properties.c:486
-#, fuzzy
 msgid "Read media properties"
 msgstr "Lire les propriétés du média"
 
 #: ../plugins/tray/tray-icon.c:222
-#, fuzzy
 msgid "<b>Playing:</b>"
 msgstr "<b>Lecture en cours :</b>"
 
@@ -686,9 +665,8 @@ msgid "<b>Duration:</b>"
 msgstr "<b>Durée :</b>"
 
 #: ../plugins/tray/tray-icon.c:347
-#, fuzzy
 msgid "Tray icon plugin"
-msgstr "Greffon d'icône de la zone de notification"
+msgstr "Greffon de l'icône de la zone de notification"
 
 #: ../plugins/tray/tray-icon.c:356
 msgid "Enable notification"
@@ -696,29 +674,25 @@ msgstr "Activer les notifications"
 
 #. Construct function
 #: ../plugins/tray/tray-icon.c:427
-#, fuzzy
 msgid "Tray icon"
 msgstr "Icône de la zone de notification"
 
 #. Title
 #: ../plugins/tray/tray-icon.c:428
-#, fuzzy
 msgid "Show icon in the system tray"
 msgstr "Montrer une icône dans la zone de notification"
 
 #. Construct function
 #: ../plugins/window-title/window-title.c:102
-#, fuzzy
 msgid "Window title"
 msgstr "Titre de la Fenêtre"
 
 #. Title
 #: ../plugins/window-title/window-title.c:103
-#, fuzzy
 msgid ""
 "Set the main window name to the current\n"
 " playing media name."
 msgstr ""
-"Définir le nom de la fenêtre principale au nom\n"
+"Définissez le nom de la fenêtre principale en cours\n"
 " du média en cours de lecture"
 
