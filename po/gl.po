@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Parole 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-08-16 16:02+0200\n"
-"PO-Revision-Date: 2009-10-04 14:50+0100\n"
+"PO-Revision-Date: 2009-11-04 14:29+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -33,14 +33,12 @@ msgid "4:3 (TV)"
 msgstr "4:3 (TV)"
 
 #: ../data/interfaces/parole.ui.h:4
-#, fuzzy
 msgid "Aspect Ratio"
-msgstr "Proporción de aspecto:"
+msgstr "Proporción de aspecto"
 
 #: ../data/interfaces/parole.ui.h:5
-#, fuzzy
 msgid "Auto"
-msgstr "Automático"
+msgstr "Automática"
 
 #: ../data/interfaces/parole.ui.h:6
 msgid "Chapter Menu"
@@ -70,7 +68,6 @@ msgid "Next Chapter"
 msgstr "Capítulo seguinte"
 
 #: ../data/interfaces/parole.ui.h:12
-#, fuzzy
 msgid "None"
 msgstr "Ningunha"
 
@@ -182,7 +179,7 @@ msgstr "<b>Subtítulos</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:4
 msgid "Automatically load subtitles when playing movie file"
-msgstr ""
+msgstr "Cargar os subtítulos automaticamente ao reproducir un ficheiro de vídeo"
 
 #: ../data/interfaces/parole-settings.ui.h:5
 msgid "Brightness:"
@@ -193,9 +190,8 @@ msgid "Contrast:"
 msgstr "Contraste:"
 
 #: ../data/interfaces/parole-settings.ui.h:7
-#, fuzzy
 msgid "Enable visualization when playing audio file"
-msgstr "Mostrar os efectos visuais cando se reproduza un ficheiro só de son."
+msgstr "Mostrar os efectos visuais cando se reproduza un ficheiro de son"
 
 #: ../data/interfaces/parole-settings.ui.h:8
 msgid "Encoding: "
@@ -211,9 +207,8 @@ msgid "Hue:"
 msgstr "Tinte:"
 
 #: ../data/interfaces/parole-settings.ui.h:11
-#, fuzzy
 msgid "Media Player Settings"
-msgstr "Reprodutor de música Banshee"
+msgstr "Configuración do reprodutor multimedia"
 
 #: ../data/interfaces/parole-settings.ui.h:12
 msgid "Parole Settings"
@@ -228,9 +223,8 @@ msgid "Saturation:"
 msgstr "Saturación:"
 
 #: ../data/interfaces/parole-settings.ui.h:15
-#, fuzzy
 msgid "Visualization type:"
-msgstr "Tipo de borrado"
+msgstr "Tipo de efecto visual:"
 
 #: ../data/interfaces/save-playlist.ui.h:1
 msgid "By Extension"
@@ -238,7 +232,7 @@ msgstr "Por extensión"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "Select File Types (By Extension)"
-msgstr ""
+msgstr "Seleccionar tipos de ficheiros (Por extensión)"
 
 #: ../parole/main.c:52
 #, c-format
@@ -252,6 +246,14 @@ msgid ""
 "Licensed under the GNU GPL.\n"
 "\n"
 msgstr ""
+"\n"
+"Reprodutor multimedia Parole %s\n"
+"\n"
+"Parte do Proxecto de Extras de Xfce\n"
+"http://goodies.xfce.org\n"
+"\n"
+"Licenciado baixo a GNU GPL.\n"
+"\n"
 
 #: ../parole/main.c:156
 #, fuzzy
@@ -274,15 +276,15 @@ msgstr ""
 
 #: ../parole/parole-gst.c:1289
 msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
-msgstr ""
+msgstr "Non foi posible cargar o engadido playbin de GStreamer, verifique a instalación de GStreamer"
 
 #: ../parole/parole-gst.c:1305
 msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
-msgstr ""
+msgstr "Non foi posible cargar o engadido video de GStreamer, verifique a instalación de GStreamer"
 
 #: ../parole/parole-gst.c:1501
 msgid "The stream is tacking too much time to load"
-msgstr ""
+msgstr "Está levando moito tempo cargar o fluxo"
 
 #: ../parole/parole-gst.c:1501
 msgid "Stop"
@@ -307,7 +309,7 @@ msgstr "Permiso denegado"
 
 #: ../parole/parole-medialist.c:441
 msgid "Unknown playlist format, Please select a support playlist format"
-msgstr ""
+msgstr "Tipo de lista de reprodución descoñecido. Seleccione un formato de lista de reprodución soportado."
 
 #: ../parole/parole-medialist.c:507
 #: ../parole/parole-player.c:1542
@@ -315,14 +317,12 @@ msgid "Playlist"
 msgstr "Lista de reprodución"
 
 #: ../parole/parole-medialist.c:514
-#, fuzzy
 msgid "M3U Playlists"
-msgstr "Soporta listas de reprodución"
+msgstr "Listas de reprodución M3U"
 
 #: ../parole/parole-medialist.c:522
-#, fuzzy
 msgid "PLS Playlists"
-msgstr "Soporta listas de reprodución"
+msgstr "Listas de reprodución PLS"
 
 #: ../parole/parole-medialist.c:530
 #, fuzzy
@@ -335,9 +335,8 @@ msgid "Shareable Playlist"
 msgstr "Lista de reprodución XML compartíbel"
 
 #: ../parole/parole-medialist.c:853
-#, fuzzy
 msgid "Remember playlist"
-msgstr "Eliminar a lista de reprodución"
+msgstr "Lembrar a lista de reprodución"
 
 #: ../parole/parole-medialist.c:1003
 #, fuzzy
@@ -345,9 +344,8 @@ msgid "Media list"
 msgstr "Lista de variábeis"
 
 #: ../parole/parole-player.c:297
-#, fuzzy
 msgid "Show playlist"
-msgstr "Amosar a a lista de re_produción"
+msgstr "Mostrar a lista de reprodución"
 
 #: ../parole/parole-player.c:507
 #, fuzzy
@@ -405,31 +403,27 @@ msgid "Audio and video"
 msgstr "Son e vídeo"
 
 #: ../parole/parole-filters.c:111
-#, fuzzy
 msgid "All supported files"
-msgstr "Pechar todos os ficheiros"
+msgstr "Todos os ficheiros soportados"
 
 #: ../parole/parole-filters.c:127
-#, fuzzy
 msgid "Playlist files"
-msgstr "Todos os ficheros"
+msgstr "Ficheiros de listas de reprodución"
 
 #: ../parole/parole-about.c:56
 msgid "Author/Maintainer"
 msgstr "Autor/Mantedor"
 
 #: ../parole/parole-about.c:62
-#, fuzzy, c-format
+#, c-format
 msgid "Translator (%s)"
 msgstr "Tradutor (%s)"
 
 #: ../parole/parole-disc.c:202
-#, fuzzy
 msgid "Play Disc"
-msgstr "Reproducir o disco '%s'"
+msgstr "Reproducir disco"
 
 #: ../parole/parole-subtitle-encoding.c:165
-#, fuzzy
 msgid "Current Locale"
 msgstr "Configuración rexional actual"
 
@@ -507,7 +501,6 @@ msgid "Greek"
 msgstr "Grego"
 
 #: ../parole/parole-subtitle-encoding.c:249
-#, fuzzy
 msgid "Gujarati"
 msgstr "Guxarati"
 
@@ -524,7 +517,6 @@ msgid "Hebrew"
 msgstr "Hebreo"
 
 #: ../parole/parole-subtitle-encoding.c:264
-#, fuzzy
 msgid "Hebrew Visual"
 msgstr "Hebreo visual"
 
@@ -563,7 +555,6 @@ msgid "Romanian"
 msgstr "Romanés"
 
 #: ../parole/parole-subtitle-encoding.c:300
-#, fuzzy
 msgid "South European"
 msgstr "Sureuropeo"
 
@@ -626,9 +617,8 @@ msgid "Visit Website"
 msgstr "Visitar o sitio web"
 
 #: ../parole/parole-plugins-manager.c:285
-#, fuzzy
 msgid "Visite Website"
-msgstr "Páxina web de Banshee"
+msgstr "Visite o sitio web"
 
 #: ../plugins/properties/stream-properties.c:121
 #: ../plugins/properties/stream-properties.c:122
