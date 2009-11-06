@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Parole 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-08-16 16:02+0200\n"
-"PO-Revision-Date: 2009-11-04 14:29+0100\n"
+"PO-Revision-Date: 2009-11-06 13:52+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -256,23 +256,21 @@ msgstr ""
 "\n"
 
 #: ../parole/main.c:156
-#, fuzzy
 msgid "Open a new instance"
-msgstr "Abrir un separador novo"
+msgstr "Abrir unha nova instancia"
 
 #: ../parole/main.c:157
 msgid "Version information"
 msgstr "Información de versión"
 
 #: ../parole/main.c:158
-#, fuzzy
 msgid "Media to play"
-msgstr "URI para reproducir"
+msgstr "Soporte a reproducir"
 
 #: ../parole/main.c:193
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
-msgstr ""
+msgstr "Parole xa se está executando, use -i para abrir unha nova instancia\n"
 
 #: ../parole/parole-gst.c:1289
 msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
@@ -330,18 +328,16 @@ msgid "Advanced Stream Redirector"
 msgstr "Comentar ou descomentar en _fluxo"
 
 #: ../parole/parole-medialist.c:538
-#, fuzzy
 msgid "Shareable Playlist"
-msgstr "Lista de reprodución XML compartíbel"
+msgstr "Lista de reprodución compartible"
 
 #: ../parole/parole-medialist.c:853
 msgid "Remember playlist"
 msgstr "Lembrar a lista de reprodución"
 
 #: ../parole/parole-medialist.c:1003
-#, fuzzy
 msgid "Media list"
-msgstr "Lista de variábeis"
+msgstr "Lista de soportes"
 
 #: ../parole/parole-player.c:297
 msgid "Show playlist"
@@ -707,4 +703,6 @@ msgid ""
 "Set the main window name to the current\n"
 " playing media name."
 msgstr ""
+"Poñer o nome do soporte que se está\n"
+"reproducindo como nome da xanela principal."
 
