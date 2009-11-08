@@ -29,6 +29,10 @@
 #include <glib.h>
 #include <gio/gio.h>
 
+#ifdef HAVE_TAGLIBC
+#include <taglib/tag_c.h>
+#endif
+
 #include "parole-file.h"
 
 #define PAROLE_FILE_GET_PRIVATE(o) \
@@ -166,6 +170,34 @@ parole_file_constructed (GObject *object)
 	}
 	goto out;
     }
+#ifdef HAVE_TAGLIBC
+    else
+    {
+	TagLib_File *tag_file;
+	TagLib_Tag *tag;
+	gchar *title;
+	gchar *title_s;
+	
+	tag_file = taglib_file_new (priv->filename);
+	
+	tag = taglib_file_tag (tag_file);
+	
+	title = taglib_tag_title (tag);
+	
+	if ( title )
+	{
+	    title_s = g_strstrip (title);
+	    if ( strlen (title_s ) )
+	    {
+		priv->display_name = g_strdup (title_s);
+	    }
+	}
+	    
+	taglib_file_free (tag_file);
+	
+	taglib_tag_free_strings ();
+    }
+#endif
 
     if (!priv->display_name)
 	priv->display_name = g_strdup (g_file_info_get_display_name (info));

@@ -1,6 +1,10 @@
 1.91
 ====
-Don't runref the vis plugin as playbin will remove it on exit (bug #5830).
+- Don't runref the vis plugin as playbin will remove it on exit (bug #5830).
+- Fix settings dialog displayes in english when locales aren't english (bug #5829).
+- Don't reset XScreenSaver bit when playing audio file, (problem was in the order of calls).
+- Fix some untranslatable strings (bug #5827).
+- Fix desktop file Application Type typo. (Type=Application instead if Type=Application;).
 
 1.90
 ====

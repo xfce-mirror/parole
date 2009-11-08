@@ -15,7 +15,8 @@ INCLUDES =					\
         $(DBUS_GLIB_CFLAGS)                     \
         $(LIBXFCE4GUI_CFLAGS)                   \
 	$(GST_VIDEO_CFLAGS)			\
-	$(GST_INTERFACES_CFLAGS)
+	$(GST_INTERFACES_CFLAGS)		\
+	$(TAGLIBC_CFLAGS)
 
 PAROLE_LDFLAGS =				\
 	-export-dynamic 			\
@@ -28,7 +29,8 @@ PAROLE_LIBS = 					\
         $(DBUS_GLIB_LIBS)                       \
         $(LIBXFCE4GUI_LIBS)                     \
 	$(GST_VIDEO_LIBS)			\
-	$(GST_INTERFACES_LIBS)
+	$(GST_INTERFACES_LIBS)			\
+	$(TAGLIBC_LIBS)
 
 GENERATED_FILES =				\
 	gmarshal.c				\
