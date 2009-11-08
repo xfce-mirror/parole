@@ -422,8 +422,6 @@ parole_pl_parser_parse_pls (const gchar *filename)
 static GSList *
 parole_pl_parser_parse_xspf (const gchar *filename)
 {
-    GSList *list = NULL;
-    
     ParoleParserData data;
     GFile *file;
     gchar *contents;
@@ -481,8 +479,6 @@ parole_pl_parser_parse_xspf (const gchar *filename)
 out:
     g_object_unref (file);
     return data.list;
-    
-    return list;
 }
 
 static GSList *
@@ -573,6 +569,8 @@ parole_pl_parser_save_pls (FILE *f, GSList *files)
 	file = g_slist_nth_data (files, i - 1);
 	g_snprintf (key, 128, "File%d", i);
 	fprintf (f, "%s=%s\n", key, parole_file_get_file_name (file));
+	g_snprintf (key, 128, "Title%d", i);
+	fprintf (f, "%s=%s\n\n", key, parole_file_get_display_name (file));
     }
     
     return TRUE;
@@ -618,8 +616,10 @@ parole_pl_parser_save_xspf (FILE *f, GSList *files)
     for ( i = 0; i < len; i++)
     {
 	ParoleFile *file;
+	
 	file = g_slist_nth_data (files, i);
-	fprintf (f, "  <track>\n    <location>%s</location>\n  </track>\n", parole_file_get_uri (file));
+	fprintf (f, "  <track>\n    <title>%s</title>\n    <location>%s</location>\n  </track>\n", 
+		 parole_file_get_display_name (file), parole_file_get_uri (file));
     }
     
     fputs (" </trackList>\n<playlist>", f);

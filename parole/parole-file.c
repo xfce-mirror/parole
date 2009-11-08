@@ -165,7 +165,8 @@ parole_file_constructed (GObject *object)
 	}
 	else
 	{
-	    priv->display_name = g_strdup (priv->filename);
+	    if ( !priv->display_name )
+		priv->display_name = g_strdup (priv->filename);
 	    g_warning ("Unable to read file info %s", error->message);
 	}
 	goto out;
@@ -180,22 +181,26 @@ parole_file_constructed (GObject *object)
 	
 	tag_file = taglib_file_new (priv->filename);
 	
-	tag = taglib_file_tag (tag_file);
-	
-	title = taglib_tag_title (tag);
-	
-	if ( title )
+	if ( tag_file )
 	{
-	    title_s = g_strstrip (title);
-	    if ( strlen (title_s ) )
+	    tag = taglib_file_tag (tag_file);
+	    if ( tag )
 	    {
-		priv->display_name = g_strdup (title_s);
-	    }
-	}
+		title = taglib_tag_title (tag);
 	    
-	taglib_file_free (tag_file);
-	
-	taglib_tag_free_strings ();
+		if ( title )
+		{
+		    title_s = g_strstrip (title);
+		    if ( strlen (title_s ) )
+		    {
+			priv->display_name = g_strdup (title_s);
+		    }
+		}
+		    
+		taglib_tag_free_strings ();
+	    }
+	    taglib_file_free (tag_file);
+	}
     }
 #endif
 

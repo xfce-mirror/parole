@@ -516,6 +516,8 @@ void parole_media_list_save_cb (GtkButton *button, ParoleMediaList *list)
 
     gtk_window_set_transient_for (GTK_WINDOW (chooser), 
 				  GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (list))));
+				  
+    gtk_file_chooser_set_do_overwrite_confirmation (GTK_FILE_CHOOSER (chooser), TRUE);
 	
     filename = g_strconcat (_("Playlist"), ".m3u", NULL);
     gtk_file_chooser_set_current_name (GTK_FILE_CHOOSER (chooser), filename);
