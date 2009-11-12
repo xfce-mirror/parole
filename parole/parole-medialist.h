@@ -69,6 +69,11 @@ GtkWidget       		*parole_media_list_new              (void);
 
 void				 parole_media_list_load             (ParoleMediaList *list);
 
+
+gboolean			 parole_media_list_add_by_path      (ParoleMediaList *list, 
+								     const gchar *path, 
+								     gboolean emit);
+
 gboolean			 parole_media_list_is_selected_row  (ParoleMediaList *list);
 
 gboolean			 parole_media_list_is_empty	    (ParoleMediaList *list);
@@ -98,7 +103,7 @@ void				 parole_media_list_open		    (ParoleMediaList *list);
 
 void			         parole_media_list_open_location    (ParoleMediaList *list);
 
-void				 parole_media_list_add_files        (ParoleMediaList *list,
+gboolean			 parole_media_list_add_files        (ParoleMediaList *list,
 								     gchar **filenames);
 
 void				 parole_media_list_save_list	    (ParoleMediaList *list);

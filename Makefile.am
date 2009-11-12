@@ -1,7 +1,12 @@
+if ENABLE_BROWSER_PLUGIN
+browser_plugin_dir = browser-plugin
+endif
+
 SUBDIRS =  		\
 	data		\
 	parole 		\
 	plugins		\
+	browser-plugin  \
 	docs		\
 	po
 

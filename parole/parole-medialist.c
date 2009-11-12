@@ -72,6 +72,12 @@ static struct
   { PAROLE_PL_FORMAT_XSPF,    ".xspf" }
 };
 
+static GtkTargetEntry target_entry[] =
+{
+    { "STRING",        0, 0 },
+    { "text/uri-list", 0, 1 },
+};
+
 static void 	parole_media_list_dbus_class_init (ParoleMediaListClass *klass);
 static void 	parole_media_list_dbus_init 	  (ParoleMediaList      *list);
 
@@ -157,12 +163,6 @@ enum
     MEDIA_CURSOR_CHANGED,
     URI_OPENED,
     LAST_SIGNAL
-};
-
-static GtkTargetEntry target_entry[] =
-{
-    { "STRING",        0, 0 },
-    { "text/uri-list", 0, 1 },
 };
 
 static guint signals [LAST_SIGNAL] = { 0 };
@@ -297,28 +297,6 @@ parole_media_list_open_location_internal (ParoleMediaList *list)
     gtk_widget_show_all (GTK_WIDGET (location));
 }
 
-static gboolean
-parole_media_list_add_by_path (ParoleMediaList *list, const gchar *path, gboolean emit)
-{
-    GSList *file_list = NULL;
-    GtkFileFilter *filter;
-    guint len;
-    gboolean ret = FALSE;
-    
-    filter = parole_get_supported_media_filter ();
-    g_object_ref_sink (filter);
-    
-    parole_get_media_files (filter, path, &file_list);
-    
-    parole_media_list_files_opened_cb (NULL, file_list, list);
-    len = g_slist_length (file_list);
-    ret = len == 0 ? FALSE : TRUE;
-    
-    g_object_unref (filter);
-    g_slist_free (file_list);
-    return ret;
-}
-
 static GSList *
 parole_media_list_get_files (ParoleMediaList *list)
 {
@@ -362,8 +340,7 @@ void	parole_media_list_drag_data_received_cb (GtkWidget *widget,
     for ( i = 0; uri_list[i] != NULL; i++)
     {
 	path = g_filename_from_uri (uri_list[i], NULL, NULL);
-	if ( parole_media_list_add_by_path (list, path, i == 0 ? TRUE : FALSE) )
-	    added++;
+	added += parole_media_list_add_by_path (list, path, i == 0 ? TRUE : FALSE);
 
 	g_free (path);
     }
@@ -1105,6 +1082,28 @@ void parole_media_list_load (ParoleMediaList *list)
     
 }
 
+gboolean
+parole_media_list_add_by_path (ParoleMediaList *list, const gchar *path, gboolean emit)
+{
+    GSList *file_list = NULL;
+    GtkFileFilter *filter;
+    guint len;
+    gboolean ret = FALSE;
+    
+    filter = parole_get_supported_media_filter ();
+    g_object_ref_sink (filter);
+    
+    parole_get_media_files (filter, path, &file_list);
+    
+    parole_media_list_files_opened_cb (NULL, file_list, list);
+    len = g_slist_length (file_list);
+    ret = len == 0 ? FALSE : TRUE;
+    
+    g_object_unref (filter);
+    g_slist_free (file_list);
+    return ret;
+}
+
 GtkTreeRowReference *parole_media_list_get_next_row (ParoleMediaList *list, 
 						     GtkTreeRowReference *row,
 						     gboolean repeat)
@@ -1274,12 +1273,17 @@ void parole_media_list_open_location (ParoleMediaList *list)
     parole_media_list_open_location_internal (list);
 }
 
-void parole_media_list_add_files (ParoleMediaList *list, gchar **filenames)
+gboolean parole_media_list_add_files (ParoleMediaList *list, gchar **filenames)
 {
     guint i;
+    guint added = 0;
     
     for ( i = 0; filenames && filenames[i] != NULL; i++)
-	    parole_media_list_add_by_path (list, filenames[i], i == 0 ? TRUE : FALSE);
+    {
+	added += parole_media_list_add_by_path (list, filenames[i], i == 0 ? TRUE : FALSE);
+    }
+    
+    return added == i;
 }
 
 void parole_media_list_save_list (ParoleMediaList *list)

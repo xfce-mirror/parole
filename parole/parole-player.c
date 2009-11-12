@@ -171,6 +171,13 @@ void	        parole_show_about			(GtkWidget *widget);
 gboolean	parole_player_key_press 		(GtkWidget *widget, 
 							 GdkEventKey *ev, 
 							 ParolePlayer *player);
+
+static GtkTargetEntry target_entry[] =
+{
+    { "STRING",        0, 0 },
+    { "text/uri-list", 0, 1 },
+};
+
 /*
  * End of GtkBuilder Callbacks
  */
@@ -1492,6 +1499,39 @@ parole_player_configure_event_cb (GtkWidget *widget, GdkEventConfigure *ev, Paro
 }
 
 static void
+parole_player_drag_data_received_cb (GtkWidget *widget,
+				     GdkDragContext *drag_context,
+				     gint x,
+				     gint y,
+				     GtkSelectionData *data,
+				     guint info,
+				     guint drag_time,
+				     ParolePlayer *player)
+{
+    
+    gchar **uri_list;
+    guint added  = 0;
+    guint i;
+    
+    parole_window_busy_cursor (widget->window);
+    
+    uri_list = g_uri_list_extract_uris ((const gchar *)data->data);
+    for ( i = 0; uri_list[i] != NULL; i++)
+    {
+	gchar *path;
+	path = g_filename_from_uri (uri_list[i], NULL, NULL);
+	added += parole_media_list_add_by_path (player->priv->list, path, i == 0 ? TRUE : FALSE);
+
+	g_free (path);
+    }
+    
+    g_strfreev (uri_list);
+
+    gdk_window_set_cursor (widget->window, NULL);
+    gtk_drag_finish (drag_context, added == i ? TRUE : FALSE, FALSE, drag_time);
+}
+
+static void
 parole_player_init (ParolePlayer *player)
 {
     GtkBuilder *builder;
@@ -1556,6 +1596,13 @@ parole_player_init (ParolePlayer *player)
     
     g_signal_connect (G_OBJECT (player->priv->gst), "motion-notify-event",
 		      G_CALLBACK (parole_player_gst_widget_motion_notify_event), player);
+    
+    gtk_drag_dest_set (player->priv->gst, GTK_DEST_DEFAULT_ALL, 
+		       target_entry, G_N_ELEMENTS (target_entry),
+                       GDK_ACTION_COPY | GDK_ACTION_MOVE);
+		       
+    g_signal_connect (G_OBJECT (player->priv->gst), "drag-data-received",
+		      G_CALLBACK (parole_player_drag_data_received_cb), player);
     
     player->priv->window = GTK_WIDGET (gtk_builder_get_object (builder, "main-window"));
     player->priv->main_nt = GTK_WIDGET (gtk_builder_get_object (builder, "main-notebook"));

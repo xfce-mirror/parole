@@ -32,7 +32,7 @@ plugins_ui.h: plugins.ui
 
 endif
 
-DISTCLEANFILES =				\
+CLEANFILES =					\
 	$(interfaces_h)
 
 EXTRA_DIST =					\
