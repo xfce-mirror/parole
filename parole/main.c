@@ -177,13 +177,13 @@ int main (int argc, char **argv)
     gboolean raise_volume = FALSE;
     gboolean lower_volume = FALSE;
     gboolean mute = FALSE;
-    gboolean load_plugins = TRUE;
+    gboolean no_plugins = FALSE;
     gchar    *client_id = NULL;
     
     GOptionEntry option_entries[] = 
     {
 	{ "new-instance", 'i', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &new_instance, N_("Open a new instance"), NULL },
-	{ "no-plugins", 'n', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &load_plugins, N_("Do not load plugins"), NULL },
+	{ "no-plugins", 'n', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &no_plugins, N_("Do not load plugins"), NULL },
 	{ "play", 'p', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &play, N_("Play or pause if already playing"), NULL },
 	{ "stop", 's', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &stop, N_("Stop playing"), NULL },
 	{ "next-track", 'N', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &next_track, N_("Next track"), NULL },
@@ -308,19 +308,15 @@ int main (int argc, char **argv)
 	    g_error_free (error);
 	}
 
-	if ( load_plugins )
-	{
-	    plugins = parole_plugins_manager_new ();
-	    parole_plugins_manager_load_plugins (plugins);
-	}
+	plugins = parole_plugins_manager_get (!no_plugins);
+	parole_plugins_manager_load_plugins (plugins);
 	g_object_unref (builder);
 	
 	gdk_notify_startup_complete ();
 	gtk_main ();
 	
 	parole_dbus_release_name (PAROLE_DBUS_NAME);
-	if ( load_plugins)
-	    g_object_unref (plugins);
+	g_object_unref (plugins);
 	g_object_unref (session);
     }
 

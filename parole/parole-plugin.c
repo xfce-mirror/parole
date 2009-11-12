@@ -515,7 +515,7 @@ void parole_plugin_pack_widget (ParolePlugin *plugin, GtkWidget *widget, ParoleP
     
     g_return_if_fail (priv->packed == FALSE);
     
-    manager = parole_plugins_manager_new ();
+    manager = parole_plugins_manager_get (TRUE);
 
     parole_plugins_manager_pack (manager, plugin, widget, container);
 

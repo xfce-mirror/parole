@@ -68,7 +68,11 @@ void parole_plugins_manager_show_configure		(GtkButton *button,
 void parole_plugins_manager_show_about			(GtkButton *button,
 							 PrefData *pref);
 
-static void parole_plugins_manager_finalize   (GObject *object);
+static void parole_plugins_manager_finalize     (GObject *object);
+static void parole_plugins_manager_set_property (GObject *object,
+						 guint prop_id,
+						 const GValue *value,
+						 GParamSpec *pspec);
 
 #define PAROLE_PLUGINS_MANAGER_GET_PRIVATE(o) \
 (G_TYPE_INSTANCE_GET_PRIVATE ((o), PAROLE_TYPE_PLUGINS_MANAGER, ParolePluginsManagerPrivate))
@@ -79,6 +83,8 @@ struct ParolePluginsManagerPrivate
     GtkWidget *main_nt;
     
     GPtrArray *array;
+    
+    gboolean   load_plugins;
 };
 
 G_DEFINE_TYPE (ParolePluginsManager, parole_plugins_manager, G_TYPE_OBJECT)
@@ -88,6 +94,12 @@ enum
     COL_ACTIVE,
     COL_PLUGIN,
     COL_DATA
+};
+
+enum
+{
+    PROP_0,
+    PROP_LOAD_PLUGIN
 };
 
 void parole_plugins_manager_pref_response_cb		(GtkDialog *dialog,
@@ -195,7 +207,8 @@ parole_plugins_manager_cell_toggled_cb (GtkCellRendererToggle *cell_renderer,
     
     active ^= 1;
     
-    parole_module_set_active (module, active);
+    if ( pref->manager->priv->load_plugins )
+	parole_module_set_active (module, active);
     
     gtk_list_store_set (GTK_LIST_STORE (pref->store), &iter, 
 			COL_ACTIVE, active,
@@ -363,12 +376,64 @@ parole_plugins_manager_page_removed_cb (GtkContainer *container, GtkWidget *widg
     parole_plugins_manager_set_show_tabs (GTK_NOTEBOOK (container));
 }
 
+static void parole_plugins_manager_set_property (GObject *object,
+						 guint prop_id,
+						 const GValue *value,
+						 GParamSpec *pspec)
+{
+    ParolePluginsManager *manager;
+    
+    manager = PAROLE_PLUGINS_MANAGER (object);
+    
+    switch (prop_id)
+    {
+	case PROP_LOAD_PLUGIN:
+	    manager->priv->load_plugins = g_value_get_boolean (value);
+	    break;
+	default:
+           G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+           break;
+    }
+}
+
+static void parole_plugins_manager_get_property (GObject *object,
+						 guint prop_id,
+						 GValue *value,
+						 GParamSpec *pspec)
+{
+    ParolePluginsManager *manager;
+    
+    manager = PAROLE_PLUGINS_MANAGER (object);
+    
+    switch (prop_id)
+    {
+	case PROP_LOAD_PLUGIN:
+	    g_value_set_boolean (value, manager->priv->load_plugins);
+	    break;
+	default:
+           G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+           break;
+    }
+}
+
 static void
 parole_plugins_manager_class_init (ParolePluginsManagerClass *klass)
 {
     GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
     object_class->finalize = parole_plugins_manager_finalize;
+    
+    object_class->set_property = parole_plugins_manager_set_property;
+    object_class->get_property = parole_plugins_manager_get_property;
+    
+    
+    g_object_class_install_property (object_class,
+                                     PROP_LOAD_PLUGIN,
+                                     g_param_spec_boolean ("load-plugins",
+                                                           NULL, NULL,
+                                                           TRUE,
+                                                           G_PARAM_CONSTRUCT_ONLY|
+							   G_PARAM_READWRITE));
 
     g_type_class_add_private (klass, sizeof (ParolePluginsManagerPrivate));
 }
@@ -383,6 +448,8 @@ parole_plugins_manager_init (ParolePluginsManager *manager)
     manager->priv->array = g_ptr_array_new ();
     
     builder = parole_builder_get_main_interface ();
+    
+    manager->priv->load_plugins = TRUE;
     
     manager->priv->list_nt = GTK_WIDGET (gtk_builder_get_object (builder, "notebook-playlist"));
     manager->priv->main_nt = GTK_WIDGET (gtk_builder_get_object (builder, "main-notebook"));
@@ -423,7 +490,7 @@ parole_plugins_manager_finalize (GObject *object)
 }
 
 ParolePluginsManager *
-parole_plugins_manager_new (void)
+parole_plugins_manager_get (gboolean load_plugins)
 {
     static gpointer parole_plugins_manager_object = NULL;
     
@@ -433,7 +500,9 @@ parole_plugins_manager_new (void)
     }
     else
     {
-	parole_plugins_manager_object = g_object_new (PAROLE_TYPE_PLUGINS_MANAGER, NULL);
+	parole_plugins_manager_object = g_object_new (PAROLE_TYPE_PLUGINS_MANAGER, 
+						      "load-plugins", load_plugins, 
+						      NULL);
 	g_object_add_weak_pointer (parole_plugins_manager_object, &parole_plugins_manager_object);
     }
     
@@ -480,7 +549,7 @@ parole_plugins_manager_load_plugins (ParolePluginsManager *manager)
 		
 		for ( i = 0; i < len; i++)
 		{
-		    if ( !g_strcmp0 (plugins_rc[i], path) )
+		    if ( !g_strcmp0 (plugins_rc[i], path) && manager->priv->load_plugins )
 		    {
 			parole_module_set_active (module, TRUE);
 			break;

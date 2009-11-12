@@ -47,7 +47,7 @@ typedef struct
 
 GType        			    parole_plugins_manager_get_type       (void) G_GNUC_CONST;
 
-ParolePluginsManager               *parole_plugins_manager_new            (void);
+ParolePluginsManager               *parole_plugins_manager_get            (gboolean load_plugins);
 
 void				    parole_plugins_manager_load_plugins	  (ParolePluginsManager *manager);
 
