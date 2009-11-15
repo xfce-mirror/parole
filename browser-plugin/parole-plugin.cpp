@@ -75,9 +75,12 @@ NPError ParolePlugin::NewStream (NPMIMEType type, NPStream *stream,
 	url = g_strdup (stream->url);
 	
 	socket = g_strdup_printf ("%ld", window);
-	
-	//app = g_build_filename (LIBEXECDIR, "parole-media-plugin", NULL);
+#ifdef PAROLE_ENABLE_DEBUG
 	app = g_strdup ("media-plugin/parole-media-plugin");
+#else
+	app = g_build_filename (LIBEXECDIR, "parole-media-plugin", NULL);
+#endif
+
 	command[0] = app;
 	command[1] = (gchar *)"--socket-id";
 	command[2] = socket;
