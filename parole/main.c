@@ -204,6 +204,8 @@ int main (int argc, char **argv)
 
     xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
     
+    g_set_application_name (PACKAGE_NAME);
+    
     gtk_init (&argc, &argv);
     
     ctx = g_option_context_new (NULL);

@@ -135,6 +135,8 @@ parole_glib_enum_headers =			\
 	parole-stream.h				\
 	parole-conf.h
 
+# Parole Browser Player plugin
+
 if MAINTAINER_MODE
 
 BUILT_SOURCES = 				\

@@ -4,7 +4,8 @@ interfaces =					\
 	playlist.ui				\
 	mediachooser.ui				\
 	save-playlist.ui			\
-	plugins.ui
+	plugins.ui				\
+	browser-plugin-control.ui
 
 interfaces_h = 					\
 	$(interfaces:.ui=_ui.h)
@@ -29,6 +30,9 @@ save-playlist_ui.h: save-playlist.ui
 
 plugins_ui.h: plugins.ui
 	exo-csource --static --strip-comments --strip-content --name=plugins_ui $< > $@
+
+browser-plugin-control_ui.h: browser-plugin-control.ui
+	exo-csource --static --strip-comments --strip-content --name=browser_plugin_control_ui $< > $@
 
 endif
 

@@ -2,12 +2,12 @@ if ENABLE_BROWSER_PLUGIN
 browser_plugin_dir = browser-plugin
 endif
 
-SUBDIRS =  		\
-	data		\
-	parole 		\
-	plugins		\
-	browser-plugin  \
-	docs		\
+SUBDIRS =  			\
+	data			\
+	parole 			\
+	plugins			\
+	$(browser_plugin_dir)  	\
+	docs			\
 	po
 
 

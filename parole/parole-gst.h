@@ -135,6 +135,7 @@ gdouble			parole_gst_get_stream_position  (ParoleGst *gst);
 
 gboolean		parole_gst_get_is_xvimage_sink  (ParoleGst *gst);
 
+
 G_END_DECLS
 
 #endif /* __PAROLE_GST_H */

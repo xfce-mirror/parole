@@ -41,7 +41,6 @@
 #include "parole-gst.h"
 #include "parole-utils.h"
 #include "parole-conf.h"
-#include "parole-utils.h"
 #include "parole-debug.h"
 #include "enum-gtypes.h"
 #include "gmarshal.h"
