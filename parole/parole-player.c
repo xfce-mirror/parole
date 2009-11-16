@@ -55,6 +55,8 @@
 #include "parole-rc-utils.h"
 #include "parole-utils.h"
 #include "parole-session.h"
+#include "parole-debug.h"
+#include "parole-button.h"
 #include "enum-gtypes.h"
 #include "parole-debug.h"
 
@@ -193,6 +195,9 @@ struct ParolePlayerPrivate
     ParoleConf          *conf;
     ParoleDiscMenu      *disc_menu;
     ParoleSession       *session;
+#ifdef HAVE_XF86_KEYSYM
+    ParoleButton        *button;
+#endif
     
     GtkRecentManager    *recent;
 
@@ -1293,6 +1298,10 @@ parole_player_finalize (GObject *object)
     g_object_unref (player->priv->conf);
     g_object_unref (player->priv->screen_saver);
     
+#ifdef HAVE_XF86_KEYSYM
+    g_object_unref (player->priv->button);
+#endif
+
     gtk_widget_destroy (player->priv->fs_window);
 
     G_OBJECT_CLASS (parole_player_parent_class)->finalize (object);
@@ -1419,6 +1428,34 @@ parole_player_key_press (GtkWidget *widget, GdkEventKey *ev, ParolePlayer *playe
     
     return parole_player_handle_key_press (ev, player);
 }
+
+#ifdef HAVE_XF86_KEYSYM
+static void
+parole_player_button_pressed_cb (ParoleButton *button, ParoleButtonKey key, ParolePlayer *player)
+{
+    PAROLE_DEBUG_ENUM ("Button Press:", key, ENUM_GTYPE_BUTTON_KEY);
+    
+    switch (key)
+    {
+	case PAROLE_KEY_AUDIO_PLAY:
+	    parole_player_play_pause_clicked (NULL, player);
+	    break;
+	case PAROLE_KEY_AUDIO_STOP:
+	    parole_player_stop_clicked (NULL, player);
+	    break;
+	case PAROLE_KEY_AUDIO_PREV:
+	    if ( !parole_disc_menu_seek_prev (player->priv->disc_menu))
+		parole_player_play_prev (player);
+	    break;
+	case PAROLE_KEY_AUDIO_NEXT:
+	    if ( !parole_disc_menu_seek_next (player->priv->disc_menu))
+		parole_player_play_next (player, FALSE);
+	    break;
+	default:
+	    break;
+    }
+}
+#endif
 
 static void
 parole_player_session_die_cb (ParolePlayer *player)
@@ -1694,6 +1731,12 @@ parole_player_init (ParolePlayer *player)
 		      G_CALLBACK (parole_player_screen_size_change_changed_cb), player);
     
     g_object_unref (builder);
+    
+#ifdef HAVE_XF86_KEYSYM
+    player->priv->button = parole_button_new ();
+    g_signal_connect (player->priv->button, "button-pressed",
+		      G_CALLBACK (parole_player_button_pressed_cb), player);
+#endif
     
     parole_player_dbus_init (player);
 }

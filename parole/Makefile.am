@@ -70,7 +70,8 @@ NOINST_HFILES =					\
 	parole-subtitle-encoding.h		\
 	parole-open-location.h			\
 	parole-disc-menu.h			\
-	parole-session.h
+	parole-session.h			\
+	parole-button.h
 
 libparole_headers =				\
 	$(INST_HFILES)
@@ -111,7 +112,8 @@ libparole_la_SOURCES =				\
 	parole-subtitle-encoding.c		\
 	parole-open-location.c			\
 	parole-disc-menu.c			\
-	parole-session.c
+	parole-session.c			\
+	parole-button.c
 
 libparole_la_LDFLAGS =				\
 	$(PAROLE_LDFLAGS)
@@ -133,7 +135,8 @@ parole_glib_enum_headers =			\
 	parole-plugin.h				\
 	parole-pl-parser.h			\
 	parole-stream.h				\
-	parole-conf.h
+	parole-conf.h				\
+	parole-button.h
 
 # Parole Browser Player plugin
 
@@ -170,6 +173,7 @@ enum-gtypes.c: $(parole_glib_enum_headers) Makefile
 		--fhead "#include \"parole-pl-parser.h\"\n\n" \
 		--fhead "#include \"parole-stream.h\"\n\n" \
 		--fhead "#include \"parole-conf.h\"\n\n" \
+		--fhead "#include \"parole-button.h\"\n\n" \
 		--fprod "\n/* enumerations from \"@filename@\" */" \
 		--vhead "GType\n@enum_name@_get_type (void)\n{\n  static GType etype = 0;\n  if (etype == 0) {\n    static const G@Type@Value values[] = {" \
 		--vprod "      { @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \
