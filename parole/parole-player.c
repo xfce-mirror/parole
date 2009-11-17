@@ -934,12 +934,12 @@ parole_player_move_fs_window (ParolePlayer *player)
 }
 
 static void
-parole_player_full_screen_menu_item_activate (ParolePlayer *player)
+parole_player_full_screen (ParolePlayer *player, gboolean fullscreen)
 {
     gint npages;
     static gint current_page = 0;
     
-    if ( player->priv->full_screen )
+    if ( player->priv->full_screen && !fullscreen)
     {
 	npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (player->priv->main_nt));
 	gtk_widget_reparent (player->priv->play_box, player->priv->control);
@@ -978,6 +978,12 @@ parole_player_full_screen_menu_item_activate (ParolePlayer *player)
 	gtk_window_fullscreen (GTK_WINDOW (player->priv->window));
 	player->priv->full_screen = TRUE;
     }
+}
+
+static void
+parole_player_full_screen_menu_item_activate (ParolePlayer *player)
+{
+    parole_player_full_screen (player, !player->priv->full_screen);
 }
 
 void parole_player_full_screen_activated_cb (GtkWidget *widget, ParolePlayer *player)
@@ -1376,6 +1382,20 @@ parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
 	    parole_player_stop_clicked (NULL, player);
 	    ret_val = TRUE;
 	    break;
+#ifdef HAVE_XF86_KEYSYM
+	case XF86XK_OpenURL:
+	    parole_player_full_screen (player, FALSE);
+	    parole_media_list_open_location (player->priv->list);
+	    break;
+#endif
+	case GDK_O:
+	case GDK_o:
+	    if ( ev->state & GDK_CONTROL_MASK )
+	    {
+		parole_player_full_screen (player, FALSE);
+		parole_media_list_open (player->priv->list);
+	    }
+	break;
 	default:
 	    break;
     }
