@@ -5,7 +5,7 @@
   <object class="GtkVBox" id="vbox">
     <property name="visible">True</property>
     <property name="orientation">vertical</property>
-    <property name="spacing">10</property>
+    <property name="spacing">4</property>
     <child>
       <object class="GtkFileChooserWidget" id="filechooserwidget">
         <property name="visible">True</property>
@@ -32,6 +32,21 @@
         <property name="expand">False</property>
         <property name="fill">False</property>
         <property name="position">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkCheckButton" id="replace">
+        <property name="label" translatable="yes">Replace playlist with opened files</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">False</property>
+        <property name="draw_indicator">True</property>
+        <signal name="toggled" handler="parole_media_chooser_replace_toggled_cb"/>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">False</property>
+        <property name="position">2</property>
       </packing>
     </child>
     <child>
@@ -72,7 +87,7 @@
       </object>
       <packing>
         <property name="expand">False</property>
-        <property name="position">2</property>
+        <property name="position">3</property>
       </packing>
     </child>
   </object>

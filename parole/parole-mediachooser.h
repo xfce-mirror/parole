@@ -43,7 +43,8 @@ typedef struct
     GtkDialogClass 		 parent_class;
     
     void			 (*media_files_opened)		    (ParoleMediaChooser *chooser,
-								     GPtrArray *array);
+								     gboolean replace,
+								     GSList *list);
 								     
 } ParoleMediaChooserClass;
 

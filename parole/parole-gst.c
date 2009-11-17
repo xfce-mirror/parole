@@ -123,8 +123,6 @@ parole_gst_finalize (GObject *object)
     if ( gst->priv->tick_id != 0)
 	g_source_remove (gst->priv->tick_id);
     
-    g_object_unref (gst->priv->playbin);
-    
     parole_stream_init_properties (gst->priv->stream);
     
     g_object_unref (gst->priv->stream);

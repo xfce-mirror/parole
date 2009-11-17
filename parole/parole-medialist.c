@@ -89,6 +89,8 @@ static GtkTreeRowReference *
 static void 	parole_media_list_select_path 	  (ParoleMediaList *list, 
 						   GtkTreePath *path);
 
+static void	parole_media_list_clear_list 	  (ParoleMediaList *list);
+
 /*
  * Callbacks for GtkBuilder
  */
@@ -234,7 +236,8 @@ parole_media_list_add (ParoleMediaList *list, ParoleFile *file, gboolean emit, g
 }
 
 static void
-parole_media_list_files_opened_cb (ParoleMediaChooser *chooser, GSList *files, ParoleMediaList *list)
+parole_media_list_files_opened_cb (ParoleMediaChooser *chooser, gboolean replace,
+				   GSList *files, ParoleMediaList *list)
 {
     ParoleFile *file;
     guint len;
@@ -242,8 +245,10 @@ parole_media_list_files_opened_cb (ParoleMediaChooser *chooser, GSList *files, P
     
     len = g_slist_length (files);
     TRACE ("Adding files");
+    
     if ( len != 0 )
     {
+	parole_media_list_clear_list (list);
 	file = g_slist_nth_data (files, 0);
 	parole_media_list_add (list, file, TRUE, TRUE);
     }
@@ -1075,7 +1080,7 @@ void parole_media_list_load (ParoleMediaList *list)
 	    fileslist = parole_pl_parser_load_file (playlist_file);
 	    g_free (playlist_file);
 	    
-	    parole_media_list_files_opened_cb (NULL, fileslist, list);
+	    parole_media_list_files_opened_cb (NULL, FALSE, fileslist, list);
 	    g_slist_free (fileslist);
 	}
     }
@@ -1095,7 +1100,7 @@ parole_media_list_add_by_path (ParoleMediaList *list, const gchar *path, gboolea
     
     parole_get_media_files (filter, path, TRUE, &file_list);
     
-    parole_media_list_files_opened_cb (NULL, file_list, list);
+    parole_media_list_files_opened_cb (NULL, FALSE, file_list, list);
     len = g_slist_length (file_list);
     ret = len == 0 ? FALSE : TRUE;
     
