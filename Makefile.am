@@ -4,6 +4,7 @@ endif
 
 SUBDIRS =  			\
 	data			\
+	common			\
 	parole 			\
 	plugins			\
 	$(browser_plugin_dir)  	\

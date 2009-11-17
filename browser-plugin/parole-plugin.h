@@ -32,6 +32,7 @@
 #include <npupp.h>
 
 #include <gtk/gtk.h>
+#include <dbus/dbus-glib.h>
 
 class ParolePlugin
 {
@@ -59,9 +60,12 @@ public:
     static char       *PluginDescription(void);
 
 private:
-    gboolean 	window_set;
-    gchar      *url;
-    Window      window;
+    DBusGConnection *bus;
+    DBusGProxy      *proxy;
+    
+    gboolean 	     window_set;
+    gchar           *url;
+    Window           window;
 };
 
 #endif // __PAROLE_PLUGIN_H__

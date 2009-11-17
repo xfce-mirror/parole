@@ -54,6 +54,8 @@ void				parole_gst_play_url	   (ParoleGst *gst,
 							    
 void				parole_gst_terminate	   (ParoleGst *gst);
 
+GtkWidget		       *parole_gst_get_controls    (ParoleGst *gst);
+
 G_END_DECLS
 
 #endif /* __PAROLE_GST_H */

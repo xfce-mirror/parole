@@ -33,7 +33,18 @@
 
 #include <gdk/gdkx.h>
 
+#include <dbus/dbus-glib.h>
+
 #include "parole-gst.h"
+
+#include "interfaces/browser-plugin-control_ui.h"
+#include "common/parole-dbus.h"
+
+/*
+ * DBus Glib init
+ */
+static void parole_gst_dbus_class_init (ParoleGstClass *klass);
+static void parole_gst_dbus_init       (ParoleGst *gst);
 
 static void parole_gst_finalize   (GObject *object);
 
@@ -49,30 +60,297 @@ struct ParoleGstPrivate
     GstState      state;
     GstState      target;
     
+    GtkWidget	 *controls;
+    GtkWidget	 *play;
+    GtkWidget	 *range;
+    
     gulong	  sig1;
     gulong	  sig2;
+    gulong	  tick_id;
     
     gboolean	  terminate;
-    
+    gboolean      internal_range_change;
+    gboolean      user_seeking;
+
+    /* Stream properties*/
     gboolean	  has_video;
+    gboolean      has_audio;
     gboolean	  buffering;
+    gboolean      live;
+    gboolean      seekable;
+    gdouble   	  duration;
+    gint64  	  absolute_duration;
+    
 };
 
 G_DEFINE_TYPE (ParoleGst, parole_gst, GTK_TYPE_WIDGET)
+
+static void parole_gst_seek (ParoleGst *gst, gdouble pos)
+{
+    gint64 seek;
+    
+    seek = (gint64) (pos * gst->priv->absolute_duration) / gst->priv->duration;
+    
+    g_debug ("seeking %lld", seek);
+    
+    g_warn_if_fail ( gst_element_seek (gst->priv->playbin,
+				       1.0,
+				       GST_FORMAT_TIME,
+				       GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT,
+				       GST_SEEK_TYPE_SET, seek,
+				       GST_SEEK_TYPE_NONE, GST_CLOCK_TIME_NONE));
+				       
+    gst_element_get_state (gst->priv->playbin, NULL, NULL, 100 * GST_MSECOND);
+}
+
+static void
+parole_gst_range_value_changed (GtkRange *range, ParoleGst *gst)
+{
+    gdouble value;
+    
+    if ( !gst->priv->internal_range_change )
+    {
+	value = gtk_range_get_value (GTK_RANGE (range));
+	gst->priv->user_seeking = TRUE;
+	parole_gst_seek (gst, value);
+	gst->priv->user_seeking = FALSE;
+    }
+}
+
+static gboolean
+parole_gst_range_button_release (GtkWidget *widget, GdkEventButton *ev, ParoleGst *gst)
+{
+    ev->button = 2;
+    
+    gst->priv->user_seeking = FALSE;
+    
+    return FALSE;
+}
+
+static gboolean
+parole_gst_range_button_press (GtkWidget *widget, GdkEventButton *ev, ParoleGst *gst)
+{
+    ev->button = 2;
+    
+    gst->priv->user_seeking = TRUE;
+    
+    return FALSE;
+}
+
+static void
+parole_gst_change_range_value (ParoleGst *gst, gdouble value)
+{
+    if ( !gst->priv->user_seeking )
+    {
+	gst->priv->internal_range_change = TRUE;
+    
+	gtk_range_set_value (GTK_RANGE (gst->priv->range), value);
+
+	gst->priv->internal_range_change = FALSE;
+    }
+}
+
+static void
+parole_gst_init_stream_properties (ParoleGst *gst)
+{
+    gst->priv->has_video = FALSE;
+    gst->priv->has_audio = FALSE;
+    gst->priv->buffering = FALSE;
+    gst->priv->duration  = 0;
+    gst->priv->absolute_duration = 0;
+    gst->priv->seekable = FALSE;
+    gst->priv->live = FALSE;
+    
+    gst->priv->user_seeking = FALSE;
+    
+    parole_gst_change_range_value (gst, 0);
+    gtk_widget_set_sensitive (gst->priv->range, FALSE);
+    gst->priv->internal_range_change = FALSE;
+}
+
+static gboolean
+parole_gst_tick_timeout (gpointer data)
+{
+    ParoleGst *gst;
+    
+    gint64 pos;
+    GstFormat format = GST_FORMAT_TIME;
+    gdouble value;
+    
+    gst = PAROLE_GST (data);
+    
+    gst_element_query_position (gst->priv->playbin, &format, &pos);
+    
+    if ( G_UNLIKELY (format != GST_FORMAT_TIME ) )
+	goto out;
+
+    if ( gst->priv->live )
+    {
+	gst->priv->tick_id = 0;
+	return FALSE;
+    }
+
+    if ( gst->priv->state == GST_STATE_PLAYING )
+    {
+	value = ( pos / ((gdouble) 60 * 1000 * 1000 * 1000 ));
+	parole_gst_change_range_value (gst, value);
+    }
+
+out:
+    return TRUE;
+}
+
+static void
+parole_gst_tick (ParoleGst *gst)
+{
+    if ( gst->priv->state >= GST_STATE_PAUSED )
+    {
+	if ( gst->priv->tick_id != 0 )
+	{
+	    return;
+	}
+	gst->priv->tick_id = g_timeout_add (1000, (GSourceFunc) parole_gst_tick_timeout, gst);
+    }
+    else if ( gst->priv->tick_id != 0)
+    {
+        g_source_remove (gst->priv->tick_id);
+	gst->priv->tick_id = 0;
+    }
+}
+
+static void
+parole_gst_set_play_button_image (ParoleGst *gst)
+{
+    GtkWidget *img;
+    
+    g_object_get (G_OBJECT (gst->priv->play),
+                  "image", &img,
+                  NULL);
+
+    if ( gst->priv->state == GST_STATE_PLAYING )
+    {
+        g_object_set (G_OBJECT (img),
+                      "stock", GTK_STOCK_MEDIA_PAUSE,
+                      NULL);
+    }
+    else
+    {
+        g_object_set (G_OBJECT (img),
+                      "stock", GTK_STOCK_MEDIA_PLAY,
+                      NULL);
+                      
+    }
+    g_object_unref (img);
+}
+
+static void
+parole_gst_query_capabilities (ParoleGst *gst)
+{
+    GstQuery *query;
+    
+    query = gst_query_new_seeking (GST_FORMAT_TIME);
+    
+    if ( gst_element_query (gst->priv->playbin, query) )
+    {
+	gst_query_parse_seeking (query,
+				 NULL,
+				 &gst->priv->seekable,
+				 NULL,
+				 NULL);
+				 
+	gtk_widget_set_sensitive (gst->priv->range, gst->priv->seekable);
+    }
+    gst_query_unref (query);
+}
+
+static void
+parole_gst_query_info (ParoleGst *gst)
+{
+    const GList *info = NULL;
+    GObject *obj;
+    GEnumValue *val;
+    GParamSpec *pspec;
+    gint type;
+    
+    g_object_get (G_OBJECT (gst->priv->playbin),
+		  "stream-info", &info,
+		  NULL);
+		  
+    for ( ; info != NULL; info = info->next )
+    {
+	obj = info->data;
+	
+	g_object_get (obj,
+		      "type", &type,
+		      NULL);
+	
+	pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (obj), "type");
+	val = g_enum_get_value (G_PARAM_SPEC_ENUM (pspec)->enum_class, type);
+	
+	if ( g_ascii_strcasecmp (val->value_name, "video") == 0 ||
+	     g_ascii_strcasecmp (val->value_nick, "video") == 0)
+	{
+	    gst->priv->has_video = TRUE;
+	}
+	if ( g_ascii_strcasecmp (val->value_name, "audio") == 0 ||
+	     g_ascii_strcasecmp (val->value_nick, "audio") == 0)
+	{
+	    gst->priv->has_video = TRUE;
+	}
+    }
+}
+
+static void
+parole_gst_query_duration (ParoleGst *gst)
+{
+    GstFormat gst_time;
+    
+    gst_time = GST_FORMAT_TIME;
+    
+    gst_element_query_duration (gst->priv->playbin, 
+				&gst_time,
+				&gst->priv->absolute_duration);
+    
+    if (gst_time == GST_FORMAT_TIME)
+    {
+	gst->priv->duration =  gst->priv->absolute_duration / ((gdouble) 60 * 1000 * 1000 * 1000);
+	gst->priv->live = ( gst->priv->absolute_duration == 0 );
+	
+	g_debug ("Stream duration=%f absolution_duration=%lld",  
+		 gst->priv->duration ,  gst->priv->absolute_duration);
+		 
+	if ( !gst->priv->live )
+	{
+	    gst->priv->internal_range_change = TRUE;
+	    gtk_range_set_range (GTK_RANGE (gst->priv->range), 0, gst->priv->duration);
+	    gst->priv->internal_range_change = FALSE;
+	}
+    }
+}
 
 static void
 parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState pending)
 {
     gst->priv->state = new;
+    
+    parole_gst_set_play_button_image (gst);
+    parole_gst_tick (gst);
 
     switch (gst->priv->state)
     {
 	case GST_STATE_PLAYING:
 	    break;
 	case GST_STATE_PAUSED:
+	    if ( old == GST_STATE_READY )
+	    {
+		parole_gst_query_duration (gst);
+		parole_gst_query_capabilities (gst);
+		parole_gst_query_info (gst);
+	    }
 	    break;
 	case GST_STATE_READY:
 	    gst->priv->buffering = FALSE;
+	    break;
 	case GST_STATE_NULL:
 	    gst->priv->buffering = FALSE;
 	    if ( gst->priv->terminate )
@@ -155,7 +433,6 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
 	}
 	case GST_MESSAGE_ERROR:
 	{
-	    /*
 	    GError *error = NULL;
 	    gchar *debug;
 	    
@@ -163,11 +440,10 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
 	    gst->priv->buffering = FALSE;
 	    parole_gst_change_state (gst, GST_STATE_NULL);
 	    gst_message_parse_error (msg, &error, &debug);
-	    TRACE ("*** ERROR %s : %s ***", error->message, debug);
+	    g_critical ("*** ERROR %s : %s ***", error->message, debug);
 	    g_error_free (error);
 	    g_free (debug);
 	    gtk_widget_queue_draw (GTK_WIDGET (gst));
-	    */
 	    break;
 	}
 	case GST_MESSAGE_BUFFERING:
@@ -175,17 +451,20 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
 	    gint per = 0;
 	    gst_message_parse_buffering (msg, &per);
 	    gst->priv->buffering = per != 100;
+	    if ( per != 100 && gst->priv->state != GST_STATE_PAUSED)
+		parole_gst_change_state (gst, GST_STATE_PAUSED);
+	    else if ( gst->priv->state != GST_STATE_PLAYING)
+		parole_gst_change_state (gst, GST_STATE_PLAYING);
+		
 	    break;
 	}
 	case GST_MESSAGE_STATE_CHANGED:
 	{
-	    /*
 	    GstState old, new, pending;
 	    gst_message_parse_state_changed (msg, &old, &new, &pending);
 	    
 	    if ( GST_MESSAGE_SRC (msg) == GST_OBJECT (gst->priv->playbin) )
 		parole_gst_evaluate_state (gst, old, new, pending);
-	    */
 	    break;
 	}
 	case GST_MESSAGE_APPLICATION:
@@ -198,6 +477,15 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
 	    break;
     }
     return TRUE;
+}
+
+static void
+parole_gst_play_clicked_cb (ParoleGst *gst)
+{
+    if ( gst->priv->state == GST_STATE_PLAYING )
+	parole_gst_change_state (gst, GST_STATE_PAUSED);
+    else
+	parole_gst_change_state (gst, GST_STATE_PLAYING);
 }
 
 static void
@@ -347,18 +635,57 @@ parole_gst_class_init (ParoleGstClass *klass)
     widget_class->expose_event = parole_gst_expose_event;
 
     g_type_class_add_private (klass, sizeof (ParoleGstPrivate));
+    
+    parole_gst_dbus_class_init (klass);
 }
 
 static void
 parole_gst_init (ParoleGst *gst)
 {
+    GtkBuilder *builder;
+    GError *error = NULL;
+    
     gst->priv = PAROLE_GST_GET_PRIVATE (gst);
+    
+    parole_dbus_register_name ("org.Parole.Media.Plugin");
     
     gst->priv->state = GST_STATE_VOID_PENDING;
     gst->priv->target = GST_STATE_VOID_PENDING;
     
+    gst->priv->tick_id = 0;
+    
     gst->priv->terminate = FALSE;
     
+    builder = gtk_builder_new ();
+    gtk_builder_add_from_string (builder, 
+				 browser_plugin_control_ui, 
+				 browser_plugin_control_ui_length,
+				 &error);
+				 
+    if ( error )
+    {
+	g_error ("%s", error->message);
+    }
+    
+    gst->priv->controls = GTK_WIDGET (gtk_builder_get_object (builder, "controls"));
+    
+    gst->priv->range = GTK_WIDGET (gtk_builder_get_object (builder, "scale"));
+    
+    gst->priv->play = GTK_WIDGET (gtk_builder_get_object (builder, "play"));
+    
+    g_signal_connect_swapped (gst->priv->play, "clicked",
+			      G_CALLBACK (parole_gst_play_clicked_cb), gst);
+
+    g_signal_connect (gst->priv->range, "button-press-event",
+		      G_CALLBACK (parole_gst_range_button_press), gst);
+
+    g_signal_connect (gst->priv->range, "button-release-event",
+		      G_CALLBACK (parole_gst_range_button_release), gst);
+		      
+    g_signal_connect (gst->priv->range, "value-changed",
+		      G_CALLBACK (parole_gst_range_value_changed), gst);
+
+    parole_gst_init_stream_properties (gst);
     
     GTK_WIDGET_SET_FLAGS (GTK_WIDGET (gst), GTK_CAN_FOCUS);
     
@@ -367,6 +694,8 @@ parole_gst_init (ParoleGst *gst)
      * flickering when resizing the window.
      */
     GTK_WIDGET_UNSET_FLAGS (GTK_WIDGET (gst), GTK_DOUBLE_BUFFERED);
+    
+    parole_gst_dbus_init (gst);
 }
 
 static void
@@ -375,7 +704,13 @@ parole_gst_finalize (GObject *object)
     ParoleGst *gst;
 
     gst = PAROLE_GST (object);
+    
+    parole_dbus_release_name ("org.Parole.Media.Plugin");
+    
     g_object_unref (gst->priv->playbin);
+    
+    if ( gst->priv->tick_id != 0)
+	g_source_remove (gst->priv->tick_id);
 
     G_OBJECT_CLASS (parole_gst_parent_class)->finalize (object);
 }
@@ -395,6 +730,7 @@ void parole_gst_play_url (ParoleGst *gst, const gchar *url)
     g_object_set (G_OBJECT (gst->priv->playbin),
 		  "uri", url,
 		  NULL);
+    gst->priv->target = GST_STATE_PLAYING;
     parole_gst_change_state (gst, GST_STATE_PLAYING);
 }
 
@@ -405,4 +741,45 @@ void parole_gst_terminate (ParoleGst *gst)
     gst->priv->terminate = TRUE;
     gst->priv->target = GST_STATE_NULL;
     parole_gst_change_state (gst, GST_STATE_NULL);
+}
+
+GtkWidget *parole_gst_get_controls (ParoleGst *gst)
+{
+    g_return_val_if_fail (gst->priv->playbin != NULL, NULL);
+    
+    return gst->priv->controls;
+}
+
+static gboolean parole_gst_dbus_quit (ParoleGst *gst,
+				      GError **error);
+
+#include "org.parole.media.plugin.h"
+
+/*
+ * DBus server implementation
+ */
+static void 
+parole_gst_dbus_class_init (ParoleGstClass *klass)
+{
+    
+    dbus_g_object_type_install_info (G_TYPE_FROM_CLASS (klass),
+                                     &dbus_glib_parole_gst_object_info);
+                                     
+}
+
+static void
+parole_gst_dbus_init (ParoleGst *gst)
+{
+    dbus_g_connection_register_g_object (parole_g_session_bus_get (),
+                                         "/org/Parole/Media/Plugin",
+                                         G_OBJECT (gst));
+}
+
+static gboolean
+parole_gst_dbus_quit (ParoleGst *gst,
+		      GError **error)
+{
+    parole_gst_terminate (gst);
+    
+    return TRUE;
 }

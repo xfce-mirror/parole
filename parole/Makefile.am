@@ -7,6 +7,7 @@ INCLUDES =					\
 	-I$(top_srcdir)				\
 	-I$(top_srcdir)/data			\
 	-I$(top_srcdir)/data/mime		\
+	-I$(top_srcdir)/common                  \
 	-DLOCALEDIR=\"$(localedir)\"		\
 	-DG_LOG_DOMAIN=\"parole\"		\
 	-DPAROLE_PLUGINS_DIR=\"$(libdir)/parole-$(PAROLE_VERSION_API)\"\
@@ -24,6 +25,7 @@ PAROLE_LDFLAGS =				\
 	-export-symbols-regex "^[[^_]].*"
 
 PAROLE_LIBS = 					\
+	$(top_builddir)/common/libparoledbus.la \
         $(GTHREAD_LIBS)                         \
 	$(GIO_LIBS)				\
         $(DBUS_GLIB_LIBS)                       \
@@ -59,7 +61,6 @@ NOINST_HFILES =					\
 	parole-rc-utils.h			\
 	parole-utils.h				\
 	parole-disc.h				\
-	parole-dbus.h				\
 	parole-medialist.h			\
 	parole-debug.h				\
 	parole-plugins-manager.h		\
@@ -101,7 +102,6 @@ libparole_la_SOURCES =				\
 	parole-disc.c				\
 	parole-rc-utils.c			\
 	parole-utils.c				\
-	parole-dbus.c				\
 	parole-debug.c				\
 	parole-plugins-manager.c		\
 	parole-plugin.c				\

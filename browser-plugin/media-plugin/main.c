@@ -92,19 +92,29 @@ int main (int argc, char **argv)
     g_option_context_free (ctx);
     
     {
+	GtkWidget *box;
 	GtkWidget *plug;
 	GtkWidget *gst;
+	
 	gulong sig_id;
 	plug = gtk_plug_new (socket_id);
 	
+	box = gtk_vbox_new (FALSE, 0);
+	
 	gst = parole_gst_new ();
 	
-	gtk_container_add (GTK_CONTAINER (plug), gst);
+	gtk_box_pack_start (GTK_BOX (box), gst, TRUE, TRUE, 0);
+	gtk_box_pack_start (GTK_BOX (box), parole_gst_get_controls (PAROLE_GST (gst)), 
+			    FALSE, FALSE, 0);
+	
+	gtk_container_add (GTK_CONTAINER (plug), box);
 	
 	sig_id = g_signal_connect (plug, "delete-event",
 				   G_CALLBACK (parole_terminate), gst);
-	parole_gst_play_url (PAROLE_GST (gst), url);
+				   
 	gtk_widget_show_all (plug);
+	parole_gst_play_url (PAROLE_GST (gst), url);
+	
 	gtk_main ();
 	g_signal_handler_disconnect (plug, sig_id);
 	gtk_widget_destroy (plug);

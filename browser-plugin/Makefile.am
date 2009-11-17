@@ -8,7 +8,8 @@ INCLUDES = 						\
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"		\
         -DG_LOG_DOMAIN=\"parole-browser-plugin\"	\
 	-DLIBEXECDIR="\"$(libexecdir)\""		\
-	$(GTK_CFLAGS)
+	$(GTK_CFLAGS)					\
+	$(DBUS_GLIB_CFLAGS)
 
 plugindir = $(BROWSER_PLUGIN_DIR)
 
@@ -33,7 +34,8 @@ parole_player_la_CPPFLAGS =				\
 	-I$(top_srcdir)/browser-plugin
 
 parole_player_la_LIBADD =				\
-	$(GTK_LIBS)
+	$(GTK_LIBS)					\
+	$(DBUS_GLIB_LIBS)
 
 parole_player_la_LDFLAGS =				\
 	-avoid-version  				\
