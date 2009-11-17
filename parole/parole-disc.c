@@ -152,7 +152,7 @@ parole_disc_add_mount_to_menu (ParoleDisc *disc, GMount *mount, const gchar *dev
     if ( g_file_has_uri_scheme (file, "cdda") )
     {
 	kind = PAROLE_DISC_CDDA;
-	uri = g_strdup ("cdda:/");
+	uri = g_strdup ("cdda://");
 	goto got_cdda;
     }
 	
@@ -183,7 +183,7 @@ parole_disc_add_mount_to_menu (ParoleDisc *disc, GMount *mount, const gchar *dev
 	else if ( !g_strcmp0 (content_type[i], "x-content/audio-cdda") )
 	{
 	    kind = PAROLE_DISC_CDDA;
-	    uri = g_strdup ("cdda:/");
+	    uri = g_strdup ("cdda://");
 	    break;
 	}
     }
@@ -242,7 +242,7 @@ parole_disc_check_cdrom (ParoleDisc *disc, GVolume *volume, const gchar *device)
 		if ( drive == CDS_AUDIO || drive == CDS_MIXED )
 		{
 		    MountData *data;
-		    data = parole_disc_get_mount_data (disc, g_volume_get_name (volume), "cdda:/", device, PAROLE_DISC_CDDA);
+		    data = parole_disc_get_mount_data (disc, g_volume_get_name (volume), "cdda://", device, PAROLE_DISC_CDDA);
 		    g_ptr_array_add (disc->priv->array, data);
 		}
 	    }
