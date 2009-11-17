@@ -53,6 +53,7 @@ ParoleFileFormat	 parole_file_guess_format		(ParoleFile *file);
 
 void			 parole_get_media_files			(GtkFileFilter *filter,
 								 const gchar *path,
+								 gboolean recursive,
 								 GSList **list);
 
 G_END_DECLS

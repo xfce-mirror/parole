@@ -20,6 +20,21 @@
       </packing>
     </child>
     <child>
+      <object class="GtkCheckButton" id="recursive">
+        <property name="label" translatable="yes">Scan folders recursively</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">False</property>
+        <property name="draw_indicator">True</property>
+        <signal name="toggled" handler="parole_media_chooser_recursive_toggled_cb"/>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">False</property>
+        <property name="position">1</property>
+      </packing>
+    </child>
+    <child>
       <object class="GtkHButtonBox" id="hbuttonbox1">
         <property name="visible">True</property>
         <property name="border_width">5</property>
@@ -57,7 +72,7 @@
       </object>
       <packing>
         <property name="expand">False</property>
-        <property name="position">1</property>
+        <property name="position">2</property>
       </packing>
     </child>
   </object>

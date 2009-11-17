@@ -148,7 +148,8 @@ gboolean parole_file_filter (GtkFileFilter *filter, ParoleFile *file)
     return ret;
 }
 
-void parole_get_media_files (GtkFileFilter *filter, const gchar *path, GSList **list)
+void parole_get_media_files (GtkFileFilter *filter, const gchar *path, 
+			     gboolean recursive, GSList **list)
 {
     GtkFileFilter *playlist_filter;
     GSList *list_internal = NULL;
@@ -189,9 +190,9 @@ void parole_get_media_files (GtkFileFilter *filter, const gchar *path, GSList **
 	while ( (name = g_dir_read_name (dir)) )
 	{
 	    gchar *path_internal = g_strdup_printf ("%s/%s", path, name);
-	    if ( g_file_test (path_internal, G_FILE_TEST_IS_DIR) )
+	    if ( g_file_test (path_internal, G_FILE_TEST_IS_DIR) && recursive)
 	    {
-		parole_get_media_files (filter, path_internal, list);
+		parole_get_media_files (filter, path_internal, TRUE, list);
 	    }
 	    else if ( g_file_test (path_internal, G_FILE_TEST_IS_REGULAR) )
 	    {
@@ -218,6 +219,5 @@ void parole_get_media_files (GtkFileFilter *filter, const gchar *path, GSList **
 	g_dir_close (dir);
 	*list = g_slist_concat (*list, list_internal);
     }
-    
     g_object_unref (playlist_filter);
 }

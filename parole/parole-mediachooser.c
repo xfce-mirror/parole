@@ -56,6 +56,11 @@ void	media_chooser_folder_changed_cb (GtkWidget *widget,
 void	media_chooser_file_activate_cb  (GtkFileChooser *filechooser,
 					 ParoleMediaChooser *chooser);
 
+void	parole_media_chooser_recursive_toggled_cb (GtkToggleButton *recursive,
+						   gpointer data);
+    
+    
+
 enum
 {
     MEDIA_FILES_OPENED,
@@ -90,6 +95,8 @@ parole_media_chooser_add (ParoleMediaChooser *chooser, GtkWidget *file_chooser)
     GSList *media_files = NULL;
     GSList *files;
     GtkFileFilter *filter;
+    GtkWidget *recursive;
+    gboolean scan_recursive;
     gchar *file;
     guint    i;
     guint len;
@@ -100,12 +107,16 @@ parole_media_chooser_add (ParoleMediaChooser *chooser, GtkWidget *file_chooser)
     if ( G_UNLIKELY (files == NULL) )
 	return;
 	
+    recursive = g_object_get_data (G_OBJECT (chooser), "recursive");
+    
+    scan_recursive = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (recursive));
+    
     len = g_slist_length (files);
     
     for ( i = 0; i < len; i++)
     {
 	file = g_slist_nth_data (files, i);
-	parole_get_media_files (filter, file, &media_files);
+	parole_get_media_files (filter, file, scan_recursive, &media_files);
     }
     
     g_signal_emit (G_OBJECT (chooser), signals [MEDIA_FILES_OPENED], 0, media_files);
@@ -132,6 +143,14 @@ void media_chooser_file_activate_cb (GtkFileChooser *filechooser, ParoleMediaCho
     parole_media_chooser_open (NULL, chooser);
 }
 
+void	parole_media_chooser_recursive_toggled_cb (GtkToggleButton *recursive,
+						   gpointer data)
+{
+    parole_rc_write_entry_bool ("scan-recursive", 
+			        PAROLE_RC_GROUP_GENERAL, 
+				gtk_toggle_button_get_active (recursive));
+}
+
 static void
 parole_media_chooser_open_internal (GtkWidget *chooser)
 {
@@ -141,6 +160,8 @@ parole_media_chooser_open_internal (GtkWidget *chooser)
     GtkBuilder  *builder;
     GtkWidget   *open;
     GtkWidget   *img;
+    GtkWidget   *recursive;
+    gboolean     scan_recursive;
     const gchar *folder;
 
     media_chooser = PAROLE_MEDIA_CHOOSER (chooser);
@@ -167,6 +188,11 @@ parole_media_chooser_open_internal (GtkWidget *chooser)
     
     gtk_file_chooser_set_select_multiple (GTK_FILE_CHOOSER (file_chooser), TRUE);
     
+    scan_recursive = parole_rc_read_entry_bool ("scan-recursive", PAROLE_RC_GROUP_GENERAL, TRUE);
+    
+    recursive = GTK_WIDGET (gtk_builder_get_object (builder, "recursive"));
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (recursive), scan_recursive);
+    
     img = gtk_image_new_from_stock (GTK_STOCK_ADD, GTK_ICON_SIZE_BUTTON);
     
     g_object_set (G_OBJECT (open),
@@ -175,6 +201,7 @@ parole_media_chooser_open_internal (GtkWidget *chooser)
 		  NULL);
     
     g_object_set_data (G_OBJECT (chooser), "file-chooser", file_chooser);
+    g_object_set_data (G_OBJECT (chooser), "recursive", recursive);
     
     gtk_container_add (GTK_CONTAINER (GTK_DIALOG (media_chooser)->vbox), vbox);
     gtk_builder_connect_signals (builder, chooser);

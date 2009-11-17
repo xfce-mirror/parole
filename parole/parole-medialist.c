@@ -1093,7 +1093,7 @@ parole_media_list_add_by_path (ParoleMediaList *list, const gchar *path, gboolea
     filter = parole_get_supported_media_filter ();
     g_object_ref_sink (filter);
     
-    parole_get_media_files (filter, path, &file_list);
+    parole_get_media_files (filter, path, TRUE, &file_list);
     
     parole_media_list_files_opened_cb (NULL, file_list, list);
     len = g_slist_length (file_list);
