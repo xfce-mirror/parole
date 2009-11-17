@@ -21,7 +21,6 @@
 #ifndef __PAROLE_MEDIA_LIST_H
 #define __PAROLE_MEDIA_LIST_H
 
-#include <glib-object.h>
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
@@ -107,6 +106,8 @@ gboolean			 parole_media_list_add_files        (ParoleMediaList *list,
 								     gchar **filenames);
 
 void				 parole_media_list_save_list	    (ParoleMediaList *list);
+
+void				 parole_media_list_grab_focus       (ParoleMediaList *list);
 
 G_END_DECLS
 

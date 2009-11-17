@@ -368,6 +368,7 @@ parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *ro
 	    TRACE ("Trying to play media file %s", parole_file_get_uri (file));
 	    gtk_widget_set_sensitive (player->priv->stop, TRUE);
 	    parole_gst_play_uri (PAROLE_GST (player->priv->gst), parole_file_get_uri (file));
+	    gtk_widget_grab_focus (player->priv->gst);
 	    g_object_unref (file);
 	}
     }
@@ -380,6 +381,7 @@ parole_player_disc_selected_cb (ParoleDisc *disc, const gchar *uri, const gchar 
     gtk_widget_set_sensitive (player->priv->stop, TRUE);
     
     parole_gst_play_device_uri (PAROLE_GST (player->priv->gst), uri, device);
+    gtk_widget_grab_focus (player->priv->gst);
 }
 
 static void
@@ -387,6 +389,7 @@ parole_player_uri_opened_cb (ParoleMediaList *list, const gchar *uri, ParolePlay
 {
     parole_player_reset (player);
     gtk_widget_set_sensitive (player->priv->stop, TRUE);
+    gtk_widget_grab_focus (player->priv->gst);
     parole_gst_play_uri (PAROLE_GST (player->priv->gst), uri);
 }
 
@@ -1116,6 +1119,7 @@ parole_player_gst_widget_button_release (GtkWidget *widget, GdkEventButton *ev, 
     if ( ev->button == 3 )
     {
 	parole_player_show_menu (player, ev->button, ev->time);
+	gtk_widget_grab_focus (widget);
 	ret_val = TRUE;
     }
     else if ( ev->button == 1 )
@@ -1396,6 +1400,14 @@ parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
 		parole_media_list_open (player->priv->list);
 	    }
 	break;
+	/* 
+	 * Pass these to the media list and tell it to
+	 * grab the focus
+	 */
+	case GDK_Up:
+	case GDK_Down:
+	    parole_media_list_grab_focus (player->priv->list);
+	    break;
 	default:
 	    break;
     }
