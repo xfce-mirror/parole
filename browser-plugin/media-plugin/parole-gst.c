@@ -749,6 +749,10 @@ GtkWidget *parole_gst_get_controls (ParoleGst *gst)
 static gboolean parole_gst_dbus_quit (ParoleGst *gst,
 				      GError **error);
 
+
+static gboolean parole_gst_dbus_terminate (ParoleGst *gst,
+					   GError **error);
+
 #include "org.parole.media.plugin.h"
 
 /*
@@ -779,5 +783,13 @@ parole_gst_dbus_quit (ParoleGst *gst,
     
     parole_gst_terminate (gst);
     
+    return TRUE;
+}
+
+static gboolean 
+parole_gst_dbus_terminate (ParoleGst *gst, GError **error)
+{
+    g_debug ("Terminate message received");
+    parole_gst_change_state (gst, GST_STATE_NULL);
     return TRUE;
 }

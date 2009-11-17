@@ -127,6 +127,7 @@ int main (int argc, char **argv)
 	g_signal_handler_disconnect (plug, sig_id);
 	gtk_widget_destroy (plug);
 	parole_dbus_release_name (dbus_name);
+	g_free (dbus_name);
     }
 
     gst_deinit ();
