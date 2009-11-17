@@ -36,6 +36,8 @@
 
 #include "parole-gst.h"
 
+#include "common/parole-dbus.h"
+
 static gboolean 
 parole_terminate (GtkWidget *widget, GdkEvent *ev, ParoleGst *gst)
 {
@@ -51,6 +53,7 @@ int main (int argc, char **argv)
     GOptionContext *ctx;
     GOptionGroup *gst_option_group;
     GError *error = NULL;
+    gchar *dbus_name;
     
     GOptionEntry option_entries[] = 
     {
@@ -92,6 +95,11 @@ int main (int argc, char **argv)
     g_option_context_free (ctx);
     
     {
+	dbus_name = g_strdup_printf ("org.Parole.Media.Plugin%d", socket_id);
+	parole_dbus_register_name (dbus_name);
+    }
+    
+    {
 	GtkWidget *box;
 	GtkWidget *plug;
 	GtkWidget *gst;
@@ -118,6 +126,7 @@ int main (int argc, char **argv)
 	gtk_main ();
 	g_signal_handler_disconnect (plug, sig_id);
 	gtk_widget_destroy (plug);
+	parole_dbus_release_name (dbus_name);
     }
 
     gst_deinit ();

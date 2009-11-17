@@ -647,8 +647,6 @@ parole_gst_init (ParoleGst *gst)
     
     gst->priv = PAROLE_GST_GET_PRIVATE (gst);
     
-    parole_dbus_register_name ("org.Parole.Media.Plugin");
-    
     gst->priv->state = GST_STATE_VOID_PENDING;
     gst->priv->target = GST_STATE_VOID_PENDING;
     
@@ -704,8 +702,6 @@ parole_gst_finalize (GObject *object)
     ParoleGst *gst;
 
     gst = PAROLE_GST (object);
-    
-    parole_dbus_release_name ("org.Parole.Media.Plugin");
     
     g_object_unref (gst->priv->playbin);
     
@@ -779,6 +775,8 @@ static gboolean
 parole_gst_dbus_quit (ParoleGst *gst,
 		      GError **error)
 {
+    g_debug ("Quit message received");
+    
     parole_gst_terminate (gst);
     
     return TRUE;

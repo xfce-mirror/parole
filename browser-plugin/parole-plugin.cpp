@@ -102,6 +102,15 @@ NPError ParolePlugin::NewStream (NPMIMEType type, NPStream *stream,
 	
 	g_free (socket);
 	g_free (app);
+	
+	bus = dbus_g_bus_get (DBUS_BUS_SESSION, &error);
+    
+	if ( error )
+	{
+	    g_critical ("%s : ", error->message);
+	    g_error_free (error);
+	    return NPERR_GENERIC_ERROR;
+	}
     }
     
     return NPERR_NO_ERROR;
@@ -109,44 +118,43 @@ NPError ParolePlugin::NewStream (NPMIMEType type, NPStream *stream,
 
 ParolePlugin::ParolePlugin (NPP pNPInstance)
 {
-    GError *error = NULL;
-    
     g_debug ("Constructor");
     window_set = FALSE;
     url = NULL;
     bus = NULL;
     proxy = NULL;
-    
-    bus = dbus_g_bus_get (DBUS_BUS_SESSION, &error);
-    
-    if ( error )
-    {
-	g_critical ("%s : ", error->message);
-	g_error_free (error);
-	return;
-    }
-   
-    proxy = dbus_g_proxy_new_for_name (bus, 
-				       "org.Parole.Media.Plugin",
-				       "/org/Parole/Media/Plugin",
-				       "org.Parole.Media.Plugin");
-    
-    if ( !proxy ) 
-	g_critical ("Unable to create proxy for 'org.Parole.Media.Plugin'");
 }
 
 ParolePlugin::~ParolePlugin ()
 {
+    g_debug ("Destructor");
+    if ( bus )
+    {
+	if ( window_set )
+	{
+	    gchar *dbus_name;
+	    dbus_name = g_strdup_printf ("org.Parole.Media.Plugin%ld", window);
+
+	    proxy = dbus_g_proxy_new_for_name (bus, 
+					       dbus_name,
+					       "/org/Parole/Media/Plugin",
+					       "org.Parole.Media.Plugin");
+	    
+	    if ( !proxy ) 
+		g_critical ("Unable to create proxy for %s", dbus_name);
+	    else
+		dbus_g_proxy_call_no_reply (proxy, "Quit",
+					    G_TYPE_INVALID,
+					    G_TYPE_INVALID);
+	    
+	    dbus_g_connection_unref (bus);
+	    g_free (dbus_name);
+	 }   
+    }
+    
     if ( url )
 	g_free (url);
-    g_debug ("Destructor");
-    
-    if ( proxy )
-    {
-	dbus_g_proxy_call_no_reply (proxy, "Quit",
-				    G_TYPE_INVALID,
-				    G_TYPE_INVALID);
-    }
+	
 }
 
 char *ParolePlugin::PluginName (void)
