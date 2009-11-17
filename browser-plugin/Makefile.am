@@ -4,6 +4,20 @@ SUBDIRS = media-plugin
 
 DEFINES = -DMOZILLA_STRICT_API -DXP_UNIX
 
+# This is probably not the best thing, but the browser plugin 
+# fails to compile with --enable-debug=full so overried CXXFLAGS
+# to get rid of -Wundef -Wredundant-decls -Wmissing-declarations
+CXXFLAGS = -Wall
+if DEBUG_BROWSER_PLUGIN
+CXXFLAGS += -Wextra -Wno-missing-field-initializers	\
+	-Wno-unused-parameter 				\
+	-Wmissing-noreturn -Wshadow 			\
+	-Wpointer-arith -Wcast-align -Wformat-security 	\
+	-Winit-self -Wmissing-include-dirs		\
+	-Wmissing-format-attribute 		 	\
+	-fstack-protector -O0 -g3 -Werror
+endif
+
 INCLUDES =                                              \
         -fPIC                                           \
         -I$(top_builddir)                               \

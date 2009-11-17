@@ -39,6 +39,10 @@
 #include "plugin_setup.h"
 #include "plugin_types.h"
 
+NPError NS_PluginInitialize();
+void NS_PluginShutdown();
+NPError NS_PluginGetValue(NPPVariable aVariable, void *aValue);
+
 //////////////////////////////////////
 //
 // general initialization and shutdown

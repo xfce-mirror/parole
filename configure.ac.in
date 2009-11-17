@@ -208,6 +208,7 @@ fi
 #              Check for debugging support              #
 #=======================================================#
 XDT_FEATURE_DEBUG()
+AM_CONDITIONAL([DEBUG_BROWSER_PLUGIN], [test x"$enable_debug" = x"full"])
 
 #=======================================================#
 #              Developement debugging                   #
