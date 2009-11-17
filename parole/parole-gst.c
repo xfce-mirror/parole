@@ -582,16 +582,10 @@ parole_gst_query_capabilities (ParoleGst *gst)
 static void
 parole_gst_query_duration (ParoleGst *gst)
 {
-    ParoleMediaType media_type;
     gint64 absolute_duration = 0;
     gdouble duration = 0;
     gboolean live;
-    
     GstFormat gst_time;
-    
-    g_object_get (G_OBJECT (gst->priv->stream),
-		  "media-type", &media_type,
-		  NULL);
     
     gst_time = GST_FORMAT_TIME;
     
