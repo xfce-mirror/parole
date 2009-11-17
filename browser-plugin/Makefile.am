@@ -11,9 +11,9 @@ INCLUDES =                                              \
         -DPACKAGE_LOCALE_DIR=\"$(localedir)\"           \
         -DG_LOG_DOMAIN=\"parole-browser-plugin\"        \
         -DLIBEXECDIR="\"$(libexecdir)\""                \
+	$(GECKO_CFLAGS)					\
         $(GTK_CFLAGS)                                   \
         $(DBUS_GLIB_CFLAGS)				\
-	$(GECKO_CFLAGS)					\
 	$(DEFINES)
 
 install_libexecdir = $(libdir)/mozilla/plugins
@@ -29,8 +29,9 @@ parole_player_so_SOURCES =     				\
 	plugin_types.cpp				\
 	plugin_types.h					\
 	np_entry.cpp    				\
-	npupp.h						\
-	npp_gate.cpp
+	npn_gate.cpp					\
+	npp_gate.cpp					\
+	npupp.h
 
 parole_player_so_LDFLAGS =                              \
 	-Xcompiler					\

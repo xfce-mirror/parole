@@ -39,7 +39,7 @@
 #define __PLUGIN_H__
 
 #ifdef HAVE_CONFIG_H
-#  include <config.h>
+#include <config.h>
 #endif
 
 #include <npapi.h>

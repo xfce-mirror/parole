@@ -36,7 +36,6 @@
  * ***** END LICENSE BLOCK ***** */
 
 #include "plugin.h"
-#include "npupp.h"
 #include "plugin_setup.h"
 #include "plugin_types.h"
 
