@@ -164,23 +164,6 @@ parole_gst_configure_event_cb (GtkWidget *widget, GdkEventConfigure *ev, ParoleG
     return FALSE;
 }
 
-static gboolean
-parole_gst_parent_expose_event (GtkWidget *w, GdkEventExpose *ev, ParoleGst *gst)
-{
-    cairo_t *cr;
-    
-    cr = gdk_cairo_create (w->window);
-    
-    cairo_set_source_rgb (cr, 0.0f, 0.0f, 0.0f);
-    
-    cairo_rectangle (cr, w->allocation.x, w->allocation.y, w->allocation.width, w->allocation.height);
-    
-    cairo_fill (cr);
-    cairo_destroy (cr);
-    
-    return FALSE;
-}
-
 static void
 parole_gst_realize (GtkWidget *widget)
 {
@@ -222,9 +205,6 @@ parole_gst_realize (GtkWidget *widget)
     
     g_signal_connect (gtk_widget_get_toplevel (widget), "configure_event",
 		      G_CALLBACK (parole_gst_configure_event_cb), gst);
-		      
-    g_signal_connect (gtk_widget_get_parent (widget), "expose_event",
-		      G_CALLBACK (parole_gst_parent_expose_event), gst);
 }
 
 static void
@@ -330,7 +310,7 @@ parole_gst_size_allocate (GtkWidget *widget, GtkAllocation *allocation)
     
     widget->allocation = *allocation;
 
-    if ( GTK_WIDGET_REALIZED (widget) && !PAROLE_GST (widget)->priv->embedded )
+    if ( GTK_WIDGET_REALIZED (widget) )
     {
 	gint w, h;
 	gdouble ratio, width, height;

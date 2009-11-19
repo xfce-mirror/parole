@@ -96,7 +96,6 @@ int main (int argc, char **argv)
     plug = gtk_plug_new (socket_id);
 	
     player = parole_plugin_player_new (plug, url);
-	
     gtk_widget_show_all (plug);
     
     gtk_main ();

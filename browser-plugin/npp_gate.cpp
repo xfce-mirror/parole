@@ -132,7 +132,6 @@ NPError NPP_SetWindow(NPP instance, NPWindow * pNPWindow)
 
     // window resized
     if (pPlugin->isInitialized() && (pNPWindow->window != NULL)) {
-        printf("Window resized\n");
         pPlugin->SetWindow(pNPWindow);
         return NPERR_NO_ERROR;
     }
