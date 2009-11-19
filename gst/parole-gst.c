@@ -151,18 +151,6 @@ parole_gst_finalize (GObject *object)
     G_OBJECT_CLASS (parole_gst_parent_class)->finalize (object);
 }
 
-static void 
-parole_gst_set_cursor_visible (ParoleGst *gst, gboolean visible)
-{
-    if ( visible )
-    {
-	gst->priv->target == gst->priv->state ? gdk_window_set_cursor (GTK_WIDGET (gst)->window, NULL):
-						parole_window_busy_cursor (GTK_WIDGET (gst)->window);
-    }
-    else
-	parole_window_invisible_cursor (GTK_WIDGET (gst)->window);
-}
-
 static void
 parole_gst_set_window_cursor (GdkWindow *window, GdkCursor *cursor)
 {
@@ -2076,4 +2064,16 @@ gdouble parole_gst_get_stream_position (ParoleGst *gst)
 gboolean parole_gst_get_is_xvimage_sink (ParoleGst *gst)
 {
     return gst->priv->xvimage_sink;
+}
+
+void 
+parole_gst_set_cursor_visible (ParoleGst *gst, gboolean visible)
+{
+    if ( visible )
+    {
+	gst->priv->target == gst->priv->state ? gdk_window_set_cursor (GTK_WIDGET (gst)->window, NULL):
+						parole_window_busy_cursor (GTK_WIDGET (gst)->window);
+    }
+    else
+	parole_window_invisible_cursor (GTK_WIDGET (gst)->window);
 }

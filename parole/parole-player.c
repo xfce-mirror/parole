@@ -1623,6 +1623,23 @@ parole_player_drag_data_received_cb (GtkWidget *widget,
 }
 
 static void
+parole_player_window_notify_is_active (ParolePlayer *player)
+{
+    if ( !player->priv->full_screen )
+	return;
+	
+    if (!gtk_window_is_active (GTK_WINDOW (player->priv->window)) )
+    {
+	gtk_widget_hide (player->priv->fs_window);
+	parole_gst_set_cursor_visible (PAROLE_GST (player->priv->gst), TRUE);
+    } 
+    else 
+    {
+	parole_gst_set_cursor_visible (PAROLE_GST (player->priv->gst), FALSE);
+    }
+} 
+
+static void
 parole_player_init (ParolePlayer *player)
 {
     GtkBuilder *builder;
@@ -1773,9 +1790,10 @@ parole_player_init (ParolePlayer *player)
 				    shuffle);
 	
     player->priv->fs_window = gtk_window_new (GTK_WINDOW_POPUP);
-    gtk_window_set_skip_pager_hint (GTK_WINDOW (player->priv->fs_window), TRUE);
-    gtk_window_set_skip_taskbar_hint (GTK_WINDOW (player->priv->fs_window), TRUE);
 
+    gtk_window_set_gravity (GTK_WINDOW (player->priv->fs_window), GDK_GRAVITY_SOUTH_WEST);
+    gtk_window_set_position (GTK_WINDOW (player->priv->fs_window), GTK_WIN_POS_NONE);
+  
     parole_gst_set_default_aspect_ratio (player, builder);
 	
     gtk_builder_connect_signals (builder, player);
@@ -1791,6 +1809,9 @@ parole_player_init (ParolePlayer *player)
     g_signal_connect (player->priv->button, "button-pressed",
 		      G_CALLBACK (parole_player_button_pressed_cb), player);
 #endif
+    
+    g_signal_connect_swapped (player->priv->window, "notify::is-active",
+			      G_CALLBACK (parole_player_window_notify_is_active), player);
     
     parole_player_dbus_init (player);
 }
