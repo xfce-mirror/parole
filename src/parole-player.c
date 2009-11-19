@@ -1139,6 +1139,20 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
 }
 
 static gboolean
+parole_player_gst_widget_button_press (GtkWidget *widget, GdkEventButton *ev, ParolePlayer *player)
+{
+    gboolean ret_val = FALSE;
+
+    if ( ev->type == GDK_2BUTTON_PRESS )
+    {
+	parole_player_full_screen_menu_item_activate (player);
+	ret_val = TRUE;
+    }
+
+    return ret_val;
+}
+
+static gboolean
 parole_player_gst_widget_button_release (GtkWidget *widget, GdkEventButton *ev, ParolePlayer *player)
 {
     gboolean ret_val = FALSE;
@@ -1711,6 +1725,9 @@ parole_player_init (ParolePlayer *player)
     
     g_signal_connect_after (G_OBJECT (player->priv->gst), "button-release-event",
 			    G_CALLBACK (parole_player_gst_widget_button_release), player);
+    
+    g_signal_connect_after (G_OBJECT (player->priv->gst), "button-press-event",
+			    G_CALLBACK (parole_player_gst_widget_button_press), player);
     
     g_signal_connect (G_OBJECT (player->priv->gst), "motion-notify-event",
 		      G_CALLBACK (parole_player_gst_widget_motion_notify_event), player);
