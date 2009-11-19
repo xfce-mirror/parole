@@ -34,8 +34,8 @@ G_BEGIN_DECLS
 #define PAROLE_IS_GST(o)       (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_GST))
 
 /*
- * Keep this order to be compatible with the ParoleState enum
- * used by the plugin interface.
+ * Keep this order to be compatible with the 
+ * ParoleState enum used by the plugin interface.
  */
 typedef enum /*< prefix=PAROLE_MEDIA_STATE_ >*/
 {
@@ -45,6 +45,17 @@ typedef enum /*< prefix=PAROLE_MEDIA_STATE_ >*/
     PAROLE_MEDIA_STATE_PLAYING
     
 } ParoleMediaState;
+
+typedef enum
+{
+    PAROLE_ASPECT_RATIO_NONE,
+    PAROLE_ASPECT_RATIO_AUTO,
+    PAROLE_ASPECT_RATIO_SQUARE,
+    PAROLE_ASPECT_RATIO_4_3,
+    PAROLE_ASPECT_RATIO_16_9,
+    PAROLE_ASPECT_RATIO_DVB
+	
+} ParoleAspectRatio;
 
 typedef struct ParoleGstPrivate ParoleGstPrivate;
 
@@ -81,10 +92,14 @@ typedef struct
 
 GType        		parole_gst_get_type        	(void) G_GNUC_CONST;
 
-GtkWidget      	       *parole_gst_new             	(void);
+GtkWidget      	       *parole_gst_new             	(gboolean embedded,
+							 gpointer conf_obj);
+
+GtkWidget	       *parole_gst_get 			(void);
 
 void		        parole_gst_play_uri        	(ParoleGst *gst,
-							 const gchar *uri);
+							 const gchar *uri,
+							 const gchar *subtitles);
 
 void		        parole_gst_play_device_uri     	(ParoleGst *gst,
 							 const gchar *uri,

@@ -3,7 +3,7 @@
 <node name="/">
     <interface name="org.Parole.Media.Plugin">
         <annotation name="org.freedesktop.DBus.GLib.CSymbol"
-                    value="parole_gst_dbus"/>
+                    value="parole_plugin_player_dbus"/>
 
     <method name="Quit">
     </method>

@@ -362,7 +362,7 @@ void parole_conf_dialog_open (ParoleConfDialog *self, GtkWidget *parent)
 
     parole_conf_dialog_set_defaults (self);
     
-    with_display = parole_gst_get_is_xvimage_sink (PAROLE_GST (parole_gst_new ()));
+    with_display = parole_gst_get_is_xvimage_sink (PAROLE_GST (parole_gst_get ()));
     
     if ( !with_display )
     {

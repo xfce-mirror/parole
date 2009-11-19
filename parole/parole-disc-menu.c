@@ -274,7 +274,7 @@ parole_disc_menu_init (ParoleDiscMenu *menu)
     g_signal_connect_swapped (menu->priv->chapter_menu, "clicked",
 			      G_CALLBACK (parole_disc_menu_chapter_menu_cb), menu);
 			      
-    menu->priv->gst = PAROLE_GST (parole_gst_new ());
+    menu->priv->gst = PAROLE_GST (parole_gst_get ());
     
     g_signal_connect (G_OBJECT (menu->priv->gst), "media_state",
 		      G_CALLBACK (parole_disc_menu_media_state_cb), menu);

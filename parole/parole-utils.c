@@ -44,50 +44,6 @@ static const char subtitle_ext[][4] = {
 	"ass"
 };
 
-void parole_window_busy_cursor		(GdkWindow *window)
-{
-    GdkCursor *cursor;
-    
-    if ( G_UNLIKELY (window == NULL) )
-	return;
-	
-    cursor = gdk_cursor_new (GDK_WATCH);
-    gdk_window_set_cursor (window, cursor);
-    gdk_cursor_unref (cursor);
-
-    gdk_flush ();
-}
-
-void parole_window_invisible_cursor		(GdkWindow *window)
-{
-    GdkBitmap *empty_bitmap;
-    GdkCursor *cursor;
-    GdkColor  color;
-
-    char cursor_bits[] = { 0x0 }; 
-    
-    if ( G_UNLIKELY (window == NULL) )
-	return;
-	
-    color.red = color.green = color.blue = 0;
-    color.pixel = 0;
-
-    empty_bitmap = gdk_bitmap_create_from_data (window,
-		   cursor_bits,
-		   1, 1);
-
-    cursor = gdk_cursor_new_from_pixmap (empty_bitmap,
-					 empty_bitmap,
-					 &color,
-					 &color, 0, 0);
-
-    gdk_window_set_cursor (window, cursor);
-
-    gdk_cursor_unref (cursor);
-
-    g_object_unref (empty_bitmap);
-}
-
 /*
  * compare_by_name_using_number
  * 

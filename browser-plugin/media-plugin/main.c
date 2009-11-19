@@ -34,26 +34,20 @@
 
 #include <gst/gst.h>
 
-#include "parole-gst.h"
+#include "parole-plugin-player.h"
 
-#include "common/parole-dbus.h"
-
-static gboolean 
-parole_terminate (GtkWidget *widget, GdkEvent *ev, ParoleGst *gst)
-{
-    parole_gst_terminate (gst);
-    g_debug ("Terminating");
-    return TRUE;
-}
+#include "dbus/parole-dbus.h"
 
 int main (int argc, char **argv)
 {
+    ParolePluginPlayer *player;
     GdkNativeWindow socket_id = 0;
     gchar *url = NULL;
     GOptionContext *ctx;
     GOptionGroup *gst_option_group;
     GError *error = NULL;
     gchar *dbus_name;
+    GtkWidget *plug;
     
     GOptionEntry option_entries[] = 
     {
@@ -94,41 +88,21 @@ int main (int argc, char **argv)
     }
     g_option_context_free (ctx);
     
-    {
-	dbus_name = g_strdup_printf ("org.Parole.Media.Plugin%d", socket_id);
-	parole_dbus_register_name (dbus_name);
-    }
+    dbus_name = g_strdup_printf ("org.Parole.Media.Plugin%d", socket_id);
+    parole_dbus_register_name (dbus_name);
     
-    {
-	GtkWidget *box;
-	GtkWidget *plug;
-	GtkWidget *gst;
+    g_assert (url != NULL);
+    
+    plug = gtk_plug_new (socket_id);
 	
-	gulong sig_id;
-	plug = gtk_plug_new (socket_id);
+    player = parole_plugin_player_new (plug, url);
 	
-	box = gtk_vbox_new (FALSE, 0);
-	
-	gst = parole_gst_new ();
-	
-	gtk_box_pack_start (GTK_BOX (box), gst, TRUE, TRUE, 0);
-	gtk_box_pack_start (GTK_BOX (box), parole_gst_get_controls (PAROLE_GST (gst)), 
-			    FALSE, FALSE, 0);
-	
-	gtk_container_add (GTK_CONTAINER (plug), box);
-	
-	sig_id = g_signal_connect (plug, "delete-event",
-				   G_CALLBACK (parole_terminate), gst);
-				   
-	gtk_widget_show_all (plug);
-	parole_gst_play_url (PAROLE_GST (gst), url);
-	
-	gtk_main ();
-	g_signal_handler_disconnect (plug, sig_id);
-	gtk_widget_destroy (plug);
-	parole_dbus_release_name (dbus_name);
-	g_free (dbus_name);
-    }
+    gtk_widget_show_all (plug);
+    
+    gtk_main ();
+    gtk_widget_destroy (plug);
+    parole_dbus_release_name (dbus_name);
+    g_free (dbus_name);
 
     gst_deinit ();
 

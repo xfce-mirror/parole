@@ -60,6 +60,10 @@
 #include "enum-gtypes.h"
 #include "parole-debug.h"
 
+#include "gst/gst-enum-types.h"
+
+#include "common/parole-common.h"
+
 /*
  * DBus Glib init
  */
@@ -365,9 +369,24 @@ parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *ro
 	
 	if ( file )
 	{
+	    /*
+	    gchar *sub = NULL;
+	    
+	    if ( g_str_has_prefix (uri, "file:/") )
+	    {
+		
+	    }
+	    TRACE ("File content type %s", parole_file_get_content_type (file));
+	    */
+	    
 	    TRACE ("Trying to play media file %s", parole_file_get_uri (file));
+	    
 	    gtk_widget_set_sensitive (player->priv->stop, TRUE);
-	    parole_gst_play_uri (PAROLE_GST (player->priv->gst), parole_file_get_uri (file));
+	    
+	    parole_gst_play_uri (PAROLE_GST (player->priv->gst), 
+				 parole_file_get_uri (file),
+				 NULL);//FIXME, load subtitles
+				 
 	    gtk_widget_grab_focus (player->priv->gst);
 	    g_object_unref (file);
 	}
@@ -390,7 +409,7 @@ parole_player_uri_opened_cb (ParoleMediaList *list, const gchar *uri, ParolePlay
     parole_player_reset (player);
     gtk_widget_set_sensitive (player->priv->stop, TRUE);
     gtk_widget_grab_focus (player->priv->gst);
-    parole_gst_play_uri (PAROLE_GST (player->priv->gst), uri);
+    parole_gst_play_uri (PAROLE_GST (player->priv->gst), uri, NULL);
 }
 
 static void
@@ -695,7 +714,7 @@ parole_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream, Parole
 {
     gboolean has_video;
     
-    PAROLE_DEBUG_ENUM ("State callback", state, ENUM_GTYPE_MEDIA_STATE);
+    PAROLE_DEBUG_ENUM ("State callback", state, GST_ENUM_TYPE_MEDIA_STATE);
     
     g_object_get (G_OBJECT (stream),
 		  "has-video", &has_video,
@@ -1619,7 +1638,7 @@ parole_player_init (ParolePlayer *player)
     g_signal_connect_swapped (player->priv->session, "die",
 			      G_CALLBACK (parole_player_session_die_cb), player);
     
-    player->priv->gst = parole_gst_new ();
+    player->priv->gst = parole_gst_new (FALSE, player->priv->conf);
     
     player->priv->status = parole_statusbar_new ();
     player->priv->disc = parole_disc_new ();

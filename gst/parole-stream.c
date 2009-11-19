@@ -29,8 +29,7 @@
 #include <glib.h>
 
 #include "parole-stream.h"
-#include "parole-file.h"
-#include "enum-gtypes.h"
+#include "gst-enum-types.h"
 
 #define PAROLE_STREAM_GET_PRIVATE(o) \
 (G_TYPE_INSTANCE_GET_PRIVATE ((o), PAROLE_TYPE_STREAM, ParoleStreamPrivate))
@@ -50,6 +49,7 @@ struct _ParoleStreamPrivate
 {
     /*Properties*/
     gchar      *uri;
+    gchar      *subtitles;
     gboolean 	has_audio;
     gboolean    has_video;
     gboolean 	live;
@@ -76,6 +76,7 @@ enum
 {
     PROP_0,
     PROP_URI,
+    PROP_SUBTITLES,
     PROP_LIVE,
     PROP_MEDIA_TYPE,
     PROP_HAS_AUDIO,
@@ -121,7 +122,7 @@ parole_stream_get_media_type_from_uri (ParoleStream *stream, const gchar *uri)
     else 
 	type = PAROLE_MEDIA_TYPE_UNKNOWN;
     
-    g_value_init (&val, ENUM_GTYPE_MEDIA_TYPE);
+    g_value_init (&val, GST_ENUM_TYPE_MEDIA_TYPE);
     g_value_set_enum (&val, type);
     g_object_set_property (G_OBJECT (stream), "media-type", &val);
     g_value_unset (&val);
@@ -145,6 +146,9 @@ static void parole_stream_set_property (GObject *object,
 	    parole_stream_get_media_type_from_uri (stream, priv->uri);
 	    break;
 	}
+	case PROP_SUBTITLES:
+	    PAROLE_STREAM_DUP_GVALUE_STRING (PAROLE_STREAM_GET_PRIVATE (stream)->subtitles, value);
+	    break;
 	case PROP_LIVE:
 	    PAROLE_STREAM_GET_PRIVATE (stream)->live = g_value_get_boolean (value);
 	    break;
@@ -220,6 +224,9 @@ static void parole_stream_get_property (GObject *object,
     {
 	case PROP_URI:
 	    g_value_set_string (value, PAROLE_STREAM_GET_PRIVATE (stream)->uri);
+	    break;
+	case PROP_SUBTITLES:
+	    g_value_set_string (value, PAROLE_STREAM_GET_PRIVATE (stream)->subtitles);
 	    break;
 	case PROP_LIVE:
 	    g_value_set_boolean (value, PAROLE_STREAM_GET_PRIVATE (stream)->live);
@@ -321,6 +328,20 @@ parole_stream_class_init (ParoleStreamClass *klass)
 							  G_PARAM_READWRITE));
     
     /**
+     * ParoleStream:subtitles:
+     * 
+     * Subtitles path, this is only valid for local files
+     * 
+     * Since: 0.2 
+     **/
+    g_object_class_install_property (object_class,
+				     PROP_SUBTITLES,
+				     g_param_spec_string ("subtitles",
+							  NULL, NULL,
+							  NULL,
+							  G_PARAM_READWRITE));
+    
+    /**
      * ParoleStream:has-audio:
      * 
      * Whether the stream has audio.
@@ -372,7 +393,7 @@ parole_stream_class_init (ParoleStreamClass *klass)
 				     PROP_MEDIA_TYPE,
 				     g_param_spec_enum ("media-type",
 							NULL, NULL,
-							ENUM_GTYPE_MEDIA_TYPE,
+							GST_ENUM_TYPE_MEDIA_TYPE,
 							PAROLE_MEDIA_TYPE_UNKNOWN,
 							G_PARAM_READWRITE));
 
@@ -635,6 +656,7 @@ void parole_stream_init_properties (ParoleStream *stream)
     
     PAROLE_STREAM_FREE_STR_PROP (priv->title);
     PAROLE_STREAM_FREE_STR_PROP (priv->uri);
+    PAROLE_STREAM_FREE_STR_PROP (priv->subtitles);
     PAROLE_STREAM_FREE_STR_PROP (priv->artist);
     PAROLE_STREAM_FREE_STR_PROP (priv->year);
     PAROLE_STREAM_FREE_STR_PROP (priv->album);

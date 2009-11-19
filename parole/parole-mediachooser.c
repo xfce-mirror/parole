@@ -41,6 +41,8 @@
 #include "parole-rc-utils.h"
 #include "parole-utils.h"
 
+#include "common/parole-common.h"
+
 #include "gmarshal.h"
 
 /*

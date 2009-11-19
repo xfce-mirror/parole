@@ -32,6 +32,9 @@
 #include "parole-rc-utils.h"
 #include "enum-gtypes.h"
 
+#include "gst/parole-gst.h"
+#include "gst/gst-enum-types.h"
+
 #define PAROLE_CONF_GET_PRIVATE(o) \
 (G_TYPE_INSTANCE_GET_PRIVATE ((o), PAROLE_TYPE_CONF, ParoleConfPrivate))
 
@@ -199,8 +202,8 @@ parole_conf_class_init (ParoleConfClass *klass)
     if (!g_value_type_transformable (G_TYPE_STRING, G_TYPE_BOOLEAN))
 	g_value_register_transform_func (G_TYPE_STRING, G_TYPE_BOOLEAN, transform_string_to_boolean);
     
-    if (!g_value_type_transformable (G_TYPE_STRING, ENUM_GTYPE_ASPECT_RATIO))
-	g_value_register_transform_func (G_TYPE_STRING, ENUM_GTYPE_ASPECT_RATIO, transform_string_to_enum);
+    if (!g_value_type_transformable (G_TYPE_STRING, GST_ENUM_TYPE_ASPECT_RATIO))
+	g_value_register_transform_func (G_TYPE_STRING, GST_ENUM_TYPE_ASPECT_RATIO, transform_string_to_enum);
 	
     g_object_class_install_property (object_class,
                                      PROP_VIS_ENABLED,
@@ -290,7 +293,7 @@ parole_conf_class_init (ParoleConfClass *klass)
                                      PROP_ASPECT_RATIO,
                                      g_param_spec_enum ("aspect-ratio",
                                                         NULL, NULL,
-							ENUM_GTYPE_ASPECT_RATIO,
+							GST_ENUM_TYPE_ASPECT_RATIO,
 							PAROLE_ASPECT_RATIO_NONE,
                                                         G_PARAM_READWRITE));
 						       

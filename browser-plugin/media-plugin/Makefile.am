@@ -2,30 +2,34 @@ libexec_PROGRAMS = parole-media-plugin
 
 parole_media_plugin_SOURCES =			\
 	main.c					\
-	parole-gst.c				\
-	parole-gst.h				\
+	parole-plugin-player.c			\
+	parole-plugin-player.h			\
 	org.parole.media.plugin.h
 
 parole_media_plugin_CFLAGS =			\
 	-I$(top_srcdir)                         \
         -I$(top_srcdir)/data                    \
         -I$(top_srcdir)/data/mime               \
-	-I$(top_srcdir)/common               	\
+	-I$(top_srcdir)/dbus               	\
+	-I$(top_srcdir)/gst               	\
         -DLOCALEDIR=\"$(localedir)\"            \
         -DG_LOG_DOMAIN=\"parole-media-plugin\"  \
 	$(GTHREAD_CFLAGS)                       \
 	$(GTK_CFLAGS)				\
 	$(GST_VIDEO_CFLAGS)                     \
         $(GST_INTERFACES_CFLAGS)		\
-	$(DBUS_GLIB_CFLAGS)
+	$(DBUS_GLIB_CFLAGS)			\
+	$(LIBXFCE4GUI_CFLAGS)
 
 parole_media_plugin_LDADD =			\
-	$(top_builddir)/common/libparoledbus.la \
+	$(top_builddir)/dbus/libparoledbus.la 	\
+	$(top_builddir)/gst/libparolegst.la 	\
 	$(GTHREAD_LIBS)                       	\
 	$(GTK_LIBS)				\
 	$(GST_VIDEO_LIBS)                     	\
         $(GST_INTERFACES_LIBS)			\
-	$(DBUS_GLIB_LIBS)
+	$(DBUS_GLIB_LIBS)			\
+	$(LIBXFCE4GUI_LIBS)
 
 if MAINTAINER_MODE
 

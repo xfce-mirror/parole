@@ -7,7 +7,9 @@ INCLUDES =					\
 	-I$(top_srcdir)				\
 	-I$(top_srcdir)/data			\
 	-I$(top_srcdir)/data/mime		\
-	-I$(top_srcdir)/common                  \
+	-I$(top_srcdir)/gst	                \
+	-I$(top_srcdir)/dbus	                \
+	-I$(top_srcdir)/common	                \
 	-DLOCALEDIR=\"$(localedir)\"		\
 	-DG_LOG_DOMAIN=\"parole\"		\
 	-DPAROLE_PLUGINS_DIR=\"$(libdir)/parole-$(PAROLE_VERSION_API)\"\
@@ -25,7 +27,9 @@ PAROLE_LDFLAGS =				\
 	-export-symbols-regex "^[[^_]].*"
 
 PAROLE_LIBS = 					\
-	$(top_builddir)/common/libparoledbus.la \
+	$(top_builddir)/dbus/libparoledbus.la 	\
+	$(top_builddir)/gst/libparolegst.la 	\
+	$(top_builddir)/common/libparolecommon.la\
         $(GTHREAD_LIBS)                         \
 	$(GIO_LIBS)				\
         $(DBUS_GLIB_LIBS)                       \
@@ -45,12 +49,10 @@ GENERATED_FILES =				\
 INST_HFILES =					\
 	parole.h				\
 	parole-plugin.h				\
-	parole-file.h				\
-	parole-stream.h
+	parole-file.h
 
 NOINST_HFILES =					\
 	parole-player.h				\
-	parole-gst.h				\
 	parole-vis.h				\
 	parole-statusbar.h			\
 	parole-mediachooser.h			\
@@ -88,8 +90,6 @@ libparole_la_SOURCES =				\
 	$(INST_HFILES)				\
 	$(NOINST_HFILES)			\
 	parole-player.c				\
-	parole-gst.c				\
-	parole-stream.c				\
 	parole-file.c				\
 	parole-vis.c				\
 	parole-statusbar.c			\
@@ -131,14 +131,10 @@ parole_LDFLAGS =				\
 	$(PAROLE_LDFLAGS)
 
 parole_glib_enum_headers =			\
-	parole-gst.h				\
 	parole-plugin.h				\
 	parole-pl-parser.h			\
-	parole-stream.h				\
 	parole-conf.h				\
 	parole-button.h
-
-# Parole Browser Player plugin
 
 if MAINTAINER_MODE
 

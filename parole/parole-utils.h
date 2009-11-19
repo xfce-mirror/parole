@@ -26,10 +26,6 @@
 
 #include "parole-file.h"
 
-void		parole_window_busy_cursor		(GdkWindow *window);
-
-void		parole_window_invisible_cursor		(GdkWindow *window);
-
 gint            thunar_file_compare_by_name 		(ParoleFile *file_a,
 							 ParoleFile *file_b,
 							 gboolean         case_sensitive);

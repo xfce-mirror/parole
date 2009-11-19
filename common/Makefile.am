@@ -1,9 +1,9 @@
 noinst_LTLIBRARIES = 			\
-	libparoledbus.la
+	libparolecommon.la
 
-libparoledbus_la_SOURCES =		\
-	parole-dbus.c			\
-	parole-dbus.h
+libparolecommon_la_SOURCES =		\
+	parole-common.c			\
+	parole-common.h
 	
-libparoledbus_la_CFLAGS =		\
-	$(DBUS_GLIB_CFLAGS)
+libparolecommon_la_CFLAGS =		\
+	$(GTK_CFLAGS)

@@ -18,37 +18,14 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_CONF_H
-#define __PAROLE_CONF_H
+#ifndef __PAROLE_COMMON_H_
+#define __PAROLE_COMMON_H_
 
-#include <glib-object.h>
+#include <gtk/gtk.h>
+#include <gdk/gdk.h>
 
-G_BEGIN_DECLS
+void		parole_window_busy_cursor		(GdkWindow *window);
 
-#define PAROLE_TYPE_CONF        (parole_conf_get_type () )
-#define PAROLE_CONF(o)          (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_CONF, ParoleConf))
-#define PAROLE_IS_CONF(o)       (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_CONF))
+void		parole_window_invisible_cursor		(GdkWindow *window);
 
-   
-typedef struct ParoleConfPrivate ParoleConfPrivate;
-
-typedef struct
-{
-    GObject         		 parent;
-    ParoleConfPrivate     	*priv;
-    
-} ParoleConf;
-
-typedef struct
-{
-    GObjectClass 		 parent_class;
-    
-} ParoleConfClass;
-
-GType        			 parole_conf_get_type        (void) G_GNUC_CONST;
-
-ParoleConf       		*parole_conf_new             (void);
-
-G_END_DECLS
-
-#endif /* __PAROLE_CONF_H */
+#endif /* __PAROLE_COMMON_ */

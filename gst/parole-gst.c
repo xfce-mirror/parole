@@ -39,11 +39,11 @@
 #include <gdk/gdkx.h>
 
 #include "parole-gst.h"
-#include "parole-utils.h"
-#include "parole-conf.h"
-#include "parole-debug.h"
-#include "enum-gtypes.h"
-#include "gmarshal.h"
+
+#include "common/parole-common.h"
+
+#include "gst-enum-types.h"
+#include "gstmarshal.h"
 
 #define HIDE_WINDOW_CURSOR_TIMEOUT 3.0f
 
@@ -79,7 +79,12 @@ struct ParoleGstPrivate
     gchar        *device;
     GTimer	 *hidecursor_timer;
     
-    ParoleConf   *conf;
+    gpointer      conf; /* Specific for ParoleMediaPlayer*/
+    
+    
+    gboolean	  embedded;
+    gboolean      enable_tags;
+    
     gboolean	  update_vis;
     gboolean      with_vis;
     gboolean      buffering;
@@ -107,6 +112,16 @@ enum
     LAST_SIGNAL
 };
 
+enum
+{
+    PROP_0,
+    PROP_EMBEDDED,
+    PROP_CONF_OBJ,
+    PROP_ENABLE_TAGS
+};
+
+static gpointer parole_gst_object = NULL;
+
 static guint signals [LAST_SIGNAL] = { 0 };
 
 G_DEFINE_TYPE (ParoleGst, parole_gst, GTK_TYPE_WIDGET)
@@ -126,7 +141,6 @@ parole_gst_finalize (GObject *object)
     parole_stream_init_properties (gst->priv->stream);
     
     g_object_unref (gst->priv->stream);
-    g_object_unref (gst->priv->conf);
     g_object_unref (gst->priv->logo);
     
     if ( gst->priv->device )
@@ -232,7 +246,8 @@ parole_gst_show (GtkWidget *widget)
     
     gst = PAROLE_GST (widget);
     
-    gdk_window_show (widget->window);
+    if ( widget->window )
+	gdk_window_show (widget->window);
     
     if ( GTK_WIDGET_CLASS (parole_gst_parent_class)->show )
 	GTK_WIDGET_CLASS (parole_gst_parent_class)->show (widget);
@@ -327,7 +342,7 @@ parole_gst_size_allocate (GtkWidget *widget, GtkAllocation *allocation)
     
     widget->allocation = *allocation;
 
-    if ( GTK_WIDGET_REALIZED (widget) )
+    if ( GTK_WIDGET_REALIZED (widget) && !PAROLE_GST (widget)->priv->embedded )
     {
 	gint w, h;
 	gdouble ratio, width, height;
@@ -415,7 +430,7 @@ parole_gst_set_video_color_balance (ParoleGst *gst)
     gint hue_value;
     gint saturation_value;
 	
-    if ( !gst->priv->xvimage_sink )
+    if ( !gst->priv->xvimage_sink || gst->priv->conf == NULL)
 	return;
 	
     g_object_get (G_OBJECT (gst->priv->playbin),
@@ -613,6 +628,9 @@ parole_gst_set_subtitle_font (ParoleGst *gst)
 {
     gchar *font;
     
+    if ( !gst->priv->conf )
+	return;
+    
     g_object_get (G_OBJECT (gst->priv->conf),
 		  "subtitle-font", &font,
 		  NULL);
@@ -629,6 +647,9 @@ static void
 parole_gst_set_subtitle_encoding (ParoleGst *gst)
 {
     gchar *encoding;
+    
+    if ( !gst->priv->conf )
+	return;
     
     g_object_get (G_OBJECT (gst->priv->conf),
 		  "subtitle-encoding", &encoding,
@@ -650,6 +671,9 @@ parole_gst_load_subtitle (ParoleGst *gst)
     gchar *sub_uri;
     gboolean sub_enabled;
     
+    if ( !gst->priv->conf )
+	return;
+    
     g_object_get (G_OBJECT (gst->priv->stream),
 		  "media-type", &type,
 		  NULL);
@@ -666,11 +690,9 @@ parole_gst_load_subtitle (ParoleGst *gst)
 	
     g_object_get (G_OBJECT (gst->priv->stream),
 		  "uri", &uri,
+		  "subtitles", &sub,
 		  NULL);
 	
-    
-    sub = parole_get_subtitle_path (uri);
-
     if ( sub )
     {
 	TRACE ("Found subtitle with path %s", sub);
@@ -809,6 +831,10 @@ parole_gst_update_vis (ParoleGst *gst)
     gchar *vis_name;
     
     TRACE ("start");
+    
+    if ( !gst->priv->conf )
+	return;
+    
     g_object_get (G_OBJECT (gst->priv->conf),
 		  "vis-enabled", &gst->priv->with_vis,
 		  "vis-name", &vis_name,
@@ -1128,12 +1154,14 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
 	
 	case GST_MESSAGE_TAG:
 	{
-	    GstTagList *tag_list;
-	    
-	    TRACE ("Tag message:");
-	    gst_message_parse_tag (msg, &tag_list);
-	    parole_gst_get_meta_data (gst, tag_list);
-	    gst_tag_list_free (tag_list);
+	    if ( gst->priv->enable_tags )
+	    {
+		GstTagList *tag_list;
+		TRACE ("Tag message:");
+		gst_message_parse_tag (msg, &tag_list);
+		parole_gst_get_meta_data (gst, tag_list);
+		gst_tag_list_free (tag_list);
+	    }
 	    break;
 	}
 	case GST_MESSAGE_APPLICATION:
@@ -1579,6 +1607,67 @@ parole_gst_conf_notify_cb (GObject *object, GParamSpec *spec, ParoleGst *gst)
     }
 }
 
+static void parole_gst_get_property (GObject *object,
+				     guint prop_id,
+				     GValue *value,
+				     GParamSpec *pspec)
+{
+    ParoleGst *gst;
+    gst = PAROLE_GST (object);
+    
+    switch (prop_id)
+    {
+	case PROP_EMBEDDED:
+	    g_value_set_boolean (value, gst->priv->embedded);
+	    break;
+	case PROP_CONF_OBJ:
+	    g_value_set_pointer (value, gst->priv->conf);
+	    break;
+	case PROP_ENABLE_TAGS:
+	    g_value_set_boolean (value, gst->priv->enable_tags);
+	    break;
+	default:
+           G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+           break;
+    }
+}
+
+
+static void parole_gst_set_property (GObject *object,
+				     guint prop_id,
+				     const GValue *value,
+				     GParamSpec *pspec)
+{
+    ParoleGst *gst;
+    gst = PAROLE_GST (object);
+    
+    switch (prop_id)
+    {
+	case PROP_EMBEDDED:
+	    gst->priv->embedded = g_value_get_boolean (value);
+	    break;
+	case PROP_ENABLE_TAGS:
+	    gst->priv->enable_tags = g_value_get_boolean (value);
+	    break;
+	case PROP_CONF_OBJ:
+	    gst->priv->conf = g_value_get_pointer (value);
+	    
+	    if (gst->priv->conf)
+	    {
+		g_object_get (G_OBJECT (gst->priv->conf),
+			      "aspect-ratio", &gst->priv->aspect_ratio,
+			      NULL);
+    
+		g_signal_connect (G_OBJECT (gst->priv->conf), "notify",
+				  G_CALLBACK (parole_gst_conf_notify_cb), gst);
+	    }
+	    break;
+	default:
+           G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+           break;
+    }
+}
+
 static void
 parole_gst_class_init (ParoleGstClass *klass)
 {
@@ -1587,6 +1676,8 @@ parole_gst_class_init (ParoleGstClass *klass)
 
     object_class->finalize = parole_gst_finalize;
     object_class->constructed = parole_gst_construct;
+    object_class->set_property = parole_gst_set_property;
+    object_class->get_property = parole_gst_get_property;
 
     widget_class->realize = parole_gst_realize;
     widget_class->show = parole_gst_show;
@@ -1604,7 +1695,7 @@ parole_gst_class_init (ParoleGstClass *klass)
                       NULL, NULL,
                       _gmarshal_VOID__OBJECT_ENUM,
                       G_TYPE_NONE, 2, 
-		      PAROLE_TYPE_STREAM, ENUM_GTYPE_MEDIA_STATE);
+		      PAROLE_TYPE_STREAM, GST_ENUM_TYPE_MEDIA_STATE);
 
     signals[MEDIA_PROGRESSED] = 
         g_signal_new ("media-progressed",
@@ -1645,6 +1736,28 @@ parole_gst_class_init (ParoleGstClass *klass)
                       g_cclosure_marshal_VOID__STRING,
                       G_TYPE_NONE, 1, 
 		      G_TYPE_STRING);
+
+    g_object_class_install_property (object_class,
+				     PROP_EMBEDDED,
+				     g_param_spec_boolean ("embedded",
+							   NULL, NULL,
+							   FALSE,
+							   G_PARAM_CONSTRUCT_ONLY|
+							   G_PARAM_READWRITE));
+    
+    g_object_class_install_property (object_class,
+				     PROP_CONF_OBJ,
+				     g_param_spec_pointer ("conf-object",
+							   NULL, NULL,
+							   G_PARAM_CONSTRUCT_ONLY|
+							   G_PARAM_READWRITE));
+    
+    g_object_class_install_property (object_class,
+				     PROP_ENABLE_TAGS,
+				     g_param_spec_boolean ("tags",
+							   NULL, NULL,
+							   TRUE,
+							   G_PARAM_READWRITE));
     
     g_type_class_add_private (klass, sizeof (ParoleGstPrivate));
 }
@@ -1657,6 +1770,7 @@ parole_gst_init (ParoleGst *gst)
     gst->priv->state = GST_STATE_VOID_PENDING;
     gst->priv->target = GST_STATE_VOID_PENDING;
     gst->priv->media_state = PAROLE_MEDIA_STATE_STOPPED;
+    gst->priv->aspect_ratio = PAROLE_ASPECT_RATIO_NONE;
     gst->priv->lock = g_mutex_new ();
     gst->priv->stream = parole_stream_new ();
     gst->priv->tick_id = 0;
@@ -1667,15 +1781,9 @@ parole_gst_init (ParoleGst *gst)
     gst->priv->update_color_balance = TRUE;
     gst->priv->state_change_id = 0;
     gst->priv->device = NULL;
+    gst->priv->enable_tags = TRUE;
     
-    gst->priv->conf = parole_conf_new ();
-    
-    g_object_get (G_OBJECT (gst->priv->conf),
-		  "aspect-ratio", &gst->priv->aspect_ratio,
-		  NULL);
-    
-    g_signal_connect (G_OBJECT (gst->priv->conf), "notify",
-		      G_CALLBACK (parole_gst_conf_notify_cb), gst);
+    gst->priv->conf = NULL;
     
     GTK_WIDGET_SET_FLAGS (GTK_WIDGET (gst), GTK_CAN_FOCUS);
     
@@ -1687,10 +1795,20 @@ parole_gst_init (ParoleGst *gst)
 }
 
 GtkWidget *
-parole_gst_new (void)
+parole_gst_new (gboolean embedded, gpointer conf_obj)
 {
-    static gpointer parole_gst_object = NULL;
+    parole_gst_object = g_object_new (PAROLE_TYPE_GST, 
+				      "embedded", embedded,
+				      "conf-object", conf_obj,
+				      NULL);
+				      
+    g_object_add_weak_pointer (parole_gst_object, &parole_gst_object);
     
+    return GTK_WIDGET (parole_gst_object);
+}
+
+GtkWidget *parole_gst_get (void)
+{
     if ( G_LIKELY (parole_gst_object != NULL ) )
     {
 	/* 
@@ -1702,11 +1820,13 @@ parole_gst_new (void)
     }
     else
     {
-	parole_gst_object = g_object_new (PAROLE_TYPE_GST, NULL);
+	parole_gst_object = g_object_new (PAROLE_TYPE_GST, 
+					  NULL);
 	g_object_add_weak_pointer (parole_gst_object, &parole_gst_object);
     }
     
     return GTK_WIDGET (parole_gst_object);
+    
 }
 
 static gboolean
@@ -1724,14 +1844,16 @@ parole_gst_play_idle (gpointer data)
     return FALSE;
 }
 
-void parole_gst_play_uri (ParoleGst *gst, const gchar *uri)
+void parole_gst_play_uri (ParoleGst *gst, const gchar *uri, const gchar *subtitles)
 {
     g_mutex_lock (gst->priv->lock);
     
     gst->priv->target = GST_STATE_PLAYING;
     parole_stream_init_properties (gst->priv->stream);
+    
     g_object_set (G_OBJECT (gst->priv->stream),
 	          "uri", uri,
+		  "subtitles", subtitles,
 		  NULL);
 
     g_mutex_unlock (gst->priv->lock);
@@ -1758,7 +1880,7 @@ void parole_gst_play_device_uri (ParoleGst *gst, const gchar *uri, const gchar *
     
     gst->priv->device = g_strdup (device);
     
-    parole_gst_play_uri (gst, uri);
+    parole_gst_play_uri (gst, uri, NULL);
 }
 
 void parole_gst_pause (ParoleGst *gst)

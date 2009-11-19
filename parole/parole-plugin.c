@@ -328,7 +328,7 @@ parole_plugin_init (ParolePlugin *plugin)
     priv->widget = NULL;
     priv->configurable = FALSE;
     
-    priv->gst = PAROLE_GST (parole_gst_new ());
+    priv->gst = PAROLE_GST (parole_gst_get ());
     
     priv->gst_sig1 = g_signal_connect (G_OBJECT (priv->gst), "media-state",
 				       G_CALLBACK (parole_plugin_media_state_changed_cb), plugin);
@@ -587,7 +587,7 @@ gboolean parole_plugin_play_uri (ParolePlugin *plugin, const gchar *uri)
     g_return_val_if_fail (PAROLE_IS_PLUGIN (plugin), FALSE);
     g_return_val_if_fail (PAROLE_IS_PLUGIN (uri != NULL), FALSE);
     
-    parole_gst_play_uri (PAROLE_PLUGIN_GET_PRIVATE (plugin)->gst, uri);
+    parole_gst_play_uri (PAROLE_PLUGIN_GET_PRIVATE (plugin)->gst, uri, NULL);
     
     return TRUE;
 }

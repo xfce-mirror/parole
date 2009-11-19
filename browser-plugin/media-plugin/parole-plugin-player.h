@@ -18,44 +18,38 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_GST_H
-#define __PAROLE_GST_H
+#ifndef __PAROLE_PLUGIN_PLAYER_H
+#define __PAROLE_PLUGIN_PLAYER_H
 
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
-#define PAROLE_TYPE_GST        (parole_gst_get_type () )
-#define PAROLE_GST(o)          (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_GST, ParoleGst))
-#define PAROLE_IS_GST(o)       (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_GST))
+#define PAROLE_TYPE_PLUGINPLAYER        (parole_plugin_player_get_type () )
+#define PAROLE_PLUGIN_PLAYER(o)          (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_PLUGINPLAYER, ParolePluginPlayer))
+#define PAROLE_IS_PLUGINPLAYER(o)       (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_PLUGINPLAYER))
 
-typedef struct ParoleGstPrivate ParoleGstPrivate;
-
-typedef struct
-{
-    GtkWidget         		parent;
-    
-    ParoleGstPrivate           *priv;
-    
-} ParoleGst;
+typedef struct ParolePluginPlayerPrivate ParolePluginPlayerPrivate;
 
 typedef struct
 {
-    GtkWidgetClass 		parent_class;
+    GObject         			 parent;
     
-} ParoleGstClass;
+    ParolePluginPlayerPrivate     	*priv;
+    
+} ParolePluginPlayer;
 
-GType        			parole_gst_get_type        (void) G_GNUC_CONST;
+typedef struct
+{
+    GObjectClass 			 parent_class;
+    
+} ParolePluginPlayerClass;
 
-GtkWidget       	       *parole_gst_new             (void);
+GType        				 parole_plugin_player_get_type        (void) G_GNUC_CONST;
 
-void				parole_gst_play_url	   (ParoleGst *gst,
-							    const gchar *url);
-							    
-void				parole_gst_terminate	   (ParoleGst *gst);
-
-GtkWidget		       *parole_gst_get_controls    (ParoleGst *gst);
+ParolePluginPlayer       		*parole_plugin_player_new             (GtkWidget *plug,
+									       gchar *url);
 
 G_END_DECLS
 
-#endif /* __PAROLE_GST_H */
+#endif /* __PAROLE_PLUGIN_PLAYER_H */

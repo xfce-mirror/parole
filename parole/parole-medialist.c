@@ -50,6 +50,8 @@
 #include "parole-rc-utils.h"
 #include "parole-dbus.h"
 
+#include "common/parole-common.h"
+
 #define PAROLE_AUTO_SAVED_PLAYLIST 	"xfce4/parole/auto-saved-playlist.m3u"
 
 typedef struct
