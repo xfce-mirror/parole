@@ -1408,6 +1408,9 @@ parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
 	    parole_player_stop_clicked (NULL, player);
 	    ret_val = TRUE;
 	    break;
+	case GDK_Escape:
+	    parole_player_full_screen (player, FALSE);
+	    break;
 #ifdef HAVE_XF86_KEYSYM
 	case XF86XK_OpenURL:
 	    parole_player_full_screen (player, FALSE);

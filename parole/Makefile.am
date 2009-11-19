@@ -164,10 +164,8 @@ stamp-enum-gtypes.h: $(parole_glib_enum_headers) Makefile
 enum-gtypes.c: $(parole_glib_enum_headers) Makefile
 	( cd $(srcdir) && glib-mkenums \
 		--fhead "#include \"enum-gtypes.h\"\n\n" \
-		--fhead "#include \"parole-gst.h\"\n\n" \
 		--fhead "#include \"parole-plugin.h\"\n\n" \
 		--fhead "#include \"parole-pl-parser.h\"\n\n" \
-		--fhead "#include \"parole-stream.h\"\n\n" \
 		--fhead "#include \"parole-conf.h\"\n\n" \
 		--fhead "#include \"parole-button.h\"\n\n" \
 		--fprod "\n/* enumerations from \"@filename@\" */" \
