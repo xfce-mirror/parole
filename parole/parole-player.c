@@ -46,6 +46,7 @@
 #include "parole-dbus.h"
 #include "parole-mediachooser.h"
 #include "parole-file.h"
+#include "parole-filters.h"
 #include "parole-disc.h"
 #include "parole-disc-menu.h"
 #include "parole-statusbar.h"
@@ -203,6 +204,7 @@ struct ParolePlayerPrivate
     ParoleButton        *button;
 #endif
     
+    GtkFileFilter       *video_filter;
     GtkRecentManager    *recent;
 
     GtkWidget 		*gst;
@@ -369,24 +371,27 @@ parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *ro
 	
 	if ( file )
 	{
-	    /*
 	    gchar *sub = NULL;
+	    const gchar *uri;
+	    
+	    uri = parole_file_get_uri (file);
 	    
 	    if ( g_str_has_prefix (uri, "file:/") )
 	    {
-		
+		if ( parole_file_filter (player->priv->video_filter, file) )
+		{
+		    sub = parole_get_subtitle_path (uri);
+		}
 	    }
+	    TRACE ("Trying to play media file %s", uri);
 	    TRACE ("File content type %s", parole_file_get_content_type (file));
-	    */
-	    
-	    TRACE ("Trying to play media file %s", parole_file_get_uri (file));
 	    
 	    gtk_widget_set_sensitive (player->priv->stop, TRUE);
 	    
 	    parole_gst_play_uri (PAROLE_GST (player->priv->gst), 
 				 parole_file_get_uri (file),
-				 NULL);//FIXME, load subtitles
-				 
+				 sub);
+	    g_free (sub);
 	    gtk_widget_grab_focus (player->priv->gst);
 	    g_object_unref (file);
 	}
@@ -1323,7 +1328,7 @@ parole_player_finalize (GObject *object)
     player = PAROLE_PLAYER (object);
 
     TRACE ("start");
-
+    g_object_unref (player->priv->video_filter);
     g_object_unref (player->priv->status);
     g_object_unref (player->priv->disc);
     g_object_unref (player->priv->disc_menu);
@@ -1652,6 +1657,8 @@ parole_player_init (ParolePlayer *player)
     gboolean repeat, shuffle;
     
     player->priv = PAROLE_PLAYER_GET_PRIVATE (player);
+    player->priv->video_filter = parole_get_supported_video_filter ();
+    g_object_ref_sink (player->priv->video_filter);
     
     builder = parole_builder_get_main_interface ();
     
