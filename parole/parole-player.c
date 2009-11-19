@@ -961,7 +961,10 @@ parole_player_full_screen (ParolePlayer *player, gboolean fullscreen)
     gint npages;
     static gint current_page = 0;
     
-    if ( player->priv->full_screen && !fullscreen)
+    if ( player->priv->full_screen == fullscreen )
+	return;
+    
+    if ( player->priv->full_screen )
     {
 	npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (player->priv->main_nt));
 	gtk_widget_reparent (player->priv->play_box, player->priv->control);
