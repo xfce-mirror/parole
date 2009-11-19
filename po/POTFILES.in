@@ -6,8 +6,8 @@
 [type: gettext/glade]data/interfaces/parole-settings.ui
 [type: gettext/glade]data/interfaces/save-playlist.ui
 data/desktop/parole.desktop.in.in
+gst/parole-gst.c
 parole/main.c
-parole/parole-gst.c
 parole/parole-mediachooser.c
 parole/parole-medialist.c
 parole/parole-player.c
@@ -23,3 +23,5 @@ parole/parole-plugins-manager.c
 plugins/properties/stream-properties.c
 plugins/tray/tray-icon.c
 plugins/window-title/window-title.c
+browser-plugin/media-plugin/main.c
+browser-plugin/media-plugin/parole-plugin-player.c

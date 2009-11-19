@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 15:54+0000\n"
+"POT-Creation-Date: 2009-11-19 20:58+0100\n"
 "PO-Revision-Date: 2009-10-15 17:09-0300\n"
 "Last-Translator: elega <elega@elega.com.ar>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,8 +51,7 @@ msgstr "Reproductor de medios"
 msgid "Mute"
 msgstr "Silencio"
 
-#: ../data/interfaces/parole.ui.h:10
-#: ../parole/parole-player.c:1047
+#: ../data/interfaces/parole.ui.h:10 ../parole/parole-player.c:1095
 #: ../parole/parole-disc-menu.c:113
 msgid "Next Chapter"
 msgstr "Capítulo suguiente"
@@ -61,11 +60,8 @@ msgstr "Capítulo suguiente"
 msgid "None"
 msgstr "Ninguno"
 
-#: ../data/interfaces/parole.ui.h:12
-#: ../data/desktop/parole.desktop.in.in.h:1
-#: ../parole/parole-player.c:234
-#: ../parole/parole-about.c:51
-#: ../plugins/window-title/window-title.c:40
+#: ../data/interfaces/parole.ui.h:12 ../data/desktop/parole.desktop.in.in.h:1
+#: ../parole/parole-about.c:52 ../plugins/window-title/window-title.c:40
 msgid "Parole Media Player"
 msgstr "Reproductor de medios Parole"
 
@@ -73,8 +69,7 @@ msgstr "Reproductor de medios Parole"
 msgid "Plugins"
 msgstr "Complementos"
 
-#: ../data/interfaces/parole.ui.h:14
-#: ../parole/parole-player.c:1059
+#: ../data/interfaces/parole.ui.h:14 ../parole/parole-player.c:1107
 #: ../parole/parole-disc-menu.c:114
 msgid "Previous Chapter"
 msgstr "Capítulo anterior"
@@ -126,6 +121,14 @@ msgstr "_Abrir una ubicación"
 #: ../data/interfaces/parole.ui.h:26
 msgid "_View"
 msgstr "_Ver"
+
+#: ../data/interfaces/mediachooser.ui.h:1
+msgid "Replace playlist with opened files"
+msgstr ""
+
+#: ../data/interfaces/mediachooser.ui.h:2
+msgid "Scan folders recursively"
+msgstr ""
 
 #: ../data/interfaces/plugins.ui.h:1
 msgid "<b>Author:</b>"
@@ -223,6 +226,28 @@ msgstr "Por extensión"
 msgid "Select File Types (By Extension)"
 msgstr "Seleccionar tipos de archivo (por extensión)"
 
+#: ../gst/parole-gst.c:1282
+msgid ""
+"Unable to load playbin GStreamer plugin, check your GStreamer installation"
+msgstr ""
+"No se puede cargar el complemento playbin GStreamer, compruebe su "
+"instalación de GStreamer"
+
+#: ../gst/parole-gst.c:1298
+msgid ""
+"Unable to load video GStreamer plugin, check your GStreamer installation"
+msgstr ""
+"No se puede cargar el complemento de vídeo GStreamer, compruebe su "
+"instalación de GStreamer"
+
+#: ../gst/parole-gst.c:1494
+msgid "The stream is taking too much time to load"
+msgstr "El stream está demorando demasiado tiempo para cargar"
+
+#: ../gst/parole-gst.c:1494
+msgid "Stop"
+msgstr "Detener"
+
 #: ../parole/main.c:53
 #, c-format
 msgid ""
@@ -244,149 +269,138 @@ msgstr ""
 "Licenciado bajo GNU GPL.\n"
 "\n"
 
-#: ../parole/main.c:184
+#: ../parole/main.c:185
 msgid "Open a new instance"
 msgstr "Abrir una nueva instancia"
 
-#: ../parole/main.c:185
+#: ../parole/main.c:186
+msgid "Do not load plugins"
+msgstr ""
+
+#: ../parole/main.c:187
 msgid "Play or pause if already playing"
 msgstr "Reproducir o pausar, si ya se está reproduciendo"
 
-#: ../parole/main.c:186
+#: ../parole/main.c:188
 msgid "Stop playing"
 msgstr "Detener repoducción"
 
-#: ../parole/main.c:187
+#: ../parole/main.c:189
 msgid "Next track"
 msgstr "Siguiente pista"
 
-#: ../parole/main.c:188
+#: ../parole/main.c:190
 msgid "Previous track"
 msgstr "Anterior pista"
 
-#: ../parole/main.c:189
+#: ../parole/main.c:191
 msgid "Seek forward"
 msgstr "Avanzar"
 
-#: ../parole/main.c:190
+#: ../parole/main.c:192
 msgid "Seek Backward"
 msgstr "Retroceder"
 
-#: ../parole/main.c:191
+#: ../parole/main.c:193
 msgid "Raise volume"
 msgstr "Elevar volumen"
 
-#: ../parole/main.c:192
+#: ../parole/main.c:194
 msgid "Lower volume"
 msgstr "Menor volumen"
 
-#: ../parole/main.c:193
+#: ../parole/main.c:195
 msgid "Mute volume"
 msgstr "Silenciar"
 
-#: ../parole/main.c:194
+#: ../parole/main.c:196
 msgid "Version information"
 msgstr "Información de la versión"
 
-#: ../parole/main.c:196
+#: ../parole/main.c:198
 msgid "Media to play"
 msgstr "Medios a reproducir"
 
-#: ../parole/main.c:231
+#: ../parole/main.c:235
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
-msgstr "Parole ya se está ejecutando, utilice -i para abrir una nueva instancia\n"
+msgstr ""
+"Parole ya se está ejecutando, utilice -i para abrir una nueva instancia\n"
 
-#: ../parole/parole-gst.c:1289
-msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
-msgstr "No se puede cargar el complemento playbin GStreamer, compruebe su instalación de GStreamer"
-
-#: ../parole/parole-gst.c:1305
-msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
-msgstr "No se puede cargar el complemento de vídeo GStreamer, compruebe su instalación de GStreamer"
-
-#: ../parole/parole-gst.c:1501
-msgid "The stream is taking too much time to load"
-msgstr "El stream está demorando demasiado tiempo para cargar"
-
-#: ../parole/parole-gst.c:1501
-msgid "Stop"
-msgstr "Detener"
-
-#: ../parole/parole-mediachooser.c:155
+#: ../parole/parole-mediachooser.c:195
 msgid "Add media files"
 msgstr "Agregar archivos multimedia"
 
-#: ../parole/parole-mediachooser.c:174
+#: ../parole/parole-mediachooser.c:225
 msgid "Add"
 msgstr "Añadir"
 
-#: ../parole/parole-medialist.c:445
+#: ../parole/parole-medialist.c:429
 msgid "Error saving playlist file"
 msgstr "Error al guardar el archivo de lista de reproducción"
 
-#: ../parole/parole-medialist.c:445
+#: ../parole/parole-medialist.c:429
 msgid "Permission denied"
 msgstr "Permiso denegado"
 
-#: ../parole/parole-medialist.c:454
+#: ../parole/parole-medialist.c:438
 msgid "Unknown playlist format, Please select a support playlist format"
-msgstr "Formato de lista de reproducción desconocido, por favor seleccione un formato soportado de lista de reproducción"
+msgstr ""
+"Formato de lista de reproducción desconocido, por favor seleccione un "
+"formato soportado de lista de reproducción"
 
-#: ../parole/parole-medialist.c:520
-#: ../parole/parole-player.c:1591
+#: ../parole/parole-medialist.c:506 ../parole/parole-player.c:1756
 msgid "Playlist"
 msgstr "Lista de reproducción"
 
-#: ../parole/parole-medialist.c:527
+#: ../parole/parole-medialist.c:513
 msgid "M3U Playlists"
 msgstr "Lista de reproducción M3U"
 
-#: ../parole/parole-medialist.c:535
+#: ../parole/parole-medialist.c:521
 msgid "PLS Playlists"
 msgstr "Lista de reproducción PLS"
 
-#: ../parole/parole-medialist.c:543
+#: ../parole/parole-medialist.c:529
 msgid "Advanced Stream Redirector"
 msgstr "Stream Redirector avanzada"
 
-#: ../parole/parole-medialist.c:551
+#: ../parole/parole-medialist.c:537
 msgid "Shareable Playlist"
 msgstr "Lista de reproducción compartible"
 
-#: ../parole/parole-medialist.c:866
+#: ../parole/parole-medialist.c:852
 msgid "Remember playlist"
 msgstr "Recordar lista de reproducción"
 
-#: ../parole/parole-medialist.c:1016
+#: ../parole/parole-medialist.c:1002
 msgid "Media list"
 msgstr "Lista de medios"
 
-#: ../parole/parole-player.c:297
+#: ../parole/parole-player.c:315
 msgid "Hide playlist"
 msgstr "Ocultar lista de reproducción"
 
-#: ../parole/parole-player.c:306
+#: ../parole/parole-player.c:324
 msgid "Show playlist"
 msgstr "Mostrar lista de repoducción"
 
-#: ../parole/parole-player.c:521
+#: ../parole/parole-player.c:560
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:205
 msgid "Media stream is not seekable"
 msgstr "Stream de medios no se puede buscar"
 
 #.
 #. * Next chapter menu item
 #.
-#: ../parole/parole-player.c:1047
-#: ../parole/parole-disc-menu.c:122
+#: ../parole/parole-player.c:1095 ../parole/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr "Siguiente"
 
 #.
 #. * Previous chapter menu item
 #.
-#: ../parole/parole-player.c:1059
-#: ../parole/parole-disc-menu.c:123
+#: ../parole/parole-player.c:1107 ../parole/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr "Anterior"
 
@@ -402,8 +416,7 @@ msgstr "Detenido"
 msgid "Finished"
 msgstr "Finalizado"
 
-#: ../parole/parole-statusbar.c:88
-#: ../parole/parole-statusbar.c:96
+#: ../parole/parole-statusbar.c:88 ../parole/parole-statusbar.c:96
 msgid "Paused"
 msgstr "Pausado"
 
@@ -435,11 +448,11 @@ msgstr "Todos los archivos soportados"
 msgid "Playlist files"
 msgstr "Lista de archivos"
 
-#: ../parole/parole-about.c:56
+#: ../parole/parole-about.c:57
 msgid "Author/Maintainer"
 msgstr "Autor/Mantenedor"
 
-#: ../parole/parole-about.c:62
+#: ../parole/parole-about.c:63
 #, c-format
 msgid "Translator (%s)"
 msgstr "Traductor (%s)"
@@ -636,8 +649,8 @@ msgstr "Reproduciendo pista"
 msgid "Track %i"
 msgstr "Pista %i"
 
-#: ../parole/parole-plugins-manager.c:227
-#: ../parole/parole-plugins-manager.c:285
+#: ../parole/parole-plugins-manager.c:240
+#: ../parole/parole-plugins-manager.c:317
 msgid "Visit Website"
 msgstr "Ir al sitio web"
 
@@ -746,6 +759,22 @@ msgstr ""
 "Establece el nombre de la ventana principal con el nombre\n"
 "de la reproducción actual."
 
+#: ../browser-plugin/media-plugin/main.c:54
+msgid "socket"
+msgstr ""
+
+#: ../browser-plugin/media-plugin/main.c:54
+msgid "SOCKET ID"
+msgstr ""
+
+#: ../browser-plugin/media-plugin/main.c:55
+#, fuzzy
+msgid "url to play"
+msgstr "Medios a reproducir"
+
+#: ../browser-plugin/media-plugin/main.c:55
+msgid "URL"
+msgstr ""
+
 #~ msgid "Visite Website"
 #~ msgstr "Visite el sitio web"
-
