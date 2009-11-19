@@ -4,6 +4,7 @@ noinst_LTLIBRARIES = 			\
 INCLUDES =                              \
         -I$(top_srcdir)                 \
         -I$(top_srcdir)/common          \
+	-I$(top_srcdir)/parole		\
         -DLOCALEDIR=\"$(localedir)\"    \
         -DG_LOG_DOMAIN=\"parole-gst\"
 
@@ -29,12 +30,9 @@ libparolegst_la_CFLAGS =		\
 libparolegst_la_LIBADD =		\
 	$(top_builddir)/common/libparolecommon.la
 
-libparolegst_header = 			\
-	parole-stream.h
-
 parole_glib_enum_headers =		\
 	parole-gst.h			\
-	parole-stream.h
+	$(top_srcdir)/parole/parole-stream.h
 
 if MAINTAINER_MODE
 

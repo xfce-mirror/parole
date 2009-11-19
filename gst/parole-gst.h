@@ -25,7 +25,7 @@
 #include <gst/gst.h>
 #include <gtk/gtk.h>
 
-#include "parole-stream.h"
+#include <parole/parole-stream.h>
 
 G_BEGIN_DECLS
 
