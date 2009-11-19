@@ -8,6 +8,7 @@ SUBDIRS =  			\
 	gst			\
 	dbus			\
 	parole 			\
+	src			\
 	plugins			\
 	$(browser_plugin_dir)  	\
 	docs			\
