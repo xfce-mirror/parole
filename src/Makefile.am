@@ -31,6 +31,7 @@ PAROLE_LIBS = 					\
 	$(top_builddir)/dbus/libparoledbus.la 	\
 	$(top_builddir)/gst/libparolegst.la 	\
 	$(top_builddir)/common/libparolecommon.la\
+	$(top_builddir)/common/libparolescreensaver.la\
         $(GTHREAD_LIBS)                         \
 	$(GIO_LIBS)				\
         $(DBUS_GLIB_LIBS)                       \
@@ -53,7 +54,6 @@ NOINST_HFILES =					\
 	parole-statusbar.h			\
 	parole-mediachooser.h			\
 	parole-filters.h			\
-	parole-screensaver.h			\
 	parole-conf.h				\
 	parole-conf-dialog.h			\
 	parole-rc-utils.h			\
@@ -82,7 +82,6 @@ libparole_la_SOURCES =				\
 	parole-medialist.c			\
 	parole-mediachooser.c			\
 	parole-filters.c			\
-	parole-screensaver.c			\
 	parole-conf.c				\
 	parole-conf-dialog.c			\
 	parole-disc.c				\

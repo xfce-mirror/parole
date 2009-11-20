@@ -32,6 +32,7 @@
 
 #include "gst/parole-gst.h"
 #include "dbus/parole-dbus.h"
+#include "common/parole-screensaver.h"
 
 #define RESOURCE_FILE 	"xfce4/parole/browser-plugin.rc"
 
@@ -64,6 +65,8 @@ struct ParolePluginPlayerPrivate
     GtkWidget	 *range;
     GtkWidget    *full_screen;
     GtkWidget    *volume;
+
+    ParoleScreenSaver *saver;
     
     ParoleMediaState state;
     
@@ -71,6 +74,7 @@ struct ParolePluginPlayerPrivate
     gboolean      internal_range_change;
     gboolean      user_seeking;
     gboolean      terminate;
+    gboolean	  finished;
     gchar        *url;
     gulong        sig;
 };
@@ -150,6 +154,8 @@ parole_plugin_player_play_clicked_cb (ParolePluginPlayer *player)
 	parole_gst_pause (player->priv->gst);
     else if ( player->priv->state == PAROLE_MEDIA_STATE_PAUSED )
 	parole_gst_resume (player->priv->gst);
+    else if ( player->priv->finished )
+	parole_plugin_player_play (player);
 }
 
 static void
@@ -182,6 +188,11 @@ parole_plugin_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream,
     
     player->priv->state = state;
     parole_plugin_player_set_play_button_image (player);
+    
+    if ( has_video && state == PAROLE_MEDIA_STATE_PLAYING )
+	parole_screen_saver_inhibit (player->priv->saver);
+    else
+	parole_screen_saver_uninhibit (player->priv->saver);
     
     if ( state == PAROLE_MEDIA_STATE_PLAYING )
     {
@@ -228,6 +239,7 @@ parole_plugin_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream,
     else if ( state == PAROLE_MEDIA_STATE_FINISHED )
     {
 	parole_plugin_player_change_range_value (player, 0);
+	player->priv->finished = TRUE;
     }
 }
 
@@ -364,6 +376,12 @@ parole_plugin_player_gst_widget_button_release (GtkWidget *widget,
 }
 
 static void
+parole_plugin_player_error_cb (ParoleGst *gst, const gchar *error, ParolePluginPlayer *player)
+{
+    parole_screen_saver_uninhibit (player->priv->saver);
+}
+
+static void
 parole_plugin_player_construct (GObject *object)
 {
     ParolePluginPlayer *player;
@@ -393,6 +411,8 @@ parole_plugin_player_construct (GObject *object)
     g_signal_connect_after (G_OBJECT (player->priv->gst), "button-release-event",
 			    G_CALLBACK (parole_plugin_player_gst_widget_button_release), player);
 
+    g_signal_connect (G_OBJECT (player->priv->gst), "error",
+		      G_CALLBACK (parole_plugin_player_error_cb), player);
 
     hbox = gtk_hbox_new (FALSE, 0);
     /*
@@ -528,6 +548,7 @@ parole_plugin_player_init (ParolePluginPlayer *player)
     player->priv = PAROLE_PLUGIN_PLAYER_GET_PRIVATE (player);
     
     player->priv->gst  = NULL;
+    player->priv->saver = parole_screen_saver_new ();
     player->priv->plug = NULL;
     
     player->priv->reload = FALSE;
@@ -584,6 +605,8 @@ parole_plugin_player_finalize (GObject *object)
 
     player = PAROLE_PLUGIN_PLAYER (object);
 
+    g_object_unref (player->priv->saver);
+
     G_OBJECT_CLASS (parole_plugin_player_parent_class)->finalize (object);
 }
 
@@ -605,6 +628,8 @@ void parole_plugin_player_play (ParolePluginPlayer *player)
     if ( player->priv->terminate )
 	return;
 	
+    player->priv->reload = FALSE;
+    player->priv->finished = FALSE;
     parole_gst_play_uri (player->priv->gst, player->priv->url, NULL);
 }
 

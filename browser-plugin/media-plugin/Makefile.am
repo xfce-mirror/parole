@@ -12,6 +12,7 @@ parole_media_plugin_CFLAGS =			\
         -I$(top_srcdir)/data/mime               \
 	-I$(top_srcdir)/dbus               	\
 	-I$(top_srcdir)/gst               	\
+	-I$(top_srcdir)/common               	\
         -DLOCALEDIR=\"$(localedir)\"            \
         -DG_LOG_DOMAIN=\"parole-media-plugin\"  \
 	$(GTHREAD_CFLAGS)                       \
@@ -24,6 +25,7 @@ parole_media_plugin_CFLAGS =			\
 parole_media_plugin_LDADD =			\
 	$(top_builddir)/dbus/libparoledbus.la 	\
 	$(top_builddir)/gst/libparolegst.la 	\
+	$(top_builddir)/common/libparolescreensaver.la\
 	$(GTHREAD_LIBS)                       	\
 	$(GTK_LIBS)				\
 	$(GST_VIDEO_LIBS)                     	\
