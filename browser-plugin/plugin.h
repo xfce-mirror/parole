@@ -82,9 +82,11 @@ class CPlugin {
     DBusGProxy      *proxy;
     
     gboolean         window_set;
+    gboolean         child_spawned;
     gchar           *url;
     Window           window;
-  
+    GPid	     child_pid;
+    
   public:
     NPP mInstance;
     uint16 mode;

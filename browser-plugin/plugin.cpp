@@ -73,9 +73,19 @@ CPlugin::CPlugin (NPP pNPInstance)
     mInstance = pNPInstance;
     mInitialized = TRUE;
     window_set = FALSE;
+    child_spawned = FALSE;
     url = NULL;
     bus = NULL;
     proxy = NULL;
+}
+
+void kill_child (GPid child_pid)
+{
+    gchar *command;
+	    
+    command = g_strdup_printf ("kill -9 %d", child_pid);
+    g_spawn_command_line_async (command, NULL);
+    g_free (command);
 }
 
 CPlugin::~CPlugin()
@@ -87,10 +97,28 @@ CPlugin::~CPlugin()
     
     if ( proxy )
     {
-	dbus_g_proxy_call_no_reply (proxy, "Quit",
-					G_TYPE_INVALID,
-					G_TYPE_INVALID);
+	GError *error = NULL;
+	
+	dbus_g_proxy_call (proxy, "Quit", &error,
+			   G_TYPE_INVALID,
+			   G_TYPE_INVALID);
+		
+	/*
+	 * This might happen if the browser unload the plugin quickly
+	 * while the process didn't get the dbus name.
+	 */
+	if ( error )
+	{
+#ifdef DEBUG
+	    g_debug ("Failed to stop the backend via D-Bus killing the process %d", child_pid);
+#endif
+	    kill_child (child_pid);
+	}
     }   
+    else if ( child_spawned )
+    {
+	kill_child (child_pid);
+    }
     
     if ( bus )
 	dbus_g_connection_unref (bus);
@@ -137,8 +165,8 @@ void CPlugin::shut()
     if ( proxy )
     {
         dbus_g_proxy_call_no_reply (proxy, "Terminate",
-                                        G_TYPE_INVALID,
-                                        G_TYPE_INVALID);
+                                    G_TYPE_INVALID,
+                                    G_TYPE_INVALID);
     }   
 }
 
@@ -197,14 +225,14 @@ NPError CPlugin::NewStream(NPMIMEType type, NPStream * stream, NPBool seekable, 
 			     NULL,
 			     (GSpawnFlags) 0,
 			     NULL, NULL,
-			     NULL, 
+			     &child_pid, 
 			     &error) )
 	{
 	    g_critical ("Failed to spawn command : %s", error->message);
 	    g_error_free (error);
 	    return NPERR_GENERIC_ERROR;
 	}
-	
+	child_spawned = TRUE;
 	g_free (socket);
 	g_free (app);
 	
