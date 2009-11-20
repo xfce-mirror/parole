@@ -47,6 +47,7 @@ typedef struct
     TagLib_File *tag_file;
     gchar       *filename;
     guint        changed;
+    gboolean	 need_save;
 #endif
     gboolean     block_edit_signal;
     
@@ -126,6 +127,7 @@ init_media_tag_entries (PluginData *data)
 #ifdef HAVE_TAGLIBC
     gtk_widget_set_tooltip_text (data->save, NULL);
     data->changed = 0;
+    data->need_save = FALSE;
     if ( data->filename )
     {
 	g_free (data->filename);
@@ -151,6 +153,9 @@ save_media_tags (PluginData *data)
     if ( !data->tag_file )
 	return;
 	    
+    if ( !data->need_save )
+	return;
+    
     tag = taglib_file_tag (data->tag_file);
     
     if ( !tag )
@@ -192,8 +197,18 @@ save_media_tags (PluginData *data)
 	taglib_file_save (data->tag_file);
     
     data->changed = 0;
+    data->need_save = FALSE;
     
     taglib_tag_free_strings ();
+}
+#endif
+
+
+#ifdef HAVE_TAGLIBC
+static void 
+save_media_clicked_cb (PluginData *data)
+{
+    data->need_save = TRUE;
 }
 #endif
 
@@ -319,7 +334,7 @@ static GtkWidget *create_properties_widget (PluginData *data)
                       2, 8);
 
     g_signal_connect_swapped (data->save, "clicked",
-			      G_CALLBACK (save_media_tags), data);
+			      G_CALLBACK (save_media_clicked_cb), data);
     
     g_signal_connect_swapped (data->title, "changed",
 			      G_CALLBACK (title_entry_edited), data);
@@ -342,6 +357,10 @@ static GtkWidget *create_properties_widget (PluginData *data)
 static void
 state_changed_cb (ParolePlugin *plugin, const ParoleStream *stream, ParoleState state, PluginData *data)
 {
+#ifdef HAVE_TAGLIBC
+    save_media_tags (data);
+#endif
+
     if ( state <= PAROLE_STATE_PLAYBACK_FINISHED )
 	init_media_tag_entries (data);
 }
