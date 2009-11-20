@@ -252,16 +252,17 @@ parole_plugin_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream,
     {
 	gdouble duration;
 	gboolean seekable;
+	gboolean live;
 	
 	g_object_get (G_OBJECT (stream),
 		      "seekable", &seekable,
 		      "duration", &duration,
+		      "live", &live,
 		      NULL);
 	
 	gtk_widget_set_sensitive (player->priv->range, seekable);
-	g_print ("DURATION=%f\n", duration);
 	player->priv->internal_range_change = TRUE;
-	gtk_range_set_range (GTK_RANGE (player->priv->range), 0, duration);
+	gtk_range_set_range (GTK_RANGE (player->priv->range), 0, live ? 0 : duration);
 	player->priv->internal_range_change = FALSE;
 	
 	gtk_widget_set_tooltip_text (GTK_WIDGET (player->priv->range), seekable ? NULL : _("Media stream is not seekable"));
@@ -348,7 +349,6 @@ parole_plugin_player_media_progressed_cb (ParoleGst *gst, const ParoleStream *st
     
     if ( !player->priv->user_seeking && player->priv->state == PAROLE_MEDIA_STATE_PLAYING )
     {
-	g_print ("VALUE=%f\n", value);
 	parole_plugin_player_change_range_value (player, value);
     }
 }
