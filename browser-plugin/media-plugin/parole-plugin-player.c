@@ -67,6 +67,7 @@ struct ParolePluginPlayerPrivate
     
     ParoleMediaState state;
     
+    gboolean      reload;
     gboolean      internal_range_change;
     gboolean      user_seeking;
     gboolean      terminate;
@@ -218,6 +219,11 @@ parole_plugin_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream,
 	    gtk_main_quit ();
 	}
 	parole_plugin_player_change_range_value (player, 0);
+	
+	if ( player->priv->reload )
+	{
+	    parole_gst_play_uri (player->priv->gst, player->priv->url, NULL);
+	}
     }
     else if ( state == PAROLE_MEDIA_STATE_FINISHED )
     {
@@ -286,6 +292,78 @@ parole_plugin_player_media_progressed_cb (ParoleGst *gst, const ParoleStream *st
 }
 
 static void
+parole_plugin_player_reload (ParolePluginPlayer *player)
+{
+    parole_gst_stop (player->priv->gst);
+    player->priv->reload = TRUE;
+}
+
+static void
+parole_plugin_player_copy_url (ParolePluginPlayer *player)
+{
+    GtkClipboard *clipboard;
+    
+    clipboard = gtk_clipboard_get (GDK_SELECTION_PRIMARY);
+    gtk_clipboard_set_text (clipboard, player->priv->url, -1);
+    clipboard = gtk_clipboard_get (GDK_SELECTION_CLIPBOARD);
+    gtk_clipboard_set_text (clipboard, player->priv->url, -1);
+}
+
+static void
+parole_plugin_player_show_menu (ParolePluginPlayer *player, guint button, guint activate_time)
+{
+    GtkWidget *menu, *mi, *img;
+    
+    menu = gtk_menu_new ();
+    
+    /*
+     * Reload 
+     */
+    mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_REFRESH, NULL);
+    gtk_widget_show (mi);
+    g_signal_connect_swapped (mi, "activate",
+			      G_CALLBACK (parole_plugin_player_reload), player);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+    
+    
+    /*
+     * Copy url
+     */
+    mi = gtk_image_menu_item_new_with_label (_("Copy url"));
+    img = gtk_image_new_from_stock (GTK_STOCK_COPY, GTK_ICON_SIZE_MENU);
+    gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi),img);
+    gtk_widget_show (mi);
+    g_signal_connect_swapped (mi, "activate",
+			      G_CALLBACK (parole_plugin_player_copy_url), player);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+    
+    
+    g_signal_connect_swapped (menu, "selection-done",
+			      G_CALLBACK (gtk_widget_destroy), menu);
+    
+    gtk_menu_popup (GTK_MENU (menu), 
+		    NULL, NULL,
+		    NULL, NULL,
+		    button, activate_time);
+}
+
+static gboolean
+parole_plugin_player_gst_widget_button_release (GtkWidget *widget, 
+						GdkEventButton *ev, 
+						ParolePluginPlayer *player)
+{
+    gboolean ret_val = FALSE;
+    
+    if ( ev->button == 3 )
+    {
+	parole_plugin_player_show_menu (player, ev->button, ev->time);
+	ret_val = TRUE;
+    }
+    
+    return ret_val;
+}
+
+static void
 parole_plugin_player_construct (GObject *object)
 {
     ParolePluginPlayer *player;
@@ -311,6 +389,9 @@ parole_plugin_player_construct (GObject *object)
 
     g_signal_connect (G_OBJECT (player->priv->gst), "media-progressed",
 		      G_CALLBACK (parole_plugin_player_media_progressed_cb), player);
+
+    g_signal_connect_after (G_OBJECT (player->priv->gst), "button-release-event",
+			    G_CALLBACK (parole_plugin_player_gst_widget_button_release), player);
 
 
     hbox = gtk_hbox_new (FALSE, 0);
@@ -451,6 +532,7 @@ parole_plugin_player_init (ParolePluginPlayer *player)
     player->priv->gst  = NULL;
     player->priv->plug = NULL;
     
+    player->priv->reload = FALSE;
     player->priv->terminate = FALSE;
     player->priv->user_seeking = FALSE;
     player->priv->internal_range_change = FALSE;
