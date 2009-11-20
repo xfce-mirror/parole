@@ -26,6 +26,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <gdk/gdkkeysyms.h>
+
 #include <libxfce4util/libxfce4util.h>
 
 #include "parole-plugin-player.h"
@@ -59,7 +61,9 @@ static void parole_plugin_player_get_property (GObject *object,
 struct ParolePluginPlayerPrivate
 {
     ParoleGst    *gst;
+    GtkWidget    *window;
     GtkWidget    *plug;
+    GtkWidget    *vbox;
     GtkWidget	 *controls;
     GtkWidget	 *play;
     GtkWidget	 *range;
@@ -69,6 +73,8 @@ struct ParolePluginPlayerPrivate
     ParoleScreenSaver *saver;
     
     ParoleMediaState state;
+    
+    gboolean	  fullscreen;
     
     gboolean      reload;
     gboolean      internal_range_change;
@@ -87,6 +93,54 @@ enum
 };
 
 G_DEFINE_TYPE (ParolePluginPlayer, parole_plugin_player, G_TYPE_OBJECT)
+
+static void
+parole_plugin_player_set_fullscreen_button (ParolePluginPlayer *player)
+{
+    GtkWidget *img;
+    
+    g_object_get (G_OBJECT (player->priv->full_screen ),
+		  "image", &img,
+		  NULL);
+		  
+    if ( player->priv->fullscreen )
+    {
+	gtk_image_set_from_stock (GTK_IMAGE (img), GTK_STOCK_LEAVE_FULLSCREEN, GTK_ICON_SIZE_BUTTON);
+	gtk_widget_set_tooltip_text (img, _("Leave fullscreen"));
+    }
+    else
+    {
+	gtk_image_set_from_stock (GTK_IMAGE (img), GTK_STOCK_FULLSCREEN, GTK_ICON_SIZE_BUTTON);
+	gtk_widget_set_tooltip_text (img, _("Fullscreen"));
+    }
+    
+    g_object_unref (G_OBJECT (img));
+}
+
+static void
+parole_plugin_player_fullscreen (ParolePluginPlayer *player, gboolean fullscreen)
+{
+    if ( player->priv->fullscreen == fullscreen )
+	return;
+	
+    player->priv->fullscreen = fullscreen;
+    
+    parole_plugin_player_set_fullscreen_button (player);
+    
+    if ( fullscreen )
+    {
+	gtk_widget_show (player->priv->window);
+	gtk_widget_reparent (player->priv->vbox, player->priv->window);
+	gtk_widget_show_all (player->priv->window);
+	gtk_window_fullscreen (GTK_WINDOW (player->priv->window));
+    }
+    else
+    {
+	gtk_widget_hide (player->priv->window);
+	gtk_widget_reparent (player->priv->vbox, player->priv->plug);
+	gtk_window_unfullscreen (GTK_WINDOW (player->priv->window));
+    }
+}
 
 static gboolean
 read_entry_int (const gchar *entry, gint fallback)
@@ -205,18 +259,12 @@ parole_plugin_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream,
 		      NULL);
 	
 	gtk_widget_set_sensitive (player->priv->range, seekable);
+	g_print ("DURATION=%f\n", duration);
+	player->priv->internal_range_change = TRUE;
+	gtk_range_set_range (GTK_RANGE (player->priv->range), 0, duration);
+	player->priv->internal_range_change = FALSE;
 	
-	if ( seekable )
-	{
-	    player->priv->internal_range_change = TRUE;
-	    gtk_range_set_range (GTK_RANGE (player->priv->range), 0, duration);
-	    player->priv->internal_range_change = FALSE;
-	}
-	else
-	{
-	    gtk_widget_set_tooltip_text (GTK_WIDGET (player->priv->range), _("Media stream is not seekable"));
-	    parole_plugin_player_change_range_value (player, 0);
-	}
+	gtk_widget_set_tooltip_text (GTK_WIDGET (player->priv->range), seekable ? NULL : _("Media stream is not seekable"));
     }
     else if ( state == PAROLE_MEDIA_STATE_PAUSED )
     {
@@ -297,8 +345,10 @@ static void
 parole_plugin_player_media_progressed_cb (ParoleGst *gst, const ParoleStream *stream, 
 					  gdouble value, ParolePluginPlayer *player)
 {
+    
     if ( !player->priv->user_seeking && player->priv->state == PAROLE_MEDIA_STATE_PLAYING )
     {
+	g_print ("VALUE=%f\n", value);
 	parole_plugin_player_change_range_value (player, value);
     }
 }
@@ -379,6 +429,35 @@ static void
 parole_plugin_player_error_cb (ParoleGst *gst, const gchar *error, ParolePluginPlayer *player)
 {
     parole_screen_saver_uninhibit (player->priv->saver);
+}
+
+static void
+parole_plugin_player_fullscreen_clicked_cb (ParolePluginPlayer *player)
+{
+    parole_plugin_player_fullscreen (player, !player->priv->fullscreen);
+}
+
+static gboolean
+parole_plugin_player_window_key_press_cb (GtkWidget *widget, GdkEventKey *ev, ParolePluginPlayer *player)
+{
+    gboolean ret_val = FALSE;
+    
+    switch (ev->keyval)
+    {
+	case GDK_F11:
+	case GDK_f:
+	case GDK_F:
+	    parole_plugin_player_fullscreen_clicked_cb (player);
+	    ret_val = TRUE;
+	    break;
+	case GDK_Escape:
+	    parole_plugin_player_fullscreen (player, FALSE);
+	    ret_val = TRUE;
+	default:
+	    break;
+    }
+
+    return ret_val;
 }
 
 static void
@@ -471,19 +550,24 @@ parole_plugin_player_construct (GObject *object)
      * Full screen button
      */
     player->priv->full_screen = gtk_button_new ();
-    img = gtk_image_new_from_stock (GTK_STOCK_FULLSCREEN, GTK_ICON_SIZE_MENU);
+    
+    img = gtk_image_new ();
+    
     g_object_set (G_OBJECT (player->priv->full_screen),
 		  "receives-default", FALSE,
 		  "can-focus", FALSE,
 		  "relief", GTK_RELIEF_NONE,
 		  "image", img,
 		  NULL);
-		  
+    parole_plugin_player_set_fullscreen_button (player);
     gtk_box_pack_start (GTK_BOX (hbox), player->priv->full_screen, 
 			FALSE, FALSE, 0);
     sep = gtk_vseparator_new ();
     gtk_box_pack_start (GTK_BOX (hbox), sep, 
 			FALSE, FALSE, 0);
+    
+    g_signal_connect_swapped (player->priv->full_screen, "clicked",
+			      G_CALLBACK (parole_plugin_player_fullscreen_clicked_cb), player);
 
     /*
      * Volume button
@@ -510,6 +594,15 @@ parole_plugin_player_construct (GObject *object)
 					     
     parole_plugin_player_change_range_value (player, 0);
     gtk_widget_set_sensitive (player->priv->range, FALSE);
+    
+    player->priv->vbox = vbox;
+}
+
+static gboolean
+parole_plugin_player_window_delete_event_cb (ParolePluginPlayer *player)
+{
+    parole_plugin_player_fullscreen (player, FALSE);
+    return TRUE;
 }
 
 static void
@@ -554,12 +647,23 @@ parole_plugin_player_init (ParolePluginPlayer *player)
     player->priv->gst  = NULL;
     player->priv->saver = parole_screen_saver_new ();
     player->priv->plug = NULL;
-    
+    player->priv->fullscreen = FALSE;
     player->priv->reload = FALSE;
     player->priv->terminate = FALSE;
     player->priv->user_seeking = FALSE;
     player->priv->internal_range_change = FALSE;
     player->priv->state = PAROLE_MEDIA_STATE_STOPPED;
+    
+    player->priv->window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+    gtk_window_set_keep_above (GTK_WINDOW (player->priv->window), TRUE);
+    gtk_window_set_decorated (GTK_WINDOW (player->priv->window), FALSE);
+    
+    g_signal_connect_swapped (player->priv->window, "delete-event",
+			      G_CALLBACK (parole_plugin_player_window_delete_event_cb), player);
+    
+    g_signal_connect (player->priv->window, "key-press-event",
+		      G_CALLBACK (parole_plugin_player_window_key_press_cb), player);
+    
     
     parole_plugin_player_dbus_init (player);
 }
