@@ -386,6 +386,7 @@ parole_plugin_player_construct (GObject *object)
 {
     ParolePluginPlayer *player;
     GtkObject *adj;
+    GtkWidget *gstbox;
     GtkWidget *vbox;
     GtkWidget *hbox;
     GtkWidget *img;
@@ -398,9 +399,12 @@ parole_plugin_player_construct (GObject *object)
     /*
      * Gst Widget
      */
+    gstbox = gtk_hbox_new (TRUE, 0);
+    
     player->priv->gst = PAROLE_GST (parole_gst_new (TRUE, NULL));
     
-    gtk_box_pack_start (GTK_BOX (vbox), GTK_WIDGET (player->priv->gst), TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (gstbox), GTK_WIDGET (player->priv->gst), TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (vbox), gstbox, TRUE, TRUE, 0);
     
     g_signal_connect (G_OBJECT (player->priv->gst), "media-state",
 		      G_CALLBACK (parole_plugin_player_media_state_cb), player);

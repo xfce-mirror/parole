@@ -1142,7 +1142,7 @@ static gboolean
 parole_player_gst_widget_button_release (GtkWidget *widget, GdkEventButton *ev, ParolePlayer *player)
 {
     gboolean ret_val = FALSE;
-    
+
     if ( ev->button == 3 )
     {
 	parole_player_show_menu (player, ev->button, ev->time);
@@ -1152,7 +1152,6 @@ parole_player_gst_widget_button_release (GtkWidget *widget, GdkEventButton *ev, 
     else if ( ev->button == 1 )
     {
 	gtk_widget_grab_focus (widget);
-	ret_val = TRUE;
     }
     
     return ret_val;
