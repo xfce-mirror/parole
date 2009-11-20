@@ -547,19 +547,13 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
     
     gtk_widget_set_sensitive (player->priv->range, seekable);
     
-    if ( seekable )
-    {
-	player->priv->internal_range_change = TRUE;
-	gtk_range_set_range (GTK_RANGE (player->priv->range), 0, duration);
-	gtk_widget_set_sensitive (player->priv->seekf, TRUE);
-	gtk_widget_set_sensitive (player->priv->seekb, TRUE);
-	player->priv->internal_range_change = FALSE;
-    }
-    else
-    {
-	gtk_widget_set_tooltip_text (GTK_WIDGET (player->priv->range), _("Media stream is not seekable"));
-	parole_player_change_range_value (player, 0);
-    }
+    player->priv->internal_range_change = TRUE;
+    gtk_range_set_range (GTK_RANGE (player->priv->range), 0, duration);
+    player->priv->internal_range_change = FALSE;
+    
+    gtk_widget_set_sensitive (player->priv->seekf, seekable);
+    gtk_widget_set_sensitive (player->priv->seekb, seekable);
+    gtk_widget_set_tooltip_text (GTK_WIDGET (player->priv->range), seekable ? NULL : _("Media stream is not seekable"));
 
     if ( pix )
 	g_object_unref (pix);
