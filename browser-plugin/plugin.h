@@ -74,6 +74,9 @@ class CPlugin {
     NPError NewStream (NPMIMEType type, NPStream * stream, NPBool seekable, uint16 * stype);
     NPError DestroyStream (NPStream * stream, NPError reason);
     
+    
+    void	GetProxy ();
+    
   private:
     DBusGConnection *bus;
     DBusGProxy      *proxy;

@@ -222,7 +222,7 @@ parole_plugin_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream,
 	
 	if ( player->priv->reload )
 	{
-	    parole_gst_play_uri (player->priv->gst, player->priv->url, NULL);
+	    parole_plugin_player_play (player);
 	}
     }
     else if ( state == PAROLE_MEDIA_STATE_FINISHED )
@@ -486,8 +486,6 @@ parole_plugin_player_construct (GObject *object)
 					     
     parole_plugin_player_change_range_value (player, 0);
     gtk_widget_set_sensitive (player->priv->range, FALSE);
-    
-    parole_gst_play_uri (player->priv->gst, player->priv->url, NULL);
 }
 
 static void
@@ -600,6 +598,14 @@ parole_plugin_player_new (GtkWidget *plug, gchar *url)
 			   NULL);
 
     return player;
+}
+
+void parole_plugin_player_play (ParolePluginPlayer *player)
+{
+    if ( player->priv->terminate )
+	return;
+	
+    parole_gst_play_uri (player->priv->gst, player->priv->url, NULL);
 }
 
 static gboolean parole_plugin_player_dbus_quit (ParolePluginPlayer *player,

@@ -98,10 +98,14 @@ int main (int argc, char **argv)
     player = parole_plugin_player_new (plug, url);
     gtk_widget_show_all (plug);
     
+    parole_plugin_player_play (player);
+    
     gtk_main ();
     gtk_widget_destroy (plug);
     parole_dbus_release_name (dbus_name);
     g_free (dbus_name);
+
+    g_debug ("Exiting");
 
     gst_deinit ();
 

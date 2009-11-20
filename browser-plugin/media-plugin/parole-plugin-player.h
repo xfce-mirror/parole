@@ -49,6 +49,9 @@ GType        				 parole_plugin_player_get_type        (void) G_GNUC_CONST;
 
 ParolePluginPlayer       		*parole_plugin_player_new             (GtkWidget *plug,
 									       gchar *url);
+									       
+void					 parole_plugin_player_play	      (ParolePluginPlayer *player);
+
 G_END_DECLS
 
 #endif /* __PAROLE_PLUGIN_PLAYER_H */
