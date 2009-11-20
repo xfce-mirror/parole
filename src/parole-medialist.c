@@ -1377,5 +1377,6 @@ static gboolean  parole_media_list_dbus_add_disc (ParoleMediaList *list,
 
 void parole_media_list_grab_focus (ParoleMediaList *list)
 {
-    gtk_widget_grab_focus (list->priv->view);
+    if (GTK_WIDGET_VISIBLE (list->priv->view) )
+	gtk_widget_grab_focus (list->priv->view);
 }
