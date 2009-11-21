@@ -461,6 +461,20 @@ parole_plugin_player_window_key_press_cb (GtkWidget *widget, GdkEventKey *ev, Pa
     return ret_val;
 }
 
+static gboolean
+parole_plugin_player_gst_widget_button_press (GtkWidget *widget, GdkEventButton *ev, ParolePluginPlayer *player)
+{
+    gboolean ret_val = FALSE;
+
+    if ( ev->type == GDK_2BUTTON_PRESS )
+    {
+	parole_plugin_player_fullscreen_clicked_cb (player);
+	ret_val = TRUE;
+    }
+
+    return ret_val;
+}
+
 static void
 parole_plugin_player_construct (GObject *object)
 {
@@ -494,6 +508,9 @@ parole_plugin_player_construct (GObject *object)
 
     g_signal_connect_after (G_OBJECT (player->priv->gst), "button-release-event",
 			    G_CALLBACK (parole_plugin_player_gst_widget_button_release), player);
+
+    g_signal_connect_after (G_OBJECT (player->priv->gst), "button-press-event",
+			    G_CALLBACK (parole_plugin_player_gst_widget_button_press), player);
 
     g_signal_connect (G_OBJECT (player->priv->gst), "error",
 		      G_CALLBACK (parole_plugin_player_error_cb), player);
@@ -577,6 +594,7 @@ parole_plugin_player_construct (GObject *object)
 			      0., 1., 1., 0., 0.);
     player->priv->volume = g_object_new (GTK_TYPE_VOLUME_BUTTON,
 					 "adjustment", adj,
+					 "size", GTK_ICON_SIZE_MENU,
 					 NULL);
     gtk_adjustment_set_value (GTK_ADJUSTMENT (adj), (gdouble) (read_entry_int ("volume", 100)/100.) );
     gtk_box_pack_start (GTK_BOX (hbox), player->priv->volume, 
@@ -719,6 +737,20 @@ parole_plugin_player_finalize (GObject *object)
     G_OBJECT_CLASS (parole_plugin_player_parent_class)->finalize (object);
 }
 
+static gboolean
+parole_plugin_player_quit_idl (gpointer data)
+{
+    ParolePluginPlayer *player;
+    
+    player = PAROLE_PLUGIN_PLAYER (data);
+    
+    player->priv->terminate = TRUE;
+    parole_gst_terminate (player->priv->gst);
+    gtk_main_quit ();
+    
+    return FALSE;
+}
+
 ParolePluginPlayer *
 parole_plugin_player_new (GtkWidget *plug, gchar *url)
 {
@@ -782,11 +814,7 @@ parole_plugin_player_dbus_quit (ParolePluginPlayer *player,
 				GError **error)
 {
     g_debug ("Quit message received");
-    
-    player->priv->terminate = TRUE;
-    parole_gst_terminate (player->priv->gst);
-    gtk_main_quit ();
-    
+    g_idle_add ((GSourceFunc) parole_plugin_player_quit_idl, player);
     return TRUE;
 }
 

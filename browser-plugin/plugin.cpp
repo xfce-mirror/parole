@@ -254,5 +254,9 @@ NPError CPlugin::NewStream(NPMIMEType type, NPStream * stream, NPBool seekable, 
 
 NPError CPlugin::DestroyStream(NPStream * stream, NPError reason)
 {
+    g_debug ("Destroy stream %s reason %i ", stream->url, reason);
+    
+    shut ();
+    
     return NPERR_NO_ERROR;
 }
