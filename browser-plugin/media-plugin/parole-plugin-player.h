@@ -52,6 +52,8 @@ ParolePluginPlayer       		*parole_plugin_player_new             (GtkWidget *plu
 									       
 void					 parole_plugin_player_play	      (ParolePluginPlayer *player);
 
+void					 parole_plugin_player_exit 	      (ParolePluginPlayer *player);
+
 G_END_DECLS
 
 #endif /* __PAROLE_PLUGIN_PLAYER_H */

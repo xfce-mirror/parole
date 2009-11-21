@@ -30,13 +30,31 @@
 #include <signal.h>
 
 #include <gtk/gtk.h>
-#include <glib/gi18n.h>
+
+#include <libxfcegui4/libxfcegui4.h>
 
 #include <gst/gst.h>
 
 #include "parole-plugin-player.h"
 
 #include "dbus/parole-dbus.h"
+
+static gulong exit_source_id = 0;
+
+static void G_GNUC_NORETURN
+force_exit (gpointer data)
+{
+    g_debug ("Forcing exit");
+    exit (0);
+}
+
+static void
+posix_signal_handler (gint sig, ParolePluginPlayer *player)
+{
+    parole_plugin_player_exit (player);
+    
+    exit_source_id = g_timeout_add_seconds (4, (GSourceFunc) force_exit, NULL);
+}
 
 int main (int argc, char **argv)
 {
@@ -98,6 +116,19 @@ int main (int argc, char **argv)
     player = parole_plugin_player_new (plug, url);
     gtk_widget_show_all (plug);
     
+    if ( xfce_posix_signal_handler_init (&error)) 
+    {
+        xfce_posix_signal_handler_set_handler (SIGKILL,
+                                               (XfcePosixSignalHandler) posix_signal_handler,
+                                               player, NULL);
+    } 
+    else 
+    {
+        g_warning ("Unable to set up POSIX signal handlers: %s", error->message);
+        g_error_free (error);
+    }
+
+    
     parole_plugin_player_play (player);
     
     gtk_main ();
@@ -105,8 +136,10 @@ int main (int argc, char **argv)
     parole_dbus_release_name (dbus_name);
     g_free (dbus_name);
 
-    g_debug ("Exiting");
+    if ( exit_source_id != 0 )
+	g_source_remove (exit_source_id);
 
+    g_debug ("Exiting");
     gst_deinit ();
 
     return EXIT_SUCCESS;

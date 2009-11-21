@@ -295,6 +295,7 @@ parole_plugin_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream,
 static gboolean 
 parole_plugin_player_terminate (GtkWidget *widget, GdkEvent *ev, ParolePluginPlayer *player)
 {
+    g_debug ("Delete event");
     parole_gst_terminate (player->priv->gst);
     g_signal_handler_disconnect (player->priv->plug, player->priv->sig);
     player->priv->terminate = TRUE;
@@ -741,6 +742,12 @@ void parole_plugin_player_play (ParolePluginPlayer *player)
     parole_gst_play_uri (player->priv->gst, player->priv->url, NULL);
 }
 
+void parole_plugin_player_exit (ParolePluginPlayer *player)
+{
+    player->priv->terminate = TRUE;
+    parole_gst_terminate (player->priv->gst);
+}
+
 static gboolean parole_plugin_player_dbus_quit (ParolePluginPlayer *player,
 						GError **error);
 
@@ -787,7 +794,6 @@ static gboolean
 parole_plugin_player_dbus_terminate (ParolePluginPlayer *player, GError **error)
 {
     g_debug ("Terminate message received");
-    player->priv->terminate = TRUE;
-    parole_gst_terminate (player->priv->gst);
+    parole_plugin_player_exit (player);
     return TRUE;
 }

@@ -178,19 +178,23 @@ NPBool CPlugin::isInitialized()
 void CPlugin::GetProxy ()
 {
     g_return_if_fail (proxy == NULL);
-    g_return_if_fail (bus != NULL);
     
-    gchar *dbus_name;
-    dbus_name = g_strdup_printf ("org.Parole.Media.Plugin%ld", window);
-
-    proxy = dbus_g_proxy_new_for_name (bus, 
-				       dbus_name,
-				       "/org/Parole/Media/Plugin",
-				       "org.Parole.Media.Plugin");
-    if ( !proxy ) 
-	g_critical ("Unable to create proxy for %s", dbus_name);
+    if ( child_spawned )
+    {
+	g_return_if_fail (bus != NULL);
 	
-    g_free (dbus_name);
+	gchar *dbus_name;
+	dbus_name = g_strdup_printf ("org.Parole.Media.Plugin%ld", window);
+    
+	proxy = dbus_g_proxy_new_for_name (bus, 
+					   dbus_name,
+					   "/org/Parole/Media/Plugin",
+					   "org.Parole.Media.Plugin");
+	if ( !proxy ) 
+	    g_critical ("Unable to create proxy for %s", dbus_name);
+	    
+	g_free (dbus_name);
+    }
 }
 
 NPError CPlugin::NewStream(NPMIMEType type, NPStream * stream, NPBool seekable, uint16 * stype)
