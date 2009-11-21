@@ -466,7 +466,11 @@ parole_plugin_player_gst_widget_button_press (GtkWidget *widget, GdkEventButton 
 {
     gboolean ret_val = FALSE;
 
-    if ( ev->type == GDK_2BUTTON_PRESS )
+    /* 
+     * if full_screen widget is visible then we are playing 
+     * video file so there is a point to go fullscreen.
+     */
+    if ( ev->type == GDK_2BUTTON_PRESS && GTK_WIDGET_VISIBLE (player->priv->full_screen) )
     {
 	parole_plugin_player_fullscreen_clicked_cb (player);
 	ret_val = TRUE;
