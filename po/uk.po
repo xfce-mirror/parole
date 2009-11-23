@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-19 20:58+0100\n"
+"POT-Creation-Date: 2009-11-23 15:57+0100\n"
 "PO-Revision-Date: 2009-08-30 20:32+0300\n"
 "Last-Translator: Motsyo Gennadi <drool@altlinux.ru>\n"
 "Language-Team: Ukrainian\n"
@@ -52,8 +52,8 @@ msgstr "Media player"
 msgid "Mute"
 msgstr "Тихо"
 
-#: ../data/interfaces/parole.ui.h:10 ../parole/parole-player.c:1095
-#: ../parole/parole-disc-menu.c:113
+#: ../data/interfaces/parole.ui.h:10 ../src/parole-player.c:1093
+#: ../src/parole-disc-menu.c:113
 msgid "Next Chapter"
 msgstr "Наступник розділ"
 
@@ -62,7 +62,7 @@ msgid "None"
 msgstr "Немає"
 
 #: ../data/interfaces/parole.ui.h:12 ../data/desktop/parole.desktop.in.in.h:1
-#: ../parole/parole-about.c:52 ../plugins/window-title/window-title.c:40
+#: ../src/parole-about.c:52 ../plugins/window-title/window-title-provider.c:58
 msgid "Parole Media Player"
 msgstr "Parole Media Player"
 
@@ -70,8 +70,8 @@ msgstr "Parole Media Player"
 msgid "Plugins"
 msgstr "Плагіни"
 
-#: ../data/interfaces/parole.ui.h:14 ../parole/parole-player.c:1107
-#: ../parole/parole-disc-menu.c:114
+#: ../data/interfaces/parole.ui.h:14 ../src/parole-player.c:1105
+#: ../src/parole-disc-menu.c:114
 msgid "Previous Chapter"
 msgstr "Попередній розділ"
 
@@ -145,23 +145,14 @@ msgid "<b>Site:</b>"
 msgstr "<b>Сайт:</b>"
 
 #: ../data/interfaces/plugins.ui.h:4
-msgid "Enabled"
-msgstr ""
-
-#: ../data/interfaces/plugins.ui.h:5
 #, fuzzy
 msgid "Media Player plugins"
 msgstr "Налаштування програвача"
 
-#: ../data/interfaces/plugins.ui.h:6
+#: ../data/interfaces/plugins.ui.h:5
 #, fuzzy
 msgid "Parole Plugins"
 msgstr "Властивості плагінів"
-
-#: ../data/interfaces/plugins.ui.h:7
-#, fuzzy
-msgid "Plugin"
-msgstr "Плагіни"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "<b>Audio</b>"
@@ -231,28 +222,28 @@ msgstr "За розширенням"
 msgid "Select File Types (By Extension)"
 msgstr "Вибрати тип файлу (за розширенням)"
 
-#: ../gst/parole-gst.c:1282
+#: ../gst/parole-gst.c:1303
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Не можу завантажити GStreamer аудіо-плагін, перевірте наявність GStreamer"
 
-#: ../gst/parole-gst.c:1298
+#: ../gst/parole-gst.c:1319
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Не можу завантажити GStreamer відео-плагін, перевірте наявність GStreamer"
 
-#: ../gst/parole-gst.c:1494
+#: ../gst/parole-gst.c:1514
 #, fuzzy
 msgid "The stream is taking too much time to load"
 msgstr "Потік вимагає багато часу для завантаження"
 
-#: ../gst/parole-gst.c:1494
+#: ../gst/parole-gst.c:1514
 msgid "Stop"
 msgstr "Стоп"
 
-#: ../parole/main.c:53
+#: ../src/main.c:53
 #, c-format
 msgid ""
 "\n"
@@ -265,518 +256,509 @@ msgid ""
 "\n"
 msgstr ""
 
-#: ../parole/main.c:185
+#: ../src/main.c:185
 msgid "Open a new instance"
 msgstr "Відкривати окремим екземпляром"
 
-#: ../parole/main.c:186
+#: ../src/main.c:186
 msgid "Do not load plugins"
 msgstr ""
 
-#: ../parole/main.c:187
+#: ../src/main.c:187
 msgid "Play or pause if already playing"
 msgstr ""
 
-#: ../parole/main.c:188
+#: ../src/main.c:188
 #, fuzzy
 msgid "Stop playing"
 msgstr "Показати список"
 
-#: ../parole/main.c:189
+#: ../src/main.c:189
 #, fuzzy
 msgid "Next track"
 msgstr "Наступний трек"
 
-#: ../parole/main.c:190
+#: ../src/main.c:190
 #, fuzzy
 msgid "Previous track"
 msgstr "Попередній трек"
 
-#: ../parole/main.c:191
+#: ../src/main.c:191
 msgid "Seek forward"
 msgstr ""
 
-#: ../parole/main.c:192
+#: ../src/main.c:192
 msgid "Seek Backward"
 msgstr ""
 
-#: ../parole/main.c:193
+#: ../src/main.c:193
 msgid "Raise volume"
 msgstr ""
 
-#: ../parole/main.c:194
+#: ../src/main.c:194
 msgid "Lower volume"
 msgstr ""
 
-#: ../parole/main.c:195
+#: ../src/main.c:195
 msgid "Mute volume"
 msgstr ""
 
-#: ../parole/main.c:196
+#: ../src/main.c:196
 msgid "Version information"
 msgstr "Версія"
 
-#: ../parole/main.c:198
+#: ../src/main.c:198
 msgid "Media to play"
 msgstr "Об'єкт для відтворення"
 
-#: ../parole/main.c:235
+#: ../src/main.c:235
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr ""
 "Parole вже запущено, використовуйте -i для відкриття окремим екземпляром\n"
 
-#: ../parole/parole-mediachooser.c:195
+#: ../src/parole-mediachooser.c:196
 msgid "Add media files"
 msgstr "Додати медіа-файл"
 
-#: ../parole/parole-mediachooser.c:225
+#: ../src/parole-mediachooser.c:226
 msgid "Add"
 msgstr "Додати"
 
-#: ../parole/parole-medialist.c:429
+#: ../src/parole-medialist.c:430
 msgid "Error saving playlist file"
 msgstr "Помилка збереження списку"
 
-#: ../parole/parole-medialist.c:429
+#: ../src/parole-medialist.c:430
 msgid "Permission denied"
 msgstr "Відмовлено у доступі"
 
-#: ../parole/parole-medialist.c:438
+#: ../src/parole-medialist.c:439
 msgid "Unknown playlist format, Please select a support playlist format"
 msgstr "Формат списку не підтримується. Виберіть допустимий формат списку"
 
-#: ../parole/parole-medialist.c:506 ../parole/parole-player.c:1756
+#: ../src/parole-medialist.c:507 ../src/parole-player.c:1772
 msgid "Playlist"
 msgstr "Список"
 
-#: ../parole/parole-medialist.c:513
+#: ../src/parole-medialist.c:514
 msgid "M3U Playlists"
 msgstr "M3U-списки"
 
-#: ../parole/parole-medialist.c:521
+#: ../src/parole-medialist.c:522
 msgid "PLS Playlists"
 msgstr "PLS-списки"
 
-#: ../parole/parole-medialist.c:529
+#: ../src/parole-medialist.c:530
 msgid "Advanced Stream Redirector"
 msgstr "Розширене перенаправлення потоку"
 
-#: ../parole/parole-medialist.c:537
+#: ../src/parole-medialist.c:538
 msgid "Shareable Playlist"
 msgstr "Спільний список"
 
-#: ../parole/parole-medialist.c:852
+#: ../src/parole-medialist.c:853
 msgid "Remember playlist"
 msgstr "Запам'ятати список"
 
-#: ../parole/parole-medialist.c:1002
+#: ../src/parole-medialist.c:1003
 msgid "Media list"
 msgstr "Список файлів"
 
-#: ../parole/parole-player.c:315
+#: ../src/parole-player.c:316
 msgid "Hide playlist"
 msgstr "Сховати список"
 
-#: ../parole/parole-player.c:324
+#: ../src/parole-player.c:325
 msgid "Show playlist"
 msgstr "Показати список"
 
-#: ../parole/parole-player.c:560
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:205
+#: ../src/parole-player.c:560
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:268
 msgid "Media stream is not seekable"
 msgstr "Потік недоступний для перегляду"
 
 #.
 #. * Next chapter menu item
 #.
-#: ../parole/parole-player.c:1095 ../parole/parole-disc-menu.c:122
+#: ../src/parole-player.c:1093 ../src/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr "Наступний трек"
 
 #.
 #. * Previous chapter menu item
 #.
-#: ../parole/parole-player.c:1107 ../parole/parole-disc-menu.c:123
+#: ../src/parole-player.c:1105 ../src/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr "Попередній трек"
 
-#: ../parole/parole-statusbar.c:60
+#: ../src/parole-statusbar.c:61
 msgid "Buffering"
 msgstr "Буферизація"
 
-#: ../parole/parole-statusbar.c:77
+#: ../src/parole-statusbar.c:78
 msgid "Stopped"
 msgstr "Зупинено"
 
-#: ../parole/parole-statusbar.c:81
+#: ../src/parole-statusbar.c:82
 msgid "Finished"
 msgstr "Відтворено"
 
-#: ../parole/parole-statusbar.c:88 ../parole/parole-statusbar.c:96
+#: ../src/parole-statusbar.c:89 ../src/parole-statusbar.c:97
 msgid "Paused"
 msgstr "Пауза"
 
-#: ../parole/parole-statusbar.c:88
+#: ../src/parole-statusbar.c:89
 #, fuzzy
 msgid "Playing"
 msgstr "Відтворюється трек"
 
-#: ../parole/parole-statusbar.c:117
+#: ../src/parole-statusbar.c:118
 msgid "Live stream:"
 msgstr "Потік:"
 
-#: ../parole/parole-filters.c:57
+#: ../src/parole-filters.c:57
 msgid "Audio"
 msgstr "Звук"
 
-#: ../parole/parole-filters.c:75
+#: ../src/parole-filters.c:75
 msgid "Video"
 msgstr "Відео"
 
-#: ../parole/parole-filters.c:93
+#: ../src/parole-filters.c:93
 msgid "Audio and video"
 msgstr "Звук та відео"
 
-#: ../parole/parole-filters.c:111
+#: ../src/parole-filters.c:111
 msgid "All supported files"
 msgstr "Всі доступні формати"
 
-#: ../parole/parole-filters.c:127
+#: ../src/parole-filters.c:127
 msgid "Playlist files"
 msgstr "Файли списків"
 
-#: ../parole/parole-about.c:57
+#: ../src/parole-about.c:57
 msgid "Author/Maintainer"
 msgstr "Автор/Маінтейнер"
 
-#: ../parole/parole-about.c:63
+#: ../src/parole-about.c:63
 #, c-format
 msgid "Translator (%s)"
 msgstr "Перекладач (%s)"
 
-#: ../parole/parole-disc.c:202
+#: ../src/parole-disc.c:202
 msgid "Play Disc"
 msgstr "Відтворити диск"
 
-#: ../parole/parole-subtitle-encoding.c:165
+#: ../src/parole-subtitle-encoding.c:165
 msgid "Current Locale"
 msgstr "Поточна локаль"
 
-#: ../parole/parole-subtitle-encoding.c:168
-#: ../parole/parole-subtitle-encoding.c:170
-#: ../parole/parole-subtitle-encoding.c:172
-#: ../parole/parole-subtitle-encoding.c:174
+#: ../src/parole-subtitle-encoding.c:168 ../src/parole-subtitle-encoding.c:170
+#: ../src/parole-subtitle-encoding.c:172 ../src/parole-subtitle-encoding.c:174
 msgid "Arabic"
 msgstr "Арабська"
 
-#: ../parole/parole-subtitle-encoding.c:177
+#: ../src/parole-subtitle-encoding.c:177
 msgid "Armenian"
 msgstr "Вірменська"
 
-#: ../parole/parole-subtitle-encoding.c:180
-#: ../parole/parole-subtitle-encoding.c:182
-#: ../parole/parole-subtitle-encoding.c:184
+#: ../src/parole-subtitle-encoding.c:180 ../src/parole-subtitle-encoding.c:182
+#: ../src/parole-subtitle-encoding.c:184
 msgid "Baltic"
 msgstr "Балтійська"
 
-#: ../parole/parole-subtitle-encoding.c:187
+#: ../src/parole-subtitle-encoding.c:187
 msgid "Celtic"
 msgstr "Кельтська"
 
-#: ../parole/parole-subtitle-encoding.c:190
-#: ../parole/parole-subtitle-encoding.c:192
-#: ../parole/parole-subtitle-encoding.c:194
-#: ../parole/parole-subtitle-encoding.c:196
+#: ../src/parole-subtitle-encoding.c:190 ../src/parole-subtitle-encoding.c:192
+#: ../src/parole-subtitle-encoding.c:194 ../src/parole-subtitle-encoding.c:196
 msgid "Central European"
 msgstr "Центральна Європа"
 
-#: ../parole/parole-subtitle-encoding.c:199
-#: ../parole/parole-subtitle-encoding.c:201
-#: ../parole/parole-subtitle-encoding.c:203
-#: ../parole/parole-subtitle-encoding.c:205
+#: ../src/parole-subtitle-encoding.c:199 ../src/parole-subtitle-encoding.c:201
+#: ../src/parole-subtitle-encoding.c:203 ../src/parole-subtitle-encoding.c:205
 msgid "Chinese Simplified"
 msgstr "Китайська спрощена"
 
-#: ../parole/parole-subtitle-encoding.c:208
-#: ../parole/parole-subtitle-encoding.c:210
-#: ../parole/parole-subtitle-encoding.c:212
+#: ../src/parole-subtitle-encoding.c:208 ../src/parole-subtitle-encoding.c:210
+#: ../src/parole-subtitle-encoding.c:212
 msgid "Chinese Traditional"
 msgstr "Китайська традиційна"
 
-#: ../parole/parole-subtitle-encoding.c:215
+#: ../src/parole-subtitle-encoding.c:215
 msgid "Croatian"
 msgstr "Хорватська"
 
-#: ../parole/parole-subtitle-encoding.c:218
-#: ../parole/parole-subtitle-encoding.c:220
-#: ../parole/parole-subtitle-encoding.c:222
-#: ../parole/parole-subtitle-encoding.c:224
-#: ../parole/parole-subtitle-encoding.c:226
-#: ../parole/parole-subtitle-encoding.c:228
+#: ../src/parole-subtitle-encoding.c:218 ../src/parole-subtitle-encoding.c:220
+#: ../src/parole-subtitle-encoding.c:222 ../src/parole-subtitle-encoding.c:224
+#: ../src/parole-subtitle-encoding.c:226 ../src/parole-subtitle-encoding.c:228
 msgid "Cyrillic"
 msgstr "Кирилиця"
 
-#: ../parole/parole-subtitle-encoding.c:231
+#: ../src/parole-subtitle-encoding.c:231
 msgid "Cyrillic/Russian"
 msgstr "Кирилиця/Росія"
 
-#: ../parole/parole-subtitle-encoding.c:234
-#: ../parole/parole-subtitle-encoding.c:236
+#: ../src/parole-subtitle-encoding.c:234 ../src/parole-subtitle-encoding.c:236
 msgid "Cyrillic/Ukrainian"
 msgstr "Кирилиця/Україна"
 
-#: ../parole/parole-subtitle-encoding.c:239
+#: ../src/parole-subtitle-encoding.c:239
 msgid "Georgian"
 msgstr "Грузинська"
 
-#: ../parole/parole-subtitle-encoding.c:242
-#: ../parole/parole-subtitle-encoding.c:244
-#: ../parole/parole-subtitle-encoding.c:246
+#: ../src/parole-subtitle-encoding.c:242 ../src/parole-subtitle-encoding.c:244
+#: ../src/parole-subtitle-encoding.c:246
 msgid "Greek"
 msgstr "Грецька"
 
-#: ../parole/parole-subtitle-encoding.c:249
+#: ../src/parole-subtitle-encoding.c:249
 msgid "Gujarati"
 msgstr "Гуджараті"
 
-#: ../parole/parole-subtitle-encoding.c:252
+#: ../src/parole-subtitle-encoding.c:252
 msgid "Gurmukhi"
 msgstr "Гурмухі"
 
-#: ../parole/parole-subtitle-encoding.c:255
-#: ../parole/parole-subtitle-encoding.c:257
-#: ../parole/parole-subtitle-encoding.c:259
-#: ../parole/parole-subtitle-encoding.c:261
+#: ../src/parole-subtitle-encoding.c:255 ../src/parole-subtitle-encoding.c:257
+#: ../src/parole-subtitle-encoding.c:259 ../src/parole-subtitle-encoding.c:261
 msgid "Hebrew"
 msgstr "Іврит"
 
-#: ../parole/parole-subtitle-encoding.c:264
+#: ../src/parole-subtitle-encoding.c:264
 msgid "Hebrew Visual"
 msgstr "Іврит візуальний"
 
-#: ../parole/parole-subtitle-encoding.c:267
+#: ../src/parole-subtitle-encoding.c:267
 msgid "Hindi"
 msgstr "Хінді"
 
-#: ../parole/parole-subtitle-encoding.c:270
+#: ../src/parole-subtitle-encoding.c:270
 msgid "Icelandic"
 msgstr "Ісландська"
 
-#: ../parole/parole-subtitle-encoding.c:273
-#: ../parole/parole-subtitle-encoding.c:275
-#: ../parole/parole-subtitle-encoding.c:277
+#: ../src/parole-subtitle-encoding.c:273 ../src/parole-subtitle-encoding.c:275
+#: ../src/parole-subtitle-encoding.c:277
 msgid "Japanese"
 msgstr "Японська"
 
-#: ../parole/parole-subtitle-encoding.c:280
-#: ../parole/parole-subtitle-encoding.c:282
-#: ../parole/parole-subtitle-encoding.c:284
-#: ../parole/parole-subtitle-encoding.c:286
+#: ../src/parole-subtitle-encoding.c:280 ../src/parole-subtitle-encoding.c:282
+#: ../src/parole-subtitle-encoding.c:284 ../src/parole-subtitle-encoding.c:286
 msgid "Korean"
 msgstr "Корейська"
 
-#: ../parole/parole-subtitle-encoding.c:289
+#: ../src/parole-subtitle-encoding.c:289
 msgid "Nordic"
 msgstr "Північні"
 
-#: ../parole/parole-subtitle-encoding.c:292
+#: ../src/parole-subtitle-encoding.c:292
 msgid "Persian"
 msgstr "Перська"
 
-#: ../parole/parole-subtitle-encoding.c:295
-#: ../parole/parole-subtitle-encoding.c:297
+#: ../src/parole-subtitle-encoding.c:295 ../src/parole-subtitle-encoding.c:297
 msgid "Romanian"
 msgstr "Румунська"
 
-#: ../parole/parole-subtitle-encoding.c:300
+#: ../src/parole-subtitle-encoding.c:300
 msgid "South European"
 msgstr "Південна Європа"
 
-#: ../parole/parole-subtitle-encoding.c:303
+#: ../src/parole-subtitle-encoding.c:303
 msgid "Thai"
 msgstr "Тайська"
 
-#: ../parole/parole-subtitle-encoding.c:306
-#: ../parole/parole-subtitle-encoding.c:308
-#: ../parole/parole-subtitle-encoding.c:310
-#: ../parole/parole-subtitle-encoding.c:312
+#: ../src/parole-subtitle-encoding.c:306 ../src/parole-subtitle-encoding.c:308
+#: ../src/parole-subtitle-encoding.c:310 ../src/parole-subtitle-encoding.c:312
 msgid "Turkish"
 msgstr "Турецька"
 
-#: ../parole/parole-subtitle-encoding.c:315
-#: ../parole/parole-subtitle-encoding.c:317
-#: ../parole/parole-subtitle-encoding.c:319
-#: ../parole/parole-subtitle-encoding.c:321
-#: ../parole/parole-subtitle-encoding.c:323
+#: ../src/parole-subtitle-encoding.c:315 ../src/parole-subtitle-encoding.c:317
+#: ../src/parole-subtitle-encoding.c:319 ../src/parole-subtitle-encoding.c:321
+#: ../src/parole-subtitle-encoding.c:323
 msgid "Unicode"
 msgstr "Юнікод"
 
-#: ../parole/parole-subtitle-encoding.c:326
-#: ../parole/parole-subtitle-encoding.c:328
-#: ../parole/parole-subtitle-encoding.c:330
-#: ../parole/parole-subtitle-encoding.c:332
-#: ../parole/parole-subtitle-encoding.c:334
+#: ../src/parole-subtitle-encoding.c:326 ../src/parole-subtitle-encoding.c:328
+#: ../src/parole-subtitle-encoding.c:330 ../src/parole-subtitle-encoding.c:332
+#: ../src/parole-subtitle-encoding.c:334
 msgid "Western"
 msgstr "Західні"
 
-#: ../parole/parole-subtitle-encoding.c:337
-#: ../parole/parole-subtitle-encoding.c:339
-#: ../parole/parole-subtitle-encoding.c:341
+#: ../src/parole-subtitle-encoding.c:337 ../src/parole-subtitle-encoding.c:339
+#: ../src/parole-subtitle-encoding.c:341
 msgid "Vietnamese"
 msgstr "В'єтнамська"
 
-#: ../parole/parole-open-location.c:181
+#: ../src/parole-open-location.c:181
 msgid "Open location..."
 msgstr "Відкрити місцезнаходження..."
 
-#: ../parole/parole-open-location.c:186
+#: ../src/parole-open-location.c:186
 msgid "<b>Open location of media file or live stream:</b>"
 msgstr "<b>Відкрити місцезнаходження медіа-файлу чи потоку:</b>"
 
-#: ../parole/parole-open-location.c:205
+#: ../src/parole-open-location.c:205
 msgid "Clear history"
 msgstr "Очистити історію"
 
-#: ../parole/parole-disc-menu.c:130
+#: ../src/parole-disc-menu.c:130
 msgid "Playing Track"
 msgstr "Відтворюється трек"
 
-#: ../parole/parole-disc-menu.c:194
+#: ../src/parole-disc-menu.c:194
 #, c-format
 msgid "Track %i"
 msgstr "Трек %i"
 
-#: ../parole/parole-plugins-manager.c:240
-#: ../parole/parole-plugins-manager.c:317
+#: ../src/parole-plugins-manager.c:290 ../src/parole-plugins-manager.c:415
 msgid "Visit Website"
 msgstr "Відвідайте WEB-сайт"
 
-#: ../plugins/properties/stream-properties.c:121
-#: ../plugins/properties/stream-properties.c:122
-#: ../plugins/properties/stream-properties.c:123
-#: ../plugins/properties/stream-properties.c:124
+#: ../src/parole-plugins-manager.c:363
+#: ../plugins/properties/stream-properties-provider.c:140
+#: ../plugins/properties/stream-properties-provider.c:141
+#: ../plugins/properties/stream-properties-provider.c:142
+#: ../plugins/properties/stream-properties-provider.c:143
 msgid "Unknown"
 msgstr "Невідомо"
 
-#: ../plugins/properties/stream-properties.c:220
+#: ../plugins/properties/stream-properties-provider.c:254
 msgid "Title:"
 msgstr "Заголовок:"
 
-#: ../plugins/properties/stream-properties.c:243
+#: ../plugins/properties/stream-properties-provider.c:277
 msgid "Artist:"
 msgstr "Виконавець:"
 
-#: ../plugins/properties/stream-properties.c:266
+#: ../plugins/properties/stream-properties-provider.c:300
 msgid "Album:"
 msgstr "Альбом:"
 
-#: ../plugins/properties/stream-properties.c:289
+#: ../plugins/properties/stream-properties-provider.c:323
 msgid "Year:"
 msgstr "Рік:"
 
-#: ../plugins/properties/stream-properties.c:307
+#: ../plugins/properties/stream-properties-provider.c:341
 msgid "General"
 msgstr "Загальні"
 
-#: ../plugins/properties/stream-properties.c:354
+#: ../plugins/properties/stream-properties-provider.c:392
 msgid "Stream doesn't support tags changes"
 msgstr "Потік не підтримує зміну тегів"
 
-#: ../plugins/properties/stream-properties.c:361
+#: ../plugins/properties/stream-properties-provider.c:399
 msgid "Save media tags changes"
 msgstr "Зберегти зміни медіа-тегів"
 
-#. Construct function
-#: ../plugins/properties/stream-properties.c:490
+#: ../plugins/properties/stream-properties-provider.c:516
 msgid "Properties"
 msgstr "Властивості"
 
-#. Title
-#: ../plugins/properties/stream-properties.c:491
+#: ../plugins/properties/stream-properties.desktop.in.h:1
 msgid "Read media properties"
 msgstr "Зчитати властивості медіа"
 
-#: ../plugins/tray/tray-icon.c:222
+#: ../plugins/properties/stream-properties.desktop.in.h:2
+#, fuzzy
+msgid "Stream Properties"
+msgstr "Властивості"
+
+#: ../plugins/tray/tray-provider.c:229
 msgid "<b>Playing:</b>"
 msgstr "<b>Відтворення:</b>"
 
-#: ../plugins/tray/tray-icon.c:222
+#: ../plugins/tray/tray-provider.c:229
 msgid "<b>Duration:</b>"
 msgstr "<b>Тривалість:</b>"
 
-#: ../plugins/tray/tray-icon.c:373
+#: ../plugins/tray/tray-provider.c:380
 msgid "Tray icon plugin"
 msgstr "Плагін значка в лотку"
 
-#: ../plugins/tray/tray-icon.c:383
+#: ../plugins/tray/tray-provider.c:390
 msgid "Enable notification"
 msgstr "Увімкнути повідомлення"
 
-#: ../plugins/tray/tray-icon.c:392
+#: ../plugins/tray/tray-provider.c:399
 msgid "Always minimize to tray when window is closed"
 msgstr ""
 
-#: ../plugins/tray/tray-icon.c:431
+#: ../plugins/tray/tray-provider.c:438
 msgid "Minimize to tray?"
 msgstr ""
 
-#: ../plugins/tray/tray-icon.c:437
+#: ../plugins/tray/tray-provider.c:444
 msgid "Minimize to tray"
 msgstr ""
 
-#: ../plugins/tray/tray-icon.c:453
+#: ../plugins/tray/tray-provider.c:460
 msgid "Are you sure you want to quit Parole"
 msgstr ""
 
-#: ../plugins/tray/tray-icon.c:457
+#: ../plugins/tray/tray-provider.c:464
 #, fuzzy
 msgid "Remember my choice"
 msgstr "Запам'ятати список"
 
-#. Construct function
-#: ../plugins/tray/tray-icon.c:544
-msgid "Tray icon"
-msgstr "Значок в лотку"
-
-#. Title
-#: ../plugins/tray/tray-icon.c:545
+#: ../plugins/tray/system-tray.desktop.in.h:1
 msgid "Show icon in the system tray"
 msgstr "Відображати значок в системному лотку"
 
-#. Construct function
-#: ../plugins/window-title/window-title.c:102
-msgid "Window title"
-msgstr "Заголовок вікна"
+#: ../plugins/tray/system-tray.desktop.in.h:2
+msgid "Tray icon"
+msgstr "Значок в лотку"
 
-#. Title
-#: ../plugins/window-title/window-title.c:103
-msgid ""
-"Set the main window name to the current\n"
-" playing media name."
+#: ../plugins/window-title/window-title.desktop.in.h:1
+#, fuzzy
+msgid "Set the main window name to the current playing media name."
 msgstr ""
 "Встановити ім'я головного вікна у відповідності\n"
 "з іменем відтворюваного файлу."
 
-#: ../browser-plugin/media-plugin/main.c:54
+#: ../plugins/window-title/window-title.desktop.in.h:2
+#, fuzzy
+msgid "Window Title"
+msgstr "Заголовок вікна"
+
+#: ../browser-plugin/media-plugin/main.c:72
 msgid "socket"
 msgstr ""
 
-#: ../browser-plugin/media-plugin/main.c:54
+#: ../browser-plugin/media-plugin/main.c:72
 msgid "SOCKET ID"
 msgstr ""
 
-#: ../browser-plugin/media-plugin/main.c:55
+#: ../browser-plugin/media-plugin/main.c:73
 #, fuzzy
 msgid "url to play"
 msgstr "Об'єкт для відтворення"
 
-#: ../browser-plugin/media-plugin/main.c:55
+#: ../browser-plugin/media-plugin/main.c:73
 msgid "URL"
 msgstr ""
 
-#~ msgid "gtk-leave-fullscreen"
-#~ msgstr "Вийти з повноекранного режиму"
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:109
+#, fuzzy
+msgid "Leave fullscreen"
+msgstr "Вийти з повноекранного режиму"
+
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:114
+#, fuzzy
+msgid "Fullscreen"
+msgstr "Вийти з повноекранного режиму"
+
+#.
+#. * Copy url
+#.
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:395
+msgid "Copy url"
+msgstr ""
+
+#, fuzzy
+#~ msgid "Plugin"
+#~ msgstr "Плагіни"
 
 #~ msgid "gtk-close"
 #~ msgstr "Закрити"

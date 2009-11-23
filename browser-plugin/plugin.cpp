@@ -81,11 +81,13 @@ CPlugin::CPlugin (NPP pNPInstance)
 
 void kill_child (GPid child_pid)
 {
+    /*
     gchar *command;
 	    
     command = g_strdup_printf ("kill -9 %d", child_pid);
     g_spawn_command_line_async (command, NULL);
     g_free (command);
+    */
 }
 
 CPlugin::~CPlugin()
