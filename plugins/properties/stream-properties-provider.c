@@ -26,17 +26,28 @@
 #include <stdlib.h>
 
 #include <glib.h>
-#include <glib/gi18n.h>
-#include <gtk/gtk.h>
-
-#include <parole/parole.h>
 
 #ifdef HAVE_TAGLIBC
 #include <taglib/tag_c.h>
 #endif
 
-typedef struct
+#include <libxfce4util/libxfce4util.h>
+
+#include "stream-properties-provider.h"
+
+static void   stream_properties_iface_init 	   (ParoleProviderPluginIface *iface);
+static void   stream_properties_finalize             (GObject 	              *object);
+
+
+struct _StreamPropertiesClass
 {
+    GObjectClass parent_class;
+};
+
+struct _StreamProperties
+{
+    GObject      parent;
+    ParoleProviderPlayer *player;
     GtkWidget *title;
     GtkWidget *artist;
     GtkWidget *album;
@@ -51,7 +62,13 @@ typedef struct
 #endif
     gboolean     block_edit_signal;
     
-} PluginData;
+};
+
+G_DEFINE_TYPE_WITH_CODE (StreamProperties, 
+			 stream_properties, 
+			 G_TYPE_OBJECT,
+			 G_IMPLEMENT_INTERFACE (PAROLE_TYPE_PROVIDER_PLUGIN, 
+						stream_properties_iface_init));
 
 enum
 {
@@ -62,7 +79,7 @@ enum
 };
 
 static void
-set_widget_text (PluginData *data, GtkWidget *widget, const gchar *text)
+set_widget_text (StreamProperties *data, GtkWidget *widget, const gchar *text)
 {
     data->block_edit_signal = TRUE;
 #ifdef HAVE_TAGLIBC
@@ -72,36 +89,37 @@ set_widget_text (PluginData *data, GtkWidget *widget, const gchar *text)
 #endif
     data->block_edit_signal = FALSE;
 }
-
+						
 #ifdef HAVE_TAGLIBC
 static void
-title_entry_edited (PluginData *data)
+title_entry_edited (StreamProperties *prop)
 {
-    if (!data->block_edit_signal)
-	data->changed |= TITLE_ENTRY_EDITED;
+    if (!prop->block_edit_signal)
+	prop->changed |= TITLE_ENTRY_EDITED;
 }
 
 static void
-artist_entry_edited (PluginData *data)
+artist_entry_edited (StreamProperties *prop)
 {
-    if (!data->block_edit_signal)
-	data->changed |= ARTIST_ENTRY_EDITED;
+    if (!prop->block_edit_signal)
+	prop->changed |= ARTIST_ENTRY_EDITED;
 }
 
 static void
-album_entry_edited (PluginData *data)
+album_entry_edited (StreamProperties *prop)
 {
-    if (!data->block_edit_signal)
-	data->changed |= ALBUM_ENTRY_EDITED;
+    if (!prop->block_edit_signal)
+	prop->changed |= ALBUM_ENTRY_EDITED;
 }
 
 static void
-year_entry_edited (PluginData *data)
+year_entry_edited (StreamProperties *prop)
 {
-    if (!data->block_edit_signal)
-	data->changed |= YEAR_ENTRY_EDITED;
+    if (!prop->block_edit_signal)
+	prop->changed |= YEAR_ENTRY_EDITED;
 }
 #endif
+
 
 static GtkWidget *
 new_tag_widget (void)
@@ -117,7 +135,7 @@ new_tag_widget (void)
 }
 
 static void
-init_media_tag_entries (PluginData *data)
+init_media_tag_entries (StreamProperties *data)
 {
     set_widget_text (data, data->title, _("Unknown"));
     set_widget_text (data, data->artist, _("Unknown"));
@@ -144,7 +162,7 @@ init_media_tag_entries (PluginData *data)
 
 #ifdef HAVE_TAGLIBC
 static void
-save_media_tags (PluginData *data)
+save_media_tags (StreamProperties *data)
 {
     TagLib_Tag *tag;
     const gchar *entry;
@@ -206,13 +224,14 @@ save_media_tags (PluginData *data)
 
 #ifdef HAVE_TAGLIBC
 static void 
-save_media_clicked_cb (PluginData *data)
+save_media_clicked_cb (StreamProperties *data)
 {
     data->need_save = TRUE;
 }
 #endif
 
-static GtkWidget *create_properties_widget (PluginData *data)
+static GtkWidget *
+stream_properties_create_widgets (StreamProperties *prop)
 {
     PangoFontDescription *pfd;
     
@@ -241,9 +260,9 @@ static GtkWidget *create_properties_widget (PluginData *data)
                       GTK_SHRINK, GTK_SHRINK,
                       2, 8);
 
-    data->title = new_tag_widget ();
+    prop->title = new_tag_widget ();
     align = gtk_alignment_new (0.0, 0.5, 0, 0);
-    gtk_container_add (GTK_CONTAINER (align), data->title);
+    gtk_container_add (GTK_CONTAINER (align), prop->title);
     gtk_table_attach (GTK_TABLE (table), align,
                       1, 2, i, i+1, 
                       GTK_SHRINK, GTK_SHRINK,
@@ -264,9 +283,9 @@ static GtkWidget *create_properties_widget (PluginData *data)
                       GTK_SHRINK, GTK_SHRINK,
                       2, 8);
 
-    data->artist = new_tag_widget ();
+    prop->artist = new_tag_widget ();
     align = gtk_alignment_new (0.0, 0.5, 0, 0);
-    gtk_container_add (GTK_CONTAINER (align), data->artist);
+    gtk_container_add (GTK_CONTAINER (align), prop->artist);
     gtk_table_attach (GTK_TABLE (table), align,
                       1, 2, i, i+1, 
                       GTK_SHRINK, GTK_SHRINK,
@@ -287,9 +306,9 @@ static GtkWidget *create_properties_widget (PluginData *data)
                       GTK_SHRINK, GTK_SHRINK,
                       2, 8);
 
-    data->album = new_tag_widget ();
+    prop->album = new_tag_widget ();
     align = gtk_alignment_new (0.0, 0.5, 0, 0);
-    gtk_container_add (GTK_CONTAINER (align), data->album);
+    gtk_container_add (GTK_CONTAINER (align), prop->album);
     gtk_table_attach (GTK_TABLE (table), align,
                       1, 2, i, i+1, 
                       GTK_SHRINK, GTK_SHRINK,
@@ -310,9 +329,9 @@ static GtkWidget *create_properties_widget (PluginData *data)
                       GTK_SHRINK, GTK_SHRINK,
                       2, 8);
 
-    data->year = new_tag_widget ();
+    prop->year = new_tag_widget ();
     align = gtk_alignment_new (0.0, 0.5, 0, 0);
-    gtk_container_add (GTK_CONTAINER (align), data->year);
+    gtk_container_add (GTK_CONTAINER (align), prop->year);
     gtk_table_attach (GTK_TABLE (table), align,
                       1, 2, i, i+1, 
                       GTK_SHRINK, GTK_SHRINK,
@@ -324,45 +343,45 @@ static GtkWidget *create_properties_widget (PluginData *data)
     gtk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);
     
 #ifdef HAVE_TAGLIBC
-    data->save = gtk_button_new_from_stock (GTK_STOCK_APPLY);
+    prop->save = gtk_button_new_from_stock (GTK_STOCK_APPLY);
     i++;
     align = gtk_alignment_new (0.0, 0.5, 0, 0);
-    gtk_container_add (GTK_CONTAINER (align), data->save);
+    gtk_container_add (GTK_CONTAINER (align), prop->save);
     gtk_table_attach (GTK_TABLE (table), align,
                       1, 2, i, i+1, 
                       GTK_SHRINK, GTK_SHRINK,
                       2, 8);
 
-    g_signal_connect_swapped (data->save, "clicked",
-			      G_CALLBACK (save_media_clicked_cb), data);
+    g_signal_connect_swapped (prop->save, "clicked",
+			      G_CALLBACK (save_media_clicked_cb), prop);
     
-    g_signal_connect_swapped (data->title, "changed",
-			      G_CALLBACK (title_entry_edited), data);
+    g_signal_connect_swapped (prop->title, "changed",
+			      G_CALLBACK (title_entry_edited), prop);
     
-    g_signal_connect_swapped (data->artist, "changed",
-			      G_CALLBACK (artist_entry_edited), data);
+    g_signal_connect_swapped (prop->artist, "changed",
+			      G_CALLBACK (artist_entry_edited), prop);
 			      
-    g_signal_connect_swapped (data->album, "changed",
-			      G_CALLBACK (album_entry_edited), data);
+    g_signal_connect_swapped (prop->album, "changed",
+			      G_CALLBACK (album_entry_edited), prop);
 			    
-    g_signal_connect_swapped (data->year, "changed",
-			      G_CALLBACK (year_entry_edited), data);
+    g_signal_connect_swapped (prop->year, "changed",
+			      G_CALLBACK (year_entry_edited), prop);
 			      
 #endif
-    
-    init_media_tag_entries (data);
+    init_media_tag_entries (prop);
     return vbox;
 }
 
 static void
-state_changed_cb (ParolePlugin *plugin, const ParoleStream *stream, ParoleState state, PluginData *data)
+state_changed_cb (ParoleProviderPlayer *player, const ParoleStream *stream, 
+		  ParoleState state, StreamProperties *prop)
 {
 #ifdef HAVE_TAGLIBC
-    save_media_tags (data);
+    save_media_tags (prop);
 #endif
 
     if ( state <= PAROLE_STATE_PLAYBACK_FINISHED )
-	init_media_tag_entries (data);
+	init_media_tag_entries (prop);
 }
 
 #ifdef HAVE_TAGLIBC
@@ -382,7 +401,7 @@ enable_tag_save (GtkWidget *widget)
 #endif
 
 static void
-tag_message_cb (ParolePlugin *plugin, const ParoleStream *stream, PluginData *data)
+tag_message_cb (ParoleProviderPlayer *player, const ParoleStream *stream, StreamProperties *prop)
 {
     gchar *str = NULL;
 #ifdef HAVE_TAGLIBC
@@ -400,43 +419,43 @@ tag_message_cb (ParolePlugin *plugin, const ParoleStream *stream, PluginData *da
 		  NULL);
     
 #ifdef HAVE_TAGLIBC
-    if ( data->filename )
+    if ( prop->filename )
     {
-	g_free (data->filename);
-	data->filename = NULL;
+	g_free (prop->filename);
+	prop->filename = NULL;
     }
     
-    if ( data->tag_file )
+    if ( prop->tag_file )
     {
-	taglib_file_free (data->tag_file);
-	data->tag_file = NULL;
+	taglib_file_free (prop->tag_file);
+	prop->tag_file = NULL;
     }
     
     if ( media_type == PAROLE_MEDIA_TYPE_LOCAL_FILE )
     {
-	data->filename = g_filename_from_uri (uri, NULL, &error);
+	prop->filename = g_filename_from_uri (uri, NULL, &error);
 	
 	if ( G_UNLIKELY (error) )
 	{
 	    g_critical ("Unablet to convert uri : %s to filename : %s", uri, error->message);
 	    g_error_free (error);
-	    disable_tag_save (data->save);
+	    disable_tag_save (prop->save);
 	}
 	else
 	{
-	    data->tag_file = taglib_file_new (data->filename);
+	    prop->tag_file = taglib_file_new (prop->filename);
 	    
-	    if ( !data->tag_file )
-		disable_tag_save (data->save);
+	    if ( !prop->tag_file )
+		disable_tag_save (prop->save);
 	    else
-		enable_tag_save (data->save);
+		enable_tag_save (prop->save);
 	}
     }
 #endif
 
     if ( str )
     {
-	set_widget_text (data, data->title, str);
+	set_widget_text (prop, prop->title, str);
 	g_free (str);
     }
     
@@ -446,7 +465,7 @@ tag_message_cb (ParolePlugin *plugin, const ParoleStream *stream, PluginData *da
 		  
     if ( str )
     {
-	set_widget_text (data, data->artist, str);
+	set_widget_text (prop, prop->artist, str);
 	g_free (str);
     }
     
@@ -456,7 +475,7 @@ tag_message_cb (ParolePlugin *plugin, const ParoleStream *stream, PluginData *da
 		  
     if ( str )
     {
-	set_widget_text (data, data->year, str);
+	set_widget_text (prop, prop->year, str);
 	g_free (str);
     }
     
@@ -466,7 +485,7 @@ tag_message_cb (ParolePlugin *plugin, const ParoleStream *stream, PluginData *da
 		  
     if ( str )
     {
-	set_widget_text (data, data->album, str);
+	set_widget_text (prop, prop->album, str);
 	g_free (str);
     }
 
@@ -477,36 +496,53 @@ tag_message_cb (ParolePlugin *plugin, const ParoleStream *stream, PluginData *da
     
 }
 
-static void
-free_data_cb (ParolePlugin *plugin, PluginData *data)
+static gboolean stream_properties_is_configurable (ParoleProviderPlugin *plugin)
 {
-    g_free (data);
+    return FALSE;
 }
 
-G_MODULE_EXPORT static void
-construct (ParolePlugin *plugin)
+static void
+stream_properties_set_player (ParoleProviderPlugin *plugin, ParoleProviderPlayer *player)
 {
-    PluginData *data;
+    StreamProperties *prop;
     GtkWidget *vbox;
     
-    data = g_new0 (PluginData, 1);
+    prop = STREAM_PROPERTIES_PROVIDER (plugin);
     
-    vbox = create_properties_widget (data);
+    prop->player = player;
     
-    parole_plugin_pack_widget (plugin, vbox, PAROLE_PLUGIN_CONTAINER_PLAYLIST);
+    vbox = stream_properties_create_widgets (prop);
     
-    g_signal_connect (plugin, "state_changed", 
-		      G_CALLBACK (state_changed_cb), data);
+    parole_provider_player_pack (player, vbox, _("Properties"), PAROLE_PLUGIN_CONTAINER_PLAYLIST);
+ 
+    g_signal_connect (player, "state_changed", 
+		      G_CALLBACK (state_changed_cb), prop);
 		      
-    g_signal_connect (plugin, "tag-message",
-		      G_CALLBACK (tag_message_cb), data);
+    g_signal_connect (player, "tag-message",
+		      G_CALLBACK (tag_message_cb), prop);
     
-    g_signal_connect (plugin, "free-data",
-		      G_CALLBACK (free_data_cb), data);
 }
 
-PAROLE_PLUGIN_CONSTRUCT (construct,                  /* Construct function */
-			 _("Properties"),            /* Title */
-			 _("Read media properties"), /* Description */
-			 "Copyright \302\251 2009 Ali Abdallah aliov@xfce.org",            /* Author */
-			 "http://goodies.xfce.org/projects/applications/parole"); /* Site */
+static void
+stream_properties_iface_init (ParoleProviderPluginIface *iface)
+{
+    iface->get_is_configurable = stream_properties_is_configurable;
+    iface->set_player = stream_properties_set_player;
+}
+
+static void stream_properties_class_init (StreamPropertiesClass *klass)
+{
+    GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
+    
+    gobject_class->finalize = stream_properties_finalize;
+}
+
+static void stream_properties_init (StreamProperties *provider)
+{
+    provider->player = NULL;
+}
+
+static void stream_properties_finalize (GObject *object)
+{
+    G_OBJECT_CLASS (stream_properties_parent_class)->finalize (object);
+}

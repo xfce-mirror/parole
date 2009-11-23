@@ -18,44 +18,36 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_FILTERS_H
-#define __PAROLE_FILTERS_H
+#ifndef __PAROLE_PLUGIN_PLAYER_H
+#define __PAROLE_PLUGIN_PLAYER_H
 
-#include <gtk/gtk.h>
-
-#include <parole/parole-file.h>
+#include <glib-object.h>
 
 G_BEGIN_DECLS
 
-typedef enum
+#define PAROLE_TYPE_PLUGIN_PLAYER        (parole_plugin_player_get_type () )
+#define PAROLE_PLUGIN_PLAYER(o)          (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_PLUGIN_PLAYER, ParolePluginPlayer))
+#define PAROLE_IS_PLUGIN_PLAYER(o)       (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_PLUGIN_PLAYER))
+
+typedef struct ParolePluginPlayerPrivate ParolePluginPlayerPrivate;
+
+typedef struct
 {
-    PAROLE_FILE_UNKNOWN,
-    PAROLE_FILE_AUDIO,
-    PAROLE_FILE_VIDEO,
-    PAROLE_FILE_PLAYLIST
+    GObject         		   parent;
+    ParolePluginPlayerPrivate     *priv;
     
-} ParoleFileFormat;
+} ParolePluginPlayer;
 
-GtkFileFilter 		*parole_get_supported_audio_filter	(void);
+typedef struct
+{
+    GObjectClass 		   parent_class;
+    
+} ParolePluginPlayerClass;
 
-GtkFileFilter 		*parole_get_supported_video_filter	(void);
+GType        			   parole_plugin_player_get_type        (void) G_GNUC_CONST;
 
-GtkFileFilter 		*parole_get_supported_media_filter	(void);
-
-GtkFileFilter 		*parole_get_supported_files_filter	(void);
-
-GtkFileFilter 		*parole_get_supported_playlist_filter	(void);
-
-gboolean		 parole_file_filter			(GtkFileFilter *filter,
-								 ParoleFile *file);
-
-ParoleFileFormat	 parole_file_guess_format		(ParoleFile *file);
-
-void			 parole_get_media_files			(GtkFileFilter *filter,
-								 const gchar *path,
-								 gboolean recursive,
-								 GSList **list);
+ParolePluginPlayer                *parole_plugin_player_new             (void);
 
 G_END_DECLS
 
-#endif /* PAROLE_FILTERS_H */
+#endif /* __PAROLE_PLUGIN_PLAYER_H */

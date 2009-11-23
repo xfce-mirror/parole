@@ -1,8 +1,5 @@
 bin_PROGRAMS = parole
 
-noinst_LTLIBRARIES =                    	\
-        libparole.la
-
 INCLUDES =					\
 	-I$(top_srcdir)				\
 	-I$(top_srcdir)/parole			\
@@ -14,31 +11,16 @@ INCLUDES =					\
 	-DLOCALEDIR=\"$(localedir)\"		\
 	-DG_LOG_DOMAIN=\"parole\"		\
 	-DPAROLE_PLUGINS_DIR=\"$(libdir)/parole-$(PAROLE_VERSION_API)\"\
+	-DPAROLE_PLUGINS_DATA_DIR=\"$(datadir)/parole/parole-plugins-$(PAROLE_VERSION_API)\"\
+	-DPAROLE_COMPILATION			\
         $(GTHREAD_CFLAGS)                       \
 	$(GIO_CFLAGS)				\
+	$(GMODULE_CFLAGS)			\
         $(DBUS_GLIB_CFLAGS)                     \
         $(LIBXFCE4GUI_CFLAGS)                   \
 	$(GST_VIDEO_CFLAGS)			\
 	$(GST_INTERFACES_CFLAGS)		\
 	$(TAGLIBC_CFLAGS)
-
-PAROLE_LDFLAGS =				\
-	-export-dynamic 			\
-	-no-undefined				\
-	-export-symbols-regex "^[[^_]].*"
-
-PAROLE_LIBS = 					\
-	$(top_builddir)/dbus/libparoledbus.la 	\
-	$(top_builddir)/gst/libparolegst.la 	\
-	$(top_builddir)/common/libparolecommon.la\
-	$(top_builddir)/common/libparolescreensaver.la\
-        $(GTHREAD_LIBS)                         \
-	$(GIO_LIBS)				\
-        $(DBUS_GLIB_LIBS)                       \
-        $(LIBXFCE4GUI_LIBS)                     \
-	$(GST_VIDEO_LIBS)			\
-	$(GST_INTERFACES_LIBS)			\
-	$(TAGLIBC_LIBS)
 
 GENERATED_FILES =				\
 	gmarshal.c				\
@@ -70,13 +52,14 @@ NOINST_HFILES =					\
 	parole-open-location.h			\
 	parole-disc-menu.h			\
 	parole-session.h			\
-	parole-button.h
+	parole-button.h				\
+	parole-plugin-player.h
 
-libparole_la_SOURCES =				\
+parole_SOURCES =				\
 	$(GENERATED_FILES)			\
 	$(NOINST_HFILES)			\
+	main.c					\
 	parole-player.c				\
-	parole-file.c				\
 	parole-vis.c				\
 	parole-statusbar.c			\
 	parole-medialist.c			\
@@ -89,7 +72,6 @@ libparole_la_SOURCES =				\
 	parole-utils.c				\
 	parole-debug.c				\
 	parole-plugins-manager.c		\
-	parole-plugin.c				\
 	parole-module.c				\
 	parole-pl-parser.c			\
 	parole-about.c				\
@@ -98,25 +80,25 @@ libparole_la_SOURCES =				\
 	parole-open-location.c			\
 	parole-disc-menu.c			\
 	parole-session.c			\
-	parole-button.c
-
-libparole_la_LDFLAGS =				\
-	$(PAROLE_LDFLAGS)
-
-libparole_la_LIBADD =				\
-	$(PAROLE_LIBS)
-
-parole_SOURCES =				\
-	main.c
+	parole-button.c				\
+	parole-plugin-player.c
 
 parole_LDADD =					\
-	libparole.la
-
-parole_LDFLAGS =				\
-	$(PAROLE_LDFLAGS)
-
+	$(top_builddir)/parole/libparole.la 	\
+	$(top_builddir)/dbus/libparoledbus.la 	\
+	$(top_builddir)/gst/libparolegst.la 	\
+	$(top_builddir)/common/libparolecommon.la\
+	$(top_builddir)/common/libparolescreensaver.la\
+        $(GTHREAD_LIBS)                         \
+	$(GIO_LIBS)				\
+	$(GMODULE_LIBS)				\
+        $(DBUS_GLIB_LIBS)                       \
+        $(LIBXFCE4GUI_LIBS)                     \
+	$(GST_VIDEO_LIBS)			\
+	$(GST_INTERFACES_LIBS)			\
+	$(TAGLIBC_LIBS)
+	
 parole_glib_enum_headers =			\
-	$(top_srcdir)/parole/parole-plugin.h  	\
 	parole-pl-parser.h			\
 	parole-conf.h				\
 	parole-button.h
@@ -149,7 +131,6 @@ stamp-enum-gtypes.h: $(parole_glib_enum_headers) Makefile
 enum-gtypes.c: $(parole_glib_enum_headers) Makefile
 	( cd $(srcdir) && glib-mkenums \
 		--fhead "#include \"enum-gtypes.h\"\n\n" \
-		--fhead "#include \"parole-plugin.h\"\n\n" \
 		--fhead "#include \"parole-pl-parser.h\"\n\n" \
 		--fhead "#include \"parole-conf.h\"\n\n" \
 		--fhead "#include \"parole-button.h\"\n\n" \

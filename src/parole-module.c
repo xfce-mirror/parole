@@ -26,34 +26,79 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <parole/parole-provider-plugin.h>
+
 #include "parole-module.h"
 
-G_DEFINE_TYPE (ParoleModule, parole_module, G_TYPE_TYPE_MODULE)
+static void     parole_provider_module_plugin_init   (ParoleProviderPluginIface	 *iface);
+
+static void     parole_provider_module_class_init    (ParoleProviderModuleClass  *klass);
+static void	parole_provider_module_init 	     (ParoleProviderModule *module);
+
+GType
+parole_provider_module_get_type (void)
+{
+    static GType type = G_TYPE_INVALID;
+
+    if (G_UNLIKELY (type == G_TYPE_INVALID))
+    {
+	static const GTypeInfo info =
+	{
+	    sizeof (ParoleProviderModuleClass),
+	    NULL,
+	    NULL,
+	    (GClassInitFunc) parole_provider_module_class_init,
+	    NULL,
+	    NULL,
+	    sizeof (ParoleProviderModule),
+	    0,
+	    (GInstanceInitFunc) parole_provider_module_init,
+	    NULL,
+	};
+
+	static const GInterfaceInfo plugin_info =
+	{
+	    (GInterfaceInitFunc) parole_provider_module_plugin_init,
+	    NULL,
+	    NULL,
+	};
+
+	type = g_type_register_static (G_TYPE_TYPE_MODULE, "ParoleProviderModule", &info, 0);
+	g_type_add_interface_static (type, PAROLE_TYPE_PROVIDER_PLUGIN, &plugin_info);
+    }
+
+    return type;
+}
 
 static gboolean
 parole_module_load (GTypeModule *gtype_module)
 {
-    ParoleModule *module;
+    ParoleProviderModule *module;
     
-    module = PAROLE_MODULE (gtype_module);
+    module = PAROLE_PROVIDER_MODULE (gtype_module);
     
-    module->mod = g_module_open (gtype_module->name, G_MODULE_BIND_LOCAL);
+    module->library = g_module_open (gtype_module->name, G_MODULE_BIND_LOCAL);
 
-    if ( G_UNLIKELY (module->mod == NULL) )
+    if ( G_UNLIKELY (module->library == NULL) )
     {
 	g_critical ("Failed to load plugin : %s", g_module_error ());
 	return FALSE;
     }
     
-    if ( !g_module_symbol (module->mod, "parole_plugin_constructor", (gpointer) &module->constructor) || 
-         !g_module_symbol (module->mod, "parole_plugin_get_description", (gpointer) &module->get_plugin_description))
+    if ( !g_module_symbol (module->library, "parole_plugin_initialize", (gpointer) &module->initialize) || 
+         !g_module_symbol (module->library, "parole_plugin_shutdown", (gpointer) &module->shutdown))
     {
 	g_critical ("Plugin %s missing required symbols", gtype_module->name);
-	g_module_close (module->mod);
+	g_module_close (module->library);
 	return FALSE;
     }
     
-    module->desc = (*module->get_plugin_description) ();
+    module->player = parole_plugin_player_new ();
+    
+    module->provider_type = (*module->initialize) (module);
+    module->instance = g_object_new (module->provider_type, NULL);
+    parole_provider_plugin_set_player (PAROLE_PROVIDER_PLUGIN (module->instance), PAROLE_PROVIDER_PLAYER (module->player));
+    module->active = TRUE;
     
     return TRUE;
 }
@@ -61,70 +106,76 @@ parole_module_load (GTypeModule *gtype_module)
 static void
 parole_module_unload (GTypeModule *gtype_module)
 {
-    ParoleModule *module;
+    ParoleProviderModule *module;
     
-    module = PAROLE_MODULE (gtype_module);
+    module = PAROLE_PROVIDER_MODULE (gtype_module);
 
-    parole_module_set_active (module, FALSE);
+    g_object_unref (G_OBJECT (module->instance));
+    g_object_unref (module->player);
 
-    g_module_close (module->mod);
-    module->constructor = NULL;
+    (*module->shutdown) ();
     
-    if ( module->desc )
-    {
-	g_free (module->desc);
-    }
+    g_module_close (module->library);
+    
+    module->initialize = NULL;
+    module->shutdown = NULL;
+    module->library = NULL;
+    module->provider_type = G_TYPE_INVALID;
+    module->active = FALSE;
+    
+    module->player = NULL;
+    module->instance = NULL;
+}
+
+static gboolean
+parole_provider_module_get_is_active (ParoleProviderPlugin *plugin)
+{
+    return PAROLE_PROVIDER_MODULE (plugin)->active;
 }
 
 static void
-parole_module_class_init (ParoleModuleClass *klass)
+parole_provider_module_class_init (ParoleProviderModuleClass *klass)
 {
-    GTypeModuleClass *gtype_module_class = G_TYPE_MODULE_CLASS (klass);
+    GTypeModuleClass *gtype_module_class;
+    
+    gtype_module_class = G_TYPE_MODULE_CLASS (klass);
 
     gtype_module_class->load   = parole_module_load;
     gtype_module_class->unload = parole_module_unload;
 }
 
-static void
-parole_module_init (ParoleModule *module)
+static void     
+parole_provider_module_plugin_init (ParoleProviderPluginIface *iface)
 {
-    module->mod = NULL;
-    module->constructor = NULL;
-    module->get_plugin_description = NULL;
-    module->plugin = NULL;
-    module->desc = NULL;
+    iface->get_is_active = parole_provider_module_get_is_active;
 }
 
-ParoleModule *
-parole_module_new (const gchar *filename)
+static void
+parole_provider_module_init (ParoleProviderModule *module)
 {
-    ParoleModule *module = NULL;
+    module->library = NULL;
+    module->initialize = NULL;
+    module->shutdown = NULL;
+    module->active = FALSE;
+    module->instance = NULL;
+    module->desktop_file = NULL;
+    module->provider_type = G_TYPE_INVALID;
     
-    module = g_object_new (PAROLE_TYPE_MODULE, NULL);
+    module->player = NULL;
+}
+
+ParoleProviderModule *
+parole_provider_module_new (const gchar *filename, const gchar *desktop_file)
+{
+    ParoleProviderModule *module = NULL;
+    
+    module = g_object_new (PAROLE_TYPE_PROVIDER_MODULE, NULL);
     
     g_type_module_set_name (G_TYPE_MODULE (module), filename);
     
-    return module;
-}
-
-void parole_module_set_active (ParoleModule *module, gboolean active)
-{
-    if ( active )
-    {
-	g_return_if_fail (module->constructor != NULL);
-	
-	module->plugin = (*module->constructor) ();
+    module->desktop_file = g_strdup (desktop_file);
+    g_object_set_data_full (G_OBJECT (module), "desktop-file", 
+			     module->desktop_file, (GDestroyNotify) g_free);
     
-	module->enabled = TRUE;
-    }
-    else
-    {
-	if ( module->plugin ) 
-	{
-	    g_signal_emit_by_name (G_OBJECT (module->plugin), "free-data");
-	    g_object_unref (module->plugin);
-	    module->plugin = NULL;
-	}
-	module->enabled = FALSE;
-    }
+    return module;
 }

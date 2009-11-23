@@ -34,11 +34,23 @@
 #include <libxfcegui4/libxfcegui4.h>
 #include <libxfce4util/libxfce4util.h>
 
+#include "tray-provider.h"
+
 #define RESOURCE_FILE 	"xfce4/parole/parole-plugins/tray.rc"
 
-typedef struct
+static void   tray_provider_iface_init 	   (ParoleProviderPluginIface *iface);
+static void   tray_provider_finalize             (GObject 	              *object);
+
+
+struct _TrayProviderClass
 {
-    ParolePlugin  *plugin;
+    GObjectClass parent_class;
+};
+
+struct _TrayProvider
+{
+    GObject      parent;
+    ParoleProviderPlayer *player;
     GtkStatusIcon *tray;
     GtkWidget     *window;
     gulong         sig;
@@ -50,52 +62,57 @@ typedef struct
 #endif
     ParoleState state;
     GtkWidget     *menu;
-    
-} PluginData;
+};
 
+G_DEFINE_TYPE_WITH_CODE (TrayProvider, 
+			 tray_provider, 
+			 G_TYPE_OBJECT,
+			 G_IMPLEMENT_INTERFACE (PAROLE_TYPE_PROVIDER_PLUGIN, 
+						tray_provider_iface_init));
+	
 static void
-menu_selection_done_cb (PluginData *data)
+menu_selection_done_cb (TrayProvider *tray)
 {
-    gtk_widget_destroy (data->menu);
-    data->menu = NULL;
+    gtk_widget_destroy (tray->menu);
+    tray->menu = NULL;
 }
 
 static void
-exit_activated_cb (PluginData *data)
+exit_activated_cb (TrayProvider *tray)
 {
     GdkEventAny ev;
     
-    menu_selection_done_cb (data);
+    menu_selection_done_cb (tray);
     
     ev.type = GDK_DELETE;
-    ev.window = data->window->window;
+    ev.window = tray->window->window;
     ev.send_event = TRUE;
 
-    g_signal_handler_block (data->window, data->sig);
+    g_signal_handler_block (tray->window, tray->sig);
     gtk_main_do_event ((GdkEvent *) &ev);
 }
 
 static void
-play_pause_activated_cb (PluginData *data)
+play_pause_activated_cb (TrayProvider *tray)
 {
-    menu_selection_done_cb (data);
+    menu_selection_done_cb (tray);
     
-    if ( data->state == PAROLE_STATE_PLAYING )
-	parole_plugin_pause_playback (data->plugin);
-    else if ( data->state == PAROLE_STATE_PAUSED )
-	parole_plugin_resume_playback (data->plugin);
+    if ( tray->state == PAROLE_STATE_PLAYING )
+	parole_provider_player_pause (tray->player);
+    else if ( tray->state == PAROLE_STATE_PAUSED )
+	parole_provider_player_resume (tray->player);
 }   
   
 static void
-stop_activated_cb (PluginData *data)
+stop_activated_cb (TrayProvider *tray)
 {
-    menu_selection_done_cb (data);
-    parole_plugin_stop_playback (data->plugin);
+    menu_selection_done_cb (tray);
+    parole_provider_player_stop (tray->player);
 }
 
 static void
 popup_menu_cb (GtkStatusIcon *icon, guint button, 
-               guint activate_time, PluginData *data)
+               guint activate_time, TrayProvider *tray)
 {
     GtkWidget *menu, *mi;
     
@@ -104,20 +121,20 @@ popup_menu_cb (GtkStatusIcon *icon, guint button,
     /*
      * Play pause.
      */
-    mi = gtk_image_menu_item_new_from_stock (data->state == PAROLE_STATE_PLAYING ? GTK_STOCK_MEDIA_PAUSE : 
+    mi = gtk_image_menu_item_new_from_stock (tray->state == PAROLE_STATE_PLAYING ? GTK_STOCK_MEDIA_PAUSE : 
 					     GTK_STOCK_MEDIA_PLAY, NULL);
     gtk_widget_set_sensitive (mi, TRUE);
     gtk_widget_show (mi);
-    g_signal_connect_swapped (mi, "activate", G_CALLBACK (play_pause_activated_cb), data);
+    g_signal_connect_swapped (mi, "activate", G_CALLBACK (play_pause_activated_cb), tray);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
     
     /*
      * Stop
      */
     mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_MEDIA_STOP, NULL);
-    gtk_widget_set_sensitive (mi, data->state >= PAROLE_STATE_PAUSED);
+    gtk_widget_set_sensitive (mi, tray->state >= PAROLE_STATE_PAUSED);
     gtk_widget_show (mi);
-    g_signal_connect_swapped (mi, "activate", G_CALLBACK (stop_activated_cb), data);
+    g_signal_connect_swapped (mi, "activate", G_CALLBACK (stop_activated_cb), tray);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
     
     /*
@@ -133,7 +150,7 @@ popup_menu_cb (GtkStatusIcon *icon, guint button,
     mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_QUIT, NULL);
     gtk_widget_set_sensitive (mi, TRUE);
     gtk_widget_show (mi);
-    g_signal_connect_swapped (mi, "activate", G_CALLBACK (exit_activated_cb), data);
+    g_signal_connect_swapped (mi, "activate", G_CALLBACK (exit_activated_cb), tray);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
     
     gtk_menu_popup (GTK_MENU (menu), NULL, NULL,
@@ -141,39 +158,29 @@ popup_menu_cb (GtkStatusIcon *icon, guint button,
                     icon, button, activate_time);
 
     g_signal_connect_swapped (menu, "selection-done",
-			      G_CALLBACK (menu_selection_done_cb), data);
+			      G_CALLBACK (menu_selection_done_cb), tray);
 
-    data->menu = menu;
+    tray->menu = menu;
 }
 
 static void
-free_data_cb (ParolePlugin *plugin, PluginData *data)
+tray_activate_cb (GtkStatusIcon *tray_icon, TrayProvider *tray)
 {
-    if ( GTK_IS_WIDGET (data->window) && g_signal_handler_is_connected (data->window, data->sig) )
-	g_signal_handler_disconnect (data->window, data->sig);
- 
-    g_object_unref (G_OBJECT (data->tray));
-    g_free (data);
-}
-
-static void
-tray_activate_cb (GtkStatusIcon *tray, PluginData *data)
-{
-    if ( GTK_WIDGET_VISIBLE (data->window) )
-	gtk_widget_hide (data->window);
+    if ( GTK_WIDGET_VISIBLE (tray->window) )
+	gtk_widget_hide (tray->window);
     else
-	gtk_widget_show (data->window);
+	gtk_widget_show (tray->window);
 }
 
 #ifdef HAVE_LIBNOTIFY
 static void
-notification_closed_cb (NotifyNotification *n, PluginData *data)
+notification_closed_cb (NotifyNotification *n, TrayProvider *tray)
 {
-    data->n = NULL;
+    tray->n = NULL;
 }
 
 static void
-notify_playing (PluginData *data, const ParoleStream *stream)
+notify_playing (TrayProvider *tray, const ParoleStream *stream)
 {
     GdkPixbuf *pix;
     gboolean live, has_audio, has_video;
@@ -182,7 +189,7 @@ notify_playing (PluginData *data, const ParoleStream *stream)
     gdouble duration;
     ParoleMediaType media_type;
     
-    if ( !data->notify || !data->enabled)
+    if ( !tray->notify || !tray->enabled)
 	return;
     
     g_object_get (G_OBJECT (stream), 
@@ -221,42 +228,42 @@ notify_playing (PluginData *data, const ParoleStream *stream)
     
     message = g_strdup_printf ("%s %s %s %4.2f", _("<b>Playing:</b>"), title, _("<b>Duration:</b>"), duration);
     
-    data->n = notify_notification_new (title, message, NULL, NULL);
+    tray->n = notify_notification_new (title, message, NULL, NULL);
     g_free (title);
     g_free (message);
     
-    notify_notification_attach_to_status_icon (data->n, data->tray);
+    notify_notification_attach_to_status_icon (tray->n, tray->tray);
     pix = xfce_themed_icon_load (has_video ? "video" : "audio-x-generic", 48);
     if ( pix )
     {
-	notify_notification_set_icon_from_pixbuf (data->n, pix);
+	notify_notification_set_icon_from_pixbuf (tray->n, pix);
 	g_object_unref (pix);
     }
-    notify_notification_set_urgency (data->n, NOTIFY_URGENCY_LOW);
-    notify_notification_set_timeout (data->n, 5000);
+    notify_notification_set_urgency (tray->n, NOTIFY_URGENCY_LOW);
+    notify_notification_set_timeout (tray->n, 5000);
     
-    notify_notification_show (data->n, NULL);
-    g_signal_connect (data->n, "closed",
-		      G_CALLBACK (notification_closed_cb), data);
+    notify_notification_show (tray->n, NULL);
+    g_signal_connect (tray->n, "closed",
+		      G_CALLBACK (notification_closed_cb), tray);
 		      
-    data->notify = FALSE;
+    tray->notify = FALSE;
 }
 #endif
 
 static void
-state_changed_cb (ParolePlugin *plugin, const ParoleStream *stream, ParoleState state, PluginData *data)
+state_changed_cb (ParoleProviderPlayer *player, const ParoleStream *stream, ParoleState state, TrayProvider *tray)
 {
 #ifdef HAVE_LIBNOTIFY
     gboolean tag;
 #endif
 
-    data->state = state;
+    tray->state = state;
     
-    if ( data->menu )
+    if ( tray->menu )
     {
-	gtk_widget_destroy (data->menu);
-	data->menu = NULL;
-	g_signal_emit_by_name (G_OBJECT (data->tray), "popup-menu", 0, gtk_get_current_event_time ());
+	gtk_widget_destroy (tray->menu);
+	tray->menu = NULL;
+	g_signal_emit_by_name (G_OBJECT (tray->tray), "popup-menu", 0, gtk_get_current_event_time ());
     }
     
 #ifdef HAVE_LIBNOTIFY
@@ -268,31 +275,31 @@ state_changed_cb (ParolePlugin *plugin, const ParoleStream *stream, ParoleState 
 		      NULL);
 
 	if ( tag )
-	    notify_playing (data, stream);
+	    notify_playing (tray, stream);
     }
     else if ( state <= PAROLE_STATE_PAUSED )
     {
-	if ( data->n )
+	if ( tray->n )
 	{
-	    notify_notification_close (data->n, NULL);
-	    data->n = NULL;
+	    notify_notification_close (tray->n, NULL);
+	    tray->n = NULL;
 	}
 	if ( state < PAROLE_STATE_PAUSED )
-	    data->notify = TRUE;
+	    tray->notify = TRUE;
     }
 #endif
 }
 
 static void
-tag_message_cb (ParolePlugin *plugin, const ParoleStream *stream, PluginData *data)
+tag_message_cb (ParoleProviderPlayer *player, const ParoleStream *stream, TrayProvider *tray)
 {
 #ifdef HAVE_LIBNOTIFY
     ParoleState state;
     
-    state = parole_plugin_get_state (plugin);
+    state = parole_provider_player_get_state (player);
     
     if (state == PAROLE_STATE_PLAYING )
-	notify_playing (data, stream);
+	notify_playing (tray, stream);
     
 #endif
 }
@@ -341,18 +348,18 @@ notify_enabled (void)
 }
 
 static void
-notify_toggled_cb (GtkToggleButton *bt, PluginData *data)
+notify_toggled_cb (GtkToggleButton *bt, TrayProvider *tray)
 {
     gboolean active;
     active = gtk_toggle_button_get_active (bt);
-    data->enabled = active;
+    tray->enabled = active;
     
     write_entry_bool ("NOTIFY", active);
 }
 #endif /*HAVE_LIBNOTIFY*/
 
 static void
-hide_on_delete_toggled_cb (GtkWidget *widget, gpointer data)
+hide_on_delete_toggled_cb (GtkWidget *widget, gpointer tray)
 {
     gboolean toggled;
     toggled = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget));
@@ -360,7 +367,7 @@ hide_on_delete_toggled_cb (GtkWidget *widget, gpointer data)
 }
 
 static void
-configure_cb (ParolePlugin *plugin, GtkWidget *widget, PluginData *data)
+configure_plugin (TrayProvider *tray, GtkWidget *widget)
 {
     GtkWidget *dialog;
     GtkWidget *content_area;
@@ -381,9 +388,9 @@ configure_cb (ParolePlugin *plugin, GtkWidget *widget, PluginData *data)
     
 #ifdef HAVE_LIBNOTIFY    
     check = gtk_check_button_new_with_label (_("Enable notification"));
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check), data->enabled);
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check), tray->enabled);
     g_signal_connect (check, "toggled",
-		      G_CALLBACK (notify_toggled_cb), data);
+		      G_CALLBACK (notify_toggled_cb), tray);
     gtk_box_pack_start_defaults (GTK_BOX (content_area), check) ;
     
 #endif /*HAVE_LIBNOTIFY*/
@@ -414,7 +421,7 @@ action_on_hide_confirmed_cb (GtkWidget *widget, gpointer data)
 }
 
 static gboolean
-delete_event_cb (GtkWidget *widget, GdkEvent *ev, PluginData *data)
+delete_event_cb (GtkWidget *widget, GdkEvent *ev, TrayProvider *tray)
 {
     GtkWidget *dialog, *check, *content_area, *label;
     GtkWidget *quit, *minimize, *cancel, *img;
@@ -484,64 +491,106 @@ delete_event_cb (GtkWidget *widget, GdkEvent *ev, PluginData *data)
     return ret_val;
 }
 
-G_MODULE_EXPORT static void
-construct (ParolePlugin *plugin)
+static gboolean tray_provider_is_configurable (ParoleProviderPlugin *plugin)
 {
-    PluginData *data;
+#ifdef HAVE_LIBNOTIFY
+    return TRUE;
+#else
+    return FALSE;
+#endif
+}
+
+static void
+tray_provider_set_player (ParoleProviderPlugin *plugin, ParoleProviderPlayer *player)
+{
+    TrayProvider *tray;
     GdkPixbuf *pix;
     
-    data = g_new0 (PluginData, 1);
-
-    data->state = PAROLE_STATE_STOPPED;
+    tray = TRAY_PROVIDER (plugin);
     
-    data->window = parole_plugin_get_main_window (plugin);
+    tray->player = player;
     
-    data->tray = gtk_status_icon_new ();
-    data->plugin = plugin;
-    data->menu = NULL;
+    tray->state = PAROLE_STATE_STOPPED;
+    
+    tray->window = parole_provider_player_get_main_window (player);
+    
+    tray->tray = gtk_status_icon_new ();
+    tray->player = player;
+    tray->menu = NULL;
 
 #ifdef HAVE_LIBNOTIFY
-    data->n = NULL;
+    tray->n = NULL;
     notify_init ("parole-tray-icon");
-    data->enabled = notify_enabled ();
-    data->notify = TRUE;
+    tray->enabled = notify_enabled ();
+    tray->notify = TRUE;
 #endif
     
     pix = xfce_themed_icon_load ("parole", 48);
     
     if ( pix )
     {
-	gtk_status_icon_set_from_pixbuf (data->tray, pix);
+	gtk_status_icon_set_from_pixbuf (tray->tray, pix);
 	g_object_unref (pix);
     }
     
-    g_signal_connect (data->tray, "popup-menu",
-		      G_CALLBACK (popup_menu_cb), data);
+    g_signal_connect (tray->tray, "popup-menu",
+		      G_CALLBACK (popup_menu_cb), tray);
     
-    g_signal_connect (data->tray, "activate",
-		      G_CALLBACK (tray_activate_cb), data);
+    g_signal_connect (tray->tray, "activate",
+		      G_CALLBACK (tray_activate_cb), tray);
     
-    data->sig = g_signal_connect (data->window, "delete-event",
+    tray->sig = g_signal_connect (tray->window, "delete-event",
 			          G_CALLBACK (delete_event_cb), NULL);
 				  
-    g_signal_connect (plugin, "free-data",
-		      G_CALLBACK (free_data_cb), data);
+    g_signal_connect (player, "state_changed", 
+		      G_CALLBACK (state_changed_cb), tray);
 		      
-    g_signal_connect (plugin, "state_changed", 
-		      G_CALLBACK (state_changed_cb), data);
-		      
-    g_signal_connect (plugin, "tag-message",
-		      G_CALLBACK (tag_message_cb), data);
+    g_signal_connect (player, "tag-message",
+		      G_CALLBACK (tag_message_cb), tray);
 
+}
+
+static void
+tray_provider_configure (ParoleProviderPlugin *provider, GtkWidget *parent)
+{
+    TrayProvider *tray;
+    
+    tray = TRAY_PROVIDER (provider);
+    configure_plugin (tray, parent);
+}
+
+static void
+tray_provider_iface_init (ParoleProviderPluginIface *iface)
+{
+    iface->get_is_configurable = tray_provider_is_configurable;
+    iface->set_player = tray_provider_set_player;
 #ifdef HAVE_LIBNOTIFY
-    parole_plugin_set_is_configurable (plugin, TRUE);
-    g_signal_connect (plugin, "configure", 
-		      G_CALLBACK (configure_cb), data);
+    iface->configure = tray_provider_configure;
 #endif
 }
 
-PAROLE_PLUGIN_CONSTRUCT (construct,                  	    /* Construct function */
-			 _("Tray icon"),            	    /* Title */
-			 _("Show icon in the system tray"), /* Description */
-			 "Copyright \302\251 2009 Ali Abdallah aliov@xfce.org", /* Author */
-			 "http://goodies.xfce.org/projects/applications/parole"); /* Site */
+static void tray_provider_class_init (TrayProviderClass *klass)
+{
+    GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
+    
+    gobject_class->finalize = tray_provider_finalize;
+}
+
+static void tray_provider_init (TrayProvider *provider)
+{
+    provider->player = NULL;
+}
+
+static void tray_provider_finalize (GObject *object)
+{
+    TrayProvider *tray;
+    
+    tray = TRAY_PROVIDER (object);
+    
+    if ( GTK_IS_WIDGET (tray->window) && g_signal_handler_is_connected (tray->window, tray->sig) )
+	g_signal_handler_disconnect (tray->window, tray->sig);
+ 
+    g_object_unref (G_OBJECT (tray->tray));
+    
+    G_OBJECT_CLASS (tray_provider_parent_class)->finalize (object);
+}

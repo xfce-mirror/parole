@@ -18,18 +18,28 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_H_
-#define __PAROLE_H_
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 
-#define __PAROLE_H_INSIDE__
+#include <libxfce4util/libxfce4util.h>
 
-#include <glib-object.h>
+#include "window-title-provider.h"
 
-#include <parole/parole-provider-plugin.h>
-#include <parole/parole-provider-player.h>
-#include <parole/parole-file.h>
-#include <parole/parole-stream.h>
+G_MODULE_EXPORT GType	parole_plugin_initialize (ParoleProviderPlugin *plugin);
+						  
+G_MODULE_EXPORT void	parole_plugin_shutdown   (void);
 
-#undef __PAROLE_H_INSIDE__
+G_MODULE_EXPORT GType
+parole_plugin_initialize (ParoleProviderPlugin *plugin)
+{
+    xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
+    
+    return WINDOW_TYPE_TITLE_PROVIDER;
+}
 
-#endif /*__PAROLE_H_*/
+G_MODULE_EXPORT void
+parole_plugin_shutdown (void)
+{
+    
+}

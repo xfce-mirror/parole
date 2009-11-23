@@ -310,8 +310,7 @@ int main (int argc, char **argv)
 	    g_error_free (error);
 	}
 
-	plugins = parole_plugins_manager_get (!no_plugins);
-	parole_plugins_manager_load_plugins (plugins);
+	plugins = parole_plugins_manager_new (!no_plugins);
 	g_object_unref (builder);
 	
 	gdk_notify_startup_complete ();

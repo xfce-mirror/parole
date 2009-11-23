@@ -15,6 +15,7 @@ parole_media_plugin_CFLAGS =			\
 	-I$(top_srcdir)/common               	\
         -DLOCALEDIR=\"$(localedir)\"            \
         -DG_LOG_DOMAIN=\"parole-media-plugin\"  \
+	-DPAROLE_COMPILATION            	\
 	$(GTHREAD_CFLAGS)                       \
 	$(GTK_CFLAGS)				\
 	$(GST_VIDEO_CFLAGS)                     \

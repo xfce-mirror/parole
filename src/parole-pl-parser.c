@@ -40,8 +40,9 @@
 #include <gio/gio.h>
 #include <libxfce4util/libxfce4util.h>
 
+#include <parole/parole-file.h>
+
 #include "parole-pl-parser.h"
-#include "parole-file.h"
 #include "parole-filters.h"
 #include "parole-debug.h"
 #include "enum-gtypes.h"

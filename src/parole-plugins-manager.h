@@ -22,7 +22,7 @@
 #define __PAROLE_PLUGINS_MANAGER_H
 
 #include <glib-object.h>
-#include "parole-plugin.h"
+#include <parole/parole-provider-player.h>
 
 G_BEGIN_DECLS
 
@@ -47,13 +47,13 @@ typedef struct
 
 GType        			    parole_plugins_manager_get_type       (void) G_GNUC_CONST;
 
-ParolePluginsManager               *parole_plugins_manager_get            (gboolean load_plugins);
+ParolePluginsManager               *parole_plugins_manager_new            (gboolean load_plugins);
 
-void				    parole_plugins_manager_load_plugins	  (ParolePluginsManager *manager);
+ParolePluginsManager 		   *parole_plugins_manager_get 		  (void);
 
-void				    parole_plugins_manager_pack		  (ParolePluginsManager *manager,
-									   ParolePlugin *plugin,
-									   GtkWidget *widget,
+void 				    parole_plugins_manager_pack 	  (ParolePluginsManager *manager, 
+									   GtkWidget *widget, 
+									   const gchar *title,
 									   ParolePluginContainer container);
 
 G_END_DECLS

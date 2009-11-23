@@ -46,22 +46,7 @@ HFILE_GLOB=$(top_srcdir)/parole/*.h
 
 # Header files to ignore when scanning.
 # e.g. IGNORE_HFILES=gtkdebug.h gtkintl.h
-IGNORE_HFILES=
-	parole-player.h				\
-	parole-gst.h				\
-	parole-vis.h				\
-	parole-statusbar.h			\
-	parole-builder.h			\
-	parole-mediachooser.h			\
-	parole-filters.h			\
-	parole-screensaver.h			\
-	parole-conf.h				\
-	parole-conf-dialog.h			\
-	parole-rc-utils.h			\
-	parole-utils.h				\
-	parole-dbus.h				\
-	parole-debug.h				\
-	parole-plugin-manager.h
+#IGNORE_HFILES=
 
 # Images to copy into HTML directory.
 # e.g. HTML_IMAGES=$(top_srcdir)/gtk/stock-icons/stock_about_24.png
@@ -81,13 +66,14 @@ GTKDOC_CFLAGS=                  \
 	$(GTK_CFLAGS)		\
         $(GLIB_CFLAGS)          \
         $(GOBJECT_CFLAGS)       \
-        -I$(top_srcdir)/parole  \
+	$(TAGLIBC_CFLAGS)	\
         -I$(top_builddir)/parole
 
 GTKDOC_LIBS=                    \
 	$(GTK_LIBS)		\
         $(GLIB_LIBS)            \
         $(GOBJECT_LIBS)		\
+	$(TAGLIBC_LIBS)		\
 	$(top_builddir)/parole/libparole.la
 
 if ENABLE_GTK_DOC

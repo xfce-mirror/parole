@@ -30,12 +30,28 @@
 
 #include <libxfce4util/libxfce4util.h>
 
+#include <parole/parole-provider-plugin.h>
+
 #include "interfaces/plugins_ui.h"
 
 #include "parole-builder.h"
 #include "parole-rc-utils.h"
+#include "parole-utils.h"
 #include "parole-plugins-manager.h"
 #include "parole-module.h"
+
+#include "gst/parole-gst.h"
+
+#define PAROLE_PLUGIN_EXT = ".desktop"
+
+typedef struct 
+{
+    gchar *name;
+    gchar *authors;
+    gchar *desc;
+    gchar *website;
+    
+} ParolePluginInfo;
 
 typedef struct
 {
@@ -87,13 +103,16 @@ struct ParolePluginsManagerPrivate
     gboolean   load_plugins;
 };
 
+static gpointer parole_plugins_manager_object = NULL;
+
 G_DEFINE_TYPE (ParolePluginsManager, parole_plugins_manager, G_TYPE_OBJECT)
 
 enum
 {
     COL_ACTIVE,
     COL_PLUGIN,
-    COL_DATA
+    COL_MODULE,
+    COL_INFO
 };
 
 enum
@@ -106,41 +125,62 @@ void parole_plugins_manager_pref_response_cb		(GtkDialog *dialog,
 							 gint reponse_id,
 							 PrefData *pref)
 {
+    GtkTreeIter   iter;
+    gboolean valid;
+
+    for ( valid = gtk_tree_model_get_iter_first (GTK_TREE_MODEL (pref->store), &iter);
+	  valid;
+	  valid = gtk_tree_model_iter_next (GTK_TREE_MODEL (pref->store), &iter) )
+    {
+	ParolePluginInfo *info;
+	gtk_tree_model_get (GTK_TREE_MODEL (pref->store),
+			    &iter,
+			    COL_INFO, &info,
+			    -1);
+	g_free (info->name);
+	g_free (info->authors);
+	g_free (info->website);
+	g_free (info->desc);
+	g_free (info);
+    }
+    
     gtk_widget_destroy (GTK_WIDGET (dialog));
     g_free (pref);
 }
 
-static ParoleModule *
-parole_plugins_manager_get_selected_module (PrefData *pref)
+static void
+parole_plugins_manager_get_selected_module_data (PrefData *pref, ParoleProviderModule **module, ParolePluginInfo **info)
 {
-    ParoleModule *module;
+    GtkTreeModel *model;
     GtkTreeSelection *sel;
-    GtkTreeModel     *model;
     GtkTreeIter       iter;
 
     sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (pref->view));
 
     if ( !gtk_tree_selection_get_selected (sel, &model, &iter))
-        return NULL;
+    {
+	*module = NULL;
+	*info = NULL;
+        return;
+    }
 
     gtk_tree_model_get (model,
                         &iter,
-                        COL_DATA,
-                        &module,
+                        COL_MODULE, module,
+			COL_INFO, info,
                         -1);
-    return module;
 }
 
 void parole_plugins_manager_show_configure (GtkButton *button, PrefData *pref)
 {
-    ParoleModule *module;
+    ParoleProviderModule *module;
     
-    module = parole_plugins_manager_get_selected_module (pref);
+    parole_plugins_manager_get_selected_module_data (pref, &module, NULL);
     
-    if ( !module )
+    if ( G_UNLIKELY (!module) )
 	return;
 	
-    g_signal_emit_by_name (G_OBJECT (module->plugin), "configure", pref->window);
+    parole_provider_plugin_configure (PAROLE_PROVIDER_PLUGIN (module), pref->window);
 }
 
 static void
@@ -191,7 +231,7 @@ parole_plugins_manager_cell_toggled_cb (GtkCellRendererToggle *cell_renderer,
 					gchar *path_str, 
 					PrefData *pref)
 {
-    ParoleModule *module;
+    ParoleProviderModule *module;
     GtkTreeIter iter;
     GtkTreePath *path;
     gboolean active;
@@ -202,13 +242,18 @@ parole_plugins_manager_cell_toggled_cb (GtkCellRendererToggle *cell_renderer,
     
     gtk_tree_model_get (GTK_TREE_MODEL (pref->store), &iter, 
 		        COL_ACTIVE, &active, 
-			COL_DATA, &module,
+			COL_MODULE, &module,
 			-1);
     
     active ^= 1;
     
     if ( pref->manager->priv->load_plugins )
-	parole_module_set_active (module, active);
+    {
+	if ( active )
+	    g_type_module_use (G_TYPE_MODULE (module));
+	else
+	    g_type_module_unuse (G_TYPE_MODULE (module));
+    }
     
     gtk_list_store_set (GTK_LIST_STORE (pref->store), &iter, 
 			COL_ACTIVE, active,
@@ -222,36 +267,39 @@ parole_plugins_manager_cell_toggled_cb (GtkCellRendererToggle *cell_renderer,
 void parole_plugins_manager_tree_cursor_changed_cb (GtkTreeView *view,
 						    PrefData *pref)
 {
-    ParoleModule *module;
+    ParoleProviderModule *module;
+    ParolePluginInfo *info;
     gboolean configurable = FALSE;
+    const gchar *site;
+    
 #if GTK_CHECK_VERSION (2, 18, 0)
     gchar *site_text;
 #endif
 
-    module = parole_plugins_manager_get_selected_module (pref);
+    parole_plugins_manager_get_selected_module_data (pref, &module, &info);
     
-    if ( !module )
+    if ( G_UNLIKELY (!module || !info))
 	return;
     
-    gtk_label_set_markup (GTK_LABEL (pref->desc), module->desc->desc);
-    gtk_label_set_markup (GTK_LABEL (pref->author), module->desc->author);
+    site = info->website;
+    
+    gtk_label_set_markup (GTK_LABEL (pref->desc), info->desc);
+    gtk_label_set_markup (GTK_LABEL (pref->author), info->authors);
     
 #if GTK_CHECK_VERSION (2, 18, 0)
-    site_text = g_strdup_printf ("<a href=\"%s\">%s</a>", module->desc->site, _("Visit Website"));
+    site_text = g_strdup_printf ("<a href=\"%s\">%s</a>", site, _("Visit Website"));
     gtk_label_set_markup (GTK_LABEL (pref->site), site_text);
     g_free (site_text);
 
 #else
-    gtk_link_button_set_uri (GTK_LINK_BUTTON (pref->site), module->desc->site);
+    gtk_link_button_set_uri (GTK_LINK_BUTTON (pref->site), site);
 #endif
 
-    gtk_widget_set_tooltip_text (pref->site, module->desc->site);
+    gtk_widget_set_tooltip_text (pref->site, site);
 
-    if ( module->enabled )
+    if ( parole_provider_plugin_get_is_active (PAROLE_PROVIDER_PLUGIN (module) ) )
     {
-	g_object_get (G_OBJECT (module->plugin),
-		      "configurable", &configurable,
-		      NULL);
+	configurable = parole_provider_plugin_get_is_configurable (PAROLE_PROVIDER_PLUGIN (module));
     }
     
     gtk_widget_set_sensitive (pref->configure, configurable);
@@ -260,11 +308,13 @@ void parole_plugins_manager_tree_cursor_changed_cb (GtkTreeView *view,
 static void
 parole_plugins_manager_unload_all (gpointer data, gpointer user_data)
 {
-    ParoleModule *module;
+    ParoleProviderModule *module;
     
-    module = PAROLE_MODULE (data);
-    
-    g_type_module_unuse (G_TYPE_MODULE (data));
+    module = PAROLE_PROVIDER_MODULE (data);
+    if ( parole_provider_plugin_get_is_active (PAROLE_PROVIDER_PLUGIN (module)) )
+    {
+	g_type_module_unuse (G_TYPE_MODULE (data));
+    }
     g_object_unref (G_OBJECT (module));
 }
 
@@ -285,6 +335,54 @@ parole_plugins_manager_open_plugins_website (GtkLinkButton *bt, const gchar *lin
     g_free (cmd);
 }
 #endif
+
+static ParolePluginInfo *
+parole_plugins_manager_get_plugin_info (const gchar *desktop_file)
+{
+    ParolePluginInfo *info;
+    GKeyFile *file;
+    
+    info = g_new0 (ParolePluginInfo, 1);
+    
+    info->name = NULL;
+    info->website = NULL;
+    info->desc = NULL;
+    info->authors = NULL;
+    
+    file = g_key_file_new ();
+    
+    if ( !g_key_file_load_from_file (file, desktop_file , G_KEY_FILE_NONE, NULL) )
+    {
+	g_warning ("Error opening file : %s", desktop_file);
+	goto out;
+    }
+    
+    info->name = g_key_file_get_string (file, "Parole Plugin", "Name", NULL);
+    
+    if ( !info->name )
+	info->name = g_strdup (_("Unknown"));
+    
+    
+    info->desc = g_key_file_get_string (file, "Parole Plugin", "Description", NULL);
+    
+    if ( !info->desc )
+	info->desc = g_strdup ("");
+	
+    info->authors = g_key_file_get_string (file, "Parole Plugin", "Authors", NULL);
+    
+    if ( !info->authors )
+	info->authors = g_strdup ("");
+	
+    info->website = g_key_file_get_string (file, "Parole Plugin", "Website", NULL);
+    
+    if ( !info->website )
+	info->website = g_strdup ("");
+	
+out:
+    g_key_file_free (file);
+    
+    return info;
+}
 
 static void
 parole_plugins_manager_show_plugins_pref (GtkWidget *widget, ParolePluginsManager *manager)
@@ -328,18 +426,19 @@ parole_plugins_manager_show_plugins_pref (GtkWidget *widget, ParolePluginsManage
 
     for ( i = 0; i < manager->priv->array->len; i++)
     {
-	ParoleModule *module;
+	ParoleProviderModule *module;
+	ParolePluginInfo *info;
 	module = g_ptr_array_index (manager->priv->array, i);
 	
-	if ( module->desc )
-	{
-	    gtk_list_store_append (pref->store, &iter);
-	    gtk_list_store_set (pref->store, &iter, 
-			        COL_ACTIVE, module->enabled, 
-				COL_PLUGIN, module->desc->title, 
-				COL_DATA, module,
-				-1);
-	}
+	info = parole_plugins_manager_get_plugin_info (module->desktop_file);
+	
+	gtk_list_store_append (pref->store, &iter);
+	gtk_list_store_set (pref->store, &iter, 
+			    COL_ACTIVE, parole_provider_plugin_get_is_active (PAROLE_PROVIDER_PLUGIN (module)),
+			    COL_PLUGIN, info->name, 
+			    COL_MODULE, module,
+			    COL_INFO, info,
+			    -1);
     }
     
     gtk_builder_connect_signals (builder, pref);
@@ -416,13 +515,115 @@ static void parole_plugins_manager_get_property (GObject *object,
     }
 }
 
+static gchar * 
+parole_plugins_manager_get_module_name (const gchar *desktop_file)
+{
+    GKeyFile *file;
+    gchar *module_name = NULL;
+    gchar *library_name = NULL;
+
+    file = g_key_file_new ();
+    
+    if ( !g_key_file_load_from_file (file, desktop_file, G_KEY_FILE_NONE, NULL) )
+    {
+	g_warning ("Error opening file : %s", desktop_file);
+	goto out;
+    }
+    
+    module_name = g_key_file_get_string (file, "Parole Plugin", "Module", NULL);
+    library_name = g_strdup_printf ("%s.%s", module_name, G_MODULE_SUFFIX);
+    g_free (module_name);
+out:
+    g_key_file_free (file);
+    
+    return library_name;
+}
+
+static void
+parole_plugins_manager_load_plugins (ParolePluginsManager *manager)
+{
+    gchar **plugins_rc;
+    guint len = 0, i, j;
+    
+    plugins_rc = parole_rc_read_entry_list ("plugins", PAROLE_RC_GROUP_PLUGINS);
+    
+    if ( plugins_rc && plugins_rc[0] )
+	len = g_strv_length (plugins_rc);
+
+    for ( j = 0; j < manager->priv->array->len; j++)
+    {
+	GTypeModule *module;
+	module = g_ptr_array_index (manager->priv->array, j);
+	
+	for ( i = 0; i < len; i++)
+	{
+	    if ( !g_strcmp0 (plugins_rc[i], module->name) )
+	    {
+		TRACE ("Loading plugin :%s", module->name);
+		if ( !g_type_module_use (module) )
+		{
+		    parole_plugins_manager_save_rc (module->name, FALSE);
+		    g_ptr_array_remove (manager->priv->array, module);
+		    g_object_unref (module);
+		}
+		break;
+	    }
+	}
+    }
+}
+
+static void
+parole_plugins_manager_construct (GObject *object)
+{
+    ParolePluginsManager *manager;
+    GDir *dir;
+    GError *error = NULL;
+    const gchar *name;
+    
+    manager = PAROLE_PLUGINS_MANAGER (object);
+    
+    dir = g_dir_open (PAROLE_PLUGINS_DATA_DIR, 0, &error);
+    
+    if ( error )
+    {
+	g_critical ("Error opening plugins data dir: %s", error->message);
+	g_error_free (error);
+	return;
+    }
+    
+    while ( (name = g_dir_read_name (dir) ))
+    {
+	gchar *library_name;
+	gchar *desktop_file;
+    
+	desktop_file = g_build_filename (PAROLE_PLUGINS_DATA_DIR, name, NULL);
+	library_name = parole_plugins_manager_get_module_name (desktop_file);
+	
+	if ( library_name )
+	{
+	    gchar *library_path;
+	    ParoleProviderModule *module;
+	    library_path = g_build_filename (PAROLE_PLUGINS_DIR, library_name, NULL);
+	    module = parole_provider_module_new (library_path, desktop_file);
+	    g_ptr_array_add (manager->priv->array, module);
+	    g_free (library_name);
+	    g_free (library_path);
+	}
+	g_free (desktop_file);
+    }
+    g_dir_close (dir);
+    
+    if ( manager->priv->load_plugins )
+	parole_plugins_manager_load_plugins (manager);
+}
+
 static void
 parole_plugins_manager_class_init (ParolePluginsManagerClass *klass)
 {
     GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-    object_class->finalize = parole_plugins_manager_finalize;
-    
+    object_class->finalize     = parole_plugins_manager_finalize;
+    object_class->constructed  = parole_plugins_manager_construct;
     object_class->set_property = parole_plugins_manager_set_property;
     object_class->get_property = parole_plugins_manager_get_property;
     
@@ -490,10 +691,8 @@ parole_plugins_manager_finalize (GObject *object)
 }
 
 ParolePluginsManager *
-parole_plugins_manager_get (gboolean load_plugins)
+parole_plugins_manager_new (gboolean load_plugins)
 {
-    static gpointer parole_plugins_manager_object = NULL;
-    
     if ( G_LIKELY (parole_plugins_manager_object != NULL) )
     {
 	g_object_ref (parole_plugins_manager_object);
@@ -509,70 +708,18 @@ parole_plugins_manager_get (gboolean load_plugins)
     return PAROLE_PLUGINS_MANAGER (parole_plugins_manager_object);
 }
 
-void 
-parole_plugins_manager_load_plugins (ParolePluginsManager *manager)
+ParolePluginsManager *
+parole_plugins_manager_get (void)
 {
-    ParoleModule *module;
-    GDir *dir;
-    const gchar *name;
-    gchar *path;
-    GError *error = NULL;
-    gchar **plugins_rc;
-    guint len = 0, i = 0;
-    
-    plugins_rc = parole_rc_read_entry_list ("plugins", PAROLE_RC_GROUP_PLUGINS);
-    
-    if ( plugins_rc && plugins_rc[0] )
-	len = g_strv_length (plugins_rc);
-    
-    dir = g_dir_open (PAROLE_PLUGINS_DIR, 0, &error);
-    
-    if ( error )
-    {
-	g_critical ("Error opening plugins dir: %s", error->message);
-	g_error_free (error);
-	return;
-    }
-    
-    while ( (name = g_dir_read_name (dir) ))
-    {
-	if ( g_str_has_suffix (name, "." G_MODULE_SUFFIX) )
-	{
-	    path = g_build_filename (PAROLE_PLUGINS_DIR, name, NULL);
-	    TRACE ("loading module with path %s", path);
-	    
-	    module = parole_module_new (path);
-
-	    if ( g_type_module_use (G_TYPE_MODULE (module)) )
-	    {
-		g_ptr_array_add (manager->priv->array, module);
-		
-		for ( i = 0; i < len; i++)
-		{
-		    if ( !g_strcmp0 (plugins_rc[i], path) && manager->priv->load_plugins )
-		    {
-			parole_module_set_active (module, TRUE);
-			break;
-		    }
-		}
-	    }
-	    else
-		g_object_unref (module);
-	    g_free (path);
-	}
-    }
-    g_dir_close (dir);
+    if ( G_UNLIKELY (parole_plugins_manager_object == NULL ) )
+	g_error ("Plugins Manager is NULL");
+	
+    return PAROLE_PLUGINS_MANAGER (parole_plugins_manager_object);
 }
 
-void parole_plugins_manager_pack (ParolePluginsManager *manager, ParolePlugin *plugin,
-				  GtkWidget *widget, ParolePluginContainer container)
+void 
+parole_plugins_manager_pack (ParolePluginsManager *manager, GtkWidget *widget, const gchar *title, ParolePluginContainer container)
 {
-    gchar *title;
-    
-    g_object_get (G_OBJECT (plugin),
-		  "title", &title,
-		  NULL);
-    
     if ( container == PAROLE_PLUGIN_CONTAINER_PLAYLIST )
     {
 	gtk_notebook_append_page (GTK_NOTEBOOK (manager->priv->list_nt), widget, gtk_label_new (title));
@@ -583,8 +730,4 @@ void parole_plugins_manager_pack (ParolePluginsManager *manager, ParolePlugin *p
 	gtk_notebook_append_page (GTK_NOTEBOOK (manager->priv->main_nt), widget, gtk_label_new (title));
 	gtk_widget_show_all (widget);
     }
-    
-    if ( title )
-	g_free (title);
-	
 }

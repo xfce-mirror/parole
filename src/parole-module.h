@@ -22,45 +22,48 @@
 #define __PAROLE_MODULE_H
 
 #include <glib-object.h>
+#include <parole/parole.h>
 
-#include "parole.h"
-#include "parole-plugin.h"
+#include "parole-plugin-player.h"
 
 G_BEGIN_DECLS
 
-#define PAROLE_TYPE_MODULE        (parole_module_get_type () )
-#define PAROLE_MODULE(o)          (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_MODULE, ParoleModule))
-#define PAROLE_IS_MODULE(o)       (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_MODULE))
+#define PAROLE_TYPE_PROVIDER_MODULE         	(parole_provider_module_get_type () )
+#define PAROLE_PROVIDER_MODULE(o)           	(G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_PROVIDER_MODULE, ParoleProviderModule))
+#define PAROLE_PROVIDER_MODULE_CLASS(klass) 	(G_TYPE_CHECK_CLASS_CAST ((klass), PAROLE_TYPE_PROVIDER_MODULE, ParoleProviderModuleClass))
+#define PAROLE_IS_PROVIDER_MODULE(o)        	(G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_PROVIDER_MODULE))
+#define PAROLE_IS_PROVIDER_MODULE_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), PAROLE_TYPE_PROVIDER_MODULE))
+#define PAROLE_PROVIDER_MODULE_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS((o), PAROLE_TYPE_PROVIDER_MODULE, ParoleProviderModuleClass))
 
-typedef struct ParoleModulePrivate ParoleModulePrivate;
+typedef struct _ParoleProviderModuleClass ParoleProviderModuleClass;
+typedef struct _ParoleProviderModule ParoleProviderModule;
 
-typedef struct
+struct _ParoleProviderModule
 {
     GTypeModule       	     parent;
     
-    GModule		    *mod;
-    ParolePlugin            *plugin;
-    ParolePluginDesc        *desc;
-    gboolean		     enabled;
+    GModule		    *library;
+    ParolePluginPlayer      *player;
     
-    ParolePlugin	   *(*constructor)		   (void);
-    
-    ParolePluginDesc	   *(*get_plugin_description)	   (void);
-    
-} ParoleModule;
+    GType		    (*initialize)		(ParoleProviderModule *module);
 
-typedef struct
+    void		    (*shutdown)			(void);
+    
+    GType		     provider_type;
+    gboolean		     active;
+    gpointer                 instance;
+    gchar                   *desktop_file;
+};
+
+struct _ParoleProviderModuleClass
 {
     GTypeModuleClass 	     parent_class;
-    
-} ParoleModuleClass;
+} ;
 
-GType        		     parole_module_get_type        (void) G_GNUC_CONST;
+GType        		     parole_provider_module_get_type        (void) G_GNUC_CONST;
 
-ParoleModule       	    *parole_module_new             (const gchar *filename);
-
-void			     parole_module_set_active      (ParoleModule *module,
-							    gboolean active);
+ParoleProviderModule	    *parole_provider_module_new             (const gchar *filename,
+								     const gchar *desktop_file);
 
 G_END_DECLS
 

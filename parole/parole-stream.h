@@ -18,6 +18,10 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+#if !defined (__PAROLE_H_INSIDE__) && !defined (PAROLE_COMPILATION)
+#error "Only <parole.h> can be included directly."
+#endif
+
 #ifndef __PAROLE_STREAM_H
 #define __PAROLE_STREAM_H
 

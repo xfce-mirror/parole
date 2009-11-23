@@ -4,10 +4,10 @@ endif
 
 SUBDIRS =  			\
 	data			\
+	parole 			\
 	common			\
 	gst			\
 	dbus			\
-	parole 			\
 	src			\
 	plugins			\
 	$(browser_plugin_dir)  	\

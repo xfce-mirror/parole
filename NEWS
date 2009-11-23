@@ -1,3 +1,23 @@
+1.95
+====
+- Use taglib when compiled to get the media title and display it in
+  the list instead of waiting for a tag message from gst to change
+  the display name while playing.
+- Added -n command line to load parolw without plugins.
+- Added XF86 button handler.
+- Added an option in the media chooser dialog to enable/disable
+  scanning folders recursively for media files
+- Handle CTL_O and XF86XK_OpenURL.
+- Use cdda:// for audio disc, sine cdda:/ doesn't work!
+- Give focus to media list view on GDK_Up and Down.
+- Added an option in the media chooser to replace current playlist 
+  with opened files
+- Hide control full screen popup when switch from a desktop to another.
+- Enter/leave fullscreen on double click on the video widget, thanks
+  for Enrico Troger for the patch.
+- Save stream tags when stream playback finished, should be safer.
+- Added browser media player plugin.
+
 1.91
 ====
 - Don't runref the vis plugin as playbin will remove it on exit (bug #5830).

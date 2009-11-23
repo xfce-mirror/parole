@@ -6,6 +6,7 @@ INCLUDES =                              \
         -I$(top_srcdir)/common          \
 	-I$(top_srcdir)/parole		\
         -DLOCALEDIR=\"$(localedir)\"    \
+	-DPAROLE_COMPILATION            \
         -DG_LOG_DOMAIN=\"parole-gst\"
 
 GENERATED_FILES =			\
@@ -17,9 +18,7 @@ GENERATED_FILES =			\
 libparolegst_la_SOURCES =		\
 	$(GENERATED_FILES)		\
 	parole-gst.c			\
-	parole-gst.h			\
-	parole-stream.c			\
-	parole-stream.h
+	parole-gst.h
 	
 libparolegst_la_CFLAGS =		\
 	$(GST_VIDEO_CFLAGS)             \
@@ -28,11 +27,11 @@ libparolegst_la_CFLAGS =		\
 	$(LIBXFCE4GUI_CFLAGS)
 
 libparolegst_la_LIBADD =		\
+	$(top_builddir)/parole/libparole.la\
 	$(top_builddir)/common/libparolecommon.la
 
 parole_glib_enum_headers =		\
-	parole-gst.h			\
-	$(top_srcdir)/parole/parole-stream.h
+	parole-gst.h
 
 if MAINTAINER_MODE
 
@@ -63,7 +62,6 @@ gst-enum-types.c: $(parole_glib_enum_headers) Makefile
 	( cd $(srcdir) && glib-mkenums \
 		--fhead "#include \"gst-enum-types.h\"\n\n" \
 		--fhead "#include \"parole-gst.h\"\n\n" \
-		--fhead "#include \"parole-stream.h\"\n\n" \
 		--fprod "\n/* enumerations from \"@filename@\" */" \
 		--vhead "GType\n@enum_name@_get_type (void)\n{\n  static GType etype = 0;\n  if (etype == 0) {\n    static const G@Type@Value values[] = {" \
 		--vprod "      { @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \

@@ -1,4 +1,4 @@
-SUBDIRS = 
+SUBDIRS = sample
 
 if PAROLE_PROPERTIES_PLUGIN
 SUBDIRS+=properties

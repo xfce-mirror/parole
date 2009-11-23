@@ -38,6 +38,8 @@
 
 #include <dbus/dbus-glib.h>
 
+#include <parole/parole-file.h>
+
 #include "parole-builder.h"
 #include "parole-about.h"
 
@@ -45,7 +47,6 @@
 #include "parole-gst.h"
 #include "parole-dbus.h"
 #include "parole-mediachooser.h"
-#include "parole-file.h"
 #include "parole-filters.h"
 #include "parole-disc.h"
 #include "parole-disc-menu.h"
@@ -1680,8 +1681,9 @@ parole_player_init (ParolePlayer *player)
 			      G_CALLBACK (parole_player_session_die_cb), player);
     
     player->priv->gst = parole_gst_new (FALSE, player->priv->conf);
-    
+
     player->priv->status = parole_statusbar_new ();
+
     player->priv->disc = parole_disc_new ();
     g_signal_connect (player->priv->disc, "disc-selected",
 		      G_CALLBACK (parole_player_disc_selected_cb), player);

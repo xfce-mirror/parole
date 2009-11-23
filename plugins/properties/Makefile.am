@@ -12,12 +12,15 @@ plugins_LTLIBRARIES =				\
 	stream-properties.la
 
 stream_properties_la_SOURCES =			\
-	stream-properties.c
+	stream-properties-plugin.c		\
+	stream-properties-provider.c		\
+	stream-properties-provider.h
 
 stream_properties_la_CFLAGS =			\
 	$(PLATFORM_CFLAGS)			\
 	$(GTK_CFLAGS)				\
-	$(TAGLIBC_CFLAGS)
+	$(TAGLIBC_CFLAGS)			\
+	$(LIBXFCE4UTIL_CFLAGS)
 
 stream_properties_la_LIBADD =			\
 	$(TAGLIBC_LIBS)
@@ -27,3 +30,17 @@ stream_properties_la_LDFLAGS =			\
 	-export-dynamic				\
 	-module					\
 	$(PLATFORM_LDFLAGS)
+
+#
+# .desktop file
+#
+desktop_in_files = stream-properties.desktop.in
+desktopdir = $(datadir)/parole/parole-plugins-$(PAROLE_VERSION_API)
+desktop_DATA =  $(desktop_in_files:.desktop.in=.desktop)
+@INTLTOOL_DESKTOP_RULE@
+
+EXTRA_DIST = 		  	\
+	$(desktop_in_files)
+    
+DISTCLEANFILES = 		\
+	$(desktop_DATA)

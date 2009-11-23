@@ -199,7 +199,7 @@ got_cdda:
 	gchar *label;
 	
 	name = g_mount_get_name (mount);
-	label = g_strdup_printf ("%s %s", _("Play Disc"), name);
+	label = g_strdup_printf ("%s '%s'", _("Play Disc"), name);
 	
 	data = parole_disc_get_mount_data (disc, label, uri, device, kind);
 	g_free (uri);
