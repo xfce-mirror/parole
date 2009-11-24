@@ -64,7 +64,7 @@ typedef struct
 
 GType        			 parole_media_list_get_type         (void) G_GNUC_CONST;
 
-GtkWidget       		*parole_media_list_new              (void);
+GtkWidget       		*parole_media_list_get              (void);
 
 void				 parole_media_list_load             (ParoleMediaList *list);
 

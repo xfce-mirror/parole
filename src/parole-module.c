@@ -27,6 +27,7 @@
 #include <string.h>
 
 #include <parole/parole-provider-plugin.h>
+#include <libxfce4util/libxfce4util.h>
 
 #include "parole-module.h"
 
@@ -93,11 +94,9 @@ parole_module_load (GTypeModule *gtype_module)
 	return FALSE;
     }
     
-    module->player = parole_plugin_player_new ();
+    TRACE ("Loading module %s", gtype_module->name);
     
     module->provider_type = (*module->initialize) (module);
-    module->instance = g_object_new (module->provider_type, NULL);
-    parole_provider_plugin_set_player (PAROLE_PROVIDER_PLUGIN (module->instance), PAROLE_PROVIDER_PLAYER (module->player));
     module->active = TRUE;
     
     return TRUE;
@@ -110,8 +109,7 @@ parole_module_unload (GTypeModule *gtype_module)
     
     module = PAROLE_PROVIDER_MODULE (gtype_module);
 
-    g_object_unref (G_OBJECT (module->instance));
-    g_object_unref (module->player);
+    TRACE ("Unloading module %s", gtype_module->name);
 
     (*module->shutdown) ();
     
@@ -123,8 +121,6 @@ parole_module_unload (GTypeModule *gtype_module)
     module->provider_type = G_TYPE_INVALID;
     module->active = FALSE;
     
-    module->player = NULL;
-    module->instance = NULL;
 }
 
 static gboolean
@@ -178,4 +174,35 @@ parole_provider_module_new (const gchar *filename, const gchar *desktop_file)
 			     module->desktop_file, (GDestroyNotify) g_free);
     
     return module;
+}
+
+
+void parole_provider_module_new_plugin (ParoleProviderModule *module)
+{
+    TRACE ("start");
+#ifdef debug
+    g_return_if_fail (module->active == TRUE);
+    g_return_if_fail (module->instance == NULL);
+    g_return_if_fail (module->player == NULL);
+#endif
+
+    module->instance = g_object_new (module->provider_type, NULL);
+    module->player = parole_plugin_player_new ();
+    parole_provider_plugin_set_player (PAROLE_PROVIDER_PLUGIN (module->instance), PAROLE_PROVIDER_PLAYER (module->player));
+}
+
+void parole_provider_module_free_plugin (ParoleProviderModule *module)
+{
+    TRACE ("start");
+    if ( module->instance )
+    {
+	g_object_unref (module->instance);
+	module->instance = NULL;
+    }
+    
+    if ( module->player )
+    {
+	g_object_unref (module->player);
+	module->player = NULL;
+    }
 }

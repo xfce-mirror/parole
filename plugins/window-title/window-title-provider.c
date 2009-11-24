@@ -44,11 +44,11 @@ struct _WindowTitleProvider
 };
 
 
-G_DEFINE_TYPE_WITH_CODE (WindowTitleProvider,
-			 window_title_provider,
-			 G_TYPE_OBJECT,
-			 G_IMPLEMENT_INTERFACE (PAROLE_TYPE_PROVIDER_PLUGIN,
-						window_title_provider_iface_init));
+PAROLE_DEFINE_TYPE_WITH_CODE (WindowTitleProvider,
+			      window_title_provider,
+			      G_TYPE_OBJECT,
+			      PAROLE_IMPLEMENT_INTERFACE (PAROLE_TYPE_PROVIDER_PLUGIN,
+							  window_title_provider_iface_init));
 
 
 
@@ -129,6 +129,7 @@ static void window_title_provider_class_init (WindowTitleProviderClass *klass)
 static void window_title_provider_init (WindowTitleProvider *provider)
 {
     provider->player = NULL;
+    g_debug ("Init");
 }
 
 static void window_title_provider_finalize (GObject *object)

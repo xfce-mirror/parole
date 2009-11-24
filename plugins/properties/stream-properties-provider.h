@@ -37,6 +37,8 @@ typedef struct _StreamProperties      StreamProperties;
 
 GType stream_properties_get_type      	(void) G_GNUC_CONST G_GNUC_INTERNAL;
 
+void  stream_properties_register_type   (ParoleProviderPlugin *plugin);
+
 G_END_DECLS
 
 #endif /*STREAM_PROPERTIES_PROVIDER_H_*/

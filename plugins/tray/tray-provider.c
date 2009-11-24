@@ -64,11 +64,11 @@ struct _TrayProvider
     GtkWidget     *menu;
 };
 
-G_DEFINE_TYPE_WITH_CODE (TrayProvider, 
-			 tray_provider, 
-			 G_TYPE_OBJECT,
-			 G_IMPLEMENT_INTERFACE (PAROLE_TYPE_PROVIDER_PLUGIN, 
-						tray_provider_iface_init));
+PAROLE_DEFINE_TYPE_WITH_CODE (TrayProvider, 
+			      tray_provider, 
+			      G_TYPE_OBJECT,
+			      PAROLE_IMPLEMENT_INTERFACE (PAROLE_TYPE_PROVIDER_PLUGIN, 
+							  tray_provider_iface_init));
 	
 static void
 menu_selection_done_cb (TrayProvider *tray)
@@ -586,6 +586,8 @@ static void tray_provider_finalize (GObject *object)
     TrayProvider *tray;
     
     tray = TRAY_PROVIDER (object);
+    
+    g_debug ("Finalize tray provider");
     
     if ( GTK_IS_WIDGET (tray->window) && g_signal_handler_is_connected (tray->window, tray->sig) )
 	g_signal_handler_disconnect (tray->window, tray->sig);

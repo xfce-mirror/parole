@@ -250,9 +250,15 @@ parole_plugins_manager_cell_toggled_cb (GtkCellRendererToggle *cell_renderer,
     if ( pref->manager->priv->load_plugins )
     {
 	if ( active )
+	{
 	    g_type_module_use (G_TYPE_MODULE (module));
+	    parole_provider_module_new_plugin (module);
+	}
 	else
+	{
+	    parole_provider_module_free_plugin (module);
 	    g_type_module_unuse (G_TYPE_MODULE (module));
+	}
     }
     
     gtk_list_store_set (GTK_LIST_STORE (pref->store), &iter, 
@@ -313,9 +319,10 @@ parole_plugins_manager_unload_all (gpointer data, gpointer user_data)
     module = PAROLE_PROVIDER_MODULE (data);
     if ( parole_provider_plugin_get_is_active (PAROLE_PROVIDER_PLUGIN (module)) )
     {
+	parole_provider_module_free_plugin (module);
 	g_type_module_unuse (G_TYPE_MODULE (data));
     }
-    g_object_unref (G_OBJECT (module));
+    //g_object_unref (module);
 }
 
 #if !GTK_CHECK_VERSION (2, 18, 0)
@@ -565,6 +572,10 @@ parole_plugins_manager_load_plugins (ParolePluginsManager *manager)
 		    parole_plugins_manager_save_rc (module->name, FALSE);
 		    g_ptr_array_remove (manager->priv->array, module);
 		    g_object_unref (module);
+		}
+		else
+		{
+		    parole_provider_module_new_plugin (PAROLE_PROVIDER_MODULE (module));
 		}
 		break;
 	    }

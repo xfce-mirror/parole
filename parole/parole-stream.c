@@ -323,21 +323,24 @@ parole_stream_class_init (ParoleStreamClass *klass)
     g_object_class_install_property (object_class,
 				     PROP_URI,
 				     g_param_spec_string ("uri",
-							  NULL, NULL,
+							  "Uri", 
+							  "Uri",
 							  NULL,
 							  G_PARAM_READWRITE));
     
     /**
      * ParoleStream:subtitles:
      * 
-     * Subtitles path, this is only valid for local files
+     * Subtitles path, this is only valid if the property
+     * "media-type" has the value PAROLE_MEDIA_TYPE_LOCAL_FILE.
      * 
      * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
 				     PROP_SUBTITLES,
 				     g_param_spec_string ("subtitles",
-							  NULL, NULL,
+							  "Subtitles", 
+							  "Subtitle file",
 							  NULL,
 							  G_PARAM_READWRITE));
     
@@ -351,7 +354,8 @@ parole_stream_class_init (ParoleStreamClass *klass)
     g_object_class_install_property (object_class,
 				     PROP_HAS_AUDIO,
 				     g_param_spec_boolean ("has-audio",
-							   NULL, NULL,
+							   "Has audio",
+							   "Has audio",
 							   FALSE,
 							   G_PARAM_READWRITE));
     /**
@@ -364,7 +368,8 @@ parole_stream_class_init (ParoleStreamClass *klass)
     g_object_class_install_property (object_class,
 				     PROP_HAS_VIDEO,
 				     g_param_spec_boolean ("has-video",
-							   NULL, NULL,
+							   "Has video", 
+							   "Has video",
 							   FALSE,
 							   G_PARAM_READWRITE));
     
@@ -378,21 +383,23 @@ parole_stream_class_init (ParoleStreamClass *klass)
     g_object_class_install_property (object_class,
 				     PROP_LIVE,
 				     g_param_spec_boolean ("live",
-							   NULL, NULL,
+							   "Live", 
+							   "Live",
 							   FALSE,
 							   G_PARAM_READWRITE));
 
     /**
      * ParoleStream:media-type:
      * 
-     *
+     *	The media type.
      * 
      * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
 				     PROP_MEDIA_TYPE,
 				     g_param_spec_enum ("media-type",
-							NULL, NULL,
+							"Media type", 
+							"Media type",
 							PAROLE_ENUM_TYPE_MEDIA_TYPE,
 							PAROLE_MEDIA_TYPE_UNKNOWN,
 							G_PARAM_READWRITE));
@@ -408,7 +415,8 @@ parole_stream_class_init (ParoleStreamClass *klass)
     g_object_class_install_property (object_class,
 				     PROP_SEEKABLE,
 				     g_param_spec_boolean ("seekable",
-							   NULL, NULL,
+							   "Seekable", 
+							   "Seekable",
 							   FALSE,
 							   G_PARAM_READWRITE));
 
@@ -422,7 +430,8 @@ parole_stream_class_init (ParoleStreamClass *klass)
     g_object_class_install_property (object_class,
 				     PROP_DURATION,
 				     g_param_spec_double("duration",
-							 NULL, NULL,
+							 "Duration", 
+							 "Duration",
 							 0, G_MAXDOUBLE,
 							 0,
 							 G_PARAM_READWRITE));
@@ -437,7 +446,8 @@ parole_stream_class_init (ParoleStreamClass *klass)
     g_object_class_install_property (object_class,
 				     PROP_SEEKABLE,
 				     g_param_spec_boolean ("tag-available",
-							   NULL, NULL,
+							   "Tag available",
+							   "Tag available",
 							   FALSE,
 							   G_PARAM_READWRITE));
 
@@ -451,7 +461,8 @@ parole_stream_class_init (ParoleStreamClass *klass)
     g_object_class_install_property (object_class,
 				     PROP_ABSOLUTE_DURATION,
 				     g_param_spec_int64 ("absolute-duration",
-							  NULL, NULL,
+							  "Absolution duration",
+							  "Absolution duration",
 							  0, G_MAXINT64,
 							  0,
 							  G_PARAM_READWRITE));
@@ -466,7 +477,8 @@ parole_stream_class_init (ParoleStreamClass *klass)
     g_object_class_install_property (object_class,
 				     PROP_DISP_PAR_N,
 				     g_param_spec_uint ("disp-par-n",
-							NULL, NULL,
+						        "Disp par n",
+						        "Disp par n",
 							1, G_MAXUINT,
 							1,
 							G_PARAM_READWRITE));
@@ -481,7 +493,8 @@ parole_stream_class_init (ParoleStreamClass *klass)
     g_object_class_install_property (object_class,
 				     PROP_DISP_PAR_D,
 				     g_param_spec_uint ("disp-par-d",
-							NULL, NULL,
+							"Disp par d",
+							"Disp par d",
 							1, G_MAXUINT,
 							1,
 							G_PARAM_READWRITE));
@@ -496,7 +509,8 @@ parole_stream_class_init (ParoleStreamClass *klass)
     g_object_class_install_property (object_class,
 				     PROP_VIDEO_WIDTH,
 				     g_param_spec_int    ("video-width",
-							  NULL, NULL,
+							  "Video width",
+							  "Video width",
 							  0, G_MAXINT,
 							  0,
 							  G_PARAM_READWRITE));
@@ -511,7 +525,8 @@ parole_stream_class_init (ParoleStreamClass *klass)
     g_object_class_install_property (object_class,
 				     PROP_VIDEO_HEIGHT,
 				     g_param_spec_int    ("video-height",
-							  NULL, NULL,
+							  "Video height",
+							  "Video height",
 							  0, G_MAXINT,
 							  0,
 							  G_PARAM_READWRITE));
@@ -527,7 +542,8 @@ parole_stream_class_init (ParoleStreamClass *klass)
     g_object_class_install_property (object_class,
 				     PROP_TRACKS,
 				     g_param_spec_uint   ("num-tracks",
-							  NULL, NULL,
+							  "Num tracks",
+							  "Number of tracks in the audio disc",
 							  1, 99,
 							  1,
 							  G_PARAM_READWRITE));
@@ -535,13 +551,16 @@ parole_stream_class_init (ParoleStreamClass *klass)
     /**
      * ParoleStream:track:
      * 
+     * Currently playing track, this is only valid if
+     * #ParoleStream:media-type: is PAROLE_MEDIA_TYPE_CDDA.
      * 
      * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
 				     PROP_TRACK,
 				     g_param_spec_uint   ("track",
-							  NULL, NULL,
+							  "Track", 
+							  "Track",
 							  1, 99,
 							  1,
 							  G_PARAM_READWRITE));
@@ -555,7 +574,8 @@ parole_stream_class_init (ParoleStreamClass *klass)
     g_object_class_install_property (object_class,
 				     PROP_TITLE,
 				     g_param_spec_string ("title",
-							  NULL, NULL,
+							  "Title", 
+							  "Title",
 							  NULL,
 							  G_PARAM_READWRITE));
 
@@ -570,7 +590,8 @@ parole_stream_class_init (ParoleStreamClass *klass)
     g_object_class_install_property (object_class,
 				     PROP_ARTIST,
 				     g_param_spec_string ("artist",
-							  NULL, NULL,
+							  "Artist", 
+							  "Artist",
 							  NULL,
 							  G_PARAM_READWRITE));
 							  
@@ -584,7 +605,8 @@ parole_stream_class_init (ParoleStreamClass *klass)
     g_object_class_install_property (object_class,
 				     PROP_YEAR,
 				     g_param_spec_string ("year",
-							  NULL, NULL,
+							  "Year", 
+							  "Year",
 							  NULL,
 							  G_PARAM_READWRITE));
 							  
@@ -598,21 +620,23 @@ parole_stream_class_init (ParoleStreamClass *klass)
     g_object_class_install_property (object_class,
 				     PROP_ALBUM,
 				     g_param_spec_string ("album",
-							  NULL, NULL,
+							  "Album", 
+							  "Album",
 							  NULL,
 							  G_PARAM_READWRITE));
 							  
     /**
      * ParoleStream:comment:
      * 
-     * 
+     * Extra comment block.
      * 
      * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
 				     PROP_COMMENT,
 				     g_param_spec_string ("comment",
-							  NULL, NULL,
+							  "Comment", 
+							  "Comment",
 							  NULL,
 							  G_PARAM_READWRITE));
 							  

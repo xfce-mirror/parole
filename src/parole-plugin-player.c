@@ -30,6 +30,7 @@
 
 #include "parole-plugin-player.h"
 #include "parole-plugins-manager.h"
+#include "parole-medialist.h"
 
 #include "gst/parole-gst.h"
 
@@ -81,10 +82,97 @@ parole_plugin_player_pack_widget (ParoleProviderPlayer *provider, GtkWidget *wid
     parole_plugins_manager_pack (manager, widget, title, container_type);
 }
 
+static ParoleState 
+parole_plugin_player_get_state (ParoleProviderPlayer *provider)
+{
+    ParolePluginPlayer *player;
+    
+    player = PAROLE_PLUGIN_PLAYER (provider);
+    
+    return parole_gst_get_state (PAROLE_GST (player->priv->gst));
+}
+
+static gboolean	
+parole_plugin_player_play_uri (ParoleProviderPlayer *provider, const gchar *uri)
+{
+    ParolePluginPlayer *player;
+    
+    player = PAROLE_PLUGIN_PLAYER (provider);
+    
+    parole_gst_play_uri (PAROLE_GST (player->priv->gst), uri, NULL);
+    
+    return TRUE;
+}
+
+static gboolean	
+parole_plugin_player_pause (ParoleProviderPlayer *provider)
+{
+    ParolePluginPlayer *player;
+    
+    player = PAROLE_PLUGIN_PLAYER (provider);
+    
+    parole_gst_pause (PAROLE_GST (player->priv->gst));
+    
+    return TRUE;
+}
+
+static gboolean	
+parole_plugin_player_resume (ParoleProviderPlayer *provider)
+{
+    ParolePluginPlayer *player;
+    
+    player = PAROLE_PLUGIN_PLAYER (provider);
+    
+    parole_gst_resume (PAROLE_GST (player->priv->gst));
+    
+    return TRUE;
+}
+
+static gboolean	
+parole_plugin_player_stop (ParoleProviderPlayer *provider)
+{
+    ParolePluginPlayer *player;
+    
+    player = PAROLE_PLUGIN_PLAYER (provider);
+    
+    parole_gst_stop (PAROLE_GST (player->priv->gst));
+    
+    return TRUE;
+}
+
+static gboolean	
+parole_plugin_player_seek (ParoleProviderPlayer *provider, gdouble pos)
+{
+    ParolePluginPlayer *player;
+    
+    player = PAROLE_PLUGIN_PLAYER (provider);
+    
+    parole_gst_seek (PAROLE_GST (player->priv->gst), pos);
+    
+    return TRUE;
+}
+
+static void parole_plugin_player_open_media_chooser (ParoleProviderPlayer *provider)
+{
+    ParoleMediaList *list;
+
+    list = PAROLE_MEDIA_LIST (parole_media_list_get ());
+    parole_media_list_open (list);
+    
+    g_object_unref (list);
+}
+
 static void parole_plugin_player_iface_init (ParoleProviderPlayerIface *iface)
 {
     iface->get_main_window = parole_plugin_player_get_main_window;
     iface->pack = parole_plugin_player_pack_widget;
+    iface->get_state = parole_plugin_player_get_state;
+    iface->play_uri = parole_plugin_player_play_uri;
+    iface->pause = parole_plugin_player_pause;
+    iface->resume = parole_plugin_player_resume;
+    iface->stop = parole_plugin_player_stop;
+    iface->seek = parole_plugin_player_seek;
+    iface->open_media_chooser = parole_plugin_player_open_media_chooser;
 }
 
 static void 

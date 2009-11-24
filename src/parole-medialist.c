@@ -1047,7 +1047,7 @@ parole_media_list_init (ParoleMediaList *list)
 }
 
 GtkWidget *
-parole_media_list_new (void)
+parole_media_list_get (void)
 {
     static gpointer list = NULL;
     

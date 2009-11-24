@@ -79,6 +79,8 @@ struct _ParoleProviderPlayerIface
     gboolean	 (*seek)				(ParoleProviderPlayer *player,
 							 gdouble pos);
 							 
+    void	 (*open_media_chooser)			(ParoleProviderPlayer *player);
+							 
     /*< signals >*/
     void	 (*tag_message)                 	(ParoleProviderPlayer *player,
 							 const ParoleStream *stream);
@@ -111,6 +113,8 @@ gboolean	parole_provider_player_stop		(ParoleProviderPlayer *player);
 
 gboolean	parole_provider_player_seek		(ParoleProviderPlayer *player,
 							 gdouble pos);
+
+void		parole_provider_player_open_media_chooser (ParoleProviderPlayer *player);
 
 G_END_DECLS
 

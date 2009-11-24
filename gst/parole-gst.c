@@ -454,7 +454,6 @@ parole_gst_set_video_color_balance (ParoleGst *gst)
 static void
 parole_gst_set_x_overlay (ParoleGst *gst)
 {
-    
     GstElement *video_sink;
     
     g_object_get (G_OBJECT (gst->priv->playbin),
@@ -463,8 +462,9 @@ parole_gst_set_x_overlay (ParoleGst *gst)
 		  
     g_assert (video_sink != NULL);
     
-    gst_x_overlay_set_xwindow_id (GST_X_OVERLAY (video_sink),
-				  GDK_WINDOW_XWINDOW (GTK_WIDGET (gst)->window));
+    if ( GDK_IS_WINDOW (GTK_WIDGET (gst)->window) )
+	gst_x_overlay_set_xwindow_id (GST_X_OVERLAY (video_sink),
+				      GDK_WINDOW_XWINDOW (GTK_WIDGET (gst)->window));
     
     gst_object_unref (video_sink);
     
@@ -1360,7 +1360,7 @@ parole_gst_construct (GObject *object)
     parole_gst_load_logo (gst);
     parole_gst_set_subtitle_encoding (gst);
     parole_gst_set_subtitle_font (gst);
-    
+    TRACE ("End");
 }
 
 static gboolean

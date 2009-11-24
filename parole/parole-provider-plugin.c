@@ -51,6 +51,17 @@ parole_provider_plugin_get_type (void)
     return type;
 }
 
+/**
+ * parole_provider_plugin_get_is_configurable:
+ * @provider: a #ParoleProviderPlugin
+ * 
+ * Get if the plugin is configurable.
+ * 
+ * Returns: TRUE if the plugin is configurable, FALSE otherwise.
+ * 
+ * 
+ * Since: 0.2
+ **/
 gboolean parole_provider_plugin_get_is_configurable (ParoleProviderPlugin *provider)
 {
     gboolean configurable = FALSE;
@@ -65,6 +76,16 @@ gboolean parole_provider_plugin_get_is_configurable (ParoleProviderPlugin *provi
     return configurable;
 }
 
+/**
+ * parole_provider_plugin_configure:
+ * @provider: a #ParoleProviderPlugin
+ * @parent: a #GtkWidget parent window
+ * 
+ * Open the plugin configuration dialog
+ * 
+ * 
+ * Since: 0.2
+ **/
 void parole_provider_plugin_configure (ParoleProviderPlugin *provider, GtkWidget *parent)
 {
     g_return_if_fail (PAROLE_IS_PROVIDER_PLUGIN (provider));
@@ -75,6 +96,14 @@ void parole_provider_plugin_configure (ParoleProviderPlugin *provider, GtkWidget
     }
 }
 
+/**
+ * parole_provider_plugin_set_player:
+ * @provider: a #ParoleProviderPlugin
+ * @player: a #ParoleProviderPlayer
+ * 
+ * 
+ * Since: 0.2
+ **/
 void parole_provider_plugin_set_player (ParoleProviderPlugin *provider, ParoleProviderPlayer *player)
 {
     g_return_if_fail (PAROLE_IS_PROVIDER_PLUGIN (provider));
@@ -85,7 +114,16 @@ void parole_provider_plugin_set_player (ParoleProviderPlugin *provider, ParolePr
     }
 }
 
-gboolean parole_provider_plugin_get_is_active   (ParoleProviderPlugin *provider)
+/**
+ * parole_provider_plugin_get_is_active:
+ * @provider: a #ParoleProviderPlugin
+ * 
+ * Returns: TRUE is the plugin is currently active e.g. loaded by the player, FALSE otherwise. 
+ * 
+ * 
+ * Since: 0.2
+ **/
+gboolean parole_provider_plugin_get_is_active (ParoleProviderPlugin *provider)
 {
     gboolean active = FALSE;
     

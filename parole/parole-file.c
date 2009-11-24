@@ -230,14 +230,15 @@ parole_file_class_init (ParoleFileClass *klass)
     /**
      * ParoleFile:filename:
      * 
-     * The filename of the file.
+     * The file name of the file.
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
 				     PROP_PATH,
 				     g_param_spec_string ("filename",
-							  NULL, NULL,
+							  "File name", 
+							  "The file name",
 							  NULL,
 							  G_PARAM_CONSTRUCT_ONLY|
 							  G_PARAM_READWRITE));
@@ -245,14 +246,15 @@ parole_file_class_init (ParoleFileClass *klass)
     /**
      * ParoleFile:display-name:
      * 
-     * a UTF-8 name that can be displayed in the UI.
+     * A UTF-8 name that can be displayed in the UI.
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
 				     PROP_DISPLAY_NAME,
 				     g_param_spec_string ("display-name",
-							  NULL, NULL,
+							  "Display name", 
+							  "A UTF-8 name that can be displayed in the UI",
 							  NULL,
 							  G_PARAM_CONSTRUCT_ONLY|
 							  G_PARAM_READWRITE));
@@ -260,14 +262,15 @@ parole_file_class_init (ParoleFileClass *klass)
     /**
      * ParoleFile:uri:
      * 
-     * The Uri of the file.
+     * The uri of the file.
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
 				     PROP_URI,
 				     g_param_spec_string ("uri",
-							  NULL, NULL,
+							  "Uri", 
+							  "The uri of the file",
 							  NULL,
 							  G_PARAM_READABLE));
 
@@ -276,12 +279,13 @@ parole_file_class_init (ParoleFileClass *klass)
      * 
      * The content type of the file.
      * 
-     * Since: 0.1 
+     * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
 				     PROP_CONTENT_TYPE,
 				     g_param_spec_string ("content-type",
-							  NULL, NULL,
+							  "Content type", 
+							  "The content type of the file",
 							  NULL,
 							  G_PARAM_READABLE));
 

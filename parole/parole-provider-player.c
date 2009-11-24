@@ -65,8 +65,8 @@ static void parole_provider_player_base_init (gpointer klass)
     if (G_UNLIKELY (!initialized))
     {
 	/**
-	 * ParolePlugin::state-changed:
-	 * @plugin: the object which received the signal.
+	 * ParoleProviderPlayerIface::state-changed:
+	 * @player: the object which received the signal.
 	 * @stream: a #ParoleStream.
 	 * @state: the new state.
 	 * 
@@ -82,7 +82,7 @@ static void parole_provider_player_base_init (gpointer klass)
 		      PAROLE_TYPE_STREAM, PAROLE_ENUM_TYPE_STATE);
 
 	/**
-	 * ParoleProviderPlayer::tag-message:
+	 * ParoleProviderPlayerIface::tag-message:
 	 * @player: the object which received the signal.
 	 * @stream: a #ParoleStream.
 	 * 
@@ -104,6 +104,13 @@ static void parole_provider_player_class_init (gpointer klass)
 {
 }
 
+/**
+ * parole_provider_player_get_main_window:
+ * @player: a 
+ * 
+ * 
+ * Returns: 
+ **/
 GtkWidget *parole_provider_player_get_main_window (ParoleProviderPlayer *player)
 {
     GtkWidget *window = NULL;
@@ -117,6 +124,14 @@ GtkWidget *parole_provider_player_get_main_window (ParoleProviderPlayer *player)
     return window;
 }
 
+/**
+ * parole_provider_player_pack:
+ * @player:
+ * @widget:
+ * @title:
+ * @container:
+ * 
+ **/ 
 void parole_provider_player_pack (ParoleProviderPlayer *player, GtkWidget *widget, 
 				  const gchar *title, ParolePluginContainer container)
 {
@@ -127,7 +142,17 @@ void parole_provider_player_pack (ParoleProviderPlayer *player, GtkWidget *widge
         (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->pack) (player, widget, title, container);
     }
 }
-							 
+		
+/**
+ * parole_provider_player_get_state:
+ * @player:
+ * 
+ * 
+ * Returns:
+ * 
+ * 
+ * Since: 0.2
+ **/
 ParoleState parole_provider_player_get_state (ParoleProviderPlayer *player)
 {
     ParoleState state = PAROLE_STATE_STOPPED;
@@ -142,6 +167,17 @@ ParoleState parole_provider_player_get_state (ParoleProviderPlayer *player)
     return state;
 }
 
+/**
+ * parole_provider_player_play_uri:
+ * @player: a #ParoleProviderPlayer
+ * @uri: uri
+ * 
+ * 
+ * Returns:
+ * 
+ * 
+ * Since: 0.2
+ **/
 gboolean parole_provider_player_play_uri (ParoleProviderPlayer *player, const gchar *uri)
 {
     gboolean ret = FALSE;
@@ -155,6 +191,17 @@ gboolean parole_provider_player_play_uri (ParoleProviderPlayer *player, const gc
     return ret;
 }
 
+
+/**
+ * parole_provider_player_pause:
+ * @player: a #ParoleProviderPlayer
+ * 
+ * 
+ * Returns:
+ * 
+ * 
+ * Since: 0.2
+ **/
 gboolean parole_provider_player_pause (ParoleProviderPlayer *player)
 {
     gboolean ret = FALSE;
@@ -169,6 +216,17 @@ gboolean parole_provider_player_pause (ParoleProviderPlayer *player)
     return ret;
 }
 
+
+/**
+ * parole_provider_player_resume:
+ * @player: a #ParoleProviderPlayer
+ * 
+ * 
+ * Returns:
+ * 
+ * 
+ * Since: 0.2
+ **/
 gboolean parole_provider_player_resume (ParoleProviderPlayer *player)
 {
     gboolean ret = FALSE;
@@ -183,6 +241,17 @@ gboolean parole_provider_player_resume (ParoleProviderPlayer *player)
     return ret;
 }
 
+
+/**
+ * parole_provider_player_stop:
+ * @player: a #ParoleProviderPlayer
+ * 
+ * 
+ * Returns:
+ * 
+ * 
+ * Since: 0.2
+ **/
 gboolean parole_provider_player_stop (ParoleProviderPlayer *player)
 {
     gboolean ret = FALSE;
@@ -197,6 +266,17 @@ gboolean parole_provider_player_stop (ParoleProviderPlayer *player)
     return ret;
 }
 
+
+/**
+ * parole_provider_player_seek:
+ * @player: a #ParoleProviderPlayer
+ * 
+ * 
+ * Returns:
+ * 
+ * 
+ * Since: 0.2
+ **/
 gboolean parole_provider_player_seek (ParoleProviderPlayer *player, gdouble pos)
 {
     gboolean ret = FALSE;
@@ -209,4 +289,23 @@ gboolean parole_provider_player_seek (ParoleProviderPlayer *player, gdouble pos)
     }
     
     return ret;
+}
+
+
+/**
+ * parole_provider_player_open_media_chooser:
+ * @player: a #ParoleProviderPlayer
+ * 
+ * 
+ * 
+ * Since: 0.2
+ **/
+void parole_provider_player_open_media_chooser (ParoleProviderPlayer *player)
+{
+    g_return_if_fail (PAROLE_IS_PROVIDER_PLAYER (player));
+    
+    if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->open_media_chooser )
+    {
+	(*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->open_media_chooser) (player);
+    }
 }

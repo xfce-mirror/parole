@@ -1691,7 +1691,7 @@ parole_player_init (ParolePlayer *player)
     player->priv->disc_menu = parole_disc_menu_new ();
     
     player->priv->screen_saver = parole_screen_saver_new ();
-    player->priv->list = PAROLE_MEDIA_LIST (parole_media_list_new ());
+    player->priv->list = PAROLE_MEDIA_LIST (parole_media_list_get ());
     
     player->priv->state = PAROLE_MEDIA_STATE_STOPPED;
     player->priv->user_seeking = FALSE;

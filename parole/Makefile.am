@@ -6,22 +6,31 @@ INCLUDES =                              	\
         -DLOCALEDIR=\"$(localedir)\"		\
 	-DPAROLE_COMPILATION
 
+INST_HFILES =					\
+	parole.h				\
+	parole-file.h				\
+	parole-stream.h				\
+	parole-provider-player.h		\
+	parole-provider-plugin.h
+
 libparole_la_SOURCES =				\
 	$(GENERATED_FILES)			\
-	parole.h				\
+	$(INST_HFILES)				\
 	parole-provider-plugin.c		\
-	parole-provider-plugin.h		\
 	parole-provider-player.c		\
-	parole-provider-player.h		\
 	parole-file.c				\
-	parole-file.h				\
-	parole-stream.c				\
-	parole-stream.h
+	parole-stream.c
 
 libparole_la_CFLAGS =				\
 	$(GIO_CFLAGS)                           \
 	$(GTK_CFLAGS)				\
 	$(TAGLIBC_CFLAGS)
+
+paroleincludedir =				\
+	$(includedir)/parole
+
+paroleinclude_HEADERS =				\
+	$(INST_HFILES)
 
 GENERATED_FILES =				\
 	parole-marshal.c			\
@@ -74,24 +83,9 @@ parole-enum-types.c: $(parole_glib_enum_headers) Makefile
 endif
 
 EXTRA_DIST =					\
-	parole-marshal.list
+	parole-marshal.list			\
+	parole.h.in
 
 DISTCLEANFILES =				\
 	$(BUILT_SOURCES)			\
 	stamp-enum-types.h
-
-INST_HFILES =					\
-	parole.h				\
-	parole-file.h				\
-	parole-stream.h				\
-	parole-provider-player.h		\
-	parole-provider-plugin.h
-
-libparole_headers =				\
-	$(INST_HFILES)
-
-libparole_includedir =				\
-	$(includedir)/parole
-
-libparole_include_HEADERS =			\
-	$(parole_headers)

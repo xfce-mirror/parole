@@ -65,6 +65,10 @@ GType        		     parole_provider_module_get_type        (void) G_GNUC_CONST;
 ParoleProviderModule	    *parole_provider_module_new             (const gchar *filename,
 								     const gchar *desktop_file);
 
+void			     parole_provider_module_new_plugin      (ParoleProviderModule *module);
+
+void 			     parole_provider_module_free_plugin     (ParoleProviderModule *module);
+
 G_END_DECLS
 
 #endif /* __PAROLE_MODULE_H */

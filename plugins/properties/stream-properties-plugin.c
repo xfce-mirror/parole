@@ -34,6 +34,7 @@ G_MODULE_EXPORT GType
 parole_plugin_initialize (ParoleProviderPlugin *plugin)
 {
     xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
+    stream_properties_register_type (plugin);
     return STREAM_TYPE_PROPERTIES_PROVIDER;
 }
 

@@ -35,6 +35,8 @@ parole_plugin_initialize (ParoleProviderPlugin *plugin)
 {
     xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
     
+    window_title_provider_register_type (plugin);
+    
     return WINDOW_TYPE_TITLE_PROVIDER;
 }
 

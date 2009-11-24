@@ -37,6 +37,8 @@ typedef struct _WindowTitleProvider      WindowTitleProvider;
 
 GType window_title_provider_get_type      	(void) G_GNUC_CONST G_GNUC_INTERNAL;
 
+void  window_title_provider_register_type	(ParoleProviderPlugin *plugin);
+
 G_END_DECLS
 
 #endif /*WINDOW_TITLE_PROVIDER_H_*/

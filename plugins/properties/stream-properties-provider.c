@@ -64,11 +64,11 @@ struct _StreamProperties
     
 };
 
-G_DEFINE_TYPE_WITH_CODE (StreamProperties, 
-			 stream_properties, 
-			 G_TYPE_OBJECT,
-			 G_IMPLEMENT_INTERFACE (PAROLE_TYPE_PROVIDER_PLUGIN, 
-						stream_properties_iface_init));
+PAROLE_DEFINE_TYPE_WITH_CODE (StreamProperties, 
+			      stream_properties, 
+			      G_TYPE_OBJECT,
+			      PAROLE_IMPLEMENT_INTERFACE (PAROLE_TYPE_PROVIDER_PLUGIN, 
+							  stream_properties_iface_init));
 
 enum
 {

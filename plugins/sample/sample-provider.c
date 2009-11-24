@@ -41,11 +41,11 @@ struct _SampleProvider
     ParoleProviderPlayer *player;
 };
 
-G_DEFINE_TYPE_WITH_CODE (SampleProvider, 
-			 sample_provider, 
-			 G_TYPE_OBJECT,
-			 G_IMPLEMENT_INTERFACE (PAROLE_TYPE_PROVIDER_PLUGIN, 
-						sample_provider_iface_init));
+PAROLE_DEFINE_TYPE_WITH_CODE (SampleProvider, 
+			      sample_provider, 
+			      G_TYPE_OBJECT,
+			      PAROLE_IMPLEMENT_INTERFACE (PAROLE_TYPE_PROVIDER_PLUGIN, 
+							  sample_provider_iface_init));
 							  
 static gboolean sample_provider_is_configurable (ParoleProviderPlugin *plugin)
 {

@@ -37,6 +37,8 @@ typedef struct _SampleProvider      SampleProvider;
 
 GType sample_provider_get_type      	(void) G_GNUC_CONST G_GNUC_INTERNAL;
 
+void  sample_provider_register_type	(ParoleProviderPlugin *plugin);
+
 G_END_DECLS
 
 #endif /*SAMPLE_PROVIDER_H_*/

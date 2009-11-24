@@ -37,6 +37,8 @@ typedef struct _TrayProvider      TrayProvider;
 
 GType tray_provider_get_type      	(void) G_GNUC_CONST G_GNUC_INTERNAL;
 
+void  tray_provider_register_type	(ParoleProviderPlugin *provider);
+
 G_END_DECLS
 
 #endif /*TRAY_PROVIDER_H_*/
