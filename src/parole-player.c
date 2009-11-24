@@ -1662,6 +1662,7 @@ parole_player_window_notify_is_active (ParolePlayer *player)
 static void
 parole_player_init (ParolePlayer *player)
 {
+    GtkWidget *output;
     GtkBuilder *builder;
     GdkScreen *screen;
     gint w, h;
@@ -1731,11 +1732,13 @@ parole_player_init (ParolePlayer *player)
     g_signal_connect (G_OBJECT (player->priv->gst), "motion-notify-event",
 		      G_CALLBACK (parole_player_gst_widget_motion_notify_event), player);
     
-    gtk_drag_dest_set (player->priv->gst, GTK_DEST_DEFAULT_ALL, 
+    output = GTK_WIDGET (gtk_builder_get_object (builder, "output"));
+    
+    gtk_drag_dest_set (output, GTK_DEST_DEFAULT_ALL, 
 		       target_entry, G_N_ELEMENTS (target_entry),
                        GDK_ACTION_COPY | GDK_ACTION_MOVE);
 		       
-    g_signal_connect (G_OBJECT (player->priv->gst), "drag-data-received",
+    g_signal_connect (output, "drag-data-received",
 		      G_CALLBACK (parole_player_drag_data_received_cb), player);
     
     player->priv->window = GTK_WIDGET (gtk_builder_get_object (builder, "main-window"));
@@ -1780,7 +1783,7 @@ parole_player_init (ParolePlayer *player)
     
     gtk_widget_show_all (player->priv->window);
     
-    gtk_box_pack_start (GTK_BOX (gtk_builder_get_object (builder, "output")), 
+    gtk_box_pack_start (GTK_BOX (output), 
 			player->priv->gst,
 			TRUE, TRUE, 0);
     
