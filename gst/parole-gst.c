@@ -489,7 +489,7 @@ parole_gst_expose_event (GtkWidget *widget, GdkEventExpose *ev)
     parole_gst_set_x_overlay (gst);
 
     if ( (gst->priv->state < GST_STATE_PAUSED || !gst->priv->with_vis ) && 
-	!playing_video && !gst->priv->buffering)
+	!playing_video && !gst->priv->buffering && gst->priv->target != GST_STATE_PLAYING )
 	parole_gst_draw_logo (gst);
     else 
     {
