@@ -206,18 +206,13 @@ parole_media_list_add (ParoleMediaList *list, ParoleFile *file, gboolean emit, g
     {
 	path = gtk_tree_model_get_path (GTK_TREE_MODEL (list_store), &iter);
 	row = gtk_tree_row_reference_new (GTK_TREE_MODEL (list_store), path);
+	if ( select_row )
+	    parole_media_list_select_path (list, path);
 	gtk_tree_path_free (path);
 	g_signal_emit (G_OBJECT (list), signals [MEDIA_ACTIVATED], 0, row);
 	gtk_tree_row_reference_free (row);
     }
   
-    if ( select_row )
-    {
-	path = gtk_tree_model_get_path (GTK_TREE_MODEL (list_store), &iter);
-	parole_media_list_select_path (list, path);
-	gtk_tree_path_free (path);
-    }
-    
     /*
      * Unref it as the list store will have
      * a reference anyway.
@@ -239,8 +234,8 @@ parole_media_list_add (ParoleMediaList *list, ParoleFile *file, gboolean emit, g
 }
 
 static void
-parole_media_list_files_opened_cb (ParoleMediaChooser *chooser, gboolean replace,
-				   GSList *files, ParoleMediaList *list)
+parole_media_list_files_open (ParoleMediaList *list, GSList *files, 
+			      gboolean replace, gboolean emit)
 {
     ParoleFile *file;
     guint len;
@@ -251,9 +246,10 @@ parole_media_list_files_opened_cb (ParoleMediaChooser *chooser, gboolean replace
     
     if ( len != 0 )
     {
-	parole_media_list_clear_list (list);
+	if ( replace )
+	    parole_media_list_clear_list (list);
 	file = g_slist_nth_data (files, 0);
-	parole_media_list_add (list, file, TRUE, TRUE);
+	parole_media_list_add (list, file, emit, TRUE);
     }
     
     for ( i = 1; i < len; i++)
@@ -261,6 +257,13 @@ parole_media_list_files_opened_cb (ParoleMediaChooser *chooser, gboolean replace
 	file = g_slist_nth_data (files, i);
 	parole_media_list_add (list, file, FALSE, FALSE);
     }
+}
+
+static void
+parole_media_list_files_opened_cb (ParoleMediaChooser *chooser, gboolean replace,
+				   GSList *files, ParoleMediaList *list)
+{
+    parole_media_list_files_open (list, files, replace, TRUE);
 }
 
 static void
@@ -1093,7 +1096,7 @@ void parole_media_list_load (ParoleMediaList *list)
 gboolean
 parole_media_list_add_by_path (ParoleMediaList *list, const gchar *path, gboolean emit)
 {
-    GSList *file_list = NULL;
+    GSList *files_list = NULL;
     GtkFileFilter *filter;
     guint len;
     gboolean ret = FALSE;
@@ -1101,14 +1104,15 @@ parole_media_list_add_by_path (ParoleMediaList *list, const gchar *path, gboolea
     filter = parole_get_supported_media_filter ();
     g_object_ref_sink (filter);
     
-    parole_get_media_files (filter, path, TRUE, &file_list);
+    parole_get_media_files (filter, path, TRUE, &files_list);
     
-    parole_media_list_files_opened_cb (NULL, FALSE, file_list, list);
-    len = g_slist_length (file_list);
+    parole_media_list_files_open (list, files_list, FALSE, emit);
+    
+    len = g_slist_length (files_list);
     ret = len == 0 ? FALSE : TRUE;
     
     g_object_unref (filter);
-    g_slist_free (file_list);
+    g_slist_free (files_list);
     return ret;
 }
 
