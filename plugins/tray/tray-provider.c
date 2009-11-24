@@ -111,6 +111,12 @@ stop_activated_cb (TrayProvider *tray)
 }
 
 static void
+open_activated_cb (TrayProvider *tray)
+{
+    parole_provider_player_open_media_chooser (tray->player);
+}
+
+static void
 popup_menu_cb (GtkStatusIcon *icon, guint button, 
                guint activate_time, TrayProvider *tray)
 {
@@ -135,6 +141,14 @@ popup_menu_cb (GtkStatusIcon *icon, guint button,
     gtk_widget_set_sensitive (mi, tray->state >= PAROLE_STATE_PAUSED);
     gtk_widget_show (mi);
     g_signal_connect_swapped (mi, "activate", G_CALLBACK (stop_activated_cb), tray);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+    
+    /*
+     * Open
+     */
+    mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_OPEN, NULL);
+    gtk_widget_show (mi);
+    g_signal_connect_swapped (mi, "activate", G_CALLBACK (open_activated_cb), tray);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
     
     /*
