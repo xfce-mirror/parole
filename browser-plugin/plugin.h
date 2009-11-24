@@ -76,6 +76,7 @@ class CPlugin {
     
     
     void	GetProxy ();
+    void	StopPlayer();
     
   private:
     DBusGConnection *bus;

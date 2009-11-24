@@ -79,48 +79,57 @@ CPlugin::CPlugin (NPP pNPInstance)
     proxy = NULL;
 }
 
-void kill_child (GPid child_pid)
+void CPlugin::StopPlayer()
 {
-    /*
-    gchar *command;
-	    
-    command = g_strdup_printf ("kill -9 %d", child_pid);
-    g_spawn_command_line_async (command, NULL);
-    g_free (command);
-    */
-}
-
-CPlugin::~CPlugin()
-{
-    g_debug ("Destructor");
+    gint num_tries = 0;
     
     if ( !proxy )
 	GetProxy ();
     
     if ( proxy )
     {
-	GError *error = NULL;
-	
-	dbus_g_proxy_call (proxy, "Quit", &error,
-			   G_TYPE_INVALID,
-			   G_TYPE_INVALID);
-		
-	/*
-	 * This might happen if the browser unload the plugin quickly
-	 * while the process didn't get the dbus name.
-	 */
-	if ( error )
+	do
 	{
+	    GError *error = NULL;
+	    g_debug ("Sending Quit message");
+	    dbus_g_proxy_call (proxy, "Quit", &error,
+			       G_TYPE_INVALID,
+			       G_TYPE_INVALID);
+		
+	    /*
+	     * This might happen if the browser unload the plugin quickly
+	     * while the process didn't get the dbus name.
+	     */
+	    if ( error )
+	    {
 #ifdef DEBUG
-	    g_debug ("Failed to stop the backend via D-Bus killing the process %d", child_pid);
+		g_debug ("Failed to stop the backend via D-Bus %s", error->message);
 #endif
-	    kill_child (child_pid);
-	}
+		if ( g_error_matches (error, DBUS_GERROR, DBUS_GERROR_NO_REPLY ) ||
+		     g_error_matches (error, DBUS_GERROR, DBUS_GERROR_SERVICE_UNKNOWN) )
+		{
+		    g_error_free (error);
+		    g_main_context_iteration(NULL, FALSE);
+		    g_usleep (100000);
+		    num_tries++;
+		    g_debug ("No reply, probably not ready, re-trying");
+		}
+		else
+		    break;
+	    }
+	    else
+		break;
+	    
+	} while (num_tries  < 3 );
     }   
-    else if ( child_spawned )
-    {
-	kill_child (child_pid);
-    }
+    
+}
+
+CPlugin::~CPlugin()
+{
+    g_debug ("Destructor");
+    
+    StopPlayer ();
     
     if ( bus )
 	dbus_g_connection_unref (bus);
@@ -166,7 +175,8 @@ void CPlugin::shut()
     
     if ( proxy )
     {
-        dbus_g_proxy_call_no_reply (proxy, "Terminate",
+	g_debug ("Sending Stop signal");
+        dbus_g_proxy_call_no_reply (proxy, "Stop",
                                     G_TYPE_INVALID,
                                     G_TYPE_INVALID);
     }   
@@ -256,9 +266,11 @@ NPError CPlugin::NewStream(NPMIMEType type, NPStream * stream, NPBool seekable, 
 
 NPError CPlugin::DestroyStream(NPStream * stream, NPError reason)
 {
-    g_debug ("Destroy stream %s reason %i ", stream->url, reason);
-    
-    shut ();
+    if ( reason != NPRES_DONE )
+    {
+	g_debug ("Destroy stream %s reason %i ", stream->url, reason);
+	shut ();
+    }
     
     return NPERR_NO_ERROR;
 }

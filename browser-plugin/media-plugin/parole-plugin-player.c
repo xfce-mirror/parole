@@ -275,7 +275,11 @@ parole_plugin_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream,
     {
 	if ( player->priv->terminate )
 	{
-	    g_object_unref (player);
+	    if ( player )
+	    {
+		g_object_unref (player);
+		player = NULL;
+	    }
 	    gtk_main_quit ();
 	}
 	parole_plugin_player_change_range_value (player, 0);
@@ -499,8 +503,6 @@ parole_plugin_player_construct (GObject *object)
      */
     gstbox = gtk_hbox_new (TRUE, 0);
     
-    player->priv->gst = PAROLE_GST (parole_gst_new (TRUE, NULL));
-    
     gtk_box_pack_start (GTK_BOX (gstbox), GTK_WIDGET (player->priv->gst), TRUE, TRUE, 0);
     gtk_box_pack_start (GTK_BOX (vbox), gstbox, TRUE, TRUE, 0);
     
@@ -677,6 +679,8 @@ parole_plugin_player_init (ParolePluginPlayer *player)
     player->priv->internal_range_change = FALSE;
     player->priv->state = PAROLE_MEDIA_STATE_STOPPED;
     
+    player->priv->gst = PAROLE_GST (parole_gst_new (TRUE, NULL));
+    
     player->priv->window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
     gtk_window_set_keep_above (GTK_WINDOW (player->priv->window), TRUE);
     gtk_window_set_decorated (GTK_WINDOW (player->priv->window), FALSE);
@@ -736,22 +740,38 @@ parole_plugin_player_finalize (GObject *object)
 
     player = PAROLE_PLUGIN_PLAYER (object);
 
+    g_debug ("Finalize...");
+
     g_object_unref (player->priv->saver);
+    
+    if ( player->priv->url )
+	g_free (player->priv->url);
 
     G_OBJECT_CLASS (parole_plugin_player_parent_class)->finalize (object);
 }
 
 static gboolean
-parole_plugin_player_quit_idl (gpointer data)
+parole_plugin_player_quit_idle (gpointer data)
 {
     ParolePluginPlayer *player;
     
     player = PAROLE_PLUGIN_PLAYER (data);
     
-    player->priv->terminate = TRUE;
     parole_gst_terminate (player->priv->gst);
-    gtk_main_quit ();
     
+    return FALSE;
+}
+
+static gboolean
+parole_plugin_player_stop_idle (gpointer data)
+{
+    ParolePluginPlayer *player;
+    
+    player = PAROLE_PLUGIN_PLAYER (data);
+    
+    if (player->priv->gst )
+	parole_gst_stop (player->priv->gst);
+	
     return FALSE;
 }
 
@@ -788,8 +808,8 @@ static gboolean parole_plugin_player_dbus_quit (ParolePluginPlayer *player,
 						GError **error);
 
 
-static gboolean parole_plugin_player_dbus_terminate (ParolePluginPlayer *player,
-						     GError **error);
+static gboolean parole_plugin_player_dbus_stop (ParolePluginPlayer *player,
+						GError **error);
 
 #include "org.parole.media.plugin.h"
 
@@ -818,14 +838,17 @@ parole_plugin_player_dbus_quit (ParolePluginPlayer *player,
 				GError **error)
 {
     g_debug ("Quit message received");
-    g_idle_add ((GSourceFunc) parole_plugin_player_quit_idl, player);
+    player->priv->terminate = TRUE;
+    g_idle_add ((GSourceFunc) parole_plugin_player_quit_idle, player);
     return TRUE;
 }
 
 static gboolean 
-parole_plugin_player_dbus_terminate (ParolePluginPlayer *player, GError **error)
+parole_plugin_player_dbus_stop (ParolePluginPlayer *player, GError **error)
 {
-    g_debug ("Terminate message received");
-    parole_plugin_player_exit (player);
+    g_debug ("Stop message received");
+    player->priv->terminate = TRUE;
+    g_idle_add ((GSourceFunc)parole_plugin_player_stop_idle, player);
+    
     return TRUE;
 }
