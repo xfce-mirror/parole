@@ -67,7 +67,7 @@ gboolean parole_provider_plugin_get_is_configurable (ParoleProviderPlugin *provi
     gboolean configurable = FALSE;
     
     g_return_val_if_fail (PAROLE_IS_PROVIDER_PLUGIN (provider), FALSE);
-    
+
     if ( PAROLE_PROVIDER_PLUGIN_GET_INTERFACE (provider)->get_is_configurable )
     {
 	configurable = (*PAROLE_PROVIDER_PLUGIN_GET_INTERFACE (provider)->get_is_configurable) (provider);

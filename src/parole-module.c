@@ -123,12 +123,6 @@ parole_module_unload (GTypeModule *gtype_module)
     
 }
 
-static gboolean
-parole_provider_module_get_is_active (ParoleProviderPlugin *plugin)
-{
-    return PAROLE_PROVIDER_MODULE (plugin)->active;
-}
-
 static void
 parole_provider_module_class_init (ParoleProviderModuleClass *klass)
 {
@@ -140,10 +134,42 @@ parole_provider_module_class_init (ParoleProviderModuleClass *klass)
     gtype_module_class->unload = parole_module_unload;
 }
 
+static gboolean
+parole_provider_module_get_is_active (ParoleProviderPlugin *plugin)
+{
+    return PAROLE_PROVIDER_MODULE (plugin)->active;
+}
+
+static gboolean
+parole_provider_module_get_is_configurable (ParoleProviderPlugin *plugin)
+{
+    ParoleProviderModule *module;
+    
+    module = PAROLE_PROVIDER_MODULE (plugin);
+    
+    if ( module->instance )
+	return parole_provider_plugin_get_is_configurable (module->instance);
+	
+    return FALSE;
+}
+
+static void
+parole_provider_module_configure (ParoleProviderPlugin *plugin, GtkWidget *parent)
+{
+    ParoleProviderModule *module;
+    
+    module = PAROLE_PROVIDER_MODULE (plugin);
+    
+    if ( module->instance )
+	parole_provider_plugin_configure (module->instance, parent);
+}
+
 static void     
 parole_provider_module_plugin_init (ParoleProviderPluginIface *iface)
 {
     iface->get_is_active = parole_provider_module_get_is_active;
+    iface->get_is_configurable = parole_provider_module_get_is_configurable;
+    iface->configure = parole_provider_module_configure;
 }
 
 static void

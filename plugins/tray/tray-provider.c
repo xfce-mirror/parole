@@ -39,7 +39,7 @@
 #define RESOURCE_FILE 	"xfce4/parole/parole-plugins/tray.rc"
 
 static void   tray_provider_iface_init 	   (ParoleProviderPluginIface *iface);
-static void   tray_provider_finalize             (GObject 	              *object);
+static void   tray_provider_finalize       (GObject 	              *object);
 
 
 struct _TrayProviderClass
@@ -554,7 +554,6 @@ static void
 tray_provider_configure (ParoleProviderPlugin *provider, GtkWidget *parent)
 {
     TrayProvider *tray;
-    
     tray = TRAY_PROVIDER (provider);
     configure_plugin (tray, parent);
 }
@@ -562,11 +561,9 @@ tray_provider_configure (ParoleProviderPlugin *provider, GtkWidget *parent)
 static void
 tray_provider_iface_init (ParoleProviderPluginIface *iface)
 {
-    iface->get_is_configurable = tray_provider_is_configurable;
     iface->set_player = tray_provider_set_player;
-#ifdef HAVE_LIBNOTIFY
     iface->configure = tray_provider_configure;
-#endif
+    iface->get_is_configurable = tray_provider_is_configurable;
 }
 
 static void tray_provider_class_init (TrayProviderClass *klass)
@@ -586,8 +583,6 @@ static void tray_provider_finalize (GObject *object)
     TrayProvider *tray;
     
     tray = TRAY_PROVIDER (object);
-    
-    g_debug ("Finalize tray provider");
     
     if ( GTK_IS_WIDGET (tray->window) && g_signal_handler_is_connected (tray->window, tray->sig) )
 	g_signal_handler_disconnect (tray->window, tray->sig);

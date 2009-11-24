@@ -163,7 +163,6 @@ parole_plugins_manager_get_selected_module_data (PrefData *pref, ParoleProviderM
 	*info = NULL;
         return;
     }
-
     gtk_tree_model_get (model,
                         &iter,
                         COL_MODULE, module,
@@ -174,8 +173,9 @@ parole_plugins_manager_get_selected_module_data (PrefData *pref, ParoleProviderM
 void parole_plugins_manager_show_configure (GtkButton *button, PrefData *pref)
 {
     ParoleProviderModule *module;
+    ParolePluginInfo *info;
     
-    parole_plugins_manager_get_selected_module_data (pref, &module, NULL);
+    parole_plugins_manager_get_selected_module_data (pref, &module, &info);
     
     if ( G_UNLIKELY (!module) )
 	return;
