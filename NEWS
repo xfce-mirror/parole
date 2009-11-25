@@ -16,6 +16,9 @@
 - Enter/leave fullscreen on double click on the video widget, thanks
   for Enrico Troger for the patch.
 - Save stream tags when stream playback finished, should be safer.
+- Added a power manager plugin to inhibit the power manager
+    while playing DVD/VCD/DVB...
+- Added --device command line to be used with cdda:// dvd:// etc...
 - Added browser media player plugin.
 
 1.91
