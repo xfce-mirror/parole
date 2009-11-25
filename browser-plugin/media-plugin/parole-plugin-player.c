@@ -58,6 +58,9 @@ static void parole_plugin_player_get_property (GObject *object,
 #define PAROLE_PLUGIN_PLAYER_GET_PRIVATE(o) \
 (G_TYPE_INSTANCE_GET_PRIVATE ((o), PAROLE_TYPE_PLUGINPLAYER, ParolePluginPlayerPrivate))
 
+static GTimer *idle_timer = NULL;
+static GThread *idle_thread = NULL;
+
 struct ParolePluginPlayerPrivate
 {
     ParoleGst    *gst;
@@ -275,11 +278,6 @@ parole_plugin_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream,
     {
 	if ( player->priv->terminate )
 	{
-	    if ( player )
-	    {
-		g_object_unref (player);
-		player = NULL;
-	    }
 	    gtk_main_quit ();
 	}
 	parole_plugin_player_change_range_value (player, 0);
@@ -630,6 +628,28 @@ parole_plugin_player_window_delete_event_cb (ParolePluginPlayer *player)
     return TRUE;
 }
 
+static gpointer *check_idle_thread (gpointer data)
+{
+    ParolePluginPlayer *player;
+    
+    player = PAROLE_PLUGIN_PLAYER (data);
+    
+    do
+    {
+	g_usleep (1000000);
+	if ( g_timer_elapsed (idle_timer, NULL ) > 60.f )
+	{
+	    g_debug ("Idle timeout expired, exiting...");
+	    g_debug ("Here");
+	    gtk_main_quit ();
+	    g_debug ("Yalla");
+	}
+	
+    } while ( player->priv->terminate == FALSE ); 
+
+    return NULL;
+}
+
 static void
 parole_plugin_player_class_init (ParolePluginPlayerClass *klass)
 {
@@ -667,6 +687,8 @@ parole_plugin_player_class_init (ParolePluginPlayerClass *klass)
 static void
 parole_plugin_player_init (ParolePluginPlayer *player)
 {
+    GError *error = NULL;
+    
     player->priv = PAROLE_PLUGIN_PLAYER_GET_PRIVATE (player);
     
     player->priv->gst  = NULL;
@@ -692,7 +714,18 @@ parole_plugin_player_init (ParolePluginPlayer *player)
 		      G_CALLBACK (parole_plugin_player_window_key_press_cb), player);
     
     
+    idle_timer = g_timer_new ();
+    idle_thread = g_thread_create ((GThreadFunc)check_idle_thread, player, FALSE, &error);
+    
+    if ( error )
+    {
+        g_warning ("%s", error->message);
+	g_error_free (error);
+    }
+
+    
     parole_plugin_player_dbus_init (player);
+    
 }
 
 static void parole_plugin_player_set_property (GObject *object,
@@ -811,6 +844,9 @@ static gboolean parole_plugin_player_dbus_quit (ParolePluginPlayer *player,
 static gboolean parole_plugin_player_dbus_stop (ParolePluginPlayer *player,
 						GError **error);
 
+static gboolean parole_plugin_player_dbus_ping (ParolePluginPlayer *player,
+						GError **error);
+
 #include "org.parole.media.plugin.h"
 
 /*
@@ -852,3 +888,15 @@ parole_plugin_player_dbus_stop (ParolePluginPlayer *player, GError **error)
     
     return TRUE;
 }
+
+static gboolean parole_plugin_player_dbus_ping (ParolePluginPlayer *player,
+						GError **error)
+{
+    g_debug ("Ping");
+    
+    if ( idle_timer )
+	g_timer_reset (idle_timer);
+	
+    return TRUE;
+}
+						

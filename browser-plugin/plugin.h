@@ -87,6 +87,7 @@ class CPlugin {
     gchar           *url;
     Window           window;
     GPid	     child_pid;
+    gulong	     ping_id;
     
   public:
     NPP mInstance;

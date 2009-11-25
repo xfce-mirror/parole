@@ -132,6 +132,7 @@ int main (int argc, char **argv)
     parole_plugin_player_play (player);
     
     gtk_main ();
+    g_object_unref (player);
     gtk_widget_destroy (plug);
     parole_dbus_release_name (dbus_name);
     g_free (dbus_name);

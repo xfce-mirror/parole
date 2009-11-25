@@ -120,7 +120,7 @@ void CPlugin::StopPlayer()
 	    else
 		break;
 	    
-	} while (num_tries  < 3 );
+	} while (num_tries  < 4 );
     }   
     
 }
@@ -128,6 +128,9 @@ void CPlugin::StopPlayer()
 CPlugin::~CPlugin()
 {
     g_debug ("Destructor");
+    
+    if ( ping_id ) 
+	g_source_remove (ping_id);
     
     StopPlayer ();
     
@@ -185,6 +188,20 @@ void CPlugin::shut()
 NPBool CPlugin::isInitialized()
 {
     return mInitialized;
+}
+
+static gboolean
+ping_process (gpointer data)
+{
+    DBusGProxy *proxy;
+    
+    proxy = (DBusGProxy *) data;
+    
+    dbus_g_proxy_call (proxy, "Ping",
+		       G_TYPE_INVALID,
+		       G_TYPE_INVALID);
+		       
+    return TRUE;
 }
 
 void CPlugin::GetProxy ()
@@ -248,7 +265,9 @@ NPError CPlugin::NewStream(NPMIMEType type, NPStream * stream, NPBool seekable, 
 	    g_error_free (error);
 	    return NPERR_GENERIC_ERROR;
 	}
+	
 	child_spawned = TRUE;
+	
 	g_free (socket);
 	g_free (app);
 	
@@ -260,6 +279,11 @@ NPError CPlugin::NewStream(NPMIMEType type, NPStream * stream, NPBool seekable, 
 	    g_error_free (error);
 	    return NPERR_GENERIC_ERROR;
 	}
+	
+	GetProxy ();
+	if ( proxy )
+	    ping_id = g_timeout_add_seconds (5, (GSourceFunc) ping_process, proxy);
+	
     }
     return NPERR_NO_ERROR;
 }
