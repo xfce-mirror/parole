@@ -51,9 +51,6 @@ struct _ParoleProviderPluginIface
 								 
     void		 (*set_player)				(ParoleProviderPlugin *provider,
 								 ParoleProviderPlayer *player);
-								 
-    /*< private >*/
-    gboolean		(*get_is_active)			(ParoleProviderPlugin *provider);
 };
 
 GType		 	 parole_provider_plugin_get_type	(void) G_GNUC_CONST;
@@ -65,9 +62,6 @@ void			 parole_provider_plugin_configure       (ParoleProviderPlugin *provider,
 								 
 void			 parole_provider_plugin_set_player	(ParoleProviderPlugin *provider,
 								 ParoleProviderPlayer *player);
-
-gboolean		 parole_provider_plugin_get_is_active   (ParoleProviderPlugin *provider);
-
 G_END_DECLS
 
 #endif /* __PAROLE_PLUGIN_IFACE_H__ */

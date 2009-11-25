@@ -69,6 +69,8 @@ void			     parole_provider_module_new_plugin      (ParoleProviderModule *module
 
 void 			     parole_provider_module_free_plugin     (ParoleProviderModule *module);
 
+gboolean		     parole_provider_module_get_is_active   (ParoleProviderModule *module);
+
 G_END_DECLS
 
 #endif /* __PAROLE_MODULE_H */

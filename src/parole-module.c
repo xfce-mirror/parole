@@ -135,12 +135,6 @@ parole_provider_module_class_init (ParoleProviderModuleClass *klass)
 }
 
 static gboolean
-parole_provider_module_get_is_active (ParoleProviderPlugin *plugin)
-{
-    return PAROLE_PROVIDER_MODULE (plugin)->active;
-}
-
-static gboolean
 parole_provider_module_get_is_configurable (ParoleProviderPlugin *plugin)
 {
     ParoleProviderModule *module;
@@ -167,7 +161,6 @@ parole_provider_module_configure (ParoleProviderPlugin *plugin, GtkWidget *paren
 static void     
 parole_provider_module_plugin_init (ParoleProviderPluginIface *iface)
 {
-    iface->get_is_active = parole_provider_module_get_is_active;
     iface->get_is_configurable = parole_provider_module_get_is_configurable;
     iface->configure = parole_provider_module_configure;
 }
@@ -206,6 +199,9 @@ parole_provider_module_new (const gchar *filename, const gchar *desktop_file)
 void parole_provider_module_new_plugin (ParoleProviderModule *module)
 {
     TRACE ("start");
+    
+    g_return_if_fail (PAROLE_IS_PROVIDER_MODULE (module));
+    
 #ifdef debug
     g_return_if_fail (module->active == TRUE);
     g_return_if_fail (module->instance == NULL);
@@ -220,6 +216,9 @@ void parole_provider_module_new_plugin (ParoleProviderModule *module)
 void parole_provider_module_free_plugin (ParoleProviderModule *module)
 {
     TRACE ("start");
+    
+    g_return_if_fail (PAROLE_IS_PROVIDER_MODULE (module));
+    
     if ( module->instance )
     {
 	g_object_unref (module->instance);
@@ -231,4 +230,12 @@ void parole_provider_module_free_plugin (ParoleProviderModule *module)
 	g_object_unref (module->player);
 	module->player = NULL;
     }
+}
+
+gboolean
+parole_provider_module_get_is_active (ParoleProviderModule *module)
+{
+    g_return_val_if_fail (PAROLE_IS_PROVIDER_MODULE (module), FALSE);
+    
+    return module->active;
 }

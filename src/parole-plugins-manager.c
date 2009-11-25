@@ -303,7 +303,7 @@ void parole_plugins_manager_tree_cursor_changed_cb (GtkTreeView *view,
 
     gtk_widget_set_tooltip_text (pref->site, site);
 
-    if ( parole_provider_plugin_get_is_active (PAROLE_PROVIDER_PLUGIN (module) ) )
+    if ( parole_provider_module_get_is_active (module) )
     {
 	configurable = parole_provider_plugin_get_is_configurable (PAROLE_PROVIDER_PLUGIN (module));
     }
@@ -317,7 +317,7 @@ parole_plugins_manager_unload_all (gpointer data, gpointer user_data)
     ParoleProviderModule *module;
     
     module = PAROLE_PROVIDER_MODULE (data);
-    if ( parole_provider_plugin_get_is_active (PAROLE_PROVIDER_PLUGIN (module)) )
+    if ( parole_provider_module_get_is_active (module) )
     {
 	parole_provider_module_free_plugin (module);
 	g_type_module_unuse (G_TYPE_MODULE (data));
@@ -441,7 +441,7 @@ parole_plugins_manager_show_plugins_pref (GtkWidget *widget, ParolePluginsManage
 	
 	gtk_list_store_append (pref->store, &iter);
 	gtk_list_store_set (pref->store, &iter, 
-			    COL_ACTIVE, parole_provider_plugin_get_is_active (PAROLE_PROVIDER_PLUGIN (module)),
+			    COL_ACTIVE, parole_provider_module_get_is_active (module),
 			    COL_PLUGIN, info->name, 
 			    COL_MODULE, module,
 			    COL_INFO, info,

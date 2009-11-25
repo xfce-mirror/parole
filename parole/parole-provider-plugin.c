@@ -113,26 +113,3 @@ void parole_provider_plugin_set_player (ParoleProviderPlugin *provider, ParolePr
 	(*PAROLE_PROVIDER_PLUGIN_GET_INTERFACE (provider)->set_player) (provider, player);
     }
 }
-
-/**
- * parole_provider_plugin_get_is_active:
- * @provider: a #ParoleProviderPlugin
- * 
- * Returns: TRUE is the plugin is currently active e.g. loaded by the player, FALSE otherwise. 
- * 
- * 
- * Since: 0.2
- **/
-gboolean parole_provider_plugin_get_is_active (ParoleProviderPlugin *provider)
-{
-    gboolean active = FALSE;
-    
-    g_return_val_if_fail (PAROLE_IS_PROVIDER_PLUGIN (provider), FALSE);
-    
-    if ( PAROLE_PROVIDER_PLUGIN_GET_INTERFACE (provider)->get_is_active )
-    {
-	active = (*PAROLE_PROVIDER_PLUGIN_GET_INTERFACE (provider)->get_is_active) (provider);
-    }
-    
-    return active;
-}
