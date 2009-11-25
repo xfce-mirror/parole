@@ -408,6 +408,7 @@ tag_message_cb (ParoleProviderPlayer *player, const ParoleStream *stream, Stream
     ParoleMediaType media_type;
     gchar *uri = NULL;
     GError *error = NULL;
+    gboolean sensitive;
 #endif
     
     g_object_get (G_OBJECT (stream),
@@ -451,6 +452,13 @@ tag_message_cb (ParoleProviderPlayer *player, const ParoleStream *stream, Stream
 		enable_tag_save (prop->save);
 	}
     }
+    
+    sensitive = media_type = PAROLE_MEDIA_TYPE_LOCAL_FILE
+    gtk_widget_set_sensitive (prop->title, sensitive);
+    gtk_widget_set_sensitive (prop->artist, sensitive);
+    gtk_widget_set_sensitive (prop->album, sensitive);
+    gtk_widget_set_sensitive (prop->year, sensitive);
+    gtk_widget_set_sensitive (prop->save, sensitive);
 #endif
 
     if ( str )
