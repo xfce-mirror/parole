@@ -584,57 +584,11 @@ parole_plugins_manager_load_plugins (ParolePluginsManager *manager)
 }
 
 static void
-parole_plugins_manager_construct (GObject *object)
-{
-    ParolePluginsManager *manager;
-    GDir *dir;
-    GError *error = NULL;
-    const gchar *name;
-    
-    manager = PAROLE_PLUGINS_MANAGER (object);
-    
-    dir = g_dir_open (PAROLE_PLUGINS_DATA_DIR, 0, &error);
-    
-    if ( error )
-    {
-	g_critical ("Error opening plugins data dir: %s", error->message);
-	g_error_free (error);
-	return;
-    }
-    
-    while ( (name = g_dir_read_name (dir) ))
-    {
-	gchar *library_name;
-	gchar *desktop_file;
-    
-	desktop_file = g_build_filename (PAROLE_PLUGINS_DATA_DIR, name, NULL);
-	library_name = parole_plugins_manager_get_module_name (desktop_file);
-	
-	if ( library_name )
-	{
-	    gchar *library_path;
-	    ParoleProviderModule *module;
-	    library_path = g_build_filename (PAROLE_PLUGINS_DIR, library_name, NULL);
-	    module = parole_provider_module_new (library_path, desktop_file);
-	    g_ptr_array_add (manager->priv->array, module);
-	    g_free (library_name);
-	    g_free (library_path);
-	}
-	g_free (desktop_file);
-    }
-    g_dir_close (dir);
-    
-    if ( manager->priv->load_plugins )
-	parole_plugins_manager_load_plugins (manager);
-}
-
-static void
 parole_plugins_manager_class_init (ParolePluginsManagerClass *klass)
 {
     GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
     object_class->finalize     = parole_plugins_manager_finalize;
-    object_class->constructed  = parole_plugins_manager_construct;
     object_class->set_property = parole_plugins_manager_set_property;
     object_class->get_property = parole_plugins_manager_get_property;
     
@@ -726,6 +680,48 @@ parole_plugins_manager_get (void)
 	g_error ("Plugins Manager is NULL");
 	
     return PAROLE_PLUGINS_MANAGER (parole_plugins_manager_object);
+}
+
+void parole_plugins_manager_load (ParolePluginsManager *manager)
+{
+    GDir *dir;
+    GError *error = NULL;
+    const gchar *name;
+    
+    dir = g_dir_open (PAROLE_PLUGINS_DATA_DIR, 0, &error);
+    
+    if ( error )
+    {
+	g_critical ("Error opening plugins data dir: %s", error->message);
+	g_error_free (error);
+	return;
+    }
+    
+    while ( (name = g_dir_read_name (dir) ))
+    {
+	gchar *library_name;
+	gchar *desktop_file;
+    
+	desktop_file = g_build_filename (PAROLE_PLUGINS_DATA_DIR, name, NULL);
+	library_name = parole_plugins_manager_get_module_name (desktop_file);
+	
+	if ( library_name )
+	{
+	    gchar *library_path;
+	    ParoleProviderModule *module;
+	    library_path = g_build_filename (PAROLE_PLUGINS_DIR, library_name, NULL);
+	    module = parole_provider_module_new (library_path, desktop_file);
+	    g_ptr_array_add (manager->priv->array, module);
+	    g_free (library_name);
+	    g_free (library_path);
+	}
+	g_free (desktop_file);
+    }
+    g_dir_close (dir);
+    
+    if ( manager->priv->load_plugins )
+	parole_plugins_manager_load_plugins (manager);
+    
 }
 
 void 

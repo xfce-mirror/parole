@@ -51,6 +51,8 @@ ParolePluginsManager               *parole_plugins_manager_new            (gbool
 
 ParolePluginsManager 		   *parole_plugins_manager_get 		  (void);
 
+void				    parole_plugins_manager_load		  (ParolePluginsManager *manager);
+
 void 				    parole_plugins_manager_pack 	  (ParolePluginsManager *manager, 
 									   GtkWidget *widget, 
 									   const gchar *title,

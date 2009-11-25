@@ -319,6 +319,7 @@ int main (int argc, char **argv)
 	}
 
 	plugins = parole_plugins_manager_new (!no_plugins);
+	parole_plugins_manager_load (plugins);
 	g_object_unref (builder);
 	
 	gdk_notify_startup_complete ();

@@ -1,3 +1,10 @@
+1.96
+====
+- Fix the plugin loader bug, when the a plugin is asking to pack a widget
+  and the plugin loader is not ready (bug #6032).
+- Exit after 60 seconds of inactivity on the browser plugin to avoid
+  any zombie process.
+
 1.95
 ====
 - Use taglib when compiled to get the media title and display it in

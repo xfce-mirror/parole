@@ -231,7 +231,7 @@ parole_plugin_player_finalize (GObject *object)
 	    g_signal_handler_disconnect (player->priv->gst, player->priv->tag_message);
     }
     
-    if ( player->priv->box )
+    if ( player->priv->packed && GTK_IS_WIDGET (player->priv->box))
 	gtk_widget_destroy (player->priv->box);
 
     G_OBJECT_CLASS (parole_plugin_player_parent_class)->finalize (object);
