@@ -11,9 +11,5 @@
       <arg type="as" name="files" direction="in"/>
     </method>
 
-    <method name="AddDisc">
-	<arg type="s" name="uri" direction="in"/>
-    </method>
-
     </interface>
 </node>

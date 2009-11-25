@@ -67,12 +67,16 @@ parole_sig_handler (gint sig, gpointer data)
 }
 
 static void
-parole_send_play_disc (DBusGProxy *proxy, const gchar *uri)
+parole_send_play_disc (const gchar *uri, const gchar *device)
 {
+    DBusGProxy *proxy;
     GError *error = NULL;
+    
+    proxy = parole_get_proxy (PAROLE_DBUS_PATH, PAROLE_DBUS_INTERFACE);
     
     dbus_g_proxy_call (proxy, "PlayDisc", &error,
 		       G_TYPE_STRING, uri,
+		       G_TYPE_STRING, device,
 		       G_TYPE_INVALID,
 		       G_TYPE_INVALID);
 		       
@@ -81,15 +85,24 @@ parole_send_play_disc (DBusGProxy *proxy, const gchar *uri)
 	g_critical ("Unable to send uri to Parole: %s", error->message);
 	g_error_free (error);
     }
+    
+    g_object_unref (proxy);
 }
 
 static void
-parole_send_files (DBusGProxy *proxy, gchar **filenames)
+parole_send_files (gchar **filenames)
 {
+    DBusGProxy *proxy;
     GFile *file;
     gchar **out_paths;
     GError *error = NULL;
     guint i;
+    
+    
+    proxy = parole_get_proxy (PAROLE_DBUS_PLAYLIST_PATH, PAROLE_DBUS_PLAYLIST_INTERFACE);
+	
+    if ( !proxy )
+	g_error ("Unable to create proxy for %s", PAROLE_DBUS_NAME);
 
     out_paths = g_new0 (gchar *, g_strv_length (filenames));
 
@@ -113,24 +126,16 @@ parole_send_files (DBusGProxy *proxy, gchar **filenames)
     }
 
     g_strfreev (out_paths);
+    g_object_unref (proxy);
 }
 
 static void
-parole_send (gchar **filenames)
+parole_send (gchar **filenames, gchar *device)
 {
-    DBusGProxy *proxy;
-    
-    proxy = parole_get_proxy (PAROLE_DBUS_PLAYLIST_PATH, PAROLE_DBUS_PLAYLIST_INTERFACE);
-	
-    if ( !proxy )
-	g_error ("Unable to create proxy for %s", PAROLE_DBUS_NAME);
-	
     if ( g_strv_length (filenames) == 1 && parole_is_uri_disc (filenames[0]))
-	parole_send_play_disc (proxy, filenames[0]);
+	parole_send_play_disc (filenames[0], device);
     else
-	parole_send_files (proxy, filenames);
-	
-    g_object_unref (proxy);
+	parole_send_files (filenames);
 }
 
 static void
@@ -166,6 +171,7 @@ int main (int argc, char **argv)
     GError *error = NULL;
     
     gchar **filenames = NULL;
+    gchar *device = NULL;
     gboolean new_instance = FALSE;
     gboolean version = FALSE;
     gboolean play = FALSE;
@@ -184,6 +190,7 @@ int main (int argc, char **argv)
     {
 	{ "new-instance", 'i', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &new_instance, N_("Open a new instance"), NULL },
 	{ "no-plugins", 'n', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &no_plugins, N_("Do not load plugins"), NULL },
+	{ "device", '\0', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_STRING, &device, N_("Set Audio-CD/VCD/DVD device path"), NULL },
 	{ "play", 'p', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &play, N_("Play or pause if already playing"), NULL },
 	{ "stop", 's', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &stop, N_("Stop playing"), NULL },
 	{ "next-track", 'N', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &next_track, N_("Next track"), NULL },
@@ -235,7 +242,7 @@ int main (int argc, char **argv)
 	g_print (_("Parole is already running, use -i to open a new instance\n"));
 	
 	if ( filenames && filenames[0] != NULL )
-	    parole_send (filenames);
+	    parole_send (filenames, device);
 	
 	if ( play )
 	    parole_send_message ("Play");
@@ -280,7 +287,8 @@ int main (int argc, char **argv)
 	{
 	    if ( g_strv_length (filenames) == 1 && parole_is_uri_disc (filenames[0]))
 	    {
-		parole_player_play_uri_disc (player, filenames[0]);
+		g_debug ("Yalla");
+		parole_player_play_uri_disc (player, filenames[0], device);
 	    }
 	    else
 	    {

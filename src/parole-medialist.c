@@ -1331,10 +1331,6 @@ static gboolean	 parole_media_list_dbus_add_files (ParoleMediaList *list,
 					           gchar **in_files,
 						   GError **error);
 
-static gboolean  parole_media_list_dbus_add_disc (ParoleMediaList *list,
-						  gchar *in_uri,
-						  GError **error);
-
 #include "org.parole.media.list.h"
 
 /*
@@ -1363,20 +1359,6 @@ static gboolean	 parole_media_list_dbus_add_files (ParoleMediaList *list,
     gtk_window_present (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (list))));
     parole_media_list_add_files (list, in_files);
     
-    return TRUE;
-}
-
-static gboolean  parole_media_list_dbus_add_disc (ParoleMediaList *list,
-						  gchar *in_uri,
-						  GError **error)
-{
-    TRACE ("uri : %s", in_uri);
-    
-    gtk_window_present (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (list))));
-    
-    if ( parole_is_uri_disc (in_uri) )
-	g_signal_emit (G_OBJECT (list), signals [URI_OPENED], 0, in_uri);
-	
     return TRUE;
 }
 

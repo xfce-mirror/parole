@@ -1858,9 +1858,9 @@ ParoleMediaList	*parole_player_get_media_list (ParolePlayer *player)
     return player->priv->list;
 }
 
-void parole_player_play_uri_disc (ParolePlayer *player, const gchar *uri)
+void parole_player_play_uri_disc (ParolePlayer *player, const gchar *uri, const gchar *device)
 {
-    parole_player_disc_selected_cb (NULL, uri, NULL, player);
+    parole_player_disc_selected_cb (NULL, uri, device, player);
 }
 
 void parole_player_terminate (ParolePlayer *player)
@@ -1895,6 +1895,11 @@ static gboolean	parole_player_dbus_lower_volume (ParolePlayer *player,
 					 
 static gboolean	parole_player_dbus_mute (ParolePlayer *player,
 					 GError *error);
+
+static gboolean parole_player_dbus_play_disc (ParolePlayer *player,
+					      gchar *in_uri,
+					      gchar *in_device,
+					      GError **error);
 
 #include "org.parole.media.player.h"
 
@@ -1981,5 +1986,20 @@ static gboolean	parole_player_dbus_mute (ParolePlayer *player,
 					 GError *error)
 {
     gtk_range_set_value (GTK_RANGE (player->priv->volume), 0);
+    return TRUE;
+}
+
+static gboolean parole_player_dbus_play_disc (ParolePlayer *player,
+					      gchar *in_uri,
+					      gchar *in_device,
+					      GError **error)
+{
+    TRACE ("uri : %s", in_uri);
+    
+    gtk_window_present (GTK_WINDOW (player->priv->window));
+    
+    if ( parole_is_uri_disc (in_uri) )
+	parole_player_disc_selected_cb (NULL, in_uri, in_device, player);
+	
     return TRUE;
 }

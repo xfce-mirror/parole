@@ -51,7 +51,8 @@ ParolePlayer       		*parole_player_new             (void);
 ParoleMediaList			*parole_player_get_media_list  (ParolePlayer *player);
 
 void				 parole_player_play_uri_disc   (ParolePlayer *player,
-								const gchar *uri);
+								const gchar *uri,
+								const gchar *device);
 
 void				 parole_player_terminate       (ParolePlayer *player);
 

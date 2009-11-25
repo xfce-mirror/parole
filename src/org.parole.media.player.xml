@@ -33,6 +33,11 @@
     
     <method name="Mute">
     </method>
+    
+    <method name="PlayDisc">
+	<arg type="s" name="uri" direction="in"/>
+	<arg type="s" name="device" direction="in"/>
+    </method>
 
     </interface>
 </node>
