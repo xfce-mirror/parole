@@ -1875,6 +1875,8 @@ void parole_gst_play_uri (ParoleGst *gst, const gchar *uri, const gchar *subtitl
 
 void parole_gst_play_device_uri (ParoleGst *gst, const gchar *uri, const gchar *device)
 {
+    const gchar *local_uri = NULL;
+    
     TRACE ("device : %s", device);
     
     if ( gst->priv->device )
@@ -1885,7 +1887,15 @@ void parole_gst_play_device_uri (ParoleGst *gst, const gchar *uri, const gchar *
     
     gst->priv->device = g_strdup (device);
     
-    parole_gst_play_uri (gst, uri, NULL);
+    /*
+     * Don't play cdda:/ as gstreamer gives an error
+     * but cdda:// works.
+     */
+    if ( G_UNLIKELY (!g_strcmp0 (uri, "cdda:/") ) )
+	local_uri = "cdda://";
+    else
+	local_uri = uri;
+    parole_gst_play_uri (gst, local_uri, NULL);
 }
 
 void parole_gst_pause (ParoleGst *gst)
