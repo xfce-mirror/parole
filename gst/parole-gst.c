@@ -488,14 +488,31 @@ parole_gst_expose_event (GtkWidget *widget, GdkEventExpose *ev)
 
     parole_gst_set_x_overlay (gst);
 
-    if ( (gst->priv->state < GST_STATE_PAUSED || !gst->priv->with_vis ) && 
-	!playing_video && !gst->priv->buffering && gst->priv->target != GST_STATE_PLAYING )
-	parole_gst_draw_logo (gst);
-    else 
+    switch ( gst->priv->state )
     {
-	gst_x_overlay_expose (GST_X_OVERLAY (gst->priv->video_sink));
+	case GST_STATE_PLAYING:
+	    if ( playing_video || gst->priv->with_vis)
+		gst_x_overlay_expose (GST_X_OVERLAY (gst->priv->video_sink));
+	    else
+		parole_gst_draw_logo (gst);
+	    break;
+	case GST_STATE_PAUSED:
+	    if ( playing_video || gst->priv->with_vis || gst->priv->target == GST_STATE_PLAYING )
+		gst_x_overlay_expose (GST_X_OVERLAY (gst->priv->video_sink));
+	    else
+		parole_gst_draw_logo (gst);
+	    break;
+	case GST_STATE_READY:
+	    if (gst->priv->with_vis == FALSE && gst->priv->target != GST_STATE_PLAYING)
+		parole_gst_draw_logo (gst);
+	    else
+		gst_x_overlay_expose (GST_X_OVERLAY (gst->priv->video_sink));
+	    break;
+	case GST_STATE_NULL:
+	case GST_STATE_VOID_PENDING:
+	    parole_gst_draw_logo (gst);
+	    break;
     }
-	
     return TRUE;
 }
 
