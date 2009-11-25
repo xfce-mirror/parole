@@ -30,7 +30,7 @@ INCLUDES =                                              \
         $(DBUS_GLIB_CFLAGS)				\
 	$(DEFINES)
 
-install_libexecdir = $(libdir)/mozilla/plugins
+install_libexecdir = $(BROWSER_PLUGIN_DIR)
 
 install_libexec_PROGRAMS = 				\
 	parole-player.so
