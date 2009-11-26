@@ -76,7 +76,7 @@ typedef struct
 						  
     void		(*media_progressed)	 	(ParoleGst *gst,
 						         const ParoleStream *stream,
-							 gdouble value);
+							 gint64 value);
     
     void		(*buffering)		 	(ParoleGst *gst,
 							 const ParoleStream *stream,
@@ -144,9 +144,9 @@ gint			parole_gst_get_current_cdda_track (ParoleGst *gst);
 
 ParoleMediaType		parole_gst_get_current_stream_type (ParoleGst *gst);
 
-gdouble			parole_gst_get_stream_duration	(ParoleGst *gst);
+gint64			parole_gst_get_stream_duration	(ParoleGst *gst);
 
-gdouble			parole_gst_get_stream_position  (ParoleGst *gst);
+gint64			parole_gst_get_stream_position  (ParoleGst *gst);
 
 gboolean		parole_gst_get_is_xvimage_sink  (ParoleGst *gst);
 

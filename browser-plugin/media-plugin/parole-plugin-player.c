@@ -253,7 +253,7 @@ parole_plugin_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream,
     
     if ( state == PAROLE_MEDIA_STATE_PLAYING )
     {
-	gdouble duration;
+	gint64 duration;
 	gboolean seekable;
 	gboolean live;
 	
@@ -347,7 +347,7 @@ parole_plugin_player_volume_changed_cb (GtkWidget *volume, gdouble value, Parole
 
 static void
 parole_plugin_player_media_progressed_cb (ParoleGst *gst, const ParoleStream *stream, 
-					  gdouble value, ParolePluginPlayer *player)
+					  gint64 value, ParolePluginPlayer *player)
 {
     
     if ( !player->priv->user_seeking && player->priv->state == PAROLE_MEDIA_STATE_PLAYING )

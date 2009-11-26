@@ -55,10 +55,10 @@ struct _ParoleStreamPrivate
     gboolean 	live;
     gboolean 	seekable;
     gboolean 	tag_available;
-    gdouble   	duration;
     gint        video_w;
     gint        video_h;
     gint64  	absolute_duration;
+    gint   	duration;
     guint	tracks;
     guint       track;
     guint	disp_par_n;
@@ -180,7 +180,7 @@ static void parole_stream_set_property (GObject *object,
 	    PAROLE_STREAM_GET_PRIVATE (stream)->tag_available = g_value_get_boolean (value);
 	    break;
 	case PROP_DURATION:
-	    PAROLE_STREAM_GET_PRIVATE (stream)->duration = g_value_get_double (value);
+	    PAROLE_STREAM_GET_PRIVATE (stream)->duration = g_value_get_int64 (value);
 	    break;
 	case PROP_ABSOLUTE_DURATION:
 	    PAROLE_STREAM_GET_PRIVATE (stream)->absolute_duration = g_value_get_int64 (value);
@@ -250,7 +250,7 @@ static void parole_stream_get_property (GObject *object,
 	    g_value_set_uint (value, PAROLE_STREAM_GET_PRIVATE (stream)->disp_par_n);
 	    break;
 	case PROP_DURATION:
-	    g_value_set_double (value, PAROLE_STREAM_GET_PRIVATE (stream)->duration);
+	    g_value_set_int64 (value, PAROLE_STREAM_GET_PRIVATE (stream)->duration);
 	    break;
 	case PROP_TRACKS:
 	    g_value_set_uint (value, PAROLE_STREAM_GET_PRIVATE (stream)->tracks);
@@ -429,10 +429,10 @@ parole_stream_class_init (ParoleStreamClass *klass)
      **/
     g_object_class_install_property (object_class,
 				     PROP_DURATION,
-				     g_param_spec_double("duration",
+				     g_param_spec_int64 ("duration",
 							 "Duration", 
 							 "Duration",
-							 0, G_MAXDOUBLE,
+							 0, G_MAXINT64,
 							 0,
 							 G_PARAM_READWRITE));
 

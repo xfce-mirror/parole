@@ -287,7 +287,6 @@ int main (int argc, char **argv)
 	{
 	    if ( g_strv_length (filenames) == 1 && parole_is_uri_disc (filenames[0]))
 	    {
-		g_debug ("Yalla");
 		parole_player_play_uri_disc (player, filenames[0], device);
 	    }
 	    else

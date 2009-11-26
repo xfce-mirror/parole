@@ -47,8 +47,8 @@ struct ParoleStatusbarPrivate
     GtkWidget    *label_duration;
     GtkWidget    *sep;
     
-    gdouble       duration;
-    gdouble       pos;
+    gint64       duration;
+    gint64       pos;
 };
 
 G_DEFINE_TYPE (ParoleStatusbar, parole_statusbar, G_TYPE_OBJECT)
@@ -68,8 +68,30 @@ parole_statusbar_set_buffering (ParoleStatusbar *bar, gint percentage)
     g_free (buff);
 }
 
+static void
+get_time_string (gchar *timestring, gint total_seconds)
+{
+    gint  hours;
+    gint  minutes;
+    gint  seconds;
+
+    minutes =  total_seconds / 60;
+    seconds = total_seconds % 60;
+    hours = minutes / 60;
+    minutes = minutes % 60;
+
+    if ( hours == 0 )
+    {
+	g_snprintf (timestring, 128, "%02i:%02i", minutes, seconds);
+    }
+    else
+    {
+	g_snprintf (timestring, 128, "%i:%02i:%02i", hours, minutes, seconds);
+    }
+}
+
 static void 
-parole_statusbar_set_duration (ParoleStatusbar *bar, ParoleMediaState state, gdouble position)
+parole_statusbar_set_duration (ParoleStatusbar *bar, ParoleMediaState state, gint64 position)
 {
     gchar *text = NULL;
 
@@ -85,8 +107,13 @@ parole_statusbar_set_duration (ParoleStatusbar *bar, ParoleMediaState state, gdo
     {
 	if ( bar->priv->duration != 0)
 	{
-	    text = g_strdup_printf ("%s %4.2f/%4.2f", 
-				    state == PAROLE_MEDIA_STATE_PAUSED ? _("Paused") : _("Playing"), position, bar->priv->duration);
+	    gchar pos_text[128], dur_text[128];
+	    get_time_string (pos_text, position);
+	    get_time_string (dur_text, bar->priv->duration);
+	    text = g_strdup_printf ("%s %s/%s", 
+				    state == PAROLE_MEDIA_STATE_PAUSED ? _("Paused") : _("Playing"), 
+				    pos_text, 
+				    dur_text);
 	}
 	if ( text )
 	{

@@ -453,7 +453,7 @@ tag_message_cb (ParoleProviderPlayer *player, const ParoleStream *stream, Stream
 	}
     }
     
-    sensitive = media_type = PAROLE_MEDIA_TYPE_LOCAL_FILE
+    sensitive = media_type = PAROLE_MEDIA_TYPE_LOCAL_FILE;
     gtk_widget_set_sensitive (prop->title, sensitive);
     gtk_widget_set_sensitive (prop->artist, sensitive);
     gtk_widget_set_sensitive (prop->album, sensitive);

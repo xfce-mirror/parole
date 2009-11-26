@@ -533,8 +533,8 @@ parole_gst_tick_timeout (gpointer data)
     
     gint64 pos;
     GstFormat format = GST_FORMAT_TIME;
-    gdouble value;
-    gboolean video;
+    gint64 value;
+    gint64 video;
     
     gst = PAROLE_GST (data);
     
@@ -549,8 +549,10 @@ parole_gst_tick_timeout (gpointer data)
 
     if ( gst->priv->state == GST_STATE_PLAYING )
     {
-	value = ( pos / ((gdouble) 60 * 1000 * 1000 * 1000 ));
-	g_signal_emit (G_OBJECT (gst), signals [MEDIA_PROGRESSED], 0, gst->priv->stream, value);
+	value = pos / GST_SECOND;
+
+	if ( G_LIKELY (value > 0) )
+	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_PROGRESSED], 0, gst->priv->stream, value);
     }
 
 out:
@@ -604,7 +606,7 @@ static void
 parole_gst_query_duration (ParoleGst *gst)
 {
     gint64 absolute_duration = 0;
-    gdouble duration = 0;
+    gint64 duration = 0;
     gboolean live;
     GstFormat gst_time;
     
@@ -616,10 +618,10 @@ parole_gst_query_duration (ParoleGst *gst)
     
     if (gst_time == GST_FORMAT_TIME)
     {
-	duration =  absolute_duration / ((gdouble) 60 * 1000 * 1000 * 1000);
+	duration =  absolute_duration / GST_SECOND;
 	live = ( absolute_duration == 0 );
 	
-	TRACE ("Duration %e is_live=%d", duration, live);
+	TRACE ("Duration %lld is_live=%d", duration, live);
 	
 	g_object_set (G_OBJECT (gst->priv->stream),
 		      "absolute-duration", absolute_duration,
@@ -912,9 +914,6 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 	    break;
 	case GST_STATE_READY:
 	    gst->priv->buffering = FALSE;
-	    if ( gst->priv->update_vis)
-		parole_gst_update_vis (gst);
-		
 	    gst->priv->media_state = PAROLE_MEDIA_STATE_STOPPED;
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
 			   gst->priv->stream, PAROLE_MEDIA_STATE_STOPPED);
@@ -1288,6 +1287,11 @@ parole_gst_play_file_internal (ParoleGst *gst)
     {
 	TRACE ("*** Error *** This is a bug, playbin element is already playing");
     }
+    
+    if ( gst->priv->update_vis)
+	parole_gst_update_vis (gst);
+    
+    gtk_widget_queue_draw (GTK_WIDGET (gst));
     
     g_object_get (G_OBJECT (gst->priv->stream),
 		  "uri", &uri,
@@ -1708,9 +1712,9 @@ parole_gst_class_init (ParoleGstClass *klass)
                       G_SIGNAL_RUN_LAST,
                       G_STRUCT_OFFSET (ParoleGstClass, media_progressed),
                       NULL, NULL,
-                      _gmarshal_VOID__OBJECT_DOUBLE,
+                      _gmarshal_VOID__OBJECT_INT64,
                       G_TYPE_NONE, 2, 
-		      G_TYPE_OBJECT, G_TYPE_DOUBLE);
+		      G_TYPE_OBJECT, G_TYPE_INT64);
     
     signals [MEDIA_TAG] = 
         g_signal_new ("media-tag",
@@ -1960,7 +1964,7 @@ void parole_gst_seek (ParoleGst *gst, gdouble pos)
 {
     gint64 seek;
     gint64 absolute_duration;
-    gdouble duration;
+    gint64 duration;
     gboolean seekable;
 
     TRACE ("Seeking");
@@ -1977,7 +1981,7 @@ void parole_gst_seek (ParoleGst *gst, gdouble pos)
     g_return_if_fail (seekable == TRUE);
 #endif
 	
-    seek = (gint64) (pos * absolute_duration) / duration;
+    seek = (pos * absolute_duration) / duration;
     
     g_warn_if_fail ( gst_element_seek (gst->priv->playbin,
 				       1.0,
@@ -2065,9 +2069,9 @@ gint parole_gst_get_current_cdda_track (ParoleGst *gst)
     return ret_val;
 }
 
-gdouble	parole_gst_get_stream_duration (ParoleGst *gst)
+gint64	parole_gst_get_stream_duration (ParoleGst *gst)
 {
-    gdouble dur;
+    gint64 dur;
     
     g_object_get (G_OBJECT (gst->priv->stream),
 		  "duration", &dur,
@@ -2075,17 +2079,14 @@ gdouble	parole_gst_get_stream_duration (ParoleGst *gst)
     return dur;
 }
 
-gdouble parole_gst_get_stream_position (ParoleGst *gst)
+gint64 parole_gst_get_stream_position (ParoleGst *gst)
 {
     GstFormat format = GST_FORMAT_TIME;
-    gdouble value;
     gint64 pos;
     
     gst_element_query_position (gst->priv->playbin, &format, &pos);
     
-    value = ( pos / ((gdouble) 60 * 1000 * 1000 * 1000 ));
-    
-    return value;
+    return  pos / GST_SECOND;
 }
 
 gboolean parole_gst_get_is_xvimage_sink (ParoleGst *gst)
