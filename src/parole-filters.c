@@ -144,7 +144,7 @@ gboolean parole_file_filter (GtkFileFilter *filter, ParoleFile *file)
     filter_info.contains = GTK_FILE_FILTER_DISPLAY_NAME | GTK_FILE_FILTER_MIME_TYPE;
     
     ret = gtk_file_filter_filter (filter, &filter_info);
-
+    
     return ret;
 }
 
@@ -164,7 +164,8 @@ void parole_get_media_files (GtkFileFilter *filter, const gchar *path,
     if ( g_file_test (path, G_FILE_TEST_IS_REGULAR ) )
     {
 	file = parole_file_new (path);
-	if ( parole_file_filter (playlist_filter, file) )
+	if ( parole_file_filter (playlist_filter, file) && 
+	     parole_pl_parser_guess_format_from_extension (path) != PAROLE_PL_FORMAT_UNKNOWN )
 	{
 	    playlist = parole_pl_parser_load_file (path);
 	    g_object_unref (file);
@@ -197,9 +198,10 @@ void parole_get_media_files (GtkFileFilter *filter, const gchar *path,
 	    else if ( g_file_test (path_internal, G_FILE_TEST_IS_REGULAR) )
 	    {
 		file = parole_file_new (path_internal);
-		if ( parole_file_filter (playlist_filter, file) )
+		if ( parole_file_filter (playlist_filter, file) &&
+		     parole_pl_parser_guess_format_from_extension (path) != PAROLE_PL_FORMAT_UNKNOWN)
 		{
-		    playlist = parole_pl_parser_load_file (path);
+		    playlist = parole_pl_parser_load_file (path_internal);
 		    g_object_unref (file);
 		    if ( playlist)
 		    {
