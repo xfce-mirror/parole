@@ -217,7 +217,7 @@ parole_statusbar_tag_message_cb (ParoleGst *gst, const ParoleStream *stream, Par
 
 static void
 parole_statusbar_progressed_cb (ParoleGst *gst, const ParoleStream *stream, 
-		 	        gdouble value, ParoleStatusbar *statusbar)
+		 	        gint64 value, ParoleStatusbar *statusbar)
 {
     ParoleMediaState state;
     
