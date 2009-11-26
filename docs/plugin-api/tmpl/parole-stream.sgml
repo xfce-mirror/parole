@@ -1,0 +1,160 @@
+<!-- ##### SECTION Title ##### -->
+ParoleStream
+
+<!-- ##### SECTION Short_Description ##### -->
+Currently playing stream.
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### ENUM ParoleMediaType ##### -->
+<para>
+
+</para>
+
+@PAROLE_MEDIA_TYPE_UNKNOWN: 
+@PAROLE_MEDIA_TYPE_LOCAL_FILE: 
+@PAROLE_MEDIA_TYPE_CDDA: 
+@PAROLE_MEDIA_TYPE_VCD: 
+@PAROLE_MEDIA_TYPE_SVCD: 
+@PAROLE_MEDIA_TYPE_DVD: 
+@PAROLE_MEDIA_TYPE_DVB: 
+@PAROLE_MEDIA_TYPE_REMOTE: 
+
+<!-- ##### STRUCT ParoleStream ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### ARG ParoleStream:absolute-duration ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG ParoleStream:album ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG ParoleStream:artist ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG ParoleStream:comment ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG ParoleStream:disp-par-d ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG ParoleStream:disp-par-n ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG ParoleStream:duration ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG ParoleStream:has-audio ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG ParoleStream:has-video ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG ParoleStream:live ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG ParoleStream:media-type ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG ParoleStream:num-tracks ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG ParoleStream:seekable ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG ParoleStream:subtitles ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG ParoleStream:tag-available ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG ParoleStream:title ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG ParoleStream:track ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG ParoleStream:uri ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG ParoleStream:video-height ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG ParoleStream:video-width ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG ParoleStream:year ##### -->
+<para>
+
+</para>
+
+<!-- ##### FUNCTION parole_stream_new ##### -->
+<para>
+
+</para>
+
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_stream_init_properties ##### -->
+<para>
+
+</para>
+
+@stream: 
+
+

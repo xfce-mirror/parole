@@ -1,0 +1,100 @@
+<!-- ##### SECTION Title ##### -->
+ParoleFile
+
+<!-- ##### SECTION Short_Description ##### -->
+Simple file handling.
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### STRUCT ParoleFile ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### ARG ParoleFile:content-type ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG ParoleFile:display-name ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG ParoleFile:filename ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG ParoleFile:uri ##### -->
+<para>
+
+</para>
+
+<!-- ##### FUNCTION parole_file_new ##### -->
+<para>
+
+</para>
+
+@filename: 
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_file_new_with_display_name ##### -->
+<para>
+
+</para>
+
+@filename: 
+@display_name: 
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_file_get_file_name ##### -->
+<para>
+
+</para>
+
+@file: 
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_file_get_display_name ##### -->
+<para>
+
+</para>
+
+@file: 
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_file_get_uri ##### -->
+<para>
+
+</para>
+
+@file: 
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_file_get_content_type ##### -->
+<para>
+
+</para>
+
+@file: 
+@Returns: 
+
+

@@ -1,0 +1,150 @@
+<!-- ##### SECTION Title ##### -->
+ParoleProviderPlayer
+
+<!-- ##### SECTION Short_Description ##### -->
+The interface of the player.
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### MACRO PAROLE_PROVIDER_PLAYER_GET_INTERFACE ##### -->
+<para>
+
+</para>
+
+@o: 
+
+
+<!-- ##### STRUCT ParoleProviderPlayerIface ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SIGNAL ParoleProviderPlayerIface::state-changed ##### -->
+<para>
+
+</para>
+
+@paroleproviderplayeriface: the object which received the signal.
+@arg1: 
+@arg2: 
+
+<!-- ##### SIGNAL ParoleProviderPlayerIface::tag-message ##### -->
+<para>
+
+</para>
+
+@paroleproviderplayeriface: the object which received the signal.
+@arg1: 
+
+<!-- ##### STRUCT ParoleProviderPlayer ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### ENUM ParolePluginContainer ##### -->
+<para>
+
+</para>
+
+@PAROLE_PLUGIN_CONTAINER_PLAYLIST: 
+@PAROLE_PLUGIN_CONTAINER_MAIN_VIEW: 
+
+<!-- ##### ENUM ParoleState ##### -->
+<para>
+
+</para>
+
+@PAROLE_STATE_STOPPED: 
+@PAROLE_STATE_PLAYBACK_FINISHED: 
+@PAROLE_STATE_PAUSED: 
+@PAROLE_STATE_PLAYING: 
+
+<!-- ##### FUNCTION parole_provider_player_get_main_window ##### -->
+<para>
+
+</para>
+
+@player: 
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_provider_player_pack ##### -->
+<para>
+
+</para>
+
+@player: 
+@widget: 
+@title: 
+@container: 
+
+
+<!-- ##### FUNCTION parole_provider_player_get_state ##### -->
+<para>
+
+</para>
+
+@player: 
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_provider_player_play_uri ##### -->
+<para>
+
+</para>
+
+@player: 
+@uri: 
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_provider_player_pause ##### -->
+<para>
+
+</para>
+
+@player: 
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_provider_player_resume ##### -->
+<para>
+
+</para>
+
+@player: 
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_provider_player_stop ##### -->
+<para>
+
+</para>
+
+@player: 
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_provider_player_seek ##### -->
+<para>
+
+</para>
+
+@player: 
+@pos: 
+@Returns: 
+
+

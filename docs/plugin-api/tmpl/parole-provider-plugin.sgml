@@ -1,0 +1,70 @@
+<!-- ##### SECTION Title ##### -->
+ParoleProviderPlugin
+
+<!-- ##### SECTION Short_Description ##### -->
+The interface of the plugin type registration.
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### MACRO PAROLE_PROVIDER_PLUGIN_GET_INTERFACE ##### -->
+<para>
+
+</para>
+
+@o: 
+
+
+<!-- ##### STRUCT ParoleProviderPluginIface ##### -->
+<para>
+
+</para>
+
+@__parent__: 
+@get_is_configurable: 
+@configure: 
+@set_player: 
+
+<!-- ##### STRUCT ParoleProviderPlugin ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION parole_provider_plugin_get_is_configurable ##### -->
+<para>
+
+</para>
+
+@provider: 
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_provider_plugin_configure ##### -->
+<para>
+
+</para>
+
+@provider: 
+@parent: 
+
+
+<!-- ##### FUNCTION parole_provider_plugin_set_player ##### -->
+<para>
+
+</para>
+
+@provider: 
+@player: 
+
+

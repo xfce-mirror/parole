@@ -53,10 +53,10 @@
   
   <part id="API">
     <title>Parole Plugin Reference</title>
-    <xi:include href="xml/parole-provider-player.xml"/>
     <xi:include href="xml/parole-provider-plugin.xml"/>
-    <xi:include href="xml/parole-file.xml"/>
+    <xi:include href="xml/parole-provider-player.xml"/>
     <xi:include href="xml/parole-stream.xml"/>
+    <xi:include href="xml/parole-file.xml"/>
   </part>
 
   <index id="api-index-full">
