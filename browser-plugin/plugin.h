@@ -42,18 +42,11 @@
 #include <config.h>
 #endif
 
-#include <npapi.h>
-#include <npruntime.h>
-#include "npupp.h"
-
 #include <X11/Xlib.h>
 
-#include <dbus/dbus.h>
-#include <dbus/dbus-glib-lowlevel.h>
-
 #include <glib.h>
-#include <glib/gstdio.h>
-#include <glib/gi18n.h>
+
+#include "parole-plugin.h"
 
 class CPlugin {
   private:
@@ -69,32 +62,21 @@ class CPlugin {
     void 	shut	();
     NPBool 	isInitialized();
     
-    NPError GetValue (NPPVariable variable, void *value);
-    NPError SetWindow (NPWindow * aWindow);
-    NPError NewStream (NPMIMEType type, NPStream * stream, NPBool seekable, uint16 * stype);
+    NPError GetValue 	  (NPPVariable variable, void *value);
+    
+    NPError SetWindow 	  (NPWindow * aWindow);
+    NPError NewStream     (NPMIMEType type, NPStream * stream, NPBool seekable, uint16 * stype);
     NPError DestroyStream (NPStream * stream, NPError reason);
-    
-    
-    void	GetProxy ();
-    void	StopPlayer();
-    
-  private:
-    DBusGConnection *bus;
-    DBusGProxy      *proxy;
-    
-    gboolean         window_set;
-    gboolean         child_spawned;
-    gchar           *url;
-    Window           window;
-    GPid	     child_pid;
+    void    URLNotify     (const char *url, NPReason reason, void *notifyData);
+    void    StreamAsFile  (NPStream * stream, const char *fname);
+    int32   WriteReady    (NPStream * stream);
+    int32   Write         (NPStream * stream, int32 offset, int32 len, void *buffer);
     
   public:
+    ParolePlugin    *plugin;
     NPP mInstance;
     uint16 mode;
     gchar *mimetype;
-    gboolean process_exiting;
-    gulong	     ping_id;
-
 };
 
 #endif                          // __PLUGIN_H__

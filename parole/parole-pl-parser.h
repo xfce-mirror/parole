@@ -18,6 +18,10 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+#if !defined (__PAROLE_H_INSIDE__) && !defined (PAROLE_COMPILATION)
+#error "Only <parole.h> can be included directly."
+#endif
+
 #ifndef __PAROLE_PL_PARSER_H
 #define __PAROLE_PL_PARSER_H
 
@@ -31,11 +35,14 @@ typedef enum
     PAROLE_PL_FORMAT_M3U,
     PAROLE_PL_FORMAT_PLS,
     PAROLE_PL_FORMAT_ASX,
-    PAROLE_PL_FORMAT_XSPF
+    PAROLE_PL_FORMAT_XSPF,
+    PAROLE_PL_FORMAT_PLAYLIST
     
 } ParolePlFormat;
 
 ParolePlFormat		 parole_pl_parser_guess_format_from_extension   (const gchar *filename);
+
+gboolean		 parole_pl_parser_can_parse_data		(const guchar *data, gint len);
 
 GSList 			*parole_pl_parser_load_file		        (const gchar *filename);
 

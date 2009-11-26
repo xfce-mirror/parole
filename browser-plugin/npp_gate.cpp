@@ -197,7 +197,7 @@ int32 NPP_WriteReady(NPP instance, NPStream * stream)
     if (pPlugin == NULL)
         return NPERR_GENERIC_ERROR;
 
-    //rv = pPlugin->WriteReady(stream);
+    rv = pPlugin->WriteReady(stream);
 
     return rv;
 }
@@ -213,7 +213,7 @@ int32 NPP_Write(NPP instance, NPStream * stream, int32 offset, int32 len, void *
     if (pPlugin == NULL)
         return NPERR_GENERIC_ERROR;
 
-    //rv = pPlugin->Write(stream, offset, len, buffer);
+    rv = pPlugin->Write(stream, offset, len, buffer);
     return rv;
 }
 
@@ -236,6 +236,10 @@ void NPP_StreamAsFile(NPP instance, NPStream * stream, const char *fname)
 {
     if (instance == NULL)
         return;
+	
+    CPlugin *pPlugin = (CPlugin *) instance->pdata;
+    
+    pPlugin->StreamAsFile (stream, fname);
 }
 
 void NPP_Print(NPP instance, NPPrint * printInfo)
@@ -254,7 +258,7 @@ void NPP_URLNotify(NPP instance, const char *url, NPReason reason, void *notifyD
     if (pPlugin == NULL)
         return;
 
-    //pPlugin->URLNotify(url, reason, notifyData);
+    pPlugin->URLNotify(url, reason, notifyData);
 
 }
 

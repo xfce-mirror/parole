@@ -30,7 +30,6 @@
 #include <glib.h>
 
 #include "parole-filters.h"
-#include "parole-utils.h"
 #include "parole-pl-parser.h"
 #include "data/mime/parole-mime-types.h"
 
@@ -146,80 +145,4 @@ gboolean parole_file_filter (GtkFileFilter *filter, ParoleFile *file)
     ret = gtk_file_filter_filter (filter, &filter_info);
     
     return ret;
-}
-
-void parole_get_media_files (GtkFileFilter *filter, const gchar *path, 
-			     gboolean recursive, GSList **list)
-{
-    GtkFileFilter *playlist_filter;
-    GSList *list_internal = NULL;
-    GSList *playlist = NULL;
-    GDir *dir;
-    const gchar *name;
-    ParoleFile *file;
-
-    playlist_filter = parole_get_supported_playlist_filter ();
-    g_object_ref_sink (playlist_filter);
-
-    if ( g_file_test (path, G_FILE_TEST_IS_REGULAR ) )
-    {
-	file = parole_file_new (path);
-	if ( parole_file_filter (playlist_filter, file) && 
-	     parole_pl_parser_guess_format_from_extension (path) != PAROLE_PL_FORMAT_UNKNOWN )
-	{
-	    playlist = parole_pl_parser_load_file (path);
-	    g_object_unref (file);
-	    if ( playlist)
-	    {
-		*list = g_slist_concat (*list, playlist);
-	    }
-	}
-	else if ( parole_file_filter (filter, file) )
-	{
-	    *list = g_slist_append (*list, file);
-	}
-	else
-	    g_object_unref (file);
-    }
-    else if ( g_file_test (path, G_FILE_TEST_IS_DIR ) )
-    {
-	dir = g_dir_open (path, 0, NULL);
-    
-	if ( G_UNLIKELY (dir == NULL) )
-	    return;
-	
-	while ( (name = g_dir_read_name (dir)) )
-	{
-	    gchar *path_internal = g_strdup_printf ("%s/%s", path, name);
-	    if ( g_file_test (path_internal, G_FILE_TEST_IS_DIR) && recursive)
-	    {
-		parole_get_media_files (filter, path_internal, TRUE, list);
-	    }
-	    else if ( g_file_test (path_internal, G_FILE_TEST_IS_REGULAR) )
-	    {
-		file = parole_file_new (path_internal);
-		if ( parole_file_filter (playlist_filter, file) &&
-		     parole_pl_parser_guess_format_from_extension (path) != PAROLE_PL_FORMAT_UNKNOWN)
-		{
-		    playlist = parole_pl_parser_load_file (path_internal);
-		    g_object_unref (file);
-		    if ( playlist)
-		    {
-			*list = g_slist_concat (*list, playlist);
-		    }
-		}
-		else if ( parole_file_filter (filter, file) )
-		{
-		    list_internal = g_slist_append (list_internal, file);
-		}
-		else
-		    g_object_unref (file);
-	    }
-	    g_free (path_internal);
-	}
-	list_internal = g_slist_sort (list_internal, (GCompareFunc) thunar_file_compare_by_name);
-	g_dir_close (dir);
-	*list = g_slist_concat (*list, list_internal);
-    }
-    g_object_unref (playlist_filter);
 }

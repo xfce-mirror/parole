@@ -14,6 +14,13 @@
     <method name="Ping">
     </method>
     
+    <method name="PlayUrl">
+	<arg type="s" name="url" direction="in"/>
+    </method>
+    
+    <signal name="Ready">
+    </signal>
+    
     <signal name="Exiting">
     </signal>
     

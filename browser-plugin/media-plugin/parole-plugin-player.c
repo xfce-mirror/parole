@@ -98,12 +98,24 @@ enum
 enum
 {
     SIG_EXITING,
+    SIG_READY,
     LAST_SIGNAL
 };
 
 static guint signals [LAST_SIGNAL] = { 0 };
     
 G_DEFINE_TYPE (ParolePluginPlayer, parole_plugin_player, G_TYPE_OBJECT)
+
+static void
+parole_plugin_player_play (ParolePluginPlayer *player)
+{
+    if ( player->priv->terminate )
+	return;
+	
+    player->priv->reload = FALSE;
+    player->priv->finished = FALSE;
+    parole_gst_play_uri (player->priv->gst, player->priv->url, NULL);
+}
 
 static void
 parole_plugin_player_set_fullscreen_button (ParolePluginPlayer *player)
@@ -489,6 +501,45 @@ parole_plugin_player_gst_widget_button_press (GtkWidget *widget, GdkEventButton 
     return ret_val;
 }
 
+static gboolean
+parole_plugin_player_window_delete_event_cb (ParolePluginPlayer *player)
+{
+    parole_plugin_player_fullscreen (player, FALSE);
+    return TRUE;
+}
+
+static gpointer *check_idle_thread (gpointer data)
+{
+    ParolePluginPlayer *player;
+    
+    player = PAROLE_PLUGIN_PLAYER (data);
+    
+    do
+    {
+	g_usleep (1000000);
+	if ( g_timer_elapsed (idle_timer, NULL ) > 60.f )
+	{
+	    g_signal_emit (player, signals [SIG_EXITING], 0);
+	    gtk_main_quit ();
+	}
+	
+    } while ( player->priv->terminate == FALSE ); 
+
+    return NULL;
+}
+
+static void
+parole_plugin_player_dispose (GObject *object)
+{
+    ParolePluginPlayer *player;
+    
+    player = PAROLE_PLUGIN_PLAYER (object);
+    
+    g_signal_emit (player, signals [SIG_EXITING], 0);
+    
+    G_OBJECT_CLASS (parole_plugin_player_parent_class)->dispose (object);
+}
+
 static void
 parole_plugin_player_construct (GObject *object)
 {
@@ -627,48 +678,8 @@ parole_plugin_player_construct (GObject *object)
     gtk_widget_set_sensitive (player->priv->range, FALSE);
     
     player->priv->vbox = vbox;
-}
-
-static gboolean
-parole_plugin_player_window_delete_event_cb (ParolePluginPlayer *player)
-{
-    parole_plugin_player_fullscreen (player, FALSE);
-    return TRUE;
-}
-
-static gpointer *check_idle_thread (gpointer data)
-{
-    ParolePluginPlayer *player;
     
-    player = PAROLE_PLUGIN_PLAYER (data);
-    
-    do
-    {
-	g_usleep (1000000);
-	if ( g_timer_elapsed (idle_timer, NULL ) > 60.f )
-	{
-	    g_debug ("Idle timeout expired, exiting...");
-	    g_signal_emit (player, signals [SIG_EXITING], 0);
-	    g_debug ("Here");
-	    gtk_main_quit ();
-	    g_debug ("Yalla");
-	}
-	
-    } while ( player->priv->terminate == FALSE ); 
-
-    return NULL;
-}
-
-static void
-parole_plugin_player_dispose (GObject *object)
-{
-    ParolePluginPlayer *player;
-    
-    player = PAROLE_PLUGIN_PLAYER (object);
-    
-    g_signal_emit (player, signals [SIG_EXITING], 0);
-    
-    G_OBJECT_CLASS (parole_plugin_player_parent_class)->dispose (object);
+    g_signal_emit (player, signals [SIG_READY], 0);
 }
 
 static void
@@ -689,6 +700,15 @@ parole_plugin_player_class_init (ParolePluginPlayerClass *klass)
                       PAROLE_TYPE_PLUGIN_PLAYER,
                       G_SIGNAL_RUN_LAST,
                       G_STRUCT_OFFSET (ParolePluginPlayerClass, exiting),
+                      NULL, NULL,
+                      g_cclosure_marshal_VOID__VOID,
+                      G_TYPE_NONE, 0, G_TYPE_NONE);
+    
+    signals[SIG_READY] = 
+        g_signal_new ("ready",
+                      PAROLE_TYPE_PLUGIN_PLAYER,
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET (ParolePluginPlayerClass, ready),
                       NULL, NULL,
                       g_cclosure_marshal_VOID__VOID,
                       G_TYPE_NONE, 0, G_TYPE_NONE);
@@ -814,6 +834,17 @@ parole_plugin_player_finalize (GObject *object)
     G_OBJECT_CLASS (parole_plugin_player_parent_class)->finalize (object);
 }
 
+static gboolean parole_plugin_player_play_idle (gpointer data)
+{
+    ParolePluginPlayer *player;
+    
+    player = PAROLE_PLUGIN_PLAYER (data);
+    
+    parole_plugin_player_play (player);
+    
+    return FALSE;
+}
+
 static gboolean
 parole_plugin_player_quit_idle (gpointer data)
 {
@@ -852,16 +883,6 @@ parole_plugin_player_new (GtkWidget *plug, gchar *url)
     return player;
 }
 
-void parole_plugin_player_play (ParolePluginPlayer *player)
-{
-    if ( player->priv->terminate )
-	return;
-	
-    player->priv->reload = FALSE;
-    player->priv->finished = FALSE;
-    parole_gst_play_uri (player->priv->gst, player->priv->url, NULL);
-}
-
 void parole_plugin_player_exit (ParolePluginPlayer *player)
 {
     player->priv->terminate = TRUE;
@@ -877,6 +898,10 @@ static gboolean parole_plugin_player_dbus_stop (ParolePluginPlayer *player,
 
 static gboolean parole_plugin_player_dbus_ping (ParolePluginPlayer *player,
 						GError **error);
+
+static gboolean parole_plugin_player_dbus_play_url (ParolePluginPlayer *player,
+						    gchar *in_URL,
+						    GError **error);
 
 #include "org.parole.media.plugin.h"
 
@@ -931,3 +956,12 @@ static gboolean parole_plugin_player_dbus_ping (ParolePluginPlayer *player,
     return TRUE;
 }
 						
+static gboolean parole_plugin_player_dbus_play_url (ParolePluginPlayer *player,
+						    gchar *in_URL,
+						    GError **error)
+{
+    player->priv->url = g_strdup (in_URL);
+    g_debug ("Playing url=%s", in_URL);
+    g_idle_add ((GSourceFunc) parole_plugin_player_play_idle, player);
+    return TRUE;
+}

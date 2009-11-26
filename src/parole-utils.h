@@ -39,4 +39,9 @@ gboolean	parole_is_uri_disc			(const gchar *uri);
 GdkPixbuf      *parole_icon_load			(const gchar *icon_name,
 							 gint size);
 
+void			 parole_get_media_files		(GtkFileFilter *filter,
+							 const gchar *path,
+							 gboolean recursive,
+							 GSList **list);
+
 #endif /* __PAROLE_UTILS_ */

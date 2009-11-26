@@ -45,7 +45,7 @@
 #include "parole-pl-parser.h"
 #include "parole-filters.h"
 #include "parole-debug.h"
-#include "enum-gtypes.h"
+#include "parole-enum-types.h"
 
 typedef struct
 {
@@ -254,8 +254,39 @@ parole_pl_parser_guess_format_from_extension (const gchar *filename)
 static ParolePlFormat
 parole_pl_parser_guess_format_from_data (const gchar *filename)
 {
+    GFile *file;
+    gchar *mime_type = NULL;
+    gchar *contents;
+    gboolean result_uncertain;
+    gsize size;
     
-    return PAROLE_PL_FORMAT_UNKNOWN;
+    ParolePlFormat format = PAROLE_PL_FORMAT_UNKNOWN;
+    
+    file = g_file_new_for_path (filename);
+
+    if ( !g_file_load_contents (file, NULL, &contents, &size, NULL, NULL ) )
+    {
+	g_debug ("Unable to load content of file=%s", filename);
+	goto out;
+    }
+
+    mime_type = g_content_type_guess (NULL, (const guchar*)contents, size,  &result_uncertain);
+    
+    
+    if ( mime_type && result_uncertain == FALSE )
+    {
+	g_debug ("mime_type %s", mime_type);
+	format = PAROLE_PL_FORMAT_PLAYLIST;
+    }
+    
+    g_free (contents);
+    
+out:
+    if ( mime_type )
+	g_free (mime_type);
+    
+    g_object_unref (file);
+    return format;
 }
 
 static GSList *
@@ -508,6 +539,33 @@ parole_pl_parser_parse (ParolePlFormat format, const gchar *filename)
     return list;
 }
 
+gboolean parole_pl_parser_can_parse_data (const guchar *data, gint len)
+{
+    gchar *mime_type;
+    gboolean result_uncertain;
+    gboolean result = FALSE;
+
+    mime_type = g_content_type_guess (NULL, data, len,  &result_uncertain);
+    
+    if ( mime_type && result_uncertain == FALSE )
+    {
+	GtkFileFilter *filter = g_object_ref_sink (parole_get_supported_playlist_filter ());
+	GtkFileFilterInfo filter_info;
+	g_debug ("Mime_type=%s", mime_type);
+	filter_info.mime_type = mime_type;
+    
+	filter_info.contains = GTK_FILE_FILTER_MIME_TYPE;
+    
+	result = gtk_file_filter_filter (filter, &filter_info);
+	g_object_unref (filter);
+    }
+    
+    if ( mime_type )
+	g_free (mime_type);
+    
+    return result;
+}
+
 GSList *parole_pl_parser_load_file (const gchar *filename)
 {
     ParolePlFormat format = PAROLE_PL_FORMAT_UNKNOWN;
@@ -517,19 +575,18 @@ GSList *parole_pl_parser_load_file (const gchar *filename)
     filter = parole_get_supported_playlist_filter ();
     g_object_ref_sink (filter);
     
-    if ( (format = parole_pl_parser_guess_format_from_extension (filename)) == PAROLE_PL_FORMAT_UNKNOWN)
-	if ( (format = parole_pl_parser_guess_format_from_data (filename)) == PAROLE_PL_FORMAT_UNKNOWN)
-	{
-	    g_debug ("Unable to guess playlist format of file : %s", filename);
-	    goto out;
-	}
-	    
-    PAROLE_DEBUG_ENUM_FULL (format, ENUM_GTYPE_PL_FORMAT, "playlist %s ", filename);
-    list = parole_pl_parser_parse (format, filename);
+    if ( (format = parole_pl_parser_guess_format_from_extension (filename)) != PAROLE_PL_FORMAT_UNKNOWN)
+    {
+	PAROLE_DEBUG_ENUM_FULL (format, PAROLE_ENUM_TYPE_PL_FORMAT, "playlist %s ", filename);
+	list = parole_pl_parser_parse (format, filename);
+    }
+    else if ( (format = parole_pl_parser_guess_format_from_data (filename)) != PAROLE_PL_FORMAT_UNKNOWN)
+    {
+	list = parole_pl_parser_parse_m3u (filename);
+	//list = g_list_concat (list, parole_pl_parser_p
+    }
 	
-out:
     g_object_unref (filter);
-    
     return list;
 }
 
@@ -633,7 +690,7 @@ gboolean parole_pl_parser_save_file (GSList *files, const gchar *filename, Parol
     FILE *f;
     gboolean ret_val;
 
-    PAROLE_DEBUG_ENUM_FULL (format, ENUM_GTYPE_PL_FORMAT, "Saving playlist %s ", filename);
+    PAROLE_DEBUG_ENUM_FULL (format, PAROLE_ENUM_TYPE_PL_FORMAT, "Saving playlist %s ", filename);
     
     f = fopen (filename, "w");
     

@@ -45,6 +45,8 @@ typedef struct
     
     void				(*exiting)			      (ParolePluginPlayer *player);
     
+    void				(*ready)			      (ParolePluginPlayer *player);
+    
 } ParolePluginPlayerClass;
 
 GType        				 parole_plugin_player_get_type        (void) G_GNUC_CONST;
@@ -52,8 +54,6 @@ GType        				 parole_plugin_player_get_type        (void) G_GNUC_CONST;
 ParolePluginPlayer       		*parole_plugin_player_new             (GtkWidget *plug,
 									       gchar *url);
 									       
-void					 parole_plugin_player_play	      (ParolePluginPlayer *player);
-
 void					 parole_plugin_player_exit 	      (ParolePluginPlayer *player);
 
 G_END_DECLS

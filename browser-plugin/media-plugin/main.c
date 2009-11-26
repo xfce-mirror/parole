@@ -109,8 +109,6 @@ int main (int argc, char **argv)
     dbus_name = g_strdup_printf ("org.Parole.Media.Plugin%d", socket_id);
     parole_dbus_register_name (dbus_name);
     
-    g_assert (url != NULL);
-    
     plug = gtk_plug_new (socket_id);
 	
     player = parole_plugin_player_new (plug, url);
@@ -128,7 +126,7 @@ int main (int argc, char **argv)
         g_error_free (error);
     }
 
-    parole_plugin_player_play (player);
+    //parole_plugin_player_play (player);
     
     gtk_main ();
     g_object_unref (player);

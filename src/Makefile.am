@@ -35,17 +35,14 @@ NOINST_HFILES =					\
 	parole-vis.h				\
 	parole-statusbar.h			\
 	parole-mediachooser.h			\
-	parole-filters.h			\
 	parole-conf.h				\
 	parole-conf-dialog.h			\
 	parole-rc-utils.h			\
 	parole-utils.h				\
 	parole-disc.h				\
 	parole-medialist.h			\
-	parole-debug.h				\
 	parole-plugins-manager.h		\
 	parole-module.h				\
-	parole-pl-parser.h			\
 	parole-about.h				\
 	parole-builder.h			\
 	parole-subtitle-encoding.h		\
@@ -64,16 +61,13 @@ parole_SOURCES =				\
 	parole-statusbar.c			\
 	parole-medialist.c			\
 	parole-mediachooser.c			\
-	parole-filters.c			\
 	parole-conf.c				\
 	parole-conf-dialog.c			\
 	parole-disc.c				\
 	parole-rc-utils.c			\
 	parole-utils.c				\
-	parole-debug.c				\
 	parole-plugins-manager.c		\
 	parole-module.c				\
-	parole-pl-parser.c			\
 	parole-about.c				\
 	parole-builder.c			\
 	parole-subtitle-encoding.c		\
@@ -99,7 +93,6 @@ parole_LDADD =					\
 	$(TAGLIBC_LIBS)
 	
 parole_glib_enum_headers =			\
-	parole-pl-parser.h			\
 	parole-conf.h				\
 	parole-button.h
 
@@ -131,7 +124,6 @@ stamp-enum-gtypes.h: $(parole_glib_enum_headers) Makefile
 enum-gtypes.c: $(parole_glib_enum_headers) Makefile
 	( cd $(srcdir) && glib-mkenums \
 		--fhead "#include \"enum-gtypes.h\"\n\n" \
-		--fhead "#include \"parole-pl-parser.h\"\n\n" \
 		--fhead "#include \"parole-conf.h\"\n\n" \
 		--fhead "#include \"parole-button.h\"\n\n" \
 		--fprod "\n/* enumerations from \"@filename@\" */" \

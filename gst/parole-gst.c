@@ -1514,6 +1514,9 @@ parole_gst_terminate_internal (ParoleGst *gst, gboolean fade_sound)
 
     parole_window_busy_cursor (GTK_WIDGET (gst)->window);
     
+    if ( gst->priv->embedded )
+	goto out;
+    
     if ( fade_sound && gst->priv->state == GST_STATE_PLAYING && !playing_video )
     {
 	gdouble volume;
@@ -1534,6 +1537,7 @@ parole_gst_terminate_internal (ParoleGst *gst, gboolean fade_sound)
 	}
     }
     
+out:
     parole_gst_change_state (gst, GST_STATE_NULL);
 }
 
@@ -1738,7 +1742,6 @@ parole_gst_class_init (ParoleGstClass *klass)
 {
     GObjectClass *object_class = G_OBJECT_CLASS (klass);
     GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-    g_debug ("Class init");
 
     object_class->finalize = parole_gst_finalize;
     object_class->constructed = parole_gst_constructed;
@@ -1832,7 +1835,7 @@ static void
 parole_gst_init (ParoleGst *gst)
 {
     gst->priv = PAROLE_GST_GET_PRIVATE (gst);
-    g_debug ("Init");
+
     gst->priv->state = GST_STATE_VOID_PENDING;
     gst->priv->target = GST_STATE_VOID_PENDING;
     gst->priv->media_state = PAROLE_MEDIA_STATE_STOPPED;

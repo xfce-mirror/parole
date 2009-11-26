@@ -19,12 +19,19 @@ libparole_la_SOURCES =				\
 	parole-provider-plugin.c		\
 	parole-provider-player.c		\
 	parole-file.c				\
-	parole-stream.c
+	parole-stream.c				\
+	parole-pl-parser.c			\
+	parole-pl-parser.h			\
+	parole-filters.c			\
+	parole-filters.h			\
+	parole-debug.c				\
+	parole-debug.h
 
 libparole_la_CFLAGS =				\
 	$(GIO_CFLAGS)                           \
 	$(GTK_CFLAGS)				\
-	$(TAGLIBC_CFLAGS)
+	$(TAGLIBC_CFLAGS)			\
+	$(LIBXFCE4UTIL_CFLAGS)
 
 paroleincludedir =				\
 	$(includedir)/parole
@@ -52,7 +59,8 @@ parole-marshal.h: parole-marshal.list
 
 parole_glib_enum_headers =		\
 	parole-stream.h			\
-	parole-provider-player.h
+	parole-provider-player.h	\
+	parole-pl-parser.h
 
 parole-enum-types.h: stamp-enum-types.h
 	@true
@@ -72,6 +80,7 @@ parole-enum-types.c: $(parole_glib_enum_headers) Makefile
 		--fhead "#include \"parole-enum-types.h\"\n\n" \
 		--fhead "#include \"parole-stream.h\"\n\n" \
 		--fhead "#include \"parole-provider-player.h\"\n\n" \
+		--fhead "#include \"parole-pl-parser.h\"\n\n" \
 		--fprod "\n/* enumerations from \"@filename@\" */" \
 		--vhead "GType\n@enum_name@_get_type (void)\n{\n  static GType etype = 0;\n  if (etype == 0) {\n    static const G@Type@Value values[] = {" \
 		--vprod "      { @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \

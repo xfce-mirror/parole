@@ -18,6 +18,10 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+#if !defined (__PAROLE_H_INSIDE__) && !defined (PAROLE_COMPILATION)
+#error "Only <parole.h> can be included directly."
+#endif
+
 #ifndef __PAROLE_FILTERS_H
 #define __PAROLE_FILTERS_H
 
@@ -50,11 +54,6 @@ gboolean		 parole_file_filter			(GtkFileFilter *filter,
 								 ParoleFile *file);
 
 ParoleFileFormat	 parole_file_guess_format		(ParoleFile *file);
-
-void			 parole_get_media_files			(GtkFileFilter *filter,
-								 const gchar *path,
-								 gboolean recursive,
-								 GSList **list);
 
 G_END_DECLS
 

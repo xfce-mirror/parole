@@ -29,6 +29,9 @@
 #include <parole/parole-provider-player.h>
 #include <parole/parole-file.h>
 #include <parole/parole-stream.h>
+#include <parole/parole-pl-parser.h>
+#include <parole/parole-filters.h>
+#include <parole/parole-debug.h>
 
 #define PAROLE_MAJOR_VERSION		@PAROLE_VERSION_MAJOR@
 #define PAROLE_MINOR_VERSION		@PAROLE_VERSION_MINOR@
