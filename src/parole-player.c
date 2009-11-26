@@ -135,7 +135,7 @@ void            parole_player_volume_up 		(GtkWidget *widget,
 void            parole_player_volume_down 		(GtkWidget *widget, 
 							 ParolePlayer *player);
 
-void            parole_player_volume_muted 		(GtkWidget *widget, 
+void            parole_player_volume_mute 		(GtkWidget *widget, 
 							 ParolePlayer *player);
 
 void		parole_player_open_preferences_cb	(GtkWidget *widget,
@@ -429,7 +429,7 @@ parole_player_media_cursor_changed_cb (ParoleMediaList *list, gboolean media_sel
 }
 
 static void
-parole_player_media_progressed_cb (ParoleGst *gst, const ParoleStream *stream, gdouble value, ParolePlayer *player)
+parole_player_media_progressed_cb (ParoleGst *gst, const ParoleStream *stream, gint64 value, ParolePlayer *player)
 {
 #ifdef DEBUG
     g_return_if_fail (value > 0);
@@ -525,7 +525,7 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
 {
     GdkPixbuf *pix = NULL;
     
-    gdouble duration;
+    gint64 duration;
     gboolean seekable;
     gboolean live;
     
@@ -767,11 +767,11 @@ parole_player_stop_clicked (GtkButton *button, ParolePlayer *player)
 /*
  * Seek 5%
  */
-static gdouble
+static gint64
 parole_player_get_seek_value (ParolePlayer *player)
 {
-    gdouble val;
-    gdouble dur;
+    gint64 val;
+    gint64 dur;
     
     dur = parole_gst_get_stream_duration (PAROLE_GST (player->priv->gst));
     
@@ -1173,11 +1173,21 @@ parole_player_gst_widget_button_release (GtkWidget *widget, GdkEventButton *ev, 
 static gboolean parole_player_hide_fs_window (gpointer data)
 {
     ParolePlayer *player;
+    gint x, y, w, h;
     
     player = PAROLE_PLAYER (data);
     
     if ( GTK_WIDGET_VISIBLE (player->priv->fs_window) )
     {
+	/* Don't hide the popup if the pointer is above it*/
+	w = player->priv->fs_window->allocation.width;
+	h = player->priv->fs_window->allocation.height;
+	
+	gtk_widget_get_pointer (player->priv->fs_window, &x, &y);
+	
+	if ((x >= 0) && (x <= w) && (y >= 0) && (y <= h))
+	    return TRUE;
+
 	gtk_widget_hide (player->priv->fs_window);
     }
 
@@ -1320,7 +1330,7 @@ parole_player_volume_down (GtkWidget *widget, ParolePlayer *player)
     gtk_range_set_value (GTK_RANGE (player->priv->volume), value - 0.1);
 }
 
-void parole_player_volume_muted (GtkWidget *widget, ParolePlayer *player)
+void parole_player_volume_mute (GtkWidget *widget, ParolePlayer *player)
 {
     gtk_range_set_value (GTK_RANGE (player->priv->volume), 0);
 }
@@ -1485,7 +1495,7 @@ parole_player_key_press (GtkWidget *widget, GdkEventKey *ev, ParolePlayer *playe
 	    parole_player_volume_down (NULL, player);
 	    return TRUE;
 	case XF86XK_AudioMute:
-	    parole_player_volume_muted (NULL, player);
+	    parole_player_volume_mute (NULL, player);
 	    return TRUE;
 	case XF86XK_AudioPrev:
 	    if ( !parole_disc_menu_seek_prev (player->priv->disc_menu))
