@@ -14,5 +14,8 @@
     <method name="Ping">
     </method>
     
+    <signal name="Exiting">
+    </signal>
+    
     </interface>
 </node>

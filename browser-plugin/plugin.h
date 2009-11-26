@@ -87,12 +87,13 @@ class CPlugin {
     gchar           *url;
     Window           window;
     GPid	     child_pid;
-    gulong	     ping_id;
     
   public:
     NPP mInstance;
     uint16 mode;
     gchar *mimetype;
+    gboolean process_exiting;
+    gulong	     ping_id;
 
 };
 

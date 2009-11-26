@@ -25,9 +25,9 @@
 
 G_BEGIN_DECLS
 
-#define PAROLE_TYPE_PLUGINPLAYER        (parole_plugin_player_get_type () )
-#define PAROLE_PLUGIN_PLAYER(o)          (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_PLUGINPLAYER, ParolePluginPlayer))
-#define PAROLE_IS_PLUGINPLAYER(o)       (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_PLUGINPLAYER))
+#define PAROLE_TYPE_PLUGIN_PLAYER        (parole_plugin_player_get_type () )
+#define PAROLE_PLUGIN_PLAYER(o)          (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_PLUGIN_PLAYER, ParolePluginPlayer))
+#define PAROLE_IS_PLUGIN_PLAYER(o)       (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_PLUGIN_PLAYER))
 
 typedef struct ParolePluginPlayerPrivate ParolePluginPlayerPrivate;
 
@@ -42,6 +42,8 @@ typedef struct
 typedef struct
 {
     GObjectClass 			 parent_class;
+    
+    void				(*exiting)			      (ParolePluginPlayer *player);
     
 } ParolePluginPlayerClass;
 

@@ -77,6 +77,7 @@ CPlugin::CPlugin (NPP pNPInstance)
     url = NULL;
     bus = NULL;
     proxy = NULL;
+    process_exiting = FALSE;
 }
 
 void CPlugin::StopPlayer()
@@ -86,7 +87,7 @@ void CPlugin::StopPlayer()
     if ( !proxy )
 	GetProxy ();
     
-    if ( proxy )
+    if ( proxy && !process_exiting)
     {
 	do
 	{
@@ -120,7 +121,7 @@ void CPlugin::StopPlayer()
 	    else
 		break;
 	    
-	} while (num_tries  < 4 );
+	} while (num_tries  < 4  && process_exiting != TRUE);
     }   
     
 }
@@ -129,7 +130,7 @@ CPlugin::~CPlugin()
 {
     g_debug ("Destructor");
     
-    if ( ping_id ) 
+    if ( ping_id != 0 ) 
 	g_source_remove (ping_id);
     
     StopPlayer ();
@@ -204,6 +205,19 @@ ping_process (gpointer data)
     return TRUE;
 }
 
+
+static void
+process_exiting_cb (DBusGProxy *proxy, gpointer data)
+{
+    CPlugin *plugin;
+    
+    plugin = (CPlugin *) data;
+    g_debug ("Process exiting");
+    plugin->process_exiting = TRUE;
+    g_source_remove (plugin->ping_id);
+    plugin->ping_id = 0;
+}
+
 void CPlugin::GetProxy ()
 {
     g_return_if_fail (proxy == NULL);
@@ -221,7 +235,13 @@ void CPlugin::GetProxy ()
 					   "org.Parole.Media.Plugin");
 	if ( !proxy ) 
 	    g_critical ("Unable to create proxy for %s", dbus_name);
-	    
+	else
+	{
+	    dbus_g_proxy_add_signal (proxy, "exiting", G_TYPE_INVALID);
+	    dbus_g_proxy_connect_signal (proxy, "exiting",
+					 G_CALLBACK (process_exiting_cb), this, NULL);
+	}
+	
 	g_free (dbus_name);
     }
 }

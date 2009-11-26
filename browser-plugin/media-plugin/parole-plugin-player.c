@@ -56,7 +56,7 @@ static void parole_plugin_player_get_property (GObject *object,
 					       GParamSpec *pspec);
 
 #define PAROLE_PLUGIN_PLAYER_GET_PRIVATE(o) \
-(G_TYPE_INSTANCE_GET_PRIVATE ((o), PAROLE_TYPE_PLUGINPLAYER, ParolePluginPlayerPrivate))
+(G_TYPE_INSTANCE_GET_PRIVATE ((o), PAROLE_TYPE_PLUGIN_PLAYER, ParolePluginPlayerPrivate))
 
 static GTimer *idle_timer = NULL;
 static GThread *idle_thread = NULL;
@@ -95,6 +95,14 @@ enum
     PROP_URL
 };
 
+enum
+{
+    SIG_EXITING,
+    LAST_SIGNAL
+};
+
+static guint signals [LAST_SIGNAL] = { 0 };
+    
 G_DEFINE_TYPE (ParolePluginPlayer, parole_plugin_player, G_TYPE_OBJECT)
 
 static void
@@ -640,6 +648,7 @@ static gpointer *check_idle_thread (gpointer data)
 	if ( g_timer_elapsed (idle_timer, NULL ) > 60.f )
 	{
 	    g_debug ("Idle timeout expired, exiting...");
+	    g_signal_emit (player, signals [SIG_EXITING], 0);
 	    g_debug ("Here");
 	    gtk_main_quit ();
 	    g_debug ("Yalla");
@@ -651,16 +660,38 @@ static gpointer *check_idle_thread (gpointer data)
 }
 
 static void
+parole_plugin_player_dispose (GObject *object)
+{
+    ParolePluginPlayer *player;
+    
+    player = PAROLE_PLUGIN_PLAYER (object);
+    
+    g_signal_emit (player, signals [SIG_EXITING], 0);
+    
+    G_OBJECT_CLASS (parole_plugin_player_parent_class)->dispose (object);
+}
+
+static void
 parole_plugin_player_class_init (ParolePluginPlayerClass *klass)
 {
     GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
     object_class->finalize = parole_plugin_player_finalize;
+    object_class->dispose = parole_plugin_player_dispose;
 
     object_class->get_property = parole_plugin_player_get_property;
     object_class->set_property = parole_plugin_player_set_property;
 
     object_class->constructed = parole_plugin_player_construct;
+    
+    signals[SIG_EXITING] = 
+        g_signal_new ("exiting",
+                      PAROLE_TYPE_PLUGIN_PLAYER,
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET (ParolePluginPlayerClass, exiting),
+                      NULL, NULL,
+                      g_cclosure_marshal_VOID__VOID,
+                      G_TYPE_NONE, 0, G_TYPE_NONE);
     
     
     g_object_class_install_property (object_class,
@@ -802,8 +833,8 @@ parole_plugin_player_stop_idle (gpointer data)
     
     player = PAROLE_PLUGIN_PLAYER (data);
     
-    if (player->priv->gst )
-	parole_gst_stop (player->priv->gst);
+    if (player->priv->gst)
+	parole_gst_terminate (player->priv->gst);
 	
     return FALSE;
 }
@@ -813,7 +844,7 @@ parole_plugin_player_new (GtkWidget *plug, gchar *url)
 {
     ParolePluginPlayer *player = NULL;
     
-    player = g_object_new (PAROLE_TYPE_PLUGINPLAYER, 
+    player = g_object_new (PAROLE_TYPE_PLUGIN_PLAYER, 
 			   "plug", plug, 
 			   "url", url, 
 			   NULL);
