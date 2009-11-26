@@ -47,6 +47,7 @@ struct _ParolePlugin
     DBusGConnection *bus;
     DBusGProxy      *proxy;
     
+    NPP 	     Instance;
     Window	     window;
     gchar           *url;
     gchar           *tmp_file;
@@ -322,10 +323,11 @@ parole_plugin_send_play (ParolePlugin *plugin, const gchar *url)
 }
 
 ParolePlugin *
-parole_plugin_new (void)
+parole_plugin_new (NPP Instance)
 {
     ParolePlugin *plugin = NULL;
     plugin = g_object_new (PAROLE_TYPE_PLUGIN, NULL);
+    plugin->Instance = Instance;
     return plugin;
 }
 
@@ -359,11 +361,7 @@ NPError	parole_plugin_new_stream (ParolePlugin *plugin, NPStream *stream, NPMIME
 
 NPError	parole_plugin_destroy_stream (ParolePlugin *plugin, NPStream * stream, NPError reason)
 {
-    if ( reason != NPRES_DONE )
-    {
-	g_debug ("Destroy stream %s reason %i ", stream->url, reason);
-	parole_plugin_shut (plugin);
-    }
+    g_debug ("Destroy stream %s reason %i", stream->url, reason);
     
     return NPERR_NO_ERROR;
 }
@@ -401,6 +399,12 @@ void parole_plugin_stream_as_file (ParolePlugin *plugin,
 int32 parole_plugin_write_ready	(ParolePlugin *plugin, NPStream *stream)
 {
     g_debug ("WriteReady url=%s", stream->url);
+    
+    if (plugin->checked)
+    {
+	NPN_DestroyStream (plugin->Instance, stream, NPRES_DONE);
+	return -1;
+    }
     
     return  plugin->player_ready ? STREAMBUFSIZE  : 0;
 }
@@ -460,5 +464,5 @@ int32 parole_plugin_write (ParolePlugin *plugin,
 	return len;
     }
     
-    return 0;
+    return wrotebytes;
 }

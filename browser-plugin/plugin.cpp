@@ -70,7 +70,7 @@ CPlugin::CPlugin (NPP pNPInstance)
 {
     g_debug ("Constructor");
     
-    plugin = parole_plugin_new ();
+    plugin = parole_plugin_new (pNPInstance);
     
     mInstance = pNPInstance;
     mInitialized = TRUE;

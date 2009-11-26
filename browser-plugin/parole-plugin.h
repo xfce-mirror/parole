@@ -38,7 +38,7 @@ typedef struct _ParolePlugin 	  ParolePlugin;
 
 GType        			parole_plugin_get_type        	(void) G_GNUC_CONST;
 
-ParolePlugin   		       *parole_plugin_new             	(void);
+ParolePlugin   		       *parole_plugin_new             	(NPP Instance);
 
 NPError				parole_plugin_set_window	(ParolePlugin *plugin,
 								 NPWindow * aWindow);
