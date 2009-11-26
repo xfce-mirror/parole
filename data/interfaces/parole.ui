@@ -225,6 +225,7 @@
                         <property name="visible">True</property>
                         <property name="image">image12</property>
                         <property name="use_stock">False</property>
+                        <signal name="activate" handler="parole_player_volume_mute"/>
                       </object>
                     </child>
                     <child>
