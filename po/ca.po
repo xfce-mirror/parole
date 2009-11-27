@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-23 15:57+0100\n"
+"POT-Creation-Date: 2009-11-27 10:38+0100\n"
 "PO-Revision-Date: 2009-10-11 15:57+0100\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: Catalan\n"
@@ -136,6 +136,10 @@ msgstr ""
 msgid "Scan folders recursively"
 msgstr ""
 
+#: ../data/interfaces/mediachooser.ui.h:3
+msgid "Start playing opened files"
+msgstr ""
+
 #: ../data/interfaces/plugins.ui.h:1
 msgid "<b>Author:</b>"
 msgstr "<b>Autor:</b>"
@@ -224,27 +228,27 @@ msgstr "Per extensió"
 msgid "Select File Types (By Extension)"
 msgstr "Seleccioneu el tipus de fitxer (per extensió)"
 
-#: ../gst/parole-gst.c:1303
+#: ../gst/parole-gst.c:1489
+msgid "The stream is taking too much time to load"
+msgstr "Cal massa temps per carregar el flux"
+
+#: ../gst/parole-gst.c:1489
+msgid "Stop"
+msgstr "Para"
+
+#: ../gst/parole-gst.c:1674
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "No s'ha pogut carregar el connector playbin Gstreamer, comproveu la vostra "
 "instaŀlació de Gstreamer"
 
-#: ../gst/parole-gst.c:1319
+#: ../gst/parole-gst.c:1690
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "No s'ha pogut carregar el connector de vídeo Gstreamer, comproveu la vostra "
 "instaŀlació de Gstreamer"
-
-#: ../gst/parole-gst.c:1514
-msgid "The stream is taking too much time to load"
-msgstr "Cal massa temps per carregar el flux"
-
-#: ../gst/parole-gst.c:1514
-msgid "Stop"
-msgstr "Para"
 
 #: ../src/main.c:53
 #, c-format
@@ -267,110 +271,114 @@ msgstr ""
 "Amb llicència GNU GPL.\n"
 "\n"
 
-#: ../src/main.c:185
+#: ../src/main.c:191
 msgid "Open a new instance"
 msgstr "Obre una instància nova"
 
-#: ../src/main.c:186
+#: ../src/main.c:192
 msgid "Do not load plugins"
 msgstr ""
 
-#: ../src/main.c:187
+#: ../src/main.c:193
+msgid "Set Audio-CD/VCD/DVD device path"
+msgstr ""
+
+#: ../src/main.c:194
 msgid "Play or pause if already playing"
 msgstr "Reprodueix o pausa si ja s'està reproduint"
 
-#: ../src/main.c:188
+#: ../src/main.c:195
 msgid "Stop playing"
 msgstr "Atura la reproducció"
 
-#: ../src/main.c:189
+#: ../src/main.c:196
 msgid "Next track"
 msgstr "Pista següent"
 
-#: ../src/main.c:190
+#: ../src/main.c:197
 msgid "Previous track"
 msgstr "Pista anterior"
 
-#: ../src/main.c:191
+#: ../src/main.c:198
 msgid "Seek forward"
 msgstr "Saltant endavant"
 
-#: ../src/main.c:192
+#: ../src/main.c:199
 msgid "Seek Backward"
 msgstr "Saltant enredera"
 
-#: ../src/main.c:193
+#: ../src/main.c:200
 msgid "Raise volume"
 msgstr "Puja el volum"
 
-#: ../src/main.c:194
+#: ../src/main.c:201
 msgid "Lower volume"
 msgstr "Baix el volum"
 
-#: ../src/main.c:195
+#: ../src/main.c:202
 msgid "Mute volume"
 msgstr "Volum silenciat"
 
-#: ../src/main.c:196
+#: ../src/main.c:203
 msgid "Version information"
 msgstr "Informació de la versió"
 
-#: ../src/main.c:198
+#: ../src/main.c:205
 msgid "Media to play"
 msgstr "Suport a reproduir"
 
-#: ../src/main.c:235
+#: ../src/main.c:242
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Ja s'està executant Parole, empreu -i per obrir una instància nova\n"
 
-#: ../src/parole-mediachooser.c:196
+#: ../src/parole-mediachooser.c:213
 msgid "Add media files"
 msgstr "Afegeix fitxers de suports"
 
-#: ../src/parole-mediachooser.c:226
+#: ../src/parole-mediachooser.c:246
 msgid "Add"
 msgstr "Afegeix"
 
-#: ../src/parole-medialist.c:430
+#: ../src/parole-medialist.c:436
 msgid "Error saving playlist file"
 msgstr "S'ha produït un error en desar la llista de reproducció"
 
-#: ../src/parole-medialist.c:430
+#: ../src/parole-medialist.c:436
 msgid "Permission denied"
 msgstr "S'ha denegat el permís"
 
-#: ../src/parole-medialist.c:439
+#: ../src/parole-medialist.c:445
 msgid "Unknown playlist format, Please select a support playlist format"
 msgstr ""
 "No es reconeix el format de la llista de reproducció. Seleccioneu un format "
 "de llista de reproducció compatible"
 
-#: ../src/parole-medialist.c:507 ../src/parole-player.c:1772
+#: ../src/parole-medialist.c:513 ../src/parole-player.c:1785
 msgid "Playlist"
 msgstr "Llista de reproducció"
 
-#: ../src/parole-medialist.c:514
+#: ../src/parole-medialist.c:520
 msgid "M3U Playlists"
 msgstr "Llistes de reproducció M3U"
 
-#: ../src/parole-medialist.c:522
+#: ../src/parole-medialist.c:528
 msgid "PLS Playlists"
 msgstr "Llistes de reproducció PLS"
 
-#: ../src/parole-medialist.c:530
+#: ../src/parole-medialist.c:536
 msgid "Advanced Stream Redirector"
 msgstr "Redirecció avançada del flux"
 
-#: ../src/parole-medialist.c:538
+#: ../src/parole-medialist.c:544
 msgid "Shareable Playlist"
 msgstr "La llista de reproducció es pot compartir"
 
-#: ../src/parole-medialist.c:853
+#: ../src/parole-medialist.c:859
 msgid "Remember playlist"
 msgstr "Recorda la llista de reproducció"
 
-#: ../src/parole-medialist.c:1003
+#: ../src/parole-medialist.c:1009
 msgid "Media list"
 msgstr "Llista de suports"
 
@@ -383,7 +391,7 @@ msgid "Show playlist"
 msgstr "Mostra la llista de reproducció"
 
 #: ../src/parole-player.c:560
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:268
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:294
 msgid "Media stream is not seekable"
 msgstr "El flux del suport no es pot cercar"
 
@@ -402,49 +410,30 @@ msgid "Previous Track"
 msgstr "Pista anterior"
 
 #: ../src/parole-statusbar.c:61
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:566
 msgid "Buffering"
 msgstr "Memòria intermèdia"
 
-#: ../src/parole-statusbar.c:78
+#: ../src/parole-statusbar.c:100
 msgid "Stopped"
 msgstr "Parat"
 
-#: ../src/parole-statusbar.c:82
+#: ../src/parole-statusbar.c:104
 msgid "Finished"
 msgstr "Acabat"
 
-#: ../src/parole-statusbar.c:89 ../src/parole-statusbar.c:97
+#: ../src/parole-statusbar.c:114 ../src/parole-statusbar.c:124
 msgid "Paused"
 msgstr "Aturat"
 
-#: ../src/parole-statusbar.c:89
+#: ../src/parole-statusbar.c:114
 #, fuzzy
 msgid "Playing"
 msgstr "S'està reproduint la pista"
 
-#: ../src/parole-statusbar.c:118
+#: ../src/parole-statusbar.c:145
 msgid "Live stream:"
 msgstr "flux en directe:"
-
-#: ../src/parole-filters.c:57
-msgid "Audio"
-msgstr "Àudio"
-
-#: ../src/parole-filters.c:75
-msgid "Video"
-msgstr "Vídeo"
-
-#: ../src/parole-filters.c:93
-msgid "Audio and video"
-msgstr "Àudio i vídeo"
-
-#: ../src/parole-filters.c:111
-msgid "All supported files"
-msgstr "Tots els fitxers compatibles"
-
-#: ../src/parole-filters.c:127
-msgid "Playlist files"
-msgstr "Fitxers de llistes de reproducció"
 
 #: ../src/parole-about.c:57
 msgid "Author/Maintainer"
@@ -621,17 +610,37 @@ msgstr "S'està reproduint la pista"
 msgid "Track %i"
 msgstr "Pista %i"
 
-#: ../src/parole-plugins-manager.c:290 ../src/parole-plugins-manager.c:415
+#: ../src/parole-plugins-manager.c:296 ../src/parole-plugins-manager.c:422
 msgid "Visit Website"
 msgstr "Vés al lloc web"
 
-#: ../src/parole-plugins-manager.c:363
+#: ../src/parole-plugins-manager.c:370
 #: ../plugins/properties/stream-properties-provider.c:140
 #: ../plugins/properties/stream-properties-provider.c:141
 #: ../plugins/properties/stream-properties-provider.c:142
 #: ../plugins/properties/stream-properties-provider.c:143
 msgid "Unknown"
 msgstr "Desconegut"
+
+#: ../parole/parole-filters.c:56
+msgid "Audio"
+msgstr "Àudio"
+
+#: ../parole/parole-filters.c:74
+msgid "Video"
+msgstr "Vídeo"
+
+#: ../parole/parole-filters.c:92
+msgid "Audio and video"
+msgstr "Àudio i vídeo"
+
+#: ../parole/parole-filters.c:110
+msgid "All supported files"
+msgstr "Tots els fitxers compatibles"
+
+#: ../parole/parole-filters.c:126
+msgid "Playlist files"
+msgstr "Fitxers de llistes de reproducció"
 
 #: ../plugins/properties/stream-properties-provider.c:254
 msgid "Title:"
@@ -661,7 +670,7 @@ msgstr "El flux no permet el canvi d'etiquetes"
 msgid "Save media tags changes"
 msgstr "Desa els canvis de les etiquetes del suport"
 
-#: ../plugins/properties/stream-properties-provider.c:516
+#: ../plugins/properties/stream-properties-provider.c:524
 msgid "Properties"
 msgstr "Propietats"
 
@@ -674,39 +683,39 @@ msgstr "Llegeix les propietats del suport"
 msgid "Stream Properties"
 msgstr "Propietats"
 
-#: ../plugins/tray/tray-provider.c:229
+#: ../plugins/tray/tray-provider.c:243
 msgid "<b>Playing:</b>"
 msgstr "<b>S'està reproduint:</b>"
 
-#: ../plugins/tray/tray-provider.c:229
+#: ../plugins/tray/tray-provider.c:243
 msgid "<b>Duration:</b>"
 msgstr "<b>Duració:</b>"
 
-#: ../plugins/tray/tray-provider.c:380
+#: ../plugins/tray/tray-provider.c:394
 msgid "Tray icon plugin"
 msgstr "Connector de la icona de safata"
 
-#: ../plugins/tray/tray-provider.c:390
+#: ../plugins/tray/tray-provider.c:404
 msgid "Enable notification"
 msgstr "Habilita la notificació"
 
-#: ../plugins/tray/tray-provider.c:399
+#: ../plugins/tray/tray-provider.c:413
 msgid "Always minimize to tray when window is closed"
 msgstr "Minimitza sempre a la safata quan es tanca la finestra"
 
-#: ../plugins/tray/tray-provider.c:438
+#: ../plugins/tray/tray-provider.c:452
 msgid "Minimize to tray?"
 msgstr "Voleu minimitzar a la safata?"
 
-#: ../plugins/tray/tray-provider.c:444
+#: ../plugins/tray/tray-provider.c:458
 msgid "Minimize to tray"
 msgstr "Minimitza a la safata"
 
-#: ../plugins/tray/tray-provider.c:460
+#: ../plugins/tray/tray-provider.c:474
 msgid "Are you sure you want to quit Parole"
 msgstr "Segur que voleu sortir de Parole?"
 
-#: ../plugins/tray/tray-provider.c:464
+#: ../plugins/tray/tray-provider.c:478
 msgid "Remember my choice"
 msgstr "Recorda la selecció"
 
@@ -730,6 +739,14 @@ msgstr ""
 msgid "Window Title"
 msgstr "Títol de la finestra"
 
+#: ../plugins/power-manager/power-manager.desktop.in.h:1
+msgid "Inhibit Power Manager from suspending the machine while playing DVD."
+msgstr ""
+
+#: ../plugins/power-manager/power-manager.desktop.in.h:2
+msgid "Power Manager Plugin"
+msgstr ""
+
 #: ../browser-plugin/media-plugin/main.c:72
 msgid "socket"
 msgstr ""
@@ -747,18 +764,18 @@ msgstr "Suport a reproduir"
 msgid "URL"
 msgstr ""
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:109
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:135
 msgid "Leave fullscreen"
 msgstr ""
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:114
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:140
 msgid "Fullscreen"
 msgstr ""
 
 #.
 #. * Copy url
 #.
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:395
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:426
 msgid "Copy url"
 msgstr ""
 

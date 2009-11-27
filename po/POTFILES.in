@@ -12,14 +12,14 @@ src/parole-mediachooser.c
 src/parole-medialist.c
 src/parole-player.c
 src/parole-statusbar.c
-src/parole-filters.c
-src/parole-pl-parser.c
 src/parole-about.c
 src/parole-disc.c
 src/parole-subtitle-encoding.c
 src/parole-open-location.c
 src/parole-disc-menu.c
 src/parole-plugins-manager.c
+parole/parole-filters.c
+parole/parole-pl-parser.c
 plugins/properties/stream-properties-plugin.c
 plugins/properties/stream-properties-provider.c
 plugins/properties/stream-properties-provider.h

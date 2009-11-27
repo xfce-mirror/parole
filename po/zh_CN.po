@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-23 15:57+0100\n"
+"POT-Creation-Date: 2009-11-27 10:38+0100\n"
 "PO-Revision-Date: 2009-11-17 14:09+0800\n"
 "Last-Translator: Hunt Xu <huntxu@live.cn>\n"
 "Language-Team: Chinese (simplified) <xfce-i18n@xfce.org>\n"
@@ -133,6 +133,10 @@ msgstr ""
 msgid "Scan folders recursively"
 msgstr ""
 
+#: ../data/interfaces/mediachooser.ui.h:3
+msgid "Start playing opened files"
+msgstr ""
+
 #: ../data/interfaces/plugins.ui.h:1
 msgid "<b>Author:</b>"
 msgstr "<b>作者:</b>"
@@ -221,23 +225,23 @@ msgstr "以扩展名"
 msgid "Select File Types (By Extension)"
 msgstr "选择文件类型 (以扩展名)"
 
-#: ../gst/parole-gst.c:1303
+#: ../gst/parole-gst.c:1489
+msgid "The stream is taking too much time to load"
+msgstr "载入该流媒体使用时间过长"
+
+#: ../gst/parole-gst.c:1489
+msgid "Stop"
+msgstr "停止"
+
+#: ../gst/parole-gst.c:1674
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr "无法载入 GStreamer 播放插件，检查您的 GStreamer 是否正确安装"
 
-#: ../gst/parole-gst.c:1319
+#: ../gst/parole-gst.c:1690
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr "无法载入 GStreamer 视频插件，检查您的 GStreamer 是否正确安装"
-
-#: ../gst/parole-gst.c:1514
-msgid "The stream is taking too much time to load"
-msgstr "载入该流媒体使用时间过长"
-
-#: ../gst/parole-gst.c:1514
-msgid "Stop"
-msgstr "停止"
 
 #: ../src/main.c:53
 #, c-format
@@ -260,108 +264,112 @@ msgstr ""
 "在 GNU GPL 协议条款下发行。\n"
 "\n"
 
-#: ../src/main.c:185
+#: ../src/main.c:191
 msgid "Open a new instance"
 msgstr "打开一个新的 Parole 实例"
 
-#: ../src/main.c:186
+#: ../src/main.c:192
 msgid "Do not load plugins"
 msgstr ""
 
-#: ../src/main.c:187
+#: ../src/main.c:193
+msgid "Set Audio-CD/VCD/DVD device path"
+msgstr ""
+
+#: ../src/main.c:194
 msgid "Play or pause if already playing"
 msgstr "播放 / 暂停"
 
-#: ../src/main.c:188
+#: ../src/main.c:195
 msgid "Stop playing"
 msgstr "停止"
 
-#: ../src/main.c:189
+#: ../src/main.c:196
 msgid "Next track"
 msgstr "下一轨道"
 
-#: ../src/main.c:190
+#: ../src/main.c:197
 msgid "Previous track"
 msgstr "上一轨道"
 
-#: ../src/main.c:191
+#: ../src/main.c:198
 msgid "Seek forward"
 msgstr "向前搜索"
 
-#: ../src/main.c:192
+#: ../src/main.c:199
 msgid "Seek Backward"
 msgstr "向后搜索"
 
-#: ../src/main.c:193
+#: ../src/main.c:200
 msgid "Raise volume"
 msgstr "增大音量"
 
-#: ../src/main.c:194
+#: ../src/main.c:201
 msgid "Lower volume"
 msgstr "减小音量"
 
-#: ../src/main.c:195
+#: ../src/main.c:202
 msgid "Mute volume"
 msgstr "静音"
 
-#: ../src/main.c:196
+#: ../src/main.c:203
 msgid "Version information"
 msgstr "版本信息"
 
-#: ../src/main.c:198
+#: ../src/main.c:205
 msgid "Media to play"
 msgstr "要播放的媒体"
 
-#: ../src/main.c:235
+#: ../src/main.c:242
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole 已经在运行，使用 -i 参数打开一个新的实例\n"
 
-#: ../src/parole-mediachooser.c:196
+#: ../src/parole-mediachooser.c:213
 msgid "Add media files"
 msgstr "添加媒体文件"
 
-#: ../src/parole-mediachooser.c:226
+#: ../src/parole-mediachooser.c:246
 msgid "Add"
 msgstr "添加"
 
-#: ../src/parole-medialist.c:430
+#: ../src/parole-medialist.c:436
 msgid "Error saving playlist file"
 msgstr "保存播放列表文件时发生错误"
 
-#: ../src/parole-medialist.c:430
+#: ../src/parole-medialist.c:436
 msgid "Permission denied"
 msgstr "权限不足"
 
-#: ../src/parole-medialist.c:439
+#: ../src/parole-medialist.c:445
 msgid "Unknown playlist format, Please select a support playlist format"
 msgstr "未知播放列表格式，请选择一个已被支持的播放列表格式"
 
-#: ../src/parole-medialist.c:507 ../src/parole-player.c:1772
+#: ../src/parole-medialist.c:513 ../src/parole-player.c:1785
 msgid "Playlist"
 msgstr "播放列表"
 
-#: ../src/parole-medialist.c:514
+#: ../src/parole-medialist.c:520
 msgid "M3U Playlists"
 msgstr "M3U 播放列表"
 
-#: ../src/parole-medialist.c:522
+#: ../src/parole-medialist.c:528
 msgid "PLS Playlists"
 msgstr "PLS 播放列表"
 
-#: ../src/parole-medialist.c:530
+#: ../src/parole-medialist.c:536
 msgid "Advanced Stream Redirector"
 msgstr "高级流转向器"
 
-#: ../src/parole-medialist.c:538
+#: ../src/parole-medialist.c:544
 msgid "Shareable Playlist"
 msgstr "可共享的播放列表"
 
-#: ../src/parole-medialist.c:853
+#: ../src/parole-medialist.c:859
 msgid "Remember playlist"
 msgstr "记住播放列表"
 
-#: ../src/parole-medialist.c:1003
+#: ../src/parole-medialist.c:1009
 msgid "Media list"
 msgstr "媒体列表"
 
@@ -374,7 +382,7 @@ msgid "Show playlist"
 msgstr "显示播放列表"
 
 #: ../src/parole-player.c:560
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:268
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:294
 msgid "Media stream is not seekable"
 msgstr "流媒体不可查找"
 
@@ -393,48 +401,29 @@ msgid "Previous Track"
 msgstr "上一轨道"
 
 #: ../src/parole-statusbar.c:61
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:566
 msgid "Buffering"
 msgstr "正在缓冲"
 
-#: ../src/parole-statusbar.c:78
+#: ../src/parole-statusbar.c:100
 msgid "Stopped"
 msgstr "已停止"
 
-#: ../src/parole-statusbar.c:82
+#: ../src/parole-statusbar.c:104
 msgid "Finished"
 msgstr "已结束"
 
-#: ../src/parole-statusbar.c:89 ../src/parole-statusbar.c:97
+#: ../src/parole-statusbar.c:114 ../src/parole-statusbar.c:124
 msgid "Paused"
 msgstr "已暂停"
 
-#: ../src/parole-statusbar.c:89
+#: ../src/parole-statusbar.c:114
 msgid "Playing"
 msgstr "正在播放"
 
-#: ../src/parole-statusbar.c:118
+#: ../src/parole-statusbar.c:145
 msgid "Live stream:"
 msgstr "Live 流:"
-
-#: ../src/parole-filters.c:57
-msgid "Audio"
-msgstr "音频文件"
-
-#: ../src/parole-filters.c:75
-msgid "Video"
-msgstr "视频文件"
-
-#: ../src/parole-filters.c:93
-msgid "Audio and video"
-msgstr "音频和视频文件"
-
-#: ../src/parole-filters.c:111
-msgid "All supported files"
-msgstr "所有支持的文件"
-
-#: ../src/parole-filters.c:127
-msgid "Playlist files"
-msgstr "播放列表文件"
 
 #: ../src/parole-about.c:57
 msgid "Author/Maintainer"
@@ -611,17 +600,37 @@ msgstr "正在播放轨道"
 msgid "Track %i"
 msgstr "轨道 %i"
 
-#: ../src/parole-plugins-manager.c:290 ../src/parole-plugins-manager.c:415
+#: ../src/parole-plugins-manager.c:296 ../src/parole-plugins-manager.c:422
 msgid "Visit Website"
 msgstr "访问网站"
 
-#: ../src/parole-plugins-manager.c:363
+#: ../src/parole-plugins-manager.c:370
 #: ../plugins/properties/stream-properties-provider.c:140
 #: ../plugins/properties/stream-properties-provider.c:141
 #: ../plugins/properties/stream-properties-provider.c:142
 #: ../plugins/properties/stream-properties-provider.c:143
 msgid "Unknown"
 msgstr "未知"
+
+#: ../parole/parole-filters.c:56
+msgid "Audio"
+msgstr "音频文件"
+
+#: ../parole/parole-filters.c:74
+msgid "Video"
+msgstr "视频文件"
+
+#: ../parole/parole-filters.c:92
+msgid "Audio and video"
+msgstr "音频和视频文件"
+
+#: ../parole/parole-filters.c:110
+msgid "All supported files"
+msgstr "所有支持的文件"
+
+#: ../parole/parole-filters.c:126
+msgid "Playlist files"
+msgstr "播放列表文件"
 
 #: ../plugins/properties/stream-properties-provider.c:254
 msgid "Title:"
@@ -651,7 +660,7 @@ msgstr "流媒体不支持更改 tag"
 msgid "Save media tags changes"
 msgstr "保存媒体 tag 的更改"
 
-#: ../plugins/properties/stream-properties-provider.c:516
+#: ../plugins/properties/stream-properties-provider.c:524
 msgid "Properties"
 msgstr "属性"
 
@@ -664,39 +673,39 @@ msgstr "读取媒体信息"
 msgid "Stream Properties"
 msgstr "属性"
 
-#: ../plugins/tray/tray-provider.c:229
+#: ../plugins/tray/tray-provider.c:243
 msgid "<b>Playing:</b>"
 msgstr "<b>正在播放:</b>"
 
-#: ../plugins/tray/tray-provider.c:229
+#: ../plugins/tray/tray-provider.c:243
 msgid "<b>Duration:</b>"
 msgstr "<b>时长:</b>"
 
-#: ../plugins/tray/tray-provider.c:380
+#: ../plugins/tray/tray-provider.c:394
 msgid "Tray icon plugin"
 msgstr "托盘图标插件"
 
-#: ../plugins/tray/tray-provider.c:390
+#: ../plugins/tray/tray-provider.c:404
 msgid "Enable notification"
 msgstr "允许通知"
 
-#: ../plugins/tray/tray-provider.c:399
+#: ../plugins/tray/tray-provider.c:413
 msgid "Always minimize to tray when window is closed"
 msgstr "点击关闭时总是最小化至托盘图标"
 
-#: ../plugins/tray/tray-provider.c:438
+#: ../plugins/tray/tray-provider.c:452
 msgid "Minimize to tray?"
 msgstr "最小化至托盘图标？"
 
-#: ../plugins/tray/tray-provider.c:444
+#: ../plugins/tray/tray-provider.c:458
 msgid "Minimize to tray"
 msgstr "最小化至托盘图标"
 
-#: ../plugins/tray/tray-provider.c:460
+#: ../plugins/tray/tray-provider.c:474
 msgid "Are you sure you want to quit Parole"
 msgstr "您确定要退出 Parole"
 
-#: ../plugins/tray/tray-provider.c:464
+#: ../plugins/tray/tray-provider.c:478
 msgid "Remember my choice"
 msgstr "记住我的选择"
 
@@ -718,6 +727,14 @@ msgstr "设置主窗口名为当前正在播放的媒体名称。"
 msgid "Window Title"
 msgstr "窗口标题"
 
+#: ../plugins/power-manager/power-manager.desktop.in.h:1
+msgid "Inhibit Power Manager from suspending the machine while playing DVD."
+msgstr ""
+
+#: ../plugins/power-manager/power-manager.desktop.in.h:2
+msgid "Power Manager Plugin"
+msgstr ""
+
 #: ../browser-plugin/media-plugin/main.c:72
 msgid "socket"
 msgstr ""
@@ -735,18 +752,18 @@ msgstr "要播放的媒体"
 msgid "URL"
 msgstr ""
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:109
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:135
 msgid "Leave fullscreen"
 msgstr ""
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:114
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:140
 msgid "Fullscreen"
 msgstr ""
 
 #.
 #. * Copy url
 #.
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:395
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:426
 msgid "Copy url"
 msgstr ""
 

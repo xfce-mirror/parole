@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parole 0.1.90svn.r07906\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-23 15:57+0100\n"
+"POT-Creation-Date: 2009-11-27 10:38+0100\n"
 "PO-Revision-Date: 2009-10-08 12:33+0200\n"
 "Last-Translator: Robert Hartl <hartl.robert@gmail.com>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -130,6 +130,10 @@ msgstr ""
 msgid "Scan folders recursively"
 msgstr ""
 
+#: ../data/interfaces/mediachooser.ui.h:3
+msgid "Start playing opened files"
+msgstr ""
+
 #: ../data/interfaces/plugins.ui.h:1
 msgid "<b>Author:</b>"
 msgstr "<b>Autor:</b>"
@@ -218,23 +222,23 @@ msgstr "podľa prípony"
 msgid "Select File Types (By Extension)"
 msgstr "Vyberte typy súborov (podľa prípony)"
 
-#: ../gst/parole-gst.c:1303
+#: ../gst/parole-gst.c:1489
+msgid "The stream is taking too much time to load"
+msgstr ""
+
+#: ../gst/parole-gst.c:1489
+msgid "Stop"
+msgstr "Zastaviť"
+
+#: ../gst/parole-gst.c:1674
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 
-#: ../gst/parole-gst.c:1319
+#: ../gst/parole-gst.c:1690
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
-
-#: ../gst/parole-gst.c:1514
-msgid "The stream is taking too much time to load"
-msgstr ""
-
-#: ../gst/parole-gst.c:1514
-msgid "Stop"
-msgstr "Zastaviť"
 
 #: ../src/main.c:53
 #, c-format
@@ -257,108 +261,112 @@ msgstr ""
 "Licensed under the GNU GPL.\n"
 "\n"
 
-#: ../src/main.c:185
+#: ../src/main.c:191
 msgid "Open a new instance"
 msgstr "Otvoriť novú inštanciu"
 
-#: ../src/main.c:186
+#: ../src/main.c:192
 msgid "Do not load plugins"
 msgstr ""
 
-#: ../src/main.c:187
+#: ../src/main.c:193
+msgid "Set Audio-CD/VCD/DVD device path"
+msgstr ""
+
+#: ../src/main.c:194
 msgid "Play or pause if already playing"
 msgstr ""
 
-#: ../src/main.c:188
+#: ../src/main.c:195
 msgid "Stop playing"
 msgstr "Zastaviť prehrávanie"
 
-#: ../src/main.c:189
+#: ../src/main.c:196
 msgid "Next track"
 msgstr "Ďalšia skladba"
 
-#: ../src/main.c:190
+#: ../src/main.c:197
 msgid "Previous track"
 msgstr "Predchádzajúca skladba"
 
-#: ../src/main.c:191
+#: ../src/main.c:198
 msgid "Seek forward"
 msgstr ""
 
-#: ../src/main.c:192
+#: ../src/main.c:199
 msgid "Seek Backward"
 msgstr ""
 
-#: ../src/main.c:193
+#: ../src/main.c:200
 msgid "Raise volume"
 msgstr "Zosilniť hlasitosť"
 
-#: ../src/main.c:194
+#: ../src/main.c:201
 msgid "Lower volume"
 msgstr "Stíšiť hlasitosť"
 
-#: ../src/main.c:195
+#: ../src/main.c:202
 msgid "Mute volume"
 msgstr "Stlmiť hlasitosť"
 
-#: ../src/main.c:196
+#: ../src/main.c:203
 msgid "Version information"
 msgstr "Informácia o verzií"
 
-#: ../src/main.c:198
+#: ../src/main.c:205
 msgid "Media to play"
 msgstr "Média na prehrávanie"
 
-#: ../src/main.c:235
+#: ../src/main.c:242
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr ""
 
-#: ../src/parole-mediachooser.c:196
+#: ../src/parole-mediachooser.c:213
 msgid "Add media files"
 msgstr "Pridať mediálne súbory"
 
-#: ../src/parole-mediachooser.c:226
+#: ../src/parole-mediachooser.c:246
 msgid "Add"
 msgstr "Pridať"
 
-#: ../src/parole-medialist.c:430
+#: ../src/parole-medialist.c:436
 msgid "Error saving playlist file"
 msgstr "Chyba pri ukladaní súboru zoznamu skladieb"
 
-#: ../src/parole-medialist.c:430
+#: ../src/parole-medialist.c:436
 msgid "Permission denied"
 msgstr "Povolenie zamietnuté"
 
-#: ../src/parole-medialist.c:439
+#: ../src/parole-medialist.c:445
 msgid "Unknown playlist format, Please select a support playlist format"
 msgstr "Neznámy formát zoznamu skladieb. Vyberte prosím podporovaný formát"
 
-#: ../src/parole-medialist.c:507 ../src/parole-player.c:1772
+#: ../src/parole-medialist.c:513 ../src/parole-player.c:1785
 msgid "Playlist"
 msgstr "Zoznam skladieb"
 
-#: ../src/parole-medialist.c:514
+#: ../src/parole-medialist.c:520
 msgid "M3U Playlists"
 msgstr "Zoznamy skladieb M3U"
 
-#: ../src/parole-medialist.c:522
+#: ../src/parole-medialist.c:528
 msgid "PLS Playlists"
 msgstr "Zoznamy skladieb PLS"
 
-#: ../src/parole-medialist.c:530
+#: ../src/parole-medialist.c:536
 msgid "Advanced Stream Redirector"
 msgstr ""
 
-#: ../src/parole-medialist.c:538
+#: ../src/parole-medialist.c:544
 msgid "Shareable Playlist"
 msgstr ""
 
-#: ../src/parole-medialist.c:853
+#: ../src/parole-medialist.c:859
 msgid "Remember playlist"
 msgstr "Zapamätať zoznam skladieb"
 
-#: ../src/parole-medialist.c:1003
+#: ../src/parole-medialist.c:1009
 msgid "Media list"
 msgstr "Zoznam médií"
 
@@ -371,7 +379,7 @@ msgid "Show playlist"
 msgstr "Zobraziť zoznam skladieb"
 
 #: ../src/parole-player.c:560
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:268
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:294
 msgid "Media stream is not seekable"
 msgstr ""
 
@@ -390,49 +398,30 @@ msgid "Previous Track"
 msgstr "Predchádzajúca skladba"
 
 #: ../src/parole-statusbar.c:61
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:566
 msgid "Buffering"
 msgstr "Ukladanie do vyrovnávacej pamäte"
 
-#: ../src/parole-statusbar.c:78
+#: ../src/parole-statusbar.c:100
 msgid "Stopped"
 msgstr "Zastavené"
 
-#: ../src/parole-statusbar.c:82
+#: ../src/parole-statusbar.c:104
 msgid "Finished"
 msgstr "Ukončené"
 
-#: ../src/parole-statusbar.c:89 ../src/parole-statusbar.c:97
+#: ../src/parole-statusbar.c:114 ../src/parole-statusbar.c:124
 msgid "Paused"
 msgstr "Pozastavené"
 
-#: ../src/parole-statusbar.c:89
+#: ../src/parole-statusbar.c:114
 #, fuzzy
 msgid "Playing"
 msgstr "Prehrávaná skladba"
 
-#: ../src/parole-statusbar.c:118
+#: ../src/parole-statusbar.c:145
 msgid "Live stream:"
 msgstr "Live stream:"
-
-#: ../src/parole-filters.c:57
-msgid "Audio"
-msgstr "Audio"
-
-#: ../src/parole-filters.c:75
-msgid "Video"
-msgstr "Video"
-
-#: ../src/parole-filters.c:93
-msgid "Audio and video"
-msgstr "Audio a video"
-
-#: ../src/parole-filters.c:111
-msgid "All supported files"
-msgstr "Všetky podporované súbory"
-
-#: ../src/parole-filters.c:127
-msgid "Playlist files"
-msgstr "Súbory zoznamov skladieb"
 
 #: ../src/parole-about.c:57
 msgid "Author/Maintainer"
@@ -609,17 +598,37 @@ msgstr "Prehrávaná skladba"
 msgid "Track %i"
 msgstr "Skladba %i"
 
-#: ../src/parole-plugins-manager.c:290 ../src/parole-plugins-manager.c:415
+#: ../src/parole-plugins-manager.c:296 ../src/parole-plugins-manager.c:422
 msgid "Visit Website"
 msgstr "Navštíviť webovú stránku"
 
-#: ../src/parole-plugins-manager.c:363
+#: ../src/parole-plugins-manager.c:370
 #: ../plugins/properties/stream-properties-provider.c:140
 #: ../plugins/properties/stream-properties-provider.c:141
 #: ../plugins/properties/stream-properties-provider.c:142
 #: ../plugins/properties/stream-properties-provider.c:143
 msgid "Unknown"
 msgstr "Neznáme"
+
+#: ../parole/parole-filters.c:56
+msgid "Audio"
+msgstr "Audio"
+
+#: ../parole/parole-filters.c:74
+msgid "Video"
+msgstr "Video"
+
+#: ../parole/parole-filters.c:92
+msgid "Audio and video"
+msgstr "Audio a video"
+
+#: ../parole/parole-filters.c:110
+msgid "All supported files"
+msgstr "Všetky podporované súbory"
+
+#: ../parole/parole-filters.c:126
+msgid "Playlist files"
+msgstr "Súbory zoznamov skladieb"
 
 #: ../plugins/properties/stream-properties-provider.c:254
 msgid "Title:"
@@ -649,7 +658,7 @@ msgstr ""
 msgid "Save media tags changes"
 msgstr ""
 
-#: ../plugins/properties/stream-properties-provider.c:516
+#: ../plugins/properties/stream-properties-provider.c:524
 msgid "Properties"
 msgstr "Vlastnosti"
 
@@ -662,39 +671,39 @@ msgstr ""
 msgid "Stream Properties"
 msgstr "Vlastnosti"
 
-#: ../plugins/tray/tray-provider.c:229
+#: ../plugins/tray/tray-provider.c:243
 msgid "<b>Playing:</b>"
 msgstr "<b>Prehrávanie:</b>"
 
-#: ../plugins/tray/tray-provider.c:229
+#: ../plugins/tray/tray-provider.c:243
 msgid "<b>Duration:</b>"
 msgstr "<b>Trvanie:</b>"
 
-#: ../plugins/tray/tray-provider.c:380
+#: ../plugins/tray/tray-provider.c:394
 msgid "Tray icon plugin"
 msgstr "Modul ikony v oznamovacej oblasti"
 
-#: ../plugins/tray/tray-provider.c:390
+#: ../plugins/tray/tray-provider.c:404
 msgid "Enable notification"
 msgstr "Povoliť oznamovanie"
 
-#: ../plugins/tray/tray-provider.c:399
+#: ../plugins/tray/tray-provider.c:413
 msgid "Always minimize to tray when window is closed"
 msgstr "Vždy minimalizovať to oznamovacej oblasti, pri zavretí okna"
 
-#: ../plugins/tray/tray-provider.c:438
+#: ../plugins/tray/tray-provider.c:452
 msgid "Minimize to tray?"
 msgstr "Minimalizovať do oznamovacej oblasti?"
 
-#: ../plugins/tray/tray-provider.c:444
+#: ../plugins/tray/tray-provider.c:458
 msgid "Minimize to tray"
 msgstr "Minimalizovať do oznamovacej oblasti"
 
-#: ../plugins/tray/tray-provider.c:460
+#: ../plugins/tray/tray-provider.c:474
 msgid "Are you sure you want to quit Parole"
 msgstr "Naozaj chcete ukončiť Parole"
 
-#: ../plugins/tray/tray-provider.c:464
+#: ../plugins/tray/tray-provider.c:478
 msgid "Remember my choice"
 msgstr "Zapamätať môj výber"
 
@@ -715,6 +724,14 @@ msgstr ""
 msgid "Window Title"
 msgstr "Titulok okna"
 
+#: ../plugins/power-manager/power-manager.desktop.in.h:1
+msgid "Inhibit Power Manager from suspending the machine while playing DVD."
+msgstr ""
+
+#: ../plugins/power-manager/power-manager.desktop.in.h:2
+msgid "Power Manager Plugin"
+msgstr ""
+
 #: ../browser-plugin/media-plugin/main.c:72
 msgid "socket"
 msgstr ""
@@ -732,12 +749,12 @@ msgstr "Média na prehrávanie"
 msgid "URL"
 msgstr ""
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:109
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:135
 #, fuzzy
 msgid "Leave fullscreen"
 msgstr "gtk-leave-fullscreen"
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:114
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:140
 #, fuzzy
 msgid "Fullscreen"
 msgstr "gtk-leave-fullscreen"
@@ -745,7 +762,7 @@ msgstr "gtk-leave-fullscreen"
 #.
 #. * Copy url
 #.
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:395
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:426
 msgid "Copy url"
 msgstr ""
 

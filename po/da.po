@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole 0.1.90\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-23 15:57+0100\n"
+"POT-Creation-Date: 2009-11-27 10:38+0100\n"
 "PO-Revision-Date: 2009-10-17 18:51+0100\n"
 "Last-Translator: Per Kongstad <p_kongstad@op.pl>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -133,6 +133,10 @@ msgstr ""
 msgid "Scan folders recursively"
 msgstr ""
 
+#: ../data/interfaces/mediachooser.ui.h:3
+msgid "Start playing opened files"
+msgstr ""
+
 #: ../data/interfaces/plugins.ui.h:1
 msgid "<b>Author:</b>"
 msgstr "<b>Forfatter:</b>"
@@ -221,27 +225,27 @@ msgstr "Efter filendelse"
 msgid "Select File Types (By Extension)"
 msgstr "Vælg filtyper (efter filendelse)"
 
-#: ../gst/parole-gst.c:1303
+#: ../gst/parole-gst.c:1489
+msgid "The stream is taking too much time to load"
+msgstr "Det tager for lang tid at indlæse strømmen"
+
+#: ../gst/parole-gst.c:1489
+msgid "Stop"
+msgstr "Stop"
+
+#: ../gst/parole-gst.c:1674
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Kunne ikke indlæse udvidelsesmodulet playbin GStreamer. Kontrollér din "
 "installation af GStreamer"
 
-#: ../gst/parole-gst.c:1319
+#: ../gst/parole-gst.c:1690
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Kunne ikke indlæse udvidelsesmodulet video GStreamer. Kontrollér din "
 "installation af GStreamer"
-
-#: ../gst/parole-gst.c:1514
-msgid "The stream is taking too much time to load"
-msgstr "Det tager for lang tid at indlæse strømmen"
-
-#: ../gst/parole-gst.c:1514
-msgid "Stop"
-msgstr "Stop"
 
 #: ../src/main.c:53
 #, c-format
@@ -264,109 +268,113 @@ msgstr ""
 "Licenseret under GNU GPL'en.\n"
 "\n"
 
-#: ../src/main.c:185
+#: ../src/main.c:191
 msgid "Open a new instance"
 msgstr "Åbn en ny instans"
 
-#: ../src/main.c:186
+#: ../src/main.c:192
 msgid "Do not load plugins"
 msgstr ""
 
-#: ../src/main.c:187
+#: ../src/main.c:193
+msgid "Set Audio-CD/VCD/DVD device path"
+msgstr ""
+
+#: ../src/main.c:194
 msgid "Play or pause if already playing"
 msgstr "Afspil eller pause hvis allerede afspiller"
 
-#: ../src/main.c:188
+#: ../src/main.c:195
 msgid "Stop playing"
 msgstr "Afbryd afspilning"
 
-#: ../src/main.c:189
+#: ../src/main.c:196
 msgid "Next track"
 msgstr "Næste spor"
 
-#: ../src/main.c:190
+#: ../src/main.c:197
 msgid "Previous track"
 msgstr "Forrige spor"
 
-#: ../src/main.c:191
+#: ../src/main.c:198
 msgid "Seek forward"
 msgstr "Søg fremad"
 
-#: ../src/main.c:192
+#: ../src/main.c:199
 msgid "Seek Backward"
 msgstr "Søg tilbage"
 
-#: ../src/main.c:193
+#: ../src/main.c:200
 msgid "Raise volume"
 msgstr "Forøg lydstyrke"
 
-#: ../src/main.c:194
+#: ../src/main.c:201
 msgid "Lower volume"
 msgstr "Formindsk lydstyrke"
 
-#: ../src/main.c:195
+#: ../src/main.c:202
 msgid "Mute volume"
 msgstr "Mute lydstyrke"
 
-#: ../src/main.c:196
+#: ../src/main.c:203
 msgid "Version information"
 msgstr "Versionsinformation"
 
-#: ../src/main.c:198
+#: ../src/main.c:205
 msgid "Media to play"
 msgstr "Media til afspilning"
 
-#: ../src/main.c:235
+#: ../src/main.c:242
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole kører allerede. Brug -i for at åbne en my instans\n"
 
-#: ../src/parole-mediachooser.c:196
+#: ../src/parole-mediachooser.c:213
 msgid "Add media files"
 msgstr "Tilføj mediefiler"
 
-#: ../src/parole-mediachooser.c:226
+#: ../src/parole-mediachooser.c:246
 msgid "Add"
 msgstr "Tilføj"
 
-#: ../src/parole-medialist.c:430
+#: ../src/parole-medialist.c:436
 msgid "Error saving playlist file"
 msgstr "Fejl opstod ved gem af spilleliste"
 
-#: ../src/parole-medialist.c:430
+#: ../src/parole-medialist.c:436
 msgid "Permission denied"
 msgstr "Adgang nægtet"
 
-#: ../src/parole-medialist.c:439
+#: ../src/parole-medialist.c:445
 msgid "Unknown playlist format, Please select a support playlist format"
 msgstr ""
 "Ukendt format af spilleliste. Vælg et understøttet format til spilleliste"
 
-#: ../src/parole-medialist.c:507 ../src/parole-player.c:1772
+#: ../src/parole-medialist.c:513 ../src/parole-player.c:1785
 msgid "Playlist"
 msgstr "Spilleliste"
 
-#: ../src/parole-medialist.c:514
+#: ../src/parole-medialist.c:520
 msgid "M3U Playlists"
 msgstr "M3U spillelister"
 
-#: ../src/parole-medialist.c:522
+#: ../src/parole-medialist.c:528
 msgid "PLS Playlists"
 msgstr "PLS spillelister"
 
-#: ../src/parole-medialist.c:530
+#: ../src/parole-medialist.c:536
 msgid "Advanced Stream Redirector"
 msgstr "Avanceret omdirigering af strøm"
 
-#: ../src/parole-medialist.c:538
+#: ../src/parole-medialist.c:544
 msgid "Shareable Playlist"
 msgstr "Delbar spilleliste"
 
-#: ../src/parole-medialist.c:853
+#: ../src/parole-medialist.c:859
 msgid "Remember playlist"
 msgstr "Husk spilleliste"
 
-#: ../src/parole-medialist.c:1003
+#: ../src/parole-medialist.c:1009
 msgid "Media list"
 msgstr "Medieliste"
 
@@ -379,7 +387,7 @@ msgid "Show playlist"
 msgstr "Vis spilleliste"
 
 #: ../src/parole-player.c:560
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:268
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:294
 msgid "Media stream is not seekable"
 msgstr "Mediestrømmen er ikke søgbar"
 
@@ -398,48 +406,29 @@ msgid "Previous Track"
 msgstr "Forrige spor"
 
 #: ../src/parole-statusbar.c:61
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:566
 msgid "Buffering"
 msgstr "Opbygger buffer"
 
-#: ../src/parole-statusbar.c:78
+#: ../src/parole-statusbar.c:100
 msgid "Stopped"
 msgstr "Stoppet"
 
-#: ../src/parole-statusbar.c:82
+#: ../src/parole-statusbar.c:104
 msgid "Finished"
 msgstr "Afsluttet"
 
-#: ../src/parole-statusbar.c:89 ../src/parole-statusbar.c:97
+#: ../src/parole-statusbar.c:114 ../src/parole-statusbar.c:124
 msgid "Paused"
 msgstr "Pause"
 
-#: ../src/parole-statusbar.c:89
+#: ../src/parole-statusbar.c:114
 msgid "Playing"
 msgstr "Afspiller"
 
-#: ../src/parole-statusbar.c:118
+#: ../src/parole-statusbar.c:145
 msgid "Live stream:"
 msgstr "Direkte strøm:"
-
-#: ../src/parole-filters.c:57
-msgid "Audio"
-msgstr "Lyd"
-
-#: ../src/parole-filters.c:75
-msgid "Video"
-msgstr "Video"
-
-#: ../src/parole-filters.c:93
-msgid "Audio and video"
-msgstr "Lyd og video"
-
-#: ../src/parole-filters.c:111
-msgid "All supported files"
-msgstr "Alle understøttede filer"
-
-#: ../src/parole-filters.c:127
-msgid "Playlist files"
-msgstr "Spillelistefiler"
 
 #: ../src/parole-about.c:57
 msgid "Author/Maintainer"
@@ -616,17 +605,37 @@ msgstr "Afspiller spor"
 msgid "Track %i"
 msgstr "Spor %i"
 
-#: ../src/parole-plugins-manager.c:290 ../src/parole-plugins-manager.c:415
+#: ../src/parole-plugins-manager.c:296 ../src/parole-plugins-manager.c:422
 msgid "Visit Website"
 msgstr "Besøg netsted"
 
-#: ../src/parole-plugins-manager.c:363
+#: ../src/parole-plugins-manager.c:370
 #: ../plugins/properties/stream-properties-provider.c:140
 #: ../plugins/properties/stream-properties-provider.c:141
 #: ../plugins/properties/stream-properties-provider.c:142
 #: ../plugins/properties/stream-properties-provider.c:143
 msgid "Unknown"
 msgstr "Ukendt"
+
+#: ../parole/parole-filters.c:56
+msgid "Audio"
+msgstr "Lyd"
+
+#: ../parole/parole-filters.c:74
+msgid "Video"
+msgstr "Video"
+
+#: ../parole/parole-filters.c:92
+msgid "Audio and video"
+msgstr "Lyd og video"
+
+#: ../parole/parole-filters.c:110
+msgid "All supported files"
+msgstr "Alle understøttede filer"
+
+#: ../parole/parole-filters.c:126
+msgid "Playlist files"
+msgstr "Spillelistefiler"
 
 #: ../plugins/properties/stream-properties-provider.c:254
 msgid "Title:"
@@ -656,7 +665,7 @@ msgstr "Strøm understøtter ikke ændringer af mærker"
 msgid "Save media tags changes"
 msgstr "Gem ændringer af mediemærker"
 
-#: ../plugins/properties/stream-properties-provider.c:516
+#: ../plugins/properties/stream-properties-provider.c:524
 msgid "Properties"
 msgstr "Egenskaber"
 
@@ -669,39 +678,39 @@ msgstr "Læs medieegenskaber"
 msgid "Stream Properties"
 msgstr "Egenskaber"
 
-#: ../plugins/tray/tray-provider.c:229
+#: ../plugins/tray/tray-provider.c:243
 msgid "<b>Playing:</b>"
 msgstr "<b>Afspiller:</b>"
 
-#: ../plugins/tray/tray-provider.c:229
+#: ../plugins/tray/tray-provider.c:243
 msgid "<b>Duration:</b>"
 msgstr "<b>Varighed:</b>"
 
-#: ../plugins/tray/tray-provider.c:380
+#: ../plugins/tray/tray-provider.c:394
 msgid "Tray icon plugin"
 msgstr "Udvidelsesmodul til statusikon"
 
-#: ../plugins/tray/tray-provider.c:390
+#: ../plugins/tray/tray-provider.c:404
 msgid "Enable notification"
 msgstr "Slå påmindelse til"
 
-#: ../plugins/tray/tray-provider.c:399
+#: ../plugins/tray/tray-provider.c:413
 msgid "Always minimize to tray when window is closed"
 msgstr "Minimér altid til statusfelt når vindue er lukket"
 
-#: ../plugins/tray/tray-provider.c:438
+#: ../plugins/tray/tray-provider.c:452
 msgid "Minimize to tray?"
 msgstr "Minimér til statusfelt?"
 
-#: ../plugins/tray/tray-provider.c:444
+#: ../plugins/tray/tray-provider.c:458
 msgid "Minimize to tray"
 msgstr "Minimér til statusfelt"
 
-#: ../plugins/tray/tray-provider.c:460
+#: ../plugins/tray/tray-provider.c:474
 msgid "Are you sure you want to quit Parole"
 msgstr "Er du sikker på, at du vil afbryde Parole"
 
-#: ../plugins/tray/tray-provider.c:464
+#: ../plugins/tray/tray-provider.c:478
 msgid "Remember my choice"
 msgstr "Husk mit valg"
 
@@ -725,6 +734,14 @@ msgstr ""
 msgid "Window Title"
 msgstr "Vinduetitel"
 
+#: ../plugins/power-manager/power-manager.desktop.in.h:1
+msgid "Inhibit Power Manager from suspending the machine while playing DVD."
+msgstr ""
+
+#: ../plugins/power-manager/power-manager.desktop.in.h:2
+msgid "Power Manager Plugin"
+msgstr ""
+
 #: ../browser-plugin/media-plugin/main.c:72
 msgid "socket"
 msgstr ""
@@ -742,12 +759,12 @@ msgstr "Media til afspilning"
 msgid "URL"
 msgstr ""
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:109
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:135
 #, fuzzy
 msgid "Leave fullscreen"
 msgstr "gtk-forlad-fuldskærm"
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:114
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:140
 #, fuzzy
 msgid "Fullscreen"
 msgstr "gtk-forlad-fuldskærm"
@@ -755,7 +772,7 @@ msgstr "gtk-forlad-fuldskærm"
 #.
 #. * Copy url
 #.
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:395
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:426
 msgid "Copy url"
 msgstr ""
 

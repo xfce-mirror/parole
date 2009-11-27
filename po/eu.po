@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-23 15:57+0100\n"
+"POT-Creation-Date: 2009-11-27 10:38+0100\n"
 "PO-Revision-Date: 2009-11-08 01:29+0100\n"
 "Last-Translator: Piarres Beobide <pi+debian@beobide.net>\n"
 "Language-Team: Basque <debian-l10n-basque@lists.debian.org>\n"
@@ -131,6 +131,10 @@ msgstr ""
 msgid "Scan folders recursively"
 msgstr ""
 
+#: ../data/interfaces/mediachooser.ui.h:3
+msgid "Start playing opened files"
+msgstr ""
+
 #: ../data/interfaces/plugins.ui.h:1
 msgid "<b>Author:</b>"
 msgstr "<b>Autorea:</b>"
@@ -219,25 +223,25 @@ msgstr "Luzapenez"
 msgid "Select File Types (By Extension)"
 msgstr "Hautatu fitxategi motak (luzapenez)"
 
-#: ../gst/parole-gst.c:1303
+#: ../gst/parole-gst.c:1489
+msgid "The stream is taking too much time to load"
+msgstr "Korrontea debora asko tardatzen ari da kargatzeko"
+
+#: ../gst/parole-gst.c:1489
+msgid "Stop"
+msgstr "Gelditu"
+
+#: ../gst/parole-gst.c:1674
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Ezin da playbin GStreamer plugina kargatu, egiaztatu GStreamer instalazioa"
 
-#: ../gst/parole-gst.c:1319
+#: ../gst/parole-gst.c:1690
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Ezin da bideo GStreamer plugina kargatu, egiaztatu GStreamer instalazioa"
-
-#: ../gst/parole-gst.c:1514
-msgid "The stream is taking too much time to load"
-msgstr "Korrontea debora asko tardatzen ari da kargatzeko"
-
-#: ../gst/parole-gst.c:1514
-msgid "Stop"
-msgstr "Gelditu"
 
 #: ../src/main.c:53
 #, c-format
@@ -260,112 +264,116 @@ msgstr ""
 "GNU GPL lizentziapean argitaratua.\n"
 "\n"
 
-#: ../src/main.c:185
+#: ../src/main.c:191
 msgid "Open a new instance"
 msgstr "Ireki instantzia berri bat"
 
-#: ../src/main.c:186
+#: ../src/main.c:192
 msgid "Do not load plugins"
 msgstr ""
 
-#: ../src/main.c:187
+#: ../src/main.c:193
+msgid "Set Audio-CD/VCD/DVD device path"
+msgstr ""
+
+#: ../src/main.c:194
 msgid "Play or pause if already playing"
 msgstr "Erreproduzitu edo gelditu martxan badago"
 
-#: ../src/main.c:188
+#: ../src/main.c:195
 msgid "Stop playing"
 msgstr "Gelditu erreprodukzioa"
 
-#: ../src/main.c:189
+#: ../src/main.c:196
 msgid "Next track"
 msgstr "Hurrengo pista"
 
-#: ../src/main.c:190
+#: ../src/main.c:197
 msgid "Previous track"
 msgstr "Aurreko pista"
 
-#: ../src/main.c:191
+#: ../src/main.c:198
 msgid "Seek forward"
 msgstr "Aurreratu"
 
-#: ../src/main.c:192
+#: ../src/main.c:199
 msgid "Seek Backward"
 msgstr "Atzeratu"
 
-#: ../src/main.c:193
+#: ../src/main.c:200
 msgid "Raise volume"
 msgstr "Igo bolumena"
 
-#: ../src/main.c:194
+#: ../src/main.c:201
 msgid "Lower volume"
 msgstr "Jaitsi bolumena"
 
-#: ../src/main.c:195
+#: ../src/main.c:202
 msgid "Mute volume"
 msgstr "Mututu bolumena"
 
-#: ../src/main.c:196
+#: ../src/main.c:203
 msgid "Version information"
 msgstr "Bertsio argibideak"
 
-#: ../src/main.c:198
+#: ../src/main.c:205
 msgid "Media to play"
 msgstr "Erreproduzitzeko euskarria"
 
-#: ../src/main.c:235
+#: ../src/main.c:242
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr ""
 "Parole dagoeneko exekutatzen ari da, -i erabili instantzia berri bat "
 "irekitzeko\n"
 
-#: ../src/parole-mediachooser.c:196
+#: ../src/parole-mediachooser.c:213
 msgid "Add media files"
 msgstr "Gehitu euskarri fitxategia"
 
-#: ../src/parole-mediachooser.c:226
+#: ../src/parole-mediachooser.c:246
 msgid "Add"
 msgstr "Gehitu"
 
-#: ../src/parole-medialist.c:430
+#: ../src/parole-medialist.c:436
 msgid "Error saving playlist file"
 msgstr "Errorea erreprodukzio-zerrenda gordetzean"
 
-#: ../src/parole-medialist.c:430
+#: ../src/parole-medialist.c:436
 msgid "Permission denied"
 msgstr "Baimena ukatua"
 
-#: ../src/parole-medialist.c:439
+#: ../src/parole-medialist.c:445
 msgid "Unknown playlist format, Please select a support playlist format"
 msgstr ""
 "Erreprodukzio-zerrenda formatu ezezaguna, mesedez hautatu onartzen den "
 "erreprodukzio-zerrenda formatu bat"
 
-#: ../src/parole-medialist.c:507 ../src/parole-player.c:1772
+#: ../src/parole-medialist.c:513 ../src/parole-player.c:1785
 msgid "Playlist"
 msgstr "Erreprodukzio-zerrenda "
 
-#: ../src/parole-medialist.c:514
+#: ../src/parole-medialist.c:520
 msgid "M3U Playlists"
 msgstr "M3U Erreprodukzio-zerrenda"
 
-#: ../src/parole-medialist.c:522
+#: ../src/parole-medialist.c:528
 msgid "PLS Playlists"
 msgstr "PLS Erreprodukzio-zerrenda"
 
-#: ../src/parole-medialist.c:530
+#: ../src/parole-medialist.c:536
 msgid "Advanced Stream Redirector"
 msgstr "Korrenten berbidatze aurreratua"
 
-#: ../src/parole-medialist.c:538
+#: ../src/parole-medialist.c:544
 msgid "Shareable Playlist"
 msgstr "Erreprodukzio-zerrenda partekatua"
 
-#: ../src/parole-medialist.c:853
+#: ../src/parole-medialist.c:859
 msgid "Remember playlist"
 msgstr "Gogoratu erreprodukzio-zerrenda"
 
-#: ../src/parole-medialist.c:1003
+#: ../src/parole-medialist.c:1009
 msgid "Media list"
 msgstr "Euskarri zerrenda"
 
@@ -378,7 +386,7 @@ msgid "Show playlist"
 msgstr "Ikusi erreprodukzio-zerrenda"
 
 #: ../src/parole-player.c:560
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:268
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:294
 msgid "Media stream is not seekable"
 msgstr "Euskarri korrontean ezin da salto egin"
 
@@ -397,48 +405,29 @@ msgid "Previous Track"
 msgstr "Aurreko pista"
 
 #: ../src/parole-statusbar.c:61
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:566
 msgid "Buffering"
 msgstr "Bufferra betetzen"
 
-#: ../src/parole-statusbar.c:78
+#: ../src/parole-statusbar.c:100
 msgid "Stopped"
 msgstr "Gelditurik"
 
-#: ../src/parole-statusbar.c:82
+#: ../src/parole-statusbar.c:104
 msgid "Finished"
 msgstr "Amaiturik"
 
-#: ../src/parole-statusbar.c:89 ../src/parole-statusbar.c:97
+#: ../src/parole-statusbar.c:114 ../src/parole-statusbar.c:124
 msgid "Paused"
 msgstr "Gelditurik"
 
-#: ../src/parole-statusbar.c:89
+#: ../src/parole-statusbar.c:114
 msgid "Playing"
 msgstr "Erreproduzitzen"
 
-#: ../src/parole-statusbar.c:118
+#: ../src/parole-statusbar.c:145
 msgid "Live stream:"
 msgstr "Sare bidezko korrontea:"
-
-#: ../src/parole-filters.c:57
-msgid "Audio"
-msgstr "Audioa"
-
-#: ../src/parole-filters.c:75
-msgid "Video"
-msgstr "Bideoa"
-
-#: ../src/parole-filters.c:93
-msgid "Audio and video"
-msgstr "Audio eta bideoa"
-
-#: ../src/parole-filters.c:111
-msgid "All supported files"
-msgstr "Onartutako fitxategi guztiak"
-
-#: ../src/parole-filters.c:127
-msgid "Playlist files"
-msgstr "Erreprodukzio-zerrenda fitxategiak"
 
 #: ../src/parole-about.c:57
 msgid "Author/Maintainer"
@@ -616,17 +605,37 @@ msgstr "Pista erreproduzitzen"
 msgid "Track %i"
 msgstr "%i pista"
 
-#: ../src/parole-plugins-manager.c:290 ../src/parole-plugins-manager.c:415
+#: ../src/parole-plugins-manager.c:296 ../src/parole-plugins-manager.c:422
 msgid "Visit Website"
 msgstr "Ikusi webgunea"
 
-#: ../src/parole-plugins-manager.c:363
+#: ../src/parole-plugins-manager.c:370
 #: ../plugins/properties/stream-properties-provider.c:140
 #: ../plugins/properties/stream-properties-provider.c:141
 #: ../plugins/properties/stream-properties-provider.c:142
 #: ../plugins/properties/stream-properties-provider.c:143
 msgid "Unknown"
 msgstr "Ezezaguna"
+
+#: ../parole/parole-filters.c:56
+msgid "Audio"
+msgstr "Audioa"
+
+#: ../parole/parole-filters.c:74
+msgid "Video"
+msgstr "Bideoa"
+
+#: ../parole/parole-filters.c:92
+msgid "Audio and video"
+msgstr "Audio eta bideoa"
+
+#: ../parole/parole-filters.c:110
+msgid "All supported files"
+msgstr "Onartutako fitxategi guztiak"
+
+#: ../parole/parole-filters.c:126
+msgid "Playlist files"
+msgstr "Erreprodukzio-zerrenda fitxategiak"
 
 #: ../plugins/properties/stream-properties-provider.c:254
 msgid "Title:"
@@ -656,7 +665,7 @@ msgstr "Korronteak ez du etiketa aldaketa onartzen"
 msgid "Save media tags changes"
 msgstr "Gorde euskarri etiketa aldaketak"
 
-#: ../plugins/properties/stream-properties-provider.c:516
+#: ../plugins/properties/stream-properties-provider.c:524
 msgid "Properties"
 msgstr "Propietateak"
 
@@ -669,39 +678,39 @@ msgstr "Irakurri euskarri propietateak"
 msgid "Stream Properties"
 msgstr "Propietateak"
 
-#: ../plugins/tray/tray-provider.c:229
+#: ../plugins/tray/tray-provider.c:243
 msgid "<b>Playing:</b>"
 msgstr "<b>Erreproduzitzen:</b>"
 
-#: ../plugins/tray/tray-provider.c:229
+#: ../plugins/tray/tray-provider.c:243
 msgid "<b>Duration:</b>"
 msgstr "<b>Iraupena:</b>"
 
-#: ../plugins/tray/tray-provider.c:380
+#: ../plugins/tray/tray-provider.c:394
 msgid "Tray icon plugin"
 msgstr "Erretilu ikono plugina"
 
-#: ../plugins/tray/tray-provider.c:390
+#: ../plugins/tray/tray-provider.c:404
 msgid "Enable notification"
 msgstr "Gaitu berri-ematea"
 
-#: ../plugins/tray/tray-provider.c:399
+#: ../plugins/tray/tray-provider.c:413
 msgid "Always minimize to tray when window is closed"
 msgstr "Beti txikitu erretilura leihoa ixtean"
 
-#: ../plugins/tray/tray-provider.c:438
+#: ../plugins/tray/tray-provider.c:452
 msgid "Minimize to tray?"
 msgstr "Txikitu erretilura?"
 
-#: ../plugins/tray/tray-provider.c:444
+#: ../plugins/tray/tray-provider.c:458
 msgid "Minimize to tray"
 msgstr "Txikitu erretilura"
 
-#: ../plugins/tray/tray-provider.c:460
+#: ../plugins/tray/tray-provider.c:474
 msgid "Are you sure you want to quit Parole"
 msgstr "Ziur zaude Parole itxi nahi duzula?"
 
-#: ../plugins/tray/tray-provider.c:464
+#: ../plugins/tray/tray-provider.c:478
 msgid "Remember my choice"
 msgstr "Gogoratu nire hautapena"
 
@@ -725,6 +734,14 @@ msgstr ""
 msgid "Window Title"
 msgstr "Leiho izenburua"
 
+#: ../plugins/power-manager/power-manager.desktop.in.h:1
+msgid "Inhibit Power Manager from suspending the machine while playing DVD."
+msgstr ""
+
+#: ../plugins/power-manager/power-manager.desktop.in.h:2
+msgid "Power Manager Plugin"
+msgstr ""
+
 #: ../browser-plugin/media-plugin/main.c:72
 msgid "socket"
 msgstr ""
@@ -742,18 +759,18 @@ msgstr "Erreproduzitzeko euskarria"
 msgid "URL"
 msgstr ""
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:109
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:135
 msgid "Leave fullscreen"
 msgstr ""
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:114
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:140
 msgid "Fullscreen"
 msgstr ""
 
 #.
 #. * Copy url
 #.
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:395
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:426
 msgid "Copy url"
 msgstr ""
 

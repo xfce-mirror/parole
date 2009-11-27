@@ -1,3 +1,15 @@
+1.98
+====
+- Fix missing signal handler for the mute menu item.
+- Don't hide the controls in full screen when cursor is above
+  the popup window.
+- Respect browser plugin dir installation directory.
+- Support for playlist format in the media browser plugin, that it, the 
+  plugin now gets the data from the browser, save it in a temporary
+  file parse it and play it...
+- Added an option in the media chooser to chooer whether to start
+  playing opened files directly or not (bug #6035).
+
 1.96
 ====
 - Fix the plugin loader bug, when the a plugin is asking to pack a widget

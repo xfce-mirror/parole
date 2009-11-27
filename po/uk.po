@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-23 15:57+0100\n"
+"POT-Creation-Date: 2009-11-27 10:38+0100\n"
 "PO-Revision-Date: 2009-08-30 20:32+0300\n"
 "Last-Translator: Motsyo Gennadi <drool@altlinux.ru>\n"
 "Language-Team: Ukrainian\n"
@@ -132,6 +132,10 @@ msgstr ""
 msgid "Scan folders recursively"
 msgstr ""
 
+#: ../data/interfaces/mediachooser.ui.h:3
+msgid "Start playing opened files"
+msgstr ""
+
 #: ../data/interfaces/plugins.ui.h:1
 msgid "<b>Author:</b>"
 msgstr "<b>Автор:</b>"
@@ -222,26 +226,26 @@ msgstr "За розширенням"
 msgid "Select File Types (By Extension)"
 msgstr "Вибрати тип файлу (за розширенням)"
 
-#: ../gst/parole-gst.c:1303
+#: ../gst/parole-gst.c:1489
+#, fuzzy
+msgid "The stream is taking too much time to load"
+msgstr "Потік вимагає багато часу для завантаження"
+
+#: ../gst/parole-gst.c:1489
+msgid "Stop"
+msgstr "Стоп"
+
+#: ../gst/parole-gst.c:1674
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Не можу завантажити GStreamer аудіо-плагін, перевірте наявність GStreamer"
 
-#: ../gst/parole-gst.c:1319
+#: ../gst/parole-gst.c:1690
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Не можу завантажити GStreamer відео-плагін, перевірте наявність GStreamer"
-
-#: ../gst/parole-gst.c:1514
-#, fuzzy
-msgid "The stream is taking too much time to load"
-msgstr "Потік вимагає багато часу для завантаження"
-
-#: ../gst/parole-gst.c:1514
-msgid "Stop"
-msgstr "Стоп"
 
 #: ../src/main.c:53
 #, c-format
@@ -256,112 +260,116 @@ msgid ""
 "\n"
 msgstr ""
 
-#: ../src/main.c:185
+#: ../src/main.c:191
 msgid "Open a new instance"
 msgstr "Відкривати окремим екземпляром"
 
-#: ../src/main.c:186
+#: ../src/main.c:192
 msgid "Do not load plugins"
 msgstr ""
 
-#: ../src/main.c:187
+#: ../src/main.c:193
+msgid "Set Audio-CD/VCD/DVD device path"
+msgstr ""
+
+#: ../src/main.c:194
 msgid "Play or pause if already playing"
 msgstr ""
 
-#: ../src/main.c:188
+#: ../src/main.c:195
 #, fuzzy
 msgid "Stop playing"
 msgstr "Показати список"
 
-#: ../src/main.c:189
+#: ../src/main.c:196
 #, fuzzy
 msgid "Next track"
 msgstr "Наступний трек"
 
-#: ../src/main.c:190
+#: ../src/main.c:197
 #, fuzzy
 msgid "Previous track"
 msgstr "Попередній трек"
 
-#: ../src/main.c:191
+#: ../src/main.c:198
 msgid "Seek forward"
 msgstr ""
 
-#: ../src/main.c:192
+#: ../src/main.c:199
 msgid "Seek Backward"
 msgstr ""
 
-#: ../src/main.c:193
+#: ../src/main.c:200
 msgid "Raise volume"
 msgstr ""
 
-#: ../src/main.c:194
+#: ../src/main.c:201
 msgid "Lower volume"
 msgstr ""
 
-#: ../src/main.c:195
+#: ../src/main.c:202
 msgid "Mute volume"
 msgstr ""
 
-#: ../src/main.c:196
+#: ../src/main.c:203
 msgid "Version information"
 msgstr "Версія"
 
-#: ../src/main.c:198
+#: ../src/main.c:205
 msgid "Media to play"
 msgstr "Об'єкт для відтворення"
 
-#: ../src/main.c:235
+#: ../src/main.c:242
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr ""
 "Parole вже запущено, використовуйте -i для відкриття окремим екземпляром\n"
 
-#: ../src/parole-mediachooser.c:196
+#: ../src/parole-mediachooser.c:213
 msgid "Add media files"
 msgstr "Додати медіа-файл"
 
-#: ../src/parole-mediachooser.c:226
+#: ../src/parole-mediachooser.c:246
 msgid "Add"
 msgstr "Додати"
 
-#: ../src/parole-medialist.c:430
+#: ../src/parole-medialist.c:436
 msgid "Error saving playlist file"
 msgstr "Помилка збереження списку"
 
-#: ../src/parole-medialist.c:430
+#: ../src/parole-medialist.c:436
 msgid "Permission denied"
 msgstr "Відмовлено у доступі"
 
-#: ../src/parole-medialist.c:439
+#: ../src/parole-medialist.c:445
 msgid "Unknown playlist format, Please select a support playlist format"
 msgstr "Формат списку не підтримується. Виберіть допустимий формат списку"
 
-#: ../src/parole-medialist.c:507 ../src/parole-player.c:1772
+#: ../src/parole-medialist.c:513 ../src/parole-player.c:1785
 msgid "Playlist"
 msgstr "Список"
 
-#: ../src/parole-medialist.c:514
+#: ../src/parole-medialist.c:520
 msgid "M3U Playlists"
 msgstr "M3U-списки"
 
-#: ../src/parole-medialist.c:522
+#: ../src/parole-medialist.c:528
 msgid "PLS Playlists"
 msgstr "PLS-списки"
 
-#: ../src/parole-medialist.c:530
+#: ../src/parole-medialist.c:536
 msgid "Advanced Stream Redirector"
 msgstr "Розширене перенаправлення потоку"
 
-#: ../src/parole-medialist.c:538
+#: ../src/parole-medialist.c:544
 msgid "Shareable Playlist"
 msgstr "Спільний список"
 
-#: ../src/parole-medialist.c:853
+#: ../src/parole-medialist.c:859
 msgid "Remember playlist"
 msgstr "Запам'ятати список"
 
-#: ../src/parole-medialist.c:1003
+#: ../src/parole-medialist.c:1009
 msgid "Media list"
 msgstr "Список файлів"
 
@@ -374,7 +382,7 @@ msgid "Show playlist"
 msgstr "Показати список"
 
 #: ../src/parole-player.c:560
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:268
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:294
 msgid "Media stream is not seekable"
 msgstr "Потік недоступний для перегляду"
 
@@ -393,49 +401,30 @@ msgid "Previous Track"
 msgstr "Попередній трек"
 
 #: ../src/parole-statusbar.c:61
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:566
 msgid "Buffering"
 msgstr "Буферизація"
 
-#: ../src/parole-statusbar.c:78
+#: ../src/parole-statusbar.c:100
 msgid "Stopped"
 msgstr "Зупинено"
 
-#: ../src/parole-statusbar.c:82
+#: ../src/parole-statusbar.c:104
 msgid "Finished"
 msgstr "Відтворено"
 
-#: ../src/parole-statusbar.c:89 ../src/parole-statusbar.c:97
+#: ../src/parole-statusbar.c:114 ../src/parole-statusbar.c:124
 msgid "Paused"
 msgstr "Пауза"
 
-#: ../src/parole-statusbar.c:89
+#: ../src/parole-statusbar.c:114
 #, fuzzy
 msgid "Playing"
 msgstr "Відтворюється трек"
 
-#: ../src/parole-statusbar.c:118
+#: ../src/parole-statusbar.c:145
 msgid "Live stream:"
 msgstr "Потік:"
-
-#: ../src/parole-filters.c:57
-msgid "Audio"
-msgstr "Звук"
-
-#: ../src/parole-filters.c:75
-msgid "Video"
-msgstr "Відео"
-
-#: ../src/parole-filters.c:93
-msgid "Audio and video"
-msgstr "Звук та відео"
-
-#: ../src/parole-filters.c:111
-msgid "All supported files"
-msgstr "Всі доступні формати"
-
-#: ../src/parole-filters.c:127
-msgid "Playlist files"
-msgstr "Файли списків"
 
 #: ../src/parole-about.c:57
 msgid "Author/Maintainer"
@@ -612,17 +601,37 @@ msgstr "Відтворюється трек"
 msgid "Track %i"
 msgstr "Трек %i"
 
-#: ../src/parole-plugins-manager.c:290 ../src/parole-plugins-manager.c:415
+#: ../src/parole-plugins-manager.c:296 ../src/parole-plugins-manager.c:422
 msgid "Visit Website"
 msgstr "Відвідайте WEB-сайт"
 
-#: ../src/parole-plugins-manager.c:363
+#: ../src/parole-plugins-manager.c:370
 #: ../plugins/properties/stream-properties-provider.c:140
 #: ../plugins/properties/stream-properties-provider.c:141
 #: ../plugins/properties/stream-properties-provider.c:142
 #: ../plugins/properties/stream-properties-provider.c:143
 msgid "Unknown"
 msgstr "Невідомо"
+
+#: ../parole/parole-filters.c:56
+msgid "Audio"
+msgstr "Звук"
+
+#: ../parole/parole-filters.c:74
+msgid "Video"
+msgstr "Відео"
+
+#: ../parole/parole-filters.c:92
+msgid "Audio and video"
+msgstr "Звук та відео"
+
+#: ../parole/parole-filters.c:110
+msgid "All supported files"
+msgstr "Всі доступні формати"
+
+#: ../parole/parole-filters.c:126
+msgid "Playlist files"
+msgstr "Файли списків"
 
 #: ../plugins/properties/stream-properties-provider.c:254
 msgid "Title:"
@@ -652,7 +661,7 @@ msgstr "Потік не підтримує зміну тегів"
 msgid "Save media tags changes"
 msgstr "Зберегти зміни медіа-тегів"
 
-#: ../plugins/properties/stream-properties-provider.c:516
+#: ../plugins/properties/stream-properties-provider.c:524
 msgid "Properties"
 msgstr "Властивості"
 
@@ -665,39 +674,39 @@ msgstr "Зчитати властивості медіа"
 msgid "Stream Properties"
 msgstr "Властивості"
 
-#: ../plugins/tray/tray-provider.c:229
+#: ../plugins/tray/tray-provider.c:243
 msgid "<b>Playing:</b>"
 msgstr "<b>Відтворення:</b>"
 
-#: ../plugins/tray/tray-provider.c:229
+#: ../plugins/tray/tray-provider.c:243
 msgid "<b>Duration:</b>"
 msgstr "<b>Тривалість:</b>"
 
-#: ../plugins/tray/tray-provider.c:380
+#: ../plugins/tray/tray-provider.c:394
 msgid "Tray icon plugin"
 msgstr "Плагін значка в лотку"
 
-#: ../plugins/tray/tray-provider.c:390
+#: ../plugins/tray/tray-provider.c:404
 msgid "Enable notification"
 msgstr "Увімкнути повідомлення"
 
-#: ../plugins/tray/tray-provider.c:399
+#: ../plugins/tray/tray-provider.c:413
 msgid "Always minimize to tray when window is closed"
 msgstr ""
 
-#: ../plugins/tray/tray-provider.c:438
+#: ../plugins/tray/tray-provider.c:452
 msgid "Minimize to tray?"
 msgstr ""
 
-#: ../plugins/tray/tray-provider.c:444
+#: ../plugins/tray/tray-provider.c:458
 msgid "Minimize to tray"
 msgstr ""
 
-#: ../plugins/tray/tray-provider.c:460
+#: ../plugins/tray/tray-provider.c:474
 msgid "Are you sure you want to quit Parole"
 msgstr ""
 
-#: ../plugins/tray/tray-provider.c:464
+#: ../plugins/tray/tray-provider.c:478
 #, fuzzy
 msgid "Remember my choice"
 msgstr "Запам'ятати список"
@@ -722,6 +731,14 @@ msgstr ""
 msgid "Window Title"
 msgstr "Заголовок вікна"
 
+#: ../plugins/power-manager/power-manager.desktop.in.h:1
+msgid "Inhibit Power Manager from suspending the machine while playing DVD."
+msgstr ""
+
+#: ../plugins/power-manager/power-manager.desktop.in.h:2
+msgid "Power Manager Plugin"
+msgstr ""
+
 #: ../browser-plugin/media-plugin/main.c:72
 msgid "socket"
 msgstr ""
@@ -739,12 +756,12 @@ msgstr "Об'єкт для відтворення"
 msgid "URL"
 msgstr ""
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:109
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:135
 #, fuzzy
 msgid "Leave fullscreen"
 msgstr "Вийти з повноекранного режиму"
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:114
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:140
 #, fuzzy
 msgid "Fullscreen"
 msgstr "Вийти з повноекранного режиму"
@@ -752,7 +769,7 @@ msgstr "Вийти з повноекранного режиму"
 #.
 #. * Copy url
 #.
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:395
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:426
 msgid "Copy url"
 msgstr ""
 
