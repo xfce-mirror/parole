@@ -67,6 +67,9 @@ void	parole_media_chooser_recursive_toggled_cb (GtkToggleButton *recursive,
 void    parole_media_chooser_replace_toggled_cb (GtkToggleButton *button,
 						 gpointer data);    
 
+void    start_playing_toggled_cb (GtkToggleButton *button,
+				  gpointer data);
+
 enum
 {
     MEDIA_FILES_OPENED,
@@ -103,8 +106,10 @@ parole_media_chooser_add (ParoleMediaChooser *chooser, GtkWidget *file_chooser)
     GtkFileFilter *filter;
     GtkWidget *recursive;
     GtkWidget *replace;
+    GtkWidget *play_opened;
     gboolean scan_recursive;
     gboolean replace_playlist;
+    gboolean play;
     gchar *file;
     guint    i;
     guint len;
@@ -117,9 +122,11 @@ parole_media_chooser_add (ParoleMediaChooser *chooser, GtkWidget *file_chooser)
 	
     recursive = g_object_get_data (G_OBJECT (chooser), "recursive");
     replace = g_object_get_data (G_OBJECT (chooser), "replace-playlist");
+    play_opened = g_object_get_data (G_OBJECT (chooser), "play");
     
     scan_recursive = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (recursive));
     replace_playlist = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (replace));
+    play = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (play_opened));
     
     len = g_slist_length (files);
     
@@ -129,7 +136,7 @@ parole_media_chooser_add (ParoleMediaChooser *chooser, GtkWidget *file_chooser)
 	parole_get_media_files (filter, file, scan_recursive, &media_files);
     }
     
-    g_signal_emit (G_OBJECT (chooser), signals [MEDIA_FILES_OPENED], 0, replace_playlist, media_files);
+    g_signal_emit (G_OBJECT (chooser), signals [MEDIA_FILES_OPENED], 0, play, replace_playlist, media_files);
     g_slist_free (media_files);
     
     g_slist_foreach (files, (GFunc) g_free, NULL);
@@ -169,6 +176,14 @@ void    parole_media_chooser_replace_toggled_cb (GtkToggleButton *button,
 				gtk_toggle_button_get_active (button));
 }
 
+void start_playing_toggled_cb (GtkToggleButton *button,
+			       gpointer data)
+{
+    parole_rc_write_entry_bool ("play-opened-files", 
+			        PAROLE_RC_GROUP_GENERAL, 
+				gtk_toggle_button_get_active (button));
+}
+
 static void
 parole_media_chooser_open_internal (GtkWidget *chooser)
 {
@@ -180,8 +195,10 @@ parole_media_chooser_open_internal (GtkWidget *chooser)
     GtkWidget   *img;
     GtkWidget   *recursive;
     GtkWidget   *replace;
+    GtkWidget   *play_opened;
     gboolean     scan_recursive;
     gboolean     replace_playlist;
+    gboolean     play;
     const gchar *folder;
 
     media_chooser = PAROLE_MEDIA_CHOOSER (chooser);
@@ -212,12 +229,15 @@ parole_media_chooser_open_internal (GtkWidget *chooser)
     
     recursive = GTK_WIDGET (gtk_builder_get_object (builder, "recursive"));
     replace = GTK_WIDGET (gtk_builder_get_object (builder, "replace"));
+    play_opened = GTK_WIDGET (gtk_builder_get_object (builder, "play-added-files"));
     
     scan_recursive = parole_rc_read_entry_bool ("scan-recursive", PAROLE_RC_GROUP_GENERAL, TRUE);
     replace_playlist = parole_rc_read_entry_bool ("replace-playlist", PAROLE_RC_GROUP_GENERAL, FALSE);
-     
+    play = parole_rc_read_entry_bool ("play-opened-files", PAROLE_RC_GROUP_GENERAL, TRUE);
+    
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (recursive), scan_recursive);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (replace), replace_playlist);
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (play_opened), play);
     
     img = gtk_image_new_from_stock (GTK_STOCK_ADD, GTK_ICON_SIZE_BUTTON);
     
@@ -229,6 +249,7 @@ parole_media_chooser_open_internal (GtkWidget *chooser)
     g_object_set_data (G_OBJECT (chooser), "file-chooser", file_chooser);
     g_object_set_data (G_OBJECT (chooser), "recursive", recursive);
     g_object_set_data (G_OBJECT (chooser), "replace-playlist", replace);
+    g_object_set_data (G_OBJECT (chooser), "play", play_opened);
     
     gtk_container_add (GTK_CONTAINER (GTK_DIALOG (media_chooser)->vbox), vbox);
     gtk_builder_connect_signals (builder, chooser);
@@ -255,8 +276,9 @@ parole_media_chooser_class_init (ParoleMediaChooserClass *klass)
                       G_SIGNAL_RUN_LAST,
                       G_STRUCT_OFFSET (ParoleMediaChooserClass, media_files_opened),
                       NULL, NULL,
-		      _gmarshal_VOID__BOOLEAN_POINTER,
-                      G_TYPE_NONE, 2, 
+		      _gmarshal_VOID__BOOLEAN_BOOLEAN_POINTER,
+                      G_TYPE_NONE, 3, 
+		      G_TYPE_BOOLEAN,
 		      G_TYPE_BOOLEAN,
 		      G_TYPE_POINTER);
 

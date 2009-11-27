@@ -50,6 +50,21 @@
       </packing>
     </child>
     <child>
+      <object class="GtkCheckButton" id="play-added-files">
+        <property name="label" translatable="yes">Start playing opened files</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">False</property>
+        <property name="draw_indicator">True</property>
+        <signal name="toggled" handler="start_playing_toggled_cb"/>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">False</property>
+        <property name="position">3</property>
+      </packing>
+    </child>
+    <child>
       <object class="GtkHButtonBox" id="hbuttonbox1">
         <property name="visible">True</property>
         <property name="border_width">5</property>
@@ -87,7 +102,7 @@
       </object>
       <packing>
         <property name="expand">False</property>
-        <property name="position">3</property>
+        <property name="position">4</property>
       </packing>
     </child>
   </object>

@@ -260,10 +260,13 @@ parole_media_list_files_open (ParoleMediaList *list, GSList *files,
 }
 
 static void
-parole_media_list_files_opened_cb (ParoleMediaChooser *chooser, gboolean replace,
-				   GSList *files, ParoleMediaList *list)
+parole_media_list_files_opened_cb (ParoleMediaChooser *chooser, 
+				   gboolean play,
+				   gboolean replace,
+				   GSList *files, 
+				   ParoleMediaList *list)
 {
-    parole_media_list_files_open (list, files, replace, TRUE);
+    parole_media_list_files_open (list, files, replace, play);
 }
 
 static void
@@ -1086,7 +1089,7 @@ void parole_media_list_load (ParoleMediaList *list)
 	    fileslist = parole_pl_parser_parse_from_file_by_extension (playlist_file);
 	    g_free (playlist_file);
 	    
-	    parole_media_list_files_opened_cb (NULL, FALSE, fileslist, list);
+	    parole_media_list_files_opened_cb (NULL, FALSE, FALSE, fileslist, list);
 	    g_slist_free (fileslist);
 	}
     }
