@@ -35,20 +35,21 @@ typedef enum
     PAROLE_PL_FORMAT_M3U,
     PAROLE_PL_FORMAT_PLS,
     PAROLE_PL_FORMAT_ASX,
-    PAROLE_PL_FORMAT_XSPF,
-    PAROLE_PL_FORMAT_PLAYLIST
+    PAROLE_PL_FORMAT_XSPF
     
 } ParolePlFormat;
 
-ParolePlFormat		 parole_pl_parser_guess_format_from_extension   (const gchar *filename);
+ParolePlFormat		 parole_pl_parser_guess_format_from_extension   	(const gchar *filename);
 
-gboolean		 parole_pl_parser_can_parse_data		(const guchar *data, gint len);
+gboolean		 parole_pl_parser_can_parse_data			(const guchar *data, gint len);
 
-GSList 			*parole_pl_parser_load_file		        (const gchar *filename);
+GSList 			*parole_pl_parser_parse_from_file_by_extension     	(const gchar *filename);
 
-gboolean		 parole_pl_parser_save_file		        (GSList *files,
-								         const gchar *filename,
-									 ParolePlFormat format);
+GSList                   *parole_pl_parser_parse_all_from_file			(const gchar *filename);
+
+gboolean		 parole_pl_parser_save_from_files	        	(GSList *files,
+										 const gchar *filename,
+										 ParolePlFormat format);
 
 G_END_DECLS
 

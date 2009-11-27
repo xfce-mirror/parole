@@ -18,6 +18,8 @@ CXXFLAGS += -Wextra -Wno-missing-field-initializers	\
 	-fstack-protector -O0 -g3 -Werror
 endif
 
+CFLAGS=$(CXXFLAGS)
+
 INCLUDES =                                              \
         -fPIC                                           \
         -I$(top_builddir)                               \
@@ -30,7 +32,7 @@ INCLUDES =                                              \
         $(GTK_CFLAGS)                                   \
         $(DBUS_GLIB_CFLAGS)				\
 	$(TAGLIBC_CFLAGS)				\
-	$(LIBXFCE4UTIL_CFLAGS)
+	$(LIBXFCE4UTIL_CFLAGS)				\
 	$(DEFINES)
 
 install_libexecdir = $(BROWSER_PLUGIN_DIR)
@@ -59,4 +61,4 @@ parole_player_so_LDFLAGS =                              \
         $(DBUS_GLIB_LIBS)				\
 	$(TAGLIBC_LIBS)					\
 	$(LIBXFCE4UTIL_LIBS)				\
-	$(top_builddir)/parole/libparole.la
+	$(top_builddir)/parole/libparole.la 	

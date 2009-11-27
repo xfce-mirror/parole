@@ -97,6 +97,7 @@ enum
 
 enum
 {
+    SIG_FINISHED,
     SIG_EXITING,
     SIG_READY,
     LAST_SIGNAL
@@ -306,11 +307,17 @@ parole_plugin_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream,
 	{
 	    parole_plugin_player_play (player);
 	}
+	else if ( player->priv->finished )
+	{
+	    player->priv->finished = FALSE;
+	    g_signal_emit (player, signals [SIG_FINISHED], 0);
+	}
     }
     else if ( state == PAROLE_MEDIA_STATE_FINISHED )
     {
 	parole_plugin_player_change_range_value (player, 0);
 	player->priv->finished = TRUE;
+	parole_gst_stop (PAROLE_GST (player->priv->gst));
     }
 }
 
@@ -694,6 +701,15 @@ parole_plugin_player_class_init (ParolePluginPlayerClass *klass)
     object_class->set_property = parole_plugin_player_set_property;
 
     object_class->constructed = parole_plugin_player_construct;
+    
+    signals[SIG_FINISHED] = 
+        g_signal_new ("finished",
+                      PAROLE_TYPE_PLUGIN_PLAYER,
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET (ParolePluginPlayerClass, finished),
+                      NULL, NULL,
+                      g_cclosure_marshal_VOID__VOID,
+                      G_TYPE_NONE, 0, G_TYPE_NONE);
     
     signals[SIG_EXITING] = 
         g_signal_new ("exiting",

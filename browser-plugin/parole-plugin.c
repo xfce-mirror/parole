@@ -123,6 +123,27 @@ parole_plugin_ping (gpointer data)
     return TRUE;
 }
 
+static void
+parole_plugin_send_play (ParolePlugin *plugin, const gchar *url)
+{
+    GError *error = NULL;
+    g_return_if_fail (plugin->proxy);
+    
+    g_debug ("Sending play request of stream %s", url);
+    dbus_g_proxy_call (plugin->proxy, "PlayUrl", &error,
+		       G_TYPE_STRING, url,
+		       G_TYPE_INVALID,
+		       G_TYPE_INVALID);
+		       
+    plugin->player_playing = TRUE;
+    
+    if ( error )
+    {
+	g_critical ("Failed to play stream %s : %s", url, error->message);
+	g_error_free (error);
+	plugin->player_playing = FALSE;
+    }
+}
 
 static void
 parole_plugin_player_exiting_cb (DBusGProxy *proxy, ParolePlugin *plugin)
@@ -143,6 +164,23 @@ parole_plugin_player_ready_cb (DBusGProxy *proxy, ParolePlugin *plugin)
     {
 	plugin->ping_id = g_timeout_add_seconds (10, (GSourceFunc) parole_plugin_ping, plugin);
     }
+}
+
+static void
+parole_plugin_player_finished_cb (DBusGProxy *proxy, ParolePlugin *plugin)
+{
+    g_debug ("Player finished");
+    if ( plugin->is_playlist )
+    {
+	plugin->list = plugin->list->next;
+	if ( plugin->list->data )
+	{
+	    ParoleFile *file;
+	    file = PAROLE_FILE (plugin->list->data);
+	    parole_plugin_send_play (plugin, parole_file_get_uri (file));
+	}
+    }
+    
 }
 
 static void
@@ -249,8 +287,12 @@ parole_plugin_get_proxy (ParolePlugin *plugin)
 	g_critical ("Unable to create proxy for %s", dbus_name);
     else
     {
+	dbus_g_proxy_add_signal (plugin->proxy, "Finished", G_TYPE_INVALID);
 	dbus_g_proxy_add_signal (plugin->proxy, "Exiting", G_TYPE_INVALID);
 	dbus_g_proxy_add_signal (plugin->proxy, "Ready", G_TYPE_INVALID);
+	
+	dbus_g_proxy_connect_signal (plugin->proxy, "Finished",
+				     G_CALLBACK (parole_plugin_player_finished_cb), plugin, NULL);
 	
 	dbus_g_proxy_connect_signal (plugin->proxy, "Exiting",
 				     G_CALLBACK (parole_plugin_player_exiting_cb), plugin, NULL);
@@ -298,28 +340,6 @@ parole_plugin_run_player (ParolePlugin *plugin)
     parole_plugin_get_proxy (plugin);
 
     return NPERR_NO_ERROR;
-}
-
-static void
-parole_plugin_send_play (ParolePlugin *plugin, const gchar *url)
-{
-    GError *error = NULL;
-    g_return_if_fail (plugin->proxy);
-    
-    g_debug ("Sending play request of stream %s", url);
-    dbus_g_proxy_call (plugin->proxy, "PlayUrl", &error,
-		       G_TYPE_STRING, url,
-		       G_TYPE_INVALID,
-		       G_TYPE_INVALID);
-		       
-    plugin->player_playing = TRUE;
-    
-    if ( error )
-    {
-	g_critical ("Failed to play stream %s : %s", url, error->message);
-	g_error_free (error);
-	plugin->player_playing = FALSE;
-    }
 }
 
 ParolePlugin *
@@ -440,7 +460,9 @@ int32 parole_plugin_write (ParolePlugin *plugin,
 	{
 	    fseek (plugin->cache, offset, SEEK_SET);
 	    wrotebytes += fwrite (buffer, 1, len, plugin->cache);
+#ifdef DEBUG
 	    g_debug ("Wrotebytes=%d offset=%d data=%s", wrotebytes, offset, (gchar*)buffer);
+#endif
 	}
 	
 	if ( wrotebytes >= 0 )
@@ -448,7 +470,7 @@ int32 parole_plugin_write (ParolePlugin *plugin,
 	    ParoleFile *file;
 	    fclose (plugin->cache);
 	    plugin->cache = NULL;
-	    plugin->list = parole_pl_parser_load_file (plugin->tmp_file);
+	    plugin->list = parole_pl_parser_parse_from_file_by_extension (plugin->tmp_file);
 	    
 	    if (plugin->list != NULL && g_slist_length (plugin->list) != 0 && plugin->player_playing == FALSE )
 	    {

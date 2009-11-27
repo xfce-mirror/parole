@@ -448,7 +448,7 @@ void parole_media_list_save_playlist_cb (GtkButton *button, ParolePlaylistSave *
     
     parole_media_list_close_save_dialog_cb (NULL, data);
     
-    parole_pl_parser_save_file (list, filename, format);
+    parole_pl_parser_save_from_files (list, filename, format);
     g_slist_free (list);
 out:
     g_free (filename);
@@ -1083,7 +1083,7 @@ void parole_media_list_load (ParoleMediaList *list)
 						     FALSE);
 	if ( playlist_file )
 	{
-	    fileslist = parole_pl_parser_load_file (playlist_file);
+	    fileslist = parole_pl_parser_parse_from_file_by_extension (playlist_file);
 	    g_free (playlist_file);
 	    
 	    parole_media_list_files_opened_cb (NULL, FALSE, fileslist, list);
@@ -1320,7 +1320,7 @@ void parole_media_list_save_list (ParoleMediaList *list)
 	fileslist = parole_media_list_get_files (list);
 	if ( g_slist_length (fileslist) > 0 )
 	{
-	    parole_pl_parser_save_file (fileslist, history, PAROLE_PL_FORMAT_M3U);
+	    parole_pl_parser_save_from_files (fileslist, history, PAROLE_PL_FORMAT_M3U);
 	    g_slist_foreach (fileslist, (GFunc) g_object_unref, NULL);
 	}
 	g_slist_free (fileslist);

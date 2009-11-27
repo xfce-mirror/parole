@@ -255,9 +255,7 @@ static ParolePlFormat
 parole_pl_parser_guess_format_from_data (const gchar *filename)
 {
     GFile *file;
-    gchar *mime_type = NULL;
-    gchar *contents;
-    gboolean result_uncertain;
+    gchar *contents = NULL;
     gsize size;
     
     ParolePlFormat format = PAROLE_PL_FORMAT_UNKNOWN;
@@ -270,21 +268,18 @@ parole_pl_parser_guess_format_from_data (const gchar *filename)
 	goto out;
     }
 
-    mime_type = g_content_type_guess (NULL, (const guchar*)contents, size,  &result_uncertain);
-    
-    
-    if ( mime_type && result_uncertain == FALSE )
-    {
-	g_debug ("mime_type %s", mime_type);
-	format = PAROLE_PL_FORMAT_PLAYLIST;
-    }
-    
+    if ( strstr (contents, "<ASX VERSION") )
+	format = PAROLE_PL_FORMAT_ASX;
+    else if ( strstr (contents, "<trackList>") || strstr (contents, "<tracklist>") )
+	format = PAROLE_PL_FORMAT_XSPF;
+    else if ( strstr (contents, "NumberOfEntries") )
+	format = PAROLE_PL_FORMAT_PLS;
+    else 
+	/* try to load the file as M3U*/
+	format = PAROLE_PL_FORMAT_M3U;
+
     g_free (contents);
-    
 out:
-    if ( mime_type )
-	g_free (mime_type);
-    
     g_object_unref (file);
     return format;
 }
@@ -566,27 +561,34 @@ gboolean parole_pl_parser_can_parse_data (const guchar *data, gint len)
     return result;
 }
 
-GSList *parole_pl_parser_load_file (const gchar *filename)
+GSList *parole_pl_parser_parse_from_file_by_extension (const gchar *filename)
 {
     ParolePlFormat format = PAROLE_PL_FORMAT_UNKNOWN;
-    GtkFileFilter *filter;
     GSList *list = NULL;
     
-    filter = parole_get_supported_playlist_filter ();
-    g_object_ref_sink (filter);
-    
-    if ( (format = parole_pl_parser_guess_format_from_extension (filename)) != PAROLE_PL_FORMAT_UNKNOWN)
+    if ( (format = parole_pl_parser_guess_format_from_extension (filename)) == PAROLE_PL_FORMAT_UNKNOWN &&
+	 (format = parole_pl_parser_guess_format_from_data (filename)) == PAROLE_PL_FORMAT_UNKNOWN ) 
     {
-	PAROLE_DEBUG_ENUM_FULL (format, PAROLE_ENUM_TYPE_PL_FORMAT, "playlist %s ", filename);
-	list = parole_pl_parser_parse (format, filename);
-    }
-    else if ( (format = parole_pl_parser_guess_format_from_data (filename)) != PAROLE_PL_FORMAT_UNKNOWN)
-    {
-	list = parole_pl_parser_parse_m3u (filename);
-	//list = g_list_concat (list, parole_pl_parser_p
+	g_debug ("Unable to guess playlist format : %s", filename);
+	goto out;
     }
 	
-    g_object_unref (filter);
+    PAROLE_DEBUG_ENUM_FULL (format, PAROLE_ENUM_TYPE_PL_FORMAT, "playlist %s ", filename);
+    list = parole_pl_parser_parse (format, filename);
+	
+out:
+    return list;
+}
+
+GSList *parole_pl_parser_parse_all_from_file (const gchar *filename)
+{
+    GSList *list = NULL;
+    
+    list = parole_pl_parser_parse_asx (filename);
+    list = g_slist_concat (list, parole_pl_parser_parse_m3u (filename));
+    list = g_slist_concat (list, parole_pl_parser_parse_pls (filename));
+    list = g_slist_concat (list, parole_pl_parser_parse_xspf (filename));
+    
     return list;
 }
 
@@ -685,7 +687,7 @@ parole_pl_parser_save_xspf (FILE *f, GSList *files)
     return TRUE;
 }
 
-gboolean parole_pl_parser_save_file (GSList *files, const gchar *filename, ParolePlFormat format)
+gboolean parole_pl_parser_save_from_files (GSList *files, const gchar *filename, ParolePlFormat format)
 {
     FILE *f;
     gboolean ret_val;
