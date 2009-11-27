@@ -1,0 +1,90 @@
+<!-- ##### SECTION Title ##### -->
+Parole Filters
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### ENUM ParoleFileFormat ##### -->
+<para>
+
+</para>
+
+@PAROLE_FILE_UNKNOWN: 
+@PAROLE_FILE_AUDIO: 
+@PAROLE_FILE_VIDEO: 
+@PAROLE_FILE_PLAYLIST: 
+
+<!-- ##### FUNCTION parole_get_supported_audio_filter ##### -->
+<para>
+
+</para>
+
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_get_supported_video_filter ##### -->
+<para>
+
+</para>
+
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_get_supported_media_filter ##### -->
+<para>
+
+</para>
+
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_get_supported_files_filter ##### -->
+<para>
+
+</para>
+
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_get_supported_playlist_filter ##### -->
+<para>
+
+</para>
+
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_file_filter ##### -->
+<para>
+
+</para>
+
+@filter: 
+@file: 
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_file_guess_format ##### -->
+<para>
+
+</para>
+
+@file: 
+@Returns: 
+
+

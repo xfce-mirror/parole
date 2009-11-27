@@ -1,0 +1,80 @@
+<!-- ##### SECTION Title ##### -->
+Parole Playlist Parser
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### ENUM ParolePlFormat ##### -->
+<para>
+
+</para>
+
+@PAROLE_PL_FORMAT_UNKNOWN: 
+@PAROLE_PL_FORMAT_M3U: 
+@PAROLE_PL_FORMAT_PLS: 
+@PAROLE_PL_FORMAT_ASX: 
+@PAROLE_PL_FORMAT_XSPF: 
+
+<!-- ##### FUNCTION parole_pl_parser_guess_format_from_extension ##### -->
+<para>
+
+</para>
+
+@filename: 
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_pl_parser_can_parse_data ##### -->
+<para>
+
+</para>
+
+@data: 
+@len: 
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_pl_parser_parse_from_file_by_extension ##### -->
+<para>
+
+</para>
+
+@filename: 
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_pl_parser_parse_all_from_file ##### -->
+<para>
+
+</para>
+
+@filename: 
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_pl_parser_save_from_files ##### -->
+<para>
+
+</para>
+
+@files: 
+@filename: 
+@format: 
+@Returns: 
+
+

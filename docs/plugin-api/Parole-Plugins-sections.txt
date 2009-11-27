@@ -13,6 +13,7 @@ parole_provider_player_pause
 parole_provider_player_resume
 parole_provider_player_stop
 parole_provider_player_seek
+parole_provider_player_open_media_chooser
 <SUBSECTION Standard>
 PAROLE_PROVIDER_PLAYER
 PAROLE_IS_PROVIDER_PLAYER
@@ -28,7 +29,6 @@ ParoleProviderPlugin
 parole_provider_plugin_get_is_configurable
 parole_provider_plugin_configure
 parole_provider_plugin_set_player
-parole_provider_plugin_get_is_active
 <SUBSECTION Standard>
 PAROLE_PROVIDER_PLUGIN
 PAROLE_IS_PROVIDER_PLUGIN
@@ -75,6 +75,18 @@ parole_plugin_container_get_type
 PAROLE_ENUM_TYPE_PLUGIN_CONTAINER
 parole_state_get_type
 PAROLE_ENUM_TYPE_STATE
+parole_pl_format_get_type
+PAROLE_ENUM_TYPE_PL_FORMAT
+</SECTION>
+
+<SECTION>
+<FILE>parole-pl-parser</FILE>
+ParolePlFormat
+parole_pl_parser_guess_format_from_extension
+parole_pl_parser_can_parse_data
+parole_pl_parser_parse_from_file_by_extension
+parole_pl_parser_parse_all_from_file
+parole_pl_parser_save_from_files
 </SECTION>
 
 <SECTION>
@@ -83,6 +95,28 @@ PAROLE_ENUM_TYPE_STATE
 
 <SECTION>
 <FILE>parole</FILE>
+PAROLE_MAJOR_VERSION
+PAROLE_MINOR_VERSION
+PAROLE_MICRO_VERSION
+PAROLE_CHECK_VERSION
+PAROLE_DEFINE_TYPE
+PAROLE_DEFINE_TYPE_EXTENDED
+PAROLE_DEFINE_TYPE_WITH_CODE
+PAROLE_DEFINE_ABSTRACT_TYPE
+PAROLE_DEFINE_ABSTRACT_TYPE_WITH_CODE
+PAROLE_IMPLEMENT_INTERFACE
+</SECTION>
+
+<SECTION>
+<FILE>parole-filters</FILE>
+ParoleFileFormat
+parole_get_supported_audio_filter
+parole_get_supported_video_filter
+parole_get_supported_media_filter
+parole_get_supported_files_filter
+parole_get_supported_playlist_filter
+parole_file_filter
+parole_file_guess_format
 </SECTION>
 
 <SECTION>
@@ -90,5 +124,13 @@ PAROLE_ENUM_TYPE_STATE
 parole_marshal_VOID__OBJECT_ENUM
 parole_marshal_VOID__OBJECT_DOUBLE
 parole_marshal_VOID__OBJECT_INT
+</SECTION>
+
+<SECTION>
+<FILE>parole-debug</FILE>
+PAROLE_DEBUG_ENUM
+PAROLE_DEBUG_ENUM_FULL
+parole_debug_enum
+parole_debug_enum_full
 </SECTION>
 

@@ -48,7 +48,7 @@
   
   <part id="fundamentals">
     <title>Fundamentals</title>
-	
+    <xi:include href="xml/parole.xml"/>
   </part>
   
   <part id="API">
@@ -56,7 +56,14 @@
     <xi:include href="xml/parole-provider-plugin.xml"/>
     <xi:include href="xml/parole-provider-player.xml"/>
     <xi:include href="xml/parole-stream.xml"/>
+  </part>
+
+  <part id="Utils">
+    <title>Parole Utilities</title>
     <xi:include href="xml/parole-file.xml"/>
+    <xi:include href="xml/parole-filters.xml"/>
+    <xi:include href="xml/parole-pl-parser.xml"/>
+    <xi:include href="xml/parole-debug.xml"/>
   </part>
 
   <index id="api-index-full">
