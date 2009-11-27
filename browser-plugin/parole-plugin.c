@@ -180,7 +180,12 @@ parole_plugin_player_finished_cb (DBusGProxy *proxy, ParolePlugin *plugin)
 	    parole_plugin_send_play (plugin, parole_file_get_uri (file));
 	}
     }
-    
+}
+
+static void
+parole_plugin_player_error_cb (DBusGProxy *proxy, ParolePlugin *plugin)
+{
+    parole_plugin_player_finished_cb (NULL, plugin);
 }
 
 static void
@@ -287,9 +292,13 @@ parole_plugin_get_proxy (ParolePlugin *plugin)
 	g_critical ("Unable to create proxy for %s", dbus_name);
     else
     {
+	dbus_g_proxy_add_signal (plugin->proxy, "Error", G_TYPE_INVALID);
 	dbus_g_proxy_add_signal (plugin->proxy, "Finished", G_TYPE_INVALID);
 	dbus_g_proxy_add_signal (plugin->proxy, "Exiting", G_TYPE_INVALID);
 	dbus_g_proxy_add_signal (plugin->proxy, "Ready", G_TYPE_INVALID);
+	
+	dbus_g_proxy_connect_signal (plugin->proxy, "Error",
+				     G_CALLBACK (parole_plugin_player_error_cb), plugin, NULL);
 	
 	dbus_g_proxy_connect_signal (plugin->proxy, "Finished",
 				     G_CALLBACK (parole_plugin_player_finished_cb), plugin, NULL);

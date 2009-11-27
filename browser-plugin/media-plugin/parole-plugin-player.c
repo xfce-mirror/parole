@@ -72,6 +72,7 @@ struct ParolePluginPlayerPrivate
     GtkWidget	 *range;
     GtkWidget    *full_screen;
     GtkWidget    *volume;
+    GtkWidget	 *buffering;
 
     ParoleScreenSaver *saver;
     
@@ -97,6 +98,7 @@ enum
 
 enum
 {
+    SIG_ERROR,
     SIG_FINISHED,
     SIG_EXITING,
     SIG_READY,
@@ -456,12 +458,6 @@ parole_plugin_player_gst_widget_button_release (GtkWidget *widget,
 }
 
 static void
-parole_plugin_player_error_cb (ParoleGst *gst, const gchar *error, ParolePluginPlayer *player)
-{
-    parole_screen_saver_uninhibit (player->priv->saver);
-}
-
-static void
 parole_plugin_player_fullscreen_clicked_cb (ParolePluginPlayer *player)
 {
     parole_plugin_player_fullscreen (player, !player->priv->fullscreen);
@@ -548,6 +544,33 @@ parole_plugin_player_dispose (GObject *object)
 }
 
 static void
+parole_plugin_player_error_cb (ParoleGst *gst, const gchar *error, ParolePluginPlayer *player)
+{
+    player->priv->finished = TRUE;
+    parole_screen_saver_uninhibit (player->priv->saver);
+    parole_gst_stop (gst);
+}
+
+static void
+parole_plugin_player_buffering_cb (ParoleGst *gst, const ParoleStream *stream, 
+				   gint percentage, ParolePluginPlayer *player)
+{
+    if ( percentage == 100 )
+    {
+	gtk_widget_hide (player->priv->buffering);
+    }
+    else
+    {
+	gchar *text;
+	
+	text = g_strdup_printf ("%s %d%%...", _("Buffering"), percentage);
+	gtk_label_set_text (GTK_LABEL (player->priv->buffering), text);
+	g_free (text);
+	gtk_widget_show (player->priv->buffering);
+    }
+}
+
+static void
 parole_plugin_player_construct (GObject *object)
 {
     ParolePluginPlayer *player;
@@ -572,6 +595,12 @@ parole_plugin_player_construct (GObject *object)
     
     g_signal_connect (G_OBJECT (player->priv->gst), "media-state",
 		      G_CALLBACK (parole_plugin_player_media_state_cb), player);
+
+    g_signal_connect (G_OBJECT (player->priv->gst), "error",
+		      G_CALLBACK (parole_plugin_player_error_cb), player);
+    
+    g_signal_connect (G_OBJECT (player->priv->gst), "buffering",
+		      G_CALLBACK (parole_plugin_player_buffering_cb), player);
 
     g_signal_connect (G_OBJECT (player->priv->gst), "media-progressed",
 		      G_CALLBACK (parole_plugin_player_media_progressed_cb), player);
@@ -674,6 +703,14 @@ parole_plugin_player_construct (GObject *object)
 		      G_CALLBACK (parole_plugin_player_volume_changed_cb), player);
     
     
+    /*
+     * buffering
+     */
+    player->priv->buffering = gtk_label_new (NULL);
+    gtk_widget_hide (player->priv->buffering);
+    gtk_box_pack_start (GTK_BOX (vbox), player->priv->buffering, 
+			FALSE, FALSE, 0);
+    
     gtk_box_pack_start (GTK_BOX (vbox), hbox, 
 			FALSE, FALSE, 0);
     gtk_container_add (GTK_CONTAINER (player->priv->plug), vbox);
@@ -701,6 +738,15 @@ parole_plugin_player_class_init (ParolePluginPlayerClass *klass)
     object_class->set_property = parole_plugin_player_set_property;
 
     object_class->constructed = parole_plugin_player_construct;
+    
+    signals[SIG_ERROR] = 
+        g_signal_new ("error",
+                      PAROLE_TYPE_PLUGIN_PLAYER,
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET (ParolePluginPlayerClass, error),
+                      NULL, NULL,
+                      g_cclosure_marshal_VOID__VOID,
+                      G_TYPE_NONE, 0, G_TYPE_NONE);
     
     signals[SIG_FINISHED] = 
         g_signal_new ("finished",

@@ -18,6 +18,9 @@
 	<arg type="s" name="url" direction="in"/>
     </method>
     
+    <signal name="Error">
+    </signal>
+    
     <signal name="Finished">
     </signal>
     
