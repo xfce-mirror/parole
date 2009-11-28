@@ -46,7 +46,25 @@ void  parole_about (void)
     } 	
     translators[] = 
     {
-	{"", "", "",},
+	{"astur", "malditoastur@gmail.com", "ast",},
+	{"Carles Muñoz Gorriz", "carlesmu@internautas.org", "ca.po",},
+	{"Per Kongstad", "p_kongstad@op.pl", "da.po",},
+	{"Christoph Wickert", "cwickert@fedoraproject.org", "de.po",},
+	{"elega", "elega@elega.com.ar","es",},
+	{"Piarres Beobide", "pi+debian@beobide.net", "eu",},
+	{"Douart Patrick", "patrick.2@laposte.net", "fr",},
+	{"Leandro Regueiro", "leandro.regueiro@gmail.com", "gl",},
+	{"Andhika Padmawan", "andhika.padmawan@gmail.com", "id",},
+	{"Masato Hashimoto", "cabezon.hashimoto@gmail.com", "ja",},
+	{"Rihards Prieditis", "rprieditis@gmail.com", "lv",},
+	{"Mario Blättermann", "mariobl@gnome.org", "nl",},
+	{"Sérgio Marques", "smarquespt@gmail.com", "pt",},
+	{"Vlad Vasilev", "lortwer@gmail.com", "ru",},
+	{"Robert Hartl", "hartl.robert@gmail.com", "sk",},
+	{"Samed Beyribey", "ras0ir@eventualis.org", "tr",},
+	{"Motsyo Gennadi", "drool@altlinux.ru", "uk",},
+	{"Hunt Xu", "huntxu@live.cn", "zh_CN",},
+	
     };
 
     info = xfce_about_info_new ("Parole", VERSION, _("Parole Media Player"),
