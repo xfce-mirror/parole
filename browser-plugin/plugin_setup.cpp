@@ -39,7 +39,7 @@
 #include "plugin_setup.h"
 
 // void new_instance(CPlugin * instance, nsPluginCreateData * parameters)
-void new_instance(CPlugin * instance, int16 argc, char *argn[], char *argv[])
+void new_instance(CPlugin * instance, int16_t argc, char *argn[], char *argv[])
 {
 }
 

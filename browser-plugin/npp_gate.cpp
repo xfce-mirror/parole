@@ -64,14 +64,14 @@ void NPP_Shutdown(void)
 // will do all the neccessary job
 NPError NPP_New(NPMIMEType pluginType,
                 NPP instance,
-                uint16 mode, int16 argc, char *argn[], char *argv[], NPSavedData * saved)
+                uint16_t mode, int16_t argc, char *argn[], char *argv[], NPSavedData * saved)
 {
     if (instance == NULL)
         return NPERR_INVALID_INSTANCE_ERROR;
 
     NPError rv = NPERR_NO_ERROR;
 
-    g_debug ("NPP_New instance");
+    printf("NPP_New called\n");
     CPlugin *pPlugin = new CPlugin(instance);
     if (pPlugin == NULL)
         return NPERR_OUT_OF_MEMORY_ERROR;
@@ -132,6 +132,7 @@ NPError NPP_SetWindow(NPP instance, NPWindow * pNPWindow)
 
     // window resized
     if (pPlugin->isInitialized() && (pNPWindow->window != NULL)) {
+        printf("Window resized\n");
         pPlugin->SetWindow(pNPWindow);
         return NPERR_NO_ERROR;
     }
@@ -161,6 +162,7 @@ NPError NPP_GetValue(NPP instance, NPPVariable variable, void *value)
         CPlugin *plugin = (CPlugin *) instance->pdata;
         if (plugin == NULL)
             return NPERR_GENERIC_ERROR;
+        //*(NPObject **) value = plugin->GetScriptableObject();
     } else {
         rv = PluginGetValue(variable, value);
     }
@@ -169,7 +171,7 @@ NPError NPP_GetValue(NPP instance, NPPVariable variable, void *value)
 }
 
 NPError NPP_NewStream(NPP instance,
-                      NPMIMEType type, NPStream * stream, NPBool seekable, uint16 * stype)
+                      NPMIMEType type, NPStream * stream, NPBool seekable, uint16_t * stype)
 {
     if (instance == NULL)
         return NPERR_INVALID_INSTANCE_ERROR;
@@ -186,34 +188,36 @@ NPError NPP_NewStream(NPP instance,
     return rv;
 }
 
-int32 NPP_WriteReady(NPP instance, NPStream * stream)
+int32_t NPP_WriteReady(NPP instance, NPStream * stream)
 {
     if (instance == NULL)
         return NPERR_INVALID_INSTANCE_ERROR;
 
-    int32 rv = 0x0fffffff;
+    int32_t rv = 0x0fffffff;
     CPlugin *pPlugin = (CPlugin *) instance->pdata;
 
     if (pPlugin == NULL)
         return NPERR_GENERIC_ERROR;
 
     rv = pPlugin->WriteReady(stream);
+    // printf("rv = %i\n",rv);
 
     return rv;
 }
 
-int32 NPP_Write(NPP instance, NPStream * stream, int32 offset, int32 len, void *buffer)
+int32_t NPP_Write(NPP instance, NPStream * stream, int32_t offset, int32_t len, void *buffer)
 {
     if (instance == NULL)
         return NPERR_INVALID_INSTANCE_ERROR;
 
-    int32 rv = len;
+    int32_t rv = len;
     CPlugin *pPlugin = (CPlugin *) instance->pdata;
 
     if (pPlugin == NULL)
         return NPERR_GENERIC_ERROR;
 
     rv = pPlugin->Write(stream, offset, len, buffer);
+    // printf("rv = %i\n", rv);
     return rv;
 }
 
@@ -236,10 +240,6 @@ void NPP_StreamAsFile(NPP instance, NPStream * stream, const char *fname)
 {
     if (instance == NULL)
         return;
-	
-    CPlugin *pPlugin = (CPlugin *) instance->pdata;
-    
-    pPlugin->StreamAsFile (stream, fname);
 }
 
 void NPP_Print(NPP instance, NPPrint * printInfo)
@@ -271,18 +271,35 @@ NPError NPP_SetValue(NPP instance, NPNVariable variable, void *value)
     return rv;
 }
 
-int16 NPP_HandleEvent(NPP instance, void *event)
+int16_t NPP_HandleEvent(NPP instance, void *event)
 {
     if (instance == NULL)
         return 0;
-
-    int16 rv = 0;
-    /*
+/*
+    int16_t rv = 0;
     CPlugin *pPlugin = (CPlugin *) instance->pdata;
-    
     if (pPlugin)
-	rv = pPlugin->handleEvent(event);
-    */
+        rv = pPlugin->handleEvent(event);
+*/
+    return 0;
+}
 
-    return rv;
+/*
+jref NPP_GetJavaClass (void)
+{
+  return NULL;
+}
+*/
+
+NPObject *NPP_GetScriptableInstance(NPP instance)
+{
+    if (!instance)
+        return 0;
+/*
+    NPObject *npobj = 0;
+    CPlugin *pPlugin = (CPlugin *) instance->pdata;
+    if (!pPlugin)
+        npobj = pPlugin->GetScriptableObject();
+*/
+    return 0;
 }

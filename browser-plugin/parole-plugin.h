@@ -25,7 +25,9 @@
 
 #include <npapi.h>
 #include <npruntime.h>
-#include "npupp.h"
+#include <npfunctions.h>
+
+#include <stdint.h>
 
 G_BEGIN_DECLS
 
@@ -62,13 +64,13 @@ void				parole_plugin_stream_as_file	(ParolePlugin *plugin,
 								 NPStream *stream,
 								 const gchar *fname);
 
-int32				parole_plugin_write_ready	(ParolePlugin *plugin,
+int32_t				parole_plugin_write_ready	(ParolePlugin *plugin,
 								 NPStream *stream);
 								 
-int32   			parole_plugin_write             (ParolePlugin *plugin,
+int32_t   			parole_plugin_write             (ParolePlugin *plugin,
 								 NPStream * stream, 
-								 int32 offset, 
-								 int32 len, 
+								 int32_t offset, 
+								 int32_t len, 
 								 void *buffer);
 
 G_END_DECLS

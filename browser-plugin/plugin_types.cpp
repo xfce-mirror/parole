@@ -122,7 +122,7 @@ NPError PluginGetValue(NPPVariable variable, void *value)
     }
 
     if (variable == NPPVpluginNeedsXEmbed) {
-        *((PRBool *) value) = PR_TRUE;
+        *((bool *) value) = TRUE;
     }
 
     if ((variable != NPPVpluginNameString)

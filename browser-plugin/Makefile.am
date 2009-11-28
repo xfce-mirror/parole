@@ -7,7 +7,7 @@ DEFINES = -DMOZILLA_STRICT_API -DXP_UNIX
 # This is probably not the best thing, but the browser plugin 
 # fails to compile with --enable-debug=full so overried CXXFLAGS
 # to get rid of -Wundef -Wredundant-decls -Wmissing-declarations
-CXXFLAGS = -Wall
+CXXFLAGS = -Wall -g -O2 -DXFCE_DISABLE_DEPRECATED
 if DEBUG_BROWSER_PLUGIN
 CXXFLAGS += -Wextra -Wno-missing-field-initializers	\
 	-Wno-unused-parameter 				\
@@ -17,8 +17,6 @@ CXXFLAGS += -Wextra -Wno-missing-field-initializers	\
 	-Wmissing-format-attribute 		 	\
 	-fstack-protector -O0 -g3 -Werror
 endif
-
-CFLAGS=$(CXXFLAGS)
 
 INCLUDES =                                              \
         -fPIC                                           \

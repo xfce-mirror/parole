@@ -45,6 +45,7 @@
 #include <X11/Xlib.h>
 
 #include <glib.h>
+#include <stdint.h>
 
 #include "parole-plugin.h"
 
@@ -65,17 +66,17 @@ class CPlugin {
     NPError GetValue 	  (NPPVariable variable, void *value);
     
     NPError SetWindow 	  (NPWindow * aWindow);
-    NPError NewStream     (NPMIMEType type, NPStream * stream, NPBool seekable, uint16 * stype);
+    NPError NewStream     (NPMIMEType type, NPStream * stream, NPBool seekable, uint16_t * stype);
     NPError DestroyStream (NPStream * stream, NPError reason);
     void    URLNotify     (const char *url, NPReason reason, void *notifyData);
     void    StreamAsFile  (NPStream * stream, const char *fname);
-    int32   WriteReady    (NPStream * stream);
-    int32   Write         (NPStream * stream, int32 offset, int32 len, void *buffer);
+    int32_t WriteReady    (NPStream * stream);
+    int32_t Write         (NPStream * stream, int32_t offset, int32_t len, void *buffer);
     
   public:
     ParolePlugin    *plugin;
     NPP mInstance;
-    uint16 mode;
+    uint16_t mode;
     gchar *mimetype;
 };
 

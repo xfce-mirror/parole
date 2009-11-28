@@ -38,7 +38,7 @@
 #ifndef _PLUGIN_SETUP_H
 #define _PLUGIN_SETUP_H
 
-void new_instance(CPlugin * instance, int16 argc, char *argn[], char *argv[]);
+void new_instance(CPlugin * instance, int16_t argc, char *argn[], char *argv[]);
 gint streaming(gchar * url);
 
 #endif                          // _PLUGIN_SETUP_H

@@ -107,7 +107,7 @@ NPBool CPlugin::isInitialized()
     return mInitialized;
 }
 
-NPError CPlugin::NewStream (NPMIMEType type, NPStream * stream, NPBool seekable, uint16 * stype)
+NPError CPlugin::NewStream (NPMIMEType type, NPStream * stream, NPBool seekable, uint16_t * stype)
 {
     return parole_plugin_new_stream (plugin, stream, type);
 }
@@ -127,12 +127,12 @@ void CPlugin::StreamAsFile  (NPStream * stream, const char *fname)
     parole_plugin_stream_as_file (plugin, stream, fname);
 }
 
-int32 CPlugin::WriteReady (NPStream * stream)
+int32_t CPlugin::WriteReady (NPStream * stream)
 {
     return parole_plugin_write_ready (plugin, stream);
 }
     
-int32 CPlugin::Write (NPStream * stream, int32 offset, int32 len, void *buffer)
+int32_t CPlugin::Write (NPStream * stream, int32_t offset, int32_t len, void *buffer)
 {
     return parole_plugin_write (plugin, stream, offset, len, buffer);
 }

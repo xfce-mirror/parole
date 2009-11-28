@@ -36,7 +36,7 @@
 
 #include "parole-plugin.h"
 
-int32 STREAMBUFSIZE = 0x0FFFFFFF;
+static int32_t STREAMBUFSIZE = 0x0FFFFFFF;
 
 static void parole_plugin_finalize   (GObject *object);
 
@@ -425,7 +425,7 @@ void parole_plugin_stream_as_file (ParolePlugin *plugin,
     g_debug ("StreamAsFile url=%s fname=%s", stream->url, fname);
 }
 
-int32 parole_plugin_write_ready	(ParolePlugin *plugin, NPStream *stream)
+int32_t parole_plugin_write_ready	(ParolePlugin *plugin, NPStream *stream)
 {
     g_debug ("WriteReady url=%s", stream->url);
     
@@ -438,13 +438,13 @@ int32 parole_plugin_write_ready	(ParolePlugin *plugin, NPStream *stream)
     return  plugin->player_ready ? STREAMBUFSIZE  : 0;
 }
 								 
-int32 parole_plugin_write (ParolePlugin *plugin, 
+int32_t parole_plugin_write (ParolePlugin *plugin, 
 			   NPStream * stream, 
-			   int32 offset, 
-			   int32 len, 
+			   int32_t offset, 
+			   int32_t len, 
 			   void *buffer)
 {
-    static int32 wrotebytes = -1;
+    static int32_t wrotebytes = -1;
     
     if ( plugin->checked == FALSE )
     {
