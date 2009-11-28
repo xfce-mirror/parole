@@ -145,7 +145,7 @@ parole_disc_add_mount_to_menu (ParoleDisc *disc, GMount *mount, const gchar *dev
     gchar **content_type;
     guint i;
     ParoleDiscKind kind;
-    gchar *uri;
+    gchar *uri = NULL;
     
     file = g_mount_get_root (mount);
     
@@ -202,7 +202,8 @@ got_cdda:
 	label = g_strdup_printf ("%s '%s'", _("Play Disc"), name);
 	
 	data = parole_disc_get_mount_data (disc, label, uri, device, kind);
-	g_free (uri);
+	if ( uri )
+	    g_free (uri);
 	
 	g_ptr_array_add (disc->priv->array, data);
 	g_free (label);
