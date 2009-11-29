@@ -214,7 +214,7 @@ parole_plugins_manager_save_rc (gchar *filename, gboolean active)
 	
 	for ( i = 0; i < num; i++)
 	{
-	    if ( g_strcmp0 (saved_plugins[i], filename) )
+	    if ( g_strcmp0 (saved_plugins[i], filename) != 0 )
 		plugins_rc[i] = g_strdup (saved_plugins[i]);
 	    else
 		plugins_rc[i] = NULL;
