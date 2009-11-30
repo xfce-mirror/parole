@@ -22,12 +22,6 @@
 	<arg type="s" name="list" direction="in"/>
     </method>
     
-    <signal name="Error">
-    </signal>
-    
-    <signal name="Finished">
-    </signal>
-    
     <signal name="Ready">
     </signal>
     
