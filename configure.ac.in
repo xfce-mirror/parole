@@ -260,18 +260,32 @@ echo "
 ------------------------------------------------------
             Parole Media Player $VERSION
         ====================================
- 
+	
+	Installation:
+	=============
         prefix:                 	$prefix
 	pixmapsdir:			$pixmapsdir
-	Notification:			$LIBNOTIFY_FOUND
         Debug:   			$enable_debug
 	Building plugin api docs:       ${enable_gtk_doc}
 	
+	Optional dependencies:
+	======================
+	Libnotify:			$LIBNOTIFY_FOUND
+	Taglib:				$TAGLIB_FOUND
 	
 	Plugins to build:
 	=================
-	Stream Properties:       	${ac_properties_plugin} (With taglib $TAGLIB_FOUND)
-	System Tray icon:       	${ac_tray_plugin} (With notification $LIBNOTIFY_FOUND)
+	Stream Properties:       	${ac_properties_plugin}" 
+	if test x${ac_properties_plugin} = x"yes"; then 
+	echo "	(With taglib $TAGLIB_FOUND)" 
+	fi 
+	echo "	
+	System Tray icon:       	${ac_tray_plugin}" 
+	if test x${ac_tray_plugin} = x"yes"; then 
+	echo " 	(With notification $LIBNOTIFY_FOUND)" 
+	fi 
+	
+	echo "
 	Window title:			${ac_window_title_plugin}
 	Power Manager:			${ac_power_manager_plugin}
 

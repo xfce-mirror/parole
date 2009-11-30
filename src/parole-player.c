@@ -442,22 +442,6 @@ parole_player_media_progressed_cb (ParoleGst *gst, const ParoleStream *stream, g
 }
 
 static void
-parole_player_set_playpause_widget_image (GtkWidget *widget, const gchar *stock_id)
-{
-    GtkWidget *img;
-    
-    g_object_get (G_OBJECT (widget),
-		  "image", &img,
-		  NULL);
-		  
-    g_object_set (G_OBJECT (img),
-		  "stock", stock_id,
-		  NULL);
-
-    g_object_unref (img);
-}
-
-static void
 parole_player_set_playpause_button_image (GtkWidget *widget, const gchar *stock_id)
 {
     GtkWidget *img;
@@ -580,7 +564,8 @@ parole_player_paused (ParolePlayer *player)
     gtk_widget_set_sensitive (player->priv->play_pause, TRUE);
     gtk_widget_set_sensitive (player->priv->stop, TRUE);
     
-    parole_player_set_playpause_widget_image (player->priv->play_pause, GTK_STOCK_MEDIA_PLAY);
+    if ( player->priv->user_seeking == FALSE)
+	parole_player_set_playpause_button_image (player->priv->play_pause, GTK_STOCK_MEDIA_PLAY);
     
     if ( pix )
 	g_object_unref (pix);
@@ -624,7 +609,7 @@ parole_player_stopped (ParolePlayer *player)
     gtk_widget_set_sensitive (player->priv->seekf, FALSE);
     gtk_widget_set_sensitive (player->priv->seekb, FALSE);
 
-    parole_player_set_playpause_widget_image (player->priv->play_pause, GTK_STOCK_MEDIA_PLAY);
+    parole_player_set_playpause_button_image (player->priv->play_pause, GTK_STOCK_MEDIA_PLAY);
     
     parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, NULL);
     
