@@ -17,3 +17,97 @@ Parole
 <!-- ##### SECTION Stability_Level ##### -->
 
 
+<!-- ##### MACRO PAROLE_MAJOR_VERSION ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO PAROLE_MINOR_VERSION ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO PAROLE_MICRO_VERSION ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO PAROLE_CHECK_VERSION ##### -->
+<para>
+
+</para>
+
+@major: 
+@minor: 
+@micro: 
+
+
+<!-- ##### MACRO PAROLE_DEFINE_TYPE ##### -->
+<para>
+
+</para>
+
+@TN: 
+@t_n: 
+@T_P: 
+
+
+<!-- ##### MACRO PAROLE_DEFINE_TYPE_EXTENDED ##### -->
+<para>
+
+</para>
+
+@TN: 
+@t_n: 
+@T_P: 
+@_f_: 
+@_C_: 
+
+
+<!-- ##### MACRO PAROLE_DEFINE_TYPE_WITH_CODE ##### -->
+<para>
+
+</para>
+
+@TN: 
+@t_n: 
+@T_P: 
+@_C_: 
+
+
+<!-- ##### MACRO PAROLE_DEFINE_ABSTRACT_TYPE ##### -->
+<para>
+
+</para>
+
+@TN: 
+@t_n: 
+@T_P: 
+
+
+<!-- ##### MACRO PAROLE_DEFINE_ABSTRACT_TYPE_WITH_CODE ##### -->
+<para>
+
+</para>
+
+@TN: 
+@t_n: 
+@T_P: 
+@_C_: 
+
+
+<!-- ##### MACRO PAROLE_IMPLEMENT_INTERFACE ##### -->
+<para>
+
+</para>
+
+@TYPE_IFACE: 
+@iface_init: 
+
+
