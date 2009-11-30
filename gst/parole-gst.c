@@ -565,7 +565,7 @@ parole_gst_tick_timeout (gpointer data)
     gint64 pos;
     GstFormat format = GST_FORMAT_TIME;
     gint64 value;
-    gint64 video;
+    gboolean video;
     
     gst = PAROLE_GST (data);
     
