@@ -63,6 +63,7 @@ static GThread *idle_thread = NULL;
 
 struct ParolePluginPlayerPrivate
 {
+    DBusGConnection *bus;
     ParoleGst    *gst;
     GtkWidget    *window;
     GtkWidget    *plug;
@@ -235,7 +236,10 @@ parole_plugin_player_play_clicked_cb (ParolePluginPlayer *player)
     else if ( player->priv->state == PAROLE_MEDIA_STATE_PAUSED )
 	parole_gst_resume (player->priv->gst);
     else if ( player->priv->finished )
-	parole_plugin_player_play (player);
+    {
+	player->priv->reload = TRUE;
+	parole_gst_stop (PAROLE_GST (player->priv->gst));
+    }
 }
 
 static void
@@ -804,6 +808,8 @@ parole_plugin_player_init (ParolePluginPlayer *player)
     
     player->priv = PAROLE_PLUGIN_PLAYER_GET_PRIVATE (player);
     
+    player->priv->bus = parole_g_session_bus_get ();
+    
     player->priv->gst  = NULL;
     player->priv->saver = parole_screen_saver_new ();
     player->priv->plug = NULL;
@@ -887,6 +893,8 @@ parole_plugin_player_finalize (GObject *object)
     player = PAROLE_PLUGIN_PLAYER (object);
 
     g_debug ("Finalize...");
+
+    dbus_g_connection_unref (player->priv->bus);
 
     g_object_unref (player->priv->saver);
     
@@ -982,7 +990,7 @@ parole_plugin_player_dbus_class_init (ParolePluginPlayerClass *klass)
 static void
 parole_plugin_player_dbus_init (ParolePluginPlayer *player)
 {
-    dbus_g_connection_register_g_object (parole_g_session_bus_get (),
+    dbus_g_connection_register_g_object (player->priv->bus,
                                          "/org/Parole/Media/Plugin",
                                          G_OBJECT (player));
 }

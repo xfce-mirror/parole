@@ -33,6 +33,12 @@
 
 #include "parole-dbus.h"
 
+static void
+proxy_destroy_cb (DBusGConnection *bus)
+{
+    dbus_g_connection_unref (bus);
+}
+
 static DBusConnection *
 parole_session_bus_get (void)
 {
@@ -40,12 +46,17 @@ parole_session_bus_get (void)
 }
 
 DBusGConnection *
-parole_g_session_bus_get	(void)
+parole_g_session_bus_get (void)
 {
-    static DBusGConnection *bus = NULL;
+    static gboolean session_bus_connected = FALSE;
+    DBusGConnection *bus;
     GError *error = NULL;
     
-    if ( bus == NULL )
+    if ( G_LIKELY (session_bus_connected) )
+    {
+	bus = dbus_g_bus_get (DBUS_BUS_SESSION, NULL);
+    }
+    else
     {
 	bus = dbus_g_bus_get (DBUS_BUS_SESSION, &error);
     
@@ -53,7 +64,9 @@ parole_g_session_bus_get	(void)
 	{
 	    g_error ("%s", error->message);
 	}
+	session_bus_connected = TRUE;
     }
+
     return bus;
 }
 
@@ -73,17 +86,25 @@ parole_get_proxy (const gchar *path, const gchar *iface)
     if ( !proxy )
 	g_error ("Unable to create proxy for %s", PAROLE_DBUS_NAME);
 	
+    g_signal_connect_swapped (proxy, "destroy",
+			      G_CALLBACK (proxy_destroy_cb), bus);
+    
     return proxy;
 }
 
 gboolean	parole_dbus_name_has_owner		(const gchar *name)
 {
+    DBusConnection *bus;
     DBusError error;
     gboolean ret;
     
+    bus = parole_session_bus_get ();
+    
     dbus_error_init (&error);
     
-    ret = dbus_bus_name_has_owner (parole_session_bus_get (), name, &error);
+    ret = dbus_bus_name_has_owner (bus, name, &error);
+    
+    dbus_connection_unref (bus);
     
     if ( dbus_error_is_set (&error) )
     {
@@ -96,17 +117,22 @@ gboolean	parole_dbus_name_has_owner		(const gchar *name)
 
 gboolean	parole_dbus_register_name		(const gchar *name)
 {
+    DBusConnection *bus;
     DBusError error;
     int ret;
+    
+    bus = parole_session_bus_get ();
     
     dbus_error_init (&error);
     
     ret =
-        dbus_bus_request_name (parole_session_bus_get (),
+        dbus_bus_request_name (bus,
                                name,
                                DBUS_NAME_FLAG_ALLOW_REPLACEMENT,
                                &error);
         
+    dbus_connection_unref (bus);
+    
     if ( dbus_error_is_set (&error) )
     {
         g_warning ("Error: %s\n", error.message);
@@ -119,15 +145,20 @@ gboolean	parole_dbus_register_name		(const gchar *name)
 
 gboolean	parole_dbus_release_name		(const gchar *name)
 {
+    DBusConnection *bus;
     DBusError error;
     int ret;
+    
+    bus = parole_session_bus_get ();
     
     dbus_error_init (&error);
     
     ret =
-        dbus_bus_release_name (parole_session_bus_get (),
+        dbus_bus_release_name (bus,
                                name,
                                &error);
+
+    dbus_connection_unref (bus);
     
     if ( dbus_error_is_set (&error) )
     {

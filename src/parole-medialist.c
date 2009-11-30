@@ -151,6 +151,7 @@ void		parole_media_list_save_playlist_cb     (GtkButton *button,
 
 struct ParoleMediaListPrivate
 {
+    DBusGConnection     *bus;
     GtkWidget 	  	*view;
     GtkWidget		*box;
     GtkListStore	*store;
@@ -934,6 +935,8 @@ parole_media_list_finalize (GObject *object)
     ParoleMediaList *list;
 
     list = PAROLE_MEDIA_LIST (object);
+    
+    dbus_g_connection_unref (list->priv->bus);
 
     G_OBJECT_CLASS (parole_media_list_parent_class)->finalize (object);
 }
@@ -1027,6 +1030,8 @@ parole_media_list_init (ParoleMediaList *list)
     GtkWidget  *box;
     
     list->priv = PAROLE_MEDIA_LIST_GET_PRIVATE (list);
+    
+    list->priv->bus = parole_g_session_bus_get ();
     
     builder = parole_builder_new_from_string (playlist_ui, playlist_ui_length);
     
@@ -1349,7 +1354,7 @@ parole_media_list_dbus_class_init (ParoleMediaListClass *klass)
 static void
 parole_media_list_dbus_init (ParoleMediaList *list)
 {
-    dbus_g_connection_register_g_object (parole_g_session_bus_get (),
+    dbus_g_connection_register_g_object (list->priv->bus,
 					 PAROLE_DBUS_PLAYLIST_PATH,
 					 G_OBJECT (list));
 }

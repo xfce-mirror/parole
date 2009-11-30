@@ -194,6 +194,7 @@ static GtkTargetEntry target_entry[] =
 
 struct ParolePlayerPrivate
 {
+    DBusGConnection     *bus;
     ParoleMediaList	*list;
     ParoleStatusbar     *status;
     ParoleDisc          *disc;
@@ -1335,6 +1336,9 @@ parole_player_finalize (GObject *object)
     player = PAROLE_PLAYER (object);
 
     TRACE ("start");
+    
+    dbus_g_connection_unref (player->priv->bus);
+    
     g_object_unref (player->priv->video_filter);
     g_object_unref (player->priv->status);
     g_object_unref (player->priv->disc);
@@ -1665,6 +1669,9 @@ parole_player_init (ParolePlayer *player)
     gboolean repeat, shuffle;
     
     player->priv = PAROLE_PLAYER_GET_PRIVATE (player);
+    
+    player->priv->bus = parole_g_session_bus_get ();
+    
     player->priv->video_filter = parole_get_supported_video_filter ();
     g_object_ref_sink (player->priv->video_filter);
     
@@ -1913,7 +1920,7 @@ parole_player_dbus_class_init (ParolePlayerClass *klass)
 static void
 parole_player_dbus_init (ParolePlayer *player)
 {
-    dbus_g_connection_register_g_object (parole_g_session_bus_get (),
+    dbus_g_connection_register_g_object (player->priv->bus,
 					 PAROLE_DBUS_PATH,
 					 G_OBJECT (player));
 }
