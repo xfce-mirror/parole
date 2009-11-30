@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Parole\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-11-27 10:38+0100\n"
-"PO-Revision-Date: 2009-11-17 14:09+0800\n"
+"PO-Revision-Date: 2009-11-30 11:46+0800\n"
 "Last-Translator: Hunt Xu <huntxu@live.cn>\n"
 "Language-Team: Chinese (simplified) <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
@@ -127,15 +127,15 @@ msgstr "查看(_V)"
 
 #: ../data/interfaces/mediachooser.ui.h:1
 msgid "Replace playlist with opened files"
-msgstr ""
+msgstr "使用所打开的文件替换播放列表"
 
 #: ../data/interfaces/mediachooser.ui.h:2
 msgid "Scan folders recursively"
-msgstr ""
+msgstr "递归扫描文件夹"
 
 #: ../data/interfaces/mediachooser.ui.h:3
 msgid "Start playing opened files"
-msgstr ""
+msgstr "开始播放所打开的文件"
 
 #: ../data/interfaces/plugins.ui.h:1
 msgid "<b>Author:</b>"
@@ -270,11 +270,11 @@ msgstr "打开一个新的 Parole 实例"
 
 #: ../src/main.c:192
 msgid "Do not load plugins"
-msgstr ""
+msgstr "不加载插件"
 
 #: ../src/main.c:193
 msgid "Set Audio-CD/VCD/DVD device path"
-msgstr ""
+msgstr "设置 Audio-CD/VCD/DVD 设备路径"
 
 #: ../src/main.c:194
 msgid "Play or pause if already playing"
@@ -669,9 +669,8 @@ msgid "Read media properties"
 msgstr "读取媒体信息"
 
 #: ../plugins/properties/stream-properties.desktop.in.h:2
-#, fuzzy
 msgid "Stream Properties"
-msgstr "属性"
+msgstr "流媒体属性"
 
 #: ../plugins/tray/tray-provider.c:243
 msgid "<b>Playing:</b>"
@@ -718,54 +717,51 @@ msgid "Tray icon"
 msgstr "托盘图标"
 
 #: ../plugins/window-title/window-title.desktop.in.h:1
-#, fuzzy
 msgid "Set the main window name to the current playing media name."
 msgstr "设置主窗口名为当前正在播放的媒体名称。"
 
 #: ../plugins/window-title/window-title.desktop.in.h:2
-#, fuzzy
 msgid "Window Title"
 msgstr "窗口标题"
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:1
 msgid "Inhibit Power Manager from suspending the machine while playing DVD."
-msgstr ""
+msgstr "播放 DVD 时禁止电源管理器挂起系统。"
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
-msgstr ""
+msgstr "电源管理器插件"
 
 #: ../browser-plugin/media-plugin/main.c:72
 msgid "socket"
-msgstr ""
+msgstr "套接字"
 
 #: ../browser-plugin/media-plugin/main.c:72
 msgid "SOCKET ID"
-msgstr ""
+msgstr "套接字 ID"
 
 #: ../browser-plugin/media-plugin/main.c:73
-#, fuzzy
 msgid "url to play"
-msgstr "要播放的媒体"
+msgstr "要播放的 url"
 
 #: ../browser-plugin/media-plugin/main.c:73
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: ../browser-plugin/media-plugin/parole-plugin-player.c:135
 msgid "Leave fullscreen"
-msgstr ""
+msgstr "退出全屏"
 
 #: ../browser-plugin/media-plugin/parole-plugin-player.c:140
 msgid "Fullscreen"
-msgstr ""
+msgstr "全屏播放"
 
 #.
 #. * Copy url
 #.
 #: ../browser-plugin/media-plugin/parole-plugin-player.c:426
 msgid "Copy url"
-msgstr ""
+msgstr "复制 url"
 
 #~ msgid "Enabled"
 #~ msgstr "启用"
