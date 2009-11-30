@@ -29,6 +29,7 @@
 #include <glib.h>
 
 #include <libxfce4util/libxfce4util.h>
+#include <libxfcegui4/libxfcegui4.h>
 
 #include <parole/parole-provider-plugin.h>
 
@@ -402,6 +403,14 @@ parole_plugins_manager_show_plugins_pref (GtkWidget *widget, ParolePluginsManage
     guint i;
     
     PrefData *pref;
+    
+    /*No plugins found*/
+    if ( manager->priv->array->len == 0 )
+    {
+	xfce_info ("%s", _("No installed plugins found on this system")); 
+	return;
+    }
+    
     builder = parole_builder_new_from_string (plugins_ui, plugins_ui_length);
     
     pref = g_new0 (PrefData, 1);
@@ -692,7 +701,7 @@ void parole_plugins_manager_load (ParolePluginsManager *manager)
     
     if ( error )
     {
-	g_critical ("Error opening plugins data dir: %s", error->message);
+	g_debug ("No installed plugins found");
 	g_error_free (error);
 	return;
     }
@@ -707,11 +716,19 @@ void parole_plugins_manager_load (ParolePluginsManager *manager)
 	
 	if ( library_name )
 	{
-	    gchar *library_path;
 	    ParoleProviderModule *module;
+	    gchar *library_path;
+	    
 	    library_path = g_build_filename (PAROLE_PLUGINS_DIR, library_name, NULL);
+	    if ( !g_file_test (library_path, G_FILE_TEST_EXISTS) )
+	    {
+		g_debug ("Desktop file found '%s' but no plugin installed", library_path);
+		g_free (library_path);
+		continue;
+	    }
 	    module = parole_provider_module_new (library_path, desktop_file);
 	    g_ptr_array_add (manager->priv->array, module);
+	    
 	    g_free (library_name);
 	    g_free (library_path);
 	}
