@@ -45,9 +45,14 @@
 #include <X11/Xlib.h>
 
 #include <glib.h>
+
+#include <npapi.h>
+#include <npruntime.h>
+#include <npfunctions.h>
+
 #include <stdint.h>
 
-#include "parole-plugin.h"
+#include <dbus/dbus-glib.h>
 
 class CPlugin {
   private:
@@ -73,11 +78,35 @@ class CPlugin {
     int32_t WriteReady    (NPStream * stream);
     int32_t Write         (NPStream * stream, int32_t offset, int32_t len, void *buffer);
     
+    NPError RunPlayer     (void);
+    void    StopPlayer    (void);
+    void    GetProxy      (void);
+    void    SendPlay      (const gchar *url);
+    void    SendList      (const gchar *filename);
+
+    
   public:
-    ParolePlugin    *plugin;
     NPP mInstance;
     uint16_t mode;
     gchar *mimetype;
+    
+    DBusGConnection *bus;
+    DBusGProxy      *proxy;
+    
+    Window	     window;
+    gchar           *murl;
+    gchar           *tmp_file;
+    FILE            *cache;
+    
+    gulong	     ping_id;
+    gboolean	     window_set;
+    gboolean	     is_playlist;
+    gboolean         checked;
+    gboolean	     player_ready;
+    gboolean	     player_started;
+    gboolean	     player_spawned;
+    gboolean	     player_exited;
+    gboolean	     player_playing;
 };
 
 #endif                          // __PLUGIN_H__

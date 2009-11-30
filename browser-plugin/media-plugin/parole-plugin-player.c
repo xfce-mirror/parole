@@ -28,6 +28,8 @@
 
 #include <gdk/gdkkeysyms.h>
 
+#include <parole/parole.h>
+
 #include <libxfce4util/libxfce4util.h>
 
 #include "parole-plugin-player.h"
@@ -75,13 +77,15 @@ struct ParolePluginPlayerPrivate
     GtkWidget    *volume;
     GtkWidget	 *buffering;
 
+    GSList	 *list;
+
     ParoleScreenSaver *saver;
     
     ParoleMediaState state;
     
     gboolean	  fullscreen;
     
-    gboolean      reload;
+    gboolean	  reload;
     gboolean      internal_range_change;
     gboolean      user_seeking;
     gboolean      terminate;
@@ -99,8 +103,6 @@ enum
 
 enum
 {
-    SIG_ERROR,
-    SIG_FINISHED,
     SIG_EXITING,
     SIG_READY,
     LAST_SIGNAL
@@ -116,7 +118,6 @@ parole_plugin_player_play (ParolePluginPlayer *player)
     if ( player->priv->terminate )
 	return;
 	
-    player->priv->reload = FALSE;
     player->priv->finished = FALSE;
     parole_gst_play_uri (player->priv->gst, player->priv->url, NULL);
 }
@@ -236,10 +237,7 @@ parole_plugin_player_play_clicked_cb (ParolePluginPlayer *player)
     else if ( player->priv->state == PAROLE_MEDIA_STATE_PAUSED )
 	parole_gst_resume (player->priv->gst);
     else if ( player->priv->finished )
-    {
-	player->priv->reload = TRUE;
 	parole_gst_stop (PAROLE_GST (player->priv->gst));
-    }
 }
 
 static void
@@ -303,26 +301,49 @@ parole_plugin_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream,
     }
     else if ( state == PAROLE_MEDIA_STATE_STOPPED )
     {
+	parole_plugin_player_change_range_value (player, 0);
+	
 	if ( player->priv->terminate )
 	{
 	    gtk_main_quit ();
 	}
-	parole_plugin_player_change_range_value (player, 0);
-	
-	if ( player->priv->reload )
+	else if ( player->priv->reload )
+	{
+	    player->priv->reload = FALSE;
+	    parole_plugin_player_play (player);
+	}
+	/* Play next item */
+	else if ( player->priv->list != NULL && player->priv->url )
 	{
 	    parole_plugin_player_play (player);
 	}
 	else if ( player->priv->finished )
 	{
 	    player->priv->finished = FALSE;
-	    g_signal_emit (player, signals [SIG_FINISHED], 0);
 	}
     }
     else if ( state == PAROLE_MEDIA_STATE_FINISHED )
     {
 	parole_plugin_player_change_range_value (player, 0);
 	player->priv->finished = TRUE;
+	
+	if ( player->priv->url )
+	{
+	    g_free (player->priv->url);
+	    player->priv->url = NULL;
+	}
+		    
+	if ( player->priv->list )
+	{
+	    player->priv->list = player->priv->list->next;
+	    if ( player->priv->list->data )
+	    {
+		ParoleFile *file = NULL;
+		file = PAROLE_FILE (player->priv->list->data);
+		if ( file )
+		    player->priv->url = g_strdup (parole_file_get_uri (file));
+	    }
+	}
 	parole_gst_stop (PAROLE_GST (player->priv->gst));
     }
 }
@@ -392,8 +413,8 @@ parole_plugin_player_media_progressed_cb (ParoleGst *gst, const ParoleStream *st
 static void
 parole_plugin_player_reload (ParolePluginPlayer *player)
 {
-    parole_gst_stop (player->priv->gst);
     player->priv->reload = TRUE;
+    parole_gst_stop (player->priv->gst);
 }
 
 static void
@@ -526,7 +547,6 @@ static gpointer *check_idle_thread (gpointer data)
 	g_usleep (1000000);
 	if ( g_timer_elapsed (idle_timer, NULL ) > 60.f )
 	{
-	    g_signal_emit (player, signals [SIG_EXITING], 0);
 	    gtk_main_quit ();
 	}
 	
@@ -541,8 +561,6 @@ parole_plugin_player_dispose (GObject *object)
     ParolePluginPlayer *player;
     
     player = PAROLE_PLUGIN_PLAYER (object);
-    
-    g_signal_emit (player, signals [SIG_EXITING], 0);
     
     G_OBJECT_CLASS (parole_plugin_player_parent_class)->dispose (object);
 }
@@ -743,24 +761,6 @@ parole_plugin_player_class_init (ParolePluginPlayerClass *klass)
 
     object_class->constructed = parole_plugin_player_construct;
     
-    signals[SIG_ERROR] = 
-        g_signal_new ("error",
-                      PAROLE_TYPE_PLUGIN_PLAYER,
-                      G_SIGNAL_RUN_LAST,
-                      G_STRUCT_OFFSET (ParolePluginPlayerClass, error),
-                      NULL, NULL,
-                      g_cclosure_marshal_VOID__VOID,
-                      G_TYPE_NONE, 0, G_TYPE_NONE);
-    
-    signals[SIG_FINISHED] = 
-        g_signal_new ("finished",
-                      PAROLE_TYPE_PLUGIN_PLAYER,
-                      G_SIGNAL_RUN_LAST,
-                      G_STRUCT_OFFSET (ParolePluginPlayerClass, finished),
-                      NULL, NULL,
-                      g_cclosure_marshal_VOID__VOID,
-                      G_TYPE_NONE, 0, G_TYPE_NONE);
-    
     signals[SIG_EXITING] = 
         g_signal_new ("exiting",
                       PAROLE_TYPE_PLUGIN_PLAYER,
@@ -814,10 +814,11 @@ parole_plugin_player_init (ParolePluginPlayer *player)
     player->priv->saver = parole_screen_saver_new ();
     player->priv->plug = NULL;
     player->priv->fullscreen = FALSE;
-    player->priv->reload = FALSE;
     player->priv->terminate = FALSE;
+    player->priv->reload = FALSE;
     player->priv->user_seeking = FALSE;
     player->priv->internal_range_change = FALSE;
+    player->priv->list = NULL;
     player->priv->state = PAROLE_MEDIA_STATE_STOPPED;
     
     player->priv->gst = PAROLE_GST (parole_gst_new (TRUE, NULL));
@@ -901,6 +902,12 @@ parole_plugin_player_finalize (GObject *object)
     if ( player->priv->url )
 	g_free (player->priv->url);
 
+    if ( player->priv->list )
+    {
+	g_slist_foreach (player->priv->list, (GFunc) g_object_unref, NULL);
+	g_slist_free (player->priv->list);
+    }
+
     G_OBJECT_CLASS (parole_plugin_player_parent_class)->finalize (object);
 }
 
@@ -973,6 +980,10 @@ static gboolean parole_plugin_player_dbus_play_url (ParolePluginPlayer *player,
 						    gchar *in_URL,
 						    GError **error);
 
+static gboolean parole_plugin_player_dbus_play_list (ParolePluginPlayer *player,
+						     gchar *list,
+						     GError **error);
+
 #include "org.parole.media.plugin.h"
 
 /*
@@ -1033,5 +1044,24 @@ static gboolean parole_plugin_player_dbus_play_url (ParolePluginPlayer *player,
     player->priv->url = g_strdup (in_URL);
     g_debug ("Playing url=%s", in_URL);
     g_idle_add ((GSourceFunc) parole_plugin_player_play_idle, player);
+    return TRUE;
+}
+
+static gboolean parole_plugin_player_dbus_play_list (ParolePluginPlayer *player,
+						     gchar *list,
+						     GError **error)
+{
+    player->priv->list = parole_pl_parser_parse_from_file_by_extension (list);
+    
+    if ( player->priv->list != NULL && g_slist_length (player->priv->list) != 0 )
+    {
+	ParoleFile *file;
+	file = g_slist_nth_data (player->priv->list, 0);
+	
+	player->priv->url = g_strdup (parole_file_get_uri (file));
+	g_debug ("Playing url=%s", player->priv->url);
+	g_idle_add ((GSourceFunc) parole_plugin_player_play_idle, player);
+    }
+    
     return TRUE;
 }

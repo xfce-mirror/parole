@@ -424,7 +424,7 @@ parole_gst_draw_logo_embedded (ParoleGstHelper *helper)
     
     gst = PAROLE_GST (helper);
     
-    if ( !gst->priv->terminating )
+    if ( gst->priv->terminating != TRUE )
 	parole_gst_draw_logo_common (gst);
 }
 
@@ -912,6 +912,7 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 
     if ( gst->priv->target == new )
     {
+	gtk_widget_queue_draw (GTK_WIDGET (gst));
 	parole_gst_set_window_cursor (GTK_WIDGET (gst)->window, NULL);
 	if ( gst->priv->state_change_id != 0 )
 	    g_source_remove (gst->priv->state_change_id);

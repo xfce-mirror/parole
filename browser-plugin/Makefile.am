@@ -22,15 +22,12 @@ INCLUDES =                                              \
         -fPIC                                           \
         -I$(top_builddir)                               \
         -I$(top_srcdir)                                 \
-	-I$(top_srcdir)/parole                         	\
         -DPACKAGE_LOCALE_DIR=\"$(localedir)\"           \
         -DG_LOG_DOMAIN=\"parole-browser-plugin\"        \
         -DLIBEXECDIR="\"$(libexecdir)\""                \
 	$(GECKO_CFLAGS)					\
         $(GTK_CFLAGS)                                   \
         $(DBUS_GLIB_CFLAGS)				\
-	$(TAGLIBC_CFLAGS)				\
-	$(LIBXFCE4UTIL_CFLAGS)				\
 	$(DEFINES)
 
 install_libexecdir = $(BROWSER_PLUGIN_DIR)
@@ -41,8 +38,6 @@ install_libexec_PROGRAMS = 				\
 parole_player_so_SOURCES =     				\
 	plugin.cpp					\
 	plugin.h					\
-	parole-plugin.c					\
-	parole-plugin.h					\
 	plugin_setup.cpp  				\
 	plugin_setup.h					\
 	plugin_types.cpp				\
@@ -57,6 +52,4 @@ parole_player_so_LDFLAGS =                              \
 	-shared						\
         $(GTK_LIBS)                                     \
         $(DBUS_GLIB_LIBS)				\
-	$(TAGLIBC_LIBS)					\
-	$(LIBXFCE4UTIL_LIBS)				\
-	$(top_builddir)/parole/libparole.la 	
+	$(GECKO_LIBS)

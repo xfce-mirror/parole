@@ -43,10 +43,6 @@ typedef struct
 {
     GObjectClass 			 parent_class;
     
-    void				(*error)			      (ParolePluginPlayer *player);
-    
-    void				(*finished)			      (ParolePluginPlayer *player);
-    
     void				(*exiting)			      (ParolePluginPlayer *player);
     
     void				(*ready)			      (ParolePluginPlayer *player);

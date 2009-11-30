@@ -8,6 +8,7 @@ parole_media_plugin_SOURCES =			\
 
 parole_media_plugin_CFLAGS =			\
 	-I$(top_srcdir)                         \
+	-I$(top_srcdir)/parole                  \
         -I$(top_srcdir)/data                    \
         -I$(top_srcdir)/data/mime               \
 	-I$(top_srcdir)/dbus               	\
@@ -21,7 +22,8 @@ parole_media_plugin_CFLAGS =			\
 	$(GST_VIDEO_CFLAGS)                     \
         $(GST_INTERFACES_CFLAGS)		\
 	$(DBUS_GLIB_CFLAGS)			\
-	$(LIBXFCE4GUI_CFLAGS)
+	$(LIBXFCE4GUI_CFLAGS)			\
+	$(TAGLIBC_CFLAGS)
 
 parole_media_plugin_LDADD =			\
 	$(top_builddir)/dbus/libparoledbus.la 	\
@@ -32,7 +34,8 @@ parole_media_plugin_LDADD =			\
 	$(GST_VIDEO_LIBS)                     	\
         $(GST_INTERFACES_LIBS)			\
 	$(DBUS_GLIB_LIBS)			\
-	$(LIBXFCE4GUI_LIBS)
+	$(LIBXFCE4GUI_LIBS)			\
+	$(TAGLIBC_LIBS)
 
 if MAINTAINER_MODE
 

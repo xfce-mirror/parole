@@ -536,7 +536,7 @@ parole_pl_parser_parse (ParolePlFormat format, const gchar *filename)
 
 gboolean parole_pl_parser_can_parse_data (const guchar *data, gint len)
 {
-    gchar *mime_type;
+    gchar *mime_type = NULL;
     gboolean result_uncertain;
     gboolean result = FALSE;
 
@@ -553,10 +553,8 @@ gboolean parole_pl_parser_can_parse_data (const guchar *data, gint len)
     
 	result = gtk_file_filter_filter (filter, &filter_info);
 	g_object_unref (filter);
-    }
-    
-    if ( mime_type )
 	g_free (mime_type);
+    }
     
     return result;
 }
@@ -572,7 +570,7 @@ GSList *parole_pl_parser_parse_from_file_by_extension (const gchar *filename)
 	g_debug ("Unable to guess playlist format : %s", filename);
 	goto out;
     }
-	
+
     PAROLE_DEBUG_ENUM_FULL (format, PAROLE_ENUM_TYPE_PL_FORMAT, "playlist %s ", filename);
     list = parole_pl_parser_parse (format, filename);
 	
@@ -693,7 +691,7 @@ gboolean parole_pl_parser_save_from_files (GSList *files, const gchar *filename,
     gboolean ret_val;
 
     PAROLE_DEBUG_ENUM_FULL (format, PAROLE_ENUM_TYPE_PL_FORMAT, "Saving playlist %s ", filename);
-    
+
     f = fopen (filename, "w");
     
     switch (format)

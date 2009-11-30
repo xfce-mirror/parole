@@ -349,6 +349,7 @@ parole_plugins_manager_get_plugin_info (const gchar *desktop_file)
 {
     ParolePluginInfo *info;
     GKeyFile *file;
+    GError *error = NULL;
     
     info = g_new0 (ParolePluginInfo, 1);
     
@@ -359,9 +360,10 @@ parole_plugins_manager_get_plugin_info (const gchar *desktop_file)
     
     file = g_key_file_new ();
     
-    if ( !g_key_file_load_from_file (file, desktop_file , G_KEY_FILE_NONE, NULL) )
+    if ( !g_key_file_load_from_file (file, desktop_file , G_KEY_FILE_NONE, &error) )
     {
-	g_warning ("Error opening file : %s", desktop_file);
+	g_warning ("Error opening file : %s : %s", desktop_file, error->message);
+	g_error_free (error);
 	goto out;
     }
     
@@ -535,14 +537,16 @@ static gchar *
 parole_plugins_manager_get_module_name (const gchar *desktop_file)
 {
     GKeyFile *file;
+    GError *error = NULL;
     gchar *module_name = NULL;
     gchar *library_name = NULL;
 
     file = g_key_file_new ();
     
-    if ( !g_key_file_load_from_file (file, desktop_file, G_KEY_FILE_NONE, NULL) )
+    if ( !g_key_file_load_from_file (file, desktop_file, G_KEY_FILE_NONE, &error) )
     {
-	g_warning ("Error opening file : %s", desktop_file);
+	g_warning ("Error opening file : %s : %s", desktop_file, error->message);
+	g_error_free (error);
 	goto out;
     }
     
@@ -726,6 +730,7 @@ void parole_plugins_manager_load (ParolePluginsManager *manager)
 		g_free (library_path);
 		continue;
 	    }
+	    TRACE ("Creating a module for %s desktop file %s", library_path, desktop_file);
 	    module = parole_provider_module_new (library_path, desktop_file);
 	    g_ptr_array_add (manager->priv->array, module);
 	    
