@@ -1,6 +1,5 @@
 <SECTION>
 <FILE>parole-provider-player</FILE>
-PAROLE_PROVIDER_PLAYER_GET_INTERFACE
 ParoleProviderPlayerIface
 ParoleProviderPlayer
 ParolePluginContainer
@@ -23,7 +22,6 @@ parole_provider_player_get_type
 
 <SECTION>
 <FILE>parole-provider-plugin</FILE>
-PAROLE_PROVIDER_PLUGIN_GET_INTERFACE
 ParoleProviderPluginIface
 ParoleProviderPlugin
 parole_provider_plugin_get_is_configurable
@@ -58,8 +56,6 @@ parole_file_get_type
 ParoleMediaType
 <TITLE>ParoleStream</TITLE>
 ParoleStream
-parole_stream_new
-parole_stream_init_properties
 <SUBSECTION Standard>
 PAROLE_STREAM
 PAROLE_IS_STREAM

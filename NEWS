@@ -1,4 +1,18 @@
-1.98
+0.1.99
+====
+- Fix bug in the active plugin saved list.
+- Added translators credit.
+- Fix a memory leak.
+- reload the logo when the theme is changed.
+- Fix compilation with xulrunner 1.9.2.
+- Fix bug #6039 concerning the crash on a virtual box.
+- Fix a variable type causing the cursor to be set invisible on the video
+  widget event if no video is playing.
+/* Browser plugin */
+- Fix buffering info that was displayed in fullscreen mode.
+- Stabilizing the browser plugin.
+
+0.1.98
 ====
 - Fix missing signal handler for the mute menu item.
 - Don't hide the controls in full screen when cursor is above
@@ -10,14 +24,14 @@
 - Added an option in the media chooser to chooer whether to start
   playing opened files directly or not (bug #6035).
 
-1.96
+0.1.96
 ====
 - Fix the plugin loader bug, when the a plugin is asking to pack a widget
   and the plugin loader is not ready (bug #6032).
 - Exit after 60 seconds of inactivity on the browser plugin to avoid
   any zombie process.
 
-1.95
+0.1.95
 ====
 - Use taglib when compiled to get the media title and display it in
   the list instead of waiting for a tag message from gst to change
@@ -40,7 +54,7 @@
 - Added --device command line to be used with cdda:// dvd:// etc...
 - Added browser media player plugin.
 
-1.91
+0.1.91
 ====
 - Don't runref the vis plugin as playbin will remove it on exit (bug #5830).
 - Fix settings dialog displayes in english when locales aren't english (bug #5829).
@@ -48,6 +62,6 @@
 - Fix some untranslatable strings (bug #5827).
 - Fix desktop file Application Type typo. (Type=Application instead if Type=Application;).
 
-1.90
+0.1.90
 ====
 First release.

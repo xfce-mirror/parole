@@ -165,6 +165,20 @@ static void sample_provider_finalize (GObject *object)
   </part>
 
 
+<!-- ##### MACRO PAROLE_PROVIDER_PLAYER_GET_INTERFACE ##### -->
+<para>
+
+</para>
+
+@o: 
+
+<!-- ##### MACRO PAROLE_PROVIDER_PLUGIN_GET_INTERFACE ##### -->
+<para>
+
+</para>
+
+@o: 
+
 <!-- ##### ENUM ParoleFileFormat ##### -->
 <para>
 
@@ -181,5 +195,19 @@ static void sample_provider_finalize (GObject *object)
 </para>
 
 @file: 
+@Returns: 
+
+<!-- ##### FUNCTION parole_stream_init_properties ##### -->
+<para>
+
+</para>
+
+@stream: 
+
+<!-- ##### FUNCTION parole_stream_new ##### -->
+<para>
+
+</para>
+
 @Returns: 
 
