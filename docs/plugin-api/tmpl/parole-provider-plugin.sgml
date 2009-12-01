@@ -6,12 +6,15 @@ The interface of the plugin type registration.
 
 <!-- ##### SECTION Long_Description ##### -->
 <para>
-
+The methods of this interface should be overridden by the plugin, the Parole player
+calls these methods to determine if the plugin is configurable, to ask the plugin to
+open its configuration dialog or to set the #ParoleProviderPlayer that the plugin
+can use to get access to various functionalities of the player.
 </para>
 
 <!-- ##### SECTION See_Also ##### -->
 <para>
-
+#ParoleProviderPlayer.
 </para>
 
 <!-- ##### SECTION Stability_Level ##### -->

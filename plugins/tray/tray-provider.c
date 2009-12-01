@@ -200,7 +200,11 @@ notify_playing (TrayProvider *tray, const ParoleStream *stream)
     gboolean live, has_audio, has_video;
     gchar *title;
     gchar *message;
-    gdouble duration;
+    gint64 duration;
+    gint  hours;
+    gint  minutes;
+    gint  seconds;
+    gchar timestring[128];
     ParoleMediaType media_type;
     
     if ( !tray->notify || !tray->enabled)
@@ -239,8 +243,22 @@ notify_playing (TrayProvider *tray, const ParoleStream *stream)
 	g_free (title);
 	return;
     }
+        
+    minutes =  duration / 60;
+    seconds = duration % 60;
+    hours = minutes / 60;
+    minutes = minutes % 60;
+
+    if ( hours == 0 )
+    {
+	g_snprintf (timestring, 128, "%02i:%02i", minutes, seconds);
+    }
+    else
+    {
+	g_snprintf (timestring, 128, "%i:%02i:%02i", hours, minutes, seconds);
+    }
     
-    message = g_strdup_printf ("%s %s %s %4.2f", _("<b>Playing:</b>"), title, _("<b>Duration:</b>"), duration);
+    message = g_strdup_printf ("%s %s %s %s", _("<b>Playing:</b>"), title, _("<b>Duration:</b>"), timestring);
     
     tray->n = notify_notification_new (title, message, NULL, NULL);
     g_free (title);

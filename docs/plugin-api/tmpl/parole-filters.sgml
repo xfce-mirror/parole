@@ -17,16 +17,6 @@ Parole Filters
 <!-- ##### SECTION Stability_Level ##### -->
 
 
-<!-- ##### ENUM ParoleFileFormat ##### -->
-<para>
-
-</para>
-
-@PAROLE_FILE_UNKNOWN: 
-@PAROLE_FILE_AUDIO: 
-@PAROLE_FILE_VIDEO: 
-@PAROLE_FILE_PLAYLIST: 
-
 <!-- ##### FUNCTION parole_get_supported_audio_filter ##### -->
 <para>
 
@@ -73,15 +63,6 @@ Parole Filters
 </para>
 
 @filter: 
-@file: 
-@Returns: 
-
-
-<!-- ##### FUNCTION parole_file_guess_format ##### -->
-<para>
-
-</para>
-
 @file: 
 @Returns: 
 

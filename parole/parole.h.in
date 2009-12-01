@@ -33,6 +33,8 @@
 #include <parole/parole-filters.h>
 #include <parole/parole-debug.h>
 
+#include <libxfce4util/libxfce4util.h>
+
 #define PAROLE_MAJOR_VERSION		@PAROLE_VERSION_MAJOR@
 #define PAROLE_MINOR_VERSION		@PAROLE_VERSION_MINOR@
 #define PAROLE_MICRO_VERSION		@PAROLE_VERSION_MICRO@

@@ -101,6 +101,8 @@ void parole_provider_plugin_configure (ParoleProviderPlugin *provider, GtkWidget
  * @provider: a #ParoleProviderPlugin
  * @player: a #ParoleProviderPlayer
  * 
+ * The player calls this method on the iface_init funtion implemented by the plugin
+ * to set the #ParoleProviderPlayer, don't take any reference of the Player.
  * 
  * Since: 0.2
  **/

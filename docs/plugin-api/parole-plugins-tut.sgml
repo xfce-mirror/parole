@@ -1,25 +1,3 @@
-<!-- ##### SECTION ./tmpl/parole-plugins.sgml:Long_Description ##### -->
-<para>
-
-</para>
-
-
-<!-- ##### SECTION ./tmpl/parole-plugins.sgml:See_Also ##### -->
-<para>
-
-</para>
-
-
-<!-- ##### SECTION ./tmpl/parole-plugins.sgml:Short_Description ##### -->
-
-
-
-<!-- ##### SECTION ./tmpl/parole-plugins.sgml:Stability_Level ##### -->
-
-
-
-<!-- ##### SECTION ./tmpl/parole-plugins.sgml:Title ##### -->
-Parole Plugin Tutorial
 
     <para>
 	This section explains the steps required to write a plugin for Parole using
@@ -37,7 +15,8 @@ Parole Plugin Tutorial
 	interface used by plugins to access the the Parole player backend.
     </para>
     
-  <sect1 id="parole-plugin-strcuted">
+
+  <sect1>
     <title>Plugin structure.</title>
     sample-plugin.c
     <programlisting>
@@ -161,25 +140,3 @@ static void sample_provider_finalize (GObject *object)
     </programlisting>
     
   </sect1>
-    
-  </part>
-
-
-<!-- ##### ENUM ParoleFileFormat ##### -->
-<para>
-
-</para>
-
-@PAROLE_FILE_UNKNOWN: 
-@PAROLE_FILE_AUDIO: 
-@PAROLE_FILE_VIDEO: 
-@PAROLE_FILE_PLAYLIST: 
-
-<!-- ##### FUNCTION parole_file_guess_format ##### -->
-<para>
-
-</para>
-
-@file: 
-@Returns: 
-

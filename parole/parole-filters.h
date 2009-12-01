@@ -31,15 +31,6 @@
 
 G_BEGIN_DECLS
 
-typedef enum
-{
-    PAROLE_FILE_UNKNOWN,
-    PAROLE_FILE_AUDIO,
-    PAROLE_FILE_VIDEO,
-    PAROLE_FILE_PLAYLIST
-    
-} ParoleFileFormat;
-
 GtkFileFilter 		*parole_get_supported_audio_filter	(void);
 
 GtkFileFilter 		*parole_get_supported_video_filter	(void);
@@ -52,8 +43,6 @@ GtkFileFilter 		*parole_get_supported_playlist_filter	(void);
 
 gboolean		 parole_file_filter			(GtkFileFilter *filter,
 								 ParoleFile *file);
-
-ParoleFileFormat	 parole_file_guess_format		(ParoleFile *file);
 
 G_END_DECLS
 

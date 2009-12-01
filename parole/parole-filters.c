@@ -43,8 +43,16 @@ static char *playlist_mime_types[] = {
     "application/xspf+xml",
 };
 
-/*
- * Supported Audio formats.
+/**
+ * parole_get_supported_audio_filter:
+ * 
+ * 
+ * Get a #GtkFileFilter according to the supported
+ * Parole audio mime types.
+ * 
+ * Returns: A #GtkFileFilter for supported audio formats.
+ * 
+ * Since: 0.2
  */
 GtkFileFilter 		*parole_get_supported_audio_filter	(void)
 {
@@ -61,8 +69,16 @@ GtkFileFilter 		*parole_get_supported_audio_filter	(void)
     return filter;
 }
 
-/*
- * Supported Video formats.
+/**
+ * parole_get_supported_video_filter:
+ * 
+ * 
+ * Get a #GtkFileFilter according to the supported
+ * Parole video mime types.
+ * 
+ * Returns: A #GtkFileFilter for supported video formats.
+ * 
+ * Since: 0.2
  */
 GtkFileFilter 		*parole_get_supported_video_filter	(void)
 {
@@ -79,8 +95,15 @@ GtkFileFilter 		*parole_get_supported_video_filter	(void)
     return filter;
 }
 
-/*
- * Supported Audio And Video.
+/**
+ * parole_get_supported_media_filter:
+ * 
+ * Get a #GtkFileFilter according to the supported
+ * Parole media mime types, including audio and vide.
+ * 
+ * Returns: A #GtkFileFilter for supported media formats.
+ * 
+ * Since: 0.2
  */
 GtkFileFilter 		*parole_get_supported_media_filter	(void)
 {
@@ -100,6 +123,17 @@ GtkFileFilter 		*parole_get_supported_media_filter	(void)
     return filter;
 }
 
+/**
+ * parole_get_supported_files_filter:
+ * 
+ * 
+ * Get a #GtkFileFilter according to the supported
+ * Parole files mime types, including audio/video/play list formats.
+ * 
+ * Returns: A #GtkFileFilter for supported files formats.
+ * 
+ * Since: 0.2
+ */
 GtkFileFilter *parole_get_supported_files_filter (void)
 {
     GtkFileFilter *filter;
@@ -116,6 +150,17 @@ GtkFileFilter *parole_get_supported_files_filter (void)
     
 }
 
+/**
+ * parole_get_supported_playlist_filter:
+ * 
+ * 
+ * Get a #GtkFileFilter according to the supported
+ * Parole play-list mime types.
+ * 
+ * Returns: A #GtkFileFilter for supported playlist formats.
+ * 
+ * Since: 0.2
+ */
 GtkFileFilter 	*parole_get_supported_playlist_filter	(void)
 {
     GtkFileFilter *filter;
@@ -131,6 +176,17 @@ GtkFileFilter 	*parole_get_supported_playlist_filter	(void)
     return filter;
 }
 
+/**
+ * parole_file_filter:
+ * @filter: a #GtkFileFilter.
+ * @file: a #ParoleFile
+ * 
+ * Tests whether a file should be displayed according to filter
+ * 
+ * Returns: TRUE if the file should be displayed.
+ * 
+ * Since: 0.2
+ */
 gboolean parole_file_filter (GtkFileFilter *filter, ParoleFile *file)
 {
     GtkFileFilterInfo filter_info;

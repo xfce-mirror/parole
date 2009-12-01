@@ -4,6 +4,7 @@
 [
   <!ENTITY % local.common.attrib "xmlns:xi  CDATA  #FIXED 'http://www.w3.org/2003/XInclude'">
   <!ENTITY version SYSTEM "version.xml">
+  <!ENTITY plugin-tut SYSTEM "parole-plugins-tut.sgml">
   <!ENTITY date "July 2009">
 ]>
 <book id="index">
@@ -42,8 +43,9 @@
     </para>
   </part>
   
-  <part id="tutorial">
-    <title>Plugin tutorial</title>
+  <part id="parole-plugins-tut">
+  <title>Parole Plugin Tutorial</title>
+    &plugin-tut;
   </part>
   
   <part id="fundamentals">

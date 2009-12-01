@@ -230,60 +230,6 @@ parole_asx_xml_end (GMarkupParseContext *context, const gchar *element_name,
     }
 }
 
-ParolePlFormat
-parole_pl_parser_guess_format_from_extension (const gchar *filename)
-{
-    if ( g_str_has_suffix (filename, ".m3u") || g_str_has_suffix (filename, ".M3U") )
-	return PAROLE_PL_FORMAT_M3U;
-	
-    if ( g_str_has_suffix (filename, ".pls") || g_str_has_suffix (filename, ".PLS") )
-	return PAROLE_PL_FORMAT_PLS;
-	
-    if ( g_str_has_suffix (filename, ".xspf") || g_str_has_suffix (filename, ".XSPF") )
-	return PAROLE_PL_FORMAT_XSPF;
-	
-    if ( g_str_has_suffix (filename, ".asx") || g_str_has_suffix (filename, ".ASX") )
-	return PAROLE_PL_FORMAT_ASX;
-	
-    if ( g_str_has_suffix (filename, ".wax") || g_str_has_suffix (filename, ".WAX") )
-	return PAROLE_PL_FORMAT_XSPF;
-	
-    return PAROLE_PL_FORMAT_UNKNOWN;
-}
-
-static ParolePlFormat
-parole_pl_parser_guess_format_from_data (const gchar *filename)
-{
-    GFile *file;
-    gchar *contents = NULL;
-    gsize size;
-    
-    ParolePlFormat format = PAROLE_PL_FORMAT_UNKNOWN;
-    
-    file = g_file_new_for_path (filename);
-
-    if ( !g_file_load_contents (file, NULL, &contents, &size, NULL, NULL ) )
-    {
-	g_debug ("Unable to load content of file=%s", filename);
-	goto out;
-    }
-
-    if ( strstr (contents, "<ASX VERSION") )
-	format = PAROLE_PL_FORMAT_ASX;
-    else if ( strstr (contents, "<trackList>") || strstr (contents, "<tracklist>") )
-	format = PAROLE_PL_FORMAT_XSPF;
-    else if ( strstr (contents, "NumberOfEntries") )
-	format = PAROLE_PL_FORMAT_PLS;
-    else 
-	/* try to load the file as M3U*/
-	format = PAROLE_PL_FORMAT_M3U;
-
-    g_free (contents);
-out:
-    g_object_unref (file);
-    return format;
-}
-
 static GSList *
 parole_pl_parser_parse_asx (const gchar *filename)
 {
@@ -534,62 +480,6 @@ parole_pl_parser_parse (ParolePlFormat format, const gchar *filename)
     return list;
 }
 
-gboolean parole_pl_parser_can_parse_data (const guchar *data, gint len)
-{
-    gchar *mime_type = NULL;
-    gboolean result_uncertain;
-    gboolean result = FALSE;
-
-    mime_type = g_content_type_guess (NULL, data, len,  &result_uncertain);
-    
-    if ( mime_type && result_uncertain == FALSE )
-    {
-	GtkFileFilter *filter = g_object_ref_sink (parole_get_supported_playlist_filter ());
-	GtkFileFilterInfo filter_info;
-	g_debug ("Mime_type=%s", mime_type);
-	filter_info.mime_type = mime_type;
-    
-	filter_info.contains = GTK_FILE_FILTER_MIME_TYPE;
-    
-	result = gtk_file_filter_filter (filter, &filter_info);
-	g_object_unref (filter);
-	g_free (mime_type);
-    }
-    
-    return result;
-}
-
-GSList *parole_pl_parser_parse_from_file_by_extension (const gchar *filename)
-{
-    ParolePlFormat format = PAROLE_PL_FORMAT_UNKNOWN;
-    GSList *list = NULL;
-    
-    if ( (format = parole_pl_parser_guess_format_from_extension (filename)) == PAROLE_PL_FORMAT_UNKNOWN &&
-	 (format = parole_pl_parser_guess_format_from_data (filename)) == PAROLE_PL_FORMAT_UNKNOWN ) 
-    {
-	g_debug ("Unable to guess playlist format : %s", filename);
-	goto out;
-    }
-
-    PAROLE_DEBUG_ENUM_FULL (format, PAROLE_ENUM_TYPE_PL_FORMAT, "playlist %s ", filename);
-    list = parole_pl_parser_parse (format, filename);
-	
-out:
-    return list;
-}
-
-GSList *parole_pl_parser_parse_all_from_file (const gchar *filename)
-{
-    GSList *list = NULL;
-    
-    list = parole_pl_parser_parse_asx (filename);
-    list = g_slist_concat (list, parole_pl_parser_parse_m3u (filename));
-    list = g_slist_concat (list, parole_pl_parser_parse_pls (filename));
-    list = g_slist_concat (list, parole_pl_parser_parse_xspf (filename));
-    
-    return list;
-}
-
 static gboolean
 parole_pl_parser_save_m3u (FILE *f, GSList *files)
 {
@@ -685,6 +575,95 @@ parole_pl_parser_save_xspf (FILE *f, GSList *files)
     return TRUE;
 }
 
+/**
+ * parole_pl_parser_guess_format_from_extension:
+ * @filename: a filename.
+ * 
+ * Guess a playlist format from the filename extension.
+ * 
+ * Returns: PAROLE_PL_FORMAT_UNKNOWN if unable to get the playlist format, and a valid  
+ *          playlist format otherwise.
+ * 
+ * Since: 0.2
+ */
+ParolePlFormat
+parole_pl_parser_guess_format_from_extension (const gchar *filename)
+{
+    if ( g_str_has_suffix (filename, ".m3u") || g_str_has_suffix (filename, ".M3U") )
+	return PAROLE_PL_FORMAT_M3U;
+	
+    if ( g_str_has_suffix (filename, ".pls") || g_str_has_suffix (filename, ".PLS") )
+	return PAROLE_PL_FORMAT_PLS;
+	
+    if ( g_str_has_suffix (filename, ".xspf") || g_str_has_suffix (filename, ".XSPF") )
+	return PAROLE_PL_FORMAT_XSPF;
+	
+    if ( g_str_has_suffix (filename, ".asx") || g_str_has_suffix (filename, ".ASX") )
+	return PAROLE_PL_FORMAT_ASX;
+	
+    if ( g_str_has_suffix (filename, ".wax") || g_str_has_suffix (filename, ".WAX") )
+	return PAROLE_PL_FORMAT_XSPF;
+	
+    return PAROLE_PL_FORMAT_UNKNOWN;
+}
+
+/**
+ * parole_pl_parser_guess_format_from_data:
+ * @filename: a filename.
+ * 
+ * Guess a playlist format from its data.
+ * 
+ * Returns: PAROLE_PL_FORMAT_UNKNOWN if unable to get the playlist format, and a valid  
+ *          playlist format otherwise.
+ * 
+ * Since: 0.2
+ */
+ParolePlFormat
+parole_pl_parser_guess_format_from_data (const gchar *filename)
+{
+    GFile *file;
+    gchar *contents = NULL;
+    gsize size;
+    
+    ParolePlFormat format = PAROLE_PL_FORMAT_UNKNOWN;
+    
+    file = g_file_new_for_path (filename);
+
+    if ( !g_file_load_contents (file, NULL, &contents, &size, NULL, NULL ) )
+    {
+	g_debug ("Unable to load content of file=%s", filename);
+	goto out;
+    }
+
+    if ( strstr (contents, "<ASX VERSION") )
+	format = PAROLE_PL_FORMAT_ASX;
+    else if ( strstr (contents, "<trackList>") || strstr (contents, "<tracklist>") )
+	format = PAROLE_PL_FORMAT_XSPF;
+    else if ( strstr (contents, "NumberOfEntries") )
+	format = PAROLE_PL_FORMAT_PLS;
+    else 
+	/* try to load the file as M3U*/
+	format = PAROLE_PL_FORMAT_M3U;
+
+    g_free (contents);
+out:
+    g_object_unref (file);
+    return format;
+}
+
+/**
+ * parole_pl_parser_save_from_files:
+ * @files: a #GSList list of #ParoleFile files.
+ * @filename: a filename to save.
+ * @format: a #ParolePlFormat format of the playlist.
+ * 
+ * Saves a #GSList containing a list of #ParoleFile files to filename.
+ * 
+ * 
+ * Returns: TRUE if the playlist was saved, FALSE otherwise.
+ * 
+ * Since: 0.2
+ **/
 gboolean parole_pl_parser_save_from_files (GSList *files, const gchar *filename, ParolePlFormat format)
 {
     FILE *f;
@@ -715,4 +694,93 @@ gboolean parole_pl_parser_save_from_files (GSList *files, const gchar *filename,
     fclose (f);
     
     return ret_val;
+}
+
+/**
+ * parole_pl_parser_parse_from_file_by_extension:
+ * @filename: a filename.
+ * 
+ * 
+ * Returns: a #GSList containts a list of #Parolefile parsed from the playlist, 
+ *          or NULL if no files were parsed.
+ * 
+ * Since: 0.2
+ */
+GSList *parole_pl_parser_parse_from_file_by_extension (const gchar *filename)
+{
+    ParolePlFormat format = PAROLE_PL_FORMAT_UNKNOWN;
+    GSList *list = NULL;
+    
+    if ( (format = parole_pl_parser_guess_format_from_extension (filename)) == PAROLE_PL_FORMAT_UNKNOWN &&
+	 (format = parole_pl_parser_guess_format_from_data (filename)) == PAROLE_PL_FORMAT_UNKNOWN ) 
+    {
+	g_debug ("Unable to guess playlist format : %s", filename);
+	goto out;
+    }
+
+    PAROLE_DEBUG_ENUM_FULL (format, PAROLE_ENUM_TYPE_PL_FORMAT, "playlist %s ", filename);
+    list = parole_pl_parser_parse (format, filename);
+	
+out:
+    return list;
+}
+
+/**
+ * parole_pl_parser_parse_all_from_file:
+ * @filename: a filename
+ * 
+ * This function tries to parse a playlist without guessing the playlist format.
+ * 
+ * 
+ * Returns: a #GSList containts a list of #Parolefile parsed from the playlist, 
+ *          or NULL if no files were parsed.
+ * 
+ * Since: 0.2
+ */
+GSList *parole_pl_parser_parse_all_from_file (const gchar *filename)
+{
+    GSList *list = NULL;
+    
+    list = parole_pl_parser_parse_asx (filename);
+    list = g_slist_concat (list, parole_pl_parser_parse_m3u (filename));
+    list = g_slist_concat (list, parole_pl_parser_parse_pls (filename));
+    list = g_slist_concat (list, parole_pl_parser_parse_xspf (filename));
+    
+    return list;
+}
+
+/**
+ * parole_pl_parser_can_parse_data:
+ * @data: data.
+ * @len: length of data.
+ * 
+ * Get if the Parole parser can parse from the passed data.
+ * 
+ * Returns: TRUE if it can parse from the data, FALSE otherwise.
+ * 
+ * Since: 0.2
+ */
+gboolean parole_pl_parser_can_parse_data (const guchar *data, gint len)
+{
+    gchar *mime_type = NULL;
+    gboolean result_uncertain;
+    gboolean result = FALSE;
+
+    mime_type = g_content_type_guess (NULL, data, len,  &result_uncertain);
+    
+    if ( mime_type && result_uncertain == FALSE )
+    {
+	GtkFileFilter *filter = g_object_ref_sink (parole_get_supported_playlist_filter ());
+	GtkFileFilterInfo filter_info;
+	g_debug ("Mime_type=%s", mime_type);
+	filter_info.mime_type = mime_type;
+    
+	filter_info.contains = GTK_FILE_FILTER_MIME_TYPE;
+    
+	result = gtk_file_filter_filter (filter, &filter_info);
+	g_object_unref (filter);
+	g_free (mime_type);
+    }
+    
+    return result;
 }

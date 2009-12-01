@@ -22,7 +22,7 @@
 #include <config.h>
 #endif
 
-#include <libxfce4util/libxfce4util.h>
+#include <parole/parole.h>
 
 #include "sample-provider.h"
 

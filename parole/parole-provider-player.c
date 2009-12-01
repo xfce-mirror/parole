@@ -70,6 +70,8 @@ static void parole_provider_player_base_init (gpointer klass)
 	 * @stream: a #ParoleStream.
 	 * @state: the new state.
 	 * 
+	 * Issued when the Parole state changed.
+	 * 
 	 * Since: 0.2 
 	 **/
         g_signal_new ("state-changed",
@@ -85,6 +87,8 @@ static void parole_provider_player_base_init (gpointer klass)
 	 * ParoleProviderPlayerIface::tag-message:
 	 * @player: the object which received the signal.
 	 * @stream: a #ParoleStream.
+	 * 
+	 * Indicated that the stream tags were found and ready to be read.
 	 * 
 	 * Since: 0.2 
 	 **/
@@ -106,10 +110,13 @@ static void parole_provider_player_class_init (gpointer klass)
 
 /**
  * parole_provider_player_get_main_window:
- * @player: a 
+ * @player: a #ParoleProviderPlayer 
  * 
+ * Ask the Player to get the Parole main window.
  * 
- * Returns: 
+ * Returns: #GtkWidget window.
+ * 
+ * Since: 0.2
  **/
 GtkWidget *parole_provider_player_get_main_window (ParoleProviderPlayer *player)
 {
@@ -126,10 +133,16 @@ GtkWidget *parole_provider_player_get_main_window (ParoleProviderPlayer *player)
 
 /**
  * parole_provider_player_pack:
- * @player:
- * @widget:
- * @title:
- * @container:
+ * @player: a #ParoleProviderPlayer
+ * @widget: a #GtkWidget.
+ * @title: title
+ * @container: a #ParolePluginContainer.
+ * 
+ * Ask the player to pack a widget in the playlist notebook if PAROLE_PLUGIN_CONTAINER_PLAYLIST 
+ * is specified or in the main window notebook if PAROLE_PLUGIN_CONTAINER_MAIN_VIEW is specified.
+ * 
+ * This function can be called once, the Player is responsible on removing the widget in
+ * case the plugin was unloaded.
  * 
  **/ 
 void parole_provider_player_pack (ParoleProviderPlayer *player, GtkWidget *widget, 
@@ -145,10 +158,11 @@ void parole_provider_player_pack (ParoleProviderPlayer *player, GtkWidget *widge
 		
 /**
  * parole_provider_player_get_state:
- * @player:
+ * @player: a #ParoleProviderPlayer
  * 
+ * Get the current state of the player.
  * 
- * Returns:
+ * Returns: a #ParoleState.
  * 
  * 
  * Since: 0.2
@@ -172,9 +186,13 @@ ParoleState parole_provider_player_get_state (ParoleProviderPlayer *player)
  * @player: a #ParoleProviderPlayer
  * @uri: uri
  * 
+ * Issue a play command on the backend for the given uri, note this function
+ * can be called only of the Parole current state is PAROLE_STATE_STOPPED.
  * 
- * Returns:
+ * Returning TRUE doesn't mean that the funtion succeeded to change the state of the player, 
+ * the state change is indicated asynchronously by #ParoleProviderPlayerIface::state-changed signal.
  * 
+ * Returns: TRUE if the command is processed, FALSE otherwise.
  * 
  * Since: 0.2
  **/
@@ -196,8 +214,13 @@ gboolean parole_provider_player_play_uri (ParoleProviderPlayer *player, const gc
  * parole_provider_player_pause:
  * @player: a #ParoleProviderPlayer
  * 
+ * Issue a pause command to the backend, this function can be called when the state of the player
+ * is PAROLE_STATE_PLAYING.
  * 
- * Returns:
+ * Returning TRUE doesn't mean that the funtion succeeded to change the state of the player, 
+ * the state change is indicated asynchronously by #ParoleProviderPlayerIface::state-changed signal.
+ * 
+ * Returns: TRUE if the command is processed, FALSE otherwise.
  * 
  * 
  * Since: 0.2
@@ -222,7 +245,13 @@ gboolean parole_provider_player_pause (ParoleProviderPlayer *player)
  * @player: a #ParoleProviderPlayer
  * 
  * 
- * Returns:
+ * Issue a resume command to the player, this function can be called when
+ * the current state of the player is PAROLE_STATE_PAUSED.
+ * 
+ * Returning TRUE doesn't mean that the funtion succeeded to change the state of the player, 
+ * the state change is indicated asynchronously by #ParoleProviderPlayerIface::state-changed signal.
+ * 
+ * Returns: TRUE if the command is processed, FALSE otherwise.
  * 
  * 
  * Since: 0.2
@@ -246,9 +275,12 @@ gboolean parole_provider_player_resume (ParoleProviderPlayer *player)
  * parole_provider_player_stop:
  * @player: a #ParoleProviderPlayer
  * 
+ * Issue a stop command to the player.
  * 
- * Returns:
+ * Returning TRUE doesn't mean that the funtion succeeded to change the state of the player, 
+ * the state change is indicated asynchronously by #ParoleProviderPlayerIface::state-changed signal.
  * 
+ * Returns: TRUE if the command is processed, FALSE otherwise.
  * 
  * Since: 0.2
  **/
@@ -270,9 +302,12 @@ gboolean parole_provider_player_stop (ParoleProviderPlayer *player)
 /**
  * parole_provider_player_seek:
  * @player: a #ParoleProviderPlayer
+ * @pos: position to seek.
  * 
  * 
- * Returns:
+ * Issue a seek command.
+ * 
+ * Returns: TRUE if the seek command succeeded, FALSE otherwise.
  * 
  * 
  * Since: 0.2
@@ -296,7 +331,7 @@ gboolean parole_provider_player_seek (ParoleProviderPlayer *player, gdouble pos)
  * parole_provider_player_open_media_chooser:
  * @player: a #ParoleProviderPlayer
  * 
- * 
+ * Ask Parole to open its media chooser dialog.
  * 
  * Since: 0.2
  **/

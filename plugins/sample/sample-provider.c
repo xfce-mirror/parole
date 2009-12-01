@@ -22,8 +22,6 @@
 #include <config.h>
 #endif
 
-#include <glib/gi18n.h>
-
 #include "sample-provider.h"
 
 static void   sample_provider_iface_init 	   (ParoleProviderPluginIface *iface);
