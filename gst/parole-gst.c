@@ -1376,7 +1376,7 @@ parole_gst_button_press_event (GtkWidget *widget, GdkEventButton *ev)
     {
 	nav = GST_NAVIGATION (gst->priv->video_sink);
 	gst_navigation_send_mouse_event (nav, "mouse-button-press", ev->button, ev->x, ev->y);
-	ret = TRUE;
+	//ret = TRUE;
     }
     
     if (GTK_WIDGET_CLASS (parole_gst_parent_class)->button_press_event)

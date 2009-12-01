@@ -105,6 +105,8 @@ parole_plugin_player_ready_cb (DBusGProxy *proxy, gpointer data)
     {
 	plugin->ping_id = g_timeout_add_seconds (10, (GSourceFunc) parole_plugin_ping, plugin);
     }
+    
+    
 }
 
 ////////////////////////////////////////
@@ -412,12 +414,6 @@ void CPlugin::StreamAsFile (NPStream * stream, const char *fname)
 int32_t CPlugin::WriteReady (NPStream * stream)
 {
     g_debug ("WriteReady url=%s", stream->url);
-    
-    if (checked)
-    {
-	DestroyStream (stream, NPRES_DONE);
-	return -1;
-    }
     
     return  player_ready ? STREAMBUFSIZE  : 0;
 }

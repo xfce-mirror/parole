@@ -729,6 +729,7 @@ parole_plugin_player_construct (GObject *object)
      * buffering
      */
     player->priv->buffering = gtk_label_new (NULL);
+    gtk_widget_set_no_show_all (player->priv->buffering, TRUE);
     gtk_widget_hide (player->priv->buffering);
     gtk_box_pack_start (GTK_BOX (vbox), player->priv->buffering, 
 			FALSE, FALSE, 0);
