@@ -190,6 +190,7 @@ tray_activate_cb (GtkStatusIcon *tray_icon, TrayProvider *tray)
 static void
 notification_closed_cb (NotifyNotification *n, TrayProvider *tray)
 {
+    g_object_unref (tray->n);
     tray->n = NULL;
 }
 
@@ -313,7 +314,14 @@ state_changed_cb (ParoleProviderPlayer *player, const ParoleStream *stream, Paro
     {
 	if ( tray->n )
 	{
-	    notify_notification_close (tray->n, NULL);
+	    GError *error = NULL;
+	    notify_notification_close (tray->n, &error);
+	    if ( error )
+	    {
+		g_warning ("Failed to close notification : %s", error->message);
+		g_error_free (error);
+	    }
+	    g_object_unref (tray->n);
 	    tray->n = NULL;
 	}
 	if ( state < PAROLE_STATE_PAUSED )
