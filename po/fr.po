@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ast\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-11-27 10:38+0100\n"
-"PO-Revision-Date: 2009-10-26 18:27+0100\n"
+"PO-Revision-Date: 2009-12-03 11:49+0100\n"
 "Last-Translator: Douart Patrick <patrick.2@laposte.net>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -127,15 +127,15 @@ msgstr "_Affichage"
 
 #: ../data/interfaces/mediachooser.ui.h:1
 msgid "Replace playlist with opened files"
-msgstr ""
+msgstr "Remplacer playlist avec les fichiers ouverts"
 
 #: ../data/interfaces/mediachooser.ui.h:2
 msgid "Scan folders recursively"
-msgstr ""
+msgstr "Analyser les dossiers récursivement"
 
 #: ../data/interfaces/mediachooser.ui.h:3
 msgid "Start playing opened files"
-msgstr ""
+msgstr "Démarrez la lecture de fichiers ouverts"
 
 #: ../data/interfaces/plugins.ui.h:1
 msgid "<b>Author:</b>"
@@ -277,15 +277,15 @@ msgstr "Ouvrir une nouvelle instance"
 
 #: ../src/main.c:192
 msgid "Do not load plugins"
-msgstr ""
+msgstr "Ne chargez pas les plugins"
 
 #: ../src/main.c:193
 msgid "Set Audio-CD/VCD/DVD device path"
-msgstr ""
+msgstr "Sélectionner le chemin vers le périphérique Audio-CD/VCD/DVD"
 
 #: ../src/main.c:194
 msgid "Play or pause if already playing"
-msgstr ""
+msgstr "Lecture ou pause si lecture en cours"
 
 #: ../src/main.c:195
 #, fuzzy
@@ -304,23 +304,23 @@ msgstr "Piste Précédente"
 
 #: ../src/main.c:198
 msgid "Seek forward"
-msgstr ""
+msgstr "Avancer"
 
 #: ../src/main.c:199
 msgid "Seek Backward"
-msgstr ""
+msgstr "Reculer"
 
 #: ../src/main.c:200
 msgid "Raise volume"
-msgstr ""
+msgstr "Augmenter le volume"
 
 #: ../src/main.c:201
 msgid "Lower volume"
-msgstr ""
+msgstr "Baisser le volume"
 
 #: ../src/main.c:202
 msgid "Mute volume"
-msgstr ""
+msgstr "Couper le volume"
 
 #: ../src/main.c:203
 msgid "Version information"
@@ -715,18 +715,19 @@ msgstr "Activer les notifications"
 #: ../plugins/tray/tray-provider.c:413
 msgid "Always minimize to tray when window is closed"
 msgstr ""
+"Toujours réduire dans la zone de notification lorsque la fenêtre est fermée"
 
 #: ../plugins/tray/tray-provider.c:452
 msgid "Minimize to tray?"
-msgstr ""
+msgstr "Minimiser dans la zone de notification ?"
 
 #: ../plugins/tray/tray-provider.c:458
 msgid "Minimize to tray"
-msgstr ""
+msgstr "Minimiser dans la zone de notification"
 
 #: ../plugins/tray/tray-provider.c:474
 msgid "Are you sure you want to quit Parole"
-msgstr ""
+msgstr "Etes vous sur de vouloir quitter Parole"
 
 #: ../plugins/tray/tray-provider.c:478
 #, fuzzy
@@ -755,19 +756,19 @@ msgstr "Titre de la Fenêtre"
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:1
 msgid "Inhibit Power Manager from suspending the machine while playing DVD."
-msgstr ""
+msgstr "Suspendre le gestionnaire d'alimentation pendant la lecture de DVD."
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
-msgstr ""
+msgstr "Power Manager Plugin"
 
 #: ../browser-plugin/media-plugin/main.c:72
 msgid "socket"
-msgstr ""
+msgstr "socket"
 
 #: ../browser-plugin/media-plugin/main.c:72
 msgid "SOCKET ID"
-msgstr ""
+msgstr "SOCKET ID"
 
 #: ../browser-plugin/media-plugin/main.c:73
 #, fuzzy
@@ -776,7 +777,7 @@ msgstr "Média à lire"
 
 #: ../browser-plugin/media-plugin/main.c:73
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: ../browser-plugin/media-plugin/parole-plugin-player.c:135
 #, fuzzy
@@ -793,7 +794,7 @@ msgstr "gtk-leave-fullscreen"
 #.
 #: ../browser-plugin/media-plugin/parole-plugin-player.c:426
 msgid "Copy url"
-msgstr ""
+msgstr "Copier l'url"
 
 #, fuzzy
 #~ msgid "Plugin"
