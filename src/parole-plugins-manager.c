@@ -367,13 +367,13 @@ parole_plugins_manager_get_plugin_info (const gchar *desktop_file)
 	goto out;
     }
     
-    info->name = g_key_file_get_string (file, "Parole Plugin", "Name", NULL);
+    info->name = g_key_file_get_locale_string (file, "Parole Plugin", "Name", NULL, NULL);
     
     if ( !info->name )
 	info->name = g_strdup (_("Unknown"));
     
     
-    info->desc = g_key_file_get_string (file, "Parole Plugin", "Description", NULL);
+    info->desc = g_key_file_get_locale_string (file, "Parole Plugin", "Description", NULL, NULL);
     
     if ( !info->desc )
 	info->desc = g_strdup ("");
