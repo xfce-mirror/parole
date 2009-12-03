@@ -42,6 +42,7 @@
 #include "parole-gst-iface.h"
 
 #include "common/parole-common.h"
+#include "common/parole-rc-utils.h"
 
 #include "gst-enum-types.h"
 #include "gstmarshal.h"
@@ -1666,7 +1667,11 @@ parole_gst_constructed (GObject *object)
 {
     ParoleGst *gst;
     
+    gboolean enable_xv;
+    
     gst = PAROLE_GST (object);
+    
+    enable_xv = parole_rc_read_entry_bool ("enable-xv", PAROLE_RC_GROUP_GENERAL, TRUE);
     
     gst->priv->playbin = gst_element_factory_make ("playbin", "player");
  
@@ -1678,12 +1683,16 @@ parole_gst_constructed (GObject *object)
 	g_error ("playbin load failed");
     }
     
-    gst->priv->video_sink = gst_element_factory_make ("xvimagesink", "video");
-    gst->priv->xvimage_sink = TRUE;
+    if (enable_xv)
+    {
+	gst->priv->video_sink = gst_element_factory_make ("xvimagesink", "video");
+	gst->priv->xvimage_sink = TRUE;
+    }
+    
     if ( G_UNLIKELY (gst->priv->video_sink == NULL) )
     {
 	gst->priv->xvimage_sink = FALSE;
-	g_debug ("xvimagesink not found, trying to load ximagesink"); 
+	g_debug ("%s trying to load ximagesink", enable_xv ? "xvimagesink not found " : "xv disabled "); 
 	gst->priv->video_sink = gst_element_factory_make ("ximagesink", "video");
 	
 	if ( G_UNLIKELY (gst->priv->video_sink == NULL) )

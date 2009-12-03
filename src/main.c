@@ -46,6 +46,7 @@
 #include "parole-session.h"
 #include "parole-dbus.h"
 #include "parole-builder.h"
+#include "parole-rc-utils.h"
 
 static void G_GNUC_NORETURN
 show_version (void)
@@ -160,6 +161,26 @@ parole_send_message (const gchar *message)
 
 }
 
+static gboolean
+xv_option_given (const gchar *name, const gchar *value, gpointer data, GError **error)
+{
+    gboolean enabled = TRUE;
+    
+    if ( !g_strcmp0 (value, "TRUE") || !g_strcmp0 (value, "true"))
+	enabled = TRUE;
+    else if (!g_strcmp0 (value, "FALSE") || !g_strcmp0 (value, "false"))
+	enabled = FALSE;
+    else 
+    {
+	g_set_error (error, 0, 0, "%s %s : %s",  name, _("Unknown argument "), value);
+	return FALSE;
+    }
+    
+    parole_rc_write_entry_bool ("enable-xv", PAROLE_RC_GROUP_GENERAL, enabled);
+    
+    exit (0);
+}
+
 int main (int argc, char **argv)
 {
     ParolePlayer *player;
@@ -201,6 +222,7 @@ int main (int argc, char **argv)
 	{ "lower-volume", 'l', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &lower_volume, N_("Lower volume"), NULL },
 	{ "mute", 'm', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &mute, N_("Mute volume"), NULL },
 	{ "version", 'V', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &version, N_("Version information"), NULL },
+	{ "xv", '\0', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_CALLBACK, (GOptionArgFunc) xv_option_given, N_("Enabled/Disable XV support"), NULL},
 	{ "sm-client-id", 0, G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_STRING, &client_id, NULL, NULL },
 	{G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, &filenames, N_("Media to play"), NULL},
         { NULL, },

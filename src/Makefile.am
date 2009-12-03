@@ -30,52 +30,47 @@ GENERATED_FILES =				\
 	org.parole.media.list.h			\
 	org.parole.media.player.h
 
-NOINST_HFILES =					\
-	parole-player.h				\
-	parole-vis.h				\
-	parole-statusbar.h			\
-	parole-mediachooser.h			\
-	parole-conf.h				\
-	parole-conf-dialog.h			\
-	parole-rc-utils.h			\
-	parole-utils.h				\
-	parole-disc.h				\
-	parole-medialist.h			\
-	parole-plugins-manager.h		\
-	parole-module.h				\
-	parole-about.h				\
-	parole-builder.h			\
-	parole-subtitle-encoding.h		\
-	parole-open-location.h			\
-	parole-disc-menu.h			\
-	parole-session.h			\
-	parole-button.h				\
-	parole-plugin-player.h
-
 parole_SOURCES =				\
 	$(GENERATED_FILES)			\
-	$(NOINST_HFILES)			\
 	main.c					\
 	parole-player.c				\
+	parole-player.h				\
 	parole-vis.c				\
+	parole-vis.h				\
 	parole-statusbar.c			\
+	parole-statusbar.h			\
 	parole-medialist.c			\
+	parole-medialist.h			\
 	parole-mediachooser.c			\
+	parole-mediachooser.h			\
 	parole-conf.c				\
+	parole-conf.h				\
 	parole-conf-dialog.c			\
+	parole-conf-dialog.h			\
 	parole-disc.c				\
-	parole-rc-utils.c			\
+	parole-disc.h				\
 	parole-utils.c				\
+	parole-utils.h				\
 	parole-plugins-manager.c		\
+	parole-plugins-manager.h		\
 	parole-module.c				\
+	parole-module.h				\
 	parole-about.c				\
+	parole-about.h				\
 	parole-builder.c			\
+	parole-builder.h			\
 	parole-subtitle-encoding.c		\
+	parole-subtitle-encoding.h		\
 	parole-open-location.c			\
+	parole-open-location.h			\
 	parole-disc-menu.c			\
+	parole-disc-menu.h			\
 	parole-session.c			\
+	parole-session.h			\
 	parole-button.c				\
-	parole-plugin-player.c
+	parole-button.h				\
+	parole-plugin-player.c			\
+	parole-plugin-player.h
 
 parole_LDADD =					\
 	$(top_builddir)/parole/libparole.la 	\
