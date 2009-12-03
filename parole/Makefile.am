@@ -11,7 +11,10 @@ INST_HFILES =					\
 	parole-file.h				\
 	parole-stream.h				\
 	parole-provider-player.h		\
-	parole-provider-plugin.h
+	parole-provider-plugin.h		\
+	parole-filters.h			\
+	parole-debug.h				\
+	parole-pl-parser.h
 
 libparole_la_SOURCES =				\
 	$(GENERATED_FILES)			\
