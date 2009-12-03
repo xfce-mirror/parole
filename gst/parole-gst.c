@@ -536,8 +536,6 @@ parole_gst_expose_event (GtkWidget *widget, GdkEventExpose *ev)
 	case GST_STATE_READY:
 	    if (gst->priv->with_vis == FALSE && gst->priv->target != GST_STATE_PLAYING)
 		parole_gst_helper_draw_logo (PAROLE_GST_HELPER (gst));
-	    else
-		gst_x_overlay_expose (GST_X_OVERLAY (gst->priv->video_sink));
 	    break;
 	case GST_STATE_NULL:
 	case GST_STATE_VOID_PENDING:
