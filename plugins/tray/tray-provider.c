@@ -514,16 +514,24 @@ delete_event_cb (GtkWidget *widget, GdkEvent *ev, TrayProvider *tray)
     switch ( gtk_dialog_run (GTK_DIALOG (dialog)) )
     {
 	case GTK_RESPONSE_OK:
-	    gtk_widget_hide_on_delete (widget);
-	    break;
+	    {
+		gtk_widget_hide_on_delete (widget);
+		confirmed = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check));
+		if ( confirmed )
+		    write_entry_bool ("MINIMIZE_TO_TRAY", TRUE);
+		break;
+	    }
 	case GTK_RESPONSE_CLOSE:
-	    ret_val = FALSE;
+	    {
+		confirmed = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check));
+		if ( confirmed )
+		    write_entry_bool ("MINIMIZE_TO_TRAY", FALSE);
+		ret_val = FALSE;
+	    }
 	    break;
 	case GTK_RESPONSE_CANCEL:
-	    ret_val = TRUE;
 	    break;
 	default:
-	    ret_val = TRUE;
 	    break;
     }
     
