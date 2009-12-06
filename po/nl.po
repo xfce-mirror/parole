@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parole master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-27 10:38+0100\n"
+"POT-Creation-Date: 2009-12-06 19:00+0100\n"
 "PO-Revision-Date: 2009-10-13 22:38+0100\n"
 "Last-Translator: Mario Blättermann <mariobl@gnome.org>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -65,7 +65,7 @@ msgstr "Mediaspeler"
 msgid "Mute"
 msgstr "Dempen"
 
-#: ../data/interfaces/parole.ui.h:10 ../src/parole-player.c:1093
+#: ../data/interfaces/parole.ui.h:10 ../src/parole-player.c:1079
 #: ../src/parole-disc-menu.c:113
 msgid "Next Chapter"
 msgstr "Volgende hoofdstuk/film"
@@ -75,7 +75,7 @@ msgid "None"
 msgstr "Geen"
 
 #: ../data/interfaces/parole.ui.h:12 ../data/desktop/parole.desktop.in.in.h:1
-#: ../src/parole-about.c:52 ../plugins/window-title/window-title-provider.c:58
+#: ../src/parole-about.c:70 ../plugins/window-title/window-title-provider.c:58
 msgid "Parole Media Player"
 msgstr "Parole Mediaspeler"
 
@@ -83,7 +83,7 @@ msgstr "Parole Mediaspeler"
 msgid "Plugins"
 msgstr "Plugins"
 
-#: ../data/interfaces/parole.ui.h:14 ../src/parole-player.c:1105
+#: ../data/interfaces/parole.ui.h:14 ../src/parole-player.c:1091
 #: ../src/parole-disc-menu.c:114
 msgid "Previous Chapter"
 msgstr "Vorige hoofdstuk/film"
@@ -240,29 +240,29 @@ msgstr "Op extensie"
 msgid "Select File Types (By Extension)"
 msgstr ""
 
-#: ../gst/parole-gst.c:1489
+#: ../gst/parole-gst.c:1492
 msgid "The stream is taking too much time to load"
 msgstr ""
 
-#: ../gst/parole-gst.c:1489
+#: ../gst/parole-gst.c:1492
 msgid "Stop"
 msgstr "Stop"
 
-#: ../gst/parole-gst.c:1674
+#: ../gst/parole-gst.c:1681
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Aanmaken van het GStreamer afspeelobject 'playbin' is mislukt. Controleer uw "
 "GStreamer installatie."
 
-#: ../gst/parole-gst.c:1690
+#: ../gst/parole-gst.c:1701
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Aanmaken van een GStreamer afspeelobject voor video is mislukt. Controleer "
 "uw GStreamer installatie."
 
-#: ../src/main.c:53
+#: ../src/main.c:54
 #, c-format
 msgid ""
 "\n"
@@ -275,64 +275,72 @@ msgid ""
 "\n"
 msgstr ""
 
-#: ../src/main.c:191
+#: ../src/main.c:175
+msgid "Unknown argument "
+msgstr ""
+
+#: ../src/main.c:212
 msgid "Open a new instance"
 msgstr ""
 
-#: ../src/main.c:192
+#: ../src/main.c:213
 msgid "Do not load plugins"
 msgstr ""
 
-#: ../src/main.c:193
+#: ../src/main.c:214
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr ""
 
-#: ../src/main.c:194
+#: ../src/main.c:215
 msgid "Play or pause if already playing"
 msgstr "De film afspelen of pauzeren"
 
-#: ../src/main.c:195
+#: ../src/main.c:216
 msgid "Stop playing"
 msgstr "Weergave stoppen"
 
-#: ../src/main.c:196
+#: ../src/main.c:217
 msgid "Next track"
 msgstr "Volgende"
 
-#: ../src/main.c:197
+#: ../src/main.c:218
 msgid "Previous track"
 msgstr "Vorige"
 
-#: ../src/main.c:198
+#: ../src/main.c:219
 msgid "Seek forward"
 msgstr "Vooruitspoelen"
 
-#: ../src/main.c:199
+#: ../src/main.c:220
 msgid "Seek Backward"
 msgstr "Terugspoelen"
 
-#: ../src/main.c:200
+#: ../src/main.c:221
 msgid "Raise volume"
 msgstr "Geluid zachter"
 
-#: ../src/main.c:201
+#: ../src/main.c:222
 msgid "Lower volume"
 msgstr "Geluid zachter"
 
-#: ../src/main.c:202
+#: ../src/main.c:223
 msgid "Mute volume"
 msgstr "Geluid dempen"
 
-#: ../src/main.c:203
+#: ../src/main.c:224
 msgid "Version information"
 msgstr "Versie-informatie"
 
+#: ../src/main.c:225
+msgid "Enabled/Disable XV support"
+msgstr ""
+
 # de film wordt niet gedraaid?
-#: ../src/main.c:205
+#: ../src/main.c:227
 msgid "Media to play"
 msgstr "Films om af te spelen"
 
-#: ../src/main.c:242
+#: ../src/main.c:264
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr ""
@@ -345,75 +353,75 @@ msgstr "Mediabestanden toevoegen"
 msgid "Add"
 msgstr "Toevoegen"
 
-#: ../src/parole-medialist.c:436
+#: ../src/parole-medialist.c:437
 msgid "Error saving playlist file"
 msgstr "Opslaan van het afspeellijst is mislukt"
 
-#: ../src/parole-medialist.c:436
+#: ../src/parole-medialist.c:437
 msgid "Permission denied"
 msgstr "Toegang geweigerd"
 
-#: ../src/parole-medialist.c:445
+#: ../src/parole-medialist.c:446
 msgid "Unknown playlist format, Please select a support playlist format"
 msgstr ""
 
-#: ../src/parole-medialist.c:513 ../src/parole-player.c:1785
+#: ../src/parole-medialist.c:514 ../src/parole-player.c:1777
 msgid "Playlist"
 msgstr "Afspeellijst"
 
-#: ../src/parole-medialist.c:520
+#: ../src/parole-medialist.c:521
 msgid "M3U Playlists"
 msgstr "M3U-Afspeellijsten"
 
-#: ../src/parole-medialist.c:528
+#: ../src/parole-medialist.c:529
 msgid "PLS Playlists"
 msgstr "PLS-Afspeellijsten"
 
-#: ../src/parole-medialist.c:536
+#: ../src/parole-medialist.c:537
 msgid "Advanced Stream Redirector"
 msgstr "Advanced Stream Redirector"
 
-#: ../src/parole-medialist.c:544
+#: ../src/parole-medialist.c:545
 msgid "Shareable Playlist"
 msgstr "Gedeelde afspeellijst"
 
-#: ../src/parole-medialist.c:859
+#: ../src/parole-medialist.c:860
 msgid "Remember playlist"
 msgstr "Afspeellijst onthouden"
 
-#: ../src/parole-medialist.c:1009
+#: ../src/parole-medialist.c:1012
 msgid "Media list"
 msgstr ""
 
-#: ../src/parole-player.c:316
+#: ../src/parole-player.c:317
 msgid "Hide playlist"
 msgstr "Afspeellijst verbergen"
 
-#: ../src/parole-player.c:325
+#: ../src/parole-player.c:326
 msgid "Show playlist"
 msgstr "Afspeellijst tonen"
 
-#: ../src/parole-player.c:560
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:294
+#: ../src/parole-player.c:545
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:297
 msgid "Media stream is not seekable"
 msgstr ""
 
 #.
 #. * Next chapter menu item
 #.
-#: ../src/parole-player.c:1093 ../src/parole-disc-menu.c:122
+#: ../src/parole-player.c:1079 ../src/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr "Volgende"
 
 #.
 #. * Previous chapter menu item
 #.
-#: ../src/parole-player.c:1105 ../src/parole-disc-menu.c:123
+#: ../src/parole-player.c:1091 ../src/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr "Vorige"
 
 #: ../src/parole-statusbar.c:61
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:566
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:590
 msgid "Buffering"
 msgstr "Bufferen"
 
@@ -437,11 +445,11 @@ msgstr "Aan het afspelen"
 msgid "Live stream:"
 msgstr ""
 
-#: ../src/parole-about.c:57
+#: ../src/parole-about.c:75
 msgid "Author/Maintainer"
 msgstr ""
 
-#: ../src/parole-about.c:63
+#: ../src/parole-about.c:81
 #, c-format
 msgid "Translator (%s)"
 msgstr ""
@@ -612,11 +620,11 @@ msgstr "Aan het afspelen"
 msgid "Track %i"
 msgstr "Track %i"
 
-#: ../src/parole-plugins-manager.c:296 ../src/parole-plugins-manager.c:422
+#: ../src/parole-plugins-manager.c:297 ../src/parole-plugins-manager.c:433
 msgid "Visit Website"
 msgstr "Parole website"
 
-#: ../src/parole-plugins-manager.c:370
+#: ../src/parole-plugins-manager.c:373
 #: ../plugins/properties/stream-properties-provider.c:140
 #: ../plugins/properties/stream-properties-provider.c:141
 #: ../plugins/properties/stream-properties-provider.c:142
@@ -624,23 +632,27 @@ msgstr "Parole website"
 msgid "Unknown"
 msgstr "Onbekend"
 
-#: ../parole/parole-filters.c:56
+#: ../src/parole-plugins-manager.c:412
+msgid "No installed plugins found on this system"
+msgstr ""
+
+#: ../parole/parole-filters.c:64
 msgid "Audio"
 msgstr "Audio"
 
-#: ../parole/parole-filters.c:74
+#: ../parole/parole-filters.c:90
 msgid "Video"
 msgstr "Video"
 
-#: ../parole/parole-filters.c:92
+#: ../parole/parole-filters.c:115
 msgid "Audio and video"
 msgstr "Audio/Video"
 
-#: ../parole/parole-filters.c:110
+#: ../parole/parole-filters.c:144
 msgid "All supported files"
 msgstr "Ondersteunde bestanden"
 
-#: ../parole/parole-filters.c:126
+#: ../parole/parole-filters.c:171
 msgid "Playlist files"
 msgstr "Afspeellijstbestanden"
 
@@ -685,41 +697,41 @@ msgstr ""
 msgid "Stream Properties"
 msgstr "Eigenschappen"
 
-#: ../plugins/tray/tray-provider.c:243
+#: ../plugins/tray/tray-provider.c:262
 msgid "<b>Playing:</b>"
 msgstr "<b>Weergave:</b>"
 
 # lengte/duur
-#: ../plugins/tray/tray-provider.c:243
+#: ../plugins/tray/tray-provider.c:262
 msgid "<b>Duration:</b>"
 msgstr "<b>Lengte:</b>"
 
-#: ../plugins/tray/tray-provider.c:394
+#: ../plugins/tray/tray-provider.c:420
 msgid "Tray icon plugin"
 msgstr "Systeemvak-Plugin"
 
-#: ../plugins/tray/tray-provider.c:404
+#: ../plugins/tray/tray-provider.c:430
 msgid "Enable notification"
 msgstr "Notificatie aanzetten"
 
-#: ../plugins/tray/tray-provider.c:413
+#: ../plugins/tray/tray-provider.c:439
 msgid "Always minimize to tray when window is closed"
 msgstr ""
 
-#: ../plugins/tray/tray-provider.c:452
+#: ../plugins/tray/tray-provider.c:478
 msgid "Minimize to tray?"
 msgstr ""
 
 # de film wordt niet gedraaid?
-#: ../plugins/tray/tray-provider.c:458
+#: ../plugins/tray/tray-provider.c:484
 msgid "Minimize to tray"
 msgstr ""
 
-#: ../plugins/tray/tray-provider.c:474
+#: ../plugins/tray/tray-provider.c:500
 msgid "Are you sure you want to quit Parole"
 msgstr "# Weet u zeker dat u Parole wilt stoppen?"
 
-#: ../plugins/tray/tray-provider.c:478
+#: ../plugins/tray/tray-provider.c:504
 msgid "Remember my choice"
 msgstr "Keuze onthouden"
 
@@ -767,18 +779,18 @@ msgstr "Films om af te spelen"
 msgid "URL"
 msgstr ""
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:135
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:138
 msgid "Leave fullscreen"
 msgstr ""
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:140
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:143
 msgid "Fullscreen"
 msgstr ""
 
 #.
 #. * Copy url
 #.
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:426
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:452
 msgid "Copy url"
 msgstr ""
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-27 10:38+0100\n"
+"POT-Creation-Date: 2009-12-06 19:00+0100\n"
 "PO-Revision-Date: 2009-12-01 14:36+0100\n"
 "Last-Translator: Harald Servat <redcrash@gmail.com>\n"
 "Language-Team: Catalan\n"
@@ -56,8 +56,7 @@ msgstr "Reproductor de suports"
 msgid "Mute"
 msgstr "Silenci"
 
-#: ../data/interfaces/parole.ui.h:10
-#: ../src/parole-player.c:1093
+#: ../data/interfaces/parole.ui.h:10 ../src/parole-player.c:1079
 #: ../src/parole-disc-menu.c:113
 msgid "Next Chapter"
 msgstr "Capítol següent"
@@ -66,10 +65,8 @@ msgstr "Capítol següent"
 msgid "None"
 msgstr "Cap"
 
-#: ../data/interfaces/parole.ui.h:12
-#: ../data/desktop/parole.desktop.in.in.h:1
-#: ../src/parole-about.c:52
-#: ../plugins/window-title/window-title-provider.c:58
+#: ../data/interfaces/parole.ui.h:12 ../data/desktop/parole.desktop.in.in.h:1
+#: ../src/parole-about.c:70 ../plugins/window-title/window-title-provider.c:58
 msgid "Parole Media Player"
 msgstr "Reproductor de suports Parole"
 
@@ -77,8 +74,7 @@ msgstr "Reproductor de suports Parole"
 msgid "Plugins"
 msgstr "Connectors"
 
-#: ../data/interfaces/parole.ui.h:14
-#: ../src/parole-player.c:1105
+#: ../data/interfaces/parole.ui.h:14 ../src/parole-player.c:1091
 #: ../src/parole-disc-menu.c:114
 msgid "Previous Chapter"
 msgstr "Capítol anterior"
@@ -231,23 +227,29 @@ msgstr "Per extensió"
 msgid "Select File Types (By Extension)"
 msgstr "Seleccioneu el tipus de fitxer (per extensió)"
 
-#: ../gst/parole-gst.c:1489
+#: ../gst/parole-gst.c:1492
 msgid "The stream is taking too much time to load"
 msgstr "Cal massa temps per carregar el flux"
 
-#: ../gst/parole-gst.c:1489
+#: ../gst/parole-gst.c:1492
 msgid "Stop"
 msgstr "Para"
 
-#: ../gst/parole-gst.c:1674
-msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
-msgstr "No s'ha pogut carregar el connector playbin Gstreamer, comproveu la vostra instaŀlació de Gstreamer"
+#: ../gst/parole-gst.c:1681
+msgid ""
+"Unable to load playbin GStreamer plugin, check your GStreamer installation"
+msgstr ""
+"No s'ha pogut carregar el connector playbin Gstreamer, comproveu la vostra "
+"instaŀlació de Gstreamer"
 
-#: ../gst/parole-gst.c:1690
-msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
-msgstr "No s'ha pogut carregar el connector de vídeo Gstreamer, comproveu la vostra instaŀlació de Gstreamer"
+#: ../gst/parole-gst.c:1701
+msgid ""
+"Unable to load video GStreamer plugin, check your GStreamer installation"
+msgstr ""
+"No s'ha pogut carregar el connector de vídeo Gstreamer, comproveu la vostra "
+"instaŀlació de Gstreamer"
 
-#: ../src/main.c:53
+#: ../src/main.c:54
 #, c-format
 msgid ""
 "\n"
@@ -268,63 +270,71 @@ msgstr ""
 "Amb llicència GNU GPL.\n"
 "\n"
 
-#: ../src/main.c:191
+#: ../src/main.c:175
+msgid "Unknown argument "
+msgstr ""
+
+#: ../src/main.c:212
 msgid "Open a new instance"
 msgstr "Obre una instància nova"
 
-#: ../src/main.c:192
+#: ../src/main.c:213
 msgid "Do not load plugins"
 msgstr "No carregar els connectors"
 
-#: ../src/main.c:193
+#: ../src/main.c:214
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "Establir el camí per a Audio-CD/VCD/DVD"
 
-#: ../src/main.c:194
+#: ../src/main.c:215
 msgid "Play or pause if already playing"
 msgstr "Reprodueix o pausa si ja s'està reproduint"
 
-#: ../src/main.c:195
+#: ../src/main.c:216
 msgid "Stop playing"
 msgstr "Atura la reproducció"
 
-#: ../src/main.c:196
+#: ../src/main.c:217
 msgid "Next track"
 msgstr "Pista següent"
 
-#: ../src/main.c:197
+#: ../src/main.c:218
 msgid "Previous track"
 msgstr "Pista anterior"
 
-#: ../src/main.c:198
+#: ../src/main.c:219
 msgid "Seek forward"
 msgstr "Saltant endavant"
 
-#: ../src/main.c:199
+#: ../src/main.c:220
 msgid "Seek Backward"
 msgstr "Saltant enredera"
 
-#: ../src/main.c:200
+#: ../src/main.c:221
 msgid "Raise volume"
 msgstr "Puja el volum"
 
-#: ../src/main.c:201
+#: ../src/main.c:222
 msgid "Lower volume"
 msgstr "Baix el volum"
 
-#: ../src/main.c:202
+#: ../src/main.c:223
 msgid "Mute volume"
 msgstr "Volum silenciat"
 
-#: ../src/main.c:203
+#: ../src/main.c:224
 msgid "Version information"
 msgstr "Informació de la versió"
 
-#: ../src/main.c:205
+#: ../src/main.c:225
+msgid "Enabled/Disable XV support"
+msgstr ""
+
+#: ../src/main.c:227
 msgid "Media to play"
 msgstr "Suport a reproduir"
 
-#: ../src/main.c:242
+#: ../src/main.c:264
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Ja s'està executant Parole, empreu -i per obrir una instància nova\n"
@@ -337,78 +347,77 @@ msgstr "Afegeix fitxers de suports"
 msgid "Add"
 msgstr "Afegeix"
 
-#: ../src/parole-medialist.c:436
+#: ../src/parole-medialist.c:437
 msgid "Error saving playlist file"
 msgstr "S'ha produït un error en desar la llista de reproducció"
 
-#: ../src/parole-medialist.c:436
+#: ../src/parole-medialist.c:437
 msgid "Permission denied"
 msgstr "S'ha denegat el permís"
 
-#: ../src/parole-medialist.c:445
+#: ../src/parole-medialist.c:446
 msgid "Unknown playlist format, Please select a support playlist format"
-msgstr "No es reconeix el format de la llista de reproducció. Seleccioneu un format de llista de reproducció compatible"
+msgstr ""
+"No es reconeix el format de la llista de reproducció. Seleccioneu un format "
+"de llista de reproducció compatible"
 
-#: ../src/parole-medialist.c:513
-#: ../src/parole-player.c:1785
+#: ../src/parole-medialist.c:514 ../src/parole-player.c:1777
 msgid "Playlist"
 msgstr "Llista de reproducció"
 
-#: ../src/parole-medialist.c:520
+#: ../src/parole-medialist.c:521
 msgid "M3U Playlists"
 msgstr "Llistes de reproducció M3U"
 
-#: ../src/parole-medialist.c:528
+#: ../src/parole-medialist.c:529
 msgid "PLS Playlists"
 msgstr "Llistes de reproducció PLS"
 
-#: ../src/parole-medialist.c:536
+#: ../src/parole-medialist.c:537
 msgid "Advanced Stream Redirector"
 msgstr "Redirecció avançada del flux"
 
-#: ../src/parole-medialist.c:544
+#: ../src/parole-medialist.c:545
 msgid "Shareable Playlist"
 msgstr "La llista de reproducció es pot compartir"
 
-#: ../src/parole-medialist.c:859
+#: ../src/parole-medialist.c:860
 msgid "Remember playlist"
 msgstr "Recorda la llista de reproducció"
 
-#: ../src/parole-medialist.c:1009
+#: ../src/parole-medialist.c:1012
 msgid "Media list"
 msgstr "Llista de suports"
 
-#: ../src/parole-player.c:316
+#: ../src/parole-player.c:317
 msgid "Hide playlist"
 msgstr "Amaga la llista de reproducció"
 
-#: ../src/parole-player.c:325
+#: ../src/parole-player.c:326
 msgid "Show playlist"
 msgstr "Mostra la llista de reproducció"
 
-#: ../src/parole-player.c:560
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:294
+#: ../src/parole-player.c:545
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:297
 msgid "Media stream is not seekable"
 msgstr "El flux del suport no es pot cercar"
 
 #.
 #. * Next chapter menu item
 #.
-#: ../src/parole-player.c:1093
-#: ../src/parole-disc-menu.c:122
+#: ../src/parole-player.c:1079 ../src/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr "Pista següent"
 
 #.
 #. * Previous chapter menu item
 #.
-#: ../src/parole-player.c:1105
-#: ../src/parole-disc-menu.c:123
+#: ../src/parole-player.c:1091 ../src/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr "Pista anterior"
 
 #: ../src/parole-statusbar.c:61
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:566
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:590
 msgid "Buffering"
 msgstr "Memòria intermèdia"
 
@@ -420,8 +429,7 @@ msgstr "Parat"
 msgid "Finished"
 msgstr "Acabat"
 
-#: ../src/parole-statusbar.c:114
-#: ../src/parole-statusbar.c:124
+#: ../src/parole-statusbar.c:114 ../src/parole-statusbar.c:124
 msgid "Paused"
 msgstr "Aturat"
 
@@ -433,11 +441,11 @@ msgstr "Reproduint"
 msgid "Live stream:"
 msgstr "flux en directe:"
 
-#: ../src/parole-about.c:57
+#: ../src/parole-about.c:75
 msgid "Author/Maintainer"
 msgstr "Autor/Mantenidor"
 
-#: ../src/parole-about.c:63
+#: ../src/parole-about.c:81
 #, c-format
 msgid "Translator (%s)"
 msgstr "Traductor (%s)"
@@ -450,10 +458,8 @@ msgstr "Reprodueix el disc"
 msgid "Current Locale"
 msgstr "Localització actual"
 
-#: ../src/parole-subtitle-encoding.c:168
-#: ../src/parole-subtitle-encoding.c:170
-#: ../src/parole-subtitle-encoding.c:172
-#: ../src/parole-subtitle-encoding.c:174
+#: ../src/parole-subtitle-encoding.c:168 ../src/parole-subtitle-encoding.c:170
+#: ../src/parole-subtitle-encoding.c:172 ../src/parole-subtitle-encoding.c:174
 msgid "Arabic"
 msgstr "Àrab"
 
@@ -461,8 +467,7 @@ msgstr "Àrab"
 msgid "Armenian"
 msgstr "Armeni"
 
-#: ../src/parole-subtitle-encoding.c:180
-#: ../src/parole-subtitle-encoding.c:182
+#: ../src/parole-subtitle-encoding.c:180 ../src/parole-subtitle-encoding.c:182
 #: ../src/parole-subtitle-encoding.c:184
 msgid "Baltic"
 msgstr "Bàltic"
@@ -471,22 +476,17 @@ msgstr "Bàltic"
 msgid "Celtic"
 msgstr "Celta"
 
-#: ../src/parole-subtitle-encoding.c:190
-#: ../src/parole-subtitle-encoding.c:192
-#: ../src/parole-subtitle-encoding.c:194
-#: ../src/parole-subtitle-encoding.c:196
+#: ../src/parole-subtitle-encoding.c:190 ../src/parole-subtitle-encoding.c:192
+#: ../src/parole-subtitle-encoding.c:194 ../src/parole-subtitle-encoding.c:196
 msgid "Central European"
 msgstr "Centre-europeu"
 
-#: ../src/parole-subtitle-encoding.c:199
-#: ../src/parole-subtitle-encoding.c:201
-#: ../src/parole-subtitle-encoding.c:203
-#: ../src/parole-subtitle-encoding.c:205
+#: ../src/parole-subtitle-encoding.c:199 ../src/parole-subtitle-encoding.c:201
+#: ../src/parole-subtitle-encoding.c:203 ../src/parole-subtitle-encoding.c:205
 msgid "Chinese Simplified"
 msgstr "Xinès simplificat"
 
-#: ../src/parole-subtitle-encoding.c:208
-#: ../src/parole-subtitle-encoding.c:210
+#: ../src/parole-subtitle-encoding.c:208 ../src/parole-subtitle-encoding.c:210
 #: ../src/parole-subtitle-encoding.c:212
 msgid "Chinese Traditional"
 msgstr "Xinès tradicional"
@@ -495,12 +495,9 @@ msgstr "Xinès tradicional"
 msgid "Croatian"
 msgstr "Croat"
 
-#: ../src/parole-subtitle-encoding.c:218
-#: ../src/parole-subtitle-encoding.c:220
-#: ../src/parole-subtitle-encoding.c:222
-#: ../src/parole-subtitle-encoding.c:224
-#: ../src/parole-subtitle-encoding.c:226
-#: ../src/parole-subtitle-encoding.c:228
+#: ../src/parole-subtitle-encoding.c:218 ../src/parole-subtitle-encoding.c:220
+#: ../src/parole-subtitle-encoding.c:222 ../src/parole-subtitle-encoding.c:224
+#: ../src/parole-subtitle-encoding.c:226 ../src/parole-subtitle-encoding.c:228
 msgid "Cyrillic"
 msgstr "Ciríŀlic"
 
@@ -508,8 +505,7 @@ msgstr "Ciríŀlic"
 msgid "Cyrillic/Russian"
 msgstr "Ciríŀlic/rus"
 
-#: ../src/parole-subtitle-encoding.c:234
-#: ../src/parole-subtitle-encoding.c:236
+#: ../src/parole-subtitle-encoding.c:234 ../src/parole-subtitle-encoding.c:236
 msgid "Cyrillic/Ukrainian"
 msgstr "Ciríŀlic/ucraïnès"
 
@@ -517,8 +513,7 @@ msgstr "Ciríŀlic/ucraïnès"
 msgid "Georgian"
 msgstr "Georgià"
 
-#: ../src/parole-subtitle-encoding.c:242
-#: ../src/parole-subtitle-encoding.c:244
+#: ../src/parole-subtitle-encoding.c:242 ../src/parole-subtitle-encoding.c:244
 #: ../src/parole-subtitle-encoding.c:246
 msgid "Greek"
 msgstr "Grec"
@@ -531,10 +526,8 @@ msgstr "Gujarati"
 msgid "Gurmukhi"
 msgstr "Gurmukhi"
 
-#: ../src/parole-subtitle-encoding.c:255
-#: ../src/parole-subtitle-encoding.c:257
-#: ../src/parole-subtitle-encoding.c:259
-#: ../src/parole-subtitle-encoding.c:261
+#: ../src/parole-subtitle-encoding.c:255 ../src/parole-subtitle-encoding.c:257
+#: ../src/parole-subtitle-encoding.c:259 ../src/parole-subtitle-encoding.c:261
 msgid "Hebrew"
 msgstr "Hebreu"
 
@@ -550,16 +543,13 @@ msgstr "Hindi"
 msgid "Icelandic"
 msgstr "Islandès"
 
-#: ../src/parole-subtitle-encoding.c:273
-#: ../src/parole-subtitle-encoding.c:275
+#: ../src/parole-subtitle-encoding.c:273 ../src/parole-subtitle-encoding.c:275
 #: ../src/parole-subtitle-encoding.c:277
 msgid "Japanese"
 msgstr "Japonès"
 
-#: ../src/parole-subtitle-encoding.c:280
-#: ../src/parole-subtitle-encoding.c:282
-#: ../src/parole-subtitle-encoding.c:284
-#: ../src/parole-subtitle-encoding.c:286
+#: ../src/parole-subtitle-encoding.c:280 ../src/parole-subtitle-encoding.c:282
+#: ../src/parole-subtitle-encoding.c:284 ../src/parole-subtitle-encoding.c:286
 msgid "Korean"
 msgstr "Coreà"
 
@@ -571,8 +561,7 @@ msgstr "Nòrdic"
 msgid "Persian"
 msgstr "Persa"
 
-#: ../src/parole-subtitle-encoding.c:295
-#: ../src/parole-subtitle-encoding.c:297
+#: ../src/parole-subtitle-encoding.c:295 ../src/parole-subtitle-encoding.c:297
 msgid "Romanian"
 msgstr "Romanès"
 
@@ -584,31 +573,24 @@ msgstr "Sud-europeu"
 msgid "Thai"
 msgstr "Tailandès"
 
-#: ../src/parole-subtitle-encoding.c:306
-#: ../src/parole-subtitle-encoding.c:308
-#: ../src/parole-subtitle-encoding.c:310
-#: ../src/parole-subtitle-encoding.c:312
+#: ../src/parole-subtitle-encoding.c:306 ../src/parole-subtitle-encoding.c:308
+#: ../src/parole-subtitle-encoding.c:310 ../src/parole-subtitle-encoding.c:312
 msgid "Turkish"
 msgstr "Turc"
 
-#: ../src/parole-subtitle-encoding.c:315
-#: ../src/parole-subtitle-encoding.c:317
-#: ../src/parole-subtitle-encoding.c:319
-#: ../src/parole-subtitle-encoding.c:321
+#: ../src/parole-subtitle-encoding.c:315 ../src/parole-subtitle-encoding.c:317
+#: ../src/parole-subtitle-encoding.c:319 ../src/parole-subtitle-encoding.c:321
 #: ../src/parole-subtitle-encoding.c:323
 msgid "Unicode"
 msgstr "Unicode"
 
-#: ../src/parole-subtitle-encoding.c:326
-#: ../src/parole-subtitle-encoding.c:328
-#: ../src/parole-subtitle-encoding.c:330
-#: ../src/parole-subtitle-encoding.c:332
+#: ../src/parole-subtitle-encoding.c:326 ../src/parole-subtitle-encoding.c:328
+#: ../src/parole-subtitle-encoding.c:330 ../src/parole-subtitle-encoding.c:332
 #: ../src/parole-subtitle-encoding.c:334
 msgid "Western"
 msgstr "Occidental"
 
-#: ../src/parole-subtitle-encoding.c:337
-#: ../src/parole-subtitle-encoding.c:339
+#: ../src/parole-subtitle-encoding.c:337 ../src/parole-subtitle-encoding.c:339
 #: ../src/parole-subtitle-encoding.c:341
 msgid "Vietnamese"
 msgstr "Vietnamita"
@@ -634,12 +616,11 @@ msgstr "S'està reproduint la pista"
 msgid "Track %i"
 msgstr "Pista %i"
 
-#: ../src/parole-plugins-manager.c:296
-#: ../src/parole-plugins-manager.c:422
+#: ../src/parole-plugins-manager.c:297 ../src/parole-plugins-manager.c:433
 msgid "Visit Website"
 msgstr "Vés al lloc web"
 
-#: ../src/parole-plugins-manager.c:370
+#: ../src/parole-plugins-manager.c:373
 #: ../plugins/properties/stream-properties-provider.c:140
 #: ../plugins/properties/stream-properties-provider.c:141
 #: ../plugins/properties/stream-properties-provider.c:142
@@ -647,23 +628,27 @@ msgstr "Vés al lloc web"
 msgid "Unknown"
 msgstr "Desconegut"
 
-#: ../parole/parole-filters.c:56
+#: ../src/parole-plugins-manager.c:412
+msgid "No installed plugins found on this system"
+msgstr ""
+
+#: ../parole/parole-filters.c:64
 msgid "Audio"
 msgstr "Àudio"
 
-#: ../parole/parole-filters.c:74
+#: ../parole/parole-filters.c:90
 msgid "Video"
 msgstr "Vídeo"
 
-#: ../parole/parole-filters.c:92
+#: ../parole/parole-filters.c:115
 msgid "Audio and video"
 msgstr "Àudio i vídeo"
 
-#: ../parole/parole-filters.c:110
+#: ../parole/parole-filters.c:144
 msgid "All supported files"
 msgstr "Tots els fitxers compatibles"
 
-#: ../parole/parole-filters.c:126
+#: ../parole/parole-filters.c:171
 msgid "Playlist files"
 msgstr "Fitxers de llistes de reproducció"
 
@@ -707,39 +692,39 @@ msgstr "Llegeix les propietats del suport"
 msgid "Stream Properties"
 msgstr "Propietats del corrent"
 
-#: ../plugins/tray/tray-provider.c:243
+#: ../plugins/tray/tray-provider.c:262
 msgid "<b>Playing:</b>"
 msgstr "<b>S'està reproduint:</b>"
 
-#: ../plugins/tray/tray-provider.c:243
+#: ../plugins/tray/tray-provider.c:262
 msgid "<b>Duration:</b>"
 msgstr "<b>Duració:</b>"
 
-#: ../plugins/tray/tray-provider.c:394
+#: ../plugins/tray/tray-provider.c:420
 msgid "Tray icon plugin"
 msgstr "Connector de la icona de safata"
 
-#: ../plugins/tray/tray-provider.c:404
+#: ../plugins/tray/tray-provider.c:430
 msgid "Enable notification"
 msgstr "Habilita la notificació"
 
-#: ../plugins/tray/tray-provider.c:413
+#: ../plugins/tray/tray-provider.c:439
 msgid "Always minimize to tray when window is closed"
 msgstr "Minimitza sempre a la safata quan es tanca la finestra"
 
-#: ../plugins/tray/tray-provider.c:452
+#: ../plugins/tray/tray-provider.c:478
 msgid "Minimize to tray?"
 msgstr "Voleu minimitzar a la safata?"
 
-#: ../plugins/tray/tray-provider.c:458
+#: ../plugins/tray/tray-provider.c:484
 msgid "Minimize to tray"
 msgstr "Minimitza a la safata"
 
-#: ../plugins/tray/tray-provider.c:474
+#: ../plugins/tray/tray-provider.c:500
 msgid "Are you sure you want to quit Parole"
 msgstr "Segur que voleu sortir de Parole?"
 
-#: ../plugins/tray/tray-provider.c:478
+#: ../plugins/tray/tray-provider.c:504
 msgid "Remember my choice"
 msgstr "Recorda la selecció"
 
@@ -753,7 +738,9 @@ msgstr "Icona de la safata"
 
 #: ../plugins/window-title/window-title.desktop.in.h:1
 msgid "Set the main window name to the current playing media name."
-msgstr "Fixa el nom de la finestra principal amb el nom actual del mitjà en reproducció."
+msgstr ""
+"Fixa el nom de la finestra principal amb el nom actual del mitjà en "
+"reproducció."
 
 #: ../plugins/window-title/window-title.desktop.in.h:2
 msgid "Window Title"
@@ -761,7 +748,9 @@ msgstr "Títol de la finestra"
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:1
 msgid "Inhibit Power Manager from suspending the machine while playing DVD."
-msgstr "Inhabilitar la suspensió de l'ordinador per part el gestor d'energia mentre es reprodueix un DVD."
+msgstr ""
+"Inhabilitar la suspensió de l'ordinador per part el gestor d'energia mentre "
+"es reprodueix un DVD."
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
@@ -783,22 +772,21 @@ msgstr "Ubicació a reproduir"
 msgid "URL"
 msgstr "URL"
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:135
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:138
 msgid "Leave fullscreen"
 msgstr "Sortir de pantalla completa"
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:140
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:143
 msgid "Fullscreen"
 msgstr "Pantalla completa"
 
 #.
 #. * Copy url
 #.
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:426
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:452
 msgid "Copy url"
 msgstr "Copiar ubicació"
 
 #, fuzzy
 #~ msgid "Plugin"
 #~ msgstr "Connectors"
-

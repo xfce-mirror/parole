@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole 0.1.90\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-27 10:38+0100\n"
+"POT-Creation-Date: 2009-12-06 19:00+0100\n"
 "PO-Revision-Date: 2009-10-08 21:31+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
@@ -54,7 +54,7 @@ msgstr "メディアプレーヤー"
 msgid "Mute"
 msgstr "ミュート"
 
-#: ../data/interfaces/parole.ui.h:10 ../src/parole-player.c:1093
+#: ../data/interfaces/parole.ui.h:10 ../src/parole-player.c:1079
 #: ../src/parole-disc-menu.c:113
 msgid "Next Chapter"
 msgstr "次のチャプター"
@@ -64,7 +64,7 @@ msgid "None"
 msgstr "なし"
 
 #: ../data/interfaces/parole.ui.h:12 ../data/desktop/parole.desktop.in.in.h:1
-#: ../src/parole-about.c:52 ../plugins/window-title/window-title-provider.c:58
+#: ../src/parole-about.c:70 ../plugins/window-title/window-title-provider.c:58
 msgid "Parole Media Player"
 msgstr "Parole Media Player"
 
@@ -72,7 +72,7 @@ msgstr "Parole Media Player"
 msgid "Plugins"
 msgstr "プラグイン"
 
-#: ../data/interfaces/parole.ui.h:14 ../src/parole-player.c:1105
+#: ../data/interfaces/parole.ui.h:14 ../src/parole-player.c:1091
 #: ../src/parole-disc-menu.c:114
 msgid "Previous Chapter"
 msgstr "前のチャプター"
@@ -225,29 +225,29 @@ msgstr "拡張子"
 msgid "Select File Types (By Extension)"
 msgstr "ファイルタイプの選択 (拡張子で)"
 
-#: ../gst/parole-gst.c:1489
+#: ../gst/parole-gst.c:1492
 msgid "The stream is taking too much time to load"
 msgstr "このストリームを読み込むにはかなり時間がかかります"
 
-#: ../gst/parole-gst.c:1489
+#: ../gst/parole-gst.c:1492
 msgid "Stop"
 msgstr "停止"
 
-#: ../gst/parole-gst.c:1674
+#: ../gst/parole-gst.c:1681
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "playbin GStreamer プラグインを読み込めません。GStreamer が正しくインストール"
 "されていることを確認してください。"
 
-#: ../gst/parole-gst.c:1690
+#: ../gst/parole-gst.c:1701
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "video GStreamer プラグインを読み込めません。GStreamer がただしくインストール"
 "されていることを確認してください。"
 
-#: ../src/main.c:53
+#: ../src/main.c:54
 #, c-format
 msgid ""
 "\n"
@@ -268,63 +268,71 @@ msgstr ""
 "Licensed under the GNU GPL.\n"
 "\n"
 
-#: ../src/main.c:191
+#: ../src/main.c:175
+msgid "Unknown argument "
+msgstr ""
+
+#: ../src/main.c:212
 msgid "Open a new instance"
 msgstr "新しいインスタンスを開く"
 
-#: ../src/main.c:192
+#: ../src/main.c:213
 msgid "Do not load plugins"
 msgstr ""
 
-#: ../src/main.c:193
+#: ../src/main.c:214
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr ""
 
-#: ../src/main.c:194
+#: ../src/main.c:215
 msgid "Play or pause if already playing"
 msgstr "再生中のコンテンツの再生/一時停止"
 
-#: ../src/main.c:195
+#: ../src/main.c:216
 msgid "Stop playing"
 msgstr "再生の停止"
 
-#: ../src/main.c:196
+#: ../src/main.c:217
 msgid "Next track"
 msgstr "次のトラック"
 
-#: ../src/main.c:197
+#: ../src/main.c:218
 msgid "Previous track"
 msgstr "前のトラック"
 
-#: ../src/main.c:198
+#: ../src/main.c:219
 msgid "Seek forward"
 msgstr "前方シーク"
 
-#: ../src/main.c:199
+#: ../src/main.c:220
 msgid "Seek Backward"
 msgstr "後方シーク"
 
-#: ../src/main.c:200
+#: ../src/main.c:221
 msgid "Raise volume"
 msgstr "ボリュームを上げる"
 
-#: ../src/main.c:201
+#: ../src/main.c:222
 msgid "Lower volume"
 msgstr "ボリュームを下げる"
 
-#: ../src/main.c:202
+#: ../src/main.c:223
 msgid "Mute volume"
 msgstr "ミュート"
 
-#: ../src/main.c:203
+#: ../src/main.c:224
 msgid "Version information"
 msgstr "バージョン情報"
 
-#: ../src/main.c:205
+#: ../src/main.c:225
+msgid "Enabled/Disable XV support"
+msgstr ""
+
+#: ../src/main.c:227
 msgid "Media to play"
 msgstr "再生するメディア"
 
-#: ../src/main.c:242
+#: ../src/main.c:264
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr ""
@@ -339,75 +347,75 @@ msgstr "メディアファイルの追加"
 msgid "Add"
 msgstr "追加"
 
-#: ../src/parole-medialist.c:436
+#: ../src/parole-medialist.c:437
 msgid "Error saving playlist file"
 msgstr "プレイリストファイルの保存でエラーです"
 
-#: ../src/parole-medialist.c:436
+#: ../src/parole-medialist.c:437
 msgid "Permission denied"
 msgstr "アクセス権がありません"
 
-#: ../src/parole-medialist.c:445
+#: ../src/parole-medialist.c:446
 msgid "Unknown playlist format, Please select a support playlist format"
 msgstr "未知のプレイリスト形式です。サポートされている形式を選択してください。"
 
-#: ../src/parole-medialist.c:513 ../src/parole-player.c:1785
+#: ../src/parole-medialist.c:514 ../src/parole-player.c:1777
 msgid "Playlist"
 msgstr "プレイリスト"
 
-#: ../src/parole-medialist.c:520
+#: ../src/parole-medialist.c:521
 msgid "M3U Playlists"
 msgstr "M3U プレイリスト"
 
-#: ../src/parole-medialist.c:528
+#: ../src/parole-medialist.c:529
 msgid "PLS Playlists"
 msgstr "PLS プレイリスト"
 
-#: ../src/parole-medialist.c:536
+#: ../src/parole-medialist.c:537
 msgid "Advanced Stream Redirector"
 msgstr "Advanced Stream Redirector"
 
-#: ../src/parole-medialist.c:544
+#: ../src/parole-medialist.c:545
 msgid "Shareable Playlist"
 msgstr "共有プレイリスト"
 
-#: ../src/parole-medialist.c:859
+#: ../src/parole-medialist.c:860
 msgid "Remember playlist"
 msgstr "プレイリストを記憶"
 
-#: ../src/parole-medialist.c:1009
+#: ../src/parole-medialist.c:1012
 msgid "Media list"
 msgstr "メディアリスト"
 
-#: ../src/parole-player.c:316
+#: ../src/parole-player.c:317
 msgid "Hide playlist"
 msgstr "プレイリストを隠す"
 
-#: ../src/parole-player.c:325
+#: ../src/parole-player.c:326
 msgid "Show playlist"
 msgstr "プレイリストを表示"
 
-#: ../src/parole-player.c:560
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:294
+#: ../src/parole-player.c:545
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:297
 msgid "Media stream is not seekable"
 msgstr "メディアストリームはシークできません"
 
 #.
 #. * Next chapter menu item
 #.
-#: ../src/parole-player.c:1093 ../src/parole-disc-menu.c:122
+#: ../src/parole-player.c:1079 ../src/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr "次のトラック"
 
 #.
 #. * Previous chapter menu item
 #.
-#: ../src/parole-player.c:1105 ../src/parole-disc-menu.c:123
+#: ../src/parole-player.c:1091 ../src/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr "前のトラック"
 
 #: ../src/parole-statusbar.c:61
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:566
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:590
 msgid "Buffering"
 msgstr "バッファしています"
 
@@ -431,11 +439,11 @@ msgstr "再生中"
 msgid "Live stream:"
 msgstr "ライブストリーム:"
 
-#: ../src/parole-about.c:57
+#: ../src/parole-about.c:75
 msgid "Author/Maintainer"
 msgstr "作者/メンテナ"
 
-#: ../src/parole-about.c:63
+#: ../src/parole-about.c:81
 #, c-format
 msgid "Translator (%s)"
 msgstr "翻訳者 (%s)"
@@ -606,11 +614,11 @@ msgstr "再生中のトラック"
 msgid "Track %i"
 msgstr "トラック %i"
 
-#: ../src/parole-plugins-manager.c:296 ../src/parole-plugins-manager.c:422
+#: ../src/parole-plugins-manager.c:297 ../src/parole-plugins-manager.c:433
 msgid "Visit Website"
 msgstr "ウェブサイトへ"
 
-#: ../src/parole-plugins-manager.c:370
+#: ../src/parole-plugins-manager.c:373
 #: ../plugins/properties/stream-properties-provider.c:140
 #: ../plugins/properties/stream-properties-provider.c:141
 #: ../plugins/properties/stream-properties-provider.c:142
@@ -618,23 +626,27 @@ msgstr "ウェブサイトへ"
 msgid "Unknown"
 msgstr "不明"
 
-#: ../parole/parole-filters.c:56
+#: ../src/parole-plugins-manager.c:412
+msgid "No installed plugins found on this system"
+msgstr ""
+
+#: ../parole/parole-filters.c:64
 msgid "Audio"
 msgstr "オーディオ"
 
-#: ../parole/parole-filters.c:74
+#: ../parole/parole-filters.c:90
 msgid "Video"
 msgstr "ビデオ"
 
-#: ../parole/parole-filters.c:92
+#: ../parole/parole-filters.c:115
 msgid "Audio and video"
 msgstr "オーディオとビデオ"
 
-#: ../parole/parole-filters.c:110
+#: ../parole/parole-filters.c:144
 msgid "All supported files"
 msgstr "すべてのサポートファイル"
 
-#: ../parole/parole-filters.c:126
+#: ../parole/parole-filters.c:171
 msgid "Playlist files"
 msgstr "プレイリストファイル"
 
@@ -679,39 +691,39 @@ msgstr "メディアのプロパティを読み込みます"
 msgid "Stream Properties"
 msgstr "プロパティ"
 
-#: ../plugins/tray/tray-provider.c:243
+#: ../plugins/tray/tray-provider.c:262
 msgid "<b>Playing:</b>"
 msgstr "<b>再生中:</b>"
 
-#: ../plugins/tray/tray-provider.c:243
+#: ../plugins/tray/tray-provider.c:262
 msgid "<b>Duration:</b>"
 msgstr "<b>時間:</b>"
 
-#: ../plugins/tray/tray-provider.c:394
+#: ../plugins/tray/tray-provider.c:420
 msgid "Tray icon plugin"
 msgstr "トレイアイコンプラグイン"
 
-#: ../plugins/tray/tray-provider.c:404
+#: ../plugins/tray/tray-provider.c:430
 msgid "Enable notification"
 msgstr "通知を有効にする"
 
-#: ../plugins/tray/tray-provider.c:413
+#: ../plugins/tray/tray-provider.c:439
 msgid "Always minimize to tray when window is closed"
 msgstr "ウィンドウが閉じられた時、常にトレイに最小化する"
 
-#: ../plugins/tray/tray-provider.c:452
+#: ../plugins/tray/tray-provider.c:478
 msgid "Minimize to tray?"
 msgstr "トレイに最小化しますか?"
 
-#: ../plugins/tray/tray-provider.c:458
+#: ../plugins/tray/tray-provider.c:484
 msgid "Minimize to tray"
 msgstr "トレイに最小化"
 
-#: ../plugins/tray/tray-provider.c:474
+#: ../plugins/tray/tray-provider.c:500
 msgid "Are you sure you want to quit Parole"
 msgstr "Parole を終了してもよろしいですか?"
 
-#: ../plugins/tray/tray-provider.c:478
+#: ../plugins/tray/tray-provider.c:504
 msgid "Remember my choice"
 msgstr "選択を記憶する"
 
@@ -758,18 +770,18 @@ msgstr "再生するメディア"
 msgid "URL"
 msgstr ""
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:135
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:138
 msgid "Leave fullscreen"
 msgstr ""
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:140
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:143
 msgid "Fullscreen"
 msgstr ""
 
 #.
 #. * Copy url
 #.
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:426
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:452
 msgid "Copy url"
 msgstr ""
 

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ast\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-27 10:38+0100\n"
+"POT-Creation-Date: 2009-12-06 19:00+0100\n"
 "PO-Revision-Date: 2009-12-03 11:49+0100\n"
 "Last-Translator: Douart Patrick <patrick.2@laposte.net>\n"
 "Language-Team: \n"
@@ -53,7 +53,7 @@ msgstr "Lecteur Média"
 msgid "Mute"
 msgstr "Mettre en sourdine"
 
-#: ../data/interfaces/parole.ui.h:10 ../src/parole-player.c:1093
+#: ../data/interfaces/parole.ui.h:10 ../src/parole-player.c:1079
 #: ../src/parole-disc-menu.c:113
 msgid "Next Chapter"
 msgstr "Chapitre Suivant"
@@ -63,7 +63,7 @@ msgid "None"
 msgstr "Aucun"
 
 #: ../data/interfaces/parole.ui.h:12 ../data/desktop/parole.desktop.in.in.h:1
-#: ../src/parole-about.c:52 ../plugins/window-title/window-title-provider.c:58
+#: ../src/parole-about.c:70 ../plugins/window-title/window-title-provider.c:58
 msgid "Parole Media Player"
 msgstr "Lecteur Média Parole"
 
@@ -71,7 +71,7 @@ msgstr "Lecteur Média Parole"
 msgid "Plugins"
 msgstr "Greffons"
 
-#: ../data/interfaces/parole.ui.h:14 ../src/parole-player.c:1105
+#: ../data/interfaces/parole.ui.h:14 ../src/parole-player.c:1091
 #: ../src/parole-disc-menu.c:114
 msgid "Previous Chapter"
 msgstr "Chapitre Précédent"
@@ -227,30 +227,30 @@ msgstr "Par Extension"
 msgid "Select File Types (By Extension)"
 msgstr "Sélectionner des Types de Fichiers (Par Extension)"
 
-#: ../gst/parole-gst.c:1489
+#: ../gst/parole-gst.c:1492
 #, fuzzy
 msgid "The stream is taking too much time to load"
 msgstr "Le flux met trop de temps à se charger"
 
-#: ../gst/parole-gst.c:1489
+#: ../gst/parole-gst.c:1492
 msgid "Stop"
 msgstr "Arrêt"
 
-#: ../gst/parole-gst.c:1674
+#: ../gst/parole-gst.c:1681
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Impossible de charger le greffon de lecture GStreamer, vérifiez votre "
 "installation de GStreamer"
 
-#: ../gst/parole-gst.c:1690
+#: ../gst/parole-gst.c:1701
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Impossible de charger le greffon vidéo GStreamer, vérifiez votre "
 "installation de GStreamer"
 
-#: ../src/main.c:53
+#: ../src/main.c:54
 #, c-format
 msgid ""
 "\n"
@@ -271,66 +271,74 @@ msgstr ""
 "Sous licence GNU GPL.\n"
 "\n"
 
-#: ../src/main.c:191
+#: ../src/main.c:175
+msgid "Unknown argument "
+msgstr ""
+
+#: ../src/main.c:212
 msgid "Open a new instance"
 msgstr "Ouvrir une nouvelle instance"
 
-#: ../src/main.c:192
+#: ../src/main.c:213
 msgid "Do not load plugins"
 msgstr "Ne chargez pas les plugins"
 
-#: ../src/main.c:193
+#: ../src/main.c:214
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "Sélectionner le chemin vers le périphérique Audio-CD/VCD/DVD"
 
-#: ../src/main.c:194
+#: ../src/main.c:215
 msgid "Play or pause if already playing"
 msgstr "Lecture ou pause si lecture en cours"
 
-#: ../src/main.c:195
+#: ../src/main.c:216
 #, fuzzy
 msgid "Stop playing"
 msgstr "Afficher la liste de lecture"
 
-#: ../src/main.c:196
+#: ../src/main.c:217
 #, fuzzy
 msgid "Next track"
 msgstr "Piste Suivante"
 
-#: ../src/main.c:197
+#: ../src/main.c:218
 #, fuzzy
 msgid "Previous track"
 msgstr "Piste Précédente"
 
-#: ../src/main.c:198
+#: ../src/main.c:219
 msgid "Seek forward"
 msgstr "Avancer"
 
-#: ../src/main.c:199
+#: ../src/main.c:220
 msgid "Seek Backward"
 msgstr "Reculer"
 
-#: ../src/main.c:200
+#: ../src/main.c:221
 msgid "Raise volume"
 msgstr "Augmenter le volume"
 
-#: ../src/main.c:201
+#: ../src/main.c:222
 msgid "Lower volume"
 msgstr "Baisser le volume"
 
-#: ../src/main.c:202
+#: ../src/main.c:223
 msgid "Mute volume"
 msgstr "Couper le volume"
 
-#: ../src/main.c:203
+#: ../src/main.c:224
 msgid "Version information"
 msgstr "Information de version"
 
-#: ../src/main.c:205
+#: ../src/main.c:225
+msgid "Enabled/Disable XV support"
+msgstr ""
+
+#: ../src/main.c:227
 msgid "Media to play"
 msgstr "Média à lire"
 
-#: ../src/main.c:242
+#: ../src/main.c:264
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr ""
@@ -345,61 +353,61 @@ msgstr "Ajouter des fichiers multimédia"
 msgid "Add"
 msgstr "Ajouter"
 
-#: ../src/parole-medialist.c:436
+#: ../src/parole-medialist.c:437
 msgid "Error saving playlist file"
 msgstr "Erreur lors de la sauvegarde de la liste de lecture"
 
-#: ../src/parole-medialist.c:436
+#: ../src/parole-medialist.c:437
 msgid "Permission denied"
 msgstr "Permission non accordée"
 
-#: ../src/parole-medialist.c:445
+#: ../src/parole-medialist.c:446
 msgid "Unknown playlist format, Please select a support playlist format"
 msgstr ""
 "Format de liste de lecture inconnu, Veuillez sélectionner un format de liste "
 "de lecture pris en charge"
 
-#: ../src/parole-medialist.c:513 ../src/parole-player.c:1785
+#: ../src/parole-medialist.c:514 ../src/parole-player.c:1777
 msgid "Playlist"
 msgstr "Liste de lecture"
 
-#: ../src/parole-medialist.c:520
+#: ../src/parole-medialist.c:521
 #, fuzzy
 msgid "M3U Playlists"
 msgstr "Listes de lecture M3U"
 
-#: ../src/parole-medialist.c:528
+#: ../src/parole-medialist.c:529
 #, fuzzy
 msgid "PLS Playlists"
 msgstr "Listes de lecture PLS"
 
-#: ../src/parole-medialist.c:536
+#: ../src/parole-medialist.c:537
 #, fuzzy
 msgid "Advanced Stream Redirector"
 msgstr "Redirecteur de Flux Avancé"
 
-#: ../src/parole-medialist.c:544
+#: ../src/parole-medialist.c:545
 msgid "Shareable Playlist"
 msgstr "Liste de Lecture Partageable"
 
-#: ../src/parole-medialist.c:859
+#: ../src/parole-medialist.c:860
 msgid "Remember playlist"
 msgstr "Se souvenir de la liste de lecture"
 
-#: ../src/parole-medialist.c:1009
+#: ../src/parole-medialist.c:1012
 msgid "Media list"
 msgstr "Liste de médias"
 
-#: ../src/parole-player.c:316
+#: ../src/parole-player.c:317
 msgid "Hide playlist"
 msgstr "Cacher la liste de lecture"
 
-#: ../src/parole-player.c:325
+#: ../src/parole-player.c:326
 msgid "Show playlist"
 msgstr "Afficher la liste de lecture"
 
-#: ../src/parole-player.c:560
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:294
+#: ../src/parole-player.c:545
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:297
 #, fuzzy
 msgid "Media stream is not seekable"
 msgstr "Le flux média ne peut être parcouru"
@@ -407,19 +415,19 @@ msgstr "Le flux média ne peut être parcouru"
 #.
 #. * Next chapter menu item
 #.
-#: ../src/parole-player.c:1093 ../src/parole-disc-menu.c:122
+#: ../src/parole-player.c:1079 ../src/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr "Piste Suivante"
 
 #.
 #. * Previous chapter menu item
 #.
-#: ../src/parole-player.c:1105 ../src/parole-disc-menu.c:123
+#: ../src/parole-player.c:1091 ../src/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr "Piste Précédente"
 
 #: ../src/parole-statusbar.c:61
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:566
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:590
 msgid "Buffering"
 msgstr "Mise en tampon"
 
@@ -445,11 +453,11 @@ msgstr "Piste en Cours de Lecture"
 msgid "Live stream:"
 msgstr "Flux live :"
 
-#: ../src/parole-about.c:57
+#: ../src/parole-about.c:75
 msgid "Author/Maintainer"
 msgstr "Auteur / Mainteneur"
 
-#: ../src/parole-about.c:63
+#: ../src/parole-about.c:81
 #, c-format
 msgid "Translator (%s)"
 msgstr "Traducteur (%s)"
@@ -622,11 +630,11 @@ msgstr "Piste en Cours de Lecture"
 msgid "Track %i"
 msgstr "Piste %i"
 
-#: ../src/parole-plugins-manager.c:296 ../src/parole-plugins-manager.c:422
+#: ../src/parole-plugins-manager.c:297 ../src/parole-plugins-manager.c:433
 msgid "Visit Website"
 msgstr "Visiter le Site Web"
 
-#: ../src/parole-plugins-manager.c:370
+#: ../src/parole-plugins-manager.c:373
 #: ../plugins/properties/stream-properties-provider.c:140
 #: ../plugins/properties/stream-properties-provider.c:141
 #: ../plugins/properties/stream-properties-provider.c:142
@@ -634,23 +642,27 @@ msgstr "Visiter le Site Web"
 msgid "Unknown"
 msgstr "Inconnu"
 
-#: ../parole/parole-filters.c:56
+#: ../src/parole-plugins-manager.c:412
+msgid "No installed plugins found on this system"
+msgstr ""
+
+#: ../parole/parole-filters.c:64
 msgid "Audio"
 msgstr "Audio"
 
-#: ../parole/parole-filters.c:74
+#: ../parole/parole-filters.c:90
 msgid "Video"
 msgstr "Vidéo"
 
-#: ../parole/parole-filters.c:92
+#: ../parole/parole-filters.c:115
 msgid "Audio and video"
 msgstr "Audio et vidéo"
 
-#: ../parole/parole-filters.c:110
+#: ../parole/parole-filters.c:144
 msgid "All supported files"
 msgstr "Tous les fichiers pris en charge"
 
-#: ../parole/parole-filters.c:126
+#: ../parole/parole-filters.c:171
 msgid "Playlist files"
 msgstr "Listes de lecture"
 
@@ -696,40 +708,40 @@ msgstr "Lire les propriétés du média"
 msgid "Stream Properties"
 msgstr "Propriétés"
 
-#: ../plugins/tray/tray-provider.c:243
+#: ../plugins/tray/tray-provider.c:262
 msgid "<b>Playing:</b>"
 msgstr "<b>Lecture en cours :</b>"
 
-#: ../plugins/tray/tray-provider.c:243
+#: ../plugins/tray/tray-provider.c:262
 msgid "<b>Duration:</b>"
 msgstr "<b>Durée :</b>"
 
-#: ../plugins/tray/tray-provider.c:394
+#: ../plugins/tray/tray-provider.c:420
 msgid "Tray icon plugin"
 msgstr "Greffon de l'icône de la zone de notification"
 
-#: ../plugins/tray/tray-provider.c:404
+#: ../plugins/tray/tray-provider.c:430
 msgid "Enable notification"
 msgstr "Activer les notifications"
 
-#: ../plugins/tray/tray-provider.c:413
+#: ../plugins/tray/tray-provider.c:439
 msgid "Always minimize to tray when window is closed"
 msgstr ""
 "Toujours réduire dans la zone de notification lorsque la fenêtre est fermée"
 
-#: ../plugins/tray/tray-provider.c:452
+#: ../plugins/tray/tray-provider.c:478
 msgid "Minimize to tray?"
 msgstr "Minimiser dans la zone de notification ?"
 
-#: ../plugins/tray/tray-provider.c:458
+#: ../plugins/tray/tray-provider.c:484
 msgid "Minimize to tray"
 msgstr "Minimiser dans la zone de notification"
 
-#: ../plugins/tray/tray-provider.c:474
+#: ../plugins/tray/tray-provider.c:500
 msgid "Are you sure you want to quit Parole"
 msgstr "Etes vous sur de vouloir quitter Parole"
 
-#: ../plugins/tray/tray-provider.c:478
+#: ../plugins/tray/tray-provider.c:504
 #, fuzzy
 msgid "Remember my choice"
 msgstr "Se souvenir de la liste de lecture"
@@ -779,12 +791,12 @@ msgstr "Média à lire"
 msgid "URL"
 msgstr "URL"
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:135
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:138
 #, fuzzy
 msgid "Leave fullscreen"
 msgstr "gtk-leave-fullscreen"
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:140
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:143
 #, fuzzy
 msgid "Fullscreen"
 msgstr "gtk-leave-fullscreen"
@@ -792,7 +804,7 @@ msgstr "gtk-leave-fullscreen"
 #.
 #. * Copy url
 #.
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:426
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:452
 msgid "Copy url"
 msgstr "Copier l'url"
 
