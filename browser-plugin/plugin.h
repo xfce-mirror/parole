@@ -89,6 +89,7 @@ class CPlugin {
     NPP mInstance;
     uint16_t mode;
     gchar *mimetype;
+    GPid             child_pid;
     
     DBusGConnection *bus;
     DBusGProxy      *proxy;

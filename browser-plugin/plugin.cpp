@@ -127,6 +127,8 @@ CPlugin::CPlugin (NPP pNPInstance)
     cache          = NULL;
     tmp_file       = NULL;
     
+    child_pid      = 0;
+    
     window_set     = FALSE;
     is_playlist    = FALSE;
     checked        = FALSE;
@@ -257,7 +259,7 @@ NPError CPlugin::RunPlayer ()
 			 NULL,
 			 (GSpawnFlags) 0,
 			 NULL, NULL,
-			 NULL, 
+			 &child_pid, 
 			 &error) )
     {
 	g_critical ("Failed to spawn command : %s", error->message);
@@ -345,43 +347,53 @@ void CPlugin::StopPlayer ()
 {
     g_return_if_fail (proxy != NULL);
     
-    if ( player_ready || player_spawned )
+    if ( player_spawned )
     {
-	gint num_tries = 0;
-	
-	do
+    
+	if ( player_ready )
 	{
-	    GError *error = NULL;
-	    g_debug ("Sending Quit message");
-	    dbus_g_proxy_call (proxy, "Quit", &error,
-			       G_TYPE_INVALID,
-			       G_TYPE_INVALID);
-		
-	    /*
-	     * This might happen if the browser unload the plugin quickly
-	     * while the process didn't get the dbus name.
-	     */
-	    if ( error )
+	    gint num_tries = 0;
+	    
+	    do
 	    {
-#ifdef DEBUG
-		g_debug ("Failed to stop the backend via D-Bus %s", error->message);
-#endif
-		if ( g_error_matches (error, DBUS_GERROR, DBUS_GERROR_NO_REPLY ) ||
-		     g_error_matches (error, DBUS_GERROR, DBUS_GERROR_SERVICE_UNKNOWN) )
+		GError *error = NULL;
+		g_debug ("Sending Quit message");
+		dbus_g_proxy_call (proxy, "Quit", &error,
+				   G_TYPE_INVALID,
+				   G_TYPE_INVALID);
+		    
+		/*
+		 * This might happen if the browser unload the plugin quickly
+		 * while the process didn't get the dbus name.
+		 */
+		if ( error )
 		{
-		    g_error_free (error);
-		    g_main_context_iteration(NULL, FALSE);
-		    g_usleep (100000);
-		    num_tries++;
-		    g_debug ("No reply, probably not ready, re-trying");
+    #ifdef DEBUG
+		    g_debug ("Failed to stop the backend via D-Bus %s", error->message);
+    #endif
+		    if ( g_error_matches (error, DBUS_GERROR, DBUS_GERROR_NO_REPLY ) ||
+			 g_error_matches (error, DBUS_GERROR, DBUS_GERROR_SERVICE_UNKNOWN) )
+		    {
+			g_error_free (error);
+			g_main_context_iteration(NULL, FALSE);
+			g_usleep (100000);
+			num_tries++;
+			g_debug ("No reply, probably not ready, re-trying");
+		    }
+		    else
+			break;
 		}
 		else
 		    break;
-	    }
-	    else
-		break;
-	    
-	} while (num_tries  < 4  && player_exited != TRUE);
+		
+	    } while (num_tries  < 4  && player_exited != TRUE);
+	}
+	else
+	{
+	    char cmd[128];
+	    g_snprintf (cmd, 128, "kill -9 %d", child_pid);
+	    g_spawn_command_line_async (cmd, NULL);
+	}
     }
 }
 

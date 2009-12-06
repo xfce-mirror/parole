@@ -1112,6 +1112,8 @@ parole_media_list_add_by_path (ParoleMediaList *list, const gchar *path, gboolea
     filter = parole_get_supported_media_filter ();
     g_object_ref_sink (filter);
     
+    TRACE ("Path=%s", path);
+    
     parole_get_media_files (filter, path, TRUE, &files_list);
     
     parole_media_list_files_open (list, files_list, FALSE, emit);
@@ -1300,13 +1302,17 @@ gboolean parole_media_list_add_files (ParoleMediaList *list, gchar **filenames)
     
     for ( i = 0; filenames && filenames[i] != NULL; i++)
     {
-	if ( g_str_has_prefix (filenames[i], "file:/") )
+	if ( g_file_test (filenames[i], G_FILE_TEST_IS_REGULAR ) )
+	{
 	    added += parole_media_list_add_by_path (list, filenames[i], i == 0 ? TRUE : FALSE);
+	}
 	else
 	{
 	    ParoleFile *file;
+	    TRACE ("File=%s", filenames[i]);
 	    file = parole_file_new (filenames[i]);
 	    parole_media_list_add (list, file, i == 0 ? TRUE : FALSE, i == 0 ? TRUE : FALSE);
+	    added++;
 	}
     }
     

@@ -126,8 +126,6 @@ int main (int argc, char **argv)
         g_error_free (error);
     }
 
-    //parole_plugin_player_play (player);
-    
     gtk_main ();
     g_object_unref (player);
     gtk_widget_destroy (plug);

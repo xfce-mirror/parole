@@ -187,7 +187,6 @@ parole_gst_parent_expose_event (GtkWidget *w, GdkEventExpose *ev, ParoleGst *gst
     return FALSE;
 }
 
-
 static void
 parole_gst_realize (GtkWidget *widget)
 {
@@ -346,7 +345,8 @@ parole_gst_size_allocate (GtkWidget *widget, GtkAllocation *allocation)
 	w = allocation->width;
 	h = allocation->height;
 	
-	parole_gst_get_video_output_size (PAROLE_GST (widget), &w, &h);
+	if ( PAROLE_GST (widget)->priv->embedded == FALSE )
+	    parole_gst_get_video_output_size (PAROLE_GST (widget), &w, &h);
 
 	width = w;
 	height = h;
@@ -535,8 +535,10 @@ parole_gst_expose_event (GtkWidget *widget, GdkEventExpose *ev)
 		parole_gst_helper_draw_logo (PAROLE_GST_HELPER (gst));
 	    break;
 	case GST_STATE_READY:
-	    if (gst->priv->with_vis == FALSE && gst->priv->target != GST_STATE_PLAYING)
+	    if (gst->priv->target != GST_STATE_PLAYING)
 		parole_gst_helper_draw_logo (PAROLE_GST_HELPER (gst));
+	    else
+		gst_x_overlay_expose (GST_X_OVERLAY (gst->priv->video_sink));
 	    break;
 	case GST_STATE_NULL:
 	case GST_STATE_VOID_PENDING:
@@ -782,8 +784,7 @@ parole_gst_get_pad_capabilities (GObject *object, GParamSpec *pspec, ParoleGst *
 			  "disp-par-d", den,
 			  NULL);
 	}
-		      
-	parole_gst_get_video_output_size (gst, &width, &height);
+
 	parole_gst_size_allocate (GTK_WIDGET (gst), &GTK_WIDGET (gst)->allocation);
     }
 }

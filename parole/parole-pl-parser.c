@@ -486,7 +486,7 @@ parole_pl_parser_save_m3u (FILE *f, GSList *files)
     guint len;
     guint i;
     
-    fputs ("#EXTM3U\n", f);
+    fputs ("#EXTM3U\n\n", f);
     
     len = g_slist_length (files);
     
@@ -494,7 +494,8 @@ parole_pl_parser_save_m3u (FILE *f, GSList *files)
     {
 	ParoleFile *file;
 	file = g_slist_nth_data (files, i);
-	fprintf (f, "%s\n", parole_file_get_file_name (file));
+	fprintf (f, "#EXTINF:-1,%s\n", parole_file_get_display_name (file));
+	fprintf (f, "%s\n\n", parole_file_get_file_name (file));
     }
     
     return TRUE;

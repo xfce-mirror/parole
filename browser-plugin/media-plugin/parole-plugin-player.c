@@ -31,6 +31,7 @@
 #include <parole/parole.h>
 
 #include <libxfce4util/libxfce4util.h>
+#include <libxfcegui4/libxfcegui4.h>
 
 #include "parole-plugin-player.h"
 
@@ -570,6 +571,7 @@ parole_plugin_player_error_cb (ParoleGst *gst, const gchar *error, ParolePluginP
 {
     player->priv->finished = TRUE;
     parole_screen_saver_uninhibit (player->priv->saver);
+    xfce_err ("%s", error);
     parole_gst_stop (gst);
 }
 
@@ -747,6 +749,9 @@ parole_plugin_player_construct (GObject *object)
     player->priv->vbox = vbox;
     
     g_signal_emit (player, signals [SIG_READY], 0);
+    
+    if ( player->priv->url )
+	parole_plugin_player_play (player);
 }
 
 static void
