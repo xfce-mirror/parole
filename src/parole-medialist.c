@@ -1300,7 +1300,14 @@ gboolean parole_media_list_add_files (ParoleMediaList *list, gchar **filenames)
     
     for ( i = 0; filenames && filenames[i] != NULL; i++)
     {
-	added += parole_media_list_add_by_path (list, filenames[i], i == 0 ? TRUE : FALSE);
+	if ( g_str_has_prefix (filenames[i], "file:/") )
+	    added += parole_media_list_add_by_path (list, filenames[i], i == 0 ? TRUE : FALSE);
+	else
+	{
+	    ParoleFile *file;
+	    file = parole_file_new (filenames[i]);
+	    parole_media_list_add (list, file, i == 0 ? TRUE : FALSE, i == 0 ? TRUE : FALSE);
+	}
     }
     
     return added == i;
