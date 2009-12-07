@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole 0.1.90\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-06 19:00+0100\n"
-"PO-Revision-Date: 2009-10-08 21:31+0900\n"
+"POT-Creation-Date: 2009-12-07 23:52+0900\n"
+"PO-Revision-Date: 2009-12-07 23:50+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -127,15 +127,15 @@ msgstr "表示(_V)"
 
 #: ../data/interfaces/mediachooser.ui.h:1
 msgid "Replace playlist with opened files"
-msgstr ""
+msgstr "開いたファイルでプレイリストを置き換える"
 
 #: ../data/interfaces/mediachooser.ui.h:2
 msgid "Scan folders recursively"
-msgstr ""
+msgstr "フォルダを再帰的にスキャンする"
 
 #: ../data/interfaces/mediachooser.ui.h:3
 msgid "Start playing opened files"
-msgstr ""
+msgstr "開いたファイルを再生する"
 
 #: ../data/interfaces/plugins.ui.h:1
 msgid "<b>Author:</b>"
@@ -270,7 +270,7 @@ msgstr ""
 
 #: ../src/main.c:175
 msgid "Unknown argument "
-msgstr ""
+msgstr "不明な引数"
 
 #: ../src/main.c:212
 msgid "Open a new instance"
@@ -278,11 +278,11 @@ msgstr "新しいインスタンスを開く"
 
 #: ../src/main.c:213
 msgid "Do not load plugins"
-msgstr ""
+msgstr "プラグインをロードしない"
 
 #: ../src/main.c:214
 msgid "Set Audio-CD/VCD/DVD device path"
-msgstr ""
+msgstr "音楽 CD/VCD/DVD デバイスパスを指定する"
 
 #: ../src/main.c:215
 msgid "Play or pause if already playing"
@@ -326,7 +326,7 @@ msgstr "バージョン情報"
 
 #: ../src/main.c:225
 msgid "Enabled/Disable XV support"
-msgstr ""
+msgstr "XV サポートを有効/無効にする"
 
 #: ../src/main.c:227
 msgid "Media to play"
@@ -628,7 +628,7 @@ msgstr "不明"
 
 #: ../src/parole-plugins-manager.c:412
 msgid "No installed plugins found on this system"
-msgstr ""
+msgstr "インストールされているプラグインが見つかりません"
 
 #: ../parole/parole-filters.c:64
 msgid "Audio"
@@ -687,9 +687,8 @@ msgid "Read media properties"
 msgstr "メディアのプロパティを読み込みます"
 
 #: ../plugins/properties/stream-properties.desktop.in.h:2
-#, fuzzy
 msgid "Stream Properties"
-msgstr "プロパティ"
+msgstr "ストリームのプロパティ"
 
 #: ../plugins/tray/tray-provider.c:262
 msgid "<b>Playing:</b>"
@@ -736,57 +735,48 @@ msgid "Tray icon"
 msgstr "トレイアイコン"
 
 #: ../plugins/window-title/window-title.desktop.in.h:1
-#, fuzzy
 msgid "Set the main window name to the current playing media name."
-msgstr "メインウィンドウ名を再生中のメディア名にします"
+msgstr "メインウィンドウ名に再生中のメディア名を設定します。"
 
 #: ../plugins/window-title/window-title.desktop.in.h:2
-#, fuzzy
 msgid "Window Title"
 msgstr "ウィンドウタイトル"
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:1
 msgid "Inhibit Power Manager from suspending the machine while playing DVD."
-msgstr ""
+msgstr "DVD の再生中に電源管理によるサスペンドを抑止します。"
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
-msgstr ""
+msgstr "電源管理プラグイン"
 
 #: ../browser-plugin/media-plugin/main.c:72
 msgid "socket"
-msgstr ""
+msgstr "ソケット"
 
 #: ../browser-plugin/media-plugin/main.c:72
 msgid "SOCKET ID"
-msgstr ""
+msgstr "SOCKET ID"
 
 #: ../browser-plugin/media-plugin/main.c:73
-#, fuzzy
 msgid "url to play"
-msgstr "再生するメディア"
+msgstr "再生する URL"
 
 #: ../browser-plugin/media-plugin/main.c:73
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: ../browser-plugin/media-plugin/parole-plugin-player.c:138
 msgid "Leave fullscreen"
-msgstr ""
+msgstr "元に戻す"
 
 #: ../browser-plugin/media-plugin/parole-plugin-player.c:143
 msgid "Fullscreen"
-msgstr ""
+msgstr "全画面化"
 
 #.
 #. * Copy url
 #.
 #: ../browser-plugin/media-plugin/parole-plugin-player.c:452
 msgid "Copy url"
-msgstr ""
-
-#~ msgid "Enabled"
-#~ msgstr "有効"
-
-#~ msgid "Plugin"
-#~ msgstr "プラグイン"
+msgstr "URL のコピー"
