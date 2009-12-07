@@ -1664,6 +1664,8 @@ parole_player_window_notify_is_active (ParolePlayer *player)
  * Sets the _NET_WM_WINDOW_OPACITY_LOCKED wm hint 
  * so window manager keep us opaque.
  * 
+ * Currently it is only supported by xfwm.
+ * 
  * NOTE: The widget has to be realized first.
  **/
 static void

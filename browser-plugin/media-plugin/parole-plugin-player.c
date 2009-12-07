@@ -572,7 +572,7 @@ parole_plugin_player_error_cb (ParoleGst *gst, const gchar *error, ParolePluginP
     player->priv->finished = TRUE;
     parole_screen_saver_uninhibit (player->priv->saver);
     xfce_err ("%s", error);
-    parole_gst_stop (gst);
+    
 }
 
 static void

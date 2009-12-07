@@ -345,11 +345,8 @@ NPBool CPlugin::isInitialized()
 
 void CPlugin::StopPlayer ()
 {
-    g_return_if_fail (proxy != NULL);
-    
     if ( player_spawned )
     {
-    
 	if ( player_ready )
 	{
 	    gint num_tries = 0;
@@ -368,9 +365,9 @@ void CPlugin::StopPlayer ()
 		 */
 		if ( error )
 		{
-    #ifdef DEBUG
+#ifdef DEBUG
 		    g_debug ("Failed to stop the backend via D-Bus %s", error->message);
-    #endif
+#endif
 		    if ( g_error_matches (error, DBUS_GERROR, DBUS_GERROR_NO_REPLY ) ||
 			 g_error_matches (error, DBUS_GERROR, DBUS_GERROR_SERVICE_UNKNOWN) )
 		    {
@@ -483,8 +480,8 @@ int32_t CPlugin::Write (NPStream * stream, int32_t offset, int32_t len, void *bu
     }
     else if ( player_ready && player_playing == FALSE  )
     {
-	SendPlay (stream->url);
-	return len;
+        SendPlay (stream->url);
+        return len;
     }
     
     return wrotebytes;
