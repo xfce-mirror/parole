@@ -30,6 +30,7 @@
 #include <X11/XF86keysym.h>
 #endif
 
+#include <gdk/gdkx.h>
 #include <gdk/gdkkeysyms.h>
 #include <gtk/gtk.h>
 
@@ -1658,6 +1659,39 @@ parole_player_window_notify_is_active (ParolePlayer *player)
     }
 } 
 
+/**
+ * 
+ * Sets the _NET_WM_WINDOW_OPACITY_LOCKED wm hint 
+ * so window manager keep us opaque.
+ * 
+ * NOTE: The widget has to be realized first.
+ **/
+static void
+parole_player_set_wm_opacity_hint (GtkWidget *widget)
+{
+    GdkScreen *gdkscreen;
+    GdkDisplay *gdkdisplay;
+    GdkWindow *gdkwindow;
+    Display *xdisplay;
+    Atom atom;
+    char mode = 1;
+    
+    gdkscreen = gtk_widget_get_screen (widget);
+    gdkdisplay = gdk_screen_get_display (gdkscreen);
+
+    xdisplay = GDK_DISPLAY_XDISPLAY (gdkdisplay);
+    
+    atom = XInternAtom (xdisplay, "_NET_WM_WINDOW_OPACITY_LOCKED", FALSE);
+    
+    gdkwindow = gtk_widget_get_window (widget);
+    
+    XChangeProperty (xdisplay, GDK_WINDOW_XID (gdkwindow),
+		     atom, XA_CARDINAL,
+		     32, PropModeAppend,
+		     (guchar *) &mode, 
+		     1);
+}
+
 static void
 parole_player_init (ParolePlayer *player)
 {
@@ -1744,6 +1778,7 @@ parole_player_init (ParolePlayer *player)
 		      G_CALLBACK (parole_player_drag_data_received_cb), player);
     
     player->priv->window = GTK_WIDGET (gtk_builder_get_object (builder, "main-window"));
+   
     player->priv->main_nt = GTK_WIDGET (gtk_builder_get_object (builder, "main-notebook"));
     
     player->priv->play_pause = GTK_WIDGET (gtk_builder_get_object (builder, "play-pause"));
@@ -1784,6 +1819,8 @@ parole_player_init (ParolePlayer *player)
     gtk_window_set_default_size (GTK_WINDOW (player->priv->window), w, h);
     
     gtk_widget_show_all (player->priv->window);
+    
+    parole_player_set_wm_opacity_hint (player->priv->window);
     
     gtk_box_pack_start (GTK_BOX (output), 
 			player->priv->gst,
