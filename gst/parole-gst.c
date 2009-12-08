@@ -520,6 +520,8 @@ parole_gst_expose_event (GtkWidget *widget, GdkEventExpose *ev)
 
     parole_gst_set_x_overlay (gst);
 
+    TRACE ("EXPOSE event state=%d  target=%d", gst->priv->state, gst->priv->target);
+    
     switch ( gst->priv->state )
     {
 	case GST_STATE_PLAYING:

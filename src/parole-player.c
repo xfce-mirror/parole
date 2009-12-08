@@ -395,7 +395,6 @@ parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *ro
 				 parole_file_get_uri (file),
 				 sub);
 	    g_free (sub);
-	    gtk_widget_grab_focus (player->priv->gst);
 	    g_object_unref (file);
 	}
     }
@@ -408,7 +407,6 @@ parole_player_disc_selected_cb (ParoleDisc *disc, const gchar *uri, const gchar 
     gtk_widget_set_sensitive (player->priv->stop, TRUE);
     
     parole_gst_play_device_uri (PAROLE_GST (player->priv->gst), uri, device);
-    gtk_widget_grab_focus (player->priv->gst);
 }
 
 static void
@@ -416,7 +414,6 @@ parole_player_uri_opened_cb (ParoleMediaList *list, const gchar *uri, ParolePlay
 {
     parole_player_reset (player);
     gtk_widget_set_sensitive (player->priv->stop, TRUE);
-    gtk_widget_grab_focus (player->priv->gst);
     parole_gst_play_uri (PAROLE_GST (player->priv->gst), uri, NULL);
 }
 
@@ -549,6 +546,8 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
 	g_object_unref (pix);
 	
     parole_player_save_uri (player, stream);
+    
+    gtk_widget_grab_focus (player->priv->gst);
 }
 
 static void
@@ -1683,7 +1682,7 @@ parole_player_set_wm_opacity_hint (GtkWidget *widget)
 
     xdisplay = GDK_DISPLAY_XDISPLAY (gdkdisplay);
     
-    atom = XInternAtom (xdisplay, "_NET_WM_WINDOW_OPACITY_LOCKED", FALSE);
+    atom = XInternAtom (xdisplay, "_NET_WM_WINDOW_OPACITY_LOCKED", TRUE);
     
     gdkwindow = gtk_widget_get_window (widget);
     
