@@ -150,8 +150,16 @@ static void parole_stream_set_property (GObject *object,
 	    PAROLE_STREAM_DUP_GVALUE_STRING (PAROLE_STREAM_GET_PRIVATE (stream)->subtitles, value);
 	    break;
 	case PROP_LIVE:
-	    PAROLE_STREAM_GET_PRIVATE (stream)->live = g_value_get_boolean (value);
+	{
+	    ParoleStreamPrivate *priv;
+	    gboolean maybe_remote;
+	    
+	    priv = PAROLE_STREAM_GET_PRIVATE (stream);
+	    maybe_remote = priv->media_type == PAROLE_MEDIA_TYPE_REMOTE ||
+	                   priv->media_type == PAROLE_MEDIA_TYPE_UNKNOWN;
+	    priv->live = g_value_get_boolean (value) && maybe_remote;
 	    break;
+	}
 	case PROP_MEDIA_TYPE:
 	    PAROLE_STREAM_GET_PRIVATE (stream)->media_type = g_value_get_enum (value);
 	    break;
