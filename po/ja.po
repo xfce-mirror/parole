@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole 0.1.90\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-10 14:17+0100\n"
-"PO-Revision-Date: 2009-12-07 23:50+0900\n"
+"POT-Creation-Date: 2009-12-11 00:26+0900\n"
+"PO-Revision-Date: 2009-12-11 00:27+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -170,9 +170,8 @@ msgid "<b>Subtitles</b>"
 msgstr "<b>字幕</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:4
-#, fuzzy
 msgid "<b>Video</b>"
-msgstr "<b>サイト:</b>"
+msgstr "<b>ビデオ</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:5
 msgid "Automatically load subtitles when playing movie file"
@@ -188,7 +187,7 @@ msgstr "コントラスト:"
 
 #: ../data/interfaces/parole-settings.ui.h:8
 msgid "Disable screen saver while playing movies"
-msgstr ""
+msgstr "動画再生中はスクリーンセーバを無効にする"
 
 #: ../data/interfaces/parole-settings.ui.h:9
 msgid "Enable visualization when playing audio file"
