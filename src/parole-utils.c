@@ -245,7 +245,7 @@ parole_get_subtitle_in_dir (const gchar *dir_path, const gchar *file)
     
     for ( i = 0; i < G_N_ELEMENTS (subtitle_ext); i++)
     {
-	sub_path = g_strdup_printf ("%s/%s.%s", dir_path, file_no_ext, subtitle_ext[i]);
+	sub_path = g_strdup_printf ("%s%c%s.%s", dir_path, G_DIR_SEPARATOR, file_no_ext, subtitle_ext[i]);
 	
 	if ( g_file_test (sub_path, G_FILE_TEST_EXISTS | G_FILE_TEST_IS_REGULAR ) )
 	    break;
@@ -253,6 +253,7 @@ parole_get_subtitle_in_dir (const gchar *dir_path, const gchar *file)
 	g_free (sub_path);
 	sub_path = NULL;
     }
+
     g_free (file_no_ext);
     
     return sub_path;
@@ -380,7 +381,7 @@ void parole_get_media_files (GtkFileFilter *filter, const gchar *path,
 	
 	while ( (name = g_dir_read_name (dir)) )
 	{
-	    gchar *path_internal = g_strdup_printf ("%s/%s", path, name);
+	    gchar *path_internal = g_build_filename (path, name, NULL);
 	    if ( g_file_test (path_internal, G_FILE_TEST_IS_DIR) && recursive)
 	    {
 		parole_get_media_files (filter, path_internal, TRUE, list);

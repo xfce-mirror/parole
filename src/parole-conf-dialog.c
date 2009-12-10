@@ -46,6 +46,9 @@ void		parole_conf_dialog_response_cb		 	(GtkDialog *dialog,
 void		parole_conf_dialog_enable_vis_changed_cb 	(GtkToggleButton *widget,
 								 ParoleConfDialog *self);
 
+void		parole_conf_dialog_reset_saver_changed_cb	(GtkToggleButton *widget,
+								 ParoleConfDialog *self);
+
 void		parole_conf_dialog_vis_plugin_changed_cb 	(GtkComboBox *widget,
 								 ParoleConfDialog *self);
 
@@ -197,6 +200,13 @@ void parole_conf_dialog_vis_plugin_changed_cb (GtkComboBox *widget,  ParoleConfD
     g_free (active);
 }
 
+void parole_conf_dialog_reset_saver_changed_cb (GtkToggleButton *widget, ParoleConfDialog *self)
+{
+    g_object_set (G_OBJECT (self->priv->conf),
+		  "reset-saver", gtk_toggle_button_get_active (widget),
+		  NULL);
+}
+
 void parole_conf_dialog_font_set_cb (GtkFontButton *button, ParoleConfDialog *self)
 {
     g_object_set (G_OBJECT (self->priv->conf), 
@@ -341,6 +351,7 @@ void parole_conf_dialog_open (ParoleConfDialog *self, GtkWidget *parent)
     GtkWidget  *dialog;
     GtkWidget  *combox;
     gboolean    with_display;
+    gboolean    reset_saver;
     
     builder = parole_builder_new_from_string (parole_settings_ui, parole_settings_ui_length);
     
@@ -361,6 +372,13 @@ void parole_conf_dialog_open (ParoleConfDialog *self, GtkWidget *parent)
     self->priv->vis_combox = combox;
 
     parole_conf_dialog_set_defaults (self);
+    
+    g_object_get (G_OBJECT (self->priv->conf),
+		  "reset-saver", &reset_saver,
+		  NULL);
+    
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (gtk_builder_get_object (builder, "reset-saver")),
+				  reset_saver);
     
     with_display = parole_gst_get_is_xvimage_sink (PAROLE_GST (parole_gst_get ()));
     

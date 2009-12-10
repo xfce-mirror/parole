@@ -699,21 +699,40 @@ parole_player_play_prev (ParolePlayer *player)
 }
 
 static void
-parole_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream, ParoleMediaState state, ParolePlayer *player)
+parole_player_reset_saver_changed (ParolePlayer *player, const ParoleStream *stream)
 {
-    gboolean has_video;
+    gboolean reset_saver;
     
-    PAROLE_DEBUG_ENUM ("State callback", state, GST_ENUM_TYPE_MEDIA_STATE);
+    TRACE ("Start");
     
-    g_object_get (G_OBJECT (stream),
-		  "has-video", &has_video,
+    g_object_get (G_OBJECT (player->priv->conf),
+		  "reset-saver", &reset_saver,
 		  NULL);
-    
-    if ( state == PAROLE_MEDIA_STATE_PLAYING && has_video )
-	parole_screen_saver_inhibit (player->priv->screen_saver);
+		  
+    if ( !reset_saver )
+	parole_screen_saver_uninhibit (player->priv->screen_saver);
+    else if ( player->priv->state ==  PAROLE_MEDIA_STATE_PLAYING )
+    {
+	gboolean has_video;
+	
+	g_object_get (G_OBJECT (stream),
+		      "has-video", &has_video,
+		      NULL);
+		      
+	if ( has_video )
+	    parole_screen_saver_inhibit (player->priv->screen_saver);
+    }
     else
 	parole_screen_saver_uninhibit (player->priv->screen_saver);
+}
 
+static void
+parole_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream, ParoleMediaState state, ParolePlayer *player)
+{
+    PAROLE_DEBUG_ENUM ("State callback", state, GST_ENUM_TYPE_MEDIA_STATE);
+
+    parole_player_reset_saver_changed (player, stream);
+    
     if ( state == PAROLE_MEDIA_STATE_PLAYING )
     {
 	parole_player_playing (player, stream);
@@ -1339,11 +1358,11 @@ parole_player_finalize (GObject *object)
     
     dbus_g_connection_unref (player->priv->bus);
     
+    g_object_unref (player->priv->conf);
     g_object_unref (player->priv->video_filter);
     g_object_unref (player->priv->status);
     g_object_unref (player->priv->disc);
     g_object_unref (player->priv->disc_menu);
-    g_object_unref (player->priv->conf);
     g_object_unref (player->priv->screen_saver);
     
 #ifdef HAVE_XF86_KEYSYM
@@ -1365,6 +1384,22 @@ parole_player_class_init (ParolePlayerClass *klass)
     g_type_class_add_private (klass, sizeof (ParolePlayerPrivate));
     
     parole_player_dbus_class_init (klass);
+}
+
+/**
+ * Configuration changed regarding
+ * whether to Reset the screen saver counter
+ * while playing movies or not.
+ * 
+ */
+static void
+parole_player_reset_saver_changed_cb (ParolePlayer *player)
+{
+    const ParoleStream *stream;
+    
+    stream = parole_gst_get_stream (PAROLE_GST (player->priv->gst));
+    TRACE ("Reset saver configuration changed");
+    parole_player_reset_saver_changed (player, stream);
 }
 
 static gboolean
@@ -1713,6 +1748,10 @@ parole_player_init (ParolePlayer *player)
     builder = parole_builder_get_main_interface ();
     
     player->priv->conf = parole_conf_new ();
+    
+    g_signal_connect_swapped (player->priv->conf, "notify::reset-saver",
+			      G_CALLBACK (parole_player_reset_saver_changed_cb), player);
+    
     player->priv->session = parole_session_get ();
     
     g_signal_connect_swapped (player->priv->session, "die",

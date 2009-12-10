@@ -67,6 +67,7 @@
                               <object class="GtkHScale" id="brightness">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
+                                <property name="update_policy">discontinuous</property>
                                 <property name="draw_value">False</property>
                                 <signal name="value_changed" handler="brightness_value_changed_cb"/>
                               </object>
@@ -79,6 +80,7 @@
                               <object class="GtkHScale" id="contrast">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
+                                <property name="update_policy">discontinuous</property>
                                 <property name="draw_value">False</property>
                                 <signal name="value_changed" handler="contrast_value_changed_cb"/>
                               </object>
@@ -117,6 +119,7 @@
                               <object class="GtkHScale" id="hue">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
+                                <property name="update_policy">discontinuous</property>
                                 <property name="draw_value">False</property>
                                 <signal name="value_changed" handler="hue_value_changed_cb"/>
                               </object>
@@ -131,6 +134,7 @@
                               <object class="GtkHScale" id="saturation">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
+                                <property name="update_policy">discontinuous</property>
                                 <property name="draw_value">False</property>
                                 <signal name="value_changed" handler="saturation_value_changed_cb"/>
                               </object>
@@ -184,6 +188,39 @@
               </object>
               <packing>
                 <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkFrame" id="frame2">
+                <property name="visible">True</property>
+                <property name="label_xalign">0</property>
+                <property name="shadow_type">none</property>
+                <child>
+                  <object class="GtkAlignment" id="alignment4">
+                    <property name="visible">True</property>
+                    <property name="left_padding">12</property>
+                    <child>
+                      <object class="GtkCheckButton" id="reset-saver">
+                        <property name="label" translatable="yes">Disable screen saver while playing movies</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="parole_conf_dialog_reset_saver_changed_cb"/>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child type="label">
+                  <object class="GtkLabel" id="label12">
+                    <property name="visible">True</property>
+                    <property name="label" translatable="yes">&lt;b&gt;Video&lt;/b&gt;</property>
+                    <property name="use_markup">True</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="position">1</property>
               </packing>
             </child>
             <child>
@@ -262,7 +299,7 @@
                 </child>
               </object>
               <packing>
-                <property name="position">1</property>
+                <property name="position">2</property>
               </packing>
             </child>
             <child>
@@ -361,7 +398,7 @@
                 </child>
               </object>
               <packing>
-                <property name="position">2</property>
+                <property name="position">3</property>
               </packing>
             </child>
           </object>

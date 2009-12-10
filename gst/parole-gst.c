@@ -2195,3 +2195,10 @@ parole_gst_set_cursor_visible (ParoleGst *gst, gboolean visible)
     else
 	parole_window_invisible_cursor (GTK_WIDGET (gst)->window);
 }
+
+const ParoleStream     *parole_gst_get_stream 		(ParoleGst *gst)
+{
+    g_return_val_if_fail (PAROLE_IS_GST (gst), NULL);
+    
+    return gst->priv->stream;
+}

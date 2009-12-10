@@ -52,6 +52,7 @@ enum
     PROP_0,
     PROP_VIS_ENABLED,
     PROP_VIS_NAME,
+    PROP_DISABLE_SCREEN_SAVER,
     PROP_SUBTITLE_ENABLED,
     PROP_SUBTITLE_FONT,
     PROP_SUBTITLE_ENCODING,
@@ -210,6 +211,13 @@ parole_conf_class_init (ParoleConfClass *klass)
                                      g_param_spec_boolean ("vis-enabled",
                                                            NULL, NULL,
                                                            FALSE,
+                                                           G_PARAM_READWRITE));
+
+    g_object_class_install_property (object_class,
+                                     PROP_DISABLE_SCREEN_SAVER,
+                                     g_param_spec_boolean ("reset-saver",
+                                                           NULL, NULL,
+                                                           TRUE,
                                                            G_PARAM_READWRITE));
 
     g_object_class_install_property (object_class,
@@ -389,7 +397,6 @@ parole_conf_init (ParoleConf *conf)
     conf->priv->values = g_new0 (GValue, N_PROP);
     
     parole_conf_load (conf);
-    
 }
 
 ParoleConf *

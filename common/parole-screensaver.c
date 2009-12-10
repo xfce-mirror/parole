@@ -51,6 +51,8 @@ parole_screen_saver_finalize (GObject *object)
     ParoleScreenSaver *saver;
 
     saver = PAROLE_SCREEN_SAVER (object);
+    
+    parole_screen_saver_uninhibit (saver);
 
     G_OBJECT_CLASS (parole_screen_saver_parent_class)->finalize (object);
 }
@@ -90,8 +92,10 @@ parole_screen_saver_new (void)
 
 void parole_screen_saver_inhibit (ParoleScreenSaver *saver)
 {
+    g_return_if_fail (PAROLE_IS_SCREENSAVER (saver));
+    
     parole_screen_saver_uninhibit (saver);
-	
+
     saver->priv->reset_id = g_timeout_add_seconds (RESET_SCREENSAVER_TIMEOUT, 
 						   (GSourceFunc) parole_screen_saver_reset_timeout,
 						   NULL);
@@ -99,6 +103,8 @@ void parole_screen_saver_inhibit (ParoleScreenSaver *saver)
 
 void parole_screen_saver_uninhibit (ParoleScreenSaver *saver)
 {
+    g_return_if_fail (PAROLE_IS_SCREENSAVER (saver));
+    
     if ( saver->priv->reset_id != 0 )
     {
 	g_source_remove (saver->priv->reset_id);
