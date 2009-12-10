@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: Parole master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-12-10 14:17+0100\n"
-"PO-Revision-Date: 2009-10-13 22:38+0100\n"
-"Last-Translator: Mario Blättermann <mariobl@gnome.org>\n"
+"PO-Revision-Date: 2009-12-10 16:47+0100\n"
+"Last-Translator: Vincent Tunru <projects@vinnl.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -65,7 +65,8 @@ msgstr "Mediaspeler"
 msgid "Mute"
 msgstr "Dempen"
 
-#: ../data/interfaces/parole.ui.h:10 ../src/parole-player.c:1098
+#: ../data/interfaces/parole.ui.h:10
+#: ../src/parole-player.c:1098
 #: ../src/parole-disc-menu.c:113
 msgid "Next Chapter"
 msgstr "Volgende hoofdstuk/film"
@@ -74,8 +75,10 @@ msgstr "Volgende hoofdstuk/film"
 msgid "None"
 msgstr "Geen"
 
-#: ../data/interfaces/parole.ui.h:12 ../data/desktop/parole.desktop.in.in.h:1
-#: ../src/parole-about.c:70 ../plugins/window-title/window-title-provider.c:58
+#: ../data/interfaces/parole.ui.h:12
+#: ../data/desktop/parole.desktop.in.in.h:1
+#: ../src/parole-about.c:70
+#: ../plugins/window-title/window-title-provider.c:58
 msgid "Parole Media Player"
 msgstr "Parole Mediaspeler"
 
@@ -83,7 +86,8 @@ msgstr "Parole Mediaspeler"
 msgid "Plugins"
 msgstr "Plugins"
 
-#: ../data/interfaces/parole.ui.h:14 ../src/parole-player.c:1110
+#: ../data/interfaces/parole.ui.h:14
+#: ../src/parole-player.c:1110
 #: ../src/parole-disc-menu.c:114
 msgid "Previous Chapter"
 msgstr "Vorige hoofdstuk/film"
@@ -128,7 +132,7 @@ msgstr "_Hulp"
 
 #: ../data/interfaces/parole.ui.h:24
 msgid "_Media"
-msgstr ""
+msgstr "_Media"
 
 #: ../data/interfaces/parole.ui.h:25
 msgid "_Open location"
@@ -140,15 +144,15 @@ msgstr "Beel_d"
 
 #: ../data/interfaces/mediachooser.ui.h:1
 msgid "Replace playlist with opened files"
-msgstr ""
+msgstr "Afspeellijst vervangen door geopende bestanden"
 
 #: ../data/interfaces/mediachooser.ui.h:2
 msgid "Scan folders recursively"
-msgstr ""
+msgstr "Ook onderliggende mappen doorzoeken"
 
 #: ../data/interfaces/mediachooser.ui.h:3
 msgid "Start playing opened files"
-msgstr ""
+msgstr "Geopende bestanden meteen afspelen"
 
 #: ../data/interfaces/plugins.ui.h:1
 msgid "<b>Author:</b>"
@@ -160,7 +164,7 @@ msgstr "<b>Omschrijving:</b>"
 
 #: ../data/interfaces/plugins.ui.h:3
 msgid "<b>Site:</b>"
-msgstr ""
+msgstr "<b>Site:</b>"
 
 #: ../data/interfaces/plugins.ui.h:4
 msgid "Media Player plugins"
@@ -183,9 +187,8 @@ msgid "<b>Subtitles</b>"
 msgstr "<b>Ondertitels</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:4
-#, fuzzy
 msgid "<b>Video</b>"
-msgstr "<b>Audio</b>"
+msgstr "<b>Video</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:5
 msgid "Automatically load subtitles when playing movie file"
@@ -201,13 +204,11 @@ msgstr "Contrast:"
 
 #: ../data/interfaces/parole-settings.ui.h:8
 msgid "Disable screen saver while playing movies"
-msgstr ""
+msgstr "Schermbeveiliging deactiveren tijdens het afspelen van films"
 
 #: ../data/interfaces/parole-settings.ui.h:9
 msgid "Enable visualization when playing audio file"
-msgstr ""
-"Visuele effecten weergeven tijdens het afspelen van een bestand met alleen "
-"geluid."
+msgstr "Visuele effecten weergeven tijdens het afspelen van een bestand met alleen geluid."
 
 #: ../data/interfaces/parole-settings.ui.h:10
 msgid "Encoding: "
@@ -247,29 +248,23 @@ msgstr "Op extensie"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "Select File Types (By Extension)"
-msgstr ""
+msgstr "Bestandstypen selecteren (m.b.v. extensies)"
 
 #: ../gst/parole-gst.c:1494
 msgid "The stream is taking too much time to load"
-msgstr ""
+msgstr "Het laden van de stream duurt te lang"
 
 #: ../gst/parole-gst.c:1494
 msgid "Stop"
 msgstr "Stop"
 
 #: ../gst/parole-gst.c:1683
-msgid ""
-"Unable to load playbin GStreamer plugin, check your GStreamer installation"
-msgstr ""
-"Aanmaken van het GStreamer afspeelobject 'playbin' is mislukt. Controleer uw "
-"GStreamer installatie."
+msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
+msgstr "Aanmaken van het GStreamer afspeelobject 'playbin' is mislukt. Controleer uw GStreamer installatie."
 
 #: ../gst/parole-gst.c:1703
-msgid ""
-"Unable to load video GStreamer plugin, check your GStreamer installation"
-msgstr ""
-"Aanmaken van een GStreamer afspeelobject voor video is mislukt. Controleer "
-"uw GStreamer installatie."
+msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
+msgstr "Aanmaken van een GStreamer afspeelobject voor video is mislukt. Controleer uw GStreamer installatie."
 
 #: ../src/main.c:54
 #, c-format
@@ -283,22 +278,30 @@ msgid ""
 "Licensed under the GNU GPL.\n"
 "\n"
 msgstr ""
+"\n"
+"Parole mediaspeler %s\n"
+"\n"
+"Onderdeel van het Xfce Goodies Project\n"
+"http://goodies.xfce.org\n"
+"\n"
+"Uitgebracht onder de GNU GPL.\n"
+"\n"
 
 #: ../src/main.c:175
 msgid "Unknown argument "
-msgstr ""
+msgstr "Onbekend argument"
 
 #: ../src/main.c:212
 msgid "Open a new instance"
-msgstr ""
+msgstr "Nieuwe instantie openen"
 
 #: ../src/main.c:213
 msgid "Do not load plugins"
-msgstr ""
+msgstr "Geen plugins laden"
 
 #: ../src/main.c:214
 msgid "Set Audio-CD/VCD/DVD device path"
-msgstr ""
+msgstr "Pad van audio-CD-, VCD- of DVD-speler instellen"
 
 #: ../src/main.c:215
 msgid "Play or pause if already playing"
@@ -342,17 +345,17 @@ msgstr "Versie-informatie"
 
 #: ../src/main.c:225
 msgid "Enabled/Disable XV support"
-msgstr ""
+msgstr "XV-ondersteuning in-/uitschakelen"
 
 # de film wordt niet gedraaid?
 #: ../src/main.c:227
 msgid "Media to play"
-msgstr "Films om af te spelen"
+msgstr "Media om af te spelen"
 
 #: ../src/main.c:264
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
-msgstr ""
+msgstr "Parole is al actief, gebruik -i om een nieuwe instantie te openen\n"
 
 #: ../src/parole-mediachooser.c:213
 msgid "Add media files"
@@ -372,9 +375,10 @@ msgstr "Toegang geweigerd"
 
 #: ../src/parole-medialist.c:446
 msgid "Unknown playlist format, Please select a support playlist format"
-msgstr ""
+msgstr "Obekend formaat afspeellijst, kies een ondersteund formaat"
 
-#: ../src/parole-medialist.c:514 ../src/parole-player.c:1852
+#: ../src/parole-medialist.c:514
+#: ../src/parole-player.c:1852
 msgid "Playlist"
 msgstr "Afspeellijst"
 
@@ -400,7 +404,7 @@ msgstr "Afspeellijst onthouden"
 
 #: ../src/parole-medialist.c:1012
 msgid "Media list"
-msgstr ""
+msgstr "Medialijst"
 
 #: ../src/parole-player.c:318
 msgid "Hide playlist"
@@ -413,19 +417,21 @@ msgstr "Afspeellijst tonen"
 #: ../src/parole-player.c:543
 #: ../browser-plugin/media-plugin/parole-plugin-player.c:297
 msgid "Media stream is not seekable"
-msgstr ""
+msgstr "Kan niet voor- of achteruitspoelen in deze stream"
 
 #.
 #. * Next chapter menu item
 #.
-#: ../src/parole-player.c:1098 ../src/parole-disc-menu.c:122
+#: ../src/parole-player.c:1098
+#: ../src/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr "Volgende"
 
 #.
 #. * Previous chapter menu item
 #.
-#: ../src/parole-player.c:1110 ../src/parole-disc-menu.c:123
+#: ../src/parole-player.c:1110
+#: ../src/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr "Vorige"
 
@@ -442,7 +448,8 @@ msgstr "Gestopt"
 msgid "Finished"
 msgstr "Beëindigd"
 
-#: ../src/parole-statusbar.c:114 ../src/parole-statusbar.c:124
+#: ../src/parole-statusbar.c:114
+#: ../src/parole-statusbar.c:124
 msgid "Paused"
 msgstr "Gepauzeerd"
 
@@ -452,16 +459,16 @@ msgstr "Aan het afspelen"
 
 #: ../src/parole-statusbar.c:145
 msgid "Live stream:"
-msgstr ""
+msgstr "Live stream:"
 
 #: ../src/parole-about.c:75
 msgid "Author/Maintainer"
-msgstr ""
+msgstr "Auteur/ontwikkelaar"
 
 #: ../src/parole-about.c:81
 #, c-format
 msgid "Translator (%s)"
-msgstr ""
+msgstr "Vertaler (%s)"
 
 #: ../src/parole-disc.c:202
 msgid "Play Disc"
@@ -471,8 +478,10 @@ msgstr "Schijf afspelen"
 msgid "Current Locale"
 msgstr "Huidige locale"
 
-#: ../src/parole-subtitle-encoding.c:168 ../src/parole-subtitle-encoding.c:170
-#: ../src/parole-subtitle-encoding.c:172 ../src/parole-subtitle-encoding.c:174
+#: ../src/parole-subtitle-encoding.c:168
+#: ../src/parole-subtitle-encoding.c:170
+#: ../src/parole-subtitle-encoding.c:172
+#: ../src/parole-subtitle-encoding.c:174
 msgid "Arabic"
 msgstr "Arabisch"
 
@@ -480,7 +489,8 @@ msgstr "Arabisch"
 msgid "Armenian"
 msgstr "Armeens"
 
-#: ../src/parole-subtitle-encoding.c:180 ../src/parole-subtitle-encoding.c:182
+#: ../src/parole-subtitle-encoding.c:180
+#: ../src/parole-subtitle-encoding.c:182
 #: ../src/parole-subtitle-encoding.c:184
 msgid "Baltic"
 msgstr "Baltisch"
@@ -489,17 +499,22 @@ msgstr "Baltisch"
 msgid "Celtic"
 msgstr "Keltisch"
 
-#: ../src/parole-subtitle-encoding.c:190 ../src/parole-subtitle-encoding.c:192
-#: ../src/parole-subtitle-encoding.c:194 ../src/parole-subtitle-encoding.c:196
+#: ../src/parole-subtitle-encoding.c:190
+#: ../src/parole-subtitle-encoding.c:192
+#: ../src/parole-subtitle-encoding.c:194
+#: ../src/parole-subtitle-encoding.c:196
 msgid "Central European"
 msgstr "Centraal Europees"
 
-#: ../src/parole-subtitle-encoding.c:199 ../src/parole-subtitle-encoding.c:201
-#: ../src/parole-subtitle-encoding.c:203 ../src/parole-subtitle-encoding.c:205
+#: ../src/parole-subtitle-encoding.c:199
+#: ../src/parole-subtitle-encoding.c:201
+#: ../src/parole-subtitle-encoding.c:203
+#: ../src/parole-subtitle-encoding.c:205
 msgid "Chinese Simplified"
 msgstr "Chinees eenvoudig"
 
-#: ../src/parole-subtitle-encoding.c:208 ../src/parole-subtitle-encoding.c:210
+#: ../src/parole-subtitle-encoding.c:208
+#: ../src/parole-subtitle-encoding.c:210
 #: ../src/parole-subtitle-encoding.c:212
 msgid "Chinese Traditional"
 msgstr "Chinees traditioneel"
@@ -508,9 +523,12 @@ msgstr "Chinees traditioneel"
 msgid "Croatian"
 msgstr "Kroatisch"
 
-#: ../src/parole-subtitle-encoding.c:218 ../src/parole-subtitle-encoding.c:220
-#: ../src/parole-subtitle-encoding.c:222 ../src/parole-subtitle-encoding.c:224
-#: ../src/parole-subtitle-encoding.c:226 ../src/parole-subtitle-encoding.c:228
+#: ../src/parole-subtitle-encoding.c:218
+#: ../src/parole-subtitle-encoding.c:220
+#: ../src/parole-subtitle-encoding.c:222
+#: ../src/parole-subtitle-encoding.c:224
+#: ../src/parole-subtitle-encoding.c:226
+#: ../src/parole-subtitle-encoding.c:228
 msgid "Cyrillic"
 msgstr "Cyrillisch"
 
@@ -518,7 +536,8 @@ msgstr "Cyrillisch"
 msgid "Cyrillic/Russian"
 msgstr "Cyrillisch/Russisch"
 
-#: ../src/parole-subtitle-encoding.c:234 ../src/parole-subtitle-encoding.c:236
+#: ../src/parole-subtitle-encoding.c:234
+#: ../src/parole-subtitle-encoding.c:236
 msgid "Cyrillic/Ukrainian"
 msgstr "Cyrillisch/Oekraïns"
 
@@ -526,7 +545,8 @@ msgstr "Cyrillisch/Oekraïns"
 msgid "Georgian"
 msgstr "Georgisch"
 
-#: ../src/parole-subtitle-encoding.c:242 ../src/parole-subtitle-encoding.c:244
+#: ../src/parole-subtitle-encoding.c:242
+#: ../src/parole-subtitle-encoding.c:244
 #: ../src/parole-subtitle-encoding.c:246
 msgid "Greek"
 msgstr "Grieks"
@@ -539,8 +559,10 @@ msgstr "Gujarati"
 msgid "Gurmukhi"
 msgstr "Gurmukhi"
 
-#: ../src/parole-subtitle-encoding.c:255 ../src/parole-subtitle-encoding.c:257
-#: ../src/parole-subtitle-encoding.c:259 ../src/parole-subtitle-encoding.c:261
+#: ../src/parole-subtitle-encoding.c:255
+#: ../src/parole-subtitle-encoding.c:257
+#: ../src/parole-subtitle-encoding.c:259
+#: ../src/parole-subtitle-encoding.c:261
 msgid "Hebrew"
 msgstr "Hebreeuws"
 
@@ -556,13 +578,16 @@ msgstr "Hindi"
 msgid "Icelandic"
 msgstr "IJslands"
 
-#: ../src/parole-subtitle-encoding.c:273 ../src/parole-subtitle-encoding.c:275
+#: ../src/parole-subtitle-encoding.c:273
+#: ../src/parole-subtitle-encoding.c:275
 #: ../src/parole-subtitle-encoding.c:277
 msgid "Japanese"
 msgstr "Japans"
 
-#: ../src/parole-subtitle-encoding.c:280 ../src/parole-subtitle-encoding.c:282
-#: ../src/parole-subtitle-encoding.c:284 ../src/parole-subtitle-encoding.c:286
+#: ../src/parole-subtitle-encoding.c:280
+#: ../src/parole-subtitle-encoding.c:282
+#: ../src/parole-subtitle-encoding.c:284
+#: ../src/parole-subtitle-encoding.c:286
 msgid "Korean"
 msgstr "Koreaans"
 
@@ -574,7 +599,8 @@ msgstr "Scandinavisch"
 msgid "Persian"
 msgstr "Persisch"
 
-#: ../src/parole-subtitle-encoding.c:295 ../src/parole-subtitle-encoding.c:297
+#: ../src/parole-subtitle-encoding.c:295
+#: ../src/parole-subtitle-encoding.c:297
 msgid "Romanian"
 msgstr "Romeins"
 
@@ -586,24 +612,31 @@ msgstr "Zuid Europees"
 msgid "Thai"
 msgstr "Thais"
 
-#: ../src/parole-subtitle-encoding.c:306 ../src/parole-subtitle-encoding.c:308
-#: ../src/parole-subtitle-encoding.c:310 ../src/parole-subtitle-encoding.c:312
+#: ../src/parole-subtitle-encoding.c:306
+#: ../src/parole-subtitle-encoding.c:308
+#: ../src/parole-subtitle-encoding.c:310
+#: ../src/parole-subtitle-encoding.c:312
 msgid "Turkish"
 msgstr "Turks"
 
-#: ../src/parole-subtitle-encoding.c:315 ../src/parole-subtitle-encoding.c:317
-#: ../src/parole-subtitle-encoding.c:319 ../src/parole-subtitle-encoding.c:321
+#: ../src/parole-subtitle-encoding.c:315
+#: ../src/parole-subtitle-encoding.c:317
+#: ../src/parole-subtitle-encoding.c:319
+#: ../src/parole-subtitle-encoding.c:321
 #: ../src/parole-subtitle-encoding.c:323
 msgid "Unicode"
 msgstr "Unicode"
 
-#: ../src/parole-subtitle-encoding.c:326 ../src/parole-subtitle-encoding.c:328
-#: ../src/parole-subtitle-encoding.c:330 ../src/parole-subtitle-encoding.c:332
+#: ../src/parole-subtitle-encoding.c:326
+#: ../src/parole-subtitle-encoding.c:328
+#: ../src/parole-subtitle-encoding.c:330
+#: ../src/parole-subtitle-encoding.c:332
 #: ../src/parole-subtitle-encoding.c:334
 msgid "Western"
 msgstr "Westers"
 
-#: ../src/parole-subtitle-encoding.c:337 ../src/parole-subtitle-encoding.c:339
+#: ../src/parole-subtitle-encoding.c:337
+#: ../src/parole-subtitle-encoding.c:339
 #: ../src/parole-subtitle-encoding.c:341
 msgid "Vietnamese"
 msgstr "Vietnamees"
@@ -614,7 +647,7 @@ msgstr "Locatie openen…"
 
 #: ../src/parole-open-location.c:186
 msgid "<b>Open location of media file or live stream:</b>"
-msgstr ""
+msgstr "<b>Open locatie van mediabestand of live stream:</b>"
 
 #: ../src/parole-open-location.c:205
 msgid "Clear history"
@@ -629,7 +662,8 @@ msgstr "Aan het afspelen"
 msgid "Track %i"
 msgstr "Track %i"
 
-#: ../src/parole-plugins-manager.c:297 ../src/parole-plugins-manager.c:433
+#: ../src/parole-plugins-manager.c:297
+#: ../src/parole-plugins-manager.c:433
 msgid "Visit Website"
 msgstr "Parole website"
 
@@ -643,7 +677,7 @@ msgstr "Onbekend"
 
 #: ../src/parole-plugins-manager.c:412
 msgid "No installed plugins found on this system"
-msgstr ""
+msgstr "Geen geïnstalleerde plugins gevonden op dit systeem"
 
 #: ../parole/parole-filters.c:64
 msgid "Audio"
@@ -687,11 +721,11 @@ msgstr "Algemeen"
 
 #: ../plugins/properties/stream-properties-provider.c:392
 msgid "Stream doesn't support tags changes"
-msgstr ""
+msgstr "Deze stream ondersteunt geen wijziging van tags"
 
 #: ../plugins/properties/stream-properties-provider.c:399
 msgid "Save media tags changes"
-msgstr ""
+msgstr "Wijzigingen van tags opslaan"
 
 #: ../plugins/properties/stream-properties-provider.c:524
 msgid "Properties"
@@ -699,12 +733,11 @@ msgstr "Eigenschappen"
 
 #: ../plugins/properties/stream-properties.desktop.in.h:1
 msgid "Read media properties"
-msgstr ""
+msgstr "Media-eigenschappen uitlezen"
 
 #: ../plugins/properties/stream-properties.desktop.in.h:2
-#, fuzzy
 msgid "Stream Properties"
-msgstr "Eigenschappen"
+msgstr "Eigenschappen stream"
 
 #: ../plugins/tray/tray-provider.c:262
 msgid "<b>Playing:</b>"
@@ -713,7 +746,7 @@ msgstr "<b>Weergave:</b>"
 # lengte/duur
 #: ../plugins/tray/tray-provider.c:262
 msgid "<b>Duration:</b>"
-msgstr "<b>Lengte:</b>"
+msgstr "<b>Duur:</b>"
 
 #: ../plugins/tray/tray-provider.c:420
 msgid "Tray icon plugin"
@@ -725,16 +758,16 @@ msgstr "Notificatie aanzetten"
 
 #: ../plugins/tray/tray-provider.c:439
 msgid "Always minimize to tray when window is closed"
-msgstr ""
+msgstr "Als het venster gesloten wordt minimaliseren naar het systeemvak"
 
 #: ../plugins/tray/tray-provider.c:478
 msgid "Minimize to tray?"
-msgstr ""
+msgstr "Minimaliseren naar systeemvak?"
 
 # de film wordt niet gedraaid?
 #: ../plugins/tray/tray-provider.c:484
 msgid "Minimize to tray"
-msgstr ""
+msgstr "Minimaliseren naar systeemvak"
 
 #: ../plugins/tray/tray-provider.c:500
 msgid "Are you sure you want to quit Parole"
@@ -755,57 +788,49 @@ msgstr "Systeemvakpictogram"
 
 #: ../plugins/window-title/window-title.desktop.in.h:1
 msgid "Set the main window name to the current playing media name."
-msgstr ""
+msgstr "Naam van hoofdvenster instellen op naam van spelend mediabestand"
 
 #: ../plugins/window-title/window-title.desktop.in.h:2
-#, fuzzy
 msgid "Window Title"
 msgstr "Venstertitel"
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:1
 msgid "Inhibit Power Manager from suspending the machine while playing DVD."
-msgstr ""
+msgstr "Verhinder het energiebeheer het systeem in de pauzestand te zetten tijdens het afspelen van een DVD."
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
-msgstr ""
+msgstr "Energiebeheer-plugin"
 
 #: ../browser-plugin/media-plugin/main.c:72
 msgid "socket"
-msgstr ""
+msgstr "socket"
 
 #: ../browser-plugin/media-plugin/main.c:72
 msgid "SOCKET ID"
-msgstr ""
+msgstr "SOCKET ID"
 
 # de film wordt niet gedraaid?
 #: ../browser-plugin/media-plugin/main.c:73
-#, fuzzy
 msgid "url to play"
-msgstr "Films om af te spelen"
+msgstr "url om af te spelen"
 
 #: ../browser-plugin/media-plugin/main.c:73
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: ../browser-plugin/media-plugin/parole-plugin-player.c:138
 msgid "Leave fullscreen"
-msgstr ""
+msgstr "Op volledig scherm laten"
 
 #: ../browser-plugin/media-plugin/parole-plugin-player.c:143
 msgid "Fullscreen"
-msgstr ""
+msgstr "Volledig scherm"
 
 #.
 #. * Copy url
 #.
 #: ../browser-plugin/media-plugin/parole-plugin-player.c:452
 msgid "Copy url"
-msgstr ""
+msgstr "URL kopiëren"
 
-# Aan/aanzetten/aangezet
-#~ msgid "Enabled"
-#~ msgstr "Aangezet"
-
-#~ msgid "Plugin"
-#~ msgstr "Plugin"
