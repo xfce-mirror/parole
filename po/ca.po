@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-06 19:00+0100\n"
+"POT-Creation-Date: 2009-12-10 14:17+0100\n"
 "PO-Revision-Date: 2009-12-01 14:36+0100\n"
 "Last-Translator: Harald Servat <redcrash@gmail.com>\n"
 "Language-Team: Catalan\n"
@@ -56,7 +56,7 @@ msgstr "Reproductor de suports"
 msgid "Mute"
 msgstr "Silenci"
 
-#: ../data/interfaces/parole.ui.h:10 ../src/parole-player.c:1079
+#: ../data/interfaces/parole.ui.h:10 ../src/parole-player.c:1098
 #: ../src/parole-disc-menu.c:113
 msgid "Next Chapter"
 msgstr "Capítol següent"
@@ -74,7 +74,7 @@ msgstr "Reproductor de suports Parole"
 msgid "Plugins"
 msgstr "Connectors"
 
-#: ../data/interfaces/parole.ui.h:14 ../src/parole-player.c:1091
+#: ../data/interfaces/parole.ui.h:14 ../src/parole-player.c:1110
 #: ../src/parole-disc-menu.c:114
 msgid "Previous Chapter"
 msgstr "Capítol anterior"
@@ -172,50 +172,59 @@ msgid "<b>Subtitles</b>"
 msgstr "<b>Subtítols</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:4
+#, fuzzy
+msgid "<b>Video</b>"
+msgstr "<b>Lloc:</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:5
 msgid "Automatically load subtitles when playing movie file"
 msgstr "Carrega els subtítols automàticament quan es reprodueixi una peŀlícula"
 
-#: ../data/interfaces/parole-settings.ui.h:5
+#: ../data/interfaces/parole-settings.ui.h:6
 msgid "Brightness:"
 msgstr "Brillantor:"
 
-#: ../data/interfaces/parole-settings.ui.h:6
+#: ../data/interfaces/parole-settings.ui.h:7
 msgid "Contrast:"
 msgstr "Contrast:"
 
-#: ../data/interfaces/parole-settings.ui.h:7
+#: ../data/interfaces/parole-settings.ui.h:8
+msgid "Disable screen saver while playing movies"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:9
 msgid "Enable visualization when playing audio file"
 msgstr "Mostra efectes visuals quan es reprodueixen fitxers d'àudio"
 
-#: ../data/interfaces/parole-settings.ui.h:8
+#: ../data/interfaces/parole-settings.ui.h:10
 msgid "Encoding: "
 msgstr "Codificació: "
 
-#: ../data/interfaces/parole-settings.ui.h:9
+#: ../data/interfaces/parole-settings.ui.h:11
 msgid "Font:"
 msgstr "Tipus de lletra:"
 
-#: ../data/interfaces/parole-settings.ui.h:10
+#: ../data/interfaces/parole-settings.ui.h:12
 msgid "Hue:"
 msgstr "Matís:"
 
-#: ../data/interfaces/parole-settings.ui.h:11
+#: ../data/interfaces/parole-settings.ui.h:13
 msgid "Media Player Settings"
 msgstr "Ajustaments del reproductor de suports"
 
-#: ../data/interfaces/parole-settings.ui.h:12
+#: ../data/interfaces/parole-settings.ui.h:14
 msgid "Parole Settings"
 msgstr "Opcions de Parole"
 
-#: ../data/interfaces/parole-settings.ui.h:13
+#: ../data/interfaces/parole-settings.ui.h:15
 msgid "Reset To Defaults"
 msgstr "Ajusta als valor per defecte"
 
-#: ../data/interfaces/parole-settings.ui.h:14
+#: ../data/interfaces/parole-settings.ui.h:16
 msgid "Saturation:"
 msgstr "Saturació:"
 
-#: ../data/interfaces/parole-settings.ui.h:15
+#: ../data/interfaces/parole-settings.ui.h:17
 msgid "Visualization type:"
 msgstr "Tipus de visualització:"
 
@@ -227,22 +236,22 @@ msgstr "Per extensió"
 msgid "Select File Types (By Extension)"
 msgstr "Seleccioneu el tipus de fitxer (per extensió)"
 
-#: ../gst/parole-gst.c:1492
+#: ../gst/parole-gst.c:1494
 msgid "The stream is taking too much time to load"
 msgstr "Cal massa temps per carregar el flux"
 
-#: ../gst/parole-gst.c:1492
+#: ../gst/parole-gst.c:1494
 msgid "Stop"
 msgstr "Para"
 
-#: ../gst/parole-gst.c:1681
+#: ../gst/parole-gst.c:1683
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "No s'ha pogut carregar el connector playbin Gstreamer, comproveu la vostra "
 "instaŀlació de Gstreamer"
 
-#: ../gst/parole-gst.c:1701
+#: ../gst/parole-gst.c:1703
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
@@ -361,7 +370,7 @@ msgstr ""
 "No es reconeix el format de la llista de reproducció. Seleccioneu un format "
 "de llista de reproducció compatible"
 
-#: ../src/parole-medialist.c:514 ../src/parole-player.c:1777
+#: ../src/parole-medialist.c:514 ../src/parole-player.c:1852
 msgid "Playlist"
 msgstr "Llista de reproducció"
 
@@ -389,15 +398,15 @@ msgstr "Recorda la llista de reproducció"
 msgid "Media list"
 msgstr "Llista de suports"
 
-#: ../src/parole-player.c:317
+#: ../src/parole-player.c:318
 msgid "Hide playlist"
 msgstr "Amaga la llista de reproducció"
 
-#: ../src/parole-player.c:326
+#: ../src/parole-player.c:327
 msgid "Show playlist"
 msgstr "Mostra la llista de reproducció"
 
-#: ../src/parole-player.c:545
+#: ../src/parole-player.c:543
 #: ../browser-plugin/media-plugin/parole-plugin-player.c:297
 msgid "Media stream is not seekable"
 msgstr "El flux del suport no es pot cercar"
@@ -405,14 +414,14 @@ msgstr "El flux del suport no es pot cercar"
 #.
 #. * Next chapter menu item
 #.
-#: ../src/parole-player.c:1079 ../src/parole-disc-menu.c:122
+#: ../src/parole-player.c:1098 ../src/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr "Pista següent"
 
 #.
 #. * Previous chapter menu item
 #.
-#: ../src/parole-player.c:1091 ../src/parole-disc-menu.c:123
+#: ../src/parole-player.c:1110 ../src/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr "Pista anterior"
 

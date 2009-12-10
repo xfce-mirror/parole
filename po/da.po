@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole 0.1.98\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-06 19:00+0100\n"
+"POT-Creation-Date: 2009-12-10 14:17+0100\n"
 "PO-Revision-Date: 2009-11-30 14:19+0100\n"
 "Last-Translator: Per Kongstad <p_kongstad@op.pl>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -54,7 +54,7 @@ msgstr "Medieafspiller"
 msgid "Mute"
 msgstr "Slå lyd fra"
 
-#: ../data/interfaces/parole.ui.h:10 ../src/parole-player.c:1079
+#: ../data/interfaces/parole.ui.h:10 ../src/parole-player.c:1098
 #: ../src/parole-disc-menu.c:113
 msgid "Next Chapter"
 msgstr "Næste kapitel"
@@ -72,7 +72,7 @@ msgstr "Parole medieafspiller"
 msgid "Plugins"
 msgstr "Udvidelsesmoduler"
 
-#: ../data/interfaces/parole.ui.h:14 ../src/parole-player.c:1091
+#: ../data/interfaces/parole.ui.h:14 ../src/parole-player.c:1110
 #: ../src/parole-disc-menu.c:114
 msgid "Previous Chapter"
 msgstr "Tidligere kapitel"
@@ -170,50 +170,59 @@ msgid "<b>Subtitles</b>"
 msgstr "<b>Undertitler</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:4
+#, fuzzy
+msgid "<b>Video</b>"
+msgstr "<b>Side:</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:5
 msgid "Automatically load subtitles when playing movie file"
 msgstr "Indlæs automatisk undertitler når der afspilles fil indholdende film"
 
-#: ../data/interfaces/parole-settings.ui.h:5
+#: ../data/interfaces/parole-settings.ui.h:6
 msgid "Brightness:"
 msgstr "Lysstyrke:"
 
-#: ../data/interfaces/parole-settings.ui.h:6
+#: ../data/interfaces/parole-settings.ui.h:7
 msgid "Contrast:"
 msgstr "Kontrast:"
 
-#: ../data/interfaces/parole-settings.ui.h:7
+#: ../data/interfaces/parole-settings.ui.h:8
+msgid "Disable screen saver while playing movies"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:9
 msgid "Enable visualization when playing audio file"
 msgstr "Slå visualisering til når der spilles en lydfil"
 
-#: ../data/interfaces/parole-settings.ui.h:8
+#: ../data/interfaces/parole-settings.ui.h:10
 msgid "Encoding: "
 msgstr "Tegnsæt: "
 
-#: ../data/interfaces/parole-settings.ui.h:9
+#: ../data/interfaces/parole-settings.ui.h:11
 msgid "Font:"
 msgstr "Skrifttype:"
 
-#: ../data/interfaces/parole-settings.ui.h:10
+#: ../data/interfaces/parole-settings.ui.h:12
 msgid "Hue:"
 msgstr "Farvetone:"
 
-#: ../data/interfaces/parole-settings.ui.h:11
+#: ../data/interfaces/parole-settings.ui.h:13
 msgid "Media Player Settings"
 msgstr "Indstillinger til medieafspiller"
 
-#: ../data/interfaces/parole-settings.ui.h:12
+#: ../data/interfaces/parole-settings.ui.h:14
 msgid "Parole Settings"
 msgstr "Indstillinger til parole"
 
-#: ../data/interfaces/parole-settings.ui.h:13
+#: ../data/interfaces/parole-settings.ui.h:15
 msgid "Reset To Defaults"
 msgstr "Nulstil til standard"
 
-#: ../data/interfaces/parole-settings.ui.h:14
+#: ../data/interfaces/parole-settings.ui.h:16
 msgid "Saturation:"
 msgstr "Mætning:"
 
-#: ../data/interfaces/parole-settings.ui.h:15
+#: ../data/interfaces/parole-settings.ui.h:17
 msgid "Visualization type:"
 msgstr "Visualiseringstype:"
 
@@ -225,22 +234,22 @@ msgstr "Efter filendelse"
 msgid "Select File Types (By Extension)"
 msgstr "Vælg filtyper (efter filendelse)"
 
-#: ../gst/parole-gst.c:1492
+#: ../gst/parole-gst.c:1494
 msgid "The stream is taking too much time to load"
 msgstr "Det tager for lang tid at indlæse strømmen"
 
-#: ../gst/parole-gst.c:1492
+#: ../gst/parole-gst.c:1494
 msgid "Stop"
 msgstr "Stop"
 
-#: ../gst/parole-gst.c:1681
+#: ../gst/parole-gst.c:1683
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Kunne ikke indlæse udvidelsesmodulet playbin GStreamer. Kontrollér din "
 "installation af GStreamer"
 
-#: ../gst/parole-gst.c:1701
+#: ../gst/parole-gst.c:1703
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
@@ -358,7 +367,7 @@ msgid "Unknown playlist format, Please select a support playlist format"
 msgstr ""
 "Ukendt format af spilleliste. Vælg et understøttet format til spilleliste"
 
-#: ../src/parole-medialist.c:514 ../src/parole-player.c:1777
+#: ../src/parole-medialist.c:514 ../src/parole-player.c:1852
 msgid "Playlist"
 msgstr "Spilleliste"
 
@@ -386,15 +395,15 @@ msgstr "Husk spilleliste"
 msgid "Media list"
 msgstr "Medieliste"
 
-#: ../src/parole-player.c:317
+#: ../src/parole-player.c:318
 msgid "Hide playlist"
 msgstr "Skjul spilleliste"
 
-#: ../src/parole-player.c:326
+#: ../src/parole-player.c:327
 msgid "Show playlist"
 msgstr "Vis spilleliste"
 
-#: ../src/parole-player.c:545
+#: ../src/parole-player.c:543
 #: ../browser-plugin/media-plugin/parole-plugin-player.c:297
 msgid "Media stream is not seekable"
 msgstr "Mediestrømmen er ikke søgbar"
@@ -402,14 +411,14 @@ msgstr "Mediestrømmen er ikke søgbar"
 #.
 #. * Next chapter menu item
 #.
-#: ../src/parole-player.c:1079 ../src/parole-disc-menu.c:122
+#: ../src/parole-player.c:1098 ../src/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr "Næste spor"
 
 #.
 #. * Previous chapter menu item
 #.
-#: ../src/parole-player.c:1091 ../src/parole-disc-menu.c:123
+#: ../src/parole-player.c:1110 ../src/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr "Forrige spor"
 

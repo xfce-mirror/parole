@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-06 19:00+0100\n"
+"POT-Creation-Date: 2009-12-10 14:17+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,7 +52,7 @@ msgstr ""
 msgid "Mute"
 msgstr ""
 
-#: ../data/interfaces/parole.ui.h:10 ../src/parole-player.c:1079
+#: ../data/interfaces/parole.ui.h:10 ../src/parole-player.c:1098
 #: ../src/parole-disc-menu.c:113
 msgid "Next Chapter"
 msgstr ""
@@ -70,7 +70,7 @@ msgstr ""
 msgid "Plugins"
 msgstr ""
 
-#: ../data/interfaces/parole.ui.h:14 ../src/parole-player.c:1091
+#: ../data/interfaces/parole.ui.h:14 ../src/parole-player.c:1110
 #: ../src/parole-disc-menu.c:114
 msgid "Previous Chapter"
 msgstr ""
@@ -168,50 +168,58 @@ msgid "<b>Subtitles</b>"
 msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:4
-msgid "Automatically load subtitles when playing movie file"
+msgid "<b>Video</b>"
 msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:5
-msgid "Brightness:"
+msgid "Automatically load subtitles when playing movie file"
 msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:6
-msgid "Contrast:"
+msgid "Brightness:"
 msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:7
-msgid "Enable visualization when playing audio file"
+msgid "Contrast:"
 msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:8
-msgid "Encoding: "
+msgid "Disable screen saver while playing movies"
 msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:9
-msgid "Font:"
+msgid "Enable visualization when playing audio file"
 msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:10
-msgid "Hue:"
+msgid "Encoding: "
 msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:11
-msgid "Media Player Settings"
+msgid "Font:"
 msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:12
-msgid "Parole Settings"
+msgid "Hue:"
 msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:13
-msgid "Reset To Defaults"
+msgid "Media Player Settings"
 msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:14
-msgid "Saturation:"
+msgid "Parole Settings"
 msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:15
+msgid "Reset To Defaults"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:16
+msgid "Saturation:"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:17
 msgid "Visualization type:"
 msgstr ""
 
@@ -223,20 +231,20 @@ msgstr ""
 msgid "Select File Types (By Extension)"
 msgstr ""
 
-#: ../gst/parole-gst.c:1492
+#: ../gst/parole-gst.c:1494
 msgid "The stream is taking too much time to load"
 msgstr ""
 
-#: ../gst/parole-gst.c:1492
+#: ../gst/parole-gst.c:1494
 msgid "Stop"
 msgstr ""
 
-#: ../gst/parole-gst.c:1681
+#: ../gst/parole-gst.c:1683
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 
-#: ../gst/parole-gst.c:1701
+#: ../gst/parole-gst.c:1703
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
@@ -343,7 +351,7 @@ msgstr ""
 msgid "Unknown playlist format, Please select a support playlist format"
 msgstr ""
 
-#: ../src/parole-medialist.c:514 ../src/parole-player.c:1777
+#: ../src/parole-medialist.c:514 ../src/parole-player.c:1852
 msgid "Playlist"
 msgstr ""
 
@@ -371,15 +379,15 @@ msgstr ""
 msgid "Media list"
 msgstr ""
 
-#: ../src/parole-player.c:317
+#: ../src/parole-player.c:318
 msgid "Hide playlist"
 msgstr ""
 
-#: ../src/parole-player.c:326
+#: ../src/parole-player.c:327
 msgid "Show playlist"
 msgstr ""
 
-#: ../src/parole-player.c:545
+#: ../src/parole-player.c:543
 #: ../browser-plugin/media-plugin/parole-plugin-player.c:297
 msgid "Media stream is not seekable"
 msgstr ""
@@ -387,14 +395,14 @@ msgstr ""
 #.
 #. * Next chapter menu item
 #.
-#: ../src/parole-player.c:1079 ../src/parole-disc-menu.c:122
+#: ../src/parole-player.c:1098 ../src/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr ""
 
 #.
 #. * Previous chapter menu item
 #.
-#: ../src/parole-player.c:1091 ../src/parole-disc-menu.c:123
+#: ../src/parole-player.c:1110 ../src/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr ""
 
