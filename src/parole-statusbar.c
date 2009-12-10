@@ -127,59 +127,49 @@ parole_statusbar_set_duration (ParoleStatusbar *bar, ParoleMediaState state, gin
 
 static void parole_statusbar_set_text (ParoleStatusbar *bar, const ParoleStream *stream, ParoleMediaState state)
 {
-    gchar *text = NULL;
-    gchar *title = NULL;
-    gchar *uri = NULL;
-    gboolean live;
+    gchar *uri;
     
-    if ( state >= PAROLE_MEDIA_STATE_PAUSED )
+    gtk_label_set_text (GTK_LABEL (bar->priv->label_text), NULL);
+    
+    g_object_get (G_OBJECT (stream),
+		  "uri", &uri,
+		  NULL);
+    
+    if ( state >= PAROLE_MEDIA_STATE_PAUSED && uri)
     {
+	gchar *filename;
+	gchar *text = NULL;
+	gchar *title = NULL;
+	gboolean live;
+	
 	g_object_get (G_OBJECT (stream),
 		      "title", &title,
 		      "live", &live,
-		      "uri", &uri,
 		      NULL);
-		      
+
 	if ( live )
 	{
-	    text = g_strdup_printf ("%s '%s'", _("Live stream:"), uri);
-	    gtk_label_set_text (GTK_LABEL (bar->priv->label_text), text);
-	    g_free (text);
-	    g_free (uri);
-	    if ( title )
-		g_free (title);
-	    return;
-	}
-	
-	if ( !title )
-	{
-	    gchar *filename;
-	    if ( G_UNLIKELY (uri == NULL) )
-		goto out;
-	    
 	    filename = g_filename_from_uri (uri, NULL, NULL);
-	    
-	    if ( filename )
+	    text = g_strdup_printf ("%s '%s'", _("Live stream:"), filename);
+	    gtk_label_set_text (GTK_LABEL (bar->priv->label_text), text);
+	    g_free (filename);
+	}
+	else
+	{
+	    if ( title == NULL )
 	    {
-		title  = g_path_get_basename (filename);
+		filename = g_filename_from_uri (uri, NULL, NULL);
+		title = g_filename_display_basename (filename);
 		g_free (filename);
 	    }
-	    else
-	    {
-		TRACE ("Unable to set statusbar title");
-		goto out;
-	    }
+	    text = g_strdup (title != NULL ? title : filename);
+	    gtk_label_set_text (GTK_LABEL (bar->priv->label_text), text);
 	}
 	
-	text = g_strdup_printf ("%s", title);
-	gtk_label_set_text (GTK_LABEL (bar->priv->label_text), text);
 	g_free (text);
+	g_free (title);
 	g_free (uri);
-	return;
     }
-	
-out:
-    gtk_label_set_text (GTK_LABEL (bar->priv->label_text), NULL);
 }
 
 static void
