@@ -67,6 +67,8 @@ struct _ParoleProviderPlayerIface
 							 
     ParoleState  (*get_state)				(ParoleProviderPlayer *player);
     
+    const ParoleStream *(*get_stream)			(ParoleProviderPlayer *player);
+    
     gboolean	 (*play_uri)				(ParoleProviderPlayer *player,
 							 const gchar *uri);
 							 
@@ -101,6 +103,8 @@ void		 parole_provider_player_pack		(ParoleProviderPlayer *player,
 							 ParolePluginContainer container);
 							 
 ParoleState	parole_provider_player_get_state	(ParoleProviderPlayer *player);
+
+const ParoleStream *parole_provider_player_get_stream   (ParoleProviderPlayer *player);
 
 gboolean	parole_provider_player_play_uri		(ParoleProviderPlayer *player,
 							 const gchar *uri);

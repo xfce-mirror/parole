@@ -92,6 +92,16 @@ parole_plugin_player_get_state (ParoleProviderPlayer *provider)
     return parole_gst_get_state (PAROLE_GST (player->priv->gst));
 }
 
+static const ParoleStream *
+parole_plugin_player_get_stream (ParoleProviderPlayer *provider)
+{
+    ParolePluginPlayer *player;
+    
+    player = PAROLE_PLUGIN_PLAYER (provider);
+    
+    return parole_gst_get_stream (PAROLE_GST (player->priv->gst));
+}
+
 static gboolean	
 parole_plugin_player_play_uri (ParoleProviderPlayer *provider, const gchar *uri)
 {
@@ -167,6 +177,7 @@ static void parole_plugin_player_iface_init (ParoleProviderPlayerIface *iface)
     iface->get_main_window = parole_plugin_player_get_main_window;
     iface->pack = parole_plugin_player_pack_widget;
     iface->get_state = parole_plugin_player_get_state;
+    iface->get_stream = parole_plugin_player_get_stream;
     iface->play_uri = parole_plugin_player_play_uri;
     iface->pause = parole_plugin_player_pause;
     iface->resume = parole_plugin_player_resume;

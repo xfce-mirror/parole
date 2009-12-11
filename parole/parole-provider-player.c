@@ -144,6 +144,8 @@ GtkWidget *parole_provider_player_get_main_window (ParoleProviderPlayer *player)
  * This function can be called once, the Player is responsible on removing the widget in
  * case the plugin was unloaded.
  * 
+ * 
+ * Since: 0.2
  **/ 
 void parole_provider_player_pack (ParoleProviderPlayer *player, GtkWidget *widget, 
 				  const gchar *title, ParolePluginContainer container)
@@ -179,6 +181,28 @@ ParoleState parole_provider_player_get_state (ParoleProviderPlayer *player)
     }
     
     return state;
+}
+
+/**
+ * parole_provider_player_get_stream:
+ * @player: a #ParoleProviderPlayer
+ * 
+ * Get the #ParoleStream object.
+ * 
+ * Returns: the #ParoleStream object.
+ * 
+ * Since: 0.2
+ **/
+const ParoleStream *parole_provider_player_get_stream   (ParoleProviderPlayer *player)
+{
+    g_return_val_if_fail (PAROLE_IS_PROVIDER_PLAYER (player), NULL);
+    
+    if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_stream )
+    {
+	return (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_stream) (player);
+    }
+    
+    return NULL;
 }
 
 /**
