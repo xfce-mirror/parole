@@ -147,14 +147,7 @@ static void parole_statusbar_set_text (ParoleStatusbar *bar, const ParoleStream 
 		      "live", &live,
 		      NULL);
 
-	if ( live )
-	{
-	    filename = g_filename_from_uri (uri, NULL, NULL);
-	    text = g_strdup_printf ("%s '%s'", _("Live stream:"), filename);
-	    gtk_label_set_text (GTK_LABEL (bar->priv->label_text), text);
-	    g_free (filename);
-	}
-	else
+	if ( G_LIKELY (live == FALSE) )
 	{
 	    if ( title == NULL )
 	    {
@@ -164,6 +157,14 @@ static void parole_statusbar_set_text (ParoleStatusbar *bar, const ParoleStream 
 	    }
 	    text = g_strdup (title != NULL ? title : filename);
 	    gtk_label_set_text (GTK_LABEL (bar->priv->label_text), text);
+	}
+	else
+	{
+	    filename = g_filename_from_uri (uri, NULL, NULL);
+	    text = g_strdup_printf ("%s '%s'", _("Live stream:"), filename);
+	    gtk_label_set_text (GTK_LABEL (bar->priv->label_text), text);
+	    g_free (filename);
+	    
 	}
 	
 	g_free (text);
