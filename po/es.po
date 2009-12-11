@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-12-10 14:17+0100\n"
-"PO-Revision-Date: 2009-11-29 23:18-0300\n"
+"PO-Revision-Date: 2009-12-11 17:39-0300\n"
 "Last-Translator: elega <elega@elega.com.ar>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -51,7 +51,8 @@ msgstr "Reproductor de medios"
 msgid "Mute"
 msgstr "Silencio"
 
-#: ../data/interfaces/parole.ui.h:10 ../src/parole-player.c:1098
+#: ../data/interfaces/parole.ui.h:10
+#: ../src/parole-player.c:1098
 #: ../src/parole-disc-menu.c:113
 msgid "Next Chapter"
 msgstr "Capítulo suguiente"
@@ -60,8 +61,10 @@ msgstr "Capítulo suguiente"
 msgid "None"
 msgstr "Ninguno"
 
-#: ../data/interfaces/parole.ui.h:12 ../data/desktop/parole.desktop.in.in.h:1
-#: ../src/parole-about.c:70 ../plugins/window-title/window-title-provider.c:58
+#: ../data/interfaces/parole.ui.h:12
+#: ../data/desktop/parole.desktop.in.in.h:1
+#: ../src/parole-about.c:70
+#: ../plugins/window-title/window-title-provider.c:58
 msgid "Parole Media Player"
 msgstr "Reproductor de medios Parole"
 
@@ -69,7 +72,8 @@ msgstr "Reproductor de medios Parole"
 msgid "Plugins"
 msgstr "Complementos"
 
-#: ../data/interfaces/parole.ui.h:14 ../src/parole-player.c:1110
+#: ../data/interfaces/parole.ui.h:14
+#: ../src/parole-player.c:1110
 #: ../src/parole-disc-menu.c:114
 msgid "Previous Chapter"
 msgstr "Capítulo anterior"
@@ -167,9 +171,8 @@ msgid "<b>Subtitles</b>"
 msgstr "<b>Subtítulos</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:4
-#, fuzzy
 msgid "<b>Video</b>"
-msgstr "<b>Sitio:</b>"
+msgstr "<b>Vide</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:5
 msgid "Automatically load subtitles when playing movie file"
@@ -185,7 +188,7 @@ msgstr "Contraste:"
 
 #: ../data/interfaces/parole-settings.ui.h:8
 msgid "Disable screen saver while playing movies"
-msgstr ""
+msgstr "Desactivar protector de pantalla al reproducir películas"
 
 #: ../data/interfaces/parole-settings.ui.h:9
 msgid "Enable visualization when playing audio file"
@@ -240,18 +243,12 @@ msgid "Stop"
 msgstr "Detener"
 
 #: ../gst/parole-gst.c:1683
-msgid ""
-"Unable to load playbin GStreamer plugin, check your GStreamer installation"
-msgstr ""
-"No se puede cargar el complemento playbin GStreamer, compruebe su "
-"instalación de GStreamer"
+msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
+msgstr "No se puede cargar el complemento playbin GStreamer, compruebe su instalación de GStreamer"
 
 #: ../gst/parole-gst.c:1703
-msgid ""
-"Unable to load video GStreamer plugin, check your GStreamer installation"
-msgstr ""
-"No se puede cargar el complemento de vídeo GStreamer, compruebe su "
-"instalación de GStreamer"
+msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
+msgstr "No se puede cargar el complemento de vídeo GStreamer, compruebe su instalación de GStreamer"
 
 #: ../src/main.c:54
 #, c-format
@@ -276,7 +273,7 @@ msgstr ""
 
 #: ../src/main.c:175
 msgid "Unknown argument "
-msgstr ""
+msgstr "Argumento desconocido"
 
 #: ../src/main.c:212
 msgid "Open a new instance"
@@ -332,7 +329,7 @@ msgstr "Información de la versión"
 
 #: ../src/main.c:225
 msgid "Enabled/Disable XV support"
-msgstr ""
+msgstr "Activar/Desactivar soporte XV"
 
 #: ../src/main.c:227
 msgid "Media to play"
@@ -341,8 +338,7 @@ msgstr "Medios a reproducir"
 #: ../src/main.c:264
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
-msgstr ""
-"Parole ya se está ejecutando, utilice -i para abrir una nueva instancia\n"
+msgstr "Parole ya se está ejecutando, utilice -i para abrir una nueva instancia\n"
 
 #: ../src/parole-mediachooser.c:213
 msgid "Add media files"
@@ -362,11 +358,10 @@ msgstr "Permiso denegado"
 
 #: ../src/parole-medialist.c:446
 msgid "Unknown playlist format, Please select a support playlist format"
-msgstr ""
-"Formato de lista de reproducción desconocido, por favor seleccione un "
-"formato soportado de lista de reproducción"
+msgstr "Formato de lista de reproducción desconocido, por favor seleccione un formato soportado de lista de reproducción"
 
-#: ../src/parole-medialist.c:514 ../src/parole-player.c:1852
+#: ../src/parole-medialist.c:514
+#: ../src/parole-player.c:1852
 msgid "Playlist"
 msgstr "Lista de reproducción"
 
@@ -410,14 +405,16 @@ msgstr "Stream de medios no se puede buscar"
 #.
 #. * Next chapter menu item
 #.
-#: ../src/parole-player.c:1098 ../src/parole-disc-menu.c:122
+#: ../src/parole-player.c:1098
+#: ../src/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr "Siguiente"
 
 #.
 #. * Previous chapter menu item
 #.
-#: ../src/parole-player.c:1110 ../src/parole-disc-menu.c:123
+#: ../src/parole-player.c:1110
+#: ../src/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr "Anterior"
 
@@ -434,7 +431,8 @@ msgstr "Detenido"
 msgid "Finished"
 msgstr "Finalizado"
 
-#: ../src/parole-statusbar.c:114 ../src/parole-statusbar.c:124
+#: ../src/parole-statusbar.c:114
+#: ../src/parole-statusbar.c:124
 msgid "Paused"
 msgstr "Pausado"
 
@@ -463,8 +461,10 @@ msgstr "Reproducir disco"
 msgid "Current Locale"
 msgstr "Ubicación local"
 
-#: ../src/parole-subtitle-encoding.c:168 ../src/parole-subtitle-encoding.c:170
-#: ../src/parole-subtitle-encoding.c:172 ../src/parole-subtitle-encoding.c:174
+#: ../src/parole-subtitle-encoding.c:168
+#: ../src/parole-subtitle-encoding.c:170
+#: ../src/parole-subtitle-encoding.c:172
+#: ../src/parole-subtitle-encoding.c:174
 msgid "Arabic"
 msgstr "Arabe"
 
@@ -472,7 +472,8 @@ msgstr "Arabe"
 msgid "Armenian"
 msgstr "Armenio"
 
-#: ../src/parole-subtitle-encoding.c:180 ../src/parole-subtitle-encoding.c:182
+#: ../src/parole-subtitle-encoding.c:180
+#: ../src/parole-subtitle-encoding.c:182
 #: ../src/parole-subtitle-encoding.c:184
 msgid "Baltic"
 msgstr "Báltico"
@@ -481,17 +482,22 @@ msgstr "Báltico"
 msgid "Celtic"
 msgstr "Céltico"
 
-#: ../src/parole-subtitle-encoding.c:190 ../src/parole-subtitle-encoding.c:192
-#: ../src/parole-subtitle-encoding.c:194 ../src/parole-subtitle-encoding.c:196
+#: ../src/parole-subtitle-encoding.c:190
+#: ../src/parole-subtitle-encoding.c:192
+#: ../src/parole-subtitle-encoding.c:194
+#: ../src/parole-subtitle-encoding.c:196
 msgid "Central European"
 msgstr "Europeo central"
 
-#: ../src/parole-subtitle-encoding.c:199 ../src/parole-subtitle-encoding.c:201
-#: ../src/parole-subtitle-encoding.c:203 ../src/parole-subtitle-encoding.c:205
+#: ../src/parole-subtitle-encoding.c:199
+#: ../src/parole-subtitle-encoding.c:201
+#: ../src/parole-subtitle-encoding.c:203
+#: ../src/parole-subtitle-encoding.c:205
 msgid "Chinese Simplified"
 msgstr "Chino simplificado"
 
-#: ../src/parole-subtitle-encoding.c:208 ../src/parole-subtitle-encoding.c:210
+#: ../src/parole-subtitle-encoding.c:208
+#: ../src/parole-subtitle-encoding.c:210
 #: ../src/parole-subtitle-encoding.c:212
 msgid "Chinese Traditional"
 msgstr "Cirílico tradicional"
@@ -500,9 +506,12 @@ msgstr "Cirílico tradicional"
 msgid "Croatian"
 msgstr "Croata"
 
-#: ../src/parole-subtitle-encoding.c:218 ../src/parole-subtitle-encoding.c:220
-#: ../src/parole-subtitle-encoding.c:222 ../src/parole-subtitle-encoding.c:224
-#: ../src/parole-subtitle-encoding.c:226 ../src/parole-subtitle-encoding.c:228
+#: ../src/parole-subtitle-encoding.c:218
+#: ../src/parole-subtitle-encoding.c:220
+#: ../src/parole-subtitle-encoding.c:222
+#: ../src/parole-subtitle-encoding.c:224
+#: ../src/parole-subtitle-encoding.c:226
+#: ../src/parole-subtitle-encoding.c:228
 msgid "Cyrillic"
 msgstr "Cirílico"
 
@@ -510,7 +519,8 @@ msgstr "Cirílico"
 msgid "Cyrillic/Russian"
 msgstr "Cirílico/Ruso"
 
-#: ../src/parole-subtitle-encoding.c:234 ../src/parole-subtitle-encoding.c:236
+#: ../src/parole-subtitle-encoding.c:234
+#: ../src/parole-subtitle-encoding.c:236
 msgid "Cyrillic/Ukrainian"
 msgstr "Cirílico/Ucraniano"
 
@@ -518,7 +528,8 @@ msgstr "Cirílico/Ucraniano"
 msgid "Georgian"
 msgstr "Georgiano"
 
-#: ../src/parole-subtitle-encoding.c:242 ../src/parole-subtitle-encoding.c:244
+#: ../src/parole-subtitle-encoding.c:242
+#: ../src/parole-subtitle-encoding.c:244
 #: ../src/parole-subtitle-encoding.c:246
 msgid "Greek"
 msgstr "Griego"
@@ -531,8 +542,10 @@ msgstr "Gujarati"
 msgid "Gurmukhi"
 msgstr "Gurmukhi"
 
-#: ../src/parole-subtitle-encoding.c:255 ../src/parole-subtitle-encoding.c:257
-#: ../src/parole-subtitle-encoding.c:259 ../src/parole-subtitle-encoding.c:261
+#: ../src/parole-subtitle-encoding.c:255
+#: ../src/parole-subtitle-encoding.c:257
+#: ../src/parole-subtitle-encoding.c:259
+#: ../src/parole-subtitle-encoding.c:261
 msgid "Hebrew"
 msgstr "Hebreo"
 
@@ -548,13 +561,16 @@ msgstr "Hindú"
 msgid "Icelandic"
 msgstr "Islandés"
 
-#: ../src/parole-subtitle-encoding.c:273 ../src/parole-subtitle-encoding.c:275
+#: ../src/parole-subtitle-encoding.c:273
+#: ../src/parole-subtitle-encoding.c:275
 #: ../src/parole-subtitle-encoding.c:277
 msgid "Japanese"
 msgstr "Japones"
 
-#: ../src/parole-subtitle-encoding.c:280 ../src/parole-subtitle-encoding.c:282
-#: ../src/parole-subtitle-encoding.c:284 ../src/parole-subtitle-encoding.c:286
+#: ../src/parole-subtitle-encoding.c:280
+#: ../src/parole-subtitle-encoding.c:282
+#: ../src/parole-subtitle-encoding.c:284
+#: ../src/parole-subtitle-encoding.c:286
 msgid "Korean"
 msgstr "Coreano"
 
@@ -566,7 +582,8 @@ msgstr "Nórdico"
 msgid "Persian"
 msgstr "Persa"
 
-#: ../src/parole-subtitle-encoding.c:295 ../src/parole-subtitle-encoding.c:297
+#: ../src/parole-subtitle-encoding.c:295
+#: ../src/parole-subtitle-encoding.c:297
 msgid "Romanian"
 msgstr "Rumano"
 
@@ -578,24 +595,31 @@ msgstr "Europeo del sur"
 msgid "Thai"
 msgstr "Tailandés"
 
-#: ../src/parole-subtitle-encoding.c:306 ../src/parole-subtitle-encoding.c:308
-#: ../src/parole-subtitle-encoding.c:310 ../src/parole-subtitle-encoding.c:312
+#: ../src/parole-subtitle-encoding.c:306
+#: ../src/parole-subtitle-encoding.c:308
+#: ../src/parole-subtitle-encoding.c:310
+#: ../src/parole-subtitle-encoding.c:312
 msgid "Turkish"
 msgstr "Turco"
 
-#: ../src/parole-subtitle-encoding.c:315 ../src/parole-subtitle-encoding.c:317
-#: ../src/parole-subtitle-encoding.c:319 ../src/parole-subtitle-encoding.c:321
+#: ../src/parole-subtitle-encoding.c:315
+#: ../src/parole-subtitle-encoding.c:317
+#: ../src/parole-subtitle-encoding.c:319
+#: ../src/parole-subtitle-encoding.c:321
 #: ../src/parole-subtitle-encoding.c:323
 msgid "Unicode"
 msgstr "Unicode"
 
-#: ../src/parole-subtitle-encoding.c:326 ../src/parole-subtitle-encoding.c:328
-#: ../src/parole-subtitle-encoding.c:330 ../src/parole-subtitle-encoding.c:332
+#: ../src/parole-subtitle-encoding.c:326
+#: ../src/parole-subtitle-encoding.c:328
+#: ../src/parole-subtitle-encoding.c:330
+#: ../src/parole-subtitle-encoding.c:332
 #: ../src/parole-subtitle-encoding.c:334
 msgid "Western"
 msgstr "Oeste"
 
-#: ../src/parole-subtitle-encoding.c:337 ../src/parole-subtitle-encoding.c:339
+#: ../src/parole-subtitle-encoding.c:337
+#: ../src/parole-subtitle-encoding.c:339
 #: ../src/parole-subtitle-encoding.c:341
 msgid "Vietnamese"
 msgstr "Vietnamita"
@@ -621,7 +645,8 @@ msgstr "Reproduciendo pista"
 msgid "Track %i"
 msgstr "Pista %i"
 
-#: ../src/parole-plugins-manager.c:297 ../src/parole-plugins-manager.c:433
+#: ../src/parole-plugins-manager.c:297
+#: ../src/parole-plugins-manager.c:433
 msgid "Visit Website"
 msgstr "Ir al sitio web"
 
@@ -635,7 +660,7 @@ msgstr "Desconocido"
 
 #: ../src/parole-plugins-manager.c:412
 msgid "No installed plugins found on this system"
-msgstr ""
+msgstr "No hay complementos instalados en el sistema"
 
 #: ../parole/parole-filters.c:64
 msgid "Audio"
@@ -743,9 +768,7 @@ msgstr "Icono de la bandeja"
 
 #: ../plugins/window-title/window-title.desktop.in.h:1
 msgid "Set the main window name to the current playing media name."
-msgstr ""
-"Establecer el nombre de la ventana principal con el nombre de la "
-"reproducción actual."
+msgstr "Establecer el nombre de la ventana principal con el nombre de la reproducción actual."
 
 #: ../plugins/window-title/window-title.desktop.in.h:2
 msgid "Window Title"
@@ -753,9 +776,7 @@ msgstr "Título de la ventana"
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:1
 msgid "Inhibit Power Manager from suspending the machine while playing DVD."
-msgstr ""
-"Inhibir el administrador de energía para la suspensión de la máquina durante "
-"reproducción de DVD."
+msgstr "Inhibir el administrador de energía para la suspensión de la máquina durante reproducción de DVD."
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
@@ -794,9 +815,8 @@ msgstr "Copiar url"
 
 #~ msgid "Enabled"
 #~ msgstr "Habilitar"
-
 #~ msgid "Plugin"
 #~ msgstr "Complemento"
-
 #~ msgid "Visite Website"
 #~ msgstr "Visite el sitio web"
+
