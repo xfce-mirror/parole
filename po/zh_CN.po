@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Parole\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-12-10 14:17+0100\n"
-"PO-Revision-Date: 2009-11-30 11:46+0800\n"
+"PO-Revision-Date: 2009-12-13 20:27+0800\n"
 "Last-Translator: Hunt Xu <huntxu@live.cn>\n"
 "Language-Team: Chinese (simplified) <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
@@ -170,9 +170,8 @@ msgid "<b>Subtitles</b>"
 msgstr "<b>字幕</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:4
-#, fuzzy
 msgid "<b>Video</b>"
-msgstr "<b>网站:</b>"
+msgstr "<b>视频</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:5
 msgid "Automatically load subtitles when playing movie file"
@@ -188,7 +187,7 @@ msgstr "对比度:"
 
 #: ../data/interfaces/parole-settings.ui.h:8
 msgid "Disable screen saver while playing movies"
-msgstr ""
+msgstr "播放电影时禁用屏幕保护"
 
 #: ../data/interfaces/parole-settings.ui.h:9
 msgid "Enable visualization when playing audio file"
@@ -275,7 +274,7 @@ msgstr ""
 
 #: ../src/main.c:175
 msgid "Unknown argument "
-msgstr ""
+msgstr "未知参数 "
 
 #: ../src/main.c:212
 msgid "Open a new instance"
@@ -331,7 +330,7 @@ msgstr "版本信息"
 
 #: ../src/main.c:225
 msgid "Enabled/Disable XV support"
-msgstr ""
+msgstr "启用/禁用 XV 支持"
 
 #: ../src/main.c:227
 msgid "Media to play"
@@ -631,7 +630,7 @@ msgstr "未知"
 
 #: ../src/parole-plugins-manager.c:412
 msgid "No installed plugins found on this system"
-msgstr ""
+msgstr "系统中未发现已安装的插件"
 
 #: ../parole/parole-filters.c:64
 msgid "Audio"
