@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-12-10 14:17+0100\n"
-"PO-Revision-Date: 2009-08-30 20:32+0300\n"
+"PO-Revision-Date: 2009-12-14 21:35+0200\n"
 "Last-Translator: Motsyo Gennadi <drool@altlinux.ru>\n"
 "Language-Team: Ukrainian\n"
 "MIME-Version: 1.0\n"
@@ -116,9 +116,8 @@ msgid "_Media"
 msgstr "_Фільм"
 
 #: ../data/interfaces/parole.ui.h:25
-#, fuzzy
 msgid "_Open location"
-msgstr "Відкрити місцезнаходження..."
+msgstr "_Відкрити адресу..."
 
 #: ../data/interfaces/parole.ui.h:26
 msgid "_View"
@@ -126,15 +125,15 @@ msgstr "_Вигляд"
 
 #: ../data/interfaces/mediachooser.ui.h:1
 msgid "Replace playlist with opened files"
-msgstr ""
+msgstr "Замінити список відповідно до відкритих файлів"
 
 #: ../data/interfaces/mediachooser.ui.h:2
 msgid "Scan folders recursively"
-msgstr ""
+msgstr "Сканувати теки рекурсивно"
 
 #: ../data/interfaces/mediachooser.ui.h:3
 msgid "Start playing opened files"
-msgstr ""
+msgstr "Відтворити відкриті файли"
 
 #: ../data/interfaces/plugins.ui.h:1
 msgid "<b>Author:</b>"
@@ -149,14 +148,12 @@ msgid "<b>Site:</b>"
 msgstr "<b>Сайт:</b>"
 
 #: ../data/interfaces/plugins.ui.h:4
-#, fuzzy
 msgid "Media Player plugins"
-msgstr "Налаштування програвача"
+msgstr "Плагіни програвача"
 
 #: ../data/interfaces/plugins.ui.h:5
-#, fuzzy
 msgid "Parole Plugins"
-msgstr "Властивості плагінів"
+msgstr "Плагіни Parole"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "<b>Audio</b>"
@@ -171,9 +168,8 @@ msgid "<b>Subtitles</b>"
 msgstr "<b>Субтитри</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:4
-#, fuzzy
 msgid "<b>Video</b>"
-msgstr "<b>Сайт:</b>"
+msgstr "<b>Відео:</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:5
 msgid "Automatically load subtitles when playing movie file"
@@ -189,7 +185,7 @@ msgstr "Контрастність:"
 
 #: ../data/interfaces/parole-settings.ui.h:8
 msgid "Disable screen saver while playing movies"
-msgstr ""
+msgstr "Придушити скрінсейвер при відтворенні"
 
 #: ../data/interfaces/parole-settings.ui.h:9
 msgid "Enable visualization when playing audio file"
@@ -236,25 +232,20 @@ msgid "Select File Types (By Extension)"
 msgstr "Вибрати тип файлу (за розширенням)"
 
 #: ../gst/parole-gst.c:1494
-#, fuzzy
 msgid "The stream is taking too much time to load"
-msgstr "Потік вимагає багато часу для завантаження"
+msgstr "Потік вимагає надто багато часу для завантаження"
 
 #: ../gst/parole-gst.c:1494
 msgid "Stop"
 msgstr "Стоп"
 
 #: ../gst/parole-gst.c:1683
-msgid ""
-"Unable to load playbin GStreamer plugin, check your GStreamer installation"
-msgstr ""
-"Не можу завантажити GStreamer аудіо-плагін, перевірте наявність GStreamer"
+msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
+msgstr "Не можу завантажити GStreamer аудіо-плагін, перевірте наявність GStreamer"
 
 #: ../gst/parole-gst.c:1703
-msgid ""
-"Unable to load video GStreamer plugin, check your GStreamer installation"
-msgstr ""
-"Не можу завантажити GStreamer відео-плагін, перевірте наявність GStreamer"
+msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
+msgstr "Не можу завантажити GStreamer відео-плагін, перевірте наявність GStreamer"
 
 #: ../src/main.c:54
 #, c-format
@@ -268,10 +259,18 @@ msgid ""
 "Licensed under the GNU GPL.\n"
 "\n"
 msgstr ""
+"\n"
+"Мультимедійний програвач Parole %s\n"
+"\n"
+"Є частиною проекту Xfce Goodies\n"
+"http://goodies.xfce.org\n"
+"\n"
+"Ліцензія GNU GPL.\n"
+"\n"
 
 #: ../src/main.c:175
 msgid "Unknown argument "
-msgstr ""
+msgstr "Невідомий аргумент"
 
 #: ../src/main.c:212
 msgid "Open a new instance"
@@ -279,50 +278,47 @@ msgstr "Відкривати окремим екземпляром"
 
 #: ../src/main.c:213
 msgid "Do not load plugins"
-msgstr ""
+msgstr "Не завантажувати плагіни"
 
 #: ../src/main.c:214
 msgid "Set Audio-CD/VCD/DVD device path"
-msgstr ""
+msgstr "Вказати шлях до пристрою Audio-CD/VCD/DVD"
 
 #: ../src/main.c:215
 msgid "Play or pause if already playing"
-msgstr ""
+msgstr "Відтворити чи призупинити, якщо вже відтворюється"
 
 #: ../src/main.c:216
-#, fuzzy
 msgid "Stop playing"
-msgstr "Показати список"
+msgstr "Зупинити відтворення"
 
 #: ../src/main.c:217
-#, fuzzy
 msgid "Next track"
 msgstr "Наступний трек"
 
 #: ../src/main.c:218
-#, fuzzy
 msgid "Previous track"
 msgstr "Попередній трек"
 
 #: ../src/main.c:219
 msgid "Seek forward"
-msgstr ""
+msgstr "Шукати вперед"
 
 #: ../src/main.c:220
 msgid "Seek Backward"
-msgstr ""
+msgstr "Шукати назад"
 
 #: ../src/main.c:221
 msgid "Raise volume"
-msgstr ""
+msgstr "Збільшити гучність"
 
 #: ../src/main.c:222
 msgid "Lower volume"
-msgstr ""
+msgstr "Зменшити гучність"
 
 #: ../src/main.c:223
 msgid "Mute volume"
-msgstr ""
+msgstr "Приглушити звук"
 
 #: ../src/main.c:224
 msgid "Version information"
@@ -330,7 +326,7 @@ msgstr "Версія"
 
 #: ../src/main.c:225
 msgid "Enabled/Disable XV support"
-msgstr ""
+msgstr "Увімкнути/вимкнути підтримку XV"
 
 #: ../src/main.c:227
 msgid "Media to play"
@@ -339,8 +335,7 @@ msgstr "Об'єкт для відтворення"
 #: ../src/main.c:264
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
-msgstr ""
-"Parole вже запущено, використовуйте -i для відкриття окремим екземпляром\n"
+msgstr "Parole вже запущено, використовуйте -i для відкриття окремим екземпляром\n"
 
 #: ../src/parole-mediachooser.c:213
 msgid "Add media files"
@@ -435,9 +430,8 @@ msgid "Paused"
 msgstr "Пауза"
 
 #: ../src/parole-statusbar.c:114
-#, fuzzy
 msgid "Playing"
-msgstr "Відтворюється трек"
+msgstr "Відтворюється"
 
 #: ../src/parole-statusbar.c:145
 msgid "Live stream:"
@@ -632,7 +626,7 @@ msgstr "Невідомо"
 
 #: ../src/parole-plugins-manager.c:412
 msgid "No installed plugins found on this system"
-msgstr ""
+msgstr "В системі не знайдено встановлених плагінів"
 
 #: ../parole/parole-filters.c:64
 msgid "Audio"
@@ -691,9 +685,8 @@ msgid "Read media properties"
 msgstr "Зчитати властивості медіа"
 
 #: ../plugins/properties/stream-properties.desktop.in.h:2
-#, fuzzy
 msgid "Stream Properties"
-msgstr "Властивості"
+msgstr "Властивості потоку"
 
 #: ../plugins/tray/tray-provider.c:262
 msgid "<b>Playing:</b>"
@@ -713,24 +706,23 @@ msgstr "Увімкнути повідомлення"
 
 #: ../plugins/tray/tray-provider.c:439
 msgid "Always minimize to tray when window is closed"
-msgstr ""
+msgstr "Завжди мінімізувати в трей при закритті вікна"
 
 #: ../plugins/tray/tray-provider.c:478
 msgid "Minimize to tray?"
-msgstr ""
+msgstr "Мінімізувати в трей?"
 
 #: ../plugins/tray/tray-provider.c:484
 msgid "Minimize to tray"
-msgstr ""
+msgstr "Мінімізувати в трей"
 
 #: ../plugins/tray/tray-provider.c:500
 msgid "Are you sure you want to quit Parole"
-msgstr ""
+msgstr "Ви справді бажаєте вийти з Parole?"
 
 #: ../plugins/tray/tray-provider.c:504
-#, fuzzy
 msgid "Remember my choice"
-msgstr "Запам'ятати список"
+msgstr "Запам'ятати мій вибір"
 
 #: ../plugins/tray/system-tray.desktop.in.h:1
 msgid "Show icon in the system tray"
@@ -741,68 +733,51 @@ msgid "Tray icon"
 msgstr "Значок в лотку"
 
 #: ../plugins/window-title/window-title.desktop.in.h:1
-#, fuzzy
 msgid "Set the main window name to the current playing media name."
 msgstr ""
-"Встановити ім'я головного вікна у відповідності\n"
+"Встановити ім'я головного вікна у відповідності "
 "з іменем відтворюваного файлу."
 
 #: ../plugins/window-title/window-title.desktop.in.h:2
-#, fuzzy
 msgid "Window Title"
 msgstr "Заголовок вікна"
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:1
 msgid "Inhibit Power Manager from suspending the machine while playing DVD."
-msgstr ""
+msgstr "Перешкоджати засинанню комп'ютера при відтворенні DVD"
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
-msgstr ""
+msgstr "Керування живленням"
 
 #: ../browser-plugin/media-plugin/main.c:72
 msgid "socket"
-msgstr ""
+msgstr "з'єднання"
 
 #: ../browser-plugin/media-plugin/main.c:72
 msgid "SOCKET ID"
-msgstr ""
+msgstr "ID з'єднання"
 
 #: ../browser-plugin/media-plugin/main.c:73
-#, fuzzy
 msgid "url to play"
-msgstr "Об'єкт для відтворення"
+msgstr "Адреса для відтворення"
 
 #: ../browser-plugin/media-plugin/main.c:73
 msgid "URL"
-msgstr ""
+msgstr "Адреса"
 
 #: ../browser-plugin/media-plugin/parole-plugin-player.c:138
-#, fuzzy
 msgid "Leave fullscreen"
 msgstr "Вийти з повноекранного режиму"
 
 #: ../browser-plugin/media-plugin/parole-plugin-player.c:143
-#, fuzzy
 msgid "Fullscreen"
-msgstr "Вийти з повноекранного режиму"
+msgstr "Повноекранний режим"
 
 #.
 #. * Copy url
 #.
 #: ../browser-plugin/media-plugin/parole-plugin-player.c:452
 msgid "Copy url"
-msgstr ""
+msgstr "Копіювати адресу"
 
-#, fuzzy
-#~ msgid "Plugin"
-#~ msgstr "Плагіни"
-
-#~ msgid "gtk-close"
-#~ msgstr "Закрити"
-
-#~ msgid "gtk-properties"
-#~ msgstr "Властивості"
-
-#~ msgid "Visite Website"
-#~ msgstr "Відвідати WEB-сайт"
