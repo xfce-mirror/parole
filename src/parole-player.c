@@ -535,7 +535,11 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
     gtk_widget_set_sensitive (player->priv->range, seekable);
     
     player->priv->internal_range_change = TRUE;
-    gtk_range_set_range (GTK_RANGE (player->priv->range), 0, live ? 0 : duration);
+    if ( live || duration == 0)
+	parole_player_change_range_value (player, 0);
+    else 
+	gtk_range_set_range (GTK_RANGE (player->priv->range), 0, duration);
+	
     player->priv->internal_range_change = FALSE;
     
     gtk_widget_set_sensitive (player->priv->seekf, seekable);
