@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-12-10 14:17+0100\n"
-"PO-Revision-Date: 2009-11-08 01:29+0100\n"
+"PO-Revision-Date: 2009-12-15 12:26+0100\n"
 "Last-Translator: Piarres Beobide <pi+debian@beobide.net>\n"
 "Language-Team: Basque <debian-l10n-basque@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -125,15 +125,15 @@ msgstr "_Ikusi"
 
 #: ../data/interfaces/mediachooser.ui.h:1
 msgid "Replace playlist with opened files"
-msgstr ""
+msgstr "Ordeztu erreprodukzio-zerrenda irekitako fitxategiekin"
 
 #: ../data/interfaces/mediachooser.ui.h:2
 msgid "Scan folders recursively"
-msgstr ""
+msgstr "Arakatu karpetak errekurtsiboki"
 
 #: ../data/interfaces/mediachooser.ui.h:3
 msgid "Start playing opened files"
-msgstr ""
+msgstr "Hasi irekitako fitxategiak erreproduzitzen"
 
 #: ../data/interfaces/plugins.ui.h:1
 msgid "<b>Author:</b>"
@@ -168,9 +168,8 @@ msgid "<b>Subtitles</b>"
 msgstr "<b>Azpitituluak</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:4
-#, fuzzy
 msgid "<b>Video</b>"
-msgstr "<b>Gunea:</b>"
+msgstr "<b>Bideoa</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:5
 msgid "Automatically load subtitles when playing movie file"
@@ -186,7 +185,7 @@ msgstr "Kontrastea:"
 
 #: ../data/interfaces/parole-settings.ui.h:8
 msgid "Disable screen saver while playing movies"
-msgstr ""
+msgstr "Desgaitu pantaila-babeslea filmak erreproduzitzean"
 
 #: ../data/interfaces/parole-settings.ui.h:9
 msgid "Enable visualization when playing audio file"
@@ -275,7 +274,7 @@ msgstr ""
 
 #: ../src/main.c:175
 msgid "Unknown argument "
-msgstr ""
+msgstr "Argumentu ezezaguna "
 
 #: ../src/main.c:212
 msgid "Open a new instance"
@@ -283,11 +282,11 @@ msgstr "Ireki instantzia berri bat"
 
 #: ../src/main.c:213
 msgid "Do not load plugins"
-msgstr ""
+msgstr "Ez kargatu pluginak"
 
 #: ../src/main.c:214
 msgid "Set Audio-CD/VCD/DVD device path"
-msgstr ""
+msgstr "Ezarri Audio-CD/VCD/DVD gailu bidea"
 
 #: ../src/main.c:215
 msgid "Play or pause if already playing"
@@ -331,7 +330,7 @@ msgstr "Bertsio argibideak"
 
 #: ../src/main.c:225
 msgid "Enabled/Disable XV support"
-msgstr ""
+msgstr "Gaitu/desgaitu XV onarpena"
 
 #: ../src/main.c:227
 msgid "Media to play"
@@ -636,7 +635,7 @@ msgstr "Ezezaguna"
 
 #: ../src/parole-plugins-manager.c:412
 msgid "No installed plugins found on this system"
-msgstr ""
+msgstr "Ez da instalaturiko pluginik aurkitu sistema honetan"
 
 #: ../parole/parole-filters.c:64
 msgid "Audio"
@@ -695,9 +694,8 @@ msgid "Read media properties"
 msgstr "Irakurri euskarri propietateak"
 
 #: ../plugins/properties/stream-properties.desktop.in.h:2
-#, fuzzy
 msgid "Stream Properties"
-msgstr "Propietateak"
+msgstr "Jario propietateak"
 
 #: ../plugins/tray/tray-provider.c:262
 msgid "<b>Playing:</b>"
@@ -744,56 +742,52 @@ msgid "Tray icon"
 msgstr "Erretilu ikonoa"
 
 #: ../plugins/window-title/window-title.desktop.in.h:1
-#, fuzzy
 msgid "Set the main window name to the current playing media name."
 msgstr ""
-"Ezarri leiho nagusiaren izenburua erreproduzitzen\n"
-" ari den euskarri izenetik."
+"Ezarri leiho nagusiaren izenburua erreproduzitzen ari den euskarri izenetik."
 
 #: ../plugins/window-title/window-title.desktop.in.h:2
-#, fuzzy
 msgid "Window Title"
 msgstr "Leiho izenburua"
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:1
 msgid "Inhibit Power Manager from suspending the machine while playing DVD."
-msgstr ""
+msgstr "Galarazi indar kudeatzaileak DVDak erreproduzitzean makina etetea"
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
-msgstr ""
+msgstr "Indar kudeatzaile plugina"
 
 #: ../browser-plugin/media-plugin/main.c:72
 msgid "socket"
-msgstr ""
+msgstr "socket-a"
 
 #: ../browser-plugin/media-plugin/main.c:72
 msgid "SOCKET ID"
-msgstr ""
+msgstr "SOCKET IDa"
 
 #: ../browser-plugin/media-plugin/main.c:73
-#, fuzzy
 msgid "url to play"
-msgstr "Erreproduzitzeko euskarria"
+msgstr "Erreproduzitzeko url-a"
 
 #: ../browser-plugin/media-plugin/main.c:73
 msgid "URL"
-msgstr ""
+msgstr "URLa"
 
 #: ../browser-plugin/media-plugin/parole-plugin-player.c:138
 msgid "Leave fullscreen"
-msgstr ""
+msgstr "Utzi pantaila-osoa"
 
 #: ../browser-plugin/media-plugin/parole-plugin-player.c:143
 msgid "Fullscreen"
-msgstr ""
+msgstr "Pantaila-osoa"
 
 #.
 #. * Copy url
 #.
 #: ../browser-plugin/media-plugin/parole-plugin-player.c:452
 msgid "Copy url"
-msgstr ""
+msgstr "Kopiatu url-a"
 
 #~ msgid "Enabled"
 #~ msgstr "Gaiturik "
