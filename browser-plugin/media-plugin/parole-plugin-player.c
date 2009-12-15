@@ -291,7 +291,10 @@ parole_plugin_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream,
 	
 	gtk_widget_set_sensitive (player->priv->range, seekable);
 	player->priv->internal_range_change = TRUE;
-	gtk_range_set_range (GTK_RANGE (player->priv->range), 0, live ? 0 : duration);
+	if ( live || duration == 0 )
+	    parole_plugin_player_change_range_value (player, 0);
+	else
+	    gtk_range_set_range (GTK_RANGE (player->priv->range), 0, duration);
 	player->priv->internal_range_change = FALSE;
 	
 	gtk_widget_set_tooltip_text (GTK_WIDGET (player->priv->range), seekable ? NULL : _("Media stream is not seekable"));
@@ -571,7 +574,7 @@ parole_plugin_player_error_cb (ParoleGst *gst, const gchar *error, ParolePluginP
 {
     player->priv->finished = TRUE;
     parole_screen_saver_uninhibit (player->priv->saver);
-    xfce_err ("%s", error);
+    g_warning ("player_error_cb : %s", error);
     
 }
 
