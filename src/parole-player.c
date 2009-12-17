@@ -1723,6 +1723,9 @@ parole_player_set_wm_opacity_hint (GtkWidget *widget)
     
     atom = XInternAtom (xdisplay, "_NET_WM_WINDOW_OPACITY_LOCKED", TRUE);
     
+    if ( atom == None )
+	return;
+    
     gdkwindow = gtk_widget_get_window (widget);
     
     XChangeProperty (xdisplay, GDK_WINDOW_XID (gdkwindow),
