@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Parole 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-12-10 14:17+0100\n"
-"PO-Revision-Date: 2009-12-18 13:54+0100\n"
+"PO-Revision-Date: 2009-12-18 15:09+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -133,11 +133,11 @@ msgstr "_Ver"
 
 #: ../data/interfaces/mediachooser.ui.h:1
 msgid "Replace playlist with opened files"
-msgstr ""
+msgstr "Substituír a lista de reprodución polos ficheiros abertos"
 
 #: ../data/interfaces/mediachooser.ui.h:2
 msgid "Scan folders recursively"
-msgstr ""
+msgstr "Examinar de xeito recursivo os cartafoles"
 
 #: ../data/interfaces/mediachooser.ui.h:3
 msgid "Start playing opened files"
@@ -168,9 +168,8 @@ msgid "<b>Audio</b>"
 msgstr "<b>Son</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:2
-#, fuzzy
 msgid "<b>Display</b>"
-msgstr "<b>Mostrar</b>"
+msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:3
 msgid "<b>Subtitles</b>"
@@ -209,9 +208,8 @@ msgid "Font:"
 msgstr "Tipo de letra:"
 
 #: ../data/interfaces/parole-settings.ui.h:12
-#, fuzzy
 msgid "Hue:"
-msgstr "Tinte:"
+msgstr "Matiz:"
 
 #: ../data/interfaces/parole-settings.ui.h:13
 msgid "Media Player Settings"
@@ -239,10 +237,9 @@ msgstr "Por extensión"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "Select File Types (By Extension)"
-msgstr "Seleccionar tipos de ficheiros (Por extensión)"
+msgstr "Seleccionar tipos de ficheiros (por extensión)"
 
 #: ../gst/parole-gst.c:1494
-#, fuzzy
 msgid "The stream is taking too much time to load"
 msgstr "Está levando moito tempo cargar o fluxo"
 
@@ -293,16 +290,15 @@ msgstr "Non cargar engadidos"
 
 #: ../src/main.c:214
 msgid "Set Audio-CD/VCD/DVD device path"
-msgstr ""
+msgstr "Definir a ruta do dispositivo de Audio-CD/VCD/DVD"
 
 #: ../src/main.c:215
 msgid "Play or pause if already playing"
 msgstr "Reproducir ou pausar se xa se estaba reproducindo"
 
 #: ../src/main.c:216
-#, fuzzy
 msgid "Stop playing"
-msgstr "Mostrar a lista de reprodución"
+msgstr "Deter a reprodución"
 
 #: ../src/main.c:217
 msgid "Next track"
@@ -314,11 +310,11 @@ msgstr "Pista anterior"
 
 #: ../src/main.c:219
 msgid "Seek forward"
-msgstr ""
+msgstr "Avanzar"
 
 #: ../src/main.c:220
 msgid "Seek Backward"
-msgstr ""
+msgstr "Retroceder"
 
 #: ../src/main.c:221
 msgid "Raise volume"
@@ -338,7 +334,7 @@ msgstr "Información de versión"
 
 #: ../src/main.c:225
 msgid "Enabled/Disable XV support"
-msgstr ""
+msgstr "Activar/desactivar soporte XV"
 
 #: ../src/main.c:227
 msgid "Media to play"
@@ -350,9 +346,8 @@ msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole xa se está executando, use -i para abrir unha nova instancia\n"
 
 #: ../src/parole-mediachooser.c:213
-#, fuzzy
 msgid "Add media files"
-msgstr "Engadir ficheiros ao proxecto"
+msgstr "Engadir ficheiros de soportes"
 
 #: ../src/parole-mediachooser.c:246
 msgid "Add"
@@ -384,9 +379,8 @@ msgid "PLS Playlists"
 msgstr "Listas de reprodución PLS"
 
 #: ../src/parole-medialist.c:537
-#, fuzzy
 msgid "Advanced Stream Redirector"
-msgstr "Comentar ou descomentar en _fluxo"
+msgstr ""
 
 #: ../src/parole-medialist.c:545
 msgid "Shareable Playlist"
@@ -410,9 +404,8 @@ msgstr "Mostrar a lista de reprodución"
 
 #: ../src/parole-player.c:543
 #: ../browser-plugin/media-plugin/parole-plugin-player.c:297
-#, fuzzy
 msgid "Media stream is not seekable"
-msgstr "A canción actual non se pode buscar"
+msgstr ""
 
 #.
 #. * Next chapter menu item
@@ -453,9 +446,8 @@ msgid "Playing"
 msgstr "Reproducindo"
 
 #: ../src/parole-statusbar.c:145
-#, fuzzy
 msgid "Live stream:"
-msgstr "Fluxo descoñecido"
+msgstr "Fluxo en tempo real:"
 
 #: ../src/parole-about.c:75
 msgid "Author/Maintainer"
@@ -552,9 +544,8 @@ msgid "Gujarati"
 msgstr "Guxarati"
 
 #: ../src/parole-subtitle-encoding.c:252
-#, fuzzy
 msgid "Gurmukhi"
-msgstr "Gurmukhi"
+msgstr ""
 
 #: ../src/parole-subtitle-encoding.c:255
 #: ../src/parole-subtitle-encoding.c:257
@@ -644,7 +635,7 @@ msgstr "Abrir localización..."
 
 #: ../src/parole-open-location.c:186
 msgid "<b>Open location of media file or live stream:</b>"
-msgstr ""
+msgstr "<b>Abrir a localización do ficheiros de soporte ou fluxo en tempo real:</b>"
 
 #: ../src/parole-open-location.c:205
 msgid "Clear history"
@@ -717,23 +708,20 @@ msgid "General"
 msgstr "Xeral"
 
 #: ../plugins/properties/stream-properties-provider.c:392
-#, fuzzy
 msgid "Stream doesn't support tags changes"
-msgstr "O fluxo non soporta query_info"
+msgstr ""
 
 #: ../plugins/properties/stream-properties-provider.c:399
-#, fuzzy
 msgid "Save media tags changes"
-msgstr "Non se poden gardar as modificacións na conta."
+msgstr "Gardar as modificacións das etiquetas do soporte"
 
 #: ../plugins/properties/stream-properties-provider.c:524
 msgid "Properties"
 msgstr "Propiedades"
 
 #: ../plugins/properties/stream-properties.desktop.in.h:1
-#, fuzzy
 msgid "Read media properties"
-msgstr "Propiedades do elemento de menú"
+msgstr "Ler as propiedades do soporte"
 
 #: ../plugins/properties/stream-properties.desktop.in.h:2
 msgid "Stream Properties"
@@ -772,9 +760,8 @@ msgid "Are you sure you want to quit Parole"
 msgstr "Está seguro de querer saír de Parole"
 
 #: ../plugins/tray/tray-provider.c:504
-#, fuzzy
 msgid "Remember my choice"
-msgstr "Lembrar a lista de reprodución"
+msgstr "Lembrar a miña escolla"
 
 #: ../plugins/tray/system-tray.desktop.in.h:1
 msgid "Show icon in the system tray"
@@ -785,11 +772,8 @@ msgid "Tray icon"
 msgstr "Icona de zona de notificación"
 
 #: ../plugins/window-title/window-title.desktop.in.h:1
-#, fuzzy
 msgid "Set the main window name to the current playing media name."
-msgstr ""
-"Poñer o nome do soporte que se está\n"
-"reproducindo como nome da xanela principal."
+msgstr "Poñer o nome do soporte que se está reproducindo como nome da fiestra principal."
 
 #: ../plugins/window-title/window-title.desktop.in.h:2
 msgid "Window Title"
