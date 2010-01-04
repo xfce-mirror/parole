@@ -145,6 +145,10 @@ void		parole_player_open_preferences_cb	(GtkWidget *widget,
 void            parole_player_volume_value_changed_cb   (GtkRange *range, 
 							 ParolePlayer *player);
 
+gboolean        parole_player_volume_scroll_event_cb	(GtkWidget *widget,
+							 GdkEventScroll *ev,
+							 ParolePlayer *player);
+
 void		parole_player_full_screen_activated_cb  (GtkWidget *widget,
 							 ParolePlayer *player);
 
@@ -822,7 +826,7 @@ gboolean parole_player_scroll_event_cb (GtkWidget *widget, GdkEventScroll *ev, P
     }
     else if ( ev->direction == GDK_SCROLL_DOWN )
     {
-	parole_player_seekf_cb (NULL, player);
+	parole_player_seekb_cb (NULL, player);
         ret_val = TRUE;
     }
 
@@ -1312,6 +1316,25 @@ parole_player_change_volume (ParolePlayer *player, gdouble value)
 {
     parole_gst_set_volume (PAROLE_GST (player->priv->gst), value);
     parole_player_set_volume_image (player, value);
+}
+
+gboolean
+parole_player_volume_scroll_event_cb (GtkWidget *widget, GdkEventScroll *ev, ParolePlayer *player)
+{
+    gboolean ret_val = FALSE;
+
+    if ( ev->direction == GDK_SCROLL_UP )
+    {
+	parole_player_volume_up (NULL, player);
+	ret_val = TRUE;
+    }
+    else if ( ev->direction == GDK_SCROLL_DOWN )
+    {
+	parole_player_volume_down (NULL, player);
+	ret_val = TRUE;
+    }
+
+    return ret_val;
 }
 
 void
