@@ -549,6 +549,7 @@
                                                             <property name="show_fill_level">True</property>
                                                             <property name="draw_value">False</property>
                                                             <signal name="value_changed" handler="parole_player_volume_value_changed_cb"/>
+                                                            <signal name="scroll_event" handler="parole_player_volume_scroll_event_cb"/>
                                                             </object>
                                                             <packing>
                                                             <property name="expand">False</property>
