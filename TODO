@@ -1,4 +1,7 @@
 === Media player ===
+* Have an option for clearing playlist in the prefs, not only in the media chooser.
+* Check for duplicate playlist entries
+* Remove libxfcegui4 dependency and depend on libxfce4ui instead
 * Automatically detect disc type when parole
   is launched with --device=/dev/sr0 without a uri
 * Support scale ratio view.
@@ -9,5 +12,5 @@
 * Write a youtube plugin.
 * Subtitle downloader.
 * Always on top.
-* thumbnail.
+* thumbnails.
 * ...?

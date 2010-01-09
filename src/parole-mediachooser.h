@@ -24,6 +24,8 @@
 #include <glib-object.h>
 #include <gtk/gtk.h>
 
+#include "parole-conf.h"
+
 G_BEGIN_DECLS
 
 #define PAROLE_TYPE_MEDIA_CHOOSER        (parole_media_chooser_get_type () )
@@ -36,6 +38,8 @@ typedef struct
 {
     GtkDialog         		 parent;
     
+    ParoleConf                  *conf;
+    
 } ParoleMediaChooser;
 
 typedef struct
@@ -43,8 +47,6 @@ typedef struct
     GtkDialogClass 		 parent_class;
     
     void			 (*media_files_opened)		    (ParoleMediaChooser *chooser,
-								     gboolean play,
-								     gboolean replace,
 								     GSList *list);
 								     
 } ParoleMediaChooserClass;

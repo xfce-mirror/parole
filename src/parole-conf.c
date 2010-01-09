@@ -65,6 +65,11 @@ enum
     PROP_ASPECT_RATIO,
     PROP_WINDOW_WIDTH,
     PROP_WINDOW_HEIGHT,
+    /*Playlist*/
+    PROP_REPLACE_PLAYLIST,
+    PROP_SCAN_FOLDER_RECURSIVELY,
+    PROP_START_PLAYING_OPENED_FILES,
+    PROP_REMOVE_DUPLICATED_PLAYLIST_ENTRIES,
     N_PROP
 };
 
@@ -322,7 +327,41 @@ parole_conf_class_init (ParoleConfClass *klass)
 						       G_MAXINT16,
 						       480,
                                                        G_PARAM_READWRITE));
-						       
+    /**
+     *Playlist options
+     **/
+    g_object_class_install_property (object_class,
+                                     PROP_REPLACE_PLAYLIST,
+                                     g_param_spec_boolean ("replace-playlist",
+                                                           NULL, NULL,
+                                                           FALSE,
+                                                           G_PARAM_READWRITE));
+    
+    g_object_class_install_property (object_class,
+                                     PROP_SCAN_FOLDER_RECURSIVELY,
+                                     g_param_spec_boolean ("scan-recursive",
+                                                           NULL, NULL,
+                                                           TRUE,
+                                                           G_PARAM_READWRITE));
+    
+    g_object_class_install_property (object_class,
+                                     PROP_START_PLAYING_OPENED_FILES,
+                                     g_param_spec_boolean ("play-opened-files",
+                                                           NULL, NULL,
+                                                           TRUE,
+                                                           G_PARAM_READWRITE));
+
+    /**
+     * 
+     * Remove duplicated entries from the playlist.
+     **/
+    g_object_class_install_property (object_class,
+                                     PROP_REMOVE_DUPLICATED_PLAYLIST_ENTRIES,
+                                     g_param_spec_boolean ("remove-duplicated",
+                                                           NULL, NULL,
+                                                           FALSE,
+                                                           G_PARAM_READWRITE));
+    
     g_type_class_add_private (klass, sizeof (ParoleConfPrivate));
 }
 

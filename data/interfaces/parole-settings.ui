@@ -17,205 +17,496 @@
         <property name="orientation">vertical</property>
         <property name="spacing">2</property>
         <child>
-          <object class="GtkVBox" id="vbox1">
+          <object class="GtkNotebook" id="notebook1">
             <property name="visible">True</property>
-            <property name="orientation">vertical</property>
-            <property name="spacing">10</property>
+            <property name="can_focus">True</property>
             <child>
-              <object class="GtkFrame" id="frame-display">
+              <object class="GtkAlignment" id="alignment1">
                 <property name="visible">True</property>
-                <property name="label_xalign">0</property>
-                <property name="shadow_type">none</property>
+                <property name="top_padding">5</property>
                 <child>
-                  <object class="GtkAlignment" id="alignment2">
+                  <object class="GtkVBox" id="vbox1">
                     <property name="visible">True</property>
-                    <property name="left_padding">12</property>
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">10</property>
                     <child>
-                      <object class="GtkVBox" id="vbox4">
+                      <object class="GtkFrame" id="frame-display">
                         <property name="visible">True</property>
-                        <property name="orientation">vertical</property>
+                        <property name="label_xalign">0</property>
+                        <property name="shadow_type">none</property>
                         <child>
-                          <object class="GtkTable" id="table">
+                          <object class="GtkAlignment" id="alignment2">
                             <property name="visible">True</property>
-                            <property name="n_rows">4</property>
-                            <property name="n_columns">2</property>
-                            <property name="column_spacing">5</property>
-                            <property name="row_spacing">5</property>
+                            <property name="left_padding">12</property>
                             <child>
-                              <object class="GtkLabel" id="label7">
+                              <object class="GtkVBox" id="vbox4">
                                 <property name="visible">True</property>
-                                <property name="label" translatable="yes">Brightness:</property>
+                                <property name="orientation">vertical</property>
+                                <child>
+                                  <object class="GtkTable" id="table">
+                                    <property name="visible">True</property>
+                                    <property name="n_rows">4</property>
+                                    <property name="n_columns">2</property>
+                                    <property name="column_spacing">5</property>
+                                    <property name="row_spacing">5</property>
+                                    <child>
+                                      <object class="GtkLabel" id="label7">
+                                        <property name="visible">True</property>
+                                        <property name="label" translatable="yes">Brightness:</property>
+                                      </object>
+                                      <packing>
+                                        <property name="x_options"></property>
+                                        <property name="y_options"></property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel" id="label8">
+                                        <property name="visible">True</property>
+                                        <property name="label" translatable="yes">Contrast:</property>
+                                      </object>
+                                      <packing>
+                                        <property name="top_attach">1</property>
+                                        <property name="bottom_attach">2</property>
+                                        <property name="x_options"></property>
+                                        <property name="y_options"></property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkHScale" id="brightness">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="update_policy">discontinuous</property>
+                                        <property name="draw_value">False</property>
+                                        <signal name="value_changed" handler="brightness_value_changed_cb"/>
+                                      </object>
+                                      <packing>
+                                        <property name="left_attach">1</property>
+                                        <property name="right_attach">2</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkHScale" id="contrast">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="update_policy">discontinuous</property>
+                                        <property name="draw_value">False</property>
+                                        <signal name="value_changed" handler="contrast_value_changed_cb"/>
+                                      </object>
+                                      <packing>
+                                        <property name="left_attach">1</property>
+                                        <property name="right_attach">2</property>
+                                        <property name="top_attach">1</property>
+                                        <property name="bottom_attach">2</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel" id="label9">
+                                        <property name="visible">True</property>
+                                        <property name="label" translatable="yes">Hue:</property>
+                                      </object>
+                                      <packing>
+                                        <property name="top_attach">2</property>
+                                        <property name="bottom_attach">3</property>
+                                        <property name="x_options"></property>
+                                        <property name="y_options"></property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel" id="label10">
+                                        <property name="visible">True</property>
+                                        <property name="label" translatable="yes">Saturation:</property>
+                                      </object>
+                                      <packing>
+                                        <property name="top_attach">3</property>
+                                        <property name="bottom_attach">4</property>
+                                        <property name="x_options"></property>
+                                        <property name="y_options"></property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkHScale" id="hue">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="update_policy">discontinuous</property>
+                                        <property name="draw_value">False</property>
+                                        <signal name="value_changed" handler="hue_value_changed_cb"/>
+                                      </object>
+                                      <packing>
+                                        <property name="left_attach">1</property>
+                                        <property name="right_attach">2</property>
+                                        <property name="top_attach">2</property>
+                                        <property name="bottom_attach">3</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkHScale" id="saturation">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="update_policy">discontinuous</property>
+                                        <property name="draw_value">False</property>
+                                        <signal name="value_changed" handler="saturation_value_changed_cb"/>
+                                      </object>
+                                      <packing>
+                                        <property name="left_attach">1</property>
+                                        <property name="right_attach">2</property>
+                                        <property name="top_attach">3</property>
+                                        <property name="bottom_attach">4</property>
+                                      </packing>
+                                    </child>
+                                  </object>
+                                  <packing>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkHButtonBox" id="hbuttonbox1">
+                                    <property name="visible">True</property>
+                                    <property name="layout_style">end</property>
+                                    <child>
+                                      <object class="GtkButton" id="reset-color">
+                                        <property name="label" translatable="yes">Reset To Defaults</property>
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="receives_default">True</property>
+                                        <property name="image">image1</property>
+                                        <signal name="clicked" handler="reset_color_clicked_cb"/>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">False</property>
+                                        <property name="position">0</property>
+                                      </packing>
+                                    </child>
+                                  </object>
+                                  <packing>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
                               </object>
-                              <packing>
-                                <property name="x_options"></property>
-                                <property name="y_options"></property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="label8">
-                                <property name="visible">True</property>
-                                <property name="label" translatable="yes">Contrast:</property>
-                              </object>
-                              <packing>
-                                <property name="top_attach">1</property>
-                                <property name="bottom_attach">2</property>
-                                <property name="x_options"></property>
-                                <property name="y_options"></property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkHScale" id="brightness">
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="update_policy">discontinuous</property>
-                                <property name="draw_value">False</property>
-                                <signal name="value_changed" handler="brightness_value_changed_cb"/>
-                              </object>
-                              <packing>
-                                <property name="left_attach">1</property>
-                                <property name="right_attach">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkHScale" id="contrast">
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="update_policy">discontinuous</property>
-                                <property name="draw_value">False</property>
-                                <signal name="value_changed" handler="contrast_value_changed_cb"/>
-                              </object>
-                              <packing>
-                                <property name="left_attach">1</property>
-                                <property name="right_attach">2</property>
-                                <property name="top_attach">1</property>
-                                <property name="bottom_attach">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="label9">
-                                <property name="visible">True</property>
-                                <property name="label" translatable="yes">Hue:</property>
-                              </object>
-                              <packing>
-                                <property name="top_attach">2</property>
-                                <property name="bottom_attach">3</property>
-                                <property name="x_options"></property>
-                                <property name="y_options"></property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="label10">
-                                <property name="visible">True</property>
-                                <property name="label" translatable="yes">Saturation:</property>
-                              </object>
-                              <packing>
-                                <property name="top_attach">3</property>
-                                <property name="bottom_attach">4</property>
-                                <property name="x_options"></property>
-                                <property name="y_options"></property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkHScale" id="hue">
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="update_policy">discontinuous</property>
-                                <property name="draw_value">False</property>
-                                <signal name="value_changed" handler="hue_value_changed_cb"/>
-                              </object>
-                              <packing>
-                                <property name="left_attach">1</property>
-                                <property name="right_attach">2</property>
-                                <property name="top_attach">2</property>
-                                <property name="bottom_attach">3</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkHScale" id="saturation">
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="update_policy">discontinuous</property>
-                                <property name="draw_value">False</property>
-                                <signal name="value_changed" handler="saturation_value_changed_cb"/>
-                              </object>
-                              <packing>
-                                <property name="left_attach">1</property>
-                                <property name="right_attach">2</property>
-                                <property name="top_attach">3</property>
-                                <property name="bottom_attach">4</property>
-                              </packing>
                             </child>
                           </object>
-                          <packing>
-                            <property name="position">0</property>
-                          </packing>
                         </child>
-                        <child>
-                          <object class="GtkHButtonBox" id="hbuttonbox1">
+                        <child type="label">
+                          <object class="GtkLabel" id="label4">
                             <property name="visible">True</property>
-                            <property name="layout_style">end</property>
-                            <child>
-                              <object class="GtkButton" id="reset-color">
-                                <property name="label" translatable="yes">Reset To Defaults</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
-                                <property name="image">image1</property>
-                                <signal name="clicked" handler="reset_color_clicked_cb"/>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">False</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
+                            <property name="label" translatable="yes">&lt;b&gt;Display&lt;/b&gt;</property>
+                            <property name="use_markup">True</property>
                           </object>
-                          <packing>
-                            <property name="position">1</property>
-                          </packing>
                         </child>
                       </object>
+                      <packing>
+                        <property name="position">0</property>
+                      </packing>
                     </child>
-                  </object>
-                </child>
-                <child type="label">
-                  <object class="GtkLabel" id="label2">
-                    <property name="visible">True</property>
-                    <property name="label" translatable="yes">&lt;b&gt;Display&lt;/b&gt;</property>
-                    <property name="use_markup">True</property>
+                    <child>
+                      <object class="GtkFrame" id="frame2">
+                        <property name="visible">True</property>
+                        <property name="label_xalign">0</property>
+                        <property name="shadow_type">none</property>
+                        <child>
+                          <object class="GtkAlignment" id="alignment4">
+                            <property name="visible">True</property>
+                            <property name="left_padding">12</property>
+                            <child>
+                              <object class="GtkCheckButton" id="reset-saver">
+                                <property name="label" translatable="yes">Disable screen saver while playing movies</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">False</property>
+                                <property name="draw_indicator">True</property>
+                                <signal name="toggled" handler="parole_conf_dialog_reset_saver_changed_cb"/>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child type="label">
+                          <object class="GtkLabel" id="label12">
+                            <property name="visible">True</property>
+                            <property name="label" translatable="yes">&lt;b&gt;Video&lt;/b&gt;</property>
+                            <property name="use_markup">True</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkFrame" id="frame1">
+                        <property name="visible">True</property>
+                        <property name="label_xalign">0</property>
+                        <property name="shadow_type">none</property>
+                        <child>
+                          <object class="GtkAlignment" id="alignment3">
+                            <property name="visible">True</property>
+                            <property name="left_padding">12</property>
+                            <child>
+                              <object class="GtkVBox" id="vbox2">
+                                <property name="visible">True</property>
+                                <property name="orientation">vertical</property>
+                                <property name="spacing">5</property>
+                                <child>
+                                  <object class="GtkCheckButton" id="enable-vis">
+                                    <property name="label" translatable="yes">Enable visualization when playing audio file</property>
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="receives_default">False</property>
+                                    <property name="draw_indicator">True</property>
+                                    <signal name="toggled" handler="parole_conf_dialog_enable_vis_changed_cb"/>
+                                  </object>
+                                  <packing>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkHBox" id="hbox1">
+                                    <property name="visible">True</property>
+                                    <property name="spacing">2</property>
+                                    <child>
+                                      <object class="GtkLabel" id="label5">
+                                        <property name="visible">True</property>
+                                        <property name="label" translatable="yes">Visualization type:</property>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">False</property>
+                                        <property name="position">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkComboBox" id="vis-combobox">
+                                        <property name="visible">True</property>
+                                        <property name="model">liststore1</property>
+                                        <signal name="changed" handler="parole_conf_dialog_vis_plugin_changed_cb"/>
+                                        <child>
+                                          <object class="GtkCellRendererText" id="cellrenderertext1"/>
+                                          <attributes>
+                                            <attribute name="text">0</attribute>
+                                          </attributes>
+                                        </child>
+                                      </object>
+                                      <packing>
+                                        <property name="position">1</property>
+                                      </packing>
+                                    </child>
+                                  </object>
+                                  <packing>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child type="label">
+                          <object class="GtkLabel" id="label6">
+                            <property name="visible">True</property>
+                            <property name="label" translatable="yes">&lt;b&gt;Audio&lt;/b&gt;</property>
+                            <property name="use_markup">True</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkFrame" id="frame3">
+                        <property name="visible">True</property>
+                        <property name="label_xalign">0</property>
+                        <property name="shadow_type">none</property>
+                        <child>
+                          <object class="GtkAlignment" id="alignment6">
+                            <property name="visible">True</property>
+                            <property name="left_padding">12</property>
+                            <child>
+                              <object class="GtkVBox" id="vbox3">
+                                <property name="visible">True</property>
+                                <property name="orientation">vertical</property>
+                                <property name="spacing">5</property>
+                                <child>
+                                  <object class="GtkCheckButton" id="enable-subtitle">
+                                    <property name="label" translatable="yes">Automatically load subtitles when playing movie file</property>
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="receives_default">False</property>
+                                    <property name="draw_indicator">True</property>
+                                    <signal name="toggled" handler="parole_conf_dialog_enable_subtitle_changed_cb"/>
+                                  </object>
+                                  <packing>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkTable" id="table1">
+                                    <property name="visible">True</property>
+                                    <property name="n_rows">2</property>
+                                    <property name="n_columns">2</property>
+                                    <property name="column_spacing">2</property>
+                                    <property name="row_spacing">2</property>
+                                    <child>
+                                      <object class="GtkLabel" id="label11">
+                                        <property name="visible">True</property>
+                                        <property name="label" translatable="yes">Font:</property>
+                                      </object>
+                                      <packing>
+                                        <property name="x_options">GTK_FILL</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkFontButton" id="fontbutton">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="receives_default">True</property>
+                                        <signal name="font_set" handler="parole_conf_dialog_font_set_cb"/>
+                                      </object>
+                                      <packing>
+                                        <property name="left_attach">1</property>
+                                        <property name="right_attach">2</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel" id="label13">
+                                        <property name="visible">True</property>
+                                        <property name="label" translatable="yes">Encoding: </property>
+                                      </object>
+                                      <packing>
+                                        <property name="top_attach">1</property>
+                                        <property name="bottom_attach">2</property>
+                                        <property name="x_options">GTK_FILL</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkComboBox" id="encoding">
+                                        <property name="visible">True</property>
+                                        <signal name="changed" handler="parole_conf_dialog_subtitle_encoding_changed_cb"/>
+                                      </object>
+                                      <packing>
+                                        <property name="left_attach">1</property>
+                                        <property name="right_attach">2</property>
+                                        <property name="top_attach">1</property>
+                                        <property name="bottom_attach">2</property>
+                                      </packing>
+                                    </child>
+                                  </object>
+                                  <packing>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child type="label">
+                          <object class="GtkLabel" id="label14">
+                            <property name="visible">True</property>
+                            <property name="label" translatable="yes">&lt;b&gt;Subtitles&lt;/b&gt;</property>
+                            <property name="use_markup">True</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="position">3</property>
+                      </packing>
+                    </child>
                   </object>
                 </child>
               </object>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="label1">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">General</property>
+              </object>
               <packing>
-                <property name="position">0</property>
+                <property name="tab_fill">False</property>
               </packing>
             </child>
             <child>
-              <object class="GtkFrame" id="frame2">
+              <object class="GtkAlignment" id="alignment5">
                 <property name="visible">True</property>
-                <property name="label_xalign">0</property>
-                <property name="shadow_type">none</property>
+                <property name="top_padding">5</property>
                 <child>
-                  <object class="GtkAlignment" id="alignment4">
+                  <object class="GtkVBox" id="vbox5">
                     <property name="visible">True</property>
-                    <property name="left_padding">12</property>
+                    <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkCheckButton" id="reset-saver">
-                        <property name="label" translatable="yes">Disable screen saver while playing movies</property>
+                      <object class="GtkFrame" id="frame-playlist">
                         <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">False</property>
-                        <property name="draw_indicator">True</property>
-                        <signal name="toggled" handler="parole_conf_dialog_reset_saver_changed_cb"/>
+                        <property name="label_xalign">0</property>
+                        <property name="shadow_type">none</property>
+                        <child>
+                          <object class="GtkAlignment" id="alignment7">
+                            <property name="visible">True</property>
+                            <property name="left_padding">12</property>
+                            <child>
+                              <object class="GtkVBox" id="vbox6">
+                                <property name="visible">True</property>
+                                <property name="orientation">vertical</property>
+                                <property name="spacing">5</property>
+                                <child>
+                                  <object class="GtkCheckButton" id="replace-playlist">
+                                    <property name="label" translatable="yes">Always replace playlist with opened files</property>
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="receives_default">False</property>
+                                    <property name="draw_indicator">True</property>
+                                    <signal name="toggled" handler="replace_playlist_toggled_cb"/>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkCheckButton" id="remove-duplicated">
+                                    <property name="label" translatable="yes">Check and remove duplicated media entries</property>
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="receives_default">False</property>
+                                    <property name="draw_indicator">True</property>
+                                    <signal name="toggled" handler="remove_duplicated_toggled_cb"/>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkCheckButton" id="start-playing-opened">
+                                    <property name="label" translatable="yes">Start playing opened files</property>
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="receives_default">False</property>
+                                    <property name="tooltip_text" translatable="yes">start playling opened files, for example when media files are opened with a file manager or on drag and drop.
+</property>
+                                    <property name="draw_indicator">True</property>
+                                    <signal name="toggled" handler="start_playing_opened_toggled_cb"/>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="position">2</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child type="label">
+                          <object class="GtkLabel" id="label19">
+                            <property name="visible">True</property>
+                            <property name="label" translatable="yes">&lt;b&gt;Playlist options&lt;/b&gt;</property>
+                            <property name="use_markup">True</property>
+                          </object>
+                        </child>
                       </object>
+                      <packing>
+                        <property name="position">0</property>
+                      </packing>
                     </child>
-                  </object>
-                </child>
-                <child type="label">
-                  <object class="GtkLabel" id="label12">
-                    <property name="visible">True</property>
-                    <property name="label" translatable="yes">&lt;b&gt;Video&lt;/b&gt;</property>
-                    <property name="use_markup">True</property>
                   </object>
                 </child>
               </object>
@@ -223,186 +514,25 @@
                 <property name="position">1</property>
               </packing>
             </child>
-            <child>
-              <object class="GtkFrame" id="frame1">
+            <child type="tab">
+              <object class="GtkLabel" id="label2">
                 <property name="visible">True</property>
-                <property name="label_xalign">0</property>
-                <property name="shadow_type">none</property>
-                <child>
-                  <object class="GtkAlignment" id="alignment1">
-                    <property name="visible">True</property>
-                    <property name="left_padding">12</property>
-                    <child>
-                      <object class="GtkVBox" id="vbox2">
-                        <property name="visible">True</property>
-                        <property name="orientation">vertical</property>
-                        <property name="spacing">5</property>
-                        <child>
-                          <object class="GtkCheckButton" id="enable-vis">
-                            <property name="label" translatable="yes">Enable visualization when playing audio file</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">False</property>
-                            <property name="draw_indicator">True</property>
-                            <signal name="toggled" handler="parole_conf_dialog_enable_vis_changed_cb"/>
-                          </object>
-                          <packing>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkHBox" id="hbox1">
-                            <property name="visible">True</property>
-                            <property name="spacing">2</property>
-                            <child>
-                              <object class="GtkLabel" id="label4">
-                                <property name="visible">True</property>
-                                <property name="label" translatable="yes">Visualization type:</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">False</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkComboBox" id="vis-combobox">
-                                <property name="visible">True</property>
-                                <property name="model">liststore1</property>
-                                <signal name="changed" handler="parole_conf_dialog_vis_plugin_changed_cb"/>
-                                <child>
-                                  <object class="GtkCellRendererText" id="cellrenderertext1"/>
-                                  <attributes>
-                                    <attribute name="text">0</attribute>
-                                  </attributes>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-                <child type="label">
-                  <object class="GtkLabel" id="label1">
-                    <property name="visible">True</property>
-                    <property name="label" translatable="yes">&lt;b&gt;Audio&lt;/b&gt;</property>
-                    <property name="use_markup">True</property>
-                  </object>
-                </child>
+                <property name="label" translatable="yes">Playlist</property>
               </object>
               <packing>
-                <property name="position">2</property>
+                <property name="position">1</property>
+                <property name="tab_fill">False</property>
               </packing>
             </child>
             <child>
-              <object class="GtkFrame" id="frame3">
-                <property name="visible">True</property>
-                <property name="label_xalign">0</property>
-                <property name="shadow_type">none</property>
-                <child>
-                  <object class="GtkAlignment" id="alignment3">
-                    <property name="visible">True</property>
-                    <property name="left_padding">12</property>
-                    <child>
-                      <object class="GtkVBox" id="vbox3">
-                        <property name="visible">True</property>
-                        <property name="orientation">vertical</property>
-                        <property name="spacing">5</property>
-                        <child>
-                          <object class="GtkCheckButton" id="enable-subtitle">
-                            <property name="label" translatable="yes">Automatically load subtitles when playing movie file</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">False</property>
-                            <property name="draw_indicator">True</property>
-                            <signal name="toggled" handler="parole_conf_dialog_enable_subtitle_changed_cb"/>
-                          </object>
-                          <packing>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkTable" id="table1">
-                            <property name="visible">True</property>
-                            <property name="n_rows">2</property>
-                            <property name="n_columns">2</property>
-                            <property name="column_spacing">2</property>
-                            <property name="row_spacing">2</property>
-                            <child>
-                              <object class="GtkLabel" id="label5">
-                                <property name="visible">True</property>
-                                <property name="label" translatable="yes">Font:</property>
-                              </object>
-                              <packing>
-                                <property name="x_options">GTK_FILL</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkFontButton" id="fontbutton">
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
-                                <signal name="font_set" handler="parole_conf_dialog_font_set_cb"/>
-                              </object>
-                              <packing>
-                                <property name="left_attach">1</property>
-                                <property name="right_attach">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="label6">
-                                <property name="visible">True</property>
-                                <property name="label" translatable="yes">Encoding: </property>
-                              </object>
-                              <packing>
-                                <property name="top_attach">1</property>
-                                <property name="bottom_attach">2</property>
-                                <property name="x_options">GTK_FILL</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkComboBox" id="encoding">
-                                <property name="visible">True</property>
-                                <signal name="changed" handler="parole_conf_dialog_subtitle_encoding_changed_cb"/>
-                              </object>
-                              <packing>
-                                <property name="left_attach">1</property>
-                                <property name="right_attach">2</property>
-                                <property name="top_attach">1</property>
-                                <property name="bottom_attach">2</property>
-                              </packing>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-                <child type="label">
-                  <object class="GtkLabel" id="label3">
-                    <property name="visible">True</property>
-                    <property name="label" translatable="yes">&lt;b&gt;Subtitles&lt;/b&gt;</property>
-                    <property name="use_markup">True</property>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="position">3</property>
-              </packing>
+              <placeholder/>
+            </child>
+            <child type="tab">
+              <placeholder/>
             </child>
           </object>
           <packing>
+            <property name="padding">1</property>
             <property name="position">1</property>
           </packing>
         </child>
