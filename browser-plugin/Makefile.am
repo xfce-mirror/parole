@@ -47,9 +47,14 @@ parole_player_so_SOURCES =     				\
 	npp_gate.cpp					\
 	npupp.h
 
+parole_player_so_CFLAGS =                               \
+	-fPIC
+
 parole_player_so_LDFLAGS =                              \
 	-Xcompiler					\
 	-shared						\
+	-fPIC
+
+parole_player_so_LDADD =				\
         $(GTK_LIBS)                                     \
-        $(DBUS_GLIB_LIBS)				\
-	$(GECKO_LIBS)
+        $(DBUS_GLIB_LIBS)
