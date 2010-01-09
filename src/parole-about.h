@@ -23,7 +23,7 @@
 
 #include <gtk/gtk.h>
 
-void 		parole_about	(void);
+void 		parole_about	(GtkWindow *parent);
 
 
 #endif /* __PAROLE_ABOUT_H */

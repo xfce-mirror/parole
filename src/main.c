@@ -43,7 +43,6 @@
 #include "parole-player.h"
 #include "parole-plugins-manager.h"
 #include "parole-utils.h"
-#include "parole-session.h"
 #include "parole-dbus.h"
 #include "parole-builder.h"
 #include "parole-rc-utils.h"
@@ -185,7 +184,6 @@ xv_option_given (const gchar *name, const gchar *value, gpointer data, GError **
 int main (int argc, char **argv)
 {
     ParolePlayer *player;
-    ParoleSession *session;
     ParolePluginsManager *plugins;
     GtkBuilder *builder;
     GOptionContext *ctx;
@@ -298,14 +296,10 @@ int main (int argc, char **argv)
     {
 	builder = parole_builder_get_main_interface ();
 	parole_dbus_register_name (PAROLE_DBUS_NAME);
-	session = parole_session_get ();
 	
-	if ( client_id )
-	    parole_session_set_client_id (session, client_id);
-	    
-	parole_session_real_init (session);
 	parole_setup ();
-	player = parole_player_new ();
+	player = parole_player_new (client_id);
+	g_free (client_id);
 
 	if ( filenames && filenames[0] != NULL )
 	{
@@ -350,7 +344,6 @@ int main (int argc, char **argv)
 	
 	parole_dbus_release_name (PAROLE_DBUS_NAME);
 	g_object_unref (plugins);
-	g_object_unref (session);
     }
 
     gst_deinit ();

@@ -29,7 +29,6 @@
 #include <glib.h>
 
 #include <libxfce4util/libxfce4util.h>
-#include <libxfcegui4/libxfcegui4.h>
 
 #include <parole/parole-provider-plugin.h>
 
@@ -42,6 +41,7 @@
 #include "parole-module.h"
 
 #include "gst/parole-gst.h"
+#include "common/parole-common.h"
 
 #define PAROLE_PLUGIN_EXT = ".desktop"
 
@@ -409,7 +409,9 @@ parole_plugins_manager_show_plugins_pref (GtkWidget *widget, ParolePluginsManage
     /*No plugins found*/
     if ( manager->priv->array->len == 0 )
     {
-	xfce_info ("%s", _("No installed plugins found on this system")); 
+	parole_dialog_info (GTK_WINDOW (gtk_widget_get_toplevel (manager->priv->main_nt)),
+			    _("No installed plugins found on this system"), 
+			    _("No installed plugins found on this system")); 
 	return;
     }
     

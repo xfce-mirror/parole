@@ -27,73 +27,76 @@
 #include <string.h>
 
 #include <libxfce4util/libxfce4util.h>
-#include <libxfcegui4/libxfcegui4.h>
 
 #include "parole-about.h"
 #include "parole-utils.h"
 
-void  parole_about (void)
+#if !GTK_CHECK_VERSION (2, 18, 0)
+static void
+parole_link_browser (GtkAboutDialog *about, const gchar *link, gpointer data)
 {
-    XfceAboutInfo *info;
-    GtkWidget *dialog;
-    gint x, y;
-    GdkPixbuf *icon;
-    guint n;
-
-    static const struct
+    gchar *cmd;
+    
+    cmd = g_strdup_printf ("%s %s","xdg-open", link);
+    
+    if ( !g_spawn_command_line_async (cmd, NULL) )
     {
-	gchar *name, *email, *language;
-    } 	
-    translators[] = 
-    {
-	{"astur", "malditoastur@gmail.com", "ast",},
-	{"Carles Muñoz Gorriz", "carlesmu@internautas.org", "ca.po",},
-	{"Per Kongstad", "p_kongstad@op.pl", "da.po",},
-	{"Christoph Wickert", "cwickert@fedoraproject.org", "de.po",},
-	{"elega", "elega@elega.com.ar","es",},
-	{"Piarres Beobide", "pi+debian@beobide.net", "eu",},
-	{"Douart Patrick", "patrick.2@laposte.net", "fr",},
-	{"Leandro Regueiro", "leandro.regueiro@gmail.com", "gl",},
-	{"Andhika Padmawan", "andhika.padmawan@gmail.com", "id",},
-	{"Masato Hashimoto", "cabezon.hashimoto@gmail.com", "ja",},
-	{"Rihards Prieditis", "rprieditis@gmail.com", "lv",},
-	{"Mario Blättermann", "mariobl@gnome.org", "nl",},
-	{"Sérgio Marques", "smarquespt@gmail.com", "pt",},
-	{"Vlad Vasilev", "lortwer@gmail.com", "ru",},
-	{"Robert Hartl", "hartl.robert@gmail.com", "sk",},
-	{"Samed Beyribey", "ras0ir@eventualis.org", "tr",},
-	{"Motsyo Gennadi", "drool@altlinux.ru", "uk",},
-	{"Hunt Xu", "huntxu@live.cn", "zh_CN",},
-	
-    };
-
-    info = xfce_about_info_new ("Parole", VERSION, _("Parole Media Player"),
-                                XFCE_COPYRIGHT_TEXT ("2009", "Ali Abdallah"), 
-				XFCE_LICENSE_GPL);
-
-    xfce_about_info_set_homepage (info, "http://goodies.xfce.org/projects/applications/parole");
-    xfce_about_info_add_credit (info, "Ali Abdallah", "aliov@xfce.org", _("Author/Maintainer"));
-  
-
-    for (n = 0; n < G_N_ELEMENTS (translators); ++n) 
-    {
-	gchar *s;
-	s = g_strdup_printf (_("Translator (%s)"), translators[n].language);
-	xfce_about_info_add_credit (info, translators[n].name, translators[n].email, s);
-	g_free (s);
+        g_free (cmd);
+        cmd = g_strdup_printf ("%s %s","xfbrowser4", link);
+        g_spawn_command_line_async (cmd, NULL);
     }
+    g_free (cmd);
+        
+}
 
-    gtk_icon_size_lookup (GTK_ICON_SIZE_DIALOG, &x, &y);
-    icon = parole_icon_load ("parole", x);
-    
-    dialog = xfce_about_dialog_new_with_values (NULL, info, icon);
-    
-	
-    gtk_dialog_run (GTK_DIALOG (dialog));
-    gtk_widget_destroy (dialog);
+static void
+parole_link_mailto (GtkAboutDialog *about, const gchar *link, gpointer data)
+{
+    gchar *cmd = g_strdup_printf( "%s %s", "xdg-email", link);
 
-    xfce_about_info_free (info);
+    g_spawn_command_line_async (cmd, NULL);
     
-    if (icon)
-	g_object_unref (G_OBJECT (icon));
+    g_free (cmd);
+}
+#endif /*GTK_CHECK_VERSION (2, 18, 0)*/
+
+void  parole_about (GtkWindow *parent)
+{
+    GdkPixbuf *logo;
+    
+    static const gchar *authors[] = 
+    {
+	"Ali Abdallah <aliov@xfce.org",
+	NULL,
+    };
+    
+    static const gchar *documenters[] = 
+    {
+	"Ali Abdallah <aliov@xfce.org",
+	NULL,
+    };
+    
+#if !GTK_CHECK_VERSION (2, 18, 0)
+    gtk_about_dialog_set_url_hook (parole_link_browser, NULL, NULL);
+    gtk_about_dialog_set_email_hook (parole_link_mailto, NULL, NULL);
+#endif
+    
+    logo = parole_icon_load ("parole", 128);
+    
+    gtk_show_about_dialog (parent,
+                           "authors", authors,
+                           "comments", _("Parole Media Player"),
+			   "documenters", documenters,
+                           "copyright", "Copyright \302\251 2009-2010 Ali Abdallah",
+                           "license", XFCE_LICENSE_GPL,
+                           "logo", logo,
+                           "program-name", PACKAGE_NAME,
+                           "translator-credits", _("translator-credits"),
+                           "version", PACKAGE_VERSION,
+                           "website", "http://goodies.xfce.org/projects/applications/parole",
+                           "website-label", _("Visit Parole website"),
+                            NULL);
+
+    if (logo)
+	g_object_unref (G_OBJECT (logo));
 }

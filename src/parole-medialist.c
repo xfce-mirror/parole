@@ -26,6 +26,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <unistd.h>
+
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
 #include <glib.h>
@@ -33,7 +35,6 @@
 #include <gio/gio.h>
 
 #include <libxfce4util/libxfce4util.h>
-#include <libxfcegui4/libxfcegui4.h>
 
 #include <parole/parole-file.h>
 
@@ -450,7 +451,12 @@ void parole_media_list_save_playlist_cb (GtkButton *button, ParolePlaylistSave *
     
     if ( g_access (dirname, W_OK) == -1 )
     {
-	xfce_err ("%s %s %s", _("Error saving playlist file"), dirname, _("Permission denied"));
+	gchar *msg;
+	msg = g_strdup_printf ("%s %s", dirname, _("Permission denied"));
+	parole_dialog_error (GTK_WINDOW (gtk_widget_get_toplevel (data->list->priv->view)),
+			     _("Error saving playlist file"),
+			     msg);
+	g_free (msg);
 	goto out;
     }
     
@@ -459,7 +465,9 @@ void parole_media_list_save_playlist_cb (GtkButton *button, ParolePlaylistSave *
 	format = parole_pl_parser_guess_format_from_extension (filename);
 	if ( format == PAROLE_PL_FORMAT_UNKNOWN )
 	{
-	    xfce_info ("%s", _("Unknown playlist format, Please select a support playlist format"));
+	    parole_dialog_info (GTK_WINDOW (gtk_widget_get_toplevel (data->list->priv->view)),
+				_("Unknown playlist format"),
+				_("Please chooser a supported playlist format"));
 	    goto out;
 	}
     }

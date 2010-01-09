@@ -46,7 +46,8 @@ typedef struct
 } ParolePlayerClass;
 
 GType        			 parole_player_get_type        (void) G_GNUC_CONST;
-ParolePlayer       		*parole_player_new             (void);
+
+ParolePlayer       		*parole_player_new             (const gchar *client_id);
 
 ParoleMediaList			*parole_player_get_media_list  (ParolePlayer *player);
 

@@ -34,7 +34,7 @@
 #include <gst/video/video.h>
 
 #include <libxfce4util/libxfce4util.h>
-#include <libxfcegui4/libxfcegui4.h>
+#include <libxfce4ui/libxfce4ui.h>
 
 #include <gdk/gdkx.h>
 
@@ -1490,8 +1490,11 @@ parole_gst_check_state_change_timeout (gpointer data)
     
     if ( gst->priv->state != gst->priv->target )
     {
-	gboolean ret_val = 
-	    xfce_confirm (_("The stream is taking too much time to load"), GTK_STOCK_OK, _("Stop"));
+	gboolean ret_val = xfce_dialog_confirm (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (gst))),
+						GTK_STOCK_YES,
+						_("Stop"),
+						_("The stream is taking too much time to load"), 
+						NULL);
 	    
 	if ( ret_val )
 	{
@@ -1680,9 +1683,13 @@ parole_gst_constructed (GObject *object)
  
     if ( G_UNLIKELY (gst->priv->playbin == NULL) )
     {
-	xfce_err (_("Unable to load playbin GStreamer plugin"
-		    ", check your GStreamer installation"));
-		    
+	GError *error;
+	error = g_error_new (0, 0, "%s", _("Unable to load playbin GStreamer plugin"
+					    ", check your GStreamer installation"));
+					    
+	xfce_dialog_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (gst))),
+				error, NULL);
+	g_error_free (error);
 	g_error ("playbin load failed");
     }
     
@@ -1700,8 +1707,12 @@ parole_gst_constructed (GObject *object)
 	
 	if ( G_UNLIKELY (gst->priv->video_sink == NULL) )
 	{
-	    xfce_err (_("Unable to load video GStreamer plugin"
-		      ", check your GStreamer installation"));
+	    GError *error;
+	    error = g_error_new (0, 0, "%s", _("Unable to load video GStreamer plugin"
+					      ", check your GStreamer installation"));
+	    xfce_dialog_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (gst))),
+				error, NULL);
+	    g_error_free (error);
 	    g_error ("ximagesink load failed");
 	}
     }
