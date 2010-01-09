@@ -47,6 +47,7 @@
 #include "parole-dbus.h"
 #include "parole-builder.h"
 #include "parole-rc-utils.h"
+#include "parole-setup.h"
 
 static void G_GNUC_NORETURN
 show_version (void)
@@ -303,6 +304,7 @@ int main (int argc, char **argv)
 	    parole_session_set_client_id (session, client_id);
 	    
 	parole_session_real_init (session);
+	parole_setup ();
 	player = parole_player_new ();
 
 	if ( filenames && filenames[0] != NULL )

@@ -70,7 +70,9 @@ parole_SOURCES =				\
 	parole-button.c				\
 	parole-button.h				\
 	parole-plugin-player.c			\
-	parole-plugin-player.h
+	parole-plugin-player.h			\
+	parole-setup.c				\
+	parole-setup.h
 
 parole_LDADD =					\
 	$(top_builddir)/parole/libparole.la 	\
