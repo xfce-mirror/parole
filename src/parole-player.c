@@ -1866,6 +1866,24 @@ parole_player_set_wm_opacity_hint (GtkWidget *widget)
 }
 
 static void
+parole_player_setup_multimedia_keys (ParolePlayer *player)
+{
+#ifdef HAVE_XF86_KEYSYM
+    gboolean enabled;
+    g_object_get (G_OBJECT (player->priv->conf),
+		  "multimedia-keys", &enabled,
+		  NULL);
+    
+    if ( enabled )
+    {
+	player->priv->button = parole_button_new ();
+	g_signal_connect (player->priv->button, "button-pressed",
+			  G_CALLBACK (parole_player_button_pressed_cb), player);
+    }
+#endif
+}
+
+static void
 parole_player_init (ParolePlayer *player)
 {
     GtkWidget *output;
@@ -2047,11 +2065,7 @@ parole_player_init (ParolePlayer *player)
     
     g_object_unref (builder);
     
-#ifdef HAVE_XF86_KEYSYM
-    player->priv->button = parole_button_new ();
-    g_signal_connect (player->priv->button, "button-pressed",
-		      G_CALLBACK (parole_player_button_pressed_cb), player);
-#endif
+    parole_player_setup_multimedia_keys (player);
     
     g_signal_connect_swapped (player->priv->window, "notify::is-active",
 			      G_CALLBACK (parole_player_window_notify_is_active), player);
