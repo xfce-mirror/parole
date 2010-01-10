@@ -22,7 +22,7 @@ parole_media_plugin_CFLAGS =			\
 	$(GST_VIDEO_CFLAGS)                     \
         $(GST_INTERFACES_CFLAGS)		\
 	$(DBUS_GLIB_CFLAGS)			\
-	$(LIBXFCE4GUI_CFLAGS)			\
+	$(LIBXFCE4UI_CFLAGS)			\
 	$(TAGLIBC_CFLAGS)
 
 parole_media_plugin_LDADD =			\
@@ -34,7 +34,7 @@ parole_media_plugin_LDADD =			\
 	$(GST_VIDEO_LIBS)                     	\
         $(GST_INTERFACES_LIBS)			\
 	$(DBUS_GLIB_LIBS)			\
-	$(LIBXFCE4GUI_LIBS)			\
+	$(LIBXFCE4UI_LIBS)			\
 	$(TAGLIBC_LIBS)
 
 if MAINTAINER_MODE
