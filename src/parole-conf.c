@@ -65,6 +65,7 @@ enum
     PROP_ASPECT_RATIO,
     PROP_WINDOW_WIDTH,
     PROP_WINDOW_HEIGHT,
+    PROP_MULTIMEDIA_KEYS,
     /*Playlist*/
     PROP_REPLACE_PLAYLIST,
     PROP_SCAN_FOLDER_RECURSIVELY,
@@ -327,6 +328,14 @@ parole_conf_class_init (ParoleConfClass *klass)
 						       G_MAXINT16,
 						       480,
                                                        G_PARAM_READWRITE));
+    
+    g_object_class_install_property (object_class,
+                                     PROP_MULTIMEDIA_KEYS,
+                                     g_param_spec_boolean ("multimedia-key",
+                                                           NULL, NULL,
+                                                           TRUE,
+                                                           G_PARAM_READWRITE));
+							   
     /**
      *Playlist options
      **/

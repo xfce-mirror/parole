@@ -962,7 +962,7 @@ parole_media_list_show_menu (ParoleMediaList *list, guint button, guint activate
 		  "replace-playlist", &val,
 		  NULL);
 
-    mi = gtk_check_menu_item_new_with_label (_("Replace playlist with opened files"));
+    mi = gtk_check_menu_item_new_with_label (_("Replace playlist when opening files"));
     gtk_widget_set_sensitive (mi, TRUE);
     gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (mi), val);
     g_signal_connect (mi, "activate",
@@ -1442,11 +1442,7 @@ gboolean parole_media_list_add_files (ParoleMediaList *list, gchar **filenames)
 {
     guint i;
     guint added = 0;
-    gboolean play;
     
-    g_object_get (G_OBJECT (list->priv->conf),
-		  "play-opened-files", &play,
-		  NULL);
     for ( i = 0; filenames && filenames[i] != NULL; i++)
     {
 	/*
@@ -1454,14 +1450,14 @@ gboolean parole_media_list_add_files (ParoleMediaList *list, gchar **filenames)
 	 */
 	if ( g_file_test (filenames[i], G_FILE_TEST_EXISTS ) )
 	{
-	    added += parole_media_list_add_by_path (list, filenames[i], i == 0 ? play : FALSE);
+	    added += parole_media_list_add_by_path (list, filenames[i], i == 0 ? TRUE : FALSE);
 	}
 	else
 	{
 	    ParoleFile *file;
 	    TRACE ("File=%s", filenames[i]);
 	    file = parole_file_new (filenames[i]);
-	    parole_media_list_add (list, file, i == 0 ? TRUE : FALSE, i == 0 ? play : FALSE);
+	    parole_media_list_add (list, file, i == 0 ? TRUE : FALSE, i == 0 ? TRUE : FALSE);
 	    added++;
 	}
     }

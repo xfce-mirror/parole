@@ -952,7 +952,7 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
 			   gst->priv->stream, PAROLE_MEDIA_STATE_STOPPED);
 
-	    if ( gst->priv->target == GST_STATE_PLAYING && pending != GST_STATE_PLAYING)
+	    if ( gst->priv->target == GST_STATE_PLAYING && pending < GST_STATE_PAUSED)
 	    {
 		parole_gst_play_file_internal (gst);
 	    }
