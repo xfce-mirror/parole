@@ -207,9 +207,63 @@ AM_CONDITIONAL([ENABLE_BROWSER_PLUGIN], [test x"$ac_browser_plugin" = x"yes"])
 AC_MSG_RESULT([$ac_browser_plugin])
 if test x"$ac_browser_plugin" = x"yes"; then
     BROWSER_PLUGIN_DIR="${BROWSER_PLUGIN_DIR:-"\${libdir}/mozilla/plugins"}"
-    XDT_CHECK_PACKAGE([GECKO], [libxul], [])
+    
     AC_ARG_VAR([BROWSER_PLUGIN_DIR],[Where to install the browser plugin])
-    AC_DEFINE(BUILD_BROWSER_PLUGIN, 1, [whether to build with browser plugin support])
+    #
+    # Taken From gecko-mediaplayer
+    #
+    AC_ARG_WITH([xulrunner-sdk],
+    [AS_HELP_STRING([--with-xulrunner-sdk=path_to_sdk],
+        [Path to xulrunner SDK for build --with-xulrunner-sdk=/path/to/sdk])],
+        [
+	XULRUNNER_SDK_PREFIX=$with_xulrunner_sdk
+	GECKO_CFLAGS="-I$XULRUNNER_SDK_PREFIX/include -I$XULRUNNER_SDK_PREFIX/include/plugin -I$XULRUNNER_SDK_PREFIX/include/nspr -I$XULRUNNER_SDK_PREFIX/include/xpcom -I$XULRUNNER_SDK_PREFIX/include/string -I$XULRUNNER_SDK_PREFIX/include/java"
+	GECKO_LIBS="-L$XULRUNNER_SDK_PREFIX/lib -lxpcomglue_s -lxul -lxpcom -lplds4 -lplc4 -lnspr4 -lpthread -ldl"
+	],
+        [])
+
+    if test "$GECKO_CFLAGS" = ""; then
+	PKG_CHECK_MODULES(GECKO, [mozilla-plugin mozilla-xpcom],[
+	    ],[AC_MSG_WARN([mozilla-plugin not found, trying another])])
+    fi
+
+    if test "$GECKO_CFLAGS" = ""; then
+	PKG_CHECK_MODULES(GECKO, [firefox-plugin firefox-xpcom],[
+	    ],[AC_MSG_WARN([firefox-plugin not found, trying another])])
+    fi
+
+    if test "$GECKO_CFLAGS" = ""; then
+	PKG_CHECK_MODULES(GECKO, [seamonkey-plugin seamonkey-xpcom],[
+	    ],[AC_MSG_WARN([seamokey-plugin not found, trying another])])
+    fi
+
+    if test "$GECKO_CFLAGS" = ""; then
+	PKG_CHECK_MODULES(GECKO, [xulrunner-plugin xulrunner-xpcom],[
+	    ],[AC_MSG_WARN([xulrunner-plugin not found, trying another])])
+    fi
+
+    if test "$GECKO_CFLAGS" = ""; then
+	PKG_CHECK_MODULES(GECKO, [libxul],[
+	    ],[AC_MSG_WARN([libxul not found, trying another])])
+    fi
+
+    if test "$GECKO_CFLAGS" = ""; then
+	PKG_CHECK_MODULES(GECKO, [libxul-unstable],[
+	    ],[AC_MSG_WARN([libxul-unstable not found, trying another])])
+    fi
+
+    if test "$GECKO_CFLAGS" = ""; then
+	PKG_CHECK_MODULES(GECKO, [iceape-plugin iceape-xpcom],[
+	    ],[AC_MSG_WARN([iceape-plugin not found, trying another])])
+    fi
+    
+    if test "$GECKO_CFLAGS" = ""; then
+	AC_SUBST(GECKO_CFLAGS)
+	AC_SUBST(GECKO_LIBS)
+	AC_DEFINE(BUILD_BROWSER_PLUGIN, 1, [whether to build with browser plugin support])
+    else
+	AC_MSG_WARN([Cannot build the browser plugin, developement packages missing])
+    fi
 fi
 
 #=======================================================#
