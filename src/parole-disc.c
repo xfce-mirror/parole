@@ -53,7 +53,9 @@ struct ParoleDiscPrivate
 {
     GVolumeMonitor *monitor;
     GPtrArray      *array;
-    GtkWidget      *media_menu;
+    
+    GtkWidget      *dvd_menu;
+    GtkWidget	   *cd_menu;
     
     gboolean	    needs_update;
 };
@@ -103,15 +105,53 @@ parole_disc_media_activate_cb (GtkWidget *widget, ParoleDisc *disc)
     g_signal_emit (G_OBJECT (disc), signals [DISC_SELECTED], 0, data->uri, data->device);
 }
 
+
+static void
+parole_disc_insert_menu_item (ParoleDisc *disc, MountData *data, const gchar *label)
+{
+    GtkWidget *menu;
+    GtkWidget *img;
+    
+    data->mi = gtk_image_menu_item_new_with_label (label);
+	
+    img = gtk_image_new_from_stock (GTK_STOCK_CDROM, GTK_ICON_SIZE_MENU);
+    gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (data->mi), 
+				   img);
+    gtk_widget_show (data->mi);
+    gtk_widget_show (img);
+	
+    g_object_set_data (G_OBJECT (data->mi),
+		      "mount-data", data);
+	
+    switch (data->kind )
+    {
+	case PAROLE_DISC_CDDA:
+	case PAROLE_DISC_SVCD:
+	case PAROLE_DISC_VCD:
+	    menu = gtk_menu_item_get_submenu (GTK_MENU_ITEM (disc->priv->cd_menu));
+	    break;
+	case PAROLE_DISC_DVD:
+	    menu = gtk_menu_item_get_submenu (GTK_MENU_ITEM (disc->priv->dvd_menu));
+	    break;
+	default:
+	    g_warn_if_reached ();
+	    break;
+    }
+    
+    gtk_menu_shell_insert (GTK_MENU_SHELL (menu), data->mi, 2);
+    
+    g_signal_connect (data->mi, "activate",
+		      G_CALLBACK (parole_disc_media_activate_cb), disc);
+    
+}
+
 static MountData *
 parole_disc_get_mount_data (ParoleDisc *disc, 
-			    const gchar *label, 
 			    const gchar *uri, 
 			    const gchar *device,
 			    ParoleDiscKind kind)
 {
     MountData *data;
-    GtkWidget *img;
     
     data = g_new0 (MountData, 1);
     
@@ -119,22 +159,7 @@ parole_disc_get_mount_data (ParoleDisc *disc,
     data->uri = data->device = NULL;
     data->uri = g_strdup (uri);
     data->device = g_strdup (device);
-	
-    data->mi = gtk_image_menu_item_new_with_label (label);
-	
-    img = gtk_image_new_from_stock (GTK_STOCK_CDROM, GTK_ICON_SIZE_MENU);
-    gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (data->mi), 
-				       img);
-    gtk_widget_show (data->mi);
-    gtk_widget_show (img);
-	
-    g_object_set_data (G_OBJECT (data->mi),
-		      "mount-data", data);
-	
-    gtk_menu_shell_insert (GTK_MENU_SHELL (disc->priv->media_menu), data->mi, 2);
     
-    g_signal_connect (data->mi, "activate",
-		      G_CALLBACK (parole_disc_media_activate_cb), disc);
     return data;
 }
 
@@ -201,7 +226,9 @@ got_cdda:
 	name = g_mount_get_name (mount);
 	label = g_strdup_printf ("%s '%s'", _("Play Disc"), name);
 	
-	data = parole_disc_get_mount_data (disc, label, uri, device, kind);
+	data = parole_disc_get_mount_data (disc, uri, device, kind);
+	parole_disc_insert_menu_item (disc, data, label);
+	
 	if ( uri )
 	    g_free (uri);
 	
@@ -243,7 +270,8 @@ parole_disc_check_cdrom (ParoleDisc *disc, GVolume *volume, const gchar *device)
 		if ( drive == CDS_AUDIO || drive == CDS_MIXED )
 		{
 		    MountData *data;
-		    data = parole_disc_get_mount_data (disc, g_volume_get_name (volume), "cdda://", device, PAROLE_DISC_CDDA);
+		    data = parole_disc_get_mount_data (disc, "cdda://", device, PAROLE_DISC_CDDA);
+		    parole_disc_insert_menu_item (disc, data, g_volume_get_name (volume));
 		    g_ptr_array_add (disc->priv->array, data);
 		}
 	    }
@@ -407,7 +435,8 @@ parole_disc_init (ParoleDisc *disc)
     g_signal_connect (G_OBJECT (disc->priv->monitor), "drive-eject-button",
 		      G_CALLBACK (parole_disc_monitor_changed_cb), disc);
     
-    disc->priv->media_menu = GTK_WIDGET (gtk_builder_get_object (builder, "media-menu"));
+    disc->priv->dvd_menu = GTK_WIDGET (gtk_builder_get_object (builder, "dvd-menu"));
+    disc->priv->cd_menu = GTK_WIDGET (gtk_builder_get_object (builder, "cd-menu"));
     
     g_signal_connect (gtk_builder_get_object (builder, "media-menu-item"), "select",
 	              G_CALLBACK (parole_disc_select_cb), disc);
