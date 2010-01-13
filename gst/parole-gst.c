@@ -930,12 +930,11 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 	    break;
 	}
 	case GST_STATE_PAUSED:
-	    if ( old == GST_STATE_READY )
-	    {
-		parole_gst_query_duration (gst);
-		parole_gst_query_capabilities (gst);
-		parole_gst_query_info (gst);
-	    }
+	{
+	    parole_gst_query_duration (gst);
+	    parole_gst_query_capabilities (gst);
+	    parole_gst_query_info (gst);
+
 	    if ( gst->priv->target == GST_STATE_PLAYING )
 	    {
 		if ( gst->priv->update_color_balance )
@@ -946,7 +945,9 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
 			   gst->priv->stream, PAROLE_MEDIA_STATE_PAUSED);
 	    break;
+	}
 	case GST_STATE_READY:
+	{
 	    gst->priv->buffering = FALSE;
 	    gst->priv->media_state = PAROLE_MEDIA_STATE_STOPPED;
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
@@ -966,12 +967,15 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 		parole_gst_helper_draw_logo (PAROLE_GST_HELPER (gst));
 	    }
 	    break;
+	}
 	case GST_STATE_NULL:
+	{
 	    gst->priv->buffering = FALSE;
 	    gst->priv->media_state = PAROLE_MEDIA_STATE_STOPPED;
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
 			   gst->priv->stream, PAROLE_MEDIA_STATE_STOPPED);
 	    break;
+	}
 	default:
 	    break;
     }
