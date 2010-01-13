@@ -407,6 +407,23 @@ NPError CPlugin::NewStream (NPMIMEType type, NPStream * stream, NPBool seekable,
 
 NPError CPlugin::DestroyStream(NPStream * stream, NPError reason)
 {
+    /*
+    g_debug ("DestroyStream reason = %i for %s\n", reason, stream->url);
+    
+    if ( reason == NPRES_DONE )
+    {
+	g_debug ("NPRES_DONE");
+    }
+    else if ( reason == NPRES_USER_BREAK )
+    {
+	g_debug ("NPRES_USER_BREAK");
+	
+    }
+    else if ( reason == NPRES_NETWORK_ERR )
+    {
+	g_debug ("NPRES_NETWORK_ERR");
+    }
+    */
     return NPERR_NO_ERROR;
 }
 
@@ -423,6 +440,12 @@ void CPlugin::StreamAsFile (NPStream * stream, const char *fname)
 int32_t CPlugin::WriteReady (NPStream * stream)
 {
     //g_debug ("WriteReady url=%s", stream->url);
+    
+    if ( mode != NP_FULL )
+    {
+	NPN_DestroyStream (mInstance, stream, NPRES_DONE);
+	return -1;
+    }
     
     return  player_ready ? STREAMBUFSIZE  : 0;
 }
@@ -464,10 +487,8 @@ int32_t CPlugin::Write (NPStream * stream, int32_t offset, int32_t len, void *bu
 	if ( cache )
 	{
 	    fseek (cache, offset, SEEK_SET);
-	    wrotebytes += fwrite (buffer, 1, len, cache);
-#ifdef DEBUG
+	    wrotebytes += fwrite (buffer, 1, MAX (len, STREAMBUFSIZE), cache);
 	    //g_debug ("Wrotebytes=%d offset=%d data=%s", wrotebytes, offset, (gchar*)buffer);
-#endif
 	}
 	
 	if ( wrotebytes >= 0 )
