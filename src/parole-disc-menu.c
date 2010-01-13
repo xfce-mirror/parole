@@ -247,7 +247,7 @@ parole_disc_menu_init (ParoleDiscMenu *menu)
     menu->priv->next_chapter = GTK_WIDGET (gtk_builder_get_object (builder, "next-chapter"));
     menu->priv->prev_chapter = GTK_WIDGET (gtk_builder_get_object (builder, "prev-chapter"));
     menu->priv->chapter_menu = GTK_WIDGET (gtk_builder_get_object (builder, "chapter-menu"));
-    menu->priv->dvd_menu = GTK_WIDGET (gtk_builder_get_object (builder, "dvd-menu"));
+    menu->priv->dvd_menu = GTK_WIDGET (gtk_builder_get_object (builder, "dvd-chapters-menu"));
     menu->priv->info = GTK_WIDGET (gtk_builder_get_object (builder, "info"));
     menu->priv->eventboxinfo = GTK_WIDGET (gtk_builder_get_object (builder, "eventboxinfo"));
     menu->priv->disc_box = GTK_WIDGET (gtk_builder_get_object (builder, "disc-box"));

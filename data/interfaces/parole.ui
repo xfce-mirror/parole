@@ -52,6 +52,65 @@
                       </object>
                     </child>
                     <child>
+                      <object class="GtkImageMenuItem" id="dvd-menu">
+                        <property name="label" translatable="yes">DVD</property>
+                        <property name="visible">True</property>
+                        <property name="image">image14</property>
+                        <property name="use_stock">False</property>
+                        <child type="submenu">
+                          <object class="GtkMenu" id="menu6">
+                            <property name="visible">True</property>
+                            <child>
+                              <object class="GtkImageMenuItem" id="dvd-iso-mi">
+                                <property name="label" translatable="yes">From ISO image</property>
+                                <property name="visible">True</property>
+                                <property name="image">image15</property>
+                                <property name="use_stock">False</property>
+                                <signal name="activate" handler="dvd_iso_mi_activated_cb"/>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkSeparatorMenuItem" id="separatormenuitem5">
+                                <property name="visible">True</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImageMenuItem" id="cd-menu">
+                        <property name="label">gtk-cdrom</property>
+                        <property name="visible">True</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                        <child type="submenu">
+                          <object class="GtkMenu" id="menu7">
+                            <property name="visible">True</property>
+                            <child>
+                              <object class="GtkImageMenuItem" id="cd-iso-mi">
+                                <property name="label" translatable="yes">From ISO image</property>
+                                <property name="visible">True</property>
+                                <property name="image">image16</property>
+                                <property name="use_stock">False</property>
+                                <signal name="activate" handler="cd_iso_mi_activated_cb"/>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkSeparatorMenuItem" id="separatormenuitem6">
+                                <property name="visible">True</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSeparatorMenuItem" id="separatormenuitem4">
+                        <property name="visible">True</property>
+                      </object>
+                    </child>
+                    <child>
                       <object class="GtkImageMenuItem" id="menu-exit">
                         <property name="label">gtk-quit</property>
                         <property name="visible">True</property>
@@ -354,7 +413,7 @@
                                                       </packing>
                                                     </child>
                                                     <child>
-                                                      <object class="GtkButton" id="dvd-menu">
+                                                      <object class="GtkButton" id="dvd-chapters-menu">
                                                         <property name="label" translatable="yes">DVD Menu</property>
                                                         <property name="can_focus">True</property>
                                                         <property name="receives_default">True</property>
@@ -716,10 +775,6 @@
       </object>
     </child>
   </object>
-  <object class="GtkImage" id="image5">
-    <property name="visible">True</property>
-    <property name="stock">gtk-network</property>
-  </object>
   <object class="GtkImage" id="image10">
     <property name="visible">True</property>
     <property name="icon_name">audio-volume-low</property>
@@ -772,5 +827,24 @@
   <object class="GtkImage" id="image18">
     <property name="visible">True</property>
     <property name="stock">gtk-go-forward</property>
+  </object>
+  <object class="GtkImage" id="image5">
+    <property name="visible">True</property>
+    <property name="stock">gtk-network</property>
+  </object>
+  <object class="GtkImage" id="image14">
+    <property name="visible">True</property>
+    <property name="stock">gtk-cdrom</property>
+    <property name="icon-size">1</property>
+  </object>
+  <object class="GtkImage" id="image15">
+    <property name="visible">True</property>
+    <property name="stock">gtk-file</property>
+    <property name="icon-size">1</property>
+  </object>
+  <object class="GtkImage" id="image16">
+    <property name="visible">True</property>
+    <property name="stock">gtk-file</property>
+    <property name="icon-size">1</property>
   </object>
 </interface>
