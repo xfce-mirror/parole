@@ -44,7 +44,7 @@ msgstr "DVD"
 
 #: ../data/interfaces/parole.ui.h:8
 msgid "DVD Menu"
-msgstr "DVD Меню"
+msgstr "Меню DVD"
 
 #: ../data/interfaces/parole.ui.h:9
 msgid "From ISO image"
@@ -52,7 +52,7 @@ msgstr "Из ISO-образа"
 
 #: ../data/interfaces/parole.ui.h:10
 msgid "Media player"
-msgstr "Media player"
+msgstr "Медиапригрыватель"
 
 #: ../data/interfaces/parole.ui.h:11
 msgid "Mute"
@@ -70,11 +70,11 @@ msgstr "Нет"
 #: ../data/interfaces/parole.ui.h:14 ../data/desktop/parole.desktop.in.in.h:1
 #: ../src/parole-about.c:70 ../plugins/window-title/window-title-provider.c:58
 msgid "Parole Media Player"
-msgstr "Parole Media Player"
+msgstr "Медиапроигрыватель Parole"
 
 #: ../data/interfaces/parole.ui.h:15
 msgid "Plugins"
-msgstr "Плагины..."
+msgstr "Модули..."
 
 #: ../data/interfaces/parole.ui.h:16 ../src/parole-player.c:1210
 #: ../src/parole-disc-menu.c:114
@@ -87,7 +87,7 @@ msgstr "Повтор"
 
 #: ../data/interfaces/parole.ui.h:18
 msgid "Select Track"
-msgstr "Выбрать трек"
+msgstr "Выбрать дорожку"
 
 #: ../data/interfaces/parole.ui.h:19
 msgid "Shuffle"
@@ -155,11 +155,11 @@ msgstr "<b>Сайт:</b>"
 
 #: ../data/interfaces/plugins.ui.h:4
 msgid "Media Player plugins"
-msgstr "Установленные плагины медиаплейера"
+msgstr "Установленные модули медиаплейера"
 
 #: ../data/interfaces/plugins.ui.h:5
 msgid "Parole Plugins"
-msgstr "Плагины parole"
+msgstr "Модули Parole"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "<b>Audio</b>"
@@ -215,7 +215,7 @@ msgstr "Установки медиаплейера"
 
 #: ../data/interfaces/parole-settings.ui.h:14
 msgid "Parole Settings"
-msgstr "Установки parole"
+msgstr "Установки Parole"
 
 #: ../data/interfaces/parole-settings.ui.h:15
 msgid "Reset To Defaults"
@@ -276,7 +276,7 @@ msgstr ""
 
 #: ../src/main.c:175
 msgid "Unknown argument "
-msgstr "Неизвестный аргумент"
+msgstr "Неизвестный аргумент: "
 
 #: ../src/main.c:212
 msgid "Open a new instance"
@@ -284,7 +284,7 @@ msgstr "Открыть новое окно"
 
 #: ../src/main.c:213
 msgid "Do not load plugins"
-msgstr "Не загружать плагины"
+msgstr "Не загружать модули"
 
 #: ../src/main.c:214
 msgid "Set Audio-CD/VCD/DVD device path"
@@ -361,7 +361,7 @@ msgstr "Отказано в доступе"
 
 #: ../src/parole-medialist.c:446
 msgid "Unknown playlist format, Please select a support playlist format"
-msgstr "Неизвестный формат списка воспроизведения, выбирите поддерживаемый формат"
+msgstr "Неизвестный формат списка воспроизведения, выберите поддерживаемый формат"
 
 #: ../src/parole-medialist.c:514 ../src/parole-player.c:1974
 msgid "Playlist"
@@ -369,11 +369,11 @@ msgstr "Список воспроизведения"
 
 #: ../src/parole-medialist.c:521
 msgid "M3U Playlists"
-msgstr "M3U списки воспроизведения"
+msgstr "M3U, списки воспроизведения"
 
 #: ../src/parole-medialist.c:529
 msgid "PLS Playlists"
-msgstr "PLS списки воспроизведения"
+msgstr "PLS, списки воспроизведения"
 
 #: ../src/parole-medialist.c:537
 msgid "Advanced Stream Redirector"
@@ -439,7 +439,7 @@ msgstr "Остановлено"
 
 #: ../src/parole-statusbar.c:104
 msgid "Finished"
-msgstr "Закончено"
+msgstr "Завершено"
 
 #: ../src/parole-statusbar.c:114 ../src/parole-statusbar.c:124
 msgid "Paused"
@@ -473,39 +473,39 @@ msgstr "Текущая локаль"
 #: ../src/parole-subtitle-encoding.c:168 ../src/parole-subtitle-encoding.c:170
 #: ../src/parole-subtitle-encoding.c:172 ../src/parole-subtitle-encoding.c:174
 msgid "Arabic"
-msgstr "Арабский"
+msgstr "Арабская"
 
 #: ../src/parole-subtitle-encoding.c:177
 msgid "Armenian"
-msgstr "Армянский"
+msgstr "Армянская"
 
 #: ../src/parole-subtitle-encoding.c:180 ../src/parole-subtitle-encoding.c:182
 #: ../src/parole-subtitle-encoding.c:184
 msgid "Baltic"
-msgstr "Индо-европейские"
+msgstr "Прибалтийская"
 
 #: ../src/parole-subtitle-encoding.c:187
 msgid "Celtic"
-msgstr "Кельтский"
+msgstr "Кельтская"
 
 #: ../src/parole-subtitle-encoding.c:190 ../src/parole-subtitle-encoding.c:192
 #: ../src/parole-subtitle-encoding.c:194 ../src/parole-subtitle-encoding.c:196
 msgid "Central European"
-msgstr "Центрально-европейские"
+msgstr "Центрально-европейская"
 
 #: ../src/parole-subtitle-encoding.c:199 ../src/parole-subtitle-encoding.c:201
 #: ../src/parole-subtitle-encoding.c:203 ../src/parole-subtitle-encoding.c:205
 msgid "Chinese Simplified"
-msgstr "Китайский упрощенный"
+msgstr "Китайская упрощенная"
 
 #: ../src/parole-subtitle-encoding.c:208 ../src/parole-subtitle-encoding.c:210
 #: ../src/parole-subtitle-encoding.c:212
 msgid "Chinese Traditional"
-msgstr "Китайский традиционный"
+msgstr "Китайская традиционная"
 
 #: ../src/parole-subtitle-encoding.c:215
 msgid "Croatian"
-msgstr "Хорватский"
+msgstr "Хорватская"
 
 #: ../src/parole-subtitle-encoding.c:218 ../src/parole-subtitle-encoding.c:220
 #: ../src/parole-subtitle-encoding.c:222 ../src/parole-subtitle-encoding.c:224
@@ -523,12 +523,12 @@ msgstr "Кириллица/Украина"
 
 #: ../src/parole-subtitle-encoding.c:239
 msgid "Georgian"
-msgstr "Грузинский"
+msgstr "Грузинская"
 
 #: ../src/parole-subtitle-encoding.c:242 ../src/parole-subtitle-encoding.c:244
 #: ../src/parole-subtitle-encoding.c:246
 msgid "Greek"
-msgstr "Греческий"
+msgstr "Греческая"
 
 #: ../src/parole-subtitle-encoding.c:249
 msgid "Gujarati"
@@ -553,21 +553,21 @@ msgstr "Хинди"
 
 #: ../src/parole-subtitle-encoding.c:270
 msgid "Icelandic"
-msgstr "Исландский"
+msgstr "Исландская"
 
 #: ../src/parole-subtitle-encoding.c:273 ../src/parole-subtitle-encoding.c:275
 #: ../src/parole-subtitle-encoding.c:277
 msgid "Japanese"
-msgstr "Японский"
+msgstr "Японская"
 
 #: ../src/parole-subtitle-encoding.c:280 ../src/parole-subtitle-encoding.c:282
 #: ../src/parole-subtitle-encoding.c:284 ../src/parole-subtitle-encoding.c:286
 msgid "Korean"
-msgstr "Корейский"
+msgstr "Корейская"
 
 #: ../src/parole-subtitle-encoding.c:289
 msgid "Nordic"
-msgstr "Сканское наречие"
+msgstr "Скандинавская"
 
 #: ../src/parole-subtitle-encoding.c:292
 msgid "Persian"
@@ -575,20 +575,20 @@ msgstr "Фарси"
 
 #: ../src/parole-subtitle-encoding.c:295 ../src/parole-subtitle-encoding.c:297
 msgid "Romanian"
-msgstr "Румынский"
+msgstr "Румынская"
 
 #: ../src/parole-subtitle-encoding.c:300
 msgid "South European"
-msgstr "Южно-европейские"
+msgstr "Южно-европейская"
 
 #: ../src/parole-subtitle-encoding.c:303
 msgid "Thai"
-msgstr "Тайский"
+msgstr "Тайская"
 
 #: ../src/parole-subtitle-encoding.c:306 ../src/parole-subtitle-encoding.c:308
 #: ../src/parole-subtitle-encoding.c:310 ../src/parole-subtitle-encoding.c:312
 msgid "Turkish"
-msgstr "Турецкий"
+msgstr "Турецкая"
 
 #: ../src/parole-subtitle-encoding.c:315 ../src/parole-subtitle-encoding.c:317
 #: ../src/parole-subtitle-encoding.c:319 ../src/parole-subtitle-encoding.c:321
@@ -600,12 +600,12 @@ msgstr "Юникод"
 #: ../src/parole-subtitle-encoding.c:330 ../src/parole-subtitle-encoding.c:332
 #: ../src/parole-subtitle-encoding.c:334
 msgid "Western"
-msgstr "Западно-европейский"
+msgstr "Западно-европейская"
 
 #: ../src/parole-subtitle-encoding.c:337 ../src/parole-subtitle-encoding.c:339
 #: ../src/parole-subtitle-encoding.c:341
 msgid "Vietnamese"
-msgstr "Вьетнамский"
+msgstr "Вьетнамская"
 
 #: ../src/parole-open-location.c:181
 msgid "Open location..."
@@ -621,7 +621,7 @@ msgstr "Очистить историю"
 
 #: ../src/parole-disc-menu.c:130
 msgid "Playing Track"
-msgstr "Проигрывается трек"
+msgstr "Проигрывается дорожка"
 
 #: ../src/parole-disc-menu.c:194
 #, c-format
@@ -642,7 +642,7 @@ msgstr "Неизвестный"
 
 #: ../src/parole-plugins-manager.c:412
 msgid "No installed plugins found on this system"
-msgstr "В Вашей системе нет установленых плагинов"
+msgstr "В Вашей системе нет установленых модулей"
 
 #: ../parole/parole-filters.c:64
 msgid "Audio"
