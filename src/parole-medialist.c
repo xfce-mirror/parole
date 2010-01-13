@@ -1302,7 +1302,10 @@ gboolean parole_media_list_add_files (ParoleMediaList *list, gchar **filenames)
     
     for ( i = 0; filenames && filenames[i] != NULL; i++)
     {
-	if ( g_file_test (filenames[i], G_FILE_TEST_IS_REGULAR ) )
+	/**
+	 * File on disk
+	 **/
+	if ( g_file_test (filenames[i], G_FILE_TEST_EXISTS ) )
 	{
 	    added += parole_media_list_add_by_path (list, filenames[i], i == 0 ? TRUE : FALSE);
 	}
