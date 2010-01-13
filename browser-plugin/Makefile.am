@@ -25,7 +25,6 @@ INCLUDES =                                              \
         -DPACKAGE_LOCALE_DIR=\"$(localedir)\"           \
         -DG_LOG_DOMAIN=\"parole-browser-plugin\"        \
         -DLIBEXECDIR="\"$(libexecdir)\""                \
-	$(GECKO_CFLAGS)					\
         $(GTK_CFLAGS)                                   \
         $(DBUS_GLIB_CFLAGS)				\
 	$(DEFINES)
@@ -45,7 +44,11 @@ parole_player_so_SOURCES =     				\
 	np_entry.cpp    				\
 	npn_gate.cpp					\
 	npp_gate.cpp					\
-	npupp.h
+	npupp.h						\
+	npapi.h						\
+	npfunctions.h					\
+	npruntime.h					\
+	nptypes.h
 
 parole_player_so_CFLAGS =                               \
 	-fPIC
