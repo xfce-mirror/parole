@@ -150,11 +150,15 @@ static void parole_statusbar_set_text (ParoleStatusbar *bar, const ParoleStream 
 	if ( G_LIKELY (live == FALSE) )
 	{
 	    if ( title == NULL )
-	    {
-		filename = g_filename_from_uri (uri, NULL, NULL);
-		title = g_filename_display_basename (filename);
-		g_free (filename);
-	    }
+            {
+                filename = g_filename_from_uri (uri, NULL, NULL);
+                if (filename )
+                {
+                    title = g_filename_display_basename (filename);
+                    g_free (filename);
+                }
+            }
+
 	    text = g_strdup (title != NULL ? title : filename);
 	    gtk_label_set_text (GTK_LABEL (bar->priv->label_text), text);
 	}
