@@ -207,7 +207,6 @@ AM_CONDITIONAL([ENABLE_BROWSER_PLUGIN], [test x"$ac_browser_plugin" = x"yes"])
 AC_MSG_RESULT([$ac_browser_plugin])
 if test x"$ac_browser_plugin" = x"yes"; then
     BROWSER_PLUGIN_DIR="${BROWSER_PLUGIN_DIR:-"\${libdir}/mozilla/plugins"}"
-    XDT_CHECK_PACKAGE([GECKO], [libxul], [])
     AC_ARG_VAR([BROWSER_PLUGIN_DIR],[Where to install the browser plugin])
     AC_DEFINE(BUILD_BROWSER_PLUGIN, 1, [whether to build with browser plugin support])
 fi

@@ -45,7 +45,11 @@ parole_player_so_SOURCES =     				\
 	np_entry.cpp    				\
 	npn_gate.cpp					\
 	npp_gate.cpp					\
-	npupp.h
+	npupp.h						\
+	npapi.h						\
+	npfunctions.h					\
+	npruntime.h					\
+	nptypes.h
 
 parole_player_so_CFLAGS =                               \
 	-fPIC
