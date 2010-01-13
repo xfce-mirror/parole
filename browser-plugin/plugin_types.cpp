@@ -100,7 +100,7 @@ gchar *GetMIMEDescription()
 			      "video/quicktime:sdp:Quicktime - Session Description Protocol;"
 			      "application/x-quicktimeplayer:mov:Quicktime;";
 
-    g_debug ("GetMimeDescription");
+    //g_debug ("GetMimeDescription");
 			     
     return g_strdup (mime_types_list);
 }

@@ -25,7 +25,6 @@ INCLUDES =                                              \
         -DPACKAGE_LOCALE_DIR=\"$(localedir)\"           \
         -DG_LOG_DOMAIN=\"parole-browser-plugin\"        \
         -DLIBEXECDIR="\"$(libexecdir)\""                \
-	$(GECKO_CFLAGS)					\
         $(GTK_CFLAGS)                                   \
         $(DBUS_GLIB_CFLAGS)				\
 	$(DEFINES)

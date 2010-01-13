@@ -83,7 +83,7 @@ parole_plugin_ping (gpointer data)
 static void
 parole_plugin_player_exiting_cb (DBusGProxy *proxy, gpointer data)
 {
-    g_debug ("Player exiting");
+    //g_debug ("Player exiting");
     
     CPlugin *plugin = (CPlugin*)data;
     
@@ -95,7 +95,7 @@ parole_plugin_player_exiting_cb (DBusGProxy *proxy, gpointer data)
 static void
 parole_plugin_player_ready_cb (DBusGProxy *proxy, gpointer data)
 {
-    g_debug ("Player ready");
+    //g_debug ("Player ready");
     
     CPlugin *plugin = (CPlugin*)data;
     
@@ -115,7 +115,7 @@ parole_plugin_player_ready_cb (DBusGProxy *proxy, gpointer data)
 //
 CPlugin::CPlugin (NPP pNPInstance)
 {
-    g_debug ("Constructor");
+    //g_debug ("Constructor");
     
     mInstance = pNPInstance;
     mInitialized = TRUE;
@@ -199,7 +199,7 @@ void CPlugin::SendPlay (const gchar *url)
     GError *error = NULL;
     g_return_if_fail (proxy);
     
-    g_debug ("Sending play request of stream %s", url);
+    //g_debug ("Sending play request of stream %s", url);
     dbus_g_proxy_call (proxy, "PlayUrl", &error,
 		       G_TYPE_STRING, url,
 		       G_TYPE_INVALID,
@@ -221,7 +221,7 @@ CPlugin::SendList (const gchar *filename)
     GError *error = NULL;
     g_return_if_fail (proxy);
     
-    g_debug ("Sending play request of playlist %s", filename);
+    //g_debug ("Sending play request of playlist %s", filename);
     
     dbus_g_proxy_call (proxy, "PlayList", &error,
 		       G_TYPE_STRING, filename,
@@ -309,7 +309,7 @@ void CPlugin::GetProxy ()
 
 NPError CPlugin::SetWindow(NPWindow * aWindow)
 {
-    g_debug ("SetWindow");
+    //g_debug ("SetWindow");
     
     if ( aWindow == NULL )
 	return NPERR_NO_ERROR;
@@ -326,11 +326,11 @@ NPError CPlugin::SetWindow(NPWindow * aWindow)
 
 void CPlugin::shut()
 {
-    g_debug ("Shut");
+    //g_debug ("Shut");
     
     if ( player_ready )
     {
-	g_debug ("Sending Stop signal");
+	//g_debug ("Sending Stop signal");
         dbus_g_proxy_call_no_reply (proxy, "Stop",
                                     G_TYPE_INVALID,
                                     G_TYPE_INVALID);
@@ -354,7 +354,7 @@ void CPlugin::StopPlayer ()
 	    do
 	    {
 		GError *error = NULL;
-		g_debug ("Sending Quit message");
+		//g_debug ("Sending Quit message");
 		dbus_g_proxy_call (proxy, "Quit", &error,
 				   G_TYPE_INVALID,
 				   G_TYPE_INVALID);
@@ -366,7 +366,7 @@ void CPlugin::StopPlayer ()
 		if ( error )
 		{
 #ifdef DEBUG
-		    g_debug ("Failed to stop the backend via D-Bus %s", error->message);
+		    //g_debug ("Failed to stop the backend via D-Bus %s", error->message);
 #endif
 		    if ( g_error_matches (error, DBUS_GERROR, DBUS_GERROR_NO_REPLY ) ||
 			 g_error_matches (error, DBUS_GERROR, DBUS_GERROR_SERVICE_UNKNOWN) )
@@ -375,7 +375,7 @@ void CPlugin::StopPlayer ()
 			g_main_context_iteration(NULL, FALSE);
 			g_usleep (100000);
 			num_tries++;
-			g_debug ("No reply, probably not ready, re-trying");
+			//g_debug ("No reply, probably not ready, re-trying");
 		    }
 		    else
 			break;
@@ -399,7 +399,7 @@ NPError CPlugin::NewStream (NPMIMEType type, NPStream * stream, NPBool seekable,
     if ( murl == NULL )
     {
 	murl = g_strdup (stream->url);
-	g_debug ("NewStream=%s", murl);
+	//g_debug ("NewStream=%s", murl);
     }
     
     return NPERR_NO_ERROR;
@@ -412,17 +412,17 @@ NPError CPlugin::DestroyStream(NPStream * stream, NPError reason)
 
 void CPlugin::URLNotify (const char *url, NPReason reason, void *notifyData)
 {
-    g_debug ("Url notify %s reason %i", url, reason);
+    //g_debug ("Url notify %s reason %i", url, reason);
 }
 
 void CPlugin::StreamAsFile (NPStream * stream, const char *fname)
 {
-    g_debug ("StreamAsFile url=%s fname=%s", stream->url, fname);
+    //g_debug ("StreamAsFile url=%s fname=%s", stream->url, fname);
 }
 
 int32_t CPlugin::WriteReady (NPStream * stream)
 {
-    g_debug ("WriteReady url=%s", stream->url);
+    //g_debug ("WriteReady url=%s", stream->url);
     
     return  player_ready ? STREAMBUFSIZE  : 0;
 }
@@ -436,7 +436,7 @@ int32_t CPlugin::Write (NPStream * stream, int32_t offset, int32_t len, void *bu
 	gchar c;
 	
 	/* Check if the url is a playlist */
-	g_debug ("Checking if stream is a playlist");
+	//g_debug ("Checking if stream is a playlist");
 	is_playlist = TRUE;
 	char *data = (char *) buffer;
 	for ( int32_t i = 0; i < len; i++)
@@ -466,7 +466,7 @@ int32_t CPlugin::Write (NPStream * stream, int32_t offset, int32_t len, void *bu
 	    fseek (cache, offset, SEEK_SET);
 	    wrotebytes += fwrite (buffer, 1, len, cache);
 #ifdef DEBUG
-	    g_debug ("Wrotebytes=%d offset=%d data=%s", wrotebytes, offset, (gchar*)buffer);
+	    //g_debug ("Wrotebytes=%d offset=%d data=%s", wrotebytes, offset, (gchar*)buffer);
 #endif
 	}
 	

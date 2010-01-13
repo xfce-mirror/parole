@@ -69,8 +69,6 @@ parole_file_finalize (GObject *object)
     file = PAROLE_FILE (object);
     priv = PAROLE_FILE_GET_PRIVATE (file);
     
-    g_debug ("File object finalized %s", priv->display_name);
-    
     if ( priv->filename )
 	g_free (priv->filename);
 
