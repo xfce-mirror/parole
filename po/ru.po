@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Parole 0.1.99git.rALT0.4\n"
-"Report-Msgid-Bugs-To: http://bugzilla.xfce.org\n"
-"POT-Creation-Date: 2010-01-05 10:27-0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-01-13 19:55+0100\n"
 "PO-Revision-Date: 2009-12-11 15:06+0300\n"
 "Last-Translator: Anatoly Chernov <aichernov@umail.ru>\n"
 "Language-Team: Russia, ALT LInux\n"
@@ -39,85 +39,93 @@ msgid "Chapter Menu"
 msgstr "Меню раздела"
 
 #: ../data/interfaces/parole.ui.h:7
+msgid "DVD"
+msgstr "DVD"
+
+#: ../data/interfaces/parole.ui.h:8
 msgid "DVD Menu"
 msgstr "DVD Меню"
 
-#: ../data/interfaces/parole.ui.h:8
+#: ../data/interfaces/parole.ui.h:9
+msgid "From ISO image"
+msgstr "Из ISO-образа"
+
+#: ../data/interfaces/parole.ui.h:10
 msgid "Media player"
 msgstr "Media player"
 
-#: ../data/interfaces/parole.ui.h:9
+#: ../data/interfaces/parole.ui.h:11
 msgid "Mute"
 msgstr "Приглушить"
 
-#: ../data/interfaces/parole.ui.h:10 ../src/parole-player.c:1106
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:1198
 #: ../src/parole-disc-menu.c:113
 msgid "Next Chapter"
 msgstr "След. раздел"
 
-#: ../data/interfaces/parole.ui.h:11
+#: ../data/interfaces/parole.ui.h:13
 msgid "None"
 msgstr "Нет"
 
-#: ../data/interfaces/parole.ui.h:12 ../data/desktop/parole.desktop.in.in.h:1
+#: ../data/interfaces/parole.ui.h:14 ../data/desktop/parole.desktop.in.in.h:1
 #: ../src/parole-about.c:70 ../plugins/window-title/window-title-provider.c:58
 msgid "Parole Media Player"
 msgstr "Parole Media Player"
 
-#: ../data/interfaces/parole.ui.h:13
+#: ../data/interfaces/parole.ui.h:15
 msgid "Plugins"
 msgstr "Плагины..."
 
-#: ../data/interfaces/parole.ui.h:14 ../src/parole-player.c:1118
+#: ../data/interfaces/parole.ui.h:16 ../src/parole-player.c:1210
 #: ../src/parole-disc-menu.c:114
 msgid "Previous Chapter"
 msgstr "Пред. раздел"
 
-#: ../data/interfaces/parole.ui.h:15
+#: ../data/interfaces/parole.ui.h:17
 msgid "Repeat"
 msgstr "Повтор"
 
-#: ../data/interfaces/parole.ui.h:16
+#: ../data/interfaces/parole.ui.h:18
 msgid "Select Track"
 msgstr "Выбрать трек"
 
-#: ../data/interfaces/parole.ui.h:17
+#: ../data/interfaces/parole.ui.h:19
 msgid "Shuffle"
 msgstr "Случайный выбор"
 
-#: ../data/interfaces/parole.ui.h:18
+#: ../data/interfaces/parole.ui.h:20
 msgid "Sound"
 msgstr "Звук"
 
-#: ../data/interfaces/parole.ui.h:19
+#: ../data/interfaces/parole.ui.h:21
 msgid "Square"
 msgstr "Квадрат"
 
-#: ../data/interfaces/parole.ui.h:20
+#: ../data/interfaces/parole.ui.h:22
 msgid "Volume Down"
 msgstr "Тише"
 
-#: ../data/interfaces/parole.ui.h:21
+#: ../data/interfaces/parole.ui.h:23
 msgid "Volume Up"
 msgstr "Громче"
 
-#: ../data/interfaces/parole.ui.h:22
+#: ../data/interfaces/parole.ui.h:24
 msgid "_Edit"
 msgstr "_Правка"
 
-#: ../data/interfaces/parole.ui.h:23
+#: ../data/interfaces/parole.ui.h:25
 msgid "_Help"
 msgstr "_Помощь"
 
-#: ../data/interfaces/parole.ui.h:24
+#: ../data/interfaces/parole.ui.h:26
 msgid "_Media"
 msgstr "_Фильм"
 
-#: ../data/interfaces/parole.ui.h:25
+#: ../data/interfaces/parole.ui.h:27
 msgid "_Open location"
 msgstr "_Открыть адрес..."
 
-#: ../data/interfaces/parole.ui.h:26
+#: ../data/interfaces/parole.ui.h:28
 msgid "_View"
 msgstr "_Вид"
 
@@ -222,22 +230,26 @@ msgid "Visualization type:"
 msgstr "Тип визуализации:"
 
 #: ../data/interfaces/save-playlist.ui.h:1
+msgid "By Extension"
+msgstr "По расширению"
+
+#: ../data/interfaces/save-playlist.ui.h:2
 msgid "Select File Types (By Extension)"
 msgstr "Выбрать тип файла (по расширению)"
 
-#: ../gst/parole-gst.c:1494
+#: ../gst/parole-gst.c:1498
 msgid "The stream is taking too much time to load"
 msgstr "Поток требует слишком много времени для загрузки"
 
-#: ../gst/parole-gst.c:1494
+#: ../gst/parole-gst.c:1498
 msgid "Stop"
 msgstr "Стоп"
 
-#: ../gst/parole-gst.c:1683
+#: ../gst/parole-gst.c:1687
 msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr "Невозможно загрузить плагин GStreamer 'playbin'. Проверьте, все ли необходимые пакеты у вас установлены."
 
-#: ../gst/parole-gst.c:1703
+#: ../gst/parole-gst.c:1707
 msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr "Невозможно загрузить плагин GStreamer для работы с видео. Проверьте, все ли необходимые пакеты у вас установлены."
 
@@ -261,6 +273,10 @@ msgstr ""
 "\n"
 "Лицензия GNU GPL.\n"
 "\n"
+
+#: ../src/main.c:175
+msgid "Unknown argument "
+msgstr "Неизвестный аргумент"
 
 #: ../src/main.c:212
 msgid "Open a new instance"
@@ -347,7 +363,7 @@ msgstr "Отказано в доступе"
 msgid "Unknown playlist format, Please select a support playlist format"
 msgstr "Неизвестный формат списка воспроизведения, выбирите поддерживаемый формат"
 
-#: ../src/parole-medialist.c:514 ../src/parole-player.c:1882
+#: ../src/parole-medialist.c:514 ../src/parole-player.c:1974
 msgid "Playlist"
 msgstr "Список воспроизведения"
 
@@ -375,28 +391,40 @@ msgstr "Запомнить список воспроизведения"
 msgid "Media list"
 msgstr "Список файлов"
 
-#: ../src/parole-player.c:322
+#: ../src/parole-player.c:333
 msgid "Hide playlist"
 msgstr "Убрать список воспроизведения"
 
-#: ../src/parole-player.c:331
+#: ../src/parole-player.c:342
 msgid "Show playlist"
 msgstr "Показать список воспроизведения"
 
-#: ../src/parole-player.c:551
+#: ../src/parole-player.c:375
+msgid "Open ISO image"
+msgstr "Открыть ISO-образ"
+
+#: ../src/parole-player.c:392
+msgid "CD image"
+msgstr "Образ CD"
+
+#: ../src/parole-player.c:392
+msgid "DVD image"
+msgstr "Образ DVD"
+
+#: ../src/parole-player.c:643
 #: ../browser-plugin/media-plugin/parole-plugin-player.c:300
 msgid "Media stream is not seekable"
 msgstr "Поток недоступен для просмотра"
 
 #. * Next chapter menu item
 #. 
-#: ../src/parole-player.c:1106 ../src/parole-disc-menu.c:122
+#: ../src/parole-player.c:1198 ../src/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr "Следующий трек"
 
 #. * Previous chapter menu item
 #. 
-#: ../src/parole-player.c:1118 ../src/parole-disc-menu.c:123
+#: ../src/parole-player.c:1210 ../src/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr "Предыдущий трек"
 
@@ -421,7 +449,7 @@ msgstr "Пауза"
 msgid "Playing"
 msgstr "Проигрывается: "
 
-#: ../src/parole-statusbar.c:164
+#: ../src/parole-statusbar.c:168
 msgid "Live stream:"
 msgstr "Поток:"
 
@@ -434,7 +462,7 @@ msgstr "Автор/Майнтейнер"
 msgid "Translator (%s)"
 msgstr "Переводчик (%s)"
 
-#: ../src/parole-disc.c:202
+#: ../src/parole-disc.c:227
 msgid "Play Disc"
 msgstr "Проигрывать диск"
 
@@ -487,7 +515,7 @@ msgstr "Кириллица"
 
 #: ../src/parole-subtitle-encoding.c:231
 msgid "Cyrillic/Russian"
-msgstr "Кириллица/Росиия"
+msgstr "Кириллица/Россия"
 
 #: ../src/parole-subtitle-encoding.c:234 ../src/parole-subtitle-encoding.c:236
 msgid "Cyrillic/Ukrainian"
@@ -508,7 +536,7 @@ msgstr "Гуджарати"
 
 #: ../src/parole-subtitle-encoding.c:252
 msgid "Gurmukhi"
-msgstr "Гурмукхи"
+msgstr "Гурмухи"
 
 #: ../src/parole-subtitle-encoding.c:255 ../src/parole-subtitle-encoding.c:257
 #: ../src/parole-subtitle-encoding.c:259 ../src/parole-subtitle-encoding.c:261
@@ -543,7 +571,7 @@ msgstr "Сканское наречие"
 
 #: ../src/parole-subtitle-encoding.c:292
 msgid "Persian"
-msgstr "Парси́"
+msgstr "Фарси"
 
 #: ../src/parole-subtitle-encoding.c:295 ../src/parole-subtitle-encoding.c:297
 msgid "Romanian"
@@ -572,7 +600,7 @@ msgstr "Юникод"
 #: ../src/parole-subtitle-encoding.c:330 ../src/parole-subtitle-encoding.c:332
 #: ../src/parole-subtitle-encoding.c:334
 msgid "Western"
-msgstr "Австралийские наречия"
+msgstr "Западно-европейский"
 
 #: ../src/parole-subtitle-encoding.c:337 ../src/parole-subtitle-encoding.c:339
 #: ../src/parole-subtitle-encoding.c:341
@@ -598,7 +626,7 @@ msgstr "Проигрывается трек"
 #: ../src/parole-disc-menu.c:194
 #, c-format
 msgid "Track %i"
-msgstr "Трек %i"
+msgstr "Дорожка %i"
 
 #: ../src/parole-plugins-manager.c:297 ../src/parole-plugins-manager.c:433
 msgid "Visit Website"
@@ -678,7 +706,7 @@ msgstr "Свойства потока"
 
 #: ../plugins/tray/tray-provider.c:262
 msgid "<b>Playing:</b>"
-msgstr "<b>Проигрывание:</b>"
+msgstr "<b>Проигрывается:</b>"
 
 #: ../plugins/tray/tray-provider.c:262
 msgid "<b>Duration:</b>"
@@ -714,11 +742,11 @@ msgstr "Запомнить список воспроизведения"
 
 #: ../plugins/tray/system-tray.desktop.in.h:1
 msgid "Show icon in the system tray"
-msgstr "Показать иконку плейера в системном лотке"
+msgstr "Показать значок плейера в системном лотке"
 
 #: ../plugins/tray/system-tray.desktop.in.h:2
 msgid "Tray icon"
-msgstr "Иконка в системном лотке"
+msgstr "Значок в системном лотке"
 
 #: ../plugins/window-title/window-title.desktop.in.h:1
 msgid "Set the main window name to the current playing media name."
@@ -730,7 +758,7 @@ msgstr "Заголовок окна"
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:1
 msgid "Inhibit Power Manager from suspending the machine while playing DVD."
-msgstr "Препятствовать засыпанию компъютера при проигрывании DVD"
+msgstr "Препятствовать засыпанию компьютера при проигрывании DVD"
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
@@ -765,10 +793,3 @@ msgstr "Полноэкранный режим"
 #: ../browser-plugin/media-plugin/parole-plugin-player.c:455
 msgid "Copy url"
 msgstr "Копировать адрес"
-
-#: ../src/main.c:175
-msgid "Unknown argument "
-msgstr "Неизвестный аргумент"
-
-#~ msgid "By Extension"
-#~ msgstr "По расширению"
