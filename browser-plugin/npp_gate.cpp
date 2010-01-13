@@ -71,7 +71,6 @@ NPError NPP_New(NPMIMEType pluginType,
 
     NPError rv = NPERR_NO_ERROR;
 
-    printf("NPP_New called\n");
     CPlugin *pPlugin = new CPlugin(instance);
     if (pPlugin == NULL)
         return NPERR_OUT_OF_MEMORY_ERROR;
@@ -132,7 +131,6 @@ NPError NPP_SetWindow(NPP instance, NPWindow * pNPWindow)
 
     // window resized
     if (pPlugin->isInitialized() && (pNPWindow->window != NULL)) {
-        printf("Window resized\n");
         pPlugin->SetWindow(pNPWindow);
         return NPERR_NO_ERROR;
     }
