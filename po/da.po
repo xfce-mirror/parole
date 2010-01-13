@@ -1,14 +1,14 @@
 # Danish translation of parole.
-# Copyright (C) 2009 parole
+# Copyright (C) 2010 parole
 # This file is distributed under the same license as the parole package.
-# Per Kongstad <p_kongstad@op.pl>, 2009.
+# Per Kongstad <p_kongstad@op.pl>, 2009, 10
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: parole 0.1.99\n"
+"Project-Id-Version: parole 0.2.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-10 14:17+0100\n"
-"PO-Revision-Date: 2009-12-10 16:30+0100\n"
+"POT-Creation-Date: 2010-01-13 19:55+0100\n"
+"PO-Revision-Date: 2010-01-13 20:09+0100\n"
 "Last-Translator: Per Kongstad <p_kongstad@op.pl>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -43,89 +43,97 @@ msgid "Chapter Menu"
 msgstr "Afsnitsmenu"
 
 #: ../data/interfaces/parole.ui.h:7
+msgid "DVD"
+msgstr "Dvd"
+
+#: ../data/interfaces/parole.ui.h:8
 msgid "DVD Menu"
 msgstr "Dvd-menu"
 
-#: ../data/interfaces/parole.ui.h:8
+#: ../data/interfaces/parole.ui.h:9
+msgid "From ISO image"
+msgstr "Fra ISO-billede"
+
+#: ../data/interfaces/parole.ui.h:10
 msgid "Media player"
 msgstr "Medieafspiller"
 
-#: ../data/interfaces/parole.ui.h:9
+#: ../data/interfaces/parole.ui.h:11
 msgid "Mute"
 msgstr "Slå lyd fra"
 
-#: ../data/interfaces/parole.ui.h:10
-#: ../src/parole-player.c:1098
+#: ../data/interfaces/parole.ui.h:12
+#: ../src/parole-player.c:1198
 #: ../src/parole-disc-menu.c:113
 msgid "Next Chapter"
 msgstr "Næste kapitel"
 
-#: ../data/interfaces/parole.ui.h:11
+#: ../data/interfaces/parole.ui.h:13
 msgid "None"
 msgstr "Ingen"
 
-#: ../data/interfaces/parole.ui.h:12
+#: ../data/interfaces/parole.ui.h:14
 #: ../data/desktop/parole.desktop.in.in.h:1
 #: ../src/parole-about.c:70
 #: ../plugins/window-title/window-title-provider.c:58
 msgid "Parole Media Player"
 msgstr "Parole medieafspiller"
 
-#: ../data/interfaces/parole.ui.h:13
+#: ../data/interfaces/parole.ui.h:15
 msgid "Plugins"
 msgstr "Udvidelsesmoduler"
 
-#: ../data/interfaces/parole.ui.h:14
-#: ../src/parole-player.c:1110
+#: ../data/interfaces/parole.ui.h:16
+#: ../src/parole-player.c:1210
 #: ../src/parole-disc-menu.c:114
 msgid "Previous Chapter"
 msgstr "Tidligere kapitel"
 
-#: ../data/interfaces/parole.ui.h:15
+#: ../data/interfaces/parole.ui.h:17
 msgid "Repeat"
 msgstr "Gentag"
 
-#: ../data/interfaces/parole.ui.h:16
+#: ../data/interfaces/parole.ui.h:18
 msgid "Select Track"
 msgstr "Vælg spor"
 
-#: ../data/interfaces/parole.ui.h:17
+#: ../data/interfaces/parole.ui.h:19
 msgid "Shuffle"
 msgstr "Blande"
 
-#: ../data/interfaces/parole.ui.h:18
+#: ../data/interfaces/parole.ui.h:20
 msgid "Sound"
 msgstr "Lyd"
 
-#: ../data/interfaces/parole.ui.h:19
+#: ../data/interfaces/parole.ui.h:21
 msgid "Square"
 msgstr "Kvadratisk"
 
-#: ../data/interfaces/parole.ui.h:20
+#: ../data/interfaces/parole.ui.h:22
 msgid "Volume Down"
 msgstr "Lydstyrke ned"
 
-#: ../data/interfaces/parole.ui.h:21
+#: ../data/interfaces/parole.ui.h:23
 msgid "Volume Up"
 msgstr "Lydstyrke op"
 
-#: ../data/interfaces/parole.ui.h:22
+#: ../data/interfaces/parole.ui.h:24
 msgid "_Edit"
 msgstr "_Redigér"
 
-#: ../data/interfaces/parole.ui.h:23
+#: ../data/interfaces/parole.ui.h:25
 msgid "_Help"
 msgstr "_Hjælp"
 
-#: ../data/interfaces/parole.ui.h:24
+#: ../data/interfaces/parole.ui.h:26
 msgid "_Media"
 msgstr "_Medie"
 
-#: ../data/interfaces/parole.ui.h:25
+#: ../data/interfaces/parole.ui.h:27
 msgid "_Open location"
 msgstr "_Åbn sted"
 
-#: ../data/interfaces/parole.ui.h:26
+#: ../data/interfaces/parole.ui.h:28
 msgid "_View"
 msgstr "_Vis"
 
@@ -237,19 +245,19 @@ msgstr "Efter filendelse"
 msgid "Select File Types (By Extension)"
 msgstr "Vælg filtyper (efter filendelse)"
 
-#: ../gst/parole-gst.c:1494
+#: ../gst/parole-gst.c:1498
 msgid "The stream is taking too much time to load"
 msgstr "Det tager for lang tid at indlæse strømmen"
 
-#: ../gst/parole-gst.c:1494
+#: ../gst/parole-gst.c:1498
 msgid "Stop"
 msgstr "Stop"
 
-#: ../gst/parole-gst.c:1683
+#: ../gst/parole-gst.c:1687
 msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr "Kunne ikke indlæse udvidelsesmodulet playbin GStreamer. Kontrollér din installation af GStreamer"
 
-#: ../gst/parole-gst.c:1703
+#: ../gst/parole-gst.c:1707
 msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr "Kunne ikke indlæse udvidelsesmodulet video GStreamer. Kontrollér din installation af GStreamer"
 
@@ -364,7 +372,7 @@ msgid "Unknown playlist format, Please select a support playlist format"
 msgstr "Ukendt format af spilleliste. Vælg et understøttet format til spilleliste"
 
 #: ../src/parole-medialist.c:514
-#: ../src/parole-player.c:1852
+#: ../src/parole-player.c:1974
 msgid "Playlist"
 msgstr "Spilleliste"
 
@@ -392,23 +400,35 @@ msgstr "Husk spilleliste"
 msgid "Media list"
 msgstr "Medieliste"
 
-#: ../src/parole-player.c:318
+#: ../src/parole-player.c:333
 msgid "Hide playlist"
 msgstr "Skjul spilleliste"
 
-#: ../src/parole-player.c:327
+#: ../src/parole-player.c:342
 msgid "Show playlist"
 msgstr "Vis spilleliste"
 
-#: ../src/parole-player.c:543
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:297
+#: ../src/parole-player.c:375
+msgid "Open ISO image"
+msgstr "Åbn ISO-billede"
+
+#: ../src/parole-player.c:392
+msgid "CD image"
+msgstr "Cd-billede"
+
+#: ../src/parole-player.c:392
+msgid "DVD image"
+msgstr "Dvd-billede"
+
+#: ../src/parole-player.c:643
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:300
 msgid "Media stream is not seekable"
 msgstr "Mediestrømmen er ikke søgbar"
 
 #.
 #. * Next chapter menu item
 #.
-#: ../src/parole-player.c:1098
+#: ../src/parole-player.c:1198
 #: ../src/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr "Næste spor"
@@ -416,13 +436,13 @@ msgstr "Næste spor"
 #.
 #. * Previous chapter menu item
 #.
-#: ../src/parole-player.c:1110
+#: ../src/parole-player.c:1210
 #: ../src/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr "Forrige spor"
 
 #: ../src/parole-statusbar.c:61
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:590
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:593
 msgid "Buffering"
 msgstr "Opbygger buffer"
 
@@ -443,7 +463,7 @@ msgstr "Pause"
 msgid "Playing"
 msgstr "Afspiller"
 
-#: ../src/parole-statusbar.c:145
+#: ../src/parole-statusbar.c:168
 msgid "Live stream:"
 msgstr "Direkte strøm:"
 
@@ -456,7 +476,7 @@ msgstr "Forfatter/vedligeholder"
 msgid "Translator (%s)"
 msgstr "Oversætter (%s)"
 
-#: ../src/parole-disc.c:202
+#: ../src/parole-disc.c:227
 msgid "Play Disc"
 msgstr "Afspil disk"
 
@@ -812,7 +832,7 @@ msgstr "Fuldskærm"
 #.
 #. * Copy url
 #.
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:452
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:455
 msgid "Copy url"
 msgstr "Kopiér url"
 
