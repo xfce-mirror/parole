@@ -630,8 +630,8 @@ parole_gst_query_capabilities (ParoleGst *gst)
 				 NULL,
 				 NULL);
 	g_object_set (G_OBJECT (gst->priv->stream),
-	          "seekable", seekable,
-		  NULL);
+	              "seekable", seekable,
+		      NULL);
     }
     gst_query_unref (query);
 }
@@ -931,9 +931,22 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 	}
 	case GST_STATE_PAUSED:
 	{
-	    parole_gst_query_duration (gst);
-	    parole_gst_query_capabilities (gst);
-	    parole_gst_query_info (gst);
+	    if ( pending == GST_STATE_PLAYING )
+	    {
+		ParoleMediaType media_type;
+		
+		g_object_get (G_OBJECT (gst->priv->stream),
+			      "media-type", &media_type,
+			      NULL);
+		
+		if ( (media_type == PAROLE_MEDIA_TYPE_LOCAL_FILE && old == GST_STATE_READY) ||
+		      media_type != PAROLE_MEDIA_TYPE_LOCAL_FILE )
+		{
+		    parole_gst_query_duration (gst);
+		    parole_gst_query_capabilities (gst);
+		    parole_gst_query_info (gst);
+		}
+	    }
 
 	    if ( gst->priv->target == GST_STATE_PLAYING )
 	    {
