@@ -407,15 +407,15 @@ msgstr "Mostrar a lista de reprodución"
 
 #: ../src/parole-player.c:375
 msgid "Open ISO image"
-msgstr ""
+msgstr "Abrir imaxe ISO"
 
 #: ../src/parole-player.c:392
 msgid "CD image"
-msgstr ""
+msgstr "Imaxe de CD"
 
 #: ../src/parole-player.c:392
 msgid "DVD image"
-msgstr ""
+msgstr "Imaxe de DVD"
 
 #: ../src/parole-player.c:643
 #: ../browser-plugin/media-plugin/parole-plugin-player.c:300
@@ -692,7 +692,7 @@ msgstr "Xeral"
 
 #: ../plugins/properties/stream-properties-provider.c:392
 msgid "Stream doesn't support tags changes"
-msgstr ""
+msgstr "O fluxo non admite cambios de etiquetas"
 
 #: ../plugins/properties/stream-properties-provider.c:399
 msgid "Save media tags changes"
@@ -764,7 +764,7 @@ msgstr "Título da fiestra"
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:1
 msgid "Inhibit Power Manager from suspending the machine while playing DVD."
-msgstr ""
+msgstr "Evitar que o Xestor de enerxía suspenda a máquina mentres se reproducen DVDs."
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
@@ -772,11 +772,11 @@ msgstr "Engadido do xestor de enerxía"
 
 #: ../browser-plugin/media-plugin/main.c:72
 msgid "socket"
-msgstr ""
+msgstr "conectador"
 
 #: ../browser-plugin/media-plugin/main.c:72
 msgid "SOCKET ID"
-msgstr ""
+msgstr "ID CONECTADOR"
 
 #: ../browser-plugin/media-plugin/main.c:73
 msgid "url to play"
