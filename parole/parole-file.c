@@ -312,6 +312,8 @@ parole_file_init (ParoleFile *file)
  * 
  * 
  * Returns: A new #ParoleFile object.
+ * 
+ * Since: 0.2
  **/
 ParoleFile *
 parole_file_new (const gchar *filename)
@@ -321,6 +323,16 @@ parole_file_new (const gchar *filename)
     return file;
 }
 
+/**
+ * parole_file_new_with_display_name:
+ * @filename: filename.
+ * 
+ * 
+ * 
+ * Returns: A new #ParoleFile object.
+ * 
+ * Since: 0.2
+ **/
 ParoleFile *
 parole_file_new_with_display_name (const gchar *filename, const gchar *display_name)
 {
@@ -338,6 +350,8 @@ parole_file_new_with_display_name (const gchar *filename, const gchar *display_n
  *  
  * 
  * Returns: A string containing the file name.
+ * 
+ * Since: 0.2
  **/
 const gchar *
 parole_file_get_file_name (const ParoleFile *file)
@@ -353,6 +367,8 @@ parole_file_get_file_name (const ParoleFile *file)
  *  
  * 
  * Returns: A string containing the display name.
+ * 
+ * Since: 0.2
  **/
 const gchar *
 parole_file_get_display_name (const ParoleFile *file)
@@ -368,6 +384,8 @@ parole_file_get_display_name (const ParoleFile *file)
  *  
  * 
  * Returns: A string containing the file uri.
+ * 
+ * Since: 0.2
  **/
 const gchar *
 parole_file_get_uri (const ParoleFile *file)
@@ -383,6 +401,8 @@ parole_file_get_uri (const ParoleFile *file)
  *  
  * 
  * Returns: A string containing the content type of the file.
+ * 
+ * Since: 0.2
  **/
 const gchar *
 parole_file_get_content_type (const ParoleFile *file) 
