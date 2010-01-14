@@ -1,3 +1,33 @@
+0.2.0.1
+=======
+- Automatically detect disc type when parole is started with --device=/dev/sr0 without a uri
+- Make the browser plugin compatible with midori, Makefile was broken.
+- Remove border width from the settings.
+- Fix on disk file check
+- Avoid a Glib warning in the statusbar when filename is null.
+- Support for playing DVD/VCD ISO images from a file.
+- Query stream duration on-ready state always, fixes DVD duration query.
+- Properly handle WriteReady callback.
+- For local media files, check the stream caps only when switching from ready to paused state.
+
+0.2.0
+====
+- Fix the confirmation on delete event.
+- Use g_key_file_get_locale_string to load plugin name and description
+- Fix missing installable include files.
+- Fix unused Gst overlay expose on READY state.
+- Provide a command line to be used to enable/disable xv, X Video support might be missing for some drivers.
+- Handle non local file from the command line.
+- Send the kill signal if the dbus name is not yet registered in the browser plugin.
+- Set the _NET_WM_WINDOW_OPACITY_LOCKED wm hint, so xfwm4 keep us opaque.
+- Grab the focus on the video widget after we get the playing state signal, not     when asking gst to play, this will avoid an expose event on the video widget  that causes the logo to be drawn before the movie frames shows up.
+- Provide an option to Enable/Disable resetting X screen saver counter while playing movies
+- Check for stream type before settings the live bit.
+- Don't use uri as a status bar text for live streams.
+- Added get_stream to the plugin API.
+- Don't popup errors in the browser plugin.
+- Fix seek backwards+add mouse wheel on the volume slider, patches by Enrico Troger.
+
 0.1.99
 ====
 - Fix bug in the active plugin saved list.

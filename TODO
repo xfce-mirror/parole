@@ -1,11 +1,12 @@
 === Media player ===
-* Automatically detect disc type when parole
-  is launched with --device=/dev/sr0 without a uri
 * Support scale ratio view.
 * Handle missing gstreamer plugins.
 * ...
 
 === Plugins === 
+* Library collection.
+* Galago plugin to set the IM status as away when playing a film in fullscreen.
+* Equalizer plugin
 * Write a youtube plugin.
 * Subtitle downloader.
 * Always on top.
