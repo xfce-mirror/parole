@@ -931,9 +931,22 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 	}
 	case GST_STATE_PAUSED:
 	{
-	    parole_gst_query_duration (gst);
-	    parole_gst_query_capabilities (gst);
-	    parole_gst_query_info (gst);
+	    if ( pending == GST_STATE_PLAYING )
+	    {
+		ParoleMediaType media_type;
+		
+		g_object_get (G_OBJECT (gst->priv->stream),
+			      "media-type", &media_type,
+			      NULL);
+		
+		if ( (media_type == PAROLE_MEDIA_TYPE_LOCAL_FILE && old == GST_STATE_READY) ||
+		      media_type != PAROLE_MEDIA_TYPE_LOCAL_FILE )
+		{
+		    parole_gst_query_duration (gst);
+		    parole_gst_query_capabilities (gst);
+		    parole_gst_query_info (gst);
+		}
+	    }
 
 	    if ( gst->priv->target == GST_STATE_PLAYING )
 	    {
@@ -953,7 +966,7 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
 			   gst->priv->stream, PAROLE_MEDIA_STATE_STOPPED);
 
-	    if ( gst->priv->target == GST_STATE_PLAYING && pending != GST_STATE_PLAYING)
+	    if ( gst->priv->target == GST_STATE_PLAYING && pending < GST_STATE_PAUSED)
 	    {
 		parole_gst_play_file_internal (gst);
 	    }
