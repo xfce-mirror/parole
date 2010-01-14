@@ -565,18 +565,22 @@ parole_get_uri_from_unix_device (const gchar *device)
 	{
 	    gchar *unix_device;
 	    unix_device = g_volume_get_identifier (volume, G_VOLUME_IDENTIFIER_KIND_UNIX_DEVICE);
-	    
+
 	    if ( !g_strcmp0 (unix_device, device) )
 	    {
 		GMount *mount;
 		mount = g_volume_get_mount (volume);
+		
 		if ( mount )
 		{
 		    uri = parole_guess_uri_from_mount (mount);
 		    g_object_unref (mount);
+		    g_object_unref (drive);
+		    g_free (unix_device);
 		    break;
 		}
 	    }
+	    g_free (unix_device);
 	}
 	
 	g_object_unref (drive);
