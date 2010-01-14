@@ -2061,7 +2061,19 @@ ParoleMediaList	*parole_player_get_media_list (ParolePlayer *player)
 
 void parole_player_play_uri_disc (ParolePlayer *player, const gchar *uri, const gchar *device)
 {
-    parole_player_disc_selected_cb (NULL, uri, device, player);
+    if ( uri )
+    {
+	parole_player_disc_selected_cb (NULL, uri, device, player);
+    }
+    else if (device)
+    {
+	gchar *uri_local = parole_get_uri_from_unix_device (device);
+	if ( uri_local )
+	{
+	    parole_player_disc_selected_cb (NULL, uri_local, device, player);
+	    g_free (uri_local);
+	}
+    }
 }
 
 void parole_player_terminate (ParolePlayer *player)

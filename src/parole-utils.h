@@ -30,7 +30,7 @@ gint            thunar_file_compare_by_name 		(ParoleFile *file_a,
 							 ParoleFile *file_b,
 							 gboolean         case_sensitive);
 
-gchar          *parole_get_name_without_extension 	(const gchar *name)G_GNUC_MALLOC G_GNUC_WARN_UNUSED_RESULT;
+gchar          *parole_get_name_without_extension 	(const gchar *name) G_GNUC_MALLOC G_GNUC_WARN_UNUSED_RESULT;
 
 gchar          *parole_get_subtitle_path		(const gchar *uri) G_GNUC_MALLOC G_GNUC_WARN_UNUSED_RESULT;
 
@@ -39,9 +39,15 @@ gboolean	parole_is_uri_disc			(const gchar *uri);
 GdkPixbuf      *parole_icon_load			(const gchar *icon_name,
 							 gint size);
 
-void			 parole_get_media_files		(GtkFileFilter *filter,
+void		parole_get_media_files			(GtkFileFilter *filter,
 							 const gchar *path,
 							 gboolean recursive,
 							 GSList **list);
+							 
+gboolean	parole_device_has_cdda 			(const gchar *device);
+
+gchar 	       *parole_guess_uri_from_mount 		(GMount *mount);
+							 
+gchar          *parole_get_uri_from_unix_device		(const gchar *device);
 
 #endif /* __PAROLE_UTILS_ */
