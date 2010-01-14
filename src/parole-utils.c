@@ -29,6 +29,15 @@
 #include <gst/gst.h>
 #include <glib.h>
 
+#include <fcntl.h>
+#include <unistd.h>
+#include <sys/stat.h>
+#include <sys/ioctl.h>
+
+#if defined(__linux__)
+#include <linux/cdrom.h>
+#endif
+
 #include <libxfce4util/libxfce4util.h>
 
 #include <parole/parole.h>
@@ -413,4 +422,172 @@ void parole_get_media_files (GtkFileFilter *filter, const gchar *path,
 	*list = g_slist_concat (*list, list_internal);
     }
     g_object_unref (playlist_filter);
+}
+
+/***
+ * FIXME, parole_device_has_cdda and parole_guess_uri_from_mount
+ *        have common code with parole-disc.c
+ ***/
+
+
+gboolean
+parole_device_has_cdda (const gchar *device)
+{   
+    gboolean ret_val = FALSE;
+ 
+#if defined(__linux__)
+    gint fd;
+    gint drive;
+    
+    TRACE ("device : %s", device);
+    
+    if ( (fd = open (device, O_RDONLY)) < 0 )
+    {
+	g_debug ("Failed to open device : %s", device);
+	return FALSE;
+    }
+    
+    if ( (drive = ioctl (fd, CDROM_DRIVE_STATUS, NULL)) )
+    {
+	if ( drive == CDS_DRIVE_NOT_READY )
+	{
+	    g_debug ("Drive :%s is not yet ready\n", device);
+	}
+	else if ( drive == CDS_DISC_OK )
+	{
+	    if ( (drive = ioctl (fd, CDROM_DISC_STATUS, NULL)) > 0 )
+	    {
+		if ( drive == CDS_AUDIO )
+		{
+		    ret_val = TRUE;
+		}
+	    }
+	}
+    }
+    
+    close (fd);
+#endif /* if defined(__linux__) */
+    return ret_val;
+}
+
+gchar *
+parole_guess_uri_from_mount (GMount *mount)
+{
+    GFile *file;
+    gchar *uri = NULL;
+    
+    g_return_val_if_fail (G_IS_MOUNT (mount), NULL);
+    
+    file = g_mount_get_root (mount);
+    
+    if ( g_file_has_uri_scheme (file, "cdda") )
+    {
+	uri = g_strdup ("cdda://");
+    }
+    else
+    {
+	gchar **content_type;
+	int i;
+	
+	content_type = g_content_type_guess_for_tree (file);
+    
+	for ( i = 0; content_type && content_type[i]; i++)
+	{
+	    TRACE ("Checking disc content type : %s", content_type[i]);
+		
+	    if ( !g_strcmp0 (content_type[i], "x-content/video-dvd") )
+	    {
+		uri = g_strdup ("dvd:/");
+		break;
+	    }
+	    else if ( !g_strcmp0 (content_type[i], "x-content/video-vcd") )
+	    {
+		uri = g_strdup ("vcd:/");
+		break;
+	    }
+	    else if ( !g_strcmp0 (content_type[i], "x-content/video-svcd") )
+	    {
+		uri = g_strdup ("svcd:/");
+		break;
+	    }
+	    else if ( !g_strcmp0 (content_type[i], "x-content/audio-cdda") )
+	    {
+		uri = g_strdup ("cdda://");
+		break;
+	    }
+	}
+	
+	if ( content_type )
+	    g_strfreev (content_type);
+    }
+    
+    g_object_unref (file);
+    
+    TRACE ("Got uri=%s for mount=%s", uri, g_mount_get_name (mount));
+	   
+    return uri;
+}
+
+gchar *
+parole_get_uri_from_unix_device (const gchar *device)
+{
+    GVolumeMonitor *monitor;
+    GList *list;
+    guint len;
+    guint i;
+    gchar *uri = NULL;
+    
+    if ( device == NULL )
+	return NULL;
+	
+    /*Check for cdda */
+    if ( parole_device_has_cdda (device) )
+    {
+	return g_strdup ("cdda://");
+    }
+    
+    monitor = g_volume_monitor_get ();
+    
+    list = g_volume_monitor_get_volumes (monitor);
+    
+    len = g_list_length (list);
+    
+    for ( i = 0; i < len; i++)
+    {
+	GVolume *volume;
+	GDrive *drive;
+	
+	volume = g_list_nth_data (list, i);
+	
+	drive = g_volume_get_drive (volume);
+	
+	if ( g_drive_can_eject (drive) && g_drive_has_media (drive) )
+	{
+	    gchar *unix_device;
+	    unix_device = g_volume_get_identifier (volume, G_VOLUME_IDENTIFIER_KIND_UNIX_DEVICE);
+	    
+	    if ( !g_strcmp0 (unix_device, device) )
+	    {
+		GMount *mount;
+		mount = g_volume_get_mount (volume);
+		if ( mount )
+		{
+		    uri = parole_guess_uri_from_mount (mount);
+		    g_object_unref (mount);
+		    break;
+		}
+	    }
+	}
+	
+	g_object_unref (drive);
+    }
+    
+    g_list_foreach (list, (GFunc) g_object_unref, NULL);
+    g_list_free (list);
+    
+    g_object_unref (monitor);
+    
+    TRACE ("Got uri=%s for device=%s", uri, device);
+    
+    return uri;
 }

@@ -72,14 +72,26 @@ parole_send_play_disc (const gchar *uri, const gchar *device)
 {
     DBusGProxy *proxy;
     GError *error = NULL;
+    gchar *uri_local;
+    
+    if ( uri )
+    {
+	uri_local = g_strdup (uri);
+    }
+    else
+    {
+	uri_local = parole_get_uri_from_unix_device (device);
+    }
     
     proxy = parole_get_proxy (PAROLE_DBUS_PATH, PAROLE_DBUS_INTERFACE);
     
     dbus_g_proxy_call (proxy, "PlayDisc", &error,
-		       G_TYPE_STRING, uri,
+		       G_TYPE_STRING, uri_local,
 		       G_TYPE_STRING, device,
 		       G_TYPE_INVALID,
 		       G_TYPE_INVALID);
+    
+    g_free (uri_local);
 		       
     if ( error )
     {
@@ -264,6 +276,8 @@ int main (int argc, char **argv)
 	
 	if ( filenames && filenames[0] != NULL )
 	    parole_send (filenames, device);
+	else if (device != NULL)
+	    parole_send_play_disc (NULL, device);
 	
 	if ( play )
 	    parole_send_message ("Play");
@@ -313,6 +327,10 @@ int main (int argc, char **argv)
 		list = parole_player_get_media_list (player);
 		parole_media_list_add_files (list, filenames);
 	    }
+	}
+	else if ( device != NULL )
+	{
+	    parole_player_play_uri_disc (player, NULL, device);
 	}
 	
 	if ( xfce_posix_signal_handler_init (&error)) 
