@@ -34,7 +34,7 @@
 #include <gst/video/video.h>
 
 #include <libxfce4util/libxfce4util.h>
-#include <libxfcegui4/libxfcegui4.h>
+#include <libxfce4ui/libxfce4ui.h>
 
 #include <gdk/gdkx.h>
 
@@ -630,8 +630,8 @@ parole_gst_query_capabilities (ParoleGst *gst)
 				 NULL,
 				 NULL);
 	g_object_set (G_OBJECT (gst->priv->stream),
-	          "seekable", seekable,
-		  NULL);
+	              "seekable", seekable,
+		      NULL);
     }
     gst_query_unref (query);
 }
@@ -931,9 +931,22 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 	}
 	case GST_STATE_PAUSED:
 	{
-	    parole_gst_query_duration (gst);
-	    parole_gst_query_capabilities (gst);
-	    parole_gst_query_info (gst);
+	    if ( pending == GST_STATE_PLAYING )
+	    {
+		ParoleMediaType media_type;
+		
+		g_object_get (G_OBJECT (gst->priv->stream),
+			      "media-type", &media_type,
+			      NULL);
+		
+		if ( (media_type == PAROLE_MEDIA_TYPE_LOCAL_FILE && old == GST_STATE_READY) ||
+		      media_type != PAROLE_MEDIA_TYPE_LOCAL_FILE )
+		{
+		    parole_gst_query_duration (gst);
+		    parole_gst_query_capabilities (gst);
+		    parole_gst_query_info (gst);
+		}
+	    }
 
 	    if ( gst->priv->target == GST_STATE_PLAYING )
 	    {
@@ -953,7 +966,7 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
 			   gst->priv->stream, PAROLE_MEDIA_STATE_STOPPED);
 
-	    if ( gst->priv->target == GST_STATE_PLAYING && pending != GST_STATE_PLAYING)
+	    if ( gst->priv->target == GST_STATE_PLAYING && pending < GST_STATE_PAUSED)
 	    {
 		parole_gst_play_file_internal (gst);
 	    }
@@ -1494,8 +1507,11 @@ parole_gst_check_state_change_timeout (gpointer data)
     
     if ( gst->priv->state != gst->priv->target )
     {
-	gboolean ret_val = 
-	    xfce_confirm (_("The stream is taking too much time to load"), GTK_STOCK_OK, _("Stop"));
+	gboolean ret_val = xfce_dialog_confirm (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (gst))),
+						GTK_STOCK_YES,
+						_("Stop"),
+						_("The stream is taking too much time to load"), 
+						NULL);
 	    
 	if ( ret_val )
 	{
@@ -1684,9 +1700,13 @@ parole_gst_constructed (GObject *object)
  
     if ( G_UNLIKELY (gst->priv->playbin == NULL) )
     {
-	xfce_err (_("Unable to load playbin GStreamer plugin"
-		    ", check your GStreamer installation"));
-		    
+	GError *error;
+	error = g_error_new (0, 0, "%s", _("Unable to load playbin GStreamer plugin"
+					    ", check your GStreamer installation"));
+					    
+	xfce_dialog_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (gst))),
+				error, NULL);
+	g_error_free (error);
 	g_error ("playbin load failed");
     }
     
@@ -1704,8 +1724,12 @@ parole_gst_constructed (GObject *object)
 	
 	if ( G_UNLIKELY (gst->priv->video_sink == NULL) )
 	{
-	    xfce_err (_("Unable to load video GStreamer plugin"
-		      ", check your GStreamer installation"));
+	    GError *error;
+	    error = g_error_new (0, 0, "%s", _("Unable to load video GStreamer plugin"
+					      ", check your GStreamer installation"));
+	    xfce_dialog_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (gst))),
+				error, NULL);
+	    g_error_free (error);
 	    g_error ("ximagesink load failed");
 	}
     }
