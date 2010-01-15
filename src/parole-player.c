@@ -1710,11 +1710,11 @@ parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
 	    }
 	break;
 	/* 
-	 * Pass these to the media list and tell it to
-	 * grab the focus
+	 * Pass these to the media list
 	 */
 	case GDK_Up:
 	case GDK_Down:
+	case GDK_Return:
 	    parole_media_list_grab_focus (player->priv->list);
 	    break;
 	default:
