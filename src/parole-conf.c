@@ -331,7 +331,7 @@ parole_conf_class_init (ParoleConfClass *klass)
     
     g_object_class_install_property (object_class,
                                      PROP_MULTIMEDIA_KEYS,
-                                     g_param_spec_boolean ("multimedia-key",
+                                     g_param_spec_boolean ("multimedia-keys",
                                                            NULL, NULL,
                                                            TRUE,
                                                            G_PARAM_READWRITE));
