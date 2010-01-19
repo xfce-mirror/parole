@@ -187,6 +187,17 @@ parole_media_list_set_widget_sensitive (ParoleMediaList *list, gboolean sensitiv
     gtk_widget_set_sensitive (GTK_WIDGET (list->priv->save), sensitive);
 }
 
+/**
+ * parole_media_list_add:
+ * @ParoleMediaList: a #ParoleMediaList
+ * @file: a #ParoleFile
+ * @emit: TRUE to emit a play signal.
+ * @select_row: TRUE to select the added row
+ * 
+ * All the media items added to the media list view are added by
+ * this function, setting emit to TRUE will cause the player to
+ * start playing the added file.
+ **/
 static void
 parole_media_list_add (ParoleMediaList *list, ParoleFile *file, gboolean emit, gboolean select_row)
 {
@@ -238,6 +249,13 @@ parole_media_list_add (ParoleMediaList *list, ParoleFile *file, gboolean emit, g
 	
 }
 
+/**
+ * parole_media_list_files_open:
+ * @ParoleMediaList: a #ParoleMediaList
+ * @files: a #GSList contains a list of #ParoleFile
+ * @emit: TRUE to emit a play signal.
+ * 
+ **/
 static void
 parole_media_list_files_open (ParoleMediaList *list, GSList *files, gboolean emit)
 {
@@ -301,14 +319,14 @@ parole_media_list_location_opened_cb (ParoleOpenLocation *obj, const gchar *loca
 static void
 parole_media_list_open_internal (ParoleMediaList *list)
 {
-    GtkWidget *chooser;
+    ParoleMediaChooser *chooser;
+    
+    TRACE ("start");
     
     chooser = parole_media_chooser_open_local (gtk_widget_get_toplevel (GTK_WIDGET (list)));
 					       
     g_signal_connect (G_OBJECT (chooser), "media_files_opened",
 		      G_CALLBACK (parole_media_list_files_opened_cb), list);
-    
-    gtk_widget_show_all (GTK_WIDGET (chooser));
 }
 
 static void
@@ -324,6 +342,16 @@ parole_media_list_open_location_internal (ParoleMediaList *list)
     gtk_widget_show_all (GTK_WIDGET (location));
 }
 
+/**
+ * parole_media_list_get_files:
+ * @list: a #ParoleMediaList
+ * 
+ * Get a #GSList of all #ParoleFile media files currently displayed in the
+ * media list view
+ * 
+ * Returns: a #GSList contains a list of #ParoleFile
+ * 
+ **/
 static GSList *
 parole_media_list_get_files (ParoleMediaList *list)
 {
@@ -405,6 +433,16 @@ void parole_media_list_close_save_dialog_cb (GtkButton *button, ParolePlaylistSa
     g_free (data);
 }
 
+/**
+ * parole_media_list_get_first_selected_row:
+ * @list: a #ParoleMediaList
+ * 
+ * Gets the first selected row in the media list view.
+ * 
+ * Returns: a #GtkTreeRowReference for the selected row, or NULL if no one is 
+ * 	    currently selected.
+ * 
+ **/
 static GtkTreeRowReference *
 parole_media_list_get_first_selected_row (ParoleMediaList *list)
 {
@@ -582,8 +620,42 @@ void parole_media_list_save_cb (GtkButton *button, ParoleMediaList *list)
     g_object_unref (builder);
 }
 
+/**
+ * parole_media_list_get_first_path:
+ * @model: a #GtkTreeModel
+ * 
+ * Get the first path in the model, or NULL if the model is empty
+ * 
+ * Returns: a #GtkTreePath
+ **/
+static GtkTreePath *
+parole_media_list_get_first_path (GtkTreeModel *model) 
+{
+    GtkTreePath *path = NULL;
+    GtkTreeIter iter;
+    
+    if (gtk_tree_model_get_iter_first (model, &iter) )
+    {
+	path = gtk_tree_model_get_path (GTK_TREE_MODEL (model), &iter);
+    }
+    
+    return path;
+}
+
+/**
+ * 
+ * parole_media_list_paths_to_row_list:
+ * @path_list: a #GList contains a list of #GtkTreePath
+ * @GtkTreeModel: a #GtkTreeModel that contains the paths
+ * 
+ * Converts a list of #GtkTreePath to a list of #GtkTreeRowReference
+ * 
+ * Returns: a #GList contains a list of #GtkTreeRowReference.
+ * 
+ * 
+ **/
 static GList *
-parole_media_list_path_to_row_list (GList *path_list, GtkTreeModel *model)
+parole_media_list_paths_to_row_list (GList *path_list, GtkTreeModel *model)
 {
     GList *row_list = NULL;
     guint len, i;
@@ -605,6 +677,11 @@ parole_media_list_path_to_row_list (GList *path_list, GtkTreeModel *model)
     return row_list;
 }
 
+/**
+ * parole_media_list_remove_clicked_cb:
+ * 
+ * 
+ **/
 void
 parole_media_list_remove_clicked_cb (GtkButton *button, ParoleMediaList *list)
 {
@@ -612,12 +689,40 @@ parole_media_list_remove_clicked_cb (GtkButton *button, ParoleMediaList *list)
     GList *path_list = NULL;
     GList *row_list = NULL;
     GtkTreeIter iter;
+    gboolean row_selected = FALSE;
     gint nch;
     guint len, i;
-    
+
+    /* Get the GtkTreePath GList of all selected rows */
     path_list = gtk_tree_selection_get_selected_rows (list->priv->sel, &model);
 	
-    row_list = parole_media_list_path_to_row_list (path_list, model);
+    /**
+     * Convert them to row references so when we remove one the others always points
+     * to the correct node.
+     **/
+    row_list = parole_media_list_paths_to_row_list (path_list, model);
+
+    /**
+     * Select first path before the first path
+     * that we going to remove.
+     **/
+    if (g_list_length (path_list) != 0)
+    {
+	GtkTreePath *path, *prev;
+	
+	/* Get first item */
+	path = g_list_nth_data (path_list, 0);
+	
+	/* copy it as we don't mess with the list*/
+	prev = gtk_tree_path_copy (path);
+	
+	if ( gtk_tree_path_prev (prev) )
+	{
+	    parole_media_list_select_path (list, prev);
+	    row_selected = TRUE;
+	}
+	gtk_tree_path_free (prev);
+    }
     
     g_list_foreach (path_list, (GFunc) gtk_tree_path_free, NULL);
     g_list_free (path_list);
@@ -640,6 +745,15 @@ parole_media_list_remove_clicked_cb (GtkButton *button, ParoleMediaList *list)
     
     g_list_foreach (row_list, (GFunc) gtk_tree_row_reference_free, NULL);
     g_list_free (row_list);
+    
+    /* No row was selected, then select the first one*/
+    if (!row_selected)
+    {
+	GtkTreePath *path;
+	path = parole_media_list_get_first_path (model);
+	parole_media_list_select_path (list, path);
+	gtk_tree_path_free (path);
+    }
     
     /*
      * Returns the number of children that iter has. 
@@ -664,6 +778,16 @@ parole_media_list_remove_clicked_cb (GtkButton *button, ParoleMediaList *list)
     }
 }
 
+/**
+ * parole_media_list_move_on_down:
+ * 
+ * @store: a #GtkListStore
+ * @iter: a #GtkTreeIter
+ * 
+ * Move the node pointed to by @iter one step down, if the node is the last
+ * one then move it to the first position in the @store.
+ * 
+ **/
 static void
 parole_media_list_move_one_down (GtkListStore *store, GtkTreeIter *iter)
 {
@@ -689,6 +813,15 @@ parole_media_list_move_one_down (GtkListStore *store, GtkTreeIter *iter)
     gtk_tree_iter_free (pos_iter);
 }
 
+/**
+ * parole_media_list_move_many_down:
+ * @path_list: a #GList contains list of #GtkTreePath
+ * @model: a #GtkTreeModel
+ * 
+ * Moves down many nodes pointed to by the paths that are in
+ * the list.
+ * 
+ **/
 static void
 parole_media_list_move_many_down (GList *path_list, GtkTreeModel *model)
 {
@@ -697,7 +830,7 @@ parole_media_list_move_many_down (GList *path_list, GtkTreeModel *model)
     guint len;
     guint i;
     
-    row_list = parole_media_list_path_to_row_list (path_list, model);
+    row_list = parole_media_list_paths_to_row_list (path_list, model);
     
     len = g_list_length (row_list);
     
@@ -720,6 +853,11 @@ parole_media_list_move_many_down (GList *path_list, GtkTreeModel *model)
     g_list_free (row_list);
 }
 
+/**
+ * parole_media_list_media_down_clicked_cb:
+ * 
+ * 
+ **/
 void
 parole_media_list_media_down_clicked_cb (GtkButton *button, ParoleMediaList *list)
 {
@@ -748,6 +886,17 @@ parole_media_list_media_down_clicked_cb (GtkButton *button, ParoleMediaList *lis
     g_list_free (path_list);
 }
 
+
+/**
+ * parole_media_list_move_on_up:
+ * 
+ * @store: a #GtkListStore
+ * @iter: a #GtkTreeIter
+ * 
+ * Move the node pointed to by @iter one step up, if the node is the first
+ * one then move it to the last position in the @store.
+ * 
+ **/
 static void
 parole_media_list_move_one_up (GtkListStore *store, GtkTreeIter *iter)
 {
@@ -776,6 +925,15 @@ parole_media_list_move_one_up (GtkListStore *store, GtkTreeIter *iter)
     gtk_tree_iter_free (pos_iter);
 }
 
+/**
+ * parole_media_list_move_many_up:
+ * @path_list: a #GList contains list of #GtkTreePath
+ * @model: a #GtkTreeModel
+ * 
+ * Moves up many nodes pointed to by the paths that are in
+ * the list.
+ * 
+ **/
 static void
 parole_media_list_move_many_up (GList *path_list, GtkTreeModel *model)
 {
@@ -784,7 +942,7 @@ parole_media_list_move_many_up (GList *path_list, GtkTreeModel *model)
     guint len;
     guint i;
     
-    row_list = parole_media_list_path_to_row_list (path_list, model);
+    row_list = parole_media_list_paths_to_row_list (path_list, model);
     
     len = g_list_length (row_list);
     
@@ -807,6 +965,11 @@ parole_media_list_move_many_up (GList *path_list, GtkTreeModel *model)
     g_list_free (row_list);
 }
 
+/**
+ * parole_media_list_media_up_clicked_cb:
+ * 
+ * 
+ **/
 void
 parole_media_list_media_up_clicked_cb (GtkButton *button, ParoleMediaList *list)
 {
@@ -835,6 +998,11 @@ parole_media_list_media_up_clicked_cb (GtkButton *button, ParoleMediaList *list)
     g_list_free (path_list);
 }
 
+/**
+ * parole_media_list_row_activated_cb:
+ * 
+ * 
+ **/
 void
 parole_media_list_row_activated_cb (GtkTreeView *view, GtkTreePath *path, 
 				    GtkTreeViewColumn *col, ParoleMediaList *list)
@@ -1376,6 +1544,13 @@ gboolean parole_media_list_is_empty (ParoleMediaList *list)
     return !gtk_tree_model_get_iter_first (GTK_TREE_MODEL (list->priv->store), &iter);
 }
 
+/**
+ * parole_media_list_get_first_row:
+ * @list: a #ParoleMediaList
+ * 
+ * 
+ * Returns: a #GtkTreeRowReference of the first row in the media list.
+ **/
 GtkTreeRowReference *parole_media_list_get_first_row (ParoleMediaList *list)
 {
     GtkTreeRowReference *row = NULL;
@@ -1389,6 +1564,13 @@ GtkTreeRowReference *parole_media_list_get_first_row (ParoleMediaList *list)
     return row;
 }
 
+/**
+ * parole_media_list_get_selected_row:
+ * @list: a #ParoleMediaList
+ * 
+ * 
+ * Returns: a #GtkTreeRowReference of the selected row.
+ **/
 GtkTreeRowReference *parole_media_list_get_selected_row (ParoleMediaList *list)
 {
     return parole_media_list_get_first_selected_row (list);

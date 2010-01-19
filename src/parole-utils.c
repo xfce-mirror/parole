@@ -360,6 +360,8 @@ void parole_get_media_files (GtkFileFilter *filter, const gchar *path,
 
     playlist_filter = parole_get_supported_playlist_filter ();
     g_object_ref_sink (playlist_filter);
+    
+    gtk_main_iteration_do (FALSE);
 
     if ( g_file_test (path, G_FILE_TEST_IS_REGULAR ) )
     {

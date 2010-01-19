@@ -1715,6 +1715,7 @@ parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
 	case GDK_Up:
 	case GDK_Down:
 	case GDK_Return:
+	case GDK_Delete:
 	    parole_media_list_grab_focus (player->priv->list);
 	    break;
 	default:

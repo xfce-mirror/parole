@@ -32,28 +32,12 @@ G_BEGIN_DECLS
 #define PAROLE_MEDIA_CHOOSER(o)          (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_MEDIA_CHOOSER, ParoleMediaChooser))
 #define PAROLE_IS_MEDIA_CHOOSER(o)       (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_MEDIA_CHOOSER))
 
-typedef struct ParoleMediaChooserPrivate ParoleMediaChooserPrivate;
-
-typedef struct
-{
-    GtkDialog         		 parent;
-    
-    ParoleConf                  *conf;
-    
-} ParoleMediaChooser;
-
-typedef struct
-{
-    GtkDialogClass 		 parent_class;
-    
-    void			 (*media_files_opened)		    (ParoleMediaChooser *chooser,
-								     GSList *list);
-								     
-} ParoleMediaChooserClass;
+typedef struct ParoleMediaChooser ParoleMediaChooser;
+typedef struct ParoleMediaChooserClass ParoleMediaChooserClass;
 
 GType        			 parole_media_chooser_get_type      (void) G_GNUC_CONST;
 
-GtkWidget			*parole_media_chooser_open_local    (GtkWidget *parent);
+ParoleMediaChooser		*parole_media_chooser_open_local    (GtkWidget *parent);
 								     
 G_END_DECLS
 
