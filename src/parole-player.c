@@ -58,6 +58,7 @@
 #include "parole-conf-dialog.h"
 #include "parole-conf.h"
 #include "parole-rc-utils.h"
+#include "parole-iso-image.h"
 #include "parole-utils.h"
 #include "parole-debug.h"
 #include "parole-button.h"
@@ -354,73 +355,17 @@ void parole_player_show_hide_playlist (GtkButton *button, ParolePlayer *player)
     g_object_unref (img);
 }
 
-typedef enum
-{
-    PAROLE_ISO_IMAGE_DVD,
-    PAROLE_ISO_IMAGE_CD
-} ParoleIsoImage;
-
-static void
-iso_files_folder_changed_cb (GtkFileChooser *widget, gpointer data)
-{
-    gchar *folder;
-    folder = gtk_file_chooser_get_current_folder (GTK_FILE_CHOOSER (widget));
-    
-    if ( folder )
-    {
-	parole_rc_write_entry_string ("iso-image-folder", PAROLE_RC_GROUP_GENERAL, folder);
-	g_free (folder);
-    }
-}
-
 static void
 parole_player_open_iso_image (ParolePlayer *player, ParoleIsoImage image)
 {
-    GtkWidget *chooser;
-    GtkFileFilter *filter;
-    gchar *file = NULL;
-    const gchar *folder;
-    gint response;
+    gchar *uri;
     
-    chooser = gtk_file_chooser_dialog_new (_("Open ISO image"), GTK_WINDOW (player->priv->window),
-					   GTK_FILE_CHOOSER_ACTION_OPEN,
-					   GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-					   GTK_STOCK_OPEN, GTK_RESPONSE_OK,
-					   NULL);
-				
-    gtk_file_chooser_set_select_multiple (GTK_FILE_CHOOSER (chooser), FALSE);
+    uri = parole_open_iso_image (GTK_WINDOW (player->priv->window), PAROLE_ISO_IMAGE_CD);
     
-    folder = parole_rc_read_entry_string ("iso-image-folder", PAROLE_RC_GROUP_GENERAL, NULL);
-    
-    if ( folder )
-	gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (chooser), folder);
-    
-    g_signal_connect (chooser, "current-folder-changed",
-		      G_CALLBACK (iso_files_folder_changed_cb), NULL);
-    
-    filter = gtk_file_filter_new ();
-    gtk_file_filter_set_name (filter, image == PAROLE_ISO_IMAGE_CD ? _("CD image") : _("DVD image"));
-    gtk_file_filter_add_mime_type (filter, "application/x-cd-image");
-    gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (chooser), filter);
-
-    gtk_window_set_default_size (GTK_WINDOW (chooser), 680, 480);
-    response = gtk_dialog_run (GTK_DIALOG (chooser));
-    
-    if ( response == GTK_RESPONSE_OK )
+    if ( uri )
     {
-	file = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (chooser));
-    }
-    
-    gtk_widget_destroy (chooser);
-    
-    if ( file )
-    {
-	gchar *uri;
-	//FIXME: vcd will word for svcd?
-	uri = g_strdup_printf ("%s%s", PAROLE_ISO_IMAGE_CD ? "dvd://" : ("vcd://"), file);
 	TRACE ("Playing ISO image %s", uri);
 	parole_player_disc_selected_cb (NULL, uri, NULL, player);
-	g_free (file);
 	g_free (uri);
     }
 }

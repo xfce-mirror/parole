@@ -332,14 +332,12 @@ parole_media_list_open_internal (ParoleMediaList *list)
 static void
 parole_media_list_open_location_internal (ParoleMediaList *list)
 {
-    GtkWidget *location;
+    ParoleOpenLocation *location;
     
     location = parole_open_location (gtk_widget_get_toplevel (GTK_WIDGET (list)));
 					       
     g_signal_connect (G_OBJECT (location), "location-opened",
-		          G_CALLBACK (parole_media_list_location_opened_cb), list);
-    
-    gtk_widget_show_all (GTK_WIDGET (location));
+		      G_CALLBACK (parole_media_list_location_opened_cb), list);
 }
 
 /**

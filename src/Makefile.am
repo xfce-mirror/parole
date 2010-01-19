@@ -70,6 +70,8 @@ parole_SOURCES =				\
 	parole-button.h				\
 	parole-plugin-player.c			\
 	parole-plugin-player.h			\
+	parole-iso-image.c			\
+	parole-iso-image.h			\
 	parole-setup.c				\
 	parole-setup.h
 

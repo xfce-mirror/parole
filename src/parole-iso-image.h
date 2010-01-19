@@ -18,25 +18,21 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_OPEN_LOCATION_H
-#define __PAROLE_OPEN_LOCATION_H
+#ifndef __PAROLE_ISO_IMAGE_H_
+#define __PAROLE_ISO_IMAGE_H_
 
-#include <glib-object.h>
 #include <gtk/gtk.h>
 
-G_BEGIN_DECLS
+typedef enum
+{
+    PAROLE_ISO_IMAGE_DVD,
+    PAROLE_ISO_IMAGE_CD
+    
+} ParoleIsoImage;
 
-#define PAROLE_TYPE_OPEN_LOCATION        (parole_open_location_get_type () )
-#define PAROLE_OPEN_LOCATION(o)          (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_OPEN_LOCATION, ParoleOpenLocation))
-#define PAROLE_IS_OPEN_LOCATION(o)       (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_OPEN_LOCATION))
 
-typedef struct ParoleOpenLocation      ParoleOpenLocation;
-typedef struct ParoleOpenLocationClass ParoleOpenLocationClass;
+gchar 		*parole_open_iso_image 		(GtkWindow *parent, 
+						 ParoleIsoImage image);
 
-GType        			   parole_open_location_get_type       (void) G_GNUC_CONST;
 
-ParoleOpenLocation		  *parole_open_location 	       (GtkWidget *parent);
-
-G_END_DECLS
-
-#endif /* __PAROLE_OPEN_LOCATION_H */
+#endif /* __PAROLE_ISO_IMAGE_ */
