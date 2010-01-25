@@ -355,7 +355,7 @@ parole_plugin_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream,
 static gboolean 
 parole_plugin_player_terminate (GtkWidget *widget, GdkEvent *ev, ParolePluginPlayer *player)
 {
-    g_debug ("Delete event");
+    //g_debug ("Delete event");
     parole_gst_terminate (player->priv->gst);
     g_signal_handler_disconnect (player->priv->plug, player->priv->sig);
     player->priv->terminate = TRUE;
@@ -902,7 +902,7 @@ parole_plugin_player_finalize (GObject *object)
 
     player = PAROLE_PLUGIN_PLAYER (object);
 
-    g_debug ("Finalize...");
+    //g_debug ("Finalize...");
 
     dbus_g_connection_unref (player->priv->bus);
 
@@ -1019,7 +1019,7 @@ static gboolean
 parole_plugin_player_dbus_quit (ParolePluginPlayer *player,
 				GError **error)
 {
-    g_debug ("Quit message received");
+    //g_debug ("Quit message received");
     player->priv->terminate = TRUE;
     g_idle_add ((GSourceFunc) parole_plugin_player_quit_idle, player);
     return TRUE;
@@ -1028,7 +1028,7 @@ parole_plugin_player_dbus_quit (ParolePluginPlayer *player,
 static gboolean 
 parole_plugin_player_dbus_stop (ParolePluginPlayer *player, GError **error)
 {
-    g_debug ("Stop message received");
+    //g_debug ("Stop message received");
     player->priv->terminate = TRUE;
     g_idle_add ((GSourceFunc)parole_plugin_player_stop_idle, player);
     
@@ -1038,7 +1038,7 @@ parole_plugin_player_dbus_stop (ParolePluginPlayer *player, GError **error)
 static gboolean parole_plugin_player_dbus_ping (ParolePluginPlayer *player,
 						GError **error)
 {
-    g_debug ("Ping");
+    //g_debug ("Ping");
     
     if ( idle_timer )
 	g_timer_reset (idle_timer);
@@ -1051,7 +1051,7 @@ static gboolean parole_plugin_player_dbus_play_url (ParolePluginPlayer *player,
 						    GError **error)
 {
     player->priv->url = g_strdup (in_URL);
-    g_debug ("Playing url=%s", in_URL);
+    //g_debug ("Playing url=%s", in_URL);
     g_idle_add ((GSourceFunc) parole_plugin_player_play_idle, player);
     return TRUE;
 }
@@ -1068,7 +1068,7 @@ static gboolean parole_plugin_player_dbus_play_list (ParolePluginPlayer *player,
 	file = g_slist_nth_data (player->priv->list, 0);
 	
 	player->priv->url = g_strdup (parole_file_get_uri (file));
-	g_debug ("Playing url=%s", player->priv->url);
+	//g_debug ("Playing url=%s", player->priv->url);
 	g_idle_add ((GSourceFunc) parole_plugin_player_play_idle, player);
     }
     

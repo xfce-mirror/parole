@@ -44,7 +44,7 @@ static gulong exit_source_id = 0;
 static void G_GNUC_NORETURN
 force_exit (gpointer data)
 {
-    g_debug ("Forcing exit");
+    //g_debug ("Forcing exit");
     exit (0);
 }
 
@@ -135,7 +135,7 @@ int main (int argc, char **argv)
     if ( exit_source_id != 0 )
 	g_source_remove (exit_source_id);
 
-    g_debug ("Exiting");
+    //g_debug ("Exiting");
     gst_deinit ();
 
     return EXIT_SUCCESS;
