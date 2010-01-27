@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-10 14:17+0100\n"
-"PO-Revision-Date: 2009-12-11 17:39-0300\n"
-"Last-Translator: elega <elega@elega.com.ar>\n"
+"POT-Creation-Date: 2010-01-27 06:03+0100\n"
+"PO-Revision-Date: 2010-01-27 09:13-0800\n"
+"Last-Translator: Javier Sánchez <donoban@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -40,89 +40,97 @@ msgid "Chapter Menu"
 msgstr "Menú del capítulo"
 
 #: ../data/interfaces/parole.ui.h:7
+msgid "DVD"
+msgstr "DVD"
+
+#: ../data/interfaces/parole.ui.h:8
 msgid "DVD Menu"
 msgstr "Menú DVD"
 
-#: ../data/interfaces/parole.ui.h:8
+#: ../data/interfaces/parole.ui.h:9
+msgid "From ISO image"
+msgstr "Desde imagen ISO"
+
+#: ../data/interfaces/parole.ui.h:10
 msgid "Media player"
 msgstr "Reproductor de medios"
 
-#: ../data/interfaces/parole.ui.h:9
+#: ../data/interfaces/parole.ui.h:11
 msgid "Mute"
 msgstr "Silencio"
 
-#: ../data/interfaces/parole.ui.h:10
-#: ../src/parole-player.c:1098
+#: ../data/interfaces/parole.ui.h:12
+#: ../src/parole-player.c:1198
 #: ../src/parole-disc-menu.c:113
 msgid "Next Chapter"
 msgstr "Capítulo suguiente"
 
-#: ../data/interfaces/parole.ui.h:11
+#: ../data/interfaces/parole.ui.h:13
 msgid "None"
 msgstr "Ninguno"
 
-#: ../data/interfaces/parole.ui.h:12
+#: ../data/interfaces/parole.ui.h:14
 #: ../data/desktop/parole.desktop.in.in.h:1
 #: ../src/parole-about.c:70
 #: ../plugins/window-title/window-title-provider.c:58
 msgid "Parole Media Player"
 msgstr "Reproductor de medios Parole"
 
-#: ../data/interfaces/parole.ui.h:13
+#: ../data/interfaces/parole.ui.h:15
 msgid "Plugins"
 msgstr "Complementos"
 
-#: ../data/interfaces/parole.ui.h:14
-#: ../src/parole-player.c:1110
+#: ../data/interfaces/parole.ui.h:16
+#: ../src/parole-player.c:1210
 #: ../src/parole-disc-menu.c:114
 msgid "Previous Chapter"
 msgstr "Capítulo anterior"
 
-#: ../data/interfaces/parole.ui.h:15
+#: ../data/interfaces/parole.ui.h:17
 msgid "Repeat"
 msgstr "Repetir"
 
-#: ../data/interfaces/parole.ui.h:16
+#: ../data/interfaces/parole.ui.h:18
 msgid "Select Track"
 msgstr "Seleccionar pista"
 
-#: ../data/interfaces/parole.ui.h:17
+#: ../data/interfaces/parole.ui.h:19
 msgid "Shuffle"
 msgstr "Aleatorio"
 
-#: ../data/interfaces/parole.ui.h:18
+#: ../data/interfaces/parole.ui.h:20
 msgid "Sound"
 msgstr "Sonido"
 
-#: ../data/interfaces/parole.ui.h:19
+#: ../data/interfaces/parole.ui.h:21
 msgid "Square"
 msgstr "Cuadrado"
 
-#: ../data/interfaces/parole.ui.h:20
+#: ../data/interfaces/parole.ui.h:22
 msgid "Volume Down"
 msgstr "Bajar volumen"
 
-#: ../data/interfaces/parole.ui.h:21
+#: ../data/interfaces/parole.ui.h:23
 msgid "Volume Up"
 msgstr "Subir volumen"
 
-#: ../data/interfaces/parole.ui.h:22
+#: ../data/interfaces/parole.ui.h:24
 msgid "_Edit"
 msgstr "_Editar"
 
-#: ../data/interfaces/parole.ui.h:23
+#: ../data/interfaces/parole.ui.h:25
 msgid "_Help"
 msgstr "_Ayuda"
 
-#: ../data/interfaces/parole.ui.h:24
+#: ../data/interfaces/parole.ui.h:26
 msgid "_Media"
 msgstr "_Medios"
 
-#: ../data/interfaces/parole.ui.h:25
+#: ../data/interfaces/parole.ui.h:27
 msgid "_Open location"
 msgstr "_Abrir una ubicación"
 
-#: ../data/interfaces/parole.ui.h:26
+#: ../data/interfaces/parole.ui.h:28
 msgid "_View"
 msgstr "_Ver"
 
@@ -234,19 +242,19 @@ msgstr "Por extensión"
 msgid "Select File Types (By Extension)"
 msgstr "Seleccionar tipos de archivo (por extensión)"
 
-#: ../gst/parole-gst.c:1494
+#: ../gst/parole-gst.c:1511
 msgid "The stream is taking too much time to load"
 msgstr "El stream está demorando demasiado tiempo para cargar"
 
-#: ../gst/parole-gst.c:1494
+#: ../gst/parole-gst.c:1511
 msgid "Stop"
 msgstr "Detener"
 
-#: ../gst/parole-gst.c:1683
+#: ../gst/parole-gst.c:1700
 msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr "No se puede cargar el complemento playbin GStreamer, compruebe su instalación de GStreamer"
 
-#: ../gst/parole-gst.c:1703
+#: ../gst/parole-gst.c:1720
 msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr "No se puede cargar el complemento de vídeo GStreamer, compruebe su instalación de GStreamer"
 
@@ -271,71 +279,71 @@ msgstr ""
 "Licenciado bajo GNU GPL.\n"
 "\n"
 
-#: ../src/main.c:175
+#: ../src/main.c:187
 msgid "Unknown argument "
 msgstr "Argumento desconocido"
 
-#: ../src/main.c:212
+#: ../src/main.c:224
 msgid "Open a new instance"
 msgstr "Abrir una nueva instancia"
 
-#: ../src/main.c:213
+#: ../src/main.c:225
 msgid "Do not load plugins"
 msgstr "No cargar complementos"
 
-#: ../src/main.c:214
+#: ../src/main.c:226
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "Establecer ruta de dispositivo Audio-CD/VCD/DVD"
 
-#: ../src/main.c:215
+#: ../src/main.c:227
 msgid "Play or pause if already playing"
 msgstr "Reproducir o pausar, si ya se está reproduciendo"
 
-#: ../src/main.c:216
+#: ../src/main.c:228
 msgid "Stop playing"
 msgstr "Detener repoducción"
 
-#: ../src/main.c:217
+#: ../src/main.c:229
 msgid "Next track"
 msgstr "Siguiente pista"
 
-#: ../src/main.c:218
+#: ../src/main.c:230
 msgid "Previous track"
 msgstr "Anterior pista"
 
-#: ../src/main.c:219
+#: ../src/main.c:231
 msgid "Seek forward"
 msgstr "Avanzar"
 
-#: ../src/main.c:220
+#: ../src/main.c:232
 msgid "Seek Backward"
 msgstr "Retroceder"
 
-#: ../src/main.c:221
+#: ../src/main.c:233
 msgid "Raise volume"
 msgstr "Elevar volumen"
 
-#: ../src/main.c:222
+#: ../src/main.c:234
 msgid "Lower volume"
 msgstr "Menor volumen"
 
-#: ../src/main.c:223
+#: ../src/main.c:235
 msgid "Mute volume"
 msgstr "Silenciar"
 
-#: ../src/main.c:224
+#: ../src/main.c:236
 msgid "Version information"
 msgstr "Información de la versión"
 
-#: ../src/main.c:225
+#: ../src/main.c:237
 msgid "Enabled/Disable XV support"
 msgstr "Activar/Desactivar soporte XV"
 
-#: ../src/main.c:227
+#: ../src/main.c:239
 msgid "Media to play"
 msgstr "Medios a reproducir"
 
-#: ../src/main.c:264
+#: ../src/main.c:276
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole ya se está ejecutando, utilice -i para abrir una nueva instancia\n"
@@ -361,7 +369,7 @@ msgid "Unknown playlist format, Please select a support playlist format"
 msgstr "Formato de lista de reproducción desconocido, por favor seleccione un formato soportado de lista de reproducción"
 
 #: ../src/parole-medialist.c:514
-#: ../src/parole-player.c:1852
+#: ../src/parole-player.c:1974
 msgid "Playlist"
 msgstr "Lista de reproducción"
 
@@ -389,23 +397,35 @@ msgstr "Recordar lista de reproducción"
 msgid "Media list"
 msgstr "Lista de medios"
 
-#: ../src/parole-player.c:318
+#: ../src/parole-player.c:333
 msgid "Hide playlist"
 msgstr "Ocultar lista de reproducción"
 
-#: ../src/parole-player.c:327
+#: ../src/parole-player.c:342
 msgid "Show playlist"
 msgstr "Mostrar lista de repoducción"
 
-#: ../src/parole-player.c:543
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:297
+#: ../src/parole-player.c:375
+msgid "Open ISO image"
+msgstr "Abrir imagen ISO"
+
+#: ../src/parole-player.c:392
+msgid "CD image"
+msgstr "imagen de CD"
+
+#: ../src/parole-player.c:392
+msgid "DVD image"
+msgstr "imagen de DVD"
+
+#: ../src/parole-player.c:643
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:300
 msgid "Media stream is not seekable"
 msgstr "Stream de medios no se puede buscar"
 
 #.
 #. * Next chapter menu item
 #.
-#: ../src/parole-player.c:1098
+#: ../src/parole-player.c:1198
 #: ../src/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr "Siguiente"
@@ -413,13 +433,13 @@ msgstr "Siguiente"
 #.
 #. * Previous chapter menu item
 #.
-#: ../src/parole-player.c:1110
+#: ../src/parole-player.c:1210
 #: ../src/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr "Anterior"
 
 #: ../src/parole-statusbar.c:61
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:590
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:593
 msgid "Buffering"
 msgstr "Almacenando en el búfer"
 
@@ -440,7 +460,7 @@ msgstr "Pausado"
 msgid "Playing"
 msgstr "Reproduciendo"
 
-#: ../src/parole-statusbar.c:145
+#: ../src/parole-statusbar.c:168
 msgid "Live stream:"
 msgstr "Stream en vivo:"
 
@@ -453,7 +473,7 @@ msgstr "Autor/Mantenedor"
 msgid "Translator (%s)"
 msgstr "Traductor (%s)"
 
-#: ../src/parole-disc.c:202
+#: ../src/parole-disc.c:227
 msgid "Play Disc"
 msgstr "Reproducir disco"
 
@@ -809,7 +829,7 @@ msgstr "Pantalla completa"
 #.
 #. * Copy url
 #.
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:452
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:455
 msgid "Copy url"
 msgstr "Copiar url"
 
