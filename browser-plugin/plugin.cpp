@@ -441,7 +441,7 @@ int32_t CPlugin::WriteReady (NPStream * stream)
 {
     g_debug ("WriteReady url=%s", stream->url);
     
-    if ( mode != NP_FULL )
+    if ( mode != NP_FULL || mode != NP_EMBED )
     {
 	NPN_DestroyStream (mInstance, stream, NPRES_DONE);
 	return -1;
