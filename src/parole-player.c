@@ -563,8 +563,6 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
     gboolean seekable;
     gboolean live;
     
-    player->priv->state = PAROLE_MEDIA_STATE_PLAYING;
-    
     pix = parole_icon_load ("player_play", 16);
     
     if ( !pix )
@@ -610,8 +608,6 @@ parole_player_paused (ParolePlayer *player)
 {
     GdkPixbuf *pix = NULL;
     
-    player->priv->state = PAROLE_MEDIA_STATE_PAUSED;
-    
     TRACE ("Player paused");
     
     pix = parole_icon_load (GTK_STOCK_MEDIA_PAUSE, 16);
@@ -642,8 +638,6 @@ static void
 parole_player_stopped (ParolePlayer *player)
 {
     TRACE ("Player stopped");
-    
-    player->priv->state = PAROLE_MEDIA_STATE_STOPPED;
     
     gtk_widget_set_sensitive (player->priv->play_pause, 
 			      parole_media_list_is_selected_row (player->priv->list) || 
@@ -775,7 +769,9 @@ parole_player_reset_saver_changed (ParolePlayer *player, const ParoleStream *str
 		      NULL);
 		      
 	if ( has_video )
+	{
 	    parole_screen_saver_inhibit (player->priv->screen_saver);
+	}
     }
     else
 	parole_screen_saver_uninhibit (player->priv->screen_saver);
@@ -786,6 +782,9 @@ parole_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream, Parole
 {
     PAROLE_DEBUG_ENUM ("State callback", state, GST_ENUM_TYPE_MEDIA_STATE);
 
+
+    player->priv->state = state;
+    
     parole_player_reset_saver_changed (player, stream);
     
     if ( state == PAROLE_MEDIA_STATE_PLAYING )
