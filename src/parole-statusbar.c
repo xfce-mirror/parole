@@ -165,10 +165,15 @@ static void parole_statusbar_set_text (ParoleStatusbar *bar, const ParoleStream 
 	else
 	{
 	    filename = g_filename_from_uri (uri, NULL, NULL);
-	    text = g_strdup_printf ("%s '%s'", _("Live stream:"), filename);
-	    gtk_label_set_text (GTK_LABEL (bar->priv->label_text), text);
-	    g_free (filename);
+	    if ( filename )
+	    {
+		text = g_strdup_printf ("%s '%s'", _("Live stream:"), filename);
+		g_free (filename);
+	    }
+	    else
+		text = g_strdup (_("Live stream:"));
 	    
+	    gtk_label_set_text (GTK_LABEL (bar->priv->label_text), text);
 	}
 	
 	g_free (text);
