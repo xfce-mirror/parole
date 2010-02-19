@@ -1,18 +1,18 @@
 # Galician translation of notification-daemon-xfce
 # Copyright (C) 2009 Leandro Regueiro.
 # This file is distributed under the same license as the Xfce package.
-# 
+#
 # Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>, 2009.
-# 
+#
 # Proxecto Trasno - Adaptación do software libre á lingua galega:  Se desexas
 # colaborar connosco, podes atopar máis información en <http://trasno.net>
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Parole 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-14 12:06+0100\n"
-"PO-Revision-Date: 2009-12-18 15:09+0100\n"
+"POT-Creation-Date: 2010-02-19 12:06+0100\n"
+"PO-Revision-Date: 2010-02-19 13:33+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -64,7 +64,8 @@ msgstr "Reprodutor multimedia"
 msgid "Mute"
 msgstr "Silencio"
 
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:1198
+#: ../data/interfaces/parole.ui.h:12
+#: ../src/parole-player.c:1197
 #: ../src/parole-disc-menu.c:113
 msgid "Next Chapter"
 msgstr "Capítulo seguinte"
@@ -73,8 +74,10 @@ msgstr "Capítulo seguinte"
 msgid "None"
 msgstr "Ningunha"
 
-#: ../data/interfaces/parole.ui.h:14 ../data/desktop/parole.desktop.in.in.h:1
-#: ../src/parole-about.c:70 ../plugins/window-title/window-title-provider.c:58
+#: ../data/interfaces/parole.ui.h:14
+#: ../data/desktop/parole.desktop.in.in.h:1
+#: ../src/parole-about.c:70
+#: ../plugins/window-title/window-title-provider.c:58
 msgid "Parole Media Player"
 msgstr "Reprodutor multimedia Parole"
 
@@ -82,7 +85,8 @@ msgstr "Reprodutor multimedia Parole"
 msgid "Plugins"
 msgstr "Engadidos"
 
-#: ../data/interfaces/parole.ui.h:16 ../src/parole-player.c:1210
+#: ../data/interfaces/parole.ui.h:16
+#: ../src/parole-player.c:1209
 #: ../src/parole-disc-menu.c:114
 msgid "Previous Chapter"
 msgstr "Capítulo anterior"
@@ -280,71 +284,71 @@ msgstr ""
 "Licenciado baixo a GNU GPL.\n"
 "\n"
 
-#: ../src/main.c:175
+#: ../src/main.c:187
 msgid "Unknown argument "
 msgstr "Argumento descoñecido"
 
-#: ../src/main.c:212
+#: ../src/main.c:224
 msgid "Open a new instance"
 msgstr "Abrir unha nova instancia"
 
-#: ../src/main.c:213
+#: ../src/main.c:225
 msgid "Do not load plugins"
 msgstr "Non cargar engadidos"
 
-#: ../src/main.c:214
+#: ../src/main.c:226
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "Definir a ruta do dispositivo de Audio-CD/VCD/DVD"
 
-#: ../src/main.c:215
+#: ../src/main.c:227
 msgid "Play or pause if already playing"
 msgstr "Reproducir ou pausar se xa se estaba reproducindo"
 
-#: ../src/main.c:216
+#: ../src/main.c:228
 msgid "Stop playing"
 msgstr "Deter a reprodución"
 
-#: ../src/main.c:217
+#: ../src/main.c:229
 msgid "Next track"
 msgstr "Seguinte pista"
 
-#: ../src/main.c:218
+#: ../src/main.c:230
 msgid "Previous track"
 msgstr "Pista anterior"
 
-#: ../src/main.c:219
+#: ../src/main.c:231
 msgid "Seek forward"
 msgstr "Avanzar"
 
-#: ../src/main.c:220
+#: ../src/main.c:232
 msgid "Seek Backward"
 msgstr "Retroceder"
 
-#: ../src/main.c:221
+#: ../src/main.c:233
 msgid "Raise volume"
 msgstr "Subir o volume"
 
-#: ../src/main.c:222
+#: ../src/main.c:234
 msgid "Lower volume"
 msgstr "Baixar o volume"
 
-#: ../src/main.c:223
+#: ../src/main.c:235
 msgid "Mute volume"
 msgstr "Silenciar"
 
-#: ../src/main.c:224
+#: ../src/main.c:236
 msgid "Version information"
 msgstr "Información de versión"
 
-#: ../src/main.c:225
+#: ../src/main.c:237
 msgid "Enabled/Disable XV support"
 msgstr "Activar/desactivar soporte XV"
 
-#: ../src/main.c:227
+#: ../src/main.c:239
 msgid "Media to play"
 msgstr "Soporte a reproducir"
 
-#: ../src/main.c:264
+#: ../src/main.c:276
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole xa se está executando, use -i para abrir unha nova instancia\n"
@@ -369,7 +373,8 @@ msgstr "Permiso denegado"
 msgid "Unknown playlist format, Please select a support playlist format"
 msgstr "Tipo de lista de reprodución descoñecido. Seleccione un formato de lista de reprodución soportado."
 
-#: ../src/parole-medialist.c:514 ../src/parole-player.c:1974
+#: ../src/parole-medialist.c:514
+#: ../src/parole-player.c:1973
 msgid "Playlist"
 msgstr "Lista de reprodución"
 
@@ -381,9 +386,10 @@ msgstr "Listas de reprodución M3U"
 msgid "PLS Playlists"
 msgstr "Listas de reprodución PLS"
 
+# Non se traduce: The Advanced Stream Redirector (ASX) format is a type of XML metafile designed to store a list of Windows Media files to play during a multimedia presentation.
 #: ../src/parole-medialist.c:537
 msgid "Advanced Stream Redirector"
-msgstr ""
+msgstr "Advanced Stream Redirector"
 
 #: ../src/parole-medialist.c:545
 msgid "Shareable Playlist"
@@ -417,20 +423,24 @@ msgstr "Imaxe de CD"
 msgid "DVD image"
 msgstr "Imaxe de DVD"
 
-#: ../src/parole-player.c:643
+#: ../src/parole-player.c:641
 #: ../browser-plugin/media-plugin/parole-plugin-player.c:300
 msgid "Media stream is not seekable"
-msgstr ""
+msgstr "O fluxo do soporte non é posicionable"
 
+#.
 #. * Next chapter menu item
-#. 
-#: ../src/parole-player.c:1198 ../src/parole-disc-menu.c:122
+#.
+#: ../src/parole-player.c:1197
+#: ../src/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr "Seguinte pista"
 
+#.
 #. * Previous chapter menu item
-#. 
-#: ../src/parole-player.c:1210 ../src/parole-disc-menu.c:123
+#.
+#: ../src/parole-player.c:1209
+#: ../src/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr "Pista anterior"
 
@@ -447,7 +457,8 @@ msgstr "Detido"
 msgid "Finished"
 msgstr "Finalizado"
 
-#: ../src/parole-statusbar.c:114 ../src/parole-statusbar.c:124
+#: ../src/parole-statusbar.c:114
+#: ../src/parole-statusbar.c:124
 msgid "Paused"
 msgstr "Pausado"
 
@@ -455,7 +466,8 @@ msgstr "Pausado"
 msgid "Playing"
 msgstr "Reproducindo"
 
-#: ../src/parole-statusbar.c:168
+#: ../src/parole-statusbar.c:170
+#: ../src/parole-statusbar.c:174
 msgid "Live stream:"
 msgstr "Fluxo en tempo real:"
 
@@ -476,8 +488,10 @@ msgstr "Reproducir disco"
 msgid "Current Locale"
 msgstr "Configuración rexional actual"
 
-#: ../src/parole-subtitle-encoding.c:168 ../src/parole-subtitle-encoding.c:170
-#: ../src/parole-subtitle-encoding.c:172 ../src/parole-subtitle-encoding.c:174
+#: ../src/parole-subtitle-encoding.c:168
+#: ../src/parole-subtitle-encoding.c:170
+#: ../src/parole-subtitle-encoding.c:172
+#: ../src/parole-subtitle-encoding.c:174
 msgid "Arabic"
 msgstr "Árabe"
 
@@ -485,7 +499,8 @@ msgstr "Árabe"
 msgid "Armenian"
 msgstr "Armenio"
 
-#: ../src/parole-subtitle-encoding.c:180 ../src/parole-subtitle-encoding.c:182
+#: ../src/parole-subtitle-encoding.c:180
+#: ../src/parole-subtitle-encoding.c:182
 #: ../src/parole-subtitle-encoding.c:184
 msgid "Baltic"
 msgstr "Báltico"
@@ -494,17 +509,22 @@ msgstr "Báltico"
 msgid "Celtic"
 msgstr "Celta"
 
-#: ../src/parole-subtitle-encoding.c:190 ../src/parole-subtitle-encoding.c:192
-#: ../src/parole-subtitle-encoding.c:194 ../src/parole-subtitle-encoding.c:196
+#: ../src/parole-subtitle-encoding.c:190
+#: ../src/parole-subtitle-encoding.c:192
+#: ../src/parole-subtitle-encoding.c:194
+#: ../src/parole-subtitle-encoding.c:196
 msgid "Central European"
 msgstr "Centroeuropeo"
 
-#: ../src/parole-subtitle-encoding.c:199 ../src/parole-subtitle-encoding.c:201
-#: ../src/parole-subtitle-encoding.c:203 ../src/parole-subtitle-encoding.c:205
+#: ../src/parole-subtitle-encoding.c:199
+#: ../src/parole-subtitle-encoding.c:201
+#: ../src/parole-subtitle-encoding.c:203
+#: ../src/parole-subtitle-encoding.c:205
 msgid "Chinese Simplified"
 msgstr "Chinés simplificado"
 
-#: ../src/parole-subtitle-encoding.c:208 ../src/parole-subtitle-encoding.c:210
+#: ../src/parole-subtitle-encoding.c:208
+#: ../src/parole-subtitle-encoding.c:210
 #: ../src/parole-subtitle-encoding.c:212
 msgid "Chinese Traditional"
 msgstr "Chinés tradicional"
@@ -513,9 +533,12 @@ msgstr "Chinés tradicional"
 msgid "Croatian"
 msgstr "Croata"
 
-#: ../src/parole-subtitle-encoding.c:218 ../src/parole-subtitle-encoding.c:220
-#: ../src/parole-subtitle-encoding.c:222 ../src/parole-subtitle-encoding.c:224
-#: ../src/parole-subtitle-encoding.c:226 ../src/parole-subtitle-encoding.c:228
+#: ../src/parole-subtitle-encoding.c:218
+#: ../src/parole-subtitle-encoding.c:220
+#: ../src/parole-subtitle-encoding.c:222
+#: ../src/parole-subtitle-encoding.c:224
+#: ../src/parole-subtitle-encoding.c:226
+#: ../src/parole-subtitle-encoding.c:228
 msgid "Cyrillic"
 msgstr "Cirílico"
 
@@ -523,7 +546,8 @@ msgstr "Cirílico"
 msgid "Cyrillic/Russian"
 msgstr "Cirílico/Ruso"
 
-#: ../src/parole-subtitle-encoding.c:234 ../src/parole-subtitle-encoding.c:236
+#: ../src/parole-subtitle-encoding.c:234
+#: ../src/parole-subtitle-encoding.c:236
 msgid "Cyrillic/Ukrainian"
 msgstr "Cirílico/Ucraíno"
 
@@ -531,7 +555,8 @@ msgstr "Cirílico/Ucraíno"
 msgid "Georgian"
 msgstr "Xeorxiano"
 
-#: ../src/parole-subtitle-encoding.c:242 ../src/parole-subtitle-encoding.c:244
+#: ../src/parole-subtitle-encoding.c:242
+#: ../src/parole-subtitle-encoding.c:244
 #: ../src/parole-subtitle-encoding.c:246
 msgid "Greek"
 msgstr "Grego"
@@ -542,10 +567,12 @@ msgstr "Guxarati"
 
 #: ../src/parole-subtitle-encoding.c:252
 msgid "Gurmukhi"
-msgstr ""
+msgstr "Gurmukhi"
 
-#: ../src/parole-subtitle-encoding.c:255 ../src/parole-subtitle-encoding.c:257
-#: ../src/parole-subtitle-encoding.c:259 ../src/parole-subtitle-encoding.c:261
+#: ../src/parole-subtitle-encoding.c:255
+#: ../src/parole-subtitle-encoding.c:257
+#: ../src/parole-subtitle-encoding.c:259
+#: ../src/parole-subtitle-encoding.c:261
 msgid "Hebrew"
 msgstr "Hebreo"
 
@@ -561,13 +588,16 @@ msgstr "Hindi"
 msgid "Icelandic"
 msgstr "Islandés"
 
-#: ../src/parole-subtitle-encoding.c:273 ../src/parole-subtitle-encoding.c:275
+#: ../src/parole-subtitle-encoding.c:273
+#: ../src/parole-subtitle-encoding.c:275
 #: ../src/parole-subtitle-encoding.c:277
 msgid "Japanese"
 msgstr "Xaponés"
 
-#: ../src/parole-subtitle-encoding.c:280 ../src/parole-subtitle-encoding.c:282
-#: ../src/parole-subtitle-encoding.c:284 ../src/parole-subtitle-encoding.c:286
+#: ../src/parole-subtitle-encoding.c:280
+#: ../src/parole-subtitle-encoding.c:282
+#: ../src/parole-subtitle-encoding.c:284
+#: ../src/parole-subtitle-encoding.c:286
 msgid "Korean"
 msgstr "Coreano"
 
@@ -579,7 +609,8 @@ msgstr "Nórdico"
 msgid "Persian"
 msgstr "Persa"
 
-#: ../src/parole-subtitle-encoding.c:295 ../src/parole-subtitle-encoding.c:297
+#: ../src/parole-subtitle-encoding.c:295
+#: ../src/parole-subtitle-encoding.c:297
 msgid "Romanian"
 msgstr "Romanés"
 
@@ -591,24 +622,31 @@ msgstr "Sureuropeo"
 msgid "Thai"
 msgstr "Tailandés"
 
-#: ../src/parole-subtitle-encoding.c:306 ../src/parole-subtitle-encoding.c:308
-#: ../src/parole-subtitle-encoding.c:310 ../src/parole-subtitle-encoding.c:312
+#: ../src/parole-subtitle-encoding.c:306
+#: ../src/parole-subtitle-encoding.c:308
+#: ../src/parole-subtitle-encoding.c:310
+#: ../src/parole-subtitle-encoding.c:312
 msgid "Turkish"
 msgstr "Turco"
 
-#: ../src/parole-subtitle-encoding.c:315 ../src/parole-subtitle-encoding.c:317
-#: ../src/parole-subtitle-encoding.c:319 ../src/parole-subtitle-encoding.c:321
+#: ../src/parole-subtitle-encoding.c:315
+#: ../src/parole-subtitle-encoding.c:317
+#: ../src/parole-subtitle-encoding.c:319
+#: ../src/parole-subtitle-encoding.c:321
 #: ../src/parole-subtitle-encoding.c:323
 msgid "Unicode"
 msgstr "Unicode"
 
-#: ../src/parole-subtitle-encoding.c:326 ../src/parole-subtitle-encoding.c:328
-#: ../src/parole-subtitle-encoding.c:330 ../src/parole-subtitle-encoding.c:332
+#: ../src/parole-subtitle-encoding.c:326
+#: ../src/parole-subtitle-encoding.c:328
+#: ../src/parole-subtitle-encoding.c:330
+#: ../src/parole-subtitle-encoding.c:332
 #: ../src/parole-subtitle-encoding.c:334
 msgid "Western"
 msgstr "Occidental"
 
-#: ../src/parole-subtitle-encoding.c:337 ../src/parole-subtitle-encoding.c:339
+#: ../src/parole-subtitle-encoding.c:337
+#: ../src/parole-subtitle-encoding.c:339
 #: ../src/parole-subtitle-encoding.c:341
 msgid "Vietnamese"
 msgstr "Vietnamita"
@@ -634,7 +672,8 @@ msgstr "A reproducir a pista"
 msgid "Track %i"
 msgstr "Pista %i"
 
-#: ../src/parole-plugins-manager.c:297 ../src/parole-plugins-manager.c:433
+#: ../src/parole-plugins-manager.c:297
+#: ../src/parole-plugins-manager.c:433
 msgid "Visit Website"
 msgstr "Visitar o sitio web"
 
@@ -794,20 +833,19 @@ msgstr "Saír do modo de pantalla completa"
 msgid "Fullscreen"
 msgstr "Pantalla completa"
 
+#.
 #. * Copy url
-#. 
+#.
 #: ../browser-plugin/media-plugin/parole-plugin-player.c:455
 msgid "Copy url"
 msgstr "Copiar o url"
 
 #~ msgid "Plugin"
 #~ msgstr "Engadidos"
-
 #~ msgid "gtk-close"
 #~ msgstr "Pechar composición"
-
 #~ msgid "gtk-properties"
 #~ msgstr "Propiedades do menú"
-
 #~ msgid "Visite Website"
 #~ msgstr "Visite o sitio web"
+
