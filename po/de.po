@@ -2,12 +2,12 @@
 # Copyright (C) 2009 Parole's COPYRIGHT HOLDER
 # This file is distributed under the same license as the Parole package.
 # Mario Blättermann <mariobl@gnome.org>, 2009.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: parole master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-10 14:17+0100\n"
+"POT-Creation-Date: 2010-03-02 18:03+0100\n"
 "PO-Revision-Date: 2009-12-10 17:46+0100\n"
 "Last-Translator: Christoph Wickert <cwickert@fedoraproject.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
@@ -43,89 +43,94 @@ msgid "Chapter Menu"
 msgstr "Kapitelmenü"
 
 #: ../data/interfaces/parole.ui.h:7
+msgid "DVD"
+msgstr "DVD"
+
+#: ../data/interfaces/parole.ui.h:8
 msgid "DVD Menu"
 msgstr "DVD-Menü"
 
-#: ../data/interfaces/parole.ui.h:8
+#: ../data/interfaces/parole.ui.h:9
+#, fuzzy
+msgid "From ISO image"
+msgstr "Aus ISO-Abbild"
+
+#: ../data/interfaces/parole.ui.h:10
 msgid "Media player"
 msgstr "Medien-Abspieler"
 
-#: ../data/interfaces/parole.ui.h:9
+#: ../data/interfaces/parole.ui.h:11
 msgid "Mute"
 msgstr "Stumm"
 
-#: ../data/interfaces/parole.ui.h:10
-#: ../src/parole-player.c:1098
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:1197
 #: ../src/parole-disc-menu.c:113
 msgid "Next Chapter"
 msgstr "Nächstes Kapitel/Film"
 
-#: ../data/interfaces/parole.ui.h:11
+#: ../data/interfaces/parole.ui.h:13
 msgid "None"
 msgstr "Kein"
 
-#: ../data/interfaces/parole.ui.h:12
-#: ../data/desktop/parole.desktop.in.in.h:1
-#: ../src/parole-about.c:70
-#: ../plugins/window-title/window-title-provider.c:58
+#: ../data/interfaces/parole.ui.h:14 ../data/desktop/parole.desktop.in.in.h:1
+#: ../src/parole-about.c:70 ../plugins/window-title/window-title-provider.c:58
 msgid "Parole Media Player"
 msgstr "Parole Medien-Abspieler"
 
-#: ../data/interfaces/parole.ui.h:13
+#: ../data/interfaces/parole.ui.h:15
 msgid "Plugins"
 msgstr "Erweiterungen"
 
-#: ../data/interfaces/parole.ui.h:14
-#: ../src/parole-player.c:1110
+#: ../data/interfaces/parole.ui.h:16 ../src/parole-player.c:1209
 #: ../src/parole-disc-menu.c:114
 msgid "Previous Chapter"
 msgstr "Vorheriges Kapitel/Film"
 
-#: ../data/interfaces/parole.ui.h:15
+#: ../data/interfaces/parole.ui.h:17
 msgid "Repeat"
 msgstr "Endlosschleife"
 
-#: ../data/interfaces/parole.ui.h:16
+#: ../data/interfaces/parole.ui.h:18
 msgid "Select Track"
 msgstr "Titel auswählen"
 
-#: ../data/interfaces/parole.ui.h:17
+#: ../data/interfaces/parole.ui.h:19
 msgid "Shuffle"
 msgstr "Zufallsmodus"
 
-#: ../data/interfaces/parole.ui.h:18
+#: ../data/interfaces/parole.ui.h:20
 msgid "Sound"
 msgstr "Audio"
 
-#: ../data/interfaces/parole.ui.h:19
+#: ../data/interfaces/parole.ui.h:21
 msgid "Square"
 msgstr "Quadratisch"
 
-#: ../data/interfaces/parole.ui.h:20
+#: ../data/interfaces/parole.ui.h:22
 msgid "Volume Down"
 msgstr "Leiser"
 
-#: ../data/interfaces/parole.ui.h:21
+#: ../data/interfaces/parole.ui.h:23
 msgid "Volume Up"
 msgstr "Lauter"
 
-#: ../data/interfaces/parole.ui.h:22
+#: ../data/interfaces/parole.ui.h:24
 msgid "_Edit"
 msgstr "_Bearbeiten"
 
-#: ../data/interfaces/parole.ui.h:23
+#: ../data/interfaces/parole.ui.h:25
 msgid "_Help"
 msgstr "_Hilfe"
 
-#: ../data/interfaces/parole.ui.h:24
+#: ../data/interfaces/parole.ui.h:26
 msgid "_Media"
 msgstr "_Medien"
 
-#: ../data/interfaces/parole.ui.h:25
+#: ../data/interfaces/parole.ui.h:27
 msgid "_Open location"
 msgstr "_Ort öffnen"
 
-#: ../data/interfaces/parole.ui.h:26
+#: ../data/interfaces/parole.ui.h:28
 msgid "_View"
 msgstr "_Ansicht"
 
@@ -237,19 +242,19 @@ msgstr "Nach Dateierweiterung"
 msgid "Select File Types (By Extension)"
 msgstr "Dateitypen auswählen (nach Erweiterung)"
 
-#: ../gst/parole-gst.c:1494
+#: ../gst/parole-gst.c:1511
 msgid "The stream is taking too much time to load"
 msgstr "Der Stream benötigt zu viel Zeit zum Laden"
 
-#: ../gst/parole-gst.c:1494
+#: ../gst/parole-gst.c:1511
 msgid "Stop"
 msgstr "Stop"
 
-#: ../gst/parole-gst.c:1683
+#: ../gst/parole-gst.c:1700
 msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr "Playbin-GStreamer-Plugin kann nicht geladen werden, überprüfen Sie Ihre GStreamer-Installation"
 
-#: ../gst/parole-gst.c:1703
+#: ../gst/parole-gst.c:1720
 msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr "Video-GStreamer-Plugin kann nicht geladen werden, überprüfen Sie Ihre GStreamer-Installation"
 
@@ -274,71 +279,71 @@ msgstr ""
 "Lizensiert unter der GNU GPL.\n"
 "\n"
 
-#: ../src/main.c:175
+#: ../src/main.c:187
 msgid "Unknown argument "
 msgstr "Unbekanntes Argument"
 
-#: ../src/main.c:212
+#: ../src/main.c:224
 msgid "Open a new instance"
 msgstr "Eine neue Instanz öffnen"
 
-#: ../src/main.c:213
+#: ../src/main.c:225
 msgid "Do not load plugins"
 msgstr "Keine Erweiterungen laden"
 
-#: ../src/main.c:214
+#: ../src/main.c:226
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "Pfad des Audio-CD/VCD/DVD Gerätes angeben"
 
-#: ../src/main.c:215
+#: ../src/main.c:227
 msgid "Play or pause if already playing"
 msgstr "Wiedergabe (oder Pause, falls Wiedergabe läuft)"
 
-#: ../src/main.c:216
+#: ../src/main.c:228
 msgid "Stop playing"
 msgstr "Wiedergabe anhalten"
 
-#: ../src/main.c:217
+#: ../src/main.c:229
 msgid "Next track"
 msgstr "Nachfolgender Titel"
 
-#: ../src/main.c:218
+#: ../src/main.c:230
 msgid "Previous track"
 msgstr "Vorheriger Titel"
 
-#: ../src/main.c:219
+#: ../src/main.c:231
 msgid "Seek forward"
 msgstr "Vorspulen"
 
-#: ../src/main.c:220
+#: ../src/main.c:232
 msgid "Seek Backward"
 msgstr "Zurückspulen"
 
-#: ../src/main.c:221
+#: ../src/main.c:233
 msgid "Raise volume"
 msgstr "Lautstärke erhöhen"
 
-#: ../src/main.c:222
+#: ../src/main.c:234
 msgid "Lower volume"
 msgstr "Lautstärke senken"
 
-#: ../src/main.c:223
+#: ../src/main.c:235
 msgid "Mute volume"
 msgstr "Stummschalten"
 
-#: ../src/main.c:224
+#: ../src/main.c:236
 msgid "Version information"
 msgstr "Versionsinformation"
 
-#: ../src/main.c:225
+#: ../src/main.c:237
 msgid "Enabled/Disable XV support"
 msgstr "XV-Unterstützung aktivieren/deaktivieren"
 
-#: ../src/main.c:227
+#: ../src/main.c:239
 msgid "Media to play"
 msgstr "Medien zum Abspielen"
 
-#: ../src/main.c:264
+#: ../src/main.c:276
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole läuft bereits, verwenden Sie -i, um eine neue Instanz zu öffnen\n"
@@ -363,8 +368,7 @@ msgstr "Erlaubnis verweigert"
 msgid "Unknown playlist format, Please select a support playlist format"
 msgstr "Unbekanntes Wiedergabelistenformat, bitte wählen Sie ein unterstütztes Format"
 
-#: ../src/parole-medialist.c:514
-#: ../src/parole-player.c:1852
+#: ../src/parole-medialist.c:514 ../src/parole-player.c:1973
 msgid "Playlist"
 msgstr "Wiedergabeliste"
 
@@ -392,37 +396,45 @@ msgstr "Wiedergabeliste speichern"
 msgid "Media list"
 msgstr "Medienliste"
 
-#: ../src/parole-player.c:318
+#: ../src/parole-player.c:333
 msgid "Hide playlist"
 msgstr "Wiedergabeliste verbergen"
 
-#: ../src/parole-player.c:327
+#: ../src/parole-player.c:342
 msgid "Show playlist"
 msgstr "Wiedergabeliste anzeigen"
 
-#: ../src/parole-player.c:543
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:297
+#: ../src/parole-player.c:375
+msgid "Open ISO image"
+msgstr "ISO-Abbild öffnen"
+
+#: ../src/parole-player.c:392
+msgid "CD image"
+msgstr "CD-Abbild"
+
+#: ../src/parole-player.c:392
+msgid "DVD image"
+msgstr "DVD-Abbild"
+
+#: ../src/parole-player.c:641
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:300
 msgid "Media stream is not seekable"
 msgstr "Medien-Stream ist nicht durchsuchbar"
 
-#.
 #. * Next chapter menu item
-#.
-#: ../src/parole-player.c:1098
-#: ../src/parole-disc-menu.c:122
+#. 
+#: ../src/parole-player.c:1197 ../src/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr "Nachfolgender Titel"
 
-#.
 #. * Previous chapter menu item
-#.
-#: ../src/parole-player.c:1110
-#: ../src/parole-disc-menu.c:123
+#. 
+#: ../src/parole-player.c:1209 ../src/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr "Vorheriger Titel"
 
 #: ../src/parole-statusbar.c:61
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:590
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:593
 msgid "Buffering"
 msgstr "Puffervorgang"
 
@@ -434,8 +446,7 @@ msgstr "Angehalten"
 msgid "Finished"
 msgstr "Beendet"
 
-#: ../src/parole-statusbar.c:114
-#: ../src/parole-statusbar.c:124
+#: ../src/parole-statusbar.c:114 ../src/parole-statusbar.c:124
 msgid "Paused"
 msgstr "Pause"
 
@@ -443,7 +454,7 @@ msgstr "Pause"
 msgid "Playing"
 msgstr "Wiedergabe"
 
-#: ../src/parole-statusbar.c:145
+#: ../src/parole-statusbar.c:170 ../src/parole-statusbar.c:174
 msgid "Live stream:"
 msgstr "Live-Stream:"
 
@@ -456,7 +467,7 @@ msgstr "Autor/Betreuer"
 msgid "Translator (%s)"
 msgstr "Übersetzer (%s)"
 
-#: ../src/parole-disc.c:202
+#: ../src/parole-disc.c:227
 msgid "Play Disc"
 msgstr "Medium abspielen"
 
@@ -464,10 +475,8 @@ msgstr "Medium abspielen"
 msgid "Current Locale"
 msgstr "Derzeitige Standorteinstellungen"
 
-#: ../src/parole-subtitle-encoding.c:168
-#: ../src/parole-subtitle-encoding.c:170
-#: ../src/parole-subtitle-encoding.c:172
-#: ../src/parole-subtitle-encoding.c:174
+#: ../src/parole-subtitle-encoding.c:168 ../src/parole-subtitle-encoding.c:170
+#: ../src/parole-subtitle-encoding.c:172 ../src/parole-subtitle-encoding.c:174
 msgid "Arabic"
 msgstr "Arabisch"
 
@@ -475,8 +484,7 @@ msgstr "Arabisch"
 msgid "Armenian"
 msgstr "Armenisch"
 
-#: ../src/parole-subtitle-encoding.c:180
-#: ../src/parole-subtitle-encoding.c:182
+#: ../src/parole-subtitle-encoding.c:180 ../src/parole-subtitle-encoding.c:182
 #: ../src/parole-subtitle-encoding.c:184
 msgid "Baltic"
 msgstr "Baltisch"
@@ -485,22 +493,17 @@ msgstr "Baltisch"
 msgid "Celtic"
 msgstr "Keltisch"
 
-#: ../src/parole-subtitle-encoding.c:190
-#: ../src/parole-subtitle-encoding.c:192
-#: ../src/parole-subtitle-encoding.c:194
-#: ../src/parole-subtitle-encoding.c:196
+#: ../src/parole-subtitle-encoding.c:190 ../src/parole-subtitle-encoding.c:192
+#: ../src/parole-subtitle-encoding.c:194 ../src/parole-subtitle-encoding.c:196
 msgid "Central European"
 msgstr "Mitteleuropäisch"
 
-#: ../src/parole-subtitle-encoding.c:199
-#: ../src/parole-subtitle-encoding.c:201
-#: ../src/parole-subtitle-encoding.c:203
-#: ../src/parole-subtitle-encoding.c:205
+#: ../src/parole-subtitle-encoding.c:199 ../src/parole-subtitle-encoding.c:201
+#: ../src/parole-subtitle-encoding.c:203 ../src/parole-subtitle-encoding.c:205
 msgid "Chinese Simplified"
 msgstr "Chinesisch (vereinfacht)"
 
-#: ../src/parole-subtitle-encoding.c:208
-#: ../src/parole-subtitle-encoding.c:210
+#: ../src/parole-subtitle-encoding.c:208 ../src/parole-subtitle-encoding.c:210
 #: ../src/parole-subtitle-encoding.c:212
 msgid "Chinese Traditional"
 msgstr "Chinesisch (traditionell)"
@@ -509,12 +512,9 @@ msgstr "Chinesisch (traditionell)"
 msgid "Croatian"
 msgstr "Kroatisch"
 
-#: ../src/parole-subtitle-encoding.c:218
-#: ../src/parole-subtitle-encoding.c:220
-#: ../src/parole-subtitle-encoding.c:222
-#: ../src/parole-subtitle-encoding.c:224
-#: ../src/parole-subtitle-encoding.c:226
-#: ../src/parole-subtitle-encoding.c:228
+#: ../src/parole-subtitle-encoding.c:218 ../src/parole-subtitle-encoding.c:220
+#: ../src/parole-subtitle-encoding.c:222 ../src/parole-subtitle-encoding.c:224
+#: ../src/parole-subtitle-encoding.c:226 ../src/parole-subtitle-encoding.c:228
 msgid "Cyrillic"
 msgstr "Kyrillisch"
 
@@ -522,8 +522,7 @@ msgstr "Kyrillisch"
 msgid "Cyrillic/Russian"
 msgstr "Kyrillisch/Russisch"
 
-#: ../src/parole-subtitle-encoding.c:234
-#: ../src/parole-subtitle-encoding.c:236
+#: ../src/parole-subtitle-encoding.c:234 ../src/parole-subtitle-encoding.c:236
 msgid "Cyrillic/Ukrainian"
 msgstr "Kyrillisch/Ukrainisch"
 
@@ -531,8 +530,7 @@ msgstr "Kyrillisch/Ukrainisch"
 msgid "Georgian"
 msgstr "Georgisch"
 
-#: ../src/parole-subtitle-encoding.c:242
-#: ../src/parole-subtitle-encoding.c:244
+#: ../src/parole-subtitle-encoding.c:242 ../src/parole-subtitle-encoding.c:244
 #: ../src/parole-subtitle-encoding.c:246
 msgid "Greek"
 msgstr "Griechisch"
@@ -545,10 +543,8 @@ msgstr "Gujarati"
 msgid "Gurmukhi"
 msgstr "Gurmukhi"
 
-#: ../src/parole-subtitle-encoding.c:255
-#: ../src/parole-subtitle-encoding.c:257
-#: ../src/parole-subtitle-encoding.c:259
-#: ../src/parole-subtitle-encoding.c:261
+#: ../src/parole-subtitle-encoding.c:255 ../src/parole-subtitle-encoding.c:257
+#: ../src/parole-subtitle-encoding.c:259 ../src/parole-subtitle-encoding.c:261
 msgid "Hebrew"
 msgstr "Hebräisch"
 
@@ -564,16 +560,13 @@ msgstr "Hindi"
 msgid "Icelandic"
 msgstr "Isländisch"
 
-#: ../src/parole-subtitle-encoding.c:273
-#: ../src/parole-subtitle-encoding.c:275
+#: ../src/parole-subtitle-encoding.c:273 ../src/parole-subtitle-encoding.c:275
 #: ../src/parole-subtitle-encoding.c:277
 msgid "Japanese"
 msgstr "Japanisch"
 
-#: ../src/parole-subtitle-encoding.c:280
-#: ../src/parole-subtitle-encoding.c:282
-#: ../src/parole-subtitle-encoding.c:284
-#: ../src/parole-subtitle-encoding.c:286
+#: ../src/parole-subtitle-encoding.c:280 ../src/parole-subtitle-encoding.c:282
+#: ../src/parole-subtitle-encoding.c:284 ../src/parole-subtitle-encoding.c:286
 msgid "Korean"
 msgstr "Koreanisch"
 
@@ -585,8 +578,7 @@ msgstr "Nordisch"
 msgid "Persian"
 msgstr "Persisch"
 
-#: ../src/parole-subtitle-encoding.c:295
-#: ../src/parole-subtitle-encoding.c:297
+#: ../src/parole-subtitle-encoding.c:295 ../src/parole-subtitle-encoding.c:297
 msgid "Romanian"
 msgstr "Rumänisch"
 
@@ -598,31 +590,24 @@ msgstr "Südeuropäisch"
 msgid "Thai"
 msgstr "Thai"
 
-#: ../src/parole-subtitle-encoding.c:306
-#: ../src/parole-subtitle-encoding.c:308
-#: ../src/parole-subtitle-encoding.c:310
-#: ../src/parole-subtitle-encoding.c:312
+#: ../src/parole-subtitle-encoding.c:306 ../src/parole-subtitle-encoding.c:308
+#: ../src/parole-subtitle-encoding.c:310 ../src/parole-subtitle-encoding.c:312
 msgid "Turkish"
 msgstr "Türkisch"
 
-#: ../src/parole-subtitle-encoding.c:315
-#: ../src/parole-subtitle-encoding.c:317
-#: ../src/parole-subtitle-encoding.c:319
-#: ../src/parole-subtitle-encoding.c:321
+#: ../src/parole-subtitle-encoding.c:315 ../src/parole-subtitle-encoding.c:317
+#: ../src/parole-subtitle-encoding.c:319 ../src/parole-subtitle-encoding.c:321
 #: ../src/parole-subtitle-encoding.c:323
 msgid "Unicode"
 msgstr "Unicode"
 
-#: ../src/parole-subtitle-encoding.c:326
-#: ../src/parole-subtitle-encoding.c:328
-#: ../src/parole-subtitle-encoding.c:330
-#: ../src/parole-subtitle-encoding.c:332
+#: ../src/parole-subtitle-encoding.c:326 ../src/parole-subtitle-encoding.c:328
+#: ../src/parole-subtitle-encoding.c:330 ../src/parole-subtitle-encoding.c:332
 #: ../src/parole-subtitle-encoding.c:334
 msgid "Western"
 msgstr "Westlich"
 
-#: ../src/parole-subtitle-encoding.c:337
-#: ../src/parole-subtitle-encoding.c:339
+#: ../src/parole-subtitle-encoding.c:337 ../src/parole-subtitle-encoding.c:339
 #: ../src/parole-subtitle-encoding.c:341
 msgid "Vietnamese"
 msgstr "Vietnamesisch"
@@ -648,8 +633,7 @@ msgstr "Titel wird abgespielt"
 msgid "Track %i"
 msgstr "Titel %i"
 
-#: ../src/parole-plugins-manager.c:297
-#: ../src/parole-plugins-manager.c:433
+#: ../src/parole-plugins-manager.c:297 ../src/parole-plugins-manager.c:433
 msgid "Visit Website"
 msgstr "Web-Seite besuchen"
 
@@ -784,7 +768,8 @@ msgstr "Fenstertitel"
 msgid "Inhibit Power Manager from suspending the machine while playing DVD."
 msgstr "Hindert die Energieverwaltung am Herunterfahren des Computers, während eine DVD wiedergegeben wird."
 
-# 'Energieverwaltungserweiterung' ist zu lang und die anderen Plugins haben auch nicht 'Plugin' im Namen.
+# 'Energieverwaltungserweiterung' ist zu lang und die anderen Plugins haben
+# auch nicht 'Plugin' im Namen.
 #: ../plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
 msgstr "Energieverwaltung"
@@ -813,15 +798,14 @@ msgstr "Vollbild verlassen"
 msgid "Fullscreen"
 msgstr "Vollbild"
 
-#.
 #. * Copy url
-#.
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:452
+#. 
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:455
 msgid "Copy url"
 msgstr "URL kopieren"
 
 #~ msgid "Enabled"
 #~ msgstr "Aktiviert"
+
 #~ msgid "Plugin"
 #~ msgstr "Erweiterung"
-
