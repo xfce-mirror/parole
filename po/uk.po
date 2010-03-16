@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-10 14:17+0100\n"
+"POT-Creation-Date: 2010-03-16 06:03+0100\n"
 "PO-Revision-Date: 2009-12-14 21:35+0200\n"
 "Last-Translator: Motsyo Gennadi <drool@altlinux.ru>\n"
 "Language-Team: Ukrainian\n"
@@ -41,85 +41,93 @@ msgid "Chapter Menu"
 msgstr "Меню розділу"
 
 #: ../data/interfaces/parole.ui.h:7
+msgid "DVD"
+msgstr "ДВД"
+
+#: ../data/interfaces/parole.ui.h:8
 msgid "DVD Menu"
 msgstr "DVD Меню"
 
-#: ../data/interfaces/parole.ui.h:8
+#: ../data/interfaces/parole.ui.h:9
+msgid "From ISO image"
+msgstr "З образу ISO"
+
+#: ../data/interfaces/parole.ui.h:10
 msgid "Media player"
 msgstr "Media player"
 
-#: ../data/interfaces/parole.ui.h:9
+#: ../data/interfaces/parole.ui.h:11
 msgid "Mute"
 msgstr "Тихо"
 
-#: ../data/interfaces/parole.ui.h:10 ../src/parole-player.c:1098
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:1197
 #: ../src/parole-disc-menu.c:113
 msgid "Next Chapter"
 msgstr "Наступник розділ"
 
-#: ../data/interfaces/parole.ui.h:11
+#: ../data/interfaces/parole.ui.h:13
 msgid "None"
 msgstr "Немає"
 
-#: ../data/interfaces/parole.ui.h:12 ../data/desktop/parole.desktop.in.in.h:1
+#: ../data/interfaces/parole.ui.h:14 ../data/desktop/parole.desktop.in.in.h:1
 #: ../src/parole-about.c:70 ../plugins/window-title/window-title-provider.c:58
 msgid "Parole Media Player"
 msgstr "Parole Media Player"
 
-#: ../data/interfaces/parole.ui.h:13
+#: ../data/interfaces/parole.ui.h:15
 msgid "Plugins"
 msgstr "Плагіни"
 
-#: ../data/interfaces/parole.ui.h:14 ../src/parole-player.c:1110
+#: ../data/interfaces/parole.ui.h:16 ../src/parole-player.c:1209
 #: ../src/parole-disc-menu.c:114
 msgid "Previous Chapter"
 msgstr "Попередній розділ"
 
-#: ../data/interfaces/parole.ui.h:15
+#: ../data/interfaces/parole.ui.h:17
 msgid "Repeat"
 msgstr "Повтор"
 
-#: ../data/interfaces/parole.ui.h:16
+#: ../data/interfaces/parole.ui.h:18
 msgid "Select Track"
 msgstr "Вибір треку"
 
-#: ../data/interfaces/parole.ui.h:17
+#: ../data/interfaces/parole.ui.h:19
 msgid "Shuffle"
 msgstr "Перемішати"
 
-#: ../data/interfaces/parole.ui.h:18
+#: ../data/interfaces/parole.ui.h:20
 msgid "Sound"
 msgstr "Звук"
 
-#: ../data/interfaces/parole.ui.h:19
+#: ../data/interfaces/parole.ui.h:21
 msgid "Square"
 msgstr "Квадрат"
 
-#: ../data/interfaces/parole.ui.h:20
+#: ../data/interfaces/parole.ui.h:22
 msgid "Volume Down"
 msgstr "Тихіше"
 
-#: ../data/interfaces/parole.ui.h:21
+#: ../data/interfaces/parole.ui.h:23
 msgid "Volume Up"
 msgstr "Гучніше"
 
-#: ../data/interfaces/parole.ui.h:22
+#: ../data/interfaces/parole.ui.h:24
 msgid "_Edit"
 msgstr "_Правка"
 
-#: ../data/interfaces/parole.ui.h:23
+#: ../data/interfaces/parole.ui.h:25
 msgid "_Help"
 msgstr "_Довідка"
 
-#: ../data/interfaces/parole.ui.h:24
+#: ../data/interfaces/parole.ui.h:26
 msgid "_Media"
 msgstr "_Фільм"
 
-#: ../data/interfaces/parole.ui.h:25
+#: ../data/interfaces/parole.ui.h:27
 msgid "_Open location"
 msgstr "_Відкрити адресу..."
 
-#: ../data/interfaces/parole.ui.h:26
+#: ../data/interfaces/parole.ui.h:28
 msgid "_View"
 msgstr "_Вигляд"
 
@@ -231,19 +239,19 @@ msgstr "За розширенням"
 msgid "Select File Types (By Extension)"
 msgstr "Вибрати тип файлу (за розширенням)"
 
-#: ../gst/parole-gst.c:1494
+#: ../gst/parole-gst.c:1511
 msgid "The stream is taking too much time to load"
 msgstr "Потік вимагає надто багато часу для завантаження"
 
-#: ../gst/parole-gst.c:1494
+#: ../gst/parole-gst.c:1511
 msgid "Stop"
 msgstr "Стоп"
 
-#: ../gst/parole-gst.c:1683
+#: ../gst/parole-gst.c:1700
 msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr "Не можу завантажити GStreamer аудіо-плагін, перевірте наявність GStreamer"
 
-#: ../gst/parole-gst.c:1703
+#: ../gst/parole-gst.c:1720
 msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr "Не можу завантажити GStreamer відео-плагін, перевірте наявність GStreamer"
 
@@ -268,71 +276,71 @@ msgstr ""
 "Ліцензія GNU GPL.\n"
 "\n"
 
-#: ../src/main.c:175
+#: ../src/main.c:187
 msgid "Unknown argument "
 msgstr "Невідомий аргумент"
 
-#: ../src/main.c:212
+#: ../src/main.c:224
 msgid "Open a new instance"
 msgstr "Відкривати окремим екземпляром"
 
-#: ../src/main.c:213
+#: ../src/main.c:225
 msgid "Do not load plugins"
 msgstr "Не завантажувати плагіни"
 
-#: ../src/main.c:214
+#: ../src/main.c:226
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "Вказати шлях до пристрою Audio-CD/VCD/DVD"
 
-#: ../src/main.c:215
+#: ../src/main.c:227
 msgid "Play or pause if already playing"
 msgstr "Відтворити чи призупинити, якщо вже відтворюється"
 
-#: ../src/main.c:216
+#: ../src/main.c:228
 msgid "Stop playing"
 msgstr "Зупинити відтворення"
 
-#: ../src/main.c:217
+#: ../src/main.c:229
 msgid "Next track"
 msgstr "Наступний трек"
 
-#: ../src/main.c:218
+#: ../src/main.c:230
 msgid "Previous track"
 msgstr "Попередній трек"
 
-#: ../src/main.c:219
+#: ../src/main.c:231
 msgid "Seek forward"
 msgstr "Шукати вперед"
 
-#: ../src/main.c:220
+#: ../src/main.c:232
 msgid "Seek Backward"
 msgstr "Шукати назад"
 
-#: ../src/main.c:221
+#: ../src/main.c:233
 msgid "Raise volume"
 msgstr "Збільшити гучність"
 
-#: ../src/main.c:222
+#: ../src/main.c:234
 msgid "Lower volume"
 msgstr "Зменшити гучність"
 
-#: ../src/main.c:223
+#: ../src/main.c:235
 msgid "Mute volume"
 msgstr "Приглушити звук"
 
-#: ../src/main.c:224
+#: ../src/main.c:236
 msgid "Version information"
 msgstr "Версія"
 
-#: ../src/main.c:225
+#: ../src/main.c:237
 msgid "Enabled/Disable XV support"
 msgstr "Увімкнути/вимкнути підтримку XV"
 
-#: ../src/main.c:227
+#: ../src/main.c:239
 msgid "Media to play"
 msgstr "Об'єкт для відтворення"
 
-#: ../src/main.c:264
+#: ../src/main.c:276
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole вже запущено, використовуйте -i для відкриття окремим екземпляром\n"
@@ -357,7 +365,7 @@ msgstr "Відмовлено у доступі"
 msgid "Unknown playlist format, Please select a support playlist format"
 msgstr "Формат списку не підтримується. Виберіть допустимий формат списку"
 
-#: ../src/parole-medialist.c:514 ../src/parole-player.c:1852
+#: ../src/parole-medialist.c:514 ../src/parole-player.c:1973
 msgid "Playlist"
 msgstr "Список"
 
@@ -385,35 +393,45 @@ msgstr "Запам'ятати список"
 msgid "Media list"
 msgstr "Список файлів"
 
-#: ../src/parole-player.c:318
+#: ../src/parole-player.c:333
 msgid "Hide playlist"
 msgstr "Сховати список"
 
-#: ../src/parole-player.c:327
+#: ../src/parole-player.c:342
 msgid "Show playlist"
 msgstr "Показати список"
 
-#: ../src/parole-player.c:543
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:297
+#: ../src/parole-player.c:375
+msgid "Open ISO image"
+msgstr "Відкрити образ ISO"
+
+#: ../src/parole-player.c:392
+msgid "CD image"
+msgstr "образ КД"
+
+#: ../src/parole-player.c:392
+msgid "DVD image"
+msgstr "образ ДВД"
+
+#: ../src/parole-player.c:641
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:300
 msgid "Media stream is not seekable"
 msgstr "Потік недоступний для перегляду"
 
-#.
 #. * Next chapter menu item
-#.
-#: ../src/parole-player.c:1098 ../src/parole-disc-menu.c:122
+#. 
+#: ../src/parole-player.c:1197 ../src/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr "Наступний трек"
 
-#.
 #. * Previous chapter menu item
-#.
-#: ../src/parole-player.c:1110 ../src/parole-disc-menu.c:123
+#. 
+#: ../src/parole-player.c:1209 ../src/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr "Попередній трек"
 
 #: ../src/parole-statusbar.c:61
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:590
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:593
 msgid "Buffering"
 msgstr "Буферизація"
 
@@ -433,7 +451,7 @@ msgstr "Пауза"
 msgid "Playing"
 msgstr "Відтворюється"
 
-#: ../src/parole-statusbar.c:145
+#: ../src/parole-statusbar.c:170 ../src/parole-statusbar.c:174
 msgid "Live stream:"
 msgstr "Потік:"
 
@@ -446,7 +464,7 @@ msgstr "Автор/Маінтейнер"
 msgid "Translator (%s)"
 msgstr "Перекладач (%s)"
 
-#: ../src/parole-disc.c:202
+#: ../src/parole-disc.c:227
 msgid "Play Disc"
 msgstr "Відтворити диск"
 
@@ -734,9 +752,7 @@ msgstr "Значок в лотку"
 
 #: ../plugins/window-title/window-title.desktop.in.h:1
 msgid "Set the main window name to the current playing media name."
-msgstr ""
-"Встановити ім'я головного вікна у відповідності "
-"з іменем відтворюваного файлу."
+msgstr "Встановити ім'я головного вікна у відповідності з іменем відтворюваного файлу."
 
 #: ../plugins/window-title/window-title.desktop.in.h:2
 msgid "Window Title"
@@ -774,10 +790,8 @@ msgstr "Вийти з повноекранного режиму"
 msgid "Fullscreen"
 msgstr "Повноекранний режим"
 
-#.
 #. * Copy url
-#.
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:452
+#. 
+#: ../browser-plugin/media-plugin/parole-plugin-player.c:455
 msgid "Copy url"
 msgstr "Копіювати адресу"
-
