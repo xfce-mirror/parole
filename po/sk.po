@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parole 0.1.90svn.r07906\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-18 00:06+0100\n"
+"POT-Creation-Date: 2010-05-20 22:03+0000\n"
 "PO-Revision-Date: 2010-02-18 00:48+0100\n"
 "Last-Translator: Robert Hartl <hartl.robert@gmail.com>\n"
 "Language-Team: Slovak <gnome-sk-list@gnome.org>\n"
@@ -131,7 +131,7 @@ msgstr "_Zobraziť"
 
 #: ../data/interfaces/mediachooser.ui.h:1
 msgid "Replace playlist with opened files"
-msgstr ""
+msgstr "Nahradiť zoznam médií otváranými súbormi"
 
 #: ../data/interfaces/mediachooser.ui.h:2
 msgid "Scan folders recursively"
@@ -239,20 +239,18 @@ msgstr "Vyberte typy súborov (podľa prípony)"
 
 #: ../gst/parole-gst.c:1511
 msgid "The stream is taking too much time to load"
-msgstr ""
+msgstr "Načítanie dátového toku trvá príliš dlho"
 
 #: ../gst/parole-gst.c:1511
 msgid "Stop"
 msgstr "Zastaviť"
 
 #: ../gst/parole-gst.c:1700
-msgid ""
-"Unable to load playbin GStreamer plugin, check your GStreamer installation"
-msgstr ""
+msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
+msgstr "Nemožno zaviesť zásuvný modul GStreameru playbin. Skontrolujte stav inštalácie"
 
 #: ../gst/parole-gst.c:1720
-msgid ""
-"Unable to load video GStreamer plugin, check your GStreamer installation"
+msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 
 #: ../src/main.c:54
@@ -286,7 +284,7 @@ msgstr "Otvoriť novú inštanciu"
 
 #: ../src/main.c:225
 msgid "Do not load plugins"
-msgstr ""
+msgstr "Nezavádzať zásuvné moduly"
 
 #: ../src/main.c:226
 msgid "Set Audio-CD/VCD/DVD device path"
@@ -379,7 +377,7 @@ msgstr "Zoznamy skladieb PLS"
 
 #: ../src/parole-medialist.c:537
 msgid "Advanced Stream Redirector"
-msgstr ""
+msgstr "Pokročilé presmerovanie dátového toku"
 
 #: ../src/parole-medialist.c:545
 msgid "Shareable Playlist"
@@ -416,18 +414,16 @@ msgstr "Obraz DVD"
 #: ../src/parole-player.c:641
 #: ../browser-plugin/media-plugin/parole-plugin-player.c:300
 msgid "Media stream is not seekable"
-msgstr ""
+msgstr "Dátový tok neumožňuje presúvanie"
 
-#.
 #. * Next chapter menu item
-#.
+#. 
 #: ../src/parole-player.c:1197 ../src/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr "Ďalšia skladba"
 
-#.
 #. * Previous chapter menu item
-#.
+#. 
 #: ../src/parole-player.c:1209 ../src/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr "Predchádzajúca skladba"
@@ -549,7 +545,7 @@ msgstr "Hebrejské"
 
 #: ../src/parole-subtitle-encoding.c:264
 msgid "Hebrew Visual"
-msgstr ""
+msgstr "Hebrejské vizálne"
 
 #: ../src/parole-subtitle-encoding.c:267
 msgid "Hindi"
@@ -690,11 +686,11 @@ msgstr "Všeobcené"
 
 #: ../plugins/properties/stream-properties-provider.c:392
 msgid "Stream doesn't support tags changes"
-msgstr ""
+msgstr "Dátový prúd nepodporuje zmeny značiek"
 
 #: ../plugins/properties/stream-properties-provider.c:399
 msgid "Save media tags changes"
-msgstr ""
+msgstr "Uložiť zmeny značiek média"
 
 #: ../plugins/properties/stream-properties-provider.c:524
 msgid "Properties"
@@ -702,7 +698,7 @@ msgstr "Vlastnosti"
 
 #: ../plugins/properties/stream-properties.desktop.in.h:1
 msgid "Read media properties"
-msgstr ""
+msgstr "Čítať vlastnosti média"
 
 #: ../plugins/properties/stream-properties.desktop.in.h:2
 msgid "Stream Properties"
@@ -754,7 +750,7 @@ msgstr "Ikona v oznamovacej oblasti"
 
 #: ../plugins/window-title/window-title.desktop.in.h:1
 msgid "Set the main window name to the current playing media name."
-msgstr ""
+msgstr "Nastaviť názov hlavného okna na názov prehrávaného média."
 
 #: ../plugins/window-title/window-title.desktop.in.h:2
 msgid "Window Title"
@@ -762,7 +758,7 @@ msgstr "Titulok okna"
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:1
 msgid "Inhibit Power Manager from suspending the machine while playing DVD."
-msgstr ""
+msgstr "Potlačiť nastavenia úsporných režimov Správcu napájania pri prehrávaní DVD."
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
@@ -777,9 +773,8 @@ msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
 #: ../browser-plugin/media-plugin/main.c:73
-#, fuzzy
 msgid "url to play"
-msgstr "Média na prehrávanie"
+msgstr "Umiestnenie URL na prehrávanie"
 
 #: ../browser-plugin/media-plugin/main.c:73
 msgid "URL"
@@ -793,14 +788,12 @@ msgstr "Opustiť režim celej obrazovky"
 msgid "Fullscreen"
 msgstr "Celá obrazovka"
 
-#.
 #. * Copy url
-#.
+#. 
 #: ../browser-plugin/media-plugin/parole-plugin-player.c:455
 msgid "Copy url"
 msgstr "Kopírovať url"
 
-#, fuzzy
 #~ msgid "Plugin"
 #~ msgstr "Zasuvné moduly"
 
