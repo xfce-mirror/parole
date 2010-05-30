@@ -1,7 +1,3 @@
-if ENABLE_BROWSER_PLUGIN
-browser_plugin_dir = browser-plugin
-endif
-
 SUBDIRS =  			\
 	data			\
 	parole 			\
@@ -10,7 +6,6 @@ SUBDIRS =  			\
 	dbus			\
 	src			\
 	plugins			\
-	$(browser_plugin_dir)  	\
 	docs			\
 	po
 
