@@ -57,7 +57,7 @@ gchar *parole_open_iso_image (GtkWindow *parent, ParoleIsoImage image)
     const gchar *folder;
     gint response;
     
-    dialog = xfce_titled_dialog_new_with_buttons (PAROLE_ISO_IMAGE_CD ? _("Open IS CD image") : _("Open ISO DVD image"), 
+    dialog = xfce_titled_dialog_new_with_buttons (PAROLE_ISO_IMAGE_CD ? _("Open CD iso image") : _("Open DVD iso image"), 
 						  parent,
 						  GTK_DIALOG_DESTROY_WITH_PARENT,
 						  GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,

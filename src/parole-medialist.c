@@ -1,4 +1,4 @@
-/*f
+/*
  * * Copyright (C) 2009 Ali <aliov@xfce.org>
  *
  * Licensed under the GNU General Public License Version 2

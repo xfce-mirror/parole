@@ -317,7 +317,7 @@ parole_conf_class_init (ParoleConfClass *klass)
                                                        NULL, NULL,
                                                        320,
 						       G_MAXINT16,
-						       780,
+						       760,
                                                        G_PARAM_READWRITE));
 						       
     g_object_class_install_property (object_class,
@@ -326,7 +326,7 @@ parole_conf_class_init (ParoleConfClass *klass)
                                                        NULL, NULL,
                                                        220,
 						       G_MAXINT16,
-						       480,
+						       420,
                                                        G_PARAM_READWRITE));
     
     g_object_class_install_property (object_class,
@@ -462,3 +462,17 @@ parole_conf_new (void)
 
     return PAROLE_CONF (parole_conf_object);
 }
+
+
+gboolean			 parole_conf_get_property_bool  (ParoleConf *conf,
+								 const gchar *name)
+{
+    gboolean value;
+    
+    g_object_get (G_OBJECT (conf),
+		  name, &value,
+		  NULL);
+		  
+    return value;
+}
+

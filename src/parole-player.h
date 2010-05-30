@@ -30,20 +30,8 @@ G_BEGIN_DECLS
 #define PAROLE_PLAYER(o)          (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_PLAYER, ParolePlayer))
 #define PAROLE_IS_PLAYER(o)       (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_PLAYER))
 
-typedef struct ParolePlayerPrivate ParolePlayerPrivate;
-
-typedef struct
-{
-    GObject         		 parent;
-    ParolePlayerPrivate     	*priv;
-    
-} ParolePlayer;
-
-typedef struct
-{
-    GObjectClass 		 parent_class;
-    
-} ParolePlayerClass;
+typedef struct _ParolePlayer	  ParolePlayer;
+typedef struct _ParolePlayerClass ParolePlayerClass;
 
 GType        			 parole_player_get_type        (void) G_GNUC_CONST;
 
