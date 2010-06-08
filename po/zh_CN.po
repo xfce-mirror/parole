@@ -3,12 +3,12 @@
 # Copyright (C) 2009 THE Parole'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Parole package.
 # Hunt Xu <huntxu@live.cn>, 2009.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-14 12:06+0100\n"
+"POT-Creation-Date: 2010-06-08 10:04+0000\n"
 "PO-Revision-Date: 2010-01-14 22:22+0800\n"
 "Last-Translator: Hunt Xu <huntxu@live.cn>\n"
 "Language-Team: Chinese (simplified) <xfce-i18n@xfce.org>\n"
@@ -60,7 +60,7 @@ msgstr "媒体播放器"
 msgid "Mute"
 msgstr "静音"
 
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:1198
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:1197
 #: ../src/parole-disc-menu.c:113
 msgid "Next Chapter"
 msgstr "下一章节"
@@ -78,7 +78,7 @@ msgstr "Parole 媒体播放器"
 msgid "Plugins"
 msgstr "插件"
 
-#: ../data/interfaces/parole.ui.h:16 ../src/parole-player.c:1210
+#: ../data/interfaces/parole.ui.h:16 ../src/parole-player.c:1209
 #: ../src/parole-disc-menu.c:114
 msgid "Previous Chapter"
 msgstr "上一章节"
@@ -94,7 +94,7 @@ msgstr "选择轨道"
 #: ../data/interfaces/parole.ui.h:19
 #, fuzzy
 msgid "Shuffle"
-msgstr "拖拽"
+msgstr "随机播放"
 
 #: ../data/interfaces/parole.ui.h:20
 msgid "Sound"
@@ -103,7 +103,7 @@ msgstr "声音"
 #: ../data/interfaces/parole.ui.h:21
 #, fuzzy
 msgid "Square"
-msgstr "广场"
+msgstr "顺序播放"
 
 #: ../data/interfaces/parole.ui.h:22
 msgid "Volume Down"
@@ -250,13 +250,11 @@ msgid "Stop"
 msgstr "停止"
 
 #: ../gst/parole-gst.c:1700
-msgid ""
-"Unable to load playbin GStreamer plugin, check your GStreamer installation"
+msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr "无法载入 GStreamer 播放插件，检查您的 GStreamer 是否正确安装"
 
 #: ../gst/parole-gst.c:1720
-msgid ""
-"Unable to load video GStreamer plugin, check your GStreamer installation"
+msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr "无法载入 GStreamer 视频插件，检查您的 GStreamer 是否正确安装"
 
 #: ../src/main.c:54
@@ -280,71 +278,71 @@ msgstr ""
 "在 GNU GPL 协议条款下发行。\n"
 "\n"
 
-#: ../src/main.c:175
+#: ../src/main.c:187
 msgid "Unknown argument "
 msgstr "未知参数 "
 
-#: ../src/main.c:212
+#: ../src/main.c:224
 msgid "Open a new instance"
 msgstr "打开一个新的 Parole 实例"
 
-#: ../src/main.c:213
+#: ../src/main.c:225
 msgid "Do not load plugins"
 msgstr "不加载插件"
 
-#: ../src/main.c:214
+#: ../src/main.c:226
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "设置 Audio-CD/VCD/DVD 设备路径"
 
-#: ../src/main.c:215
+#: ../src/main.c:227
 msgid "Play or pause if already playing"
 msgstr "播放 / 暂停"
 
-#: ../src/main.c:216
+#: ../src/main.c:228
 msgid "Stop playing"
 msgstr "停止"
 
-#: ../src/main.c:217
+#: ../src/main.c:229
 msgid "Next track"
 msgstr "下一轨道"
 
-#: ../src/main.c:218
+#: ../src/main.c:230
 msgid "Previous track"
 msgstr "上一轨道"
 
-#: ../src/main.c:219
+#: ../src/main.c:231
 msgid "Seek forward"
 msgstr "向前搜索"
 
-#: ../src/main.c:220
+#: ../src/main.c:232
 msgid "Seek Backward"
 msgstr "向后搜索"
 
-#: ../src/main.c:221
+#: ../src/main.c:233
 msgid "Raise volume"
 msgstr "增大音量"
 
-#: ../src/main.c:222
+#: ../src/main.c:234
 msgid "Lower volume"
 msgstr "减小音量"
 
-#: ../src/main.c:223
+#: ../src/main.c:235
 msgid "Mute volume"
 msgstr "静音"
 
-#: ../src/main.c:224
+#: ../src/main.c:236
 msgid "Version information"
 msgstr "版本信息"
 
-#: ../src/main.c:225
+#: ../src/main.c:237
 msgid "Enabled/Disable XV support"
 msgstr "启用/禁用 XV 支持"
 
-#: ../src/main.c:227
+#: ../src/main.c:239
 msgid "Media to play"
 msgstr "要播放的媒体"
 
-#: ../src/main.c:264
+#: ../src/main.c:276
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole 已经在运行，使用 -i 参数打开一个新的实例\n"
@@ -369,7 +367,7 @@ msgstr "权限不足"
 msgid "Unknown playlist format, Please select a support playlist format"
 msgstr "未知播放列表格式，请选择一个已被支持的播放列表格式"
 
-#: ../src/parole-medialist.c:514 ../src/parole-player.c:1974
+#: ../src/parole-medialist.c:514 ../src/parole-player.c:1973
 msgid "Playlist"
 msgstr "播放列表"
 
@@ -417,27 +415,23 @@ msgstr "CD 镜像"
 msgid "DVD image"
 msgstr "DVD 镜像"
 
-#: ../src/parole-player.c:643
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:300
+#: ../src/parole-player.c:641
 msgid "Media stream is not seekable"
 msgstr "流媒体不可查找"
 
-#.
 #. * Next chapter menu item
-#.
-#: ../src/parole-player.c:1198 ../src/parole-disc-menu.c:122
+#. 
+#: ../src/parole-player.c:1197 ../src/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr "下一轨道"
 
-#.
 #. * Previous chapter menu item
-#.
-#: ../src/parole-player.c:1210 ../src/parole-disc-menu.c:123
+#. 
+#: ../src/parole-player.c:1209 ../src/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr "上一轨道"
 
 #: ../src/parole-statusbar.c:61
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:593
 msgid "Buffering"
 msgstr "正在缓冲"
 
@@ -457,7 +451,7 @@ msgstr "已暂停"
 msgid "Playing"
 msgstr "正在播放"
 
-#: ../src/parole-statusbar.c:168
+#: ../src/parole-statusbar.c:170 ../src/parole-statusbar.c:174
 msgid "Live stream:"
 msgstr "Live 流:"
 
@@ -772,36 +766,26 @@ msgstr "播放 DVD 时禁止电源管理器挂起系统。"
 msgid "Power Manager Plugin"
 msgstr "电源管理器插件"
 
-#: ../browser-plugin/media-plugin/main.c:72
-msgid "socket"
-msgstr "套接字"
+#~ msgid "socket"
+#~ msgstr "套接字"
 
-#: ../browser-plugin/media-plugin/main.c:72
-msgid "SOCKET ID"
-msgstr "套接字 ID"
+#~ msgid "SOCKET ID"
+#~ msgstr "套接字 ID"
 
-#: ../browser-plugin/media-plugin/main.c:73
-msgid "url to play"
-msgstr "要播放的 url"
+#~ msgid "url to play"
+#~ msgstr "要播放的 url"
 
-#: ../browser-plugin/media-plugin/main.c:73
-msgid "URL"
-msgstr "URL"
+#~ msgid "URL"
+#~ msgstr "URL"
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:138
-msgid "Leave fullscreen"
-msgstr "退出全屏"
+#~ msgid "Leave fullscreen"
+#~ msgstr "退出全屏"
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:143
-msgid "Fullscreen"
-msgstr "全屏播放"
+#~ msgid "Fullscreen"
+#~ msgstr "全屏播放"
 
-#.
-#. * Copy url
-#.
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:455
-msgid "Copy url"
-msgstr "复制 url"
+#~ msgid "Copy url"
+#~ msgstr "复制 url"
 
 #~ msgid "Enabled"
 #~ msgstr "启用"
