@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-02 18:03+0100\n"
+"POT-Creation-Date: 2010-08-22 10:04+0000\n"
 "PO-Revision-Date: 2009-12-10 17:46+0100\n"
 "Last-Translator: Christoph Wickert <cwickert@fedoraproject.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
@@ -51,7 +51,6 @@ msgid "DVD Menu"
 msgstr "DVD-Menü"
 
 #: ../data/interfaces/parole.ui.h:9
-#, fuzzy
 msgid "From ISO image"
 msgstr "Aus ISO-Abbild"
 
@@ -417,7 +416,6 @@ msgid "DVD image"
 msgstr "DVD-Abbild"
 
 #: ../src/parole-player.c:641
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:300
 msgid "Media stream is not seekable"
 msgstr "Medien-Stream ist nicht durchsuchbar"
 
@@ -434,7 +432,6 @@ msgid "Previous Track"
 msgstr "Vorheriger Titel"
 
 #: ../src/parole-statusbar.c:61
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:593
 msgid "Buffering"
 msgstr "Puffervorgang"
 
@@ -754,11 +751,8 @@ msgid "Tray icon"
 msgstr "Symbol im Benachrichtigungsfeld"
 
 #: ../plugins/window-title/window-title.desktop.in.h:1
-#, fuzzy
 msgid "Set the main window name to the current playing media name."
-msgstr ""
-"Titel des Hauptfensters auf den Namen des \n"
-"derzeit abgespielten Mediums setzen."
+msgstr "Titel des Hauptfensters auf den Namen des derzeit abgespielten Mediums setzen."
 
 #: ../plugins/window-title/window-title.desktop.in.h:2
 msgid "Window Title"
@@ -774,35 +768,26 @@ msgstr "Hindert die Energieverwaltung am Herunterfahren des Computers, während 
 msgid "Power Manager Plugin"
 msgstr "Energieverwaltung"
 
-#: ../browser-plugin/media-plugin/main.c:72
-msgid "socket"
-msgstr "Socket"
+#~ msgid "socket"
+#~ msgstr "Socket"
 
-#: ../browser-plugin/media-plugin/main.c:72
-msgid "SOCKET ID"
-msgstr "SOCKET ID"
+#~ msgid "SOCKET ID"
+#~ msgstr "SOCKET ID"
 
-#: ../browser-plugin/media-plugin/main.c:73
-msgid "url to play"
-msgstr "URL zum Abspielen"
+#~ msgid "url to play"
+#~ msgstr "URL zum Abspielen"
 
-#: ../browser-plugin/media-plugin/main.c:73
-msgid "URL"
-msgstr "URL"
+#~ msgid "URL"
+#~ msgstr "URL"
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:138
-msgid "Leave fullscreen"
-msgstr "Vollbild verlassen"
+#~ msgid "Leave fullscreen"
+#~ msgstr "Vollbild verlassen"
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:143
-msgid "Fullscreen"
-msgstr "Vollbild"
+#~ msgid "Fullscreen"
+#~ msgstr "Vollbild"
 
-#. * Copy url
-#. 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:455
-msgid "Copy url"
-msgstr "URL kopieren"
+#~ msgid "Copy url"
+#~ msgstr "URL kopieren"
 
 #~ msgid "Enabled"
 #~ msgstr "Aktiviert"
