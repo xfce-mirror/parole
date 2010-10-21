@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole 2.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-14 06:06+0100\n"
+"POT-Creation-Date: 2010-10-21 10:04+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Sérgio Marques <smarquespt@gmail.com>\n"
 "Language-Team: Portuguese\n"
@@ -31,7 +31,7 @@ msgstr "4:3 (TV)"
 
 #: ../data/interfaces/parole.ui.h:4
 msgid "Aspect Ratio"
-msgstr "Rácio de Aspecto"
+msgstr "Tamanho do vídeo"
 
 #: ../data/interfaces/parole.ui.h:5
 msgid "Auto"
@@ -39,7 +39,7 @@ msgstr "Auto"
 
 #: ../data/interfaces/parole.ui.h:6
 msgid "Chapter Menu"
-msgstr "Menu de Capítulos"
+msgstr "Menu de capítulos"
 
 #: ../data/interfaces/parole.ui.h:7
 msgid "DVD"
@@ -55,17 +55,17 @@ msgstr "De uma imagem ISO"
 
 #: ../data/interfaces/parole.ui.h:10
 msgid "Media player"
-msgstr "Reprodutor Multimédia"
+msgstr "Reprodutor multimédia"
 
 #: ../data/interfaces/parole.ui.h:11
 msgid "Mute"
 msgstr "Silenciar"
 
 #: ../data/interfaces/parole.ui.h:12
-#: ../src/parole-player.c:1198
+#: ../src/parole-player.c:1197
 #: ../src/parole-disc-menu.c:113
 msgid "Next Chapter"
-msgstr "Capítulo Seguinte"
+msgstr "Capítulo seguinte"
 
 #: ../data/interfaces/parole.ui.h:13
 msgid "None"
@@ -80,13 +80,13 @@ msgstr "Reprodutor Multimédia Parole"
 
 #: ../data/interfaces/parole.ui.h:15
 msgid "Plugins"
-msgstr "Plugins"
+msgstr "\"Plug-ins\""
 
 #: ../data/interfaces/parole.ui.h:16
-#: ../src/parole-player.c:1210
+#: ../src/parole-player.c:1209
 #: ../src/parole-disc-menu.c:114
 msgid "Previous Chapter"
-msgstr "Capítulo Anterior"
+msgstr "Capítulo anterior"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "Repeat"
@@ -94,7 +94,7 @@ msgstr "Repetir"
 
 #: ../data/interfaces/parole.ui.h:18
 msgid "Select Track"
-msgstr "Seleccione a Faixa"
+msgstr "Selecione a faixa"
 
 #: ../data/interfaces/parole.ui.h:19
 msgid "Shuffle"
@@ -110,11 +110,11 @@ msgstr "Quadrado"
 
 #: ../data/interfaces/parole.ui.h:22
 msgid "Volume Down"
-msgstr "Diminuir Volume"
+msgstr "Diminuir volume"
 
 #: ../data/interfaces/parole.ui.h:23
 msgid "Volume Up"
-msgstr "Aumentar Volume"
+msgstr "Aumentar volume"
 
 #: ../data/interfaces/parole.ui.h:24
 msgid "_Edit"
@@ -162,11 +162,11 @@ msgstr "<b>Sítio:</b>"
 
 #: ../data/interfaces/plugins.ui.h:4
 msgid "Media Player plugins"
-msgstr "Plugins de Reprodutor"
+msgstr "\"Plug-ins\" do reprodutor"
 
 #: ../data/interfaces/plugins.ui.h:5
 msgid "Parole Plugins"
-msgstr "Parole Plugins"
+msgstr "\"Plug-ins\" Parole"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "<b>Audio</b>"
@@ -198,11 +198,11 @@ msgstr "Contraste:"
 
 #: ../data/interfaces/parole-settings.ui.h:8
 msgid "Disable screen saver while playing movies"
-msgstr "Desactivar protecção de ecrã durante a reprodução de filmes"
+msgstr "Inativar proteção de ecrã durante a reprodução de filmes"
 
 #: ../data/interfaces/parole-settings.ui.h:9
 msgid "Enable visualization when playing audio file"
-msgstr "Activar visualização ao reproduzir áudio"
+msgstr "Ativar visualização ao reproduzir áudio"
 
 #: ../data/interfaces/parole-settings.ui.h:10
 msgid "Encoding: "
@@ -210,7 +210,7 @@ msgstr "Codificação:"
 
 #: ../data/interfaces/parole-settings.ui.h:11
 msgid "Font:"
-msgstr "Fonte:"
+msgstr "Tipo de letra:"
 
 #: ../data/interfaces/parole-settings.ui.h:12
 msgid "Hue:"
@@ -218,7 +218,7 @@ msgstr "Matiz:"
 
 #: ../data/interfaces/parole-settings.ui.h:13
 msgid "Media Player Settings"
-msgstr "Definições do Reprodutor Multimédia"
+msgstr "Definições do reprodutor"
 
 #: ../data/interfaces/parole-settings.ui.h:14
 msgid "Parole Settings"
@@ -226,7 +226,7 @@ msgstr "Definições do Parole"
 
 #: ../data/interfaces/parole-settings.ui.h:15
 msgid "Reset To Defaults"
-msgstr "Repor Omissões"
+msgstr "Repor omissões"
 
 #: ../data/interfaces/parole-settings.ui.h:16
 msgid "Saturation:"
@@ -238,27 +238,27 @@ msgstr "Tipo de visualização:"
 
 #: ../data/interfaces/save-playlist.ui.h:1
 msgid "By Extension"
-msgstr "Por Extensão"
+msgstr "Por extensão"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "Select File Types (By Extension)"
-msgstr "Seleccione Tipo de Ficheiros (Por Extensão)"
+msgstr "Selecione os tipos de ficheiro (por extensão)"
 
-#: ../gst/parole-gst.c:1498
+#: ../gst/parole-gst.c:1511
 msgid "The stream is taking too much time to load"
-msgstr "A transmissão está a levar muito tempo a carregar"
+msgstr "A emissão está a levar muito tempo a carregar"
 
-#: ../gst/parole-gst.c:1498
+#: ../gst/parole-gst.c:1511
 msgid "Stop"
 msgstr "Parar"
 
-#: ../gst/parole-gst.c:1687
+#: ../gst/parole-gst.c:1700
 msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
-msgstr "Não foi possível carregar o plugin playbin GStreamer. Verifique a instalação GStreamer  "
+msgstr "Incapaz de carregar o \"plug-in\" playbin GStreamer. Verifique a instalação GStreamer  "
 
-#: ../gst/parole-gst.c:1707
+#: ../gst/parole-gst.c:1720
 msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
-msgstr "Não foi possível carregar o plugin de vídeo GStreamer. Verifique a instalação GStreamer  "
+msgstr "Incapaz de carregar o \"plug-in\" de vídeo GStreamer. Verifique a instalação GStreamer  "
 
 #: ../src/main.c:54
 #, c-format
@@ -273,79 +273,79 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Reprodutor Multimédia Parole %s\n"
+"Reprodutor multimédia Parole %s\n"
 "\n"
-"Parte do Projecto Xfce Goodies\n"
+"Parte do projeto Xfce Goodies\n"
 "http://goodies.xfce.org\n"
 "\n"
 "Licenciado nos termos da GNU GPL.\n"
 "\n"
 
-#: ../src/main.c:175
+#: ../src/main.c:187
 msgid "Unknown argument "
 msgstr "Argumento desconhecido"
 
-#: ../src/main.c:212
+#: ../src/main.c:224
 msgid "Open a new instance"
 msgstr "Abrir nova instância"
 
-#: ../src/main.c:213
+#: ../src/main.c:225
 msgid "Do not load plugins"
-msgstr "Não carregar plugins"
+msgstr "Não carregar \"plug-ins\""
 
-#: ../src/main.c:214
+#: ../src/main.c:226
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "Definir o caminho do dispositivo CD/VCD/DVD"
 
-#: ../src/main.c:215
+#: ../src/main.c:227
 msgid "Play or pause if already playing"
 msgstr "Reproduzir ou pausar se em execução"
 
-#: ../src/main.c:216
+#: ../src/main.c:228
 msgid "Stop playing"
 msgstr "Parar reprodução"
 
-#: ../src/main.c:217
+#: ../src/main.c:229
 msgid "Next track"
 msgstr "Faixa seguinte"
 
-#: ../src/main.c:218
+#: ../src/main.c:230
 msgid "Previous track"
 msgstr "Faixa anterior"
 
-#: ../src/main.c:219
+#: ../src/main.c:231
 msgid "Seek forward"
 msgstr "Avançar"
 
-#: ../src/main.c:220
+#: ../src/main.c:232
 msgid "Seek Backward"
-msgstr "Retroceder"
+msgstr "Recuar"
 
-#: ../src/main.c:221
+#: ../src/main.c:233
 msgid "Raise volume"
 msgstr "Aumentar volume"
 
-#: ../src/main.c:222
+#: ../src/main.c:234
 msgid "Lower volume"
 msgstr "Diminuir volume"
 
-#: ../src/main.c:223
+#: ../src/main.c:235
 msgid "Mute volume"
 msgstr "Silenciar"
 
-#: ../src/main.c:224
+#: ../src/main.c:236
 msgid "Version information"
 msgstr "Informação sobre versão"
 
-#: ../src/main.c:225
+#: ../src/main.c:237
 msgid "Enabled/Disable XV support"
-msgstr "Activar/desactivar suporte XV"
+msgstr "Ativar/desativar suporte XV"
 
-#: ../src/main.c:227
+#: ../src/main.c:239
 msgid "Media to play"
 msgstr "Multimédia a reproduzir"
 
-#: ../src/main.c:264
+#: ../src/main.c:276
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "O Parole já está em execução. Use -i para abrir uma nova instância\n"
@@ -368,12 +368,12 @@ msgstr "Permissão negada"
 
 #: ../src/parole-medialist.c:446
 msgid "Unknown playlist format, Please select a support playlist format"
-msgstr "Formato da lista desconhecido. Por favor, seleccione um formato suportado"
+msgstr "Formato da lista desconhecido. Por favor, selecione um formato suportado"
 
 #: ../src/parole-medialist.c:514
-#: ../src/parole-player.c:1974
+#: ../src/parole-player.c:1973
 msgid "Playlist"
-msgstr "Lista de Reprodução"
+msgstr "Lista de reprodução"
 
 #: ../src/parole-medialist.c:521
 msgid "M3U Playlists"
@@ -385,11 +385,11 @@ msgstr "Listas PLS"
 
 #: ../src/parole-medialist.c:537
 msgid "Advanced Stream Redirector"
-msgstr "Redireccionador Avançado de Transmissões"
+msgstr "Redirecionador avançado de emissões"
 
 #: ../src/parole-medialist.c:545
 msgid "Shareable Playlist"
-msgstr "Lista Partilhável"
+msgstr "Lista partilhável"
 
 #: ../src/parole-medialist.c:860
 msgid "Remember playlist"
@@ -397,7 +397,7 @@ msgstr "Lembrar lista de reprodução"
 
 #: ../src/parole-medialist.c:1012
 msgid "Media list"
-msgstr "Lista Multimédia"
+msgstr "Lista multimédia"
 
 #: ../src/parole-player.c:333
 msgid "Hide playlist"
@@ -419,29 +419,27 @@ msgstr "Imagem de CD"
 msgid "DVD image"
 msgstr "Imagem de DVD"
 
-#: ../src/parole-player.c:643
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:300
+#: ../src/parole-player.c:641
 msgid "Media stream is not seekable"
-msgstr "A transmissão não permite busca"
+msgstr "A emissão não permite buscas"
 
 #.
 #. * Next chapter menu item
 #.
-#: ../src/parole-player.c:1198
+#: ../src/parole-player.c:1197
 #: ../src/parole-disc-menu.c:122
 msgid "Next Track"
-msgstr "Faixa Seguinte"
+msgstr "Faixa seguinte"
 
 #.
 #. * Previous chapter menu item
 #.
-#: ../src/parole-player.c:1210
+#: ../src/parole-player.c:1209
 #: ../src/parole-disc-menu.c:123
 msgid "Previous Track"
-msgstr "Faixa Anterior"
+msgstr "Faixa anterior"
 
 #: ../src/parole-statusbar.c:61
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:593
 msgid "Buffering"
 msgstr "Processando"
 
@@ -462,9 +460,10 @@ msgstr "Pausado"
 msgid "Playing"
 msgstr "Reproduzindo"
 
-#: ../src/parole-statusbar.c:168
+#: ../src/parole-statusbar.c:170
+#: ../src/parole-statusbar.c:174
 msgid "Live stream:"
-msgstr "Transmissão ao vivo:"
+msgstr "Emissão ao vivo:"
 
 #: ../src/parole-about.c:75
 msgid "Author/Maintainer"
@@ -477,11 +476,11 @@ msgstr "Tradutor (%s)"
 
 #: ../src/parole-disc.c:227
 msgid "Play Disc"
-msgstr "Reproduzir Disco"
+msgstr "Reproduzir disco"
 
 #: ../src/parole-subtitle-encoding.c:165
 msgid "Current Locale"
-msgstr "Idioma Actual"
+msgstr "Idioma atual"
 
 #: ../src/parole-subtitle-encoding.c:168
 #: ../src/parole-subtitle-encoding.c:170
@@ -648,11 +647,11 @@ msgstr "Vietnamita"
 
 #: ../src/parole-open-location.c:181
 msgid "Open location..."
-msgstr "Abri localização..."
+msgstr "Abrir localização..."
 
 #: ../src/parole-open-location.c:186
 msgid "<b>Open location of media file or live stream:</b>"
-msgstr "<b>Abrir localização do ficheiro ou da transmissão:</b>"
+msgstr "<b>Abrir localização do ficheiro ou da emissão:</b>"
 
 #: ../src/parole-open-location.c:205
 msgid "Clear history"
@@ -660,7 +659,7 @@ msgstr "Limpar histórico"
 
 #: ../src/parole-disc-menu.c:130
 msgid "Playing Track"
-msgstr "Reproduzindo Faixa"
+msgstr "Reproduzindo faixa"
 
 #: ../src/parole-disc-menu.c:194
 #, c-format
@@ -670,7 +669,7 @@ msgstr "Faixa %i"
 #: ../src/parole-plugins-manager.c:297
 #: ../src/parole-plugins-manager.c:433
 msgid "Visit Website"
-msgstr "Visitar Sítio Web"
+msgstr "Visitar sítio \"web\""
 
 #: ../src/parole-plugins-manager.c:373
 #: ../plugins/properties/stream-properties-provider.c:140
@@ -682,7 +681,7 @@ msgstr "Desconhecido"
 
 #: ../src/parole-plugins-manager.c:412
 msgid "No installed plugins found on this system"
-msgstr "Não foram encontrados plugins neste sistema"
+msgstr "Não foram encontrados \"plug-ins\" neste sistema"
 
 #: ../parole/parole-filters.c:64
 msgid "Audio"
@@ -726,11 +725,11 @@ msgstr "Geral"
 
 #: ../plugins/properties/stream-properties-provider.c:392
 msgid "Stream doesn't support tags changes"
-msgstr "A transmissão não suporta alterações"
+msgstr "A emissão não suporta alterações"
 
 #: ../plugins/properties/stream-properties-provider.c:399
 msgid "Save media tags changes"
-msgstr "Guardar alterações"
+msgstr "Gravar alterações"
 
 #: ../plugins/properties/stream-properties-provider.c:524
 msgid "Properties"
@@ -742,7 +741,7 @@ msgstr "Ler propriedades"
 
 #: ../plugins/properties/stream-properties.desktop.in.h:2
 msgid "Stream Properties"
-msgstr "Propriedades da Transmissão"
+msgstr "Propriedades da emissão"
 
 #: ../plugins/tray/tray-provider.c:262
 msgid "<b>Playing:</b>"
@@ -754,11 +753,11 @@ msgstr "<b>Duração:</b>"
 
 #: ../plugins/tray/tray-provider.c:420
 msgid "Tray icon plugin"
-msgstr "Plugin da área de notificação"
+msgstr "\"Plug-in\" da área de notificação"
 
 #: ../plugins/tray/tray-provider.c:430
 msgid "Enable notification"
-msgstr "Activar notificação"
+msgstr "Ativar notificação"
 
 #: ../plugins/tray/tray-provider.c:439
 msgid "Always minimize to tray when window is closed"
@@ -774,7 +773,7 @@ msgstr "Minimizar para a área de notificação"
 
 #: ../plugins/tray/tray-provider.c:500
 msgid "Are you sure you want to quit Parole"
-msgstr "Tem a certeza que quer sair de Parole"
+msgstr "Tem a certeza que quer sair de Parole?"
 
 #: ../plugins/tray/tray-provider.c:504
 msgid "Remember my choice"
@@ -794,55 +793,13 @@ msgstr "Definir como nome da janela principal o nome da multimédia em reproduç
 
 #: ../plugins/window-title/window-title.desktop.in.h:2
 msgid "Window Title"
-msgstr "Título da Janela"
+msgstr "Título da janela"
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:1
 msgid "Inhibit Power Manager from suspending the machine while playing DVD."
-msgstr "Proibir que a Gestão de Energia suspenda a máquina durante a reprodução de DVDs."
+msgstr "Proibir que a gestão de energia suspenda o computador durante a reprodução de DVDs."
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
-msgstr "Plugin Gestão de Energia"
-
-#: ../browser-plugin/media-plugin/main.c:72
-msgid "socket"
-msgstr "socket"
-
-#: ../browser-plugin/media-plugin/main.c:72
-msgid "SOCKET ID"
-msgstr "ID SOCKET"
-
-#: ../browser-plugin/media-plugin/main.c:73
-msgid "url to play"
-msgstr "url a reproduzir"
-
-#: ../browser-plugin/media-plugin/main.c:73
-msgid "URL"
-msgstr "URL"
-
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:138
-msgid "Leave fullscreen"
-msgstr "Sair de ecrã completo"
-
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:143
-msgid "Fullscreen"
-msgstr "Ecrã completo"
-
-#.
-#. * Copy url
-#.
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:455
-msgid "Copy url"
-msgstr "Copiar url"
-
-#~ msgid "Enabled"
-#~ msgstr "Activado"
-#~ msgid "Plugin"
-#~ msgstr "Plugin"
-#~ msgid "gtk-close"
-#~ msgstr "gtk-fechar"
-#~ msgid "gtk-properties"
-#~ msgstr "gtk-propriedades"
-#~ msgid "Visite Website"
-#~ msgstr "Visitar Sítio Web"
+msgstr "\"Plug-in\" gestão de energia"
 
