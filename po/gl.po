@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Parole 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-02-19 12:06+0100\n"
-"PO-Revision-Date: 2010-02-19 13:33+0100\n"
+"PO-Revision-Date: 2010-10-20 09:48+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -767,7 +767,7 @@ msgstr "Activar as notificacións"
 
 #: ../plugins/tray/tray-provider.c:439
 msgid "Always minimize to tray when window is closed"
-msgstr "Sempre minimizar á zona de notificación cando se pecha a fiestra"
+msgstr "Sempre minimizar á zona de notificación cando se pecha a xanela"
 
 #: ../plugins/tray/tray-provider.c:478
 msgid "Minimize to tray?"
@@ -795,11 +795,11 @@ msgstr "Icona de zona de notificación"
 
 #: ../plugins/window-title/window-title.desktop.in.h:1
 msgid "Set the main window name to the current playing media name."
-msgstr "Poñer o nome do soporte que se está reproducindo como nome da fiestra principal."
+msgstr "Poñer o nome do soporte que se está reproducindo como nome da xanela principal."
 
 #: ../plugins/window-title/window-title.desktop.in.h:2
 msgid "Window Title"
-msgstr "Título da fiestra"
+msgstr "Título da xanela"
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:1
 msgid "Inhibit Power Manager from suspending the machine while playing DVD."
