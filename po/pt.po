@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole 2.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-21 10:04+0000\n"
+"POT-Creation-Date: 2010-11-13 23:04+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Sérgio Marques <smarquespt@gmail.com>\n"
 "Language-Team: Portuguese\n"
@@ -31,7 +31,7 @@ msgstr "4:3 (TV)"
 
 #: ../data/interfaces/parole.ui.h:4
 msgid "Aspect Ratio"
-msgstr "Tamanho do vídeo"
+msgstr "_Tamanho do vídeo"
 
 #: ../data/interfaces/parole.ui.h:5
 msgid "Auto"
@@ -80,7 +80,7 @@ msgstr "Reprodutor Multimédia Parole"
 
 #: ../data/interfaces/parole.ui.h:15
 msgid "Plugins"
-msgstr "\"Plug-ins\""
+msgstr "\"Pl_ug-ins\""
 
 #: ../data/interfaces/parole.ui.h:16
 #: ../src/parole-player.c:1209
@@ -90,7 +90,7 @@ msgstr "Capítulo anterior"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "Repeat"
-msgstr "Repetir"
+msgstr "_Repetir"
 
 #: ../data/interfaces/parole.ui.h:18
 msgid "Select Track"
@@ -98,7 +98,7 @@ msgstr "Selecione a faixa"
 
 #: ../data/interfaces/parole.ui.h:19
 msgid "Shuffle"
-msgstr "Baralhar"
+msgstr "_Baralhar"
 
 #: ../data/interfaces/parole.ui.h:20
 msgid "Sound"
@@ -729,7 +729,7 @@ msgstr "A emissão não suporta alterações"
 
 #: ../plugins/properties/stream-properties-provider.c:399
 msgid "Save media tags changes"
-msgstr "Gravar alterações"
+msgstr "Gravar alterações dos detalhes"
 
 #: ../plugins/properties/stream-properties-provider.c:524
 msgid "Properties"
@@ -737,7 +737,7 @@ msgstr "Propriedades"
 
 #: ../plugins/properties/stream-properties.desktop.in.h:1
 msgid "Read media properties"
-msgstr "Ler propriedades"
+msgstr "Ler propriedades multimédia"
 
 #: ../plugins/properties/stream-properties.desktop.in.h:2
 msgid "Stream Properties"
@@ -785,7 +785,7 @@ msgstr "Mostrar ícone na área de notificação"
 
 #: ../plugins/tray/system-tray.desktop.in.h:2
 msgid "Tray icon"
-msgstr "Ícone de área de notificação"
+msgstr "Ícone na área de notificação"
 
 #: ../plugins/window-title/window-title.desktop.in.h:1
 msgid "Set the main window name to the current playing media name."
