@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parole 0.1.90svn.r07906\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-20 22:03+0000\n"
+"POT-Creation-Date: 2010-11-30 05:04+0000\n"
 "PO-Revision-Date: 2010-02-18 00:48+0100\n"
 "Last-Translator: Robert Hartl <hartl.robert@gmail.com>\n"
 "Language-Team: Slovak <gnome-sk-list@gnome.org>\n"
@@ -251,7 +251,7 @@ msgstr "Nemožno zaviesť zásuvný modul GStreameru playbin. Skontrolujte stav 
 
 #: ../gst/parole-gst.c:1720
 msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
-msgstr ""
+msgstr "Nemožno načítať zásuvný modul videa GStreamer, skontrolujte svoju inštaláciu GStreamer"
 
 #: ../src/main.c:54
 #, c-format
@@ -412,7 +412,6 @@ msgid "DVD image"
 msgstr "Obraz DVD"
 
 #: ../src/parole-player.c:641
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:300
 msgid "Media stream is not seekable"
 msgstr "Dátový tok neumožňuje presúvanie"
 
@@ -429,7 +428,6 @@ msgid "Previous Track"
 msgstr "Predchádzajúca skladba"
 
 #: ../src/parole-statusbar.c:61
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:593
 msgid "Buffering"
 msgstr "Ukladanie do vyrovnávacej pamäte"
 
@@ -764,35 +762,26 @@ msgstr "Potlačiť nastavenia úsporných režimov Správcu napájania pri prehr
 msgid "Power Manager Plugin"
 msgstr "Zásuvný modul Správcu napájania"
 
-#: ../browser-plugin/media-plugin/main.c:72
-msgid "socket"
-msgstr "socket"
+#~ msgid "socket"
+#~ msgstr "socket"
 
-#: ../browser-plugin/media-plugin/main.c:72
-msgid "SOCKET ID"
-msgstr "SOCKET ID"
+#~ msgid "SOCKET ID"
+#~ msgstr "SOCKET ID"
 
-#: ../browser-plugin/media-plugin/main.c:73
-msgid "url to play"
-msgstr "Umiestnenie URL na prehrávanie"
+#~ msgid "url to play"
+#~ msgstr "Umiestnenie URL na prehrávanie"
 
-#: ../browser-plugin/media-plugin/main.c:73
-msgid "URL"
-msgstr "Adresa URL"
+#~ msgid "URL"
+#~ msgstr "Adresa URL"
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:138
-msgid "Leave fullscreen"
-msgstr "Opustiť režim celej obrazovky"
+#~ msgid "Leave fullscreen"
+#~ msgstr "Opustiť režim celej obrazovky"
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:143
-msgid "Fullscreen"
-msgstr "Celá obrazovka"
+#~ msgid "Fullscreen"
+#~ msgstr "Celá obrazovka"
 
-#. * Copy url
-#. 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:455
-msgid "Copy url"
-msgstr "Kopírovať url"
+#~ msgid "Copy url"
+#~ msgstr "Kopírovať url"
 
 #~ msgid "Plugin"
 #~ msgstr "Zasuvné moduly"
