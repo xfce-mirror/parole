@@ -18,10 +18,8 @@ GENERATED_FILES =			\
 libparolegst_la_SOURCES =		\
 	$(GENERATED_FILES)		\
 	parole-gst.c			\
-	parole-gst.h			\
-	parole-gst-iface.c		\
-	parole-gst-iface.h
-	
+	parole-gst.h
+
 libparolegst_la_CFLAGS =		\
 	$(GST_VIDEO_CFLAGS)             \
         $(GST_INTERFACES_CFLAGS)	\

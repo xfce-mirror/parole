@@ -1290,7 +1290,7 @@ parole_media_list_setup_view (ParoleMediaList *list)
     GtkTreeViewColumn *col;
     GtkCellRenderer *renderer;
 
-    list_store = gtk_list_store_new (COL_NUMBERS, GDK_TYPE_PIXBUF, G_TYPE_STRING, G_TYPE_OBJECT);
+    list_store = gtk_list_store_new (COL_NUMBERS, GDK_TYPE_PIXBUF, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_OBJECT);
 
     gtk_tree_view_set_model (GTK_TREE_VIEW (list->priv->view), GTK_TREE_MODEL(list_store));
     
@@ -1302,6 +1302,11 @@ parole_media_list_setup_view (ParoleMediaList *list)
     gtk_tree_view_column_pack_start(col, renderer, FALSE);
     gtk_tree_view_column_set_attributes(col, renderer, "pixbuf", PIXBUF_COL, NULL);
 
+
+    /**
+     * Name col
+     * 
+     **/
     renderer = gtk_cell_renderer_text_new();
     
     gtk_tree_view_column_pack_start (col, renderer, TRUE);
@@ -1309,6 +1314,17 @@ parole_media_list_setup_view (ParoleMediaList *list)
     g_object_set (renderer, 
 		  "ellipsize", PANGO_ELLIPSIZE_END, 
 		  NULL);
+    
+    
+    /**
+     * Media length
+     * 
+     **/
+    renderer = gtk_cell_renderer_text_new();
+    
+    gtk_tree_view_column_pack_start (col, renderer, FALSE);
+    gtk_tree_view_column_set_attributes (col, renderer, "text", LENGTH_COL, NULL);
+    
     
     gtk_tree_view_append_column (GTK_TREE_VIEW (list->priv->view), col);
     gtk_tree_view_column_set_title (col, _("Media list"));
@@ -1603,6 +1619,23 @@ void parole_media_list_set_row_name (ParoleMediaList *list, GtkTreeRowReference 
 	if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path) )
 	{
 	    gtk_list_store_set (list->priv->store, &iter, NAME_COL, name, -1);
+	}
+	gtk_tree_path_free (path);
+    }
+}
+
+void parole_media_list_set_row_length (ParoleMediaList *list, GtkTreeRowReference *row, const gchar *len)
+{
+    GtkTreeIter iter;
+    GtkTreePath *path;
+    
+    if ( gtk_tree_row_reference_valid (row) )
+    {
+	path = gtk_tree_row_reference_get_path (row);
+	
+	if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path) )
+	{
+	    gtk_list_store_set (list->priv->store, &iter, LENGTH_COL, len, -1);
 	}
 	gtk_tree_path_free (path);
     }

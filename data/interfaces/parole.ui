@@ -96,13 +96,12 @@
           </object>
           <packing>
             <property name="resize">False</property>
-            <property name="shrink">True</property>
+            <property name="shrink">False</property>
           </packing>
         </child>
         <child>
           <object class="GtkAlignment" id="alignment1">
             <property name="visible">True</property>
-            <property name="top_padding">2</property>
             <child>
               <object class="GtkVBox" id="vbox1">
                 <property name="visible">True</property>
@@ -317,7 +316,7 @@
                                               <object class="GtkMenu" id="menu9">
                                                 <property name="visible">True</property>
                                                 <child>
-                                                  <object class="GtkRadioMenuItem" id="radiomenuitem1">
+                                                  <object class="GtkRadioMenuItem" id="ratio_none">
                                                     <property name="visible">True</property>
                                                     <property name="label" translatable="yes">None</property>
                                                     <property name="use_underline">True</property>
@@ -326,7 +325,7 @@
                                                   </object>
                                                 </child>
                                                 <child>
-                                                  <object class="GtkRadioMenuItem" id="radiomenuitem2">
+                                                  <object class="GtkRadioMenuItem" id="ratio_auto">
                                                     <property name="visible">True</property>
                                                     <property name="label" translatable="yes">Auto</property>
                                                     <property name="use_underline">True</property>
@@ -335,7 +334,7 @@
                                                   </object>
                                                 </child>
                                                 <child>
-                                                  <object class="GtkRadioMenuItem" id="radiomenuitem3">
+                                                  <object class="GtkRadioMenuItem" id="ratio_square">
                                                     <property name="visible">True</property>
                                                     <property name="label" translatable="yes">Square</property>
                                                     <property name="use_underline">True</property>
@@ -344,7 +343,7 @@
                                                   </object>
                                                 </child>
                                                 <child>
-                                                  <object class="GtkRadioMenuItem" id="radiomenuitem4">
+                                                  <object class="GtkRadioMenuItem" id="ratio_4_3">
                                                     <property name="visible">True</property>
                                                     <property name="label" translatable="yes">4:3 (TV)</property>
                                                     <property name="use_underline">True</property>
@@ -353,7 +352,7 @@
                                                   </object>
                                                 </child>
                                                 <child>
-                                                  <object class="GtkRadioMenuItem" id="radiomenuitem5">
+                                                  <object class="GtkRadioMenuItem" id="ratio_16_9">
                                                     <property name="visible">True</property>
                                                     <property name="label" translatable="yes">16:9 (Widescreen)</property>
                                                     <property name="use_underline">True</property>
@@ -362,7 +361,7 @@
                                                   </object>
                                                 </child>
                                                 <child>
-                                                  <object class="GtkRadioMenuItem" id="radiomenuitem6">
+                                                  <object class="GtkRadioMenuItem" id="ratio_20_9">
                                                     <property name="visible">True</property>
                                                     <property name="label" translatable="yes">20:9 (DVB)</property>
                                                     <property name="use_underline">True</property>
@@ -463,7 +462,7 @@
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">False</property>
-                                <property name="padding">70</property>
+                                <property name="padding">50</property>
                                 <property name="position">0</property>
                               </packing>
                             </child>
@@ -491,9 +490,9 @@
                 <child>
                   <object class="GtkAlignment" id="video-view">
                     <property name="visible">True</property>
-                    <property name="right_padding">5</property>
+                    <property name="right_padding">4</property>
                     <child>
-                      <object class="GtkViewport" id="viewport2">
+                      <object class="GtkViewport" id="videoport">
                         <property name="visible">True</property>
                         <property name="resize_mode">queue</property>
                         <property name="shadow_type">out</property>
@@ -513,18 +512,18 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkAlignment" id="alignment2">
+                  <object class="GtkAlignment" id="control">
                     <property name="visible">True</property>
                     <property name="top_padding">2</property>
                     <property name="bottom_padding">2</property>
                     <property name="left_padding">2</property>
                     <property name="right_padding">2</property>
                     <child>
-                      <object class="GtkVBox" id="vbox2">
+                      <object class="GtkVBox" id="play-box">
                         <property name="visible">True</property>
                         <property name="orientation">vertical</property>
                         <child>
-                          <object class="GtkAlignment" id="alignment4">
+                          <object class="GtkAlignment" id="scale-container">
                             <property name="visible">True</property>
                             <property name="left_padding">5</property>
                             <property name="right_padding">5</property>
@@ -625,16 +624,21 @@
                                                   </packing>
                                                 </child>
                                                 <child>
-                                                  <object class="GtkButton" id="play">
-                                                    <property name="width_request">80</property>
-                                                    <property name="height_request">35</property>
+                                                  <object class="GtkAlignment" id="play-container">
                                                     <property name="visible">True</property>
-                                                    <property name="can_focus">True</property>
-                                                    <property name="receives_default">True</property>
-                                                    <property name="image">image1</property>
-                                                    <property name="relief">half</property>
-                                                    <property name="focus_on_click">False</property>
-                                                    <signal name="clicked" handler="parole_player_play_pause_clicked"/>
+                                                    <child>
+                                                      <object class="GtkButton" id="play">
+                                                        <property name="width_request">80</property>
+                                                        <property name="height_request">35</property>
+                                                        <property name="visible">True</property>
+                                                        <property name="can_focus">True</property>
+                                                        <property name="receives_default">True</property>
+                                                        <property name="image">image1</property>
+                                                        <property name="relief">half</property>
+                                                        <property name="focus_on_click">False</property>
+                                                        <signal name="clicked" handler="parole_player_play_pause_clicked"/>
+                                                      </object>
+                                                    </child>
                                                   </object>
                                                   <packing>
                                                     <property name="position">1</property>
@@ -713,13 +717,14 @@
                                     <property name="visible">True</property>
                                     <property name="orientation">vertical</property>
                                     <child>
-                                      <object class="GtkButton" id="button2">
+                                      <object class="GtkButton" id="leave-fs">
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
                                         <property name="receives_default">True</property>
                                         <property name="image">image8</property>
                                         <property name="relief">none</property>
                                         <property name="focus_on_click">False</property>
+                                        <signal name="clicked" handler="parole_player_full_screen_activated_cb"/>
                                       </object>
                                       <packing>
                                         <property name="expand">False</property>
@@ -829,10 +834,6 @@
     <property name="visible">True</property>
     <property name="stock">gtk-media-previous</property>
   </object>
-  <object class="GtkImage" id="image1">
-    <property name="visible">True</property>
-    <property name="stock">gtk-media-play</property>
-  </object>
   <object class="GtkImage" id="image2">
     <property name="visible">True</property>
     <property name="stock">gtk-media-next</property>
@@ -896,5 +897,9 @@
         <col id="1" translatable="yes">Playlist</col>
       </row>
     </data>
+  </object>
+  <object class="GtkImage" id="image1">
+    <property name="visible">True</property>
+    <property name="stock">gtk-media-play</property>
   </object>
 </interface>

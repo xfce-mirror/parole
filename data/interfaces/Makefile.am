@@ -2,6 +2,7 @@ interfaces =					\
 	parole.ui				\
 	parole-settings.ui			\
 	playlist.ui				\
+	parole-fullscreen.ui			\
 	mediachooser.ui				\
 	save-playlist.ui			\
 	plugins.ui				\
@@ -34,6 +35,8 @@ plugins_ui.h: plugins.ui
 open-location_ui.h: open-location.ui
 	exo-csource --static --strip-comments --strip-content --name=open_location_ui $< > $@
 
+parole-fullscreen_ui.h: parole-fullscreen.ui
+	exo-csource --static --strip-comments --strip-content --name=parole_fullscreen_ui $< > $@
 
 endif
 

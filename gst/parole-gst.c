@@ -39,7 +39,6 @@
 #include <gdk/gdkx.h>
 
 #include "parole-gst.h"
-#include "parole-gst-iface.h"
 
 #include "common/parole-common.h"
 #include "common/parole-rc-utils.h"
@@ -51,8 +50,6 @@
 
 #define PAROLE_GST_GET_PRIVATE(o) \
 (G_TYPE_INSTANCE_GET_PRIVATE ((o), PAROLE_TYPE_GST, ParoleGstPrivate))
-
-static void     parole_gst_helper_iface_init    (ParoleGstHelperIface *iface);
 
 static void	parole_gst_play_file_internal 	(ParoleGst *gst);
 
@@ -86,7 +83,6 @@ struct ParoleGstPrivate
     gpointer      conf; /* Specific for ParoleMediaPlayer*/
     
     gboolean	  terminating;
-    gboolean	  embedded;
     gboolean      enable_tags;
     
     gboolean	  update_vis;
@@ -119,7 +115,6 @@ enum
 enum
 {
     PROP_0,
-    PROP_EMBEDDED,
     PROP_CONF_OBJ,
     PROP_ENABLE_TAGS
 };
@@ -128,8 +123,7 @@ static gpointer parole_gst_object = NULL;
 
 static guint signals [LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE_WITH_CODE (ParoleGst, parole_gst, GTK_TYPE_WIDGET,
-    G_IMPLEMENT_INTERFACE (PAROLE_TYPE_GST_HELPER, parole_gst_helper_iface_init));
+G_DEFINE_TYPE (ParoleGst, parole_gst, GTK_TYPE_WIDGET)
 
 static void
 parole_gst_finalize (GObject *object)
@@ -345,8 +339,7 @@ parole_gst_size_allocate (GtkWidget *widget, GtkAllocation *allocation)
 	w = allocation->width;
 	h = allocation->height;
 	
-	if ( PAROLE_GST (widget)->priv->embedded == FALSE )
-	    parole_gst_get_video_output_size (PAROLE_GST (widget), &w, &h);
+	parole_gst_get_video_output_size (PAROLE_GST (widget), &w, &h);
 
 	width = w;
 	height = h;
@@ -370,7 +363,7 @@ parole_gst_size_allocate (GtkWidget *widget, GtkAllocation *allocation)
 }
 
 static void
-parole_gst_draw_logo_common (ParoleGst *gst)
+parole_gst_draw_logo (ParoleGst *gst)
 {
     GdkPixbuf *pix;
     GdkRegion *region;
@@ -419,30 +412,8 @@ parole_gst_draw_logo_common (ParoleGst *gst)
 }
 
 static void
-parole_gst_draw_logo_embedded (ParoleGstHelper *helper)
+parole_gst_set_video_color_balance (ParoleGst *gst)
 {
-    ParoleGst *gst;
-    
-    gst = PAROLE_GST (helper);
-    
-    if ( gst->priv->terminating != TRUE )
-	parole_gst_draw_logo_common (gst);
-}
-
-static void
-parole_gst_draw_logo (ParoleGstHelper *helper)
-{
-    ParoleGst *gst;
-    
-    gst = PAROLE_GST (helper);
-    
-    parole_gst_draw_logo_common (gst);
-}
-
-static void
-parole_gst_set_video_color_balance (ParoleGstHelper *helper)
-{
-    ParoleGst *gst;
     GstElement *video_sink;
     
     gint brightness_value;
@@ -450,8 +421,6 @@ parole_gst_set_video_color_balance (ParoleGstHelper *helper)
     gint hue_value;
     gint saturation_value;
 	
-    gst = PAROLE_GST (helper);
-    
     if ( !gst->priv->xvimage_sink)
 	return;
 	
@@ -526,25 +495,28 @@ parole_gst_expose_event (GtkWidget *widget, GdkEventExpose *ev)
     {
 	case GST_STATE_PLAYING:
 	    if ( playing_video || gst->priv->with_vis)
+	    {
+		printf ("Testing------------ v=%d vis=%d\n", playing_video, gst->priv->with_vis);
 		gst_x_overlay_expose (GST_X_OVERLAY (gst->priv->video_sink));
+	    }
 	    else
-		parole_gst_helper_draw_logo (PAROLE_GST_HELPER (gst));
+		parole_gst_draw_logo (gst);
 	    break;
 	case GST_STATE_PAUSED:
 	    if ( playing_video || gst->priv->with_vis || gst->priv->target == GST_STATE_PLAYING )
 		gst_x_overlay_expose (GST_X_OVERLAY (gst->priv->video_sink));
 	    else
-		parole_gst_helper_draw_logo (PAROLE_GST_HELPER (gst));
+		parole_gst_draw_logo (gst);
 	    break;
 	case GST_STATE_READY:
 	    if (gst->priv->target != GST_STATE_PLAYING)
-		parole_gst_helper_draw_logo (PAROLE_GST_HELPER (gst));
+		parole_gst_draw_logo (gst);
 	    else
 		gst_x_overlay_expose (GST_X_OVERLAY (gst->priv->video_sink));
 	    break;
 	case GST_STATE_NULL:
 	case GST_STATE_VOID_PENDING:
-	    parole_gst_helper_draw_logo (PAROLE_GST_HELPER (gst));
+	    parole_gst_draw_logo (gst);
 	    break;
     }
     return TRUE;
@@ -666,12 +638,9 @@ parole_gst_query_duration (ParoleGst *gst)
 }
 
 static void
-parole_gst_set_subtitle_font (ParoleGstHelper *helper)
+parole_gst_set_subtitle_font (ParoleGst *gst)
 {
-    ParoleGst *gst;
     gchar *font;
-    
-    gst = PAROLE_GST (helper);
     
     g_object_get (G_OBJECT (gst->priv->conf),
 		  "subtitle-font", &font,
@@ -686,12 +655,9 @@ parole_gst_set_subtitle_font (ParoleGstHelper *helper)
 }
 
 static void
-parole_gst_set_subtitle_encoding (ParoleGstHelper *helper)
+parole_gst_set_subtitle_encoding (ParoleGst *gst)
 {
-    ParoleGst *gst;
     gchar *encoding;
-    
-    gst = PAROLE_GST (helper);
     
     g_object_get (G_OBJECT (gst->priv->conf),
 		  "subtitle-encoding", &encoding,
@@ -705,16 +671,13 @@ parole_gst_set_subtitle_encoding (ParoleGstHelper *helper)
 }
 
 static void
-parole_gst_load_subtitle (ParoleGstHelper *helper)
+parole_gst_load_subtitle (ParoleGst *gst)
 {
-    ParoleGst *gst;
     ParoleMediaType type;
     gchar *uri;
     gchar *sub;
     gchar *sub_uri;
     gboolean sub_enabled;
-    
-    gst = PAROLE_GST (helper);
     
     g_object_get (G_OBJECT (gst->priv->stream),
 		  "media-type", &type,
@@ -867,12 +830,9 @@ parole_gst_update_stream_info (ParoleGst *gst)
 }
 
 static void
-parole_gst_update_vis (ParoleGstHelper *helper)
+parole_gst_update_vis (ParoleGst *gst)
 {
-    ParoleGst *gst;
     gchar *vis_name;
-    
-    gst = PAROLE_GST (helper);
     
     TRACE ("start");
     
@@ -951,7 +911,7 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 	    if ( gst->priv->target == GST_STATE_PLAYING )
 	    {
 		if ( gst->priv->update_color_balance )
-		    parole_gst_helper_set_video_colors (PAROLE_GST_HELPER (gst));
+		    parole_gst_set_video_color_balance (gst);
 	    }
 		
 	    gst->priv->media_state = PAROLE_MEDIA_STATE_PAUSED;
@@ -977,7 +937,7 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 	    else if ( gst->priv->target == GST_STATE_READY)
 	    {
 		parole_gst_size_allocate (GTK_WIDGET (gst), &GTK_WIDGET (gst)->allocation);
-		parole_gst_helper_draw_logo (PAROLE_GST_HELPER (gst));
+		parole_gst_draw_logo (gst);
 	    }
 	    break;
 	}
@@ -1297,16 +1257,6 @@ parole_gst_change_state (ParoleGst *gst, GstState new)
 }
 
 static void
-parole_gst_stream_info_notify_cb (GObject * obj, GParamSpec * pspec, ParoleGst *gst)
-{
-    GstMessage *msg;
-    TRACE ("Stream info changed");
-    msg = gst_message_new_application (GST_OBJECT (gst->priv->playbin),
-				       gst_structure_new ("notify-streaminfo", NULL));
-    gst_element_post_message (gst->priv->playbin, msg);
-}
-
-static void
 parole_gst_source_notify_cb (GObject *obj, GParamSpec *pspec, ParoleGst *gst)
 {
     GObject *source;
@@ -1340,7 +1290,7 @@ parole_gst_play_file_internal (ParoleGst *gst)
     }
     
     if ( gst->priv->update_vis)
-	parole_gst_helper_update_vis (PAROLE_GST_HELPER (gst));
+	parole_gst_update_vis (gst);
     
     gtk_widget_queue_draw (GTK_WIDGET (gst));
     
@@ -1355,7 +1305,7 @@ parole_gst_play_file_internal (ParoleGst *gst)
 		  "suburi", NULL,
 		  NULL);
 
-    parole_gst_helper_load_subtitle (PAROLE_GST_HELPER (gst));
+    parole_gst_load_subtitle (gst);
     parole_gst_change_state (gst, GST_STATE_PLAYING);
     g_free (uri);
 }
@@ -1539,9 +1489,6 @@ parole_gst_terminate_internal (ParoleGst *gst, gboolean fade_sound)
 
     parole_window_busy_cursor (GTK_WIDGET (gst)->window);
     
-    if ( gst->priv->embedded )
-	goto out;
-    
     if ( fade_sound && gst->priv->state == GST_STATE_PLAYING && !playing_video )
     {
 	gdouble volume;
@@ -1562,7 +1509,6 @@ parole_gst_terminate_internal (ParoleGst *gst, gboolean fade_sound)
 	}
     }
     
-out:
     parole_gst_change_state (gst, GST_STATE_NULL);
 }
 
@@ -1575,11 +1521,11 @@ parole_gst_conf_notify_cb (GObject *object, GParamSpec *spec, ParoleGst *gst)
     }
     else if ( !g_strcmp0 ("subtitle-font", spec->name) || !g_strcmp0 ("enable-subtitle", spec->name)  )
     {
-	parole_gst_helper_set_subtitle_font (PAROLE_GST_HELPER (gst));
+	parole_gst_set_subtitle_font (gst);
     }
     else if (!g_strcmp0 ("subtitle-encoding", spec->name) )
     {
-	parole_gst_helper_set_subtitle_encoding (PAROLE_GST_HELPER (gst));
+	parole_gst_set_subtitle_encoding (gst);
     }
     else if ( !g_strcmp0 ("brightness", spec->name) || !g_strcmp0 ("hue", spec->name) ||
 	      !g_strcmp0 ("contrast", spec->name) || !g_strcmp0 ("saturation", spec->name) )
@@ -1587,7 +1533,7 @@ parole_gst_conf_notify_cb (GObject *object, GParamSpec *spec, ParoleGst *gst)
 	gst->priv->update_color_balance = TRUE;
 	
 	if ( gst->priv->state >= GST_STATE_PAUSED )
-	    parole_gst_helper_set_video_colors (PAROLE_GST_HELPER (gst));
+	    parole_gst_set_video_color_balance (gst);
     }
     else if ( !g_strcmp0 ("aspect-ratio", spec->name) )
     {
@@ -1609,9 +1555,6 @@ static void parole_gst_get_property (GObject *object,
     
     switch (prop_id)
     {
-	case PROP_EMBEDDED:
-	    g_value_set_boolean (value, gst->priv->embedded);
-	    break;
 	case PROP_CONF_OBJ:
 	    g_value_set_pointer (value, gst->priv->conf);
 	    break;
@@ -1635,9 +1578,6 @@ static void parole_gst_set_property (GObject *object,
     
     switch (prop_id)
     {
-	case PROP_EMBEDDED:
-	    gst->priv->embedded = g_value_get_boolean (value);
-	    break;
 	case PROP_ENABLE_TAGS:
 	    gst->priv->enable_tags = g_value_get_boolean (value);
 	    break;
@@ -1660,31 +1600,6 @@ static void parole_gst_set_property (GObject *object,
     }
 }
 
-static void parole_gst_helper_iface_init (ParoleGstHelperIface *iface)
-{
-}
-
-static void
-parole_gst_set_iface_methods (ParoleGst *gst)
-{
-    ParoleGstHelperIface *iface;
-    iface = PAROLE_GST_HELPER_GET_IFACE (gst);
-	
-    if ( gst->priv->embedded == FALSE)
-    {
-	iface->draw_logo = parole_gst_draw_logo;
-	iface->set_video_color_balance = parole_gst_set_video_color_balance;
-	iface->set_subtitle_encoding = parole_gst_set_subtitle_encoding;
-	iface->set_subtitle_font = parole_gst_set_subtitle_font;
-	iface->load_subtitle = parole_gst_load_subtitle;
-	iface->update_vis = parole_gst_update_vis;
-    }
-    else
-    {
-	iface->draw_logo = parole_gst_draw_logo_embedded;
-    }
-}
-
 static void
 parole_gst_constructed (GObject *object)
 {
@@ -1696,7 +1611,7 @@ parole_gst_constructed (GObject *object)
     
     enable_xv = parole_rc_read_entry_bool ("enable-xv", PAROLE_RC_GROUP_GENERAL, TRUE);
     
-    gst->priv->playbin = gst_element_factory_make ("playbin", "player");
+    gst->priv->playbin = gst_element_factory_make ("playbin2", "player");
  
     if ( G_UNLIKELY (gst->priv->playbin == NULL) )
     {
@@ -1757,23 +1672,14 @@ parole_gst_constructed (GObject *object)
 	g_signal_connect (gst->priv->bus, "sync-message::element",
 			  G_CALLBACK (parole_gst_element_message_sync), gst);
 
-    /*
-     * Handle stream info changes, this can happen on live/radio stream.
-     */
-    g_signal_connect (gst->priv->playbin, "notify::stream-info",
-		      G_CALLBACK (parole_gst_stream_info_notify_cb), gst);
-      
-      
     g_signal_connect (gst->priv->playbin, "notify::source",
 		      G_CALLBACK (parole_gst_source_notify_cb), gst);
 
     
-    parole_gst_set_iface_methods (gst);
-
-    parole_gst_helper_update_vis (PAROLE_GST_HELPER (gst));
+    parole_gst_update_vis (gst);
     parole_gst_load_logo (gst);
-    parole_gst_helper_set_subtitle_encoding (PAROLE_GST_HELPER (gst));
-    parole_gst_helper_set_subtitle_font (PAROLE_GST_HELPER (gst));
+    parole_gst_set_subtitle_encoding (gst);
+    parole_gst_set_subtitle_font (gst);
     
     TRACE ("End");
 }
@@ -1863,14 +1769,6 @@ parole_gst_class_init (ParoleGstClass *klass)
 		      G_TYPE_STRING);
 
     g_object_class_install_property (object_class,
-				     PROP_EMBEDDED,
-				     g_param_spec_boolean ("embedded",
-							   NULL, NULL,
-							   FALSE,
-							   G_PARAM_CONSTRUCT_ONLY|
-							   G_PARAM_READWRITE));
-    
-    g_object_class_install_property (object_class,
 				     PROP_CONF_OBJ,
 				     g_param_spec_pointer ("conf-object",
 							   NULL, NULL,
@@ -1908,6 +1806,7 @@ parole_gst_init (ParoleGst *gst)
     gst->priv->device = NULL;
     gst->priv->enable_tags = TRUE;
     gst->priv->terminating = FALSE;
+    gst->priv->with_vis = FALSE;
     
     gst->priv->conf = NULL;
     
@@ -1921,10 +1820,9 @@ parole_gst_init (ParoleGst *gst)
 }
 
 GtkWidget *
-parole_gst_new (gboolean embedded, gpointer conf_obj)
+parole_gst_new (gpointer conf_obj)
 {
     parole_gst_object = g_object_new (PAROLE_TYPE_GST, 
-				      "embedded", embedded,
 				      "conf-object", conf_obj,
 				      NULL);
 				      

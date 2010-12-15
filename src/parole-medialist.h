@@ -33,6 +33,7 @@ enum
 {
     PIXBUF_COL,
     NAME_COL,
+    LENGTH_COL,
     DATA_COL,
     COL_NUMBERS
 };
@@ -93,10 +94,15 @@ GtkTreeRowReference		*parole_media_list_get_row_random   (ParoleMediaList *list)
 void				 parole_media_list_set_row_pixbuf   (ParoleMediaList *list,
 								     GtkTreeRowReference *row,
 								     GdkPixbuf *pix);
-								     
+
 void				 parole_media_list_set_row_name     (ParoleMediaList *list,
 							             GtkTreeRowReference *row,
 								     const gchar *name);
+
+
+void				 parole_media_list_set_row_length   (ParoleMediaList *list,
+							             GtkTreeRowReference *row,
+								     const gchar *length);
 
 void				 parole_media_list_open		    (ParoleMediaList *list);
 

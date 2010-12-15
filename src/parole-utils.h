@@ -50,4 +50,10 @@ gchar 	       *parole_guess_uri_from_mount 		(GMount *mount);
 							 
 gchar          *parole_get_uri_from_unix_device		(const gchar *device);
 
+void		parole_set_widget_image_from_stock 	(GtkWidget *widget, 
+							 gchar *stock_id);
+
+gchar	       *parole_format_media_length		(gint total_seconds);
+
+
 #endif /* __PAROLE_UTILS_ */

@@ -597,3 +597,49 @@ parole_get_uri_from_unix_device (const gchar *device)
     
     return uri;
 }
+
+void
+parole_set_widget_image_from_stock (GtkWidget *widget, gchar *stock_id)
+{
+    GtkWidget *img;
+    
+    g_object_get (G_OBJECT (widget),
+		  "image", &img,
+		  NULL);
+
+    if (img)
+    {
+
+	g_object_set (G_OBJECT (img),
+		      "stock", stock_id,
+		      NULL);
+		  
+	g_object_unref (img);
+    }
+}
+
+
+gchar *parole_format_media_length (gint total_seconds)
+{
+    gchar *timestring;
+    
+    gint  hours;
+    gint  minutes;
+    gint  seconds;
+
+    minutes =  total_seconds / 60;
+    seconds = total_seconds % 60;
+    hours = minutes / 60;
+    minutes = minutes % 60;
+
+    if ( hours == 0 )
+    {
+	timestring = g_strdup_printf ("%02i:%02i", minutes, seconds);
+    }
+    else
+    {
+        timestring = g_strdup_printf ("%i:%02i:%02i", hours, minutes, seconds);
+    }
+    
+    return timestring;
+}
