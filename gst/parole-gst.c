@@ -62,11 +62,26 @@ static void	parole_gst_terminate_internal   (ParoleGst *gst,
 static void     parole_gst_seek_cdda_track	(ParoleGst *gst,
 						 gint track);
 
+typedef enum 
+{
+    GST_PLAY_FLAG_VIDEO         = (1 << 0),
+    GST_PLAY_FLAG_AUDIO         = (1 << 1),
+    GST_PLAY_FLAG_TEXT          = (1 << 2),
+    GST_PLAY_FLAG_VIS           = (1 << 3),
+    GST_PLAY_FLAG_SOFT_VOLUME   = (1 << 4),
+    GST_PLAY_FLAG_NATIVE_AUDIO  = (1 << 5),
+    GST_PLAY_FLAG_NATIVE_VIDEO  = (1 << 6),
+    GST_PLAY_FLAG_DOWNLOAD      = (1 << 7),
+    GST_PLAY_FLAG_BUFFERING     = (1 << 8),
+    GST_PLAY_FLAG_DEINTERLACE   = (1 << 9)
+
+} GstPlayFlags;
+
 struct ParoleGstPrivate
 {
     GstElement	 *playbin;
     GstElement   *video_sink;
-    GstElement   *vis_sink;
+
     GstBus       *bus;
     
     GMutex       *lock;
@@ -87,6 +102,7 @@ struct ParoleGstPrivate
     
     gboolean	  update_vis;
     gboolean      with_vis;
+    gboolean      vis_loaded;
     gboolean      buffering;
     gboolean      update_color_balance;
     
@@ -494,16 +510,15 @@ parole_gst_expose_event (GtkWidget *widget, GdkEventExpose *ev)
     switch ( gst->priv->state )
     {
 	case GST_STATE_PLAYING:
-	    if ( playing_video || gst->priv->with_vis)
+	    if ( playing_video || gst->priv->vis_loaded)
 	    {
-		printf ("Testing------------ v=%d vis=%d\n", playing_video, gst->priv->with_vis);
 		gst_x_overlay_expose (GST_X_OVERLAY (gst->priv->video_sink));
 	    }
 	    else
 		parole_gst_draw_logo (gst);
 	    break;
 	case GST_STATE_PAUSED:
-	    if ( playing_video || gst->priv->with_vis || gst->priv->target == GST_STATE_PLAYING )
+	    if ( playing_video || gst->priv->vis_loaded || gst->priv->target == GST_STATE_PLAYING )
 		gst_x_overlay_expose (GST_X_OVERLAY (gst->priv->video_sink));
 	    else
 		parole_gst_draw_logo (gst);
@@ -809,7 +824,8 @@ static void
 parole_gst_update_vis (ParoleGst *gst)
 {
     gchar *vis_name;
-    
+    gint flags;
+
     TRACE ("start");
     
     g_object_get (G_OBJECT (gst->priv->conf),
@@ -818,21 +834,40 @@ parole_gst_update_vis (ParoleGst *gst)
 		  NULL);
 
     TRACE ("Vis name %s enabled %d\n", vis_name, gst->priv->with_vis);
-    
+
+    g_object_get (G_OBJECT (gst->priv->playbin),
+		  "flags", &flags,
+		  NULL);
+
     if ( gst->priv->with_vis )
     {
-	gst->priv->vis_sink = gst_element_factory_make (vis_name, "vis");
-	g_object_set (G_OBJECT (gst->priv->playbin),
-		      "vis-plugin", gst->priv->vis_sink,
-		      NULL);
+	GstElement *vis_sink;
+	flags |= GST_PLAY_FLAG_VIS;
+	
+	vis_sink = gst_element_factory_make (vis_name, "vis");
+	
+	if (vis_sink)
+	{
+	    g_object_set (G_OBJECT (gst->priv->playbin),
+			  "vis-plugin", vis_sink,
+		         NULL);
+		      
+	    gst->priv->vis_loaded = TRUE;
+	}
     }
     else
     {
+	flags &= ~GST_PLAY_FLAG_VIS;
 	g_object_set (G_OBJECT (gst->priv->playbin),
 		      "vis-plugin", NULL,
 		      NULL);
 	gtk_widget_queue_draw (GTK_WIDGET (gst));
+	gst->priv->vis_loaded = FALSE;
     }
+
+    g_object_set (G_OBJECT (gst->priv->playbin),
+		  "flags", flags,
+		  NULL);
 
     gst->priv->update_vis = FALSE;
     g_free (vis_name);
@@ -1775,7 +1810,6 @@ parole_gst_init (ParoleGst *gst)
     gst->priv->tick_id = 0;
     gst->priv->hidecursor_timer = g_timer_new ();
     gst->priv->update_vis = FALSE;
-    gst->priv->vis_sink = NULL;
     gst->priv->buffering = FALSE;
     gst->priv->update_color_balance = TRUE;
     gst->priv->state_change_id = 0;
@@ -1783,6 +1817,7 @@ parole_gst_init (ParoleGst *gst)
     gst->priv->enable_tags = TRUE;
     gst->priv->terminating = FALSE;
     gst->priv->with_vis = FALSE;
+    gst->priv->vis_loaded = FALSE;
     
     gst->priv->conf = NULL;
     

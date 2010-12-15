@@ -1141,8 +1141,6 @@ parole_player_full_screen (ParolePlayer *player, gboolean fullscreen)
     }
     else
     {
-	player->full_screen = TRUE;
-	
         if (!player->fs_window)
 	{
 	    parole_player_create_fullscreen_window (player);
@@ -1162,6 +1160,7 @@ parole_player_full_screen (ParolePlayer *player, gboolean fullscreen)
 	//gtk_notebook_set_show_tabs (GTK_NOTEBOOK (player->main_nt), FALSE);
 	
 	gtk_window_fullscreen (GTK_WINDOW (player->window));
+	player->full_screen = TRUE;
     }
 }
 
