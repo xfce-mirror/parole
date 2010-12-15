@@ -46,6 +46,17 @@ typedef enum
     
 } ParoleMediaType;
 
+
+typedef enum
+{
+    PAROLE_STATE_STOPPED = 0,
+    PAROLE_STATE_PLAYBACK_FINISHED,
+    PAROLE_STATE_PAUSED,
+    PAROLE_STATE_PLAYING
+    
+} ParoleState;
+
+
 typedef struct _ParoleStream      ParoleStream;
 typedef struct _ParoleStreamClass ParoleStreamClass;
 

@@ -72,7 +72,7 @@ struct ParoleGstPrivate
     GMutex       *lock;
     GstState      state;
     GstState      target;
-    ParoleMediaState media_state;
+    ParoleState media_state;
     
     ParoleStream *stream;
     gulong	  tick_id;
@@ -860,9 +860,9 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
     {
 	case GST_STATE_PLAYING:
 	{
-	    gst->priv->media_state = PAROLE_MEDIA_STATE_PLAYING;
+	    gst->priv->media_state = PAROLE_STATE_PLAYING;
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
-			   gst->priv->stream, PAROLE_MEDIA_STATE_PLAYING);
+			   gst->priv->stream, PAROLE_STATE_PLAYING);
 	    break;
 	}
 	case GST_STATE_PAUSED:
@@ -890,17 +890,17 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 		    parole_gst_set_video_color_balance (gst);
 	    }
 		
-	    gst->priv->media_state = PAROLE_MEDIA_STATE_PAUSED;
+	    gst->priv->media_state = PAROLE_STATE_PAUSED;
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
-			   gst->priv->stream, PAROLE_MEDIA_STATE_PAUSED);
+			   gst->priv->stream, PAROLE_STATE_PAUSED);
 	    break;
 	}
 	case GST_STATE_READY:
 	{
 	    gst->priv->buffering = FALSE;
-	    gst->priv->media_state = PAROLE_MEDIA_STATE_STOPPED;
+	    gst->priv->media_state = PAROLE_STATE_STOPPED;
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
-			   gst->priv->stream, PAROLE_MEDIA_STATE_STOPPED);
+			   gst->priv->stream, PAROLE_STATE_STOPPED);
 
 	    if ( gst->priv->target == GST_STATE_PLAYING && pending < GST_STATE_PAUSED)
 	    {
@@ -920,9 +920,9 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 	case GST_STATE_NULL:
 	{
 	    gst->priv->buffering = FALSE;
-	    gst->priv->media_state = PAROLE_MEDIA_STATE_STOPPED;
+	    gst->priv->media_state = PAROLE_STATE_STOPPED;
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
-			   gst->priv->stream, PAROLE_MEDIA_STATE_STOPPED);
+			   gst->priv->stream, PAROLE_STATE_STOPPED);
 	    break;
 	}
 	default:
@@ -1102,9 +1102,9 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
 		}
 	    }
 		
-	    gst->priv->media_state = PAROLE_MEDIA_STATE_FINISHED;
+	    gst->priv->media_state = PAROLE_STATE_PLAYBACK_FINISHED;
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
-			       gst->priv->stream, PAROLE_MEDIA_STATE_FINISHED);
+			       gst->priv->stream, PAROLE_STATE_PLAYBACK_FINISHED);
 	    break;
 	}
 	case GST_MESSAGE_ERROR:
@@ -1702,7 +1702,7 @@ parole_gst_class_init (ParoleGstClass *klass)
                       NULL, NULL,
                       _gmarshal_VOID__OBJECT_ENUM,
                       G_TYPE_NONE, 2, 
-		      PAROLE_TYPE_STREAM, GST_ENUM_TYPE_MEDIA_STATE);
+		      PAROLE_TYPE_STREAM, PAROLE_ENUM_TYPE_STATE);
 
     signals[MEDIA_PROGRESSED] = 
         g_signal_new ("media-progressed",
@@ -1768,7 +1768,7 @@ parole_gst_init (ParoleGst *gst)
 
     gst->priv->state = GST_STATE_VOID_PENDING;
     gst->priv->target = GST_STATE_VOID_PENDING;
-    gst->priv->media_state = PAROLE_MEDIA_STATE_STOPPED;
+    gst->priv->media_state = PAROLE_STATE_STOPPED;
     gst->priv->aspect_ratio = PAROLE_ASPECT_RATIO_NONE;
     gst->priv->lock = g_mutex_new ();
     gst->priv->stream = parole_stream_new ();
@@ -2000,7 +2000,7 @@ gdouble	parole_gst_get_volume (ParoleGst *gst)
     return volume;
 }
 
-ParoleMediaState parole_gst_get_state (ParoleGst *gst)
+ParoleState parole_gst_get_state (ParoleGst *gst)
 {
     return gst->priv->media_state;
 }

@@ -44,14 +44,7 @@ typedef enum
     PAROLE_PLUGIN_CONTAINER_MAIN_VIEW
 } ParolePluginContainer;
 
-typedef enum
-{
-    PAROLE_STATE_STOPPED = 0,
-    PAROLE_STATE_PLAYBACK_FINISHED,
-    PAROLE_STATE_PAUSED,
-    PAROLE_STATE_PLAYING
-    
-} ParoleState;
+
 
 struct _ParoleProviderPlayerIface 
 {

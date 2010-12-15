@@ -91,15 +91,15 @@ get_time_string (gchar *timestring, gint total_seconds)
 }
 
 static void 
-parole_statusbar_set_duration (ParoleStatusbar *bar, ParoleMediaState state, gint64 position)
+parole_statusbar_set_duration (ParoleStatusbar *bar, ParoleState state, gint64 position)
 {
     gchar *text = NULL;
 
-    if ( state == PAROLE_MEDIA_STATE_STOPPED )
+    if ( state == PAROLE_STATE_STOPPED )
     {
 	gtk_label_set_text (GTK_LABEL (bar->priv->label_duration), _("Stopped"));
     }
-    else if ( state == PAROLE_MEDIA_STATE_FINISHED )
+    else if ( state == PAROLE_STATE_PLAYBACK_FINISHED )
     {
 	gtk_label_set_text (GTK_LABEL (bar->priv->label_duration), _("Finished"));
     }
@@ -111,7 +111,7 @@ parole_statusbar_set_duration (ParoleStatusbar *bar, ParoleMediaState state, gin
 	    get_time_string (pos_text, position);
 	    get_time_string (dur_text, bar->priv->duration);
 	    text = g_strdup_printf ("%s %s/%s", 
-				    state == PAROLE_MEDIA_STATE_PAUSED ? _("Paused") : _("Playing"), 
+				    state == PAROLE_STATE_PAUSED ? _("Paused") : _("Playing"), 
 				    pos_text, 
 				    dur_text);
 	}
@@ -121,11 +121,11 @@ parole_statusbar_set_duration (ParoleStatusbar *bar, ParoleMediaState state, gin
 	    g_free (text);
 	}
 	else
-	    gtk_label_set_text (GTK_LABEL (bar->priv->label_duration), state == PAROLE_MEDIA_STATE_PAUSED ? _("Paused") : ("Playing"));
+	    gtk_label_set_text (GTK_LABEL (bar->priv->label_duration), state == PAROLE_STATE_PAUSED ? _("Paused") : ("Playing"));
     }
 }
 
-static void parole_statusbar_set_text (ParoleStatusbar *bar, const ParoleStream *stream, ParoleMediaState state)
+static void parole_statusbar_set_text (ParoleStatusbar *bar, const ParoleStream *stream, ParoleState state)
 {
     gchar *uri;
     
@@ -135,7 +135,7 @@ static void parole_statusbar_set_text (ParoleStatusbar *bar, const ParoleStream 
 		  "uri", &uri,
 		  NULL);
     
-    if ( state >= PAROLE_MEDIA_STATE_PAUSED && uri)
+    if ( state >= PAROLE_STATE_PAUSED && uri)
     {
 	gchar *filename;
 	gchar *text = NULL;
@@ -184,9 +184,9 @@ static void parole_statusbar_set_text (ParoleStatusbar *bar, const ParoleStream 
 
 static void
 parole_statusbar_state_changed_cb (ParoleGst *gst, const ParoleStream *stream, 
-				   ParoleMediaState state, ParoleStatusbar *statusbar)
+				   ParoleState state, ParoleStatusbar *statusbar)
 {
-    if ( state >= PAROLE_MEDIA_STATE_PAUSED )
+    if ( state >= PAROLE_STATE_PAUSED )
     {
 	g_object_get (G_OBJECT (stream),
 		      "duration", &statusbar->priv->duration,
@@ -198,7 +198,7 @@ parole_statusbar_state_changed_cb (ParoleGst *gst, const ParoleStream *stream,
 	statusbar->priv->pos = 0;
     }
 	
-    if ( state < PAROLE_MEDIA_STATE_PAUSED ) 
+    if ( state < PAROLE_STATE_PAUSED ) 
 	gtk_widget_hide (statusbar->priv->progress);
 	
     parole_statusbar_set_text (statusbar, stream, state);
@@ -208,7 +208,7 @@ parole_statusbar_state_changed_cb (ParoleGst *gst, const ParoleStream *stream,
 static void
 parole_statusbar_tag_message_cb (ParoleGst *gst, const ParoleStream *stream, ParoleStatusbar *statusbar)
 {
-    ParoleMediaState state;
+    ParoleState state;
     
     state = parole_gst_get_state (statusbar->priv->gst);
     
@@ -219,7 +219,7 @@ static void
 parole_statusbar_progressed_cb (ParoleGst *gst, const ParoleStream *stream, 
 		 	        gint64 value, ParoleStatusbar *statusbar)
 {
-    ParoleMediaState state;
+    ParoleState state;
     
     state = parole_gst_get_state (statusbar->priv->gst);
     statusbar->priv->pos = value;

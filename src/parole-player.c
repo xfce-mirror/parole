@@ -286,7 +286,7 @@ struct _ParolePlayer
     gboolean		 full_screen;
     gboolean		 minimized;
     
-    ParoleMediaState     state;
+    ParoleState     state;
     gboolean		 user_seeking;
     gboolean             internal_range_change;
     gboolean		 buffering;
@@ -498,7 +498,7 @@ parole_player_uri_opened_cb (ParoleMediaList *list, const gchar *uri, ParolePlay
 static void
 parole_player_media_cursor_changed_cb (ParoleMediaList *list, gboolean media_selected, ParolePlayer *player)
 {
-    if (player->state < PAROLE_MEDIA_STATE_PAUSED)
+    if (player->state < PAROLE_STATE_PAUSED)
     {
 	gtk_widget_set_sensitive (player->play_pause, 
 				  media_selected || !parole_media_list_is_empty (player->list));
@@ -512,7 +512,7 @@ parole_player_media_progressed_cb (ParoleGst *gst, const ParoleStream *stream, g
     g_return_if_fail (value > 0);
 #endif
     
-    if ( !player->user_seeking && player->state == PAROLE_MEDIA_STATE_PLAYING )
+    if ( !player->user_seeking && player->state == PAROLE_STATE_PLAYING )
     {
 	parole_player_change_range_value (player, value);
     }
@@ -793,7 +793,7 @@ parole_player_reset_saver_changed (ParolePlayer *player, const ParoleStream *str
 		  
     if ( !reset_saver )
 	parole_screen_saver_uninhibit (player->screen_saver);
-    else if ( player->state ==  PAROLE_MEDIA_STATE_PLAYING )
+    else if ( player->state ==  PAROLE_STATE_PLAYING )
     {
 	gboolean has_video;
 	
@@ -811,28 +811,28 @@ parole_player_reset_saver_changed (ParolePlayer *player, const ParoleStream *str
 }
 
 static void
-parole_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream, ParoleMediaState state, ParolePlayer *player)
+parole_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream, ParoleState state, ParolePlayer *player)
 {
-    PAROLE_DEBUG_ENUM ("State callback", state, GST_ENUM_TYPE_MEDIA_STATE);
+    PAROLE_DEBUG_ENUM ("State callback", state, PAROLE_ENUM_TYPE_STATE);
 
 
     player->state = state;
     
     parole_player_reset_saver_changed (player, stream);
     
-    if ( state == PAROLE_MEDIA_STATE_PLAYING )
+    if ( state == PAROLE_STATE_PLAYING )
     {
 	parole_player_playing (player, stream);
     }
-    else if ( state == PAROLE_MEDIA_STATE_PAUSED )
+    else if ( state == PAROLE_STATE_PAUSED )
     {
 	parole_player_paused (player);
     }
-    else if ( state == PAROLE_MEDIA_STATE_STOPPED )
+    else if ( state == PAROLE_STATE_STOPPED )
     {
 	parole_player_stopped (player);
     }
-    else if ( state == PAROLE_MEDIA_STATE_FINISHED )
+    else if ( state == PAROLE_STATE_PLAYBACK_FINISHED )
     {
 	TRACE ("***Playback finished***");
 	parole_player_play_next (player, TRUE);
@@ -842,9 +842,9 @@ parole_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream, Parole
 void
 parole_player_play_pause_clicked (GtkButton *button, ParolePlayer *player)
 {
-    if ( player->state == PAROLE_MEDIA_STATE_PLAYING )
+    if ( player->state == PAROLE_STATE_PLAYING )
 	parole_gst_pause (PAROLE_GST (player->gst));
-    else if ( player->state == PAROLE_MEDIA_STATE_PAUSED )
+    else if ( player->state == PAROLE_STATE_PAUSED )
 	parole_gst_resume (PAROLE_GST (player->gst));
     else
 	parole_player_play_selected_row (player);
@@ -1014,7 +1014,7 @@ parole_player_buffering_cb (ParoleGst *gst, const ParoleStream *stream, gint per
     {
 	player->buffering = TRUE;
 	
-	if ( player->state == PAROLE_MEDIA_STATE_PLAYING )
+	if ( player->state == PAROLE_STATE_PLAYING )
 	    parole_gst_pause (PAROLE_GST (player->gst));
     }
 }
@@ -1182,7 +1182,7 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
     
     /*Play menu item
      */
-    mi = gtk_image_menu_item_new_from_stock (player->state == PAROLE_MEDIA_STATE_PLAYING 
+    mi = gtk_image_menu_item_new_from_stock (player->state == PAROLE_STATE_PLAYING 
 					     ? GTK_STOCK_MEDIA_PAUSE : GTK_STOCK_MEDIA_PLAY, 
 					     NULL);
 					     
@@ -1201,7 +1201,7 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
      */
     mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_MEDIA_FORWARD, NULL);
 					     
-    gtk_widget_set_sensitive (mi, (player->state >= PAROLE_MEDIA_STATE_PAUSED));
+    gtk_widget_set_sensitive (mi, (player->state >= PAROLE_STATE_PAUSED));
     gtk_widget_show (mi);
     g_signal_connect (mi, "activate",
 		      G_CALLBACK (parole_player_seekf_cb), player);
@@ -1212,7 +1212,7 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
      */
     mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_MEDIA_REWIND, NULL);
 					     
-    gtk_widget_set_sensitive (mi, (player->state >= PAROLE_MEDIA_STATE_PAUSED));
+    gtk_widget_set_sensitive (mi, (player->state >= PAROLE_STATE_PAUSED));
     gtk_widget_show (mi);
     g_signal_connect (mi, "activate",
 		      G_CALLBACK (parole_player_seekb_cb), player);
@@ -1223,7 +1223,7 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
      */
     mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_MEDIA_STOP, NULL);
 					     
-    gtk_widget_set_sensitive (mi, player->state == PAROLE_MEDIA_STATE_PLAYING);
+    gtk_widget_set_sensitive (mi, player->state == PAROLE_STATE_PLAYING);
     gtk_widget_show (mi);
     g_signal_connect_swapped (mi, "activate",
 			      G_CALLBACK (parole_player_stop_menu_item_activate), player);
@@ -1235,7 +1235,7 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
     mi = gtk_image_menu_item_new_with_label (media_type == PAROLE_MEDIA_TYPE_CDDA ? _("Next Track") : _("Next Chapter"));
     img = gtk_image_new_from_stock (GTK_STOCK_MEDIA_NEXT, GTK_ICON_SIZE_MENU);
     gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi),img);
-    gtk_widget_set_sensitive (mi, (player->state == PAROLE_MEDIA_STATE_PLAYING));
+    gtk_widget_set_sensitive (mi, (player->state == PAROLE_STATE_PLAYING));
     gtk_widget_show (mi);
 //    g_signal_connect_swapped (mi, "activate",
 //			      G_CALLBACK (parole_player_next_menu_item_activate), player);
@@ -1248,7 +1248,7 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
     img = gtk_image_new_from_stock (GTK_STOCK_MEDIA_PREVIOUS, GTK_ICON_SIZE_MENU);
     gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi), img);
 					     
-    gtk_widget_set_sensitive (mi, (player->state == PAROLE_MEDIA_STATE_PLAYING));
+    gtk_widget_set_sensitive (mi, (player->state == PAROLE_STATE_PLAYING));
     gtk_widget_show (mi);
     //  g_signal_connect_swapped (mi, "activate",
 //			      G_CALLBACK (parole_player_previous_menu_item_activate), player);
@@ -2065,7 +2065,7 @@ parole_player_init (ParolePlayer *player)
     player->screen_saver = parole_screen_saver_new ();
     player->list = PAROLE_MEDIA_LIST (parole_media_list_get ());
     
-    player->state = PAROLE_MEDIA_STATE_STOPPED;
+    player->state = PAROLE_STATE_STOPPED;
     player->user_seeking = FALSE;
     player->internal_range_change = FALSE;
     player->exit = FALSE;
