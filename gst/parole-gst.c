@@ -757,68 +757,44 @@ parole_gst_get_pad_capabilities (GObject *object, GParamSpec *pspec, ParoleGst *
 static void
 parole_gst_query_info (ParoleGst *gst)
 {
-    const GList *info = NULL;
-    GObject *obj;
-    GParamSpec *pspec;
-    GEnumValue *val;
-    gint type;
-    gboolean has_video = FALSE;
+    GstPad *videopad = NULL;
+    
+    gint n_audio, n_video, i;
     
     g_object_get (G_OBJECT (gst->priv->playbin),
-		  "stream-info", &info,
+		  "n-audio", &n_audio,
+		  "n-video", &n_video,
 		  NULL);
 		  
-    for ( ; info != NULL; info = info->next )
+		  
+    g_object_set (G_OBJECT (gst->priv->stream),
+		  "has-video", (n_video > 0),
+		  "has-audio", (n_audio > 0),
+		  NULL);
+		
+    if (n_video > 0)
     {
-	obj = info->data;
-	
-	g_object_get (obj,
-		      "type", &type,
-		      NULL);
-	
-	pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (obj), "type");
-	val = g_enum_get_value (G_PARAM_SPEC_ENUM (pspec)->enum_class, type);
-	
-	if ( g_ascii_strcasecmp (val->value_name, "video") == 0 ||
-	     g_ascii_strcasecmp (val->value_nick, "video") == 0)
+	for (i = 0; i < n_video && videopad == NULL; i++)
+	    g_signal_emit_by_name (gst->priv->playbin, "get-video-pad", i, &videopad);
+	    
+	if (videopad)
 	{
-	    GstPad *pad = NULL;
+	    GstCaps *caps;
 	    
-	    g_object_get (G_OBJECT (obj), 
-			  "object", &pad, 
-			  NULL);
-	    
-	    if ( pad )
+	    if ((caps = gst_pad_get_negotiated_caps (videopad)))
 	    {
-		if ( GST_IS_PAD (pad) && GST_PAD_CAPS (pad) )
-		{
-		    parole_gst_get_pad_capabilities (G_OBJECT (pad), NULL, gst);
-		}
-		else
-		{
-		    g_signal_connect (pad, "notify::caps",
-				      G_CALLBACK (parole_gst_get_pad_capabilities),
-				      gst);
-		}
-		g_object_unref (pad);
+		parole_gst_get_pad_capabilities (G_OBJECT (videopad), NULL, gst);
+		g_object_unref (caps);
 	    }
-	    TRACE ("Stream has video");
-	    g_object_set (G_OBJECT (gst->priv->stream),
-			  "has-video", TRUE,
-			  NULL);
-	    has_video = TRUE;
-	}
-	if ( g_ascii_strcasecmp (val->value_name, "audio") == 0 ||
-	     g_ascii_strcasecmp (val->value_nick, "audio") == 0)
-	{
-	    TRACE ("Stream has audio");
-	    g_object_set (G_OBJECT (gst->priv->stream),
-			  "has-audio", TRUE,
-			  NULL);
+	    
+	    g_signal_connect (videopad, "notify::caps",
+			      G_CALLBACK (parole_gst_get_pad_capabilities),
+			      gst);
+	    g_object_unref (videopad);
 	}
     }
-    
-    if ( !has_video )
+
+    if ( n_video == 0 )
 	gtk_widget_queue_draw (GTK_WIDGET (gst));
 }
 
