@@ -949,19 +949,29 @@ parole_player_range_value_changed (GtkRange *range, ParolePlayer *player)
 
 void parole_player_minimize_clicked_cb (GtkWidget *widget, ParolePlayer *player)
 {
-    
     if ( player->minimized )
     {
+	gint w, h;
+	
+	g_object_get (G_OBJECT (player->conf),
+                  "window-width", &w,
+                  "window-height", &h,
+                  NULL);
+		  
+	gtk_window_resize (GTK_WINDOW(player->window), w, h);
+	
 	gtk_widget_show (GTK_WIDGET (player->gst));
 	gtk_widget_show (GTK_WIDGET (player->video_view));
 	gtk_widget_show (GTK_WIDGET (player->sidebar));
 	gtk_widget_show (player->show_hide_playlist);
 	parole_set_widget_image_from_stock (player->min_view, GTK_STOCK_REMOVE);
-	player->minimized = FALSE;
 	
+	
+	player->minimized = FALSE;
     }
     else
     {
+	player->minimized = TRUE;
 	gtk_widget_hide (GTK_WIDGET (player->gst));
 	gtk_widget_hide (GTK_WIDGET (player->video_view));
 	gtk_widget_hide (GTK_WIDGET (player->sidebar));
@@ -970,9 +980,9 @@ void parole_player_minimize_clicked_cb (GtkWidget *widget, ParolePlayer *player)
 	parole_set_widget_image_from_stock (player->min_view, GTK_STOCK_ADD);
 	
 	gtk_window_resize (GTK_WINDOW(player->window), 1, 1);
-	
-	player->minimized = TRUE;
     }
+    
+    xfce_gtk_window_center_on_active_screen (GTK_WINDOW (player->window));
 }
 
 static void
@@ -1123,13 +1133,16 @@ parole_player_full_screen (ParolePlayer *player, gboolean fullscreen)
 	
 	gtk_window_unfullscreen (GTK_WINDOW (player->window));
 	//gtk_notebook_set_current_page (GTK_NOTEBOOK (player->playlist_nt), current_page);
-	player->full_screen = FALSE;
+	
 
 	gtk_widget_destroy (player->fs_window);
 	player->fs_window = NULL;
+	player->full_screen = FALSE;
     }
     else
     {
+	player->full_screen = TRUE;
+	
         if (!player->fs_window)
 	{
 	    parole_player_create_fullscreen_window (player);
@@ -1149,7 +1162,6 @@ parole_player_full_screen (ParolePlayer *player, gboolean fullscreen)
 	//gtk_notebook_set_show_tabs (GTK_NOTEBOOK (player->main_nt), FALSE);
 	
 	gtk_window_fullscreen (GTK_WINDOW (player->window));
-	player->full_screen = TRUE;
     }
 }
 
@@ -1908,9 +1920,10 @@ parole_player_configure_event_cb (GtkWidget *widget, GdkEventConfigure *ev, Paro
 {
     gint w,h;
     
-    if ( !player->full_screen )
+    if ( !player->full_screen && !player->minimized)
     {
 	gtk_window_get_size (GTK_WINDOW (widget), &w, &h);
+	
 	g_object_set (G_OBJECT (player->conf),
 		      "window-width", w,
 		      "window-height", h,

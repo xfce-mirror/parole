@@ -65,6 +65,7 @@ enum
     PROP_ASPECT_RATIO,
     PROP_WINDOW_WIDTH,
     PROP_WINDOW_HEIGHT,
+    PROP_MINIMIZED,
     PROP_MULTIMEDIA_KEYS,
     /*Playlist*/
     PROP_REPLACE_PLAYLIST,
@@ -248,6 +249,13 @@ parole_conf_class_init (ParoleConfClass *klass)
                                                            G_PARAM_READWRITE));
 							   
     g_object_class_install_property (object_class,
+                                     PROP_MINIMIZED,
+                                     g_param_spec_boolean ("minimized",
+                                                           NULL, NULL,
+                                                           FALSE,
+                                                           G_PARAM_READWRITE));
+							   
+    g_object_class_install_property (object_class,
                                      PROP_SUBTITLE_FONT,
                                      g_param_spec_string  ("subtitle-font",
                                                            NULL, NULL,
@@ -315,7 +323,7 @@ parole_conf_class_init (ParoleConfClass *klass)
                                      PROP_WINDOW_WIDTH,
                                      g_param_spec_int ("window-width",
                                                        NULL, NULL,
-                                                       320,
+                                                       100,
 						       G_MAXINT16,
 						       760,
                                                        G_PARAM_READWRITE));
@@ -324,7 +332,7 @@ parole_conf_class_init (ParoleConfClass *klass)
                                      PROP_WINDOW_HEIGHT,
                                      g_param_spec_int ("window-height",
                                                        NULL, NULL,
-                                                       220,
+                                                       100,
 						       G_MAXINT16,
 						       420,
                                                        G_PARAM_READWRITE));

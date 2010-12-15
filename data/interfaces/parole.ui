@@ -687,7 +687,7 @@
                                         </child>
                                         <child>
                                           <object class="GtkHScale" id="volume">
-                                            <property name="width_request">100</property>
+                                            <property name="width_request">80</property>
                                             <property name="height_request">2</property>
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
@@ -697,6 +697,9 @@
                                             <signal name="scroll_event" handler="parole_player_volume_scroll_event_cb"/>
                                           </object>
                                           <packing>
+                                            <property name="expand">False</property>
+                                            <property name="fill">False</property>
+                                            <property name="pack_type">end</property>
                                             <property name="position">5</property>
                                           </packing>
                                         </child>
