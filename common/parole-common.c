@@ -71,7 +71,7 @@ void parole_dialog_error (GtkWindow *parent, const gchar *title, const gchar *ms
     parole_dialog_show (parent, GTK_MESSAGE_ERROR, _("Error"), title, msg);
 }
 
-void parole_window_busy_cursor		(GdkWindow *window)
+void parole_window_busy_cursor (GdkWindow *window)
 {
     GdkCursor *cursor;
     
@@ -81,11 +81,9 @@ void parole_window_busy_cursor		(GdkWindow *window)
     cursor = gdk_cursor_new (GDK_WATCH);
     gdk_window_set_cursor (window, cursor);
     gdk_cursor_unref (cursor);
-
-    gdk_flush ();
 }
 
-void parole_window_invisible_cursor		(GdkWindow *window)
+void parole_window_invisible_cursor (GdkWindow *window)
 {
     GdkBitmap *empty_bitmap;
     GdkCursor *cursor;
