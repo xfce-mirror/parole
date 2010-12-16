@@ -586,7 +586,13 @@ out:
 static void
 parole_gst_tick (ParoleGst *gst)
 {
-    if ( gst->priv->state >= GST_STATE_PAUSED )
+    gboolean live;
+    
+    g_object_get (gst->priv->stream,
+		  "live", &live,
+		  NULL);
+		  
+    if ( gst->priv->state >= GST_STATE_PAUSED && !live)
     {
 	if ( gst->priv->tick_id != 0 )
 	{
@@ -1970,18 +1976,30 @@ void parole_gst_resume (ParoleGst *gst)
     parole_gst_change_state (gst, GST_STATE_PLAYING);
 }
 
+static gboolean
+parole_gst_stop_idle (gpointer data)
+{
+    ParoleGst *gst;
+    
+    gst = PAROLE_GST (data);
+    
+    parole_gst_change_state (gst, GST_STATE_NULL);
+    
+    return FALSE;
+}
+
 void parole_gst_stop (ParoleGst *gst)
 {
     g_mutex_lock (gst->priv->lock);
     
     parole_stream_init_properties (gst->priv->stream);
-    gst->priv->target = GST_STATE_READY;
-    
+    gst->priv->target = GST_STATE_NULL;
+		  
     g_mutex_unlock (gst->priv->lock);
 
     parole_window_busy_cursor (GTK_WIDGET (gst)->window);
     
-    parole_gst_change_state (gst, GST_STATE_READY);
+    g_idle_add ((GSourceFunc) parole_gst_stop_idle, gst);
 }
 
 void parole_gst_terminate (ParoleGst *gst)
