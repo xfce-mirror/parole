@@ -229,7 +229,7 @@ struct _ParolePlayer
     
     DBusGConnection     *bus;
     ParoleMediaList	*list;
-    //ParoleStatusbar     *status;
+    ParoleStatusbar     *statusbar;
     ParoleDisc          *disc;
     ParoleScreenSaver   *screen_saver;
     ParoleConf          *conf;
@@ -1113,7 +1113,7 @@ parole_player_full_screen (ParolePlayer *player, gboolean fullscreen)
     {
 	//npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (player->main_nt));
 
-	//parole_statusbar_set_visible (player->status, TRUE);
+	parole_statusbar_set_visible (player->statusbar, TRUE);
 
 	gtk_alignment_set_padding (GTK_ALIGNMENT (player->video_view), 0, 0, 0, 4);
 	gtk_viewport_set_shadow_type (GTK_VIEWPORT (player->videoport), GTK_SHADOW_OUT);
@@ -1147,7 +1147,7 @@ parole_player_full_screen (ParolePlayer *player, gboolean fullscreen)
 	}
 	parole_player_move_fs_window (player);
 
-	//parole_statusbar_set_visible (player->status, FALSE);
+	parole_statusbar_set_visible (player->statusbar, FALSE);
 	
 	gtk_widget_hide (player->control);
 	gtk_widget_hide (player->menu_view);
@@ -1578,7 +1578,7 @@ parole_player_finalize (GObject *object)
     
     g_object_unref (player->conf);
     g_object_unref (player->video_filter);
-    //g_object_unref (player->status);
+    g_object_unref (player->statusbar);
     //g_object_unref (player->disc);
     g_object_unref (player->screen_saver);
     
@@ -2068,7 +2068,7 @@ parole_player_init (ParolePlayer *player)
     
     player->gst = parole_gst_new (player->conf);
 
-    //player->status = parole_statusbar_new ();
+    player->statusbar = parole_statusbar_new ();
 
     //player->disc = parole_disc_new ();
     //g_signal_connect (player->disc, "disc-selected",

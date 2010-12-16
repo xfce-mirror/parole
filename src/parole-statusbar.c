@@ -282,6 +282,7 @@ parole_statusbar_init (ParoleStatusbar *statusbar)
     statusbar->priv->sep = GTK_WIDGET (gtk_builder_get_object (builder, "status-sep"));
     
     statusbar->priv->progress = gtk_progress_bar_new ();
+    gtk_widget_set_no_show_all (statusbar->priv->progress, TRUE);
     gtk_widget_hide (statusbar->priv->progress);
     statusbar->priv->label_text = gtk_label_new (NULL);
 
@@ -291,7 +292,7 @@ parole_statusbar_init (ParoleStatusbar *statusbar)
 		  "ellipsize", PANGO_ELLIPSIZE_END, 
 		  NULL);
 
-    gtk_widget_set_size_request (statusbar->priv->progress, 180, 20);
+    gtk_widget_set_size_request (statusbar->priv->progress, 160, 10);
 
     statusbar->priv->label_duration = gtk_label_new (NULL);
     
@@ -306,6 +307,7 @@ parole_statusbar_init (ParoleStatusbar *statusbar)
     gtk_widget_show (box);
     gtk_widget_show (statusbar->priv->label_text);
     gtk_widget_show (statusbar->priv->label_duration);
+    gtk_label_set_text (GTK_LABEL (statusbar->priv->label_duration), _("Stopped"));
     g_object_unref (builder);
     statusbar->priv->box = box;
     
