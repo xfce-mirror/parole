@@ -56,16 +56,10 @@ G_DEFINE_TYPE (ParoleStatusbar, parole_statusbar, G_TYPE_OBJECT)
 static void 
 parole_statusbar_set_buffering (ParoleStatusbar *bar, gint percentage)
 {
-    gchar *buff;
-    
-    buff = g_strdup_printf ("%s %d%%", _("Buffering"), percentage);
-    
-    gtk_progress_bar_set_text (GTK_PROGRESS_BAR (bar->priv->progress), buff);
     gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (bar->priv->progress), (gdouble) percentage/100);
     gtk_widget_hide (bar->priv->label_text);
     gtk_widget_hide (bar->priv->label_duration);
     gtk_widget_show (bar->priv->progress);
-    g_free (buff);
 }
 
 static void
