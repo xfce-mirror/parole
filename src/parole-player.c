@@ -581,6 +581,7 @@ out:
     g_free (uri);
 }
 
+
 static void
 parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
 {
@@ -832,9 +833,15 @@ parole_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream, Parole
     {
 	parole_player_stopped (player);
     }
-    else if ( state == PAROLE_STATE_PLAYBACK_FINISHED )
+    else if ( state == PAROLE_STATE_PLAYBACK_FINISHED || state == PAROLE_STATE_ABOUT_TO_FINISH)
     {
-	TRACE ("***Playback finished***");
+#ifdef DEBUG
+	if (state == PAROLE_STATE_PLAYBACK_FINISHED )
+	    TRACE ("***Playback finished***");
+	else
+	    TRACE ("***Playback about to finish***");
+#endif
+	
 	parole_player_play_next (player, TRUE);
     }
 }

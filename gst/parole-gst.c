@@ -897,6 +897,7 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 	case GST_STATE_PLAYING:
 	{
 	    gst->priv->media_state = PAROLE_STATE_PLAYING;
+	    parole_gst_query_duration (gst);
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
 			   gst->priv->stream, PAROLE_STATE_PLAYING);
 	    break;
@@ -914,7 +915,6 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 		if ( (media_type == PAROLE_MEDIA_TYPE_LOCAL_FILE && old == GST_STATE_READY) ||
 		      media_type != PAROLE_MEDIA_TYPE_LOCAL_FILE )
 		{
-		    parole_gst_query_duration (gst);
 		    parole_gst_query_capabilities (gst);
 		    parole_gst_query_info (gst);
 		}
@@ -1525,6 +1525,19 @@ parole_gst_terminate_internal (ParoleGst *gst, gboolean fade_sound)
 }
 
 static void
+parole_gst_about_to_finish_cb (GstElement *elm, gpointer data)
+{
+    ParoleGst *gst;
+    
+    gst = PAROLE_GST (data);
+
+
+    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
+		   gst->priv->stream, PAROLE_STATE_ABOUT_TO_FINISH);
+    
+}
+
+static void
 parole_gst_conf_notify_cb (GObject *object, GParamSpec *spec, ParoleGst *gst)
 {
     if ( !g_strcmp0 ("vis-enabled", spec->name) || !g_strcmp0 ("vis-name", spec->name) )
@@ -1686,6 +1699,10 @@ parole_gst_constructed (GObject *object)
 
     g_signal_connect (gst->priv->playbin, "notify::source",
 		      G_CALLBACK (parole_gst_source_notify_cb), gst);
+
+
+    g_signal_connect (gst->priv->playbin, "about-to-finish",
+		      G_CALLBACK (parole_gst_about_to_finish_cb), gst);
 
     
     parole_gst_update_vis (gst);
