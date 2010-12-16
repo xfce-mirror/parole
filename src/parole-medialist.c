@@ -215,6 +215,7 @@ parole_media_list_add (ParoleMediaList *list, ParoleFile *file, gboolean emit, g
 			&iter, 
 			NAME_COL, parole_file_get_display_name (file),
 			DATA_COL, file,
+			LENGTH_COL, parole_taglibc_get_media_length (file),
 			-1);
     
     if ( emit || select_row )

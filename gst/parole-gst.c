@@ -871,6 +871,7 @@ parole_gst_update_vis (ParoleGst *gst)
 
     gst->priv->update_vis = FALSE;
     g_free (vis_name);
+    gtk_widget_queue_draw (GTK_WIDGET (gst));
     TRACE ("end");
 }
 

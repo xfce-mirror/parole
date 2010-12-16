@@ -55,5 +55,6 @@ void		parole_set_widget_image_from_stock 	(GtkWidget *widget,
 
 gchar	       *parole_format_media_length		(gint total_seconds);
 
+gchar 	       *parole_taglibc_get_media_length 	(ParoleFile *file);
 
 #endif /* __PAROLE_UTILS_ */

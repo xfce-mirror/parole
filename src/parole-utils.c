@@ -38,6 +38,10 @@
 #include <linux/cdrom.h>
 #endif
 
+#ifdef HAVE_TAGLIBC
+#include <taglib/tag_c.h>
+#endif
+
 #include <libxfce4util/libxfce4util.h>
 
 #include <parole/parole.h>
@@ -618,7 +622,13 @@ parole_set_widget_image_from_stock (GtkWidget *widget, gchar *stock_id)
     }
 }
 
-
+/**
+ * parole_format_media_length:
+ * 
+ * @total_seconds: lenght of the media file in seconds
+ * 
+ * Returns : formated string for the media lenght
+ **/
 gchar *parole_format_media_length (gint total_seconds)
 {
     gchar *timestring;
@@ -643,3 +653,42 @@ gchar *parole_format_media_length (gint total_seconds)
     
     return timestring;
 }
+
+/**
+ * parole_taglibc_get_media_length:
+ * 
+ * @ParoleFile: a ParoleFile
+ * 
+ * Returns: the length of the media only if the file is a local
+ * 	    media file.
+ **/
+gchar *parole_taglibc_get_media_length (ParoleFile *file)
+{
+    #ifdef HAVE_TAGLIBC
+    
+    TagLib_File *tag_file;
+    
+    if (g_str_has_prefix (parole_file_get_uri (file), "file:/"))
+    {
+	tag_file = taglib_file_new (parole_file_get_file_name (file));
+    
+	if ( tag_file )
+	{
+	    gint length = 0;
+	    const TagLib_AudioProperties *prop = taglib_file_audioproperties (tag_file);
+	    
+	    length = taglib_audioproperties_length (prop);
+	    
+	    taglib_file_free (tag_file);
+	    
+	    if (length != 0)
+		return parole_format_media_length (length);
+	}
+    }
+
+    #endif /* HAVE_TAGLIBC */
+    
+    return NULL;
+}
+
+
