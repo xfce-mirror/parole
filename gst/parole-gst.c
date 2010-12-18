@@ -1202,8 +1202,11 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
 	    parole_gst_application_message (gst, msg);
 	    break;
 	case GST_MESSAGE_DURATION:
-	    TRACE ("Duration message");
-	    parole_gst_query_duration (gst);
+	    if (gst->priv->state == GST_STATE_PLAYING)
+	    {
+		TRACE ("Duration message");
+		parole_gst_query_duration (gst);
+	    }
 	    break;
 	case GST_MESSAGE_ELEMENT:
 	    break;
