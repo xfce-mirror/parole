@@ -2,12 +2,12 @@
 # Copyright (C) 2009 Free Software Foundation, Inc.
 # This file is distributed under the same license as the parole package.
 # Daniel Nylander <po@danielnylander.se>, 2009.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-10 14:17+0100\n"
+"POT-Creation-Date: 2010-12-18 17:04+0000\n"
 "PO-Revision-Date: 2009-12-16 14:03+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -41,89 +41,94 @@ msgid "Chapter Menu"
 msgstr "Kapitelmeny"
 
 #: ../data/interfaces/parole.ui.h:7
+#, fuzzy
+msgid "DVD"
+msgstr "DVD"
+
+#: ../data/interfaces/parole.ui.h:8
 msgid "DVD Menu"
 msgstr "DVD-meny"
 
-#: ../data/interfaces/parole.ui.h:8
+#: ../data/interfaces/parole.ui.h:9
+msgid "From ISO image"
+msgstr "Från ISO-avbildning"
+
+#: ../data/interfaces/parole.ui.h:10
 msgid "Media player"
 msgstr "Mediaspelare"
 
-#: ../data/interfaces/parole.ui.h:9
+#: ../data/interfaces/parole.ui.h:11
 msgid "Mute"
 msgstr "Tyst"
 
-#: ../data/interfaces/parole.ui.h:10
-#: ../src/parole-player.c:1098
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:1197
 #: ../src/parole-disc-menu.c:113
 msgid "Next Chapter"
 msgstr "Nästa kapitel"
 
-#: ../data/interfaces/parole.ui.h:11
+#: ../data/interfaces/parole.ui.h:13
 msgid "None"
 msgstr "Inget"
 
-#: ../data/interfaces/parole.ui.h:12
-#: ../data/desktop/parole.desktop.in.in.h:1
-#: ../src/parole-about.c:70
-#: ../plugins/window-title/window-title-provider.c:58
+#: ../data/interfaces/parole.ui.h:14 ../data/desktop/parole.desktop.in.in.h:1
+#: ../src/parole-about.c:70 ../plugins/window-title/window-title-provider.c:58
 msgid "Parole Media Player"
 msgstr "Mediaspelaren Parole"
 
-#: ../data/interfaces/parole.ui.h:13
+#: ../data/interfaces/parole.ui.h:15
 msgid "Plugins"
 msgstr "Insticksmoduler"
 
-#: ../data/interfaces/parole.ui.h:14
-#: ../src/parole-player.c:1110
+#: ../data/interfaces/parole.ui.h:16 ../src/parole-player.c:1209
 #: ../src/parole-disc-menu.c:114
 msgid "Previous Chapter"
 msgstr "Föregående kapitel"
 
-#: ../data/interfaces/parole.ui.h:15
+#: ../data/interfaces/parole.ui.h:17
 msgid "Repeat"
 msgstr "Upprepa"
 
-#: ../data/interfaces/parole.ui.h:16
+#: ../data/interfaces/parole.ui.h:18
 msgid "Select Track"
 msgstr "Välj spår"
 
-#: ../data/interfaces/parole.ui.h:17
+#: ../data/interfaces/parole.ui.h:19
 msgid "Shuffle"
 msgstr "Blanda"
 
-#: ../data/interfaces/parole.ui.h:18
+#: ../data/interfaces/parole.ui.h:20
 msgid "Sound"
 msgstr "Ljud"
 
-#: ../data/interfaces/parole.ui.h:19
+#: ../data/interfaces/parole.ui.h:21
 msgid "Square"
 msgstr ""
 
-#: ../data/interfaces/parole.ui.h:20
+#: ../data/interfaces/parole.ui.h:22
 msgid "Volume Down"
 msgstr "Sänk volymen"
 
-#: ../data/interfaces/parole.ui.h:21
+#: ../data/interfaces/parole.ui.h:23
 msgid "Volume Up"
 msgstr "Höj volymen"
 
-#: ../data/interfaces/parole.ui.h:22
+#: ../data/interfaces/parole.ui.h:24
 msgid "_Edit"
 msgstr "R_edigera"
 
-#: ../data/interfaces/parole.ui.h:23
+#: ../data/interfaces/parole.ui.h:25
 msgid "_Help"
 msgstr "_Hjälp"
 
-#: ../data/interfaces/parole.ui.h:24
+#: ../data/interfaces/parole.ui.h:26
 msgid "_Media"
 msgstr "_Media"
 
-#: ../data/interfaces/parole.ui.h:25
+#: ../data/interfaces/parole.ui.h:27
 msgid "_Open location"
 msgstr "_Öppna plats"
 
-#: ../data/interfaces/parole.ui.h:26
+#: ../data/interfaces/parole.ui.h:28
 msgid "_View"
 msgstr "_Visa"
 
@@ -235,19 +240,19 @@ msgstr "Efter filändelse"
 msgid "Select File Types (By Extension)"
 msgstr ""
 
-#: ../gst/parole-gst.c:1494
+#: ../gst/parole-gst.c:1511
 msgid "The stream is taking too much time to load"
 msgstr ""
 
-#: ../gst/parole-gst.c:1494
+#: ../gst/parole-gst.c:1511
 msgid "Stop"
 msgstr "Stoppa"
 
-#: ../gst/parole-gst.c:1683
+#: ../gst/parole-gst.c:1700
 msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 
-#: ../gst/parole-gst.c:1703
+#: ../gst/parole-gst.c:1720
 msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 
@@ -263,72 +268,80 @@ msgid ""
 "Licensed under the GNU GPL.\n"
 "\n"
 msgstr ""
+"\n"
+"Mediaspelaren Parole %s\n"
+"\n"
+"Del av projektet Xfce Goodies\n"
+"http://goodies.xfce.org\n"
+"\n"
+"Licensierad under GNU GPL.\n"
+"\n"
 
-#: ../src/main.c:175
+#: ../src/main.c:187
 msgid "Unknown argument "
 msgstr "Okänt argument "
 
-#: ../src/main.c:212
+#: ../src/main.c:224
 msgid "Open a new instance"
 msgstr "Öppna en ny instans"
 
-#: ../src/main.c:213
+#: ../src/main.c:225
 msgid "Do not load plugins"
 msgstr ""
 
-#: ../src/main.c:214
+#: ../src/main.c:226
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr ""
 
-#: ../src/main.c:215
+#: ../src/main.c:227
 msgid "Play or pause if already playing"
 msgstr "Spela upp eller pausa om den spelas upp"
 
-#: ../src/main.c:216
+#: ../src/main.c:228
 msgid "Stop playing"
 msgstr "Stoppa uppspelning"
 
-#: ../src/main.c:217
+#: ../src/main.c:229
 msgid "Next track"
 msgstr "Nästa spår"
 
-#: ../src/main.c:218
+#: ../src/main.c:230
 msgid "Previous track"
 msgstr "Föregående spår"
 
-#: ../src/main.c:219
+#: ../src/main.c:231
 msgid "Seek forward"
 msgstr "Spola framåt"
 
-#: ../src/main.c:220
+#: ../src/main.c:232
 msgid "Seek Backward"
 msgstr "Spola bakåt"
 
-#: ../src/main.c:221
+#: ../src/main.c:233
 msgid "Raise volume"
 msgstr "Höj volymen"
 
-#: ../src/main.c:222
+#: ../src/main.c:234
 msgid "Lower volume"
 msgstr "Sänk volymen"
 
-#: ../src/main.c:223
+#: ../src/main.c:235
 msgid "Mute volume"
 msgstr "Tyst"
 
-#: ../src/main.c:224
+#: ../src/main.c:236
 msgid "Version information"
 msgstr "Versionsinformation"
 
-#: ../src/main.c:225
+#: ../src/main.c:237
 msgid "Enabled/Disable XV support"
 msgstr "Aktivera/inaktivera XV-stöd"
 
-#: ../src/main.c:227
+#: ../src/main.c:239
 msgid "Media to play"
 msgstr "Media att spela upp"
 
-#: ../src/main.c:264
+#: ../src/main.c:276
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr ""
@@ -353,8 +366,7 @@ msgstr "Åtkomst nekas"
 msgid "Unknown playlist format, Please select a support playlist format"
 msgstr ""
 
-#: ../src/parole-medialist.c:514
-#: ../src/parole-player.c:1852
+#: ../src/parole-medialist.c:514 ../src/parole-player.c:1973
 msgid "Playlist"
 msgstr "Spellista"
 
@@ -382,37 +394,43 @@ msgstr "Kom ihåg spellista"
 msgid "Media list"
 msgstr "Medialista"
 
-#: ../src/parole-player.c:318
+#: ../src/parole-player.c:333
 msgid "Hide playlist"
 msgstr "Dölj spellista"
 
-#: ../src/parole-player.c:327
+#: ../src/parole-player.c:342
 msgid "Show playlist"
 msgstr "Visa spellista"
 
-#: ../src/parole-player.c:543
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:297
+#: ../src/parole-player.c:375
+msgid "Open ISO image"
+msgstr "Öppna ISO-avbildning"
+
+#: ../src/parole-player.c:392
+msgid "CD image"
+msgstr "CD-avbildning"
+
+#: ../src/parole-player.c:392
+msgid "DVD image"
+msgstr "DVD-avbildning"
+
+#: ../src/parole-player.c:641
 msgid "Media stream is not seekable"
 msgstr ""
 
-#.
 #. * Next chapter menu item
-#.
-#: ../src/parole-player.c:1098
-#: ../src/parole-disc-menu.c:122
+#. 
+#: ../src/parole-player.c:1197 ../src/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr "Nästa spår"
 
-#.
 #. * Previous chapter menu item
-#.
-#: ../src/parole-player.c:1110
-#: ../src/parole-disc-menu.c:123
+#. 
+#: ../src/parole-player.c:1209 ../src/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr "Föregående spår"
 
 #: ../src/parole-statusbar.c:61
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:590
 msgid "Buffering"
 msgstr "Buffrar"
 
@@ -424,8 +442,7 @@ msgstr "Stoppad"
 msgid "Finished"
 msgstr "Färdig"
 
-#: ../src/parole-statusbar.c:114
-#: ../src/parole-statusbar.c:124
+#: ../src/parole-statusbar.c:114 ../src/parole-statusbar.c:124
 msgid "Paused"
 msgstr "Pausad"
 
@@ -433,20 +450,20 @@ msgstr "Pausad"
 msgid "Playing"
 msgstr "Spelar upp"
 
-#: ../src/parole-statusbar.c:145
+#: ../src/parole-statusbar.c:170 ../src/parole-statusbar.c:174
 msgid "Live stream:"
-msgstr ""
+msgstr "Live-ström:"
 
 #: ../src/parole-about.c:75
 msgid "Author/Maintainer"
-msgstr ""
+msgstr "Upphovsman/Ansvarig"
 
 #: ../src/parole-about.c:81
 #, c-format
 msgid "Translator (%s)"
 msgstr "Översättare (%s)"
 
-#: ../src/parole-disc.c:202
+#: ../src/parole-disc.c:227
 msgid "Play Disc"
 msgstr "Spela upp skiva"
 
@@ -454,10 +471,8 @@ msgstr "Spela upp skiva"
 msgid "Current Locale"
 msgstr "Aktuell lokal"
 
-#: ../src/parole-subtitle-encoding.c:168
-#: ../src/parole-subtitle-encoding.c:170
-#: ../src/parole-subtitle-encoding.c:172
-#: ../src/parole-subtitle-encoding.c:174
+#: ../src/parole-subtitle-encoding.c:168 ../src/parole-subtitle-encoding.c:170
+#: ../src/parole-subtitle-encoding.c:172 ../src/parole-subtitle-encoding.c:174
 msgid "Arabic"
 msgstr "Arabiska"
 
@@ -465,8 +480,7 @@ msgstr "Arabiska"
 msgid "Armenian"
 msgstr "Armeniska"
 
-#: ../src/parole-subtitle-encoding.c:180
-#: ../src/parole-subtitle-encoding.c:182
+#: ../src/parole-subtitle-encoding.c:180 ../src/parole-subtitle-encoding.c:182
 #: ../src/parole-subtitle-encoding.c:184
 msgid "Baltic"
 msgstr "Baltisk"
@@ -475,22 +489,17 @@ msgstr "Baltisk"
 msgid "Celtic"
 msgstr "Keltisk"
 
-#: ../src/parole-subtitle-encoding.c:190
-#: ../src/parole-subtitle-encoding.c:192
-#: ../src/parole-subtitle-encoding.c:194
-#: ../src/parole-subtitle-encoding.c:196
+#: ../src/parole-subtitle-encoding.c:190 ../src/parole-subtitle-encoding.c:192
+#: ../src/parole-subtitle-encoding.c:194 ../src/parole-subtitle-encoding.c:196
 msgid "Central European"
 msgstr "Central europeisk"
 
-#: ../src/parole-subtitle-encoding.c:199
-#: ../src/parole-subtitle-encoding.c:201
-#: ../src/parole-subtitle-encoding.c:203
-#: ../src/parole-subtitle-encoding.c:205
+#: ../src/parole-subtitle-encoding.c:199 ../src/parole-subtitle-encoding.c:201
+#: ../src/parole-subtitle-encoding.c:203 ../src/parole-subtitle-encoding.c:205
 msgid "Chinese Simplified"
 msgstr "Förenklad kinesiska"
 
-#: ../src/parole-subtitle-encoding.c:208
-#: ../src/parole-subtitle-encoding.c:210
+#: ../src/parole-subtitle-encoding.c:208 ../src/parole-subtitle-encoding.c:210
 #: ../src/parole-subtitle-encoding.c:212
 msgid "Chinese Traditional"
 msgstr "Traditionell kinesiska"
@@ -499,12 +508,9 @@ msgstr "Traditionell kinesiska"
 msgid "Croatian"
 msgstr "Kroatiska"
 
-#: ../src/parole-subtitle-encoding.c:218
-#: ../src/parole-subtitle-encoding.c:220
-#: ../src/parole-subtitle-encoding.c:222
-#: ../src/parole-subtitle-encoding.c:224
-#: ../src/parole-subtitle-encoding.c:226
-#: ../src/parole-subtitle-encoding.c:228
+#: ../src/parole-subtitle-encoding.c:218 ../src/parole-subtitle-encoding.c:220
+#: ../src/parole-subtitle-encoding.c:222 ../src/parole-subtitle-encoding.c:224
+#: ../src/parole-subtitle-encoding.c:226 ../src/parole-subtitle-encoding.c:228
 msgid "Cyrillic"
 msgstr "Kyrillisk"
 
@@ -512,8 +518,7 @@ msgstr "Kyrillisk"
 msgid "Cyrillic/Russian"
 msgstr "Kyrillisk/Ryska"
 
-#: ../src/parole-subtitle-encoding.c:234
-#: ../src/parole-subtitle-encoding.c:236
+#: ../src/parole-subtitle-encoding.c:234 ../src/parole-subtitle-encoding.c:236
 msgid "Cyrillic/Ukrainian"
 msgstr "Kyrillisk/Ukrainiska"
 
@@ -521,8 +526,7 @@ msgstr "Kyrillisk/Ukrainiska"
 msgid "Georgian"
 msgstr "Georgiska"
 
-#: ../src/parole-subtitle-encoding.c:242
-#: ../src/parole-subtitle-encoding.c:244
+#: ../src/parole-subtitle-encoding.c:242 ../src/parole-subtitle-encoding.c:244
 #: ../src/parole-subtitle-encoding.c:246
 msgid "Greek"
 msgstr "Grekiska"
@@ -535,10 +539,8 @@ msgstr "Gujarati"
 msgid "Gurmukhi"
 msgstr "Gurmukhi"
 
-#: ../src/parole-subtitle-encoding.c:255
-#: ../src/parole-subtitle-encoding.c:257
-#: ../src/parole-subtitle-encoding.c:259
-#: ../src/parole-subtitle-encoding.c:261
+#: ../src/parole-subtitle-encoding.c:255 ../src/parole-subtitle-encoding.c:257
+#: ../src/parole-subtitle-encoding.c:259 ../src/parole-subtitle-encoding.c:261
 msgid "Hebrew"
 msgstr "Hebreiska"
 
@@ -554,16 +556,13 @@ msgstr "Hindi"
 msgid "Icelandic"
 msgstr "Isländska"
 
-#: ../src/parole-subtitle-encoding.c:273
-#: ../src/parole-subtitle-encoding.c:275
+#: ../src/parole-subtitle-encoding.c:273 ../src/parole-subtitle-encoding.c:275
 #: ../src/parole-subtitle-encoding.c:277
 msgid "Japanese"
 msgstr "Japanska"
 
-#: ../src/parole-subtitle-encoding.c:280
-#: ../src/parole-subtitle-encoding.c:282
-#: ../src/parole-subtitle-encoding.c:284
-#: ../src/parole-subtitle-encoding.c:286
+#: ../src/parole-subtitle-encoding.c:280 ../src/parole-subtitle-encoding.c:282
+#: ../src/parole-subtitle-encoding.c:284 ../src/parole-subtitle-encoding.c:286
 msgid "Korean"
 msgstr "Koreanska"
 
@@ -575,8 +574,7 @@ msgstr "Nordisk"
 msgid "Persian"
 msgstr "Persiska"
 
-#: ../src/parole-subtitle-encoding.c:295
-#: ../src/parole-subtitle-encoding.c:297
+#: ../src/parole-subtitle-encoding.c:295 ../src/parole-subtitle-encoding.c:297
 msgid "Romanian"
 msgstr "Rumänska"
 
@@ -588,31 +586,24 @@ msgstr "Sydeuropeisk"
 msgid "Thai"
 msgstr "Thai"
 
-#: ../src/parole-subtitle-encoding.c:306
-#: ../src/parole-subtitle-encoding.c:308
-#: ../src/parole-subtitle-encoding.c:310
-#: ../src/parole-subtitle-encoding.c:312
+#: ../src/parole-subtitle-encoding.c:306 ../src/parole-subtitle-encoding.c:308
+#: ../src/parole-subtitle-encoding.c:310 ../src/parole-subtitle-encoding.c:312
 msgid "Turkish"
 msgstr "Turkiska"
 
-#: ../src/parole-subtitle-encoding.c:315
-#: ../src/parole-subtitle-encoding.c:317
-#: ../src/parole-subtitle-encoding.c:319
-#: ../src/parole-subtitle-encoding.c:321
+#: ../src/parole-subtitle-encoding.c:315 ../src/parole-subtitle-encoding.c:317
+#: ../src/parole-subtitle-encoding.c:319 ../src/parole-subtitle-encoding.c:321
 #: ../src/parole-subtitle-encoding.c:323
 msgid "Unicode"
 msgstr "Unicode"
 
-#: ../src/parole-subtitle-encoding.c:326
-#: ../src/parole-subtitle-encoding.c:328
-#: ../src/parole-subtitle-encoding.c:330
-#: ../src/parole-subtitle-encoding.c:332
+#: ../src/parole-subtitle-encoding.c:326 ../src/parole-subtitle-encoding.c:328
+#: ../src/parole-subtitle-encoding.c:330 ../src/parole-subtitle-encoding.c:332
 #: ../src/parole-subtitle-encoding.c:334
 msgid "Western"
 msgstr "Västlig"
 
-#: ../src/parole-subtitle-encoding.c:337
-#: ../src/parole-subtitle-encoding.c:339
+#: ../src/parole-subtitle-encoding.c:337 ../src/parole-subtitle-encoding.c:339
 #: ../src/parole-subtitle-encoding.c:341
 msgid "Vietnamese"
 msgstr "Vietnamesiska"
@@ -638,8 +629,7 @@ msgstr "Spelar upp spår"
 msgid "Track %i"
 msgstr "Spår %i"
 
-#: ../src/parole-plugins-manager.c:297
-#: ../src/parole-plugins-manager.c:433
+#: ../src/parole-plugins-manager.c:297 ../src/parole-plugins-manager.c:433
 msgid "Visit Website"
 msgstr "Besök webbplats"
 
@@ -673,7 +663,7 @@ msgstr "Alla filer som stöds"
 
 #: ../parole/parole-filters.c:171
 msgid "Playlist files"
-msgstr ""
+msgstr "Spellistefiler"
 
 #: ../plugins/properties/stream-properties-provider.c:254
 msgid "Title:"
@@ -713,11 +703,11 @@ msgstr ""
 
 #: ../plugins/properties/stream-properties.desktop.in.h:2
 msgid "Stream Properties"
-msgstr ""
+msgstr "Strömegenskaper"
 
 #: ../plugins/tray/tray-provider.c:262
 msgid "<b>Playing:</b>"
-msgstr ""
+msgstr "<b>Spelar upp:</b>"
 
 #: ../plugins/tray/tray-provider.c:262
 msgid "<b>Duration:</b>"
@@ -729,7 +719,7 @@ msgstr ""
 
 #: ../plugins/tray/tray-provider.c:430
 msgid "Enable notification"
-msgstr ""
+msgstr "Aktivera notifieringar"
 
 #: ../plugins/tray/tray-provider.c:439
 msgid "Always minimize to tray when window is closed"
@@ -745,11 +735,11 @@ msgstr ""
 
 #: ../plugins/tray/tray-provider.c:500
 msgid "Are you sure you want to quit Parole"
-msgstr ""
+msgstr "Är du säker på att du vill avsluta Parole?"
 
 #: ../plugins/tray/tray-provider.c:504
 msgid "Remember my choice"
-msgstr ""
+msgstr "Kom ihåg mitt val"
 
 #: ../plugins/tray/system-tray.desktop.in.h:1
 msgid "Show icon in the system tray"
@@ -765,7 +755,7 @@ msgstr ""
 
 #: ../plugins/window-title/window-title.desktop.in.h:2
 msgid "Window Title"
-msgstr ""
+msgstr "Fönstertitel"
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:1
 msgid "Inhibit Power Manager from suspending the machine while playing DVD."
@@ -775,34 +765,17 @@ msgstr ""
 msgid "Power Manager Plugin"
 msgstr ""
 
-#: ../browser-plugin/media-plugin/main.c:72
-msgid "socket"
-msgstr ""
+#~ msgid "url to play"
+#~ msgstr "url att spela upp"
 
-#: ../browser-plugin/media-plugin/main.c:72
-msgid "SOCKET ID"
-msgstr ""
+#~ msgid "URL"
+#~ msgstr "URL"
 
-#: ../browser-plugin/media-plugin/main.c:73
-msgid "url to play"
-msgstr "url att spela upp"
+#~ msgid "Leave fullscreen"
+#~ msgstr "Lämna helskärmsläget"
 
-#: ../browser-plugin/media-plugin/main.c:73
-msgid "URL"
-msgstr "URL"
+#~ msgid "Fullscreen"
+#~ msgstr "Helskärm"
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:138
-msgid "Leave fullscreen"
-msgstr "Lämna helskärmsläget"
-
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:143
-msgid "Fullscreen"
-msgstr "Helskärm"
-
-#.
-#. * Copy url
-#.
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:452
-msgid "Copy url"
-msgstr "Kopiera url"
-
+#~ msgid "Copy url"
+#~ msgstr "Kopiera url"
