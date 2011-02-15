@@ -96,8 +96,9 @@ static void parole_plugins_manager_set_property (GObject *object,
 
 struct ParolePluginsManagerPrivate
 {
-    GtkWidget *list_nt;
-    GtkWidget *main_nt;
+    GtkListStore *store;
+    GtkWidget    *list_nt;
+    GtkWidget    *main_nt;
     
     GPtrArray *array;
     
@@ -107,6 +108,15 @@ struct ParolePluginsManagerPrivate
 static gpointer parole_plugins_manager_object = NULL;
 
 G_DEFINE_TYPE (ParolePluginsManager, parole_plugins_manager, G_TYPE_OBJECT)
+
+
+enum
+{
+    COMBO_BOX_COL_PIXBUF,
+    COMBO_BOX_COL_TITLE,
+    COMBO_BOX_COL_TAB_ID,
+    COMBO_BOX_N_COLS,
+};
 
 enum
 {
@@ -484,15 +494,45 @@ parole_plugins_manager_set_show_tabs (GtkNotebook *nt)
 }
 
 static void
-parole_plugins_manager_page_added_cb (GtkContainer *container, GtkWidget *widget, gpointer data)
+parole_plugins_manager_main_page_added_cb (GtkNotebook *main_nt, GtkWidget *widget, guint page_num, gpointer data)
 {
-    parole_plugins_manager_set_show_tabs (GTK_NOTEBOOK (container));
+    parole_plugins_manager_set_show_tabs (GTK_NOTEBOOK (main_nt));
 }
 
 static void
-parole_plugins_manager_page_removed_cb (GtkContainer *container, GtkWidget *widget, gpointer data)
+parole_plugins_manager_main_page_removed_cb (GtkNotebook *main_nt, GtkWidget *widget, guint page_num, gpointer data)
 {
-    parole_plugins_manager_set_show_tabs (GTK_NOTEBOOK (container));
+    parole_plugins_manager_set_show_tabs (GTK_NOTEBOOK (main_nt));
+}
+
+
+static void
+parole_plugins_manager_side_page_added_cb (GtkNotebook *side_nt, GtkWidget *widget, guint page_num, ParolePluginsManager *mg)
+{
+    
+}
+
+static void
+parole_plugins_manager_side_page_removed_cb (GtkNotebook *side_nt, GtkWidget *widget, guint page_num, ParolePluginsManager *mg)
+{
+    GtkTreeIter iter;
+    gboolean valid;
+    gint id;
+    
+    for ( valid = gtk_tree_model_get_iter_first (GTK_TREE_MODEL (mg->priv->store), &iter);
+           valid;
+           valid = gtk_tree_model_iter_next (GTK_TREE_MODEL (mg->priv->store), &iter))
+    {
+        gtk_tree_model_get (GTK_TREE_MODEL (mg->priv->store), &iter,
+                            COMBO_BOX_COL_TAB_ID, &id,
+                            -1);
+			    
+	if (id == (gint)page_num)
+	{
+	    gtk_list_store_remove (mg->priv->store, &iter);
+	}
+    }
+    
 }
 
 static void parole_plugins_manager_set_property (GObject *object,
@@ -631,26 +671,26 @@ parole_plugins_manager_init (ParolePluginsManager *manager)
     builder = parole_builder_get_main_interface ();
     
     manager->priv->load_plugins = TRUE;
-    
-    manager->priv->list_nt = GTK_WIDGET (gtk_builder_get_object (builder, "notebook-playlist"));
+
+    manager->priv->store = GTK_LIST_STORE (gtk_builder_get_object (builder, "sidebar-combo-liststore"));
+    manager->priv->list_nt = GTK_WIDGET (gtk_builder_get_object (builder, "sidebar-notebook"));
     manager->priv->main_nt = GTK_WIDGET (gtk_builder_get_object (builder, "main-notebook"));
     
     g_signal_connect (manager->priv->list_nt, "page-added",
-		      G_CALLBACK (parole_plugins_manager_page_added_cb), NULL);
+		      G_CALLBACK (parole_plugins_manager_side_page_added_cb), manager);
     
     g_signal_connect (manager->priv->list_nt, "page-removed",
-		      G_CALLBACK (parole_plugins_manager_page_removed_cb), NULL);
+		      G_CALLBACK (parole_plugins_manager_side_page_removed_cb), manager);
 		      
     g_signal_connect (manager->priv->main_nt, "page-added",
-		      G_CALLBACK (parole_plugins_manager_page_added_cb), NULL);
+		      G_CALLBACK (parole_plugins_manager_main_page_added_cb), NULL);
     
     g_signal_connect (manager->priv->main_nt, "page-removed",
-		      G_CALLBACK (parole_plugins_manager_page_removed_cb), NULL);
+		      G_CALLBACK (parole_plugins_manager_main_page_removed_cb), NULL);
 		      
     g_signal_connect (gtk_builder_get_object (builder, "plugins-menu-item"), "activate",
 		      G_CALLBACK (parole_plugins_manager_show_plugins_pref), manager);
 		     
-    parole_plugins_manager_set_show_tabs (GTK_NOTEBOOK (manager->priv->list_nt));
     parole_plugins_manager_set_show_tabs (GTK_NOTEBOOK (manager->priv->main_nt));
     
     g_object_unref (builder);
@@ -753,7 +793,18 @@ parole_plugins_manager_pack (ParolePluginsManager *manager, GtkWidget *widget, c
 {
     if ( container == PAROLE_PLUGIN_CONTAINER_PLAYLIST )
     {
-	gtk_notebook_append_page (GTK_NOTEBOOK (manager->priv->list_nt), widget, gtk_label_new (title));
+	GtkTreeIter iter;
+	gint tab_id;
+
+	tab_id = gtk_notebook_append_page (GTK_NOTEBOOK (manager->priv->list_nt), widget, gtk_label_new (title));
+	
+	gtk_list_store_append (manager->priv->store, &iter);
+        gtk_list_store_set (manager->priv->store, &iter, 
+                            COMBO_BOX_COL_PIXBUF, NULL,
+                            COMBO_BOX_COL_TITLE, title, 
+			    COMBO_BOX_COL_TAB_ID, tab_id,
+                            -1);
+			    
 	gtk_widget_show_all (widget);
     }
     else if ( container == PAROLE_PLUGIN_CONTAINER_MAIN_VIEW )

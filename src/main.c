@@ -196,7 +196,7 @@ xv_option_given (const gchar *name, const gchar *value, gpointer data, GError **
 int main (int argc, char **argv)
 {
     ParolePlayer *player;
-    //ParolePluginsManager *plugins;
+    ParolePluginsManager *plugins;
     
     GtkBuilder *builder;
     GOptionContext *ctx;
@@ -354,15 +354,15 @@ int main (int argc, char **argv)
 	    g_error_free (error);
 	}
 
-	//plugins = parole_plugins_manager_new (!no_plugins);
-	//parole_plugins_manager_load (plugins);
+	plugins = parole_plugins_manager_new (!no_plugins);
+	parole_plugins_manager_load (plugins);
 	g_object_unref (builder);
 	
 	gdk_notify_startup_complete ();
 	gtk_main ();
 	
 	parole_dbus_release_name (PAROLE_DBUS_NAME);
-	//g_object_unref (plugins);
+	g_object_unref (plugins);
     }
 
     gst_deinit ();
