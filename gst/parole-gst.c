@@ -547,6 +547,31 @@ parole_gst_load_logo (ParoleGst *gst)
     g_free (path);
 }
 
+static void
+parole_gst_query_capabilities (ParoleGst *gst)
+{
+    GstQuery *query;
+    gboolean seekable;
+    
+    query = gst_query_new_seeking (GST_FORMAT_TIME);
+    
+    if ( gst_element_query (gst->priv->playbin, query) )
+    {
+	
+	gst_query_parse_seeking (query,
+				 NULL,
+				 &seekable,
+				 NULL,
+				 NULL);
+	
+	g_object_set (G_OBJECT (gst->priv->stream),
+	              "seekable", seekable,
+		      NULL);
+		      
+    }
+    gst_query_unref (query);
+}
+
 static gboolean
 parole_gst_tick_timeout (gpointer data)
 {
@@ -556,11 +581,16 @@ parole_gst_tick_timeout (gpointer data)
     GstFormat format = GST_FORMAT_TIME;
     gint64 value;
     gboolean video;
+    gboolean seekable;
+    gint64 duration;
+    
     
     gst = PAROLE_GST (data);
     
     g_object_get (G_OBJECT (gst->priv->stream),
 		  "has-video", &video,
+		  "seekable", &seekable,
+		  "duration", &duration,
 		  NULL);
     
     gst_element_query_position (gst->priv->playbin, &format, &pos);
@@ -570,6 +600,11 @@ parole_gst_tick_timeout (gpointer data)
 
     if ( gst->priv->state == GST_STATE_PLAYING )
     {
+	if (duration != 0 && seekable == FALSE)
+	{
+	    parole_gst_query_capabilities (gst);
+	}
+	    
 	value = pos / GST_SECOND;
 
 	if ( G_LIKELY (value > 0) )
@@ -605,28 +640,6 @@ parole_gst_tick (ParoleGst *gst)
         g_source_remove (gst->priv->tick_id);
 	gst->priv->tick_id = 0;
     }    
-}
-
-static void
-parole_gst_query_capabilities (ParoleGst *gst)
-{
-    GstQuery *query;
-    gboolean seekable;
-    
-    query = gst_query_new_seeking (GST_FORMAT_TIME);
-    
-    if ( gst_element_query (gst->priv->playbin, query) )
-    {
-	gst_query_parse_seeking (query,
-				 NULL,
-				 &seekable,
-				 NULL,
-				 NULL);
-	g_object_set (G_OBJECT (gst->priv->stream),
-	              "seekable", seekable,
-		      NULL);
-    }
-    gst_query_unref (query);
 }
 
 static void
@@ -903,29 +916,17 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 	case GST_STATE_PLAYING:
 	{
 	    gst->priv->media_state = PAROLE_STATE_PLAYING;
+	    TRACE ("Playing");
+	    parole_gst_query_capabilities (gst);
+	    parole_gst_query_info (gst);
 	    parole_gst_query_duration (gst);
+	    
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
 			   gst->priv->stream, PAROLE_STATE_PLAYING);
 	    break;
 	}
 	case GST_STATE_PAUSED:
 	{
-	    if ( pending == GST_STATE_PLAYING )
-	    {
-		ParoleMediaType media_type;
-		
-		g_object_get (G_OBJECT (gst->priv->stream),
-			      "media-type", &media_type,
-			      NULL);
-		
-		if ( (media_type == PAROLE_MEDIA_TYPE_LOCAL_FILE && old == GST_STATE_READY) ||
-		      media_type != PAROLE_MEDIA_TYPE_LOCAL_FILE )
-		{
-		    parole_gst_query_capabilities (gst);
-		    parole_gst_query_info (gst);
-		}
-	    }
-
 	    if ( gst->priv->target == GST_STATE_PLAYING )
 	    {
 		if ( gst->priv->update_color_balance )

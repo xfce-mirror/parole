@@ -506,6 +506,19 @@ parole_player_media_cursor_changed_cb (ParoleMediaList *list, gboolean media_sel
 }
 
 static void
+parole_player_seekable_notify (ParoleStream *stream, GParamSpec *spec, ParolePlayer *player)
+{
+    gboolean seekable;
+    
+    g_object_get (G_OBJECT (stream),
+		  "seekable", &seekable,
+		  NULL);
+		  
+    gtk_widget_set_tooltip_text (GTK_WIDGET (player->range), seekable ? NULL : _("Media stream is not seekable"));
+    gtk_widget_set_sensitive (GTK_WIDGET (player->range), seekable);
+}
+
+static void
 parole_player_media_progressed_cb (ParoleGst *gst, const ParoleStream *stream, gint64 value, ParolePlayer *player)
 {
 #ifdef DEBUG
@@ -516,6 +529,7 @@ parole_player_media_progressed_cb (ParoleGst *gst, const ParoleStream *stream, g
     {
 	parole_player_change_range_value (player, value);
     }
+    
 }
 
 static void
@@ -613,6 +627,8 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
     gtk_widget_set_sensitive (player->range, seekable);
     
     player->internal_range_change = TRUE;
+    g_debug ("live=%d  duration=%lld\n", live, duration);
+    
     if ( live || duration == 0)
 	parole_player_change_range_value (player, 0);
     else 
@@ -2207,6 +2223,12 @@ parole_player_init (ParolePlayer *player)
     gtk_widget_show (player->gst);
 
 
+    g_signal_connect (G_OBJECT (parole_gst_get_stream (PAROLE_GST (player->gst))), "notify::seekable",
+		      G_CALLBACK (parole_player_seekable_notify), player);
+    
+    
+    
+
     g_signal_connect (player->list, "media_activated",
 		      G_CALLBACK (parole_player_media_activated_cb), player);
 		      
@@ -2249,6 +2271,7 @@ parole_player_init (ParolePlayer *player)
     
     g_signal_connect_swapped (player->window, "notify::is-active",
 			      G_CALLBACK (parole_player_window_notify_is_active), player);
+			      
     
     parole_player_dbus_init (player);
 }

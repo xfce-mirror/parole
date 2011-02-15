@@ -452,7 +452,7 @@ parole_stream_class_init (ParoleStreamClass *klass)
      * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
-				     PROP_SEEKABLE,
+				     PROP_TAG_AVAILABLE,
 				     g_param_spec_boolean ("tag-available",
 							   "Tag available",
 							   "Tag available",
