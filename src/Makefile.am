@@ -36,6 +36,8 @@ parole_SOURCES =				\
 	main.c					\
 	parole-player.c				\
 	parole-player.h				\
+	parole-callbacks.c			\
+	parole-callbacks.h			\
 	parole-vis.c				\
 	parole-vis.h				\
 	parole-statusbar.c			\

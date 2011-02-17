@@ -288,6 +288,7 @@ void parole_plugins_manager_tree_cursor_changed_cb (GtkTreeView *view,
     ParolePluginInfo *info;
     gboolean configurable = FALSE;
     const gchar *site;
+    gchar *tmp;
     
 #if GTK_CHECK_VERSION (2, 18, 0)
     gchar *site_text;
@@ -300,8 +301,13 @@ void parole_plugins_manager_tree_cursor_changed_cb (GtkTreeView *view,
     
     site = info->website;
     
-    gtk_label_set_markup (GTK_LABEL (pref->desc), info->desc);
-    gtk_label_set_markup (GTK_LABEL (pref->author), info->authors);
+    tmp = g_strdup_printf ("%s: %s", _("Description"), info->desc);
+    gtk_label_set_markup (GTK_LABEL (pref->desc), tmp);
+    g_free (tmp);
+    
+    tmp = g_strdup_printf ("%s: %s", _("Authors"), info->authors);
+    gtk_label_set_markup (GTK_LABEL (pref->author), tmp);
+    g_free (tmp);
     
 #if GTK_CHECK_VERSION (2, 18, 0)
     site_text = g_strdup_printf ("<a href=\"%s\">%s</a>", site, _("Visit Website"));

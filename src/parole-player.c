@@ -37,9 +37,7 @@
 #include <gtk/gtk.h>
 
 #include <libxfce4util/libxfce4util.h>
-#include <libxfce4ui/libxfce4ui.h>
 
-#include <dbus/dbus-glib.h>
 
 #include <parole/parole-file.h>
 
@@ -47,20 +45,14 @@
 #include "parole-about.h"
 
 #include "parole-player.h"
-#include "parole-gst.h"
+
 #include "parole-dbus.h"
 #include "parole-mediachooser.h"
 #include "parole-filters.h"
-#include "parole-disc.h"
-#include "parole-statusbar.h"
-#include "parole-screensaver.h"
-#include "parole-conf-dialog.h"
-#include "parole-conf.h"
 #include "parole-rc-utils.h"
 #include "parole-iso-image.h"
 #include "parole-utils.h"
 #include "parole-debug.h"
-#include "parole-button.h"
 #include "enum-gtypes.h"
 #include "parole-debug.h"
 
@@ -81,9 +73,6 @@ static void parole_player_disc_selected_cb (ParoleDisc *disc,
 					    const gchar *device, 
 					    ParolePlayer *player);
 
-/*
- * GtkBuilder Callbacks
- */
 gboolean        parole_player_configure_event_cb        (GtkWidget *widget, 
 							 GdkEventConfigure *ev, 
 							 ParolePlayer *player);
@@ -169,12 +158,6 @@ void		parole_player_volume_toggled		(GtkWidget *widget,
 void		parole_player_full_screen_activated_cb  (GtkWidget *widget,
 							 ParolePlayer *player);
 
-void		parole_player_shuffle_toggled_cb	(GtkWidget *widget,
-							 ParolePlayer *player);
-
-void		parole_player_repeat_toggled_cb		(GtkWidget *widget,
-							 ParolePlayer *player);
-							 
 void		parole_player_minimize_clicked_cb	(GtkWidget *widget,
 							 ParolePlayer *player);
 							 
@@ -215,85 +198,6 @@ static GtkTargetEntry target_entry[] =
 /*
  * End of GtkBuilder Callbacks
  */
-
-struct _ParolePlayerClass
-{
-    GObjectClass 	parent_class;
-    
-};
-
-struct _ParolePlayer
-{
-    GObject         	parent;
-    
-    
-    DBusGConnection     *bus;
-    ParoleMediaList	*list;
-    ParoleStatusbar     *statusbar;
-    ParoleDisc          *disc;
-    ParoleScreenSaver   *screen_saver;
-    ParoleConf          *conf;
-
-#ifdef HAVE_XF86_KEYSYM
-    ParoleButton        *button;
-#endif
-
-    XfceSMClient        *sm_client;
-    gchar               *client_id;
-    
-    GtkFileFilter       *video_filter;
-    GtkRecentManager    *recent;
-
-    GtkWidget 		*gst;
-
-    GtkWidget 		*window;
-    GtkWidget           *sidebar;
-    GtkWidget		*menu_view;
-    GtkWidget		*video_view;
-    GtkWidget		*playlist_nt;
-    GtkWidget		*main_nt;	/*Main notebook*/
-    GtkWidget		*show_hide_playlist;
-    GtkWidget		*play_pause;
-    GtkWidget		*stop;
-    GtkWidget		*seekf;
-    GtkWidget		*seekb;
-    GtkWidget		*range;
-    GtkWidget 		*min_view;
-    GtkWidget		*videoport;
-    
-    GtkWidget		*fs_window; /* Window for packing control widgets 
-				     * when in full screen mode
-				     */
-    GtkWidget		*control; /* contains all play button*/
-    GtkWidget		*leave_fs;
-    
-    GtkWidget		*main_box;
-    
-    GtkWidget		*volume;
-    GtkWidget		*volume_image;
-    
-    /**
-     * Control widget Containers
-     * 
-     **/
-    GtkWidget		*scale_container;
-    GtkWidget		*play_container;
-    
-     
-     
-    gboolean             exit;
-    
-    gboolean		 full_screen;
-    gboolean		 minimized;
-    
-    ParoleState     state;
-    gboolean		 user_seeking;
-    gboolean             internal_range_change;
-    gboolean		 buffering;
-    
-    GtkTreeRowReference *row;
-        
-};
 
 enum
 {
@@ -467,7 +371,7 @@ parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *ro
 	    TRACE ("Trying to play media file %s", uri);
 	    TRACE ("File content type %s", parole_file_get_content_type (file));
 	    
-	    gtk_widget_set_sensitive (player->stop, TRUE);
+	    //gtk_widget_set_sensitive (player->stop, TRUE);
 	    
 	    parole_gst_play_uri (PAROLE_GST (player->gst), 
 				 parole_file_get_uri (file),
@@ -649,7 +553,7 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
 	g_object_unref (pix);
 	
     parole_player_save_uri (player, stream);
-    
+    parole_media_list_select_row (player->list, player->row);
     gtk_widget_grab_focus (player->gst);
 }
 
@@ -734,7 +638,7 @@ parole_player_play_selected_row (ParolePlayer *player)
 }
 
 static void
-parole_player_play_next (ParolePlayer *player, gboolean allow_shuffle)
+parole_player_play_next (ParolePlayer *player, gboolean allow_shuffle, gboolean stop)
 {
     gboolean repeat, shuffle;
     
@@ -767,7 +671,8 @@ parole_player_play_next (ParolePlayer *player, gboolean allow_shuffle)
 	}
     }
 
-    parole_gst_stop (PAROLE_GST (player->gst));
+    if (stop)
+	parole_gst_stop (PAROLE_GST (player->gst));
 }
 
 static void
@@ -858,7 +763,7 @@ parole_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream, Parole
 	    TRACE ("***Playback about to finish***");
 #endif
 	
-	parole_player_play_next (player, TRUE);
+	parole_player_play_next (player, TRUE, state == PAROLE_STATE_PLAYBACK_FINISHED);
     }
 }
 
@@ -1424,42 +1329,6 @@ parole_player_menu_exit_cb (GtkWidget *widget, ParolePlayer *player)
 }
 
 
-void parole_player_shuffle_toggled_cb (GtkWidget *widget, ParolePlayer *player)
-{
-    gboolean toggled;
-
-    if ( !g_strcmp0 (gtk_widget_get_name (widget), "GtkToggleButton"))
-    {
-	toggled = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget));
-    }
-    else 
-    {
-	toggled = gtk_check_menu_item_get_active (GTK_CHECK_MENU_ITEM (widget));
-    }
-	
-    g_object_set (G_OBJECT (player->conf),
-		  "shuffle", toggled,
-		  NULL);
-}
-
-void parole_player_repeat_toggled_cb (GtkWidget *widget, ParolePlayer *player)
-{
-    gboolean toggled;
-    
-    if ( !g_strcmp0 (gtk_widget_get_name (widget), "GtkToggleButton"))
-    {
-	toggled = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget));
-    }
-    else 
-    {
-	toggled = gtk_check_menu_item_get_active (GTK_CHECK_MENU_ITEM (widget));
-    }
-    
-    g_object_set (G_OBJECT (player->conf),
-		  "repeat", toggled,
-		  NULL);
-}
-
 static const gchar *
 parole_player_get_volume_icon_name (gdouble value)
 {
@@ -1862,7 +1731,7 @@ parole_player_key_press (GtkWidget *widget, GdkEventKey *ev, ParolePlayer *playe
 		parole_player_play_prev (player);
 	    return TRUE;
 	case XF86XK_AudioNext:
-		parole_player_play_next (player, FALSE);
+		parole_player_play_next (player, FALSE, TRUE);
 	    return TRUE;
 #endif /* HAVE_XF86_KEYSYM */
 	default:
@@ -1890,7 +1759,7 @@ parole_player_button_pressed_cb (ParoleButton *button, ParoleButtonKey key, Paro
 	    parole_player_play_prev (player);
 	    break;
 	case PAROLE_KEY_AUDIO_NEXT:
-	    parole_player_play_next (player, FALSE);
+	    parole_player_play_next (player, FALSE, TRUE);
 	    break;
 	default:
 	    break;
@@ -2384,7 +2253,7 @@ static gboolean	parole_player_dbus_stop (ParolePlayer *player,
 static gboolean	parole_player_dbus_next_track (ParolePlayer *player,
 					       GError *error)
 {
-    parole_player_play_next (player, FALSE);
+    parole_player_play_next (player, FALSE, TRUE);
     return TRUE;
 }
 

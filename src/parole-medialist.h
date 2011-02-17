@@ -82,6 +82,9 @@ GtkTreeRowReference             *parole_media_list_get_first_row    (ParoleMedia
 
 GtkTreeRowReference		*parole_media_list_get_selected_row (ParoleMediaList *list);
 
+void				 parole_media_list_select_row 	    (ParoleMediaList *list,
+								     GtkTreeRowReference *row);
+
 GtkTreeRowReference             *parole_media_list_get_next_row     (ParoleMediaList *list,
 								     GtkTreeRowReference *row,
 								     gboolean repeat);

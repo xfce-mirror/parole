@@ -1472,7 +1472,7 @@ GtkTreeRowReference *parole_media_list_get_next_row (ParoleMediaList *list,
     if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path))
     {
 	next = gtk_tree_row_reference_new (GTK_TREE_MODEL (list->priv->store), path);
-	parole_media_list_select_path (list, path);
+	//parole_media_list_select_path (list, path);
     }
     else if ( repeat ) /* Repeat playing ?*/
     {
@@ -1506,7 +1506,7 @@ GtkTreeRowReference *parole_media_list_get_prev_row (ParoleMediaList *list,
     if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path))
     {
 	prev = gtk_tree_row_reference_new (GTK_TREE_MODEL (list->priv->store), path);
-	parole_media_list_select_path (list, path);
+	//parole_media_list_select_path (list, path);
     }
     else
 	prev = row;
@@ -1539,7 +1539,7 @@ GtkTreeRowReference *parole_media_list_get_row_random (ParoleMediaList *list)
     if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path))
     {
 	row  = gtk_tree_row_reference_new (GTK_TREE_MODEL (list->priv->store), path);
-	parole_media_list_select_path (list, path);
+	//parole_media_list_select_path (list, path);
     }
     
     gtk_tree_path_free (path);
@@ -1589,6 +1589,18 @@ GtkTreeRowReference *parole_media_list_get_first_row (ParoleMediaList *list)
 GtkTreeRowReference *parole_media_list_get_selected_row (ParoleMediaList *list)
 {
     return parole_media_list_get_first_selected_row (list);
+}
+
+void parole_media_list_select_row (ParoleMediaList *list, GtkTreeRowReference *row)
+{
+    GtkTreePath *path;
+    
+    if ( gtk_tree_row_reference_valid (row) )
+    {
+	path = gtk_tree_row_reference_get_path (row);
+	parole_media_list_select_path (list, path);
+	gtk_tree_path_free (path);
+    }
 }
 
 void parole_media_list_set_row_pixbuf  (ParoleMediaList *list, GtkTreeRowReference *row, GdkPixbuf *pix)

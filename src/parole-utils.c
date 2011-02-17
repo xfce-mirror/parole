@@ -677,7 +677,8 @@ gchar *parole_taglibc_get_media_length (ParoleFile *file)
 	    gint length = 0;
 	    const TagLib_AudioProperties *prop = taglib_file_audioproperties (tag_file);
 	    
-	    length = taglib_audioproperties_length (prop);
+	    if (prop)
+		length = taglib_audioproperties_length (prop);
 	    
 	    taglib_file_free (tag_file);
 	    
