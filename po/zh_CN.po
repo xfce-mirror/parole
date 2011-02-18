@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-08 10:04+0000\n"
+"POT-Creation-Date: 2011-02-17 23:05+0000\n"
 "PO-Revision-Date: 2010-01-14 22:22+0800\n"
 "Last-Translator: Hunt Xu <huntxu@live.cn>\n"
 "Language-Team: Chinese (simplified) <xfce-i18n@xfce.org>\n"
@@ -92,7 +92,6 @@ msgid "Select Track"
 msgstr "选择轨道"
 
 #: ../data/interfaces/parole.ui.h:19
-#, fuzzy
 msgid "Shuffle"
 msgstr "随机播放"
 
@@ -101,9 +100,8 @@ msgid "Sound"
 msgstr "声音"
 
 #: ../data/interfaces/parole.ui.h:21
-#, fuzzy
 msgid "Square"
-msgstr "顺序播放"
+msgstr "矩形"
 
 #: ../data/interfaces/parole.ui.h:22
 msgid "Volume Down"
