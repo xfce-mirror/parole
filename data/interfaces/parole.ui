@@ -2,6 +2,10 @@
 <interface>
   <requires lib="gtk+" version="2.16"/>
   <!-- interface-naming-policy project-wide -->
+  <object class="GtkAction" id="action-play">
+    <property name="stock_id">gtk-media-play</property>
+    <signal name="activate" handler="parole_player_action_play_cb" swapped="no"/>
+  </object>
   <object class="GtkToggleAction" id="action-repeat">
     <signal name="toggled" handler="parole_action_repeat_cb" swapped="no"/>
   </object>
@@ -22,30 +26,30 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-new</property>
-    <property name="icon-size">1</property>
+    <property name="icon-size">2</property>
   </object>
   <object class="GtkImage" id="image12">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-cdrom</property>
-    <property name="icon-size">1</property>
+    <property name="icon-size">2</property>
   </object>
   <object class="GtkImage" id="image13">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-edit</property>
-    <property name="icon-size">1</property>
+    <property name="icon-size">2</property>
   </object>
   <object class="GtkImage" id="image14">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixel_size">18</property>
+    <property name="pixel_size">20</property>
     <property name="icon_name">applications-multimedia</property>
   </object>
   <object class="GtkImage" id="image15">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixel_size">18</property>
+    <property name="pixel_size">20</property>
     <property name="icon_name">multimedia-volume-control</property>
     <property name="icon-size">1</property>
   </object>
@@ -53,7 +57,7 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-about</property>
-    <property name="icon-size">1</property>
+    <property name="icon-size">2</property>
   </object>
   <object class="GtkImage" id="image17">
     <property name="visible">True</property>
@@ -700,7 +704,6 @@
                       <object class="GtkAlignment" id="video-view">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="top_padding">4</property>
                         <property name="right_padding">4</property>
                         <child>
                           <object class="GtkNotebook" id="main-notebook">
@@ -810,7 +813,7 @@
                                           <object class="GtkHBox" id="hbox3">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
-                                            <property name="spacing">2</property>
+                                            <property name="spacing">5</property>
                                             <child>
                                               <object class="GtkToggleButton" id="shuffle">
                                                 <property name="visible">True</property>
@@ -867,26 +870,20 @@
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">False</property>
                                                 <property name="resize_mode">queue</property>
-                                                <property name="shadow_type">out</property>
+                                                <property name="shadow_type">none</property>
                                                 <child>
                                                   <object class="GtkHBox" id="hbox4">
                                                     <property name="visible">True</property>
                                                     <property name="can_focus">False</property>
                                                     <property name="spacing">2</property>
                                                     <child>
-                                                      <object class="GtkButton" id="backward">
-                                                        <property name="width_request">60</property>
+                                                      <object class="GtkVSeparator" id="vseparator2">
                                                         <property name="visible">True</property>
-                                                        <property name="can_focus">True</property>
-                                                        <property name="receives_default">True</property>
-                                                        <property name="use_action_appearance">False</property>
-                                                        <property name="image">image3</property>
-                                                        <property name="relief">none</property>
-                                                        <property name="focus_on_click">False</property>
+                                                        <property name="can_focus">False</property>
                                                       </object>
                                                       <packing>
                                                         <property name="expand">False</property>
-                                                        <property name="fill">False</property>
+                                                        <property name="fill">True</property>
                                                         <property name="position">0</property>
                                                       </packing>
                                                     </child>
@@ -895,17 +892,15 @@
                                                         <property name="visible">True</property>
                                                         <property name="can_focus">False</property>
                                                         <child>
-                                                          <object class="GtkButton" id="play">
-                                                            <property name="width_request">80</property>
-                                                            <property name="height_request">35</property>
+                                                          <object class="GtkButton" id="backward">
+                                                            <property name="width_request">60</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">True</property>
                                                             <property name="receives_default">True</property>
                                                             <property name="use_action_appearance">False</property>
-                                                            <property name="image">image1</property>
-                                                            <property name="relief">half</property>
+                                                            <property name="image">image3</property>
+                                                            <property name="relief">none</property>
                                                             <property name="focus_on_click">False</property>
-                                                            <signal name="clicked" handler="parole_player_play_pause_clicked" swapped="no"/>
                                                           </object>
                                                         </child>
                                                       </object>
@@ -913,6 +908,26 @@
                                                         <property name="expand">True</property>
                                                         <property name="fill">True</property>
                                                         <property name="position">1</property>
+                                                      </packing>
+                                                    </child>
+                                                    <child>
+                                                      <object class="GtkButton" id="play">
+                                                        <property name="width_request">80</property>
+                                                        <property name="height_request">35</property>
+                                                        <property name="visible">True</property>
+                                                        <property name="can_focus">True</property>
+                                                        <property name="receives_default">True</property>
+                                                        <property name="related_action">action-play</property>
+                                                        <property name="use_action_appearance">False</property>
+                                                        <property name="image">image1</property>
+                                                        <property name="relief">half</property>
+                                                        <property name="use_underline">True</property>
+                                                        <property name="focus_on_click">False</property>
+                                                      </object>
+                                                      <packing>
+                                                        <property name="expand">True</property>
+                                                        <property name="fill">True</property>
+                                                        <property name="position">2</property>
                                                       </packing>
                                                     </child>
                                                     <child>
@@ -929,7 +944,18 @@
                                                       <packing>
                                                         <property name="expand">False</property>
                                                         <property name="fill">False</property>
-                                                        <property name="position">2</property>
+                                                        <property name="position">3</property>
+                                                      </packing>
+                                                    </child>
+                                                    <child>
+                                                      <object class="GtkVSeparator" id="vseparator1">
+                                                        <property name="visible">True</property>
+                                                        <property name="can_focus">False</property>
+                                                      </object>
+                                                      <packing>
+                                                        <property name="expand">False</property>
+                                                        <property name="fill">True</property>
+                                                        <property name="position">4</property>
                                                       </packing>
                                                     </child>
                                                   </object>
@@ -1048,9 +1074,21 @@
                               </packing>
                             </child>
                             <child>
+                              <object class="GtkHSeparator" id="hseparator1">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">2</property>
+                              </packing>
+                            </child>
+                            <child>
                               <object class="GtkAlignment" id="alignment2">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
+                                <property name="top_padding">4</property>
                                 <property name="bottom_padding">2</property>
                                 <property name="left_padding">5</property>
                                 <property name="right_padding">5</property>
@@ -1068,7 +1106,7 @@
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">True</property>
-                                <property name="position">2</property>
+                                <property name="position">3</property>
                               </packing>
                             </child>
                           </object>
@@ -1095,6 +1133,85 @@
             <property name="position">0</property>
           </packing>
         </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkMenu" id="menu-player">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkImageMenuItem" id="menu-play">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="related_action">action-play</property>
+        <property name="use_underline">True</property>
+        <property name="use_stock">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkImageMenuItem" id="menu-forward">
+        <property name="label">gtk-media-forward</property>
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="use_action_appearance">False</property>
+        <property name="use_underline">True</property>
+        <property name="use_stock">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkImageMenuItem" id="menu-backward">
+        <property name="label">gtk-media-rewind</property>
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="use_action_appearance">False</property>
+        <property name="use_underline">True</property>
+        <property name="use_stock">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkImageMenuItem" id="menu-stop">
+        <property name="label">gtk-media-stop</property>
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="use_action_appearance">False</property>
+        <property name="use_underline">True</property>
+        <property name="use_stock">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkImageMenuItem" id="menu-next">
+        <property name="label">gtk-media-next</property>
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="use_action_appearance">False</property>
+        <property name="use_underline">True</property>
+        <property name="use_stock">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkImageMenuItem" id="menu-prev">
+        <property name="label">gtk-goto-first</property>
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="use_action_appearance">False</property>
+        <property name="use_underline">True</property>
+        <property name="use_stock">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkSeparatorMenuItem" id="menuitem3">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="use_action_appearance">False</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="player-menu">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="use_action_appearance">False</property>
+        <property name="label" translatable="yes">menuitem8</property>
+        <property name="use_underline">True</property>
       </object>
     </child>
   </object>

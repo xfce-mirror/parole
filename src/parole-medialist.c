@@ -149,7 +149,7 @@ gboolean	parole_media_list_query_tooltip		(GtkWidget *widget,
 							 gint x,
 							 gint y,
 							 gboolean keyboard_mode,
-							 GtkTooltip *tip,
+							 GtkTooltip *tooltip,
 							 ParoleMediaList *list);
 							 
 /*
@@ -224,6 +224,7 @@ parole_media_list_add (ParoleMediaList *list, ParoleFile *file, gboolean emit, g
 			NAME_COL, parole_file_get_display_name (file),
 			DATA_COL, file,
 			LENGTH_COL, parole_taglibc_get_media_length (file),
+			PIXBUF_COL, NULL,
 			-1);
     
     if ( emit || select_row )
@@ -562,12 +563,17 @@ gboolean	parole_media_list_query_tooltip		(GtkWidget *widget,
 				LENGTH_COL, &len,
 				-1);
 	    
-	    tip = g_strdup_printf ("File: %s\nName: %s\nLength: %s", 
+	    if (!len)
+	    {
+		len = g_strdup (_("Unknown"));
+	    }
+	    
+	    tip = g_strdup_printf ("<b>File:</b> %s\n<b>Name:</b> %s\n<b>Length:</b> %s", 
 				   parole_file_get_file_name (file),
 				   name,
 				   len);
 	    
-	    gtk_tooltip_set_text (tooltip, tip);
+	    gtk_tooltip_set_markup (tooltip, tip);
 	    g_free (tip);
 	    g_free (name);
 	    g_free (len);
@@ -1086,6 +1092,90 @@ parole_media_list_selection_changed_cb (GtkTreeSelection *sel, ParoleMediaList *
 }
 
 static void
+parole_media_list_open_folder (GtkWidget *menu)
+{
+    gchar *dirname;
+    
+    dirname = (gchar *) g_object_get_data (G_OBJECT (menu), "folder");
+    
+    if (dirname)
+    {
+	gchar *uri;
+	uri = g_filename_to_uri (dirname, NULL, NULL);
+	TRACE ("Opening %s", dirname);
+	gtk_show_uri (gtk_widget_get_screen (menu),  uri, GDK_CURRENT_TIME, NULL);
+	
+	g_free (uri);
+    }
+}
+
+static void
+parole_media_list_add_open_containing_folder (ParoleMediaList *list, GtkWidget *menu,
+					      gint x, gint y)
+{
+    
+    GtkTreePath *path;
+    
+    
+    if (gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (list->priv->view),
+                                       x,
+                                       y,
+                                       &path,
+                                       NULL,
+                                       NULL,
+                                       NULL))
+    {
+	
+	GtkTreeIter iter;
+	
+	if ( path && gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path))
+        {
+	    ParoleFile *file;
+	    const gchar *filename;
+	    const gchar *uri;
+	    
+	    gtk_tree_model_get (GTK_TREE_MODEL (list->priv->store), &iter,
+				DATA_COL, &file,
+				-1);
+			    
+	    filename = parole_file_get_file_name (file);
+	    uri = parole_file_get_uri (file);
+	    
+	    if (g_str_has_prefix (uri, "file:///"))
+	    {
+		GtkWidget *mi, *img;
+		gchar *dirname;
+	    
+		dirname = g_path_get_dirname (filename);
+		
+		/* Clear */
+		mi = gtk_image_menu_item_new_with_label (_("Open Containing Folder"));
+		img = gtk_image_new_from_stock (GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
+		gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi), img);
+		gtk_widget_set_sensitive (mi, TRUE);
+		gtk_widget_show (mi);
+		g_signal_connect_swapped (mi, "activate",
+					  G_CALLBACK (parole_media_list_open_folder), menu);
+		
+		g_object_set_data (G_OBJECT (menu), "folder", dirname);
+		
+		gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+		
+		
+		mi = gtk_separator_menu_item_new ();
+		gtk_widget_show (mi);
+		gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+		
+		
+	    }
+	    
+	    gtk_tree_path_free (path);
+	}
+    }
+}
+
+
+static void
 parole_media_list_clear_list (ParoleMediaList *list)
 {
     gtk_list_store_clear (GTK_LIST_STORE (list->priv->store));
@@ -1137,12 +1227,32 @@ shuffle_activated_cb (GtkWidget *mi, ParoleConf *conf)
 }
 
 static void
-parole_media_list_show_menu (ParoleMediaList *list, guint button, guint activate_time)
+parole_media_list_destroy_menu (GtkWidget *menu)
+{
+    gchar *dirname;
+    
+    dirname = (gchar *) g_object_get_data (G_OBJECT (menu), "folder");
+    
+    if (dirname)
+    {
+	g_free (dirname);
+    }
+    
+    gtk_widget_destroy (menu);
+}
+
+static void
+parole_media_list_show_menu (ParoleMediaList *list, GdkEventButton *ev)
 {
     GtkWidget *menu, *mi;
     gboolean val;
+    guint button = ev->button; 
+    guint activate_time = ev->time;
 
     menu = gtk_menu_new ();
+
+    parole_media_list_add_open_containing_folder (list, menu, (gint)ev->x, (gint)ev->y);
+    
 
     /**
      * Repeat playing.
@@ -1249,7 +1359,7 @@ parole_media_list_show_menu (ParoleMediaList *list, guint button, guint activate
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
     
     g_signal_connect_swapped (menu, "selection-done",
-                              G_CALLBACK (gtk_widget_destroy), menu);
+                              G_CALLBACK (parole_media_list_destroy_menu), menu);
     
     gtk_menu_popup (GTK_MENU (menu), 
                     NULL, NULL,
@@ -1262,7 +1372,7 @@ parole_media_list_button_release_event (GtkWidget *widget, GdkEventButton *ev, P
 {
     if ( ev->button == 3 )
     {
-	parole_media_list_show_menu (list, ev->button, ev->time);
+	parole_media_list_show_menu (list, ev);
 	return TRUE;
     }
     

@@ -415,7 +415,8 @@ parole_gst_draw_logo (ParoleGst *gst)
     
     if (gst->priv->scale_logo)
     {
-	gdk_pixbuf_unref (pix);
+	if (pix)
+	    gdk_pixbuf_unref (pix);
 	pix = gdk_pixbuf_scale_simple (gst->priv->logo,
 				       widget->allocation.width,
 				       widget->allocation.height,
