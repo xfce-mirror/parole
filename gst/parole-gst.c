@@ -109,6 +109,8 @@ struct ParoleGstPrivate
     ParoleAspectRatio aspect_ratio;
     gulong	  state_change_id;
     
+    gboolean	  scale_logo;
+    
     /*
      * xvimage sink has brightness+hue+aturation+contrast.
      */
@@ -352,6 +354,8 @@ parole_gst_size_allocate (GtkWidget *widget, GtkAllocation *allocation)
 	gint w, h;
 	gdouble ratio, width, height;
 	
+	PAROLE_GST (widget)->priv->scale_logo = TRUE;
+	
 	w = allocation->width;
 	h = allocation->height;
 	
@@ -381,7 +385,7 @@ parole_gst_size_allocate (GtkWidget *widget, GtkAllocation *allocation)
 static void
 parole_gst_draw_logo (ParoleGst *gst)
 {
-    GdkPixbuf *pix;
+    static GdkPixbuf *pix = NULL;
     GdkRegion *region;
     GdkRectangle rect;
     GtkWidget *widget;
@@ -408,11 +412,16 @@ parole_gst_draw_logo (ParoleGst *gst)
 			   0, 0,
 			   widget->allocation.width,
 			   widget->allocation.height);
-			   
-    pix = gdk_pixbuf_scale_simple (gst->priv->logo,
-				   widget->allocation.width,
-				   widget->allocation.height,
-				   GDK_INTERP_BILINEAR);
+    
+    if (gst->priv->scale_logo)
+    {
+	gdk_pixbuf_unref (pix);
+	pix = gdk_pixbuf_scale_simple (gst->priv->logo,
+				       widget->allocation.width,
+				       widget->allocation.height,
+				       GDK_INTERP_BILINEAR);
+	gst->priv->scale_logo = FALSE;
+    }
 
     gdk_draw_pixbuf (GDK_DRAWABLE (widget->window),
 		     GTK_WIDGET(widget)->style->fg_gc[0],
@@ -423,7 +432,7 @@ parole_gst_draw_logo (ParoleGst *gst)
 		     GDK_RGB_DITHER_NONE,
 		     0, 0);
 
-    gdk_pixbuf_unref (pix);
+   
     gdk_window_end_paint (GTK_WIDGET (gst)->window);
 }
 
@@ -1846,6 +1855,7 @@ parole_gst_init (ParoleGst *gst)
     gst->priv->terminating = FALSE;
     gst->priv->with_vis = FALSE;
     gst->priv->vis_loaded = FALSE;
+    gst->priv->scale_logo = TRUE;
     
     gst->priv->conf = NULL;
     
