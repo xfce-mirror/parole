@@ -75,11 +75,14 @@ typedef struct
 
     GtkWidget 		*window;
     GtkWidget           *sidebar;
+    GtkWidget		*menu_player;
+    
     GtkWidget		*menu_view;
     GtkWidget		*video_view;
     GtkWidget		*playlist_nt;
     GtkWidget		*main_nt;	/*Main notebook*/
     GtkWidget		*show_hide_playlist;
+    
     GtkWidget		*play_pause;
     GtkWidget		*stop;
     GtkWidget		*seekf;
@@ -106,7 +109,10 @@ typedef struct
     GtkWidget		*scale_container;
     GtkWidget		*play_container;
     
-     
+    GtkAction		*action_play;
+    
+
+
      
     gboolean             exit;
     
