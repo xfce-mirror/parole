@@ -144,6 +144,14 @@ void		parole_media_list_close_save_dialog_cb (GtkButton *button,
 						    
 void		parole_media_list_save_playlist_cb     (GtkButton *button,
 						        ParolePlaylistSave *data);
+
+gboolean	parole_media_list_query_tooltip		(GtkWidget *widget,
+							 gint x,
+							 gint y,
+							 gboolean keyboard_mode,
+							 GtkTooltip *tip,
+							 ParoleMediaList *list);
+							 
 /*
  * End of GtkBuilder callbacks
  */
@@ -518,6 +526,59 @@ void parole_media_list_save_playlist_cb (GtkButton *button, ParolePlaylistSave *
 out:
     g_free (filename);
     g_free (dirname);
+}
+
+
+gboolean	parole_media_list_query_tooltip		(GtkWidget *widget,
+							 gint x,
+							 gint y,
+							 gboolean keyboard_mode,
+							 GtkTooltip *tooltip,
+							 ParoleMediaList *list)
+
+{
+    GtkTreePath *path;
+    
+    if (gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (list->priv->view),
+				       x,
+				       y,
+				       &path,
+				       NULL,
+				       NULL,
+				       NULL))
+    {
+	GtkTreeIter iter;
+	
+	if ( path && gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path))
+        {
+	    ParoleFile *file;
+	    gchar *tip;
+	    gchar *name;
+	    gchar *len;
+	    
+	    gtk_tree_model_get (GTK_TREE_MODEL (list->priv->store), &iter,
+				DATA_COL, &file,
+				NAME_COL, &name,
+				LENGTH_COL, &len,
+				-1);
+	    
+	    tip = g_strdup_printf ("File: %s\nName: %s\nLength: %s", 
+				   parole_file_get_file_name (file),
+				   name,
+				   len);
+	    
+	    gtk_tooltip_set_text (tooltip, tip);
+	    g_free (tip);
+	    g_free (name);
+	    g_free (len);
+	    gtk_tree_path_free (path);
+	
+	    return TRUE;
+	}
+    }
+				   
+				   
+    return FALSE;
 }
 
 void parole_media_list_format_cursor_changed_cb (GtkTreeView *view, ParolePlaylistSave *data)
