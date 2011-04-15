@@ -1080,7 +1080,7 @@ parole_player_move_fs_window (ParolePlayer *player)
 		     rect.height + rect.y - player->priv->play_box->allocation.height);
 }
 
-static void
+void
 parole_player_full_screen (ParolePlayer *player, gboolean fullscreen)
 {
     gint npages;

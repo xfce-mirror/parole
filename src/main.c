@@ -217,6 +217,7 @@ int main (int argc, char **argv)
     gboolean lower_volume = FALSE;
     gboolean mute = FALSE;
     gboolean no_plugins = FALSE;
+    gboolean fullscreen = FALSE;
     gchar    *client_id = NULL;
     
     GOptionEntry option_entries[] = 
@@ -234,6 +235,7 @@ int main (int argc, char **argv)
 	{ "lower-volume", 'l', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &lower_volume, N_("Lower volume"), NULL },
 	{ "mute", 'm', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &mute, N_("Mute volume"), NULL },
 	{ "version", 'V', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &version, N_("Version information"), NULL },
+	{ "fullscreen", 'F', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &fullscreen, N_("Start in fullscreen mode"), NULL },
 	{ "xv", '\0', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_CALLBACK, (GOptionArgFunc) xv_option_given, N_("Enabled/Disable XV support"), NULL},
 	{ "sm-client-id", 0, G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_STRING, &client_id, NULL, NULL },
 	{G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, &filenames, N_("Media to play"), NULL},
@@ -318,6 +320,9 @@ int main (int argc, char **argv)
 	    
 	parole_session_real_init (session);
 	player = parole_player_new ();
+	
+	if (fullscreen)
+	    parole_player_full_screen (player, TRUE);
 
 	if ( filenames && filenames[0] != NULL )
 	{
