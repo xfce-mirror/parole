@@ -31,8 +31,9 @@
 #include <libnotify/notify.h>
 #endif
 
-#include <libxfcegui4/libxfcegui4.h>
+
 #include <libxfce4util/libxfce4util.h>
+#include <libxfcegui4/libxfcegui4.h>
 
 #include "tray-provider.h"
 
@@ -40,6 +41,9 @@
 
 static void   tray_provider_iface_init 	   (ParoleProviderPluginIface *iface);
 static void   tray_provider_finalize       (GObject 	              *object);
+
+
+extern GdkPixbuf      *parole_icon_load    (const gchar *icon_name,  gint size);
 
 
 struct _TrayProviderClass
@@ -260,13 +264,25 @@ notify_playing (TrayProvider *tray, const ParoleStream *stream)
     }
     
     message = g_strdup_printf ("%s %s %s %s", _("<b>Playing:</b>"), title, _("<b>Duration:</b>"), timestring);
-    
+
+#ifdef NOTIFY_CHECK_VERSION
+#if NOTIFY_CHECK_VERSION (0, 7, 0)    
+    tray->n = notify_notification_new (title, message, NULL);
+#else
     tray->n = notify_notification_new (title, message, NULL, NULL);
+#endif
+#else
+    tray->n = notify_notification_new (title, message, NULL, NULL);
+#endif
     g_free (title);
     g_free (message);
     
+#ifdef NOTIFY_CHECK_VERSION
+#if !NOTIFY_CHECK_VERSION (0, 7, 0)
     notify_notification_attach_to_status_icon (tray->n, tray->tray);
-    pix = xfce_themed_icon_load (has_video ? "video" : "audio-x-generic", 48);
+#endif
+#endif
+    pix = parole_icon_load (has_video ? "video" : "audio-x-generic", 48);
     if ( pix )
     {
 	notify_notification_set_icon_from_pixbuf (tray->n, pix);
@@ -573,7 +589,7 @@ tray_provider_set_player (ParoleProviderPlugin *plugin, ParoleProviderPlayer *pl
     tray->notify = TRUE;
 #endif
     
-    pix = xfce_themed_icon_load ("parole", 48);
+    pix = parole_icon_load ("parole", 48);
     
     if ( pix )
     {

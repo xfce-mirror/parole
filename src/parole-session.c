@@ -26,6 +26,10 @@
 #include <stdlib.h>
 #include <string.h>
 
+
+#ifdef XFCE_DISABLE_DEPRECATED
+#undef XFCE_DISABLE_DEPRECATED
+#endif
 #include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
 
