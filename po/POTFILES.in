@@ -5,7 +5,9 @@
 [type: gettext/glade]data/interfaces/plugins.ui
 [type: gettext/glade]data/interfaces/parole-settings.ui
 [type: gettext/glade]data/interfaces/save-playlist.ui
+[type: gettext/glade]data/interfaces/open-location.ui
 data/desktop/parole.desktop.in.in
+common/parole-common.c
 gst/parole-gst.c
 src/main.c
 src/parole-mediachooser.c
