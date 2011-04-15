@@ -1,5 +1,5 @@
 /*
- * * Copyright (C) 2009 Ali <aliov@xfce.org>
+ * * Copyright (C) 2009-2011 Ali <aliov@xfce.org>
  *
  * Licensed under the GNU General Public License Version 2
  *
@@ -72,7 +72,7 @@ void  parole_about (void)
     };
 
     info = xfce_about_info_new ("Parole", VERSION, _("Parole Media Player"),
-                                XFCE_COPYRIGHT_TEXT ("2009", "Ali Abdallah"), 
+                                XFCE_COPYRIGHT_TEXT ("2009-2011", "Ali Abdallah"), 
 				XFCE_LICENSE_GPL);
 
     xfce_about_info_set_homepage (info, "http://goodies.xfce.org/projects/applications/parole");
