@@ -65,6 +65,13 @@ enum
     PROP_ASPECT_RATIO,
     PROP_WINDOW_WIDTH,
     PROP_WINDOW_HEIGHT,
+    PROP_MINIMIZED,
+    PROP_MULTIMEDIA_KEYS,
+    /*Playlist*/
+    PROP_REPLACE_PLAYLIST,
+    PROP_SCAN_FOLDER_RECURSIVELY,
+    PROP_START_PLAYING_OPENED_FILES,
+    PROP_REMOVE_DUPLICATED_PLAYLIST_ENTRIES,
     N_PROP
 };
 
@@ -242,6 +249,13 @@ parole_conf_class_init (ParoleConfClass *klass)
                                                            G_PARAM_READWRITE));
 							   
     g_object_class_install_property (object_class,
+                                     PROP_MINIMIZED,
+                                     g_param_spec_boolean ("minimized",
+                                                           NULL, NULL,
+                                                           FALSE,
+                                                           G_PARAM_READWRITE));
+							   
+    g_object_class_install_property (object_class,
                                      PROP_SUBTITLE_FONT,
                                      g_param_spec_string  ("subtitle-font",
                                                            NULL, NULL,
@@ -309,20 +323,62 @@ parole_conf_class_init (ParoleConfClass *klass)
                                      PROP_WINDOW_WIDTH,
                                      g_param_spec_int ("window-width",
                                                        NULL, NULL,
-                                                       320,
+                                                       100,
 						       G_MAXINT16,
-						       780,
+						       760,
                                                        G_PARAM_READWRITE));
 						       
     g_object_class_install_property (object_class,
                                      PROP_WINDOW_HEIGHT,
                                      g_param_spec_int ("window-height",
                                                        NULL, NULL,
-                                                       220,
+                                                       100,
 						       G_MAXINT16,
-						       480,
+						       420,
                                                        G_PARAM_READWRITE));
-						       
+    
+    g_object_class_install_property (object_class,
+                                     PROP_MULTIMEDIA_KEYS,
+                                     g_param_spec_boolean ("multimedia-keys",
+                                                           NULL, NULL,
+                                                           TRUE,
+                                                           G_PARAM_READWRITE));
+							   
+    /**
+     *Playlist options
+     **/
+    g_object_class_install_property (object_class,
+                                     PROP_REPLACE_PLAYLIST,
+                                     g_param_spec_boolean ("replace-playlist",
+                                                           NULL, NULL,
+                                                           FALSE,
+                                                           G_PARAM_READWRITE));
+    
+    g_object_class_install_property (object_class,
+                                     PROP_SCAN_FOLDER_RECURSIVELY,
+                                     g_param_spec_boolean ("scan-recursive",
+                                                           NULL, NULL,
+                                                           TRUE,
+                                                           G_PARAM_READWRITE));
+    
+    g_object_class_install_property (object_class,
+                                     PROP_START_PLAYING_OPENED_FILES,
+                                     g_param_spec_boolean ("play-opened-files",
+                                                           NULL, NULL,
+                                                           TRUE,
+                                                           G_PARAM_READWRITE));
+
+    /**
+     * 
+     * Remove duplicated entries from the playlist.
+     **/
+    g_object_class_install_property (object_class,
+                                     PROP_REMOVE_DUPLICATED_PLAYLIST_ENTRIES,
+                                     g_param_spec_boolean ("remove-duplicated",
+                                                           NULL, NULL,
+                                                           FALSE,
+                                                           G_PARAM_READWRITE));
+    
     g_type_class_add_private (klass, sizeof (ParoleConfPrivate));
 }
 
@@ -414,3 +470,17 @@ parole_conf_new (void)
 
     return PAROLE_CONF (parole_conf_object);
 }
+
+
+gboolean			 parole_conf_get_property_bool  (ParoleConf *conf,
+								 const gchar *name)
+{
+    gboolean value;
+    
+    g_object_get (G_OBJECT (conf),
+		  name, &value,
+		  NULL);
+		  
+    return value;
+}
+

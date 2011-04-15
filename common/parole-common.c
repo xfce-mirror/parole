@@ -28,7 +28,50 @@
 
 #include <glib.h>
 
+#include <libxfce4util/libxfce4util.h>
+
 #include "parole-common.h"
+
+
+static void
+parole_dialog_show (GtkWindow *parent, 
+		    GtkMessageType type,
+		    const gchar *window_title,
+		    const gchar *title, 
+		    const gchar *msg)
+{
+    GtkWidget *dialog;
+    
+    dialog = gtk_message_dialog_new_with_markup (parent,
+						 GTK_DIALOG_DESTROY_WITH_PARENT,
+						 type,
+						 GTK_BUTTONS_CLOSE,
+						 "<span size='larger'><b>%s</b></span>",
+						 title);
+						 
+    gtk_window_set_title (GTK_WINDOW (dialog), window_title);
+    
+    gtk_message_dialog_format_secondary_markup (GTK_MESSAGE_DIALOG (dialog), "%s", msg);
+
+
+    g_signal_connect_swapped (dialog,
+			      "response",
+			      G_CALLBACK (gtk_widget_destroy),
+			      dialog);
+
+    gtk_widget_show_all (dialog);
+}
+
+void parole_dialog_info	(GtkWindow *parent, const gchar *title,	const gchar *msg)
+{
+    parole_dialog_show (parent, GTK_MESSAGE_INFO, _("Message"), title, msg);
+}
+
+void parole_dialog_error (GtkWindow *parent, const gchar *title, const gchar *msg)
+{
+    parole_dialog_show (parent, GTK_MESSAGE_ERROR, _("Error"), title, msg);
+}
+
 
 void parole_window_busy_cursor		(GdkWindow *window)
 {

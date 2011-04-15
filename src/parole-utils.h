@@ -50,4 +50,8 @@ gchar 	       *parole_guess_uri_from_mount 		(GMount *mount);
 							 
 gchar          *parole_get_uri_from_unix_device		(const gchar *device);
 
+gchar          *parole_format_media_length              (gint total_seconds);
+
+gchar          *parole_taglibc_get_media_length         (ParoleFile *file);
+
 #endif /* __PAROLE_UTILS_ */

@@ -30,15 +30,26 @@
 
 #include "parole-open-location.h"
 #include "parole-rc-utils.h"
+#include "parole-builder.h"
+
+#include "interfaces/open-location_ui.h"
 
 static void parole_open_location_finalize   (GObject *object);
 
-#define PAROLE_OPEN_LOCATION_GET_PRIVATE(o) \
-(G_TYPE_INSTANCE_GET_PRIVATE ((o), PAROLE_TYPE_OPEN_LOCATION, ParoleOpenLocationPrivate))
-
-struct ParoleOpenLocationPrivate
+struct ParoleOpenLocation
 {
-    GtkWidget *entry;
+    GObject         	parent;
+    
+    
+    GtkWidget 	       *entry;
+};
+
+struct ParoleOpenLocationClass
+{
+    GObjectClass 	parent_class;
+    
+    void		(*location_opened)	(ParoleOpenLocation *self,
+						 const gchar *address);
 };
 
 enum
@@ -55,7 +66,7 @@ enum
 
 static guint signals [LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE (ParoleOpenLocation, parole_open_location, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE (ParoleOpenLocation, parole_open_location, G_TYPE_OBJECT)
 
 static void
 parole_open_location_response_cb (GtkDialog *dialog, gint response_id, ParoleOpenLocation *self)
@@ -64,19 +75,19 @@ parole_open_location_response_cb (GtkDialog *dialog, gint response_id, ParoleOpe
 
     if ( response_id == GTK_RESPONSE_OK )
     {
-	location = gtk_entry_get_text (GTK_ENTRY (self->priv->entry));
+	location = gtk_entry_get_text (GTK_ENTRY (self->entry));
 	
 	if ( !location || strlen (location) == 0)
 	    goto out;
 
 	TRACE ("Location %s", location);
 
-	gtk_widget_hide (GTK_WIDGET (self));
+	gtk_widget_hide (GTK_WIDGET (dialog));
 	g_signal_emit (G_OBJECT (self), signals [LOCATION_OPENED], 0, location);
     }
 
     out:
-	gtk_widget_destroy (GTK_WIDGET (self));
+	gtk_widget_destroy (GTK_WIDGET (dialog));
 }
 
 static GtkTreeModel *
@@ -134,14 +145,11 @@ parole_open_location_class_init (ParoleOpenLocationClass *klass)
                       NULL, NULL,
                       g_cclosure_marshal_VOID__STRING,
                       G_TYPE_NONE, 1, G_TYPE_STRING);
-
-    g_type_class_add_private (klass, sizeof (ParoleOpenLocationPrivate));
 }
 
 static void
 parole_open_location_init (ParoleOpenLocation *self)
 {
-    self->priv = PAROLE_OPEN_LOCATION_GET_PRIVATE (self);
 }
 
 static void
@@ -161,37 +169,32 @@ parole_open_location_clear_history (GtkTreeModel *model)
     gtk_list_store_clear (GTK_LIST_STORE (model));
 }
 
-GtkWidget *parole_open_location (GtkWidget *parent)
+ParoleOpenLocation *parole_open_location (GtkWidget *parent)
 {
+    ParoleOpenLocation *self;
+    GtkWidget *dialog;
     GtkEntryCompletion *cmpl;
     GtkTreeModel *model;
-    GtkWidget *label;
-    GtkWidget *clear;
-    GtkWidget *img;
-    GtkWidget *vbox;
-    GtkWidget *hbox;
-    
-    ParoleOpenLocation *self = NULL;
+    GtkBuilder *builder;
     
     self = g_object_new (PAROLE_TYPE_OPEN_LOCATION, NULL);
     
+    builder = parole_builder_new_from_string (open_location_ui, open_location_ui_length);
+    
+    dialog = GTK_WIDGET (gtk_builder_get_object (builder, "open-location"));
+    
     if ( parent )
-	gtk_window_set_transient_for (GTK_WINDOW (self), GTK_WINDOW (parent));
+	gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (parent));
+	
+    gtk_window_set_position (GTK_WINDOW (dialog), GTK_WIN_POS_CENTER_ON_PARENT);
     
-    gtk_window_set_title (GTK_WINDOW (self), _("Open location..."));
-    gtk_window_set_default_size (GTK_WINDOW (self), 360, 40);
-    gtk_window_set_position (GTK_WINDOW (self), GTK_WIN_POS_CENTER_ON_PARENT);
-    
-    label = gtk_label_new (NULL);
-    gtk_label_set_markup (GTK_LABEL (label), _("<b>Open location of media file or live stream:</b>"));
-    
-    self->priv->entry = gtk_entry_new ();
+    self->entry = GTK_WIDGET (gtk_builder_get_object (builder, "entry"));
     model = parole_open_location_get_completion_model ();
     
-    gtk_entry_set_activates_default (GTK_ENTRY (self->priv->entry), TRUE);
+    gtk_entry_set_activates_default (GTK_ENTRY (self->entry), TRUE);
     cmpl = gtk_entry_completion_new ();
     
-    gtk_entry_set_completion (GTK_ENTRY (self->priv->entry), cmpl);
+    gtk_entry_set_completion (GTK_ENTRY (self->entry), cmpl);
     gtk_entry_completion_set_model (cmpl, model);
     
     gtk_entry_completion_set_text_column (cmpl, 0);
@@ -199,46 +202,20 @@ GtkWidget *parole_open_location (GtkWidget *parent)
 					 (GtkEntryCompletionMatchFunc) parole_open_location_match, 
 					 model, 
 					 NULL);
-	
-    img = gtk_image_new_from_stock (GTK_STOCK_CLEAR, GTK_ICON_SIZE_BUTTON);
     
-    clear = gtk_button_new_with_label (_("Clear history"));
-    g_signal_connect_swapped (clear, "clicked",
+    gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
+    
+    g_signal_connect_swapped (gtk_builder_get_object (builder, "clear-history"), "clicked",
 			      G_CALLBACK (parole_open_location_clear_history), model);
-
-    g_object_set (G_OBJECT (clear),
-		  "image", img,
-		  NULL);
-
-    vbox = gtk_vbox_new (TRUE, 4);
-    hbox = gtk_hbox_new (FALSE, 8);
     
-    gtk_box_pack_start (GTK_BOX (vbox), label, TRUE, TRUE, 0);
-    gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
-    
-    gtk_box_pack_start (GTK_BOX (hbox), self->priv->entry, TRUE, TRUE, 0);
-    gtk_box_pack_start (GTK_BOX (hbox), clear, FALSE, FALSE, 0);
-    
-    gtk_box_pack_start (GTK_BOX (GTK_DIALOG (self)->vbox),
-			vbox,
-			TRUE,   
-			TRUE,
-			0);   
-    
-    gtk_dialog_add_buttons (GTK_DIALOG (self), 
-			    GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-			    GTK_STOCK_OPEN, GTK_RESPONSE_OK,
-			    NULL);
-    
-    gtk_dialog_set_default_response (GTK_DIALOG (self), GTK_RESPONSE_OK);
-    
-    g_signal_connect (self, "delete-event",
-		      G_CALLBACK (gtk_widget_destroy), self);
+    g_signal_connect (dialog, "delete-event",
+		      G_CALLBACK (gtk_widget_destroy), NULL);
 		      
-    g_signal_connect (self, "response",
+    g_signal_connect (dialog, "response",
 		      G_CALLBACK (parole_open_location_response_cb), self);
-		      
-    gtk_widget_show_all (GTK_WIDGET (self));
     
-    return GTK_WIDGET (self);
+    gtk_widget_show_all (dialog);
+    g_object_unref (builder);
+    
+    return self;
 }

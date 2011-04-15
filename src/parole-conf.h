@@ -45,9 +45,12 @@ typedef struct
     
 } ParoleConfClass;
 
-GType        			 parole_conf_get_type        (void) G_GNUC_CONST;
+GType        			 parole_conf_get_type        	(void) G_GNUC_CONST;
 
-ParoleConf       		*parole_conf_new             (void);
+ParoleConf       		*parole_conf_new             	(void);
+
+gboolean			 parole_conf_get_property_bool  (ParoleConf *conf,
+								 const gchar *name);
 
 G_END_DECLS
 

@@ -30,27 +30,12 @@ G_BEGIN_DECLS
 #define PAROLE_OPEN_LOCATION(o)          (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_OPEN_LOCATION, ParoleOpenLocation))
 #define PAROLE_IS_OPEN_LOCATION(o)       (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_OPEN_LOCATION))
 
-typedef struct ParoleOpenLocationPrivate ParoleOpenLocationPrivate;
-
-typedef struct
-{
-    GtkDialog         		   parent;
-    ParoleOpenLocationPrivate     *priv;
-    
-} ParoleOpenLocation;
-
-typedef struct
-{
-    GtkDialogClass 		   parent_class;
-    
-    void			  (*location_opened)		       (ParoleOpenLocation *self,
-								        const gchar *address);
-    
-} ParoleOpenLocationClass;
+typedef struct ParoleOpenLocation      ParoleOpenLocation;
+typedef struct ParoleOpenLocationClass ParoleOpenLocationClass;
 
 GType        			   parole_open_location_get_type       (void) G_GNUC_CONST;
 
-GtkWidget			  *parole_open_location 	       (GtkWidget *parent);
+ParoleOpenLocation		  *parole_open_location 	       (GtkWidget *parent);
 
 G_END_DECLS
 

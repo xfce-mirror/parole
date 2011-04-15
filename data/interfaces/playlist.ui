@@ -1,135 +1,174 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk+" version="2.16"/>
   <!-- interface-naming-policy project-wide -->
-  <object class="GtkVBox" id="playlist-box">
-    <property name="visible">True</property>
-    <property name="orientation">vertical</property>
-    <property name="spacing">5</property>
-    <child>
-      <object class="GtkScrolledWindow" id="scrolledwindow1">
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="hscrollbar_policy">never</property>
-        <property name="vscrollbar_policy">automatic</property>
-        <property name="shadow_type">in</property>
-        <child>
-          <object class="GtkTreeView" id="media-list">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="headers_visible">False</property>
-            <property name="rules_hint">True</property>
-            <signal name="key_press_event" handler="parole_media_list_key_press"/>
-            <signal name="row_activated" handler="parole_media_list_row_activated_cb"/>
-            <signal name="button_release_event" handler="parole_media_list_button_release_event"/>
-            <signal name="drag_data_received" handler="parole_media_list_drag_data_received_cb"/>
-          </object>
-        </child>
-      </object>
-      <packing>
-        <property name="position">0</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkHBox" id="hbox3">
-        <property name="visible">True</property>
-        <property name="spacing">2</property>
-        <property name="homogeneous">True</property>
-        <child>
-          <object class="GtkButton" id="add-media">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="image">image1</property>
-            <signal name="clicked" handler="parole_media_list_add_clicked_cb"/>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="save-playlist">
-            <property name="visible">True</property>
-            <property name="sensitive">False</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="image">image5</property>
-            <signal name="clicked" handler="parole_media_list_save_cb"/>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="position">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="remove-media">
-            <property name="visible">True</property>
-            <property name="sensitive">False</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="image">image2</property>
-            <signal name="clicked" handler="parole_media_list_remove_clicked_cb"/>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="position">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="media-up">
-            <property name="visible">True</property>
-            <property name="sensitive">False</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="image">image3</property>
-            <signal name="clicked" handler="parole_media_list_media_up_clicked_cb"/>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="position">3</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="media-down">
-            <property name="visible">True</property>
-            <property name="sensitive">False</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="image">image4</property>
-            <signal name="clicked" handler="parole_media_list_media_down_clicked_cb"/>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="position">4</property>
-          </packing>
-        </child>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">False</property>
-        <property name="position">1</property>
-      </packing>
-    </child>
-  </object>
   <object class="GtkImage" id="image1">
     <property name="visible">True</property>
+    <property name="can_focus">False</property>
     <property name="stock">gtk-add</property>
   </object>
   <object class="GtkImage" id="image2">
     <property name="visible">True</property>
+    <property name="can_focus">False</property>
     <property name="stock">gtk-remove</property>
   </object>
   <object class="GtkImage" id="image3">
     <property name="visible">True</property>
+    <property name="can_focus">False</property>
     <property name="stock">gtk-go-up</property>
   </object>
   <object class="GtkImage" id="image4">
     <property name="visible">True</property>
+    <property name="can_focus">False</property>
     <property name="stock">gtk-go-down</property>
   </object>
   <object class="GtkImage" id="image5">
     <property name="visible">True</property>
+    <property name="can_focus">False</property>
     <property name="stock">gtk-save-as</property>
+  </object>
+  <object class="GtkVBox" id="playlist-box">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="spacing">5</property>
+    <child>
+      <object class="GtkAlignment" id="alignment1">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child>
+          <object class="GtkVBox" id="vbox1">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolledwindow1">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="hscrollbar_policy">never</property>
+                <property name="vscrollbar_policy">automatic</property>
+                <property name="window_placement_set">True</property>
+                <property name="shadow_type">in</property>
+                <child>
+                  <object class="GtkTreeView" id="media-list">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="headers_visible">False</property>
+                    <property name="rules_hint">True</property>
+                    <signal name="key-press-event" handler="parole_media_list_key_press" swapped="no"/>
+                    <signal name="row-activated" handler="parole_media_list_row_activated_cb" swapped="no"/>
+                    <signal name="button-release-event" handler="parole_media_list_button_release_event" swapped="no"/>
+                    <signal name="drag-data-received" handler="parole_media_list_drag_data_received_cb" swapped="no"/>
+                    <signal name="query-tooltip" handler="parole_media_list_query_tooltip" swapped="no"/>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkHBox" id="hbox3">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="spacing">2</property>
+                <property name="homogeneous">True</property>
+                <child>
+                  <object class="GtkButton" id="add-media">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="use_action_appearance">False</property>
+                    <property name="image">image1</property>
+                    <signal name="clicked" handler="parole_media_list_add_clicked_cb" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="save-playlist">
+                    <property name="visible">True</property>
+                    <property name="sensitive">False</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="use_action_appearance">False</property>
+                    <property name="image">image5</property>
+                    <signal name="clicked" handler="parole_media_list_save_cb" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="remove-media">
+                    <property name="visible">True</property>
+                    <property name="sensitive">False</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="use_action_appearance">False</property>
+                    <property name="image">image2</property>
+                    <signal name="clicked" handler="parole_media_list_remove_clicked_cb" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="media-up">
+                    <property name="visible">True</property>
+                    <property name="sensitive">False</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="use_action_appearance">False</property>
+                    <property name="image">image3</property>
+                    <signal name="clicked" handler="parole_media_list_media_up_clicked_cb" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="media-down">
+                    <property name="visible">True</property>
+                    <property name="sensitive">False</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="use_action_appearance">False</property>
+                    <property name="image">image4</property>
+                    <signal name="clicked" handler="parole_media_list_media_down_clicked_cb" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">4</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="padding">4</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+        </child>
+      </object>
+      <packing>
+        <property name="expand">True</property>
+        <property name="fill">True</property>
+        <property name="position">0</property>
+      </packing>
+    </child>
   </object>
 </interface>
