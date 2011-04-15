@@ -565,6 +565,28 @@ parole_gst_load_logo (ParoleGst *gst)
     g_free (path);
 }
 
+static void
+parole_gst_query_capabilities (ParoleGst *gst)
+{
+    GstQuery *query;
+    gboolean seekable;
+    
+    query = gst_query_new_seeking (GST_FORMAT_TIME);
+    
+    if ( gst_element_query (gst->priv->playbin, query) )
+    {
+	gst_query_parse_seeking (query,
+				 NULL,
+				 &seekable,
+				 NULL,
+				 NULL);
+	g_object_set (G_OBJECT (gst->priv->stream),
+	          "seekable", seekable,
+		  NULL);
+    }
+    gst_query_unref (query);
+}
+
 static gboolean
 parole_gst_tick_timeout (gpointer data)
 {
@@ -574,11 +596,16 @@ parole_gst_tick_timeout (gpointer data)
     GstFormat format = GST_FORMAT_TIME;
     gint64 value;
     gboolean video;
+    gboolean seekable;
+    gint64 duration;
+    
     
     gst = PAROLE_GST (data);
     
     g_object_get (G_OBJECT (gst->priv->stream),
 		  "has-video", &video,
+		  "seekable", &seekable,
+		  "duration", &duration,
 		  NULL);
     
     gst_element_query_position (gst->priv->playbin, &format, &pos);
@@ -588,6 +615,11 @@ parole_gst_tick_timeout (gpointer data)
 
     if ( gst->priv->state == GST_STATE_PLAYING )
     {
+	if (duration != 0 && seekable == FALSE)
+	{
+	    parole_gst_query_capabilities (gst);
+	}
+	    
 	value = pos / GST_SECOND;
 
 	if ( G_LIKELY (value > 0) )
@@ -617,28 +649,6 @@ parole_gst_tick (ParoleGst *gst)
         g_source_remove (gst->priv->tick_id);
 	gst->priv->tick_id = 0;
     }    
-}
-
-static void
-parole_gst_query_capabilities (ParoleGst *gst)
-{
-    GstQuery *query;
-    gboolean seekable;
-    
-    query = gst_query_new_seeking (GST_FORMAT_TIME);
-    
-    if ( gst_element_query (gst->priv->playbin, query) )
-    {
-	gst_query_parse_seeking (query,
-				 NULL,
-				 &seekable,
-				 NULL,
-				 NULL);
-	g_object_set (G_OBJECT (gst->priv->stream),
-	          "seekable", seekable,
-		  NULL);
-    }
-    gst_query_unref (query);
 }
 
 static void

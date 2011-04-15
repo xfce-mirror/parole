@@ -540,6 +540,21 @@ parole_player_media_progressed_cb (ParoleGst *gst, const ParoleStream *stream, g
 }
 
 static void
+parole_player_seekable_notify (ParoleStream *stream, GParamSpec *spec, ParolePlayer *player)
+{
+    gboolean seekable;
+    
+    g_object_get (G_OBJECT (stream),
+		  "seekable", &seekable,
+		  NULL);
+		  
+    gtk_widget_set_tooltip_text (GTK_WIDGET (player->priv->range), seekable ? NULL : _("Media stream is not seekable"));
+    gtk_widget_set_sensitive (GTK_WIDGET (player->priv->range), seekable);
+    gtk_widget_set_sensitive (player->priv->seekf, seekable);
+    gtk_widget_set_sensitive (player->priv->seekb, seekable);
+}
+
+static void
 parole_player_set_playpause_button_image (GtkWidget *widget, const gchar *stock_id)
 {
     GtkWidget *img;
@@ -1992,6 +2007,9 @@ parole_player_init (ParolePlayer *player)
     
     gtk_widget_realize (player->priv->gst);
     gtk_widget_show (player->priv->gst);
+
+    g_signal_connect (G_OBJECT (parole_gst_get_stream (PAROLE_GST (player->priv->gst))), "notify::seekable",
+		      G_CALLBACK (parole_player_seekable_notify), player);
 
     parole_player_change_volume (player, 
 				 (gdouble) (parole_rc_read_entry_int ("volume", PAROLE_RC_GROUP_GENERAL, 100)/100.));
