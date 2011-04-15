@@ -199,6 +199,23 @@ notification_closed_cb (NotifyNotification *n, TrayProvider *tray)
 }
 
 static void
+close_notification (TrayProvider *tray)
+{
+    if ( tray->n )
+    {
+	GError *error = NULL;
+	notify_notification_close (tray->n, &error);
+	if ( error )
+	{
+	    g_warning ("Failed to close notification : %s", error->message);
+	    g_error_free (error);
+	}
+	g_object_unref (tray->n);
+	tray->n = NULL;
+    }
+}
+
+static void
 notify_playing (TrayProvider *tray, const ParoleStream *stream)
 {
     GdkPixbuf *pix;
@@ -302,10 +319,6 @@ notify_playing (TrayProvider *tray, const ParoleStream *stream)
 static void
 state_changed_cb (ParoleProviderPlayer *player, const ParoleStream *stream, ParoleState state, TrayProvider *tray)
 {
-#ifdef HAVE_LIBNOTIFY
-    gboolean tag;
-#endif
-
     tray->state = state;
     
     if ( tray->menu )
@@ -319,44 +332,14 @@ state_changed_cb (ParoleProviderPlayer *player, const ParoleStream *stream, Paro
 
     if ( state == PAROLE_STATE_PLAYING )
     {
-	g_object_get (G_OBJECT (stream),
-		      "tag-available", &tag,
-		      NULL);
-
-	if ( tag )
-	    notify_playing (tray, stream);
+	notify_playing (tray, stream);
     }
     else if ( state <= PAROLE_STATE_PAUSED )
     {
-	if ( tray->n )
-	{
-	    GError *error = NULL;
-	    notify_notification_close (tray->n, &error);
-	    if ( error )
-	    {
-		g_warning ("Failed to close notification : %s", error->message);
-		g_error_free (error);
-	    }
-	    g_object_unref (tray->n);
-	    tray->n = NULL;
-	}
+	close_notification (tray);
 	if ( state < PAROLE_STATE_PAUSED )
 	    tray->notify = TRUE;
     }
-#endif
-}
-
-static void
-tag_message_cb (ParoleProviderPlayer *player, const ParoleStream *stream, TrayProvider *tray)
-{
-#ifdef HAVE_LIBNOTIFY
-    ParoleState state;
-    
-    state = parole_provider_player_get_state (player);
-    
-    if (state == PAROLE_STATE_PLAYING )
-	notify_playing (tray, stream);
-    
 #endif
 }
 
@@ -608,10 +591,6 @@ tray_provider_set_player (ParoleProviderPlugin *plugin, ParoleProviderPlayer *pl
 				  
     g_signal_connect (player, "state_changed", 
 		      G_CALLBACK (state_changed_cb), tray);
-		      
-    g_signal_connect (player, "tag-message",
-		      G_CALLBACK (tag_message_cb), tray);
-
 }
 
 static void
@@ -650,6 +629,10 @@ static void tray_provider_finalize (GObject *object)
     
     if ( GTK_IS_WIDGET (tray->window) && g_signal_handler_is_connected (tray->window, tray->sig) )
 	g_signal_handler_disconnect (tray->window, tray->sig);
+
+#ifdef HAVE_LIBNOTIFY 
+    close_notification (tray);
+#endif
  
     g_object_unref (G_OBJECT (tray->tray));
     

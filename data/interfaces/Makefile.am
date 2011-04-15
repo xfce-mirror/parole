@@ -4,7 +4,8 @@ interfaces =					\
 	playlist.ui				\
 	mediachooser.ui				\
 	save-playlist.ui			\
-	plugins.ui
+	plugins.ui				\
+	open-location.ui
 
 interfaces_h = 					\
 	$(interfaces:.ui=_ui.h)
@@ -26,6 +27,9 @@ mediachooser_ui.h: mediachooser.ui
 
 save-playlist_ui.h: save-playlist.ui
 	exo-csource --static --strip-comments --strip-content --name=save_playlist_ui $< > $@
+
+open-location_ui.h: open-location.ui
+	exo-csource --static --strip-comments --strip-content --name=open_location_ui $< > $@
 
 plugins_ui.h: plugins.ui
 	exo-csource --static --strip-comments --strip-content --name=plugins_ui $< > $@
