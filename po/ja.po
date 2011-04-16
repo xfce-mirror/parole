@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole 0.1.90\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-18 16:52+0900\n"
-"PO-Revision-Date: 2010-01-18 16:52+0900\n"
+"POT-Creation-Date: 2011-04-16 17:00+0900\n"
+"PO-Revision-Date: 2011-04-16 17:00+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -62,7 +63,8 @@ msgstr "メディアプレーヤー"
 msgid "Mute"
 msgstr "ミュート"
 
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:1198
+#: ../data/interfaces/parole.ui.h:12
+#: ../src/parole-player.c:1215
 #: ../src/parole-disc-menu.c:113
 msgid "Next Chapter"
 msgstr "次のチャプター"
@@ -71,8 +73,9 @@ msgstr "次のチャプター"
 msgid "None"
 msgstr "なし"
 
-#: ../data/interfaces/parole.ui.h:14 ../data/desktop/parole.desktop.in.in.h:1
-#: ../src/parole-about.c:70 ../plugins/window-title/window-title-provider.c:58
+#: ../data/interfaces/parole.ui.h:14
+#: ../src/parole-about.c:74
+#: ../plugins/window-title/window-title-provider.c:58
 msgid "Parole Media Player"
 msgstr "Parole Media Player"
 
@@ -80,12 +83,14 @@ msgstr "Parole Media Player"
 msgid "Plugins"
 msgstr "プラグイン"
 
-#: ../data/interfaces/parole.ui.h:16 ../src/parole-player.c:1210
+#: ../data/interfaces/parole.ui.h:16
+#: ../src/parole-player.c:1227
 #: ../src/parole-disc-menu.c:114
 msgid "Previous Chapter"
 msgstr "前のチャプター"
 
 #: ../data/interfaces/parole.ui.h:17
+#: ../src/parole-medialist.c:1264
 msgid "Repeat"
 msgstr "繰り返し"
 
@@ -94,6 +99,7 @@ msgid "Select Track"
 msgstr "トラックの選択"
 
 #: ../data/interfaces/parole.ui.h:19
+#: ../src/parole-medialist.c:1280
 msgid "Shuffle"
 msgstr "シャッフル"
 
@@ -134,14 +140,27 @@ msgid "_View"
 msgstr "表示(_V)"
 
 #: ../data/interfaces/mediachooser.ui.h:1
+msgid "Add"
+msgstr "追加"
+
+# Sub title of Media Chooser (Open files dialog)
+#: ../data/interfaces/mediachooser.ui.h:2
+msgid "Open media files"
+msgstr "メディアファイルを開きます"
+
+#: ../data/interfaces/mediachooser.ui.h:3
+msgid "Parole Media Chooser"
+msgstr "Parole Media Chooser"
+
+#: ../data/interfaces/mediachooser.ui.h:4
 msgid "Replace playlist with opened files"
 msgstr "開いたファイルでプレイリストを置き換える"
 
-#: ../data/interfaces/mediachooser.ui.h:2
+#: ../data/interfaces/mediachooser.ui.h:5
 msgid "Scan folders recursively"
 msgstr "フォルダを再帰的にスキャンする"
 
-#: ../data/interfaces/mediachooser.ui.h:3
+#: ../data/interfaces/mediachooser.ui.h:6
 msgid "Start playing opened files"
 msgstr "開いたファイルを再生する"
 
@@ -241,27 +260,45 @@ msgstr "拡張子"
 msgid "Select File Types (By Extension)"
 msgstr "ファイルタイプの選択 (拡張子で)"
 
-#: ../gst/parole-gst.c:1511
+#: ../data/interfaces/open-location.ui.h:1
+msgid "Clear history"
+msgstr "履歴のクリア"
+
+#: ../data/interfaces/open-location.ui.h:2
+msgid "Enter the address of a location to open"
+msgstr "開く場所のアドレスを入力してください"
+
+#: ../data/interfaces/open-location.ui.h:3
+msgid "Open location of media file or live stream"
+msgstr "メディアファイルまたはライブストリームの場所を開きます"
+
+#: ../data/desktop/parole.desktop.in.in.h:1
+msgid "Parole"
+msgstr "Parole"
+
+#: ../common/parole-common.c:67
+msgid "Message"
+msgstr "メッセージ"
+
+#: ../common/parole-common.c:72
+msgid "Error"
+msgstr "エラー"
+
+#: ../gst/parole-gst.c:1526
 msgid "The stream is taking too much time to load"
 msgstr "このストリームを読み込むにはかなり時間がかかります"
 
-#: ../gst/parole-gst.c:1511
+#: ../gst/parole-gst.c:1526
 msgid "Stop"
 msgstr "停止"
 
-#: ../gst/parole-gst.c:1700
-msgid ""
-"Unable to load playbin GStreamer plugin, check your GStreamer installation"
-msgstr ""
-"playbin GStreamer プラグインを読み込めません。GStreamer が正しくインストール"
-"されていることを確認してください。"
+#: ../gst/parole-gst.c:1715
+msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
+msgstr "playbin GStreamer プラグインを読み込めません。GStreamer が正しくインストールされていることを確認してください。"
 
-#: ../gst/parole-gst.c:1720
-msgid ""
-"Unable to load video GStreamer plugin, check your GStreamer installation"
-msgstr ""
-"video GStreamer プラグインを読み込めません。GStreamer がただしくインストール"
-"されていることを確認してください。"
+#: ../gst/parole-gst.c:1735
+msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
+msgstr "video GStreamer プラグインを読み込めません。GStreamer がただしくインストールされていることを確認してください。"
 
 #: ../src/main.c:54
 #, c-format
@@ -288,162 +325,187 @@ msgstr ""
 msgid "Unknown argument "
 msgstr "不明な引数"
 
-#: ../src/main.c:224
+#: ../src/main.c:225
 msgid "Open a new instance"
 msgstr "新しいインスタンスを開く"
 
-#: ../src/main.c:225
+#: ../src/main.c:226
 msgid "Do not load plugins"
 msgstr "プラグインをロードしない"
 
-#: ../src/main.c:226
+#: ../src/main.c:227
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "音楽 CD/VCD/DVD デバイスパスを指定する"
 
-#: ../src/main.c:227
+#: ../src/main.c:228
 msgid "Play or pause if already playing"
 msgstr "再生中のコンテンツの再生/一時停止"
 
-#: ../src/main.c:228
+#: ../src/main.c:229
 msgid "Stop playing"
 msgstr "再生の停止"
 
-#: ../src/main.c:229
+#: ../src/main.c:230
 msgid "Next track"
 msgstr "次のトラック"
 
-#: ../src/main.c:230
+#: ../src/main.c:231
 msgid "Previous track"
 msgstr "前のトラック"
 
-#: ../src/main.c:231
+#: ../src/main.c:232
 msgid "Seek forward"
 msgstr "前方シーク"
 
-#: ../src/main.c:232
+#: ../src/main.c:233
 msgid "Seek Backward"
 msgstr "後方シーク"
 
-#: ../src/main.c:233
+#: ../src/main.c:234
 msgid "Raise volume"
 msgstr "ボリュームを上げる"
 
-#: ../src/main.c:234
+#: ../src/main.c:235
 msgid "Lower volume"
 msgstr "ボリュームを下げる"
 
-#: ../src/main.c:235
+#: ../src/main.c:236
 msgid "Mute volume"
 msgstr "ミュート"
 
-#: ../src/main.c:236
+#: ../src/main.c:237
 msgid "Version information"
 msgstr "バージョン情報"
 
-#: ../src/main.c:237
+#: ../src/main.c:238
+msgid "Start in fullscreen mode"
+msgstr "フルスクリーンモードで起動する"
+
+#: ../src/main.c:239
 msgid "Enabled/Disable XV support"
 msgstr "XV サポートを有効/無効にする"
 
-#: ../src/main.c:239
+#: ../src/main.c:241
 msgid "Media to play"
 msgstr "再生するメディア"
 
-#: ../src/main.c:276
+#: ../src/main.c:278
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
-msgstr ""
-"Parole は既に起動しています。新しいインスタンスを開くには -i を使用してくださ"
-"い\n"
+msgstr "Parole は既に起動しています。新しいインスタンスを開くには -i を使用してください\n"
 
-#: ../src/parole-mediachooser.c:213
-msgid "Add media files"
-msgstr "メディアファイルの追加"
-
-#: ../src/parole-mediachooser.c:246
-msgid "Add"
-msgstr "追加"
-
-#: ../src/parole-medialist.c:437
-msgid "Error saving playlist file"
-msgstr "プレイリストファイルの保存でエラーです"
-
-#: ../src/parole-medialist.c:437
+#: ../src/parole-medialist.c:501
 msgid "Permission denied"
 msgstr "アクセス権がありません"
 
-#: ../src/parole-medialist.c:446
-msgid "Unknown playlist format, Please select a support playlist format"
-msgstr "未知のプレイリスト形式です。サポートされている形式を選択してください。"
+#: ../src/parole-medialist.c:503
+msgid "Error saving playlist file"
+msgstr "プレイリストファイルの保存でエラーです"
 
-#: ../src/parole-medialist.c:514 ../src/parole-player.c:1974
+#: ../src/parole-medialist.c:515
+msgid "Unknown playlist format"
+msgstr "未知のプレイリスト形式"
+
+#: ../src/parole-medialist.c:516
+msgid "Please chooser a supported playlist format"
+msgstr "サポートされているプレイリスト形式を選択してください"
+
+#: ../src/parole-medialist.c:568
+#: ../src/parole-plugins-manager.c:377
+#: ../plugins/properties/stream-properties-provider.c:140
+#: ../plugins/properties/stream-properties-provider.c:141
+#: ../plugins/properties/stream-properties-provider.c:142
+#: ../plugins/properties/stream-properties-provider.c:143
+msgid "Unknown"
+msgstr "不明"
+
+#: ../src/parole-medialist.c:642
+#: ../src/parole-player.c:1991
 msgid "Playlist"
 msgstr "プレイリスト"
 
-#: ../src/parole-medialist.c:521
+#: ../src/parole-medialist.c:649
 msgid "M3U Playlists"
 msgstr "M3U プレイリスト"
 
-#: ../src/parole-medialist.c:529
+#: ../src/parole-medialist.c:657
 msgid "PLS Playlists"
 msgstr "PLS プレイリスト"
 
-#: ../src/parole-medialist.c:537
+#: ../src/parole-medialist.c:665
 msgid "Advanced Stream Redirector"
 msgstr "Advanced Stream Redirector"
 
-#: ../src/parole-medialist.c:545
+#: ../src/parole-medialist.c:673
 msgid "Shareable Playlist"
 msgstr "共有プレイリスト"
 
-#: ../src/parole-medialist.c:860
-msgid "Remember playlist"
-msgstr "プレイリストを記憶"
+#. Clear
+#: ../src/parole-medialist.c:1152
+msgid "Open Containing Folder"
+msgstr "このファイルのあるフォルダを開く"
 
-#: ../src/parole-medialist.c:1012
+#: ../src/parole-medialist.c:1303
+msgid "Replace playlist when opening files"
+msgstr "ファイルを開いたときにプレイリストを置き換える"
+
+#: ../src/parole-medialist.c:1319
+msgid "Play opened files"
+msgstr "開いたファイルを再生する"
+
+#. *
+#. * Remember media list entries
+#. *
+#: ../src/parole-medialist.c:1331
+msgid "Remember playlist"
+msgstr "プレイリストを記憶する"
+
+#: ../src/parole-medialist.c:1502
 msgid "Media list"
 msgstr "メディアリスト"
 
-#: ../src/parole-player.c:333
+#: ../src/parole-player.c:336
 msgid "Hide playlist"
 msgstr "プレイリストを隠す"
 
-#: ../src/parole-player.c:342
+#: ../src/parole-player.c:345
 msgid "Show playlist"
 msgstr "プレイリストを表示"
 
-#: ../src/parole-player.c:375
+#: ../src/parole-player.c:378
 msgid "Open ISO image"
 msgstr "ISO イメージを開く"
 
-#: ../src/parole-player.c:392
+#: ../src/parole-player.c:395
 msgid "CD image"
 msgstr "CD イメージ"
 
-#: ../src/parole-player.c:392
+#: ../src/parole-player.c:395
 msgid "DVD image"
 msgstr "DVD イメージ"
 
-#: ../src/parole-player.c:643
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:300
+#: ../src/parole-player.c:551
+#: ../src/parole-player.c:659
 msgid "Media stream is not seekable"
 msgstr "メディアストリームはシークできません"
 
 #.
 #. * Next chapter menu item
 #.
-#: ../src/parole-player.c:1198 ../src/parole-disc-menu.c:122
+#: ../src/parole-player.c:1215
+#: ../src/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr "次のトラック"
 
 #.
 #. * Previous chapter menu item
 #.
-#: ../src/parole-player.c:1210 ../src/parole-disc-menu.c:123
+#: ../src/parole-player.c:1227
+#: ../src/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr "前のトラック"
 
 #: ../src/parole-statusbar.c:61
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:593
 msgid "Buffering"
 msgstr "バッファしています"
 
@@ -455,7 +517,8 @@ msgstr "停止"
 msgid "Finished"
 msgstr "終了"
 
-#: ../src/parole-statusbar.c:114 ../src/parole-statusbar.c:124
+#: ../src/parole-statusbar.c:114
+#: ../src/parole-statusbar.c:124
 msgid "Paused"
 msgstr "一時停止"
 
@@ -463,15 +526,16 @@ msgstr "一時停止"
 msgid "Playing"
 msgstr "再生中"
 
-#: ../src/parole-statusbar.c:168
+#: ../src/parole-statusbar.c:170
+#: ../src/parole-statusbar.c:174
 msgid "Live stream:"
 msgstr "ライブストリーム:"
 
-#: ../src/parole-about.c:75
+#: ../src/parole-about.c:79
 msgid "Author/Maintainer"
 msgstr "作者/メンテナ"
 
-#: ../src/parole-about.c:81
+#: ../src/parole-about.c:85
 #, c-format
 msgid "Translator (%s)"
 msgstr "翻訳者 (%s)"
@@ -484,8 +548,10 @@ msgstr "ディスクの再生"
 msgid "Current Locale"
 msgstr "現在の場所"
 
-#: ../src/parole-subtitle-encoding.c:168 ../src/parole-subtitle-encoding.c:170
-#: ../src/parole-subtitle-encoding.c:172 ../src/parole-subtitle-encoding.c:174
+#: ../src/parole-subtitle-encoding.c:168
+#: ../src/parole-subtitle-encoding.c:170
+#: ../src/parole-subtitle-encoding.c:172
+#: ../src/parole-subtitle-encoding.c:174
 msgid "Arabic"
 msgstr "アラビア語"
 
@@ -493,7 +559,8 @@ msgstr "アラビア語"
 msgid "Armenian"
 msgstr "アルメニア語"
 
-#: ../src/parole-subtitle-encoding.c:180 ../src/parole-subtitle-encoding.c:182
+#: ../src/parole-subtitle-encoding.c:180
+#: ../src/parole-subtitle-encoding.c:182
 #: ../src/parole-subtitle-encoding.c:184
 msgid "Baltic"
 msgstr "バルト語"
@@ -502,17 +569,22 @@ msgstr "バルト語"
 msgid "Celtic"
 msgstr "ケルト語"
 
-#: ../src/parole-subtitle-encoding.c:190 ../src/parole-subtitle-encoding.c:192
-#: ../src/parole-subtitle-encoding.c:194 ../src/parole-subtitle-encoding.c:196
+#: ../src/parole-subtitle-encoding.c:190
+#: ../src/parole-subtitle-encoding.c:192
+#: ../src/parole-subtitle-encoding.c:194
+#: ../src/parole-subtitle-encoding.c:196
 msgid "Central European"
 msgstr "中央ヨーロッパ"
 
-#: ../src/parole-subtitle-encoding.c:199 ../src/parole-subtitle-encoding.c:201
-#: ../src/parole-subtitle-encoding.c:203 ../src/parole-subtitle-encoding.c:205
+#: ../src/parole-subtitle-encoding.c:199
+#: ../src/parole-subtitle-encoding.c:201
+#: ../src/parole-subtitle-encoding.c:203
+#: ../src/parole-subtitle-encoding.c:205
 msgid "Chinese Simplified"
 msgstr "中国語簡体字"
 
-#: ../src/parole-subtitle-encoding.c:208 ../src/parole-subtitle-encoding.c:210
+#: ../src/parole-subtitle-encoding.c:208
+#: ../src/parole-subtitle-encoding.c:210
 #: ../src/parole-subtitle-encoding.c:212
 msgid "Chinese Traditional"
 msgstr "中国語繁体字"
@@ -521,9 +593,12 @@ msgstr "中国語繁体字"
 msgid "Croatian"
 msgstr "クロアチア語"
 
-#: ../src/parole-subtitle-encoding.c:218 ../src/parole-subtitle-encoding.c:220
-#: ../src/parole-subtitle-encoding.c:222 ../src/parole-subtitle-encoding.c:224
-#: ../src/parole-subtitle-encoding.c:226 ../src/parole-subtitle-encoding.c:228
+#: ../src/parole-subtitle-encoding.c:218
+#: ../src/parole-subtitle-encoding.c:220
+#: ../src/parole-subtitle-encoding.c:222
+#: ../src/parole-subtitle-encoding.c:224
+#: ../src/parole-subtitle-encoding.c:226
+#: ../src/parole-subtitle-encoding.c:228
 msgid "Cyrillic"
 msgstr "キリル文字"
 
@@ -531,7 +606,8 @@ msgstr "キリル文字"
 msgid "Cyrillic/Russian"
 msgstr "キリル文字/ロシア"
 
-#: ../src/parole-subtitle-encoding.c:234 ../src/parole-subtitle-encoding.c:236
+#: ../src/parole-subtitle-encoding.c:234
+#: ../src/parole-subtitle-encoding.c:236
 msgid "Cyrillic/Ukrainian"
 msgstr "キリル文字/ウクライナ"
 
@@ -539,7 +615,8 @@ msgstr "キリル文字/ウクライナ"
 msgid "Georgian"
 msgstr "グルジア語"
 
-#: ../src/parole-subtitle-encoding.c:242 ../src/parole-subtitle-encoding.c:244
+#: ../src/parole-subtitle-encoding.c:242
+#: ../src/parole-subtitle-encoding.c:244
 #: ../src/parole-subtitle-encoding.c:246
 msgid "Greek"
 msgstr "ギリシャ語"
@@ -552,8 +629,10 @@ msgstr "グジャラート語"
 msgid "Gurmukhi"
 msgstr "グルムキー文字"
 
-#: ../src/parole-subtitle-encoding.c:255 ../src/parole-subtitle-encoding.c:257
-#: ../src/parole-subtitle-encoding.c:259 ../src/parole-subtitle-encoding.c:261
+#: ../src/parole-subtitle-encoding.c:255
+#: ../src/parole-subtitle-encoding.c:257
+#: ../src/parole-subtitle-encoding.c:259
+#: ../src/parole-subtitle-encoding.c:261
 msgid "Hebrew"
 msgstr "ヘブライ語"
 
@@ -569,13 +648,16 @@ msgstr "ヒンディ語"
 msgid "Icelandic"
 msgstr "アイスランド語"
 
-#: ../src/parole-subtitle-encoding.c:273 ../src/parole-subtitle-encoding.c:275
+#: ../src/parole-subtitle-encoding.c:273
+#: ../src/parole-subtitle-encoding.c:275
 #: ../src/parole-subtitle-encoding.c:277
 msgid "Japanese"
 msgstr "日本語"
 
-#: ../src/parole-subtitle-encoding.c:280 ../src/parole-subtitle-encoding.c:282
-#: ../src/parole-subtitle-encoding.c:284 ../src/parole-subtitle-encoding.c:286
+#: ../src/parole-subtitle-encoding.c:280
+#: ../src/parole-subtitle-encoding.c:282
+#: ../src/parole-subtitle-encoding.c:284
+#: ../src/parole-subtitle-encoding.c:286
 msgid "Korean"
 msgstr "韓国語"
 
@@ -587,7 +669,8 @@ msgstr "ノルディック語"
 msgid "Persian"
 msgstr "ペルシャ語"
 
-#: ../src/parole-subtitle-encoding.c:295 ../src/parole-subtitle-encoding.c:297
+#: ../src/parole-subtitle-encoding.c:295
+#: ../src/parole-subtitle-encoding.c:297
 msgid "Romanian"
 msgstr "ルーマニア語"
 
@@ -599,39 +682,34 @@ msgstr "南ヨーロッパ"
 msgid "Thai"
 msgstr "タイ語"
 
-#: ../src/parole-subtitle-encoding.c:306 ../src/parole-subtitle-encoding.c:308
-#: ../src/parole-subtitle-encoding.c:310 ../src/parole-subtitle-encoding.c:312
+#: ../src/parole-subtitle-encoding.c:306
+#: ../src/parole-subtitle-encoding.c:308
+#: ../src/parole-subtitle-encoding.c:310
+#: ../src/parole-subtitle-encoding.c:312
 msgid "Turkish"
 msgstr "トルコ語"
 
-#: ../src/parole-subtitle-encoding.c:315 ../src/parole-subtitle-encoding.c:317
-#: ../src/parole-subtitle-encoding.c:319 ../src/parole-subtitle-encoding.c:321
+#: ../src/parole-subtitle-encoding.c:315
+#: ../src/parole-subtitle-encoding.c:317
+#: ../src/parole-subtitle-encoding.c:319
+#: ../src/parole-subtitle-encoding.c:321
 #: ../src/parole-subtitle-encoding.c:323
 msgid "Unicode"
 msgstr "Unicode"
 
-#: ../src/parole-subtitle-encoding.c:326 ../src/parole-subtitle-encoding.c:328
-#: ../src/parole-subtitle-encoding.c:330 ../src/parole-subtitle-encoding.c:332
+#: ../src/parole-subtitle-encoding.c:326
+#: ../src/parole-subtitle-encoding.c:328
+#: ../src/parole-subtitle-encoding.c:330
+#: ../src/parole-subtitle-encoding.c:332
 #: ../src/parole-subtitle-encoding.c:334
 msgid "Western"
 msgstr "西ヨーロッパ"
 
-#: ../src/parole-subtitle-encoding.c:337 ../src/parole-subtitle-encoding.c:339
+#: ../src/parole-subtitle-encoding.c:337
+#: ../src/parole-subtitle-encoding.c:339
 #: ../src/parole-subtitle-encoding.c:341
 msgid "Vietnamese"
 msgstr "ベトナム語"
-
-#: ../src/parole-open-location.c:181
-msgid "Open location..."
-msgstr "場所を開く..."
-
-#: ../src/parole-open-location.c:186
-msgid "<b>Open location of media file or live stream:</b>"
-msgstr "<b>メディアファイルまたはライブストリームの場所を開きます:</b>"
-
-#: ../src/parole-open-location.c:205
-msgid "Clear history"
-msgstr "履歴のクリア"
 
 #: ../src/parole-disc-menu.c:130
 msgid "Playing Track"
@@ -642,19 +720,12 @@ msgstr "再生中のトラック"
 msgid "Track %i"
 msgstr "トラック %i"
 
-#: ../src/parole-plugins-manager.c:297 ../src/parole-plugins-manager.c:433
+#: ../src/parole-plugins-manager.c:301
+#: ../src/parole-plugins-manager.c:437
 msgid "Visit Website"
 msgstr "ウェブサイトへ"
 
-#: ../src/parole-plugins-manager.c:373
-#: ../plugins/properties/stream-properties-provider.c:140
-#: ../plugins/properties/stream-properties-provider.c:141
-#: ../plugins/properties/stream-properties-provider.c:142
-#: ../plugins/properties/stream-properties-provider.c:143
-msgid "Unknown"
-msgstr "不明"
-
-#: ../src/parole-plugins-manager.c:412
+#: ../src/parole-plugins-manager.c:416
 msgid "No installed plugins found on this system"
 msgstr "インストールされているプラグインが見つかりません"
 
@@ -718,39 +789,39 @@ msgstr "メディアのプロパティを読み込みます"
 msgid "Stream Properties"
 msgstr "ストリームのプロパティ"
 
-#: ../plugins/tray/tray-provider.c:262
+#: ../plugins/tray/tray-provider.c:283
 msgid "<b>Playing:</b>"
 msgstr "<b>再生中:</b>"
 
-#: ../plugins/tray/tray-provider.c:262
+#: ../plugins/tray/tray-provider.c:283
 msgid "<b>Duration:</b>"
 msgstr "<b>時間:</b>"
 
-#: ../plugins/tray/tray-provider.c:420
+#: ../plugins/tray/tray-provider.c:419
 msgid "Tray icon plugin"
 msgstr "トレイアイコンプラグイン"
 
-#: ../plugins/tray/tray-provider.c:430
+#: ../plugins/tray/tray-provider.c:429
 msgid "Enable notification"
 msgstr "通知を有効にする"
 
-#: ../plugins/tray/tray-provider.c:439
+#: ../plugins/tray/tray-provider.c:438
 msgid "Always minimize to tray when window is closed"
 msgstr "ウィンドウが閉じられた時、常にトレイに最小化する"
 
-#: ../plugins/tray/tray-provider.c:478
+#: ../plugins/tray/tray-provider.c:477
 msgid "Minimize to tray?"
 msgstr "トレイに最小化しますか?"
 
-#: ../plugins/tray/tray-provider.c:484
+#: ../plugins/tray/tray-provider.c:483
 msgid "Minimize to tray"
 msgstr "トレイに最小化"
 
-#: ../plugins/tray/tray-provider.c:500
+#: ../plugins/tray/tray-provider.c:499
 msgid "Are you sure you want to quit Parole"
 msgstr "Parole を終了してもよろしいですか?"
 
-#: ../plugins/tray/tray-provider.c:504
+#: ../plugins/tray/tray-provider.c:503
 msgid "Remember my choice"
 msgstr "選択を記憶する"
 
@@ -778,33 +849,23 @@ msgstr "DVD の再生中に電源管理によるサスペンドを抑止しま�
 msgid "Power Manager Plugin"
 msgstr "電源管理プラグイン"
 
-#: ../browser-plugin/media-plugin/main.c:72
-msgid "socket"
-msgstr "ソケット"
+#~ msgid "Open location..."
+#~ msgstr "場所を開く..."
 
-#: ../browser-plugin/media-plugin/main.c:72
-msgid "SOCKET ID"
-msgstr "SOCKET ID"
+#~ msgid "socket"
+#~ msgstr "ソケット"
 
-#: ../browser-plugin/media-plugin/main.c:73
-msgid "url to play"
-msgstr "再生する URL"
+#~ msgid "SOCKET ID"
+#~ msgstr "SOCKET ID"
 
-#: ../browser-plugin/media-plugin/main.c:73
-msgid "URL"
-msgstr "URL"
+#~ msgid "url to play"
+#~ msgstr "再生する URL"
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:138
-msgid "Leave fullscreen"
-msgstr "元に戻す"
+#~ msgid "URL"
+#~ msgstr "URL"
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:143
-msgid "Fullscreen"
-msgstr "全画面化"
+#~ msgid "Fullscreen"
+#~ msgstr "全画面化"
 
-#.
-#. * Copy url
-#.
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:455
-msgid "Copy url"
-msgstr "URL のコピー"
+#~ msgid "Copy url"
+#~ msgstr "URL のコピー"
