@@ -662,7 +662,7 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
 	g_object_unref (pix);
 	
     parole_player_save_uri (player, stream);
-    
+    parole_media_list_select_row (player->priv->list, player->priv->row);
     gtk_widget_grab_focus (player->priv->gst);
 }
 
