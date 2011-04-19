@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-15 16:08+0000\n"
+"POT-Creation-Date: 2011-04-19 16:08+0000\n"
 "PO-Revision-Date: 2010-02-19 09:04+0100\n"
 "Last-Translator: Cristian Marchi <cri.penta@gmail.com>\n"
 "Language-Team: Italian Translation Team <xfce-it-translators@googlegroups.com>\n"
@@ -260,9 +260,29 @@ msgstr "Per estensione"
 msgid "Select File Types (By Extension)"
 msgstr "Seleziona i tipi di file (per estensione)"
 
+#: ../data/interfaces/open-location.ui.h:1
+msgid "Clear history"
+msgstr "Svuota cronologia"
+
+#: ../data/interfaces/open-location.ui.h:2
+msgid "Enter the address of a location to open"
+msgstr "Inserire l'indirizzo di una posizione da aprire"
+
+#: ../data/interfaces/open-location.ui.h:3
+msgid "Open location of media file or live stream"
+msgstr "Apre la posizione di un contenuto o di un flusso"
+
 #: ../data/desktop/parole.desktop.in.in.h:1
 msgid "Parole"
 msgstr "Parole"
+
+#: ../common/parole-common.c:67
+msgid "Message"
+msgstr "Messaggio"
+
+#: ../common/parole-common.c:72
+msgid "Error"
+msgstr "Errore"
 
 #: ../gst/parole-gst.c:1526
 msgid "The stream is taking too much time to load"
@@ -305,67 +325,71 @@ msgstr ""
 msgid "Unknown argument "
 msgstr "Argomento sconosciuto"
 
-#: ../src/main.c:224
+#: ../src/main.c:225
 msgid "Open a new instance"
 msgstr "Apre una nuova istanza"
 
-#: ../src/main.c:225
+#: ../src/main.c:226
 msgid "Do not load plugins"
 msgstr "Non carica i plugin"
 
-#: ../src/main.c:226
+#: ../src/main.c:227
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "Imposta il percorso del dispositivo Audio-CD/VCD/DVD"
 
-#: ../src/main.c:227
+#: ../src/main.c:228
 msgid "Play or pause if already playing"
 msgstr "Avvia la riproduzione o mette in pausa se già in riproduzione"
 
-#: ../src/main.c:228
+#: ../src/main.c:229
 msgid "Stop playing"
 msgstr "Ferma la riproduzione"
 
-#: ../src/main.c:229
+#: ../src/main.c:230
 msgid "Next track"
 msgstr "Traccia successiva"
 
-#: ../src/main.c:230
+#: ../src/main.c:231
 msgid "Previous track"
 msgstr "Traccia precedente"
 
-#: ../src/main.c:231
+#: ../src/main.c:232
 msgid "Seek forward"
 msgstr "Salta in avanti"
 
-#: ../src/main.c:232
+#: ../src/main.c:233
 msgid "Seek Backward"
 msgstr "Salta indietro"
 
-#: ../src/main.c:233
+#: ../src/main.c:234
 msgid "Raise volume"
 msgstr "Aumenta il volume"
 
-#: ../src/main.c:234
+#: ../src/main.c:235
 msgid "Lower volume"
 msgstr "Diminuisce il volume"
 
-#: ../src/main.c:235
+#: ../src/main.c:236
 msgid "Mute volume"
 msgstr "Esclude l'audio"
 
-#: ../src/main.c:236
+#: ../src/main.c:237
 msgid "Version information"
 msgstr "Informazioni di versione"
 
-#: ../src/main.c:237
+#: ../src/main.c:238
+msgid "Start in fullscreen mode"
+msgstr "Avvia la modalità a schermo intero"
+
+#: ../src/main.c:239
 msgid "Enabled/Disable XV support"
 msgstr "Abilita o disabilita il supporto a XV"
 
-#: ../src/main.c:239
+#: ../src/main.c:241
 msgid "Media to play"
 msgstr "Contenuto da riprodurre"
 
-#: ../src/main.c:276
+#: ../src/main.c:278
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole è già in esecuzione; utilizzare l'opzione -i per avviare una nuova istanza\n"
@@ -792,12 +816,6 @@ msgstr "Plugin del gestore dell'energia"
 #~ msgid "Open location..."
 #~ msgstr "Apri posizione..."
 
-#~ msgid "<b>Open location of media file or live stream:</b>"
-#~ msgstr "<b>Apri posizione di un contenuto o di un flusso:</b>"
-
-#~ msgid "Clear history"
-#~ msgstr "Svuota cronologia"
-
 #~ msgid "socket"
 #~ msgstr "socket"
 
@@ -809,9 +827,6 @@ msgstr "Plugin del gestore dell'energia"
 
 #~ msgid "URL"
 #~ msgstr "URL"
-
-#~ msgid "Leave fullscreen"
-#~ msgstr "Abbandona schermo intero"
 
 #~ msgid "Fullscreen"
 #~ msgstr "Schermo intero"
