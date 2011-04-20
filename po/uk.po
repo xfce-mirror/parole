@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-15 16:08+0000\n"
+"POT-Creation-Date: 2011-04-20 10:08+0000\n"
 "PO-Revision-Date: 2009-12-14 21:35+0200\n"
 "Last-Translator: Motsyo Gennadi <drool@altlinux.ru>\n"
 "Language-Team: Ukrainian\n"
@@ -251,9 +251,29 @@ msgstr "За розширенням"
 msgid "Select File Types (By Extension)"
 msgstr "Вибрати тип файлу (за розширенням)"
 
+#: ../data/interfaces/open-location.ui.h:1
+msgid "Clear history"
+msgstr "Очистити історію"
+
+#: ../data/interfaces/open-location.ui.h:2
+msgid "Enter the address of a location to open"
+msgstr "Введіть адрес для відкриття"
+
+#: ../data/interfaces/open-location.ui.h:3
+msgid "Open location of media file or live stream"
+msgstr "Відкрити місцезнаходження медіа-файлу чи потоку"
+
 #: ../data/desktop/parole.desktop.in.in.h:1
 msgid "Parole"
 msgstr "Parole"
+
+#: ../common/parole-common.c:67
+msgid "Message"
+msgstr "Повідомлення"
+
+#: ../common/parole-common.c:72
+msgid "Error"
+msgstr "Помилка"
 
 #: ../gst/parole-gst.c:1526
 msgid "The stream is taking too much time to load"
@@ -296,67 +316,71 @@ msgstr ""
 msgid "Unknown argument "
 msgstr "Невідомий аргумент"
 
-#: ../src/main.c:224
+#: ../src/main.c:225
 msgid "Open a new instance"
 msgstr "Відкривати окремим екземпляром"
 
-#: ../src/main.c:225
+#: ../src/main.c:226
 msgid "Do not load plugins"
 msgstr "Не завантажувати плагіни"
 
-#: ../src/main.c:226
+#: ../src/main.c:227
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "Вказати шлях до пристрою Audio-CD/VCD/DVD"
 
-#: ../src/main.c:227
+#: ../src/main.c:228
 msgid "Play or pause if already playing"
 msgstr "Відтворити чи призупинити, якщо вже відтворюється"
 
-#: ../src/main.c:228
+#: ../src/main.c:229
 msgid "Stop playing"
 msgstr "Зупинити відтворення"
 
-#: ../src/main.c:229
+#: ../src/main.c:230
 msgid "Next track"
 msgstr "Наступний трек"
 
-#: ../src/main.c:230
+#: ../src/main.c:231
 msgid "Previous track"
 msgstr "Попередній трек"
 
-#: ../src/main.c:231
+#: ../src/main.c:232
 msgid "Seek forward"
 msgstr "Шукати вперед"
 
-#: ../src/main.c:232
+#: ../src/main.c:233
 msgid "Seek Backward"
 msgstr "Шукати назад"
 
-#: ../src/main.c:233
+#: ../src/main.c:234
 msgid "Raise volume"
 msgstr "Збільшити гучність"
 
-#: ../src/main.c:234
+#: ../src/main.c:235
 msgid "Lower volume"
 msgstr "Зменшити гучність"
 
-#: ../src/main.c:235
+#: ../src/main.c:236
 msgid "Mute volume"
 msgstr "Приглушити звук"
 
-#: ../src/main.c:236
+#: ../src/main.c:237
 msgid "Version information"
 msgstr "Версія"
 
-#: ../src/main.c:237
+#: ../src/main.c:238
+msgid "Start in fullscreen mode"
+msgstr "Стартувати в повноекранному режимі"
+
+#: ../src/main.c:239
 msgid "Enabled/Disable XV support"
 msgstr "Увімкнути/вимкнути підтримку XV"
 
-#: ../src/main.c:239
+#: ../src/main.c:241
 msgid "Media to play"
 msgstr "Об'єкт для відтворення"
 
-#: ../src/main.c:276
+#: ../src/main.c:278
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole вже запущено, використовуйте -i для відкриття окремим екземпляром\n"
@@ -783,12 +807,6 @@ msgstr "Керування живленням"
 #~ msgid "Open location..."
 #~ msgstr "Відкрити місцезнаходження..."
 
-#~ msgid "<b>Open location of media file or live stream:</b>"
-#~ msgstr "<b>Відкрити місцезнаходження медіа-файлу чи потоку:</b>"
-
-#~ msgid "Clear history"
-#~ msgstr "Очистити історію"
-
 #~ msgid "socket"
 #~ msgstr "з'єднання"
 
@@ -800,9 +818,6 @@ msgstr "Керування живленням"
 
 #~ msgid "URL"
 #~ msgstr "Адреса"
-
-#~ msgid "Leave fullscreen"
-#~ msgstr "Вийти з повноекранного режиму"
 
 #~ msgid "Fullscreen"
 #~ msgstr "Повноекранний режим"
