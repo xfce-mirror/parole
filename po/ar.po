@@ -1,8 +1,7 @@
-# French translations of parole
+# Arabic translations of parole
 # Copyright (C) 2009 the parole-media-player's copyright holder
 # This file is distributed under the same license as the parole-media-player package.
-# Steve Dodier <sidnioulz@gmail.com>
-# Douart Patrick <patrick.2@laposte.net> 2010.
+# Karim Oulad Chalha <herr.linux88@gmail.com>
 # 
 msgid ""
 msgstr ""
@@ -147,115 +146,115 @@ msgstr "مشغل وسائط Parole"
 
 #: ../data/interfaces/mediachooser.ui.h:4
 msgid "Replace playlist with opened files"
-msgstr "Remplacer playlist avec les fichiers ouverts"
+msgstr "إستبدال قائمة التشغيل مع الملفات المفتوحة"
 
 #: ../data/interfaces/mediachooser.ui.h:5
 msgid "Scan folders recursively"
-msgstr "Analyser les dossiers récursivement"
+msgstr ""
 
 #: ../data/interfaces/mediachooser.ui.h:6
 msgid "Start playing opened files"
-msgstr "Démarrez la lecture de fichiers ouverts"
+msgstr "بدء تشغيل الملفات المفتوحة"
 
 #: ../data/interfaces/plugins.ui.h:1
 msgid "<b>Author:</b>"
-msgstr "<b>Auteur :</b>"
+msgstr "<b>مؤلف :</b>"
 
 #: ../data/interfaces/plugins.ui.h:2
 msgid "<b>Description:</b>"
-msgstr "<b>Description :</b>"
+msgstr "<b>وصف :</b>"
 
 #: ../data/interfaces/plugins.ui.h:3
 msgid "<b>Site:</b>"
-msgstr "<b>Site :</b>"
+msgstr "<b>موقع :</b>"
 
 #: ../data/interfaces/plugins.ui.h:4
 msgid "Media Player plugins"
-msgstr "Plugins du Lecteur Multimédia"
+msgstr "Media Player ملحقات"
 
 #: ../data/interfaces/plugins.ui.h:5
 msgid "Parole Plugins"
-msgstr "Plugins de Parole"
+msgstr "Parole ملحقات"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "<b>Audio</b>"
-msgstr "<b>Audio</b>"
+msgstr "<b>صوت</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:2
 msgid "<b>Display</b>"
-msgstr "<b>Affichage</b>"
+msgstr "<b>عرض</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:3
 msgid "<b>Subtitles</b>"
-msgstr "<b>Sous-titres</b>"
+msgstr "<b>ترجمة</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:4
 msgid "<b>Video</b>"
-msgstr "<b>Vidéo</b>"
+msgstr "<b>فيديو</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:5
 msgid "Automatically load subtitles when playing movie file"
-msgstr "Charger les sous-titres automatiquement lors de la lecture d'un film"
+msgstr "تحميل الترجمة تلقائيا عنذ تشغيل الفيلم"
 
 #: ../data/interfaces/parole-settings.ui.h:6
 msgid "Brightness:"
-msgstr "Luminosité :"
+msgstr "سطوع :"
 
 #: ../data/interfaces/parole-settings.ui.h:7
 msgid "Contrast:"
-msgstr "Contraste :"
+msgstr "تباين :"
 
 #: ../data/interfaces/parole-settings.ui.h:8
 msgid "Disable screen saver while playing movies"
-msgstr "Désactiver l'écran de veille pendant la lecture des vidéos"
+msgstr "تعطبل حافظة الشاشة عنذ تشغيل الافلام"
 
 #: ../data/interfaces/parole-settings.ui.h:9
 msgid "Enable visualization when playing audio file"
-msgstr "Activer la visualisation lors de la lecture d'un fichier audio"
+msgstr "تفعبل المرئيات عنذ تشغيل ملف صوتي"
 
 #: ../data/interfaces/parole-settings.ui.h:10
 msgid "Encoding: "
-msgstr "Encodage :"
+msgstr "تشفير :"
 
 #: ../data/interfaces/parole-settings.ui.h:11
 msgid "Font:"
-msgstr "Police :"
+msgstr "خط :"
 
 #: ../data/interfaces/parole-settings.ui.h:12
 msgid "Hue:"
-msgstr "Teinte :"
+msgstr "لون :"
 
 #: ../data/interfaces/parole-settings.ui.h:13
 msgid "Media Player Settings"
-msgstr "Paramètres du Lecteur Multimédia"
+msgstr "إعدادات مشغل الوسائط"
 
 #: ../data/interfaces/parole-settings.ui.h:14
 msgid "Parole Settings"
-msgstr "Paramètres de Parole"
+msgstr "إعدادات Parole"
 
 #: ../data/interfaces/parole-settings.ui.h:15
 msgid "Reset To Defaults"
-msgstr "Réinitialiser "
+msgstr "الرجوع إلى وضع البدئي "
 
 #: ../data/interfaces/parole-settings.ui.h:16
 msgid "Saturation:"
-msgstr "Saturation :"
+msgstr "تشبع :"
 
 #: ../data/interfaces/parole-settings.ui.h:17
 msgid "Visualization type:"
-msgstr "Type de visualisation :"
+msgstr "نوع visualisation :"
 
 #: ../data/interfaces/save-playlist.ui.h:1
 msgid "By Extension"
-msgstr "Par Extension"
+msgstr "حسب الإختصار"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "Select File Types (By Extension)"
-msgstr "Sélectionner des Types de Fichiers (Par Extension)"
+msgstr "إختر نوع الملف (حسب الإختصار)"
 
 #: ../data/interfaces/open-location.ui.h:1
 msgid "Clear history"
-msgstr "Effacer l'historique"
+msgstr "محو التاريخ"
 
 #: ../data/interfaces/open-location.ui.h:2
 msgid "Enter the address of a location to open"
@@ -280,19 +279,19 @@ msgstr "خطأ"
 
 #: ../gst/parole-gst.c:1526
 msgid "The stream is taking too much time to load"
-msgstr "Le flux met trop de temps à se charger"
+msgstr ""
 
 #: ../gst/parole-gst.c:1526
 msgid "Stop"
-msgstr "Arrêt"
+msgstr "توقف"
 
 #: ../gst/parole-gst.c:1715
 msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
-msgstr "Impossible de charger le greffon de lecture GStreamer, vérifiez votre installation de GStreamer"
+msgstr ""
 
 #: ../gst/parole-gst.c:1735
 msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
-msgstr "Impossible de charger le greffon vidéo GStreamer, vérifiez votre installation de GStreamer"
+msgstr ""
 
 #: ../src/main.c:54
 #, c-format
@@ -307,69 +306,69 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Lecteur Multimédia Parole %s\n"
+"مشغل الوسائط Parole %s\n"
 "\n"
-"Une partie du projet \"goodies' d' Xfce \n"
+"جزء من مشروع \"goodies'  Xfce \n"
 "http://goodies.xfce.org\n"
 "\n"
-"Sous licence GNU GPL.\n"
+"تحت رخصة الجنو GPL.\n"
 "\n"
 
 #: ../src/main.c:187
 msgid "Unknown argument "
-msgstr "Argument inconnu"
+msgstr "عنصر مجهولة"
 
 #: ../src/main.c:225
 msgid "Open a new instance"
-msgstr "Ouvrir une nouvelle instance"
+msgstr "فتح نموذج جديد"
 
 #: ../src/main.c:226
 msgid "Do not load plugins"
-msgstr "Ne chargez pas les plugins"
+msgstr "عدم تحميل الملحقات"
 
 #: ../src/main.c:227
 msgid "Set Audio-CD/VCD/DVD device path"
-msgstr "Sélectionner le chemin vers le périphérique Audio-CD/VCD/DVD"
+msgstr "إختر مسار الجهاز Audio-CD/VCD/DVD"
 
 #: ../src/main.c:228
 msgid "Play or pause if already playing"
-msgstr "Lecture ou pause si lecture en cours"
+msgstr "تشغيل أو إقاف مؤقت إذا كان يعمل"
 
 #: ../src/main.c:229
 msgid "Stop playing"
-msgstr "Stopper la lecture"
+msgstr "إقاف القراءة"
 
 #: ../src/main.c:230
 msgid "Next track"
-msgstr "Piste suivante"
+msgstr "المقطع التالي"
 
 #: ../src/main.c:231
 msgid "Previous track"
-msgstr "Piste précédente"
+msgstr "المقطع السابق"
 
 #: ../src/main.c:232
 msgid "Seek forward"
-msgstr "Avancer"
+msgstr "الأمام"
 
 #: ../src/main.c:233
 msgid "Seek Backward"
-msgstr "Reculer"
+msgstr "الوراء"
 
 #: ../src/main.c:234
 msgid "Raise volume"
-msgstr "Augmenter le volume"
+msgstr "زيادة حجم الصوت"
 
 #: ../src/main.c:235
 msgid "Lower volume"
-msgstr "Baisser le volume"
+msgstr "تقليص حجم الصوت"
 
 #: ../src/main.c:236
 msgid "Mute volume"
-msgstr "Couper le volume"
+msgstr "كتم الصوت"
 
 #: ../src/main.c:237
 msgid "Version information"
-msgstr "Information de version"
+msgstr "معلومات النسخة"
 
 #: ../src/main.c:238
 msgid "Start in fullscreen mode"
@@ -377,24 +376,24 @@ msgstr "بدء ملء الشاشة"
 
 #: ../src/main.c:239
 msgid "Enabled/Disable XV support"
-msgstr "Activer/Désactiver le support XV"
+msgstr "تفعيل/تعطيل دعم XV"
 
 #: ../src/main.c:241
 msgid "Media to play"
-msgstr "Média à lire"
+msgstr "وسائط للتشغيل"
 
 #: ../src/main.c:278
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
-msgstr "Parole est déjà en cours de fonctionnement. Utilisez -i pour ouvrir une nouvelle instance\n"
+msgstr "Parole يعمل حالبا. إستعمل -i لفتح واحد أخر\n"
 
 #: ../src/parole-medialist.c:501
 msgid "Permission denied"
-msgstr "Permission non accordée"
+msgstr "صلاحيات غبر كافية"
 
 #: ../src/parole-medialist.c:503
 msgid "Error saving playlist file"
-msgstr "Erreur lors de la sauvegarde de la liste de lecture"
+msgstr "خلل أتناء حفظ قائمة التشغيل"
 
 #: ../src/parole-medialist.c:515
 msgid "Unknown playlist format"
@@ -410,27 +409,27 @@ msgstr "المرجوا إختيار صيغة قائمة التشغبل مدعو�
 #: ../plugins/properties/stream-properties-provider.c:142
 #: ../plugins/properties/stream-properties-provider.c:143
 msgid "Unknown"
-msgstr "Inconnu"
+msgstr "مجهول"
 
 #: ../src/parole-medialist.c:642 ../src/parole-player.c:1991
 msgid "Playlist"
-msgstr "Liste de lecture"
+msgstr "قائمة التشغيل"
 
 #: ../src/parole-medialist.c:649
 msgid "M3U Playlists"
-msgstr "Listes de lecture M3U"
+msgstr "قائمة التشغيل M3U"
 
 #: ../src/parole-medialist.c:657
 msgid "PLS Playlists"
-msgstr "Listes de lecture PLS"
+msgstr "قائمة التشغيل PLS"
 
 #: ../src/parole-medialist.c:665
 msgid "Advanced Stream Redirector"
-msgstr "Redirecteur de Flux Avancé"
+msgstr ""
 
 #: ../src/parole-medialist.c:673
 msgid "Shareable Playlist"
-msgstr "Liste de Lecture Partageable"
+msgstr "قائمة التشغيل قابلة المشاركة"
 
 #. Clear
 #: ../src/parole-medialist.c:1152
@@ -450,93 +449,92 @@ msgstr "شغل الملفات المفتوحة"
 #. *
 #: ../src/parole-medialist.c:1331
 msgid "Remember playlist"
-msgstr "Se souvenir de la liste de lecture"
+msgstr "تذكر قائمة التشغيل"
 
 #: ../src/parole-medialist.c:1502
 msgid "Media list"
-msgstr "Liste de médias"
+msgstr "قائمة التشغيل"
 
 #: ../src/parole-player.c:336
 msgid "Hide playlist"
-msgstr "Cacher la liste de lecture"
+msgstr "إخفاء قائمة التشغيل"
 
 #: ../src/parole-player.c:345
 msgid "Show playlist"
-msgstr "Afficher la liste de lecture"
+msgstr "عرض قائمة التشغيل"
 
 #: ../src/parole-player.c:378
 msgid "Open ISO image"
-msgstr "Ouvrir une image ISO"
+msgstr "فتح صورة ISO"
 
 #: ../src/parole-player.c:395
 msgid "CD image"
-msgstr "Image CD"
+msgstr "صورة CD"
 
 #: ../src/parole-player.c:395
 msgid "DVD image"
-msgstr "Image DVD"
+msgstr "صورة DVD"
 
 #: ../src/parole-player.c:551 ../src/parole-player.c:659
 msgid "Media stream is not seekable"
-msgstr "Le flux média ne peut être recherché"
+msgstr ""
 
 #. * Next chapter menu item
 #. 
 #: ../src/parole-player.c:1215 ../src/parole-disc-menu.c:122
 msgid "Next Track"
-msgstr "Piste Suivante"
+msgstr "المقطع التالي"
 
 #. * Previous chapter menu item
 #. 
 #: ../src/parole-player.c:1227 ../src/parole-disc-menu.c:123
 msgid "Previous Track"
-msgstr "Piste Précédente"
+msgstr "المقطع السابق"
 
 #: ../src/parole-statusbar.c:61
 msgid "Buffering"
-msgstr "Mise en tampon"
+msgstr "تخزين المؤقت"
 
 #: ../src/parole-statusbar.c:100
 msgid "Stopped"
-msgstr "Stoppé"
+msgstr "موقف"
 
 #: ../src/parole-statusbar.c:104
 msgid "Finished"
-msgstr "Fini"
+msgstr "إنتها"
 
 #: ../src/parole-statusbar.c:114 ../src/parole-statusbar.c:124
 msgid "Paused"
-msgstr "Mis en pause"
+msgstr "موقف مؤقتا"
 
 #: ../src/parole-statusbar.c:114
 msgid "Playing"
-msgstr "Piste en Cours de Lecture"
+msgstr "مقطع قيد التشغيل"
 
 #: ../src/parole-statusbar.c:170 ../src/parole-statusbar.c:174
 msgid "Live stream:"
-msgstr "Flux live :"
+msgstr ""
 
 #: ../src/parole-about.c:79
 msgid "Author/Maintainer"
-msgstr "Auteur / Mainteneur"
-
+msgstr "مؤلف / معيل"
 #: ../src/parole-about.c:85
 #, c-format
 msgid "Translator (%s)"
-msgstr "Traducteur (%s)"
+msgstr "مترجم (%s)"
 
 #: ../src/parole-disc.c:227
 msgid "Play Disc"
-msgstr "Lire un Disque"
+msgstr "تشغيل القرص"
 
 #: ../src/parole-subtitle-encoding.c:165
 msgid "Current Locale"
-msgstr "Langue Actuelle"
+msgstr "اللغة الحالية"
 
 #: ../src/parole-subtitle-encoding.c:168 ../src/parole-subtitle-encoding.c:170
 #: ../src/parole-subtitle-encoding.c:172 ../src/parole-subtitle-encoding.c:174
 msgid "Arabic"
-msgstr "Arabe"
+msgstr "عربية"
 
 #: ../src/parole-subtitle-encoding.c:177
 msgid "Armenian"
@@ -554,7 +552,7 @@ msgstr "Celtique"
 #: ../src/parole-subtitle-encoding.c:190 ../src/parole-subtitle-encoding.c:192
 #: ../src/parole-subtitle-encoding.c:194 ../src/parole-subtitle-encoding.c:196
 msgid "Central European"
-msgstr "Europe Centrale"
+msgstr "أوربا الوسطة"
 
 #: ../src/parole-subtitle-encoding.c:199 ../src/parole-subtitle-encoding.c:201
 #: ../src/parole-subtitle-encoding.c:203 ../src/parole-subtitle-encoding.c:205
@@ -672,36 +670,36 @@ msgstr "Vietnamien"
 
 #: ../src/parole-disc-menu.c:130
 msgid "Playing Track"
-msgstr "Piste en Cours de Lecture"
+msgstr "مقطع قيد التشغيل"
 
 #: ../src/parole-disc-menu.c:194
 #, c-format
 msgid "Track %i"
-msgstr "Piste %i"
+msgstr "مقطع %i"
 
 #: ../src/parole-plugins-manager.c:301 ../src/parole-plugins-manager.c:437
 msgid "Visit Website"
-msgstr "Visiter le Site Web"
+msgstr "زر الموقع"
 
 #: ../src/parole-plugins-manager.c:416
 msgid "No installed plugins found on this system"
-msgstr "Aucun plugin installé n'a été détecté"
+msgstr "لم يتم رصد أي ملحق متبث في جهازك"
 
 #: ../parole/parole-filters.c:64
 msgid "Audio"
-msgstr "Audio"
+msgstr "ملف صوتي"
 
 #: ../parole/parole-filters.c:90
 msgid "Video"
-msgstr "Vidéo"
+msgstr "فيديو"
 
 #: ../parole/parole-filters.c:115
 msgid "Audio and video"
-msgstr "Audio et vidéo"
+msgstr "ملف صوتي و فيديو"
 
 #: ../parole/parole-filters.c:144
 msgid "All supported files"
-msgstr "Tous les fichiers pris en charge"
+msgstr "Tكل الملفات المدعومة"
 
 #: ../parole/parole-filters.c:171
 msgid "Playlist files"
@@ -729,11 +727,11 @@ msgstr "عام"
 
 #: ../plugins/properties/stream-properties-provider.c:392
 msgid "Stream doesn't support tags changes"
-msgstr "Le flux ne prend pas les changements de tags en charge"
+msgstr ""
 
 #: ../plugins/properties/stream-properties-provider.c:399
 msgid "Save media tags changes"
-msgstr "Sauvegarder les changements de tags"
+msgstr "حفظ تغييرات الأوسمة"
 
 #: ../plugins/properties/stream-properties-provider.c:524
 msgid "Properties"
