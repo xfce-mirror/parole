@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the parole-media-player package.
 # Steve Dodier <sidnioulz@gmail.com>
 # Douart Patrick <patrick.2@laposte.net> 2010.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: ast\n"
@@ -32,7 +32,7 @@ msgstr "4:3 (TV)"
 
 #: ../data/interfaces/parole.ui.h:4
 msgid "Aspect Ratio"
-msgstr ""
+msgstr "نسبة الإرتفاع"
 
 #: ../data/interfaces/parole.ui.h:5
 msgid "Auto"
@@ -103,7 +103,7 @@ msgstr "صوت"
 
 #: ../data/interfaces/parole.ui.h:21
 msgid "Square"
-msgstr ""
+msgstr "مربع"
 
 #: ../data/interfaces/parole.ui.h:22
 msgid "Volume Down"
@@ -259,25 +259,23 @@ msgstr "Effacer l'historique"
 
 #: ../data/interfaces/open-location.ui.h:2
 msgid "Enter the address of a location to open"
-msgstr ""
+msgstr "أدخل عنوان المسار الذي سيتم فتحه"
 
 #: ../data/interfaces/open-location.ui.h:3
-#, fuzzy
 msgid "Open location of media file or live stream"
-msgstr "<b>Ouvrir l'emplacement d'un média ou d'un flux :</b>"
+msgstr ""
 
 #: ../data/desktop/parole.desktop.in.in.h:1
-#, fuzzy
 msgid "Parole"
-msgstr "Plugins de Parole"
+msgstr "Parole"
 
 #: ../common/parole-common.c:67
 msgid "Message"
-msgstr ""
+msgstr "رسالة"
 
 #: ../common/parole-common.c:72
 msgid "Error"
-msgstr ""
+msgstr "خطأ"
 
 #: ../gst/parole-gst.c:1526
 msgid "The stream is taking too much time to load"
@@ -288,18 +286,12 @@ msgid "Stop"
 msgstr "Arrêt"
 
 #: ../gst/parole-gst.c:1715
-msgid ""
-"Unable to load playbin GStreamer plugin, check your GStreamer installation"
-msgstr ""
-"Impossible de charger le greffon de lecture GStreamer, vérifiez votre "
-"installation de GStreamer"
+msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
+msgstr "Impossible de charger le greffon de lecture GStreamer, vérifiez votre installation de GStreamer"
 
 #: ../gst/parole-gst.c:1735
-msgid ""
-"Unable to load video GStreamer plugin, check your GStreamer installation"
-msgstr ""
-"Impossible de charger le greffon vidéo GStreamer, vérifiez votre "
-"installation de GStreamer"
+msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
+msgstr "Impossible de charger le greffon vidéo GStreamer, vérifiez votre installation de GStreamer"
 
 #: ../src/main.c:54
 #, c-format
@@ -379,9 +371,8 @@ msgid "Version information"
 msgstr "Information de version"
 
 #: ../src/main.c:238
-#, fuzzy
 msgid "Start in fullscreen mode"
-msgstr "Quitter le plein écran"
+msgstr "بدء ملء الشاشة"
 
 #: ../src/main.c:239
 msgid "Enabled/Disable XV support"
@@ -394,9 +385,7 @@ msgstr "Média à lire"
 #: ../src/main.c:278
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
-msgstr ""
-"Parole est déjà en cours de fonctionnement. Utilisez -i pour ouvrir une "
-"nouvelle instance\n"
+msgstr "Parole est déjà en cours de fonctionnement. Utilisez -i pour ouvrir une nouvelle instance\n"
 
 #: ../src/parole-medialist.c:501
 msgid "Permission denied"
@@ -407,16 +396,12 @@ msgid "Error saving playlist file"
 msgstr "Erreur lors de la sauvegarde de la liste de lecture"
 
 #: ../src/parole-medialist.c:515
-#, fuzzy
 msgid "Unknown playlist format"
-msgstr "Afficher la liste de lecture"
+msgstr "صيغة قائمة التشغبل غبر معروفة"
 
 #: ../src/parole-medialist.c:516
-#, fuzzy
 msgid "Please chooser a supported playlist format"
-msgstr ""
-"Format de liste de lecture inconnu, Veuillez sélectionner un format de liste "
-"de lecture pris en charge"
+msgstr "المرجوا إختيار صيغة قائمة التشغبل مدعومة"
 
 #: ../src/parole-medialist.c:568 ../src/parole-plugins-manager.c:377
 #: ../plugins/properties/stream-properties-provider.c:140
@@ -449,17 +434,15 @@ msgstr "Liste de Lecture Partageable"
 #. Clear
 #: ../src/parole-medialist.c:1152
 msgid "Open Containing Folder"
-msgstr ""
+msgstr "فتح المجلد المتضمن"
 
 #: ../src/parole-medialist.c:1303
-#, fuzzy
 msgid "Replace playlist when opening files"
-msgstr "Remplacer playlist avec les fichiers ouverts"
+msgstr "استبدال  قائمة التشغيل عند فتح الملفات"
 
 #: ../src/parole-medialist.c:1319
-#, fuzzy
 msgid "Play opened files"
-msgstr "Démarrez la lecture de fichiers ouverts"
+msgstr "شغل الملفات المفتوحة"
 
 #. *
 #. * Remember media list entries
@@ -496,16 +479,14 @@ msgstr "Image DVD"
 msgid "Media stream is not seekable"
 msgstr "Le flux média ne peut être recherché"
 
-#.
 #. * Next chapter menu item
-#.
+#. 
 #: ../src/parole-player.c:1215 ../src/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr "Piste Suivante"
 
-#.
 #. * Previous chapter menu item
-#.
+#. 
 #: ../src/parole-player.c:1227 ../src/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr "Piste Précédente"
@@ -763,7 +744,7 @@ msgstr "قراءة خصائص الوسيط"
 
 #: ../plugins/properties/stream-properties.desktop.in.h:2
 msgid "Stream Properties"
-msgstr ""
+msgstr "Stream خصائص"
 
 #: ../plugins/tray/tray-provider.c:283
 msgid "<b>Playing:</b>"
@@ -811,8 +792,7 @@ msgstr "أيقونة الشريط"
 
 #: ../plugins/window-title/window-title.desktop.in.h:1
 msgid "Set the main window name to the current playing media name."
-msgstr ""
-"إظهار إسم الملف قيد التشغبل في النافذة الرئيسية. "
+msgstr "إظهار إسم الملف قيد التشغبل في النافذة الرئيسية. "
 
 #: ../plugins/window-title/window-title.desktop.in.h:2
 msgid "Window Title"
@@ -820,7 +800,7 @@ msgstr "عنوان النافذة"
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:1
 msgid "Inhibit Power Manager from suspending the machine while playing DVD."
-msgstr ""
+msgstr "منع تعليق الجهاز أتناء تشغيل الدي في دي."
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
