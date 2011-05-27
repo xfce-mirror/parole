@@ -1,22 +1,18 @@
-# Dutch translation for Parole
-#
+# Dutch translation for the Parole package.
+# Copyright (C) The Xfce development team.
 # This file is distributed under the same license as the Parole package.
-#
 # This translation is forked from the Totem package.
-#
 # Huib Kleinhout <huib@stack.nl>, 2002–2004.
 # Tino Meinen <a.t.meinen@chello.nl>, 2004–2009.
 # Wouter Bolsterlee <wbolster@gnome.org>, 2006–2009.
 # Mario Blättermann <mariobl@gnome.org>.
 # Pjotr, 2011.
 #
-# subtitels      ondertiteling/ondertitels (niet: ondertitelingen)
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: Parole master\n"
+"Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-24 16:08+0000\n"
+"POT-Creation-Date: 2011-05-27 10:09+0000\n"
 "PO-Revision-Date: 2010-01-13 21:55+0100\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -225,8 +221,7 @@ msgstr "Schermbeveiliging uitzetten tijdens het afspelen van films"
 
 #: ../data/interfaces/parole-settings.ui.h:9
 msgid "Enable visualization when playing audio file"
-msgstr ""
-"Visuele effecten weergeven bij het afspelen van een geluidbestand"
+msgstr "Visuele effecten weergeven bij het afspelen van een geluidbestand"
 
 #: ../data/interfaces/parole-settings.ui.h:10
 msgid "Encoding: "
@@ -304,15 +299,14 @@ msgstr "Stop"
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
-"Kon GStreamer-playbin-plugin niet laden. Controleer uw "
-"GStreamer-installatie."
+"Kon GStreamer-playbin-plugin niet laden. Controleer uw GStreamer-installatie."
 
 #: ../gst/parole-gst.c:1735
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
-"Kon de Gstreamer-video-plugin niet laden. Controleer uw "
-"GStreamer-installatie."
+"Kon de Gstreamer-video-plugin niet laden. Controleer uw GStreamer-"
+"installatie."
 
 #: ../src/main.c:54
 #, c-format
@@ -789,8 +783,8 @@ msgstr "Notificatie aanzetten"
 
 #: ../plugins/tray/tray-provider.c:438
 msgid "Always minimize to tray when window is closed"
-msgstr "Als het venster gesloten wordt, altijd "
-"minimaliseren naar het systeemvak"
+msgstr ""
+"Als het venster gesloten wordt, altijd minimaliseren naar het systeemvak"
 
 #: ../plugins/tray/tray-provider.c:477
 msgid "Minimize to tray?"
