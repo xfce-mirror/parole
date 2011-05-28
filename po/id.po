@@ -2,12 +2,12 @@
 # Copyright (C) 2009 THE parole'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the parole package.
 # Andhika Padmawan <andhika.padmawan@gmail.com>, 2010.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-13 19:55+0100\n"
+"POT-Creation-Date: 2011-05-28 10:09+0000\n"
 "PO-Revision-Date: 2010-01-13 14:55-0500\n"
 "Last-Translator: Andhika Padmawan <andhika.padmawan@gmail.com>\n"
 "Language-Team: Indonesian <translation-team-id@lists.sourceforge.net>\n"
@@ -59,7 +59,7 @@ msgstr "Pemutar media"
 msgid "Mute"
 msgstr "Diam"
 
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:1198
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:1215
 #: ../src/parole-disc-menu.c:113
 msgid "Next Chapter"
 msgstr "Bab Berikutnya"
@@ -68,8 +68,8 @@ msgstr "Bab Berikutnya"
 msgid "None"
 msgstr "Tak Ada"
 
-#: ../data/interfaces/parole.ui.h:14 ../data/desktop/parole.desktop.in.in.h:1
-#: ../src/parole-about.c:70 ../plugins/window-title/window-title-provider.c:58
+#: ../data/interfaces/parole.ui.h:14 ../src/parole-about.c:74
+#: ../plugins/window-title/window-title-provider.c:58
 msgid "Parole Media Player"
 msgstr "Pemutar Media Parole"
 
@@ -77,12 +77,12 @@ msgstr "Pemutar Media Parole"
 msgid "Plugins"
 msgstr "Plugin"
 
-#: ../data/interfaces/parole.ui.h:16 ../src/parole-player.c:1210
+#: ../data/interfaces/parole.ui.h:16 ../src/parole-player.c:1227
 #: ../src/parole-disc-menu.c:114
 msgid "Previous Chapter"
 msgstr "Bab Sebelumnya"
 
-#: ../data/interfaces/parole.ui.h:17
+#: ../data/interfaces/parole.ui.h:17 ../src/parole-medialist.c:1264
 msgid "Repeat"
 msgstr "Ulangi"
 
@@ -90,7 +90,7 @@ msgstr "Ulangi"
 msgid "Select Track"
 msgstr "Pilih Jalur"
 
-#: ../data/interfaces/parole.ui.h:19
+#: ../data/interfaces/parole.ui.h:19 ../src/parole-medialist.c:1280
 msgid "Shuffle"
 msgstr "Acak"
 
@@ -131,14 +131,26 @@ msgid "_View"
 msgstr "_Tampilan"
 
 #: ../data/interfaces/mediachooser.ui.h:1
+msgid "Add"
+msgstr "Tambah"
+
+#: ../data/interfaces/mediachooser.ui.h:2
+msgid "Open media files"
+msgstr "Buka berkas media"
+
+#: ../data/interfaces/mediachooser.ui.h:3
+msgid "Parole Media Chooser"
+msgstr "Pemilih Media Parole"
+
+#: ../data/interfaces/mediachooser.ui.h:4
 msgid "Replace playlist with opened files"
 msgstr "Ganti senarai putar dengan berkas yang dibuka"
 
-#: ../data/interfaces/mediachooser.ui.h:2
+#: ../data/interfaces/mediachooser.ui.h:5
 msgid "Scan folders recursively"
 msgstr "Pindai folder secara rekursif"
 
-#: ../data/interfaces/mediachooser.ui.h:3
+#: ../data/interfaces/mediachooser.ui.h:6
 msgid "Start playing opened files"
 msgstr "Mulai putar berkas yang dibuka"
 
@@ -238,25 +250,45 @@ msgstr "Menurut Ekstensi"
 msgid "Select File Types (By Extension)"
 msgstr "Pilih Tipe Berkas (Menurut Ekstensi)"
 
-#: ../gst/parole-gst.c:1498
+#: ../data/interfaces/open-location.ui.h:1
+msgid "Clear history"
+msgstr "Hapus riwayat"
+
+#: ../data/interfaces/open-location.ui.h:2
+msgid "Enter the address of a location to open"
+msgstr "Masukkan alamat lokasi yang akan dibuka"
+
+#: ../data/interfaces/open-location.ui.h:3
+msgid "Open location of media file or live stream"
+msgstr "Buka lokasi berkas media atau arus langsung"
+
+#: ../data/desktop/parole.desktop.in.in.h:1
+msgid "Parole"
+msgstr "Parole"
+
+#: ../common/parole-common.c:67
+msgid "Message"
+msgstr "Pesan"
+
+#: ../common/parole-common.c:72
+msgid "Error"
+msgstr "Galat"
+
+#: ../gst/parole-gst.c:1526
 msgid "The stream is taking too much time to load"
 msgstr "Arus menghabiskan terlalu banyak waktu untuk dimuat"
 
-#: ../gst/parole-gst.c:1498
+#: ../gst/parole-gst.c:1526
 msgid "Stop"
 msgstr "Stop"
 
-#: ../gst/parole-gst.c:1687
-msgid ""
-"Unable to load playbin GStreamer plugin, check your GStreamer installation"
-msgstr ""
-"Tak dapat memuat plugin playbin GStreamer, periksa instalasi GStreamer anda"
+#: ../gst/parole-gst.c:1715
+msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
+msgstr "Tak dapat memuat plugin playbin GStreamer, periksa instalasi GStreamer anda"
 
-#: ../gst/parole-gst.c:1707
-msgid ""
-"Unable to load video GStreamer plugin, check your GStreamer installation"
-msgstr ""
-"Tak dapat memuat plugin video GStreamer, periksa instalasi GStreamer anda"
+#: ../gst/parole-gst.c:1735
+msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
+msgstr "Tak dapat memuat plugin video GStreamer, periksa instalasi GStreamer anda"
 
 #: ../src/main.c:54
 #, c-format
@@ -279,166 +311,184 @@ msgstr ""
 "Dilisensikan di bawah GNU GPL.\n"
 "\n"
 
-#: ../src/main.c:175
+#: ../src/main.c:187
 msgid "Unknown argument "
 msgstr "Argumen tak diketahui "
 
-#: ../src/main.c:212
+#: ../src/main.c:225
 msgid "Open a new instance"
 msgstr "Buka sebuah instansi baru"
 
-#: ../src/main.c:213
+#: ../src/main.c:226
 msgid "Do not load plugins"
 msgstr "Jangan muat plugin"
 
-#: ../src/main.c:214
+#: ../src/main.c:227
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "Atur alamat divais Audio-CD/VCD/DVD"
 
-#: ../src/main.c:215
+#: ../src/main.c:228
 msgid "Play or pause if already playing"
 msgstr "Putar atau jeda jika telah memainkan"
 
-#: ../src/main.c:216
+#: ../src/main.c:229
 msgid "Stop playing"
 msgstr "Stop memutar"
 
-#: ../src/main.c:217
+#: ../src/main.c:230
 msgid "Next track"
 msgstr "Jalur berikutnya"
 
-#: ../src/main.c:218
+#: ../src/main.c:231
 msgid "Previous track"
 msgstr "Jalur sebelumnya"
 
-#: ../src/main.c:219
+#: ../src/main.c:232
 msgid "Seek forward"
 msgstr "Cari maju"
 
-#: ../src/main.c:220
+#: ../src/main.c:233
 msgid "Seek Backward"
 msgstr "Cari mundur"
 
-#: ../src/main.c:221
+#: ../src/main.c:234
 msgid "Raise volume"
 msgstr "Naikkan volume"
 
-#: ../src/main.c:222
+#: ../src/main.c:235
 msgid "Lower volume"
 msgstr "Kecilkan volume"
 
-#: ../src/main.c:223
+#: ../src/main.c:236
 msgid "Mute volume"
 msgstr "Diam volume"
 
-#: ../src/main.c:224
+#: ../src/main.c:237
 msgid "Version information"
 msgstr "Informasi versi"
 
-#: ../src/main.c:225
+#: ../src/main.c:238
+msgid "Start in fullscreen mode"
+msgstr "Jalankan di mode layar penuh"
+
+#: ../src/main.c:239
 msgid "Enabled/Disable XV support"
 msgstr "Dukungan XV diaktifkan/dinonaktifkan"
 
-#: ../src/main.c:227
+#: ../src/main.c:241
 msgid "Media to play"
 msgstr "Media untuk dimainkan"
 
-#: ../src/main.c:264
+#: ../src/main.c:278
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole telah berjalan, gunakan -i untuk membuka sebuah instansi baru\n"
 
-#: ../src/parole-mediachooser.c:213
-msgid "Add media files"
-msgstr "Tambah berkas media"
-
-#: ../src/parole-mediachooser.c:246
-msgid "Add"
-msgstr "Tambah"
-
-#: ../src/parole-medialist.c:437
-msgid "Error saving playlist file"
-msgstr "Galat menyimpan berkas senarai putar"
-
-#: ../src/parole-medialist.c:437
+#: ../src/parole-medialist.c:501
 msgid "Permission denied"
 msgstr "Hak akses ditolak"
 
-#: ../src/parole-medialist.c:446
-msgid "Unknown playlist format, Please select a support playlist format"
-msgstr ""
-"Format senarai putar tak diketahui. Silakan pilih format senarai putar yang "
-"didukung"
+#: ../src/parole-medialist.c:503
+msgid "Error saving playlist file"
+msgstr "Galat menyimpan berkas senarai putar"
 
-#: ../src/parole-medialist.c:514 ../src/parole-player.c:1974
+#: ../src/parole-medialist.c:515
+msgid "Unknown playlist format"
+msgstr "Format senarai tak diketahui"
+
+#: ../src/parole-medialist.c:516
+msgid "Please chooser a supported playlist format"
+msgstr "Silakan pilih format senarai putar yang didukung"
+
+#: ../src/parole-medialist.c:568 ../src/parole-plugins-manager.c:377
+#: ../plugins/properties/stream-properties-provider.c:140
+#: ../plugins/properties/stream-properties-provider.c:141
+#: ../plugins/properties/stream-properties-provider.c:142
+#: ../plugins/properties/stream-properties-provider.c:143
+msgid "Unknown"
+msgstr "Tak Diketahui"
+
+#: ../src/parole-medialist.c:642 ../src/parole-player.c:1991
 msgid "Playlist"
 msgstr "Senarai Putar"
 
-#: ../src/parole-medialist.c:521
+#: ../src/parole-medialist.c:649
 msgid "M3U Playlists"
 msgstr "Senarai Putar M3U"
 
-#: ../src/parole-medialist.c:529
+#: ../src/parole-medialist.c:657
 msgid "PLS Playlists"
 msgstr "Senarai Putar PLS"
 
-#: ../src/parole-medialist.c:537
+#: ../src/parole-medialist.c:665
 msgid "Advanced Stream Redirector"
 msgstr "Pengalih Arus Lanjutan"
 
-#: ../src/parole-medialist.c:545
+#: ../src/parole-medialist.c:673
 msgid "Shareable Playlist"
 msgstr "Senarai Putar Dapat Dibagikan"
 
-#: ../src/parole-medialist.c:860
+#. Clear
+#: ../src/parole-medialist.c:1152
+msgid "Open Containing Folder"
+msgstr "Buka Folder Isi"
+
+#: ../src/parole-medialist.c:1303
+msgid "Replace playlist when opening files"
+msgstr "Ganti senarai putar ketika membuka berkas"
+
+#: ../src/parole-medialist.c:1319
+msgid "Play opened files"
+msgstr "Putar berkas yang dibuka"
+
+#. *
+#. * Remember media list entries
+#. *
+#: ../src/parole-medialist.c:1331
 msgid "Remember playlist"
 msgstr "Ingat senarai putar"
 
-#: ../src/parole-medialist.c:1012
+#: ../src/parole-medialist.c:1502
 msgid "Media list"
 msgstr "Senarai media"
 
-#: ../src/parole-player.c:333
+#: ../src/parole-player.c:336
 msgid "Hide playlist"
 msgstr "Sembunyikan senarai putar"
 
-#: ../src/parole-player.c:342
+#: ../src/parole-player.c:345
 msgid "Show playlist"
 msgstr "Tampilkan senarai putar"
 
-#: ../src/parole-player.c:375
+#: ../src/parole-player.c:378
 msgid "Open ISO image"
 msgstr "Buka citra ISO"
 
-#: ../src/parole-player.c:392
+#: ../src/parole-player.c:395
 msgid "CD image"
 msgstr "Citra CD"
 
-#: ../src/parole-player.c:392
+#: ../src/parole-player.c:395
 msgid "DVD image"
 msgstr "Citra DVD"
 
-#: ../src/parole-player.c:643
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:300
+#: ../src/parole-player.c:551 ../src/parole-player.c:659
 msgid "Media stream is not seekable"
 msgstr "Arus media tak dapat dicari"
 
-#.
 #. * Next chapter menu item
-#.
-#: ../src/parole-player.c:1198 ../src/parole-disc-menu.c:122
+#. 
+#: ../src/parole-player.c:1215 ../src/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr "Jalur Berikutnya"
 
-#.
 #. * Previous chapter menu item
-#.
-#: ../src/parole-player.c:1210 ../src/parole-disc-menu.c:123
+#. 
+#: ../src/parole-player.c:1227 ../src/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr "Jalur Sebelumnya"
 
 #: ../src/parole-statusbar.c:61
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:593
 msgid "Buffering"
 msgstr "Menyangga"
 
@@ -458,15 +508,15 @@ msgstr "Jeda"
 msgid "Playing"
 msgstr "Memutar"
 
-#: ../src/parole-statusbar.c:168
+#: ../src/parole-statusbar.c:170 ../src/parole-statusbar.c:174
 msgid "Live stream:"
 msgstr "Arus langsung:"
 
-#: ../src/parole-about.c:75
+#: ../src/parole-about.c:79
 msgid "Author/Maintainer"
 msgstr "Penulis/Pengelola"
 
-#: ../src/parole-about.c:81
+#: ../src/parole-about.c:85
 #, c-format
 msgid "Translator (%s)"
 msgstr "Penerjemah (%s)"
@@ -616,18 +666,6 @@ msgstr "Barat"
 msgid "Vietnamese"
 msgstr "Vietnam"
 
-#: ../src/parole-open-location.c:181
-msgid "Open location..."
-msgstr "Buka lokasi..."
-
-#: ../src/parole-open-location.c:186
-msgid "<b>Open location of media file or live stream:</b>"
-msgstr "<b>Buka lokasi berkas media atau arus langsung:</b>"
-
-#: ../src/parole-open-location.c:205
-msgid "Clear history"
-msgstr "Hapus riwayat"
-
 #: ../src/parole-disc-menu.c:130
 msgid "Playing Track"
 msgstr "Memutar Jalur"
@@ -637,19 +675,11 @@ msgstr "Memutar Jalur"
 msgid "Track %i"
 msgstr "Jalur %i"
 
-#: ../src/parole-plugins-manager.c:297 ../src/parole-plugins-manager.c:433
+#: ../src/parole-plugins-manager.c:301 ../src/parole-plugins-manager.c:437
 msgid "Visit Website"
 msgstr "Kunjungi Situs Web"
 
-#: ../src/parole-plugins-manager.c:373
-#: ../plugins/properties/stream-properties-provider.c:140
-#: ../plugins/properties/stream-properties-provider.c:141
-#: ../plugins/properties/stream-properties-provider.c:142
-#: ../plugins/properties/stream-properties-provider.c:143
-msgid "Unknown"
-msgstr "Tak Diketahui"
-
-#: ../src/parole-plugins-manager.c:412
+#: ../src/parole-plugins-manager.c:416
 msgid "No installed plugins found on this system"
 msgstr "Tak ada plugin terinstal yang ditemukan di sistem ini"
 
@@ -713,39 +743,39 @@ msgstr "Baca properti media"
 msgid "Stream Properties"
 msgstr "Properti Arus"
 
-#: ../plugins/tray/tray-provider.c:262
+#: ../plugins/tray/tray-provider.c:283
 msgid "<b>Playing:</b>"
 msgstr "<b>Memutar:</b>"
 
-#: ../plugins/tray/tray-provider.c:262
+#: ../plugins/tray/tray-provider.c:283
 msgid "<b>Duration:</b>"
 msgstr "<b>Durasi:</b>"
 
-#: ../plugins/tray/tray-provider.c:420
+#: ../plugins/tray/tray-provider.c:419
 msgid "Tray icon plugin"
 msgstr "Baki plugin ikon"
 
-#: ../plugins/tray/tray-provider.c:430
+#: ../plugins/tray/tray-provider.c:429
 msgid "Enable notification"
 msgstr "Aktifkan notifikasi"
 
-#: ../plugins/tray/tray-provider.c:439
+#: ../plugins/tray/tray-provider.c:438
 msgid "Always minimize to tray when window is closed"
 msgstr "Selalu minimalkan ke baki ketika jendela ditutup"
 
-#: ../plugins/tray/tray-provider.c:478
+#: ../plugins/tray/tray-provider.c:477
 msgid "Minimize to tray?"
 msgstr "Minimalkan ke baki?"
 
-#: ../plugins/tray/tray-provider.c:484
+#: ../plugins/tray/tray-provider.c:483
 msgid "Minimize to tray"
 msgstr "Minimalkan ke baki"
 
-#: ../plugins/tray/tray-provider.c:500
+#: ../plugins/tray/tray-provider.c:499
 msgid "Are you sure you want to quit Parole"
 msgstr "Apakah anda yakin ingin keluar Parole"
 
-#: ../plugins/tray/tray-provider.c:504
+#: ../plugins/tray/tray-provider.c:503
 msgid "Remember my choice"
 msgstr "Ingat pilihan saya"
 
@@ -759,8 +789,7 @@ msgstr "Baki ikon"
 
 #: ../plugins/window-title/window-title.desktop.in.h:1
 msgid "Set the main window name to the current playing media name."
-msgstr ""
-"Atur nama jendela utama menjadi nama media yang dimainkan saat ini."
+msgstr "Atur nama jendela utama menjadi nama media yang dimainkan saat ini."
 
 #: ../plugins/window-title/window-title.desktop.in.h:2
 msgid "Window Title"
@@ -774,38 +803,27 @@ msgstr "Cegah Manajer Daya dari menyuspensi mesin ketika memainkan DVD."
 msgid "Power Manager Plugin"
 msgstr "Plugin Manajer Daya"
 
-#: ../browser-plugin/media-plugin/main.c:72
-msgid "socket"
-msgstr "soket"
+#~ msgid "Open location..."
+#~ msgstr "Buka lokasi..."
 
-#: ../browser-plugin/media-plugin/main.c:72
-msgid "SOCKET ID"
-msgstr "ID soket"
+#~ msgid "socket"
+#~ msgstr "soket"
 
-#: ../browser-plugin/media-plugin/main.c:73
-msgid "url to play"
-msgstr "url untuk dimainkan"
+#~ msgid "SOCKET ID"
+#~ msgstr "ID soket"
 
-#: ../browser-plugin/media-plugin/main.c:73
-msgid "URL"
-msgstr "URL"
+#~ msgid "url to play"
+#~ msgstr "url untuk dimainkan"
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:138
-msgid "Leave fullscreen"
-msgstr "Keluar layar penuh"
+#~ msgid "URL"
+#~ msgstr "URL"
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:143
-msgid "Fullscreen"
-msgstr "Layar Penuh"
+#~ msgid "Fullscreen"
+#~ msgstr "Layar Penuh"
 
-#.
-#. * Copy url
-#.
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:455
-msgid "Copy url"
-msgstr "Salin url"
+#~ msgid "Copy url"
+#~ msgstr "Salin url"
 
-#, fuzzy
 #~ msgid "Plugin"
 #~ msgstr "Plugin"
 
