@@ -1,7 +1,6 @@
 # Dutch translation for the Parole package.
 # Copyright (C) The Xfce development team.
 # This file is distributed under the same license as the Parole package.
-# This translation is forked from the Totem package.
 # Huib Kleinhout <huib@stack.nl>, 2002–2004.
 # Tino Meinen <a.t.meinen@chello.nl>, 2004–2009.
 # Wouter Bolsterlee <wbolster@gnome.org>, 2006–2009.
@@ -12,16 +11,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-27 10:09+0000\n"
-"PO-Revision-Date: 2010-01-13 21:55+0100\n"
+"POT-Creation-Date: 2011-06-16 04:09+0000\n"
+"PO-Revision-Date: 2011-06-16 11:55+0200\n"
 "Last-Translator: Pjotr\n"
-"Language-Team: Dutch <vertaling@vrijschrift.org>\n"
+"Language-Team: Dutch\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-Language: Dutch\n"
-"X-Poedit-Country: NETHERLANDS\n"
 
 # breedbeeld?
 #: ../data/interfaces/parole.ui.h:1
@@ -141,7 +138,7 @@ msgstr "Locatie _openen…"
 
 #: ../data/interfaces/parole.ui.h:28
 msgid "_View"
-msgstr "Beel_d"
+msgstr "_Beeld"
 
 #: ../data/interfaces/mediachooser.ui.h:1
 msgid "Add"
@@ -261,7 +258,7 @@ msgstr "Op extensie"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "Select File Types (By Extension)"
-msgstr "Bestandstypen selecteren (Op Extensie)"
+msgstr "Bestandtypen selecteren (Op Extensie)"
 
 #: ../data/interfaces/open-location.ui.h:1
 msgid "Clear history"
@@ -331,7 +328,7 @@ msgstr ""
 
 #: ../src/main.c:187
 msgid "Unknown argument "
-msgstr "Onbekend argument"
+msgstr "Onbekend argument "
 
 #: ../src/main.c:225
 msgid "Open a new instance"
@@ -347,7 +344,7 @@ msgstr "Pad van audio-CD-, VCD- of DVD-speler instellen"
 
 #: ../src/main.c:228
 msgid "Play or pause if already playing"
-msgstr "De film afspelen of pauzeren"
+msgstr "Afspelen of pauzeren indien reeds aan het spelen"
 
 #: ../src/main.c:229
 msgid "Stop playing"
@@ -409,15 +406,15 @@ msgstr "Toestemming geweigerd"
 
 #: ../src/parole-medialist.c:503
 msgid "Error saving playlist file"
-msgstr "Opslaan van het afspeellijst is mislukt"
+msgstr "Opslaan van de speellijst is mislukt"
 
 #: ../src/parole-medialist.c:515
 msgid "Unknown playlist format"
-msgstr "Onbekende opmaak van afspeellijst"
+msgstr "Onbekende opmaak van speellijst"
 
 #: ../src/parole-medialist.c:516
 msgid "Please chooser a supported playlist format"
-msgstr "Kies a.u.b. een ondersteunde afspeellijst-opmaak"
+msgstr "Kies a.u.b. een ondersteunde speellijst-opmaak"
 
 #: ../src/parole-medialist.c:568 ../src/parole-plugins-manager.c:377
 #: ../plugins/properties/stream-properties-provider.c:140
@@ -429,15 +426,15 @@ msgstr "Onbekend"
 
 #: ../src/parole-medialist.c:642 ../src/parole-player.c:1991
 msgid "Playlist"
-msgstr "Afspeellijst"
+msgstr "Speellijst"
 
 #: ../src/parole-medialist.c:649
 msgid "M3U Playlists"
-msgstr "M3U-Afspeellijsten"
+msgstr "M3U-Speellijsten"
 
 #: ../src/parole-medialist.c:657
 msgid "PLS Playlists"
-msgstr "PLS-Afspeellijsten"
+msgstr "PLS-Speellijsten"
 
 #: ../src/parole-medialist.c:665
 msgid "Advanced Stream Redirector"
@@ -445,7 +442,7 @@ msgstr "Advanced Stream Redirector"
 
 #: ../src/parole-medialist.c:673
 msgid "Shareable Playlist"
-msgstr "Deelbare Afspeellijst"
+msgstr "Deelbare Speellijst"
 
 #. Clear
 #: ../src/parole-medialist.c:1152
@@ -454,7 +451,7 @@ msgstr "Open bevattende map"
 
 #: ../src/parole-medialist.c:1303
 msgid "Replace playlist when opening files"
-msgstr "Afspeellijst vervangen bij het openen van bestanden"
+msgstr "Speellijst vervangen bij het openen van bestanden"
 
 #: ../src/parole-medialist.c:1319
 msgid "Play opened files"
@@ -465,7 +462,7 @@ msgstr "Geopende bestanden afspelen"
 #. *
 #: ../src/parole-medialist.c:1331
 msgid "Remember playlist"
-msgstr "Afspeellijst onthouden"
+msgstr "Speellijst onthouden"
 
 #: ../src/parole-medialist.c:1502
 msgid "Media list"
@@ -473,11 +470,11 @@ msgstr "Medialijst"
 
 #: ../src/parole-player.c:336
 msgid "Hide playlist"
-msgstr "Afspeellijst verbergen"
+msgstr "Speellijst verbergen"
 
 #: ../src/parole-player.c:345
 msgid "Show playlist"
-msgstr "Afspeellijst tonen"
+msgstr "Speellijst tonen"
 
 #: ../src/parole-player.c:378
 msgid "Open ISO image"
@@ -493,7 +490,7 @@ msgstr "DVD-beeldbestand"
 
 #: ../src/parole-player.c:551 ../src/parole-player.c:659
 msgid "Media stream is not seekable"
-msgstr "Kan niet voor- of achteruitspoelen in deze uitzending"
+msgstr "Mediastroom is niet zoekbaar"
 
 #.
 #. * Next chapter menu item
@@ -571,17 +568,17 @@ msgstr "Keltisch"
 #: ../src/parole-subtitle-encoding.c:190 ../src/parole-subtitle-encoding.c:192
 #: ../src/parole-subtitle-encoding.c:194 ../src/parole-subtitle-encoding.c:196
 msgid "Central European"
-msgstr "Centraal Europees"
+msgstr "Centraal-Europees"
 
 #: ../src/parole-subtitle-encoding.c:199 ../src/parole-subtitle-encoding.c:201
 #: ../src/parole-subtitle-encoding.c:203 ../src/parole-subtitle-encoding.c:205
 msgid "Chinese Simplified"
-msgstr "Chinees eenvoudig"
+msgstr "Chinees (Vereenvoudigd)"
 
 #: ../src/parole-subtitle-encoding.c:208 ../src/parole-subtitle-encoding.c:210
 #: ../src/parole-subtitle-encoding.c:212
 msgid "Chinese Traditional"
-msgstr "Chinees traditioneel"
+msgstr "Chinees (Traditioneel)"
 
 #: ../src/parole-subtitle-encoding.c:215
 msgid "Croatian"
@@ -722,7 +719,7 @@ msgstr "Alle ondersteunde bestanden"
 
 #: ../parole/parole-filters.c:171
 msgid "Playlist files"
-msgstr "Afspeellijstbestanden"
+msgstr "Speellijstbestanden"
 
 #: ../plugins/properties/stream-properties-provider.c:254
 msgid "Title:"
@@ -847,7 +844,7 @@ msgstr "Energiebeheer-plugin"
 #~ msgstr "URL"
 
 #~ msgid "Fullscreen"
-#~ msgstr "Volledig scherm"
+#~ msgstr "Schermvullend"
 
 #~ msgid "Copy url"
 #~ msgstr "URL kopiëren"
