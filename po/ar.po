@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ast\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-07 16:08+0000\n"
+"POT-Creation-Date: 2011-06-24 16:09+0000\n"
 "PO-Revision-Date: 2011-05-07 15:23+0100\n"
 "Last-Translator: Karim Oulad Chalha <herr.linux88@gmail.com>\n"
 "Language-Team: \n"
@@ -150,7 +150,7 @@ msgstr "إستبدال قائمة التشغيل مع الملفات المفت�
 
 #: ../data/interfaces/mediachooser.ui.h:5
 msgid "Scan folders recursively"
-msgstr ""
+msgstr "مسح المجلدات بشكل متكرر"
 
 #: ../data/interfaces/mediachooser.ui.h:6
 msgid "Start playing opened files"
@@ -261,9 +261,8 @@ msgid "Enter the address of a location to open"
 msgstr "أدخل عنوان المسار الذي سيتم فتحه"
 
 #: ../data/interfaces/open-location.ui.h:3
-#, fuzzy
 msgid "Open location of media file or live stream"
-msgstr "فتح مسار ماف الوسائط او live stream"
+msgstr "فتح موقع ملف وسائط أو بث مباشر"
 
 #: ../data/desktop/parole.desktop.in.in.h:1
 msgid "Parole"
@@ -279,7 +278,7 @@ msgstr "خطأ"
 
 #: ../gst/parole-gst.c:1526
 msgid "The stream is taking too much time to load"
-msgstr ""
+msgstr "البيانات تأخذ الكثير من الوقت للتحميل"
 
 #: ../gst/parole-gst.c:1526
 msgid "Stop"
@@ -287,11 +286,11 @@ msgstr "توقف"
 
 #: ../gst/parole-gst.c:1715
 msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
-msgstr ""
+msgstr "غير قادر على تشغيل إضافات GStreamer، تأكد من تنصيب GStreamer"
 
 #: ../gst/parole-gst.c:1735
 msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
-msgstr ""
+msgstr "غير قادر على تحميل فيديو GStreamer، تأكد من تنصيب GStreamer"
 
 #: ../src/main.c:54
 #, c-format
@@ -425,7 +424,7 @@ msgstr "قائمة التشغيل PLS"
 
 #: ../src/parole-medialist.c:665
 msgid "Advanced Stream Redirector"
-msgstr ""
+msgstr "إعدادات قرأة المسار"
 
 #: ../src/parole-medialist.c:673
 msgid "Shareable Playlist"
@@ -477,7 +476,7 @@ msgstr "صورة DVD"
 
 #: ../src/parole-player.c:551 ../src/parole-player.c:659
 msgid "Media stream is not seekable"
-msgstr ""
+msgstr "مسار الوسائط غير قابل للقرأة"
 
 #. * Next chapter menu item
 #. 
@@ -513,11 +512,12 @@ msgstr "مقطع قيد التشغيل"
 
 #: ../src/parole-statusbar.c:170 ../src/parole-statusbar.c:174
 msgid "Live stream:"
-msgstr ""
+msgstr "قرأة مباشرة"
 
 #: ../src/parole-about.c:79
 msgid "Author/Maintainer"
 msgstr "مؤلف / معيل"
+
 #: ../src/parole-about.c:85
 #, c-format
 msgid "Translator (%s)"
@@ -727,7 +727,7 @@ msgstr "عام"
 
 #: ../plugins/properties/stream-properties-provider.c:392
 msgid "Stream doesn't support tags changes"
-msgstr ""
+msgstr "القرأة لا تدعم التغييرات بها"
 
 #: ../plugins/properties/stream-properties-provider.c:399
 msgid "Save media tags changes"
