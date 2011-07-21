@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-16 22:09+0000\n"
-"PO-Revision-Date: 2011-06-16 11:55+0200\n"
+"POT-Creation-Date: 2011-07-21 10:10+0000\n"
+"PO-Revision-Date: 2011-07-20 11:55+0200\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch (Flemish)\n"
 "MIME-Version: 1.0\n"
@@ -214,7 +214,7 @@ msgstr "Contrast:"
 
 #: ../data/interfaces/parole-settings.ui.h:8
 msgid "Disable screen saver while playing movies"
-msgstr "Schermbeveiliging uitzetten tijdens het afspelen van films"
+msgstr "Schermbeveiliging uitzetten tijdens afspelen van films"
 
 #: ../data/interfaces/parole-settings.ui.h:9
 msgid "Enable visualization when playing audio file"
@@ -222,7 +222,7 @@ msgstr "Visuele effecten weergeven bij afspelen van geluidbestand"
 
 #: ../data/interfaces/parole-settings.ui.h:10
 msgid "Encoding: "
-msgstr "Tekenset:"
+msgstr "Coderen: "
 
 #: ../data/interfaces/parole-settings.ui.h:11
 msgid "Font:"
@@ -242,7 +242,7 @@ msgstr "Parole Instellingen"
 
 #: ../data/interfaces/parole-settings.ui.h:15
 msgid "Reset To Defaults"
-msgstr "Standaardinstellingen herstellen"
+msgstr "Terugzetten op standaardinstellingen"
 
 #: ../data/interfaces/parole-settings.ui.h:16
 msgid "Saturation:"
@@ -258,7 +258,7 @@ msgstr "Op extensie"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "Select File Types (By Extension)"
-msgstr "Bestandtypen selecteren (Op Extensie)"
+msgstr "Bestandtypen selecteren (op extensie)"
 
 #: ../data/interfaces/open-location.ui.h:1
 msgid "Clear history"
@@ -447,11 +447,11 @@ msgstr "Deelbare Speellijst"
 #. Clear
 #: ../src/parole-medialist.c:1152
 msgid "Open Containing Folder"
-msgstr "Open bevattende map"
+msgstr "Open map waar het inzit"
 
 #: ../src/parole-medialist.c:1303
 msgid "Replace playlist when opening files"
-msgstr "Speellijst vervangen bij het openen van bestanden"
+msgstr "Speellijst vervangen bij openen van bestanden"
 
 #: ../src/parole-medialist.c:1319
 msgid "Play opened files"
@@ -686,7 +686,7 @@ msgstr "Vietnamees"
 
 #: ../src/parole-disc-menu.c:130
 msgid "Playing Track"
-msgstr "Spoor aan het Afspelen"
+msgstr "Spoor aan het afspelen"
 
 #: ../src/parole-disc-menu.c:194
 #, c-format
@@ -743,11 +743,11 @@ msgstr "Algemeen"
 
 #: ../plugins/properties/stream-properties-provider.c:392
 msgid "Stream doesn't support tags changes"
-msgstr "Deze uitzending ondersteunt geen wijziging van tags"
+msgstr "Deze uitzending ondersteunt geen wijziging van etiketten"
 
 #: ../plugins/properties/stream-properties-provider.c:399
 msgid "Save media tags changes"
-msgstr "Wijzigingen van mediatags opslaan"
+msgstr "Wijzigingen van media-etiketten opslaan"
 
 #: ../plugins/properties/stream-properties-provider.c:524
 msgid "Properties"
@@ -798,7 +798,7 @@ msgstr "Weet u zeker dat u Parole wilt afsluiten?"
 
 #: ../plugins/tray/tray-provider.c:503
 msgid "Remember my choice"
-msgstr "Onthou mijn keuze"
+msgstr "Onthoud mijn keuze"
 
 # zijbalk/zijpaneel, is hier de afspeellijst.
 #: ../plugins/tray/system-tray.desktop.in.h:1
@@ -828,7 +828,7 @@ msgid "Power Manager Plugin"
 msgstr "Energiebeheer-plugin"
 
 #~ msgid "Open location..."
-#~ msgstr "Locatie openen…"
+#~ msgstr "Locatie openen..."
 
 #~ msgid "socket"
 #~ msgstr "contactpunt"
