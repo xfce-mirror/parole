@@ -1,4 +1,4 @@
-# Dutch translation for the parole package.
+# Dutch translation of the parole package.
 # Copyright (C) The Xfce development team.
 # This file is distributed under the same license as the parole package.
 # Huib Kleinhout <huib@stack.nl>, 2002–2004.
@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-21 10:10+0000\n"
-"PO-Revision-Date: 2011-07-20 11:55+0200\n"
+"POT-Creation-Date: 2011-09-08 10:10+0000\n"
+"PO-Revision-Date: 2011-09-08 11:55+0200\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch (Flemish)\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: ../data/interfaces/parole.ui.h:1
 msgid "16:9 (Widescreen)"
-msgstr "16:9 (Breedbeeld)"
+msgstr "16:9 (breedbeeld)"
 
 #: ../data/interfaces/parole.ui.h:2
 msgid "20:9 (DVB)"
@@ -70,7 +70,7 @@ msgstr "Dempen"
 #: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:1215
 #: ../src/parole-disc-menu.c:113
 msgid "Next Chapter"
-msgstr "Volgende Hoofdstuk"
+msgstr "Volgende hoofdstuk"
 
 #: ../data/interfaces/parole.ui.h:13
 msgid "None"
@@ -79,7 +79,7 @@ msgstr "Geen"
 #: ../data/interfaces/parole.ui.h:14 ../src/parole-about.c:74
 #: ../plugins/window-title/window-title-provider.c:58
 msgid "Parole Media Player"
-msgstr "Parole Mediaspeler"
+msgstr "Parole mediaspeler"
 
 #: ../data/interfaces/parole.ui.h:15
 msgid "Plugins"
@@ -88,7 +88,7 @@ msgstr "Plugins"
 #: ../data/interfaces/parole.ui.h:16 ../src/parole-player.c:1227
 #: ../src/parole-disc-menu.c:114
 msgid "Previous Chapter"
-msgstr "Vorige Hoofdstuk"
+msgstr "Vorige hoofdstuk"
 
 #: ../data/interfaces/parole.ui.h:17 ../src/parole-medialist.c:1264
 msgid "Repeat"
@@ -150,11 +150,11 @@ msgstr "Mediabestanden openen"
 
 #: ../data/interfaces/mediachooser.ui.h:3
 msgid "Parole Media Chooser"
-msgstr "Parole Mediakiezer"
+msgstr "Parole mediakiezer"
 
 #: ../data/interfaces/mediachooser.ui.h:4
 msgid "Replace playlist with opened files"
-msgstr "Afspeellijst vervangen door geopende bestanden"
+msgstr "Speellijst vervangen door geopende bestanden"
 
 #: ../data/interfaces/mediachooser.ui.h:5
 msgid "Scan folders recursively"
@@ -178,11 +178,11 @@ msgstr "<b>Webstek:</b>"
 
 #: ../data/interfaces/plugins.ui.h:4
 msgid "Media Player plugins"
-msgstr "Mediaspeler-Plugins"
+msgstr "Mediaspeler-plugins"
 
 #: ../data/interfaces/plugins.ui.h:5
 msgid "Parole Plugins"
-msgstr "Parole-Plugins"
+msgstr "Parole-plugins"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "<b>Audio</b>"
@@ -238,7 +238,7 @@ msgstr "Mediaspeler-instellingen"
 
 #: ../data/interfaces/parole-settings.ui.h:14
 msgid "Parole Settings"
-msgstr "Parole Instellingen"
+msgstr "Parole instellingen"
 
 #: ../data/interfaces/parole-settings.ui.h:15
 msgid "Reset To Defaults"
@@ -430,11 +430,11 @@ msgstr "Speellijst"
 
 #: ../src/parole-medialist.c:649
 msgid "M3U Playlists"
-msgstr "M3U-Speellijsten"
+msgstr "M3U-speellijsten"
 
 #: ../src/parole-medialist.c:657
 msgid "PLS Playlists"
-msgstr "PLS-Speellijsten"
+msgstr "PLS-speellijsten"
 
 #: ../src/parole-medialist.c:665
 msgid "Advanced Stream Redirector"
@@ -442,7 +442,7 @@ msgstr "Advanced Stream Redirector"
 
 #: ../src/parole-medialist.c:673
 msgid "Shareable Playlist"
-msgstr "Deelbare Speellijst"
+msgstr "Deelbare speellijst"
 
 #. Clear
 #: ../src/parole-medialist.c:1152
@@ -490,21 +490,21 @@ msgstr "DVD-beeldbestand"
 
 #: ../src/parole-player.c:551 ../src/parole-player.c:659
 msgid "Media stream is not seekable"
-msgstr "Mediastroom is niet zoekbaar"
+msgstr "Mediastroom is niet doorzoekbaar"
 
 #.
 #. * Next chapter menu item
 #.
 #: ../src/parole-player.c:1215 ../src/parole-disc-menu.c:122
 msgid "Next Track"
-msgstr "Volgende Spoor"
+msgstr "Volgende spoor"
 
 #.
 #. * Previous chapter menu item
 #.
 #: ../src/parole-player.c:1227 ../src/parole-disc-menu.c:123
 msgid "Previous Track"
-msgstr "Vorige Spoor"
+msgstr "Vorige spoor"
 
 #: ../src/parole-statusbar.c:61
 msgid "Buffering"
@@ -545,7 +545,7 @@ msgstr "Schijf afspelen"
 
 #: ../src/parole-subtitle-encoding.c:165
 msgid "Current Locale"
-msgstr "Huidige Taalomgeving"
+msgstr "Huidige taalomgeving"
 
 #: ../src/parole-subtitle-encoding.c:168 ../src/parole-subtitle-encoding.c:170
 #: ../src/parole-subtitle-encoding.c:172 ../src/parole-subtitle-encoding.c:174
@@ -573,12 +573,12 @@ msgstr "Centraal-Europees"
 #: ../src/parole-subtitle-encoding.c:199 ../src/parole-subtitle-encoding.c:201
 #: ../src/parole-subtitle-encoding.c:203 ../src/parole-subtitle-encoding.c:205
 msgid "Chinese Simplified"
-msgstr "Chinees (Vereenvoudigd)"
+msgstr "Chinees (vereenvoudigd)"
 
 #: ../src/parole-subtitle-encoding.c:208 ../src/parole-subtitle-encoding.c:210
 #: ../src/parole-subtitle-encoding.c:212
 msgid "Chinese Traditional"
-msgstr "Chinees (Traditioneel)"
+msgstr "Chinees (traditioneel)"
 
 #: ../src/parole-subtitle-encoding.c:215
 msgid "Croatian"
@@ -695,7 +695,7 @@ msgstr "Spoor %i"
 
 #: ../src/parole-plugins-manager.c:301 ../src/parole-plugins-manager.c:437
 msgid "Visit Website"
-msgstr "Webstek Bezoeken"
+msgstr "Webstek bezoeken"
 
 #: ../src/parole-plugins-manager.c:416
 msgid "No installed plugins found on this system"
@@ -711,7 +711,7 @@ msgstr "Video"
 
 #: ../parole/parole-filters.c:115
 msgid "Audio and video"
-msgstr "Audio/Video"
+msgstr "Audio en video"
 
 #: ../parole/parole-filters.c:144
 msgid "All supported files"
@@ -759,7 +759,7 @@ msgstr "Media-eigenschappen uitlezen"
 
 #: ../plugins/properties/stream-properties.desktop.in.h:2
 msgid "Stream Properties"
-msgstr "Eigenschappen van Uitzending"
+msgstr "Eigenschappen van uitzending"
 
 #: ../plugins/tray/tray-provider.c:283
 msgid "<b>Playing:</b>"
@@ -772,7 +772,7 @@ msgstr "<b>Duur:</b>"
 
 #: ../plugins/tray/tray-provider.c:419
 msgid "Tray icon plugin"
-msgstr "Systeemvak-Plugin"
+msgstr "Systeemvak-plugin"
 
 #: ../plugins/tray/tray-provider.c:429
 msgid "Enable notification"
@@ -820,7 +820,7 @@ msgstr "Venstertitel"
 #: ../plugins/power-manager/power-manager.desktop.in.h:1
 msgid "Inhibit Power Manager from suspending the machine while playing DVD."
 msgstr ""
-"Verhinder Energiebeheerder het systeem in de pauzestand te zetten tijdens "
+"Verhinder energiebeheerder het systeem in de pauzestand te zetten tijdens "
 "het afspelen van een DVD."
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:2
