@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-04 23:06+0000\n"
+"POT-Creation-Date: 2011-11-07 05:06+0000\n"
 "PO-Revision-Date: 2011-11-05 02:15+0100\n"
 "Last-Translator: Ivica Kolić <ikoli@yahoo.com>\n"
 "Language-Team: Hrvatski <>\n"
@@ -16,8 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bits\n"
 "Language: \n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2\\n\"\\n\n"
-"X-Poedit-Language: Croatian\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2\\n\"\\n\\nX-Poedit-Language: Croatian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Country: CROATIA\n"
 
@@ -262,7 +261,7 @@ msgstr "Očisti povijest"
 
 #: ../data/interfaces/open-location.ui.h:2
 msgid "Enter the address of a location to open"
-msgstr ""
+msgstr "Unesite adresu lokacije koju treba otvoriti"
 
 #: ../data/interfaces/open-location.ui.h:3
 msgid "Open location of media file or live stream"
@@ -365,7 +364,7 @@ msgstr ""
 
 #: ../src/main.c:236
 msgid "Mute volume"
-msgstr ""
+msgstr "Iskjluči ton"
 
 #: ../src/main.c:237
 msgid "Version information"
@@ -390,7 +389,7 @@ msgstr ""
 
 #: ../src/parole-medialist.c:501
 msgid "Permission denied"
-msgstr ""
+msgstr "Dozvola odbijena"
 
 #: ../src/parole-medialist.c:503
 msgid "Error saving playlist file"
@@ -430,7 +429,7 @@ msgstr ""
 
 #: ../src/parole-medialist.c:673
 msgid "Shareable Playlist"
-msgstr ""
+msgstr "Djeljiva lista izvođenja"
 
 #. Clear
 #: ../src/parole-medialist.c:1152
@@ -805,4 +804,4 @@ msgstr ""
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
-msgstr ""
+msgstr "Priključak upravitelja energijom"
