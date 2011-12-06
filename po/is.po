@@ -1,20 +1,20 @@
 # translation of parole.master.untitled.po to Icelandic
 # Copyright (C) 2011 Free Software Foundation
 # This file is distributed under the same license as the PAROLE package.
-#
+# 
 # Sveinn í Felli <sveinki@nett.is>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: parole.master.untitled\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-01 14:00+0000\n"
+"POT-Creation-Date: 2011-12-06 09:24+0000\n"
 "PO-Revision-Date: 2011-12-01 20:28+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
 
@@ -156,7 +156,7 @@ msgstr "Leita einnig í undirmöppum"
 
 #: ../data/interfaces/mediachooser.ui.h:6
 msgid "Start playing opened files"
-msgstr ""
+msgstr "Byrja spila opnaðar skrár"
 
 #: ../data/interfaces/plugins.ui.h:1
 msgid "<b>Author:</b>"
@@ -196,7 +196,7 @@ msgstr "<b>Mynd</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:5
 msgid "Automatically load subtitles when playing movie file"
-msgstr ""
+msgstr "Hlaða sjálfkrafa inn undirtexta þegar horft er á myndbönd"
 
 #: ../data/interfaces/parole-settings.ui.h:6
 msgid "Brightness:"
@@ -208,7 +208,7 @@ msgstr "Birtuskil:"
 
 #: ../data/interfaces/parole-settings.ui.h:8
 msgid "Disable screen saver while playing movies"
-msgstr ""
+msgstr "Óvirkja skjáhvíla þegar horft er á kvikmynd"
 
 #: ../data/interfaces/parole-settings.ui.h:9
 msgid "Enable visualization when playing audio file"
@@ -236,7 +236,7 @@ msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:15
 msgid "Reset To Defaults"
-msgstr ""
+msgstr "Endursetja til Sjálfgefið"
 
 #: ../data/interfaces/parole-settings.ui.h:16
 msgid "Saturation:"
@@ -287,11 +287,13 @@ msgid "Stop"
 msgstr "Stöðva"
 
 #: ../gst/parole-gst.c:1715
-msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
+msgid ""
+"Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 
 #: ../gst/parole-gst.c:1735
-msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
+msgid ""
+"Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 
 #: ../src/main.c:54
@@ -373,7 +375,7 @@ msgstr ""
 
 #: ../src/main.c:241
 msgid "Media to play"
-msgstr ""
+msgstr "Miðill til að spila"
 
 #: ../src/main.c:278
 #, c-format
@@ -386,7 +388,7 @@ msgstr "Aðgangi hafnað"
 
 #: ../src/parole-medialist.c:503
 msgid "Error saving playlist file"
-msgstr ""
+msgstr "Villa við að vista lagalista"
 
 #: ../src/parole-medialist.c:515
 msgid "Unknown playlist format"
@@ -435,14 +437,14 @@ msgstr ""
 
 #: ../src/parole-medialist.c:1319
 msgid "Play opened files"
-msgstr ""
+msgstr "Spila opnaðar skrár"
 
 #. *
 #. * Remember media list entries
 #. *
 #: ../src/parole-medialist.c:1331
 msgid "Remember playlist"
-msgstr ""
+msgstr "Muna lagalista"
 
 #: ../src/parole-medialist.c:1502
 msgid "Media list"
@@ -472,16 +474,14 @@ msgstr "DVD diskmynd"
 msgid "Media stream is not seekable"
 msgstr ""
 
-#.
 #. * Next chapter menu item
-#.
+#. 
 #: ../src/parole-player.c:1215 ../src/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr "Næsta spor"
 
-#.
 #. * Previous chapter menu item
-#.
+#. 
 #: ../src/parole-player.c:1227 ../src/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr "Fyrra spor"
@@ -771,11 +771,11 @@ msgstr ""
 
 #: ../plugins/tray/tray-provider.c:499
 msgid "Are you sure you want to quit Parole"
-msgstr ""
+msgstr "Ertu viss að þú viljir hætta nota Parole"
 
 #: ../plugins/tray/tray-provider.c:503
 msgid "Remember my choice"
-msgstr ""
+msgstr "Muna val mitt"
 
 #: ../plugins/tray/system-tray.desktop.in.h:1
 msgid "Show icon in the system tray"
@@ -800,4 +800,3 @@ msgstr ""
 #: ../plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
 msgstr "Orkustjórnunarviðbót"
-
