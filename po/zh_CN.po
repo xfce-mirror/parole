@@ -3,13 +3,13 @@
 # This file is distributed under the same license as
 # the parole package.
 # Hunt Xu <huntxu@live.cn>, 2009-2010.
-# Chipong Luo <chipong_l@yahoo.com>, 2011.
-# 
+# Chipong Luo <chipong_l@yahoo.com>, 2011, 2012.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-09 04:02+0000\n"
+"POT-Creation-Date: 2012-01-27 13:42+0000\n"
 "PO-Revision-Date: 2011-04-26 14:50+0800\n"
 "Last-Translator: Chipong Luo <chipong_l@yahoo.com>\n"
 "Language-Team: Chinese (Simplified) <xfce-i18n@xfce.org>\n"
@@ -56,7 +56,7 @@ msgstr "从 ISO 镜像"
 
 #: ../data/interfaces/parole.ui.h:10
 msgid "Media player"
-msgstr "多媒体播放器"
+msgstr "媒体播放器"
 
 #: ../data/interfaces/parole.ui.h:11
 msgid "Mute"
@@ -74,7 +74,7 @@ msgstr "无"
 #: ../data/interfaces/parole.ui.h:14 ../src/parole-about.c:74
 #: ../plugins/window-title/window-title-provider.c:58
 msgid "Parole Media Player"
-msgstr "Parole 多媒体播放器"
+msgstr "Parole 媒体播放器"
 
 #: ../data/interfaces/parole.ui.h:15
 msgid "Plugins"
@@ -95,7 +95,7 @@ msgstr "选择音轨"
 
 #: ../data/interfaces/parole.ui.h:19 ../src/parole-medialist.c:1280
 msgid "Shuffle"
-msgstr "随机播放"
+msgstr "随机"
 
 #: ../data/interfaces/parole.ui.h:20
 msgid "Sound"
@@ -123,7 +123,7 @@ msgstr "帮助(_H)"
 
 #: ../data/interfaces/parole.ui.h:26
 msgid "_Media"
-msgstr "多媒体(_M)"
+msgstr "媒体(_M)"
 
 #: ../data/interfaces/parole.ui.h:27
 msgid "_Open location"
@@ -139,11 +139,11 @@ msgstr "添加"
 
 #: ../data/interfaces/mediachooser.ui.h:2
 msgid "Open media files"
-msgstr "打开多媒体文件"
+msgstr "打开媒体文件"
 
 #: ../data/interfaces/mediachooser.ui.h:3
 msgid "Parole Media Chooser"
-msgstr "Parole 多媒体选择器"
+msgstr "Parole 媒体选择器"
 
 #: ../data/interfaces/mediachooser.ui.h:4
 msgid "Replace playlist with opened files"
@@ -171,7 +171,7 @@ msgstr "<b>网站：</b>"
 
 #: ../data/interfaces/plugins.ui.h:4
 msgid "Media Player plugins"
-msgstr "多媒体播放器插件"
+msgstr "媒体播放器插件"
 
 #: ../data/interfaces/plugins.ui.h:5
 msgid "Parole Plugins"
@@ -227,7 +227,7 @@ msgstr "色调："
 
 #: ../data/interfaces/parole-settings.ui.h:13
 msgid "Media Player Settings"
-msgstr "多媒体播放器设置"
+msgstr "媒体播放器设置"
 
 #: ../data/interfaces/parole-settings.ui.h:14
 msgid "Parole Settings"
@@ -235,7 +235,7 @@ msgstr "Parole 设置"
 
 #: ../data/interfaces/parole-settings.ui.h:15
 msgid "Reset To Defaults"
-msgstr "重置为默认设置"
+msgstr "重置为默认"
 
 #: ../data/interfaces/parole-settings.ui.h:16
 msgid "Saturation:"
@@ -255,7 +255,7 @@ msgstr "选择文件类型(以扩展名)"
 
 #: ../data/interfaces/open-location.ui.h:1
 msgid "Clear history"
-msgstr "清除历史记录"
+msgstr "清除历史"
 
 #: ../data/interfaces/open-location.ui.h:2
 msgid "Enter the address of a location to open"
@@ -263,11 +263,11 @@ msgstr "输入要打开位置的地址"
 
 #: ../data/interfaces/open-location.ui.h:3
 msgid "Open location of media file or live stream"
-msgstr "打开多媒体文件或实时流媒体的位置"
+msgstr "打开媒体文件或实时流媒体的位置"
 
 #: ../data/desktop/parole.desktop.in.in.h:1
 msgid "Parole"
-msgstr "Parole"
+msgstr "Parole 媒体播放器"
 
 #: ../common/parole-common.c:67
 msgid "Message"
@@ -288,12 +288,16 @@ msgstr "停止"
 #: ../gst/parole-gst.c:1715
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
-msgstr "无法载入 playbin GStreamer 插件，检查您的 GStreamer 安装"
+msgstr ""
+"无法载入 playbin GStreamer 插件，检查"
+"您的 GStreamer 安装"
 
 #: ../gst/parole-gst.c:1735
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
-msgstr "无法载入视频 GStreamer 插件，检查您的 GStreamer 安装"
+msgstr ""
+"无法载入视频 GStreamer 插件，检查您的 "
+"GStreamer 安装"
 
 #: ../src/main.c:54
 #, c-format
@@ -308,12 +312,12 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Parole 多媒体播放器 %s\n"
+"Parole 媒体播放器 %s\n"
 "\n"
-"Xfce Goodies 项目的一部分\n"
+"Xfce 好东西项目的一部分\n"
 "http://goodies.xfce.org\n"
 "\n"
-"在 GNU GPL 下发布。\n"
+"以 GNU GPL 发布。\n"
 "\n"
 
 #: ../src/main.c:187
@@ -322,11 +326,11 @@ msgstr "未知参数 "
 
 #: ../src/main.c:225
 msgid "Open a new instance"
-msgstr "打开一个新实例"
+msgstr "打开新实例"
 
 #: ../src/main.c:226
 msgid "Do not load plugins"
-msgstr "不加载插件"
+msgstr "不载入插件"
 
 #: ../src/main.c:227
 msgid "Set Audio-CD/VCD/DVD device path"
@@ -382,12 +386,12 @@ msgstr "启用/禁用 XV 支持"
 
 #: ../src/main.c:241
 msgid "Media to play"
-msgstr "要播放的多媒体"
+msgstr "要播放的媒体"
 
 #: ../src/main.c:278
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
-msgstr "Parole 已经在运行，使用 -i 打开一个新实例\n"
+msgstr "Parole 已经在运行，使用 -i 打开新实例\n"
 
 #: ../src/parole-medialist.c:501
 msgid "Permission denied"
@@ -455,7 +459,7 @@ msgstr "记住播放列表"
 
 #: ../src/parole-medialist.c:1502
 msgid "Media list"
-msgstr "多媒体列表"
+msgstr "媒体列表"
 
 #: ../src/parole-player.c:336
 msgid "Hide playlist"
@@ -479,7 +483,7 @@ msgstr "DVD 镜像"
 
 #: ../src/parole-player.c:551 ../src/parole-player.c:659
 msgid "Media stream is not seekable"
-msgstr "多媒体流媒体不可查找"
+msgstr "媒体流媒体不可查找"
 
 #.
 #. * Next chapter menu item
@@ -736,7 +740,7 @@ msgstr "流媒体不支持标签更改"
 
 #: ../plugins/properties/stream-properties-provider.c:399
 msgid "Save media tags changes"
-msgstr "保存多媒体标签的更改"
+msgstr "保存媒体标签的更改"
 
 #: ../plugins/properties/stream-properties-provider.c:524
 msgid "Properties"
@@ -744,7 +748,7 @@ msgstr "属性"
 
 #: ../plugins/properties/stream-properties.desktop.in.h:1
 msgid "Read media properties"
-msgstr "读取多媒体属性"
+msgstr "读取媒体属性"
 
 #: ../plugins/properties/stream-properties.desktop.in.h:2
 msgid "Stream Properties"
@@ -796,7 +800,8 @@ msgstr "托盘图标"
 
 #: ../plugins/window-title/window-title.desktop.in.h:1
 msgid "Set the main window name to the current playing media name."
-msgstr "设置主窗口名称为当前正在播放的多媒体名称。"
+msgstr ""
+"将主窗口名称设置为当前正在播放的媒体名称。"
 
 #: ../plugins/window-title/window-title.desktop.in.h:2
 msgid "Window Title"
@@ -804,7 +809,7 @@ msgstr "窗口标题"
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:1
 msgid "Inhibit Power Manager from suspending the machine while playing DVD."
-msgstr "播放 DVD 时禁止电源管理器挂起系统。"
+msgstr "播放 DVD 时禁止电源管理器让机器待机。"
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
