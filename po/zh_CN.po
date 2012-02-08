@@ -3,13 +3,13 @@
 # This file is distributed under the same license as
 # the parole package.
 # Hunt Xu <huntxu@live.cn>, 2009-2010.
-# Chipong Luo <chipong_l@yahoo.com>, 2011, 2012.
+# Chipong Luo <chipong.luo@yahoo.com>, 2011, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-27 13:42+0000\n"
+"POT-Creation-Date: 2012-02-08 04:06+0000\n"
 "PO-Revision-Date: 2011-04-26 14:50+0800\n"
 "Last-Translator: Chipong Luo <chipong_l@yahoo.com>\n"
 "Language-Team: Chinese (Simplified) <xfce-i18n@xfce.org>\n"
@@ -288,16 +288,12 @@ msgstr "停止"
 #: ../gst/parole-gst.c:1715
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
-msgstr ""
-"无法载入 playbin GStreamer 插件，检查"
-"您的 GStreamer 安装"
+msgstr "无法载入 playbin GStreamer 插件，检查您的 GStreamer 安装"
 
 #: ../gst/parole-gst.c:1735
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
-msgstr ""
-"无法载入视频 GStreamer 插件，检查您的 "
-"GStreamer 安装"
+msgstr "无法载入视频 GStreamer 插件，检查您的 GStreamer 安装"
 
 #: ../src/main.c:54
 #, c-format
@@ -800,8 +796,7 @@ msgstr "托盘图标"
 
 #: ../plugins/window-title/window-title.desktop.in.h:1
 msgid "Set the main window name to the current playing media name."
-msgstr ""
-"将主窗口名称设置为当前正在播放的媒体名称。"
+msgstr "将主窗口名称设置为当前正在播放的媒体名称。"
 
 #: ../plugins/window-title/window-title.desktop.in.h:2
 msgid "Window Title"
