@@ -396,7 +396,7 @@ msgstr "빠롤이 이미 실행중입니다. 새 인스턴스를 열려면 -i를
 
 #: ../src/parole-medialist.c:501
 msgid "Permission denied"
-msgstr "권한 거부됨"
+msgstr "권한 거부함"
 
 #: ../src/parole-medialist.c:503
 msgid "Error saving playlist file"
@@ -511,7 +511,7 @@ msgstr "버퍼링"
 
 #: ../src/parole-statusbar.c:100
 msgid "Stopped"
-msgstr "정지됨"
+msgstr "정지함"
 
 #: ../src/parole-statusbar.c:104
 msgid "Finished"
@@ -520,7 +520,7 @@ msgstr "마침"
 #: ../src/parole-statusbar.c:114
 #: ../src/parole-statusbar.c:124
 msgid "Paused"
-msgstr "일시 정지됨"
+msgstr "일시 정지함"
 
 #: ../src/parole-statusbar.c:114
 msgid "Playing"
