@@ -8,16 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ast\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-27 04:09+0000\n"
+"POT-Creation-Date: 2012-04-13 17:48+0000\n"
 "PO-Revision-Date: 2010-02-11 15:23+0100\n"
 "Last-Translator: Douart Patrick <patrick.2@laposte.net>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Country: France\n"
 "Language: \n"
 "X-Poedit-Language: French\n"
-"X-Poedit-Country: France\n"
 
 #: ../data/interfaces/parole.ui.h:1
 msgid "16:9 (Widescreen)"
@@ -445,7 +445,7 @@ msgstr "Liste de Lecture Partageable"
 #. Clear
 #: ../src/parole-medialist.c:1152
 msgid "Open Containing Folder"
-msgstr ""
+msgstr "Ouvrir le dossier contenant le fichier"
 
 #: ../src/parole-medialist.c:1303
 msgid "Replace playlist when opening files"
