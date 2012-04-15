@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-01 16:08+0000\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Sérgio Marques <smarquespt@gmail.com>\n"
+"Last-Translator: Nuno Miguel <nunomgue@gmail.com>\n"
 "Language-Team: Portuguese\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -79,7 +79,7 @@ msgstr "Reprodutor multimédia Parole"
 
 #: ../data/interfaces/parole.ui.h:15
 msgid "Plugins"
-msgstr "\"Plug-ins\""
+msgstr "\"Plugins\""
 
 #: ../data/interfaces/parole.ui.h:16
 #: ../src/parole-player.c:1227
@@ -123,7 +123,7 @@ msgstr "_Editar"
 
 #: ../data/interfaces/parole.ui.h:25
 msgid "_Help"
-msgstr "Aj_uda"
+msgstr "_Ajuda"
 
 #: ../data/interfaces/parole.ui.h:26
 msgid "_Media"
@@ -291,11 +291,11 @@ msgstr "Parar"
 
 #: ../gst/parole-gst.c:1715
 msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
-msgstr "Incapaz de carregar o \"plug-in\" playbin GStreamer. Verifique a instalação GStreamer  "
+msgstr "Incapaz de carregar o \"plugin\" playbin GStreamer. Verifique a instalação GStreamer  "
 
 #: ../gst/parole-gst.c:1735
 msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
-msgstr "Incapaz de carregar o \"plug-in\" de vídeo GStreamer. Verifique a instalação GStreamer  "
+msgstr "Incapaz de carregar o \"plugin\" de vídeo GStreamer. Verifique a instalação GStreamer  "
 
 #: ../src/main.c:54
 #, c-format
@@ -328,7 +328,7 @@ msgstr "Abrir nova instância"
 
 #: ../src/main.c:226
 msgid "Do not load plugins"
-msgstr "Não carregar \"plug-ins\""
+msgstr "Não carregar \"plugins\""
 
 #: ../src/main.c:227
 msgid "Set Audio-CD/VCD/DVD device path"
@@ -722,7 +722,7 @@ msgstr "Visitar sítio web"
 
 #: ../src/parole-plugins-manager.c:416
 msgid "No installed plugins found on this system"
-msgstr "Não foram encontrados \"plug-ins\" neste sistema"
+msgstr "Não foram encontrados \"plugins\" neste sistema"
 
 #: ../parole/parole-filters.c:64
 msgid "Audio"
@@ -794,7 +794,7 @@ msgstr "<b>Duração:</b>"
 
 #: ../plugins/tray/tray-provider.c:419
 msgid "Tray icon plugin"
-msgstr "\"Plug-in\" da área de notificação"
+msgstr "\"Plugin\" da área de notificação"
 
 #: ../plugins/tray/tray-provider.c:429
 msgid "Enable notification"
@@ -830,7 +830,7 @@ msgstr "Ícone na área de notificação"
 
 #: ../plugins/window-title/window-title.desktop.in.h:1
 msgid "Set the main window name to the current playing media name."
-msgstr "Utilizar nome do ficheiro como título da janela principal"
+msgstr "Utilizar nome do ficheiro como título da janela principal."
 
 #: ../plugins/window-title/window-title.desktop.in.h:2
 msgid "Window Title"
@@ -838,9 +838,9 @@ msgstr "Título da janela"
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:1
 msgid "Inhibit Power Manager from suspending the machine while playing DVD."
-msgstr "Proibir que a gestão de energia suspenda o computador durante a reprodução de DVDs"
+msgstr "Proibir que a gestão de energia suspenda o computador durante a reprodução do DVD."
 
 #: ../plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
-msgstr "\"Plug-in\" gestão de energia"
+msgstr "\"Plugin\" gestão de energia"
 
