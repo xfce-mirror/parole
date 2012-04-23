@@ -4,19 +4,19 @@
 # the parole package.
 # Hunt Xu <huntxu@live.cn>, 2009-2010.
 # Chipong Luo <chipong.luo@yahoo.com>, 2011, 2012.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
-"Report-Msgid-Bugs-To: <xfce-i18n@xfce.org>\n"
-"POT-Creation-Date: 2012-04-20 05:03+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-04-23 13:33+0000\n"
 "PO-Revision-Date: 2011-04-26 14:50+0800\n"
 "Last-Translator: Chipong Luo <chipong.luo@yahoo.com>\n"
 "Language-Team: Chinese (Simplified) <xfce-i18n-cn@xfce.org>\n"
-"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../data/interfaces/parole.ui.h:1
@@ -132,7 +132,7 @@ msgstr "打开位置(_O)"
 
 #: ../data/interfaces/parole.ui.h:28
 msgid "_View"
-msgstr "视图(_V)"
+msgstr "查看(_V)"
 
 #: ../data/interfaces/mediachooser.ui.h:1
 msgid "Add"
@@ -482,16 +482,14 @@ msgstr "DVD 镜像"
 msgid "Media stream is not seekable"
 msgstr "媒体流媒体不可查找"
 
-#.
 #. * Next chapter menu item
-#.
+#. 
 #: ../src/parole-player.c:1215 ../src/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr "下一音轨"
 
-#.
 #. * Previous chapter menu item
-#.
+#. 
 #: ../src/parole-player.c:1227 ../src/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr "上一音轨"
