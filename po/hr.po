@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-07 05:06+0000\n"
+"POT-Creation-Date: 2012-05-11 20:51+0000\n"
 "PO-Revision-Date: 2011-11-05 02:15+0100\n"
 "Last-Translator: Ivica Kolić <ikoli@yahoo.com>\n"
 "Language-Team: Hrvatski <>\n"
@@ -89,7 +89,7 @@ msgstr ""
 
 #: ../data/interfaces/parole.ui.h:17 ../src/parole-medialist.c:1264
 msgid "Repeat"
-msgstr ""
+msgstr "Ponovi"
 
 #: ../data/interfaces/parole.ui.h:18
 msgid "Select Track"
@@ -109,11 +109,11 @@ msgstr ""
 
 #: ../data/interfaces/parole.ui.h:22
 msgid "Volume Down"
-msgstr ""
+msgstr "Stišaj"
 
 #: ../data/interfaces/parole.ui.h:23
 msgid "Volume Up"
-msgstr ""
+msgstr "Poglasni"
 
 #: ../data/interfaces/parole.ui.h:24
 msgid "_Edit"
@@ -245,7 +245,7 @@ msgstr "Zasićenost:"
 
 #: ../data/interfaces/parole-settings.ui.h:17
 msgid "Visualization type:"
-msgstr ""
+msgstr "Vrsta vizualizacije:"
 
 #: ../data/interfaces/save-playlist.ui.h:1
 msgid "By Extension"
