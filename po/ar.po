@@ -2,18 +2,22 @@
 # Copyright (C) 2009 the parole-media-player's copyright holder
 # This file is distributed under the same license as the parole-media-player package.
 # Karim Oulad Chalha <herr.linux88@gmail.com>
-#
+# mohammad <malham1@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-01 16:09+0000\n"
-"PO-Revision-Date: 2011-08-01 16:53-0000\n"
-"Last-Translator: كريم اولاد الشلحة <herr.linux88@gmail.com>\n"
-"Language-Team: Arabic Xfce Translation Team <herr.linux88@gmail.com>\n"
+"POT-Creation-Date: 2012-05-20 18:51+0000\n"
+"PO-Revision-Date: 2012-05-21 00:17+0300\n"
+"Last-Translator: mohammad <malham1@gmail.com>\n"
+"Language-Team: http://www.vertaal.com.ar/files/factory/ar/list/\n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Virtaal 0.7.1\n"
 "X-Poedit-Language: Arabic\n"
 "X-Poedit-Country: Morocco\n"
 
@@ -61,8 +65,7 @@ msgstr "مشغل الوسائط"
 msgid "Mute"
 msgstr "أكتم"
 
-#: ../data/interfaces/parole.ui.h:12
-#: ../src/parole-player.c:1215
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:1215
 #: ../src/parole-disc-menu.c:113
 msgid "Next Chapter"
 msgstr "الفصل التالي"
@@ -71,8 +74,7 @@ msgstr "الفصل التالي"
 msgid "None"
 msgstr "لا شيء"
 
-#: ../data/interfaces/parole.ui.h:14
-#: ../src/parole-about.c:74
+#: ../data/interfaces/parole.ui.h:14 ../src/parole-about.c:74
 #: ../plugins/window-title/window-title-provider.c:58
 msgid "Parole Media Player"
 msgstr "Parole مشغل الوسائط"
@@ -81,14 +83,12 @@ msgstr "Parole مشغل الوسائط"
 msgid "Plugins"
 msgstr "ملحقات"
 
-#: ../data/interfaces/parole.ui.h:16
-#: ../src/parole-player.c:1227
+#: ../data/interfaces/parole.ui.h:16 ../src/parole-player.c:1227
 #: ../src/parole-disc-menu.c:114
 msgid "Previous Chapter"
 msgstr "الفصل السابق"
 
-#: ../data/interfaces/parole.ui.h:17
-#: ../src/parole-medialist.c:1264
+#: ../data/interfaces/parole.ui.h:17 ../src/parole-medialist.c:1264
 msgid "Repeat"
 msgstr "إعادة"
 
@@ -96,8 +96,7 @@ msgstr "إعادة"
 msgid "Select Track"
 msgstr "إختر مقطع"
 
-#: ../data/interfaces/parole.ui.h:19
-#: ../src/parole-medialist.c:1280
+#: ../data/interfaces/parole.ui.h:19 ../src/parole-medialist.c:1280
 msgid "Shuffle"
 msgstr "عشوائي"
 
@@ -123,19 +122,19 @@ msgstr "_حرر"
 
 #: ../data/interfaces/parole.ui.h:25
 msgid "_Help"
-msgstr "م_ساعدة"
+msgstr "_مساعدة"
 
 #: ../data/interfaces/parole.ui.h:26
 msgid "_Media"
-msgstr "وسائط"
+msgstr "_وسائط"
 
 #: ../data/interfaces/parole.ui.h:27
 msgid "_Open location"
-msgstr "إفتح _مسار"
+msgstr "_إفتح موقع"
 
 #: ../data/interfaces/parole.ui.h:28
 msgid "_View"
-msgstr "أظه_ر"
+msgstr "_أظهر"
 
 #: ../data/interfaces/mediachooser.ui.h:1
 msgid "Add"
@@ -203,11 +202,11 @@ msgstr "تحميل الترجمة تلقائيا عنذ تشغيل الفيلم"
 
 #: ../data/interfaces/parole-settings.ui.h:6
 msgid "Brightness:"
-msgstr "سطوع :"
+msgstr "سطوع:"
 
 #: ../data/interfaces/parole-settings.ui.h:7
 msgid "Contrast:"
-msgstr "تباين :"
+msgstr "تباين:"
 
 #: ../data/interfaces/parole-settings.ui.h:8
 msgid "Disable screen saver while playing movies"
@@ -219,15 +218,15 @@ msgstr "تفعبل المرئيات عنذ تشغيل ملف صوتي"
 
 #: ../data/interfaces/parole-settings.ui.h:10
 msgid "Encoding: "
-msgstr "تشفير :"
+msgstr "تشفير: "
 
 #: ../data/interfaces/parole-settings.ui.h:11
 msgid "Font:"
-msgstr "خط :"
+msgstr "خط:"
 
 #: ../data/interfaces/parole-settings.ui.h:12
 msgid "Hue:"
-msgstr "لون :"
+msgstr "لون:"
 
 #: ../data/interfaces/parole-settings.ui.h:13
 msgid "Media Player Settings"
@@ -239,15 +238,15 @@ msgstr "إعدادات Parole"
 
 #: ../data/interfaces/parole-settings.ui.h:15
 msgid "Reset To Defaults"
-msgstr "الرجوع إلى وضع البدئي "
+msgstr "الرجوع إلى وضع البدئي"
 
 #: ../data/interfaces/parole-settings.ui.h:16
 msgid "Saturation:"
-msgstr "تشبع :"
+msgstr "الإشباع:"
 
 #: ../data/interfaces/parole-settings.ui.h:17
 msgid "Visualization type:"
-msgstr "نوع visualisation :"
+msgstr "نوع مجموعة المرئيات:"
 
 #: ../data/interfaces/save-playlist.ui.h:1
 msgid "By Extension"
@@ -290,11 +289,13 @@ msgid "Stop"
 msgstr "توقف"
 
 #: ../gst/parole-gst.c:1715
-msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
+msgid ""
+"Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr "غير قادر على تشغيل إضافات GStreamer، تأكد من تنصيب GStreamer"
 
 #: ../gst/parole-gst.c:1735
-msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
+msgid ""
+"Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr "غير قادر على تحميل فيديو GStreamer، تأكد من تنصيب GStreamer"
 
 #: ../src/main.c:54
@@ -312,7 +313,7 @@ msgstr ""
 "\n"
 "مشغل الوسائط Parole %s\n"
 "\n"
-"جزء من مشروع \"goodies'  Xfce \n"
+"جزء من مشروع goodies Xfce \n"
 "http://goodies.xfce.org\n"
 "\n"
 "تحت رخصة الجنو GPL.\n"
@@ -320,7 +321,7 @@ msgstr ""
 
 #: ../src/main.c:187
 msgid "Unknown argument "
-msgstr "عنصر مجهولة"
+msgstr "عنصر مجهول "
 
 #: ../src/main.c:225
 msgid "Open a new instance"
@@ -389,7 +390,7 @@ msgstr "وسائط للتشغيل"
 #: ../src/main.c:278
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
-msgstr "Parole يعمل حالبا. إستعمل -i لفتح واحد أخر\n"
+msgstr "Parole يعمل حالبا, إستعمل -i لفتح واحد أخر\n"
 
 #: ../src/parole-medialist.c:501
 msgid "Permission denied"
@@ -407,8 +408,7 @@ msgstr "صيغة قائمة التشغبل غبر معروفة"
 msgid "Please chooser a supported playlist format"
 msgstr "المرجوا إختيار صيغة قائمة التشغبل مدعومة"
 
-#: ../src/parole-medialist.c:568
-#: ../src/parole-plugins-manager.c:377
+#: ../src/parole-medialist.c:568 ../src/parole-plugins-manager.c:377
 #: ../plugins/properties/stream-properties-provider.c:140
 #: ../plugins/properties/stream-properties-provider.c:141
 #: ../plugins/properties/stream-properties-provider.c:142
@@ -416,8 +416,7 @@ msgstr "المرجوا إختيار صيغة قائمة التشغبل مدعو�
 msgid "Unknown"
 msgstr "مجهول"
 
-#: ../src/parole-medialist.c:642
-#: ../src/parole-player.c:1991
+#: ../src/parole-medialist.c:642 ../src/parole-player.c:1991
 msgid "Playlist"
 msgstr "قائمة التشغيل"
 
@@ -444,7 +443,7 @@ msgstr "فتح المجلد المتضمن"
 
 #: ../src/parole-medialist.c:1303
 msgid "Replace playlist when opening files"
-msgstr "استبدال  قائمة التشغيل عند فتح الملفات"
+msgstr "استبدال قائمة التشغيل عند فتح الملفات"
 
 #: ../src/parole-medialist.c:1319
 msgid "Play opened files"
@@ -481,24 +480,21 @@ msgstr "صورة CD"
 msgid "DVD image"
 msgstr "صورة DVD"
 
-#: ../src/parole-player.c:551
-#: ../src/parole-player.c:659
+#: ../src/parole-player.c:551 ../src/parole-player.c:659
 msgid "Media stream is not seekable"
 msgstr "مسار الوسائط غير قابل للقرأة"
 
 #.
 #. * Next chapter menu item
 #.
-#: ../src/parole-player.c:1215
-#: ../src/parole-disc-menu.c:122
+#: ../src/parole-player.c:1215 ../src/parole-disc-menu.c:122
 msgid "Next Track"
 msgstr "المقطع التالي"
 
 #.
 #. * Previous chapter menu item
 #.
-#: ../src/parole-player.c:1227
-#: ../src/parole-disc-menu.c:123
+#: ../src/parole-player.c:1227 ../src/parole-disc-menu.c:123
 msgid "Previous Track"
 msgstr "المقطع السابق"
 
@@ -514,8 +510,7 @@ msgstr "موقف"
 msgid "Finished"
 msgstr "إنتها"
 
-#: ../src/parole-statusbar.c:114
-#: ../src/parole-statusbar.c:124
+#: ../src/parole-statusbar.c:114 ../src/parole-statusbar.c:124
 msgid "Paused"
 msgstr "موقف مؤقتا"
 
@@ -523,10 +518,9 @@ msgstr "موقف مؤقتا"
 msgid "Playing"
 msgstr "مقطع قيد التشغيل"
 
-#: ../src/parole-statusbar.c:170
-#: ../src/parole-statusbar.c:174
+#: ../src/parole-statusbar.c:170 ../src/parole-statusbar.c:174
 msgid "Live stream:"
-msgstr "قرأة مباشرة"
+msgstr "تدفق مباشر:"
 
 #: ../src/parole-about.c:79
 msgid "Author/Maintainer"
@@ -545,10 +539,8 @@ msgstr "تشغيل القرص"
 msgid "Current Locale"
 msgstr "اللغة الحالية"
 
-#: ../src/parole-subtitle-encoding.c:168
-#: ../src/parole-subtitle-encoding.c:170
-#: ../src/parole-subtitle-encoding.c:172
-#: ../src/parole-subtitle-encoding.c:174
+#: ../src/parole-subtitle-encoding.c:168 ../src/parole-subtitle-encoding.c:170
+#: ../src/parole-subtitle-encoding.c:172 ../src/parole-subtitle-encoding.c:174
 msgid "Arabic"
 msgstr "عربية"
 
@@ -556,8 +548,7 @@ msgstr "عربية"
 msgid "Armenian"
 msgstr "أرميني"
 
-#: ../src/parole-subtitle-encoding.c:180
-#: ../src/parole-subtitle-encoding.c:182
+#: ../src/parole-subtitle-encoding.c:180 ../src/parole-subtitle-encoding.c:182
 #: ../src/parole-subtitle-encoding.c:184
 msgid "Baltic"
 msgstr "بلطيق"
@@ -566,22 +557,17 @@ msgstr "بلطيق"
 msgid "Celtic"
 msgstr "سيلتيك"
 
-#: ../src/parole-subtitle-encoding.c:190
-#: ../src/parole-subtitle-encoding.c:192
-#: ../src/parole-subtitle-encoding.c:194
-#: ../src/parole-subtitle-encoding.c:196
+#: ../src/parole-subtitle-encoding.c:190 ../src/parole-subtitle-encoding.c:192
+#: ../src/parole-subtitle-encoding.c:194 ../src/parole-subtitle-encoding.c:196
 msgid "Central European"
 msgstr "أوربا الوسطة"
 
-#: ../src/parole-subtitle-encoding.c:199
-#: ../src/parole-subtitle-encoding.c:201
-#: ../src/parole-subtitle-encoding.c:203
-#: ../src/parole-subtitle-encoding.c:205
+#: ../src/parole-subtitle-encoding.c:199 ../src/parole-subtitle-encoding.c:201
+#: ../src/parole-subtitle-encoding.c:203 ../src/parole-subtitle-encoding.c:205
 msgid "Chinese Simplified"
 msgstr "صينية بسيطة"
 
-#: ../src/parole-subtitle-encoding.c:208
-#: ../src/parole-subtitle-encoding.c:210
+#: ../src/parole-subtitle-encoding.c:208 ../src/parole-subtitle-encoding.c:210
 #: ../src/parole-subtitle-encoding.c:212
 msgid "Chinese Traditional"
 msgstr "صينية تقليدية"
@@ -590,12 +576,9 @@ msgstr "صينية تقليدية"
 msgid "Croatian"
 msgstr "كرواتي"
 
-#: ../src/parole-subtitle-encoding.c:218
-#: ../src/parole-subtitle-encoding.c:220
-#: ../src/parole-subtitle-encoding.c:222
-#: ../src/parole-subtitle-encoding.c:224
-#: ../src/parole-subtitle-encoding.c:226
-#: ../src/parole-subtitle-encoding.c:228
+#: ../src/parole-subtitle-encoding.c:218 ../src/parole-subtitle-encoding.c:220
+#: ../src/parole-subtitle-encoding.c:222 ../src/parole-subtitle-encoding.c:224
+#: ../src/parole-subtitle-encoding.c:226 ../src/parole-subtitle-encoding.c:228
 msgid "Cyrillic"
 msgstr "سيريالي"
 
@@ -603,8 +586,7 @@ msgstr "سيريالي"
 msgid "Cyrillic/Russian"
 msgstr "سيريالي/روسي"
 
-#: ../src/parole-subtitle-encoding.c:234
-#: ../src/parole-subtitle-encoding.c:236
+#: ../src/parole-subtitle-encoding.c:234 ../src/parole-subtitle-encoding.c:236
 msgid "Cyrillic/Ukrainian"
 msgstr "سيريالي/أوكراني"
 
@@ -612,8 +594,7 @@ msgstr "سيريالي/أوكراني"
 msgid "Georgian"
 msgstr "جورجي"
 
-#: ../src/parole-subtitle-encoding.c:242
-#: ../src/parole-subtitle-encoding.c:244
+#: ../src/parole-subtitle-encoding.c:242 ../src/parole-subtitle-encoding.c:244
 #: ../src/parole-subtitle-encoding.c:246
 msgid "Greek"
 msgstr "يوناني"
@@ -626,10 +607,8 @@ msgstr "Gujarati"
 msgid "Gurmukhi"
 msgstr "Gurmukhi"
 
-#: ../src/parole-subtitle-encoding.c:255
-#: ../src/parole-subtitle-encoding.c:257
-#: ../src/parole-subtitle-encoding.c:259
-#: ../src/parole-subtitle-encoding.c:261
+#: ../src/parole-subtitle-encoding.c:255 ../src/parole-subtitle-encoding.c:257
+#: ../src/parole-subtitle-encoding.c:259 ../src/parole-subtitle-encoding.c:261
 msgid "Hebrew"
 msgstr "عبري"
 
@@ -645,16 +624,13 @@ msgstr "هندي"
 msgid "Icelandic"
 msgstr "أيسلندي"
 
-#: ../src/parole-subtitle-encoding.c:273
-#: ../src/parole-subtitle-encoding.c:275
+#: ../src/parole-subtitle-encoding.c:273 ../src/parole-subtitle-encoding.c:275
 #: ../src/parole-subtitle-encoding.c:277
 msgid "Japanese"
 msgstr "ياباني"
 
-#: ../src/parole-subtitle-encoding.c:280
-#: ../src/parole-subtitle-encoding.c:282
-#: ../src/parole-subtitle-encoding.c:284
-#: ../src/parole-subtitle-encoding.c:286
+#: ../src/parole-subtitle-encoding.c:280 ../src/parole-subtitle-encoding.c:282
+#: ../src/parole-subtitle-encoding.c:284 ../src/parole-subtitle-encoding.c:286
 msgid "Korean"
 msgstr "كوري"
 
@@ -666,8 +642,7 @@ msgstr "إسكندنافي"
 msgid "Persian"
 msgstr "فارسي"
 
-#: ../src/parole-subtitle-encoding.c:295
-#: ../src/parole-subtitle-encoding.c:297
+#: ../src/parole-subtitle-encoding.c:295 ../src/parole-subtitle-encoding.c:297
 msgid "Romanian"
 msgstr "روماني"
 
@@ -679,31 +654,24 @@ msgstr "جنوب أوربي"
 msgid "Thai"
 msgstr "تيلندي"
 
-#: ../src/parole-subtitle-encoding.c:306
-#: ../src/parole-subtitle-encoding.c:308
-#: ../src/parole-subtitle-encoding.c:310
-#: ../src/parole-subtitle-encoding.c:312
+#: ../src/parole-subtitle-encoding.c:306 ../src/parole-subtitle-encoding.c:308
+#: ../src/parole-subtitle-encoding.c:310 ../src/parole-subtitle-encoding.c:312
 msgid "Turkish"
 msgstr "تركي"
 
-#: ../src/parole-subtitle-encoding.c:315
-#: ../src/parole-subtitle-encoding.c:317
-#: ../src/parole-subtitle-encoding.c:319
-#: ../src/parole-subtitle-encoding.c:321
+#: ../src/parole-subtitle-encoding.c:315 ../src/parole-subtitle-encoding.c:317
+#: ../src/parole-subtitle-encoding.c:319 ../src/parole-subtitle-encoding.c:321
 #: ../src/parole-subtitle-encoding.c:323
 msgid "Unicode"
 msgstr "يونيكود"
 
-#: ../src/parole-subtitle-encoding.c:326
-#: ../src/parole-subtitle-encoding.c:328
-#: ../src/parole-subtitle-encoding.c:330
-#: ../src/parole-subtitle-encoding.c:332
+#: ../src/parole-subtitle-encoding.c:326 ../src/parole-subtitle-encoding.c:328
+#: ../src/parole-subtitle-encoding.c:330 ../src/parole-subtitle-encoding.c:332
 #: ../src/parole-subtitle-encoding.c:334
 msgid "Western"
 msgstr "غربي"
 
-#: ../src/parole-subtitle-encoding.c:337
-#: ../src/parole-subtitle-encoding.c:339
+#: ../src/parole-subtitle-encoding.c:337 ../src/parole-subtitle-encoding.c:339
 #: ../src/parole-subtitle-encoding.c:341
 msgid "Vietnamese"
 msgstr "فيتنامي"
@@ -717,8 +685,7 @@ msgstr "مقطع قيد التشغيل"
 msgid "Track %i"
 msgstr "مقطع %i"
 
-#: ../src/parole-plugins-manager.c:301
-#: ../src/parole-plugins-manager.c:437
+#: ../src/parole-plugins-manager.c:301 ../src/parole-plugins-manager.c:437
 msgid "Visit Website"
 msgstr "زر الموقع"
 
@@ -748,19 +715,19 @@ msgstr "قائمة القراءة"
 
 #: ../plugins/properties/stream-properties-provider.c:254
 msgid "Title:"
-msgstr "عنوان :"
+msgstr "عنوان:"
 
 #: ../plugins/properties/stream-properties-provider.c:277
 msgid "Artist:"
-msgstr "فنان :"
+msgstr "فنان:"
 
 #: ../plugins/properties/stream-properties-provider.c:300
 msgid "Album:"
-msgstr "ألبوم :"
+msgstr "ألبوم:"
 
 #: ../plugins/properties/stream-properties-provider.c:323
 msgid "Year:"
-msgstr "سنة :"
+msgstr "سنة:"
 
 #: ../plugins/properties/stream-properties-provider.c:341
 msgid "General"
@@ -808,7 +775,7 @@ msgstr "دائما تصغير إلى الشريط عنذ الإغلاق"
 
 #: ../plugins/tray/tray-provider.c:477
 msgid "Minimize to tray?"
-msgstr "تصغير إلى الشريط ?"
+msgstr "تصغير إلى الشريط؟"
 
 #: ../plugins/tray/tray-provider.c:483
 msgid "Minimize to tray"
@@ -832,7 +799,7 @@ msgstr "أيقونة الشريط"
 
 #: ../plugins/window-title/window-title.desktop.in.h:1
 msgid "Set the main window name to the current playing media name."
-msgstr "إظهار إسم الملف قيد التشغبل في النافذة الرئيسية. "
+msgstr "إظهار اسم الملف قيد التشغيل في النافذة الرئيسية."
 
 #: ../plugins/window-title/window-title.desktop.in.h:2
 msgid "Window Title"
