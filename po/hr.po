@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-11 20:51+0000\n"
+"POT-Creation-Date: 2012-05-19 21:27+0000\n"
 "PO-Revision-Date: 2011-11-05 02:15+0100\n"
 "Last-Translator: Ivica Kolić <ikoli@yahoo.com>\n"
 "Language-Team: Hrvatski <>\n"
@@ -42,7 +42,7 @@ msgstr ""
 
 #: ../data/interfaces/parole.ui.h:6
 msgid "Chapter Menu"
-msgstr ""
+msgstr "Izbornik poglavlja"
 
 #: ../data/interfaces/parole.ui.h:7
 msgid "DVD"
@@ -67,7 +67,7 @@ msgstr ""
 #: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:1215
 #: ../src/parole-disc-menu.c:113
 msgid "Next Chapter"
-msgstr ""
+msgstr "Slijedeće poglavlje"
 
 #: ../data/interfaces/parole.ui.h:13
 msgid "None"
@@ -85,7 +85,7 @@ msgstr "Priključci"
 #: ../data/interfaces/parole.ui.h:16 ../src/parole-player.c:1227
 #: ../src/parole-disc-menu.c:114
 msgid "Previous Chapter"
-msgstr ""
+msgstr "Prethodno poglavlje"
 
 #: ../data/interfaces/parole.ui.h:17 ../src/parole-medialist.c:1264
 msgid "Repeat"
@@ -225,7 +225,7 @@ msgstr "Font:"
 
 #: ../data/interfaces/parole-settings.ui.h:12
 msgid "Hue:"
-msgstr ""
+msgstr "Nijansa:"
 
 #: ../data/interfaces/parole-settings.ui.h:13
 msgid "Media Player Settings"
@@ -249,7 +249,7 @@ msgstr "Vrsta vizualizacije:"
 
 #: ../data/interfaces/save-playlist.ui.h:1
 msgid "By Extension"
-msgstr ""
+msgstr "Po proširenjima"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "Select File Types (By Extension)"
@@ -356,11 +356,11 @@ msgstr "Traži natrag"
 
 #: ../src/main.c:234
 msgid "Raise volume"
-msgstr ""
+msgstr "Poglasni"
 
 #: ../src/main.c:235
 msgid "Lower volume"
-msgstr ""
+msgstr "Stišaj"
 
 #: ../src/main.c:236
 msgid "Mute volume"
@@ -671,7 +671,7 @@ msgstr "Vijetnamski"
 
 #: ../src/parole-disc-menu.c:130
 msgid "Playing Track"
-msgstr ""
+msgstr "Izvodim zapis"
 
 #: ../src/parole-disc-menu.c:194
 #, c-format
