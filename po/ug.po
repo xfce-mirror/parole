@@ -38,7 +38,7 @@ msgstr "ئاپتوماتىك"
 
 #: ../data/interfaces/parole.ui.h:6
 msgid "Chapter Menu"
-msgstr "باب Menu سى"
+msgstr "باب تىزىملىكى"
 
 #: ../data/interfaces/parole.ui.h:7
 msgid "DVD"
@@ -46,7 +46,7 @@ msgstr "DVD"
 
 #: ../data/interfaces/parole.ui.h:8
 msgid "DVD Menu"
-msgstr "DVD Menu"
+msgstr "DVD تىزىملىكى"
 
 #: ../data/interfaces/parole.ui.h:9
 msgid "From ISO image"
@@ -54,7 +54,7 @@ msgstr "ISO تەسۋىرىدىن"
 
 #: ../data/interfaces/parole.ui.h:10
 msgid "Media player"
-msgstr "Media چالغۇ"
+msgstr "ۋاسىتە قويغۇ"
 
 #: ../data/interfaces/parole.ui.h:11
 msgid "Mute"
@@ -72,7 +72,7 @@ msgstr "يوق"
 #: ../data/interfaces/parole.ui.h:14 ../data/desktop/parole.desktop.in.in.h:1
 #: ../src/parole-about.c:70 ../plugins/window-title/window-title-provider.c:58
 msgid "Parole Media Player"
-msgstr "Parole Media چالغۇ"
+msgstr "Parole ۋاسىتە قويغۇ"
 
 #: ../data/interfaces/parole.ui.h:15
 msgid "Plugins"
@@ -121,7 +121,7 @@ msgstr "ياردەم(_H)"
 
 #: ../data/interfaces/parole.ui.h:26
 msgid "_Media"
-msgstr "Media(_M)"
+msgstr "ۋاسىتە(_M)"
 
 #: ../data/interfaces/parole.ui.h:27
 msgid "_Open location"
@@ -157,7 +157,7 @@ msgstr "<b>توربېتى:</b>"
 
 #: ../data/interfaces/plugins.ui.h:4
 msgid "Media Player plugins"
-msgstr "Media چالغۇ قىستۇرمىلىرى"
+msgstr "ۋاسىتە قويغۇ قىستۇرمىلىرى"
 
 #: ../data/interfaces/plugins.ui.h:5
 msgid "Parole Plugins"
@@ -201,7 +201,7 @@ msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:10
 msgid "Encoding: "
-msgstr "كودلاش:"
+msgstr "كودلاش: "
 
 #: ../data/interfaces/parole-settings.ui.h:11
 msgid "Font:"
@@ -213,7 +213,7 @@ msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:13
 msgid "Media Player Settings"
-msgstr "Media چالغۇ تەڭشىكى"
+msgstr "ۋاسىتە قويغۇ تەڭشىكى"
 
 #: ../data/interfaces/parole-settings.ui.h:14
 msgid "Parole Settings"
@@ -225,7 +225,7 @@ msgstr "كۆڭۈلدىكىسىگە قايتۇر"
 
 #: ../data/interfaces/parole-settings.ui.h:16
 msgid "Saturation:"
-msgstr ""
+msgstr "تويۇنۇش دەرىجىسى:"
 
 #: ../data/interfaces/parole-settings.ui.h:17
 msgid "Visualization type:"
@@ -268,9 +268,8 @@ msgid ""
 "\n"
 "Licensed under the GNU GPL.\n"
 "\n"
-msgstr ""
-"\n"
-"Parole Media چالغۇ %s\n"
+msgstr "\n"
+"Parole ۋاسىتە قويغۇ %s\n"
 "\n"
 "Xfce Goodies Project نىڭ بىر بۆلىكى\n"
 "http://goodies.xfce.org\n"
@@ -280,7 +279,7 @@ msgstr ""
 
 #: ../src/main.c:187
 msgid "Unknown argument "
-msgstr "نامەلۇم ئارگۇمەنت"
+msgstr "نامەلۇم ئارگۇمېنت "
 
 #: ../src/main.c:224
 msgid "Open a new instance"
@@ -340,7 +339,7 @@ msgstr ""
 
 #: ../src/main.c:239
 msgid "Media to play"
-msgstr "چالىدىغان Media"
+msgstr "قويىدىغان  ۋاسىتە"
 
 #: ../src/main.c:276
 #, c-format
@@ -488,16 +487,16 @@ msgstr "ئەرمەنچە"
 #: ../src/parole-subtitle-encoding.c:180 ../src/parole-subtitle-encoding.c:182
 #: ../src/parole-subtitle-encoding.c:184
 msgid "Baltic"
-msgstr ""
+msgstr "بالتىق"
 
 #: ../src/parole-subtitle-encoding.c:187
 msgid "Celtic"
-msgstr ""
+msgstr "كېلتىك"
 
 #: ../src/parole-subtitle-encoding.c:190 ../src/parole-subtitle-encoding.c:192
 #: ../src/parole-subtitle-encoding.c:194 ../src/parole-subtitle-encoding.c:196
 msgid "Central European"
-msgstr ""
+msgstr "ئوتتۇرا ياۋروپا"
 
 #: ../src/parole-subtitle-encoding.c:199 ../src/parole-subtitle-encoding.c:201
 #: ../src/parole-subtitle-encoding.c:203 ../src/parole-subtitle-encoding.c:205
@@ -521,11 +520,11 @@ msgstr "سلاۋيانچە"
 
 #: ../src/parole-subtitle-encoding.c:231
 msgid "Cyrillic/Russian"
-msgstr ""
+msgstr "سلاۋيانچە/رۇسچە"
 
 #: ../src/parole-subtitle-encoding.c:234 ../src/parole-subtitle-encoding.c:236
 msgid "Cyrillic/Ukrainian"
-msgstr ""
+msgstr "سلاۋيانچە/ئۇكرائىنچە"
 
 #: ../src/parole-subtitle-encoding.c:239
 msgid "Georgian"
@@ -551,7 +550,7 @@ msgstr "ئىبرانىچە"
 
 #: ../src/parole-subtitle-encoding.c:264
 msgid "Hebrew Visual"
-msgstr ""
+msgstr "ئىبرانىچە كۆرۈنۈشچان"
 
 #: ../src/parole-subtitle-encoding.c:267
 msgid "Hindi"
@@ -573,7 +572,7 @@ msgstr "كورىيەچە"
 
 #: ../src/parole-subtitle-encoding.c:289
 msgid "Nordic"
-msgstr ""
+msgstr "شىمالىي ياۋروپا"
 
 #: ../src/parole-subtitle-encoding.c:292
 msgid "Persian"
@@ -585,7 +584,7 @@ msgstr "رۇمىنچە"
 
 #: ../src/parole-subtitle-encoding.c:300
 msgid "South European"
-msgstr ""
+msgstr "جەنۇبى ياۋروپا"
 
 #: ../src/parole-subtitle-encoding.c:303
 msgid "Thai"
@@ -611,7 +610,7 @@ msgstr "غەربچە"
 #: ../src/parole-subtitle-encoding.c:337 ../src/parole-subtitle-encoding.c:339
 #: ../src/parole-subtitle-encoding.c:341
 msgid "Vietnamese"
-msgstr "ۋيېتنامچە"
+msgstr "ۋىيېتنامچە"
 
 #: ../src/parole-open-location.c:181
 msgid "Open location..."
