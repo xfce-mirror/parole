@@ -1,0 +1,27 @@
+What is it?
+===========
+
+Parole is a modern simple media player based on the GStreamer framework and written to fit well
+in the Xfce desktop. Parole features playback of local media files, DVD/CD and live streams.
+Parole is extensible via plugins, for a complete how to write a plugin for Parole see
+the Plugins API documentation+the plugins directory which contains some usefull examples.
+
+Required packages
+=================
+Parole depends on the following packages:
+
+ - Gtk 2.16 or above.
+ - Glib 2.16 or above.
+ - Gio 2.16 or above.
+ - DBus 0.60 or above.
+ - DBus glib 0.70 or above.
+ - GStreamer: base, video, interface and GStreamer X, version 0.10.11 or above.
+ - libxfcegui4 4.6.0 or above.
+ - libxfce4util 4.6.0 or above
+
+How to report bugs?
+===================
+
+Bugs should be reported to the Xfce bug tracking system
+(http://bugzilla.xfce.org, product Parole). You will need to
+create an account for yourself.

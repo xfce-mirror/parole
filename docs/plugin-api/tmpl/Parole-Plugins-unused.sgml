@@ -1,0 +1,213 @@
+<!-- ##### SECTION ./tmpl/parole-plugins.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/parole-plugins.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/parole-plugins.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/parole-plugins.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/parole-plugins.sgml:Title ##### -->
+Parole Plugin Tutorial
+
+    <para>
+	This section explains the steps required to write a plugin for Parole using
+	the C language interface.
+    </para>
+    
+    <para>
+	A simple example can be found in the parole plugins dir shipped with the source code, the sample
+	plugin.
+    </para>
+    <para>
+	As a basics, the plugin needs to implement <link linkend="ParoleProviderPlugin"><type>ParoleProviderPlugin</type></link>
+	interface, That is, the player use this interface to get if the plugin is configurable, to ask it to show
+	its properties dialog when needed, to set the <link linkend="ParoleProviderPlayer"><type>ParoleProviderPlayer</type></link>
+	interface used by plugins to access the the Parole player backend.
+    </para>
+    
+  <sect1 id="parole-plugin-strcuted">
+    <title>Plugin structure.</title>
+    sample-plugin.c
+    <programlisting>
+ 
+#include "sample-provider.h"
+    
+/* Avoid a no previous function declaration compiler warning*/
+G_MODULE_EXPORT GType	parole_plugin_initialize (ParoleProviderPlugin *plugin);
+G_MODULE_EXPORT void	parole_plugin_shutdown   (void);
+
+G_MODULE_EXPORT GType
+parole_plugin_initialize (ParoleProviderPlugin *plugin)
+{
+    xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
+    sample_provider_register_type (plugin);
+    return SAMPLE_TYPE_PROVIDER;
+}
+
+G_MODULE_EXPORT void
+parole_plugin_shutdown (void)
+{
+    
+}
+    </programlisting>
+    
+    sample-provider.h
+    <programlisting>
+#ifndef SAMPLE_PROVIDER_H_
+#define SAMPLE_PROVIDER_H_
+
+#include &lt;parole/parole.h&gt;
+
+G_BEGIN_DECLS
+
+typedef struct _SampleProviderClass SampleProviderClass;
+typedef struct _SampleProvider      SampleProvider;
+
+#define SAMPLE_TYPE_PROVIDER             (sample_provider_get_type ())
+#define SAMPLE_PROVIDER(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), SAMPLE_TYPE_PROVIDER, SampleProvider))
+#define SAMPLE_PROVIDER_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), SAMPLE_TYPE_PROVIDER, SampleProviderClass))
+#define SAMPLE_IS_PROVIDER(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), SAMPLE_TYPE_PROVIDER))
+#define SAMPLE_IS_PROVIDER_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), SAMPLE_TYPE_PROVIDER))
+#define SAMPLE_PROVIDER_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), SAMPLE_TYPE_PROVIDER, SampleProviderClass))
+
+GType sample_provider_get_type      	(void) G_GNUC_CONST G_GNUC_INTERNAL;
+
+void  sample_provider_register_type	(ParoleProviderPlugin *plugin);
+
+G_END_DECLS
+    </programlisting>
+    
+    sample-provider.c
+    <programlisting>
+
+#include "sample-provider.h"
+
+static void   sample_provider_iface_init 	   (ParoleProviderPluginIface *iface);
+static void   sample_provider_finalize             (GObject 	              *object);
+
+
+struct _SampleProviderClass
+{
+    GObjectClass parent_class;
+};
+
+struct _SampleProvider
+{
+    GObject      parent;
+    ParoleProviderPlayer *player;
+};
+
+PAROLE_DEFINE_TYPE_WITH_CODE (SampleProvider, 
+			      sample_provider, 
+			      G_TYPE_OBJECT,
+			      PAROLE_IMPLEMENT_INTERFACE (PAROLE_TYPE_PROVIDER_PLUGIN, 
+							  sample_provider_iface_init));
+		
+static void  sample_provider_configure (ParoleProviderPlugin *provider, GtkWidget *parent)
+{
+    /*Open the configuration dialog, parent is the window transient for*/
+}
+
+static gboolean sample_provider_is_configurable (ParoleProviderPlugin *plugin)
+{
+    return TRUE; /*Returns FALSE and don't override the iface->configure function*/
+}
+
+static void
+sample_provider_set_player (ParoleProviderPlugin *plugin, ParoleProviderPlayer *player)
+{
+    SampleProvider *provider;
+    provider = SAMPLE_PROVIDER (plugin);
+    
+    provider->player = player;
+}
+
+static void
+sample_provider_iface_init (ParoleProviderPluginIface *iface)
+{
+    iface->get_is_configurable = sample_provider_is_configurable;
+    iface->configure = sample_provider_configure;
+    iface->set_player = sample_provider_set_player;
+}
+
+static void sample_provider_class_init (SampleProviderClass *klass)
+{
+    GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
+    
+    gobject_class->finalize = sample_provider_finalize;
+}
+
+static void sample_provider_init (SampleProvider *provider)
+{
+    provider->player = NULL;
+}
+
+static void sample_provider_finalize (GObject *object)
+{
+    G_OBJECT_CLASS (sample_provider_parent_class)->finalize (object);
+}    
+    </programlisting>
+    
+  </sect1>
+    
+  </part>
+
+
+<!-- ##### MACRO PAROLE_PROVIDER_PLAYER_GET_INTERFACE ##### -->
+<para>
+
+</para>
+
+@o: 
+
+<!-- ##### MACRO PAROLE_PROVIDER_PLUGIN_GET_INTERFACE ##### -->
+<para>
+
+</para>
+
+@o: 
+
+<!-- ##### ENUM ParoleFileFormat ##### -->
+<para>
+
+</para>
+
+@PAROLE_FILE_UNKNOWN: 
+@PAROLE_FILE_AUDIO: 
+@PAROLE_FILE_VIDEO: 
+@PAROLE_FILE_PLAYLIST: 
+
+<!-- ##### FUNCTION parole_file_guess_format ##### -->
+<para>
+
+</para>
+
+@file: 
+@Returns: 
+
+<!-- ##### FUNCTION parole_stream_init_properties ##### -->
+<para>
+
+</para>
+
+@stream: 
+
+<!-- ##### FUNCTION parole_stream_new ##### -->
+<para>
+
+</para>
+
+@Returns: 
+

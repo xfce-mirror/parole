@@ -1,0 +1,847 @@
+# Slovak translations for parole-media-player package.
+# Copyright (C) 2009 the parole-media-player's copyright holder
+# This file is distributed under the same license as the parole-media-player package.
+# Robert Hartl <hartl.robert@gmail.com>, 2009, 2010.
+# Tomáš Vadina <kyberdev@gmail.com>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Parole 0.1.90svn.r07906\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-05-23 10:09+0000\n"
+"PO-Revision-Date: 2011-05-20 18:00+0100\n"
+"Last-Translator: Tomáš Vadina <kyberdev@gmail.com>\n"
+"Language-Team: Slovak <gnome-sk-list@gnome.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../data/interfaces/parole.ui.h:1
+msgid "16:9 (Widescreen)"
+msgstr "16:9 (Širokouhlý)"
+
+#: ../data/interfaces/parole.ui.h:2
+msgid "20:9 (DVB)"
+msgstr "20:9 (DVB)"
+
+#: ../data/interfaces/parole.ui.h:3
+msgid "4:3 (TV)"
+msgstr "4:3 (TV)"
+
+#: ../data/interfaces/parole.ui.h:4
+msgid "Aspect Ratio"
+msgstr "Pomer strán"
+
+#: ../data/interfaces/parole.ui.h:5
+msgid "Auto"
+msgstr "Auto"
+
+#: ../data/interfaces/parole.ui.h:6
+msgid "Chapter Menu"
+msgstr "Ponuka kapitol"
+
+#: ../data/interfaces/parole.ui.h:7
+msgid "DVD"
+msgstr "DVD"
+
+#: ../data/interfaces/parole.ui.h:8
+msgid "DVD Menu"
+msgstr "Ponuka DVD"
+
+#: ../data/interfaces/parole.ui.h:9
+msgid "From ISO image"
+msgstr "Z obrazu ISO"
+
+#: ../data/interfaces/parole.ui.h:10
+msgid "Media player"
+msgstr "Prehrávač médií"
+
+#: ../data/interfaces/parole.ui.h:11
+msgid "Mute"
+msgstr "Stlmiť"
+
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:1215
+#: ../src/parole-disc-menu.c:113
+msgid "Next Chapter"
+msgstr "Ďalšia kapitola"
+
+#: ../data/interfaces/parole.ui.h:13
+msgid "None"
+msgstr "Žiadny"
+
+#: ../data/interfaces/parole.ui.h:14 ../src/parole-about.c:74
+#: ../plugins/window-title/window-title-provider.c:58
+msgid "Parole Media Player"
+msgstr "Prehrávač médií Parole"
+
+#: ../data/interfaces/parole.ui.h:15
+msgid "Plugins"
+msgstr "Zasuvné moduly"
+
+#: ../data/interfaces/parole.ui.h:16 ../src/parole-player.c:1227
+#: ../src/parole-disc-menu.c:114
+msgid "Previous Chapter"
+msgstr "Predchádzajúca kapitola"
+
+#: ../data/interfaces/parole.ui.h:17 ../src/parole-medialist.c:1264
+msgid "Repeat"
+msgstr "Opakovať"
+
+#: ../data/interfaces/parole.ui.h:18
+msgid "Select Track"
+msgstr "Vybrať skladbu"
+
+#: ../data/interfaces/parole.ui.h:19 ../src/parole-medialist.c:1280
+msgid "Shuffle"
+msgstr "Zamiešať"
+
+#: ../data/interfaces/parole.ui.h:20
+msgid "Sound"
+msgstr "Z_vuk"
+
+#: ../data/interfaces/parole.ui.h:21
+msgid "Square"
+msgstr "Štvorec"
+
+#: ../data/interfaces/parole.ui.h:22
+msgid "Volume Down"
+msgstr "Stíšiť"
+
+#: ../data/interfaces/parole.ui.h:23
+msgid "Volume Up"
+msgstr "Zosilniť"
+
+#: ../data/interfaces/parole.ui.h:24
+msgid "_Edit"
+msgstr "_Upraviť"
+
+#: ../data/interfaces/parole.ui.h:25
+msgid "_Help"
+msgstr "_Pomocník"
+
+#: ../data/interfaces/parole.ui.h:26
+msgid "_Media"
+msgstr "_Médiá"
+
+#: ../data/interfaces/parole.ui.h:27
+msgid "_Open location"
+msgstr "Otvoriť _umiestnenie"
+
+#: ../data/interfaces/parole.ui.h:28
+msgid "_View"
+msgstr "_Zobraziť"
+
+#: ../data/interfaces/mediachooser.ui.h:1
+msgid "Add"
+msgstr "Pridať"
+
+#: ../data/interfaces/mediachooser.ui.h:2
+msgid "Open media files"
+msgstr "Otvoriť mediálne súbory"
+
+#: ../data/interfaces/mediachooser.ui.h:3
+msgid "Parole Media Chooser"
+msgstr "Výber médií Parole"
+
+#: ../data/interfaces/mediachooser.ui.h:4
+msgid "Replace playlist with opened files"
+msgstr "Nahradiť zoznam médií otváranými súbormi"
+
+#: ../data/interfaces/mediachooser.ui.h:5
+msgid "Scan folders recursively"
+msgstr "Skenovať priečinky rekurzívne"
+
+#: ../data/interfaces/mediachooser.ui.h:6
+msgid "Start playing opened files"
+msgstr "Spustiť prehrávanie otváraných súborov"
+
+#: ../data/interfaces/plugins.ui.h:1
+msgid "<b>Author:</b>"
+msgstr "<b>Autor:</b>"
+
+#: ../data/interfaces/plugins.ui.h:2
+msgid "<b>Description:</b>"
+msgstr "<b>Poznámka:</b>"
+
+#: ../data/interfaces/plugins.ui.h:3
+msgid "<b>Site:</b>"
+msgstr "<b>Stránka:</b>"
+
+#: ../data/interfaces/plugins.ui.h:4
+msgid "Media Player plugins"
+msgstr "Zásuvné moduly prehrávača médií"
+
+#: ../data/interfaces/plugins.ui.h:5
+msgid "Parole Plugins"
+msgstr "Zásuvné moduly Parole"
+
+#: ../data/interfaces/parole-settings.ui.h:1
+msgid "<b>Audio</b>"
+msgstr "<b>Zvuk</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:2
+msgid "<b>Display</b>"
+msgstr "<b>Displej</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:3
+msgid "<b>Subtitles</b>"
+msgstr "<b>Titulky</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:4
+msgid "<b>Video</b>"
+msgstr "<b>Video</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:5
+msgid "Automatically load subtitles when playing movie file"
+msgstr "Načítať titulky automaticky pri prehrávaní video súborov"
+
+#: ../data/interfaces/parole-settings.ui.h:6
+msgid "Brightness:"
+msgstr "Jas:"
+
+#: ../data/interfaces/parole-settings.ui.h:7
+msgid "Contrast:"
+msgstr "Kontrast:"
+
+#: ../data/interfaces/parole-settings.ui.h:8
+msgid "Disable screen saver while playing movies"
+msgstr "Zakázať šetrič obrazovky pri prehrávaní filmov"
+
+#: ../data/interfaces/parole-settings.ui.h:9
+msgid "Enable visualization when playing audio file"
+msgstr "Povoliť vizualizáciu pri prehrávaní audio súborv"
+
+#: ../data/interfaces/parole-settings.ui.h:10
+msgid "Encoding: "
+msgstr "Kódovanie:"
+
+#: ../data/interfaces/parole-settings.ui.h:11
+msgid "Font:"
+msgstr "Písmo:"
+
+#: ../data/interfaces/parole-settings.ui.h:12
+msgid "Hue:"
+msgstr "Odtieň:"
+
+#: ../data/interfaces/parole-settings.ui.h:13
+msgid "Media Player Settings"
+msgstr "Nastavenia prehrávača médií"
+
+#: ../data/interfaces/parole-settings.ui.h:14
+msgid "Parole Settings"
+msgstr "Nastavenia Parole"
+
+#: ../data/interfaces/parole-settings.ui.h:15
+msgid "Reset To Defaults"
+msgstr "Obnoviť prevolené"
+
+#: ../data/interfaces/parole-settings.ui.h:16
+msgid "Saturation:"
+msgstr "Sýtosť:"
+
+#: ../data/interfaces/parole-settings.ui.h:17
+msgid "Visualization type:"
+msgstr "Typ vizualizácie:"
+
+#: ../data/interfaces/save-playlist.ui.h:1
+msgid "By Extension"
+msgstr "Podľa prípony"
+
+#: ../data/interfaces/save-playlist.ui.h:2
+msgid "Select File Types (By Extension)"
+msgstr "Vyberte typy súborov (podľa prípony)"
+
+#: ../data/interfaces/open-location.ui.h:1
+msgid "Clear history"
+msgstr "Zmazať históriu"
+
+#: ../data/interfaces/open-location.ui.h:2
+msgid "Enter the address of a location to open"
+msgstr "Zadajte adresu umiestnenia pre otvorenie"
+
+#: ../data/interfaces/open-location.ui.h:3
+msgid "Open location of media file or live stream"
+msgstr "Otvoriť umiestnenie mediálneho súboru alebo živého prúdu"
+
+#: ../data/desktop/parole.desktop.in.in.h:1
+msgid "Parole"
+msgstr "Parole"
+
+#: ../common/parole-common.c:67
+msgid "Message"
+msgstr "Správa"
+
+#: ../common/parole-common.c:72
+msgid "Error"
+msgstr "Chyba"
+
+#: ../gst/parole-gst.c:1526
+msgid "The stream is taking too much time to load"
+msgstr "Načítanie dátového toku trvá príliš dlho"
+
+#: ../gst/parole-gst.c:1526
+msgid "Stop"
+msgstr "Zastaviť"
+
+#: ../gst/parole-gst.c:1715
+msgid ""
+"Unable to load playbin GStreamer plugin, check your GStreamer installation"
+msgstr ""
+"Nemožno zaviesť zásuvný modul GStreameru playbin. Skontrolujte stav "
+"inštalácie"
+
+#: ../gst/parole-gst.c:1735
+msgid ""
+"Unable to load video GStreamer plugin, check your GStreamer installation"
+msgstr ""
+"Nemožno načítať zásuvný modul videa GStreamer, skontrolujte svoju inštaláciu "
+"GStreamer"
+
+#: ../src/main.c:54
+#, c-format
+msgid ""
+"\n"
+"Parole Media Player %s\n"
+"\n"
+"Part of the Xfce Goodies Project\n"
+"http://goodies.xfce.org\n"
+"\n"
+"Licensed under the GNU GPL.\n"
+"\n"
+msgstr ""
+"\n"
+"Mediálny prehrávač Parole %s\n"
+"\n"
+"Súčasť projektu Xfce Goodies\n"
+"http://goodies.xfce.org\n"
+"\n"
+"Pod licenciou GNU GPL.\n"
+"\n"
+
+#: ../src/main.c:187
+msgid "Unknown argument "
+msgstr "Neznámy argument"
+
+#: ../src/main.c:225
+msgid "Open a new instance"
+msgstr "Otvoriť novú inštanciu"
+
+#: ../src/main.c:226
+msgid "Do not load plugins"
+msgstr "Nezavádzať zásuvné moduly"
+
+#: ../src/main.c:227
+msgid "Set Audio-CD/VCD/DVD device path"
+msgstr "Nastaviť cestu zariadenia Audio-CD/VCD/DVD"
+
+#: ../src/main.c:228
+msgid "Play or pause if already playing"
+msgstr "Prehrať alebo pozastaviť, ak sa už prehráva"
+
+#: ../src/main.c:229
+msgid "Stop playing"
+msgstr "Zastaviť prehrávanie"
+
+#: ../src/main.c:230
+msgid "Next track"
+msgstr "Ďalšia skladba"
+
+#: ../src/main.c:231
+msgid "Previous track"
+msgstr "Predchádzajúca skladba"
+
+#: ../src/main.c:232
+msgid "Seek forward"
+msgstr "Posunúť dopredu"
+
+#: ../src/main.c:233
+msgid "Seek Backward"
+msgstr "Posunúť späť"
+
+#: ../src/main.c:234
+msgid "Raise volume"
+msgstr "Zosilniť hlasitosť"
+
+#: ../src/main.c:235
+msgid "Lower volume"
+msgstr "Stíšiť hlasitosť"
+
+#: ../src/main.c:236
+msgid "Mute volume"
+msgstr "Stlmiť hlasitosť"
+
+#: ../src/main.c:237
+msgid "Version information"
+msgstr "Informácia o verzií"
+
+#: ../src/main.c:238
+msgid "Start in fullscreen mode"
+msgstr "Spustiť v režime celej obrazovky"
+
+#: ../src/main.c:239
+msgid "Enabled/Disable XV support"
+msgstr "Povoliť/zakázať podporu XV"
+
+#: ../src/main.c:241
+msgid "Media to play"
+msgstr "Média na prehrávanie"
+
+#: ../src/main.c:278
+#, c-format
+msgid "Parole is already running, use -i to open a new instance\n"
+msgstr "Parole už beží, použite -i pre otvorenie novej inštancie\n"
+
+#: ../src/parole-medialist.c:501
+msgid "Permission denied"
+msgstr "Povolenie zamietnuté"
+
+#: ../src/parole-medialist.c:503
+msgid "Error saving playlist file"
+msgstr "Chyba pri ukladaní súboru zoznamu skladieb"
+
+#: ../src/parole-medialist.c:515
+msgid "Unknown playlist format"
+msgstr "Neznámy formát zoznamu skladieb"
+
+#: ../src/parole-medialist.c:516
+msgid "Please chooser a supported playlist format"
+msgstr "Vyberte prosím podporovaný formát zoznamu skladieb"
+
+#: ../src/parole-medialist.c:568 ../src/parole-plugins-manager.c:377
+#: ../plugins/properties/stream-properties-provider.c:140
+#: ../plugins/properties/stream-properties-provider.c:141
+#: ../plugins/properties/stream-properties-provider.c:142
+#: ../plugins/properties/stream-properties-provider.c:143
+msgid "Unknown"
+msgstr "Neznáme"
+
+#: ../src/parole-medialist.c:642 ../src/parole-player.c:1991
+msgid "Playlist"
+msgstr "Zoznam skladieb"
+
+#: ../src/parole-medialist.c:649
+msgid "M3U Playlists"
+msgstr "Zoznamy skladieb M3U"
+
+#: ../src/parole-medialist.c:657
+msgid "PLS Playlists"
+msgstr "Zoznamy skladieb PLS"
+
+#: ../src/parole-medialist.c:665
+msgid "Advanced Stream Redirector"
+msgstr "Pokročilé presmerovanie dátového toku"
+
+#: ../src/parole-medialist.c:673
+msgid "Shareable Playlist"
+msgstr "Zdielateľný zoznam skladieb"
+
+#. Clear
+#: ../src/parole-medialist.c:1152
+msgid "Open Containing Folder"
+msgstr "Otvoriť adresár s"
+
+#: ../src/parole-medialist.c:1303
+msgid "Replace playlist when opening files"
+msgstr "Nahradiť zoznam skladieb otváranými súbormi"
+
+#: ../src/parole-medialist.c:1319
+msgid "Play opened files"
+msgstr "Spustiť prehrávanie otváraných súborov"
+
+#. *
+#. * Remember media list entries
+#. *
+#: ../src/parole-medialist.c:1331
+msgid "Remember playlist"
+msgstr "Zapamätať zoznam skladieb"
+
+#: ../src/parole-medialist.c:1502
+msgid "Media list"
+msgstr "Zoznam médií"
+
+#: ../src/parole-player.c:336
+msgid "Hide playlist"
+msgstr "Skryť zoznam skladieb"
+
+#: ../src/parole-player.c:345
+msgid "Show playlist"
+msgstr "Zobraziť zoznam skladieb"
+
+#: ../src/parole-player.c:378
+msgid "Open ISO image"
+msgstr "Otvoriť obraz ISO"
+
+#: ../src/parole-player.c:395
+msgid "CD image"
+msgstr "Obraz CD"
+
+#: ../src/parole-player.c:395
+msgid "DVD image"
+msgstr "Obraz DVD"
+
+#: ../src/parole-player.c:551 ../src/parole-player.c:659
+msgid "Media stream is not seekable"
+msgstr "Dátový tok neumožňuje presúvanie"
+
+#.
+#. * Next chapter menu item
+#.
+#: ../src/parole-player.c:1215 ../src/parole-disc-menu.c:122
+msgid "Next Track"
+msgstr "Ďalšia skladba"
+
+#.
+#. * Previous chapter menu item
+#.
+#: ../src/parole-player.c:1227 ../src/parole-disc-menu.c:123
+msgid "Previous Track"
+msgstr "Predchádzajúca skladba"
+
+#: ../src/parole-statusbar.c:61
+msgid "Buffering"
+msgstr "Ukladanie do vyrovnávacej pamäte"
+
+#: ../src/parole-statusbar.c:100
+msgid "Stopped"
+msgstr "Zastavené"
+
+#: ../src/parole-statusbar.c:104
+msgid "Finished"
+msgstr "Ukončené"
+
+#: ../src/parole-statusbar.c:114 ../src/parole-statusbar.c:124
+msgid "Paused"
+msgstr "Pozastavené"
+
+#: ../src/parole-statusbar.c:114
+msgid "Playing"
+msgstr "Prehráva sa"
+
+#: ../src/parole-statusbar.c:170 ../src/parole-statusbar.c:174
+msgid "Live stream:"
+msgstr "Live stream:"
+
+#: ../src/parole-about.c:79
+msgid "Author/Maintainer"
+msgstr "Autor/Správca"
+
+#: ../src/parole-about.c:85
+#, c-format
+msgid "Translator (%s)"
+msgstr "Prekladateľ (%s)"
+
+#: ../src/parole-disc.c:227
+msgid "Play Disc"
+msgstr "Prehrať disk"
+
+#: ../src/parole-subtitle-encoding.c:165
+msgid "Current Locale"
+msgstr "Aktuálna lokalita"
+
+#: ../src/parole-subtitle-encoding.c:168 ../src/parole-subtitle-encoding.c:170
+#: ../src/parole-subtitle-encoding.c:172 ../src/parole-subtitle-encoding.c:174
+msgid "Arabic"
+msgstr "Arabské"
+
+#: ../src/parole-subtitle-encoding.c:177
+msgid "Armenian"
+msgstr "Arménske"
+
+#: ../src/parole-subtitle-encoding.c:180 ../src/parole-subtitle-encoding.c:182
+#: ../src/parole-subtitle-encoding.c:184
+msgid "Baltic"
+msgstr "Baltické"
+
+#: ../src/parole-subtitle-encoding.c:187
+msgid "Celtic"
+msgstr "Keltské"
+
+#: ../src/parole-subtitle-encoding.c:190 ../src/parole-subtitle-encoding.c:192
+#: ../src/parole-subtitle-encoding.c:194 ../src/parole-subtitle-encoding.c:196
+msgid "Central European"
+msgstr "Stredoeurópske"
+
+#: ../src/parole-subtitle-encoding.c:199 ../src/parole-subtitle-encoding.c:201
+#: ../src/parole-subtitle-encoding.c:203 ../src/parole-subtitle-encoding.c:205
+msgid "Chinese Simplified"
+msgstr "Zjednodušená čínština"
+
+#: ../src/parole-subtitle-encoding.c:208 ../src/parole-subtitle-encoding.c:210
+#: ../src/parole-subtitle-encoding.c:212
+msgid "Chinese Traditional"
+msgstr "Tradičná čínština"
+
+#: ../src/parole-subtitle-encoding.c:215
+msgid "Croatian"
+msgstr "Chorvátske"
+
+#: ../src/parole-subtitle-encoding.c:218 ../src/parole-subtitle-encoding.c:220
+#: ../src/parole-subtitle-encoding.c:222 ../src/parole-subtitle-encoding.c:224
+#: ../src/parole-subtitle-encoding.c:226 ../src/parole-subtitle-encoding.c:228
+msgid "Cyrillic"
+msgstr "Cyrilika"
+
+#: ../src/parole-subtitle-encoding.c:231
+msgid "Cyrillic/Russian"
+msgstr "Cyrilika/Ruská"
+
+#: ../src/parole-subtitle-encoding.c:234 ../src/parole-subtitle-encoding.c:236
+msgid "Cyrillic/Ukrainian"
+msgstr "Cyrilika/Ukrajinská"
+
+#: ../src/parole-subtitle-encoding.c:239
+msgid "Georgian"
+msgstr "Gruzínske"
+
+#: ../src/parole-subtitle-encoding.c:242 ../src/parole-subtitle-encoding.c:244
+#: ../src/parole-subtitle-encoding.c:246
+msgid "Greek"
+msgstr "Grécke"
+
+#: ../src/parole-subtitle-encoding.c:249
+msgid "Gujarati"
+msgstr "Gudžaratské"
+
+#: ../src/parole-subtitle-encoding.c:252
+msgid "Gurmukhi"
+msgstr "Gurmukhi"
+
+#: ../src/parole-subtitle-encoding.c:255 ../src/parole-subtitle-encoding.c:257
+#: ../src/parole-subtitle-encoding.c:259 ../src/parole-subtitle-encoding.c:261
+msgid "Hebrew"
+msgstr "Hebrejské"
+
+#: ../src/parole-subtitle-encoding.c:264
+msgid "Hebrew Visual"
+msgstr "Hebrejské vizálne"
+
+#: ../src/parole-subtitle-encoding.c:267
+msgid "Hindi"
+msgstr "Hindština"
+
+#: ../src/parole-subtitle-encoding.c:270
+msgid "Icelandic"
+msgstr "Islandské"
+
+#: ../src/parole-subtitle-encoding.c:273 ../src/parole-subtitle-encoding.c:275
+#: ../src/parole-subtitle-encoding.c:277
+msgid "Japanese"
+msgstr "Japonské"
+
+#: ../src/parole-subtitle-encoding.c:280 ../src/parole-subtitle-encoding.c:282
+#: ../src/parole-subtitle-encoding.c:284 ../src/parole-subtitle-encoding.c:286
+msgid "Korean"
+msgstr "Kórejské"
+
+#: ../src/parole-subtitle-encoding.c:289
+msgid "Nordic"
+msgstr "Severské"
+
+#: ../src/parole-subtitle-encoding.c:292
+msgid "Persian"
+msgstr "Perské"
+
+#: ../src/parole-subtitle-encoding.c:295 ../src/parole-subtitle-encoding.c:297
+msgid "Romanian"
+msgstr "Rumunské"
+
+#: ../src/parole-subtitle-encoding.c:300
+msgid "South European"
+msgstr "Juhoeurópske"
+
+#: ../src/parole-subtitle-encoding.c:303
+msgid "Thai"
+msgstr "Thajské"
+
+#: ../src/parole-subtitle-encoding.c:306 ../src/parole-subtitle-encoding.c:308
+#: ../src/parole-subtitle-encoding.c:310 ../src/parole-subtitle-encoding.c:312
+msgid "Turkish"
+msgstr "Turecké"
+
+#: ../src/parole-subtitle-encoding.c:315 ../src/parole-subtitle-encoding.c:317
+#: ../src/parole-subtitle-encoding.c:319 ../src/parole-subtitle-encoding.c:321
+#: ../src/parole-subtitle-encoding.c:323
+msgid "Unicode"
+msgstr "Unicode"
+
+#: ../src/parole-subtitle-encoding.c:326 ../src/parole-subtitle-encoding.c:328
+#: ../src/parole-subtitle-encoding.c:330 ../src/parole-subtitle-encoding.c:332
+#: ../src/parole-subtitle-encoding.c:334
+msgid "Western"
+msgstr "Západné"
+
+#: ../src/parole-subtitle-encoding.c:337 ../src/parole-subtitle-encoding.c:339
+#: ../src/parole-subtitle-encoding.c:341
+msgid "Vietnamese"
+msgstr "Vietnamske"
+
+#: ../src/parole-disc-menu.c:130
+msgid "Playing Track"
+msgstr "Prehrávaná skladba"
+
+#: ../src/parole-disc-menu.c:194
+#, c-format
+msgid "Track %i"
+msgstr "Skladba %i"
+
+#: ../src/parole-plugins-manager.c:301 ../src/parole-plugins-manager.c:437
+msgid "Visit Website"
+msgstr "Navštíviť webovú stránku"
+
+#: ../src/parole-plugins-manager.c:416
+msgid "No installed plugins found on this system"
+msgstr "V systéme neboli nájdené žiadne zásuvné moduly"
+
+#: ../parole/parole-filters.c:64
+msgid "Audio"
+msgstr "Audio"
+
+#: ../parole/parole-filters.c:90
+msgid "Video"
+msgstr "Video"
+
+#: ../parole/parole-filters.c:115
+msgid "Audio and video"
+msgstr "Audio a video"
+
+#: ../parole/parole-filters.c:144
+msgid "All supported files"
+msgstr "Všetky podporované súbory"
+
+#: ../parole/parole-filters.c:171
+msgid "Playlist files"
+msgstr "Súbory zoznamov skladieb"
+
+#: ../plugins/properties/stream-properties-provider.c:254
+msgid "Title:"
+msgstr "Názov:"
+
+#: ../plugins/properties/stream-properties-provider.c:277
+msgid "Artist:"
+msgstr "Umelec:"
+
+#: ../plugins/properties/stream-properties-provider.c:300
+msgid "Album:"
+msgstr "Album:"
+
+#: ../plugins/properties/stream-properties-provider.c:323
+msgid "Year:"
+msgstr "Rok:"
+
+#: ../plugins/properties/stream-properties-provider.c:341
+msgid "General"
+msgstr "Všeobcené"
+
+#: ../plugins/properties/stream-properties-provider.c:392
+msgid "Stream doesn't support tags changes"
+msgstr "Dátový prúd nepodporuje zmeny značiek"
+
+#: ../plugins/properties/stream-properties-provider.c:399
+msgid "Save media tags changes"
+msgstr "Uložiť zmeny značiek média"
+
+#: ../plugins/properties/stream-properties-provider.c:524
+msgid "Properties"
+msgstr "Vlastnosti"
+
+#: ../plugins/properties/stream-properties.desktop.in.h:1
+msgid "Read media properties"
+msgstr "Čítať vlastnosti média"
+
+#: ../plugins/properties/stream-properties.desktop.in.h:2
+msgid "Stream Properties"
+msgstr "Vlastnosti prúdu"
+
+#: ../plugins/tray/tray-provider.c:283
+msgid "<b>Playing:</b>"
+msgstr "<b>Prehrávanie:</b>"
+
+#: ../plugins/tray/tray-provider.c:283
+msgid "<b>Duration:</b>"
+msgstr "<b>Trvanie:</b>"
+
+#: ../plugins/tray/tray-provider.c:419
+msgid "Tray icon plugin"
+msgstr "Modul ikony v oznamovacej oblasti"
+
+#: ../plugins/tray/tray-provider.c:429
+msgid "Enable notification"
+msgstr "Povoliť oznamovanie"
+
+#: ../plugins/tray/tray-provider.c:438
+msgid "Always minimize to tray when window is closed"
+msgstr "Vždy minimalizovať to oznamovacej oblasti, pri zavretí okna"
+
+#: ../plugins/tray/tray-provider.c:477
+msgid "Minimize to tray?"
+msgstr "Minimalizovať do oznamovacej oblasti?"
+
+#: ../plugins/tray/tray-provider.c:483
+msgid "Minimize to tray"
+msgstr "Minimalizovať do oznamovacej oblasti"
+
+#: ../plugins/tray/tray-provider.c:499
+msgid "Are you sure you want to quit Parole"
+msgstr "Naozaj chcete ukončiť Parole"
+
+#: ../plugins/tray/tray-provider.c:503
+msgid "Remember my choice"
+msgstr "Zapamätať môj výber"
+
+#: ../plugins/tray/system-tray.desktop.in.h:1
+msgid "Show icon in the system tray"
+msgstr "Zobrazovanie ikony v oznamovacej oblasti"
+
+#: ../plugins/tray/system-tray.desktop.in.h:2
+msgid "Tray icon"
+msgstr "Ikona v oznamovacej oblasti"
+
+#: ../plugins/window-title/window-title.desktop.in.h:1
+msgid "Set the main window name to the current playing media name."
+msgstr "Nastaviť názov hlavného okna na názov prehrávaného média."
+
+#: ../plugins/window-title/window-title.desktop.in.h:2
+msgid "Window Title"
+msgstr "Titulok okna"
+
+#: ../plugins/power-manager/power-manager.desktop.in.h:1
+msgid "Inhibit Power Manager from suspending the machine while playing DVD."
+msgstr ""
+"Potlačiť nastavenia úsporných režimov Správcu napájania pri prehrávaní DVD."
+
+#: ../plugins/power-manager/power-manager.desktop.in.h:2
+msgid "Power Manager Plugin"
+msgstr "Zásuvný modul Správcu napájania"
+
+#~ msgid "Open location..."
+#~ msgstr "Otvoriť umiestnenie..."
+
+#~ msgid "socket"
+#~ msgstr "socket"
+
+#~ msgid "SOCKET ID"
+#~ msgstr "SOCKET ID"
+
+#~ msgid "url to play"
+#~ msgstr "Umiestnenie URL na prehrávanie"
+
+#~ msgid "URL"
+#~ msgstr "Adresa URL"
+
+#~ msgid "Fullscreen"
+#~ msgstr "Celá obrazovka"
+
+#~ msgid "Copy url"
+#~ msgstr "Kopírovať url"
+
+#~ msgid "Plugin"
+#~ msgstr "Zasuvné moduly"
+
+#~ msgid "gtk-close"
+#~ msgstr "gtk-close"
+
+#~ msgid "gtk-properties"
+#~ msgstr "gtk-properties"
+
+#~ msgid "Comment:"
+#~ msgstr "Komentár:"

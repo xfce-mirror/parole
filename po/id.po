@@ -1,0 +1,837 @@
+# Indonesian translations for parole package.
+# Copyright (C) 2009 THE parole'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the parole package.
+# Andhika Padmawan <andhika.padmawan@gmail.com>, 2010.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: parole\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-05-28 10:09+0000\n"
+"PO-Revision-Date: 2010-01-13 14:55-0500\n"
+"Last-Translator: Andhika Padmawan <andhika.padmawan@gmail.com>\n"
+"Language-Team: Indonesian <translation-team-id@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../data/interfaces/parole.ui.h:1
+msgid "16:9 (Widescreen)"
+msgstr "16:9 (Layar Lebar)"
+
+#: ../data/interfaces/parole.ui.h:2
+msgid "20:9 (DVB)"
+msgstr "20:9 (DVB)"
+
+#: ../data/interfaces/parole.ui.h:3
+msgid "4:3 (TV)"
+msgstr "4:3 (TV)"
+
+#: ../data/interfaces/parole.ui.h:4
+msgid "Aspect Ratio"
+msgstr "Rasio Aspek"
+
+#: ../data/interfaces/parole.ui.h:5
+msgid "Auto"
+msgstr "Otomatis"
+
+#: ../data/interfaces/parole.ui.h:6
+msgid "Chapter Menu"
+msgstr "Menu Bab"
+
+#: ../data/interfaces/parole.ui.h:7
+msgid "DVD"
+msgstr "DVD"
+
+#: ../data/interfaces/parole.ui.h:8
+msgid "DVD Menu"
+msgstr "Menu DVD"
+
+#: ../data/interfaces/parole.ui.h:9
+msgid "From ISO image"
+msgstr "Dari citra ISO"
+
+#: ../data/interfaces/parole.ui.h:10
+msgid "Media player"
+msgstr "Pemutar media"
+
+#: ../data/interfaces/parole.ui.h:11
+msgid "Mute"
+msgstr "Diam"
+
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:1215
+#: ../src/parole-disc-menu.c:113
+msgid "Next Chapter"
+msgstr "Bab Berikutnya"
+
+#: ../data/interfaces/parole.ui.h:13
+msgid "None"
+msgstr "Tak Ada"
+
+#: ../data/interfaces/parole.ui.h:14 ../src/parole-about.c:74
+#: ../plugins/window-title/window-title-provider.c:58
+msgid "Parole Media Player"
+msgstr "Pemutar Media Parole"
+
+#: ../data/interfaces/parole.ui.h:15
+msgid "Plugins"
+msgstr "Plugin"
+
+#: ../data/interfaces/parole.ui.h:16 ../src/parole-player.c:1227
+#: ../src/parole-disc-menu.c:114
+msgid "Previous Chapter"
+msgstr "Bab Sebelumnya"
+
+#: ../data/interfaces/parole.ui.h:17 ../src/parole-medialist.c:1264
+msgid "Repeat"
+msgstr "Ulangi"
+
+#: ../data/interfaces/parole.ui.h:18
+msgid "Select Track"
+msgstr "Pilih Jalur"
+
+#: ../data/interfaces/parole.ui.h:19 ../src/parole-medialist.c:1280
+msgid "Shuffle"
+msgstr "Acak"
+
+#: ../data/interfaces/parole.ui.h:20
+msgid "Sound"
+msgstr "Suara"
+
+#: ../data/interfaces/parole.ui.h:21
+msgid "Square"
+msgstr "Kotak"
+
+#: ../data/interfaces/parole.ui.h:22
+msgid "Volume Down"
+msgstr "Volume Turun"
+
+#: ../data/interfaces/parole.ui.h:23
+msgid "Volume Up"
+msgstr "Volume Naik"
+
+#: ../data/interfaces/parole.ui.h:24
+msgid "_Edit"
+msgstr "_Sunting"
+
+#: ../data/interfaces/parole.ui.h:25
+msgid "_Help"
+msgstr "Ba_ntuan"
+
+#: ../data/interfaces/parole.ui.h:26
+msgid "_Media"
+msgstr "_Media"
+
+#: ../data/interfaces/parole.ui.h:27
+msgid "_Open location"
+msgstr "_Buka lokasi"
+
+#: ../data/interfaces/parole.ui.h:28
+msgid "_View"
+msgstr "_Tampilan"
+
+#: ../data/interfaces/mediachooser.ui.h:1
+msgid "Add"
+msgstr "Tambah"
+
+#: ../data/interfaces/mediachooser.ui.h:2
+msgid "Open media files"
+msgstr "Buka berkas media"
+
+#: ../data/interfaces/mediachooser.ui.h:3
+msgid "Parole Media Chooser"
+msgstr "Pemilih Media Parole"
+
+#: ../data/interfaces/mediachooser.ui.h:4
+msgid "Replace playlist with opened files"
+msgstr "Ganti senarai putar dengan berkas yang dibuka"
+
+#: ../data/interfaces/mediachooser.ui.h:5
+msgid "Scan folders recursively"
+msgstr "Pindai folder secara rekursif"
+
+#: ../data/interfaces/mediachooser.ui.h:6
+msgid "Start playing opened files"
+msgstr "Mulai putar berkas yang dibuka"
+
+#: ../data/interfaces/plugins.ui.h:1
+msgid "<b>Author:</b>"
+msgstr "<b>Penulis:</b>"
+
+#: ../data/interfaces/plugins.ui.h:2
+msgid "<b>Description:</b>"
+msgstr "<b>Deskripsi:</b>"
+
+#: ../data/interfaces/plugins.ui.h:3
+msgid "<b>Site:</b>"
+msgstr "<b>Situs:</b>"
+
+#: ../data/interfaces/plugins.ui.h:4
+msgid "Media Player plugins"
+msgstr "Plugin Pemutar Media"
+
+#: ../data/interfaces/plugins.ui.h:5
+msgid "Parole Plugins"
+msgstr "Plugin Parole"
+
+#: ../data/interfaces/parole-settings.ui.h:1
+msgid "<b>Audio</b>"
+msgstr "<b>Audio</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:2
+msgid "<b>Display</b>"
+msgstr "<b>Tampilan</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:3
+msgid "<b>Subtitles</b>"
+msgstr "<b>Subjudul</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:4
+msgid "<b>Video</b>"
+msgstr "<b>Video</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:5
+msgid "Automatically load subtitles when playing movie file"
+msgstr "Secara otomatis memuat subjudul ketika memainkan berkas film"
+
+#: ../data/interfaces/parole-settings.ui.h:6
+msgid "Brightness:"
+msgstr "Kecerahan:"
+
+#: ../data/interfaces/parole-settings.ui.h:7
+msgid "Contrast:"
+msgstr "Kontras:"
+
+#: ../data/interfaces/parole-settings.ui.h:8
+msgid "Disable screen saver while playing movies"
+msgstr "Nonaktifkan penyimpan layar ketika memainkan film"
+
+#: ../data/interfaces/parole-settings.ui.h:9
+msgid "Enable visualization when playing audio file"
+msgstr "Aktifkan visualisasi ketika memainkan berkas audio"
+
+#: ../data/interfaces/parole-settings.ui.h:10
+msgid "Encoding: "
+msgstr "Penyandian: "
+
+#: ../data/interfaces/parole-settings.ui.h:11
+msgid "Font:"
+msgstr "Fonta:"
+
+#: ../data/interfaces/parole-settings.ui.h:12
+msgid "Hue:"
+msgstr "Samar:"
+
+#: ../data/interfaces/parole-settings.ui.h:13
+msgid "Media Player Settings"
+msgstr "Pengaturan Pemutar Media"
+
+#: ../data/interfaces/parole-settings.ui.h:14
+msgid "Parole Settings"
+msgstr "Pengaturan Parole"
+
+#: ../data/interfaces/parole-settings.ui.h:15
+msgid "Reset To Defaults"
+msgstr "Atur Ulang Ke Standar"
+
+#: ../data/interfaces/parole-settings.ui.h:16
+msgid "Saturation:"
+msgstr "Jenuh:"
+
+#: ../data/interfaces/parole-settings.ui.h:17
+msgid "Visualization type:"
+msgstr "Tipe visualisasi:"
+
+#: ../data/interfaces/save-playlist.ui.h:1
+msgid "By Extension"
+msgstr "Menurut Ekstensi"
+
+#: ../data/interfaces/save-playlist.ui.h:2
+msgid "Select File Types (By Extension)"
+msgstr "Pilih Tipe Berkas (Menurut Ekstensi)"
+
+#: ../data/interfaces/open-location.ui.h:1
+msgid "Clear history"
+msgstr "Hapus riwayat"
+
+#: ../data/interfaces/open-location.ui.h:2
+msgid "Enter the address of a location to open"
+msgstr "Masukkan alamat lokasi yang akan dibuka"
+
+#: ../data/interfaces/open-location.ui.h:3
+msgid "Open location of media file or live stream"
+msgstr "Buka lokasi berkas media atau arus langsung"
+
+#: ../data/desktop/parole.desktop.in.in.h:1
+msgid "Parole"
+msgstr "Parole"
+
+#: ../common/parole-common.c:67
+msgid "Message"
+msgstr "Pesan"
+
+#: ../common/parole-common.c:72
+msgid "Error"
+msgstr "Galat"
+
+#: ../gst/parole-gst.c:1526
+msgid "The stream is taking too much time to load"
+msgstr "Arus menghabiskan terlalu banyak waktu untuk dimuat"
+
+#: ../gst/parole-gst.c:1526
+msgid "Stop"
+msgstr "Stop"
+
+#: ../gst/parole-gst.c:1715
+msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
+msgstr "Tak dapat memuat plugin playbin GStreamer, periksa instalasi GStreamer anda"
+
+#: ../gst/parole-gst.c:1735
+msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
+msgstr "Tak dapat memuat plugin video GStreamer, periksa instalasi GStreamer anda"
+
+#: ../src/main.c:54
+#, c-format
+msgid ""
+"\n"
+"Parole Media Player %s\n"
+"\n"
+"Part of the Xfce Goodies Project\n"
+"http://goodies.xfce.org\n"
+"\n"
+"Licensed under the GNU GPL.\n"
+"\n"
+msgstr ""
+"\n"
+"Pemutar Media Parole %s\n"
+"\n"
+"Bagian dari Proyek Goodies Xfce\n"
+"http://goodies.xfce.org\n"
+"\n"
+"Dilisensikan di bawah GNU GPL.\n"
+"\n"
+
+#: ../src/main.c:187
+msgid "Unknown argument "
+msgstr "Argumen tak diketahui "
+
+#: ../src/main.c:225
+msgid "Open a new instance"
+msgstr "Buka sebuah instansi baru"
+
+#: ../src/main.c:226
+msgid "Do not load plugins"
+msgstr "Jangan muat plugin"
+
+#: ../src/main.c:227
+msgid "Set Audio-CD/VCD/DVD device path"
+msgstr "Atur alamat divais Audio-CD/VCD/DVD"
+
+#: ../src/main.c:228
+msgid "Play or pause if already playing"
+msgstr "Putar atau jeda jika telah memainkan"
+
+#: ../src/main.c:229
+msgid "Stop playing"
+msgstr "Stop memutar"
+
+#: ../src/main.c:230
+msgid "Next track"
+msgstr "Jalur berikutnya"
+
+#: ../src/main.c:231
+msgid "Previous track"
+msgstr "Jalur sebelumnya"
+
+#: ../src/main.c:232
+msgid "Seek forward"
+msgstr "Cari maju"
+
+#: ../src/main.c:233
+msgid "Seek Backward"
+msgstr "Cari mundur"
+
+#: ../src/main.c:234
+msgid "Raise volume"
+msgstr "Naikkan volume"
+
+#: ../src/main.c:235
+msgid "Lower volume"
+msgstr "Kecilkan volume"
+
+#: ../src/main.c:236
+msgid "Mute volume"
+msgstr "Diam volume"
+
+#: ../src/main.c:237
+msgid "Version information"
+msgstr "Informasi versi"
+
+#: ../src/main.c:238
+msgid "Start in fullscreen mode"
+msgstr "Jalankan di mode layar penuh"
+
+#: ../src/main.c:239
+msgid "Enabled/Disable XV support"
+msgstr "Dukungan XV diaktifkan/dinonaktifkan"
+
+#: ../src/main.c:241
+msgid "Media to play"
+msgstr "Media untuk dimainkan"
+
+#: ../src/main.c:278
+#, c-format
+msgid "Parole is already running, use -i to open a new instance\n"
+msgstr "Parole telah berjalan, gunakan -i untuk membuka sebuah instansi baru\n"
+
+#: ../src/parole-medialist.c:501
+msgid "Permission denied"
+msgstr "Hak akses ditolak"
+
+#: ../src/parole-medialist.c:503
+msgid "Error saving playlist file"
+msgstr "Galat menyimpan berkas senarai putar"
+
+#: ../src/parole-medialist.c:515
+msgid "Unknown playlist format"
+msgstr "Format senarai tak diketahui"
+
+#: ../src/parole-medialist.c:516
+msgid "Please chooser a supported playlist format"
+msgstr "Silakan pilih format senarai putar yang didukung"
+
+#: ../src/parole-medialist.c:568 ../src/parole-plugins-manager.c:377
+#: ../plugins/properties/stream-properties-provider.c:140
+#: ../plugins/properties/stream-properties-provider.c:141
+#: ../plugins/properties/stream-properties-provider.c:142
+#: ../plugins/properties/stream-properties-provider.c:143
+msgid "Unknown"
+msgstr "Tak Diketahui"
+
+#: ../src/parole-medialist.c:642 ../src/parole-player.c:1991
+msgid "Playlist"
+msgstr "Senarai Putar"
+
+#: ../src/parole-medialist.c:649
+msgid "M3U Playlists"
+msgstr "Senarai Putar M3U"
+
+#: ../src/parole-medialist.c:657
+msgid "PLS Playlists"
+msgstr "Senarai Putar PLS"
+
+#: ../src/parole-medialist.c:665
+msgid "Advanced Stream Redirector"
+msgstr "Pengalih Arus Lanjutan"
+
+#: ../src/parole-medialist.c:673
+msgid "Shareable Playlist"
+msgstr "Senarai Putar Dapat Dibagikan"
+
+#. Clear
+#: ../src/parole-medialist.c:1152
+msgid "Open Containing Folder"
+msgstr "Buka Folder Isi"
+
+#: ../src/parole-medialist.c:1303
+msgid "Replace playlist when opening files"
+msgstr "Ganti senarai putar ketika membuka berkas"
+
+#: ../src/parole-medialist.c:1319
+msgid "Play opened files"
+msgstr "Putar berkas yang dibuka"
+
+#. *
+#. * Remember media list entries
+#. *
+#: ../src/parole-medialist.c:1331
+msgid "Remember playlist"
+msgstr "Ingat senarai putar"
+
+#: ../src/parole-medialist.c:1502
+msgid "Media list"
+msgstr "Senarai media"
+
+#: ../src/parole-player.c:336
+msgid "Hide playlist"
+msgstr "Sembunyikan senarai putar"
+
+#: ../src/parole-player.c:345
+msgid "Show playlist"
+msgstr "Tampilkan senarai putar"
+
+#: ../src/parole-player.c:378
+msgid "Open ISO image"
+msgstr "Buka citra ISO"
+
+#: ../src/parole-player.c:395
+msgid "CD image"
+msgstr "Citra CD"
+
+#: ../src/parole-player.c:395
+msgid "DVD image"
+msgstr "Citra DVD"
+
+#: ../src/parole-player.c:551 ../src/parole-player.c:659
+msgid "Media stream is not seekable"
+msgstr "Arus media tak dapat dicari"
+
+#. * Next chapter menu item
+#. 
+#: ../src/parole-player.c:1215 ../src/parole-disc-menu.c:122
+msgid "Next Track"
+msgstr "Jalur Berikutnya"
+
+#. * Previous chapter menu item
+#. 
+#: ../src/parole-player.c:1227 ../src/parole-disc-menu.c:123
+msgid "Previous Track"
+msgstr "Jalur Sebelumnya"
+
+#: ../src/parole-statusbar.c:61
+msgid "Buffering"
+msgstr "Menyangga"
+
+#: ../src/parole-statusbar.c:100
+msgid "Stopped"
+msgstr "Stop"
+
+#: ../src/parole-statusbar.c:104
+msgid "Finished"
+msgstr "Selesai"
+
+#: ../src/parole-statusbar.c:114 ../src/parole-statusbar.c:124
+msgid "Paused"
+msgstr "Jeda"
+
+#: ../src/parole-statusbar.c:114
+msgid "Playing"
+msgstr "Memutar"
+
+#: ../src/parole-statusbar.c:170 ../src/parole-statusbar.c:174
+msgid "Live stream:"
+msgstr "Arus langsung:"
+
+#: ../src/parole-about.c:79
+msgid "Author/Maintainer"
+msgstr "Penulis/Pengelola"
+
+#: ../src/parole-about.c:85
+#, c-format
+msgid "Translator (%s)"
+msgstr "Penerjemah (%s)"
+
+#: ../src/parole-disc.c:227
+msgid "Play Disc"
+msgstr "Putar Cakram"
+
+#: ../src/parole-subtitle-encoding.c:165
+msgid "Current Locale"
+msgstr "Lokal Saat Ini"
+
+#: ../src/parole-subtitle-encoding.c:168 ../src/parole-subtitle-encoding.c:170
+#: ../src/parole-subtitle-encoding.c:172 ../src/parole-subtitle-encoding.c:174
+msgid "Arabic"
+msgstr "Arab"
+
+#: ../src/parole-subtitle-encoding.c:177
+msgid "Armenian"
+msgstr "Armenia"
+
+#: ../src/parole-subtitle-encoding.c:180 ../src/parole-subtitle-encoding.c:182
+#: ../src/parole-subtitle-encoding.c:184
+msgid "Baltic"
+msgstr "Baltik"
+
+#: ../src/parole-subtitle-encoding.c:187
+msgid "Celtic"
+msgstr "Celtic"
+
+#: ../src/parole-subtitle-encoding.c:190 ../src/parole-subtitle-encoding.c:192
+#: ../src/parole-subtitle-encoding.c:194 ../src/parole-subtitle-encoding.c:196
+msgid "Central European"
+msgstr "Eropa Tengah"
+
+#: ../src/parole-subtitle-encoding.c:199 ../src/parole-subtitle-encoding.c:201
+#: ../src/parole-subtitle-encoding.c:203 ../src/parole-subtitle-encoding.c:205
+msgid "Chinese Simplified"
+msgstr "China Disederhanakan"
+
+#: ../src/parole-subtitle-encoding.c:208 ../src/parole-subtitle-encoding.c:210
+#: ../src/parole-subtitle-encoding.c:212
+msgid "Chinese Traditional"
+msgstr "China Tradisional"
+
+#: ../src/parole-subtitle-encoding.c:215
+msgid "Croatian"
+msgstr "Kroasia"
+
+#: ../src/parole-subtitle-encoding.c:218 ../src/parole-subtitle-encoding.c:220
+#: ../src/parole-subtitle-encoding.c:222 ../src/parole-subtitle-encoding.c:224
+#: ../src/parole-subtitle-encoding.c:226 ../src/parole-subtitle-encoding.c:228
+msgid "Cyrillic"
+msgstr "Cyrillic"
+
+#: ../src/parole-subtitle-encoding.c:231
+msgid "Cyrillic/Russian"
+msgstr "Cyrillic/Rusi"
+
+#: ../src/parole-subtitle-encoding.c:234 ../src/parole-subtitle-encoding.c:236
+msgid "Cyrillic/Ukrainian"
+msgstr "Cyrillic/Ukrainia"
+
+#: ../src/parole-subtitle-encoding.c:239
+msgid "Georgian"
+msgstr "Georgia"
+
+#: ../src/parole-subtitle-encoding.c:242 ../src/parole-subtitle-encoding.c:244
+#: ../src/parole-subtitle-encoding.c:246
+msgid "Greek"
+msgstr "Yunani"
+
+#: ../src/parole-subtitle-encoding.c:249
+msgid "Gujarati"
+msgstr "Gujarati"
+
+#: ../src/parole-subtitle-encoding.c:252
+msgid "Gurmukhi"
+msgstr "Gurmukhi"
+
+#: ../src/parole-subtitle-encoding.c:255 ../src/parole-subtitle-encoding.c:257
+#: ../src/parole-subtitle-encoding.c:259 ../src/parole-subtitle-encoding.c:261
+msgid "Hebrew"
+msgstr "Yahudi"
+
+#: ../src/parole-subtitle-encoding.c:264
+msgid "Hebrew Visual"
+msgstr "Yahudi Visual"
+
+#: ../src/parole-subtitle-encoding.c:267
+msgid "Hindi"
+msgstr "Hindi"
+
+#: ../src/parole-subtitle-encoding.c:270
+msgid "Icelandic"
+msgstr "Islandia"
+
+#: ../src/parole-subtitle-encoding.c:273 ../src/parole-subtitle-encoding.c:275
+#: ../src/parole-subtitle-encoding.c:277
+msgid "Japanese"
+msgstr "Jepang"
+
+#: ../src/parole-subtitle-encoding.c:280 ../src/parole-subtitle-encoding.c:282
+#: ../src/parole-subtitle-encoding.c:284 ../src/parole-subtitle-encoding.c:286
+msgid "Korean"
+msgstr "Korea"
+
+#: ../src/parole-subtitle-encoding.c:289
+msgid "Nordic"
+msgstr "Nordik"
+
+#: ../src/parole-subtitle-encoding.c:292
+msgid "Persian"
+msgstr "Persia"
+
+#: ../src/parole-subtitle-encoding.c:295 ../src/parole-subtitle-encoding.c:297
+msgid "Romanian"
+msgstr "Romania"
+
+#: ../src/parole-subtitle-encoding.c:300
+msgid "South European"
+msgstr "Eropa Selatan"
+
+#: ../src/parole-subtitle-encoding.c:303
+msgid "Thai"
+msgstr "Thai"
+
+#: ../src/parole-subtitle-encoding.c:306 ../src/parole-subtitle-encoding.c:308
+#: ../src/parole-subtitle-encoding.c:310 ../src/parole-subtitle-encoding.c:312
+msgid "Turkish"
+msgstr "Turki"
+
+#: ../src/parole-subtitle-encoding.c:315 ../src/parole-subtitle-encoding.c:317
+#: ../src/parole-subtitle-encoding.c:319 ../src/parole-subtitle-encoding.c:321
+#: ../src/parole-subtitle-encoding.c:323
+msgid "Unicode"
+msgstr "Unicode"
+
+#: ../src/parole-subtitle-encoding.c:326 ../src/parole-subtitle-encoding.c:328
+#: ../src/parole-subtitle-encoding.c:330 ../src/parole-subtitle-encoding.c:332
+#: ../src/parole-subtitle-encoding.c:334
+msgid "Western"
+msgstr "Barat"
+
+#: ../src/parole-subtitle-encoding.c:337 ../src/parole-subtitle-encoding.c:339
+#: ../src/parole-subtitle-encoding.c:341
+msgid "Vietnamese"
+msgstr "Vietnam"
+
+#: ../src/parole-disc-menu.c:130
+msgid "Playing Track"
+msgstr "Memutar Jalur"
+
+#: ../src/parole-disc-menu.c:194
+#, c-format
+msgid "Track %i"
+msgstr "Jalur %i"
+
+#: ../src/parole-plugins-manager.c:301 ../src/parole-plugins-manager.c:437
+msgid "Visit Website"
+msgstr "Kunjungi Situs Web"
+
+#: ../src/parole-plugins-manager.c:416
+msgid "No installed plugins found on this system"
+msgstr "Tak ada plugin terinstal yang ditemukan di sistem ini"
+
+#: ../parole/parole-filters.c:64
+msgid "Audio"
+msgstr "Audio"
+
+#: ../parole/parole-filters.c:90
+msgid "Video"
+msgstr "Video"
+
+#: ../parole/parole-filters.c:115
+msgid "Audio and video"
+msgstr "Audio dan video"
+
+#: ../parole/parole-filters.c:144
+msgid "All supported files"
+msgstr "Semua berkas yang didukung"
+
+#: ../parole/parole-filters.c:171
+msgid "Playlist files"
+msgstr "Berkas senarai putar"
+
+#: ../plugins/properties/stream-properties-provider.c:254
+msgid "Title:"
+msgstr "Judul:"
+
+#: ../plugins/properties/stream-properties-provider.c:277
+msgid "Artist:"
+msgstr "Artis:"
+
+#: ../plugins/properties/stream-properties-provider.c:300
+msgid "Album:"
+msgstr "Album:"
+
+#: ../plugins/properties/stream-properties-provider.c:323
+msgid "Year:"
+msgstr "Tahun:"
+
+#: ../plugins/properties/stream-properties-provider.c:341
+msgid "General"
+msgstr "Umum"
+
+#: ../plugins/properties/stream-properties-provider.c:392
+msgid "Stream doesn't support tags changes"
+msgstr "Arus tidak mendukung perubahan tag"
+
+#: ../plugins/properties/stream-properties-provider.c:399
+msgid "Save media tags changes"
+msgstr "Simpan perubahan tag media"
+
+#: ../plugins/properties/stream-properties-provider.c:524
+msgid "Properties"
+msgstr "Properti"
+
+#: ../plugins/properties/stream-properties.desktop.in.h:1
+msgid "Read media properties"
+msgstr "Baca properti media"
+
+#: ../plugins/properties/stream-properties.desktop.in.h:2
+msgid "Stream Properties"
+msgstr "Properti Arus"
+
+#: ../plugins/tray/tray-provider.c:283
+msgid "<b>Playing:</b>"
+msgstr "<b>Memutar:</b>"
+
+#: ../plugins/tray/tray-provider.c:283
+msgid "<b>Duration:</b>"
+msgstr "<b>Durasi:</b>"
+
+#: ../plugins/tray/tray-provider.c:419
+msgid "Tray icon plugin"
+msgstr "Baki plugin ikon"
+
+#: ../plugins/tray/tray-provider.c:429
+msgid "Enable notification"
+msgstr "Aktifkan notifikasi"
+
+#: ../plugins/tray/tray-provider.c:438
+msgid "Always minimize to tray when window is closed"
+msgstr "Selalu minimalkan ke baki ketika jendela ditutup"
+
+#: ../plugins/tray/tray-provider.c:477
+msgid "Minimize to tray?"
+msgstr "Minimalkan ke baki?"
+
+#: ../plugins/tray/tray-provider.c:483
+msgid "Minimize to tray"
+msgstr "Minimalkan ke baki"
+
+#: ../plugins/tray/tray-provider.c:499
+msgid "Are you sure you want to quit Parole"
+msgstr "Apakah anda yakin ingin keluar Parole"
+
+#: ../plugins/tray/tray-provider.c:503
+msgid "Remember my choice"
+msgstr "Ingat pilihan saya"
+
+#: ../plugins/tray/system-tray.desktop.in.h:1
+msgid "Show icon in the system tray"
+msgstr "Tampilkan ikon di baki sistem"
+
+#: ../plugins/tray/system-tray.desktop.in.h:2
+msgid "Tray icon"
+msgstr "Baki ikon"
+
+#: ../plugins/window-title/window-title.desktop.in.h:1
+msgid "Set the main window name to the current playing media name."
+msgstr "Atur nama jendela utama menjadi nama media yang dimainkan saat ini."
+
+#: ../plugins/window-title/window-title.desktop.in.h:2
+msgid "Window Title"
+msgstr "Judul Jendela"
+
+#: ../plugins/power-manager/power-manager.desktop.in.h:1
+msgid "Inhibit Power Manager from suspending the machine while playing DVD."
+msgstr "Cegah Manajer Daya dari menyuspensi mesin ketika memainkan DVD."
+
+#: ../plugins/power-manager/power-manager.desktop.in.h:2
+msgid "Power Manager Plugin"
+msgstr "Plugin Manajer Daya"
+
+#~ msgid "Open location..."
+#~ msgstr "Buka lokasi..."
+
+#~ msgid "socket"
+#~ msgstr "soket"
+
+#~ msgid "SOCKET ID"
+#~ msgstr "ID soket"
+
+#~ msgid "url to play"
+#~ msgstr "url untuk dimainkan"
+
+#~ msgid "URL"
+#~ msgstr "URL"
+
+#~ msgid "Fullscreen"
+#~ msgstr "Layar Penuh"
+
+#~ msgid "Copy url"
+#~ msgstr "Salin url"
+
+#~ msgid "Plugin"
+#~ msgstr "Plugin"
+
+#~ msgid "gtk-close"
+#~ msgstr "gtk-close"
+
+#~ msgid "gtk-properties"
+#~ msgstr "gtk-properties"
+
+#~ msgid "Visite Website"
+#~ msgstr "Kunjungi Situs Web"

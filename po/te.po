@@ -1,0 +1,802 @@
+# parole telugu translation.
+# Copyright (C) 2012 e-telugu Localization Team
+# This file is distributed under the same license as the parole package.
+# Praveen Illa <mail2ipn@gmail.com>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-01-27 13:42+0000\n"
+"PO-Revision-Date: 2012-01-27 19:44+0530\n"
+"Last-Translator: Praveen Illa <mail2ipn@gmail.com>\n"
+"Language-Team: Telugu <indlinux-telugu@lists.sourceforge.net>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: ../data/interfaces/parole.ui.h:1
+msgid "16:9 (Widescreen)"
+msgstr "16:9 (విస్తృతతెర)"
+
+#: ../data/interfaces/parole.ui.h:2
+msgid "20:9 (DVB)"
+msgstr "20:9 (DVB)"
+
+#: ../data/interfaces/parole.ui.h:3
+msgid "4:3 (TV)"
+msgstr "4:3 (టివి)"
+
+#: ../data/interfaces/parole.ui.h:4
+msgid "Aspect Ratio"
+msgstr "రూప నిష్పత్తి"
+
+#: ../data/interfaces/parole.ui.h:5
+msgid "Auto"
+msgstr "స్వయం"
+
+#: ../data/interfaces/parole.ui.h:6
+msgid "Chapter Menu"
+msgstr "అధ్యాయం మెనూ"
+
+#: ../data/interfaces/parole.ui.h:7
+msgid "DVD"
+msgstr "డీవీడీ"
+
+#: ../data/interfaces/parole.ui.h:8
+msgid "DVD Menu"
+msgstr "డీవీడీ మెను"
+
+#: ../data/interfaces/parole.ui.h:9
+msgid "From ISO image"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:10
+msgid "Media player"
+msgstr "మాధ్యమ ప్రదర్శకం"
+
+#: ../data/interfaces/parole.ui.h:11
+msgid "Mute"
+msgstr "నిశబ్దం"
+
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:1215
+#: ../src/parole-disc-menu.c:113
+msgid "Next Chapter"
+msgstr "తరువాతి అధ్యాయం"
+
+#: ../data/interfaces/parole.ui.h:13
+msgid "None"
+msgstr "ఏదీకాదు"
+
+#: ../data/interfaces/parole.ui.h:14 ../src/parole-about.c:74
+#: ../plugins/window-title/window-title-provider.c:58
+msgid "Parole Media Player"
+msgstr "పరోల్ మాధ్యమ ప్రదర్శకం"
+
+#: ../data/interfaces/parole.ui.h:15
+msgid "Plugins"
+msgstr "ప్లగిన్లు"
+
+#: ../data/interfaces/parole.ui.h:16 ../src/parole-player.c:1227
+#: ../src/parole-disc-menu.c:114
+msgid "Previous Chapter"
+msgstr "మునుపటి అధ్యాయం"
+
+#: ../data/interfaces/parole.ui.h:17 ../src/parole-medialist.c:1264
+msgid "Repeat"
+msgstr "పునరావృతంచేయి"
+
+#: ../data/interfaces/parole.ui.h:18
+msgid "Select Track"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:19 ../src/parole-medialist.c:1280
+msgid "Shuffle"
+msgstr "గులకరించు"
+
+#: ../data/interfaces/parole.ui.h:20
+msgid "Sound"
+msgstr "శబ్దం"
+
+#: ../data/interfaces/parole.ui.h:21
+msgid "Square"
+msgstr "చతురస్రం"
+
+#: ../data/interfaces/parole.ui.h:22
+msgid "Volume Down"
+msgstr "ధ్వని తగ్గించు"
+
+#: ../data/interfaces/parole.ui.h:23
+msgid "Volume Up"
+msgstr "ధ్వని పెంచు"
+
+#: ../data/interfaces/parole.ui.h:24
+msgid "_Edit"
+msgstr "సవరణ (_E)"
+
+#: ../data/interfaces/parole.ui.h:25
+msgid "_Help"
+msgstr "స‌‌హాయం (_H)"
+
+#: ../data/interfaces/parole.ui.h:26
+msgid "_Media"
+msgstr "మాధ్యమం (_M)"
+
+#: ../data/interfaces/parole.ui.h:27
+msgid "_Open location"
+msgstr "ప్రదేశాన్ని తెరువు (_O)"
+
+#: ../data/interfaces/parole.ui.h:28
+msgid "_View"
+msgstr "వీక్షణం (_V)"
+
+#: ../data/interfaces/mediachooser.ui.h:1
+msgid "Add"
+msgstr "జతచేయి"
+
+#: ../data/interfaces/mediachooser.ui.h:2
+msgid "Open media files"
+msgstr "మాధ్యమ ఫైళ్ళను తెరువుము"
+
+#: ../data/interfaces/mediachooser.ui.h:3
+msgid "Parole Media Chooser"
+msgstr ""
+
+#: ../data/interfaces/mediachooser.ui.h:4
+msgid "Replace playlist with opened files"
+msgstr ""
+
+#: ../data/interfaces/mediachooser.ui.h:5
+msgid "Scan folders recursively"
+msgstr ""
+
+#: ../data/interfaces/mediachooser.ui.h:6
+msgid "Start playing opened files"
+msgstr ""
+
+#: ../data/interfaces/plugins.ui.h:1
+msgid "<b>Author:</b>"
+msgstr ""
+
+#: ../data/interfaces/plugins.ui.h:2
+msgid "<b>Description:</b>"
+msgstr ""
+
+#: ../data/interfaces/plugins.ui.h:3
+msgid "<b>Site:</b>"
+msgstr ""
+
+#: ../data/interfaces/plugins.ui.h:4
+msgid "Media Player plugins"
+msgstr "మాధ్యమ ప్రదర్శకం ప్లగిన్లు"
+
+#: ../data/interfaces/plugins.ui.h:5
+msgid "Parole Plugins"
+msgstr "పరోల్ ప్లగిన్లు"
+
+#: ../data/interfaces/parole-settings.ui.h:1
+msgid "<b>Audio</b>"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:2
+msgid "<b>Display</b>"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:3
+msgid "<b>Subtitles</b>"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:4
+msgid "<b>Video</b>"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:5
+msgid "Automatically load subtitles when playing movie file"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:6
+msgid "Brightness:"
+msgstr "ప్రకాశత:"
+
+#: ../data/interfaces/parole-settings.ui.h:7
+msgid "Contrast:"
+msgstr "వ్యత్యాసం:"
+
+#: ../data/interfaces/parole-settings.ui.h:8
+msgid "Disable screen saver while playing movies"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:9
+msgid "Enable visualization when playing audio file"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:10
+msgid "Encoding: "
+msgstr "సంకేతరచన:"
+
+#: ../data/interfaces/parole-settings.ui.h:11
+msgid "Font:"
+msgstr "ఖతి:"
+
+#: ../data/interfaces/parole-settings.ui.h:12
+msgid "Hue:"
+msgstr "వన్నె:"
+
+#: ../data/interfaces/parole-settings.ui.h:13
+msgid "Media Player Settings"
+msgstr "మాధ్యమ ప్రదర్శకం అమరికలు"
+
+#: ../data/interfaces/parole-settings.ui.h:14
+msgid "Parole Settings"
+msgstr "పరోల్ అమరికలు"
+
+#: ../data/interfaces/parole-settings.ui.h:15
+msgid "Reset To Defaults"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:16
+msgid "Saturation:"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:17
+msgid "Visualization type:"
+msgstr ""
+
+#: ../data/interfaces/save-playlist.ui.h:1
+msgid "By Extension"
+msgstr ""
+
+#: ../data/interfaces/save-playlist.ui.h:2
+msgid "Select File Types (By Extension)"
+msgstr ""
+
+#: ../data/interfaces/open-location.ui.h:1
+msgid "Clear history"
+msgstr ""
+
+#: ../data/interfaces/open-location.ui.h:2
+msgid "Enter the address of a location to open"
+msgstr ""
+
+#: ../data/interfaces/open-location.ui.h:3
+msgid "Open location of media file or live stream"
+msgstr ""
+
+#: ../data/desktop/parole.desktop.in.in.h:1
+msgid "Parole"
+msgstr "పరోలె"
+
+#: ../common/parole-common.c:67
+msgid "Message"
+msgstr "సందేశం"
+
+#: ../common/parole-common.c:72
+msgid "Error"
+msgstr "దోషం"
+
+#: ../gst/parole-gst.c:1526
+msgid "The stream is taking too much time to load"
+msgstr ""
+
+#: ../gst/parole-gst.c:1526
+msgid "Stop"
+msgstr "ఆపివేయి"
+
+#: ../gst/parole-gst.c:1715
+msgid ""
+"Unable to load playbin GStreamer plugin, check your GStreamer installation"
+msgstr ""
+
+#: ../gst/parole-gst.c:1735
+msgid ""
+"Unable to load video GStreamer plugin, check your GStreamer installation"
+msgstr ""
+
+#: ../src/main.c:54
+#, c-format
+msgid ""
+"\n"
+"Parole Media Player %s\n"
+"\n"
+"Part of the Xfce Goodies Project\n"
+"http://goodies.xfce.org\n"
+"\n"
+"Licensed under the GNU GPL.\n"
+"\n"
+msgstr ""
+
+#: ../src/main.c:187
+msgid "Unknown argument "
+msgstr ""
+
+#: ../src/main.c:225
+msgid "Open a new instance"
+msgstr ""
+
+#: ../src/main.c:226
+msgid "Do not load plugins"
+msgstr ""
+
+#: ../src/main.c:227
+msgid "Set Audio-CD/VCD/DVD device path"
+msgstr ""
+
+#: ../src/main.c:228
+msgid "Play or pause if already playing"
+msgstr ""
+
+#: ../src/main.c:229
+msgid "Stop playing"
+msgstr ""
+
+#: ../src/main.c:230
+msgid "Next track"
+msgstr "తరువాతి ట్రాక్"
+
+#: ../src/main.c:231
+msgid "Previous track"
+msgstr "మునుపటి ట్రాక్"
+
+#: ../src/main.c:232
+msgid "Seek forward"
+msgstr ""
+
+#: ../src/main.c:233
+msgid "Seek Backward"
+msgstr ""
+
+#: ../src/main.c:234
+msgid "Raise volume"
+msgstr "శబ్దాన్ని పెంచు"
+
+#: ../src/main.c:235
+msgid "Lower volume"
+msgstr "శబ్దాన్ని తగ్గించు"
+
+#: ../src/main.c:236
+msgid "Mute volume"
+msgstr "నిశబ్దం"
+
+#: ../src/main.c:237
+msgid "Version information"
+msgstr "రూపాంతర సమాచారం"
+
+#: ../src/main.c:238
+msgid "Start in fullscreen mode"
+msgstr ""
+
+#: ../src/main.c:239
+msgid "Enabled/Disable XV support"
+msgstr ""
+
+#: ../src/main.c:241
+msgid "Media to play"
+msgstr ""
+
+#: ../src/main.c:278
+#, c-format
+msgid "Parole is already running, use -i to open a new instance\n"
+msgstr ""
+
+#: ../src/parole-medialist.c:501
+msgid "Permission denied"
+msgstr "అనుమతి నిరాకరించబడింది"
+
+#: ../src/parole-medialist.c:503
+msgid "Error saving playlist file"
+msgstr ""
+
+#: ../src/parole-medialist.c:515
+msgid "Unknown playlist format"
+msgstr ""
+
+#: ../src/parole-medialist.c:516
+msgid "Please chooser a supported playlist format"
+msgstr ""
+
+#: ../src/parole-medialist.c:568 ../src/parole-plugins-manager.c:377
+#: ../plugins/properties/stream-properties-provider.c:140
+#: ../plugins/properties/stream-properties-provider.c:141
+#: ../plugins/properties/stream-properties-provider.c:142
+#: ../plugins/properties/stream-properties-provider.c:143
+msgid "Unknown"
+msgstr "తెలియదు"
+
+#: ../src/parole-medialist.c:642 ../src/parole-player.c:1991
+msgid "Playlist"
+msgstr "ప్రదర్శనజాబితా"
+
+#: ../src/parole-medialist.c:649
+msgid "M3U Playlists"
+msgstr ""
+
+#: ../src/parole-medialist.c:657
+msgid "PLS Playlists"
+msgstr ""
+
+#: ../src/parole-medialist.c:665
+msgid "Advanced Stream Redirector"
+msgstr ""
+
+#: ../src/parole-medialist.c:673
+msgid "Shareable Playlist"
+msgstr ""
+
+#. Clear
+#: ../src/parole-medialist.c:1152
+msgid "Open Containing Folder"
+msgstr ""
+
+#: ../src/parole-medialist.c:1303
+msgid "Replace playlist when opening files"
+msgstr ""
+
+#: ../src/parole-medialist.c:1319
+msgid "Play opened files"
+msgstr ""
+
+#. *
+#. * Remember media list entries
+#. *
+#: ../src/parole-medialist.c:1331
+msgid "Remember playlist"
+msgstr ""
+
+#: ../src/parole-medialist.c:1502
+msgid "Media list"
+msgstr "మాధ్యమ జాబితా"
+
+#: ../src/parole-player.c:336
+msgid "Hide playlist"
+msgstr ""
+
+#: ../src/parole-player.c:345
+msgid "Show playlist"
+msgstr ""
+
+#: ../src/parole-player.c:378
+msgid "Open ISO image"
+msgstr ""
+
+#: ../src/parole-player.c:395
+msgid "CD image"
+msgstr ""
+
+#: ../src/parole-player.c:395
+msgid "DVD image"
+msgstr ""
+
+#: ../src/parole-player.c:551 ../src/parole-player.c:659
+msgid "Media stream is not seekable"
+msgstr ""
+
+#.
+#. * Next chapter menu item
+#.
+#: ../src/parole-player.c:1215 ../src/parole-disc-menu.c:122
+msgid "Next Track"
+msgstr ""
+
+#.
+#. * Previous chapter menu item
+#.
+#: ../src/parole-player.c:1227 ../src/parole-disc-menu.c:123
+msgid "Previous Track"
+msgstr ""
+
+#: ../src/parole-statusbar.c:61
+msgid "Buffering"
+msgstr ""
+
+#: ../src/parole-statusbar.c:100
+msgid "Stopped"
+msgstr "ఆపివేయబడింది"
+
+#: ../src/parole-statusbar.c:104
+msgid "Finished"
+msgstr "పూర్తయింది"
+
+#: ../src/parole-statusbar.c:114 ../src/parole-statusbar.c:124
+msgid "Paused"
+msgstr "నిలిపివేయబడింది"
+
+#: ../src/parole-statusbar.c:114
+msgid "Playing"
+msgstr ""
+
+#: ../src/parole-statusbar.c:170 ../src/parole-statusbar.c:174
+msgid "Live stream:"
+msgstr ""
+
+#: ../src/parole-about.c:79
+msgid "Author/Maintainer"
+msgstr ""
+
+#: ../src/parole-about.c:85
+#, c-format
+msgid "Translator (%s)"
+msgstr ""
+
+#: ../src/parole-disc.c:227
+msgid "Play Disc"
+msgstr ""
+
+#: ../src/parole-subtitle-encoding.c:165
+msgid "Current Locale"
+msgstr ""
+
+#: ../src/parole-subtitle-encoding.c:168 ../src/parole-subtitle-encoding.c:170
+#: ../src/parole-subtitle-encoding.c:172 ../src/parole-subtitle-encoding.c:174
+msgid "Arabic"
+msgstr "అరబిక్"
+
+#: ../src/parole-subtitle-encoding.c:177
+msgid "Armenian"
+msgstr "అర్మేనియన్"
+
+#: ../src/parole-subtitle-encoding.c:180 ../src/parole-subtitle-encoding.c:182
+#: ../src/parole-subtitle-encoding.c:184
+msgid "Baltic"
+msgstr "బాల్టిక్"
+
+#: ../src/parole-subtitle-encoding.c:187
+msgid "Celtic"
+msgstr "సెల్టిక్"
+
+#: ../src/parole-subtitle-encoding.c:190 ../src/parole-subtitle-encoding.c:192
+#: ../src/parole-subtitle-encoding.c:194 ../src/parole-subtitle-encoding.c:196
+msgid "Central European"
+msgstr "మధ్య యూరోపియన్"
+
+#: ../src/parole-subtitle-encoding.c:199 ../src/parole-subtitle-encoding.c:201
+#: ../src/parole-subtitle-encoding.c:203 ../src/parole-subtitle-encoding.c:205
+msgid "Chinese Simplified"
+msgstr "సరళ చైనీస్"
+
+#: ../src/parole-subtitle-encoding.c:208 ../src/parole-subtitle-encoding.c:210
+#: ../src/parole-subtitle-encoding.c:212
+msgid "Chinese Traditional"
+msgstr "సాంప్రదాయ చైనీస్"
+
+#: ../src/parole-subtitle-encoding.c:215
+msgid "Croatian"
+msgstr "క్రొటియన్"
+
+#: ../src/parole-subtitle-encoding.c:218 ../src/parole-subtitle-encoding.c:220
+#: ../src/parole-subtitle-encoding.c:222 ../src/parole-subtitle-encoding.c:224
+#: ../src/parole-subtitle-encoding.c:226 ../src/parole-subtitle-encoding.c:228
+msgid "Cyrillic"
+msgstr "సిరిల్లిక్"
+
+#: ../src/parole-subtitle-encoding.c:231
+msgid "Cyrillic/Russian"
+msgstr "సిరిల్లిక్/రష్యన్"
+
+#: ../src/parole-subtitle-encoding.c:234 ../src/parole-subtitle-encoding.c:236
+msgid "Cyrillic/Ukrainian"
+msgstr "సిరిల్లిక్/యుక్రైనియన్"
+
+#: ../src/parole-subtitle-encoding.c:239
+msgid "Georgian"
+msgstr "జార్జియన్"
+
+#: ../src/parole-subtitle-encoding.c:242 ../src/parole-subtitle-encoding.c:244
+#: ../src/parole-subtitle-encoding.c:246
+msgid "Greek"
+msgstr "గ్రీకు"
+
+#: ../src/parole-subtitle-encoding.c:249
+msgid "Gujarati"
+msgstr " గుజరాతీ"
+
+#: ../src/parole-subtitle-encoding.c:252
+msgid "Gurmukhi"
+msgstr "గుర్ముఖి"
+
+#: ../src/parole-subtitle-encoding.c:255 ../src/parole-subtitle-encoding.c:257
+#: ../src/parole-subtitle-encoding.c:259 ../src/parole-subtitle-encoding.c:261
+msgid "Hebrew"
+msgstr "హిబ్రూ"
+
+#: ../src/parole-subtitle-encoding.c:264
+msgid "Hebrew Visual"
+msgstr "హిబ్రూ విజువల్"
+
+#: ../src/parole-subtitle-encoding.c:267
+msgid "Hindi"
+msgstr "హిందీ"
+
+#: ../src/parole-subtitle-encoding.c:270
+msgid "Icelandic"
+msgstr "ఐస్లాండిక్"
+
+#: ../src/parole-subtitle-encoding.c:273 ../src/parole-subtitle-encoding.c:275
+#: ../src/parole-subtitle-encoding.c:277
+msgid "Japanese"
+msgstr "జపనీస్"
+
+#: ../src/parole-subtitle-encoding.c:280 ../src/parole-subtitle-encoding.c:282
+#: ../src/parole-subtitle-encoding.c:284 ../src/parole-subtitle-encoding.c:286
+msgid "Korean"
+msgstr "కొరియన్"
+
+#: ../src/parole-subtitle-encoding.c:289
+msgid "Nordic"
+msgstr "నార్డిక్"
+
+#: ../src/parole-subtitle-encoding.c:292
+msgid "Persian"
+msgstr "పర్షియన్"
+
+#: ../src/parole-subtitle-encoding.c:295 ../src/parole-subtitle-encoding.c:297
+msgid "Romanian"
+msgstr "రొమానియన్"
+
+#: ../src/parole-subtitle-encoding.c:300
+msgid "South European"
+msgstr "దక్షిణ యురోపియన్"
+
+#: ../src/parole-subtitle-encoding.c:303
+msgid "Thai"
+msgstr "థాయి"
+
+#: ../src/parole-subtitle-encoding.c:306 ../src/parole-subtitle-encoding.c:308
+#: ../src/parole-subtitle-encoding.c:310 ../src/parole-subtitle-encoding.c:312
+msgid "Turkish"
+msgstr "టర్కిష్"
+
+#: ../src/parole-subtitle-encoding.c:315 ../src/parole-subtitle-encoding.c:317
+#: ../src/parole-subtitle-encoding.c:319 ../src/parole-subtitle-encoding.c:321
+#: ../src/parole-subtitle-encoding.c:323
+msgid "Unicode"
+msgstr "యునీకోడ్"
+
+#: ../src/parole-subtitle-encoding.c:326 ../src/parole-subtitle-encoding.c:328
+#: ../src/parole-subtitle-encoding.c:330 ../src/parole-subtitle-encoding.c:332
+#: ../src/parole-subtitle-encoding.c:334
+msgid "Western"
+msgstr "పాశ్చాత్య"
+
+#: ../src/parole-subtitle-encoding.c:337 ../src/parole-subtitle-encoding.c:339
+#: ../src/parole-subtitle-encoding.c:341
+msgid "Vietnamese"
+msgstr "వియత్నామీస్"
+
+#: ../src/parole-disc-menu.c:130
+msgid "Playing Track"
+msgstr "ఆడుతున్న పాట"
+
+#: ../src/parole-disc-menu.c:194
+#, c-format
+msgid "Track %i"
+msgstr "పాట %i"
+
+#: ../src/parole-plugins-manager.c:301 ../src/parole-plugins-manager.c:437
+msgid "Visit Website"
+msgstr "వెబ్‌సైటుని సందర్శించండి"
+
+#: ../src/parole-plugins-manager.c:416
+msgid "No installed plugins found on this system"
+msgstr ""
+
+#: ../parole/parole-filters.c:64
+msgid "Audio"
+msgstr "ఆడియో"
+
+#: ../parole/parole-filters.c:90
+msgid "Video"
+msgstr "వీడియో"
+
+#: ../parole/parole-filters.c:115
+msgid "Audio and video"
+msgstr "ఆడియో మరియు వీడియో"
+
+#: ../parole/parole-filters.c:144
+msgid "All supported files"
+msgstr ""
+
+#: ../parole/parole-filters.c:171
+msgid "Playlist files"
+msgstr ""
+
+#: ../plugins/properties/stream-properties-provider.c:254
+msgid "Title:"
+msgstr "శీర్షిక:"
+
+#: ../plugins/properties/stream-properties-provider.c:277
+msgid "Artist:"
+msgstr "కళాకారుడు:"
+
+#: ../plugins/properties/stream-properties-provider.c:300
+msgid "Album:"
+msgstr "ఆల్బమ్:"
+
+#: ../plugins/properties/stream-properties-provider.c:323
+msgid "Year:"
+msgstr "సంవత్సరం:"
+
+#: ../plugins/properties/stream-properties-provider.c:341
+msgid "General"
+msgstr "సాధారణం"
+
+#: ../plugins/properties/stream-properties-provider.c:392
+msgid "Stream doesn't support tags changes"
+msgstr ""
+
+#: ../plugins/properties/stream-properties-provider.c:399
+msgid "Save media tags changes"
+msgstr ""
+
+#: ../plugins/properties/stream-properties-provider.c:524
+msgid "Properties"
+msgstr "లక్షణాలు"
+
+#: ../plugins/properties/stream-properties.desktop.in.h:1
+msgid "Read media properties"
+msgstr ""
+
+#: ../plugins/properties/stream-properties.desktop.in.h:2
+msgid "Stream Properties"
+msgstr ""
+
+#: ../plugins/tray/tray-provider.c:283
+msgid "<b>Playing:</b>"
+msgstr ""
+
+#: ../plugins/tray/tray-provider.c:283
+msgid "<b>Duration:</b>"
+msgstr "<b>నిడివి:</b>"
+
+#: ../plugins/tray/tray-provider.c:419
+msgid "Tray icon plugin"
+msgstr ""
+
+#: ../plugins/tray/tray-provider.c:429
+msgid "Enable notification"
+msgstr ""
+
+#: ../plugins/tray/tray-provider.c:438
+msgid "Always minimize to tray when window is closed"
+msgstr ""
+
+#: ../plugins/tray/tray-provider.c:477
+msgid "Minimize to tray?"
+msgstr ""
+
+#: ../plugins/tray/tray-provider.c:483
+msgid "Minimize to tray"
+msgstr ""
+
+#: ../plugins/tray/tray-provider.c:499
+msgid "Are you sure you want to quit Parole"
+msgstr ""
+
+#: ../plugins/tray/tray-provider.c:503
+msgid "Remember my choice"
+msgstr ""
+
+#: ../plugins/tray/system-tray.desktop.in.h:1
+msgid "Show icon in the system tray"
+msgstr ""
+
+#: ../plugins/tray/system-tray.desktop.in.h:2
+msgid "Tray icon"
+msgstr ""
+
+#: ../plugins/window-title/window-title.desktop.in.h:1
+msgid "Set the main window name to the current playing media name."
+msgstr ""
+
+#: ../plugins/window-title/window-title.desktop.in.h:2
+msgid "Window Title"
+msgstr ""
+
+#: ../plugins/power-manager/power-manager.desktop.in.h:1
+msgid "Inhibit Power Manager from suspending the machine while playing DVD."
+msgstr ""
+
+#: ../plugins/power-manager/power-manager.desktop.in.h:2
+msgid "Power Manager Plugin"
+msgstr ""

@@ -1,0 +1,65 @@
+<!-- ##### SECTION Title ##### -->
+ParoleProviderPlugin
+
+<!-- ##### SECTION Short_Description ##### -->
+The interface of the plugin type registration.
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+The methods of this interface should be overridden by the plugin, the Parole player
+calls these methods to determine if the plugin is configurable, to ask the plugin to
+open its configuration dialog or to set the #ParoleProviderPlayer that the plugin
+can use to get access to various functionalities of the player.
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+#ParoleProviderPlayer.
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### STRUCT ParoleProviderPluginIface ##### -->
+<para>
+
+</para>
+
+@__parent__: 
+@get_is_configurable: 
+@configure: 
+@set_player: 
+
+<!-- ##### STRUCT ParoleProviderPlugin ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION parole_provider_plugin_get_is_configurable ##### -->
+<para>
+
+</para>
+
+@provider: 
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_provider_plugin_configure ##### -->
+<para>
+
+</para>
+
+@provider: 
+@parent: 
+
+
+<!-- ##### FUNCTION parole_provider_plugin_set_player ##### -->
+<para>
+
+</para>
+
+@provider: 
+@player: 
+
+

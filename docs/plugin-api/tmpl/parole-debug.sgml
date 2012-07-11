@@ -1,0 +1,66 @@
+<!-- ##### SECTION Title ##### -->
+Parole Debug
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### MACRO PAROLE_DEBUG_ENUM ##### -->
+<para>
+
+</para>
+
+@_text: 
+@_value: 
+@_type: 
+
+
+<!-- ##### MACRO PAROLE_DEBUG_ENUM_FULL ##### -->
+<para>
+
+</para>
+
+@_value: 
+@_type: 
+@...: 
+
+
+<!-- ##### FUNCTION parole_debug_enum ##### -->
+<para>
+
+</para>
+
+@func: 
+@file: 
+@line: 
+@text: 
+@v_enum: 
+@type: 
+
+
+<!-- ##### FUNCTION parole_debug_enum_full ##### -->
+<para>
+
+</para>
+
+@func: 
+@file: 
+@line: 
+@v_enum: 
+@type: 
+@format: 
+@Varargs: 
+
+

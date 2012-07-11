@@ -1,0 +1,145 @@
+bin_PROGRAMS = parole
+
+INCLUDES =					\
+	-I$(top_srcdir)				\
+	-I$(top_srcdir)/parole			\
+	-I$(top_srcdir)/data			\
+	-I$(top_srcdir)/data/mime		\
+	-I$(top_srcdir)/gst	                \
+	-I$(top_srcdir)/dbus	                \
+	-I$(top_srcdir)/common	                \
+	-DLOCALEDIR=\"$(localedir)\"		\
+	-DG_LOG_DOMAIN=\"parole\"		\
+	-DPAROLE_PLUGINS_DIR=\"$(libdir)/parole-$(PAROLE_VERSION_API)\"\
+	-DPAROLE_PLUGINS_DATA_DIR=\"$(datadir)/parole/parole-plugins-$(PAROLE_VERSION_API)\"\
+	-DPAROLE_COMPILATION			\
+        $(GTHREAD_CFLAGS)                       \
+	$(GIO_CFLAGS)				\
+	$(GMODULE_CFLAGS)			\
+        $(DBUS_GLIB_CFLAGS)                     \
+        $(LIBXFCE4GUI_CFLAGS)                   \
+	$(GST_VIDEO_CFLAGS)			\
+	$(GST_INTERFACES_CFLAGS)		\
+	$(TAGLIBC_CFLAGS)
+
+GENERATED_FILES =				\
+	gmarshal.c				\
+	gmarshal.h				\
+	enum-gtypes.c				\
+	enum-gtypes.h				\
+	org.parole.media.list.h			\
+	org.parole.media.player.h
+
+parole_SOURCES =				\
+	$(GENERATED_FILES)			\
+	main.c					\
+	parole-player.c				\
+	parole-player.h				\
+	parole-vis.c				\
+	parole-vis.h				\
+	parole-statusbar.c			\
+	parole-statusbar.h			\
+	parole-medialist.c			\
+	parole-medialist.h			\
+	parole-mediachooser.c			\
+	parole-mediachooser.h			\
+	parole-conf.c				\
+	parole-conf.h				\
+	parole-conf-dialog.c			\
+	parole-conf-dialog.h			\
+	parole-disc.c				\
+	parole-disc.h				\
+	parole-utils.c				\
+	parole-utils.h				\
+	parole-plugins-manager.c		\
+	parole-plugins-manager.h		\
+	parole-module.c				\
+	parole-module.h				\
+	parole-about.c				\
+	parole-about.h				\
+	parole-builder.c			\
+	parole-builder.h			\
+	parole-subtitle-encoding.c		\
+	parole-subtitle-encoding.h		\
+	parole-open-location.c			\
+	parole-open-location.h			\
+	parole-disc-menu.c			\
+	parole-disc-menu.h			\
+	parole-session.c			\
+	parole-session.h			\
+	parole-button.c				\
+	parole-button.h				\
+	parole-plugin-player.c			\
+	parole-plugin-player.h
+
+parole_LDADD =					\
+	$(top_builddir)/parole/libparole.la 	\
+	$(top_builddir)/dbus/libparoledbus.la 	\
+	$(top_builddir)/gst/libparolegst.la 	\
+	$(top_builddir)/common/libparolecommon.la\
+	$(top_builddir)/common/libparolescreensaver.la\
+        $(GTHREAD_LIBS)                         \
+	$(GIO_LIBS)				\
+	$(GMODULE_LIBS)				\
+        $(DBUS_GLIB_LIBS)                       \
+        $(LIBXFCE4GUI_LIBS)                     \
+	$(GST_VIDEO_LIBS)			\
+	$(GST_INTERFACES_LIBS)			\
+	$(TAGLIBC_LIBS)
+	
+parole_glib_enum_headers =			\
+	parole-conf.h				\
+	parole-button.h
+
+if MAINTAINER_MODE
+
+BUILT_SOURCES = 				\
+	$(GENERATED_FILES)
+
+gmarshal.c: gmarshal.list
+	echo "#include \"gmarshal.h\"" > $@ && \
+	glib-genmarshal $< --prefix=_gmarshal --body >> $@
+
+gmarshal.h: gmarshal.list
+	glib-genmarshal $< --prefix=_gmarshal --header > $@
+
+enum-gtypes.h: stamp-enum-gtypes.h
+	@true
+stamp-enum-gtypes.h: $(parole_glib_enum_headers) Makefile
+	( cd $(srcdir) && glib-mkenums \
+		--fhead "#ifndef __ENUM_GTYPES_H__\n#define __ENUM_GTYPES_H__\n#include <glib-object.h>\nG_BEGIN_DECLS\n" \
+		--fprod "/* enumerations from \"@filename@\" */\n" \
+		--vhead "GType @enum_name@_get_type (void);\n#define ENUM_GTYPE_@ENUMSHORT@ (@enum_name@_get_type())\n" \
+		--ftail "G_END_DECLS\n\n#endif /* __ENUM_GTYPES_H__ */" \
+		$(parole_glib_enum_headers) ) > xgen-enum.h \
+	&& (cmp -s xgen-enum.h enum-gtypes.h || cp xgen-enum.h enum-gtypes.h) \
+	&& rm -f xgen-enum.h \
+	&& echo timestamp > $(@F)
+
+enum-gtypes.c: $(parole_glib_enum_headers) Makefile
+	( cd $(srcdir) && glib-mkenums \
+		--fhead "#include \"enum-gtypes.h\"\n\n" \
+		--fhead "#include \"parole-conf.h\"\n\n" \
+		--fhead "#include \"parole-button.h\"\n\n" \
+		--fprod "\n/* enumerations from \"@filename@\" */" \
+		--vhead "GType\n@enum_name@_get_type (void)\n{\n  static GType etype = 0;\n  if (etype == 0) {\n    static const G@Type@Value values[] = {" \
+		--vprod "      { @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \
+		--vtail "      { 0, NULL, NULL }\n    };\n    etype = g_@type@_register_static (\"@EnumName@\", values);\n  }\n  return etype;\n}\n" \
+		$(parole_glib_enum_headers) ) >> xgen-enum.c \
+	&& cp xgen-enum.c enum-gtypes.c \
+	&& rm -f xgen-enum.c
+
+org.parole.media.list.h: $(srcdir)/org.parole.media.list.xml
+	dbus-binding-tool --mode=glib-server --prefix=parole_media_list $< >$@
+
+org.parole.media.player.h: $(srcdir)/org.parole.media.player.xml
+	dbus-binding-tool --mode=glib-server --prefix=parole_player $< >$@
+
+endif
+
+EXTRA_DIST =					\
+	gmarshal.list
+
+DISTCLEANFILES =				\
+	$(BUILT_SOURCES)			\
+	stamp-enum-gtypes.h
