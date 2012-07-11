@@ -204,9 +204,10 @@ ParoleOpenLocation *parole_open_location (GtkWidget *parent)
 					 NULL);
     
     gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
-    
+
     g_signal_connect_swapped (gtk_builder_get_object (builder, "clear-history"), "clicked",
 			      G_CALLBACK (parole_open_location_clear_history), model);
+    gtk_widget_set_tooltip_text (GTK_WIDGET (gtk_builder_get_object (builder, "clear-history")), _("Clear History"));
     
     g_signal_connect (dialog, "delete-event",
 		      G_CALLBACK (gtk_widget_destroy), NULL);
