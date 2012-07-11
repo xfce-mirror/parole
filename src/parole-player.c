@@ -156,7 +156,7 @@ void            parole_player_volume_mute 		(GtkWidget *widget,
 void		parole_player_open_preferences_cb	(GtkWidget *widget,
 							 ParolePlayer *player);
 
-void            parole_player_volume_value_changed_cb   (GtkRange *range, 
+void            parole_player_volume_value_changed_cb   (GtkScaleButton *widget, 
 							 ParolePlayer *player);
 
 gboolean        parole_player_volume_scroll_event_cb	(GtkWidget *widget,
@@ -250,7 +250,7 @@ struct ParolePlayerPrivate
     GtkWidget		*main_box;
     
     GtkWidget		*volume;
-    GtkWidget		*volume_image;
+    /*GtkWidget		*volume_image;*/
     GtkWidget		*menu_bar;
     GtkWidget		*play_box;
      
@@ -1380,40 +1380,10 @@ void parole_player_repeat_toggled_cb (GtkWidget *widget, ParolePlayer *player)
 		  NULL);
 }
 
-static const gchar *
-parole_player_get_volume_icon_name (gdouble value)
-{
-    if ( value == 1. )
-	return "audio-volume-high";
-    else if ( value > 0.5 )
-	return "audio-volume-medium";
-    else if ( value > 0 )
-	return "audio-volume-low";
-    
-    return "audio-volume-muted";
-}
-
-static void
-parole_player_set_volume_image (ParolePlayer *player, gdouble value)
-{
-    GdkPixbuf *icon;
-
-    icon = parole_icon_load (parole_player_get_volume_icon_name (value), 
-			     player->priv->volume_image->allocation.width);
-    if ( icon )
-    {
-	g_object_set (G_OBJECT (player->priv->volume_image),
-		      "pixbuf", icon,
-		      NULL);
-	g_object_unref (icon);
-    }
-}
-
 static void
 parole_player_change_volume (ParolePlayer *player, gdouble value)
 {
     parole_gst_set_volume (PAROLE_GST (player->priv->gst), value);
-    parole_player_set_volume_image (player, value);
 }
 
 gboolean
@@ -1436,10 +1406,10 @@ parole_player_volume_scroll_event_cb (GtkWidget *widget, GdkEventScroll *ev, Par
 }
 
 void
-parole_player_volume_value_changed_cb (GtkRange *range, ParolePlayer *player)
+parole_player_volume_value_changed_cb (GtkScaleButton *widget, ParolePlayer *player)
 {
     gdouble value;
-    value = gtk_range_get_value (range);
+    value = gtk_scale_button_get_value (GTK_SCALE_BUTTON (player->priv->volume));
     parole_player_change_volume (player, value);
     parole_rc_write_entry_int ("volume", PAROLE_RC_GROUP_GENERAL, (gint)(value * 100));
 }
@@ -1448,21 +1418,21 @@ void
 parole_player_volume_up (GtkWidget *widget, ParolePlayer *player)
 {
     gdouble value;
-    value = gtk_range_get_value (GTK_RANGE (player->priv->volume));
-    gtk_range_set_value (GTK_RANGE (player->priv->volume), value + 0.1);
+    value = gtk_scale_button_get_value (GTK_SCALE_BUTTON (player->priv->volume));
+    gtk_scale_button_set_value (GTK_SCALE_BUTTON (player->priv->volume), value + 0.1);
 }
 
 void
 parole_player_volume_down (GtkWidget *widget, ParolePlayer *player)
 {
     gdouble value;
-    value = gtk_range_get_value (GTK_RANGE (player->priv->volume));
-    gtk_range_set_value (GTK_RANGE (player->priv->volume), value - 0.1);
+    value = gtk_scale_button_get_value (GTK_SCALE_BUTTON (player->priv->volume));
+    gtk_scale_button_set_value (GTK_SCALE_BUTTON (player->priv->volume), value - 0.1);
 }
 
 void parole_player_volume_mute (GtkWidget *widget, ParolePlayer *player)
 {
-    gtk_range_set_value (GTK_RANGE (player->priv->volume), 0);
+    gtk_scale_button_set_value (GTK_SCALE_BUTTON (player->priv->volume), 0);
 }
 
 static void
@@ -1957,7 +1927,6 @@ parole_player_init (ParolePlayer *player)
     player->priv->range = GTK_WIDGET (gtk_builder_get_object (builder, "scale"));
     
     player->priv->volume = GTK_WIDGET (gtk_builder_get_object (builder, "volume"));
-    player->priv->volume_image = GTK_WIDGET (gtk_builder_get_object (builder, "volume-image"));
     
     player->priv->menu_bar = GTK_WIDGET (gtk_builder_get_object (builder, "menubar"));
     player->priv->play_box = GTK_WIDGET (gtk_builder_get_object (builder, "play-box"));
@@ -1968,11 +1937,8 @@ parole_player_init (ParolePlayer *player)
     player->priv->leave_fs = GTK_WIDGET (gtk_builder_get_object (builder, "leave_fs"));
     player->priv->main_box = GTK_WIDGET (gtk_builder_get_object (builder, "main-box"));
     
-    gtk_range_set_range (GTK_RANGE (player->priv->volume), 0, 1.0);
-    
-    gtk_range_set_value (GTK_RANGE (player->priv->volume), 
+    gtk_scale_button_set_value (GTK_SCALE_BUTTON (player->priv->volume), 
 			 (gdouble) (parole_rc_read_entry_int ("volume", PAROLE_RC_GROUP_GENERAL, 100)/100.));
-    
     /*
      * Pack the playlist.
      */
@@ -2208,7 +2174,7 @@ static gboolean	parole_player_dbus_lower_volume (ParolePlayer *player,
 static gboolean	parole_player_dbus_mute (ParolePlayer *player,
 					 GError *error)
 {
-    gtk_range_set_value (GTK_RANGE (player->priv->volume), 0);
+    gtk_scale_button_set_value (GTK_SCALE_BUTTON (player->priv->volume), 0);
     return TRUE;
 }
 
