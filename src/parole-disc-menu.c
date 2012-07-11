@@ -30,7 +30,6 @@
 
 #include "parole-disc-menu.h"
 #include "parole-builder.h"
-#include "parole-statusbar.h"
 #include "parole-gst.h"
 
 static void parole_disc_menu_finalize   (GObject *object);
