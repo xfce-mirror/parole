@@ -1050,8 +1050,8 @@ parole_player_buffering_cb (ParoleGst *gst, const ParoleStream *stream, gint per
     {
 	player->priv->buffering = FALSE;
 	parole_gst_resume (PAROLE_GST (player->priv->gst));
-	gtk_widget_show (player->priv->playcontrol_box);
 	gtk_widget_hide (player->priv->progressbar_buffering);
+	gtk_widget_show (player->priv->playcontrol_box);
     }
     else
     {
@@ -1067,8 +1067,8 @@ parole_player_buffering_cb (ParoleGst *gst, const ParoleStream *stream, gint per
     
     gtk_progress_bar_set_text (GTK_PROGRESS_BAR (player->priv->progressbar_buffering), buff);
     gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (player->priv->progressbar_buffering), (gdouble) percentage/100);
-    gtk_widget_show (player->priv->progressbar_buffering);
 	gtk_widget_hide (player->priv->playcontrol_box);
+    gtk_widget_show (player->priv->progressbar_buffering);
     g_free (buff);
     }
 }
