@@ -521,7 +521,7 @@
                                                             <property name="position">0</property>
                                                           </packing>
                                                         </child>
-                                                        <child>
+                                                        <!--<child>
                                                           <object class="GtkButton" id="stop">
                                                             <property name="visible">True</property>
                                                             <property name="sensitive">False</property>
@@ -536,7 +536,7 @@
                                                             <property name="expand">False</property>
                                                             <property name="position">1</property>
                                                           </packing>
-                                                        </child>
+                                                        </child>-->
                                                         <child>
                                                           <object class="GtkButton" id="play-pause">
                                                             <property name="visible">True</property>
