@@ -54,7 +54,6 @@
 #include "parole-filters.h"
 #include "parole-disc.h"
 #include "parole-disc-menu.h"
-#include "parole-statusbar.h"
 #include "parole-screensaver.h"
 #include "parole-conf-dialog.h"
 #include "parole-conf.h"
@@ -238,7 +237,6 @@ struct ParolePlayerPrivate
 {
     DBusGConnection     *bus;
     ParoleMediaList	*list;
-    ParoleStatusbar     *status;
     ParoleDisc          *disc;
     ParoleScreenSaver   *screen_saver;
     ParoleConf          *conf;
@@ -262,6 +260,9 @@ struct ParolePlayerPrivate
     GtkWidget		*seekf;
     GtkWidget		*seekb;
     GtkWidget		*range;
+    
+    GtkWidget		*playcontrol_box;
+    GtkWidget		*progressbar_buffering;
     
     GtkWidget		*label_elapsed;
     GtkWidget		*label_duration;
@@ -1049,13 +1050,26 @@ parole_player_buffering_cb (ParoleGst *gst, const ParoleStream *stream, gint per
     {
 	player->priv->buffering = FALSE;
 	parole_gst_resume (PAROLE_GST (player->priv->gst));
+	gtk_widget_show (player->priv->playcontrol_box);
+	gtk_widget_hide (player->priv->progressbar_buffering);
     }
     else
     {
 	player->priv->buffering = TRUE;
 	
+	
 	if ( player->priv->state == PAROLE_MEDIA_STATE_PLAYING )
 	    parole_gst_pause (PAROLE_GST (player->priv->gst));
+	    
+    gchar *buff;
+    
+    buff = g_strdup_printf ("%s (%d%%)", _("Buffering"), percentage);
+    
+    gtk_progress_bar_set_text (GTK_PROGRESS_BAR (player->priv->progressbar_buffering), buff);
+    gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (player->priv->progressbar_buffering), (gdouble) percentage/100);
+    gtk_widget_show (player->priv->progressbar_buffering);
+	gtk_widget_hide (player->priv->playcontrol_box);
+    g_free (buff);
     }
 }
 
@@ -1133,7 +1147,6 @@ parole_player_full_screen (ParolePlayer *player, gboolean fullscreen)
 	npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (player->priv->main_nt));
 	gtk_widget_reparent (player->priv->play_box, player->priv->control);
 	gtk_widget_hide (player->priv->fs_window);
-	parole_statusbar_set_visible (player->priv->status, TRUE);
 	parole_disc_menu_set_fullscreen (player->priv->disc_menu, FALSE);
 	gtk_widget_show (player->priv->play_box);
 	gtk_widget_show (player->priv->menu_bar);
@@ -1153,8 +1166,6 @@ parole_player_full_screen (ParolePlayer *player, gboolean fullscreen)
 	parole_disc_menu_set_fullscreen (player->priv->disc_menu, TRUE);
 	parole_player_move_fs_window (player);
 	gtk_widget_reparent (player->priv->play_box, player->priv->fs_window);
-	
-	parole_statusbar_set_visible (player->priv->status, FALSE);
 	
 	gtk_widget_hide (player->priv->play_box);
 	gtk_widget_hide (player->priv->menu_bar);
@@ -1507,7 +1518,6 @@ parole_player_finalize (GObject *object)
     
     g_object_unref (player->priv->conf);
     g_object_unref (player->priv->video_filter);
-    g_object_unref (player->priv->status);
     g_object_unref (player->priv->disc);
     g_object_unref (player->priv->disc_menu);
     g_object_unref (player->priv->screen_saver);
@@ -1909,8 +1919,6 @@ parole_player_init (ParolePlayer *player)
     
     player->priv->gst = parole_gst_new (FALSE, player->priv->conf);
 
-    player->priv->status = parole_statusbar_new ();
-
     player->priv->disc = parole_disc_new ();
     g_signal_connect (player->priv->disc, "disc-selected",
 		      G_CALLBACK (parole_player_disc_selected_cb), player);
@@ -1970,6 +1978,9 @@ parole_player_init (ParolePlayer *player)
     player->priv->window = GTK_WIDGET (gtk_builder_get_object (builder, "main-window"));
    
     player->priv->main_nt = GTK_WIDGET (gtk_builder_get_object (builder, "main-notebook"));
+    
+    player->priv->play_box = GTK_WIDGET (gtk_builder_get_object (builder, "play_box"));
+    player->priv->progressbar_buffering = GTK_WIDGET (gtk_builder_get_object (builder, "progressbar_buffering"));
     
     player->priv->label_duration = GTK_WIDGET(gtk_builder_get_object(builder, "label_duration"));
     player->priv->label_elapsed = GTK_WIDGET(gtk_builder_get_object(builder, "label_elapsed"));
