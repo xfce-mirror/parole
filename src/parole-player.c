@@ -481,6 +481,9 @@ parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *ro
 				 parole_file_get_uri (file),
 				 sub);
 	    g_free (sub);
+	    
+	    gtk_window_set_title (GTK_WINDOW (player->priv->window), parole_file_get_display_name(file));
+	    
 	    g_object_unref (file);
 	}
     }
