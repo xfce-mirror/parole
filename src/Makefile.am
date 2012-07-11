@@ -37,8 +37,6 @@ parole_SOURCES =				\
 	parole-player.h				\
 	parole-vis.c				\
 	parole-vis.h				\
-	parole-statusbar.c			\
-	parole-statusbar.h			\
 	parole-medialist.c			\
 	parole-medialist.h			\
 	parole-mediachooser.c			\
