@@ -125,7 +125,7 @@ gboolean	parole_player_delete_event_cb		(GtkWidget *widget,
 							 GdkEvent *ev,
 							 ParolePlayer *player);
 
-void		parole_player_show_hide_playlist	(GtkButton *button,
+void		parole_player_show_hide_playlist	(GtkMenuItem *widget,
 							 ParolePlayer *player);
 
 /*Menu items callbacks*/
@@ -315,36 +315,22 @@ void ratio_20_9_toggled_cb (GtkWidget *widget, ParolePlayer *player)
 		  NULL);
 }
 
-void parole_player_show_hide_playlist (GtkButton *button, ParolePlayer *player)
+void parole_player_show_hide_playlist (GtkMenuItem *widget, ParolePlayer *player)
 {
-    GtkWidget *img;
     gboolean   visible;
     
-    g_object_get (G_OBJECT (player->priv->show_hide_playlist),
-		  "image", &img,
-		  NULL);
-
     visible = GTK_WIDGET_VISIBLE (player->priv->playlist_nt);
 
     if ( !visible )
     {
-	g_object_set (G_OBJECT (img),
-		      "stock", GTK_STOCK_GO_FORWARD,
-		      NULL);
-		      
 	gtk_widget_show_all (player->priv->playlist_nt);
-	gtk_widget_set_tooltip_text (GTK_WIDGET (player->priv->show_hide_playlist), _("Hide playlist"));
+	gtk_menu_item_set_label (GTK_MENU_ITEM (player->priv->show_hide_playlist), _("Hide playlist"));
     }
     else
-    {
-	g_object_set (G_OBJECT (img),
-		      "stock", GTK_STOCK_GO_BACK,
-		      NULL);
-		      
+    {		      
 	gtk_widget_hide_all (player->priv->playlist_nt);
-	gtk_widget_set_tooltip_text (GTK_WIDGET (player->priv->show_hide_playlist), _("Show playlist"));
+	gtk_menu_item_set_label (GTK_MENU_ITEM (player->priv->show_hide_playlist), _("Show playlist"));
     }
-    g_object_unref (img);
 }
 
 typedef enum
