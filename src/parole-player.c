@@ -671,26 +671,25 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
     
     player->priv->internal_range_change = TRUE;
     if ( live || duration == 0)
-	parole_player_change_range_value (player, 0);
+    {
+		parole_player_change_range_value (player, 0);
+		gtk_widget_set_visible( player->priv->label_duration, FALSE );
+		gtk_widget_set_visible( player->priv->label_elapsed, FALSE );
+	}
     else 
-	gtk_range_set_range (GTK_RANGE (player->priv->range), 0, duration);
-	
-	/* Added duration here.*/
+    {
+		gtk_range_set_range (GTK_RANGE (player->priv->range), 0, duration);
+		gtk_widget_set_visible( player->priv->label_duration, TRUE );
+		gtk_widget_set_visible( player->priv->label_elapsed, TRUE );
+	}
+
 	if ( duration != 0)
 	{
 	    gchar dur_text[128];
 	    get_time_string (dur_text, duration);
-	    /*text = g_strdup_printf ("%s %s/%s", 
-				    state == PAROLE_MEDIA_STATE_PAUSED ? _("Paused") : _("Playing"), 
-				    pos_text, 
-				    dur_text);*/
+
 	    gtk_label_set_text (GTK_LABEL (player->priv->label_duration), dur_text);
 	}
-	/*if ( text )
-	{
-	    
-	    g_free (text);
-	}*/
 	
     player->priv->internal_range_change = FALSE;
     
