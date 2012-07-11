@@ -244,6 +244,7 @@ struct ParolePlayerPrivate
 				     * when in full screen mode
 				     */
     GtkWidget		*control; /* contains all play button*/
+    GtkWidget		*go_fs;
     GtkWidget		*leave_fs;
     
     GtkWidget		*main_box;
@@ -1086,6 +1087,7 @@ parole_player_full_screen (ParolePlayer *player, gboolean fullscreen)
 	gtk_widget_show (player->priv->menu_bar);
 	gtk_widget_show (player->priv->playlist_nt);
 	gtk_widget_show (player->priv->show_hide_playlist);
+	gtk_widget_show (player->priv->go_fs);
 	gtk_widget_hide (player->priv->leave_fs);
 	
 	gtk_notebook_set_show_tabs (GTK_NOTEBOOK (player->priv->main_nt), npages > 1);
@@ -1106,6 +1108,7 @@ parole_player_full_screen (ParolePlayer *player, gboolean fullscreen)
 	gtk_widget_hide (player->priv->menu_bar);
 	gtk_widget_hide (player->priv->playlist_nt);
 	gtk_widget_hide (player->priv->show_hide_playlist);
+	gtk_widget_hide (player->priv->go_fs);
 	gtk_widget_show (player->priv->leave_fs);
 	
 	current_page = gtk_notebook_get_current_page (GTK_NOTEBOOK (player->priv->playlist_nt));
@@ -1961,6 +1964,7 @@ parole_player_init (ParolePlayer *player)
     player->priv->playlist_nt = GTK_WIDGET (gtk_builder_get_object (builder, "notebook-playlist"));
     player->priv->show_hide_playlist = GTK_WIDGET (gtk_builder_get_object (builder, "show-hide-list"));
     player->priv->control = GTK_WIDGET (gtk_builder_get_object (builder, "control"));
+    player->priv->go_fs = GTK_WIDGET (gtk_builder_get_object (builder, "go_fs"));
     player->priv->leave_fs = GTK_WIDGET (gtk_builder_get_object (builder, "leave_fs"));
     player->priv->main_box = GTK_WIDGET (gtk_builder_get_object (builder, "main-box"));
     
