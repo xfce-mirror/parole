@@ -1405,7 +1405,7 @@ parole_player_set_volume_image (ParolePlayer *player, gdouble value)
 	g_object_set (G_OBJECT (player->priv->volume_image),
 		      "pixbuf", icon,
 		      NULL);
-	gdk_pixbuf_unref (icon);
+	g_object_unref (icon);
     }
 }
 
