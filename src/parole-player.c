@@ -551,6 +551,13 @@ parole_player_media_progressed_cb (ParoleGst *gst, const ParoleStream *stream, g
     if ( !player->priv->user_seeking && player->priv->state == PAROLE_MEDIA_STATE_PLAYING )
     {
 	parole_player_change_range_value (player, value);
+    gchar pos_text[128];
+    get_time_string (pos_text, value);
+    /*text = g_strdup_printf ("%s %s/%s", 
+			    state == PAROLE_MEDIA_STATE_PAUSED ? _("Paused") : _("Playing"), 
+			    pos_text, 
+			    dur_text);*/
+    gtk_label_set_text (GTK_LABEL (player->priv->label_elapsed), pos_text);
     }
 }
 
@@ -1965,6 +1972,7 @@ parole_player_init (ParolePlayer *player)
     player->priv->main_nt = GTK_WIDGET (gtk_builder_get_object (builder, "main-notebook"));
     
     player->priv->label_duration = GTK_WIDGET(gtk_builder_get_object(builder, "label_duration"));
+    player->priv->label_elapsed = GTK_WIDGET(gtk_builder_get_object(builder, "label_elapsed"));
     player->priv->play_pause = GTK_WIDGET (gtk_builder_get_object (builder, "play-pause"));
     player->priv->stop = GTK_WIDGET (gtk_builder_get_object (builder, "stop"));
     player->priv->seekf = GTK_WIDGET (gtk_builder_get_object (builder, "forward"));
