@@ -180,6 +180,14 @@
                 <child type="submenu">
                   <object class="GtkMenu" id="menu2">
                     <property name="visible">True</property>
+		    <child>
+                  <object class="GtkMenuItem" id="show-hide-list">
+                    <property name="label" translatable="yes">Hide playlist</property>
+                    <property name="visible">True</property>
+                    <property name="use_underline">True</property>
+                    <signal name="activate" handler="parole_player_show_hide_playlist"/>
+                  </object>
+                </child>
                     <child>
                       <object class="GtkMenuItem" id="menuitem1">
                         <property name="visible">True</property>
@@ -648,7 +656,7 @@
                                                     <property name="position">2</property>
                                                   </packing>
                                                 </child>
-                                                <child>
+                                                <!--<child>
                                                   <object class="GtkButton" id="show-hide-list">
                                                     <property name="visible">True</property>
                                                     <property name="can_focus">True</property>
@@ -664,7 +672,7 @@
                                                     <property name="pack_type">end</property>
                                                     <property name="position">1</property>
                                                   </packing>
-                                                </child>
+                                                </child>-->
                                               </object>
                                               <packing>
                                                 <property name="expand">False</property>
