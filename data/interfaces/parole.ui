@@ -529,22 +529,6 @@
                                                             <property name="position">0</property>
                                                           </packing>
                                                         </child>
-                                                        <!--<child>
-                                                          <object class="GtkButton" id="stop">
-                                                            <property name="visible">True</property>
-                                                            <property name="sensitive">False</property>
-                                                            <property name="can_focus">True</property>
-                                                            <property name="receives_default">True</property>
-                                                            <property name="image">image7</property>
-                                                            <property name="relief">none</property>
-                                                            <property name="focus_on_click">False</property>
-                                                            <signal name="clicked" handler="parole_player_stop_clicked"/>
-                                                          </object>
-                                                          <packing>
-                                                            <property name="expand">False</property>
-                                                            <property name="position">1</property>
-                                                          </packing>
-                                                        </child>-->
                                                         <child>
                                                           <object class="GtkButton" id="play-pause">
                                                             <property name="visible">True</property>
@@ -641,6 +625,22 @@
                                                     <property name="position">0</property>
                                                   </packing>
                                                 </child>
+						<child>
+                                                  <object class="GtkButton" id="go_fs">
+						    <property name="image">image18</property>
+						    <property name="visible">True</property>
+                                                    <property name="can_focus">True</property>
+                                                    <property name="receives_default">True</property>
+                                                    <property name="no_show_all">True</property>
+                                                    <property name="relief">none</property>
+                                                    <property name="use_stock">True</property>
+                                                    <signal name="clicked" handler="parole_player_full_screen_activated_cb"/>
+                                                  </object>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="position">1</property>
+                                                  </packing>
+                                                </child>
                                                 <child>
                                                   <object class="GtkButton" id="leave_fs">
                                                     <property name="label">gtk-leave-fullscreen</property>
@@ -656,23 +656,6 @@
                                                     <property name="position">2</property>
                                                   </packing>
                                                 </child>
-                                                <!--<child>
-                                                  <object class="GtkButton" id="show-hide-list">
-                                                    <property name="visible">True</property>
-                                                    <property name="can_focus">True</property>
-                                                    <property name="receives_default">True</property>
-                                                    <property name="no_show_all">True</property>
-                                                    <property name="image">image18</property>
-                                                    <property name="relief">none</property>
-                                                    <signal name="clicked" handler="parole_player_show_hide_playlist"/>
-                                                  </object>
-                                                  <packing>
-                                                    <property name="expand">False</property>
-                                                    <property name="fill">False</property>
-                                                    <property name="pack_type">end</property>
-                                                    <property name="position">1</property>
-                                                  </packing>
-                                                </child>-->
                                               </object>
                                               <packing>
                                                 <property name="expand">False</property>
@@ -835,7 +818,7 @@
   </object>
   <object class="GtkImage" id="image18">
     <property name="visible">True</property>
-    <property name="stock">gtk-go-forward</property>
+    <property name="stock">gtk-fullscreen</property>
   </object>
   <object class="GtkImage" id="image5">
     <property name="visible">True</property>
