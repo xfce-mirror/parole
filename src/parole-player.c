@@ -70,6 +70,29 @@
 
 #include "common/parole-common.h"
 
+
+static void
+get_time_string (gchar *timestring, gint total_seconds)
+{
+    gint  hours;
+    gint  minutes;
+    gint  seconds;
+
+    minutes =  total_seconds / 60;
+    seconds = total_seconds % 60;
+    hours = minutes / 60;
+    minutes = minutes % 60;
+
+    if ( hours == 0 )
+    {
+	g_snprintf (timestring, 128, "%02i:%02i", minutes, seconds);
+    }
+    else
+    {
+	g_snprintf (timestring, 128, "%i:%02i:%02i", hours, minutes, seconds);
+    }
+}
+
 /*
  * DBus Glib init
  */
@@ -240,6 +263,8 @@ struct ParolePlayerPrivate
     GtkWidget		*seekb;
     GtkWidget		*range;
     
+    GtkWidget		*label_elapsed;
+    GtkWidget		*label_duration;
     GtkWidget		*fs_window; /* Window for packing control widgets 
 				     * when in full screen mode
 				     */
@@ -641,6 +666,23 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
 	parole_player_change_range_value (player, 0);
     else 
 	gtk_range_set_range (GTK_RANGE (player->priv->range), 0, duration);
+	
+	/* Added duration here.*/
+	if ( duration != 0)
+	{
+	    gchar dur_text[128];
+	    get_time_string (dur_text, duration);
+	    /*text = g_strdup_printf ("%s %s/%s", 
+				    state == PAROLE_MEDIA_STATE_PAUSED ? _("Paused") : _("Playing"), 
+				    pos_text, 
+				    dur_text);*/
+	    gtk_label_set_text (GTK_LABEL (player->priv->label_duration), dur_text);
+	}
+	/*if ( text )
+	{
+	    
+	    g_free (text);
+	}*/
 	
     player->priv->internal_range_change = FALSE;
     
@@ -1922,6 +1964,7 @@ parole_player_init (ParolePlayer *player)
    
     player->priv->main_nt = GTK_WIDGET (gtk_builder_get_object (builder, "main-notebook"));
     
+    player->priv->label_duration = GTK_WIDGET(gtk_builder_get_object(builder, "label_duration"));
     player->priv->play_pause = GTK_WIDGET (gtk_builder_get_object (builder, "play-pause"));
     player->priv->stop = GTK_WIDGET (gtk_builder_get_object (builder, "stop"));
     player->priv->seekf = GTK_WIDGET (gtk_builder_get_object (builder, "forward"));
@@ -2037,6 +2080,8 @@ ParoleMediaList	*parole_player_get_media_list (ParolePlayer *player)
 {
     return player->priv->list;
 }
+
+
 
 void parole_player_play_uri_disc (ParolePlayer *player, const gchar *uri, const gchar *device)
 {
@@ -2195,3 +2240,4 @@ static gboolean parole_player_dbus_play_disc (ParolePlayer *player,
 	
     return TRUE;
 }
+
