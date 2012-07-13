@@ -11,6 +11,8 @@ m4_define([parole_version], [parole_version_major().parole_version_minor().parol
 AC_INIT([parole], [parole_version], [aliov@xfce.org])
 AC_PREREQ(2.59c)
 
+AC_CONFIG_MACRO_DIR([m4])
+
 AM_INIT_AUTOMAKE([1.8 dist-bzip2 tar-ustar])
 AM_CONFIG_HEADER([config.h])
 AM_MAINTAINER_MODE()
