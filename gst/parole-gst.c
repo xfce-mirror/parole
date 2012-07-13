@@ -157,7 +157,10 @@ parole_gst_finalize (GObject *object)
     
     parole_stream_init_properties (gst->priv->stream);
     
+	if ( gst->priv->stream )
     g_object_unref (gst->priv->stream);
+
+    if ( gst->priv->logo )
     g_object_unref (gst->priv->logo);
     
     if ( gst->priv->device )
@@ -472,7 +475,7 @@ parole_gst_set_video_color_balance (ParoleGst *gst)
 		  "hue", hue_value,
 		  "saturation", saturation_value,
 		  NULL);
-		  
+
     g_object_unref (G_OBJECT (video_sink));
     
     gst->priv->update_color_balance = FALSE;
@@ -2032,10 +2035,12 @@ void parole_gst_shutdown (ParoleGst *gst)
     if ( g_signal_handler_is_connected (gst->priv->playbin, gst->priv->sig2) )
         g_signal_handler_disconnect (gst->priv->playbin, gst->priv->sig2);
 
+	if ( gst->priv->bus )
     g_object_unref (gst->priv->bus);
     
     gst_element_set_state (gst->priv->playbin, GST_STATE_VOID_PENDING);
 
+	if ( gst->priv->playbin )
     g_object_unref (gst->priv->playbin);
 }
 
