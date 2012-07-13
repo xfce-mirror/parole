@@ -1531,7 +1531,7 @@ parole_gst_terminate_internal (ParoleGst *gst, gboolean fade_sound)
 	gdouble step;
 	volume = parole_gst_get_volume (gst);
 	/*
-	 * Like amarok, reduce the sound slowley then exit.
+	 * Fade-out on exit.
 	 */
 	if ( volume != 0 )
 	{
@@ -1540,7 +1540,7 @@ parole_gst_terminate_internal (ParoleGst *gst, gboolean fade_sound)
 		step = volume - volume / 10;
 		parole_gst_set_volume (gst, step < 0.01 ? 0 : step);
 		volume = parole_gst_get_volume (gst);
-		g_usleep (40000); // FIXME: isn't 4sec a bit long?
+		g_usleep (15000);
 	    }
 	}
     }
