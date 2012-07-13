@@ -124,6 +124,7 @@ void            parole_player_range_value_changed       (GtkRange *range,
 void            parole_player_play_pause_clicked        (GtkButton *button, 
 							 ParolePlayer *player);
 
+
 void            parole_player_stop_clicked              (GtkButton *button, 
 							 ParolePlayer *player);
 
@@ -256,7 +257,6 @@ struct ParolePlayerPrivate
     GtkWidget		*main_nt;	/*Main notebook*/
     GtkWidget		*show_hide_playlist;
     GtkWidget		*play_pause;
-    GtkWidget		*stop;
     GtkWidget		*seekf;
     GtkWidget		*seekb;
     GtkWidget		*range;
@@ -276,7 +276,6 @@ struct ParolePlayerPrivate
     GtkWidget		*main_box;
     
     GtkWidget		*volume;
-    /*GtkWidget		*volume_image;*/
     GtkWidget		*menu_bar;
     GtkWidget		*play_box;
      
@@ -501,8 +500,6 @@ parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *ro
 	    TRACE ("Trying to play media file %s", uri);
 	    TRACE ("File content type %s", parole_file_get_content_type (file));
 	    
-	    gtk_widget_set_sensitive (player->priv->stop, TRUE);
-	    
 	    parole_gst_play_uri (PAROLE_GST (player->priv->gst), 
 				 parole_file_get_uri (file),
 				 sub);
@@ -519,7 +516,6 @@ static void
 parole_player_disc_selected_cb (ParoleDisc *disc, const gchar *uri, const gchar *device, ParolePlayer *player)
 {
     parole_player_reset (player);
-    gtk_widget_set_sensitive (player->priv->stop, TRUE);
     
     parole_gst_play_device_uri (PAROLE_GST (player->priv->gst), uri, device);
 }
@@ -528,7 +524,6 @@ static void
 parole_player_uri_opened_cb (ParoleMediaList *list, const gchar *uri, ParolePlayer *player)
 {
     parole_player_reset (player);
-    gtk_widget_set_sensitive (player->priv->stop, TRUE);
     parole_gst_play_uri (PAROLE_GST (player->priv->gst), uri, NULL);
 }
 
@@ -663,7 +658,6 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
 		  NULL);
 		  
     gtk_widget_set_sensitive (player->priv->play_pause, TRUE);
-    gtk_widget_set_sensitive (player->priv->stop, TRUE);
     
     parole_player_set_playpause_button_image (player->priv->play_pause, GTK_STOCK_MEDIA_PAUSE);
     
@@ -716,7 +710,6 @@ parole_player_paused (ParolePlayer *player)
     parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, pix);
     
     gtk_widget_set_sensitive (player->priv->play_pause, TRUE);
-    gtk_widget_set_sensitive (player->priv->stop, TRUE);
     
     if ( player->priv->user_seeking == FALSE)
 	parole_player_set_playpause_button_image (player->priv->play_pause, GTK_STOCK_MEDIA_PLAY);
@@ -750,10 +743,6 @@ parole_player_stopped (ParolePlayer *player)
      * state, this give the possibility to press on it if the media get stuck
      * for some reason.
      */
-    if ( parole_gst_get_gst_target_state (PAROLE_GST (player->priv->gst)) != GST_STATE_PLAYING)
-    {
-	gtk_widget_set_sensitive (player->priv->stop, FALSE);
-    }
 
     parole_player_change_range_value (player, 0);
     gtk_widget_set_sensitive (player->priv->range, FALSE);
@@ -1100,12 +1089,6 @@ parole_player_play_menu_item_activate (ParolePlayer *player)
 }
 
 static void
-parole_player_stop_menu_item_activate (ParolePlayer *player)
-{
-    gtk_widget_activate (player->priv->stop);
-}
-
-static void
 parole_player_next_menu_item_activate (ParolePlayer *player)
 {
     parole_disc_menu_seek_next (player->priv->disc_menu);
@@ -1262,9 +1245,9 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
 					     
     gtk_widget_set_sensitive (mi, player->priv->state == PAROLE_STATE_PLAYING);
     gtk_widget_show (mi);
-    g_signal_connect_swapped (mi, "activate",
+    /*g_signal_connect_swapped (mi, "activate",
 			      G_CALLBACK (parole_player_stop_menu_item_activate), player);
-    gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);*/
     
     /*
      * Next chapter menu item
@@ -1990,7 +1973,6 @@ parole_player_init (ParolePlayer *player)
     player->priv->label_duration = GTK_WIDGET(gtk_builder_get_object(builder, "label_duration"));
     player->priv->label_elapsed = GTK_WIDGET(gtk_builder_get_object(builder, "label_elapsed"));
     player->priv->play_pause = GTK_WIDGET (gtk_builder_get_object (builder, "play-pause"));
-    player->priv->stop = GTK_WIDGET (gtk_builder_get_object (builder, "stop"));
     player->priv->seekf = GTK_WIDGET (gtk_builder_get_object (builder, "forward"));
     player->priv->seekb = GTK_WIDGET (gtk_builder_get_object (builder, "back"));
      

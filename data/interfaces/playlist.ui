@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <requires lib="gtk+" version="2.16"/>
+  <requires lib="gtk+" version="2.24"/>
   <!-- interface-naming-policy project-wide -->
   <object class="GtkImage" id="image1">
     <property name="visible">True</property>
@@ -54,10 +54,10 @@
                     <property name="has_tooltip">True</property>
                     <property name="headers_visible">False</property>
                     <property name="rules_hint">True</property>
+                    <signal name="drag-data-received" handler="parole_media_list_drag_data_received_cb" swapped="no"/>
                     <signal name="key-press-event" handler="parole_media_list_key_press" swapped="no"/>
                     <signal name="row-activated" handler="parole_media_list_row_activated_cb" swapped="no"/>
                     <signal name="button-release-event" handler="parole_media_list_button_release_event" swapped="no"/>
-                    <signal name="drag-data-received" handler="parole_media_list_drag_data_received_cb" swapped="no"/>
                     <signal name="query-tooltip" handler="parole_media_list_query_tooltip" swapped="no"/>
                   </object>
                 </child>

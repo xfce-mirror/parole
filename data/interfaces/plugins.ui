@@ -1,20 +1,10 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <requires lib="gtk+" version="2.16"/>
+  <requires lib="gtk+" version="2.24"/>
+  <!-- interface-requires libxfce4ui 4.5 -->
   <!-- interface-naming-policy project-wide -->
-  <object class="GtkListStore" id="liststore">
-    <columns>
-      <!-- column-name toggle -->
-      <column type="gboolean"/>
-      <!-- column-name plugin -->
-      <column type="gchararray"/>
-      <!-- column-name module -->
-      <column type="GObject"/>
-      <!-- column-name info -->
-      <column type="gpointer"/>
-    </columns>
-  </object>
   <object class="XfceTitledDialog" id="dialog">
+    <property name="can_focus">False</property>
     <property name="border_width">5</property>
     <property name="title" translatable="yes">Parole Plugins</property>
     <property name="default_width">500</property>
@@ -24,21 +14,53 @@
     <property name="type_hint">normal</property>
     <property name="skip_taskbar_hint">True</property>
     <property name="skip_pager_hint">True</property>
-    <property name="has_separator">False</property>
     <property name="subtitle" translatable="yes">Media Player plugins</property>
-    <signal name="response" handler="parole_plugins_manager_pref_response_cb"/>
+    <signal name="response" handler="parole_plugins_manager_pref_response_cb" swapped="no"/>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox2">
         <property name="visible">True</property>
-        <property name="orientation">vertical</property>
+        <property name="can_focus">False</property>
         <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkHButtonBox" id="dialog-action_area2">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <object class="GtkButton" id="close">
+                <property name="label">gtk-close</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_action_appearance">False</property>
+                <property name="use_stock">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
         <child>
           <object class="GtkHBox" id="hbox1">
             <property name="visible">True</property>
+            <property name="can_focus">False</property>
             <property name="spacing">10</property>
             <child>
               <object class="GtkViewport" id="viewport1">
                 <property name="visible">True</property>
+                <property name="can_focus">False</property>
                 <property name="resize_mode">queue</property>
                 <child>
                   <object class="GtkScrolledWindow" id="scrolledwindow1">
@@ -53,7 +75,7 @@
                         <property name="model">liststore</property>
                         <property name="headers_clickable">False</property>
                         <property name="search_column">0</property>
-                        <signal name="cursor_changed" handler="parole_plugins_manager_tree_cursor_changed_cb"/>
+                        <signal name="cursor-changed" handler="parole_plugins_manager_tree_cursor_changed_cb" swapped="no"/>
                         <child>
                           <object class="GtkTreeViewColumn" id="treeviewcolumn1">
                             <property name="resizable">True</property>
@@ -61,7 +83,7 @@
                             <property name="clickable">True</property>
                             <child>
                               <object class="GtkCellRendererToggle" id="cellrenderertoggle">
-                                <signal name="toggled" handler="parole_plugins_manager_cell_toggled_cb"/>
+                                <signal name="toggled" handler="parole_plugins_manager_cell_toggled_cb" swapped="no"/>
                               </object>
                               <attributes>
                                 <attribute name="active">0</attribute>
@@ -86,17 +108,20 @@
                 </child>
               </object>
               <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
                 <property name="position">0</property>
               </packing>
             </child>
             <child>
               <object class="GtkVBox" id="vbox1">
                 <property name="visible">True</property>
-                <property name="orientation">vertical</property>
+                <property name="can_focus">False</property>
                 <property name="spacing">10</property>
                 <child>
                   <object class="GtkTable" id="table1">
                     <property name="visible">True</property>
+                    <property name="can_focus">False</property>
                     <property name="n_rows">3</property>
                     <property name="n_columns">2</property>
                     <property name="column_spacing">4</property>
@@ -104,6 +129,7 @@
                     <child>
                       <object class="GtkLabel" id="label1">
                         <property name="visible">True</property>
+                        <property name="can_focus">False</property>
                         <property name="label" translatable="yes">&lt;b&gt;Description:&lt;/b&gt;</property>
                         <property name="use_markup">True</property>
                       </object>
@@ -115,6 +141,7 @@
                     <child>
                       <object class="GtkLabel" id="label2">
                         <property name="visible">True</property>
+                        <property name="can_focus">False</property>
                         <property name="label" translatable="yes">&lt;b&gt;Author:&lt;/b&gt;</property>
                         <property name="use_markup">True</property>
                       </object>
@@ -128,6 +155,7 @@
                     <child>
                       <object class="GtkLabel" id="description">
                         <property name="visible">True</property>
+                        <property name="can_focus">False</property>
                         <property name="use_markup">True</property>
                         <property name="wrap">True</property>
                       </object>
@@ -139,6 +167,7 @@
                     <child>
                       <object class="GtkLabel" id="author">
                         <property name="visible">True</property>
+                        <property name="can_focus">False</property>
                         <property name="use_markup">True</property>
                       </object>
                       <packing>
@@ -151,6 +180,7 @@
                     <child>
                       <object class="GtkLabel" id="label4">
                         <property name="visible">True</property>
+                        <property name="can_focus">False</property>
                         <property name="label" translatable="yes">&lt;b&gt;Site:&lt;/b&gt;</property>
                         <property name="use_markup">True</property>
                       </object>
@@ -164,6 +194,7 @@
                     <child>
                       <object class="GtkHBox" id="site-box">
                         <property name="visible">True</property>
+                        <property name="can_focus">False</property>
                         <child>
                           <placeholder/>
                         </child>
@@ -178,12 +209,14 @@
                   </object>
                   <packing>
                     <property name="expand">False</property>
+                    <property name="fill">True</property>
                     <property name="position">0</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkHBox" id="hbox6">
                     <property name="visible">True</property>
+                    <property name="can_focus">False</property>
                     <property name="spacing">10</property>
                     <child>
                       <object class="GtkButton" id="configure">
@@ -191,11 +224,13 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
+                        <property name="use_action_appearance">False</property>
                         <property name="use_stock">True</property>
-                        <signal name="clicked" handler="parole_plugins_manager_show_configure"/>
+                        <signal name="clicked" handler="parole_plugins_manager_show_configure" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
+                        <property name="fill">True</property>
                         <property name="position">0</property>
                       </packing>
                     </child>
@@ -205,46 +240,23 @@
                   </object>
                   <packing>
                     <property name="expand">False</property>
+                    <property name="fill">True</property>
                     <property name="pack_type">end</property>
                     <property name="position">1</property>
                   </packing>
                 </child>
               </object>
               <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
                 <property name="position">1</property>
               </packing>
             </child>
           </object>
           <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
             <property name="position">1</property>
-          </packing>
-        </child>
-        <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area2">
-            <property name="visible">True</property>
-            <property name="layout_style">end</property>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <object class="GtkButton" id="close">
-                <property name="label">gtk-close</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="use_stock">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="pack_type">end</property>
-            <property name="position">0</property>
           </packing>
         </child>
       </object>
@@ -252,5 +264,17 @@
     <action-widgets>
       <action-widget response="0">close</action-widget>
     </action-widgets>
+  </object>
+  <object class="GtkListStore" id="liststore">
+    <columns>
+      <!-- column-name toggle -->
+      <column type="gboolean"/>
+      <!-- column-name plugin -->
+      <column type="gchararray"/>
+      <!-- column-name module -->
+      <column type="GObject"/>
+      <!-- column-name info -->
+      <column type="gpointer"/>
+    </columns>
   </object>
 </interface>
