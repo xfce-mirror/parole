@@ -416,7 +416,7 @@ parole_gst_draw_logo (ParoleGst *gst)
     if (gst->priv->scale_logo)
     {
 	if (pix)
-	    gdk_pixbuf_unref (pix);
+	    g_object_unref (pix);
 	pix = gdk_pixbuf_scale_simple (gst->priv->logo,
 				       widget->allocation.width,
 				       widget->allocation.height,
@@ -1490,7 +1490,7 @@ parole_gst_check_state_change_timeout (gpointer data)
     if ( gst->priv->state != gst->priv->target )
     {
 	gboolean ret_val = 1;
-	/*gboolean ret_val = xfce_dialog_confirm (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (gst))),
+	/*FIXME gboolean ret_val = xfce_dialog_confirm (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (gst))),
 						GTK_STOCK_YES,
 						_("Stop"),
 						_("The stream is taking too much time to load"), 
@@ -1537,7 +1537,7 @@ parole_gst_terminate_internal (ParoleGst *gst, gboolean fade_sound)
 		step = volume - volume / 10;
 		parole_gst_set_volume (gst, step < 0.01 ? 0 : step);
 		volume = parole_gst_get_volume (gst);
-		g_usleep (40000);
+		g_usleep (40000); // FIXME: isn't 4sec a bit long?
 	    }
 	}
     }
@@ -1665,7 +1665,7 @@ parole_gst_constructed (GObject *object)
 	error = g_error_new (0, 0, "%s", _("Unable to load playbin GStreamer plugin"
 					    ", check your GStreamer installation"));
 					    
-	/*xfce_dialog_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (gst))),
+	/*FIXME xfce_dialog_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (gst))),
 				error, NULL);*/
 	g_error_free (error);
 	g_error ("playbin load failed");
@@ -1688,7 +1688,7 @@ parole_gst_constructed (GObject *object)
 	    GError *error;
 	    error = g_error_new (0, 0, "%s", _("Unable to load video GStreamer plugin"
 					      ", check your GStreamer installation"));
-	    /*xfce_dialog_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (gst))),
+	    /*FIXME xfce_dialog_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (gst))),
 				error, NULL);*/
 	    g_error_free (error);
 	    g_error ("ximagesink load failed");
