@@ -181,14 +181,6 @@ if test x"$ac_tray_plugin" = x"yes"; then
  	[libnotify library], [yes]) 
 fi
 
-# Window title plugin.
-#--------------------------
-AC_ARG_ENABLE([window-title-plugin], AC_HELP_STRING([--disable-window-title-plugin], [Don't build the window title plugin]),
-  [ac_window_title_plugin=$enableval], [ac_window_title_plugin=yes])
-AC_MSG_CHECKING([whether to build the window title plugin])
-AM_CONDITIONAL([WINDOW_TITLE_PLUGIN], [test x"$ac_window_title_plugin" = x"yes"])
-AC_MSG_RESULT([$ac_window_title_plugin])
-
 # Power Manager
 #--------------------------
 AC_ARG_ENABLE([power-manager-plugin], AC_HELP_STRING([--disable-power-manager-plugin], [Don't build the power manager plugin]),
@@ -230,7 +222,6 @@ plugins/Makefile
 plugins/sample/Makefile
 plugins/properties/Makefile
 plugins/tray/Makefile
-plugins/window-title/Makefile
 plugins/power-manager/Makefile
 docs/Makefile
 docs/plugin-api/version.xml
@@ -268,7 +259,6 @@ echo "
 	fi 
 	
 	echo "
-	Window title:			${ac_window_title_plugin}
 	Power Manager:			${ac_power_manager_plugin}
 
 ------------------------------------------------------
