@@ -8,10 +8,6 @@ if PAROLE_TRAY_PLUGIN
 SUBDIRS+=tray
 endif
 
-if WINDOW_TITLE_PLUGIN
-SUBDIRS+=window-title
-endif
-
 if POWER_MANAGER_PLUGIN
 SUBDIRS+=power-manager
 endif
