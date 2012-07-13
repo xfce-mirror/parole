@@ -1967,7 +1967,7 @@ parole_player_init (ParolePlayer *player)
    
     player->priv->main_nt = GTK_WIDGET (gtk_builder_get_object (builder, "main-notebook"));
     
-    player->priv->play_box = GTK_WIDGET (gtk_builder_get_object (builder, "play_box"));
+    player->priv->playcontrol_box = GTK_WIDGET (gtk_builder_get_object (builder, "playing_box"));
     player->priv->progressbar_buffering = GTK_WIDGET (gtk_builder_get_object (builder, "progressbar_buffering"));
     
     player->priv->label_duration = GTK_WIDGET(gtk_builder_get_object(builder, "label_duration"));

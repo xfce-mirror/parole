@@ -31,8 +31,8 @@ AC_PROG_INTLTOOL([intltool_minimum_version], [no-xml])
 # ===================================================== #
 #               Initialize libtool                      #
 # ===================================================== #
-AC_DISABLE_STATIC()
-AC_PROG_LIBTOOL()
+LT_PREREQ([2.2.6])
+LT_INIT([disable-static])
 m4_ifdef([LT_OUTPUT], [LT_OUTPUT])
 
 # ===================================================== #
