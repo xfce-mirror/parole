@@ -91,17 +91,17 @@ parole_disc_menu_show (ParoleDiscMenu *menu, gboolean show_label)
 
 static void
 parole_disc_menu_media_state_cb (ParoleGst *gst, const ParoleStream *stream, 	
-				 ParoleMediaState state, ParoleDiscMenu *menu)
+				 ParoleState state, ParoleDiscMenu *menu)
 {
     ParoleMediaType media_type;
     menu->priv->tracks = 0;
     
-    if ( state < PAROLE_MEDIA_STATE_PAUSED )
+    if ( state < PAROLE_STATE_PAUSED )
     {
 	gtk_label_set_markup (GTK_LABEL (menu->priv->info), NULL);
 	parole_disc_menu_hide (menu);
     }
-    else if ( state == PAROLE_MEDIA_STATE_PLAYING )
+    else if ( state == PAROLE_STATE_PLAYING )
     {
 	g_object_get (G_OBJECT (stream),
 		      "media-type", &media_type,

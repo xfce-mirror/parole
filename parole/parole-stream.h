@@ -1,5 +1,5 @@
 /*
- * * Copyright (C) 2009-2011 Ali <aliov@xfce.org>
+ * * Copyright (C) 2009 Ali <aliov@xfce.org>
  *
  * Licensed under the GNU General Public License Version 2
  *
@@ -45,6 +45,18 @@ typedef enum
     PAROLE_MEDIA_TYPE_REMOTE
     
 } ParoleMediaType;
+
+
+typedef enum
+{
+    PAROLE_STATE_STOPPED = 0,
+    PAROLE_STATE_PLAYBACK_FINISHED,
+    PAROLE_STATE_ABOUT_TO_FINISH,
+    PAROLE_STATE_PAUSED,
+    PAROLE_STATE_PLAYING
+    
+} ParoleState;
+
 
 typedef struct _ParoleStream      ParoleStream;
 typedef struct _ParoleStreamClass ParoleStreamClass;
