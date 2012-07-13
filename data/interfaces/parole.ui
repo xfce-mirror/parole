@@ -712,7 +712,7 @@
                                                             <property name="image">image6</property>
                                                             <property name="relief">none</property>
                                                             <property name="focus_on_click">False</property>
-                                                            <signal name="clicked" handler="parole_player_seekb_cb" swapped="no"/>
+                                                            <signal name="clicked" handler="parole_player_back_cb" swapped="no"/>
                                                           </object>
                                                           <packing>
                                                             <property name="expand">False</property>
@@ -748,7 +748,7 @@
                                                             <property name="image">image9</property>
                                                             <property name="relief">none</property>
                                                             <property name="focus_on_click">False</property>
-                                                            <signal name="clicked" handler="parole_player_seekf_cb" swapped="no"/>
+                                                            <signal name="clicked" handler="parole_player_forward_cb" swapped="no"/>
                                                           </object>
                                                           <packing>
                                                             <property name="expand">False</property>
@@ -786,6 +786,7 @@
                                                             </object>
                                                             <packing>
                                                             <property name="expand">True</property>
+                                                            <property name="fill">True</property>
                                                             <property name="position">1</property>
                                                             </packing>
                                                             </child>

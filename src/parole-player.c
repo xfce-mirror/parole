@@ -51,6 +51,7 @@
 #include "parole-gst.h"
 #include "parole-dbus.h"
 #include "parole-mediachooser.h"
+#include "parole-medialist.h"
 #include "parole-filters.h"
 #include "parole-disc.h"
 #include "parole-disc-menu.h"
@@ -128,10 +129,10 @@ void            parole_player_play_pause_clicked        (GtkButton *button,
 void            parole_player_stop_clicked              (GtkButton *button, 
 							 ParolePlayer *player);
 
-void            parole_player_seekf_cb                  (GtkButton *button, 
+void            parole_player_forward_cb                  (GtkButton *button, 
 							 ParolePlayer *player);
 							 
-void            parole_player_seekb_cb                  (GtkButton *button, 
+void            parole_player_back_cb                  (GtkButton *button, 
 							 ParolePlayer *player);
 
 gboolean        parole_player_scroll_event_cb		(GtkWidget *widget,
@@ -936,26 +937,16 @@ parole_player_get_seek_value (ParolePlayer *player)
     return val;
 }
 
-void parole_player_seekf_cb (GtkButton *button, ParolePlayer *player)
+void parole_player_forward_cb (GtkButton *button, ParolePlayer *player)
 {
-    gdouble seek;
-    
-    seek =  parole_gst_get_stream_position (PAROLE_GST (player->priv->gst) )
-	    +
-	    parole_player_get_seek_value (player);
-	    
-    parole_gst_seek (PAROLE_GST (player->priv->gst), seek);
+	if ( !parole_disc_menu_seek_next (player->priv->disc_menu))
+	parole_player_play_next (player, FALSE);
 }
 							 
-void parole_player_seekb_cb (GtkButton *button, ParolePlayer *player)
+void parole_player_back_cb (GtkButton *button, ParolePlayer *player)
 {
-    gdouble seek;
-    
-    seek =  parole_gst_get_stream_position (PAROLE_GST (player->priv->gst) )
-	    -
-	    parole_player_get_seek_value (player);
-	    
-    parole_gst_seek (PAROLE_GST (player->priv->gst), seek);
+	if ( !parole_disc_menu_seek_prev (player->priv->disc_menu))
+	parole_player_play_prev (player);
 }
 
 gboolean parole_player_scroll_event_cb (GtkWidget *widget, GdkEventScroll *ev, ParolePlayer *player)
@@ -964,12 +955,12 @@ gboolean parole_player_scroll_event_cb (GtkWidget *widget, GdkEventScroll *ev, P
     
     if ( ev->direction == GDK_SCROLL_UP )
     {
-	parole_player_seekf_cb (NULL, player);
+	parole_player_forward_cb (NULL, player);
         ret_val = TRUE;
     }
     else if ( ev->direction == GDK_SCROLL_DOWN )
     {
-	parole_player_seekb_cb (NULL, player);
+	parole_player_back_cb (NULL, player);
         ret_val = TRUE;
     }
 
@@ -1224,7 +1215,7 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
     gtk_widget_set_sensitive (mi, (player->priv->state >= PAROLE_STATE_PAUSED));
     gtk_widget_show (mi);
     g_signal_connect (mi, "activate",
-		      G_CALLBACK (parole_player_seekf_cb), player);
+		      G_CALLBACK (parole_player_forward_cb), player);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
     
     /*
@@ -1235,7 +1226,7 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
     gtk_widget_set_sensitive (mi, (player->priv->state >= PAROLE_STATE_PAUSED));
     gtk_widget_show (mi);
     g_signal_connect (mi, "activate",
-		      G_CALLBACK (parole_player_seekb_cb), player);
+		      G_CALLBACK (parole_player_back_cb), player);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
     
     /*
@@ -1591,12 +1582,12 @@ parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
 	case GDK_Right:
 	    /* Media seekable ?*/
 	    if ( GTK_WIDGET_SENSITIVE (player->priv->range) )
-		parole_player_seekf_cb (NULL, player);
+		parole_player_forward_cb (NULL, player);
 	    ret_val = TRUE;
 	    break;
 	case GDK_Left:
 	    if ( GTK_WIDGET_SENSITIVE (player->priv->range) )
-		parole_player_seekb_cb (NULL, player);
+		parole_player_back_cb (NULL, player);
 	    ret_val = TRUE;
 	    break;
 	case GDK_s:
@@ -2200,14 +2191,14 @@ static gboolean	parole_player_dbus_prev_track (ParolePlayer *player,
 static gboolean	parole_player_dbus_seek_forward (ParolePlayer *player,
 					         GError *error)
 {
-    parole_player_seekf_cb (NULL, player);
+    parole_player_forward_cb (NULL, player);
     return TRUE;
 }
 
 static gboolean	parole_player_dbus_seek_backward (ParolePlayer *player,
 					          GError *error)
 {
-    parole_player_seekb_cb (NULL, player);
+    parole_player_back_cb (NULL, player);
     return TRUE;
 }
 					 
