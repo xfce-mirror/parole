@@ -709,7 +709,7 @@
                                                             <property name="can_focus">True</property>
                                                             <property name="receives_default">True</property>
                                                             <property name="use_action_appearance">False</property>
-                                                            <property name="image">image6</property>
+                                                            <property name="image">image1</property>
                                                             <property name="relief">none</property>
                                                             <property name="focus_on_click">False</property>
                                                             <signal name="clicked" handler="parole_player_back_cb" swapped="no"/>
@@ -745,7 +745,7 @@
                                                             <property name="can_focus">True</property>
                                                             <property name="receives_default">True</property>
                                                             <property name="use_action_appearance">False</property>
-                                                            <property name="image">image9</property>
+                                                            <property name="image">image4</property>
                                                             <property name="relief">none</property>
                                                             <property name="focus_on_click">False</property>
                                                             <signal name="clicked" handler="parole_player_forward_cb" swapped="no"/>
