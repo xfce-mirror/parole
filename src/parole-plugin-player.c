@@ -188,7 +188,7 @@ static void parole_plugin_player_iface_init (ParoleProviderPlayerIface *iface)
 
 static void 
 parole_plugin_player_media_state_changed_cb (ParoleGst *gst, const ParoleStream *stream, 
-					     ParoleMediaState state, ParolePluginPlayer *player)
+					     ParoleState state, ParolePluginPlayer *player)
 {
     g_signal_emit_by_name (G_OBJECT (player), "state-changed", stream, state);
 }
