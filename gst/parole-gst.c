@@ -910,7 +910,6 @@ parole_gst_update_vis (ParoleGstHelper *helper)
 	g_object_set (G_OBJECT (gst->priv->playbin),
 		      "vis-plugin", NULL,
 		      NULL);
-	gtk_widget_queue_draw (GTK_WIDGET (gst));
     }
 
     gst->priv->update_vis = FALSE;
@@ -1357,7 +1356,6 @@ parole_gst_play_file_internal (ParoleGst *gst)
     if ( gst->priv->update_vis)
 	parole_gst_helper_update_vis (PAROLE_GST_HELPER (gst));
     
-    gtk_widget_queue_draw (GTK_WIDGET (gst));
     
     g_object_get (G_OBJECT (gst->priv->stream),
 		  "uri", &uri,
