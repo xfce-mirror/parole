@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <requires lib="gtk+" version="2.16"/>
+  <requires lib="gtk+" version="2.24"/>
   <!-- interface-naming-policy project-wide -->
   <object class="GtkImage" id="image1">
     <property name="visible">True</property>
@@ -709,10 +709,10 @@
                                                             <property name="can_focus">True</property>
                                                             <property name="receives_default">True</property>
                                                             <property name="use_action_appearance">False</property>
-                                                            <property name="image">image6</property>
+                                                            <property name="image">image1</property>
                                                             <property name="relief">none</property>
                                                             <property name="focus_on_click">False</property>
-                                                            <signal name="clicked" handler="parole_player_seekb_cb" swapped="no"/>
+                                                            <signal name="clicked" handler="parole_player_back_cb" swapped="no"/>
                                                           </object>
                                                           <packing>
                                                             <property name="expand">False</property>
@@ -745,10 +745,10 @@
                                                             <property name="can_focus">True</property>
                                                             <property name="receives_default">True</property>
                                                             <property name="use_action_appearance">False</property>
-                                                            <property name="image">image9</property>
+                                                            <property name="image">image4</property>
                                                             <property name="relief">none</property>
                                                             <property name="focus_on_click">False</property>
-                                                            <signal name="clicked" handler="parole_player_seekf_cb" swapped="no"/>
+                                                            <signal name="clicked" handler="parole_player_forward_cb" swapped="no"/>
                                                           </object>
                                                           <packing>
                                                             <property name="expand">False</property>
@@ -757,7 +757,7 @@
                                                           </packing>
                                                         </child>
                                                         <child>
-                                                          <object class="GtkHBox" id="play_box">
+                                                          <object class="GtkHBox" id="playing_box">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <child>

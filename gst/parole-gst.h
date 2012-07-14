@@ -1,5 +1,5 @@
 /*
- * * Copyright (C) 2009-2011 Ali <aliov@xfce.org>
+ * * Copyright (C) 2009 Ali <aliov@xfce.org>
  *
  * Licensed under the GNU General Public License Version 2
  *
@@ -26,25 +26,13 @@
 #include <gtk/gtk.h>
 
 #include <parole/parole-stream.h>
+#include <parole/parole-enum-types.h>
 
 G_BEGIN_DECLS
 
 #define PAROLE_TYPE_GST        (parole_gst_get_type () )
 #define PAROLE_GST(o)          (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_GST, ParoleGst))
 #define PAROLE_IS_GST(o)       (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_GST))
-
-/*
- * Keep this order to be compatible with the 
- * ParoleState enum used by the plugin interface.
- */
-typedef enum /*< prefix=PAROLE_MEDIA_STATE_ >*/
-{
-    PAROLE_MEDIA_STATE_STOPPED,
-    PAROLE_MEDIA_STATE_FINISHED,
-    PAROLE_MEDIA_STATE_PAUSED,
-    PAROLE_MEDIA_STATE_PLAYING
-    
-} ParoleMediaState;
 
 typedef enum
 {
@@ -72,7 +60,7 @@ typedef struct
     
     void		(*media_state)		 	(ParoleGst *gst,
 							 const ParoleStream *stream,
-							 ParoleMediaState state);
+							 ParoleState state);
 						  
     void		(*media_progressed)	 	(ParoleGst *gst,
 						         const ParoleStream *stream,
@@ -92,8 +80,7 @@ typedef struct
 
 GType        		parole_gst_get_type        	(void) G_GNUC_CONST;
 
-GtkWidget      	       *parole_gst_new             	(gboolean embedded,
-							 gpointer conf_obj);
+GtkWidget      	       *parole_gst_new             	(gpointer conf_obj);
 
 GtkWidget	       *parole_gst_get 			(void);
 
@@ -123,7 +110,7 @@ void			parole_gst_set_volume      	(ParoleGst *gst,
 						    
 gdouble			parole_gst_get_volume	   	(ParoleGst *gst);
 
-ParoleMediaState        parole_gst_get_state	   	(ParoleGst *gst);
+ParoleState        	parole_gst_get_state	   	(ParoleGst *gst);
 
 GstState	        parole_gst_get_gst_state   	(ParoleGst *gst);
 

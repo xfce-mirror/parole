@@ -51,6 +51,7 @@
 #include "parole-gst.h"
 #include "parole-dbus.h"
 #include "parole-mediachooser.h"
+#include "parole-medialist.h"
 #include "parole-filters.h"
 #include "parole-disc.h"
 #include "parole-disc-menu.h"
@@ -124,13 +125,14 @@ void            parole_player_range_value_changed       (GtkRange *range,
 void            parole_player_play_pause_clicked        (GtkButton *button, 
 							 ParolePlayer *player);
 
+
 void            parole_player_stop_clicked              (GtkButton *button, 
 							 ParolePlayer *player);
 
-void            parole_player_seekf_cb                  (GtkButton *button, 
+void            parole_player_forward_cb                  (GtkButton *button, 
 							 ParolePlayer *player);
 							 
-void            parole_player_seekb_cb                  (GtkButton *button, 
+void            parole_player_back_cb                  (GtkButton *button, 
 							 ParolePlayer *player);
 
 gboolean        parole_player_scroll_event_cb		(GtkWidget *widget,
@@ -255,8 +257,9 @@ struct ParolePlayerPrivate
     GtkWidget		*playlist_nt;
     GtkWidget		*main_nt;	/*Main notebook*/
     GtkWidget		*show_hide_playlist;
+    GtkWidget		*shuffle_menu_item;
+    GtkWidget		*repeat_menu_item;
     GtkWidget		*play_pause;
-    GtkWidget		*stop;
     GtkWidget		*seekf;
     GtkWidget		*seekb;
     GtkWidget		*range;
@@ -276,7 +279,6 @@ struct ParolePlayerPrivate
     GtkWidget		*main_box;
     
     GtkWidget		*volume;
-    /*GtkWidget		*volume_image;*/
     GtkWidget		*menu_bar;
     GtkWidget		*play_box;
      
@@ -284,7 +286,7 @@ struct ParolePlayerPrivate
     
     gboolean		 full_screen;
     
-    ParoleMediaState     state;
+    ParoleState     state;
     gboolean		 user_seeking;
     gboolean             internal_range_change;
     gboolean		 buffering;
@@ -292,6 +294,15 @@ struct ParolePlayerPrivate
     GtkTreeRowReference *row;
         
 };
+
+enum
+{
+    SHUFFLE_TOGGLED,
+    REPEAT_TOGGLED,
+    LAST_SIGNAL
+};
+
+static guint signals [LAST_SIGNAL] = { 0 };
 
 G_DEFINE_TYPE (ParolePlayer, parole_player, G_TYPE_OBJECT)
 
@@ -536,10 +547,36 @@ parole_player_uri_opened_cb (ParoleMediaList *list, const gchar *uri, ParolePlay
 static void
 parole_player_media_cursor_changed_cb (ParoleMediaList *list, gboolean media_selected, ParolePlayer *player)
 {
-    if (player->priv->state < PAROLE_MEDIA_STATE_PAUSED)
+    if (player->priv->state < PAROLE_STATE_PAUSED)
     {
 	gtk_widget_set_sensitive (player->priv->play_pause, 
 				  media_selected || !parole_media_list_is_empty (player->priv->list));
+    }
+}
+
+static void
+parole_player_media_list_shuffle_toggled_cb (ParoleMediaList *list, gboolean shuffle_toggled, ParolePlayer *player)
+{
+    gboolean toggled;
+    
+    toggled = gtk_check_menu_item_get_active (GTK_CHECK_MENU_ITEM(player->priv->shuffle_menu_item));
+    
+    if (toggled != shuffle_toggled)
+    {
+    	gtk_check_menu_item_set_active ( GTK_CHECK_MENU_ITEM(player->priv->shuffle_menu_item), shuffle_toggled);
+    }
+}
+
+static void
+parole_player_media_list_repeat_toggled_cb (ParoleMediaList *list, gboolean repeat_toggled, ParolePlayer *player)
+{
+    gboolean toggled;
+    
+    toggled = gtk_check_menu_item_get_active (GTK_CHECK_MENU_ITEM(player->priv->repeat_menu_item));
+    
+    if (toggled != repeat_toggled)
+    {
+    	gtk_check_menu_item_set_active ( GTK_CHECK_MENU_ITEM(player->priv->repeat_menu_item), repeat_toggled);
     }
 }
 
@@ -550,13 +587,13 @@ parole_player_media_progressed_cb (ParoleGst *gst, const ParoleStream *stream, g
     g_return_if_fail (value > 0);
 #endif
     
-    if ( !player->priv->user_seeking && player->priv->state == PAROLE_MEDIA_STATE_PLAYING )
+    if ( !player->priv->user_seeking && player->priv->state == PAROLE_STATE_PLAYING )
     {
 	parole_player_change_range_value (player, value);
     gchar pos_text[128];
     get_time_string (pos_text, value);
     /*text = g_strdup_printf ("%s %s/%s", 
-			    state == PAROLE_MEDIA_STATE_PAUSED ? _("Paused") : _("Playing"), 
+			    state == PAROLE_STATE_PAUSED ? _("Paused") : _("Playing"), 
 			    pos_text, 
 			    dur_text);*/
     gtk_label_set_text (GTK_LABEL (player->priv->label_elapsed), pos_text);
@@ -851,7 +888,7 @@ parole_player_reset_saver_changed (ParolePlayer *player, const ParoleStream *str
 		  
     if ( !reset_saver )
 	parole_screen_saver_uninhibit (player->priv->screen_saver);
-    else if ( player->priv->state ==  PAROLE_MEDIA_STATE_PLAYING )
+    else if ( player->priv->state ==  PAROLE_STATE_PLAYING )
     {
 	gboolean has_video;
 	
@@ -869,30 +906,36 @@ parole_player_reset_saver_changed (ParolePlayer *player, const ParoleStream *str
 }
 
 static void
-parole_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream, ParoleMediaState state, ParolePlayer *player)
+parole_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream, ParoleState state, ParolePlayer *player)
 {
-    PAROLE_DEBUG_ENUM ("State callback", state, GST_ENUM_TYPE_MEDIA_STATE);
+    PAROLE_DEBUG_ENUM ("State callback", state, PAROLE_ENUM_TYPE_STATE);
 
 
     player->priv->state = state;
     
     parole_player_reset_saver_changed (player, stream);
     
-    if ( state == PAROLE_MEDIA_STATE_PLAYING )
+    if ( state == PAROLE_STATE_PLAYING )
     {
 	parole_player_playing (player, stream);
     }
-    else if ( state == PAROLE_MEDIA_STATE_PAUSED )
+    else if ( state == PAROLE_STATE_PAUSED )
     {
 	parole_player_paused (player);
     }
-    else if ( state == PAROLE_MEDIA_STATE_STOPPED )
+    else if ( state == PAROLE_STATE_STOPPED )
     {
 	parole_player_stopped (player);
     }
-    else if ( state == PAROLE_MEDIA_STATE_FINISHED )
+    else if ( state == PAROLE_STATE_PLAYBACK_FINISHED || state == PAROLE_STATE_ABOUT_TO_FINISH)
     {
-	TRACE ("***Playback finished***");
+#ifdef DEBUG
+	if (state == PAROLE_STATE_PLAYBACK_FINISHED )
+	    TRACE ("***Playback finished***");
+	else
+	    TRACE ("***Playback about to finish***");
+#endif
+	
 	parole_player_play_next (player, TRUE);
     }
 }
@@ -900,9 +943,9 @@ parole_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream, Parole
 void
 parole_player_play_pause_clicked (GtkButton *button, ParolePlayer *player)
 {
-    if ( player->priv->state == PAROLE_MEDIA_STATE_PLAYING )
+    if ( player->priv->state == PAROLE_STATE_PLAYING )
 	parole_gst_pause (PAROLE_GST (player->priv->gst));
-    else if ( player->priv->state == PAROLE_MEDIA_STATE_PAUSED )
+    else if ( player->priv->state == PAROLE_STATE_PAUSED )
 	parole_gst_resume (PAROLE_GST (player->priv->gst));
     else
 	parole_player_play_selected_row (player);
@@ -930,26 +973,16 @@ parole_player_get_seek_value (ParolePlayer *player)
     return val;
 }
 
-void parole_player_seekf_cb (GtkButton *button, ParolePlayer *player)
+void parole_player_forward_cb (GtkButton *button, ParolePlayer *player)
 {
-    gdouble seek;
-    
-    seek =  parole_gst_get_stream_position (PAROLE_GST (player->priv->gst) )
-	    +
-	    parole_player_get_seek_value (player);
-	    
-    parole_gst_seek (PAROLE_GST (player->priv->gst), seek);
+	if ( !parole_disc_menu_seek_next (player->priv->disc_menu))
+	parole_player_play_next (player, FALSE);
 }
 							 
-void parole_player_seekb_cb (GtkButton *button, ParolePlayer *player)
+void parole_player_back_cb (GtkButton *button, ParolePlayer *player)
 {
-    gdouble seek;
-    
-    seek =  parole_gst_get_stream_position (PAROLE_GST (player->priv->gst) )
-	    -
-	    parole_player_get_seek_value (player);
-	    
-    parole_gst_seek (PAROLE_GST (player->priv->gst), seek);
+	if ( !parole_disc_menu_seek_prev (player->priv->disc_menu))
+	parole_player_play_prev (player);
 }
 
 gboolean parole_player_scroll_event_cb (GtkWidget *widget, GdkEventScroll *ev, ParolePlayer *player)
@@ -958,12 +991,12 @@ gboolean parole_player_scroll_event_cb (GtkWidget *widget, GdkEventScroll *ev, P
     
     if ( ev->direction == GDK_SCROLL_UP )
     {
-	parole_player_seekf_cb (NULL, player);
+	parole_player_forward_cb (NULL, player);
         ret_val = TRUE;
     }
     else if ( ev->direction == GDK_SCROLL_DOWN )
     {
-	parole_player_seekb_cb (NULL, player);
+	parole_player_back_cb (NULL, player);
         ret_val = TRUE;
     }
 
@@ -1046,7 +1079,7 @@ parole_player_buffering_cb (ParoleGst *gst, const ParoleStream *stream, gint per
 	player->priv->buffering = TRUE;
 	
 	
-	if ( player->priv->state == PAROLE_MEDIA_STATE_PLAYING )
+	if ( player->priv->state == PAROLE_STATE_PLAYING )
 	    parole_gst_pause (PAROLE_GST (player->priv->gst));
 	    
     gchar *buff;
@@ -1080,12 +1113,6 @@ static void
 parole_player_play_menu_item_activate (ParolePlayer *player)
 {
     gtk_widget_activate (player->priv->play_pause);
-}
-
-static void
-parole_player_stop_menu_item_activate (ParolePlayer *player)
-{
-    gtk_widget_activate (player->priv->stop);
 }
 
 static void
@@ -1202,7 +1229,7 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
     
     /*Play menu item
      */
-    mi = gtk_image_menu_item_new_from_stock (player->priv->state == PAROLE_MEDIA_STATE_PLAYING 
+    mi = gtk_image_menu_item_new_from_stock (player->priv->state == PAROLE_STATE_PLAYING 
 					     ? GTK_STOCK_MEDIA_PAUSE : GTK_STOCK_MEDIA_PLAY, 
 					     NULL);
 					     
@@ -1221,10 +1248,10 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
      */
     mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_MEDIA_FORWARD, NULL);
 					     
-    gtk_widget_set_sensitive (mi, (player->priv->state >= PAROLE_MEDIA_STATE_PAUSED));
+    gtk_widget_set_sensitive (mi, (player->priv->state >= PAROLE_STATE_PAUSED));
     gtk_widget_show (mi);
     g_signal_connect (mi, "activate",
-		      G_CALLBACK (parole_player_seekf_cb), player);
+		      G_CALLBACK (parole_player_forward_cb), player);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
     
     /*
@@ -1232,10 +1259,10 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
      */
     mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_MEDIA_REWIND, NULL);
 					     
-    gtk_widget_set_sensitive (mi, (player->priv->state >= PAROLE_MEDIA_STATE_PAUSED));
+    gtk_widget_set_sensitive (mi, (player->priv->state >= PAROLE_STATE_PAUSED));
     gtk_widget_show (mi);
     g_signal_connect (mi, "activate",
-		      G_CALLBACK (parole_player_seekb_cb), player);
+		      G_CALLBACK (parole_player_back_cb), player);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
     
     /*
@@ -1243,11 +1270,11 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
      */
     mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_MEDIA_STOP, NULL);
 					     
-    gtk_widget_set_sensitive (mi, player->priv->state == PAROLE_MEDIA_STATE_PLAYING);
+    gtk_widget_set_sensitive (mi, player->priv->state == PAROLE_STATE_PLAYING);
     gtk_widget_show (mi);
-    g_signal_connect_swapped (mi, "activate",
+    /*g_signal_connect_swapped (mi, "activate",
 			      G_CALLBACK (parole_player_stop_menu_item_activate), player);
-    gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);*/
     
     /*
      * Next chapter menu item
@@ -1255,7 +1282,7 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
     mi = gtk_image_menu_item_new_with_label (media_type == PAROLE_MEDIA_TYPE_CDDA ? _("Next Track") : _("Next Chapter"));
     img = gtk_image_new_from_stock (GTK_STOCK_MEDIA_NEXT, GTK_ICON_SIZE_MENU);
     gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi),img);
-    gtk_widget_set_sensitive (mi, (player->priv->state == PAROLE_MEDIA_STATE_PLAYING) && dvd_menu);
+    gtk_widget_set_sensitive (mi, (player->priv->state == PAROLE_STATE_PLAYING) && dvd_menu);
     gtk_widget_show (mi);
     g_signal_connect_swapped (mi, "activate",
 			      G_CALLBACK (parole_player_next_menu_item_activate), player);
@@ -1268,7 +1295,7 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
     img = gtk_image_new_from_stock (GTK_STOCK_MEDIA_PREVIOUS, GTK_ICON_SIZE_MENU);
     gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi), img);
 					     
-    gtk_widget_set_sensitive (mi, (player->priv->state == PAROLE_MEDIA_STATE_PLAYING) && dvd_menu);
+    gtk_widget_set_sensitive (mi, (player->priv->state == PAROLE_STATE_PLAYING) && dvd_menu);
     gtk_widget_show (mi);
     g_signal_connect_swapped (mi, "activate",
 			      G_CALLBACK (parole_player_previous_menu_item_activate), player);
@@ -1591,12 +1618,12 @@ parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
 	case GDK_Right:
 	    /* Media seekable ?*/
 	    if ( GTK_WIDGET_SENSITIVE (player->priv->range) )
-		parole_player_seekf_cb (NULL, player);
+		parole_player_forward_cb (NULL, player);
 	    ret_val = TRUE;
 	    break;
 	case GDK_Left:
 	    if ( GTK_WIDGET_SENSITIVE (player->priv->range) )
-		parole_player_seekb_cb (NULL, player);
+		parole_player_back_cb (NULL, player);
 	    ret_val = TRUE;
 	    break;
 	case GDK_s:
@@ -1906,7 +1933,7 @@ parole_player_init (ParolePlayer *player)
     g_signal_connect_swapped (player->priv->session, "die",
 			      G_CALLBACK (parole_player_session_die_cb), player);
     
-    player->priv->gst = parole_gst_new (FALSE, player->priv->conf);
+    player->priv->gst = parole_gst_new (player->priv->conf);
 
     player->priv->disc = parole_disc_new ();
     g_signal_connect (player->priv->disc, "disc-selected",
@@ -1917,7 +1944,7 @@ parole_player_init (ParolePlayer *player)
     player->priv->screen_saver = parole_screen_saver_new ();
     player->priv->list = PAROLE_MEDIA_LIST (parole_media_list_get ());
     
-    player->priv->state = PAROLE_MEDIA_STATE_STOPPED;
+    player->priv->state = PAROLE_STATE_STOPPED;
     player->priv->user_seeking = FALSE;
     player->priv->internal_range_change = FALSE;
     player->priv->exit = FALSE;
@@ -1968,13 +1995,12 @@ parole_player_init (ParolePlayer *player)
    
     player->priv->main_nt = GTK_WIDGET (gtk_builder_get_object (builder, "main-notebook"));
     
-    player->priv->play_box = GTK_WIDGET (gtk_builder_get_object (builder, "play_box"));
+    player->priv->playcontrol_box = GTK_WIDGET (gtk_builder_get_object (builder, "playing_box"));
     player->priv->progressbar_buffering = GTK_WIDGET (gtk_builder_get_object (builder, "progressbar_buffering"));
     
     player->priv->label_duration = GTK_WIDGET(gtk_builder_get_object(builder, "label_duration"));
     player->priv->label_elapsed = GTK_WIDGET(gtk_builder_get_object(builder, "label_elapsed"));
     player->priv->play_pause = GTK_WIDGET (gtk_builder_get_object (builder, "play-pause"));
-    player->priv->stop = GTK_WIDGET (gtk_builder_get_object (builder, "stop"));
     player->priv->seekf = GTK_WIDGET (gtk_builder_get_object (builder, "forward"));
     player->priv->seekb = GTK_WIDGET (gtk_builder_get_object (builder, "back"));
      
@@ -1986,6 +2012,10 @@ parole_player_init (ParolePlayer *player)
     player->priv->play_box = GTK_WIDGET (gtk_builder_get_object (builder, "play-box"));
     player->priv->playlist_nt = GTK_WIDGET (gtk_builder_get_object (builder, "notebook-playlist"));
     player->priv->show_hide_playlist = GTK_WIDGET (gtk_builder_get_object (builder, "show-hide-list"));
+    
+    player->priv->shuffle_menu_item = GTK_WIDGET (gtk_builder_get_object (builder, "shuffle"));
+    player->priv->repeat_menu_item = GTK_WIDGET (gtk_builder_get_object (builder, "repeat"));
+    
     player->priv->control = GTK_WIDGET (gtk_builder_get_object (builder, "control"));
     player->priv->go_fs = GTK_WIDGET (gtk_builder_get_object (builder, "go_fs"));
     player->priv->leave_fs = GTK_WIDGET (gtk_builder_get_object (builder, "leave_fs"));
@@ -2042,6 +2072,12 @@ parole_player_init (ParolePlayer *player)
 		      
     g_signal_connect (player->priv->list, "uri-opened",
 		      G_CALLBACK (parole_player_uri_opened_cb), player);
+		      
+	g_signal_connect (player->priv->list, "repeat-toggled",
+		      G_CALLBACK (parole_player_media_list_repeat_toggled_cb), player);
+		      
+	g_signal_connect (player->priv->list, "shuffle-toggled",
+		      G_CALLBACK (parole_player_media_list_shuffle_toggled_cb), player);
     
     /*
      * Load auto saved media list.
@@ -2168,6 +2204,24 @@ parole_player_dbus_class_init (ParolePlayerClass *klass)
     dbus_g_object_type_install_info (G_TYPE_FROM_CLASS (klass),
 				     &dbus_glib_parole_player_object_info);
 				     
+	signals[SHUFFLE_TOGGLED] = 
+        g_signal_new ("shuffle-toggled",
+                      PAROLE_TYPE_PLAYER,
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET (ParolePlayerClass, shuffle_toggled),
+                      NULL, NULL,
+                      g_cclosure_marshal_VOID__BOOLEAN,
+                      G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
+                      
+	signals[REPEAT_TOGGLED] = 
+        g_signal_new ("repeat-toggled",
+                      PAROLE_TYPE_PLAYER,
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET (ParolePlayerClass, repeat_toggled),
+                      NULL, NULL,
+                      g_cclosure_marshal_VOID__BOOLEAN,
+                      G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
+				     
 }
 
 static void
@@ -2212,14 +2266,14 @@ static gboolean	parole_player_dbus_prev_track (ParolePlayer *player,
 static gboolean	parole_player_dbus_seek_forward (ParolePlayer *player,
 					         GError *error)
 {
-    parole_player_seekf_cb (NULL, player);
+    parole_player_forward_cb (NULL, player);
     return TRUE;
 }
 
 static gboolean	parole_player_dbus_seek_backward (ParolePlayer *player,
 					          GError *error)
 {
-    parole_player_seekb_cb (NULL, player);
+    parole_player_back_cb (NULL, player);
     return TRUE;
 }
 					 
