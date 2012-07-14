@@ -903,7 +903,6 @@ parole_gst_update_vis (ParoleGst *gst)
 
     gst->priv->update_vis = FALSE;
     g_free (vis_name);
-    gtk_widget_queue_draw (GTK_WIDGET (gst));
     TRACE ("end");
 }
 
@@ -1326,8 +1325,6 @@ parole_gst_play_file_internal (ParoleGst *gst)
     
     if ( gst->priv->update_vis)
 	parole_gst_update_vis (gst);
-    
-    gtk_widget_queue_draw (GTK_WIDGET (gst));
     
     g_object_get (G_OBJECT (gst->priv->stream),
 		  "uri", &uri,
