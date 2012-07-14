@@ -124,6 +124,12 @@ void				 parole_media_list_save_list	    (ParoleMediaList *list);
 
 void				 parole_media_list_grab_focus       (ParoleMediaList *list);
 
+void				 parole_media_list_set_repeat_toggled		(ParoleMediaList *list,
+																gboolean repeat_toggled);
+																
+void 				 parole_media_list_set_shuffle_toggled		(ParoleMediaList *list,
+																gboolean shuffle_toggled);
+
 G_END_DECLS
 
 #endif /* __PAROLE_MEDIA_LIST_H */
