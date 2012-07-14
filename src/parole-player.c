@@ -352,11 +352,17 @@ void parole_player_show_hide_playlist (GtkMenuItem *widget, ParolePlayer *player
     {
 	gtk_widget_show_all (player->priv->playlist_nt);
 	gtk_menu_item_set_label (GTK_MENU_ITEM (player->priv->show_hide_playlist), _("Hide playlist"));
+	g_object_set (G_OBJECT (player->priv->conf),	
+		  "showhide-playlist", FALSE,
+		  NULL);
     }
     else
     {		      
 	gtk_widget_hide_all (player->priv->playlist_nt);
 	gtk_menu_item_set_label (GTK_MENU_ITEM (player->priv->show_hide_playlist), _("Show playlist"));
+	g_object_set (G_OBJECT (player->priv->conf),	
+		  "showhide-playlist", TRUE,
+		  NULL);
     }
 }
 
@@ -1874,6 +1880,7 @@ parole_player_init (ParolePlayer *player)
     GtkBuilder *builder;
     GdkScreen *screen;
     gint w, h;
+    gboolean showhide;
     
     gboolean repeat, shuffle;
     
@@ -1988,7 +1995,7 @@ parole_player_init (ParolePlayer *player)
     gtk_notebook_append_page (GTK_NOTEBOOK (player->priv->playlist_nt), 
 			      GTK_WIDGET (player->priv->list),
 			      gtk_label_new (_("Playlist")));
-			      
+
     g_object_get (G_OBJECT (player->priv->conf),
 		  "window-width", &w,
 		  "window-height", &h,
@@ -1997,6 +2004,16 @@ parole_player_init (ParolePlayer *player)
     gtk_window_set_default_size (GTK_WINDOW (player->priv->window), w, h);
     
     gtk_widget_show_all (player->priv->window);
+
+    g_object_get (G_OBJECT (player->priv->conf),
+		  "showhide-playlist", &showhide,
+		  NULL);
+    if ( showhide ) {
+	gtk_widget_hide_all (player->priv->playlist_nt);
+    }
+    else {
+	gtk_widget_show_all (player->priv->playlist_nt);
+    }
     
     parole_player_set_wm_opacity_hint (player->priv->window);
     

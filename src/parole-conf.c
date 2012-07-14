@@ -68,6 +68,7 @@ enum
     PROP_MINIMIZED,
     PROP_MULTIMEDIA_KEYS,
     /*Playlist*/
+    PROP_SHOWHIDE_PLAYLIST,
     PROP_REPLACE_PLAYLIST,
     PROP_SCAN_FOLDER_RECURSIVELY,
     PROP_START_PLAYING_OPENED_FILES,
@@ -347,6 +348,13 @@ parole_conf_class_init (ParoleConfClass *klass)
     /**
      *Playlist options
      **/
+    g_object_class_install_property (object_class,
+                                     PROP_SHOWHIDE_PLAYLIST,
+                                     g_param_spec_boolean ("showhide-playlist",
+                                                           NULL, NULL,
+                                                           FALSE,
+                                                           G_PARAM_READWRITE));
+
     g_object_class_install_property (object_class,
                                      PROP_REPLACE_PLAYLIST,
                                      g_param_spec_boolean ("replace-playlist",
