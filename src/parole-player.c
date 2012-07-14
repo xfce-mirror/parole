@@ -2087,9 +2087,13 @@ parole_player_init (ParolePlayer *player)
 
     gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (gtk_builder_get_object (builder, "repeat")),
 				    repeat);
+				    
+    parole_media_list_set_repeat_toggled(player->priv->list, repeat);
 
     gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (gtk_builder_get_object (builder, "shuffle")),
 				    shuffle);
+				    
+    parole_media_list_set_shuffle_toggled(player->priv->list, shuffle);
 	
     player->priv->fs_window = gtk_window_new (GTK_WINDOW_POPUP);
 
