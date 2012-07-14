@@ -257,6 +257,8 @@ struct ParolePlayerPrivate
     GtkWidget		*playlist_nt;
     GtkWidget		*main_nt;	/*Main notebook*/
     GtkWidget		*show_hide_playlist;
+    GtkWidget		*shuffle_menu_item;
+    GtkWidget		*repeat_menu_item;
     GtkWidget		*play_pause;
     GtkWidget		*seekf;
     GtkWidget		*seekb;
@@ -292,6 +294,15 @@ struct ParolePlayerPrivate
     GtkTreeRowReference *row;
         
 };
+
+enum
+{
+    SHUFFLE_TOGGLED,
+    REPEAT_TOGGLED,
+    LAST_SIGNAL
+};
+
+static guint signals [LAST_SIGNAL] = { 0 };
 
 G_DEFINE_TYPE (ParolePlayer, parole_player, G_TYPE_OBJECT)
 
@@ -541,6 +552,32 @@ parole_player_media_cursor_changed_cb (ParoleMediaList *list, gboolean media_sel
     {
 	gtk_widget_set_sensitive (player->priv->play_pause, 
 				  media_selected || !parole_media_list_is_empty (player->priv->list));
+    }
+}
+
+static void
+parole_player_media_list_shuffle_toggled_cb (ParoleMediaList *list, gboolean shuffle_toggled, ParolePlayer *player)
+{
+    gboolean toggled;
+    
+    toggled = gtk_check_menu_item_get_active (GTK_CHECK_MENU_ITEM(player->priv->shuffle_menu_item));
+    
+    if (toggled != shuffle_toggled)
+    {
+    	gtk_check_menu_item_set_active ( GTK_CHECK_MENU_ITEM(player->priv->shuffle_menu_item), shuffle_toggled);
+    }
+}
+
+static void
+parole_player_media_list_repeat_toggled_cb (ParoleMediaList *list, gboolean repeat_toggled, ParolePlayer *player)
+{
+    gboolean toggled;
+    
+    toggled = gtk_check_menu_item_get_active (GTK_CHECK_MENU_ITEM(player->priv->repeat_menu_item));
+    
+    if (toggled != repeat_toggled)
+    {
+    	gtk_check_menu_item_set_active ( GTK_CHECK_MENU_ITEM(player->priv->repeat_menu_item), repeat_toggled);
     }
 }
 
@@ -1976,6 +2013,10 @@ parole_player_init (ParolePlayer *player)
     player->priv->play_box = GTK_WIDGET (gtk_builder_get_object (builder, "play-box"));
     player->priv->playlist_nt = GTK_WIDGET (gtk_builder_get_object (builder, "notebook-playlist"));
     player->priv->show_hide_playlist = GTK_WIDGET (gtk_builder_get_object (builder, "show-hide-list"));
+    
+    player->priv->shuffle_menu_item = GTK_WIDGET (gtk_builder_get_object (builder, "shuffle"));
+    player->priv->repeat_menu_item = GTK_WIDGET (gtk_builder_get_object (builder, "repeat"));
+    
     player->priv->control = GTK_WIDGET (gtk_builder_get_object (builder, "control"));
     player->priv->go_fs = GTK_WIDGET (gtk_builder_get_object (builder, "go_fs"));
     player->priv->leave_fs = GTK_WIDGET (gtk_builder_get_object (builder, "leave_fs"));
@@ -2032,6 +2073,12 @@ parole_player_init (ParolePlayer *player)
 		      
     g_signal_connect (player->priv->list, "uri-opened",
 		      G_CALLBACK (parole_player_uri_opened_cb), player);
+		      
+	g_signal_connect (player->priv->list, "repeat-toggled",
+		      G_CALLBACK (parole_player_media_list_repeat_toggled_cb), player);
+		      
+	g_signal_connect (player->priv->list, "shuffle-toggled",
+		      G_CALLBACK (parole_player_media_list_shuffle_toggled_cb), player);
     
     /*
      * Load auto saved media list.
@@ -2157,6 +2204,24 @@ parole_player_dbus_class_init (ParolePlayerClass *klass)
     
     dbus_g_object_type_install_info (G_TYPE_FROM_CLASS (klass),
 				     &dbus_glib_parole_player_object_info);
+				     
+	signals[SHUFFLE_TOGGLED] = 
+        g_signal_new ("shuffle-toggled",
+                      PAROLE_TYPE_PLAYER,
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET (ParolePlayerClass, shuffle_toggled),
+                      NULL, NULL,
+                      g_cclosure_marshal_VOID__BOOLEAN,
+                      G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
+                      
+	signals[REPEAT_TOGGLED] = 
+        g_signal_new ("repeat-toggled",
+                      PAROLE_TYPE_PLAYER,
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET (ParolePlayerClass, repeat_toggled),
+                      NULL, NULL,
+                      g_cclosure_marshal_VOID__BOOLEAN,
+                      G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
 				     
 }
 

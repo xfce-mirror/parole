@@ -60,6 +60,12 @@ typedef struct
 								     
     void			(*uri_opened)			    (ParoleMediaList *list,
 								     const gchar *uri);
+								     
+	void			(*shuffle_toggled)		    (ParoleMediaList *list,
+								     gboolean shuffle_toggled);
+								     
+	void			(*repeat_toggled)		    (ParoleMediaList *list,
+								     gboolean repeat_toggled);
     
 } ParoleMediaListClass;
 

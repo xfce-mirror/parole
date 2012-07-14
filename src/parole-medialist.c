@@ -99,19 +99,19 @@ static void	parole_media_list_clear_list 	  (ParoleMediaList *list);
 /*
  * Callbacks for GtkBuilder
  */
-void		parole_media_list_media_up_clicked_cb 	(GtkButton *button, 
-							 ParoleMediaList *list);
-							 
-void		parole_media_list_media_down_clicked_cb (GtkButton *button, 
-							 ParoleMediaList *list);
-
-void		parole_media_list_save_cb		(GtkButton *button,
-						         ParoleMediaList *list);
-							 
 void		parole_media_list_add_clicked_cb 	(GtkButton *button, 
 							 ParoleMediaList *list);
 							 
 void		parole_media_list_remove_clicked_cb 	(GtkButton *button, 
+							 ParoleMediaList *list);
+
+void		parole_media_list_clear_clicked_cb 	(GtkButton *button, 
+							 ParoleMediaList *list);
+
+void		parole_media_list_repeat_toggled_cb	(GtkToggleButton *button,
+							 ParoleMediaList *list);
+
+void		parole_media_list_shuffle_toggled_cb	(GtkToggleButton *button,
 							 ParoleMediaList *list);
 
 void		parole_media_list_row_activated_cb 	(GtkTreeView *view, 
@@ -179,6 +179,8 @@ enum
     MEDIA_ACTIVATED,
     MEDIA_CURSOR_CHANGED,
     URI_OPENED,
+    SHUFFLE_TOGGLED,
+    REPEAT_TOGGLED,
     LAST_SIGNAL
 };
 
@@ -433,6 +435,32 @@ void
 parole_media_list_add_clicked_cb (GtkButton *button, ParoleMediaList *list)
 {
     parole_media_list_open_internal (list);
+}
+
+void 
+parole_media_list_clear_clicked_cb (GtkButton *button, ParoleMediaList *list)
+{
+	parole_media_list_clear_list (list);
+}
+
+void
+parole_media_list_repeat_toggled_cb (GtkToggleButton *button, ParoleMediaList *list)
+{
+	gboolean toggled;
+    
+    toggled = gtk_toggle_button_get_active (button);
+    
+    g_signal_emit (G_OBJECT (list), signals [REPEAT_TOGGLED], 0, toggled);
+}
+
+void
+parole_media_list_shuffle_toggled_cb (GtkToggleButton *button, ParoleMediaList *list)
+{
+	gboolean toggled;
+    
+    toggled = gtk_toggle_button_get_active (button);
+    
+    g_signal_emit (G_OBJECT (list), signals [SHUFFLE_TOGGLED], 0, toggled);
 }
 
 void parole_media_list_close_save_dialog_cb (GtkButton *button, ParolePlaylistSave *data)
@@ -920,40 +948,6 @@ parole_media_list_move_many_down (GList *path_list, GtkTreeModel *model)
 }
 
 /**
- * parole_media_list_media_down_clicked_cb:
- * 
- * 
- **/
-void
-parole_media_list_media_down_clicked_cb (GtkButton *button, ParoleMediaList *list)
-{
-    GtkTreeIter iter;
-    GList *path_list = NULL;
-    GtkTreeModel *model;
-    guint len;
-    
-    path_list = gtk_tree_selection_get_selected_rows (list->priv->sel, &model);
-
-    len = g_list_length (path_list);
-
-    if ( len == 1 )
-    {
-	GtkTreePath *path;
-	path = g_list_nth_data (path_list, 0);
-	if ( G_LIKELY (gtk_tree_model_get_iter (model, &iter, path)) )
-	    parole_media_list_move_one_down (list->priv->store, &iter);
-    }
-    else
-    {
-	parole_media_list_move_many_down (path_list, model);
-    }
-    
-    g_list_foreach (path_list, (GFunc) gtk_tree_path_free, NULL);
-    g_list_free (path_list);
-}
-
-
-/**
  * parole_media_list_move_on_up:
  * 
  * @store: a #GtkListStore
@@ -1029,39 +1023,6 @@ parole_media_list_move_many_up (GList *path_list, GtkTreeModel *model)
     
     g_list_foreach (row_list, (GFunc) gtk_tree_row_reference_free, NULL);
     g_list_free (row_list);
-}
-
-/**
- * parole_media_list_media_up_clicked_cb:
- * 
- * 
- **/
-void
-parole_media_list_media_up_clicked_cb (GtkButton *button, ParoleMediaList *list)
-{
-    GtkTreeIter iter;
-    GList *path_list = NULL;
-    GtkTreeModel *model;
-    guint len;
-    
-    path_list = gtk_tree_selection_get_selected_rows (list->priv->sel, &model);
-
-    len = g_list_length (path_list);
-
-    if ( len == 1 )
-    {
-	GtkTreePath *path;
-	path = g_list_nth_data (path_list, 0);
-	if ( G_LIKELY (gtk_tree_model_get_iter (model, &iter, path)) )
-	    parole_media_list_move_one_up (list->priv->store, &iter);
-    }
-    else
-    {
-	parole_media_list_move_many_up (path_list, model);
-    }
-    
-    g_list_foreach (path_list, (GFunc) gtk_tree_path_free, NULL);
-    g_list_free (path_list);
 }
 
 /**
@@ -1448,6 +1409,24 @@ parole_media_list_class_init (ParoleMediaListClass *klass)
                       NULL, NULL,
                       g_cclosure_marshal_VOID__STRING,
                       G_TYPE_NONE, 1, G_TYPE_STRING);
+                      
+	signals[SHUFFLE_TOGGLED] = 
+        g_signal_new ("shuffle-toggled",
+                      PAROLE_TYPE_MEDIA_LIST,
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET (ParoleMediaListClass, shuffle_toggled),
+                      NULL, NULL,
+                      g_cclosure_marshal_VOID__BOOLEAN,
+                      G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
+                      
+	signals[REPEAT_TOGGLED] = 
+        g_signal_new ("repeat-toggled",
+                      PAROLE_TYPE_MEDIA_LIST,
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET (ParoleMediaListClass, repeat_toggled),
+                      NULL, NULL,
+                      g_cclosure_marshal_VOID__BOOLEAN,
+                      G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
 
     g_type_class_add_private (klass, sizeof (ParoleMediaListPrivate));
     

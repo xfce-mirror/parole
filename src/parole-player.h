@@ -43,6 +43,13 @@ typedef struct
 {
     GObjectClass 		 parent_class;
     
+    void			(*shuffle_toggled)		    (ParolePlayer *list,
+								     gboolean shuffle_toggled);
+								     
+	void			(*repeat_toggled)		    (ParolePlayer *list,
+								     gboolean repeat_toggled);
+
+    
 } ParolePlayerClass;
 
 GType        			 parole_player_get_type        (void) G_GNUC_CONST;

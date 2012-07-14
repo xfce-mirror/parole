@@ -2,30 +2,32 @@
 <interface>
   <requires lib="gtk+" version="2.24"/>
   <!-- interface-naming-policy project-wide -->
-  <object class="GtkImage" id="image1">
+  <object class="GtkImage" id="image_add">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-add</property>
   </object>
-  <object class="GtkImage" id="image2">
+  <object class="GtkImage" id="image_clear">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-clear</property>
+  </object>
+  <object class="GtkImage" id="image_remove">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-remove</property>
   </object>
-  <object class="GtkImage" id="image3">
+  <object class="GtkImage" id="image_repeat">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="stock">gtk-go-up</property>
+    <property name="pixel_size">20</property>
+    <property name="icon_name">media-playlist-repeat</property>
   </object>
-  <object class="GtkImage" id="image4">
+  <object class="GtkImage" id="image_shuffle">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="stock">gtk-go-down</property>
-  </object>
-  <object class="GtkImage" id="image5">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="stock">gtk-save-as</property>
+    <property name="pixel_size">20</property>
+    <property name="icon_name">media-playlist-shuffle</property>
   </object>
   <object class="GtkVBox" id="playlist-box">
     <property name="visible">True</property>
@@ -80,7 +82,7 @@
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="use_action_appearance">False</property>
-                    <property name="image">image1</property>
+                    <property name="image">image_add</property>
                     <signal name="clicked" handler="parole_media_list_add_clicked_cb" swapped="no"/>
                   </object>
                   <packing>
@@ -90,14 +92,14 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="save-playlist">
+                  <object class="GtkButton" id="remove-media">
                     <property name="visible">True</property>
                     <property name="sensitive">False</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="use_action_appearance">False</property>
-                    <property name="image">image5</property>
-                    <signal name="clicked" handler="parole_media_list_save_cb" swapped="no"/>
+                    <property name="image">image_remove</property>
+                    <signal name="clicked" handler="parole_media_list_remove_clicked_cb" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -106,49 +108,46 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="remove-media">
+                  <object class="GtkButton" id="clear-media">
                     <property name="visible">True</property>
-                    <property name="sensitive">False</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="use_action_appearance">False</property>
-                    <property name="image">image2</property>
-                    <signal name="clicked" handler="parole_media_list_remove_clicked_cb" swapped="no"/>
+                    <property name="image">image_clear</property>
+                    <signal name="clicked" handler="parole_media_list_clear_clicked_cb" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="expand">True</property>
                     <property name="fill">True</property>
                     <property name="position">2</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="media-up">
+                  <object class="GtkToggleButton" id="repeat-media">
                     <property name="visible">True</property>
-                    <property name="sensitive">False</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="use_action_appearance">False</property>
-                    <property name="image">image3</property>
-                    <signal name="clicked" handler="parole_media_list_media_up_clicked_cb" swapped="no"/>
+                    <property name="image">image_repeat</property>
+                    <signal name="toggled" handler="parole_media_list_repeat_toggled_cb" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="expand">True</property>
                     <property name="fill">True</property>
                     <property name="position">3</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="media-down">
+                  <object class="GtkToggleButton" id="shuffle-media">
                     <property name="visible">True</property>
-                    <property name="sensitive">False</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="use_action_appearance">False</property>
-                    <property name="image">image4</property>
-                    <signal name="clicked" handler="parole_media_list_media_down_clicked_cb" swapped="no"/>
+                    <property name="image">image_shuffle</property>
+                    <signal name="toggled" handler="parole_media_list_shuffle_toggled_cb" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="expand">True</property>
                     <property name="fill">True</property>
                     <property name="position">4</property>
                   </packing>
