@@ -507,8 +507,6 @@ parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *ro
 	    TRACE ("Trying to play media file %s", uri);
 	    TRACE ("File content type %s", parole_file_get_content_type (file));
 	    
-	    gtk_widget_set_sensitive (player->priv->stop, TRUE);
-	    
 	    parole_gst_play_uri (PAROLE_GST (player->priv->gst), 
 				 parole_file_get_uri (file),
 				 sub);
@@ -525,8 +523,6 @@ static void
 parole_player_disc_selected_cb (ParoleDisc *disc, const gchar *uri, const gchar *device, ParolePlayer *player)
 {
     parole_player_reset (player);
-    gtk_widget_set_sensitive (player->priv->stop, TRUE);
-    
     parole_gst_play_device_uri (PAROLE_GST (player->priv->gst), uri, device);
 }
 
@@ -534,7 +530,6 @@ static void
 parole_player_uri_opened_cb (ParoleMediaList *list, const gchar *uri, ParolePlayer *player)
 {
     parole_player_reset (player);
-    gtk_widget_set_sensitive (player->priv->stop, TRUE);
     parole_gst_play_uri (PAROLE_GST (player->priv->gst), uri, NULL);
 }
 
@@ -669,7 +664,6 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
 		  NULL);
 		  
     gtk_widget_set_sensitive (player->priv->play_pause, TRUE);
-    gtk_widget_set_sensitive (player->priv->stop, TRUE);
     
     parole_player_set_playpause_button_image (player->priv->play_pause, GTK_STOCK_MEDIA_PAUSE);
     
@@ -722,7 +716,6 @@ parole_player_paused (ParolePlayer *player)
     parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, pix);
     
     gtk_widget_set_sensitive (player->priv->play_pause, TRUE);
-    gtk_widget_set_sensitive (player->priv->stop, TRUE);
     
     if ( player->priv->user_seeking == FALSE)
 	parole_player_set_playpause_button_image (player->priv->play_pause, GTK_STOCK_MEDIA_PLAY);
@@ -750,16 +743,6 @@ parole_player_stopped (ParolePlayer *player)
     gtk_widget_set_sensitive (player->priv->play_pause, 
 			      parole_media_list_is_selected_row (player->priv->list) || 
 			      !parole_media_list_is_empty (player->priv->list));
-    
-    /* 
-     * Set the stop widget insensitive only if we are not going to got to playing
-     * state, this give the possibility to press on it if the media get stuck
-     * for some reason.
-     */
-    if ( parole_gst_get_gst_target_state (PAROLE_GST (player->priv->gst)) != GST_STATE_PLAYING)
-    {
-	gtk_widget_set_sensitive (player->priv->stop, FALSE);
-    }
 
     parole_player_change_range_value (player, 0);
     gtk_widget_set_sensitive (player->priv->range, FALSE);
