@@ -744,12 +744,6 @@ parole_player_stopped (ParolePlayer *player)
     gtk_widget_set_sensitive (player->priv->play_pause, 
 			      parole_media_list_is_selected_row (player->priv->list) || 
 			      !parole_media_list_is_empty (player->priv->list));
-    
-    /* 
-     * Set the stop widget insensitive only if we are not going to got to playing
-     * state, this give the possibility to press on it if the media get stuck
-     * for some reason.
-     */
 
     parole_player_change_range_value (player, 0);
     gtk_widget_set_sensitive (player->priv->range, FALSE);
