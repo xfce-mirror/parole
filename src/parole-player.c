@@ -295,15 +295,6 @@ struct ParolePlayerPrivate
         
 };
 
-enum
-{
-    SHUFFLE_TOGGLED,
-    REPEAT_TOGGLED,
-    LAST_SIGNAL
-};
-
-static guint signals [LAST_SIGNAL] = { 0 };
-
 G_DEFINE_TYPE (ParolePlayer, parole_player, G_TYPE_OBJECT)
 
 void parole_show_about	(GtkWidget *widget)
@@ -1445,6 +1436,8 @@ void parole_player_shuffle_toggled_cb (GtkWidget *widget, ParolePlayer *player)
     g_object_set (G_OBJECT (player->priv->conf),
 		  "shuffle", toggled,
 		  NULL);
+		  
+	parole_media_list_set_shuffle_toggled(player->priv->list, toggled);
 }
 
 void parole_player_repeat_toggled_cb (GtkWidget *widget, ParolePlayer *player)
@@ -1456,6 +1449,8 @@ void parole_player_repeat_toggled_cb (GtkWidget *widget, ParolePlayer *player)
     g_object_set (G_OBJECT (player->priv->conf),
 		  "repeat", toggled,
 		  NULL);
+		  
+	parole_media_list_set_repeat_toggled(player->priv->list, toggled);
 }
 
 static void
@@ -2203,24 +2198,6 @@ parole_player_dbus_class_init (ParolePlayerClass *klass)
     
     dbus_g_object_type_install_info (G_TYPE_FROM_CLASS (klass),
 				     &dbus_glib_parole_player_object_info);
-				     
-	signals[SHUFFLE_TOGGLED] = 
-        g_signal_new ("shuffle-toggled",
-                      PAROLE_TYPE_PLAYER,
-                      G_SIGNAL_RUN_LAST,
-                      G_STRUCT_OFFSET (ParolePlayerClass, shuffle_toggled),
-                      NULL, NULL,
-                      g_cclosure_marshal_VOID__BOOLEAN,
-                      G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
-                      
-	signals[REPEAT_TOGGLED] = 
-        g_signal_new ("repeat-toggled",
-                      PAROLE_TYPE_PLAYER,
-                      G_SIGNAL_RUN_LAST,
-                      G_STRUCT_OFFSET (ParolePlayerClass, repeat_toggled),
-                      NULL, NULL,
-                      g_cclosure_marshal_VOID__BOOLEAN,
-                      G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
 				     
 }
 

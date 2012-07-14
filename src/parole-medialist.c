@@ -42,6 +42,7 @@
 #include "interfaces/save-playlist_ui.h"
 
 #include "parole-builder.h"
+#include "parole-player.h"
 #include "parole-medialist.h"
 #include "parole-mediachooser.h"
 #include "parole-open-location.h"
@@ -169,9 +170,8 @@ struct ParoleMediaListPrivate
     GtkTreeSelection    *sel;
     
     GtkWidget		*remove;
-    GtkWidget		*up;
-    GtkWidget		*down;
-    GtkWidget		*save;
+    GtkWidget		*shuffle;
+    GtkWidget		*repeat;
 };
 
 enum
@@ -191,10 +191,7 @@ G_DEFINE_TYPE (ParoleMediaList, parole_media_list, GTK_TYPE_VBOX)
 static void
 parole_media_list_set_widget_sensitive (ParoleMediaList *list, gboolean sensitive)
 {
-    gtk_widget_set_sensitive (GTK_WIDGET (list->priv->up), sensitive);
     gtk_widget_set_sensitive (GTK_WIDGET (list->priv->remove), sensitive);
-    gtk_widget_set_sensitive (GTK_WIDGET (list->priv->down), sensitive);
-    gtk_widget_set_sensitive (GTK_WIDGET (list->priv->save), sensitive);
 }
 
 /**
@@ -251,9 +248,6 @@ parole_media_list_add (ParoleMediaList *list, ParoleFile *file, gboolean emit, g
     
     if ( nch == 1 )
     {
-	gtk_widget_set_sensitive (list->priv->up, FALSE);
-	gtk_widget_set_sensitive (list->priv->down, FALSE);
-	gtk_widget_set_sensitive (list->priv->save, TRUE);
 	gtk_widget_set_sensitive (list->priv->remove, TRUE);
     }
     else
@@ -864,11 +858,6 @@ parole_media_list_remove_clicked_cb (GtkButton *button, ParoleMediaList *list)
 	 * row remaining, so the player can disable click on the play button.
 	 */
 	g_signal_emit (G_OBJECT (list), signals [MEDIA_CURSOR_CHANGED], 0, FALSE);
-    }
-    else if ( nch == 1 )
-    {
-	gtk_widget_set_sensitive (list->priv->up, FALSE);
-	gtk_widget_set_sensitive (list->priv->down, FALSE);
     }
 }
 
@@ -1516,10 +1505,9 @@ parole_media_list_init (ParoleMediaList *list)
 
     gtk_box_pack_start (GTK_BOX (list), box, TRUE, TRUE, 0);
 
-    list->priv->up = GTK_WIDGET (gtk_builder_get_object (builder, "media-up"));
-    list->priv->down = GTK_WIDGET (gtk_builder_get_object (builder, "media-down"));
     list->priv->remove = GTK_WIDGET (gtk_builder_get_object (builder, "remove-media"));
-    list->priv->save = GTK_WIDGET (gtk_builder_get_object (builder, "save-playlist"));
+    list->priv->repeat = GTK_WIDGET (gtk_builder_get_object (builder, "repeat-media"));
+    list->priv->shuffle = GTK_WIDGET (gtk_builder_get_object (builder, "shuffle-media"));
 
     g_object_unref (builder);
     
@@ -1909,4 +1897,28 @@ void parole_media_list_grab_focus (ParoleMediaList *list)
 {
     if (GTK_WIDGET_VISIBLE (list->priv->view) )
 	gtk_widget_grab_focus (list->priv->view);
+}
+
+void 
+parole_media_list_set_repeat_toggled (ParoleMediaList *list,
+									  gboolean repeat_toggled)
+{
+	gboolean toggled;
+    
+    toggled = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (list->priv->repeat));
+    
+    if (toggled != repeat_toggled)
+    	gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON (list->priv->repeat), repeat_toggled );
+}
+																
+void 
+parole_media_list_set_shuffle_toggled (ParoleMediaList *list,
+									  gboolean shuffle_toggled)
+{
+	gboolean toggled;
+    
+    toggled = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (list->priv->shuffle));
+    
+    if (toggled != shuffle_toggled)
+    	gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON (list->priv->shuffle), shuffle_toggled );
 }
