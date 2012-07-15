@@ -170,6 +170,7 @@ struct ParoleMediaListPrivate
     GtkTreeSelection    *sel;
     
     GtkWidget		*remove;
+    GtkWidget		*clear;
     GtkWidget		*shuffle;
     GtkWidget		*repeat;
 };
@@ -192,6 +193,7 @@ static void
 parole_media_list_set_widget_sensitive (ParoleMediaList *list, gboolean sensitive)
 {
     gtk_widget_set_sensitive (GTK_WIDGET (list->priv->remove), sensitive);
+    gtk_widget_set_sensitive (GTK_WIDGET (list->priv->clear), sensitive);
 }
 
 /**
@@ -249,6 +251,7 @@ parole_media_list_add (ParoleMediaList *list, ParoleFile *file, gboolean emit, g
     if ( nch == 1 )
     {
 	gtk_widget_set_sensitive (list->priv->remove, TRUE);
+	gtk_widget_set_sensitive (list->priv->clear, TRUE);
     }
     else
 	parole_media_list_set_widget_sensitive (list, TRUE);
@@ -1506,6 +1509,7 @@ parole_media_list_init (ParoleMediaList *list)
     gtk_box_pack_start (GTK_BOX (list), box, TRUE, TRUE, 0);
 
     list->priv->remove = GTK_WIDGET (gtk_builder_get_object (builder, "remove-media"));
+    list->priv->clear = GTK_WIDGET (gtk_builder_get_object (builder, "clear-media"));
     list->priv->repeat = GTK_WIDGET (gtk_builder_get_object (builder, "repeat-media"));
     list->priv->shuffle = GTK_WIDGET (gtk_builder_get_object (builder, "shuffle-media"));
 
