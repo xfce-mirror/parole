@@ -116,15 +116,15 @@
 	* Provides a dialog to load/unload plugins.
 	* data/interfaces/ Mark some gtk labels as non-translatable+default
 	respone of some buttons in the dialogs.
-	* parole/parole-rc-utils.{c,h} added function to load list entries+
+	* src/misc/parole-rc-utils.{c,h} added function to load list entries+
 	Split the configuration file into groups.
 	
 2009-07-23: 23:00 Ali aliov@xfce.org
-	* parole/parole-gst.c Only emit media progressed signal when the
+	* src/misc/parole-gst.c Only emit media progressed signal when the
 	state is playing.
-	* parole/parole-pl-parser.{c,h} added a playlist parser code based
+	* src/misc/parole-pl-parser.{c,h} added a playlist parser code based
 	on code from totem and from xfmedia.
-	* parole/parole-filters.c added filters for playlist files.
+	* src/misc/parole-filters.c added filters for playlist files.
 	* po/POTFILES.in updates.
 	* delete the common dir as it is useless.
 	* Change ParoleMediaFile to ParoleFile as it doesn't only describe
@@ -135,7 +135,7 @@
 
 2009-07-19: 01:00  Ali aliov@xfce.org
 	* Parole now can play DVD/VCD.
-	* parole/parole-stream.c no need to hold a reference to 
+	* src/misc/parole-stream.c no need to hold a reference to 
 	ParoleMediaFile	object.
 	* Change the flag of dbus_request_name to 
 	DBUS_NAME_FLAG_ALLOW_REPLACEMENT to make the -i (new instance) 
@@ -149,13 +149,13 @@
 	* No need to install the interface files anymore.
 	* Rename src dir to parole.
 	* Gtk doc for plugin api (not yet complete).
-	* parole/parole-player.c stop gst when the stream finishes 
+	* src/misc/parole-player.c stop gst when the stream finishes 
 	and no remaining media left in the list.
-	* parole/parole-player.c rename the media file shown in the media list
+	* src/misc/parole-player.c rename the media file shown in the media list
 	when we get a tag message from gst.
-	* parole/parole-stream.c Handle tag messages.
-	* parole/parole-module.{c,h} added a GTypeModule subclass
-	* parole/parole-mediafile.c expose GObject properties.
+	* src/misc/parole-stream.c Handle tag messages.
+	* src/misc/parole-module.{c,h} added a GTypeModule subclass
+	* src/misc/parole-mediafile.c expose GObject properties.
 	to handle plugins.
 	* put some code in the common dir.
 	* update POTFILES.in+README+TODO.

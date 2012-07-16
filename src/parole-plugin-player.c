@@ -26,7 +26,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <parole/parole-provider-player.h>
+#include <src/misc/parole-provider-player.h>
 
 #include "parole-plugin-player.h"
 #include "parole-plugins-manager.h"

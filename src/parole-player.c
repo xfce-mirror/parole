@@ -42,7 +42,7 @@
 
 #include <dbus/dbus-glib.h>
 
-#include <parole/parole-file.h>
+#include <src/misc/parole-file.h>
 
 #include "parole-builder.h"
 #include "parole-about.h"

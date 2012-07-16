@@ -68,7 +68,7 @@ parole_plugin_shutdown (void)
 #ifndef SAMPLE_PROVIDER_H_
 #define SAMPLE_PROVIDER_H_
 
-#include &lt;parole/parole.h&gt;
+#include &lt;src/misc/parole.h&gt;
 
 G_BEGIN_DECLS
 

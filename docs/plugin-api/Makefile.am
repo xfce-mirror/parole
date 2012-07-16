@@ -41,8 +41,8 @@ FIXXREF_OPTIONS=
 # Used for dependencies. The docs will be rebuilt if any of these change.
 # e.g. HFILE_GLOB=$(top_srcdir)/gtk/*.h
 # e.g. CFILE_GLOB=$(top_srcdir)/gtk/*.c
-CFILE_GLOB=$(top_srcdir)/parole/*.c
-HFILE_GLOB=$(top_srcdir)/parole/*.h
+CFILE_GLOB=$(top_srcdir)/src/misc/*.c
+HFILE_GLOB=$(top_srcdir)/src/misc/*.h
 
 # Header files to ignore when scanning.
 # e.g. IGNORE_HFILES=gtkdebug.h gtkintl.h
@@ -75,7 +75,7 @@ GTKDOC_LIBS=                    \
         $(GLIB_LIBS)            \
         $(GOBJECT_LIBS)		\
 	$(TAGLIBC_LIBS)		\
-	$(top_builddir)/parole/libparole.la
+	$(top_builddir)/src/misc/libparole.la
 
 if ENABLE_GTK_DOC
 include $(top_srcdir)/gtk-doc.make
