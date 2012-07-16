@@ -22,7 +22,7 @@
 #define __PAROLE_MODULE_H
 
 #include <glib-object.h>
-#include <parole/parole.h>
+#include <src/misc/parole.h>
 
 #include "parole-plugin-player.h"
 

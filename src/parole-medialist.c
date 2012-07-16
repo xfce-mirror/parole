@@ -36,7 +36,7 @@
 
 #include <libxfce4util/libxfce4util.h>
 
-#include <parole/parole-file.h>
+#include <src/misc/parole-file.h>
 
 #include "interfaces/playlist_ui.h"
 #include "interfaces/save-playlist_ui.h"
@@ -56,7 +56,7 @@
 
 #include "common/parole-common.h"
 
-#define PAROLE_AUTO_SAVED_PLAYLIST 	"xfce4/parole/auto-saved-playlist.m3u"
+#define PAROLE_AUTO_SAVED_PLAYLIST 	"xfce4/src/misc/auto-saved-playlist.m3u"
 
 typedef struct
 {

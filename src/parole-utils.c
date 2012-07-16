@@ -44,7 +44,7 @@
 
 #include <libxfce4util/libxfce4util.h>
 
-#include <parole/parole.h>
+#include <src/misc/parole.h>
 
 #include "parole-utils.h"
 

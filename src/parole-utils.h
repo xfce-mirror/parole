@@ -24,7 +24,7 @@
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 
-#include <parole/parole-file.h>
+#include <src/misc/parole-file.h>
 
 gint            thunar_file_compare_by_name 		(ParoleFile *file_a,
 							 ParoleFile *file_b,

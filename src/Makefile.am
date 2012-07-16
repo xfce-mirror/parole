@@ -1,17 +1,23 @@
 bin_PROGRAMS = parole
+SUBDIRS = 					\
+	misc 					\
+	common					\
+	gst					\
+	dbus					\
+	plugins					
 
 INCLUDES =					\
 	-I$(top_srcdir)				\
-	-I$(top_srcdir)/parole			\
+	-I$(top_srcdir)/src/misc			\
 	-I$(top_srcdir)/data			\
 	-I$(top_srcdir)/data/mime		\
-	-I$(top_srcdir)/gst	                \
-	-I$(top_srcdir)/dbus	                \
-	-I$(top_srcdir)/common	                \
+	-I$(top_srcdir)/src/gst	                \
+	-I$(top_srcdir)/src/dbus	                \
+	-I$(top_srcdir)/src/common	                \
 	-DLOCALEDIR=\"$(localedir)\"		\
 	-DG_LOG_DOMAIN=\"parole\"		\
 	-DPAROLE_PLUGINS_DIR=\"$(libdir)/parole-$(PAROLE_VERSION_API)\"\
-	-DPAROLE_PLUGINS_DATA_DIR=\"$(datadir)/parole/parole-plugins-$(PAROLE_VERSION_API)\"\
+	-DPAROLE_PLUGINS_DATA_DIR=\"$(datadir)/src/misc/parole-plugins-$(PAROLE_VERSION_API)\"\
 	-DPAROLE_COMPILATION			\
         $(GTHREAD_CFLAGS)                       \
 	$(GIO_CFLAGS)				\
@@ -70,12 +76,12 @@ parole_SOURCES =				\
 	parole-plugin-player.c			\
 	parole-plugin-player.h
 
-parole_LDADD =					\
-	$(top_builddir)/parole/libparole.la 	\
-	$(top_builddir)/dbus/libparoledbus.la 	\
-	$(top_builddir)/gst/libparolegst.la 	\
-	$(top_builddir)/common/libparolecommon.la\
-	$(top_builddir)/common/libparolescreensaver.la\
+parole_LDADD =						   	\
+	$(top_builddir)/src/misc/libparole.la 		   	\
+	$(top_builddir)/src/dbus/libparoledbus.la 	   	\
+	$(top_builddir)/src/gst/libparolegst.la 	   	\
+	$(top_builddir)/src/common/libparolecommon.la      	\
+	$(top_builddir)/src/common/libparolescreensaver.la 	\
         $(GTHREAD_LIBS)                         \
 	$(GIO_LIBS)				\
 	$(GMODULE_LIBS)				\
@@ -84,7 +90,7 @@ parole_LDADD =					\
 	$(GST_VIDEO_LIBS)			\
 	$(GST_INTERFACES_LIBS)			\
 	$(TAGLIBC_LIBS)
-	
+
 parole_glib_enum_headers =			\
 	parole-conf.h				\
 	parole-button.h

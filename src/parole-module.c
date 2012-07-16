@@ -26,7 +26,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <parole/parole-provider-plugin.h>
+#include <src/misc/parole-provider-plugin.h>
 #include <libxfce4util/libxfce4util.h>
 
 #include "parole-module.h"

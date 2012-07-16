@@ -2,13 +2,8 @@ ACLOCAL_AMFLAGS = -I m4
 
 SUBDIRS =  			\
 	data			\
-	parole 			\
-	common			\
-	gst			\
-	dbus			\
-	src			\
-	plugins			\
 	docs			\
+	src			\
 	po
 
 

@@ -22,7 +22,7 @@
 #define __PAROLE_PLUGINS_MANAGER_H
 
 #include <glib-object.h>
-#include <parole/parole-provider-player.h>
+#include <src/misc/parole-provider-player.h>
 
 G_BEGIN_DECLS
 

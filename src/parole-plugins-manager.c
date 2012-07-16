@@ -35,7 +35,7 @@
 #include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
 
-#include <parole/parole-provider-plugin.h>
+#include <src/misc/parole-provider-plugin.h>
 
 #include "interfaces/plugins_ui.h"
 

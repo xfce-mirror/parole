@@ -31,7 +31,7 @@
 
 #include <libxfce4util/libxfce4util.h>
 
-#include <parole/parole-file.h>
+#include <src/misc/parole-file.h>
 
 #include "interfaces/mediachooser_ui.h"
 

@@ -20,8 +20,8 @@ src/parole-subtitle-encoding.c
 src/parole-open-location.c
 src/parole-disc-menu.c
 src/parole-plugins-manager.c
-parole/parole-filters.c
-parole/parole-pl-parser.c
+src/misc/parole-filters.c
+src/misc/parole-pl-parser.c
 plugins/properties/stream-properties-plugin.c
 plugins/properties/stream-properties-provider.c
 plugins/properties/stream-properties-provider.h
