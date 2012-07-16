@@ -34,7 +34,7 @@
 #include "data/mime/parole-mime-types.h"
 
 static char *playlist_mime_types[] = {
-    "text/plain",
+    //"text/plain",
     "audio/x-mpegurl",
     "audio/playlist",
     "audio/x-scpls",
