@@ -317,7 +317,7 @@ parole_conf_class_init (ParoleConfClass *klass)
                                      g_param_spec_enum ("aspect-ratio",
                                                         NULL, NULL,
 							GST_ENUM_TYPE_ASPECT_RATIO,
-							PAROLE_ASPECT_RATIO_NONE,
+							PAROLE_ASPECT_RATIO_AUTO,
                                                         G_PARAM_READWRITE));
 						       
     g_object_class_install_property (object_class,
