@@ -404,7 +404,7 @@ parole_conf_load (ParoleConf *conf)
     
     if ( G_UNLIKELY (rc == NULL ) )
     {
-	g_warning ("Unable to lookup rc file in : %s\n", PAROLE_RESOURCE_FILE);
+	g_debug ("Unable to lookup rc file in : %s\n", PAROLE_RESOURCE_FILE);
 	return;
     }
 
