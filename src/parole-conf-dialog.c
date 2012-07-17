@@ -75,6 +75,19 @@ void		saturation_value_changed_cb			(GtkRange *range,
 
 void 	        reset_color_clicked_cb 			        (GtkButton *button, 
 								 ParoleConfDialog *self);
+								 
+void		replace_playlist_toggled_cb			(GtkToggleButton *widget,
+								 ParoleConfDialog *self);
+								 
+void		remove_duplicated_toggled_cb			(GtkToggleButton *widget,
+								 ParoleConfDialog *self);
+
+void		start_playing_opened_toggled_cb			(GtkToggleButton *widget,
+								 ParoleConfDialog *self);
+								 
+void		multimedia_keys_toggled_cb			(GtkToggleButton *widget,
+								 ParoleConfDialog *self);
+								
 /*
  * End of GtkBuilder callbacks
  */
@@ -108,13 +121,40 @@ parole_conf_dialog_destroy (GtkWidget *widget, ParoleConfDialog *self)
     g_object_unref (self);
 }
 
+void replace_playlist_toggled_cb (GtkToggleButton *widget, ParoleConfDialog *self)
+{
+    g_object_set (G_OBJECT (self->priv->conf),
+		  "replace-playlist", gtk_toggle_button_get_active (widget),
+		  NULL);
+}
+								 
+void remove_duplicated_toggled_cb (GtkToggleButton *widget, ParoleConfDialog *self)
+{
+    g_object_set (G_OBJECT (self->priv->conf),
+		  "remove-duplicated", gtk_toggle_button_get_active (widget),
+		  NULL);
+}
+
+void start_playing_opened_toggled_cb (GtkToggleButton *widget, ParoleConfDialog *self)
+{
+    g_object_set (G_OBJECT (self->priv->conf),
+		  "play-opened-files", gtk_toggle_button_get_active (widget),
+		  NULL);
+}
+
+void multimedia_keys_toggled_cb (GtkToggleButton *widget, ParoleConfDialog *self)
+{
+    g_object_set (G_OBJECT (self->priv->conf),
+		  "multimedia-keys", gtk_toggle_button_get_active (widget),
+		  NULL);
+}
+
 void reset_color_clicked_cb (GtkButton *button, ParoleConfDialog *self)
 {
     gtk_range_set_value (GTK_RANGE (self->priv->brightness), 0);
     gtk_range_set_value (GTK_RANGE (self->priv->contrast), 0);
     gtk_range_set_value (GTK_RANGE (self->priv->hue), 0);
     gtk_range_set_value (GTK_RANGE (self->priv->saturation), 0);
-    
 }
 
 void parole_conf_dialog_response_cb (GtkDialog *dialog, gint response_id, ParoleConfDialog *self)
@@ -302,6 +342,65 @@ parole_conf_dialog_set_default_vis_plugin (GtkTreeModel *model, GtkTreePath *pat
 }
 
 static void
+parole_conf_dialog_set_defaults_playlist (ParoleConfDialog  *self, GtkBuilder *builder)
+{
+    GtkWidget *widget;
+    gboolean option;
+    
+    /**
+     * Replace playlist with opened files.
+     **/
+    widget = GTK_WIDGET (gtk_builder_get_object (builder, "replace-playlist"));
+    
+    g_object_get (G_OBJECT (self->priv->conf),
+		  "replace-playlist", &option,
+		  NULL);
+		  
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), option);
+    
+     /**
+     * Start playing opened files
+     **/
+    widget = GTK_WIDGET (gtk_builder_get_object (builder, "start-playing-opened"));
+    
+    g_object_get (G_OBJECT (self->priv->conf),
+		  "play-opened-files", &option,
+		  NULL);
+		  
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), option);
+    
+     /**
+     * Remove duplicated playlist entries
+     **/
+    widget = GTK_WIDGET (gtk_builder_get_object (builder, "remove-duplicated"));
+    
+    g_object_get (G_OBJECT (self->priv->conf),
+		  "remove-duplicated", &option,
+		  NULL);
+		  
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), option);
+}
+
+static void
+parole_conf_dialog_set_defaults_general (ParoleConfDialog *self, GtkBuilder *builder)
+{
+    GtkWidget *widget;
+    gboolean option;
+    
+     /**
+     * Replace playlist with opened files.
+     **/
+    widget = GTK_WIDGET (gtk_builder_get_object (builder, "multimedia-keys"));
+    
+    g_object_get (G_OBJECT (self->priv->conf),
+		  "multimedia-keys", &option,
+		  NULL);
+		  
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), option);
+    
+}
+
+static void
 parole_conf_dialog_set_defaults (ParoleConfDialog *self)
 {
     GtkTreeModel *model;
@@ -372,6 +471,8 @@ void parole_conf_dialog_open (ParoleConfDialog *self, GtkWidget *parent)
     self->priv->vis_combox = combox;
 
     parole_conf_dialog_set_defaults (self);
+    parole_conf_dialog_set_defaults_general (self, builder);
+    parole_conf_dialog_set_defaults_playlist (self, builder);
     
     g_object_get (G_OBJECT (self->priv->conf),
 		  "reset-saver", &reset_saver,
@@ -423,3 +524,4 @@ void parole_conf_dialog_open (ParoleConfDialog *self, GtkWidget *parent)
     
     gtk_widget_show (dialog);
 }
+
