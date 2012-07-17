@@ -151,7 +151,14 @@
                                   <object class="GtkComboBox" id="vis-combobox">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
-                                    <signal name="changed" handler="parole_conf_dialog_vis_plugin_changed_cb" swapped="no"/>
+                                    <property name="model">liststore1</property>
+                                        <signal name="changed" handler="parole_conf_dialog_vis_plugin_changed_cb"/>
+                                        <child>
+                                          <object class="GtkCellRendererText" id="cellrenderertext1"/>
+                                          <attributes>
+                                            <attribute name="text">0</attribute>
+                                          </attributes>
+                                        </child>
                                   </object>
                                   <packing>
                                     <property name="expand">True</property>
@@ -653,5 +660,11 @@
     <action-widgets>
       <action-widget response="-7">close</action-widget>
     </action-widgets>
+  </object>
+    <object class="GtkListStore" id="liststore1">
+    <columns>
+      <!-- column-name gchararray1 -->
+      <column type="gchararray"/>
+    </columns>
   </object>
 </interface>
