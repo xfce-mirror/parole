@@ -382,7 +382,7 @@
                                 <property name="receives_default">True</property>
                                 <property name="use_action_appearance">False</property>
                                 <property name="image">image1</property>
-                                <signal name="clicked" handler="reset-color_clicked_cb" swapped="no"/>
+                                <signal name="clicked" handler="reset_color_clicked_cb" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">True</property>
