@@ -15,6 +15,7 @@ INCLUDES =					\
 	-I$(top_srcdir)/src/dbus	                \
 	-I$(top_srcdir)/src/common	                \
 	-DLOCALEDIR=\"$(localedir)\"		\
+	-DDESKTOPDIR=\"$(datadir)/applications\"\
 	-DG_LOG_DOMAIN=\"parole\"		\
 	-DPAROLE_PLUGINS_DIR=\"$(libdir)/parole-$(PAROLE_VERSION_API)\"\
 	-DPAROLE_PLUGINS_DATA_DIR=\"$(datadir)/src/misc/parole-plugins-$(PAROLE_VERSION_API)\"\
@@ -23,7 +24,7 @@ INCLUDES =					\
 	$(GIO_CFLAGS)				\
 	$(GMODULE_CFLAGS)			\
         $(DBUS_GLIB_CFLAGS)                     \
-        $(LIBXFCE4GUI_CFLAGS)                   \
+        $(LIBXFCE4UI_CFLAGS)                   \
 	$(GST_VIDEO_CFLAGS)			\
 	$(GST_INTERFACES_CFLAGS)		\
 	$(TAGLIBC_CFLAGS)
@@ -69,8 +70,6 @@ parole_SOURCES =				\
 	parole-open-location.h			\
 	parole-disc-menu.c			\
 	parole-disc-menu.h			\
-	parole-session.c			\
-	parole-session.h			\
 	parole-button.c				\
 	parole-button.h				\
 	parole-plugin-player.c			\
@@ -86,7 +85,7 @@ parole_LDADD =						   	\
 	$(GIO_LIBS)				\
 	$(GMODULE_LIBS)				\
         $(DBUS_GLIB_LIBS)                       \
-        $(LIBXFCE4GUI_LIBS)                     \
+        $(LIBXFCE4UI_LIBS)                     \
 	$(GST_VIDEO_LIBS)			\
 	$(GST_INTERFACES_LIBS)			\
 	$(TAGLIBC_LIBS)
