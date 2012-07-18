@@ -134,7 +134,7 @@
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="menu-open-location">
-                        <property name="label" translatable="yes">_Open location</property>
+                        <property name="label" translatable="yes">Open _location</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_action_appearance">False</property>
@@ -152,7 +152,7 @@
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="dvd-menu">
-                        <property name="label" translatable="yes">DVD</property>
+                        <property name="label" translatable="yes">_DVD</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_action_appearance">False</property>
