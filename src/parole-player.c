@@ -1162,6 +1162,7 @@ parole_player_full_screen (ParolePlayer *player, gboolean fullscreen)
     {
 	npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (player->priv->main_nt));
 	gtk_widget_reparent (player->priv->play_box, player->priv->control);
+	gtk_box_set_child_packing( GTK_BOX(player->priv->control), GTK_WIDGET(player->priv->play_box), TRUE, TRUE, 4, GTK_PACK_START );
 	gtk_widget_hide (player->priv->fs_window);
 	gtk_widget_show (player->priv->play_box);
 	gtk_widget_show (player->priv->menu_bar);
@@ -2086,6 +2087,8 @@ parole_player_init (ParolePlayer *player)
     player->priv->go_fs = GTK_WIDGET (gtk_builder_get_object (builder, "go_fs"));
     player->priv->leave_fs = GTK_WIDGET (gtk_builder_get_object (builder, "leave_fs"));
     player->priv->main_box = GTK_WIDGET (gtk_builder_get_object (builder, "main-box"));
+    
+    gtk_box_set_child_packing( GTK_BOX(player->priv->control), GTK_WIDGET(player->priv->play_box), TRUE, TRUE, 4, GTK_PACK_START );
     
     gtk_scale_button_set_value (GTK_SCALE_BUTTON (player->priv->volume), 
 			 (gdouble) (parole_rc_read_entry_int ("volume", PAROLE_RC_GROUP_GENERAL, 100)/100.));
