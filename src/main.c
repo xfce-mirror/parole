@@ -46,7 +46,6 @@
 #include "parole-dbus.h"
 #include "parole-builder.h"
 #include "parole-rc-utils.h"
-//#include "parole-setup.h"
 
 static void G_GNUC_NORETURN
 show_version (void)
@@ -313,7 +312,6 @@ int main (int argc, char **argv)
 	builder = parole_builder_get_main_interface ();
 	parole_dbus_register_name (PAROLE_DBUS_NAME);
 
-	//parole_setup ();
 	player = parole_player_new (client_id);
 	g_free (client_id);
 	
