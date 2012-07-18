@@ -562,132 +562,13 @@
                                       <object class="GtkAlignment" id="alignment3">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="top_padding">3</property>
-                                        <property name="bottom_padding">3</property>
+                                        <property name="top_padding">5</property>
+                                        <property name="bottom_padding">4</property>
                                         <child>
                                           <object class="GtkVBox" id="play-box">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
                                             <property name="spacing">5</property>
-                                            <child>
-                                              <object class="GtkEventBox" id="disc-box">
-                                                <property name="can_focus">False</property>
-                                                <property name="no_show_all">True</property>
-                                                <child>
-                                                  <object class="GtkHBox" id="disc-menu-box">
-                                                    <property name="visible">True</property>
-                                                    <property name="can_focus">False</property>
-                                                    <property name="spacing">5</property>
-                                                    <child>
-                                                      <object class="GtkButton" id="prev-chapter">
-                                                        <property name="label" translatable="yes">Previous Chapter</property>
-                                                        <property name="can_focus">True</property>
-                                                        <property name="receives_default">True</property>
-                                                        <property name="no_show_all">True</property>
-                                                        <property name="use_action_appearance">False</property>
-                                                        <property name="image">image1</property>
-                                                        <property name="relief">none</property>
-                                                      </object>
-                                                      <packing>
-                                                        <property name="expand">False</property>
-                                                        <property name="fill">True</property>
-                                                        <property name="position">0</property>
-                                                      </packing>
-                                                    </child>
-                                                    <child>
-                                                      <object class="GtkButton" id="dvd-chapters-menu">
-                                                        <property name="label" translatable="yes">DVD Menu</property>
-                                                        <property name="can_focus">True</property>
-                                                        <property name="receives_default">True</property>
-                                                        <property name="no_show_all">True</property>
-                                                        <property name="use_action_appearance">False</property>
-                                                        <property name="image">image2</property>
-                                                        <property name="relief">none</property>
-                                                      </object>
-                                                      <packing>
-                                                        <property name="expand">False</property>
-                                                        <property name="fill">True</property>
-                                                        <property name="position">1</property>
-                                                      </packing>
-                                                    </child>
-                                                    <child>
-                                                      <object class="GtkButton" id="chapter-menu">
-                                                        <property name="label" translatable="yes">Chapter Menu</property>
-                                                        <property name="can_focus">True</property>
-                                                        <property name="receives_default">True</property>
-                                                        <property name="no_show_all">True</property>
-                                                        <property name="use_action_appearance">False</property>
-                                                        <property name="image">image3</property>
-                                                        <property name="relief">none</property>
-                                                      </object>
-                                                      <packing>
-                                                        <property name="expand">False</property>
-                                                        <property name="fill">True</property>
-                                                        <property name="position">2</property>
-                                                      </packing>
-                                                    </child>
-                                                    <child>
-                                                      <object class="GtkEventBox" id="eventboxinfo">
-                                                        <property name="can_focus">False</property>
-                                                        <property name="no_show_all">True</property>
-                                                        <child>
-                                                          <object class="GtkLabel" id="info">
-                                                            <property name="can_focus">False</property>
-                                                            <property name="no_show_all">True</property>
-                                                            <property name="use_markup">True</property>
-                                                          </object>
-                                                        </child>
-                                                      </object>
-                                                      <packing>
-                                                        <property name="expand">True</property>
-                                                        <property name="fill">True</property>
-                                                        <property name="position">3</property>
-                                                      </packing>
-                                                    </child>
-                                                    <child>
-                                                      <placeholder/>
-                                                    </child>
-                                                    <child>
-                                                      <object class="GtkButton" id="select-track">
-                                                        <property name="label" translatable="yes">Select Track</property>
-                                                        <property name="can_focus">True</property>
-                                                        <property name="receives_default">True</property>
-                                                        <property name="no_show_all">True</property>
-                                                        <property name="use_action_appearance">False</property>
-                                                        <property name="image">image13</property>
-                                                        <property name="relief">none</property>
-                                                      </object>
-                                                      <packing>
-                                                        <property name="expand">False</property>
-                                                        <property name="fill">True</property>
-                                                        <property name="position">5</property>
-                                                      </packing>
-                                                    </child>
-                                                    <child>
-                                                      <object class="GtkButton" id="next-chapter">
-                                                        <property name="label" translatable="yes">Next Chapter</property>
-                                                        <property name="can_focus">True</property>
-                                                        <property name="receives_default">True</property>
-                                                        <property name="no_show_all">True</property>
-                                                        <property name="use_action_appearance">False</property>
-                                                        <property name="image">image4</property>
-                                                        <property name="relief">none</property>
-                                                      </object>
-                                                      <packing>
-                                                        <property name="expand">False</property>
-                                                        <property name="fill">True</property>
-                                                        <property name="position">6</property>
-                                                      </packing>
-                                                    </child>
-                                                  </object>
-                                                </child>
-                                              </object>
-                                              <packing>
-                                                <property name="expand">False</property>
-                                                <property name="fill">True</property>
-                                                <property name="position">0</property>
-                                              </packing>
-                                            </child>
                                             <child>
                                               <object class="GtkHBox" id="hbox7">
                                                 <property name="visible">True</property>
@@ -900,7 +781,7 @@ audio-volume-medium</property>
                                               <packing>
                                                 <property name="expand">False</property>
                                                 <property name="fill">True</property>
-                                                <property name="position">2</property>
+                                                <property name="position">0</property>
                                               </packing>
                                             </child>
                                           </object>
