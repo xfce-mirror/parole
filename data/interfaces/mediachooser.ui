@@ -3,14 +3,14 @@
   <requires lib="gtk+" version="2.24"/>
   <!-- interface-requires libxfce4ui 4.5 -->
   <!-- interface-naming-policy project-wide -->
-  <object class="XfceTitledDialog" id="chooser">
+  <object class="GtkDialog" id="chooser">
     <property name="can_focus">False</property>
-    <property name="title" translatable="yes">Parole Media Chooser</property>
     <property name="default_width">680</property>
     <property name="default_height">480</property>
+<!--    <property name="title" translatable="yes">Parole Media Chooser</property>
     <property name="icon_name">audio-x-generic</property>
     <property name="type_hint">normal</property>
-    <property name="subtitle" translatable="yes">Open media files</property>
+    <property name="subtitle" translatable="yes">Open media files</property>-->
     <signal name="destroy" handler="parole_media_chooser_destroy_cb" swapped="no"/>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox">
@@ -44,7 +44,7 @@
                 <property name="homogeneous">True</property>
                 <child>
                   <object class="GtkButton" id="close">
-                    <property name="label">gtk-close</property>
+                    <property name="label">gtk-cancel</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
@@ -60,7 +60,7 @@
                 </child>
                 <child>
                   <object class="GtkButton" id="open">
-                    <property name="label" translatable="yes">Add</property>
+                    <property name="label" translatable="yes">Open</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
@@ -171,6 +171,6 @@
   <object class="GtkImage" id="image1">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="stock">gtk-add</property>
+    <property name="stock">gtk-open</property>
   </object>
 </interface>

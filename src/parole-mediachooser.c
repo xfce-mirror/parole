@@ -29,7 +29,7 @@
 #include <gtk/gtk.h>
 #include <glib.h>
 
-#include <libxfce4util/libxfce4util.h>
+//#include <libxfce4util/libxfce4util.h>
 
 #include <src/misc/parole-file.h>
 
