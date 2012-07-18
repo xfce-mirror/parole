@@ -30,6 +30,8 @@
 #include <X11/XF86keysym.h>
 #endif
 
+#include <X11/Xatom.h>
+
 #include <gdk/gdkx.h>
 #include <gdk/gdkkeysyms.h>
 #include <gtk/gtk.h>
@@ -38,7 +40,7 @@
 #undef XFCE_DISABLE_DEPRECATED
 #endif
 #include <libxfce4util/libxfce4util.h>
-#include <libxfcegui4/libxfcegui4.h>
+#include <libxfce4ui/libxfce4ui.h>
 
 #include <dbus/dbus-glib.h>
 
@@ -60,7 +62,6 @@
 #include "parole-conf.h"
 #include "parole-rc-utils.h"
 #include "parole-utils.h"
-#include "parole-session.h"
 #include "parole-debug.h"
 #include "parole-button.h"
 #include "enum-gtypes.h"
@@ -217,7 +218,8 @@ void		ratio_16_9_toggled_cb			(GtkWidget *widget,
 void		ratio_20_9_toggled_cb			(GtkWidget *widget,
 							 ParolePlayer *player);
 
-void	        parole_show_about			(GtkWidget *widget);
+void	        parole_show_about			(GtkWidget *widget,
+							ParolePlayer *player);
 
 gboolean	parole_player_key_press 		(GtkWidget *widget, 
 							 GdkEventKey *ev, 
@@ -243,10 +245,12 @@ struct ParolePlayerPrivate
     ParoleScreenSaver   *screen_saver;
     ParoleConf          *conf;
     ParoleDiscMenu      *disc_menu;
-    ParoleSession       *session;
 #ifdef HAVE_XF86_KEYSYM
     ParoleButton        *button;
 #endif
+
+    XfceSMClient	*sm_client;
+    gchar		*client_id;
     
     GtkFileFilter       *video_filter;
     GtkRecentManager    *recent;
@@ -295,11 +299,17 @@ struct ParolePlayerPrivate
         
 };
 
+enum
+{
+    PROP_0,
+    PROP_CLIENT_ID
+};
+
 G_DEFINE_TYPE (ParolePlayer, parole_player, G_TYPE_OBJECT)
 
-void parole_show_about	(GtkWidget *widget)
+void parole_show_about	(GtkWidget *widget, ParolePlayer *player)
 {
-    parole_about ();
+    parole_about (GTK_WINDOW (player->priv->window));
 }
 
 void ratio_none_toggled_cb (GtkWidget *widget, ParolePlayer *player)
@@ -1033,7 +1043,7 @@ parole_player_range_value_changed (GtkRange *range, ParolePlayer *player)
 static void
 parole_player_error_cb (ParoleGst *gst, const gchar *error, ParolePlayer *player)
 {
-    xfce_err ("%s", error);
+    parole_dialog_error (GTK_WINDOW (player->priv->window), _("GStreamer backend error"), error);
     parole_screen_saver_uninhibit (player->priv->screen_saver);
     parole_player_stopped (player);
 }
@@ -1517,6 +1527,13 @@ parole_player_screen_size_change_changed_cb (GdkScreen *screen, ParolePlayer *pl
 }
 
 static void
+parole_player_sm_quit_requested_cb (ParolePlayer *player)
+{
+    player->priv->exit = TRUE;
+    parole_gst_terminate (PAROLE_GST (player->priv->gst));
+}
+
+static void
 parole_player_finalize (GObject *object)
 {
     ParolePlayer *player;
@@ -1532,7 +1549,12 @@ parole_player_finalize (GObject *object)
     g_object_unref (player->priv->disc);
     g_object_unref (player->priv->disc_menu);
     g_object_unref (player->priv->screen_saver);
-    
+
+    if ( player->priv->client_id )
+	g_free (player->priv->client_id);
+	
+    g_object_unref (player->priv->sm_client);
+
 #ifdef HAVE_XF86_KEYSYM
     g_object_unref (player->priv->button);
 #endif
@@ -1542,12 +1564,104 @@ parole_player_finalize (GObject *object)
     G_OBJECT_CLASS (parole_player_parent_class)->finalize (object);
 }
 
+static void parole_player_set_property (GObject *object,
+				        guint prop_id,
+				        const GValue *value,
+				        GParamSpec *pspec)
+{
+    ParolePlayer *player;
+    player = PAROLE_PLAYER (object);
+
+    switch (prop_id)
+    {
+	case PROP_CLIENT_ID:
+	    player->priv->client_id = g_value_dup_string (value);
+	    break;
+	default:
+	    G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+	    break;
+    }
+}
+
+static void parole_player_get_property (GObject *object,
+				        guint prop_id,
+				        GValue *value,
+				        GParamSpec *pspec)
+{
+    ParolePlayer *player;
+    player = PAROLE_PLAYER (object);
+
+    switch (prop_id)
+    {
+	case PROP_CLIENT_ID:
+	    g_value_set_string (value, player->priv->client_id);
+	    break;
+	default:
+	    G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+	    break;
+    }
+}
+
+/**
+ * Get the SM client
+ **/
+static void
+parole_player_constructed (GObject *object)
+{
+    ParolePlayer *player;
+    gchar *current_dir;
+    
+    const gchar *restart_command[] =
+    {
+        "parole",
+        "--new-instance",
+        NULL
+    };
+    
+    player = PAROLE_PLAYER (object);
+
+    current_dir = g_get_current_dir ();
+    
+    player->priv->sm_client = xfce_sm_client_get_full (XFCE_SM_CLIENT_RESTART_NORMAL,
+						       XFCE_SM_CLIENT_PRIORITY_DEFAULT,
+						       player->priv->client_id,
+						       current_dir,
+						       restart_command,
+						       DESKTOPDIR "/" PACKAGE_NAME ".desktop");
+				      
+    if ( xfce_sm_client_connect (player->priv->sm_client, NULL ) )
+    {
+	g_signal_connect_swapped (player->priv->sm_client, "quit-requested",
+				  G_CALLBACK (parole_player_sm_quit_requested_cb), player);
+    }
+    
+    g_free (current_dir);
+}
+
 static void
 parole_player_class_init (ParolePlayerClass *klass)
 {
     GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
+    object_class->constructed = parole_player_constructed;
     object_class->finalize = parole_player_finalize;
+    object_class->set_property = parole_player_set_property;
+    object_class->get_property = parole_player_get_property;
+    
+    
+    /**
+     * ParolePlayer:client-id:
+     * 
+     * Sm Manager client ID
+     * Since: 0.2.2
+     **/
+    g_object_class_install_property (object_class,
+				     PROP_CLIENT_ID,
+				     g_param_spec_string ("client-id",
+							  NULL, 
+							  NULL,
+							  NULL,
+							  G_PARAM_READWRITE|G_PARAM_CONSTRUCT_ONLY));
 
     g_type_class_add_private (klass, sizeof (ParolePlayerPrivate));
     
@@ -1732,13 +1846,6 @@ parole_player_button_pressed_cb (ParoleButton *button, ParoleButtonKey key, Paro
     }
 }
 #endif
-
-static void
-parole_player_session_die_cb (ParolePlayer *player)
-{
-    player->priv->exit = TRUE;
-    parole_gst_terminate (PAROLE_GST (player->priv->gst));
-}
 
 static void
 parole_gst_set_default_aspect_ratio (ParolePlayer *player, GtkBuilder *builder)
@@ -1928,7 +2035,10 @@ parole_player_init (ParolePlayer *player)
     gboolean repeat, shuffle;
     
     player->priv = PAROLE_PLAYER_GET_PRIVATE (player);
-    
+
+    player->priv->client_id = NULL;
+    player->priv->sm_client = NULL;
+
     player->priv->bus = parole_g_session_bus_get ();
     
     player->priv->video_filter = parole_get_supported_video_filter ();
@@ -1940,12 +2050,7 @@ parole_player_init (ParolePlayer *player)
     
     g_signal_connect_swapped (player->priv->conf, "notify::reset-saver",
 			      G_CALLBACK (parole_player_reset_saver_changed_cb), player);
-    
-    player->priv->session = parole_session_get ();
-    
-    g_signal_connect_swapped (player->priv->session, "die",
-			      G_CALLBACK (parole_player_session_die_cb), player);
-    
+     
     player->priv->gst = parole_gst_new (player->priv->conf);
 
     player->priv->disc = parole_disc_new ();
@@ -2136,10 +2241,10 @@ parole_player_init (ParolePlayer *player)
 }
 
 ParolePlayer *
-parole_player_new (void)
+parole_player_new (const gchar *client_id)
 {
     ParolePlayer *player = NULL;
-    player = g_object_new (PAROLE_TYPE_PLAYER, NULL);
+    player = g_object_new (PAROLE_TYPE_PLAYER, "client-id", client_id, NULL);
     return player;
 }
 

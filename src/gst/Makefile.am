@@ -25,7 +25,7 @@ libparolegst_la_CFLAGS =		\
 	$(GST_VIDEO_CFLAGS)             \
         $(GST_INTERFACES_CFLAGS)	\
 	$(GTHREAD_CFLAGS)               \
-	$(LIBXFCE4GUI_CFLAGS)
+	$(LIBXFCE4UI_CFLAGS)
 
 libparolegst_la_LIBADD =		\
 	$(top_builddir)/src/misc/libparole.la\
