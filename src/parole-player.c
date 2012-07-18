@@ -56,7 +56,6 @@
 #include "parole-medialist.h"
 #include "parole-filters.h"
 #include "parole-disc.h"
-#include "parole-disc-menu.h"
 #include "parole-screensaver.h"
 #include "parole-conf-dialog.h"
 #include "parole-conf.h"
@@ -244,7 +243,6 @@ struct ParolePlayerPrivate
     ParoleDisc          *disc;
     ParoleScreenSaver   *screen_saver;
     ParoleConf          *conf;
-    ParoleDiscMenu      *disc_menu;
 #ifdef HAVE_XF86_KEYSYM
     ParoleButton        *button;
 #endif
@@ -256,6 +254,7 @@ struct ParolePlayerPrivate
     GtkRecentManager    *recent;
 
     GtkWidget 		*gst;
+    ParoleMediaType current_media_type;
 
     GtkWidget 		*window;
     GtkWidget		*playlist_nt;
@@ -537,6 +536,7 @@ parole_player_disc_selected_cb (ParoleDisc *disc, const gchar *uri, const gchar 
     parole_player_reset (player);
     
     parole_gst_play_device_uri (PAROLE_GST (player->priv->gst), uri, device);
+    player->priv->current_media_type = parole_gst_get_current_stream_type (PAROLE_GST (player->priv->gst));
 }
 
 static void
@@ -594,10 +594,6 @@ parole_player_media_progressed_cb (ParoleGst *gst, const ParoleStream *stream, g
 	parole_player_change_range_value (player, value);
     gchar pos_text[128];
     get_time_string (pos_text, value);
-    /*text = g_strdup_printf ("%s %s/%s", 
-			    state == PAROLE_STATE_PAUSED ? _("Paused") : _("Playing"), 
-			    pos_text, 
-			    dur_text);*/
     gtk_label_set_text (GTK_LABEL (player->priv->label_elapsed), pos_text);
     }
 }
@@ -816,6 +812,15 @@ parole_player_play_selected_row (ParolePlayer *player)
 static void
 parole_player_play_next (ParolePlayer *player, gboolean allow_shuffle)
 {
+	if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD ||
+	 player->priv->current_media_type == PAROLE_MEDIA_TYPE_CDDA )
+    {
+		if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD )
+		parole_gst_next_dvd_chapter (PAROLE_GST(player->priv->gst));
+		else if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_CDDA)
+		parole_gst_next_cdda_track (PAROLE_GST(player->priv->gst));
+		return;
+    }
     gboolean repeat, shuffle;
     
     GtkTreeRowReference *row;
@@ -853,6 +858,15 @@ parole_player_play_next (ParolePlayer *player, gboolean allow_shuffle)
 static void
 parole_player_play_prev (ParolePlayer *player)
 {
+	if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD ||
+	 player->priv->current_media_type == PAROLE_MEDIA_TYPE_CDDA )
+    {
+		if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD )
+		parole_gst_prev_dvd_chapter (PAROLE_GST(player->priv->gst));
+		else if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_CDDA)
+		parole_gst_prev_cdda_track (PAROLE_GST(player->priv->gst));
+		return;
+    }
     GtkTreeRowReference *row;
     
     if ( player->priv->row )
@@ -977,13 +991,11 @@ parole_player_get_seek_value (ParolePlayer *player)
 
 void parole_player_forward_cb (GtkButton *button, ParolePlayer *player)
 {
-	if ( !parole_disc_menu_seek_next (player->priv->disc_menu))
 	parole_player_play_next (player, FALSE);
 }
 							 
 void parole_player_back_cb (GtkButton *button, ParolePlayer *player)
 {
-	if ( !parole_disc_menu_seek_prev (player->priv->disc_menu))
 	parole_player_play_prev (player);
 }
 
@@ -1118,18 +1130,6 @@ parole_player_play_menu_item_activate (ParolePlayer *player)
 }
 
 static void
-parole_player_next_menu_item_activate (ParolePlayer *player)
-{
-    parole_disc_menu_seek_next (player->priv->disc_menu);
-}
-
-static void
-parole_player_previous_menu_item_activate (ParolePlayer *player)
-{
-    parole_disc_menu_seek_prev (player->priv->disc_menu);
-}
-
-static void
 parole_player_move_fs_window (ParolePlayer *player)
 {
     GdkScreen *screen;
@@ -1164,7 +1164,6 @@ parole_player_full_screen (ParolePlayer *player, gboolean fullscreen)
 	npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (player->priv->main_nt));
 	gtk_widget_reparent (player->priv->play_box, player->priv->control);
 	gtk_widget_hide (player->priv->fs_window);
-	parole_disc_menu_set_fullscreen (player->priv->disc_menu, FALSE);
 	gtk_widget_show (player->priv->play_box);
 	gtk_widget_show (player->priv->menu_bar);
 	gtk_widget_show (player->priv->playlist_nt);
@@ -1180,7 +1179,6 @@ parole_player_full_screen (ParolePlayer *player, gboolean fullscreen)
     }
     else
     {
-	parole_disc_menu_set_fullscreen (player->priv->disc_menu, TRUE);
 	parole_player_move_fs_window (player);
 	gtk_widget_reparent (player->priv->play_box, player->priv->fs_window);
 	
@@ -1220,12 +1218,8 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
 {
     GtkWidget *menu, *mi, *img;
     gboolean sensitive;
-    gboolean dvd_menu;
-    ParoleMediaType media_type;
     
-    dvd_menu = parole_disc_menu_visible (player->priv->disc_menu);
-    
-    media_type = parole_gst_get_current_stream_type (PAROLE_GST (player->priv->gst));
+    player->priv->current_media_type = parole_gst_get_current_stream_type (PAROLE_GST (player->priv->gst));
     
     menu = gtk_menu_new ();
     
@@ -1265,46 +1259,6 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
     gtk_widget_show (mi);
     g_signal_connect (mi, "activate",
 		      G_CALLBACK (parole_player_back_cb), player);
-    gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
-    
-    /*
-     * Stop menu item
-     */
-    mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_MEDIA_STOP, NULL);
-					     
-    gtk_widget_set_sensitive (mi, player->priv->state == PAROLE_STATE_PLAYING);
-    gtk_widget_show (mi);
-    /*g_signal_connect_swapped (mi, "activate",
-			      G_CALLBACK (parole_player_stop_menu_item_activate), player);
-    gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);*/
-    
-    /*
-     * Next chapter menu item
-     */
-    mi = gtk_image_menu_item_new_with_label (media_type == PAROLE_MEDIA_TYPE_CDDA ? _("Next Track") : _("Next Chapter"));
-    img = gtk_image_new_from_stock (GTK_STOCK_MEDIA_NEXT, GTK_ICON_SIZE_MENU);
-    gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi),img);
-    gtk_widget_set_sensitive (mi, (player->priv->state == PAROLE_STATE_PLAYING) && dvd_menu);
-    gtk_widget_show (mi);
-    g_signal_connect_swapped (mi, "activate",
-			      G_CALLBACK (parole_player_next_menu_item_activate), player);
-    gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
-    
-    /*
-     * Previous chapter menu item
-     */
-    mi = gtk_image_menu_item_new_with_label (media_type == PAROLE_MEDIA_TYPE_CDDA ? _("Previous Track") : _("Previous Chapter"));
-    img = gtk_image_new_from_stock (GTK_STOCK_MEDIA_PREVIOUS, GTK_ICON_SIZE_MENU);
-    gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi), img);
-					     
-    gtk_widget_set_sensitive (mi, (player->priv->state == PAROLE_STATE_PLAYING) && dvd_menu);
-    gtk_widget_show (mi);
-    g_signal_connect_swapped (mi, "activate",
-			      G_CALLBACK (parole_player_previous_menu_item_activate), player);
-    gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
-    
-    mi = gtk_separator_menu_item_new ();
-    gtk_widget_show (mi);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
     
     /*
@@ -1547,7 +1501,6 @@ parole_player_finalize (GObject *object)
     g_object_unref (player->priv->conf);
     g_object_unref (player->priv->video_filter);
     g_object_unref (player->priv->disc);
-    g_object_unref (player->priv->disc_menu);
     g_object_unref (player->priv->screen_saver);
 
     if ( player->priv->client_id )
@@ -1804,11 +1757,9 @@ parole_player_key_press (GtkWidget *widget, GdkEventKey *ev, ParolePlayer *playe
 	    parole_player_volume_mute (NULL, player);
 	    return TRUE;
 	case XF86XK_AudioPrev:
-	    if ( !parole_disc_menu_seek_prev (player->priv->disc_menu))
 		parole_player_play_prev (player);
 	    return TRUE;
 	case XF86XK_AudioNext:
-	    if ( !parole_disc_menu_seek_next (player->priv->disc_menu))
 		parole_player_play_next (player, FALSE);
 	    return TRUE;
 #endif /* HAVE_XF86_KEYSYM */
@@ -1834,11 +1785,9 @@ parole_player_button_pressed_cb (ParoleButton *button, ParoleButtonKey key, Paro
 	    parole_player_stop_clicked (NULL, player);
 	    break;
 	case PAROLE_KEY_AUDIO_PREV:
-	    if ( !parole_disc_menu_seek_prev (player->priv->disc_menu))
 		parole_player_play_prev (player);
 	    break;
 	case PAROLE_KEY_AUDIO_NEXT:
-	    if ( !parole_disc_menu_seek_next (player->priv->disc_menu))
 		parole_player_play_next (player, FALSE);
 	    break;
 	default:
@@ -2041,6 +1990,8 @@ parole_player_init (ParolePlayer *player)
 
     player->priv->bus = parole_g_session_bus_get ();
     
+    player->priv->current_media_type = PAROLE_MEDIA_TYPE_UNKNOWN;
+    
     player->priv->video_filter = parole_get_supported_video_filter ();
     g_object_ref_sink (player->priv->video_filter);
     
@@ -2056,9 +2007,7 @@ parole_player_init (ParolePlayer *player)
     player->priv->disc = parole_disc_new ();
     g_signal_connect (player->priv->disc, "disc-selected",
 		      G_CALLBACK (parole_player_disc_selected_cb), player);
-		      
-    player->priv->disc_menu = parole_disc_menu_new ();
-    
+	    
     player->priv->screen_saver = parole_screen_saver_new ();
     player->priv->list = PAROLE_MEDIA_LIST (parole_media_list_get ());
     
@@ -2257,6 +2206,7 @@ ParoleMediaList	*parole_player_get_media_list (ParolePlayer *player)
 
 void parole_player_play_uri_disc (ParolePlayer *player, const gchar *uri, const gchar *device)
 {
+	g_print("%s\n", uri);
     if ( uri )
     {
 	parole_player_disc_selected_cb (NULL, uri, device, player);
@@ -2350,7 +2300,6 @@ static gboolean	parole_player_dbus_stop (ParolePlayer *player,
 static gboolean	parole_player_dbus_next_track (ParolePlayer *player,
 					       GError *error)
 {
-    if ( !parole_disc_menu_seek_next (player->priv->disc_menu))
 	parole_player_play_next (player, FALSE);
     return TRUE;
 }
@@ -2358,7 +2307,6 @@ static gboolean	parole_player_dbus_next_track (ParolePlayer *player,
 static gboolean	parole_player_dbus_prev_track (ParolePlayer *player,
 					       GError *error)
 {
-    if ( !parole_disc_menu_seek_prev (player->priv->disc_menu))
 	parole_player_play_prev (player);
     return TRUE;
 }

@@ -68,8 +68,6 @@ parole_SOURCES =				\
 	parole-subtitle-encoding.h		\
 	parole-open-location.c			\
 	parole-open-location.h			\
-	parole-disc-menu.c			\
-	parole-disc-menu.h			\
 	parole-button.c				\
 	parole-button.h				\
 	parole-plugin-player.c			\
