@@ -343,12 +343,13 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkMenuItem" id="show-hide-list">
+                      <object class="GtkCheckMenuItem" id="show-hide-list">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_action_appearance">False</property>
-                        <property name="label" translatable="yes">Hide playlist</property>
+                        <property name="label" translatable="yes">Show playlist</property>
                         <property name="use_underline">True</property>
+                        <accelerator key="F9" signal="activate"/>
                         <signal name="activate" handler="parole_player_show_hide_playlist" swapped="no"/>
                       </object>
                     </child>
@@ -906,6 +907,23 @@ audio-volume-medium</property>
                                                 <property name="position">2</property>
                                               </packing>
                                             </child>
+                                            <child>
+                                              <object class="GtkButton" id="show-hide-list-button">
+                                                <property name="visible">True</property>
+                                                <property name="can_focus">True</property>
+                                                <property name="receives_default">True</property>
+                                                <property name="use_action_appearance">False</property>
+                                                <property name="image">show-hide-list-image</property>
+                                                <property name="relief">none</property>
+                                                <property name="focus_on_click">False</property>
+                                                <signal name="clicked" handler="parole_player_show_hide_playlist" swapped="no"/>
+                                              </object>
+                                              <packing>
+                                                <property name="expand">False</property>
+                                                <property name="fill">True</property>
+                                                <property name="position">3</property>
+                                              </packing>
+                                            </child>
                                           </object>
                                           <packing>
                                             <property name="expand">False</property>
@@ -995,5 +1013,10 @@ audio-volume-medium</property>
         </child>
       </object>
     </child>
+  </object>
+  <object class="GtkImage" id="show-hide-list-image">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-go-back</property>
   </object>
 </interface>

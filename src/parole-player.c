@@ -149,7 +149,7 @@ gboolean	parole_player_delete_event_cb		(GtkWidget *widget,
 							 GdkEvent *ev,
 							 ParolePlayer *player);
 
-void		parole_player_show_hide_playlist	(GtkMenuItem *widget,
+void		parole_player_show_hide_playlist	(GtkWidget *widget,
 							 ParolePlayer *player);
 
 /*Menu items callbacks*/
@@ -260,6 +260,8 @@ struct ParolePlayerPrivate
     GtkWidget		*playlist_nt;
     GtkWidget		*main_nt;	/*Main notebook*/
     GtkWidget		*show_hide_playlist;
+    GtkWidget		*show_hide_playlist_button;
+    GtkWidget		*show_hide_playlist_image;
     GtkWidget		*shuffle_menu_item;
     GtkWidget		*repeat_menu_item;
     GtkWidget		*play_pause;
@@ -363,28 +365,36 @@ void ratio_20_9_toggled_cb (GtkWidget *widget, ParolePlayer *player)
 		  NULL);
 }
 
-void parole_player_show_hide_playlist (GtkMenuItem *widget, ParolePlayer *player)
+void parole_player_set_playlist_visible (ParolePlayer *player, gboolean visibility)
+{
+	gtk_check_menu_item_set_active( GTK_CHECK_MENU_ITEM(player->priv->show_hide_playlist), visibility );
+	if ( visibility )
+	{
+		gtk_widget_show_all (player->priv->playlist_nt);
+		gtk_image_set_from_stock( GTK_IMAGE( player->priv->show_hide_playlist_image ), "gtk-go-forward", GTK_ICON_SIZE_BUTTON );
+		gtk_widget_set_tooltip_text( GTK_WIDGET( player->priv->show_hide_playlist_button ), "Hide playlist");
+		g_object_set (G_OBJECT (player->priv->conf),	
+		  "showhide-playlist", TRUE,
+		  NULL);
+	}
+	else
+	{
+		gtk_widget_hide_all (player->priv->playlist_nt);
+		gtk_image_set_from_stock( GTK_IMAGE( player->priv->show_hide_playlist_image ), "gtk-go-back", GTK_ICON_SIZE_BUTTON );
+		gtk_widget_set_tooltip_text( GTK_WIDGET( player->priv->show_hide_playlist_button ), "Show playlist");
+		g_object_set (G_OBJECT (player->priv->conf),	
+		  "showhide-playlist", FALSE,
+		  NULL);
+	}
+}
+
+void parole_player_show_hide_playlist (GtkWidget *widget, ParolePlayer *player)
 {
     gboolean   visible;
     
     visible = GTK_WIDGET_VISIBLE (player->priv->playlist_nt);
 
-    if ( !visible )
-    {
-	gtk_widget_show_all (player->priv->playlist_nt);
-	gtk_menu_item_set_label (GTK_MENU_ITEM (player->priv->show_hide_playlist), _("Hide playlist"));
-	g_object_set (G_OBJECT (player->priv->conf),	
-		  "showhide-playlist", FALSE,
-		  NULL);
-    }
-    else
-    {		      
-	gtk_widget_hide_all (player->priv->playlist_nt);
-	gtk_menu_item_set_label (GTK_MENU_ITEM (player->priv->show_hide_playlist), _("Show playlist"));
-	g_object_set (G_OBJECT (player->priv->conf),	
-		  "showhide-playlist", TRUE,
-		  NULL);
-    }
+    parole_player_set_playlist_visible( player, !visible );
 }
 
 typedef enum
@@ -1306,7 +1316,7 @@ parole_player_full_screen (ParolePlayer *player, gboolean fullscreen)
 	gtk_widget_show (player->priv->play_box);
 	gtk_widget_show (player->priv->menu_bar);
 	gtk_widget_show (player->priv->playlist_nt);
-	gtk_widget_show (player->priv->show_hide_playlist);
+	parole_player_set_playlist_visible(player, TRUE);
 	gtk_widget_show (player->priv->go_fs);
 	gtk_widget_hide (player->priv->leave_fs);
 	
@@ -1324,7 +1334,7 @@ parole_player_full_screen (ParolePlayer *player, gboolean fullscreen)
 	gtk_widget_hide (player->priv->play_box);
 	gtk_widget_hide (player->priv->menu_bar);
 	gtk_widget_hide (player->priv->playlist_nt);
-	gtk_widget_hide (player->priv->show_hide_playlist);
+	parole_player_set_playlist_visible(player, FALSE);
 	gtk_widget_hide (player->priv->go_fs);
 	gtk_widget_show (player->priv->leave_fs);
 	
@@ -2218,6 +2228,8 @@ parole_player_init (ParolePlayer *player)
     player->priv->play_box = GTK_WIDGET (gtk_builder_get_object (builder, "play-box"));
     player->priv->playlist_nt = GTK_WIDGET (gtk_builder_get_object (builder, "notebook-playlist"));
     player->priv->show_hide_playlist = GTK_WIDGET (gtk_builder_get_object (builder, "show-hide-list"));
+    player->priv->show_hide_playlist_image = GTK_WIDGET (gtk_builder_get_object (builder, "show-hide-list-image"));
+    player->priv->show_hide_playlist_button = GTK_WIDGET (gtk_builder_get_object (builder, "show-hide-list-button"));
     
     player->priv->shuffle_menu_item = GTK_WIDGET (gtk_builder_get_object (builder, "shuffle"));
     player->priv->repeat_menu_item = GTK_WIDGET (gtk_builder_get_object (builder, "repeat"));
@@ -2284,12 +2296,7 @@ parole_player_init (ParolePlayer *player)
     g_object_get (G_OBJECT (player->priv->conf),
 		  "showhide-playlist", &showhide,
 		  NULL);
-    if ( showhide ) {
-	gtk_widget_hide_all (player->priv->playlist_nt);
-    }
-    else {
-	gtk_widget_show_all (player->priv->playlist_nt);
-    }
+    parole_player_set_playlist_visible(player, showhide);
     
     parole_player_set_wm_opacity_hint (player->priv->window);
     
