@@ -27,7 +27,8 @@ INCLUDES =					\
         $(LIBXFCE4UI_CFLAGS)                   \
 	$(GST_VIDEO_CFLAGS)			\
 	$(GST_INTERFACES_CFLAGS)		\
-	$(TAGLIBC_CFLAGS)
+	$(TAGLIBC_CFLAGS)			\
+	$(LIBX11_CFLAGS)
 
 GENERATED_FILES =				\
 	gmarshal.c				\
@@ -86,7 +87,8 @@ parole_LDADD =						   	\
         $(LIBXFCE4UI_LIBS)                     \
 	$(GST_VIDEO_LIBS)			\
 	$(GST_INTERFACES_LIBS)			\
-	$(TAGLIBC_LIBS)
+	$(TAGLIBC_LIBS)				\
+	$(LIBX11_LIBS)
 
 parole_glib_enum_headers =			\
 	parole-conf.h				\
