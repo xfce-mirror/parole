@@ -142,6 +142,8 @@ void 			parole_gst_set_cursor_visible 	(ParoleGst *gst,
 							 
 GList *			gst_get_lang_list_for_type (ParoleGst * gst, const gchar * type_name);
 
+void			gst_set_current_audio_track( ParoleGst *gst, gint track_no );
+
 const ParoleStream     *parole_gst_get_stream 		(ParoleGst *gst);
 							 
 G_END_DECLS
