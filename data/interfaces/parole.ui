@@ -473,10 +473,11 @@
                     <property name="can_focus">False</property>
                     <child>
                       <object class="GtkImageMenuItem" id="volume-mute-menu">
-                        <property name="label" translatable="yes">Mute</property>
+                        <property name="label" translatable="yes">_Mute</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_action_appearance">False</property>
+                        <property name="use_underline">True</property>
                         <property name="image">image12</property>
                         <property name="use_stock">False</property>
                         <signal name="activate" handler="parole_player_volume_mute" swapped="no"/>
@@ -484,10 +485,11 @@
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="volume-up-menu">
-                        <property name="label" translatable="yes">Volume Up</property>
+                        <property name="label" translatable="yes">Volume _Up</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_action_appearance">False</property>
+                        <property name="use_underline">True</property>
                         <property name="image">image11</property>
                         <property name="use_stock">False</property>
                         <accelerator key="plus" signal="activate"/>
@@ -496,10 +498,11 @@
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="volume-down-menu">
-                        <property name="label" translatable="yes">Volume Down</property>
+                        <property name="label" translatable="yes">Volume _Down</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_action_appearance">False</property>
+                        <property name="use_underline">True</property>
                         <property name="image">image10</property>
                         <property name="use_stock">False</property>
                         <accelerator key="minus" signal="activate"/>
