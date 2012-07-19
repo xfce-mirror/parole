@@ -139,6 +139,8 @@ gboolean		parole_gst_get_is_xvimage_sink  (ParoleGst *gst);
 
 void 			parole_gst_set_cursor_visible 	(ParoleGst *gst, 
 							 gboolean visible);
+							 
+GList *			gst_get_lang_list_for_type (ParoleGst * gst, const gchar * type_name);
 
 const ParoleStream     *parole_gst_get_stream 		(ParoleGst *gst);
 							 
