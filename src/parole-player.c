@@ -287,6 +287,7 @@ struct ParolePlayerPrivate
     GtkListStore	*liststore_subtitles;
     GList			*audio_list;
     GList			*subtitle_list;
+    gboolean		update_languages;
     
     GtkWidget		*main_box;
     
@@ -483,6 +484,7 @@ parole_player_change_range_value (ParolePlayer *player, gdouble value)
 static void
 parole_player_reset (ParolePlayer *player)
 {
+	player->priv->update_languages = TRUE;
     parole_player_change_range_value (player, 0);
 
     if ( player->priv->row )
@@ -548,17 +550,16 @@ parole_player_update_audio_tracks (ParolePlayer *player, ParoleGst *gst)
 	
 	gtk_combo_box_set_active( GTK_COMBO_BOX(player->priv->combobox_audiotrack), 0 );
 	
-	if (g_list_length (list) <= 1) {
-	gtk_widget_set_sensitive( GTK_WIDGET( player->priv->combobox_audiotrack ), FALSE );
+	if (g_list_length (list) >= 2) {
+		gtk_widget_set_sensitive( GTK_WIDGET( player->priv->combobox_audiotrack ), TRUE );
+  		gtk_widget_show(player->priv->infobar);
+  	}
+  	else {
+  	gtk_widget_set_sensitive( GTK_WIDGET( player->priv->combobox_audiotrack ), FALSE );
+  	}
     g_free (list->data);
     g_list_free (list);
     list = NULL;
-  	}
-  	else
-  	{
-  		gtk_widget_set_sensitive( GTK_WIDGET( player->priv->combobox_audiotrack ), TRUE );
-  		gtk_widget_show(player->priv->infobar);
-  	}
 }
 
 static void
@@ -601,22 +602,23 @@ parole_player_update_subtitles (ParolePlayer *player, ParoleGst *gst)
 	
 	gtk_combo_box_set_active( GTK_COMBO_BOX(player->priv->combobox_subtitles), 0 );
 	
-	if (g_list_length (list) == 1) {
-    g_free (list->data);
+	if (g_list_length (list) != 1) {
+    	gtk_widget_show(player->priv->infobar);
+  	}
+  	g_free (list->data);
     g_list_free (list);
     list = NULL;
-  	}
-  	else
-  	{
-  		gtk_widget_show(player->priv->infobar);
-  	}
 }
 
 static void
 parole_player_update_languages (ParolePlayer *player, ParoleGst *gst)
 {
-	parole_player_update_audio_tracks(player, gst);
-	parole_player_update_subtitles(player, gst);
+	if (player->priv->update_languages == TRUE)
+	{
+		parole_player_update_audio_tracks(player, gst);
+		parole_player_update_subtitles(player, gst);
+		player->priv->update_languages = FALSE;
+	}
 }
 
 static void
@@ -2260,6 +2262,7 @@ parole_player_init (ParolePlayer *player)
                                GTK_MESSAGE_QUESTION);
                                
 	gtk_box_pack_start( GTK_BOX( player->priv->hbox_infobar ), player->priv->infobar, TRUE, TRUE, 0);
+	player->priv->update_languages = FALSE;
 	
     gtk_scale_button_set_value (GTK_SCALE_BUTTON (player->priv->volume), 
 			 (gdouble) (parole_rc_read_entry_int ("volume", PAROLE_RC_GROUP_GENERAL, 100)/100.));
@@ -2399,6 +2402,12 @@ void parole_player_combo_box_audiotrack_changed_cb(GtkWidget *widget, ParolePlay
 {
 	gint index = gtk_combo_box_get_active(GTK_COMBO_BOX(player->priv->combobox_audiotrack));
 	gst_set_current_audio_track(PAROLE_GST(player->priv->gst), index);
+}
+
+void parole_player_combo_box_subtitles_changed_cb(GtkWidget *widget, ParolePlayer *player)
+{
+	gint index = gtk_combo_box_get_active(GTK_COMBO_BOX(player->priv->combobox_subtitles));
+	gst_set_current_subtitle_track(PAROLE_GST(player->priv->gst), index);
 }
 
 void parole_player_terminate (ParolePlayer *player)

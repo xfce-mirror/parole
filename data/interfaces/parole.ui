@@ -645,6 +645,7 @@
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">False</property>
                                                 <property name="model">liststore_subtitles</property>
+                                                <signal name="changed" handler="parole_player_combo_box_subtitles_changed_cb" swapped="no"/>
                                               </object>
                                               <packing>
                                                 <property name="expand">False</property>
