@@ -2395,6 +2395,12 @@ void parole_player_play_uri_disc (ParolePlayer *player, const gchar *uri, const 
     }
 }
 
+void parole_player_combo_box_audiotrack_changed_cb(GtkWidget *widget, ParolePlayer *player)
+{
+	gint index = gtk_combo_box_get_active(GTK_COMBO_BOX(player->priv->combobox_audiotrack));
+	gst_set_current_audio_track(PAROLE_GST(player->priv->gst), index);
+}
+
 void parole_player_terminate (ParolePlayer *player)
 {
     parole_player_delete_event_cb (NULL, NULL, player);
