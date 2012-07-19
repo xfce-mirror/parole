@@ -20,7 +20,7 @@ tray_icon_la_SOURCES =				\
 tray_icon_la_CFLAGS =				\
 	$(PLATFORM_CFLAGS)			\
 	$(GTK_CFLAGS)				\
-	$(LIBXFCE4GUI_CFLAGS)			\
+	$(LIBXFCE4UI_CFLAGS)			\
 	$(LIBXFCE4UTIL_CFLAGS)			\
 	$(LIBNOTIFY_CFLAGS)
 
