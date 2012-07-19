@@ -142,6 +142,8 @@ void 			parole_gst_set_cursor_visible 	(ParoleGst *gst,
 							 
 GList *			gst_get_lang_list_for_type (ParoleGst * gst, const gchar * type_name);
 
+gboolean		gst_get_has_video( ParoleGst *gst );
+
 void			gst_set_current_audio_track( ParoleGst *gst, gint track_no );
 void			gst_set_current_subtitle_track( ParoleGst *gst, gint track_no );
 

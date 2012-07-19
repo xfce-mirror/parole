@@ -2266,6 +2266,18 @@ gst_get_lang_list_for_type (ParoleGst * gst, const gchar * type_name)
   return g_list_reverse (ret);
 }
 
+gboolean
+gst_get_has_video( ParoleGst *gst )
+{
+	gboolean playing_video;
+
+	g_object_get (G_OBJECT (gst->priv->stream), 
+		  "has-video", &playing_video,
+		  NULL);
+		  
+	return playing_video;
+}
+
 void
 gst_set_current_audio_track( ParoleGst *gst, gint track_no )
 {
@@ -2275,7 +2287,10 @@ gst_set_current_audio_track( ParoleGst *gst, gint track_no )
 void
 gst_set_current_subtitle_track( ParoleGst *gst, gint track_no )
 {
+	if (track_no >= 0)
 	g_object_set (G_OBJECT (gst->priv->playbin), "current-text", (track_no-1), NULL);
+	else
+	g_object_set (G_OBJECT (gst->priv->playbin), "current-text", (NULL), NULL);
 }
 
 const ParoleStream     *parole_gst_get_stream 		(ParoleGst *gst)

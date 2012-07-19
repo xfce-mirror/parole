@@ -495,6 +495,7 @@ static void
 parole_player_reset (ParolePlayer *player)
 {
 	player->priv->update_languages = TRUE;
+	gtk_widget_hide(GTK_WIDGET(player->priv->infobar));
     parole_player_change_range_value (player, 0);
 
     if ( player->priv->row )
@@ -625,8 +626,12 @@ parole_player_update_languages (ParolePlayer *player, ParoleGst *gst)
 {
 	if (player->priv->update_languages == TRUE)
 	{
-		parole_player_update_audio_tracks(player, gst);
-		parole_player_update_subtitles(player, gst);
+		if (gst_get_has_video( PAROLE_GST(player->priv->gst) ))
+		{
+			parole_player_update_audio_tracks(player, gst);
+		
+			parole_player_update_subtitles(player, gst);
+		}
 		player->priv->update_languages = FALSE;
 	}
 }
