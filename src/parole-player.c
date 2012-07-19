@@ -1807,24 +1807,15 @@ parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
     
     switch (ev->keyval)
     {
-	case GDK_F11:
 	case GDK_f:
 	case GDK_F:
 	    parole_player_full_screen_menu_item_activate (player);
-	    ret_val = TRUE;
-	    break;
-	case GDK_plus:
-	    parole_player_volume_up (NULL, player);
 	    ret_val = TRUE;
 	    break;
 	case GDK_space:
 	case GDK_p:
 	case GDK_P:
 	    parole_player_play_pause_clicked (NULL, player);
-	    ret_val = TRUE;
-	    break;
-	case GDK_minus:
-	    parole_player_volume_down (NULL, player);
 	    ret_val = TRUE;
 	    break;
 	case GDK_Right:
@@ -1852,13 +1843,6 @@ parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
 	    parole_media_list_open_location (player->priv->list);
 	    break;
 #endif
-	case GDK_O:
-	case GDK_o:
-	    if ( ev->state & GDK_CONTROL_MASK )
-	    {
-		parole_player_full_screen (player, FALSE);
-		parole_media_list_open (player->priv->list);
-	    }
 	break;
 	/* 
 	 * Pass these to the media list and tell it to
