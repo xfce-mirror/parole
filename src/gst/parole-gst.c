@@ -2188,6 +2188,84 @@ parole_gst_set_cursor_visible (ParoleGst *gst, gboolean visible)
 	parole_window_invisible_cursor (GTK_WIDGET (gst)->window);
 }
 
+GList *
+gst_get_lang_list_for_type (ParoleGst * gst, const gchar * type_name)
+{
+  GList *ret = NULL;
+  gint num = 1;
+
+  if (g_str_equal (type_name, "AUDIO")) {
+    gint i, n;
+
+    g_object_get (G_OBJECT (gst->priv->playbin), "n-audio", &n, NULL);
+    if (n == 0)
+      return NULL;
+
+    for (i = 0; i < n; i++) {
+      GstTagList *tags = NULL;
+
+      g_signal_emit_by_name (G_OBJECT (gst->priv->playbin), "get-audio-tags",
+          i, &tags);
+
+      if (tags) {
+        gchar *lc = NULL, *cd = NULL;
+
+	gst_tag_list_get_string (tags, GST_TAG_LANGUAGE_CODE, &lc);
+	gst_tag_list_get_string (tags, GST_TAG_CODEC, &lc);
+
+        if (lc) {
+	  ret = g_list_prepend (ret, lc);
+	  g_free (cd);
+	} else if (cd) {
+	  ret = g_list_prepend (ret, cd);
+	} else {
+	  ret = g_list_prepend (ret, g_strdup_printf (_("Audio Track #%d"), num++));
+	}
+	gst_tag_list_free (tags);
+      } else {
+	ret = g_list_prepend (ret, g_strdup_printf (_("Audio Track #%d"), num++));
+      }
+    }
+  } else if (g_str_equal (type_name, "TEXT")) {
+    gint i, n = 0;
+
+    g_object_get (G_OBJECT (gst->priv->playbin), "n-text", &n, NULL);
+    if (n == 0)
+      return NULL;
+
+    for (i = 0; i < n; i++) {
+      GstTagList *tags = NULL;
+
+      g_signal_emit_by_name (G_OBJECT (gst->priv->playbin), "get-text-tags",
+          i, &tags);
+
+      if (tags) {
+        gchar *lc = NULL, *cd = NULL;
+
+	gst_tag_list_get_string (tags, GST_TAG_LANGUAGE_CODE, &lc);
+	gst_tag_list_get_string (tags, GST_TAG_CODEC, &lc);
+
+        if (lc) {
+	  ret = g_list_prepend (ret, lc);
+	  g_free (cd);
+	} else if (cd) {
+	  ret = g_list_prepend (ret, cd);
+	} else {
+	  ret = g_list_prepend (ret, g_strdup_printf (_("Subtitle #%d"), num++));
+	}
+	gst_tag_list_free (tags);
+      } else {
+	ret = g_list_prepend (ret, g_strdup_printf (_("Subtitle #%d"), num++));
+      }
+    }
+  } else {
+    g_critical ("Invalid stream type '%s'", type_name);
+    return NULL;
+  }
+
+  return g_list_reverse (ret);
+}
+
 const ParoleStream     *parole_gst_get_stream 		(ParoleGst *gst)
 {
     g_return_val_if_fail (PAROLE_IS_GST (gst), NULL);
