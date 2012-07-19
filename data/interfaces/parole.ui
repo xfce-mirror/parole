@@ -188,6 +188,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_action_appearance">False</property>
+                        <property name="use_underline">True</property>
                         <property name="image">image14</property>
                         <property name="use_stock">False</property>
                         <child type="submenu">
@@ -285,7 +286,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_action_appearance">False</property>
-                        <property name="label" translatable="yes">Repeat</property>
+                        <property name="label" translatable="yes">_Repeat</property>
                         <property name="use_underline">True</property>
                         <signal name="toggled" handler="parole_player_repeat_toggled_cb" swapped="no"/>
                       </object>
@@ -295,7 +296,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_action_appearance">False</property>
-                        <property name="label" translatable="yes">Shuffle</property>
+                        <property name="label" translatable="yes">_Shuffle</property>
                         <property name="use_underline">True</property>
                         <signal name="toggled" handler="parole_player_shuffle_toggled_cb" swapped="no"/>
                       </object>
@@ -311,7 +312,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_action_appearance">False</property>
-                        <property name="label" translatable="yes">Plugins</property>
+                        <property name="label" translatable="yes">Pl_ugins</property>
                         <property name="use_underline">True</property>
                       </object>
                     </child>
@@ -356,7 +357,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_action_appearance">False</property>
-                        <property name="label" translatable="yes">Aspect Ratio</property>
+                        <property name="label" translatable="yes">_Aspect Ratio</property>
                         <property name="use_underline">True</property>
                         <child type="submenu">
                           <object class="GtkMenu" id="menu5">
