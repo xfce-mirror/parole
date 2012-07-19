@@ -347,7 +347,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_action_appearance">False</property>
-                        <property name="label" translatable="yes">Show playlist</property>
+                        <property name="label" translatable="yes">Show _playlist</property>
                         <property name="use_underline">True</property>
                         <accelerator key="F9" signal="activate"/>
                         <signal name="activate" handler="parole_player_show_hide_playlist" swapped="no"/>
