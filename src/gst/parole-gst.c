@@ -2272,6 +2272,12 @@ gst_set_current_audio_track( ParoleGst *gst, gint track_no )
 	g_object_set (G_OBJECT (gst->priv->playbin), "current-audio", (track_no), NULL);
 }
 
+void
+gst_set_current_subtitle_track( ParoleGst *gst, gint track_no )
+{
+	g_object_set (G_OBJECT (gst->priv->playbin), "current-text", (track_no-1), NULL);
+}
+
 const ParoleStream     *parole_gst_get_stream 		(ParoleGst *gst)
 {
     g_return_val_if_fail (PAROLE_IS_GST (gst), NULL);
