@@ -134,6 +134,10 @@ void            parole_player_forward_cb                  (GtkButton *button,
 							 
 void            parole_player_back_cb                  (GtkButton *button, 
 							 ParolePlayer *player);
+							 
+void 			parole_player_seekf_cb (GtkWidget *widget, ParolePlayer *player);
+
+void 			parole_player_seekb_cb (GtkWidget *widget, ParolePlayer *player);
 
 gboolean        parole_player_scroll_event_cb		(GtkWidget *widget,
 							 GdkEventScroll *ev,
@@ -1152,6 +1156,28 @@ void parole_player_back_cb (GtkButton *button, ParolePlayer *player)
 	parole_player_play_prev (player);
 }
 
+void parole_player_seekf_cb (GtkWidget *widget, ParolePlayer *player)
+{
+	gdouble seek;
+	
+	seek =  parole_gst_get_stream_position (PAROLE_GST (player->priv->gst) )
+			+
+			parole_player_get_seek_value (player);
+			
+	parole_gst_seek (PAROLE_GST (player->priv->gst), seek);
+}
+
+void parole_player_seekb_cb (GtkWidget *widget, ParolePlayer *player)
+{
+	gdouble seek;
+	
+	seek =  parole_gst_get_stream_position (PAROLE_GST (player->priv->gst) )
+			-
+			parole_player_get_seek_value (player);
+			
+	parole_gst_seek (PAROLE_GST (player->priv->gst), seek);
+}
+
 gboolean parole_player_scroll_event_cb (GtkWidget *widget, GdkEventScroll *ev, ParolePlayer *player)
 {
     gboolean ret_val = FALSE;
@@ -1826,12 +1852,12 @@ parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
 	case GDK_Right:
 	    /* Media seekable ?*/
 	    if ( GTK_WIDGET_SENSITIVE (player->priv->range) )
-		parole_player_forward_cb (NULL, player);
+		parole_player_seekf_cb (NULL, player);
 	    ret_val = TRUE;
 	    break;
 	case GDK_Left:
 	    if ( GTK_WIDGET_SENSITIVE (player->priv->range) )
-		parole_player_back_cb (NULL, player);
+		parole_player_seekb_cb (NULL, player);
 	    ret_val = TRUE;
 	    break;
 	case GDK_s:
