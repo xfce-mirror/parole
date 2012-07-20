@@ -17,6 +17,9 @@ DISTCLEANFILES = \
 	intltool-merge \
 	intltool-update
 
+distuninstallcheck_listfiles = \
+	find -type f \! -name icon-theme.cache
+
 distclean-local:
 	rm -rf *.cache
 
