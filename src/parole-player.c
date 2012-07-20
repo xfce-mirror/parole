@@ -2296,7 +2296,7 @@ parole_player_init (ParolePlayer *player)
 	gtk_widget_reparent (infobar_contents, content_area);
 	gtk_info_bar_add_button (GTK_INFO_BAR (player->priv->infobar),
 		                     GTK_STOCK_CLOSE, GTK_RESPONSE_OK);
-	g_signal_connect (player->priv->infobar, "response",
+	g_signal_connect (G_OBJECT(player->priv->infobar), "response",
 		              G_CALLBACK (gtk_widget_hide), NULL);
 		              
 	gtk_info_bar_set_message_type (GTK_INFO_BAR (player->priv->infobar),
