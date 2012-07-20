@@ -1940,8 +1940,10 @@ void parole_gst_play_uri (ParoleGst *gst, const gchar *uri, const gchar *subtitl
 							    gst);
     
     parole_window_busy_cursor (GTK_WIDGET (gst)->window);
-
+    
     g_idle_add ((GSourceFunc) parole_gst_play_idle, gst);
+    
+    gst->priv->device = NULL;
 }
 
 void parole_gst_play_device_uri (ParoleGst *gst, const gchar *uri, const gchar *device)

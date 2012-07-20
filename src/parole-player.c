@@ -500,6 +500,7 @@ parole_player_reset (ParolePlayer *player)
 {
 	player->priv->update_languages = TRUE;
 	gtk_window_set_title (GTK_WINDOW (player->priv->window), "Parole Media Player");
+	player->priv->current_media_type = PAROLE_MEDIA_TYPE_UNKNOWN;
 	gtk_widget_hide(GTK_WIDGET(player->priv->infobar));
     parole_player_change_range_value (player, 0);
 
