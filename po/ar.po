@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-20 18:51+0000\n"
+"POT-Creation-Date: 2012-07-20 11:45+0200\n"
 "PO-Revision-Date: 2012-05-21 00:17+0300\n"
 "Last-Translator: mohammad <malham1@gmail.com>\n"
 "Language-Team: http://www.vertaal.com.ar/files/factory/ar/list/\n"
@@ -21,284 +21,356 @@ msgstr ""
 "X-Poedit-Language: Arabic\n"
 "X-Poedit-Country: Morocco\n"
 
-#: ../data/interfaces/parole.ui.h:1
-msgid "16:9 (Widescreen)"
-msgstr "16:9 (شاشة عريضة)"
+#: ../data/interfaces/parole.ui.h:1 ../src/parole-about.c:89
+msgid "Parole Media Player"
+msgstr "Parole مشغل الوسائط"
 
 #: ../data/interfaces/parole.ui.h:2
-msgid "20:9 (DVB)"
-msgstr "20:9 (DVB)"
+msgid "_Media"
+msgstr "_وسائط"
 
 #: ../data/interfaces/parole.ui.h:3
-msgid "4:3 (TV)"
-msgstr "4:3 (TV)"
+#, fuzzy
+msgid "Open _location"
+msgstr "_إفتح موقع"
 
 #: ../data/interfaces/parole.ui.h:4
-msgid "Aspect Ratio"
-msgstr "نسبة الإرتفاع"
+msgid "_DVD"
+msgstr ""
 
 #: ../data/interfaces/parole.ui.h:5
-msgid "Auto"
-msgstr "ذاتي"
-
-#: ../data/interfaces/parole.ui.h:6
-msgid "Chapter Menu"
-msgstr "قائمة الفصل"
-
-#: ../data/interfaces/parole.ui.h:7
-msgid "DVD"
-msgstr "DVD"
-
-#: ../data/interfaces/parole.ui.h:8
-msgid "DVD Menu"
-msgstr "قائمة DVD"
-
-#: ../data/interfaces/parole.ui.h:9
 msgid "From ISO image"
 msgstr "من صورة ISO"
 
+#: ../data/interfaces/parole.ui.h:6
+msgid "_Edit"
+msgstr "_حرر"
+
+#: ../data/interfaces/parole.ui.h:7
+#, fuzzy
+msgid "_Repeat"
+msgstr "إعادة"
+
+#: ../data/interfaces/parole.ui.h:8
+#, fuzzy
+msgid "_Shuffle"
+msgstr "عشوائي"
+
+#: ../data/interfaces/parole.ui.h:9
+#, fuzzy
+msgid "Pl_ugins"
+msgstr "ملحقات"
+
 #: ../data/interfaces/parole.ui.h:10
-msgid "Media player"
-msgstr "مشغل الوسائط"
+msgid "_View"
+msgstr "_أظهر"
 
 #: ../data/interfaces/parole.ui.h:11
-msgid "Mute"
-msgstr "أكتم"
+#, fuzzy
+msgid "Show _playlist"
+msgstr "عرض قائمة التشغيل"
 
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:1215
-#: ../src/parole-disc-menu.c:113
-msgid "Next Chapter"
-msgstr "الفصل التالي"
+#: ../data/interfaces/parole.ui.h:12
+#, fuzzy
+msgid "_Aspect Ratio"
+msgstr "نسبة الإرتفاع"
 
 #: ../data/interfaces/parole.ui.h:13
 msgid "None"
 msgstr "لا شيء"
 
-#: ../data/interfaces/parole.ui.h:14 ../src/parole-about.c:74
-#: ../plugins/window-title/window-title-provider.c:58
-msgid "Parole Media Player"
-msgstr "Parole مشغل الوسائط"
+#: ../data/interfaces/parole.ui.h:14
+msgid "Auto"
+msgstr "ذاتي"
 
 #: ../data/interfaces/parole.ui.h:15
-msgid "Plugins"
-msgstr "ملحقات"
-
-#: ../data/interfaces/parole.ui.h:16 ../src/parole-player.c:1227
-#: ../src/parole-disc-menu.c:114
-msgid "Previous Chapter"
-msgstr "الفصل السابق"
-
-#: ../data/interfaces/parole.ui.h:17 ../src/parole-medialist.c:1264
-msgid "Repeat"
-msgstr "إعادة"
-
-#: ../data/interfaces/parole.ui.h:18
-msgid "Select Track"
-msgstr "إختر مقطع"
-
-#: ../data/interfaces/parole.ui.h:19 ../src/parole-medialist.c:1280
-msgid "Shuffle"
-msgstr "عشوائي"
-
-#: ../data/interfaces/parole.ui.h:20
-msgid "Sound"
-msgstr "صوت"
-
-#: ../data/interfaces/parole.ui.h:21
 msgid "Square"
 msgstr "مربع"
 
+#: ../data/interfaces/parole.ui.h:16
+msgid "4:3 (TV)"
+msgstr "4:3 (TV)"
+
+#: ../data/interfaces/parole.ui.h:17
+msgid "16:9 (Widescreen)"
+msgstr "16:9 (شاشة عريضة)"
+
+#: ../data/interfaces/parole.ui.h:18
+msgid "20:9 (DVB)"
+msgstr "20:9 (DVB)"
+
+#: ../data/interfaces/parole.ui.h:19
+msgid "Sound"
+msgstr "صوت"
+
+#: ../data/interfaces/parole.ui.h:20
+#, fuzzy
+msgid "_Mute"
+msgstr "أكتم"
+
+#: ../data/interfaces/parole.ui.h:21
+#, fuzzy
+msgid "Volume _Up"
+msgstr "رفع حجم الصوت"
+
 #: ../data/interfaces/parole.ui.h:22
-msgid "Volume Down"
+#, fuzzy
+msgid "Volume _Down"
 msgstr "خفظ حجم الصوت"
 
 #: ../data/interfaces/parole.ui.h:23
-msgid "Volume Up"
-msgstr "رفع حجم الصوت"
-
-#: ../data/interfaces/parole.ui.h:24
-msgid "_Edit"
-msgstr "_حرر"
-
-#: ../data/interfaces/parole.ui.h:25
 msgid "_Help"
 msgstr "_مساعدة"
 
-#: ../data/interfaces/parole.ui.h:26
-msgid "_Media"
-msgstr "_وسائط"
+#: ../data/interfaces/parole.ui.h:24
+#, fuzzy
+msgid "Audio Track:"
+msgstr "المقطع السابق"
 
-#: ../data/interfaces/parole.ui.h:27
-msgid "_Open location"
-msgstr "_إفتح موقع"
+#: ../data/interfaces/parole.ui.h:25
+#, fuzzy
+msgid "Subtitles:"
+msgstr "<b>ترجمة</b>"
+
+#: ../data/interfaces/parole.ui.h:26
+msgid "0:00"
+msgstr ""
 
 #: ../data/interfaces/parole.ui.h:28
-msgid "_View"
-msgstr "_أظهر"
+#, fuzzy, no-c-format
+msgid "Buffering (0%)"
+msgstr "تخزين المؤقت"
+
+#: ../data/interfaces/parole.ui.h:29
+msgid "Media player"
+msgstr "مشغل الوسائط"
 
 #: ../data/interfaces/mediachooser.ui.h:1
-msgid "Add"
-msgstr "أضف"
+msgid "Parole Media Chooser"
+msgstr "مشغل وسائط Parole"
 
 #: ../data/interfaces/mediachooser.ui.h:2
 msgid "Open media files"
 msgstr "فتح ملفات الوسائط"
 
 #: ../data/interfaces/mediachooser.ui.h:3
-msgid "Parole Media Chooser"
-msgstr "مشغل وسائط Parole"
+msgid "Open"
+msgstr ""
 
 #: ../data/interfaces/mediachooser.ui.h:4
-msgid "Replace playlist with opened files"
-msgstr "إستبدال قائمة التشغيل مع الملفات المفتوحة"
-
-#: ../data/interfaces/mediachooser.ui.h:5
 msgid "Scan folders recursively"
 msgstr "مسح المجلدات بشكل متكرر"
 
+#: ../data/interfaces/mediachooser.ui.h:5
+msgid "Replace playlist with opened files"
+msgstr "إستبدال قائمة التشغيل مع الملفات المفتوحة"
+
 #: ../data/interfaces/mediachooser.ui.h:6
+#: ../data/interfaces/parole-settings.ui.h:20
 msgid "Start playing opened files"
 msgstr "بدء تشغيل الملفات المفتوحة"
 
 #: ../data/interfaces/plugins.ui.h:1
-msgid "<b>Author:</b>"
-msgstr "<b>مؤلف :</b>"
-
-#: ../data/interfaces/plugins.ui.h:2
-msgid "<b>Description:</b>"
-msgstr "<b>وصف :</b>"
-
-#: ../data/interfaces/plugins.ui.h:3
-msgid "<b>Site:</b>"
-msgstr "<b>موقع :</b>"
-
-#: ../data/interfaces/plugins.ui.h:4
-msgid "Media Player plugins"
-msgstr "Media Player ملحقات"
-
-#: ../data/interfaces/plugins.ui.h:5
 msgid "Parole Plugins"
 msgstr "Parole ملحقات"
 
+#: ../data/interfaces/plugins.ui.h:2
+msgid "Media Player plugins"
+msgstr "Media Player ملحقات"
+
+#: ../data/interfaces/plugins.ui.h:3
+msgid "Enabled"
+msgstr ""
+
+#: ../data/interfaces/plugins.ui.h:4
+msgid "Plugin"
+msgstr "ملحقات"
+
+#: ../data/interfaces/plugins.ui.h:5
+msgid "<b>Description:</b>"
+msgstr "<b>وصف :</b>"
+
+#: ../data/interfaces/plugins.ui.h:6
+msgid "<b>Author:</b>"
+msgstr "<b>مؤلف :</b>"
+
+#: ../data/interfaces/plugins.ui.h:7
+msgid "<b>Site:</b>"
+msgstr "<b>موقع :</b>"
+
 #: ../data/interfaces/parole-settings.ui.h:1
-msgid "<b>Audio</b>"
-msgstr "<b>صوت</b>"
+msgid "Parole Settings"
+msgstr "إعدادات Parole"
 
 #: ../data/interfaces/parole-settings.ui.h:2
-msgid "<b>Display</b>"
-msgstr "<b>عرض</b>"
+msgid "Media Player Settings"
+msgstr "إعدادات مشغل الوسائط"
 
 #: ../data/interfaces/parole-settings.ui.h:3
-msgid "<b>Subtitles</b>"
-msgstr "<b>ترجمة</b>"
+#, fuzzy
+msgid "Disable screensaver while playing movies"
+msgstr "تعطبل حافظة الشاشة عنذ تشغيل الافلام"
 
 #: ../data/interfaces/parole-settings.ui.h:4
 msgid "<b>Video</b>"
 msgstr "<b>فيديو</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:5
-msgid "Automatically load subtitles when playing movie file"
-msgstr "تحميل الترجمة تلقائيا عنذ تشغيل الفيلم"
-
-#: ../data/interfaces/parole-settings.ui.h:6
-msgid "Brightness:"
-msgstr "سطوع:"
-
-#: ../data/interfaces/parole-settings.ui.h:7
-msgid "Contrast:"
-msgstr "تباين:"
-
-#: ../data/interfaces/parole-settings.ui.h:8
-msgid "Disable screen saver while playing movies"
-msgstr "تعطبل حافظة الشاشة عنذ تشغيل الافلام"
-
-#: ../data/interfaces/parole-settings.ui.h:9
 msgid "Enable visualization when playing audio file"
 msgstr "تفعبل المرئيات عنذ تشغيل ملف صوتي"
 
-#: ../data/interfaces/parole-settings.ui.h:10
-msgid "Encoding: "
-msgstr "تشفير: "
-
-#: ../data/interfaces/parole-settings.ui.h:11
-msgid "Font:"
-msgstr "خط:"
-
-#: ../data/interfaces/parole-settings.ui.h:12
-msgid "Hue:"
-msgstr "لون:"
-
-#: ../data/interfaces/parole-settings.ui.h:13
-msgid "Media Player Settings"
-msgstr "إعدادات مشغل الوسائط"
-
-#: ../data/interfaces/parole-settings.ui.h:14
-msgid "Parole Settings"
-msgstr "إعدادات Parole"
-
-#: ../data/interfaces/parole-settings.ui.h:15
-msgid "Reset To Defaults"
-msgstr "الرجوع إلى وضع البدئي"
-
-#: ../data/interfaces/parole-settings.ui.h:16
-msgid "Saturation:"
-msgstr "الإشباع:"
-
-#: ../data/interfaces/parole-settings.ui.h:17
+#: ../data/interfaces/parole-settings.ui.h:6
 msgid "Visualization type:"
 msgstr "نوع مجموعة المرئيات:"
 
-#: ../data/interfaces/save-playlist.ui.h:1
-msgid "By Extension"
-msgstr "حسب الإختصار"
+#: ../data/interfaces/parole-settings.ui.h:7
+msgid "<b>Audio</b>"
+msgstr "<b>صوت</b>"
 
-#: ../data/interfaces/save-playlist.ui.h:2
+#: ../data/interfaces/parole-settings.ui.h:8
+msgid "Enable keyboard multimedia keys"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:9
+#, fuzzy
+msgid "<b>Keyboard</b>"
+msgstr "<b>فيديو</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:10
+#: ../src/plugins/properties/stream-properties-provider.c:341
+msgid "General"
+msgstr "عام"
+
+#: ../data/interfaces/parole-settings.ui.h:11
+msgid "Brightness:"
+msgstr "سطوع:"
+
+#: ../data/interfaces/parole-settings.ui.h:12
+msgid "Contrast:"
+msgstr "تباين:"
+
+#: ../data/interfaces/parole-settings.ui.h:13
+msgid "Hue:"
+msgstr "لون:"
+
+#: ../data/interfaces/parole-settings.ui.h:14
+msgid "Saturation:"
+msgstr "الإشباع:"
+
+#: ../data/interfaces/parole-settings.ui.h:15
+#, fuzzy
+msgid "Reset to defaults"
+msgstr "الرجوع إلى وضع البدئي"
+
+#: ../data/interfaces/parole-settings.ui.h:16
+msgid "<b>Display</b>"
+msgstr "<b>عرض</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:17
+#, fuzzy
+msgid "Display"
+msgstr "<b>عرض</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:18
+#, fuzzy
+msgid "Always replace playlist with opened files"
+msgstr "إستبدال قائمة التشغيل مع الملفات المفتوحة"
+
+#: ../data/interfaces/parole-settings.ui.h:19
+msgid "Check and remove duplicated media entries"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:21
+#, fuzzy
+msgid "<b>Playlist options</b>"
+msgstr "<b>جاري القراءة :</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:22 ../src/parole-medialist.c:667
+#: ../src/parole-player.c:2315
+msgid "Playlist"
+msgstr "قائمة التشغيل"
+
+#: ../data/interfaces/parole-settings.ui.h:23
+#, fuzzy
+msgid "Automatically show subtitles when playing movie file"
+msgstr "تحميل الترجمة تلقائيا عنذ تشغيل الفيلم"
+
+#: ../data/interfaces/parole-settings.ui.h:24
+msgid "Font:"
+msgstr "خط:"
+
+#: ../data/interfaces/parole-settings.ui.h:25
+#, fuzzy
+msgid "Encoding:"
+msgstr "تشفير: "
+
+#: ../data/interfaces/parole-settings.ui.h:26
+msgid "<b>Subtitles</b>"
+msgstr "<b>ترجمة</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:27
+#, fuzzy
+msgid "Subtitles"
+msgstr "<b>ترجمة</b>"
+
+#: ../data/interfaces/save-playlist.ui.h:1
 msgid "Select File Types (By Extension)"
 msgstr "إختر نوع الملف (حسب الإختصار)"
 
+#: ../data/interfaces/save-playlist.ui.h:2
+msgid "By Extension"
+msgstr "حسب الإختصار"
+
 #: ../data/interfaces/open-location.ui.h:1
-msgid "Clear history"
-msgstr "محو التاريخ"
+#, fuzzy
+msgid "Open Location"
+msgstr "_إفتح موقع"
 
 #: ../data/interfaces/open-location.ui.h:2
-msgid "Enter the address of a location to open"
-msgstr "أدخل عنوان المسار الذي سيتم فتحه"
-
-#: ../data/interfaces/open-location.ui.h:3
-msgid "Open location of media file or live stream"
-msgstr "فتح موقع ملف وسائط أو بث مباشر"
+msgid "Please enter a network URL:"
+msgstr ""
 
 #: ../data/desktop/parole.desktop.in.in.h:1
 msgid "Parole"
 msgstr "Parole"
 
-#: ../common/parole-common.c:67
+#: ../src/common/parole-common.c:67
 msgid "Message"
 msgstr "رسالة"
 
-#: ../common/parole-common.c:72
+#: ../src/common/parole-common.c:72
 msgid "Error"
 msgstr "خطأ"
 
-#: ../gst/parole-gst.c:1526
-msgid "The stream is taking too much time to load"
-msgstr "البيانات تأخذ الكثير من الوقت للتحميل"
-
-#: ../gst/parole-gst.c:1526
+#: ../src/gst/parole-gst.c:1496
 msgid "Stop"
 msgstr "توقف"
 
-#: ../gst/parole-gst.c:1715
+#: ../src/gst/parole-gst.c:1497
+msgid "The stream is taking too much time to load"
+msgstr "البيانات تأخذ الكثير من الوقت للتحميل"
+
+#: ../src/gst/parole-gst.c:1666
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr "غير قادر على تشغيل إضافات GStreamer، تأكد من تنصيب GStreamer"
 
-#: ../gst/parole-gst.c:1735
+#: ../src/gst/parole-gst.c:1690
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr "غير قادر على تحميل فيديو GStreamer، تأكد من تنصيب GStreamer"
 
-#: ../src/main.c:54
+#: ../src/gst/parole-gst.c:2222 ../src/gst/parole-gst.c:2226
+#, fuzzy, c-format
+msgid "Audio Track #%d"
+msgstr "مقطع %i"
+
+#: ../src/gst/parole-gst.c:2254 ../src/gst/parole-gst.c:2258
+#, c-format
+msgid "Subtitle #%d"
+msgstr ""
+
+#: ../src/main.c:53
 #, c-format
 msgid ""
 "\n"
@@ -319,217 +391,184 @@ msgstr ""
 "تحت رخصة الجنو GPL.\n"
 "\n"
 
-#: ../src/main.c:187
+#: ../src/main.c:186
 msgid "Unknown argument "
 msgstr "عنصر مجهول "
 
-#: ../src/main.c:225
+#: ../src/main.c:223
 msgid "Open a new instance"
 msgstr "فتح نموذج جديد"
 
-#: ../src/main.c:226
+#: ../src/main.c:224
 msgid "Do not load plugins"
 msgstr "عدم تحميل الملحقات"
 
-#: ../src/main.c:227
+#: ../src/main.c:225
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "إختر مسار الجهاز Audio-CD/VCD/DVD"
 
-#: ../src/main.c:228
+#: ../src/main.c:226
 msgid "Play or pause if already playing"
 msgstr "تشغيل أو إقاف مؤقت إذا كان يعمل"
 
-#: ../src/main.c:229
+#: ../src/main.c:227
 msgid "Stop playing"
 msgstr "إقاف القراءة"
 
-#: ../src/main.c:230
+#: ../src/main.c:228
 msgid "Next track"
 msgstr "المقطع التالي"
 
-#: ../src/main.c:231
+#: ../src/main.c:229
 msgid "Previous track"
 msgstr "المقطع السابق"
 
-#: ../src/main.c:232
+#: ../src/main.c:230
 msgid "Seek forward"
 msgstr "الأمام"
 
-#: ../src/main.c:233
+#: ../src/main.c:231
 msgid "Seek Backward"
 msgstr "الوراء"
 
-#: ../src/main.c:234
+#: ../src/main.c:232
 msgid "Raise volume"
 msgstr "زيادة حجم الصوت"
 
-#: ../src/main.c:235
+#: ../src/main.c:233
 msgid "Lower volume"
 msgstr "تقليص حجم الصوت"
 
-#: ../src/main.c:236
+#: ../src/main.c:234
 msgid "Mute volume"
 msgstr "كتم الصوت"
 
-#: ../src/main.c:237
+#: ../src/main.c:235
 msgid "Version information"
 msgstr "معلومات النسخة"
 
-#: ../src/main.c:238
+#: ../src/main.c:236
 msgid "Start in fullscreen mode"
 msgstr "بدء ملء الشاشة"
 
-#: ../src/main.c:239
+#: ../src/main.c:237
 msgid "Enabled/Disable XV support"
 msgstr "تفعيل/تعطيل دعم XV"
 
-#: ../src/main.c:241
+#: ../src/main.c:239
 msgid "Media to play"
 msgstr "وسائط للتشغيل"
 
-#: ../src/main.c:278
+#: ../src/main.c:276
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole يعمل حالبا, إستعمل -i لفتح واحد أخر\n"
 
-#: ../src/parole-medialist.c:501
+#: ../src/parole-medialist.c:526
 msgid "Permission denied"
 msgstr "صلاحيات غبر كافية"
 
-#: ../src/parole-medialist.c:503
+#: ../src/parole-medialist.c:528
 msgid "Error saving playlist file"
 msgstr "خلل أتناء حفظ قائمة التشغيل"
 
-#: ../src/parole-medialist.c:515
+#: ../src/parole-medialist.c:540
 msgid "Unknown playlist format"
 msgstr "صيغة قائمة التشغبل غبر معروفة"
 
-#: ../src/parole-medialist.c:516
+#: ../src/parole-medialist.c:541
 msgid "Please chooser a supported playlist format"
 msgstr "المرجوا إختيار صيغة قائمة التشغبل مدعومة"
 
-#: ../src/parole-medialist.c:568 ../src/parole-plugins-manager.c:377
-#: ../plugins/properties/stream-properties-provider.c:140
-#: ../plugins/properties/stream-properties-provider.c:141
-#: ../plugins/properties/stream-properties-provider.c:142
-#: ../plugins/properties/stream-properties-provider.c:143
+#: ../src/parole-medialist.c:593 ../src/parole-plugins-manager.c:378
+#: ../src/plugins/properties/stream-properties-provider.c:140
+#: ../src/plugins/properties/stream-properties-provider.c:141
+#: ../src/plugins/properties/stream-properties-provider.c:142
+#: ../src/plugins/properties/stream-properties-provider.c:143
 msgid "Unknown"
 msgstr "مجهول"
 
-#: ../src/parole-medialist.c:642 ../src/parole-player.c:1991
-msgid "Playlist"
-msgstr "قائمة التشغيل"
-
-#: ../src/parole-medialist.c:649
+#: ../src/parole-medialist.c:674
 msgid "M3U Playlists"
 msgstr "قائمة التشغيل M3U"
 
-#: ../src/parole-medialist.c:657
+#: ../src/parole-medialist.c:682
 msgid "PLS Playlists"
 msgstr "قائمة التشغيل PLS"
 
-#: ../src/parole-medialist.c:665
+#: ../src/parole-medialist.c:690
 msgid "Advanced Stream Redirector"
 msgstr "إعدادات قرأة المسار"
 
-#: ../src/parole-medialist.c:673
+#: ../src/parole-medialist.c:698
 msgid "Shareable Playlist"
 msgstr "قائمة التشغيل قابلة المشاركة"
 
 #. Clear
-#: ../src/parole-medialist.c:1152
+#: ../src/parole-medialist.c:1105
 msgid "Open Containing Folder"
 msgstr "فتح المجلد المتضمن"
 
-#: ../src/parole-medialist.c:1303
+#: ../src/parole-medialist.c:1217
+msgid "Repeat"
+msgstr "إعادة"
+
+#: ../src/parole-medialist.c:1233
+msgid "Shuffle"
+msgstr "عشوائي"
+
+#: ../src/parole-medialist.c:1256
 msgid "Replace playlist when opening files"
 msgstr "استبدال قائمة التشغيل عند فتح الملفات"
 
-#: ../src/parole-medialist.c:1319
+#: ../src/parole-medialist.c:1272
 msgid "Play opened files"
 msgstr "شغل الملفات المفتوحة"
 
 #. *
 #. * Remember media list entries
 #. *
-#: ../src/parole-medialist.c:1331
+#: ../src/parole-medialist.c:1284
 msgid "Remember playlist"
 msgstr "تذكر قائمة التشغيل"
 
-#: ../src/parole-medialist.c:1502
+#: ../src/parole-medialist.c:1473
 msgid "Media list"
 msgstr "قائمة التشغيل"
 
-#: ../src/parole-player.c:336
-msgid "Hide playlist"
-msgstr "إخفاء قائمة التشغيل"
-
-#: ../src/parole-player.c:345
-msgid "Show playlist"
-msgstr "عرض قائمة التشغيل"
-
-#: ../src/parole-player.c:378
+#: ../src/parole-player.c:432
 msgid "Open ISO image"
 msgstr "فتح صورة ISO"
 
-#: ../src/parole-player.c:395
+#: ../src/parole-player.c:449
 msgid "CD image"
 msgstr "صورة CD"
 
-#: ../src/parole-player.c:395
+#: ../src/parole-player.c:449
 msgid "DVD image"
 msgstr "صورة DVD"
 
-#: ../src/parole-player.c:551 ../src/parole-player.c:659
+#: ../src/parole-player.c:779 ../src/parole-player.c:902
 msgid "Media stream is not seekable"
 msgstr "مسار الوسائط غير قابل للقرأة"
 
-#.
-#. * Next chapter menu item
-#.
-#: ../src/parole-player.c:1215 ../src/parole-disc-menu.c:122
-msgid "Next Track"
-msgstr "المقطع التالي"
+#: ../src/parole-player.c:1250
+msgid "GStreamer backend error"
+msgstr ""
 
-#.
-#. * Previous chapter menu item
-#.
-#: ../src/parole-player.c:1227 ../src/parole-disc-menu.c:123
-msgid "Previous Track"
-msgstr "المقطع السابق"
-
-#: ../src/parole-statusbar.c:61
+#: ../src/parole-player.c:1293
 msgid "Buffering"
 msgstr "تخزين المؤقت"
 
-#: ../src/parole-statusbar.c:100
-msgid "Stopped"
-msgstr "موقف"
-
-#: ../src/parole-statusbar.c:104
-msgid "Finished"
-msgstr "إنتها"
-
-#: ../src/parole-statusbar.c:114 ../src/parole-statusbar.c:124
-msgid "Paused"
-msgstr "موقف مؤقتا"
-
-#: ../src/parole-statusbar.c:114
-msgid "Playing"
-msgstr "مقطع قيد التشغيل"
-
-#: ../src/parole-statusbar.c:170 ../src/parole-statusbar.c:174
-msgid "Live stream:"
-msgstr "تدفق مباشر:"
-
-#: ../src/parole-about.c:79
-msgid "Author/Maintainer"
-msgstr "مؤلف / معيل"
-
-#: ../src/parole-about.c:85
-#, c-format
-msgid "Translator (%s)"
+#: ../src/parole-about.c:95
+#, fuzzy
+msgid "translator-credits"
 msgstr "مترجم (%s)"
+
+#: ../src/parole-about.c:98
+#, fuzzy
+msgid "Visit Parole website"
+msgstr "زر الموقع"
 
 #: ../src/parole-disc.c:227
 msgid "Play Disc"
@@ -676,20 +715,16 @@ msgstr "غربي"
 msgid "Vietnamese"
 msgstr "فيتنامي"
 
-#: ../src/parole-disc-menu.c:130
-msgid "Playing Track"
-msgstr "مقطع قيد التشغيل"
+#: ../src/parole-open-location.c:210
+#, fuzzy
+msgid "Clear History"
+msgstr "محو التاريخ"
 
-#: ../src/parole-disc-menu.c:194
-#, c-format
-msgid "Track %i"
-msgstr "مقطع %i"
-
-#: ../src/parole-plugins-manager.c:301 ../src/parole-plugins-manager.c:437
+#: ../src/parole-plugins-manager.c:302 ../src/parole-plugins-manager.c:440
 msgid "Visit Website"
 msgstr "زر الموقع"
 
-#: ../src/parole-plugins-manager.c:416
+#: ../src/parole-plugins-manager.c:418 ../src/parole-plugins-manager.c:419
 msgid "No installed plugins found on this system"
 msgstr "لم يتم رصد أي ملحق متبث في جهازك"
 
@@ -713,105 +748,153 @@ msgstr "Tكل الملفات المدعومة"
 msgid "Playlist files"
 msgstr "قائمة القراءة"
 
-#: ../plugins/properties/stream-properties-provider.c:254
+#: ../src/plugins/properties/stream-properties-provider.c:254
 msgid "Title:"
 msgstr "عنوان:"
 
-#: ../plugins/properties/stream-properties-provider.c:277
+#: ../src/plugins/properties/stream-properties-provider.c:277
 msgid "Artist:"
 msgstr "فنان:"
 
-#: ../plugins/properties/stream-properties-provider.c:300
+#: ../src/plugins/properties/stream-properties-provider.c:300
 msgid "Album:"
 msgstr "ألبوم:"
 
-#: ../plugins/properties/stream-properties-provider.c:323
+#: ../src/plugins/properties/stream-properties-provider.c:323
 msgid "Year:"
 msgstr "سنة:"
 
-#: ../plugins/properties/stream-properties-provider.c:341
-msgid "General"
-msgstr "عام"
-
-#: ../plugins/properties/stream-properties-provider.c:392
+#: ../src/plugins/properties/stream-properties-provider.c:392
 msgid "Stream doesn't support tags changes"
 msgstr "القرأة لا تدعم التغييرات بها"
 
-#: ../plugins/properties/stream-properties-provider.c:399
+#: ../src/plugins/properties/stream-properties-provider.c:399
 msgid "Save media tags changes"
 msgstr "حفظ تغييرات الأوسمة"
 
-#: ../plugins/properties/stream-properties-provider.c:524
+#: ../src/plugins/properties/stream-properties-provider.c:524
 msgid "Properties"
 msgstr "خصائص"
 
-#: ../plugins/properties/stream-properties.desktop.in.h:1
-msgid "Read media properties"
-msgstr "قراءة خصائص الوسيط"
-
-#: ../plugins/properties/stream-properties.desktop.in.h:2
+#: ../src/plugins/properties/stream-properties.desktop.in.h:1
 msgid "Stream Properties"
 msgstr "Stream خصائص"
 
-#: ../plugins/tray/tray-provider.c:283
+#: ../src/plugins/properties/stream-properties.desktop.in.h:2
+msgid "Read media properties"
+msgstr "قراءة خصائص الوسيط"
+
+#: ../src/plugins/tray/tray-provider.c:283
 msgid "<b>Playing:</b>"
 msgstr "<b>جاري القراءة :</b>"
 
-#: ../plugins/tray/tray-provider.c:283
+#: ../src/plugins/tray/tray-provider.c:283
 msgid "<b>Duration:</b>"
 msgstr "<b>مدة :</b>"
 
-#: ../plugins/tray/tray-provider.c:419
+#: ../src/plugins/tray/tray-provider.c:419
 msgid "Tray icon plugin"
 msgstr "ملحق أيقونة الشريط"
 
-#: ../plugins/tray/tray-provider.c:429
+#: ../src/plugins/tray/tray-provider.c:429
 msgid "Enable notification"
 msgstr "تفعيل الإشعارات"
 
-#: ../plugins/tray/tray-provider.c:438
+#: ../src/plugins/tray/tray-provider.c:438
 msgid "Always minimize to tray when window is closed"
 msgstr "دائما تصغير إلى الشريط عنذ الإغلاق"
 
-#: ../plugins/tray/tray-provider.c:477
+#: ../src/plugins/tray/tray-provider.c:477
 msgid "Minimize to tray?"
 msgstr "تصغير إلى الشريط؟"
 
-#: ../plugins/tray/tray-provider.c:483
+#: ../src/plugins/tray/tray-provider.c:483
 msgid "Minimize to tray"
 msgstr "تصغير إلى الشريط"
 
-#: ../plugins/tray/tray-provider.c:499
+#: ../src/plugins/tray/tray-provider.c:499
 msgid "Are you sure you want to quit Parole"
 msgstr "هل تريد حقا مغادرة Parole"
 
-#: ../plugins/tray/tray-provider.c:503
+#: ../src/plugins/tray/tray-provider.c:503
 msgid "Remember my choice"
 msgstr "تذكر إختياري"
 
-#: ../plugins/tray/system-tray.desktop.in.h:1
-msgid "Show icon in the system tray"
-msgstr "أظهر أيقونة في الشريط"
-
-#: ../plugins/tray/system-tray.desktop.in.h:2
+#: ../src/plugins/tray/system-tray.desktop.in.h:1
 msgid "Tray icon"
 msgstr "أيقونة الشريط"
 
-#: ../plugins/window-title/window-title.desktop.in.h:1
-msgid "Set the main window name to the current playing media name."
-msgstr "إظهار اسم الملف قيد التشغيل في النافذة الرئيسية."
+#: ../src/plugins/tray/system-tray.desktop.in.h:2
+msgid "Show icon in the system tray"
+msgstr "أظهر أيقونة في الشريط"
 
-#: ../plugins/window-title/window-title.desktop.in.h:2
-msgid "Window Title"
-msgstr "عنوان النافذة"
+#: ../src/plugins/power-manager/power-manager.desktop.in.h:1
+msgid "Power Manager Plugin"
+msgstr "ملحق مدير الطاقة"
 
-#: ../plugins/power-manager/power-manager.desktop.in.h:1
+#: ../src/plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Inhibit Power Manager from suspending the machine while playing DVD."
 msgstr "منع تعليق الجهاز أتناء تشغيل الدي في دي."
 
-#: ../plugins/power-manager/power-manager.desktop.in.h:2
-msgid "Power Manager Plugin"
-msgstr "ملحق مدير الطاقة"
+#~ msgid "Chapter Menu"
+#~ msgstr "قائمة الفصل"
+
+#~ msgid "DVD"
+#~ msgstr "DVD"
+
+#~ msgid "DVD Menu"
+#~ msgstr "قائمة DVD"
+
+#~ msgid "Next Chapter"
+#~ msgstr "الفصل التالي"
+
+#~ msgid "Previous Chapter"
+#~ msgstr "الفصل السابق"
+
+#~ msgid "Select Track"
+#~ msgstr "إختر مقطع"
+
+#~ msgid "Add"
+#~ msgstr "أضف"
+
+#~ msgid "Enter the address of a location to open"
+#~ msgstr "أدخل عنوان المسار الذي سيتم فتحه"
+
+#~ msgid "Open location of media file or live stream"
+#~ msgstr "فتح موقع ملف وسائط أو بث مباشر"
+
+#~ msgid "Hide playlist"
+#~ msgstr "إخفاء قائمة التشغيل"
+
+#~ msgid "Next Track"
+#~ msgstr "المقطع التالي"
+
+#~ msgid "Stopped"
+#~ msgstr "موقف"
+
+#~ msgid "Finished"
+#~ msgstr "إنتها"
+
+#~ msgid "Paused"
+#~ msgstr "موقف مؤقتا"
+
+#~ msgid "Playing"
+#~ msgstr "مقطع قيد التشغيل"
+
+#~ msgid "Live stream:"
+#~ msgstr "تدفق مباشر:"
+
+#~ msgid "Author/Maintainer"
+#~ msgstr "مؤلف / معيل"
+
+#~ msgid "Playing Track"
+#~ msgstr "مقطع قيد التشغيل"
+
+#~ msgid "Set the main window name to the current playing media name."
+#~ msgstr "إظهار اسم الملف قيد التشغيل في النافذة الرئيسية."
+
+#~ msgid "Window Title"
+#~ msgstr "عنوان النافذة"
 
 #~ msgid "Open location..."
 #~ msgstr "فتح المسار..."
@@ -834,14 +917,8 @@ msgstr "ملحق مدير الطاقة"
 #~ msgid "Copy url"
 #~ msgstr "نسخ الURL"
 
-#~ msgid "Plugin"
-#~ msgstr "ملحقات"
-
 #~ msgid "gtk-close"
 #~ msgstr "غلق-جتك"
 
 #~ msgid "gtk-properties"
 #~ msgstr "خصائص-جتك"
-
-#~ msgid "Visite Website"
-#~ msgstr "زر الموقع"

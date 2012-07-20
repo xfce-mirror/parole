@@ -7,262 +7,377 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-25 18:03+0100\n"
+"POT-Creation-Date: 2012-07-20 11:45+0200\n"
 "PO-Revision-Date: 2010-03-25 21:58+0100\n"
 "Last-Translator: Rihards Priedītis <rprieditis@gmail.com>\n"
 "Language-Team: Latvian <translation-team-lv@lists.sourceforge.net>\n"
+"Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
 "X-Poedit-Language: Latvian\n"
 "X-Poedit-Country: Latvia\n"
 "X-Generator: Lokalize 1.0\n"
 
-#: ../data/interfaces/parole.ui.h:1
-msgid "16:9 (Widescreen)"
-msgstr "16:9 (Platekrāns)"
+#: ../data/interfaces/parole.ui.h:1 ../src/parole-about.c:89
+msgid "Parole Media Player"
+msgstr "Parole multimediju atskaņotājs"
 
 #: ../data/interfaces/parole.ui.h:2
-msgid "20:9 (DVB)"
-msgstr "20:9 (DVB)"
+msgid "_Media"
+msgstr "_Mediji"
 
 #: ../data/interfaces/parole.ui.h:3
-msgid "4:3 (TV)"
-msgstr "4:3 (TV)"
+#, fuzzy
+msgid "Open _location"
+msgstr "_Atvērt vietu"
 
 #: ../data/interfaces/parole.ui.h:4
-msgid "Aspect Ratio"
-msgstr "Izskata attiecība"
+msgid "_DVD"
+msgstr ""
 
 #: ../data/interfaces/parole.ui.h:5
-msgid "Auto"
-msgstr "Auto"
-
-#: ../data/interfaces/parole.ui.h:6
-msgid "Chapter Menu"
-msgstr "Nodaļu izvēlne"
-
-#: ../data/interfaces/parole.ui.h:7
-msgid "DVD"
-msgstr "DVD"
-
-#: ../data/interfaces/parole.ui.h:8
-msgid "DVD Menu"
-msgstr "DVD izvēlne"
-
-#: ../data/interfaces/parole.ui.h:9
 msgid "From ISO image"
 msgstr "No ISO attēla"
 
+#: ../data/interfaces/parole.ui.h:6
+msgid "_Edit"
+msgstr "R_ediģēt"
+
+#: ../data/interfaces/parole.ui.h:7
+#, fuzzy
+msgid "_Repeat"
+msgstr "Atkārtot"
+
+#: ../data/interfaces/parole.ui.h:8
+#, fuzzy
+msgid "_Shuffle"
+msgstr "Jaukti"
+
+#: ../data/interfaces/parole.ui.h:9
+#, fuzzy
+msgid "Pl_ugins"
+msgstr "Spraudņi"
+
 #: ../data/interfaces/parole.ui.h:10
-msgid "Media player"
-msgstr "Multimediju atskaņotājs"
+msgid "_View"
+msgstr "_Skats"
 
 #: ../data/interfaces/parole.ui.h:11
-msgid "Mute"
-msgstr "Apklusināt"
+#, fuzzy
+msgid "Show _playlist"
+msgstr "Rādīt repertuāru"
 
 #: ../data/interfaces/parole.ui.h:12
-#: ../src/parole-player.c:1197
-#: ../src/parole-disc-menu.c:113
-msgid "Next Chapter"
-msgstr "Nākamā nodaļa"
+#, fuzzy
+msgid "_Aspect Ratio"
+msgstr "Izskata attiecība"
 
 #: ../data/interfaces/parole.ui.h:13
 msgid "None"
 msgstr "Nav"
 
 #: ../data/interfaces/parole.ui.h:14
-#: ../data/desktop/parole.desktop.in.in.h:1
-#: ../src/parole-about.c:70
-#: ../plugins/window-title/window-title-provider.c:58
-msgid "Parole Media Player"
-msgstr "Parole multimediju atskaņotājs"
+msgid "Auto"
+msgstr "Auto"
 
 #: ../data/interfaces/parole.ui.h:15
-msgid "Plugins"
-msgstr "Spraudņi"
-
-#: ../data/interfaces/parole.ui.h:16
-#: ../src/parole-player.c:1209
-#: ../src/parole-disc-menu.c:114
-msgid "Previous Chapter"
-msgstr "Iepriekšējā nodaļa"
-
-#: ../data/interfaces/parole.ui.h:17
-msgid "Repeat"
-msgstr "Atkārtot"
-
-#: ../data/interfaces/parole.ui.h:18
-msgid "Select Track"
-msgstr "Izvēlēties celiņu"
-
-#: ../data/interfaces/parole.ui.h:19
-msgid "Shuffle"
-msgstr "Jaukti"
-
-#: ../data/interfaces/parole.ui.h:20
-msgid "Sound"
-msgstr "Skaņa"
-
-#: ../data/interfaces/parole.ui.h:21
 msgid "Square"
 msgstr "Kvadrāts"
 
+#: ../data/interfaces/parole.ui.h:16
+msgid "4:3 (TV)"
+msgstr "4:3 (TV)"
+
+#: ../data/interfaces/parole.ui.h:17
+msgid "16:9 (Widescreen)"
+msgstr "16:9 (Platekrāns)"
+
+#: ../data/interfaces/parole.ui.h:18
+msgid "20:9 (DVB)"
+msgstr "20:9 (DVB)"
+
+#: ../data/interfaces/parole.ui.h:19
+msgid "Sound"
+msgstr "Skaņa"
+
+#: ../data/interfaces/parole.ui.h:20
+#, fuzzy
+msgid "_Mute"
+msgstr "Apklusināt"
+
+#: ../data/interfaces/parole.ui.h:21
+#, fuzzy
+msgid "Volume _Up"
+msgstr "Skaļāk"
+
 #: ../data/interfaces/parole.ui.h:22
-msgid "Volume Down"
+#, fuzzy
+msgid "Volume _Down"
 msgstr "Klusāk"
 
 #: ../data/interfaces/parole.ui.h:23
-msgid "Volume Up"
-msgstr "Skaļāk"
-
-#: ../data/interfaces/parole.ui.h:24
-msgid "_Edit"
-msgstr "R_ediģēt"
-
-#: ../data/interfaces/parole.ui.h:25
 msgid "_Help"
 msgstr "_Palīdzība"
 
-#: ../data/interfaces/parole.ui.h:26
-msgid "_Media"
-msgstr "_Mediji"
+#: ../data/interfaces/parole.ui.h:24
+#, fuzzy
+msgid "Audio Track:"
+msgstr "Iepriekšējais celiņš"
 
-#: ../data/interfaces/parole.ui.h:27
-msgid "_Open location"
-msgstr "_Atvērt vietu"
+#: ../data/interfaces/parole.ui.h:25
+#, fuzzy
+msgid "Subtitles:"
+msgstr "<b>Subtitri</b>"
+
+#: ../data/interfaces/parole.ui.h:26
+msgid "0:00"
+msgstr ""
 
 #: ../data/interfaces/parole.ui.h:28
-msgid "_View"
-msgstr "_Skats"
+#, fuzzy, no-c-format
+msgid "Buffering (0%)"
+msgstr "Buferē"
+
+#: ../data/interfaces/parole.ui.h:29
+msgid "Media player"
+msgstr "Multimediju atskaņotājs"
 
 #: ../data/interfaces/mediachooser.ui.h:1
-msgid "Replace playlist with opened files"
-msgstr "Aizvietot repertuāru ar atvērtajiem failiem"
+#, fuzzy
+msgid "Parole Media Chooser"
+msgstr "Parole multimediju atskaņotājs"
 
 #: ../data/interfaces/mediachooser.ui.h:2
+#, fuzzy
+msgid "Open media files"
+msgstr "Pievienot mediju failus"
+
+#: ../data/interfaces/mediachooser.ui.h:3
+msgid "Open"
+msgstr ""
+
+#: ../data/interfaces/mediachooser.ui.h:4
 msgid "Scan folders recursively"
 msgstr "Skenēt mapes rekursīvi"
 
-#: ../data/interfaces/mediachooser.ui.h:3
+#: ../data/interfaces/mediachooser.ui.h:5
+msgid "Replace playlist with opened files"
+msgstr "Aizvietot repertuāru ar atvērtajiem failiem"
+
+#: ../data/interfaces/mediachooser.ui.h:6
+#: ../data/interfaces/parole-settings.ui.h:20
 msgid "Start playing opened files"
 msgstr "Sākt spēlēt atvērtos failus"
 
 #: ../data/interfaces/plugins.ui.h:1
-msgid "<b>Author:</b>"
-msgstr "<b>Autors:</b>"
-
-#: ../data/interfaces/plugins.ui.h:2
-msgid "<b>Description:</b>"
-msgstr "<b>Apraksts:</b>"
-
-#: ../data/interfaces/plugins.ui.h:3
-msgid "<b>Site:</b>"
-msgstr "<b>Vieta:</b>"
-
-#: ../data/interfaces/plugins.ui.h:4
-msgid "Media Player plugins"
-msgstr "Mediju atskaņotāja spraudņi"
-
-#: ../data/interfaces/plugins.ui.h:5
 msgid "Parole Plugins"
 msgstr "Parole spraudņi"
 
+#: ../data/interfaces/plugins.ui.h:2
+msgid "Media Player plugins"
+msgstr "Mediju atskaņotāja spraudņi"
+
+#: ../data/interfaces/plugins.ui.h:3
+msgid "Enabled"
+msgstr ""
+
+#: ../data/interfaces/plugins.ui.h:4
+#, fuzzy
+msgid "Plugin"
+msgstr "Spraudņi"
+
+#: ../data/interfaces/plugins.ui.h:5
+msgid "<b>Description:</b>"
+msgstr "<b>Apraksts:</b>"
+
+#: ../data/interfaces/plugins.ui.h:6
+msgid "<b>Author:</b>"
+msgstr "<b>Autors:</b>"
+
+#: ../data/interfaces/plugins.ui.h:7
+msgid "<b>Site:</b>"
+msgstr "<b>Vieta:</b>"
+
 #: ../data/interfaces/parole-settings.ui.h:1
-msgid "<b>Audio</b>"
-msgstr "<b>Skaņa</b>"
+msgid "Parole Settings"
+msgstr "Parole iestatījumi"
 
 #: ../data/interfaces/parole-settings.ui.h:2
-msgid "<b>Display</b>"
-msgstr "<b>Displejs</b>"
+msgid "Media Player Settings"
+msgstr "Mediju atskaņotāja iestatījumi"
 
 #: ../data/interfaces/parole-settings.ui.h:3
-msgid "<b>Subtitles</b>"
-msgstr "<b>Subtitri</b>"
+#, fuzzy
+msgid "Disable screensaver while playing movies"
+msgstr "Izslēgt ekrāna saudzētāju filmas atskaņošanas laikā"
 
 #: ../data/interfaces/parole-settings.ui.h:4
 msgid "<b>Video</b>"
 msgstr "<b>Video:</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:5
-msgid "Automatically load subtitles when playing movie file"
-msgstr "Automātiski ielādēt subtitrus, kad atskaņo filmu"
-
-#: ../data/interfaces/parole-settings.ui.h:6
-msgid "Brightness:"
-msgstr "Spilgtums:"
-
-#: ../data/interfaces/parole-settings.ui.h:7
-msgid "Contrast:"
-msgstr "Kontrasts:"
-
-#: ../data/interfaces/parole-settings.ui.h:8
-msgid "Disable screen saver while playing movies"
-msgstr "Izslēgt ekrāna saudzētāju filmas atskaņošanas laikā"
-
-#: ../data/interfaces/parole-settings.ui.h:9
 msgid "Enable visualization when playing audio file"
 msgstr "Ieslēgt vizualizāciju, kad atskaņo skaņas failu"
 
-#: ../data/interfaces/parole-settings.ui.h:10
-msgid "Encoding: "
-msgstr "Kodējums: "
-
-#: ../data/interfaces/parole-settings.ui.h:11
-msgid "Font:"
-msgstr "Fonts:"
-
-#: ../data/interfaces/parole-settings.ui.h:12
-msgid "Hue:"
-msgstr "Tonis:"
-
-#: ../data/interfaces/parole-settings.ui.h:13
-msgid "Media Player Settings"
-msgstr "Mediju atskaņotāja iestatījumi"
-
-#: ../data/interfaces/parole-settings.ui.h:14
-msgid "Parole Settings"
-msgstr "Parole iestatījumi"
-
-#: ../data/interfaces/parole-settings.ui.h:15
-msgid "Reset To Defaults"
-msgstr "Atgriezt uz noklusētajām vētrtībām"
-
-#: ../data/interfaces/parole-settings.ui.h:16
-msgid "Saturation:"
-msgstr "Piesātinājums:"
-
-#: ../data/interfaces/parole-settings.ui.h:17
+#: ../data/interfaces/parole-settings.ui.h:6
 msgid "Visualization type:"
 msgstr "Vizualizācijas tips:"
 
-#: ../data/interfaces/save-playlist.ui.h:1
-msgid "By Extension"
-msgstr "Pēc paplašinājuma"
+#: ../data/interfaces/parole-settings.ui.h:7
+msgid "<b>Audio</b>"
+msgstr "<b>Skaņa</b>"
 
-#: ../data/interfaces/save-playlist.ui.h:2
+#: ../data/interfaces/parole-settings.ui.h:8
+msgid "Enable keyboard multimedia keys"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:9
+#, fuzzy
+msgid "<b>Keyboard</b>"
+msgstr "<b>Video:</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:10
+#: ../src/plugins/properties/stream-properties-provider.c:341
+msgid "General"
+msgstr "Vispārīgi"
+
+#: ../data/interfaces/parole-settings.ui.h:11
+msgid "Brightness:"
+msgstr "Spilgtums:"
+
+#: ../data/interfaces/parole-settings.ui.h:12
+msgid "Contrast:"
+msgstr "Kontrasts:"
+
+#: ../data/interfaces/parole-settings.ui.h:13
+msgid "Hue:"
+msgstr "Tonis:"
+
+#: ../data/interfaces/parole-settings.ui.h:14
+msgid "Saturation:"
+msgstr "Piesātinājums:"
+
+#: ../data/interfaces/parole-settings.ui.h:15
+#, fuzzy
+msgid "Reset to defaults"
+msgstr "Atgriezt uz noklusētajām vētrtībām"
+
+#: ../data/interfaces/parole-settings.ui.h:16
+msgid "<b>Display</b>"
+msgstr "<b>Displejs</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:17
+#, fuzzy
+msgid "Display"
+msgstr "<b>Displejs</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:18
+#, fuzzy
+msgid "Always replace playlist with opened files"
+msgstr "Aizvietot repertuāru ar atvērtajiem failiem"
+
+#: ../data/interfaces/parole-settings.ui.h:19
+msgid "Check and remove duplicated media entries"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:21
+#, fuzzy
+msgid "<b>Playlist options</b>"
+msgstr "<b>Atskaņo:</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:22 ../src/parole-medialist.c:667
+#: ../src/parole-player.c:2315
+msgid "Playlist"
+msgstr "Repertuārs"
+
+#: ../data/interfaces/parole-settings.ui.h:23
+#, fuzzy
+msgid "Automatically show subtitles when playing movie file"
+msgstr "Automātiski ielādēt subtitrus, kad atskaņo filmu"
+
+#: ../data/interfaces/parole-settings.ui.h:24
+msgid "Font:"
+msgstr "Fonts:"
+
+#: ../data/interfaces/parole-settings.ui.h:25
+#, fuzzy
+msgid "Encoding:"
+msgstr "Kodējums: "
+
+#: ../data/interfaces/parole-settings.ui.h:26
+msgid "<b>Subtitles</b>"
+msgstr "<b>Subtitri</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:27
+#, fuzzy
+msgid "Subtitles"
+msgstr "<b>Subtitri</b>"
+
+#: ../data/interfaces/save-playlist.ui.h:1
 msgid "Select File Types (By Extension)"
 msgstr "Izvēlēties faila tipu (pēc paplašinājuma)"
 
-#: ../gst/parole-gst.c:1511
-msgid "The stream is taking too much time to load"
-msgstr "Plūsma pārāk ilgi mēģina ielādēties"
+#: ../data/interfaces/save-playlist.ui.h:2
+msgid "By Extension"
+msgstr "Pēc paplašinājuma"
 
-#: ../gst/parole-gst.c:1511
+#: ../data/interfaces/open-location.ui.h:1
+#, fuzzy
+msgid "Open Location"
+msgstr "_Atvērt vietu"
+
+#: ../data/interfaces/open-location.ui.h:2
+msgid "Please enter a network URL:"
+msgstr ""
+
+#: ../data/desktop/parole.desktop.in.in.h:1
+#, fuzzy
+msgid "Parole"
+msgstr "Parole spraudņi"
+
+#: ../src/common/parole-common.c:67
+msgid "Message"
+msgstr ""
+
+#: ../src/common/parole-common.c:72
+msgid "Error"
+msgstr ""
+
+#: ../src/gst/parole-gst.c:1496
 msgid "Stop"
 msgstr "Apturēt"
 
-#: ../gst/parole-gst.c:1700
-msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
-msgstr "Nevar ielādēt playbin GStreamer spraudni, pārbaudiet savu GStreamer instalāciju"
+#: ../src/gst/parole-gst.c:1497
+msgid "The stream is taking too much time to load"
+msgstr "Plūsma pārāk ilgi mēģina ielādēties"
 
-#: ../gst/parole-gst.c:1720
-msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
-msgstr "Nevar ielādēt video GStreamer spraudni, pārbaudiet savu GStreamer instalāciju"
+#: ../src/gst/parole-gst.c:1666
+msgid ""
+"Unable to load playbin GStreamer plugin, check your GStreamer installation"
+msgstr ""
+"Nevar ielādēt playbin GStreamer spraudni, pārbaudiet savu GStreamer "
+"instalāciju"
 
-#: ../src/main.c:54
+#: ../src/gst/parole-gst.c:1690
+msgid ""
+"Unable to load video GStreamer plugin, check your GStreamer installation"
+msgstr ""
+"Nevar ielādēt video GStreamer spraudni, pārbaudiet savu GStreamer instalāciju"
+
+#: ../src/gst/parole-gst.c:2222 ../src/gst/parole-gst.c:2226
+#, fuzzy, c-format
+msgid "Audio Track #%d"
+msgstr "Celiņš %i"
+
+#: ../src/gst/parole-gst.c:2254 ../src/gst/parole-gst.c:2258
+#, c-format
+msgid "Subtitle #%d"
+msgstr ""
+
+#: ../src/main.c:53
 #, c-format
 msgid ""
 "\n"
@@ -283,61 +398,66 @@ msgstr ""
 "Licenzēts zem GNU GPL.\n"
 "\n"
 
-#: ../src/main.c:187
+#: ../src/main.c:186
 msgid "Unknown argument "
 msgstr "Nezināms arguments"
 
-#: ../src/main.c:224
+#: ../src/main.c:223
 msgid "Open a new instance"
 msgstr "Atvērt jaunu instanci"
 
-#: ../src/main.c:225
+#: ../src/main.c:224
 msgid "Do not load plugins"
 msgstr "Neielādēt spraudņus"
 
-#: ../src/main.c:226
+#: ../src/main.c:225
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "Uzstādīt Audio-CD/VCD/DVD ierīces ceļu"
 
-#: ../src/main.c:227
+#: ../src/main.c:226
 msgid "Play or pause if already playing"
 msgstr "Atskaņot vai apturēt, ja jau atskaņo"
 
-#: ../src/main.c:228
+#: ../src/main.c:227
 msgid "Stop playing"
 msgstr "Apturēt atskaņošanu"
 
-#: ../src/main.c:229
+#: ../src/main.c:228
 msgid "Next track"
 msgstr "Nākamais celiņš"
 
-#: ../src/main.c:230
+#: ../src/main.c:229
 msgid "Previous track"
 msgstr "Iepriekšējais celiņš"
 
-#: ../src/main.c:231
+#: ../src/main.c:230
 msgid "Seek forward"
 msgstr "Meklēt uz priekšu"
 
-#: ../src/main.c:232
+#: ../src/main.c:231
 msgid "Seek Backward"
 msgstr "Meklēt atpakaļ"
 
-#: ../src/main.c:233
+#: ../src/main.c:232
 msgid "Raise volume"
 msgstr "Paaugstināt skaļumu"
 
-#: ../src/main.c:234
+#: ../src/main.c:233
 msgid "Lower volume"
 msgstr "Samazināt skaļumu"
 
-#: ../src/main.c:235
+#: ../src/main.c:234
 msgid "Mute volume"
 msgstr "Apklusināt"
 
-#: ../src/main.c:236
+#: ../src/main.c:235
 msgid "Version information"
 msgstr "Versijas informācija"
+
+#: ../src/main.c:236
+#, fuzzy
+msgid "Start in fullscreen mode"
+msgstr "Iziet no pilnekrāna"
 
 #: ../src/main.c:237
 msgid "Enabled/Disable XV support"
@@ -352,131 +472,116 @@ msgstr "Mediji, kurus atskaņot"
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole jau ir palaists, izmantojiet -i, lai atvērtu jaunu instanci\n"
 
-#: ../src/parole-mediachooser.c:213
-msgid "Add media files"
-msgstr "Pievienot mediju failus"
-
-#: ../src/parole-mediachooser.c:246
-msgid "Add"
-msgstr "Pievienot"
-
-#: ../src/parole-medialist.c:437
-msgid "Error saving playlist file"
-msgstr "Gadījās kļūda saglabājot repertuāra failu"
-
-#: ../src/parole-medialist.c:437
+#: ../src/parole-medialist.c:526
 msgid "Permission denied"
 msgstr "Atļauja liegta"
 
-#: ../src/parole-medialist.c:446
-msgid "Unknown playlist format, Please select a support playlist format"
-msgstr "Nezināms repertuāra formāts, lūdzu izvēlieties atbalstītu repertuāra formātu"
+#: ../src/parole-medialist.c:528
+msgid "Error saving playlist file"
+msgstr "Gadījās kļūda saglabājot repertuāra failu"
 
-#: ../src/parole-medialist.c:514
-#: ../src/parole-player.c:1973
-msgid "Playlist"
-msgstr "Repertuārs"
+#: ../src/parole-medialist.c:540
+#, fuzzy
+msgid "Unknown playlist format"
+msgstr "Rādīt repertuāru"
 
-#: ../src/parole-medialist.c:521
+#: ../src/parole-medialist.c:541
+#, fuzzy
+msgid "Please chooser a supported playlist format"
+msgstr ""
+"Nezināms repertuāra formāts, lūdzu izvēlieties atbalstītu repertuāra formātu"
+
+#: ../src/parole-medialist.c:593 ../src/parole-plugins-manager.c:378
+#: ../src/plugins/properties/stream-properties-provider.c:140
+#: ../src/plugins/properties/stream-properties-provider.c:141
+#: ../src/plugins/properties/stream-properties-provider.c:142
+#: ../src/plugins/properties/stream-properties-provider.c:143
+msgid "Unknown"
+msgstr "Nezināms"
+
+#: ../src/parole-medialist.c:674
 msgid "M3U Playlists"
 msgstr "M3U Repertuāri"
 
-#: ../src/parole-medialist.c:529
+#: ../src/parole-medialist.c:682
 msgid "PLS Playlists"
 msgstr "PLS Repertuāri"
 
-#: ../src/parole-medialist.c:537
+#: ../src/parole-medialist.c:690
 msgid "Advanced Stream Redirector"
 msgstr "Advanced Stream Redirector"
 
-#: ../src/parole-medialist.c:545
+#: ../src/parole-medialist.c:698
 msgid "Shareable Playlist"
 msgstr "Koplietojams repertuārs"
 
-#: ../src/parole-medialist.c:860
+#. Clear
+#: ../src/parole-medialist.c:1105
+msgid "Open Containing Folder"
+msgstr ""
+
+#: ../src/parole-medialist.c:1217
+msgid "Repeat"
+msgstr "Atkārtot"
+
+#: ../src/parole-medialist.c:1233
+msgid "Shuffle"
+msgstr "Jaukti"
+
+#: ../src/parole-medialist.c:1256
+#, fuzzy
+msgid "Replace playlist when opening files"
+msgstr "Aizvietot repertuāru ar atvērtajiem failiem"
+
+#: ../src/parole-medialist.c:1272
+#, fuzzy
+msgid "Play opened files"
+msgstr "Sākt spēlēt atvērtos failus"
+
+#. *
+#. * Remember media list entries
+#. *
+#: ../src/parole-medialist.c:1284
 msgid "Remember playlist"
 msgstr "Atcerēties repertuāru"
 
-#: ../src/parole-medialist.c:1012
+#: ../src/parole-medialist.c:1473
 msgid "Media list"
 msgstr "Mediju saraksts"
 
-#: ../src/parole-player.c:333
-msgid "Hide playlist"
-msgstr "Slēpt repertuāru"
-
-#: ../src/parole-player.c:342
-msgid "Show playlist"
-msgstr "Rādīt repertuāru"
-
-#: ../src/parole-player.c:375
+#: ../src/parole-player.c:432
 msgid "Open ISO image"
 msgstr "Atvērt ISO attēlu"
 
-#: ../src/parole-player.c:392
+#: ../src/parole-player.c:449
 msgid "CD image"
 msgstr "CD attēls"
 
-#: ../src/parole-player.c:392
+#: ../src/parole-player.c:449
 msgid "DVD image"
 msgstr "DVD attēls"
 
-#: ../src/parole-player.c:641
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:300
+#: ../src/parole-player.c:779 ../src/parole-player.c:902
 msgid "Media stream is not seekable"
 msgstr "Mediju straumē nevar meklēt"
 
-#.
-#. * Next chapter menu item
-#.
-#: ../src/parole-player.c:1197
-#: ../src/parole-disc-menu.c:122
-msgid "Next Track"
-msgstr "Nākamais celiņš"
+#: ../src/parole-player.c:1250
+msgid "GStreamer backend error"
+msgstr ""
 
-#.
-#. * Previous chapter menu item
-#.
-#: ../src/parole-player.c:1209
-#: ../src/parole-disc-menu.c:123
-msgid "Previous Track"
-msgstr "Iepriekšējais celiņš"
-
-#: ../src/parole-statusbar.c:61
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:593
+#: ../src/parole-player.c:1293
 msgid "Buffering"
 msgstr "Buferē"
 
-#: ../src/parole-statusbar.c:100
-msgid "Stopped"
-msgstr "Apstādināts"
-
-#: ../src/parole-statusbar.c:104
-msgid "Finished"
-msgstr "Pabeigts"
-
-#: ../src/parole-statusbar.c:114
-#: ../src/parole-statusbar.c:124
-msgid "Paused"
-msgstr "Apturēts"
-
-#: ../src/parole-statusbar.c:114
-msgid "Playing"
-msgstr "Atskaņo"
-
-#: ../src/parole-statusbar.c:170
-#: ../src/parole-statusbar.c:174
-msgid "Live stream:"
-msgstr "Dzīvā plūsma:"
-
-#: ../src/parole-about.c:75
-msgid "Author/Maintainer"
-msgstr "Autors/uzturētājs"
-
-#: ../src/parole-about.c:81
-#, c-format
-msgid "Translator (%s)"
+#: ../src/parole-about.c:95
+#, fuzzy
+msgid "translator-credits"
 msgstr "Tulkotājs (%s)"
+
+#: ../src/parole-about.c:98
+#, fuzzy
+msgid "Visit Parole website"
+msgstr "Doties uz tīmekļa vietni"
 
 #: ../src/parole-disc.c:227
 msgid "Play Disc"
@@ -486,10 +591,8 @@ msgstr "Atskaņot disku"
 msgid "Current Locale"
 msgstr "Pašreizējā atrašanās vieta"
 
-#: ../src/parole-subtitle-encoding.c:168
-#: ../src/parole-subtitle-encoding.c:170
-#: ../src/parole-subtitle-encoding.c:172
-#: ../src/parole-subtitle-encoding.c:174
+#: ../src/parole-subtitle-encoding.c:168 ../src/parole-subtitle-encoding.c:170
+#: ../src/parole-subtitle-encoding.c:172 ../src/parole-subtitle-encoding.c:174
 msgid "Arabic"
 msgstr "Arābu"
 
@@ -497,8 +600,7 @@ msgstr "Arābu"
 msgid "Armenian"
 msgstr "Armēņu"
 
-#: ../src/parole-subtitle-encoding.c:180
-#: ../src/parole-subtitle-encoding.c:182
+#: ../src/parole-subtitle-encoding.c:180 ../src/parole-subtitle-encoding.c:182
 #: ../src/parole-subtitle-encoding.c:184
 msgid "Baltic"
 msgstr "Baltu"
@@ -507,22 +609,17 @@ msgstr "Baltu"
 msgid "Celtic"
 msgstr "Ķeltu"
 
-#: ../src/parole-subtitle-encoding.c:190
-#: ../src/parole-subtitle-encoding.c:192
-#: ../src/parole-subtitle-encoding.c:194
-#: ../src/parole-subtitle-encoding.c:196
+#: ../src/parole-subtitle-encoding.c:190 ../src/parole-subtitle-encoding.c:192
+#: ../src/parole-subtitle-encoding.c:194 ../src/parole-subtitle-encoding.c:196
 msgid "Central European"
 msgstr "Centrāleirpas"
 
-#: ../src/parole-subtitle-encoding.c:199
-#: ../src/parole-subtitle-encoding.c:201
-#: ../src/parole-subtitle-encoding.c:203
-#: ../src/parole-subtitle-encoding.c:205
+#: ../src/parole-subtitle-encoding.c:199 ../src/parole-subtitle-encoding.c:201
+#: ../src/parole-subtitle-encoding.c:203 ../src/parole-subtitle-encoding.c:205
 msgid "Chinese Simplified"
 msgstr "Ķīniešu vienkāršotā"
 
-#: ../src/parole-subtitle-encoding.c:208
-#: ../src/parole-subtitle-encoding.c:210
+#: ../src/parole-subtitle-encoding.c:208 ../src/parole-subtitle-encoding.c:210
 #: ../src/parole-subtitle-encoding.c:212
 msgid "Chinese Traditional"
 msgstr "Ķīniešu tradicionālā"
@@ -531,12 +628,9 @@ msgstr "Ķīniešu tradicionālā"
 msgid "Croatian"
 msgstr "Horvātu"
 
-#: ../src/parole-subtitle-encoding.c:218
-#: ../src/parole-subtitle-encoding.c:220
-#: ../src/parole-subtitle-encoding.c:222
-#: ../src/parole-subtitle-encoding.c:224
-#: ../src/parole-subtitle-encoding.c:226
-#: ../src/parole-subtitle-encoding.c:228
+#: ../src/parole-subtitle-encoding.c:218 ../src/parole-subtitle-encoding.c:220
+#: ../src/parole-subtitle-encoding.c:222 ../src/parole-subtitle-encoding.c:224
+#: ../src/parole-subtitle-encoding.c:226 ../src/parole-subtitle-encoding.c:228
 msgid "Cyrillic"
 msgstr "Kirilisks"
 
@@ -544,8 +638,7 @@ msgstr "Kirilisks"
 msgid "Cyrillic/Russian"
 msgstr "Kirilisks/krievu"
 
-#: ../src/parole-subtitle-encoding.c:234
-#: ../src/parole-subtitle-encoding.c:236
+#: ../src/parole-subtitle-encoding.c:234 ../src/parole-subtitle-encoding.c:236
 msgid "Cyrillic/Ukrainian"
 msgstr "Kirilisks/ukraiņu"
 
@@ -553,8 +646,7 @@ msgstr "Kirilisks/ukraiņu"
 msgid "Georgian"
 msgstr "Gruzīnu"
 
-#: ../src/parole-subtitle-encoding.c:242
-#: ../src/parole-subtitle-encoding.c:244
+#: ../src/parole-subtitle-encoding.c:242 ../src/parole-subtitle-encoding.c:244
 #: ../src/parole-subtitle-encoding.c:246
 msgid "Greek"
 msgstr "Grieķu"
@@ -567,10 +659,8 @@ msgstr "Gudžarati"
 msgid "Gurmukhi"
 msgstr "Gurmukhi"
 
-#: ../src/parole-subtitle-encoding.c:255
-#: ../src/parole-subtitle-encoding.c:257
-#: ../src/parole-subtitle-encoding.c:259
-#: ../src/parole-subtitle-encoding.c:261
+#: ../src/parole-subtitle-encoding.c:255 ../src/parole-subtitle-encoding.c:257
+#: ../src/parole-subtitle-encoding.c:259 ../src/parole-subtitle-encoding.c:261
 msgid "Hebrew"
 msgstr "Ivrits"
 
@@ -586,16 +676,13 @@ msgstr "Hindi"
 msgid "Icelandic"
 msgstr "Īslandiešu"
 
-#: ../src/parole-subtitle-encoding.c:273
-#: ../src/parole-subtitle-encoding.c:275
+#: ../src/parole-subtitle-encoding.c:273 ../src/parole-subtitle-encoding.c:275
 #: ../src/parole-subtitle-encoding.c:277
 msgid "Japanese"
 msgstr "Japāņu"
 
-#: ../src/parole-subtitle-encoding.c:280
-#: ../src/parole-subtitle-encoding.c:282
-#: ../src/parole-subtitle-encoding.c:284
-#: ../src/parole-subtitle-encoding.c:286
+#: ../src/parole-subtitle-encoding.c:280 ../src/parole-subtitle-encoding.c:282
+#: ../src/parole-subtitle-encoding.c:284 ../src/parole-subtitle-encoding.c:286
 msgid "Korean"
 msgstr "Korejiešu"
 
@@ -607,8 +694,7 @@ msgstr "Skandināvu"
 msgid "Persian"
 msgstr "Persiešu"
 
-#: ../src/parole-subtitle-encoding.c:295
-#: ../src/parole-subtitle-encoding.c:297
+#: ../src/parole-subtitle-encoding.c:295 ../src/parole-subtitle-encoding.c:297
 msgid "Romanian"
 msgstr "Rumāņu"
 
@@ -620,70 +706,38 @@ msgstr "Dienvideiropiešu"
 msgid "Thai"
 msgstr "Taju"
 
-#: ../src/parole-subtitle-encoding.c:306
-#: ../src/parole-subtitle-encoding.c:308
-#: ../src/parole-subtitle-encoding.c:310
-#: ../src/parole-subtitle-encoding.c:312
+#: ../src/parole-subtitle-encoding.c:306 ../src/parole-subtitle-encoding.c:308
+#: ../src/parole-subtitle-encoding.c:310 ../src/parole-subtitle-encoding.c:312
 msgid "Turkish"
 msgstr "Turku"
 
-#: ../src/parole-subtitle-encoding.c:315
-#: ../src/parole-subtitle-encoding.c:317
-#: ../src/parole-subtitle-encoding.c:319
-#: ../src/parole-subtitle-encoding.c:321
+#: ../src/parole-subtitle-encoding.c:315 ../src/parole-subtitle-encoding.c:317
+#: ../src/parole-subtitle-encoding.c:319 ../src/parole-subtitle-encoding.c:321
 #: ../src/parole-subtitle-encoding.c:323
 msgid "Unicode"
 msgstr "Unikods"
 
-#: ../src/parole-subtitle-encoding.c:326
-#: ../src/parole-subtitle-encoding.c:328
-#: ../src/parole-subtitle-encoding.c:330
-#: ../src/parole-subtitle-encoding.c:332
+#: ../src/parole-subtitle-encoding.c:326 ../src/parole-subtitle-encoding.c:328
+#: ../src/parole-subtitle-encoding.c:330 ../src/parole-subtitle-encoding.c:332
 #: ../src/parole-subtitle-encoding.c:334
 msgid "Western"
 msgstr "Rietumu"
 
-#: ../src/parole-subtitle-encoding.c:337
-#: ../src/parole-subtitle-encoding.c:339
+#: ../src/parole-subtitle-encoding.c:337 ../src/parole-subtitle-encoding.c:339
 #: ../src/parole-subtitle-encoding.c:341
 msgid "Vietnamese"
 msgstr "Vjetnamiešu"
 
-#: ../src/parole-open-location.c:181
-msgid "Open location..."
-msgstr "Atvērt vietu..."
-
-#: ../src/parole-open-location.c:186
-msgid "<b>Open location of media file or live stream:</b>"
-msgstr "<b>Atvērt mediju faila vai dzīvas plūsmas vietu:</b>"
-
-#: ../src/parole-open-location.c:205
-msgid "Clear history"
+#: ../src/parole-open-location.c:210
+#, fuzzy
+msgid "Clear History"
 msgstr "Attīrīt vēsturi"
 
-#: ../src/parole-disc-menu.c:130
-msgid "Playing Track"
-msgstr "Atskaņo celiņu"
-
-#: ../src/parole-disc-menu.c:194
-#, c-format
-msgid "Track %i"
-msgstr "Celiņš %i"
-
-#: ../src/parole-plugins-manager.c:297
-#: ../src/parole-plugins-manager.c:433
+#: ../src/parole-plugins-manager.c:302 ../src/parole-plugins-manager.c:440
 msgid "Visit Website"
 msgstr "Doties uz tīmekļa vietni"
 
-#: ../src/parole-plugins-manager.c:373
-#: ../plugins/properties/stream-properties-provider.c:140
-#: ../plugins/properties/stream-properties-provider.c:141
-#: ../plugins/properties/stream-properties-provider.c:142
-#: ../plugins/properties/stream-properties-provider.c:143
-msgid "Unknown"
-msgstr "Nezināms"
-
-#: ../src/parole-plugins-manager.c:412
+#: ../src/parole-plugins-manager.c:418 ../src/parole-plugins-manager.c:419
 msgid "No installed plugins found on this system"
 msgstr "Nav atrasti instalēti spraudņi uz sistēmas"
 
@@ -707,138 +761,171 @@ msgstr "Visi atbalstītie faili"
 msgid "Playlist files"
 msgstr "Repertuāra faili"
 
-#: ../plugins/properties/stream-properties-provider.c:254
+#: ../src/plugins/properties/stream-properties-provider.c:254
 msgid "Title:"
 msgstr "Nosaukums:"
 
-#: ../plugins/properties/stream-properties-provider.c:277
+#: ../src/plugins/properties/stream-properties-provider.c:277
 msgid "Artist:"
 msgstr "Mākslinieks:"
 
-#: ../plugins/properties/stream-properties-provider.c:300
+#: ../src/plugins/properties/stream-properties-provider.c:300
 msgid "Album:"
 msgstr "Albums:"
 
-#: ../plugins/properties/stream-properties-provider.c:323
+#: ../src/plugins/properties/stream-properties-provider.c:323
 msgid "Year:"
 msgstr "Gads:"
 
-#: ../plugins/properties/stream-properties-provider.c:341
-msgid "General"
-msgstr "Vispārīgi"
-
-#: ../plugins/properties/stream-properties-provider.c:392
+#: ../src/plugins/properties/stream-properties-provider.c:392
 msgid "Stream doesn't support tags changes"
 msgstr "Plūsma neatbalsta birku izmaiņu"
 
-#: ../plugins/properties/stream-properties-provider.c:399
+#: ../src/plugins/properties/stream-properties-provider.c:399
 msgid "Save media tags changes"
 msgstr "Saglabāt mediju birku izmaiņas"
 
-#: ../plugins/properties/stream-properties-provider.c:524
+#: ../src/plugins/properties/stream-properties-provider.c:524
 msgid "Properties"
 msgstr "Īpašības"
 
-#: ../plugins/properties/stream-properties.desktop.in.h:1
-msgid "Read media properties"
-msgstr "Lasīt medija īpašības"
-
-#: ../plugins/properties/stream-properties.desktop.in.h:2
+#: ../src/plugins/properties/stream-properties.desktop.in.h:1
 msgid "Stream Properties"
 msgstr "Plūsmas Īpašības"
 
-#: ../plugins/tray/tray-provider.c:262
+#: ../src/plugins/properties/stream-properties.desktop.in.h:2
+msgid "Read media properties"
+msgstr "Lasīt medija īpašības"
+
+#: ../src/plugins/tray/tray-provider.c:283
 msgid "<b>Playing:</b>"
 msgstr "<b>Atskaņo:</b>"
 
-#: ../plugins/tray/tray-provider.c:262
+#: ../src/plugins/tray/tray-provider.c:283
 msgid "<b>Duration:</b>"
 msgstr "<b>Ilgums:</b>"
 
-#: ../plugins/tray/tray-provider.c:420
+#: ../src/plugins/tray/tray-provider.c:419
 msgid "Tray icon plugin"
 msgstr "Paziņojuma joslas ikonas spraudnis"
 
-#: ../plugins/tray/tray-provider.c:430
+#: ../src/plugins/tray/tray-provider.c:429
 msgid "Enable notification"
 msgstr "Ieslēgt paziņojumus"
 
-#: ../plugins/tray/tray-provider.c:439
+#: ../src/plugins/tray/tray-provider.c:438
 msgid "Always minimize to tray when window is closed"
 msgstr "Vienmēr minimizēt uz paziņojuma joslu, kad logs tiek aizvērts"
 
-#: ../plugins/tray/tray-provider.c:478
+#: ../src/plugins/tray/tray-provider.c:477
 msgid "Minimize to tray?"
 msgstr "Minimizēt uz paziņojuma joslu?"
 
-#: ../plugins/tray/tray-provider.c:484
+#: ../src/plugins/tray/tray-provider.c:483
 msgid "Minimize to tray"
 msgstr "Minimizēt uz paziņojuma joslu"
 
-#: ../plugins/tray/tray-provider.c:500
+#: ../src/plugins/tray/tray-provider.c:499
 msgid "Are you sure you want to quit Parole"
 msgstr "Vai esat drošs, ka vēlaties iziet no Parole"
 
-#: ../plugins/tray/tray-provider.c:504
+#: ../src/plugins/tray/tray-provider.c:503
 msgid "Remember my choice"
 msgstr "Atcerēties manu izvēli"
 
-#: ../plugins/tray/system-tray.desktop.in.h:1
-msgid "Show icon in the system tray"
-msgstr "Rādīt ikonu paziņojumu joslā"
-
-#: ../plugins/tray/system-tray.desktop.in.h:2
+#: ../src/plugins/tray/system-tray.desktop.in.h:1
 msgid "Tray icon"
 msgstr "Paziņojuma joslas ikona"
 
-#: ../plugins/window-title/window-title.desktop.in.h:1
-msgid "Set the main window name to the current playing media name."
-msgstr "Uzstādīt galvenā loga nosaukumu uz pašreiz atskaņotā medija nosaukumu."
+#: ../src/plugins/tray/system-tray.desktop.in.h:2
+msgid "Show icon in the system tray"
+msgstr "Rādīt ikonu paziņojumu joslā"
 
-#: ../plugins/window-title/window-title.desktop.in.h:2
-msgid "Window Title"
-msgstr "Loga virsraksts"
-
-#: ../plugins/power-manager/power-manager.desktop.in.h:1
-msgid "Inhibit Power Manager from suspending the machine while playing DVD."
-msgstr "Neatļaut Enerģijas Pārvaldniekam iemidzināt datoru, kamēr notiek DVD atskaņošana"
-
-#: ../plugins/power-manager/power-manager.desktop.in.h:2
+#: ../src/plugins/power-manager/power-manager.desktop.in.h:1
 msgid "Power Manager Plugin"
 msgstr "Enerģijas Pārvaldnieka spraudnis"
 
-#: ../browser-plugin/media-plugin/main.c:72
-msgid "socket"
-msgstr "sokets"
+#: ../src/plugins/power-manager/power-manager.desktop.in.h:2
+msgid "Inhibit Power Manager from suspending the machine while playing DVD."
+msgstr ""
+"Neatļaut Enerģijas Pārvaldniekam iemidzināt datoru, kamēr notiek DVD "
+"atskaņošana"
 
-#: ../browser-plugin/media-plugin/main.c:72
-msgid "SOCKET ID"
-msgstr "SOKETA ID"
+#~ msgid "Chapter Menu"
+#~ msgstr "Nodaļu izvēlne"
 
-#: ../browser-plugin/media-plugin/main.c:73
-msgid "url to play"
-msgstr "url, kuru atskaņot"
+#~ msgid "DVD"
+#~ msgstr "DVD"
 
-#: ../browser-plugin/media-plugin/main.c:73
-msgid "URL"
-msgstr "URL"
+#~ msgid "DVD Menu"
+#~ msgstr "DVD izvēlne"
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:138
-msgid "Leave fullscreen"
-msgstr "Iziet no pilnekrāna"
+#~ msgid "Next Chapter"
+#~ msgstr "Nākamā nodaļa"
 
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:143
-msgid "Fullscreen"
-msgstr "Pilnekrāns"
+#~ msgid "Previous Chapter"
+#~ msgstr "Iepriekšējā nodaļa"
 
-#.
-#. * Copy url
-#.
-#: ../browser-plugin/media-plugin/parole-plugin-player.c:455
-msgid "Copy url"
-msgstr "Kopēt url"
+#~ msgid "Select Track"
+#~ msgstr "Izvēlēties celiņu"
 
-#, fuzzy
-#~ msgid "Plugin"
-#~ msgstr "Spraudņi"
+#~ msgid "Add"
+#~ msgstr "Pievienot"
 
+#~ msgid "Hide playlist"
+#~ msgstr "Slēpt repertuāru"
+
+#~ msgid "Next Track"
+#~ msgstr "Nākamais celiņš"
+
+#~ msgid "Stopped"
+#~ msgstr "Apstādināts"
+
+#~ msgid "Finished"
+#~ msgstr "Pabeigts"
+
+#~ msgid "Paused"
+#~ msgstr "Apturēts"
+
+#~ msgid "Playing"
+#~ msgstr "Atskaņo"
+
+#~ msgid "Live stream:"
+#~ msgstr "Dzīvā plūsma:"
+
+#~ msgid "Author/Maintainer"
+#~ msgstr "Autors/uzturētājs"
+
+#~ msgid "Open location..."
+#~ msgstr "Atvērt vietu..."
+
+#~ msgid "<b>Open location of media file or live stream:</b>"
+#~ msgstr "<b>Atvērt mediju faila vai dzīvas plūsmas vietu:</b>"
+
+#~ msgid "Playing Track"
+#~ msgstr "Atskaņo celiņu"
+
+#~ msgid "Set the main window name to the current playing media name."
+#~ msgstr ""
+#~ "Uzstādīt galvenā loga nosaukumu uz pašreiz atskaņotā medija nosaukumu."
+
+#~ msgid "Window Title"
+#~ msgstr "Loga virsraksts"
+
+#~ msgid "socket"
+#~ msgstr "sokets"
+
+#~ msgid "SOCKET ID"
+#~ msgstr "SOKETA ID"
+
+#~ msgid "url to play"
+#~ msgstr "url, kuru atskaņot"
+
+#~ msgid "URL"
+#~ msgstr "URL"
+
+#~ msgid "Fullscreen"
+#~ msgstr "Pilnekrāns"
+
+#~ msgid "Copy url"
+#~ msgstr "Kopēt url"

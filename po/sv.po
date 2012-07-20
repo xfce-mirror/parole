@@ -2,261 +2,372 @@
 # Copyright (C) 2009 Free Software Foundation, Inc.
 # This file is distributed under the same license as the parole package.
 # Daniel Nylander <po@danielnylander.se>, 2009.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-18 17:04+0000\n"
+"POT-Creation-Date: 2012-07-20 11:45+0200\n"
 "PO-Revision-Date: 2009-12-16 14:03+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../data/interfaces/parole.ui.h:1
-msgid "16:9 (Widescreen)"
-msgstr "16:9 (Bredbild)"
+#: ../data/interfaces/parole.ui.h:1 ../src/parole-about.c:89
+msgid "Parole Media Player"
+msgstr "Mediaspelaren Parole"
 
 #: ../data/interfaces/parole.ui.h:2
-msgid "20:9 (DVB)"
-msgstr "20:9 (DVB)"
+msgid "_Media"
+msgstr "_Media"
 
 #: ../data/interfaces/parole.ui.h:3
-msgid "4:3 (TV)"
-msgstr "4:3 (TV)"
+#, fuzzy
+msgid "Open _location"
+msgstr "_Öppna plats"
 
 #: ../data/interfaces/parole.ui.h:4
-msgid "Aspect Ratio"
-msgstr "Bildförhållande"
+msgid "_DVD"
+msgstr ""
 
 #: ../data/interfaces/parole.ui.h:5
-msgid "Auto"
-msgstr "Auto"
-
-#: ../data/interfaces/parole.ui.h:6
-msgid "Chapter Menu"
-msgstr "Kapitelmeny"
-
-#: ../data/interfaces/parole.ui.h:7
-#, fuzzy
-msgid "DVD"
-msgstr "DVD"
-
-#: ../data/interfaces/parole.ui.h:8
-msgid "DVD Menu"
-msgstr "DVD-meny"
-
-#: ../data/interfaces/parole.ui.h:9
 msgid "From ISO image"
 msgstr "Från ISO-avbildning"
 
+#: ../data/interfaces/parole.ui.h:6
+msgid "_Edit"
+msgstr "R_edigera"
+
+#: ../data/interfaces/parole.ui.h:7
+#, fuzzy
+msgid "_Repeat"
+msgstr "Upprepa"
+
+#: ../data/interfaces/parole.ui.h:8
+#, fuzzy
+msgid "_Shuffle"
+msgstr "Blanda"
+
+#: ../data/interfaces/parole.ui.h:9
+#, fuzzy
+msgid "Pl_ugins"
+msgstr "Insticksmoduler"
+
 #: ../data/interfaces/parole.ui.h:10
-msgid "Media player"
-msgstr "Mediaspelare"
+msgid "_View"
+msgstr "_Visa"
 
 #: ../data/interfaces/parole.ui.h:11
-msgid "Mute"
-msgstr "Tyst"
+#, fuzzy
+msgid "Show _playlist"
+msgstr "Visa spellista"
 
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:1197
-#: ../src/parole-disc-menu.c:113
-msgid "Next Chapter"
-msgstr "Nästa kapitel"
+#: ../data/interfaces/parole.ui.h:12
+#, fuzzy
+msgid "_Aspect Ratio"
+msgstr "Bildförhållande"
 
 #: ../data/interfaces/parole.ui.h:13
 msgid "None"
 msgstr "Inget"
 
-#: ../data/interfaces/parole.ui.h:14 ../data/desktop/parole.desktop.in.in.h:1
-#: ../src/parole-about.c:70 ../plugins/window-title/window-title-provider.c:58
-msgid "Parole Media Player"
-msgstr "Mediaspelaren Parole"
+#: ../data/interfaces/parole.ui.h:14
+msgid "Auto"
+msgstr "Auto"
 
 #: ../data/interfaces/parole.ui.h:15
-msgid "Plugins"
-msgstr "Insticksmoduler"
-
-#: ../data/interfaces/parole.ui.h:16 ../src/parole-player.c:1209
-#: ../src/parole-disc-menu.c:114
-msgid "Previous Chapter"
-msgstr "Föregående kapitel"
-
-#: ../data/interfaces/parole.ui.h:17
-msgid "Repeat"
-msgstr "Upprepa"
-
-#: ../data/interfaces/parole.ui.h:18
-msgid "Select Track"
-msgstr "Välj spår"
-
-#: ../data/interfaces/parole.ui.h:19
-msgid "Shuffle"
-msgstr "Blanda"
-
-#: ../data/interfaces/parole.ui.h:20
-msgid "Sound"
-msgstr "Ljud"
-
-#: ../data/interfaces/parole.ui.h:21
 msgid "Square"
 msgstr ""
 
+#: ../data/interfaces/parole.ui.h:16
+msgid "4:3 (TV)"
+msgstr "4:3 (TV)"
+
+#: ../data/interfaces/parole.ui.h:17
+msgid "16:9 (Widescreen)"
+msgstr "16:9 (Bredbild)"
+
+#: ../data/interfaces/parole.ui.h:18
+msgid "20:9 (DVB)"
+msgstr "20:9 (DVB)"
+
+#: ../data/interfaces/parole.ui.h:19
+msgid "Sound"
+msgstr "Ljud"
+
+#: ../data/interfaces/parole.ui.h:20
+#, fuzzy
+msgid "_Mute"
+msgstr "Tyst"
+
+#: ../data/interfaces/parole.ui.h:21
+#, fuzzy
+msgid "Volume _Up"
+msgstr "Höj volymen"
+
 #: ../data/interfaces/parole.ui.h:22
-msgid "Volume Down"
+#, fuzzy
+msgid "Volume _Down"
 msgstr "Sänk volymen"
 
 #: ../data/interfaces/parole.ui.h:23
-msgid "Volume Up"
-msgstr "Höj volymen"
-
-#: ../data/interfaces/parole.ui.h:24
-msgid "_Edit"
-msgstr "R_edigera"
-
-#: ../data/interfaces/parole.ui.h:25
 msgid "_Help"
 msgstr "_Hjälp"
 
-#: ../data/interfaces/parole.ui.h:26
-msgid "_Media"
-msgstr "_Media"
+#: ../data/interfaces/parole.ui.h:24
+#, fuzzy
+msgid "Audio Track:"
+msgstr "Föregående spår"
 
-#: ../data/interfaces/parole.ui.h:27
-msgid "_Open location"
-msgstr "_Öppna plats"
+#: ../data/interfaces/parole.ui.h:25
+#, fuzzy
+msgid "Subtitles:"
+msgstr "<b>Undertexter</b>"
+
+#: ../data/interfaces/parole.ui.h:26
+msgid "0:00"
+msgstr ""
 
 #: ../data/interfaces/parole.ui.h:28
-msgid "_View"
-msgstr "_Visa"
+#, fuzzy, no-c-format
+msgid "Buffering (0%)"
+msgstr "Buffrar"
+
+#: ../data/interfaces/parole.ui.h:29
+msgid "Media player"
+msgstr "Mediaspelare"
 
 #: ../data/interfaces/mediachooser.ui.h:1
-msgid "Replace playlist with opened files"
-msgstr "Ersätt spellista med öppnade filer"
+#, fuzzy
+msgid "Parole Media Chooser"
+msgstr "Mediaspelaren Parole"
 
 #: ../data/interfaces/mediachooser.ui.h:2
+#, fuzzy
+msgid "Open media files"
+msgstr "Lägg till mediafiler"
+
+#: ../data/interfaces/mediachooser.ui.h:3
+msgid "Open"
+msgstr ""
+
+#: ../data/interfaces/mediachooser.ui.h:4
 msgid "Scan folders recursively"
 msgstr "Sök igenom mappar rekursivt"
 
-#: ../data/interfaces/mediachooser.ui.h:3
+#: ../data/interfaces/mediachooser.ui.h:5
+msgid "Replace playlist with opened files"
+msgstr "Ersätt spellista med öppnade filer"
+
+#: ../data/interfaces/mediachooser.ui.h:6
+#: ../data/interfaces/parole-settings.ui.h:20
 msgid "Start playing opened files"
 msgstr "Starta uppspelning av öppnade filer"
 
 #: ../data/interfaces/plugins.ui.h:1
-msgid "<b>Author:</b>"
-msgstr "<b>Upphovsman:</b>"
-
-#: ../data/interfaces/plugins.ui.h:2
-msgid "<b>Description:</b>"
-msgstr "<b>Beskrivning:</b>"
-
-#: ../data/interfaces/plugins.ui.h:3
-msgid "<b>Site:</b>"
-msgstr "<b>Plats:</b>"
-
-#: ../data/interfaces/plugins.ui.h:4
-msgid "Media Player plugins"
-msgstr ""
-
-#: ../data/interfaces/plugins.ui.h:5
 msgid "Parole Plugins"
 msgstr ""
 
+#: ../data/interfaces/plugins.ui.h:2
+msgid "Media Player plugins"
+msgstr ""
+
+#: ../data/interfaces/plugins.ui.h:3
+msgid "Enabled"
+msgstr ""
+
+#: ../data/interfaces/plugins.ui.h:4
+#, fuzzy
+msgid "Plugin"
+msgstr "Insticksmoduler"
+
+#: ../data/interfaces/plugins.ui.h:5
+msgid "<b>Description:</b>"
+msgstr "<b>Beskrivning:</b>"
+
+#: ../data/interfaces/plugins.ui.h:6
+msgid "<b>Author:</b>"
+msgstr "<b>Upphovsman:</b>"
+
+#: ../data/interfaces/plugins.ui.h:7
+msgid "<b>Site:</b>"
+msgstr "<b>Plats:</b>"
+
 #: ../data/interfaces/parole-settings.ui.h:1
-msgid "<b>Audio</b>"
-msgstr "<b>Ljud</b>"
+msgid "Parole Settings"
+msgstr "Inställningar för Parole"
 
 #: ../data/interfaces/parole-settings.ui.h:2
-msgid "<b>Display</b>"
-msgstr "<b>Visning</b>"
+msgid "Media Player Settings"
+msgstr "Inställningar för mediaspelare"
 
 #: ../data/interfaces/parole-settings.ui.h:3
-msgid "<b>Subtitles</b>"
-msgstr "<b>Undertexter</b>"
+msgid "Disable screensaver while playing movies"
+msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:4
 msgid "<b>Video</b>"
 msgstr "<b>Video</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:5
-msgid "Automatically load subtitles when playing movie file"
-msgstr ""
-
-#: ../data/interfaces/parole-settings.ui.h:6
-msgid "Brightness:"
-msgstr "Ljusstyrka:"
-
-#: ../data/interfaces/parole-settings.ui.h:7
-msgid "Contrast:"
-msgstr "Kontrast:"
-
-#: ../data/interfaces/parole-settings.ui.h:8
-msgid "Disable screen saver while playing movies"
-msgstr ""
-
-#: ../data/interfaces/parole-settings.ui.h:9
 msgid "Enable visualization when playing audio file"
 msgstr ""
 
-#: ../data/interfaces/parole-settings.ui.h:10
-msgid "Encoding: "
-msgstr "Kodning: "
-
-#: ../data/interfaces/parole-settings.ui.h:11
-msgid "Font:"
-msgstr "Typsnitt:"
-
-#: ../data/interfaces/parole-settings.ui.h:12
-msgid "Hue:"
-msgstr ""
-
-#: ../data/interfaces/parole-settings.ui.h:13
-msgid "Media Player Settings"
-msgstr "Inställningar för mediaspelare"
-
-#: ../data/interfaces/parole-settings.ui.h:14
-msgid "Parole Settings"
-msgstr "Inställningar för Parole"
-
-#: ../data/interfaces/parole-settings.ui.h:15
-msgid "Reset To Defaults"
-msgstr "Återställ till standardvärden"
-
-#: ../data/interfaces/parole-settings.ui.h:16
-msgid "Saturation:"
-msgstr ""
-
-#: ../data/interfaces/parole-settings.ui.h:17
+#: ../data/interfaces/parole-settings.ui.h:6
 msgid "Visualization type:"
 msgstr ""
 
-#: ../data/interfaces/save-playlist.ui.h:1
-msgid "By Extension"
-msgstr "Efter filändelse"
+#: ../data/interfaces/parole-settings.ui.h:7
+msgid "<b>Audio</b>"
+msgstr "<b>Ljud</b>"
 
-#: ../data/interfaces/save-playlist.ui.h:2
+#: ../data/interfaces/parole-settings.ui.h:8
+msgid "Enable keyboard multimedia keys"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:9
+#, fuzzy
+msgid "<b>Keyboard</b>"
+msgstr "<b>Video</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:10
+#: ../src/plugins/properties/stream-properties-provider.c:341
+msgid "General"
+msgstr "Allmänt"
+
+#: ../data/interfaces/parole-settings.ui.h:11
+msgid "Brightness:"
+msgstr "Ljusstyrka:"
+
+#: ../data/interfaces/parole-settings.ui.h:12
+msgid "Contrast:"
+msgstr "Kontrast:"
+
+#: ../data/interfaces/parole-settings.ui.h:13
+msgid "Hue:"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:14
+msgid "Saturation:"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:15
+#, fuzzy
+msgid "Reset to defaults"
+msgstr "Återställ till standardvärden"
+
+#: ../data/interfaces/parole-settings.ui.h:16
+msgid "<b>Display</b>"
+msgstr "<b>Visning</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:17
+#, fuzzy
+msgid "Display"
+msgstr "<b>Visning</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:18
+#, fuzzy
+msgid "Always replace playlist with opened files"
+msgstr "Ersätt spellista med öppnade filer"
+
+#: ../data/interfaces/parole-settings.ui.h:19
+msgid "Check and remove duplicated media entries"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:21
+#, fuzzy
+msgid "<b>Playlist options</b>"
+msgstr "<b>Spelar upp:</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:22 ../src/parole-medialist.c:667
+#: ../src/parole-player.c:2315
+msgid "Playlist"
+msgstr "Spellista"
+
+#: ../data/interfaces/parole-settings.ui.h:23
+msgid "Automatically show subtitles when playing movie file"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:24
+msgid "Font:"
+msgstr "Typsnitt:"
+
+#: ../data/interfaces/parole-settings.ui.h:25
+#, fuzzy
+msgid "Encoding:"
+msgstr "Kodning: "
+
+#: ../data/interfaces/parole-settings.ui.h:26
+msgid "<b>Subtitles</b>"
+msgstr "<b>Undertexter</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:27
+#, fuzzy
+msgid "Subtitles"
+msgstr "<b>Undertexter</b>"
+
+#: ../data/interfaces/save-playlist.ui.h:1
 msgid "Select File Types (By Extension)"
 msgstr ""
 
-#: ../gst/parole-gst.c:1511
-msgid "The stream is taking too much time to load"
+#: ../data/interfaces/save-playlist.ui.h:2
+msgid "By Extension"
+msgstr "Efter filändelse"
+
+#: ../data/interfaces/open-location.ui.h:1
+#, fuzzy
+msgid "Open Location"
+msgstr "_Öppna plats"
+
+#: ../data/interfaces/open-location.ui.h:2
+msgid "Please enter a network URL:"
 msgstr ""
 
-#: ../gst/parole-gst.c:1511
+#: ../data/desktop/parole.desktop.in.in.h:1
+msgid "Parole"
+msgstr ""
+
+#: ../src/common/parole-common.c:67
+msgid "Message"
+msgstr ""
+
+#: ../src/common/parole-common.c:72
+msgid "Error"
+msgstr ""
+
+#: ../src/gst/parole-gst.c:1496
 msgid "Stop"
 msgstr "Stoppa"
 
-#: ../gst/parole-gst.c:1700
-msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
+#: ../src/gst/parole-gst.c:1497
+msgid "The stream is taking too much time to load"
 msgstr ""
 
-#: ../gst/parole-gst.c:1720
-msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
+#: ../src/gst/parole-gst.c:1666
+msgid ""
+"Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 
-#: ../src/main.c:54
+#: ../src/gst/parole-gst.c:1690
+msgid ""
+"Unable to load video GStreamer plugin, check your GStreamer installation"
+msgstr ""
+
+#: ../src/gst/parole-gst.c:2222 ../src/gst/parole-gst.c:2226
+#, fuzzy, c-format
+msgid "Audio Track #%d"
+msgstr "Spår %i"
+
+#: ../src/gst/parole-gst.c:2254 ../src/gst/parole-gst.c:2258
+#, c-format
+msgid "Subtitle #%d"
+msgstr ""
+
+#: ../src/main.c:53
 #, c-format
 msgid ""
 "\n"
@@ -277,61 +388,66 @@ msgstr ""
 "Licensierad under GNU GPL.\n"
 "\n"
 
-#: ../src/main.c:187
+#: ../src/main.c:186
 msgid "Unknown argument "
 msgstr "Okänt argument "
 
-#: ../src/main.c:224
+#: ../src/main.c:223
 msgid "Open a new instance"
 msgstr "Öppna en ny instans"
 
-#: ../src/main.c:225
+#: ../src/main.c:224
 msgid "Do not load plugins"
 msgstr ""
 
-#: ../src/main.c:226
+#: ../src/main.c:225
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr ""
 
-#: ../src/main.c:227
+#: ../src/main.c:226
 msgid "Play or pause if already playing"
 msgstr "Spela upp eller pausa om den spelas upp"
 
-#: ../src/main.c:228
+#: ../src/main.c:227
 msgid "Stop playing"
 msgstr "Stoppa uppspelning"
 
-#: ../src/main.c:229
+#: ../src/main.c:228
 msgid "Next track"
 msgstr "Nästa spår"
 
-#: ../src/main.c:230
+#: ../src/main.c:229
 msgid "Previous track"
 msgstr "Föregående spår"
 
-#: ../src/main.c:231
+#: ../src/main.c:230
 msgid "Seek forward"
 msgstr "Spola framåt"
 
-#: ../src/main.c:232
+#: ../src/main.c:231
 msgid "Seek Backward"
 msgstr "Spola bakåt"
 
-#: ../src/main.c:233
+#: ../src/main.c:232
 msgid "Raise volume"
 msgstr "Höj volymen"
 
-#: ../src/main.c:234
+#: ../src/main.c:233
 msgid "Lower volume"
 msgstr "Sänk volymen"
 
-#: ../src/main.c:235
+#: ../src/main.c:234
 msgid "Mute volume"
 msgstr "Tyst"
 
-#: ../src/main.c:236
+#: ../src/main.c:235
 msgid "Version information"
 msgstr "Versionsinformation"
+
+#: ../src/main.c:236
+#, fuzzy
+msgid "Start in fullscreen mode"
+msgstr "Lämna helskärmsläget"
 
 #: ../src/main.c:237
 msgid "Enabled/Disable XV support"
@@ -346,122 +462,114 @@ msgstr "Media att spela upp"
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr ""
 
-#: ../src/parole-mediachooser.c:213
-msgid "Add media files"
-msgstr "Lägg till mediafiler"
-
-#: ../src/parole-mediachooser.c:246
-msgid "Add"
-msgstr "Lägg till"
-
-#: ../src/parole-medialist.c:437
-msgid "Error saving playlist file"
-msgstr ""
-
-#: ../src/parole-medialist.c:437
+#: ../src/parole-medialist.c:526
 msgid "Permission denied"
 msgstr "Åtkomst nekas"
 
-#: ../src/parole-medialist.c:446
-msgid "Unknown playlist format, Please select a support playlist format"
+#: ../src/parole-medialist.c:528
+msgid "Error saving playlist file"
 msgstr ""
 
-#: ../src/parole-medialist.c:514 ../src/parole-player.c:1973
-msgid "Playlist"
-msgstr "Spellista"
+#: ../src/parole-medialist.c:540
+#, fuzzy
+msgid "Unknown playlist format"
+msgstr "Visa spellista"
 
-#: ../src/parole-medialist.c:521
+#: ../src/parole-medialist.c:541
+msgid "Please chooser a supported playlist format"
+msgstr ""
+
+#: ../src/parole-medialist.c:593 ../src/parole-plugins-manager.c:378
+#: ../src/plugins/properties/stream-properties-provider.c:140
+#: ../src/plugins/properties/stream-properties-provider.c:141
+#: ../src/plugins/properties/stream-properties-provider.c:142
+#: ../src/plugins/properties/stream-properties-provider.c:143
+msgid "Unknown"
+msgstr "Okänd"
+
+#: ../src/parole-medialist.c:674
 msgid "M3U Playlists"
 msgstr "M3U-spellistor"
 
-#: ../src/parole-medialist.c:529
+#: ../src/parole-medialist.c:682
 msgid "PLS Playlists"
 msgstr "PLS-spellistor"
 
-#: ../src/parole-medialist.c:537
+#: ../src/parole-medialist.c:690
 msgid "Advanced Stream Redirector"
 msgstr ""
 
-#: ../src/parole-medialist.c:545
+#: ../src/parole-medialist.c:698
 msgid "Shareable Playlist"
 msgstr ""
 
-#: ../src/parole-medialist.c:860
+#. Clear
+#: ../src/parole-medialist.c:1105
+msgid "Open Containing Folder"
+msgstr ""
+
+#: ../src/parole-medialist.c:1217
+msgid "Repeat"
+msgstr "Upprepa"
+
+#: ../src/parole-medialist.c:1233
+msgid "Shuffle"
+msgstr "Blanda"
+
+#: ../src/parole-medialist.c:1256
+#, fuzzy
+msgid "Replace playlist when opening files"
+msgstr "Ersätt spellista med öppnade filer"
+
+#: ../src/parole-medialist.c:1272
+#, fuzzy
+msgid "Play opened files"
+msgstr "Starta uppspelning av öppnade filer"
+
+#. *
+#. * Remember media list entries
+#. *
+#: ../src/parole-medialist.c:1284
 msgid "Remember playlist"
 msgstr "Kom ihåg spellista"
 
-#: ../src/parole-medialist.c:1012
+#: ../src/parole-medialist.c:1473
 msgid "Media list"
 msgstr "Medialista"
 
-#: ../src/parole-player.c:333
-msgid "Hide playlist"
-msgstr "Dölj spellista"
-
-#: ../src/parole-player.c:342
-msgid "Show playlist"
-msgstr "Visa spellista"
-
-#: ../src/parole-player.c:375
+#: ../src/parole-player.c:432
 msgid "Open ISO image"
 msgstr "Öppna ISO-avbildning"
 
-#: ../src/parole-player.c:392
+#: ../src/parole-player.c:449
 msgid "CD image"
 msgstr "CD-avbildning"
 
-#: ../src/parole-player.c:392
+#: ../src/parole-player.c:449
 msgid "DVD image"
 msgstr "DVD-avbildning"
 
-#: ../src/parole-player.c:641
+#: ../src/parole-player.c:779 ../src/parole-player.c:902
 msgid "Media stream is not seekable"
 msgstr ""
 
-#. * Next chapter menu item
-#. 
-#: ../src/parole-player.c:1197 ../src/parole-disc-menu.c:122
-msgid "Next Track"
-msgstr "Nästa spår"
+#: ../src/parole-player.c:1250
+msgid "GStreamer backend error"
+msgstr ""
 
-#. * Previous chapter menu item
-#. 
-#: ../src/parole-player.c:1209 ../src/parole-disc-menu.c:123
-msgid "Previous Track"
-msgstr "Föregående spår"
-
-#: ../src/parole-statusbar.c:61
+#: ../src/parole-player.c:1293
 msgid "Buffering"
 msgstr "Buffrar"
 
-#: ../src/parole-statusbar.c:100
-msgid "Stopped"
-msgstr "Stoppad"
-
-#: ../src/parole-statusbar.c:104
-msgid "Finished"
-msgstr "Färdig"
-
-#: ../src/parole-statusbar.c:114 ../src/parole-statusbar.c:124
-msgid "Paused"
-msgstr "Pausad"
-
-#: ../src/parole-statusbar.c:114
-msgid "Playing"
-msgstr "Spelar upp"
-
-#: ../src/parole-statusbar.c:170 ../src/parole-statusbar.c:174
-msgid "Live stream:"
-msgstr "Live-ström:"
-
-#: ../src/parole-about.c:75
-msgid "Author/Maintainer"
-msgstr "Upphovsman/Ansvarig"
-
-#: ../src/parole-about.c:81
-#, c-format
-msgid "Translator (%s)"
+#: ../src/parole-about.c:95
+#, fuzzy
+msgid "translator-credits"
 msgstr "Översättare (%s)"
+
+#: ../src/parole-about.c:98
+#, fuzzy
+msgid "Visit Parole website"
+msgstr "Besök webbplats"
 
 #: ../src/parole-disc.c:227
 msgid "Play Disc"
@@ -608,40 +716,16 @@ msgstr "Västlig"
 msgid "Vietnamese"
 msgstr "Vietnamesiska"
 
-#: ../src/parole-open-location.c:181
-msgid "Open location..."
-msgstr "Öppna plats..."
-
-#: ../src/parole-open-location.c:186
-msgid "<b>Open location of media file or live stream:</b>"
-msgstr ""
-
-#: ../src/parole-open-location.c:205
-msgid "Clear history"
+#: ../src/parole-open-location.c:210
+#, fuzzy
+msgid "Clear History"
 msgstr "Töm historik"
 
-#: ../src/parole-disc-menu.c:130
-msgid "Playing Track"
-msgstr "Spelar upp spår"
-
-#: ../src/parole-disc-menu.c:194
-#, c-format
-msgid "Track %i"
-msgstr "Spår %i"
-
-#: ../src/parole-plugins-manager.c:297 ../src/parole-plugins-manager.c:433
+#: ../src/parole-plugins-manager.c:302 ../src/parole-plugins-manager.c:440
 msgid "Visit Website"
 msgstr "Besök webbplats"
 
-#: ../src/parole-plugins-manager.c:373
-#: ../plugins/properties/stream-properties-provider.c:140
-#: ../plugins/properties/stream-properties-provider.c:141
-#: ../plugins/properties/stream-properties-provider.c:142
-#: ../plugins/properties/stream-properties-provider.c:143
-msgid "Unknown"
-msgstr "Okänd"
-
-#: ../src/parole-plugins-manager.c:412
+#: ../src/parole-plugins-manager.c:418 ../src/parole-plugins-manager.c:419
 msgid "No installed plugins found on this system"
 msgstr ""
 
@@ -665,114 +749,154 @@ msgstr "Alla filer som stöds"
 msgid "Playlist files"
 msgstr "Spellistefiler"
 
-#: ../plugins/properties/stream-properties-provider.c:254
+#: ../src/plugins/properties/stream-properties-provider.c:254
 msgid "Title:"
 msgstr "Titel:"
 
-#: ../plugins/properties/stream-properties-provider.c:277
+#: ../src/plugins/properties/stream-properties-provider.c:277
 msgid "Artist:"
 msgstr "Artist:"
 
-#: ../plugins/properties/stream-properties-provider.c:300
+#: ../src/plugins/properties/stream-properties-provider.c:300
 msgid "Album:"
 msgstr "Album:"
 
-#: ../plugins/properties/stream-properties-provider.c:323
+#: ../src/plugins/properties/stream-properties-provider.c:323
 msgid "Year:"
 msgstr "År:"
 
-#: ../plugins/properties/stream-properties-provider.c:341
-msgid "General"
-msgstr "Allmänt"
-
-#: ../plugins/properties/stream-properties-provider.c:392
+#: ../src/plugins/properties/stream-properties-provider.c:392
 msgid "Stream doesn't support tags changes"
 msgstr ""
 
-#: ../plugins/properties/stream-properties-provider.c:399
+#: ../src/plugins/properties/stream-properties-provider.c:399
 msgid "Save media tags changes"
 msgstr ""
 
-#: ../plugins/properties/stream-properties-provider.c:524
+#: ../src/plugins/properties/stream-properties-provider.c:524
 msgid "Properties"
 msgstr "Egenskaper"
 
-#: ../plugins/properties/stream-properties.desktop.in.h:1
-msgid "Read media properties"
-msgstr ""
-
-#: ../plugins/properties/stream-properties.desktop.in.h:2
+#: ../src/plugins/properties/stream-properties.desktop.in.h:1
 msgid "Stream Properties"
 msgstr "Strömegenskaper"
 
-#: ../plugins/tray/tray-provider.c:262
+#: ../src/plugins/properties/stream-properties.desktop.in.h:2
+msgid "Read media properties"
+msgstr ""
+
+#: ../src/plugins/tray/tray-provider.c:283
 msgid "<b>Playing:</b>"
 msgstr "<b>Spelar upp:</b>"
 
-#: ../plugins/tray/tray-provider.c:262
+#: ../src/plugins/tray/tray-provider.c:283
 msgid "<b>Duration:</b>"
 msgstr "<b>Speltid:</b>"
 
-#: ../plugins/tray/tray-provider.c:420
+#: ../src/plugins/tray/tray-provider.c:419
 msgid "Tray icon plugin"
 msgstr ""
 
-#: ../plugins/tray/tray-provider.c:430
+#: ../src/plugins/tray/tray-provider.c:429
 msgid "Enable notification"
 msgstr "Aktivera notifieringar"
 
-#: ../plugins/tray/tray-provider.c:439
+#: ../src/plugins/tray/tray-provider.c:438
 msgid "Always minimize to tray when window is closed"
 msgstr ""
 
-#: ../plugins/tray/tray-provider.c:478
+#: ../src/plugins/tray/tray-provider.c:477
 msgid "Minimize to tray?"
 msgstr ""
 
-#: ../plugins/tray/tray-provider.c:484
+#: ../src/plugins/tray/tray-provider.c:483
 msgid "Minimize to tray"
 msgstr ""
 
-#: ../plugins/tray/tray-provider.c:500
+#: ../src/plugins/tray/tray-provider.c:499
 msgid "Are you sure you want to quit Parole"
 msgstr "Är du säker på att du vill avsluta Parole?"
 
-#: ../plugins/tray/tray-provider.c:504
+#: ../src/plugins/tray/tray-provider.c:503
 msgid "Remember my choice"
 msgstr "Kom ihåg mitt val"
 
-#: ../plugins/tray/system-tray.desktop.in.h:1
-msgid "Show icon in the system tray"
-msgstr ""
-
-#: ../plugins/tray/system-tray.desktop.in.h:2
+#: ../src/plugins/tray/system-tray.desktop.in.h:1
 msgid "Tray icon"
 msgstr ""
 
-#: ../plugins/window-title/window-title.desktop.in.h:1
-msgid "Set the main window name to the current playing media name."
+#: ../src/plugins/tray/system-tray.desktop.in.h:2
+msgid "Show icon in the system tray"
 msgstr ""
 
-#: ../plugins/window-title/window-title.desktop.in.h:2
-msgid "Window Title"
-msgstr "Fönstertitel"
+#: ../src/plugins/power-manager/power-manager.desktop.in.h:1
+msgid "Power Manager Plugin"
+msgstr ""
 
-#: ../plugins/power-manager/power-manager.desktop.in.h:1
+#: ../src/plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Inhibit Power Manager from suspending the machine while playing DVD."
 msgstr ""
 
-#: ../plugins/power-manager/power-manager.desktop.in.h:2
-msgid "Power Manager Plugin"
-msgstr ""
+#~ msgid "Chapter Menu"
+#~ msgstr "Kapitelmeny"
+
+#, fuzzy
+#~ msgid "DVD"
+#~ msgstr "DVD"
+
+#~ msgid "DVD Menu"
+#~ msgstr "DVD-meny"
+
+#~ msgid "Next Chapter"
+#~ msgstr "Nästa kapitel"
+
+#~ msgid "Previous Chapter"
+#~ msgstr "Föregående kapitel"
+
+#~ msgid "Select Track"
+#~ msgstr "Välj spår"
+
+#~ msgid "Add"
+#~ msgstr "Lägg till"
+
+#~ msgid "Hide playlist"
+#~ msgstr "Dölj spellista"
+
+#~ msgid "Next Track"
+#~ msgstr "Nästa spår"
+
+#~ msgid "Stopped"
+#~ msgstr "Stoppad"
+
+#~ msgid "Finished"
+#~ msgstr "Färdig"
+
+#~ msgid "Paused"
+#~ msgstr "Pausad"
+
+#~ msgid "Playing"
+#~ msgstr "Spelar upp"
+
+#~ msgid "Live stream:"
+#~ msgstr "Live-ström:"
+
+#~ msgid "Author/Maintainer"
+#~ msgstr "Upphovsman/Ansvarig"
+
+#~ msgid "Open location..."
+#~ msgstr "Öppna plats..."
+
+#~ msgid "Playing Track"
+#~ msgstr "Spelar upp spår"
+
+#~ msgid "Window Title"
+#~ msgstr "Fönstertitel"
 
 #~ msgid "url to play"
 #~ msgstr "url att spela upp"
 
 #~ msgid "URL"
 #~ msgstr "URL"
-
-#~ msgid "Leave fullscreen"
-#~ msgstr "Lämna helskärmsläget"
 
 #~ msgid "Fullscreen"
 #~ msgstr "Helskärm"

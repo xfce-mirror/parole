@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-04 10:54+0000\n"
+"POT-Creation-Date: 2012-07-20 11:45+0200\n"
 "PO-Revision-Date: 2012-03-06 11:45+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: גזר\n"
@@ -17,287 +17,359 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Virtaal 0.7.1\n"
 
-#: ../data/interfaces/parole.ui.h:1
-msgid "16:9 (Widescreen)"
-msgstr "16:9 (מסך רחב)"
+#: ../data/interfaces/parole.ui.h:1 ../src/parole-about.c:89
+msgid "Parole Media Player"
+msgstr "נגן המדיה Parole"
 
 #: ../data/interfaces/parole.ui.h:2
-msgid "20:9 (DVB)"
-msgstr "20:9 (DVB)"
+msgid "_Media"
+msgstr "מ_דיה"
 
 #: ../data/interfaces/parole.ui.h:3
-msgid "4:3 (TV)"
-msgstr "4:3 (טלוויזיה)"
+#, fuzzy
+msgid "Open _location"
+msgstr "_פתיחת מיקום"
 
 #: ../data/interfaces/parole.ui.h:4
-msgid "Aspect Ratio"
-msgstr "יחס תצוגה"
+msgid "_DVD"
+msgstr ""
 
 #: ../data/interfaces/parole.ui.h:5
-msgid "Auto"
-msgstr "אוטומטי"
-
-#: ../data/interfaces/parole.ui.h:6
-msgid "Chapter Menu"
-msgstr "תפריט פרקים"
-
-#: ../data/interfaces/parole.ui.h:7
-msgid "DVD"
-msgstr "DVD"
-
-#: ../data/interfaces/parole.ui.h:8
-msgid "DVD Menu"
-msgstr "תפריט ה־DVD"
-
-#: ../data/interfaces/parole.ui.h:9
 msgid "From ISO image"
 msgstr "מתמונת ISO"
 
+#: ../data/interfaces/parole.ui.h:6
+msgid "_Edit"
+msgstr "_עריכה"
+
+#: ../data/interfaces/parole.ui.h:7
+#, fuzzy
+msgid "_Repeat"
+msgstr "חזרה"
+
+#: ../data/interfaces/parole.ui.h:8
+#, fuzzy
+msgid "_Shuffle"
+msgstr "ערבול"
+
+#: ../data/interfaces/parole.ui.h:9
+#, fuzzy
+msgid "Pl_ugins"
+msgstr "תוספים"
+
 #: ../data/interfaces/parole.ui.h:10
-msgid "Media player"
-msgstr "נגן מדיה"
+msgid "_View"
+msgstr "ת_צוגה"
 
 #: ../data/interfaces/parole.ui.h:11
-msgid "Mute"
-msgstr "השתקה"
+#, fuzzy
+msgid "Show _playlist"
+msgstr "הצגת רשימה ההשמעה"
 
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:1215
-#: ../src/parole-disc-menu.c:113
-msgid "Next Chapter"
-msgstr "הפרק הבא"
+#: ../data/interfaces/parole.ui.h:12
+#, fuzzy
+msgid "_Aspect Ratio"
+msgstr "יחס תצוגה"
 
 #: ../data/interfaces/parole.ui.h:13
 msgid "None"
 msgstr "ללא"
 
-#: ../data/interfaces/parole.ui.h:14 ../src/parole-about.c:74
-#: ../plugins/window-title/window-title-provider.c:58
-msgid "Parole Media Player"
-msgstr "נגן המדיה Parole"
+#: ../data/interfaces/parole.ui.h:14
+msgid "Auto"
+msgstr "אוטומטי"
 
 #: ../data/interfaces/parole.ui.h:15
-msgid "Plugins"
-msgstr "תוספים"
-
-#: ../data/interfaces/parole.ui.h:16 ../src/parole-player.c:1227
-#: ../src/parole-disc-menu.c:114
-msgid "Previous Chapter"
-msgstr "הפרק הקודם"
-
-#: ../data/interfaces/parole.ui.h:17 ../src/parole-medialist.c:1264
-msgid "Repeat"
-msgstr "חזרה"
-
-#: ../data/interfaces/parole.ui.h:18
-msgid "Select Track"
-msgstr "בחירת רצועה"
-
-#: ../data/interfaces/parole.ui.h:19 ../src/parole-medialist.c:1280
-msgid "Shuffle"
-msgstr "ערבול"
-
-#: ../data/interfaces/parole.ui.h:20
-msgid "Sound"
-msgstr "שמע"
-
-#: ../data/interfaces/parole.ui.h:21
 msgid "Square"
 msgstr "ריבוע"
 
+#: ../data/interfaces/parole.ui.h:16
+msgid "4:3 (TV)"
+msgstr "4:3 (טלוויזיה)"
+
+#: ../data/interfaces/parole.ui.h:17
+msgid "16:9 (Widescreen)"
+msgstr "16:9 (מסך רחב)"
+
+#: ../data/interfaces/parole.ui.h:18
+msgid "20:9 (DVB)"
+msgstr "20:9 (DVB)"
+
+#: ../data/interfaces/parole.ui.h:19
+msgid "Sound"
+msgstr "שמע"
+
+#: ../data/interfaces/parole.ui.h:20
+#, fuzzy
+msgid "_Mute"
+msgstr "השתקה"
+
+#: ../data/interfaces/parole.ui.h:21
+#, fuzzy
+msgid "Volume _Up"
+msgstr "הגברת העצמה"
+
 #: ../data/interfaces/parole.ui.h:22
-msgid "Volume Down"
+#, fuzzy
+msgid "Volume _Down"
 msgstr "הנמכת העצמה"
 
 #: ../data/interfaces/parole.ui.h:23
-msgid "Volume Up"
-msgstr "הגברת העצמה"
-
-#: ../data/interfaces/parole.ui.h:24
-msgid "_Edit"
-msgstr "_עריכה"
-
-#: ../data/interfaces/parole.ui.h:25
 msgid "_Help"
 msgstr "ע_זרה"
 
-#: ../data/interfaces/parole.ui.h:26
-msgid "_Media"
-msgstr "מ_דיה"
+#: ../data/interfaces/parole.ui.h:24
+#, fuzzy
+msgid "Audio Track:"
+msgstr "הרצועה הקודמת"
 
-#: ../data/interfaces/parole.ui.h:27
-msgid "_Open location"
-msgstr "_פתיחת מיקום"
+#: ../data/interfaces/parole.ui.h:25
+#, fuzzy
+msgid "Subtitles:"
+msgstr "<b>כתוביות</b>"
+
+#: ../data/interfaces/parole.ui.h:26
+msgid "0:00"
+msgstr ""
 
 #: ../data/interfaces/parole.ui.h:28
-msgid "_View"
-msgstr "ת_צוגה"
+#, fuzzy, no-c-format
+msgid "Buffering (0%)"
+msgstr "מתבצעת אגירה"
+
+#: ../data/interfaces/parole.ui.h:29
+msgid "Media player"
+msgstr "נגן מדיה"
 
 #: ../data/interfaces/mediachooser.ui.h:1
-msgid "Add"
-msgstr "הוספה"
+msgid "Parole Media Chooser"
+msgstr "בוחר המדיה של Parole"
 
 #: ../data/interfaces/mediachooser.ui.h:2
 msgid "Open media files"
 msgstr "פתיחת קובצי מדיה"
 
 #: ../data/interfaces/mediachooser.ui.h:3
-msgid "Parole Media Chooser"
-msgstr "בוחר המדיה של Parole"
+msgid "Open"
+msgstr ""
 
 #: ../data/interfaces/mediachooser.ui.h:4
-msgid "Replace playlist with opened files"
-msgstr "החלפת רשימת השמעה בקבצים פתוחים"
-
-#: ../data/interfaces/mediachooser.ui.h:5
 msgid "Scan folders recursively"
 msgstr "סריקת התיקיות רקורסיבית"
 
+#: ../data/interfaces/mediachooser.ui.h:5
+msgid "Replace playlist with opened files"
+msgstr "החלפת רשימת השמעה בקבצים פתוחים"
+
 #: ../data/interfaces/mediachooser.ui.h:6
+#: ../data/interfaces/parole-settings.ui.h:20
 msgid "Start playing opened files"
 msgstr "התחלת נגינת הקבצים הפתוחים"
 
 #: ../data/interfaces/plugins.ui.h:1
-msgid "<b>Author:</b>"
-msgstr "<b>יוצר:</b>"
-
-#: ../data/interfaces/plugins.ui.h:2
-msgid "<b>Description:</b>"
-msgstr "<b>תיאור:</b>"
-
-#: ../data/interfaces/plugins.ui.h:3
-msgid "<b>Site:</b>"
-msgstr "<b>אתר:</b>"
-
-#: ../data/interfaces/plugins.ui.h:4
-msgid "Media Player plugins"
-msgstr "תוספים של נגן המדיה"
-
-#: ../data/interfaces/plugins.ui.h:5
 msgid "Parole Plugins"
 msgstr "תוספים של Parole"
 
+#: ../data/interfaces/plugins.ui.h:2
+msgid "Media Player plugins"
+msgstr "תוספים של נגן המדיה"
+
+#: ../data/interfaces/plugins.ui.h:3
+msgid "Enabled"
+msgstr ""
+
+#: ../data/interfaces/plugins.ui.h:4
+#, fuzzy
+msgid "Plugin"
+msgstr "תוספים"
+
+#: ../data/interfaces/plugins.ui.h:5
+msgid "<b>Description:</b>"
+msgstr "<b>תיאור:</b>"
+
+#: ../data/interfaces/plugins.ui.h:6
+msgid "<b>Author:</b>"
+msgstr "<b>יוצר:</b>"
+
+#: ../data/interfaces/plugins.ui.h:7
+msgid "<b>Site:</b>"
+msgstr "<b>אתר:</b>"
+
 #: ../data/interfaces/parole-settings.ui.h:1
-msgid "<b>Audio</b>"
-msgstr "<b>שמע</b>"
+msgid "Parole Settings"
+msgstr "ההגדרות של Parole"
 
 #: ../data/interfaces/parole-settings.ui.h:2
-msgid "<b>Display</b>"
-msgstr "<b>תצוגה</b>"
+msgid "Media Player Settings"
+msgstr "הגדרות נגן המדיה"
 
 #: ../data/interfaces/parole-settings.ui.h:3
-msgid "<b>Subtitles</b>"
-msgstr "<b>כתוביות</b>"
+#, fuzzy
+msgid "Disable screensaver while playing movies"
+msgstr "יש לבטל את שומר המסך בעת נגינת סרטים"
 
 #: ../data/interfaces/parole-settings.ui.h:4
 msgid "<b>Video</b>"
 msgstr "<b>וידאו</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:5
-msgid "Automatically load subtitles when playing movie file"
-msgstr "טעינת כתוביות אוטומטית בעת נגינת קובץ סרט"
-
-#: ../data/interfaces/parole-settings.ui.h:6
-msgid "Brightness:"
-msgstr "בהירות:"
-
-#: ../data/interfaces/parole-settings.ui.h:7
-msgid "Contrast:"
-msgstr "ניגודיות:"
-
-#: ../data/interfaces/parole-settings.ui.h:8
-msgid "Disable screen saver while playing movies"
-msgstr "יש לבטל את שומר המסך בעת נגינת סרטים"
-
-#: ../data/interfaces/parole-settings.ui.h:9
 msgid "Enable visualization when playing audio file"
 msgstr "יש להפעיל את האפקטים החזותיים בעת נגינת קובץ שמע"
 
-#: ../data/interfaces/parole-settings.ui.h:10
-msgid "Encoding: "
-msgstr "קידוד: "
-
-#: ../data/interfaces/parole-settings.ui.h:11
-msgid "Font:"
-msgstr "גופן:"
-
-#: ../data/interfaces/parole-settings.ui.h:12
-msgid "Hue:"
-msgstr "גוון:"
-
-#: ../data/interfaces/parole-settings.ui.h:13
-msgid "Media Player Settings"
-msgstr "הגדרות נגן המדיה"
-
-#: ../data/interfaces/parole-settings.ui.h:14
-msgid "Parole Settings"
-msgstr "ההגדרות של Parole"
-
-#: ../data/interfaces/parole-settings.ui.h:15
-msgid "Reset To Defaults"
-msgstr "איפוס לבררות המחדל"
-
-#: ../data/interfaces/parole-settings.ui.h:16
-msgid "Saturation:"
-msgstr "רוויה:"
-
-#: ../data/interfaces/parole-settings.ui.h:17
+#: ../data/interfaces/parole-settings.ui.h:6
 msgid "Visualization type:"
 msgstr "סוג האפקט החזותי:"
 
-#: ../data/interfaces/save-playlist.ui.h:1
-msgid "By Extension"
-msgstr "לפי סיומת"
+#: ../data/interfaces/parole-settings.ui.h:7
+msgid "<b>Audio</b>"
+msgstr "<b>שמע</b>"
 
-#: ../data/interfaces/save-playlist.ui.h:2
+#: ../data/interfaces/parole-settings.ui.h:8
+msgid "Enable keyboard multimedia keys"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:9
+#, fuzzy
+msgid "<b>Keyboard</b>"
+msgstr "<b>וידאו</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:10
+#: ../src/plugins/properties/stream-properties-provider.c:341
+msgid "General"
+msgstr "כללי"
+
+#: ../data/interfaces/parole-settings.ui.h:11
+msgid "Brightness:"
+msgstr "בהירות:"
+
+#: ../data/interfaces/parole-settings.ui.h:12
+msgid "Contrast:"
+msgstr "ניגודיות:"
+
+#: ../data/interfaces/parole-settings.ui.h:13
+msgid "Hue:"
+msgstr "גוון:"
+
+#: ../data/interfaces/parole-settings.ui.h:14
+msgid "Saturation:"
+msgstr "רוויה:"
+
+#: ../data/interfaces/parole-settings.ui.h:15
+#, fuzzy
+msgid "Reset to defaults"
+msgstr "איפוס לבררות המחדל"
+
+#: ../data/interfaces/parole-settings.ui.h:16
+msgid "<b>Display</b>"
+msgstr "<b>תצוגה</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:17
+#, fuzzy
+msgid "Display"
+msgstr "<b>תצוגה</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:18
+#, fuzzy
+msgid "Always replace playlist with opened files"
+msgstr "החלפת רשימת השמעה בקבצים פתוחים"
+
+#: ../data/interfaces/parole-settings.ui.h:19
+msgid "Check and remove duplicated media entries"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:21
+#, fuzzy
+msgid "<b>Playlist options</b>"
+msgstr "<b>מתנגן:</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:22 ../src/parole-medialist.c:667
+#: ../src/parole-player.c:2315
+msgid "Playlist"
+msgstr "רשימת השמעה"
+
+#: ../data/interfaces/parole-settings.ui.h:23
+#, fuzzy
+msgid "Automatically show subtitles when playing movie file"
+msgstr "טעינת כתוביות אוטומטית בעת נגינת קובץ סרט"
+
+#: ../data/interfaces/parole-settings.ui.h:24
+msgid "Font:"
+msgstr "גופן:"
+
+#: ../data/interfaces/parole-settings.ui.h:25
+#, fuzzy
+msgid "Encoding:"
+msgstr "קידוד: "
+
+#: ../data/interfaces/parole-settings.ui.h:26
+msgid "<b>Subtitles</b>"
+msgstr "<b>כתוביות</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:27
+#, fuzzy
+msgid "Subtitles"
+msgstr "<b>כתוביות</b>"
+
+#: ../data/interfaces/save-playlist.ui.h:1
 msgid "Select File Types (By Extension)"
 msgstr "בחירת סוגי הקבצים (לפי סיומת)"
 
+#: ../data/interfaces/save-playlist.ui.h:2
+msgid "By Extension"
+msgstr "לפי סיומת"
+
 #: ../data/interfaces/open-location.ui.h:1
-msgid "Clear history"
-msgstr "מחיקת ההיסטוריה"
+#, fuzzy
+msgid "Open Location"
+msgstr "_פתיחת מיקום"
 
 #: ../data/interfaces/open-location.ui.h:2
-msgid "Enter the address of a location to open"
-msgstr "נא להזין את הכתובת של המיקום לפתיחה"
-
-#: ../data/interfaces/open-location.ui.h:3
-msgid "Open location of media file or live stream"
-msgstr "יש לפתוח את מיקום קובץ המדיה או התזרים החי"
+msgid "Please enter a network URL:"
+msgstr ""
 
 #: ../data/desktop/parole.desktop.in.in.h:1
 msgid "Parole"
 msgstr "Parole"
 
-#: ../common/parole-common.c:67
+#: ../src/common/parole-common.c:67
 msgid "Message"
 msgstr "הודעה"
 
-#: ../common/parole-common.c:72
+#: ../src/common/parole-common.c:72
 msgid "Error"
 msgstr "שגיאה"
 
-#: ../gst/parole-gst.c:1526
-msgid "The stream is taking too much time to load"
-msgstr "זמן טעינת התזרים הוא ארוך מדי"
-
-#: ../gst/parole-gst.c:1526
+#: ../src/gst/parole-gst.c:1496
 msgid "Stop"
 msgstr "עצירה"
 
-#: ../gst/parole-gst.c:1715
+#: ../src/gst/parole-gst.c:1497
+msgid "The stream is taking too much time to load"
+msgstr "זמן טעינת התזרים הוא ארוך מדי"
+
+#: ../src/gst/parole-gst.c:1666
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "לא ניתן לטעון את תוסף הנגינה של GStreamer, נא לבדוק את התקנת ה־GStreamer שלך"
 
-#: ../gst/parole-gst.c:1735
+#: ../src/gst/parole-gst.c:1690
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
-"לא ניתן לטעון את תוסף הווידאו של GStreamer, נא לבדוק את התקנת ה־GStreamer "
-"שלך"
+"לא ניתן לטעון את תוסף הווידאו של GStreamer, נא לבדוק את התקנת ה־GStreamer שלך"
 
-#: ../src/main.c:54
+#: ../src/gst/parole-gst.c:2222 ../src/gst/parole-gst.c:2226
+#, fuzzy, c-format
+msgid "Audio Track #%d"
+msgstr "רצועה %i"
+
+#: ../src/gst/parole-gst.c:2254 ../src/gst/parole-gst.c:2258
+#, c-format
+msgid "Subtitle #%d"
+msgstr ""
+
+#: ../src/main.c:53
 #, c-format
 msgid ""
 "\n"
@@ -318,217 +390,184 @@ msgstr ""
 "מוגן ברישיון ה־GPL מבית GNU.\n"
 "\n"
 
-#: ../src/main.c:187
+#: ../src/main.c:186
 msgid "Unknown argument "
 msgstr "ארגומנט בלתי ידוע"
 
-#: ../src/main.c:225
+#: ../src/main.c:223
 msgid "Open a new instance"
 msgstr "פתיחת מופע חדש"
 
-#: ../src/main.c:226
+#: ../src/main.c:224
 msgid "Do not load plugins"
 msgstr "אין לטעון תוספים"
 
-#: ../src/main.c:227
+#: ../src/main.c:225
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "הגדרת נתיב לתקליטור השמע/VCD/DVD"
 
-#: ../src/main.c:228
+#: ../src/main.c:226
 msgid "Play or pause if already playing"
 msgstr "לנגן או להשהות אם כבר מתנגן"
 
-#: ../src/main.c:229
+#: ../src/main.c:227
 msgid "Stop playing"
 msgstr "עצירת הנגינה"
 
-#: ../src/main.c:230
+#: ../src/main.c:228
 msgid "Next track"
 msgstr "הרצועה הבאה"
 
-#: ../src/main.c:231
+#: ../src/main.c:229
 msgid "Previous track"
 msgstr "הרצועה הקודמת"
 
-#: ../src/main.c:232
+#: ../src/main.c:230
 msgid "Seek forward"
 msgstr "קפיצה קדימה"
 
-#: ../src/main.c:233
+#: ../src/main.c:231
 msgid "Seek Backward"
 msgstr "קפיצה אחורה"
 
-#: ../src/main.c:234
+#: ../src/main.c:232
 msgid "Raise volume"
 msgstr "הגברת עצמת השמע"
 
-#: ../src/main.c:235
+#: ../src/main.c:233
 msgid "Lower volume"
 msgstr "הנמכת עצמת השמע"
 
-#: ../src/main.c:236
+#: ../src/main.c:234
 msgid "Mute volume"
 msgstr "השתקת השמע"
 
-#: ../src/main.c:237
+#: ../src/main.c:235
 msgid "Version information"
 msgstr "פרטי הגרסה"
 
-#: ../src/main.c:238
+#: ../src/main.c:236
 msgid "Start in fullscreen mode"
 msgstr "הפעלה במסך מלא"
 
-#: ../src/main.c:239
+#: ../src/main.c:237
 msgid "Enabled/Disable XV support"
 msgstr "הפעלת/נטרול התמיכה ב־XV"
 
-#: ../src/main.c:241
+#: ../src/main.c:239
 msgid "Media to play"
 msgstr "מדיה לנגינה"
 
-#: ../src/main.c:278
+#: ../src/main.c:276
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "הנגן Parole כבר פועל, יש להשתמש ב־‎-i כדי לפתוח מופע חדש\n"
 
-#: ../src/parole-medialist.c:501
+#: ../src/parole-medialist.c:526
 msgid "Permission denied"
 msgstr "ההרשאה נדחתה"
 
-#: ../src/parole-medialist.c:503
+#: ../src/parole-medialist.c:528
 msgid "Error saving playlist file"
 msgstr "אירעה שגיאה בעת נגינת קובץ רשימת ההשמעה"
 
-#: ../src/parole-medialist.c:515
+#: ../src/parole-medialist.c:540
 msgid "Unknown playlist format"
 msgstr "מבנה רשימת ההשמעה אינו מוכר"
 
-#: ../src/parole-medialist.c:516
+#: ../src/parole-medialist.c:541
 msgid "Please chooser a supported playlist format"
 msgstr "נא לבחור במבנה רשימת השמעה נתמך"
 
-#: ../src/parole-medialist.c:568 ../src/parole-plugins-manager.c:377
-#: ../plugins/properties/stream-properties-provider.c:140
-#: ../plugins/properties/stream-properties-provider.c:141
-#: ../plugins/properties/stream-properties-provider.c:142
-#: ../plugins/properties/stream-properties-provider.c:143
+#: ../src/parole-medialist.c:593 ../src/parole-plugins-manager.c:378
+#: ../src/plugins/properties/stream-properties-provider.c:140
+#: ../src/plugins/properties/stream-properties-provider.c:141
+#: ../src/plugins/properties/stream-properties-provider.c:142
+#: ../src/plugins/properties/stream-properties-provider.c:143
 msgid "Unknown"
 msgstr "בלתי ידוע"
 
-#: ../src/parole-medialist.c:642 ../src/parole-player.c:1991
-msgid "Playlist"
-msgstr "רשימת השמעה"
-
-#: ../src/parole-medialist.c:649
+#: ../src/parole-medialist.c:674
 msgid "M3U Playlists"
 msgstr "רשימת השמעה מסוג M3U"
 
-#: ../src/parole-medialist.c:657
+#: ../src/parole-medialist.c:682
 msgid "PLS Playlists"
 msgstr "רשימת השמעה מסוג PLS"
 
-#: ../src/parole-medialist.c:665
+#: ../src/parole-medialist.c:690
 msgid "Advanced Stream Redirector"
 msgstr "מפנה תזרימים מתקדם"
 
-#: ../src/parole-medialist.c:673
+#: ../src/parole-medialist.c:698
 msgid "Shareable Playlist"
 msgstr "רשימות השמעה שיתופיות"
 
 #. Clear
-#: ../src/parole-medialist.c:1152
+#: ../src/parole-medialist.c:1105
 msgid "Open Containing Folder"
 msgstr "פתיחת התיקייה המכילה"
 
-#: ../src/parole-medialist.c:1303
+#: ../src/parole-medialist.c:1217
+msgid "Repeat"
+msgstr "חזרה"
+
+#: ../src/parole-medialist.c:1233
+msgid "Shuffle"
+msgstr "ערבול"
+
+#: ../src/parole-medialist.c:1256
 msgid "Replace playlist when opening files"
 msgstr "החלפת רשימת ההשמעה בעת פתיחת קבצים"
 
-#: ../src/parole-medialist.c:1319
+#: ../src/parole-medialist.c:1272
 msgid "Play opened files"
 msgstr "נגינת הקבצים הפתוחים"
 
 #. *
 #. * Remember media list entries
 #. *
-#: ../src/parole-medialist.c:1331
+#: ../src/parole-medialist.c:1284
 msgid "Remember playlist"
 msgstr "שמירת רשימת ההשמעה"
 
-#: ../src/parole-medialist.c:1502
+#: ../src/parole-medialist.c:1473
 msgid "Media list"
 msgstr "רשימת מדיה"
 
-#: ../src/parole-player.c:336
-msgid "Hide playlist"
-msgstr "הסתרת רשימה ההשמעה"
-
-#: ../src/parole-player.c:345
-msgid "Show playlist"
-msgstr "הצגת רשימה ההשמעה"
-
-#: ../src/parole-player.c:378
+#: ../src/parole-player.c:432
 msgid "Open ISO image"
 msgstr "פתיחת תמונת ISO"
 
-#: ../src/parole-player.c:395
+#: ../src/parole-player.c:449
 msgid "CD image"
 msgstr "תמונת תקליטור"
 
-#: ../src/parole-player.c:395
+#: ../src/parole-player.c:449
 msgid "DVD image"
 msgstr "תמונת DVD"
 
-#: ../src/parole-player.c:551 ../src/parole-player.c:659
+#: ../src/parole-player.c:779 ../src/parole-player.c:902
 msgid "Media stream is not seekable"
 msgstr "לא ניתן לקפוץ בתזרים המדיה הזה"
 
-#.
-#. * Next chapter menu item
-#.
-#: ../src/parole-player.c:1215 ../src/parole-disc-menu.c:122
-msgid "Next Track"
-msgstr "הרצועה הבאה"
+#: ../src/parole-player.c:1250
+msgid "GStreamer backend error"
+msgstr ""
 
-#.
-#. * Previous chapter menu item
-#.
-#: ../src/parole-player.c:1227 ../src/parole-disc-menu.c:123
-msgid "Previous Track"
-msgstr "הרצועה הקודמת"
-
-#: ../src/parole-statusbar.c:61
+#: ../src/parole-player.c:1293
 msgid "Buffering"
 msgstr "מתבצעת אגירה"
 
-#: ../src/parole-statusbar.c:100
-msgid "Stopped"
-msgstr "נעצר"
-
-#: ../src/parole-statusbar.c:104
-msgid "Finished"
-msgstr "הסתיים"
-
-#: ../src/parole-statusbar.c:114 ../src/parole-statusbar.c:124
-msgid "Paused"
-msgstr "מושהה"
-
-#: ../src/parole-statusbar.c:114
-msgid "Playing"
-msgstr "בנגינה"
-
-#: ../src/parole-statusbar.c:170 ../src/parole-statusbar.c:174
-msgid "Live stream:"
-msgstr "תזרים חי:"
-
-#: ../src/parole-about.c:79
-msgid "Author/Maintainer"
-msgstr "יוצר/מתחזק:"
-
-#: ../src/parole-about.c:85
-#, c-format
-msgid "Translator (%s)"
+#: ../src/parole-about.c:95
+#, fuzzy
+msgid "translator-credits"
 msgstr "מתרגם (%s)"
+
+#: ../src/parole-about.c:98
+#, fuzzy
+msgid "Visit Parole website"
+msgstr "ביקור באתר"
 
 #: ../src/parole-disc.c:227
 msgid "Play Disc"
@@ -675,20 +714,16 @@ msgstr "מערבי"
 msgid "Vietnamese"
 msgstr "וייטנאמי"
 
-#: ../src/parole-disc-menu.c:130
-msgid "Playing Track"
-msgstr "הרצועה המתנגנת"
+#: ../src/parole-open-location.c:210
+#, fuzzy
+msgid "Clear History"
+msgstr "מחיקת ההיסטוריה"
 
-#: ../src/parole-disc-menu.c:194
-#, c-format
-msgid "Track %i"
-msgstr "רצועה %i"
-
-#: ../src/parole-plugins-manager.c:301 ../src/parole-plugins-manager.c:437
+#: ../src/parole-plugins-manager.c:302 ../src/parole-plugins-manager.c:440
 msgid "Visit Website"
 msgstr "ביקור באתר"
 
-#: ../src/parole-plugins-manager.c:416
+#: ../src/parole-plugins-manager.c:418 ../src/parole-plugins-manager.c:419
 msgid "No installed plugins found on this system"
 msgstr "לא נמצאו תוספים מותקנים במערכת זו"
 
@@ -712,102 +747,150 @@ msgstr "כל הקבצים הנתמכים"
 msgid "Playlist files"
 msgstr "קובצי רשימות השמעה"
 
-#: ../plugins/properties/stream-properties-provider.c:254
+#: ../src/plugins/properties/stream-properties-provider.c:254
 msgid "Title:"
 msgstr "כותרת:"
 
-#: ../plugins/properties/stream-properties-provider.c:277
+#: ../src/plugins/properties/stream-properties-provider.c:277
 msgid "Artist:"
 msgstr "אמן:"
 
-#: ../plugins/properties/stream-properties-provider.c:300
+#: ../src/plugins/properties/stream-properties-provider.c:300
 msgid "Album:"
 msgstr "אלבום:"
 
-#: ../plugins/properties/stream-properties-provider.c:323
+#: ../src/plugins/properties/stream-properties-provider.c:323
 msgid "Year:"
 msgstr "שנה:"
 
-#: ../plugins/properties/stream-properties-provider.c:341
-msgid "General"
-msgstr "כללי"
-
-#: ../plugins/properties/stream-properties-provider.c:392
+#: ../src/plugins/properties/stream-properties-provider.c:392
 msgid "Stream doesn't support tags changes"
 msgstr "התזרים לא תומך בשינוי תגיות"
 
-#: ../plugins/properties/stream-properties-provider.c:399
+#: ../src/plugins/properties/stream-properties-provider.c:399
 msgid "Save media tags changes"
 msgstr "שמירת השינוי בתגיות המדיה"
 
-#: ../plugins/properties/stream-properties-provider.c:524
+#: ../src/plugins/properties/stream-properties-provider.c:524
 msgid "Properties"
 msgstr "מאפיינים"
 
-#: ../plugins/properties/stream-properties.desktop.in.h:1
-msgid "Read media properties"
-msgstr "קריאת מאפייני המדיה"
-
-#: ../plugins/properties/stream-properties.desktop.in.h:2
+#: ../src/plugins/properties/stream-properties.desktop.in.h:1
 msgid "Stream Properties"
 msgstr "מאפייני התזרים"
 
-#: ../plugins/tray/tray-provider.c:283
+#: ../src/plugins/properties/stream-properties.desktop.in.h:2
+msgid "Read media properties"
+msgstr "קריאת מאפייני המדיה"
+
+#: ../src/plugins/tray/tray-provider.c:283
 msgid "<b>Playing:</b>"
 msgstr "<b>מתנגן:</b>"
 
-#: ../plugins/tray/tray-provider.c:283
+#: ../src/plugins/tray/tray-provider.c:283
 msgid "<b>Duration:</b>"
 msgstr "<b>משך:</b>"
 
-#: ../plugins/tray/tray-provider.c:419
+#: ../src/plugins/tray/tray-provider.c:419
 msgid "Tray icon plugin"
 msgstr "תוסף סמל באזור הדיווחים"
 
-#: ../plugins/tray/tray-provider.c:429
+#: ../src/plugins/tray/tray-provider.c:429
 msgid "Enable notification"
 msgstr "הפעלת דיווחים"
 
-#: ../plugins/tray/tray-provider.c:438
+#: ../src/plugins/tray/tray-provider.c:438
 msgid "Always minimize to tray when window is closed"
 msgstr "תמיד יש למזער את הסמל באזור הדיווחים כאשר החלון נסגר"
 
-#: ../plugins/tray/tray-provider.c:477
+#: ../src/plugins/tray/tray-provider.c:477
 msgid "Minimize to tray?"
 msgstr "האם למזער לאזור הדיווחים?"
 
-#: ../plugins/tray/tray-provider.c:483
+#: ../src/plugins/tray/tray-provider.c:483
 msgid "Minimize to tray"
 msgstr "מזעור לאזור הדיווחים"
 
-#: ../plugins/tray/tray-provider.c:499
+#: ../src/plugins/tray/tray-provider.c:499
 msgid "Are you sure you want to quit Parole"
 msgstr "האם אכן ברצונך לצאת מ־Parole?"
 
-#: ../plugins/tray/tray-provider.c:503
+#: ../src/plugins/tray/tray-provider.c:503
 msgid "Remember my choice"
 msgstr "שמירת הבחירה שלי"
 
-#: ../plugins/tray/system-tray.desktop.in.h:1
-msgid "Show icon in the system tray"
-msgstr "הצגת סמל באזור הדיווחים"
-
-#: ../plugins/tray/system-tray.desktop.in.h:2
+#: ../src/plugins/tray/system-tray.desktop.in.h:1
 msgid "Tray icon"
 msgstr "סמל באזור הדיווחים"
 
-#: ../plugins/window-title/window-title.desktop.in.h:1
-msgid "Set the main window name to the current playing media name."
-msgstr "הגדרת שם המדיה המתנגנת בתור שם החלון הראשי."
+#: ../src/plugins/tray/system-tray.desktop.in.h:2
+msgid "Show icon in the system tray"
+msgstr "הצגת סמל באזור הדיווחים"
 
-#: ../plugins/window-title/window-title.desktop.in.h:2
-msgid "Window Title"
-msgstr "כותרת החלון"
+#: ../src/plugins/power-manager/power-manager.desktop.in.h:1
+msgid "Power Manager Plugin"
+msgstr "תוסף מנהל צריכת החשמל"
 
-#: ../plugins/power-manager/power-manager.desktop.in.h:1
+#: ../src/plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Inhibit Power Manager from suspending the machine while playing DVD."
 msgstr "מניעת מנהל צריכת החשמל מהשהיית המערכת בעת נגינת DVD."
 
-#: ../plugins/power-manager/power-manager.desktop.in.h:2
-msgid "Power Manager Plugin"
-msgstr "תוסף מנהל צריכת החשמל"
+#~ msgid "Chapter Menu"
+#~ msgstr "תפריט פרקים"
+
+#~ msgid "DVD"
+#~ msgstr "DVD"
+
+#~ msgid "DVD Menu"
+#~ msgstr "תפריט ה־DVD"
+
+#~ msgid "Next Chapter"
+#~ msgstr "הפרק הבא"
+
+#~ msgid "Previous Chapter"
+#~ msgstr "הפרק הקודם"
+
+#~ msgid "Select Track"
+#~ msgstr "בחירת רצועה"
+
+#~ msgid "Add"
+#~ msgstr "הוספה"
+
+#~ msgid "Enter the address of a location to open"
+#~ msgstr "נא להזין את הכתובת של המיקום לפתיחה"
+
+#~ msgid "Open location of media file or live stream"
+#~ msgstr "יש לפתוח את מיקום קובץ המדיה או התזרים החי"
+
+#~ msgid "Hide playlist"
+#~ msgstr "הסתרת רשימה ההשמעה"
+
+#~ msgid "Next Track"
+#~ msgstr "הרצועה הבאה"
+
+#~ msgid "Stopped"
+#~ msgstr "נעצר"
+
+#~ msgid "Finished"
+#~ msgstr "הסתיים"
+
+#~ msgid "Paused"
+#~ msgstr "מושהה"
+
+#~ msgid "Playing"
+#~ msgstr "בנגינה"
+
+#~ msgid "Live stream:"
+#~ msgstr "תזרים חי:"
+
+#~ msgid "Author/Maintainer"
+#~ msgstr "יוצר/מתחזק:"
+
+#~ msgid "Playing Track"
+#~ msgstr "הרצועה המתנגנת"
+
+#~ msgid "Set the main window name to the current playing media name."
+#~ msgstr "הגדרת שם המדיה המתנגנת בתור שם החלון הראשי."
+
+#~ msgid "Window Title"
+#~ msgstr "כותרת החלון"
