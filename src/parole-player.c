@@ -375,7 +375,7 @@ void parole_player_set_playlist_visible (ParolePlayer *player, gboolean visibili
 	if ( visibility )
 	{
 		gtk_widget_show_all (player->priv->playlist_nt);
-		gtk_image_set_from_stock( GTK_IMAGE( player->priv->show_hide_playlist_image ), "gtk-go-forward", GTK_ICON_SIZE_BUTTON );
+		gtk_image_set_from_stock( GTK_IMAGE( player->priv->show_hide_playlist_image ), "gtk-go-forward", GTK_ICON_SIZE_LARGE_TOOLBAR );
 		gtk_widget_set_tooltip_text( GTK_WIDGET( player->priv->show_hide_playlist_button ), "Hide playlist");
 		g_object_set (G_OBJECT (player->priv->conf),	
 		  "showhide-playlist", TRUE,
@@ -384,7 +384,7 @@ void parole_player_set_playlist_visible (ParolePlayer *player, gboolean visibili
 	else
 	{
 		gtk_widget_hide_all (player->priv->playlist_nt);
-		gtk_image_set_from_stock( GTK_IMAGE( player->priv->show_hide_playlist_image ), "gtk-go-back", GTK_ICON_SIZE_BUTTON );
+		gtk_image_set_from_stock( GTK_IMAGE( player->priv->show_hide_playlist_image ), "gtk-go-back", GTK_ICON_SIZE_LARGE_TOOLBAR );
 		gtk_widget_set_tooltip_text( GTK_WIDGET( player->priv->show_hide_playlist_button ), "Show playlist");
 		g_object_set (G_OBJECT (player->priv->conf),	
 		  "showhide-playlist", FALSE,
@@ -1355,7 +1355,7 @@ parole_player_full_screen (ParolePlayer *player, gboolean fullscreen)
     {
 	npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (player->priv->main_nt));
 	gtk_widget_reparent (player->priv->play_box, player->priv->control);
-	gtk_box_set_child_packing( GTK_BOX(player->priv->control), GTK_WIDGET(player->priv->play_box), TRUE, TRUE, 4, GTK_PACK_START );
+	gtk_box_set_child_packing( GTK_BOX(player->priv->control), GTK_WIDGET(player->priv->play_box), TRUE, TRUE, 2, GTK_PACK_START );
 	gtk_widget_hide (player->priv->fs_window);
 	gtk_widget_show (player->priv->play_box);
 	gtk_widget_show (player->priv->menu_bar);
@@ -1363,6 +1363,7 @@ parole_player_full_screen (ParolePlayer *player, gboolean fullscreen)
 	parole_player_set_playlist_visible(player, TRUE);
 	gtk_widget_show (player->priv->go_fs);
 	gtk_widget_hide (player->priv->leave_fs);
+	gtk_widget_show (player->priv->show_hide_playlist_button);
 	
 	gtk_notebook_set_show_tabs (GTK_NOTEBOOK (player->priv->main_nt), npages > 1);
 	
@@ -1381,6 +1382,7 @@ parole_player_full_screen (ParolePlayer *player, gboolean fullscreen)
 	parole_player_set_playlist_visible(player, FALSE);
 	gtk_widget_hide (player->priv->go_fs);
 	gtk_widget_show (player->priv->leave_fs);
+	gtk_widget_hide (player->priv->show_hide_playlist_button);
 	
 	current_page = gtk_notebook_get_current_page (GTK_NOTEBOOK (player->priv->playlist_nt));
 	gtk_notebook_set_show_tabs (GTK_NOTEBOOK (player->priv->main_nt), FALSE);
@@ -2267,7 +2269,7 @@ parole_player_init (ParolePlayer *player)
     player->priv->leave_fs = GTK_WIDGET (gtk_builder_get_object (builder, "leave_fs"));
     player->priv->main_box = GTK_WIDGET (gtk_builder_get_object (builder, "main-box"));
     
-    gtk_box_set_child_packing( GTK_BOX(player->priv->control), GTK_WIDGET(player->priv->play_box), TRUE, TRUE, 4, GTK_PACK_START );
+    gtk_box_set_child_packing( GTK_BOX(player->priv->control), GTK_WIDGET(player->priv->play_box), TRUE, TRUE, 2, GTK_PACK_START );
     
     player->priv->hbox_infobar = GTK_WIDGET (gtk_builder_get_object (builder, "hbox_infobar"));
     player->priv->combobox_audiotrack = GTK_WIDGET (gtk_builder_get_object (builder, "combobox_audiotrack"));

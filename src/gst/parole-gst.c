@@ -2296,7 +2296,6 @@ gst_set_current_subtitle_track( ParoleGst *gst, gint track_no )
 		  
 	sub = parole_get_subtitle_path(uri);
 	
-	GstTagList *tags;
 	gint flags;
 
 	g_object_get (gst->priv->playbin, "flags", &flags, NULL);

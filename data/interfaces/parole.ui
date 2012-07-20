@@ -919,6 +919,7 @@ audio-volume-medium</property>
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">True</property>
                                                 <property name="receives_default">True</property>
+                                                <property name="no_show_all">True</property>
                                                 <property name="use_action_appearance">False</property>
                                                 <property name="image">show-hide-list-image</property>
                                                 <property name="relief">none</property>
