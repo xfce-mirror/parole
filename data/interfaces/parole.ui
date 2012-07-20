@@ -49,6 +49,7 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-media-previous</property>
+    <property name="icon-size">3</property>
   </object>
   <object class="GtkImage" id="image18">
     <property name="visible">True</property>
@@ -59,6 +60,7 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-media-play</property>
+    <property name="icon-size">3</property>
   </object>
   <object class="GtkImage" id="image2">
     <property name="visible">True</property>
@@ -69,11 +71,13 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-media-next</property>
+    <property name="icon-size">3</property>
   </object>
   <object class="GtkImage" id="image21">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-fullscreen</property>
+    <property name="icon-size">3</property>
   </object>
   <object class="GtkImage" id="image3">
     <property name="visible">True</property>
@@ -847,7 +851,7 @@
                                                         <property name="relief">none</property>
                                                         <property name="focus_on_click">False</property>
                                                         <property name="orientation">vertical</property>
-                                                        <property name="size">button</property>
+                                                        <property name="size">large-toolbar</property>
                                                         <property name="icons">audio-volume-muted
 audio-volume-high
 audio-volume-low
@@ -1021,5 +1025,6 @@ audio-volume-medium</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-go-back</property>
+    <property name="icon-size">3</property>
   </object>
 </interface>
