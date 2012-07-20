@@ -812,8 +812,7 @@ parole_gst_query_info (ParoleGst *gst)
 		  "n-audio", &n_audio,
 		  "n-video", &n_video,
 		  NULL);
-		  
-		  
+
     g_object_set (G_OBJECT (gst->priv->stream),
 		  "has-video", (n_video > 0),
 		  "has-audio", (n_audio > 0),
@@ -823,7 +822,7 @@ parole_gst_query_info (ParoleGst *gst)
     {
 	for (i = 0; i < n_video && videopad == NULL; i++)
 	    g_signal_emit_by_name (gst->priv->playbin, "get-video-pad", i, &videopad);
-	    
+    
 	if (videopad)
 	{
 	    GstCaps *caps;
@@ -831,7 +830,7 @@ parole_gst_query_info (ParoleGst *gst)
 	    if ((caps = gst_pad_get_negotiated_caps (videopad)))
 	    {
 		parole_gst_get_pad_capabilities (G_OBJECT (videopad), NULL, gst);
-		g_object_unref (caps);
+		gst_caps_unref (caps);
 	    }
 	    
 	    g_signal_connect (videopad, "notify::caps",
@@ -928,6 +927,7 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
     {
 	case GST_STATE_PLAYING:
 	{
+		
 	    gst->priv->media_state = PAROLE_STATE_PLAYING;
 	    TRACE ("Playing");
 	    parole_gst_query_capabilities (gst);
@@ -2244,6 +2244,8 @@ gst_get_lang_list_for_type (ParoleGst * gst, const gchar * type_name)
 
 	gst_tag_list_get_string (tags, GST_TAG_LANGUAGE_CODE, &lc);
 	gst_tag_list_get_string (tags, GST_TAG_CODEC, &lc);
+	
+	g_print("%s\n", lc);
 
         if (lc) {
 	  ret = g_list_prepend (ret, lc);
