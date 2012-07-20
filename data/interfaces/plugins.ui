@@ -32,10 +32,10 @@
             <child>
               <object class="GtkButton" id="close">
                 <property name="label">gtk-close</property>
+                <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
               </object>
               <packing>
@@ -79,7 +79,7 @@
                         <child>
                           <object class="GtkTreeViewColumn" id="treeviewcolumn1">
                             <property name="resizable">True</property>
-                            <property name="title">Enabled</property>
+                            <property name="title" translatable="yes">Enabled</property>
                             <property name="clickable">True</property>
                             <child>
                               <object class="GtkCellRendererToggle" id="cellrenderertoggle">
@@ -93,7 +93,7 @@
                         </child>
                         <child>
                           <object class="GtkTreeViewColumn" id="treeviewcolumn2">
-                            <property name="title">Plugin</property>
+                            <property name="title" translatable="yes">Plugin</property>
                             <child>
                               <object class="GtkCellRendererText" id="cellrenderertext1"/>
                               <attributes>
@@ -134,8 +134,8 @@
                         <property name="use_markup">True</property>
                       </object>
                       <packing>
-                        <property name="x_options"></property>
-                        <property name="y_options"></property>
+                        <property name="x_options"/>
+                        <property name="y_options"/>
                       </packing>
                     </child>
                     <child>
@@ -148,8 +148,8 @@
                       <packing>
                         <property name="top_attach">1</property>
                         <property name="bottom_attach">2</property>
-                        <property name="x_options"></property>
-                        <property name="y_options"></property>
+                        <property name="x_options"/>
+                        <property name="y_options"/>
                       </packing>
                     </child>
                     <child>
@@ -187,8 +187,8 @@
                       <packing>
                         <property name="top_attach">2</property>
                         <property name="bottom_attach">3</property>
-                        <property name="x_options"></property>
-                        <property name="y_options"></property>
+                        <property name="x_options"/>
+                        <property name="y_options"/>
                       </packing>
                     </child>
                     <child>
@@ -221,10 +221,10 @@
                     <child>
                       <object class="GtkButton" id="configure">
                         <property name="label">gtk-properties</property>
+                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="use_stock">True</property>
                         <signal name="clicked" handler="parole_plugins_manager_show_configure" swapped="no"/>
                       </object>
