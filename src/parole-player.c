@@ -2397,6 +2397,8 @@ parole_player_init (ParolePlayer *player)
     
     g_signal_connect_swapped (player->priv->window, "notify::is-active",
 			      G_CALLBACK (parole_player_window_notify_is_active), player);
+			      
+	gtk_widget_grab_focus (player->priv->gst);
     
     parole_player_dbus_init (player);
 }
