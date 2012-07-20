@@ -927,13 +927,11 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
     {
 	case GST_STATE_PLAYING:
 	{
-		
 	    gst->priv->media_state = PAROLE_STATE_PLAYING;
 	    TRACE ("Playing");
 	    parole_gst_query_capabilities (gst);
 	    parole_gst_query_info (gst);
 	    parole_gst_query_duration (gst);
-	    
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
 			   gst->priv->stream, PAROLE_STATE_PLAYING);
 	    break;
@@ -1194,9 +1192,10 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
 	{
 	    GstState old, new, pending;
 	    gst_message_parse_state_changed (msg, &old, &new, &pending);
-	    
 	    if ( GST_MESSAGE_SRC (msg) == GST_OBJECT (gst->priv->playbin) )
+	    {
 		parole_gst_evaluate_state (gst, old, new, pending);
+		}
 	    break;
 	}
 	
@@ -2247,8 +2246,6 @@ gst_get_lang_list_for_type (ParoleGst * gst, const gchar * type_name)
 	gst_tag_list_get_string (tags, GST_TAG_LANGUAGE_CODE, &lc);
 	gst_tag_list_get_string (tags, GST_TAG_CODEC, &lc);
 	
-	g_print("%s\n", lc);
-
         if (lc) {
 	  ret = g_list_prepend (ret, lc);
 	  g_free (cd);

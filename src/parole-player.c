@@ -498,8 +498,11 @@ parole_player_change_range_value (ParolePlayer *player, gdouble value)
 static void
 parole_player_reset (ParolePlayer *player)
 {
+	parole_gst_stop (PAROLE_GST (player->priv->gst));
 	player->priv->update_languages = TRUE;
 	gtk_window_set_title (GTK_WINDOW (player->priv->window), "Parole Media Player");
+	player->priv->audio_list = NULL;
+	player->priv->subtitle_list = NULL;
 	player->priv->current_media_type = PAROLE_MEDIA_TYPE_UNKNOWN;
 	gtk_widget_hide(GTK_WIDGET(player->priv->infobar));
     parole_player_change_range_value (player, 0);
@@ -647,7 +650,6 @@ parole_player_update_languages (ParolePlayer *player, ParoleGst *gst)
 		if (gst_get_has_video( PAROLE_GST(player->priv->gst) ))
 		{
 			parole_player_update_audio_tracks(player, gst);
-		
 			parole_player_update_subtitles(player, gst);
 		}
 		player->priv->update_languages = FALSE;
@@ -1097,9 +1099,7 @@ parole_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream, Parole
 {
     PAROLE_DEBUG_ENUM ("State callback", state, PAROLE_ENUM_TYPE_STATE);
 
-
     player->priv->state = state;
-    
     parole_player_reset_saver_changed (player, stream);
     
     if ( state == PAROLE_STATE_PLAYING )
@@ -1122,7 +1122,6 @@ parole_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream, Parole
 	else
 	    TRACE ("***Playback about to finish***");
 #endif
-	
 	parole_player_play_next (player, TRUE);
     }
 }
@@ -2419,7 +2418,6 @@ ParoleMediaList	*parole_player_get_media_list (ParolePlayer *player)
 
 void parole_player_play_uri_disc (ParolePlayer *player, const gchar *uri, const gchar *device)
 {
-	g_print("%s\n", uri);
     if ( uri )
     {
 	parole_player_disc_selected_cb (NULL, uri, device, player);
