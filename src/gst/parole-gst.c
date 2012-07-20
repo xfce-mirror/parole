@@ -2287,10 +2287,39 @@ gst_set_current_audio_track( ParoleGst *gst, gint track_no )
 void
 gst_set_current_subtitle_track( ParoleGst *gst, gint track_no )
 {
-	if (track_no >= 0)
-	g_object_set (G_OBJECT (gst->priv->playbin), "current-text", (track_no-1), NULL);
-	else
-	g_object_set (G_OBJECT (gst->priv->playbin), "current-text", (NULL), NULL);
+	
+	gchar *uri, *sub;
+	
+	g_object_get (G_OBJECT (gst->priv->stream),
+		  "uri", &uri,
+		  NULL);
+		  
+	sub = parole_get_subtitle_path(uri);
+	
+	GstTagList *tags;
+	gint flags;
+
+	g_object_get (gst->priv->playbin, "flags", &flags, NULL);
+	
+	track_no = track_no -1;
+
+	if (track_no <= -1) {
+		flags &= ~GST_PLAY_FLAG_TEXT;
+		track_no = -1;
+	} else {
+		flags |= GST_PLAY_FLAG_TEXT;
+	}
+	
+	if (track_no == -1)
+	sub = NULL;
+
+	g_object_set (gst->priv->playbin, "flags", flags, "suburi", sub, "current-text", track_no, NULL);
+
+	if (flags & GST_PLAY_FLAG_TEXT) {
+		g_object_get (gst->priv->playbin, "current-text", &track_no, NULL);
+	}
+	
+	parole_gst_load_subtitle( gst );
 }
 
 const ParoleStream     *parole_gst_get_stream 		(ParoleGst *gst)

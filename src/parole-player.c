@@ -499,6 +499,7 @@ static void
 parole_player_reset (ParolePlayer *player)
 {
 	player->priv->update_languages = TRUE;
+	gtk_window_set_title (GTK_WINDOW (player->priv->window), "Parole Media Player");
 	gtk_widget_hide(GTK_WIDGET(player->priv->infobar));
     parole_player_change_range_value (player, 0);
 
@@ -584,6 +585,18 @@ parole_player_update_subtitles (ParolePlayer *player, ParoleGst *gst)
 	GList *l;
 	gchar* language;
 	
+	guint64 index;
+	index = 0;
+	
+	gboolean sub_enabled;
+	
+	g_object_get (G_OBJECT (player->priv->conf),
+		  "enable-subtitle", &sub_enabled,
+		  NULL);
+		  
+	if (sub_enabled)
+	index = 1;
+	
 	if (parole_sublang_equal_lists (player->priv->subtitle_list, list) == TRUE)
 	{
 		if (g_list_length (list) == 0)
@@ -615,7 +628,7 @@ parole_player_update_subtitles (ParolePlayer *player, ParoleGst *gst)
 		g_free (language);
 	}
 	
-	gtk_combo_box_set_active( GTK_COMBO_BOX(player->priv->combobox_subtitles), 0 );
+	gtk_combo_box_set_active( GTK_COMBO_BOX(player->priv->combobox_subtitles), index );
 	
 	if (g_list_length (list) != 1) {
     	gtk_widget_show(player->priv->infobar);
@@ -679,7 +692,7 @@ parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *ro
 				 sub);
 	    g_free (sub);
 	    
-	    //gtk_window_set_title (GTK_WINDOW (player->priv->window), parole_file_get_display_name(file));
+	    gtk_window_set_title (GTK_WINDOW (player->priv->window), parole_file_get_display_name(file));
 		
 
 	    g_object_unref (file);
