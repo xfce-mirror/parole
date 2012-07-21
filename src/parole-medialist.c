@@ -1154,13 +1154,11 @@ play_opened_files_activated_cb (GtkWidget *mi, ParoleConf *conf)
 }
 
 static void
-save_list_activated_cb (GtkWidget *mi)
+remember_playlist_activated_cb (GtkWidget *mi, ParoleConf *conf)
 {
-    gboolean active;
-    
-    active = gtk_check_menu_item_get_active (GTK_CHECK_MENU_ITEM (mi));
-    
-    parole_rc_write_entry_bool ("SAVE_LIST_ON_EXIT", PAROLE_RC_GROUP_GENERAL, active);
+    g_object_set (G_OBJECT (conf),
+		  "remember-playlist", gtk_check_menu_item_get_active (GTK_CHECK_MENU_ITEM (mi)),
+		  NULL);
 }
 
 static void
@@ -1281,14 +1279,14 @@ parole_media_list_show_menu (ParoleMediaList *list, GdkEventButton *ev)
     /**
      * Remember media list entries
      **/
+    g_object_get (G_OBJECT (list->priv->conf),
+		  "remember-playlist", &val,
+		  NULL);
     mi = gtk_check_menu_item_new_with_label (_("Remember playlist"));
     gtk_widget_set_sensitive (mi, TRUE);
-    gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (mi),
-				    parole_rc_read_entry_bool ("SAVE_LIST_ON_EXIT", 
-							        PAROLE_RC_GROUP_GENERAL, 
-								FALSE));
+    gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (mi), val);
     g_signal_connect (mi, "activate",
-                      G_CALLBACK (save_list_activated_cb), NULL);
+                      G_CALLBACK (remember_playlist_activated_cb), list->priv->conf);
 			      
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
     

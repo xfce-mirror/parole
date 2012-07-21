@@ -84,6 +84,9 @@ void		remove_duplicated_toggled_cb			(GtkToggleButton *widget,
 
 void		start_playing_opened_toggled_cb			(GtkToggleButton *widget,
 								 ParoleConfDialog *self);
+
+void		remember_playlist_toggled_cb			(GtkToggleButton *widget,
+								 ParoleConfDialog *self);
 								 
 void		multimedia_keys_toggled_cb			(GtkToggleButton *widget,
 								 ParoleConfDialog *self);
@@ -139,6 +142,13 @@ void start_playing_opened_toggled_cb (GtkToggleButton *widget, ParoleConfDialog 
 {
     g_object_set (G_OBJECT (self->priv->conf),
 		  "play-opened-files", gtk_toggle_button_get_active (widget),
+		  NULL);
+}
+
+void remember_playlist_toggled_cb (GtkToggleButton *widget, ParoleConfDialog *self)
+{
+    g_object_set (G_OBJECT (self->priv->conf),
+		  "remember-playlist", gtk_toggle_button_get_active (widget),
 		  NULL);
 }
 

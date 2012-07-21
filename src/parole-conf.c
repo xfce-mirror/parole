@@ -72,6 +72,7 @@ enum
     PROP_REPLACE_PLAYLIST,
     PROP_SCAN_FOLDER_RECURSIVELY,
     PROP_START_PLAYING_OPENED_FILES,
+    PROP_REMEMBER_PLAYLIST,
     PROP_REMOVE_DUPLICATED_PLAYLIST_ENTRIES,
     N_PROP
 };
@@ -374,6 +375,13 @@ parole_conf_class_init (ParoleConfClass *klass)
                                      g_param_spec_boolean ("play-opened-files",
                                                            NULL, NULL,
                                                            TRUE,
+                                                           G_PARAM_READWRITE));
+
+    g_object_class_install_property (object_class,
+                                     PROP_REMEMBER_PLAYLIST,
+                                     g_param_spec_boolean ("remember-playlist",
+                                                           NULL, NULL,
+                                                           FALSE,
                                                            G_PARAM_READWRITE));
 
     /**
