@@ -19,7 +19,6 @@
     <property name="title" translatable="yes">Parole Settings</property>
     <property name="icon_name">parole</property>
     <property name="type_hint">dialog</property>
-    <property name="subtitle" translatable="yes">Media Player Settings</property>
     <signal name="response" handler="parole_conf_dialog_response_cb" swapped="no"/>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox1">
@@ -76,7 +75,7 @@
                       <object class="GtkAlignment" id="alignment1">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="left_padding">12</property>
+                        <property name="left_padding">30</property>
                         <child>
                           <object class="GtkCheckButton" id="reset-saver">
                             <property name="label" translatable="yes">Disable screensaver while playing movies</property>
@@ -94,6 +93,9 @@
                       <object class="GtkLabel" id="label5">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="yalign">1</property>
+                        <property name="xpad">10</property>
+                        <property name="ypad">8</property>
                         <property name="label" translatable="yes">&lt;b&gt;Video&lt;/b&gt;</property>
                         <property name="use_markup">True</property>
                       </object>
@@ -115,7 +117,7 @@
                       <object class="GtkAlignment" id="alignment2">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="left_padding">12</property>
+                        <property name="left_padding">30</property>
                         <child>
                           <object class="GtkVBox" id="vbox2">
                             <property name="visible">True</property>
@@ -187,6 +189,8 @@
                       <object class="GtkLabel" id="label6">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="xpad">10</property>
+                        <property name="ypad">8</property>
                         <property name="label" translatable="yes">&lt;b&gt;Audio&lt;/b&gt;</property>
                         <property name="use_markup">True</property>
                       </object>
@@ -208,7 +212,7 @@
                       <object class="GtkAlignment" id="alignment3">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="left_padding">12</property>
+                        <property name="left_padding">30</property>
                         <child>
                           <object class="GtkCheckButton" id="multimedia-keys">
                             <property name="label" translatable="yes">Enable keyboard multimedia keys</property>
@@ -226,6 +230,8 @@
                       <object class="GtkLabel" id="label7">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="xpad">10</property>
+                        <property name="ypad">8</property>
                         <property name="label" translatable="yes">&lt;b&gt;Keyboard&lt;/b&gt;</property>
                         <property name="use_markup">True</property>
                       </object>
@@ -259,7 +265,7 @@
                   <object class="GtkAlignment" id="alignment4">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="left_padding">12</property>
+                    <property name="left_padding">30</property>
                     <child>
                       <object class="GtkVBox" id="vbox3">
                         <property name="visible">True</property>
@@ -418,6 +424,8 @@
                   <object class="GtkLabel" id="label9">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="xpad">10</property>
+                    <property name="ypad">8</property>
                     <property name="label" translatable="yes">&lt;b&gt;Display&lt;/b&gt;</property>
                     <property name="use_markup">True</property>
                   </object>
@@ -448,11 +456,12 @@
                   <object class="GtkAlignment" id="alignment5">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="left_padding">12</property>
+                    <property name="left_padding">30</property>
                     <child>
                       <object class="GtkVBox" id="vbox4">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="spacing">4</property>
                         <child>
                           <object class="GtkCheckButton" id="replace-playlist">
                             <property name="label" translatable="yes">Always replace playlist with opened files</property>
@@ -501,7 +510,7 @@
                             <property name="position">2</property>
                           </packing>
                         </child>
-			<child>
+                        <child>
                           <object class="GtkCheckButton" id="remember-playlist">
                             <property name="label" translatable="yes">Remember playlist</property>
                             <property name="visible">True</property>
@@ -525,6 +534,8 @@
                   <object class="GtkLabel" id="label14">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="xpad">10</property>
+                    <property name="ypad">8</property>
                     <property name="label" translatable="yes">&lt;b&gt;Playlist options&lt;/b&gt;</property>
                     <property name="use_markup">True</property>
                   </object>
@@ -555,11 +566,12 @@
                   <object class="GtkAlignment" id="alignment6">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="left_padding">12</property>
+                    <property name="left_padding">30</property>
                     <child>
                       <object class="GtkVBox" id="vbox5">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="spacing">4</property>
                         <child>
                           <object class="GtkCheckButton" id="enable-subtitle">
                             <property name="label" translatable="yes">Automatically show subtitles when playing movie file</property>
@@ -648,6 +660,8 @@
                   <object class="GtkLabel" id="label15">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="xpad">10</property>
+                    <property name="ypad">8</property>
                     <property name="label" translatable="yes">&lt;b&gt;Subtitles&lt;/b&gt;</property>
                     <property name="use_markup">True</property>
                   </object>
