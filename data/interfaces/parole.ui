@@ -79,6 +79,11 @@
     <property name="stock">gtk-fullscreen</property>
     <property name="icon-size">3</property>
   </object>
+  <object class="GtkImage" id="image22">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">media-cdrom-audio</property>
+  </object>
   <object class="GtkImage" id="image3">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -189,70 +194,13 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="dvd-menu">
-                        <property name="label" translatable="yes">_DVD</property>
+                      <object class="GtkImageMenuItem" id="menu-open-disc">
+                        <property name="label" translatable="yes">Play Disc</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_action_appearance">False</property>
-                        <property name="use_underline">True</property>
-                        <property name="image">image14</property>
+                        <property name="image">image22</property>
                         <property name="use_stock">False</property>
-                        <child type="submenu">
-                          <object class="GtkMenu" id="menu6">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <child>
-                              <object class="GtkImageMenuItem" id="dvd-iso-mi">
-                                <property name="label" translatable="yes">From ISO image</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="use_action_appearance">False</property>
-                                <property name="image">image15</property>
-                                <property name="use_stock">False</property>
-                                <signal name="activate" handler="dvd_iso_mi_activated_cb" swapped="no"/>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="GtkSeparatorMenuItem" id="separatormenuitem5">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem" id="cd-menu">
-                        <property name="label">gtk-cdrom</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                        <child type="submenu">
-                          <object class="GtkMenu" id="menu7">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <child>
-                              <object class="GtkImageMenuItem" id="cd-iso-mi">
-                                <property name="label" translatable="yes">From ISO image</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="use_action_appearance">False</property>
-                                <property name="image">image16</property>
-                                <property name="use_stock">False</property>
-                                <signal name="activate" handler="cd_iso_mi_activated_cb" swapped="no"/>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="GtkSeparatorMenuItem" id="separatormenuitem6">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
                       </object>
                     </child>
                     <child>
@@ -350,14 +298,21 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkCheckMenuItem" id="show-hide-list">
+                      <object class="GtkImageMenuItem" id="fullscreen-menu">
+                        <property name="label">gtk-fullscreen</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_action_appearance">False</property>
-                        <property name="label" translatable="yes">Show _playlist</property>
                         <property name="use_underline">True</property>
-                        <accelerator key="F9" signal="activate"/>
-                        <signal name="activate" handler="parole_player_show_hide_playlist" swapped="no"/>
+                        <property name="use_stock">True</property>
+                        <accelerator key="F11" signal="activate"/>
+                        <signal name="activate" handler="parole_player_full_screen_activated_cb" swapped="no"/>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSeparatorMenuItem" id="separatormenuitem3">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
                       </object>
                     </child>
                     <child>
@@ -447,21 +402,78 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkSeparatorMenuItem" id="separatormenuitem3">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem" id="fullscreen-menu">
-                        <property name="label">gtk-fullscreen</property>
+                      <object class="GtkSeparatorMenuItem" id="menuitem3">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_action_appearance">False</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuItem" id="menuitem4">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_action_appearance">False</property>
+                        <property name="label" translatable="yes">Subtitles</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                        <accelerator key="F11" signal="activate"/>
-                        <signal name="activate" handler="parole_player_full_screen_activated_cb" swapped="no"/>
+                        <child type="submenu">
+                          <object class="GtkMenu" id="menu6">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="ubuntu_local">True</property>
+                            <child>
+                              <object class="GtkRadioMenuItem" id="menuitem6">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="use_action_appearance">False</property>
+                                <property name="label" translatable="yes">None</property>
+                                <property name="use_underline">True</property>
+                                <property name="draw_as_radio">True</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkSeparatorMenuItem" id="menuitem7">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="use_action_appearance">False</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkRadioMenuItem" id="menuitem8">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="use_action_appearance">False</property>
+                                <property name="label" translatable="yes">Select Text Subtitles...</property>
+                                <property name="use_underline">True</property>
+                                <property name="draw_as_radio">True</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkSeparatorMenuItem" id="menuitem9">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="use_action_appearance">False</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSeparatorMenuItem" id="menuitem5">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_action_appearance">False</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkCheckMenuItem" id="show-hide-list">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_action_appearance">False</property>
+                        <property name="label" translatable="yes">Show _playlist</property>
+                        <property name="use_underline">True</property>
+                        <accelerator key="F9" signal="activate"/>
+                        <signal name="activate" handler="parole_player_show_hide_playlist" swapped="no"/>
                       </object>
                     </child>
                   </object>
@@ -480,15 +492,35 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkImageMenuItem" id="volume-mute-menu">
-                        <property name="label" translatable="yes">_Mute</property>
+                      <object class="GtkMenuItem" id="menuitem10">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_action_appearance">False</property>
+                        <property name="label" translatable="yes">Languages</property>
                         <property name="use_underline">True</property>
-                        <property name="image">image12</property>
-                        <property name="use_stock">False</property>
-                        <signal name="activate" handler="parole_player_volume_mute" swapped="no"/>
+                        <child type="submenu">
+                          <object class="GtkMenu" id="menu7">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="ubuntu_local">True</property>
+                            <child>
+                              <object class="GtkMenuItem" id="menuitem11">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="use_action_appearance">False</property>
+                                <property name="label" translatable="yes">Empty</property>
+                                <property name="use_underline">True</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSeparatorMenuItem" id="menuitem12">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_action_appearance">False</property>
                       </object>
                     </child>
                     <child>
@@ -515,6 +547,18 @@
                         <property name="use_stock">False</property>
                         <accelerator key="minus" signal="activate"/>
                         <signal name="activate" handler="parole_player_volume_down" swapped="no"/>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImageMenuItem" id="volume-mute-menu">
+                        <property name="label" translatable="yes">_Mute</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_action_appearance">False</property>
+                        <property name="use_underline">True</property>
+                        <property name="image">image12</property>
+                        <property name="use_stock">False</property>
+                        <signal name="activate" handler="parole_player_volume_mute" swapped="no"/>
                       </object>
                     </child>
                   </object>
