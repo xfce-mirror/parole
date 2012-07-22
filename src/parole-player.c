@@ -1435,9 +1435,9 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
     
     /*
-     * Seek Forward.
+     * Previous item in playlist.
      */
-    mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_MEDIA_FORWARD, NULL);
+    mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_MEDIA_NEXT, NULL);
 					     
     gtk_widget_set_sensitive (mi, (player->priv->state >= PAROLE_STATE_PAUSED));
     gtk_widget_show (mi);
@@ -1446,9 +1446,9 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
     
     /*
-     * Seek backward.
+     * Next item in playlist.
      */
-    mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_MEDIA_REWIND, NULL);
+    mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_MEDIA_PREVIOUS, NULL);
 					     
     gtk_widget_set_sensitive (mi, (player->priv->state >= PAROLE_STATE_PAUSED));
     gtk_widget_show (mi);
