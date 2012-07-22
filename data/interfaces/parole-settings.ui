@@ -122,6 +122,7 @@
                           <object class="GtkVBox" id="vbox2">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="spacing">4</property>
                             <child>
                               <object class="GtkCheckButton" id="enable-vis">
                                 <property name="label" translatable="yes">Enable visualization when playing audio file</property>
@@ -177,7 +178,7 @@
                               </object>
                               <packing>
                                 <property name="expand">True</property>
-                                <property name="fill">True</property>
+                                <property name="fill">False</property>
                                 <property name="position">1</property>
                               </packing>
                             </child>
@@ -212,6 +213,7 @@
                       <object class="GtkAlignment" id="alignment3">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="bottom_padding">20</property>
                         <property name="left_padding">30</property>
                         <child>
                           <object class="GtkCheckButton" id="multimedia-keys">
@@ -249,7 +251,8 @@
               <object class="GtkLabel" id="label1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">General</property>
+                <property name="label" translatable="yes">_General</property>
+                <property name="use_underline">True</property>
               </object>
               <packing>
                 <property name="tab_fill">False</property>
@@ -439,7 +442,8 @@
               <object class="GtkLabel" id="label2">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Display</property>
+                <property name="label" translatable="yes">_Display</property>
+                <property name="use_underline">True</property>
               </object>
               <packing>
                 <property name="position">1</property>
@@ -480,7 +484,7 @@
                         </child>
                         <child>
                           <object class="GtkCheckButton" id="remove-duplicated">
-                            <property name="label" translatable="yes">Check and remove duplicated media entries</property>
+                            <property name="label" translatable="yes">Check and remove duplicate media entries</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -549,7 +553,8 @@
               <object class="GtkLabel" id="label3">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Playlist</property>
+                <property name="label" translatable="yes">_Playlist</property>
+                <property name="use_underline">True</property>
               </object>
               <packing>
                 <property name="position">2</property>
@@ -675,7 +680,8 @@
               <object class="GtkLabel" id="label4">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Subtitles</property>
+                <property name="label" translatable="yes">_Subtitles</property>
+                <property name="use_underline">True</property>
               </object>
               <packing>
                 <property name="position">3</property>
