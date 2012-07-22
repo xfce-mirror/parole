@@ -273,9 +273,6 @@ void parole_conf_dialog_enable_subtitle_changed_cb (GtkToggleButton *widget, Par
     g_object_set (G_OBJECT (self->priv->conf),
 		  "enable-subtitle", active,
 		  NULL);
-    
-    gtk_widget_set_sensitive (self->priv->font_button, active);
-    
 }
 
 static void
