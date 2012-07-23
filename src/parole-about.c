@@ -38,7 +38,6 @@
 
 void parole_about (GtkWindow *parent)
 {
-    GdkPixbuf *logo;
     static const gchar *authors[] = 
     {
 	"Ali Abdallah <aliov@xfce.org",
