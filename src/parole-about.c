@@ -26,7 +26,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 #ifdef XFCE_DISABLE_DEPRECATED
 #undef XFCE_DISABLE_DEPRECATED
 #endif
@@ -36,31 +35,6 @@
 #include "parole-about.h"
 #include "parole-utils.h"
 
-#if !GTK_CHECK_VERSION (2, 18, 0)
-static void
-parole_link_browser (GtkAboutDialog *about, const gchar *link, gpointer data)
-{
-    gchar *cmd;
-
-    cmd = g_strdup_printf ("%s %s","xdg-open", link);
-
-    if ( !g_spawn_command_line_async (cmd, NULL) )
-    {
-	g_free (cmd);
-	cmd = g_strdup_printf ("%s %s","xfbrowser4", link);
-	g_spawn_command_line_async (cmd, NULL);
-    }
-    g_free (cmd);
-}
-
-static void
-parole_link_mailto (GtkAboutDialog *about, const gchar *link, gpointer data)
-{
-    gchar *cmd = g_strdup_printf( "%s %s", "xdg-email", link);
-    g_spawn_command_line_async (cmd, NULL);
-    g_free (cmd);
-}
-#endif /*GTK_CHECK_VERSION (2, 18, 0)*/
 
 void parole_about (GtkWindow *parent)
 {
@@ -76,28 +50,18 @@ void parole_about (GtkWindow *parent)
 	"Ali Abdallah <aliov@xfce.org",
 	NULL,
     };
-
-#if !GTK_CHECK_VERSION (2, 18, 0)
-    gtk_about_dialog_set_url_hook (parole_link_browser, NULL, NULL);
-    gtk_about_dialog_set_email_hook (parole_link_mailto, NULL, NULL);
-#endif
-
-    logo = parole_icon_load ("parole", 128);
     
     gtk_show_about_dialog (parent,
     "authors", authors,
     "comments", _("Parole Media Player"),
     "documenters", documenters,
-    "copyright", "Copyright \302\251 2009-2010 Ali Abdallah",
+    "copyright", "Copyright \302\251 2009-2011 Ali Abdallah",
     "license", XFCE_LICENSE_GPL,
-    "logo", logo,
+    "logo-icon-name", "parole",
     "program-name", PACKAGE_NAME,
     "translator-credits", _("translator-credits"),
     "version", PACKAGE_VERSION,
     "website", "http://goodies.xfce.org/projects/applications/parole",
     "website-label", _("Visit Parole website"),
     NULL);
-
-    if (logo)
-    g_object_unref (G_OBJECT (logo));
 }
