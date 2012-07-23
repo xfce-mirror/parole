@@ -2565,7 +2565,7 @@ void parole_player_set_subtitle_radio_menu_item_selected(ParolePlayer *player, g
 	GList *menu_items, *menu_iter;
 	menu_items = gtk_container_get_children( GTK_CONTAINER (player->priv->subtitles_menu) );
 	
-	if (index == 0)
+	if (index <= 0)
 	{
 		gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menu_items->data), TRUE);
 	}
