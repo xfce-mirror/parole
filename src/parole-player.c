@@ -119,10 +119,6 @@ gboolean	parole_player_range_button_release	(GtkWidget *widget,
 							 GdkEventButton *ev,
 							 ParolePlayer *player);
 
-gboolean 			parole_player_gst_widget_button_press	 (GtkWidget *widget,
-							 GdkEventButton *ev,
-							 ParolePlayer *player);
-
 void            parole_player_range_value_changed       (GtkRange *range, 
 							 ParolePlayer *player);
 
