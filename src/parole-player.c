@@ -199,6 +199,10 @@ void		parole_player_shuffle_toggled_cb	(GtkWidget *widget,
 
 void		parole_player_repeat_toggled_cb		(GtkWidget *widget,
 							 ParolePlayer *player);
+							 
+static void		parole_player_clear_subtitles		(ParolePlayer *player);
+
+static void		parole_player_clear_audio_tracks		(ParolePlayer *player);
 
 /*
  * Aspect ratio
@@ -294,6 +298,11 @@ struct ParolePlayerPrivate
     GList			*audio_list;
     GList			*subtitle_list;
     gboolean		update_languages;
+    GtkWidget		*subtitles_group;
+    GSList			*audio_group;
+    
+    GtkWidget		*subtitles_menu;
+    GtkWidget		*languages_menu;
     
     GtkWidget		*main_box;
     
@@ -544,39 +553,151 @@ parole_sublang_equal_lists (GList *orig, GList *new)
 }
 
 static void
-parole_player_update_audio_tracks (ParolePlayer *player, ParoleGst *gst)
+parole_player_clear_subtitles (ParolePlayer *player)
 {
-	GList * list = gst_get_lang_list_for_type (gst, "AUDIO");
+	/* Clear the InfoBar Combobox */
+	gtk_list_store_clear(player->priv->liststore_subtitles);
+	GtkTreeIter iter;
+	gtk_list_store_append(GTK_LIST_STORE(player->priv->liststore_subtitles), &iter);
+	gtk_list_store_set(GTK_LIST_STORE(player->priv->liststore_subtitles), &iter, 0, "None", -1);
+	gtk_combo_box_set_active( GTK_COMBO_BOX(player->priv->combobox_subtitles), 0 );
+	
+	/* Clear the subtitle menu options */
+	GList *menu_items, *menu_iter;
+	menu_items = gtk_container_get_children( GTK_CONTAINER (player->priv->subtitles_menu) );
+	
+	gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(player->priv->subtitles_group), TRUE);
+	
+	gint counter = 0;
+	for (menu_iter = menu_items; menu_iter != NULL; menu_iter = g_list_next(menu_iter))
+	{
+		if (counter >= 4)
+			gtk_widget_destroy(GTK_WIDGET(menu_iter->data));
+		counter++;
+	}
+	g_list_free(menu_items);
+}
+
+static void
+parole_player_set_subtitles_list (ParolePlayer *player, GList *subtitle_list)
+{
+	parole_player_clear_subtitles( player );
+	
+	GList *l;
+	gchar* language;
+
+	guint64 index;
+	
+	player->priv->subtitle_list = subtitle_list;
+	
+	GtkTreeIter iter;
+	
+	for (l = subtitle_list; l != NULL; l = l->next)
+	{
+		language = g_strdup (l->data);
+	
+		GtkTreeIter iter;
+		gtk_list_store_append(GTK_LIST_STORE(player->priv->liststore_subtitles), &iter);
+		gtk_list_store_set(GTK_LIST_STORE(player->priv->liststore_subtitles), &iter, 0, language, -1);
+    
+    	GtkWidget *menu_item;
+		menu_item = gtk_radio_menu_item_new_with_label_from_widget (GTK_RADIO_MENU_ITEM(player->priv->subtitles_group), language);
+		gtk_widget_show (menu_item);
+		
+		gtk_menu_shell_append (GTK_MENU_SHELL (player->priv->subtitles_menu), menu_item);
+		
+		g_free (language);
+	}
+	
+	if (g_list_length (subtitle_list) != 1) {
+    	gtk_widget_show(player->priv->infobar);
+  	}
+}
+
+static void
+parole_player_clear_audio_tracks (ParolePlayer *player)
+{
+	gtk_list_store_clear(player->priv->liststore_audiotrack);
+	player->priv->audio_group = NULL;
+	
+	/* Clear the subtitle menu options */
+	GList *menu_items, *menu_iter;
+	menu_items = gtk_container_get_children( GTK_CONTAINER (player->priv->languages_menu) );
+	
+	for (menu_iter = menu_items; menu_iter != NULL; menu_iter = g_list_next(menu_iter))
+	gtk_widget_destroy(GTK_WIDGET(menu_iter->data));
+	g_list_free(menu_items);
+	
+	GtkWidget *empty_item = gtk_menu_item_new_with_label(_("Empty"));
+	gtk_widget_set_sensitive( empty_item, FALSE );
+	gtk_widget_show( empty_item );
+	
+	gtk_menu_shell_append (GTK_MENU_SHELL (player->priv->languages_menu), empty_item);
+}
+
+static void
+parole_player_set_audio_list (ParolePlayer *player, GList *audio_list)
+{
+	parole_player_clear_audio_tracks( player );
+	
+	GList *menu_iter;
+	menu_iter = gtk_container_get_children( GTK_CONTAINER (player->priv->languages_menu) );
+	
+	gtk_widget_destroy(GTK_WIDGET(menu_iter->data));
+	g_list_free(menu_iter);
+	
 	GList *l;
 	gchar* language;
 	
-	if (parole_sublang_equal_lists (player->priv->audio_list, list) == TRUE)
-	{
-		return;
-	}
+	player->priv->audio_list = audio_list;
 	
-	player->priv->audio_list = list;
-	gtk_list_store_clear(player->priv->liststore_audiotrack);
-	
-	for (l = list; l != NULL; l = l->next)
+	for (l = audio_list; l != NULL; l = l->next)
 	{
 		language = g_strdup (l->data);
 	
 		GtkTreeIter iter;
 		gtk_list_store_append(GTK_LIST_STORE(player->priv->liststore_audiotrack), &iter);
 		gtk_list_store_set(GTK_LIST_STORE(player->priv->liststore_audiotrack), &iter, 0, language, -1);
+		
+		if (player->priv->audio_group == NULL)
+		{
+			player->priv->audio_group = gtk_radio_menu_item_new_with_label (NULL, language);
+			gtk_widget_show (GTK_WIDGET(player->priv->audio_group));
+			gtk_menu_shell_append (GTK_MENU_SHELL (player->priv->languages_menu), GTK_WIDGET(player->priv->audio_group));
+			gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(player->priv->audio_group), TRUE);
+		} else {
+			GtkWidget *menu_item;
+			menu_item = gtk_radio_menu_item_new_with_label_from_widget (GTK_RADIO_MENU_ITEM(player->priv->audio_group), language);
+			gtk_widget_show (menu_item);
+			gtk_menu_shell_append (GTK_MENU_SHELL (player->priv->languages_menu), menu_item);
+		}
+		
 		g_free (language);
 	}
 	
 	gtk_combo_box_set_active( GTK_COMBO_BOX(player->priv->combobox_audiotrack), 0 );
 	
-	if (g_list_length (list) >= 2) {
+	if (g_list_length (audio_list) >= 2) {
 		gtk_widget_set_sensitive( GTK_WIDGET( player->priv->combobox_audiotrack ), TRUE );
   		gtk_widget_show(player->priv->infobar);
   	}
   	else {
   	gtk_widget_set_sensitive( GTK_WIDGET( player->priv->combobox_audiotrack ), FALSE );
   	}
+}
+
+static void
+parole_player_update_audio_tracks (ParolePlayer *player, ParoleGst *gst)
+{
+	GList * list = gst_get_lang_list_for_type (gst, "AUDIO");
+	
+	if (parole_sublang_equal_lists (player->priv->audio_list, list) == TRUE)
+	{
+		return;
+	}
+	
+	parole_player_set_audio_list (player, list);
+	
     g_free (list->data);
     g_list_free (list);
     list = NULL;
@@ -586,8 +707,6 @@ static void
 parole_player_update_subtitles (ParolePlayer *player, ParoleGst *gst)
 {
 	GList * list = gst_get_lang_list_for_type (gst, "TEXT");
-	GList *l;
-	gchar* language;
 	
 	guint64 index;
 	index = 0;
@@ -605,32 +724,12 @@ parole_player_update_subtitles (ParolePlayer *player, ParoleGst *gst)
 	{
 		if (g_list_length (list) == 0)
 		{
-			gtk_list_store_clear(player->priv->liststore_subtitles);
-			GtkTreeIter iter;
-			gtk_list_store_append(GTK_LIST_STORE(player->priv->liststore_subtitles), &iter);
-			gtk_list_store_set(GTK_LIST_STORE(player->priv->liststore_subtitles), &iter, 0, "None", -1);
-			gtk_combo_box_set_active( GTK_COMBO_BOX(player->priv->combobox_subtitles), 0 );
+			parole_player_clear_subtitles(player);
 		}
 		return;
 	}
 	
-	player->priv->subtitle_list = list;
-	gtk_list_store_clear(player->priv->liststore_subtitles);
-	
-	
-	GtkTreeIter iter;
-	gtk_list_store_append(GTK_LIST_STORE(player->priv->liststore_subtitles), &iter);
-	gtk_list_store_set(GTK_LIST_STORE(player->priv->liststore_subtitles), &iter, 0, "None", -1);
-	
-	for (l = list; l != NULL; l = l->next)
-	{
-		language = g_strdup (l->data);
-	
-		GtkTreeIter iter;
-		gtk_list_store_append(GTK_LIST_STORE(player->priv->liststore_subtitles), &iter);
-		gtk_list_store_set(GTK_LIST_STORE(player->priv->liststore_subtitles), &iter, 0, language, -1);
-		g_free (language);
-	}
+	parole_player_set_subtitles_list (player, list);
 	
 	gtk_combo_box_set_active( GTK_COMBO_BOX(player->priv->combobox_subtitles), index );
 	
@@ -2238,6 +2337,12 @@ parole_player_init (ParolePlayer *player)
 		      G_CALLBACK (parole_player_drag_data_received_cb), player);
     
     player->priv->window = GTK_WIDGET (gtk_builder_get_object (builder, "main-window"));
+    
+    player->priv->subtitles_menu = GTK_WIDGET (gtk_builder_get_object (builder, "subtitles-menu"));
+    player->priv->languages_menu = GTK_WIDGET (gtk_builder_get_object (builder, "languages-menu"));
+    
+    player->priv->subtitles_group = GTK_WIDGET (gtk_builder_get_object (builder, "subtitles-menu-none"));
+    player->priv->audio_group = NULL;
    
     player->priv->main_nt = GTK_WIDGET (gtk_builder_get_object (builder, "main-notebook"));
     

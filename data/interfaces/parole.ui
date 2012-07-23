@@ -347,12 +347,12 @@
                         <property name="label" translatable="yes">Subtitles</property>
                         <property name="use_underline">True</property>
                         <child type="submenu">
-                          <object class="GtkMenu" id="menu6">
+                          <object class="GtkMenu" id="subtitles-menu">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="ubuntu_local">True</property>
                             <child>
-                              <object class="GtkRadioMenuItem" id="menuitem6">
+                              <object class="GtkRadioMenuItem" id="subtitles-menu-none">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="use_action_appearance">False</property>
@@ -369,13 +369,12 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkRadioMenuItem" id="menuitem8">
+                              <object class="GtkMenuItem" id="subtitles-menu-custom">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="use_action_appearance">False</property>
                                 <property name="label" translatable="yes">Select Text Subtitles...</property>
                                 <property name="use_underline">True</property>
-                                <property name="draw_as_radio">True</property>
                               </object>
                             </child>
                             <child>
@@ -430,13 +429,14 @@
                         <property name="label" translatable="yes">Languages</property>
                         <property name="use_underline">True</property>
                         <child type="submenu">
-                          <object class="GtkMenu" id="menu7">
+                          <object class="GtkMenu" id="languages-menu">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="ubuntu_local">True</property>
                             <child>
                               <object class="GtkMenuItem" id="menuitem11">
                                 <property name="visible">True</property>
+                                <property name="sensitive">False</property>
                                 <property name="can_focus">False</property>
                                 <property name="use_action_appearance">False</property>
                                 <property name="label" translatable="yes">Empty</property>
