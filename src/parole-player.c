@@ -675,11 +675,17 @@ parole_player_set_audio_list (ParolePlayer *player, GList *audio_list)
 			gtk_widget_show (GTK_WIDGET(player->priv->audio_group));
 			gtk_menu_shell_append (GTK_MENU_SHELL (player->priv->languages_menu), GTK_WIDGET(player->priv->audio_group));
 			gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(player->priv->audio_group), TRUE);
+			
+			g_signal_connect (player->priv->audio_group, "activate",
+		      G_CALLBACK (parole_player_audiotrack_radio_menu_item_changed_cb), player);
 		} else {
 			GtkWidget *menu_item;
 			menu_item = gtk_radio_menu_item_new_with_label_from_widget (GTK_RADIO_MENU_ITEM(player->priv->audio_group), language);
 			gtk_widget_show (menu_item);
 			gtk_menu_shell_append (GTK_MENU_SHELL (player->priv->languages_menu), menu_item);
+			
+			g_signal_connect (menu_item, "activate",
+		      G_CALLBACK (parole_player_audiotrack_radio_menu_item_changed_cb), player);
 		}
 		
 		g_free (language);
