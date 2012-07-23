@@ -2014,21 +2014,6 @@ parole_gst_set_default_aspect_ratio (ParolePlayer *player, GtkBuilder *builder)
 				    TRUE);
 }
 
-static void
-parole_player_set_sound_menu_items_image (GtkBuilder *builder)
-{
-    GtkWidget *img;
-    
-    img = gtk_image_new_from_icon_name ("audio-volume-muted", GTK_ICON_SIZE_MENU);
-    gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (gtk_builder_get_object (builder, "volume-mute-menu")), img);
-    
-    img = gtk_image_new_from_icon_name ("audio-volume-high", GTK_ICON_SIZE_MENU);
-    gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (gtk_builder_get_object (builder, "volume-up-menu")), img);
-    
-    img = gtk_image_new_from_icon_name ("audio-volume-low", GTK_ICON_SIZE_MENU);
-    gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (gtk_builder_get_object (builder, "volume-down-menu")), img);
-}
-
 gboolean
 parole_player_configure_event_cb (GtkWidget *widget, GdkEventConfigure *ev, ParolePlayer *player)
 {
@@ -2200,7 +2185,6 @@ parole_player_init (ParolePlayer *player)
     
     player->priv->recent = gtk_recent_manager_get_default ();
     
-    parole_player_set_sound_menu_items_image (builder);
     /*
      * Gst signals
      */
