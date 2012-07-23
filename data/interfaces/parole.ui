@@ -350,7 +350,6 @@
                           <object class="GtkMenu" id="subtitles-menu">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="ubuntu_local">True</property>
                             <child>
                               <object class="GtkRadioMenuItem" id="subtitles-menu-none">
                                 <property name="visible">True</property>
@@ -432,7 +431,6 @@
                           <object class="GtkMenu" id="languages-menu">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="ubuntu_local">True</property>
                             <child>
                               <object class="GtkMenuItem" id="menuitem11">
                                 <property name="visible">True</property>
