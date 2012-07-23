@@ -233,14 +233,13 @@ msgstr "Desactivar protector de pantalla al reproducir películas"
 
 #: ../data/interfaces/parole-settings.ui.h:11
 msgid "Enable keyboard multimedia keys"
-msgstr ""
+msgstr "Habilitar las teclas multimedia del teclado"
 
 #: ../data/interfaces/parole-settings.ui.h:12
 msgid "Enable visualization when playing audio file"
 msgstr "Activar visualizaciones al reproducir un archivo de audio"
 
 #: ../data/interfaces/parole-settings.ui.h:13
-#, fuzzy
 msgid "Encoding:"
 msgstr "Codificación:"
 
@@ -261,7 +260,6 @@ msgid "Remember playlist"
 msgstr "Recordar lista de reproducción"
 
 #: ../data/interfaces/parole-settings.ui.h:18
-#, fuzzy
 msgid "Reset to defaults"
 msgstr "Restablecer valores predeterminados"
 
@@ -274,24 +272,20 @@ msgid "Visualization type:"
 msgstr "Tipo de visualización:"
 
 #: ../data/interfaces/parole-settings.ui.h:22
-#, fuzzy
 msgid "_Display"
-msgstr "<b>Pantalla</b>"
+msgstr "_Pantalla"
 
 #: ../data/interfaces/parole-settings.ui.h:23
-#, fuzzy
 msgid "_General"
-msgstr "General"
+msgstr "_General"
 
 #: ../data/interfaces/parole-settings.ui.h:24
-#, fuzzy
 msgid "_Playlist"
-msgstr "Lista de reproducción"
+msgstr "_Lista de reproducción"
 
 #: ../data/interfaces/parole-settings.ui.h:25
-#, fuzzy
 msgid "_Subtitles"
-msgstr "<b>Subtítulos</b>"
+msgstr "_Subtítulos"
 
 #: ../data/interfaces/save-playlist.ui.h:1
 msgid "By Extension"
@@ -302,13 +296,12 @@ msgid "Select File Types (By Extension)"
 msgstr "Seleccionar tipos de archivo (por extensión)"
 
 #: ../data/interfaces/open-location.ui.h:1
-#, fuzzy
 msgid "Open Location"
-msgstr "_Abrir una ubicación"
+msgstr "Abrir una ubicación"
 
 #: ../data/interfaces/open-location.ui.h:2
 msgid "Please enter a network URL:"
-msgstr ""
+msgstr "Por favor introdusca una ubicación en red"
 
 #: ../data/desktop/parole.desktop.in.in.h:1
 msgid "Parole"
@@ -345,14 +338,14 @@ msgstr ""
 "instalación de GStreamer"
 
 #: ../src/gst/parole-gst.c:2223 ../src/gst/parole-gst.c:2227
-#, fuzzy, c-format
+#, c-format
 msgid "Audio Track #%d"
-msgstr "Pista %i"
+msgstr "Pista Nº %i"
 
 #: ../src/gst/parole-gst.c:2255 ../src/gst/parole-gst.c:2259
 #, c-format
 msgid "Subtitle #%d"
-msgstr ""
+msgstr "Subtitulo %d"
 
 #: ../src/main.c:53
 #, c-format
@@ -536,21 +529,19 @@ msgstr "Stream de medios no se puede buscar"
 
 #: ../src/parole-player.c:1349
 msgid "GStreamer backend error"
-msgstr ""
+msgstr "Error en el backend GStreamer"
 
 #: ../src/parole-player.c:1392
 msgid "Buffering"
 msgstr "Almacenando en el búfer"
 
 #: ../src/parole-about.c:95
-#, fuzzy
 msgid "translator-credits"
-msgstr "Traductor (%s)"
+msgstr "Creditos de los traductores"
 
 #: ../src/parole-about.c:98
-#, fuzzy
 msgid "Visit Parole website"
-msgstr "Visite el sitio web"
+msgstr "Visite el sitio web de Parole"
 
 #: ../src/parole-subtitle-encoding.c:165
 msgid "Current Locale"
@@ -694,7 +685,6 @@ msgid "Vietnamese"
 msgstr "Vietnamita"
 
 #: ../src/parole-open-location.c:210
-#, fuzzy
 msgid "Clear History"
 msgstr "Borrar historial"
 
