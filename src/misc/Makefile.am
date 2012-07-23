@@ -37,6 +37,10 @@ libparole_la_CFLAGS =				\
 	$(TAGLIBC_CFLAGS)			\
 	$(LIBXFCE4UTIL_CFLAGS)
 
+libparole_la_LIBADD =				\
+	$(GTK_LIBS)				\
+	$(TAGLIBC_LIBS)
+
 paroleincludedir =				\
 	$(includedir)/parole
 

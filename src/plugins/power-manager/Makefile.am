@@ -23,6 +23,10 @@ power_manager_plugin_la_CFLAGS =		\
 	$(LIBXFCE4UTIL_CFLAGS)			\
 	$(DBUS_GLIB_CFLAGS)
 
+power_manager_plugin_la_LIBADD = 		\
+	$(top_builddir)/src/misc/libparole.la	\
+	$(LIBXFCE4UTIL_LIBS)			\
+	$(DBUS_GLIB_LIBS)
 
 power_manager_plugin_la_LDFLAGS =		\
 	-avoid-version				\

@@ -43,9 +43,6 @@ static void   tray_provider_iface_init 	   (ParoleProviderPluginIface *iface);
 static void   tray_provider_finalize       (GObject 	              *object);
 
 
-extern GdkPixbuf      *parole_icon_load    (const gchar *icon_name,  gint size);
-
-
 struct _TrayProviderClass
 {
     GObjectClass parent_class;
@@ -299,7 +296,11 @@ notify_playing (TrayProvider *tray, const ParoleStream *stream)
     notify_notification_attach_to_status_icon (tray->n, tray->tray);
 #endif
 #endif
-    pix = parole_icon_load (has_video ? "video" : "audio-x-generic", 48);
+    pix = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
+                                    has_video ? "video" : "audio-x-generic",
+                                    48,
+                                    GTK_ICON_LOOKUP_USE_BUILTIN,
+                                    NULL);
     if ( pix )
     {
 	notify_notification_set_icon_from_pixbuf (tray->n, pix);
@@ -572,7 +573,11 @@ tray_provider_set_player (ParoleProviderPlugin *plugin, ParoleProviderPlayer *pl
     tray->notify = TRUE;
 #endif
     
-    pix = parole_icon_load ("parole", 48);
+    pix = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
+                                    "parole",
+                                    48,
+                                    GTK_ICON_LOOKUP_USE_BUILTIN,
+                                    NULL);
     
     if ( pix )
     {

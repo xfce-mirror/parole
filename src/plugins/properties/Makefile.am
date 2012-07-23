@@ -24,6 +24,10 @@ stream_properties_la_CFLAGS =			\
 	$(LIBXFCE4UTIL_CFLAGS)
 
 stream_properties_la_LIBADD =			\
+	$(top_builddir)/src/misc/libparole.la	\
+	$(GMODULE_LIBS)				\
+	$(GTK_LIBS)				\
+	$(LIBXFCE4UTIL_LIBS)			\
 	$(TAGLIBC_LIBS)
 
 stream_properties_la_LDFLAGS =			\

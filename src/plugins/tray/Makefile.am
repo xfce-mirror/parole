@@ -31,6 +31,9 @@ tray_icon_la_LDFLAGS =				\
 	$(PLATFORM_LDFLAGS)
 
 tray_icon_la_LIBADD =				\
+	$(top_builddir)/src/misc/libparole.la	\
+	$(GTK_LIBS)				\
+	$(LIBXFCE4UTIL_LIBS)			\
 	$(LIBNOTIFY_LIBS)
 
 #
