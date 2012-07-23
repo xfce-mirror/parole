@@ -119,12 +119,15 @@ gboolean	parole_player_range_button_release	(GtkWidget *widget,
 							 GdkEventButton *ev,
 							 ParolePlayer *player);
 
+gboolean 			parole_player_gst_widget_button_press	 (GtkWidget *widget,
+							 GdkEventButton *ev,
+							 ParolePlayer *player);
+
 void            parole_player_range_value_changed       (GtkRange *range, 
 							 ParolePlayer *player);
 
 void            parole_player_play_pause_clicked        (GtkButton *button, 
 							 ParolePlayer *player);
-
 
 void            parole_player_stop_clicked              (GtkButton *button, 
 							 ParolePlayer *player);
@@ -1591,7 +1594,7 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
 		    button, activate_time);
 }
 
-static gboolean
+gboolean
 parole_player_gst_widget_button_press (GtkWidget *widget, GdkEventButton *ev, ParolePlayer *player)
 {
     gboolean ret_val = FALSE;
