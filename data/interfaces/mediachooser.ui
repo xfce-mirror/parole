@@ -105,6 +105,7 @@
             <property name="orientation">vertical</property>
             <property name="spacing">1</property>
             <property name="create_folders">False</property>
+            <property name="filter">filefilter</property>
             <property name="local_only">False</property>
             <property name="select_multiple">True</property>
             <signal name="file-activated" handler="media_chooser_file_activate_cb" swapped="no"/>
@@ -119,6 +120,7 @@
       </object>
     </child>
   </object>
+  <object class="GtkFileFilter" id="filefilter"/>
   <object class="GtkImage" id="image1">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
