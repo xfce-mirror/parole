@@ -191,7 +191,7 @@ parole_media_chooser_open_internal (ParoleMediaChooser *media_chooser)
     GtkWidget       *recursive;
     GtkWidget       *replace;
     GtkWidget       *play_opened;
-    GtkFileFilter   *filter;
+    GtkFileFilter   *filter, *all_files;
     gboolean        scan_recursive;
     gboolean        replace_playlist;
     gboolean        play;
@@ -205,20 +205,16 @@ parole_media_chooser_open_internal (ParoleMediaChooser *media_chooser)
     gtk_widget_hide( media_chooser->spinner );
     
     file_chooser = GTK_WIDGET (gtk_builder_get_object (builder, "filechooserwidget"));
-    filter = gtk_file_chooser_get_filter (GTK_FILE_CHOOSER (file_chooser));
     
+    filter = gtk_file_filter_new();
     gtk_file_filter_set_name( filter, _("Supported files") );
-    
     gtk_file_filter_add_mime_type (GTK_FILE_FILTER (filter), "audio/*");
     gtk_file_filter_add_mime_type (GTK_FILE_FILTER (filter), "video/*");
-    
-    GtkFileFilter *all_files;
-    all_files = gtk_file_filter_new();
-    gtk_file_filter_add_pattern ( all_files, "*");
-    
-    gtk_file_filter_set_name( all_files, _("All files") );
-    
     gtk_file_chooser_add_filter( GTK_FILE_CHOOSER(file_chooser), filter );
+
+    all_files = gtk_file_filter_new();
+    gtk_file_filter_set_name( all_files, _("All files") );
+    gtk_file_filter_add_pattern ( all_files, "*");
     gtk_file_chooser_add_filter( GTK_FILE_CHOOSER(file_chooser), all_files );
 
     folder = parole_rc_read_entry_string ("media-chooser-folder", PAROLE_RC_GROUP_GENERAL, NULL);
