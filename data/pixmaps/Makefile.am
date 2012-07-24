@@ -1,6 +1,5 @@
 pixmaps =					\
-	parole.png				\
-	loader.gif
+	parole.png
 
 pixmaps_DATA =					\
 	$(pixmaps)

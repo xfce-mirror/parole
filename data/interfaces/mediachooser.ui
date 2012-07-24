@@ -20,27 +20,35 @@
           <object class="GtkHButtonBox" id="dialog-action_area1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="layout_style">edge</property>
+            <property name="layout_style">end</property>
             <child>
-              <object class="GtkHBox" id="info">
+              <object class="GtkHBox" id="hbox1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
-                  <placeholder/>
+                  <object class="GtkSpinner" id="spinner">
+                    <property name="can_focus">False</property>
+                    <property name="no_show_all">True</property>
+                    <property name="active">True</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
                 </child>
               </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
                 <property name="position">0</property>
+                <property name="secondary">True</property>
               </packing>
             </child>
             <child>
-              <object class="GtkHBox" id="hbox1">
+              <object class="GtkHButtonBox" id="hbuttonbox1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="spacing">5</property>
-                <property name="homogeneous">True</property>
                 <child>
                   <object class="GtkButton" id="close">
                     <property name="label">gtk-cancel</property>
@@ -64,7 +72,7 @@
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="use_action_appearance">False</property>
-                    <property name="image">image1</property>
+                    <property name="image">image4</property>
                     <property name="use_underline">True</property>
                     <signal name="clicked" handler="parole_media_chooser_add_clicked" swapped="no"/>
                   </object>
@@ -78,7 +86,6 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
-                <property name="pack_type">end</property>
                 <property name="position">1</property>
               </packing>
             </child>
@@ -91,73 +98,17 @@
           </packing>
         </child>
         <child>
-          <object class="GtkVBox" id="vbox">
+          <object class="GtkFileChooserWidget" id="filechooserwidget">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <child>
-              <object class="GtkFileChooserWidget" id="filechooserwidget">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="border_width">5</property>
-                <property name="orientation">vertical</property>
-                <property name="spacing">1</property>
-                <signal name="file-activated" handler="media_chooser_file_activate_cb" swapped="no"/>
-                <signal name="current-folder-changed" handler="media_chooser_folder_changed_cb" swapped="no"/>
-              </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkCheckButton" id="recursive">
-                <property name="label" translatable="yes">Scan folders recursively</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">False</property>
-                <property name="use_action_appearance">False</property>
-                <property name="draw_indicator">True</property>
-                <signal name="toggled" handler="parole_media_chooser_recursive_toggled_cb" swapped="no"/>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkCheckButton" id="replace">
-                <property name="label" translatable="yes">Replace playlist with opened files</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">False</property>
-                <property name="use_action_appearance">False</property>
-                <property name="draw_indicator">True</property>
-                <signal name="toggled" handler="parole_media_chooser_replace_toggled_cb" swapped="no"/>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkCheckButton" id="play-added-files">
-                <property name="label" translatable="yes">Start playing opened files</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">False</property>
-                <property name="use_action_appearance">False</property>
-                <property name="draw_indicator">True</property>
-                <signal name="toggled" handler="start_playing_toggled_cb" swapped="no"/>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">3</property>
-              </packing>
-            </child>
+            <property name="border_width">5</property>
+            <property name="orientation">vertical</property>
+            <property name="spacing">1</property>
+            <property name="create_folders">False</property>
+            <property name="local_only">False</property>
+            <property name="select_multiple">True</property>
+            <signal name="file-activated" handler="media_chooser_file_activate_cb" swapped="no"/>
+            <signal name="current-folder-changed" handler="media_chooser_folder_changed_cb" swapped="no"/>
           </object>
           <packing>
             <property name="expand">True</property>
@@ -169,6 +120,21 @@
     </child>
   </object>
   <object class="GtkImage" id="image1">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-open</property>
+  </object>
+  <object class="GtkImage" id="image2">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-open</property>
+  </object>
+  <object class="GtkImage" id="image3">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-open</property>
+  </object>
+  <object class="GtkImage" id="image4">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-open</property>

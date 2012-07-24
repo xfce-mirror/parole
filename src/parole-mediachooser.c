@@ -29,8 +29,6 @@
 #include <gtk/gtk.h>
 #include <glib.h>
 
-//#include <libxfce4util/libxfce4util.h>
-
 #include <src/misc/parole-file.h>
 
 #include "interfaces/mediachooser_ui.h"
@@ -61,22 +59,13 @@ void	media_chooser_folder_changed_cb (GtkWidget *widget,
 void	media_chooser_file_activate_cb  (GtkFileChooser *filechooser,
 					 ParoleMediaChooser *chooser);
 
-void	parole_media_chooser_recursive_toggled_cb (GtkToggleButton *recursive,
-						   gpointer data);
-    
-void    parole_media_chooser_replace_toggled_cb (GtkToggleButton *button,
-						 gpointer data);    
-
-void    start_playing_toggled_cb (GtkToggleButton *button,
-				  gpointer data);
-
 struct ParoleMediaChooser
 {
-    GObject         		 parent;
+    GObject             parent;
     
-    ParoleConf                  *conf;
+    ParoleConf          *conf;
     GtkWidget			*window;
-    GtkWidget 			*info;
+    GtkWidget 			*spinner;
     
 };
 
@@ -117,7 +106,6 @@ parole_media_chooser_add (ParoleMediaChooser *chooser, GtkWidget *file_chooser)
     GSList *media_files = NULL;
     GSList *files;
     GtkFileFilter *filter;
-    GtkWidget *recursive;
     gboolean scan_recursive;
     gchar *file;
     guint    i;
@@ -129,9 +117,9 @@ parole_media_chooser_add (ParoleMediaChooser *chooser, GtkWidget *file_chooser)
     if ( G_UNLIKELY (files == NULL) )
 	return;
 	
-    recursive = g_object_get_data (G_OBJECT (chooser), "recursive");
-    
-    scan_recursive = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (recursive));
+	g_object_get (G_OBJECT (chooser->conf),
+		  "scan-recursive", &scan_recursive,
+		  NULL);
     
     len = g_slist_length (files);
     
@@ -168,18 +156,9 @@ parole_media_chooser_add_idle (gpointer data)
 static void
 parole_media_chooser_open (ParoleMediaChooser *chooser)
 {
-    GtkWidget *img;
-    gchar *path;
-
     parole_window_busy_cursor (chooser->window->window);
-    
-    path = g_build_filename (PIXMAPS_DIR, "loader.gif", NULL);
-    
-    img = gtk_image_new_from_file (path);
-    g_free (path);
-    
-    gtk_box_pack_start (GTK_BOX (chooser->info), img, FALSE, FALSE, 0);
-    gtk_widget_show_all (chooser->info);
+
+    gtk_widget_show( chooser->spinner );
     
     g_idle_add ((GSourceFunc) parole_media_chooser_add_idle, chooser);
 }
@@ -204,42 +183,6 @@ void media_chooser_file_activate_cb (GtkFileChooser *filechooser, ParoleMediaCho
     parole_media_chooser_open (chooser);
 }
 
-void parole_media_chooser_recursive_toggled_cb (GtkToggleButton *recursive,
-						gpointer data)
-{
-    ParoleMediaChooser *chooser;
-
-    chooser = PAROLE_MEDIA_CHOOSER (data);
-    
-    g_object_set (G_OBJECT (chooser->conf),
-		  "scan-recursive", gtk_toggle_button_get_active (recursive),
-		  NULL);
-}
-
-void    parole_media_chooser_replace_toggled_cb (GtkToggleButton *button,
-						 gpointer data)
-{
-    ParoleMediaChooser *chooser;
-
-    chooser = PAROLE_MEDIA_CHOOSER (data);
-    
-    g_object_set (G_OBJECT (chooser->conf),
-		  "replace-playlist", gtk_toggle_button_get_active (button),
-		  NULL);
-}
-
-void start_playing_toggled_cb (GtkToggleButton *button,
-			       gpointer data)
-{
-    ParoleMediaChooser *chooser;
-
-    chooser = PAROLE_MEDIA_CHOOSER (data);
-    
-    g_object_set (G_OBJECT (chooser->conf),
-		  "play-opened-files", gtk_toggle_button_get_active (button),
-		  NULL);
-}
-
 static void
 parole_media_chooser_open_internal (ParoleMediaChooser *media_chooser)
 {
@@ -256,7 +199,9 @@ parole_media_chooser_open_internal (ParoleMediaChooser *media_chooser)
     builder = parole_builder_new_from_string (mediachooser_ui, mediachooser_ui_length);
     
     media_chooser->window = GTK_WIDGET (gtk_builder_get_object (builder, "chooser"));
-    media_chooser->info = GTK_WIDGET (gtk_builder_get_object (builder, "info"));
+    media_chooser->spinner = GTK_WIDGET (gtk_builder_get_object (builder, "spinner"));
+    
+    gtk_widget_hide( media_chooser->spinner );
     
     file_chooser = GTK_WIDGET (gtk_builder_get_object (builder, "filechooserwidget"));
     
@@ -282,10 +227,6 @@ parole_media_chooser_open_internal (ParoleMediaChooser *media_chooser)
     recursive = GTK_WIDGET (gtk_builder_get_object (builder, "recursive"));
     replace = GTK_WIDGET (gtk_builder_get_object (builder, "replace"));
     play_opened = GTK_WIDGET (gtk_builder_get_object (builder, "play-added-files"));
-    
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (recursive), scan_recursive);
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (replace), replace_playlist);
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (play_opened), play);
     
     g_object_set_data (G_OBJECT (media_chooser), "file-chooser", file_chooser);
     g_object_set_data (G_OBJECT (media_chooser), "recursive", recursive);
