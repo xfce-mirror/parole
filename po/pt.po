@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole 2.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-23 07:36+0000\n"
+"POT-Creation-Date: 2012-07-24 10:21+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Nuno Miguel <nunomgue@gmail.com>\n"
 "Language-Team: Portuguese\n"
@@ -19,128 +19,124 @@ msgstr ""
 "X-Poedit-Country: Portugal\n"
 
 #: ../data/interfaces/parole.ui.h:1
-msgid "0:00"
-msgstr "0:00"
-
-#: ../data/interfaces/parole.ui.h:2
 msgid "16:9 (Widescreen)"
 msgstr "16:9 (Ecrã panorâmico)"
 
-#: ../data/interfaces/parole.ui.h:3
+#: ../data/interfaces/parole.ui.h:2
 msgid "20:9 (DVB)"
 msgstr "20:9 (DVB)"
 
-#: ../data/interfaces/parole.ui.h:4
+#: ../data/interfaces/parole.ui.h:3
 msgid "4:3 (TV)"
 msgstr "4:3 (TV)"
 
-#: ../data/interfaces/parole.ui.h:5 ../src/misc/parole-filters.c:64
+#: ../data/interfaces/parole.ui.h:4 ../src/misc/parole-filters.c:64
 msgid "Audio"
 msgstr "Áudio"
 
-#: ../data/interfaces/parole.ui.h:6
+#: ../data/interfaces/parole.ui.h:5
 msgid "Audio Track:"
 msgstr "Faixa áudio:"
 
-#: ../data/interfaces/parole.ui.h:7
+#: ../data/interfaces/parole.ui.h:6
 msgid "Auto"
 msgstr "Automático"
 
-#: ../data/interfaces/parole.ui.h:9
+#: ../data/interfaces/parole.ui.h:8
 #, no-c-format
 msgid "Buffering (0%)"
 msgstr "A processar (0%))"
 
-#: ../data/interfaces/parole.ui.h:10
+#: ../data/interfaces/parole.ui.h:9 ../src/parole-player.c:641
 msgid "Empty"
 msgstr "Vazio"
 
-#: ../data/interfaces/parole.ui.h:11
+#: ../data/interfaces/parole.ui.h:10
 msgid "Languages"
 msgstr "Idiomas"
 
-#: ../data/interfaces/parole.ui.h:12
+#: ../data/interfaces/parole.ui.h:11
 msgid "Media player"
 msgstr "Reprodutor multimédia"
 
-#: ../data/interfaces/parole.ui.h:13
+#: ../data/interfaces/parole.ui.h:12
 msgid "None"
 msgstr "Nenhum"
 
-#: ../data/interfaces/parole.ui.h:14
+#: ../data/interfaces/parole.ui.h:13
 msgid "Open _location"
 msgstr "Abrir _localização"
 
-#: ../data/interfaces/parole.ui.h:15 ../src/parole-about.c:89
+#: ../data/interfaces/parole.ui.h:14 ../src/parole-about.c:55
 msgid "Parole Media Player"
 msgstr "Reprodutor multimédia Parole"
 
-#: ../data/interfaces/parole.ui.h:16
+#: ../data/interfaces/parole.ui.h:15
 msgid "Pl_ugins"
 msgstr "\"P_lugins\""
 
-#: ../data/interfaces/parole.ui.h:17 ../src/parole-disc.c:218
+#: ../data/interfaces/parole.ui.h:16 ../src/parole-disc.c:218
 #: ../src/parole-disc.c:270
 msgid "Play Disc"
 msgstr "Reproduzir disco"
 
-#: ../data/interfaces/parole.ui.h:18
+#: ../data/interfaces/parole.ui.h:17
 msgid "Select Text Subtitles..."
 msgstr "Selecione o texto das legendas..."
 
-#: ../data/interfaces/parole.ui.h:19
+#: ../data/interfaces/parole.ui.h:18
 msgid "Show _playlist"
 msgstr "Mostrar lista de re_produção"
 
-#: ../data/interfaces/parole.ui.h:20
+#: ../data/interfaces/parole.ui.h:19
 msgid "Square"
 msgstr "Quadrado"
 
-#: ../data/interfaces/parole.ui.h:21
+#: ../data/interfaces/parole.ui.h:20
 msgid "Subtitles"
 msgstr "Legendas"
 
-#: ../data/interfaces/parole.ui.h:22
+#: ../data/interfaces/parole.ui.h:21
 msgid "Subtitles:"
 msgstr "Legendas:"
 
-#: ../data/interfaces/parole.ui.h:23
+#: ../data/interfaces/parole.ui.h:22
 msgid "Volume _Down"
 msgstr "_Diminuir volume"
 
-#: ../data/interfaces/parole.ui.h:24
+#: ../data/interfaces/parole.ui.h:23
 msgid "Volume _Up"
 msgstr "A_umentar volume"
 
-#: ../data/interfaces/parole.ui.h:25
+#: ../data/interfaces/parole.ui.h:24
 msgid "_Aspect Ratio"
 msgstr "T_amanho do vídeo"
 
-#: ../data/interfaces/parole.ui.h:26
+#: ../data/interfaces/parole.ui.h:25
 msgid "_Edit"
 msgstr "_Editar"
 
-#: ../data/interfaces/parole.ui.h:27
+#: ../data/interfaces/parole.ui.h:26
 msgid "_Help"
 msgstr "_Ajuda"
 
-#: ../data/interfaces/parole.ui.h:28
+#: ../data/interfaces/parole.ui.h:27
 msgid "_Media"
 msgstr "_Multimédia"
 
-#: ../data/interfaces/parole.ui.h:29
+#: ../data/interfaces/parole.ui.h:28
 msgid "_Mute"
 msgstr "_Silenciar"
 
-#: ../data/interfaces/parole.ui.h:30
+#: ../data/interfaces/parole.ui.h:29
 msgid "_Repeat"
 msgstr "_Repetir"
 
-#: ../data/interfaces/parole.ui.h:31
+#: ../data/interfaces/parole.ui.h:30
 msgid "_Shuffle"
 msgstr "_Baralhar"
 
-#: ../data/interfaces/parole.ui.h:32
+#: ../data/interfaces/parole.ui.h:31
 msgid "_View"
 msgstr "_Ver"
 
@@ -149,19 +145,6 @@ msgid "Open Media Files"
 msgstr "Abrir ficheiros"
 
 #: ../data/interfaces/mediachooser.ui.h:2
-msgid "Replace playlist with opened files"
-msgstr "Substituir lista pelos ficheiros abertos"
-
-#: ../data/interfaces/mediachooser.ui.h:3
-msgid "Scan folders recursively"
-msgstr "Analisar pastas recursivamente"
-
-#: ../data/interfaces/mediachooser.ui.h:4
-#: ../data/interfaces/parole-settings.ui.h:20
-msgid "Start playing opened files"
-msgstr "Iniciar reprodução dos ficheiros abertos"
-
-#: ../data/interfaces/mediachooser.ui.h:5
 msgid "_Open"
 msgstr "_Abrir"
 
@@ -268,6 +251,10 @@ msgstr "Repor omissões"
 #: ../data/interfaces/parole-settings.ui.h:19
 msgid "Saturation:"
 msgstr "Saturação:"
+
+#: ../data/interfaces/parole-settings.ui.h:20
+msgid "Start playing opened files"
+msgstr "Iniciar reprodução dos ficheiros abertos"
 
 #: ../data/interfaces/parole-settings.ui.h:21
 msgid "Visualization type:"
@@ -443,6 +430,14 @@ msgstr "Multimédia a reproduzir"
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "O Parole já está em execução. Use -i para abrir uma nova instância\n"
 
+#: ../src/parole-mediachooser.c:210
+msgid "Supported files"
+msgstr "Ficheiros suportados"
+
+#: ../src/parole-mediachooser.c:216
+msgid "All files"
+msgstr "Todos os ficheiros"
+
 #: ../src/parole-medialist.c:526
 msgid "Permission denied"
 msgstr "Permissão negada"
@@ -467,7 +462,7 @@ msgstr "Por favor, selecione um formato suportado"
 msgid "Unknown"
 msgstr "Desconhecido"
 
-#: ../src/parole-medialist.c:667 ../src/parole-player.c:2315
+#: ../src/parole-medialist.c:667 ../src/parole-player.c:2418
 msgid "Playlist"
 msgstr "Lista de reprodução"
 
@@ -512,35 +507,35 @@ msgstr "Reproduzir ficheiros abertos"
 msgid "Media list"
 msgstr "Lista multimédia"
 
-#: ../src/parole-player.c:432
+#: ../src/parole-player.c:445
 msgid "Open ISO image"
 msgstr "Abrir imagem ISO"
 
-#: ../src/parole-player.c:449
+#: ../src/parole-player.c:462
 msgid "CD image"
 msgstr "Imagem de CD"
 
-#: ../src/parole-player.c:449
+#: ../src/parole-player.c:462
 msgid "DVD image"
 msgstr "Imagem de DVD"
 
-#: ../src/parole-player.c:782 ../src/parole-player.c:905
+#: ../src/parole-player.c:897 ../src/parole-player.c:1020
 msgid "Media stream is not seekable"
 msgstr "A emissão não permite buscas"
 
-#: ../src/parole-player.c:1250
+#: ../src/parole-player.c:1365
 msgid "GStreamer backend error"
 msgstr "Erro GStreamer"
 
-#: ../src/parole-player.c:1293
+#: ../src/parole-player.c:1408
 msgid "Buffering"
 msgstr "A processar..."
 
-#: ../src/parole-about.c:95
+#: ../src/parole-about.c:61
 msgid "translator-credits"
 msgstr "Sérgio Marques <smarquespt@gmail.com>"
 
-#: ../src/parole-about.c:98
+#: ../src/parole-about.c:64
 msgid "Visit Parole website"
 msgstr "Visitar sítio web do Parole"
 
@@ -753,39 +748,39 @@ msgstr "Ler propriedades multimédia"
 msgid "Stream Properties"
 msgstr "Propriedades da emissão"
 
-#: ../src/plugins/tray/tray-provider.c:283
+#: ../src/plugins/tray/tray-provider.c:280
 msgid "<b>Playing:</b>"
 msgstr "<b>A reproduzir:</b>"
 
-#: ../src/plugins/tray/tray-provider.c:283
+#: ../src/plugins/tray/tray-provider.c:280
 msgid "<b>Duration:</b>"
 msgstr "<b>Duração:</b>"
 
-#: ../src/plugins/tray/tray-provider.c:419
+#: ../src/plugins/tray/tray-provider.c:420
 msgid "Tray icon plugin"
 msgstr "\"Plugin\" da área de notificação"
 
-#: ../src/plugins/tray/tray-provider.c:429
+#: ../src/plugins/tray/tray-provider.c:430
 msgid "Enable notification"
 msgstr "Ativar notificação"
 
-#: ../src/plugins/tray/tray-provider.c:438
+#: ../src/plugins/tray/tray-provider.c:439
 msgid "Always minimize to tray when window is closed"
 msgstr "Ao fechar a janela, minimizar para a área de notificação"
 
-#: ../src/plugins/tray/tray-provider.c:477
+#: ../src/plugins/tray/tray-provider.c:478
 msgid "Minimize to tray?"
 msgstr "Minimizar para a área de notificação?"
 
-#: ../src/plugins/tray/tray-provider.c:483
+#: ../src/plugins/tray/tray-provider.c:484
 msgid "Minimize to tray"
 msgstr "Minimizar para a área de notificação"
 
-#: ../src/plugins/tray/tray-provider.c:499
+#: ../src/plugins/tray/tray-provider.c:500
 msgid "Are you sure you want to quit Parole"
 msgstr "Tem a certeza que quer sair de Parole?"
 
-#: ../src/plugins/tray/tray-provider.c:503
+#: ../src/plugins/tray/tray-provider.c:504
 msgid "Remember my choice"
 msgstr "Lembrar escolha"
 
@@ -806,6 +801,15 @@ msgstr ""
 #: ../src/plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
 msgstr "\"Plugin\" gestão de energia"
+
+#~ msgid "0:00"
+#~ msgstr "0:00"
+
+#~ msgid "Replace playlist with opened files"
+#~ msgstr "Substituir lista pelos ficheiros abertos"
+
+#~ msgid "Scan folders recursively"
+#~ msgstr "Analisar pastas recursivamente"
 
 #~ msgid "From ISO image"
 #~ msgstr "De uma imagem ISO"
