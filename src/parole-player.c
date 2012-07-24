@@ -811,6 +811,7 @@ parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *ro
 	    g_free (sub);
 	    
 	    gtk_window_set_title (GTK_WINDOW (player->priv->window), parole_file_get_display_name(file));
+		parole_rc_write_entry_string ("media-chooser-folder", PAROLE_RC_GROUP_GENERAL, parole_file_get_directory(file));
 		
 
 	    g_object_unref (file);

@@ -46,6 +46,7 @@ struct _ParoleFilePrivate
     gchar 	*display_name;
     gchar 	*uri;
     gchar       *content_type;
+	gchar	*directory;
     
 };
 
@@ -55,7 +56,8 @@ enum
     PROP_PATH,
     PROP_DISPLAY_NAME,
     PROP_URI,
-    PROP_CONTENT_TYPE
+    PROP_CONTENT_TYPE,
+	PROP_DIRECTORY
 };
 
 G_DEFINE_TYPE (ParoleFile, parole_file, G_TYPE_OBJECT)
@@ -80,6 +82,9 @@ parole_file_finalize (GObject *object)
 	
     if ( priv->content_type )
 	g_free (priv->content_type);
+	
+	if ( priv->directory )
+	g_free (priv->directory);
     
     G_OBJECT_CLASS (parole_file_parent_class)->finalize (object);
 }
@@ -99,6 +104,9 @@ parole_file_set_property (GObject *object, guint prop_id,
 	case PROP_DISPLAY_NAME:
 	    PAROLE_FILE_GET_PRIVATE (file)->display_name = g_value_dup_string (value);
 	    break;
+	case PROP_DIRECTORY:
+		PAROLE_FILE_GET_PRIVATE (file)->directory = g_value_dup_string (value);
+		break;
 	default:
 	    G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 	    break;
@@ -127,6 +135,9 @@ parole_file_get_property (GObject *object, guint prop_id,
 	case PROP_DISPLAY_NAME:
 	    g_value_set_string (value, PAROLE_FILE_GET_PRIVATE (file)->display_name);
 	    break;
+	case PROP_DIRECTORY:
+	    g_value_set_string (value, PAROLE_FILE_GET_PRIVATE (file)->directory);
+	    break;
 	default:
 	    G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 	    break;
@@ -152,6 +163,9 @@ parole_file_constructed (GObject *object)
 			      0,
 			      NULL,
 			      &error);
+				  
+		
+	priv->directory = g_file_get_path (g_file_get_parent( gfile ));
 
     if ( error )
     {
@@ -286,6 +300,22 @@ parole_file_class_init (ParoleFileClass *klass)
 							  "The content type of the file",
 							  NULL,
 							  G_PARAM_READABLE));
+							  
+	/**
+     * ParoleFile:directory:
+     * 
+     * The parent directory of the file.
+     * 
+     * Since: 0.2 
+     **/
+    g_object_class_install_property (object_class,
+				     PROP_DIRECTORY,
+				     g_param_spec_string ("directory",
+							  "Parent directory", 
+							  "The parent directory of the file",
+							  NULL,
+							  G_PARAM_CONSTRUCT_ONLY|
+							  G_PARAM_READWRITE));
 
     g_type_class_add_private (klass, sizeof (ParoleFilePrivate));
 }
@@ -301,6 +331,7 @@ parole_file_init (ParoleFile *file)
     priv->display_name = NULL;
     priv->uri          = NULL;
     priv->content_type    = NULL;
+	priv->directory			= NULL;
 }
 
 /**
@@ -408,4 +439,21 @@ parole_file_get_content_type (const ParoleFile *file)
     g_return_val_if_fail (PAROLE_IS_FILE (file), NULL);
     
     return PAROLE_FILE_GET_PRIVATE (file)->content_type;
+}
+
+/**
+ * parole_file_get_directory:
+ * @file: a #ParoleFile.
+ *  
+ * 
+ * Returns: A string containing the parent directory path.
+ * 
+ * Since: 0.2
+ **/
+const gchar *
+parole_file_get_directory (const ParoleFile *file)
+{
+    g_return_val_if_fail (PAROLE_IS_FILE (file), NULL);
+    
+    return PAROLE_FILE_GET_PRIVATE (file)->directory;
 }

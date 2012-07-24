@@ -52,6 +52,8 @@ ParoleFile       	       *parole_file_new             	  (const gchar *filename)
 
 ParoleFile       	       *parole_file_new_with_display_name (const gchar *filename,
 								   const gchar *display_name);
+                                   
+const gchar   G_CONST_RETURN   *parole_file_get_directory 	  (const ParoleFile *file) G_GNUC_PURE;
 
 const gchar   G_CONST_RETURN   *parole_file_get_file_name 	  (const ParoleFile *file) G_GNUC_PURE;
 
