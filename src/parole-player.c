@@ -184,6 +184,7 @@ void		parole_player_open_preferences_cb	(GtkWidget *widget,
 							 ParolePlayer *player);
 
 void            parole_player_volume_value_changed_cb   (GtkScaleButton *widget, 
+							 gdouble value,
 							 ParolePlayer *player);
 
 gboolean        parole_player_volume_scroll_event_cb	(GtkWidget *widget,
@@ -1753,10 +1754,8 @@ parole_player_volume_scroll_event_cb (GtkWidget *widget, GdkEventScroll *ev, Par
 }
 
 void
-parole_player_volume_value_changed_cb (GtkScaleButton *widget, ParolePlayer *player)
+parole_player_volume_value_changed_cb (GtkScaleButton *widget, gdouble value, ParolePlayer *player)
 {
-    gdouble value;
-    value = gtk_scale_button_get_value (GTK_SCALE_BUTTON (player->priv->volume));
     parole_player_change_volume (player, value);
     parole_rc_write_entry_int ("volume", PAROLE_RC_GROUP_GENERAL, (gint)(value * 100));
 }
