@@ -1,7 +1,7 @@
 EXTRA_DIST =				\
 	$(Data_DATA)
 
-Datadir = $(datadir)/icons/hicolor/22x22/apps
+Datadir = $(datadir)/icons/hicolor/24x24/apps
 
 Data_DATA =				\
 	parole.png
