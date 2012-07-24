@@ -118,7 +118,7 @@ void				 parole_media_list_open		    (ParoleMediaList *list);
 void			         parole_media_list_open_location    (ParoleMediaList *list);
 
 gboolean			 parole_media_list_add_files        (ParoleMediaList *list,
-								     gchar **filenames);
+								     gchar **filenames, gboolean enqueue);
 
 void				 parole_media_list_save_list	    (ParoleMediaList *list);
 

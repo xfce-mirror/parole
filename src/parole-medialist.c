@@ -1804,7 +1804,7 @@ void parole_media_list_open_location (ParoleMediaList *list)
     parole_media_list_open_location_internal (list);
 }
 
-gboolean parole_media_list_add_files (ParoleMediaList *list, gchar **filenames)
+gboolean parole_media_list_add_files (ParoleMediaList *list, gchar **filenames, gboolean enqueue)
 {
     guint i;
     guint added = 0;
@@ -1814,7 +1814,7 @@ gboolean parole_media_list_add_files (ParoleMediaList *list, gchar **filenames)
 	/*
 	 * File on disk?
 	 */
-	if ( g_file_test (filenames[i], G_FILE_TEST_EXISTS ) )
+	if ( !enqueue && g_file_test (filenames[i], G_FILE_TEST_EXISTS ) )
 	{
 	    added += parole_media_list_add_by_path (list, filenames[i], i == 0 ? TRUE : FALSE);
 	}
@@ -1823,7 +1823,10 @@ gboolean parole_media_list_add_files (ParoleMediaList *list, gchar **filenames)
 	    ParoleFile *file;
 	    TRACE ("File=%s", filenames[i]);
 	    file = parole_file_new (filenames[i]);
-	    parole_media_list_add (list, file, i == 0 ? TRUE : FALSE, i == 0 ? TRUE : FALSE);
+		if (enqueue) {
+			parole_media_list_add (list, file, FALSE, FALSE);}
+		else
+			parole_media_list_add (list, file, i == 0 ? TRUE : FALSE, i == 0 ? TRUE : FALSE);
 	    added++;
 	}
     }
@@ -1861,7 +1864,7 @@ void parole_media_list_save_list (ParoleMediaList *list)
 }
 
 static gboolean	 parole_media_list_dbus_add_files (ParoleMediaList *list,
-					           gchar **in_files,
+					           gchar **in_files, gboolean enqueue,
 						   GError **error);
 
 #include "org.parole.media.list.h"
@@ -1885,12 +1888,12 @@ parole_media_list_dbus_init (ParoleMediaList *list)
 }
 
 static gboolean	 parole_media_list_dbus_add_files (ParoleMediaList *list,
-						   gchar **in_files,
+						   gchar **in_files, gboolean enqueue,
 						   GError **error)
 {
     TRACE ("Adding files for DBus request");
     gtk_window_present (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (list))));
-    parole_media_list_add_files (list, in_files);
+    parole_media_list_add_files (list, in_files, enqueue);
     
     return TRUE;
 }

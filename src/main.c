@@ -102,15 +102,14 @@ parole_send_play_disc (const gchar *uri, const gchar *device)
 }
 
 static void
-parole_send_files (gchar **filenames)
+parole_send_files (gchar **filenames, gboolean enqueue)
 {
     DBusGProxy *proxy;
     GFile *file;
     gchar **out_paths;
     GError *error = NULL;
     guint i;
-    
-    
+
     proxy = parole_get_proxy (PAROLE_DBUS_PLAYLIST_PATH, PAROLE_DBUS_PLAYLIST_INTERFACE);
 	
     if ( !proxy )
@@ -127,7 +126,8 @@ parole_send_files (gchar **filenames)
 
     dbus_g_proxy_call (proxy, "AddFiles", &error,
 		       G_TYPE_STRV, out_paths,
-		       G_TYPE_INVALID,
+		       G_TYPE_BOOLEAN, enqueue,
+			   G_TYPE_INVALID,
 		       G_TYPE_INVALID);
 		       
 		       
@@ -142,16 +142,16 @@ parole_send_files (gchar **filenames)
 }
 
 static void
-parole_send (gchar **filenames, gchar *device)
+parole_send (gchar **filenames, gchar *device, gboolean enqueue)
 {
     if ( g_strv_length (filenames) == 1 && parole_is_uri_disc (filenames[0]))
 	parole_send_play_disc (filenames[0], device);
     else
-	parole_send_files (filenames);
+	parole_send_files (filenames, enqueue);
 }
 
 static void
-parole_send_message (const gchar *message)
+	parole_send_message (const gchar *message)
 {
     DBusGProxy *proxy;
     GError *error = NULL;
@@ -216,6 +216,7 @@ int main (int argc, char **argv)
     gboolean mute = FALSE;
     gboolean no_plugins = FALSE;
     gboolean fullscreen = FALSE;
+	gboolean enqueue = FALSE;
     gchar    *client_id = NULL;
     
     GOptionEntry option_entries[] = 
@@ -235,6 +236,7 @@ int main (int argc, char **argv)
 	{ "version", 'V', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &version, N_("Version information"), NULL },
 	{ "fullscreen", 'F', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &fullscreen, N_("Start in fullscreen mode"), NULL },
 	{ "xv", '\0', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_CALLBACK, (GOptionArgFunc) xv_option_given, N_("Enabled/Disable XV support"), NULL},
+	{ "add", 'a', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &enqueue, N_("Add files to playlist"), NULL},
 	{ "sm-client-id", 0, G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_STRING, &client_id, NULL, NULL },
 	{G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, &filenames, N_("Media to play"), NULL},
         { NULL, },
@@ -273,10 +275,11 @@ int main (int argc, char **argv)
 	
     if ( !new_instance && parole_dbus_name_has_owner (PAROLE_DBUS_NAME) )
     {
+	if (!enqueue)
 	g_print (_("Parole is already running, use -i to open a new instance\n"));
 	
 	if ( filenames && filenames[0] != NULL )
-	    parole_send (filenames, device);
+	    parole_send (filenames, device, enqueue);
 	else if (device != NULL)
 	    parole_send_play_disc (NULL, device);
 	
@@ -307,6 +310,7 @@ int main (int argc, char **argv)
 	if ( mute )
 	    parole_send_message ("Mute");
     }
+	
     else
     {
 	builder = parole_builder_get_main_interface ();
@@ -328,7 +332,7 @@ int main (int argc, char **argv)
 	    {
 		ParoleMediaList *list;
 		list = parole_player_get_media_list (player);
-		parole_media_list_add_files (list, filenames);
+		parole_media_list_add_files (list, filenames, enqueue);
 	    }
 	}
 	else if ( device != NULL )

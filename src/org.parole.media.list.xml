@@ -9,6 +9,7 @@
 
     <method name="AddFiles">
       <arg type="as" name="files" direction="in"/>
+      <arg type="b" name="enqueue" direction="in"/>
     </method>
 
     </interface>
