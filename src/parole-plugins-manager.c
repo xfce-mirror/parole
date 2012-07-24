@@ -283,11 +283,7 @@ void parole_plugins_manager_tree_cursor_changed_cb (GtkTreeView *view,
     ParolePluginInfo *info;
     gboolean configurable = FALSE;
     const gchar *site;
-    
-#if GTK_CHECK_VERSION (2, 18, 0)
-    gchar *site_text;
-#endif
-
+	
     parole_plugins_manager_get_selected_module_data (pref, &module, &info);
     
     if ( G_UNLIKELY (!module || !info))
@@ -297,15 +293,8 @@ void parole_plugins_manager_tree_cursor_changed_cb (GtkTreeView *view,
     
     gtk_label_set_markup (GTK_LABEL (pref->desc), info->desc);
     gtk_label_set_markup (GTK_LABEL (pref->author), info->authors);
-    
-#if GTK_CHECK_VERSION (2, 18, 0)
-    site_text = g_strdup_printf ("<a href=\"%s\">%s</a>", site, _("Visit Website"));
-    gtk_label_set_markup (GTK_LABEL (pref->site), site_text);
-    g_free (site_text);
 
-#else
     gtk_link_button_set_uri (GTK_LINK_BUTTON (pref->site), site);
-#endif
 
     gtk_widget_set_tooltip_text (pref->site, site);
 
@@ -330,24 +319,6 @@ parole_plugins_manager_unload_all (gpointer data, gpointer user_data)
     }
     //g_object_unref (module);
 }
-
-#if !GTK_CHECK_VERSION (2, 18, 0)
-static void
-parole_plugins_manager_open_plugins_website (GtkLinkButton *bt, const gchar *link, gpointer data)
-{
-    gchar *cmd;
-    
-    cmd = g_strdup_printf ("%s %s","xdg-open", link);
-    
-    if ( !g_spawn_command_line_async (cmd, NULL) )
-    {
-        g_free (cmd);
-        cmd = g_strdup_printf ("%s %s","xfbrowser4", link);
-        g_spawn_command_line_async (cmd, NULL);
-    }
-    g_free (cmd);
-}
-#endif
 
 static ParolePluginInfo *
 parole_plugins_manager_get_plugin_info (const gchar *desktop_file)
@@ -432,18 +403,7 @@ parole_plugins_manager_show_plugins_pref (GtkWidget *widget, ParolePluginsManage
     
     pref->desc = GTK_WIDGET (gtk_builder_get_object (builder, "description"));
     pref->author = GTK_WIDGET (gtk_builder_get_object (builder, "author"));
-    site_box = GTK_WIDGET (gtk_builder_get_object (builder, "site-box"));
-    
-#if GTK_CHECK_VERSION (2, 18, 0)
-    pref->site = gtk_label_new (NULL);
-#else
-    pref->site = gtk_link_button_new_with_label (" ", _("Visit Website"));
-    gtk_link_button_set_uri_hook ((GtkLinkButtonUriFunc) parole_plugins_manager_open_plugins_website,
-				  NULL, NULL);
-#endif
-    
-    gtk_box_pack_start (GTK_BOX (site_box), pref->site, FALSE, FALSE, 0);
-    
+    pref->site = GTK_WIDGET (gtk_builder_get_object (builder, "sitebutton"));
     pref->configure = GTK_WIDGET (gtk_builder_get_object (builder, "configure"));
     
     gtk_window_set_transient_for (GTK_WINDOW (pref->window), 
