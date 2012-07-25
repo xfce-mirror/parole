@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole 2.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-24 10:21+0000\n"
+"POT-Creation-Date: 2012-07-25 07:45+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Nuno Miguel <nunomgue@gmail.com>\n"
 "Language-Team: Portuguese\n"
@@ -149,32 +149,32 @@ msgid "_Open"
 msgstr "_Abrir"
 
 #: ../data/interfaces/plugins.ui.h:1
-msgid "<b>Author:</b>"
-msgstr "<b>Autor:</b>"
+msgid "<b>Author</b>"
+msgstr "<b>Autor</b>"
 
 #: ../data/interfaces/plugins.ui.h:2
-msgid "<b>Description:</b>"
-msgstr "<b>Descrição:</b>"
+msgid "<b>Description</b>"
+msgstr "<b>Descrição</b>"
 
 #: ../data/interfaces/plugins.ui.h:3
-msgid "<b>Site:</b>"
-msgstr "<b>Sítio:</b>"
-
-#: ../data/interfaces/plugins.ui.h:4
 msgid "Enabled"
 msgstr "Ativo"
 
-#: ../data/interfaces/plugins.ui.h:5
+#: ../data/interfaces/plugins.ui.h:4
 msgid "Media Player plugins"
 msgstr "\"Plug-ins\" do reprodutor"
 
-#: ../data/interfaces/plugins.ui.h:6
+#: ../data/interfaces/plugins.ui.h:5
 msgid "Parole Plugins"
 msgstr "\"Plug-ins\" Parole"
 
-#: ../data/interfaces/plugins.ui.h:7
+#: ../data/interfaces/plugins.ui.h:6
 msgid "Plugin"
 msgstr "\"Plugin\""
+
+#: ../data/interfaces/plugins.ui.h:7
+msgid "Visit Website"
+msgstr "Visitar sítio web"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "<b>Audio</b>"
@@ -361,71 +361,75 @@ msgstr ""
 msgid "Unknown argument "
 msgstr "Argumento desconhecido"
 
-#: ../src/main.c:223
+#: ../src/main.c:224
 msgid "Open a new instance"
 msgstr "Abrir nova instância"
 
-#: ../src/main.c:224
+#: ../src/main.c:225
 msgid "Do not load plugins"
 msgstr "Não carregar \"plugins\""
 
-#: ../src/main.c:225
+#: ../src/main.c:226
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "Definir o caminho do dispositivo CD/VCD/DVD"
 
-#: ../src/main.c:226
+#: ../src/main.c:227
 msgid "Play or pause if already playing"
 msgstr "Reproduzir ou pausar se em execução"
 
-#: ../src/main.c:227
+#: ../src/main.c:228
 msgid "Stop playing"
 msgstr "Parar reprodução"
 
-#: ../src/main.c:228
+#: ../src/main.c:229
 msgid "Next track"
 msgstr "Faixa seguinte"
 
-#: ../src/main.c:229
+#: ../src/main.c:230
 msgid "Previous track"
 msgstr "Faixa anterior"
 
-#: ../src/main.c:230
+#: ../src/main.c:231
 msgid "Seek forward"
 msgstr "Avançar"
 
-#: ../src/main.c:231
+#: ../src/main.c:232
 msgid "Seek Backward"
 msgstr "Recuar"
 
-#: ../src/main.c:232
+#: ../src/main.c:233
 msgid "Raise volume"
 msgstr "Aumentar volume"
 
-#: ../src/main.c:233
+#: ../src/main.c:234
 msgid "Lower volume"
 msgstr "Diminuir volume"
 
-#: ../src/main.c:234
+#: ../src/main.c:235
 msgid "Mute volume"
 msgstr "Silenciar"
 
-#: ../src/main.c:235
+#: ../src/main.c:236
 msgid "Version information"
 msgstr "Informações da versão"
 
-#: ../src/main.c:236
+#: ../src/main.c:237
 msgid "Start in fullscreen mode"
 msgstr "Iniciar em ecrã completo"
 
-#: ../src/main.c:237
+#: ../src/main.c:238
 msgid "Enabled/Disable XV support"
 msgstr "Ativar/desativar suporte XV"
 
 #: ../src/main.c:239
+msgid "Add files to playlist"
+msgstr "Adicionar ficheiros à lista de reprodução"
+
+#: ../src/main.c:241
 msgid "Media to play"
 msgstr "Multimédia a reproduzir"
 
-#: ../src/main.c:276
+#: ../src/main.c:279
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "O Parole já está em execução. Use -i para abrir uma nova instância\n"
@@ -454,7 +458,7 @@ msgstr "Formato desconhecido"
 msgid "Please chooser a supported playlist format"
 msgstr "Por favor, selecione um formato suportado"
 
-#: ../src/parole-medialist.c:593 ../src/parole-plugins-manager.c:378
+#: ../src/parole-medialist.c:593 ../src/parole-plugins-manager.c:349
 #: ../src/plugins/properties/stream-properties-provider.c:140
 #: ../src/plugins/properties/stream-properties-provider.c:141
 #: ../src/plugins/properties/stream-properties-provider.c:142
@@ -462,7 +466,7 @@ msgstr "Por favor, selecione um formato suportado"
 msgid "Unknown"
 msgstr "Desconhecido"
 
-#: ../src/parole-medialist.c:667 ../src/parole-player.c:2418
+#: ../src/parole-medialist.c:667 ../src/parole-player.c:2419
 msgid "Playlist"
 msgstr "Lista de reprodução"
 
@@ -519,15 +523,15 @@ msgstr "Imagem de CD"
 msgid "DVD image"
 msgstr "Imagem de DVD"
 
-#: ../src/parole-player.c:897 ../src/parole-player.c:1020
+#: ../src/parole-player.c:898 ../src/parole-player.c:1021
 msgid "Media stream is not seekable"
 msgstr "A emissão não permite buscas"
 
-#: ../src/parole-player.c:1365
+#: ../src/parole-player.c:1366
 msgid "GStreamer backend error"
 msgstr "Erro GStreamer"
 
-#: ../src/parole-player.c:1408
+#: ../src/parole-player.c:1409
 msgid "Buffering"
 msgstr "A processar..."
 
@@ -684,11 +688,7 @@ msgstr "Vietnamita"
 msgid "Clear History"
 msgstr "Limpar histórico"
 
-#: ../src/parole-plugins-manager.c:302 ../src/parole-plugins-manager.c:440
-msgid "Visit Website"
-msgstr "Visitar sítio web"
-
-#: ../src/parole-plugins-manager.c:418 ../src/parole-plugins-manager.c:419
+#: ../src/parole-plugins-manager.c:389 ../src/parole-plugins-manager.c:390
 msgid "No installed plugins found on this system"
 msgstr "Não foram encontrados \"plugins\" neste sistema"
 
@@ -802,6 +802,9 @@ msgstr ""
 msgid "Power Manager Plugin"
 msgstr "\"Plugin\" gestão de energia"
 
+#~ msgid "<b>Site:</b>"
+#~ msgstr "<b>Sítio:</b>"
+
 #~ msgid "0:00"
 #~ msgstr "0:00"
 
@@ -858,9 +861,6 @@ msgstr "\"Plugin\" gestão de energia"
 
 #~ msgid "Open location of media file or live stream"
 #~ msgstr "Abrir localização ou emissão ao vivo"
-
-#~ msgid "Hide playlist"
-#~ msgstr "Ocultar lista de reprodução"
 
 #~ msgid "Next Track"
 #~ msgstr "Faixa seguinte"
