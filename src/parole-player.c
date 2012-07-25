@@ -1463,6 +1463,7 @@ parole_player_full_screen (ParolePlayer *player, gboolean fullscreen)
 {
     gint npages;
     static gint current_page = 0;
+    GdkWindow *gdkwindow;
     
     if ( player->priv->full_screen == fullscreen )
 	return;
@@ -1485,6 +1486,8 @@ parole_player_full_screen (ParolePlayer *player, gboolean fullscreen)
 	
 	gtk_window_unfullscreen (GTK_WINDOW (player->priv->window));
 	gtk_notebook_set_current_page (GTK_NOTEBOOK (player->priv->playlist_nt), current_page);
+	gdkwindow = gtk_widget_get_window (player->priv->window);
+	gdk_window_set_cursor (gdkwindow, NULL);
 	player->priv->full_screen = FALSE;
     }
     else
@@ -1629,6 +1632,7 @@ parole_player_gst_widget_button_release (GtkWidget *widget, GdkEventButton *ev, 
 static gboolean parole_player_hide_fs_window (gpointer data)
 {
     ParolePlayer *player;
+    GdkWindow *gdkwindow;
     gint x, y, w, h;
     
     player = PAROLE_PLAYER (data);
@@ -1645,6 +1649,8 @@ static gboolean parole_player_hide_fs_window (gpointer data)
 	    return TRUE;
 
 	gtk_widget_hide (player->priv->fs_window);
+	gdkwindow = gtk_widget_get_window (player->priv->window);
+	parole_window_invisible_cursor (gdkwindow);
     }
 
     return FALSE;
@@ -1654,10 +1660,13 @@ static gboolean
 parole_player_gst_widget_motion_notify_event (GtkWidget *widget, GdkEventMotion *ev, ParolePlayer *player)
 {
     static gulong hide_timeout = 0;
+    GdkWindow *gdkwindow;
     
     if ( player->priv->full_screen )
     {
 	gtk_widget_show_all (player->priv->fs_window);
+	gdkwindow = gtk_widget_get_window (player->priv->window);
+	gdk_window_set_cursor (gdkwindow, NULL);
 	if ( hide_timeout != 0 )
 	{
 	    g_source_remove (hide_timeout);
@@ -2325,7 +2334,7 @@ parole_player_init (ParolePlayer *player)
     
     g_signal_connect (G_OBJECT (player->priv->gst), "motion-notify-event",
 		      G_CALLBACK (parole_player_gst_widget_motion_notify_event), player);
-    
+
     output = GTK_WIDGET (gtk_builder_get_object (builder, "output"));
     
     gtk_drag_dest_set (output, GTK_DEST_DEFAULT_ALL, 
