@@ -1,18 +1,18 @@
-# Dutch translation of the parole package.
+# Dutch translation of the Parole package.
 # Copyright (C) The Xfce development team.
-# This file is distributed under the same license as the parole package.
+# This file is distributed under the same license as the Parole package.
 # Huib Kleinhout <huib@stack.nl>, 2002–2004.
 # Tino Meinen <a.t.meinen@chello.nl>, 2004–2009.
 # Wouter Bolsterlee <wbolster@gnome.org>, 2006–2009.
 # Mario Blättermann <mariobl@gnome.org>.
-# Pjotr, 2011.
+# Pjotr, 2011-2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-20 11:45+0200\n"
-"PO-Revision-Date: 2011-09-08 11:55+0200\n"
+"POT-Creation-Date: 2012-07-25 07:45+0000\n"
+"PO-Revision-Date: 2012-07-025 11:55+0200\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch (Flemish)\n"
 "Language: nl (Dutch)\n"
@@ -21,319 +21,282 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../data/interfaces/parole.ui.h:1 ../src/parole-about.c:89
-msgid "Parole Media Player"
-msgstr "Parole mediaspeler"
-
-#: ../data/interfaces/parole.ui.h:2
-msgid "_Media"
-msgstr "_Media"
-
-#: ../data/interfaces/parole.ui.h:3
-#, fuzzy
-msgid "Open _location"
-msgstr "Locatie _openen…"
-
-#: ../data/interfaces/parole.ui.h:4
-msgid "_DVD"
-msgstr ""
-
-#: ../data/interfaces/parole.ui.h:5
-msgid "From ISO image"
-msgstr "Van ISO-beeldbestand"
-
-#: ../data/interfaces/parole.ui.h:6
-msgid "_Edit"
-msgstr "Be_werken"
-
-#: ../data/interfaces/parole.ui.h:7
-#, fuzzy
-msgid "_Repeat"
-msgstr "Herhaal"
-
-#: ../data/interfaces/parole.ui.h:8
-#, fuzzy
-msgid "_Shuffle"
-msgstr "Schuffelen"
-
-#: ../data/interfaces/parole.ui.h:9
-#, fuzzy
-msgid "Pl_ugins"
-msgstr "Plugins"
-
-#: ../data/interfaces/parole.ui.h:10
-msgid "_View"
-msgstr "_Beeld"
-
-#: ../data/interfaces/parole.ui.h:11
-#, fuzzy
-msgid "Show _playlist"
-msgstr "Speellijst tonen"
-
-#: ../data/interfaces/parole.ui.h:12
-#, fuzzy
-msgid "_Aspect Ratio"
-msgstr "Beeldverhouding"
-
-#: ../data/interfaces/parole.ui.h:13
-msgid "None"
-msgstr "Geen"
-
-#: ../data/interfaces/parole.ui.h:14
-msgid "Auto"
-msgstr "Automatisch"
-
-#: ../data/interfaces/parole.ui.h:15
-msgid "Square"
-msgstr "Vierkant"
-
-#: ../data/interfaces/parole.ui.h:16
-msgid "4:3 (TV)"
-msgstr "4:3 (TV)"
-
-#: ../data/interfaces/parole.ui.h:17
+#: ../data/interfaces/parole.ui.h:1
 msgid "16:9 (Widescreen)"
 msgstr "16:9 (breedbeeld)"
 
-#: ../data/interfaces/parole.ui.h:18
+#: ../data/interfaces/parole.ui.h:2
 msgid "20:9 (DVB)"
 msgstr "20:9 (DVB)"
 
-#: ../data/interfaces/parole.ui.h:19
-msgid "Sound"
-msgstr "Geluid"
+#: ../data/interfaces/parole.ui.h:3
+msgid "4:3 (TV)"
+msgstr "4:3 (TV)"
 
-#: ../data/interfaces/parole.ui.h:20
-#, fuzzy
-msgid "_Mute"
-msgstr "Dempen"
+#: ../data/interfaces/parole.ui.h:4 ../src/misc/parole-filters.c:64
+msgid "Audio"
+msgstr "Audio"
 
-# harder/Meer volume
-#: ../data/interfaces/parole.ui.h:21
-#, fuzzy
-msgid "Volume _Up"
-msgstr "Harder"
-
-# zachter/Minder volume
-#: ../data/interfaces/parole.ui.h:22
-#, fuzzy
-msgid "Volume _Down"
-msgstr "Zachter"
-
-#: ../data/interfaces/parole.ui.h:23
-msgid "_Help"
-msgstr "_Hulp"
-
-#: ../data/interfaces/parole.ui.h:24
-#, fuzzy
+#: ../data/interfaces/parole.ui.h:5
 msgid "Audio Track:"
-msgstr "Vorige spoor"
+msgstr "Geluidsspoor"
 
-#: ../data/interfaces/parole.ui.h:25
-#, fuzzy
-msgid "Subtitles:"
-msgstr "<b>Ondertitels</b>"
+#: ../data/interfaces/parole.ui.h:6
+msgid "Auto"
+msgstr "Automatisch"
 
-#: ../data/interfaces/parole.ui.h:26
-msgid "0:00"
-msgstr ""
-
-#: ../data/interfaces/parole.ui.h:28
-#, fuzzy, no-c-format
+#: ../data/interfaces/parole.ui.h:8
 msgid "Buffering (0%)"
-msgstr "Aan het bufferen"
+msgstr "Aan het bufferen (0%)"
+
+#: ../data/interfaces/parole.ui.h:9 ../src/parole-player.c:641
+msgid "Empty"
+msgstr "Leeg"
+
+#: ../data/interfaces/parole.ui.h:10
+msgid "Languages"
+msgstr "Talen"
 
 # Totem erbij want ik heb meerdere mediaspelers.
 # media omdat totem meer dan alleen films kan afspelen
-#: ../data/interfaces/parole.ui.h:29
+#: ../data/interfaces/parole.ui.h:11
 msgid "Media player"
 msgstr "Mediaspeler"
 
-#: ../data/interfaces/mediachooser.ui.h:1
-msgid "Parole Media Chooser"
-msgstr "Parole mediakiezer"
+#: ../data/interfaces/parole.ui.h:12
+msgid "None"
+msgstr "Geen"
 
-#: ../data/interfaces/mediachooser.ui.h:2
-msgid "Open media files"
+#: ../data/interfaces/parole.ui.h:13
+msgid "Open _location"
+msgstr "Locatie openen"
+
+#: ../data/interfaces/parole.ui.h:14 ../src/parole-about.c:55
+msgid "Parole Media Player"
+msgstr "Parole mediaspeler"
+
+#: ../data/interfaces/parole.ui.h:15
+msgid "Pl_ugins"
+msgstr "Invoegtoepassingen"
+
+#: ../data/interfaces/parole.ui.h:16 ../src/parole-disc.c:218
+#: ../src/parole-disc.c:270
+msgid "Play Disc"
+msgstr "Schijf afspelen"
+
+#: ../data/interfaces/parole.ui.h:17
+msgid "Select Text Subtitles..."
+msgstr "Ondertitels kiezen..."
+
+#: ../data/interfaces/parole.ui.h:18
+msgid "Show _playlist"
+msgstr "Speellijst tonen"
+
+#: ../data/interfaces/parole.ui.h:19
+msgid "Square"
+msgstr "Vierkant"
+
+#: ../data/interfaces/parole.ui.h:20
+msgid "Subtitles"
+msgstr "Ondertitels"
+
+#: ../data/interfaces/parole.ui.h:21
+msgid "Subtitles:"
+msgstr "Ondertitels:"
+
+# zachter/Minder volume
+#: ../data/interfaces/parole.ui.h:22
+msgid "Volume _Down"
+msgstr "_Zachter"
+
+# harder/Meer volume
+#: ../data/interfaces/parole.ui.h:23
+msgid "Volume _Up"
+msgstr "Har_der"
+
+#: ../data/interfaces/parole.ui.h:24
+msgid "_Aspect Ratio"
+msgstr "Beeldverhouding"
+
+#: ../data/interfaces/parole.ui.h:25
+msgid "_Edit"
+msgstr "Be_werken"
+
+#: ../data/interfaces/parole.ui.h:26
+msgid "_Help"
+msgstr "_Hulp"
+
+#: ../data/interfaces/parole.ui.h:27
+msgid "_Media"
+msgstr "_Media"
+
+#: ../data/interfaces/parole.ui.h:28
+msgid "_Mute"
+msgstr "_Dempen"
+
+#: ../data/interfaces/parole.ui.h:29
+msgid "_Repeat"
+msgstr "_Herhalen"
+
+#: ../data/interfaces/parole.ui.h:30
+msgid "_Shuffle"
+msgstr "_Schuffelen"
+
+#: ../data/interfaces/parole.ui.h:31
+msgid "_View"
+msgstr "_Beeld"
+
+#: ../data/interfaces/mediachooser.ui.h:1
+msgid "Open Media Files"
 msgstr "Mediabestanden openen"
 
-#: ../data/interfaces/mediachooser.ui.h:3
-msgid "Open"
-msgstr ""
+#: ../data/interfaces/mediachooser.ui.h:2
+msgid "_Open"
+msgstr "_Openen"
 
-#: ../data/interfaces/mediachooser.ui.h:4
-msgid "Scan folders recursively"
-msgstr "Ook onderliggende mappen doorzoeken"
+#: ../data/interfaces/plugins.ui.h:1
+msgid "<b>Author</b>"
+msgstr "<b>Auteur<b>"
 
-#: ../data/interfaces/mediachooser.ui.h:5
-msgid "Replace playlist with opened files"
-msgstr "Speellijst vervangen door geopende bestanden"
+#: ../data/interfaces/plugins.ui.h:2
+msgid "<b>Description</b>"
+msgstr "<b>Omschrijving</b>"
 
-#: ../data/interfaces/mediachooser.ui.h:6
+#: ../data/interfaces/plugins.ui.h:3
+msgid "Enabled"
+msgstr "Ingeschakeld"
+
+#: ../data/interfaces/plugins.ui.h:4
+msgid "Media Player plugins"
+msgstr "Mediaspeler-invoegtoepassingen"
+
+#: ../data/interfaces/plugins.ui.h:5
+msgid "Parole Plugins"
+msgstr "Parole-invoegtoepassingen"
+
+#: ../data/interfaces/plugins.ui.h:6
+msgid "Plugin"
+msgstr "Invoegtoepassingen"
+
+#: ../data/interfaces/plugins.ui.h:7
+msgid "Visit Website"
+msgstr "Webstek bezoeken"
+
+#: ../data/interfaces/parole-settings.ui.h:1
+msgid "<b>Audio</b>"
+msgstr "<b>Geluid</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:2
+msgid "<b>Keyboard</b>"
+msgstr "<b>Toetsenbord</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:3
+msgid "<b>Video</b>"
+msgstr "<b>Beeld</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:4
+msgid "Always replace playlist with opened files"
+msgstr "Speellijst altijd vervangen door geopende bestanden"
+
+#: ../data/interfaces/parole-settings.ui.h:5
+msgid "Automatically show subtitles when playing movie file"
+msgstr "Ondertitels automatisch tonen bij afspelen van filmbestand"
+
+#: ../data/interfaces/parole-settings.ui.h:6
+msgid "Brightness:"
+msgstr "Helderheid:"
+
+#: ../data/interfaces/parole-settings.ui.h:7
+msgid "Check and remove duplicate media entries"
+msgstr "Controleer op dubbele invoerregels van media en verwijder ze"
+
+#: ../data/interfaces/parole-settings.ui.h:8
+msgid "Configure your media player"
+msgstr "Stel uw mediaspeler in"
+
+#: ../data/interfaces/parole-settings.ui.h:9
+msgid "Contrast:"
+msgstr "Contrast:"
+
+#: ../data/interfaces/parole-settings.ui.h:10
+msgid "Disable screensaver while playing movies"
+msgstr "Schermbeveiliging uitzetten tijdens afspelen van films"
+
+#: ../data/interfaces/parole-settings.ui.h:11
+msgid "Enable keyboard multimedia keys"
+msgstr "Multimediatoetsen van toetsenbord inschakelen"
+
+#: ../data/interfaces/parole-settings.ui.h:12
+msgid "Enable visualization when playing audio file"
+msgstr "Visuele effecten inschakelen bij afspelen van geluidbestand"
+
+#: ../data/interfaces/parole-settings.ui.h:13
+msgid "Encoding:"
+msgstr "Codering:"
+
+#: ../data/interfaces/parole-settings.ui.h:14
+msgid "Font:"
+msgstr "Lettertype:"
+
+#: ../data/interfaces/parole-settings.ui.h:15
+msgid "Hue:"
+msgstr "Tint:"
+
+#: ../data/interfaces/parole-settings.ui.h:16
+msgid "Parole Settings"
+msgstr "Instellingen van Parole"
+
+#: ../data/interfaces/parole-settings.ui.h:17 ../src/parole-medialist.c:1285
+msgid "Remember playlist"
+msgstr "Speellijst onthouden"
+
+#: ../data/interfaces/parole-settings.ui.h:18
+msgid "Reset to defaults"
+msgstr "Terugzetten op standaardinstellingen"
+
+#: ../data/interfaces/parole-settings.ui.h:19
+msgid "Saturation:"
+msgstr "Verzadiging:"
+
 #: ../data/interfaces/parole-settings.ui.h:20
 msgid "Start playing opened files"
 msgstr "Begin met afspelen van geopende bestanden"
 
-#: ../data/interfaces/plugins.ui.h:1
-msgid "Parole Plugins"
-msgstr "Parole-plugins"
-
-#: ../data/interfaces/plugins.ui.h:2
-msgid "Media Player plugins"
-msgstr "Mediaspeler-plugins"
-
-#: ../data/interfaces/plugins.ui.h:3
-msgid "Enabled"
-msgstr ""
-
-#: ../data/interfaces/plugins.ui.h:4
-#, fuzzy
-msgid "Plugin"
-msgstr "Plugins"
-
-#: ../data/interfaces/plugins.ui.h:5
-msgid "<b>Description:</b>"
-msgstr "<b>Omschrijving:</b>"
-
-#: ../data/interfaces/plugins.ui.h:6
-msgid "<b>Author:</b>"
-msgstr "<b>Auteur:<b>"
-
-#: ../data/interfaces/plugins.ui.h:7
-msgid "<b>Site:</b>"
-msgstr "<b>Webstek:</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:1
-msgid "Parole Settings"
-msgstr "Parole instellingen"
-
-#: ../data/interfaces/parole-settings.ui.h:2
-msgid "Media Player Settings"
-msgstr "Mediaspeler-instellingen"
-
-#: ../data/interfaces/parole-settings.ui.h:3
-#, fuzzy
-msgid "Disable screensaver while playing movies"
-msgstr "Schermbeveiliging uitzetten tijdens afspelen van films"
-
-#: ../data/interfaces/parole-settings.ui.h:4
-msgid "<b>Video</b>"
-msgstr "<b>Video</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:5
-msgid "Enable visualization when playing audio file"
-msgstr "Visuele effecten weergeven bij afspelen van geluidbestand"
-
-#: ../data/interfaces/parole-settings.ui.h:6
+#: ../data/interfaces/parole-settings.ui.h:21
 msgid "Visualization type:"
 msgstr "Visualisatietype:"
 
-#: ../data/interfaces/parole-settings.ui.h:7
-msgid "<b>Audio</b>"
-msgstr "<b>Audio</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:8
-msgid "Enable keyboard multimedia keys"
-msgstr ""
-
-#: ../data/interfaces/parole-settings.ui.h:9
-#, fuzzy
-msgid "<b>Keyboard</b>"
-msgstr "<b>Video</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:10
-#: ../src/plugins/properties/stream-properties-provider.c:341
-msgid "General"
-msgstr "Algemeen"
-
-#: ../data/interfaces/parole-settings.ui.h:11
-msgid "Brightness:"
-msgstr "Helderheid:"
-
-#: ../data/interfaces/parole-settings.ui.h:12
-msgid "Contrast:"
-msgstr "Contrast:"
-
-#: ../data/interfaces/parole-settings.ui.h:13
-msgid "Hue:"
-msgstr "Tint:"
-
-#: ../data/interfaces/parole-settings.ui.h:14
-msgid "Saturation:"
-msgstr "Verzadiging:"
-
-#: ../data/interfaces/parole-settings.ui.h:15
-#, fuzzy
-msgid "Reset to defaults"
-msgstr "Terugzetten op standaardinstellingen"
-
-#: ../data/interfaces/parole-settings.ui.h:16
-msgid "<b>Display</b>"
-msgstr "<b>Weergave</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:17
-#, fuzzy
-msgid "Display"
-msgstr "<b>Weergave</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:18
-#, fuzzy
-msgid "Always replace playlist with opened files"
-msgstr "Speellijst vervangen door geopende bestanden"
-
-#: ../data/interfaces/parole-settings.ui.h:19
-msgid "Check and remove duplicated media entries"
-msgstr ""
-
-#: ../data/interfaces/parole-settings.ui.h:21
-#, fuzzy
-msgid "<b>Playlist options</b>"
-msgstr "<b>Aan het afspelen:</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:22 ../src/parole-medialist.c:667
-#: ../src/parole-player.c:2315
-msgid "Playlist"
-msgstr "Speellijst"
+#: ../data/interfaces/parole-settings.ui.h:22
+msgid "_Display"
+msgstr "Weergave"
 
 #: ../data/interfaces/parole-settings.ui.h:23
-#, fuzzy
-msgid "Automatically show subtitles when playing movie file"
-msgstr "Ondertitels automatisch laden bij afspelen van filmbestand"
+msgid "_General"
+msgstr "Algemeen"
 
 #: ../data/interfaces/parole-settings.ui.h:24
-msgid "Font:"
-msgstr "Lettertype:"
+msgid "_Playlist"
+msgstr "Speellijst"
 
 #: ../data/interfaces/parole-settings.ui.h:25
-#, fuzzy
-msgid "Encoding:"
-msgstr "Coderen: "
-
-#: ../data/interfaces/parole-settings.ui.h:26
-msgid "<b>Subtitles</b>"
-msgstr "<b>Ondertitels</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:27
-#, fuzzy
-msgid "Subtitles"
-msgstr "<b>Ondertitels</b>"
+msgid "_Subtitles"
+msgstr "Ondertitels"
 
 #: ../data/interfaces/save-playlist.ui.h:1
-msgid "Select File Types (By Extension)"
-msgstr "Bestandtypen selecteren (op extensie)"
-
-#: ../data/interfaces/save-playlist.ui.h:2
 msgid "By Extension"
 msgstr "Op extensie"
 
+#: ../data/interfaces/save-playlist.ui.h:2
+msgid "Select File Types (By Extension)"
+msgstr "Bestandtypen selecteren (op extensie)"
+
 #: ../data/interfaces/open-location.ui.h:1
-#, fuzzy
 msgid "Open Location"
-msgstr "Locatie _openen…"
+msgstr "Locatie openen"
 
 #: ../data/interfaces/open-location.ui.h:2
 msgid "Please enter a network URL:"
-msgstr ""
+msgstr "Voer a.u.b. een netwerkadres in:"
 
 #: ../data/desktop/parole.desktop.in.in.h:1
 msgid "Parole"
@@ -347,36 +310,35 @@ msgstr "Boodschap"
 msgid "Error"
 msgstr "Fout"
 
-#: ../src/gst/parole-gst.c:1496
+#: ../src/gst/parole-gst.c:1495
 msgid "Stop"
 msgstr "Stop"
 
-#: ../src/gst/parole-gst.c:1497
+#: ../src/gst/parole-gst.c:1496
 msgid "The stream is taking too much time to load"
 msgstr "Het laden van de uitzending duurt te lang"
 
-#: ../src/gst/parole-gst.c:1666
+#: ../src/gst/parole-gst.c:1665
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
-"Kon GStreamer-playbin-plugin niet laden. Controleer uw GStreamer-installatie."
+"Kon GStreamer-playbin-invoegtoepassing niet laden. Controleer uw GStreamer-installatie."
 
-#: ../src/gst/parole-gst.c:1690
+#: ../src/gst/parole-gst.c:1689
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
-"Kon de Gstreamer-video-plugin niet laden. Controleer uw GStreamer-"
+"Kon de Gstreamer-video-invoegtoepassing niet laden. Controleer uw GStreamer-"
 "installatie."
 
-#: ../src/gst/parole-gst.c:2222 ../src/gst/parole-gst.c:2226
-#, fuzzy, c-format
+#: ../src/gst/parole-gst.c:2223 ../src/gst/parole-gst.c:2227
 msgid "Audio Track #%d"
-msgstr "Spoor %i"
+msgstr "Geluidsspoor #%d"
 
-#: ../src/gst/parole-gst.c:2254 ../src/gst/parole-gst.c:2258
+#: ../src/gst/parole-gst.c:2255 ../src/gst/parole-gst.c:2259
 #, c-format
 msgid "Subtitle #%d"
-msgstr ""
+msgstr "Ondertitel #%d"
 
 #: ../src/main.c:53
 #, c-format
@@ -403,75 +365,87 @@ msgstr ""
 msgid "Unknown argument "
 msgstr "Onbekend argument "
 
-#: ../src/main.c:223
+#: ../src/main.c:224
 msgid "Open a new instance"
 msgstr "Nieuwe instantie openen"
 
-#: ../src/main.c:224
-msgid "Do not load plugins"
-msgstr "Geen plugins laden"
-
 #: ../src/main.c:225
-msgid "Set Audio-CD/VCD/DVD device path"
-msgstr "Pad van audio-CD-, VCD- of DVD-speler instellen"
+msgid "Do not load plugins"
+msgstr "Geen invoegtoepassingen laden"
 
 #: ../src/main.c:226
+msgid "Set Audio-CD/VCD/DVD device path"
+msgstr "Apparaatpad instellen voor geluids-CD/VCD/DVD"
+
+#: ../src/main.c:227
 msgid "Play or pause if already playing"
 msgstr "Afspelen of pauzeren indien reeds aan het spelen"
 
-#: ../src/main.c:227
+#: ../src/main.c:228
 msgid "Stop playing"
 msgstr "Afspelen stoppen"
 
-#: ../src/main.c:228
+#: ../src/main.c:229
 msgid "Next track"
 msgstr "Volgende spoor"
 
-#: ../src/main.c:229
+#: ../src/main.c:230
 msgid "Previous track"
 msgstr "Vorige spoor"
 
-#: ../src/main.c:230
+#: ../src/main.c:231
 msgid "Seek forward"
 msgstr "Vooruitspoelen"
 
-#: ../src/main.c:231
+#: ../src/main.c:232
 msgid "Seek Backward"
 msgstr "Terugspoelen"
 
-#: ../src/main.c:232
+#: ../src/main.c:233
 msgid "Raise volume"
 msgstr "Geluid harder"
 
-#: ../src/main.c:233
+#: ../src/main.c:234
 msgid "Lower volume"
 msgstr "Geluid zachter"
 
-#: ../src/main.c:234
+#: ../src/main.c:235
 msgid "Mute volume"
 msgstr "Geluid dempen"
 
-#: ../src/main.c:235
+#: ../src/main.c:236
 msgid "Version information"
 msgstr "Versie-informatie"
 
-#: ../src/main.c:236
+#: ../src/main.c:237
 msgid "Start in fullscreen mode"
 msgstr "Schermvullend starten"
 
-#: ../src/main.c:237
+#: ../src/main.c:238
 msgid "Enabled/Disable XV support"
 msgstr "XV-ondersteuning in-/uitschakelen"
 
-# de film wordt niet gedraaid?
 #: ../src/main.c:239
+msgid "Add files to playlist"
+msgstr "Bestanden toevoegen aan speellijst"
+
+# de film wordt niet gedraaid?
+#: ../src/main.c:241
 msgid "Media to play"
 msgstr "Media om af te spelen"
 
-#: ../src/main.c:276
+#: ../src/main.c:279
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole is al actief, gebruik -i om een nieuwe instantie te openen\n"
+
+#: ../src/parole-mediachooser.c:210
+msgid "Supported files"
+msgstr "Ondersteunde bestanden"
+
+#: ../src/parole-mediachooser.c:216
+msgid "All files"
+msgstr "Alle bestanden"
 
 #: ../src/parole-medialist.c:526
 msgid "Permission denied"
@@ -489,13 +463,17 @@ msgstr "Onbekende opmaak van speellijst"
 msgid "Please chooser a supported playlist format"
 msgstr "Kies a.u.b. een ondersteunde speellijst-opmaak"
 
-#: ../src/parole-medialist.c:593 ../src/parole-plugins-manager.c:378
+#: ../src/parole-medialist.c:593 ../src/parole-plugins-manager.c:349
 #: ../src/plugins/properties/stream-properties-provider.c:140
 #: ../src/plugins/properties/stream-properties-provider.c:141
 #: ../src/plugins/properties/stream-properties-provider.c:142
 #: ../src/plugins/properties/stream-properties-provider.c:143
 msgid "Unknown"
 msgstr "Onbekend"
+
+#: ../src/parole-medialist.c:667 ../src/parole-player.c:2419
+msgid "Playlist"
+msgstr "Speellijst"
 
 #: ../src/parole-medialist.c:674
 msgid "M3U Playlists"
@@ -518,70 +496,57 @@ msgstr "Deelbare speellijst"
 msgid "Open Containing Folder"
 msgstr "Open map waar het inzit"
 
-#: ../src/parole-medialist.c:1217
+#: ../src/parole-medialist.c:1215
 msgid "Repeat"
 msgstr "Herhaal"
 
-#: ../src/parole-medialist.c:1233
+#: ../src/parole-medialist.c:1231
 msgid "Shuffle"
 msgstr "Schuffelen"
 
-#: ../src/parole-medialist.c:1256
+#: ../src/parole-medialist.c:1254
 msgid "Replace playlist when opening files"
 msgstr "Speellijst vervangen bij openen van bestanden"
 
-#: ../src/parole-medialist.c:1272
+#: ../src/parole-medialist.c:1270
 msgid "Play opened files"
 msgstr "Geopende bestanden afspelen"
 
-#. *
-#. * Remember media list entries
-#. *
-#: ../src/parole-medialist.c:1284
-msgid "Remember playlist"
-msgstr "Speellijst onthouden"
-
-#: ../src/parole-medialist.c:1473
+#: ../src/parole-medialist.c:1471
 msgid "Media list"
 msgstr "Medialijst"
 
-#: ../src/parole-player.c:432
+#: ../src/parole-player.c:445
 msgid "Open ISO image"
 msgstr "ISO-beeldbestand openen"
 
-#: ../src/parole-player.c:449
+#: ../src/parole-player.c:462
 msgid "CD image"
 msgstr "CD-beeldbestand"
 
-#: ../src/parole-player.c:449
+#: ../src/parole-player.c:462
 msgid "DVD image"
 msgstr "DVD-beeldbestand"
 
-#: ../src/parole-player.c:779 ../src/parole-player.c:902
+#: ../src/parole-player.c:898 ../src/parole-player.c:1021
 msgid "Media stream is not seekable"
 msgstr "Mediastroom is niet doorzoekbaar"
 
-#: ../src/parole-player.c:1250
+#: ../src/parole-player.c:1366
 msgid "GStreamer backend error"
-msgstr ""
+msgstr "Fout van Gstreamer-achtergronddienst"
 
-#: ../src/parole-player.c:1293
+#: ../src/parole-player.c:1409
 msgid "Buffering"
 msgstr "Aan het bufferen"
 
-#: ../src/parole-about.c:95
-#, fuzzy
+#: ../src/parole-about.c:61
 msgid "translator-credits"
-msgstr "Vertaler (%s)"
+msgstr "vertalers"
 
-#: ../src/parole-about.c:98
-#, fuzzy
+#: ../src/parole-about.c:64
 msgid "Visit Parole website"
-msgstr "Webstek bezoeken"
-
-#: ../src/parole-disc.c:227
-msgid "Play Disc"
-msgstr "Schijf afspelen"
+msgstr "Webstek van Parole bezoeken"
 
 #: ../src/parole-subtitle-encoding.c:165
 msgid "Current Locale"
@@ -725,29 +690,20 @@ msgid "Vietnamese"
 msgstr "Vietnamees"
 
 #: ../src/parole-open-location.c:210
-#, fuzzy
 msgid "Clear History"
 msgstr "Geschiedenis wissen"
 
-#: ../src/parole-plugins-manager.c:302 ../src/parole-plugins-manager.c:440
-msgid "Visit Website"
-msgstr "Webstek bezoeken"
-
-#: ../src/parole-plugins-manager.c:418 ../src/parole-plugins-manager.c:419
+#: ../src/parole-plugins-manager.c:389 ../src/parole-plugins-manager.c:390
 msgid "No installed plugins found on this system"
-msgstr "Geen geïnstalleerde plugins gevonden op dit systeem"
-
-#: ../src/misc/parole-filters.c:64
-msgid "Audio"
-msgstr "Audio"
+msgstr "Geen geïnstalleerde invoegtoepassingen gevonden op dit systeem"
 
 #: ../src/misc/parole-filters.c:90
 msgid "Video"
-msgstr "Video"
+msgstr "Beeld"
 
 #: ../src/misc/parole-filters.c:115
 msgid "Audio and video"
-msgstr "Audio en video"
+msgstr "Geluid en beeld"
 
 #: ../src/misc/parole-filters.c:144
 msgid "All supported files"
@@ -773,6 +729,10 @@ msgstr "Album:"
 msgid "Year:"
 msgstr "Jaar:"
 
+#: ../src/plugins/properties/stream-properties-provider.c:341
+msgid "General"
+msgstr "Algemeen"
+
 #: ../src/plugins/properties/stream-properties-provider.c:392
 msgid "Stream doesn't support tags changes"
 msgstr "Deze uitzending ondersteunt geen wijziging van etiketten"
@@ -786,70 +746,100 @@ msgid "Properties"
 msgstr "Eigenschappen"
 
 #: ../src/plugins/properties/stream-properties.desktop.in.h:1
-msgid "Stream Properties"
-msgstr "Eigenschappen van uitzending"
-
-#: ../src/plugins/properties/stream-properties.desktop.in.h:2
 msgid "Read media properties"
 msgstr "Media-eigenschappen uitlezen"
 
-#: ../src/plugins/tray/tray-provider.c:283
+#: ../src/plugins/properties/stream-properties.desktop.in.h:2
+msgid "Stream Properties"
+msgstr "Eigenschappen van uitzending"
+
+#: ../src/plugins/tray/tray-provider.c:280
 msgid "<b>Playing:</b>"
 msgstr "<b>Aan het afspelen:</b>"
 
 # lengte/duur
-#: ../src/plugins/tray/tray-provider.c:283
+#: ../src/plugins/tray/tray-provider.c:280
 msgid "<b>Duration:</b>"
 msgstr "<b>Duur:</b>"
 
-#: ../src/plugins/tray/tray-provider.c:419
+#: ../src/plugins/tray/tray-provider.c:420
 msgid "Tray icon plugin"
-msgstr "Systeemvak-plugin"
+msgstr "Systeemvak-invoegtoepassing"
 
-#: ../src/plugins/tray/tray-provider.c:429
+#: ../src/plugins/tray/tray-provider.c:430
 msgid "Enable notification"
 msgstr "Notificatie aanzetten"
 
-#: ../src/plugins/tray/tray-provider.c:438
+#: ../src/plugins/tray/tray-provider.c:439
 msgid "Always minimize to tray when window is closed"
 msgstr ""
 "Als het venster gesloten wordt, altijd minimaliseren naar het systeemvak"
 
-#: ../src/plugins/tray/tray-provider.c:477
+#: ../src/plugins/tray/tray-provider.c:478
 msgid "Minimize to tray?"
 msgstr "Minimaliseren naar systeemvak?"
 
 # de film wordt niet gedraaid?
-#: ../src/plugins/tray/tray-provider.c:483
+#: ../src/plugins/tray/tray-provider.c:484
 msgid "Minimize to tray"
 msgstr "Minimaliseren naar systeemvak"
 
-#: ../src/plugins/tray/tray-provider.c:499
+#: ../src/plugins/tray/tray-provider.c:500
 msgid "Are you sure you want to quit Parole"
 msgstr "Weet u zeker dat u Parole wilt afsluiten?"
 
-#: ../src/plugins/tray/tray-provider.c:503
+#: ../src/plugins/tray/tray-provider.c:504
 msgid "Remember my choice"
 msgstr "Onthoud mijn keuze"
 
-#: ../src/plugins/tray/system-tray.desktop.in.h:1
-msgid "Tray icon"
-msgstr "Systeemvakpictogram"
-
 # zijbalk/zijpaneel, is hier de afspeellijst.
-#: ../src/plugins/tray/system-tray.desktop.in.h:2
+#: ../src/plugins/tray/system-tray.desktop.in.h:1
 msgid "Show icon in the system tray"
 msgstr "Pictogram in het systeemvak tonen"
 
-#: ../src/plugins/power-manager/power-manager.desktop.in.h:1
-msgid "Power Manager Plugin"
-msgstr "Energiebeheer-plugin"
+#: ../src/plugins/tray/system-tray.desktop.in.h:2
+msgid "Tray icon"
+msgstr "Systeemvakpictogram"
 
-#: ../src/plugins/power-manager/power-manager.desktop.in.h:2
+#: ../src/plugins/power-manager/power-manager.desktop.in.h:1
 msgid "Inhibit Power Manager from suspending the machine while playing DVD."
 msgstr ""
 "Verhinder energiebeheerder het systeem in de pauzestand te zetten tijdens "
 "het afspelen van een DVD."
+
+#: ../src/plugins/power-manager/power-manager.desktop.in.h:2
+msgid "Power Manager Plugin"
+msgstr "Energiebeheer-invoegtoepassing"
+
+#~ msgid "From ISO image"
+#~ msgstr "Van ISO-beeldbestand"
+
+#~ msgid "Sound"
+#~ msgstr "Geluid"
+
+#~ msgid "Parole Media Chooser"
+#~ msgstr "Parole mediakiezer"
+
+#~ msgid "Scan folders recursively"
+#~ msgstr "Ook onderliggende mappen doorzoeken"
+
+#~ msgid "Replace playlist with opened files"
+#~ msgstr "Speellijst vervangen door geopende bestanden"
+
+#~ msgid "<b>Site:</b>"
+#~ msgstr "<b>Webstek:</b>"
+
+#~ msgid "Media Player Settings"
+#~ msgstr "Mediaspeler-instellingen"
+
+#~ msgid "<b>Display</b>"
+#~ msgstr "<b>Weergave</b>"
+
+#~ msgid "<b>Playlist options</b>"
+#~ msgstr "<b>Opties voor speellijst</b>"
+
+#~ msgid "<b>Subtitles</b>"
+#~ msgstr "<b>Ondertitels</b>"
 
 #~ msgid "Chapter Menu"
 #~ msgstr "Hoofdstukmenu"
@@ -877,9 +867,6 @@ msgstr ""
 
 #~ msgid "Open location of media file or live stream"
 #~ msgstr "Open locatie van mediabestand of uitzending"
-
-#~ msgid "Hide playlist"
-#~ msgstr "Speellijst verbergen"
 
 #~ msgid "Next Track"
 #~ msgstr "Volgende spoor"
@@ -923,13 +910,13 @@ msgstr ""
 
 # de film wordt niet gedraaid?
 #~ msgid "url to play"
-#~ msgstr "url om af te spelen"
+#~ msgstr "webadres om af te spelen"
 
 #~ msgid "URL"
-#~ msgstr "URL"
+#~ msgstr "Webadres"
 
 #~ msgid "Fullscreen"
 #~ msgstr "Schermvullend"
 
 #~ msgid "Copy url"
-#~ msgstr "URL kopiëren"
+#~ msgstr "Webadres kopiëren"
