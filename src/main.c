@@ -47,6 +47,8 @@
 #include "parole-builder.h"
 #include "parole-rc-utils.h"
 
+#include <X11/X.h>
+
 static void G_GNUC_NORETURN
 show_version (void)
 {
@@ -244,6 +246,8 @@ int main (int argc, char **argv)
     
     if ( !g_thread_supported () )
 	g_thread_init (NULL);
+	
+	XInitThreads();
 
     xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
     
