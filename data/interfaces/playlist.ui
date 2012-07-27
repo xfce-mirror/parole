@@ -23,6 +23,11 @@
     <property name="pixel_size">20</property>
     <property name="icon_name">media-playlist-repeat</property>
   </object>
+  <object class="GtkImage" id="image_settings">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-properties</property>
+  </object>
   <object class="GtkImage" id="image_shuffle">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -83,6 +88,7 @@
                     <property name="receives_default">True</property>
                     <property name="use_action_appearance">False</property>
                     <property name="image">image_add</property>
+                    <property name="focus_on_click">False</property>
                     <signal name="clicked" handler="parole_media_list_add_clicked_cb" swapped="no"/>
                   </object>
                   <packing>
@@ -94,10 +100,12 @@
                 <child>
                   <object class="GtkButton" id="remove-media">
                     <property name="visible">True</property>
+                    <property name="sensitive">False</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="use_action_appearance">False</property>
                     <property name="image">image_remove</property>
+                    <property name="focus_on_click">False</property>
                     <signal name="clicked" handler="parole_media_list_remove_clicked_cb" swapped="no"/>
                   </object>
                   <packing>
@@ -109,10 +117,12 @@
                 <child>
                   <object class="GtkButton" id="clear-media">
                     <property name="visible">True</property>
+                    <property name="sensitive">False</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="use_action_appearance">False</property>
                     <property name="image">image_clear</property>
+                    <property name="focus_on_click">False</property>
                     <signal name="clicked" handler="parole_media_list_clear_clicked_cb" swapped="no"/>
                   </object>
                   <packing>
@@ -128,6 +138,7 @@
                     <property name="receives_default">True</property>
                     <property name="use_action_appearance">False</property>
                     <property name="image">image_repeat</property>
+                    <property name="focus_on_click">False</property>
                     <signal name="toggled" handler="parole_media_list_repeat_toggled_cb" swapped="no"/>
                   </object>
                   <packing>
@@ -143,12 +154,28 @@
                     <property name="receives_default">True</property>
                     <property name="use_action_appearance">False</property>
                     <property name="image">image_shuffle</property>
+                    <property name="focus_on_click">False</property>
                     <signal name="toggled" handler="parole_media_list_shuffle_toggled_cb" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">True</property>
                     <property name="fill">True</property>
                     <property name="position">4</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkToggleButton" id="settings">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="use_action_appearance">False</property>
+                    <property name="image">image_settings</property>
+                    <property name="focus_on_click">False</property>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">5</property>
                   </packing>
                 </child>
               </object>
@@ -167,6 +194,78 @@
         <property name="fill">True</property>
         <property name="position">0</property>
       </packing>
+    </child>
+  </object>
+  <object class="GtkMenu" id="playlist-menu">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkCheckMenuItem" id="menu-repeat">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="use_action_appearance">False</property>
+        <property name="label" translatable="yes">Repeat</property>
+        <property name="use_underline">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkCheckMenuItem" id="menu-shuffle">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="use_action_appearance">False</property>
+        <property name="label" translatable="yes">Shuffle</property>
+        <property name="use_underline">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkSeparatorMenuItem" id="menuitem1">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="use_action_appearance">False</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkCheckMenuItem" id="menu-replace">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="use_action_appearance">False</property>
+        <property name="label" translatable="yes">Replace playlist when opening files</property>
+        <property name="use_underline">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkCheckMenuItem" id="menu-play-opened">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="use_action_appearance">False</property>
+        <property name="label" translatable="yes">Play opened files</property>
+        <property name="use_underline">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkCheckMenuItem" id="menu-remember">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="use_action_appearance">False</property>
+        <property name="label" translatable="yes">Remember playlist</property>
+        <property name="use_underline">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkSeparatorMenuItem" id="menuitem2">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="use_action_appearance">False</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="menu-clear">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="use_action_appearance">False</property>
+        <property name="label" translatable="yes">Clear</property>
+        <property name="use_underline">True</property>
+      </object>
     </child>
   </object>
 </interface>
