@@ -261,7 +261,7 @@ parole_conf_class_init (ParoleConfClass *klass)
                                      PROP_SUBTITLE_FONT,
                                      g_param_spec_string  ("subtitle-font",
                                                            NULL, NULL,
-                                                           "Sans 12",
+                                                           "Sans Bold 20",
                                                            G_PARAM_READWRITE));
     
     g_object_class_install_property (object_class,
