@@ -84,7 +84,7 @@ struct ParoleGstPrivate
 
     GstBus       *bus;
     
-    GMutex       *lock;
+    GMutex       lock;
     GstState      state;
     GstState      target;
     ParoleState media_state;
@@ -166,7 +166,7 @@ parole_gst_finalize (GObject *object)
     if ( gst->priv->device )
 	g_free (gst->priv->device);
     
-    g_mutex_free (gst->priv->lock);
+    g_mutex_clear (&gst->priv->lock);
 
     G_OBJECT_CLASS (parole_gst_parent_class)->finalize (object);
 }
@@ -1515,10 +1515,10 @@ parole_gst_terminate_internal (ParoleGst *gst, gboolean fade_sound)
 		  "has-video", &playing_video,
 		  NULL);
     
-    g_mutex_lock (gst->priv->lock);
+    g_mutex_lock (&gst->priv->lock);
     gst->priv->target = GST_STATE_NULL;
     parole_stream_init_properties (gst->priv->stream);
-    g_mutex_unlock (gst->priv->lock);
+    g_mutex_unlock (&gst->priv->lock);
 
     parole_window_busy_cursor (GTK_WIDGET (gst)->window);
     
@@ -1844,7 +1844,7 @@ parole_gst_init (ParoleGst *gst)
     gst->priv->target = GST_STATE_VOID_PENDING;
     gst->priv->media_state = PAROLE_STATE_STOPPED;
     gst->priv->aspect_ratio = PAROLE_ASPECT_RATIO_NONE;
-    gst->priv->lock = g_mutex_new ();
+    g_mutex_init (&gst->priv->lock);
     gst->priv->stream = parole_stream_new ();
     gst->priv->tick_id = 0;
     gst->priv->hidecursor_timer = g_timer_new ();
@@ -1921,7 +1921,7 @@ parole_gst_play_idle (gpointer data)
 
 void parole_gst_play_uri (ParoleGst *gst, const gchar *uri, const gchar *subtitles)
 {
-    g_mutex_lock (gst->priv->lock);
+    g_mutex_lock (&gst->priv->lock);
     
     gst->priv->target = GST_STATE_PLAYING;
     parole_stream_init_properties (gst->priv->stream);
@@ -1931,7 +1931,7 @@ void parole_gst_play_uri (ParoleGst *gst, const gchar *uri, const gchar *subtitl
 		  "subtitles", subtitles,
 		  NULL);
 
-    g_mutex_unlock (gst->priv->lock);
+    g_mutex_unlock (&gst->priv->lock);
     
     if ( gst->priv->state_change_id == 0 )
 	gst->priv->state_change_id = g_timeout_add_seconds (20, 
@@ -1972,11 +1972,11 @@ void parole_gst_play_device_uri (ParoleGst *gst, const gchar *uri, const gchar *
 
 void parole_gst_pause (ParoleGst *gst)
 {
-    g_mutex_lock (gst->priv->lock);
+    g_mutex_lock (&gst->priv->lock);
     
     gst->priv->target = GST_STATE_PAUSED;
     
-    g_mutex_unlock (gst->priv->lock);
+    g_mutex_unlock (&gst->priv->lock);
 
     parole_window_busy_cursor (GTK_WIDGET (gst)->window);
     parole_gst_change_state (gst, GST_STATE_PAUSED);
@@ -1984,11 +1984,11 @@ void parole_gst_pause (ParoleGst *gst)
 
 void parole_gst_resume (ParoleGst *gst)
 {
-    g_mutex_lock (gst->priv->lock);
+    g_mutex_lock (&gst->priv->lock);
     
     gst->priv->target = GST_STATE_PLAYING;
     
-    g_mutex_unlock (gst->priv->lock);
+    g_mutex_unlock (&gst->priv->lock);
 
     parole_window_busy_cursor (GTK_WIDGET (gst)->window);
     parole_gst_change_state (gst, GST_STATE_PLAYING);
@@ -2008,12 +2008,12 @@ parole_gst_stop_idle (gpointer data)
 
 void parole_gst_stop (ParoleGst *gst)
 {
-    g_mutex_lock (gst->priv->lock);
+    g_mutex_lock (&gst->priv->lock);
     
     parole_stream_init_properties (gst->priv->stream);
     gst->priv->target = GST_STATE_NULL;
 		  
-    g_mutex_unlock (gst->priv->lock);
+    g_mutex_unlock (&gst->priv->lock);
 
     parole_window_busy_cursor (GTK_WIDGET (gst)->window);
     
@@ -2118,12 +2118,35 @@ void parole_gst_prev_dvd_chapter (ParoleGst *gst)
 
 void parole_gst_next_cdda_track (ParoleGst *gst)
 {
-    parole_gst_change_cdda_track (gst, 1);
+    //parole_gst_change_cdda_track (gst, 1);
+
+    gint num_tracks, current_track;
+    
+    g_object_get (G_OBJECT (gst->priv->stream),
+			      "num-tracks", &num_tracks,
+			      "track", &current_track,
+			      NULL);
+
+    if ( num_tracks != current_track )
+    {
+        parole_gst_seek_cdda_track (gst, current_track);
+    }
 }
 
 void parole_gst_prev_cdda_track (ParoleGst *gst)
 {
-    parole_gst_change_cdda_track (gst, -1);
+    //parole_gst_change_cdda_track (gst, -1);
+    
+    gint current_track;
+    
+    g_object_get (G_OBJECT (gst->priv->stream),
+			      "track", &current_track,
+			      NULL);
+
+    if ( current_track != 1 )
+    {
+        parole_gst_seek_cdda_track (gst, current_track-2);
+    }
 }
 
 void parole_gst_seek_cdda	(ParoleGst *gst, guint track_num)
