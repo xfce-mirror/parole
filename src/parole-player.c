@@ -1502,8 +1502,9 @@ parole_player_full_screen (ParolePlayer *player, gboolean fullscreen)
 	gtk_widget_hide (player->priv->fs_window);
 	gtk_widget_show (player->priv->play_box);
 	gtk_widget_show (player->priv->menu_bar);
-	gtk_widget_show (player->priv->playlist_nt);
-	parole_player_set_playlist_visible(player, TRUE);
+	gboolean show_playlist = gtk_check_menu_item_get_active( GTK_CHECK_MENU_ITEM(player->priv->show_hide_playlist) );
+    gtk_widget_show (player->priv->playlist_nt);
+	parole_player_set_playlist_visible(player, show_playlist);
 	gtk_widget_show (player->priv->go_fs);
 	gtk_widget_hide (player->priv->leave_fs);
 	gtk_widget_show (player->priv->show_hide_playlist_button);
