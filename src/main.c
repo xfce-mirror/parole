@@ -244,8 +244,6 @@ int main (int argc, char **argv)
         { NULL, },
     };
     
-    if ( !g_thread_supported () )
-	
 	XInitThreads();
 
     xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
