@@ -119,10 +119,22 @@ parole_disc_show_menu_item (ParoleDisc *disc, MountData *data, const gchar *labe
 		case PAROLE_DISC_DVD:
 			img = gtk_image_new_from_stock("gtk-cdrom", GTK_ICON_SIZE_MENU);
 			break;
+		default:
+		    img = gtk_image_new_from_stock("gtk-cdrom", GTK_ICON_SIZE_MENU);
+		    gtk_image_menu_item_set_image( GTK_IMAGE_MENU_ITEM (disc->priv->disc_menu_item), img);
+		    gtk_menu_item_set_label( GTK_MENU_ITEM (disc->priv->disc_menu_item), _("Insert Disc") );
+		    gtk_widget_set_sensitive( GTK_WIDGET (disc->priv->disc_menu_item), FALSE );
+		    data->mi = disc->priv->disc_menu_item;
+	        gtk_widget_show (data->mi);
+            gtk_widget_show (img);
+		    return;
+		    break;
 	}
 	
 	gtk_image_menu_item_set_image( GTK_IMAGE_MENU_ITEM (disc->priv->disc_menu_item), img);
 	gtk_menu_item_set_label( GTK_MENU_ITEM (disc->priv->disc_menu_item), label );
+	
+	gtk_widget_set_sensitive( GTK_WIDGET (disc->priv->disc_menu_item), TRUE );
 
 	data->mi = disc->priv->disc_menu_item;
 	

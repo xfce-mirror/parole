@@ -44,7 +44,7 @@
   <object class="GtkImage" id="image22">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="icon_name">media-cdrom-audio</property>
+    <property name="icon_name">media-optical</property>
   </object>
   <object class="GtkImage" id="image5">
     <property name="visible">True</property>
@@ -126,8 +126,9 @@
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="menu-open-disc">
-                        <property name="label" translatable="yes">Play Disc</property>
+                        <property name="label" translatable="yes">Insert Disc</property>
                         <property name="visible">True</property>
+                        <property name="sensitive">False</property>
                         <property name="can_focus">False</property>
                         <property name="use_action_appearance">False</property>
                         <property name="image">image22</property>
@@ -818,7 +819,7 @@
                                                       </object>
                                                       <packing>
                                                         <property name="expand">True</property>
-                                                        <property name="fill">False</property>
+                                                        <property name="fill">True</property>
                                                         <property name="position">4</property>
                                                       </packing>
                                                     </child>
