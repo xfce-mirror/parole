@@ -1480,7 +1480,7 @@ parole_player_move_fs_window (ParolePlayer *player)
 		       player->priv->play_box->allocation.width);
     
     gtk_window_move (GTK_WINDOW (player->priv->fs_window),
-		     0, 
+		     rect.x, 
 		     rect.height + rect.y - player->priv->play_box->allocation.height);
 }
 
