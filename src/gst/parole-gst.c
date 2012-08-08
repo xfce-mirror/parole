@@ -2318,7 +2318,7 @@ gst_set_current_subtitle_track( ParoleGst *gst, gint track_no )
 		  "uri", &uri,
 		  NULL);
 		  
-	sub = parole_get_subtitle_path(uri);
+	sub = (gchar*) parole_get_subtitle_path(uri);
 	
 	gint flags;
 

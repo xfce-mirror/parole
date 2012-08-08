@@ -30,23 +30,23 @@
 #undef XFCE_DISABLE_DEPRECATED
 #endif
 #include <libxfce4util/libxfce4util.h>
-#include <libxfce4ui/libxfce4ui.h>
 
 #include "parole-about.h"
-#include "parole-utils.h"
 
 
 void parole_about (GtkWindow *parent)
 {
     static const gchar *authors[] = 
     {
-	"Ali Abdallah <aliov@xfce.org",
+	"Ali Abdallah <aliov@xfce.org>",
+	"Sean Davis <bluesabre@xfce.org>",
+	"Simon Steinbeiss <simon@xfce.org>",
 	NULL,
     };
 
     static const gchar *documenters[] =
     {
-	"Ali Abdallah <aliov@xfce.org",
+	"Ali Abdallah <aliov@xfce.org>",
 	NULL,
     };
     
