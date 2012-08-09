@@ -206,21 +206,18 @@ msgid "<b>Audio</b>"
 msgstr "<b>Ήχος</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:2
-#, fuzzy
 msgid "<b>Keyboard</b>"
-msgstr "<b>Εικόνα</b>"
+msgstr "<b>Πληκτρολόγιο</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:3
 msgid "<b>Video</b>"
 msgstr "<b>Εικόνα</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:4
-#, fuzzy
 msgid "Always replace playlist with opened files"
 msgstr "Αντικατάσταση της λίστας αναπαραγωγής με ανοιγμένα αρχεία"
 
 #: ../data/interfaces/parole-settings.ui.h:5
-#, fuzzy
 msgid "Automatically show subtitles when playing movie file"
 msgstr "Αυτόματο άνοιγμα υποτίτλων με την αναπαραγωγή ταινίας"
 
@@ -230,31 +227,29 @@ msgstr "Φωτεινότητα:"
 
 #: ../data/interfaces/parole-settings.ui.h:7
 msgid "Check and remove duplicate media entries"
-msgstr ""
+msgstr "Έλεγχος και απομάκρυνση διπλότυπων αρχείων"
 
 #: ../data/interfaces/parole-settings.ui.h:8
 msgid "Configure your media player"
-msgstr ""
+msgstr "Ρύθμιση της εφαρμογής πολυμέσων"
 
 #: ../data/interfaces/parole-settings.ui.h:9
 msgid "Contrast:"
 msgstr "Αντίθεση:"
 
 #: ../data/interfaces/parole-settings.ui.h:10
-#, fuzzy
 msgid "Disable screensaver while playing movies"
 msgstr "Απενεργοποίηση της προστασίας οθόνης όταν γίνεται αναπαραγωγή ταινιών"
 
 #: ../data/interfaces/parole-settings.ui.h:11
 msgid "Enable keyboard multimedia keys"
-msgstr ""
+msgstr "Ενεργοποίηση πλήκτρων πολυμέσων στο πληκτρολόγιο"
 
 #: ../data/interfaces/parole-settings.ui.h:12
 msgid "Enable visualization when playing audio file"
 msgstr "Ενεργοποίηση οπτικών εφέ όταν γίνεται αναπαραγωγή αρχείων ήχου"
 
 #: ../data/interfaces/parole-settings.ui.h:13
-#, fuzzy
 msgid "Encoding:"
 msgstr "Κωδικοποίηση:"
 
@@ -271,7 +266,6 @@ msgid "Parole Settings"
 msgstr "Ρυθμίσεις του Parole"
 
 #: ../data/interfaces/parole-settings.ui.h:18
-#, fuzzy
 msgid "Reset to defaults"
 msgstr "Επαναφορά αρχικών τιμών"
 
@@ -288,24 +282,20 @@ msgid "Visualization type:"
 msgstr "Είδος οπτικού εφέ:"
 
 #: ../data/interfaces/parole-settings.ui.h:22
-#, fuzzy
 msgid "_Display"
-msgstr "<b>Εμφάνιση</b>"
+msgstr "_Εμφάνιση"
 
 #: ../data/interfaces/parole-settings.ui.h:23
-#, fuzzy
 msgid "_General"
-msgstr "Γενικά"
+msgstr "_Γενικά"
 
 #: ../data/interfaces/parole-settings.ui.h:24
-#, fuzzy
 msgid "_Playlist"
-msgstr "Λίστα αναπαραγωγής"
+msgstr "Λίστα _αναπαραγωγής"
 
 #: ../data/interfaces/parole-settings.ui.h:25
-#, fuzzy
 msgid "_Subtitles"
-msgstr "<b>Υπότιτλοι</b>"
+msgstr "_Υπότιτλοι"
 
 #: ../data/interfaces/save-playlist.ui.h:1
 msgid "By Extension"
@@ -316,25 +306,22 @@ msgid "Select File Types (By Extension)"
 msgstr "Επιλογή τύπων αρχείων (κατά επέκταση)"
 
 #: ../data/interfaces/open-location.ui.h:1
-#, fuzzy
 msgid "Open Location"
 msgstr "Άνοιγμα _τοποθεσίας"
 
 #: ../data/interfaces/open-location.ui.h:2
 msgid "Please enter a network URL:"
-msgstr ""
+msgstr "Παρακαλούμε εισάγετε μια διεύθυνση δικτύου:"
 
 #: ../data/desktop/parole.desktop.in.in.h:1
 msgid "Parole"
 msgstr "Parole"
 
 #: ../src/common/parole-common.c:67
-#, fuzzy
 msgid "Message"
 msgstr "Μήνυμα"
 
 #: ../src/common/parole-common.c:72
-#, fuzzy
 msgid "Error"
 msgstr "Σφάλμα"
 
@@ -361,14 +348,14 @@ msgstr ""
 "εγκατάσταση του GStreamer"
 
 #: ../src/gst/parole-gst.c:2246 ../src/gst/parole-gst.c:2250
-#, fuzzy, c-format
+#, c-format
 msgid "Audio Track #%d"
-msgstr "Κομμάτι %i"
+msgstr "Κομμάτι ήχου #%d"
 
 #: ../src/gst/parole-gst.c:2278 ../src/gst/parole-gst.c:2282
 #, c-format
 msgid "Subtitle #%d"
-msgstr ""
+msgstr "Υπότιτλος #%d"
 
 #: ../src/main.c:55
 #, c-format
@@ -448,7 +435,6 @@ msgid "Version information"
 msgstr "Πληροφορίες έκδοσης"
 
 #: ../src/main.c:239
-#, fuzzy
 msgid "Start in fullscreen mode"
 msgstr "Εκκίνηση σε πλήρη οθόνη"
 
@@ -457,7 +443,6 @@ msgid "Enabled/Disable XV support"
 msgstr "Ενεργοποίηση/Απενεργοποίηση υποστήριξης XV"
 
 #: ../src/main.c:241
-#, fuzzy
 msgid "Add files to playlist"
 msgstr "Απόκρυψη λίστας αναπαραγωγής"
 
@@ -472,14 +457,12 @@ msgstr ""
 "Το Parole ήδη εκτελείται, χρησιμοποιήστε το -i για να ανοίξετε νέο παράθυρο\n"
 
 #: ../src/parole-mediachooser.c:210
-#, fuzzy
 msgid "Supported files"
-msgstr "Όλα τα υποστηριζόμενα αρχεία"
+msgstr "Υποστηριζόμενα αρχεία"
 
 #: ../src/parole-mediachooser.c:216
-#, fuzzy
 msgid "All files"
-msgstr "Αρχεία λίστας αναπαραγωγής"
+msgstr "Όλα τα αρχεία"
 
 #: ../src/parole-medialist.c:527
 msgid "Permission denied"
@@ -490,12 +473,10 @@ msgid "Error saving playlist file"
 msgstr "Σφάλμα κατά την αποθήκευση της λίστας αναπαραγωγής"
 
 #: ../src/parole-medialist.c:541
-#, fuzzy
 msgid "Unknown playlist format"
-msgstr "Εμφάνιση λίστας αναπαραγωγη"
+msgstr "Άγνωστη μορφή λίστας αναπαραγωγής"
 
 #: ../src/parole-medialist.c:542
-#, fuzzy
 msgid "Please chooser a supported playlist format"
 msgstr "Παρακαλούμε επιλέξτε ένα υποστηριζόμενο είδος λίστας αναπαραγωγής"
 
