@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole 0.1.90\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-04 16:46+0900\n"
-"PO-Revision-Date: 2012-08-04 16:48+0900\n"
+"POT-Creation-Date: 2012-08-09 23:31+0900\n"
+"PO-Revision-Date: 2012-08-09 23:33+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "Language: ja\n"
@@ -31,10 +31,9 @@ msgstr "メディア(_M)"
 msgid "Open _location"
 msgstr "場所を開く(_L)"
 
-#: ../data/interfaces/parole.ui.h:4 ../src/parole-disc.c:218
-#: ../src/parole-disc.c:270
-msgid "Play Disc"
-msgstr "ディスクの再生"
+#: ../data/interfaces/parole.ui.h:4 ../src/parole-disc.c:125
+msgid "Insert Disc"
+msgstr "ディスクを挿入してください"
 
 #: ../data/interfaces/parole.ui.h:5
 msgid "_Edit"
@@ -452,7 +451,7 @@ msgstr "ファイルをプレイリストに追加する"
 msgid "Media to play"
 msgstr "再生するメディア"
 
-#: ../src/main.c:282
+#: ../src/main.c:280
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr ""
@@ -491,7 +490,7 @@ msgstr "サポートされているプレイリスト形式を選択してくだ
 msgid "Unknown"
 msgstr "不明"
 
-#: ../src/parole-medialist.c:668 ../src/parole-player.c:2464
+#: ../src/parole-medialist.c:668 ../src/parole-player.c:2465
 msgid "Playlist"
 msgstr "プレイリスト"
 
@@ -551,6 +550,10 @@ msgstr "Masato Hashimoto <hashimo@xfce.org>"
 #: ../src/parole-about.c:64
 msgid "Visit Parole website"
 msgstr "Parole ウェブサイトへ"
+
+#: ../src/parole-disc.c:230 ../src/parole-disc.c:282
+msgid "Play Disc"
+msgstr "ディスクの再生"
 
 #: ../src/parole-subtitle-encoding.c:165
 msgid "Current Locale"
