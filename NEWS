@@ -1,3 +1,16 @@
+0.3.0
+=======
+- Replaced libxfce4gui dependencies with libxfce4ui
+- Upgraded GTK interface to GTK 2.20+
+- Revamped, minimalistic interface
+- Replaced playbin with playbin2
+- Improved subtitle/audio track handling
+- Improved keyboard shortcuts
+- Updated application icon
+- Added command line option to enqueue files
+- Cleared warnings due to deprecated functions
+- Fixed many of the existing bugs
+
 0.2.0.1
 =======
 - Automatically detect disc type when parole is started with --device=/dev/sr0 without a uri

@@ -1,9 +1,9 @@
 m4_define([intltool_minimum_version], [0.31])
-m4_define([parole_verinfo],  [0:2:0])
+m4_define([parole_verinfo],  [0:3:0])
 m4_define([parole_version_api],  [0])
 m4_define([parole_version_major],  [0])
-m4_define([parole_version_minor],  [2])
-m4_define([parole_version_micro],  [90])
+m4_define([parole_version_minor],  [3])
+m4_define([parole_version_micro],  [0])
 m4_define([parole_version_build],  [])
 m4_define([parole_version_tag], [])
 m4_define([parole_version], [parole_version_major().parole_version_minor().parole_version_micro()ifelse(parole_version_tag(), [git], [parole_version_tag().parole_version_build()], [parole_version_tag()])])
@@ -68,7 +68,7 @@ XDT_I18N([@LINGUAS@])
 #==================================================== #
 #          Check for required packages 		      #
 #=====================================================#
-m4_define([gtk_minimum_version], [2.24.0])
+m4_define([gtk_minimum_version], [2.20.0])
 m4_define([glib_minimum_version], [2.24.0])
 m4_define([gstreamer_minimum_version], [0.10.11])
 

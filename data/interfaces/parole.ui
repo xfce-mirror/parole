@@ -371,6 +371,7 @@
                             <child>
                               <object class="GtkMenuItem" id="subtitles-menu-custom">
                                 <property name="visible">True</property>
+                                <property name="sensitive">False</property>
                                 <property name="can_focus">False</property>
                                 <property name="use_action_appearance">False</property>
                                 <property name="label" translatable="yes">Select Text Subtitles...</property>

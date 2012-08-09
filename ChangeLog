@@ -1,3 +1,12 @@
+2012-08-09: bluesabre@xfce.org
+    * Release version 0.3.0
+    * Replaced libxfce4gui dependencies with libxfce4ui
+    * Upgraded GTK interface to GTK 2.20+
+    * Revamped, minimalistic interface
+    * Replaced playbin with playbin2
+    * Improved subtitle/audio track handling
+    * Fixed many of the existing bugs
+
 2009-08-11: aliov@xfce.org
 	* main.c show gtk and gst command line options.
 	* parole-medialist.c, allow multiple selection, so handle list up 
