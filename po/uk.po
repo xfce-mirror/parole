@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-05 16:36+0000\n"
+"POT-Creation-Date: 2012-08-09 06:12+0000\n"
 "PO-Revision-Date: 2011-05-27 14:30+0200\n"
 "Last-Translator: Dmitry Nikitin <luckas_fb@mail.ru>\n"
 "Language-Team: Ukrainian <>\n"
@@ -49,34 +49,33 @@ msgstr "Буферизація (0%)"
 msgid "Empty"
 msgstr "Пусто"
 
-#: ../data/interfaces/parole.ui.h:10
+#: ../data/interfaces/parole.ui.h:10 ../src/parole-disc.c:125
+msgid "Insert Disc"
+msgstr "Вставити диск"
+
+#: ../data/interfaces/parole.ui.h:11
 msgid "Languages"
 msgstr "Мови"
 
-#: ../data/interfaces/parole.ui.h:11
+#: ../data/interfaces/parole.ui.h:12
 msgid "Media player"
 msgstr "Медіапрогравач"
 
-#: ../data/interfaces/parole.ui.h:12
+#: ../data/interfaces/parole.ui.h:13
 msgid "None"
 msgstr "Нічого"
 
-#: ../data/interfaces/parole.ui.h:13
+#: ../data/interfaces/parole.ui.h:14
 msgid "Open _location"
 msgstr "_Відкрити адресу"
 
-#: ../data/interfaces/parole.ui.h:14 ../src/parole-about.c:55
+#: ../data/interfaces/parole.ui.h:15 ../src/parole-about.c:55
 msgid "Parole Media Player"
 msgstr "Медіапрогравач Parole"
 
-#: ../data/interfaces/parole.ui.h:15
+#: ../data/interfaces/parole.ui.h:16
 msgid "Pl_ugins"
 msgstr "_Модулі"
-
-#: ../data/interfaces/parole.ui.h:16 ../src/parole-disc.c:218
-#: ../src/parole-disc.c:270
-msgid "Play Disc"
-msgstr "Грати диск"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "Select Text Subtitles..."
@@ -448,7 +447,7 @@ msgstr "Додати файли до списку відтворення"
 msgid "Media to play"
 msgstr "Медіа для проигравання"
 
-#: ../src/main.c:282
+#: ../src/main.c:280
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole вже працює, використайте-i для відкриття нового\n"
@@ -485,7 +484,7 @@ msgstr "Використовуйте селектор для підтримув�
 msgid "Unknown"
 msgstr "Невідомий"
 
-#: ../src/parole-medialist.c:668 ../src/parole-player.c:2464
+#: ../src/parole-medialist.c:668 ../src/parole-player.c:2465
 msgid "Playlist"
 msgstr "Список відтворення"
 
@@ -545,6 +544,10 @@ msgstr "Yarema aka Knedlyk <yupadmin@gmail.com>"
 #: ../src/parole-about.c:64
 msgid "Visit Parole website"
 msgstr "Відвідати веб-сторінку Parole"
+
+#: ../src/parole-disc.c:230 ../src/parole-disc.c:282
+msgid "Play Disc"
+msgstr "Грати диск"
 
 #: ../src/parole-subtitle-encoding.c:165
 msgid "Current Locale"
