@@ -40,7 +40,7 @@ stream_properties_la_LDFLAGS =			\
 # .desktop file
 #
 desktop_in_files = stream-properties.desktop.in
-desktopdir = $(datadir)/src/misc/parole-plugins-$(PAROLE_VERSION_API)
+desktopdir = $(datadir)/parole/parole-plugins-$(PAROLE_VERSION_API)
 desktop_DATA =  $(desktop_in_files:.desktop.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
 

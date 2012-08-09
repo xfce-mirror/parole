@@ -18,7 +18,7 @@ INCLUDES =					\
 	-DDESKTOPDIR=\"$(datadir)/applications\"\
 	-DG_LOG_DOMAIN=\"parole\"		\
 	-DPAROLE_PLUGINS_DIR=\"$(libdir)/parole-$(PAROLE_VERSION_API)\"\
-	-DPAROLE_PLUGINS_DATA_DIR=\"$(datadir)/src/misc/parole-plugins-$(PAROLE_VERSION_API)\"\
+	-DPAROLE_PLUGINS_DATA_DIR=\"$(datadir)/parole/parole-plugins-$(PAROLE_VERSION_API)\"\
 	-DPAROLE_COMPILATION			\
         $(GTHREAD_CFLAGS)                       \
 	$(GIO_CFLAGS)				\
