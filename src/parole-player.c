@@ -228,8 +228,26 @@ void		ratio_16_9_toggled_cb			(GtkWidget *widget,
 
 void		ratio_20_9_toggled_cb			(GtkWidget *widget,
 							 ParolePlayer *player);
+							 
+void 		parole_player_set_playlist_visible (ParolePlayer *player, 
+							 gboolean visibility);
+							 
+gboolean	parole_player_gst_widget_button_press (GtkWidget *widget, 
+							 GdkEventButton *ev, ParolePlayer *player);
 
 void	        parole_show_about			(GtkWidget *widget,
+							ParolePlayer *player);
+							
+void 		parole_player_set_audiotrack_radio_menu_item_selected(
+							ParolePlayer *player, gint audio_index);
+							
+void 		parole_player_set_subtitle_radio_menu_item_selected(
+							ParolePlayer *player, gint sub_index);
+							
+void 		parole_player_combo_box_audiotrack_changed_cb(GtkWidget *widget, 
+							ParolePlayer *player);
+							
+void 		parole_player_combo_box_subtitles_changed_cb(GtkWidget *widget, 
 							ParolePlayer *player);
 							
 static void parole_player_audiotrack_radio_menu_item_changed_cb(GtkWidget *widget, ParolePlayer *player);
@@ -563,20 +581,20 @@ parole_sublang_equal_lists (GList *orig, GList *new)
 static void
 parole_player_clear_subtitles (ParolePlayer *player)
 {
+	GtkTreeIter iter;
+	GList *menu_items, *menu_iter;
+	gint counter = 0;
+	
 	/* Clear the InfoBar Combobox */
 	gtk_list_store_clear(player->priv->liststore_subtitles);
-	GtkTreeIter iter;
 	gtk_list_store_append(GTK_LIST_STORE(player->priv->liststore_subtitles), &iter);
 	gtk_list_store_set(GTK_LIST_STORE(player->priv->liststore_subtitles), &iter, 0, "None", -1);
 	gtk_combo_box_set_active( GTK_COMBO_BOX(player->priv->combobox_subtitles), 0 );
 	
 	/* Clear the subtitle menu options */
-	GList *menu_items, *menu_iter;
 	menu_items = gtk_container_get_children( GTK_CONTAINER (player->priv->subtitles_menu) );
-	
 	gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(player->priv->subtitles_group), TRUE);
 	
-	gint counter = 0;
 	for (menu_iter = menu_items; menu_iter != NULL; menu_iter = g_list_next(menu_iter))
 	{
 		if (counter >= 4)
@@ -589,28 +607,25 @@ parole_player_clear_subtitles (ParolePlayer *player)
 static void
 parole_player_set_subtitles_list (ParolePlayer *player, GList *subtitle_list)
 {
-	parole_player_clear_subtitles( player );
-	
 	GList *l;
 	gchar* language;
-
-	guint64 index;
-	
-	player->priv->subtitle_list = subtitle_list;
 	
 	GtkTreeIter iter;
-	
 	gint counter = 0;
 	
+	GtkWidget *menu_item;
+
+	parole_player_clear_subtitles( player );
+
+	player->priv->subtitle_list = subtitle_list;
+
 	for (l = subtitle_list; l != NULL; l = l->next)
 	{
 		language = g_strdup (l->data);
-	
-		GtkTreeIter iter;
+
 		gtk_list_store_append(GTK_LIST_STORE(player->priv->liststore_subtitles), &iter);
 		gtk_list_store_set(GTK_LIST_STORE(player->priv->liststore_subtitles), &iter, 0, language, -1);
-    
-    	GtkWidget *menu_item;
+
 		menu_item = gtk_radio_menu_item_new_with_label_from_widget (GTK_RADIO_MENU_ITEM(player->priv->subtitles_group), language);
 		gtk_widget_show (menu_item);
 		
@@ -631,18 +646,21 @@ parole_player_set_subtitles_list (ParolePlayer *player, GList *subtitle_list)
 static void
 parole_player_clear_audio_tracks (ParolePlayer *player)
 {
+	GList *menu_items, *menu_iter;
+	GtkWidget *empty_item;
+
 	gtk_list_store_clear(player->priv->liststore_audiotrack);
 	player->priv->audio_group = NULL;
 	
 	/* Clear the subtitle menu options */
-	GList *menu_items, *menu_iter;
+	
 	menu_items = gtk_container_get_children( GTK_CONTAINER (player->priv->languages_menu) );
 	
 	for (menu_iter = menu_items; menu_iter != NULL; menu_iter = g_list_next(menu_iter))
 	gtk_widget_destroy(GTK_WIDGET(menu_iter->data));
 	g_list_free(menu_items);
 	
-	GtkWidget *empty_item = gtk_menu_item_new_with_label(_("Empty"));
+	empty_item = gtk_menu_item_new_with_label(_("Empty"));
 	gtk_widget_set_sensitive( empty_item, FALSE );
 	gtk_widget_show( empty_item );
 	
@@ -652,16 +670,20 @@ parole_player_clear_audio_tracks (ParolePlayer *player)
 static void
 parole_player_set_audio_list (ParolePlayer *player, GList *audio_list)
 {
-	parole_player_clear_audio_tracks( player );
-	
 	GList *menu_iter;
+	GList *l;
+	gchar* language;
+	
+	GtkTreeIter iter;
+	
+	GtkWidget *menu_item;
+	
+	parole_player_clear_audio_tracks( player );
+
 	menu_iter = gtk_container_get_children( GTK_CONTAINER (player->priv->languages_menu) );
 	
 	gtk_widget_destroy(GTK_WIDGET(menu_iter->data));
 	g_list_free(menu_iter);
-	
-	GList *l;
-	gchar* language;
 	
 	player->priv->audio_list = audio_list;
 	
@@ -669,7 +691,6 @@ parole_player_set_audio_list (ParolePlayer *player, GList *audio_list)
 	{
 		language = g_strdup (l->data);
 	
-		GtkTreeIter iter;
 		gtk_list_store_append(GTK_LIST_STORE(player->priv->liststore_audiotrack), &iter);
 		gtk_list_store_set(GTK_LIST_STORE(player->priv->liststore_audiotrack), &iter, 0, language, -1);
 		
@@ -683,7 +704,7 @@ parole_player_set_audio_list (ParolePlayer *player, GList *audio_list)
 			g_signal_connect (player->priv->audio_group, "activate",
 		      G_CALLBACK (parole_player_audiotrack_radio_menu_item_changed_cb), player);
 		} else {
-			GtkWidget *menu_item;
+			
 			menu_item = gtk_radio_menu_item_new_with_label_from_widget (GTK_RADIO_MENU_ITEM(player->priv->audio_group), language);
 			gtk_widget_show (menu_item);
 			gtk_menu_shell_append (GTK_MENU_SHELL (player->priv->languages_menu), menu_item);
@@ -728,17 +749,17 @@ parole_player_update_subtitles (ParolePlayer *player, ParoleGst *gst)
 {
 	GList * list = gst_get_lang_list_for_type (gst, "TEXT");
 	
-	guint64 index;
-	index = 0;
-	
+	guint64 sub_index;
 	gboolean sub_enabled;
+	
+	sub_index = 0;
 	
 	g_object_get (G_OBJECT (player->priv->conf),
 		  "enable-subtitle", &sub_enabled,
 		  NULL);
 		  
 	if (sub_enabled)
-	index = 1;
+	sub_index = 1;
 	
 	if (parole_sublang_equal_lists (player->priv->subtitle_list, list) == TRUE)
 	{
@@ -751,7 +772,7 @@ parole_player_update_subtitles (ParolePlayer *player, ParoleGst *gst)
 	
 	parole_player_set_subtitles_list (player, list);
 	
-	gtk_combo_box_set_active( GTK_COMBO_BOX(player->priv->combobox_subtitles), index );
+	gtk_combo_box_set_active( GTK_COMBO_BOX(player->priv->combobox_subtitles), sub_index );
 	
 	if (g_list_length (list) != 1) {
     	gtk_widget_show(player->priv->infobar);
@@ -877,6 +898,7 @@ parole_player_media_list_repeat_toggled_cb (ParoleMediaList *list, gboolean repe
 static void
 parole_player_media_progressed_cb (ParoleGst *gst, const ParoleStream *stream, gint64 value, ParolePlayer *player)
 {
+	gchar pos_text[128];
 #ifdef DEBUG
     g_return_if_fail (value > 0);
 #endif
@@ -884,7 +906,6 @@ parole_player_media_progressed_cb (ParoleGst *gst, const ParoleStream *stream, g
     if ( !player->priv->user_seeking && player->priv->state == PAROLE_STATE_PLAYING )
     {
 	parole_player_change_range_value (player, value);
-    gchar pos_text[128];
     get_time_string (pos_text, value);
     gtk_label_set_text (GTK_LABEL (player->priv->label_elapsed), pos_text);
     }
@@ -1105,6 +1126,9 @@ parole_player_play_selected_row (ParolePlayer *player)
 static void
 parole_player_play_next (ParolePlayer *player, gboolean allow_shuffle)
 {
+	gboolean repeat, shuffle;
+    GtkTreeRowReference *row;
+
 	if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD ||
 	 player->priv->current_media_type == PAROLE_MEDIA_TYPE_CDDA )
     {
@@ -1114,9 +1138,6 @@ parole_player_play_next (ParolePlayer *player, gboolean allow_shuffle)
 		parole_gst_next_cdda_track (PAROLE_GST(player->priv->gst));
 		return;
     }
-    gboolean repeat, shuffle;
-    
-    GtkTreeRowReference *row;
     
     g_object_get (G_OBJECT (player->priv->conf),
 		  "shuffle", &shuffle,
@@ -1151,6 +1172,8 @@ parole_player_play_next (ParolePlayer *player, gboolean allow_shuffle)
 static void
 parole_player_play_prev (ParolePlayer *player)
 {
+	GtkTreeRowReference *row;
+
 	if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD ||
 	 player->priv->current_media_type == PAROLE_MEDIA_TYPE_CDDA )
     {
@@ -1160,7 +1183,6 @@ parole_player_play_prev (ParolePlayer *player)
 		parole_gst_prev_cdda_track (PAROLE_GST(player->priv->gst));
 		return;
     }
-    GtkTreeRowReference *row;
     
     if ( player->priv->row )
     {
@@ -1415,6 +1437,8 @@ parole_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePl
 static void
 parole_player_buffering_cb (ParoleGst *gst, const ParoleStream *stream, gint percentage, ParolePlayer *player)
 {
+	gchar *buff;
+
     if ( percentage == 100 )
     {
 	player->priv->buffering = FALSE;
@@ -1430,8 +1454,6 @@ parole_player_buffering_cb (ParoleGst *gst, const ParoleStream *stream, gint per
 	if ( player->priv->state == PAROLE_STATE_PLAYING )
 	    parole_gst_pause (PAROLE_GST (player->priv->gst));
 	    
-    gchar *buff;
-    
     buff = g_strdup_printf ("%s (%d%%)", _("Buffering"), percentage);
     
     gtk_progress_bar_set_text (GTK_PROGRESS_BAR (player->priv->progressbar_buffering), buff);
@@ -1491,6 +1513,8 @@ parole_player_full_screen (ParolePlayer *player, gboolean fullscreen)
     static gint current_page = 0;
     GdkWindow *gdkwindow;
     
+    gboolean show_playlist;
+    
     if ( player->priv->full_screen == fullscreen )
 	return;
     
@@ -1502,7 +1526,7 @@ parole_player_full_screen (ParolePlayer *player, gboolean fullscreen)
 	gtk_widget_hide (player->priv->fs_window);
 	gtk_widget_show (player->priv->play_box);
 	gtk_widget_show (player->priv->menu_bar);
-	gboolean show_playlist = gtk_check_menu_item_get_active( GTK_CHECK_MENU_ITEM(player->priv->show_hide_playlist) );
+	show_playlist = gtk_check_menu_item_get_active( GTK_CHECK_MENU_ITEM(player->priv->show_hide_playlist) );
     gtk_widget_show (player->priv->playlist_nt);
 	parole_player_set_playlist_visible(player, show_playlist);
 	gtk_widget_show (player->priv->go_fs);
@@ -1557,7 +1581,7 @@ void parole_player_leave_fs_cb (GtkButton *button, ParolePlayer *player)
 static void
 parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time)
 {
-    GtkWidget *menu, *mi, *img;
+    GtkWidget *menu, *mi;
     gboolean sensitive;
     
     player->priv->current_media_type = parole_gst_get_current_stream_type (PAROLE_GST (player->priv->gst));
@@ -2279,6 +2303,7 @@ parole_player_set_wm_opacity_hint (GtkWidget *widget)
 		     1);
 }
 
+static void
 parole_player_setup_multimedia_keys (ParolePlayer *player)
 {
     #ifdef HAVE_XF86_KEYSYM
@@ -2306,6 +2331,11 @@ parole_player_init (ParolePlayer *player)
     gboolean showhide;
     
     gboolean repeat, shuffle;
+    
+    GtkWidget *infobar_contents;
+    GtkCellRenderer *cell, *sub_cell;
+    
+    GtkWidget *content_area;
     
     player->priv = PAROLE_PLAYER_GET_PRIVATE (player);
 
@@ -2428,13 +2458,13 @@ parole_player_init (ParolePlayer *player)
     player->priv->liststore_subtitles = GTK_LIST_STORE (gtk_builder_get_object (builder, "liststore_subtitles"));
     player->priv->audio_list = NULL;
     player->priv->subtitle_list = NULL;
-    GtkWidget *infobar_contents = GTK_WIDGET (gtk_builder_get_object( builder, "infobar_contents"));
+    infobar_contents = GTK_WIDGET (gtk_builder_get_object( builder, "infobar_contents"));
     
-    GtkCellRenderer * cell = gtk_cell_renderer_text_new();
+    cell = gtk_cell_renderer_text_new();
 	gtk_cell_layout_pack_start( GTK_CELL_LAYOUT( player->priv->combobox_audiotrack ), cell, TRUE );
 	gtk_cell_layout_set_attributes( GTK_CELL_LAYOUT( player->priv->combobox_audiotrack ), cell, "text", 0, NULL );
 	
-	GtkCellRenderer * sub_cell = gtk_cell_renderer_text_new();
+	sub_cell = gtk_cell_renderer_text_new();
 	gtk_cell_layout_pack_start( GTK_CELL_LAYOUT( player->priv->combobox_subtitles ), sub_cell, TRUE );
 	gtk_cell_layout_set_attributes( GTK_CELL_LAYOUT( player->priv->combobox_subtitles ), sub_cell, "text", 0, NULL );
 	
@@ -2442,7 +2472,7 @@ parole_player_init (ParolePlayer *player)
 	player->priv->infobar = gtk_info_bar_new ();
 	gtk_widget_set_no_show_all (player->priv->infobar, TRUE);
 
-	GtkWidget *content_area = gtk_info_bar_get_content_area (GTK_INFO_BAR (player->priv->infobar));
+	content_area = gtk_info_bar_get_content_area (GTK_INFO_BAR (player->priv->infobar));
 	gtk_widget_reparent (infobar_contents, content_area);
 	gtk_info_bar_add_button (GTK_INFO_BAR (player->priv->infobar),
 		                     GTK_STOCK_CLOSE, GTK_RESPONSE_OK);
@@ -2585,15 +2615,16 @@ void parole_player_play_uri_disc (ParolePlayer *player, const gchar *uri, const 
     }
 }
 
-void parole_player_set_audiotrack_radio_menu_item_selected(ParolePlayer *player, gint index)
+void parole_player_set_audiotrack_radio_menu_item_selected(ParolePlayer *player, gint audio_index)
 {
 	GList *menu_items, *menu_iter;
+	gint counter = 0;
+	
 	menu_items = gtk_container_get_children( GTK_CONTAINER (player->priv->languages_menu) );
 	
-	gint counter = 0;
 	for (menu_iter = menu_items; menu_iter != NULL; menu_iter = g_list_next(menu_iter))
 	{
-		if (counter == index) {
+		if (counter == audio_index) {
 			gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menu_iter->data), TRUE);
 			break;
 		}
@@ -2602,12 +2633,12 @@ void parole_player_set_audiotrack_radio_menu_item_selected(ParolePlayer *player,
 	g_list_free(menu_items);
 }
 
-void parole_player_set_subtitle_radio_menu_item_selected(ParolePlayer *player, gint index)
+void parole_player_set_subtitle_radio_menu_item_selected(ParolePlayer *player, gint sub_index)
 {
 	GList *menu_items, *menu_iter;
 	menu_items = gtk_container_get_children( GTK_CONTAINER (player->priv->subtitles_menu) );
 	
-	if (index <= 0)
+	if (sub_index <= 0)
 	{
 		gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menu_items->data), TRUE);
 	}
@@ -2616,7 +2647,7 @@ void parole_player_set_subtitle_radio_menu_item_selected(ParolePlayer *player, g
 		gint counter = -3;
 		for (menu_iter = menu_items; menu_iter != NULL; menu_iter = g_list_next(menu_iter))
 		{
-			if (counter == index) {
+			if (counter == sub_index) {
 				gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menu_iter->data), TRUE);
 				break;
 			}
@@ -2629,11 +2660,12 @@ void parole_player_set_subtitle_radio_menu_item_selected(ParolePlayer *player, g
 void parole_player_audiotrack_radio_menu_item_changed_cb(GtkWidget *widget, ParolePlayer *player)
 {
 	gint radio_index;
-	
 	GList *menu_items, *menu_iter;
+	gint counter = 0;
+	gint combobox_index;
+	
 	menu_items = gtk_container_get_children( GTK_CONTAINER (player->priv->languages_menu) );
 	
-	gint counter = 0;
 	for (menu_iter = menu_items; menu_iter != NULL; menu_iter = g_list_next(menu_iter))
 	{
 		if (gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(menu_iter->data)) == TRUE) {
@@ -2644,19 +2676,19 @@ void parole_player_audiotrack_radio_menu_item_changed_cb(GtkWidget *widget, Paro
 	}
 	g_list_free(menu_items);
 	
-	gint combobox_index = gtk_combo_box_get_active(GTK_COMBO_BOX(player->priv->combobox_audiotrack));
+	combobox_index = gtk_combo_box_get_active(GTK_COMBO_BOX(player->priv->combobox_audiotrack));
 	if (radio_index != combobox_index)
 	gtk_combo_box_set_active(GTK_COMBO_BOX(player->priv->combobox_audiotrack), radio_index);
 }
 
 void parole_player_subtitles_radio_menu_item_changed_cb(GtkWidget *widget, ParolePlayer *player)
 {
-	gint radio_index;
+	gint radio_index, combobox_index; 
+	gint counter = 0;
 	
 	GList *menu_items, *menu_iter;
 	menu_items = gtk_container_get_children( GTK_CONTAINER (player->priv->subtitles_menu) );
 	
-	gint counter = 0;
 	for (menu_iter = menu_items; menu_iter != NULL; menu_iter = g_list_next(menu_iter))
 	{
 		if (counter == 0 || counter > 3)
@@ -2673,23 +2705,23 @@ void parole_player_subtitles_radio_menu_item_changed_cb(GtkWidget *widget, Parol
 	if (radio_index != 0)
 	radio_index -= 3;
 
-	gint combobox_index = gtk_combo_box_get_active(GTK_COMBO_BOX(player->priv->combobox_subtitles));
+	combobox_index = gtk_combo_box_get_active(GTK_COMBO_BOX(player->priv->combobox_subtitles));
 	if (radio_index != combobox_index)
 	gtk_combo_box_set_active(GTK_COMBO_BOX(player->priv->combobox_subtitles), radio_index);
 }
 
 void parole_player_combo_box_audiotrack_changed_cb(GtkWidget *widget, ParolePlayer *player)
 {
-	gint index = gtk_combo_box_get_active(GTK_COMBO_BOX(player->priv->combobox_audiotrack));
-	gst_set_current_audio_track(PAROLE_GST(player->priv->gst), index);
-	parole_player_set_audiotrack_radio_menu_item_selected(player, index);
+	gint audio_index = gtk_combo_box_get_active(GTK_COMBO_BOX(player->priv->combobox_audiotrack));
+	gst_set_current_audio_track(PAROLE_GST(player->priv->gst), audio_index);
+	parole_player_set_audiotrack_radio_menu_item_selected(player, audio_index);
 }
 
 void parole_player_combo_box_subtitles_changed_cb(GtkWidget *widget, ParolePlayer *player)
 {
-	gint index = gtk_combo_box_get_active(GTK_COMBO_BOX(player->priv->combobox_subtitles));
-	gst_set_current_subtitle_track(PAROLE_GST(player->priv->gst), index);
-	parole_player_set_subtitle_radio_menu_item_selected(player, index);
+	gint sub_index = gtk_combo_box_get_active(GTK_COMBO_BOX(player->priv->combobox_subtitles));
+	gst_set_current_subtitle_track(PAROLE_GST(player->priv->gst), sub_index);
+	parole_player_set_subtitle_radio_menu_item_selected(player, sub_index);
 }
 
 void parole_player_terminate (ParolePlayer *player)

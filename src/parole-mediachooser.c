@@ -189,8 +189,6 @@ parole_media_chooser_open_internal (ParoleMediaChooser *media_chooser)
     GtkWidget       *file_chooser;
     GtkBuilder      *builder;
     GtkWidget       *recursive;
-    GtkWidget       *replace;
-    GtkWidget       *play_opened;
     GtkFileFilter   *filter, *all_files;
     gboolean        scan_recursive;
     gboolean        replace_playlist;
@@ -231,8 +229,6 @@ parole_media_chooser_open_internal (ParoleMediaChooser *media_chooser)
 		  NULL);
     
     recursive = GTK_WIDGET (gtk_builder_get_object (builder, "recursive"));
-    replace = GTK_WIDGET (gtk_builder_get_object (builder, "replace"));
-    play_opened = GTK_WIDGET (gtk_builder_get_object (builder, "play-added-files"));
     
     g_object_set_data (G_OBJECT (media_chooser), "file-chooser", file_chooser);
     g_object_set_data (G_OBJECT (media_chooser), "recursive", recursive);

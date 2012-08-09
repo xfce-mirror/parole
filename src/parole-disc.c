@@ -249,6 +249,11 @@ parole_disc_check_cdrom (ParoleDisc *disc, GVolume *volume, const gchar *device)
 #if defined(__linux__)
     gint fd;
     gint drive;
+    
+    MountData *data;
+    
+	gchar *name;
+	gchar *label;
 
     TRACE ("device : %s", device);
     
@@ -272,11 +277,7 @@ parole_disc_check_cdrom (ParoleDisc *disc, GVolume *volume, const gchar *device)
 	    {
 		if ( drive == CDS_AUDIO || drive == CDS_MIXED )
 		{
-		    MountData *data;
 		    data = parole_disc_get_mount_data (disc, "cdda://", device, PAROLE_DISC_CDDA);
-		    
-		    gchar *name;
-			gchar *label;
 	
 			name = g_volume_get_name (volume);
 			label = g_strdup_printf ("%s '%s'", _("Play Disc"), name);

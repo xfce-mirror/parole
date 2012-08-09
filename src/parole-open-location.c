@@ -155,10 +155,6 @@ parole_open_location_init (ParoleOpenLocation *self)
 static void
 parole_open_location_finalize (GObject *object)
 {
-    ParoleOpenLocation *self;
-
-    self = PAROLE_OPEN_LOCATION (object);
-
     G_OBJECT_CLASS (parole_open_location_parent_class)->finalize (object);
 }
 

@@ -43,6 +43,8 @@
 #include "common/parole-common.h"
 #include "common/parole-rc-utils.h"
 
+#include "parole-utils.h"
+
 #include "gst-enum-types.h"
 #include "gstmarshal.h"
 
@@ -252,10 +254,6 @@ parole_gst_realize (GtkWidget *widget)
 static void
 parole_gst_show (GtkWidget *widget)
 {
-    ParoleGst *gst;
-    
-    gst = PAROLE_GST (widget);
-    
     if ( widget->window )
 	gdk_window_show (widget->window);
     
@@ -2313,14 +2311,13 @@ gst_set_current_subtitle_track( ParoleGst *gst, gint track_no )
 {
 	
 	gchar *uri, *sub;
+	gint flags;
 	
 	g_object_get (G_OBJECT (gst->priv->stream),
 		  "uri", &uri,
 		  NULL);
 		  
 	sub = (gchar*) parole_get_subtitle_path(uri);
-	
-	gint flags;
 
 	g_object_get (gst->priv->playbin, "flags", &flags, NULL);
 	

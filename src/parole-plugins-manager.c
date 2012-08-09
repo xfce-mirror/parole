@@ -374,7 +374,6 @@ static void
 parole_plugins_manager_show_plugins_pref (GtkWidget *widget, ParolePluginsManager *manager)
 {
     GtkBuilder *builder;
-    GtkWidget *site_box;
     GtkTreeSelection *sel;
     GtkTreePath *path;
     GtkTreeIter iter;

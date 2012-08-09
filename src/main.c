@@ -48,6 +48,7 @@
 #include "parole-rc-utils.h"
 
 #include <X11/X.h>
+#include <X11/Xlib.h>
 
 static void G_GNUC_NORETURN
 show_version (void)
