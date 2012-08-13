@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-04 19:12+0000\n"
+"POT-Creation-Date: 2012-08-11 17:03+0000\n"
 "PO-Revision-Date: 2012-07-025 11:55+0200\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch (Flemish)\n"
@@ -50,40 +50,39 @@ msgstr "Automatisch"
 msgid "Buffering (0%)"
 msgstr "Aan het bufferen (0%)"
 
-#: ../data/interfaces/parole.ui.h:9 ../src/parole-player.c:645
+#: ../data/interfaces/parole.ui.h:9 ../src/parole-player.c:663
 msgid "Empty"
 msgstr "Leeg"
 
-#: ../data/interfaces/parole.ui.h:10
+#: ../data/interfaces/parole.ui.h:10 ../src/parole-disc.c:125
+msgid "Insert Disc"
+msgstr "Stop schijf erin"
+
+#: ../data/interfaces/parole.ui.h:11
 msgid "Languages"
 msgstr "Talen"
 
 # Totem erbij want ik heb meerdere mediaspelers.
 # media omdat totem meer dan alleen films kan afspelen
-#: ../data/interfaces/parole.ui.h:11
+#: ../data/interfaces/parole.ui.h:12
 msgid "Media player"
 msgstr "Mediaspeler"
 
-#: ../data/interfaces/parole.ui.h:12
+#: ../data/interfaces/parole.ui.h:13
 msgid "None"
 msgstr "Geen"
 
-#: ../data/interfaces/parole.ui.h:13
+#: ../data/interfaces/parole.ui.h:14
 msgid "Open _location"
 msgstr "Locatie openen"
 
-#: ../data/interfaces/parole.ui.h:14 ../src/parole-about.c:55
+#: ../data/interfaces/parole.ui.h:15 ../src/parole-about.c:55
 msgid "Parole Media Player"
 msgstr "Parole mediaspeler"
 
-#: ../data/interfaces/parole.ui.h:15
+#: ../data/interfaces/parole.ui.h:16
 msgid "Pl_ugins"
 msgstr "Invoegtoepassingen"
-
-#: ../data/interfaces/parole.ui.h:16 ../src/parole-disc.c:218
-#: ../src/parole-disc.c:270
-msgid "Play Disc"
-msgstr "Schijf afspelen"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "Select Text Subtitles..."
@@ -332,39 +331,39 @@ msgstr "Boodschap"
 msgid "Error"
 msgstr "Fout"
 
-#: ../src/gst/parole-gst.c:1495
+#: ../src/gst/parole-gst.c:1493
 msgid "Stop"
 msgstr "Stop"
 
-#: ../src/gst/parole-gst.c:1496
+#: ../src/gst/parole-gst.c:1494
 msgid "The stream is taking too much time to load"
 msgstr "Het laden van de uitzending duurt te lang"
 
-#: ../src/gst/parole-gst.c:1665
+#: ../src/gst/parole-gst.c:1663
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Kon GStreamer-playbin-invoegtoepassing niet laden. Controleer uw GStreamer-"
 "installatie."
 
-#: ../src/gst/parole-gst.c:1689
+#: ../src/gst/parole-gst.c:1687
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Kon de Gstreamer-video-invoegtoepassing niet laden. Controleer uw GStreamer-"
 "installatie."
 
-#: ../src/gst/parole-gst.c:2246 ../src/gst/parole-gst.c:2250
+#: ../src/gst/parole-gst.c:2244 ../src/gst/parole-gst.c:2248
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Geluidsspoor #%d"
 
-#: ../src/gst/parole-gst.c:2278 ../src/gst/parole-gst.c:2282
+#: ../src/gst/parole-gst.c:2276 ../src/gst/parole-gst.c:2280
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Ondertitel #%d"
 
-#: ../src/main.c:55
+#: ../src/main.c:56
 #, c-format
 msgid ""
 "\n"
@@ -385,109 +384,109 @@ msgstr ""
 "Uitgebracht onder de GNU GPL.\n"
 "\n"
 
-#: ../src/main.c:188
+#: ../src/main.c:189
 msgid "Unknown argument "
 msgstr "Onbekend argument "
 
-#: ../src/main.c:226
+#: ../src/main.c:227
 msgid "Open a new instance"
 msgstr "Nieuwe instantie openen"
 
-#: ../src/main.c:227
+#: ../src/main.c:228
 msgid "Do not load plugins"
 msgstr "Geen invoegtoepassingen laden"
 
-#: ../src/main.c:228
+#: ../src/main.c:229
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "Apparaatpad instellen voor geluids-CD/VCD/DVD"
 
-#: ../src/main.c:229
+#: ../src/main.c:230
 msgid "Play or pause if already playing"
 msgstr "Afspelen of pauzeren indien reeds aan het spelen"
 
-#: ../src/main.c:230
+#: ../src/main.c:231
 msgid "Stop playing"
 msgstr "Afspelen stoppen"
 
-#: ../src/main.c:231
+#: ../src/main.c:232
 msgid "Next track"
 msgstr "Volgende spoor"
 
-#: ../src/main.c:232
+#: ../src/main.c:233
 msgid "Previous track"
 msgstr "Vorige spoor"
 
-#: ../src/main.c:233
+#: ../src/main.c:234
 msgid "Seek forward"
 msgstr "Vooruitspoelen"
 
-#: ../src/main.c:234
+#: ../src/main.c:235
 msgid "Seek Backward"
 msgstr "Terugspoelen"
 
-#: ../src/main.c:235
+#: ../src/main.c:236
 msgid "Raise volume"
 msgstr "Geluid harder"
 
-#: ../src/main.c:236
+#: ../src/main.c:237
 msgid "Lower volume"
 msgstr "Geluid zachter"
 
-#: ../src/main.c:237
+#: ../src/main.c:238
 msgid "Mute volume"
 msgstr "Geluid dempen"
 
-#: ../src/main.c:238
+#: ../src/main.c:239
 msgid "Version information"
 msgstr "Versie-informatie"
 
-#: ../src/main.c:239
+#: ../src/main.c:240
 msgid "Start in fullscreen mode"
 msgstr "Schermvullend starten"
 
-#: ../src/main.c:240
+#: ../src/main.c:241
 msgid "Enabled/Disable XV support"
 msgstr "XV-ondersteuning in-/uitschakelen"
 
-#: ../src/main.c:241
+#: ../src/main.c:242
 msgid "Add files to playlist"
 msgstr "Bestanden toevoegen aan speellijst"
 
 # de film wordt niet gedraaid?
-#: ../src/main.c:243
+#: ../src/main.c:244
 msgid "Media to play"
 msgstr "Media om af te spelen"
 
-#: ../src/main.c:282
+#: ../src/main.c:281
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole is al actief, gebruik -i om een nieuwe instantie te openen\n"
 
-#: ../src/parole-mediachooser.c:210
+#: ../src/parole-mediachooser.c:208
 msgid "Supported files"
 msgstr "Ondersteunde bestanden"
 
-#: ../src/parole-mediachooser.c:216
+#: ../src/parole-mediachooser.c:214
 msgid "All files"
 msgstr "Alle bestanden"
 
-#: ../src/parole-medialist.c:527
+#: ../src/parole-medialist.c:533
 msgid "Permission denied"
 msgstr "Toestemming geweigerd"
 
-#: ../src/parole-medialist.c:529
+#: ../src/parole-medialist.c:535
 msgid "Error saving playlist file"
 msgstr "Opslaan van de speellijst is mislukt"
 
-#: ../src/parole-medialist.c:541
+#: ../src/parole-medialist.c:547
 msgid "Unknown playlist format"
 msgstr "Onbekende opmaak van speellijst"
 
-#: ../src/parole-medialist.c:542
+#: ../src/parole-medialist.c:548
 msgid "Please chooser a supported playlist format"
 msgstr "Kies a.u.b. een ondersteunde speellijst-opmaak"
 
-#: ../src/parole-medialist.c:594 ../src/parole-plugins-manager.c:349
+#: ../src/parole-medialist.c:600 ../src/parole-plugins-manager.c:349
 #: ../src/plugins/properties/stream-properties-provider.c:140
 #: ../src/plugins/properties/stream-properties-provider.c:141
 #: ../src/plugins/properties/stream-properties-provider.c:142
@@ -495,56 +494,56 @@ msgstr "Kies a.u.b. een ondersteunde speellijst-opmaak"
 msgid "Unknown"
 msgstr "Onbekend"
 
-#: ../src/parole-medialist.c:668 ../src/parole-player.c:2464
+#: ../src/parole-medialist.c:674 ../src/parole-player.c:2495
 msgid "Playlist"
 msgstr "Speellijst"
 
-#: ../src/parole-medialist.c:675
+#: ../src/parole-medialist.c:681
 msgid "M3U Playlists"
 msgstr "M3U-speellijsten"
 
-#: ../src/parole-medialist.c:683
+#: ../src/parole-medialist.c:689
 msgid "PLS Playlists"
 msgstr "PLS-speellijsten"
 
-#: ../src/parole-medialist.c:691
+#: ../src/parole-medialist.c:697
 msgid "Advanced Stream Redirector"
 msgstr "Advanced Stream Redirector"
 
-#: ../src/parole-medialist.c:699
+#: ../src/parole-medialist.c:705
 msgid "Shareable Playlist"
 msgstr "Deelbare speellijst"
 
 #. Clear
-#: ../src/parole-medialist.c:1106
+#: ../src/parole-medialist.c:956
 msgid "Open Containing Folder"
 msgstr "Open map waar het inzit"
 
-#: ../src/parole-medialist.c:1518
+#: ../src/parole-medialist.c:1376
 msgid "Media list"
 msgstr "Medialijst"
 
-#: ../src/parole-player.c:449
+#: ../src/parole-player.c:467
 msgid "Open ISO image"
 msgstr "ISO-beeldbestand openen"
 
-#: ../src/parole-player.c:466
+#: ../src/parole-player.c:484
 msgid "CD image"
 msgstr "CD-beeldbestand"
 
-#: ../src/parole-player.c:466
+#: ../src/parole-player.c:484
 msgid "DVD image"
 msgstr "DVD-beeldbestand"
 
-#: ../src/parole-player.c:902 ../src/parole-player.c:1025
+#: ../src/parole-player.c:923 ../src/parole-player.c:1046
 msgid "Media stream is not seekable"
 msgstr "Mediastroom is niet doorzoekbaar"
 
-#: ../src/parole-player.c:1392
+#: ../src/parole-player.c:1414
 msgid "GStreamer backend error"
 msgstr "Fout van Gstreamer-achtergronddienst"
 
-#: ../src/parole-player.c:1435
+#: ../src/parole-player.c:1457
 msgid "Buffering"
 msgstr "Aan het bufferen"
 
@@ -555,6 +554,10 @@ msgstr "vertalers"
 #: ../src/parole-about.c:64
 msgid "Visit Parole website"
 msgstr "Webstek van Parole bezoeken"
+
+#: ../src/parole-disc.c:230 ../src/parole-disc.c:283
+msgid "Play Disc"
+msgstr "Schijf afspelen"
 
 #: ../src/parole-subtitle-encoding.c:165
 msgid "Current Locale"
@@ -697,11 +700,11 @@ msgstr "Westers"
 msgid "Vietnamese"
 msgstr "Vietnamees"
 
-#: ../src/parole-open-location.c:210
+#: ../src/parole-open-location.c:206
 msgid "Clear History"
 msgstr "Geschiedenis wissen"
 
-#: ../src/parole-plugins-manager.c:389 ../src/parole-plugins-manager.c:390
+#: ../src/parole-plugins-manager.c:388 ../src/parole-plugins-manager.c:389
 msgid "No installed plugins found on this system"
 msgstr "Geen geïnstalleerde invoegtoepassingen gevonden op dit systeem"
 

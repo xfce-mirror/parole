@@ -2,382 +2,362 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-20 11:45+0200\n"
+"POT-Creation-Date: 2012-08-10 08:57+0000\n"
 "PO-Revision-Date: 2010-03-30 23:39+0200\n"
 "Last-Translator: George Vlahavas <vlahavas~at~gmail~dot~com>\n"
 "Language-Team: \n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Poedit-Language: Greek\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Country: GREECE\n"
 
-#: ../data/interfaces/parole.ui.h:1 ../src/parole-about.c:89
-msgid "Parole Media Player"
-msgstr "Εφαρμογή αναπαραγωγής πολυμέσων Parole"
-
-#: ../data/interfaces/parole.ui.h:2
-msgid "_Media"
-msgstr "_Πολυμέσα"
-
-#: ../data/interfaces/parole.ui.h:3
-#, fuzzy
-msgid "Open _location"
-msgstr "Άνοιγμα _τοποθεσίας"
-
-#: ../data/interfaces/parole.ui.h:4
-msgid "_DVD"
-msgstr ""
-
-#: ../data/interfaces/parole.ui.h:5
-msgid "From ISO image"
-msgstr "Από εικόνα ISO"
-
-#: ../data/interfaces/parole.ui.h:6
-msgid "_Edit"
-msgstr "_Επεξεργασία"
-
-#: ../data/interfaces/parole.ui.h:7
-#, fuzzy
-msgid "_Repeat"
-msgstr "Επανάληψη"
-
-#: ../data/interfaces/parole.ui.h:8
-#, fuzzy
-msgid "_Shuffle"
-msgstr "Τυχαία αναπαραγωγή"
-
-#: ../data/interfaces/parole.ui.h:9
-#, fuzzy
-msgid "Pl_ugins"
-msgstr "Πρόσθετα"
-
-#: ../data/interfaces/parole.ui.h:10
-msgid "_View"
-msgstr "_Εμφάνιση"
-
-#: ../data/interfaces/parole.ui.h:11
-#, fuzzy
-msgid "Show _playlist"
-msgstr "Εμφάνιση λίστας αναπαραγωγη"
-
-#: ../data/interfaces/parole.ui.h:12
-#, fuzzy
-msgid "_Aspect Ratio"
-msgstr "Αναλογία οθόνης"
-
-#: ../data/interfaces/parole.ui.h:13
-msgid "None"
-msgstr "Κανένα"
-
-#: ../data/interfaces/parole.ui.h:14
-msgid "Auto"
-msgstr "Αυτόματο"
-
-#: ../data/interfaces/parole.ui.h:15
-msgid "Square"
-msgstr "Τετράγωνο"
-
-#: ../data/interfaces/parole.ui.h:16
-msgid "4:3 (TV)"
-msgstr "4:3 (Τηλεόραση)"
-
-#: ../data/interfaces/parole.ui.h:17
+#: ../data/interfaces/parole.ui.h:1
 msgid "16:9 (Widescreen)"
 msgstr "16:9 (Ευρεία οθόνη)"
 
-#: ../data/interfaces/parole.ui.h:18
+#: ../data/interfaces/parole.ui.h:2
 msgid "20:9 (DVB)"
 msgstr "20:9 (DVB)"
 
-#: ../data/interfaces/parole.ui.h:19
-msgid "Sound"
+#: ../data/interfaces/parole.ui.h:3
+msgid "4:3 (TV)"
+msgstr "4:3 (Τηλεόραση)"
+
+#: ../data/interfaces/parole.ui.h:4 ../src/misc/parole-filters.c:64
+msgid "Audio"
 msgstr "Ήχος"
 
-#: ../data/interfaces/parole.ui.h:20
-#, fuzzy
-msgid "_Mute"
-msgstr "Σίγαση"
-
-#: ../data/interfaces/parole.ui.h:21
-#, fuzzy
-msgid "Volume _Up"
-msgstr "Αύξηση έντασης"
-
-#: ../data/interfaces/parole.ui.h:22
-#, fuzzy
-msgid "Volume _Down"
-msgstr "Μείωση έντασης"
-
-#: ../data/interfaces/parole.ui.h:23
-msgid "_Help"
-msgstr "_Βοήθεια"
-
-#: ../data/interfaces/parole.ui.h:24
-#, fuzzy
+#: ../data/interfaces/parole.ui.h:5
 msgid "Audio Track:"
-msgstr "Προηγούμενο κομμάτι"
+msgstr "Κομμάτι ήχου:"
 
-#: ../data/interfaces/parole.ui.h:25
-#, fuzzy
-msgid "Subtitles:"
-msgstr "<b>Υπότιτλοι</b>"
+#: ../data/interfaces/parole.ui.h:6
+msgid "Auto"
+msgstr "Αυτόματο"
 
-#: ../data/interfaces/parole.ui.h:26
-msgid "0:00"
-msgstr ""
-
-#: ../data/interfaces/parole.ui.h:28
-#, fuzzy, no-c-format
+#: ../data/interfaces/parole.ui.h:8
+#, no-c-format
 msgid "Buffering (0%)"
-msgstr "Φόρτωση"
+msgstr "Φόρτωση (0%)"
 
-#: ../data/interfaces/parole.ui.h:29
+#: ../data/interfaces/parole.ui.h:9 ../src/parole-player.c:663
+msgid "Empty"
+msgstr "Άδειο"
+
+#: ../data/interfaces/parole.ui.h:10 ../src/parole-disc.c:125
+msgid "Insert Disc"
+msgstr "Εισάγετε δίσκο"
+
+#: ../data/interfaces/parole.ui.h:11
+msgid "Languages"
+msgstr "Γλώσσες"
+
+#: ../data/interfaces/parole.ui.h:12
 msgid "Media player"
 msgstr "Εφαρμογή αναπαραγωγής πολυμέσων"
 
-#: ../data/interfaces/mediachooser.ui.h:1
-#, fuzzy
-msgid "Parole Media Chooser"
+#: ../data/interfaces/parole.ui.h:13
+msgid "None"
+msgstr "Κανένας"
+
+#: ../data/interfaces/parole.ui.h:14
+msgid "Open _location"
+msgstr "Άνοιγμα _τοποθεσίας"
+
+#: ../data/interfaces/parole.ui.h:15 ../src/parole-about.c:55
+msgid "Parole Media Player"
 msgstr "Εφαρμογή αναπαραγωγής πολυμέσων Parole"
 
-#: ../data/interfaces/mediachooser.ui.h:2
-#, fuzzy
-msgid "Open media files"
+#: ../data/interfaces/parole.ui.h:16
+msgid "Pl_ugins"
+msgstr "Π_ρόσθετα"
+
+#: ../data/interfaces/parole.ui.h:17
+msgid "Select Text Subtitles..."
+msgstr "Επιλογή υποτίτλων..."
+
+#: ../data/interfaces/parole.ui.h:18
+msgid "Show _playlist"
+msgstr "Εμφάνιση _λίστας αναπαραγωγής"
+
+#: ../data/interfaces/parole.ui.h:19
+msgid "Square"
+msgstr "Τετράγωνο"
+
+#: ../data/interfaces/parole.ui.h:20
+msgid "Subtitles"
+msgstr "Υπότιτλοι"
+
+#: ../data/interfaces/parole.ui.h:21
+msgid "Subtitles:"
+msgstr "Υπότιτλοι:"
+
+#: ../data/interfaces/parole.ui.h:22
+msgid "Volume _Down"
+msgstr "_Μείωση έντασης"
+
+#: ../data/interfaces/parole.ui.h:23
+msgid "Volume _Up"
+msgstr "_Αύξηση έντασης"
+
+#: ../data/interfaces/parole.ui.h:24
+msgid "_Aspect Ratio"
+msgstr "Αναλογία _οθόνης"
+
+#: ../data/interfaces/parole.ui.h:25
+msgid "_Edit"
+msgstr "_Επεξεργασία"
+
+#: ../data/interfaces/parole.ui.h:26
+msgid "_Help"
+msgstr "_Βοήθεια"
+
+#: ../data/interfaces/parole.ui.h:27
+msgid "_Media"
+msgstr "_Πολυμέσα"
+
+#: ../data/interfaces/parole.ui.h:28
+msgid "_Mute"
+msgstr "_Σίγαση"
+
+#: ../data/interfaces/parole.ui.h:29
+msgid "_Repeat"
+msgstr "_Επανάληψη"
+
+#: ../data/interfaces/parole.ui.h:30
+msgid "_Shuffle"
+msgstr "_Τυχαία αναπαραγωγή"
+
+#: ../data/interfaces/parole.ui.h:31
+msgid "_View"
+msgstr "_Εμφάνιση"
+
+#: ../data/interfaces/mediachooser.ui.h:1
+msgid "Open Media Files"
 msgstr "Άνοιγμα αρχείων πολυμέσων"
 
-#: ../data/interfaces/mediachooser.ui.h:3
-msgid "Open"
-msgstr ""
+#: ../data/interfaces/mediachooser.ui.h:2
+msgid "_Open"
+msgstr "_Άνοιγμα"
 
-#: ../data/interfaces/mediachooser.ui.h:4
-msgid "Scan folders recursively"
-msgstr "Σάρωση των καταλόγων αναδρομικά"
+#: ../data/interfaces/playlist.ui.h:1
+msgid "Clear"
+msgstr "Καθαρισμός"
 
-#: ../data/interfaces/mediachooser.ui.h:5
-msgid "Replace playlist with opened files"
+#: ../data/interfaces/playlist.ui.h:2
+msgid "Play opened files"
+msgstr "Εκκίνηση αναπαραγωγής ανοιγμένων αρχείων"
+
+#: ../data/interfaces/playlist.ui.h:3
+#: ../data/interfaces/parole-settings.ui.h:17
+msgid "Remember playlist"
+msgstr "Να θυμάσαι τη λίστα αναπαραγωγής"
+
+#: ../data/interfaces/playlist.ui.h:4
+msgid "Repeat"
+msgstr "Επανάληψη"
+
+#: ../data/interfaces/playlist.ui.h:5
+msgid "Replace playlist when opening files"
+msgstr "Αντικατάσταση της λίστας αναπαραγωγής κατά το άνοιγμα αρχίων"
+
+#: ../data/interfaces/playlist.ui.h:6
+msgid "Shuffle"
+msgstr "Τυχαία αναπαραγωγή"
+
+#: ../data/interfaces/plugins.ui.h:1
+msgid "<b>Author</b>"
+msgstr "Συγγραφέας"
+
+#: ../data/interfaces/plugins.ui.h:2
+msgid "<b>Description</b>"
+msgstr "Περιγραφή"
+
+#: ../data/interfaces/plugins.ui.h:3
+msgid "Enabled"
+msgstr "Ενεργό"
+
+#: ../data/interfaces/plugins.ui.h:4
+msgid "Media Player plugins"
+msgstr "Πρόσθετα εφαρμογής αναπαραγωγής πολυμέσων"
+
+#: ../data/interfaces/plugins.ui.h:5
+msgid "Parole Plugins"
+msgstr "Πρόσθετα του Parole"
+
+#: ../data/interfaces/plugins.ui.h:6
+msgid "Plugin"
+msgstr "Πρόσθετο"
+
+#: ../data/interfaces/plugins.ui.h:7
+msgid "Visit Website"
+msgstr "Επίσκεψη στην ιστοσελίδα"
+
+#: ../data/interfaces/parole-settings.ui.h:1
+msgid "<b>Audio</b>"
+msgstr "<b>Ήχος</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:2
+msgid "<b>Keyboard</b>"
+msgstr "<b>Πληκτρολόγιο</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:3
+msgid "<b>Video</b>"
+msgstr "<b>Εικόνα</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:4
+msgid "Always replace playlist with opened files"
 msgstr "Αντικατάσταση της λίστας αναπαραγωγής με ανοιγμένα αρχεία"
 
-#: ../data/interfaces/mediachooser.ui.h:6
+#: ../data/interfaces/parole-settings.ui.h:5
+msgid "Automatically show subtitles when playing movie file"
+msgstr "Αυτόματο άνοιγμα υποτίτλων με την αναπαραγωγή ταινίας"
+
+#: ../data/interfaces/parole-settings.ui.h:6
+msgid "Brightness:"
+msgstr "Φωτεινότητα:"
+
+#: ../data/interfaces/parole-settings.ui.h:7
+msgid "Check and remove duplicate media entries"
+msgstr "Έλεγχος και απομάκρυνση διπλότυπων αρχείων"
+
+#: ../data/interfaces/parole-settings.ui.h:8
+msgid "Configure your media player"
+msgstr "Ρύθμιση της εφαρμογής πολυμέσων"
+
+#: ../data/interfaces/parole-settings.ui.h:9
+msgid "Contrast:"
+msgstr "Αντίθεση:"
+
+#: ../data/interfaces/parole-settings.ui.h:10
+msgid "Disable screensaver while playing movies"
+msgstr "Απενεργοποίηση της προστασίας οθόνης όταν γίνεται αναπαραγωγή ταινιών"
+
+#: ../data/interfaces/parole-settings.ui.h:11
+msgid "Enable keyboard multimedia keys"
+msgstr "Ενεργοποίηση πλήκτρων πολυμέσων στο πληκτρολόγιο"
+
+#: ../data/interfaces/parole-settings.ui.h:12
+msgid "Enable visualization when playing audio file"
+msgstr "Ενεργοποίηση οπτικών εφέ όταν γίνεται αναπαραγωγή αρχείων ήχου"
+
+#: ../data/interfaces/parole-settings.ui.h:13
+msgid "Encoding:"
+msgstr "Κωδικοποίηση:"
+
+#: ../data/interfaces/parole-settings.ui.h:14
+msgid "Font:"
+msgstr "Γραμματοσειρά:"
+
+#: ../data/interfaces/parole-settings.ui.h:15
+msgid "Hue:"
+msgstr "Απόχρωση:"
+
+#: ../data/interfaces/parole-settings.ui.h:16
+msgid "Parole Settings"
+msgstr "Ρυθμίσεις του Parole"
+
+#: ../data/interfaces/parole-settings.ui.h:18
+msgid "Reset to defaults"
+msgstr "Επαναφορά αρχικών τιμών"
+
+#: ../data/interfaces/parole-settings.ui.h:19
+msgid "Saturation:"
+msgstr "Κορεσμός:"
+
 #: ../data/interfaces/parole-settings.ui.h:20
 msgid "Start playing opened files"
 msgstr "Εκκίνιση αναπαραγωγής ανοιγμένων αρχείων"
 
-#: ../data/interfaces/plugins.ui.h:1
-msgid "Parole Plugins"
-msgstr "Πρόσθετα του Parole"
-
-#: ../data/interfaces/plugins.ui.h:2
-msgid "Media Player plugins"
-msgstr "Πρόσθετα εφαρμογής αναπαραγωγής πολυμέσων"
-
-#: ../data/interfaces/plugins.ui.h:3
-msgid "Enabled"
-msgstr ""
-
-#: ../data/interfaces/plugins.ui.h:4
-#, fuzzy
-msgid "Plugin"
-msgstr "Πρόσθετα"
-
-#: ../data/interfaces/plugins.ui.h:5
-msgid "<b>Description:</b>"
-msgstr "<b>Περιγραφή:</b>"
-
-#: ../data/interfaces/plugins.ui.h:6
-msgid "<b>Author:</b>"
-msgstr "<b>Συγγραφέας:</b>"
-
-#: ../data/interfaces/plugins.ui.h:7
-msgid "<b>Site:</b>"
-msgstr "<b>Ιστοσελίδα:</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:1
-msgid "Parole Settings"
-msgstr "Ρυθμίσεις του Parole"
-
-#: ../data/interfaces/parole-settings.ui.h:2
-msgid "Media Player Settings"
-msgstr "Ρυθμίσεις εφαρμογής αναπαραγωγής πολυμέσων"
-
-#: ../data/interfaces/parole-settings.ui.h:3
-#, fuzzy
-msgid "Disable screensaver while playing movies"
-msgstr "Απενεργοποίηση της προστασίας οθόνης όταν γίνεται αναπαραγωγή ταινιών"
-
-#: ../data/interfaces/parole-settings.ui.h:4
-msgid "<b>Video</b>"
-msgstr "<b>Εικόνα</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:5
-msgid "Enable visualization when playing audio file"
-msgstr "Ενεργοποίηση οπτικών εφέ όταν γίνεται αναπαραγωγή αρχείων ήχου"
-
-#: ../data/interfaces/parole-settings.ui.h:6
+#: ../data/interfaces/parole-settings.ui.h:21
 msgid "Visualization type:"
 msgstr "Είδος οπτικού εφέ:"
 
-#: ../data/interfaces/parole-settings.ui.h:7
-msgid "<b>Audio</b>"
-msgstr "<b>Ήχος</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:8
-msgid "Enable keyboard multimedia keys"
-msgstr ""
-
-#: ../data/interfaces/parole-settings.ui.h:9
-#, fuzzy
-msgid "<b>Keyboard</b>"
-msgstr "<b>Εικόνα</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:10
-#: ../src/plugins/properties/stream-properties-provider.c:341
-msgid "General"
-msgstr "Γενικά"
-
-#: ../data/interfaces/parole-settings.ui.h:11
-msgid "Brightness:"
-msgstr "Φωτεινότητα:"
-
-#: ../data/interfaces/parole-settings.ui.h:12
-msgid "Contrast:"
-msgstr "Αντίθεση:"
-
-#: ../data/interfaces/parole-settings.ui.h:13
-msgid "Hue:"
-msgstr "Απόχρωση:"
-
-#: ../data/interfaces/parole-settings.ui.h:14
-msgid "Saturation:"
-msgstr "Κορεσμός:"
-
-#: ../data/interfaces/parole-settings.ui.h:15
-#, fuzzy
-msgid "Reset to defaults"
-msgstr "Επαναφορά αρχικών τιμών"
-
-#: ../data/interfaces/parole-settings.ui.h:16
-msgid "<b>Display</b>"
-msgstr "<b>Εμφάνιση</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:17
-#, fuzzy
-msgid "Display"
-msgstr "<b>Εμφάνιση</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:18
-#, fuzzy
-msgid "Always replace playlist with opened files"
-msgstr "Αντικατάσταση της λίστας αναπαραγωγής με ανοιγμένα αρχεία"
-
-#: ../data/interfaces/parole-settings.ui.h:19
-msgid "Check and remove duplicated media entries"
-msgstr ""
-
-#: ../data/interfaces/parole-settings.ui.h:21
-#, fuzzy
-msgid "<b>Playlist options</b>"
-msgstr "<b>Αναπαραγωγή:</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:22 ../src/parole-medialist.c:667
-#: ../src/parole-player.c:2315
-msgid "Playlist"
-msgstr "Λίστα αναπαραγωγής"
+#: ../data/interfaces/parole-settings.ui.h:22
+msgid "_Display"
+msgstr "_Εμφάνιση"
 
 #: ../data/interfaces/parole-settings.ui.h:23
-#, fuzzy
-msgid "Automatically show subtitles when playing movie file"
-msgstr "Αυτόματο άνοιγμα υποτίτλων με την αναπαραγωγή ταινίας"
+msgid "_General"
+msgstr "_Γενικά"
 
 #: ../data/interfaces/parole-settings.ui.h:24
-msgid "Font:"
-msgstr "Γραμματοσειρά:"
+msgid "_Playlist"
+msgstr "Λίστα _αναπαραγωγής"
 
 #: ../data/interfaces/parole-settings.ui.h:25
-#, fuzzy
-msgid "Encoding:"
-msgstr "Κωδικοποίηση:"
-
-#: ../data/interfaces/parole-settings.ui.h:26
-msgid "<b>Subtitles</b>"
-msgstr "<b>Υπότιτλοι</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:27
-#, fuzzy
-msgid "Subtitles"
-msgstr "<b>Υπότιτλοι</b>"
+msgid "_Subtitles"
+msgstr "_Υπότιτλοι"
 
 #: ../data/interfaces/save-playlist.ui.h:1
-msgid "Select File Types (By Extension)"
-msgstr "Επιλογή τύπων αρχείων (κατά επέκταση)"
-
-#: ../data/interfaces/save-playlist.ui.h:2
 msgid "By Extension"
 msgstr "Κατά επέκταση"
 
+#: ../data/interfaces/save-playlist.ui.h:2
+msgid "Select File Types (By Extension)"
+msgstr "Επιλογή τύπων αρχείων (κατά επέκταση)"
+
 #: ../data/interfaces/open-location.ui.h:1
-#, fuzzy
 msgid "Open Location"
-msgstr "Άνοιγμα _τοποθεσίας"
+msgstr "Άνοιγμα τοποθεσίας"
 
 #: ../data/interfaces/open-location.ui.h:2
 msgid "Please enter a network URL:"
-msgstr ""
+msgstr "Παρακαλούμε εισάγετε μια διεύθυνση δικτύου:"
 
 #: ../data/desktop/parole.desktop.in.in.h:1
 msgid "Parole"
 msgstr "Parole"
 
 #: ../src/common/parole-common.c:67
-#, fuzzy
 msgid "Message"
 msgstr "Μήνυμα"
 
 #: ../src/common/parole-common.c:72
-#, fuzzy
 msgid "Error"
 msgstr "Σφάλμα"
 
-#: ../src/gst/parole-gst.c:1496
+#: ../src/gst/parole-gst.c:1493
 msgid "Stop"
 msgstr "Σταμάτημα"
 
-#: ../src/gst/parole-gst.c:1497
+#: ../src/gst/parole-gst.c:1494
 msgid "The stream is taking too much time to load"
 msgstr "Η ροή απαιτεί πολύ χρόνο για να φορτωθεί"
 
-#: ../src/gst/parole-gst.c:1666
+#: ../src/gst/parole-gst.c:1663
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Δεν ήταν δυνατό να φορτωθεί το πρόσθετο GStreamer playbin, ελέγξτε την "
 "εγκατάσταση του GStreamer"
 
-#: ../src/gst/parole-gst.c:1690
+#: ../src/gst/parole-gst.c:1687
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Δεν ήταν δυνατό να φορτωθεί το πρόσθετο Gstreamer video, ελέξτε την "
 "εγκατάσταση του GStreamer"
 
-#: ../src/gst/parole-gst.c:2222 ../src/gst/parole-gst.c:2226
-#, fuzzy, c-format
+#: ../src/gst/parole-gst.c:2244 ../src/gst/parole-gst.c:2248
+#, c-format
 msgid "Audio Track #%d"
-msgstr "Κομμάτι %i"
+msgstr "Κομμάτι ήχου #%d"
 
-#: ../src/gst/parole-gst.c:2254 ../src/gst/parole-gst.c:2258
+#: ../src/gst/parole-gst.c:2276 ../src/gst/parole-gst.c:2280
 #, c-format
 msgid "Subtitle #%d"
-msgstr ""
+msgstr "Υπότιτλος #%d"
 
-#: ../src/main.c:53
+#: ../src/main.c:56
 #, c-format
 msgid ""
 "\n"
@@ -398,100 +378,109 @@ msgstr ""
 "Αδειοδοτημένο με χρήση της GNU GPL.\n"
 "\n"
 
-#: ../src/main.c:186
+#: ../src/main.c:189
 msgid "Unknown argument "
 msgstr "Άγνωστη παράμετρος"
 
-#: ../src/main.c:223
+#: ../src/main.c:227
 msgid "Open a new instance"
 msgstr "Άνοιγμα νέου παραθύρου"
 
-#: ../src/main.c:224
+#: ../src/main.c:228
 msgid "Do not load plugins"
 msgstr "Άρνηση φόρτωσης πρόσθετων"
 
-#: ../src/main.c:225
+#: ../src/main.c:229
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "Ορισμός της διαδρομής της συσκευής Audio-CD/VCD/DVD"
 
-#: ../src/main.c:226
+#: ../src/main.c:230
 msgid "Play or pause if already playing"
 msgstr "Αναπαραγωγή ή παύση αν γίνεται ήδη αναπαραγωγή"
 
-#: ../src/main.c:227
+#: ../src/main.c:231
 msgid "Stop playing"
 msgstr "Σταμάτημα αναπαραγωγής"
 
-#: ../src/main.c:228
+#: ../src/main.c:232
 msgid "Next track"
 msgstr "Επόμενο κομμάτι"
 
-#: ../src/main.c:229
+#: ../src/main.c:233
 msgid "Previous track"
 msgstr "Προηγούμενο κομμάτι"
 
-#: ../src/main.c:230
+#: ../src/main.c:234
 msgid "Seek forward"
 msgstr "Αναζήτηση μπροστά"
 
-#: ../src/main.c:231
+#: ../src/main.c:235
 msgid "Seek Backward"
 msgstr "Αναζήτηση πίσω"
 
-#: ../src/main.c:232
+#: ../src/main.c:236
 msgid "Raise volume"
 msgstr "Αύξηση έντασης ήχου"
 
-#: ../src/main.c:233
+#: ../src/main.c:237
 msgid "Lower volume"
 msgstr "Μείωση έντασης ήχου"
 
-#: ../src/main.c:234
+#: ../src/main.c:238
 msgid "Mute volume"
 msgstr "Σίγαση ήχου"
 
-#: ../src/main.c:235
+#: ../src/main.c:239
 msgid "Version information"
 msgstr "Πληροφορίες έκδοσης"
 
-#: ../src/main.c:236
-#, fuzzy
+#: ../src/main.c:240
 msgid "Start in fullscreen mode"
 msgstr "Εκκίνηση σε πλήρη οθόνη"
 
-#: ../src/main.c:237
+#: ../src/main.c:241
 msgid "Enabled/Disable XV support"
 msgstr "Ενεργοποίηση/Απενεργοποίηση υποστήριξης XV"
 
-#: ../src/main.c:239
+#: ../src/main.c:242
+msgid "Add files to playlist"
+msgstr "Απόκρυψη λίστας αναπαραγωγής"
+
+#: ../src/main.c:244
 msgid "Media to play"
 msgstr "Πολυμέσα προς αναπαραγωγή"
 
-#: ../src/main.c:276
+#: ../src/main.c:281
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr ""
 "Το Parole ήδη εκτελείται, χρησιμοποιήστε το -i για να ανοίξετε νέο παράθυρο\n"
 
-#: ../src/parole-medialist.c:526
+#: ../src/parole-mediachooser.c:208
+msgid "Supported files"
+msgstr "Υποστηριζόμενα αρχεία"
+
+#: ../src/parole-mediachooser.c:214
+msgid "All files"
+msgstr "Όλα τα αρχεία"
+
+#: ../src/parole-medialist.c:533
 msgid "Permission denied"
 msgstr "Άρνηση πρόσβασης"
 
-#: ../src/parole-medialist.c:528
+#: ../src/parole-medialist.c:535
 msgid "Error saving playlist file"
 msgstr "Σφάλμα κατά την αποθήκευση της λίστας αναπαραγωγής"
 
-#: ../src/parole-medialist.c:540
-#, fuzzy
+#: ../src/parole-medialist.c:547
 msgid "Unknown playlist format"
-msgstr "Εμφάνιση λίστας αναπαραγωγη"
+msgstr "Άγνωστη μορφή λίστας αναπαραγωγής"
 
-#: ../src/parole-medialist.c:541
-#, fuzzy
+#: ../src/parole-medialist.c:548
 msgid "Please chooser a supported playlist format"
 msgstr "Παρακαλούμε επιλέξτε ένα υποστηριζόμενο είδος λίστας αναπαραγωγής"
 
-#: ../src/parole-medialist.c:593 ../src/parole-plugins-manager.c:378
+#: ../src/parole-medialist.c:600 ../src/parole-plugins-manager.c:349
 #: ../src/plugins/properties/stream-properties-provider.c:140
 #: ../src/plugins/properties/stream-properties-provider.c:141
 #: ../src/plugins/properties/stream-properties-provider.c:142
@@ -499,91 +488,68 @@ msgstr "Παρακαλούμε επιλέξτε ένα υποστηριζόμε�
 msgid "Unknown"
 msgstr "Άγνωστο"
 
-#: ../src/parole-medialist.c:674
+#: ../src/parole-medialist.c:674 ../src/parole-player.c:2495
+msgid "Playlist"
+msgstr "Λίστα αναπαραγωγής"
+
+#: ../src/parole-medialist.c:681
 msgid "M3U Playlists"
 msgstr "Λίστες αναπαραγωγής M3U"
 
-#: ../src/parole-medialist.c:682
+#: ../src/parole-medialist.c:689
 msgid "PLS Playlists"
 msgstr "Λίστες αναπαραγωγής PLS"
 
-#: ../src/parole-medialist.c:690
+#: ../src/parole-medialist.c:697
 msgid "Advanced Stream Redirector"
 msgstr "Προχωρημένη προώθηση ροής"
 
-#: ../src/parole-medialist.c:698
+#: ../src/parole-medialist.c:705
 msgid "Shareable Playlist"
 msgstr "Λίστα αναπαραγωγής με δυνατότητα διαμοιρασμού"
 
 #. Clear
-#: ../src/parole-medialist.c:1105
-#, fuzzy
+#: ../src/parole-medialist.c:956
 msgid "Open Containing Folder"
 msgstr "Άνοιγμα φακέλου που τα περιέχει"
 
-#: ../src/parole-medialist.c:1217
-msgid "Repeat"
-msgstr "Επανάληψη"
-
-#: ../src/parole-medialist.c:1233
-msgid "Shuffle"
-msgstr "Τυχαία αναπαραγωγή"
-
-#: ../src/parole-medialist.c:1256
-#, fuzzy
-msgid "Replace playlist when opening files"
-msgstr "Αντικατάσταση της λίστας αναπαραγωγής κατά το άνοιγμα αρχίων"
-
-#: ../src/parole-medialist.c:1272
-msgid "Play opened files"
-msgstr "Εκκίνηση αναπαραγωγής ανοιγμένων αρχείων"
-
-#. *
-#. * Remember media list entries
-#. *
-#: ../src/parole-medialist.c:1284
-msgid "Remember playlist"
-msgstr "Να θυμάσαι τη λίστα αναπαραγωγής"
-
-#: ../src/parole-medialist.c:1473
+#: ../src/parole-medialist.c:1376
 msgid "Media list"
 msgstr "Λίστα αρχείων πολυμέσων"
 
-#: ../src/parole-player.c:432
+#: ../src/parole-player.c:467
 msgid "Open ISO image"
 msgstr "Άνοιγμα εικόνας ISO"
 
-#: ../src/parole-player.c:449
+#: ../src/parole-player.c:484
 msgid "CD image"
 msgstr "Εικόνα CD"
 
-#: ../src/parole-player.c:449
+#: ../src/parole-player.c:484
 msgid "DVD image"
 msgstr "Εικόνα DVD"
 
-#: ../src/parole-player.c:779 ../src/parole-player.c:902
+#: ../src/parole-player.c:923 ../src/parole-player.c:1046
 msgid "Media stream is not seekable"
 msgstr "Η ροή πολυμέσων δεν υποστηρίζει αναζήτηση"
 
-#: ../src/parole-player.c:1250
+#: ../src/parole-player.c:1414
 msgid "GStreamer backend error"
-msgstr ""
+msgstr "Σφάλμα υπόβαθρου GStreamer"
 
-#: ../src/parole-player.c:1293
+#: ../src/parole-player.c:1457
 msgid "Buffering"
 msgstr "Φόρτωση"
 
-#: ../src/parole-about.c:95
-#, fuzzy
+#: ../src/parole-about.c:61
 msgid "translator-credits"
-msgstr "Μεταφραστής (%s)"
+msgstr "Γιώργος Βλαχάβας <vlahavas@gmail.com>"
 
-#: ../src/parole-about.c:98
-#, fuzzy
+#: ../src/parole-about.c:64
 msgid "Visit Parole website"
-msgstr "Επίσκεψη στην ιστοσελίδα"
+msgstr "Επίσκεψη ιστοσελίδας του Parole"
 
-#: ../src/parole-disc.c:227
+#: ../src/parole-disc.c:230 ../src/parole-disc.c:283
 msgid "Play Disc"
 msgstr "Αναπαραγωγή δίσκου"
 
@@ -728,22 +694,13 @@ msgstr "Δυτικά"
 msgid "Vietnamese"
 msgstr "Βιετναμέζικα"
 
-#: ../src/parole-open-location.c:210
-#, fuzzy
+#: ../src/parole-open-location.c:206
 msgid "Clear History"
 msgstr "Εκκαθάριση ιστορικού"
 
-#: ../src/parole-plugins-manager.c:302 ../src/parole-plugins-manager.c:440
-msgid "Visit Website"
-msgstr "Επίσκεψη στην ιστοσελίδα"
-
-#: ../src/parole-plugins-manager.c:418 ../src/parole-plugins-manager.c:419
+#: ../src/parole-plugins-manager.c:388 ../src/parole-plugins-manager.c:389
 msgid "No installed plugins found on this system"
 msgstr "Δεν βρέθηκαν εγκατεστημένα πρόσθετα στο σύστημα"
-
-#: ../src/misc/parole-filters.c:64
-msgid "Audio"
-msgstr "Ήχος"
 
 #: ../src/misc/parole-filters.c:90
 msgid "Video"
@@ -777,6 +734,10 @@ msgstr "Άλμπουμ:"
 msgid "Year:"
 msgstr "Έτος:"
 
+#: ../src/plugins/properties/stream-properties-provider.c:341
+msgid "General"
+msgstr "Γενικά"
+
 #: ../src/plugins/properties/stream-properties-provider.c:392
 msgid "Stream doesn't support tags changes"
 msgstr "Η ροή δεν υποστηρίζει αλλαγές στις ετικέτες"
@@ -790,68 +751,98 @@ msgid "Properties"
 msgstr "Ιδιότητες"
 
 #: ../src/plugins/properties/stream-properties.desktop.in.h:1
-msgid "Stream Properties"
-msgstr "Ιδιότητες ροής"
-
-#: ../src/plugins/properties/stream-properties.desktop.in.h:2
 msgid "Read media properties"
 msgstr "Διάβασμα ιδιοτήτων πολυμέσων"
 
-#: ../src/plugins/tray/tray-provider.c:283
+#: ../src/plugins/properties/stream-properties.desktop.in.h:2
+msgid "Stream Properties"
+msgstr "Ιδιότητες ροής"
+
+#: ../src/plugins/tray/tray-provider.c:280
 msgid "<b>Playing:</b>"
 msgstr "<b>Αναπαραγωγή:</b>"
 
-#: ../src/plugins/tray/tray-provider.c:283
+#: ../src/plugins/tray/tray-provider.c:280
 msgid "<b>Duration:</b>"
 msgstr "<b>Διάρκεια:</b>"
 
-#: ../src/plugins/tray/tray-provider.c:419
+#: ../src/plugins/tray/tray-provider.c:420
 msgid "Tray icon plugin"
 msgstr "Πρόσθετο περιοχής ειδοποιήσεων"
 
-#: ../src/plugins/tray/tray-provider.c:429
+#: ../src/plugins/tray/tray-provider.c:430
 msgid "Enable notification"
 msgstr "Ενεργοποίηση ειδοποιήσεων"
 
-#: ../src/plugins/tray/tray-provider.c:438
+#: ../src/plugins/tray/tray-provider.c:439
 msgid "Always minimize to tray when window is closed"
 msgstr ""
 "Να γίνεται πάντα ελαχιστοποίηση στην περιοχή ειδοποιήσεων όταν κλείνει το "
 "παράθυρο"
 
-#: ../src/plugins/tray/tray-provider.c:477
+#: ../src/plugins/tray/tray-provider.c:478
 msgid "Minimize to tray?"
 msgstr "Ελαχιστοποίηση στην περιοχή ειδοποιήσεων;"
 
-#: ../src/plugins/tray/tray-provider.c:483
+#: ../src/plugins/tray/tray-provider.c:484
 msgid "Minimize to tray"
 msgstr "Ελαχιστοποίηση στην περιοχή ειδοποιήσεων"
 
-#: ../src/plugins/tray/tray-provider.c:499
+#: ../src/plugins/tray/tray-provider.c:500
 msgid "Are you sure you want to quit Parole"
 msgstr "Είστε βέβαιοι ότι θέλετε να κλείσετε το Parole"
 
-#: ../src/plugins/tray/tray-provider.c:503
+#: ../src/plugins/tray/tray-provider.c:504
 msgid "Remember my choice"
 msgstr "Να θυμάσαι την επιλογή μου"
 
 #: ../src/plugins/tray/system-tray.desktop.in.h:1
-msgid "Tray icon"
-msgstr "Εικονίδιο περιοχής ειδοποιήσεων"
-
-#: ../src/plugins/tray/system-tray.desktop.in.h:2
 msgid "Show icon in the system tray"
 msgstr "Εμφάνιση εικονιδίου στην περιοχή ειδοποιήσεων"
 
-#: ../src/plugins/power-manager/power-manager.desktop.in.h:1
-msgid "Power Manager Plugin"
-msgstr "Πρόσθετο Διαχείρισης Ενέργειας"
+#: ../src/plugins/tray/system-tray.desktop.in.h:2
+msgid "Tray icon"
+msgstr "Εικονίδιο περιοχής ειδοποιήσεων"
 
-#: ../src/plugins/power-manager/power-manager.desktop.in.h:2
+#: ../src/plugins/power-manager/power-manager.desktop.in.h:1
 msgid "Inhibit Power Manager from suspending the machine while playing DVD."
 msgstr ""
 "Αποτροπή της αδρανοποίησης του συστήματος από το Διαχειριστή Ενέργειας όταν "
 "γίνεται αναπαραγωγή DVD"
+
+#: ../src/plugins/power-manager/power-manager.desktop.in.h:2
+msgid "Power Manager Plugin"
+msgstr "Πρόσθετο Διαχείρισης Ενέργειας"
+
+#~ msgid "From ISO image"
+#~ msgstr "Από εικόνα ISO"
+
+#~ msgid "Sound"
+#~ msgstr "Ήχος"
+
+#~ msgid "Parole Media Chooser"
+#~ msgstr "Εφαρμογή αναπαραγωγής πολυμέσων Parole"
+
+#~ msgid "Scan folders recursively"
+#~ msgstr "Σάρωση των καταλόγων αναδρομικά"
+
+#~ msgid "Replace playlist with opened files"
+#~ msgstr "Αντικατάσταση της λίστας αναπαραγωγής με ανοιγμένα αρχεία"
+
+#~ msgid "<b>Site:</b>"
+#~ msgstr "<b>Ιστοσελίδα:</b>"
+
+#~ msgid "Media Player Settings"
+#~ msgstr "Ρυθμίσεις εφαρμογής αναπαραγωγής πολυμέσων"
+
+#~ msgid "<b>Display</b>"
+#~ msgstr "<b>Εμφάνιση</b>"
+
+#~ msgid "<b>Playlist options</b>"
+#~ msgstr "<b>Αναπαραγωγή:</b>"
+
+#~ msgid "<b>Subtitles</b>"
+#~ msgstr "<b>Υπότιτλοι</b>"
 
 #~ msgid "Chapter Menu"
 #~ msgstr "Μενού κεφαλαίων"
@@ -874,16 +865,11 @@ msgstr ""
 #~ msgid "Add"
 #~ msgstr "Προσθήκη"
 
-#, fuzzy
 #~ msgid "Enter the address of a location to open"
 #~ msgstr "Εισάγετε τη διεύθυνση μιας τοποθεσίας προς άνοιγμα"
 
-#, fuzzy
 #~ msgid "Open location of media file or live stream"
 #~ msgstr "Άνοιγμα τοποθεσίας αρχείου πολυμέσου ή ζωντανής ροής"
-
-#~ msgid "Hide playlist"
-#~ msgstr "Απόκρυψη λίστας αναπαραγωγής"
 
 #~ msgid "Next Track"
 #~ msgstr "Επόμενο κομμάτι"
