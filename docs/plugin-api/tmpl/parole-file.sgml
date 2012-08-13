@@ -51,6 +51,13 @@ Simple file handling.
 
 </para>
 
+<!-- ##### STRUCT ParoleFileClass ##### -->
+<para>
+
+</para>
+
+@parent_class: 
+
 <!-- ##### FUNCTION parole_file_new ##### -->
 <para>
 
@@ -89,6 +96,15 @@ Simple file handling.
 
 
 <!-- ##### FUNCTION parole_file_get_uri ##### -->
+<para>
+
+</para>
+
+@file: 
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_file_get_directory ##### -->
 <para>
 
 </para>

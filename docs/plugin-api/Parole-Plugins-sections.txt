@@ -18,6 +18,7 @@ parole_provider_player_open_media_chooser
 PAROLE_PROVIDER_PLAYER
 PAROLE_IS_PROVIDER_PLAYER
 PAROLE_TYPE_PROVIDER_PLAYER
+PAROLE_PROVIDER_PLAYER_GET_INTERFACE
 parole_provider_player_get_type
 </SECTION>
 
@@ -32,6 +33,7 @@ parole_provider_plugin_set_player
 PAROLE_PROVIDER_PLUGIN
 PAROLE_IS_PROVIDER_PLUGIN
 PAROLE_TYPE_PROVIDER_PLUGIN
+PAROLE_PROVIDER_PLUGIN_GET_INTERFACE
 parole_provider_plugin_get_type
 </SECTION>
 
@@ -39,11 +41,13 @@ parole_provider_plugin_get_type
 <FILE>parole-file</FILE>
 <TITLE>ParoleFile</TITLE>
 ParoleFile
+ParoleFileClass
 parole_file_new
 parole_file_new_with_display_name
 parole_file_get_file_name
 parole_file_get_display_name
 parole_file_get_uri
+parole_file_get_directory
 parole_file_get_content_type
 <SUBSECTION Standard>
 PAROLE_FILE
@@ -57,11 +61,14 @@ parole_file_get_type
 ParoleMediaType
 <TITLE>ParoleStream</TITLE>
 ParoleStream
+ParoleStreamClass
 <SUBSECTION Standard>
 PAROLE_STREAM
 PAROLE_IS_STREAM
 PAROLE_TYPE_STREAM
+parole_stream_new
 parole_stream_get_type
+parole_stream_init_properties
 </SECTION>
 
 <SECTION>
