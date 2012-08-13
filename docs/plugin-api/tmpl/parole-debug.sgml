@@ -17,6 +17,9 @@ Parole Debug
 <!-- ##### SECTION Stability_Level ##### -->
 
 
+<!-- ##### SECTION Image ##### -->
+
+
 <!-- ##### MACRO PAROLE_DEBUG_ENUM ##### -->
 <para>
 
@@ -61,6 +64,6 @@ Parole Debug
 @v_enum: 
 @type: 
 @format: 
-@Varargs: 
+@...: 
 
 

@@ -19,6 +19,9 @@ playback status.
 <!-- ##### SECTION Stability_Level ##### -->
 
 
+<!-- ##### SECTION Image ##### -->
+
+
 <!-- ##### STRUCT ParoleProviderPlayerIface ##### -->
 <para>
 
@@ -63,6 +66,7 @@ playback status.
 
 @PAROLE_STATE_STOPPED: 
 @PAROLE_STATE_PLAYBACK_FINISHED: 
+@PAROLE_STATE_ABOUT_TO_FINISH: 
 @PAROLE_STATE_PAUSED: 
 @PAROLE_STATE_PLAYING: 
 
