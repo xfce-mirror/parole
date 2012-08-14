@@ -10,7 +10,6 @@ interfaces =					\
 interfaces_h = 					\
 	$(interfaces:.ui=_ui.h)
 
-if MAINTAINER_MODE
 BUILT_SOURCES = $(interfaces_h)
 
 parole_ui.h: parole.ui
@@ -34,7 +33,6 @@ open-location_ui.h: open-location.ui
 plugins_ui.h: plugins.ui
 	xdt-csource --static --strip-comments --strip-content --name=plugins_ui $< > $@
 
-endif
 
 CLEANFILES =					\
 	$(interfaces_h)

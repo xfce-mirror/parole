@@ -2,8 +2,8 @@ ACLOCAL_AMFLAGS = -I m4
 
 SUBDIRS =  			\
 	data			\
-	docs			\
 	src			\
+	docs			\
 	po
 
 
