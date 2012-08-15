@@ -2659,7 +2659,7 @@ void parole_player_set_subtitle_radio_menu_item_selected(ParolePlayer *player, g
 
 void parole_player_audiotrack_radio_menu_item_changed_cb(GtkWidget *widget, ParolePlayer *player)
 {
-	gint radio_index;
+	gint radio_index = 0;
 	GList *menu_items, *menu_iter;
 	gint counter = 0;
 	gint combobox_index;
@@ -2683,7 +2683,8 @@ void parole_player_audiotrack_radio_menu_item_changed_cb(GtkWidget *widget, Paro
 
 void parole_player_subtitles_radio_menu_item_changed_cb(GtkWidget *widget, ParolePlayer *player)
 {
-	gint radio_index, combobox_index; 
+	gint radio_index = 0;
+	gint combobox_index = 0; 
 	gint counter = 0;
 	
 	GList *menu_items, *menu_iter;

@@ -172,7 +172,7 @@ parole_disc_add_mount_to_menu (ParoleDisc *disc, GMount *mount, const gchar *dev
     GFile *file;
     gchar **content_type;
     guint i;
-    ParoleDiscKind kind;
+    ParoleDiscKind kind = PAROLE_DISC_UNKNOWN;
     gchar *uri = NULL;
     
     file = g_mount_get_root (mount);

@@ -68,7 +68,7 @@ GTKDOC_CFLAGS=                  \
         $(GLIB_CFLAGS)          \
         $(GOBJECT_CFLAGS)       \
 	$(TAGLIBC_CFLAGS)	\
-        -I$(top_builddir)/parole
+        -I$(top_builddir)/src/misc
 
 GTKDOC_LIBS=                    \
 	$(GTK_LIBS)		\
