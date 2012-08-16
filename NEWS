@@ -1,3 +1,12 @@
+0.3.1
+=======
+- Maintenance release
+- Updated build requirements (bug #9197)
+- Fixed installation directory for plugins
+- Fixed compilation of plugin api (bug #9196)
+- Fixed compilation of debug=yes and debug=full
+- Fixed compiling twice (bug #9219)
+
 0.3.0
 =======
 - Replaced libxfce4gui dependencies with libxfce4ui
