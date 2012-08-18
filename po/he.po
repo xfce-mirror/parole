@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-08-09 16:54+0000\n"
-"PO-Revision-Date: 2012-08-09 23:12+0200\n"
+"PO-Revision-Date: 2012-08-17 13:12+0200\n"
 "Last-Translator: Isratine Citizen <genghiskhan@gmx.ca>\n"
 "Language-Team: גזר\n"
 "Language: he\n"
@@ -74,10 +74,11 @@ msgstr "ללא"
 msgid "Open _location"
 msgstr "פתיחת _מיקום"
 
+# trademarks need not to be translated
 #: ../data/interfaces/parole.ui.h:15
 #: ../src/parole-about.c:55
 msgid "Parole Media Player"
-msgstr "נגן המדיה Parole"
+msgstr "Parole Media Player"
 
 #: ../data/interfaces/parole.ui.h:16
 msgid "Pl_ugins"
@@ -381,65 +382,80 @@ msgstr ""
 msgid "Unknown argument "
 msgstr "ארגומנט בלתי ידוע"
 
+# cli
 #: ../src/main.c:226
 msgid "Open a new instance"
-msgstr "פתיחת מופע חדש"
+msgstr "Open a new instance"
 
+# cli
 #: ../src/main.c:227
 msgid "Do not load plugins"
-msgstr "אין לטעון תוספים"
+msgstr "Do not load plugins"
 
+# cli
 #: ../src/main.c:228
 msgid "Set Audio-CD/VCD/DVD device path"
-msgstr "הגדרת נתיב אל תקליטור־שמע/VCD/DVD"
+msgstr "Set Audio-CD/VCD/DVD device path"
 
+# cli
 #: ../src/main.c:229
 msgid "Play or pause if already playing"
-msgstr "לנגן או להשהות אם כבר מתנגן"
+msgstr "Play or pause if already playing"
 
+# cli
 #: ../src/main.c:230
 msgid "Stop playing"
-msgstr "עצירת נגינה"
+msgstr "Stop playing"
 
+# cli
 #: ../src/main.c:231
 msgid "Next track"
-msgstr "הרצועה הבאה"
+msgstr "Next track"
 
+# cli
 #: ../src/main.c:232
 msgid "Previous track"
-msgstr "הרצועה הקודמת"
+msgstr "Previous track"
 
+# cli
 #: ../src/main.c:233
 msgid "Seek forward"
-msgstr "קפיצה קדימה"
+msgstr "Seek forward"
 
+# cli
 #: ../src/main.c:234
 msgid "Seek Backward"
-msgstr "קפיצה אחורה"
+msgstr "Seek Backward"
 
+# cli
 #: ../src/main.c:235
 msgid "Raise volume"
-msgstr "הגברת עצמת שמע"
+msgstr "Raise volume"
 
+# cli
 #: ../src/main.c:236
 msgid "Lower volume"
-msgstr "הנמכת עצמת שמע"
+msgstr "Lower volume"
 
+# cli
 #: ../src/main.c:237
 msgid "Mute volume"
-msgstr "השתקת שמע"
+msgstr "Mute volume"
 
+# cli
 #: ../src/main.c:238
 msgid "Version information"
-msgstr "פרטי גרסה"
+msgstr "Version information"
 
+# cli
 #: ../src/main.c:239
 msgid "Start in fullscreen mode"
-msgstr "הפעלה במצב מסך מלא"
+msgstr "Start in fullscreen mode"
 
+# cli
 #: ../src/main.c:240
 msgid "Enabled/Disable XV support"
-msgstr "הפעלת/נטרול התמיכה ב־XV"
+msgstr "Enabled/Disable XV support"
 
 #: ../src/main.c:241
 msgid "Add files to playlist"
@@ -452,7 +468,7 @@ msgstr "מדיה לנגינה"
 #: ../src/main.c:280
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
-msgstr "הנגן Parole כבר פועל, יש להשתמש בארגומנט ‎-i בכדי לפתוח מופע חדש\n"
+msgstr "Parole is already running, use -i to open a new instance\n"
 
 #: ../src/parole-mediachooser.c:210
 msgid "Supported files"
@@ -704,6 +720,7 @@ msgstr "תאי"
 msgid "Turkish"
 msgstr "טורקי"
 
+# קידוד־מקיף
 #: ../src/parole-subtitle-encoding.c:315
 #: ../src/parole-subtitle-encoding.c:317
 #: ../src/parole-subtitle-encoding.c:319
