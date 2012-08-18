@@ -141,7 +141,9 @@ org.parole.media.player.h: $(srcdir)/org.parole.media.player.xml
 endif
 
 EXTRA_DIST =					\
-	gmarshal.list
+	gmarshal.list               \
+	org.parole.media.player.xml \
+	org.parole.media.list.xml   
 
 DISTCLEANFILES =				\
 	$(BUILT_SOURCES)			\
