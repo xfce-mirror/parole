@@ -34,18 +34,17 @@ msgid "Audio"
 msgstr "Audioa"
 
 #: ../data/interfaces/parole.ui.h:5
-#, fuzzy
 msgid "Audio Track:"
-msgstr "Aurreko pista"
+msgstr "Audio pista:"
 
 #: ../data/interfaces/parole.ui.h:6
 msgid "Auto"
 msgstr "Auto"
 
 #: ../data/interfaces/parole.ui.h:8
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Buffering (0%)"
-msgstr "Bufferra betetzen"
+msgstr "Bufferra betetzen (0%)"
 
 #: ../data/interfaces/parole.ui.h:9 ../src/parole-player.c:663
 msgid "Empty"
@@ -226,31 +225,29 @@ msgstr "Distira:"
 
 #: ../data/interfaces/parole-settings.ui.h:7
 msgid "Check and remove duplicate media entries"
-msgstr ""
+msgstr "Arakatu eta ezabatu bikoiztutako sarrerak"
 
 #: ../data/interfaces/parole-settings.ui.h:8
 msgid "Configure your media player"
-msgstr ""
+msgstr "Konfiguratu euskarri erreproduzigailua "
 
 #: ../data/interfaces/parole-settings.ui.h:9
 msgid "Contrast:"
 msgstr "Kontrastea:"
 
 #: ../data/interfaces/parole-settings.ui.h:10
-#, fuzzy
 msgid "Disable screensaver while playing movies"
 msgstr "Desgaitu pantaila-babeslea filmak erreproduzitzean"
 
 #: ../data/interfaces/parole-settings.ui.h:11
 msgid "Enable keyboard multimedia keys"
-msgstr ""
+msgstr "Gaitu teklatuko multimedia teklak"
 
 #: ../data/interfaces/parole-settings.ui.h:12
 msgid "Enable visualization when playing audio file"
 msgstr "Gailu bistaratzea audio fitxategi bat erreproduzitzean"
 
 #: ../data/interfaces/parole-settings.ui.h:13
-#, fuzzy
 msgid "Encoding:"
 msgstr "Kodeketa: "
 
@@ -267,9 +264,8 @@ msgid "Parole Settings"
 msgstr "Parole ezarpenak"
 
 #: ../data/interfaces/parole-settings.ui.h:18
-#, fuzzy
 msgid "Reset to defaults"
-msgstr "Berezarri lehenespenetara"
+msgstr "Berrezarri lehenespenetara"
 
 #: ../data/interfaces/parole-settings.ui.h:19
 msgid "Saturation:"
@@ -284,24 +280,20 @@ msgid "Visualization type:"
 msgstr "Bistaratze mota:"
 
 #: ../data/interfaces/parole-settings.ui.h:22
-#, fuzzy
 msgid "_Display"
-msgstr "<b>Bistaratzea</b>"
+msgstr "_Bistaratzea"
 
 #: ../data/interfaces/parole-settings.ui.h:23
-#, fuzzy
 msgid "_General"
-msgstr "Orokorra"
+msgstr "_Orokorra"
 
 #: ../data/interfaces/parole-settings.ui.h:24
-#, fuzzy
 msgid "_Playlist"
-msgstr "Erreprodukzio-zerrenda "
+msgstr "Erre_produkzio-zerrenda "
 
 #: ../data/interfaces/parole-settings.ui.h:25
-#, fuzzy
 msgid "_Subtitles"
-msgstr "<b>Azpitituluak</b>"
+msgstr "A_zpitituluak"
 
 #: ../data/interfaces/save-playlist.ui.h:1
 msgid "By Extension"
@@ -312,13 +304,12 @@ msgid "Select File Types (By Extension)"
 msgstr "Hautatu fitxategi motak (luzapenez)"
 
 #: ../data/interfaces/open-location.ui.h:1
-#, fuzzy
 msgid "Open Location"
-msgstr "Ireki _kokalekua"
+msgstr "Ireki kokalekua"
 
 #: ../data/interfaces/open-location.ui.h:2
 msgid "Please enter a network URL:"
-msgstr ""
+msgstr "Idatzi sare URL bat:"
 
 #: ../data/desktop/parole.desktop.in.in.h:1
 msgid "Parole"
@@ -353,14 +344,14 @@ msgstr ""
 "Ezin da bideo GStreamer plugina kargatu, egiaztatu GStreamer instalazioa"
 
 #: ../src/gst/parole-gst.c:2244 ../src/gst/parole-gst.c:2248
-#, fuzzy, c-format
+#, c-format
 msgid "Audio Track #%d"
-msgstr "%i pista"
+msgstr "Audio %d pista"
 
 #: ../src/gst/parole-gst.c:2276 ../src/gst/parole-gst.c:2280
 #, c-format
 msgid "Subtitle #%d"
-msgstr ""
+msgstr "Azpititutlu #%d"
 
 #: ../src/main.c:56
 #, c-format
@@ -448,9 +439,8 @@ msgid "Enabled/Disable XV support"
 msgstr "Gaitu/desgaitu XV onarpena"
 
 #: ../src/main.c:242
-#, fuzzy
 msgid "Add files to playlist"
-msgstr "Ezkutatu erreprodukzio-zerrenda"
+msgstr "gehitu fitxategiak erreprodukzio-zerrendara"
 
 #: ../src/main.c:244
 msgid "Media to play"
@@ -464,14 +454,12 @@ msgstr ""
 "irekitzeko\n"
 
 #: ../src/parole-mediachooser.c:208
-#, fuzzy
 msgid "Supported files"
-msgstr "Onartutako fitxategi guztiak"
+msgstr "Onartutako fitxategiak"
 
 #: ../src/parole-mediachooser.c:214
-#, fuzzy
 msgid "All files"
-msgstr "Erreprodukzio-zerrenda fitxategiak"
+msgstr "Fitxategi guztiak"
 
 #: ../src/parole-medialist.c:533
 msgid "Permission denied"
@@ -551,14 +539,12 @@ msgid "Buffering"
 msgstr "Bufferra betetzen"
 
 #: ../src/parole-about.c:61
-#, fuzzy
 msgid "translator-credits"
-msgstr "Itzultzailea (%s)"
+msgstr ""
 
 #: ../src/parole-about.c:64
-#, fuzzy
 msgid "Visit Parole website"
-msgstr "Ikusi webgunea"
+msgstr "Ikusi Parole webgunea"
 
 #: ../src/parole-disc.c:230 ../src/parole-disc.c:283
 msgid "Play Disc"
@@ -706,7 +692,6 @@ msgid "Vietnamese"
 msgstr "Vietnamdarra"
 
 #: ../src/parole-open-location.c:206
-#, fuzzy
 msgid "Clear History"
 msgstr "Garbitu historia"
 
