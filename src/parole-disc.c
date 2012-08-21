@@ -378,18 +378,12 @@ parole_disc_select_cb (GtkItem *item, ParoleDisc *disc)
 static void
 parole_disc_monitor_changed_cb (GVolumeMonitor *monitor, gpointer *device, ParoleDisc *disc)
 {
-    guint i;
-    
-    TRACE ("Changed");
-    for ( i = 0 ; i < disc->priv->array->len; i++)
-    {
-	MountData *data;
+    GtkWidget *img;
 	
-	data = g_ptr_array_index (disc->priv->array, i);
-	gtk_widget_destroy (data->mi);
-	g_ptr_array_remove_index (disc->priv->array, i);
-	g_free (data);
-    }
+	img = gtk_image_new_from_stock("gtk-cdrom", GTK_ICON_SIZE_MENU);
+    gtk_image_menu_item_set_image( GTK_IMAGE_MENU_ITEM (disc->priv->disc_menu_item), img);
+    gtk_menu_item_set_label( GTK_MENU_ITEM (disc->priv->disc_menu_item), _("Insert Disc") );
+    gtk_widget_set_sensitive( GTK_WIDGET (disc->priv->disc_menu_item), FALSE );
     
     disc->priv->needs_update = TRUE;
 }
