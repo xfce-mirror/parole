@@ -1,3 +1,10 @@
+2012-08-21: bluesabre@xfce.org
+    * Bugfix release 0.3.0.2
+    * Fixed --enable-gtk-doc
+    * Fully tested --enable-gtk-doc, --enable-debug=yes, --enable-debug=full
+    * Fixed CD-Drive icon disappearing after drive eject
+    * Small interface tweaks to Plugins dialog.
+
 2012-08-18: bluesabre@xfce.org
     * Bugfix release 0.3.0.2
     * Fixed bug that prevented proper distribution
