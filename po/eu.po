@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-18 20:15+0000\n"
+"POT-Creation-Date: 2012-08-21 07:06+0000\n"
 "PO-Revision-Date: 2009-12-15 12:26+0100\n"
 "Last-Translator: Piarres Beobide <pi+debian@beobide.net>\n"
 "Language-Team: Basque <debian-l10n-basque@lists.debian.org>\n"
@@ -184,8 +184,8 @@ msgid "Enabled"
 msgstr "Gaiturik "
 
 #: ../data/interfaces/plugins.ui.h:4
-msgid "Media Player plugins"
-msgstr "Euskarri erreproduzigailua pluginak"
+msgid "Extend your media player"
+msgstr "Hedatu euskarri erreproduzigailua "
 
 #: ../data/interfaces/plugins.ui.h:5
 msgid "Parole Plugins"
@@ -532,7 +532,7 @@ msgstr "Euskarri korrontean ezin da salto egin"
 
 #: ../src/parole-player.c:1414
 msgid "GStreamer backend error"
-msgstr ""
+msgstr "GStreamer interfaze errorea"
 
 #: ../src/parole-player.c:1457
 msgid "Buffering"
@@ -806,6 +806,9 @@ msgstr "Galarazi indar kudeatzaileak DVDak erreproduzitzean makina etetea"
 #: ../src/plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
 msgstr "Indar kudeatzaile plugina"
+
+#~ msgid "Media Player plugins"
+#~ msgstr "Euskarri erreproduzigailua pluginak"
 
 #~ msgid "From ISO image"
 #~ msgstr "ISO irudi batetatik"
