@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole 2.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-17 22:51+0000\n"
+"POT-Creation-Date: 2012-08-22 09:51+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Nuno Miguel <nunomgue@gmail.com>\n"
 "Language-Team: Portuguese\n"
@@ -52,6 +52,7 @@ msgid "Empty"
 msgstr "Vazio"
 
 #: ../data/interfaces/parole.ui.h:10 ../src/parole-disc.c:125
+#: ../src/parole-disc.c:385
 msgid "Insert Disc"
 msgstr "Insira o disco"
 
@@ -185,8 +186,8 @@ msgid "Enabled"
 msgstr "Ativo"
 
 #: ../data/interfaces/plugins.ui.h:4
-msgid "Media Player plugins"
-msgstr "\"Plug-ins\" do reprodutor"
+msgid "Extend your media player"
+msgstr "Expandir o leitor multimédia"
 
 #: ../data/interfaces/plugins.ui.h:5
 msgid "Parole Plugins"
@@ -809,6 +810,9 @@ msgstr ""
 #: ../src/plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
 msgstr "\"Plugin\" gestão de energia"
+
+#~ msgid "Media Player plugins"
+#~ msgstr "\"Plug-ins\" do reprodutor"
 
 #~ msgid "<b>Site:</b>"
 #~ msgstr "<b>Sítio:</b>"
