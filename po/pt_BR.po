@@ -8,13 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole 0.2.0.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-14 19:57+0000\n"
+"POT-Creation-Date: 2012-08-22 20:33+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
 "Language-Team: Brazilian Portuguese\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../data/interfaces/parole.ui.h:1
@@ -51,6 +52,7 @@ msgid "Empty"
 msgstr "Vazio"
 
 #: ../data/interfaces/parole.ui.h:10 ../src/parole-disc.c:125
+#: ../src/parole-disc.c:385
 msgid "Insert Disc"
 msgstr "Insira disco"
 
@@ -184,8 +186,8 @@ msgid "Enabled"
 msgstr "Habilitado"
 
 #: ../data/interfaces/plugins.ui.h:4
-msgid "Media Player plugins"
-msgstr "Plugins do reprodutor multimídia"
+msgid "Extend your media player"
+msgstr "Extenda seu reprodutor de mídia"
 
 #: ../data/interfaces/plugins.ui.h:5
 msgid "Parole Plugins"
@@ -810,6 +812,9 @@ msgstr ""
 #: ../src/plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
 msgstr "Plugin do gerenciador de energia"
+
+#~ msgid "Media Player plugins"
+#~ msgstr "Plugins do reprodutor multimídia"
 
 #~ msgid "From ISO image"
 #~ msgstr "De uma imagem ISO"
