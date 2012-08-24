@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-10 03:36+0000\n"
+"POT-Creation-Date: 2012-08-24 04:39+0000\n"
 "PO-Revision-Date: 2010-01-18 16:52+0900\n"
 "Last-Translator: Gheyret T.Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -51,6 +51,7 @@ msgid "Empty"
 msgstr "قۇرۇق"
 
 #: ../data/interfaces/parole.ui.h:10 ../src/parole-disc.c:125
+#: ../src/parole-disc.c:385
 msgid "Insert Disc"
 msgstr "دىسكا سېلىش"
 
@@ -184,8 +185,8 @@ msgid "Enabled"
 msgstr "ئىناۋەتلىك"
 
 #: ../data/interfaces/plugins.ui.h:4
-msgid "Media Player plugins"
-msgstr "ۋاسىتە قويغۇ قىستۇرمىلىرى"
+msgid "Extend your media player"
+msgstr "ۋاسىتە قويغۇڭىزنى كېڭەيتىڭ"
 
 #: ../data/interfaces/plugins.ui.h:5
 msgid "Parole Plugins"
@@ -806,6 +807,9 @@ msgstr ""
 #: ../src/plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
 msgstr "مەنبە باشقۇرۇش قىستۇرمىسى"
+
+#~ msgid "Media Player plugins"
+#~ msgstr "ۋاسىتە قويغۇ قىستۇرمىلىرى"
 
 #~ msgid "Replace playlist with opened files"
 #~ msgstr "ئېچىلغان ھۆججەتلەر بىلەن قويۇش تىزىمىنى ئالماشتۇر"
