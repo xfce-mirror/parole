@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-11 17:03+0000\n"
+"POT-Creation-Date: 2012-08-24 10:00+0000\n"
 "PO-Revision-Date: 2012-07-025 11:55+0200\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch (Flemish)\n"
@@ -55,6 +55,7 @@ msgid "Empty"
 msgstr "Leeg"
 
 #: ../data/interfaces/parole.ui.h:10 ../src/parole-disc.c:125
+#: ../src/parole-disc.c:385
 msgid "Insert Disc"
 msgstr "Stop schijf erin"
 
@@ -192,8 +193,8 @@ msgid "Enabled"
 msgstr "Ingeschakeld"
 
 #: ../data/interfaces/plugins.ui.h:4
-msgid "Media Player plugins"
-msgstr "Mediaspeler-invoegtoepassingen"
+msgid "Extend your media player"
+msgstr "Breid uw mediaspeler uit"
 
 #: ../data/interfaces/plugins.ui.h:5
 msgid "Parole Plugins"
@@ -821,6 +822,9 @@ msgstr ""
 #: ../src/plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
 msgstr "Energiebeheer-invoegtoepassing"
+
+#~ msgid "Media Player plugins"
+#~ msgstr "Mediaspeler-invoegtoepassingen"
 
 #~ msgid "From ISO image"
 #~ msgstr "Van ISO-beeldbestand"
