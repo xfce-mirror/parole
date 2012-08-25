@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-13 01:09+0000\n"
+"POT-Creation-Date: 2012-08-25 12:45+0000\n"
 "PO-Revision-Date: 2010-01-27 09:13-0800\n"
 "Last-Translator: Javier Sánchez <donoban@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,6 +50,7 @@ msgid "Empty"
 msgstr "Vacío"
 
 #: ../data/interfaces/parole.ui.h:10 ../src/parole-disc.c:125
+#: ../src/parole-disc.c:385
 msgid "Insert Disc"
 msgstr "Insertar disco"
 
@@ -183,8 +184,8 @@ msgid "Enabled"
 msgstr "Habilitar"
 
 #: ../data/interfaces/plugins.ui.h:4
-msgid "Media Player plugins"
-msgstr "Complementos del reproductor de medios"
+msgid "Extend your media player"
+msgstr "Configure su reproductor de medios"
 
 #: ../data/interfaces/plugins.ui.h:5
 msgid "Parole Plugins"
@@ -808,6 +809,9 @@ msgstr ""
 #: ../src/plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
 msgstr "Complemento administrador de energía"
+
+#~ msgid "Media Player plugins"
+#~ msgstr "Complementos del reproductor de medios"
 
 #~ msgid "0:00"
 #~ msgstr "0:00"
