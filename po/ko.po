@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole.master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-10 14:18+0000\n"
-"PO-Revision-Date: 2012-08-11 00:54+0900\n"
+"POT-Creation-Date: 2012-08-25 12:45+0000\n"
+"PO-Revision-Date: 2012-08-26 01:53+0900\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
 "Language-Team: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge.net>\n"
 "Language: ko\n"
@@ -57,6 +57,7 @@ msgstr "비어 있음"
 
 #: ../data/interfaces/parole.ui.h:10
 #: ../src/parole-disc.c:125
+#: ../src/parole-disc.c:385
 msgid "Insert Disc"
 msgstr "디스크를 삽입하십시오"
 
@@ -191,8 +192,8 @@ msgid "Enabled"
 msgstr "활성화"
 
 #: ../data/interfaces/plugins.ui.h:4
-msgid "Media Player plugins"
-msgstr "미디어 재생기 플러그인"
+msgid "Extend your media player"
+msgstr "미디어 재생기 확장"
 
 #: ../data/interfaces/plugins.ui.h:5
 msgid "Parole Plugins"
@@ -840,6 +841,9 @@ msgstr "전원 관리자라 DVD를 재생하는동안 컴퓨터가 대기상태�
 #: ../src/plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
 msgstr "전원 관리자 플러그인"
+
+#~ msgid "Media Player plugins"
+#~ msgstr "미디어 재생기 플러그인"
 
 #~ msgid "Chapter Menu"
 #~ msgstr "챕터 메뉴"
