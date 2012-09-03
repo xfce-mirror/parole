@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-12 14:27+0000\n"
+"POT-Creation-Date: 2012-09-03 10:45+0000\n"
 "PO-Revision-Date: 2010-02-19 09:04+0100\n"
 "Last-Translator: Cristian Marchi <cri.penta@gmail.com>\n"
 "Language-Team: Italian Translation Team <xfce-it-translators@googlegroups.com>\n"
@@ -60,6 +60,7 @@ msgid "Empty"
 msgstr "Vuota"
 
 #: ../data/interfaces/parole.ui.h:10 ../src/parole-disc.c:125
+#: ../src/parole-disc.c:385
 msgid "Insert Disc"
 msgstr "Inserire disco"
 
@@ -193,8 +194,8 @@ msgid "Enabled"
 msgstr "Abilitato"
 
 #: ../data/interfaces/plugins.ui.h:4
-msgid "Media Player plugins"
-msgstr "Plugin del media player"
+msgid "Extend your media player"
+msgstr "Estendi il riproduttore multimediale"
 
 #: ../data/interfaces/plugins.ui.h:5
 msgid "Parole Plugins"
@@ -820,6 +821,9 @@ msgstr ""
 #: ../src/plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
 msgstr "Plugin del gestore dell'energia"
+
+#~ msgid "Media Player plugins"
+#~ msgstr "Plugin del media player"
 
 #~ msgid "From ISO image"
 #~ msgstr "Da immagine ISO"
