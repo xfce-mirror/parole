@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-09 06:12+0000\n"
+"POT-Creation-Date: 2012-09-03 21:27+0000\n"
 "PO-Revision-Date: 2011-05-27 14:30+0200\n"
 "Last-Translator: Dmitry Nikitin <luckas_fb@mail.ru>\n"
 "Language-Team: Ukrainian <>\n"
@@ -45,11 +45,12 @@ msgstr "Авто"
 msgid "Buffering (0%)"
 msgstr "Буферизація (0%)"
 
-#: ../data/interfaces/parole.ui.h:9 ../src/parole-player.c:645
+#: ../data/interfaces/parole.ui.h:9 ../src/parole-player.c:663
 msgid "Empty"
 msgstr "Пусто"
 
 #: ../data/interfaces/parole.ui.h:10 ../src/parole-disc.c:125
+#: ../src/parole-disc.c:385
 msgid "Insert Disc"
 msgstr "Вставити диск"
 
@@ -183,8 +184,8 @@ msgid "Enabled"
 msgstr "Включено"
 
 #: ../data/interfaces/plugins.ui.h:4
-msgid "Media Player plugins"
-msgstr "Встановлені модулі медіапрогравача"
+msgid "Extend your media player"
+msgstr "Розширити Ваш програвач медіа"
 
 #: ../data/interfaces/plugins.ui.h:5
 msgid "Parole Plugins"
@@ -322,39 +323,39 @@ msgstr "Повідомлення"
 msgid "Error"
 msgstr "Помилка"
 
-#: ../src/gst/parole-gst.c:1495
+#: ../src/gst/parole-gst.c:1493
 msgid "Stop"
 msgstr "Зупинити"
 
-#: ../src/gst/parole-gst.c:1496
+#: ../src/gst/parole-gst.c:1494
 msgid "The stream is taking too much time to load"
 msgstr "Потік потребує забагато часу для завантаження"
 
-#: ../src/gst/parole-gst.c:1665
+#: ../src/gst/parole-gst.c:1663
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Неможливо завантажити модуль GStreamer 'playbin'. Перевірте чи встановлені "
 "модулі GStreamer"
 
-#: ../src/gst/parole-gst.c:1689
+#: ../src/gst/parole-gst.c:1687
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Неможливо завантажити модуль GStreamer для роботи з відео. Перевірте чи "
 "встановлені модулі GStreamer"
 
-#: ../src/gst/parole-gst.c:2246 ../src/gst/parole-gst.c:2250
+#: ../src/gst/parole-gst.c:2244 ../src/gst/parole-gst.c:2248
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Доріжка #%d"
 
-#: ../src/gst/parole-gst.c:2278 ../src/gst/parole-gst.c:2282
+#: ../src/gst/parole-gst.c:2276 ../src/gst/parole-gst.c:2280
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Субтитри #%d"
 
-#: ../src/main.c:55
+#: ../src/main.c:56
 #, c-format
 msgid ""
 "\n"
@@ -375,108 +376,108 @@ msgstr ""
 "Ліцензований під GNU GPL.\n"
 "\n"
 
-#: ../src/main.c:188
+#: ../src/main.c:189
 msgid "Unknown argument "
 msgstr "Невідомий аргумент: "
 
-#: ../src/main.c:226
+#: ../src/main.c:227
 msgid "Open a new instance"
 msgstr "відкрити нове вікно"
 
-#: ../src/main.c:227
+#: ../src/main.c:228
 msgid "Do not load plugins"
 msgstr "Не завантажувати модулі"
 
-#: ../src/main.c:228
+#: ../src/main.c:229
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "Встановити шлях до Audio-CD/VCD/DVD пристрою"
 
-#: ../src/main.c:229
+#: ../src/main.c:230
 msgid "Play or pause if already playing"
 msgstr "Відтворити чи зупинити, якщо вже відтворюється"
 
-#: ../src/main.c:230
+#: ../src/main.c:231
 msgid "Stop playing"
 msgstr "Зупинити відтворення"
 
-#: ../src/main.c:231
+#: ../src/main.c:232
 msgid "Next track"
 msgstr "Наступна доріжка"
 
-#: ../src/main.c:232
+#: ../src/main.c:233
 msgid "Previous track"
 msgstr "Попередня доріжка"
 
-#: ../src/main.c:233
+#: ../src/main.c:234
 msgid "Seek forward"
 msgstr "Шукати вперед"
 
-#: ../src/main.c:234
+#: ../src/main.c:235
 msgid "Seek Backward"
 msgstr "Шукати назад"
 
-#: ../src/main.c:235
+#: ../src/main.c:236
 msgid "Raise volume"
 msgstr "Збільшити гучність"
 
-#: ../src/main.c:236
+#: ../src/main.c:237
 msgid "Lower volume"
 msgstr "Зменшити гучність"
 
-#: ../src/main.c:237
+#: ../src/main.c:238
 msgid "Mute volume"
 msgstr "Вимкнути звук"
 
-#: ../src/main.c:238
+#: ../src/main.c:239
 msgid "Version information"
 msgstr "Інформація про версію"
 
-#: ../src/main.c:239
+#: ../src/main.c:240
 msgid "Start in fullscreen mode"
 msgstr "Стартувати в повному екрані"
 
-#: ../src/main.c:240
+#: ../src/main.c:241
 msgid "Enabled/Disable XV support"
 msgstr "Увімкнути/вимкнути підтримку XV"
 
-#: ../src/main.c:241
+#: ../src/main.c:242
 msgid "Add files to playlist"
 msgstr "Додати файли до списку відтворення"
 
-#: ../src/main.c:243
+#: ../src/main.c:244
 msgid "Media to play"
 msgstr "Медіа для проигравання"
 
-#: ../src/main.c:280
+#: ../src/main.c:281
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole вже працює, використайте-i для відкриття нового\n"
 
-#: ../src/parole-mediachooser.c:210
+#: ../src/parole-mediachooser.c:208
 msgid "Supported files"
 msgstr "Файли що підтримуються"
 
-#: ../src/parole-mediachooser.c:216
+#: ../src/parole-mediachooser.c:214
 msgid "All files"
 msgstr "Всі файли"
 
-#: ../src/parole-medialist.c:527
+#: ../src/parole-medialist.c:533
 msgid "Permission denied"
 msgstr "Відмовлено в доступі"
 
-#: ../src/parole-medialist.c:529
+#: ../src/parole-medialist.c:535
 msgid "Error saving playlist file"
 msgstr "Помилки при збереженні списку відтворення"
 
-#: ../src/parole-medialist.c:541
+#: ../src/parole-medialist.c:547
 msgid "Unknown playlist format"
 msgstr "Невідомий формати списку відтворення"
 
-#: ../src/parole-medialist.c:542
+#: ../src/parole-medialist.c:548
 msgid "Please chooser a supported playlist format"
 msgstr "Використовуйте селектор для підтримуваних форматів списку відтворення"
 
-#: ../src/parole-medialist.c:594 ../src/parole-plugins-manager.c:349
+#: ../src/parole-medialist.c:600 ../src/parole-plugins-manager.c:349
 #: ../src/plugins/properties/stream-properties-provider.c:140
 #: ../src/plugins/properties/stream-properties-provider.c:141
 #: ../src/plugins/properties/stream-properties-provider.c:142
@@ -484,56 +485,56 @@ msgstr "Використовуйте селектор для підтримув�
 msgid "Unknown"
 msgstr "Невідомий"
 
-#: ../src/parole-medialist.c:668 ../src/parole-player.c:2465
+#: ../src/parole-medialist.c:674 ../src/parole-player.c:2495
 msgid "Playlist"
 msgstr "Список відтворення"
 
-#: ../src/parole-medialist.c:675
+#: ../src/parole-medialist.c:681
 msgid "M3U Playlists"
 msgstr "M3U, списки відтворення"
 
-#: ../src/parole-medialist.c:683
+#: ../src/parole-medialist.c:689
 msgid "PLS Playlists"
 msgstr "PLS, списки відтворення"
 
-#: ../src/parole-medialist.c:691
+#: ../src/parole-medialist.c:697
 msgid "Advanced Stream Redirector"
 msgstr "Розширене перенаправлення потоку"
 
-#: ../src/parole-medialist.c:699
+#: ../src/parole-medialist.c:705
 msgid "Shareable Playlist"
 msgstr "Публічний список відтворення"
 
 #. Clear
-#: ../src/parole-medialist.c:1106
+#: ../src/parole-medialist.c:956
 msgid "Open Containing Folder"
 msgstr "Відкрити теку, що містить"
 
-#: ../src/parole-medialist.c:1518
+#: ../src/parole-medialist.c:1376
 msgid "Media list"
 msgstr "Список файлів"
 
-#: ../src/parole-player.c:449
+#: ../src/parole-player.c:467
 msgid "Open ISO image"
 msgstr "Відкрити ISO-образ"
 
-#: ../src/parole-player.c:466
+#: ../src/parole-player.c:484
 msgid "CD image"
 msgstr "Образ CD"
 
-#: ../src/parole-player.c:466
+#: ../src/parole-player.c:484
 msgid "DVD image"
 msgstr "Образ DVD"
 
-#: ../src/parole-player.c:902 ../src/parole-player.c:1025
+#: ../src/parole-player.c:923 ../src/parole-player.c:1046
 msgid "Media stream is not seekable"
 msgstr "Потік медіа не може перемотуватись"
 
-#: ../src/parole-player.c:1392
+#: ../src/parole-player.c:1414
 msgid "GStreamer backend error"
 msgstr "Помилка процесу Gstreamer"
 
-#: ../src/parole-player.c:1435
+#: ../src/parole-player.c:1457
 msgid "Buffering"
 msgstr "Буферизація"
 
@@ -545,7 +546,7 @@ msgstr "Yarema aka Knedlyk <yupadmin@gmail.com>"
 msgid "Visit Parole website"
 msgstr "Відвідати веб-сторінку Parole"
 
-#: ../src/parole-disc.c:230 ../src/parole-disc.c:282
+#: ../src/parole-disc.c:230 ../src/parole-disc.c:283
 msgid "Play Disc"
 msgstr "Грати диск"
 
@@ -690,11 +691,11 @@ msgstr "Західна"
 msgid "Vietnamese"
 msgstr "В'єтнамська"
 
-#: ../src/parole-open-location.c:210
+#: ../src/parole-open-location.c:206
 msgid "Clear History"
 msgstr "Очистити історію"
 
-#: ../src/parole-plugins-manager.c:389 ../src/parole-plugins-manager.c:390
+#: ../src/parole-plugins-manager.c:388 ../src/parole-plugins-manager.c:389
 msgid "No installed plugins found on this system"
 msgstr "У Вашій системі не знайдено встановлених модулів"
 
@@ -807,6 +808,9 @@ msgstr ""
 #: ../src/plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
 msgstr "Модуль управління живленням"
+
+#~ msgid "Media Player plugins"
+#~ msgstr "Встановлені модулі медіапрогравача"
 
 #~ msgid "From ISO image"
 #~ msgstr "З ISO-образу"
