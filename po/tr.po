@@ -77,7 +77,7 @@ msgstr "Ekle_ntiler"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "Select Text Subtitles..."
-msgstr ""
+msgstr "Altyazıları seç..."
 
 #: ../data/interfaces/parole.ui.h:18
 msgid "Show _playlist"
@@ -145,7 +145,7 @@ msgstr "A_ç"
 
 #: ../data/interfaces/playlist.ui.h:1
 msgid "Clear"
-msgstr ""
+msgstr "Temizle"
 
 #: ../data/interfaces/playlist.ui.h:2
 msgid "Play opened files"
@@ -181,7 +181,6 @@ msgid "Enabled"
 msgstr "Etkinleştirilmiş"
 
 #: ../data/interfaces/plugins.ui.h:4
-#, fuzzy
 msgid "Extend your media player"
 msgstr "Ortamçalarınızı genişletin"
 
@@ -535,7 +534,6 @@ msgid "Buffering"
 msgstr "Önbelleğe alınıyor"
 
 #: ../src/parole-about.c:61
-#, fuzzy
 msgid "translator-credits"
 msgstr "Çevirmen (%s)"
 
