@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parole Media Player Turkish Translation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-01 05:15+0000\n"
+"POT-Creation-Date: 2012-09-07 05:42+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Murat PINAR <muratpinar@archlinux.org.tr>\n"
 "Language-Team: Xfce-TR <xfce-tr@googlegroups.com>\n"
@@ -88,29 +88,24 @@ msgid "Square"
 msgstr "Kare"
 
 #: ../data/interfaces/parole.ui.h:20
-#, fuzzy
 msgid "Subtitles"
-msgstr "<b>Altyazılar</b>"
+msgstr "Altyazılar"
 
 #: ../data/interfaces/parole.ui.h:21
-#, fuzzy
 msgid "Subtitles:"
-msgstr "<b>Altyazılar</b>"
+msgstr "Altyazılar:"
 
 #: ../data/interfaces/parole.ui.h:22
-#, fuzzy
 msgid "Volume _Down"
-msgstr "Sesi Azalt"
+msgstr "_Sesi Azalt"
 
 #: ../data/interfaces/parole.ui.h:23
-#, fuzzy
 msgid "Volume _Up"
-msgstr "Sesi Artır"
+msgstr "Sesi _Artır"
 
 #: ../data/interfaces/parole.ui.h:24
-#, fuzzy
 msgid "_Aspect Ratio"
-msgstr "Görüntü Oranı"
+msgstr "_Görüntü Oranı"
 
 #: ../data/interfaces/parole.ui.h:25
 msgid "_Edit"
@@ -125,7 +120,6 @@ msgid "_Media"
 msgstr "_Ortam"
 
 #: ../data/interfaces/parole.ui.h:28
-#, fuzzy
 msgid "_Mute"
 msgstr "Sessiz"
 
@@ -175,14 +169,12 @@ msgid "Shuffle"
 msgstr "Rastgele"
 
 #: ../data/interfaces/plugins.ui.h:1
-#, fuzzy
 msgid "<b>Author</b>"
-msgstr "<b>Eser sahibi:</b>"
+msgstr "İyesi:"
 
 #: ../data/interfaces/plugins.ui.h:2
-#, fuzzy
 msgid "<b>Description</b>"
-msgstr "<b>Açıklama:</b>"
+msgstr "Açıklama:"
 
 #: ../data/interfaces/plugins.ui.h:3
 #, fuzzy
@@ -211,23 +203,20 @@ msgid "<b>Audio</b>"
 msgstr "<b>Ses</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:2
-#, fuzzy
 msgid "<b>Keyboard</b>"
-msgstr "<b>Video</b>"
+msgstr "<b>Klavye</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:3
 msgid "<b>Video</b>"
 msgstr "<b>Video</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:4
-#, fuzzy
 msgid "Always replace playlist with opened files"
-msgstr "Oynatma listesini açılan dosyalarla değiştir"
+msgstr "Oynatma listesini her zaman açılan dosyalarla değiştir."
 
 #: ../data/interfaces/parole-settings.ui.h:5
-#, fuzzy
 msgid "Automatically show subtitles when playing movie file"
-msgstr "Film oynatırken altyazıları otomatik yükle"
+msgstr "Film oynatırken altyazıları kendiliğinden göster."
 
 #: ../data/interfaces/parole-settings.ui.h:6
 msgid "Brightness:"
@@ -246,9 +235,8 @@ msgid "Contrast:"
 msgstr "Kontrast:"
 
 #: ../data/interfaces/parole-settings.ui.h:10
-#, fuzzy
 msgid "Disable screensaver while playing movies"
-msgstr "Video oynatılırken ekran koruyucuyu devre dışı bırak"
+msgstr "Video oynatılırken ekran koruyucuyu etkisizleştir."
 
 #: ../data/interfaces/parole-settings.ui.h:11
 msgid "Enable keyboard multimedia keys"
@@ -259,7 +247,6 @@ msgid "Enable visualization when playing audio file"
 msgstr "Müzik çalarken görselleştirmeyi etkinleştir"
 
 #: ../data/interfaces/parole-settings.ui.h:13
-#, fuzzy
 msgid "Encoding:"
 msgstr "Kodlama: "
 
@@ -276,9 +263,8 @@ msgid "Parole Settings"
 msgstr "Parole Ayarları"
 
 #: ../data/interfaces/parole-settings.ui.h:18
-#, fuzzy
 msgid "Reset to defaults"
-msgstr "Öntanımlılara Sıfırla"
+msgstr "Öntanımlılara Döndür"
 
 #: ../data/interfaces/parole-settings.ui.h:19
 msgid "Saturation:"
@@ -293,12 +279,10 @@ msgid "Visualization type:"
 msgstr "Görsel türü:"
 
 #: ../data/interfaces/parole-settings.ui.h:22
-#, fuzzy
 msgid "_Display"
-msgstr "<b>Görüntü</b>"
+msgstr "Görüntü"
 
 #: ../data/interfaces/parole-settings.ui.h:23
-#, fuzzy
 msgid "_General"
 msgstr "Genel"
 
@@ -308,9 +292,8 @@ msgid "_Playlist"
 msgstr "Oynatma listesi"
 
 #: ../data/interfaces/parole-settings.ui.h:25
-#, fuzzy
 msgid "_Subtitles"
-msgstr "<b>Altyazılar</b>"
+msgstr "Altyazılar"
 
 #: ../data/interfaces/save-playlist.ui.h:1
 msgid "By Extension"
@@ -321,7 +304,6 @@ msgid "Select File Types (By Extension)"
 msgstr "Dosya Türlerini Seç (Uzantıya Göre)"
 
 #: ../data/interfaces/open-location.ui.h:1
-#, fuzzy
 msgid "Open Location"
 msgstr "_Konum aç"
 
@@ -457,9 +439,8 @@ msgid "Enabled/Disable XV support"
 msgstr "XV desteğini aç/kapat"
 
 #: ../src/main.c:242
-#, fuzzy
 msgid "Add files to playlist"
-msgstr "Oynatma listesini gizle"
+msgstr "Dosyaları oynatma listesine ekle"
 
 #: ../src/main.c:244
 msgid "Media to play"
@@ -471,14 +452,12 @@ msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole zaten çalışıyor, -i kullanarak yeni bir tane açabilirsiniz\n"
 
 #: ../src/parole-mediachooser.c:208
-#, fuzzy
 msgid "Supported files"
-msgstr "Tüm desteklenen dosyalar"
+msgstr "Desteklenen Dosyalar"
 
 #: ../src/parole-mediachooser.c:214
-#, fuzzy
 msgid "All files"
-msgstr "Oynatma listesi dosyaları"
+msgstr "Bütün dosyalar"
 
 #: ../src/parole-medialist.c:533
 msgid "Permission denied"
@@ -563,9 +542,8 @@ msgid "translator-credits"
 msgstr "Çevirmen (%s)"
 
 #: ../src/parole-about.c:64
-#, fuzzy
 msgid "Visit Parole website"
-msgstr "Web Sitesini Aç"
+msgstr "Parole'nin sitesine git."
 
 #: ../src/parole-disc.c:230 ../src/parole-disc.c:283
 msgid "Play Disc"
@@ -713,7 +691,6 @@ msgid "Vietnamese"
 msgstr "Vietnamca"
 
 #: ../src/parole-open-location.c:206
-#, fuzzy
 msgid "Clear History"
 msgstr "Geçmişi temizle"
 
