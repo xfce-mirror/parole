@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-08 08:27+0000\n"
+"POT-Creation-Date: 2012-09-11 16:42+0000\n"
 "PO-Revision-Date: 2009-12-10 17:46+0100\n"
 "Last-Translator: Christoph Wickert <cwickert@fedoraproject.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Country: GERMANY\n"
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "X-Poedit-Language: German\n"
+"X-Poedit-Country: GERMANY\n"
 
 #: ../data/interfaces/parole.ui.h:1
 msgid "16:9 (Widescreen)"
@@ -45,18 +45,16 @@ msgid "Auto"
 msgstr "Automatisch"
 
 #: ../data/interfaces/parole.ui.h:8
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Buffering (0%)"
-msgstr "Puffervorgang"
+msgstr "Puffervorgang (0%)"
 
 #: ../data/interfaces/parole.ui.h:9 ../src/parole-player.c:663
-#, fuzzy
 msgid "Empty"
 msgstr "Leer"
 
 #: ../data/interfaces/parole.ui.h:10 ../src/parole-disc.c:125
 #: ../src/parole-disc.c:385
-#, fuzzy
 msgid "Insert Disc"
 msgstr "CD/DVD einlegen"
 
@@ -73,7 +71,6 @@ msgid "None"
 msgstr "Kein"
 
 #: ../data/interfaces/parole.ui.h:14
-#, fuzzy
 msgid "Open _location"
 msgstr "_Ort öffnen"
 
@@ -82,9 +79,8 @@ msgid "Parole Media Player"
 msgstr "Parole Medien-Abspieler"
 
 #: ../data/interfaces/parole.ui.h:16
-#, fuzzy
 msgid "Pl_ugins"
-msgstr "Erweiterungen"
+msgstr "Er_weiterungen"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "Select Text Subtitles..."
@@ -147,7 +143,6 @@ msgid "_View"
 msgstr "_Ansicht"
 
 #: ../data/interfaces/mediachooser.ui.h:1
-#, fuzzy
 msgid "Open Media Files"
 msgstr "Mediendateien öffnen"
 
@@ -225,7 +220,6 @@ msgid "Always replace playlist with opened files"
 msgstr "Wiedergabeliste immer durch geöffnete Dateien ersetzen"
 
 #: ../data/interfaces/parole-settings.ui.h:5
-#, fuzzy
 msgid "Automatically show subtitles when playing movie file"
 msgstr "Untertitel automatisch laden, wenn ein Film wiedergegeben wird"
 
@@ -246,13 +240,12 @@ msgid "Contrast:"
 msgstr "Kontrast:"
 
 #: ../data/interfaces/parole-settings.ui.h:10
-#, fuzzy
 msgid "Disable screensaver while playing movies"
 msgstr "Bildschirmschoner während der Wiedergabe von Filmen deaktivieren"
 
 #: ../data/interfaces/parole-settings.ui.h:11
 msgid "Enable keyboard multimedia keys"
-msgstr ""
+msgstr "Multimedia-Tasten der Tastatur aktivieren"
 
 #: ../data/interfaces/parole-settings.ui.h:12
 msgid "Enable visualization when playing audio file"
@@ -275,7 +268,6 @@ msgid "Parole Settings"
 msgstr "Parole-Einstellungen"
 
 #: ../data/interfaces/parole-settings.ui.h:18
-#, fuzzy
 msgid "Reset to defaults"
 msgstr "Auf Vorgaben zurücksetzen"
 
@@ -467,7 +459,6 @@ msgstr ""
 "Parole läuft bereits, verwenden Sie -i, um eine neue Instanz zu öffnen\n"
 
 #: ../src/parole-mediachooser.c:208
-#, fuzzy
 msgid "Supported files"
 msgstr "Unterstützte Dateien"
 
@@ -707,7 +698,6 @@ msgid "Vietnamese"
 msgstr "Vietnamesisch"
 
 #: ../src/parole-open-location.c:206
-#, fuzzy
 msgid "Clear History"
 msgstr "Chronik leeren"
 
