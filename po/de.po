@@ -36,9 +36,8 @@ msgid "Audio"
 msgstr "Audio"
 
 #: ../data/interfaces/parole.ui.h:5
-#, fuzzy
 msgid "Audio Track:"
-msgstr "Vorheriger Titel"
+msgstr "Audio-Titel:"
 
 #: ../data/interfaces/parole.ui.h:6
 msgid "Auto"
@@ -229,7 +228,7 @@ msgstr "Helligkeit:"
 
 #: ../data/interfaces/parole-settings.ui.h:7
 msgid "Check and remove duplicate media entries"
-msgstr ""
+msgstr "Doppelt vorhandene Medieneinträge überprüfen und entfernen"
 
 #: ../data/interfaces/parole-settings.ui.h:8
 msgid "Configure your media player"
@@ -544,9 +543,11 @@ msgid "Buffering"
 msgstr "Puffervorgang"
 
 #: ../src/parole-about.c:61
-#, fuzzy
 msgid "translator-credits"
-msgstr "Übersetzer (%s)"
+msgstr ""
+"Mario Blättermann <mario.blaettermann@gmail.com>\n"
+"\r\n"
+"Christoph Wickert <cwickert@fedoraproject.org>"
 
 #: ../src/parole-about.c:64
 msgid "Visit Parole website"
