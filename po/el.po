@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-10 08:57+0000\n"
+"POT-Creation-Date: 2012-10-06 15:54+0000\n"
 "PO-Revision-Date: 2010-03-30 23:39+0200\n"
 "Last-Translator: George Vlahavas <vlahavas~at~gmail~dot~com>\n"
 "Language-Team: \n"
@@ -53,6 +53,7 @@ msgid "Empty"
 msgstr "Άδειο"
 
 #: ../data/interfaces/parole.ui.h:10 ../src/parole-disc.c:125
+#: ../src/parole-disc.c:385
 msgid "Insert Disc"
 msgstr "Εισάγετε δίσκο"
 
@@ -186,8 +187,8 @@ msgid "Enabled"
 msgstr "Ενεργό"
 
 #: ../data/interfaces/plugins.ui.h:4
-msgid "Media Player plugins"
-msgstr "Πρόσθετα εφαρμογής αναπαραγωγής πολυμέσων"
+msgid "Extend your media player"
+msgstr "Επέκταση του αναπαραγωγού πολυμέσων"
 
 #: ../data/interfaces/plugins.ui.h:5
 msgid "Parole Plugins"
@@ -813,6 +814,9 @@ msgstr ""
 #: ../src/plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
 msgstr "Πρόσθετο Διαχείρισης Ενέργειας"
+
+#~ msgid "Media Player plugins"
+#~ msgstr "Πρόσθετα εφαρμογής αναπαραγωγής πολυμέσων"
 
 #~ msgid "From ISO image"
 #~ msgstr "Από εικόνα ISO"
