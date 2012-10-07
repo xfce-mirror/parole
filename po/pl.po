@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parole master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-26 15:09+0000\n"
+"POT-Creation-Date: 2012-10-07 07:57+0000\n"
 "PO-Revision-Date: 2012-04-19 15:00+0200\n"
 "Last-Translator: Piotr Sokół <psokol@jabster.pl>\n"
 "Language-Team: polski <>\n"
@@ -71,27 +71,24 @@ msgid "None"
 msgstr "Brak"
 
 #: ../data/interfaces/parole.ui.h:14
-#, fuzzy
 msgid "Open _location"
-msgstr "_Otwórz położenie"
+msgstr "Otwórz p_ołożenie"
 
 #: ../data/interfaces/parole.ui.h:15 ../src/parole-about.c:55
 msgid "Parole Media Player"
 msgstr "Odtwarzacz nagrań Parole"
 
 #: ../data/interfaces/parole.ui.h:16
-#, fuzzy
 msgid "Pl_ugins"
-msgstr "Wtyczki"
+msgstr "_Wtyczki"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "Select Text Subtitles..."
 msgstr "Wskaż napisy tekstowe..."
 
 #: ../data/interfaces/parole.ui.h:18
-#, fuzzy
 msgid "Show _playlist"
-msgstr "Wyświetla listę odtwarzania"
+msgstr "Wyświetla _listę odtwarzania"
 
 #: ../data/interfaces/parole.ui.h:19
 msgid "Square"
@@ -106,14 +103,12 @@ msgid "Subtitles:"
 msgstr "Napisy:"
 
 #: ../data/interfaces/parole.ui.h:22
-#, fuzzy
 msgid "Volume _Down"
-msgstr "Zmniejsz głośność"
+msgstr "Z_mniejsz głośność"
 
 #: ../data/interfaces/parole.ui.h:23
-#, fuzzy
 msgid "Volume _Up"
-msgstr "Zwiększ głośność"
+msgstr "Z_większ głośność"
 
 #: ../data/interfaces/parole.ui.h:24
 #, fuzzy
@@ -158,7 +153,7 @@ msgstr "Otwiera pliki nagrań"
 
 #: ../data/interfaces/mediachooser.ui.h:2
 msgid "_Open"
-msgstr ""
+msgstr "_Otwórz"
 
 #: ../data/interfaces/playlist.ui.h:1
 msgid "Clear"
@@ -266,9 +261,8 @@ msgid "Enable visualization when playing audio file"
 msgstr "Wyświetlanie wizualizacji podczas odtwarzania plików dźwiękowych"
 
 #: ../data/interfaces/parole-settings.ui.h:13
-#, fuzzy
 msgid "Encoding:"
-msgstr "Kodowanie: "
+msgstr "Kodowanie:"
 
 #: ../data/interfaces/parole-settings.ui.h:14
 msgid "Font:"
@@ -305,14 +299,12 @@ msgid "_Display"
 msgstr "<b>Wyświetlanie</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:23
-#, fuzzy
 msgid "_General"
-msgstr "Ogólne"
+msgstr "_Ogólne"
 
 #: ../data/interfaces/parole-settings.ui.h:24
-#, fuzzy
 msgid "_Playlist"
-msgstr "Lista odtwarzania"
+msgstr "_Lista odtwarzania"
 
 #: ../data/interfaces/parole-settings.ui.h:25
 #, fuzzy
@@ -487,9 +479,8 @@ msgid "Supported files"
 msgstr "Wszystkie obsługiwane pliki"
 
 #: ../src/parole-mediachooser.c:214
-#, fuzzy
 msgid "All files"
-msgstr "Pliki list odtwarzania"
+msgstr "Wszystkie pliki"
 
 #: ../src/parole-medialist.c:533
 msgid "Permission denied"
@@ -569,9 +560,8 @@ msgid "Buffering"
 msgstr "Buforowanie"
 
 #: ../src/parole-about.c:61
-#, fuzzy
 msgid "translator-credits"
-msgstr "Tłumacz (%s)"
+msgstr "Piotr Sokół <psokol@jabster.pl>, 2012."
 
 #: ../src/parole-about.c:64
 #, fuzzy
