@@ -1,21 +1,20 @@
-# Uyghur translations for parole package
-# Copyright (C) 2009 THE parole'S COPYRIGHT HOLDER
-# Gheyret T.Kenji <gheyret@gmail.com>, 2010.
-# 
+# Uyghur translation for parole.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Gheyret Kenji <gheyret@gmail.com>, YEAR.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-24 04:39+0000\n"
-"PO-Revision-Date: 2010-01-18 16:52+0900\n"
-"Last-Translator: Gheyret T.Kenji <gheyret@gmail.com>\n"
+"POT-Creation-Date: 2012-10-24 01:12+0000\n"
+"PO-Revision-Date: 2011-11-09 16:10+0900\n"
+"Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Poedit-Language: Japanese\n"
 
 #: ../data/interfaces/parole.ui.h:1
 msgid "16:9 (Widescreen)"
@@ -149,7 +148,7 @@ msgstr "ئاچ(_O)"
 
 #: ../data/interfaces/playlist.ui.h:1
 msgid "Clear"
-msgstr "تازىلاش"
+msgstr "تازىلا"
 
 #: ../data/interfaces/playlist.ui.h:2
 msgid "Play opened files"
@@ -242,7 +241,7 @@ msgstr "كىنو قويۇۋاتقاندا ئېكران قوغدىغۇچ ئىنا
 
 #: ../data/interfaces/parole-settings.ui.h:11
 msgid "Enable keyboard multimedia keys"
-msgstr "ھەرپتاختىدىكى كوپ ۋاسىتە كۇنۇپكىلىرى ئىناۋەتلىك بولسۇن"
+msgstr "ھەرپتاختىدىكى كۆپ ۋاسىتە كۇنۇپكىلىرى ئىناۋەتلىك بولسۇن"
 
 #: ../data/interfaces/parole-settings.ui.h:12
 msgid "Enable visualization when playing audio file"
@@ -250,7 +249,7 @@ msgstr "ئۈن قويۇۋاتقاندا سۈرەتلەشتۈرۈش ئىناۋە�
 
 #: ../data/interfaces/parole-settings.ui.h:13
 msgid "Encoding:"
-msgstr "كودلاش: "
+msgstr "كودلاش:"
 
 #: ../data/interfaces/parole-settings.ui.h:14
 msgid "Font:"
@@ -306,7 +305,7 @@ msgstr "ھۆججەت تىپىنى تاللاش(كېڭەيتمە ئاتى بوي�
 
 #: ../data/interfaces/open-location.ui.h:1
 msgid "Open Location"
-msgstr "ئورۇننى ئېچىش"
+msgstr "ئورۇن ئاچ"
 
 #: ../data/interfaces/open-location.ui.h:2
 msgid "Please enter a network URL:"
@@ -335,8 +334,7 @@ msgstr "ئېقىمنى ئوقۇش ئوقۇش ئۈچۈن نۇرغۇن ۋاقىت 
 #: ../src/gst/parole-gst.c:1663
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
-msgstr ""
-"قىستۇرما playbin GStreamer ئوقۇيالمىدى، GStreamer ئورنىتىلدىمۇ تەكشۈرۈڭ"
+msgstr "قىستۇرما playbin GStreamer ئوقۇيالمىدى، GStreamer ئورنىتىلدىمۇ تەكشۈرۈڭ"
 
 #: ../src/gst/parole-gst.c:1687
 msgid ""
@@ -364,8 +362,7 @@ msgid ""
 "\n"
 "Licensed under the GNU GPL.\n"
 "\n"
-msgstr ""
-"\n"
+msgstr "\n"
 "پارولې(Parole) ۋاسىتە قويغۇ %s\n"
 "\n"
 "بۇ Xfce Goodies Project نىڭ بىر بۆلىكى\n"
@@ -449,8 +446,7 @@ msgstr "قويىدىغان  ۋاسىتە"
 #: ../src/main.c:281
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
-msgstr ""
-"پارولې(Parole) ئىجرا بولۇۋېتىپتۇ، يېڭىدىن بىرنى ئېچىش ئۈچۈن -i نى ئىشلىتىڭ\n"
+msgstr "پارولې(Parole) ئىجرا بولۇۋېتىپتۇ، يېڭىدىن بىرنى ئېچىش ئۈچۈن -i نى ئىشلىتىڭ\n"
 
 #: ../src/parole-mediachooser.c:208
 msgid "Supported files"
@@ -462,7 +458,7 @@ msgstr "ھەممە ھۆججەتلەر"
 
 #: ../src/parole-medialist.c:533
 msgid "Permission denied"
-msgstr "ئىمتىيازىڭىز يەتمىدى"
+msgstr "ھوقۇقىڭىز يەتمىدى"
 
 #: ../src/parole-medialist.c:535
 msgid "Error saving playlist file"
@@ -579,12 +575,12 @@ msgstr "ئوتتۇرا ياۋروپا"
 #: ../src/parole-subtitle-encoding.c:199 ../src/parole-subtitle-encoding.c:201
 #: ../src/parole-subtitle-encoding.c:203 ../src/parole-subtitle-encoding.c:205
 msgid "Chinese Simplified"
-msgstr "خەنزۇچە(ئاددىي)"
+msgstr "ئاددىيلاشتۇرۇلغان خەنزۇچە"
 
 #: ../src/parole-subtitle-encoding.c:208 ../src/parole-subtitle-encoding.c:210
 #: ../src/parole-subtitle-encoding.c:212
 msgid "Chinese Traditional"
-msgstr "خەنزۇچە(مۇرەككەپ)"
+msgstr "مۇرەككەپ خەنزۇچە"
 
 #: ../src/parole-subtitle-encoding.c:215
 msgid "Croatian"
@@ -658,7 +654,7 @@ msgstr "پارسچە"
 
 #: ../src/parole-subtitle-encoding.c:295 ../src/parole-subtitle-encoding.c:297
 msgid "Romanian"
-msgstr "رۇمىنچە"
+msgstr "رۇمىنىيەچە"
 
 #: ../src/parole-subtitle-encoding.c:300
 msgid "South European"
@@ -800,118 +796,8 @@ msgstr "قونداق سىنبەلگىسى"
 
 #: ../src/plugins/power-manager/power-manager.desktop.in.h:1
 msgid "Inhibit Power Manager from suspending the machine while playing DVD."
-msgstr ""
-"پلاستىنكا(DVD) نى قويۇۋاتقاندا، مەنبە باشقۇرغۇنىڭ توڭلىتىشىغا ئىجازەت "
-"بەرمەيدۇ."
+msgstr "پلاستىنكا(DVD) نى قويۇۋاتقاندا، مەنبە باشقۇرغۇنىڭ توڭلىتىشىغا ئىجازەت بەرمەيدۇ."
 
 #: ../src/plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
 msgstr "مەنبە باشقۇرۇش قىستۇرمىسى"
-
-#~ msgid "Media Player plugins"
-#~ msgstr "ۋاسىتە قويغۇ قىستۇرمىلىرى"
-
-#~ msgid "Replace playlist with opened files"
-#~ msgstr "ئېچىلغان ھۆججەتلەر بىلەن قويۇش تىزىمىنى ئالماشتۇر"
-
-#~ msgid "Scan folders recursively"
-#~ msgstr "قىسقۇچلارنى چوڭقۇرلاپ ئىزدە"
-
-#~ msgid "<b>Site:</b>"
-#~ msgstr "<b>تورتۇرا:</b>"
-
-#~ msgid "From ISO image"
-#~ msgstr "ISO تەسۋىرىدىن"
-
-#~ msgid "Sound"
-#~ msgstr "ئاۋاز"
-
-#~ msgid "Parole Media Chooser"
-#~ msgstr "Parole ۋاسىتە قويغۇ"
-
-#~ msgid "Media Player Settings"
-#~ msgstr "ۋاسىتە قويغۇ تەڭشىكى"
-
-#~ msgid "<b>Display</b>"
-#~ msgstr "<b>ئېكران</b>"
-
-#~ msgid "<b>Playlist options</b>"
-#~ msgstr "<b>چېلىۋاتىدۇ:</b>"
-
-#~ msgid "<b>Subtitles</b>"
-#~ msgstr "<b>فىلىم خېتى</b>"
-
-#~ msgid "Chapter Menu"
-#~ msgstr "باب تىزىملىكى"
-
-#~ msgid "DVD"
-#~ msgstr "DVD"
-
-#~ msgid "DVD Menu"
-#~ msgstr "DVD تىزىملىكى"
-
-#~ msgid "Next Chapter"
-#~ msgstr "كېيىنكى باب"
-
-#~ msgid "Previous Chapter"
-#~ msgstr "ئالدىنقى باب"
-
-#~ msgid "Select Track"
-#~ msgstr "Track تاللا"
-
-#~ msgid "Add"
-#~ msgstr "قوش"
-
-#~ msgid "Next Track"
-#~ msgstr "كېيىنكى Track"
-
-#~ msgid "Stopped"
-#~ msgstr "توختىدى"
-
-#~ msgid "Finished"
-#~ msgstr "تاماملاندى"
-
-#~ msgid "Paused"
-#~ msgstr "ۋاقىتلىق توختىدى"
-
-#~ msgid "Playing"
-#~ msgstr "چېلىۋاتىدۇ"
-
-#~ msgid "Live stream:"
-#~ msgstr "نەق مەيدان ئېقىم:"
-
-#~ msgid "Author/Maintainer"
-#~ msgstr "ئاپتور/مەست`ئۇل كىشى"
-
-#~ msgid "Open location..."
-#~ msgstr "ئورۇننى ئېچىش…"
-
-#~ msgid "<b>Open location of media file or live stream:</b>"
-#~ msgstr "<b>ۋاسىتە ھۆججىتى ياكى نەق مەيدان ئېقىمنىڭ ئورنىنى ئېچىش:</b>"
-
-#~ msgid "Playing Track"
-#~ msgstr "Track نى چېلىۋاتىدۇ"
-
-#~ msgid "Set the main window name to the current playing media name."
-#~ msgstr "قۇيۇلۇۋاتقان ۋاسىتىنىڭ ئاتىنى ئاساسىي كۆزنەك ئاتى قىلىدۇ."
-
-#~ msgid "Window Title"
-#~ msgstr "كۆزنەك ماۋزۇسى"
-
-#~ msgid "socket"
-#~ msgstr "socket"
-
-#~ msgid "SOCKET ID"
-#~ msgstr "SOCKET ID"
-
-#~ msgid "url to play"
-#~ msgstr "چالىدىغان url"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#~ msgid "Fullscreen"
-#~ msgstr "تولۇق ئېكران"
-
-#~ msgid "Copy url"
-#~ msgstr "url نى كۆچۈر"
