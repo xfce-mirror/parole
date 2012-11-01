@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parole master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-07 07:57+0000\n"
+"POT-Creation-Date: 2012-11-01 12:30+0000\n"
 "PO-Revision-Date: 2012-04-19 15:00+0200\n"
 "Last-Translator: Piotr Sokół <psokol@jabster.pl>\n"
 "Language-Team: polski <>\n"
@@ -111,9 +111,8 @@ msgid "Volume _Up"
 msgstr "Z_większ głośność"
 
 #: ../data/interfaces/parole.ui.h:24
-#, fuzzy
 msgid "_Aspect Ratio"
-msgstr "Kadrowanie"
+msgstr "_Proporcje obrazu"
 
 #: ../data/interfaces/parole.ui.h:25
 msgid "_Edit"
@@ -128,28 +127,24 @@ msgid "_Media"
 msgstr "_Nagranie"
 
 #: ../data/interfaces/parole.ui.h:28
-#, fuzzy
 msgid "_Mute"
-msgstr "Wycisz"
+msgstr "_Wycisz"
 
 #: ../data/interfaces/parole.ui.h:29
-#, fuzzy
 msgid "_Repeat"
-msgstr "Powtarzanie"
+msgstr "_Powtarzanie"
 
 #: ../data/interfaces/parole.ui.h:30
-#, fuzzy
 msgid "_Shuffle"
-msgstr "Odtwarzanie losowe"
+msgstr "_Losowe"
 
 #: ../data/interfaces/parole.ui.h:31
 msgid "_View"
 msgstr "_Widok"
 
 #: ../data/interfaces/mediachooser.ui.h:1
-#, fuzzy
 msgid "Open Media Files"
-msgstr "Otwiera pliki nagrań"
+msgstr "Otwiera Pliki Mediów"
 
 #: ../data/interfaces/mediachooser.ui.h:2
 msgid "_Open"
@@ -190,12 +185,11 @@ msgstr "<b>Opis</b>"
 
 #: ../data/interfaces/plugins.ui.h:3
 msgid "Enabled"
-msgstr ""
+msgstr "Właczone"
 
 #: ../data/interfaces/plugins.ui.h:4
-#, fuzzy
 msgid "Extend your media player"
-msgstr "Odtwarzacz nagrań"
+msgstr "Rozszerza odtwarzacz"
 
 #: ../data/interfaces/plugins.ui.h:5
 msgid "Parole Plugins"
@@ -222,14 +216,12 @@ msgid "<b>Video</b>"
 msgstr "<b>Wideo</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:4
-#, fuzzy
 msgid "Always replace playlist with opened files"
-msgstr "Zastąpienie zawartości listy odtwarzania"
+msgstr "Zawsze zastępuje listę odtwarzanie otwartymi plikami"
 
 #: ../data/interfaces/parole-settings.ui.h:5
-#, fuzzy
 msgid "Automatically show subtitles when playing movie file"
-msgstr "Automatyczne wczytywanie"
+msgstr "Pokazuje napisy automatycznie podczas odtwarzania pliku z filmem"
 
 #: ../data/interfaces/parole-settings.ui.h:6
 msgid "Brightness:"
@@ -237,7 +229,7 @@ msgstr "Jasność:"
 
 #: ../data/interfaces/parole-settings.ui.h:7
 msgid "Check and remove duplicate media entries"
-msgstr ""
+msgstr "Sprawdza i usuwa podwójne wpisy plików"
 
 #: ../data/interfaces/parole-settings.ui.h:8
 msgid "Configure your media player"
@@ -248,13 +240,12 @@ msgid "Contrast:"
 msgstr "Kontrast:"
 
 #: ../data/interfaces/parole-settings.ui.h:10
-#, fuzzy
 msgid "Disable screensaver while playing movies"
-msgstr "Wyłączenie wygaszacza ekranu podczas odtwarzania"
+msgstr "Wyłącza wygaszacz ekranu podczas odtwarzania filmów"
 
 #: ../data/interfaces/parole-settings.ui.h:11
 msgid "Enable keyboard multimedia keys"
-msgstr ""
+msgstr "Włącza klawisze multimedialne klawiatury"
 
 #: ../data/interfaces/parole-settings.ui.h:12
 msgid "Enable visualization when playing audio file"
@@ -277,9 +268,8 @@ msgid "Parole Settings"
 msgstr "Preferencje programu Parole"
 
 #: ../data/interfaces/parole-settings.ui.h:18
-#, fuzzy
 msgid "Reset to defaults"
-msgstr "Przywróć domyślne"
+msgstr "Przywraca ustawienia domyślne"
 
 #: ../data/interfaces/parole-settings.ui.h:19
 msgid "Saturation:"
@@ -294,9 +284,8 @@ msgid "Visualization type:"
 msgstr "Rodzaj wizualizacji:"
 
 #: ../data/interfaces/parole-settings.ui.h:22
-#, fuzzy
 msgid "_Display"
-msgstr "<b>Wyświetlanie</b>"
+msgstr "_Wyświetlanie"
 
 #: ../data/interfaces/parole-settings.ui.h:23
 msgid "_General"
@@ -307,9 +296,8 @@ msgid "_Playlist"
 msgstr "_Lista odtwarzania"
 
 #: ../data/interfaces/parole-settings.ui.h:25
-#, fuzzy
 msgid "_Subtitles"
-msgstr "<b>Listy dialogowe</b>"
+msgstr "_Napisy"
 
 #: ../data/interfaces/save-playlist.ui.h:1
 msgid "By Extension"
@@ -320,13 +308,12 @@ msgid "Select File Types (By Extension)"
 msgstr "Typ pliku (wgedług rozszerzenia)"
 
 #: ../data/interfaces/open-location.ui.h:1
-#, fuzzy
 msgid "Open Location"
-msgstr "_Otwórz położenie"
+msgstr "Otwiera Położenie"
 
 #: ../data/interfaces/open-location.ui.h:2
 msgid "Please enter a network URL:"
-msgstr ""
+msgstr "Proszę wprowadzić URL sieci roboczej"
 
 #: ../data/desktop/parole.desktop.in.in.h:1
 msgid "Parole"
@@ -363,14 +350,14 @@ msgstr ""
 "instalacji GStreamer."
 
 #: ../src/gst/parole-gst.c:2244 ../src/gst/parole-gst.c:2248
-#, fuzzy, c-format
+#, c-format
 msgid "Audio Track #%d"
-msgstr "Ścieżka %i"
+msgstr "Ścieżka Dźwiękowa #%d"
 
 #: ../src/gst/parole-gst.c:2276 ../src/gst/parole-gst.c:2280
 #, c-format
 msgid "Subtitle #%d"
-msgstr ""
+msgstr "Napisy #%d"
 
 #: ../src/main.c:56
 #, c-format
@@ -458,9 +445,8 @@ msgid "Enabled/Disable XV support"
 msgstr "Przełącza obsługę XV"
 
 #: ../src/main.c:242
-#, fuzzy
 msgid "Add files to playlist"
-msgstr "Ukrywa listę odtwarzania"
+msgstr "Dodaje pliki do listy odtwarzania"
 
 #: ../src/main.c:244
 msgid "Media to play"
@@ -474,9 +460,8 @@ msgstr ""
 "nowe wystąpienie.\n"
 
 #: ../src/parole-mediachooser.c:208
-#, fuzzy
 msgid "Supported files"
-msgstr "Wszystkie obsługiwane pliki"
+msgstr "Obsługiwane pliki"
 
 #: ../src/parole-mediachooser.c:214
 msgid "All files"
@@ -533,7 +518,7 @@ msgstr "Otwórz katalog docelowy"
 
 #: ../src/parole-medialist.c:1376
 msgid "Media list"
-msgstr ""
+msgstr "Lista Mediów"
 
 #: ../src/parole-player.c:467
 msgid "Open ISO image"
@@ -553,7 +538,7 @@ msgstr "Strumień multimedialny nie posiada możliwości przeszukiwania"
 
 #: ../src/parole-player.c:1414
 msgid "GStreamer backend error"
-msgstr ""
+msgstr "Błąd wewnętrzny Gstreamer"
 
 #: ../src/parole-player.c:1457
 msgid "Buffering"
@@ -564,9 +549,8 @@ msgid "translator-credits"
 msgstr "Piotr Sokół <psokol@jabster.pl>, 2012."
 
 #: ../src/parole-about.c:64
-#, fuzzy
 msgid "Visit Parole website"
-msgstr "Odwiedź stronę"
+msgstr "Storna Parole"
 
 #: ../src/parole-disc.c:230 ../src/parole-disc.c:283
 msgid "Play Disc"
@@ -714,9 +698,8 @@ msgid "Vietnamese"
 msgstr "Wietnamskie"
 
 #: ../src/parole-open-location.c:206
-#, fuzzy
 msgid "Clear History"
-msgstr "Wyczyść historię"
+msgstr "Czyści Historię"
 
 #: ../src/parole-plugins-manager.c:388 ../src/parole-plugins-manager.c:389
 msgid "No installed plugins found on this system"
