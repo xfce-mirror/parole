@@ -23,35 +23,27 @@
 
 #include <glib-object.h>
 
-G_BEGIN_DECLS
+G_BEGIN_DECLS;
 
-#define PAROLE_TYPE_CONF        (parole_conf_get_type () )
-#define PAROLE_CONF(o)          (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_CONF, ParoleConf))
-#define PAROLE_IS_CONF(o)       (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_CONF))
+typedef struct _ParoleConfClass ParoleConfClass;
+typedef struct _ParoleConf      ParoleConf;
 
-   
-typedef struct ParoleConfPrivate ParoleConfPrivate;
-
-typedef struct
-{
-    GObject         		 parent;
-    ParoleConfPrivate     	*priv;
-    
-} ParoleConf;
-
-typedef struct
-{
-    GObjectClass 		 parent_class;
-    
-} ParoleConfClass;
+#define PAROLE_TYPE_CONF             (parole_conf_get_type () )
+#define PAROLE_CONF(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), PAROLE_TYPE_CONF, ParoleConf))
+#define PAROLE_CONF_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), PAROLE_TYPE_CONF, ParoleConfClass))
+#define PAROLE_IS_CONF(o)            (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_CONF))
+#define PAROLE_IS_CONF_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), PAROLE_TYPE_CONF))
+#define PAROLE_CONF_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), PAROLE_TYPE_CONF, ParoleConfClass))
 
 GType        			 parole_conf_get_type        	(void) G_GNUC_CONST;
 
 ParoleConf       		*parole_conf_new             	(void);
 
-gboolean			 parole_conf_get_property_bool  (ParoleConf *conf,
-								 const gchar *name);
+gboolean			     parole_conf_get_property_bool  (ParoleConf *conf,
+								                         const gchar *name);
+								                         
+void                     parole_conf_xfconf_init_failed (void);
 
-G_END_DECLS
+G_END_DECLS;
 
 #endif /* __PAROLE_CONF_H */

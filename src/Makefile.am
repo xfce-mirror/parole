@@ -25,6 +25,7 @@ INCLUDES =					\
 	$(GMODULE_CFLAGS)			\
         $(DBUS_GLIB_CFLAGS)                     \
         $(LIBXFCE4UI_CFLAGS)                   \
+        $(XFCONF_CFLAGS)                   \
 	$(GST_VIDEO_CFLAGS)			\
 	$(GST_INTERFACES_CFLAGS)		\
 	$(TAGLIBC_CFLAGS)			\
@@ -85,6 +86,7 @@ parole_LDADD =						   	\
 	$(GMODULE_LIBS)				\
         $(DBUS_GLIB_LIBS)                       \
         $(LIBXFCE4UI_LIBS)                     \
+        $(XFCONF_LIBS)                     \
 	$(GST_VIDEO_LIBS)			\
 	$(GST_INTERFACES_LIBS)			\
 	$(TAGLIBC_LIBS)				\

@@ -36,6 +36,7 @@
 #include <gst/gst.h>
 
 #include <libxfce4util/libxfce4util.h>
+#include <xfconf/xfconf.h>
 
 #include <dbus/dbus-glib.h>
 #include <dbus/dbus-glib-lowlevel.h>
@@ -221,6 +222,14 @@ int main (int argc, char **argv)
     gboolean fullscreen = FALSE;
 	gboolean enqueue = FALSE;
     gchar    *client_id = NULL;
+    
+    /* initialize xfconf */
+    if (!xfconf_init (&error))
+    {
+        g_critical ("Failed to initialize Xfconf: %s", error->message);
+        g_error_free (error);
+        return EXIT_FAILURE;
+    }
     
     GOptionEntry option_entries[] = 
     {
