@@ -35,13 +35,13 @@ typedef struct _ParoleConf      ParoleConf;
 #define PAROLE_IS_CONF_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), PAROLE_TYPE_CONF))
 #define PAROLE_CONF_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), PAROLE_TYPE_CONF, ParoleConfClass))
 
-GType        			 parole_conf_get_type        	(void) G_GNUC_CONST;
+GType                    parole_conf_get_type           (void) G_GNUC_CONST;
 
-ParoleConf       		*parole_conf_new             	(void);
+ParoleConf              *parole_conf_new                (void);
 
-gboolean			     parole_conf_get_property_bool  (ParoleConf *conf,
-								                         const gchar *name);
-								                         
+gboolean                 parole_conf_get_property_bool  (ParoleConf *conf,
+                                                         const gchar *name);
+                     
 void                     parole_conf_xfconf_init_failed (void);
 
 G_END_DECLS;

@@ -116,9 +116,9 @@ G_DEFINE_TYPE (ParoleConf, parole_conf, G_TYPE_OBJECT)
 
 
 static void parole_conf_set_property (GObject *object,
-				      guint prop_id,
-				      const GValue *value,
-				      GParamSpec *pspec)
+                                      guint prop_id,
+                                      const GValue *value,
+                                      GParamSpec *pspec)
 {
     ParoleConf  *conf = PAROLE_CONF (object);
     GValue       dst = { 0, };
@@ -163,9 +163,9 @@ static void parole_conf_set_property (GObject *object,
 }
 
 static void parole_conf_get_property (GObject *object,
-				                      guint prop_id,
-				                      GValue *value,
-				                      GParamSpec *pspec)
+                                      guint prop_id,
+                                      GValue *value,
+                                      GParamSpec *pspec)
 {
     ParoleConf  *conf = PAROLE_CONF (object);
     GValue       src = { 0, };
@@ -252,7 +252,7 @@ transform_string_to_enum (const GValue *src,
     genum_value = g_enum_get_value_by_name (genum_class, g_value_get_string (src));
     
     if (G_UNLIKELY (genum_value == NULL))
-	    genum_value = genum_class->values;
+        genum_value = genum_class->values;
     g_value_set_enum (dst, genum_value->value);
 }
 
@@ -267,19 +267,19 @@ parole_conf_class_init (ParoleConfClass *klass)
     object_class->set_property = parole_conf_set_property;
 
     if (!g_value_type_transformable (G_TYPE_STRING, G_TYPE_INT))
-	g_value_register_transform_func (G_TYPE_STRING, G_TYPE_INT, transform_string_to_int);
+    g_value_register_transform_func (G_TYPE_STRING, G_TYPE_INT, transform_string_to_int);
 
     if (!g_value_type_transformable (G_TYPE_STRING, G_TYPE_BOOLEAN))
-	g_value_register_transform_func (G_TYPE_STRING, G_TYPE_BOOLEAN, transform_string_to_boolean);
+    g_value_register_transform_func (G_TYPE_STRING, G_TYPE_BOOLEAN, transform_string_to_boolean);
     
     if (!g_value_type_transformable (G_TYPE_STRING, GST_ENUM_TYPE_ASPECT_RATIO))
-	g_value_register_transform_func (G_TYPE_STRING, GST_ENUM_TYPE_ASPECT_RATIO, transform_string_to_enum);
-	
-	/**
-	 * ParoleConf:vis-enabled:
-	 *
-	 * If visualizations are enabled.
-	 **/
+    g_value_register_transform_func (G_TYPE_STRING, GST_ENUM_TYPE_ASPECT_RATIO, transform_string_to_enum);
+
+    /**
+     * ParoleConf:vis-enabled:
+     *
+     * If visualizations are enabled.
+     **/
     g_object_class_install_property (object_class,
                                      PROP_VIS_ENABLED,
                                      g_param_spec_boolean ("vis-enabled",
@@ -700,12 +700,12 @@ parole_conf_new (void)
 {
     if ( parole_conf_object != NULL )
     {
-	    g_object_ref (parole_conf_object);
+        g_object_ref (parole_conf_object);
     }
     else
     {
-	    parole_conf_object = g_object_new (PAROLE_TYPE_CONF, NULL);
-	    g_object_add_weak_pointer (parole_conf_object, &parole_conf_object);
+        parole_conf_object = g_object_new (PAROLE_TYPE_CONF, NULL);
+        g_object_add_weak_pointer (parole_conf_object, &parole_conf_object);
     }
 
     return PAROLE_CONF (parole_conf_object);
@@ -714,14 +714,14 @@ parole_conf_new (void)
 
 gboolean
 parole_conf_get_property_bool  (ParoleConf *conf,
-								const gchar *name)
+                                const gchar *name)
 {
     gboolean value;
     
     g_object_get (G_OBJECT (conf),
-		  name, &value,
-		  NULL);
-		  
+                  name, &value,
+                  NULL);
+
     return value;
 }
 
