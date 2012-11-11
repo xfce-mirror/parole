@@ -44,22 +44,29 @@ static gpointer parole_conf_object = NULL;
 enum
 {
     PROP_0,
+    /*Visualisations*/
     PROP_VIS_ENABLED,
     PROP_VIS_NAME,
+    /*Screensaver*/
     PROP_DISABLE_SCREEN_SAVER,
+    /*Subtitles*/
     PROP_SUBTITLE_ENABLED,
     PROP_SUBTITLE_FONT,
     PROP_SUBTITLE_ENCODING,
+    /*Playback*/
     PROP_REPEAT,
     PROP_SHUFFLE,
+    /*Video properties*/
     PROP_BRIGHTNESS,
     PROP_CONTRAST,
     PROP_HUE,
     PROP_SATURATION,
     PROP_ASPECT_RATIO,
+    /*Window properties*/
     PROP_WINDOW_WIDTH,
     PROP_WINDOW_HEIGHT,
     PROP_MINIMIZED,
+    /*Grab Multimedia keys*/
     PROP_MULTIMEDIA_KEYS,
     /*Playlist*/
     PROP_SHOWHIDE_PLAYLIST,
@@ -115,6 +122,7 @@ G_DEFINE_TYPE (ParoleConf, parole_conf, G_TYPE_OBJECT)
 
 
 
+/* Write property-values to the Xfconf channel */
 static void parole_conf_set_property (GObject *object,
                                       guint prop_id,
                                       const GValue *value,
@@ -162,6 +170,7 @@ static void parole_conf_set_property (GObject *object,
     g_signal_handler_unblock (conf->channel, conf->property_changed_id);
 }
 
+/* Read property-values from the Xfconf channel */
 static void parole_conf_get_property (GObject *object,
                                       guint prop_id,
                                       GValue *value,
@@ -591,6 +600,7 @@ parole_conf_class_init (ParoleConfClass *klass)
     
 }
 
+/* Load the rc file */
 static void
 parole_conf_load_rc_file (ParoleConf *conf)
 {
@@ -606,6 +616,8 @@ parole_conf_load_rc_file (ParoleConf *conf)
 
     /* look for preferences */
     rc = parole_get_resource_file (PAROLE_RC_GROUP_GENERAL, TRUE);
+    
+    /* Check whether rc file exists */
     if (G_UNLIKELY (rc == NULL))
     {
         g_debug ("Unable to lookup rc file in : %s\n", PAROLE_RESOURCE_FILE);
@@ -615,6 +627,8 @@ parole_conf_load_rc_file (ParoleConf *conf)
     xfce_rc_set_group (rc, "Configuration");
 
     pspecs = g_object_class_list_properties (G_OBJECT_GET_CLASS (conf), &nspecs);
+    
+    /* Load each property */ 
     for (n = 0; n < nspecs; ++n)
     {
         pspec = pspecs[n];

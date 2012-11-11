@@ -31,6 +31,8 @@
 #include "interfaces/parole_ui.h"
 #include "parole-builder.h"
 
+
+/* Build Parole's UI from the interface-file */
 GtkBuilder *
 parole_builder_get_main_interface (void)
 {

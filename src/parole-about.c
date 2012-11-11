@@ -34,8 +34,10 @@
 #include "parole-about.h"
 
 
+/* About dialog */
 void parole_about (GtkWindow *parent)
 {
+    /* List of authors */
     static const gchar *authors[] = 
     {
 	"Ali Abdallah <aliov@xfce.org>",
@@ -44,6 +46,7 @@ void parole_about (GtkWindow *parent)
 	NULL,
     };
 
+    /* List of translators */
     static const gchar *documenters[] =
     {
 	"Ali Abdallah <aliov@xfce.org>",

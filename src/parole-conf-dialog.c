@@ -117,6 +117,7 @@ struct ParoleConfDialogPrivate
 
 G_DEFINE_TYPE (ParoleConfDialog, parole_conf_dialog, G_TYPE_OBJECT)
 
+/* Destroy the dialog */
 static void 
 parole_conf_dialog_destroy (GtkWidget *widget, ParoleConfDialog *self)
 {
@@ -124,13 +125,15 @@ parole_conf_dialog_destroy (GtkWidget *widget, ParoleConfDialog *self)
     g_object_unref (self);
 }
 
+/* Replace the playlist with newly opened files */
 void replace_playlist_toggled_cb (GtkToggleButton *widget, ParoleConfDialog *self)
 {
     g_object_set (G_OBJECT (self->priv->conf),
 		  "replace-playlist", gtk_toggle_button_get_active (widget),
 		  NULL);
 }
-								 
+		
+/* Remove duplicate entries from the playlist FIXME */						 
 void remove_duplicated_toggled_cb (GtkToggleButton *widget, ParoleConfDialog *self)
 {
     g_object_set (G_OBJECT (self->priv->conf),
@@ -138,6 +141,7 @@ void remove_duplicated_toggled_cb (GtkToggleButton *widget, ParoleConfDialog *se
 		  NULL);
 }
 
+/* Automatically start playing opened files (vs. just adding them to the playlist) */
 void start_playing_opened_toggled_cb (GtkToggleButton *widget, ParoleConfDialog *self)
 {
     g_object_set (G_OBJECT (self->priv->conf),
@@ -145,6 +149,7 @@ void start_playing_opened_toggled_cb (GtkToggleButton *widget, ParoleConfDialog 
 		  NULL);
 }
 
+/* Remember whether the playlist was visible in the previous session */
 void remember_playlist_toggled_cb (GtkToggleButton *widget, ParoleConfDialog *self)
 {
     g_object_set (G_OBJECT (self->priv->conf),
@@ -159,6 +164,7 @@ void multimedia_keys_toggled_cb (GtkToggleButton *widget, ParoleConfDialog *self
 		  NULL);
 }
 
+/* Change the various image properties */
 void reset_color_clicked_cb (GtkButton *button, ParoleConfDialog *self)
 {
     gtk_range_set_value (GTK_RANGE (self->priv->brightness), 0);
@@ -186,6 +192,7 @@ void parole_conf_dialog_subtitle_encoding_changed_cb (GtkComboBox *widget, Parol
 		  NULL);
 }
 
+/* Enable visualisations */
 void parole_conf_dialog_enable_vis_changed_cb (GtkToggleButton *widget, ParoleConfDialog *self)
 {
     gboolean active;
@@ -199,6 +206,7 @@ void parole_conf_dialog_enable_vis_changed_cb (GtkToggleButton *widget, ParoleCo
     gtk_widget_set_sensitive (self->priv->vis_combox, active);
 }
 
+/* Generic function to change all image properties */
 static void
 set_effect_value (ParoleConfDialog *self, GtkRange *range, const gchar *name)
 {
@@ -211,21 +219,25 @@ set_effect_value (ParoleConfDialog *self, GtkRange *range, const gchar *name)
 		  NULL);
 }
 
+/* Change brightness */
 void brightness_value_changed_cb (GtkRange *range, ParoleConfDialog *self)
 {
     set_effect_value (self, range, "brightness");
 }
 
+/* Change contrast */
 void contrast_value_changed_cb (GtkRange *range, ParoleConfDialog *self)
 {
     set_effect_value (self, range, "contrast");
 }
 
+/* Change hue */
 void hue_value_changed_cb (GtkRange *range, ParoleConfDialog *self)
 {
     set_effect_value (self, range, "hue");
 }
 
+/* Change saturation */
 void saturation_value_changed_cb (GtkRange *range, ParoleConfDialog *self)
 {
     set_effect_value (self, range, "saturation");
@@ -257,6 +269,7 @@ void parole_conf_dialog_reset_saver_changed_cb (GtkToggleButton *widget, ParoleC
 		  NULL);
 }
 
+/* Change subtitle font */
 void parole_conf_dialog_font_set_cb (GtkFontButton *button, ParoleConfDialog *self)
 {
     g_object_set (G_OBJECT (self->priv->conf), 
@@ -264,6 +277,7 @@ void parole_conf_dialog_font_set_cb (GtkFontButton *button, ParoleConfDialog *se
 		  NULL);
 }
 
+/* Enable subtitles by default */
 void parole_conf_dialog_enable_subtitle_changed_cb (GtkToggleButton *widget, ParoleConfDialog *self)
 {
     gboolean active;
@@ -275,6 +289,7 @@ void parole_conf_dialog_enable_subtitle_changed_cb (GtkToggleButton *widget, Par
 		  NULL);
 }
 
+/* Finalize the dialog */
 static void
 parole_conf_dialog_finalize (GObject *object)
 {
@@ -288,6 +303,7 @@ parole_conf_dialog_finalize (GObject *object)
     G_OBJECT_CLASS (parole_conf_dialog_parent_class)->finalize (object);
 }
 
+/* Initialize the config-dialog class */
 static void
 parole_conf_dialog_class_init (ParoleConfDialogClass *klass)
 {
@@ -298,6 +314,7 @@ parole_conf_dialog_class_init (ParoleConfDialogClass *klass)
     g_type_class_add_private (klass, sizeof (ParoleConfDialogPrivate));
 }
 
+/* Initialize the dialog */
 static void
 parole_conf_dialog_init (ParoleConfDialog *self)
 {
@@ -307,12 +324,14 @@ parole_conf_dialog_init (ParoleConfDialog *self)
     self->priv->vis_plugins = parole_vis_get_plugins ();
 }
 
+/* Fill the combobox with visualisations */
 static void
 parole_conf_dialog_add_vis_plugins (gpointer key, gpointer value, GtkWidget *combox)
 {
     gtk_combo_box_append_text (GTK_COMBO_BOX (combox), (const gchar *) key);
 }
 
+/* Set the combobox to the default visualisation plugin */
 static gboolean 
 parole_conf_dialog_set_default_vis_plugin (GtkTreeModel *model, GtkTreePath *path,
 					   GtkTreeIter *iter, ParoleConfDialog *self)
@@ -407,6 +426,7 @@ parole_conf_dialog_set_defaults_general (ParoleConfDialog *self, GtkBuilder *bui
     
 }
 
+/* Load the settings stored in the rc file */
 static void
 parole_conf_dialog_set_defaults (ParoleConfDialog *self)
 {
@@ -423,6 +443,7 @@ parole_conf_dialog_set_defaults (ParoleConfDialog *self)
 		  "subtitle-encoding", &subtitle_encoding,
 		  NULL);
 
+    /* Update widget-states according to settings */
     gtk_widget_set_sensitive (self->priv->vis_combox, vis_enabled);
     gtk_widget_set_sensitive (self->priv->font_button, subtitle);
     

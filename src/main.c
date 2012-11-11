@@ -70,6 +70,7 @@ parole_sig_handler (gint sig, gpointer data)
     parole_player_terminate (player);
 }
 
+/* Load discs that are passed as cli arguments to Parole */
 static void
 parole_send_play_disc (const gchar *uri, const gchar *device)
 {
@@ -105,6 +106,7 @@ parole_send_play_disc (const gchar *uri, const gchar *device)
     g_object_unref (proxy);
 }
 
+/* Load files that are passed as cli arguments to Parole */
 static void
 parole_send_files (gchar **filenames, gboolean enqueue)
 {
@@ -231,6 +233,7 @@ int main (int argc, char **argv)
         return EXIT_FAILURE;
     }
     
+    /* Command-line options */
     GOptionEntry option_entries[] = 
     {
 	{ "new-instance", 'i', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &new_instance, N_("Open a new instance"), NULL },
@@ -284,6 +287,7 @@ int main (int argc, char **argv)
     if ( version )
 	show_version ();
 	
+	/* Check for cli options if there is an instance of Parole already */
     if ( !new_instance && parole_dbus_name_has_owner (PAROLE_DBUS_NAME) )
     {
 	if (!enqueue)
@@ -322,6 +326,7 @@ int main (int argc, char **argv)
 	    parole_send_message ("Mute");
     }
 	
+	/* Create a new instance because Parole isn't running */
     else
     {
 	builder = parole_builder_get_main_interface ();
@@ -371,10 +376,12 @@ int main (int argc, char **argv)
 	    g_error_free (error);
 	}
 
+    /* Initialize the plugin-manager and load the plugins */
 	plugins = parole_plugins_manager_new (!no_plugins);
 	parole_plugins_manager_load (plugins);
 	g_object_unref (builder);
 	
+	/* Start main process */
 	gdk_notify_startup_complete ();
 	gtk_main ();
 	
