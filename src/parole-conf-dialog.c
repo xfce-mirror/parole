@@ -185,6 +185,7 @@ void parole_conf_dialog_response_cb (GtkDialog *dialog, gint response_id, Parole
     }
 }
 
+/* Change subtitle encoding */
 void parole_conf_dialog_subtitle_encoding_changed_cb (GtkComboBox *widget, ParoleConfDialog *self)
 {
     g_object_set (G_OBJECT (self->priv->conf), 
@@ -367,6 +368,7 @@ parole_conf_dialog_set_default_vis_plugin (GtkTreeModel *model, GtkTreePath *pat
     return ret;
 }
 
+/* Load the default playlist settings */
 static void
 parole_conf_dialog_set_defaults_playlist (ParoleConfDialog  *self, GtkBuilder *builder)
 {
@@ -407,6 +409,7 @@ parole_conf_dialog_set_defaults_playlist (ParoleConfDialog  *self, GtkBuilder *b
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), option);
 }
 
+/* Load the multimedia-button default settings */
 static void
 parole_conf_dialog_set_defaults_general (ParoleConfDialog *self, GtkBuilder *builder)
 {
@@ -426,7 +429,7 @@ parole_conf_dialog_set_defaults_general (ParoleConfDialog *self, GtkBuilder *bui
     
 }
 
-/* Load the settings stored in the rc file */
+/* Load the rest of the settings stored in the rc file */
 static void
 parole_conf_dialog_set_defaults (ParoleConfDialog *self)
 {

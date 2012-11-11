@@ -100,6 +100,7 @@ media_chooser_folder_changed_cb (GtkWidget *widget, gpointer data)
     }
 }
 
+/* Add one or more files from the filechooser-widget to the playlist */
 static void
 parole_media_chooser_add (ParoleMediaChooser *chooser, GtkWidget *file_chooser)
 {
@@ -168,6 +169,7 @@ void parole_media_chooser_add_clicked (GtkWidget *widget, ParoleMediaChooser *ch
     parole_media_chooser_open (chooser);
 }
 
+/* Destroy the widget when close is clicked */
 void parole_media_chooser_close_clicked (GtkWidget *widget, ParoleMediaChooser *chooser)
 {
     gtk_widget_destroy (chooser->window);
@@ -204,6 +206,7 @@ parole_media_chooser_open_internal (ParoleMediaChooser *media_chooser)
     
     file_chooser = GTK_WIDGET (gtk_builder_get_object (builder, "filechooserwidget"));
     
+    /* Set filters for the filechooser */    
     filter = gtk_file_filter_new();
     gtk_file_filter_set_name( filter, _("Supported files") );
     gtk_file_filter_add_mime_type (GTK_FILE_FILTER (filter), "audio/*");
@@ -215,6 +218,7 @@ parole_media_chooser_open_internal (ParoleMediaChooser *media_chooser)
     gtk_file_filter_add_pattern ( all_files, "*");
     gtk_file_chooser_add_filter( GTK_FILE_CHOOSER(file_chooser), all_files );
 
+    /* Set the folder that is shown */
     folder = parole_rc_read_entry_string ("media-chooser-folder", PAROLE_RC_GROUP_GENERAL, NULL);
     
     if ( folder )
@@ -222,6 +226,7 @@ parole_media_chooser_open_internal (ParoleMediaChooser *media_chooser)
     
     gtk_file_chooser_set_select_multiple (GTK_FILE_CHOOSER (file_chooser), TRUE);
 
+    /* Get playlist-properties to load files accordingly */
     g_object_get (G_OBJECT (media_chooser->conf),
 		  "scan-recursive", &scan_recursive,
 		  "replace-playlist", &replace_playlist,

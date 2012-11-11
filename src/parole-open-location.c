@@ -68,6 +68,7 @@ static guint signals [LAST_SIGNAL] = { 0 };
 
 G_DEFINE_TYPE (ParoleOpenLocation, parole_open_location, G_TYPE_OBJECT)
 
+/* Callback for the open button which passes on the location and closes the dialog */
 static void
 parole_open_location_response_cb (GtkDialog *dialog, gint response_id, ParoleOpenLocation *self)
 {
@@ -90,6 +91,7 @@ parole_open_location_response_cb (GtkDialog *dialog, gint response_id, ParoleOpe
 	gtk_widget_destroy (GTK_WIDGET (dialog));
 }
 
+/* Populate the history-popup */
 static GtkTreeModel *
 parole_open_location_get_completion_model (void)
 {
@@ -158,6 +160,7 @@ parole_open_location_finalize (GObject *object)
     G_OBJECT_CLASS (parole_open_location_parent_class)->finalize (object);
 }
 
+/* Clear the location history */
 static void
 parole_open_location_clear_history (GtkTreeModel *model)
 {
@@ -165,6 +168,7 @@ parole_open_location_clear_history (GtkTreeModel *model)
     gtk_list_store_clear (GTK_LIST_STORE (model));
 }
 
+/* Main function to open the "open location" dialog */
 ParoleOpenLocation *parole_open_location (GtkWidget *parent)
 {
     ParoleOpenLocation *self;

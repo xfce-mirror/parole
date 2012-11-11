@@ -78,6 +78,7 @@ typedef struct
     
 } MountData;
 
+/* Free the mount-point */
 static void
 free_mount_data (gpointer data)
 {
@@ -104,6 +105,7 @@ parole_disc_media_activate_cb (GtkWidget *widget, ParoleDisc *disc)
     g_signal_emit (G_OBJECT (disc), signals [DISC_SELECTED], 0, data->uri, data->device);
 }
 
+/* Show the respective disc-item in the file menu */
 static void
 parole_disc_show_menu_item (ParoleDisc *disc, MountData *data, const gchar *label)
 {
@@ -148,6 +150,7 @@ parole_disc_show_menu_item (ParoleDisc *disc, MountData *data, const gchar *labe
 		      G_CALLBACK (parole_disc_media_activate_cb), disc);
 }
 
+/* Get data from the mount-point */
 static MountData *
 parole_disc_get_mount_data (ParoleDisc *disc, 
 			    const gchar *uri, 
@@ -186,6 +189,7 @@ parole_disc_add_mount_to_menu (ParoleDisc *disc, GMount *mount, const gchar *dev
 	
     content_type = g_content_type_guess_for_tree (file);
 
+    /* Determine the type of disc */
     for ( i = 0; content_type && content_type[i]; i++)
     {
 	TRACE ("Checking disc content type : %s", content_type[i]);
@@ -243,6 +247,7 @@ got_cdda:
     g_object_unref (file);
 }
 
+/* Check the state of the drive */
 static void
 parole_disc_check_cdrom (ParoleDisc *disc, GVolume *volume, const gchar *device)
 {
@@ -331,6 +336,7 @@ parole_disc_add_drive (ParoleDisc *disc, GDrive *drive, const gchar *device)
     g_list_free (list);
 }
 
+/* Get a list of available drives */
 static void
 parole_disc_get_drives (ParoleDisc *disc)
 {
@@ -408,6 +414,7 @@ parole_disc_class_init (ParoleDiscClass *klass)
     g_type_class_add_private (klass, sizeof (ParoleDiscPrivate));
 }
 
+/* Initialize the disc monitor */
 static void
 parole_disc_init (ParoleDisc *disc)
 {
@@ -422,6 +429,7 @@ parole_disc_init (ParoleDisc *disc)
     
     disc->priv->monitor = g_volume_monitor_get ();
     
+    /* Connect the various disc signals */
     g_signal_connect (G_OBJECT (disc->priv->monitor), "volume-added",
 		      G_CALLBACK (parole_disc_monitor_changed_cb), disc);
     

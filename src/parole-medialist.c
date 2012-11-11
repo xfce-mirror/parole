@@ -66,6 +66,7 @@ typedef struct
     
 } ParolePlaylistSave;
 
+/* Playlist filetypes */
 static struct
 {
     ParolePlFormat format;
@@ -302,6 +303,7 @@ parole_media_list_files_open (ParoleMediaList *list, GSList *files, gboolean emi
     }
 }
 
+/* Callback to determine whether opened files should start playing immediately */
 static void
 parole_media_list_files_opened_cb (ParoleMediaChooser *chooser, 
 				   GSList *files, 
@@ -388,6 +390,7 @@ parole_media_list_get_files (ParoleMediaList *list)
     return files_list;
 }
 
+/* Callback when an item is dragged on the playlist-widget */
 void	parole_media_list_drag_data_received_cb (GtkWidget *widget,
 						 GdkDragContext *drag_context,
 						 gint x,
@@ -435,18 +438,21 @@ gboolean parole_media_list_key_press (GtkWidget *widget, GdkEventKey *ev, Parole
     return FALSE;
 }
 
+/* Callback for the add button */
 void
 parole_media_list_add_clicked_cb (GtkButton *button, ParoleMediaList *list)
 {
     parole_media_list_open_internal (list);
 }
 
+/* Callback for the clear button */
 void 
 parole_media_list_clear_clicked_cb (GtkButton *button, ParoleMediaList *list)
 {
 	parole_media_list_clear_list (list);
 }
 
+/* Callback for the repeat togglebutton */
 void
 parole_media_list_repeat_toggled_cb (GtkToggleButton *button, ParoleMediaList *list)
 {
@@ -457,6 +463,7 @@ parole_media_list_repeat_toggled_cb (GtkToggleButton *button, ParoleMediaList *l
     g_signal_emit (G_OBJECT (list), signals [REPEAT_TOGGLED], 0, toggled);
 }
 
+/* Callback for the shuffle togglebutton */
 void
 parole_media_list_shuffle_toggled_cb (GtkToggleButton *button, ParoleMediaList *list)
 {
@@ -510,6 +517,7 @@ parole_media_list_get_first_selected_row (ParoleMediaList *list)
     return row;
 }
 
+/* Callback to save the current playlist */
 void parole_media_list_save_playlist_cb (GtkButton *button, ParolePlaylistSave *data)
 {
     ParolePlFormat format = PAROLE_PL_FORMAT_UNKNOWN;
@@ -561,7 +569,7 @@ out:
     g_free (dirname);
 }
 
-
+/* Query to get the data to populate the tooltip */
 gboolean	parole_media_list_query_tooltip		(GtkWidget *widget,
 							 gint x,
 							 gint y,
@@ -649,6 +657,7 @@ void parole_media_list_format_cursor_changed_cb (GtkTreeView *view, ParolePlayli
     
 }
 
+/* Callback to save the current playlist */
 void parole_media_list_save_cb (GtkButton *button, ParoleMediaList *list)
 {
     ParolePlaylistSave *data;
@@ -775,11 +784,7 @@ parole_media_list_paths_to_row_list (GList *path_list, GtkTreeModel *model)
     return row_list;
 }
 
-/**
- * parole_media_list_remove_clicked_cb:
- * 
- * 
- **/
+/* Callback for the remove-from-playlist button */
 void
 parole_media_list_remove_clicked_cb (GtkButton *button, ParoleMediaList *list)
 {
