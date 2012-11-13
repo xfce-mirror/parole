@@ -34,7 +34,12 @@
 #include "parole-about.h"
 
 
-/* About dialog */
+/**
+ * parole_about:
+ * @parent : the parent application window.
+ *
+ * Display the About dialog for Parole.
+ **/
 void parole_about (GtkWindow *parent)
 {
     /* List of authors */
@@ -46,18 +51,23 @@ void parole_about (GtkWindow *parent)
 	NULL,
     };
 
-    /* List of translators */
+    /* List of documentation writers */
     static const gchar *documenters[] =
     {
 	"Ali Abdallah <aliov@xfce.org>",
 	NULL,
     };
     
+    /* Copyright information */
+    static const gchar *copyrights = 
+    "Copyright \302\251 2009-2011 Ali Abdallah\n"
+    "Copyright \302\251 2012 Sean Davis, Simon Steinbeiss";
+    
     gtk_show_about_dialog (parent,
     "authors", authors,
     "comments", _("Parole Media Player"),
     "documenters", documenters,
-    "copyright", "Copyright \302\251 2009-2011 Ali Abdallah",
+    "copyright", copyrights,
     "license", XFCE_LICENSE_GPL,
     "logo-icon-name", "parole",
     "program-name", PACKAGE_NAME,
