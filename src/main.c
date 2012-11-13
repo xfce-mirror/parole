@@ -70,7 +70,13 @@ parole_sig_handler (gint sig, gpointer data)
     parole_player_terminate (player);
 }
 
-/* Load discs that are passed as cli arguments to Parole */
+/**
+ * parole_send_play_disc:
+ * @uri    : the URI address of a disc or %NULL.
+ * @device : the UNIX device for a disc or %NULL.
+ *
+ * Load the discs that is passed as a cli argument to Parole.
+ **/
 static void
 parole_send_play_disc (const gchar *uri, const gchar *device)
 {
@@ -106,7 +112,14 @@ parole_send_play_disc (const gchar *uri, const gchar *device)
     g_object_unref (proxy);
 }
 
-/* Load files that are passed as cli arguments to Parole */
+/**
+ * parole_send_files:
+ * @filenames : the list of files to be played in Parole.
+ * @enqueue   : %TRUE if files should be added to the playlist or %FALSE if the
+ *              playlist should be replaced.
+ *
+ * Load files that are passed as cli arguments to Parole.
+ **/
 static void
 parole_send_files (gchar **filenames, gboolean enqueue)
 {
@@ -147,6 +160,15 @@ parole_send_files (gchar **filenames, gboolean enqueue)
     g_object_unref (proxy);
 }
 
+/**
+ * parole_send:
+ * @filenames : a list of files to be played.
+ * @device    : a URI pointing to a disc to be played or %NULL.
+ * @enqueue   : %TRUE if files should be added to the playlist or %FALSE if the
+ *              playlist should be replaced.
+ *
+ * Load the files or device that are passed as cli arguments to Parole.
+ **/
 static void
 parole_send (gchar **filenames, gchar *device, gboolean enqueue)
 {
@@ -156,8 +178,14 @@ parole_send (gchar **filenames, gchar *device, gboolean enqueue)
 	parole_send_files (filenames, enqueue);
 }
 
+/**
+ * parole_send_message:
+ * @message : message string to be sent to DBUS.
+ *
+ * Send a message via DBUS to Parole.
+ **/
 static void
-	parole_send_message (const gchar *message)
+parole_send_message (const gchar *message)
 {
     DBusGProxy *proxy;
     GError *error = NULL;
@@ -178,6 +206,16 @@ static void
 
 }
 
+/**
+ * xv_option_given:
+ * @name  : name of the option.
+ * @value : "TRUE"/"true" to enable xv hardware extensions or "FALSE"/"false" to 
+ *          disable the xv hardware extensions.
+ * @data  : user-data passed by the callback function.
+ * @error : a #GError to store encoutered errors.
+ *
+ * Toggle the XV hardware extension via cli argument.
+ **/
 static gboolean
 xv_option_given (const gchar *name, const gchar *value, gpointer data, GError **error)
 {
