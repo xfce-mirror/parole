@@ -338,6 +338,7 @@ struct ParolePlayerPrivate
      
     gboolean             exit;
     
+    gboolean		 embedded;
     gboolean		 full_screen;
     
     ParoleState     state;
@@ -1507,6 +1508,19 @@ parole_player_move_fs_window (ParolePlayer *player)
 }
 
 void
+parole_player_embedded (ParolePlayer *player)
+{
+    gtk_widget_hide (player->priv->menu_bar);
+    gtk_widget_hide (player->priv->playlist_nt);
+    gtk_widget_hide (player->priv->go_fs);
+    gtk_widget_hide (player->priv->leave_fs);
+    gtk_widget_hide (player->priv->show_hide_playlist);
+    gtk_widget_hide (player->priv->show_hide_playlist_button);
+    
+    player->priv->embedded = TRUE;
+}
+
+void
 parole_player_full_screen (ParolePlayer *player, gboolean fullscreen)
 {
     gint npages;
@@ -2029,7 +2043,7 @@ parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
     {
 	case GDK_f:
 	case GDK_F:
-	    parole_player_full_screen_menu_item_activate (player);
+            if ( player->priv->embedded != TRUE ) parole_player_full_screen_menu_item_activate (player);
 	    ret_val = TRUE;
 	    break;
 	case GDK_space:
@@ -2101,7 +2115,7 @@ parole_player_key_press (GtkWidget *widget, GdkEventKey *ev, ParolePlayer *playe
     switch (ev->keyval)
     {
 	case GDK_F11:
-	    parole_player_full_screen_menu_item_activate (player);
+            if ( player->priv->embedded != TRUE ) parole_player_full_screen_menu_item_activate (player);
 	    return TRUE;
 #ifdef HAVE_XF86_KEYSYM
 	case XF86XK_AudioPlay:

@@ -259,6 +259,7 @@ int main (int argc, char **argv)
     gboolean lower_volume = FALSE;
     gboolean mute = FALSE;
     gboolean no_plugins = FALSE;
+    gboolean embedded = FALSE;
     gboolean fullscreen = FALSE;
 	gboolean enqueue = FALSE;
     gchar    *client_id = NULL;
@@ -287,6 +288,7 @@ int main (int argc, char **argv)
 	{ "lower-volume", 'l', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &lower_volume, N_("Lower volume"), NULL },
 	{ "mute", 'm', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &mute, N_("Mute volume"), NULL },
 	{ "version", 'V', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &version, N_("Version information"), NULL },
+	{ "embedded", 'E', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &embedded, N_("Use embedded mode"), NULL },
 	{ "fullscreen", 'F', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &fullscreen, N_("Start in fullscreen mode"), NULL },
 	{ "xv", '\0', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_CALLBACK, (GOptionArgFunc) xv_option_given, N_("Enabled/Disable XV support"), NULL},
 	{ "add", 'a', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &enqueue, N_("Add files to playlist"), NULL},
@@ -373,7 +375,9 @@ int main (int argc, char **argv)
 	player = parole_player_new (client_id);
 	g_free (client_id);
 	
-	if (fullscreen)
+	if (embedded)
+	    parole_player_embedded (player);
+	else if (fullscreen)
 	    parole_player_full_screen (player, TRUE);
 
 	if ( filenames && filenames[0] != NULL )
