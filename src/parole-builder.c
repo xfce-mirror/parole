@@ -32,7 +32,11 @@
 #include "parole-builder.h"
 
 
-/* Build Parole's UI from the interface-file */
+/**
+ * parole_builder_get_main_interface:
+ * 
+ * Build Parole's UI from the interface-file.
+ **/
 GtkBuilder *
 parole_builder_get_main_interface (void)
 {
@@ -51,16 +55,22 @@ parole_builder_get_main_interface (void)
     return GTK_BUILDER (parole_builder_object);
 }
 
-GtkBuilder *parole_builder_new_from_string (const gchar *ui, gsize length)
+/**
+ * parole_builder_new_from_string:
+ * @ui     : the string containing parole's condensed glade interface.
+ * @length : the length of the ui string.
+ *
+ * Build Parole's UI from the condensed glade string.
+ **/
+GtkBuilder *
+parole_builder_new_from_string (const gchar *ui, gsize length)
 {
     GError *error = NULL;
     GtkBuilder *builder;
     
     builder = gtk_builder_new ();
 
-    /*
-     * Set the locale before loading the GtkBuilder interface definition
-     */
+    /* Set the locale before loading the GtkBuilder interface definition. */
     xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
     
     gtk_builder_add_from_string (builder, ui, length, &error);

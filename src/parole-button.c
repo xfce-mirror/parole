@@ -79,6 +79,12 @@ static guint signals[LAST_SIGNAL] = { 0 };
 
 G_DEFINE_TYPE(ParoleButton, parole_button, G_TYPE_OBJECT)
 
+/**
+ * parole_button_get_key:
+ * @keycode : an #int representing a key on a keyboard.
+ *
+ * Check if the pressed key is mapped to a function in Parole.
+ **/
 static guint
 parole_button_get_key (unsigned int keycode)
 {
@@ -95,6 +101,14 @@ parole_button_get_key (unsigned int keycode)
     return key;
 }
 
+/**
+ * parole_button_filter_x_events:
+ * @xevent : a #GdkXEvent to filter.
+ * @ev     : the #GdkEvent passed by the callback function.
+ * @data   : user-data passed by the callback function.
+ *
+ * Filter X events for keypresses, and pass the keypresses on to be processed.
+ **/
 static GdkFilterReturn
 parole_button_filter_x_events (GdkXEvent *xevent, GdkEvent *ev, gpointer data)
 {
@@ -121,6 +135,15 @@ parole_button_filter_x_events (GdkXEvent *xevent, GdkEvent *ev, gpointer data)
     return GDK_FILTER_CONTINUE;
 }
 
+/**
+ * parole_button_grab_keystring:
+ * @button  : the #ParoleButton instance to handle keypresses.
+ * @keycode : the #int representing the pressed key on the keyboard.
+ *
+ * Attempt to get the pressed key and modifier keys.
+ * 
+ * Return value: %TRUE on success, else %FALSE.
+ **/ 
 static gboolean
 parole_button_grab_keystring (ParoleButton *button, guint keycode)
 {
@@ -159,7 +182,16 @@ parole_button_grab_keystring (ParoleButton *button, guint keycode)
     return TRUE;
 }
 
-
+/**
+ * parole_button_xevent_key:
+ * @button : the #ParoleButton instance to handle keypresses.
+ * @keysym : an #int representing the keysym to be converted to a keycode.
+ * @key    : the #ParoleButtonKey that represents the pressed key.
+ *
+ * Attempt to map the key and keycode to the parole_key_map.
+ *
+ * Return value: %TRUE on success, else %FALSE.
+ **/
 static gboolean
 parole_button_xevent_key (ParoleButton *button, guint keysym , ParoleButtonKey key)
 {
@@ -185,6 +217,12 @@ parole_button_xevent_key (ParoleButton *button, guint keysym , ParoleButtonKey k
     return TRUE;
 }
 
+/**
+ * parole_button_setup:
+ * @button : the #ParoleButton instance to handle keypresses.
+ *
+ * Setup Parole's keyboard mappings.
+ **/
 static void
 parole_button_setup (ParoleButton *button)
 {
@@ -200,6 +238,12 @@ parole_button_setup (ParoleButton *button)
 			   parole_button_filter_x_events, button);
 }
 
+/**
+ * parole_button_class_init:
+ * @klass: a #ParoleButtonClass instance.
+ *
+ * Initialize a #ParoleButtonClass instance.
+ **/
 static void
 parole_button_class_init(ParoleButtonClass *klass)
 {
@@ -219,6 +263,12 @@ parole_button_class_init(ParoleButtonClass *klass)
     g_type_class_add_private (klass, sizeof (ParoleButtonPrivate));
 }
 
+/**
+ * parole_button_init:
+ * @button : a #ParoleButton instance.
+ *
+ * Initialize a #ParoleButton instance.
+ **/
 static void
 parole_button_init (ParoleButton *button)
 {
@@ -230,12 +280,23 @@ parole_button_init (ParoleButton *button)
     parole_button_setup (button);
 }
 
+/**
+ * parole_button_finalize:
+ * @object : a base #GObject to be made into a #ParoleButton object.
+ *
+ * Finalize a #ParoleButton object.
+ **/
 static void
 parole_button_finalize (GObject *object)
 {
     G_OBJECT_CLASS(parole_button_parent_class)->finalize(object);
 }
 
+/**
+ * parole_button_new:
+ *
+ * Create a new #ParoleButton instance.
+ **/
 ParoleButton *
 parole_button_new (void)
 {
