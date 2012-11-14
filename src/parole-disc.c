@@ -78,7 +78,12 @@ typedef struct
     
 } MountData;
 
-/* Free the mount-point */
+/**
+ * free_mount_data:
+ * @data : pointer to the mount point.
+ *
+ * Free the mount-point.
+ **/
 static void
 free_mount_data (gpointer data)
 {
@@ -95,6 +100,13 @@ free_mount_data (gpointer data)
     g_free (mount);
 }
 
+/**
+ * parole_disc_media_activate_cb:
+ * @widget : the #GtkWidget activated for this callback function.
+ * @disc   : the #ParoleDisc instance.
+ *
+ * Callback function for when the CD/DVD menu item is activated.
+ **/
 static void
 parole_disc_media_activate_cb (GtkWidget *widget, ParoleDisc *disc)
 {
@@ -105,7 +117,15 @@ parole_disc_media_activate_cb (GtkWidget *widget, ParoleDisc *disc)
     g_signal_emit (G_OBJECT (disc), signals [DISC_SELECTED], 0, data->uri, data->device);
 }
 
-/* Show the respective disc-item in the file menu */
+/**
+ * parole_disc_show_menu_item:
+ * @disc  : the #ParoleDisc instance.
+ * @data  : the #MountData of the inserted disc.
+ * @label : the name of the inserted disc.
+ * 
+ * Show the respective disc-item in the "Media" menu, or "Insert Disc" if no 
+ * disc is detected.
+ **/
 static void
 parole_disc_show_menu_item (ParoleDisc *disc, MountData *data, const gchar *label)
 {
@@ -150,7 +170,15 @@ parole_disc_show_menu_item (ParoleDisc *disc, MountData *data, const gchar *labe
 		      G_CALLBACK (parole_disc_media_activate_cb), disc);
 }
 
-/* Get data from the mount-point */
+/**
+ * parole_disc_get_mount_data:
+ * @disc   : the #ParoleDisc instance.
+ * @uri    : the URI of the mount point.
+ * @device : the device identifier of the mount point.
+ * @kind   : the #ParoleDiscKind representing the type of disc (CD/DVD/SVCD).
+ *
+ * Get data from the mount-point.
+ **/
 static MountData *
 parole_disc_get_mount_data (ParoleDisc *disc, 
 			    const gchar *uri, 
@@ -169,6 +197,14 @@ parole_disc_get_mount_data (ParoleDisc *disc,
     return data;
 }
 
+/**
+ * parole_disc_add_mount_to_menu:
+ * @disc   : the #ParoleDisc instance.
+ * @mount  : the #GMount representing the mounted disc.
+ * @device : the device identifier of the mount point.
+ *
+ * Add the mounted disc to the "Media" menu.
+ **/
 static void
 parole_disc_add_mount_to_menu (ParoleDisc *disc, GMount *mount, const gchar *device)
 {
@@ -247,7 +283,14 @@ got_cdda:
     g_object_unref (file);
 }
 
-/* Check the state of the drive */
+/**
+ * parole_disc_check_cdrom:
+ * @disc   : the #ParoleDisc instance.
+ * @volume : the #GVolume for the mounted disc.
+ * @device : the device identifier of the mount point.
+ *
+ * Check the state of the drive.
+ **/
 static void
 parole_disc_check_cdrom (ParoleDisc *disc, GVolume *volume, const gchar *device)
 {
@@ -300,6 +343,14 @@ out:
 #endif /* if defined(__linux__) */
 }
 
+/**
+ * parole_disc_add_drive:
+ * @disc   : the #ParoleDisc instance.
+ * @drive  : the #GDrive for the mounted disc.
+ * @device : the device identifier of the mount point.
+ *
+ * Add the disc drive to the menu.
+ **/
 static void
 parole_disc_add_drive (ParoleDisc *disc, GDrive *drive, const gchar *device)
 {
@@ -336,7 +387,12 @@ parole_disc_add_drive (ParoleDisc *disc, GDrive *drive, const gchar *device)
     g_list_free (list);
 }
 
-/* Get a list of available drives */
+/**
+ * parole_disc_get_drives:
+ * @disc : the #ParoleDisc instance.
+ * 
+ * Get the list of available drives and attempt to add each to the menu.
+ **/
 static void
 parole_disc_get_drives (ParoleDisc *disc)
 {
@@ -361,6 +417,7 @@ parole_disc_get_drives (ParoleDisc *disc)
 	
 	drive = g_list_nth_data (list, i);
 	
+	/* FIXME what happens if there is more than one disc drive? */
 	if ( g_drive_can_eject (drive) && g_drive_has_media (drive) )
 	{
 	    device = g_drive_get_identifier (drive, G_VOLUME_IDENTIFIER_KIND_UNIX_DEVICE);
@@ -374,6 +431,14 @@ parole_disc_get_drives (ParoleDisc *disc)
     g_list_free (list);
 }
 
+/**
+ * parole_disc_select_cb:
+ * @item : "Media" menu item passed to the callback function.
+ * @disc : the #ParoleDisc instance.
+ *
+ * Callback function for selecting the "Media" menu item.  If a disc update is
+ * needed, perform it when the menu item is activated.
+ **/
 static void
 parole_disc_select_cb (GtkItem *item, ParoleDisc *disc)
 {
@@ -381,6 +446,15 @@ parole_disc_select_cb (GtkItem *item, ParoleDisc *disc)
 	parole_disc_get_drives (disc);
 }
 
+/**
+ * parole_disc_monitor_changed_cb:
+ * @monitor : the #GVolumeMonitor that monitors changes to attached volumes.
+ * @device  : the device identifier of the mount point.
+ * @disc    : the #ParoleDisc instance.
+ *
+ * Callback function for when attached volumes are modified.  Set the disc item
+ * to blank and tell the #ParoleDisc to check for updates.
+ **/
 static void
 parole_disc_monitor_changed_cb (GVolumeMonitor *monitor, gpointer *device, ParoleDisc *disc)
 {
@@ -394,6 +468,12 @@ parole_disc_monitor_changed_cb (GVolumeMonitor *monitor, gpointer *device, Parol
     disc->priv->needs_update = TRUE;
 }
 
+/**
+ * parole_disc_class_init:
+ * @klass : the #ParoleDiscClass to initialize.
+ *
+ * Initialize the #ParoleDiscClass.
+ **/
 static void
 parole_disc_class_init (ParoleDiscClass *klass)
 {
@@ -414,7 +494,12 @@ parole_disc_class_init (ParoleDiscClass *klass)
     g_type_class_add_private (klass, sizeof (ParoleDiscPrivate));
 }
 
-/* Initialize the disc monitor */
+/**
+ * parole_disc_init:
+ * @disc : the #ParoleDisc to initialize.
+ * 
+ * Initialize the disc monitor.
+ **/
 static void
 parole_disc_init (ParoleDisc *disc)
 {
@@ -456,6 +541,12 @@ parole_disc_init (ParoleDisc *disc)
     g_object_unref (builder);
 }
 
+/**
+ * parole_disc_finalize:
+ * @object : a base #GObject to be made into a #ParoleDisc object.
+ *
+ * Finalize a #ParoleDisc object.
+ **/
 static void
 parole_disc_finalize (GObject *object)
 {
@@ -471,6 +562,11 @@ parole_disc_finalize (GObject *object)
     G_OBJECT_CLASS (parole_disc_parent_class)->finalize (object);
 }
 
+/**
+ * parole_disc_new:
+ *
+ * Create a new #ParoleDisc instance.
+ **/
 ParoleDisc *
 parole_disc_new (void)
 {
