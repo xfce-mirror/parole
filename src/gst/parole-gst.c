@@ -30,6 +30,8 @@
 
 #include <gst/interfaces/xoverlay.h>
 #include <gst/interfaces/navigation.h>
+#include <gst/pbutils/missing-plugins.h>
+#include <gst/pbutils/install-plugins.h>
 
 #include <gst/video/video.h>
 
@@ -1119,10 +1121,76 @@ parole_gst_application_message (ParoleGst *gst, GstMessage *msg)
     }
 }
 
+/**
+ * parole_gst_install_plugins_result_func:
+ * @result    : %GST_INSTALL_PLUGINS_SUCCESS (0) if successful.
+ * @user_data : gst instance passed as user_data for callback function.
+ *
+ * Callback function for when asynchronous codec installation finishes.  Update
+ * the gstreamer plugin registry and restart playback.
+ **/
+static void
+parole_gst_install_plugins_result_func(GstInstallPluginsReturn result, gpointer user_data)
+{
+    switch (result)
+    {
+        case GST_INSTALL_PLUGINS_SUCCESS:
+            g_debug ("Finished plugin install.\n");
+            gst_update_registry();
+            parole_gst_resume(PAROLE_GST(user_data));
+            break;
+        case GST_INSTALL_PLUGINS_NOT_FOUND:
+            g_debug ("An appropriate installation candidate could not be found.\n");
+            break;
+        case GST_INSTALL_PLUGINS_USER_ABORT:
+            g_debug ("User aborted plugin install.\n");
+            break;
+        default:
+            g_debug ("Plugin installation failed with code %i\n", result);
+            break;
+    }
+}
+
+static GtkDialog*
+parole_gst_missing_codec_dialog(ParoleGst *gst, GstMessage *msg)
+{
+    GtkMessageDialog *dialog;
+    gchar*     desc;
+                                                    
+    desc = gst_missing_plugin_message_get_description(msg);
+    
+    dialog = GTK_MESSAGE_DIALOG(gtk_message_dialog_new_with_markup(
+                            NULL,
+                            GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+                            GTK_MESSAGE_QUESTION,
+                            GTK_BUTTONS_NONE,
+                            "<b><big>%s</big></b>", 
+                            _("Additional software is required.")
+                            ));
+                            
+    gtk_dialog_add_buttons( GTK_DIALOG(dialog), 
+                            _("Don't Install"),
+                            GTK_RESPONSE_REJECT,
+                            _("Install"), 
+                            GTK_RESPONSE_ACCEPT,
+                            NULL );
+    
+    gtk_message_dialog_format_secondary_markup(dialog,
+                                             "Parole needs <b>%s</b> to play this file.\n"
+                                             "It can be installed automatically.",
+                                             desc);
+    
+    return GTK_DIALOG(dialog);
+}
+
 static gboolean
 parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
 {
-    ParoleGst *gst;
+    ParoleGst                *gst;
+    GtkDialog                *dialog;
+    gchar*                    details[2];
+    GstInstallPluginsContext *ctx;
+    gint response;
     
     gst = PAROLE_GST (data);
 
@@ -1220,6 +1288,25 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
 	    }
 	    break;
 	case GST_MESSAGE_ELEMENT:
+	    if (gst_is_missing_plugin_message(msg))
+	    {
+	        g_debug("Missing plugin\n");
+	        parole_gst_stop(gst);
+	        dialog = parole_gst_missing_codec_dialog(gst, msg);
+	        response = gtk_dialog_run(dialog);
+	        if ( response == GTK_RESPONSE_ACCEPT )
+	        {
+	             gtk_widget_destroy(GTK_WIDGET(dialog));
+	             details[0] = gst_missing_plugin_message_get_installer_detail(msg);
+	             details[1] = NULL;
+	             ctx = gst_install_plugins_context_new();
+	             gst_install_plugins_async(details, ctx, parole_gst_install_plugins_result_func, gst);
+	             
+	             gst_install_plugins_context_free(ctx);
+	        }
+	        else if ( response == GTK_RESPONSE_REJECT )
+	            gtk_widget_destroy(GTK_WIDGET(dialog));
+        }
 	    break;
 	case GST_MESSAGE_WARNING:
 	    break;

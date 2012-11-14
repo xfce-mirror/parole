@@ -63,6 +63,8 @@ void				 parole_player_play_uri_disc   (ParolePlayer *player,
 
 void				 parole_player_terminate       (ParolePlayer *player);
 
+void                parole_player_embedded (ParolePlayer *player);
+
 void				 parole_player_full_screen     (ParolePlayer *player, 
 								gboolean fullscreen);
 

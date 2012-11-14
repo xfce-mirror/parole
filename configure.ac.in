@@ -101,6 +101,7 @@ XDT_CHECK_PACKAGE([GST], [gstreamer-0.10], [gstreamer_minimum_version])
 XDT_CHECK_PACKAGE([GST_BASE], [gstreamer-base-0.10], [gstreamer_minimum_version])
 XDT_CHECK_PACKAGE([GST_VIDEO], [gstreamer-video-0.10], [gstreamer_minimum_version])
 XDT_CHECK_PACKAGE([GST_INTERFACES], [gstreamer-interfaces-0.10], [gstreamer_minimum_version])
+XDT_CHECK_PACKAGE([GST_PBUTILS], [gstreamer-pbutils-0.10], [0.10.2])
 
 XDT_CHECK_PACKAGE([DBUS], [dbus-1], [dbus_minimum_version])
 XDT_CHECK_PACKAGE([DBUS_GLIB], [dbus-glib-1], [dbus_glib_minimum_version])

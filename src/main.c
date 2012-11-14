@@ -264,14 +264,6 @@ int main (int argc, char **argv)
 	gboolean enqueue = FALSE;
     gchar    *client_id = NULL;
     
-    /* initialize xfconf */
-    if (!xfconf_init (&error))
-    {
-        g_critical ("Failed to initialize Xfconf: %s", error->message);
-        g_error_free (error);
-        return EXIT_FAILURE;
-    }
-    
     /* Command-line options */
     GOptionEntry option_entries[] = 
     {
@@ -296,6 +288,14 @@ int main (int argc, char **argv)
 	{G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, &filenames, N_("Media to play"), NULL},
         { NULL, },
     };
+    
+        /* initialize xfconf */
+    if (!xfconf_init (&error))
+    {
+        g_critical ("Failed to initialize Xfconf: %s", error->message);
+        g_error_free (error);
+        return EXIT_FAILURE;
+    }
     
 	XInitThreads();
 

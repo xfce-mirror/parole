@@ -25,11 +25,13 @@ libparolegst_la_CFLAGS =		\
 	$(GST_VIDEO_CFLAGS)             \
         $(GST_INTERFACES_CFLAGS)	\
 	$(GTHREAD_CFLAGS)               \
-	$(LIBXFCE4UI_CFLAGS)
+	$(LIBXFCE4UI_CFLAGS)            \
+	$(PBUTILS_CFLAGS)
 
 libparolegst_la_LIBADD =		\
 	$(top_builddir)/src/misc/libparole.la\
-	$(top_builddir)/src/common/libparolecommon.la
+	$(top_builddir)/src/common/libparolecommon.la\
+	$(GST_PBUTILS_LIBS)
 
 parole_glib_enum_headers =		\
 	parole-gst.h

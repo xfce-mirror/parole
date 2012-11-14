@@ -158,6 +158,8 @@ gboolean	parole_player_delete_event_cb		(GtkWidget *widget,
 
 void		parole_player_show_hide_playlist	(GtkWidget *widget,
 							 ParolePlayer *player);
+							 
+void        parole_player_reset_controls (ParolePlayer *player, gboolean fullscreen);
 
 /*Menu items callbacks*/
 void            parole_player_menu_open_location_cb     (GtkWidget *widget, 
