@@ -1507,21 +1507,15 @@ parole_player_move_fs_window (ParolePlayer *player)
 		     rect.height + rect.y - player->priv->play_box->allocation.height);
 }
 
+/**
+ * parole_player_reset_controls:
+ * @player     : the #ParolePlayer instance.
+ * @fullscreen : %TRUE if player should be fullscreen, else %FALSE.
+ * 
+ * Reset the player controls based on existing conditions.
+ **/
 void
-parole_player_embedded (ParolePlayer *player)
-{
-    gtk_widget_hide (player->priv->menu_bar);
-    gtk_widget_hide (player->priv->playlist_nt);
-    gtk_widget_hide (player->priv->go_fs);
-    gtk_widget_hide (player->priv->leave_fs);
-    gtk_widget_hide (player->priv->show_hide_playlist);
-    gtk_widget_hide (player->priv->show_hide_playlist_button);
-    
-    player->priv->embedded = TRUE;
-}
-
-void
-parole_player_full_screen (ParolePlayer *player, gboolean fullscreen)
+parole_player_reset_controls (ParolePlayer *player, gboolean fullscreen)
 {
     gint npages;
     static gint current_page = 0;
@@ -1529,51 +1523,81 @@ parole_player_full_screen (ParolePlayer *player, gboolean fullscreen)
     
     gboolean show_playlist;
     
+    if ( player->priv->full_screen != fullscreen )
+    {
+        /* If the player is in fullscreen mode, change to windowed mode. */
+        if ( player->priv->full_screen )
+        {
+            npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (player->priv->main_nt));
+            gtk_widget_reparent (player->priv->play_box, player->priv->control);
+            gtk_box_set_child_packing( GTK_BOX(player->priv->control), GTK_WIDGET(player->priv->play_box), TRUE, TRUE, 2, GTK_PACK_START );
+            gtk_widget_hide (player->priv->fs_window);
+            gtk_widget_show (player->priv->play_box);
+            gtk_widget_show (player->priv->menu_bar);
+            show_playlist = gtk_check_menu_item_get_active( GTK_CHECK_MENU_ITEM(player->priv->show_hide_playlist) );
+            gtk_widget_show (player->priv->playlist_nt);
+            parole_player_set_playlist_visible(player, show_playlist);
+            gtk_widget_show (player->priv->go_fs);
+            gtk_widget_hide (player->priv->leave_fs);
+            gtk_widget_show (player->priv->show_hide_playlist_button);
+
+            gtk_notebook_set_show_tabs (GTK_NOTEBOOK (player->priv->main_nt), npages > 1);
+
+            gtk_window_unfullscreen (GTK_WINDOW (player->priv->window));
+            gtk_notebook_set_current_page (GTK_NOTEBOOK (player->priv->playlist_nt), current_page);
+            gdkwindow = gtk_widget_get_window (player->priv->window);
+            gdk_window_set_cursor (gdkwindow, NULL);
+            player->priv->full_screen = FALSE;
+        }
+        else
+        {
+            parole_player_move_fs_window (player);
+            gtk_widget_reparent (player->priv->play_box, player->priv->fs_window);
+
+            gtk_widget_hide (player->priv->play_box);
+            gtk_widget_hide (player->priv->menu_bar);
+            gtk_widget_hide (player->priv->playlist_nt);
+            parole_player_set_playlist_visible(player, FALSE);
+            gtk_widget_hide (player->priv->go_fs);
+            gtk_widget_show (player->priv->leave_fs);
+            gtk_widget_hide (player->priv->show_hide_playlist_button);
+
+            current_page = gtk_notebook_get_current_page (GTK_NOTEBOOK (player->priv->playlist_nt));
+            gtk_notebook_set_show_tabs (GTK_NOTEBOOK (player->priv->main_nt), FALSE);
+
+            gtk_window_fullscreen (GTK_WINDOW (player->priv->window));
+            player->priv->full_screen = TRUE;
+        }
+    }
+    
+    if ( player->priv->embedded )
+    {
+        gtk_widget_hide (player->priv->menu_bar);
+        gtk_widget_hide (player->priv->playlist_nt);
+        gtk_widget_hide (player->priv->go_fs);
+        gtk_widget_hide (player->priv->show_hide_playlist);
+        gtk_widget_hide (player->priv->show_hide_playlist_button);
+    }
+}
+
+void
+parole_player_embedded (ParolePlayer *player)
+{
+    if ( player->priv->embedded == TRUE )
+    return;
+    
+    player->priv->embedded = TRUE;
+    
+    parole_player_reset_controls(player, player->priv->full_screen);
+}
+
+void
+parole_player_full_screen (ParolePlayer *player, gboolean fullscreen)
+{
     if ( player->priv->full_screen == fullscreen )
 	return;
     
-    if ( player->priv->full_screen )
-    {
-	npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (player->priv->main_nt));
-	gtk_widget_reparent (player->priv->play_box, player->priv->control);
-	gtk_box_set_child_packing( GTK_BOX(player->priv->control), GTK_WIDGET(player->priv->play_box), TRUE, TRUE, 2, GTK_PACK_START );
-	gtk_widget_hide (player->priv->fs_window);
-	gtk_widget_show (player->priv->play_box);
-	gtk_widget_show (player->priv->menu_bar);
-	show_playlist = gtk_check_menu_item_get_active( GTK_CHECK_MENU_ITEM(player->priv->show_hide_playlist) );
-    gtk_widget_show (player->priv->playlist_nt);
-	parole_player_set_playlist_visible(player, show_playlist);
-	gtk_widget_show (player->priv->go_fs);
-	gtk_widget_hide (player->priv->leave_fs);
-	gtk_widget_show (player->priv->show_hide_playlist_button);
-	
-	gtk_notebook_set_show_tabs (GTK_NOTEBOOK (player->priv->main_nt), npages > 1);
-	
-	gtk_window_unfullscreen (GTK_WINDOW (player->priv->window));
-	gtk_notebook_set_current_page (GTK_NOTEBOOK (player->priv->playlist_nt), current_page);
-	gdkwindow = gtk_widget_get_window (player->priv->window);
-	gdk_window_set_cursor (gdkwindow, NULL);
-	player->priv->full_screen = FALSE;
-    }
-    else
-    {
-	parole_player_move_fs_window (player);
-	gtk_widget_reparent (player->priv->play_box, player->priv->fs_window);
-	
-	gtk_widget_hide (player->priv->play_box);
-	gtk_widget_hide (player->priv->menu_bar);
-	gtk_widget_hide (player->priv->playlist_nt);
-	parole_player_set_playlist_visible(player, FALSE);
-	gtk_widget_hide (player->priv->go_fs);
-	gtk_widget_show (player->priv->leave_fs);
-	gtk_widget_hide (player->priv->show_hide_playlist_button);
-	
-	current_page = gtk_notebook_get_current_page (GTK_NOTEBOOK (player->priv->playlist_nt));
-	gtk_notebook_set_show_tabs (GTK_NOTEBOOK (player->priv->main_nt), FALSE);
-	
-	gtk_window_fullscreen (GTK_WINDOW (player->priv->window));
-	player->priv->full_screen = TRUE;
-    }
+    parole_player_reset_controls(player, fullscreen);
 }
 
 static void
