@@ -764,7 +764,8 @@
                                                           <object class="GtkLabel" id="label_elapsed">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
-                                                            <property name="label">0:00</property>
+                                                            <property name="label">00:00</property>
+                                                            <property name="single_line_mode">True</property>
                                                           </object>
                                                           <packing>
                                                             <property name="expand">False</property>
@@ -794,7 +795,8 @@
                                                           <object class="GtkLabel" id="label_duration">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
-                                                            <property name="label">0:00</property>
+                                                            <property name="label">00:00</property>
+                                                            <property name="single_line_mode">True</property>
                                                           </object>
                                                           <packing>
                                                             <property name="expand">False</property>

@@ -523,6 +523,8 @@ void cd_iso_mi_activated_cb (GtkWidget *widget,	 ParolePlayer *player)
 static void
 parole_player_change_range_value (ParolePlayer *player, gdouble value)
 {
+    gchar pos_text[128];
+    
     if ( !player->priv->user_seeking )
     {
 	player->priv->internal_range_change = TRUE;
@@ -531,6 +533,9 @@ parole_player_change_range_value (ParolePlayer *player, gdouble value)
 
 	player->priv->internal_range_change = FALSE;
     }
+    
+    get_time_string (pos_text, value);
+    gtk_label_set_text (GTK_LABEL (player->priv->label_elapsed), pos_text);
 }
 
 static void
@@ -901,7 +906,6 @@ parole_player_media_list_repeat_toggled_cb (ParoleMediaList *list, gboolean repe
 static void
 parole_player_media_progressed_cb (ParoleGst *gst, const ParoleStream *stream, gint64 value, ParolePlayer *player)
 {
-	gchar pos_text[128];
 #ifdef DEBUG
     g_return_if_fail (value > 0);
 #endif
@@ -909,8 +913,6 @@ parole_player_media_progressed_cb (ParoleGst *gst, const ParoleStream *stream, g
     if ( !player->priv->user_seeking && player->priv->state == PAROLE_STATE_PLAYING )
     {
 	parole_player_change_range_value (player, value);
-    get_time_string (pos_text, value);
-    gtk_label_set_text (GTK_LABEL (player->priv->label_elapsed), pos_text);
     }
 }
 
