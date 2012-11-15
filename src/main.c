@@ -289,7 +289,10 @@ int main (int argc, char **argv)
         { NULL, },
     };
     
-        /* initialize xfconf */
+    if (g_thread_supported ())
+        dbus_threads_init_default ();
+    
+    /* initialize xfconf */
     if (!xfconf_init (&error))
     {
         g_critical ("Failed to initialize Xfconf: %s", error->message);
