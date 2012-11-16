@@ -822,7 +822,7 @@ parole_player_select_custom_subtitle (GtkMenuItem *widget, gpointer data)
 {
     ParolePlayer *player;
     GtkWidget *chooser;
-    GtkFileFilter *filter;
+    GtkFileFilter *filter, *all;
     gchar *sub = NULL;
     const gchar *folder;
     gint response;
@@ -839,7 +839,7 @@ parole_player_select_custom_subtitle (GtkMenuItem *widget, gpointer data)
     
     
 
-    chooser = gtk_file_chooser_dialog_new (_("Select Subtitle (.srt) File"), NULL,
+    chooser = gtk_file_chooser_dialog_new (_("Select Subtitle File"), NULL,
 					   GTK_FILE_CHOOSER_ACTION_OPEN,
 					   GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
 					   GTK_STOCK_OPEN, GTK_RESPONSE_OK,
@@ -853,9 +853,20 @@ parole_player_select_custom_subtitle (GtkMenuItem *widget, gpointer data)
 	gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (chooser), folder);
     
     filter = gtk_file_filter_new ();
-    gtk_file_filter_set_name (filter, "SubRip Text");
-    gtk_file_filter_add_mime_type (filter, "application/x-subrip");
+    gtk_file_filter_set_name (filter, _("Subtitle Files"));
+    gtk_file_filter_add_pattern (filter, "*.asc");
+    gtk_file_filter_add_pattern (filter, "*.txt");
+    gtk_file_filter_add_pattern (filter, "*.sub");
+    gtk_file_filter_add_pattern (filter, "*.srt");
+    gtk_file_filter_add_pattern (filter, "*.smi");
+    gtk_file_filter_add_pattern (filter, "*.ssa");
+    gtk_file_filter_add_pattern (filter, "*.ass");
     gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (chooser), filter);
+    
+    all = gtk_file_filter_new ();
+    gtk_file_filter_set_name (all, _("All Files"));
+    gtk_file_filter_add_pattern (all, "*");
+    gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (chooser), all);
 
     gtk_window_set_default_size (GTK_WINDOW (chooser), 680, 480);
     response = gtk_dialog_run (GTK_DIALOG (chooser));
