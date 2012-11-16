@@ -830,12 +830,14 @@ parole_player_select_custom_subtitle (GtkMenuItem *widget, gpointer data)
     
     GtkTreeRowReference *row;
     
-    player = PAROLE_PLAYER(data);
-    row = parole_media_list_get_selected_row (player->priv->list);
-    
     ParoleFile *file;
     GtkTreeIter iter;
     GtkTreeModel *model;
+    
+    player = PAROLE_PLAYER(data);
+    row = parole_media_list_get_selected_row (player->priv->list);
+    
+    
 
     chooser = gtk_file_chooser_dialog_new (_("Select Subtitle (.srt) File"), NULL,
 					   GTK_FILE_CHOOSER_ACTION_OPEN,
