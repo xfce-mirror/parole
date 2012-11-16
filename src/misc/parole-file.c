@@ -45,8 +45,9 @@ struct _ParoleFilePrivate
     gchar 	*filename;
     gchar 	*display_name;
     gchar 	*uri;
-    gchar       *content_type;
+    gchar   *content_type;
 	gchar	*directory;
+	gchar   *custom_subtitles;
     
 };
 
@@ -57,7 +58,8 @@ enum
     PROP_DISPLAY_NAME,
     PROP_URI,
     PROP_CONTENT_TYPE,
-	PROP_DIRECTORY
+	PROP_DIRECTORY,
+	PROP_CUSTOM_SUBTITLES
 };
 
 G_DEFINE_TYPE (ParoleFile, parole_file, G_TYPE_OBJECT)
@@ -85,6 +87,9 @@ parole_file_finalize (GObject *object)
 	
 	if ( priv->directory )
 	g_free (priv->directory);
+	
+	if ( priv->custom_subtitles )
+	g_free (priv->custom_subtitles);
     
     G_OBJECT_CLASS (parole_file_parent_class)->finalize (object);
 }
@@ -107,6 +112,9 @@ parole_file_set_property (GObject *object, guint prop_id,
 	case PROP_DIRECTORY:
 		PAROLE_FILE_GET_PRIVATE (file)->directory = g_value_dup_string (value);
 		break;
+	case PROP_CUSTOM_SUBTITLES:
+	    PAROLE_FILE_GET_PRIVATE (file)->custom_subtitles = g_value_dup_string (value);
+	    break;
 	default:
 	    G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 	    break;
@@ -138,6 +146,9 @@ parole_file_get_property (GObject *object, guint prop_id,
 	case PROP_DIRECTORY:
 	    g_value_set_string (value, PAROLE_FILE_GET_PRIVATE (file)->directory);
 	    break;
+    case PROP_CUSTOM_SUBTITLES:
+        g_value_set_string (value, PAROLE_FILE_GET_PRIVATE (file)->custom_subtitles);
+        break;
 	default:
 	    G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 	    break;
@@ -316,6 +327,22 @@ parole_file_class_init (ParoleFileClass *klass)
 							  NULL,
 							  G_PARAM_CONSTRUCT_ONLY|
 							  G_PARAM_READWRITE));
+							  
+    /**
+     * ParoleFile:custom_subtitles:
+     *
+     * The custom subtitles set by the user.
+     *
+     * Since: 0.3.0.4
+     **/
+    g_object_class_install_property (object_class,
+				     PROP_CUSTOM_SUBTITLES,
+				     g_param_spec_string ("custom_subtitles",
+							  "Custom Subtitles", 
+							  "The custom subtitles set by the user",
+							  NULL,
+							  G_PARAM_CONSTRUCT_ONLY|
+							  G_PARAM_READWRITE));
 
     g_type_class_add_private (klass, sizeof (ParoleFilePrivate));
 }
@@ -332,6 +359,7 @@ parole_file_init (ParoleFile *file)
     priv->uri          = NULL;
     priv->content_type    = NULL;
 	priv->directory			= NULL;
+	priv->custom_subtitles = NULL;
 }
 
 /**
@@ -456,4 +484,37 @@ parole_file_get_directory (const ParoleFile *file)
     g_return_val_if_fail (PAROLE_IS_FILE (file), NULL);
     
     return PAROLE_FILE_GET_PRIVATE (file)->directory;
+}
+
+/**
+ * parole_file_get_custom_subtitles:
+ * @file: a #ParoleFile.
+ *
+ *
+ * Returns: A string containing the custom subtitles file path.
+ *
+ * Since: 0.3.0.4
+ **/
+const gchar *
+parole_file_get_custom_subtitles (const ParoleFile *file)
+{
+    g_return_val_if_fail (PAROLE_IS_FILE (file), NULL);
+    
+    return PAROLE_FILE_GET_PRIVATE (file)->custom_subtitles;
+}
+
+void
+parole_file_set_custom_subtitles (const ParoleFile *file, gchar *suburi)
+{
+    GValue value = G_VALUE_INIT;
+    g_value_init (&value, G_TYPE_STRING);
+    g_value_set_static_string (&value, suburi);
+    
+    parole_file_set_property (G_OBJECT(file), PROP_CUSTOM_SUBTITLES, 
+			      &value, g_param_spec_string ("custom_subtitles",
+							  "Custom Subtitles", 
+							  "The custom subtitles set by the user",
+							  NULL,
+							  G_PARAM_CONSTRUCT_ONLY|
+							  G_PARAM_READWRITE));
 }

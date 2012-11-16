@@ -52,6 +52,9 @@ ParoleFile       	       *parole_file_new             	  (const gchar *filename)
 
 ParoleFile       	       *parole_file_new_with_display_name (const gchar *filename,
 								   const gchar *display_name);
+								   
+
+void parole_file_set_custom_subtitles (const ParoleFile *file, gchar *suburi);
                                    
 const gchar   G_CONST_RETURN   *parole_file_get_directory 	  (const ParoleFile *file) G_GNUC_PURE;
 
@@ -62,6 +65,8 @@ const gchar   G_CONST_RETURN   *parole_file_get_display_name 	  (const ParoleFil
 const gchar   G_CONST_RETURN   *parole_file_get_uri 		  (const ParoleFile *file) G_GNUC_PURE;
 
 const gchar   G_CONST_RETURN   *parole_file_get_content_type      (const ParoleFile *file) G_GNUC_PURE;
+
+const gchar   G_CONST_RETURN   *parole_file_get_custom_subtitles (const ParoleFile *file) G_GNUC_PURE;
 
 G_END_DECLS
 

@@ -84,6 +84,10 @@ GtkWidget      	       *parole_gst_new             	(gpointer conf_obj);
 
 GtkWidget	       *parole_gst_get 			(void);
 
+void parole_gst_set_custom_subtitles (ParoleGst *gst, const gchar* sub_file);
+
+gchar* parole_gst_get_file_uri (ParoleGst *gst);
+
 void		        parole_gst_play_uri        	(ParoleGst *gst,
 							 const gchar *uri,
 							 const gchar *subtitles);

@@ -110,13 +110,16 @@ struct ParoleGstPrivate
     gboolean      buffering;
     gboolean      update_color_balance;
     
+    gboolean      use_custom_subtitles;
+    gchar*        custom_subtitles;
+    
     ParoleAspectRatio aspect_ratio;
     gulong	  state_change_id;
     
     gboolean	  scale_logo;
     
     /*
-     * xvimage sink has brightness+hue+aturation+contrast.
+     * xvimage sink has brightness+hue+saturation+contrast.
      */
     gboolean	  xvimage_sink;
     
@@ -1943,6 +1946,8 @@ parole_gst_init (ParoleGst *gst)
     gst->priv->with_vis = FALSE;
     gst->priv->vis_loaded = FALSE;
     gst->priv->scale_logo = TRUE;
+    gst->priv->use_custom_subtitles = FALSE;
+    gst->priv->custom_subtitles = NULL;
     
     gst->priv->conf = NULL;
     
@@ -2004,6 +2009,31 @@ parole_gst_play_idle (gpointer data)
     return FALSE;
 }
 
+void parole_gst_set_custom_subtitles (ParoleGst *gst, const gchar* sub_file)
+{
+    if ( sub_file == NULL )
+    {
+        gst->priv->use_custom_subtitles = FALSE;
+        gst->priv->custom_subtitles = NULL;
+    }
+    else
+    {
+        gst->priv->use_custom_subtitles = TRUE;
+        gst->priv->custom_subtitles = g_strdup(sub_file);
+    }
+}
+
+gchar * parole_gst_get_file_uri (ParoleGst *gst)
+{
+    gchar* uri;
+
+    g_object_get (G_OBJECT (gst->priv->stream),
+          "uri", &uri,
+          NULL);
+          
+    return uri;
+}
+
 void parole_gst_play_uri (ParoleGst *gst, const gchar *uri, const gchar *subtitles)
 {
     g_mutex_lock (&gst->priv->lock);
@@ -2015,7 +2045,7 @@ void parole_gst_play_uri (ParoleGst *gst, const gchar *uri, const gchar *subtitl
 	          "uri", uri,
 		  "subtitles", subtitles,
 		  NULL);
-
+		  
     g_mutex_unlock (&gst->priv->lock);
     
     if ( gst->priv->state_change_id == 0 )
@@ -2339,40 +2369,54 @@ gst_get_lang_list_for_type (ParoleGst * gst, const gchar * type_name)
     gint i, n = 0;
 
     g_object_get (G_OBJECT (gst->priv->playbin), "n-text", &n, NULL);
-    if (n == 0)
+    
+    if (n == 0 && gst->priv->use_custom_subtitles == FALSE)
       return NULL;
+      
+    if ( gst->priv->use_custom_subtitles == TRUE )
+        n--;
 
-    for (i = 0; i < n; i++) {
-      GstTagList *tags = NULL;
+    if (n != 0)
+    {
+        for (i = 0; i < n; i++) {
+          GstTagList *tags = NULL;
 
-      g_signal_emit_by_name (G_OBJECT (gst->priv->playbin), "get-text-tags",
-          i, &tags);
+          g_signal_emit_by_name (G_OBJECT (gst->priv->playbin), "get-text-tags",
+              i, &tags);
 
-      if (tags) {
-        gchar *lc = NULL, *cd = NULL;
+          if (tags) {
+            gchar *lc = NULL, *cd = NULL;
 
-	gst_tag_list_get_string (tags, GST_TAG_LANGUAGE_CODE, &lc);
-	gst_tag_list_get_string (tags, GST_TAG_CODEC, &lc);
+	    gst_tag_list_get_string (tags, GST_TAG_LANGUAGE_CODE, &lc);
+	    gst_tag_list_get_string (tags, GST_TAG_CODEC, &lc);
 	
-        if (lc) {
-	  ret = g_list_prepend (ret, lc);
-	  g_free (cd);
-	} else if (cd) {
-	  ret = g_list_prepend (ret, cd);
-	} else {
-	  ret = g_list_prepend (ret, g_strdup_printf (_("Subtitle #%d"), num++));
-	}
-	gst_tag_list_free (tags);
-      } else {
-	ret = g_list_prepend (ret, g_strdup_printf (_("Subtitle #%d"), num++));
-      }
+            if (lc) {
+	      ret = g_list_prepend (ret, lc);
+	      g_free (cd);
+	    } else if (cd) {
+	      ret = g_list_prepend (ret, cd);
+	    } else {
+	      ret = g_list_prepend (ret, g_strdup_printf (_("Subtitle #%d"), num++));
+	    }
+	    gst_tag_list_free (tags);
+          } else {
+	    ret = g_list_prepend (ret, g_strdup_printf (_("Subtitle #%d"), num++));
+          }
+        }
+    }
+    
+    ret = g_list_reverse (ret);
+    
+    if ( gst->priv->use_custom_subtitles == TRUE )
+    {
+        ret = g_list_prepend (ret, g_strdup_printf("%s",gst->priv->custom_subtitles));
     }
   } else {
     g_critical ("Invalid stream type '%s'", type_name);
     return NULL;
   }
 
-  return g_list_reverse (ret);
+  return ret;
 }
 
 gboolean
@@ -2404,7 +2448,10 @@ gst_set_current_subtitle_track( ParoleGst *gst, gint track_no )
 		  "uri", &uri,
 		  NULL);
 		  
-	sub = (gchar*) parole_get_subtitle_path(uri);
+    if ( gst->priv->use_custom_subtitles == TRUE )
+        sub = gst->priv->custom_subtitles;
+    else
+	    sub = (gchar*) parole_get_subtitle_path(uri);
 
 	g_object_get (gst->priv->playbin, "flags", &flags, NULL);
 	

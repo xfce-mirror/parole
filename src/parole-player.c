@@ -103,6 +103,9 @@ static void parole_player_disc_selected_cb (ParoleDisc *disc,
 					    const gchar *uri, 
 					    const gchar *device, 
 					    ParolePlayer *player);
+					    
+
+static void parole_player_select_custom_subtitle (GtkMenuItem *widget, gpointer data);
 
 /*
  * GtkBuilder Callbacks
@@ -256,6 +259,7 @@ static void parole_player_audiotrack_radio_menu_item_changed_cb(GtkWidget *widge
 
 static void parole_player_subtitles_radio_menu_item_changed_cb(GtkWidget *widget, ParolePlayer *player);
 
+
 gboolean	parole_player_key_press 		(GtkWidget *widget, 
 							 GdkEventKey *ev, 
 							 ParolePlayer *player);
@@ -326,7 +330,9 @@ struct ParolePlayerPrivate
     GList			*audio_list;
     GList			*subtitle_list;
     gboolean		update_languages;
+    gboolean        updated_subs;
     GtkWidget		*subtitles_group;
+    GtkWidget       *subtitles_menu_custom;
     GtkWidget		*audio_group;
     
     GtkWidget		*subtitles_menu;
@@ -445,6 +451,8 @@ typedef enum
     PAROLE_ISO_IMAGE_CD
 } ParoleIsoImage;
 
+
+
 static void
 iso_files_folder_changed_cb (GtkFileChooser *widget, gpointer data)
 {
@@ -557,6 +565,8 @@ parole_player_reset (ParolePlayer *player)
 	player->priv->row = NULL;
     }
 }
+
+
 
 static gboolean
 parole_sublang_equal_lists (GList *orig, GList *new)
@@ -769,16 +779,16 @@ parole_player_update_subtitles (ParolePlayer *player, ParoleGst *gst)
 	if (sub_enabled)
 	sub_index = 1;
 	
-	if (parole_sublang_equal_lists (player->priv->subtitle_list, list) == TRUE)
-	{
-		if (g_list_length (list) == 0)
-		{
-			parole_player_clear_subtitles(player);
-		}
-		return;
-	}
-	
-	parole_player_set_subtitles_list (player, list);
+    if (parole_sublang_equal_lists (player->priv->subtitle_list, list) == TRUE)
+    {
+	    if (g_list_length (list) == 0)
+	    {
+		    parole_player_clear_subtitles(player);
+	    }
+	    return;
+    }
+
+    parole_player_set_subtitles_list (player, list);
 	
 	gtk_combo_box_set_active( GTK_COMBO_BOX(player->priv->combobox_subtitles), sub_index );
 	
@@ -799,10 +809,92 @@ parole_player_update_languages (ParolePlayer *player, ParoleGst *gst)
 		{
 			parole_player_update_audio_tracks(player, gst);
 			parole_player_update_subtitles(player, gst);
+			gtk_widget_set_sensitive(player->priv->subtitles_menu_custom, TRUE);
 		}
+		else
+		    gtk_widget_set_sensitive(player->priv->subtitles_menu_custom, FALSE);
 		player->priv->update_languages = FALSE;
 	}
 }
+
+static void
+parole_player_select_custom_subtitle (GtkMenuItem *widget, gpointer data)
+{
+    ParolePlayer *player;
+    GtkWidget *chooser;
+    GtkFileFilter *filter;
+    gchar *sub = NULL;
+    const gchar *folder;
+    gint response;
+    gchar *uri = NULL;
+    
+    GtkTreeRowReference *row;
+    
+    player = PAROLE_PLAYER(data);
+    row = parole_media_list_get_selected_row (player->priv->list);
+    
+    ParoleFile *file;
+    GtkTreeIter iter;
+    GtkTreeModel *model;
+
+    chooser = gtk_file_chooser_dialog_new (_("Select Subtitle (.srt) File"), NULL,
+					   GTK_FILE_CHOOSER_ACTION_OPEN,
+					   GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+					   GTK_STOCK_OPEN, GTK_RESPONSE_OK,
+					   NULL);
+				
+    gtk_file_chooser_set_select_multiple (GTK_FILE_CHOOSER (chooser), FALSE);
+    
+    folder = parole_rc_read_entry_string ("iso-image-folder", PAROLE_RC_GROUP_GENERAL, NULL);
+    
+    if ( folder )
+	gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (chooser), folder);
+    
+    filter = gtk_file_filter_new ();
+    gtk_file_filter_set_name (filter, "SubRip Text");
+    gtk_file_filter_add_mime_type (filter, "application/x-subrip");
+    gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (chooser), filter);
+
+    gtk_window_set_default_size (GTK_WINDOW (chooser), 680, 480);
+    response = gtk_dialog_run (GTK_DIALOG (chooser));
+    
+    if ( response == GTK_RESPONSE_OK )
+	    sub = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (chooser));
+    
+    gtk_widget_destroy (chooser);
+    
+    if ( sub )
+    {
+    uri = parole_gst_get_file_uri(PAROLE_GST (player->priv->gst));
+    
+    parole_player_reset(player);
+    
+    if ( g_str_has_prefix (uri, "file:/") )
+    {
+	    TRACE ("Trying to play media file %s", uri);
+	    TRACE ("Trying to use subtitle file %s", sub);
+	    player->priv->updated_subs = TRUE;
+	    
+	    player->priv->row = gtk_tree_row_reference_copy (row);
+    
+        model = gtk_tree_row_reference_get_model (row);
+        
+        if ( gtk_tree_model_get_iter (model, &iter, gtk_tree_row_reference_get_path (row)) )
+        {
+	    gtk_tree_model_get (model, &iter, DATA_COL, &file, -1);
+	
+	    parole_file_set_custom_subtitles(file, sub);
+	    
+	    parole_gst_set_custom_subtitles(PAROLE_GST (player->priv->gst), sub);
+	    parole_gst_play_uri (PAROLE_GST (player->priv->gst), 
+				 uri,
+				 sub);
+	    }
+    }
+
+	g_free (sub);
+	g_free (uri);
+}}
 
 static void
 parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *row, ParolePlayer *player)
@@ -823,7 +915,7 @@ parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *ro
 	
 	if ( file )
 	{
-	    gchar *sub = NULL;
+	    const gchar *sub = NULL;
 	    const gchar *uri;
 	    
 	    uri = parole_file_get_uri (file);
@@ -832,7 +924,10 @@ parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *ro
 	    {
 		if ( parole_file_filter (player->priv->video_filter, file) )
 		{
-		    sub = parole_get_subtitle_path (uri);
+		    sub = parole_file_get_custom_subtitles (file);
+		    parole_gst_set_custom_subtitles(PAROLE_GST(player->priv->gst), sub);
+		    if (sub == NULL)
+		        sub = parole_get_subtitle_path (uri);
 		}
 	    }
 	    TRACE ("Trying to play media file %s", uri);
@@ -841,7 +936,6 @@ parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *ro
 	    parole_gst_play_uri (PAROLE_GST (player->priv->gst), 
 				 parole_file_get_uri (file),
 				 sub);
-	    g_free (sub);
 	    
 	    gtk_window_set_title (GTK_WINDOW (player->priv->window), parole_file_get_display_name(file));
 		parole_rc_write_entry_string ("media-chooser-folder", PAROLE_RC_GROUP_GENERAL, parole_file_get_directory(file));
@@ -2459,6 +2553,11 @@ parole_player_init (ParolePlayer *player)
     player->priv->languages_menu = GTK_WIDGET (gtk_builder_get_object (builder, "languages-menu"));
     
     player->priv->subtitles_group = GTK_WIDGET (gtk_builder_get_object (builder, "subtitles-menu-none"));
+    player->priv->subtitles_menu_custom = GTK_WIDGET (gtk_builder_get_object (builder, "subtitles-menu-custom"));
+    
+    g_signal_connect (player->priv->subtitles_menu_custom, "activate",
+		      G_CALLBACK (parole_player_select_custom_subtitle), player);
+    
     player->priv->audio_group = NULL;
    
     player->priv->main_nt = GTK_WIDGET (gtk_builder_get_object (builder, "main-notebook"));
@@ -2526,6 +2625,7 @@ parole_player_init (ParolePlayer *player)
                                
 	gtk_box_pack_start( GTK_BOX( player->priv->hbox_infobar ), player->priv->infobar, TRUE, TRUE, 0);
 	player->priv->update_languages = FALSE;
+	player->priv->updated_subs = FALSE;
 	
     gtk_scale_button_set_value (GTK_SCALE_BUTTON (player->priv->volume), 
 			 (gdouble) (parole_rc_read_entry_int ("volume", PAROLE_RC_GROUP_GENERAL, 100)/100.));
