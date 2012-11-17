@@ -1,16 +1,16 @@
 # Korean translation for Parole package.
 # Copyright (C) -2012 Ali Abdallah et al.
 # This file is distributed under the same license as the Parole package.
-# Seong-ho, Cho <darkcircle.0426@gmail.com>, 2012.
+# Seong-ho Cho <darkcircle.0426@gmail.com>, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: parole.master\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-25 12:45+0000\n"
-"PO-Revision-Date: 2012-08-26 01:53+0900\n"
+"Report-Msgid-Bugs-To: https://bugzilla.xfce.org/enter_bug.cgi?product=Parole\n"
+"POT-Creation-Date: 2012-11-17 03:00+0000\n"
+"PO-Revision-Date: 2012-11-17 14:27+0900\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
-"Language-Team: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge.net>\n"
+"Language-Team: xfce-i18n <xfce-i18n@xfce.org>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -51,13 +51,13 @@ msgid "Buffering (0%)"
 msgstr "버퍼링(0%)"
 
 #: ../data/interfaces/parole.ui.h:9
-#: ../src/parole-player.c:663
+#: ../src/parole-player.c:681
 msgid "Empty"
 msgstr "비어 있음"
 
 #: ../data/interfaces/parole.ui.h:10
-#: ../src/parole-disc.c:125
-#: ../src/parole-disc.c:385
+#: ../src/parole-disc.c:147
+#: ../src/parole-disc.c:465
 msgid "Insert Disc"
 msgstr "디스크를 삽입하십시오"
 
@@ -78,7 +78,7 @@ msgid "Open _location"
 msgstr "위치 열기(_L)"
 
 #: ../data/interfaces/parole.ui.h:15
-#: ../src/parole-about.c:55
+#: ../src/parole-about.c:68
 msgid "Parole Media Player"
 msgstr "빠롤 미디어 재생기"
 
@@ -92,7 +92,7 @@ msgstr "텍스트 자막을 선택하십시오..."
 
 #: ../data/interfaces/parole.ui.h:18
 msgid "Show _playlist"
-msgstr "재생 목록 보기(_P)"
+msgstr "재생 목록 표시(_P)"
 
 #: ../data/interfaces/parole.ui.h:19
 msgid "Square"
@@ -108,11 +108,11 @@ msgstr "자막:"
 
 #: ../data/interfaces/parole.ui.h:22
 msgid "Volume _Down"
-msgstr "음량 작게"
+msgstr "음량 작게(_D)"
 
 #: ../data/interfaces/parole.ui.h:23
 msgid "Volume _Up"
-msgstr "음량 크게"
+msgstr "음량 크게(_U)"
 
 #: ../data/interfaces/parole.ui.h:24
 msgid "_Aspect Ratio"
@@ -245,7 +245,7 @@ msgstr "대비:"
 
 #: ../data/interfaces/parole-settings.ui.h:10
 msgid "Disable screensaver while playing movies"
-msgstr "동영상 재생시 화면보호기 비활성화"
+msgstr "동영상 재생시 화면 보호기 비활성화"
 
 #: ../data/interfaces/parole-settings.ui.h:11
 msgid "Enable keyboard multimedia keys"
@@ -289,7 +289,7 @@ msgstr "시각화 유형:"
 
 #: ../data/interfaces/parole-settings.ui.h:22
 msgid "_Display"
-msgstr "디스플레이(_D)"
+msgstr "표시(_D)"
 
 #: ../data/interfaces/parole-settings.ui.h:23
 msgid "_General"
@@ -309,7 +309,7 @@ msgstr "확장자별"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "Select File Types (By Extension)"
-msgstr "파일 유형 선택 (확장자로)"
+msgstr "파일 유형 선택(확장자로)"
 
 #: ../data/interfaces/open-location.ui.h:1
 msgid "Open Location"
@@ -317,7 +317,7 @@ msgstr "위치 열기"
 
 #: ../data/interfaces/open-location.ui.h:2
 msgid "Please enter a network URL:"
-msgstr "네트워크 URL을 입력하여 주시기 바랍니다:"
+msgstr "네트워크 URL을 입력하여 주십시오:"
 
 #: ../data/desktop/parole.desktop.in.in.h:1
 msgid "Parole"
@@ -331,35 +331,47 @@ msgstr "메시지"
 msgid "Error"
 msgstr "오류"
 
-#: ../src/gst/parole-gst.c:1493
+#: ../src/gst/parole-gst.c:1171
+msgid "Additional software is required."
+msgstr "추가 프로그램이 필요합니다."
+
+#: ../src/gst/parole-gst.c:1175
+msgid "Don't Install"
+msgstr "설치하지 않음"
+
+#: ../src/gst/parole-gst.c:1177
+msgid "Install"
+msgstr "설치"
+
+#: ../src/gst/parole-gst.c:1583
 msgid "Stop"
 msgstr "멈춤"
 
-#: ../src/gst/parole-gst.c:1494
+#: ../src/gst/parole-gst.c:1584
 msgid "The stream is taking too much time to load"
 msgstr "스트림을 불러오는데 너무나 많은 시간이 걸립니다"
 
-#: ../src/gst/parole-gst.c:1663
+#: ../src/gst/parole-gst.c:1753
 msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr "채플레이빈 GStreamer 플러그인을 불러올 수 없습니다. GStreamer를 설치했는지 확인하십시오"
 
-#: ../src/gst/parole-gst.c:1687
+#: ../src/gst/parole-gst.c:1777
 msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr "동영상 GStreamer 플러그인을 불러올 수 없습니다. GStreamer를 설치했는지 확인하십시오"
 
-#: ../src/gst/parole-gst.c:2244
-#: ../src/gst/parole-gst.c:2248
+#: ../src/gst/parole-gst.c:2361
+#: ../src/gst/parole-gst.c:2365
 #, c-format
 msgid "Audio Track #%d"
 msgstr "%d번 트랙"
 
-#: ../src/gst/parole-gst.c:2276
-#: ../src/gst/parole-gst.c:2280
+#: ../src/gst/parole-gst.c:2399
+#: ../src/gst/parole-gst.c:2403
 #, c-format
 msgid "Subtitle #%d"
 msgstr "%d번 자막"
 
-#: ../src/main.c:56
+#: ../src/main.c:57
 #, c-format
 msgid ""
 "\n"
@@ -380,108 +392,112 @@ msgstr ""
 "GNU GPL라이선스를 따릅니다.\n"
 "\n"
 
-#: ../src/main.c:189
+#: ../src/main.c:230
 msgid "Unknown argument "
 msgstr "알 수 없는 인자"
 
-#: ../src/main.c:227
+#: ../src/main.c:270
 msgid "Open a new instance"
 msgstr "새 인스턴스 열기"
 
-#: ../src/main.c:228
+#: ../src/main.c:271
 msgid "Do not load plugins"
 msgstr "플러그인 불러오지 않음"
 
-#: ../src/main.c:229
+#: ../src/main.c:272
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "Audio-CD/VCD/DVD 장치 경로 설정"
 
-#: ../src/main.c:230
+#: ../src/main.c:273
 msgid "Play or pause if already playing"
 msgstr "이미 재생중이라면 재생 또는 일시정지 하기"
 
-#: ../src/main.c:231
+#: ../src/main.c:274
 msgid "Stop playing"
 msgstr "재생 정지"
 
-#: ../src/main.c:232
+#: ../src/main.c:275
 msgid "Next track"
 msgstr "다음 트랙"
 
-#: ../src/main.c:233
+#: ../src/main.c:276
 msgid "Previous track"
 msgstr "이전 트랙"
 
-#: ../src/main.c:234
+#: ../src/main.c:277
 msgid "Seek forward"
 msgstr "이후 탐색"
 
-#: ../src/main.c:235
+#: ../src/main.c:278
 msgid "Seek Backward"
 msgstr "이전 탐색"
 
-#: ../src/main.c:236
+#: ../src/main.c:279
 msgid "Raise volume"
 msgstr "음량 키우기"
 
-#: ../src/main.c:237
+#: ../src/main.c:280
 msgid "Lower volume"
 msgstr "음량 줄이기"
 
-#: ../src/main.c:238
+#: ../src/main.c:281
 msgid "Mute volume"
 msgstr "음소거"
 
-#: ../src/main.c:239
+#: ../src/main.c:282
 msgid "Version information"
 msgstr "버전 정보"
 
-#: ../src/main.c:240
+#: ../src/main.c:283
+msgid "Use embedded mode"
+msgstr "내장모드 사용"
+
+#: ../src/main.c:284
 msgid "Start in fullscreen mode"
 msgstr "전체 화면 상태로 시작하기"
 
-#: ../src/main.c:241
+#: ../src/main.c:285
 msgid "Enabled/Disable XV support"
 msgstr "XV지원 활성/비활성화"
 
-#: ../src/main.c:242
+#: ../src/main.c:286
 msgid "Add files to playlist"
 msgstr "재생 목록에 파일 추가"
 
-#: ../src/main.c:244
+#: ../src/main.c:288
 msgid "Media to play"
 msgstr "재생할 미디어"
 
-#: ../src/main.c:281
+#: ../src/main.c:337
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "빠롤이 이미 실행중입니다. 새 인스턴스를 열려면 -i를 사용합니다\n"
 
-#: ../src/parole-mediachooser.c:208
+#: ../src/parole-mediachooser.c:211
 msgid "Supported files"
 msgstr "지원하는 파일"
 
-#: ../src/parole-mediachooser.c:214
+#: ../src/parole-mediachooser.c:217
 msgid "All files"
 msgstr "모든 파일"
 
-#: ../src/parole-medialist.c:533
+#: ../src/parole-medialist.c:541
 msgid "Permission denied"
 msgstr "권한 거부함"
 
-#: ../src/parole-medialist.c:535
+#: ../src/parole-medialist.c:543
 msgid "Error saving playlist file"
 msgstr "재생 목록 파일을 저장하는데 오류가 발생했습니다"
 
-#: ../src/parole-medialist.c:547
+#: ../src/parole-medialist.c:555
 msgid "Unknown playlist format"
 msgstr "알 수 없는 재생 목록 형식"
 
-#: ../src/parole-medialist.c:548
+#: ../src/parole-medialist.c:556
 msgid "Please chooser a supported playlist format"
 msgstr "지원하는 재생 목록 형식을 선택하여 주십시오"
 
-#: ../src/parole-medialist.c:600
+#: ../src/parole-medialist.c:608
 #: ../src/parole-plugins-manager.c:349
 #: ../src/plugins/properties/stream-properties-provider.c:140
 #: ../src/plugins/properties/stream-properties-provider.c:141
@@ -490,71 +506,83 @@ msgstr "지원하는 재생 목록 형식을 선택하여 주십시오"
 msgid "Unknown"
 msgstr "알 수 없음"
 
-#: ../src/parole-medialist.c:674
-#: ../src/parole-player.c:2495
+#: ../src/parole-medialist.c:683
+#: ../src/parole-player.c:2650
 msgid "Playlist"
 msgstr "재생 목록"
 
-#: ../src/parole-medialist.c:681
+#: ../src/parole-medialist.c:690
 msgid "M3U Playlists"
 msgstr "M3U 재생 목록"
 
-#: ../src/parole-medialist.c:689
+#: ../src/parole-medialist.c:698
 msgid "PLS Playlists"
 msgstr "PLS 재생 목록"
 
-#: ../src/parole-medialist.c:697
+#: ../src/parole-medialist.c:706
 msgid "Advanced Stream Redirector"
 msgstr "고급 스트림 재지정자"
 
-#: ../src/parole-medialist.c:705
+#: ../src/parole-medialist.c:714
 msgid "Shareable Playlist"
 msgstr "공유가능한 재생 목록"
 
 #. Clear
-#: ../src/parole-medialist.c:956
+#: ../src/parole-medialist.c:961
 msgid "Open Containing Folder"
 msgstr "내용이 있는 폴더 열기"
 
-#: ../src/parole-medialist.c:1376
+#: ../src/parole-medialist.c:1381
 msgid "Media list"
 msgstr "미디어 목록"
 
-#: ../src/parole-player.c:467
+#: ../src/parole-player.c:478
 msgid "Open ISO image"
 msgstr "ISO 이미지 열기"
 
-#: ../src/parole-player.c:484
+#: ../src/parole-player.c:495
 msgid "CD image"
 msgstr "CD 이미지"
 
-#: ../src/parole-player.c:484
+#: ../src/parole-player.c:495
 msgid "DVD image"
 msgstr "DVD 이미지"
 
-#: ../src/parole-player.c:923
-#: ../src/parole-player.c:1046
+#: ../src/parole-player.c:842
+msgid "Select Subtitle File"
+msgstr "자막 파일 선택"
+
+#: ../src/parole-player.c:856
+msgid "Subtitle Files"
+msgstr "자막 파일"
+
+#: ../src/parole-player.c:867
+msgid "All Files"
+msgstr "모든 파일"
+
+#: ../src/parole-player.c:1035
+#: ../src/parole-player.c:1158
 msgid "Media stream is not seekable"
 msgstr "미디어 스트림을 탐색할 수 없습니다."
 
-#: ../src/parole-player.c:1414
+#: ../src/parole-player.c:1526
 msgid "GStreamer backend error"
 msgstr "GStreamer 백엔드 오류"
 
-#: ../src/parole-player.c:1457
+#: ../src/parole-player.c:1569
 msgid "Buffering"
 msgstr "버퍼링"
 
-#: ../src/parole-about.c:61
+#: ../src/parole-about.c:74
 msgid "translator-credits"
 msgstr "Seong-ho Cho <darkcircle.0426@gmail.com>, 2012"
 
-#: ../src/parole-about.c:64
+#: ../src/parole-about.c:77
 msgid "Visit Parole website"
 msgstr "빠롤 웹사이트 방문하기"
 
-#: ../src/parole-disc.c:230
-#: ../src/parole-disc.c:283
+#: ../src/parole-disc.c:270
+#: ../src/parole-disc.c:331
 msgid "Play Disc"
 msgstr "디스크 재생"
 
@@ -725,7 +753,7 @@ msgstr "서유럽어"
 msgid "Vietnamese"
 msgstr "베트남어"
 
-#: ../src/parole-open-location.c:206
+#: ../src/parole-open-location.c:210
 msgid "Clear History"
 msgstr "기록 지우기"
 
