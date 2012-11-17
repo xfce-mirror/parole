@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-16 05:36+0000\n"
+"POT-Creation-Date: 2012-11-17 08:21+0000\n"
 "PO-Revision-Date: 2012-07-025 11:55+0200\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch (Flemish)\n"
@@ -511,7 +511,7 @@ msgstr "Kies a.u.b. een ondersteunde speellijst-opmaak"
 msgid "Unknown"
 msgstr "Onbekend"
 
-#: ../src/parole-medialist.c:683 ../src/parole-player.c:2637
+#: ../src/parole-medialist.c:683 ../src/parole-player.c:2650
 msgid "Playlist"
 msgstr "Speellijst"
 
@@ -552,19 +552,27 @@ msgstr "CD-beeldbestand"
 msgid "DVD image"
 msgstr "DVD-beeldbestand"
 
-#: ../src/parole-player.c:840
-msgid "Select Subtitle (.srt) File"
-msgstr "Kies ondertitelbestand (.srt)"
+#: ../src/parole-player.c:842
+msgid "Select Subtitle File"
+msgstr "Kies ondertitelbestand"
 
-#: ../src/parole-player.c:1022 ../src/parole-player.c:1145
+#: ../src/parole-player.c:856
+msgid "Subtitle Files"
+msgstr "Ondertitelbestanden"
+
+#: ../src/parole-player.c:867
+msgid "All Files"
+msgstr "Alle bestanden"
+
+#: ../src/parole-player.c:1035 ../src/parole-player.c:1158
 msgid "Media stream is not seekable"
 msgstr "Mediastroom is niet doorzoekbaar"
 
-#: ../src/parole-player.c:1513
+#: ../src/parole-player.c:1526
 msgid "GStreamer backend error"
 msgstr "Fout van Gstreamer-achtergronddienst"
 
-#: ../src/parole-player.c:1556
+#: ../src/parole-player.c:1569
 msgid "Buffering"
 msgstr "Aan het bufferen"
 
