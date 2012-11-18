@@ -3,18 +3,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-11 13:15+0000\n"
+"POT-Creation-Date: 2012-11-18 11:06+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Country: CZECH REPUBLIC\n"
 "Language: \n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Poedit-Language: Czech\n"
 "X-Poedit-SourceCharset: ASCII\n"
+"X-Poedit-Country: CZECH REPUBLIC\n"
 
 #: ../data/interfaces/parole.ui.h:1
 msgid "16:9 (Widescreen)"
@@ -45,12 +45,12 @@ msgstr "Automaticky"
 msgid "Buffering (0%)"
 msgstr "Ukládání do vyrovnávací paměti (0%)"
 
-#: ../data/interfaces/parole.ui.h:9 ../src/parole-player.c:663
+#: ../data/interfaces/parole.ui.h:9 ../src/parole-player.c:681
 msgid "Empty"
 msgstr "Prázdný"
 
-#: ../data/interfaces/parole.ui.h:10 ../src/parole-disc.c:125
-#: ../src/parole-disc.c:385
+#: ../data/interfaces/parole.ui.h:10 ../src/parole-disc.c:147
+#: ../src/parole-disc.c:465
 msgid "Insert Disc"
 msgstr "Vložte disk"
 
@@ -70,7 +70,7 @@ msgstr "Žádný"
 msgid "Open _location"
 msgstr "_Otevřít umístění"
 
-#: ../data/interfaces/parole.ui.h:15 ../src/parole-about.c:55
+#: ../data/interfaces/parole.ui.h:15 ../src/parole-about.c:68
 msgid "Parole Media Player"
 msgstr "Přehrávač médií Parole"
 
@@ -323,34 +323,46 @@ msgstr "Zpráva"
 msgid "Error"
 msgstr "Chyba"
 
-#: ../src/gst/parole-gst.c:1493
+#: ../src/gst/parole-gst.c:1171
+msgid "Additional software is required."
+msgstr "Je požadován další software."
+
+#: ../src/gst/parole-gst.c:1175
+msgid "Don't Install"
+msgstr "Neinstalovat"
+
+#: ../src/gst/parole-gst.c:1177
+msgid "Install"
+msgstr "Instalovat"
+
+#: ../src/gst/parole-gst.c:1583
 msgid "Stop"
 msgstr "Zastavit"
 
-#: ../src/gst/parole-gst.c:1494
+#: ../src/gst/parole-gst.c:1584
 msgid "The stream is taking too much time to load"
 msgstr "Načtení datového proudu trvá příliš dlouho"
 
-#: ../src/gst/parole-gst.c:1663
+#: ../src/gst/parole-gst.c:1753
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Nelze zavést zásuvný modul GStreamer playbin, zkontrolujte stav instalace "
 "aplikace GStreamer"
 
-#: ../src/gst/parole-gst.c:1687
+#: ../src/gst/parole-gst.c:1777
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Nelze zavést zásuvný modul GStreamer video, zkontrolujte stav instalace "
 "aplikace GStreamer"
 
-#: ../src/gst/parole-gst.c:2244 ../src/gst/parole-gst.c:2248
+#: ../src/gst/parole-gst.c:2361 ../src/gst/parole-gst.c:2365
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Zvuková stopa č. %d"
 
-#: ../src/gst/parole-gst.c:2276 ../src/gst/parole-gst.c:2280
+#: ../src/gst/parole-gst.c:2399 ../src/gst/parole-gst.c:2403
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Titulek č. %d"
@@ -376,110 +388,114 @@ msgstr ""
 "Licencováno pod GNU GPL.\n"
 "\n"
 
-#: ../src/main.c:190
+#: ../src/main.c:230
 msgid "Unknown argument "
 msgstr "Neznámý argument"
 
-#: ../src/main.c:236
+#: ../src/main.c:270
 msgid "Open a new instance"
 msgstr "Otevřít novou instanci"
 
-#: ../src/main.c:237
+#: ../src/main.c:271
 msgid "Do not load plugins"
 msgstr "Nezavádět zásuvné moduly"
 
-#: ../src/main.c:238
+#: ../src/main.c:272
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "Nastavit cestu zařízení Audio-CD/VCD/DVD"
 
-#: ../src/main.c:239
+#: ../src/main.c:273
 msgid "Play or pause if already playing"
 msgstr "Přehrát nebo pozastavit, pokud se již přehrává"
 
-#: ../src/main.c:240
+#: ../src/main.c:274
 msgid "Stop playing"
 msgstr "Zastavit přehrávání"
 
-#: ../src/main.c:241
+#: ../src/main.c:275
 msgid "Next track"
 msgstr "Další stopa"
 
-#: ../src/main.c:242
+#: ../src/main.c:276
 msgid "Previous track"
 msgstr "Předchozí stopa"
 
-#: ../src/main.c:243
+#: ../src/main.c:277
 msgid "Seek forward"
 msgstr "Posunout vpřed"
 
-#: ../src/main.c:244
+#: ../src/main.c:278
 msgid "Seek Backward"
 msgstr "Posunout zpět"
 
-#: ../src/main.c:245
+#: ../src/main.c:279
 msgid "Raise volume"
 msgstr "Zvýšit hlasitost"
 
-#: ../src/main.c:246
+#: ../src/main.c:280
 msgid "Lower volume"
 msgstr "Snížit hlasitost"
 
-#: ../src/main.c:247
+#: ../src/main.c:281
 msgid "Mute volume"
 msgstr "Ztlumit"
 
-#: ../src/main.c:248
+#: ../src/main.c:282
 msgid "Version information"
 msgstr "Informace o verzi"
 
-#: ../src/main.c:249
+#: ../src/main.c:283
+msgid "Use embedded mode"
+msgstr "Použít přiložené modul"
+
+#: ../src/main.c:284
 msgid "Start in fullscreen mode"
 msgstr "Spustit v režimu celé obrazovky"
 
-#: ../src/main.c:250
+#: ../src/main.c:285
 msgid "Enabled/Disable XV support"
 msgstr "Povolit nebo zakázat podporu XV"
 
-#: ../src/main.c:251
+#: ../src/main.c:286
 msgid "Add files to playlist"
 msgstr "Přidat soubory do seznamu médií"
 
-#: ../src/main.c:253
+#: ../src/main.c:288
 msgid "Media to play"
 msgstr "Přehrávaná média"
 
-#: ../src/main.c:290
+#: ../src/main.c:337
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr ""
 "Aplikace Parole je již spuštěna, novou instanci otevřete použitím parametru -"
 "i\n"
 
-#: ../src/parole-mediachooser.c:208
+#: ../src/parole-mediachooser.c:211
 msgid "Supported files"
 msgstr "Ppodporované soubory"
 
-#: ../src/parole-mediachooser.c:214
+#: ../src/parole-mediachooser.c:217
 msgid "All files"
 msgstr "Všechny soubory"
 
-#: ../src/parole-medialist.c:533
+#: ../src/parole-medialist.c:541
 msgid "Permission denied"
 msgstr "Přístup zamítnut"
 
-#: ../src/parole-medialist.c:535
+#: ../src/parole-medialist.c:543
 msgid "Error saving playlist file"
 msgstr "Chyba při ukládání souboru seznamu médií"
 
-#: ../src/parole-medialist.c:547
+#: ../src/parole-medialist.c:555
 msgid "Unknown playlist format"
 msgstr "Neznámý formát seznamu médií"
 
-#: ../src/parole-medialist.c:548
+#: ../src/parole-medialist.c:556
 msgid "Please chooser a supported playlist format"
 msgstr "Vyberte seznam médií v podporovaném formátu"
 
-#: ../src/parole-medialist.c:600 ../src/parole-plugins-manager.c:349
+#: ../src/parole-medialist.c:608 ../src/parole-plugins-manager.c:349
 #: ../src/plugins/properties/stream-properties-provider.c:140
 #: ../src/plugins/properties/stream-properties-provider.c:141
 #: ../src/plugins/properties/stream-properties-provider.c:142
@@ -487,68 +503,80 @@ msgstr "Vyberte seznam médií v podporovaném formátu"
 msgid "Unknown"
 msgstr "Neznámý"
 
-#: ../src/parole-medialist.c:674 ../src/parole-player.c:2495
+#: ../src/parole-medialist.c:683 ../src/parole-player.c:2650
 msgid "Playlist"
 msgstr "Seznam médií"
 
-#: ../src/parole-medialist.c:681
+#: ../src/parole-medialist.c:690
 msgid "M3U Playlists"
 msgstr "Seznamy médií M3U"
 
-#: ../src/parole-medialist.c:689
+#: ../src/parole-medialist.c:698
 msgid "PLS Playlists"
 msgstr "Seznamy médií PLS"
 
-#: ../src/parole-medialist.c:697
+#: ../src/parole-medialist.c:706
 msgid "Advanced Stream Redirector"
 msgstr "Pokročilé přesměrování datového toku"
 
-#: ../src/parole-medialist.c:705
+#: ../src/parole-medialist.c:714
 msgid "Shareable Playlist"
 msgstr "Seznam médií umožňující sdílení"
 
 #. Clear
-#: ../src/parole-medialist.c:956
+#: ../src/parole-medialist.c:961
 msgid "Open Containing Folder"
 msgstr "Otevřít složku obsahující soubor"
 
-#: ../src/parole-medialist.c:1376
+#: ../src/parole-medialist.c:1381
 msgid "Media list"
 msgstr "Seznam médiíí"
 
-#: ../src/parole-player.c:467
+#: ../src/parole-player.c:478
 msgid "Open ISO image"
 msgstr "Otevřít obraz ISO"
 
-#: ../src/parole-player.c:484
+#: ../src/parole-player.c:495
 msgid "CD image"
 msgstr "Obraz disku CD"
 
-#: ../src/parole-player.c:484
+#: ../src/parole-player.c:495
 msgid "DVD image"
 msgstr "Obraz disku DVD"
 
-#: ../src/parole-player.c:923 ../src/parole-player.c:1046
+#: ../src/parole-player.c:842
+msgid "Select Subtitle File"
+msgstr "Vyberte soubor s titulky"
+
+#: ../src/parole-player.c:856
+msgid "Subtitle Files"
+msgstr "Soubory s titulky"
+
+#: ../src/parole-player.c:867
+msgid "All Files"
+msgstr "Všechny soubory"
+
+#: ../src/parole-player.c:1035 ../src/parole-player.c:1158
 msgid "Media stream is not seekable"
 msgstr "Datový tok neumožňuje přesouvání"
 
-#: ../src/parole-player.c:1414
+#: ../src/parole-player.c:1526
 msgid "GStreamer backend error"
 msgstr "Chyba služby GStreamer"
 
-#: ../src/parole-player.c:1457
+#: ../src/parole-player.c:1569
 msgid "Buffering"
 msgstr "Ukládání do vyrovnávací paměti"
 
-#: ../src/parole-about.c:61
+#: ../src/parole-about.c:74
 msgid "translator-credits"
 msgstr "Michal Várady (miko.vaji@gmail.com)"
 
-#: ../src/parole-about.c:64
+#: ../src/parole-about.c:77
 msgid "Visit Parole website"
 msgstr "Navštívit webovou stránku aplikace Parole"
 
-#: ../src/parole-disc.c:230 ../src/parole-disc.c:283
+#: ../src/parole-disc.c:270 ../src/parole-disc.c:331
 msgid "Play Disc"
 msgstr "Přehrát disk"
 
@@ -693,7 +721,7 @@ msgstr "Západní"
 msgid "Vietnamese"
 msgstr "Vietnamské"
 
-#: ../src/parole-open-location.c:206
+#: ../src/parole-open-location.c:210
 msgid "Clear History"
 msgstr "Vyčistit historii"
 
