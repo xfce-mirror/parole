@@ -464,6 +464,8 @@
                         <property name="image">image11</property>
                         <property name="use_stock">False</property>
                         <accelerator key="plus" signal="activate"/>
+                        <accelerator key="equal" signal="activate"/>
+                        <accelerator key="KP_Add" signal="activate"/>
                         <signal name="activate" handler="parole_player_volume_up" swapped="no"/>
                       </object>
                     </child>
@@ -476,6 +478,7 @@
                         <property name="use_underline">True</property>
                         <property name="image">image10</property>
                         <property name="use_stock">False</property>
+                        <accelerator key="KP_Subtract" signal="activate"/>
                         <accelerator key="minus" signal="activate"/>
                         <signal name="activate" handler="parole_player_volume_down" swapped="no"/>
                       </object>
@@ -489,6 +492,7 @@
                         <property name="use_underline">True</property>
                         <property name="image">image12</property>
                         <property name="use_stock">False</property>
+                        <accelerator key="0" signal="activate"/>
                         <signal name="activate" handler="parole_player_volume_mute" swapped="no"/>
                       </object>
                     </child>
