@@ -846,6 +846,7 @@ parole_player_select_custom_subtitle (GtkMenuItem *widget, gpointer data)
 					   NULL);
 				
     gtk_file_chooser_set_select_multiple (GTK_FILE_CHOOSER (chooser), FALSE);
+    gtk_file_chooser_set_local_only (GTK_FILE_CHOOSER (chooser), FALSE);
     
     folder = parole_rc_read_entry_string ("iso-image-folder", PAROLE_RC_GROUP_GENERAL, NULL);
     
