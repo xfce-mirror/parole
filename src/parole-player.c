@@ -817,28 +817,31 @@ parole_player_update_languages (ParolePlayer *player, ParoleGst *gst)
 	}
 }
 
+/**
+ * parole_player_select_custom_subtitle:
+ * @widget : The #GtkMenuItem for selecting a custom subtitle file.
+ * @data   : The #ParolePlayer instance passed by the callback function.
+ *
+ * Display the #FileChooserDialog for selecting a custom subtitle file and load
+ * the subtitles selected.
+ **/
 static void
 parole_player_select_custom_subtitle (GtkMenuItem *widget, gpointer data)
 {
-    ParolePlayer *player;
-    GtkWidget *chooser;
-    GtkFileFilter *filter, *all;
-    gchar *sub = NULL;
-    const gchar *folder;
-    gint response;
-    gchar *uri = NULL;
+    ParolePlayer  *player;
+    ParoleFile    *file;
     
-    GtkTreeRowReference *row;
+    GtkWidget     *chooser;
+    GtkFileFilter *filter, *all_files;
+    gint           response;
     
-    ParoleFile *file;
-    GtkTreeIter iter;
-    GtkTreeModel *model;
+    const gchar   *folder;
+    gchar         *sub = NULL;
+    gchar         *uri = NULL;
     
     player = PAROLE_PLAYER(data);
-    row = parole_media_list_get_selected_row (player->priv->list);
-    
-    
 
+    /* Build the FileChooser dialog for subtitle selection. */
     chooser = gtk_file_chooser_dialog_new (_("Select Subtitle File"), NULL,
 					   GTK_FILE_CHOOSER_ACTION_OPEN,
 					   GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
@@ -848,11 +851,12 @@ parole_player_select_custom_subtitle (GtkMenuItem *widget, gpointer data)
     gtk_file_chooser_set_select_multiple (GTK_FILE_CHOOSER (chooser), FALSE);
     gtk_file_chooser_set_local_only (GTK_FILE_CHOOSER (chooser), FALSE);
     
-    folder = parole_rc_read_entry_string ("iso-image-folder", PAROLE_RC_GROUP_GENERAL, NULL);
+    folder = parole_rc_read_entry_string ("media-chooser-folder", PAROLE_RC_GROUP_GENERAL, NULL);
     
     if ( folder )
 	gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (chooser), folder);
     
+    /* Subtitle format filter */
     filter = gtk_file_filter_new ();
     gtk_file_filter_set_name (filter, _("Subtitle Files"));
     gtk_file_filter_add_pattern (filter, "*.asc");
@@ -864,51 +868,51 @@ parole_player_select_custom_subtitle (GtkMenuItem *widget, gpointer data)
     gtk_file_filter_add_pattern (filter, "*.ass");
     gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (chooser), filter);
     
-    all = gtk_file_filter_new ();
-    gtk_file_filter_set_name (all, _("All Files"));
-    gtk_file_filter_add_pattern (all, "*");
-    gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (chooser), all);
+    /* All files filter */
+    all_files = gtk_file_filter_new ();
+    gtk_file_filter_set_name (all_files, _("All files"));
+    gtk_file_filter_add_pattern (all_files, "*");
+    gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (chooser), all_files);
 
     gtk_window_set_default_size (GTK_WINDOW (chooser), 680, 480);
+
+    /* Run the dialog, get the selected filename. */    
     response = gtk_dialog_run (GTK_DIALOG (chooser));
-    
     if ( response == GTK_RESPONSE_OK )
-	    sub = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (chooser));
+    sub = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (chooser));
     
     gtk_widget_destroy (chooser);
     
     if ( sub )
     {
-    uri = parole_gst_get_file_uri(PAROLE_GST (player->priv->gst));
-    
-    parole_player_reset(player);
-    
-    if ( g_str_has_prefix (uri, "file:/") )
-    {
-	    TRACE ("Trying to play media file %s", uri);
-	    TRACE ("Trying to use subtitle file %s", sub);
-	    player->priv->updated_subs = TRUE;
-	    
-	    player->priv->row = gtk_tree_row_reference_copy (row);
-    
-        model = gtk_tree_row_reference_get_model (row);
+        /* Get the current playing file uri. */
+        uri = parole_gst_get_file_uri(PAROLE_GST (player->priv->gst));
         
-        if ( gtk_tree_model_get_iter (model, &iter, gtk_tree_row_reference_get_path (row)) )
+        /* Reset the player. */
+        parole_player_reset(player);
+        
+        if ( g_str_has_prefix (uri, "file:/") )
         {
-	    gtk_tree_model_get (model, &iter, DATA_COL, &file, -1);
-	
-	    parole_file_set_custom_subtitles(file, sub);
-	    
-	    parole_gst_set_custom_subtitles(PAROLE_GST (player->priv->gst), sub);
-	    parole_gst_play_uri (PAROLE_GST (player->priv->gst), 
-				 uri,
-				 sub);
-	    }
+	        TRACE ("Trying to play media file %s", uri);
+	        TRACE ("Trying to use subtitle file %s", sub);
+	        player->priv->updated_subs = TRUE;
+	        
+	        file = parole_media_list_get_selected_file( player->priv->list );
+            
+            /* Set the subtitles in gst as well as in the media list, for later
+               retrieval. */
+            if ( file )
+            {
+	        parole_file_set_custom_subtitles(file, sub);
+	        parole_gst_set_custom_subtitles(PAROLE_GST (player->priv->gst), sub);
+	        parole_gst_play_uri (PAROLE_GST (player->priv->gst), uri, sub);
+	        }
+        }
+        
+	    g_free (sub);
+	    g_free (uri);
     }
-
-	g_free (sub);
-	g_free (uri);
-}}
+}
 
 static void
 parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *row, ParolePlayer *player)

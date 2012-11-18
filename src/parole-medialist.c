@@ -517,6 +517,33 @@ parole_media_list_get_first_selected_row (ParoleMediaList *list)
     return row;
 }
 
+/**
+ * parole_media_list_get_first_selected_file:
+ * @list: a #ParoleMediaList
+ *
+ * Get the first selected #ParoleFile media file in the media list view
+ *
+ * Returns: a #ParoleFile
+ **/
+static ParoleFile *
+parole_media_list_get_first_selected_file (ParoleMediaList *list)
+{
+    ParoleFile *file;
+    GtkTreeRowReference *row;
+    GtkTreeIter iter;
+
+    row = parole_media_list_get_first_selected_row(list);
+    
+    if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), 
+                                  &iter, 
+                                  gtk_tree_row_reference_get_path (row)) )
+    {
+	    gtk_tree_model_get (GTK_TREE_MODEL (list->priv->store), &iter, DATA_COL, &file, -1);
+    }
+    
+    return file;
+}
+
 /* Callback to save the current playlist */
 void parole_media_list_save_playlist_cb (GtkButton *button, ParolePlaylistSave *data)
 {
@@ -1643,6 +1670,18 @@ GtkTreeRowReference *parole_media_list_get_first_row (ParoleMediaList *list)
 GtkTreeRowReference *parole_media_list_get_selected_row (ParoleMediaList *list)
 {
     return parole_media_list_get_first_selected_row (list);
+}
+
+/**
+ * parole_media_list_get_selected_file:
+ * @list: a #ParoleMediaList
+ * 
+ * 
+ * Returns: a #ParoleFile of the selected row.
+ **/
+ParoleFile *parole_media_list_get_selected_file (ParoleMediaList *list)
+{
+    return parole_media_list_get_first_selected_file (list);
 }
 
 void parole_media_list_select_row (ParoleMediaList *list, GtkTreeRowReference *row)

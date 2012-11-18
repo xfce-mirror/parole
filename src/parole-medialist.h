@@ -22,6 +22,7 @@
 #define __PAROLE_MEDIA_LIST_H
 
 #include <gtk/gtk.h>
+#include <src/misc/parole-file.h>
 
 G_BEGIN_DECLS
 
@@ -87,6 +88,8 @@ gboolean			 parole_media_list_is_empty	    (ParoleMediaList *list);
 GtkTreeRowReference             *parole_media_list_get_first_row    (ParoleMediaList *list);
 
 GtkTreeRowReference		*parole_media_list_get_selected_row (ParoleMediaList *list);
+
+ParoleFile              *parole_media_list_get_selected_file (ParoleMediaList *list);
 
 void				 parole_media_list_select_row 	    (ParoleMediaList *list,
 								     GtkTreeRowReference *row);
