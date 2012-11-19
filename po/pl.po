@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parole master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-01 12:30+0000\n"
+"POT-Creation-Date: 2012-11-19 03:09+0000\n"
 "PO-Revision-Date: 2012-04-19 15:00+0200\n"
 "Last-Translator: Piotr Sokół <psokol@jabster.pl>\n"
 "Language-Team: polski <>\n"
@@ -49,12 +49,12 @@ msgstr "Automatyczne"
 msgid "Buffering (0%)"
 msgstr "Buforowanie (0%)"
 
-#: ../data/interfaces/parole.ui.h:9 ../src/parole-player.c:663
+#: ../data/interfaces/parole.ui.h:9 ../src/parole-player.c:681
 msgid "Empty"
 msgstr "Pusty"
 
-#: ../data/interfaces/parole.ui.h:10 ../src/parole-disc.c:125
-#: ../src/parole-disc.c:385
+#: ../data/interfaces/parole.ui.h:10 ../src/parole-disc.c:147
+#: ../src/parole-disc.c:465
 msgid "Insert Disc"
 msgstr "Włóż dysk"
 
@@ -74,7 +74,7 @@ msgstr "Brak"
 msgid "Open _location"
 msgstr "Otwórz p_ołożenie"
 
-#: ../data/interfaces/parole.ui.h:15 ../src/parole-about.c:55
+#: ../data/interfaces/parole.ui.h:15 ../src/parole-about.c:68
 msgid "Parole Media Player"
 msgstr "Odtwarzacz nagrań Parole"
 
@@ -327,39 +327,51 @@ msgstr "Informacja"
 msgid "Error"
 msgstr "Błąd"
 
-#: ../src/gst/parole-gst.c:1493
+#: ../src/gst/parole-gst.c:1171
+msgid "Additional software is required."
+msgstr "Wymagane jest dodatkowe oprogramowanie."
+
+#: ../src/gst/parole-gst.c:1175
+msgid "Don't Install"
+msgstr "Nie instaluje"
+
+#: ../src/gst/parole-gst.c:1177
+msgid "Install"
+msgstr "Instaluje"
+
+#: ../src/gst/parole-gst.c:1583
 msgid "Stop"
 msgstr "Zatrzymaj"
 
-#: ../src/gst/parole-gst.c:1494
+#: ../src/gst/parole-gst.c:1584
 msgid "The stream is taking too much time to load"
 msgstr "Zbyt długi czas wczytywania strumienia"
 
-#: ../src/gst/parole-gst.c:1663
+#: ../src/gst/parole-gst.c:1753
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Nie można wczytać wtyczki playbin GStreamer. Proszę sprawdzić poprawność "
 "instalacji GStreamer."
 
-#: ../src/gst/parole-gst.c:1687
+#: ../src/gst/parole-gst.c:1777
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Nie można wczytać wtyczki wideo GStreamer. Proszę sprawdzić poprawność "
 "instalacji GStreamer."
 
-#: ../src/gst/parole-gst.c:2244 ../src/gst/parole-gst.c:2248
+#: ../src/gst/parole-gst.c:2361 ../src/gst/parole-gst.c:2365
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Ścieżka Dźwiękowa #%d"
 
-#: ../src/gst/parole-gst.c:2276 ../src/gst/parole-gst.c:2280
+#: ../src/gst/parole-gst.c:2399 ../src/gst/parole-gst.c:2403
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Napisy #%d"
 
-#: ../src/main.c:56
+#: ../src/main.c:57
 #, c-format
 msgid ""
 "\n"
@@ -380,110 +392,114 @@ msgstr ""
 "Na licencji GNU GPL.\n"
 "\n"
 
-#: ../src/main.c:189
+#: ../src/main.c:230
 msgid "Unknown argument "
 msgstr "Nieznany parametr"
 
-#: ../src/main.c:227
+#: ../src/main.c:270
 msgid "Open a new instance"
 msgstr "Otwiera nowe wystąpienie programu"
 
-#: ../src/main.c:228
+#: ../src/main.c:271
 msgid "Do not load plugins"
 msgstr "Pomija wczytywanie wtyczek"
 
-#: ../src/main.c:229
+#: ../src/main.c:272
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "Określa położenie napędu płyt Audio CD/VCD/DVD"
 
-#: ../src/main.c:230
+#: ../src/main.c:273
 msgid "Play or pause if already playing"
 msgstr "Rozpoczyna lub wstrzymuje odtwarzanie"
 
-#: ../src/main.c:231
+#: ../src/main.c:274
 msgid "Stop playing"
 msgstr "Zatrzymuje odtwarzanie"
 
-#: ../src/main.c:232
+#: ../src/main.c:275
 msgid "Next track"
 msgstr "Przechodzi do następnego nagrania"
 
-#: ../src/main.c:233
+#: ../src/main.c:276
 msgid "Previous track"
 msgstr "Przechodzi do poprzedniego nagrania"
 
-#: ../src/main.c:234
+#: ../src/main.c:277
 msgid "Seek forward"
 msgstr "Przechodzi naprzód"
 
-#: ../src/main.c:235
+#: ../src/main.c:278
 msgid "Seek Backward"
 msgstr "Przechodzi wstecz"
 
-#: ../src/main.c:236
+#: ../src/main.c:279
 msgid "Raise volume"
 msgstr "Zwiększa głośność"
 
-#: ../src/main.c:237
+#: ../src/main.c:280
 msgid "Lower volume"
 msgstr "Zmniejsza głośność"
 
-#: ../src/main.c:238
+#: ../src/main.c:281
 msgid "Mute volume"
 msgstr "Wycisza dźwięk"
 
-#: ../src/main.c:239
+#: ../src/main.c:282
 msgid "Version information"
 msgstr "Wypisuje informacje o wersji"
 
-#: ../src/main.c:240
+#: ../src/main.c:283
+msgid "Use embedded mode"
+msgstr "Użycie trybu osadzonego"
+
+#: ../src/main.c:284
 msgid "Start in fullscreen mode"
 msgstr "Uruchamia w trybie pełnego ekranu"
 
-#: ../src/main.c:241
+#: ../src/main.c:285
 msgid "Enabled/Disable XV support"
 msgstr "Przełącza obsługę XV"
 
-#: ../src/main.c:242
+#: ../src/main.c:286
 msgid "Add files to playlist"
 msgstr "Dodaje pliki do listy odtwarzania"
 
-#: ../src/main.c:244
+#: ../src/main.c:288
 msgid "Media to play"
 msgstr "Określa nagranie do odtworzenia"
 
-#: ../src/main.c:281
+#: ../src/main.c:337
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr ""
 "Program Parole jest już uruchomiony. Proszę użyć opcji -i, aby uruchomić "
 "nowe wystąpienie.\n"
 
-#: ../src/parole-mediachooser.c:208
+#: ../src/parole-mediachooser.c:211
 msgid "Supported files"
 msgstr "Obsługiwane pliki"
 
-#: ../src/parole-mediachooser.c:214
+#: ../src/parole-mediachooser.c:217 ../src/parole-player.c:873
 msgid "All files"
 msgstr "Wszystkie pliki"
 
-#: ../src/parole-medialist.c:533
+#: ../src/parole-medialist.c:568
 msgid "Permission denied"
 msgstr "Brak dostępu"
 
-#: ../src/parole-medialist.c:535
+#: ../src/parole-medialist.c:570
 msgid "Error saving playlist file"
 msgstr "Błąd zapisywania pliku listy odtwarzania"
 
-#: ../src/parole-medialist.c:547
+#: ../src/parole-medialist.c:582
 msgid "Unknown playlist format"
 msgstr "Nieznany format listy odtwarzania"
 
-#: ../src/parole-medialist.c:548
+#: ../src/parole-medialist.c:583
 msgid "Please chooser a supported playlist format"
 msgstr "Proszę wybrać format listy odtwarzania"
 
-#: ../src/parole-medialist.c:600 ../src/parole-plugins-manager.c:349
+#: ../src/parole-medialist.c:635 ../src/parole-plugins-manager.c:349
 #: ../src/plugins/properties/stream-properties-provider.c:140
 #: ../src/plugins/properties/stream-properties-provider.c:141
 #: ../src/plugins/properties/stream-properties-provider.c:142
@@ -491,68 +507,77 @@ msgstr "Proszę wybrać format listy odtwarzania"
 msgid "Unknown"
 msgstr "Nieznany"
 
-#: ../src/parole-medialist.c:674 ../src/parole-player.c:2495
+#: ../src/parole-medialist.c:710 ../src/parole-player.c:2655
 msgid "Playlist"
 msgstr "Lista odtwarzania"
 
-#: ../src/parole-medialist.c:681
+#: ../src/parole-medialist.c:717
 msgid "M3U Playlists"
 msgstr "Lista odtwarzania M3U"
 
-#: ../src/parole-medialist.c:689
+#: ../src/parole-medialist.c:725
 msgid "PLS Playlists"
 msgstr "Lista odtwarzania PLS"
 
-#: ../src/parole-medialist.c:697
+#: ../src/parole-medialist.c:733
 msgid "Advanced Stream Redirector"
 msgstr "Zaawansowany adresator strumieni"
 
-#: ../src/parole-medialist.c:705
+#: ../src/parole-medialist.c:741
 msgid "Shareable Playlist"
 msgstr "Współdzielona lista odtwarzania"
 
 #. Clear
-#: ../src/parole-medialist.c:956
+#: ../src/parole-medialist.c:988
 msgid "Open Containing Folder"
 msgstr "Otwórz katalog docelowy"
 
-#: ../src/parole-medialist.c:1376
+#: ../src/parole-medialist.c:1408
 msgid "Media list"
 msgstr "Lista Mediów"
 
-#: ../src/parole-player.c:467
+#: ../src/parole-player.c:478
 msgid "Open ISO image"
 msgstr "Otwórz obraz ISO"
 
-#: ../src/parole-player.c:484
+#: ../src/parole-player.c:495
 msgid "CD image"
 msgstr "Obrazy płyt CD"
 
-#: ../src/parole-player.c:484
+#: ../src/parole-player.c:495
 msgid "DVD image"
 msgstr "Obrazy płyt DVD"
 
-#: ../src/parole-player.c:923 ../src/parole-player.c:1046
+#. Build the FileChooser dialog for subtitle selection.
+#: ../src/parole-player.c:845
+msgid "Select Subtitle File"
+msgstr "Wybór Pliku z Napisami"
+
+#: ../src/parole-player.c:861
+msgid "Subtitle Files"
+msgstr "Pliki Napisów"
+
+#: ../src/parole-player.c:1040 ../src/parole-player.c:1163
 msgid "Media stream is not seekable"
 msgstr "Strumień multimedialny nie posiada możliwości przeszukiwania"
 
-#: ../src/parole-player.c:1414
+#: ../src/parole-player.c:1531
 msgid "GStreamer backend error"
 msgstr "Błąd wewnętrzny Gstreamer"
 
-#: ../src/parole-player.c:1457
+#: ../src/parole-player.c:1574
 msgid "Buffering"
 msgstr "Buforowanie"
 
-#: ../src/parole-about.c:61
+#: ../src/parole-about.c:74
 msgid "translator-credits"
 msgstr "Piotr Sokół <psokol@jabster.pl>, 2012."
 
-#: ../src/parole-about.c:64
+#: ../src/parole-about.c:77
 msgid "Visit Parole website"
 msgstr "Storna Parole"
 
-#: ../src/parole-disc.c:230 ../src/parole-disc.c:283
+#: ../src/parole-disc.c:270 ../src/parole-disc.c:331
 msgid "Play Disc"
 msgstr "Odtwórz płytę"
 
@@ -697,7 +722,7 @@ msgstr "Zachodnie"
 msgid "Vietnamese"
 msgstr "Wietnamskie"
 
-#: ../src/parole-open-location.c:206
+#: ../src/parole-open-location.c:210
 msgid "Clear History"
 msgstr "Czyści Historię"
 
