@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-09 13:06+0000\n"
-"PO-Revision-Date: 2012-11-09 17:13+0300\n"
+"POT-Creation-Date: 2012-11-20 05:54+0000\n"
+"PO-Revision-Date: 2012-11-20 13:05+0300\n"
 "Last-Translator: محمد الحرقان <malham1@gmail.com>\n"
 "Language-Team: http://www.vertaal.com.ar/files/factory/ar/list/\n"
 "Language: ar\n"
@@ -51,12 +51,12 @@ msgstr "تلقائي"
 msgid "Buffering (0%)"
 msgstr "التخزين المؤقت (0%)"
 
-#: ../data/interfaces/parole.ui.h:9 ../src/parole-player.c:663
+#: ../data/interfaces/parole.ui.h:9 ../src/parole-player.c:681
 msgid "Empty"
 msgstr "خالية"
 
-#: ../data/interfaces/parole.ui.h:10 ../src/parole-disc.c:125
-#: ../src/parole-disc.c:385
+#: ../data/interfaces/parole.ui.h:10 ../src/parole-disc.c:147
+#: ../src/parole-disc.c:465
 msgid "Insert Disc"
 msgstr "أدرج قرص"
 
@@ -76,7 +76,7 @@ msgstr "لا شيء"
 msgid "Open _location"
 msgstr "إفتح موقع"
 
-#: ../data/interfaces/parole.ui.h:15 ../src/parole-about.c:55
+#: ../data/interfaces/parole.ui.h:15 ../src/parole-about.c:68
 msgid "Parole Media Player"
 msgstr "Parole مشغل الوسائط"
 
@@ -329,30 +329,42 @@ msgstr "رسالة"
 msgid "Error"
 msgstr "خطأ"
 
-#: ../src/gst/parole-gst.c:1493
+#: ../src/gst/parole-gst.c:1171
+msgid "Additional software is required."
+msgstr "مطلوب برامج إضافية."
+
+#: ../src/gst/parole-gst.c:1175
+msgid "Don't Install"
+msgstr "لا تقم بالتثبيت"
+
+#: ../src/gst/parole-gst.c:1177
+msgid "Install"
+msgstr "تثبيت"
+
+#: ../src/gst/parole-gst.c:1583
 msgid "Stop"
 msgstr "توقف"
 
-#: ../src/gst/parole-gst.c:1494
+#: ../src/gst/parole-gst.c:1584
 msgid "The stream is taking too much time to load"
 msgstr "البيانات تأخذ الكثير من الوقت للتحميل"
 
-#: ../src/gst/parole-gst.c:1663
+#: ../src/gst/parole-gst.c:1753
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr "غير قادر على تشغيل إضافات GStreamer، تأكد من تنصيب GStreamer"
 
-#: ../src/gst/parole-gst.c:1687
+#: ../src/gst/parole-gst.c:1777
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr "غير قادر على تحميل فيديو GStreamer، تأكد من تنصيب GStreamer"
 
-#: ../src/gst/parole-gst.c:2244 ../src/gst/parole-gst.c:2248
+#: ../src/gst/parole-gst.c:2361 ../src/gst/parole-gst.c:2365
 #, c-format
 msgid "Audio Track #%d"
 msgstr "مقطع الصوت #%d"
 
-#: ../src/gst/parole-gst.c:2276 ../src/gst/parole-gst.c:2280
+#: ../src/gst/parole-gst.c:2399 ../src/gst/parole-gst.c:2403
 #, c-format
 msgid "Subtitle #%d"
 msgstr "الترجمة #%d"
@@ -378,108 +390,112 @@ msgstr ""
 "تحت رخصة الجنو GPL.\n"
 "\n"
 
-#: ../src/main.c:190
+#: ../src/main.c:230
 msgid "Unknown argument "
 msgstr "عنصر مجهول "
 
-#: ../src/main.c:236
+#: ../src/main.c:270
 msgid "Open a new instance"
 msgstr "فتح نموذج جديد"
 
-#: ../src/main.c:237
+#: ../src/main.c:271
 msgid "Do not load plugins"
 msgstr "عدم تحميل الملحقات"
 
-#: ../src/main.c:238
+#: ../src/main.c:272
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "إختر مسار الجهاز Audio-CD/VCD/DVD"
 
-#: ../src/main.c:239
+#: ../src/main.c:273
 msgid "Play or pause if already playing"
 msgstr "تشغيل أو إيقاف مؤقت إذا كان يعمل"
 
-#: ../src/main.c:240
+#: ../src/main.c:274
 msgid "Stop playing"
 msgstr "أوقف القراءة"
 
-#: ../src/main.c:241
+#: ../src/main.c:275
 msgid "Next track"
 msgstr "المقطع التالي"
 
-#: ../src/main.c:242
+#: ../src/main.c:276
 msgid "Previous track"
 msgstr "المقطع السابق"
 
-#: ../src/main.c:243
+#: ../src/main.c:277
 msgid "Seek forward"
 msgstr "الأمام"
 
-#: ../src/main.c:244
+#: ../src/main.c:278
 msgid "Seek Backward"
 msgstr "الوراء"
 
-#: ../src/main.c:245
+#: ../src/main.c:279
 msgid "Raise volume"
 msgstr "زيادة حجم الصوت"
 
-#: ../src/main.c:246
+#: ../src/main.c:280
 msgid "Lower volume"
 msgstr "تقليص حجم الصوت"
 
-#: ../src/main.c:247
+#: ../src/main.c:281
 msgid "Mute volume"
 msgstr "كتم الصوت"
 
-#: ../src/main.c:248
+#: ../src/main.c:282
 msgid "Version information"
 msgstr "معلومات النسخة"
 
-#: ../src/main.c:249
+#: ../src/main.c:283
+msgid "Use embedded mode"
+msgstr "استخدام الوضع المضمن"
+
+#: ../src/main.c:284
 msgid "Start in fullscreen mode"
 msgstr "بدء في نمط شاشة كاملة"
 
-#: ../src/main.c:250
+#: ../src/main.c:285
 msgid "Enabled/Disable XV support"
 msgstr "تفعيل/تعطيل دعم XV"
 
-#: ../src/main.c:251
+#: ../src/main.c:286
 msgid "Add files to playlist"
 msgstr "إضافة ملفات إلى قائمة التشغيل"
 
-#: ../src/main.c:253
+#: ../src/main.c:288
 msgid "Media to play"
 msgstr "وسائط للتشغيل"
 
-#: ../src/main.c:290
+#: ../src/main.c:337
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole يعمل حالبا, إستعمل -i لفتح واحد أخر\n"
 
-#: ../src/parole-mediachooser.c:208
+#: ../src/parole-mediachooser.c:211
 msgid "Supported files"
 msgstr "الملفّات المدعومة"
 
-#: ../src/parole-mediachooser.c:214
+#: ../src/parole-mediachooser.c:217 ../src/parole-player.c:873
 msgid "All files"
 msgstr "كل الملفات"
 
-#: ../src/parole-medialist.c:533
+#: ../src/parole-medialist.c:568
 msgid "Permission denied"
 msgstr "صلاحيات غير كافية"
 
-#: ../src/parole-medialist.c:535
+#: ../src/parole-medialist.c:570
 msgid "Error saving playlist file"
 msgstr "خلل أثناء حفظ قائمة التشغيل"
 
-#: ../src/parole-medialist.c:547
+#: ../src/parole-medialist.c:582
 msgid "Unknown playlist format"
 msgstr "صيغة قائمة التشغبل غير معروفة"
 
-#: ../src/parole-medialist.c:548
+#: ../src/parole-medialist.c:583
 msgid "Please chooser a supported playlist format"
 msgstr "المرجوا إختيار صيغة قائمة تشغيل مدعومة"
 
-#: ../src/parole-medialist.c:600 ../src/parole-plugins-manager.c:349
+#: ../src/parole-medialist.c:635 ../src/parole-plugins-manager.c:349
 #: ../src/plugins/properties/stream-properties-provider.c:140
 #: ../src/plugins/properties/stream-properties-provider.c:141
 #: ../src/plugins/properties/stream-properties-provider.c:142
@@ -487,68 +503,77 @@ msgstr "المرجوا إختيار صيغة قائمة تشغيل مدعومة"
 msgid "Unknown"
 msgstr "مجهول"
 
-#: ../src/parole-medialist.c:674 ../src/parole-player.c:2495
+#: ../src/parole-medialist.c:710 ../src/parole-player.c:2655
 msgid "Playlist"
 msgstr "قائمة التشغيل"
 
-#: ../src/parole-medialist.c:681
+#: ../src/parole-medialist.c:717
 msgid "M3U Playlists"
 msgstr "قائمة التشغيل M3U"
 
-#: ../src/parole-medialist.c:689
+#: ../src/parole-medialist.c:725
 msgid "PLS Playlists"
 msgstr "قائمة التشغيل PLS"
 
-#: ../src/parole-medialist.c:697
+#: ../src/parole-medialist.c:733
 msgid "Advanced Stream Redirector"
 msgstr "إعدادات قرأة المسار"
 
-#: ../src/parole-medialist.c:705
+#: ../src/parole-medialist.c:741
 msgid "Shareable Playlist"
 msgstr "قائمة التشغيل القابلة المشاركة"
 
 #. Clear
-#: ../src/parole-medialist.c:956
+#: ../src/parole-medialist.c:988
 msgid "Open Containing Folder"
 msgstr "فتح المجلد المتضمن"
 
-#: ../src/parole-medialist.c:1376
+#: ../src/parole-medialist.c:1408
 msgid "Media list"
 msgstr "قائمة التشغيل"
 
-#: ../src/parole-player.c:467
+#: ../src/parole-player.c:478
 msgid "Open ISO image"
 msgstr "فتح صورة ISO"
 
-#: ../src/parole-player.c:484
+#: ../src/parole-player.c:495
 msgid "CD image"
 msgstr "صورة CD"
 
-#: ../src/parole-player.c:484
+#: ../src/parole-player.c:495
 msgid "DVD image"
 msgstr "صورة DVD"
 
-#: ../src/parole-player.c:923 ../src/parole-player.c:1046
+#. Build the FileChooser dialog for subtitle selection.
+#: ../src/parole-player.c:845
+msgid "Select Subtitle File"
+msgstr "حدد ملف الترجمة"
+
+#: ../src/parole-player.c:861
+msgid "Subtitle Files"
+msgstr "ملفات الترجمة"
+
+#: ../src/parole-player.c:1040 ../src/parole-player.c:1163
 msgid "Media stream is not seekable"
 msgstr "مسار الوسائط غير قابل للقرأة"
 
-#: ../src/parole-player.c:1414
+#: ../src/parole-player.c:1531
 msgid "GStreamer backend error"
 msgstr "خطأ خلفية GStreamer"
 
-#: ../src/parole-player.c:1457
+#: ../src/parole-player.c:1574
 msgid "Buffering"
 msgstr "تخزين مؤقت"
 
-#: ../src/parole-about.c:61
+#: ../src/parole-about.c:74
 msgid "translator-credits"
 msgstr "Karim Oulad Chalha محمد الحرقان"
 
-#: ../src/parole-about.c:64
+#: ../src/parole-about.c:77
 msgid "Visit Parole website"
 msgstr "زيارة موقع Parole"
 
-#: ../src/parole-disc.c:230 ../src/parole-disc.c:283
+#: ../src/parole-disc.c:270 ../src/parole-disc.c:331
 msgid "Play Disc"
 msgstr "تشغيل القرص"
 
@@ -693,7 +718,7 @@ msgstr "غربي"
 msgid "Vietnamese"
 msgstr "فيتنامي"
 
-#: ../src/parole-open-location.c:206
+#: ../src/parole-open-location.c:210
 msgid "Clear History"
 msgstr "امسح التاريخ"
 
