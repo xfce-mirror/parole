@@ -339,6 +339,10 @@ struct ParolePlayerPrivate
     GtkWidget		*languages_menu;
     
     GtkWidget		*main_box;
+    GtkWidget		*eventbox_output;
+    GtkWidget		*audiobox;
+    GtkWidget		*cover;
+    GtkWidget		*audiotags;
     
     GtkWidget		*volume;
     GtkWidget		*menu_bar;
@@ -817,6 +821,22 @@ parole_player_update_languages (ParolePlayer *player, ParoleGst *gst)
 	}
 }
 
+static void
+parole_player_show_audiobox (ParolePlayer *player)
+{
+    /* Only show the audiobox if we're sure there's no video playing */
+    if (!gst_get_has_video( PAROLE_GST(player->priv->gst) ))
+    {
+	gtk_widget_show_all(player->priv->audiobox);
+	gtk_widget_hide_all(player->priv->eventbox_output);
+    }
+    else
+    {
+	gtk_widget_hide_all(player->priv->audiobox);
+	gtk_widget_show_all(player->priv->eventbox_output);
+    }
+}
+
 /**
  * parole_player_select_custom_subtitle:
  * @widget : The #GtkMenuItem for selecting a custom subtitle file.
@@ -950,6 +970,7 @@ parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *ro
 	    }
 	    TRACE ("Trying to play media file %s", uri);
 	    TRACE ("File content type %s", parole_file_get_content_type (file));
+	    
 	    
 	    parole_gst_play_uri (PAROLE_GST (player->priv->gst), 
 				 parole_file_get_uri (file),
@@ -1364,6 +1385,7 @@ parole_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream, Parole
     if ( state == PAROLE_STATE_PLAYING )
     {
 	parole_player_playing (player, stream);
+	parole_player_show_audiobox(player);
     }
     else if ( state == PAROLE_STATE_PAUSED )
     {
@@ -2607,6 +2629,10 @@ parole_player_init (ParolePlayer *player)
     player->priv->go_fs = GTK_WIDGET (gtk_builder_get_object (builder, "go_fs"));
     player->priv->leave_fs = GTK_WIDGET (gtk_builder_get_object (builder, "leave_fs"));
     player->priv->main_box = GTK_WIDGET (gtk_builder_get_object (builder, "main-box"));
+    player->priv->eventbox_output = GTK_WIDGET (gtk_builder_get_object (builder, "eventbox_output"));
+    player->priv->audiobox = GTK_WIDGET (gtk_builder_get_object (builder, "audiobox"));
+    player->priv->cover = GTK_WIDGET (gtk_builder_get_object (builder, "cover"));
+    player->priv->audiotags = GTK_WIDGET (gtk_builder_get_object (builder, "audiotags"));
     
     gtk_box_set_child_packing( GTK_BOX(player->priv->control), GTK_WIDGET(player->priv->play_box), TRUE, TRUE, 2, GTK_PACK_START );
     
