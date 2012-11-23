@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-15 13:33+0000\n"
+"POT-Creation-Date: 2012-11-23 19:30+0000\n"
 "PO-Revision-Date: 2011-05-27 14:30+0200\n"
 "Last-Translator: Dmitry Nikitin <luckas_fb@mail.ru>\n"
 "Language-Team: Ukrainian <>\n"
@@ -45,7 +45,7 @@ msgstr "Авто"
 msgid "Buffering (0%)"
 msgstr "Буферизація (0%)"
 
-#: ../data/interfaces/parole.ui.h:9 ../src/parole-player.c:666
+#: ../data/interfaces/parole.ui.h:9 ../src/parole-player.c:681
 msgid "Empty"
 msgstr "Пусто"
 
@@ -323,46 +323,46 @@ msgstr "Повідомлення"
 msgid "Error"
 msgstr "Помилка"
 
-#: ../src/gst/parole-gst.c:1168
+#: ../src/gst/parole-gst.c:1171
 msgid "Additional software is required."
 msgstr "Вимагаються додаткові програми."
 
-#: ../src/gst/parole-gst.c:1172
+#: ../src/gst/parole-gst.c:1175
 msgid "Don't Install"
 msgstr "Не встановлювати"
 
-#: ../src/gst/parole-gst.c:1174
+#: ../src/gst/parole-gst.c:1177
 msgid "Install"
 msgstr "Встановлювати"
 
-#: ../src/gst/parole-gst.c:1580
+#: ../src/gst/parole-gst.c:1583
 msgid "Stop"
 msgstr "Зупинити"
 
-#: ../src/gst/parole-gst.c:1581
+#: ../src/gst/parole-gst.c:1584
 msgid "The stream is taking too much time to load"
 msgstr "Потік потребує забагато часу для завантаження"
 
-#: ../src/gst/parole-gst.c:1750
+#: ../src/gst/parole-gst.c:1753
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Неможливо завантажити модуль GStreamer 'playbin'. Перевірте чи встановлені "
 "модулі GStreamer"
 
-#: ../src/gst/parole-gst.c:1774
+#: ../src/gst/parole-gst.c:1777
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Неможливо завантажити модуль GStreamer для роботи з відео. Перевірте чи "
 "встановлені модулі GStreamer"
 
-#: ../src/gst/parole-gst.c:2331 ../src/gst/parole-gst.c:2335
+#: ../src/gst/parole-gst.c:2361 ../src/gst/parole-gst.c:2365
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Доріжка #%d"
 
-#: ../src/gst/parole-gst.c:2363 ../src/gst/parole-gst.c:2367
+#: ../src/gst/parole-gst.c:2399 ../src/gst/parole-gst.c:2403
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Субтитри #%d"
@@ -464,7 +464,7 @@ msgstr "Додати файли до списку відтворення"
 msgid "Media to play"
 msgstr "Медіа для проигравання"
 
-#: ../src/main.c:334
+#: ../src/main.c:337
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole вже працює, використайте-i для відкриття нового\n"
@@ -473,27 +473,27 @@ msgstr "Parole вже працює, використайте-i для відкр
 msgid "Supported files"
 msgstr "Файли що підтримуються"
 
-#: ../src/parole-mediachooser.c:217
+#: ../src/parole-mediachooser.c:217 ../src/parole-player.c:873
 msgid "All files"
 msgstr "Всі файли"
 
-#: ../src/parole-medialist.c:541
+#: ../src/parole-medialist.c:568
 msgid "Permission denied"
 msgstr "Відмовлено в доступі"
 
-#: ../src/parole-medialist.c:543
+#: ../src/parole-medialist.c:570
 msgid "Error saving playlist file"
 msgstr "Помилки при збереженні списку відтворення"
 
-#: ../src/parole-medialist.c:555
+#: ../src/parole-medialist.c:582
 msgid "Unknown playlist format"
 msgstr "Невідомий формати списку відтворення"
 
-#: ../src/parole-medialist.c:556
+#: ../src/parole-medialist.c:583
 msgid "Please chooser a supported playlist format"
 msgstr "Використовуйте селектор для підтримуваних форматів списку відтворення"
 
-#: ../src/parole-medialist.c:608 ../src/parole-plugins-manager.c:349
+#: ../src/parole-medialist.c:635 ../src/parole-plugins-manager.c:349
 #: ../src/plugins/properties/stream-properties-provider.c:140
 #: ../src/plugins/properties/stream-properties-provider.c:141
 #: ../src/plugins/properties/stream-properties-provider.c:142
@@ -501,56 +501,65 @@ msgstr "Використовуйте селектор для підтримув�
 msgid "Unknown"
 msgstr "Невідомий"
 
-#: ../src/parole-medialist.c:683 ../src/parole-player.c:2535
+#: ../src/parole-medialist.c:710 ../src/parole-player.c:2655
 msgid "Playlist"
 msgstr "Список відтворення"
 
-#: ../src/parole-medialist.c:690
+#: ../src/parole-medialist.c:717
 msgid "M3U Playlists"
 msgstr "M3U, списки відтворення"
 
-#: ../src/parole-medialist.c:698
+#: ../src/parole-medialist.c:725
 msgid "PLS Playlists"
 msgstr "PLS, списки відтворення"
 
-#: ../src/parole-medialist.c:706
+#: ../src/parole-medialist.c:733
 msgid "Advanced Stream Redirector"
 msgstr "Розширене перенаправлення потоку"
 
-#: ../src/parole-medialist.c:714
+#: ../src/parole-medialist.c:741
 msgid "Shareable Playlist"
 msgstr "Публічний список відтворення"
 
 #. Clear
-#: ../src/parole-medialist.c:961
+#: ../src/parole-medialist.c:988
 msgid "Open Containing Folder"
 msgstr "Відкрити теку, що містить"
 
-#: ../src/parole-medialist.c:1381
+#: ../src/parole-medialist.c:1408
 msgid "Media list"
 msgstr "Список файлів"
 
-#: ../src/parole-player.c:470
+#: ../src/parole-player.c:478
 msgid "Open ISO image"
 msgstr "Відкрити ISO-образ"
 
-#: ../src/parole-player.c:487
+#: ../src/parole-player.c:495
 msgid "CD image"
 msgstr "Образ CD"
 
-#: ../src/parole-player.c:487
+#: ../src/parole-player.c:495
 msgid "DVD image"
 msgstr "Образ DVD"
 
-#: ../src/parole-player.c:926 ../src/parole-player.c:1049
+#. Build the FileChooser dialog for subtitle selection.
+#: ../src/parole-player.c:845
+msgid "Select Subtitle File"
+msgstr "Вибрати файл субтитрів"
+
+#: ../src/parole-player.c:861
+msgid "Subtitle Files"
+msgstr "Файли субтитрів"
+
+#: ../src/parole-player.c:1040 ../src/parole-player.c:1163
 msgid "Media stream is not seekable"
 msgstr "Потік медіа не може перемотуватись"
 
-#: ../src/parole-player.c:1417
+#: ../src/parole-player.c:1531
 msgid "GStreamer backend error"
 msgstr "Помилка процесу Gstreamer"
 
-#: ../src/parole-player.c:1460
+#: ../src/parole-player.c:1574
 msgid "Buffering"
 msgstr "Буферизація"
 
