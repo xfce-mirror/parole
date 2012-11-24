@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-16 10:57+0000\n"
+"POT-Creation-Date: 2012-11-24 06:12+0000\n"
 "PO-Revision-Date: 2010-02-19 09:04+0100\n"
 "Last-Translator: Cristian Marchi <cri.penta@gmail.com>\n"
 "Language-Team: Italian Translation Team <xfce-it-translators@googlegroups.com>\n"
@@ -486,27 +486,27 @@ msgstr ""
 msgid "Supported files"
 msgstr "File supportati"
 
-#: ../src/parole-mediachooser.c:217
+#: ../src/parole-mediachooser.c:217 ../src/parole-player.c:873
 msgid "All files"
 msgstr "Tutti i file"
 
-#: ../src/parole-medialist.c:541
+#: ../src/parole-medialist.c:568
 msgid "Permission denied"
 msgstr "Permesso negato"
 
-#: ../src/parole-medialist.c:543
+#: ../src/parole-medialist.c:570
 msgid "Error saving playlist file"
 msgstr "Errore nel salvataggio del file della scaletta"
 
-#: ../src/parole-medialist.c:555
+#: ../src/parole-medialist.c:582
 msgid "Unknown playlist format"
 msgstr "Formato scaletta sconosciuto"
 
-#: ../src/parole-medialist.c:556
+#: ../src/parole-medialist.c:583
 msgid "Please chooser a supported playlist format"
 msgstr "Selezionare un formato di scaletta supportato"
 
-#: ../src/parole-medialist.c:608 ../src/parole-plugins-manager.c:349
+#: ../src/parole-medialist.c:635 ../src/parole-plugins-manager.c:349
 #: ../src/plugins/properties/stream-properties-provider.c:140
 #: ../src/plugins/properties/stream-properties-provider.c:141
 #: ../src/plugins/properties/stream-properties-provider.c:142
@@ -514,32 +514,32 @@ msgstr "Selezionare un formato di scaletta supportato"
 msgid "Unknown"
 msgstr "Sconosciuto"
 
-#: ../src/parole-medialist.c:683 ../src/parole-player.c:2637
+#: ../src/parole-medialist.c:710 ../src/parole-player.c:2655
 msgid "Playlist"
 msgstr "Scaletta"
 
-#: ../src/parole-medialist.c:690
+#: ../src/parole-medialist.c:717
 msgid "M3U Playlists"
 msgstr "Scaletta M3U"
 
-#: ../src/parole-medialist.c:698
+#: ../src/parole-medialist.c:725
 msgid "PLS Playlists"
 msgstr "Scaletta PLS"
 
-#: ../src/parole-medialist.c:706
+#: ../src/parole-medialist.c:733
 msgid "Advanced Stream Redirector"
 msgstr "Redirettore avanzato di flusso"
 
-#: ../src/parole-medialist.c:714
+#: ../src/parole-medialist.c:741
 msgid "Shareable Playlist"
 msgstr "Scaletta condivisibile"
 
 #. Clear
-#: ../src/parole-medialist.c:961
+#: ../src/parole-medialist.c:988
 msgid "Open Containing Folder"
 msgstr "Apri cartella"
 
-#: ../src/parole-medialist.c:1381
+#: ../src/parole-medialist.c:1408
 msgid "Media list"
 msgstr "Elenco contenuti"
 
@@ -555,19 +555,24 @@ msgstr "Immagine CD"
 msgid "DVD image"
 msgstr "Immagine DVD"
 
-#: ../src/parole-player.c:840
-msgid "Select Subtitle (.srt) File"
-msgstr "Seleziona file dei sottotitoli (.srt)"
+#. Build the FileChooser dialog for subtitle selection.
+#: ../src/parole-player.c:845
+msgid "Select Subtitle File"
+msgstr "Selezione file dei sottotitoli"
 
-#: ../src/parole-player.c:1022 ../src/parole-player.c:1145
+#: ../src/parole-player.c:861
+msgid "Subtitle Files"
+msgstr "File sottotitoli"
+
+#: ../src/parole-player.c:1040 ../src/parole-player.c:1163
 msgid "Media stream is not seekable"
 msgstr "Il contenuto in streaming non è raggiungibile"
 
-#: ../src/parole-player.c:1513
+#: ../src/parole-player.c:1531
 msgid "GStreamer backend error"
 msgstr "Errore del backend di GStreamer"
 
-#: ../src/parole-player.c:1556
+#: ../src/parole-player.c:1574
 msgid "Buffering"
 msgstr "Buffering"
 
