@@ -1578,32 +1578,32 @@ parole_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePl
 	if ( title )
 	{
 	    parole_media_list_set_row_name (player->priv->list, player->priv->row, title);
-	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), g_strdup_printf("<b><big>%s</big></b>", title));
+	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), g_strdup_printf("<span color=\"white\"><b><big>%s</big></b></span>", title));
 	    g_free (title);
 	}
 	else
 	{
-	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), g_strdup_printf("<b><big>%s</big></b>", _("Unknown")));
+	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), g_strdup_printf("<span color=\"white\"><b><big>%s</big></b></span>", _("Unknown")));
 	}
 
 	if ( album )
 	{
-	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), g_strdup_printf("<big>%s</big>", album));
+	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), g_strdup_printf("<span color=\"white\"><big>%s</big></span>", album));
 	    g_free (album);
 	}
 	else
 	{
-	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), g_strdup_printf("<big>%s</big>", _("Unknown")));
+	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), g_strdup_printf("<span color=\"white\"><big>%s</big></span>", _("Unknown")));
 	}
 
 	if ( artist )
 	{
-	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_artist), g_strdup_printf("<big>%s</big>", artist));
+	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_artist), g_strdup_printf("<span color=\"white\"><big>%s</big></span>", artist));
 	    g_free (artist);
 	}
 	else
 	{
-	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_artist), g_strdup_printf("<big>%s</big>", _("Unknown")));
+	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_artist), g_strdup_printf("<span color=\"white\"><big>%s</big></span>", _("Unknown")));
 	}
 	
 	image = parole_stream_get_image(G_OBJECT(stream));
@@ -2550,6 +2550,7 @@ parole_player_init (ParolePlayer *player)
     GdkScreen *screen;
     gint w, h;
     gboolean showhide;
+    GdkColor background;
     
     gboolean repeat, shuffle;
     
@@ -2677,7 +2678,10 @@ parole_player_init (ParolePlayer *player)
     player->priv->eventbox_output = GTK_WIDGET (gtk_builder_get_object (builder, "eventbox_output"));
     
     /* Audio box */
+    gdk_color_parse("black", &background);
     player->priv->audiobox = GTK_WIDGET (gtk_builder_get_object (builder, "audiobox"));
+    gtk_widget_modify_bg(GTK_WIDGET(player->priv->audiobox), GTK_STATE_NORMAL, &background);
+    
     player->priv->audiobox_cover = GTK_WIDGET (gtk_builder_get_object (builder, "audiobox_cover"));
     player->priv->audiobox_title = GTK_WIDGET (gtk_builder_get_object (builder, "audiobox_title"));
     player->priv->audiobox_album = GTK_WIDGET (gtk_builder_get_object (builder, "audiobox_album"));

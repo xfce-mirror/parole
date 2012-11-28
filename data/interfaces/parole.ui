@@ -463,9 +463,9 @@
                         <property name="use_underline">True</property>
                         <property name="image">image11</property>
                         <property name="use_stock">False</property>
-                        <accelerator key="plus" signal="activate"/>
-                        <accelerator key="equal" signal="activate"/>
                         <accelerator key="KP_Add" signal="activate"/>
+                        <accelerator key="equal" signal="activate"/>
+                        <accelerator key="plus" signal="activate"/>
                         <signal name="activate" handler="parole_player_volume_up" swapped="no"/>
                       </object>
                     </child>
@@ -478,8 +478,8 @@
                         <property name="use_underline">True</property>
                         <property name="image">image10</property>
                         <property name="use_stock">False</property>
-                        <accelerator key="KP_Subtract" signal="activate"/>
                         <accelerator key="minus" signal="activate"/>
+                        <accelerator key="KP_Subtract" signal="activate"/>
                         <signal name="activate" handler="parole_player_volume_down" swapped="no"/>
                       </object>
                     </child>
@@ -684,29 +684,15 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkHBox" id="audiobox">
+                                  <object class="GtkEventBox" id="audiobox">
                                     <property name="can_focus">False</property>
                                     <property name="no_show_all">True</property>
                                     <child>
-                                      <object class="GtkAlignment" id="alignment2">
+                                      <object class="GtkHBox" id="audiobox_hbox">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
                                         <child>
-                                          <placeholder/>
-                                        </child>
-                                      </object>
-                                      <packing>
-                                        <property name="expand">True</property>
-                                        <property name="fill">True</property>
-                                        <property name="position">0</property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <object class="GtkVBox" id="vbox2">
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">False</property>
-                                        <child>
-                                          <object class="GtkAlignment" id="alignment3">
+                                          <object class="GtkAlignment" id="alignment2">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
                                             <child>
@@ -720,35 +706,34 @@
                                           </packing>
                                         </child>
                                         <child>
-                                          <object class="GtkHBox" id="hbox2">
+                                          <object class="GtkVBox" id="vbox2">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
-                                            <property name="spacing">12</property>
                                             <child>
-                                              <object class="GtkImage" id="audiobox_cover">
+                                              <object class="GtkAlignment" id="alignment3">
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">False</property>
-                                                <property name="pixel_size">128</property>
-                                                <property name="icon_name">audio-x-generic</property>
+                                                <child>
+                                                  <placeholder/>
+                                                </child>
                                               </object>
                                               <packing>
-                                                <property name="expand">False</property>
+                                                <property name="expand">True</property>
                                                 <property name="fill">True</property>
                                                 <property name="position">0</property>
                                               </packing>
                                             </child>
                                             <child>
-                                              <object class="GtkVBox" id="vbox3">
+                                              <object class="GtkHBox" id="hbox2">
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">False</property>
-                                                <property name="spacing">6</property>
+                                                <property name="spacing">12</property>
                                                 <child>
-                                                  <object class="GtkLabel" id="audiobox_title">
+                                                  <object class="GtkImage" id="audiobox_cover">
                                                     <property name="visible">True</property>
                                                     <property name="can_focus">False</property>
-                                                    <property name="xalign">0</property>
-                                                    <property name="label" translatable="yes">&lt;b&gt;&lt;big&gt;Song Title&lt;/big&gt;&lt;/b&gt;</property>
-                                                    <property name="use_markup">True</property>
+                                                    <property name="pixel_size">128</property>
+                                                    <property name="icon_name">audio-x-generic</property>
                                                   </object>
                                                   <packing>
                                                     <property name="expand">False</property>
@@ -757,31 +742,57 @@
                                                   </packing>
                                                 </child>
                                                 <child>
-                                                  <object class="GtkLabel" id="audiobox_album">
+                                                  <object class="GtkVBox" id="vbox3">
                                                     <property name="visible">True</property>
                                                     <property name="can_focus">False</property>
-                                                    <property name="xalign">0</property>
-                                                    <property name="label" translatable="yes">&lt;big&gt;Song Album&lt;/big&gt;</property>
-                                                    <property name="use_markup">True</property>
+                                                    <property name="spacing">6</property>
+                                                    <child>
+                                                      <object class="GtkLabel" id="audiobox_title">
+                                                        <property name="visible">True</property>
+                                                        <property name="can_focus">False</property>
+                                                        <property name="xalign">0</property>
+                                                        <property name="label" translatable="yes">&lt;b&gt;&lt;big&gt;Song Title&lt;/big&gt;&lt;/b&gt;</property>
+                                                        <property name="use_markup">True</property>
+                                                      </object>
+                                                      <packing>
+                                                        <property name="expand">False</property>
+                                                        <property name="fill">True</property>
+                                                        <property name="position">0</property>
+                                                      </packing>
+                                                    </child>
+                                                    <child>
+                                                      <object class="GtkLabel" id="audiobox_album">
+                                                        <property name="visible">True</property>
+                                                        <property name="can_focus">False</property>
+                                                        <property name="xalign">0</property>
+                                                        <property name="label" translatable="yes">&lt;big&gt;Song Album&lt;/big&gt;</property>
+                                                        <property name="use_markup">True</property>
+                                                      </object>
+                                                      <packing>
+                                                        <property name="expand">False</property>
+                                                        <property name="fill">True</property>
+                                                        <property name="position">1</property>
+                                                      </packing>
+                                                    </child>
+                                                    <child>
+                                                      <object class="GtkLabel" id="audiobox_artist">
+                                                        <property name="visible">True</property>
+                                                        <property name="can_focus">False</property>
+                                                        <property name="xalign">0</property>
+                                                        <property name="label" translatable="yes">&lt;big&gt;Song Artist&lt;/big&gt;</property>
+                                                        <property name="use_markup">True</property>
+                                                      </object>
+                                                      <packing>
+                                                        <property name="expand">False</property>
+                                                        <property name="fill">True</property>
+                                                        <property name="position">2</property>
+                                                      </packing>
+                                                    </child>
                                                   </object>
                                                   <packing>
                                                     <property name="expand">False</property>
                                                     <property name="fill">True</property>
                                                     <property name="position">1</property>
-                                                  </packing>
-                                                </child>
-                                                <child>
-                                                  <object class="GtkLabel" id="audiobox_artist">
-                                                    <property name="visible">True</property>
-                                                    <property name="can_focus">False</property>
-                                                    <property name="xalign">0</property>
-                                                    <property name="label" translatable="yes">&lt;big&gt;Song Artist&lt;/big&gt;</property>
-                                                    <property name="use_markup">True</property>
-                                                  </object>
-                                                  <packing>
-                                                    <property name="expand">False</property>
-                                                    <property name="fill">True</property>
-                                                    <property name="position">2</property>
                                                   </packing>
                                                 </child>
                                               </object>
@@ -791,15 +802,29 @@
                                                 <property name="position">1</property>
                                               </packing>
                                             </child>
+                                            <child>
+                                              <object class="GtkAlignment" id="alignment5">
+                                                <property name="visible">True</property>
+                                                <property name="can_focus">False</property>
+                                                <child>
+                                                  <placeholder/>
+                                                </child>
+                                              </object>
+                                              <packing>
+                                                <property name="expand">True</property>
+                                                <property name="fill">True</property>
+                                                <property name="position">2</property>
+                                              </packing>
+                                            </child>
                                           </object>
                                           <packing>
                                             <property name="expand">False</property>
-                                            <property name="fill">True</property>
+                                            <property name="fill">False</property>
                                             <property name="position">1</property>
                                           </packing>
                                         </child>
                                         <child>
-                                          <object class="GtkAlignment" id="alignment5">
+                                          <object class="GtkAlignment" id="alignment4">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
                                             <child>
@@ -813,25 +838,6 @@
                                           </packing>
                                         </child>
                                       </object>
-                                      <packing>
-                                        <property name="expand">False</property>
-                                        <property name="fill">False</property>
-                                        <property name="position">1</property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <object class="GtkAlignment" id="alignment4">
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">False</property>
-                                        <child>
-                                          <placeholder/>
-                                        </child>
-                                      </object>
-                                      <packing>
-                                        <property name="expand">True</property>
-                                        <property name="fill">True</property>
-                                        <property name="position">2</property>
-                                      </packing>
                                     </child>
                                   </object>
                                   <packing>
