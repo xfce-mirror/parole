@@ -31,6 +31,7 @@ libparolegst_la_CFLAGS =		\
 libparolegst_la_LIBADD =		\
 	$(top_builddir)/src/misc/libparole.la\
 	$(top_builddir)/src/common/libparolecommon.la\
+	$(GST_LIBS)		\
 	$(GST_PBUTILS_LIBS)
 
 parole_glib_enum_headers =		\

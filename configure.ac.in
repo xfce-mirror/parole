@@ -103,6 +103,11 @@ XDT_CHECK_PACKAGE([GST_VIDEO], [gstreamer-video-0.10], [gstreamer_minimum_versio
 XDT_CHECK_PACKAGE([GST_INTERFACES], [gstreamer-interfaces-0.10], [gstreamer_minimum_version])
 XDT_CHECK_PACKAGE([GST_PBUTILS], [gstreamer-pbutils-0.10], [0.10.2])
 
+GST_MAJORMINOR=0.10
+GST_REQS=0.10.30
+GSTPLUG_REQS=0.10.30
+GST_LIBS="$GST_LIBS -lgstbase-$GST_MAJORMINOR -lgstinterfaces-$GST_MAJORMINOR -lgstvideo-$GST_MAJORMINOR -lgstaudio-$GST_MAJORMINOR -lgstpbutils-$GST_MAJORMINOR -lgsttag-$GST_MAJORMINOR"
+
 XDT_CHECK_PACKAGE([DBUS], [dbus-1], [dbus_minimum_version])
 XDT_CHECK_PACKAGE([DBUS_GLIB], [dbus-glib-1], [dbus_glib_minimum_version])
 

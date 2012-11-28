@@ -26,6 +26,7 @@
 #define __PAROLE_STREAM_H
 
 #include <glib-object.h>
+#include <gdk/gdkx.h>
 
 G_BEGIN_DECLS
 
@@ -73,6 +74,10 @@ struct _ParoleStreamClass
 };
 
 GType        			parole_stream_get_type        (void) G_GNUC_CONST;
+
+void parole_stream_set_image (GObject *object, GdkPixbuf *pixbuf);
+
+GdkPixbuf *parole_stream_get_image (GObject *object);
 
 ParoleStream       	       *parole_stream_new             (void);
 

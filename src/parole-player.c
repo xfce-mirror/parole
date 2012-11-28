@@ -70,6 +70,7 @@
 
 #include "common/parole-common.h"
 
+int GTK_ICON_SIZE_ARTWORK_FALLBACK;
 
 static void
 get_time_string (gchar *timestring, gint total_seconds)
@@ -263,7 +264,7 @@ static void parole_player_subtitles_radio_menu_item_changed_cb(GtkWidget *widget
 gboolean	parole_player_key_press 		(GtkWidget *widget, 
 							 GdkEventKey *ev, 
 							 ParolePlayer *player);
-
+							 
 static GtkTargetEntry target_entry[] =
 {
     { "STRING",        0, 0 },
@@ -1564,6 +1565,7 @@ parole_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePl
     gchar *title;
     gchar *album;
     gchar *artist;
+    GdkPixbuf *image = NULL;
     
     if ( player->priv->row )
     {
@@ -1603,6 +1605,15 @@ parole_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePl
 	{
 	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_artist), g_strdup_printf("<big>%s</big>", _("Unknown")));
 	}
+	
+	image = parole_stream_get_image(G_OBJECT(stream));
+	if (image)
+	{
+	    image = gdk_pixbuf_scale_simple(image, 200, 200, GDK_INTERP_BILINEAR);
+	    gtk_image_set_from_pixbuf(GTK_IMAGE(player->priv->audiobox_cover), image);
+    }
+	else
+	gtk_image_set_from_icon_name(GTK_IMAGE(player->priv->audiobox_cover), "audio-x-generic", GTK_ICON_SIZE_ARTWORK_FALLBACK);
 
     }
 }
@@ -2667,7 +2678,7 @@ parole_player_init (ParolePlayer *player)
     
     /* Audio box */
     player->priv->audiobox = GTK_WIDGET (gtk_builder_get_object (builder, "audiobox"));
-    player->priv->audiobox_cover = GTK_WIDGET (gtk_builder_get_object (builder, "cover"));
+    player->priv->audiobox_cover = GTK_WIDGET (gtk_builder_get_object (builder, "audiobox_cover"));
     player->priv->audiobox_title = GTK_WIDGET (gtk_builder_get_object (builder, "audiobox_title"));
     player->priv->audiobox_album = GTK_WIDGET (gtk_builder_get_object (builder, "audiobox_album"));
     player->priv->audiobox_artist = GTK_WIDGET (gtk_builder_get_object (builder, "audiobox_artist"));
