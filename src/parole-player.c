@@ -1562,17 +1562,48 @@ static void
 parole_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePlayer *player)
 {
     gchar *title;
+    gchar *album;
+    gchar *artist;
     
     if ( player->priv->row )
     {
 	g_object_get (G_OBJECT (stream),
 		      "title", &title,
+		      "album", &album,
+		      "artist", &artist,
 		      NULL);
+
 	if ( title )
 	{
 	    parole_media_list_set_row_name (player->priv->list, player->priv->row, title);
+	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), g_strdup_printf("<b><big>%s</big></b>", title));
 	    g_free (title);
 	}
+	else
+	{
+	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), g_strdup_printf("<b><big>%s</big></b>", _("Unknown")));
+	}
+
+	if ( album )
+	{
+	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), g_strdup_printf("<big>%s</big>", album));
+	    g_free (album);
+	}
+	else
+	{
+	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), g_strdup_printf("<big>%s</big>", _("Unknown")));
+	}
+
+	if ( artist )
+	{
+	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_artist), g_strdup_printf("<big>%s</big>", artist));
+	    g_free (artist);
+	}
+	else
+	{
+	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_artist), g_strdup_printf("<big>%s</big>", _("Unknown")));
+	}
+
     }
 }
 
