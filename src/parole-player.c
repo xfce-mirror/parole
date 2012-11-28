@@ -1567,6 +1567,7 @@ parole_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePl
     gchar *title;
     gchar *album;
     gchar *artist;
+    gchar *year;
     GdkPixbuf *image = NULL;
     
     if ( player->priv->row )
@@ -1575,6 +1576,7 @@ parole_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePl
 		      "title", &title,
 		      "album", &album,
 		      "artist", &artist,
+		      "year", &year,
 		      NULL);
 
 	if ( title )
@@ -1590,22 +1592,30 @@ parole_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePl
 
 	if ( album )
 	{
-	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), g_strdup_printf("<span color=\"white\"><big>%s</big></span>", album));
+	    if (year)
+	        gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), g_strdup_printf("<span color=\"white\"><big>%s %s (%s)</big></span>", _("on"), album, year));
+
+	    else
+	        gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), g_strdup_printf("<span color=\"white\"><big>%s %s</big></span>", _("on"), album));
+	        
 	    g_free (album);
 	}
 	else
 	{
 	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), g_strdup_printf("<span color=\"white\"><big>%s</big></span>", _("Unknown")));
 	}
+	
+	if (year)
+        g_free (year);
 
 	if ( artist )
 	{
-	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_artist), g_strdup_printf("<span color=\"white\"><big>%s</big></span>", artist));
+	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_artist), g_strdup_printf("<span color=\"white\"><big>%s %s</big></span>", _("by"), artist));
 	    g_free (artist);
 	}
 	else
 	{
-	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_artist), g_strdup_printf("<span color=\"white\"><big>%s</big></span>", _("Unknown")));
+	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_artist), g_strdup_printf("<span color=\"white\"><big>%s %s</big></span>", _("by"), _("Unknown")));
 	}
 	
 	image = parole_stream_get_image(G_OBJECT(stream));
