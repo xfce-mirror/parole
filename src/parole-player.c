@@ -828,8 +828,10 @@ parole_player_update_languages (ParolePlayer *player, ParoleGst *gst)
 static void
 parole_player_show_audiobox (ParolePlayer *player)
 {
-    /* Only show the audiobox if we're sure there's no video playing */
-    if (!gst_get_has_video( PAROLE_GST(player->priv->gst) ))
+    /* Only show the audiobox if we're sure there's no video playing and 
+       visualizations are disabled. */
+    if (!gst_get_has_video ( PAROLE_GST(player->priv->gst) ) &&
+        !gst_get_has_vis   ( PAROLE_GST(player->priv->gst) ) )
     {
 	gtk_widget_show(player->priv->audiobox);
 	gtk_widget_hide_all(player->priv->eventbox_output);

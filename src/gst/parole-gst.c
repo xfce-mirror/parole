@@ -2520,6 +2520,18 @@ gst_get_lang_list_for_type (ParoleGst * gst, const gchar * type_name)
 }
 
 gboolean
+gst_get_has_vis( ParoleGst *gst )
+{
+    gboolean has_vis;
+    
+    g_object_get (G_OBJECT (gst->priv->conf),
+		  "vis-enabled", &has_vis,
+		  NULL);
+		  
+    return has_vis;
+}
+
+gboolean
 gst_get_has_video( ParoleGst *gst )
 {
 	gboolean playing_video;
