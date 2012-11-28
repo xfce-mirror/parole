@@ -340,9 +340,12 @@ struct ParolePlayerPrivate
     
     GtkWidget		*main_box;
     GtkWidget		*eventbox_output;
+    
     GtkWidget		*audiobox;
-    GtkWidget		*cover;
-    GtkWidget		*audiotags;
+    GtkWidget		*audiobox_cover;
+    GtkWidget		*audiobox_title;
+    GtkWidget		*audiobox_album;
+    GtkWidget		*audiobox_artist;
     
     GtkWidget		*volume;
     GtkWidget		*menu_bar;
@@ -827,12 +830,12 @@ parole_player_show_audiobox (ParolePlayer *player)
     /* Only show the audiobox if we're sure there's no video playing */
     if (!gst_get_has_video( PAROLE_GST(player->priv->gst) ))
     {
-	gtk_widget_show_all(player->priv->audiobox);
+	gtk_widget_show(player->priv->audiobox);
 	gtk_widget_hide_all(player->priv->eventbox_output);
     }
     else
     {
-	gtk_widget_hide_all(player->priv->audiobox);
+	gtk_widget_hide(player->priv->audiobox);
 	gtk_widget_show_all(player->priv->eventbox_output);
     }
 }
@@ -2630,9 +2633,13 @@ parole_player_init (ParolePlayer *player)
     player->priv->leave_fs = GTK_WIDGET (gtk_builder_get_object (builder, "leave_fs"));
     player->priv->main_box = GTK_WIDGET (gtk_builder_get_object (builder, "main-box"));
     player->priv->eventbox_output = GTK_WIDGET (gtk_builder_get_object (builder, "eventbox_output"));
+    
+    /* Audio box */
     player->priv->audiobox = GTK_WIDGET (gtk_builder_get_object (builder, "audiobox"));
-    player->priv->cover = GTK_WIDGET (gtk_builder_get_object (builder, "cover"));
-    player->priv->audiotags = GTK_WIDGET (gtk_builder_get_object (builder, "audiotags"));
+    player->priv->audiobox_cover = GTK_WIDGET (gtk_builder_get_object (builder, "cover"));
+    player->priv->audiobox_title = GTK_WIDGET (gtk_builder_get_object (builder, "audiobox_title"));
+    player->priv->audiobox_album = GTK_WIDGET (gtk_builder_get_object (builder, "audiobox_album"));
+    player->priv->audiobox_artist = GTK_WIDGET (gtk_builder_get_object (builder, "audiobox_artist"));
     
     gtk_box_set_child_packing( GTK_BOX(player->priv->control), GTK_WIDGET(player->priv->play_box), TRUE, TRUE, 2, GTK_PACK_START );
     
