@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-24 06:12+0000\n"
+"POT-Creation-Date: 2012-11-29 14:36+0000\n"
 "PO-Revision-Date: 2010-02-19 09:04+0100\n"
 "Last-Translator: Cristian Marchi <cri.penta@gmail.com>\n"
 "Language-Team: Italian Translation Team <xfce-it-translators@googlegroups.com>\n"
@@ -38,113 +38,125 @@ msgstr "20:9 (DVB)"
 msgid "4:3 (TV)"
 msgstr "4:3 (TV)"
 
-#: ../data/interfaces/parole.ui.h:4 ../src/misc/parole-filters.c:64
+#: ../data/interfaces/parole.ui.h:4
+msgid "<b><big>Song Title</big></b>"
+msgstr "<b><big>Titolo brano</big></b>"
+
+#: ../data/interfaces/parole.ui.h:5
+msgid "<big>by Song Artist</big>"
+msgstr "<big>per artista</big>"
+
+#: ../data/interfaces/parole.ui.h:6
+msgid "<big>on Song Album (2012)</big>"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:7 ../src/misc/parole-filters.c:64
 msgid "Audio"
 msgstr "Audio"
 
-#: ../data/interfaces/parole.ui.h:5
+#: ../data/interfaces/parole.ui.h:8
 msgid "Audio Track:"
 msgstr "Traccia audio:"
 
-#: ../data/interfaces/parole.ui.h:6
+#: ../data/interfaces/parole.ui.h:9
 msgid "Auto"
 msgstr "Auto"
 
-#: ../data/interfaces/parole.ui.h:8
+#: ../data/interfaces/parole.ui.h:11
 #, no-c-format
 msgid "Buffering (0%)"
 msgstr "Buffering (0%)"
 
-#: ../data/interfaces/parole.ui.h:9 ../src/parole-player.c:681
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:689
 msgid "Empty"
 msgstr "Vuota"
 
-#: ../data/interfaces/parole.ui.h:10 ../src/parole-disc.c:147
+#: ../data/interfaces/parole.ui.h:13 ../src/parole-disc.c:147
 #: ../src/parole-disc.c:465
 msgid "Insert Disc"
 msgstr "Inserire disco"
 
-#: ../data/interfaces/parole.ui.h:11
+#: ../data/interfaces/parole.ui.h:14
 msgid "Languages"
 msgstr "Lingua"
 
-#: ../data/interfaces/parole.ui.h:12
+#: ../data/interfaces/parole.ui.h:15
 msgid "Media player"
 msgstr "Media player"
 
-#: ../data/interfaces/parole.ui.h:13
+#: ../data/interfaces/parole.ui.h:16
 msgid "None"
 msgstr "Nessuno"
 
-#: ../data/interfaces/parole.ui.h:14
+#: ../data/interfaces/parole.ui.h:17
 msgid "Open _location"
 msgstr "Apri p_osizione"
 
-#: ../data/interfaces/parole.ui.h:15 ../src/parole-about.c:68
+#: ../data/interfaces/parole.ui.h:18 ../src/parole-about.c:68
 msgid "Parole Media Player"
 msgstr "Media player Parole"
 
-#: ../data/interfaces/parole.ui.h:16
+#: ../data/interfaces/parole.ui.h:19
 msgid "Pl_ugins"
 msgstr "Pl_ugin"
 
-#: ../data/interfaces/parole.ui.h:17
+#: ../data/interfaces/parole.ui.h:20
 msgid "Select Text Subtitles..."
 msgstr "Seleziona sottotitoli..."
 
-#: ../data/interfaces/parole.ui.h:18
+#: ../data/interfaces/parole.ui.h:21
 msgid "Show _playlist"
 msgstr "Mostra sca_letta"
 
-#: ../data/interfaces/parole.ui.h:19
+#: ../data/interfaces/parole.ui.h:22
 msgid "Square"
 msgstr "Quadrato"
 
-#: ../data/interfaces/parole.ui.h:20
+#: ../data/interfaces/parole.ui.h:23
 msgid "Subtitles"
 msgstr "Sottotitoli"
 
-#: ../data/interfaces/parole.ui.h:21
+#: ../data/interfaces/parole.ui.h:24
 msgid "Subtitles:"
 msgstr "Sottotitoli:"
 
-#: ../data/interfaces/parole.ui.h:22
+#: ../data/interfaces/parole.ui.h:25
 msgid "Volume _Down"
 msgstr "A_bbassa volume"
 
-#: ../data/interfaces/parole.ui.h:23
+#: ../data/interfaces/parole.ui.h:26
 msgid "Volume _Up"
 msgstr "_Alza volume"
 
-#: ../data/interfaces/parole.ui.h:24
+#: ../data/interfaces/parole.ui.h:27
 msgid "_Aspect Ratio"
 msgstr "_Rapporto d'aspetto"
 
-#: ../data/interfaces/parole.ui.h:25
+#: ../data/interfaces/parole.ui.h:28
 msgid "_Edit"
 msgstr "_Modifica"
 
-#: ../data/interfaces/parole.ui.h:26
+#: ../data/interfaces/parole.ui.h:29
 msgid "_Help"
 msgstr "A_iuto"
 
-#: ../data/interfaces/parole.ui.h:27
+#: ../data/interfaces/parole.ui.h:30
 msgid "_Media"
 msgstr "_Contenuti"
 
-#: ../data/interfaces/parole.ui.h:28
+#: ../data/interfaces/parole.ui.h:31
 msgid "_Mute"
 msgstr "_Muto"
 
-#: ../data/interfaces/parole.ui.h:29
+#: ../data/interfaces/parole.ui.h:32
 msgid "_Repeat"
 msgstr "Ri_peti"
 
-#: ../data/interfaces/parole.ui.h:30
+#: ../data/interfaces/parole.ui.h:33
 msgid "_Shuffle"
 msgstr "Cas_uale"
 
-#: ../data/interfaces/parole.ui.h:31
+#: ../data/interfaces/parole.ui.h:34
 msgid "_View"
 msgstr "_Visualizza"
 
@@ -334,46 +346,46 @@ msgstr "Messaggio"
 msgid "Error"
 msgstr "Errore"
 
-#: ../src/gst/parole-gst.c:1171
+#: ../src/gst/parole-gst.c:1270
 msgid "Additional software is required."
 msgstr "È necessario software aggiuntivo."
 
-#: ../src/gst/parole-gst.c:1175
+#: ../src/gst/parole-gst.c:1274
 msgid "Don't Install"
 msgstr "Non installare"
 
-#: ../src/gst/parole-gst.c:1177
+#: ../src/gst/parole-gst.c:1276
 msgid "Install"
 msgstr "Installa"
 
-#: ../src/gst/parole-gst.c:1583
+#: ../src/gst/parole-gst.c:1683
 msgid "Stop"
 msgstr "Ferma"
 
-#: ../src/gst/parole-gst.c:1584
+#: ../src/gst/parole-gst.c:1684
 msgid "The stream is taking too much time to load"
 msgstr "Il flusso sta impiegando troppo tempo per il caricamento"
 
-#: ../src/gst/parole-gst.c:1753
+#: ../src/gst/parole-gst.c:1853
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Impossibile caricare il plugin playbin di GStreamer; controllare la propria "
 "installazione di GStreamer"
 
-#: ../src/gst/parole-gst.c:1777
+#: ../src/gst/parole-gst.c:1877
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Impossibile caricare il plugin video di GStreamer; controllare la propria "
 "installazione di GStreamer"
 
-#: ../src/gst/parole-gst.c:2361 ../src/gst/parole-gst.c:2365
+#: ../src/gst/parole-gst.c:2461 ../src/gst/parole-gst.c:2465
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Traccia audio #%d"
 
-#: ../src/gst/parole-gst.c:2399 ../src/gst/parole-gst.c:2403
+#: ../src/gst/parole-gst.c:2499 ../src/gst/parole-gst.c:2503
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Sottotitolo #%d"
@@ -486,7 +498,7 @@ msgstr ""
 msgid "Supported files"
 msgstr "File supportati"
 
-#: ../src/parole-mediachooser.c:217 ../src/parole-player.c:873
+#: ../src/parole-mediachooser.c:217 ../src/parole-player.c:899
 msgid "All files"
 msgstr "Tutti i file"
 
@@ -514,7 +526,7 @@ msgstr "Selezionare un formato di scaletta supportato"
 msgid "Unknown"
 msgstr "Sconosciuto"
 
-#: ../src/parole-medialist.c:710 ../src/parole-player.c:2655
+#: ../src/parole-medialist.c:710 ../src/parole-player.c:2750
 msgid "Playlist"
 msgstr "Scaletta"
 
@@ -543,36 +555,57 @@ msgstr "Apri cartella"
 msgid "Media list"
 msgstr "Elenco contenuti"
 
-#: ../src/parole-player.c:478
+#: ../src/parole-player.c:486
 msgid "Open ISO image"
 msgstr "Apri immagine ISO"
 
-#: ../src/parole-player.c:495
+#: ../src/parole-player.c:503
 msgid "CD image"
 msgstr "Immagine CD"
 
-#: ../src/parole-player.c:495
+#: ../src/parole-player.c:503
 msgid "DVD image"
 msgstr "Immagine DVD"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:845
+#: ../src/parole-player.c:871
 msgid "Select Subtitle File"
 msgstr "Selezione file dei sottotitoli"
 
-#: ../src/parole-player.c:861
+#: ../src/parole-player.c:887
 msgid "Subtitle Files"
 msgstr "File sottotitoli"
 
-#: ../src/parole-player.c:1040 ../src/parole-player.c:1163
+#: ../src/parole-player.c:1067 ../src/parole-player.c:1190
 msgid "Media stream is not seekable"
 msgstr "Il contenuto in streaming non è raggiungibile"
 
-#: ../src/parole-player.c:1531
+#: ../src/parole-player.c:1559
 msgid "GStreamer backend error"
 msgstr "Errore del backend di GStreamer"
 
-#: ../src/parole-player.c:1574
+#: ../src/parole-player.c:1590
+msgid "Unknown Song"
+msgstr "Brano sconosciuto"
+
+#: ../src/parole-player.c:1596 ../src/parole-player.c:1599
+#: ../src/parole-player.c:1605
+msgid "on"
+msgstr "in"
+
+#: ../src/parole-player.c:1605
+msgid "Unknown Album"
+msgstr "Album sconosciuto"
+
+#: ../src/parole-player.c:1613 ../src/parole-player.c:1618
+msgid "by"
+msgstr "di"
+
+#: ../src/parole-player.c:1618
+msgid "Unknown Artist"
+msgstr "Artista sconosciuto"
+
+#: ../src/parole-player.c:1653
 msgid "Buffering"
 msgstr "Buffering"
 
