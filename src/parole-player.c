@@ -2699,6 +2699,7 @@ parole_player_init (ParolePlayer *player)
     player->priv->audiobox_album = GTK_WIDGET (gtk_builder_get_object (builder, "audiobox_album"));
     player->priv->audiobox_artist = GTK_WIDGET (gtk_builder_get_object (builder, "audiobox_artist"));
     
+    gtk_widget_add_events (GTK_WIDGET (player->priv->audiobox), GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK);
     g_signal_connect (G_OBJECT (player->priv->audiobox), "motion-notify-event",
 		      G_CALLBACK (parole_player_gst_widget_motion_notify_event), player);
     
