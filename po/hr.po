@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-18 21:48+0000\n"
-"PO-Revision-Date: 2012-11-20 23:35+0100\n"
+"POT-Creation-Date: 2012-11-29 19:57+0000\n"
+"PO-Revision-Date: 2012-11-30 00:25+0100\n"
 "Last-Translator: Ivica Kolić <ikoli@yahoo.com>\n"
 "Language-Team: Hrvatski <>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Language: Croatian\n"
 "X-Poedit-Country: CROATIA\n"
@@ -34,116 +34,128 @@ msgid "4:3 (TV)"
 msgstr "4:3 (TV)"
 
 #: ../data/interfaces/parole.ui.h:4
+msgid "<b><big>Song Title</big></b>"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:5
+msgid "<big>by Song Artist</big>"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:6
+msgid "<big>on Song Album (2012)</big>"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:7
 #: ../src/misc/parole-filters.c:64
 msgid "Audio"
 msgstr "Audio"
 
-#: ../data/interfaces/parole.ui.h:5
+#: ../data/interfaces/parole.ui.h:8
 msgid "Audio Track:"
 msgstr "Audio zapis:"
 
-#: ../data/interfaces/parole.ui.h:6
+#: ../data/interfaces/parole.ui.h:9
 msgid "Auto"
 msgstr "Auto"
 
-#: ../data/interfaces/parole.ui.h:8
+#: ../data/interfaces/parole.ui.h:11
 #, no-c-format
 msgid "Buffering (0%)"
 msgstr ""
 
-#: ../data/interfaces/parole.ui.h:9
-#: ../src/parole-player.c:681
+#: ../data/interfaces/parole.ui.h:12
+#: ../src/parole-player.c:689
 msgid "Empty"
 msgstr "Prazno"
 
-#: ../data/interfaces/parole.ui.h:10
+#: ../data/interfaces/parole.ui.h:13
 #: ../src/parole-disc.c:147
 #: ../src/parole-disc.c:465
 msgid "Insert Disc"
 msgstr "Unesi disk"
 
-#: ../data/interfaces/parole.ui.h:11
+#: ../data/interfaces/parole.ui.h:14
 msgid "Languages"
 msgstr "Jezici"
 
-#: ../data/interfaces/parole.ui.h:12
+#: ../data/interfaces/parole.ui.h:15
 msgid "Media player"
 msgstr ""
 
-#: ../data/interfaces/parole.ui.h:13
+#: ../data/interfaces/parole.ui.h:16
 msgid "None"
 msgstr "Nijedan"
 
-#: ../data/interfaces/parole.ui.h:14
+#: ../data/interfaces/parole.ui.h:17
 msgid "Open _location"
 msgstr "Otvori _lokaciju"
 
-#: ../data/interfaces/parole.ui.h:15
+#: ../data/interfaces/parole.ui.h:18
 #: ../src/parole-about.c:68
 msgid "Parole Media Player"
 msgstr ""
 
-#: ../data/interfaces/parole.ui.h:16
+#: ../data/interfaces/parole.ui.h:19
 msgid "Pl_ugins"
 msgstr "Pr_iključci"
 
-#: ../data/interfaces/parole.ui.h:17
+#: ../data/interfaces/parole.ui.h:20
 msgid "Select Text Subtitles..."
 msgstr "Odaberi podnapise..."
 
-#: ../data/interfaces/parole.ui.h:18
+#: ../data/interfaces/parole.ui.h:21
 msgid "Show _playlist"
 msgstr "Pokaži _listu izvođenja"
 
-#: ../data/interfaces/parole.ui.h:19
+#: ../data/interfaces/parole.ui.h:22
 msgid "Square"
 msgstr ""
 
-#: ../data/interfaces/parole.ui.h:20
+#: ../data/interfaces/parole.ui.h:23
 msgid "Subtitles"
 msgstr "Podnapisi"
 
-#: ../data/interfaces/parole.ui.h:21
+#: ../data/interfaces/parole.ui.h:24
 msgid "Subtitles:"
 msgstr "Podnapisi:"
 
-#: ../data/interfaces/parole.ui.h:22
+#: ../data/interfaces/parole.ui.h:25
 msgid "Volume _Down"
 msgstr "Stišaj"
 
-#: ../data/interfaces/parole.ui.h:23
+#: ../data/interfaces/parole.ui.h:26
 msgid "Volume _Up"
 msgstr "Poglasni"
 
-#: ../data/interfaces/parole.ui.h:24
+#: ../data/interfaces/parole.ui.h:27
 msgid "_Aspect Ratio"
 msgstr "_Omjer slike"
 
-#: ../data/interfaces/parole.ui.h:25
+#: ../data/interfaces/parole.ui.h:28
 msgid "_Edit"
 msgstr "_Uredi"
 
-#: ../data/interfaces/parole.ui.h:26
+#: ../data/interfaces/parole.ui.h:29
 msgid "_Help"
 msgstr "_Pomoć"
 
-#: ../data/interfaces/parole.ui.h:27
+#: ../data/interfaces/parole.ui.h:30
 msgid "_Media"
 msgstr "_Medij"
 
-#: ../data/interfaces/parole.ui.h:28
+#: ../data/interfaces/parole.ui.h:31
 msgid "_Mute"
 msgstr "_Isključi zvuk"
 
-#: ../data/interfaces/parole.ui.h:29
+#: ../data/interfaces/parole.ui.h:32
 msgid "_Repeat"
 msgstr "_Ponovi"
 
-#: ../data/interfaces/parole.ui.h:30
+#: ../data/interfaces/parole.ui.h:33
 msgid "_Shuffle"
 msgstr ""
 
-#: ../data/interfaces/parole.ui.h:31
+#: ../data/interfaces/parole.ui.h:34
 msgid "_View"
 msgstr "_Pogled"
 
@@ -332,42 +344,42 @@ msgstr "Poruka"
 msgid "Error"
 msgstr "Greška"
 
-#: ../src/gst/parole-gst.c:1171
+#: ../src/gst/parole-gst.c:1270
 msgid "Additional software is required."
 msgstr "Potraban je dodatni software."
 
-#: ../src/gst/parole-gst.c:1175
+#: ../src/gst/parole-gst.c:1274
 msgid "Don't Install"
 msgstr "Ne instaliraj"
 
-#: ../src/gst/parole-gst.c:1177
+#: ../src/gst/parole-gst.c:1276
 msgid "Install"
 msgstr "Instaliraj"
 
-#: ../src/gst/parole-gst.c:1583
+#: ../src/gst/parole-gst.c:1683
 msgid "Stop"
 msgstr "Stop"
 
-#: ../src/gst/parole-gst.c:1584
+#: ../src/gst/parole-gst.c:1684
 msgid "The stream is taking too much time to load"
 msgstr ""
 
-#: ../src/gst/parole-gst.c:1753
+#: ../src/gst/parole-gst.c:1853
 msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr "Nije moguće učitati playbin GStreamer priključak,provjerite vašu GStreamer instalaciju"
 
-#: ../src/gst/parole-gst.c:1777
+#: ../src/gst/parole-gst.c:1877
 msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr "NIje moguće učitati video GStreamer priključak, provjerite vašu GStreamer instalaciju"
 
-#: ../src/gst/parole-gst.c:2361
-#: ../src/gst/parole-gst.c:2365
+#: ../src/gst/parole-gst.c:2461
+#: ../src/gst/parole-gst.c:2465
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Audio zapis #%d"
 
-#: ../src/gst/parole-gst.c:2399
-#: ../src/gst/parole-gst.c:2403
+#: ../src/gst/parole-gst.c:2499
+#: ../src/gst/parole-gst.c:2503
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Podnapis #%d"
@@ -471,7 +483,7 @@ msgid "Supported files"
 msgstr "Podržane datoteke"
 
 #: ../src/parole-mediachooser.c:217
-#: ../src/parole-player.c:873
+#: ../src/parole-player.c:899
 msgid "All files"
 msgstr "Sve datoteke"
 
@@ -501,7 +513,7 @@ msgid "Unknown"
 msgstr "Nepoznato"
 
 #: ../src/parole-medialist.c:710
-#: ../src/parole-player.c:2655
+#: ../src/parole-player.c:2750
 msgid "Playlist"
 msgstr "Lista izvođenja"
 
@@ -530,37 +542,60 @@ msgstr ""
 msgid "Media list"
 msgstr ""
 
-#: ../src/parole-player.c:478
+#: ../src/parole-player.c:486
 msgid "Open ISO image"
 msgstr "Otvori ISO sliku"
 
-#: ../src/parole-player.c:495
+#: ../src/parole-player.c:503
 msgid "CD image"
 msgstr "CD slika"
 
-#: ../src/parole-player.c:495
+#: ../src/parole-player.c:503
 msgid "DVD image"
 msgstr "DVD slika"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:845
+#: ../src/parole-player.c:871
 msgid "Select Subtitle File"
 msgstr "Odaberi datoteku podnapisa..."
 
-#: ../src/parole-player.c:861
+#: ../src/parole-player.c:887
 msgid "Subtitle Files"
 msgstr "Datoteke podnapisa"
 
-#: ../src/parole-player.c:1040
-#: ../src/parole-player.c:1163
+#: ../src/parole-player.c:1067
+#: ../src/parole-player.c:1190
 msgid "Media stream is not seekable"
 msgstr ""
 
-#: ../src/parole-player.c:1531
+#: ../src/parole-player.c:1559
 msgid "GStreamer backend error"
 msgstr ""
 
-#: ../src/parole-player.c:1574
+#: ../src/parole-player.c:1590
+msgid "Unknown Song"
+msgstr "Nepoznata pjesma"
+
+#: ../src/parole-player.c:1596
+#: ../src/parole-player.c:1599
+#: ../src/parole-player.c:1605
+msgid "on"
+msgstr ""
+
+#: ../src/parole-player.c:1605
+msgid "Unknown Album"
+msgstr "Nepoznati album"
+
+#: ../src/parole-player.c:1613
+#: ../src/parole-player.c:1618
+msgid "by"
+msgstr ""
+
+#: ../src/parole-player.c:1618
+msgid "Unknown Artist"
+msgstr "Nepoznati umjetnik"
+
+#: ../src/parole-player.c:1653
 msgid "Buffering"
 msgstr ""
 
