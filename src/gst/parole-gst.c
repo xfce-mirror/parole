@@ -34,6 +34,7 @@
 #include <gst/pbutils/install-plugins.h>
 
 #include <gst/video/video.h>
+#include <gst/tag/tag.h>
 
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4ui/libxfce4ui.h>
@@ -65,6 +66,8 @@ static void	parole_gst_terminate_internal   (ParoleGst *gst,
 						 
 static void     parole_gst_seek_cdda_track	(ParoleGst *gst,
 						 gint track);
+						 
+static GdkPixbuf * parole_gst_tag_list_get_cover (GstTagList *tag_list);
 
 typedef enum 
 {
@@ -999,6 +1002,94 @@ out:
     ;
 }
 
+static GdkPixbuf *
+parole_gst_buffer_to_pixbuf (GstBuffer *buffer)
+{
+  GdkPixbufLoader *loader;
+  GdkPixbuf *pixbuf = NULL;
+  GError *err = NULL;
+
+  loader = gdk_pixbuf_loader_new ();
+
+  if (gdk_pixbuf_loader_write (loader, buffer->data, buffer->size, &err) &&
+      gdk_pixbuf_loader_close (loader, &err)) {
+    pixbuf = gdk_pixbuf_loader_get_pixbuf (loader);
+    if (pixbuf)
+      g_object_ref (pixbuf);
+  } else {
+    GST_WARNING("could not convert tag image to pixbuf: %s", err->message);
+    g_error_free (err);
+  }
+
+  g_object_unref (loader);
+  return pixbuf;
+}
+
+static const GValue *
+parole_gst_tag_list_get_cover_real (GstTagList *tag_list)
+{
+  const GValue *cover_value = NULL;
+  guint i;
+
+  for (i = 0; ; i++) {
+    const GValue *value;
+    GstBuffer *buffer;
+    GstStructure *caps_struct;
+    int type;
+
+    value = gst_tag_list_get_value_index (tag_list,
+					  GST_TAG_IMAGE,
+					  i);
+    if (value == NULL)
+      break;
+
+    buffer = gst_value_get_buffer (value);
+
+    caps_struct = gst_caps_get_structure (buffer->caps, 0);
+    
+    gst_structure_get_enum (caps_struct,
+			    "image-type",
+			    GST_TYPE_TAG_IMAGE_TYPE,
+			    &type);
+    if (type == GST_TAG_IMAGE_TYPE_UNDEFINED) {
+      if (cover_value == NULL)
+        cover_value = value;
+    } else if (type == GST_TAG_IMAGE_TYPE_FRONT_COVER) {
+      cover_value = value;
+      break;
+    }
+  }
+
+  return cover_value;
+}
+
+GdkPixbuf *
+parole_gst_tag_list_get_cover (GstTagList *tag_list)
+{
+  const GValue *cover_value;
+
+  g_return_val_if_fail (tag_list != NULL, FALSE);
+
+  cover_value = parole_gst_tag_list_get_cover_real (tag_list);
+  /* Fallback to preview */
+  if (!cover_value) {
+    cover_value = gst_tag_list_get_value_index (tag_list,
+						GST_TAG_PREVIEW_IMAGE,
+						0);
+  }
+
+  if (cover_value) {
+    GstBuffer *buffer;
+    GdkPixbuf *pixbuf;
+
+    buffer = gst_value_get_buffer (cover_value);
+    pixbuf = parole_gst_buffer_to_pixbuf (buffer);
+    return pixbuf;
+  }
+
+  return NULL;
+}
+
 static void
 parole_gst_get_meta_data_cdda (ParoleGst *gst, GstTagList *tag)
 {
@@ -1022,6 +1113,7 @@ parole_gst_get_meta_data_local_file (ParoleGst *gst, GstTagList *tag)
 {
     gchar *str;
     GDate *date;
+    GdkPixbuf *pixbuf;
     
     if ( gst_tag_list_get_string_index (tag, GST_TAG_TITLE, 0, &str) )
     {
@@ -1070,6 +1162,13 @@ parole_gst_get_meta_data_local_file (ParoleGst *gst, GstTagList *tag)
 		      "comment", str,
 		      NULL);
 	g_free (str);
+    }
+    
+    pixbuf = parole_gst_tag_list_get_cover (tag);
+    if (pixbuf)
+    {
+	    parole_stream_set_image (G_OBJECT (gst->priv->stream), pixbuf);
+	    g_object_unref (pixbuf);
     }
 
     g_object_set (G_OBJECT (gst->priv->stream),
@@ -1414,6 +1513,7 @@ parole_gst_play_file_internal (ParoleGst *gst)
     if ( gst->priv->update_vis)
 	parole_gst_update_vis (gst);
     
+    parole_stream_set_image (G_OBJECT (gst->priv->stream), NULL);
     
     g_object_get (G_OBJECT (gst->priv->stream),
 		  "uri", &uri,
@@ -2417,6 +2517,18 @@ gst_get_lang_list_for_type (ParoleGst * gst, const gchar * type_name)
   }
 
   return ret;
+}
+
+gboolean
+gst_get_has_vis( ParoleGst *gst )
+{
+    gboolean has_vis;
+    
+    g_object_get (G_OBJECT (gst->priv->conf),
+		  "vis-enabled", &has_vis,
+		  NULL);
+		  
+    return has_vis;
 }
 
 gboolean

@@ -68,6 +68,7 @@ struct _ParoleStreamPrivate
     gchar      *year;
     gchar      *album;
     gchar      *comment;
+    GdkPixbuf  *image;
     
     ParoleMediaType media_type; 
 };
@@ -309,6 +310,35 @@ parole_stream_finalize (GObject *object)
     parole_stream_init_properties (stream);
 
     G_OBJECT_CLASS (parole_stream_parent_class)->finalize (object);
+}
+
+void 
+parole_stream_set_image (GObject *object, GdkPixbuf *pixbuf)
+{
+    ParoleStream *stream;
+    
+    stream = PAROLE_STREAM (object);
+    
+    if (pixbuf)
+    PAROLE_STREAM_GET_PRIVATE (stream)->image = gdk_pixbuf_copy(pixbuf);
+    else
+    PAROLE_STREAM_GET_PRIVATE (stream)->image = NULL;
+}
+
+GdkPixbuf *
+parole_stream_get_image (GObject *object)
+{
+    ParoleStream *stream;
+    GdkPixbuf *pixbuf;
+    
+    stream = PAROLE_STREAM (object);
+    
+    if (PAROLE_STREAM_GET_PRIVATE (stream)->image)
+    pixbuf = gdk_pixbuf_copy(GDK_PIXBUF(PAROLE_STREAM_GET_PRIVATE (stream)->image));
+    else
+    pixbuf = NULL;
+    
+    return pixbuf;
 }
 
 static void

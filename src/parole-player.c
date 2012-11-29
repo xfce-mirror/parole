@@ -70,6 +70,7 @@
 
 #include "common/parole-common.h"
 
+int GTK_ICON_SIZE_ARTWORK_FALLBACK;
 
 static void
 get_time_string (gchar *timestring, gint total_seconds)
@@ -263,7 +264,7 @@ static void parole_player_subtitles_radio_menu_item_changed_cb(GtkWidget *widget
 gboolean	parole_player_key_press 		(GtkWidget *widget, 
 							 GdkEventKey *ev, 
 							 ParolePlayer *player);
-
+							 
 static GtkTargetEntry target_entry[] =
 {
     { "STRING",        0, 0 },
@@ -339,6 +340,13 @@ struct ParolePlayerPrivate
     GtkWidget		*languages_menu;
     
     GtkWidget		*main_box;
+    GtkWidget		*eventbox_output;
+    
+    GtkWidget		*audiobox;
+    GtkWidget		*audiobox_cover;
+    GtkWidget		*audiobox_title;
+    GtkWidget		*audiobox_album;
+    GtkWidget		*audiobox_artist;
     
     GtkWidget		*volume;
     GtkWidget		*menu_bar;
@@ -817,6 +825,24 @@ parole_player_update_languages (ParolePlayer *player, ParoleGst *gst)
 	}
 }
 
+static void
+parole_player_show_audiobox (ParolePlayer *player)
+{
+    /* Only show the audiobox if we're sure there's no video playing and 
+       visualizations are disabled. */
+    if (!gst_get_has_video ( PAROLE_GST(player->priv->gst) ) &&
+        !gst_get_has_vis   ( PAROLE_GST(player->priv->gst) ) )
+    {
+	gtk_widget_show(player->priv->audiobox);
+	gtk_widget_hide_all(player->priv->eventbox_output);
+    }
+    else
+    {
+	gtk_widget_hide(player->priv->audiobox);
+	gtk_widget_show_all(player->priv->eventbox_output);
+    }
+}
+
 /**
  * parole_player_select_custom_subtitle:
  * @widget : The #GtkMenuItem for selecting a custom subtitle file.
@@ -950,6 +976,7 @@ parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *ro
 	    }
 	    TRACE ("Trying to play media file %s", uri);
 	    TRACE ("File content type %s", parole_file_get_content_type (file));
+	    
 	    
 	    parole_gst_play_uri (PAROLE_GST (player->priv->gst), 
 				 parole_file_get_uri (file),
@@ -1364,6 +1391,7 @@ parole_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream, Parole
     if ( state == PAROLE_STATE_PLAYING )
     {
 	parole_player_playing (player, stream);
+	parole_player_show_audiobox(player);
     }
     else if ( state == PAROLE_STATE_PAUSED )
     {
@@ -1537,17 +1565,68 @@ static void
 parole_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePlayer *player)
 {
     gchar *title;
+    gchar *album;
+    gchar *artist;
+    gchar *year;
+    GdkPixbuf *image = NULL;
     
     if ( player->priv->row )
     {
 	g_object_get (G_OBJECT (stream),
 		      "title", &title,
+		      "album", &album,
+		      "artist", &artist,
+		      "year", &year,
 		      NULL);
+
 	if ( title )
 	{
 	    parole_media_list_set_row_name (player->priv->list, player->priv->row, title);
+	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), g_markup_printf_escaped("<span color=\"white\"><b><big>%s</big></b></span>", title));
 	    g_free (title);
 	}
+	else
+	{
+	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), g_strdup_printf("<span color=\"white\"><b><big>%s</big></b></span>", _("Unknown Song")));
+	}
+
+	if ( album )
+	{
+	    if (year)
+	        gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), g_markup_printf_escaped("<span color=\"white\"><big>%s %s (%s)</big></span>", _("on"), album, year));
+
+	    else
+	        gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), g_markup_printf_escaped("<span color=\"white\"><big>%s %s</big></span>", _("on"), album));
+	        
+	    g_free (album);
+	}
+	else
+	{
+	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), g_strdup_printf("<span color=\"white\"><big>%s %s</big></span>", _("on"), _("Unknown Album")));
+	}
+	
+	if (year)
+        g_free (year);
+
+	if ( artist )
+	{
+	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_artist), g_markup_printf_escaped("<span color=\"white\"><big>%s %s</big></span>", _("by"), artist));
+	    g_free (artist);
+	}
+	else
+	{
+	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_artist), g_strdup_printf("<span color=\"white\"><big>%s %s</big></span>", _("by"), _("Unknown Artist")));
+	}
+	
+	image = parole_stream_get_image(G_OBJECT(stream));
+	if (image)
+	{
+	    image = gdk_pixbuf_scale_simple(image, 200, 200, GDK_INTERP_BILINEAR);
+	    gtk_image_set_from_pixbuf(GTK_IMAGE(player->priv->audiobox_cover), image);
+    }
+	else
+	gtk_image_set_from_icon_name(GTK_IMAGE(player->priv->audiobox_cover), "audio-x-generic", GTK_ICON_SIZE_ARTWORK_FALLBACK);
+
     }
 }
 
@@ -2483,6 +2562,7 @@ parole_player_init (ParolePlayer *player)
     GdkScreen *screen;
     gint w, h;
     gboolean showhide;
+    GdkColor background;
     
     gboolean repeat, shuffle;
     
@@ -2607,6 +2687,21 @@ parole_player_init (ParolePlayer *player)
     player->priv->go_fs = GTK_WIDGET (gtk_builder_get_object (builder, "go_fs"));
     player->priv->leave_fs = GTK_WIDGET (gtk_builder_get_object (builder, "leave_fs"));
     player->priv->main_box = GTK_WIDGET (gtk_builder_get_object (builder, "main-box"));
+    player->priv->eventbox_output = GTK_WIDGET (gtk_builder_get_object (builder, "eventbox_output"));
+    
+    /* Audio box */
+    gdk_color_parse("black", &background);
+    player->priv->audiobox = GTK_WIDGET (gtk_builder_get_object (builder, "audiobox"));
+    gtk_widget_modify_bg(GTK_WIDGET(player->priv->audiobox), GTK_STATE_NORMAL, &background);
+    
+    player->priv->audiobox_cover = GTK_WIDGET (gtk_builder_get_object (builder, "audiobox_cover"));
+    player->priv->audiobox_title = GTK_WIDGET (gtk_builder_get_object (builder, "audiobox_title"));
+    player->priv->audiobox_album = GTK_WIDGET (gtk_builder_get_object (builder, "audiobox_album"));
+    player->priv->audiobox_artist = GTK_WIDGET (gtk_builder_get_object (builder, "audiobox_artist"));
+    
+    gtk_widget_add_events (GTK_WIDGET (player->priv->audiobox), GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK);
+    g_signal_connect (G_OBJECT (player->priv->audiobox), "motion-notify-event",
+		      G_CALLBACK (parole_player_gst_widget_motion_notify_event), player);
     
     gtk_box_set_child_packing( GTK_BOX(player->priv->control), GTK_WIDGET(player->priv->play_box), TRUE, TRUE, 2, GTK_PACK_START );
     
