@@ -1630,6 +1630,7 @@ parole_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePl
 	{
 	    image = gdk_pixbuf_scale_simple(image, 200, 200, GDK_INTERP_BILINEAR);
 	    gtk_image_set_from_pixbuf(GTK_IMAGE(player->priv->audiobox_cover), image);
+	    g_object_unref(G_OBJECT(image));
     }
 	else
 	gtk_image_set_from_icon_name(GTK_IMAGE(player->priv->audiobox_cover), "audio-x-generic", GTK_ICON_SIZE_ARTWORK_FALLBACK);

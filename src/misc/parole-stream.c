@@ -319,6 +319,9 @@ parole_stream_set_image (GObject *object, GdkPixbuf *pixbuf)
     
     stream = PAROLE_STREAM (object);
     
+    if ( PAROLE_STREAM_GET_PRIVATE (stream)->image )
+    g_object_unref(G_OBJECT(PAROLE_STREAM_GET_PRIVATE (stream)->image));
+    
     if (pixbuf)
     PAROLE_STREAM_GET_PRIVATE (stream)->image = gdk_pixbuf_copy(pixbuf);
     else

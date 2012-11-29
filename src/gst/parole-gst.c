@@ -562,6 +562,10 @@ parole_gst_load_logo (ParoleGst *gst)
     gchar *path;
 
     path = g_strdup_printf ("%s/parole.png", PIXMAPS_DIR);
+    
+    if ( gst->priv->logo )
+    g_object_unref (G_OBJECT(gst->priv->logo));
+    
     gst->priv->logo = gdk_pixbuf_new_from_file (path, NULL);
     g_free (path);
 }
