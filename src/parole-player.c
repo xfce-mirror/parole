@@ -1401,13 +1401,20 @@ parole_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream, Parole
     {
 	parole_player_stopped (player);
     }
-    else if ( state == PAROLE_STATE_PLAYBACK_FINISHED || state == PAROLE_STATE_ABOUT_TO_FINISH)
+    /* PAROLE_STATE_ABOUT_TO_FINISH is used for continuous playback of audio CDs */
+    else if ( state == PAROLE_STATE_ABOUT_TO_FINISH )
     {
 #ifdef DEBUG
-	if (state == PAROLE_STATE_PLAYBACK_FINISHED )
-	    TRACE ("***Playback finished***");
-	else
-	    TRACE ("***Playback about to finish***");
+    TRACE ("***Playback about to finish***");
+#endif
+    if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD ||
+        player->priv->current_media_type == PAROLE_MEDIA_TYPE_CDDA )
+        parole_player_play_next (player, TRUE);
+    }
+    else if ( state == PAROLE_STATE_PLAYBACK_FINISHED )
+    {
+#ifdef DEBUG
+    TRACE ("***Playback finished***");
 #endif
 	parole_player_play_next (player, TRUE);
     }
