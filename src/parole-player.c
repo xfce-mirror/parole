@@ -1589,27 +1589,27 @@ parole_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePl
 	if ( title )
 	{
 	    parole_media_list_set_row_name (player->priv->list, player->priv->row, title);
-	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), g_markup_printf_escaped("<span color=\"white\"><b><big>%s</big></b></span>", title));
+	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), g_markup_printf_escaped("<span color='#F4F4F4'><b><big>%s</big></b></span>", title));
 	    g_free (title);
 	}
 	else
 	{
-	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), g_strdup_printf("<span color=\"white\"><b><big>%s</big></b></span>", _("Unknown Song")));
+	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), g_strdup_printf("<span color='#F4F4F4'><b><big>%s</big></b></span>", _("Unknown Song")));
 	}
 
 	if ( album )
 	{
 	    if (year)
-	        gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), g_markup_printf_escaped("<span color=\"white\"><big>%s %s (%s)</big></span>", _("on"), album, year));
+	        gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), g_markup_printf_escaped("<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s (%s)</span></big>", _("on"), album, year));
 
 	    else
-	        gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), g_markup_printf_escaped("<span color=\"white\"><big>%s %s</big></span>", _("on"), album));
+	        gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), g_markup_printf_escaped("<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s</span></big>", _("on"), album));
 	        
 	    g_free (album);
 	}
 	else
 	{
-	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), g_strdup_printf("<span color=\"white\"><big>%s %s</big></span>", _("on"), _("Unknown Album")));
+	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), g_strdup_printf("<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s</span></big>", _("on"), _("Unknown Album")));
 	}
 	
 	if (year)
@@ -1617,12 +1617,12 @@ parole_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePl
 
 	if ( artist )
 	{
-	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_artist), g_markup_printf_escaped("<span color=\"white\"><big>%s %s</big></span>", _("by"), artist));
+	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_artist), g_markup_printf_escaped("<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s</span></big>", _("by"), artist));
 	    g_free (artist);
 	}
 	else
 	{
-	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_artist), g_strdup_printf("<span color=\"white\"><big>%s %s</big></span>", _("by"), _("Unknown Artist")));
+	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_artist), g_strdup_printf("<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s</span></big>", _("by"), _("Unknown Artist")));
 	}
 	
 	image = parole_stream_get_image(G_OBJECT(stream));
