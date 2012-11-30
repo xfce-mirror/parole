@@ -1628,7 +1628,7 @@ parole_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePl
 	image = parole_stream_get_image(G_OBJECT(stream));
 	if (image)
 	{
-	    cover = gdk_pixbuf_scale_simple(image, 200, 200, GDK_INTERP_BILINEAR);
+	    cover = gdk_pixbuf_scale_simple(image, 256, 256, GDK_INTERP_BILINEAR);
 	    gtk_image_set_from_pixbuf(GTK_IMAGE(player->priv->audiobox_cover), cover);
 	    g_object_unref(cover);
 	    g_object_unref(image);
