@@ -2,54 +2,54 @@
 <interface>
   <requires lib="gtk+" version="2.24"/>
   <!-- interface-naming-policy project-wide -->
-  <object class="GtkImage" id="image1">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="stock">gtk-media-previous</property>
-    <property name="icon-size">3</property>
-  </object>
-  <object class="GtkImage" id="image10">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">audio-volume-low</property>
-  </object>
-  <object class="GtkImage" id="image11">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">audio-volume-high</property>
-  </object>
-  <object class="GtkImage" id="image12">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">audio-volume-muted</property>
-  </object>
-  <object class="GtkImage" id="image2">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="stock">gtk-media-play</property>
-    <property name="icon-size">3</property>
-  </object>
-  <object class="GtkImage" id="image22">
+  <object class="GtkImage" id="image_cd_rom">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="icon_name">media-optical</property>
   </object>
-  <object class="GtkImage" id="image3">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="stock">gtk-media-next</property>
-    <property name="icon-size">3</property>
-  </object>
-  <object class="GtkImage" id="image4">
+  <object class="GtkImage" id="image_fullscreen">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-fullscreen</property>
     <property name="icon-size">3</property>
   </object>
-  <object class="GtkImage" id="image5">
+  <object class="GtkImage" id="image_network">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-network</property>
+  </object>
+  <object class="GtkImage" id="image_play_next">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-media-next</property>
+    <property name="icon-size">3</property>
+  </object>
+  <object class="GtkImage" id="image_play_pause">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-media-play</property>
+    <property name="icon-size">3</property>
+  </object>
+  <object class="GtkImage" id="image_play_prev">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-media-previous</property>
+    <property name="icon-size">3</property>
+  </object>
+  <object class="GtkImage" id="image_volume_down">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">audio-volume-low</property>
+  </object>
+  <object class="GtkImage" id="image_volume_mute">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">audio-volume-muted</property>
+  </object>
+  <object class="GtkImage" id="image_volume_up">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">audio-volume-high</property>
   </object>
   <object class="GtkListStore" id="liststore_audiotrack">
     <columns>
@@ -112,7 +112,7 @@
                         <property name="can_focus">False</property>
                         <property name="use_action_appearance">False</property>
                         <property name="use_underline">True</property>
-                        <property name="image">image5</property>
+                        <property name="image">image_network</property>
                         <property name="use_stock">False</property>
                         <accelerator key="l" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <signal name="activate" handler="parole_player_menu_open_location_cb" swapped="no"/>
@@ -131,7 +131,7 @@
                         <property name="sensitive">False</property>
                         <property name="can_focus">False</property>
                         <property name="use_action_appearance">False</property>
-                        <property name="image">image22</property>
+                        <property name="image">image_cd_rom</property>
                         <property name="use_stock">False</property>
                       </object>
                     </child>
@@ -461,11 +461,11 @@
                         <property name="can_focus">False</property>
                         <property name="use_action_appearance">False</property>
                         <property name="use_underline">True</property>
-                        <property name="image">image11</property>
+                        <property name="image">image_volume_up</property>
                         <property name="use_stock">False</property>
-                        <accelerator key="plus" signal="activate"/>
-                        <accelerator key="equal" signal="activate"/>
                         <accelerator key="KP_Add" signal="activate"/>
+                        <accelerator key="equal" signal="activate"/>
+                        <accelerator key="plus" signal="activate"/>
                         <signal name="activate" handler="parole_player_volume_up" swapped="no"/>
                       </object>
                     </child>
@@ -476,10 +476,10 @@
                         <property name="can_focus">False</property>
                         <property name="use_action_appearance">False</property>
                         <property name="use_underline">True</property>
-                        <property name="image">image10</property>
+                        <property name="image">image_volume_down</property>
                         <property name="use_stock">False</property>
-                        <accelerator key="KP_Subtract" signal="activate"/>
                         <accelerator key="minus" signal="activate"/>
+                        <accelerator key="KP_Subtract" signal="activate"/>
                         <signal name="activate" handler="parole_player_volume_down" swapped="no"/>
                       </object>
                     </child>
@@ -490,7 +490,7 @@
                         <property name="can_focus">False</property>
                         <property name="use_action_appearance">False</property>
                         <property name="use_underline">True</property>
-                        <property name="image">image12</property>
+                        <property name="image">image_volume_mute</property>
                         <property name="use_stock">False</property>
                         <accelerator key="0" signal="activate"/>
                         <signal name="activate" handler="parole_player_volume_mute" swapped="no"/>
@@ -792,7 +792,7 @@
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">True</property>
                                             <property name="use_action_appearance">False</property>
-                                            <property name="image">image1</property>
+                                            <property name="image">image_play_prev</property>
                                             <property name="relief">none</property>
                                             <property name="focus_on_click">False</property>
                                             <signal name="clicked" handler="parole_player_back_cb" swapped="no"/>
@@ -810,7 +810,7 @@
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">True</property>
                                             <property name="use_action_appearance">False</property>
-                                            <property name="image">image2</property>
+                                            <property name="image">image_play_pause</property>
                                             <property name="relief">none</property>
                                             <property name="focus_on_click">False</property>
                                             <signal name="clicked" handler="parole_player_play_pause_clicked" swapped="no"/>
@@ -828,7 +828,7 @@
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">True</property>
                                             <property name="use_action_appearance">False</property>
-                                            <property name="image">image3</property>
+                                            <property name="image">image_play_next</property>
                                             <property name="relief">none</property>
                                             <property name="focus_on_click">False</property>
                                             <signal name="clicked" handler="parole_player_forward_cb" swapped="no"/>
@@ -949,7 +949,7 @@ audio-volume-medium</property>
                                             <property name="receives_default">True</property>
                                             <property name="no_show_all">True</property>
                                             <property name="use_action_appearance">False</property>
-                                            <property name="image">image4</property>
+                                            <property name="image">image_fullscreen</property>
                                             <property name="relief">none</property>
                                             <signal name="clicked" handler="parole_player_full_screen_activated_cb" swapped="no"/>
                                           </object>
