@@ -67,7 +67,9 @@ static void	parole_gst_terminate_internal   (ParoleGst *gst,
 static void     parole_gst_seek_cdda_track	(ParoleGst *gst,
 						 gint track);
 						 
-static GdkPixbuf * parole_gst_tag_list_get_cover (GstTagList *tag_list);
+static gchar * parole_gst_tag_list_get_cover_external (ParoleGst *gst);
+						 
+static GdkPixbuf * parole_gst_tag_list_get_cover (ParoleGst *gst, GstTagList *tag_list);
 
 typedef enum 
 {
@@ -1029,6 +1031,62 @@ parole_gst_buffer_to_pixbuf (GstBuffer *buffer)
   return pixbuf;
 }
 
+gchar *
+parole_gst_tag_list_get_cover_external (ParoleGst *gst)
+{
+    gchar *uri;
+    gchar *filename;
+    gchar *directory;
+    GDir  *file_dir;
+    GError *error = NULL;
+    const gchar *listing = NULL;
+    gchar *lower = NULL;
+    gchar *cover = NULL;
+    gchar *cover_filename;
+    
+    g_object_get (G_OBJECT (gst->priv->stream),
+		  "uri", &uri,
+		  NULL);
+		  
+    filename = g_filename_from_uri(uri, NULL, NULL);
+    
+    directory = g_path_get_dirname(filename);
+    
+    file_dir = g_dir_open(directory, 0, &error);
+    if (error)
+    {
+        g_error_free (error);
+        return NULL;
+    }
+    
+    while ( (listing = g_dir_read_name(file_dir)) )
+    {
+        lower = g_utf8_strdown(listing, -1);
+        if ( g_strcmp0(lower, "cover.jpg") == 0 )
+            cover = g_strdup(listing);
+        else if ( g_strcmp0(lower, "folder.jpg") == 0 )
+            cover = g_strdup(listing);
+        else if ( g_strcmp0(lower, "album.jpg") == 0 )
+            cover = g_strdup(listing);
+        else if ( g_strcmp0(lower, "thumb.jpg") == 0 )
+            cover = g_strdup(listing);
+        else if ( g_strcmp0(lower, "albumartsmall.jpg") == 0 )
+            cover = g_strdup(listing);
+            
+        if (cover)
+        {
+            cover_filename = g_build_filename(directory, cover, NULL);
+            g_free(uri);
+            g_free(filename);
+            g_free(directory);
+            g_free(file_dir);
+            g_free(lower);
+            return cover_filename;
+        }
+    }
+    return NULL;
+}
+
 static const GValue *
 parole_gst_tag_list_get_cover_real (GstTagList *tag_list)
 {
@@ -1068,11 +1126,21 @@ parole_gst_tag_list_get_cover_real (GstTagList *tag_list)
 }
 
 GdkPixbuf *
-parole_gst_tag_list_get_cover (GstTagList *tag_list)
+parole_gst_tag_list_get_cover (ParoleGst *gst, GstTagList *tag_list)
 {
+  gchar *cover_filename;
   const GValue *cover_value;
+  
 
   g_return_val_if_fail (tag_list != NULL, FALSE);
+  
+  cover_filename = parole_gst_tag_list_get_cover_external(gst);
+  if (cover_filename)
+  {
+    GdkPixbuf *pixbuf = gdk_pixbuf_new_from_file_at_size(cover_filename, 256, 256, NULL);
+    if (pixbuf)
+        return pixbuf;
+  }
 
   cover_value = parole_gst_tag_list_get_cover_real (tag_list);
   /* Fallback to preview */
@@ -1168,7 +1236,7 @@ parole_gst_get_meta_data_local_file (ParoleGst *gst, GstTagList *tag)
 	g_free (str);
     }
     
-    pixbuf = parole_gst_tag_list_get_cover (tag);
+    pixbuf = parole_gst_tag_list_get_cover (gst, tag);
     if (pixbuf)
     {
 	    parole_stream_set_image (G_OBJECT (gst->priv->stream), pixbuf);
