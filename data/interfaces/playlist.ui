@@ -6,32 +6,36 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-add</property>
+    <property name="icon-size">3</property>
   </object>
   <object class="GtkImage" id="image_clear">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-clear</property>
+    <property name="icon-size">3</property>
   </object>
   <object class="GtkImage" id="image_remove">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-remove</property>
+    <property name="icon-size">3</property>
   </object>
   <object class="GtkImage" id="image_repeat">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixel_size">20</property>
+    <property name="pixel_size">24</property>
     <property name="icon_name">media-playlist-repeat</property>
   </object>
   <object class="GtkImage" id="image_settings">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-properties</property>
+    <property name="icon-size">3</property>
   </object>
   <object class="GtkImage" id="image_shuffle">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixel_size">20</property>
+    <property name="pixel_size">24</property>
     <property name="icon_name">media-playlist-shuffle</property>
   </object>
   <object class="GtkVBox" id="playlist-box">
@@ -182,7 +186,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
-                <property name="padding">4</property>
+                <property name="padding">2</property>
                 <property name="position">1</property>
               </packing>
             </child>
