@@ -1017,6 +1017,8 @@ parole_player_recent_menu_item_activated_cb (GtkWidget *widget, ParolePlayer *pl
     
     if (g_file_test (filename, G_FILE_TEST_EXISTS)) 
     {
+        gtk_recent_manager_add_item (player->priv->recent, uri);
+    
         filenames[0] = g_strdup(filename);
         filenames[1] = NULL;
         
@@ -2648,7 +2650,11 @@ parole_player_init (ParolePlayer *player)
     
     player->priv->recent_menu = gtk_recent_chooser_menu_new_for_manager (player->priv->recent);
     gtk_recent_chooser_menu_set_show_numbers (GTK_RECENT_CHOOSER_MENU(player->priv->recent_menu), TRUE);
+    gtk_recent_chooser_set_sort_type (GTK_RECENT_CHOOSER(player->priv->recent_menu), GTK_RECENT_SORT_MRU);
+    gtk_recent_chooser_set_show_private (GTK_RECENT_CHOOSER(player->priv->recent_menu), FALSE);
+    gtk_recent_chooser_set_show_not_found (GTK_RECENT_CHOOSER(player->priv->recent_menu), FALSE);
     recent_filter = parole_get_supported_recent_media_filter ();
+    gtk_recent_filter_add_application( recent_filter, "parole" );
     gtk_recent_chooser_set_filter( GTK_RECENT_CHOOSER(player->priv->recent_menu), recent_filter);
     
     gtk_menu_item_set_submenu( GTK_MENU_ITEM(recent_menu), player->priv->recent_menu );
