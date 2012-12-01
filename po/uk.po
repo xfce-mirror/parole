@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-23 19:30+0000\n"
+"POT-Creation-Date: 2012-12-01 20:06+0000\n"
 "PO-Revision-Date: 2011-05-27 14:30+0200\n"
 "Last-Translator: Dmitry Nikitin <luckas_fb@mail.ru>\n"
 "Language-Team: Ukrainian <>\n"
@@ -28,113 +28,129 @@ msgstr "20:9 (DVB)"
 msgid "4:3 (TV)"
 msgstr "4:3 (ТБ)"
 
-#: ../data/interfaces/parole.ui.h:4 ../src/misc/parole-filters.c:64
+#: ../data/interfaces/parole.ui.h:4
+msgid "<b><big>Song Title</big></b>"
+msgstr "<b><big>Назва пісні</big></b>"
+
+#: ../data/interfaces/parole.ui.h:5
+msgid "<big>by Song Artist</big>"
+msgstr "<big>Виконана виконавцем</big>"
+
+#: ../data/interfaces/parole.ui.h:6
+msgid "<big>on Song Album (2012)</big>"
+msgstr "<big>в Альбомі пісень (2012)</big>"
+
+#: ../data/interfaces/parole.ui.h:7 ../src/misc/parole-filters.c:64
 msgid "Audio"
 msgstr "Аудіо"
 
-#: ../data/interfaces/parole.ui.h:5
+#: ../data/interfaces/parole.ui.h:8
 msgid "Audio Track:"
 msgstr "Трек аудіо:"
 
-#: ../data/interfaces/parole.ui.h:6
+#: ../data/interfaces/parole.ui.h:9
 msgid "Auto"
 msgstr "Авто"
 
-#: ../data/interfaces/parole.ui.h:8
+#: ../data/interfaces/parole.ui.h:11
 #, no-c-format
 msgid "Buffering (0%)"
 msgstr "Буферизація (0%)"
 
-#: ../data/interfaces/parole.ui.h:9 ../src/parole-player.c:681
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:686
 msgid "Empty"
 msgstr "Пусто"
 
-#: ../data/interfaces/parole.ui.h:10 ../src/parole-disc.c:147
+#: ../data/interfaces/parole.ui.h:13 ../src/parole-disc.c:147
 #: ../src/parole-disc.c:465
 msgid "Insert Disc"
 msgstr "Вставити диск"
 
-#: ../data/interfaces/parole.ui.h:11
+#: ../data/interfaces/parole.ui.h:14
 msgid "Languages"
 msgstr "Мови"
 
-#: ../data/interfaces/parole.ui.h:12
+#: ../data/interfaces/parole.ui.h:15
 msgid "Media player"
 msgstr "Медіапрогравач"
 
-#: ../data/interfaces/parole.ui.h:13
+#: ../data/interfaces/parole.ui.h:16
 msgid "None"
 msgstr "Нічого"
 
-#: ../data/interfaces/parole.ui.h:14
-msgid "Open _location"
-msgstr "_Відкрити адресу"
+#: ../data/interfaces/parole.ui.h:17
+msgid "Open Recent"
+msgstr "Відкрити недавню історію"
 
-#: ../data/interfaces/parole.ui.h:15 ../src/parole-about.c:68
+#: ../data/interfaces/parole.ui.h:18
+msgid "Open _Location"
+msgstr "Відкрити _адресу"
+
+#: ../data/interfaces/parole.ui.h:19 ../src/parole-about.c:68
 msgid "Parole Media Player"
 msgstr "Медіапрогравач Parole"
 
-#: ../data/interfaces/parole.ui.h:16
+#: ../data/interfaces/parole.ui.h:20
 msgid "Pl_ugins"
 msgstr "_Модулі"
 
-#: ../data/interfaces/parole.ui.h:17
+#: ../data/interfaces/parole.ui.h:21
 msgid "Select Text Subtitles..."
 msgstr "Вибрати текстові субтитри..."
 
-#: ../data/interfaces/parole.ui.h:18
+#: ../data/interfaces/parole.ui.h:22
 msgid "Show _playlist"
 msgstr "Показати _список відтворення"
 
-#: ../data/interfaces/parole.ui.h:19
+#: ../data/interfaces/parole.ui.h:23
 msgid "Square"
 msgstr "Квадрат"
 
-#: ../data/interfaces/parole.ui.h:20
+#: ../data/interfaces/parole.ui.h:24
 msgid "Subtitles"
 msgstr "Субтитри"
 
-#: ../data/interfaces/parole.ui.h:21
+#: ../data/interfaces/parole.ui.h:25
 msgid "Subtitles:"
 msgstr "Субтитри:"
 
-#: ../data/interfaces/parole.ui.h:22
+#: ../data/interfaces/parole.ui.h:26
 msgid "Volume _Down"
 msgstr "_Тихіше"
 
-#: ../data/interfaces/parole.ui.h:23
+#: ../data/interfaces/parole.ui.h:27
 msgid "Volume _Up"
 msgstr "_Голосніше"
 
-#: ../data/interfaces/parole.ui.h:24
+#: ../data/interfaces/parole.ui.h:28
 msgid "_Aspect Ratio"
 msgstr "_Розмір екрану"
 
-#: ../data/interfaces/parole.ui.h:25
+#: ../data/interfaces/parole.ui.h:29
 msgid "_Edit"
 msgstr "_Редагування"
 
-#: ../data/interfaces/parole.ui.h:26
+#: ../data/interfaces/parole.ui.h:30
 msgid "_Help"
 msgstr "_Допомога"
 
-#: ../data/interfaces/parole.ui.h:27
+#: ../data/interfaces/parole.ui.h:31
 msgid "_Media"
 msgstr "_Фільм"
 
-#: ../data/interfaces/parole.ui.h:28
+#: ../data/interfaces/parole.ui.h:32
 msgid "_Mute"
 msgstr "_Без звуку"
 
-#: ../data/interfaces/parole.ui.h:29
+#: ../data/interfaces/parole.ui.h:33
 msgid "_Repeat"
 msgstr "_Повтор"
 
-#: ../data/interfaces/parole.ui.h:30
+#: ../data/interfaces/parole.ui.h:34
 msgid "_Shuffle"
 msgstr "_Випадковий"
 
-#: ../data/interfaces/parole.ui.h:31
+#: ../data/interfaces/parole.ui.h:35
 msgid "_View"
 msgstr "_Вигляд"
 
@@ -323,46 +339,46 @@ msgstr "Повідомлення"
 msgid "Error"
 msgstr "Помилка"
 
-#: ../src/gst/parole-gst.c:1171
+#: ../src/gst/parole-gst.c:1339
 msgid "Additional software is required."
 msgstr "Вимагаються додаткові програми."
 
-#: ../src/gst/parole-gst.c:1175
+#: ../src/gst/parole-gst.c:1343
 msgid "Don't Install"
 msgstr "Не встановлювати"
 
-#: ../src/gst/parole-gst.c:1177
+#: ../src/gst/parole-gst.c:1345
 msgid "Install"
 msgstr "Встановлювати"
 
-#: ../src/gst/parole-gst.c:1583
+#: ../src/gst/parole-gst.c:1752
 msgid "Stop"
 msgstr "Зупинити"
 
-#: ../src/gst/parole-gst.c:1584
+#: ../src/gst/parole-gst.c:1753
 msgid "The stream is taking too much time to load"
 msgstr "Потік потребує забагато часу для завантаження"
 
-#: ../src/gst/parole-gst.c:1753
+#: ../src/gst/parole-gst.c:1922
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Неможливо завантажити модуль GStreamer 'playbin'. Перевірте чи встановлені "
 "модулі GStreamer"
 
-#: ../src/gst/parole-gst.c:1777
+#: ../src/gst/parole-gst.c:1946
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Неможливо завантажити модуль GStreamer для роботи з відео. Перевірте чи "
 "встановлені модулі GStreamer"
 
-#: ../src/gst/parole-gst.c:2361 ../src/gst/parole-gst.c:2365
+#: ../src/gst/parole-gst.c:2530 ../src/gst/parole-gst.c:2534
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Доріжка #%d"
 
-#: ../src/gst/parole-gst.c:2399 ../src/gst/parole-gst.c:2403
+#: ../src/gst/parole-gst.c:2568 ../src/gst/parole-gst.c:2572
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Субтитри #%d"
@@ -473,7 +489,7 @@ msgstr "Parole вже працює, використайте-i для відкр
 msgid "Supported files"
 msgstr "Файли що підтримуються"
 
-#: ../src/parole-mediachooser.c:217 ../src/parole-player.c:873
+#: ../src/parole-mediachooser.c:217 ../src/parole-player.c:896
 msgid "All files"
 msgstr "Всі файли"
 
@@ -501,7 +517,7 @@ msgstr "Використовуйте селектор для підтримув�
 msgid "Unknown"
 msgstr "Невідомий"
 
-#: ../src/parole-medialist.c:710 ../src/parole-player.c:2655
+#: ../src/parole-medialist.c:710 ../src/parole-player.c:2813
 msgid "Playlist"
 msgstr "Список відтворення"
 
@@ -530,38 +546,73 @@ msgstr "Відкрити теку, що містить"
 msgid "Media list"
 msgstr "Список файлів"
 
-#: ../src/parole-player.c:478
+#: ../src/parole-player.c:483
 msgid "Open ISO image"
 msgstr "Відкрити ISO-образ"
 
-#: ../src/parole-player.c:495
+#: ../src/parole-player.c:500
 msgid "CD image"
 msgstr "Образ CD"
 
-#: ../src/parole-player.c:495
+#: ../src/parole-player.c:500
 msgid "DVD image"
 msgstr "Образ DVD"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:845
+#: ../src/parole-player.c:868
 msgid "Select Subtitle File"
 msgstr "Вибрати файл субтитрів"
 
-#: ../src/parole-player.c:861
+#: ../src/parole-player.c:884
 msgid "Subtitle Files"
 msgstr "Файли субтитрів"
 
-#: ../src/parole-player.c:1040 ../src/parole-player.c:1163
+#: ../src/parole-player.c:1021 ../src/parole-player.c:1029
+msgid "Clear Recent Items"
+msgstr "Очищення недавніх програвань"
+
+#: ../src/parole-player.c:1023
+msgid ""
+"Are you sure you wish to clear your recent items history?  This cannot be "
+"undone."
+msgstr "Ви впевнені, що бажаєте очистити недавню історію? Її неможливо буде відновити."
+
+#: ../src/parole-player.c:1128 ../src/parole-player.c:1251
 msgid "Media stream is not seekable"
 msgstr "Потік медіа не може перемотуватись"
 
-#: ../src/parole-player.c:1531
+#: ../src/parole-player.c:1583
 msgid "GStreamer backend error"
 msgstr "Помилка процесу Gstreamer"
 
-#: ../src/parole-player.c:1574
+#: ../src/parole-player.c:1613
+msgid "Unknown Song"
+msgstr "Невідома пісня"
+
+#: ../src/parole-player.c:1618 ../src/parole-player.c:1620
+#: ../src/parole-player.c:1629
+msgid "on"
+msgstr "в"
+
+#: ../src/parole-player.c:1629
+msgid "Unknown Album"
+msgstr "Невідомий альбом"
+
+#: ../src/parole-player.c:1633 ../src/parole-player.c:1637
+msgid "by"
+msgstr "виконана"
+
+#: ../src/parole-player.c:1637
+msgid "Unknown Artist"
+msgstr "Невідомий виконавець"
+
+#: ../src/parole-player.c:1672
 msgid "Buffering"
 msgstr "Буферизація"
+
+#: ../src/parole-player.c:2700
+msgid "Clear recent items..."
+msgstr "Очищення недавньої історії..."
 
 #: ../src/parole-about.c:74
 msgid "translator-credits"
@@ -728,15 +779,15 @@ msgstr "У Вашій системі не знайдено встановлен�
 msgid "Video"
 msgstr "Відео"
 
-#: ../src/misc/parole-filters.c:115
+#: ../src/misc/parole-filters.c:115 ../src/misc/parole-filters.c:133
 msgid "Audio and video"
 msgstr "Аудіо та відео"
 
-#: ../src/misc/parole-filters.c:144
+#: ../src/misc/parole-filters.c:162 ../src/misc/parole-filters.c:178
 msgid "All supported files"
 msgstr "Всі підтримувані файли"
 
-#: ../src/misc/parole-filters.c:171
+#: ../src/misc/parole-filters.c:205
 msgid "Playlist files"
 msgstr "Файли списків відтворення"
 
@@ -833,6 +884,9 @@ msgstr ""
 #: ../src/plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
 msgstr "Модуль управління живленням"
+
+#~ msgid "Open _location"
+#~ msgstr "_Відкрити адресу"
 
 #~ msgid "Media Player plugins"
 #~ msgstr "Встановлені модулі медіапрогравача"
