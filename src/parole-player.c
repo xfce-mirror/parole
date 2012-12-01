@@ -294,6 +294,7 @@ struct ParolePlayerPrivate
     ParoleMediaType current_media_type;
 
     GtkWidget 		*window;
+    GtkWidget       *recent_menu;
     GtkWidget		*playlist_nt;
     GtkWidget		*main_nt;	/*Main notebook*/
     GtkWidget		*show_hide_playlist;
@@ -1000,6 +1001,33 @@ parole_player_uri_opened_cb (ParoleMediaList *list, const gchar *uri, ParolePlay
 {
     parole_player_reset (player);
     parole_gst_play_uri (PAROLE_GST (player->priv->gst), uri, NULL);
+}
+
+static void
+parole_player_recent_menu_item_activated_cb (GtkWidget *widget, ParolePlayer *player)
+{
+    gchar *uri;
+    gchar *filename;
+    gchar *filenames[1];
+    ParoleMediaList *list;
+    
+    uri = gtk_recent_chooser_get_current_uri(GTK_RECENT_CHOOSER(widget));
+    
+    filename = g_filename_from_uri(uri, NULL, NULL);
+    
+    if (g_file_test (filename, G_FILE_TEST_EXISTS)) 
+    {
+        filenames[0] = g_strdup(filename);
+        filenames[1] = NULL;
+        
+	    list = parole_player_get_media_list (player);
+	    parole_media_list_add_files (list, filenames, FALSE);
+	    
+	    g_free(filenames[0]);
+	}
+    
+    g_free(filename);
+    g_free(uri);
 }
 
 static void
@@ -2530,6 +2558,9 @@ parole_player_init (ParolePlayer *player)
     gboolean showhide;
     GdkColor background;
     
+    GtkWidget *recent_menu;
+    GtkRecentFilter *recent_filter;
+    
     gboolean repeat, shuffle;
     
     GtkWidget *infobar_contents;
@@ -2612,6 +2643,18 @@ parole_player_init (ParolePlayer *player)
 		      G_CALLBACK (parole_player_drag_data_received_cb), player);
     
     player->priv->window = GTK_WIDGET (gtk_builder_get_object (builder, "main-window"));
+    
+    recent_menu = GTK_WIDGET (gtk_builder_get_object (builder, "recent_menu"));
+    
+    player->priv->recent_menu = gtk_recent_chooser_menu_new_for_manager (player->priv->recent);
+    gtk_recent_chooser_menu_set_show_numbers (GTK_RECENT_CHOOSER_MENU(player->priv->recent_menu), TRUE);
+    recent_filter = parole_get_supported_recent_media_filter ();
+    gtk_recent_chooser_set_filter( GTK_RECENT_CHOOSER(player->priv->recent_menu), recent_filter);
+    
+    gtk_menu_item_set_submenu( GTK_MENU_ITEM(recent_menu), player->priv->recent_menu );
+    
+    g_signal_connect (player->priv->recent_menu, "item-activated",
+		      G_CALLBACK (parole_player_recent_menu_item_activated_cb), player);
     
     player->priv->subtitles_menu = GTK_WIDGET (gtk_builder_get_object (builder, "subtitles-menu"));
     player->priv->languages_menu = GTK_WIDGET (gtk_builder_get_object (builder, "languages-menu"));

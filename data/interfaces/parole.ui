@@ -107,7 +107,7 @@
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="menu-open-location">
-                        <property name="label" translatable="yes">Open _location</property>
+                        <property name="label" translatable="yes">Open _Location</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_action_appearance">False</property>
@@ -116,6 +116,15 @@
                         <property name="use_stock">False</property>
                         <accelerator key="l" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <signal name="activate" handler="parole_player_menu_open_location_cb" swapped="no"/>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuItem" id="recent_menu">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_action_appearance">False</property>
+                        <property name="label" translatable="yes">Open Recent</property>
+                        <property name="use_underline">True</property>
                       </object>
                     </child>
                     <child>
@@ -463,9 +472,9 @@
                         <property name="use_underline">True</property>
                         <property name="image">image_volume_up</property>
                         <property name="use_stock">False</property>
-                        <accelerator key="plus" signal="activate"/>
-                        <accelerator key="equal" signal="activate"/>
                         <accelerator key="KP_Add" signal="activate"/>
+                        <accelerator key="equal" signal="activate"/>
+                        <accelerator key="plus" signal="activate"/>
                         <signal name="activate" handler="parole_player_volume_up" swapped="no"/>
                       </object>
                     </child>
@@ -478,8 +487,8 @@
                         <property name="use_underline">True</property>
                         <property name="image">image_volume_down</property>
                         <property name="use_stock">False</property>
-                        <accelerator key="KP_Subtract" signal="activate"/>
                         <accelerator key="minus" signal="activate"/>
+                        <accelerator key="KP_Subtract" signal="activate"/>
                         <signal name="activate" handler="parole_player_volume_down" swapped="no"/>
                       </object>
                     </child>

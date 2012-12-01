@@ -37,7 +37,11 @@ GtkFileFilter 		*parole_get_supported_video_filter	(void);
 
 GtkFileFilter 		*parole_get_supported_media_filter	(void);
 
+GtkRecentFilter     *parole_get_supported_recent_media_filter	(void);
+
 GtkFileFilter 		*parole_get_supported_files_filter	(void);
+
+GtkRecentFilter     *parole_get_supported_recent_files_filter (void);
 
 GtkFileFilter 		*parole_get_supported_playlist_filter	(void);
 

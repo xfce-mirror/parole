@@ -123,6 +123,24 @@ GtkFileFilter 		*parole_get_supported_media_filter	(void)
     return filter;
 }
 
+GtkRecentFilter 		*parole_get_supported_recent_media_filter	(void)
+{
+    GtkRecentFilter *filter;
+    guint i;
+    
+    filter = gtk_recent_filter_new ();
+    
+    gtk_recent_filter_set_name (filter, _("Audio and video"));
+    
+    for ( i = 0; i < G_N_ELEMENTS (audio_mime_types); i++)
+	gtk_recent_filter_add_mime_type (filter, audio_mime_types[i]);
+	
+    for ( i = 0; i < G_N_ELEMENTS (video_mime_types); i++)
+	gtk_recent_filter_add_mime_type (filter, video_mime_types[i]);
+    
+    return filter;
+}
+
 /**
  * parole_get_supported_files_filter:
  * 
@@ -145,6 +163,22 @@ GtkFileFilter *parole_get_supported_files_filter (void)
     
     for ( i = 0; i < G_N_ELEMENTS (playlist_mime_types); i++)
 	gtk_file_filter_add_mime_type (filter, playlist_mime_types[i]);
+    
+    return filter;
+    
+}
+
+GtkRecentFilter *parole_get_supported_recent_files_filter (void)
+{
+    GtkRecentFilter *filter;
+    guint i;
+    
+    filter = parole_get_supported_recent_media_filter ();
+    
+    gtk_recent_filter_set_name (filter, _("All supported files"));
+    
+    for ( i = 0; i < G_N_ELEMENTS (playlist_mime_types); i++)
+	gtk_recent_filter_add_mime_type (filter, playlist_mime_types[i]);
     
     return filter;
     
