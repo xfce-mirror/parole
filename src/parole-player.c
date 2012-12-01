@@ -1004,6 +1004,41 @@ parole_player_uri_opened_cb (ParoleMediaList *list, const gchar *uri, ParolePlay
 }
 
 static void
+parole_player_recent_menu_clear_activated_cb (GtkWidget *widget, ParolePlayer *player)
+{
+    GtkWidget *dlg;
+    GtkWidget *clear_button;
+    gint response;
+    
+    dlg = gtk_message_dialog_new (GTK_WINDOW(player->priv->window),
+                                  GTK_DIALOG_DESTROY_WITH_PARENT,
+                                  GTK_MESSAGE_QUESTION,
+                                  GTK_BUTTONS_NONE,
+                                  NULL);
+                                  
+    gtk_message_dialog_set_markup  (GTK_MESSAGE_DIALOG(dlg), 
+                                    g_strdup_printf("<big><b>%s</b></big>", 
+                                    _("Clear Recent Items")));
+    gtk_message_dialog_format_secondary_text ( GTK_MESSAGE_DIALOG(dlg), 
+    _("Are you sure you wish to clear your recent items history?  This cannot be undone."));
+    
+    gtk_dialog_add_button (GTK_DIALOG(dlg), GTK_STOCK_CANCEL, 0);
+    clear_button = gtk_dialog_add_button(GTK_DIALOG(dlg),
+                                         GTK_STOCK_CLEAR,
+                                         1);
+    gtk_button_set_label( GTK_BUTTON(clear_button), _("Clear Recent Items") );
+    
+    gtk_widget_show_all(dlg);
+    
+    response = gtk_dialog_run(GTK_DIALOG(dlg));
+    if (response == 1)
+    {
+        gtk_recent_manager_purge_items(player->priv->recent, NULL);
+    }
+    gtk_widget_destroy(dlg);
+}
+
+static void
 parole_player_recent_menu_item_activated_cb (GtkWidget *widget, ParolePlayer *player)
 {
     gchar *uri;
@@ -2562,6 +2597,8 @@ parole_player_init (ParolePlayer *player)
     
     GtkWidget *recent_menu;
     GtkRecentFilter *recent_filter;
+    GtkWidget *clear_recent;
+    GtkWidget *recent_separator;
     
     gboolean repeat, shuffle;
     
@@ -2656,6 +2693,16 @@ parole_player_init (ParolePlayer *player)
     recent_filter = parole_get_supported_recent_media_filter ();
     gtk_recent_filter_add_application( recent_filter, "parole" );
     gtk_recent_chooser_set_filter( GTK_RECENT_CHOOSER(player->priv->recent_menu), recent_filter);
+    
+    recent_separator = gtk_separator_menu_item_new();
+    clear_recent = gtk_image_menu_item_new_from_stock(GTK_STOCK_CLEAR, NULL);
+    gtk_menu_item_set_label (GTK_MENU_ITEM(clear_recent), _("Clear recent items..."));
+    
+    gtk_menu_shell_append(GTK_MENU_SHELL(player->priv->recent_menu), recent_separator);
+    gtk_menu_shell_append(GTK_MENU_SHELL(player->priv->recent_menu), clear_recent);
+    
+    g_signal_connect (clear_recent, "activate",
+		      G_CALLBACK (parole_player_recent_menu_clear_activated_cb), player);
     
     gtk_menu_item_set_submenu( GTK_MENU_ITEM(recent_menu), player->priv->recent_menu );
     
