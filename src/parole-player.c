@@ -2690,6 +2690,7 @@ parole_player_init (ParolePlayer *player)
     gtk_recent_chooser_set_sort_type (GTK_RECENT_CHOOSER(player->priv->recent_menu), GTK_RECENT_SORT_MRU);
     gtk_recent_chooser_set_show_private (GTK_RECENT_CHOOSER(player->priv->recent_menu), FALSE);
     gtk_recent_chooser_set_show_not_found (GTK_RECENT_CHOOSER(player->priv->recent_menu), FALSE);
+    gtk_recent_chooser_set_local_only (GTK_RECENT_CHOOSER(player->priv->recent_menu), TRUE);
     recent_filter = parole_get_supported_recent_media_filter ();
     gtk_recent_filter_add_application( recent_filter, "parole" );
     gtk_recent_chooser_set_filter( GTK_RECENT_CHOOSER(player->priv->recent_menu), recent_filter);
