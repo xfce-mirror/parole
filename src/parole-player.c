@@ -1550,15 +1550,16 @@ parole_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePl
 	if ( album )
 	{
 	    if (year)
-	    {
 	        gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), g_markup_printf_escaped("<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s (%s)</span></big>", _("on"), album, year));
-		g_free (year);
-	    }
 	    else
 	        gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), g_markup_printf_escaped("<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s</span></big>", _("on"), album));
 	        
 	    g_free (album);
 	}
+	
+	if (year)
+	    g_free (year);
+	
 	else
 	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), g_strdup_printf("<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s</span></big>", _("on"), _("Unknown Album")));
 
@@ -2196,7 +2197,8 @@ static gboolean
 parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
 {
     GtkWidget *focused;
-    gdouble seek_short = 10, seek_medium = 60, seek_long = 600;
+    gdouble seek_short = 10, seek_long = 600;
+    //gdouble seek_medium = 60;
     
     gboolean ret_val = FALSE;
     
