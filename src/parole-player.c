@@ -138,13 +138,9 @@ void            parole_player_forward_cb                  (GtkButton *button,
 void            parole_player_back_cb                  (GtkButton *button, 
 							 ParolePlayer *player);
 							 
-void 			parole_player_seekf_cb (GtkWidget *widget, ParolePlayer *player);
+void 			parole_player_seekf_cb (GtkWidget *widget, ParolePlayer *player, gdouble seek);
 
-void 			parole_player_seekb_cb (GtkWidget *widget, ParolePlayer *player);
-
-void 			parole_player_seekf_long_cb (GtkWidget *widget, ParolePlayer *player);
-
-void 			parole_player_seekb_long_cb (GtkWidget *widget, ParolePlayer *player);
+void 			parole_player_seekb_cb (GtkWidget *widget, ParolePlayer *player, gdouble seek);
 
 gboolean        parole_player_scroll_event_cb		(GtkWidget *widget,
 							 GdkEventScroll *ev,
@@ -1437,22 +1433,6 @@ parole_player_stop_clicked (GtkButton *button, ParolePlayer *player)
     parole_gst_stop (PAROLE_GST (player->priv->gst));
 }
 
-/*
- * Seek 5%
- */
-static gint64
-parole_player_get_seek_value (ParolePlayer *player)
-{
-    gint64 val;
-    gint64 dur;
-    
-    dur = parole_gst_get_stream_duration (PAROLE_GST (player->priv->gst));
-    
-    val = dur * 5 /100;
-    
-    return val;
-}
-
 void parole_player_forward_cb (GtkButton *button, ParolePlayer *player)
 {
 	parole_player_play_next (player, FALSE);
@@ -1463,47 +1443,19 @@ void parole_player_back_cb (GtkButton *button, ParolePlayer *player)
 	parole_player_play_prev (player);
 }
 
-void parole_player_seekf_cb (GtkWidget *widget, ParolePlayer *player)
+void parole_player_seekf_cb (GtkWidget *widget, ParolePlayer *player, gdouble seek)
 {
-	gdouble seek;
-	
 	seek =  parole_gst_get_stream_position (PAROLE_GST (player->priv->gst) )
 			+
-			parole_player_get_seek_value (player);
-			
+			seek;
 	parole_gst_seek (PAROLE_GST (player->priv->gst), seek);
 }
 
-void parole_player_seekb_cb (GtkWidget *widget, ParolePlayer *player)
+void parole_player_seekb_cb (GtkWidget *widget, ParolePlayer *player, gdouble seek)
 {
-	gdouble seek;
-	
 	seek =  parole_gst_get_stream_position (PAROLE_GST (player->priv->gst) )
 			-
-			parole_player_get_seek_value (player);
-			
-	parole_gst_seek (PAROLE_GST (player->priv->gst), seek);
-}
-
-void parole_player_seekf_long_cb (GtkWidget *widget, ParolePlayer *player)
-{
-	gdouble seek;
-	
-	seek =  parole_gst_get_stream_position (PAROLE_GST (player->priv->gst) )
-			+
-			600;
-			
-	parole_gst_seek (PAROLE_GST (player->priv->gst), seek);
-}
-
-void parole_player_seekb_long_cb (GtkWidget *widget, ParolePlayer *player)
-{
-	gdouble seek;
-	
-	seek =  parole_gst_get_stream_position (PAROLE_GST (player->priv->gst) )
-			-
-			600;
-			
+			seek;
 	parole_gst_seek (PAROLE_GST (player->priv->gst), seek);
 }
 
@@ -2251,6 +2203,7 @@ static gboolean
 parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
 {
     GtkWidget *focused;
+    gdouble seek_short = 10, seek_medium = 60, seek_long = 600;
     
     gboolean ret_val = FALSE;
     
@@ -2282,22 +2235,32 @@ parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
     case GDK_Right:
 	    /* Media seekable ?*/
 	    if ( GTK_WIDGET_SENSITIVE (player->priv->range) )
-		parole_player_seekf_cb (NULL, player);
+		parole_player_seekf_cb (NULL, player, seek_short);
 	    ret_val = TRUE;
 	    break;
 	case GDK_Left:
 	    if ( GTK_WIDGET_SENSITIVE (player->priv->range) )
-		parole_player_seekb_cb (NULL, player);
+		parole_player_seekb_cb (NULL, player, seek_short);
 	    ret_val = TRUE;
 	    break;
+	/*case GDK_Up:
+	    if ( GTK_WIDGET_SENSITIVE (player->priv->range) )
+		parole_player_seekf_cb (NULL, player, seek_medium);
+	    ret_val = TRUE;
+	    break;
+	case GDK_Down:
+	    if ( GTK_WIDGET_SENSITIVE (player->priv->range) )
+		parole_player_seekb_cb (NULL, player, seek_medium);
+	    ret_val = TRUE;
+	    break;*/
 	case GDK_Page_Down:
 	    if ( GTK_WIDGET_SENSITIVE (player->priv->range) )
-		parole_player_seekb_long_cb (NULL, player);
+		parole_player_seekb_cb (NULL, player, seek_long);
 	    ret_val = TRUE;
 	    break;
 	case GDK_Page_Up:
 	    if ( GTK_WIDGET_SENSITIVE (player->priv->range) )
-		parole_player_seekf_long_cb (NULL, player);
+		parole_player_seekf_cb (NULL, player, seek_long);
 	    ret_val = TRUE;
 	    break;
 	case GDK_s:
