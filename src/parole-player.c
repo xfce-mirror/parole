@@ -107,6 +107,8 @@ static void parole_player_disc_selected_cb (ParoleDisc *disc,
 					    
 
 static void parole_player_select_custom_subtitle (GtkMenuItem *widget, gpointer data);
+								
+static gboolean            parole_audiobox_expose_event (GtkWidget *w, GdkEventExpose *ev, ParolePlayer *player);
 
 /*
  * GtkBuilder Callbacks
@@ -2462,6 +2464,39 @@ parole_gst_set_default_aspect_ratio (ParolePlayer *player, GtkBuilder *builder)
 				    TRUE);
 }
 
+static gboolean
+parole_audiobox_expose_event (GtkWidget *w, GdkEventExpose *ev, ParolePlayer *player)
+{
+    gboolean homogeneous = w->allocation.width > 536;
+    
+    if ( gtk_box_get_homogeneous( GTK_BOX(w) ) == homogeneous )
+        return FALSE;
+    
+    gtk_box_set_homogeneous( GTK_BOX(w), homogeneous );
+    if (homogeneous)
+    {
+        g_object_set( player->priv->audiobox_cover, "xalign", 1.0, NULL);
+        gtk_box_set_child_packing (GTK_BOX(w),
+                                   player->priv->audiobox_cover,
+                                   TRUE,
+                                   TRUE,
+                                   0,
+                                   GTK_PACK_START);
+    }
+    else
+    {
+        g_object_set( player->priv->audiobox_cover, "xalign", 0.0, NULL);
+        gtk_box_set_child_packing (GTK_BOX(w),
+                                   player->priv->audiobox_cover,
+                                   FALSE,
+                                   TRUE,
+                                   0,
+                                   GTK_PACK_START);
+    }
+
+    return FALSE;
+}
+
 gboolean
 parole_player_configure_event_cb (GtkWidget *widget, GdkEventConfigure *ev, ParolePlayer *player)
 {
@@ -2594,6 +2629,8 @@ parole_player_init (ParolePlayer *player)
     gint w, h;
     gboolean showhide;
     GdkColor background;
+    
+    GtkWidget *hbox_audiobox;
     
     GtkWidget *recent_menu;
     GtkRecentFilter *recent_filter;
@@ -2753,6 +2790,10 @@ parole_player_init (ParolePlayer *player)
     player->priv->eventbox_output = GTK_WIDGET (gtk_builder_get_object (builder, "eventbox_output"));
     
     /* Audio box */
+    hbox_audiobox = GTK_WIDGET (gtk_builder_get_object (builder, "hbox_audiobox"));
+    g_signal_connect(hbox_audiobox, "expose-event",
+        G_CALLBACK(parole_audiobox_expose_event), player);
+    
     gdk_color_parse("black", &background);
     player->priv->audiobox = GTK_WIDGET (gtk_builder_get_object (builder, "audiobox"));
     gtk_widget_modify_bg(GTK_WIDGET(player->priv->audiobox), GTK_STATE_NORMAL, &background);
