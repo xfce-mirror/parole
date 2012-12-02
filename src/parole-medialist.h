@@ -67,6 +67,9 @@ typedef struct
 								     
 	void			(*repeat_toggled)		    (ParoleMediaList *list,
 								     gboolean repeat_toggled);
+								     
+    void			(*show_playlist)		    (ParoleMediaList *list,
+								     gboolean show_playlist);
     
 } ParoleMediaListClass;
 

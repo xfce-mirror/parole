@@ -1106,6 +1106,12 @@ parole_player_media_list_repeat_toggled_cb (ParoleMediaList *list, gboolean repe
 }
 
 static void
+parole_player_media_list_show_playlist_cb (ParoleMediaList *list, gboolean show_playlist, ParolePlayer *player)
+{
+    parole_player_set_playlist_visible (player, show_playlist);
+}
+
+static void
 parole_player_media_progressed_cb (ParoleGst *gst, const ParoleStream *stream, gint64 value, ParolePlayer *player)
 {
 #ifdef DEBUG
@@ -2896,6 +2902,9 @@ parole_player_init (ParolePlayer *player)
 		      
 	g_signal_connect (player->priv->list, "shuffle-toggled",
 		      G_CALLBACK (parole_player_media_list_shuffle_toggled_cb), player);
+		      
+    g_signal_connect (player->priv->list, "show-playlist",
+		      G_CALLBACK (parole_player_media_list_show_playlist_cb), player);
     
     /*
      * Load auto saved media list.

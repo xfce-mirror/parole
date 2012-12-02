@@ -190,6 +190,7 @@ enum
     URI_OPENED,
     SHUFFLE_TOGGLED,
     REPEAT_TOGGLED,
+    SHOW_PLAYLIST,
     LAST_SIGNAL
 };
 
@@ -287,6 +288,9 @@ parole_media_list_files_open (ParoleMediaList *list, GSList *files, gboolean emi
     
     len = g_slist_length (files);
     TRACE ("Adding files");
+    
+    if ( len > 1 )
+        g_signal_emit (G_OBJECT (list), signals [SHOW_PLAYLIST], 0, TRUE);
     
     if ( len != 0 )
     {
@@ -1351,6 +1355,15 @@ parole_media_list_class_init (ParoleMediaListClass *klass)
                       PAROLE_TYPE_MEDIA_LIST,
                       G_SIGNAL_RUN_LAST,
                       G_STRUCT_OFFSET (ParoleMediaListClass, repeat_toggled),
+                      NULL, NULL,
+                      g_cclosure_marshal_VOID__BOOLEAN,
+                      G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
+                      
+    signals[SHOW_PLAYLIST] = 
+        g_signal_new ("show-playlist",
+                      PAROLE_TYPE_MEDIA_LIST,
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET (ParoleMediaListClass, show_playlist),
                       NULL, NULL,
                       g_cclosure_marshal_VOID__BOOLEAN,
                       G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
