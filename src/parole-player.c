@@ -361,6 +361,8 @@ struct ParolePlayerPrivate
     gboolean             internal_range_change;
     gboolean		 buffering;
     
+    gboolean        wait_for_gst_disc_info;
+    
     GtkTreeRowReference *row;
         
 };
@@ -960,8 +962,10 @@ parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *ro
 	{
 	    const gchar *sub = NULL;
 	    const gchar *uri;
+	    const gchar *directory = NULL;
 	    
 	    uri = parole_file_get_uri (file);
+	    directory = parole_file_get_directory(file);
 	    
 	    if ( g_str_has_prefix (uri, "file:/") )
 	    {
@@ -974,7 +978,7 @@ parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *ro
 		}
 	    }
 	    TRACE ("Trying to play media file %s", uri);
-	    TRACE ("File content type %s", parole_file_get_content_type (file));
+	    TRACE ("File content type %s", parole_file_get_content_type(file));
 	    
 	    
 	    parole_gst_play_uri (PAROLE_GST (player->priv->gst), 
@@ -982,7 +986,9 @@ parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *ro
 				 sub);
 	    
 	    gtk_window_set_title (GTK_WINDOW (player->priv->window), parole_file_get_display_name(file));
-		parole_rc_write_entry_string ("media-chooser-folder", PAROLE_RC_GROUP_GENERAL, parole_file_get_directory(file));
+	    
+	    if ( directory )
+		parole_rc_write_entry_string ("media-chooser-folder", PAROLE_RC_GROUP_GENERAL, directory);
 		
 
 	    g_object_unref (file);
@@ -996,6 +1002,9 @@ parole_player_disc_selected_cb (ParoleDisc *disc, const gchar *uri, const gchar 
     parole_player_reset (player);
     parole_gst_play_device_uri (PAROLE_GST (player->priv->gst), uri, device);
     player->priv->current_media_type = parole_gst_get_current_stream_type (PAROLE_GST (player->priv->gst));
+    
+    if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_CDDA )
+        player->priv->wait_for_gst_disc_info = TRUE;
 }
 
 static void
@@ -1224,6 +1233,12 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
 		  "live", &live,
 		  NULL);
 		  
+    if (player->priv->wait_for_gst_disc_info == TRUE)
+    {
+        parole_media_list_add_cdda_tracks(player->priv->list, parole_gst_get_num_tracks(PAROLE_GST (player->priv->gst)));
+        player->priv->wait_for_gst_disc_info = FALSE;
+    }
+		  
     gtk_widget_set_sensitive (player->priv->play_pause, TRUE);
     
     parole_player_set_playpause_button_image (player->priv->play_pause, GTK_STOCK_MEDIA_PAUSE);
@@ -1341,14 +1356,10 @@ parole_player_play_next (ParolePlayer *player, gboolean allow_shuffle)
 {
 	gboolean repeat, shuffle;
     GtkTreeRowReference *row;
-
-	if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD ||
-	 player->priv->current_media_type == PAROLE_MEDIA_TYPE_CDDA )
+    
+	if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD )
     {
-		if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD )
 		parole_gst_next_dvd_chapter (PAROLE_GST(player->priv->gst));
-		else if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_CDDA)
-		parole_gst_next_cdda_track (PAROLE_GST(player->priv->gst));
 		return;
     }
     
@@ -1387,13 +1398,9 @@ parole_player_play_prev (ParolePlayer *player)
 {
 	GtkTreeRowReference *row;
 
-	if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD ||
-	 player->priv->current_media_type == PAROLE_MEDIA_TYPE_CDDA )
+	if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD )
     {
-		if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD )
 		parole_gst_prev_dvd_chapter (PAROLE_GST(player->priv->gst));
-		else if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_CDDA)
-		parole_gst_prev_cdda_track (PAROLE_GST(player->priv->gst));
 		return;
     }
     
@@ -1476,8 +1483,7 @@ parole_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream, Parole
 #ifdef DEBUG
     TRACE ("***Playback about to finish***");
 #endif
-    if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD ||
-        player->priv->current_media_type == PAROLE_MEDIA_TYPE_CDDA )
+    if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD )
         parole_player_play_next (player, TRUE);
     }
     else if ( state == PAROLE_STATE_PLAYBACK_FINISHED )
@@ -2685,6 +2691,7 @@ parole_player_init (ParolePlayer *player)
     player->priv->full_screen = FALSE;
     player->priv->buffering = FALSE;
     player->priv->row = NULL;
+    player->priv->wait_for_gst_disc_info = FALSE;
     
     player->priv->recent = gtk_recent_manager_get_default ();
     

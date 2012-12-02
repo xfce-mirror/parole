@@ -64,9 +64,6 @@ static void     parole_gst_change_state 	(ParoleGst *gst,
 static void	parole_gst_terminate_internal   (ParoleGst *gst, 
 						 gboolean fade_sound);
 						 
-static void     parole_gst_seek_cdda_track	(ParoleGst *gst,
-						 gint track);
-						 
 static gchar * parole_gst_tag_list_get_cover_external (ParoleGst *gst);
 						 
 static GdkPixbuf * parole_gst_tag_list_get_cover (ParoleGst *gst, GstTagList *tag_list);
@@ -1370,28 +1367,12 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
         case GST_MESSAGE_EOS:
 	{
 	    ParoleMediaType media_type;
-	    gint current_track;
 	    
 	    TRACE ("End of stream");
 	    
 	    g_object_get (G_OBJECT (gst->priv->stream),
 			  "media-type", &media_type,
 			  NULL);
-	    if ( media_type == PAROLE_MEDIA_TYPE_CDDA )
-	    {
-		gint num_tracks;
-		g_object_get (G_OBJECT (gst->priv->stream),
-			      "num-tracks", &num_tracks,
-			      "track", &current_track,
-			      NULL);
-			  
-		TRACE ("Current track %d Number of tracks %d", current_track, num_tracks);
-		if ( num_tracks != current_track )
-		{
-		    parole_gst_seek_cdda_track (gst, current_track);
-		    break;
-		}
-	    }
 		
 	    gst->priv->media_state = PAROLE_STATE_PLAYBACK_FINISHED;
 	    g_signal_emit (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
@@ -1668,19 +1649,6 @@ parole_gst_button_release_event (GtkWidget *widget, GdkEventButton *ev)
 	ret |= GTK_WIDGET_CLASS (parole_gst_parent_class)->button_release_event (widget, ev);
 
     return ret;
-}
-
-static void     parole_gst_seek_cdda_track	(ParoleGst *gst,
-						 gint track)
-{
-    TRACE ("Track %d", track);
-    
-    if ( !gst_element_seek (gst->priv->playbin, 1.0, gst_format_get_by_nick ("track"), 
-			    GST_SEEK_FLAG_FLUSH, GST_SEEK_TYPE_SET, 
-			    track,
-			    GST_SEEK_TYPE_NONE,
-			    0) )
-	g_warning ("Seek to track %d failed ", track);
 }
 
 static void
@@ -2400,37 +2368,15 @@ void parole_gst_prev_dvd_chapter (ParoleGst *gst)
     parole_gst_change_dvd_chapter (gst, -1);
 }
 
-void parole_gst_next_cdda_track (ParoleGst *gst)
+gint parole_gst_get_num_tracks (ParoleGst *gst)
 {
-    //parole_gst_change_cdda_track (gst, 1);
-
-    gint num_tracks, current_track;
+    gint num_tracks;
     
     g_object_get (G_OBJECT (gst->priv->stream),
 			      "num-tracks", &num_tracks,
-			      "track", &current_track,
 			      NULL);
-
-    if ( num_tracks != current_track )
-    {
-        parole_gst_seek_cdda_track (gst, current_track);
-    }
-}
-
-void parole_gst_prev_cdda_track (ParoleGst *gst)
-{
-    //parole_gst_change_cdda_track (gst, -1);
-    
-    gint current_track;
-    
-    g_object_get (G_OBJECT (gst->priv->stream),
-			      "track", &current_track,
-			      NULL);
-
-    if ( current_track != 1 )
-    {
-        parole_gst_seek_cdda_track (gst, current_track-2);
-    }
+			      
+    return num_tracks;
 }
 
 void parole_gst_seek_cdda	(ParoleGst *gst, guint track_num)

@@ -128,6 +128,8 @@ void			parole_gst_next_cdda_track 	(ParoleGst *gst);
 
 void			parole_gst_prev_cdda_track 	(ParoleGst *gst);
 
+gint            parole_gst_get_num_tracks (ParoleGst *gst);
+
 void			parole_gst_seek_cdda	 	(ParoleGst *gst,
 							 guint track_num);
 

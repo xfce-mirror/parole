@@ -164,8 +164,23 @@ parole_file_constructed (GObject *object)
     ParoleFilePrivate *priv;
     GError *error = NULL;
     
+    gchar *filename;
+    
     file = PAROLE_FILE (object);
     priv = PAROLE_FILE_GET_PRIVATE (file);
+    
+    filename = g_strdup(priv->filename);
+    
+    if ( g_str_has_prefix(filename, "cdda") )
+    {
+        priv->directory = NULL;
+        priv->uri = g_strdup(filename);
+        priv->content_type = "cdda";
+        g_free(filename);
+        return;
+    }
+    
+    g_free(filename);
     
     gfile = g_file_new_for_commandline_arg (priv->filename);
 
@@ -310,7 +325,7 @@ parole_file_class_init (ParoleFileClass *klass)
 							  "Content type", 
 							  "The content type of the file",
 							  NULL,
-							  G_PARAM_READABLE));
+  							  G_PARAM_READABLE));
 							  
 	/**
      * ParoleFile:directory:
@@ -394,10 +409,37 @@ ParoleFile *
 parole_file_new_with_display_name (const gchar *filename, const gchar *display_name)
 {
     ParoleFile *file = NULL;
+    
     file = g_object_new (PAROLE_TYPE_FILE, 
 			 "filename", filename, 
 			 "display-name", display_name, 
 			 NULL);
+
+    return file;
+}
+
+/**
+ * parole_file_new_cdda_track:
+ * @track_num: cd track number.
+ * 
+ * 
+ * 
+ * Returns: A new #ParoleFile object.
+ * 
+ * Since: 0.4
+ **/
+ParoleFile *
+parole_file_new_cdda_track (const gint track_num, const gchar *display_name)
+{
+    ParoleFile *file = NULL;
+    gchar *uri = g_strdup_printf("cdda://%i", track_num);
+
+    file = g_object_new (PAROLE_TYPE_FILE, 
+		 "filename", uri, 
+		 "display-name", display_name, 
+		 NULL);
+    
+    g_free(uri);
     return file;
 }
 

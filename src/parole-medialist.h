@@ -125,6 +125,8 @@ void			         parole_media_list_open_location    (ParoleMediaList *list);
 
 gboolean			 parole_media_list_add_files        (ParoleMediaList *list,
 								     gchar **filenames, gboolean enqueue);
+								     
+void                parole_media_list_add_cdda_tracks (ParoleMediaList *list, gint n_tracks);
 
 void				 parole_media_list_save_list	    (ParoleMediaList *list);
 

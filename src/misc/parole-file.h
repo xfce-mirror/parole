@@ -53,6 +53,8 @@ ParoleFile       	       *parole_file_new             	  (const gchar *filename)
 ParoleFile       	       *parole_file_new_with_display_name (const gchar *filename,
 								   const gchar *display_name);
 								   
+ParoleFile                 *parole_file_new_cdda_track (const gint track_num, const gchar *display_name);
+								   
 
 void parole_file_set_custom_subtitles (const ParoleFile *file, gchar *suburi);
                                    

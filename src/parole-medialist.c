@@ -307,6 +307,22 @@ parole_media_list_files_open (ParoleMediaList *list, GSList *files, gboolean emi
     }
 }
 
+void
+parole_media_list_add_cdda_tracks (ParoleMediaList *list, gint n_tracks)
+{
+    GSList *files = NULL;
+    ParoleFile *file;
+    int i;
+    
+    for (i = 0; i < n_tracks; i++)
+    {
+        file = parole_file_new_cdda_track( i+1, g_strdup_printf( _("Track %i"), i+1) );
+        files = g_slist_append(files, file);
+    }
+    
+    parole_media_list_files_open(list, files, TRUE);
+}
+
 /* Callback to determine whether opened files should start playing immediately */
 static void
 parole_media_list_files_opened_cb (ParoleMediaChooser *chooser, 
