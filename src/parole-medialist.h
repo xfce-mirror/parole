@@ -70,6 +70,9 @@ typedef struct
 								     
     void			(*show_playlist)		    (ParoleMediaList *list,
 								     gboolean show_playlist);
+								     
+    void			(*gst_dvd_nav_message)		    (ParoleMediaList *list,
+								     gint gst_dvd_nav_message);
     
 } ParoleMediaListClass;
 
@@ -78,6 +81,9 @@ GType        			 parole_media_list_get_type         (void) G_GNUC_CONST;
 GtkWidget       		*parole_media_list_get              (void);
 
 void				 parole_media_list_load             (ParoleMediaList *list);
+
+
+void	parole_media_list_clear_list 	  (ParoleMediaList *list);
 
 
 gboolean			 parole_media_list_add_by_path      (ParoleMediaList *list, 
@@ -137,6 +143,11 @@ void				 parole_media_list_set_repeat_toggled		(ParoleMediaList *list,
 																
 void 				 parole_media_list_set_shuffle_toggled		(ParoleMediaList *list,
 																gboolean shuffle_toggled);
+																
+void parole_media_list_add_dvd (ParoleMediaList *list, gchar *dvd_name);
+
+							
+void parole_media_list_set_dvd_menu_visible(ParoleMediaList *list, gboolean visible);
 
 G_END_DECLS
 

@@ -120,6 +120,9 @@ GstState	        parole_gst_get_gst_state   	(ParoleGst *gst);
 
 GstState	        parole_gst_get_gst_target_state (ParoleGst *gst);
 
+void
+parole_gst_send_navigation_command(ParoleGst *gst, gint command);
+
 void			parole_gst_next_dvd_chapter 	(ParoleGst *gst);
 
 void			parole_gst_prev_dvd_chapter 	(ParoleGst *gst);

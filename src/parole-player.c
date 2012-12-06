@@ -573,6 +573,8 @@ parole_player_reset (ParolePlayer *player)
 	gtk_tree_row_reference_free (player->priv->row);
 	player->priv->row = NULL;
     }
+    
+    parole_media_list_set_dvd_menu_visible(player->priv->list, FALSE);
 }
 
 
@@ -1004,7 +1006,29 @@ parole_player_disc_selected_cb (ParoleDisc *disc, const gchar *uri, const gchar 
     player->priv->current_media_type = parole_gst_get_current_stream_type (PAROLE_GST (player->priv->gst));
     
     if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_CDDA )
+    {
         player->priv->wait_for_gst_disc_info = TRUE;
+        parole_media_list_set_dvd_menu_visible(player->priv->list, FALSE);
+    }
+    else if (player->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD )
+        parole_media_list_set_dvd_menu_visible(player->priv->list, TRUE);
+    else
+        parole_media_list_set_dvd_menu_visible(player->priv->list, FALSE);
+        
+    
+    parole_media_list_clear_list (player->priv->list);
+}
+
+static void
+parole_player_disc_label_changed_cb (ParoleDisc *disc, const gchar *label, ParolePlayer *player)
+{
+    parole_media_list_add_dvd(player->priv->list, g_strdup(label));
+}
+
+static void
+parole_player_disc_dvd_enabled_cb (ParoleDisc *disc, gboolean enabled, ParolePlayer *player)
+{
+    parole_media_list_set_dvd_menu_visible(player->priv->list, enabled);
 }
 
 static void
@@ -1118,6 +1142,12 @@ static void
 parole_player_media_list_show_playlist_cb (ParoleMediaList *list, gboolean show_playlist, ParolePlayer *player)
 {
     parole_player_set_playlist_visible (player, show_playlist);
+}
+
+static void
+parole_player_media_list_gst_nav_message_cb (ParoleMediaList *list, gint msg_id, ParolePlayer *player)
+{
+    parole_gst_send_navigation_command (PAROLE_GST(player->priv->gst), msg_id);
 }
 
 static void
@@ -2680,6 +2710,12 @@ parole_player_init (ParolePlayer *player)
     player->priv->disc = parole_disc_new ();
     g_signal_connect (player->priv->disc, "disc-selected",
 		      G_CALLBACK (parole_player_disc_selected_cb), player);
+		      
+    g_signal_connect (player->priv->disc, "label-changed",
+		      G_CALLBACK (parole_player_disc_label_changed_cb), player);
+		      
+    g_signal_connect (player->priv->disc, "dvd-enabled",
+		      G_CALLBACK (parole_player_disc_dvd_enabled_cb), player);
 	    
     player->priv->screen_saver = parole_screen_saver_new ();
     player->priv->list = PAROLE_MEDIA_LIST (parole_media_list_get ());
@@ -2912,6 +2948,9 @@ parole_player_init (ParolePlayer *player)
 		      
     g_signal_connect (player->priv->list, "show-playlist",
 		      G_CALLBACK (parole_player_media_list_show_playlist_cb), player);
+		      
+    g_signal_connect (player->priv->list, "gst-dvd-nav-message",
+		      G_CALLBACK (parole_player_media_list_gst_nav_message_cb), player);
     
     /*
      * Load auto saved media list.

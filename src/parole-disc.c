@@ -62,6 +62,8 @@ struct ParoleDiscPrivate
 enum
 {
     DISC_SELECTED,
+    DVD_ENABLED,
+    LABEL_CHANGED,
     LAST_SIGNAL
 };
 
@@ -100,6 +102,68 @@ free_mount_data (gpointer data)
     g_free (mount);
 }
 
+
+static void
+parole_disc_set_label(ParoleDisc *disc, const gchar *label)
+{
+    gchar *menu_label;
+    
+    if ( g_strcmp0(label, _("Insert Disc")) != 0 )
+    {
+    menu_label = g_strdup_printf ("%s '%s'", _("Play Disc"), label);
+    g_signal_emit (G_OBJECT (disc), signals [LABEL_CHANGED], 0, label);
+    }
+    else
+    {
+    menu_label = g_strdup(label);
+    g_signal_emit (G_OBJECT (disc), signals [LABEL_CHANGED], 0, label);
+    }
+    
+    gtk_menu_item_set_label( GTK_MENU_ITEM (disc->priv->disc_menu_item), menu_label );
+    g_free(menu_label);
+}
+
+static void
+parole_disc_set_enabled(ParoleDisc *disc, gboolean enabled)
+{
+    gtk_widget_set_sensitive( GTK_WIDGET(disc->priv->disc_menu_item), enabled);
+    //g_signal_emit (G_OBJECT (disc), signals [DVD_ENABLED], 0, enabled);
+}
+
+static gboolean
+parole_disc_get_enabled(ParoleDisc *disc)
+{
+    return gtk_widget_get_sensitive( GTK_WIDGET(disc->priv->disc_menu_item) );
+}
+
+static void
+parole_disc_set_kind(ParoleDisc *disc, ParoleDiscKind kind)
+{
+    GtkWidget *img;
+    gboolean enabled = TRUE;
+    
+    switch (kind)
+	{
+		case PAROLE_DISC_CDDA:
+			img = gtk_image_new_from_icon_name("media-cdrom-audio", GTK_ICON_SIZE_MENU);
+			break;
+		case PAROLE_DISC_SVCD:
+		case PAROLE_DISC_VCD:
+		case PAROLE_DISC_DVD:
+			img = gtk_image_new_from_stock("gtk-cdrom", GTK_ICON_SIZE_MENU);
+			break;
+		default:
+		    img = gtk_image_new_from_stock("gtk-cdrom", GTK_ICON_SIZE_MENU);
+		    parole_disc_set_label(disc, _("Insert Disc") );
+		    enabled = FALSE;
+		    break;
+	}
+	
+	gtk_image_menu_item_set_image( GTK_IMAGE_MENU_ITEM (disc->priv->disc_menu_item), img);
+	parole_disc_set_enabled(disc, enabled);
+}
+
+
 /**
  * parole_disc_media_activate_cb:
  * @widget : the #GtkWidget activated for this callback function.
@@ -129,45 +193,19 @@ parole_disc_media_activate_cb (GtkWidget *widget, ParoleDisc *disc)
 static void
 parole_disc_show_menu_item (ParoleDisc *disc, MountData *data, const gchar *label)
 {
-	GtkWidget *img;
-	
-	switch (data->kind)
-	{
-		case PAROLE_DISC_CDDA:
-			img = gtk_image_new_from_icon_name("media-cdrom-audio", GTK_ICON_SIZE_MENU);
-			break;
-		case PAROLE_DISC_SVCD:
-		case PAROLE_DISC_VCD:
-		case PAROLE_DISC_DVD:
-			img = gtk_image_new_from_stock("gtk-cdrom", GTK_ICON_SIZE_MENU);
-			break;
-		default:
-		    img = gtk_image_new_from_stock("gtk-cdrom", GTK_ICON_SIZE_MENU);
-		    gtk_image_menu_item_set_image( GTK_IMAGE_MENU_ITEM (disc->priv->disc_menu_item), img);
-		    gtk_menu_item_set_label( GTK_MENU_ITEM (disc->priv->disc_menu_item), _("Insert Disc") );
-		    gtk_widget_set_sensitive( GTK_WIDGET (disc->priv->disc_menu_item), FALSE );
-		    data->mi = disc->priv->disc_menu_item;
-	        gtk_widget_show (data->mi);
-            gtk_widget_show (img);
-		    return;
-		    break;
-	}
-	
-	gtk_image_menu_item_set_image( GTK_IMAGE_MENU_ITEM (disc->priv->disc_menu_item), img);
-	gtk_menu_item_set_label( GTK_MENU_ITEM (disc->priv->disc_menu_item), label );
-	
-	gtk_widget_set_sensitive( GTK_WIDGET (disc->priv->disc_menu_item), TRUE );
+	parole_disc_set_kind (disc, data->kind);
+	parole_disc_set_label(disc, label);
 
-	data->mi = disc->priv->disc_menu_item;
-	
-	gtk_widget_show (data->mi);
-    gtk_widget_show (img);
-	
-    g_object_set_data (G_OBJECT (data->mi),
-		      "mount-data", data);
-		      
-	g_signal_connect (data->mi, "activate",
-		      G_CALLBACK (parole_disc_media_activate_cb), disc);
+	if (parole_disc_get_enabled(disc))
+	{
+	    data->mi = disc->priv->disc_menu_item;
+	    
+        g_object_set_data (G_OBJECT (data->mi),
+		          "mount-data", data);
+		          
+	    g_signal_connect (data->mi, "activate",
+		          G_CALLBACK (parole_disc_media_activate_cb), disc);
+    }
 }
 
 /**
@@ -222,6 +260,13 @@ parole_disc_add_mount_to_menu (ParoleDisc *disc, GMount *mount, const gchar *dev
 	uri = g_strdup ("cdda://");
 	goto got_cdda;
     }
+    
+    if ( g_file_has_uri_scheme (file, "dvd") )
+    {
+	kind = PAROLE_DISC_DVD;
+	uri = g_strdup ("dvd:/");
+	goto got_cdda;
+    }
 	
     content_type = g_content_type_guess_for_tree (file);
 
@@ -264,19 +309,16 @@ got_cdda:
     {
 	MountData *data;
 	gchar *name;
-	gchar *label;
 	
 	name = g_mount_get_name (mount);
-	label = g_strdup_printf ("%s '%s'", _("Play Disc"), name);
 	
 	data = parole_disc_get_mount_data (disc, uri, device, kind);
-	parole_disc_show_menu_item (disc, data, label);
+	parole_disc_show_menu_item (disc, data, name);
 	
 	if ( uri )
 	    g_free (uri);
 	
 	g_ptr_array_add (disc->priv->array, data);
-	g_free (label);
 	g_free (name);
     }
     
@@ -458,12 +500,7 @@ parole_disc_select_cb (GtkItem *item, ParoleDisc *disc)
 static void
 parole_disc_monitor_changed_cb (GVolumeMonitor *monitor, gpointer *device, ParoleDisc *disc)
 {
-    GtkWidget *img;
-	
-	img = gtk_image_new_from_stock("gtk-cdrom", GTK_ICON_SIZE_MENU);
-    gtk_image_menu_item_set_image( GTK_IMAGE_MENU_ITEM (disc->priv->disc_menu_item), img);
-    gtk_menu_item_set_label( GTK_MENU_ITEM (disc->priv->disc_menu_item), _("Insert Disc") );
-    gtk_widget_set_sensitive( GTK_WIDGET (disc->priv->disc_menu_item), FALSE );
+    parole_disc_set_kind(disc, PAROLE_DISC_UNKNOWN);
     
     disc->priv->needs_update = TRUE;
 }
@@ -488,6 +525,24 @@ parole_disc_class_init (ParoleDiscClass *klass)
 		      _gmarshal_VOID__STRING_STRING,
                       G_TYPE_NONE, 2, 
 		      G_TYPE_STRING, G_TYPE_STRING);
+		      
+    signals[DVD_ENABLED] = 
+        g_signal_new ("dvd-enabled",
+                      PAROLE_TYPE_DISC,
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET (ParoleDiscClass, dvd_enabled),
+                      NULL, NULL,
+                      g_cclosure_marshal_VOID__BOOLEAN,
+                      G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
+
+    signals[LABEL_CHANGED] = 
+        g_signal_new ("label-changed",
+                      PAROLE_TYPE_DISC,
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET (ParoleDiscClass, label_changed),
+                      NULL, NULL,
+                      g_cclosure_marshal_VOID__STRING,
+                      G_TYPE_NONE, 1, G_TYPE_STRING);
 		      
     object_class->finalize = parole_disc_finalize;
 

@@ -55,6 +55,12 @@ typedef struct
     void		   (*disc_selected)	       (ParoleDisc *disc,
 							const gchar *uri,
 							const gchar *device);
+							
+    void			(*label_changed)			    (ParoleDisc *disc,
+								     const gchar *label_changed);
+								     
+	void			(*dvd_enabled)		    (ParoleDisc *disc,
+								     gboolean dvd_enabled);
     
 } ParoleDiscClass;
 

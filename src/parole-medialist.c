@@ -96,8 +96,6 @@ static GtkTreeRowReference *
 static void 	parole_media_list_select_path 	  (ParoleMediaList *list, 
 						   GtkTreePath *path);
 
-static void	parole_media_list_clear_list 	  (ParoleMediaList *list);
-
 /*
  * Callbacks for GtkBuilder
  */
@@ -159,6 +157,18 @@ gboolean	parole_media_list_query_tooltip		(GtkWidget *widget,
 							 
 void		parole_media_list_menu_pos (GtkMenu *menu, 
 							gint *px, gint *py, gpointer data);
+
+void parole_media_list_send_dvd_menu_navigation (ParoleMediaList *list, gint msg_id);
+
+void parole_media_list_dvd_menu_activated (GtkMenuItem *widget, ParoleMediaList *list);
+
+void parole_media_list_dvd_title_activated (GtkMenuItem *widget, ParoleMediaList *list);
+
+void parole_media_list_dvd_audio_activated (GtkMenuItem *widget, ParoleMediaList *list);
+
+void parole_media_list_dvd_angle_activated (GtkMenuItem *widget, ParoleMediaList *list);
+
+void parole_media_list_dvd_chapter_activated (GtkMenuItem *widget, ParoleMediaList *list);
 							 
 /*
  * End of GtkBuilder callbacks
@@ -175,6 +185,10 @@ struct ParoleMediaListPrivate
     GtkWidget		*box;
     GtkListStore	*store;
     GtkTreeSelection    *sel;
+    
+    GtkWidget *dvd_menu;
+    GtkWidget *dvd_menu_button;
+    GtkWidget *dvd_label;
 
     GtkWidget *remove_button;
     GtkWidget *clear_button;
@@ -191,7 +205,17 @@ enum
     SHUFFLE_TOGGLED,
     REPEAT_TOGGLED,
     SHOW_PLAYLIST,
+    GST_DVD_NAV_MESSAGE,
     LAST_SIGNAL
+};
+
+enum
+{
+    GST_DVD_ROOT_MENU,
+    GST_DVD_TITLE_MENU,
+    GST_DVD_AUDIO_MENU,
+    GST_DVD_ANGLE_MENU,
+    GST_DVD_CHAPTER_MENU
 };
 
 static guint signals [LAST_SIGNAL] = { 0 };
@@ -1031,7 +1055,7 @@ parole_media_list_add_open_containing_folder (ParoleMediaList *list, GtkWidget *
 }
 
 
-static void
+void
 parole_media_list_clear_list (ParoleMediaList *list)
 {
     gtk_list_store_clear (GTK_LIST_STORE (list->priv->store));
@@ -1091,8 +1115,11 @@ parole_media_list_menu_pos (GtkMenu *menu, gint *px, gint *py, gpointer data)
 	window = gtk_widget_get_window( widget );
 	gdk_window_get_position( window, &x, &y );
 	
-	px += x + widget_allocation.x - menu_allocation.width + widget_allocation.width;
-	py += y + widget_allocation.y + widget_allocation.height;
+	if (widget_allocation.width > 100)
+	gtk_widget_set_size_request(GTK_WIDGET(menu), widget_allocation.width, -1);
+	
+	*px = x + widget_allocation.x;
+	*py = y + widget_allocation.y + widget_allocation.height;
 }
 
 static void
@@ -1120,6 +1147,106 @@ static void
 menu_detach( GtkMenu *menu )
 {
 	//gtk_menu_detach (menu);
+}
+
+void
+parole_media_list_set_dvd_menu_visible(ParoleMediaList *list, gboolean visible)
+{
+    gtk_widget_set_visible(list->priv->dvd_menu_button, visible);
+}
+
+void
+parole_media_list_add_dvd (ParoleMediaList *list, gchar *dvd_name)
+{
+    //parole_media_list_set_dvd_menu_visible(list, TRUE);
+    
+    gtk_label_set_label(GTK_LABEL(list->priv->dvd_label), dvd_name);
+}
+
+void
+parole_media_list_send_dvd_menu_navigation (ParoleMediaList *list, gint msg_id)
+{
+    g_signal_emit (G_OBJECT (list), signals [GST_DVD_NAV_MESSAGE], 0, msg_id);
+}
+
+void
+parole_media_list_dvd_menu_activated (GtkMenuItem *widget, ParoleMediaList *list)
+{
+    parole_media_list_send_dvd_menu_navigation(list, GST_DVD_ROOT_MENU);
+}
+
+void
+parole_media_list_dvd_title_activated (GtkMenuItem *widget, ParoleMediaList *list)
+{
+    parole_media_list_send_dvd_menu_navigation(list, GST_DVD_TITLE_MENU);
+}
+
+void
+parole_media_list_dvd_audio_activated (GtkMenuItem *widget, ParoleMediaList *list)
+{
+    parole_media_list_send_dvd_menu_navigation(list, GST_DVD_AUDIO_MENU);
+}
+
+void
+parole_media_list_dvd_angle_activated (GtkMenuItem *widget, ParoleMediaList *list)
+{
+    parole_media_list_send_dvd_menu_navigation(list, GST_DVD_ANGLE_MENU);
+}
+
+void
+parole_media_list_dvd_chapter_activated (GtkMenuItem *widget, ParoleMediaList *list)
+{
+    parole_media_list_send_dvd_menu_navigation(list, GST_DVD_CHAPTER_MENU);
+}
+
+
+static void
+parole_media_list_show_dvd_menu (GtkToggleButton *button, ParoleMediaList *list)
+{
+    gboolean toggled = gtk_toggle_button_get_active( button );
+    GtkBuilder *builder;
+	GtkMenu *menu;
+	GtkMenuItem *dvd_menu, *title_menu, *audio_menu, *angle_menu, *chapter_menu;
+	
+	if (!toggled)
+	return;
+	
+	builder = parole_builder_new_from_string (playlist_ui, playlist_ui_length);
+    
+    menu = GTK_MENU (gtk_builder_get_object (builder, "dvd-menu"));
+    
+    dvd_menu =   GTK_MENU_ITEM (gtk_builder_get_object (builder, "dvd-menu-menu"));
+    g_signal_connect (dvd_menu, "activate",
+                      G_CALLBACK (parole_media_list_dvd_menu_activated), list);
+                      
+    title_menu = GTK_MENU_ITEM (gtk_builder_get_object (builder, "dvd-menu-title"));
+    g_signal_connect (title_menu, "activate",
+                      G_CALLBACK (parole_media_list_dvd_title_activated), list);
+                      
+    audio_menu = GTK_MENU_ITEM (gtk_builder_get_object (builder, "dvd-menu-audio"));
+    g_signal_connect (audio_menu, "activate",
+                      G_CALLBACK (parole_media_list_dvd_audio_activated), list);
+                      
+    angle_menu = GTK_MENU_ITEM (gtk_builder_get_object (builder, "dvd-menu-angle"));
+    g_signal_connect (angle_menu, "activate",
+                      G_CALLBACK (parole_media_list_dvd_angle_activated), list);
+                      
+    chapter_menu = GTK_MENU_ITEM (gtk_builder_get_object (builder, "dvd-menu-chapter"));
+    g_signal_connect (chapter_menu, "activate",
+                      G_CALLBACK (parole_media_list_dvd_chapter_activated), list);
+    
+    gtk_menu_attach_to_widget( GTK_MENU(menu), list->priv->dvd_menu_button, (GtkMenuDetachFunc) menu_detach );
+    
+    g_signal_connect_swapped (menu, "selection-done",
+                              G_CALLBACK (parole_media_list_destroy_menu), menu);
+                              
+	g_signal_connect_swapped (menu, "destroy",
+                              G_CALLBACK (parole_media_list_hide_menu), list->priv->dvd_menu_button);
+    
+    gtk_menu_popup (GTK_MENU (menu), 
+                    NULL, NULL,
+                    (GtkMenuPositionFunc) parole_media_list_menu_pos, NULL,
+                    3, gtk_get_current_event_time ());
 }
 
 static void
@@ -1383,6 +1510,15 @@ parole_media_list_class_init (ParoleMediaListClass *klass)
                       NULL, NULL,
                       g_cclosure_marshal_VOID__BOOLEAN,
                       G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
+                      
+    signals[GST_DVD_NAV_MESSAGE] = 
+        g_signal_new ("gst-dvd-nav-message",
+                      PAROLE_TYPE_MEDIA_LIST,
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET (ParoleMediaListClass, gst_dvd_nav_message),
+                      NULL, NULL,
+                      g_cclosure_marshal_VOID__INT,
+                      G_TYPE_NONE, 1, G_TYPE_INT);
 
     g_type_class_add_private (klass, sizeof (ParoleMediaListPrivate));
     
@@ -1461,6 +1597,13 @@ parole_media_list_init (ParoleMediaList *list)
     list->priv->conf = parole_conf_new ();
     
     builder = parole_builder_new_from_string (playlist_ui, playlist_ui_length);
+    
+    list->priv->dvd_menu_button = GTK_WIDGET (gtk_builder_get_object(builder, "dvd_menu_button"));
+    list->priv->dvd_menu = GTK_WIDGET (gtk_builder_get_object(builder, "dvd-menu"));
+    list->priv->dvd_label = GTK_WIDGET (gtk_builder_get_object(builder, "dvd_label"));
+    
+    g_signal_connect (GTK_TOGGLE_BUTTON(list->priv->dvd_menu_button), "toggled",
+		      G_CALLBACK (parole_media_list_show_dvd_menu), list);
     
     list->priv->view = GTK_WIDGET (gtk_builder_get_object (builder, "media-list"));
     

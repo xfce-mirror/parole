@@ -83,6 +83,15 @@ typedef enum
 
 } GstPlayFlags;
 
+enum
+{
+    GST_DVD_ROOT_MENU,
+    GST_DVD_TITLE_MENU,
+    GST_DVD_AUDIO_MENU,
+    GST_DVD_ANGLE_MENU,
+    GST_DVD_CHAPTER_MENU
+};
+
 struct ParoleGstPrivate
 {
     GstElement	 *playbin;
@@ -1579,6 +1588,40 @@ parole_gst_play_file_internal (ParoleGst *gst)
     parole_gst_load_subtitle (gst);
     parole_gst_change_state (gst, GST_STATE_PLAYING);
     g_free (uri);
+}
+
+void
+parole_gst_send_navigation_command(ParoleGst *gst, gint command)
+{
+    GstNavigation *nav;
+    nav = GST_NAVIGATION (gst->priv->video_sink);
+    
+    switch (command)
+    {
+        case GST_DVD_ROOT_MENU:
+            TRACE("Root Menu");
+            gst_navigation_send_command (nav, GST_NAVIGATION_COMMAND_DVD_MENU);
+            break;
+        case GST_DVD_TITLE_MENU:
+            TRACE("Title Menu");
+            gst_navigation_send_command (nav, GST_NAVIGATION_COMMAND_DVD_TITLE_MENU);
+            break;
+        case GST_DVD_AUDIO_MENU:
+            TRACE("Audio Menu");
+            gst_navigation_send_command (nav, GST_NAVIGATION_COMMAND_DVD_AUDIO_MENU);
+            break;
+        case GST_DVD_ANGLE_MENU:
+            TRACE("Angle Menu");
+            gst_navigation_send_command (nav, GST_NAVIGATION_COMMAND_DVD_ANGLE_MENU);
+            break;
+        case GST_DVD_CHAPTER_MENU:
+            TRACE("Chapter Menu");
+            gst_navigation_send_command (nav, GST_NAVIGATION_COMMAND_DVD_CHAPTER_MENU);
+            break;
+        default:
+            break;
+    }
+
 }
 
 static gboolean
