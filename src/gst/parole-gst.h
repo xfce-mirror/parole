@@ -75,6 +75,12 @@ typedef struct
     
     void		(*error)		 	(ParoleGst *gst,
 							 const gchar *error);
+							 
+    void		(*dvd_chapter_change)		 	(ParoleGst *gst,
+							 gint dvd_chapter_change);
+							 
+    void		(*dvd_chapter_count_change)		 	(ParoleGst *gst,
+							 gint dvd_chapter_change);
     
 } ParoleGstClass;
 
@@ -126,6 +132,8 @@ parole_gst_send_navigation_command(ParoleGst *gst, gint command);
 void			parole_gst_next_dvd_chapter 	(ParoleGst *gst);
 
 void			parole_gst_prev_dvd_chapter 	(ParoleGst *gst);
+
+void            parole_gst_set_dvd_chapter      (ParoleGst *gst, gint chapter);
 
 void			parole_gst_next_cdda_track 	(ParoleGst *gst);
 

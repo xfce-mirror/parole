@@ -48,6 +48,7 @@ struct _ParoleFilePrivate
     gchar   *content_type;
 	gchar	*directory;
 	gchar   *custom_subtitles;
+	gint    dvd_chapter;
     
 };
 
@@ -59,7 +60,8 @@ enum
     PROP_URI,
     PROP_CONTENT_TYPE,
 	PROP_DIRECTORY,
-	PROP_CUSTOM_SUBTITLES
+	PROP_CUSTOM_SUBTITLES,
+	PROP_DVD_CHAPTER
 };
 
 G_DEFINE_TYPE (ParoleFile, parole_file, G_TYPE_OBJECT)
@@ -115,6 +117,9 @@ parole_file_set_property (GObject *object, guint prop_id,
 	case PROP_CUSTOM_SUBTITLES:
 	    PAROLE_FILE_GET_PRIVATE (file)->custom_subtitles = g_value_dup_string (value);
 	    break;
+    case PROP_DVD_CHAPTER:
+	    PAROLE_FILE_GET_PRIVATE (file)->dvd_chapter = g_value_get_int (value);
+	    break;
 	default:
 	    G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 	    break;
@@ -149,6 +154,9 @@ parole_file_get_property (GObject *object, guint prop_id,
     case PROP_CUSTOM_SUBTITLES:
         g_value_set_string (value, PAROLE_FILE_GET_PRIVATE (file)->custom_subtitles);
         break;
+    case PROP_DVD_CHAPTER:
+	    g_value_set_int (value, PAROLE_FILE_GET_PRIVATE (file)->dvd_chapter);
+	    break;
 	default:
 	    G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 	    break;
@@ -176,6 +184,15 @@ parole_file_constructed (GObject *object)
         priv->directory = NULL;
         priv->uri = g_strdup(filename);
         priv->content_type = "cdda";
+        g_free(filename);
+        return;
+    }
+    
+    if ( g_str_has_prefix(filename, "dvd") )
+    {
+        priv->directory = NULL;
+        priv->uri = "dvd:/";
+        priv->content_type = "dvd";
         g_free(filename);
         return;
     }
@@ -348,7 +365,7 @@ parole_file_class_init (ParoleFileClass *klass)
      *
      * The custom subtitles set by the user.
      *
-     * Since: 0.3.0.4
+     * Since: 0.4
      **/
     g_object_class_install_property (object_class,
 				     PROP_CUSTOM_SUBTITLES,
@@ -356,6 +373,24 @@ parole_file_class_init (ParoleFileClass *klass)
 							  "Custom Subtitles", 
 							  "The custom subtitles set by the user",
 							  NULL,
+							  G_PARAM_CONSTRUCT_ONLY|
+							  G_PARAM_READWRITE));
+							  
+    /**
+     * ParoleFile:dvd_chapter:
+     *
+     * DVD Chapter, used for seeking a DVD using the playlist.
+     *
+     * Since: 0.4
+     **/
+    g_object_class_install_property (object_class,
+				     PROP_DVD_CHAPTER,
+				     g_param_spec_int ("dvd-chapter",
+							  "DVD Chapter", 
+							  "DVD Chapter, used for seeking a DVD using the playlist.",
+							  -1,
+							  1000,
+							  -1,
 							  G_PARAM_CONSTRUCT_ONLY|
 							  G_PARAM_READWRITE));
 
@@ -375,6 +410,7 @@ parole_file_init (ParoleFile *file)
     priv->content_type    = NULL;
 	priv->directory			= NULL;
 	priv->custom_subtitles = NULL;
+	priv->dvd_chapter = 0;
 }
 
 /**
@@ -440,6 +476,32 @@ parole_file_new_cdda_track (const gint track_num, const gchar *display_name)
 		 NULL);
     
     g_free(uri);
+    return file;
+}
+
+/**
+ * parole_file_new_dvd_chapter:
+ * @track_num: dvd chapter number.
+ * 
+ * 
+ * 
+ * Returns: A new #ParoleFile object.
+ * 
+ * Since: 0.4
+ **/
+ParoleFile *
+parole_file_new_dvd_chapter (gint chapter_num, const gchar *display_name)
+{
+    ParoleFile *file = NULL;
+    gchar *uri = "dvd:/";
+
+    file = g_object_new (PAROLE_TYPE_FILE, 
+		 "filename", uri, 
+		 "display-name", display_name, 
+		 "dvd-chapter", chapter_num,
+		 NULL);
+    
+    //g_free(uri); FIXME This should probably be freed.
     return file;
 }
 
@@ -535,7 +597,7 @@ parole_file_get_directory (const ParoleFile *file)
  *
  * Returns: A string containing the custom subtitles file path.
  *
- * Since: 0.3.0.4
+ * Since: 0.4
  **/
 const gchar *
 parole_file_get_custom_subtitles (const ParoleFile *file)
@@ -560,3 +622,39 @@ parole_file_set_custom_subtitles (const ParoleFile *file, gchar *suburi)
 							  G_PARAM_CONSTRUCT_ONLY|
 							  G_PARAM_READWRITE));
 }
+
+/**
+ * parole_file_get_dvd_chapter:
+ * @file: a #ParoleFile.
+ *
+ *
+ * Returns: An int containing the dvd chapter number.
+ *
+ * Since: 0.4
+ **/
+gint
+parole_file_get_dvd_chapter (const ParoleFile *file)
+{
+    //g_return_val_if_fail (PAROLE_IS_FILE (file), NULL);
+    
+    return PAROLE_FILE_GET_PRIVATE (file)->dvd_chapter;
+}
+
+void
+parole_file_set_dvd_chapter (const ParoleFile *file, gint dvd_chapter)
+{
+    GValue value = G_VALUE_INIT;
+    g_value_init (&value, G_TYPE_INT);
+    g_value_set_int (&value, dvd_chapter);
+    
+    parole_file_set_property (G_OBJECT(file), PROP_DVD_CHAPTER, 
+			      &value, g_param_spec_int ("dvd-chapter",
+							  "DVD Chapter", 
+							  "DVD Chapter, used for seeking a DVD using the playlist.",
+							  -1,
+							  1000,
+							  -1,
+							  G_PARAM_CONSTRUCT_ONLY|
+							  G_PARAM_READWRITE));
+}
+

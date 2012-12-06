@@ -54,9 +54,13 @@ ParoleFile       	       *parole_file_new_with_display_name (const gchar *filena
 								   const gchar *display_name);
 								   
 ParoleFile                 *parole_file_new_cdda_track (const gint track_num, const gchar *display_name);
+
+ParoleFile                 *parole_file_new_dvd_chapter (gint chapter_num, const gchar *display_name);
 								   
 
 void parole_file_set_custom_subtitles (const ParoleFile *file, gchar *suburi);
+
+void parole_file_set_dvd_chapter (const ParoleFile *file, gint dvd_chapter);
                                    
 const gchar   G_CONST_RETURN   *parole_file_get_directory 	  (const ParoleFile *file) G_GNUC_PURE;
 
@@ -69,6 +73,8 @@ const gchar   G_CONST_RETURN   *parole_file_get_uri 		  (const ParoleFile *file)
 const gchar   G_CONST_RETURN   *parole_file_get_content_type      (const ParoleFile *file) G_GNUC_PURE;
 
 const gchar   G_CONST_RETURN   *parole_file_get_custom_subtitles (const ParoleFile *file) G_GNUC_PURE;
+
+gint parole_file_get_dvd_chapter (const ParoleFile *file);
 
 G_END_DECLS
 

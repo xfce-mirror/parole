@@ -258,6 +258,10 @@ static void parole_player_audiotrack_radio_menu_item_changed_cb(GtkWidget *widge
 
 static void parole_player_subtitles_radio_menu_item_changed_cb(GtkWidget *widget, ParolePlayer *player);
 
+static void parole_player_dvd_chapter_count_change_cb (ParoleGst *gst, gint chapter_count, ParolePlayer *player);
+
+static void parole_player_dvd_chapter_change_cb (ParoleGst *gst, gint chapter_count, ParolePlayer *player);
+
 
 gboolean	parole_player_key_press 		(GtkWidget *widget, 
 							 GdkEventKey *ev, 
@@ -575,6 +579,17 @@ parole_player_reset (ParolePlayer *player)
     }
     
     parole_media_list_set_dvd_menu_visible(player->priv->list, FALSE);
+}
+
+static void
+parole_player_dvd_reset (ParolePlayer *player)
+{
+    if ( player->priv->row )
+    {
+	parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, NULL);
+	gtk_tree_row_reference_free (player->priv->row);
+	player->priv->row = NULL;
+    }
 }
 
 
@@ -950,9 +965,9 @@ parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *ro
     GtkTreeIter iter;
     GtkTreeModel *model;
 
-    parole_player_reset (player);
+    //parole_player_reset (player);
     
-    player->priv->row = gtk_tree_row_reference_copy (row);
+    //player->priv->row = gtk_tree_row_reference_copy (row);
     
     model = gtk_tree_row_reference_get_model (row);
     
@@ -965,9 +980,22 @@ parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *ro
 	    const gchar *sub = NULL;
 	    const gchar *uri;
 	    const gchar *directory = NULL;
+	    gint dvd_chapter;
 	    
 	    uri = parole_file_get_uri (file);
 	    directory = parole_file_get_directory(file);
+	    
+	    if ( g_str_has_prefix (uri, "dvd") )
+	    {
+	        parole_player_dvd_reset (player);
+	        player->priv->row = gtk_tree_row_reference_copy (row);
+	        dvd_chapter = parole_file_get_dvd_chapter(file);
+	        parole_gst_set_dvd_chapter(PAROLE_GST(player->priv->gst), dvd_chapter);
+	        g_object_unref (file);
+	        return;
+	    }
+	    parole_player_reset (player);
+	    player->priv->row = gtk_tree_row_reference_copy (row);
 	    
 	    if ( g_str_has_prefix (uri, "file:/") )
 	    {
@@ -1721,6 +1749,39 @@ parole_player_buffering_cb (ParoleGst *gst, const ParoleStream *stream, gint per
     gtk_widget_show (player->priv->progressbar_buffering);
     g_free (buff);
     }
+}
+
+static void
+parole_player_dvd_chapter_count_change_cb (ParoleGst *gst, gint chapter_count, ParolePlayer *player)
+{
+    gtk_tree_row_reference_free (player->priv->row);
+	player->priv->row = NULL;
+	
+	/* FIXME Cannot clear list prior to adding new chapters. */
+	//parole_media_list_clear_list (player->priv->list);
+	
+    parole_media_list_add_dvd_chapters (player->priv->list, chapter_count);
+}
+
+static void
+parole_player_dvd_chapter_change_cb (ParoleGst *gst, gint chapter_count, ParolePlayer *player)
+{
+    GdkPixbuf *pix = NULL;
+    
+	parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, NULL);
+	
+    player->priv->row = parole_media_list_get_row_n (player->priv->list, chapter_count-1);
+
+    pix = parole_icon_load ("player_play", 16);
+    
+    if ( !pix )
+	pix = parole_icon_load ("gtk-media-play-ltr", 16);
+    
+    parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, pix);
+    parole_media_list_select_row (player->priv->list, player->priv->row);
+    
+    if ( pix )
+	g_object_unref (pix);
 }
 
 gboolean parole_player_delete_event_cb (GtkWidget *widget, GdkEvent *ev, ParolePlayer *player)
@@ -2748,6 +2809,12 @@ parole_player_init (ParolePlayer *player)
    
     g_signal_connect (G_OBJECT (player->priv->gst), "buffering",
 		      G_CALLBACK (parole_player_buffering_cb), player);
+		      
+    g_signal_connect (G_OBJECT (player->priv->gst), "dvd-chapter-count-change",
+              G_CALLBACK (parole_player_dvd_chapter_count_change_cb), player);
+              
+    g_signal_connect (G_OBJECT (player->priv->gst), "dvd-chapter-change",
+              G_CALLBACK (parole_player_dvd_chapter_change_cb), player);
     
     g_signal_connect_after (G_OBJECT (player->priv->gst), "button-release-event",
 			    G_CALLBACK (parole_player_gst_widget_button_release), player);

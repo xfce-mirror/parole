@@ -189,6 +189,7 @@ struct ParoleMediaListPrivate
     GtkWidget *dvd_menu;
     GtkWidget *dvd_menu_button;
     GtkWidget *dvd_label;
+    GtkWidget *playlist_controls;
 
     GtkWidget *remove_button;
     GtkWidget *clear_button;
@@ -344,6 +345,23 @@ parole_media_list_add_cdda_tracks (ParoleMediaList *list, gint n_tracks)
         files = g_slist_append(files, file);
     }
     
+    parole_media_list_files_open(list, files, TRUE);
+}
+
+void
+parole_media_list_add_dvd_chapters (ParoleMediaList *list, gint n_chapters)
+{
+    GSList *files = NULL;
+    ParoleFile *file;
+    gint i;
+    
+    for (i = 0; i < n_chapters; i++)
+    {
+        file = PAROLE_FILE(parole_file_new_dvd_chapter( i+1, g_strdup_printf( _("Chapter %i"), i+1) ));
+        files = g_slist_append(files, file);
+    }
+    
+    //parole_media_list_clear_list (list);
     parole_media_list_files_open(list, files, TRUE);
 }
 
@@ -1153,6 +1171,8 @@ void
 parole_media_list_set_dvd_menu_visible(ParoleMediaList *list, gboolean visible)
 {
     gtk_widget_set_visible(list->priv->dvd_menu_button, visible);
+    /* Disable the playlist controls when in DVD mode. */
+    gtk_widget_set_sensitive(list->priv->playlist_controls, !visible);
 }
 
 void
@@ -1601,6 +1621,7 @@ parole_media_list_init (ParoleMediaList *list)
     list->priv->dvd_menu_button = GTK_WIDGET (gtk_builder_get_object(builder, "dvd_menu_button"));
     list->priv->dvd_menu = GTK_WIDGET (gtk_builder_get_object(builder, "dvd-menu"));
     list->priv->dvd_label = GTK_WIDGET (gtk_builder_get_object(builder, "dvd_label"));
+    list->priv->playlist_controls = GTK_WIDGET (gtk_builder_get_object(builder, "playlist_controls"));
     
     g_signal_connect (GTK_TOGGLE_BUTTON(list->priv->dvd_menu_button), "toggled",
 		      G_CALLBACK (parole_media_list_show_dvd_menu), list);
@@ -1767,6 +1788,32 @@ GtkTreeRowReference *parole_media_list_get_prev_row (ParoleMediaList *list,
     gtk_tree_path_free (path);
     
     return prev;
+}
+
+GtkTreeRowReference *parole_media_list_get_row_n (ParoleMediaList *list, 
+						                          gint wanted_row)
+{
+    GtkTreeRowReference *row = NULL;
+    GtkTreePath *path;
+    GtkTreeIter iter;
+    
+    if (wanted_row == -1)
+        return NULL;
+        
+    path = gtk_tree_path_new_from_string( g_strdup_printf("%i", wanted_row) );
+
+    if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path))
+    {
+	row = gtk_tree_row_reference_new (GTK_TREE_MODEL (list->priv->store), path);
+	//parole_media_list_select_path (list, path);
+    }
+    
+    gtk_tree_path_free (path);
+    
+    if ( !gtk_tree_row_reference_valid (row) )
+	return NULL;
+    
+    return row;
 }
 
 GtkTreeRowReference *parole_media_list_get_row_random (ParoleMediaList *list)

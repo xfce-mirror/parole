@@ -593,7 +593,8 @@ parole_stream_class_init (ParoleStreamClass *klass)
      * ParoleStream:track:
      * 
      * Currently playing track, this is only valid if
-     * #ParoleStream:media-type: is PAROLE_MEDIA_TYPE_CDDA.
+     * #ParoleStream:media-type: is PAROLE_MEDIA_TYPE_CDDA 
+     *                           or PAROLE_MEDIA_TYPE_DVD.
      * 
      * Since: 0.2 
      **/
@@ -602,7 +603,7 @@ parole_stream_class_init (ParoleStreamClass *klass)
 				     g_param_spec_uint   ("track",
 							  "Track", 
 							  "Track",
-							  1, 99,
+							  0, 99,
 							  1,
 							  G_PARAM_READWRITE));
     /**

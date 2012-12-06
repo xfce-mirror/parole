@@ -145,6 +145,8 @@ enum
     MEDIA_TAG,
     BUFFERING,
     ERROR,
+    DVD_CHAPTER_CHANGE,
+    DVD_CHAPTER_COUNT_CHANGE,
     LAST_SIGNAL
 };
 
@@ -1168,10 +1170,12 @@ parole_gst_tag_list_get_cover (ParoleGst *gst, GstTagList *tag_list)
 static void
 parole_gst_get_meta_data_dvd (ParoleGst *gst)
 {
+    gint n_chapters;
     guint num_chapters = 1;
     guint chapter = 1;
     guint current_num_chapters;
     guint current_chapter;
+    gint64 val = -1;
     
     GstFormat format;
     
@@ -1183,17 +1187,19 @@ parole_gst_get_meta_data_dvd (ParoleGst *gst)
     format = gst_format_get_by_nick ("chapter");
 
     /* Get the number of chapters for the current title. */
-    gint64 val = -1;
     if ( gst_element_query_duration (gst->priv->playbin, &format, &val) )
     {
-        num_chapters = (guint)(gint) val;
+        n_chapters = (gint) val;
+        num_chapters = (guint) n_chapters;
         if (num_chapters != current_num_chapters)
         {
             g_object_set (G_OBJECT (gst->priv->stream),
 		              "num-tracks", num_chapters,
 		              NULL);
-            TRACE("Updated DVD chapter count: %i", num_chapters);
-            g_print("Updated DVD chapter count: %i\n", num_chapters);
+            TRACE("Updated DVD chapter count: %i", n_chapters);
+            
+            g_signal_emit (G_OBJECT (gst), signals [DVD_CHAPTER_COUNT_CHANGE], 0, 
+                n_chapters);
         }
     }
     
@@ -1208,7 +1214,10 @@ parole_gst_get_meta_data_dvd (ParoleGst *gst)
 		              "track", chapter,
 		              NULL);
             TRACE("Updated current DVD chapter: %i", chapter);
-            g_print("Updated current DVD chapter: %i\n", chapter);
+            
+            if (current_chapter != 1)
+            g_signal_emit (G_OBJECT (gst), signals [DVD_CHAPTER_CHANGE], 0, 
+                chapter);
         }
     }
     
@@ -2137,6 +2146,24 @@ parole_gst_class_init (ParoleGstClass *klass)
                       g_cclosure_marshal_VOID__STRING,
                       G_TYPE_NONE, 1, 
 		      G_TYPE_STRING);
+		      
+    signals[DVD_CHAPTER_CHANGE] = 
+        g_signal_new ("dvd-chapter-change",
+                      PAROLE_TYPE_GST,
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET (ParoleGstClass, dvd_chapter_change),
+                      NULL, NULL,
+                      g_cclosure_marshal_VOID__INT,
+                      G_TYPE_NONE, 1, G_TYPE_INT);
+                      
+    signals[DVD_CHAPTER_COUNT_CHANGE] = 
+        g_signal_new ("dvd-chapter-count-change",
+                      PAROLE_TYPE_GST,
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET (ParoleGstClass, dvd_chapter_count_change),
+                      NULL, NULL,
+                      g_cclosure_marshal_VOID__INT,
+                      G_TYPE_NONE, 1, G_TYPE_INT);
 
     g_object_class_install_property (object_class,
 				     PROP_CONF_OBJ,
@@ -2461,6 +2488,18 @@ void parole_gst_next_dvd_chapter (ParoleGst *gst)
 void parole_gst_prev_dvd_chapter (ParoleGst *gst)
 {
     parole_gst_change_dvd_chapter (gst, -1);
+}
+
+void parole_gst_set_dvd_chapter (ParoleGst *gst, gint chapter)
+{
+    GstFormat format = gst_format_get_by_nick ("chapter");
+    guint64 val = (guint64) chapter;
+    
+    gst_element_seek (gst->priv->playbin, 1.0, format, 
+				GST_SEEK_FLAG_FLUSH, GST_SEEK_TYPE_SET, 
+			        val,
+			        GST_SEEK_TYPE_NONE,
+			        0);
 }
 
 gint parole_gst_get_num_tracks (ParoleGst *gst)

@@ -134,6 +134,11 @@ gboolean			 parole_media_list_add_files        (ParoleMediaList *list,
 								     
 void                parole_media_list_add_cdda_tracks (ParoleMediaList *list, gint n_tracks);
 
+void                parole_media_list_add_dvd_chapters (ParoleMediaList *list, gint n_chapters);
+
+GtkTreeRowReference *parole_media_list_get_row_n (ParoleMediaList *list, 
+						                          gint wanted_row);
+
 void				 parole_media_list_save_list	    (ParoleMediaList *list);
 
 void				 parole_media_list_grab_focus       (ParoleMediaList *list);
