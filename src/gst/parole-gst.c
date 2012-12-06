@@ -1166,6 +1166,56 @@ parole_gst_tag_list_get_cover (ParoleGst *gst, GstTagList *tag_list)
 }
 
 static void
+parole_gst_get_meta_data_dvd (ParoleGst *gst)
+{
+    guint num_chapters = 1;
+    guint chapter = 1;
+    guint current_num_chapters;
+    guint current_chapter;
+    
+    GstFormat format;
+    
+    g_object_get (  G_OBJECT (gst->priv->stream),
+                    "num-tracks", &current_num_chapters,
+		            "track", &current_chapter,
+		            NULL);
+
+    format = gst_format_get_by_nick ("chapter");
+
+    /* Get the number of chapters for the current title. */
+    gint64 val = -1;
+    if ( gst_element_query_duration (gst->priv->playbin, &format, &val) )
+    {
+        num_chapters = (guint)(gint) val;
+        if (num_chapters != current_num_chapters)
+        {
+            g_object_set (G_OBJECT (gst->priv->stream),
+		              "num-tracks", num_chapters,
+		              NULL);
+            TRACE("Updated DVD chapter count: %i", num_chapters);
+            g_print("Updated DVD chapter count: %i\n", num_chapters);
+        }
+    }
+    
+    /* Get the current chapter. */
+    val = -1;
+    if ( gst_element_query_position (gst->priv->playbin, &format, &val) )
+    {
+        chapter = (guint)(gint) val;
+        if ( chapter != current_chapter || num_chapters != 1 )
+        {
+            g_object_set (G_OBJECT (gst->priv->stream),
+		              "track", chapter,
+		              NULL);
+            TRACE("Updated current DVD chapter: %i", chapter);
+            g_print("Updated current DVD chapter: %i\n", chapter);
+        }
+    }
+    
+}
+
+
+static void
 parole_gst_get_meta_data_cdda (ParoleGst *gst, GstTagList *tag)
 {
     guint num_tracks;
@@ -1271,6 +1321,8 @@ parole_gst_get_meta_data (ParoleGst *gst, GstTagList *tag)
 	case PAROLE_MEDIA_TYPE_CDDA:
 	    parole_gst_get_meta_data_cdda (gst, tag);
 	    break;
+    case PAROLE_MEDIA_TYPE_DVD:
+        parole_gst_get_meta_data_dvd (gst);
 	default:
 	    break;
     }
