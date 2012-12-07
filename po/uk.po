@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-04 12:18+0000\n"
+"POT-Creation-Date: 2012-12-06 23:09+0000\n"
 "PO-Revision-Date: 2011-05-27 14:30+0200\n"
 "Last-Translator: Dmitry Nikitin <luckas_fb@mail.ru>\n"
 "Language-Team: Ukrainian <>\n"
@@ -57,12 +57,12 @@ msgstr "Авто"
 msgid "Buffering (0%)"
 msgstr "Буферизація (0%)"
 
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:690
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:692
 msgid "Empty"
 msgstr "Пусто"
 
-#: ../data/interfaces/parole.ui.h:13 ../src/parole-disc.c:147
-#: ../src/parole-disc.c:465
+#: ../data/interfaces/parole.ui.h:13 ../src/parole-disc.c:111
+#: ../src/parole-disc.c:157
 msgid "Insert Disc"
 msgstr "Вставити диск"
 
@@ -163,29 +163,53 @@ msgid "_Open"
 msgstr "_Відкрити"
 
 #: ../data/interfaces/playlist.ui.h:1
+msgid "Angle Menu"
+msgstr "Кутове меню"
+
+#: ../data/interfaces/playlist.ui.h:2
+msgid "Audio Menu"
+msgstr "Меню аудіо"
+
+#: ../data/interfaces/playlist.ui.h:3
+msgid "Chapter Menu"
+msgstr "Меню разділу"
+
+#: ../data/interfaces/playlist.ui.h:4
 msgid "Clear"
 msgstr "Очистити"
 
-#: ../data/interfaces/playlist.ui.h:2
+#: ../data/interfaces/playlist.ui.h:5
+msgid "DVD Menu"
+msgstr "Меню DVD"
+
+#: ../data/interfaces/playlist.ui.h:6
+msgid "DVD Name"
+msgstr "Назва DVD"
+
+#: ../data/interfaces/playlist.ui.h:7
 msgid "Play opened files"
 msgstr "Відтворити відкриті файли"
 
-#: ../data/interfaces/playlist.ui.h:3
+#: ../data/interfaces/playlist.ui.h:8
 #: ../data/interfaces/parole-settings.ui.h:17
 msgid "Remember playlist"
 msgstr "Запам'ятовувати список відтворення"
 
-#: ../data/interfaces/playlist.ui.h:4
+#: ../data/interfaces/playlist.ui.h:9
 msgid "Repeat"
 msgstr "Повтор"
 
-#: ../data/interfaces/playlist.ui.h:5
+#: ../data/interfaces/playlist.ui.h:10
 msgid "Replace playlist when opening files"
 msgstr "Заміняти список відтворення відкритими файлами"
 
-#: ../data/interfaces/playlist.ui.h:6
+#: ../data/interfaces/playlist.ui.h:11
 msgid "Shuffle"
 msgstr "Випадковий"
+
+#: ../data/interfaces/playlist.ui.h:12
+msgid "Title Menu"
+msgstr "Меню разділу"
 
 #: ../data/interfaces/plugins.ui.h:1
 msgid "<b>Author</b>"
@@ -339,46 +363,46 @@ msgstr "Повідомлення"
 msgid "Error"
 msgstr "Помилка"
 
-#: ../src/gst/parole-gst.c:1336
+#: ../src/gst/parole-gst.c:1397
 msgid "Additional software is required."
 msgstr "Вимагаються додаткові програми."
 
-#: ../src/gst/parole-gst.c:1340
+#: ../src/gst/parole-gst.c:1401
 msgid "Don't Install"
 msgstr "Не встановлювати"
 
-#: ../src/gst/parole-gst.c:1342
+#: ../src/gst/parole-gst.c:1403
 msgid "Install"
 msgstr "Встановлювати"
 
-#: ../src/gst/parole-gst.c:1720
+#: ../src/gst/parole-gst.c:1815
 msgid "Stop"
 msgstr "Зупинити"
 
-#: ../src/gst/parole-gst.c:1721
+#: ../src/gst/parole-gst.c:1816
 msgid "The stream is taking too much time to load"
 msgstr "Потік потребує забагато часу для завантаження"
 
-#: ../src/gst/parole-gst.c:1890
+#: ../src/gst/parole-gst.c:1985
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Неможливо завантажити модуль GStreamer 'playbin'. Перевірте чи встановлені "
 "модулі GStreamer"
 
-#: ../src/gst/parole-gst.c:1914
+#: ../src/gst/parole-gst.c:2009
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Неможливо завантажити модуль GStreamer для роботи з відео. Перевірте чи "
 "встановлені модулі GStreamer"
 
-#: ../src/gst/parole-gst.c:2476 ../src/gst/parole-gst.c:2480
+#: ../src/gst/parole-gst.c:2571 ../src/gst/parole-gst.c:2575
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Доріжка #%d"
 
-#: ../src/gst/parole-gst.c:2514 ../src/gst/parole-gst.c:2518
+#: ../src/gst/parole-gst.c:2609 ../src/gst/parole-gst.c:2613
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Субтитри #%d"
@@ -489,32 +513,32 @@ msgstr "Parole вже працює, використайте-i для відкр
 msgid "Supported files"
 msgstr "Файли що підтримуються"
 
-#: ../src/parole-mediachooser.c:217 ../src/parole-player.c:900
+#: ../src/parole-mediachooser.c:217 ../src/parole-player.c:902
 msgid "All files"
 msgstr "Всі файли"
 
-#: ../src/parole-medialist.c:319
+#: ../src/parole-medialist.c:343
 #, c-format
 msgid "Track %i"
 msgstr "Доріжка %i"
 
-#: ../src/parole-medialist.c:588
+#: ../src/parole-medialist.c:612
 msgid "Permission denied"
 msgstr "Відмовлено в доступі"
 
-#: ../src/parole-medialist.c:590
+#: ../src/parole-medialist.c:614
 msgid "Error saving playlist file"
 msgstr "Помилки при збереженні списку відтворення"
 
-#: ../src/parole-medialist.c:602
+#: ../src/parole-medialist.c:626
 msgid "Unknown playlist format"
 msgstr "Невідомий формати списку відтворення"
 
-#: ../src/parole-medialist.c:603
+#: ../src/parole-medialist.c:627
 msgid "Please chooser a supported playlist format"
 msgstr "Використовуйте селектор для підтримуваних форматів списку відтворення"
 
-#: ../src/parole-medialist.c:655 ../src/parole-plugins-manager.c:349
+#: ../src/parole-medialist.c:679 ../src/parole-plugins-manager.c:349
 #: ../src/plugins/properties/stream-properties-provider.c:140
 #: ../src/plugins/properties/stream-properties-provider.c:141
 #: ../src/plugins/properties/stream-properties-provider.c:142
@@ -522,32 +546,32 @@ msgstr "Використовуйте селектор для підтримув�
 msgid "Unknown"
 msgstr "Невідомий"
 
-#: ../src/parole-medialist.c:730 ../src/parole-player.c:2867
+#: ../src/parole-medialist.c:754 ../src/parole-player.c:2903
 msgid "Playlist"
 msgstr "Список відтворення"
 
-#: ../src/parole-medialist.c:737
+#: ../src/parole-medialist.c:761
 msgid "M3U Playlists"
 msgstr "M3U, списки відтворення"
 
-#: ../src/parole-medialist.c:745
+#: ../src/parole-medialist.c:769
 msgid "PLS Playlists"
 msgstr "PLS, списки відтворення"
 
-#: ../src/parole-medialist.c:753
+#: ../src/parole-medialist.c:777
 msgid "Advanced Stream Redirector"
 msgstr "Розширене перенаправлення потоку"
 
-#: ../src/parole-medialist.c:761
+#: ../src/parole-medialist.c:785
 msgid "Shareable Playlist"
 msgstr "Публічний список відтворення"
 
 #. Clear
-#: ../src/parole-medialist.c:1008
+#: ../src/parole-medialist.c:1032
 msgid "Open Containing Folder"
 msgstr "Відкрити теку, що містить"
 
-#: ../src/parole-medialist.c:1437
+#: ../src/parole-medialist.c:1573
 msgid "Media list"
 msgstr "Список файлів"
 
@@ -564,19 +588,19 @@ msgid "DVD image"
 msgstr "Образ DVD"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:872
+#: ../src/parole-player.c:874
 msgid "Select Subtitle File"
 msgstr "Вибрати файл субтитрів"
 
-#: ../src/parole-player.c:888
+#: ../src/parole-player.c:890
 msgid "Subtitle Files"
 msgstr "Файли субтитрів"
 
-#: ../src/parole-player.c:1032 ../src/parole-player.c:1040
+#: ../src/parole-player.c:1056 ../src/parole-player.c:1064
 msgid "Clear Recent Items"
 msgstr "Очищення недавніх програвань"
 
-#: ../src/parole-player.c:1034
+#: ../src/parole-player.c:1058
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
@@ -584,40 +608,40 @@ msgstr ""
 "Ви впевнені, що бажаєте очистити недавню історію? Її неможливо буде "
 "відновити."
 
-#: ../src/parole-player.c:1145 ../src/parole-player.c:1274
+#: ../src/parole-player.c:1175 ../src/parole-player.c:1304
 msgid "Media stream is not seekable"
 msgstr "Потік медіа не може перемотуватись"
 
-#: ../src/parole-player.c:1597
+#: ../src/parole-player.c:1627
 msgid "GStreamer backend error"
 msgstr "Помилка процесу Gstreamer"
 
-#: ../src/parole-player.c:1627
+#: ../src/parole-player.c:1657
 msgid "Unknown Song"
 msgstr "Невідома пісня"
 
-#: ../src/parole-player.c:1632 ../src/parole-player.c:1634
-#: ../src/parole-player.c:1643
+#: ../src/parole-player.c:1662 ../src/parole-player.c:1664
+#: ../src/parole-player.c:1673
 msgid "on"
 msgstr "в"
 
-#: ../src/parole-player.c:1643
+#: ../src/parole-player.c:1673
 msgid "Unknown Album"
 msgstr "Невідомий альбом"
 
-#: ../src/parole-player.c:1647 ../src/parole-player.c:1651
+#: ../src/parole-player.c:1677 ../src/parole-player.c:1681
 msgid "by"
 msgstr "виконана"
 
-#: ../src/parole-player.c:1651
+#: ../src/parole-player.c:1681
 msgid "Unknown Artist"
 msgstr "Невідомий виконавець"
 
-#: ../src/parole-player.c:1686
+#: ../src/parole-player.c:1716
 msgid "Buffering"
 msgstr "Буферизація"
 
-#: ../src/parole-player.c:2750
+#: ../src/parole-player.c:2786
 msgid "Clear recent items..."
 msgstr "Очищення недавньої історії..."
 
@@ -629,7 +653,7 @@ msgstr "Yarema aka Knedlyk <yupadmin@gmail.com>"
 msgid "Visit Parole website"
 msgstr "Відвідати веб-сторінку Parole"
 
-#: ../src/parole-disc.c:270 ../src/parole-disc.c:331
+#: ../src/parole-disc.c:113 ../src/parole-disc.c:373
 msgid "Play Disc"
 msgstr "Грати диск"
 
@@ -928,14 +952,8 @@ msgstr "Модуль управління живленням"
 #~ msgid "<b>Subtitles</b>"
 #~ msgstr "<b>Субтитри</b>"
 
-#~ msgid "Chapter Menu"
-#~ msgstr "Меню разділу"
-
 #~ msgid "DVD"
 #~ msgstr "DVD"
-
-#~ msgid "DVD Menu"
-#~ msgstr "Меню DVD"
 
 #~ msgid "Next Chapter"
 #~ msgstr "Наст. разділ"
