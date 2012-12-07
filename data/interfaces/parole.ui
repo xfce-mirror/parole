@@ -472,9 +472,9 @@
                         <property name="use_underline">True</property>
                         <property name="image">image_volume_up</property>
                         <property name="use_stock">False</property>
-                        <accelerator key="plus" signal="activate"/>
-                        <accelerator key="equal" signal="activate"/>
                         <accelerator key="KP_Add" signal="activate"/>
+                        <accelerator key="equal" signal="activate"/>
+                        <accelerator key="plus" signal="activate"/>
                         <signal name="activate" handler="parole_player_volume_up" swapped="no"/>
                       </object>
                     </child>
@@ -487,8 +487,8 @@
                         <property name="use_underline">True</property>
                         <property name="image">image_volume_down</property>
                         <property name="use_stock">False</property>
-                        <accelerator key="KP_Subtract" signal="activate"/>
                         <accelerator key="minus" signal="activate"/>
+                        <accelerator key="KP_Subtract" signal="activate"/>
                         <signal name="activate" handler="parole_player_volume_down" swapped="no"/>
                       </object>
                     </child>
@@ -720,7 +720,7 @@
                                         <property name="can_focus">False</property>
                                         <property name="xalign">0</property>
                                         <property name="yalign">1</property>
-                                        <property name="label" translatable="yes">&lt;b&gt;&lt;big&gt;Song Title&lt;/big&gt;&lt;/b&gt;</property>
+                                        <property name="label" translatable="yes">&lt;span color='#F4F4F4'&gt;&lt;b&gt;&lt;big&gt;Unknown Song&lt;/big&gt;&lt;/b&gt;&lt;/span&gt;</property>
                                         <property name="use_markup">True</property>
                                         <property name="ellipsize">end</property>
                                       </object>
@@ -735,7 +735,7 @@
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
                                         <property name="xalign">0</property>
-                                        <property name="label" translatable="yes">&lt;big&gt;on Song Album (2012)&lt;/big&gt;</property>
+                                        <property name="label" translatable="yes">&lt;big&gt;&lt;span color='#BBBBBB'&gt;&lt;i&gt;on&lt;/i&gt;&lt;/span&gt; &lt;span color='#F4F4F4'&gt;Unknown Album&lt;/span&gt;&lt;/big&gt;</property>
                                         <property name="use_markup">True</property>
                                         <property name="ellipsize">end</property>
                                       </object>
@@ -751,7 +751,7 @@
                                         <property name="can_focus">False</property>
                                         <property name="xalign">0</property>
                                         <property name="yalign">0</property>
-                                        <property name="label" translatable="yes">&lt;big&gt;by Song Artist&lt;/big&gt;</property>
+                                        <property name="label" translatable="yes">&lt;big&gt;&lt;span color='#BBBBBB'&gt;&lt;i&gt;by&lt;/i&gt;&lt;/span&gt; &lt;span color='#F4F4F4'&gt;Unknown Artist&lt;/span&gt;&lt;/big&gt;</property>
                                         <property name="use_markup">True</property>
                                         <property name="ellipsize">end</property>
                                       </object>

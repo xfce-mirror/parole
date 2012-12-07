@@ -835,7 +835,10 @@ parole_player_update_languages (ParolePlayer *player, ParoleGst *gst)
 		{
 			parole_player_update_audio_tracks(player, gst);
 			parole_player_update_subtitles(player, gst);
-			gtk_widget_set_sensitive(player->priv->subtitles_menu_custom, TRUE);
+			
+			/* Enable custom subtitles for video as long as its not a DVD. */
+			gtk_widget_set_sensitive(player->priv->subtitles_menu_custom, 
+			    player->priv->current_media_type != PAROLE_MEDIA_TYPE_DVD);
 		}
 		else
 		    gtk_widget_set_sensitive(player->priv->subtitles_menu_custom, FALSE);
@@ -1694,11 +1697,11 @@ parole_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePl
 	    g_free (album);
 	}
 	
-	if (year)
-	    g_free (year);
-	
 	else
 	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), g_strdup_printf("<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s</span></big>", _("on"), _("Unknown Album")));
+	
+	if (year)
+	    g_free (year);
 
 	if ( artist )
 	{

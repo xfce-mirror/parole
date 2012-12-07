@@ -1236,7 +1236,18 @@ parole_gst_get_meta_data_cdda (ParoleGst *gst, GstTagList *tag)
 	g_object_set (G_OBJECT (gst->priv->stream),
 		      "num-tracks", num_tracks,
 		      "track", track,
+		      "title", g_strdup_printf(_("Track %i"), track),
+		      "artist", NULL,
+		      "year", NULL,
+		      "album", _("Audio CD"),
+		      "comment", NULL,
 		      NULL);
+		      
+    parole_stream_set_image (G_OBJECT (gst->priv->stream), NULL);
+    g_object_set (G_OBJECT (gst->priv->stream),
+		  "tag-available", FALSE,
+		  NULL);
+    
 	TRACE ("num_tracks=%i track=%i", num_tracks, track);
 	g_signal_emit (G_OBJECT (gst), signals [MEDIA_TAG], 0, gst->priv->stream);
     }
@@ -1314,6 +1325,26 @@ parole_gst_get_meta_data_local_file (ParoleGst *gst, GstTagList *tag)
 }
 
 static void
+parole_gst_get_meta_data_unknown (ParoleGst *gst)
+{
+	g_object_set (G_OBJECT (gst->priv->stream),
+		      "title", NULL,
+		      "artist", NULL,
+		      "year", NULL,
+		      "album", NULL,
+		      "comment", NULL,
+		      NULL);
+    
+    parole_stream_set_image (G_OBJECT (gst->priv->stream), NULL);
+
+    g_object_set (G_OBJECT (gst->priv->stream),
+		  "tag-available", FALSE,
+		  NULL);
+		  
+    g_signal_emit (G_OBJECT (gst), signals [MEDIA_TAG], 0, gst->priv->stream);
+}
+
+static void
 parole_gst_get_meta_data (ParoleGst *gst, GstTagList *tag)
 {
     ParoleMediaType media_type;
@@ -1321,7 +1352,7 @@ parole_gst_get_meta_data (ParoleGst *gst, GstTagList *tag)
     g_object_get (G_OBJECT (gst->priv->stream),
 		  "media-type", &media_type,
 		  NULL);
-    
+		  
     switch ( media_type )
     {
 	case PAROLE_MEDIA_TYPE_LOCAL_FILE:
@@ -1332,6 +1363,11 @@ parole_gst_get_meta_data (ParoleGst *gst, GstTagList *tag)
 	    break;
     case PAROLE_MEDIA_TYPE_DVD:
         parole_gst_get_meta_data_dvd (gst);
+        break;
+    case PAROLE_MEDIA_TYPE_REMOTE:
+    case PAROLE_MEDIA_TYPE_UNKNOWN:
+	    parole_gst_get_meta_data_unknown (gst);
+	    break;
 	default:
 	    break;
     }
