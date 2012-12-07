@@ -73,10 +73,13 @@ static void
 parole_open_location_response_cb (GtkDialog *dialog, gint response_id, ParoleOpenLocation *self)
 {
     const gchar *location;
+    
+    if ( response_id == 0 )
+        return;
 
     if ( response_id == GTK_RESPONSE_OK )
     {
-	location = gtk_entry_get_text (GTK_ENTRY (self->entry));
+	location = gtk_combo_box_text_get_active_text  (GTK_COMBO_BOX_TEXT(self->entry));
 	
 	if ( !location || strlen (location) == 0)
 	    goto out;
@@ -108,28 +111,18 @@ parole_open_location_get_completion_model (void)
     {
 	for ( i = 0; lines[i]; i++)
 	{
+	    if ( g_strcmp0(lines[i], "") != 0 )
+	    {
 	    gtk_list_store_append (store, &iter);
 	    gtk_list_store_set (store, &iter,
 				COL_ADDRESS, lines [i],
 				-1);
+        }
 	}
 	
 	g_strfreev (lines);
     }
     return GTK_TREE_MODEL (store);
-}
-
-static gboolean
-parole_open_location_match (GtkEntryCompletion *cmpl, const gchar *key, 
-			    GtkTreeIter *iter, gpointer data)
-{
-    gchar *uri, *match;
-
-    gtk_tree_model_get (data, iter, 0, &uri, -1);
-    match = strstr (uri, key);
-    g_free (uri);
-
-    return (match != NULL);
 }
 
 static void
@@ -173,7 +166,6 @@ ParoleOpenLocation *parole_open_location (GtkWidget *parent)
 {
     ParoleOpenLocation *self;
     GtkWidget *dialog;
-    GtkEntryCompletion *cmpl;
     GtkTreeModel *model;
     GtkBuilder *builder;
     
@@ -191,17 +183,7 @@ ParoleOpenLocation *parole_open_location (GtkWidget *parent)
     self->entry = GTK_WIDGET (gtk_builder_get_object (builder, "entry"));
     model = parole_open_location_get_completion_model ();
     
-    gtk_entry_set_activates_default (GTK_ENTRY (self->entry), TRUE);
-    cmpl = gtk_entry_completion_new ();
-    
-    gtk_entry_set_completion (GTK_ENTRY (self->entry), cmpl);
-    gtk_entry_completion_set_model (cmpl, model);
-    
-    gtk_entry_completion_set_text_column (cmpl, 0);
-    gtk_entry_completion_set_match_func (cmpl, 
-					 (GtkEntryCompletionMatchFunc) parole_open_location_match, 
-					 model, 
-					 NULL);
+    gtk_combo_box_set_model(GTK_COMBO_BOX(self->entry), model);
     
     gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
 
