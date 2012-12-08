@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole 2.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-02 17:30+0000\n"
+"POT-Creation-Date: 2012-12-07 20:33+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Nuno Miguel <nunomgue@gmail.com>\n"
 "Language-Team: Portuguese\n"
@@ -31,16 +31,20 @@ msgid "4:3 (TV)"
 msgstr "4:3 (TV)"
 
 #: ../data/interfaces/parole.ui.h:4
-msgid "<b><big>Song Title</big></b>"
-msgstr "<b><big>Título da faixa</big></b>"
+msgid ""
+"<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
+"Artist</span></big>"
+msgstr "<big><span color='#BBBBBB'><i>de</i></span> <span color='#F4F4F4'>artista desconhecido</span></big>"
 
 #: ../data/interfaces/parole.ui.h:5
-msgid "<big>by Song Artist</big>"
-msgstr "<big>por artista da faixa</big>"
+msgid ""
+"<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
+"Album</span></big>"
+msgstr "<big><span color='#BBBBBB'><i>em</i></span> <span color='#F4F4F4'>álbum desconhecido</span></big>"
 
 #: ../data/interfaces/parole.ui.h:6
-msgid "<big>on Song Album (2012)</big>"
-msgstr "<big>no álbum (2012)</big>"
+msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
+msgstr "<span color='#F4F4F4'><b><big>Faixa desconhecida</big></b></span>"
 
 #: ../data/interfaces/parole.ui.h:7 ../src/misc/parole-filters.c:64
 msgid "Audio"
@@ -59,12 +63,12 @@ msgstr "Automático"
 msgid "Buffering (0%)"
 msgstr "A processar (0%))"
 
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:688
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:707
 msgid "Empty"
 msgstr "Vazio"
 
-#: ../data/interfaces/parole.ui.h:13 ../src/parole-disc.c:147
-#: ../src/parole-disc.c:465
+#: ../data/interfaces/parole.ui.h:13 ../src/parole-disc.c:111
+#: ../src/parole-disc.c:157
 msgid "Insert Disc"
 msgstr "Insira o disco"
 
@@ -165,29 +169,53 @@ msgid "_Open"
 msgstr "_Abrir"
 
 #: ../data/interfaces/playlist.ui.h:1
+msgid "Angle Menu"
+msgstr "Menu ângulo"
+
+#: ../data/interfaces/playlist.ui.h:2
+msgid "Audio Menu"
+msgstr "Menu áudio"
+
+#: ../data/interfaces/playlist.ui.h:3
+msgid "Chapter Menu"
+msgstr "Menu de capítulos"
+
+#: ../data/interfaces/playlist.ui.h:4
 msgid "Clear"
 msgstr "Limpar"
 
-#: ../data/interfaces/playlist.ui.h:2
+#: ../data/interfaces/playlist.ui.h:5
+msgid "DVD Menu"
+msgstr "Menu de DVD"
+
+#: ../data/interfaces/playlist.ui.h:6
+msgid "DVD Name"
+msgstr "Nome do DVD"
+
+#: ../data/interfaces/playlist.ui.h:7
 msgid "Play opened files"
 msgstr "Reproduzir ficheiros abertos"
 
-#: ../data/interfaces/playlist.ui.h:3
+#: ../data/interfaces/playlist.ui.h:8
 #: ../data/interfaces/parole-settings.ui.h:17
 msgid "Remember playlist"
 msgstr "Lembrar lista de reprodução"
 
-#: ../data/interfaces/playlist.ui.h:4
+#: ../data/interfaces/playlist.ui.h:9
 msgid "Repeat"
 msgstr "_Repetir"
 
-#: ../data/interfaces/playlist.ui.h:5
+#: ../data/interfaces/playlist.ui.h:10
 msgid "Replace playlist when opening files"
 msgstr "Substituir lista de reprodução ao abrir ficheiros"
 
-#: ../data/interfaces/playlist.ui.h:6
+#: ../data/interfaces/playlist.ui.h:11
 msgid "Shuffle"
 msgstr "_Baralhar"
+
+#: ../data/interfaces/playlist.ui.h:12
+msgid "Title Menu"
+msgstr "Menu de título"
 
 #: ../data/interfaces/plugins.ui.h:1
 msgid "<b>Author</b>"
@@ -322,12 +350,16 @@ msgid "Select File Types (By Extension)"
 msgstr "Selecione os tipos de ficheiro (por extensão)"
 
 #: ../data/interfaces/open-location.ui.h:1
-msgid "Open Location"
-msgstr "Abrir localização"
+msgid "<big><b>Open Network Location</b></big>"
+msgstr "<big><b>Abrir localização</b></big>"
 
-#: ../data/interfaces/open-location.ui.h:2
-msgid "Please enter a network URL:"
-msgstr "Por favor indique o URL:"
+#: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:192
+msgid "Clear History"
+msgstr "Limpar histórico"
+
+#: ../data/interfaces/open-location.ui.h:3
+msgid "Open Network Location"
+msgstr "Abrir localização"
 
 #: ../data/desktop/parole.desktop.in.in.h:1
 msgid "Parole"
@@ -341,46 +373,55 @@ msgstr "Mensagem"
 msgid "Error"
 msgstr "Erro"
 
-#: ../src/gst/parole-gst.c:1339
+#: ../src/gst/parole-gst.c:1239 ../src/parole-medialist.c:344
+#, c-format
+msgid "Track %i"
+msgstr "Faixa %i"
+
+#: ../src/gst/parole-gst.c:1242
+msgid "Audio CD"
+msgstr "CD áudio"
+
+#: ../src/gst/parole-gst.c:1442
 msgid "Additional software is required."
 msgstr "Requer programas adicionais"
 
-#: ../src/gst/parole-gst.c:1343
+#: ../src/gst/parole-gst.c:1446
 msgid "Don't Install"
 msgstr "Não instalar"
 
-#: ../src/gst/parole-gst.c:1345
+#: ../src/gst/parole-gst.c:1448
 msgid "Install"
 msgstr "Instalar"
 
-#: ../src/gst/parole-gst.c:1752
+#: ../src/gst/parole-gst.c:1860
 msgid "Stop"
 msgstr "Parar"
 
-#: ../src/gst/parole-gst.c:1753
+#: ../src/gst/parole-gst.c:1861
 msgid "The stream is taking too much time to load"
 msgstr "A emissão está a levar muito tempo a carregar"
 
-#: ../src/gst/parole-gst.c:1922
+#: ../src/gst/parole-gst.c:2030
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Incapaz de carregar o \"plugin\" playbin GStreamer. Verifique a instalação "
 "GStreamer  "
 
-#: ../src/gst/parole-gst.c:1946
+#: ../src/gst/parole-gst.c:2054
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Incapaz de carregar o \"plugin\" de vídeo GStreamer. Verifique a instalação "
 "GStreamer  "
 
-#: ../src/gst/parole-gst.c:2530 ../src/gst/parole-gst.c:2534
+#: ../src/gst/parole-gst.c:2646 ../src/gst/parole-gst.c:2650
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Faixa áudio #%d"
 
-#: ../src/gst/parole-gst.c:2568 ../src/gst/parole-gst.c:2572
+#: ../src/gst/parole-gst.c:2684 ../src/gst/parole-gst.c:2688
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Legenda #%d"
@@ -491,27 +532,32 @@ msgstr "O Parole já está em execução. Use -i para abrir uma nova instância\
 msgid "Supported files"
 msgstr "Ficheiros suportados"
 
-#: ../src/parole-mediachooser.c:217 ../src/parole-player.c:898
+#: ../src/parole-mediachooser.c:217 ../src/parole-player.c:920
 msgid "All files"
 msgstr "Todos os ficheiros"
 
-#: ../src/parole-medialist.c:568
+#: ../src/parole-medialist.c:360
+#, c-format
+msgid "Chapter %i"
+msgstr "Capítulo %i"
+
+#: ../src/parole-medialist.c:630
 msgid "Permission denied"
 msgstr "Permissão negada"
 
-#: ../src/parole-medialist.c:570
+#: ../src/parole-medialist.c:632
 msgid "Error saving playlist file"
 msgstr "Erro ao gravar a lista de reprodução"
 
-#: ../src/parole-medialist.c:582
+#: ../src/parole-medialist.c:644
 msgid "Unknown playlist format"
 msgstr "Formato desconhecido"
 
-#: ../src/parole-medialist.c:583
+#: ../src/parole-medialist.c:645
 msgid "Please chooser a supported playlist format"
 msgstr "Por favor, selecione um formato suportado"
 
-#: ../src/parole-medialist.c:635 ../src/parole-plugins-manager.c:349
+#: ../src/parole-medialist.c:697 ../src/parole-plugins-manager.c:349
 #: ../src/plugins/properties/stream-properties-provider.c:140
 #: ../src/plugins/properties/stream-properties-provider.c:141
 #: ../src/plugins/properties/stream-properties-provider.c:142
@@ -519,100 +565,102 @@ msgstr "Por favor, selecione um formato suportado"
 msgid "Unknown"
 msgstr "Desconhecido"
 
-#: ../src/parole-medialist.c:710 ../src/parole-player.c:2854
+#: ../src/parole-medialist.c:772 ../src/parole-player.c:2973
 msgid "Playlist"
 msgstr "Lista de reprodução"
 
-#: ../src/parole-medialist.c:717
+#: ../src/parole-medialist.c:779
 msgid "M3U Playlists"
 msgstr "Listas M3U"
 
-#: ../src/parole-medialist.c:725
+#: ../src/parole-medialist.c:787
 msgid "PLS Playlists"
 msgstr "Listas PLS"
 
-#: ../src/parole-medialist.c:733
+#: ../src/parole-medialist.c:795
 msgid "Advanced Stream Redirector"
 msgstr "Redirecionador avançado de emissões"
 
-#: ../src/parole-medialist.c:741
+#: ../src/parole-medialist.c:803
 msgid "Shareable Playlist"
 msgstr "Lista partilhável"
 
 #. Clear
-#: ../src/parole-medialist.c:988
+#: ../src/parole-medialist.c:1050
 msgid "Open Containing Folder"
 msgstr "Abrir pasta correspondente"
 
-#: ../src/parole-medialist.c:1408
+#: ../src/parole-medialist.c:1593
 msgid "Media list"
 msgstr "Lista multimédia"
 
-#: ../src/parole-player.c:485
+#: ../src/parole-player.c:491
 msgid "Open ISO image"
 msgstr "Abrir imagem ISO"
 
-#: ../src/parole-player.c:502
+#: ../src/parole-player.c:508
 msgid "CD image"
 msgstr "Imagem de CD"
 
-#: ../src/parole-player.c:502
+#: ../src/parole-player.c:508
 msgid "DVD image"
 msgstr "Imagem de DVD"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:870
+#: ../src/parole-player.c:892
 msgid "Select Subtitle File"
 msgstr "Selecione o ficheiro de legendas"
 
-#: ../src/parole-player.c:886
+#: ../src/parole-player.c:908
 msgid "Subtitle Files"
 msgstr "Ficheiros de legendas"
 
-#: ../src/parole-player.c:1023 ../src/parole-player.c:1031
+#: ../src/parole-player.c:1087 ../src/parole-player.c:1095
 msgid "Clear Recent Items"
 msgstr "Limpar itens recentes"
 
-#: ../src/parole-player.c:1025
+#: ../src/parole-player.c:1089
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
-msgstr "Tem a certeza que quer limpar a lista de itens recentes? A operação não pode ser anulada."
+msgstr ""
+"Tem a certeza que quer limpar a lista de itens recentes? A operação não pode "
+"ser anulada."
 
-#: ../src/parole-player.c:1130 ../src/parole-player.c:1253
+#: ../src/parole-player.c:1206 ../src/parole-player.c:1335
 msgid "Media stream is not seekable"
 msgstr "A emissão não permite buscas"
 
-#: ../src/parole-player.c:1585
+#: ../src/parole-player.c:1658
 msgid "GStreamer backend error"
 msgstr "Erro GStreamer"
 
-#: ../src/parole-player.c:1615
+#: ../src/parole-player.c:1688
 msgid "Unknown Song"
 msgstr "Faixa desconhecida"
 
-#: ../src/parole-player.c:1620 ../src/parole-player.c:1622
-#: ../src/parole-player.c:1631
+#: ../src/parole-player.c:1693 ../src/parole-player.c:1695
+#: ../src/parole-player.c:1701
 msgid "on"
 msgstr "em"
 
-#: ../src/parole-player.c:1631
+#: ../src/parole-player.c:1701
 msgid "Unknown Album"
 msgstr "Álbum desconhecido"
 
-#: ../src/parole-player.c:1635 ../src/parole-player.c:1639
+#: ../src/parole-player.c:1708 ../src/parole-player.c:1712
 msgid "by"
 msgstr "de"
 
-#: ../src/parole-player.c:1639
+#: ../src/parole-player.c:1712
 msgid "Unknown Artist"
 msgstr "Artista desconhecido"
 
-#: ../src/parole-player.c:1674
+#: ../src/parole-player.c:1747
 msgid "Buffering"
 msgstr "A processar..."
 
-#: ../src/parole-player.c:2737
+#: ../src/parole-player.c:2856
 msgid "Clear recent items..."
 msgstr "Limpar itens recentes..."
 
@@ -624,7 +672,7 @@ msgstr "Sérgio Marques <smarquespt@gmail.com>"
 msgid "Visit Parole website"
 msgstr "Visitar sítio web do Parole"
 
-#: ../src/parole-disc.c:270 ../src/parole-disc.c:331
+#: ../src/parole-disc.c:113 ../src/parole-disc.c:373
 msgid "Play Disc"
 msgstr "Reproduzir disco"
 
@@ -769,10 +817,6 @@ msgstr "Ocidental"
 msgid "Vietnamese"
 msgstr "Vietnamita"
 
-#: ../src/parole-open-location.c:210
-msgid "Clear History"
-msgstr "Limpar histórico"
-
 #: ../src/parole-plugins-manager.c:388 ../src/parole-plugins-manager.c:389
 msgid "No installed plugins found on this system"
 msgstr "Não foram encontrados \"plugins\" neste sistema"
@@ -887,6 +931,18 @@ msgstr ""
 msgid "Power Manager Plugin"
 msgstr "\"Plugin\" gestão de energia"
 
+#~ msgid "<b><big>Song Title</big></b>"
+#~ msgstr "<b><big>Título da faixa</big></b>"
+
+#~ msgid "<big>by Song Artist</big>"
+#~ msgstr "<big>por artista da faixa</big>"
+
+#~ msgid "<big>on Song Album (2012)</big>"
+#~ msgstr "<big>no álbum (2012)</big>"
+
+#~ msgid "Please enter a network URL:"
+#~ msgstr "Por favor indique o URL:"
+
 #~ msgid "Open _location"
 #~ msgstr "Abrir _localização"
 
@@ -929,14 +985,8 @@ msgstr "\"Plugin\" gestão de energia"
 #~ msgid "<b>Subtitles</b>"
 #~ msgstr "<b>Legendas</b>"
 
-#~ msgid "Chapter Menu"
-#~ msgstr "Menu de capítulos"
-
 #~ msgid "DVD"
 #~ msgstr "DVD"
-
-#~ msgid "DVD Menu"
-#~ msgstr "Menu de DVD"
 
 #~ msgid "Next Chapter"
 #~ msgstr "Capítulo seguinte"
