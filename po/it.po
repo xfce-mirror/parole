@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-29 14:36+0000\n"
+"POT-Creation-Date: 2012-12-10 18:06+0000\n"
 "PO-Revision-Date: 2010-02-19 09:04+0100\n"
 "Last-Translator: Cristian Marchi <cri.penta@gmail.com>\n"
 "Language-Team: Italian Translation Team <xfce-it-translators@googlegroups.com>\n"
@@ -39,16 +39,20 @@ msgid "4:3 (TV)"
 msgstr "4:3 (TV)"
 
 #: ../data/interfaces/parole.ui.h:4
-msgid "<b><big>Song Title</big></b>"
-msgstr "<b><big>Titolo brano</big></b>"
+msgid ""
+"<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
+"Artist</span></big>"
+msgstr "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Artista sconosciuto</span></big>"
 
 #: ../data/interfaces/parole.ui.h:5
-msgid "<big>by Song Artist</big>"
-msgstr "<big>per artista</big>"
+msgid ""
+"<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
+"Album</span></big>"
+msgstr "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Album sconosciuto</span></big>"
 
 #: ../data/interfaces/parole.ui.h:6
-msgid "<big>on Song Album (2012)</big>"
-msgstr ""
+msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
+msgstr "<span color='#F4F4F4'><b><big>Brano sconosciuto</big></b></span>"
 
 #: ../data/interfaces/parole.ui.h:7 ../src/misc/parole-filters.c:64
 msgid "Audio"
@@ -67,12 +71,12 @@ msgstr "Auto"
 msgid "Buffering (0%)"
 msgstr "Buffering (0%)"
 
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:689
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:707
 msgid "Empty"
 msgstr "Vuota"
 
-#: ../data/interfaces/parole.ui.h:13 ../src/parole-disc.c:147
-#: ../src/parole-disc.c:465
+#: ../data/interfaces/parole.ui.h:13 ../src/parole-disc.c:111
+#: ../src/parole-disc.c:157
 msgid "Insert Disc"
 msgstr "Inserire disco"
 
@@ -89,74 +93,78 @@ msgid "None"
 msgstr "Nessuno"
 
 #: ../data/interfaces/parole.ui.h:17
-msgid "Open _location"
-msgstr "Apri p_osizione"
+msgid "Open Recent"
+msgstr "Apri recenti"
 
-#: ../data/interfaces/parole.ui.h:18 ../src/parole-about.c:68
+#: ../data/interfaces/parole.ui.h:18
+msgid "Open _Location"
+msgstr "Apri _posizione"
+
+#: ../data/interfaces/parole.ui.h:19 ../src/parole-about.c:68
 msgid "Parole Media Player"
 msgstr "Media player Parole"
 
-#: ../data/interfaces/parole.ui.h:19
+#: ../data/interfaces/parole.ui.h:20
 msgid "Pl_ugins"
 msgstr "Pl_ugin"
 
-#: ../data/interfaces/parole.ui.h:20
+#: ../data/interfaces/parole.ui.h:21
 msgid "Select Text Subtitles..."
 msgstr "Seleziona sottotitoli..."
 
-#: ../data/interfaces/parole.ui.h:21
+#: ../data/interfaces/parole.ui.h:22
 msgid "Show _playlist"
 msgstr "Mostra sca_letta"
 
-#: ../data/interfaces/parole.ui.h:22
+#: ../data/interfaces/parole.ui.h:23
 msgid "Square"
 msgstr "Quadrato"
 
-#: ../data/interfaces/parole.ui.h:23
+#: ../data/interfaces/parole.ui.h:24
 msgid "Subtitles"
 msgstr "Sottotitoli"
 
-#: ../data/interfaces/parole.ui.h:24
+#: ../data/interfaces/parole.ui.h:25
 msgid "Subtitles:"
 msgstr "Sottotitoli:"
 
-#: ../data/interfaces/parole.ui.h:25
+#: ../data/interfaces/parole.ui.h:26
 msgid "Volume _Down"
 msgstr "A_bbassa volume"
 
-#: ../data/interfaces/parole.ui.h:26
+#: ../data/interfaces/parole.ui.h:27
 msgid "Volume _Up"
 msgstr "_Alza volume"
 
-#: ../data/interfaces/parole.ui.h:27
+#: ../data/interfaces/parole.ui.h:28
 msgid "_Aspect Ratio"
 msgstr "_Rapporto d'aspetto"
 
-#: ../data/interfaces/parole.ui.h:28
+#: ../data/interfaces/parole.ui.h:29
 msgid "_Edit"
 msgstr "_Modifica"
 
-#: ../data/interfaces/parole.ui.h:29
+#: ../data/interfaces/parole.ui.h:30
 msgid "_Help"
 msgstr "A_iuto"
 
-#: ../data/interfaces/parole.ui.h:30
+#: ../data/interfaces/parole.ui.h:31
 msgid "_Media"
 msgstr "_Contenuti"
 
-#: ../data/interfaces/parole.ui.h:31
+#: ../data/interfaces/parole.ui.h:32
 msgid "_Mute"
 msgstr "_Muto"
 
-#: ../data/interfaces/parole.ui.h:32
+#: ../data/interfaces/parole.ui.h:33
 msgid "_Repeat"
 msgstr "Ri_peti"
 
-#: ../data/interfaces/parole.ui.h:33
+#: ../data/interfaces/parole.ui.h:34
 msgid "_Shuffle"
 msgstr "Cas_uale"
 
-#: ../data/interfaces/parole.ui.h:34
+#: ../data/interfaces/parole.ui.h:35
 msgid "_View"
 msgstr "_Visualizza"
 
@@ -169,29 +177,53 @@ msgid "_Open"
 msgstr "_Apri"
 
 #: ../data/interfaces/playlist.ui.h:1
+msgid "Angle Menu"
+msgstr ""
+
+#: ../data/interfaces/playlist.ui.h:2
+msgid "Audio Menu"
+msgstr "Menu audio"
+
+#: ../data/interfaces/playlist.ui.h:3
+msgid "Chapter Menu"
+msgstr "Menu dei capitoli"
+
+#: ../data/interfaces/playlist.ui.h:4
 msgid "Clear"
 msgstr "Pulisci"
 
-#: ../data/interfaces/playlist.ui.h:2
+#: ../data/interfaces/playlist.ui.h:5
+msgid "DVD Menu"
+msgstr "Menu del DVD"
+
+#: ../data/interfaces/playlist.ui.h:6
+msgid "DVD Name"
+msgstr "Nome DVD"
+
+#: ../data/interfaces/playlist.ui.h:7
 msgid "Play opened files"
 msgstr "Avvia la riproduzione dei file aperti"
 
-#: ../data/interfaces/playlist.ui.h:3
+#: ../data/interfaces/playlist.ui.h:8
 #: ../data/interfaces/parole-settings.ui.h:17
 msgid "Remember playlist"
 msgstr "Ricorda scaletta"
 
-#: ../data/interfaces/playlist.ui.h:4
+#: ../data/interfaces/playlist.ui.h:9
 msgid "Repeat"
 msgstr "Ripeti"
 
-#: ../data/interfaces/playlist.ui.h:5
+#: ../data/interfaces/playlist.ui.h:10
 msgid "Replace playlist when opening files"
 msgstr "Sostituisci la scaletta all'apertura dei file"
 
-#: ../data/interfaces/playlist.ui.h:6
+#: ../data/interfaces/playlist.ui.h:11
 msgid "Shuffle"
 msgstr "Casuale"
+
+#: ../data/interfaces/playlist.ui.h:12
+msgid "Title Menu"
+msgstr "Menu titolo"
 
 #: ../data/interfaces/plugins.ui.h:1
 msgid "<b>Author</b>"
@@ -327,12 +359,16 @@ msgid "Select File Types (By Extension)"
 msgstr "Seleziona i tipi di file (per estensione)"
 
 #: ../data/interfaces/open-location.ui.h:1
-msgid "Open Location"
-msgstr "Apre posizione"
+msgid "<big><b>Open Network Location</b></big>"
+msgstr "<big><b>Apri posizione di rete</b></big>"
 
-#: ../data/interfaces/open-location.ui.h:2
-msgid "Please enter a network URL:"
-msgstr "Inserire un URL:"
+#: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:192
+msgid "Clear History"
+msgstr "Svuota cronologia"
+
+#: ../data/interfaces/open-location.ui.h:3
+msgid "Open Network Location"
+msgstr "Apre posizione di rete"
 
 #: ../data/desktop/parole.desktop.in.in.h:1
 msgid "Parole"
@@ -346,46 +382,55 @@ msgstr "Messaggio"
 msgid "Error"
 msgstr "Errore"
 
-#: ../src/gst/parole-gst.c:1270
+#: ../src/gst/parole-gst.c:1239 ../src/parole-medialist.c:344
+#, c-format
+msgid "Track %i"
+msgstr "Traccia %i"
+
+#: ../src/gst/parole-gst.c:1242
+msgid "Audio CD"
+msgstr "CD audio"
+
+#: ../src/gst/parole-gst.c:1442
 msgid "Additional software is required."
 msgstr "È necessario software aggiuntivo."
 
-#: ../src/gst/parole-gst.c:1274
+#: ../src/gst/parole-gst.c:1446
 msgid "Don't Install"
 msgstr "Non installare"
 
-#: ../src/gst/parole-gst.c:1276
+#: ../src/gst/parole-gst.c:1448
 msgid "Install"
 msgstr "Installa"
 
-#: ../src/gst/parole-gst.c:1683
+#: ../src/gst/parole-gst.c:1860
 msgid "Stop"
 msgstr "Ferma"
 
-#: ../src/gst/parole-gst.c:1684
+#: ../src/gst/parole-gst.c:1861
 msgid "The stream is taking too much time to load"
 msgstr "Il flusso sta impiegando troppo tempo per il caricamento"
 
-#: ../src/gst/parole-gst.c:1853
+#: ../src/gst/parole-gst.c:2030
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Impossibile caricare il plugin playbin di GStreamer; controllare la propria "
 "installazione di GStreamer"
 
-#: ../src/gst/parole-gst.c:1877
+#: ../src/gst/parole-gst.c:2054
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Impossibile caricare il plugin video di GStreamer; controllare la propria "
 "installazione di GStreamer"
 
-#: ../src/gst/parole-gst.c:2461 ../src/gst/parole-gst.c:2465
+#: ../src/gst/parole-gst.c:2646 ../src/gst/parole-gst.c:2650
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Traccia audio #%d"
 
-#: ../src/gst/parole-gst.c:2499 ../src/gst/parole-gst.c:2503
+#: ../src/gst/parole-gst.c:2684 ../src/gst/parole-gst.c:2688
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Sottotitolo #%d"
@@ -498,27 +543,32 @@ msgstr ""
 msgid "Supported files"
 msgstr "File supportati"
 
-#: ../src/parole-mediachooser.c:217 ../src/parole-player.c:899
+#: ../src/parole-mediachooser.c:217 ../src/parole-player.c:920
 msgid "All files"
 msgstr "Tutti i file"
 
-#: ../src/parole-medialist.c:568
+#: ../src/parole-medialist.c:360
+#, c-format
+msgid "Chapter %i"
+msgstr "Capitolo %i"
+
+#: ../src/parole-medialist.c:630
 msgid "Permission denied"
 msgstr "Permesso negato"
 
-#: ../src/parole-medialist.c:570
+#: ../src/parole-medialist.c:632
 msgid "Error saving playlist file"
 msgstr "Errore nel salvataggio del file della scaletta"
 
-#: ../src/parole-medialist.c:582
+#: ../src/parole-medialist.c:644
 msgid "Unknown playlist format"
 msgstr "Formato scaletta sconosciuto"
 
-#: ../src/parole-medialist.c:583
+#: ../src/parole-medialist.c:645
 msgid "Please chooser a supported playlist format"
 msgstr "Selezionare un formato di scaletta supportato"
 
-#: ../src/parole-medialist.c:635 ../src/parole-plugins-manager.c:349
+#: ../src/parole-medialist.c:697 ../src/parole-plugins-manager.c:349
 #: ../src/plugins/properties/stream-properties-provider.c:140
 #: ../src/plugins/properties/stream-properties-provider.c:141
 #: ../src/plugins/properties/stream-properties-provider.c:142
@@ -526,88 +576,102 @@ msgstr "Selezionare un formato di scaletta supportato"
 msgid "Unknown"
 msgstr "Sconosciuto"
 
-#: ../src/parole-medialist.c:710 ../src/parole-player.c:2750
+#: ../src/parole-medialist.c:772 ../src/parole-player.c:2973
 msgid "Playlist"
 msgstr "Scaletta"
 
-#: ../src/parole-medialist.c:717
+#: ../src/parole-medialist.c:779
 msgid "M3U Playlists"
 msgstr "Scaletta M3U"
 
-#: ../src/parole-medialist.c:725
+#: ../src/parole-medialist.c:787
 msgid "PLS Playlists"
 msgstr "Scaletta PLS"
 
-#: ../src/parole-medialist.c:733
+#: ../src/parole-medialist.c:795
 msgid "Advanced Stream Redirector"
 msgstr "Redirettore avanzato di flusso"
 
-#: ../src/parole-medialist.c:741
+#: ../src/parole-medialist.c:803
 msgid "Shareable Playlist"
 msgstr "Scaletta condivisibile"
 
 #. Clear
-#: ../src/parole-medialist.c:988
+#: ../src/parole-medialist.c:1050
 msgid "Open Containing Folder"
 msgstr "Apri cartella"
 
-#: ../src/parole-medialist.c:1408
+#: ../src/parole-medialist.c:1593
 msgid "Media list"
 msgstr "Elenco contenuti"
 
-#: ../src/parole-player.c:486
+#: ../src/parole-player.c:491
 msgid "Open ISO image"
 msgstr "Apri immagine ISO"
 
-#: ../src/parole-player.c:503
+#: ../src/parole-player.c:508
 msgid "CD image"
 msgstr "Immagine CD"
 
-#: ../src/parole-player.c:503
+#: ../src/parole-player.c:508
 msgid "DVD image"
 msgstr "Immagine DVD"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:871
+#: ../src/parole-player.c:892
 msgid "Select Subtitle File"
 msgstr "Selezione file dei sottotitoli"
 
-#: ../src/parole-player.c:887
+#: ../src/parole-player.c:908
 msgid "Subtitle Files"
 msgstr "File sottotitoli"
 
-#: ../src/parole-player.c:1067 ../src/parole-player.c:1190
+#: ../src/parole-player.c:1087 ../src/parole-player.c:1095
+msgid "Clear Recent Items"
+msgstr "Elimina elementi recenti"
+
+#: ../src/parole-player.c:1089
+msgid ""
+"Are you sure you wish to clear your recent items history?  This cannot be "
+"undone."
+msgstr "Cancellare veramente l'elenco degli elementi recenti? l'operazione non può essere annullata"
+
+#: ../src/parole-player.c:1206 ../src/parole-player.c:1335
 msgid "Media stream is not seekable"
 msgstr "Il contenuto in streaming non è raggiungibile"
 
-#: ../src/parole-player.c:1559
+#: ../src/parole-player.c:1658
 msgid "GStreamer backend error"
 msgstr "Errore del backend di GStreamer"
 
-#: ../src/parole-player.c:1590
+#: ../src/parole-player.c:1688
 msgid "Unknown Song"
 msgstr "Brano sconosciuto"
 
-#: ../src/parole-player.c:1596 ../src/parole-player.c:1599
-#: ../src/parole-player.c:1605
+#: ../src/parole-player.c:1693 ../src/parole-player.c:1695
+#: ../src/parole-player.c:1701
 msgid "on"
 msgstr "in"
 
-#: ../src/parole-player.c:1605
+#: ../src/parole-player.c:1701
 msgid "Unknown Album"
 msgstr "Album sconosciuto"
 
-#: ../src/parole-player.c:1613 ../src/parole-player.c:1618
+#: ../src/parole-player.c:1708 ../src/parole-player.c:1712
 msgid "by"
 msgstr "di"
 
-#: ../src/parole-player.c:1618
+#: ../src/parole-player.c:1712
 msgid "Unknown Artist"
 msgstr "Artista sconosciuto"
 
-#: ../src/parole-player.c:1653
+#: ../src/parole-player.c:1747
 msgid "Buffering"
 msgstr "Buffering"
+
+#: ../src/parole-player.c:2856
+msgid "Clear recent items..."
+msgstr "Elimina elementi recenti..."
 
 #: ../src/parole-about.c:74
 msgid "translator-credits"
@@ -617,7 +681,7 @@ msgstr "Cristian Marchi, <cri.penta@gmail.com> 2012"
 msgid "Visit Parole website"
 msgstr "Visita il sito di Parole"
 
-#: ../src/parole-disc.c:270 ../src/parole-disc.c:331
+#: ../src/parole-disc.c:113 ../src/parole-disc.c:373
 msgid "Play Disc"
 msgstr "Riproduci disco"
 
@@ -762,10 +826,6 @@ msgstr "Occidentale"
 msgid "Vietnamese"
 msgstr "Vietnamita"
 
-#: ../src/parole-open-location.c:210
-msgid "Clear History"
-msgstr "Svuota cronologia"
-
 #: ../src/parole-plugins-manager.c:388 ../src/parole-plugins-manager.c:389
 msgid "No installed plugins found on this system"
 msgstr "Non sono installati plugin in questo sistema"
@@ -774,15 +834,15 @@ msgstr "Non sono installati plugin in questo sistema"
 msgid "Video"
 msgstr "Video"
 
-#: ../src/misc/parole-filters.c:115
+#: ../src/misc/parole-filters.c:115 ../src/misc/parole-filters.c:133
 msgid "Audio and video"
 msgstr "Audio e video"
 
-#: ../src/misc/parole-filters.c:144
+#: ../src/misc/parole-filters.c:162 ../src/misc/parole-filters.c:178
 msgid "All supported files"
 msgstr "Tutti i file supportati"
 
-#: ../src/misc/parole-filters.c:171
+#: ../src/misc/parole-filters.c:205
 msgid "Playlist files"
 msgstr "File della scaletta"
 
@@ -880,6 +940,18 @@ msgstr ""
 msgid "Power Manager Plugin"
 msgstr "Plugin del gestore dell'energia"
 
+#~ msgid "<b><big>Song Title</big></b>"
+#~ msgstr "<b><big>Titolo brano</big></b>"
+
+#~ msgid "<big>by Song Artist</big>"
+#~ msgstr "<big>per artista</big>"
+
+#~ msgid "Open _location"
+#~ msgstr "Apri p_osizione"
+
+#~ msgid "Please enter a network URL:"
+#~ msgstr "Inserire un URL:"
+
 #~ msgid "Media Player plugins"
 #~ msgstr "Plugin del media player"
 
@@ -913,14 +985,8 @@ msgstr "Plugin del gestore dell'energia"
 #~ msgid "<b>Subtitles</b>"
 #~ msgstr "<b>Sottotitoli</b>"
 
-#~ msgid "Chapter Menu"
-#~ msgstr "Menu dei capitoli"
-
 #~ msgid "DVD"
 #~ msgstr "DVD"
-
-#~ msgid "DVD Menu"
-#~ msgstr "Menu del DVD"
 
 #~ msgid "Next Chapter"
 #~ msgstr "Capitolo successivo"
