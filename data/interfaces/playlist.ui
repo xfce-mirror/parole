@@ -92,21 +92,101 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkToggleButton" id="dvd_menu_button">
+      <object class="GtkNotebook" id="playlist_notebook">
+        <property name="visible">True</property>
         <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="no_show_all">True</property>
-        <property name="use_action_appearance">False</property>
+        <property name="tab_pos">bottom</property>
+        <property name="show_tabs">False</property>
+        <property name="show_border">False</property>
         <child>
-          <object class="GtkHBox" id="hbox1">
+          <object class="GtkScrolledWindow" id="scrolledwindow1">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hscrollbar_policy">never</property>
+            <property name="vscrollbar_policy">automatic</property>
+            <property name="window_placement_set">True</property>
+            <property name="shadow_type">in</property>
+            <child>
+              <object class="GtkTreeView" id="media-list">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="headers_visible">False</property>
+                <property name="rules_hint">True</property>
+                <signal name="drag-data-received" handler="parole_media_list_drag_data_received_cb" swapped="no"/>
+                <signal name="key-press-event" handler="parole_media_list_key_press" swapped="no"/>
+                <signal name="row-activated" handler="parole_media_list_row_activated_cb" swapped="no"/>
+                <signal name="button-release-event" handler="parole_media_list_button_release_event" swapped="no"/>
+                <signal name="query-tooltip" handler="parole_media_list_query_tooltip" swapped="no"/>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child type="tab">
+          <object class="GtkLabel" id="label1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="spacing">3</property>
+            <property name="label" translatable="yes">Playlist</property>
+          </object>
+          <packing>
+            <property name="tab_fill">False</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkVBox" id="vbox1">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
             <child>
-              <object class="GtkImage" id="image_disc">
+              <object class="GtkToggleButton" id="dvd_menu_button">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="icon_name">drive-optical</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_action_appearance">False</property>
+                <child>
+                  <object class="GtkHBox" id="hbox1">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="spacing">3</property>
+                    <child>
+                      <object class="GtkImage" id="image_disc">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="icon_name">drive-optical</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="dvd_label">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="xalign">0</property>
+                        <property name="label" translatable="yes">DVD Name</property>
+                        <property name="ellipsize">end</property>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkArrow" id="arrow1">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="arrow_type">down</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="pack_type">end</property>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -115,12 +195,22 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="dvd_label">
+              <object class="GtkScrolledWindow" id="scrolledwindow2">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="xalign">0</property>
-                <property name="label" translatable="yes">DVD Name</property>
-                <property name="ellipsize">end</property>
+                <property name="can_focus">True</property>
+                <property name="hscrollbar_policy">never</property>
+                <property name="vscrollbar_policy">automatic</property>
+                <property name="window_placement_set">True</property>
+                <property name="shadow_type">in</property>
+                <child>
+                  <object class="GtkTreeView" id="disc-list">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="headers_visible">False</property>
+                    <property name="rules_hint">True</property>
+                    <signal name="row-activated" handler="parole_media_list_row_activated_cb" swapped="no"/>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -128,54 +218,27 @@
                 <property name="position">1</property>
               </packing>
             </child>
-            <child>
-              <object class="GtkArrow" id="arrow1">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="arrow_type">down</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="pack_type">end</property>
-                <property name="position">2</property>
-              </packing>
-            </child>
           </object>
+          <packing>
+            <property name="position">1</property>
+          </packing>
         </child>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">0</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkScrolledWindow" id="scrolledwindow1">
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="hscrollbar_policy">never</property>
-        <property name="vscrollbar_policy">automatic</property>
-        <property name="window_placement_set">True</property>
-        <property name="shadow_type">in</property>
-        <child>
-          <object class="GtkTreeView" id="media-list">
+        <child type="tab">
+          <object class="GtkLabel" id="label2">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="headers_visible">False</property>
-            <property name="rules_hint">True</property>
-            <signal name="drag-data-received" handler="parole_media_list_drag_data_received_cb" swapped="no"/>
-            <signal name="key-press-event" handler="parole_media_list_key_press" swapped="no"/>
-            <signal name="row-activated" handler="parole_media_list_row_activated_cb" swapped="no"/>
-            <signal name="button-release-event" handler="parole_media_list_button_release_event" swapped="no"/>
-            <signal name="query-tooltip" handler="parole_media_list_query_tooltip" swapped="no"/>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Disc Playlist</property>
           </object>
+          <packing>
+            <property name="position">1</property>
+            <property name="tab_fill">False</property>
+          </packing>
         </child>
       </object>
       <packing>
         <property name="expand">True</property>
         <property name="fill">True</property>
-        <property name="position">1</property>
+        <property name="position">0</property>
       </packing>
     </child>
     <child>
@@ -286,7 +349,7 @@
         <property name="expand">False</property>
         <property name="fill">False</property>
         <property name="padding">2</property>
-        <property name="position">2</property>
+        <property name="position">1</property>
       </packing>
     </child>
   </object>

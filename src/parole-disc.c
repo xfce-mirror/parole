@@ -62,7 +62,6 @@ struct ParoleDiscPrivate
 enum
 {
     DISC_SELECTED,
-    DVD_ENABLED,
     LABEL_CHANGED,
     LAST_SIGNAL
 };
@@ -525,15 +524,6 @@ parole_disc_class_init (ParoleDiscClass *klass)
 		      _gmarshal_VOID__STRING_STRING,
                       G_TYPE_NONE, 2, 
 		      G_TYPE_STRING, G_TYPE_STRING);
-		      
-    signals[DVD_ENABLED] = 
-        g_signal_new ("dvd-enabled",
-                      PAROLE_TYPE_DISC,
-                      G_SIGNAL_RUN_LAST,
-                      G_STRUCT_OFFSET (ParoleDiscClass, dvd_enabled),
-                      NULL, NULL,
-                      g_cclosure_marshal_VOID__BOOLEAN,
-                      G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
 
     signals[LABEL_CHANGED] = 
         g_signal_new ("label-changed",

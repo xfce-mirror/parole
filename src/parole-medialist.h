@@ -39,6 +39,12 @@ enum
     COL_NUMBERS
 };
 
+enum
+{
+    PAROLE_MEDIA_LIST_PLAYLIST_VIEW_STANDARD,
+    PAROLE_MEDIA_LIST_PLAYLIST_VIEW_DISC
+};
+
 typedef struct ParoleMediaListPrivate ParoleMediaListPrivate;
 
 typedef struct
@@ -82,6 +88,9 @@ GtkWidget       		*parole_media_list_get              (void);
 
 void				 parole_media_list_load             (ParoleMediaList *list);
 
+void    parole_media_list_set_playlist_view(ParoleMediaList *list, gint view);
+
+void    parole_media_list_clear_disc_list (ParoleMediaList *list);
 
 void	parole_media_list_clear_list 	  (ParoleMediaList *list);
 
@@ -151,8 +160,6 @@ void 				 parole_media_list_set_shuffle_toggled		(ParoleMediaList *list,
 																
 void parole_media_list_add_dvd (ParoleMediaList *list, gchar *dvd_name);
 
-							
-void parole_media_list_set_dvd_menu_visible(ParoleMediaList *list, gboolean visible);
 
 G_END_DECLS
 
