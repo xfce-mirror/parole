@@ -1093,6 +1093,7 @@ void
 parole_media_list_set_playlist_view(ParoleMediaList *list, gint view)
 {
     gtk_notebook_set_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook), view);
+    gtk_widget_set_sensitive(list->priv->playlist_controls, !view);
 }
 
 void
