@@ -1160,6 +1160,8 @@ parole_player_media_list_repeat_toggled_cb (ParoleMediaList *list, gboolean repe
 static void
 parole_player_media_list_show_playlist_cb (ParoleMediaList *list, gboolean show_playlist, ParolePlayer *player)
 {
+    parole_media_list_set_playlist_view(player->priv->list, 
+                    player->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD);
     parole_player_set_playlist_visible (player, show_playlist);
 }
 
