@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-10 18:06+0000\n"
+"POT-Creation-Date: 2012-12-19 16:06+0000\n"
 "PO-Revision-Date: 2010-02-19 09:04+0100\n"
 "Last-Translator: Cristian Marchi <cri.penta@gmail.com>\n"
 "Language-Team: Italian Translation Team <xfce-it-translators@googlegroups.com>\n"
@@ -42,13 +42,17 @@ msgstr "4:3 (TV)"
 msgid ""
 "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
 "Artist</span></big>"
-msgstr "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Artista sconosciuto</span></big>"
+msgstr ""
+"<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Artista "
+"sconosciuto</span></big>"
 
 #: ../data/interfaces/parole.ui.h:5
 msgid ""
 "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
 "Album</span></big>"
-msgstr "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Album sconosciuto</span></big>"
+msgstr ""
+"<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Album "
+"sconosciuto</span></big>"
 
 #: ../data/interfaces/parole.ui.h:6
 msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
@@ -71,12 +75,12 @@ msgstr "Auto"
 msgid "Buffering (0%)"
 msgstr "Buffering (0%)"
 
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:707
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:708
 msgid "Empty"
 msgstr "Vuota"
 
-#: ../data/interfaces/parole.ui.h:13 ../src/parole-disc.c:111
-#: ../src/parole-disc.c:157
+#: ../data/interfaces/parole.ui.h:13 ../src/parole-disc.c:110
+#: ../src/parole-disc.c:156
 msgid "Insert Disc"
 msgstr "Inserire disco"
 
@@ -201,27 +205,36 @@ msgid "DVD Name"
 msgstr "Nome DVD"
 
 #: ../data/interfaces/playlist.ui.h:7
+msgid "Disc Playlist"
+msgstr "Scaletta disco"
+
+#: ../data/interfaces/playlist.ui.h:8
 msgid "Play opened files"
 msgstr "Avvia la riproduzione dei file aperti"
 
-#: ../data/interfaces/playlist.ui.h:8
+#: ../data/interfaces/playlist.ui.h:9 ../src/parole-medialist.c:785
+#: ../src/parole-player.c:2960
+msgid "Playlist"
+msgstr "Scaletta"
+
+#: ../data/interfaces/playlist.ui.h:10
 #: ../data/interfaces/parole-settings.ui.h:17
 msgid "Remember playlist"
 msgstr "Ricorda scaletta"
 
-#: ../data/interfaces/playlist.ui.h:9
+#: ../data/interfaces/playlist.ui.h:11
 msgid "Repeat"
 msgstr "Ripeti"
 
-#: ../data/interfaces/playlist.ui.h:10
+#: ../data/interfaces/playlist.ui.h:12
 msgid "Replace playlist when opening files"
 msgstr "Sostituisci la scaletta all'apertura dei file"
 
-#: ../data/interfaces/playlist.ui.h:11
+#: ../data/interfaces/playlist.ui.h:13
 msgid "Shuffle"
 msgstr "Casuale"
 
-#: ../data/interfaces/playlist.ui.h:12
+#: ../data/interfaces/playlist.ui.h:14
 msgid "Title Menu"
 msgstr "Menu titolo"
 
@@ -382,7 +395,7 @@ msgstr "Messaggio"
 msgid "Error"
 msgstr "Errore"
 
-#: ../src/gst/parole-gst.c:1239 ../src/parole-medialist.c:344
+#: ../src/gst/parole-gst.c:1239 ../src/parole-medialist.c:357
 #, c-format
 msgid "Track %i"
 msgstr "Traccia %i"
@@ -543,32 +556,32 @@ msgstr ""
 msgid "Supported files"
 msgstr "File supportati"
 
-#: ../src/parole-mediachooser.c:217 ../src/parole-player.c:920
+#: ../src/parole-mediachooser.c:217 ../src/parole-player.c:921
 msgid "All files"
 msgstr "Tutti i file"
 
-#: ../src/parole-medialist.c:360
+#: ../src/parole-medialist.c:373
 #, c-format
 msgid "Chapter %i"
 msgstr "Capitolo %i"
 
-#: ../src/parole-medialist.c:630
+#: ../src/parole-medialist.c:643
 msgid "Permission denied"
 msgstr "Permesso negato"
 
-#: ../src/parole-medialist.c:632
+#: ../src/parole-medialist.c:645
 msgid "Error saving playlist file"
 msgstr "Errore nel salvataggio del file della scaletta"
 
-#: ../src/parole-medialist.c:644
+#: ../src/parole-medialist.c:657
 msgid "Unknown playlist format"
 msgstr "Formato scaletta sconosciuto"
 
-#: ../src/parole-medialist.c:645
+#: ../src/parole-medialist.c:658
 msgid "Please chooser a supported playlist format"
 msgstr "Selezionare un formato di scaletta supportato"
 
-#: ../src/parole-medialist.c:697 ../src/parole-plugins-manager.c:349
+#: ../src/parole-medialist.c:710 ../src/parole-plugins-manager.c:349
 #: ../src/plugins/properties/stream-properties-provider.c:140
 #: ../src/plugins/properties/stream-properties-provider.c:141
 #: ../src/plugins/properties/stream-properties-provider.c:142
@@ -576,34 +589,34 @@ msgstr "Selezionare un formato di scaletta supportato"
 msgid "Unknown"
 msgstr "Sconosciuto"
 
-#: ../src/parole-medialist.c:772 ../src/parole-player.c:2973
-msgid "Playlist"
-msgstr "Scaletta"
-
-#: ../src/parole-medialist.c:779
+#: ../src/parole-medialist.c:792
 msgid "M3U Playlists"
 msgstr "Scaletta M3U"
 
-#: ../src/parole-medialist.c:787
+#: ../src/parole-medialist.c:800
 msgid "PLS Playlists"
 msgstr "Scaletta PLS"
 
-#: ../src/parole-medialist.c:795
+#: ../src/parole-medialist.c:808
 msgid "Advanced Stream Redirector"
 msgstr "Redirettore avanzato di flusso"
 
-#: ../src/parole-medialist.c:803
+#: ../src/parole-medialist.c:816
 msgid "Shareable Playlist"
 msgstr "Scaletta condivisibile"
 
 #. Clear
-#: ../src/parole-medialist.c:1050
+#: ../src/parole-medialist.c:1067
 msgid "Open Containing Folder"
 msgstr "Apri cartella"
 
-#: ../src/parole-medialist.c:1593
+#: ../src/parole-medialist.c:1638
 msgid "Media list"
 msgstr "Elenco contenuti"
+
+#: ../src/parole-medialist.c:1639
+msgid "Chapter list"
+msgstr "Elenco capitolo"
 
 #: ../src/parole-player.c:491
 msgid "Open ISO image"
@@ -618,58 +631,60 @@ msgid "DVD image"
 msgstr "Immagine DVD"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:892
+#: ../src/parole-player.c:893
 msgid "Select Subtitle File"
 msgstr "Selezione file dei sottotitoli"
 
-#: ../src/parole-player.c:908
+#: ../src/parole-player.c:909
 msgid "Subtitle Files"
 msgstr "File sottotitoli"
 
-#: ../src/parole-player.c:1087 ../src/parole-player.c:1095
+#: ../src/parole-player.c:1075 ../src/parole-player.c:1083
 msgid "Clear Recent Items"
 msgstr "Elimina elementi recenti"
 
-#: ../src/parole-player.c:1089
+#: ../src/parole-player.c:1077
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
-msgstr "Cancellare veramente l'elenco degli elementi recenti? l'operazione non può essere annullata"
+msgstr ""
+"Cancellare veramente l'elenco degli elementi recenti? l'operazione non può "
+"essere annullata"
 
-#: ../src/parole-player.c:1206 ../src/parole-player.c:1335
+#: ../src/parole-player.c:1196 ../src/parole-player.c:1325
 msgid "Media stream is not seekable"
 msgstr "Il contenuto in streaming non è raggiungibile"
 
-#: ../src/parole-player.c:1658
+#: ../src/parole-player.c:1648
 msgid "GStreamer backend error"
 msgstr "Errore del backend di GStreamer"
 
-#: ../src/parole-player.c:1688
+#: ../src/parole-player.c:1678
 msgid "Unknown Song"
 msgstr "Brano sconosciuto"
 
-#: ../src/parole-player.c:1693 ../src/parole-player.c:1695
-#: ../src/parole-player.c:1701
+#: ../src/parole-player.c:1683 ../src/parole-player.c:1685
+#: ../src/parole-player.c:1691
 msgid "on"
 msgstr "in"
 
-#: ../src/parole-player.c:1701
+#: ../src/parole-player.c:1691
 msgid "Unknown Album"
 msgstr "Album sconosciuto"
 
-#: ../src/parole-player.c:1708 ../src/parole-player.c:1712
+#: ../src/parole-player.c:1698 ../src/parole-player.c:1702
 msgid "by"
 msgstr "di"
 
-#: ../src/parole-player.c:1712
+#: ../src/parole-player.c:1702
 msgid "Unknown Artist"
 msgstr "Artista sconosciuto"
 
-#: ../src/parole-player.c:1747
+#: ../src/parole-player.c:1737
 msgid "Buffering"
 msgstr "Buffering"
 
-#: ../src/parole-player.c:2856
+#: ../src/parole-player.c:2843
 msgid "Clear recent items..."
 msgstr "Elimina elementi recenti..."
 
@@ -681,7 +696,7 @@ msgstr "Cristian Marchi, <cri.penta@gmail.com> 2012"
 msgid "Visit Parole website"
 msgstr "Visita il sito di Parole"
 
-#: ../src/parole-disc.c:113 ../src/parole-disc.c:373
+#: ../src/parole-disc.c:112 ../src/parole-disc.c:372
 msgid "Play Disc"
 msgstr "Riproduci disco"
 
