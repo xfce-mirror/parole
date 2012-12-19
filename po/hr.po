@@ -3,19 +3,19 @@
 # This file is distributed under the same license as the parole package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # Ivica Kolić <ikoli@yahoo.com>, 2011.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-13 04:57+0000\n"
+"POT-Creation-Date: 2012-12-17 21:18+0000\n"
 "PO-Revision-Date: 2012-12-13 11:03+0100\n"
 "Last-Translator: Ivica Kolić <ikoli@yahoo.com>\n"
 "Language-Team: Hrvatski <>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Language: Croatian\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -34,19 +34,22 @@ msgid "4:3 (TV)"
 msgstr "4:3 (TV)"
 
 #: ../data/interfaces/parole.ui.h:4
-msgid "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown Artist</span></big>"
+msgid ""
+"<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
+"Artist</span></big>"
 msgstr ""
 
 #: ../data/interfaces/parole.ui.h:5
-msgid "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown Album</span></big>"
+msgid ""
+"<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
+"Album</span></big>"
 msgstr ""
 
 #: ../data/interfaces/parole.ui.h:6
 msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
 msgstr ""
 
-#: ../data/interfaces/parole.ui.h:7
-#: ../src/misc/parole-filters.c:64
+#: ../data/interfaces/parole.ui.h:7 ../src/misc/parole-filters.c:64
 msgid "Audio"
 msgstr "Audio"
 
@@ -63,14 +66,12 @@ msgstr "Auto"
 msgid "Buffering (0%)"
 msgstr ""
 
-#: ../data/interfaces/parole.ui.h:12
-#: ../src/parole-player.c:707
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:708
 msgid "Empty"
 msgstr "Prazno"
 
-#: ../data/interfaces/parole.ui.h:13
-#: ../src/parole-disc.c:111
-#: ../src/parole-disc.c:157
+#: ../data/interfaces/parole.ui.h:13 ../src/parole-disc.c:110
+#: ../src/parole-disc.c:156
 msgid "Insert Disc"
 msgstr "Unesi disk"
 
@@ -94,8 +95,7 @@ msgstr ""
 msgid "Open _Location"
 msgstr "Otvori _lokaciju"
 
-#: ../data/interfaces/parole.ui.h:19
-#: ../src/parole-about.c:68
+#: ../data/interfaces/parole.ui.h:19 ../src/parole-about.c:68
 msgid "Parole Media Player"
 msgstr ""
 
@@ -196,27 +196,36 @@ msgid "DVD Name"
 msgstr "DVD ime"
 
 #: ../data/interfaces/playlist.ui.h:7
+msgid "Disc Playlist"
+msgstr "Lista izvođenja diska"
+
+#: ../data/interfaces/playlist.ui.h:8
 msgid "Play opened files"
 msgstr "Izvodi otvorene datoteke"
 
-#: ../data/interfaces/playlist.ui.h:8
+#: ../data/interfaces/playlist.ui.h:9 ../src/parole-medialist.c:785
+#: ../src/parole-player.c:2960
+msgid "Playlist"
+msgstr "Lista izvođenja"
+
+#: ../data/interfaces/playlist.ui.h:10
 #: ../data/interfaces/parole-settings.ui.h:17
 msgid "Remember playlist"
 msgstr "Zapamti listu izvođenja"
 
-#: ../data/interfaces/playlist.ui.h:9
+#: ../data/interfaces/playlist.ui.h:11
 msgid "Repeat"
 msgstr "Ponovi"
 
-#: ../data/interfaces/playlist.ui.h:10
+#: ../data/interfaces/playlist.ui.h:12
 msgid "Replace playlist when opening files"
 msgstr "Zamijeni listu izvođenja kada otvorite datoteke"
 
-#: ../data/interfaces/playlist.ui.h:11
+#: ../data/interfaces/playlist.ui.h:13
 msgid "Shuffle"
 msgstr ""
 
-#: ../data/interfaces/playlist.ui.h:12
+#: ../data/interfaces/playlist.ui.h:14
 msgid "Title Menu"
 msgstr "Izbornik naslova"
 
@@ -356,8 +365,7 @@ msgstr "Odaberi tip datoteke ( po proširenju)"
 msgid "<big><b>Open Network Location</b></big>"
 msgstr ""
 
-#: ../data/interfaces/open-location.ui.h:2
-#: ../src/parole-open-location.c:192
+#: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:192
 msgid "Clear History"
 msgstr "Očisti povijest"
 
@@ -377,8 +385,7 @@ msgstr "Poruka"
 msgid "Error"
 msgstr "Greška"
 
-#: ../src/gst/parole-gst.c:1239
-#: ../src/parole-medialist.c:344
+#: ../src/gst/parole-gst.c:1239 ../src/parole-medialist.c:357
 #, c-format
 msgid "Track %i"
 msgstr "Zapis %i"
@@ -408,21 +415,25 @@ msgid "The stream is taking too much time to load"
 msgstr ""
 
 #: ../src/gst/parole-gst.c:2030
-msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
-msgstr "Nije moguće učitati playbin GStreamer priključak,provjerite vašu GStreamer instalaciju"
+msgid ""
+"Unable to load playbin GStreamer plugin, check your GStreamer installation"
+msgstr ""
+"Nije moguće učitati playbin GStreamer priključak,provjerite vašu GStreamer "
+"instalaciju"
 
 #: ../src/gst/parole-gst.c:2054
-msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
-msgstr "NIje moguće učitati video GStreamer priključak, provjerite vašu GStreamer instalaciju"
+msgid ""
+"Unable to load video GStreamer plugin, check your GStreamer installation"
+msgstr ""
+"NIje moguće učitati video GStreamer priključak, provjerite vašu GStreamer "
+"instalaciju"
 
-#: ../src/gst/parole-gst.c:2646
-#: ../src/gst/parole-gst.c:2650
+#: ../src/gst/parole-gst.c:2646 ../src/gst/parole-gst.c:2650
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Audio zapis #%d"
 
-#: ../src/gst/parole-gst.c:2684
-#: ../src/gst/parole-gst.c:2688
+#: ../src/gst/parole-gst.c:2684 ../src/gst/parole-gst.c:2688
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Podnapis #%d"
@@ -525,34 +536,32 @@ msgstr ""
 msgid "Supported files"
 msgstr "Podržane datoteke"
 
-#: ../src/parole-mediachooser.c:217
-#: ../src/parole-player.c:920
+#: ../src/parole-mediachooser.c:217 ../src/parole-player.c:921
 msgid "All files"
 msgstr "Sve datoteke"
 
-#: ../src/parole-medialist.c:360
+#: ../src/parole-medialist.c:373
 #, c-format
 msgid "Chapter %i"
 msgstr "Poglavlje %i"
 
-#: ../src/parole-medialist.c:630
+#: ../src/parole-medialist.c:643
 msgid "Permission denied"
 msgstr "Dozvola odbijena"
 
-#: ../src/parole-medialist.c:632
+#: ../src/parole-medialist.c:645
 msgid "Error saving playlist file"
 msgstr "Greška pri spremanju liste izvođenja"
 
-#: ../src/parole-medialist.c:644
+#: ../src/parole-medialist.c:657
 msgid "Unknown playlist format"
 msgstr "Nepoznati format liste izvođenja"
 
-#: ../src/parole-medialist.c:645
+#: ../src/parole-medialist.c:658
 msgid "Please chooser a supported playlist format"
 msgstr ""
 
-#: ../src/parole-medialist.c:697
-#: ../src/parole-plugins-manager.c:349
+#: ../src/parole-medialist.c:710 ../src/parole-plugins-manager.c:349
 #: ../src/plugins/properties/stream-properties-provider.c:140
 #: ../src/plugins/properties/stream-properties-provider.c:141
 #: ../src/plugins/properties/stream-properties-provider.c:142
@@ -560,35 +569,34 @@ msgstr ""
 msgid "Unknown"
 msgstr "Nepoznato"
 
-#: ../src/parole-medialist.c:772
-#: ../src/parole-player.c:2973
-msgid "Playlist"
-msgstr "Lista izvođenja"
-
-#: ../src/parole-medialist.c:779
+#: ../src/parole-medialist.c:792
 msgid "M3U Playlists"
 msgstr "M3U liste izvođenja"
 
-#: ../src/parole-medialist.c:787
+#: ../src/parole-medialist.c:800
 msgid "PLS Playlists"
 msgstr "PLS liste izvođenja"
 
-#: ../src/parole-medialist.c:795
+#: ../src/parole-medialist.c:808
 msgid "Advanced Stream Redirector"
 msgstr ""
 
-#: ../src/parole-medialist.c:803
+#: ../src/parole-medialist.c:816
 msgid "Shareable Playlist"
 msgstr "Djeljiva lista izvođenja"
 
 #. Clear
-#: ../src/parole-medialist.c:1050
+#: ../src/parole-medialist.c:1067
 msgid "Open Containing Folder"
 msgstr ""
 
-#: ../src/parole-medialist.c:1593
+#: ../src/parole-medialist.c:1638
 msgid "Media list"
 msgstr ""
+
+#: ../src/parole-medialist.c:1639
+msgid "Chapter list"
+msgstr "Lista poglavlja"
 
 #: ../src/parole-player.c:491
 msgid "Open ISO image"
@@ -603,60 +611,58 @@ msgid "DVD image"
 msgstr "DVD slika"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:892
+#: ../src/parole-player.c:893
 msgid "Select Subtitle File"
 msgstr "Odaberi datoteku podnapisa..."
 
-#: ../src/parole-player.c:908
+#: ../src/parole-player.c:909
 msgid "Subtitle Files"
 msgstr "Datoteke podnapisa"
 
-#: ../src/parole-player.c:1087
-#: ../src/parole-player.c:1095
+#: ../src/parole-player.c:1075 ../src/parole-player.c:1083
 msgid "Clear Recent Items"
 msgstr "Očisti nedavne stavke"
 
-#: ../src/parole-player.c:1089
-msgid "Are you sure you wish to clear your recent items history?  This cannot be undone."
+#: ../src/parole-player.c:1077
+msgid ""
+"Are you sure you wish to clear your recent items history?  This cannot be "
+"undone."
 msgstr ""
 
-#: ../src/parole-player.c:1206
-#: ../src/parole-player.c:1335
+#: ../src/parole-player.c:1196 ../src/parole-player.c:1325
 msgid "Media stream is not seekable"
 msgstr ""
 
-#: ../src/parole-player.c:1658
+#: ../src/parole-player.c:1648
 msgid "GStreamer backend error"
 msgstr ""
 
-#: ../src/parole-player.c:1688
+#: ../src/parole-player.c:1678
 msgid "Unknown Song"
 msgstr "Nepoznata pjesma"
 
-#: ../src/parole-player.c:1693
-#: ../src/parole-player.c:1695
-#: ../src/parole-player.c:1701
+#: ../src/parole-player.c:1683 ../src/parole-player.c:1685
+#: ../src/parole-player.c:1691
 msgid "on"
 msgstr ""
 
-#: ../src/parole-player.c:1701
+#: ../src/parole-player.c:1691
 msgid "Unknown Album"
 msgstr "Nepoznati album"
 
-#: ../src/parole-player.c:1708
-#: ../src/parole-player.c:1712
+#: ../src/parole-player.c:1698 ../src/parole-player.c:1702
 msgid "by"
 msgstr ""
 
-#: ../src/parole-player.c:1712
+#: ../src/parole-player.c:1702
 msgid "Unknown Artist"
 msgstr "Nepoznati umjetnik"
 
-#: ../src/parole-player.c:1747
+#: ../src/parole-player.c:1737
 msgid "Buffering"
 msgstr ""
 
-#: ../src/parole-player.c:2856
+#: ../src/parole-player.c:2843
 msgid "Clear recent items..."
 msgstr ""
 
@@ -668,8 +674,7 @@ msgstr "Ivica Kolić <ikoli@yahoo.com>"
 msgid "Visit Parole website"
 msgstr "Posjetite Parole web stranicu"
 
-#: ../src/parole-disc.c:113
-#: ../src/parole-disc.c:373
+#: ../src/parole-disc.c:112 ../src/parole-disc.c:372
 msgid "Play Disc"
 msgstr ""
 
@@ -677,10 +682,8 @@ msgstr ""
 msgid "Current Locale"
 msgstr "Trenutni jezik"
 
-#: ../src/parole-subtitle-encoding.c:168
-#: ../src/parole-subtitle-encoding.c:170
-#: ../src/parole-subtitle-encoding.c:172
-#: ../src/parole-subtitle-encoding.c:174
+#: ../src/parole-subtitle-encoding.c:168 ../src/parole-subtitle-encoding.c:170
+#: ../src/parole-subtitle-encoding.c:172 ../src/parole-subtitle-encoding.c:174
 msgid "Arabic"
 msgstr "Arapski"
 
@@ -688,8 +691,7 @@ msgstr "Arapski"
 msgid "Armenian"
 msgstr "Armenski"
 
-#: ../src/parole-subtitle-encoding.c:180
-#: ../src/parole-subtitle-encoding.c:182
+#: ../src/parole-subtitle-encoding.c:180 ../src/parole-subtitle-encoding.c:182
 #: ../src/parole-subtitle-encoding.c:184
 msgid "Baltic"
 msgstr "Baltički"
@@ -698,22 +700,17 @@ msgstr "Baltički"
 msgid "Celtic"
 msgstr "Keltski"
 
-#: ../src/parole-subtitle-encoding.c:190
-#: ../src/parole-subtitle-encoding.c:192
-#: ../src/parole-subtitle-encoding.c:194
-#: ../src/parole-subtitle-encoding.c:196
+#: ../src/parole-subtitle-encoding.c:190 ../src/parole-subtitle-encoding.c:192
+#: ../src/parole-subtitle-encoding.c:194 ../src/parole-subtitle-encoding.c:196
 msgid "Central European"
 msgstr "Srednjeeuropski"
 
-#: ../src/parole-subtitle-encoding.c:199
-#: ../src/parole-subtitle-encoding.c:201
-#: ../src/parole-subtitle-encoding.c:203
-#: ../src/parole-subtitle-encoding.c:205
+#: ../src/parole-subtitle-encoding.c:199 ../src/parole-subtitle-encoding.c:201
+#: ../src/parole-subtitle-encoding.c:203 ../src/parole-subtitle-encoding.c:205
 msgid "Chinese Simplified"
 msgstr "Kineski pojednostavljeni"
 
-#: ../src/parole-subtitle-encoding.c:208
-#: ../src/parole-subtitle-encoding.c:210
+#: ../src/parole-subtitle-encoding.c:208 ../src/parole-subtitle-encoding.c:210
 #: ../src/parole-subtitle-encoding.c:212
 msgid "Chinese Traditional"
 msgstr "Kineski tradicionalni"
@@ -722,12 +719,9 @@ msgstr "Kineski tradicionalni"
 msgid "Croatian"
 msgstr "Hrvatski"
 
-#: ../src/parole-subtitle-encoding.c:218
-#: ../src/parole-subtitle-encoding.c:220
-#: ../src/parole-subtitle-encoding.c:222
-#: ../src/parole-subtitle-encoding.c:224
-#: ../src/parole-subtitle-encoding.c:226
-#: ../src/parole-subtitle-encoding.c:228
+#: ../src/parole-subtitle-encoding.c:218 ../src/parole-subtitle-encoding.c:220
+#: ../src/parole-subtitle-encoding.c:222 ../src/parole-subtitle-encoding.c:224
+#: ../src/parole-subtitle-encoding.c:226 ../src/parole-subtitle-encoding.c:228
 msgid "Cyrillic"
 msgstr "Ćirilica"
 
@@ -735,8 +729,7 @@ msgstr "Ćirilica"
 msgid "Cyrillic/Russian"
 msgstr "Ćirilica/Ruski"
 
-#: ../src/parole-subtitle-encoding.c:234
-#: ../src/parole-subtitle-encoding.c:236
+#: ../src/parole-subtitle-encoding.c:234 ../src/parole-subtitle-encoding.c:236
 msgid "Cyrillic/Ukrainian"
 msgstr "Ćirilica/Ukrajinski"
 
@@ -744,8 +737,7 @@ msgstr "Ćirilica/Ukrajinski"
 msgid "Georgian"
 msgstr "Gruzijski"
 
-#: ../src/parole-subtitle-encoding.c:242
-#: ../src/parole-subtitle-encoding.c:244
+#: ../src/parole-subtitle-encoding.c:242 ../src/parole-subtitle-encoding.c:244
 #: ../src/parole-subtitle-encoding.c:246
 msgid "Greek"
 msgstr "Grčki"
@@ -758,10 +750,8 @@ msgstr "Gujarati"
 msgid "Gurmukhi"
 msgstr "Gurmukhi"
 
-#: ../src/parole-subtitle-encoding.c:255
-#: ../src/parole-subtitle-encoding.c:257
-#: ../src/parole-subtitle-encoding.c:259
-#: ../src/parole-subtitle-encoding.c:261
+#: ../src/parole-subtitle-encoding.c:255 ../src/parole-subtitle-encoding.c:257
+#: ../src/parole-subtitle-encoding.c:259 ../src/parole-subtitle-encoding.c:261
 msgid "Hebrew"
 msgstr "Hebrejski"
 
@@ -777,16 +767,13 @@ msgstr "Hindski"
 msgid "Icelandic"
 msgstr "Islandski"
 
-#: ../src/parole-subtitle-encoding.c:273
-#: ../src/parole-subtitle-encoding.c:275
+#: ../src/parole-subtitle-encoding.c:273 ../src/parole-subtitle-encoding.c:275
 #: ../src/parole-subtitle-encoding.c:277
 msgid "Japanese"
 msgstr "Japanski"
 
-#: ../src/parole-subtitle-encoding.c:280
-#: ../src/parole-subtitle-encoding.c:282
-#: ../src/parole-subtitle-encoding.c:284
-#: ../src/parole-subtitle-encoding.c:286
+#: ../src/parole-subtitle-encoding.c:280 ../src/parole-subtitle-encoding.c:282
+#: ../src/parole-subtitle-encoding.c:284 ../src/parole-subtitle-encoding.c:286
 msgid "Korean"
 msgstr "Korejski"
 
@@ -798,8 +785,7 @@ msgstr "Nordijski"
 msgid "Persian"
 msgstr "Perzijski"
 
-#: ../src/parole-subtitle-encoding.c:295
-#: ../src/parole-subtitle-encoding.c:297
+#: ../src/parole-subtitle-encoding.c:295 ../src/parole-subtitle-encoding.c:297
 msgid "Romanian"
 msgstr "Rumunjski"
 
@@ -811,37 +797,29 @@ msgstr "Južnoeuropski"
 msgid "Thai"
 msgstr "Tajlandski"
 
-#: ../src/parole-subtitle-encoding.c:306
-#: ../src/parole-subtitle-encoding.c:308
-#: ../src/parole-subtitle-encoding.c:310
-#: ../src/parole-subtitle-encoding.c:312
+#: ../src/parole-subtitle-encoding.c:306 ../src/parole-subtitle-encoding.c:308
+#: ../src/parole-subtitle-encoding.c:310 ../src/parole-subtitle-encoding.c:312
 msgid "Turkish"
 msgstr "Turski"
 
-#: ../src/parole-subtitle-encoding.c:315
-#: ../src/parole-subtitle-encoding.c:317
-#: ../src/parole-subtitle-encoding.c:319
-#: ../src/parole-subtitle-encoding.c:321
+#: ../src/parole-subtitle-encoding.c:315 ../src/parole-subtitle-encoding.c:317
+#: ../src/parole-subtitle-encoding.c:319 ../src/parole-subtitle-encoding.c:321
 #: ../src/parole-subtitle-encoding.c:323
 msgid "Unicode"
 msgstr ""
 
-#: ../src/parole-subtitle-encoding.c:326
-#: ../src/parole-subtitle-encoding.c:328
-#: ../src/parole-subtitle-encoding.c:330
-#: ../src/parole-subtitle-encoding.c:332
+#: ../src/parole-subtitle-encoding.c:326 ../src/parole-subtitle-encoding.c:328
+#: ../src/parole-subtitle-encoding.c:330 ../src/parole-subtitle-encoding.c:332
 #: ../src/parole-subtitle-encoding.c:334
 msgid "Western"
 msgstr "Zapadni"
 
-#: ../src/parole-subtitle-encoding.c:337
-#: ../src/parole-subtitle-encoding.c:339
+#: ../src/parole-subtitle-encoding.c:337 ../src/parole-subtitle-encoding.c:339
 #: ../src/parole-subtitle-encoding.c:341
 msgid "Vietnamese"
 msgstr "Vijetnamski"
 
-#: ../src/parole-plugins-manager.c:388
-#: ../src/parole-plugins-manager.c:389
+#: ../src/parole-plugins-manager.c:388 ../src/parole-plugins-manager.c:389
 msgid "No installed plugins found on this system"
 msgstr "Nijedan instalirani priključak nije pronađen na ovom sustavu"
 
@@ -849,13 +827,11 @@ msgstr "Nijedan instalirani priključak nije pronađen na ovom sustavu"
 msgid "Video"
 msgstr "Video"
 
-#: ../src/misc/parole-filters.c:115
-#: ../src/misc/parole-filters.c:133
+#: ../src/misc/parole-filters.c:115 ../src/misc/parole-filters.c:133
 msgid "Audio and video"
 msgstr "Audio i video"
 
-#: ../src/misc/parole-filters.c:162
-#: ../src/misc/parole-filters.c:178
+#: ../src/misc/parole-filters.c:162 ../src/misc/parole-filters.c:178
 msgid "All supported files"
 msgstr "Sve podržane datoteke"
 
