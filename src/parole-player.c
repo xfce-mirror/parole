@@ -1489,7 +1489,7 @@ parole_player_reset_saver_changed (ParolePlayer *player, const ParoleStream *str
 		  NULL);
 		  
     if ( !reset_saver )
-	parole_screen_saver_uninhibit (player->priv->screen_saver);
+	parole_screen_saver_uninhibit (player->priv->screen_saver, GTK_WINDOW (player->priv->window));
     else if ( player->priv->state ==  PAROLE_STATE_PLAYING )
     {
 	gboolean has_video;
@@ -1500,11 +1500,11 @@ parole_player_reset_saver_changed (ParolePlayer *player, const ParoleStream *str
 		      
 	if ( has_video )
 	{
-	    parole_screen_saver_inhibit (player->priv->screen_saver);
+	    parole_screen_saver_inhibit (player->priv->screen_saver, GTK_WINDOW (player->priv->window));
 	}
     }
     else
-	parole_screen_saver_uninhibit (player->priv->screen_saver);
+	parole_screen_saver_uninhibit (player->priv->screen_saver, GTK_WINDOW (player->priv->window));
 }
 
 static void
@@ -1646,7 +1646,7 @@ static void
 parole_player_error_cb (ParoleGst *gst, const gchar *error, ParolePlayer *player)
 {
     parole_dialog_error (GTK_WINDOW (player->priv->window), _("GStreamer backend error"), error);
-    parole_screen_saver_uninhibit (player->priv->screen_saver);
+    parole_screen_saver_uninhibit (player->priv->screen_saver, GTK_WINDOW (player->priv->window));
     parole_player_stopped (player);
 }
 

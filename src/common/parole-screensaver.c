@@ -37,23 +37,12 @@
 #define PAROLE_SCREEN_SAVER_GET_PRIVATE(o) \
 (G_TYPE_INSTANCE_GET_PRIVATE ((o), PAROLE_TYPE_SCREENSAVER, ParoleScreenSaverPrivate))
 
-struct ParoleScreenSaverPrivate
-{
-    gulong reset_id;
-};
-
 G_DEFINE_TYPE (ParoleScreenSaver, parole_screen_saver, G_TYPE_OBJECT)
 
 
 static void
 parole_screen_saver_finalize (GObject *object)
 {
-    ParoleScreenSaver *saver;
-
-    saver = PAROLE_SCREEN_SAVER (object);
-    
-    parole_screen_saver_uninhibit (saver);
-
     G_OBJECT_CLASS (parole_screen_saver_parent_class)->finalize (object);
 }
 
@@ -64,22 +53,12 @@ parole_screen_saver_class_init (ParoleScreenSaverClass *klass)
 
     object_class->finalize = parole_screen_saver_finalize;
 
-    g_type_class_add_private (klass, sizeof (ParoleScreenSaverPrivate));
 }
 
 static void
 parole_screen_saver_init (ParoleScreenSaver *saver)
 {
-    saver->priv = PAROLE_SCREEN_SAVER_GET_PRIVATE (saver);
-    
-    saver->priv->reset_id = 0;
-}
-
-static gboolean
-parole_screen_saver_reset_timeout (gpointer data)
-{
-    XResetScreenSaver (GDK_DISPLAY ());
-    return TRUE;
+    return;
 }
 
 ParoleScreenSaver *
@@ -90,24 +69,28 @@ parole_screen_saver_new (void)
     return saver;
 }
 
-void parole_screen_saver_inhibit (ParoleScreenSaver *saver)
+void parole_screen_saver_inhibit (ParoleScreenSaver *saver, GtkWindow *window)
 {
-    g_return_if_fail (PAROLE_IS_SCREENSAVER (saver));
+    gchar *cmd;
     
-    parole_screen_saver_uninhibit (saver);
+    g_return_if_fail (PAROLE_IS_SCREENSAVER (saver));
 
-    saver->priv->reset_id = g_timeout_add_seconds (RESET_SCREENSAVER_TIMEOUT, 
-						   (GSourceFunc) parole_screen_saver_reset_timeout,
-						   NULL);
+    cmd = g_strdup_printf("xdg-screensaver suspend %d", (int)GDK_WINDOW_XID(GDK_WINDOW(GTK_WIDGET(window)->window)));
+    //cmd = g_strdup_printf("xdg-screensaver suspend %d", (int)GDK_WINDOW_XID(GDK_WINDOW( gtk_widget_get_parent_window(GTK_WIDGET(window)) )));
+    system(cmd);
+
+    g_free(cmd);
 }
 
-void parole_screen_saver_uninhibit (ParoleScreenSaver *saver)
+void parole_screen_saver_uninhibit (ParoleScreenSaver *saver, GtkWindow *window)
 {
+    gchar *cmd;
+    
     g_return_if_fail (PAROLE_IS_SCREENSAVER (saver));
     
-    if ( saver->priv->reset_id != 0 )
-    {
-	g_source_remove (saver->priv->reset_id);
-	saver->priv->reset_id = 0;
-    }
+    cmd = g_strdup_printf("xdg-screensaver resume %d", (int)GDK_WINDOW_XID(GDK_WINDOW(GTK_WIDGET(window)->window)));
+    //cmd = g_strdup_printf("xdg-screensaver resume %d", (int)GDK_WINDOW_XID(GDK_WINDOW( gtk_widget_get_parent_window(GTK_WIDGET(window)) )));
+    system(cmd);
+    
+    g_free(cmd);
 }
