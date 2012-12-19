@@ -440,7 +440,7 @@ void parole_player_set_playlist_visible (ParolePlayer *player, gboolean visibili
 	}
 	else
 	{
-		gtk_widget_hide_all (player->priv->playlist_nt);
+		gtk_widget_hide (player->priv->playlist_nt);
 		gtk_image_set_from_stock( GTK_IMAGE( player->priv->show_hide_playlist_image ), "gtk-go-back", GTK_ICON_SIZE_LARGE_TOOLBAR );
 		gtk_widget_set_tooltip_text( GTK_WIDGET( player->priv->show_hide_playlist_button ), "Show playlist");
 		g_object_set (G_OBJECT (player->priv->conf),	
