@@ -114,7 +114,6 @@ parole_module_unload (GTypeModule *gtype_module)
     (*module->shutdown) ();
     
     g_module_close (module->library);
-    
     module->initialize = NULL;
     module->shutdown = NULL;
     module->library = NULL;

@@ -44,37 +44,41 @@ static gpointer parole_conf_object = NULL;
 enum
 {
     PROP_0,
-    /*Visualisations*/
+    /* Audio */
     PROP_VIS_ENABLED,
     PROP_VIS_NAME,
-    /*Screensaver*/
-    PROP_DISABLE_SCREEN_SAVER,
-    /*Subtitles*/
-    PROP_SUBTITLE_ENABLED,
-    PROP_SUBTITLE_FONT,
-    PROP_SUBTITLE_ENCODING,
-    /*Playback*/
-    PROP_REPEAT,
-    PROP_SHUFFLE,
-    /*Video properties*/
-    PROP_BRIGHTNESS,
-    PROP_CONTRAST,
-    PROP_HUE,
-    PROP_SATURATION,
-    PROP_ASPECT_RATIO,
-    /*Window properties*/
-    PROP_WINDOW_WIDTH,
-    PROP_WINDOW_HEIGHT,
-    PROP_MINIMIZED,
-    /*Grab Multimedia keys*/
+    PROP_VOLUME,
+    /* Folders */
+    PROP_ISO_IMAGE_FOLDER,
+    PROP_MEDIA_CHOOSER_FOLDER,
+    /* Parole General */
     PROP_MULTIMEDIA_KEYS,
-    /*Playlist*/
-    PROP_SHOWHIDE_PLAYLIST,
-    PROP_REPLACE_PLAYLIST,
+    PROP_PLUGINS,
     PROP_SCAN_FOLDER_RECURSIVELY,
-    PROP_START_PLAYING_OPENED_FILES,
+    /* Playlist */
     PROP_REMEMBER_PLAYLIST,
     PROP_REMOVE_DUPLICATED_PLAYLIST_ENTRIES,
+    PROP_REPEAT,
+    PROP_REPLACE_PLAYLIST,
+    PROP_SHOWHIDE_PLAYLIST,
+    PROP_SHUFFLE,
+    PROP_START_PLAYING_OPENED_FILES,
+    /* Subtitles */
+    PROP_SUBTITLE_ENABLED,
+    PROP_SUBTITLE_ENCODING,
+    PROP_SUBTITLE_FONT,
+    /* Video */
+    PROP_ASPECT_RATIO,
+    PROP_BRIGHTNESS,
+    PROP_CONTRAST,
+    PROP_DISABLE_SCREEN_SAVER,
+    PROP_ENABLE_XV,
+    PROP_HUE,
+    PROP_SATURATION,
+    /* Window properties */
+    PROP_WINDOW_HEIGHT,
+    PROP_MINIMIZED,
+    PROP_WINDOW_WIDTH,
     N_PROP
 };
 
@@ -139,6 +143,7 @@ static void parole_conf_set_property (GObject *object,
     ParoleConf  *conf = PAROLE_CONF (object);
     GValue       dst = { 0, };
     gchar        prop_name[64];
+    const gchar *xfconf_nick;
     gchar      **array;
 
     /* leave if the channel is not set */
@@ -147,6 +152,9 @@ static void parole_conf_set_property (GObject *object,
 
     /* build property name */
     g_snprintf (prop_name, sizeof (prop_name), "/%s", g_param_spec_get_name (pspec));
+    
+    /* store xfconf values using the spec nick */
+    xfconf_nick = g_strdup_printf("%s", g_param_spec_get_nick(pspec));
 
     /* freeze */
     g_signal_handler_block (conf->channel, conf->property_changed_id);
@@ -156,7 +164,7 @@ static void parole_conf_set_property (GObject *object,
         /* convert into a string */
         g_value_init (&dst, G_TYPE_STRING);
         if (g_value_transform (value, &dst))
-            xfconf_channel_set_property (conf->channel, prop_name, &dst);
+            xfconf_channel_set_property (conf->channel, xfconf_nick, &dst);
         g_value_unset (&dst);
     }
     else if (G_VALUE_HOLDS (value, G_TYPE_STRV))
@@ -164,14 +172,14 @@ static void parole_conf_set_property (GObject *object,
         /* convert to a GValue GPtrArray in xfconf */
         array = g_value_get_boxed (value);
         if (array != NULL && *array != NULL)
-            xfconf_channel_set_string_list (conf->channel, prop_name, (const gchar * const *) array);
+            xfconf_channel_set_string_list (conf->channel, xfconf_nick, (const gchar * const *) array);
         else
-            xfconf_channel_reset_property (conf->channel, prop_name, FALSE);
+            xfconf_channel_reset_property (conf->channel, xfconf_nick, FALSE);
     }
     else
     {
         /* other types we support directly */
-        xfconf_channel_set_property (conf->channel, prop_name, value);
+        xfconf_channel_set_property (conf->channel, xfconf_nick, value);
     }
 
     /* thaw */
@@ -195,6 +203,7 @@ static void parole_conf_get_property (GObject *object,
     ParoleConf  *conf = PAROLE_CONF (object);
     GValue       src = { 0, };
     gchar        prop_name[64];
+    const gchar *xfconf_nick;
     gchar      **array;
     
     /* only set defaults if channel is not set */
@@ -206,14 +215,17 @@ static void parole_conf_get_property (GObject *object,
 
     /* build property name */
     g_snprintf (prop_name, sizeof (prop_name), "/%s", g_param_spec_get_name (pspec));
+    
+    /* store xfconf values using the spec nick */
+    xfconf_nick = g_strdup_printf("%s", g_param_spec_get_nick(pspec));
 
     if (G_VALUE_TYPE (value) == G_TYPE_STRV)
     {
         /* handle arrays directly since we cannot transform those */
-        array = xfconf_channel_get_string_list (conf->channel, prop_name);
+        array = xfconf_channel_get_string_list (conf->channel, xfconf_nick);
         g_value_take_boxed (value, array);
     }
-    else if (xfconf_channel_get_property (conf->channel, prop_name, &src))
+    else if (xfconf_channel_get_property (conf->channel, xfconf_nick, &src))
     {
         if (G_VALUE_TYPE (value) == G_VALUE_TYPE (&src))
             g_value_copy (&src, value);
@@ -345,103 +357,197 @@ parole_conf_class_init (ParoleConfClass *klass)
     /**
      * ParoleConf:vis-enabled:
      *
+     * Xfconf property: /audio/visualization-enabled
+     *
      * If visualizations are enabled.
      **/
     g_object_class_install_property (object_class,
                                      PROP_VIS_ENABLED,
                                      g_param_spec_boolean ("vis-enabled",
-                                                           "VisEnabled", 
+                                                           "/audio/visualization-enabled", 
                                                            NULL,
                                                            FALSE,
                                                            G_PARAM_READWRITE));
 
     /**
-     * ParoleConf:reset-saver:
-     *
-     * If screensavers should be disabled when a video is playing.
-     **/
-    g_object_class_install_property (object_class,
-                                     PROP_DISABLE_SCREEN_SAVER,
-                                     g_param_spec_boolean ("reset-saver",
-                                                           "ResetSaver",
-                                                           NULL,
-                                                           TRUE,
-                                                           G_PARAM_READWRITE));
-
-    /**
      * ParoleConf:vis-name:
+     *
+     * Xfconf property: /audio/visualization-name
      *
      * Name of the selected visualization.
      **/
     g_object_class_install_property (object_class,
                                      PROP_VIS_NAME,
                                      g_param_spec_string  ("vis-name",
-                                                           "VisName", 
+                                                           "/audio/visualization-name", 
                                                            NULL,
                                                            "none",
                                                            G_PARAM_READWRITE));
 
     /**
-     * ParoleConf:subtitle-encoding:
+     * ParoleConf:volume:
      *
-     * Encoding for subtitle text.
+     * Xfconf property: /audio/volume
+     *
+     * Audio volume level.
      **/
     g_object_class_install_property (object_class,
-                                     PROP_SUBTITLE_ENCODING,
-                                     g_param_spec_string  ("subtitle-encoding",
-                                                           "SubtitleEncoding", 
+                                     PROP_VOLUME,
+                                     g_param_spec_int ("volume",
+                                                       "/audio/volume", 
+                                                       NULL,
+                                                       0,
+                                                       100,
+                                                       50,
+                                                       G_PARAM_READWRITE));
+
+    /**
+     * ParoleConf:iso-image-folder:
+     *
+     * Xfconf property: /folders/last-used-iso
+     *
+     * Path to directory containing last used iso image.
+     **/
+    g_object_class_install_property (object_class,
+                                     PROP_ISO_IMAGE_FOLDER,
+                                     g_param_spec_string  ("iso-image-folder",
+                                                           "/folders/last-used-iso", 
                                                            NULL,
-                                                           "UTF-8",
+                                                           "none",
                                                            G_PARAM_READWRITE));
 
     /**
-     * ParoleConf:enable-subtitle:
+     * ParoleConf:media-chooser-folder:
      *
-     * If subtitles are enabled.
+     * Xfconf property: /folders/last-used-media
+     * 
+     * Path to directory containing last used media.
      **/
     g_object_class_install_property (object_class,
-                                     PROP_SUBTITLE_ENABLED,
-                                     g_param_spec_boolean ("enable-subtitle",
-                                                           "EnableSubtitle", 
+                                     PROP_MEDIA_CHOOSER_FOLDER,
+                                     g_param_spec_string  ("media-chooser-folder",
+                                                           "/folders/last-used-media", 
+                                                           NULL,
+                                                           "none",
+                                                           G_PARAM_READWRITE));
+
+    /**
+     * ParoleConf:multimedia-keys:
+     *
+     * Xfconf property: /parole/multimedia-keys
+     *
+     * If multimedia keys are enabled for controlling playback.
+     **/
+    g_object_class_install_property (object_class,
+                                     PROP_MULTIMEDIA_KEYS,
+                                     g_param_spec_boolean ("multimedia-keys",
+                                                           "/parole/multimedia-keys", 
                                                            NULL,
                                                            TRUE,
                                                            G_PARAM_READWRITE));
 
     /**
-     * ParoleConf:minimized:
+     * ParoleConf:plugins:
      *
-     * If Parole should start minimized.
+     * Xfconf property: /parole/plugins
+     *
+     * List of enabled plugins.
      **/
     g_object_class_install_property (object_class,
-                                     PROP_MINIMIZED,
-                                     g_param_spec_boolean ("minimized",
-                                                           "Minimized", 
+                                     PROP_PLUGINS,
+                                     g_param_spec_string  ("plugins",
+                                                           "/parole/plugins", 
+                                                           NULL,
+                                                           "none",
+                                                           G_PARAM_READWRITE));
+
+    /**
+     * ParoleConf:scan-recursive:
+     *
+     * Xfconf property: /parole/scan-recursive
+     *
+     * If openening a directory should also open subdirectories.
+     **/
+    g_object_class_install_property (object_class,
+                                     PROP_SCAN_FOLDER_RECURSIVELY,
+                                     g_param_spec_boolean ("scan-recursive",
+                                                           "/parole/scan-recursive", 
+                                                           NULL,
+                                                           TRUE,
+                                                           G_PARAM_READWRITE));
+
+    /**
+     * ParoleConf:remember-playlist:
+     * 
+     * Xfconf property: /playlist/remember-playlist
+     * 
+     * If the playlist should be persistent across application sessions.
+     **/
+    g_object_class_install_property (object_class,
+                                     PROP_REMEMBER_PLAYLIST,
+                                     g_param_spec_boolean ("remember-playlist",
+                                                           "/playlist/remember-playlist", 
                                                            NULL,
                                                            FALSE,
                                                            G_PARAM_READWRITE));
 
     /**
-     * ParoleConf:subtitle-font:
-     *
-     * Name and size of the subtitle font size.
+     * ParoleConf:remove-duplicated:
+     * 
+     * Xfconf property: /playlist/remove-duplicates
+     * 
+     * If duplicate playlist entries should be removed from the playlist.
      **/
     g_object_class_install_property (object_class,
-                                     PROP_SUBTITLE_FONT,
-                                     g_param_spec_string  ("subtitle-font",
-                                                           "SubtitleFont", 
+                                     PROP_REMOVE_DUPLICATED_PLAYLIST_ENTRIES,
+                                     g_param_spec_boolean ("remove-duplicated",
+                                                           "/playlist/remove-duplicates", 
                                                            NULL,
-                                                           "Sans Bold 20",
+                                                           FALSE,
                                                            G_PARAM_READWRITE));
 
     /**
      * ParoleConf:repeat:
-     *
+     * 
+     * Xfconf property: /playlist/repeat
+     * 
      * If the playlist should automatically repeat when finished.
      **/
     g_object_class_install_property (object_class,
                                      PROP_REPEAT,
                                      g_param_spec_boolean ("repeat",
-                                                           "Repeat", 
+                                                           "/playlist/repeat", 
+                                                           NULL,
+                                                           FALSE,
+                                                           G_PARAM_READWRITE));
+
+    /**
+     * ParoleConf:replace-playlist:
+     *
+     * Xfconf property: /playlist/replace-playlist
+     * 
+     * If the playlist should be replaced (as opposed to being appended to)
+     * when files are opened.
+     **/
+    g_object_class_install_property (object_class,
+                                     PROP_REPLACE_PLAYLIST,
+                                     g_param_spec_boolean ("replace-playlist",
+                                                           "/playlist/replace-playlist", 
+                                                           NULL,
+                                                           FALSE,
+                                                           G_PARAM_READWRITE));
+
+    /**
+     * ParoleConf:showhide-playlist:
+     *
+     * Xfconf property: /playlist/show-playlist
+     * 
+     * If the playlist is shown or hidden.
+     **/
+    g_object_class_install_property (object_class,
+                                     PROP_SHOWHIDE_PLAYLIST,
+                                     g_param_spec_boolean ("showhide-playlist",
+                                                           "/playlist/show-playlist", 
                                                            NULL,
                                                            FALSE,
                                                            G_PARAM_READWRITE));
@@ -449,25 +555,106 @@ parole_conf_class_init (ParoleConfClass *klass)
     /**
      * ParoleConf:shuffle:
      *
+     * Xfconf property: /playlist/shuffle
+     * 
      * If the playlist should be played in shuffled order.
      **/
     g_object_class_install_property (object_class,
                                      PROP_SHUFFLE,
                                      g_param_spec_boolean ("shuffle",
-                                                           "Shuffle", 
+                                                           "/playlist/shuffle", 
                                                            NULL,
                                                            FALSE,
                                                            G_PARAM_READWRITE));
 
     /**
-     * ParoleConf:contrast:
+     * ParoleConf:play-opened-files:
      *
-     * Video contrast level.
+     * Xfconf property: /playlist/play-opened-files
+     * 
+     * If files should automatically play when opened, or just be appended to
+     * the playlist.
      **/
     g_object_class_install_property (object_class,
-                                     PROP_CONTRAST,
-                                     g_param_spec_int ("contrast",
-                                                       "Contrast", 
+                                     PROP_START_PLAYING_OPENED_FILES,
+                                     g_param_spec_boolean ("play-opened-files",
+                                                           "/playlist/play-opened-files", 
+                                                           NULL,
+                                                           TRUE,
+                                                           G_PARAM_READWRITE));
+
+    /**
+     * ParoleConf:enable-subtitle:
+     *
+     * Xfconf property: /subtitles/enabled
+     * 
+     * If subtitles are enabled.
+     **/
+    g_object_class_install_property (object_class,
+                                     PROP_SUBTITLE_ENABLED,
+                                     g_param_spec_boolean ("enable-subtitle",
+                                                           "/subtitles/enabled", 
+                                                           NULL,
+                                                           TRUE,
+                                                           G_PARAM_READWRITE));
+
+    /**
+     * ParoleConf:subtitle-encoding:
+     *
+     * Xfconf property: /subtitles/encoding
+     * 
+     * Encoding for subtitle text.
+     **/
+    g_object_class_install_property (object_class,
+                                     PROP_SUBTITLE_ENCODING,
+                                     g_param_spec_string  ("subtitle-encoding",
+                                                           "/subtitles/encoding", 
+                                                           NULL,
+                                                           "UTF-8",
+                                                           G_PARAM_READWRITE));
+    
+    /**
+     * ParoleConf:subtitle-font:
+     *
+     * Xfconf property: /subtitles/font
+     * 
+     * Name and size of the subtitle font size.
+     **/
+    g_object_class_install_property (object_class,
+                                     PROP_SUBTITLE_FONT,
+                                     g_param_spec_string  ("subtitle-font",
+                                                           "/subtitles/font", 
+                                                           NULL,
+                                                           "Sans Bold 20",
+                                                           G_PARAM_READWRITE));
+
+    /**
+     * ParoleConf:aspect-ratio:
+     *
+     * Xfconf property: /video/aspect-ratio
+     * 
+     * Video aspect ratio.
+     **/
+    g_object_class_install_property (object_class,
+                                     PROP_ASPECT_RATIO,
+                                     g_param_spec_enum ("aspect-ratio",
+                                                        "/video/aspect-ratio", 
+                                                        NULL,
+                                                        GST_ENUM_TYPE_ASPECT_RATIO,
+                                                        PAROLE_ASPECT_RATIO_AUTO,
+                                                        G_PARAM_READWRITE));
+
+    /**
+     * ParoleConf:brightness:
+     *
+     * Xfconf property: /video/brightness
+     * 
+     * Video brightness level.
+     **/
+    g_object_class_install_property (object_class,
+                                     PROP_BRIGHTNESS,
+                                     g_param_spec_int ("brightness",
+                                                       "/video/brightness", 
                                                        NULL,
                                                        -1000,
                                                        1000,
@@ -475,14 +662,63 @@ parole_conf_class_init (ParoleConfClass *klass)
                                                        G_PARAM_READWRITE));
 
     /**
+     * ParoleConf:contrast:
+     *
+     * Xfconf property: /video/contrast
+     * 
+     * Video contrast level.
+     **/
+    g_object_class_install_property (object_class,
+                                     PROP_CONTRAST,
+                                     g_param_spec_int ("contrast",
+                                                       "/video/contrast", 
+                                                       NULL,
+                                                       -1000,
+                                                       1000,
+                                                       0,
+                                                       G_PARAM_READWRITE));
+
+    /**
+     * ParoleConf:reset-saver:
+     *
+     * Xfconf property: /video/disable-screensaver
+     * 
+     * If screensavers should be disabled when a video is playing.
+     **/
+    g_object_class_install_property (object_class,
+                                     PROP_DISABLE_SCREEN_SAVER,
+                                     g_param_spec_boolean ("reset-saver",
+                                                           "/video/disable-screensaver",
+                                                           NULL,
+                                                           TRUE,
+                                                           G_PARAM_READWRITE));
+
+    /**
+     * ParoleConf:enable-xv:
+     *
+     * Xfconf property: /video/enable-xv
+     * 
+     * Enable xv hardware extensions.
+     **/
+    g_object_class_install_property (object_class,
+                                     PROP_ENABLE_XV,
+                                     g_param_spec_boolean ("enable-xv",
+                                                           "/video/enable-xv", 
+                                                           NULL,
+                                                           TRUE,
+                                                           G_PARAM_READWRITE));
+
+    /**
      * ParoleConf:hue:
      *
+     * Xfconf property: /video/hue
+     * 
      * Video hue level.
      **/
     g_object_class_install_property (object_class,
                                      PROP_HUE,
                                      g_param_spec_int ("hue",
-                                                       "Hue", 
+                                                       "/video/hue", 
                                                        NULL,
                                                        -1000,
                                                        1000,
@@ -492,71 +728,31 @@ parole_conf_class_init (ParoleConfClass *klass)
     /**
      * ParoleConf:saturation:
      *
+     * Xfconf property: /video/saturation
+     * 
      * Video saturation level.
      **/
     g_object_class_install_property (object_class,
                                      PROP_SATURATION,
                                      g_param_spec_int ("saturation",
-                                                       "Saturation", 
+                                                       "/video/saturation", 
                                                        NULL,
                                                        -1000,
                                                        1000,
                                                        0,
-                                                       G_PARAM_READWRITE));
-
-    /**
-     * ParoleConf:brightness:
-     *
-     * Video brightness level.
-     **/
-    g_object_class_install_property (object_class,
-                                     PROP_BRIGHTNESS,
-                                     g_param_spec_int ("brightness",
-                                                       "Brightness", 
-                                                       NULL,
-                                                       -1000,
-                                                       1000,
-                                                       0,
-                                                       G_PARAM_READWRITE));
-
-    /**
-     * ParoleConf:aspect-ratio:
-     *
-     * Video aspect ratio.
-     **/
-    g_object_class_install_property (object_class,
-                                     PROP_ASPECT_RATIO,
-                                     g_param_spec_enum ("aspect-ratio",
-                                                        "AspectRatio", 
-                                                        NULL,
-                                                        GST_ENUM_TYPE_ASPECT_RATIO,
-                                                        PAROLE_ASPECT_RATIO_AUTO,
-                                                        G_PARAM_READWRITE));
-
-    /**
-     * ParoleConf:window-width:
-     * 
-     * Saved width of the application window.
-     **/
-    g_object_class_install_property (object_class,
-                                     PROP_WINDOW_WIDTH,
-                                     g_param_spec_int ("window-width",
-                                                       "WindowWidth", 
-                                                       NULL,
-                                                       100,
-                                                       G_MAXINT16,
-                                                       760,
                                                        G_PARAM_READWRITE));
 
     /**
      * ParoleConf:window-height:
      *
+     * Xfconf property: /window/height
+     * 
      * Saved height of the application window.
      **/
     g_object_class_install_property (object_class,
                                      PROP_WINDOW_HEIGHT,
                                      g_param_spec_int ("window-height",
-                                                       "WindowHeight", 
+                                                       "/window/height", 
                                                        NULL,
                                                        100,
                                                        G_MAXINT16,
@@ -564,98 +760,37 @@ parole_conf_class_init (ParoleConfClass *klass)
                                                        G_PARAM_READWRITE));
 
     /**
-     * ParoleConf:multimedia-keys:
+     * ParoleConf:minimized:
      *
-     * If multimedia keys are enabled for controlling playback.
-     **/
-    g_object_class_install_property (object_class,
-                                     PROP_MULTIMEDIA_KEYS,
-                                     g_param_spec_boolean ("multimedia-keys",
-                                                           "MultimediaKeys", 
-                                                           NULL,
-                                                           TRUE,
-                                                           G_PARAM_READWRITE));
-
-    /**
-     * ParoleConf:showhide-playlist:
-     *
-     * If the playlist is shown or hidden.
-     **/
-    g_object_class_install_property (object_class,
-                                     PROP_SHOWHIDE_PLAYLIST,
-                                     g_param_spec_boolean ("showhide-playlist",
-                                                           "ShowhidePlaylist", 
-                                                           NULL,
-                                                           FALSE,
-                                                           G_PARAM_READWRITE));
-
-    /**
-     * ParoleConf:replace-playlist:
-     *
-     * If the playlist should be replaced (as opposed to being appended to)
-     * when files are opened.
-     **/
-    g_object_class_install_property (object_class,
-                                     PROP_REPLACE_PLAYLIST,
-                                     g_param_spec_boolean ("replace-playlist",
-                                                           "ReplacePlaylist", 
-                                                           NULL,
-                                                           FALSE,
-                                                           G_PARAM_READWRITE));
-    
-    /**
-     * ParoleConf:scan-recursive:
-     *
-     * If openening a directory should also open subdirectories.
-     **/
-    g_object_class_install_property (object_class,
-                                     PROP_SCAN_FOLDER_RECURSIVELY,
-                                     g_param_spec_boolean ("scan-recursive",
-                                                           "ScanRecursive", 
-                                                           NULL,
-                                                           TRUE,
-                                                           G_PARAM_READWRITE));
-    
-    /**
-     * ParoleConf:play-opened-files:
-     *
-     * If files should automatically play when opened, or just be appended to
-     * the playlist.
-     **/
-    g_object_class_install_property (object_class,
-                                     PROP_START_PLAYING_OPENED_FILES,
-                                     g_param_spec_boolean ("play-opened-files",
-                                                           "PlayOpenedFiles", 
-                                                           NULL,
-                                                           TRUE,
-                                                           G_PARAM_READWRITE));
-
-    /**
-     * ParoleConf:remember-playlist:
+     * Xfconf property: /window/minimized
      * 
-     * If the playlist should be persistent across application sessions.
+     * If Parole should start minimized.
      **/
     g_object_class_install_property (object_class,
-                                     PROP_REMEMBER_PLAYLIST,
-                                     g_param_spec_boolean ("remember-playlist",
-                                                           "RememberPlaylist", 
+                                     PROP_MINIMIZED,
+                                     g_param_spec_boolean ("minimized",
+                                                           "/window/minimized", 
                                                            NULL,
                                                            FALSE,
                                                            G_PARAM_READWRITE));
 
     /**
-     * ParoleConf:remove-duplicated:
-     *
-     * If duplicate playlist entries should be removed from the playlist.
+     * ParoleConf:window-width:
+     * 
+     * Xfconf property: /window/width
+     * 
+     * Saved width of the application window.
      **/
     g_object_class_install_property (object_class,
-                                     PROP_REMOVE_DUPLICATED_PLAYLIST_ENTRIES,
-                                     g_param_spec_boolean ("remove-duplicated",
-                                                           "RemoveDuplicated", 
-                                                           NULL,
-                                                           FALSE,
-                                                           G_PARAM_READWRITE));
-    
+                                     PROP_WINDOW_WIDTH,
+                                     g_param_spec_int ("window-width",
+                                                       "/window/width", 
+                                                       NULL,
+                                                       100,
+                                                       G_MAXINT16,
+                                                       760,
+                                                       G_PARAM_READWRITE));
+
 }
 
 /**
@@ -754,7 +889,7 @@ parole_conf_load_rc_file (ParoleConf *conf)
 static void
 parole_conf_init (ParoleConf *conf)
 {
-    const gchar check_prop[] = "/subtitle-font";
+    const gchar check_prop[] = "/subtitles/font";
     
     /* don't set a channel if xfconf init failed */
     if (no_xfconf)
@@ -818,6 +953,55 @@ parole_conf_get_property_bool  (ParoleConf *conf,
                   NULL);
 
     return value;
+}
+
+void 
+parole_conf_write_entry_list (ParoleConf *conf, const gchar *name, gchar **value)
+{
+    gchar *value_string = "";
+    guint num = 0, i, count = 0;
+    
+    TRACE("START");
+    
+    num = g_strv_length (value);
+    for ( i = 0; i < num; i++ )
+    {
+        if (value[i] && g_strcmp0(value[i], "") != 0 && g_strcmp0(value[i], "none") != 0 )
+        {
+            if (count == 0)
+            value_string = g_strdup(value[i]);
+            else
+            value_string = g_strconcat (value_string, ";", value[i], NULL);
+            count++;
+        }
+    }
+    
+    g_object_set (G_OBJECT (conf),
+                  name, value_string,
+                  NULL);
+        
+    if (count > 0) /* FIXME Do I need to be freed no matter what? */
+        g_free(value_string);
+}
+
+gchar**
+parole_conf_read_entry_list (ParoleConf *conf, const gchar *name)
+{
+    gchar *value_string;
+    gchar **ret_val = NULL;
+    
+    TRACE("START");
+    
+    g_object_get (G_OBJECT (conf),
+                  name, &value_string,
+                  NULL);
+                  
+    if ( g_strcmp0(value_string, "") == 0 )
+        return ret_val;
+    
+    ret_val = g_strsplit(value_string, ";", 0);
+    
+    return ret_val;
 }
 
 

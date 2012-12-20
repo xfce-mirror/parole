@@ -51,7 +51,6 @@
 #include "parole-filters.h"
 #include "parole-pl-parser.h"
 #include "parole-utils.h"
-#include "parole-rc-utils.h"
 #include "parole-dbus.h"
 
 #include "common/parole-common.h"
@@ -1730,9 +1729,8 @@ void parole_media_list_load (ParoleMediaList *list)
     
     g_object_get (G_OBJECT (list->priv->conf),
 		  "play-opened-files", &play,
+		  "remember-playlist", &load_saved_list,
 		  NULL);
-    
-    load_saved_list = parole_rc_read_entry_bool ("SAVE_LIST_ON_EXIT", PAROLE_RC_GROUP_GENERAL, FALSE);
     
     if ( load_saved_list )
     {
@@ -2102,7 +2100,9 @@ void parole_media_list_save_list (ParoleMediaList *list)
 {
     gboolean save;
     
-    save = parole_rc_read_entry_bool ("SAVE_LIST_ON_EXIT", PAROLE_RC_GROUP_GENERAL, FALSE);
+    g_object_get (G_OBJECT (list->priv->conf),
+		  "remember-playlist", &save,
+		  NULL);
     
     if ( save )
     {

@@ -40,10 +40,10 @@
 #include "interfaces/plugins_ui.h"
 
 #include "parole-builder.h"
-#include "parole-rc-utils.h"
 #include "parole-utils.h"
 #include "parole-plugins-manager.h"
 #include "parole-module.h"
+#include "parole-conf.h"
 
 #include "gst/parole-gst.h"
 #include "common/parole-common.h"
@@ -107,6 +107,8 @@ struct ParolePluginsManagerPrivate
     GPtrArray *array;
     
     gboolean   load_plugins;
+    
+    ParoleConf *conf;
 };
 
 static gpointer parole_plugins_manager_object = NULL;
@@ -190,13 +192,13 @@ void parole_plugins_manager_show_configure (GtkButton *button, PrefData *pref)
 }
 
 static void
-parole_plugins_manager_save_rc (gchar *filename, gboolean active)
+parole_plugins_manager_save_rc (ParolePluginsManager *manager, gchar *filename, gboolean active)
 {
     gchar **saved_plugins;
     gchar **plugins_rc;
-    guint num = 0, i;
+    guint num = 0, i, count = 0;
     
-    saved_plugins = parole_rc_read_entry_list ("plugins", PAROLE_RC_GROUP_PLUGINS);
+    saved_plugins = parole_conf_read_entry_list (PAROLE_CONF(manager->priv->conf), "plugins");
     
     if ( saved_plugins )
 	num = g_strv_length (saved_plugins);
@@ -212,7 +214,7 @@ parole_plugins_manager_save_rc (gchar *filename, gboolean active)
     
 	plugins_rc[num] = g_strdup (filename);
 	plugins_rc[num + 1] = NULL;
-	parole_rc_write_entry_list ("plugins", PAROLE_RC_GROUP_PLUGINS, plugins_rc);
+	parole_conf_write_entry_list (PAROLE_CONF(manager->priv->conf), "plugins", plugins_rc);
     }
     else
     {
@@ -221,12 +223,13 @@ parole_plugins_manager_save_rc (gchar *filename, gboolean active)
 	for ( i = 0; i < num; i++)
 	{
 	    if ( g_strcmp0 (saved_plugins[i], filename) != 0 )
-		plugins_rc[i] = g_strdup (saved_plugins[i]);
-	    else
-		plugins_rc[i] = NULL;
+	    {
+		    plugins_rc[count] = g_strdup (saved_plugins[i]);
+		    count++;
+		}
 	}
 	plugins_rc[num] = NULL;
-	parole_rc_write_entry_list ("plugins", PAROLE_RC_GROUP_PLUGINS, plugins_rc);
+	parole_conf_write_entry_list (PAROLE_CONF(manager->priv->conf), "plugins", plugins_rc);
     }
     g_strfreev (plugins_rc);
     g_strfreev (saved_plugins);
@@ -273,7 +276,7 @@ parole_plugins_manager_cell_toggled_cb (GtkCellRendererToggle *cell_renderer,
 			
     gtk_tree_path_free (path);
     
-    parole_plugins_manager_save_rc (G_TYPE_MODULE (module)->name, active);
+    parole_plugins_manager_save_rc (pref->manager, G_TYPE_MODULE (module)->name, active);
 }
 
 void parole_plugins_manager_tree_cursor_changed_cb (GtkTreeView *view,
@@ -531,7 +534,7 @@ parole_plugins_manager_load_plugins (ParolePluginsManager *manager)
     gchar **plugins_rc;
     guint len = 0, i, j;
     
-    plugins_rc = parole_rc_read_entry_list ("plugins", PAROLE_RC_GROUP_PLUGINS);
+    plugins_rc = parole_conf_read_entry_list (PAROLE_CONF(manager->priv->conf), "plugins");
     
     if ( plugins_rc && plugins_rc[0] )
 	len = g_strv_length (plugins_rc);
@@ -548,7 +551,7 @@ parole_plugins_manager_load_plugins (ParolePluginsManager *manager)
 		TRACE ("Loading plugin :%s", module->name);
 		if ( !g_type_module_use (module) )
 		{
-		    parole_plugins_manager_save_rc (module->name, FALSE);
+		    parole_plugins_manager_save_rc (manager, module->name, FALSE);
 		    g_ptr_array_remove (manager->priv->array, module);
 		    g_object_unref (module);
 		}
@@ -598,6 +601,8 @@ parole_plugins_manager_init (ParolePluginsManager *manager)
     
     manager->priv->list_nt = GTK_WIDGET (gtk_builder_get_object (builder, "notebook-playlist"));
     manager->priv->main_nt = GTK_WIDGET (gtk_builder_get_object (builder, "main-notebook"));
+    
+    manager->priv->conf = parole_conf_new();
     
     g_signal_connect (manager->priv->list_nt, "page-added",
 		      G_CALLBACK (parole_plugins_manager_page_added_cb), NULL);

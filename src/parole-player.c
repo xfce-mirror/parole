@@ -467,14 +467,16 @@ typedef enum
 
 
 static void
-iso_files_folder_changed_cb (GtkFileChooser *widget, gpointer data)
+iso_files_folder_changed_cb (GtkFileChooser *widget, ParolePlayer *player)
 {
     gchar *folder;
     folder = gtk_file_chooser_get_current_folder (GTK_FILE_CHOOSER (widget));
     
     if ( folder )
     {
-	parole_rc_write_entry_string ("iso-image-folder", PAROLE_RC_GROUP_GENERAL, folder);
+    g_object_set (G_OBJECT (player->priv->conf),
+		  "iso-image-folder", folder,
+		  NULL);
 	g_free (folder);
     }
 }
@@ -496,13 +498,15 @@ parole_player_open_iso_image (ParolePlayer *player, ParoleIsoImage image)
 				
     gtk_file_chooser_set_select_multiple (GTK_FILE_CHOOSER (chooser), FALSE);
     
-    folder = parole_rc_read_entry_string ("iso-image-folder", PAROLE_RC_GROUP_GENERAL, NULL);
+    g_object_get (G_OBJECT (player->priv->conf),
+		  "iso-image-folder", &folder,
+		  NULL);
     
     if ( folder )
 	gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (chooser), folder);
     
     g_signal_connect (chooser, "current-folder-changed",
-		      G_CALLBACK (iso_files_folder_changed_cb), NULL);
+		      G_CALLBACK (iso_files_folder_changed_cb), player);
     
     filter = gtk_file_filter_new ();
     gtk_file_filter_set_name (filter, image == PAROLE_ISO_IMAGE_CD ? _("CD image") : _("DVD image"));
@@ -899,7 +903,9 @@ parole_player_select_custom_subtitle (GtkMenuItem *widget, gpointer data)
     gtk_file_chooser_set_select_multiple (GTK_FILE_CHOOSER (chooser), FALSE);
     gtk_file_chooser_set_local_only (GTK_FILE_CHOOSER (chooser), FALSE);
     
-    folder = parole_rc_read_entry_string ("media-chooser-folder", PAROLE_RC_GROUP_GENERAL, NULL);
+    g_object_get (G_OBJECT (player->priv->conf),
+        "media-chooser-folder", &folder,
+        NULL);
     
     if ( folder )
 	gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (chooser), folder);
@@ -1022,8 +1028,11 @@ parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *ro
 	    gtk_window_set_title (GTK_WINDOW (player->priv->window), parole_file_get_display_name(file));
 	    
 	    if ( directory )
-		parole_rc_write_entry_string ("media-chooser-folder", PAROLE_RC_GROUP_GENERAL, directory);
-		
+	    {
+            g_object_set (G_OBJECT (player->priv->conf),
+                "media-chooser-folder", directory,
+                NULL);
+		}
 
 	    g_object_unref (file);
 	}
@@ -2168,7 +2177,9 @@ void
 parole_player_volume_value_changed_cb (GtkScaleButton *widget, gdouble value, ParolePlayer *player)
 {
     parole_player_change_volume (player, value);
-    parole_rc_write_entry_int ("volume", PAROLE_RC_GROUP_GENERAL, (gint)(value * 100));
+    g_object_set (G_OBJECT (player->priv->conf),
+        "volume", (gint)(value * 100),
+        NULL);
 }
 
 void
@@ -2228,10 +2239,12 @@ parole_player_finalize (GObject *object)
     g_object_unref (player->priv->sm_client);
 
 #ifdef HAVE_XF86_KEYSYM
+    if (player->priv->button)
     g_object_unref (player->priv->button);
 #endif
 
     gtk_widget_destroy (player->priv->fs_window);
+    
 
     G_OBJECT_CLASS (parole_player_parent_class)->finalize (object);
 }
@@ -2726,6 +2739,8 @@ parole_player_init (ParolePlayer *player)
     gboolean showhide;
     GdkColor background;
     
+    gint volume;
+    
     GtkWidget *hbox_audiobox;
     
     GtkWidget *recent_menu;
@@ -2950,8 +2965,11 @@ parole_player_init (ParolePlayer *player)
 	player->priv->update_languages = FALSE;
 	player->priv->updated_subs = FALSE;
 	
+	g_object_get (G_OBJECT (player->priv->conf),
+        "volume", &volume,
+        NULL);
     gtk_scale_button_set_value (GTK_SCALE_BUTTON (player->priv->volume), 
-			 (gdouble) (parole_rc_read_entry_int ("volume", PAROLE_RC_GROUP_GENERAL, 100)/100.));
+			 (gdouble) (volume/100.));
     /*
      * Pack the playlist.
      */
@@ -2986,7 +3004,7 @@ parole_player_init (ParolePlayer *player)
 		      G_CALLBACK (parole_player_seekable_notify), player);
 
     parole_player_change_volume (player, 
-				 (gdouble) (parole_rc_read_entry_int ("volume", PAROLE_RC_GROUP_GENERAL, 100)/100.));
+				 (gdouble) (volume/100.));
 
     g_signal_connect (player->priv->list, "media_activated",
 		      G_CALLBACK (parole_player_media_activated_cb), player);

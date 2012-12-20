@@ -32,37 +32,6 @@
 XfceRc                 *parole_get_resource_file        (const gchar *group, 
 							 gboolean readonly);
 
-void			parole_rc_write_entry_bool	(const gchar *property,
-							 const gchar *group,
-							 gboolean value);
-
-void			parole_rc_write_entry_int	(const gchar *property,
-							 const gchar *group,
-							 gint value);
-							 
-void 			parole_rc_write_entry_string	(const gchar *property, 
-							 const gchar *group,
-							 const gchar *value);
-
-void 			parole_rc_write_entry_list	(const gchar *property, 
-							 const gchar *group,
-							 gchar **value);
-							 
-gboolean 		parole_rc_read_entry_bool	(const gchar *property,
-							 const gchar *group,
-							 gboolean fallback);
-
-gint			parole_rc_read_entry_int	(const gchar *property,
-							 const gchar *group,
-							 gint fallback);
-
-const gchar	       *parole_rc_read_entry_string	(const gchar *property,
-							 const gchar *group,
-							 const gchar *fallback);
-
-gchar	       	      **parole_rc_read_entry_list	(const gchar *property,
-							 const gchar *group);
-
 gchar                 **parole_get_history	        (void);
 
 gchar                 **parole_get_history_full	        (const gchar *relpath);

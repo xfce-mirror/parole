@@ -54,7 +54,7 @@ void	parole_media_chooser_destroy_cb (GtkWidget *widget,
 					 ParoleMediaChooser *chooser);
 					 
 void	media_chooser_folder_changed_cb (GtkWidget *widget, 
-					 gpointer data);
+					 ParoleMediaChooser *chooser);
 
 void	media_chooser_file_activate_cb  (GtkFileChooser *filechooser,
 					 ParoleMediaChooser *chooser);
@@ -88,14 +88,16 @@ static guint signals [LAST_SIGNAL] = { 0 };
 G_DEFINE_TYPE (ParoleMediaChooser, parole_media_chooser, G_TYPE_OBJECT)
 
 void
-media_chooser_folder_changed_cb (GtkWidget *widget, gpointer data)
+media_chooser_folder_changed_cb (GtkWidget *widget, ParoleMediaChooser *chooser)
 {
     gchar *folder;
     folder = gtk_file_chooser_get_current_folder (GTK_FILE_CHOOSER (widget));
     
     if ( folder )
     {
-	parole_rc_write_entry_string ("media-chooser-folder", PAROLE_RC_GROUP_GENERAL, folder);
+    g_object_set (G_OBJECT (chooser->conf),
+		  "media-chooser-folder", folder,
+		  NULL);
 	g_free (folder);
     }
 }
@@ -219,7 +221,9 @@ parole_media_chooser_open_internal (ParoleMediaChooser *media_chooser)
     gtk_file_chooser_add_filter( GTK_FILE_CHOOSER(file_chooser), all_files );
 
     /* Set the folder that is shown */
-    folder = parole_rc_read_entry_string ("media-chooser-folder", PAROLE_RC_GROUP_GENERAL, NULL);
+    g_object_get (G_OBJECT (media_chooser->conf),
+		  "media-chooser-folder", &folder,
+		  NULL);
     
     if ( folder )
 	gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (file_chooser), folder);

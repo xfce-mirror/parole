@@ -44,7 +44,6 @@
 #include "parole-gst.h"
 
 #include "common/parole-common.h"
-#include "common/parole-rc-utils.h"
 
 #include "parole-utils.h"
 
@@ -2020,7 +2019,9 @@ parole_gst_constructed (GObject *object)
     
     gst = PAROLE_GST (object);
     
-    enable_xv = parole_rc_read_entry_bool ("enable-xv", PAROLE_RC_GROUP_GENERAL, TRUE);
+    g_object_get (G_OBJECT (gst->priv->conf),
+		  "enable-xv", &enable_xv,
+		  NULL);
     
     gst->priv->playbin = gst_element_factory_make ("playbin2", "player");
  

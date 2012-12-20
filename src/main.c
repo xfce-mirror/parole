@@ -46,7 +46,7 @@
 #include "parole-utils.h"
 #include "parole-dbus.h"
 #include "parole-builder.h"
-#include "parole-rc-utils.h"
+#include "parole-conf.h"
 
 #include <X11/X.h>
 #include <X11/Xlib.h>
@@ -220,6 +220,7 @@ static gboolean
 xv_option_given (const gchar *name, const gchar *value, gpointer data, GError **error)
 {
     gboolean enabled = TRUE;
+    ParoleConf *conf;
     
     if ( !g_strcmp0 (value, "TRUE") || !g_strcmp0 (value, "true"))
 	enabled = TRUE;
@@ -231,8 +232,12 @@ xv_option_given (const gchar *name, const gchar *value, gpointer data, GError **
 	return FALSE;
     }
     
-    parole_rc_write_entry_bool ("enable-xv", PAROLE_RC_GROUP_GENERAL, enabled);
+    conf = parole_conf_new ();
+    g_object_set (G_OBJECT (conf),
+		  "enable-xv", enabled,
+		  NULL);
     
+    g_object_unref(conf);
     exit (0);
 }
 
