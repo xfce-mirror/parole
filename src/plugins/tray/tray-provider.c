@@ -27,11 +27,6 @@
 
 #include <src/misc/parole.h>
 
-#ifdef HAVE_LIBNOTIFY
-#include <libnotify/notify.h>
-#endif
-
-
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4ui/libxfce4ui.h>
 
@@ -56,11 +51,6 @@ struct _TrayProvider
     GtkWidget              *window;
     gulong                  sig;
 
-#ifdef HAVE_LIBNOTIFY
-    NotifyNotification     *n;
-    gboolean	            notify;
-    gboolean                enabled;
-#endif
     ParoleState             state;
     GtkWidget              *menu;
 };
@@ -187,139 +177,6 @@ tray_activate_cb (GtkStatusIcon *tray_icon, TrayProvider *tray)
 	gtk_widget_show (tray->window);
 }
 
-#ifdef HAVE_LIBNOTIFY
-static void
-notification_closed_cb (NotifyNotification *n, TrayProvider *tray)
-{
-    g_object_unref (tray->n);
-    tray->n = NULL;
-}
-
-static void
-close_notification (TrayProvider *tray)
-{
-    if ( tray->n )
-    {
-	GError *error = NULL;
-	notify_notification_close (tray->n, &error);
-	if ( error )
-	{
-	    g_warning ("Failed to close notification : %s", error->message);
-	    g_error_free (error);
-	}
-	g_object_unref (tray->n);
-	tray->n = NULL;
-    }
-}
-
-static void
-notify_playing (TrayProvider *tray, const ParoleStream *stream)
-{
-    GdkPixbuf *pix;
-    gboolean has_video;
-    gchar *title, *album, *artist, *year;
-    gchar *message;
-    ParoleMediaType media_type;
-    
-    if ( !tray->notify || !tray->enabled)
-	return;
-    
-    g_object_get (G_OBJECT (stream), 
-		  "title", &title,
-		  "album", &album,
-		  "artist", &artist,
-		  "year", &year,
-		  "has-video", &has_video,
-          "media-type", &media_type,		  
-		  NULL);
-		  
-    if ( has_video )
-    return;
-
-    if ( !title )
-    {
-	gchar *uri;
-	gchar *filename;
-	g_object_get (G_OBJECT (stream),
-		      "uri", &uri,
-		      NULL);
-		      
-	filename = g_filename_from_uri (uri, NULL, NULL);
-	g_free (uri);
-	if ( filename )
-	{
-	    title  = g_path_get_basename (filename);
-	    g_free (filename);
-	    if ( !title )
-		return;
-	}
-    }
-    
-    if (!album)
-        album = g_strdup( _("Unknown Album") );
-    if (!artist)
-        artist = g_strdup( _("Unknown Artist") );
-    
-    if (!year)
-    message = g_strdup_printf ("%s %s\n%s %s", _("<i>on</i>"), album, _("<i>by</i>"), artist);
-    else
-    {
-    message = g_strdup_printf ("%s %s (%s)\n%s %s", _("<i>on</i>"), album, year, _("<i>by</i>"), artist);
-    g_free(year);
-    }
-    
-    g_free(artist);
-    g_free(album);
-    
-#ifdef NOTIFY_CHECK_VERSION
-#if NOTIFY_CHECK_VERSION (0, 7, 0)    
-    tray->n = notify_notification_new (title, message, NULL);
-#else
-    tray->n = notify_notification_new (title, message, NULL, NULL);
-#endif
-#else
-    tray->n = notify_notification_new (title, message, NULL, NULL);
-#endif
-    g_free (title);
-    g_free (message);
-    
-#ifdef NOTIFY_CHECK_VERSION
-#if !NOTIFY_CHECK_VERSION (0, 7, 0)
-    notify_notification_attach_to_status_icon (tray->n, tray->tray);
-#endif
-#endif
-    if (media_type == PAROLE_MEDIA_TYPE_CDDA)
-        pix = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
-                                        "media-cdrom-audio",
-                                        48,
-                                        GTK_ICON_LOOKUP_USE_BUILTIN,
-                                        NULL);
-    else
-        pix  = parole_stream_get_image(G_OBJECT(stream));
-    
-    if (!pix)
-        pix = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
-                                        "audio-x-generic",
-                                        48,
-                                        GTK_ICON_LOOKUP_USE_BUILTIN,
-                                        NULL);
-
-    if ( pix )
-    {
-	notify_notification_set_icon_from_pixbuf (tray->n, pix);
-	g_object_unref (pix);
-    }
-    notify_notification_set_urgency (tray->n, NOTIFY_URGENCY_LOW);
-    notify_notification_set_timeout (tray->n, 5000);
-    
-    notify_notification_show (tray->n, NULL);
-    g_signal_connect (tray->n, "closed",
-		      G_CALLBACK (notification_closed_cb), tray);
-		      
-    tray->notify = FALSE;
-}
-#endif
-
 static void
 state_changed_cb (ParoleProviderPlayer *player, const ParoleStream *stream, ParoleState state, TrayProvider *tray)
 {
@@ -331,20 +188,6 @@ state_changed_cb (ParoleProviderPlayer *player, const ParoleStream *stream, Paro
 	tray->menu = NULL;
 	g_signal_emit_by_name (G_OBJECT (tray->tray), "popup-menu", 0, gtk_get_current_event_time ());
     }
-    
-#ifdef HAVE_LIBNOTIFY
-
-    if ( state == PAROLE_STATE_PLAYING )
-    {
-	notify_playing (tray, stream);
-    }
-    else if ( state <= PAROLE_STATE_PAUSED )
-    {
-	close_notification (tray);
-	if ( state < PAROLE_STATE_PAUSED )
-	    tray->notify = TRUE;
-    }
-#endif
 }
 
 static gboolean
@@ -381,26 +224,6 @@ write_entry_bool (const gchar *entry, gboolean value)
     xfce_rc_close (rc);
 }
 
-#ifdef HAVE_LIBNOTIFY
-static gboolean
-notify_enabled (void)
-{
-    gboolean ret_val = read_entry_bool ("NOTIFY", TRUE);
-    
-    return ret_val;
-}
-
-static void
-notify_toggled_cb (GtkToggleButton *bt, TrayProvider *tray)
-{
-    gboolean active;
-    active = gtk_toggle_button_get_active (bt);
-    tray->enabled = active;
-    
-    write_entry_bool ("NOTIFY", active);
-}
-#endif /*HAVE_LIBNOTIFY*/
-
 static void
 hide_on_delete_toggled_cb (GtkWidget *widget, gpointer tray)
 {
@@ -414,9 +237,7 @@ configure_plugin (TrayProvider *tray, GtkWidget *widget)
 {
     GtkWidget *dialog;
     GtkWidget *content_area;
-#ifdef HAVE_LIBNOTIFY
-    GtkWidget *check;
-#endif
+
     GtkWidget *hide_on_delete;
     gboolean hide_on_delete_b;
     
@@ -428,15 +249,6 @@ configure_plugin (TrayProvider *tray, GtkWidget *widget)
                                           NULL);
 
     content_area = gtk_dialog_get_content_area (GTK_DIALOG (dialog));
-    
-#ifdef HAVE_LIBNOTIFY    
-    check = gtk_check_button_new_with_label (_("Enable notification"));
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check), tray->enabled);
-    g_signal_connect (check, "toggled",
-		      G_CALLBACK (notify_toggled_cb), tray);
-    gtk_box_pack_start_defaults (GTK_BOX (content_area), check) ;
-    
-#endif /*HAVE_LIBNOTIFY*/
 
     hide_on_delete_b = read_entry_bool ("MINIMIZE_TO_TRAY", TRUE);
     hide_on_delete = gtk_check_button_new_with_label (_("Always minimize to tray when window is closed"));
@@ -549,11 +361,7 @@ delete_event_cb (GtkWidget *widget, GdkEvent *ev, TrayProvider *tray)
 
 static gboolean tray_provider_is_configurable (ParoleProviderPlugin *plugin)
 {
-#ifdef HAVE_LIBNOTIFY
     return TRUE;
-#else
-    return FALSE;
-#endif
 }
 
 static void
@@ -574,13 +382,6 @@ tray_provider_set_player (ParoleProviderPlugin *plugin, ParoleProviderPlayer *pl
     tray->player = player;
     tray->menu = NULL;
 
-#ifdef HAVE_LIBNOTIFY
-    tray->n = NULL;
-    notify_init ("parole-tray-icon");
-    tray->enabled = notify_enabled ();
-    tray->notify = TRUE;
-#endif
-    
     pix = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
                                     "parole",
                                     48,
@@ -643,10 +444,6 @@ static void tray_provider_finalize (GObject *object)
     if ( GTK_IS_WIDGET (tray->window) && g_signal_handler_is_connected (tray->window, tray->sig) )
 	g_signal_handler_disconnect (tray->window, tray->sig);
 
-#ifdef HAVE_LIBNOTIFY 
-    close_notification (tray);
-#endif
- 
     g_object_unref (G_OBJECT (tray->tray));
     
     G_OBJECT_CLASS (tray_provider_parent_class)->finalize (object);

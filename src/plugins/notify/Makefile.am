@@ -2,7 +2,7 @@ INCLUDES =					\
 	-I$(top_builddir)			\
 	-I$(top_srcdir)				\
 	-I$(top_srcdir)/src			\
-	-DG_LOG_DOMAIN=\"parole_tray\"    	\
+	-DG_LOG_DOMAIN=\"parole_notify\"    	\
 	-DLIBEXECDIR=\"$(libexecdir)\"		\
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"
 
@@ -10,34 +10,36 @@ pluginsdir = 					\
 	$(libdir)/parole-$(PAROLE_VERSION_API)
 
 plugins_LTLIBRARIES =				\
-	tray-icon.la
+	parole-notify.la
 
-tray_icon_la_SOURCES =				\
-	tray-plugin.c				\
-	tray-provider.c				\
-	tray-provider.h
+parole_notify_la_SOURCES =				\
+	notify-plugin.c				\
+	notify-provider.c				\
+	notify-provider.h
 
-tray_icon_la_CFLAGS =				\
+parole_notify_la_CFLAGS =				\
 	$(PLATFORM_CFLAGS)			\
 	$(GTK_CFLAGS)				\
 	$(LIBXFCE4UI_CFLAGS)			\
-	$(LIBXFCE4UTIL_CFLAGS)
+	$(LIBXFCE4UTIL_CFLAGS)			\
+	$(LIBNOTIFY_CFLAGS)
 
-tray_icon_la_LDFLAGS =				\
+parole_notify_la_LDFLAGS =				\
 	-avoid-version				\
 	-export-dynamic				\
 	-module					\
 	$(PLATFORM_LDFLAGS)
 
-tray_icon_la_LIBADD =				\
+parole_notify_la_LIBADD =				\
 	$(top_builddir)/src/misc/libparole.la	\
 	$(GTK_LIBS)				\
-	$(LIBXFCE4UTIL_LIBS)
+	$(LIBXFCE4UTIL_LIBS)			\
+	$(LIBNOTIFY_LIBS)
 
 #
 # .desktop file
 #
-desktop_in_files = system-tray.desktop.in
+desktop_in_files = notify.desktop.in
 desktopdir = $(datadir)/parole/parole-plugins-$(PAROLE_VERSION_API)
 desktop_DATA =  $(desktop_in_files:.desktop.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
