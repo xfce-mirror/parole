@@ -29,9 +29,6 @@
 
 #include <libnotify/notify.h>
 
-#include <libxfce4util/libxfce4util.h>
-#include <libxfce4ui/libxfce4ui.h>
-
 #include "notify-provider.h"
 
 #define RESOURCE_FILE 	"xfce4/src/misc/parole-plugins/notify.rc"
@@ -49,10 +46,8 @@ struct _NotifyProvider
 {
     GObject                 parent;
     ParoleProviderPlayer   *player;
-    GtkWidget              *window;
 
     NotifyNotification     *notification;
-    gboolean	            enabled;
 };
 
 PAROLE_DEFINE_TYPE_WITH_CODE (NotifyProvider, 
@@ -180,8 +175,6 @@ notify_playing (NotifyProvider *notify, const ParoleStream *stream)
     notify_notification_show (notify->notification, NULL);
     g_signal_connect (notify->notification, "closed",
 		      G_CALLBACK (notification_closed_cb), notify);
-		      
-    notify->enabled = FALSE;
 }
 
 static void
@@ -192,104 +185,11 @@ state_changed_cb (ParoleProviderPlayer *player, const ParoleStream *stream, Paro
 	    
     else if ( state <= PAROLE_STATE_PAUSED )
 	    close_notification (notify);
-	    
-	if ( state < PAROLE_STATE_PAUSED )
-	    notify->enabled = TRUE;
-}
-
-static gboolean
-read_entry_bool (const gchar *entry, gboolean fallback)
-{
-    gboolean ret_val = fallback;
-    gchar *file;
-    XfceRc *rc;
-    
-    file = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, RESOURCE_FILE, TRUE);
-    rc = xfce_rc_simple_open (file, TRUE);
-    g_free (file);
-    
-    if ( rc )
-    {
-	ret_val = xfce_rc_read_bool_entry (rc, entry, fallback);
-	xfce_rc_close (rc);
-    }
-    
-    return ret_val;
-}
-
-static void
-write_entry_bool (const gchar *entry, gboolean value)
-{
-    gchar *file;
-    XfceRc *rc;
-    
-    file = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, RESOURCE_FILE, TRUE);
-    rc = xfce_rc_simple_open (file, FALSE);
-    g_free (file);
-    
-    xfce_rc_write_bool_entry (rc, entry, value);
-    xfce_rc_close (rc);
-}
-
-static gboolean
-notify_enabled (void)
-{
-    gboolean ret_val = read_entry_bool ("NOTIFY", TRUE);
-    
-    return ret_val;
-}
-
-static void
-notify_toggled_cb (GtkToggleButton *bt, NotifyProvider *notify)
-{
-    gboolean active;
-    active = gtk_toggle_button_get_active (bt);
-    notify->enabled = active;
-    
-    write_entry_bool ("NOTIFY", active);
-}
-
-static void
-configure_plugin (NotifyProvider *notify, GtkWidget *widget)
-{
-    GtkWidget *dialog;
-    GtkWidget *content_area;
-
-    GtkWidget *check;
-
-    GtkWidget *hide_on_delete;
-    gboolean hide_on_delete_b;
-    
-    dialog = gtk_dialog_new_with_buttons (_("Tray icon plugin"), 
-					  GTK_WINDOW (widget),
-					  GTK_DIALOG_DESTROY_WITH_PARENT,
-					  GTK_STOCK_CANCEL,
-                                          GTK_RESPONSE_CANCEL,
-                                          NULL);
-
-    content_area = gtk_dialog_get_content_area (GTK_DIALOG (dialog));
-    
-    check = gtk_check_button_new_with_label (_("Enable notification"));
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check), notify->enabled);
-    g_signal_connect (check, "toggled",
-		      G_CALLBACK (notify_toggled_cb), notify);
-    gtk_box_pack_start_defaults (GTK_BOX (content_area), check) ;
-    
-    hide_on_delete_b = read_entry_bool ("MINIMIZE_TO_TRAY", TRUE);
-    hide_on_delete = gtk_check_button_new_with_label (_("Always minimize to tray when window is closed"));
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (hide_on_delete), hide_on_delete_b);
-    
-    gtk_box_pack_start_defaults (GTK_BOX (content_area), hide_on_delete);
-	
-    g_signal_connect (dialog, "response",
-		      G_CALLBACK (gtk_widget_destroy), NULL);
-    
-    gtk_widget_show_all (dialog);
 }
 
 static gboolean notify_provider_is_configurable (ParoleProviderPlugin *plugin)
 {
-    return TRUE;
+    return FALSE;
 }
 
 static void
@@ -299,32 +199,20 @@ notify_provider_set_player (ParoleProviderPlugin *plugin, ParoleProviderPlayer *
     
     notify = NOTIFY_PROVIDER (plugin);
     
-    notify->window = parole_provider_player_get_main_window (player);
-    
     notify->player = player;
 
     notify->notification = NULL;
     notify_init ("parole-notify");
-    notify->enabled = notify_enabled ();
 				  
     g_signal_connect (player, "state_changed", 
 		      G_CALLBACK (state_changed_cb), notify);
 }
 
 static void
-notify_provider_configure (ParoleProviderPlugin *provider, GtkWidget *parent)
-{
-    NotifyProvider *notify;
-    notify = NOTIFY_PROVIDER (provider);
-    configure_plugin (notify, parent);
-}
-
-static void
 notify_provider_iface_init (ParoleProviderPluginIface *iface)
 {
-    iface->set_player = notify_provider_set_player;
-    iface->configure = notify_provider_configure;
     iface->get_is_configurable = notify_provider_is_configurable;
+    iface->set_player = notify_provider_set_player;
 }
 
 static void notify_provider_class_init (NotifyProviderClass *klass)
