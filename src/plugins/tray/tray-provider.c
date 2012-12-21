@@ -50,26 +50,26 @@ struct _TrayProviderClass
 
 struct _TrayProvider
 {
-    GObject      parent;
-    ParoleProviderPlayer *player;
-    GtkStatusIcon *tray;
-    GtkWidget     *window;
-    gulong         sig;
+    GObject                 parent;
+    ParoleProviderPlayer   *player;
+    GtkStatusIcon          *tray;
+    GtkWidget              *window;
+    gulong                  sig;
 
 #ifdef HAVE_LIBNOTIFY
-    NotifyNotification *n;
-    gboolean	  notify;
-    gboolean      enabled;
+    NotifyNotification     *n;
+    gboolean	            notify;
+    gboolean                enabled;
 #endif
-    ParoleState state;
-    GtkWidget     *menu;
+    ParoleState             state;
+    GtkWidget              *menu;
 };
 
 PAROLE_DEFINE_TYPE_WITH_CODE (TrayProvider, 
-			      tray_provider, 
-			      G_TYPE_OBJECT,
-			      PAROLE_IMPLEMENT_INTERFACE (PAROLE_TYPE_PROVIDER_PLUGIN, 
-							  tray_provider_iface_init));
+                        tray_provider, 
+                        G_TYPE_OBJECT,
+                        PAROLE_IMPLEMENT_INTERFACE (PAROLE_TYPE_PROVIDER_PLUGIN, 
+					    tray_provider_iface_init));
 	
 static void
 menu_selection_done_cb (TrayProvider *tray)
@@ -216,14 +216,9 @@ static void
 notify_playing (TrayProvider *tray, const ParoleStream *stream)
 {
     GdkPixbuf *pix;
-    gboolean live, has_audio, has_video;
-    gchar *title;
+    gboolean has_video;
+    gchar *title, *album, *artist, *year;
     gchar *message;
-    gint64 duration;
-    gint  hours;
-    gint  minutes;
-    gint  seconds;
-    gchar timestring[128];
     ParoleMediaType media_type;
     
     if ( !tray->notify || !tray->enabled)
@@ -231,12 +226,15 @@ notify_playing (TrayProvider *tray, const ParoleStream *stream)
     
     g_object_get (G_OBJECT (stream), 
 		  "title", &title,
-		  "has-audio", &has_audio,
+		  "album", &album,
+		  "artist", &artist,
+		  "year", &year,
 		  "has-video", &has_video,
-		  "duration", &duration,
-		  "live", &live,
-		  "media-type", &media_type,
+          "media-type", &media_type,		  
 		  NULL);
+		  
+    if ( has_video )
+    return;
 
     if ( !title )
     {
@@ -257,28 +255,22 @@ notify_playing (TrayProvider *tray, const ParoleStream *stream)
 	}
     }
     
-    if ( live || media_type != PAROLE_MEDIA_TYPE_LOCAL_FILE )
-    {
-	g_free (title);
-	return;
-    }
-        
-    minutes =  duration / 60;
-    seconds = duration % 60;
-    hours = minutes / 60;
-    minutes = minutes % 60;
-
-    if ( hours == 0 )
-    {
-	g_snprintf (timestring, 128, "%02i:%02i", minutes, seconds);
-    }
+    if (!album)
+        album = g_strdup( _("Unknown Album") );
+    if (!artist)
+        artist = g_strdup( _("Unknown Artist") );
+    
+    if (!year)
+    message = g_strdup_printf ("%s %s\n%s %s", _("<i>on</i>"), album, _("<i>by</i>"), artist);
     else
     {
-	g_snprintf (timestring, 128, "%i:%02i:%02i", hours, minutes, seconds);
+    message = g_strdup_printf ("%s %s (%s)\n%s %s", _("<i>on</i>"), album, year, _("<i>by</i>"), artist);
+    g_free(year);
     }
     
-    message = g_strdup_printf ("%s %s %s %s", _("<b>Playing:</b>"), title, _("<b>Duration:</b>"), timestring);
-
+    g_free(artist);
+    g_free(album);
+    
 #ifdef NOTIFY_CHECK_VERSION
 #if NOTIFY_CHECK_VERSION (0, 7, 0)    
     tray->n = notify_notification_new (title, message, NULL);
@@ -296,11 +288,22 @@ notify_playing (TrayProvider *tray, const ParoleStream *stream)
     notify_notification_attach_to_status_icon (tray->n, tray->tray);
 #endif
 #endif
-    pix = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
-                                    has_video ? "video" : "audio-x-generic",
-                                    48,
-                                    GTK_ICON_LOOKUP_USE_BUILTIN,
-                                    NULL);
+    if (media_type == PAROLE_MEDIA_TYPE_CDDA)
+        pix = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
+                                        "media-cdrom-audio",
+                                        48,
+                                        GTK_ICON_LOOKUP_USE_BUILTIN,
+                                        NULL);
+    else
+        pix  = parole_stream_get_image(G_OBJECT(stream));
+    
+    if (!pix)
+        pix = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
+                                        "audio-x-generic",
+                                        48,
+                                        GTK_ICON_LOOKUP_USE_BUILTIN,
+                                        NULL);
+
     if ( pix )
     {
 	notify_notification_set_icon_from_pixbuf (tray->n, pix);
@@ -463,8 +466,8 @@ action_on_hide_confirmed_cb (GtkWidget *widget, gpointer data)
 static gboolean
 delete_event_cb (GtkWidget *widget, GdkEvent *ev, TrayProvider *tray)
 {
-    GtkWidget *dialog, *check, *content_area, *label;
-    GtkWidget *quit, *minimize, *cancel, *img;
+    GtkWidget *dialog, *check, *content_area;
+    GtkWidget *minimize, *img;
     gboolean confirmed, ret_val = TRUE, minimize_to_tray;
     
     confirmed = read_entry_bool ("ACTION_CONFIRMED_ON_DELETE", FALSE);
@@ -474,35 +477,38 @@ delete_event_cb (GtkWidget *widget, GdkEvent *ev, TrayProvider *tray)
     {
 	return minimize_to_tray ? gtk_widget_hide_on_delete (widget) : FALSE;
     }
+
+	dialog = gtk_message_dialog_new(GTK_WINDOW(widget),
+	                                GTK_DIALOG_MODAL,
+	                                GTK_MESSAGE_QUESTION,
+	                                GTK_BUTTONS_NONE,
+	                                NULL);
+	                                
+    gtk_message_dialog_set_markup  (GTK_MESSAGE_DIALOG(dialog),
+                                    g_strdup_printf("<big><b>%s</b></big>", _("Are you sure you want to quit?")));
+                                    
+    gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG(dialog),
+        _("Parole can be minimized to the system tray instead."));
     
-    dialog = gtk_dialog_new_with_buttons (_("Minimize to tray?"), NULL, GTK_DIALOG_MODAL,
-					  NULL);
-    
-    gtk_dialog_set_default_response (GTK_DIALOG (dialog),
-				     GTK_RESPONSE_OK);
-			
-    minimize = gtk_button_new_with_label (_("Minimize to tray"));
+    minimize = gtk_dialog_add_button(   GTK_DIALOG(dialog),
+                                        _("Minimize to tray"),
+                                        GTK_RESPONSE_OK );
     img = gtk_image_new_from_stock (GTK_STOCK_GO_DOWN, GTK_ICON_SIZE_BUTTON);
     gtk_button_set_image (GTK_BUTTON (minimize), img);
-    gtk_widget_show (minimize);
-    gtk_dialog_add_action_widget (GTK_DIALOG (dialog), minimize, GTK_RESPONSE_OK);
     
-    quit = gtk_button_new_from_stock (GTK_STOCK_QUIT);
-    gtk_widget_show (quit);
-    gtk_dialog_add_action_widget (GTK_DIALOG (dialog), quit, GTK_RESPONSE_CLOSE);
+    gtk_dialog_add_button(  GTK_DIALOG(dialog),
+                            GTK_STOCK_CANCEL,
+                            GTK_RESPONSE_CANCEL );
     
-    cancel = gtk_button_new_from_stock (GTK_STOCK_CANCEL);
-    gtk_widget_show (cancel);
-    gtk_dialog_add_action_widget (GTK_DIALOG (dialog), cancel, GTK_RESPONSE_CANCEL);
+    gtk_dialog_add_button(  GTK_DIALOG(dialog),
+                            GTK_STOCK_QUIT,
+                            GTK_RESPONSE_CLOSE );
+                                    
+    gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
     
     content_area = gtk_dialog_get_content_area (GTK_DIALOG (dialog));
     
-    label = gtk_label_new (_("Are you sure you want to quit Parole"));
-    gtk_widget_show (label);
-    gtk_box_pack_start_defaults (GTK_BOX (content_area), label) ;
-    
     check = gtk_check_button_new_with_mnemonic (_("Remember my choice"));
-    gtk_widget_show (check);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check), FALSE);
     
     g_signal_connect (check, "toggled",
@@ -510,6 +516,8 @@ delete_event_cb (GtkWidget *widget, GdkEvent *ev, TrayProvider *tray)
 		      
     gtk_box_pack_start_defaults (GTK_BOX (content_area),
 			         check) ;
+			         
+    gtk_widget_show_all( GTK_WIDGET(dialog) );
 
     switch ( gtk_dialog_run (GTK_DIALOG (dialog)) )
     {

@@ -342,7 +342,6 @@ parole_disc_check_cdrom (ParoleDisc *disc, GVolume *volume, const gchar *device)
     MountData *data;
     
 	gchar *name;
-	gchar *label;
 
     TRACE ("device : %s", device);
     
@@ -369,9 +368,8 @@ parole_disc_check_cdrom (ParoleDisc *disc, GVolume *volume, const gchar *device)
 		    data = parole_disc_get_mount_data (disc, "cdda://", device, PAROLE_DISC_CDDA);
 	
 			name = g_volume_get_name (volume);
-			label = g_strdup_printf ("%s '%s'", _("Play Disc"), name);
 		    
-		    parole_disc_show_menu_item (disc, data, label);
+		    parole_disc_show_menu_item (disc, data, name);
 		    g_ptr_array_add (disc->priv->array, data);
 		}
 	    }
