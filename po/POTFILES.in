@@ -20,6 +20,10 @@ src/parole-open-location.c
 src/parole-plugins-manager.c
 src/misc/parole-filters.c
 src/misc/parole-pl-parser.c
+src/plugins/notify/notify-plugin.c
+src/plugins/notify/notify-provider.c
+src/plugins/notify/notify-provider.h
+src/plugins/notify/notify.desktop.in
 src/plugins/tray/tray-plugin.c
 src/plugins/tray/tray-provider.c
 src/plugins/tray/tray-provider.h
