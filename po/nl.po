@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-22 08:18+0000\n"
+"POT-Creation-Date: 2012-12-24 08:27+0000\n"
 "PO-Revision-Date: 2012-07-025 11:55+0200\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch (Flemish)\n"
@@ -106,7 +106,7 @@ msgid "Parole Media Player"
 msgstr "Parole mediaspeler"
 
 #: ../data/interfaces/parole.ui.h:20
-msgid "Pl_ugins"
+msgid "Plugins"
 msgstr "Invoegtoepassingen"
 
 #: ../data/interfaces/parole.ui.h:21
@@ -661,7 +661,7 @@ msgstr "Onbekend nummer"
 msgid "on"
 msgstr "op"
 
-#: ../src/parole-player.c:1700
+#: ../src/parole-player.c:1700 ../src/plugins/notify/notify-provider.c:124
 msgid "Unknown Album"
 msgstr "Onbekend album"
 
@@ -669,7 +669,7 @@ msgstr "Onbekend album"
 msgid "by"
 msgstr "door"
 
-#: ../src/parole-player.c:1711
+#: ../src/parole-player.c:1711 ../src/plugins/notify/notify-provider.c:126
 msgid "Unknown Artist"
 msgstr "Onbekende artiest"
 
@@ -853,6 +853,24 @@ msgstr "Alle ondersteunde bestanden"
 #: ../src/misc/parole-filters.c:205
 msgid "Playlist files"
 msgstr "Speellijstbestanden"
+
+#: ../src/plugins/notify/notify-provider.c:129
+#: ../src/plugins/notify/notify-provider.c:132
+msgid "<i>on</i>"
+msgstr "<i>op</i>"
+
+#: ../src/plugins/notify/notify-provider.c:129
+#: ../src/plugins/notify/notify-provider.c:132
+msgid "<i>by</i>"
+msgstr "<i>door</i>"
+
+#: ../src/plugins/notify/notify.desktop.in.h:1
+msgid "Notify"
+msgstr "Melden"
+
+#: ../src/plugins/notify/notify.desktop.in.h:2
+msgid "Show notifications for currently playing tracks"
+msgstr "Toon meldingen voor thans spelende nummers"
 
 #: ../src/plugins/tray/tray-provider.c:244
 msgid "Tray icon plugin"
