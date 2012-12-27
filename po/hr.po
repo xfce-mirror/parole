@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-21 21:36+0000\n"
+"POT-Creation-Date: 2012-12-27 06:00+0000\n"
 "PO-Revision-Date: 2012-12-13 11:03+0100\n"
 "Last-Translator: Ivica Kolić <ikoli@yahoo.com>\n"
 "Language-Team: Hrvatski <>\n"
@@ -100,8 +100,8 @@ msgid "Parole Media Player"
 msgstr ""
 
 #: ../data/interfaces/parole.ui.h:20
-msgid "Pl_ugins"
-msgstr "Pr_iključci"
+msgid "Plugins"
+msgstr "Priključci"
 
 #: ../data/interfaces/parole.ui.h:21
 msgid "Select Text Subtitles..."
@@ -642,7 +642,7 @@ msgstr "Nepoznata pjesma"
 msgid "on"
 msgstr ""
 
-#: ../src/parole-player.c:1700
+#: ../src/parole-player.c:1700 ../src/plugins/notify/notify-provider.c:124
 msgid "Unknown Album"
 msgstr "Nepoznati album"
 
@@ -650,7 +650,7 @@ msgstr "Nepoznati album"
 msgid "by"
 msgstr ""
 
-#: ../src/parole-player.c:1711
+#: ../src/parole-player.c:1711 ../src/plugins/notify/notify-provider.c:126
 msgid "Unknown Artist"
 msgstr "Nepoznati umjetnik"
 
@@ -834,6 +834,24 @@ msgstr "Sve podržane datoteke"
 #: ../src/misc/parole-filters.c:205
 msgid "Playlist files"
 msgstr "Datoteke liste izvođenja"
+
+#: ../src/plugins/notify/notify-provider.c:129
+#: ../src/plugins/notify/notify-provider.c:132
+msgid "<i>on</i>"
+msgstr ""
+
+#: ../src/plugins/notify/notify-provider.c:129
+#: ../src/plugins/notify/notify-provider.c:132
+msgid "<i>by</i>"
+msgstr ""
+
+#: ../src/plugins/notify/notify.desktop.in.h:1
+msgid "Notify"
+msgstr ""
+
+#: ../src/plugins/notify/notify.desktop.in.h:2
+msgid "Show notifications for currently playing tracks"
+msgstr ""
 
 #: ../src/plugins/tray/tray-provider.c:244
 msgid "Tray icon plugin"
