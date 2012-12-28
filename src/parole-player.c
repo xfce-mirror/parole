@@ -571,7 +571,7 @@ parole_player_reset (ParolePlayer *player)
 	gtk_window_set_title (GTK_WINDOW (player->priv->window), "Parole Media Player");
 	player->priv->audio_list = NULL;
 	player->priv->subtitle_list = NULL;
-	player->priv->current_media_type = PAROLE_MEDIA_TYPE_UNKNOWN;
+	
 	gtk_widget_hide(GTK_WIDGET(player->priv->infobar));
     parole_player_change_range_value (player, 0);
 
@@ -582,8 +582,16 @@ parole_player_reset (ParolePlayer *player)
 	player->priv->row = NULL;
     }
     
+    if (player->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD)
+    {
+        TRACE("CLEAR DVD LIST");
+	    parole_media_list_clear_disc_list (player->priv->list);
+	    TRACE("END CLEAR DVD LIST");
+    }
+	player->priv->current_media_type = PAROLE_MEDIA_TYPE_UNKNOWN;
+    
     parole_media_list_set_playlist_view(player->priv->list, PAROLE_MEDIA_LIST_PLAYLIST_VIEW_STANDARD);
-    //parole_media_list_clear_disc_list (player->priv->list);
+    
 }
 
 static void
@@ -975,10 +983,6 @@ parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *ro
     GtkTreeIter iter;
     GtkTreeModel *model;
 
-    //parole_player_reset (player);
-    
-    //player->priv->row = gtk_tree_row_reference_copy (row);
-    
     model = gtk_tree_row_reference_get_model (row);
     
     if ( gtk_tree_model_get_iter (model, &iter, gtk_tree_row_reference_get_path (row)) )
@@ -1047,9 +1051,19 @@ parole_player_disc_selected_cb (ParoleDisc *disc, const gchar *uri, const gchar 
     player->priv->current_media_type = parole_gst_get_current_stream_type (PAROLE_GST (player->priv->gst));
     
     if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_CDDA )
+    {
         player->priv->wait_for_gst_disc_info = TRUE;
-    
-    parole_media_list_clear_list (player->priv->list);
+        if ( player->priv->row )
+        {
+	    parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, NULL);
+	    gtk_tree_row_reference_free (player->priv->row);
+	    player->priv->row = NULL;
+        }
+        TRACE("CLEAR PLAYLIST");
+        parole_media_list_clear_list (player->priv->list);
+        TRACE("END CLEAR PLAYLIST");
+    }
+    else
     parole_media_list_set_playlist_view(player->priv->list, PAROLE_MEDIA_LIST_PLAYLIST_VIEW_DISC);
 }
 

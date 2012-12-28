@@ -1099,14 +1099,15 @@ void
 parole_media_list_clear_disc_list (ParoleMediaList *list)
 {
     gtk_list_store_clear (GTK_LIST_STORE (list->priv->disc_store));
-    //parole_media_list_set_widget_sensitive (list, FALSE);
 }
 
 void
 parole_media_list_clear_list (ParoleMediaList *list)
 {
+    TRACE("CLEAR START");
     gtk_list_store_clear (GTK_LIST_STORE (list->priv->store));
     parole_media_list_set_widget_sensitive (list, FALSE);
+    TRACE("CLEAR END");
 }
 
 static void

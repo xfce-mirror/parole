@@ -1046,7 +1046,7 @@ parole_gst_tag_list_get_cover_external (ParoleGst *gst)
     const gchar *listing = NULL;
     gchar *lower = NULL;
     gchar *cover = NULL;
-    gchar *cover_filename;
+    gchar *cover_filename = NULL;
     
     g_object_get (G_OBJECT (gst->priv->stream),
 		  "uri", &uri,
@@ -1080,15 +1080,15 @@ parole_gst_tag_list_get_cover_external (ParoleGst *gst)
         if (cover)
         {
             cover_filename = g_build_filename(directory, cover, NULL);
-            g_free(uri);
-            g_free(filename);
-            g_free(directory);
-            g_free(file_dir);
-            g_free(lower);
-            return cover_filename;
+            break;
         }
     }
-    return NULL;
+    g_free(uri);
+    g_free(filename);
+    g_free(directory);
+    g_free(file_dir);
+    g_free(lower);
+    return cover_filename;
 }
 
 static const GValue *
