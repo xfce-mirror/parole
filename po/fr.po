@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ast\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-30 14:15+0000\n"
+"POT-Creation-Date: 2012-12-30 19:36+0000\n"
 "PO-Revision-Date: 2012-12-07 14:44+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -176,7 +176,6 @@ msgid "_Open"
 msgstr "_Ouvrir"
 
 #: ../data/interfaces/playlist.ui.h:1
-#, fuzzy
 msgid "Angle Menu"
 msgstr "Menu angle"
 
@@ -201,9 +200,8 @@ msgid "DVD Name"
 msgstr "Nom DVD"
 
 #: ../data/interfaces/playlist.ui.h:7
-#, fuzzy
 msgid "Disc Playlist"
-msgstr "Liste de lecture"
+msgstr "Liste de lecture Disque"
 
 #: ../data/interfaces/playlist.ui.h:8
 msgid "Play opened files"
@@ -858,9 +856,8 @@ msgstr "Listes de lecture"
 
 #: ../src/plugins/notify/notify-provider.c:129
 #: ../src/plugins/notify/notify-provider.c:132
-#, fuzzy
 msgid "<i>on</i>"
-msgstr "<i>sur</i>"
+msgstr "<i>en</i>"
 
 #: ../src/plugins/notify/notify-provider.c:129
 #: ../src/plugins/notify/notify-provider.c:132
@@ -872,9 +869,8 @@ msgid "Notify"
 msgstr "Prévenir"
 
 #: ../src/plugins/notify/notify.desktop.in.h:2
-#, fuzzy
 msgid "Show notifications for currently playing tracks"
-msgstr "Afficher les notifications pour les pistes en cours de lecture"
+msgstr "Afficher les notifications de la liste de lecture actuelle"
 
 #: ../src/plugins/tray/tray-provider.c:244
 msgid "Tray icon plugin"
@@ -890,9 +886,8 @@ msgid "Are you sure you want to quit?"
 msgstr "Etes vous sur de vouloir quitter ?"
 
 #: ../src/plugins/tray/tray-provider.c:303
-#, fuzzy
 msgid "Parole can be minimized to the system tray instead."
-msgstr " Parole peut être minimisée dans la barre d'état."
+msgstr " Parole peut être minimisée dans la barre d'état à la place."
 
 #: ../src/plugins/tray/tray-provider.c:306
 msgid "Minimize to tray"
