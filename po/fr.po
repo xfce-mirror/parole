@@ -104,7 +104,6 @@ msgid "Parole Media Player"
 msgstr "Lecteur Média Parole"
 
 #: ../data/interfaces/parole.ui.h:20
-#, fuzzy
 msgid "Plugins"
 msgstr "Greffons"
 
@@ -611,9 +610,8 @@ msgid "Media list"
 msgstr "Liste de médias"
 
 #: ../src/parole-medialist.c:1639
-#, fuzzy
 msgid "Chapter list"
-msgstr "Chapitre %i"
+msgstr "Liste des chapitres"
 
 #: ../src/parole-player.c:493
 msgid "Open ISO image"
@@ -888,9 +886,8 @@ msgstr ""
 "Toujours réduire dans la zone de notification lorsque la fenêtre est fermée"
 
 #: ../src/plugins/tray/tray-provider.c:300
-#, fuzzy
 msgid "Are you sure you want to quit?"
-msgstr "Etes vous sur de vouloir quitter Parole"
+msgstr "Etes vous sur de vouloir quitter ?"
 
 #: ../src/plugins/tray/tray-provider.c:303
 #, fuzzy
