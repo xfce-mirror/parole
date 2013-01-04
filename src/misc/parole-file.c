@@ -183,7 +183,7 @@ parole_file_constructed (GObject *object)
     {
         priv->directory = NULL;
         priv->uri = g_strdup(filename);
-        priv->content_type = "cdda";
+        priv->content_type = g_strdup("cdda");
         g_free(filename);
         return;
     }
@@ -192,7 +192,7 @@ parole_file_constructed (GObject *object)
     {
         priv->directory = NULL;
         priv->uri = "dvd:/";
-        priv->content_type = "dvd";
+        priv->content_type = g_strdup("dvd");
         g_free(filename);
         return;
     }
