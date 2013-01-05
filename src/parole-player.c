@@ -2387,8 +2387,8 @@ static gboolean
 parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
 {
     GtkWidget *focused;
-    gdouble seek_short = 10, seek_long = 600;
-    //gdouble seek_medium = 60;
+    /* Seek duration in seconds */
+    gdouble seek_short = 10, seek_medium = 60, seek_long = 600;
     
     gboolean ret_val = FALSE;
     
@@ -2420,24 +2420,20 @@ parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
     case GDK_Right:
 	    /* Media seekable ?*/
 	    if ( GTK_WIDGET_SENSITIVE (player->priv->range) )
-		parole_player_seekf_cb (NULL, player, seek_short);
+	    {
+		if (ev->state & GDK_CONTROL_MASK) parole_player_seekf_cb (NULL, player, seek_medium);
+		else parole_player_seekf_cb (NULL, player, seek_short);
+	    }
 	    ret_val = TRUE;
 	    break;
 	case GDK_Left:
 	    if ( GTK_WIDGET_SENSITIVE (player->priv->range) )
-		parole_player_seekb_cb (NULL, player, seek_short);
+	    {
+		if (ev->state & GDK_CONTROL_MASK) parole_player_seekb_cb (NULL, player, seek_medium);
+		else parole_player_seekb_cb (NULL, player, seek_short);
+	    }
 	    ret_val = TRUE;
 	    break;
-	/*case GDK_Up:
-	    if ( GTK_WIDGET_SENSITIVE (player->priv->range) )
-		parole_player_seekf_cb (NULL, player, seek_medium);
-	    ret_val = TRUE;
-	    break;
-	case GDK_Down:
-	    if ( GTK_WIDGET_SENSITIVE (player->priv->range) )
-		parole_player_seekb_cb (NULL, player, seek_medium);
-	    ret_val = TRUE;
-	    break;*/
 	case GDK_Page_Down:
 	    if ( GTK_WIDGET_SENSITIVE (player->priv->range) )
 		parole_player_seekb_cb (NULL, player, seek_long);
