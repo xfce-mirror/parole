@@ -9,7 +9,7 @@
     <property name="default_width">680</property>
     <property name="default_height">480</property>
     <property name="destroy_with_parent">True</property>
-    <property name="type_hint">normal</property>
+    <property name="type_hint">dialog</property>
     <signal name="destroy" handler="parole_media_chooser_destroy_cb" swapped="no"/>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox">
