@@ -1063,8 +1063,8 @@ parole_player_disc_selected_cb (ParoleDisc *disc, const gchar *uri, const gchar 
         parole_media_list_clear_list (player->priv->list);
         TRACE("END CLEAR PLAYLIST");
     }
-    else
-    parole_media_list_set_playlist_view(player->priv->list, PAROLE_MEDIA_LIST_PLAYLIST_VIEW_DISC);
+    else if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD )
+        parole_media_list_set_playlist_view(player->priv->list, PAROLE_MEDIA_LIST_PLAYLIST_VIEW_DISC);
 }
 
 static void

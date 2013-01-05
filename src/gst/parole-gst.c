@@ -1755,7 +1755,6 @@ parole_gst_button_press_event (GtkWidget *widget, GdkEventButton *ev)
     {
 	nav = GST_NAVIGATION (gst->priv->video_sink);
 	gst_navigation_send_mouse_event (nav, "mouse-button-press", ev->button, ev->x, ev->y);
-	//ret = TRUE;
     }
     
     if (GTK_WIDGET_CLASS (parole_gst_parent_class)->button_press_event)
@@ -1818,7 +1817,6 @@ parole_gst_change_dvd_chapter (ParoleGst *gst, gint level)
 {
     GstFormat format;
 
-    // FIXME: Do we really need to get the nick each time?
     format = gst_format_get_by_nick ("chapter");
     
     parole_gst_seek_by_format (gst, format, level);
