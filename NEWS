@@ -1,9 +1,29 @@
+0.4.0
+=======
+- Fixed build bugs #9219, #9226
+- Fixed fullscreen controls (bug #9270)
+- Fixed screensaver inhibition (bug #7407)
+- Fixed freezing with subtitles (bug #9194)
+- Fixed skipping every second ogg-vorbis in playlist (bug #9562)
+- Added embedded mode (bug #8506)
+- Added missing codec installation (bug #8469)
+- Added custom subtitle management (bug #6731)
+- Added CD and DVD playlist support
+- Added DVD navigation support
+- Added Recent Items in open menu
+- Replaced Stream Properties plugin with AudioBox widget
+- Moved notifications from system tray plugin to notify plugin.
+- Added album artwork and details to notifications.
+- Ported configuration to Xfconf
+- Interface refinements
+- Keyboard shortcut refinements (bug #9317)
+
 0.3.0.3
 =======
- - Maintenance release
- - Fixed --enable-gtk-doc
- - Fixed CD-Drive icon disappearing after drive eject
- - Small interface tweaks to Plugins dialog.
+- Maintenance release
+- Fixed --enable-gtk-doc
+- Fixed CD-Drive icon disappearing after drive eject
+- Small interface tweaks to Plugins dialog.
 
 0.3.0.2
 =======

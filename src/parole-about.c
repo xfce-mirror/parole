@@ -61,7 +61,7 @@ void parole_about (GtkWindow *parent)
     /* Copyright information */
     static const gchar *copyrights = 
     "Copyright \302\251 2009-2011 Ali Abdallah\n"
-    "Copyright \302\251 2012 Sean Davis, Simon Steinbeiss";
+    "Copyright \302\251 2012-2013 Sean Davis, Simon Steinbeiss";
     
     gtk_show_about_dialog (parent,
     "authors", authors,

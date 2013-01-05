@@ -1,3 +1,23 @@
+2013-01-05: bluesabre@xfce.org
+    * Development release 0.4.0
+    * Fixed build bugs #9219, #9226
+    * Fixed fullscreen controls (bug #9270)
+    * Fixed screensaver inhibition (bug #7407)
+    * Fixed freezing with subtitles (bug #9194)
+    * Fixed skipping every second ogg-vorbis in playlist (bug #9562)
+    * Added embedded mode (bug #8506)
+    * Added missing codec installation (bug #8469)
+    * Added custom subtitle management (bug #6731)
+    * Added CD and DVD playlist support
+    * Added DVD navigation support
+    * Added Recent Items in open menu
+    * Replaced Stream Properties plugin with AudioBox widget
+    * Moved notifications from system tray plugin to notify plugin.
+    * Added album artwork and details to notifications.
+    * Ported configuration to Xfconf
+    * Interface refinements
+    * Keyboard shortcut refinements (bug #9317)
+
 2012-08-21: bluesabre@xfce.org
     * Bugfix release 0.3.0.2
     * Fixed --enable-gtk-doc
