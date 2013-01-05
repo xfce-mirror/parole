@@ -1275,9 +1275,12 @@ parole_player_save_uri (ParolePlayer *player, const ParoleStream *stream)
 	}
     }
     
-    if ( save )
+    if ( media_type != PAROLE_MEDIA_TYPE_CDDA && media_type != PAROLE_MEDIA_TYPE_DVD )
     {
-	parole_insert_line_history (uri);
+        if ( save )
+        {
+	        parole_insert_line_history (uri);
+        }
     }
     
     g_strfreev (lines);
