@@ -640,29 +640,25 @@ msgid "GStreamer backend error"
 msgstr "Грешка Гстример позадине"
 
 #: ../src/parole-player.c:1704
-#, fuzzy
 msgid "Unknown Song"
-msgstr "Непознато"
+msgstr "Непозната песма"
 
 #: ../src/parole-player.c:1709 ../src/parole-player.c:1711
 #: ../src/parole-player.c:1717
-#, fuzzy
 msgid "on"
-msgstr "Ништа"
+msgstr "на"
 
 #: ../src/parole-player.c:1717 ../src/plugins/notify/notify-provider.c:124
-#, fuzzy
 msgid "Unknown Album"
-msgstr "Непознато"
+msgstr "Непознат албум"
 
 #: ../src/parole-player.c:1724 ../src/parole-player.c:1728
 msgid "by"
-msgstr ""
+msgstr "од"
 
 #: ../src/parole-player.c:1728 ../src/plugins/notify/notify-provider.c:126
-#, fuzzy
 msgid "Unknown Artist"
-msgstr "Непознато"
+msgstr "Непознат извођач"
 
 #: ../src/parole-player.c:1763
 msgid "Buffering"
@@ -670,7 +666,7 @@ msgstr "Смештам у међумеморију"
 
 #: ../src/parole-player.c:2872
 msgid "Clear recent items..."
-msgstr ""
+msgstr "Очисти скорашње ставке..."
 
 #: ../src/parole-about.c:74
 msgid "translator-credits"
@@ -850,20 +846,20 @@ msgstr "Датотеке списка нумера"
 #: ../src/plugins/notify/notify-provider.c:129
 #: ../src/plugins/notify/notify-provider.c:132
 msgid "<i>on</i>"
-msgstr ""
+msgstr "<i>на</i>"
 
 #: ../src/plugins/notify/notify-provider.c:129
 #: ../src/plugins/notify/notify-provider.c:132
 msgid "<i>by</i>"
-msgstr ""
+msgstr "<i>од</i>"
 
 #: ../src/plugins/notify/notify.desktop.in.h:1
 msgid "Notify"
-msgstr ""
+msgstr "Обавести"
 
 #: ../src/plugins/notify/notify.desktop.in.h:2
 msgid "Show notifications for currently playing tracks"
-msgstr ""
+msgstr "Приказуј обавештења о тренутно извођеним нумерама"
 
 #: ../src/plugins/tray/tray-provider.c:244
 msgid "Tray icon plugin"
@@ -874,13 +870,12 @@ msgid "Always minimize to tray when window is closed"
 msgstr "Увек спусти у системску касету при затварању прозора"
 
 #: ../src/plugins/tray/tray-provider.c:300
-#, fuzzy
 msgid "Are you sure you want to quit?"
-msgstr "Да ли сте сигурни да желите да напустите Часноречца"
+msgstr "Да ли сте сигурни да желите да изађете"
 
 #: ../src/plugins/tray/tray-provider.c:303
 msgid "Parole can be minimized to the system tray instead."
-msgstr ""
+msgstr "Часноречац може бити умањен у системску касету"
 
 #: ../src/plugins/tray/tray-provider.c:306
 msgid "Minimize to tray"
