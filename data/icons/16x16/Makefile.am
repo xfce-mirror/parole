@@ -5,4 +5,4 @@ Datadir = $(datadir)/icons/hicolor/16x16/apps
 
 Data_DATA =				\
 	parole.png			\
-	extension.png
+	parole-extension.png
