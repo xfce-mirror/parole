@@ -172,12 +172,11 @@ msgstr "_Otwórz"
 
 #: ../data/interfaces/playlist.ui.h:1
 msgid "Angle Menu"
-msgstr ""
+msgstr "Menu położenia"
 
 #: ../data/interfaces/playlist.ui.h:2
-#, fuzzy
 msgid "Audio Menu"
-msgstr "Pliki dźwiękowe"
+msgstr "Menu audio"
 
 #: ../data/interfaces/playlist.ui.h:3
 msgid "Chapter Menu"
@@ -633,7 +632,7 @@ msgstr "Wyczyść ostatnie elementy"
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
-msgstr ""
+msgstr "Czy na pewno chcesz wyczyścić historię ostatnich elementów? Ta operacja nie może zostać cofnięta."
 
 #: ../src/parole-player.c:1219 ../src/parole-player.c:1351
 msgid "Media stream is not seekable"
@@ -848,20 +847,20 @@ msgstr "Pliki list odtwarzania"
 #: ../src/plugins/notify/notify-provider.c:129
 #: ../src/plugins/notify/notify-provider.c:132
 msgid "<i>on</i>"
-msgstr ""
+msgstr "<i>z</i>"
 
 #: ../src/plugins/notify/notify-provider.c:129
 #: ../src/plugins/notify/notify-provider.c:132
 msgid "<i>by</i>"
-msgstr ""
+msgstr "<i>autorstwa</i>"
 
 #: ../src/plugins/notify/notify.desktop.in.h:1
 msgid "Notify"
-msgstr ""
+msgstr "Powiadom"
 
 #: ../src/plugins/notify/notify.desktop.in.h:2
 msgid "Show notifications for currently playing tracks"
-msgstr ""
+msgstr "Wyświetl powiadomienia dla obecnie odtwarzanych ścieżek"
 
 #: ../src/plugins/tray/tray-provider.c:244
 msgid "Tray icon plugin"
@@ -872,13 +871,12 @@ msgid "Always minimize to tray when window is closed"
 msgstr "Minimalizowanie do obszaru powiadamiania po zamknięciu okna"
 
 #: ../src/plugins/tray/tray-provider.c:300
-#, fuzzy
 msgid "Are you sure you want to quit?"
-msgstr "Zakończyć działanie programu?"
+msgstr "Czy na pewno chcesz zakończyć?"
 
 #: ../src/plugins/tray/tray-provider.c:303
 msgid "Parole can be minimized to the system tray instead."
-msgstr ""
+msgstr "Parole może zamiast tego zostać zminimalizowanym do tacki systemowej."
 
 #: ../src/plugins/tray/tray-provider.c:306
 msgid "Minimize to tray"
