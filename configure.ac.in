@@ -118,15 +118,6 @@ XDT_CHECK_PACKAGE([XFCONF], [libxfconf-0], [4.10.0])
 
 XDT_CHECK_LIBX11()
 
-#=======================================================#
-#           Check for availability of libnotify         #
-#=======================================================#
-LIBNOTIFY_FOUND="no"
-XDT_CHECK_OPTIONAL_PACKAGE([LIBNOTIFY],
-                       [libnotify], [libnotify_minimum_version],
-                       [libnotify], 
-                       [libnotify library], [yes])
-
 # Taken from Gnome system tools
 #=======================================================#
 #              Pixmaps  files              		#
