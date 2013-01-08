@@ -234,8 +234,6 @@ parole_gst_realize (GtkWidget *widget)
     GdkColor color;
     gint mask;
     
-    g_print("realize\n");
-    
     GTK_WIDGET_SET_FLAGS (widget, GTK_REALIZED);
     gst = PAROLE_GST (widget);
     
@@ -507,8 +505,6 @@ static void
 parole_gst_set_x_overlay (ParoleGst *gst)
 {
     GstElement *video_sink;
-    
-    g_print("eh?\n");
     
     g_object_get (G_OBJECT (gst->priv->playbin),
 		  "video-sink", &video_sink,
@@ -1562,10 +1558,6 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
 #endif
     GstInstallPluginsContext *ctx;
     gint response;
-#ifdef GDK_WINDOWING_X11
-    GtkWidget *parent;
-	GdkDisplay *display;
-#endif
     
     gst = PAROLE_GST (data);
 
@@ -1661,17 +1653,11 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
 	             ctx = gst_install_plugins_context_new();
 	             
 #ifdef GDK_WINDOWING_X11
-	            display = gdk_display_get_default ();
-
                 if (gtk_widget_get_window (GTK_WIDGET (gst)) != NULL &&
                     gtk_widget_get_realized (GTK_WIDGET (gst)))
                 {
-	                gulong xid = 0;
-	                
-	                parent = gtk_widget_get_toplevel (GTK_WIDGET (gst));
-
-                    xid = GDK_WINDOW_XID(gtk_widget_get_window (parent));
-                    gst_install_plugins_context_set_xid (ctx, xid);
+                    gst_install_plugins_context_set_xid (ctx, 
+                        GDK_WINDOW_XID (GTK_WIDGET (gst)->window));
                 }
 #endif /* GDK_WINDOWING_X11 */
 	             
@@ -2139,20 +2125,15 @@ parole_gst_constructed (GObject *object)
     
     gst = PAROLE_GST (object);
     
-    g_print("start\n");
-    
     g_object_get (G_OBJECT (gst->priv->conf),
 		  "enable-xv", &enable_xv,
 		  NULL);
-		  
-    g_print("playbin\n");
     
 #if GST_CHECK_VERSION(1, 0, 0)
     gst->priv->playbin = gst_element_factory_make ("playbin", "player");
 #else
     gst->priv->playbin = gst_element_factory_make ("playbin2", "player");
 #endif
-    g_print("null?\n");
  
     if ( G_UNLIKELY (gst->priv->playbin == NULL) )
     {
@@ -2166,13 +2147,11 @@ parole_gst_constructed (GObject *object)
 	g_error ("playbin load failed");
     }
     
-    g_print("xv\n");
     if (enable_xv)
     {
 	gst->priv->video_sink = gst_element_factory_make ("xvimagesink", "video");
 	gst->priv->xvimage_sink = TRUE;
     }
-    g_print("ximagesink\n");
     
     if ( G_UNLIKELY (gst->priv->video_sink == NULL) )
     {
