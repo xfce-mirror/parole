@@ -75,6 +75,26 @@ AC_CHECK_HEADERS([errno.h signal.h stddef.h sys/ioctl.h fcntl.h\
 
 XDT_I18N([@LINGUAS@])
 
+dnl gstreamer version
+AC_ARG_WITH([gstreamer],
+            [AS_HELP_STRING([--with-gstreamer=0.10|1.0],[which gstreamer version to compile against (default: 0.10)])],
+            [case "$with_gstreamer" in
+                0.10|1.0) ;;
+                *) AC_MSG_ERROR([invalid gstreamer version specified]) ;;
+             esac],
+            [with_gstreamer=0.10]
+)
+
+case "$with_gstreamer" in
+  0.10) gstreamer_api_version=0.10
+       gstreamer_minimum_version=0.10.31
+       ;;
+  1.0) gstreamer_api_version=1.0
+       gstreamer_minimum_version=0.11.90
+       ;;
+esac
+AC_DEFINE_UNQUOTED(GSTREAMER_API_VERSION, $gstreamer_api_version, [Define the GStreamer+ API version])
+
 #==================================================== #
 #          Check for required packages 		      #
 #=====================================================#
@@ -97,11 +117,12 @@ XDT_CHECK_PACKAGE([GTHREAD], [gthread-2.0], [glib_minimum_version])
 XDT_CHECK_PACKAGE([GMODULE], [gmodule-2.0], [glib_minimum_version])
 XDT_CHECK_PACKAGE([GIO], [gio-2.0], [glib_minimum_version])
 
-XDT_CHECK_PACKAGE([GST], [gstreamer-0.10], [gstreamer_minimum_version])
-XDT_CHECK_PACKAGE([GST_BASE], [gstreamer-base-0.10], [gstreamer_minimum_version])
-XDT_CHECK_PACKAGE([GST_VIDEO], [gstreamer-video-0.10], [gstreamer_minimum_version])
-XDT_CHECK_PACKAGE([GST_INTERFACES], [gstreamer-interfaces-0.10], [gstreamer_minimum_version])
-XDT_CHECK_PACKAGE([GST_PBUTILS], [gstreamer-pbutils-0.10], [0.10.2])
+XDT_CHECK_PACKAGE([GST], [gstreamer-${gstreamer_api_version}], [gstreamer_minimum_version])
+XDT_CHECK_PACKAGE([GST_BASE], [gstreamer-base-${gstreamer_api_version}], [gstreamer_minimum_version])
+XDT_CHECK_PACKAGE([GST_VIDEO], [gstreamer-video-${gstreamer_api_version}], [gstreamer_minimum_version])
+if test x"${gstreamer_api_version}" = x"0.10"; then
+    XDT_CHECK_PACKAGE([GST_INTERFACES], [gstreamer-interfaces-${gstreamer_api_version}], [gstreamer_minimum_version])
+fi
 
 GST_MAJORMINOR=0.10
 GST_REQS=0.10.30

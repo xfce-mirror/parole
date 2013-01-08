@@ -28,8 +28,15 @@
 
 #include <glib.h>
 
-#include <gst/interfaces/xoverlay.h>
-#include <gst/interfaces/navigation.h>
+#include "parole-gst.h"
+
+#if GST_CHECK_VERSION(1, 0, 0)
+#include <gst/video/videooverlay.h>
+#include <gst/video/navigation.h>
+#else
+ #include <gst/interfaces/xoverlay.h>
+ #include <gst/interfaces/navigation.h>
+#endif
 #include <gst/pbutils/missing-plugins.h>
 #include <gst/pbutils/install-plugins.h>
 
@@ -40,8 +47,6 @@
 #include <libxfce4ui/libxfce4ui.h>
 
 #include <gdk/gdkx.h>
-
-#include "parole-gst.h"
 
 #include "common/parole-common.h"
 
@@ -228,6 +233,8 @@ parole_gst_realize (GtkWidget *widget)
     GdkWindowAttr attr;
     GdkColor color;
     gint mask;
+    
+    g_print("realize\n");
     
     GTK_WIDGET_SET_FLAGS (widget, GTK_REALIZED);
     gst = PAROLE_GST (widget);
@@ -501,17 +508,21 @@ parole_gst_set_x_overlay (ParoleGst *gst)
 {
     GstElement *video_sink;
     
+    g_print("eh?\n");
+    
     g_object_get (G_OBJECT (gst->priv->playbin),
 		  "video-sink", &video_sink,
 		  NULL);
 		  
     g_assert (video_sink != NULL);
     
-    if ( GDK_IS_WINDOW (GTK_WIDGET (gst)->window) )
-	gst_x_overlay_set_xwindow_id (GST_X_OVERLAY (video_sink),
-				      GDK_WINDOW_XWINDOW (GTK_WIDGET (gst)->window));
-    
-    gst_object_unref (video_sink);
+#if GST_CHECK_VERSION(1, 0, 0)
+	gst_video_overlay_set_window_handle (GST_VIDEO_OVERLAY (video_sink),
+				      GDK_WINDOW_XID (GTK_WIDGET (gst)->window));
+#else
+ 	gst_x_overlay_set_xwindow_id (GST_X_OVERLAY (video_sink),
+ 				      GDK_WINDOW_XWINDOW (GTK_WIDGET (gst)->window));
+#endif
     
 }
 
@@ -540,14 +551,22 @@ parole_gst_expose_event (GtkWidget *widget, GdkEventExpose *ev)
 	case GST_STATE_PLAYING:
 	    if ( playing_video || gst->priv->vis_loaded)
 	    {
-		gst_x_overlay_expose (GST_X_OVERLAY (gst->priv->video_sink));
+#if GST_CHECK_VERSION(1, 0, 0)
+		gst_video_overlay_expose (GST_VIDEO_OVERLAY (gst->priv->video_sink));
+#else
+ 		gst_x_overlay_expose (GST_X_OVERLAY (gst->priv->video_sink));
+#endif
 	    }
 	    else
 		parole_gst_draw_logo (gst);
 	    break;
 	case GST_STATE_PAUSED:
 	    if ( playing_video || gst->priv->vis_loaded || gst->priv->target == GST_STATE_PLAYING )
-		gst_x_overlay_expose (GST_X_OVERLAY (gst->priv->video_sink));
+#if GST_CHECK_VERSION(1, 0, 0)
+		gst_video_overlay_expose (GST_VIDEO_OVERLAY (gst->priv->video_sink));
+#else
+ 		gst_x_overlay_expose (GST_X_OVERLAY (gst->priv->video_sink));
+#endif
 	    else
 		parole_gst_draw_logo (gst);
 	    break;
@@ -555,7 +574,11 @@ parole_gst_expose_event (GtkWidget *widget, GdkEventExpose *ev)
 	    if (gst->priv->target != GST_STATE_PLAYING)
 		parole_gst_draw_logo (gst);
 	    else
-		gst_x_overlay_expose (GST_X_OVERLAY (gst->priv->video_sink));
+#if GST_CHECK_VERSION(1, 0, 0)
+		gst_video_overlay_expose (GST_VIDEO_OVERLAY (gst->priv->video_sink));
+#else
+ 		gst_x_overlay_expose (GST_X_OVERLAY (gst->priv->video_sink));
+#endif
 	    break;
 	case GST_STATE_NULL:
 	case GST_STATE_VOID_PENDING:
@@ -622,7 +645,11 @@ parole_gst_tick_timeout (gpointer data)
 		  "duration", &duration,
 		  NULL);
     
-    gst_element_query_position (gst->priv->playbin, &format, &pos);
+#if GST_CHECK_VERSION(1, 0, 0)
+    gst_element_query_position (gst->priv->playbin, format, &pos);
+#else
+     gst_element_query_position (gst->priv->playbin, &format, &pos);
+#endif
     
     if ( G_UNLIKELY (format != GST_FORMAT_TIME ) )
 	goto out;
@@ -682,7 +709,11 @@ parole_gst_query_duration (ParoleGst *gst)
     gst_time = GST_FORMAT_TIME;
     
     gst_element_query_duration (gst->priv->playbin, 
-				&gst_time,
+#if GST_CHECK_VERSION(1, 0, 0)
+				gst_time,
+#else
+ 				&gst_time,
+#endif
 				&absolute_duration);
     
     if (gst_time == GST_FORMAT_TIME)
@@ -777,7 +808,11 @@ parole_gst_load_subtitle (ParoleGst *gst)
 static void
 parole_gst_get_pad_capabilities (GObject *object, GParamSpec *pspec, ParoleGst *gst)
 {
+#if GST_CHECK_VERSION(1, 0, 0)
+    GstCaps *caps;
+#else
     GstPad *pad;
+#endif
     GstStructure *st;
     gint width;
     gint height;
@@ -785,12 +820,21 @@ parole_gst_get_pad_capabilities (GObject *object, GParamSpec *pspec, ParoleGst *
     guint den;
     const GValue *value;
     
-    pad = GST_PAD (object);
+#if GST_CHECK_VERSION(1, 0, 0)
+    caps = GST_CAPS (object);
     
-    if ( !GST_IS_PAD (pad) || !GST_PAD_CAPS (pad) )
+    if ( !GST_IS_CAPS (caps) || !GST_CAPS (caps) )
 	return;
     
+    st = gst_caps_get_structure (GST_CAPS (caps), 0);
+#else
+    pad = GST_PAD (object);
+     
+    if ( !GST_IS_PAD (pad) || !GST_PAD_CAPS (pad) )
+ 	return;
+     
     st = gst_caps_get_structure (GST_PAD_CAPS (pad), 0);
+#endif
     
     if ( st )
     {
@@ -842,8 +886,12 @@ parole_gst_query_info (ParoleGst *gst)
 	if (videopad)
 	{
 	    GstCaps *caps;
-	    
-	    if ((caps = gst_pad_get_negotiated_caps (videopad)))
+
+#if GST_CHECK_VERSION(1, 0, 0)
+	    if ((caps = gst_pad_get_current_caps (videopad)))
+#else
+ 	    if ((caps = gst_pad_get_negotiated_caps (videopad)))
+#endif
 	    {
 		parole_gst_get_pad_capabilities (G_OBJECT (videopad), NULL, gst);
 		gst_caps_unref (caps);
@@ -1003,11 +1051,19 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 static void
 parole_gst_element_message_sync (GstBus *bus, GstMessage *message, ParoleGst *gst)
 {
+#if GST_CHECK_VERSION(1, 0, 0)
+    if ( !(gst_message_get_structure(message)) )
+#else
     if ( !message->structure )
-	goto out;
-	
+#endif
+ 	goto out;
+ 	
+#if GST_CHECK_VERSION(1, 0, 0)
+    if ( gst_structure_has_name (gst_message_get_structure(message), "prepare-xwindow-id") )
+#else
     if ( gst_structure_has_name (message->structure, "prepare-xwindow-id") )
-	parole_gst_set_x_overlay (gst);
+#endif
+ 	parole_gst_set_x_overlay (gst);
 out:
     ;
 }
@@ -1018,10 +1074,18 @@ parole_gst_buffer_to_pixbuf (GstBuffer *buffer)
   GdkPixbufLoader *loader;
   GdkPixbuf *pixbuf = NULL;
   GError *err = NULL;
+#if GST_CHECK_VERSION (1, 0, 0)
+  GstMapInfo info;
+#endif
 
   loader = gdk_pixbuf_loader_new ();
 
+#if GST_CHECK_VERSION (1, 0, 0)
+  gst_buffer_map (buffer, &info, GST_MAP_READ);
+  if (gdk_pixbuf_loader_write (loader, info.data, info.size, &err) &&
+#else
   if (gdk_pixbuf_loader_write (loader, buffer->data, buffer->size, &err) &&
+#endif
       gdk_pixbuf_loader_close (loader, &err)) {
     pixbuf = gdk_pixbuf_loader_get_pixbuf (loader);
     if (pixbuf)
@@ -1030,6 +1094,10 @@ parole_gst_buffer_to_pixbuf (GstBuffer *buffer)
     GST_WARNING("could not convert tag image to pixbuf: %s", err->message);
     g_error_free (err);
   }
+
+#if GST_CHECK_VERSION (1, 0, 0)
+  gst_buffer_unmap (buffer, &info);
+#endif
 
   g_object_unref (loader);
   return pixbuf;
@@ -1092,14 +1160,21 @@ parole_gst_tag_list_get_cover_external (ParoleGst *gst)
 }
 
 static const GValue *
-parole_gst_tag_list_get_cover_real (GstTagList *tag_list)
+parole_gst_tag_list_get_cover_real (ParoleGst *gst, GstTagList *tag_list)
 {
+#if GST_CHECK_VERSION(1, 0, 0)
+  GstPad *videopad;
+  GstCaps *caps;
+#endif
   const GValue *cover_value = NULL;
   guint i;
 
   for (i = 0; ; i++) {
     const GValue *value;
+#if GST_CHECK_VERSION(1, 0, 0)
+#else
     GstBuffer *buffer;
+#endif
     GstStructure *caps_struct;
     int type;
 
@@ -1109,9 +1184,16 @@ parole_gst_tag_list_get_cover_real (GstTagList *tag_list)
     if (value == NULL)
       break;
 
+#if GST_CHECK_VERSION(1, 0, 0)
+    g_signal_emit_by_name (gst->priv->playbin, "get-video-pad", i, &videopad);
+    caps = gst_pad_query_caps(videopad, NULL);
+    caps_struct = gst_caps_get_structure (caps, 0);
+    gst_caps_unref(caps);
+    g_object_unref (videopad);
+#else
     buffer = gst_value_get_buffer (value);
-
     caps_struct = gst_caps_get_structure (buffer->caps, 0);
+#endif
     
     gst_structure_get_enum (caps_struct,
 			    "image-type",
@@ -1146,7 +1228,7 @@ parole_gst_tag_list_get_cover (ParoleGst *gst, GstTagList *tag_list)
         return pixbuf;
   }
 
-  cover_value = parole_gst_tag_list_get_cover_real (tag_list);
+  cover_value = parole_gst_tag_list_get_cover_real (gst, tag_list);
   /* Fallback to preview */
   if (!cover_value) {
     cover_value = gst_tag_list_get_value_index (tag_list,
@@ -1186,7 +1268,11 @@ parole_gst_get_meta_data_dvd (ParoleGst *gst)
     format = gst_format_get_by_nick ("chapter");
 
     /* Get the number of chapters for the current title. */
+#if GST_CHECK_VERSION(1, 0, 0)
+    if ( gst_element_query_duration (gst->priv->playbin, format, &val) )
+#else
     if ( gst_element_query_duration (gst->priv->playbin, &format, &val) )
+#endif
     {
         n_chapters = (gint) val;
         num_chapters = (guint) n_chapters;
@@ -1204,7 +1290,11 @@ parole_gst_get_meta_data_dvd (ParoleGst *gst)
     
     /* Get the current chapter. */
     val = -1;
+#if GST_CHECK_VERSION(1, 0, 0)
+    if ( gst_element_query_position (gst->priv->playbin, format, &val) )
+#else
     if ( gst_element_query_position (gst->priv->playbin, &format, &val) )
+#endif
     {
         chapter = (guint)(gint) val;
         if ( chapter != current_chapter || num_chapters != 1 )
@@ -1377,7 +1467,11 @@ parole_gst_application_message (ParoleGst *gst, GstMessage *msg)
 {
     const gchar *name;
 
+#if GST_CHECK_VERSION(1, 0, 0)
+    name = gst_structure_get_name (gst_message_get_structure(msg));
+#else
     name = gst_structure_get_name (msg->structure);
+#endif
     
     if ( !name )
 	return;
@@ -1461,7 +1555,11 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
 {
     ParoleGst                *gst;
     GtkDialog                *dialog;
+#if GST_CHECK_VERSION(1, 0, 0)
+    const gchar*                   details[2];
+#else
     gchar*                    details[2];
+#endif
     GstInstallPluginsContext *ctx;
     gint response;
     
@@ -1794,7 +1892,11 @@ parole_gst_seek_by_format (ParoleGst *gst, GstFormat format, gint step)
 {
     gint64 val = 1;
     
+#if GST_CHECK_VERSION(1, 0, 0)
+    if ( gst_element_query_position (gst->priv->playbin, format, &val) )
+#else
     if ( gst_element_query_position (gst->priv->playbin, &format, &val) )
+#endif
     {
 	val += step;
 	if ( !gst_element_seek (gst->priv->playbin, 1.0, format, 
@@ -2017,11 +2119,20 @@ parole_gst_constructed (GObject *object)
     
     gst = PAROLE_GST (object);
     
+    g_print("start\n");
+    
     g_object_get (G_OBJECT (gst->priv->conf),
 		  "enable-xv", &enable_xv,
 		  NULL);
+		  
+    g_print("playbin\n");
     
+#if GST_CHECK_VERSION(1, 0, 0)
+    gst->priv->playbin = gst_element_factory_make ("playbin", "player");
+#else
     gst->priv->playbin = gst_element_factory_make ("playbin2", "player");
+#endif
+    g_print("null?\n");
  
     if ( G_UNLIKELY (gst->priv->playbin == NULL) )
     {
@@ -2035,11 +2146,13 @@ parole_gst_constructed (GObject *object)
 	g_error ("playbin load failed");
     }
     
+    g_print("xv\n");
     if (enable_xv)
     {
 	gst->priv->video_sink = gst_element_factory_make ("xvimagesink", "video");
 	gst->priv->xvimage_sink = TRUE;
     }
+    g_print("ximagesink\n");
     
     if ( G_UNLIKELY (gst->priv->video_sink == NULL) )
     {
@@ -2077,7 +2190,11 @@ parole_gst_constructed (GObject *object)
      * Handling 'prepare-xwindow-id' message async causes XSync 
      * error in some occasions So we handle this message synchronously
      */
-    gst_bus_set_sync_handler (gst->priv->bus, gst_bus_sync_signal_handler, gst);
+    gst_bus_set_sync_handler (gst->priv->bus, gst_bus_sync_signal_handler, gst
+#if GST_CHECK_VERSION (1, 0, 0)
+				, NULL
+#endif
+				);
     gst->priv->sig2 =
 	g_signal_connect (gst->priv->bus, "sync-message::element",
 			  G_CALLBACK (parole_gst_element_message_sync), gst);
@@ -2565,7 +2682,11 @@ gint parole_gst_get_current_cdda_track (ParoleGst *gst)
     
     format = gst_format_get_by_nick ("track");
     
+#if GST_CHECK_VERSION(1, 0, 0)
+    if ( gst_element_query_position (gst->priv->playbin, format, &pos) )
+#else
     if ( gst_element_query_position (gst->priv->playbin, &format, &pos) )
+#endif
     {
 	TRACE ("Pos %" G_GINT64_FORMAT, pos);
 	ret_val = (gint) pos;
@@ -2589,7 +2710,11 @@ gint64 parole_gst_get_stream_position (ParoleGst *gst)
     GstFormat format = GST_FORMAT_TIME;
     gint64 pos;
     
+#if GST_CHECK_VERSION(1, 0, 0)
+    gst_element_query_position (gst->priv->playbin, format, &pos);
+#else
     gst_element_query_position (gst->priv->playbin, &format, &pos);
+#endif
     
     return  pos / GST_SECOND;
 }
