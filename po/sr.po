@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole.master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-06 17:27+0000\n"
+"POT-Creation-Date: 2013-01-10 07:03+0000\n"
 "PO-Revision-Date: 2012-09-30 16:20+0200\n"
 "Last-Translator: Саша Петровић <salepetronije@gmail.com>\n"
 "Language-Team: српски <xfce-i18n@xfce.org>\n"
@@ -35,13 +35,17 @@ msgstr "4:3 (ТВ)"
 msgid ""
 "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
 "Artist</span></big>"
-msgstr "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Непознати извођач</span></big>"
+msgstr ""
+"<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Непознати "
+"извођач</span></big>"
 
 #: ../data/interfaces/parole.ui.h:5
 msgid ""
 "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
 "Album</span></big>"
-msgstr "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Непознати албум</span></big>"
+msgstr ""
+"<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Непознати "
+"албум</span></big>"
 
 #: ../data/interfaces/parole.ui.h:6
 msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
@@ -62,7 +66,7 @@ msgstr "Самостално"
 #: ../data/interfaces/parole.ui.h:11
 #, no-c-format
 msgid "Buffering (0%)"
-msgstr "Смештам у међумеморију(0%)"
+msgstr "Смештам у међумеморију (0%)"
 
 #: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:720
 msgid "Empty"
@@ -123,11 +127,11 @@ msgstr "Преводи:"
 
 #: ../data/interfaces/parole.ui.h:26
 msgid "Volume _Down"
-msgstr "У_тишај"
+msgstr "_Тише"
 
 #: ../data/interfaces/parole.ui.h:27
 msgid "Volume _Up"
-msgstr "П_ојачај"
+msgstr "_Гласније"
 
 #: ../data/interfaces/parole.ui.h:28
 msgid "_Aspect Ratio"
@@ -147,7 +151,7 @@ msgstr "_Датотека"
 
 #: ../data/interfaces/parole.ui.h:32
 msgid "_Mute"
-msgstr "_Утишај"
+msgstr "_Мук"
 
 #: ../data/interfaces/parole.ui.h:33
 msgid "_Repeat"
@@ -202,7 +206,7 @@ msgid "Play opened files"
 msgstr "Пусти отворене датотеке"
 
 #: ../data/interfaces/playlist.ui.h:9 ../src/parole-medialist.c:784
-#: ../src/parole-player.c:2992
+#: ../src/parole-player.c:2990
 msgid "Playlist"
 msgstr "Списак нумера"
 
@@ -383,54 +387,54 @@ msgstr "Порука"
 msgid "Error"
 msgstr "Грeшкa"
 
-#: ../src/gst/parole-gst.c:1238 ../src/parole-medialist.c:356
+#: ../src/gst/parole-gst.c:1361 ../src/parole-medialist.c:356
 #, c-format
 msgid "Track %i"
 msgstr "Звучна нумера #%d"
 
-#: ../src/gst/parole-gst.c:1241
+#: ../src/gst/parole-gst.c:1364
 msgid "Audio CD"
 msgstr "Звучни ЦД"
 
-#: ../src/gst/parole-gst.c:1441
+#: ../src/gst/parole-gst.c:1568
 msgid "Additional software is required."
 msgstr "Потребни су додатни програми"
 
-#: ../src/gst/parole-gst.c:1445
+#: ../src/gst/parole-gst.c:1572
 msgid "Don't Install"
 msgstr "Не уграђуј"
 
-#: ../src/gst/parole-gst.c:1447
+#: ../src/gst/parole-gst.c:1574
 msgid "Install"
 msgstr "Угради"
 
-#: ../src/gst/parole-gst.c:1857
+#: ../src/gst/parole-gst.c:2002
 msgid "Stop"
 msgstr "Заустави"
 
-#: ../src/gst/parole-gst.c:1858
+#: ../src/gst/parole-gst.c:2003
 msgid "The stream is taking too much time to load"
 msgstr "Току је потребно превише времена за учитавање"
 
-#: ../src/gst/parole-gst.c:2029
+#: ../src/gst/parole-gst.c:2178
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Не могу да направим плејбин прикључак Гстримера, проверите инсталацију "
 "Гстримера"
 
-#: ../src/gst/parole-gst.c:2053
+#: ../src/gst/parole-gst.c:2202
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Не могу да учитам видео прикључак Гстримера, проверите инсталацију Гстримера"
 
-#: ../src/gst/parole-gst.c:2645 ../src/gst/parole-gst.c:2649
+#: ../src/gst/parole-gst.c:2806 ../src/gst/parole-gst.c:2810
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Звучна нумера #%d"
 
-#: ../src/gst/parole-gst.c:2683 ../src/gst/parole-gst.c:2687
+#: ../src/gst/parole-gst.c:2844 ../src/gst/parole-gst.c:2848
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Превод #%d"
@@ -629,7 +633,9 @@ msgstr "Очисти скорашње ставке"
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
-msgstr "Да ли сте сигурни да желите очистити скорашње ставке? Чишћење се не може поништити."
+msgstr ""
+"Да ли сте сигурни да желите очистити скорашње ставке? Чишћење се не може "
+"поништити."
 
 #: ../src/parole-player.c:1219 ../src/parole-player.c:1351
 msgid "Media stream is not seekable"
@@ -660,11 +666,11 @@ msgstr "од"
 msgid "Unknown Artist"
 msgstr "Непознат извођач"
 
-#: ../src/parole-player.c:1763
+#: ../src/parole-player.c:1761
 msgid "Buffering"
 msgstr "Смештам у међумеморију"
 
-#: ../src/parole-player.c:2872
+#: ../src/parole-player.c:2870
 msgid "Clear recent items..."
 msgstr "Очисти скорашње ставке..."
 
