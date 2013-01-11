@@ -1,22 +1,21 @@
 # Portuguese translation for parole package.
-# Copyright (C) 2009 THE parole COPYRIGHT HOLDER
+# Copyright (C) 2009-2013 THE parole COPYRIGHT HOLDER
 # This file is distributed under the same license as the parole package.
-# Sérgio Marques <smarquespt@gmail.com>,2009.
+# Sérgio Marques <smarquespt@gmail.com>,2009-2013.
 msgid ""
 msgstr ""
-"Project-Id-Version: parole 2.0.1\n"
+"Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-28 08:45+0000\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Nuno Miguel <nunomgue@gmail.com>\n"
+"Last-Translator: Sérgio Marques <smarquespt@gmail.com>\n"
 "Language-Team: Portuguese\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
+"Language: Portuguese\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-Language: Portuguese\n"
-"X-Poedit-Country: Portugal\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #: ../data/interfaces/parole.ui.h:1
 msgid "16:9 (Widescreen)"
@@ -65,7 +64,7 @@ msgstr "Automático"
 #: ../data/interfaces/parole.ui.h:11
 #, no-c-format
 msgid "Buffering (0%)"
-msgstr "A processar (0%))"
+msgstr "A processar (0%)"
 
 #: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:720
 msgid "Empty"
@@ -102,11 +101,11 @@ msgstr "Reprodutor multimédia Parole"
 
 #: ../data/interfaces/parole.ui.h:20
 msgid "Plugins"
-msgstr "Plug-ins"
+msgstr "Plugins"
 
 #: ../data/interfaces/parole.ui.h:21
 msgid "Select Text Subtitles..."
-msgstr "Selecione o texto das legendas..."
+msgstr "Esolha o texto das legendas..."
 
 #: ../data/interfaces/parole.ui.h:22
 msgid "Show _playlist"
@@ -142,7 +141,7 @@ msgstr "_Editar"
 
 #: ../data/interfaces/parole.ui.h:30
 msgid "_Help"
-msgstr "_Ajuda"
+msgstr "Aj_uda"
 
 #: ../data/interfaces/parole.ui.h:31
 msgid "_Media"
@@ -216,7 +215,7 @@ msgstr "Lembrar lista de reprodução"
 
 #: ../data/interfaces/playlist.ui.h:11
 msgid "Repeat"
-msgstr "_Repetir"
+msgstr "Repetir"
 
 #: ../data/interfaces/playlist.ui.h:12
 msgid "Replace playlist when opening files"
@@ -224,7 +223,7 @@ msgstr "Substituir lista de reprodução ao abrir ficheiros"
 
 #: ../data/interfaces/playlist.ui.h:13
 msgid "Shuffle"
-msgstr "_Baralhar"
+msgstr "Baralhar"
 
 #: ../data/interfaces/playlist.ui.h:14
 msgid "Title Menu"
@@ -248,11 +247,11 @@ msgstr "Expandir o leitor multimédia"
 
 #: ../data/interfaces/plugins.ui.h:5
 msgid "Parole Plugins"
-msgstr "\"Plug-ins\" Parole"
+msgstr "Plugins Parole"
 
 #: ../data/interfaces/plugins.ui.h:6
 msgid "Plugin"
-msgstr "\"Plugin\""
+msgstr "Plugin"
 
 #: ../data/interfaces/plugins.ui.h:7
 msgid "Visit Website"
@@ -360,7 +359,7 @@ msgstr "Por extensão"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "Select File Types (By Extension)"
-msgstr "Selecione os tipos de ficheiro (por extensão)"
+msgstr "Escolha os tipos de ficheiro (por extensão)"
 
 #: ../data/interfaces/open-location.ui.h:1
 msgid "<big><b>Open Network Location</b></big>"
@@ -419,15 +418,15 @@ msgstr "A emissão está a levar muito tempo a carregar"
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
-"Incapaz de carregar o \"plugin\" playbin GStreamer. Verifique a instalação "
-"GStreamer  "
+"Incapaz de carregar o plugin playbin GStreamer. Verifique a instalação "
+"GStreamer."
 
 #: ../src/gst/parole-gst.c:2055
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
-"Incapaz de carregar o \"plugin\" de vídeo GStreamer. Verifique a instalação "
-"GStreamer  "
+"Incapaz de carregar o plugin de vídeo GStreamer. Verifique a instalação "
+"GStreamer."
 
 #: ../src/gst/parole-gst.c:2647 ../src/gst/parole-gst.c:2651
 #, c-format
@@ -470,7 +469,7 @@ msgstr "Abrir nova instância"
 
 #: ../src/main.c:276
 msgid "Do not load plugins"
-msgstr "Não carregar \"plugins\""
+msgstr "Não carregar plugins"
 
 #: ../src/main.c:277
 msgid "Set Audio-CD/VCD/DVD device path"
@@ -539,7 +538,7 @@ msgstr "Multimédia a reproduzir"
 #: ../src/main.c:342
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
-msgstr "O Parole já está em execução. Use -i para abrir uma nova instância\n"
+msgstr "O Parole já está em execução. Use -i para abrir uma nova instância.\n"
 
 #: ../src/parole-mediachooser.c:213
 msgid "Supported files"
@@ -568,7 +567,7 @@ msgstr "Formato desconhecido"
 
 #: ../src/parole-medialist.c:657
 msgid "Please chooser a supported playlist format"
-msgstr "Por favor, selecione um formato suportado"
+msgstr "Por favor selecione um formato suportado"
 
 #: ../src/parole-medialist.c:709 ../src/parole-plugins-manager.c:352
 msgid "Unknown"
@@ -618,7 +617,7 @@ msgstr "Imagem de DVD"
 #. Build the FileChooser dialog for subtitle selection.
 #: ../src/parole-player.c:905
 msgid "Select Subtitle File"
-msgstr "Selecione o ficheiro de legendas"
+msgstr "Escolha o ficheiro de legendas"
 
 #: ../src/parole-player.c:923
 msgid "Subtitle Files"
@@ -687,7 +686,7 @@ msgstr "Reproduzir disco"
 
 #: ../src/parole-subtitle-encoding.c:165
 msgid "Current Locale"
-msgstr "Idioma atual"
+msgstr "Configuração regional"
 
 #: ../src/parole-subtitle-encoding.c:168 ../src/parole-subtitle-encoding.c:170
 #: ../src/parole-subtitle-encoding.c:172 ../src/parole-subtitle-encoding.c:174
@@ -828,7 +827,7 @@ msgstr "Vietnamita"
 
 #: ../src/parole-plugins-manager.c:391 ../src/parole-plugins-manager.c:392
 msgid "No installed plugins found on this system"
-msgstr "Não foram encontrados \"plugins\" neste sistema"
+msgstr "Não foram encontrados plugins no sistema."
 
 #: ../src/misc/parole-filters.c:90
 msgid "Video"
@@ -866,7 +865,7 @@ msgstr "Mostrar notificação para as faixas em reprodução"
 
 #: ../src/plugins/tray/tray-provider.c:244
 msgid "Tray icon plugin"
-msgstr "\"Plugin\" da área de notificação"
+msgstr "Plugin da área de notificação"
 
 #: ../src/plugins/tray/tray-provider.c:254
 msgid "Always minimize to tray when window is closed"
@@ -878,7 +877,7 @@ msgstr "Tem a certeza que quer sair?"
 
 #: ../src/plugins/tray/tray-provider.c:303
 msgid "Parole can be minimized to the system tray instead."
-msgstr "O Parole também pode ser minimizado para a bandeja do sistema."
+msgstr "O Parole também pode ser minimizado para a área de notificação."
 
 #: ../src/plugins/tray/tray-provider.c:306
 msgid "Minimize to tray"
@@ -904,151 +903,4 @@ msgstr ""
 
 #: ../src/plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
-msgstr "\"Plugin\" gestão de energia"
-
-#~ msgid "<b>Playing:</b>"
-#~ msgstr "<b>A reproduzir:</b>"
-
-#~ msgid "<b>Duration:</b>"
-#~ msgstr "<b>Duração:</b>"
-
-#~ msgid "Enable notification"
-#~ msgstr "Ativar notificação"
-
-#~ msgid "Minimize to tray?"
-#~ msgstr "Minimizar para a área de notificação?"
-
-#~ msgid "Title:"
-#~ msgstr "Título:"
-
-#~ msgid "Artist:"
-#~ msgstr "Artista:"
-
-#~ msgid "Album:"
-#~ msgstr "Álbum:"
-
-#~ msgid "Year:"
-#~ msgstr "Ano:"
-
-#~ msgid "General"
-#~ msgstr "Geral"
-
-#~ msgid "Stream doesn't support tags changes"
-#~ msgstr "A emissão não suporta alterações"
-
-#~ msgid "Save media tags changes"
-#~ msgstr "Gravar alterações dos detalhes"
-
-#~ msgid "Properties"
-#~ msgstr "Propriedades"
-
-#~ msgid "Read media properties"
-#~ msgstr "Ler propriedades multimédia"
-
-#~ msgid "Stream Properties"
-#~ msgstr "Propriedades da emissão"
-
-#~ msgid "<b><big>Song Title</big></b>"
-#~ msgstr "<b><big>Título da faixa</big></b>"
-
-#~ msgid "<big>by Song Artist</big>"
-#~ msgstr "<big>por artista da faixa</big>"
-
-#~ msgid "<big>on Song Album (2012)</big>"
-#~ msgstr "<big>no álbum (2012)</big>"
-
-#~ msgid "Please enter a network URL:"
-#~ msgstr "Por favor indique o URL:"
-
-#~ msgid "Open _location"
-#~ msgstr "Abrir _localização"
-
-#~ msgid "All Files"
-#~ msgstr "Todos os ficheiros"
-
-#~ msgid "Media Player plugins"
-#~ msgstr "\"Plug-ins\" do reprodutor"
-
-#~ msgid "<b>Site:</b>"
-#~ msgstr "<b>Sítio:</b>"
-
-#~ msgid "0:00"
-#~ msgstr "0:00"
-
-#~ msgid "Replace playlist with opened files"
-#~ msgstr "Substituir lista pelos ficheiros abertos"
-
-#~ msgid "Scan folders recursively"
-#~ msgstr "Analisar pastas recursivamente"
-
-#~ msgid "From ISO image"
-#~ msgstr "De uma imagem ISO"
-
-#~ msgid "Sound"
-#~ msgstr "Som"
-
-#~ msgid "Parole Media Chooser"
-#~ msgstr "Seleção do reprodutor Parole"
-
-#~ msgid "Media Player Settings"
-#~ msgstr "Definições do reprodutor"
-
-#~ msgid "<b>Display</b>"
-#~ msgstr "<b>Ecrã</b>"
-
-#~ msgid "<b>Playlist options</b>"
-#~ msgstr "<b>A reproduzir:</b>"
-
-#~ msgid "<b>Subtitles</b>"
-#~ msgstr "<b>Legendas</b>"
-
-#~ msgid "DVD"
-#~ msgstr "DVD"
-
-#~ msgid "Next Chapter"
-#~ msgstr "Capítulo seguinte"
-
-#~ msgid "Previous Chapter"
-#~ msgstr "Capítulo anterior"
-
-#~ msgid "Select Track"
-#~ msgstr "Selecione a faixa"
-
-#~ msgid "Add"
-#~ msgstr "Adicionar"
-
-#~ msgid "Enter the address of a location to open"
-#~ msgstr "Indique o endereço da localização a abrir"
-
-#~ msgid "Open location of media file or live stream"
-#~ msgstr "Abrir localização ou emissão ao vivo"
-
-#~ msgid "Next Track"
-#~ msgstr "Faixa seguinte"
-
-#~ msgid "Stopped"
-#~ msgstr "Parado"
-
-#~ msgid "Finished"
-#~ msgstr "Concluído"
-
-#~ msgid "Paused"
-#~ msgstr "Pausado"
-
-#~ msgid "Playing"
-#~ msgstr "A reproduzir"
-
-#~ msgid "Live stream:"
-#~ msgstr "Emissão ao vivo:"
-
-#~ msgid "Author/Maintainer"
-#~ msgstr "Autor/Desenvolvimento"
-
-#~ msgid "Playing Track"
-#~ msgstr "A reproduzir faixa"
-
-#~ msgid "Set the main window name to the current playing media name."
-#~ msgstr "Utilizar nome do ficheiro como título da janela principal."
-
-#~ msgid "Window Title"
-#~ msgstr "Título da janela"
+msgstr "Plugin gestão de energia"
