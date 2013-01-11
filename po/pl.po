@@ -2,23 +2,25 @@
 # Copyright (C) 2012 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the parole package.
 # Paweł Drożański <pawdro@gmail.com>, 2012.
-# Piotr Sokół <psokol@jabster.pl>, 2012.
-# 
+# Piotr Sokół <psokol@jabster.pl>, 2012, 2013.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Parole master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-08 12:15+0000\n"
-"PO-Revision-Date: 2012-04-19 15:00+0200\n"
+"POT-Creation-Date: 2013-01-11 15:09+0000\n"
+"PO-Revision-Date: 2013-01-11 17:51+0100\n"
 "Last-Translator: Piotr Sokół <psokol@jabster.pl>\n"
 "Language-Team: polski <>\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bits\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : ((n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20)) ? 1 : 2));\n"
+"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : ((n%10>=2 && n%10<=4 && (n"
+"%100<10 || n%100>=20)) ? 1 : 2));\n"
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: POLAND\n"
+"X-Generator: Gtranslator 2.91.5\n"
 
 #: ../data/interfaces/parole.ui.h:1
 msgid "16:9 (Widescreen)"
@@ -36,13 +38,17 @@ msgstr "4:3 (TV)"
 msgid ""
 "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
 "Artist</span></big>"
-msgstr "<big><span color='#BBBBBB'><i>autorstwa</i></span> <span color='#F4F4F4'>Nieznanego artysty</span></big>"
+msgstr ""
+"<big><span color='#BBBBBB'><i>w wykonaniu</i></span> <span "
+"color='#F4F4F4'>Nieznanego wykonawcy</span></big>"
 
 #: ../data/interfaces/parole.ui.h:5
 msgid ""
 "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
 "Album</span></big>"
-msgstr "<big><span color='#BBBBBB'><i>z</i></span> <span color='#F4F4F4'>Nieznanego albumu</span></big>"
+msgstr ""
+"<big><span color='#BBBBBB'><i>z albumu</i></span> <span "
+"color='#F4F4F4'>Nieznanego albumu</span></big>"
 
 #: ../data/interfaces/parole.ui.h:6
 msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
@@ -50,11 +56,11 @@ msgstr "<span color='#F4F4F4'><b><big>Nieznany utwór</big></b></span>"
 
 #: ../data/interfaces/parole.ui.h:7 ../src/misc/parole-filters.c:64
 msgid "Audio"
-msgstr "Pliki dźwiękowe"
+msgstr "Dźwięk"
 
 #: ../data/interfaces/parole.ui.h:8
 msgid "Audio Track:"
-msgstr "Ścieżka audio:"
+msgstr "Ścieżka dźwiękowa:"
 
 #: ../data/interfaces/parole.ui.h:9
 msgid "Auto"
@@ -72,7 +78,7 @@ msgstr "Pusty"
 #: ../data/interfaces/parole.ui.h:13 ../src/parole-disc.c:110
 #: ../src/parole-disc.c:156
 msgid "Insert Disc"
-msgstr "Włóż dysk"
+msgstr "Proszę wsunąć płytę"
 
 #: ../data/interfaces/parole.ui.h:14
 msgid "Languages"
@@ -92,7 +98,7 @@ msgstr "Otwórz ostatnie"
 
 #: ../data/interfaces/parole.ui.h:18
 msgid "Open _Location"
-msgstr "Otwórz _położenie"
+msgstr "Otwórz p_ołożenie"
 
 #: ../data/interfaces/parole.ui.h:19 ../src/parole-about.c:68
 msgid "Parole Media Player"
@@ -104,11 +110,11 @@ msgstr "Wtyczki"
 
 #: ../data/interfaces/parole.ui.h:21
 msgid "Select Text Subtitles..."
-msgstr "Wskaż napisy tekstowe..."
+msgstr "Wskaż plik napisów..."
 
 #: ../data/interfaces/parole.ui.h:22
 msgid "Show _playlist"
-msgstr "Wyświetla _listę odtwarzania"
+msgstr "_Lista odtwarzania"
 
 #: ../data/interfaces/parole.ui.h:23
 msgid "Square"
@@ -156,7 +162,7 @@ msgstr "_Powtarzanie"
 
 #: ../data/interfaces/parole.ui.h:34
 msgid "_Shuffle"
-msgstr "_Losowe"
+msgstr "_Losowa kolejność"
 
 #: ../data/interfaces/parole.ui.h:35
 msgid "_View"
@@ -164,7 +170,7 @@ msgstr "_Widok"
 
 #: ../data/interfaces/mediachooser.ui.h:1
 msgid "Open Media Files"
-msgstr "Otwiera Pliki Mediów"
+msgstr "Wybór pliku"
 
 #: ../data/interfaces/mediachooser.ui.h:2
 msgid "_Open"
@@ -176,7 +182,7 @@ msgstr "Menu położenia"
 
 #: ../data/interfaces/playlist.ui.h:2
 msgid "Audio Menu"
-msgstr "Menu audio"
+msgstr "Menu ścieżek dźwiękowych"
 
 #: ../data/interfaces/playlist.ui.h:3
 msgid "Chapter Menu"
@@ -203,14 +209,14 @@ msgid "Play opened files"
 msgstr "Odtwarzanie otwartych plików"
 
 #: ../data/interfaces/playlist.ui.h:9 ../src/parole-medialist.c:784
-#: ../src/parole-player.c:2992
+#: ../src/parole-player.c:2990
 msgid "Playlist"
 msgstr "Lista odtwarzania"
 
 #: ../data/interfaces/playlist.ui.h:10
 #: ../data/interfaces/parole-settings.ui.h:17
 msgid "Remember playlist"
-msgstr "Zapamiętanie listy odtwarzania"
+msgstr "Pamiętanie listy odtwarzania"
 
 #: ../data/interfaces/playlist.ui.h:11
 msgid "Repeat"
@@ -222,7 +228,7 @@ msgstr "Zastępowanie zawartości po otwarciu pliku"
 
 #: ../data/interfaces/playlist.ui.h:13
 msgid "Shuffle"
-msgstr "Odtwarzanie losowe"
+msgstr "Losowa kolejność"
 
 #: ../data/interfaces/playlist.ui.h:14
 msgid "Title Menu"
@@ -242,7 +248,7 @@ msgstr "Właczone"
 
 #: ../data/interfaces/plugins.ui.h:4
 msgid "Extend your media player"
-msgstr "Rozszerza odtwarzacz"
+msgstr "Dodaje do programu nowe funkcje"
 
 #: ../data/interfaces/plugins.ui.h:5
 msgid "Parole Plugins"
@@ -318,7 +324,7 @@ msgstr "Odcień:"
 
 #: ../data/interfaces/parole-settings.ui.h:16
 msgid "Parole Settings"
-msgstr "Preferencje programu Parole"
+msgstr "Preferencje Parole"
 
 #: ../data/interfaces/parole-settings.ui.h:18
 msgid "Reset to defaults"
@@ -358,7 +364,7 @@ msgstr "Według rozszerzenia"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "Select File Types (By Extension)"
-msgstr "Typ pliku (wgedług rozszerzenia)"
+msgstr "Typy plików (według rozszerzenia)"
 
 #: ../data/interfaces/open-location.ui.h:1
 msgid "<big><b>Open Network Location</b></big>"
@@ -384,58 +390,58 @@ msgstr "Informacja"
 msgid "Error"
 msgstr "Błąd"
 
-#: ../src/gst/parole-gst.c:1238 ../src/parole-medialist.c:356
+#: ../src/gst/parole-gst.c:1361 ../src/parole-medialist.c:356
 #, c-format
 msgid "Track %i"
 msgstr "Ścieżka %i"
 
-#: ../src/gst/parole-gst.c:1241
+#: ../src/gst/parole-gst.c:1364
 msgid "Audio CD"
 msgstr "Płyta Audio CD"
 
-#: ../src/gst/parole-gst.c:1441
+#: ../src/gst/parole-gst.c:1568
 msgid "Additional software is required."
 msgstr "Wymagane jest dodatkowe oprogramowanie."
 
-#: ../src/gst/parole-gst.c:1445
+#: ../src/gst/parole-gst.c:1572
 msgid "Don't Install"
-msgstr "Nie instaluje"
+msgstr "Nie instaluj"
 
-#: ../src/gst/parole-gst.c:1447
+#: ../src/gst/parole-gst.c:1574
 msgid "Install"
-msgstr "Instaluje"
+msgstr "Zainstaluj"
 
-#: ../src/gst/parole-gst.c:1857
+#: ../src/gst/parole-gst.c:2002
 msgid "Stop"
 msgstr "Zatrzymaj"
 
-#: ../src/gst/parole-gst.c:1858
+#: ../src/gst/parole-gst.c:2003
 msgid "The stream is taking too much time to load"
 msgstr "Zbyt długi czas wczytywania strumienia"
 
-#: ../src/gst/parole-gst.c:2029
+#: ../src/gst/parole-gst.c:2178
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Nie można wczytać wtyczki playbin GStreamer. Proszę sprawdzić poprawność "
 "instalacji GStreamer."
 
-#: ../src/gst/parole-gst.c:2053
+#: ../src/gst/parole-gst.c:2202
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Nie można wczytać wtyczki wideo GStreamer. Proszę sprawdzić poprawność "
 "instalacji GStreamer."
 
-#: ../src/gst/parole-gst.c:2645 ../src/gst/parole-gst.c:2649
+#: ../src/gst/parole-gst.c:2806 ../src/gst/parole-gst.c:2810
 #, c-format
 msgid "Audio Track #%d"
-msgstr "Ścieżka Dźwiękowa #%d"
+msgstr "Ścieżka dźwiękowa nr %d"
 
-#: ../src/gst/parole-gst.c:2683 ../src/gst/parole-gst.c:2687
+#: ../src/gst/parole-gst.c:2844 ../src/gst/parole-gst.c:2848
 #, c-format
 msgid "Subtitle #%d"
-msgstr "Napisy #%d"
+msgstr "Napisy nr %d"
 
 #: ../src/main.c:57
 #, c-format
@@ -450,7 +456,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Odtwarzacz multimediów Parole %s\n"
+"Odtwarzacz nagrań Parole %s\n"
 "\n"
 "Część projektu Xfce Goodies\n"
 "http://goodies.xfce.org\n"
@@ -472,7 +478,7 @@ msgstr "Pomija wczytywanie wtyczek"
 
 #: ../src/main.c:277
 msgid "Set Audio-CD/VCD/DVD device path"
-msgstr "Określa położenie napędu płyt Audio CD/VCD/DVD"
+msgstr "Określa położenie napędu płyt Audio-CD/VCD/DVD"
 
 #: ../src/main.c:278
 msgid "Play or pause if already playing"
@@ -597,7 +603,7 @@ msgstr "Otwórz katalog docelowy"
 
 #: ../src/parole-medialist.c:1638
 msgid "Media list"
-msgstr "Lista Mediów"
+msgstr "Lista nagrań"
 
 #: ../src/parole-medialist.c:1639
 msgid "Chapter list"
@@ -622,7 +628,7 @@ msgstr "Wybór Pliku z Napisami"
 
 #: ../src/parole-player.c:923
 msgid "Subtitle Files"
-msgstr "Pliki Napisów"
+msgstr "Pliki napisów"
 
 #: ../src/parole-player.c:1098 ../src/parole-player.c:1106
 msgid "Clear Recent Items"
@@ -632,7 +638,9 @@ msgstr "Wyczyść ostatnie elementy"
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
-msgstr "Czy na pewno chcesz wyczyścić historię ostatnich elementów? Ta operacja nie może zostać cofnięta."
+msgstr ""
+"Czy na pewno chcesz wyczyścić historię ostatnich elementów? Ta operacja nie "
+"może zostać cofnięta."
 
 #: ../src/parole-player.c:1219 ../src/parole-player.c:1351
 msgid "Media stream is not seekable"
@@ -649,7 +657,7 @@ msgstr "Nieznany utwór"
 #: ../src/parole-player.c:1709 ../src/parole-player.c:1711
 #: ../src/parole-player.c:1717
 msgid "on"
-msgstr "z"
+msgstr "z albumu"
 
 #: ../src/parole-player.c:1717 ../src/plugins/notify/notify-provider.c:124
 msgid "Unknown Album"
@@ -657,23 +665,23 @@ msgstr "Nieznany album"
 
 #: ../src/parole-player.c:1724 ../src/parole-player.c:1728
 msgid "by"
-msgstr "autorstwa"
+msgstr "w wykonaniu"
 
 #: ../src/parole-player.c:1728 ../src/plugins/notify/notify-provider.c:126
 msgid "Unknown Artist"
-msgstr "Nieznany artysta"
+msgstr "Nieznany wykonawca"
 
-#: ../src/parole-player.c:1763
+#: ../src/parole-player.c:1761
 msgid "Buffering"
 msgstr "Buforowanie"
 
-#: ../src/parole-player.c:2872
+#: ../src/parole-player.c:2870
 msgid "Clear recent items..."
 msgstr "Wyczyść ostatnie elementy..."
 
 #: ../src/parole-about.c:74
 msgid "translator-credits"
-msgstr "Piotr Sokół <psokol@jabster.pl>, 2012."
+msgstr "Piotr Sokół <psokol@jabster.pl>, 2012, 2013."
 
 #: ../src/parole-about.c:77
 msgid "Visit Parole website"
@@ -847,16 +855,16 @@ msgstr "Pliki list odtwarzania"
 #: ../src/plugins/notify/notify-provider.c:129
 #: ../src/plugins/notify/notify-provider.c:132
 msgid "<i>on</i>"
-msgstr "<i>z</i>"
+msgstr "<i>z albumu</i>"
 
 #: ../src/plugins/notify/notify-provider.c:129
 #: ../src/plugins/notify/notify-provider.c:132
 msgid "<i>by</i>"
-msgstr "<i>autorstwa</i>"
+msgstr "<i>w wykonaniu</i>"
 
 #: ../src/plugins/notify/notify.desktop.in.h:1
 msgid "Notify"
-msgstr "Powiadom"
+msgstr "Powiadomienia"
 
 #: ../src/plugins/notify/notify.desktop.in.h:2
 msgid "Show notifications for currently playing tracks"
@@ -868,15 +876,17 @@ msgstr "Wtyczka obszaru powiadamiania"
 
 #: ../src/plugins/tray/tray-provider.c:254
 msgid "Always minimize to tray when window is closed"
-msgstr "Minimalizowanie do obszaru powiadamiania po zamknięciu okna"
+msgstr ""
+"Minimalizuje okno programu do obszaru powiadamiania, po próbie jego "
+"zamknięcia"
 
 #: ../src/plugins/tray/tray-provider.c:300
 msgid "Are you sure you want to quit?"
-msgstr "Czy na pewno chcesz zakończyć?"
+msgstr "Zakończyć działanie programu?"
 
 #: ../src/plugins/tray/tray-provider.c:303
 msgid "Parole can be minimized to the system tray instead."
-msgstr "Parole może zamiast tego zostać zminimalizowanym do tacki systemowej."
+msgstr "Program może zostać zminimalizowany do obszaru powiadamiania."
 
 #: ../src/plugins/tray/tray-provider.c:306
 msgid "Minimize to tray"
