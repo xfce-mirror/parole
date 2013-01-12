@@ -1181,7 +1181,7 @@ parole_gst_get_meta_data_dvd (ParoleGst *gst)
     format = gst_format_get_by_nick ("chapter");
 
     /* Get the number of chapters for the current title. */
-    if ( gst_element_query_duration (gst->priv->playbin, GST_FORMAT_TIME, &val) )
+    if ( gst_element_query_duration (gst->priv->playbin, format, &val) )
     {
         n_chapters = (gint) val;
         num_chapters = (guint) n_chapters;
@@ -1199,7 +1199,7 @@ parole_gst_get_meta_data_dvd (ParoleGst *gst)
     
     /* Get the current chapter. */
     val = -1;
-    if ( gst_element_query_position (gst->priv->playbin, GST_FORMAT_TIME, &val) )
+    if ( gst_element_query_position (gst->priv->playbin, format, &val) )
     {
         chapter = (guint)(gint) val;
         if ( chapter != current_chapter || num_chapters != 1 )
@@ -1784,7 +1784,7 @@ parole_gst_seek_by_format (ParoleGst *gst, GstFormat format, gint step)
 {
     gint64 val = 1;
     
-    if ( gst_element_query_position (gst->priv->playbin, GST_FORMAT_TIME, &val) )
+    if ( gst_element_query_position (gst->priv->playbin, format, &val) )
     {
 	val += step;
 	if ( !gst_element_seek (gst->priv->playbin, 1.0, format, 
@@ -2555,7 +2555,7 @@ gint parole_gst_get_current_cdda_track (ParoleGst *gst)
     
     format = gst_format_get_by_nick ("track");
     
-    if ( gst_element_query_position (gst->priv->playbin, GST_FORMAT_TIME, &pos) )
+    if ( gst_element_query_position (gst->priv->playbin, format, &pos) )
     {
 	TRACE ("Pos %" G_GINT64_FORMAT, pos);
 	ret_val = (gint) pos;
