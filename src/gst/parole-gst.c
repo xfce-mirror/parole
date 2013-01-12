@@ -1565,6 +1565,9 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
     gchar*                    details[2];
     GstInstallPluginsContext *ctx;
     gint response;
+#ifdef GDK_WINDOWING_X11
+    GtkWidget *parent;
+#endif
     
     gst = PAROLE_GST (data);
 
@@ -1658,6 +1661,20 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
 	             details[0] = gst_missing_plugin_message_get_installer_detail(msg);
 	             details[1] = NULL;
 	             ctx = gst_install_plugins_context_new();
+	             
+#ifdef GDK_WINDOWING_X11
+            if (gtk_widget_get_window (GTK_WIDGET (gst)) != NULL &&
+                gtk_widget_get_realized (GTK_WIDGET (gst)))
+            {
+                gulong xid = 0;
+
+                parent = gtk_widget_get_toplevel (GTK_WIDGET (gst));
+
+                xid = GDK_WINDOW_XID(gtk_widget_get_window (parent));
+                gst_install_plugins_context_set_xid (ctx, xid);
+            }
+#endif /* GDK_WINDOWING_X11 */
+
 #if GST_CHECK_VERSION(1, 0, 0)
 	             gst_install_plugins_async((const gchar * const *) details, ctx, parole_gst_install_plugins_result_func, gst);
 #else
