@@ -69,9 +69,7 @@ static void     parole_gst_change_state 	(ParoleGst *gst,
 static void	parole_gst_terminate_internal   (ParoleGst *gst, 
 						 gboolean fade_sound);
 						 
-static GdkPixbuf * parole_gst_tag_list_get_cover_external (ParoleGst *gst);
-
-static GdkPixbuf * parole_gst_tag_list_get_cover_embedded (ParoleGst *gst, GstTagList *tag_list);
+static gchar * parole_gst_tag_list_get_cover_external (ParoleGst *gst);
 						 
 static GdkPixbuf * parole_gst_tag_list_get_cover (ParoleGst *gst, GstTagList *tag_list);
 
@@ -1108,11 +1106,9 @@ parole_gst_buffer_to_pixbuf (GstBuffer *buffer)
   return pixbuf;
 }
 
-GdkPixbuf *
+gchar *
 parole_gst_tag_list_get_cover_external (ParoleGst *gst)
 {
-    GdkPixbuf *pixbuf;
-    GError *err = NULL;
     gchar *uri;
     gchar *filename;
     gchar *directory;
@@ -1163,129 +1159,96 @@ parole_gst_tag_list_get_cover_external (ParoleGst *gst)
     g_free(directory);
     g_free(file_dir);
     g_free(lower);
-    
-    if (!cover_filename)
-        return NULL;
-
-    pixbuf = gdk_pixbuf_new_from_file(cover_filename, &err);
-    g_free(cover_filename);
-    if (err)
-    {
-        g_object_unref(pixbuf);
-        g_error_free(err);
-        return NULL;
-    }
-    return pixbuf;
+    return cover_filename;
 }
 
-GdkPixbuf *
-parole_gst_tag_list_get_cover_embedded (ParoleGst *gst, GstTagList *tag_list)
+static const GValue *
+parole_gst_tag_list_get_cover_real (GstTagList *tag_list)
 {
-    GdkPixbuf *pixbuf;
-    const GValue *cover_value = NULL;
-    guint i;
+  const GValue *cover_value = NULL;
+  guint i;
 
-    for (i = 0; ; i++) {
-        const GValue *value;
+  for (i = 0; ; i++) {
+    const GValue *value;
 #if GST_CHECK_VERSION(1, 0, 0)
-        GstSample *sample;
+    GstSample *sample;
 #else
-        GstBuffer *buffer;
+    GstBuffer *buffer;
 #endif
-        GstStructure *caps_struct;
-        int type;
+    GstStructure *caps_struct;
+    int type;
 
-        value = gst_tag_list_get_value_index (tag_list,
-                                              GST_TAG_IMAGE,
-                                              i);
-        if (value == NULL)
-            break;
+    value = gst_tag_list_get_value_index (tag_list,
+					  GST_TAG_IMAGE,
+					  i);
+    if (value == NULL)
+      break;
 
 #if GST_CHECK_VERSION(1, 0, 0)
-        sample = gst_value_get_sample (value);
-        caps_struct = gst_caps_get_structure (gst_sample_get_caps(sample), 0);
+    sample = gst_value_get_sample (value);
+    caps_struct = gst_caps_get_structure (gst_sample_get_caps(sample), 0);
 #else
-        buffer = gst_value_get_buffer (value);
-        caps_struct = gst_caps_get_structure (buffer->caps, 0);
+    buffer = gst_value_get_buffer (value);
+    caps_struct = gst_caps_get_structure (buffer->caps, 0);
 #endif
 
-        gst_structure_get_enum (caps_struct,
-                                "image-type",
-                                GST_TYPE_TAG_IMAGE_TYPE,
-                                &type);
-        if (type == GST_TAG_IMAGE_TYPE_UNDEFINED) {
-            if (cover_value == NULL)
-                cover_value = value;
-        } else if (type == GST_TAG_IMAGE_TYPE_FRONT_COVER) {
-            cover_value = value;
-            break;
-        }
+    gst_structure_get_enum (caps_struct,
+			    "image-type",
+			    GST_TYPE_TAG_IMAGE_TYPE,
+			    &type);
+    if (type == GST_TAG_IMAGE_TYPE_UNDEFINED) {
+      if (cover_value == NULL)
+        cover_value = value;
+    } else if (type == GST_TAG_IMAGE_TYPE_FRONT_COVER) {
+      cover_value = value;
+      break;
     }
+  }
 
-    if (!cover_value) {
-        cover_value = gst_tag_list_get_value_index (tag_list,
-        GST_TAG_PREVIEW_IMAGE,
-        0);
-    }
-
-    if (cover_value) {
-#if GST_CHECK_VERSION(1, 0, 0)
-        GstSample *sample;
-        sample = gst_value_get_sample (cover_value);
-        pixbuf = parole_gst_buffer_to_pixbuf (gst_sample_get_buffer (sample));
-#else
-        GstBuffer *buffer;
-        buffer = gst_value_get_buffer (cover_value);
-        pixbuf = parole_gst_buffer_to_pixbuf (buffer);
-#endif
-        return pixbuf;
-    }
-    return NULL;
+  return cover_value;
 }
 
 GdkPixbuf *
 parole_gst_tag_list_get_cover (ParoleGst *gst, GstTagList *tag_list)
 {
-    GdkPixbuf *pixbuf;
-    GdkPixbuf *scaled;
-    gint height, width;
-    gfloat multiplier;
+  gchar *cover_filename;
+  const GValue *cover_value;
   
-    g_return_val_if_fail (tag_list != NULL, FALSE);
-    
-    pixbuf = parole_gst_tag_list_get_cover_external(gst);
-    if (!pixbuf)
-    {
-        pixbuf = parole_gst_tag_list_get_cover_embedded(gst, tag_list);
-        if (!pixbuf)
-            return NULL;
-    }
+  g_return_val_if_fail (tag_list != NULL, FALSE);
+  
+  cover_filename = parole_gst_tag_list_get_cover_external(gst);
+  if (cover_filename)
+  {
+    GdkPixbuf *pixbuf = gdk_pixbuf_new_from_file_at_size(cover_filename, 256, 256, NULL);
+    if (pixbuf)
+        return pixbuf;
+  }
 
-    if (gdk_pixbuf_get_width(pixbuf) == gdk_pixbuf_get_height(pixbuf))
-    {
-        height = 256;
-        width = 256;
-    }
-    else if (gdk_pixbuf_get_width(pixbuf) < gdk_pixbuf_get_height(pixbuf))
-    {
-        multiplier = gdk_pixbuf_get_height(pixbuf)/256.0;
-        height = 256;
-        width = gdk_pixbuf_get_width(pixbuf) / multiplier;
-    }
-    else
-    {
-        multiplier = gdk_pixbuf_get_width(pixbuf)/256.0;
-        height = gdk_pixbuf_get_height(pixbuf)/multiplier;
-        width = 256;
-    }
-    
-    scaled = gdk_pixbuf_scale_simple (pixbuf,
-                                      width,
-                                      height,
-                                      GDK_INTERP_HYPER);
+  cover_value = parole_gst_tag_list_get_cover_real (tag_list);
+  /* Fallback to preview */
+  if (!cover_value) {
+    cover_value = gst_tag_list_get_value_index (tag_list,
+						GST_TAG_PREVIEW_IMAGE,
+						0);
+  }
 
-    g_object_unref(pixbuf);
-    return scaled;
+  if (cover_value) {
+    GdkPixbuf *pixbuf;
+    
+#if GST_CHECK_VERSION(1, 0, 0)
+    GstSample *sample;
+    sample = gst_value_get_sample (cover_value);
+    pixbuf = parole_gst_buffer_to_pixbuf (gst_sample_get_buffer (sample));
+#else
+    GstBuffer *buffer;
+    buffer = gst_value_get_buffer (cover_value);
+    pixbuf = parole_gst_buffer_to_pixbuf (buffer);
+#endif
+
+    return pixbuf;
+  }
+
+  return NULL;
 }
 
 static void
