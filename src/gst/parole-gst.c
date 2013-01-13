@@ -773,10 +773,9 @@ parole_gst_get_pad_capabilities (GObject *object, GParamSpec *pspec, ParoleGst *
     guint num;
     guint den;
     const GValue *value;
-    GstCaps *caps;
+    GstCaps *caps = gst_pad_get_current_caps (pad);
     
     pad = GST_PAD (object);
-    caps = gst_pad_get_current_caps (pad);
     
     if ( !GST_IS_PAD (pad) || !caps )
 	return;
