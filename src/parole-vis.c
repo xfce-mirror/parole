@@ -60,7 +60,7 @@ GHashTable *parole_vis_get_plugins (void)
     
     hash = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, NULL);
     
-    plugins = gst_registry_feature_filter (gst_registry_get_default (),
+    plugins = gst_registry_feature_filter (gst_registry_get (),
 					   parole_vis_filter,
 					   FALSE,
 					   NULL);
