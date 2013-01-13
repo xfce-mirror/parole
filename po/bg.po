@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Parole 0.1.99git.rALT0.4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-01-12 12:33+0000\n"
-"PO-Revision-Date: 2013-01-13 14:15+0200\n"
+"PO-Revision-Date: 2013-01-13 14:35+0200\n"
 "Last-Translator: Cybercop <cybercop_montana@abv.bg>\n"
 "Language-Team: Bulgarian\n"
 "Language: bg\n"
@@ -78,7 +78,7 @@ msgstr "Мултимедиен плеър"
 
 #: ../data/interfaces/parole.ui.h:16
 msgid "None"
-msgstr "Без"
+msgstr "Няма"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "Open Recent"
@@ -549,7 +549,7 @@ msgstr "Заглавие #%i"
 
 #: ../src/parole-medialist.c:642
 msgid "Permission denied"
-msgstr "Достъпът е отказан"
+msgstr "Отказан достъп"
 
 #: ../src/parole-medialist.c:644
 msgid "Error saving playlist file"
@@ -978,7 +978,7 @@ msgstr "Добавка за управление на захранването"
 #~ msgstr "Минимизиране в системната табла?"
 
 #~ msgid "From ISO image"
-#~ msgstr "Из ISO-образа"
+#~ msgstr "От ISO-образа"
 
 #~ msgid "Sound"
 #~ msgstr "Звук"
