@@ -256,7 +256,7 @@ void parole_conf_dialog_vis_plugin_changed_cb (GtkComboBox *widget,  ParoleConfD
     if ( f )
     {
 	g_object_set (G_OBJECT (self->priv->conf),
-		      "vis-name", gst_object_get_name (GST_OBJECT (f)),
+		      "vis-name", GST_PLUGIN_FEATURE_NAME (f),
 		      NULL);
     }
     
@@ -354,10 +354,10 @@ parole_conf_dialog_set_default_vis_plugin (GtkTreeModel *model, GtkTreePath *pat
     
     if ( !g_strcmp0 (vis_name, "none") )
     {
-	if ( !g_strcmp0 (gst_object_get_name (GST_OBJECT (f)), "Goom") )
+	if ( !g_strcmp0 (GST_PLUGIN_FEATURE_NAME (f), "Goom") )
 	    ret = TRUE;
     }
-    else if ( !g_strcmp0 (gst_object_get_name (GST_OBJECT (f)), vis_name) )
+    else if ( !g_strcmp0 (GST_PLUGIN_FEATURE_NAME (f), vis_name) )
     {
 	ret = TRUE;
     }
