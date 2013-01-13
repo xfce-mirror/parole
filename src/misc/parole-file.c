@@ -191,7 +191,7 @@ parole_file_constructed (GObject *object)
     if ( g_str_has_prefix(filename, "dvd") )
     {
         priv->directory = NULL;
-        priv->uri = "dvd:/";
+        priv->uri = g_strdup("dvd:/");
         priv->content_type = g_strdup("dvd");
         g_free(filename);
         return;
