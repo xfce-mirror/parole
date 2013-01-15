@@ -2480,8 +2480,8 @@ parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
 	 */
 	case GDK_Up:
 	case GDK_Down:
-	    parole_player_media_list_show_playlist_cb (player->priv->list, TRUE, player);
-	    parole_media_list_grab_focus (player->priv->list);
+	    if (!player->priv->full_screen && gtk_widget_get_visible(player->priv->playlist_nt))
+	        parole_media_list_grab_focus (player->priv->list);
 	    break;
 	default:
 	    break;
