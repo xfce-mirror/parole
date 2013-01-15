@@ -2192,6 +2192,7 @@ void
 parole_player_volume_value_changed_cb (GtkScaleButton *widget, gdouble value, ParolePlayer *player)
 {
     parole_player_change_volume (player, value);
+    if ( value > 0.0 )
     g_object_set (G_OBJECT (player->priv->conf),
         "volume", (gint)(value * 100),
         NULL);
@@ -2215,7 +2216,20 @@ parole_player_volume_down (GtkWidget *widget, ParolePlayer *player)
 
 void parole_player_volume_mute (GtkWidget *widget, ParolePlayer *player)
 {
-    gtk_scale_button_set_value (GTK_SCALE_BUTTON (player->priv->volume), 0);
+    gint value;
+    if (gtk_scale_button_get_value (GTK_SCALE_BUTTON (player->priv->volume)) == 0.0)
+    {
+        g_object_get (G_OBJECT (player->priv->conf),
+        "volume", &value,
+        NULL);
+        gtk_menu_item_set_label( GTK_MENU_ITEM(widget), _("Mute") );
+    }
+    else
+    {
+        value = 0;
+        gtk_menu_item_set_label( GTK_MENU_ITEM(widget), _("Unmute") );
+    }
+    gtk_scale_button_set_value (GTK_SCALE_BUTTON (player->priv->volume), (gdouble)(value)/100);
 }
 
 static void
