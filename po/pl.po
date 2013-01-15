@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Parole master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-01-11 15:09+0000\n"
-"PO-Revision-Date: 2013-01-11 17:51+0100\n"
+"PO-Revision-Date: 2013-01-13 19:24+0100\n"
 "Last-Translator: Piotr Sokół <psokol@jabster.pl>\n"
 "Language-Team: polski <>\n"
 "Language: pl\n"
@@ -206,7 +206,7 @@ msgstr "Lista odtwarzania płyty"
 
 #: ../data/interfaces/playlist.ui.h:8
 msgid "Play opened files"
-msgstr "Odtwarzanie otwartych plików"
+msgstr "Odtwarzanie otwieranych plików"
 
 #: ../data/interfaces/playlist.ui.h:9 ../src/parole-medialist.c:784
 #: ../src/parole-player.c:2990
@@ -224,7 +224,7 @@ msgstr "Powtarzanie"
 
 #: ../data/interfaces/playlist.ui.h:12
 msgid "Replace playlist when opening files"
-msgstr "Zastępowanie zawartości po otwarciu pliku"
+msgstr "Zastępowanie zawartości otwieranymi plikami"
 
 #: ../data/interfaces/playlist.ui.h:13
 msgid "Shuffle"
@@ -276,11 +276,11 @@ msgstr "<b>Wideo</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:4
 msgid "Always replace playlist with opened files"
-msgstr "Zawsze zastępuje listę odtwarzanie otwartymi plikami"
+msgstr "Zastępowanie zawartości listy odtwarzania otwieranymi plikami"
 
 #: ../data/interfaces/parole-settings.ui.h:5
 msgid "Automatically show subtitles when playing movie file"
-msgstr "Pokazuje napisy automatycznie podczas odtwarzania pliku z filmem"
+msgstr "Automatyczne wczytywanie napisów po otworzeniu pliku"
 
 #: ../data/interfaces/parole-settings.ui.h:6
 msgid "Brightness:"
@@ -288,11 +288,11 @@ msgstr "Jasność:"
 
 #: ../data/interfaces/parole-settings.ui.h:7
 msgid "Check and remove duplicate media entries"
-msgstr "Sprawdza i usuwa podwójne wpisy plików"
+msgstr "Wyszukiwanie i usuwanie powielonych pozycji"
 
 #: ../data/interfaces/parole-settings.ui.h:8
 msgid "Configure your media player"
-msgstr "Skonfiguruj swój odtwarzacz mediów"
+msgstr "Konfiguruje ustawienia programu"
 
 #: ../data/interfaces/parole-settings.ui.h:9
 msgid "Contrast:"
@@ -300,15 +300,15 @@ msgstr "Kontrast:"
 
 #: ../data/interfaces/parole-settings.ui.h:10
 msgid "Disable screensaver while playing movies"
-msgstr "Wyłącza wygaszacz ekranu podczas odtwarzania filmów"
+msgstr "Wyłączenie wygaszacza ekranu podczas odtwarzania nagrań wideo"
 
 #: ../data/interfaces/parole-settings.ui.h:11
 msgid "Enable keyboard multimedia keys"
-msgstr "Włącza klawisze multimedialne klawiatury"
+msgstr "Obsługiwanie klawiszy multimedialnych klawiatury"
 
 #: ../data/interfaces/parole-settings.ui.h:12
 msgid "Enable visualization when playing audio file"
-msgstr "Wyświetlanie wizualizacji podczas odtwarzania plików dźwiękowych"
+msgstr "Wyświetlanie wizualizacji podczas odtwarzania nagrań dźwiękowych"
 
 #: ../data/interfaces/parole-settings.ui.h:13
 msgid "Encoding:"
@@ -328,7 +328,7 @@ msgstr "Preferencje Parole"
 
 #: ../data/interfaces/parole-settings.ui.h:18
 msgid "Reset to defaults"
-msgstr "Przywraca ustawienia domyślne"
+msgstr "Przywróć domyślne"
 
 #: ../data/interfaces/parole-settings.ui.h:19
 msgid "Saturation:"
@@ -336,7 +336,7 @@ msgstr "Nasycenie:"
 
 #: ../data/interfaces/parole-settings.ui.h:20
 msgid "Start playing opened files"
-msgstr "Rozpoczęcie odtwarzania"
+msgstr "Rozpoczęcie odtwarzania otwartych plików"
 
 #: ../data/interfaces/parole-settings.ui.h:21
 msgid "Visualization type:"
@@ -372,7 +372,7 @@ msgstr "<big><b>Otwórz położenie sieciowe</b></big>"
 
 #: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:192
 msgid "Clear History"
-msgstr "Czyści Historię"
+msgstr "Czyści historię"
 
 #: ../data/interfaces/open-location.ui.h:3
 msgid "Open Network Location"
@@ -522,7 +522,7 @@ msgstr "Wypisuje informacje o wersji"
 
 #: ../src/main.c:288
 msgid "Use embedded mode"
-msgstr "Użycie trybu osadzonego"
+msgstr "Uruchamia w trybie osadzonym"
 
 #: ../src/main.c:289
 msgid "Start in fullscreen mode"
@@ -638,13 +638,11 @@ msgstr "Wyczyść ostatnie elementy"
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
-msgstr ""
-"Czy na pewno chcesz wyczyścić historię ostatnich elementów? Ta operacja nie "
-"może zostać cofnięta."
+msgstr "Wyczyścić historię otwartych plików? Tej czynności nie można cofnąć."
 
 #: ../src/parole-player.c:1219 ../src/parole-player.c:1351
 msgid "Media stream is not seekable"
-msgstr "Strumień multimedialny nie posiada możliwości przeszukiwania"
+msgstr "Strumień nagrania nie posiada możliwości przeszukiwania"
 
 #: ../src/parole-player.c:1674
 msgid "GStreamer backend error"
@@ -685,7 +683,7 @@ msgstr "Piotr Sokół <psokol@jabster.pl>, 2012, 2013."
 
 #: ../src/parole-about.c:77
 msgid "Visit Parole website"
-msgstr "Storna Parole"
+msgstr "Strona główna programu"
 
 #: ../src/parole-disc.c:112
 msgid "Play Disc"
@@ -868,11 +866,11 @@ msgstr "Powiadomienia"
 
 #: ../src/plugins/notify/notify.desktop.in.h:2
 msgid "Show notifications for currently playing tracks"
-msgstr "Wyświetl powiadomienia dla obecnie odtwarzanych ścieżek"
+msgstr "Wyświetla powiadomienia dla odtwarzanych ścieżek"
 
 #: ../src/plugins/tray/tray-provider.c:244
 msgid "Tray icon plugin"
-msgstr "Wtyczka obszaru powiadamiania"
+msgstr "Ikona obszaru powiadamiania"
 
 #: ../src/plugins/tray/tray-provider.c:254
 msgid "Always minimize to tray when window is closed"
