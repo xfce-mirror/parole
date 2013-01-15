@@ -89,6 +89,7 @@
     <property name="icon_name">media-playlist-shuffle</property>
   </object>
   <object class="GtkVBox" id="playlist-box">
+    <property name="width_request">220</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>

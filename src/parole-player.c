@@ -367,6 +367,8 @@ struct ParolePlayerPrivate
     
     gboolean        wait_for_gst_disc_info;
     
+    gint            handle_width;
+    
     GtkTreeRowReference *row;
         
 };
@@ -428,25 +430,40 @@ void ratio_20_9_toggled_cb (GtkWidget *widget, ParolePlayer *player)
 
 void parole_player_set_playlist_visible (ParolePlayer *player, gboolean visibility)
 {
-	gtk_check_menu_item_set_active( GTK_CHECK_MENU_ITEM(player->priv->show_hide_playlist), visibility );
-	if ( visibility )
-	{
-		gtk_widget_show_all (player->priv->playlist_nt);
-		gtk_image_set_from_stock( GTK_IMAGE( player->priv->show_hide_playlist_image ), "gtk-go-forward", GTK_ICON_SIZE_LARGE_TOOLBAR );
-		gtk_widget_set_tooltip_text( GTK_WIDGET( player->priv->show_hide_playlist_button ), "Hide playlist");
-		g_object_set (G_OBJECT (player->priv->conf),	
-		  "showhide-playlist", TRUE,
-		  NULL);
-	}
-	else
-	{
-		gtk_widget_hide (player->priv->playlist_nt);
-		gtk_image_set_from_stock( GTK_IMAGE( player->priv->show_hide_playlist_image ), "gtk-go-back", GTK_ICON_SIZE_LARGE_TOOLBAR );
-		gtk_widget_set_tooltip_text( GTK_WIDGET( player->priv->show_hide_playlist_button ), "Show playlist");
-		g_object_set (G_OBJECT (player->priv->conf),	
-		  "showhide-playlist", FALSE,
-		  NULL);
-	}
+    gint window_w, window_h, playlist_w;
+
+    gtk_window_get_size (GTK_WINDOW (player->priv->window), &window_w, &window_h);
+    
+    /* Get the playlist width.  If we fail to get it, use the default 220. */
+    playlist_w = player->priv->playlist_nt->allocation.width;
+    if (playlist_w == 1)
+        playlist_w = 220;
+
+    gtk_check_menu_item_set_active( GTK_CHECK_MENU_ITEM(player->priv->show_hide_playlist), visibility );
+    if ( visibility )
+    {
+        if ( !player->priv->full_screen )
+            gtk_window_resize(GTK_WINDOW (player->priv->window), window_w+playlist_w+player->priv->handle_width, window_h);
+        
+        gtk_widget_show (player->priv->playlist_nt);
+        gtk_image_set_from_stock( GTK_IMAGE( player->priv->show_hide_playlist_image ), "gtk-go-forward", GTK_ICON_SIZE_LARGE_TOOLBAR );
+        gtk_widget_set_tooltip_text( GTK_WIDGET( player->priv->show_hide_playlist_button ), "Hide playlist");
+        g_object_set (G_OBJECT (player->priv->conf),	
+                    "showhide-playlist", TRUE,
+                    NULL);
+    }
+    else
+    {
+        gtk_widget_hide (player->priv->playlist_nt);
+        gtk_image_set_from_stock( GTK_IMAGE( player->priv->show_hide_playlist_image ), "gtk-go-back", GTK_ICON_SIZE_LARGE_TOOLBAR );
+        gtk_widget_set_tooltip_text( GTK_WIDGET( player->priv->show_hide_playlist_button ), "Show playlist");
+        g_object_set (G_OBJECT (player->priv->conf),	
+                    "showhide-playlist", FALSE,
+                    NULL);
+        
+        if ( !player->priv->full_screen )
+            gtk_window_resize(GTK_WINDOW (player->priv->window), window_w-playlist_w-player->priv->handle_width, window_h);
+    }
 }
 
 void parole_player_show_hide_playlist (GtkWidget *widget, ParolePlayer *player)
@@ -2768,6 +2785,7 @@ parole_player_init (ParolePlayer *player)
     gint volume;
     
     GtkWidget *hbox_audiobox;
+    GtkWidget *hpaned;
     
     GtkWidget *recent_menu;
     GtkRecentFilter *recent_filter;
@@ -2936,6 +2954,9 @@ parole_player_init (ParolePlayer *player)
     player->priv->main_box = GTK_WIDGET (gtk_builder_get_object (builder, "main-box"));
     player->priv->eventbox_output = GTK_WIDGET (gtk_builder_get_object (builder, "eventbox_output"));
     
+    hpaned = GTK_WIDGET (gtk_builder_get_object (builder, "hpaned"));
+    gtk_widget_style_get (hpaned, "handle-size", &player->priv->handle_width, NULL);
+    
     /* Audio box */
     hbox_audiobox = GTK_WIDGET (gtk_builder_get_object (builder, "hbox_audiobox"));
     g_signal_connect(hbox_audiobox, "expose-event",
@@ -3002,21 +3023,23 @@ parole_player_init (ParolePlayer *player)
     gtk_notebook_append_page (GTK_NOTEBOOK (player->priv->playlist_nt), 
 			      GTK_WIDGET (player->priv->list),
 			      gtk_label_new (_("Playlist")));
-
+			      
+    g_object_get (G_OBJECT (player->priv->conf),
+		  "showhide-playlist", &showhide,
+		  NULL);
+		  
     g_object_get (G_OBJECT (player->priv->conf),
 		  "window-width", &w,
 		  "window-height", &h,
 		  NULL);
+		  
+    parole_player_set_playlist_visible(player, showhide);
     
     gtk_window_set_default_size (GTK_WINDOW (player->priv->window), w, h);
+    gtk_window_resize (GTK_WINDOW (player->priv->window), w, h);
     
     gtk_widget_show_all (player->priv->window);
 
-    g_object_get (G_OBJECT (player->priv->conf),
-		  "showhide-playlist", &showhide,
-		  NULL);
-    parole_player_set_playlist_visible(player, showhide);
-    
     parole_player_set_wm_opacity_hint (player->priv->window);
     
     gtk_box_pack_start (GTK_BOX (output), 
