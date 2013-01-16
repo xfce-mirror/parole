@@ -431,6 +431,9 @@ void ratio_20_9_toggled_cb (GtkWidget *widget, ParolePlayer *player)
 void parole_player_set_playlist_visible (ParolePlayer *player, gboolean visibility)
 {
     gint window_w, window_h, playlist_w;
+    
+    if (gtk_widget_get_visible (player->priv->playlist_nt) == visibility)
+        return;
 
     gtk_window_get_size (GTK_WINDOW (player->priv->window), &window_w, &window_h);
     
