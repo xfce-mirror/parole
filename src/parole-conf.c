@@ -754,7 +754,7 @@ parole_conf_class_init (ParoleConfClass *klass)
                                      g_param_spec_int ("window-height",
                                                        "/window/height", 
                                                        NULL,
-                                                       100,
+                                                       1,
                                                        G_MAXINT16,
                                                        420,
                                                        G_PARAM_READWRITE));
@@ -786,7 +786,7 @@ parole_conf_class_init (ParoleConfClass *klass)
                                      g_param_spec_int ("window-width",
                                                        "/window/width", 
                                                        NULL,
-                                                       100,
+                                                       1,
                                                        G_MAXINT16,
                                                        760,
                                                        G_PARAM_READWRITE));
