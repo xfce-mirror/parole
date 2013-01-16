@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-25 05:51+0000\n"
+"POT-Creation-Date: 2013-01-16 18:12+0000\n"
 "PO-Revision-Date: 2011-05-27 14:30+0200\n"
 "Last-Translator: Dmitry Nikitin <luckas_fb@mail.ru>\n"
 "Language-Team: Ukrainian <>\n"
@@ -65,7 +65,7 @@ msgstr "Авто"
 msgid "Buffering (0%)"
 msgstr "Буферизація (0%)"
 
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:712
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:740
 msgid "Empty"
 msgstr "Пусто"
 
@@ -203,7 +203,7 @@ msgid "Play opened files"
 msgstr "Відтворити відкриті файли"
 
 #: ../data/interfaces/playlist.ui.h:9 ../src/parole-medialist.c:784
-#: ../src/parole-player.c:2978
+#: ../src/parole-player.c:3028
 msgid "Playlist"
 msgstr "Список відтворення"
 
@@ -384,55 +384,55 @@ msgstr "Повідомлення"
 msgid "Error"
 msgstr "Помилка"
 
-#: ../src/gst/parole-gst.c:1238 ../src/parole-medialist.c:356
+#: ../src/gst/parole-gst.c:1370 ../src/parole-medialist.c:356
 #, c-format
 msgid "Track %i"
 msgstr "Доріжка %i"
 
-#: ../src/gst/parole-gst.c:1241
+#: ../src/gst/parole-gst.c:1373
 msgid "Audio CD"
 msgstr "Аудіо CD"
 
-#: ../src/gst/parole-gst.c:1441
+#: ../src/gst/parole-gst.c:1579
 msgid "Additional software is required."
 msgstr "Вимагаються додаткові програми."
 
-#: ../src/gst/parole-gst.c:1445
+#: ../src/gst/parole-gst.c:1583
 msgid "Don't Install"
 msgstr "Не встановлювати"
 
-#: ../src/gst/parole-gst.c:1447
+#: ../src/gst/parole-gst.c:1585
 msgid "Install"
 msgstr "Встановлювати"
 
-#: ../src/gst/parole-gst.c:1859
+#: ../src/gst/parole-gst.c:2008
 msgid "Stop"
 msgstr "Зупинити"
 
-#: ../src/gst/parole-gst.c:1860
+#: ../src/gst/parole-gst.c:2009
 msgid "The stream is taking too much time to load"
 msgstr "Потік потребує забагато часу для завантаження"
 
-#: ../src/gst/parole-gst.c:2031
+#: ../src/gst/parole-gst.c:2184
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Неможливо завантажити модуль GStreamer 'playbin'. Перевірте чи встановлені "
 "модулі GStreamer"
 
-#: ../src/gst/parole-gst.c:2055
+#: ../src/gst/parole-gst.c:2208
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Неможливо завантажити модуль GStreamer для роботи з відео. Перевірте чи "
 "встановлені модулі GStreamer"
 
-#: ../src/gst/parole-gst.c:2647 ../src/gst/parole-gst.c:2651
+#: ../src/gst/parole-gst.c:2810 ../src/gst/parole-gst.c:2814
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Доріжка #%d"
 
-#: ../src/gst/parole-gst.c:2685 ../src/gst/parole-gst.c:2689
+#: ../src/gst/parole-gst.c:2848 ../src/gst/parole-gst.c:2852
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Субтитри #%d"
@@ -543,7 +543,7 @@ msgstr "Parole вже працює, використайте-i для відкр
 msgid "Supported files"
 msgstr "Файли що підтримуються"
 
-#: ../src/parole-mediachooser.c:219 ../src/parole-player.c:927
+#: ../src/parole-mediachooser.c:219 ../src/parole-player.c:955
 msgid "All files"
 msgstr "Всі файли"
 
@@ -593,40 +593,40 @@ msgstr "Публічний список відтворення"
 msgid "Open Containing Folder"
 msgstr "Відкрити теку, що містить"
 
-#: ../src/parole-medialist.c:1637
+#: ../src/parole-medialist.c:1638
 msgid "Media list"
 msgstr "Список файлів"
 
-#: ../src/parole-medialist.c:1638
+#: ../src/parole-medialist.c:1639
 msgid "Chapter list"
 msgstr "Список розділом"
 
-#: ../src/parole-player.c:493
+#: ../src/parole-player.c:513
 msgid "Open ISO image"
 msgstr "Відкрити ISO-образ"
 
-#: ../src/parole-player.c:512
+#: ../src/parole-player.c:532
 msgid "CD image"
 msgstr "Образ CD"
 
-#: ../src/parole-player.c:512
+#: ../src/parole-player.c:532
 msgid "DVD image"
 msgstr "Образ DVD"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:897
+#: ../src/parole-player.c:925
 msgid "Select Subtitle File"
 msgstr "Вибрати файл субтитрів"
 
-#: ../src/parole-player.c:915
+#: ../src/parole-player.c:943
 msgid "Subtitle Files"
 msgstr "Файли субтитрів"
 
-#: ../src/parole-player.c:1084 ../src/parole-player.c:1092
+#: ../src/parole-player.c:1118 ../src/parole-player.c:1126
 msgid "Clear Recent Items"
 msgstr "Очищення недавніх програвань"
 
-#: ../src/parole-player.c:1086
+#: ../src/parole-player.c:1120
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
@@ -634,40 +634,48 @@ msgstr ""
 "Ви впевнені, що бажаєте очистити недавню історію? Її неможливо буде "
 "відновити."
 
-#: ../src/parole-player.c:1205 ../src/parole-player.c:1334
+#: ../src/parole-player.c:1239 ../src/parole-player.c:1371
 msgid "Media stream is not seekable"
 msgstr "Потік медіа не може перемотуватись"
 
-#: ../src/parole-player.c:1657
+#: ../src/parole-player.c:1694
 msgid "GStreamer backend error"
 msgstr "Помилка процесу Gstreamer"
 
-#: ../src/parole-player.c:1687
+#: ../src/parole-player.c:1724
 msgid "Unknown Song"
 msgstr "Невідома пісня"
 
-#: ../src/parole-player.c:1692 ../src/parole-player.c:1694
-#: ../src/parole-player.c:1700
+#: ../src/parole-player.c:1729 ../src/parole-player.c:1731
+#: ../src/parole-player.c:1737
 msgid "on"
 msgstr "в"
 
-#: ../src/parole-player.c:1700 ../src/plugins/notify/notify-provider.c:124
+#: ../src/parole-player.c:1737 ../src/plugins/notify/notify-provider.c:124
 msgid "Unknown Album"
 msgstr "Невідомий альбом"
 
-#: ../src/parole-player.c:1707 ../src/parole-player.c:1711
+#: ../src/parole-player.c:1744 ../src/parole-player.c:1748
 msgid "by"
 msgstr "виконана"
 
-#: ../src/parole-player.c:1711 ../src/plugins/notify/notify-provider.c:126
+#: ../src/parole-player.c:1748 ../src/plugins/notify/notify-provider.c:126
 msgid "Unknown Artist"
 msgstr "Невідомий виконавець"
 
-#: ../src/parole-player.c:1746
+#: ../src/parole-player.c:1781
 msgid "Buffering"
 msgstr "Буферизація"
 
-#: ../src/parole-player.c:2858
+#: ../src/parole-player.c:2245
+msgid "Mute"
+msgstr "Без звуку"
+
+#: ../src/parole-player.c:2250
+msgid "Unmute"
+msgstr "Зі звуком"
+
+#: ../src/parole-player.c:2905
 msgid "Clear recent items..."
 msgstr "Очищення недавньої історії..."
 
