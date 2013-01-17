@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-24 08:27+0000\n"
+"POT-Creation-Date: 2013-01-17 15:36+0000\n"
 "PO-Revision-Date: 2012-07-025 11:55+0200\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch (Flemish)\n"
@@ -70,7 +70,7 @@ msgstr "Automatisch"
 msgid "Buffering (0%)"
 msgstr "Aan het bufferen (0%)"
 
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:712
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:740
 msgid "Empty"
 msgstr "Leeg"
 
@@ -212,7 +212,7 @@ msgid "Play opened files"
 msgstr "Geopende bestanden afspelen"
 
 #: ../data/interfaces/playlist.ui.h:9 ../src/parole-medialist.c:784
-#: ../src/parole-player.c:2978
+#: ../src/parole-player.c:3028
 msgid "Playlist"
 msgstr "Speellijst"
 
@@ -393,55 +393,55 @@ msgstr "Boodschap"
 msgid "Error"
 msgstr "Fout"
 
-#: ../src/gst/parole-gst.c:1238 ../src/parole-medialist.c:356
+#: ../src/gst/parole-gst.c:1370 ../src/parole-medialist.c:356
 #, c-format
 msgid "Track %i"
 msgstr "Geluidsspoor %i"
 
-#: ../src/gst/parole-gst.c:1241
+#: ../src/gst/parole-gst.c:1373
 msgid "Audio CD"
 msgstr "Audio-CD"
 
-#: ../src/gst/parole-gst.c:1441
+#: ../src/gst/parole-gst.c:1579
 msgid "Additional software is required."
 msgstr "Extra programmatuur is vereist."
 
-#: ../src/gst/parole-gst.c:1445
+#: ../src/gst/parole-gst.c:1583
 msgid "Don't Install"
 msgstr "Niet installeren"
 
-#: ../src/gst/parole-gst.c:1447
+#: ../src/gst/parole-gst.c:1585
 msgid "Install"
 msgstr "Installeren"
 
-#: ../src/gst/parole-gst.c:1859
+#: ../src/gst/parole-gst.c:2008
 msgid "Stop"
 msgstr "Stop"
 
-#: ../src/gst/parole-gst.c:1860
+#: ../src/gst/parole-gst.c:2009
 msgid "The stream is taking too much time to load"
 msgstr "Het laden van de uitzending duurt te lang"
 
-#: ../src/gst/parole-gst.c:2031
+#: ../src/gst/parole-gst.c:2184
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Kon GStreamer-playbin-invoegtoepassing niet laden. Controleer uw GStreamer-"
 "installatie."
 
-#: ../src/gst/parole-gst.c:2055
+#: ../src/gst/parole-gst.c:2208
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Kon de Gstreamer-video-invoegtoepassing niet laden. Controleer uw GStreamer-"
 "installatie."
 
-#: ../src/gst/parole-gst.c:2647 ../src/gst/parole-gst.c:2651
+#: ../src/gst/parole-gst.c:2810 ../src/gst/parole-gst.c:2814
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Geluidsspoor #%d"
 
-#: ../src/gst/parole-gst.c:2685 ../src/gst/parole-gst.c:2689
+#: ../src/gst/parole-gst.c:2848 ../src/gst/parole-gst.c:2852
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Ondertitel #%d"
@@ -553,7 +553,7 @@ msgstr "Parole is al actief, gebruik -i om een nieuwe instantie te openen\n"
 msgid "Supported files"
 msgstr "Ondersteunde bestanden"
 
-#: ../src/parole-mediachooser.c:219 ../src/parole-player.c:927
+#: ../src/parole-mediachooser.c:219 ../src/parole-player.c:955
 msgid "All files"
 msgstr "Alle bestanden"
 
@@ -603,40 +603,40 @@ msgstr "Deelbare speellijst"
 msgid "Open Containing Folder"
 msgstr "Open map waar het inzit"
 
-#: ../src/parole-medialist.c:1637
+#: ../src/parole-medialist.c:1638
 msgid "Media list"
 msgstr "Medialijst"
 
-#: ../src/parole-medialist.c:1638
+#: ../src/parole-medialist.c:1639
 msgid "Chapter list"
 msgstr "Hoofdstukkenlijst"
 
-#: ../src/parole-player.c:493
+#: ../src/parole-player.c:513
 msgid "Open ISO image"
 msgstr "ISO-beeldbestand openen"
 
-#: ../src/parole-player.c:512
+#: ../src/parole-player.c:532
 msgid "CD image"
 msgstr "CD-beeldbestand"
 
-#: ../src/parole-player.c:512
+#: ../src/parole-player.c:532
 msgid "DVD image"
 msgstr "DVD-beeldbestand"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:897
+#: ../src/parole-player.c:925
 msgid "Select Subtitle File"
 msgstr "Kies ondertitelbestand"
 
-#: ../src/parole-player.c:915
+#: ../src/parole-player.c:943
 msgid "Subtitle Files"
 msgstr "Ondertitelbestanden"
 
-#: ../src/parole-player.c:1084 ../src/parole-player.c:1092
+#: ../src/parole-player.c:1118 ../src/parole-player.c:1126
 msgid "Clear Recent Items"
 msgstr "Verwijder recente elementen"
 
-#: ../src/parole-player.c:1086
+#: ../src/parole-player.c:1120
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
@@ -644,40 +644,48 @@ msgstr ""
 "Weet u zeker dat u de geschiedenis van uw recente elementen wil verwijderen? "
 "Dit kan niet ongedaan worden gemaakt."
 
-#: ../src/parole-player.c:1205 ../src/parole-player.c:1334
+#: ../src/parole-player.c:1239 ../src/parole-player.c:1371
 msgid "Media stream is not seekable"
 msgstr "Mediastroom is niet doorzoekbaar"
 
-#: ../src/parole-player.c:1657
+#: ../src/parole-player.c:1694
 msgid "GStreamer backend error"
 msgstr "Fout van Gstreamer-achtergronddienst"
 
-#: ../src/parole-player.c:1687
+#: ../src/parole-player.c:1724
 msgid "Unknown Song"
 msgstr "Onbekend nummer"
 
-#: ../src/parole-player.c:1692 ../src/parole-player.c:1694
-#: ../src/parole-player.c:1700
+#: ../src/parole-player.c:1729 ../src/parole-player.c:1731
+#: ../src/parole-player.c:1737
 msgid "on"
 msgstr "op"
 
-#: ../src/parole-player.c:1700 ../src/plugins/notify/notify-provider.c:124
+#: ../src/parole-player.c:1737 ../src/plugins/notify/notify-provider.c:124
 msgid "Unknown Album"
 msgstr "Onbekend album"
 
-#: ../src/parole-player.c:1707 ../src/parole-player.c:1711
+#: ../src/parole-player.c:1744 ../src/parole-player.c:1748
 msgid "by"
 msgstr "door"
 
-#: ../src/parole-player.c:1711 ../src/plugins/notify/notify-provider.c:126
+#: ../src/parole-player.c:1748 ../src/plugins/notify/notify-provider.c:126
 msgid "Unknown Artist"
 msgstr "Onbekende artiest"
 
-#: ../src/parole-player.c:1746
+#: ../src/parole-player.c:1781
 msgid "Buffering"
 msgstr "Aan het bufferen"
 
-#: ../src/parole-player.c:2858
+#: ../src/parole-player.c:2245
+msgid "Mute"
+msgstr "Dempen"
+
+#: ../src/parole-player.c:2250
+msgid "Unmute"
+msgstr "Demping opheffen"
+
+#: ../src/parole-player.c:2905
 msgid "Clear recent items..."
 msgstr "Verwijder recente elementen..."
 
