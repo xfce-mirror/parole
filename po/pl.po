@@ -3,21 +3,20 @@
 # This file is distributed under the same license as the parole package.
 # Paweł Drożański <pawdro@gmail.com>, 2012.
 # Piotr Sokół <psokol@jabster.pl>, 2012, 2013.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Parole master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-11 15:09+0000\n"
+"POT-Creation-Date: 2013-01-19 15:45+0000\n"
 "PO-Revision-Date: 2013-01-13 19:24+0100\n"
 "Last-Translator: Piotr Sokół <psokol@jabster.pl>\n"
 "Language-Team: polski <>\n"
-"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bits\n"
-"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : ((n%10>=2 && n%10<=4 && (n"
-"%100<10 || n%100>=20)) ? 1 : 2));\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : ((n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20)) ? 1 : 2));\n"
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: POLAND\n"
 "X-Generator: Gtranslator 2.91.5\n"
@@ -71,7 +70,7 @@ msgstr "Automatyczne"
 msgid "Buffering (0%)"
 msgstr "Buforowanie (0%)"
 
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:720
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:740
 msgid "Empty"
 msgstr "Pusty"
 
@@ -209,7 +208,7 @@ msgid "Play opened files"
 msgstr "Odtwarzanie otwieranych plików"
 
 #: ../data/interfaces/playlist.ui.h:9 ../src/parole-medialist.c:784
-#: ../src/parole-player.c:2990
+#: ../src/parole-player.c:3028
 msgid "Playlist"
 msgstr "Lista odtwarzania"
 
@@ -390,55 +389,55 @@ msgstr "Informacja"
 msgid "Error"
 msgstr "Błąd"
 
-#: ../src/gst/parole-gst.c:1361 ../src/parole-medialist.c:356
+#: ../src/gst/parole-gst.c:1370 ../src/parole-medialist.c:356
 #, c-format
 msgid "Track %i"
 msgstr "Ścieżka %i"
 
-#: ../src/gst/parole-gst.c:1364
+#: ../src/gst/parole-gst.c:1373
 msgid "Audio CD"
 msgstr "Płyta Audio CD"
 
-#: ../src/gst/parole-gst.c:1568
+#: ../src/gst/parole-gst.c:1579
 msgid "Additional software is required."
 msgstr "Wymagane jest dodatkowe oprogramowanie."
 
-#: ../src/gst/parole-gst.c:1572
+#: ../src/gst/parole-gst.c:1583
 msgid "Don't Install"
 msgstr "Nie instaluj"
 
-#: ../src/gst/parole-gst.c:1574
+#: ../src/gst/parole-gst.c:1585
 msgid "Install"
 msgstr "Zainstaluj"
 
-#: ../src/gst/parole-gst.c:2002
+#: ../src/gst/parole-gst.c:2008
 msgid "Stop"
 msgstr "Zatrzymaj"
 
-#: ../src/gst/parole-gst.c:2003
+#: ../src/gst/parole-gst.c:2009
 msgid "The stream is taking too much time to load"
 msgstr "Zbyt długi czas wczytywania strumienia"
 
-#: ../src/gst/parole-gst.c:2178
+#: ../src/gst/parole-gst.c:2184
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Nie można wczytać wtyczki playbin GStreamer. Proszę sprawdzić poprawność "
 "instalacji GStreamer."
 
-#: ../src/gst/parole-gst.c:2202
+#: ../src/gst/parole-gst.c:2208
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Nie można wczytać wtyczki wideo GStreamer. Proszę sprawdzić poprawność "
 "instalacji GStreamer."
 
-#: ../src/gst/parole-gst.c:2806 ../src/gst/parole-gst.c:2810
+#: ../src/gst/parole-gst.c:2810 ../src/gst/parole-gst.c:2814
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Ścieżka dźwiękowa nr %d"
 
-#: ../src/gst/parole-gst.c:2844 ../src/gst/parole-gst.c:2848
+#: ../src/gst/parole-gst.c:2848 ../src/gst/parole-gst.c:2852
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Napisy nr %d"
@@ -551,7 +550,7 @@ msgstr ""
 msgid "Supported files"
 msgstr "Obsługiwane pliki"
 
-#: ../src/parole-mediachooser.c:219 ../src/parole-player.c:935
+#: ../src/parole-mediachooser.c:219 ../src/parole-player.c:955
 msgid "All files"
 msgstr "Wszystkie pliki"
 
@@ -609,71 +608,79 @@ msgstr "Lista nagrań"
 msgid "Chapter list"
 msgstr "Lista rozdziałów"
 
-#: ../src/parole-player.c:493
+#: ../src/parole-player.c:513
 msgid "Open ISO image"
 msgstr "Otwórz obraz ISO"
 
-#: ../src/parole-player.c:512
+#: ../src/parole-player.c:532
 msgid "CD image"
 msgstr "Obrazy płyt CD"
 
-#: ../src/parole-player.c:512
+#: ../src/parole-player.c:532
 msgid "DVD image"
 msgstr "Obrazy płyt DVD"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:905
+#: ../src/parole-player.c:925
 msgid "Select Subtitle File"
 msgstr "Wybór Pliku z Napisami"
 
-#: ../src/parole-player.c:923
+#: ../src/parole-player.c:943
 msgid "Subtitle Files"
 msgstr "Pliki napisów"
 
-#: ../src/parole-player.c:1098 ../src/parole-player.c:1106
+#: ../src/parole-player.c:1118 ../src/parole-player.c:1126
 msgid "Clear Recent Items"
 msgstr "Wyczyść ostatnie elementy"
 
-#: ../src/parole-player.c:1100
+#: ../src/parole-player.c:1120
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
 msgstr "Wyczyścić historię otwartych plików? Tej czynności nie można cofnąć."
 
-#: ../src/parole-player.c:1219 ../src/parole-player.c:1351
+#: ../src/parole-player.c:1239 ../src/parole-player.c:1371
 msgid "Media stream is not seekable"
 msgstr "Strumień nagrania nie posiada możliwości przeszukiwania"
 
-#: ../src/parole-player.c:1674
+#: ../src/parole-player.c:1694
 msgid "GStreamer backend error"
 msgstr "Błąd wewnętrzny Gstreamer"
 
-#: ../src/parole-player.c:1704
+#: ../src/parole-player.c:1724
 msgid "Unknown Song"
 msgstr "Nieznany utwór"
 
-#: ../src/parole-player.c:1709 ../src/parole-player.c:1711
-#: ../src/parole-player.c:1717
+#: ../src/parole-player.c:1729 ../src/parole-player.c:1731
+#: ../src/parole-player.c:1737
 msgid "on"
 msgstr "z albumu"
 
-#: ../src/parole-player.c:1717 ../src/plugins/notify/notify-provider.c:124
+#: ../src/parole-player.c:1737 ../src/plugins/notify/notify-provider.c:124
 msgid "Unknown Album"
 msgstr "Nieznany album"
 
-#: ../src/parole-player.c:1724 ../src/parole-player.c:1728
+#: ../src/parole-player.c:1744 ../src/parole-player.c:1748
 msgid "by"
 msgstr "w wykonaniu"
 
-#: ../src/parole-player.c:1728 ../src/plugins/notify/notify-provider.c:126
+#: ../src/parole-player.c:1748 ../src/plugins/notify/notify-provider.c:126
 msgid "Unknown Artist"
 msgstr "Nieznany wykonawca"
 
-#: ../src/parole-player.c:1761
+#: ../src/parole-player.c:1781
 msgid "Buffering"
 msgstr "Buforowanie"
 
-#: ../src/parole-player.c:2870
+#: ../src/parole-player.c:2245
+msgid "Mute"
+msgstr "Wyciszenie"
+
+#: ../src/parole-player.c:2250
+msgid "Unmute"
+msgstr "Wyłącza wyciszenie"
+
+#: ../src/parole-player.c:2905
 msgid "Clear recent items..."
 msgstr "Wyczyść ostatnie elementy..."
 
