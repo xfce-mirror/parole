@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-28 08:45+0000\n"
+"POT-Creation-Date: 2013-01-20 18:30+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Sérgio Marques <smarquespt@gmail.com>\n"
 "Language-Team: Portuguese\n"
@@ -66,7 +66,7 @@ msgstr "Automático"
 msgid "Buffering (0%)"
 msgstr "A processar (0%)"
 
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:720
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:740
 msgid "Empty"
 msgstr "Vazio"
 
@@ -204,7 +204,7 @@ msgid "Play opened files"
 msgstr "Reproduzir ficheiros abertos"
 
 #: ../data/interfaces/playlist.ui.h:9 ../src/parole-medialist.c:784
-#: ../src/parole-player.c:2992
+#: ../src/parole-player.c:3028
 msgid "Playlist"
 msgstr "Lista de reprodução"
 
@@ -385,55 +385,55 @@ msgstr "Mensagem"
 msgid "Error"
 msgstr "Erro"
 
-#: ../src/gst/parole-gst.c:1238 ../src/parole-medialist.c:356
+#: ../src/gst/parole-gst.c:1370 ../src/parole-medialist.c:356
 #, c-format
 msgid "Track %i"
 msgstr "Faixa %i"
 
-#: ../src/gst/parole-gst.c:1241
+#: ../src/gst/parole-gst.c:1373
 msgid "Audio CD"
 msgstr "CD áudio"
 
-#: ../src/gst/parole-gst.c:1441
+#: ../src/gst/parole-gst.c:1579
 msgid "Additional software is required."
 msgstr "Requer programas adicionais"
 
-#: ../src/gst/parole-gst.c:1445
+#: ../src/gst/parole-gst.c:1583
 msgid "Don't Install"
 msgstr "Não instalar"
 
-#: ../src/gst/parole-gst.c:1447
+#: ../src/gst/parole-gst.c:1585
 msgid "Install"
 msgstr "Instalar"
 
-#: ../src/gst/parole-gst.c:1859
+#: ../src/gst/parole-gst.c:2008
 msgid "Stop"
 msgstr "Parar"
 
-#: ../src/gst/parole-gst.c:1860
+#: ../src/gst/parole-gst.c:2009
 msgid "The stream is taking too much time to load"
 msgstr "A emissão está a levar muito tempo a carregar"
 
-#: ../src/gst/parole-gst.c:2031
+#: ../src/gst/parole-gst.c:2184
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Incapaz de carregar o plugin playbin GStreamer. Verifique a instalação "
 "GStreamer."
 
-#: ../src/gst/parole-gst.c:2055
+#: ../src/gst/parole-gst.c:2208
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Incapaz de carregar o plugin de vídeo GStreamer. Verifique a instalação "
 "GStreamer."
 
-#: ../src/gst/parole-gst.c:2647 ../src/gst/parole-gst.c:2651
+#: ../src/gst/parole-gst.c:2810 ../src/gst/parole-gst.c:2814
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Faixa áudio #%d"
 
-#: ../src/gst/parole-gst.c:2685 ../src/gst/parole-gst.c:2689
+#: ../src/gst/parole-gst.c:2848 ../src/gst/parole-gst.c:2852
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Legenda #%d"
@@ -544,7 +544,7 @@ msgstr "O Parole já está em execução. Use -i para abrir uma nova instância.
 msgid "Supported files"
 msgstr "Ficheiros suportados"
 
-#: ../src/parole-mediachooser.c:219 ../src/parole-player.c:935
+#: ../src/parole-mediachooser.c:219 ../src/parole-player.c:955
 msgid "All files"
 msgstr "Todos os ficheiros"
 
@@ -602,32 +602,32 @@ msgstr "Lista multimédia"
 msgid "Chapter list"
 msgstr "Lista de capítulos"
 
-#: ../src/parole-player.c:493
+#: ../src/parole-player.c:513
 msgid "Open ISO image"
 msgstr "Abrir imagem ISO"
 
-#: ../src/parole-player.c:512
+#: ../src/parole-player.c:532
 msgid "CD image"
 msgstr "Imagem de CD"
 
-#: ../src/parole-player.c:512
+#: ../src/parole-player.c:532
 msgid "DVD image"
 msgstr "Imagem de DVD"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:905
+#: ../src/parole-player.c:925
 msgid "Select Subtitle File"
 msgstr "Escolha o ficheiro de legendas"
 
-#: ../src/parole-player.c:923
+#: ../src/parole-player.c:943
 msgid "Subtitle Files"
 msgstr "Ficheiros de legendas"
 
-#: ../src/parole-player.c:1098 ../src/parole-player.c:1106
+#: ../src/parole-player.c:1118 ../src/parole-player.c:1126
 msgid "Clear Recent Items"
 msgstr "Limpar itens recentes"
 
-#: ../src/parole-player.c:1100
+#: ../src/parole-player.c:1120
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
@@ -635,40 +635,48 @@ msgstr ""
 "Tem a certeza que quer limpar a lista de itens recentes? A operação não pode "
 "ser anulada."
 
-#: ../src/parole-player.c:1219 ../src/parole-player.c:1348
+#: ../src/parole-player.c:1239 ../src/parole-player.c:1371
 msgid "Media stream is not seekable"
 msgstr "A emissão não permite buscas"
 
-#: ../src/parole-player.c:1671
+#: ../src/parole-player.c:1694
 msgid "GStreamer backend error"
 msgstr "Erro GStreamer"
 
-#: ../src/parole-player.c:1701
+#: ../src/parole-player.c:1724
 msgid "Unknown Song"
 msgstr "Faixa desconhecida"
 
-#: ../src/parole-player.c:1706 ../src/parole-player.c:1708
-#: ../src/parole-player.c:1714
+#: ../src/parole-player.c:1729 ../src/parole-player.c:1731
+#: ../src/parole-player.c:1737
 msgid "on"
 msgstr "em"
 
-#: ../src/parole-player.c:1714 ../src/plugins/notify/notify-provider.c:124
+#: ../src/parole-player.c:1737 ../src/plugins/notify/notify-provider.c:124
 msgid "Unknown Album"
 msgstr "Álbum desconhecido"
 
-#: ../src/parole-player.c:1721 ../src/parole-player.c:1725
+#: ../src/parole-player.c:1744 ../src/parole-player.c:1748
 msgid "by"
 msgstr "de"
 
-#: ../src/parole-player.c:1725 ../src/plugins/notify/notify-provider.c:126
+#: ../src/parole-player.c:1748 ../src/plugins/notify/notify-provider.c:126
 msgid "Unknown Artist"
 msgstr "Artista desconhecido"
 
-#: ../src/parole-player.c:1760
+#: ../src/parole-player.c:1781
 msgid "Buffering"
 msgstr "A processar..."
 
-#: ../src/parole-player.c:2872
+#: ../src/parole-player.c:2245
+msgid "Mute"
+msgstr "Silenciar"
+
+#: ../src/parole-player.c:2250
+msgid "Unmute"
+msgstr "Restaurar"
+
+#: ../src/parole-player.c:2905
 msgid "Clear recent items..."
 msgstr "Limpar itens recentes..."
 
