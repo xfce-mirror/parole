@@ -359,16 +359,15 @@ msgstr "Hautatu fitxategi motak (luzapenez)"
 
 #: ../data/interfaces/open-location.ui.h:1
 msgid "<big><b>Open Network Location</b></big>"
-msgstr ""
+msgstr "<big><b>Ireki sare kokalekua</b></big>"
 
 #: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:192
 msgid "Clear History"
 msgstr "Garbitu historia"
 
 #: ../data/interfaces/open-location.ui.h:3
-#, fuzzy
 msgid "Open Network Location"
-msgstr "Ireki kokalekua"
+msgstr "Ireki sare kokalekua"
 
 #: ../data/desktop/parole.desktop.in.in.h:1
 msgid "Parole"
@@ -639,50 +638,45 @@ msgid "GStreamer backend error"
 msgstr "GStreamer interfaze errorea"
 
 #: ../src/parole-player.c:1724
-#, fuzzy
 msgid "Unknown Song"
-msgstr "Ezezaguna"
+msgstr "Kanta Ezezaguna"
 
 #: ../src/parole-player.c:1729 ../src/parole-player.c:1731
 #: ../src/parole-player.c:1737
-#, fuzzy
 msgid "on"
-msgstr "Batez"
+msgstr "-"
 
 #: ../src/parole-player.c:1737 ../src/plugins/notify/notify-provider.c:124
-#, fuzzy
 msgid "Unknown Album"
-msgstr "Ezezaguna"
+msgstr "Album ezezaguna"
 
 #: ../src/parole-player.c:1744 ../src/parole-player.c:1748
 msgid "by"
-msgstr ""
+msgstr "-"
 
 #: ../src/parole-player.c:1748 ../src/plugins/notify/notify-provider.c:126
-#, fuzzy
 msgid "Unknown Artist"
-msgstr "Ezezaguna"
+msgstr "Artista ezezaguna"
 
 #: ../src/parole-player.c:1781
 msgid "Buffering"
 msgstr "Bufferra betetzen"
 
 #: ../src/parole-player.c:2245
-#, fuzzy
 msgid "Mute"
-msgstr "_Mutu"
+msgstr "Mututu"
 
 #: ../src/parole-player.c:2250
 msgid "Unmute"
-msgstr ""
+msgstr "Desmututu"
 
 #: ../src/parole-player.c:2905
 msgid "Clear recent items..."
-msgstr ""
+msgstr "Garbitu azken elementua..."
 
 #: ../src/parole-about.c:74
 msgid "translator-credits"
-msgstr ""
+msgstr "Piarres Beobide <pi@beobide.net>"
 
 #: ../src/parole-about.c:77
 msgid "Visit Parole website"
@@ -856,20 +850,20 @@ msgstr "Erreprodukzio-zerrenda fitxategiak"
 #: ../src/plugins/notify/notify-provider.c:129
 #: ../src/plugins/notify/notify-provider.c:132
 msgid "<i>on</i>"
-msgstr ""
+msgstr "<i>-</i>"
 
 #: ../src/plugins/notify/notify-provider.c:129
 #: ../src/plugins/notify/notify-provider.c:132
 msgid "<i>by</i>"
-msgstr ""
+msgstr "<i>-</i>"
 
 #: ../src/plugins/notify/notify.desktop.in.h:1
 msgid "Notify"
-msgstr ""
+msgstr "Berri-eman"
 
 #: ../src/plugins/notify/notify.desktop.in.h:2
 msgid "Show notifications for currently playing tracks"
-msgstr ""
+msgstr "Erreproduzitzen diren pisten berri-emateak ikusi"
 
 #: ../src/plugins/tray/tray-provider.c:244
 msgid "Tray icon plugin"
@@ -880,13 +874,12 @@ msgid "Always minimize to tray when window is closed"
 msgstr "Beti txikitu erretilura leihoa ixtean"
 
 #: ../src/plugins/tray/tray-provider.c:300
-#, fuzzy
 msgid "Are you sure you want to quit?"
-msgstr "Ziur zaude Parole itxi nahi duzula?"
+msgstr "Ziur zaude itxi nahi duzula?"
 
 #: ../src/plugins/tray/tray-provider.c:303
 msgid "Parole can be minimized to the system tray instead."
-msgstr ""
+msgstr "Parole sistema barrara txikitu daiteke horren ordez."
 
 #: ../src/plugins/tray/tray-provider.c:306
 msgid "Minimize to tray"
