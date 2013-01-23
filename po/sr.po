@@ -3,20 +3,21 @@
 # This file is distributed under the same license as the parole package.
 # salepetronije <salepetronije@gmail.com>, 2012.
 # Саша Петровић <salepetronije@gmail.com>, 2012.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: parole.master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-10 07:03+0000\n"
+"POT-Creation-Date: 2013-01-23 10:42+0000\n"
 "PO-Revision-Date: 2012-09-30 16:20+0200\n"
 "Last-Translator: Саша Петровић <salepetronije@gmail.com>\n"
 "Language-Team: српски <xfce-i18n@xfce.org>\n"
+"Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sr\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
+"%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Gtranslator 2.91.5\n"
 
 #: ../data/interfaces/parole.ui.h:1
@@ -68,7 +69,7 @@ msgstr "Самостално"
 msgid "Buffering (0%)"
 msgstr "Смештам у међумеморију (0%)"
 
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:720
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:740
 msgid "Empty"
 msgstr "Празно"
 
@@ -206,7 +207,7 @@ msgid "Play opened files"
 msgstr "Пусти отворене датотеке"
 
 #: ../data/interfaces/playlist.ui.h:9 ../src/parole-medialist.c:784
-#: ../src/parole-player.c:2990
+#: ../src/parole-player.c:3028
 msgid "Playlist"
 msgstr "Списак нумера"
 
@@ -387,54 +388,54 @@ msgstr "Порука"
 msgid "Error"
 msgstr "Грeшкa"
 
-#: ../src/gst/parole-gst.c:1361 ../src/parole-medialist.c:356
+#: ../src/gst/parole-gst.c:1370 ../src/parole-medialist.c:356
 #, c-format
 msgid "Track %i"
 msgstr "Звучна нумера #%d"
 
-#: ../src/gst/parole-gst.c:1364
+#: ../src/gst/parole-gst.c:1373
 msgid "Audio CD"
 msgstr "Звучни ЦД"
 
-#: ../src/gst/parole-gst.c:1568
+#: ../src/gst/parole-gst.c:1579
 msgid "Additional software is required."
 msgstr "Потребни су додатни програми"
 
-#: ../src/gst/parole-gst.c:1572
+#: ../src/gst/parole-gst.c:1583
 msgid "Don't Install"
 msgstr "Не уграђуј"
 
-#: ../src/gst/parole-gst.c:1574
+#: ../src/gst/parole-gst.c:1585
 msgid "Install"
 msgstr "Угради"
 
-#: ../src/gst/parole-gst.c:2002
+#: ../src/gst/parole-gst.c:2008
 msgid "Stop"
 msgstr "Заустави"
 
-#: ../src/gst/parole-gst.c:2003
+#: ../src/gst/parole-gst.c:2009
 msgid "The stream is taking too much time to load"
 msgstr "Току је потребно превише времена за учитавање"
 
-#: ../src/gst/parole-gst.c:2178
+#: ../src/gst/parole-gst.c:2184
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Не могу да направим плејбин прикључак Гстримера, проверите инсталацију "
 "Гстримера"
 
-#: ../src/gst/parole-gst.c:2202
+#: ../src/gst/parole-gst.c:2208
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Не могу да учитам видео прикључак Гстримера, проверите инсталацију Гстримера"
 
-#: ../src/gst/parole-gst.c:2806 ../src/gst/parole-gst.c:2810
+#: ../src/gst/parole-gst.c:2810 ../src/gst/parole-gst.c:2814
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Звучна нумера #%d"
 
-#: ../src/gst/parole-gst.c:2844 ../src/gst/parole-gst.c:2848
+#: ../src/gst/parole-gst.c:2848 ../src/gst/parole-gst.c:2852
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Превод #%d"
@@ -546,7 +547,7 @@ msgstr ""
 msgid "Supported files"
 msgstr "Подржане датотеке"
 
-#: ../src/parole-mediachooser.c:219 ../src/parole-player.c:935
+#: ../src/parole-mediachooser.c:219 ../src/parole-player.c:955
 msgid "All files"
 msgstr "Све датотеке"
 
@@ -604,32 +605,32 @@ msgstr "Списак звучних и видео датотека"
 msgid "Chapter list"
 msgstr "Списак поглавља"
 
-#: ../src/parole-player.c:493
+#: ../src/parole-player.c:513
 msgid "Open ISO image"
 msgstr "Отворите ИСО одраз"
 
-#: ../src/parole-player.c:512
+#: ../src/parole-player.c:532
 msgid "CD image"
 msgstr "ЦД одраз"
 
-#: ../src/parole-player.c:512
+#: ../src/parole-player.c:532
 msgid "DVD image"
 msgstr "ДВД одраз"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:905
+#: ../src/parole-player.c:925
 msgid "Select Subtitle File"
 msgstr "Одабери датотеку поднаслова"
 
-#: ../src/parole-player.c:923
+#: ../src/parole-player.c:943
 msgid "Subtitle Files"
 msgstr "Датотеке поднаслова"
 
-#: ../src/parole-player.c:1098 ../src/parole-player.c:1106
+#: ../src/parole-player.c:1118 ../src/parole-player.c:1126
 msgid "Clear Recent Items"
 msgstr "Очисти скорашње ставке"
 
-#: ../src/parole-player.c:1100
+#: ../src/parole-player.c:1120
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
@@ -637,40 +638,48 @@ msgstr ""
 "Да ли сте сигурни да желите очистити скорашње ставке? Чишћење се не може "
 "поништити."
 
-#: ../src/parole-player.c:1219 ../src/parole-player.c:1351
+#: ../src/parole-player.c:1239 ../src/parole-player.c:1371
 msgid "Media stream is not seekable"
 msgstr "Ток звука/видеа се не може претраживати"
 
-#: ../src/parole-player.c:1674
+#: ../src/parole-player.c:1694
 msgid "GStreamer backend error"
 msgstr "Грешка Гстример позадине"
 
-#: ../src/parole-player.c:1704
+#: ../src/parole-player.c:1724
 msgid "Unknown Song"
 msgstr "Непозната песма"
 
-#: ../src/parole-player.c:1709 ../src/parole-player.c:1711
-#: ../src/parole-player.c:1717
+#: ../src/parole-player.c:1729 ../src/parole-player.c:1731
+#: ../src/parole-player.c:1737
 msgid "on"
 msgstr "на"
 
-#: ../src/parole-player.c:1717 ../src/plugins/notify/notify-provider.c:124
+#: ../src/parole-player.c:1737 ../src/plugins/notify/notify-provider.c:124
 msgid "Unknown Album"
 msgstr "Непознат албум"
 
-#: ../src/parole-player.c:1724 ../src/parole-player.c:1728
+#: ../src/parole-player.c:1744 ../src/parole-player.c:1748
 msgid "by"
 msgstr "од"
 
-#: ../src/parole-player.c:1728 ../src/plugins/notify/notify-provider.c:126
+#: ../src/parole-player.c:1748 ../src/plugins/notify/notify-provider.c:126
 msgid "Unknown Artist"
 msgstr "Непознат извођач"
 
-#: ../src/parole-player.c:1761
+#: ../src/parole-player.c:1781
 msgid "Buffering"
 msgstr "Смештам у међумеморију"
 
-#: ../src/parole-player.c:2870
+#: ../src/parole-player.c:2245
+msgid "Mute"
+msgstr "Утишај"
+
+#: ../src/parole-player.c:2250
+msgid "Unmute"
+msgstr "Појачај"
+
+#: ../src/parole-player.c:2905
 msgid "Clear recent items..."
 msgstr "Очисти скорашње ставке..."
 
@@ -907,124 +916,3 @@ msgstr ""
 #: ../src/plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
 msgstr "Прикључак управника напајања"
-
-#~ msgid "Open _location"
-#~ msgstr "Отвори _место"
-
-#~ msgid "Please enter a network URL:"
-#~ msgstr "Молим, унесите мрежну адресу:"
-
-#~ msgid "Title:"
-#~ msgstr "Наслов:"
-
-#~ msgid "Artist:"
-#~ msgstr "Извођач:"
-
-#~ msgid "Album:"
-#~ msgstr "Албум:"
-
-#~ msgid "Year:"
-#~ msgstr "Година:"
-
-#~ msgid "General"
-#~ msgstr "Опште"
-
-#~ msgid "Stream doesn't support tags changes"
-#~ msgstr "Ток не подржава промену ознака"
-
-#~ msgid "Save media tags changes"
-#~ msgstr "Сачувајте измене ознака звука и видеа"
-
-#~ msgid "Properties"
-#~ msgstr "Својства"
-
-#~ msgid "Read media properties"
-#~ msgstr "Читај особине звука и видеа"
-
-#~ msgid "Stream Properties"
-#~ msgstr "Својства тока"
-
-#~ msgid "<b>Playing:</b>"
-#~ msgstr "<b>Извођење:</b>"
-
-#~ msgid "<b>Duration:</b>"
-#~ msgstr "<b>Трајање:</b>"
-
-#~ msgid "Enable notification"
-#~ msgstr "Омогући обавештења"
-
-#~ msgid "Minimize to tray?"
-#~ msgstr "Да спустим у системску касету?"
-
-#~ msgid "DVD"
-#~ msgstr "ДВД"
-
-#~ msgid "From ISO image"
-#~ msgstr "Из ИСО одраза"
-
-#~ msgid "Next Chapter"
-#~ msgstr "Следећe поглавље"
-
-#~ msgid "Previous Chapter"
-#~ msgstr "Претходно поглавље"
-
-#~ msgid "Select Track"
-#~ msgstr "Изабери нумеру"
-
-#~ msgid "Sound"
-#~ msgstr "Звук"
-
-#~ msgid "Add"
-#~ msgstr "Додај"
-
-#~ msgid "Parole Media Chooser"
-#~ msgstr "Избирач датотека Часноречца"
-
-#~ msgid "Scan folders recursively"
-#~ msgstr "Прегледај фасцикле дубински"
-
-#~ msgid "<b>Site:</b>"
-#~ msgstr "<b>Сајт:</b>"
-
-#~ msgid "Media Player plugins"
-#~ msgstr "Прикључци звучног програма"
-
-#~ msgid "Media Player Settings"
-#~ msgstr "Подешавања програма за звук и видео"
-
-#~ msgid "Enter the address of a location to open"
-#~ msgstr "Унесите адресу места које желите да отворите"
-
-#~ msgid "Open location of media file or live stream"
-#~ msgstr "Отвори место датотеке медија или живог тока"
-
-#~ msgid "Next Track"
-#~ msgstr "Следећа ставка"
-
-#~ msgid "Stopped"
-#~ msgstr "Заустављено"
-
-#~ msgid "Finished"
-#~ msgstr "Завршено"
-
-#~ msgid "Paused"
-#~ msgstr "Застанак"
-
-#~ msgid "Playing"
-#~ msgstr "Извођење"
-
-#~ msgid "Live stream:"
-#~ msgstr "Ток уживо:"
-
-#~ msgid "Author/Maintainer"
-#~ msgstr "Аутор/Одржавалац"
-
-#~ msgid "Playing Track"
-#~ msgstr "Пуштам нумеру"
-
-#~ msgid "Set the main window name to the current playing media name."
-#~ msgstr ""
-#~ "Поставите назив главног прозора на назив тренутно пуштеног звука/видеа."
-
-#~ msgid "Window Title"
-#~ msgstr "Наслов прозора"
