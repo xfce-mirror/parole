@@ -155,7 +155,7 @@ gboolean	parole_media_list_query_tooltip		(GtkWidget *widget,
 							 ParoleMediaList *list);
 							 
 void		parole_media_list_menu_pos (GtkMenu *menu, 
-							gint *px, gint *py, gpointer data);
+							gint *px, gint *py, gboolean *push_in, gpointer data);
 
 void parole_media_list_send_dvd_menu_navigation (ParoleMediaList *list, gint msg_id);
 
@@ -1150,12 +1150,14 @@ shuffle_activated_cb (GtkWidget *mi, ParoleMediaList *list)
 }
 
 void
-parole_media_list_menu_pos (GtkMenu *menu, gint *px, gint *py, gpointer data)
+parole_media_list_menu_pos (GtkMenu *menu, gint *px, gint *py, gboolean *push_in, gpointer data)
 {
 	gint x, y;
 	GtkAllocation widget_allocation, menu_allocation;
 	GtkWidget *widget = gtk_menu_get_attach_widget( menu );
 	GdkWindow *window;
+
+    *push_in = TRUE;
 	
 	gtk_widget_get_allocation( widget, &widget_allocation );
 	gtk_widget_get_allocation( GTK_WIDGET(menu), &menu_allocation );
@@ -1166,8 +1168,8 @@ parole_media_list_menu_pos (GtkMenu *menu, gint *px, gint *py, gpointer data)
 	if (widget_allocation.width > 100)
 	gtk_widget_set_size_request(GTK_WIDGET(menu), widget_allocation.width, -1);
 	
-	*px = x + widget_allocation.x;
-	*py = y + widget_allocation.y + widget_allocation.height;
+    *px = x + widget_allocation.x;
+    *py = y + widget_allocation.y + widget_allocation.height;
 }
 
 static void
