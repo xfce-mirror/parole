@@ -1339,6 +1339,7 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
     gtk_widget_set_sensitive (player->priv->play_pause, TRUE);
     
     parole_player_set_playpause_button_image (player->priv->play_pause, GTK_STOCK_MEDIA_PAUSE);
+    gtk_widget_set_tooltip_text(player->priv->play_pause, _("Pause"));
     
     gtk_widget_set_sensitive (player->priv->range, seekable);
     
@@ -1392,7 +1393,10 @@ parole_player_paused (ParolePlayer *player)
     gtk_widget_set_sensitive (player->priv->play_pause, TRUE);
     
     if ( player->priv->user_seeking == FALSE)
+    {
 	parole_player_set_playpause_button_image (player->priv->play_pause, GTK_STOCK_MEDIA_PLAY);
+	gtk_widget_set_tooltip_text(player->priv->play_pause, _("Play"));
+    }
     
     if ( pix )
 	g_object_unref (pix);
@@ -1425,6 +1429,7 @@ parole_player_stopped (ParolePlayer *player)
     gtk_widget_set_sensitive (player->priv->seekb, FALSE);
 
     parole_player_set_playpause_button_image (player->priv->play_pause, GTK_STOCK_MEDIA_PLAY);
+    gtk_widget_set_tooltip_text(player->priv->play_pause, _("Play"));
     
     parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, NULL);
     
