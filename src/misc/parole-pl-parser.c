@@ -546,7 +546,7 @@ parole_pl_parser_save_pls (FILE *f, GSList *files)
 	ParoleFile *file;
 	file = g_slist_nth_data (files, i - 1);
 	g_snprintf (key, 128, "File%d", i);
-	fprintf (f, "%s=%s\n", key, parole_file_get_file_name (file));
+	fprintf (f, "%s=%s\n", key, parole_filename_to_utf8(parole_file_get_file_name (file)));
 	g_snprintf (key, 128, "Title%d", i);
 	fprintf (f, "%s=%s\n\n", key, parole_file_get_display_name (file));
     }
