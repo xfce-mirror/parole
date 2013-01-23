@@ -56,6 +56,20 @@ typedef struct
     
 } ParoleParserData;
 
+static gchar*
+parole_filename_to_utf8(const gchar* filename)
+{
+    gsize read, written;
+    
+    gchar *utf8;
+    gchar *tmp = g_strdup(filename);
+    tmp = g_strconcat(tmp, "\0", NULL);
+    
+    utf8 = g_filename_to_utf8(tmp, -1, &read, &written, NULL);
+    g_free(tmp);
+    return utf8;
+}
+
 static void
 parole_xspf_xml_start (GMarkupParseContext *context, const gchar *element_name,
 		       const gchar **attribute_names, const gchar **attribute_values,
@@ -486,17 +500,32 @@ parole_pl_parser_save_m3u (FILE *f, GSList *files)
     guint len;
     guint i;
     
+    gchar *display_name = NULL;
+    gchar *file_name = NULL;
+    
     fputs ("#EXTM3U\n\n", f);
     
     len = g_slist_length (files);
     
     for ( i = 0; i < len; i++)
     {
-	ParoleFile *file;
-	file = g_slist_nth_data (files, i);
-	fprintf (f, "#EXTINF:-1,%s\n", parole_file_get_display_name (file));
-	fprintf (f, "%s\n\n", parole_file_get_file_name (file));
+	    ParoleFile *file;
+	    file = g_slist_nth_data (files, i);
+	    display_name = g_strdup(parole_file_get_display_name (file));
+	    file_name = parole_filename_to_utf8(parole_file_get_file_name (file));
+	
+	    if (display_name && file_name)
+	    {
+	        fprintf (f, "#EXTINF:-1,%s\n", display_name);
+	        fprintf (f, "%s\n\n", file_name);
+	    }
     }
+    
+    if (display_name)
+        g_free(display_name);
+        
+    if (file_name)
+        g_free(file_name);
     
     return TRUE;
 }
