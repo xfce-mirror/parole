@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ast\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-17 15:36+0000\n"
+"POT-Creation-Date: 2013-01-24 08:06+0000\n"
 "PO-Revision-Date: 2012-12-07 14:44+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -74,96 +74,113 @@ msgstr "Mise en tampon"
 msgid "Empty"
 msgstr "Vide"
 
-#: ../data/interfaces/parole.ui.h:13 ../src/parole-disc.c:110
+#: ../data/interfaces/parole.ui.h:13
+msgid "Fullscreen"
+msgstr "Plein écran"
+
+#: ../data/interfaces/parole.ui.h:14 ../src/parole-disc.c:110
 #: ../src/parole-disc.c:156
 msgid "Insert Disc"
 msgstr "Insérer un disque"
 
-#: ../data/interfaces/parole.ui.h:14
+#: ../data/interfaces/parole.ui.h:15
 msgid "Languages"
 msgstr "Langues"
 
-#: ../data/interfaces/parole.ui.h:15
+#: ../data/interfaces/parole.ui.h:16
 msgid "Media player"
 msgstr "Lecteur Média"
 
-#: ../data/interfaces/parole.ui.h:16
+#: ../data/interfaces/parole.ui.h:17
+msgid "Next"
+msgstr "Suivant"
+
+#: ../data/interfaces/parole.ui.h:18
 msgid "None"
 msgstr "Aucun"
 
-#: ../data/interfaces/parole.ui.h:17
+#: ../data/interfaces/parole.ui.h:19
 msgid "Open Recent"
 msgstr "Ouvrir récent"
 
-#: ../data/interfaces/parole.ui.h:18
+#: ../data/interfaces/parole.ui.h:20
 msgid "Open _Location"
 msgstr "Ouvrir un _emplacement"
 
-#: ../data/interfaces/parole.ui.h:19 ../src/parole-about.c:68
+#: ../data/interfaces/parole.ui.h:21 ../src/parole-about.c:68
 msgid "Parole Media Player"
 msgstr "Lecteur Média Parole"
 
-#: ../data/interfaces/parole.ui.h:20
+#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:1398
+#: ../src/parole-player.c:1432
+msgid "Play"
+msgstr "Lecture"
+
+#: ../data/interfaces/parole.ui.h:23
 msgid "Plugins"
 msgstr "Greffons"
 
-#: ../data/interfaces/parole.ui.h:21
+#: ../data/interfaces/parole.ui.h:24
+msgid "Previous"
+msgstr "Précédent"
+
+#: ../data/interfaces/parole.ui.h:25
 msgid "Select Text Subtitles..."
 msgstr "Sélectionner le fichier de sous-titres"
 
-#: ../data/interfaces/parole.ui.h:22
+#: ../data/interfaces/parole.ui.h:26
 msgid "Show _playlist"
 msgstr "Afficher la liste de lecture"
 
-#: ../data/interfaces/parole.ui.h:23
+#: ../data/interfaces/parole.ui.h:27
 msgid "Square"
 msgstr "Carré"
 
-#: ../data/interfaces/parole.ui.h:24
+#: ../data/interfaces/parole.ui.h:28
 msgid "Subtitles"
 msgstr "Sous-titres"
 
-#: ../data/interfaces/parole.ui.h:25
+#: ../data/interfaces/parole.ui.h:29
 msgid "Subtitles:"
 msgstr "Sous-titres :"
 
-#: ../data/interfaces/parole.ui.h:26
+#: ../data/interfaces/parole.ui.h:30
 msgid "Volume _Down"
 msgstr "Diminuer le Volume"
 
-#: ../data/interfaces/parole.ui.h:27
+#: ../data/interfaces/parole.ui.h:31
 msgid "Volume _Up"
 msgstr "Augmenter le Volume"
 
-#: ../data/interfaces/parole.ui.h:28
+#: ../data/interfaces/parole.ui.h:32
 msgid "_Aspect Ratio"
 msgstr "_Ratio d'Aspect"
 
-#: ../data/interfaces/parole.ui.h:29
+#: ../data/interfaces/parole.ui.h:33
 msgid "_Edit"
 msgstr "_Éditer"
 
-#: ../data/interfaces/parole.ui.h:30
+#: ../data/interfaces/parole.ui.h:34
 msgid "_Help"
 msgstr "Aid_e"
 
-#: ../data/interfaces/parole.ui.h:31
+#: ../data/interfaces/parole.ui.h:35
 msgid "_Media"
 msgstr "_Média"
 
-#: ../data/interfaces/parole.ui.h:32
+#: ../data/interfaces/parole.ui.h:36
 msgid "_Mute"
 msgstr "_Mettre en sourdine"
 
-#: ../data/interfaces/parole.ui.h:33
+#: ../data/interfaces/parole.ui.h:37
 msgid "_Repeat"
 msgstr "_Répéter"
 
-#: ../data/interfaces/parole.ui.h:34
+#: ../data/interfaces/parole.ui.h:38
 msgid "_Shuffle"
 msgstr "_Aléatoire"
 
-#: ../data/interfaces/parole.ui.h:35
+#: ../data/interfaces/parole.ui.h:39
 msgid "_View"
 msgstr "_Affichage"
 
@@ -176,60 +193,72 @@ msgid "_Open"
 msgstr "_Ouvrir"
 
 #: ../data/interfaces/playlist.ui.h:1
+msgid "Add…"
+msgstr "Ajouter..."
+
+#: ../data/interfaces/playlist.ui.h:2
 msgid "Angle Menu"
 msgstr "Menu angle"
 
-#: ../data/interfaces/playlist.ui.h:2
+#: ../data/interfaces/playlist.ui.h:3
 msgid "Audio Menu"
 msgstr "Menu audio"
 
-#: ../data/interfaces/playlist.ui.h:3
+#: ../data/interfaces/playlist.ui.h:4
 msgid "Chapter Menu"
 msgstr "Menu Chapitre"
 
-#: ../data/interfaces/playlist.ui.h:4
+#: ../data/interfaces/playlist.ui.h:5
 msgid "Clear"
 msgstr "Vider"
 
-#: ../data/interfaces/playlist.ui.h:5
+#: ../data/interfaces/playlist.ui.h:6
 msgid "DVD Menu"
 msgstr "Menu du DVD"
 
-#: ../data/interfaces/playlist.ui.h:6
+#: ../data/interfaces/playlist.ui.h:7
 msgid "DVD Name"
 msgstr "Nom DVD"
 
-#: ../data/interfaces/playlist.ui.h:7
+#: ../data/interfaces/playlist.ui.h:8
 msgid "Disc Playlist"
 msgstr "Liste de lecture Disque"
 
-#: ../data/interfaces/playlist.ui.h:8
+#: ../data/interfaces/playlist.ui.h:9
 msgid "Play opened files"
 msgstr "Démarrez la lecture des fichiers ouverts"
 
-#: ../data/interfaces/playlist.ui.h:9 ../src/parole-medialist.c:784
-#: ../src/parole-player.c:3028
+#: ../data/interfaces/playlist.ui.h:10 ../src/parole-medialist.c:784
+#: ../src/parole-player.c:3033
 msgid "Playlist"
 msgstr "Liste de lecture"
 
-#: ../data/interfaces/playlist.ui.h:10
+#: ../data/interfaces/playlist.ui.h:11
+msgid "Playlist options"
+msgstr "Options liste de lecture"
+
+#: ../data/interfaces/playlist.ui.h:12
 #: ../data/interfaces/parole-settings.ui.h:17
 msgid "Remember playlist"
 msgstr "Se souvenir de la liste de lecture"
 
-#: ../data/interfaces/playlist.ui.h:11
+#: ../data/interfaces/playlist.ui.h:13
+msgid "Remove"
+msgstr "Supprimer"
+
+#: ../data/interfaces/playlist.ui.h:14
 msgid "Repeat"
 msgstr "Répéter"
 
-#: ../data/interfaces/playlist.ui.h:12
+#: ../data/interfaces/playlist.ui.h:15
 msgid "Replace playlist when opening files"
 msgstr "Remplacer la liste de lecture lors de l'ouverture de fichiers"
 
-#: ../data/interfaces/playlist.ui.h:13
+#: ../data/interfaces/playlist.ui.h:16
 msgid "Shuffle"
 msgstr "Aléatoire"
 
-#: ../data/interfaces/playlist.ui.h:14
+#: ../data/interfaces/playlist.ui.h:17
 msgid "Title Menu"
 msgstr "Menu Titre"
 
@@ -603,11 +632,11 @@ msgstr "Liste de Lecture Partageable"
 msgid "Open Containing Folder"
 msgstr "Ouvrir le dossier contenant le fichier"
 
-#: ../src/parole-medialist.c:1638
+#: ../src/parole-medialist.c:1640
 msgid "Media list"
 msgstr "Liste de médias"
 
-#: ../src/parole-medialist.c:1639
+#: ../src/parole-medialist.c:1641
 msgid "Chapter list"
 msgstr "Liste des chapitres"
 
@@ -644,48 +673,52 @@ msgstr ""
 "Êtes-vous sûr de vouloir effacer votre historique d'éléments récent ? Cela "
 "ne peut pas être annulée."
 
-#: ../src/parole-player.c:1239 ../src/parole-player.c:1371
+#: ../src/parole-player.c:1239 ../src/parole-player.c:1372
 msgid "Media stream is not seekable"
 msgstr "Le flux média ne peut être recherché"
 
-#: ../src/parole-player.c:1694
+#: ../src/parole-player.c:1342
+msgid "Pause"
+msgstr "Pause"
+
+#: ../src/parole-player.c:1699
 msgid "GStreamer backend error"
 msgstr "Erreur du moteur GStreamer"
 
-#: ../src/parole-player.c:1724
+#: ../src/parole-player.c:1729
 msgid "Unknown Song"
 msgstr "Chanson Inconnue"
 
-#: ../src/parole-player.c:1729 ../src/parole-player.c:1731
-#: ../src/parole-player.c:1737
+#: ../src/parole-player.c:1734 ../src/parole-player.c:1736
+#: ../src/parole-player.c:1742
 msgid "on"
 msgstr "actif"
 
-#: ../src/parole-player.c:1737 ../src/plugins/notify/notify-provider.c:124
+#: ../src/parole-player.c:1742 ../src/plugins/notify/notify-provider.c:124
 msgid "Unknown Album"
 msgstr "Album inconnu "
 
-#: ../src/parole-player.c:1744 ../src/parole-player.c:1748
+#: ../src/parole-player.c:1749 ../src/parole-player.c:1753
 msgid "by"
 msgstr "par"
 
-#: ../src/parole-player.c:1748 ../src/plugins/notify/notify-provider.c:126
+#: ../src/parole-player.c:1753 ../src/plugins/notify/notify-provider.c:126
 msgid "Unknown Artist"
 msgstr "Artiste inconnu"
 
-#: ../src/parole-player.c:1781
+#: ../src/parole-player.c:1786
 msgid "Buffering"
 msgstr "Mise en tampon"
 
-#: ../src/parole-player.c:2245
+#: ../src/parole-player.c:2250
 msgid "Mute"
 msgstr "Mettre en sourdine"
 
-#: ../src/parole-player.c:2250
+#: ../src/parole-player.c:2255
 msgid "Unmute"
 msgstr "Remettre le son"
 
-#: ../src/parole-player.c:2905
+#: ../src/parole-player.c:2910
 msgid "Clear recent items..."
 msgstr "Effacer les éléments récents..."
 
@@ -1005,9 +1038,6 @@ msgstr "Power Manager Plugin"
 #~ msgid "<b>Display</b>"
 #~ msgstr "<b>Affichage</b>"
 
-#~ msgid "<b>Playlist options</b>"
-#~ msgstr "<b>Lecture en cours :</b>"
-
 #~ msgid "<b>Subtitles</b>"
 #~ msgstr "<b>Sous-titres</b>"
 
@@ -1041,12 +1071,6 @@ msgstr "Power Manager Plugin"
 #~ msgid "Finished"
 #~ msgstr "Fini"
 
-#~ msgid "Paused"
-#~ msgstr "Mis en pause"
-
-#~ msgid "Playing"
-#~ msgstr "Piste en Cours de Lecture"
-
 #~ msgid "Live stream:"
 #~ msgstr "Flux live :"
 
@@ -1078,9 +1102,6 @@ msgstr "Power Manager Plugin"
 
 #~ msgid "URL"
 #~ msgstr "URL"
-
-#~ msgid "Fullscreen"
-#~ msgstr "Plein écran"
 
 #~ msgid "Copy url"
 #~ msgstr "Copier l'URL"
