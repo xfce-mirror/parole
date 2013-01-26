@@ -155,7 +155,7 @@ typedef struct
 {
   int index;
   const char *charset;
-  char *name;
+  const char *name;
 } SubtitleEncoding;
 
 
@@ -451,7 +451,7 @@ subtitle_encoding_create_store (void)
 
   for (i = 0; i < SUBTITLE_ENCODING_LAST; i++) {
     if (strcmp (lastlang, encodings[i].name)) {
-      lastlang = encodings[i].name;
+      lastlang = g_strdup(encodings[i].name);
       gtk_tree_store_append (store, &iter, NULL);
       gtk_tree_store_set (store, &iter, INDEX_COL,
           -1, NAME_COL, lastlang, -1);
