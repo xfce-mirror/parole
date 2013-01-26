@@ -2796,14 +2796,19 @@ gst_get_lang_list_for_type (ParoleGst * gst, const gchar * type_name)
                 i, &tags);
 
             if (tags) {
-                gchar *lc = NULL, *cd = NULL;
-
+                gchar *lc = NULL, *cd = NULL, *language_name = NULL;
+                
                 gst_tag_list_get_string (tags, GST_TAG_LANGUAGE_CODE, &lc);
                 gst_tag_list_get_string (tags, GST_TAG_CODEC, &cd);
 
                 if (lc) {
-                    lc = g_strdup(gst_tag_get_language_name(lc));
-                    ret = g_list_prepend (ret, lc);
+                    language_name = g_strdup(gst_tag_get_language_name(lc));
+                    if (language_name)
+                    {
+                        ret = g_list_prepend (ret, language_name);
+                    }
+                    else
+                        ret = g_list_prepend (ret, lc);
                     g_free (cd);
                 } else if (cd) {
                     ret = g_list_prepend (ret, cd);
@@ -2835,21 +2840,26 @@ gst_get_lang_list_for_type (ParoleGst * gst, const gchar * type_name)
                     i, &tags);
 
                 if (tags) {
-                    gchar *lc = NULL, *cd = NULL;
+                    gchar *lc = NULL, *cd = NULL, *language_name = NULL;
 
                 gst_tag_list_get_string (tags, GST_TAG_LANGUAGE_CODE, &lc);
                 gst_tag_list_get_string (tags, GST_TAG_CODEC, &lc);
 
                 if (lc) {
-                    lc = g_strdup(gst_tag_get_language_name(lc));
-                    ret = g_list_prepend (ret, lc);
+                    language_name = g_strdup(gst_tag_get_language_name(lc));
+                    if (language_name)
+                    {
+                        ret = g_list_prepend (ret, language_name);
+                    }
+                    else
+                        ret = g_list_prepend (ret, lc);
                     g_free (cd);
                 } else if (cd) {
                     ret = g_list_prepend (ret, cd);
                 } else {
                     ret = g_list_prepend (ret, g_strdup_printf (_("Subtitle #%d"), num++));
                 }
-                    gst_tag_list_free (tags);
+                gst_tag_list_free (tags);
                 } else {
                     ret = g_list_prepend (ret, g_strdup_printf (_("Subtitle #%d"), num++));
                 }
