@@ -2,19 +2,19 @@
 # Copyright (C) 2011 THE parole'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the parole package.
 # Cheng-Chia Tseng <pswo10680@gmail.com>, 2011.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: parole master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-25 03:36+0000\n"
-"PO-Revision-Date: 2012-01-19 23:35+0800\n"
+"POT-Creation-Date: 2013-01-28 03:03+0000\n"
+"PO-Revision-Date: 2013-01-28 11:45+0800\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: chinese-l10n <chinese-l10n@googlegroups.com>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../data/interfaces/parole.ui.h:1
@@ -29,113 +29,151 @@ msgstr "20:9 (DVB)"
 msgid "4:3 (TV)"
 msgstr "4:3 (TV)"
 
-#: ../data/interfaces/parole.ui.h:4 ../src/misc/parole-filters.c:64
+#: ../data/interfaces/parole.ui.h:4
+msgid "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown Artist</span></big>"
+msgstr "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>未知演出者</span></big>"
+
+#: ../data/interfaces/parole.ui.h:5
+msgid "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown Album</span></big>"
+msgstr "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>未知專輯</span></big>"
+
+#: ../data/interfaces/parole.ui.h:6
+msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
+msgstr "<span color='#F4F4F4'><b><big>未知歌曲</big></b></span>"
+
+#: ../data/interfaces/parole.ui.h:7
+#: ../src/misc/parole-filters.c:64
 msgid "Audio"
 msgstr "音訊"
 
-#: ../data/interfaces/parole.ui.h:5
+#: ../data/interfaces/parole.ui.h:8
 msgid "Audio Track:"
-msgstr "上一軌道："
+msgstr "音訊軌道："
 
-#: ../data/interfaces/parole.ui.h:6
+#: ../data/interfaces/parole.ui.h:9
 msgid "Auto"
 msgstr "自動"
 
-#: ../data/interfaces/parole.ui.h:8
+#: ../data/interfaces/parole.ui.h:11
 #, no-c-format
 msgid "Buffering (0%)"
 msgstr "緩衝中 (0%)"
 
-#: ../data/interfaces/parole.ui.h:9 ../src/parole-player.c:681
+#: ../data/interfaces/parole.ui.h:12
+#: ../src/parole-player.c:740
 msgid "Empty"
-msgstr ""
+msgstr "空"
 
-#: ../data/interfaces/parole.ui.h:10 ../src/parole-disc.c:147
-#: ../src/parole-disc.c:465
+#: ../data/interfaces/parole.ui.h:13
+msgid "Fullscreen"
+msgstr "全螢幕"
+
+#: ../data/interfaces/parole.ui.h:14
+#: ../src/parole-disc.c:110
+#: ../src/parole-disc.c:156
 msgid "Insert Disc"
 msgstr "插入碟片"
 
-#: ../data/interfaces/parole.ui.h:11
+#: ../data/interfaces/parole.ui.h:15
 msgid "Languages"
 msgstr "語言"
 
-#: ../data/interfaces/parole.ui.h:12
+#: ../data/interfaces/parole.ui.h:16
 msgid "Media player"
 msgstr "媒體播放器"
 
-#: ../data/interfaces/parole.ui.h:13
+#: ../data/interfaces/parole.ui.h:17
+msgid "Next"
+msgstr "下個"
+
+#: ../data/interfaces/parole.ui.h:18
 msgid "None"
 msgstr "無"
 
-#: ../data/interfaces/parole.ui.h:14
-msgid "Open _location"
+#: ../data/interfaces/parole.ui.h:19
+msgid "Open Recent"
+msgstr "開啟最近播放"
+
+#: ../data/interfaces/parole.ui.h:20
+msgid "Open _Location"
 msgstr "開啟位置(_L)"
 
-#: ../data/interfaces/parole.ui.h:15 ../src/parole-about.c:68
+#: ../data/interfaces/parole.ui.h:21
+#: ../src/parole-about.c:68
 msgid "Parole Media Player"
 msgstr "Parole 媒體播放器"
 
-#: ../data/interfaces/parole.ui.h:16
-msgid "Pl_ugins"
-msgstr "插件(_U)"
+#: ../data/interfaces/parole.ui.h:22
+#: ../src/parole-player.c:1398
+#: ../src/parole-player.c:1432
+msgid "Play"
+msgstr "播放"
 
-#: ../data/interfaces/parole.ui.h:17
+#: ../data/interfaces/parole.ui.h:23
+msgid "Plugins"
+msgstr "插件"
+
+#: ../data/interfaces/parole.ui.h:24
+msgid "Previous"
+msgstr "上個"
+
+#: ../data/interfaces/parole.ui.h:25
 msgid "Select Text Subtitles..."
 msgstr "選取文字字幕..."
 
-#: ../data/interfaces/parole.ui.h:18
+#: ../data/interfaces/parole.ui.h:26
 msgid "Show _playlist"
 msgstr "顯示播放清單(_P)"
 
-#: ../data/interfaces/parole.ui.h:19
+#: ../data/interfaces/parole.ui.h:27
 msgid "Square"
 msgstr "正方"
 
-#: ../data/interfaces/parole.ui.h:20
+#: ../data/interfaces/parole.ui.h:28
 msgid "Subtitles"
 msgstr "字幕"
 
-#: ../data/interfaces/parole.ui.h:21
+#: ../data/interfaces/parole.ui.h:29
 msgid "Subtitles:"
 msgstr "字幕："
 
-#: ../data/interfaces/parole.ui.h:22
+#: ../data/interfaces/parole.ui.h:30
 msgid "Volume _Down"
 msgstr "降低音量(_D)"
 
-#: ../data/interfaces/parole.ui.h:23
+#: ../data/interfaces/parole.ui.h:31
 msgid "Volume _Up"
 msgstr "提高音量(_U)"
 
-#: ../data/interfaces/parole.ui.h:24
+#: ../data/interfaces/parole.ui.h:32
 msgid "_Aspect Ratio"
 msgstr "長寬比(_A)"
 
-#: ../data/interfaces/parole.ui.h:25
+#: ../data/interfaces/parole.ui.h:33
 msgid "_Edit"
 msgstr "編輯(_E)"
 
-#: ../data/interfaces/parole.ui.h:26
+#: ../data/interfaces/parole.ui.h:34
 msgid "_Help"
 msgstr "幫助(_H)"
 
-#: ../data/interfaces/parole.ui.h:27
+#: ../data/interfaces/parole.ui.h:35
 msgid "_Media"
 msgstr "媒體(_M)"
 
-#: ../data/interfaces/parole.ui.h:28
+#: ../data/interfaces/parole.ui.h:36
 msgid "_Mute"
 msgstr "靜音(_M)"
 
-#: ../data/interfaces/parole.ui.h:29
+#: ../data/interfaces/parole.ui.h:37
 msgid "_Repeat"
 msgstr "返復(_R)"
 
-#: ../data/interfaces/parole.ui.h:30
+#: ../data/interfaces/parole.ui.h:38
 msgid "_Shuffle"
 msgstr "隨機(_S)"
 
-#: ../data/interfaces/parole.ui.h:31
+#: ../data/interfaces/parole.ui.h:39
 msgid "_View"
 msgstr "檢視(_V)"
 
@@ -148,29 +186,75 @@ msgid "_Open"
 msgstr "開啟(_O)"
 
 #: ../data/interfaces/playlist.ui.h:1
+msgid "Add…"
+msgstr "加入..."
+
+#: ../data/interfaces/playlist.ui.h:2
+msgid "Angle Menu"
+msgstr "角度選單"
+
+#: ../data/interfaces/playlist.ui.h:3
+msgid "Audio Menu"
+msgstr "音訊選單"
+
+#: ../data/interfaces/playlist.ui.h:4
+msgid "Chapter Menu"
+msgstr "章選單"
+
+#: ../data/interfaces/playlist.ui.h:5
 msgid "Clear"
 msgstr "清除"
 
-#: ../data/interfaces/playlist.ui.h:2
+#: ../data/interfaces/playlist.ui.h:6
+msgid "DVD Menu"
+msgstr "DVD 選單"
+
+#: ../data/interfaces/playlist.ui.h:7
+msgid "DVD Name"
+msgstr "DVD 名稱"
+
+#: ../data/interfaces/playlist.ui.h:8
+msgid "Disc Playlist"
+msgstr "光碟播放清單"
+
+#: ../data/interfaces/playlist.ui.h:9
 msgid "Play opened files"
 msgstr "播放開啟的檔案"
 
-#: ../data/interfaces/playlist.ui.h:3
+#: ../data/interfaces/playlist.ui.h:10
+#: ../src/parole-medialist.c:784
+#: ../src/parole-player.c:3033
+msgid "Playlist"
+msgstr "播放清單"
+
+#: ../data/interfaces/playlist.ui.h:11
+msgid "Playlist options"
+msgstr "播放清單選項"
+
+#: ../data/interfaces/playlist.ui.h:12
 #: ../data/interfaces/parole-settings.ui.h:17
 msgid "Remember playlist"
 msgstr "記住播放清單"
 
-#: ../data/interfaces/playlist.ui.h:4
+#: ../data/interfaces/playlist.ui.h:13
+msgid "Remove"
+msgstr "移除"
+
+#: ../data/interfaces/playlist.ui.h:14
 msgid "Repeat"
 msgstr "返復"
 
-#: ../data/interfaces/playlist.ui.h:5
+#: ../data/interfaces/playlist.ui.h:15
 msgid "Replace playlist when opening files"
 msgstr "開啟檔案時替換播放清單"
 
-#: ../data/interfaces/playlist.ui.h:6
+#: ../data/interfaces/playlist.ui.h:16
 msgid "Shuffle"
 msgstr "隨機"
+
+#: ../data/interfaces/playlist.ui.h:17
+msgid "Title Menu"
+msgstr "標題選單"
 
 #: ../data/interfaces/plugins.ui.h:1
 msgid "<b>Author</b>"
@@ -237,9 +321,8 @@ msgid "Contrast:"
 msgstr "對比："
 
 #: ../data/interfaces/parole-settings.ui.h:10
-#, fuzzy
 msgid "Disable screensaver while playing movies"
-msgstr "播放電影時停用螢幕保護程式"
+msgstr "播放影片時停用螢幕保護程式"
 
 #: ../data/interfaces/parole-settings.ui.h:11
 msgid "Enable keyboard multimedia keys"
@@ -306,12 +389,17 @@ msgid "Select File Types (By Extension)"
 msgstr "選取檔案類型 (依延伸)"
 
 #: ../data/interfaces/open-location.ui.h:1
-msgid "Open Location"
-msgstr "開啟位置"
+msgid "<big><b>Open Network Location</b></big>"
+msgstr "<big><b>開取網路位置</b></big>"
 
 #: ../data/interfaces/open-location.ui.h:2
-msgid "Please enter a network URL:"
-msgstr "請輸入網路 URL："
+#: ../src/parole-open-location.c:192
+msgid "Clear History"
+msgstr "清除歷史"
+
+#: ../data/interfaces/open-location.ui.h:3
+msgid "Open Network Location"
+msgstr "開啟網路位置"
 
 #: ../data/desktop/parole.desktop.in.in.h:1
 msgid "Parole"
@@ -325,42 +413,52 @@ msgstr "訊息"
 msgid "Error"
 msgstr "錯誤"
 
-#: ../src/gst/parole-gst.c:1171
+#: ../src/gst/parole-gst.c:1370
+#: ../src/parole-medialist.c:356
+#, c-format
+msgid "Track %i"
+msgstr "第 %i 軌"
+
+#: ../src/gst/parole-gst.c:1373
+msgid "Audio CD"
+msgstr "音訊 CD"
+
+#: ../src/gst/parole-gst.c:1579
 msgid "Additional software is required."
 msgstr "需要額外軟體"
 
-#: ../src/gst/parole-gst.c:1175
+#: ../src/gst/parole-gst.c:1583
 msgid "Don't Install"
 msgstr "不安裝"
 
-#: ../src/gst/parole-gst.c:1177
+#: ../src/gst/parole-gst.c:1585
 msgid "Install"
 msgstr "安裝"
 
-#: ../src/gst/parole-gst.c:1583
+#: ../src/gst/parole-gst.c:2008
 msgid "Stop"
 msgstr "停止"
 
-#: ../src/gst/parole-gst.c:1584
+#: ../src/gst/parole-gst.c:2009
 msgid "The stream is taking too much time to load"
 msgstr "串流花費過多時間載入"
 
-#: ../src/gst/parole-gst.c:1753
-msgid ""
-"Unable to load playbin GStreamer plugin, check your GStreamer installation"
+#: ../src/gst/parole-gst.c:2184
+msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr "無法載入 playbin GStreamer 插件，請檢查您的 GStreamer 安裝是否完整"
 
-#: ../src/gst/parole-gst.c:1777
-msgid ""
-"Unable to load video GStreamer plugin, check your GStreamer installation"
+#: ../src/gst/parole-gst.c:2208
+msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr "無法載入視訊 GStreamer 插件，請檢查您的 GStreamer 安裝是否完整"
 
-#: ../src/gst/parole-gst.c:2361 ../src/gst/parole-gst.c:2365
+#: ../src/gst/parole-gst.c:2816
+#: ../src/gst/parole-gst.c:2820
 #, c-format
 msgid "Audio Track #%d"
 msgstr "第 %d 軌"
 
-#: ../src/gst/parole-gst.c:2399 ../src/gst/parole-gst.c:2403
+#: ../src/gst/parole-gst.c:2860
+#: ../src/gst/parole-gst.c:2864
 #, c-format
 msgid "Subtitle #%d"
 msgstr "第 %d 字幕"
@@ -386,190 +484,246 @@ msgstr ""
 "依照 GNU GPL 給予授權。\n"
 "\n"
 
-#: ../src/main.c:230
+#: ../src/main.c:231
 msgid "Unknown argument "
 msgstr "未知引數"
 
-#: ../src/main.c:270
+#: ../src/main.c:275
 msgid "Open a new instance"
 msgstr "開啟新的實體"
 
-#: ../src/main.c:271
+#: ../src/main.c:276
 msgid "Do not load plugins"
 msgstr "不要載入插件"
 
-#: ../src/main.c:272
+#: ../src/main.c:277
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "設定音訊 CD/VCD/DVD 裝置路徑"
 
-#: ../src/main.c:273
+#: ../src/main.c:278
 msgid "Play or pause if already playing"
 msgstr "如果已經在播放中要播放或暫停"
 
-#: ../src/main.c:274
+#: ../src/main.c:279
 msgid "Stop playing"
 msgstr "停止播放"
 
-#: ../src/main.c:275
+#: ../src/main.c:280
 msgid "Next track"
 msgstr "下個軌道"
 
-#: ../src/main.c:276
+#: ../src/main.c:281
 msgid "Previous track"
 msgstr "上個軌道"
 
-#: ../src/main.c:277
+#: ../src/main.c:282
 msgid "Seek forward"
 msgstr "往前跳查"
 
-#: ../src/main.c:278
+#: ../src/main.c:283
 msgid "Seek Backward"
 msgstr "往後跳查"
 
-#: ../src/main.c:279
+#: ../src/main.c:284
 msgid "Raise volume"
 msgstr "提高音量"
 
-#: ../src/main.c:280
+#: ../src/main.c:285
 msgid "Lower volume"
 msgstr "降低音量"
 
-#: ../src/main.c:281
+#: ../src/main.c:286
 msgid "Mute volume"
 msgstr "靜音"
 
-#: ../src/main.c:282
+#: ../src/main.c:287
 msgid "Version information"
 msgstr "版本資訊"
 
-#: ../src/main.c:283
+#: ../src/main.c:288
 msgid "Use embedded mode"
 msgstr "使用內嵌模式"
 
-#: ../src/main.c:284
+#: ../src/main.c:289
 msgid "Start in fullscreen mode"
 msgstr "以全螢幕模式啟動"
 
-#: ../src/main.c:285
+#: ../src/main.c:290
 msgid "Enabled/Disable XV support"
 msgstr "啟用/停用 XV 支援"
 
-#: ../src/main.c:286
+#: ../src/main.c:291
 msgid "Add files to playlist"
 msgstr "為播放清單增加檔案"
 
-#: ../src/main.c:288
+#: ../src/main.c:293
 msgid "Media to play"
 msgstr "要播放的媒體"
 
-#: ../src/main.c:337
+#: ../src/main.c:342
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole 已經在執行中，使用 -i 來開啟新的實體\n"
 
-#: ../src/parole-mediachooser.c:211
+#: ../src/parole-mediachooser.c:213
 msgid "Supported files"
 msgstr "支援的檔案"
 
-#: ../src/parole-mediachooser.c:217 ../src/parole-player.c:873
+#: ../src/parole-mediachooser.c:219
+#: ../src/parole-player.c:955
 msgid "All files"
 msgstr "所有檔案"
 
-#: ../src/parole-medialist.c:568
+#: ../src/parole-medialist.c:372
+#, c-format
+msgid "Chapter %i"
+msgstr "第 %i 章"
+
+#: ../src/parole-medialist.c:642
 msgid "Permission denied"
 msgstr "許可請求遭拒"
 
-#: ../src/parole-medialist.c:570
+#: ../src/parole-medialist.c:644
 msgid "Error saving playlist file"
 msgstr "儲存播放清單檔時發生錯誤"
 
-#: ../src/parole-medialist.c:582
+#: ../src/parole-medialist.c:656
 msgid "Unknown playlist format"
 msgstr "未知的播放清單格式"
 
-#: ../src/parole-medialist.c:583
+#: ../src/parole-medialist.c:657
 msgid "Please chooser a supported playlist format"
 msgstr "請選擇支援的播放清單格式"
 
-#: ../src/parole-medialist.c:635 ../src/parole-plugins-manager.c:349
-#: ../src/plugins/properties/stream-properties-provider.c:140
-#: ../src/plugins/properties/stream-properties-provider.c:141
-#: ../src/plugins/properties/stream-properties-provider.c:142
-#: ../src/plugins/properties/stream-properties-provider.c:143
+#: ../src/parole-medialist.c:709
+#: ../src/parole-plugins-manager.c:352
 msgid "Unknown"
 msgstr "未知"
 
-#: ../src/parole-medialist.c:710 ../src/parole-player.c:2655
-msgid "Playlist"
-msgstr "播放清單"
-
-#: ../src/parole-medialist.c:717
+#: ../src/parole-medialist.c:791
 msgid "M3U Playlists"
 msgstr "M3U 播放清單"
 
-#: ../src/parole-medialist.c:725
+#: ../src/parole-medialist.c:799
 msgid "PLS Playlists"
 msgstr "PLS 播放清單"
 
-#: ../src/parole-medialist.c:733
+#: ../src/parole-medialist.c:807
 msgid "Advanced Stream Redirector"
 msgstr "進階串流重導器"
 
-#: ../src/parole-medialist.c:741
+#: ../src/parole-medialist.c:815
 msgid "Shareable Playlist"
 msgstr "可分享的播放清單"
 
 #. Clear
-#: ../src/parole-medialist.c:988
+#: ../src/parole-medialist.c:1066
 msgid "Open Containing Folder"
 msgstr "開啟所在資料夾"
 
-#: ../src/parole-medialist.c:1408
+#: ../src/parole-medialist.c:1640
 msgid "Media list"
 msgstr "媒體清單"
 
-#: ../src/parole-player.c:478
+#: ../src/parole-medialist.c:1641
+msgid "Chapter list"
+msgstr "章清單"
+
+#: ../src/parole-player.c:513
 msgid "Open ISO image"
 msgstr "開啟 ISO 映像"
 
-#: ../src/parole-player.c:495
+#: ../src/parole-player.c:532
 msgid "CD image"
 msgstr "CD 映像"
 
-#: ../src/parole-player.c:495
+#: ../src/parole-player.c:532
 msgid "DVD image"
 msgstr "DVD 映像"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:845
+#: ../src/parole-player.c:925
 msgid "Select Subtitle File"
 msgstr "選取字幕檔"
 
-#: ../src/parole-player.c:861
+#: ../src/parole-player.c:943
 msgid "Subtitle Files"
 msgstr "字幕檔"
 
-#: ../src/parole-player.c:1040 ../src/parole-player.c:1163
+#: ../src/parole-player.c:1118
+#: ../src/parole-player.c:1126
+msgid "Clear Recent Items"
+msgstr "清除最近播放項目"
+
+#: ../src/parole-player.c:1120
+msgid "Are you sure you wish to clear your recent items history?  This cannot be undone."
+msgstr "您確定要清除您最近的播放歷史？這無法還原。"
+
+#: ../src/parole-player.c:1239
+#: ../src/parole-player.c:1372
 msgid "Media stream is not seekable"
 msgstr "媒體串流無法跳查"
 
-#: ../src/parole-player.c:1531
+#: ../src/parole-player.c:1342
+msgid "Pause"
+msgstr "暫停"
+
+#: ../src/parole-player.c:1699
 msgid "GStreamer backend error"
 msgstr "GStreamer 後端出錯"
 
-#: ../src/parole-player.c:1574
+#: ../src/parole-player.c:1729
+msgid "Unknown Song"
+msgstr "未知的歌曲"
+
+#: ../src/parole-player.c:1734
+#: ../src/parole-player.c:1736
+#: ../src/parole-player.c:1742
+msgid "on"
+msgstr "專輯"
+
+#: ../src/parole-player.c:1742
+#: ../src/plugins/notify/notify-provider.c:124
+msgid "Unknown Album"
+msgstr "未知的專輯"
+
+#: ../src/parole-player.c:1749
+#: ../src/parole-player.c:1753
+msgid "by"
+msgstr "演唱"
+
+#: ../src/parole-player.c:1753
+#: ../src/plugins/notify/notify-provider.c:126
+msgid "Unknown Artist"
+msgstr "未知的演出者"
+
+#: ../src/parole-player.c:1786
 msgid "Buffering"
 msgstr "緩衝中"
 
+#: ../src/parole-player.c:2250
+msgid "Mute"
+msgstr "靜音"
+
+#: ../src/parole-player.c:2255
+msgid "Unmute"
+msgstr "取消靜音"
+
+#: ../src/parole-player.c:2910
+msgid "Clear recent items..."
+msgstr "清除最近播放項目..."
+
 #: ../src/parole-about.c:74
 msgid "translator-credits"
-msgstr "Walter Cheuk <wwycheuk@gmail.com>"
+msgstr ""
+"Walter Cheuk <wwycheuk@gmail.com>\n"
+"Cheng-Chia Tseng <pswo10680@gmail.com>"
 
 #: ../src/parole-about.c:77
 msgid "Visit Parole website"
 msgstr "造訪 Parole 網站"
 
-#: ../src/parole-disc.c:270 ../src/parole-disc.c:331
+#: ../src/parole-disc.c:112
 msgid "Play Disc"
 msgstr "播放光碟"
 
@@ -577,8 +731,10 @@ msgstr "播放光碟"
 msgid "Current Locale"
 msgstr "目前的語言地區"
 
-#: ../src/parole-subtitle-encoding.c:168 ../src/parole-subtitle-encoding.c:170
-#: ../src/parole-subtitle-encoding.c:172 ../src/parole-subtitle-encoding.c:174
+#: ../src/parole-subtitle-encoding.c:168
+#: ../src/parole-subtitle-encoding.c:170
+#: ../src/parole-subtitle-encoding.c:172
+#: ../src/parole-subtitle-encoding.c:174
 msgid "Arabic"
 msgstr "阿拉伯文"
 
@@ -586,7 +742,8 @@ msgstr "阿拉伯文"
 msgid "Armenian"
 msgstr "亞美尼亞文"
 
-#: ../src/parole-subtitle-encoding.c:180 ../src/parole-subtitle-encoding.c:182
+#: ../src/parole-subtitle-encoding.c:180
+#: ../src/parole-subtitle-encoding.c:182
 #: ../src/parole-subtitle-encoding.c:184
 msgid "Baltic"
 msgstr "波羅的海語言"
@@ -595,17 +752,22 @@ msgstr "波羅的海語言"
 msgid "Celtic"
 msgstr "塞爾特文"
 
-#: ../src/parole-subtitle-encoding.c:190 ../src/parole-subtitle-encoding.c:192
-#: ../src/parole-subtitle-encoding.c:194 ../src/parole-subtitle-encoding.c:196
+#: ../src/parole-subtitle-encoding.c:190
+#: ../src/parole-subtitle-encoding.c:192
+#: ../src/parole-subtitle-encoding.c:194
+#: ../src/parole-subtitle-encoding.c:196
 msgid "Central European"
 msgstr "中歐語言"
 
-#: ../src/parole-subtitle-encoding.c:199 ../src/parole-subtitle-encoding.c:201
-#: ../src/parole-subtitle-encoding.c:203 ../src/parole-subtitle-encoding.c:205
+#: ../src/parole-subtitle-encoding.c:199
+#: ../src/parole-subtitle-encoding.c:201
+#: ../src/parole-subtitle-encoding.c:203
+#: ../src/parole-subtitle-encoding.c:205
 msgid "Chinese Simplified"
 msgstr "簡體中文"
 
-#: ../src/parole-subtitle-encoding.c:208 ../src/parole-subtitle-encoding.c:210
+#: ../src/parole-subtitle-encoding.c:208
+#: ../src/parole-subtitle-encoding.c:210
 #: ../src/parole-subtitle-encoding.c:212
 msgid "Chinese Traditional"
 msgstr "正體中文"
@@ -614,9 +776,12 @@ msgstr "正體中文"
 msgid "Croatian"
 msgstr "克羅帝亞文"
 
-#: ../src/parole-subtitle-encoding.c:218 ../src/parole-subtitle-encoding.c:220
-#: ../src/parole-subtitle-encoding.c:222 ../src/parole-subtitle-encoding.c:224
-#: ../src/parole-subtitle-encoding.c:226 ../src/parole-subtitle-encoding.c:228
+#: ../src/parole-subtitle-encoding.c:218
+#: ../src/parole-subtitle-encoding.c:220
+#: ../src/parole-subtitle-encoding.c:222
+#: ../src/parole-subtitle-encoding.c:224
+#: ../src/parole-subtitle-encoding.c:226
+#: ../src/parole-subtitle-encoding.c:228
 msgid "Cyrillic"
 msgstr "西里爾文"
 
@@ -624,7 +789,8 @@ msgstr "西里爾文"
 msgid "Cyrillic/Russian"
 msgstr "西里爾文/俄羅斯"
 
-#: ../src/parole-subtitle-encoding.c:234 ../src/parole-subtitle-encoding.c:236
+#: ../src/parole-subtitle-encoding.c:234
+#: ../src/parole-subtitle-encoding.c:236
 msgid "Cyrillic/Ukrainian"
 msgstr "西里爾文/烏克蘭"
 
@@ -632,7 +798,8 @@ msgstr "西里爾文/烏克蘭"
 msgid "Georgian"
 msgstr "喬治亞文"
 
-#: ../src/parole-subtitle-encoding.c:242 ../src/parole-subtitle-encoding.c:244
+#: ../src/parole-subtitle-encoding.c:242
+#: ../src/parole-subtitle-encoding.c:244
 #: ../src/parole-subtitle-encoding.c:246
 msgid "Greek"
 msgstr "希臘文"
@@ -645,8 +812,10 @@ msgstr "古吉拉特文"
 msgid "Gurmukhi"
 msgstr "古木基文"
 
-#: ../src/parole-subtitle-encoding.c:255 ../src/parole-subtitle-encoding.c:257
-#: ../src/parole-subtitle-encoding.c:259 ../src/parole-subtitle-encoding.c:261
+#: ../src/parole-subtitle-encoding.c:255
+#: ../src/parole-subtitle-encoding.c:257
+#: ../src/parole-subtitle-encoding.c:259
+#: ../src/parole-subtitle-encoding.c:261
 msgid "Hebrew"
 msgstr "希伯來文"
 
@@ -662,13 +831,16 @@ msgstr "印度語言"
 msgid "Icelandic"
 msgstr "冰島文"
 
-#: ../src/parole-subtitle-encoding.c:273 ../src/parole-subtitle-encoding.c:275
+#: ../src/parole-subtitle-encoding.c:273
+#: ../src/parole-subtitle-encoding.c:275
 #: ../src/parole-subtitle-encoding.c:277
 msgid "Japanese"
 msgstr "日本語"
 
-#: ../src/parole-subtitle-encoding.c:280 ../src/parole-subtitle-encoding.c:282
-#: ../src/parole-subtitle-encoding.c:284 ../src/parole-subtitle-encoding.c:286
+#: ../src/parole-subtitle-encoding.c:280
+#: ../src/parole-subtitle-encoding.c:282
+#: ../src/parole-subtitle-encoding.c:284
+#: ../src/parole-subtitle-encoding.c:286
 msgid "Korean"
 msgstr "韓國語"
 
@@ -680,7 +852,8 @@ msgstr "北歐語言"
 msgid "Persian"
 msgstr "波斯文"
 
-#: ../src/parole-subtitle-encoding.c:295 ../src/parole-subtitle-encoding.c:297
+#: ../src/parole-subtitle-encoding.c:295
+#: ../src/parole-subtitle-encoding.c:297
 msgid "Romanian"
 msgstr "羅馬尼亞文"
 
@@ -692,33 +865,37 @@ msgstr "南歐語言"
 msgid "Thai"
 msgstr "泰文"
 
-#: ../src/parole-subtitle-encoding.c:306 ../src/parole-subtitle-encoding.c:308
-#: ../src/parole-subtitle-encoding.c:310 ../src/parole-subtitle-encoding.c:312
+#: ../src/parole-subtitle-encoding.c:306
+#: ../src/parole-subtitle-encoding.c:308
+#: ../src/parole-subtitle-encoding.c:310
+#: ../src/parole-subtitle-encoding.c:312
 msgid "Turkish"
 msgstr "土耳其文"
 
-#: ../src/parole-subtitle-encoding.c:315 ../src/parole-subtitle-encoding.c:317
-#: ../src/parole-subtitle-encoding.c:319 ../src/parole-subtitle-encoding.c:321
+#: ../src/parole-subtitle-encoding.c:315
+#: ../src/parole-subtitle-encoding.c:317
+#: ../src/parole-subtitle-encoding.c:319
+#: ../src/parole-subtitle-encoding.c:321
 #: ../src/parole-subtitle-encoding.c:323
 msgid "Unicode"
 msgstr "統一碼"
 
-#: ../src/parole-subtitle-encoding.c:326 ../src/parole-subtitle-encoding.c:328
-#: ../src/parole-subtitle-encoding.c:330 ../src/parole-subtitle-encoding.c:332
+#: ../src/parole-subtitle-encoding.c:326
+#: ../src/parole-subtitle-encoding.c:328
+#: ../src/parole-subtitle-encoding.c:330
+#: ../src/parole-subtitle-encoding.c:332
 #: ../src/parole-subtitle-encoding.c:334
 msgid "Western"
 msgstr "西方語言"
 
-#: ../src/parole-subtitle-encoding.c:337 ../src/parole-subtitle-encoding.c:339
+#: ../src/parole-subtitle-encoding.c:337
+#: ../src/parole-subtitle-encoding.c:339
 #: ../src/parole-subtitle-encoding.c:341
 msgid "Vietnamese"
 msgstr "越南文"
 
-#: ../src/parole-open-location.c:210
-msgid "Clear History"
-msgstr "清除歷史"
-
-#: ../src/parole-plugins-manager.c:388 ../src/parole-plugins-manager.c:389
+#: ../src/parole-plugins-manager.c:391
+#: ../src/parole-plugins-manager.c:392
 msgid "No installed plugins found on this system"
 msgstr "此系統找不到安裝的插件"
 
@@ -727,90 +904,58 @@ msgid "Video"
 msgstr "視訊"
 
 #: ../src/misc/parole-filters.c:115
+#: ../src/misc/parole-filters.c:133
 msgid "Audio and video"
 msgstr "音訊與視訊"
 
-#: ../src/misc/parole-filters.c:144
+#: ../src/misc/parole-filters.c:162
+#: ../src/misc/parole-filters.c:178
 msgid "All supported files"
 msgstr "所有支援的檔案"
 
-#: ../src/misc/parole-filters.c:171
+#: ../src/misc/parole-filters.c:205
 msgid "Playlist files"
 msgstr "播放清單檔案"
 
-#: ../src/plugins/properties/stream-properties-provider.c:254
-msgid "Title:"
-msgstr "標題："
+#: ../src/plugins/notify/notify-provider.c:129
+#: ../src/plugins/notify/notify-provider.c:132
+msgid "<i>on</i>"
+msgstr "<i>專輯</i>"
 
-#: ../src/plugins/properties/stream-properties-provider.c:277
-msgid "Artist:"
-msgstr "演出者："
+#: ../src/plugins/notify/notify-provider.c:129
+#: ../src/plugins/notify/notify-provider.c:132
+msgid "<i>by</i>"
+msgstr "<i>演唱</i>"
 
-#: ../src/plugins/properties/stream-properties-provider.c:300
-msgid "Album:"
-msgstr "專輯："
+#: ../src/plugins/notify/notify.desktop.in.h:1
+msgid "Notify"
+msgstr "通知"
 
-#: ../src/plugins/properties/stream-properties-provider.c:323
-msgid "Year:"
-msgstr "年份："
+#: ../src/plugins/notify/notify.desktop.in.h:2
+msgid "Show notifications for currently playing tracks"
+msgstr "顯示目前播放中軌道的通知"
 
-#: ../src/plugins/properties/stream-properties-provider.c:341
-msgid "General"
-msgstr "一般"
-
-#: ../src/plugins/properties/stream-properties-provider.c:392
-msgid "Stream doesn't support tags changes"
-msgstr "串流不支援標籤更動"
-
-#: ../src/plugins/properties/stream-properties-provider.c:399
-msgid "Save media tags changes"
-msgstr "儲存媒體標籤更動"
-
-#: ../src/plugins/properties/stream-properties-provider.c:524
-msgid "Properties"
-msgstr "屬性"
-
-#: ../src/plugins/properties/stream-properties.desktop.in.h:1
-msgid "Read media properties"
-msgstr "閱讀媒體屬性"
-
-#: ../src/plugins/properties/stream-properties.desktop.in.h:2
-msgid "Stream Properties"
-msgstr "串流屬性"
-
-#: ../src/plugins/tray/tray-provider.c:280
-msgid "<b>Playing:</b>"
-msgstr "<b>正在播放：</b>"
-
-#: ../src/plugins/tray/tray-provider.c:280
-msgid "<b>Duration:</b>"
-msgstr "<b>時間長度：</b>"
-
-#: ../src/plugins/tray/tray-provider.c:420
+#: ../src/plugins/tray/tray-provider.c:244
 msgid "Tray icon plugin"
 msgstr "系統匣圖示插件"
 
-#: ../src/plugins/tray/tray-provider.c:430
-msgid "Enable notification"
-msgstr "啟用通知"
-
-#: ../src/plugins/tray/tray-provider.c:439
+#: ../src/plugins/tray/tray-provider.c:254
 msgid "Always minimize to tray when window is closed"
 msgstr "當視窗關閉時總是最小化至系統匣"
 
-#: ../src/plugins/tray/tray-provider.c:478
-msgid "Minimize to tray?"
-msgstr "最小化至系統匣？"
+#: ../src/plugins/tray/tray-provider.c:300
+msgid "Are you sure you want to quit?"
+msgstr "您確定要退出？"
 
-#: ../src/plugins/tray/tray-provider.c:484
+#: ../src/plugins/tray/tray-provider.c:303
+msgid "Parole can be minimized to the system tray instead."
+msgstr "Parole 可以改最小化到系統匣中。"
+
+#: ../src/plugins/tray/tray-provider.c:306
 msgid "Minimize to tray"
 msgstr "最小化至系統匣"
 
-#: ../src/plugins/tray/tray-provider.c:500
-msgid "Are you sure you want to quit Parole"
-msgstr "您確定要退出 Parole 嗎"
-
-#: ../src/plugins/tray/tray-provider.c:504
+#: ../src/plugins/tray/tray-provider.c:323
 msgid "Remember my choice"
 msgstr "記住我的選擇"
 
@@ -829,6 +974,54 @@ msgstr "播放 DVD 時讓電源管理員不要暫停機器。"
 #: ../src/plugins/power-manager/power-manager.desktop.in.h:2
 msgid "Power Manager Plugin"
 msgstr "電源管理員插件"
+
+#~ msgid "Open _location"
+#~ msgstr "開啟位置(_L)"
+
+#~ msgid "Please enter a network URL:"
+#~ msgstr "請輸入網路 URL："
+
+#~ msgid "Title:"
+#~ msgstr "標題："
+
+#~ msgid "Artist:"
+#~ msgstr "演出者："
+
+#~ msgid "Album:"
+#~ msgstr "專輯："
+
+#~ msgid "Year:"
+#~ msgstr "年份："
+
+#~ msgid "General"
+#~ msgstr "一般"
+
+#~ msgid "Stream doesn't support tags changes"
+#~ msgstr "串流不支援標籤更動"
+
+#~ msgid "Save media tags changes"
+#~ msgstr "儲存媒體標籤更動"
+
+#~ msgid "Properties"
+#~ msgstr "屬性"
+
+#~ msgid "Read media properties"
+#~ msgstr "閱讀媒體屬性"
+
+#~ msgid "Stream Properties"
+#~ msgstr "串流屬性"
+
+#~ msgid "<b>Playing:</b>"
+#~ msgstr "<b>正在播放：</b>"
+
+#~ msgid "<b>Duration:</b>"
+#~ msgstr "<b>時間長度：</b>"
+
+#~ msgid "Enable notification"
+#~ msgstr "啟用通知"
+
+#~ msgid "Minimize to tray?"
+#~ msgstr "最小化至系統匣？"
 
 #~ msgid "Media Player plugins"
 #~ msgstr "媒體播放器插件"
@@ -857,20 +1050,11 @@ msgstr "電源管理員插件"
 #~ msgid "<b>Display</b>"
 #~ msgstr "<b>顯示</b>"
 
-#~ msgid "<b>Playlist options</b>"
-#~ msgstr "<b>正在播放：</b>"
-
 #~ msgid "<b>Subtitles</b>"
 #~ msgstr "<b>字幕</b>"
 
-#~ msgid "Chapter Menu"
-#~ msgstr "章選單"
-
 #~ msgid "DVD"
 #~ msgstr "DVD"
-
-#~ msgid "DVD Menu"
-#~ msgstr "DVD 選單"
 
 #~ msgid "Next Chapter"
 #~ msgstr "下一章"
@@ -898,12 +1082,6 @@ msgstr "電源管理員插件"
 
 #~ msgid "Finished"
 #~ msgstr "已完成"
-
-#~ msgid "Paused"
-#~ msgstr "已暫停"
-
-#~ msgid "Playing"
-#~ msgstr "播放中"
 
 #~ msgid "Live stream:"
 #~ msgstr "即時串流："
