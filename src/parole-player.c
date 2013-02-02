@@ -1868,6 +1868,22 @@ parole_player_move_fs_window (ParolePlayer *player)
 		     rect.height + rect.y - player->priv->play_box->allocation.height);
 }
 
+gboolean
+parole_player_window_state_event (GtkWidget *widget, 
+                                  GdkEventWindowState *event,
+                                  ParolePlayer *player)
+{
+    gboolean fullscreen = FALSE;
+
+    if (event->new_window_state & GDK_WINDOW_STATE_FULLSCREEN)
+        fullscreen = TRUE;
+    
+    if ( player->priv->full_screen != fullscreen )
+        parole_player_reset_controls( player, fullscreen );
+        
+    return TRUE;
+}
+
 /**
  * parole_player_reset_controls:
  * @player     : the #ParolePlayer instance.
@@ -2892,6 +2908,11 @@ parole_player_init (ParolePlayer *player)
 		      G_CALLBACK (parole_player_drag_data_received_cb), player);
     
     player->priv->window = GTK_WIDGET (gtk_builder_get_object (builder, "main-window"));
+    
+    g_signal_connect(   G_OBJECT(player->priv->window), 
+                        "window-state-event", 
+                        G_CALLBACK(parole_player_window_state_event), 
+                        PAROLE_PLAYER(player) );
     
     recent_menu = GTK_WIDGET (gtk_builder_get_object (builder, "recent_menu"));
     
