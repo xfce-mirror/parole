@@ -11,15 +11,14 @@ msgstr ""
 "PO-Revision-Date: 2013-02-07 21:51+0000\n"
 "Last-Translator: كريم أولاد الشلحة <herr.linux88@gmail.com>\n"
 "Language-Team: Arabic <herr.linux88@gmail.com>\n"
-"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Lokalize 1.5\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
 "X-Poedit-Language: Arabic\n"
 "X-Poedit-Country: MOROCCO\n"
+"X-Generator: Lokalize 1.5\n"
 
 #: ../data/interfaces/parole.ui.h:1
 msgid "16:9 (Widescreen)"
@@ -153,9 +152,8 @@ msgid "Volume _Up"
 msgstr "ر_فع الصوت"
 
 #: ../data/interfaces/parole.ui.h:32
-#, fuzzy
 msgid "_Aspect Ratio"
-msgstr "_معاينة الصفحة"
+msgstr "_نسبة الإرتغاع"
 
 #: ../data/interfaces/parole.ui.h:33
 msgid "_Edit"
@@ -324,9 +322,8 @@ msgid "Configure your media player"
 msgstr "إعداد مشغل وسائطك"
 
 #: ../data/interfaces/parole-settings.ui.h:9
-#, fuzzy
 msgid "Contrast:"
-msgstr "عتامة:"
+msgstr "تباين:"
 
 #: ../data/interfaces/parole-settings.ui.h:10
 msgid "Disable screensaver while playing movies"
@@ -525,11 +522,11 @@ msgstr "المقطع السابق"
 
 #: ../src/main.c:282
 msgid "Seek forward"
-msgstr ""
+msgstr "سعي إلى الأمام"
 
 #: ../src/main.c:283
 msgid "Seek Backward"
-msgstr ""
+msgstr "سعي إلى الخلف"
 
 #: ../src/main.c:284
 msgid "Raise volume"
@@ -751,7 +748,7 @@ msgstr "بلطيقي"
 
 #: ../src/parole-subtitle-encoding.c:187
 msgid "Celtic"
-msgstr ""
+msgstr "ساتيك"
 
 #: ../src/parole-subtitle-encoding.c:190 ../src/parole-subtitle-encoding.c:192
 #: ../src/parole-subtitle-encoding.c:194 ../src/parole-subtitle-encoding.c:196
@@ -797,11 +794,11 @@ msgstr "يوناني"
 
 #: ../src/parole-subtitle-encoding.c:249
 msgid "Gujarati"
-msgstr ""
+msgstr "غوجاراتي"
 
 #: ../src/parole-subtitle-encoding.c:252
 msgid "Gurmukhi"
-msgstr ""
+msgstr "جورموخي"
 
 #: ../src/parole-subtitle-encoding.c:255 ../src/parole-subtitle-encoding.c:257
 #: ../src/parole-subtitle-encoding.c:259 ../src/parole-subtitle-encoding.c:261
@@ -810,7 +807,7 @@ msgstr "عيري"
 
 #: ../src/parole-subtitle-encoding.c:264
 msgid "Hebrew Visual"
-msgstr ""
+msgstr "عبري بصري"
 
 #: ../src/parole-subtitle-encoding.c:267
 msgid "Hindi"
@@ -848,7 +845,7 @@ msgstr "أوروبي الجتوبي"
 
 #: ../src/parole-subtitle-encoding.c:303
 msgid "Thai"
-msgstr ""
+msgstr "تايلاندي"
 
 #: ../src/parole-subtitle-encoding.c:306 ../src/parole-subtitle-encoding.c:308
 #: ../src/parole-subtitle-encoding.c:310 ../src/parole-subtitle-encoding.c:312
@@ -924,7 +921,7 @@ msgstr "هل أنت متأكد من انك ارغب بالخروج؟"
 
 #: ../src/plugins/tray/tray-provider.c:303
 msgid "Parole can be minimized to the system tray instead."
-msgstr ""
+msgstr "بدلا من ذلك يمكن تصغير Parole إلى مصغرات شريط النظام."
 
 #: ../src/plugins/tray/tray-provider.c:306
 msgid "Minimize to tray"
