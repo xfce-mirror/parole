@@ -480,13 +480,13 @@ void	parole_media_list_drag_data_received_cb (GtkWidget *widget,
     guint added = 0;
     gboolean play;
     
-    parole_window_busy_cursor (GTK_WIDGET (list)->window);
+    parole_window_busy_cursor (gtk_widget_get_window(GTK_WIDGET (list)));
     
     g_object_get (G_OBJECT (list->priv->conf),
 		  "play-opened-files", &play,
 		  NULL);
     
-    uri_list = g_uri_list_extract_uris ((const gchar *)data->data);
+    uri_list = g_uri_list_extract_uris ((const gchar *)gtk_selection_data_get_data(data));
     
     for ( i = 0; uri_list[i] != NULL; i++)
     {
@@ -498,7 +498,7 @@ void	parole_media_list_drag_data_received_cb (GtkWidget *widget,
 
     g_strfreev (uri_list);
 
-    gdk_window_set_cursor (GTK_WIDGET (list)->window, NULL);
+    gdk_window_set_cursor (gtk_widget_get_window(GTK_WIDGET (list)), NULL);
     gtk_drag_finish (drag_context, added == i ? TRUE : FALSE, FALSE, drag_time);
 }
 
@@ -2167,7 +2167,7 @@ static gboolean	 parole_media_list_dbus_add_files (ParoleMediaList *list,
 
 void parole_media_list_grab_focus (ParoleMediaList *list)
 {
-    if (GTK_WIDGET_VISIBLE (list->priv->view) )
+    if (gtk_widget_get_visible (list->priv->view) )
 	gtk_widget_grab_focus (list->priv->view);
 }
 
