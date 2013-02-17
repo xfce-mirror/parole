@@ -479,7 +479,7 @@ parole_disc_get_drives (ParoleDisc *disc)
  * needed, perform it when the menu item is activated.
  **/
 static void
-parole_disc_select_cb (GtkItem *item, ParoleDisc *disc)
+parole_disc_select_cb (GtkMenuItem *item, ParoleDisc *disc)
 {
     if ( disc->priv->needs_update )
 	parole_disc_get_drives (disc);

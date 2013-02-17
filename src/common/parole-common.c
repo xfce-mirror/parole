@@ -82,22 +82,38 @@ void parole_window_busy_cursor		(GdkWindow *window)
 	
     cursor = gdk_cursor_new (GDK_WATCH);
     gdk_window_set_cursor (window, cursor);
+    
+#if GTK_CHECK_VERSION(3, 0, 0)
+    g_object_unref (cursor);
+#else
     gdk_cursor_unref (cursor);
+#endif
 
     gdk_flush ();
 }
 
 void parole_window_invisible_cursor		(GdkWindow *window)
 {
-    GdkBitmap *empty_bitmap;
     GdkCursor *cursor;
+#if GTK_CHECK_VERSION(3, 0, 0)
+    cairo_surface_t *s;
+    GdkPixbuf *cursor_pixbuf;
+#else
+    GdkBitmap *empty_bitmap;
     GdkColor  color;
-
     char cursor_bits[] = { 0x0 }; 
-    
+#endif
+
     if ( G_UNLIKELY (window == NULL) )
 	return;
 	
+#if GTK_CHECK_VERSION(3, 0, 0)
+    s = cairo_image_surface_create(CAIRO_FORMAT_A1, 1, 1);
+    cursor_pixbuf = gdk_pixbuf_get_from_surface(s, 0, 0, 1, 1);
+    cairo_surface_destroy(s);
+    cursor = gdk_cursor_new_from_pixbuf(gdk_display_get_default(), cursor_pixbuf, 0, 0);
+    g_object_unref(cursor_pixbuf);
+#else
     color.red = color.green = color.blue = 0;
     color.pixel = 0;
 
@@ -109,10 +125,15 @@ void parole_window_invisible_cursor		(GdkWindow *window)
 					 empty_bitmap,
 					 &color,
 					 &color, 0, 0);
+					 
+    g_object_unref (empty_bitmap);
+#endif
 
     gdk_window_set_cursor (window, cursor);
 
+#if GTK_CHECK_VERSION(3, 0, 0)
+    g_object_unref (cursor);
+#else
     gdk_cursor_unref (cursor);
-
-    g_object_unref (empty_bitmap);
+#endif
 }

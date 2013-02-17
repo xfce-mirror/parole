@@ -240,7 +240,11 @@ parole_gst_realize (GtkWidget *widget)
     ParoleGst *gst;
     GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
     GdkWindowAttr attr;
+#if GTK_CHECK_VERSION(3, 0, 0)
+    GdkRGBA color;
+#else
     GdkColor color;
+#endif
     gint mask;
     
     gtk_widget_set_realized (widget, TRUE);
@@ -253,7 +257,10 @@ parole_gst_realize (GtkWidget *widget)
     attr.width = allocation->width;
     attr.height = allocation->height;
     attr.visual = gtk_widget_get_visual (widget);
+#if GTK_CHECK_VERSION(3, 0, 0)
+#else
     attr.colormap = gtk_widget_get_colormap (widget);
+#endif
     attr.wclass = GDK_INPUT_OUTPUT;
     attr.window_type = GDK_WINDOW_CHILD;
     attr.event_mask = gtk_widget_get_events (widget) | 
@@ -263,23 +270,38 @@ parole_gst_realize (GtkWidget *widget)
 		      GDK_POINTER_MOTION_MASK |
 		      GDK_KEY_PRESS_MASK;
 		      
+#if GTK_CHECK_VERSION(3, 0, 0)
+    mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
+#else
     mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL | GDK_WA_COLORMAP;
+#endif
 	
     gtk_widget_set_window(widget, gdk_window_new (gtk_widget_get_parent_window (widget),
 				     &attr, mask) );
 				     
     gdk_window_set_user_data (gtk_widget_get_window(widget), widget);
+
+#if GTK_CHECK_VERSION(3, 0, 0)
+    gdk_rgba_parse (&color, "black");
+    gdk_window_set_background_rgba (gtk_widget_get_window(widget), &color);
+#else
     gdk_color_parse ("black", &color);
     gdk_colormap_alloc_color (gtk_widget_get_colormap (widget), &color,
 			      TRUE, TRUE);
-    
+
     gdk_window_set_background (gtk_widget_get_window(widget), &color);
+
     gtk_widget_set_style(widget, gtk_style_attach (gtk_widget_get_style(widget), gtk_widget_get_window(widget)));
+#endif
     
     g_signal_connect (gtk_widget_get_toplevel (widget), "configure_event",
 		      G_CALLBACK (parole_gst_configure_event_cb), gst);
 		      
+#if GTK_CHECK_VERSION(3, 0, 0)
+    g_signal_connect (gtk_widget_get_parent (widget), "draw",
+#else
     g_signal_connect (gtk_widget_get_parent (widget), "expose_event",
+#endif
 		      G_CALLBACK (parole_gst_parent_expose_event), gst);
 		      
     g_free(allocation);
@@ -424,7 +446,13 @@ static void
 parole_gst_draw_logo (ParoleGst *gst)
 {
     static GdkPixbuf *pix = NULL;
+#if GTK_CHECK_VERSION(3, 0, 0)
+    cairo_region_t *region;
+    GdkRGBA *color;
+    cairo_t *cr;
+#else
     GdkRegion *region;
+#endif
     GdkRectangle rect;
     GtkWidget *widget;
     GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
@@ -441,18 +469,46 @@ parole_gst_draw_logo (ParoleGst *gst)
     rect.width = allocation->width;
     rect.height = allocation->height;
 
+#if GTK_CHECK_VERSION(3, 0, 0)
+    region = cairo_region_create_rectangle(&rect);
+#else
     region = gdk_region_rectangle (&rect);
+#endif
     
     gdk_window_begin_paint_region (gtk_widget_get_window(widget),
 				   region);
 
-    gdk_region_destroy (region);
+#if GTK_CHECK_VERSION(3, 0, 0)
+    cairo_region_destroy (region);
 
+    GdkWindow *window;
+    cairo_surface_t *target;
+
+    window = gtk_widget_get_window (widget);
+    target = cairo_get_group_target (cr);
+
+    /* Clear to parent-relative pixmap
+    * We need to use direct X access here because GDK doesn't know about
+    * the parent relative pixmap. */
+    cairo_surface_flush (target);
+
+    XClearArea (GDK_WINDOW_XDISPLAY (window),
+                GDK_WINDOW_XID (window),
+                0, 0,
+                allocation->width, allocation->height,
+                False);
+    cairo_surface_mark_dirty_rectangle (target,
+                                        0, 0,
+                                        allocation->width, allocation->height);
+#else
+    gdk_region_destroy (region);
+    
     gdk_window_clear_area (gtk_widget_get_window(widget),
 			   0, 0,
 			   allocation->width,
 			   allocation->height);
-    
+#endif
+
     if (gst->priv->scale_logo)
     {
 	if (pix)
@@ -464,6 +520,12 @@ parole_gst_draw_logo (ParoleGst *gst)
 	gst->priv->scale_logo = FALSE;
     }
 
+#if GTK_CHECK_VERSION(3, 0, 0)
+    cr = gdk_cairo_create (gtk_widget_get_window(widget));
+    gdk_cairo_set_source_pixbuf (cr, pix, 0, 0);
+    cairo_paint (cr);
+    cairo_destroy (cr);
+#else
     gdk_draw_pixbuf (GDK_DRAWABLE (gtk_widget_get_window(widget)),
 		     gtk_widget_get_style(widget)->fg_gc[0],
 		     pix,
@@ -472,6 +534,7 @@ parole_gst_draw_logo (ParoleGst *gst)
 		     allocation->height,
 		     GDK_RGB_DITHER_NONE,
 		     0, 0);
+#endif
 
     gdk_window_end_paint (gtk_widget_get_window(GTK_WIDGET (gst)));
     
@@ -536,7 +599,7 @@ parole_gst_set_video_overlay (ParoleGst *gst)
 				      GDK_WINDOW_XWINDOW ( gtk_widget_get_window(GTK_WIDGET (gst)) ));
 #else
     gst_x_overlay_set_xwindow_id (GST_X_OVERLAY (video_sink),
-                      GDK_WINDOW_XWINDOW ( gtk_widget_get_window(GTK_WIDGET (gst)) ));
+                      GDK_WINDOW_XID ( gtk_widget_get_window(GTK_WIDGET (gst)) ));
 #endif
     
     gst_object_unref (video_sink);
@@ -1725,7 +1788,11 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
                 gtk_widget_get_realized (GTK_WIDGET (gst)))
             {
                 gst_install_plugins_context_set_xid (ctx,
-                    GDK_WINDOW_XID (gtk_widget_get_window(GTK_WIDGET (gst))));
+#if GTK_CHECK_VERSION(3, 0, 0)
+                    gdk_x11_window_get_xid (gtk_widget_get_window(GTK_WIDGET (gst))));
+#else
+                    gdk_x11_drawable_get_xid (gtk_widget_get_window(GTK_WIDGET (gst))));
+#endif
             }
 #endif /* GDK_WINDOWING_X11 */
 
@@ -2312,7 +2379,11 @@ parole_gst_class_init (ParoleGstClass *klass)
     widget_class->realize = parole_gst_realize;
     widget_class->show = parole_gst_show;
     widget_class->size_allocate = parole_gst_size_allocate;
+#if GTK_CHECK_VERSION(3, 0, 0)
+    widget_class->draw = parole_gst_expose_event;
+#else
     widget_class->expose_event = parole_gst_expose_event;
+#endif
     widget_class->motion_notify_event = parole_gst_motion_notify_event;
     widget_class->button_press_event = parole_gst_button_press_event;
     widget_class->button_release_event = parole_gst_button_release_event;

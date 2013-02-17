@@ -504,7 +504,11 @@ void	parole_media_list_drag_data_received_cb (GtkWidget *widget,
 
 gboolean parole_media_list_key_press (GtkWidget *widget, GdkEventKey *ev, ParoleMediaList *list)
 {
+#if GTK_CHECK_VERSION(3, 0, 0)
+    if ( ev->keyval == GDK_KEY_Delete )
+#else
     if ( ev->keyval == GDK_Delete )
+#endif
     {
 	parole_media_list_remove_clicked_cb (NULL, list);
 	return TRUE;

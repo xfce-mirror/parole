@@ -249,7 +249,17 @@ void parole_conf_dialog_vis_plugin_changed_cb (GtkComboBox *widget,  ParoleConfD
     gchar *active;
     GstElementFactory *f;
     
+#if GTK_CHECK_VERSION(3, 0, 0)
+    GtkTreeIter iter;
+    gchar *text = NULL;
+    
+    GtkTreeModel *model = gtk_combo_box_get_model(widget);
+    
+    if (gtk_combo_box_get_active_iter (widget, &iter))
+        gtk_tree_model_get (model, &iter, 0, &active, -1);
+#else
     active = gtk_combo_box_get_active_text (widget);
+#endif
     
     f = g_hash_table_lookup (self->priv->vis_plugins, active);
     
@@ -329,7 +339,11 @@ parole_conf_dialog_init (ParoleConfDialog *self)
 static void
 parole_conf_dialog_add_vis_plugins (gpointer key, gpointer value, GtkWidget *combox)
 {
+#if GTK_CHECK_VERSION(3, 0, 0)
+    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combox), (const gchar *) key);
+#else
     gtk_combo_box_append_text (GTK_COMBO_BOX (combox), (const gchar *) key);
+#endif
 }
 
 /* Set the combobox to the default visualisation plugin */
