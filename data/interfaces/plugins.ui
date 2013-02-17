@@ -77,9 +77,7 @@
                         <signal name="cursor-changed" handler="parole_plugins_manager_tree_cursor_changed_cb" swapped="no"/>
                         <child>
                           <object class="GtkTreeViewColumn" id="treeviewcolumn1">
-                            <property name="resizable">True</property>
                             <property name="title" translatable="yes">Enabled</property>
-                            <property name="clickable">True</property>
                             <child>
                               <object class="GtkCellRendererToggle" id="cellrenderertoggle">
                                 <signal name="toggled" handler="parole_plugins_manager_cell_toggled_cb" swapped="no"/>

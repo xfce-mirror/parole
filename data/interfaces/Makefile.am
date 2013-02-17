@@ -18,8 +18,8 @@ interfaces =					\
 	playlist.ui				\
 	mediachooser-3.ui				\
 	save-playlist.ui			\
-	plugins.ui				\
-	open-location.ui
+	plugins-3.ui				\
+	open-location-3.ui
 
 if MAINTAINER_MODE
 BUILT_SOURCES = $(interfaces_h)
@@ -39,10 +39,10 @@ mediachooser_ui.h: mediachooser-3.ui
 save-playlist_ui.h: save-playlist.ui
 	xdt-csource --static --strip-comments --strip-content --name=save_playlist_ui $< > $@
 
-open-location_ui.h: open-location.ui
+open-location_ui.h: open-location-3.ui
 	xdt-csource --static --strip-comments --strip-content --name=open_location_ui $< > $@
 
-plugins_ui.h: plugins.ui
+plugins_ui.h: plugins-3.ui
 	xdt-csource --static --strip-comments --strip-content --name=plugins_ui $< > $@
 	
 endif
