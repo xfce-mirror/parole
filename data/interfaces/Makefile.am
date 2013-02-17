@@ -15,7 +15,7 @@ if ENABLE_GTK3
 interfaces =					\
 	parole.ui				\
 	parole-settings-3.ui			\
-	playlist.ui				\
+	playlist-3.ui				\
 	mediachooser-3.ui				\
 	save-playlist-3.ui			\
 	plugins-3.ui				\
@@ -30,7 +30,7 @@ parole_ui.h: parole.ui
 parole-settings_ui.h: parole-settings-3.ui
 	xdt-csource --static --strip-comments --strip-content --name=parole_settings_ui $< > $@
 
-playlist_ui.h: playlist.ui
+playlist_ui.h: playlist-3.ui
 	xdt-csource --static --strip-comments --strip-content --name=playlist_ui $< > $@
 
 mediachooser_ui.h: mediachooser-3.ui
