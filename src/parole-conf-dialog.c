@@ -340,7 +340,11 @@ static void
 parole_conf_dialog_add_vis_plugins (gpointer key, gpointer value, GtkWidget *combox)
 {
 #if GTK_CHECK_VERSION(3, 0, 0)
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combox), (const gchar *) key);
+    GtkListStore *store = GTK_LIST_STORE(gtk_combo_box_get_model(GTK_COMBO_BOX(combox)));
+    GtkTreeIter iter;
+    
+    gtk_list_store_append( store, &iter );
+    gtk_list_store_set( store, &iter, 0, (const gchar *) key, -1 );
 #else
     gtk_combo_box_append_text (GTK_COMBO_BOX (combox), (const gchar *) key);
 #endif
