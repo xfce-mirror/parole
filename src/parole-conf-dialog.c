@@ -345,6 +345,8 @@ parole_conf_dialog_add_vis_plugins (gpointer key, gpointer value, GtkWidget *com
     
     gtk_list_store_append( store, &iter );
     gtk_list_store_set( store, &iter, 0, (const gchar *) key, -1 );
+    
+    g_object_unref (store);
 #else
     gtk_combo_box_append_text (GTK_COMBO_BOX (combox), (const gchar *) key);
 #endif
