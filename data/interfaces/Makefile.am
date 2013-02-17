@@ -13,7 +13,7 @@ interfaces_h = 					\
 
 if ENABLE_GTK3
 interfaces =					\
-	parole.ui				\
+	parole-3.ui				\
 	parole-settings-3.ui			\
 	playlist-3.ui				\
 	mediachooser-3.ui				\
@@ -24,7 +24,7 @@ interfaces =					\
 if MAINTAINER_MODE
 BUILT_SOURCES = $(interfaces_h)
 
-parole_ui.h: parole.ui
+parole_ui.h: parole-3.ui
 	xdt-csource --static --strip-comments --strip-content --name=parole_ui $< > $@
 
 parole-settings_ui.h: parole-settings-3.ui

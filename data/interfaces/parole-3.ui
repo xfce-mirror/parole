@@ -1,27 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <requires lib="gtk+" version="2.24"/>
-  <!-- interface-naming-policy project-wide -->
+  <!-- interface-requires gtk+ 3.0 -->
   <object class="GtkImage" id="image1">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="icon_name">parole-extension</property>
+    <property name="stock">gtk-network</property>
+    <property name="icon-size">1</property>
   </object>
-  <object class="GtkImage" id="image_cd_rom">
+  <object class="GtkImage" id="image2">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="icon_name">media-optical</property>
+    <property name="pixel_size">16</property>
+    <property name="icon_name">parole-extension</property>
+  </object>
+  <object class="GtkImage" id="image3">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixel_size">16</property>
+    <property name="icon_name">audio-volume-high</property>
+  </object>
+  <object class="GtkImage" id="image4">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixel_size">16</property>
+    <property name="icon_name">audio-volume-low</property>
+  </object>
+  <object class="GtkImage" id="image5">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixel_size">16</property>
+    <property name="icon_name">audio-volume-muted</property>
   </object>
   <object class="GtkImage" id="image_fullscreen">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
+    <property name="tooltip_text" translatable="yes">Fullscreen</property>
     <property name="stock">gtk-fullscreen</property>
     <property name="icon-size">3</property>
-  </object>
-  <object class="GtkImage" id="image_network">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="stock">gtk-network</property>
   </object>
   <object class="GtkImage" id="image_play_next">
     <property name="visible">True</property>
@@ -41,35 +56,7 @@
     <property name="stock">gtk-media-previous</property>
     <property name="icon-size">3</property>
   </object>
-  <object class="GtkImage" id="image_volume_down">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">audio-volume-low</property>
-  </object>
-  <object class="GtkImage" id="image_volume_mute">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">audio-volume-muted</property>
-  </object>
-  <object class="GtkImage" id="image_volume_up">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">audio-volume-high</property>
-  </object>
-  <object class="GtkListStore" id="liststore_audiotrack">
-    <columns>
-      <!-- column-name track_title -->
-      <column type="gchararray"/>
-    </columns>
-  </object>
-  <object class="GtkListStore" id="liststore_subtitles">
-    <columns>
-      <!-- column-name subtitle_name -->
-      <column type="gchararray"/>
-    </columns>
-  </object>
   <object class="GtkWindow" id="main-window">
-    <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Parole Media Player</property>
     <property name="window_position">center</property>
@@ -77,11 +64,12 @@
     <signal name="destroy" handler="parole_player_destroy_cb" swapped="no"/>
     <signal name="configure-event" handler="parole_player_configure_event_cb" swapped="no"/>
     <signal name="key-press-event" handler="parole_player_key_press" swapped="no"/>
-    <signal name="delete-event" handler="parole_player_delete_event_cb" after="yes" swapped="no"/>
+    <signal name="delete-event" handler="parole_player_delete_event_cb" swapped="no"/>
     <child>
-      <object class="GtkVBox" id="vbox1">
+      <object class="GtkBox" id="vbox1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
         <child>
           <object class="GtkMenuBar" id="menubar">
             <property name="visible">True</property>
@@ -90,11 +78,10 @@
               <object class="GtkMenuItem" id="media-menu-item">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">_Media</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
-                  <object class="GtkMenu" id="media-menu">
+                  <object class="GtkMenu" id="menu1">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
@@ -102,7 +89,6 @@
                         <property name="label">gtk-open</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <accelerator key="o" signal="activate" modifiers="GDK_CONTROL_MASK"/>
@@ -114,9 +100,8 @@
                         <property name="label" translatable="yes">Open _Location</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="use_underline">True</property>
-                        <property name="image">image_network</property>
+                        <property name="image">image1</property>
                         <property name="use_stock">False</property>
                         <accelerator key="l" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <signal name="activate" handler="parole_player_menu_open_location_cb" swapped="no"/>
@@ -126,7 +111,6 @@
                       <object class="GtkMenuItem" id="recent_menu">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="label" translatable="yes">Open Recent</property>
                         <property name="use_underline">True</property>
                       </object>
@@ -139,17 +123,15 @@
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="menu-open-disc">
-                        <property name="label" translatable="yes">Insert Disc</property>
+                        <property name="label">gtk-cdrom</property>
                         <property name="visible">True</property>
-                        <property name="sensitive">False</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
-                        <property name="image">image_cd_rom</property>
-                        <property name="use_stock">False</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkSeparatorMenuItem" id="separatormenuitem4">
+                      <object class="GtkSeparatorMenuItem" id="separatormenuitem2">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                       </object>
@@ -159,7 +141,6 @@
                         <property name="label">gtk-quit</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <accelerator key="q" signal="activate" modifiers="GDK_CONTROL_MASK"/>
@@ -174,18 +155,16 @@
               <object class="GtkMenuItem" id="edit-menu">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">_Edit</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
-                  <object class="GtkMenu" id="menu4">
+                  <object class="GtkMenu" id="menu2">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
                       <object class="GtkCheckMenuItem" id="repeat">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="label" translatable="yes">_Repeat</property>
                         <property name="use_underline">True</property>
                         <signal name="toggled" handler="parole_player_repeat_toggled_cb" swapped="no"/>
@@ -195,14 +174,13 @@
                       <object class="GtkCheckMenuItem" id="shuffle">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="label" translatable="yes">_Shuffle</property>
                         <property name="use_underline">True</property>
                         <signal name="toggled" handler="parole_player_shuffle_toggled_cb" swapped="no"/>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkSeparatorMenuItem" id="separatormenuitem2">
+                      <object class="GtkSeparatorMenuItem" id="separatormenuitem3">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                       </object>
@@ -212,8 +190,7 @@
                         <property name="label" translatable="yes">Plugins</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
-                        <property name="image">image1</property>
+                        <property name="image">image2</property>
                         <property name="use_stock">False</property>
                       </object>
                     </child>
@@ -222,7 +199,6 @@
                         <property name="label">gtk-preferences</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="parole_player_open_preferences_cb" swapped="no"/>
@@ -236,11 +212,10 @@
               <object class="GtkMenuItem" id="view-menu">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">_View</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
-                  <object class="GtkMenu" id="menu2">
+                  <object class="GtkMenu" id="menu3">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
@@ -248,7 +223,6 @@
                         <property name="label">gtk-fullscreen</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <accelerator key="F11" signal="activate"/>
@@ -256,7 +230,7 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkSeparatorMenuItem" id="separatormenuitem3">
+                      <object class="GtkSeparatorMenuItem" id="separatormenuitem4">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                       </object>
@@ -265,18 +239,16 @@
                       <object class="GtkMenuItem" id="menuitem1">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="label" translatable="yes">_Aspect Ratio</property>
                         <property name="use_underline">True</property>
                         <child type="submenu">
-                          <object class="GtkMenu" id="menu5">
+                          <object class="GtkMenu" id="menu4">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <child>
                               <object class="GtkRadioMenuItem" id="ratio_none">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="label" translatable="yes">None</property>
                                 <property name="use_underline">True</property>
                                 <property name="draw_as_radio">True</property>
@@ -287,7 +259,6 @@
                               <object class="GtkRadioMenuItem" id="ratio_auto">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="label" translatable="yes">Auto</property>
                                 <property name="use_underline">True</property>
                                 <property name="draw_as_radio">True</property>
@@ -299,7 +270,6 @@
                               <object class="GtkRadioMenuItem" id="ratio_square">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="label" translatable="yes">Square</property>
                                 <property name="use_underline">True</property>
                                 <property name="draw_as_radio">True</property>
@@ -311,7 +281,6 @@
                               <object class="GtkRadioMenuItem" id="ratio_4_3">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="label" translatable="yes">4:3 (TV)</property>
                                 <property name="use_underline">True</property>
                                 <property name="draw_as_radio">True</property>
@@ -323,7 +292,6 @@
                               <object class="GtkRadioMenuItem" id="ratio_16_9">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="label" translatable="yes">16:9 (Widescreen)</property>
                                 <property name="use_underline">True</property>
                                 <property name="draw_as_radio">True</property>
@@ -335,7 +303,6 @@
                               <object class="GtkRadioMenuItem" id="ratio_20_9">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="label" translatable="yes">20:9 (DVB)</property>
                                 <property name="use_underline">True</property>
                                 <property name="draw_as_radio">True</property>
@@ -348,17 +315,15 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkSeparatorMenuItem" id="menuitem3">
+                      <object class="GtkSeparatorMenuItem" id="separatormenuitem5">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem" id="menuitem4">
+                      <object class="GtkMenuItem" id="menuitem2">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="label" translatable="yes">Subtitles</property>
                         <property name="use_underline">True</property>
                         <child type="submenu">
@@ -369,34 +334,29 @@
                               <object class="GtkRadioMenuItem" id="subtitles-menu-none">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="label" translatable="yes">None</property>
                                 <property name="use_underline">True</property>
                                 <property name="draw_as_radio">True</property>
                               </object>
                             </child>
                             <child>
-                              <object class="GtkSeparatorMenuItem" id="menuitem7">
+                              <object class="GtkSeparatorMenuItem" id="separatormenuitem7">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="use_action_appearance">False</property>
                               </object>
                             </child>
                             <child>
                               <object class="GtkMenuItem" id="subtitles-menu-custom">
                                 <property name="visible">True</property>
-                                <property name="sensitive">False</property>
                                 <property name="can_focus">False</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="label" translatable="yes">Select Text Subtitles...</property>
                                 <property name="use_underline">True</property>
                               </object>
                             </child>
                             <child>
-                              <object class="GtkSeparatorMenuItem" id="menuitem9">
+                              <object class="GtkSeparatorMenuItem" id="separatormenuitem8">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="use_action_appearance">False</property>
                               </object>
                             </child>
                           </object>
@@ -404,21 +364,19 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkSeparatorMenuItem" id="menuitem5">
+                      <object class="GtkSeparatorMenuItem" id="separatormenuitem6">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                       </object>
                     </child>
                     <child>
                       <object class="GtkCheckMenuItem" id="show-hide-list">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="label" translatable="yes">Show _playlist</property>
                         <property name="use_underline">True</property>
                         <accelerator key="F9" signal="activate"/>
-                        <signal name="activate" handler="parole_player_show_hide_playlist" swapped="no"/>
+                        <signal name="toggled" handler="parole_player_show_hide_playlist" swapped="no"/>
                       </object>
                     </child>
                   </object>
@@ -429,18 +387,16 @@
               <object class="GtkMenuItem" id="sound">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">Audio</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
-                  <object class="GtkMenu" id="menu1">
+                  <object class="GtkMenu" id="menu5">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkMenuItem" id="menuitem10">
+                      <object class="GtkMenuItem" id="menuitem3">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="label" translatable="yes">Languages</property>
                         <property name="use_underline">True</property>
                         <child type="submenu">
@@ -452,7 +408,6 @@
                                 <property name="visible">True</property>
                                 <property name="sensitive">False</property>
                                 <property name="can_focus">False</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="label" translatable="yes">Empty</property>
                                 <property name="use_underline">True</property>
                               </object>
@@ -462,10 +417,9 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkSeparatorMenuItem" id="menuitem12">
+                      <object class="GtkSeparatorMenuItem" id="separatormenuitem9">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                       </object>
                     </child>
                     <child>
@@ -473,11 +427,9 @@
                         <property name="label" translatable="yes">Volume _Up</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="use_underline">True</property>
-                        <property name="image">image_volume_up</property>
+                        <property name="image">image3</property>
                         <property name="use_stock">False</property>
-                        <accelerator key="KP_Add" signal="activate"/>
                         <accelerator key="equal" signal="activate"/>
                         <accelerator key="plus" signal="activate"/>
                         <signal name="activate" handler="parole_player_volume_up" swapped="no"/>
@@ -488,12 +440,10 @@
                         <property name="label" translatable="yes">Volume _Down</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="use_underline">True</property>
-                        <property name="image">image_volume_down</property>
+                        <property name="image">image4</property>
                         <property name="use_stock">False</property>
                         <accelerator key="minus" signal="activate"/>
-                        <accelerator key="KP_Subtract" signal="activate"/>
                         <signal name="activate" handler="parole_player_volume_down" swapped="no"/>
                       </object>
                     </child>
@@ -502,9 +452,8 @@
                         <property name="label" translatable="yes">_Mute</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="use_underline">True</property>
-                        <property name="image">image_volume_mute</property>
+                        <property name="image">image5</property>
                         <property name="use_stock">False</property>
                         <accelerator key="0" signal="activate"/>
                         <signal name="activate" handler="parole_player_volume_mute" swapped="no"/>
@@ -518,11 +467,10 @@
               <object class="GtkMenuItem" id="help-menu">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">_Help</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
-                  <object class="GtkMenu" id="menu3">
+                  <object class="GtkMenu" id="menu6">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
@@ -530,7 +478,6 @@
                         <property name="label">gtk-about</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="parole_show_about" swapped="no"/>
@@ -554,31 +501,33 @@
             <property name="show_tabs">False</property>
             <property name="show_border">False</property>
             <property name="scrollable">True</property>
-            <property name="group_id">0</property>
             <child>
-              <object class="GtkVBox" id="main-box">
+              <object class="GtkBox" id="main-box">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="orientation">vertical</property>
                 <property name="spacing">5</property>
                 <child>
-                  <object class="GtkHPaned" id="hpaned">
+                  <object class="GtkPaned" id="hpaned">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <child>
-                      <object class="GtkVBox" id="vbox_player">
+                      <object class="GtkBox" id="vbox_player">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="orientation">vertical</property>
                         <child>
-                          <object class="GtkHBox" id="hbox_infobar">
+                          <object class="GtkBox" id="hbox_infobar">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="orientation">vertical</property>
                             <child>
-                              <object class="GtkHBox" id="infobar_contents">
+                              <object class="GtkBox" id="infobar_contents">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="spacing">12</property>
                                 <child>
-                                  <object class="GtkHBox" id="hbox3">
+                                  <object class="GtkBox" id="hbox3">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
                                     <property name="spacing">6</property>
@@ -586,7 +535,6 @@
                                       <object class="GtkLabel" id="label1">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="xalign">1</property>
                                         <property name="label" translatable="yes">Audio Track:</property>
                                       </object>
                                       <packing>
@@ -599,7 +547,6 @@
                                       <object class="GtkComboBox" id="combobox_audiotrack">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="model">liststore_audiotrack</property>
                                         <signal name="changed" handler="parole_player_combo_box_audiotrack_changed_cb" swapped="no"/>
                                       </object>
                                       <packing>
@@ -610,13 +557,13 @@
                                     </child>
                                   </object>
                                   <packing>
-                                    <property name="expand">True</property>
+                                    <property name="expand">False</property>
                                     <property name="fill">True</property>
                                     <property name="position">0</property>
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkHBox" id="hbox4">
+                                  <object class="GtkBox" id="hbox4">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
                                     <property name="spacing">6</property>
@@ -624,7 +571,6 @@
                                       <object class="GtkLabel" id="label2">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="xalign">1</property>
                                         <property name="label" translatable="yes">Subtitles:</property>
                                       </object>
                                       <packing>
@@ -637,7 +583,6 @@
                                       <object class="GtkComboBox" id="combobox_subtitles">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="model">liststore_subtitles</property>
                                         <signal name="changed" handler="parole_player_combo_box_subtitles_changed_cb" swapped="no"/>
                                       </object>
                                       <packing>
@@ -648,7 +593,7 @@
                                     </child>
                                   </object>
                                   <packing>
-                                    <property name="expand">True</property>
+                                    <property name="expand">False</property>
                                     <property name="fill">True</property>
                                     <property name="position">1</property>
                                   </packing>
@@ -671,9 +616,10 @@
                           <object class="GtkEventBox" id="eventbox_output">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="hexpand">True</property>
                             <signal name="button-press-event" handler="parole_player_gst_widget_button_press" swapped="no"/>
                             <child>
-                              <object class="GtkHBox" id="output">
+                              <object class="GtkBox" id="output">
                                 <property name="visible">True</property>
                                 <property name="app_paintable">True</property>
                                 <property name="can_focus">False</property>
@@ -693,9 +639,10 @@
                           <object class="GtkEventBox" id="audiobox">
                             <property name="can_focus">False</property>
                             <property name="no_show_all">True</property>
+                            <property name="hexpand">True</property>
                             <signal name="button-press-event" handler="parole_player_gst_widget_button_press" swapped="no"/>
                             <child>
-                              <object class="GtkHBox" id="hbox_audiobox">
+                              <object class="GtkBox" id="hbox_audiobox">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="spacing">24</property>
@@ -715,9 +662,10 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkVBox" id="vbox3">
+                                  <object class="GtkBox" id="vbox3">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
+                                    <property name="orientation">vertical</property>
                                     <property name="spacing">6</property>
                                     <child>
                                       <object class="GtkLabel" id="audiobox_title">
@@ -727,7 +675,6 @@
                                         <property name="yalign">1</property>
                                         <property name="label" translatable="yes">&lt;span color='#F4F4F4'&gt;&lt;b&gt;&lt;big&gt;Unknown Song&lt;/big&gt;&lt;/b&gt;&lt;/span&gt;</property>
                                         <property name="use_markup">True</property>
-                                        <property name="ellipsize">end</property>
                                       </object>
                                       <packing>
                                         <property name="expand">True</property>
@@ -742,7 +689,6 @@
                                         <property name="xalign">0</property>
                                         <property name="label" translatable="yes">&lt;big&gt;&lt;span color='#BBBBBB'&gt;&lt;i&gt;on&lt;/i&gt;&lt;/span&gt; &lt;span color='#F4F4F4'&gt;Unknown Album&lt;/span&gt;&lt;/big&gt;</property>
                                         <property name="use_markup">True</property>
-                                        <property name="ellipsize">end</property>
                                       </object>
                                       <packing>
                                         <property name="expand">False</property>
@@ -758,7 +704,6 @@
                                         <property name="yalign">0</property>
                                         <property name="label" translatable="yes">&lt;big&gt;&lt;span color='#BBBBBB'&gt;&lt;i&gt;by&lt;/i&gt;&lt;/span&gt; &lt;span color='#F4F4F4'&gt;Unknown Artist&lt;/span&gt;&lt;/big&gt;</property>
                                         <property name="use_markup">True</property>
-                                        <property name="ellipsize">end</property>
                                       </object>
                                       <packing>
                                         <property name="expand">True</property>
@@ -783,20 +728,23 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkVBox" id="control">
+                          <object class="GtkBox" id="control">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="valign">end</property>
+                            <property name="orientation">vertical</property>
                             <child>
-                              <object class="GtkVBox" id="play-box">
+                              <object class="GtkBox" id="play-box">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
+                                <property name="orientation">vertical</property>
                                 <child>
-                                  <object class="GtkHBox" id="hbox6">
+                                  <object class="GtkBox" id="hbox6">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
                                     <property name="spacing">6</property>
                                     <child>
-                                      <object class="GtkHBox" id="playback_buttons">
+                                      <object class="GtkBox" id="playback_buttons">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
                                         <child>
@@ -806,7 +754,6 @@
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">True</property>
                                             <property name="tooltip_text" translatable="yes">Previous</property>
-                                            <property name="use_action_appearance">False</property>
                                             <property name="image">image_play_prev</property>
                                             <property name="relief">none</property>
                                             <property name="focus_on_click">False</property>
@@ -821,15 +768,11 @@
                                         <child>
                                           <object class="GtkButton" id="play-pause">
                                             <property name="visible">True</property>
-                                            <property name="sensitive">False</property>
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">True</property>
-                                            <property name="tooltip_text" translatable="yes">Play</property>
-                                            <property name="use_action_appearance">False</property>
                                             <property name="image">image_play_pause</property>
                                             <property name="relief">none</property>
                                             <property name="focus_on_click">False</property>
-                                            <signal name="clicked" handler="parole_player_play_pause_clicked" swapped="no"/>
                                           </object>
                                           <packing>
                                             <property name="expand">False</property>
@@ -844,7 +787,6 @@
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">True</property>
                                             <property name="tooltip_text" translatable="yes">Next</property>
-                                            <property name="use_action_appearance">False</property>
                                             <property name="image">image_play_next</property>
                                             <property name="relief">none</property>
                                             <property name="focus_on_click">False</property>
@@ -864,14 +806,14 @@
                                       </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkHBox" id="playing_box">
+                                      <object class="GtkBox" id="playing_box">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
                                         <child>
                                           <object class="GtkLabel" id="label_elapsed">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
-                                            <property name="label">00:00</property>
+                                            <property name="label" translatable="yes">00:00</property>
                                             <property name="single_line_mode">True</property>
                                           </object>
                                           <packing>
@@ -882,7 +824,7 @@
                                           </packing>
                                         </child>
                                         <child>
-                                          <object class="GtkHScale" id="scale">
+                                          <object class="GtkScale" id="scale">
                                             <property name="visible">True</property>
                                             <property name="sensitive">False</property>
                                             <property name="can_focus">True</property>
@@ -903,7 +845,7 @@
                                           <object class="GtkLabel" id="label_duration">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
-                                            <property name="label">00:00</property>
+                                            <property name="label" translatable="yes">00:00</property>
                                             <property name="single_line_mode">True</property>
                                           </object>
                                           <packing>
@@ -924,8 +866,8 @@
                                       <object class="GtkProgressBar" id="progressbar_buffering">
                                         <property name="can_focus">False</property>
                                         <property name="no_show_all">True</property>
-                                        <property name="show_text">True</property>
                                         <property name="text" translatable="yes">Buffering (0%)</property>
+                                        <property name="show_text">True</property>
                                       </object>
                                       <packing>
                                         <property name="expand">True</property>
@@ -934,7 +876,7 @@
                                       </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkHBox" id="extra_controls">
+                                      <object class="GtkBox" id="extra_controls">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
                                         <child>
@@ -942,7 +884,7 @@
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">True</property>
-                                            <property name="use_action_appearance">False</property>
+                                            <property name="has_tooltip">True</property>
                                             <property name="relief">none</property>
                                             <property name="focus_on_click">False</property>
                                             <property name="orientation">vertical</property>
@@ -965,11 +907,9 @@ audio-volume-medium</property>
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">True</property>
-                                            <property name="no_show_all">True</property>
-                                            <property name="tooltip_text" translatable="yes">Fullscreen</property>
-                                            <property name="use_action_appearance">False</property>
                                             <property name="image">image_fullscreen</property>
                                             <property name="relief">none</property>
+                                            <property name="focus_on_click">False</property>
                                             <signal name="clicked" handler="parole_player_full_screen_activated_cb" swapped="no"/>
                                           </object>
                                           <packing>
@@ -984,9 +924,9 @@ audio-volume-medium</property>
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">True</property>
                                             <property name="no_show_all">True</property>
-                                            <property name="use_action_appearance">False</property>
                                             <property name="relief">none</property>
                                             <property name="use_stock">True</property>
+                                            <property name="focus_on_click">False</property>
                                             <signal name="clicked" handler="parole_player_leave_fs_cb" swapped="no"/>
                                           </object>
                                           <packing>
@@ -1001,7 +941,6 @@ audio-volume-medium</property>
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">True</property>
                                             <property name="no_show_all">True</property>
-                                            <property name="use_action_appearance">False</property>
                                             <property name="image">show-hide-list-image</property>
                                             <property name="relief">none</property>
                                             <property name="focus_on_click">False</property>
@@ -1038,7 +977,6 @@ audio-volume-medium</property>
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">False</property>
-                            <property name="pack_type">end</property>
                             <property name="position">3</property>
                           </packing>
                         </child>
@@ -1079,18 +1017,6 @@ audio-volume-medium</property>
               <packing>
                 <property name="tab_fill">False</property>
               </packing>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child type="tab">
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child type="tab">
-              <placeholder/>
             </child>
           </object>
           <packing>
