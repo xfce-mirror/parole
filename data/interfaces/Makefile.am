@@ -17,7 +17,7 @@ interfaces =					\
 	parole-settings-3.ui			\
 	playlist.ui				\
 	mediachooser-3.ui				\
-	save-playlist.ui			\
+	save-playlist-3.ui			\
 	plugins-3.ui				\
 	open-location-3.ui
 
@@ -36,7 +36,7 @@ playlist_ui.h: playlist.ui
 mediachooser_ui.h: mediachooser-3.ui
 	xdt-csource --static --strip-comments --strip-content --name=mediachooser_ui $< > $@
 
-save-playlist_ui.h: save-playlist.ui
+save-playlist_ui.h: save-playlist-3.ui
 	xdt-csource --static --strip-comments --strip-content --name=save_playlist_ui $< > $@
 
 open-location_ui.h: open-location-3.ui
