@@ -2968,6 +2968,7 @@ parole_player_init (ParolePlayer *player)
     player->priv->seekb = GTK_WIDGET (gtk_builder_get_object (builder, "back"));
      
     player->priv->range = GTK_WIDGET (gtk_builder_get_object (builder, "scale"));
+    gtk_widget_set_name( player->priv->range, "ParoleScale" );
     
     player->priv->volume = GTK_WIDGET (gtk_builder_get_object (builder, "volume"));
     
