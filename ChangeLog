@@ -1,3 +1,22 @@
+2013-02-21: bluesabre@xfce.org
+    * Stable release 0.5.0
+    * Fixed potential file name clash in parole extension (bug #9728)
+    * Fixed libnotify error on make (bug #9744)
+    * Fixed moving show/hide playlist button (bug #9755)
+    * Fixed mute button toggling (bug #9760)
+    * Fixed playlist manipulation while playlist hidden (bug #9762)
+    * Fixed webm file support (bug #9798)
+    * Fixed auto-saved playlist saving as UTF-8
+    * Fixed playlist menu from opening off-screen
+    * Added improved locale name support in audio tracks and subtitles
+    * Added gstreamer 1.0 support with --with-gstreamer=0.10|1.0
+    * Added additional tooltips
+    * Added theming to fullscreen widgets
+    * Improved audio cover image loading
+    * Improved support for window manager fullscreen command
+    * Made codec installer transient for player window
+    * Moved history and playlist to .config/xfce4/parole
+
 2013-01-05: bluesabre@xfce.org
     * Development release 0.4.0
     * Fixed build bugs #9219, #9226
