@@ -1,6 +1,7 @@
 style "parole-fullscreen"
 {
-	fg[NORMAL]		    = "#FFFFFF"
+	fg[NORMAL]		    = "#EEEEEE"
+	fg[PRELIGHT]		    = "#FFFFFF"
 
 	bg[NORMAL]		    = "#000000"
 	bg[ACTIVE]		    = "#6D6D6D"
