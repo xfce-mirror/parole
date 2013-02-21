@@ -1,0 +1,18 @@
+style "parole-fullscreen"
+{
+	fg[NORMAL]		    = "#FFFFFF"
+
+	bg[NORMAL]		    = "#000000"
+	bg[ACTIVE]		    = "#6D6D6D"
+	bg[PRELIGHT]		= "#505050"
+	bg[SELECTED]		= "#398EE7"
+	bg[INSENSITIVE]		= "#C4C4C4"
+}
+
+style "parole-scale" = "parole-fullscreen"
+{
+	bg[NORMAL]	= "#CECECE"
+}
+
+widget "*ParoleFullscreen*"		style "parole-fullscreen"
+widget "*ParoleFullscreen*ParoleScale*"	style "parole-scale"

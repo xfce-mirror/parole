@@ -70,6 +70,12 @@
 
 #include "common/parole-common.h"
 
+#define RC_STYLE \
+  "include \"" GTKRC_DIR "/parole.gtkrc\""
+  
+#define RC_STYLE_FILE \
+  GTKRC_DIR "/parole.gtkrc"
+
 int GTK_ICON_SIZE_ARTWORK_FALLBACK;
 
 static void
@@ -2966,6 +2972,8 @@ parole_player_init (ParolePlayer *player)
     player->priv->play_pause = GTK_WIDGET (gtk_builder_get_object (builder, "play-pause"));
     player->priv->seekf = GTK_WIDGET (gtk_builder_get_object (builder, "forward"));
     player->priv->seekb = GTK_WIDGET (gtk_builder_get_object (builder, "back"));
+    
+    gtk_rc_parse( RC_STYLE_FILE );
      
     player->priv->range = GTK_WIDGET (gtk_builder_get_object (builder, "scale"));
     gtk_widget_set_name( player->priv->range, "ParoleScale" );
