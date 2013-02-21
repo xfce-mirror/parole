@@ -147,6 +147,10 @@ void 			parole_player_seekb_cb (GtkWidget *widget, ParolePlayer *player, gdouble
 gboolean        parole_player_scroll_event_cb		(GtkWidget *widget,
 							 GdkEventScroll *ev,
 							 ParolePlayer *player);
+							 
+gboolean    parole_player_window_state_event (GtkWidget *widget,
+                                GdkEventWindowState *event,
+                                ParolePlayer *player);
 
 void		parole_player_leave_fs_cb		(GtkButton *button,
 							 ParolePlayer *player);

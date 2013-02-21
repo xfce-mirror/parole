@@ -16,5 +16,9 @@ libparolescreensaver_la_SOURCES = 	\
 	parole-screensaver.c		\
 	parole-screensaver.h
 
-libparolescreensaver_la_CFLAGS =	\
-	$(GTK_CFLAGS)
+libparolescreensaver_la_CFLAGS =		\
+	$(GTK_CFLAGS)				\
+	$(LIBXFCE4UTIL_CFLAGS)
+
+libparolescreensaver_la_LIBADD = 		\
+	$(LIBXFCE4UTIL_LIBS)

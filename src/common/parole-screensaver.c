@@ -30,6 +30,9 @@
 
 #include <gdk/gdkx.h>
 
+#include <libxfce4util/libxfce4util.h>
+
+#include "src/misc/parole-debug.h"
 #include "parole-screensaver.h"
 
 #define RESET_SCREENSAVER_TIMEOUT	6
@@ -72,11 +75,14 @@ parole_screen_saver_new (void)
 void parole_screen_saver_inhibit (ParoleScreenSaver *saver, GtkWindow *window)
 {
     gchar *cmd;
+    gint returncode;
 
     g_return_if_fail (PAROLE_IS_SCREENSAVER (saver));
 
     cmd = g_strdup_printf("xdg-screensaver suspend %lu", GDK_DRAWABLE_XID (gtk_widget_get_window (GTK_WIDGET (window))));
-    system(cmd);
+    returncode = system(cmd);
+    
+    TRACE("\'xdg-screensaver suspend\' returned %i", returncode);
 
     g_free(cmd);
 }
@@ -84,11 +90,14 @@ void parole_screen_saver_inhibit (ParoleScreenSaver *saver, GtkWindow *window)
 void parole_screen_saver_uninhibit (ParoleScreenSaver *saver, GtkWindow *window)
 {
     gchar *cmd;
+    gint returncode;
 
     g_return_if_fail (PAROLE_IS_SCREENSAVER (saver));
 
     cmd = g_strdup_printf("xdg-screensaver resume %lu", GDK_DRAWABLE_XID (gtk_widget_get_window (GTK_WIDGET (window))));
-    system(cmd);
+    returncode = system(cmd);
+    
+    TRACE("\'xdg-screensaver resume\' returned %i", returncode);
 
     g_free(cmd);
 }
