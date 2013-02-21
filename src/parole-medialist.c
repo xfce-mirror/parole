@@ -200,6 +200,7 @@ struct ParoleMediaListPrivate
     GtkWidget *repeat_button;
     GtkWidget *shuffle_button;
 	GtkWidget *settings_button;
+	GtkWidget *n_items;
 };
 
 enum
@@ -254,6 +255,7 @@ parole_media_list_add (ParoleMediaList *list, ParoleFile *file, gboolean disc, g
     GtkTreeRowReference *row;
     GtkTreeIter iter;
     gint nch;
+    gchar *n_items_text = "Playlist empty";
     
     if (disc)
         list_store = GTK_LIST_STORE (gtk_tree_view_get_model (GTK_TREE_VIEW (list->priv->disc_view)));
@@ -300,7 +302,9 @@ parole_media_list_add (ParoleMediaList *list, ParoleFile *file, gboolean disc, g
     }
     else
 	parole_media_list_set_widget_sensitive (list, TRUE);
-	
+    if ( nch != 0 )
+	n_items_text = g_strdup_printf ("%i items",nch);
+    gtk_label_set_text (GTK_LABEL(list->priv->n_items),n_items_text);
 }
 
 /**
@@ -969,12 +973,15 @@ parole_media_list_remove_clicked_cb (GtkButton *button, ParoleMediaList *list)
     if ( nch == 0)
     {
 	parole_media_list_set_widget_sensitive (list, FALSE);
+	gtk_label_set_text (GTK_LABEL(list->priv->n_items),"Playlist empty");
 	/*
 	 * Will emit the signal media_cursor_changed with FALSE because there is no any 
 	 * row remaining, so the player can disable click on the play button.
 	 */
 	g_signal_emit (G_OBJECT (list), signals [MEDIA_CURSOR_CHANGED], 0, FALSE);
     }
+    
+    gtk_label_set_text (GTK_LABEL(list->priv->n_items),g_strdup_printf ("%i items",nch));
 }
 
 /**
@@ -1107,6 +1114,7 @@ parole_media_list_clear_list (ParoleMediaList *list)
     TRACE("CLEAR START");
     gtk_list_store_clear (GTK_LIST_STORE (list->priv->store));
     parole_media_list_set_widget_sensitive (list, FALSE);
+    gtk_label_set_text (GTK_LABEL(list->priv->n_items),"Playlist empty");
     TRACE("CLEAR END");
 }
 
@@ -1693,6 +1701,7 @@ parole_media_list_init (ParoleMediaList *list)
     list->priv->repeat_button = GTK_WIDGET (gtk_builder_get_object (builder, "repeat-media"));
     list->priv->shuffle_button = GTK_WIDGET (gtk_builder_get_object (builder, "shuffle-media"));
     list->priv->settings_button = GTK_WIDGET (gtk_builder_get_object (builder, "settings"));
+    list->priv->n_items = GTK_WIDGET (gtk_builder_get_object (builder, "n_items"));
     
     g_signal_connect (GTK_TOGGLE_BUTTON(list->priv->settings_button), "toggled",
 		      G_CALLBACK (parole_media_list_show_button_menu), list);
