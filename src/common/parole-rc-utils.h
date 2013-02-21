@@ -24,7 +24,7 @@
 #include <libxfce4util/libxfce4util.h>
 
 #define PAROLE_RESOURCE_FILE 		"xfce4/src/misc/parole-media-player.rc"
-#define PAROLE_HISTORY_FILE 		"xfce4/src/misc/history"
+#define PAROLE_HISTORY_FILE 		"xfce4/parole/history"
 
 #define PAROLE_RC_GROUP_GENERAL		"General"
 #define PAROLE_RC_GROUP_PLUGINS		"Plugins"
