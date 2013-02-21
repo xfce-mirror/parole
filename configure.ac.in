@@ -220,9 +220,7 @@ AC_MSG_RESULT([$ac_notify_plugin])
 LIBNOTIFY_FOUND="no"
 if test x"$ac_notify_plugin" = x"yes"; then
  	XDT_CHECK_PACKAGE([LIBNOTIFY],
- 	[libnotify], [libnotify_minimum_version],
- 	[libnotify],
- 	[libnotify library], [yes]) 
+ 	[libnotify], [libnotify_minimum_version]) 
 fi
 
 # Tray plugin.
