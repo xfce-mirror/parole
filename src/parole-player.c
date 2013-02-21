@@ -3132,6 +3132,7 @@ parole_player_init (ParolePlayer *player)
     player->priv->fs_window = gtk_window_new (GTK_WINDOW_POPUP);
     gtk_widget_set_name(GTK_WIDGET(player->priv->fs_window), "ParoleFullscreen");
 
+    gtk_window_set_opacity( GTK_WINDOW(player->priv->fs_window), 0.80 );
     gtk_window_set_gravity (GTK_WINDOW (player->priv->fs_window), GDK_GRAVITY_SOUTH_WEST);
     gtk_window_set_position (GTK_WINDOW (player->priv->fs_window), GTK_WIN_POS_NONE);
   
