@@ -359,7 +359,7 @@ parole_gst_get_video_output_size (ParoleGst *gst, gint *ret_w, gint *ret_h)
 		    else 
 		    {
 			*ret_w = (guint) gst_util_uint64_scale (video_h, dar_n, dar_d);
-			*ret_h = video_w;
+			*ret_h = video_h;
 		    }
 		    TRACE ("Got best video size %dx%d fraction, %d/%d\n", *ret_w, *ret_h, disp_par_n, disp_par_d);
 		}
