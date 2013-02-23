@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-26 18:57+0000\n"
+"POT-Creation-Date: 2013-02-23 10:21+0000\n"
 "PO-Revision-Date: 2011-05-27 14:30+0200\n"
 "Last-Translator: Dmitry Nikitin <luckas_fb@mail.ru>\n"
 "Language-Team: Ukrainian <>\n"
@@ -65,7 +65,7 @@ msgstr "Авто"
 msgid "Buffering (0%)"
 msgstr "Буферизація (0%)"
 
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:740
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:750
 msgid "Empty"
 msgstr "Пусто"
 
@@ -106,8 +106,8 @@ msgstr "Відкрити _адресу"
 msgid "Parole Media Player"
 msgstr "Медіапрогравач Parole"
 
-#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:1398
-#: ../src/parole-player.c:1432
+#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:1408
+#: ../src/parole-player.c:1442
 msgid "Play"
 msgstr "Відтворення"
 
@@ -223,37 +223,42 @@ msgstr "Список відтворення дисків"
 msgid "Play opened files"
 msgstr "Відтворити відкриті файли"
 
-#: ../data/interfaces/playlist.ui.h:10 ../src/parole-medialist.c:784
-#: ../src/parole-player.c:3033
+#: ../data/interfaces/playlist.ui.h:10 ../src/parole-medialist.c:791
+#: ../src/parole-player.c:3067
 msgid "Playlist"
 msgstr "Список відтворення"
 
-#: ../data/interfaces/playlist.ui.h:11
+#: ../data/interfaces/playlist.ui.h:11 ../src/parole-medialist.c:979
+#: ../src/parole-medialist.c:1123
+msgid "Playlist empty"
+msgstr "Список програвання порожній"
+
+#: ../data/interfaces/playlist.ui.h:12
 msgid "Playlist options"
 msgstr "Налаштування списку програвання"
 
-#: ../data/interfaces/playlist.ui.h:12
+#: ../data/interfaces/playlist.ui.h:13
 #: ../data/interfaces/parole-settings.ui.h:17
 msgid "Remember playlist"
 msgstr "Запам'ятовувати список відтворення"
 
-#: ../data/interfaces/playlist.ui.h:13
+#: ../data/interfaces/playlist.ui.h:14
 msgid "Remove"
 msgstr "Вилучення"
 
-#: ../data/interfaces/playlist.ui.h:14
+#: ../data/interfaces/playlist.ui.h:15
 msgid "Repeat"
 msgstr "Повтор"
 
-#: ../data/interfaces/playlist.ui.h:15
+#: ../data/interfaces/playlist.ui.h:16
 msgid "Replace playlist when opening files"
 msgstr "Заміняти список відтворення відкритими файлами"
 
-#: ../data/interfaces/playlist.ui.h:16
+#: ../data/interfaces/playlist.ui.h:17
 msgid "Shuffle"
 msgstr "Випадковий"
 
-#: ../data/interfaces/playlist.ui.h:17
+#: ../data/interfaces/playlist.ui.h:18
 msgid "Title Menu"
 msgstr "Меню разділу"
 
@@ -413,7 +418,7 @@ msgstr "Повідомлення"
 msgid "Error"
 msgstr "Помилка"
 
-#: ../src/gst/parole-gst.c:1370 ../src/parole-medialist.c:356
+#: ../src/gst/parole-gst.c:1370 ../src/parole-medialist.c:363
 #, c-format
 msgid "Track %i"
 msgstr "Доріжка %i"
@@ -572,90 +577,100 @@ msgstr "Parole вже працює, використайте-i для відкр
 msgid "Supported files"
 msgstr "Файли що підтримуються"
 
-#: ../src/parole-mediachooser.c:219 ../src/parole-player.c:955
+#: ../src/parole-mediachooser.c:219 ../src/parole-player.c:965
 msgid "All files"
 msgstr "Всі файли"
 
-#: ../src/parole-medialist.c:372
+#: ../src/parole-medialist.c:301 ../src/parole-medialist.c:988
+#, c-format
+msgid "%i item"
+msgstr "%i пункт"
+
+#: ../src/parole-medialist.c:306 ../src/parole-medialist.c:990
+#, c-format
+msgid "%i items"
+msgstr "%i пункти"
+
+#: ../src/parole-medialist.c:379
 #, c-format
 msgid "Chapter %i"
 msgstr "Розділ %i"
 
-#: ../src/parole-medialist.c:642
+#: ../src/parole-medialist.c:649
 msgid "Permission denied"
 msgstr "Відмовлено в доступі"
 
-#: ../src/parole-medialist.c:644
+#: ../src/parole-medialist.c:651
 msgid "Error saving playlist file"
 msgstr "Помилки при збереженні списку відтворення"
 
-#: ../src/parole-medialist.c:656
+#: ../src/parole-medialist.c:663
 msgid "Unknown playlist format"
 msgstr "Невідомий формати списку відтворення"
 
-#: ../src/parole-medialist.c:657
+#: ../src/parole-medialist.c:664
 msgid "Please chooser a supported playlist format"
 msgstr "Використовуйте селектор для підтримуваних форматів списку відтворення"
 
-#: ../src/parole-medialist.c:709 ../src/parole-plugins-manager.c:352
+#: ../src/parole-medialist.c:716 ../src/parole-plugins-manager.c:352
 msgid "Unknown"
 msgstr "Невідомий"
 
-#: ../src/parole-medialist.c:791
+#: ../src/parole-medialist.c:798
 msgid "M3U Playlists"
 msgstr "M3U списки відтворення"
 
-#: ../src/parole-medialist.c:799
+#: ../src/parole-medialist.c:806
 msgid "PLS Playlists"
 msgstr "PLS списки відтворення"
 
-#: ../src/parole-medialist.c:807
+#: ../src/parole-medialist.c:814
 msgid "Advanced Stream Redirector"
 msgstr "Розширене перенаправлення потоку"
 
-#: ../src/parole-medialist.c:815
+#: ../src/parole-medialist.c:822
 msgid "Shareable Playlist"
 msgstr "Публічний список відтворення"
 
 #. Clear
-#: ../src/parole-medialist.c:1066
+#: ../src/parole-medialist.c:1079
 msgid "Open Containing Folder"
 msgstr "Відкрити теку, що містить"
 
-#: ../src/parole-medialist.c:1640
+#: ../src/parole-medialist.c:1655
 msgid "Media list"
 msgstr "Список файлів"
 
-#: ../src/parole-medialist.c:1641
+#: ../src/parole-medialist.c:1656
 msgid "Chapter list"
 msgstr "Список розділом"
 
-#: ../src/parole-player.c:513
+#: ../src/parole-player.c:523
 msgid "Open ISO image"
 msgstr "Відкрити ISO-образ"
 
-#: ../src/parole-player.c:532
+#: ../src/parole-player.c:542
 msgid "CD image"
 msgstr "Образ CD"
 
-#: ../src/parole-player.c:532
+#: ../src/parole-player.c:542
 msgid "DVD image"
 msgstr "Образ DVD"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:925
+#: ../src/parole-player.c:935
 msgid "Select Subtitle File"
 msgstr "Вибрати файл субтитрів"
 
-#: ../src/parole-player.c:943
+#: ../src/parole-player.c:953
 msgid "Subtitle Files"
 msgstr "Файли субтитрів"
 
-#: ../src/parole-player.c:1118 ../src/parole-player.c:1126
+#: ../src/parole-player.c:1128 ../src/parole-player.c:1136
 msgid "Clear Recent Items"
 msgstr "Очищення недавніх програвань"
 
-#: ../src/parole-player.c:1120
+#: ../src/parole-player.c:1130
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
@@ -663,52 +678,52 @@ msgstr ""
 "Ви впевнені, що бажаєте очистити недавню історію? Її неможливо буде "
 "відновити."
 
-#: ../src/parole-player.c:1239 ../src/parole-player.c:1372
+#: ../src/parole-player.c:1249 ../src/parole-player.c:1382
 msgid "Media stream is not seekable"
 msgstr "Потік медіа не може перемотуватись"
 
-#: ../src/parole-player.c:1342
+#: ../src/parole-player.c:1352
 msgid "Pause"
 msgstr "Пауза"
 
-#: ../src/parole-player.c:1699
+#: ../src/parole-player.c:1709
 msgid "GStreamer backend error"
 msgstr "Помилка процесу Gstreamer"
 
-#: ../src/parole-player.c:1729
+#: ../src/parole-player.c:1739
 msgid "Unknown Song"
 msgstr "Невідома пісня"
 
-#: ../src/parole-player.c:1734 ../src/parole-player.c:1736
-#: ../src/parole-player.c:1742
+#: ../src/parole-player.c:1744 ../src/parole-player.c:1746
+#: ../src/parole-player.c:1752
 msgid "on"
 msgstr "в"
 
-#: ../src/parole-player.c:1742 ../src/plugins/notify/notify-provider.c:124
+#: ../src/parole-player.c:1752 ../src/plugins/notify/notify-provider.c:124
 msgid "Unknown Album"
 msgstr "Невідомий альбом"
 
-#: ../src/parole-player.c:1749 ../src/parole-player.c:1753
+#: ../src/parole-player.c:1759 ../src/parole-player.c:1763
 msgid "by"
 msgstr "виконана"
 
-#: ../src/parole-player.c:1753 ../src/plugins/notify/notify-provider.c:126
+#: ../src/parole-player.c:1763 ../src/plugins/notify/notify-provider.c:126
 msgid "Unknown Artist"
 msgstr "Невідомий виконавець"
 
-#: ../src/parole-player.c:1786
+#: ../src/parole-player.c:1796
 msgid "Buffering"
 msgstr "Буферизація"
 
-#: ../src/parole-player.c:2250
+#: ../src/parole-player.c:2276
 msgid "Mute"
 msgstr "Без звуку"
 
-#: ../src/parole-player.c:2255
+#: ../src/parole-player.c:2281
 msgid "Unmute"
 msgstr "Зі звуком"
 
-#: ../src/parole-player.c:2910
+#: ../src/parole-player.c:2941
 msgid "Clear recent items..."
 msgstr "Очищення недавньої історії..."
 
