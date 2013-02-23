@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-22 07:36+0000\n"
+"POT-Creation-Date: 2013-02-23 10:21+0000\n"
 "PO-Revision-Date: 2012-07-025 11:55+0200\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch (Flemish)\n"
@@ -232,12 +232,13 @@ msgstr "Speellijst van schijf"
 msgid "Play opened files"
 msgstr "Geopende bestanden afspelen"
 
-#: ../data/interfaces/playlist.ui.h:10 ../src/parole-medialist.c:788
+#: ../data/interfaces/playlist.ui.h:10 ../src/parole-medialist.c:791
 #: ../src/parole-player.c:3067
 msgid "Playlist"
 msgstr "Speellijst"
 
-#: ../data/interfaces/playlist.ui.h:11
+#: ../data/interfaces/playlist.ui.h:11 ../src/parole-medialist.c:979
+#: ../src/parole-medialist.c:1123
 msgid "Playlist empty"
 msgstr "Speellijst is leeg"
 
@@ -426,7 +427,7 @@ msgstr "Boodschap"
 msgid "Error"
 msgstr "Fout"
 
-#: ../src/gst/parole-gst.c:1370 ../src/parole-medialist.c:360
+#: ../src/gst/parole-gst.c:1370 ../src/parole-medialist.c:363
 #, c-format
 msgid "Track %i"
 msgstr "Geluidsspoor %i"
@@ -590,57 +591,67 @@ msgstr "Ondersteunde bestanden"
 msgid "All files"
 msgstr "Alle bestanden"
 
-#: ../src/parole-medialist.c:376
+#: ../src/parole-medialist.c:301 ../src/parole-medialist.c:988
+#, c-format
+msgid "%i item"
+msgstr "%i element"
+
+#: ../src/parole-medialist.c:306 ../src/parole-medialist.c:990
+#, c-format
+msgid "%i items"
+msgstr "%i elementen"
+
+#: ../src/parole-medialist.c:379
 #, c-format
 msgid "Chapter %i"
 msgstr "Hoofdstuk %i"
 
-#: ../src/parole-medialist.c:646
+#: ../src/parole-medialist.c:649
 msgid "Permission denied"
 msgstr "Toestemming geweigerd"
 
-#: ../src/parole-medialist.c:648
+#: ../src/parole-medialist.c:651
 msgid "Error saving playlist file"
 msgstr "Opslaan van de speellijst is mislukt"
 
-#: ../src/parole-medialist.c:660
+#: ../src/parole-medialist.c:663
 msgid "Unknown playlist format"
 msgstr "Onbekende opmaak van speellijst"
 
-#: ../src/parole-medialist.c:661
+#: ../src/parole-medialist.c:664
 msgid "Please chooser a supported playlist format"
 msgstr "Kies a.u.b. een ondersteunde speellijst-opmaak"
 
-#: ../src/parole-medialist.c:713 ../src/parole-plugins-manager.c:352
+#: ../src/parole-medialist.c:716 ../src/parole-plugins-manager.c:352
 msgid "Unknown"
 msgstr "Onbekend"
 
-#: ../src/parole-medialist.c:795
+#: ../src/parole-medialist.c:798
 msgid "M3U Playlists"
 msgstr "M3U-speellijsten"
 
-#: ../src/parole-medialist.c:803
+#: ../src/parole-medialist.c:806
 msgid "PLS Playlists"
 msgstr "PLS-speellijsten"
 
-#: ../src/parole-medialist.c:811
+#: ../src/parole-medialist.c:814
 msgid "Advanced Stream Redirector"
 msgstr "Advanced Stream Redirector"
 
-#: ../src/parole-medialist.c:819
+#: ../src/parole-medialist.c:822
 msgid "Shareable Playlist"
 msgstr "Deelbare speellijst"
 
 #. Clear
-#: ../src/parole-medialist.c:1073
+#: ../src/parole-medialist.c:1079
 msgid "Open Containing Folder"
 msgstr "Open map waar het inzit"
 
-#: ../src/parole-medialist.c:1648
+#: ../src/parole-medialist.c:1655
 msgid "Media list"
 msgstr "Medialijst"
 
-#: ../src/parole-medialist.c:1649
+#: ../src/parole-medialist.c:1656
 msgid "Chapter list"
 msgstr "Hoofdstukkenlijst"
 
