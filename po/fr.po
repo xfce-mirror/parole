@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ast\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-21 20:54+0000\n"
+"POT-Creation-Date: 2013-02-23 21:03+0000\n"
 "PO-Revision-Date: 2012-12-07 14:44+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -111,8 +111,8 @@ msgstr "Ouvrir un _emplacement"
 msgid "Parole Media Player"
 msgstr "Lecteur Média Parole"
 
-#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:1408
-#: ../src/parole-player.c:1442
+#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:1414
+#: ../src/parole-player.c:1448
 msgid "Play"
 msgstr "Lecture"
 
@@ -228,12 +228,13 @@ msgstr "Liste de lecture Disque"
 msgid "Play opened files"
 msgstr "Démarrez la lecture des fichiers ouverts"
 
-#: ../data/interfaces/playlist.ui.h:10 ../src/parole-medialist.c:788
-#: ../src/parole-player.c:3067
+#: ../data/interfaces/playlist.ui.h:10 ../src/parole-medialist.c:791
+#: ../src/parole-player.c:3074
 msgid "Playlist"
 msgstr "Liste de lecture"
 
-#: ../data/interfaces/playlist.ui.h:11
+#: ../data/interfaces/playlist.ui.h:11 ../src/parole-medialist.c:979
+#: ../src/parole-medialist.c:1123
 msgid "Playlist empty"
 msgstr "Liste de lecture vide"
 
@@ -423,7 +424,7 @@ msgstr "Message"
 msgid "Error"
 msgstr "Erreur"
 
-#: ../src/gst/parole-gst.c:1370 ../src/parole-medialist.c:360
+#: ../src/gst/parole-gst.c:1370 ../src/parole-medialist.c:363
 #, c-format
 msgid "Track %i"
 msgstr "Piste %i"
@@ -588,61 +589,79 @@ msgstr "Tous les fichiers pris en charge"
 msgid "All files"
 msgstr "Tous les fichiers"
 
-#: ../src/parole-medialist.c:376
+#: ../src/parole-medialist.c:301 ../src/parole-medialist.c:988
+#, c-format
+msgid "%i item"
+msgstr "%i article"
+
+#: ../src/parole-medialist.c:306 ../src/parole-medialist.c:990
+#, c-format
+msgid "%i items"
+msgstr "%i articles"
+
+#: ../src/parole-medialist.c:379
 #, c-format
 msgid "Chapter %i"
 msgstr "Chapitre %i"
 
-#: ../src/parole-medialist.c:646
+#: ../src/parole-medialist.c:649
 msgid "Permission denied"
 msgstr "Permission non accordée"
 
-#: ../src/parole-medialist.c:648
+#: ../src/parole-medialist.c:651
 msgid "Error saving playlist file"
 msgstr "Erreur lors de la sauvegarde de la liste de lecture"
 
-#: ../src/parole-medialist.c:660
+#: ../src/parole-medialist.c:663
 msgid "Unknown playlist format"
 msgstr "Format de liste de lecture inconnu"
 
-#: ../src/parole-medialist.c:661
+#: ../src/parole-medialist.c:664
 msgid "Please chooser a supported playlist format"
 msgstr ""
 "Format de liste de lecture inconnu, Veuillez sélectionner un format de liste "
 "de lecture pris en charge"
 
-#: ../src/parole-medialist.c:713 ../src/parole-plugins-manager.c:352
+#: ../src/parole-medialist.c:716 ../src/parole-plugins-manager.c:352
 msgid "Unknown"
 msgstr "Inconnu"
 
-#: ../src/parole-medialist.c:795
+#: ../src/parole-medialist.c:798
 msgid "M3U Playlists"
 msgstr "Listes de lecture M3U"
 
-#: ../src/parole-medialist.c:803
+#: ../src/parole-medialist.c:806
 msgid "PLS Playlists"
 msgstr "Listes de lecture PLS"
 
-#: ../src/parole-medialist.c:811
+#: ../src/parole-medialist.c:814
 msgid "Advanced Stream Redirector"
 msgstr "Redirecteur de Flux Avancé"
 
-#: ../src/parole-medialist.c:819
+#: ../src/parole-medialist.c:822
 msgid "Shareable Playlist"
 msgstr "Liste de Lecture Partageable"
 
 #. Clear
-#: ../src/parole-medialist.c:1073
+#: ../src/parole-medialist.c:1079
 msgid "Open Containing Folder"
 msgstr "Ouvrir le dossier contenant le fichier"
 
-#: ../src/parole-medialist.c:1648
+#: ../src/parole-medialist.c:1655
 msgid "Media list"
 msgstr "Liste de médias"
 
-#: ../src/parole-medialist.c:1649
+#: ../src/parole-medialist.c:1656
 msgid "Chapter list"
 msgstr "Liste des chapitres"
+
+#: ../src/parole-player.c:463
+msgid "Hide playlist"
+msgstr "Cacher la liste de lecture"
+
+#: ../src/parole-player.c:472
+msgid "Show playlist"
+msgstr "Afficher la liste de lecture"
 
 #: ../src/parole-player.c:523
 msgid "Open ISO image"
@@ -677,7 +696,7 @@ msgstr ""
 "Êtes-vous sûr de vouloir effacer votre historique d'éléments récent ? Cela "
 "ne peut pas être annulée."
 
-#: ../src/parole-player.c:1249 ../src/parole-player.c:1382
+#: ../src/parole-player.c:1249 ../src/parole-player.c:1388
 msgid "Media stream is not seekable"
 msgstr "Le flux média ne peut être recherché"
 
@@ -685,44 +704,44 @@ msgstr "Le flux média ne peut être recherché"
 msgid "Pause"
 msgstr "Pause"
 
-#: ../src/parole-player.c:1709
+#: ../src/parole-player.c:1715
 msgid "GStreamer backend error"
 msgstr "Erreur du moteur GStreamer"
 
-#: ../src/parole-player.c:1739
+#: ../src/parole-player.c:1746
 msgid "Unknown Song"
 msgstr "Chanson Inconnue"
 
-#: ../src/parole-player.c:1744 ../src/parole-player.c:1746
-#: ../src/parole-player.c:1752
+#: ../src/parole-player.c:1751 ../src/parole-player.c:1753
+#: ../src/parole-player.c:1759
 msgid "on"
 msgstr "actif"
 
-#: ../src/parole-player.c:1752 ../src/plugins/notify/notify-provider.c:124
+#: ../src/parole-player.c:1759 ../src/plugins/notify/notify-provider.c:124
 msgid "Unknown Album"
 msgstr "Album inconnu "
 
-#: ../src/parole-player.c:1759 ../src/parole-player.c:1763
+#: ../src/parole-player.c:1766 ../src/parole-player.c:1770
 msgid "by"
 msgstr "par"
 
-#: ../src/parole-player.c:1763 ../src/plugins/notify/notify-provider.c:126
+#: ../src/parole-player.c:1770 ../src/plugins/notify/notify-provider.c:126
 msgid "Unknown Artist"
 msgstr "Artiste inconnu"
 
-#: ../src/parole-player.c:1796
+#: ../src/parole-player.c:1803
 msgid "Buffering"
 msgstr "Mise en tampon"
 
-#: ../src/parole-player.c:2276
+#: ../src/parole-player.c:2283
 msgid "Mute"
 msgstr "Mettre en sourdine"
 
-#: ../src/parole-player.c:2281
+#: ../src/parole-player.c:2288
 msgid "Unmute"
 msgstr "Remettre le son"
 
-#: ../src/parole-player.c:2941
+#: ../src/parole-player.c:2948
 msgid "Clear recent items..."
 msgstr "Effacer les éléments récents..."
 
