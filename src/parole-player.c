@@ -1059,7 +1059,7 @@ parole_player_media_activated_cb (ParoleMediaList *list, GtkTreeRowReference *ro
 				 parole_file_get_uri (file),
 				 sub);
 	    
-	    gtk_window_set_title (GTK_WINDOW (player->priv->window), parole_file_get_display_name(file));
+	    gtk_window_set_title (GTK_WINDOW (player->priv->window), parole_media_list_get_row_name (player->priv->list, player->priv->row));
 	    
 	    if ( directory )
 	    {
@@ -1373,6 +1373,12 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
 	    get_time_string (dur_text, duration);
 
 	    gtk_label_set_text (GTK_LABEL (player->priv->label_duration), dur_text);
+	    if ( player->priv->current_media_type != PAROLE_MEDIA_TYPE_DVD )
+	    {
+	    parole_media_list_set_row_length (player->priv->list,
+	                                      player->priv->row,
+	                                      dur_text);
+	    }
 	}
 	
     player->priv->internal_range_change = FALSE;
@@ -1732,6 +1738,7 @@ parole_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePl
 	if ( title )
 	{
 	    parole_media_list_set_row_name (player->priv->list, player->priv->row, title);
+	    gtk_window_set_title (GTK_WINDOW (player->priv->window), title);
 	    gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), g_markup_printf_escaped("<span color='#F4F4F4'><b><big>%s</big></b></span>", title));
 	    g_free (title);
 	}

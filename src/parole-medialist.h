@@ -124,6 +124,9 @@ GtkTreeRowReference		*parole_media_list_get_row_random   (ParoleMediaList *list)
 void				 parole_media_list_set_row_pixbuf   (ParoleMediaList *list,
 								     GtkTreeRowReference *row,
 								     GdkPixbuf *pix);
+								     
+gchar                   *parole_media_list_get_row_name (ParoleMediaList *list,
+GtkTreeRowReference *row);
 
 void				 parole_media_list_set_row_name     (ParoleMediaList *list,
 							             GtkTreeRowReference *row,

@@ -2027,6 +2027,34 @@ void parole_media_list_set_row_pixbuf  (ParoleMediaList *list, GtkTreeRowReferen
     }
 }
 
+gchar* parole_media_list_get_row_name (ParoleMediaList *list,
+GtkTreeRowReference *row)
+{
+    GtkTreeIter iter;
+    GtkTreePath *path;
+    gchar *name = NULL;
+    
+    if ( gtk_tree_row_reference_valid (row) )
+    {
+	path = gtk_tree_row_reference_get_path (row);
+	
+	if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0)
+	{
+    	if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path) )
+    	    gtk_tree_model_get (GTK_TREE_MODEL(list->priv->store), &iter, NAME_COL, &name, -1);
+	}
+	else
+	{
+    	if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->disc_store), &iter, path) )
+    	    gtk_tree_model_get (GTK_TREE_MODEL(list->priv->store), &iter, NAME_COL, &name, -1);
+	}
+	
+	gtk_tree_path_free (path);
+    }
+    
+    return name;
+}
+
 void parole_media_list_set_row_name (ParoleMediaList *list, GtkTreeRowReference *row, const gchar *name)
 {
     GtkTreeIter iter;
