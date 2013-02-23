@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-23 10:21+0000\n"
+"POT-Creation-Date: 2013-02-23 15:42+0000\n"
 "PO-Revision-Date: 2011-05-27 14:30+0200\n"
 "Last-Translator: Dmitry Nikitin <luckas_fb@mail.ru>\n"
 "Language-Team: Ukrainian <>\n"
@@ -106,8 +106,8 @@ msgstr "Відкрити _адресу"
 msgid "Parole Media Player"
 msgstr "Медіапрогравач Parole"
 
-#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:1408
-#: ../src/parole-player.c:1442
+#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:1414
+#: ../src/parole-player.c:1448
 msgid "Play"
 msgstr "Відтворення"
 
@@ -224,7 +224,7 @@ msgid "Play opened files"
 msgstr "Відтворити відкриті файли"
 
 #: ../data/interfaces/playlist.ui.h:10 ../src/parole-medialist.c:791
-#: ../src/parole-player.c:3067
+#: ../src/parole-player.c:3074
 msgid "Playlist"
 msgstr "Список відтворення"
 
@@ -645,6 +645,14 @@ msgstr "Список файлів"
 msgid "Chapter list"
 msgstr "Список розділом"
 
+#: ../src/parole-player.c:463
+msgid "Hide playlist"
+msgstr "Приховати список відтворення"
+
+#: ../src/parole-player.c:472
+msgid "Show playlist"
+msgstr "Показати список відтворення"
+
 #: ../src/parole-player.c:523
 msgid "Open ISO image"
 msgstr "Відкрити ISO-образ"
@@ -678,7 +686,7 @@ msgstr ""
 "Ви впевнені, що бажаєте очистити недавню історію? Її неможливо буде "
 "відновити."
 
-#: ../src/parole-player.c:1249 ../src/parole-player.c:1382
+#: ../src/parole-player.c:1249 ../src/parole-player.c:1388
 msgid "Media stream is not seekable"
 msgstr "Потік медіа не може перемотуватись"
 
@@ -686,44 +694,44 @@ msgstr "Потік медіа не може перемотуватись"
 msgid "Pause"
 msgstr "Пауза"
 
-#: ../src/parole-player.c:1709
+#: ../src/parole-player.c:1715
 msgid "GStreamer backend error"
 msgstr "Помилка процесу Gstreamer"
 
-#: ../src/parole-player.c:1739
+#: ../src/parole-player.c:1746
 msgid "Unknown Song"
 msgstr "Невідома пісня"
 
-#: ../src/parole-player.c:1744 ../src/parole-player.c:1746
-#: ../src/parole-player.c:1752
+#: ../src/parole-player.c:1751 ../src/parole-player.c:1753
+#: ../src/parole-player.c:1759
 msgid "on"
 msgstr "в"
 
-#: ../src/parole-player.c:1752 ../src/plugins/notify/notify-provider.c:124
+#: ../src/parole-player.c:1759 ../src/plugins/notify/notify-provider.c:124
 msgid "Unknown Album"
 msgstr "Невідомий альбом"
 
-#: ../src/parole-player.c:1759 ../src/parole-player.c:1763
+#: ../src/parole-player.c:1766 ../src/parole-player.c:1770
 msgid "by"
 msgstr "виконана"
 
-#: ../src/parole-player.c:1763 ../src/plugins/notify/notify-provider.c:126
+#: ../src/parole-player.c:1770 ../src/plugins/notify/notify-provider.c:126
 msgid "Unknown Artist"
 msgstr "Невідомий виконавець"
 
-#: ../src/parole-player.c:1796
+#: ../src/parole-player.c:1803
 msgid "Buffering"
 msgstr "Буферизація"
 
-#: ../src/parole-player.c:2276
+#: ../src/parole-player.c:2283
 msgid "Mute"
 msgstr "Без звуку"
 
-#: ../src/parole-player.c:2281
+#: ../src/parole-player.c:2288
 msgid "Unmute"
 msgstr "Зі звуком"
 
-#: ../src/parole-player.c:2941
+#: ../src/parole-player.c:2948
 msgid "Clear recent items..."
 msgstr "Очищення недавньої історії..."
 
