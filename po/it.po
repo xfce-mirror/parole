@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-24 13:06+0000\n"
+"POT-Creation-Date: 2013-02-24 18:27+0000\n"
 "PO-Revision-Date: 2010-02-19 09:04+0100\n"
 "Last-Translator: Cristian Marchi <cri.penta@gmail.com>\n"
 "Language-Team: Italian Translation Team <xfce-it-translators@googlegroups.com>\n"
@@ -112,7 +112,8 @@ msgstr "Apri recenti"
 msgid "Open _Location"
 msgstr "Apri _posizione"
 
-#: ../data/interfaces/parole.ui.h:21 ../src/parole-about.c:68
+#: ../data/interfaces/parole.ui.h:21 ../data/desktop/parole.desktop.in.in.h:1
+#: ../src/parole-about.c:68
 msgid "Parole Media Player"
 msgstr "Media player Parole"
 
@@ -233,13 +234,13 @@ msgstr "Scaletta disco"
 msgid "Play opened files"
 msgstr "Avvia la riproduzione dei file aperti"
 
-#: ../data/interfaces/playlist.ui.h:10 ../src/parole-medialist.c:791
+#: ../data/interfaces/playlist.ui.h:10 ../src/parole-medialist.c:805
 #: ../src/parole-player.c:3074
 msgid "Playlist"
 msgstr "Scaletta"
 
-#: ../data/interfaces/playlist.ui.h:11 ../src/parole-medialist.c:979
-#: ../src/parole-medialist.c:1123
+#: ../data/interfaces/playlist.ui.h:11 ../src/parole-medialist.c:993
+#: ../src/parole-medialist.c:1137
 msgid "Playlist empty"
 msgstr "Scaletta vuota"
 
@@ -417,9 +418,9 @@ msgstr "Svuota cronologia"
 msgid "Open Network Location"
 msgstr "Apre posizione di rete"
 
-#: ../data/desktop/parole.desktop.in.in.h:1
-msgid "Parole"
-msgstr "Parole"
+#: ../data/desktop/parole.desktop.in.in.h:2
+msgid "Play your media"
+msgstr "Riproduttore di media"
 
 #: ../src/common/parole-common.c:67
 msgid "Message"
@@ -429,7 +430,7 @@ msgstr "Messaggio"
 msgid "Error"
 msgstr "Errore"
 
-#: ../src/gst/parole-gst.c:1370 ../src/parole-medialist.c:363
+#: ../src/gst/parole-gst.c:1370 ../src/parole-medialist.c:377
 #, c-format
 msgid "Track %i"
 msgstr "Traccia %i"
@@ -594,67 +595,77 @@ msgstr "File supportati"
 msgid "All files"
 msgstr "Tutti i file"
 
-#: ../src/parole-medialist.c:301 ../src/parole-medialist.c:988
+#: ../src/parole-medialist.c:303 ../src/parole-medialist.c:1002
 #, c-format
 msgid "%i item"
 msgstr "%i elemento"
 
-#: ../src/parole-medialist.c:306 ../src/parole-medialist.c:990
+#: ../src/parole-medialist.c:307
+#, c-format
+msgid "%i chapter"
+msgstr "%i capitolo"
+
+#: ../src/parole-medialist.c:315 ../src/parole-medialist.c:1004
 #, c-format
 msgid "%i items"
 msgstr "%i elementi"
 
-#: ../src/parole-medialist.c:379
+#: ../src/parole-medialist.c:319
+#, c-format
+msgid "%i chapters"
+msgstr "%i capitoli"
+
+#: ../src/parole-medialist.c:393
 #, c-format
 msgid "Chapter %i"
 msgstr "Capitolo %i"
 
-#: ../src/parole-medialist.c:649
+#: ../src/parole-medialist.c:663
 msgid "Permission denied"
 msgstr "Permesso negato"
 
-#: ../src/parole-medialist.c:651
+#: ../src/parole-medialist.c:665
 msgid "Error saving playlist file"
 msgstr "Errore nel salvataggio del file della scaletta"
 
-#: ../src/parole-medialist.c:663
+#: ../src/parole-medialist.c:677
 msgid "Unknown playlist format"
 msgstr "Formato scaletta sconosciuto"
 
-#: ../src/parole-medialist.c:664
+#: ../src/parole-medialist.c:678
 msgid "Please chooser a supported playlist format"
 msgstr "Selezionare un formato di scaletta supportato"
 
-#: ../src/parole-medialist.c:716 ../src/parole-plugins-manager.c:352
+#: ../src/parole-medialist.c:730 ../src/parole-plugins-manager.c:352
 msgid "Unknown"
 msgstr "Sconosciuto"
 
-#: ../src/parole-medialist.c:798
+#: ../src/parole-medialist.c:812
 msgid "M3U Playlists"
 msgstr "Scaletta M3U"
 
-#: ../src/parole-medialist.c:806
+#: ../src/parole-medialist.c:820
 msgid "PLS Playlists"
 msgstr "Scaletta PLS"
 
-#: ../src/parole-medialist.c:814
+#: ../src/parole-medialist.c:828
 msgid "Advanced Stream Redirector"
 msgstr "Redirettore avanzato di flusso"
 
-#: ../src/parole-medialist.c:822
+#: ../src/parole-medialist.c:836
 msgid "Shareable Playlist"
 msgstr "Scaletta condivisibile"
 
 #. Clear
-#: ../src/parole-medialist.c:1079
+#: ../src/parole-medialist.c:1093
 msgid "Open Containing Folder"
 msgstr "Apri cartella"
 
-#: ../src/parole-medialist.c:1655
+#: ../src/parole-medialist.c:1669
 msgid "Media list"
 msgstr "Elenco contenuti"
 
-#: ../src/parole-medialist.c:1656
+#: ../src/parole-medialist.c:1670
 msgid "Chapter list"
 msgstr "Elenco capitolo"
 
@@ -981,6 +992,9 @@ msgstr ""
 msgid "Power Manager Plugin"
 msgstr "Plugin del gestore dell'energia"
 
+#~ msgid "Parole"
+#~ msgstr "Parole"
+
 #~ msgid "Title:"
 #~ msgstr "Titolo:"
 
@@ -1067,9 +1081,6 @@ msgstr "Plugin del gestore dell'energia"
 
 #~ msgid "DVD"
 #~ msgstr "DVD"
-
-#~ msgid "Next Chapter"
-#~ msgstr "Capitolo successivo"
 
 #~ msgid "Previous Chapter"
 #~ msgstr "Capitolo precedente"
