@@ -9,7 +9,7 @@ desktop_DATA =  $(desktop_in_files:.desktop.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
 
 parole.desktop.in: parole.desktop.in.in desktop.sh $(MIME_LIST)
-	cat $(srcdir)/parole.desktop.in.in > $@ &&\
+	head -n9 $(srcdir)/parole.desktop.in.in > $@ &&\
 	$(SHELL) $(srcdir)/desktop.sh $(MIME_LIST) >> $@
 
 EXTRA_DIST =					\

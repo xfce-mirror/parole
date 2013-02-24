@@ -11,6 +11,7 @@ for i in $MIMETYPES ; do
 done
 
 echo ""
+echo ""
 echo "Actions=Play;Previous;Next;"
 echo ""
 echo "[Desktop Action Play]"

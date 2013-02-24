@@ -7,3 +7,23 @@ Terminal=false
 Type=Application
 Categories=GTK;AudioVideo;Player;Video;
 StartupNotify=true
+
+Actions=Play;Previous;Next;
+
+[Desktop Action Play]
+Exec=parole --play
+_Name=Play/Pause
+Icon=media-playback-start
+OnlyShowIn=Unity;
+
+[Desktop Action Previous]
+Exec=parole --previous-track
+_Name=Previous Track
+Icon=media-skip-backward
+OnlyShowIn=Unity;
+
+[Desktop Action Next]
+Exec=parole --next-track
+_Name=Next Track
+Icon=media-skip-forward
+OnlyShowIn=Unity;
