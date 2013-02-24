@@ -298,12 +298,26 @@ parole_media_list_add (ParoleMediaList *list, ParoleFile *file, gboolean disc, g
     {
 	gtk_widget_set_sensitive (list->priv->remove_button, TRUE);
 	gtk_widget_set_sensitive (list->priv->clear_button, TRUE);
+	if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0)
+	{
 	gtk_label_set_text (GTK_LABEL(list->priv->n_items),g_strdup_printf (_("%i item"),nch));
+	}
+	else
+	{
+	gtk_label_set_text (GTK_LABEL(list->priv->n_items),g_strdup_printf (_("%i chapter"),nch));
+	}
     }
     else
     {
 	parole_media_list_set_widget_sensitive (list, TRUE);
+	if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0)
+	{
 	gtk_label_set_text (GTK_LABEL(list->priv->n_items),g_strdup_printf (_("%i items"),nch));
+	}
+	else
+	{
+	gtk_label_set_text (GTK_LABEL(list->priv->n_items),g_strdup_printf (_("%i chapters"),nch));
+	}
     }
     gtk_widget_show (list->priv->n_items);
     if ( nch == 0 )
