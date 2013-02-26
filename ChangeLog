@@ -6,6 +6,8 @@
     * Fixed mute button toggling (bug #9760)
     * Fixed playlist manipulation while playlist hidden (bug #9762)
     * Fixed webm file support (bug #9798)
+    * Fixed aspect ratio calculation (bug $9872)
+    * Fixed untransateable strings (#9868)
     * Fixed auto-saved playlist saving as UTF-8
     * Fixed playlist menu from opening off-screen
     * Added improved locale name support in audio tracks and subtitles
