@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole 0.1.90\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-24 18:53+0900\n"
-"PO-Revision-Date: 2013-02-24 18:53+0900\n"
+"POT-Creation-Date: 2013-02-28 00:03+0900\n"
+"PO-Revision-Date: 2013-02-28 00:10+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@googlegroups.com>\n"
 "Language: ja\n"
@@ -19,7 +19,8 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Poedit-Language: Japanese\n"
 
-#: ../data/interfaces/parole.ui.h:1 ../src/parole-about.c:68
+#: ../data/interfaces/parole.ui.h:1 ../data/desktop/parole.desktop.in.in.h:1
+#: ../src/parole-about.c:68
 msgid "Parole Media Player"
 msgstr "Parole Media Player"
 
@@ -203,7 +204,7 @@ msgstr "アングルメニュー"
 msgid "Chapter Menu"
 msgstr "チャプターメニュー"
 
-#: ../data/interfaces/playlist.ui.h:6 ../src/parole-medialist.c:791
+#: ../data/interfaces/playlist.ui.h:6 ../src/parole-medialist.c:805
 #: ../src/parole-player.c:3074
 msgid "Playlist"
 msgstr "プレイリスト"
@@ -216,8 +217,8 @@ msgstr "DVD 名"
 msgid "Disc Playlist"
 msgstr "ディスクプレイリスト"
 
-#: ../data/interfaces/playlist.ui.h:9 ../src/parole-medialist.c:979
-#: ../src/parole-medialist.c:1123
+#: ../data/interfaces/playlist.ui.h:9 ../src/parole-medialist.c:993
+#: ../src/parole-medialist.c:1137
 msgid "Playlist empty"
 msgstr "プレイリストは空です"
 
@@ -402,9 +403,21 @@ msgstr "履歴のクリア"
 msgid "<big><b>Open Network Location</b></big>"
 msgstr "<big><b>ネットワークの場所を開く</b></big>"
 
-#: ../data/desktop/parole.desktop.in.in.h:1
-msgid "Parole"
-msgstr "Parole"
+#: ../data/desktop/parole.desktop.in.in.h:2
+msgid "Play your media"
+msgstr "映像や音楽メディアを再生します。"
+
+#: ../data/desktop/parole.desktop.in.in.h:3
+msgid "Play/Pause"
+msgstr "再生/一時停止"
+
+#: ../data/desktop/parole.desktop.in.in.h:4
+msgid "Previous Track"
+msgstr "前のトラック"
+
+#: ../data/desktop/parole.desktop.in.in.h:5
+msgid "Next Track"
+msgstr "次のトラック"
 
 #: ../src/common/parole-common.c:67
 msgid "Message"
@@ -414,7 +427,7 @@ msgstr "メッセージ"
 msgid "Error"
 msgstr "エラー"
 
-#: ../src/gst/parole-gst.c:1370 ../src/parole-medialist.c:363
+#: ../src/gst/parole-gst.c:1370 ../src/parole-medialist.c:377
 #, c-format
 msgid "Track %i"
 msgstr "トラック %i"
@@ -571,67 +584,77 @@ msgstr "サポートファイル"
 msgid "All files"
 msgstr "すべてのファイル"
 
-#: ../src/parole-medialist.c:301 ../src/parole-medialist.c:988
+#: ../src/parole-medialist.c:303 ../src/parole-medialist.c:1002
 #, c-format
 msgid "%i item"
 msgstr "%i 個のアイテム"
 
-#: ../src/parole-medialist.c:306 ../src/parole-medialist.c:990
+#: ../src/parole-medialist.c:307
+#, c-format
+msgid "%i chapter"
+msgstr "%i 個のチャプター"
+
+#: ../src/parole-medialist.c:315 ../src/parole-medialist.c:1004
 #, c-format
 msgid "%i items"
 msgstr "%i 個のアイテム"
 
-#: ../src/parole-medialist.c:379
+#: ../src/parole-medialist.c:319
+#, c-format
+msgid "%i chapters"
+msgstr "%i 個のチャプター"
+
+#: ../src/parole-medialist.c:393
 #, c-format
 msgid "Chapter %i"
 msgstr "チャプター %i"
 
-#: ../src/parole-medialist.c:649
+#: ../src/parole-medialist.c:663
 msgid "Permission denied"
 msgstr "アクセス権がありません"
 
-#: ../src/parole-medialist.c:651
+#: ../src/parole-medialist.c:665
 msgid "Error saving playlist file"
 msgstr "プレイリストファイルの保存でエラーです"
 
-#: ../src/parole-medialist.c:663
+#: ../src/parole-medialist.c:677
 msgid "Unknown playlist format"
 msgstr "未知のプレイリスト形式"
 
-#: ../src/parole-medialist.c:664
+#: ../src/parole-medialist.c:678
 msgid "Please chooser a supported playlist format"
 msgstr "サポートされているプレイリスト形式を選択してください"
 
-#: ../src/parole-medialist.c:716 ../src/parole-plugins-manager.c:352
+#: ../src/parole-medialist.c:730 ../src/parole-plugins-manager.c:352
 msgid "Unknown"
 msgstr "不明"
 
-#: ../src/parole-medialist.c:798
+#: ../src/parole-medialist.c:812
 msgid "M3U Playlists"
 msgstr "M3U プレイリスト"
 
-#: ../src/parole-medialist.c:806
+#: ../src/parole-medialist.c:820
 msgid "PLS Playlists"
 msgstr "PLS プレイリスト"
 
-#: ../src/parole-medialist.c:814
+#: ../src/parole-medialist.c:828
 msgid "Advanced Stream Redirector"
 msgstr "Advanced Stream Redirector"
 
-#: ../src/parole-medialist.c:822
+#: ../src/parole-medialist.c:836
 msgid "Shareable Playlist"
 msgstr "共有プレイリスト"
 
 #. Clear
-#: ../src/parole-medialist.c:1079
+#: ../src/parole-medialist.c:1093
 msgid "Open Containing Folder"
 msgstr "このファイルのあるフォルダーを開く"
 
-#: ../src/parole-medialist.c:1655
+#: ../src/parole-medialist.c:1669
 msgid "Media list"
 msgstr "メディアリスト"
 
-#: ../src/parole-medialist.c:1656
+#: ../src/parole-medialist.c:1670
 msgid "Chapter list"
 msgstr "チャプターリスト"
 
@@ -952,6 +975,9 @@ msgstr "電源管理プラグイン"
 msgid "Inhibit Power Manager from suspending the machine while playing DVD."
 msgstr "DVD の再生中に電源管理によるサスペンドを抑止します"
 
+#~ msgid "Parole"
+#~ msgstr "Parole"
+
 #~ msgid "Title:"
 #~ msgstr "タイトル:"
 
@@ -1033,9 +1059,6 @@ msgstr "DVD の再生中に電源管理によるサスペンドを抑止しま�
 #~ msgid "DVD"
 #~ msgstr "DVD"
 
-#~ msgid "Next Chapter"
-#~ msgstr "次のチャプター"
-
 #~ msgid "Previous Chapter"
 #~ msgstr "前のチャプター"
 
@@ -1050,9 +1073,6 @@ msgstr "DVD の再生中に電源管理によるサスペンドを抑止しま�
 
 #~ msgid "Open location of media file or live stream"
 #~ msgstr "メディアファイルまたはライブストリームの場所を開きます"
-
-#~ msgid "Next Track"
-#~ msgstr "次のトラック"
 
 #~ msgid "Stopped"
 #~ msgstr "停止"
