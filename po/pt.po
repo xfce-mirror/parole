@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-24 18:27+0000\n"
+"POT-Creation-Date: 2013-02-27 16:00+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Sérgio Marques <smarquespt@gmail.com>\n"
 "Language-Team: Portuguese\n"
@@ -103,7 +103,7 @@ msgstr "Abrir recente"
 msgid "Open _Location"
 msgstr "Abrir _localização"
 
-#: ../data/interfaces/parole.ui.h:21 ../data/desktop/parole.desktop.in.in.h:1
+#: ../data/interfaces/parole.ui.h:21 ../data/desktop/parole.desktop.in.in.h:2
 #: ../src/parole-about.c:68
 msgid "Parole Media Player"
 msgstr "Reprodutor multimédia Parole"
@@ -408,9 +408,21 @@ msgstr "Limpar histórico"
 msgid "Open Network Location"
 msgstr "Abrir localização"
 
-#: ../data/desktop/parole.desktop.in.in.h:2
+#: ../data/desktop/parole.desktop.in.in.h:1
+msgid "Next Track"
+msgstr "Faixa seguinte"
+
+#: ../data/desktop/parole.desktop.in.in.h:3
 msgid "Play your media"
 msgstr "Reproduza os seu ficheiros"
+
+#: ../data/desktop/parole.desktop.in.in.h:4
+msgid "Play/Pause"
+msgstr "Reproduzir/Pausa"
+
+#: ../data/desktop/parole.desktop.in.in.h:5
+msgid "Previous Track"
+msgstr "Faixa anterior"
 
 #: ../src/common/parole-common.c:67
 msgid "Message"
