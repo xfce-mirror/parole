@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-23 15:42+0000\n"
+"POT-Creation-Date: 2013-02-28 18:45+0000\n"
 "PO-Revision-Date: 2011-05-27 14:30+0200\n"
 "Last-Translator: Dmitry Nikitin <luckas_fb@mail.ru>\n"
 "Language-Team: Ukrainian <>\n"
@@ -102,7 +102,8 @@ msgstr "Відкрити недавню історію"
 msgid "Open _Location"
 msgstr "Відкрити _адресу"
 
-#: ../data/interfaces/parole.ui.h:21 ../src/parole-about.c:68
+#: ../data/interfaces/parole.ui.h:21 ../data/desktop/parole.desktop.in.in.h:2
+#: ../src/parole-about.c:68
 msgid "Parole Media Player"
 msgstr "Медіапрогравач Parole"
 
@@ -223,13 +224,13 @@ msgstr "Список відтворення дисків"
 msgid "Play opened files"
 msgstr "Відтворити відкриті файли"
 
-#: ../data/interfaces/playlist.ui.h:10 ../src/parole-medialist.c:791
+#: ../data/interfaces/playlist.ui.h:10 ../src/parole-medialist.c:805
 #: ../src/parole-player.c:3074
 msgid "Playlist"
 msgstr "Список відтворення"
 
-#: ../data/interfaces/playlist.ui.h:11 ../src/parole-medialist.c:979
-#: ../src/parole-medialist.c:1123
+#: ../data/interfaces/playlist.ui.h:11 ../src/parole-medialist.c:993
+#: ../src/parole-medialist.c:1137
 msgid "Playlist empty"
 msgstr "Список програвання порожній"
 
@@ -407,8 +408,20 @@ msgid "Open Network Location"
 msgstr "Відкрити посилання в мережі"
 
 #: ../data/desktop/parole.desktop.in.in.h:1
-msgid "Parole"
-msgstr "Модулі Parole"
+msgid "Next Track"
+msgstr "Наступна доріжка"
+
+#: ../data/desktop/parole.desktop.in.in.h:3
+msgid "Play your media"
+msgstr "Програвання Ваших медіа"
+
+#: ../data/desktop/parole.desktop.in.in.h:4
+msgid "Play/Pause"
+msgstr "Програвання/Пауза"
+
+#: ../data/desktop/parole.desktop.in.in.h:5
+msgid "Previous Track"
+msgstr "Попередня доріжка"
 
 #: ../src/common/parole-common.c:67
 msgid "Message"
@@ -418,7 +431,7 @@ msgstr "Повідомлення"
 msgid "Error"
 msgstr "Помилка"
 
-#: ../src/gst/parole-gst.c:1370 ../src/parole-medialist.c:363
+#: ../src/gst/parole-gst.c:1370 ../src/parole-medialist.c:377
 #, c-format
 msgid "Track %i"
 msgstr "Доріжка %i"
@@ -581,67 +594,77 @@ msgstr "Файли що підтримуються"
 msgid "All files"
 msgstr "Всі файли"
 
-#: ../src/parole-medialist.c:301 ../src/parole-medialist.c:988
+#: ../src/parole-medialist.c:303 ../src/parole-medialist.c:1002
 #, c-format
 msgid "%i item"
 msgstr "%i пункт"
 
-#: ../src/parole-medialist.c:306 ../src/parole-medialist.c:990
+#: ../src/parole-medialist.c:307
+#, c-format
+msgid "%i chapter"
+msgstr "%i розділ"
+
+#: ../src/parole-medialist.c:315 ../src/parole-medialist.c:1004
 #, c-format
 msgid "%i items"
 msgstr "%i пункти"
 
-#: ../src/parole-medialist.c:379
+#: ../src/parole-medialist.c:319
+#, c-format
+msgid "%i chapters"
+msgstr "%i розділи"
+
+#: ../src/parole-medialist.c:393
 #, c-format
 msgid "Chapter %i"
 msgstr "Розділ %i"
 
-#: ../src/parole-medialist.c:649
+#: ../src/parole-medialist.c:663
 msgid "Permission denied"
 msgstr "Відмовлено в доступі"
 
-#: ../src/parole-medialist.c:651
+#: ../src/parole-medialist.c:665
 msgid "Error saving playlist file"
 msgstr "Помилки при збереженні списку відтворення"
 
-#: ../src/parole-medialist.c:663
+#: ../src/parole-medialist.c:677
 msgid "Unknown playlist format"
 msgstr "Невідомий формати списку відтворення"
 
-#: ../src/parole-medialist.c:664
+#: ../src/parole-medialist.c:678
 msgid "Please chooser a supported playlist format"
 msgstr "Використовуйте селектор для підтримуваних форматів списку відтворення"
 
-#: ../src/parole-medialist.c:716 ../src/parole-plugins-manager.c:352
+#: ../src/parole-medialist.c:730 ../src/parole-plugins-manager.c:352
 msgid "Unknown"
 msgstr "Невідомий"
 
-#: ../src/parole-medialist.c:798
+#: ../src/parole-medialist.c:812
 msgid "M3U Playlists"
 msgstr "M3U списки відтворення"
 
-#: ../src/parole-medialist.c:806
+#: ../src/parole-medialist.c:820
 msgid "PLS Playlists"
 msgstr "PLS списки відтворення"
 
-#: ../src/parole-medialist.c:814
+#: ../src/parole-medialist.c:828
 msgid "Advanced Stream Redirector"
 msgstr "Розширене перенаправлення потоку"
 
-#: ../src/parole-medialist.c:822
+#: ../src/parole-medialist.c:836
 msgid "Shareable Playlist"
 msgstr "Публічний список відтворення"
 
 #. Clear
-#: ../src/parole-medialist.c:1079
+#: ../src/parole-medialist.c:1093
 msgid "Open Containing Folder"
 msgstr "Відкрити теку, що містить"
 
-#: ../src/parole-medialist.c:1655
+#: ../src/parole-medialist.c:1669
 msgid "Media list"
 msgstr "Список файлів"
 
-#: ../src/parole-medialist.c:1656
+#: ../src/parole-medialist.c:1670
 msgid "Chapter list"
 msgstr "Список розділом"
 
@@ -968,6 +991,9 @@ msgstr ""
 msgid "Power Manager Plugin"
 msgstr "Модуль управління живленням"
 
+#~ msgid "Parole"
+#~ msgstr "Модулі Parole"
+
 #~ msgid "Title:"
 #~ msgstr "Заголовок:"
 
@@ -1058,9 +1084,6 @@ msgstr "Модуль управління живленням"
 #~ msgid "DVD"
 #~ msgstr "DVD"
 
-#~ msgid "Next Chapter"
-#~ msgstr "Наст. разділ"
-
 #~ msgid "Previous Chapter"
 #~ msgstr "Попер. разділ"
 
@@ -1075,9 +1098,6 @@ msgstr "Модуль управління живленням"
 
 #~ msgid "Open location of media file or live stream"
 #~ msgstr "<b>Відкрити адресу медіа-файлу чи потоку:</b>"
-
-#~ msgid "Next Track"
-#~ msgstr "Наступна доріжка"
 
 #~ msgid "Stopped"
 #~ msgstr "Зупинено"
