@@ -2611,34 +2611,14 @@ void parole_gst_shutdown (ParoleGst *gst)
     g_object_unref (gst->priv->playbin);
 }
 
-void parole_gst_seek (ParoleGst *gst, gdouble pos)
+void parole_gst_seek (ParoleGst *gst, gdouble seek)
 {
-    gint64 seek;
-    gint64 absolute_duration;
-    gint64 duration;
-    gboolean seekable;
-
     TRACE ("Seeking");
-
-    g_object_get (G_OBJECT (gst->priv->stream),
-		  "absolute-duration", &absolute_duration,
-		  "duration", &duration,
-		  "seekable", &seekable,
-		  NULL);
-		  
-#ifdef DEBUG
-    g_return_if_fail (duration != 0);
-    g_return_if_fail (absolute_duration != 0);
-    g_return_if_fail (seekable == TRUE);
-#endif
-	
-    seek = (pos * absolute_duration) / duration;
-    
     g_warn_if_fail ( gst_element_seek (gst->priv->playbin,
 				       1.0,
 				       GST_FORMAT_TIME,
 				       GST_SEEK_FLAG_KEY_UNIT | GST_SEEK_FLAG_FLUSH,
-				       GST_SEEK_TYPE_SET, seek,
+				       GST_SEEK_TYPE_SET, (int) seek * GST_SECOND,
 				       GST_SEEK_TYPE_NONE, GST_CLOCK_TIME_NONE));
 }
 
