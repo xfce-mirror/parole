@@ -890,7 +890,6 @@
                                             <signal name="button-press-event" handler="parole_player_range_button_press" swapped="no"/>
                                             <signal name="button-release-event" handler="parole_player_range_button_release" swapped="no"/>
                                             <signal name="value-changed" handler="parole_player_range_value_changed" swapped="no"/>
-                                            <signal name="scroll-event" handler="parole_player_scroll_event_cb" swapped="no"/>
                                           </object>
                                           <packing>
                                             <property name="expand">True</property>

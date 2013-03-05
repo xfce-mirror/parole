@@ -149,10 +149,6 @@ void            parole_player_back_cb                  (GtkButton *button,
 void 			parole_player_seekf_cb (GtkWidget *widget, ParolePlayer *player, gdouble seek);
 
 void 			parole_player_seekb_cb (GtkWidget *widget, ParolePlayer *player, gdouble seek);
-
-gboolean        parole_player_scroll_event_cb		(GtkWidget *widget,
-							 GdkEventScroll *ev,
-							 ParolePlayer *player);
 							 
 gboolean    parole_player_window_state_event (GtkWidget *widget,
                                 GdkEventWindowState *event,
@@ -1656,24 +1652,6 @@ void parole_player_seekb_cb (GtkWidget *widget, ParolePlayer *player, gdouble se
 			seek;
 	parole_gst_seek (PAROLE_GST (player->priv->gst), seek);
 	parole_player_change_range_value (player, seek);
-}
-
-gboolean parole_player_scroll_event_cb (GtkWidget *widget, GdkEventScroll *ev, ParolePlayer *player)
-{
-    gboolean ret_val = FALSE;
-    
-    if ( ev->direction == GDK_SCROLL_UP )
-    {
-	parole_player_forward_cb (NULL, player);
-        ret_val = TRUE;
-    }
-    else if ( ev->direction == GDK_SCROLL_DOWN )
-    {
-	parole_player_back_cb (NULL, player);
-        ret_val = TRUE;
-    }
-
-    return ret_val;
 }
 
 gboolean
