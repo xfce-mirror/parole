@@ -1646,6 +1646,7 @@ void parole_player_seekf_cb (GtkWidget *widget, ParolePlayer *player, gdouble se
 			+
 			seek;
 	parole_gst_seek (PAROLE_GST (player->priv->gst), seek);
+	parole_player_change_range_value (player, seek);
 }
 
 void parole_player_seekb_cb (GtkWidget *widget, ParolePlayer *player, gdouble seek)
@@ -1654,6 +1655,7 @@ void parole_player_seekb_cb (GtkWidget *widget, ParolePlayer *player, gdouble se
 			-
 			seek;
 	parole_gst_seek (PAROLE_GST (player->priv->gst), seek);
+	parole_player_change_range_value (player, seek);
 }
 
 gboolean parole_player_scroll_event_cb (GtkWidget *widget, GdkEventScroll *ev, ParolePlayer *player)
