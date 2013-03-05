@@ -1231,7 +1231,7 @@ parole_player_media_progressed_cb (ParoleGst *gst, const ParoleStream *stream, g
     g_return_if_fail (value > 0);
 #endif
     
-    if ( !player->priv->user_seeking && player->priv->state == PAROLE_STATE_PLAYING )
+    if (!player->priv->user_seeking)
     {
 	parole_player_change_range_value (player, value);
     }
