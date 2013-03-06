@@ -31,8 +31,6 @@
 
 #include "notify-provider.h"
 
-#define RESOURCE_FILE 	"xfce4/src/misc/parole-plugins/notify.rc"
-
 static void   notify_provider_iface_init    (ParoleProviderPluginIface *iface);
 static void   notify_provider_finalize      (GObject                   *object);
 
@@ -46,6 +44,7 @@ struct _NotifyProvider
 {
     GObject                 parent;
     ParoleProviderPlayer   *player;
+    gchar                  *last_played_uri;
 
     NotifyNotification     *notification;
 };
@@ -85,7 +84,7 @@ notify_playing (NotifyProvider *notify, const ParoleStream *stream)
 {
     GdkPixbuf *pix;
     gboolean has_video;
-    gchar *title, *album, *artist, *year;
+    gchar *title, *album, *artist, *year, *uri;
     gchar *message;
     ParoleMediaType media_type;
     
@@ -95,11 +94,18 @@ notify_playing (NotifyProvider *notify, const ParoleStream *stream)
 		  "artist", &artist,
 		  "year", &year,
 		  "has-video", &has_video,
-          "media-type", &media_type,		  
+          "media-type", &media_type,	
+          "uri", &uri,  
 		  NULL);
 		  
     if ( has_video )
     return;
+    
+    if ( g_strcmp0(uri, notify->last_played_uri) == 0 )
+    return;
+    
+    notify->last_played_uri = g_strdup(uri);
+    g_free(uri);
 
     if ( !title )
     {
