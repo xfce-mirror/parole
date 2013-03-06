@@ -95,10 +95,17 @@ play_pause_activated_cb (TrayProvider *tray)
 }   
   
 static void
-stop_activated_cb (TrayProvider *tray)
+previous_activated_cb (TrayProvider *tray)
 {
     menu_selection_done_cb (tray);
-    parole_provider_player_stop (tray->player);
+    parole_provider_player_previous (tray->player);
+}
+
+static void
+next_activated_cb (TrayProvider *tray)
+{
+    menu_selection_done_cb (tray);
+    parole_provider_player_next (tray->player);
 }
 
 static void
@@ -126,12 +133,19 @@ popup_menu_cb (GtkStatusIcon *icon, guint button,
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
     
     /*
-     * Stop
+     * Previous
      */
-    mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_MEDIA_STOP, NULL);
-    gtk_widget_set_sensitive (mi, tray->state >= PAROLE_STATE_PAUSED);
+    mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_MEDIA_PREVIOUS, NULL);
     gtk_widget_show (mi);
-    g_signal_connect_swapped (mi, "activate", G_CALLBACK (stop_activated_cb), tray);
+    g_signal_connect_swapped (mi, "activate", G_CALLBACK (previous_activated_cb), tray);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+    
+    /*
+     * Next
+     */
+    mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_MEDIA_NEXT, NULL);
+    gtk_widget_show (mi);
+    g_signal_connect_swapped (mi, "activate", G_CALLBACK (next_activated_cb), tray);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
     
     /*
@@ -245,7 +259,7 @@ configure_plugin (TrayProvider *tray, GtkWidget *widget)
     dialog = gtk_dialog_new_with_buttons (_("Tray icon plugin"), 
 					  GTK_WINDOW (widget),
 					  GTK_DIALOG_DESTROY_WITH_PARENT,
-					  GTK_STOCK_CANCEL,
+					  GTK_STOCK_CLOSE,
                                           GTK_RESPONSE_CANCEL,
                                           NULL);
 
@@ -273,7 +287,7 @@ action_on_hide_confirmed_cb (GtkWidget *widget, gpointer data)
     
     toggled = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget));
     
-    write_entry_bool ("ACTION_CONFIRMED_ON_DELETE", toggled);
+    write_entry_bool ("remember-quit-action", toggled);
 }
 
 static gboolean
@@ -283,7 +297,7 @@ delete_event_cb (GtkWidget *widget, GdkEvent *ev, TrayProvider *tray)
     GtkWidget *minimize, *img;
     gboolean confirmed, ret_val = TRUE, minimize_to_tray;
     
-    confirmed = read_entry_bool ("ACTION_CONFIRMED_ON_DELETE", FALSE);
+    confirmed = read_entry_bool ("remember-quit-action", FALSE);
     minimize_to_tray = read_entry_bool ("minimize-to-tray", TRUE);
     
     if ( confirmed )
