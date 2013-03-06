@@ -245,7 +245,7 @@ configure_plugin (TrayProvider *tray, GtkWidget *widget)
     dialog = gtk_dialog_new_with_buttons (_("Tray icon plugin"), 
 					  GTK_WINDOW (widget),
 					  GTK_DIALOG_DESTROY_WITH_PARENT,
-					  GTK_STOCK_CANCEL,
+					  GTK_STOCK_CLOSE,
                                           GTK_RESPONSE_CANCEL,
                                           NULL);
 
@@ -273,7 +273,7 @@ action_on_hide_confirmed_cb (GtkWidget *widget, gpointer data)
     
     toggled = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget));
     
-    write_entry_bool ("ACTION_CONFIRMED_ON_DELETE", toggled);
+    write_entry_bool ("remember-quit-action", toggled);
 }
 
 static gboolean
@@ -283,7 +283,7 @@ delete_event_cb (GtkWidget *widget, GdkEvent *ev, TrayProvider *tray)
     GtkWidget *minimize, *img;
     gboolean confirmed, ret_val = TRUE, minimize_to_tray;
     
-    confirmed = read_entry_bool ("ACTION_CONFIRMED_ON_DELETE", FALSE);
+    confirmed = read_entry_bool ("remember-quit-action", FALSE);
     minimize_to_tray = read_entry_bool ("minimize-to-tray", TRUE);
     
     if ( confirmed )
