@@ -98,14 +98,14 @@ notify_playing (NotifyProvider *notify, const ParoleStream *stream)
           "uri", &stream_uri,  
 		  NULL);
 		  
-    if ( has_video )
-    return;
-    
     if ( g_strcmp0(stream_uri, notify->last_played_uri) == 0 )
     return;
     
     notify->last_played_uri = g_strdup(stream_uri);
     g_free(stream_uri);
+		  
+    if ( has_video )
+    return;
 
     if ( !title )
     {
