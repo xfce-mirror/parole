@@ -290,10 +290,8 @@ echo "
 
         Plugins to build:
         =================
-        Notify:                         ${ac_notify_plugin}"
-
-        echo "
-        System Tray icon:               ${ac_tray_plugin}" 
+        Notify:                         ${ac_notify_plugin}
+        System Tray icon:               ${ac_tray_plugin}
 
 ------------------------------------------------------
 
