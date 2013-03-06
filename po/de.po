@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-28 08:03+0000\n"
+"POT-Creation-Date: 2013-03-06 08:30+0000\n"
 "PO-Revision-Date: 2009-12-10 17:46+0100\n"
 "Last-Translator: Christoph Wickert <cwickert@fedoraproject.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
@@ -68,7 +68,7 @@ msgstr "Automatisch"
 msgid "Buffering (0%)"
 msgstr "Puffervorgang (0%)"
 
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:750
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:746
 msgid "Empty"
 msgstr "Leer"
 
@@ -112,8 +112,8 @@ msgstr "Ort öffnen"
 msgid "Parole Media Player"
 msgstr "Parole Medien-Abspieler"
 
-#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:1414
-#: ../src/parole-player.c:1448
+#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:1410
+#: ../src/parole-player.c:1444
 #, fuzzy
 msgid "Play"
 msgstr "Wiedergabe"
@@ -237,7 +237,7 @@ msgid "Play opened files"
 msgstr "Geöffnete Dateien abspielen"
 
 #: ../data/interfaces/playlist.ui.h:10 ../src/parole-medialist.c:805
-#: ../src/parole-player.c:3074
+#: ../src/parole-player.c:3054
 msgid "Playlist"
 msgstr "Wiedergabeliste"
 
@@ -247,9 +247,8 @@ msgid "Playlist empty"
 msgstr "Wiedergabeliste leer"
 
 #: ../data/interfaces/playlist.ui.h:12
-#, fuzzy
 msgid "Playlist options"
-msgstr "<b>Wiedergabe:</b>"
+msgstr "Einstellungen der Wiedergabeliste"
 
 #: ../data/interfaces/playlist.ui.h:13
 #: ../data/interfaces/parole-settings.ui.h:17
@@ -433,9 +432,8 @@ msgid "Play your media"
 msgstr "Abspielen von Mediendateien"
 
 #: ../data/desktop/parole.desktop.in.in.h:4
-#, fuzzy
 msgid "Play/Pause"
-msgstr "Pause"
+msgstr "Abspielen/Pause"
 
 #: ../data/desktop/parole.desktop.in.in.h:5
 #, fuzzy
@@ -496,12 +494,12 @@ msgstr ""
 "Video-GStreamer-Plugin kann nicht geladen werden, überprüfen Sie Ihre "
 "GStreamer-Installation"
 
-#: ../src/gst/parole-gst.c:2816 ../src/gst/parole-gst.c:2820
+#: ../src/gst/parole-gst.c:2796 ../src/gst/parole-gst.c:2800
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Titel Nr. %d"
 
-#: ../src/gst/parole-gst.c:2860 ../src/gst/parole-gst.c:2864
+#: ../src/gst/parole-gst.c:2840 ../src/gst/parole-gst.c:2844
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Untertitel Nr. %d"
@@ -613,7 +611,7 @@ msgstr ""
 msgid "Supported files"
 msgstr "Unterstützte Dateien"
 
-#: ../src/parole-mediachooser.c:219 ../src/parole-player.c:965
+#: ../src/parole-mediachooser.c:219 ../src/parole-player.c:961
 msgid "All files"
 msgstr "Alle Dateien"
 
@@ -692,44 +690,44 @@ msgstr "Medienliste"
 msgid "Chapter list"
 msgstr "Kapitelmenü"
 
-#: ../src/parole-player.c:463
+#: ../src/parole-player.c:459
 msgid "Hide playlist"
 msgstr "Wiedergabeliste verstecken"
 
-#: ../src/parole-player.c:472
+#: ../src/parole-player.c:468
 #, fuzzy
 msgid "Show playlist"
 msgstr "_Wiedergabeliste anzeigen"
 
-#: ../src/parole-player.c:523
+#: ../src/parole-player.c:519
 msgid "Open ISO image"
 msgstr "ISO-Abbild öffnen"
 
-#: ../src/parole-player.c:542
+#: ../src/parole-player.c:538
 msgid "CD image"
 msgstr "CD-Abbild"
 
-#: ../src/parole-player.c:542
+#: ../src/parole-player.c:538
 msgid "DVD image"
 msgstr "DVD-Abbild"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:935
+#: ../src/parole-player.c:931
 #, fuzzy
 msgid "Select Subtitle File"
 msgstr "Untertiteldatei auswählen"
 
-#: ../src/parole-player.c:953
+#: ../src/parole-player.c:949
 #, fuzzy
 msgid "Subtitle Files"
 msgstr "Untertiteldatei"
 
-#: ../src/parole-player.c:1128 ../src/parole-player.c:1136
+#: ../src/parole-player.c:1124 ../src/parole-player.c:1132
 #, fuzzy
 msgid "Clear Recent Items"
 msgstr "Liste zuletzt geöffneter Dateien leeren"
 
-#: ../src/parole-player.c:1130
+#: ../src/parole-player.c:1126
 #, fuzzy
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
@@ -738,59 +736,59 @@ msgstr ""
 "Sind Sie sicher, dass sie die Liste der zuletzt geöffneten Dateien leeren "
 "möchten? Das kann nicht rückgängig gemacht werden."
 
-#: ../src/parole-player.c:1249 ../src/parole-player.c:1388
+#: ../src/parole-player.c:1245 ../src/parole-player.c:1384
 msgid "Media stream is not seekable"
 msgstr "Medien-Stream ist nicht durchsuchbar"
 
-#: ../src/parole-player.c:1352
+#: ../src/parole-player.c:1348
 #, fuzzy
 msgid "Pause"
 msgstr "Pause"
 
-#: ../src/parole-player.c:1715
+#: ../src/parole-player.c:1695
 msgid "GStreamer backend error"
 msgstr "GStreamer-Backend-Fehler"
 
-#: ../src/parole-player.c:1746
+#: ../src/parole-player.c:1726
 #, fuzzy
 msgid "Unknown Song"
 msgstr "Unbekannter Titel"
 
-#: ../src/parole-player.c:1751 ../src/parole-player.c:1753
-#: ../src/parole-player.c:1759
+#: ../src/parole-player.c:1731 ../src/parole-player.c:1733
+#: ../src/parole-player.c:1739
 #, fuzzy
 msgid "on"
 msgstr "auf"
 
-#: ../src/parole-player.c:1759 ../src/plugins/notify/notify-provider.c:124
+#: ../src/parole-player.c:1739 ../src/plugins/notify/notify-provider.c:130
 #, fuzzy
 msgid "Unknown Album"
 msgstr "Unbekanntes Album"
 
-#: ../src/parole-player.c:1766 ../src/parole-player.c:1770
+#: ../src/parole-player.c:1746 ../src/parole-player.c:1750
 #, fuzzy
 msgid "by"
 msgstr "von"
 
-#: ../src/parole-player.c:1770 ../src/plugins/notify/notify-provider.c:126
+#: ../src/parole-player.c:1750 ../src/plugins/notify/notify-provider.c:132
 #, fuzzy
 msgid "Unknown Artist"
 msgstr "Unbekanntem Interpret"
 
-#: ../src/parole-player.c:1803
+#: ../src/parole-player.c:1783
 msgid "Buffering"
 msgstr "Puffervorgang"
 
-#: ../src/parole-player.c:2283
+#: ../src/parole-player.c:2263
 #, fuzzy
 msgid "Mute"
 msgstr "Stu_mm"
 
-#: ../src/parole-player.c:2288
+#: ../src/parole-player.c:2268
 msgid "Unmute"
 msgstr "Laut"
 
-#: ../src/parole-player.c:2948
+#: ../src/parole-player.c:2928
 #, fuzzy
 msgid "Clear recent items..."
 msgstr "Zuletzt geöffnete Dateien leeren"
@@ -971,14 +969,14 @@ msgstr "Unterstützte Dateien"
 msgid "Playlist files"
 msgstr "Wiedergabelisten-Dateien"
 
-#: ../src/plugins/notify/notify-provider.c:129
-#: ../src/plugins/notify/notify-provider.c:132
+#: ../src/plugins/notify/notify-provider.c:135
+#: ../src/plugins/notify/notify-provider.c:138
 #, fuzzy
 msgid "<i>on</i>"
 msgstr "<i>auf</i>"
 
-#: ../src/plugins/notify/notify-provider.c:129
-#: ../src/plugins/notify/notify-provider.c:132
+#: ../src/plugins/notify/notify-provider.c:135
+#: ../src/plugins/notify/notify-provider.c:138
 #, fuzzy
 msgid "<i>by</i>"
 msgstr "<i>von</i>"
@@ -993,30 +991,30 @@ msgstr "Benachrichtigen"
 msgid "Show notifications for currently playing tracks"
 msgstr "Zeige Benachrichtigungen für gerade laufende Titel"
 
-#: ../src/plugins/tray/tray-provider.c:244
+#: ../src/plugins/tray/tray-provider.c:245
 msgid "Tray icon plugin"
 msgstr "Benachrichtigungsfeld-Plugin"
 
-#: ../src/plugins/tray/tray-provider.c:254
+#: ../src/plugins/tray/tray-provider.c:255
 msgid "Always minimize to tray when window is closed"
 msgstr ""
 "Immer ins Benachrichtigungsfeld minimieren, wenn das Fenster geschlossen wird"
 
-#: ../src/plugins/tray/tray-provider.c:300
+#: ../src/plugins/tray/tray-provider.c:301
 #, fuzzy
 msgid "Are you sure you want to quit?"
 msgstr "Sind Sie sicher, dass Sie Parole beenden wollen?"
 
-#: ../src/plugins/tray/tray-provider.c:303
+#: ../src/plugins/tray/tray-provider.c:304
 #, fuzzy
 msgid "Parole can be minimized to the system tray instead."
 msgstr "Parole kann stattdessen in die Systemleiste minimiert werden."
 
-#: ../src/plugins/tray/tray-provider.c:306
+#: ../src/plugins/tray/tray-provider.c:307
 msgid "Minimize to tray"
 msgstr "Ins Benachrichtigungsfeld minimieren"
 
-#: ../src/plugins/tray/tray-provider.c:323
+#: ../src/plugins/tray/tray-provider.c:324
 msgid "Remember my choice"
 msgstr "Auswahl merken"
 
@@ -1028,17 +1026,13 @@ msgstr "Symbol im Benachrichtigungsfeld anzeigen"
 msgid "Tray icon"
 msgstr "Symbol im Benachrichtigungsfeld"
 
-#: ../src/plugins/power-manager/power-manager.desktop.in.h:1
-msgid "Inhibit Power Manager from suspending the machine while playing DVD."
-msgstr ""
-"Hindert die Energieverwaltung am Herunterfahren des Computers, während eine "
-"DVD wiedergegeben wird."
+#~ msgid "Inhibit Power Manager from suspending the machine while playing DVD."
+#~ msgstr ""
+#~ "Hindert die Energieverwaltung am Herunterfahren des Computers, während "
+#~ "eine DVD wiedergegeben wird."
 
-# 'Energieverwaltungserweiterung' ist zu lang und die anderen Plugins haben
-# auch nicht 'Plugin' im Namen.
-#: ../src/plugins/power-manager/power-manager.desktop.in.h:2
-msgid "Power Manager Plugin"
-msgstr "Energieverwaltung"
+#~ msgid "Power Manager Plugin"
+#~ msgstr "Energieverwaltung"
 
 #~ msgid "Parole"
 #~ msgstr "Parole"
