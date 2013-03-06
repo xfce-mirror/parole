@@ -1769,7 +1769,7 @@ void parole_media_list_load (ParoleMediaList *list)
     {
 	gchar *playlist_file;
 	
-	playlist_file = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, 
+	playlist_file = xfce_resource_save_location (XFCE_RESOURCE_DATA, 
 			 		             PAROLE_AUTO_SAVED_PLAYLIST, 
 						     FALSE);
 	if ( playlist_file )
@@ -2170,7 +2170,7 @@ void parole_media_list_save_list (ParoleMediaList *list)
 	GSList *fileslist;
 	gchar *history;
 
-	history = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, PAROLE_AUTO_SAVED_PLAYLIST , TRUE);
+	history = xfce_resource_save_location (XFCE_RESOURCE_DATA, PAROLE_AUTO_SAVED_PLAYLIST , TRUE);
 	
 	if ( !history )
 	{
