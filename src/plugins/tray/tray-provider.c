@@ -92,13 +92,6 @@ play_pause_activated_cb (TrayProvider *tray)
 	parole_provider_player_pause (tray->player);
     else if ( tray->state == PAROLE_STATE_PAUSED )
 	parole_provider_player_resume (tray->player);
-}   
-  
-static void
-stop_activated_cb (TrayProvider *tray)
-{
-    menu_selection_done_cb (tray);
-    parole_provider_player_stop (tray->player);
 }
 
 static void
@@ -123,15 +116,6 @@ popup_menu_cb (GtkStatusIcon *icon, guint button,
     gtk_widget_set_sensitive (mi, TRUE);
     gtk_widget_show (mi);
     g_signal_connect_swapped (mi, "activate", G_CALLBACK (play_pause_activated_cb), tray);
-    gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
-    
-    /*
-     * Stop
-     */
-    mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_MEDIA_STOP, NULL);
-    gtk_widget_set_sensitive (mi, tray->state >= PAROLE_STATE_PAUSED);
-    gtk_widget_show (mi);
-    g_signal_connect_swapped (mi, "activate", G_CALLBACK (stop_activated_cb), tray);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
     
     /*
