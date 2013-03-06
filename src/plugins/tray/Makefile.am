@@ -20,6 +20,7 @@ tray_icon_la_SOURCES =				\
 tray_icon_la_CFLAGS =				\
 	$(PLATFORM_CFLAGS)			\
 	$(GTK_CFLAGS)				\
+	$(XFCONF_CFLAGS)     \
 	$(LIBXFCE4UI_CFLAGS)			\
 	$(LIBXFCE4UTIL_CFLAGS)
 
@@ -32,6 +33,7 @@ tray_icon_la_LDFLAGS =				\
 tray_icon_la_LIBADD =				\
 	$(top_builddir)/src/misc/libparole.la	\
 	$(GTK_LIBS)				\
+	$(XFCONF_LIBS)    \
 	$(LIBXFCE4UTIL_LIBS)
 
 #

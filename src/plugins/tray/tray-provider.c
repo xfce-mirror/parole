@@ -30,9 +30,9 @@
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4ui/libxfce4ui.h>
 
-#include "tray-provider.h"
+#include <xfconf/xfconf.h>
 
-#define RESOURCE_FILE 	"xfce4/src/misc/parole-plugins/tray.rc"
+#include "tray-provider.h"
 
 static void   tray_provider_iface_init 	   (ParoleProviderPluginIface *iface);
 static void   tray_provider_finalize       (GObject 	              *object);
@@ -193,19 +193,18 @@ state_changed_cb (ParoleProviderPlayer *player, const ParoleStream *stream, Paro
 static gboolean
 read_entry_bool (const gchar *entry, gboolean fallback)
 {
+    XfconfChannel *channel;
     gboolean ret_val = fallback;
-    gchar *file;
-    XfceRc *rc;
+    gchar prop_name[64];
+    GValue src = { 0, };
     
-    file = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, RESOURCE_FILE, TRUE);
-    rc = xfce_rc_simple_open (file, TRUE);
-    g_free (file);
+    channel = xfconf_channel_get ("parole");
+    g_snprintf (prop_name, sizeof (prop_name), "/plugins/tray/%s", entry);
     
-    if ( rc )
-    {
-	ret_val = xfce_rc_read_bool_entry (rc, entry, fallback);
-	xfce_rc_close (rc);
-    }
+    g_value_init(&src, G_TYPE_BOOLEAN);
+    
+    if (xfconf_channel_get_property (channel, prop_name, &src))
+        ret_val = g_value_get_boolean(&src);
     
     return ret_val;
 }
@@ -213,15 +212,17 @@ read_entry_bool (const gchar *entry, gboolean fallback)
 static void
 write_entry_bool (const gchar *entry, gboolean value)
 {
-    gchar *file;
-    XfceRc *rc;
+    XfconfChannel *channel;
+    gchar prop_name[64];
+    GValue dst = { 0, };
     
-    file = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, RESOURCE_FILE, TRUE);
-    rc = xfce_rc_simple_open (file, FALSE);
-    g_free (file);
+    channel = xfconf_channel_get ("parole");
+    g_snprintf (prop_name, sizeof (prop_name), "/plugins/tray/%s", entry);
     
-    xfce_rc_write_bool_entry (rc, entry, value);
-    xfce_rc_close (rc);
+    g_value_init(&dst, G_TYPE_BOOLEAN);
+    g_value_set_boolean(&dst, value);
+    
+    xfconf_channel_set_property (channel, prop_name, &dst);
 }
 
 static void
@@ -229,7 +230,7 @@ hide_on_delete_toggled_cb (GtkWidget *widget, gpointer tray)
 {
     gboolean toggled;
     toggled = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget));
-    write_entry_bool ("MINIMIZE_TO_TRAY", toggled);
+    write_entry_bool ("minimize-to-tray", toggled);
 }
 
 static void
@@ -250,7 +251,7 @@ configure_plugin (TrayProvider *tray, GtkWidget *widget)
 
     content_area = gtk_dialog_get_content_area (GTK_DIALOG (dialog));
 
-    hide_on_delete_b = read_entry_bool ("MINIMIZE_TO_TRAY", TRUE);
+    hide_on_delete_b = read_entry_bool ("minimize-to-tray", TRUE);
     hide_on_delete = gtk_check_button_new_with_label (_("Always minimize to tray when window is closed"));
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (hide_on_delete), hide_on_delete_b);
     
@@ -283,7 +284,7 @@ delete_event_cb (GtkWidget *widget, GdkEvent *ev, TrayProvider *tray)
     gboolean confirmed, ret_val = TRUE, minimize_to_tray;
     
     confirmed = read_entry_bool ("ACTION_CONFIRMED_ON_DELETE", FALSE);
-    minimize_to_tray = read_entry_bool ("MINIMIZE_TO_TRAY", TRUE);
+    minimize_to_tray = read_entry_bool ("minimize-to-tray", TRUE);
     
     if ( confirmed )
     {
@@ -338,14 +339,14 @@ delete_event_cb (GtkWidget *widget, GdkEvent *ev, TrayProvider *tray)
 		gtk_widget_hide_on_delete (widget);
 		confirmed = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check));
 		if ( confirmed )
-		    write_entry_bool ("MINIMIZE_TO_TRAY", TRUE);
+		    write_entry_bool ("minimize-to-tray", TRUE);
 		break;
 	    }
 	case GTK_RESPONSE_CLOSE:
 	    {
 		confirmed = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check));
 		if ( confirmed )
-		    write_entry_bool ("MINIMIZE_TO_TRAY", FALSE);
+		    write_entry_bool ("minimize-to-tray", FALSE);
 		ret_val = FALSE;
 	    }
 	    break;

@@ -84,7 +84,7 @@ notify_playing (NotifyProvider *notify, const ParoleStream *stream)
 {
     GdkPixbuf *pix;
     gboolean has_video;
-    gchar *title, *album, *artist, *year, *uri;
+    gchar *title, *album, *artist, *year, *stream_uri;
     gchar *message;
     ParoleMediaType media_type;
     
@@ -95,17 +95,17 @@ notify_playing (NotifyProvider *notify, const ParoleStream *stream)
 		  "year", &year,
 		  "has-video", &has_video,
           "media-type", &media_type,	
-          "uri", &uri,  
+          "uri", &stream_uri,  
 		  NULL);
 		  
     if ( has_video )
     return;
     
-    if ( g_strcmp0(uri, notify->last_played_uri) == 0 )
+    if ( g_strcmp0(stream_uri, notify->last_played_uri) == 0 )
     return;
     
-    notify->last_played_uri = g_strdup(uri);
-    g_free(uri);
+    notify->last_played_uri = g_strdup(stream_uri);
+    g_free(stream_uri);
 
     if ( !title )
     {
