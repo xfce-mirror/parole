@@ -32,7 +32,6 @@
 
 #include <libxfce4util/libxfce4util.h>
 
-#include "src/misc/parole-debug.h"
 #include "parole-screensaver.h"
 
 #define RESET_SCREENSAVER_TIMEOUT	6
