@@ -6,14 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parole 0.1.99git.rALT0.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-05 09:00+0000\n"
-"PO-Revision-Date: 2013-02-05 11:33+0200\n"
-"Last-Translator: Cybercop <cybercop_montana@abv.bg>\n"
+"POT-Creation-Date: 2013-03-07 11:15+0000\n"
+"PO-Revision-Date: 2013-03-07 19:00+0200\n"
+"Last-Translator: Kiril Kirilov (Cybercop) <cybercop_montana@abv.bg>\n"
 "Language-Team: Bulgarian\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #: ../data/interfaces/parole.ui.h:1
 msgid "16:9 (Widescreen)"
@@ -28,19 +29,26 @@ msgid "4:3 (TV)"
 msgstr "4:3 (TV)"
 
 #: ../data/interfaces/parole.ui.h:4
-msgid "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown Artist</span></big>"
-msgstr "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Неизвестен изпълнител</span></big>"
+msgid ""
+"<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
+"Artist</span></big>"
+msgstr ""
+"<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Неизвестен "
+"изпълнител</span></big>"
 
 #: ../data/interfaces/parole.ui.h:5
-msgid "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown Album</span></big>"
-msgstr "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Неизвестен албум</span></big>"
+msgid ""
+"<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
+"Album</span></big>"
+msgstr ""
+"<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Неизвестен "
+"албум</span></big>"
 
 #: ../data/interfaces/parole.ui.h:6
 msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
 msgstr "<span color='#F4F4F4'><b><big>Неизвестна песен</big></b></span>"
 
-#: ../data/interfaces/parole.ui.h:7
-#: ../src/misc/parole-filters.c:64
+#: ../data/interfaces/parole.ui.h:7 ../src/misc/parole-filters.c:64
 msgid "Audio"
 msgstr "Звук"
 
@@ -57,8 +65,7 @@ msgstr "Авто"
 msgid "Buffering (0%)"
 msgstr "Буфериране (0%)"
 
-#: ../data/interfaces/parole.ui.h:12
-#: ../src/parole-player.c:740
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:746
 msgid "Empty"
 msgstr "Празно"
 
@@ -66,8 +73,7 @@ msgstr "Празно"
 msgid "Fullscreen"
 msgstr "Режим на цял екран"
 
-#: ../data/interfaces/parole.ui.h:14
-#: ../src/parole-disc.c:110
+#: ../data/interfaces/parole.ui.h:14 ../src/parole-disc.c:110
 #: ../src/parole-disc.c:156
 msgid "Insert Disc"
 msgstr "Поставете диск"
@@ -96,14 +102,13 @@ msgstr "Отваряне на последно изпълняваните"
 msgid "Open _Location"
 msgstr "Отваряне на местоположение"
 
-#: ../data/interfaces/parole.ui.h:21
+#: ../data/interfaces/parole.ui.h:21 ../data/desktop/parole.desktop.in.in.h:2
 #: ../src/parole-about.c:68
 msgid "Parole Media Player"
 msgstr "Мултимедиен плеър Parole"
 
-#: ../data/interfaces/parole.ui.h:22
-#: ../src/parole-player.c:1398
-#: ../src/parole-player.c:1432
+#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:1410
+#: ../src/parole-player.c:1444
 msgid "Play"
 msgstr "Изпълнение"
 
@@ -219,38 +224,42 @@ msgstr "Списък за изпълнение на диска"
 msgid "Play opened files"
 msgstr "Изпълнение на отворените файлове"
 
-#: ../data/interfaces/playlist.ui.h:10
-#: ../src/parole-medialist.c:784
+#: ../data/interfaces/playlist.ui.h:10 ../src/parole-medialist.c:805
 #: ../src/parole-player.c:3054
 msgid "Playlist"
 msgstr "Списък за изпълнение"
 
-#: ../data/interfaces/playlist.ui.h:11
+#: ../data/interfaces/playlist.ui.h:11 ../src/parole-medialist.c:993
+#: ../src/parole-medialist.c:1137
+msgid "Playlist empty"
+msgstr "Списъкът е празен"
+
+#: ../data/interfaces/playlist.ui.h:12
 msgid "Playlist options"
 msgstr "Опции на списъка за изпълнение"
 
-#: ../data/interfaces/playlist.ui.h:12
+#: ../data/interfaces/playlist.ui.h:13
 #: ../data/interfaces/parole-settings.ui.h:17
 msgid "Remember playlist"
 msgstr "Запомняне на списъка за изпълнение"
 
-#: ../data/interfaces/playlist.ui.h:13
+#: ../data/interfaces/playlist.ui.h:14
 msgid "Remove"
 msgstr "Премахване"
 
-#: ../data/interfaces/playlist.ui.h:14
+#: ../data/interfaces/playlist.ui.h:15
 msgid "Repeat"
 msgstr "Повторение"
 
-#: ../data/interfaces/playlist.ui.h:15
+#: ../data/interfaces/playlist.ui.h:16
 msgid "Replace playlist when opening files"
 msgstr "Замяна на списъка за изпълнение, когато се отварят файлове"
 
-#: ../data/interfaces/playlist.ui.h:16
+#: ../data/interfaces/playlist.ui.h:17
 msgid "Shuffle"
 msgstr "Случайно"
 
-#: ../data/interfaces/playlist.ui.h:17
+#: ../data/interfaces/playlist.ui.h:18
 msgid "Title Menu"
 msgstr "Меню на заглавията"
 
@@ -300,7 +309,7 @@ msgstr "Винаги да се заменя списъка за изпълнен
 
 #: ../data/interfaces/parole-settings.ui.h:5
 msgid "Automatically show subtitles when playing movie file"
-msgstr "Автоматично показване на субтитирите при изпълнение на филм"
+msgstr "Автоматично показване на субтитрите при изпълнение на филм"
 
 #: ../data/interfaces/parole-settings.ui.h:6
 msgid "Brightness:"
@@ -320,7 +329,7 @@ msgstr "Контраст:"
 
 #: ../data/interfaces/parole-settings.ui.h:10
 msgid "Disable screensaver while playing movies"
-msgstr "Изключване на предпазитетеля на екрана, когато се изпълняват филми"
+msgstr "Изключване на предпазителя на екрана, когато се изпълняват филми"
 
 #: ../data/interfaces/parole-settings.ui.h:11
 msgid "Enable keyboard multimedia keys"
@@ -390,8 +399,7 @@ msgstr "Избор на типове файлове (за разширение)"
 msgid "<big><b>Open Network Location</b></big>"
 msgstr "<big><b>Отваряне на местоположение в мрежата</b></big>"
 
-#: ../data/interfaces/open-location.ui.h:2
-#: ../src/parole-open-location.c:192
+#: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:192
 msgid "Clear History"
 msgstr "Изчистване на историята"
 
@@ -400,8 +408,20 @@ msgid "Open Network Location"
 msgstr "Отваряне на местоположение в мрежата"
 
 #: ../data/desktop/parole.desktop.in.in.h:1
-msgid "Parole"
-msgstr "Parole"
+msgid "Next Track"
+msgstr "Следващ запис"
+
+#: ../data/desktop/parole.desktop.in.in.h:3
+msgid "Play your media"
+msgstr "Изпълнение на мултимедията"
+
+#: ../data/desktop/parole.desktop.in.in.h:4
+msgid "Play/Pause"
+msgstr "Изпълнение/Пауза"
+
+#: ../data/desktop/parole.desktop.in.in.h:5
+msgid "Previous Track"
+msgstr "Предишен запис"
 
 #: ../src/common/parole-common.c:67
 msgid "Message"
@@ -411,8 +431,7 @@ msgstr "Съобщение"
 msgid "Error"
 msgstr "Грешка"
 
-#: ../src/gst/parole-gst.c:1370
-#: ../src/parole-medialist.c:356
+#: ../src/gst/parole-gst.c:1370 ../src/parole-medialist.c:377
 #, c-format
 msgid "Track %i"
 msgstr "Запис %i"
@@ -442,21 +461,25 @@ msgid "The stream is taking too much time to load"
 msgstr "Потокът се изчаква да зареди прекалено дълго"
 
 #: ../src/gst/parole-gst.c:2184
-msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
-msgstr "Не може да бъде заредена добавка GStreamer 'playbin'. Проверете, дали са инсталирани необходимите GStreamer пакети."
+msgid ""
+"Unable to load playbin GStreamer plugin, check your GStreamer installation"
+msgstr ""
+"Не може да бъде заредена добавка GStreamer 'playbin'. Проверете, дали са "
+"инсталирани необходимите GStreamer пакети."
 
 #: ../src/gst/parole-gst.c:2208
-msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
-msgstr "Не може да бъде заредена GStreamer добавката за видео. Проверете, дали са инсталирани необходимите GStreamer пакети."
+msgid ""
+"Unable to load video GStreamer plugin, check your GStreamer installation"
+msgstr ""
+"Не може да бъде заредена GStreamer добавката за видео. Проверете, дали са "
+"инсталирани необходимите GStreamer пакети."
 
-#: ../src/gst/parole-gst.c:2816
-#: ../src/gst/parole-gst.c:2820
+#: ../src/gst/parole-gst.c:2796 ../src/gst/parole-gst.c:2800
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Аудио запис #%d"
 
-#: ../src/gst/parole-gst.c:2860
-#: ../src/gst/parole-gst.c:2864
+#: ../src/gst/parole-gst.c:2840 ../src/gst/parole-gst.c:2844
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Субтитри #%d"
@@ -484,7 +507,7 @@ msgstr ""
 
 #: ../src/main.c:231
 msgid "Unknown argument "
-msgstr "Неизвестен аргумент: "
+msgstr "Неизвестен аргумент"
 
 #: ../src/main.c:275
 msgid "Open a new instance"
@@ -567,153 +590,177 @@ msgstr "Parole вече е стартиран, използвайте -i за д
 msgid "Supported files"
 msgstr "Поддържани файлове"
 
-#: ../src/parole-mediachooser.c:219
-#: ../src/parole-player.c:955
+#: ../src/parole-mediachooser.c:219 ../src/parole-player.c:961
 msgid "All files"
 msgstr "Всички файлове"
 
-#: ../src/parole-medialist.c:372
+#: ../src/parole-medialist.c:303 ../src/parole-medialist.c:1002
+#, c-format
+msgid "%i item"
+msgstr "%i елемент"
+
+#: ../src/parole-medialist.c:307
+#, c-format
+msgid "%i chapter"
+msgstr "%i заглавие"
+
+#: ../src/parole-medialist.c:315 ../src/parole-medialist.c:1004
+#, c-format
+msgid "%i items"
+msgstr "%i елемента"
+
+#: ../src/parole-medialist.c:319
+#, c-format
+msgid "%i chapters"
+msgstr "%i заглавия"
+
+#: ../src/parole-medialist.c:393
 #, c-format
 msgid "Chapter %i"
-msgstr "Заглавие #%i"
+msgstr "Заглавие %i"
 
-#: ../src/parole-medialist.c:642
+#: ../src/parole-medialist.c:663
 msgid "Permission denied"
 msgstr "Отказан достъп"
 
-#: ../src/parole-medialist.c:644
+#: ../src/parole-medialist.c:665
 msgid "Error saving playlist file"
 msgstr "Грешка при запазването на списъка за изпълнение"
 
-#: ../src/parole-medialist.c:656
+#: ../src/parole-medialist.c:677
 msgid "Unknown playlist format"
 msgstr "Неизвестен формат на списъка за изпълнение"
 
-#: ../src/parole-medialist.c:657
+#: ../src/parole-medialist.c:678
 msgid "Please chooser a supported playlist format"
 msgstr "Моля, изберете поддържан формат на списъка за изпълнение"
 
-#: ../src/parole-medialist.c:709
-#: ../src/parole-plugins-manager.c:352
+#: ../src/parole-medialist.c:730 ../src/parole-plugins-manager.c:352
 msgid "Unknown"
 msgstr "Неизвестен"
 
-#: ../src/parole-medialist.c:791
+#: ../src/parole-medialist.c:812
 msgid "M3U Playlists"
 msgstr "M3U Списъци за изпълнение"
 
-#: ../src/parole-medialist.c:799
+#: ../src/parole-medialist.c:820
 msgid "PLS Playlists"
 msgstr "PLS Списъци за изпълнение"
 
-#: ../src/parole-medialist.c:807
+#: ../src/parole-medialist.c:828
 msgid "Advanced Stream Redirector"
 msgstr "Разширено пренасочване на поток"
 
-#: ../src/parole-medialist.c:815
+#: ../src/parole-medialist.c:836
 msgid "Shareable Playlist"
 msgstr "Споделяем списък за изпълнение"
 
 #. Clear
-#: ../src/parole-medialist.c:1066
+#: ../src/parole-medialist.c:1093
 msgid "Open Containing Folder"
 msgstr "Отваряне на съдържащата папка"
 
-#: ../src/parole-medialist.c:1640
+#: ../src/parole-medialist.c:1669
 msgid "Media list"
 msgstr "Списък с файлове"
 
-#: ../src/parole-medialist.c:1641
+#: ../src/parole-medialist.c:1670
 msgid "Chapter list"
 msgstr "Списък със заглавия"
 
-#: ../src/parole-player.c:513
+#: ../src/parole-player.c:459
+msgid "Hide playlist"
+msgstr "Скриване на списъка за изпълнение"
+
+#: ../src/parole-player.c:468
+msgid "Show playlist"
+msgstr "Показване на списък за изпълнение"
+
+#: ../src/parole-player.c:519
 msgid "Open ISO image"
 msgstr "Отваряне на ISO-образ"
 
-#: ../src/parole-player.c:532
+#: ../src/parole-player.c:538
 msgid "CD image"
 msgstr "CD изображение"
 
-#: ../src/parole-player.c:532
+#: ../src/parole-player.c:538
 msgid "DVD image"
 msgstr "DVD изображение"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:925
+#: ../src/parole-player.c:931
 msgid "Select Subtitle File"
 msgstr "Избор на файл със субтитри..."
 
-#: ../src/parole-player.c:943
+#: ../src/parole-player.c:949
 msgid "Subtitle Files"
 msgstr "Файл със субтитри"
 
-#: ../src/parole-player.c:1118
-#: ../src/parole-player.c:1126
+#: ../src/parole-player.c:1124 ../src/parole-player.c:1132
 msgid "Clear Recent Items"
 msgstr "Изчистване на последно използваните елементи"
 
-#: ../src/parole-player.c:1120
-msgid "Are you sure you wish to clear your recent items history?  This cannot be undone."
-msgstr "Сигурен ли сте, че искате да изтриете последните използвани елементи от историята?  Това не може да бъде отменено."
+#: ../src/parole-player.c:1126
+msgid ""
+"Are you sure you wish to clear your recent items history?  This cannot be "
+"undone."
+msgstr ""
+"Сигурен ли сте, че искате да изтриете последните използвани елементи от "
+"историята?  Това не може да бъде отменено."
 
-#: ../src/parole-player.c:1239
-#: ../src/parole-player.c:1372
+#: ../src/parole-player.c:1245 ../src/parole-player.c:1384
 msgid "Media stream is not seekable"
 msgstr "Мултимедийният поток не е достъпен"
 
-#: ../src/parole-player.c:1342
+#: ../src/parole-player.c:1348
 msgid "Pause"
 msgstr "Пауза"
 
-#: ../src/parole-player.c:1699
+#: ../src/parole-player.c:1695
 msgid "GStreamer backend error"
 msgstr "Грешка в GStreamer"
 
-#: ../src/parole-player.c:1729
+#: ../src/parole-player.c:1726
 msgid "Unknown Song"
 msgstr "Неизвестна Песен"
 
-#: ../src/parole-player.c:1734
-#: ../src/parole-player.c:1736
-#: ../src/parole-player.c:1742
+#: ../src/parole-player.c:1731 ../src/parole-player.c:1733
+#: ../src/parole-player.c:1739
 msgid "on"
 msgstr "на"
 
-#: ../src/parole-player.c:1742
-#: ../src/plugins/notify/notify-provider.c:124
+#: ../src/parole-player.c:1739 ../src/plugins/notify/notify-provider.c:130
 msgid "Unknown Album"
 msgstr "Неизвестен Албум"
 
-#: ../src/parole-player.c:1749
-#: ../src/parole-player.c:1753
+#: ../src/parole-player.c:1746 ../src/parole-player.c:1750
 msgid "by"
 msgstr "от"
 
-#: ../src/parole-player.c:1753
-#: ../src/plugins/notify/notify-provider.c:126
+#: ../src/parole-player.c:1750 ../src/plugins/notify/notify-provider.c:132
 msgid "Unknown Artist"
 msgstr "Неизвестен Изпълнител"
 
-#: ../src/parole-player.c:1786
+#: ../src/parole-player.c:1783
 msgid "Buffering"
 msgstr "Буфериране"
 
-#: ../src/parole-player.c:2266
+#: ../src/parole-player.c:2263
 msgid "Mute"
 msgstr "Заглушаване на звука"
 
-#: ../src/parole-player.c:2271
+#: ../src/parole-player.c:2268
 msgid "Unmute"
 msgstr "Пускане на звука"
 
-#: ../src/parole-player.c:2931
+#: ../src/parole-player.c:2928
 msgid "Clear recent items..."
 msgstr "Изчистване на последните елементи"
 
 #: ../src/parole-about.c:74
 msgid "translator-credits"
-msgstr "преводач-кредити"
+msgstr "Kiril Kirilov (Cybercop)  <cybercop_montana@abv.bg>"
 
 #: ../src/parole-about.c:77
 msgid "Visit Parole website"
@@ -725,12 +772,10 @@ msgstr "Изпълнение на диск"
 
 #: ../src/parole-subtitle-encoding.c:165
 msgid "Current Locale"
-msgstr "текущо местоположение"
+msgstr "Текущо местоположение"
 
-#: ../src/parole-subtitle-encoding.c:168
-#: ../src/parole-subtitle-encoding.c:170
-#: ../src/parole-subtitle-encoding.c:172
-#: ../src/parole-subtitle-encoding.c:174
+#: ../src/parole-subtitle-encoding.c:168 ../src/parole-subtitle-encoding.c:170
+#: ../src/parole-subtitle-encoding.c:172 ../src/parole-subtitle-encoding.c:174
 msgid "Arabic"
 msgstr "Арабска"
 
@@ -738,8 +783,7 @@ msgstr "Арабска"
 msgid "Armenian"
 msgstr "Арменска"
 
-#: ../src/parole-subtitle-encoding.c:180
-#: ../src/parole-subtitle-encoding.c:182
+#: ../src/parole-subtitle-encoding.c:180 ../src/parole-subtitle-encoding.c:182
 #: ../src/parole-subtitle-encoding.c:184
 msgid "Baltic"
 msgstr "Прибалтийска"
@@ -748,22 +792,17 @@ msgstr "Прибалтийска"
 msgid "Celtic"
 msgstr "Келтска"
 
-#: ../src/parole-subtitle-encoding.c:190
-#: ../src/parole-subtitle-encoding.c:192
-#: ../src/parole-subtitle-encoding.c:194
-#: ../src/parole-subtitle-encoding.c:196
+#: ../src/parole-subtitle-encoding.c:190 ../src/parole-subtitle-encoding.c:192
+#: ../src/parole-subtitle-encoding.c:194 ../src/parole-subtitle-encoding.c:196
 msgid "Central European"
 msgstr "Централно-европейска"
 
-#: ../src/parole-subtitle-encoding.c:199
-#: ../src/parole-subtitle-encoding.c:201
-#: ../src/parole-subtitle-encoding.c:203
-#: ../src/parole-subtitle-encoding.c:205
+#: ../src/parole-subtitle-encoding.c:199 ../src/parole-subtitle-encoding.c:201
+#: ../src/parole-subtitle-encoding.c:203 ../src/parole-subtitle-encoding.c:205
 msgid "Chinese Simplified"
 msgstr "Китайска опростена"
 
-#: ../src/parole-subtitle-encoding.c:208
-#: ../src/parole-subtitle-encoding.c:210
+#: ../src/parole-subtitle-encoding.c:208 ../src/parole-subtitle-encoding.c:210
 #: ../src/parole-subtitle-encoding.c:212
 msgid "Chinese Traditional"
 msgstr "Китайска традиционна"
@@ -772,12 +811,9 @@ msgstr "Китайска традиционна"
 msgid "Croatian"
 msgstr "Хърватска"
 
-#: ../src/parole-subtitle-encoding.c:218
-#: ../src/parole-subtitle-encoding.c:220
-#: ../src/parole-subtitle-encoding.c:222
-#: ../src/parole-subtitle-encoding.c:224
-#: ../src/parole-subtitle-encoding.c:226
-#: ../src/parole-subtitle-encoding.c:228
+#: ../src/parole-subtitle-encoding.c:218 ../src/parole-subtitle-encoding.c:220
+#: ../src/parole-subtitle-encoding.c:222 ../src/parole-subtitle-encoding.c:224
+#: ../src/parole-subtitle-encoding.c:226 ../src/parole-subtitle-encoding.c:228
 msgid "Cyrillic"
 msgstr "Кирилица"
 
@@ -785,8 +821,7 @@ msgstr "Кирилица"
 msgid "Cyrillic/Russian"
 msgstr "Кирилица/Руска"
 
-#: ../src/parole-subtitle-encoding.c:234
-#: ../src/parole-subtitle-encoding.c:236
+#: ../src/parole-subtitle-encoding.c:234 ../src/parole-subtitle-encoding.c:236
 msgid "Cyrillic/Ukrainian"
 msgstr "Кирилица/Украинска"
 
@@ -794,8 +829,7 @@ msgstr "Кирилица/Украинска"
 msgid "Georgian"
 msgstr "Грузинска"
 
-#: ../src/parole-subtitle-encoding.c:242
-#: ../src/parole-subtitle-encoding.c:244
+#: ../src/parole-subtitle-encoding.c:242 ../src/parole-subtitle-encoding.c:244
 #: ../src/parole-subtitle-encoding.c:246
 msgid "Greek"
 msgstr "Гръцка"
@@ -808,10 +842,8 @@ msgstr "Гуджарати"
 msgid "Gurmukhi"
 msgstr "Гурмухи"
 
-#: ../src/parole-subtitle-encoding.c:255
-#: ../src/parole-subtitle-encoding.c:257
-#: ../src/parole-subtitle-encoding.c:259
-#: ../src/parole-subtitle-encoding.c:261
+#: ../src/parole-subtitle-encoding.c:255 ../src/parole-subtitle-encoding.c:257
+#: ../src/parole-subtitle-encoding.c:259 ../src/parole-subtitle-encoding.c:261
 msgid "Hebrew"
 msgstr "Иврит"
 
@@ -827,16 +859,13 @@ msgstr "Хинди"
 msgid "Icelandic"
 msgstr "Исландска"
 
-#: ../src/parole-subtitle-encoding.c:273
-#: ../src/parole-subtitle-encoding.c:275
+#: ../src/parole-subtitle-encoding.c:273 ../src/parole-subtitle-encoding.c:275
 #: ../src/parole-subtitle-encoding.c:277
 msgid "Japanese"
 msgstr "Японска"
 
-#: ../src/parole-subtitle-encoding.c:280
-#: ../src/parole-subtitle-encoding.c:282
-#: ../src/parole-subtitle-encoding.c:284
-#: ../src/parole-subtitle-encoding.c:286
+#: ../src/parole-subtitle-encoding.c:280 ../src/parole-subtitle-encoding.c:282
+#: ../src/parole-subtitle-encoding.c:284 ../src/parole-subtitle-encoding.c:286
 msgid "Korean"
 msgstr "Корейска"
 
@@ -848,8 +877,7 @@ msgstr "Скандинавска"
 msgid "Persian"
 msgstr "Фарси (Персийска)"
 
-#: ../src/parole-subtitle-encoding.c:295
-#: ../src/parole-subtitle-encoding.c:297
+#: ../src/parole-subtitle-encoding.c:295 ../src/parole-subtitle-encoding.c:297
 msgid "Romanian"
 msgstr "Румънска"
 
@@ -861,37 +889,29 @@ msgstr "Южно-европейска"
 msgid "Thai"
 msgstr "Тайландска"
 
-#: ../src/parole-subtitle-encoding.c:306
-#: ../src/parole-subtitle-encoding.c:308
-#: ../src/parole-subtitle-encoding.c:310
-#: ../src/parole-subtitle-encoding.c:312
+#: ../src/parole-subtitle-encoding.c:306 ../src/parole-subtitle-encoding.c:308
+#: ../src/parole-subtitle-encoding.c:310 ../src/parole-subtitle-encoding.c:312
 msgid "Turkish"
 msgstr "Турска"
 
-#: ../src/parole-subtitle-encoding.c:315
-#: ../src/parole-subtitle-encoding.c:317
-#: ../src/parole-subtitle-encoding.c:319
-#: ../src/parole-subtitle-encoding.c:321
+#: ../src/parole-subtitle-encoding.c:315 ../src/parole-subtitle-encoding.c:317
+#: ../src/parole-subtitle-encoding.c:319 ../src/parole-subtitle-encoding.c:321
 #: ../src/parole-subtitle-encoding.c:323
 msgid "Unicode"
 msgstr "Юникод"
 
-#: ../src/parole-subtitle-encoding.c:326
-#: ../src/parole-subtitle-encoding.c:328
-#: ../src/parole-subtitle-encoding.c:330
-#: ../src/parole-subtitle-encoding.c:332
+#: ../src/parole-subtitle-encoding.c:326 ../src/parole-subtitle-encoding.c:328
+#: ../src/parole-subtitle-encoding.c:330 ../src/parole-subtitle-encoding.c:332
 #: ../src/parole-subtitle-encoding.c:334
 msgid "Western"
 msgstr "Западно-европейска"
 
-#: ../src/parole-subtitle-encoding.c:337
-#: ../src/parole-subtitle-encoding.c:339
+#: ../src/parole-subtitle-encoding.c:337 ../src/parole-subtitle-encoding.c:339
 #: ../src/parole-subtitle-encoding.c:341
 msgid "Vietnamese"
 msgstr "Виетнамска"
 
-#: ../src/parole-plugins-manager.c:391
-#: ../src/parole-plugins-manager.c:392
+#: ../src/parole-plugins-manager.c:391 ../src/parole-plugins-manager.c:392
 msgid "No installed plugins found on this system"
 msgstr "На тази система не са намерени инсталирани добавки"
 
@@ -899,13 +919,11 @@ msgstr "На тази система не са намерени инсталир
 msgid "Video"
 msgstr "Видео"
 
-#: ../src/misc/parole-filters.c:115
-#: ../src/misc/parole-filters.c:133
+#: ../src/misc/parole-filters.c:115 ../src/misc/parole-filters.c:133
 msgid "Audio and video"
 msgstr "Аудио и видео"
 
-#: ../src/misc/parole-filters.c:162
-#: ../src/misc/parole-filters.c:178
+#: ../src/misc/parole-filters.c:162 ../src/misc/parole-filters.c:178
 msgid "All supported files"
 msgstr "Всички поддържани файлове"
 
@@ -913,13 +931,13 @@ msgstr "Всички поддържани файлове"
 msgid "Playlist files"
 msgstr "Файлове от списъка за изпълнение"
 
-#: ../src/plugins/notify/notify-provider.c:129
-#: ../src/plugins/notify/notify-provider.c:132
+#: ../src/plugins/notify/notify-provider.c:135
+#: ../src/plugins/notify/notify-provider.c:138
 msgid "<i>on</i>"
 msgstr "<i>на</i>"
 
-#: ../src/plugins/notify/notify-provider.c:129
-#: ../src/plugins/notify/notify-provider.c:132
+#: ../src/plugins/notify/notify-provider.c:135
+#: ../src/plugins/notify/notify-provider.c:138
 msgid "<i>by</i>"
 msgstr "<i>от</i>"
 
@@ -931,27 +949,27 @@ msgstr "Уведомление"
 msgid "Show notifications for currently playing tracks"
 msgstr "Показване на уведомления за текущо изпълняваните файлове"
 
-#: ../src/plugins/tray/tray-provider.c:244
+#: ../src/plugins/tray/tray-provider.c:229
 msgid "Tray icon plugin"
 msgstr "Показване на икона в системната табла"
 
-#: ../src/plugins/tray/tray-provider.c:254
+#: ../src/plugins/tray/tray-provider.c:239
 msgid "Always minimize to tray when window is closed"
 msgstr "Винаги минимизирай в системната табла, когато прозорецът е затворен"
 
-#: ../src/plugins/tray/tray-provider.c:300
+#: ../src/plugins/tray/tray-provider.c:285
 msgid "Are you sure you want to quit?"
 msgstr "Сигурен ли сте, че искате да излезете?"
 
-#: ../src/plugins/tray/tray-provider.c:303
+#: ../src/plugins/tray/tray-provider.c:288
 msgid "Parole can be minimized to the system tray instead."
 msgstr "Parole може да бъде минимизиран в системната табла."
 
-#: ../src/plugins/tray/tray-provider.c:306
+#: ../src/plugins/tray/tray-provider.c:291
 msgid "Minimize to tray"
 msgstr "Минимизиране в системната табла"
 
-#: ../src/plugins/tray/tray-provider.c:323
+#: ../src/plugins/tray/tray-provider.c:308
 msgid "Remember my choice"
 msgstr "Запомняне на избора"
 
@@ -963,13 +981,14 @@ msgstr "Показване на икона в системната табла"
 msgid "Tray icon"
 msgstr "Икона в системната табла"
 
-#: ../src/plugins/power-manager/power-manager.desktop.in.h:1
-msgid "Inhibit Power Manager from suspending the machine while playing DVD."
-msgstr "Блокиране на управлението на захранването, докато се изпълнява DVD"
+#~ msgid "Parole"
+#~ msgstr "Parole"
 
-#: ../src/plugins/power-manager/power-manager.desktop.in.h:2
-msgid "Power Manager Plugin"
-msgstr "Добавка за управление на захранването"
+#~ msgid "Inhibit Power Manager from suspending the machine while playing DVD."
+#~ msgstr "Блокиране на управлението на захранването, докато се изпълнява DVD"
+
+#~ msgid "Power Manager Plugin"
+#~ msgstr "Добавка за управление на захранването"
 
 #~ msgid "Open _location"
 #~ msgstr "Отваряне на местоположение"
@@ -1052,9 +1071,6 @@ msgstr "Добавка за управление на захранването"
 #~ msgid "DVD"
 #~ msgstr "DVD"
 
-#~ msgid "Next Chapter"
-#~ msgstr "Следващо заглавие"
-
 #~ msgid "Previous Chapter"
 #~ msgstr "Предишно заглавие"
 
@@ -1069,9 +1085,6 @@ msgstr "Добавка за управление на захранването"
 
 #~ msgid "Open location of media file or live stream"
 #~ msgstr "Отваряне на местоположението на мултимедиен файл или поток"
-
-#~ msgid "Next Track"
-#~ msgstr "Следващ запис"
 
 #~ msgid "Stopped"
 #~ msgstr "Остановлено"
