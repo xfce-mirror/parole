@@ -1650,6 +1650,7 @@ void parole_player_seekb_cb (GtkWidget *widget, ParolePlayer *player, gdouble se
 	seek =  parole_gst_get_stream_position (PAROLE_GST (player->priv->gst) )
 			-
 			seek;
+	if ( seek < 0 ) { seek = 0; }
 	parole_gst_seek (PAROLE_GST (player->priv->gst), seek);
 	parole_player_change_range_value (player, seek);
 }
