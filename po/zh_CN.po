@@ -234,9 +234,8 @@ msgstr "播放列表"
 
 #: ../data/interfaces/playlist.ui.h:11 ../src/parole-medialist.c:993
 #: ../src/parole-medialist.c:1137
-#, fuzzy
 msgid "Playlist empty"
-msgstr "播放列表选项"
+msgstr "播放列表为空"
 
 #: ../data/interfaces/playlist.ui.h:12
 msgid "Playlist options"
@@ -417,15 +416,13 @@ msgstr "下一音轨"
 
 #: ../data/desktop/parole.desktop.in.in.h:3
 msgid "Play your media"
-msgstr ""
+msgstr "播放媒体"
 
 #: ../data/desktop/parole.desktop.in.in.h:4
-#, fuzzy
 msgid "Play/Pause"
-msgstr "暂停"
+msgstr "播放/暂停"
 
 #: ../data/desktop/parole.desktop.in.in.h:5
-#, fuzzy
 msgid "Previous Track"
 msgstr "上一音轨"
 
@@ -599,22 +596,22 @@ msgstr "所有文件"
 #: ../src/parole-medialist.c:303 ../src/parole-medialist.c:1002
 #, c-format
 msgid "%i item"
-msgstr ""
+msgstr "%i 项"
 
 #: ../src/parole-medialist.c:307
-#, fuzzy, c-format
+#, c-format
 msgid "%i chapter"
-msgstr "下一章节"
+msgstr "%i 章节"
 
 #: ../src/parole-medialist.c:315 ../src/parole-medialist.c:1004
 #, c-format
 msgid "%i items"
-msgstr ""
+msgstr "%i 项"
 
 #: ../src/parole-medialist.c:319
-#, fuzzy, c-format
+#, c-format
 msgid "%i chapters"
-msgstr "章节列表"
+msgstr "%i 章节"
 
 #: ../src/parole-medialist.c:393
 #, c-format
@@ -671,14 +668,12 @@ msgid "Chapter list"
 msgstr "章节列表"
 
 #: ../src/parole-player.c:459
-#, fuzzy
 msgid "Hide playlist"
-msgstr "光盘播放列表"
+msgstr "隐藏播放列表"
 
 #: ../src/parole-player.c:468
-#, fuzzy
 msgid "Show playlist"
-msgstr "显示播放列表(_P)"
+msgstr "显示播放列表"
 
 #: ../src/parole-player.c:519
 msgid "Open ISO image"
