@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parole master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-13 22:24+0000\n"
+"POT-Creation-Date: 2013-03-15 01:09+0000\n"
 "PO-Revision-Date: 2012-11-20 16:22+0100\n"
 "Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
-"X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: ../data/interfaces/parole.ui.h:1
 msgid "16:9 (Widescreen)"
@@ -235,7 +235,7 @@ msgstr "A lejátszólista üres"
 
 #: ../data/interfaces/playlist.ui.h:12
 msgid "Playlist options"
-msgstr "Lejátszólista lehetőségek"
+msgstr "Lejátszólista beállítások"
 
 #: ../data/interfaces/playlist.ui.h:13
 #: ../data/interfaces/parole-settings.ui.h:17
@@ -706,7 +706,8 @@ msgstr "Legutóbbi elemek törlése"
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
-msgstr "Biztos, hogy törölni kívánja a legutóbbi elemeket? Ezt nem lehet visszavonni."
+msgstr ""
+"Biztos, hogy törölni kívánja a legutóbbi elemeket? Ezt nem lehet visszavonni."
 
 #: ../src/parole-player.c:1245 ../src/parole-player.c:1384
 msgid "Media stream is not seekable"
