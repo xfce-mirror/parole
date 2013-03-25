@@ -89,30 +89,17 @@ void parole_window_busy_cursor		(GdkWindow *window)
 
 void parole_window_invisible_cursor		(GdkWindow *window)
 {
-    GdkBitmap *empty_bitmap;
-    GdkCursor *cursor;
-    GdkColor  color;
+    GdkCursor *cursor = NULL;
 
-    char cursor_bits[] = { 0x0 }; 
-    
-    if ( G_UNLIKELY (window == NULL) )
-	return;
-	
-    color.red = color.green = color.blue = 0;
-    color.pixel = 0;
-
-    empty_bitmap = gdk_bitmap_create_from_data (window,
-		   cursor_bits,
-		   1, 1);
-
-    cursor = gdk_cursor_new_from_pixmap (empty_bitmap,
-					 empty_bitmap,
-					 &color,
-					 &color, 0, 0);
+    cursor = gdk_cursor_new (GDK_BLANK_CURSOR);
 
     gdk_window_set_cursor (window, cursor);
 
-    gdk_cursor_unref (cursor);
-
-    g_object_unref (empty_bitmap);
+    if (cursor) {
+#if GTK_CHECK_VERSION(3, 0, 0)
+	g_object_unref (cursor);
+#else
+	gdk_cursor_unref (cursor);
+#endif
+    }
 }
