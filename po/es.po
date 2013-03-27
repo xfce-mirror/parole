@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-22 20:24+0000\n"
+"POT-Creation-Date: 2013-03-27 12:45+0000\n"
 "PO-Revision-Date: 2010-01-27 09:13-0800\n"
 "Last-Translator: Javier Sánchez <donoban@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -84,7 +84,7 @@ msgstr "Idiomas"
 
 #: ../data/interfaces/parole.ui.h:16
 msgid "Media player"
-msgstr "Reproductor de medios"
+msgstr "Reproductor multimedia"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "Next"
@@ -101,7 +101,7 @@ msgstr "Ninguno"
 
 #: ../data/interfaces/parole.ui.h:19
 msgid "Open Recent"
-msgstr "Abrir reciente"
+msgstr "Abrir recientes"
 
 #: ../data/interfaces/parole.ui.h:20
 msgid "Open _Location"
@@ -115,7 +115,7 @@ msgstr "Reproductor de medios Parole"
 #: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:1410
 #: ../src/parole-player.c:1444
 msgid "Play"
-msgstr "Reproduciendo"
+msgstr "Reproducir"
 
 #: ../data/interfaces/parole.ui.h:23
 msgid "Plugins"
@@ -123,11 +123,11 @@ msgstr "Complementos"
 
 #: ../data/interfaces/parole.ui.h:24
 msgid "Previous"
-msgstr "Previo"
+msgstr "Anterior"
 
 #: ../data/interfaces/parole.ui.h:25
 msgid "Select Text Subtitles..."
-msgstr "Seleccionar subtítulos..."
+msgstr "Seleccionar subtítulos…"
 
 #: ../data/interfaces/parole.ui.h:26
 msgid "Show _playlist"
@@ -139,11 +139,11 @@ msgstr "Cuadrado"
 
 #: ../data/interfaces/parole.ui.h:28
 msgid "Subtitles"
-msgstr "<b>Subtítulos</b>"
+msgstr "Subtítulos"
 
 #: ../data/interfaces/parole.ui.h:29
 msgid "Subtitles:"
-msgstr "<b>Subtítulos</b>:"
+msgstr "Subtítulos:"
 
 #: ../data/interfaces/parole.ui.h:30
 msgid "Volume _Down"
@@ -155,7 +155,7 @@ msgstr "_Subir volumen"
 
 #: ../data/interfaces/parole.ui.h:32
 msgid "_Aspect Ratio"
-msgstr "_Proporción"
+msgstr "Relación de _aspecto"
 
 #: ../data/interfaces/parole.ui.h:33
 msgid "_Edit"
@@ -163,7 +163,7 @@ msgstr "_Editar"
 
 #: ../data/interfaces/parole.ui.h:34
 msgid "_Help"
-msgstr "_Ayuda"
+msgstr "Ay_uda"
 
 #: ../data/interfaces/parole.ui.h:35
 msgid "_Media"
@@ -171,7 +171,7 @@ msgstr "_Medios"
 
 #: ../data/interfaces/parole.ui.h:36
 msgid "_Mute"
-msgstr "_Silencio"
+msgstr "_Silenciar"
 
 #: ../data/interfaces/parole.ui.h:37
 msgid "_Repeat"
@@ -195,7 +195,7 @@ msgstr "_Abrir"
 
 #: ../data/interfaces/playlist.ui.h:1
 msgid "Add…"
-msgstr "Agregar..."
+msgstr "Añadir…"
 
 #: ../data/interfaces/playlist.ui.h:2
 msgid "Angle Menu"
@@ -215,7 +215,7 @@ msgstr "Limpiar"
 
 #: ../data/interfaces/playlist.ui.h:6
 msgid "DVD Menu"
-msgstr "Menú DVD"
+msgstr "Menú del DVD"
 
 #: ../data/interfaces/playlist.ui.h:7
 msgid "DVD Name"
@@ -223,7 +223,7 @@ msgstr "Nombre del DVD"
 
 #: ../data/interfaces/playlist.ui.h:8
 msgid "Disc Playlist"
-msgstr "Lista de reproducción de Disco"
+msgstr "Lista de reproducción de disco"
 
 #: ../data/interfaces/playlist.ui.h:9
 msgid "Play opened files"
@@ -250,7 +250,7 @@ msgstr "Recordar lista de reproducción"
 
 #: ../data/interfaces/playlist.ui.h:14
 msgid "Remove"
-msgstr "Remover"
+msgstr "Quitar"
 
 #: ../data/interfaces/playlist.ui.h:15
 msgid "Repeat"
@@ -270,23 +270,23 @@ msgstr "Menú de título"
 
 #: ../data/interfaces/plugins.ui.h:1
 msgid "<b>Author</b>"
-msgstr "<b>Autor:</b>"
+msgstr "<b>Autor</b>"
 
 #: ../data/interfaces/plugins.ui.h:2
 msgid "<b>Description</b>"
-msgstr "<b>Descripción:</b>"
+msgstr "<b>Descripción</b>"
 
 #: ../data/interfaces/plugins.ui.h:3
 msgid "Enabled"
-msgstr "Habilitar"
+msgstr "Activado"
 
 #: ../data/interfaces/plugins.ui.h:4
 msgid "Extend your media player"
-msgstr "Configure su reproductor de medios"
+msgstr "Extienda su reproductor multimedia"
 
 #: ../data/interfaces/plugins.ui.h:5
 msgid "Parole Plugins"
-msgstr "Complementos Parole"
+msgstr "Complementos de Parole"
 
 #: ../data/interfaces/plugins.ui.h:6
 msgid "Plugin"
@@ -294,11 +294,11 @@ msgstr "Complemento"
 
 #: ../data/interfaces/plugins.ui.h:7
 msgid "Visit Website"
-msgstr "Ir al sitio web"
+msgstr "Visitar sitio web"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "<b>Audio</b>"
-msgstr "<b>Audio</b>"
+msgstr "<b>Sonido</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:2
 msgid "<b>Keyboard</b>"
@@ -306,7 +306,7 @@ msgstr "<b>Teclado</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:3
 msgid "<b>Video</b>"
-msgstr "<b>Vide</b>"
+msgstr "<b>Vídeo</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:4
 msgid "Always replace playlist with opened files"
@@ -322,11 +322,11 @@ msgstr "Brillo:"
 
 #: ../data/interfaces/parole-settings.ui.h:7
 msgid "Check and remove duplicate media entries"
-msgstr "Clickear y mover los archivod duplicados"
+msgstr "Comprobar y eliminar entradas de medios duplicadas"
 
 #: ../data/interfaces/parole-settings.ui.h:8
 msgid "Configure your media player"
-msgstr "Configure su reproductor de medios"
+msgstr "Configure su reproductor multimedia"
 
 #: ../data/interfaces/parole-settings.ui.h:9
 msgid "Contrast:"
@@ -334,11 +334,11 @@ msgstr "Contraste:"
 
 #: ../data/interfaces/parole-settings.ui.h:10
 msgid "Disable screensaver while playing movies"
-msgstr "Desactivar protector de pantalla al reproducir películas"
+msgstr "Desactivar salvapantallas al reproducir películas"
 
 #: ../data/interfaces/parole-settings.ui.h:11
 msgid "Enable keyboard multimedia keys"
-msgstr "Habilitar las teclas multimedia del teclado"
+msgstr "Activar las teclas multimedia del teclado"
 
 #: ../data/interfaces/parole-settings.ui.h:12
 msgid "Enable visualization when playing audio file"
@@ -350,7 +350,7 @@ msgstr "Codificación:"
 
 #: ../data/interfaces/parole-settings.ui.h:14
 msgid "Font:"
-msgstr "Fuente:"
+msgstr "Tipo de letra:"
 
 #: ../data/interfaces/parole-settings.ui.h:15
 msgid "Hue:"
@@ -406,7 +406,7 @@ msgstr "<big><b>Abrir ubicación en red</b></big>"
 
 #: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:192
 msgid "Clear History"
-msgstr "Borrar historial"
+msgstr "Limpiar el histórico"
 
 #: ../data/interfaces/open-location.ui.h:3
 msgid "Open Network Location"
@@ -422,7 +422,7 @@ msgstr "Reproducir sus medios"
 
 #: ../data/desktop/parole.desktop.in.in.h:4
 msgid "Play/Pause"
-msgstr "Reproducir/Pausar"
+msgstr "Reproducir/pausar"
 
 #: ../data/desktop/parole.desktop.in.in.h:5
 msgid "Previous Track"
@@ -436,55 +436,55 @@ msgstr "Mensaje"
 msgid "Error"
 msgstr "Error"
 
-#: ../src/gst/parole-gst.c:1370 ../src/parole-medialist.c:377
+#: ../src/gst/parole-gst.c:1372 ../src/parole-medialist.c:377
 #, c-format
 msgid "Track %i"
 msgstr "Pista Nº %i"
 
-#: ../src/gst/parole-gst.c:1373
+#: ../src/gst/parole-gst.c:1375
 msgid "Audio CD"
 msgstr "CD de Audio"
 
-#: ../src/gst/parole-gst.c:1579
+#: ../src/gst/parole-gst.c:1581
 msgid "Additional software is required."
 msgstr "Software adicional requerido"
 
-#: ../src/gst/parole-gst.c:1583
+#: ../src/gst/parole-gst.c:1585
 msgid "Don't Install"
 msgstr "No instalar"
 
-#: ../src/gst/parole-gst.c:1585
+#: ../src/gst/parole-gst.c:1587
 msgid "Install"
 msgstr "Instalar"
 
-#: ../src/gst/parole-gst.c:2008
+#: ../src/gst/parole-gst.c:2010
 msgid "Stop"
 msgstr "Detener"
 
-#: ../src/gst/parole-gst.c:2009
+#: ../src/gst/parole-gst.c:2011
 msgid "The stream is taking too much time to load"
 msgstr "El stream está demorando demasiado tiempo para cargar"
 
-#: ../src/gst/parole-gst.c:2184
+#: ../src/gst/parole-gst.c:2186
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "No se puede cargar el complemento playbin GStreamer, compruebe su "
 "instalación de GStreamer"
 
-#: ../src/gst/parole-gst.c:2208
+#: ../src/gst/parole-gst.c:2210
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "No se puede cargar el complemento de vídeo GStreamer, compruebe su "
 "instalación de GStreamer"
 
-#: ../src/gst/parole-gst.c:2796 ../src/gst/parole-gst.c:2800
+#: ../src/gst/parole-gst.c:2798 ../src/gst/parole-gst.c:2802
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Pista Nº %i"
 
-#: ../src/gst/parole-gst.c:2840 ../src/gst/parole-gst.c:2844
+#: ../src/gst/parole-gst.c:2842 ../src/gst/parole-gst.c:2846
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Subtitulo %d"
