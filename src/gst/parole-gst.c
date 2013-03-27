@@ -33,9 +33,11 @@
 #if GST_CHECK_VERSION(1, 0, 0)
 #include <gst/video/videooverlay.h>
 #include <gst/video/navigation.h>
+#include <gst/audio/streamvolume.h>
 #else
 #include <gst/interfaces/xoverlay.h>
 #include <gst/interfaces/navigation.h>
+#include <gst/interfaces/streamvolume.h>
 #endif
 
 #include <gst/pbutils/missing-plugins.h>
@@ -2624,9 +2626,9 @@ void parole_gst_seek (ParoleGst *gst, gdouble seek)
 
 void parole_gst_set_volume (ParoleGst *gst, gdouble value)
 {
-    g_object_set (G_OBJECT (gst->priv->playbin),
-		  "volume", value,
-		  NULL);
+    gst_stream_volume_set_volume (GST_STREAM_VOLUME (gst->priv->playbin),
+				    GST_STREAM_VOLUME_FORMAT_CUBIC,
+				    value);
 }
 						    
 gdouble	parole_gst_get_volume (ParoleGst *gst)
