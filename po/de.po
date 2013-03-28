@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-06 08:30+0000\n"
+"POT-Creation-Date: 2013-03-28 04:48+0000\n"
 "PO-Revision-Date: 2009-12-10 17:46+0100\n"
 "Last-Translator: Christoph Wickert <cwickert@fedoraproject.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
@@ -208,7 +208,7 @@ msgstr "Drehen"
 #: ../data/interfaces/playlist.ui.h:3
 #, fuzzy
 msgid "Audio Menu"
-msgstr "Audio"
+msgstr "Audiomenü"
 
 #: ../data/interfaces/playlist.ui.h:4
 msgid "Chapter Menu"
@@ -237,7 +237,7 @@ msgid "Play opened files"
 msgstr "Geöffnete Dateien abspielen"
 
 #: ../data/interfaces/playlist.ui.h:10 ../src/parole-medialist.c:805
-#: ../src/parole-player.c:3054
+#: ../src/parole-player.c:3055
 msgid "Playlist"
 msgstr "Wiedergabeliste"
 
@@ -274,7 +274,7 @@ msgstr "Zufallsmodus"
 #: ../data/interfaces/playlist.ui.h:18
 #, fuzzy
 msgid "Title Menu"
-msgstr "Kapitelmenü"
+msgstr "Titelmenü"
 
 #: ../data/interfaces/plugins.ui.h:1
 msgid "<b>Author</b>"
@@ -448,58 +448,58 @@ msgstr "Nachricht"
 msgid "Error"
 msgstr "Fehler"
 
-#: ../src/gst/parole-gst.c:1370 ../src/parole-medialist.c:377
+#: ../src/gst/parole-gst.c:1372 ../src/parole-medialist.c:377
 #, fuzzy, c-format
 msgid "Track %i"
 msgstr "Titel %i"
 
-#: ../src/gst/parole-gst.c:1373
+#: ../src/gst/parole-gst.c:1375
 #, fuzzy
 msgid "Audio CD"
 msgstr "Audio CD"
 
-#: ../src/gst/parole-gst.c:1579
+#: ../src/gst/parole-gst.c:1581
 msgid "Additional software is required."
 msgstr "Zusätzliche Software wird benötigt."
 
-#: ../src/gst/parole-gst.c:1583
+#: ../src/gst/parole-gst.c:1585
 #, fuzzy
 msgid "Don't Install"
 msgstr "Nicht installieren"
 
-#: ../src/gst/parole-gst.c:1585
+#: ../src/gst/parole-gst.c:1587
 #, fuzzy
 msgid "Install"
 msgstr "Installieren"
 
-#: ../src/gst/parole-gst.c:2008
+#: ../src/gst/parole-gst.c:2010
 msgid "Stop"
 msgstr "Stop"
 
-#: ../src/gst/parole-gst.c:2009
+#: ../src/gst/parole-gst.c:2011
 msgid "The stream is taking too much time to load"
 msgstr "Der Stream benötigt zu viel Zeit zum Laden"
 
-#: ../src/gst/parole-gst.c:2184
+#: ../src/gst/parole-gst.c:2186
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Playbin-GStreamer-Plugin kann nicht geladen werden, überprüfen Sie Ihre "
 "GStreamer-Installation"
 
-#: ../src/gst/parole-gst.c:2208
+#: ../src/gst/parole-gst.c:2210
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Video-GStreamer-Plugin kann nicht geladen werden, überprüfen Sie Ihre "
 "GStreamer-Installation"
 
-#: ../src/gst/parole-gst.c:2796 ../src/gst/parole-gst.c:2800
+#: ../src/gst/parole-gst.c:2798 ../src/gst/parole-gst.c:2802
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Titel Nr. %d"
 
-#: ../src/gst/parole-gst.c:2840 ../src/gst/parole-gst.c:2844
+#: ../src/gst/parole-gst.c:2842 ../src/gst/parole-gst.c:2846
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Untertitel Nr. %d"
@@ -633,7 +633,7 @@ msgstr "%i Titel"
 #: ../src/parole-medialist.c:319
 #, fuzzy, c-format
 msgid "%i chapters"
-msgstr "Kapitelmenü"
+msgstr "%i Kapitel"
 
 #: ../src/parole-medialist.c:393
 #, fuzzy, c-format
@@ -688,7 +688,7 @@ msgstr "Medienliste"
 #: ../src/parole-medialist.c:1670
 #, fuzzy
 msgid "Chapter list"
-msgstr "Kapitelmenü"
+msgstr "Kapitelliste"
 
 #: ../src/parole-player.c:459
 msgid "Hide playlist"
@@ -745,50 +745,50 @@ msgstr "Medien-Stream ist nicht durchsuchbar"
 msgid "Pause"
 msgstr "Pause"
 
-#: ../src/parole-player.c:1695
+#: ../src/parole-player.c:1696
 msgid "GStreamer backend error"
 msgstr "GStreamer-Backend-Fehler"
 
-#: ../src/parole-player.c:1726
+#: ../src/parole-player.c:1727
 #, fuzzy
 msgid "Unknown Song"
 msgstr "Unbekannter Titel"
 
-#: ../src/parole-player.c:1731 ../src/parole-player.c:1733
-#: ../src/parole-player.c:1739
+#: ../src/parole-player.c:1732 ../src/parole-player.c:1734
+#: ../src/parole-player.c:1740
 #, fuzzy
 msgid "on"
 msgstr "auf"
 
-#: ../src/parole-player.c:1739 ../src/plugins/notify/notify-provider.c:130
+#: ../src/parole-player.c:1740 ../src/plugins/notify/notify-provider.c:130
 #, fuzzy
 msgid "Unknown Album"
 msgstr "Unbekanntes Album"
 
-#: ../src/parole-player.c:1746 ../src/parole-player.c:1750
+#: ../src/parole-player.c:1747 ../src/parole-player.c:1751
 #, fuzzy
 msgid "by"
 msgstr "von"
 
-#: ../src/parole-player.c:1750 ../src/plugins/notify/notify-provider.c:132
+#: ../src/parole-player.c:1751 ../src/plugins/notify/notify-provider.c:132
 #, fuzzy
 msgid "Unknown Artist"
 msgstr "Unbekanntem Interpret"
 
-#: ../src/parole-player.c:1783
+#: ../src/parole-player.c:1784
 msgid "Buffering"
 msgstr "Puffervorgang"
 
-#: ../src/parole-player.c:2263
+#: ../src/parole-player.c:2264
 #, fuzzy
 msgid "Mute"
-msgstr "Stu_mm"
+msgstr "Stumm"
 
-#: ../src/parole-player.c:2268
+#: ../src/parole-player.c:2269
 msgid "Unmute"
 msgstr "Laut"
 
-#: ../src/parole-player.c:2928
+#: ../src/parole-player.c:2929
 #, fuzzy
 msgid "Clear recent items..."
 msgstr "Zuletzt geöffnete Dateien leeren"
@@ -991,30 +991,30 @@ msgstr "Benachrichtigen"
 msgid "Show notifications for currently playing tracks"
 msgstr "Zeige Benachrichtigungen für gerade laufende Titel"
 
-#: ../src/plugins/tray/tray-provider.c:245
+#: ../src/plugins/tray/tray-provider.c:229
 msgid "Tray icon plugin"
 msgstr "Benachrichtigungsfeld-Plugin"
 
-#: ../src/plugins/tray/tray-provider.c:255
+#: ../src/plugins/tray/tray-provider.c:239
 msgid "Always minimize to tray when window is closed"
 msgstr ""
 "Immer ins Benachrichtigungsfeld minimieren, wenn das Fenster geschlossen wird"
 
-#: ../src/plugins/tray/tray-provider.c:301
+#: ../src/plugins/tray/tray-provider.c:285
 #, fuzzy
 msgid "Are you sure you want to quit?"
 msgstr "Sind Sie sicher, dass Sie Parole beenden wollen?"
 
-#: ../src/plugins/tray/tray-provider.c:304
+#: ../src/plugins/tray/tray-provider.c:288
 #, fuzzy
 msgid "Parole can be minimized to the system tray instead."
 msgstr "Parole kann stattdessen in die Systemleiste minimiert werden."
 
-#: ../src/plugins/tray/tray-provider.c:307
+#: ../src/plugins/tray/tray-provider.c:291
 msgid "Minimize to tray"
 msgstr "Ins Benachrichtigungsfeld minimieren"
 
-#: ../src/plugins/tray/tray-provider.c:324
+#: ../src/plugins/tray/tray-provider.c:308
 msgid "Remember my choice"
 msgstr "Auswahl merken"
 
