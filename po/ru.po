@@ -739,26 +739,24 @@ msgid "by"
 msgstr "Автор"
 
 #: ../src/parole-player.c:1751 ../src/plugins/notify/notify-provider.c:132
-#, fuzzy
 msgid "Unknown Artist"
-msgstr "Неизвестный"
+msgstr "Неизвестный исполнитель"
 
 #: ../src/parole-player.c:1784
 msgid "Buffering"
 msgstr "Буферизация"
 
 #: ../src/parole-player.c:2264
-#, fuzzy
 msgid "Mute"
-msgstr "_Приглушить"
+msgstr "Приглушить"
 
 #: ../src/parole-player.c:2269
 msgid "Unmute"
-msgstr ""
+msgstr "Включить звук"
 
 #: ../src/parole-player.c:2929
 msgid "Clear recent items..."
-msgstr ""
+msgstr "Очи"
 
 #: ../src/parole-about.c:74
 msgid "translator-credits"
@@ -941,15 +939,15 @@ msgstr ""
 #: ../src/plugins/notify/notify-provider.c:135
 #: ../src/plugins/notify/notify-provider.c:138
 msgid "<i>by</i>"
-msgstr ""
+msgstr "<i>исполнитель</i>"
 
 #: ../src/plugins/notify/notify.desktop.in.h:1
 msgid "Notify"
-msgstr ""
+msgstr "Уведомить"
 
 #: ../src/plugins/notify/notify.desktop.in.h:2
 msgid "Show notifications for currently playing tracks"
-msgstr ""
+msgstr "Показывать уведомления для текущих треков"
 
 #: ../src/plugins/tray/tray-provider.c:229
 msgid "Tray icon plugin"
@@ -960,13 +958,12 @@ msgid "Always minimize to tray when window is closed"
 msgstr "Всегда сворачивать в трей, когда окно закрыто"
 
 #: ../src/plugins/tray/tray-provider.c:285
-#, fuzzy
 msgid "Are you sure you want to quit?"
 msgstr "Вы уверены, что хотите выйти?"
 
 #: ../src/plugins/tray/tray-provider.c:288
 msgid "Parole can be minimized to the system tray instead."
-msgstr ""
+msgstr "Можно сворачивать Parole в область уведомлений."
 
 #: ../src/plugins/tray/tray-provider.c:291
 msgid "Minimize to tray"
