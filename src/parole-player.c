@@ -2250,7 +2250,7 @@ parole_player_volume_up (GtkWidget *widget, ParolePlayer *player)
 {
     gdouble value;
     value = gtk_scale_button_get_value (GTK_SCALE_BUTTON (player->priv->volume));
-    gtk_scale_button_set_value (GTK_SCALE_BUTTON (player->priv->volume), value + 0.1);
+    gtk_scale_button_set_value (GTK_SCALE_BUTTON (player->priv->volume), value + 0.05);
 }
 
 void
@@ -2258,7 +2258,7 @@ parole_player_volume_down (GtkWidget *widget, ParolePlayer *player)
 {
     gdouble value;
     value = gtk_scale_button_get_value (GTK_SCALE_BUTTON (player->priv->volume));
-    gtk_scale_button_set_value (GTK_SCALE_BUTTON (player->priv->volume), value - 0.1);
+    gtk_scale_button_set_value (GTK_SCALE_BUTTON (player->priv->volume), value - 0.05);
 }
 
 void parole_player_volume_mute (GtkWidget *widget, ParolePlayer *player)
