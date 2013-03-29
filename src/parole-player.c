@@ -2203,6 +2203,14 @@ void parole_player_repeat_toggled_cb (GtkWidget *widget, ParolePlayer *player)
 }
 
 static void
+parole_property_notify_cb_volume (ParoleGst *gst, GParamSpec *spec, ParolePlayer *player)
+{
+	gdouble volume;
+	volume = parole_gst_get_volume (PAROLE_GST (player->priv->gst));
+	gtk_scale_button_set_value (GTK_SCALE_BUTTON (player->priv->volume), volume);
+}
+
+static void
 parole_player_change_volume (ParolePlayer *player, gdouble value)
 {
     parole_gst_set_volume (PAROLE_GST (player->priv->gst), value);
@@ -2821,6 +2829,8 @@ parole_player_init (ParolePlayer *player)
     
     GtkWidget *content_area;
     
+    g_setenv("PULSE_PROP_media.role", "video", TRUE);
+    
     player->priv = PAROLE_PLAYER_GET_PRIVATE (player);
 
     player->priv->client_id = NULL;
@@ -2895,6 +2905,9 @@ parole_player_init (ParolePlayer *player)
     
     g_signal_connect (G_OBJECT (player->priv->gst), "motion-notify-event",
 		      G_CALLBACK (parole_player_gst_widget_motion_notify_event), player);
+    
+    g_signal_connect (G_OBJECT (player->priv->gst), "notify::volume",
+			G_CALLBACK (parole_property_notify_cb_volume), player);
 
     output = GTK_WIDGET (gtk_builder_get_object (builder, "output"));
     

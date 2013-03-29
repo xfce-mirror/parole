@@ -130,6 +130,8 @@ struct ParoleGstPrivate
     gboolean      buffering;
     gboolean      update_color_balance;
     
+    gdouble	  volume;
+    
     gboolean      use_custom_subtitles;
     gchar*        custom_subtitles;
     
@@ -162,6 +164,7 @@ enum
 enum
 {
     PROP_0,
+    PROP_VOLUME,
     PROP_CONF_OBJ,
     PROP_ENABLE_TAGS
 };
@@ -2116,6 +2119,9 @@ static void parole_gst_get_property (GObject *object,
     
     switch (prop_id)
     {
+	case PROP_VOLUME:
+	    g_value_set_double (value, gst->priv->volume);
+	    break;
 	case PROP_CONF_OBJ:
 	    g_value_set_pointer (value, gst->priv->conf);
 	    break;
@@ -2142,6 +2148,9 @@ static void parole_gst_set_property (GObject *object,
 	case PROP_ENABLE_TAGS:
 	    gst->priv->enable_tags = g_value_get_boolean (value);
 	    break;
+	case PROP_VOLUME:
+	    parole_gst_set_volume (gst, g_value_get_double (value));
+	    break;
 	case PROP_CONF_OBJ:
 	    gst->priv->conf = g_value_get_pointer (value);
 	    
@@ -2159,6 +2168,29 @@ static void parole_gst_set_property (GObject *object,
            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
            break;
     }
+}
+
+
+static gboolean
+parole_notify_volume_idle_cb (ParoleGst *gst)
+{
+    gdouble vol;
+
+    vol = gst_stream_volume_get_volume (GST_STREAM_VOLUME (gst->priv->playbin),
+                                      GST_STREAM_VOLUME_FORMAT_CUBIC);
+
+    gst->priv->volume = vol;
+    g_object_notify (G_OBJECT (gst), "volume");
+
+    return FALSE;
+}
+
+static void
+parole_notify_volume_cb (GObject             *object,
+		  GParamSpec          *pspec,
+		  ParoleGst *gst)
+{
+    g_idle_add ((GSourceFunc) parole_notify_volume_idle_cb, gst);
 }
 
 static void
@@ -2245,6 +2277,9 @@ parole_gst_constructed (GObject *object)
 
     g_signal_connect (gst->priv->playbin, "notify::source",
 		      G_CALLBACK (parole_gst_source_notify_cb), gst);
+    
+    g_signal_connect (gst->priv->playbin, "notify::volume",
+		      G_CALLBACK (parole_notify_volume_cb), gst);
 
 
     g_signal_connect (gst->priv->playbin, "about-to-finish",
@@ -2369,6 +2404,13 @@ parole_gst_class_init (ParoleGstClass *klass)
 							   G_PARAM_READWRITE));
     
     g_object_class_install_property (object_class,
+				     PROP_VOLUME,
+				     g_param_spec_double ("volume", NULL, NULL,
+							   0.0, 1.0, 0.0,
+	                                                   G_PARAM_READWRITE |
+                                                           G_PARAM_STATIC_STRINGS));
+    
+    g_object_class_install_property (object_class,
 				     PROP_ENABLE_TAGS,
 				     g_param_spec_boolean ("tags",
 							   NULL, NULL,
@@ -2403,7 +2445,7 @@ parole_gst_init (ParoleGst *gst)
     gst->priv->scale_logo = TRUE;
     gst->priv->use_custom_subtitles = FALSE;
     gst->priv->custom_subtitles = NULL;
-    
+    gst->priv->volume = -1.0;
     gst->priv->conf = NULL;
     
     GTK_WIDGET_SET_FLAGS (GTK_WIDGET (gst), GTK_CAN_FOCUS);
@@ -2624,21 +2666,20 @@ void parole_gst_seek (ParoleGst *gst, gdouble seek)
 				       GST_SEEK_TYPE_NONE, GST_CLOCK_TIME_NONE));
 }
 
-void parole_gst_set_volume (ParoleGst *gst, gdouble value)
+void parole_gst_set_volume (ParoleGst *gst, gdouble volume)
 {
     gst_stream_volume_set_volume (GST_STREAM_VOLUME (gst->priv->playbin),
 				    GST_STREAM_VOLUME_FORMAT_CUBIC,
-				    value);
+				    volume);
+    volume = CLAMP (volume, 0.0, 1.0);
+    gst->priv->volume = volume;
+    
+    g_object_notify (G_OBJECT (gst), "volume");
 }
 						    
 gdouble	parole_gst_get_volume (ParoleGst *gst)
 {
-    gdouble volume;
-    
-    g_object_get (G_OBJECT (gst->priv->playbin),
-		  "volume", &volume,
-		  NULL);
-    return volume;
+    return gst->priv->volume;
 }
 
 ParoleState parole_gst_get_state (ParoleGst *gst)
