@@ -56,6 +56,10 @@ typedef struct
     
 } ParoleParserData;
 
+gchar *g_substr (const gchar* string, gint start, gint end);
+
+gchar *g_char_dirname (const gchar *filename);
+
 static gchar*
 parole_filename_to_utf8(const gchar* filename)
 {
@@ -306,12 +310,44 @@ out:
     return data.list;
 }
 
+gchar *
+g_substr (const gchar* string,
+          gint         start,
+          gint         end)
+{
+    gsize len = (end - start + 1);
+    gchar *output = g_malloc0 (len + 1);
+    return g_utf8_strncpy (output, &string[start], len);
+}
+
+gchar *
+g_char_dirname (const gchar *filename)
+{
+    int index;
+    const gchar *ptr;
+    char *find;
+    gchar *f_name;
+    
+    f_name = g_strdup(filename);
+
+    find = "/";
+    ptr = strrchr((char *) f_name, find[0]);
+    
+    if (ptr)
+    {
+        index = ptr - f_name;
+        return g_substr(filename, 0, index);
+    }
+    return NULL;
+}
+
 static GSList *
 parole_pl_parser_parse_m3u (const gchar *filename)
 {
     GFile *file;
     gchar **lines;
     gchar *contents;
+    gchar *path, *pl_filename;
     GSList *list = NULL;
     gsize size;
     guint num_lines;
@@ -319,6 +355,7 @@ parole_pl_parser_parse_m3u (const gchar *filename)
     guint i;
     
     file = g_file_new_for_path (filename);
+    path = g_char_dirname(filename);
     
     if ( !g_file_load_contents (file, NULL, &contents, &size, NULL, NULL) )
 	goto out;
@@ -353,10 +390,20 @@ parole_pl_parser_parse_m3u (const gchar *filename)
     {
 	if ( lines[i][0] == '\0' || lines[i][0] == '#')
 	    continue;
-
-	list = g_slist_append (list, parole_file_new (lines[i]));
+	    
+    if ( lines[i][0] != '/' )
+    {
+        pl_filename = g_strjoin("", path, lines[i], NULL);
+        list = g_slist_append (list, parole_file_new (pl_filename));
     }
 
+    else {
+	    list = g_slist_append (list, parole_file_new (lines[i]));
+	}
+    }
+
+    if (pl_filename)
+        g_free(pl_filename);
     g_strfreev (lines);
 out:
 
