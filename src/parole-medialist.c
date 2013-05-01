@@ -1923,6 +1923,7 @@ GtkTreeRowReference *parole_media_list_get_row_random (ParoleMediaList *list)
     GtkTreeRowReference *row = NULL;
     GtkTreeIter iter;
     GtkTreePath *path;
+    gchar *current_path;
     gchar *path_str;
     gint nch;
 
@@ -1933,17 +1934,20 @@ GtkTreeRowReference *parole_media_list_get_row_random (ParoleMediaList *list)
 	return  NULL;
     }
     
-    path_str = g_strdup_printf ("%i", g_random_int_range (0, nch));
+    current_path = gtk_tree_path_to_string(gtk_tree_row_reference_get_path(parole_media_list_get_selected_row(list)));
+    path_str = g_strdup(current_path);
+    
+    while (g_strcmp0(current_path, path_str) == 0)
+        path_str = g_strdup_printf ("%i", g_random_int_range (0, nch));
     
     path = gtk_tree_path_new_from_string (path_str);
     g_free (path_str);
     
     if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path))
     {
-	row  = gtk_tree_row_reference_new (GTK_TREE_MODEL (list->priv->store), path);
-	//parole_media_list_select_path (list, path);
+    row  = gtk_tree_row_reference_new (GTK_TREE_MODEL (list->priv->store), path);
     }
-    
+
     gtk_tree_path_free (path);
     
     return row;

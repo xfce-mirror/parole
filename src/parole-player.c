@@ -1628,7 +1628,7 @@ parole_player_stop_clicked (GtkButton *button, ParolePlayer *player)
 
 void parole_player_forward_cb (GtkButton *button, ParolePlayer *player)
 {
-	parole_player_play_next (player, FALSE);
+	parole_player_play_next (player, TRUE);
 }
 							 
 void parole_player_back_cb (GtkButton *button, ParolePlayer *player)
@@ -2571,7 +2571,7 @@ parole_player_key_press (GtkWidget *widget, GdkEventKey *ev, ParolePlayer *playe
 		parole_player_play_prev (player);
 	    return TRUE;
 	case XF86XK_AudioNext:
-		parole_player_play_next (player, FALSE);
+		parole_player_play_next (player, TRUE);
 	    return TRUE;
 #endif /* HAVE_XF86_KEYSYM */
 	default:
@@ -2599,7 +2599,7 @@ parole_player_button_pressed_cb (ParoleButton *button, ParoleButtonKey key, Paro
 		parole_player_play_prev (player);
 	    break;
 	case PAROLE_KEY_AUDIO_NEXT:
-		parole_player_play_next (player, FALSE);
+		parole_player_play_next (player, TRUE);
 	    break;
 	default:
 	    break;
@@ -3388,7 +3388,7 @@ static gboolean	parole_player_dbus_stop (ParolePlayer *player,
 static gboolean	parole_player_dbus_next_track (ParolePlayer *player,
 					       GError *error)
 {
-	parole_player_play_next (player, FALSE);
+	parole_player_play_next (player, TRUE);
     return TRUE;
 }
 
