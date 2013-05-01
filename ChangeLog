@@ -4,6 +4,7 @@ git-master: bluesabre@xfce.org
     * Fix playlist controls disabling access to media controls (bug #9936)
     * Fix next-button ignoring shuffle mode (bug #10039)
     * Prevent shuffle from playing the same song twice in a row
+    * Fix MKV subtitles being shown when automatically show subtitles is disabled (bug 9880)
 
 2013-03-06: bluesabre@xfce.org
     * Stable release 0.5.0
