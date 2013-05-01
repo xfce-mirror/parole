@@ -525,12 +525,26 @@ void	parole_media_list_drag_data_received_cb (GtkWidget *widget,
 
 gboolean parole_media_list_key_press (GtkWidget *widget, GdkEventKey *ev, ParoleMediaList *list)
 {
-    if ( ev->keyval == GDK_Delete )
+    GtkWidget *vbox_player;
+    switch ( ev->keyval )
     {
-	parole_media_list_remove_clicked_cb (NULL, list);
-	return TRUE;
+        case GDK_Delete:
+            parole_media_list_remove_clicked_cb (NULL, list);
+            return TRUE;
+            break;
+        case GDK_Right:
+        case GDK_Left:
+        case GDK_Page_Down:
+        case GDK_Page_Up:
+        case GDK_Escape:
+            vbox_player = GTK_WIDGET(gtk_container_get_children( GTK_CONTAINER(gtk_widget_get_parent(gtk_widget_get_parent(gtk_widget_get_parent(gtk_widget_get_parent(gtk_widget_get_parent(gtk_widget_get_parent(widget))))))) )[0].data);
+            gtk_widget_grab_focus(vbox_player);
+            return TRUE;
+            break;
+        default:
+            return FALSE;
+            break;
     }
-    return FALSE;
 }
 
 /* Callback for the add button */
