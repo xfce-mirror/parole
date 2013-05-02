@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-25 05:09+0000\n"
+"POT-Creation-Date: 2013-05-02 15:09+0000\n"
 "PO-Revision-Date: 2012-07-025 11:55+0200\n"
 "Last-Translator: Pjotr pjotrvertaalt@gmail.com\n"
 "Language-Team: Dutch (Flemish)\n"
@@ -70,7 +70,7 @@ msgstr "Automatisch"
 msgid "Buffering (0%)"
 msgstr "Aan het bufferen (0%)"
 
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:750
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:746
 msgid "Empty"
 msgstr "Leeg"
 
@@ -114,8 +114,8 @@ msgstr "Open locatie"
 msgid "Parole Media Player"
 msgstr "Parole mediaspeler"
 
-#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:1414
-#: ../src/parole-player.c:1448
+#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:1410
+#: ../src/parole-player.c:1444
 msgid "Play"
 msgstr "Afspelen"
 
@@ -233,13 +233,13 @@ msgstr "Speellijst van schijf"
 msgid "Play opened files"
 msgstr "Speel geopende bestanden af"
 
-#: ../data/interfaces/playlist.ui.h:10 ../src/parole-medialist.c:805
-#: ../src/parole-player.c:3074
+#: ../data/interfaces/playlist.ui.h:10 ../src/parole-medialist.c:821
+#: ../src/parole-player.c:3068
 msgid "Playlist"
 msgstr "Speellijst"
 
-#: ../data/interfaces/playlist.ui.h:11 ../src/parole-medialist.c:993
-#: ../src/parole-medialist.c:1137
+#: ../data/interfaces/playlist.ui.h:11 ../src/parole-medialist.c:1009
+#: ../src/parole-medialist.c:1153
 msgid "Playlist empty"
 msgstr "Speellijst is leeg"
 
@@ -440,55 +440,62 @@ msgstr "Boodschap"
 msgid "Error"
 msgstr "Fout"
 
-#: ../src/gst/parole-gst.c:1370 ../src/parole-medialist.c:377
+#: ../src/gst/parole-gst.c:1376 ../src/parole-medialist.c:379
 #, c-format
 msgid "Track %i"
 msgstr "Geluidsspoor %i"
 
-#: ../src/gst/parole-gst.c:1373
+#: ../src/gst/parole-gst.c:1379
 msgid "Audio CD"
 msgstr "Audio-CD"
 
-#: ../src/gst/parole-gst.c:1579
+#: ../src/gst/parole-gst.c:1585
 msgid "Additional software is required."
 msgstr "Extra programmatuur is vereist."
 
-#: ../src/gst/parole-gst.c:1583
+#: ../src/gst/parole-gst.c:1589
 msgid "Don't Install"
 msgstr "Niet installeren"
 
-#: ../src/gst/parole-gst.c:1585
+#: ../src/gst/parole-gst.c:1591
 msgid "Install"
 msgstr "Installeren"
 
-#: ../src/gst/parole-gst.c:2008
+#: ../src/gst/parole-gst.c:2014
 msgid "Stop"
 msgstr "Stop"
 
-#: ../src/gst/parole-gst.c:2009
+#: ../src/gst/parole-gst.c:2015
 msgid "The stream is taking too much time to load"
 msgstr "Het laden van de uitzending duurt te lang"
 
-#: ../src/gst/parole-gst.c:2184
+#: ../src/gst/parole-gst.c:2219
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Kon GStreamer-playbin-invoegtoepassing niet laden. Controleer uw GStreamer-"
 "installatie."
 
-#: ../src/gst/parole-gst.c:2208
+#: ../src/gst/parole-gst.c:2232
+msgid ""
+"Unable to load audio GStreamer plugin, check your GStreamer installation"
+msgstr ""
+"Kon de Gstreamer-video-invoegtoepassing niet laden. Controleer uw GStreamer-"
+"installatie."
+
+#: ../src/gst/parole-gst.c:2255
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Kon de Gstreamer-video-invoegtoepassing niet laden. Controleer uw GStreamer-"
 "installatie."
 
-#: ../src/gst/parole-gst.c:2816 ../src/gst/parole-gst.c:2820
+#: ../src/gst/parole-gst.c:2853 ../src/gst/parole-gst.c:2857
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Geluidsspoor #%d"
 
-#: ../src/gst/parole-gst.c:2860 ../src/gst/parole-gst.c:2864
+#: ../src/gst/parole-gst.c:2897 ../src/gst/parole-gst.c:2901
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Ondertitel #%d"
@@ -600,118 +607,118 @@ msgstr "Parole is al actief, gebruik -i om een nieuwe instantie te openen\n"
 msgid "Supported files"
 msgstr "Ondersteunde bestanden"
 
-#: ../src/parole-mediachooser.c:219 ../src/parole-player.c:965
+#: ../src/parole-mediachooser.c:219 ../src/parole-player.c:961
 msgid "All files"
 msgstr "Alle bestanden"
 
-#: ../src/parole-medialist.c:303 ../src/parole-medialist.c:1002
+#: ../src/parole-medialist.c:305 ../src/parole-medialist.c:1018
 #, c-format
 msgid "%i item"
 msgstr "%i element"
 
-#: ../src/parole-medialist.c:307
+#: ../src/parole-medialist.c:309
 #, c-format
 msgid "%i chapter"
 msgstr "%i hoofdstuk"
 
-#: ../src/parole-medialist.c:315 ../src/parole-medialist.c:1004
+#: ../src/parole-medialist.c:317 ../src/parole-medialist.c:1020
 #, c-format
 msgid "%i items"
 msgstr "%i elementen"
 
-#: ../src/parole-medialist.c:319
+#: ../src/parole-medialist.c:321
 #, c-format
 msgid "%i chapters"
 msgstr "%i hoofdstukken"
 
-#: ../src/parole-medialist.c:393
+#: ../src/parole-medialist.c:395
 #, c-format
 msgid "Chapter %i"
 msgstr "Hoofdstuk %i"
 
-#: ../src/parole-medialist.c:663
+#: ../src/parole-medialist.c:679
 msgid "Permission denied"
 msgstr "Toestemming geweigerd"
 
-#: ../src/parole-medialist.c:665
+#: ../src/parole-medialist.c:681
 msgid "Error saving playlist file"
 msgstr "Opslaan van de speellijst is mislukt"
 
-#: ../src/parole-medialist.c:677
+#: ../src/parole-medialist.c:693
 msgid "Unknown playlist format"
 msgstr "Onbekende opmaak van speellijst"
 
-#: ../src/parole-medialist.c:678
+#: ../src/parole-medialist.c:694
 msgid "Please chooser a supported playlist format"
 msgstr "Kies a.u.b. een ondersteunde speellijst-opmaak"
 
-#: ../src/parole-medialist.c:730 ../src/parole-plugins-manager.c:352
+#: ../src/parole-medialist.c:746 ../src/parole-plugins-manager.c:352
 msgid "Unknown"
 msgstr "Onbekend"
 
-#: ../src/parole-medialist.c:812
+#: ../src/parole-medialist.c:828
 msgid "M3U Playlists"
 msgstr "M3U-speellijsten"
 
-#: ../src/parole-medialist.c:820
+#: ../src/parole-medialist.c:836
 msgid "PLS Playlists"
 msgstr "PLS-speellijsten"
 
-#: ../src/parole-medialist.c:828
+#: ../src/parole-medialist.c:844
 msgid "Advanced Stream Redirector"
 msgstr "Advanced Stream Redirector"
 
-#: ../src/parole-medialist.c:836
+#: ../src/parole-medialist.c:852
 msgid "Shareable Playlist"
 msgstr "Deelbare speellijst"
 
 #. Clear
-#: ../src/parole-medialist.c:1093
+#: ../src/parole-medialist.c:1109
 msgid "Open Containing Folder"
 msgstr "Open map waar het inzit"
 
-#: ../src/parole-medialist.c:1669
+#: ../src/parole-medialist.c:1685
 msgid "Media list"
 msgstr "Medialijst"
 
-#: ../src/parole-medialist.c:1670
+#: ../src/parole-medialist.c:1686
 msgid "Chapter list"
 msgstr "Hoofdstukkenlijst"
 
-#: ../src/parole-player.c:463
+#: ../src/parole-player.c:459
 msgid "Hide playlist"
 msgstr "Verberg speellijst"
 
-#: ../src/parole-player.c:472
+#: ../src/parole-player.c:468
 msgid "Show playlist"
 msgstr "Toon speellijst"
 
-#: ../src/parole-player.c:523
+#: ../src/parole-player.c:519
 msgid "Open ISO image"
 msgstr "ISO-beeldbestand openen"
 
-#: ../src/parole-player.c:542
+#: ../src/parole-player.c:538
 msgid "CD image"
 msgstr "CD-beeldbestand"
 
-#: ../src/parole-player.c:542
+#: ../src/parole-player.c:538
 msgid "DVD image"
 msgstr "DVD-beeldbestand"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:935
+#: ../src/parole-player.c:931
 msgid "Select Subtitle File"
 msgstr "Kies ondertitelbestand"
 
-#: ../src/parole-player.c:953
+#: ../src/parole-player.c:949
 msgid "Subtitle Files"
 msgstr "Ondertitelbestanden"
 
-#: ../src/parole-player.c:1128 ../src/parole-player.c:1136
+#: ../src/parole-player.c:1124 ../src/parole-player.c:1132
 msgid "Clear Recent Items"
 msgstr "Verwijder recente elementen"
 
-#: ../src/parole-player.c:1130
+#: ../src/parole-player.c:1126
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
@@ -719,52 +726,52 @@ msgstr ""
 "Weet u zeker dat u de geschiedenis van uw recente elementen wil verwijderen? "
 "Dit kan niet ongedaan worden gemaakt."
 
-#: ../src/parole-player.c:1249 ../src/parole-player.c:1388
+#: ../src/parole-player.c:1245 ../src/parole-player.c:1384
 msgid "Media stream is not seekable"
 msgstr "Mediastroom is niet doorzoekbaar"
 
-#: ../src/parole-player.c:1352
+#: ../src/parole-player.c:1348
 msgid "Pause"
 msgstr "Pauzeren"
 
-#: ../src/parole-player.c:1715
+#: ../src/parole-player.c:1696
 msgid "GStreamer backend error"
 msgstr "Fout van Gstreamer-achtergronddienst"
 
-#: ../src/parole-player.c:1746
+#: ../src/parole-player.c:1727
 msgid "Unknown Song"
 msgstr "Onbekend nummer"
 
-#: ../src/parole-player.c:1751 ../src/parole-player.c:1753
-#: ../src/parole-player.c:1759
+#: ../src/parole-player.c:1732 ../src/parole-player.c:1734
+#: ../src/parole-player.c:1740
 msgid "on"
 msgstr "op"
 
-#: ../src/parole-player.c:1759 ../src/plugins/notify/notify-provider.c:124
+#: ../src/parole-player.c:1740 ../src/plugins/notify/notify-provider.c:130
 msgid "Unknown Album"
 msgstr "Onbekend album"
 
-#: ../src/parole-player.c:1766 ../src/parole-player.c:1770
+#: ../src/parole-player.c:1747 ../src/parole-player.c:1751
 msgid "by"
 msgstr "door"
 
-#: ../src/parole-player.c:1770 ../src/plugins/notify/notify-provider.c:126
+#: ../src/parole-player.c:1751 ../src/plugins/notify/notify-provider.c:132
 msgid "Unknown Artist"
 msgstr "Onbekende artiest"
 
-#: ../src/parole-player.c:1803
+#: ../src/parole-player.c:1784
 msgid "Buffering"
 msgstr "Aan het bufferen"
 
-#: ../src/parole-player.c:2283
+#: ../src/parole-player.c:2272
 msgid "Mute"
 msgstr "Dempen"
 
-#: ../src/parole-player.c:2288
+#: ../src/parole-player.c:2277
 msgid "Unmute"
 msgstr "Demping opheffen"
 
-#: ../src/parole-player.c:2948
+#: ../src/parole-player.c:2942
 msgid "Clear recent items..."
 msgstr "Verwijder recente elementen..."
 
@@ -941,13 +948,13 @@ msgstr "Alle ondersteunde bestanden"
 msgid "Playlist files"
 msgstr "Speellijstbestanden"
 
-#: ../src/plugins/notify/notify-provider.c:129
-#: ../src/plugins/notify/notify-provider.c:132
+#: ../src/plugins/notify/notify-provider.c:135
+#: ../src/plugins/notify/notify-provider.c:138
 msgid "<i>on</i>"
 msgstr "<i>op</i>"
 
-#: ../src/plugins/notify/notify-provider.c:129
-#: ../src/plugins/notify/notify-provider.c:132
+#: ../src/plugins/notify/notify-provider.c:135
+#: ../src/plugins/notify/notify-provider.c:138
 msgid "<i>by</i>"
 msgstr "<i>door</i>"
 
@@ -959,29 +966,29 @@ msgstr "Melden"
 msgid "Show notifications for currently playing tracks"
 msgstr "Toon meldingen voor thans spelende nummers"
 
-#: ../src/plugins/tray/tray-provider.c:244
+#: ../src/plugins/tray/tray-provider.c:229
 msgid "Tray icon plugin"
 msgstr "Systeemvak-invoegtoepassing"
 
-#: ../src/plugins/tray/tray-provider.c:254
+#: ../src/plugins/tray/tray-provider.c:239
 msgid "Always minimize to tray when window is closed"
 msgstr ""
 "Als het venster gesloten wordt, altijd minimaliseren naar het systeemvak"
 
-#: ../src/plugins/tray/tray-provider.c:300
+#: ../src/plugins/tray/tray-provider.c:285
 msgid "Are you sure you want to quit?"
 msgstr "Weet u zeker dat u wilt afsluiten?"
 
-#: ../src/plugins/tray/tray-provider.c:303
+#: ../src/plugins/tray/tray-provider.c:288
 msgid "Parole can be minimized to the system tray instead."
 msgstr "Parole kan namelijk ook worden geminimaliseerd naar het systeemvak."
 
 # de film wordt niet gedraaid?
-#: ../src/plugins/tray/tray-provider.c:306
+#: ../src/plugins/tray/tray-provider.c:291
 msgid "Minimize to tray"
 msgstr "Minimaliseren naar systeemvak"
 
-#: ../src/plugins/tray/tray-provider.c:323
+#: ../src/plugins/tray/tray-provider.c:308
 msgid "Remember my choice"
 msgstr "Onthoud mijn keuze"
 
@@ -994,15 +1001,13 @@ msgstr "Toon pictogram in het systeemvak"
 msgid "Tray icon"
 msgstr "Systeemvakpictogram"
 
-#: ../src/plugins/power-manager/power-manager.desktop.in.h:1
-msgid "Inhibit Power Manager from suspending the machine while playing DVD."
-msgstr ""
-"Verhinder energiebeheerder om het systeem in de pauzestand te zetten "
-"tijdens het afspelen van een DVD."
+#~ msgid "Inhibit Power Manager from suspending the machine while playing DVD."
+#~ msgstr ""
+#~ "Verhinder energiebeheerder om het systeem in de pauzestand te zetten "
+#~ "tijdens het afspelen van een DVD."
 
-#: ../src/plugins/power-manager/power-manager.desktop.in.h:2
-msgid "Power Manager Plugin"
-msgstr "Energiebeheer-invoegtoepassing"
+#~ msgid "Power Manager Plugin"
+#~ msgstr "Energiebeheer-invoegtoepassing"
 
 #~ msgid "Parole"
 #~ msgstr "Parole"
