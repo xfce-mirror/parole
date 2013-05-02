@@ -201,6 +201,8 @@ struct ParoleMediaListPrivate
     GtkWidget *shuffle_button;
 	GtkWidget *settings_button;
 	GtkWidget *n_items;
+	
+	char *history[3];
 };
 
 enum
@@ -1926,6 +1928,7 @@ GtkTreeRowReference *parole_media_list_get_row_random (ParoleMediaList *list)
     gchar *current_path;
     gchar *path_str;
     gint nch;
+    int count = 0;
 
     nch = gtk_tree_model_iter_n_children (GTK_TREE_MODEL (list->priv->store), NULL);
     
@@ -1937,8 +1940,20 @@ GtkTreeRowReference *parole_media_list_get_row_random (ParoleMediaList *list)
     current_path = gtk_tree_path_to_string(gtk_tree_row_reference_get_path(parole_media_list_get_selected_row(list)));
     path_str = g_strdup(current_path);
     
-    while (g_strcmp0(current_path, path_str) == 0)
+    if (!list->priv->history[0])
+        list->priv->history[0] = g_strdup(path_str);
+    
+    while (g_strcmp0(list->priv->history[0], path_str) == 0 || g_strcmp0(list->priv->history[1], path_str) == 0 || g_strcmp0(list->priv->history[2], path_str) == 0 || g_strcmp0(current_path, path_str) == 0)
+    {
         path_str = g_strdup_printf ("%i", g_random_int_range (0, nch));
+        count += 1;
+        if (count >= 10 && g_strcmp0(current_path, path_str) != 0)
+            break;
+    }
+        
+    list->priv->history[2] = list->priv->history[1];
+    list->priv->history[1] = list->priv->history[0];
+    list->priv->history[0] = g_strdup(path_str);
     
     path = gtk_tree_path_new_from_string (path_str);
     g_free (path_str);
