@@ -105,6 +105,7 @@ struct ParoleGstPrivate
 {
     GstElement	 *playbin;
     GstElement   *video_sink;
+    GstElement   *audio_sink;
 
     GstBus       *bus;
     
@@ -2224,6 +2225,18 @@ parole_gst_constructed (GObject *object)
 	g_error ("playbin load failed");
     }
     
+    gst->priv->audio_sink = gst_element_factory_make ("autoaudiosink", "audio");
+    if ( G_UNLIKELY (gst->priv->audio_sink == NULL) )
+	{
+	    GError *error;
+	    error = g_error_new (0, 0, "%s", _("Unable to load audio GStreamer plugin"
+					      ", check your GStreamer installation"));
+	    xfce_dialog_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (gst))),
+				error, NULL);
+	    g_error_free (error);
+	    g_error ("autoaudiosink load failed");
+	}
+    
     if (enable_xv)
     {
 	gst->priv->video_sink = gst_element_factory_make ("xvimagesink", "video");
@@ -2250,6 +2263,7 @@ parole_gst_constructed (GObject *object)
     
     g_object_set (G_OBJECT (gst->priv->playbin),
 		  "video-sink", gst->priv->video_sink,
+		  "audio-sink", gst->priv->audio_sink,
 		  NULL);
     
     /*
