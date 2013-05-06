@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: parole 0.1.90\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-28 00:03+0900\n"
-"PO-Revision-Date: 2013-02-28 00:10+0900\n"
+"POT-Creation-Date: 2013-05-07 01:16+0900\n"
+"PO-Revision-Date: 2013-05-07 01:18+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@googlegroups.com>\n"
 "Language: ja\n"
@@ -109,7 +109,7 @@ msgstr "オーディオ"
 msgid "Languages"
 msgstr "言語"
 
-#: ../data/interfaces/parole.ui.h:23 ../src/parole-player.c:750
+#: ../data/interfaces/parole.ui.h:23 ../src/parole-player.c:746
 msgid "Empty"
 msgstr "空"
 
@@ -153,8 +153,8 @@ msgstr "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>未知
 msgid "Previous"
 msgstr "前"
 
-#: ../data/interfaces/parole.ui.h:34 ../src/parole-player.c:1414
-#: ../src/parole-player.c:1448
+#: ../data/interfaces/parole.ui.h:34 ../src/parole-player.c:1410
+#: ../src/parole-player.c:1444
 msgid "Play"
 msgstr "再生"
 
@@ -204,8 +204,8 @@ msgstr "アングルメニュー"
 msgid "Chapter Menu"
 msgstr "チャプターメニュー"
 
-#: ../data/interfaces/playlist.ui.h:6 ../src/parole-medialist.c:805
-#: ../src/parole-player.c:3074
+#: ../data/interfaces/playlist.ui.h:6 ../src/parole-medialist.c:821
+#: ../src/parole-player.c:3068
 msgid "Playlist"
 msgstr "プレイリスト"
 
@@ -217,8 +217,8 @@ msgstr "DVD 名"
 msgid "Disc Playlist"
 msgstr "ディスクプレイリスト"
 
-#: ../data/interfaces/playlist.ui.h:9 ../src/parole-medialist.c:993
-#: ../src/parole-medialist.c:1137
+#: ../data/interfaces/playlist.ui.h:9 ../src/parole-medialist.c:1009
+#: ../src/parole-medialist.c:1153
 msgid "Playlist empty"
 msgstr "プレイリストは空です"
 
@@ -427,49 +427,53 @@ msgstr "メッセージ"
 msgid "Error"
 msgstr "エラー"
 
-#: ../src/gst/parole-gst.c:1370 ../src/parole-medialist.c:377
+#: ../src/gst/parole-gst.c:1376 ../src/parole-medialist.c:379
 #, c-format
 msgid "Track %i"
 msgstr "トラック %i"
 
-#: ../src/gst/parole-gst.c:1373
+#: ../src/gst/parole-gst.c:1379
 msgid "Audio CD"
 msgstr "オーディオ CD"
 
-#: ../src/gst/parole-gst.c:1579
+#: ../src/gst/parole-gst.c:1585
 msgid "Additional software is required."
 msgstr "追加のソフトウェアが必要です。"
 
-#: ../src/gst/parole-gst.c:1583
+#: ../src/gst/parole-gst.c:1589
 msgid "Don't Install"
 msgstr "インストールしない"
 
-#: ../src/gst/parole-gst.c:1585
+#: ../src/gst/parole-gst.c:1591
 msgid "Install"
 msgstr "インストール"
 
-#: ../src/gst/parole-gst.c:2008
+#: ../src/gst/parole-gst.c:2014
 msgid "Stop"
 msgstr "停止"
 
-#: ../src/gst/parole-gst.c:2009
+#: ../src/gst/parole-gst.c:2015
 msgid "The stream is taking too much time to load"
 msgstr "このストリームを読み込むにはかなり時間がかかります"
 
-#: ../src/gst/parole-gst.c:2184
+#: ../src/gst/parole-gst.c:2219
 msgid "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr "playbin GStreamer プラグインを読み込めません。GStreamer が正しくインストールされていることを確認してください。"
 
-#: ../src/gst/parole-gst.c:2208
+#: ../src/gst/parole-gst.c:2232
+msgid "Unable to load audio GStreamer plugin, check your GStreamer installation"
+msgstr "audio GStreamer プラグインを読み込めません。GStreamer がただしくインストールされていることを確認してください。"
+
+#: ../src/gst/parole-gst.c:2255
 msgid "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr "video GStreamer プラグインを読み込めません。GStreamer がただしくインストールされていることを確認してください。"
 
-#: ../src/gst/parole-gst.c:2816 ../src/gst/parole-gst.c:2820
+#: ../src/gst/parole-gst.c:2853 ../src/gst/parole-gst.c:2857
 #, c-format
 msgid "Audio Track #%d"
 msgstr "オーディオトラック #%d"
 
-#: ../src/gst/parole-gst.c:2860 ../src/gst/parole-gst.c:2864
+#: ../src/gst/parole-gst.c:2897 ../src/gst/parole-gst.c:2901
 #, c-format
 msgid "Subtitle #%d"
 msgstr "字幕 #%d"
@@ -580,167 +584,167 @@ msgstr "Parole は既に起動しています。新しいインスタンスを�
 msgid "Supported files"
 msgstr "サポートファイル"
 
-#: ../src/parole-mediachooser.c:219 ../src/parole-player.c:965
+#: ../src/parole-mediachooser.c:219 ../src/parole-player.c:961
 msgid "All files"
 msgstr "すべてのファイル"
 
-#: ../src/parole-medialist.c:303 ../src/parole-medialist.c:1002
+#: ../src/parole-medialist.c:305 ../src/parole-medialist.c:1018
 #, c-format
 msgid "%i item"
 msgstr "%i 個のアイテム"
 
-#: ../src/parole-medialist.c:307
+#: ../src/parole-medialist.c:309
 #, c-format
 msgid "%i chapter"
 msgstr "%i 個のチャプター"
 
-#: ../src/parole-medialist.c:315 ../src/parole-medialist.c:1004
+#: ../src/parole-medialist.c:317 ../src/parole-medialist.c:1020
 #, c-format
 msgid "%i items"
 msgstr "%i 個のアイテム"
 
-#: ../src/parole-medialist.c:319
+#: ../src/parole-medialist.c:321
 #, c-format
 msgid "%i chapters"
 msgstr "%i 個のチャプター"
 
-#: ../src/parole-medialist.c:393
+#: ../src/parole-medialist.c:395
 #, c-format
 msgid "Chapter %i"
 msgstr "チャプター %i"
 
-#: ../src/parole-medialist.c:663
+#: ../src/parole-medialist.c:679
 msgid "Permission denied"
 msgstr "アクセス権がありません"
 
-#: ../src/parole-medialist.c:665
+#: ../src/parole-medialist.c:681
 msgid "Error saving playlist file"
 msgstr "プレイリストファイルの保存でエラーです"
 
-#: ../src/parole-medialist.c:677
+#: ../src/parole-medialist.c:693
 msgid "Unknown playlist format"
 msgstr "未知のプレイリスト形式"
 
-#: ../src/parole-medialist.c:678
+#: ../src/parole-medialist.c:694
 msgid "Please chooser a supported playlist format"
 msgstr "サポートされているプレイリスト形式を選択してください"
 
-#: ../src/parole-medialist.c:730 ../src/parole-plugins-manager.c:352
+#: ../src/parole-medialist.c:746 ../src/parole-plugins-manager.c:352
 msgid "Unknown"
 msgstr "不明"
 
-#: ../src/parole-medialist.c:812
+#: ../src/parole-medialist.c:828
 msgid "M3U Playlists"
 msgstr "M3U プレイリスト"
 
-#: ../src/parole-medialist.c:820
+#: ../src/parole-medialist.c:836
 msgid "PLS Playlists"
 msgstr "PLS プレイリスト"
 
-#: ../src/parole-medialist.c:828
+#: ../src/parole-medialist.c:844
 msgid "Advanced Stream Redirector"
 msgstr "Advanced Stream Redirector"
 
-#: ../src/parole-medialist.c:836
+#: ../src/parole-medialist.c:852
 msgid "Shareable Playlist"
 msgstr "共有プレイリスト"
 
 #. Clear
-#: ../src/parole-medialist.c:1093
+#: ../src/parole-medialist.c:1109
 msgid "Open Containing Folder"
 msgstr "このファイルのあるフォルダーを開く"
 
-#: ../src/parole-medialist.c:1669
+#: ../src/parole-medialist.c:1685
 msgid "Media list"
 msgstr "メディアリスト"
 
-#: ../src/parole-medialist.c:1670
+#: ../src/parole-medialist.c:1686
 msgid "Chapter list"
 msgstr "チャプターリスト"
 
-#: ../src/parole-player.c:463
+#: ../src/parole-player.c:459
 msgid "Hide playlist"
 msgstr "プレイリストを隠す"
 
-#: ../src/parole-player.c:472
+#: ../src/parole-player.c:468
 msgid "Show playlist"
 msgstr "プレイリストを表示"
 
-#: ../src/parole-player.c:523
+#: ../src/parole-player.c:519
 msgid "Open ISO image"
 msgstr "ISO イメージを開く"
 
-#: ../src/parole-player.c:542
+#: ../src/parole-player.c:538
 msgid "CD image"
 msgstr "CD イメージ"
 
-#: ../src/parole-player.c:542
+#: ../src/parole-player.c:538
 msgid "DVD image"
 msgstr "DVD イメージ"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:935
+#: ../src/parole-player.c:931
 msgid "Select Subtitle File"
 msgstr "字幕ファイルの選択"
 
-#: ../src/parole-player.c:953
+#: ../src/parole-player.c:949
 msgid "Subtitle Files"
 msgstr "字幕ファイル"
 
-#: ../src/parole-player.c:1128 ../src/parole-player.c:1136
+#: ../src/parole-player.c:1124 ../src/parole-player.c:1132
 msgid "Clear Recent Items"
 msgstr "最近のアイテムのクリア"
 
-#: ../src/parole-player.c:1130
+#: ../src/parole-player.c:1126
 msgid "Are you sure you wish to clear your recent items history?  This cannot be undone."
 msgstr "最近開いたファイルの履歴をクリアしますか? これはやり直せません。"
 
-#: ../src/parole-player.c:1249 ../src/parole-player.c:1388
+#: ../src/parole-player.c:1245 ../src/parole-player.c:1384
 msgid "Media stream is not seekable"
 msgstr "メディアストリームはシークできません"
 
-#: ../src/parole-player.c:1352
+#: ../src/parole-player.c:1348
 msgid "Pause"
 msgstr "一時停止"
 
-#: ../src/parole-player.c:1715
+#: ../src/parole-player.c:1696
 msgid "GStreamer backend error"
 msgstr "GStreamer バックエンドエラー"
 
-#: ../src/parole-player.c:1746
+#: ../src/parole-player.c:1727
 msgid "Unknown Song"
 msgstr "未知の楽曲"
 
-#: ../src/parole-player.c:1751 ../src/parole-player.c:1753
-#: ../src/parole-player.c:1759
+#: ../src/parole-player.c:1732 ../src/parole-player.c:1734
+#: ../src/parole-player.c:1740
 msgid "on"
 msgstr "なし"
 
-#: ../src/parole-player.c:1759 ../src/plugins/notify/notify-provider.c:124
+#: ../src/parole-player.c:1740 ../src/plugins/notify/notify-provider.c:130
 msgid "Unknown Album"
 msgstr "未知のアルバム"
 
-#: ../src/parole-player.c:1766 ../src/parole-player.c:1770
+#: ../src/parole-player.c:1747 ../src/parole-player.c:1751
 msgid "by"
 msgstr "by"
 
-#: ../src/parole-player.c:1770 ../src/plugins/notify/notify-provider.c:126
+#: ../src/parole-player.c:1751 ../src/plugins/notify/notify-provider.c:132
 msgid "Unknown Artist"
 msgstr "未知のアーティスト"
 
-#: ../src/parole-player.c:1803
+#: ../src/parole-player.c:1784
 msgid "Buffering"
 msgstr "バッファーしています"
 
-#: ../src/parole-player.c:2283
+#: ../src/parole-player.c:2272
 msgid "Mute"
 msgstr "ミュート"
 
-#: ../src/parole-player.c:2288
+#: ../src/parole-player.c:2277
 msgid "Unmute"
 msgstr "ミュート解除"
 
-#: ../src/parole-player.c:2948
+#: ../src/parole-player.c:2942
 msgid "Clear recent items..."
 msgstr "最近のアイテムのクリア..."
 
@@ -917,13 +921,13 @@ msgstr "すべてのサポートファイル"
 msgid "Playlist files"
 msgstr "プレイリストファイル"
 
-#: ../src/plugins/notify/notify-provider.c:129
-#: ../src/plugins/notify/notify-provider.c:132
+#: ../src/plugins/notify/notify-provider.c:135
+#: ../src/plugins/notify/notify-provider.c:138
 msgid "<i>on</i>"
 msgstr "<i>on</i>"
 
-#: ../src/plugins/notify/notify-provider.c:129
-#: ../src/plugins/notify/notify-provider.c:132
+#: ../src/plugins/notify/notify-provider.c:135
+#: ../src/plugins/notify/notify-provider.c:138
 msgid "<i>by</i>"
 msgstr "<i>by</i>"
 
@@ -935,27 +939,27 @@ msgstr "通知"
 msgid "Show notifications for currently playing tracks"
 msgstr "現在再生中のトラックの通知を表示します"
 
-#: ../src/plugins/tray/tray-provider.c:244
+#: ../src/plugins/tray/tray-provider.c:229
 msgid "Tray icon plugin"
 msgstr "トレイアイコンプラグイン"
 
-#: ../src/plugins/tray/tray-provider.c:254
+#: ../src/plugins/tray/tray-provider.c:239
 msgid "Always minimize to tray when window is closed"
 msgstr "ウィンドウが閉じられた時、常にトレイに最小化する"
 
-#: ../src/plugins/tray/tray-provider.c:300
+#: ../src/plugins/tray/tray-provider.c:285
 msgid "Are you sure you want to quit?"
 msgstr "終了してもよろしいですか?"
 
-#: ../src/plugins/tray/tray-provider.c:303
+#: ../src/plugins/tray/tray-provider.c:288
 msgid "Parole can be minimized to the system tray instead."
 msgstr "Parole をシステムトレイに最小化することもできます。"
 
-#: ../src/plugins/tray/tray-provider.c:306
+#: ../src/plugins/tray/tray-provider.c:291
 msgid "Minimize to tray"
 msgstr "トレイに最小化"
 
-#: ../src/plugins/tray/tray-provider.c:323
+#: ../src/plugins/tray/tray-provider.c:308
 msgid "Remember my choice"
 msgstr "選択を記憶する"
 
@@ -967,13 +971,11 @@ msgstr "トレイアイコン"
 msgid "Show icon in the system tray"
 msgstr "システムトレイにアイコンを表示します"
 
-#: ../src/plugins/power-manager/power-manager.desktop.in.h:1
-msgid "Power Manager Plugin"
-msgstr "電源管理プラグイン"
+#~ msgid "Power Manager Plugin"
+#~ msgstr "電源管理プラグイン"
 
-#: ../src/plugins/power-manager/power-manager.desktop.in.h:2
-msgid "Inhibit Power Manager from suspending the machine while playing DVD."
-msgstr "DVD の再生中に電源管理によるサスペンドを抑止します"
+#~ msgid "Inhibit Power Manager from suspending the machine while playing DVD."
+#~ msgstr "DVD の再生中に電源管理によるサスペンドを抑止します"
 
 #~ msgid "Parole"
 #~ msgstr "Parole"
