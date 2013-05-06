@@ -3,7 +3,7 @@ git-master: bluesabre@xfce.org
     * Fix m3u playlist processing with relative filenames (bug #10038)
     * Fix playlist controls disabling access to media controls (bug #9936)
     * Fix next-button ignoring shuffle mode (bug #10039)
-    * Prevent shuffle from playing the same song twice in a row
+    * Prevent shuffle from playing the same song twice in a row (bug #9859)
     * Fix MKV subtitles being shown when automatically show subtitles is disabled (bug 9880)
 
 2013-03-06: bluesabre@xfce.org
