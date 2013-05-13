@@ -2,21 +2,21 @@
 # Copyright (C) 2009 the Parole COPYRIGHT HOLDER
 # This file is distributed under the same license as Parole.
 # Elega <elega@elega.com.ar>, 2009.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Parole\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-14 14:30+0000\n"
+"POT-Creation-Date: 2013-05-13 15:45+0000\n"
 "PO-Revision-Date: 2013-04-14 10:45-0600\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitoschido@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: Spanish\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #: ../data/interfaces/parole.ui.h:1
 msgid "16:9 (Widescreen)"
@@ -226,13 +226,13 @@ msgstr "Lista de reproducción de disco"
 msgid "Play opened files"
 msgstr "Reproducir archivos abiertos"
 
-#: ../data/interfaces/playlist.ui.h:10 ../src/parole-medialist.c:805
+#: ../data/interfaces/playlist.ui.h:10 ../src/parole-medialist.c:821
 #: ../src/parole-player.c:3068
 msgid "Playlist"
 msgstr "Lista de reproducción"
 
-#: ../data/interfaces/playlist.ui.h:11 ../src/parole-medialist.c:993
-#: ../src/parole-medialist.c:1137
+#: ../data/interfaces/playlist.ui.h:11 ../src/parole-medialist.c:1009
+#: ../src/parole-medialist.c:1153
 msgid "Playlist empty"
 msgstr "Lista de reproducción vacía"
 
@@ -433,55 +433,62 @@ msgstr "Mensaje"
 msgid "Error"
 msgstr "Error"
 
-#: ../src/gst/parole-gst.c:1375 ../src/parole-medialist.c:377
+#: ../src/gst/parole-gst.c:1376 ../src/parole-medialist.c:379
 #, c-format
 msgid "Track %i"
 msgstr "Pista n.º %i"
 
-#: ../src/gst/parole-gst.c:1378
+#: ../src/gst/parole-gst.c:1379
 msgid "Audio CD"
 msgstr "CD de sonido"
 
-#: ../src/gst/parole-gst.c:1584
+#: ../src/gst/parole-gst.c:1585
 msgid "Additional software is required."
 msgstr "Se necesita software adicional."
 
-#: ../src/gst/parole-gst.c:1588
+#: ../src/gst/parole-gst.c:1589
 msgid "Don't Install"
 msgstr "No instalar"
 
-#: ../src/gst/parole-gst.c:1590
+#: ../src/gst/parole-gst.c:1591
 msgid "Install"
 msgstr "Instalar"
 
-#: ../src/gst/parole-gst.c:2013
+#: ../src/gst/parole-gst.c:2014
 msgid "Stop"
 msgstr "Detener"
 
-#: ../src/gst/parole-gst.c:2014
+#: ../src/gst/parole-gst.c:2015
 msgid "The stream is taking too much time to load"
 msgstr "El flujo está demorando demasiado tiempo para cargar"
 
-#: ../src/gst/parole-gst.c:2218
+#: ../src/gst/parole-gst.c:2219
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "No se puede cargar el complemento «playbin» de GStreamer, compruebe su "
 "instalación de GStreamer"
 
-#: ../src/gst/parole-gst.c:2242
+#: ../src/gst/parole-gst.c:2232
+msgid ""
+"Unable to load audio GStreamer plugin, check your GStreamer installation"
+msgstr ""
+"No se puede cargar el complemento de vídeo GStreamer, compruebe su "
+"instalación de GStreamer"
+
+#: ../src/gst/parole-gst.c:2255
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "No se puede cargar el complemento de vídeo GStreamer, compruebe su "
 "instalación de GStreamer"
 
-#: ../src/gst/parole-gst.c:2839 ../src/gst/parole-gst.c:2843
+#: ../src/gst/parole-gst.c:2853 ../src/gst/parole-gst.c:2857
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Pista de sonido n.º %d"
 
-#: ../src/gst/parole-gst.c:2883 ../src/gst/parole-gst.c:2887
+#: ../src/gst/parole-gst.c:2897 ../src/gst/parole-gst.c:2901
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Subtitulo n.º %d"
@@ -597,77 +604,77 @@ msgstr "Archivos compatibles"
 msgid "All files"
 msgstr "Todos los archivos"
 
-#: ../src/parole-medialist.c:303 ../src/parole-medialist.c:1002
+#: ../src/parole-medialist.c:305 ../src/parole-medialist.c:1018
 #, c-format
 msgid "%i item"
 msgstr "%i elemento"
 
-#: ../src/parole-medialist.c:307
+#: ../src/parole-medialist.c:309
 #, c-format
 msgid "%i chapter"
 msgstr "%i capítulo"
 
-#: ../src/parole-medialist.c:315 ../src/parole-medialist.c:1004
+#: ../src/parole-medialist.c:317 ../src/parole-medialist.c:1020
 #, c-format
 msgid "%i items"
 msgstr "%i elementos"
 
-#: ../src/parole-medialist.c:319
+#: ../src/parole-medialist.c:321
 #, c-format
 msgid "%i chapters"
 msgstr "%i capítulos"
 
-#: ../src/parole-medialist.c:393
+#: ../src/parole-medialist.c:395
 #, c-format
 msgid "Chapter %i"
 msgstr "Capítulo %i"
 
-#: ../src/parole-medialist.c:663
+#: ../src/parole-medialist.c:679
 msgid "Permission denied"
 msgstr "Permiso denegado"
 
-#: ../src/parole-medialist.c:665
+#: ../src/parole-medialist.c:681
 msgid "Error saving playlist file"
 msgstr "Error al guardar el archivo de lista de reproducción"
 
-#: ../src/parole-medialist.c:677
+#: ../src/parole-medialist.c:693
 msgid "Unknown playlist format"
 msgstr "Formato desconocido de lista de reproducción"
 
-#: ../src/parole-medialist.c:678
+#: ../src/parole-medialist.c:694
 msgid "Please chooser a supported playlist format"
 msgstr "Seleccione un formato de lista de reproducción compatible"
 
-#: ../src/parole-medialist.c:730 ../src/parole-plugins-manager.c:352
+#: ../src/parole-medialist.c:746 ../src/parole-plugins-manager.c:352
 msgid "Unknown"
 msgstr "Desconocido"
 
-#: ../src/parole-medialist.c:812
+#: ../src/parole-medialist.c:828
 msgid "M3U Playlists"
 msgstr "Listas de reproducción M3U"
 
-#: ../src/parole-medialist.c:820
+#: ../src/parole-medialist.c:836
 msgid "PLS Playlists"
 msgstr "Listas de reproducción PLS"
 
-#: ../src/parole-medialist.c:828
+#: ../src/parole-medialist.c:844
 msgid "Advanced Stream Redirector"
 msgstr "Advanced Stream Redirector"
 
-#: ../src/parole-medialist.c:836
+#: ../src/parole-medialist.c:852
 msgid "Shareable Playlist"
 msgstr "Lista de reproducción compartible"
 
 #. Clear
-#: ../src/parole-medialist.c:1093
+#: ../src/parole-medialist.c:1109
 msgid "Open Containing Folder"
 msgstr "Abrir la carpeta contenedora"
 
-#: ../src/parole-medialist.c:1669
+#: ../src/parole-medialist.c:1685
 msgid "Media list"
 msgstr "Lista de medios"
 
-#: ../src/parole-medialist.c:1670
+#: ../src/parole-medialist.c:1686
 msgid "Chapter list"
 msgstr "Lista de capítulos"
 
