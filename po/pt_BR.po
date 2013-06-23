@@ -3,21 +3,21 @@
 # This file is distributed under the same license as the parole package.
 # Sérgio Cipolla <secipolla@gmail.com>, 2011.
 # Rafael Ferreira <rafael.f.f1@gmail.com>, 2012, 2013.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: parole 0.2.0.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-06 21:45+0000\n"
+"POT-Creation-Date: 2013-06-11 00:09+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <xfce-i18n-br@xfce.org>\n"
-"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: pt_BR\n"
 "X-Generator: Poedit 1.5.5\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../data/interfaces/parole.ui.h:1
 msgid "16:9 (Widescreen)"
@@ -201,7 +201,7 @@ msgstr "Menu de ângulo"
 
 #: ../data/interfaces/playlist.ui.h:3
 msgid "Audio Menu"
-msgstr "Menu de Áudio"
+msgstr "Menu de áudio"
 
 #: ../data/interfaces/playlist.ui.h:4
 msgid "Chapter Menu"
@@ -441,55 +441,55 @@ msgstr "Faixa %i"
 
 #: ../src/gst/parole-gst.c:1379
 msgid "Audio CD"
-msgstr "CD de Áudio"
+msgstr "CD de áudio"
 
-#: ../src/gst/parole-gst.c:1585
+#: ../src/gst/parole-gst.c:1589
 msgid "Additional software is required."
 msgstr "Softwares adicionais são necessários."
 
-#: ../src/gst/parole-gst.c:1589
+#: ../src/gst/parole-gst.c:1594
 msgid "Don't Install"
 msgstr "Não instalar"
 
-#: ../src/gst/parole-gst.c:1591
+#: ../src/gst/parole-gst.c:1596
 msgid "Install"
 msgstr "Instalar"
 
-#: ../src/gst/parole-gst.c:2014
+#: ../src/gst/parole-gst.c:2028
 msgid "Stop"
 msgstr "Parar"
 
-#: ../src/gst/parole-gst.c:2015
+#: ../src/gst/parole-gst.c:2029
 msgid "The stream is taking too much time to load"
 msgstr "A transmissão está levando muito tempo para carregar"
 
-#: ../src/gst/parole-gst.c:2219
+#: ../src/gst/parole-gst.c:2233
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Incapaz de carregar o plugin playbin GStreamer. Verifique a instalação do "
 "GStreamer"
 
-#: ../src/gst/parole-gst.c:2232
+#: ../src/gst/parole-gst.c:2246
 msgid ""
 "Unable to load audio GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Não foi possível carregar o plugin de áudio GStreamer. Verifique a "
 "instalação do GStreamer"
 
-#: ../src/gst/parole-gst.c:2255
+#: ../src/gst/parole-gst.c:2269
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
 msgstr ""
 "Incapaz de carregar o plugin de vídeo GStreamer. Verifique a instalação do "
 "GStreamer"
 
-#: ../src/gst/parole-gst.c:2853 ../src/gst/parole-gst.c:2857
+#: ../src/gst/parole-gst.c:2867 ../src/gst/parole-gst.c:2871
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Faixa #%d"
 
-#: ../src/gst/parole-gst.c:2897 ../src/gst/parole-gst.c:2901
+#: ../src/gst/parole-gst.c:2911 ../src/gst/parole-gst.c:2915
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Legenda #%d"
@@ -569,7 +569,7 @@ msgstr "Emudecer volume"
 
 #: ../src/main.c:287
 msgid "Version information"
-msgstr "Informação da versão"
+msgstr "Informações da versão"
 
 #: ../src/main.c:288
 msgid "Use embedded mode"
@@ -589,7 +589,7 @@ msgstr "Adicionar arquivos à lista de reprodução"
 
 #: ../src/main.c:293
 msgid "Media to play"
-msgstr "Mídia a reproduzir"
+msgstr "Mídia a ser reproduzida"
 
 #: ../src/main.c:342
 #, c-format
