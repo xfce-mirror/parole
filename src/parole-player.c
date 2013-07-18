@@ -3305,6 +3305,7 @@ void parole_player_combo_box_audiotrack_changed_cb(GtkWidget *widget, ParolePlay
 void parole_player_combo_box_subtitles_changed_cb(GtkWidget *widget, ParolePlayer *player)
 {
 	gint sub_index = gtk_combo_box_get_active(GTK_COMBO_BOX(player->priv->combobox_subtitles));
+	if (player->priv->update_languages == FALSE)
 	gst_set_current_subtitle_track(PAROLE_GST(player->priv->gst), sub_index);
 	parole_player_set_subtitle_radio_menu_item_selected(player, sub_index);
 }
