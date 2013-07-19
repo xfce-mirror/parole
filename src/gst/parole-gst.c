@@ -68,8 +68,7 @@ static void	parole_gst_play_file_internal 	(ParoleGst *gst);
 static void     parole_gst_change_state 	(ParoleGst *gst, 
 						 GstState new);
 
-static void	parole_gst_terminate_internal   (ParoleGst *gst, 
-						 gboolean fade_sound);
+static void	parole_gst_terminate_internal   (ParoleGst *gst);
 						 
 static GdkPixbuf * parole_gst_tag_list_get_cover_external (ParoleGst *gst);
 
@@ -2031,7 +2030,7 @@ parole_gst_check_state_change_timeout (gpointer data)
 	    
 	if ( ret_val )
 	{
-	    parole_gst_terminate_internal (gst, FALSE);
+	    parole_gst_terminate_internal (gst);
 	    gst->priv->state_change_id = 0;
 	    return FALSE;
 	}
@@ -2040,7 +2039,7 @@ parole_gst_check_state_change_timeout (gpointer data)
 }
 
 static void
-parole_gst_terminate_internal (ParoleGst *gst, gboolean fade_sound)
+parole_gst_terminate_internal (ParoleGst *gst)
 {
     gboolean playing_video;
     
@@ -2054,26 +2053,6 @@ parole_gst_terminate_internal (ParoleGst *gst, gboolean fade_sound)
     g_mutex_unlock (&gst->priv->lock);
 
     parole_window_busy_cursor (GTK_WIDGET (gst)->window);
-    
-    if ( fade_sound && gst->priv->state == GST_STATE_PLAYING && !playing_video )
-    {
-	gdouble volume;
-	gdouble step;
-	volume = parole_gst_get_volume (gst);
-	/*
-	 * Fade-out on exit.
-	 */
-	if ( volume != 0 )
-	{
-	    while ( volume > 0 )
-	    {
-		step = volume - volume / 10;
-		parole_gst_set_volume (gst, step < 0.01 ? 0 : step);
-		volume = parole_gst_get_volume (gst);
-		g_usleep (15000);
-	    }
-	}
-    }
     
     parole_gst_change_state (gst, GST_STATE_NULL);
 }
@@ -2663,7 +2642,7 @@ void parole_gst_stop (ParoleGst *gst)
 void parole_gst_terminate (ParoleGst *gst)
 {
     gst->priv->terminating = TRUE;
-    parole_gst_terminate_internal (gst, TRUE);
+    parole_gst_terminate_internal (gst);
 }
 
 void parole_gst_shutdown (ParoleGst *gst)
