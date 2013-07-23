@@ -347,7 +347,7 @@ parole_media_list_files_open (ParoleMediaList *list, GSList *files, gboolean dis
 		  NULL);
     
     len = g_slist_length (files);
-    TRACE ("Adding files");
+    TRACE ("Adding %i files", len);
     
     if ( len > 1 )
         g_signal_emit (G_OBJECT (list), signals [SHOW_PLAYLIST], 0, TRUE);
@@ -1807,18 +1807,35 @@ parole_media_list_add_by_path (ParoleMediaList *list, const gchar *path, gboolea
     GtkFileFilter *filter;
     guint len;
     gboolean ret = FALSE;
+    gchar *full_path;
     
     filter = parole_get_supported_media_filter ();
     g_object_ref_sink (filter);
     
-    TRACE ("Path=%s", path);
+    if (g_path_is_absolute(path)) {
+        full_path = g_strdup(path);
+    }
+    else 
+    {
+        if (g_file_test( g_strjoin("/", g_get_current_dir(), g_strdup(path), NULL), G_FILE_TEST_EXISTS))
+        {
+            full_path = g_strjoin("/", g_get_current_dir(), g_strdup(path), NULL);
+        }
+        else
+        {
+            full_path = g_strdup(path);
+        }
+    }
+    TRACE ("Path=%s", full_path);
     
-    parole_get_media_files (filter, path, TRUE, &files_list);
+    parole_get_media_files (filter, full_path, TRUE, &files_list);
     
     parole_media_list_files_open (list, files_list, FALSE, emit);
     
     len = g_slist_length (files_list);
     ret = len == 0 ? FALSE : TRUE;
+    
+    g_free(full_path);
     
     g_object_unref (filter);
     g_slist_free (files_list);
