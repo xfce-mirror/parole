@@ -1,4 +1,13 @@
-git-master: bluesabre@xfce.org
+2013-07-23: bluesabre@xfce.org
+    * Bugfix release 0.5.2
+    * Revert "Fix MKV subtitles being shown when automatically show subtitles is disabled (bug 9880)"
+    * Fix freezing on load of some subtitles (bugs #9194, #10073)
+    * Fix crash on startup when "Remember playlist" option enabled (bug #10166)
+    * Fix muting after playing media (bugs #10059, #10123)
+    * Fix failure to load filenames with space after colon (bug #10236)
+    * Fix gstreamer version check (bug #10155)
+
+2013-06-03: bluesabre@xfce.org
     * Bugfix release 0.5.1
     * Fix m3u playlist processing with relative filenames (bug #10038)
     * Fix playlist controls disabling access to media controls (bug #9936)
