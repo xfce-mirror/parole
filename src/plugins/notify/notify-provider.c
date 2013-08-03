@@ -1,5 +1,5 @@
 /*
- * * Copyright (C) 2012 Sean Davis <smd.seandavis@gmail.com>
+ * * Copyright (C) 2012-2013 Sean Davis <smd.seandavis@gmail.com>
  *
  * Licensed under the GNU General Public License Version 2
  *
