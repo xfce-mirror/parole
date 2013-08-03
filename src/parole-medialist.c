@@ -1175,9 +1175,19 @@ play_opened_files_activated_cb (GtkWidget *mi, ParoleConf *conf)
 static void
 remember_playlist_activated_cb (GtkWidget *mi, ParoleConf *conf)
 {
+    gchar *playlist_filename;
+    GFile *playlist_file;
     g_object_set (G_OBJECT (conf),
 		  "remember-playlist", gtk_check_menu_item_get_active (GTK_CHECK_MENU_ITEM (mi)),
 		  NULL);
+    if (!gtk_check_menu_item_get_active (GTK_CHECK_MENU_ITEM (mi))) {
+        playlist_filename = xfce_resource_save_location (XFCE_RESOURCE_DATA, 
+                                                     PAROLE_AUTO_SAVED_PLAYLIST, 
+                                                     FALSE);
+        playlist_file = g_file_new_for_path(playlist_filename);
+        g_file_delete(playlist_file, NULL, NULL);
+        g_free(playlist_filename);
+    }
 }
 
 static void
