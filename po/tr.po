@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-03 20:28+0200\n"
-"PO-Revision-Date: 2013-08-03 10:44+0000\n"
+"PO-Revision-Date: 2013-08-10 20:28+0000\n"
 "Last-Translator: wexaw\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/xfce/language/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -29,11 +29,11 @@ msgstr "_Ortam"
 
 #: ../data/interfaces/parole.ui.h:3
 msgid "Open _Location"
-msgstr ""
+msgstr "K_onum Aç"
 
 #: ../data/interfaces/parole.ui.h:4
 msgid "Open Recent"
-msgstr ""
+msgstr "Son Oynatılanlar"
 
 #: ../data/interfaces/parole.ui.h:5 ../src/parole-disc.c:110
 #: ../src/parole-disc.c:156
@@ -222,7 +222,7 @@ msgstr ""
 #: ../data/interfaces/playlist.ui.h:9 ../src/parole-medialist.c:1009
 #: ../src/parole-medialist.c:1153
 msgid "Playlist empty"
-msgstr ""
+msgstr "Oynatma listesi boş"
 
 #: ../data/interfaces/playlist.ui.h:10
 msgid "Add…"
@@ -246,7 +246,7 @@ msgstr "Rastgele"
 
 #: ../data/interfaces/playlist.ui.h:15
 msgid "Playlist options"
-msgstr ""
+msgstr "Oynatma listesi seçenekleri"
 
 #: ../data/interfaces/playlist.ui.h:16
 msgid "Replace playlist when opening files"
@@ -411,7 +411,7 @@ msgstr ""
 
 #: ../data/desktop/parole.desktop.in.in.h:3
 msgid "Play/Pause"
-msgstr ""
+msgstr "Oynat/Duraklat"
 
 #: ../data/desktop/parole.desktop.in.in.h:4
 msgid "Previous Track"
@@ -661,11 +661,11 @@ msgstr "Bölüm listesi"
 
 #: ../src/parole-player.c:459
 msgid "Hide playlist"
-msgstr ""
+msgstr "Oynatma listesini gizle"
 
 #: ../src/parole-player.c:468
 msgid "Show playlist"
-msgstr ""
+msgstr "Oynatma listesini göster"
 
 #: ../src/parole-player.c:519
 msgid "Open ISO image"
