@@ -104,7 +104,7 @@ static void parole_plugins_manager_set_property    (GObject *object,
 struct ParolePluginsManagerPrivate
 {
     GtkWidget *list_nt;
-    GtkWidget *main_nt;
+    GtkWidget *main_window;
     
     GPtrArray *array;
     
@@ -166,6 +166,13 @@ parole_plugins_manager_get_selected_module_data (PrefData *pref, ParoleProviderM
     GtkTreeIter       iter;
 
     sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (pref->view));
+    
+    if ( !sel )
+    {
+        *module = NULL;
+        *info = NULL;
+        return;
+    }
 
     if ( !gtk_tree_selection_get_selected (sel, &model, &iter))
     {
@@ -389,7 +396,7 @@ parole_plugins_manager_show_plugins_pref (GtkWidget *widget, ParolePluginsManage
     /*No plugins found*/
     if ( manager->priv->array->len == 0 )
     {
-        parole_dialog_info (GTK_WINDOW (gtk_widget_get_toplevel (manager->priv->main_nt)),
+        parole_dialog_info (GTK_WINDOW (manager->priv->main_window),
         _("No installed plugins found on this system"),
         _("No installed plugins found on this system")); 
         return;
@@ -411,7 +418,7 @@ parole_plugins_manager_show_plugins_pref (GtkWidget *widget, ParolePluginsManage
     pref->configure = GTK_WIDGET (gtk_builder_get_object (builder, "configure"));
 
     gtk_window_set_transient_for (GTK_WINDOW (pref->window), 
-    GTK_WINDOW (gtk_widget_get_toplevel (manager->priv->main_nt)));
+    GTK_WINDOW (manager->priv->main_window));
 
     for ( i = 0; i < manager->priv->array->len; i++)
     {
@@ -603,7 +610,7 @@ parole_plugins_manager_init (ParolePluginsManager *manager)
     manager->priv->load_plugins = TRUE;
 
     manager->priv->list_nt = GTK_WIDGET (gtk_builder_get_object (builder, "notebook-playlist"));
-    manager->priv->main_nt = GTK_WIDGET (gtk_builder_get_object (builder, "main-notebook"));
+    manager->priv->main_window = GTK_WIDGET (gtk_builder_get_object (builder, "main-window"));
 
     manager->priv->conf = parole_conf_new();
 
@@ -613,17 +620,10 @@ parole_plugins_manager_init (ParolePluginsManager *manager)
     g_signal_connect   (manager->priv->list_nt, "page-removed",
                         G_CALLBACK (parole_plugins_manager_page_removed_cb), NULL);
 
-    g_signal_connect   (manager->priv->main_nt, "page-added",
-                        G_CALLBACK (parole_plugins_manager_page_added_cb), NULL);
-
-    g_signal_connect   (manager->priv->main_nt, "page-removed",
-                        G_CALLBACK (parole_plugins_manager_page_removed_cb), NULL);
-
     g_signal_connect   (gtk_builder_get_object (builder, "plugins-menu-item"), "activate",
                         G_CALLBACK (parole_plugins_manager_show_plugins_pref), manager);
 
     parole_plugins_manager_set_show_tabs (GTK_NOTEBOOK (manager->priv->list_nt));
-    parole_plugins_manager_set_show_tabs (GTK_NOTEBOOK (manager->priv->main_nt));
 
     g_object_unref (builder);
 }
@@ -726,11 +726,6 @@ parole_plugins_manager_pack (ParolePluginsManager *manager, GtkWidget *widget, c
     if ( container == PAROLE_PLUGIN_CONTAINER_PLAYLIST )
     {
         gtk_notebook_append_page (GTK_NOTEBOOK (manager->priv->list_nt), widget, gtk_label_new (title));
-        gtk_widget_show_all (widget);
-    }
-    else if ( container == PAROLE_PLUGIN_CONTAINER_MAIN_VIEW )
-    {
-        gtk_notebook_append_page (GTK_NOTEBOOK (manager->priv->main_nt), widget, gtk_label_new (title));
         gtk_widget_show_all (widget);
     }
 }

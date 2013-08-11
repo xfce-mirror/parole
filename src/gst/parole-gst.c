@@ -305,9 +305,9 @@ parole_gst_realize (GtkWidget *widget)
 		      G_CALLBACK (parole_gst_configure_event_cb), gst);
 		      
 #if GTK_CHECK_VERSION(3, 0, 0)
-    g_signal_connect (gtk_widget_get_parent (widget), "draw",
+    g_signal_connect (gtk_widget_get_parent(gtk_widget_get_parent (widget)), "draw",
 #else
-    g_signal_connect (gtk_widget_get_parent (widget), "expose_event",
+    g_signal_connect (gtk_widget_get_parent(gtk_widget_get_parent (widget)), "expose-event",
 #endif
 		      G_CALLBACK (parole_gst_parent_expose_event), gst);
 		      
@@ -603,7 +603,7 @@ parole_gst_set_video_overlay (ParoleGst *gst)
     if ( GDK_IS_WINDOW (gtk_widget_get_window(GTK_WIDGET (gst))) )
 #if GST_CHECK_VERSION(1, 0, 0)
 	gst_video_overlay_set_window_handle (GST_VIDEO_OVERLAY (video_sink),
-				      GDK_WINDOW_XWINDOW ( gtk_widget_get_window(GTK_WIDGET (gst)) ));
+				      GDK_WINDOW_XID ( gtk_widget_get_window(GTK_WIDGET (gst)) ));
 #else
     gst_x_overlay_set_xwindow_id (GST_X_OVERLAY (video_sink),
                       GDK_WINDOW_XID ( gtk_widget_get_window(GTK_WIDGET (gst)) ));
