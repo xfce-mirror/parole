@@ -505,13 +505,13 @@ void	parole_media_list_drag_data_received_cb (GtkWidget *widget,
     guint added = 0;
     gboolean play;
     
-    parole_window_busy_cursor (GTK_WIDGET (list)->window);
+    parole_window_busy_cursor (gtk_widget_get_window(GTK_WIDGET (list)));
     
     g_object_get (G_OBJECT (list->priv->conf),
 		  "play-opened-files", &play,
 		  NULL);
     
-    uri_list = g_uri_list_extract_uris ((const gchar *)data->data);
+    uri_list = g_uri_list_extract_uris ((const gchar *)gtk_selection_data_get_data(data));
     
     for ( i = 0; uri_list[i] != NULL; i++)
     {
@@ -523,7 +523,7 @@ void	parole_media_list_drag_data_received_cb (GtkWidget *widget,
 
     g_strfreev (uri_list);
 
-    gdk_window_set_cursor (GTK_WIDGET (list)->window, NULL);
+    gdk_window_set_cursor (gtk_widget_get_window(GTK_WIDGET (list)), NULL);
     gtk_drag_finish (drag_context, added == i ? TRUE : FALSE, FALSE, drag_time);
 }
 
@@ -532,15 +532,27 @@ gboolean parole_media_list_key_press (GtkWidget *widget, GdkEventKey *ev, Parole
     GtkWidget *vbox_player;
     switch ( ev->keyval )
     {
+#if GTK_CHECK_VERSION(3, 0, 0)
+        case GDK_KEY_Delete:
+#else
         case GDK_Delete:
+#endif
             parole_media_list_remove_clicked_cb (NULL, list);
             return TRUE;
             break;
+#if GTK_CHECK_VERSION(3, 0, 0)
+        case GDK_KEY_Right:
+        case GDK_KEY_Left:
+        case GDK_KEY_Page_Down:
+        case GDK_KEY_Page_Up:
+        case GDK_KEY_Escape:
+#else
         case GDK_Right:
         case GDK_Left:
         case GDK_Page_Down:
         case GDK_Page_Up:
         case GDK_Escape:
+#endif
             vbox_player = GTK_WIDGET(gtk_container_get_children( GTK_CONTAINER(gtk_widget_get_parent(gtk_widget_get_parent(gtk_widget_get_parent(gtk_widget_get_parent(gtk_widget_get_parent(gtk_widget_get_parent(widget))))))) )[0].data);
             gtk_widget_grab_focus(vbox_player);
             return TRUE;
@@ -2287,7 +2299,7 @@ static gboolean	 parole_media_list_dbus_add_files (ParoleMediaList *list,
 
 void parole_media_list_grab_focus (ParoleMediaList *list)
 {
-    if (GTK_WIDGET_VISIBLE (list->priv->view) )
+    if (gtk_widget_get_visible (list->priv->view) )
 	gtk_widget_grab_focus (list->priv->view);
 }
 

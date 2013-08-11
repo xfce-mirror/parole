@@ -105,7 +105,7 @@ parole_open_location_get_completion_model (void)
     gchar **lines = NULL;
     guint i;
     
-    store = gtk_list_store_new (N_COLS, GTK_TYPE_STRING);
+    store = gtk_list_store_new (N_COLS, G_TYPE_STRING);
     
     lines = parole_get_history ();
     

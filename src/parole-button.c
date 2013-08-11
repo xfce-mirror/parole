@@ -149,17 +149,23 @@ parole_button_filter_x_events (GdkXEvent *xevent, GdkEvent *ev, gpointer data)
 static gboolean
 parole_button_grab_keystring (ParoleButton *button, guint keycode)
 {
-    Display *display;
+    GdkDisplay *display;
     guint ret;
     guint modmask = 0;
     
-    display = GDK_DISPLAY ();
+    display = gdk_display_get_default();
     
     gdk_error_trap_push ();
 
-    ret = XGrabKey (display, keycode, modmask,
-		    GDK_WINDOW_XID (button->priv->window), True,
+#if GTK_CHECK_VERSION(3, 0, 0)
+    ret = XGrabKey (GDK_DISPLAY_XDISPLAY(display), keycode, modmask,
+		    gdk_x11_window_get_xid (button->priv->window), True,
 		    GrabModeAsync, GrabModeAsync);
+#else
+    ret = XGrabKey (GDK_DISPLAY_XDISPLAY(display), keycode, modmask,
+		    gdk_x11_drawable_get_xid (button->priv->window), True,
+		    GrabModeAsync, GrabModeAsync);
+#endif
 		    
     if ( ret == BadAccess )
     {
@@ -168,8 +174,12 @@ parole_button_grab_keystring (ParoleButton *button, guint keycode)
 	return FALSE;
     }
 	
-    ret = XGrabKey (display, keycode, LockMask | modmask,
-		    GDK_WINDOW_XID (button->priv->window), True,
+    ret = XGrabKey (GDK_DISPLAY_XDISPLAY(display), keycode, LockMask | modmask,
+#if GTK_CHECK_VERSION(3, 0, 0)
+            gdk_x11_window_get_xid (button->priv->window), True,
+#else
+		    gdk_x11_drawable_get_xid (button->priv->window), True,
+#endif
 		    GrabModeAsync, GrabModeAsync);
 			
     if (ret == BadAccess)
@@ -180,7 +190,11 @@ parole_button_grab_keystring (ParoleButton *button, guint keycode)
     }
 
     gdk_flush ();
+#if GTK_CHECK_VERSION(3, 0, 0)
+    gdk_error_trap_pop_ignored ();
+#else
     gdk_error_trap_pop ();
+#endif
     return TRUE;
 }
 
@@ -197,7 +211,7 @@ parole_button_grab_keystring (ParoleButton *button, guint keycode)
 static gboolean
 parole_button_xevent_key (ParoleButton *button, guint keysym , ParoleButtonKey key)
 {
-    guint keycode = XKeysymToKeycode (GDK_DISPLAY(), keysym);
+    guint keycode = XKeysymToKeycode (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), keysym);
 
     if ( keycode == 0 )
     {

@@ -161,7 +161,7 @@ parole_media_chooser_add_idle (gpointer data)
 static void
 parole_media_chooser_open (ParoleMediaChooser *chooser)
 {
-    parole_window_busy_cursor (chooser->window->window);
+    parole_window_busy_cursor (gtk_widget_get_window(GTK_WIDGET(chooser->window)));
 
     gtk_widget_show( chooser->spinner );
     

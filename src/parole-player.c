@@ -158,8 +158,12 @@ gboolean    parole_player_window_state_event (GtkWidget *widget,
 
 void		parole_player_leave_fs_cb		(GtkButton *button,
 							 ParolePlayer *player);
+							 
+gboolean    parole_player_window_state_event (GtkWidget *widget, 
+                                  GdkEventWindowState *event,
+                                  ParolePlayer *player);
 
-void            parole_player_destroy_cb                (GtkObject *window, 
+void            parole_player_destroy_cb                (GObject *window, 
 							 ParolePlayer *player);
 
 gboolean	parole_player_delete_event_cb		(GtkWidget *widget, 
@@ -439,6 +443,7 @@ void ratio_20_9_toggled_cb (GtkWidget *widget, ParolePlayer *player)
 void parole_player_set_playlist_visible (ParolePlayer *player, gboolean visibility)
 {
     gint window_w, window_h, playlist_w;
+    GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
     
     if (gtk_widget_get_visible (player->priv->playlist_nt) == visibility)
         return;
@@ -446,7 +451,8 @@ void parole_player_set_playlist_visible (ParolePlayer *player, gboolean visibili
     gtk_window_get_size (GTK_WINDOW (player->priv->window), &window_w, &window_h);
     
     /* Get the playlist width.  If we fail to get it, use the default 220. */
-    playlist_w = player->priv->playlist_nt->allocation.width;
+    gtk_widget_get_allocation( GTK_WIDGET( player->priv->playlist_nt ), allocation );
+    playlist_w = allocation->width;
     if (playlist_w == 1)
         playlist_w = 220;
 
@@ -481,7 +487,7 @@ void parole_player_show_hide_playlist (GtkWidget *widget, ParolePlayer *player)
 {
     gboolean   visible;
     
-    visible = GTK_WIDGET_VISIBLE (player->priv->playlist_nt);
+    visible = gtk_widget_get_visible (player->priv->playlist_nt);
 
     parole_player_set_playlist_visible( player, !visible );
 }
@@ -896,7 +902,7 @@ parole_player_show_audiobox (ParolePlayer *player)
         !gst_get_has_vis   ( PAROLE_GST(player->priv->gst) ) )
     {
 	gtk_widget_show(player->priv->audiobox);
-	gtk_widget_hide_all(player->priv->eventbox_output);
+	gtk_widget_hide(player->priv->eventbox_output);
     }
     else
     {
@@ -1828,7 +1834,7 @@ parole_player_dvd_chapter_change_cb (ParoleGst *gst, gint chapter_count, ParoleP
 
 gboolean parole_player_delete_event_cb (GtkWidget *widget, GdkEvent *ev, ParolePlayer *player)
 {
-    parole_window_busy_cursor (GTK_WIDGET (player->priv->window)->window);
+    parole_window_busy_cursor (gtk_widget_get_window(GTK_WIDGET (player->priv->window)));
     
     player->priv->exit = TRUE;
     parole_gst_terminate (PAROLE_GST (player->priv->gst));
@@ -1837,7 +1843,7 @@ gboolean parole_player_delete_event_cb (GtkWidget *widget, GdkEvent *ev, ParoleP
 }
 
 void
-parole_player_destroy_cb (GtkObject *window, ParolePlayer *player)
+parole_player_destroy_cb (GObject *window, ParolePlayer *player)
 {
 }
 
@@ -1852,20 +1858,24 @@ parole_player_move_fs_window (ParolePlayer *player)
 {
     GdkScreen *screen;
     GdkRectangle rect;
+    GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
     
     screen = gtk_window_get_screen (GTK_WINDOW (player->priv->fs_window));
     
     gdk_screen_get_monitor_geometry (screen,
-				     gdk_screen_get_monitor_at_window (screen, player->priv->window->window),
+				     gdk_screen_get_monitor_at_window (screen, gtk_widget_get_window( GTK_WIDGET(player->priv->window))),
 				     &rect);
     
+    gtk_widget_get_allocation( GTK_WIDGET(player->priv->play_box), allocation );
     gtk_window_resize (GTK_WINDOW (player->priv->fs_window), 
 		       rect.width, 
-		       player->priv->play_box->allocation.height);
+		       allocation->height);
     
     gtk_window_move (GTK_WINDOW (player->priv->fs_window),
 		     rect.x, 
-		     rect.height + rect.y - player->priv->play_box->allocation.height);
+		     rect.height + rect.y - allocation->height);
+
+    g_free(allocation);
 }
 
 gboolean
@@ -2098,18 +2108,33 @@ parole_player_gst_widget_button_release (GtkWidget *widget, GdkEventButton *ev, 
 static gboolean parole_player_hide_fs_window (gpointer data)
 {
     ParolePlayer *player;
+    GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
     GdkWindow *gdkwindow;
     gint x, y, w, h;
     
+#if GTK_CHECK_VERSION (3, 0, 0)
+    GdkDevice *dev;
+    GdkDeviceManager *devmgr;
+#endif
+    
     player = PAROLE_PLAYER (data);
     
-    if ( GTK_WIDGET_VISIBLE (player->priv->fs_window) )
+    if ( gtk_widget_get_visible (player->priv->fs_window) )
     {
 	/* Don't hide the popup if the pointer is above it*/
-	w = player->priv->fs_window->allocation.width;
-	h = player->priv->fs_window->allocation.height;
+	gtk_widget_get_allocation( GTK_WIDGET(player->priv->fs_window), allocation );
+	w = allocation->width;
+	h = allocation->height;
+	g_free(allocation);
 	
+#if GTK_CHECK_VERSION (3, 0, 0)
+    devmgr = gdk_display_get_device_manager(gtk_widget_get_display(GTK_WIDGET(player->priv->fs_window)));
+    dev = gdk_device_manager_get_client_pointer(devmgr);
+    gdk_window_get_device_position( gtk_widget_get_window(GTK_WIDGET(player->priv->fs_window)),
+                                    dev, &x, &y, NULL);
+#else
 	gtk_widget_get_pointer (player->priv->fs_window, &x, &y);
+#endif
 	
 	if ((x >= 0) && (x <= w) && (y >= 0) && (y <= h))
 	    return TRUE;
@@ -2470,50 +2495,86 @@ parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
     
     switch (ev->keyval)
     {
-	case GDK_f:
+#if GTK_CHECK_VERSION(3, 0, 0)
+	case GDK_KEY_f:
+	case GDK_KEY_F:
+#else
+    case GDK_f:
 	case GDK_F:
+#endif
             if ( player->priv->embedded != TRUE ) parole_player_full_screen_menu_item_activate (player);
 	    ret_val = TRUE;
 	    break;
-	case GDK_space:
+#if GTK_CHECK_VERSION(3, 0, 0)
+	case GDK_KEY_space:
+	case GDK_KEY_p:
+	case GDK_KEY_P:
+#else
+    case GDK_space:
 	case GDK_p:
 	case GDK_P:
+#endif
 	    parole_player_play_pause_clicked (NULL, player);
 	    ret_val = TRUE;
 	    break;
+#if GTK_CHECK_VERSION(3, 0, 0)
+    case GDK_KEY_Right:
+#else
     case GDK_Right:
+#endif
 	    /* Media seekable ?*/
-	    if ( GTK_WIDGET_SENSITIVE (player->priv->range) )
+	    if ( gtk_widget_get_sensitive (player->priv->range) )
 	    {
 		if (ev->state & GDK_CONTROL_MASK) parole_player_seekf_cb (NULL, player, seek_medium);
 		else parole_player_seekf_cb (NULL, player, seek_short);
 	    }
 	    ret_val = TRUE;
 	    break;
-	case GDK_Left:
-	    if ( GTK_WIDGET_SENSITIVE (player->priv->range) )
+#if GTK_CHECK_VERSION(3, 0, 0)
+	case GDK_KEY_Left:
+#else
+    case GDK_Left:
+#endif
+	    if ( gtk_widget_get_sensitive (player->priv->range) )
 	    {
 		if (ev->state & GDK_CONTROL_MASK) parole_player_seekb_cb (NULL, player, seek_medium);
 		else parole_player_seekb_cb (NULL, player, seek_short);
 	    }
 	    ret_val = TRUE;
 	    break;
-	case GDK_Page_Down:
-	    if ( GTK_WIDGET_SENSITIVE (player->priv->range) )
+#if GTK_CHECK_VERSION(3, 0, 0)
+	case GDK_KEY_Page_Down:
+#else
+    case GDK_Page_Down:
+#endif
+	    if ( gtk_widget_get_sensitive (player->priv->range) )
 		parole_player_seekb_cb (NULL, player, seek_long);
 	    ret_val = TRUE;
 	    break;
-	case GDK_Page_Up:
-	    if ( GTK_WIDGET_SENSITIVE (player->priv->range) )
+#if GTK_CHECK_VERSION(3, 0, 0)
+	case GDK_KEY_Page_Up:
+#else
+    case GDK_Page_Up:
+#endif
+	    if ( gtk_widget_get_sensitive (player->priv->range) )
 		parole_player_seekf_cb (NULL, player, seek_long);
 	    ret_val = TRUE;
 	    break;
+#if GTK_CHECK_VERSION(3, 0, 0)
+	case GDK_KEY_s:
+	case GDK_KEY_S:
+#else
 	case GDK_s:
 	case GDK_S:
+#endif
 	    parole_player_stop_clicked (NULL, player);
 	    ret_val = TRUE;
 	    break;
-	case GDK_Escape:
+#if GTK_CHECK_VERSION(3, 0, 0)
+	case GDK_KEY_Escape:
+#else
+    case GDK_Escape:
+#endif
 	    parole_player_full_screen (player, FALSE);
 	    break;
 #ifdef HAVE_XF86_KEYSYM
@@ -2527,8 +2588,13 @@ parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
 	 * Pass these to the media list and tell it to
 	 * grab the focus
 	 */
-	case GDK_Up:
+#if GTK_CHECK_VERSION(3, 0, 0)
+	case GDK_KEY_Up:
+	case GDK_KEY_Down:
+#else
+    case GDK_Up:
 	case GDK_Down:
+#endif
 	    if (!player->priv->full_screen && gtk_widget_get_visible(player->priv->playlist_nt))
 	        parole_media_list_grab_focus (player->priv->list);
 	    break;
@@ -2550,7 +2616,11 @@ parole_player_key_press (GtkWidget *widget, GdkEventKey *ev, ParolePlayer *playe
 
     switch (ev->keyval)
     {
-	case GDK_F11:
+#if GTK_CHECK_VERSION(3, 0, 0)
+	case GDK_KEY_F11:
+#else
+    case GDK_F11:
+#endif
             if ( player->priv->embedded != TRUE ) parole_player_full_screen_menu_item_activate (player);
 	    return TRUE;
 #ifdef HAVE_XF86_KEYSYM
@@ -2651,7 +2721,11 @@ parole_gst_set_default_aspect_ratio (ParolePlayer *player, GtkBuilder *builder)
 static gboolean
 parole_audiobox_expose_event (GtkWidget *w, GdkEventExpose *ev, ParolePlayer *player)
 {
-    gboolean homogeneous = w->allocation.width > 536;
+    GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
+    gboolean homogeneous;
+    gtk_widget_get_allocation(w, allocation);
+    homogeneous = allocation->width > 536;
+    g_free(allocation);
     
     if ( gtk_box_get_homogeneous( GTK_BOX(w) ) == homogeneous )
         return FALSE;
@@ -2713,9 +2787,9 @@ parole_player_drag_data_received_cb (GtkWidget *widget,
     guint added  = 0;
     guint i;
     
-    parole_window_busy_cursor (widget->window);
+    parole_window_busy_cursor (gtk_widget_get_window(widget));
     
-    uri_list = g_uri_list_extract_uris ((const gchar *)data->data);
+    uri_list = g_uri_list_extract_uris ((const gchar *)gtk_selection_data_get_data(data));
     for ( i = 0; uri_list[i] != NULL; i++)
     {
 	gchar *path;
@@ -2727,7 +2801,7 @@ parole_player_drag_data_received_cb (GtkWidget *widget,
     
     g_strfreev (uri_list);
 
-    gdk_window_set_cursor (widget->window, NULL);
+    gdk_window_set_cursor (gtk_widget_get_window(widget), NULL);
     gtk_drag_finish (drag_context, added == i ? TRUE : FALSE, FALSE, drag_time);
 }
 
@@ -2779,7 +2853,11 @@ parole_player_set_wm_opacity_hint (GtkWidget *widget)
     
     gdkwindow = gtk_widget_get_window (widget);
     
-    XChangeProperty (xdisplay, GDK_WINDOW_XID (gdkwindow),
+#if GTK_CHECK_VERSION(3, 0, 0)
+    XChangeProperty (xdisplay, gdk_x11_window_get_xid (gdkwindow),
+#else
+    XChangeProperty (xdisplay, gdk_x11_drawable_get_xid (gdkwindow),
+#endif
 		     atom, XA_CARDINAL,
 		     32, PropModeAppend,
 		     (guchar *) &mode, 
@@ -2976,6 +3054,7 @@ parole_player_init (ParolePlayer *player)
     player->priv->seekf = GTK_WIDGET (gtk_builder_get_object (builder, "forward"));
     player->priv->seekb = GTK_WIDGET (gtk_builder_get_object (builder, "back"));
     
+    // FIXME: parole-player.c:3057:5: warning: ‘gtk_rc_parse’ is deprecated (declared at /usr/include/gtk-3.0/gtk/deprecated/gtkrc.h:172): Use 'GtkStyleContext' instead [-Wdeprecated-declarations]
     gtk_rc_parse( RC_STYLE_FILE );
      
     player->priv->range = GTK_WIDGET (gtk_builder_get_object (builder, "scale"));
@@ -3004,7 +3083,11 @@ parole_player_init (ParolePlayer *player)
     
     /* Audio box */
     hbox_audiobox = GTK_WIDGET (gtk_builder_get_object (builder, "hbox_audiobox"));
+#if GTK_CHECK_VERSION(3, 0, 0)
+    g_signal_connect(hbox_audiobox, "draw",
+#else
     g_signal_connect(hbox_audiobox, "expose-event",
+#endif
         G_CALLBACK(parole_audiobox_expose_event), player);
     
     gdk_color_parse("black", &background);

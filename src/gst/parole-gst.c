@@ -222,16 +222,21 @@ parole_gst_configure_event_cb (GtkWidget *widget, GdkEventConfigure *ev, ParoleG
 static gboolean
 parole_gst_parent_expose_event (GtkWidget *w, GdkEventExpose *ev, ParoleGst *gst)
 {
+    GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
     cairo_t *cr;
     
-    cr = gdk_cairo_create (w->window);
+    gtk_widget_get_allocation(w, allocation);
+    
+    cr = gdk_cairo_create ( gtk_widget_get_window(w) );
     
     cairo_set_source_rgb (cr, 0.0f, 0.0f, 0.0f);
     
-    cairo_rectangle (cr, w->allocation.x, w->allocation.y, w->allocation.width, w->allocation.height);
+    cairo_rectangle (cr, allocation->x, allocation->y, allocation->width, allocation->height);
     
     cairo_fill (cr);
     cairo_destroy (cr);
+    
+    g_free(allocation);
     
     return FALSE;
 }
@@ -240,19 +245,29 @@ static void
 parole_gst_realize (GtkWidget *widget)
 {
     ParoleGst *gst;
+    GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
     GdkWindowAttr attr;
+#if GTK_CHECK_VERSION(3, 0, 0)
+    GdkRGBA color;
+#else
     GdkColor color;
+#endif
     gint mask;
     
-    GTK_WIDGET_SET_FLAGS (widget, GTK_REALIZED);
+    gtk_widget_set_realized (widget, TRUE);
     gst = PAROLE_GST (widget);
     
-    attr.x = widget->allocation.x;
-    attr.y = widget->allocation.y;
-    attr.width = widget->allocation.width;
-    attr.height = widget->allocation.height;
+    gtk_widget_get_allocation(widget, allocation);
+    
+    attr.x = allocation->x;
+    attr.y = allocation->y;
+    attr.width = allocation->width;
+    attr.height = allocation->height;
     attr.visual = gtk_widget_get_visual (widget);
+#if GTK_CHECK_VERSION(3, 0, 0)
+#else
     attr.colormap = gtk_widget_get_colormap (widget);
+#endif
     attr.wclass = GDK_INPUT_OUTPUT;
     attr.window_type = GDK_WINDOW_CHILD;
     attr.event_mask = gtk_widget_get_events (widget) | 
@@ -262,32 +277,48 @@ parole_gst_realize (GtkWidget *widget)
 		      GDK_POINTER_MOTION_MASK |
 		      GDK_KEY_PRESS_MASK;
 		      
+#if GTK_CHECK_VERSION(3, 0, 0)
+    mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
+#else
     mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL | GDK_WA_COLORMAP;
+#endif
 	
-    widget->window = gdk_window_new (gtk_widget_get_parent_window (widget),
-				     &attr, mask);
+    gtk_widget_set_window(widget, gdk_window_new (gtk_widget_get_parent_window (widget),
+				     &attr, mask) );
 				     
-    gdk_window_set_user_data (widget->window, widget);
+    gdk_window_set_user_data (gtk_widget_get_window(widget), widget);
+
+#if GTK_CHECK_VERSION(3, 0, 0)
+    gdk_rgba_parse (&color, "black");
+    gdk_window_set_background_rgba (gtk_widget_get_window(widget), &color);
+#else
     gdk_color_parse ("black", &color);
     gdk_colormap_alloc_color (gtk_widget_get_colormap (widget), &color,
 			      TRUE, TRUE);
-    
-    gdk_window_set_background (widget->window, &color);
-    widget->style = gtk_style_attach (widget->style, widget->window);
+
+    gdk_window_set_background (gtk_widget_get_window(widget), &color);
+
+    gtk_widget_set_style(widget, gtk_style_attach (gtk_widget_get_style(widget), gtk_widget_get_window(widget)));
+#endif
     
     g_signal_connect (gtk_widget_get_toplevel (widget), "configure_event",
 		      G_CALLBACK (parole_gst_configure_event_cb), gst);
 		      
+#if GTK_CHECK_VERSION(3, 0, 0)
+    g_signal_connect (gtk_widget_get_parent (widget), "draw",
+#else
     g_signal_connect (gtk_widget_get_parent (widget), "expose_event",
+#endif
 		      G_CALLBACK (parole_gst_parent_expose_event), gst);
-
+		      
+    g_free(allocation);
 }
 
 static void
 parole_gst_show (GtkWidget *widget)
 {
-    if ( widget->window )
-	gdk_window_show (widget->window);
+    if ( gtk_widget_get_window(widget) )
+	gdk_window_show (gtk_widget_get_window(widget));
     
     if ( GTK_WIDGET_CLASS (parole_gst_parent_class)->show )
 	GTK_WIDGET_CLASS (parole_gst_parent_class)->show (widget);
@@ -302,8 +333,11 @@ parole_gst_get_video_output_size (ParoleGst *gst, gint *ret_w, gint *ret_h)
      * 2) Playing audio.
      * 3) Playing video but we don't have its correct size yet.
      */
-    *ret_w = GTK_WIDGET (gst)->allocation.width;
-    *ret_h = GTK_WIDGET (gst)->allocation.height;
+    GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
+    gtk_widget_get_allocation(GTK_WIDGET(gst), allocation);
+    *ret_w = allocation->width;
+    *ret_h = allocation->height;
+    g_free(allocation);
 		
     if ( gst->priv->state >= GST_STATE_PAUSED )
     {
@@ -380,9 +414,9 @@ parole_gst_size_allocate (GtkWidget *widget, GtkAllocation *allocation)
 {
     g_return_if_fail (allocation != NULL);
     
-    widget->allocation = *allocation;
+    gtk_widget_set_allocation(widget, allocation);
 
-    if ( GTK_WIDGET_REALIZED (widget) )
+    if ( gtk_widget_get_realized (widget) )
     {
 	gint w, h;
 	gdouble ratio, width, height;
@@ -405,7 +439,7 @@ parole_gst_size_allocate (GtkWidget *widget, GtkAllocation *allocation)
 	width *= ratio;
 	height *= ratio;
 
-	gdk_window_move_resize (widget->window,
+	gdk_window_move_resize (gtk_widget_get_window(widget),
                                 allocation->x + (allocation->width - width)/2, 
 				allocation->y + (allocation->height - height)/2,
                                 width, 
@@ -419,55 +453,99 @@ static void
 parole_gst_draw_logo (ParoleGst *gst)
 {
     static GdkPixbuf *pix = NULL;
+#if GTK_CHECK_VERSION(3, 0, 0)
+    cairo_region_t *region;
+    GdkRGBA *color;
+    cairo_t *cr;
+#else
     GdkRegion *region;
+#endif
     GdkRectangle rect;
     GtkWidget *widget;
+    GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
 
     widget = GTK_WIDGET (gst);
 
-    if ( !widget->window)
+    if ( !gtk_widget_get_window(widget) )
 	return;
 
     rect.x = 0;
     rect.y = 0;
     
-    rect.width = widget->allocation.width;
-    rect.height = widget->allocation.height;
+    gtk_widget_get_allocation(widget, allocation);
+    rect.width = allocation->width;
+    rect.height = allocation->height;
 
+#if GTK_CHECK_VERSION(3, 0, 0)
+    region = cairo_region_create_rectangle(&rect);
+#else
     region = gdk_region_rectangle (&rect);
+#endif
     
-    gdk_window_begin_paint_region (widget->window,
+    gdk_window_begin_paint_region (gtk_widget_get_window(widget),
 				   region);
 
-    gdk_region_destroy (region);
+#if GTK_CHECK_VERSION(3, 0, 0)
+    cairo_region_destroy (region);
 
-    gdk_window_clear_area (widget->window,
-			   0, 0,
-			   widget->allocation.width,
-			   widget->allocation.height);
+    GdkWindow *window;
+    cairo_surface_t *target;
+
+    window = gtk_widget_get_window (widget);
+    target = cairo_get_group_target (cr);
+
+    /* Clear to parent-relative pixmap
+    * We need to use direct X access here because GDK doesn't know about
+    * the parent relative pixmap. */
+    cairo_surface_flush (target);
+
+    XClearArea (GDK_WINDOW_XDISPLAY (window),
+                GDK_WINDOW_XID (window),
+                0, 0,
+                allocation->width, allocation->height,
+                False);
+    cairo_surface_mark_dirty_rectangle (target,
+                                        0, 0,
+                                        allocation->width, allocation->height);
+#else
+    gdk_region_destroy (region);
     
+    gdk_window_clear_area (gtk_widget_get_window(widget),
+			   0, 0,
+			   allocation->width,
+			   allocation->height);
+#endif
+
     if (gst->priv->scale_logo)
     {
 	if (pix)
 	    g_object_unref (pix);
 	pix = gdk_pixbuf_scale_simple (gst->priv->logo,
-				       widget->allocation.width,
-				       widget->allocation.height,
+				       allocation->width,
+				       allocation->height,
 				       GDK_INTERP_BILINEAR);
 	gst->priv->scale_logo = FALSE;
     }
 
-    gdk_draw_pixbuf (GDK_DRAWABLE (widget->window),
-		     GTK_WIDGET(widget)->style->fg_gc[0],
+#if GTK_CHECK_VERSION(3, 0, 0)
+    cr = gdk_cairo_create (gtk_widget_get_window(widget));
+    gdk_cairo_set_source_pixbuf (cr, pix, 0, 0);
+    cairo_paint (cr);
+    cairo_destroy (cr);
+#else
+    gdk_draw_pixbuf (GDK_DRAWABLE (gtk_widget_get_window(widget)),
+		     gtk_widget_get_style(widget)->fg_gc[0],
 		     pix,
 		     0, 0, 0, 0,
-		     widget->allocation.width,
-		     widget->allocation.height,
+		     allocation->width,
+		     allocation->height,
 		     GDK_RGB_DITHER_NONE,
 		     0, 0);
+#endif
 
-   
-    gdk_window_end_paint (GTK_WIDGET (gst)->window);
+    gdk_window_end_paint (gtk_widget_get_window(GTK_WIDGET (gst)));
+    
+    g_free(allocation);
 }
 
 static void
@@ -522,13 +600,13 @@ parole_gst_set_video_overlay (ParoleGst *gst)
 		  
     g_assert (video_sink != NULL);
     
-    if ( GDK_IS_WINDOW (GTK_WIDGET (gst)->window) )
+    if ( GDK_IS_WINDOW (gtk_widget_get_window(GTK_WIDGET (gst))) )
 #if GST_CHECK_VERSION(1, 0, 0)
 	gst_video_overlay_set_window_handle (GST_VIDEO_OVERLAY (video_sink),
-				      GDK_WINDOW_XWINDOW (GTK_WIDGET (gst)->window));
+				      GDK_WINDOW_XWINDOW ( gtk_widget_get_window(GTK_WIDGET (gst)) ));
 #else
     gst_x_overlay_set_xwindow_id (GST_X_OVERLAY (video_sink),
-                      GDK_WINDOW_XWINDOW (GTK_WIDGET (gst)->window));
+                      GDK_WINDOW_XID ( gtk_widget_get_window(GTK_WIDGET (gst)) ));
 #endif
     
     gst_object_unref (video_sink);
@@ -818,6 +896,7 @@ parole_gst_get_pad_capabilities (GObject *object, GParamSpec *pspec, ParoleGst *
 {
     GstPad *pad;
     GstStructure *st;
+    GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
     gint width;
     gint height;
     guint num;
@@ -865,7 +944,9 @@ parole_gst_get_pad_capabilities (GObject *object, GParamSpec *pspec, ParoleGst *
 			  NULL);
 	}
 
-	parole_gst_size_allocate (GTK_WIDGET (gst), &GTK_WIDGET (gst)->allocation);
+    gtk_widget_get_allocation( GTK_WIDGET (gst), allocation );
+	parole_gst_size_allocate (GTK_WIDGET (gst), allocation);
+	g_free(allocation);
     }
 #if GST_CHECK_VERSION(1, 0, 0)
     gst_caps_unref (caps);
@@ -984,6 +1065,7 @@ parole_gst_update_vis (ParoleGst *gst)
 static void
 parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState pending)
 {
+    GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
     TRACE ("State change new %i old %i pending %i", new, old, pending);
     
     gst->priv->state = new;
@@ -993,7 +1075,7 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
     if ( gst->priv->target == new )
     {
 	gtk_widget_queue_draw (GTK_WIDGET (gst));
-	parole_gst_set_window_cursor (GTK_WIDGET (gst)->window, NULL);
+	parole_gst_set_window_cursor ( gtk_widget_get_window(GTK_WIDGET (gst)), NULL);
 	if ( gst->priv->state_change_id != 0 )
 	    g_source_remove (gst->priv->state_change_id);
     }
@@ -1041,7 +1123,9 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
 	    }
 	    else if ( gst->priv->target == GST_STATE_READY)
 	    {
-		parole_gst_size_allocate (GTK_WIDGET (gst), &GTK_WIDGET (gst)->allocation);
+	    gtk_widget_get_allocation( GTK_WIDGET (gst), allocation );
+		parole_gst_size_allocate (GTK_WIDGET (gst), allocation);
+		g_free(allocation);
 		parole_gst_draw_logo (gst);
 	    }
 	    break;
@@ -1514,6 +1598,7 @@ parole_gst_get_meta_data (ParoleGst *gst, GstTagList *tag)
 static void
 parole_gst_application_message (ParoleGst *gst, GstMessage *msg)
 {
+    GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
 #if GST_CHECK_VERSION(1, 0, 0)
     if ( gst_message_has_name (msg, "notify-streaminfo") )
 #else
@@ -1535,7 +1620,9 @@ parole_gst_application_message (ParoleGst *gst, GstMessage *msg)
     else if ( !g_strcmp0 (name, "video-size") )
 #endif
     {
-	parole_gst_size_allocate (GTK_WIDGET (gst), &GTK_WIDGET (gst)->allocation);
+    gtk_widget_get_allocation(GTK_WIDGET (gst), allocation);
+	parole_gst_size_allocate (GTK_WIDGET (gst), allocation);
+	g_free(allocation);
     }
 }
 
@@ -1647,7 +1734,7 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
 	{
 	    GError *error = NULL;
 	    gchar *debug;
-	    parole_gst_set_window_cursor (GTK_WIDGET (gst)->window, NULL);
+	    parole_gst_set_window_cursor (gtk_widget_get_window(GTK_WIDGET (gst)), NULL);
 	    gst->priv->target = GST_STATE_NULL;
 	    gst->priv->buffering = FALSE;
 	    parole_gst_change_state (gst, GST_STATE_NULL);
@@ -1722,7 +1809,11 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
                 gtk_widget_get_realized (GTK_WIDGET (gst)))
             {
                 gst_install_plugins_context_set_xid (ctx,
-                    GDK_WINDOW_XID (GTK_WIDGET (gst)->window));
+#if GTK_CHECK_VERSION(3, 0, 0)
+                    gdk_x11_window_get_xid (gtk_widget_get_window(GTK_WIDGET (gst))));
+#else
+                    gdk_x11_drawable_get_xid (gtk_widget_get_window(GTK_WIDGET (gst))));
+#endif
             }
 #endif /* GDK_WINDOWING_X11 */
 
@@ -2054,7 +2145,7 @@ parole_gst_terminate_internal (ParoleGst *gst)
     parole_stream_init_properties (gst->priv->stream);
     g_mutex_unlock (&gst->priv->lock);
 
-    parole_window_busy_cursor (GTK_WIDGET (gst)->window);
+    parole_window_busy_cursor (gtk_widget_get_window(GTK_WIDGET (gst)));
     
     parole_gst_change_state (gst, GST_STATE_NULL);
 }
@@ -2075,6 +2166,7 @@ parole_gst_about_to_finish_cb (GstElement *elm, gpointer data)
 static void
 parole_gst_conf_notify_cb (GObject *object, GParamSpec *spec, ParoleGst *gst)
 {
+    GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
     if ( !g_strcmp0 ("vis-enabled", spec->name) || !g_strcmp0 ("vis-name", spec->name) )
     {
 	gst->priv->update_vis = TRUE;
@@ -2100,8 +2192,10 @@ parole_gst_conf_notify_cb (GObject *object, GParamSpec *spec, ParoleGst *gst)
 	g_object_get (G_OBJECT (gst->priv->conf),
 		      "aspect-ratio", &gst->priv->aspect_ratio,
 		      NULL);
-		  
-	parole_gst_size_allocate (GTK_WIDGET (gst), &GTK_WIDGET (gst)->allocation);
+    
+    gtk_widget_get_allocation( GTK_WIDGET (gst), allocation );
+	parole_gst_size_allocate (GTK_WIDGET (gst), allocation);
+	g_free(allocation);
     }
 }
 
@@ -2331,7 +2425,12 @@ parole_gst_class_init (ParoleGstClass *klass)
     widget_class->realize = parole_gst_realize;
     widget_class->show = parole_gst_show;
     widget_class->size_allocate = parole_gst_size_allocate;
+#if GTK_CHECK_VERSION(3, 0, 0)
+    // FIXME: parole-gst.c:2429:24: warning: assignment from incompatible pointer type [enabled by default]
+    widget_class->draw = parole_gst_expose_event;
+#else
     widget_class->expose_event = parole_gst_expose_event;
+#endif
     widget_class->motion_notify_event = parole_gst_motion_notify_event;
     widget_class->button_press_event = parole_gst_button_press_event;
     widget_class->button_release_event = parole_gst_button_release_event;
@@ -2457,13 +2556,13 @@ parole_gst_init (ParoleGst *gst)
     gst->priv->volume = -1.0;
     gst->priv->conf = NULL;
     
-    GTK_WIDGET_SET_FLAGS (GTK_WIDGET (gst), GTK_CAN_FOCUS);
+    gtk_widget_set_can_focus (GTK_WIDGET (gst), TRUE);
     
     /*
      * Disable double buffering on the video output to avoid
      * flickering when resizing the window.
      */
-    GTK_WIDGET_UNSET_FLAGS (GTK_WIDGET (gst), GTK_DOUBLE_BUFFERED);
+    gtk_widget_set_double_buffered (GTK_WIDGET (gst), FALSE);
 }
 
 GtkWidget *
@@ -2559,7 +2658,7 @@ void parole_gst_play_uri (ParoleGst *gst, const gchar *uri, const gchar *subtitl
 							    (GSourceFunc) parole_gst_check_state_change_timeout, 
 							    gst);
     
-    parole_window_busy_cursor (GTK_WIDGET (gst)->window);
+    parole_window_busy_cursor (gtk_widget_get_window(GTK_WIDGET (gst)));
     
     g_idle_add ((GSourceFunc) parole_gst_play_idle, gst);
     
@@ -2599,7 +2698,7 @@ void parole_gst_pause (ParoleGst *gst)
     
     g_mutex_unlock (&gst->priv->lock);
 
-    parole_window_busy_cursor (GTK_WIDGET (gst)->window);
+    parole_window_busy_cursor (gtk_widget_get_window(GTK_WIDGET (gst)));
     parole_gst_change_state (gst, GST_STATE_PAUSED);
 }
 
@@ -2611,7 +2710,7 @@ void parole_gst_resume (ParoleGst *gst)
     
     g_mutex_unlock (&gst->priv->lock);
 
-    parole_window_busy_cursor (GTK_WIDGET (gst)->window);
+    parole_window_busy_cursor (gtk_widget_get_window(GTK_WIDGET (gst)));
     parole_gst_change_state (gst, GST_STATE_PLAYING);
 }
 
@@ -2636,7 +2735,7 @@ void parole_gst_stop (ParoleGst *gst)
 		  
     g_mutex_unlock (&gst->priv->lock);
 
-    parole_window_busy_cursor (GTK_WIDGET (gst)->window);
+    parole_window_busy_cursor (gtk_widget_get_window(GTK_WIDGET (gst)));
     
     g_idle_add ((GSourceFunc) parole_gst_stop_idle, gst);
 }
@@ -2801,11 +2900,11 @@ parole_gst_set_cursor_visible (ParoleGst *gst, gboolean visible)
 {
     if ( visible )
     {
-	gst->priv->target == gst->priv->state ? gdk_window_set_cursor (GTK_WIDGET (gst)->window, NULL):
-						parole_window_busy_cursor (GTK_WIDGET (gst)->window);
+	gst->priv->target == gst->priv->state ? gdk_window_set_cursor (gtk_widget_get_window(GTK_WIDGET (gst)), NULL):
+						parole_window_busy_cursor (gtk_widget_get_window(GTK_WIDGET (gst)));
     }
     else
-	parole_window_invisible_cursor (GTK_WIDGET (gst)->window);
+	parole_window_invisible_cursor (gtk_widget_get_window(GTK_WIDGET (gst)));
 }
 
 GList *

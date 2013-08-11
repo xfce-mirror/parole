@@ -76,7 +76,7 @@ exit_activated_cb (TrayProvider *tray)
     menu_selection_done_cb (tray);
     
     ev.type = GDK_DELETE;
-    ev.window = tray->window->window;
+    ev.window = gtk_widget_get_window(tray->window);
     ev.send_event = TRUE;
 
     g_signal_handler_block (tray->window, tray->sig);
@@ -155,7 +155,7 @@ popup_menu_cb (GtkStatusIcon *icon, guint button,
 static void
 tray_activate_cb (GtkStatusIcon *tray_icon, TrayProvider *tray)
 {
-    if ( GTK_WIDGET_VISIBLE (tray->window) )
+    if ( gtk_widget_get_visible (tray->window) )
 	gtk_widget_hide (tray->window);
     else
 	gtk_widget_show (tray->window);
