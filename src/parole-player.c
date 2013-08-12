@@ -456,13 +456,13 @@ void parole_player_set_playlist_visible (ParolePlayer *player, gboolean visibili
         playlist_w = 220;
 
     gtk_check_menu_item_set_active( GTK_CHECK_MENU_ITEM(player->priv->show_hide_playlist), visibility );
+    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON(player->priv->show_hide_playlist_button), visibility );
     if ( visibility )
     {
         if ( !player->priv->full_screen )
             gtk_window_resize(GTK_WINDOW (player->priv->window), window_w+playlist_w+player->priv->handle_width, window_h);
         
         gtk_widget_show (player->priv->playlist_nt);
-        gtk_image_set_from_stock( GTK_IMAGE( player->priv->show_hide_playlist_image ), "gtk-go-forward", GTK_ICON_SIZE_LARGE_TOOLBAR );
         gtk_widget_set_tooltip_text( GTK_WIDGET( player->priv->show_hide_playlist_button ), _("Hide playlist") );
         g_object_set (G_OBJECT (player->priv->conf),	
                     "showhide-playlist", TRUE,
@@ -471,7 +471,6 @@ void parole_player_set_playlist_visible (ParolePlayer *player, gboolean visibili
     else
     {
         gtk_widget_hide (player->priv->playlist_nt);
-        gtk_image_set_from_stock( GTK_IMAGE( player->priv->show_hide_playlist_image ), "gtk-go-back", GTK_ICON_SIZE_LARGE_TOOLBAR );
         gtk_widget_set_tooltip_text( GTK_WIDGET( player->priv->show_hide_playlist_button ), _("Show playlist") );
         g_object_set (G_OBJECT (player->priv->conf),	
                     "showhide-playlist", FALSE,

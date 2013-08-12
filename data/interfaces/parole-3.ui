@@ -44,6 +44,12 @@
     <property name="pixel_size">16</property>
     <property name="icon_name">document-open-symbolic</property>
   </object>
+  <object class="GtkImage" id="image8">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixel_size">16</property>
+    <property name="icon_name">parole-extension</property>
+  </object>
   <object class="GtkImage" id="image_media_fullscreen">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -76,6 +82,9 @@
   </object>
   <object class="GtkWindow" id="main-window">
     <property name="can_focus">False</property>
+    <property name="title" translatable="yes">Parole Media Player</property>
+    <property name="window_position">center</property>
+    <property name="icon_name">parole</property>
     <signal name="destroy" handler="parole_player_destroy_cb" swapped="no"/>
     <signal name="configure-event" handler="parole_player_configure_event_cb" swapped="no"/>
     <signal name="key-press-event" handler="parole_player_key_press" swapped="no"/>
@@ -206,6 +215,7 @@
                         <property name="label" translatable="yes">Plugins</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="image">image8</property>
                         <property name="use_stock">False</property>
                       </object>
                     </child>
@@ -821,6 +831,7 @@ audio-volume-medium-symbolic</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="receives_default">True</property>
+                            <property name="no_show_all">True</property>
                             <property name="image">image_media_toggleplaylist</property>
                             <property name="relief">none</property>
                             <signal name="clicked" handler="parole_player_show_hide_playlist" swapped="no"/>
@@ -854,8 +865,8 @@ audio-volume-medium-symbolic</property>
             </child>
             <child>
               <object class="GtkNotebook" id="notebook-playlist">
-                <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="no_show_all">True</property>
                 <child>
                   <placeholder/>
                 </child>
