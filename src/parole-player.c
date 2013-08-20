@@ -1953,8 +1953,8 @@ parole_player_reset_controls (ParolePlayer *player, gboolean fullscreen)
             gtk_widget_hide (player->priv->menu_bar);
             gtk_widget_hide (player->priv->playlist_nt);
             parole_player_set_playlist_visible(player, FALSE);
-            gtk_button_set_label (GTK_BUTTON(player->priv->fullscreen_button), _("Leave Fullscreen"));
-            gtk_widget_set_tooltip_text (player->priv->fullscreen_button, "");
+            gtk_button_set_label (GTK_BUTTON(player->priv->fullscreen_button), "");
+            gtk_widget_set_tooltip_text (player->priv->fullscreen_button, _("Leave Fullscreen"));
             gtk_image_set_from_icon_name (GTK_IMAGE(player->priv->fullscreen_image), "view-restore-symbolic", 24);
             gtk_widget_hide (player->priv->show_hide_playlist_button);
 
