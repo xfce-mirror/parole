@@ -121,6 +121,9 @@ static gboolean            parole_audiobox_expose_event (GtkWidget *w, GdkEventE
 /*
  * GtkBuilder Callbacks
  */
+void on_content_area_size_allocate (GtkWidget *widget, GtkAllocation *allocation, ParolePlayer *player);
+
+ 
 gboolean        parole_player_configure_event_cb        (GtkWidget *widget, 
 							 GdkEventConfigure *ev, 
 							 ParolePlayer *player);
@@ -335,6 +338,8 @@ struct ParolePlayerPrivate
     GtkWidget		*control; /* contains all play button*/
     GtkWidget		*fullscreen_button;
     GtkWidget		*fullscreen_image;
+    GdkPixbuf       *logo;
+    gboolean        scale_logo;
     
     GtkWidget		*hbox_infobar;
     GtkWidget		*infobar;
@@ -2756,6 +2761,122 @@ parole_audiobox_expose_event (GtkWidget *w, GdkEventExpose *ev, ParolePlayer *pl
     return FALSE;
 }
 
+void
+on_content_area_size_allocate (GtkWidget *widget, GtkAllocation *allocation, ParolePlayer *player)
+{
+    g_print("size allocate\n");
+    g_return_if_fail (allocation != NULL);
+    
+    gtk_widget_set_allocation(widget, allocation);
+
+    if ( gtk_widget_get_realized (widget) )
+    {	
+	player->priv->scale_logo = TRUE;
+	
+	gtk_widget_queue_draw (widget);
+	}
+}
+
+static void
+parole_draw_logo (ParolePlayer *player)
+{
+    static GdkPixbuf *pix = NULL;
+#if GTK_CHECK_VERSION(3, 0, 0)
+    cairo_region_t *region;
+    GdkRGBA *color;
+    cairo_t *cr;
+#else
+    GdkRegion *region;
+#endif
+    GdkRectangle rect;
+    GtkWidget *widget;
+    GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
+
+    widget = GTK_WIDGET (player->priv->eventbox_output);
+
+    if ( !gtk_widget_get_window(widget) )
+	return;
+
+    rect.x = 0;
+    rect.y = 0;
+    
+    gtk_widget_get_allocation(widget, allocation);
+    rect.width = allocation->width;
+    rect.height = allocation->height;
+
+#if GTK_CHECK_VERSION(3, 0, 0)
+    region = cairo_region_create_rectangle(&rect);
+#else
+    region = gdk_region_rectangle (&rect);
+#endif
+    
+    gdk_window_begin_paint_region (gtk_widget_get_window(widget),
+				   region);
+
+#if GTK_CHECK_VERSION(3, 0, 0)
+    cairo_region_destroy (region);
+
+    GdkWindow *window;
+    cairo_surface_t *target;
+
+    window = gtk_widget_get_window (widget);
+
+    //target = cairo_get_group_target (cr);
+    
+    /* Clear to parent-relative pixmap
+    * We need to use direct X access here because GDK doesn't know about
+    * the parent relative pixmap. */
+    //cairo_surface_flush (target);
+
+    XClearArea (GDK_WINDOW_XDISPLAY (window),
+                GDK_WINDOW_XID (window),
+                0, 0,
+                allocation->width, allocation->height,
+                False);/*
+    cairo_surface_mark_dirty_rectangle (target,
+                                        0, 0,
+                                        allocation->width, allocation->height);*/
+#else
+    gdk_region_destroy (region);
+    
+    gdk_window_clear_area (gtk_widget_get_window(widget),
+			   0, 0,
+			   allocation->width,
+			   allocation->height);
+#endif
+
+    if (player->priv->scale_logo)
+    {
+	if (pix)
+	    g_object_unref (pix);
+	pix = gdk_pixbuf_scale_simple (player->priv->logo,
+				       allocation->width,
+				       allocation->height,
+				       GDK_INTERP_BILINEAR);
+	player->priv->scale_logo = FALSE;
+    }
+
+#if GTK_CHECK_VERSION(3, 0, 0)
+    cr = gdk_cairo_create (gtk_widget_get_window(widget));
+    gdk_cairo_set_source_pixbuf (cr, pix, 0, 0);
+    cairo_paint (cr);
+    cairo_destroy (cr);
+#else
+    gdk_draw_pixbuf (GDK_DRAWABLE (gtk_widget_get_window(widget)),
+		     gtk_widget_get_style(widget)->fg_gc[0],
+		     pix,
+		     0, 0, 0, 0,
+		     allocation->width,
+		     allocation->height,
+		     GDK_RGB_DITHER_NONE,
+		     0, 0);
+#endif
+
+    gdk_window_end_paint (gtk_widget_get_window(GTK_WIDGET (player->priv->eventbox_output)));
+    
+    g_free(allocation);
+}
+
 gboolean
 parole_player_configure_event_cb (GtkWidget *widget, GdkEventConfigure *ev, ParolePlayer *player)
 {
@@ -2769,6 +2890,8 @@ parole_player_configure_event_cb (GtkWidget *widget, GdkEventConfigure *ev, Paro
 		      "window-height", h,
 		      NULL);
     }
+    
+    parole_draw_logo(player);
     
     return FALSE;
 }
@@ -2913,6 +3036,7 @@ parole_player_init (ParolePlayer *player)
     g_setenv("PULSE_PROP_media.role", "video", TRUE);
     
     player->priv = PAROLE_PLAYER_GET_PRIVATE (player);
+    player->priv->scale_logo = TRUE;
 
     player->priv->client_id = NULL;
     player->priv->sm_client = NULL;
@@ -3074,6 +3198,7 @@ parole_player_init (ParolePlayer *player)
     player->priv->fullscreen_button = GTK_WIDGET (gtk_builder_get_object (builder, "media_fullscreen"));
     player->priv->fullscreen_image = GTK_WIDGET (gtk_builder_get_object (builder, "image_media_fullscreen"));
     player->priv->eventbox_output = GTK_WIDGET (gtk_builder_get_object (builder, "content_area"));
+    player->priv->logo = gdk_pixbuf_new_from_file (g_strdup_printf ("%s/parole.png", PIXMAPS_DIR), NULL);
     
     hpaned = GTK_WIDGET (gtk_builder_get_object (builder, "hpaned"));
     gtk_widget_style_get (hpaned, "handle-size", &player->priv->handle_width, NULL);
@@ -3123,6 +3248,8 @@ parole_player_init (ParolePlayer *player)
 	gtk_widget_set_no_show_all (player->priv->infobar, TRUE);
 
 	content_area = gtk_info_bar_get_content_area (GTK_INFO_BAR (player->priv->infobar));
+	g_signal_connect (content_area, "size-allocate",
+		      G_CALLBACK (on_content_area_size_allocate), player);
 	// GtkWidget *audiotrack_box, *audiotrack_label, *subtitle_box, *subtitle_label;
 	audiotrack_box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
 	audiotrack_label = gtk_label_new(_("Audio Track:"));
