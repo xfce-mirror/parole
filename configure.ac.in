@@ -78,7 +78,7 @@ XDT_I18N([@LINGUAS@])
 #==================================================== #
 #          Check for required packages 		      #
 #=====================================================#
-m4_define([gtk_minimum_version], [2.24.0])
+m4_define([gtk_minimum_version], [3.0.0])
 m4_define([glib_minimum_version], [2.32.0])
 
 dnl gstreamer version
@@ -128,20 +128,10 @@ XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0],[libxfce4util_minimum_versi
 XDT_CHECK_PACKAGE([XFCONF], [libxfconf-0], [4.10.0])
 
 dnl ************************************
-dnl *** Compile against GTK3 or GTK2 ***
+dnl *** Compile against GTK3 ***
 dnl ************************************
-AC_ARG_ENABLE([gtk3],
-              [AC_HELP_STRING([--enable-gtk3],
-              [Compile against GTK+-3.0 (default=disabled)])],
-              [enable_gtk3=$enableval], [enable_gtk3=no])
-if test "x$enable_gtk3" = "xyes"; then
-    XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-2], [4.10.0])
-    XDT_CHECK_PACKAGE([GTK], [gtk+-3.0], [3.2.0])
-else
-    XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-1], [4.10.0])
-    XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [2.24.0])
-fi
-AM_CONDITIONAL([ENABLE_GTK3], [test "x$enable_gtk3" = "xyes"])
+XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-2], [4.10.0])
+XDT_CHECK_PACKAGE([GTK], [gtk+-3.0], [3.2.0])
 
 XDT_CHECK_PACKAGE([GST], [gstreamer-${gstreamer_api_version}], [${gstreamer_minimum_version}])
 XDT_CHECK_PACKAGE([GST_BASE], [gstreamer-base-${gstreamer_api_version}], [${gstreamer_minimum_version}])
@@ -286,12 +276,6 @@ docs/plugin-api/Makefile
 po/Makefile.in
 ])
 
-if test x"$enable_gtk3" = x"yes"; then
-gtk_toolkit_version="GTK+-3"
-else
-gtk_toolkit_version="GTK+-2"
-fi
-
 echo "
 ------------------------------------------------------
             Parole Media Player $VERSION
@@ -304,7 +288,7 @@ echo "
         Debug:                          $enable_debug
         Building plugin api docs:       ${enable_gtk_doc}
         GStreamer API version:          ${gstreamer_api_version}
-        GTK+ version:                   $gtk_toolkit_version
+        GTK+ version:                   GTK+-3
 
         Optional dependencies:
         ======================
