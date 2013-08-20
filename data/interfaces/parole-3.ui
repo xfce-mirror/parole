@@ -818,6 +818,7 @@ audio-volume-medium-symbolic</property>
                             <property name="tooltip_text" translatable="yes">Fullscreen</property>
                             <property name="image">image_media_fullscreen</property>
                             <property name="relief">none</property>
+                            <property name="always_show_image">True</property>
                             <signal name="clicked" handler="parole_player_full_screen_activated_cb" swapped="no"/>
                           </object>
                           <packing>
