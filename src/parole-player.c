@@ -3352,9 +3352,8 @@ parole_player_init (ParolePlayer *player)
 				    shuffle);
 				    
     parole_media_list_set_shuffle_toggled(player->priv->list, shuffle);
-	
+
     player->priv->fs_window = gtk_window_new (GTK_WINDOW_POPUP);
-    gtk_widget_set_name(GTK_WIDGET(player->priv->fs_window), "ParoleFullscreen");
 
     gtk_window_set_opacity( GTK_WINDOW(player->priv->fs_window), 0.70 );
     gtk_window_set_gravity (GTK_WINDOW (player->priv->fs_window), GDK_GRAVITY_SOUTH_WEST);
