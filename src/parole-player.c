@@ -3015,6 +3015,7 @@ parole_player_init (ParolePlayer *player)
     gint w, h;
     gboolean showhide;
     GdkColor background;
+    GtkStyleContext *fullscreen_mode;
     
     gint volume;
     
@@ -3367,6 +3368,8 @@ parole_player_init (ParolePlayer *player)
     gtk_window_set_opacity( GTK_WINDOW(player->priv->fs_window), 0.70 );
     gtk_window_set_gravity (GTK_WINDOW (player->priv->fs_window), GDK_GRAVITY_SOUTH_WEST);
     gtk_window_set_position (GTK_WINDOW (player->priv->fs_window), GTK_WIN_POS_NONE);
+    fullscreen_mode = gtk_widget_get_style_context(GTK_WIDGET(player->priv->fs_window));
+    gtk_style_context_add_class (fullscreen_mode, "osd");
   
     parole_gst_set_default_aspect_ratio (player, builder);
 	
