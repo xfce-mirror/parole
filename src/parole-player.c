@@ -333,6 +333,8 @@ struct ParolePlayerPrivate
     GtkWidget		*fullscreen_button;
     GtkWidget		*fullscreen_image;
     GdkPixbuf       *logo;
+    GtkWidget       *logo_image;
+    GtkWidget       *logo_window;
     gboolean        scale_logo;
     
     GtkWidget		*hbox_infobar;
@@ -895,6 +897,7 @@ parole_player_show_audiobox (ParolePlayer *player)
 {
     /* Only show the audiobox if we're sure there's no video playing and 
        visualizations are disabled. */
+    gtk_widget_hide(player->priv->logo_window);
     if (!gst_get_has_video ( PAROLE_GST(player->priv->gst) ) &&
         !gst_get_has_vis   ( PAROLE_GST(player->priv->gst) ) )
     {
@@ -904,7 +907,7 @@ parole_player_show_audiobox (ParolePlayer *player)
     else
     {
 	gtk_widget_hide(player->priv->audiobox);
-	gtk_widget_show_all(player->priv->videobox);
+	gtk_widget_show(player->priv->videobox);
     }
 }
 
@@ -1446,6 +1449,16 @@ parole_player_stopped (ParolePlayer *player)
     gtk_widget_set_sensitive (player->priv->play_pause, 
 			      parole_media_list_is_selected_row (player->priv->list) || 
 			      !parole_media_list_is_empty (player->priv->list));
+			      
+    gtk_window_set_title (GTK_WINDOW (player->priv->window), "Parole Media Player");
+
+	gtk_widget_hide(player->priv->videobox);
+	gtk_widget_hide(player->priv->audiobox);
+	gtk_widget_show_all(player->priv->logo_window);
+	
+	gchar dur_text[128];
+    get_time_string (dur_text, 0);
+    gtk_label_set_text (GTK_LABEL (player->priv->label_duration), dur_text);
 
     parole_player_change_range_value (player, 0);
     gtk_widget_set_sensitive (player->priv->range, FALSE);
@@ -2758,7 +2771,6 @@ parole_audiobox_expose_event (GtkWidget *w, GdkEventExpose *ev, ParolePlayer *pl
 void
 on_content_area_size_allocate (GtkWidget *widget, GtkAllocation *allocation, ParolePlayer *player)
 {
-    g_print("size allocate\n");
     g_return_if_fail (allocation != NULL);
     
     gtk_widget_set_allocation(widget, allocation);
@@ -2771,74 +2783,15 @@ on_content_area_size_allocate (GtkWidget *widget, GtkAllocation *allocation, Par
 	}
 }
 
-static void
-parole_draw_logo (ParolePlayer *player)
-{
-    static GdkPixbuf *pix = NULL;
-#if GTK_CHECK_VERSION(3, 0, 0)
-    cairo_region_t *region;
-    GdkRGBA *color;
-    cairo_t *cr;
-#else
-    GdkRegion *region;
-#endif
-    GdkRectangle rect;
-    GtkWidget *widget;
+static gboolean
+on_logo_draw (GtkWidget *widget, GdkEventExpose *ev, ParolePlayer *player) {
+    GtkWidget *parent;
     GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
-
-    widget = GTK_WIDGET (player->priv->eventbox_output);
-
-    if ( !gtk_widget_get_window(widget) )
-	return;
-
-    rect.x = 0;
-    rect.y = 0;
+    static GdkPixbuf *pix = NULL;
     
-    gtk_widget_get_allocation(widget, allocation);
-    rect.width = allocation->width;
-    rect.height = allocation->height;
-
-#if GTK_CHECK_VERSION(3, 0, 0)
-    region = cairo_region_create_rectangle(&rect);
-#else
-    region = gdk_region_rectangle (&rect);
-#endif
+    parent = gtk_widget_get_parent(widget);
+    gtk_widget_get_allocation(parent, allocation);
     
-    gdk_window_begin_paint_region (gtk_widget_get_window(widget),
-				   region);
-
-#if GTK_CHECK_VERSION(3, 0, 0)
-    cairo_region_destroy (region);
-
-    GdkWindow *window;
-    cairo_surface_t *target;
-
-    window = gtk_widget_get_window (widget);
-
-    //target = cairo_get_group_target (cr);
-    
-    /* Clear to parent-relative pixmap
-    * We need to use direct X access here because GDK doesn't know about
-    * the parent relative pixmap. */
-    //cairo_surface_flush (target);
-
-    XClearArea (GDK_WINDOW_XDISPLAY (window),
-                GDK_WINDOW_XID (window),
-                0, 0,
-                allocation->width, allocation->height,
-                False);/*
-    cairo_surface_mark_dirty_rectangle (target,
-                                        0, 0,
-                                        allocation->width, allocation->height);*/
-#else
-    gdk_region_destroy (region);
-    
-    gdk_window_clear_area (gtk_widget_get_window(widget),
-			   0, 0,
-			   allocation->width,
-			   allocation->height);
-#endif
-
     if (player->priv->scale_logo)
     {
 	if (pix)
@@ -2847,28 +2800,13 @@ parole_draw_logo (ParolePlayer *player)
 				       allocation->width,
 				       allocation->height,
 				       GDK_INTERP_BILINEAR);
+    gtk_image_set_from_pixbuf(GTK_IMAGE(player->priv->logo_image), pix);
 	player->priv->scale_logo = FALSE;
     }
 
-#if GTK_CHECK_VERSION(3, 0, 0)
-    cr = gdk_cairo_create (gtk_widget_get_window(widget));
-    gdk_cairo_set_source_pixbuf (cr, pix, 0, 0);
-    cairo_paint (cr);
-    cairo_destroy (cr);
-#else
-    gdk_draw_pixbuf (GDK_DRAWABLE (gtk_widget_get_window(widget)),
-		     gtk_widget_get_style(widget)->fg_gc[0],
-		     pix,
-		     0, 0, 0, 0,
-		     allocation->width,
-		     allocation->height,
-		     GDK_RGB_DITHER_NONE,
-		     0, 0);
-#endif
-
-    gdk_window_end_paint (gtk_widget_get_window(GTK_WIDGET (player->priv->eventbox_output)));
-    
     g_free(allocation);
+    
+    return FALSE;
 }
 
 gboolean
@@ -2885,7 +2823,7 @@ parole_player_configure_event_cb (GtkWidget *widget, GdkEventConfigure *ev, Paro
 		      NULL);
     }
     
-    parole_draw_logo(player);
+    player->priv->scale_logo = TRUE;
     
     return FALSE;
 }
@@ -3191,6 +3129,9 @@ parole_player_init (ParolePlayer *player)
     player->priv->fullscreen_image = GTK_WIDGET (gtk_builder_get_object (builder, "image_media_fullscreen"));
     player->priv->eventbox_output = GTK_WIDGET (gtk_builder_get_object (builder, "content_area"));
     player->priv->logo = gdk_pixbuf_new_from_file (g_strdup_printf ("%s/parole.png", PIXMAPS_DIR), NULL);
+    player->priv->logo_image = GTK_WIDGET (gtk_builder_get_object (builder, "logo"));
+    g_signal_connect(player->priv->logo_image, "draw", G_CALLBACK(on_logo_draw), player);
+    player->priv->logo_window = GTK_WIDGET (gtk_builder_get_object (builder, "logo_window"));
     
     hpaned = GTK_WIDGET (gtk_builder_get_object (builder, "hpaned"));
     gtk_widget_style_get (hpaned, "handle-size", &player->priv->handle_width, NULL);
