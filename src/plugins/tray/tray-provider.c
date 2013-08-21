@@ -242,7 +242,7 @@ configure_plugin (TrayProvider *tray, GtkWidget *widget)
     g_signal_connect (hide_on_delete, "toggled",
 		      G_CALLBACK (hide_on_delete_toggled_cb), NULL);
     
-    gtk_box_pack_start_defaults (GTK_BOX (content_area), hide_on_delete);
+    gtk_box_pack_start (GTK_BOX (content_area), hide_on_delete, TRUE, TRUE, 0);
 	
     g_signal_connect (dialog, "response",
 		      G_CALLBACK (gtk_widget_destroy), NULL);
@@ -310,9 +310,8 @@ delete_event_cb (GtkWidget *widget, GdkEvent *ev, TrayProvider *tray)
     
     g_signal_connect (check, "toggled",
 		      G_CALLBACK (action_on_hide_confirmed_cb), NULL);
-		      
-    gtk_box_pack_start_defaults (GTK_BOX (content_area),
-			         check) ;
+         
+    gtk_box_pack_start (GTK_BOX (content_area), check, TRUE, TRUE, 0);
 			         
     gtk_widget_show_all( GTK_WIDGET(dialog) );
 

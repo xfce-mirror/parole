@@ -513,65 +513,6 @@ parole_gst_set_video_overlay (ParoleGst *gst)
     gst_object_unref (video_sink);
 }
 
-static gboolean
-#if GTK_CHECK_VERSION(3, 0, 0)
-parole_gst_expose_event (GtkWidget *widget, cairo_t *cr)
-#else
-parole_gst_expose_event (GtkWidget *widget, GdkEventExpose *ev)
-#endif
-{
-    ParoleGst *gst;
-    
-    gboolean playing_video;
-
-    //if ( ev && ev->count > 0 )
-	//return TRUE;
-
-    gst = PAROLE_GST (widget);
-
-    g_object_get (G_OBJECT (gst->priv->stream),
-		  "has-video", &playing_video,
-		  NULL);
-
-    parole_gst_set_video_overlay (gst);
-
-    TRACE ("EXPOSE event state=%d  target=%d", gst->priv->state, gst->priv->target);
-    
-    switch ( gst->priv->state )
-    {
-	case GST_STATE_PLAYING:
-	    if ( playing_video || gst->priv->vis_loaded)
-	    {
-#if GST_CHECK_VERSION(1, 0, 0)
-		gst_video_overlay_expose (GST_VIDEO_OVERLAY (gst->priv->video_sink));
-#else
-        gst_x_overlay_expose (GST_X_OVERLAY (gst->priv->video_sink));
-#endif
-	    }
-	    break;
-	case GST_STATE_PAUSED:
-	    if ( playing_video || gst->priv->vis_loaded || gst->priv->target == GST_STATE_PLAYING )
-#if GST_CHECK_VERSION(1, 0, 0)
-		gst_video_overlay_expose (GST_VIDEO_OVERLAY (gst->priv->video_sink));
-#else
-        gst_x_overlay_expose (GST_X_OVERLAY (gst->priv->video_sink));
-#endif
-	    break;
-	case GST_STATE_READY:
-	    if (!(gst->priv->target != GST_STATE_PLAYING))
-#if GST_CHECK_VERSION(1, 0, 0)
-		gst_video_overlay_expose (GST_VIDEO_OVERLAY (gst->priv->video_sink));
-#else
-        gst_x_overlay_expose (GST_X_OVERLAY (gst->priv->video_sink));
-#endif
-	    break;
-	case GST_STATE_NULL:
-	case GST_STATE_VOID_PENDING:
-	    break;
-    }
-    return TRUE;
-}
-
 static void
 parole_gst_query_capabilities (ParoleGst *gst)
 {
@@ -2309,12 +2250,7 @@ parole_gst_class_init (ParoleGstClass *klass)
     widget_class->realize = parole_gst_realize;
     widget_class->show = parole_gst_show;
     widget_class->size_allocate = parole_gst_size_allocate;
-#if GTK_CHECK_VERSION(3, 0, 0)
-    // FIXME: parole-gst.c:2429:24: warning: assignment from incompatible pointer type [enabled by default]
-    //widget_class->draw = parole_gst_expose_event;
-#else
-    widget_class->expose_event = parole_gst_expose_event;
-#endif
+
     widget_class->motion_notify_event = parole_gst_motion_notify_event;
     widget_class->button_press_event = parole_gst_button_press_event;
     widget_class->button_release_event = parole_gst_button_release_event;

@@ -155,10 +155,6 @@ gboolean    parole_player_window_state_event (GtkWidget *widget,
 
 void		parole_player_leave_fs_cb		(GtkButton *button,
 							 ParolePlayer *player);
-							 
-gboolean    parole_player_window_state_event (GtkWidget *widget, 
-                                  GdkEventWindowState *event,
-                                  ParolePlayer *player);
 
 void            parole_player_destroy_cb                (GObject *window, 
 							 ParolePlayer *player);
@@ -1259,9 +1255,9 @@ parole_player_set_playpause_button_image (GtkWidget *widget, const gchar *stock_
     GtkWidget *img;
     gchar *icon_name = NULL;
     
-    if (stock_id == GTK_STOCK_MEDIA_PLAY) {
+    if (g_strcmp0(stock_id, GTK_STOCK_MEDIA_PLAY) == 0) {
         icon_name = g_strdup("media-playback-start-symbolic");
-    } else if (stock_id == GTK_STOCK_MEDIA_PAUSE) {
+    } else if (g_strcmp0(stock_id, GTK_STOCK_MEDIA_PAUSE) == 0) {
         icon_name = g_strdup("media-playback-pause-symbolic");
     }
     
@@ -1441,6 +1437,7 @@ parole_player_quit (ParolePlayer *player)
 static void
 parole_player_stopped (ParolePlayer *player)
 {
+    gchar dur_text[128];
     TRACE ("Player stopped");
     
     gtk_widget_set_sensitive (player->priv->play_pause, 
@@ -1453,7 +1450,7 @@ parole_player_stopped (ParolePlayer *player)
 	gtk_widget_hide(player->priv->audiobox);
 	gtk_widget_show(player->priv->logo_image);
 	
-	gchar dur_text[128];
+	
     get_time_string (dur_text, 0);
     gtk_label_set_text (GTK_LABEL (player->priv->label_duration), dur_text);
 
@@ -2918,8 +2915,7 @@ parole_player_init (ParolePlayer *player)
     GtkStyleContext *fullscreen_mode;
     
     gint volume;
-    
-    GtkWidget *hbox_audiobox;
+
     GtkWidget *hpaned;
     
     GtkWidget *recent_menu;

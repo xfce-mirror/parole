@@ -251,17 +251,11 @@ void parole_conf_dialog_vis_plugin_changed_cb (GtkComboBox *widget,  ParoleConfD
     gchar *active;
     GstElementFactory *f;
     
-#if GTK_CHECK_VERSION(3, 0, 0)
     GtkTreeIter iter;
-    gchar *text = NULL;
-    
     GtkTreeModel *model = gtk_combo_box_get_model(widget);
     
     if (gtk_combo_box_get_active_iter (widget, &iter))
         gtk_tree_model_get (model, &iter, 0, &active, -1);
-#else
-    active = gtk_combo_box_get_active_text (widget);
-#endif
     
     f = g_hash_table_lookup (self->priv->vis_plugins, active);
     
