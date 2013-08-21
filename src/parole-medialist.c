@@ -109,10 +109,10 @@ void		parole_media_list_remove_clicked_cb 	(GtkButton *button,
 void		parole_media_list_clear_clicked_cb 	(GtkButton *button, 
 							 ParoleMediaList *list);
 
-void		parole_media_list_repeat_toggled_cb	(GtkToggleButton *button,
+void		parole_media_list_repeat_toggled_cb	(GtkToggleToolButton *button,
 							 ParoleMediaList *list);
 
-void		parole_media_list_shuffle_toggled_cb	(GtkToggleButton *button,
+void		parole_media_list_shuffle_toggled_cb	(GtkToggleToolButton *button,
 							 ParoleMediaList *list);
 
 void		parole_media_list_row_activated_cb 	(GtkTreeView *view, 
@@ -579,22 +579,22 @@ parole_media_list_clear_clicked_cb (GtkButton *button, ParoleMediaList *list)
 
 /* Callback for the repeat togglebutton */
 void
-parole_media_list_repeat_toggled_cb (GtkToggleButton *button, ParoleMediaList *list)
+parole_media_list_repeat_toggled_cb (GtkToggleToolButton *button, ParoleMediaList *list)
 {
 	gboolean toggled;
     
-    toggled = gtk_toggle_button_get_active (button);
+    toggled = gtk_toggle_tool_button_get_active (button);
     
     g_signal_emit (G_OBJECT (list), signals [REPEAT_TOGGLED], 0, toggled);
 }
 
 /* Callback for the shuffle togglebutton */
 void
-parole_media_list_shuffle_toggled_cb (GtkToggleButton *button, ParoleMediaList *list)
+parole_media_list_shuffle_toggled_cb (GtkToggleToolButton *button, ParoleMediaList *list)
 {
 	gboolean toggled;
     
-    toggled = gtk_toggle_button_get_active (button);
+    toggled = gtk_toggle_tool_button_get_active (button);
     
     g_signal_emit (G_OBJECT (list), signals [SHUFFLE_TOGGLED], 0, toggled);
 }
@@ -1208,14 +1208,14 @@ static void
 repeat_activated_cb (GtkWidget *mi, ParoleMediaList *list)
 {
 	gboolean active = gtk_check_menu_item_get_active( GTK_CHECK_MENU_ITEM( mi ) );
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON( list->priv->repeat_button ), active);
+    gtk_toggle_tool_button_set_active (GTK_TOGGLE_TOOL_BUTTON( list->priv->repeat_button ), active);
 }
 
 static void
 shuffle_activated_cb (GtkWidget *mi, ParoleMediaList *list)
 {
 	gboolean active = gtk_check_menu_item_get_active( GTK_CHECK_MENU_ITEM( mi ) );
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON( list->priv->shuffle_button ), active);
+    gtk_toggle_tool_button_set_active (GTK_TOGGLE_TOOL_BUTTON( list->priv->shuffle_button ), active);
 }
 
 void
@@ -1244,7 +1244,7 @@ parole_media_list_menu_pos (GtkMenu *menu, gint *px, gint *py, gboolean *push_in
 static void
 parole_media_list_hide_menu (GtkWidget *widget)
 {
-	gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( widget ), FALSE );
+	gtk_toggle_tool_button_set_active( GTK_TOGGLE_TOOL_BUTTON( widget ), FALSE );
 }
 
 static void
@@ -1314,9 +1314,9 @@ parole_media_list_dvd_chapter_activated (GtkMenuItem *widget, ParoleMediaList *l
 
 
 static void
-parole_media_list_show_dvd_menu (GtkToggleButton *button, ParoleMediaList *list)
+parole_media_list_show_dvd_menu (GtkToggleToolButton *button, ParoleMediaList *list)
 {
-    gboolean toggled = gtk_toggle_button_get_active( button );
+    gboolean toggled = gtk_toggle_tool_button_get_active( button );
     GtkBuilder *builder;
 	GtkMenu *menu;
 	GtkMenuItem *dvd_menu, *title_menu, *audio_menu, *angle_menu, *chapter_menu;
@@ -1363,9 +1363,9 @@ parole_media_list_show_dvd_menu (GtkToggleButton *button, ParoleMediaList *list)
 }
 
 static void
-parole_media_list_show_button_menu (GtkToggleButton *button, ParoleMediaList *list)
+parole_media_list_show_button_menu (GtkToggleToolButton *button, ParoleMediaList *list)
 {
-	gboolean toggled = gtk_toggle_button_get_active( button );
+	gboolean toggled = gtk_toggle_tool_button_get_active( button );
 	gboolean val;
 	GtkBuilder *builder;
 	GtkMenu *menu;
@@ -1745,7 +1745,7 @@ parole_media_list_init (ParoleMediaList *list)
     list->priv->playlist_controls = GTK_WIDGET (gtk_builder_get_object(builder, "playlist_controls"));
     list->priv->playlist_notebook = GTK_WIDGET (gtk_builder_get_object(builder, "playlist_notebook"));
     
-    g_signal_connect (GTK_TOGGLE_BUTTON(list->priv->dvd_menu_button), "toggled",
+    g_signal_connect (GTK_TOGGLE_TOOL_BUTTON(list->priv->dvd_menu_button), "toggled",
 		      G_CALLBACK (parole_media_list_show_dvd_menu), list);
     
     list->priv->view = GTK_WIDGET (gtk_builder_get_object (builder, "media-list"));
@@ -1764,7 +1764,7 @@ parole_media_list_init (ParoleMediaList *list)
     list->priv->settings_button = GTK_WIDGET (gtk_builder_get_object (builder, "settings"));
     list->priv->n_items = GTK_WIDGET (gtk_builder_get_object (builder, "n_items"));
     
-    g_signal_connect (GTK_TOGGLE_BUTTON(list->priv->settings_button), "toggled",
+    g_signal_connect (GTK_TOGGLE_TOOL_BUTTON(list->priv->settings_button), "toggled",
 		      G_CALLBACK (parole_media_list_show_button_menu), list);
 
     gtk_builder_connect_signals (builder, list);
@@ -2309,11 +2309,11 @@ parole_media_list_set_repeat_toggled (ParoleMediaList *list,
 {
 	gboolean toggled;
     
-    toggled = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (list->priv->repeat_button));
+    toggled = gtk_toggle_tool_button_get_active (GTK_TOGGLE_TOOL_BUTTON (list->priv->repeat_button));
     
     if (toggled != repeat_toggled)
     {
-    	gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON (list->priv->repeat_button), repeat_toggled );
+    	gtk_toggle_tool_button_set_active( GTK_TOGGLE_TOOL_BUTTON (list->priv->repeat_button), repeat_toggled );
 	}
 }
 																
@@ -2323,10 +2323,10 @@ parole_media_list_set_shuffle_toggled (ParoleMediaList *list,
 {
 	gboolean toggled;
     
-    toggled = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (list->priv->shuffle_button));
+    toggled = gtk_toggle_tool_button_get_active (GTK_TOGGLE_TOOL_BUTTON (list->priv->shuffle_button));
     
     if (toggled != shuffle_toggled)
     {
-    	gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON (list->priv->shuffle_button), shuffle_toggled );
+    	gtk_toggle_tool_button_set_active( GTK_TOGGLE_TOOL_BUTTON (list->priv->shuffle_button), shuffle_toggled );
 	}
 }

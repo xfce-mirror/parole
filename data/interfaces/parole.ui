@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires gtk+ 3.0 -->
+  <object class="GtkImage" id="image_media_fullscreen">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixel_size">24</property>
+    <property name="icon_name">view-fullscreen-symbolic</property>
+  </object>
+  <object class="GtkImage" id="image_media_next">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixel_size">24</property>
+    <property name="icon_name">media-skip-forward-symbolic</property>
+  </object>
+  <object class="GtkImage" id="image_media_play">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixel_size">24</property>
+    <property name="icon_name">media-playback-start-symbolic</property>
+  </object>
+  <object class="GtkImage" id="image_media_prev">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixel_size">24</property>
+    <property name="icon_name">media-skip-backward-symbolic</property>
+  </object>
+  <object class="GtkImage" id="image_media_toggleplaylist">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixel_size">24</property>
+    <property name="icon_name">view-list-symbolic</property>
+  </object>
   <object class="GtkImage" id="image1">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -49,36 +79,6 @@
     <property name="can_focus">False</property>
     <property name="pixel_size">16</property>
     <property name="icon_name">parole-extension</property>
-  </object>
-  <object class="GtkImage" id="image_media_fullscreen">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">24</property>
-    <property name="icon_name">view-fullscreen-symbolic</property>
-  </object>
-  <object class="GtkImage" id="image_media_next">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">24</property>
-    <property name="icon_name">media-skip-forward-symbolic</property>
-  </object>
-  <object class="GtkImage" id="image_media_play">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">24</property>
-    <property name="icon_name">media-playback-start-symbolic</property>
-  </object>
-  <object class="GtkImage" id="image_media_prev">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">24</property>
-    <property name="icon_name">media-skip-backward-symbolic</property>
-  </object>
-  <object class="GtkImage" id="image_media_toggleplaylist">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">24</property>
-    <property name="icon_name">view-list-symbolic</property>
   </object>
   <object class="GtkWindow" id="main-window">
     <property name="can_focus">False</property>
@@ -456,8 +456,8 @@
                         <property name="use_underline">True</property>
                         <property name="image">image3</property>
                         <property name="use_stock">False</property>
-                        <accelerator key="plus" signal="activate"/>
                         <accelerator key="equal" signal="activate"/>
+                        <accelerator key="plus" signal="activate"/>
                         <signal name="activate" handler="parole_player_volume_up" swapped="no"/>
                       </object>
                     </child>
@@ -700,6 +700,7 @@
                         <child>
                           <object class="GtkButton" id="media_prev">
                             <property name="visible">True</property>
+                            <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
                             <property name="receives_default">True</property>
                             <property name="has_tooltip">True</property>
@@ -719,6 +720,7 @@
                         <child>
                           <object class="GtkButton" id="media_play">
                             <property name="visible">True</property>
+                            <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
                             <property name="receives_default">True</property>
                             <property name="has_tooltip">True</property>
@@ -738,6 +740,7 @@
                         <child>
                           <object class="GtkButton" id="media_next">
                             <property name="visible">True</property>
+                            <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
                             <property name="receives_default">True</property>
                             <property name="has_tooltip">True</property>
@@ -770,6 +773,7 @@
                         <child>
                           <object class="GtkScale" id="media_progress_slider">
                             <property name="visible">True</property>
+                            <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
                             <property name="margin_left">6</property>
                             <property name="margin_right">6</property>
