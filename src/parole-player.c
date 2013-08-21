@@ -313,7 +313,6 @@ struct ParolePlayerPrivate
     GtkWidget		*playlist_nt;
     GtkWidget		*show_hide_playlist;
     GtkWidget		*show_hide_playlist_button;
-    GtkWidget		*show_hide_playlist_image;
     GtkWidget		*shuffle_menu_item;
     GtkWidget		*repeat_menu_item;
     GtkWidget		*play_pause;
@@ -3056,40 +3055,61 @@ parole_player_init (ParolePlayer *player)
     g_signal_connect (output, "drag-data-received",
 		      G_CALLBACK (parole_player_drag_data_received_cb), player);
     
+    /*
+     * GTK Widgets
+     */
+    /* ParolePlayer Window */
     player->priv->window = GTK_WIDGET (gtk_builder_get_object (builder, "main-window"));
-    
     g_signal_connect(   G_OBJECT(player->priv->window), 
                         "window-state-event", 
                         G_CALLBACK(parole_player_window_state_event), 
                         PAROLE_PLAYER(player) );
     
+    /* Playlist notebook */
+    player->priv->playlist_nt = GTK_WIDGET (gtk_builder_get_object (builder, "notebook-playlist"));
+
+    /* Playlist divider/handle */
+    hpaned = GTK_WIDGET (gtk_builder_get_object (builder, "hpaned"));
+    gtk_widget_style_get (hpaned, "handle-size", &player->priv->handle_width, NULL);
+    
+    /* Menu Bar */
+    player->priv->menu_bar = GTK_WIDGET (gtk_builder_get_object (builder, "menubar"));
+    
+    /* Recent Menu */
     recent_menu = GTK_WIDGET (gtk_builder_get_object (builder, "recent_menu"));
     
+    /* Initialize the Recent Menu settings */
     player->priv->recent_menu = gtk_recent_chooser_menu_new_for_manager (player->priv->recent);
     gtk_recent_chooser_menu_set_show_numbers (GTK_RECENT_CHOOSER_MENU(player->priv->recent_menu), TRUE);
     gtk_recent_chooser_set_sort_type (GTK_RECENT_CHOOSER(player->priv->recent_menu), GTK_RECENT_SORT_MRU);
     gtk_recent_chooser_set_show_private (GTK_RECENT_CHOOSER(player->priv->recent_menu), FALSE);
     gtk_recent_chooser_set_show_not_found (GTK_RECENT_CHOOSER(player->priv->recent_menu), FALSE);
     gtk_recent_chooser_set_local_only (GTK_RECENT_CHOOSER(player->priv->recent_menu), TRUE);
+    
+    /* Recent Menu file filter */
     recent_filter = parole_get_supported_recent_media_filter ();
     gtk_recent_filter_add_application( recent_filter, "parole" );
     gtk_recent_chooser_set_filter( GTK_RECENT_CHOOSER(player->priv->recent_menu), recent_filter);
     
+    /* Recent Menu Separator */
     recent_separator = gtk_separator_menu_item_new();
+    gtk_menu_shell_append(GTK_MENU_SHELL(player->priv->recent_menu), recent_separator);
+    
+    /* Clear Recent Menu Item */
     clear_recent = gtk_image_menu_item_new_from_stock(GTK_STOCK_CLEAR, NULL);
     gtk_menu_item_set_label (GTK_MENU_ITEM(clear_recent), _("Clear recent items..."));
-    
-    gtk_menu_shell_append(GTK_MENU_SHELL(player->priv->recent_menu), recent_separator);
+    g_signal_connect (clear_recent, "activate",
+            G_CALLBACK (parole_player_recent_menu_clear_activated_cb), player);
     gtk_menu_shell_append(GTK_MENU_SHELL(player->priv->recent_menu), clear_recent);
     
-    g_signal_connect (clear_recent, "activate",
-		      G_CALLBACK (parole_player_recent_menu_clear_activated_cb), player);
+    /* Connect the Recent Menu events */
+    g_signal_connect (player->priv->recent_menu, "item-activated",
+            G_CALLBACK (parole_player_recent_menu_item_activated_cb), player);
     
+    /* Attach the Recent Menu */
     gtk_menu_item_set_submenu( GTK_MENU_ITEM(recent_menu), player->priv->recent_menu );
     
-    g_signal_connect (player->priv->recent_menu, "item-activated",
-		      G_CALLBACK (parole_player_recent_menu_item_activated_cb), player);
-    
+    /* Language Menus */
     player->priv->subtitles_menu = GTK_WIDGET (gtk_builder_get_object (builder, "subtitles-menu"));
     player->priv->languages_menu = GTK_WIDGET (gtk_builder_get_object (builder, "languages-menu"));
     
@@ -3097,99 +3117,127 @@ parole_player_init (ParolePlayer *player)
     player->priv->subtitles_menu_custom = GTK_WIDGET (gtk_builder_get_object (builder, "subtitles-menu-custom"));
     
     g_signal_connect (player->priv->subtitles_menu_custom, "activate",
-		      G_CALLBACK (parole_player_select_custom_subtitle), player);
+            G_CALLBACK (parole_player_select_custom_subtitle), player);
     
     player->priv->audio_group = NULL;
     
-    player->priv->progressbar_buffering = GTK_WIDGET (gtk_builder_get_object (builder, "media_buffering_progressbar"));
-    
-    player->priv->label_duration = GTK_WIDGET(gtk_builder_get_object(builder, "media_time_duration"));
-    player->priv->label_elapsed = GTK_WIDGET(gtk_builder_get_object(builder, "media_time_elapsed"));
-    player->priv->play_pause = GTK_WIDGET (gtk_builder_get_object (builder, "media_play"));
-    player->priv->seekf = GTK_WIDGET (gtk_builder_get_object (builder, "media_next"));
-    player->priv->seekb = GTK_WIDGET (gtk_builder_get_object (builder, "media_prev"));
-     
-    player->priv->range = GTK_WIDGET (gtk_builder_get_object (builder, "media_progress_slider"));
-    gtk_widget_set_name( player->priv->range, "ParoleScale" );
-    
-    player->priv->volume = GTK_WIDGET (gtk_builder_get_object (builder, "media_volumebutton"));
-    
-    player->priv->menu_bar = GTK_WIDGET (gtk_builder_get_object (builder, "menubar"));
-    player->priv->play_box = GTK_WIDGET (gtk_builder_get_object (builder, "play-box"));
-    player->priv->playlist_nt = GTK_WIDGET (gtk_builder_get_object (builder, "notebook-playlist"));
+    /* Additional Menu Items */
     player->priv->show_hide_playlist = GTK_WIDGET (gtk_builder_get_object (builder, "show-hide-list"));
-    player->priv->show_hide_playlist_image = GTK_WIDGET (gtk_builder_get_object (builder, "image_media_toggleplaylist"));
-    player->priv->show_hide_playlist_button = GTK_WIDGET (gtk_builder_get_object (builder, "media_toggleplaylist"));
-    
     player->priv->shuffle_menu_item = GTK_WIDGET (gtk_builder_get_object (builder, "shuffle"));
     player->priv->repeat_menu_item = GTK_WIDGET (gtk_builder_get_object (builder, "repeat"));
+    /* End Menu Bar */
     
-    player->priv->control = GTK_WIDGET (gtk_builder_get_object (builder, "control"));
-    player->priv->fullscreen_button = GTK_WIDGET (gtk_builder_get_object (builder, "media_fullscreen"));
-    player->priv->fullscreen_image = GTK_WIDGET (gtk_builder_get_object (builder, "image_media_fullscreen"));
+
+    /* Content Area (Background, Audio, Video) */
     player->priv->eventbox_output = GTK_WIDGET (gtk_builder_get_object (builder, "content_area"));
+    gdk_color_parse("black", &background);
+    gtk_widget_modify_bg(GTK_WIDGET(player->priv->eventbox_output), GTK_STATE_NORMAL, &background);
+    gtk_widget_add_events (GTK_WIDGET (player->priv->eventbox_output), GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK);
+    g_signal_connect (G_OBJECT (player->priv->eventbox_output), "motion-notify-event",
+            G_CALLBACK (parole_player_gst_widget_motion_notify_event), player);
+		      
+    /* Background Image */
+    player->priv->logo_window = GTK_WIDGET (gtk_builder_get_object (builder, "logo_window"));
     player->priv->logo = gdk_pixbuf_new_from_file (g_strdup_printf ("%s/parole.png", PIXMAPS_DIR), NULL);
     player->priv->logo_image = GTK_WIDGET (gtk_builder_get_object (builder, "logo"));
     g_signal_connect(player->priv->logo_image, "draw", G_CALLBACK(on_logo_draw), player);
-    player->priv->logo_window = GTK_WIDGET (gtk_builder_get_object (builder, "logo_window"));
     
-    hpaned = GTK_WIDGET (gtk_builder_get_object (builder, "hpaned"));
-    gtk_widget_style_get (hpaned, "handle-size", &player->priv->handle_width, NULL);
-    
-    /* Audio box */
-    gdk_color_parse("black", &background);
-    gtk_widget_modify_bg(GTK_WIDGET(player->priv->eventbox_output), GTK_STATE_NORMAL, &background);
-    
-    player->priv->audiobox = GTK_WIDGET (gtk_builder_get_object (builder, "audio_output"));
+    /* Video Box */
     player->priv->videobox = GTK_WIDGET (gtk_builder_get_object (builder, "video_output"));
+    
+    /* Audio Box */
+    player->priv->audiobox = GTK_WIDGET (gtk_builder_get_object (builder, "audio_output"));
     player->priv->audiobox_cover = GTK_WIDGET (gtk_builder_get_object (builder, "audio_cover"));
     player->priv->audiobox_title = GTK_WIDGET (gtk_builder_get_object (builder, "audio_title"));
     player->priv->audiobox_album = GTK_WIDGET (gtk_builder_get_object (builder, "audio_album"));
     player->priv->audiobox_artist = GTK_WIDGET (gtk_builder_get_object (builder, "audio_artist"));
-    
-#if GTK_CHECK_VERSION(3, 0, 0)
     g_signal_connect(player->priv->audiobox, "draw",
-#else
-    g_signal_connect(player->priv->audiobox, "expose-event",
-#endif
-        G_CALLBACK(parole_audiobox_expose_event), player);
+            G_CALLBACK(parole_audiobox_expose_event), player);
+    /* End Content Area */
     
-    gtk_widget_add_events (GTK_WIDGET (player->priv->eventbox_output), GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK);
-    g_signal_connect (G_OBJECT (player->priv->eventbox_output), "motion-notify-event",
-		      G_CALLBACK (parole_player_gst_widget_motion_notify_event), player);
     
+    /* Media Controls */
+    /* control is a placeholder to put the play_box as it is moved to/from the fs-window */
+    player->priv->control = GTK_WIDGET (gtk_builder_get_object (builder, "control"));
+    player->priv->play_box = GTK_WIDGET (gtk_builder_get_object (builder, "play-box"));
     gtk_box_set_child_packing( GTK_BOX(player->priv->control), GTK_WIDGET(player->priv->play_box), TRUE, TRUE, 2, GTK_PACK_START );
     
+    /* Previous, Play/Pause, Next */
+    player->priv->seekb = GTK_WIDGET (gtk_builder_get_object (builder, "media_prev"));
+    player->priv->play_pause = GTK_WIDGET (gtk_builder_get_object (builder, "media_play"));
+    player->priv->seekf = GTK_WIDGET (gtk_builder_get_object (builder, "media_next"));
+    
+    /* Elapsed/Duration labels */
+    player->priv->label_duration = GTK_WIDGET(gtk_builder_get_object(builder, "media_time_duration"));
+    player->priv->label_elapsed = GTK_WIDGET(gtk_builder_get_object(builder, "media_time_elapsed"));
+    
+    /* Time Slider */
+    player->priv->range = GTK_WIDGET (gtk_builder_get_object (builder, "media_progress_slider"));
+    gtk_widget_set_name( player->priv->range, "ParoleScale" );
+    
+    /* Buffering Progressbar */
+    player->priv->progressbar_buffering = GTK_WIDGET (gtk_builder_get_object (builder, "media_buffering_progressbar"));
+    
+    /* Volume Button */
+    player->priv->volume = GTK_WIDGET (gtk_builder_get_object (builder, "media_volumebutton"));
+    
+    /* (un)Fullscreen button */
+    player->priv->fullscreen_button = GTK_WIDGET (gtk_builder_get_object (builder, "media_fullscreen"));
+    player->priv->fullscreen_image = GTK_WIDGET (gtk_builder_get_object (builder, "image_media_fullscreen"));
+    
+    /* Show/Hide Playlist button */
+    player->priv->show_hide_playlist_button = GTK_WIDGET (gtk_builder_get_object (builder, "media_toggleplaylist"));
+    /* End Media Controls */
+
+    
+    /* Info Bar */
+    /* placeholder widget */
     player->priv->hbox_infobar = GTK_WIDGET (gtk_builder_get_object (builder, "infobar_placeholder"));
+    
+    /* Initialize the InfoBar */
+	player->priv->infobar = gtk_info_bar_new ();
+	gtk_info_bar_set_message_type (GTK_INFO_BAR (player->priv->infobar),
+                            GTK_MESSAGE_QUESTION);
+	gtk_info_bar_add_button (GTK_INFO_BAR (player->priv->infobar),
+                            GTK_STOCK_CLOSE, GTK_RESPONSE_OK);
+                            
+    gtk_widget_set_no_show_all (player->priv->infobar, TRUE);
+    
+	g_signal_connect (G_OBJECT(player->priv->infobar), "response",
+		              G_CALLBACK (gtk_widget_hide), NULL);
+
+	content_area = gtk_info_bar_get_content_area (GTK_INFO_BAR (player->priv->infobar));
+	g_signal_connect (content_area, "size-allocate",
+		      G_CALLBACK (on_content_area_size_allocate), player);
+		      
+    gtk_box_pack_start( GTK_BOX( player->priv->hbox_infobar ), player->priv->infobar, TRUE, TRUE, 0);
+    
+    /* Initialize the Audio Track combobox */
     player->priv->liststore_audiotrack = gtk_list_store_new(1, G_TYPE_STRING);
-    player->priv->liststore_subtitles = gtk_list_store_new(1, G_TYPE_STRING);
     player->priv->combobox_audiotrack = gtk_combo_box_new_with_model(GTK_TREE_MODEL(player->priv->liststore_audiotrack));
-    player->priv->combobox_subtitles = gtk_combo_box_new_with_model(GTK_TREE_MODEL(player->priv->liststore_subtitles));
     player->priv->audio_list = NULL;
-    player->priv->subtitle_list = NULL;
     
     cell = gtk_cell_renderer_text_new();
 	gtk_cell_layout_pack_start( GTK_CELL_LAYOUT( player->priv->combobox_audiotrack ), cell, TRUE );
 	gtk_cell_layout_set_attributes( GTK_CELL_LAYOUT( player->priv->combobox_audiotrack ), cell, "text", 0, NULL );
 	
-	sub_cell = gtk_cell_renderer_text_new();
-	gtk_cell_layout_pack_start( GTK_CELL_LAYOUT( player->priv->combobox_subtitles ), sub_cell, TRUE );
-	gtk_cell_layout_set_attributes( GTK_CELL_LAYOUT( player->priv->combobox_subtitles ), sub_cell, "text", 0, NULL );
-	
-    /* set up info bar */
-	player->priv->infobar = gtk_info_bar_new ();
-	gtk_widget_set_no_show_all (player->priv->infobar, TRUE);
-
-	content_area = gtk_info_bar_get_content_area (GTK_INFO_BAR (player->priv->infobar));
-	g_signal_connect (content_area, "size-allocate",
-		      G_CALLBACK (on_content_area_size_allocate), player);
-	// GtkWidget *audiotrack_box, *audiotrack_label, *subtitle_box, *subtitle_label;
+	/* Humanize and pack the Audio Track combobox */
 	audiotrack_box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
 	audiotrack_label = gtk_label_new(_("Audio Track:"));
 	gtk_box_pack_start(GTK_BOX(audiotrack_box), audiotrack_label, FALSE, FALSE, 0);
 	gtk_box_pack_end(GTK_BOX(audiotrack_box), player->priv->combobox_audiotrack, FALSE, FALSE, 0);
 	gtk_container_add(GTK_CONTAINER(content_area), audiotrack_box);
-	
+    
+    /* Initialize the Subtitles combobox */
+    player->priv->liststore_subtitles = gtk_list_store_new(1, G_TYPE_STRING);
+    player->priv->combobox_subtitles = gtk_combo_box_new_with_model(GTK_TREE_MODEL(player->priv->liststore_subtitles));
+    player->priv->subtitle_list = NULL;
+    
+	sub_cell = gtk_cell_renderer_text_new();
+	gtk_cell_layout_pack_start( GTK_CELL_LAYOUT( player->priv->combobox_subtitles ), sub_cell, TRUE );
+	gtk_cell_layout_set_attributes( GTK_CELL_LAYOUT( player->priv->combobox_subtitles ), sub_cell, "text", 0, NULL );
+
+    /* Humanize and pack the Subtitles combobox */
 	subtitle_box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
 	subtitle_label = gtk_label_new(_("Subtitles:"));
 	gtk_box_pack_start(GTK_BOX(subtitle_box), subtitle_label, FALSE, FALSE, 0);
@@ -3198,17 +3246,9 @@ parole_player_init (ParolePlayer *player)
 	
 	gtk_widget_show_all(content_area);
 	
-	gtk_info_bar_add_button (GTK_INFO_BAR (player->priv->infobar),
-		                     GTK_STOCK_CLOSE, GTK_RESPONSE_OK);
-	g_signal_connect (G_OBJECT(player->priv->infobar), "response",
-		              G_CALLBACK (gtk_widget_hide), NULL);
-		              
-	gtk_info_bar_set_message_type (GTK_INFO_BAR (player->priv->infobar),
-                               GTK_MESSAGE_QUESTION);
-                               
-	gtk_box_pack_start( GTK_BOX( player->priv->hbox_infobar ), player->priv->infobar, TRUE, TRUE, 0);
 	player->priv->update_languages = FALSE;
 	player->priv->updated_subs = FALSE;
+	/* End Info Bar */
 	
 	g_object_get (G_OBJECT (player->priv->conf),
         "volume", &volume,
