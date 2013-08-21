@@ -35,7 +35,7 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="pixel_size">16</property>
-    <property name="icon_name">media-cdrom</property>
+    <property name="icon_name">media-optical-symbolic</property>
   </object>
   <object class="GtkImage" id="image2">
     <property name="visible">True</property>
@@ -79,6 +79,12 @@
     <property name="can_focus">False</property>
     <property name="pixel_size">16</property>
     <property name="icon_name">parole-extension</property>
+  </object>
+  <object class="GtkImage" id="image9">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixel_size">16</property>
+    <property name="icon_name">document-properties-symbolic</property>
   </object>
   <object class="GtkWindow" id="main-window">
     <property name="can_focus">False</property>
@@ -166,7 +172,6 @@
                         <property name="label">gtk-quit</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <accelerator key="q" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <signal name="activate" handler="parole_player_menu_exit_cb" swapped="no"/>
@@ -221,11 +226,11 @@
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="preferences">
-                        <property name="label">gtk-preferences</property>
+                        <property name="label">Preferences</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
+                        <property name="image">image9</property>
+                        <property name="use_stock">False</property>
                         <signal name="activate" handler="parole_player_open_preferences_cb" swapped="no"/>
                       </object>
                     </child>
@@ -456,8 +461,8 @@
                         <property name="use_underline">True</property>
                         <property name="image">image3</property>
                         <property name="use_stock">False</property>
-                        <accelerator key="equal" signal="activate"/>
                         <accelerator key="plus" signal="activate"/>
+                        <accelerator key="equal" signal="activate"/>
                         <signal name="activate" handler="parole_player_volume_up" swapped="no"/>
                       </object>
                     </child>
