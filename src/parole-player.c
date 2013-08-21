@@ -333,8 +333,6 @@ struct ParolePlayerPrivate
     GtkWidget		*fullscreen_image;
     GdkPixbuf       *logo;
     GtkWidget       *logo_image;
-    GtkWidget       *logo_window;
-    gboolean        scale_logo;
     
     GtkWidget		*hbox_infobar;
     GtkWidget		*infobar;
@@ -896,7 +894,7 @@ parole_player_show_audiobox (ParolePlayer *player)
 {
     /* Only show the audiobox if we're sure there's no video playing and 
        visualizations are disabled. */
-    gtk_widget_hide(player->priv->logo_window);
+    gtk_widget_hide(player->priv->logo_image);
     if (!gst_get_has_video ( PAROLE_GST(player->priv->gst) ) &&
         !gst_get_has_vis   ( PAROLE_GST(player->priv->gst) ) )
     {
@@ -1453,7 +1451,7 @@ parole_player_stopped (ParolePlayer *player)
 
 	gtk_widget_hide(player->priv->videobox);
 	gtk_widget_hide(player->priv->audiobox);
-	gtk_widget_show_all(player->priv->logo_window);
+	gtk_widget_show(player->priv->logo_image);
 	
 	gchar dur_text[128];
     get_time_string (dur_text, 0);
@@ -2776,41 +2774,9 @@ on_content_area_size_allocate (GtkWidget *widget, GtkAllocation *allocation, Par
 
     if ( gtk_widget_get_realized (widget) )
     {	
-	player->priv->scale_logo = TRUE;
 	
 	gtk_widget_queue_draw (widget);
 	}
-}
-
-static gboolean
-on_scrollbar_resize (GtkWidget *widget, GdkEventExpose *ev, ParolePlayer *player) {
-    player->priv->scale_logo = TRUE;
-    
-    gtk_widget_queue_draw (player->priv->logo_image);
-}
-
-static gboolean
-on_logo_draw (GtkWidget *widget, GdkEventExpose *ev, ParolePlayer *player) {
-    GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
-    static GdkPixbuf *pix = NULL;
-    
-    gtk_widget_get_allocation(player->priv->logo_window, allocation);
-    
-    if (player->priv->scale_logo)
-    {
-	if (pix)
-	    g_object_unref (pix);
-	pix = gdk_pixbuf_scale_simple (player->priv->logo,
-				       allocation->width,
-				       allocation->height,
-				       GDK_INTERP_BILINEAR);
-    gtk_image_set_from_pixbuf(GTK_IMAGE(player->priv->logo_image), pix);
-	player->priv->scale_logo = FALSE;
-    }
-
-    g_free(allocation);
-    
-    return FALSE;
 }
 
 gboolean
@@ -2826,8 +2792,6 @@ parole_player_configure_event_cb (GtkWidget *widget, GdkEventConfigure *ev, Paro
 		      "window-height", h,
 		      NULL);
     }
-    
-    player->priv->scale_logo = TRUE;
     
     return FALSE;
 }
@@ -2973,7 +2937,6 @@ parole_player_init (ParolePlayer *player)
     g_setenv("PULSE_PROP_media.role", "video", TRUE);
     
     player->priv = PAROLE_PLAYER_GET_PRIVATE (player);
-    player->priv->scale_logo = TRUE;
 
     player->priv->client_id = NULL;
     player->priv->sm_client = NULL;
@@ -3142,11 +3105,9 @@ parole_player_init (ParolePlayer *player)
             G_CALLBACK (parole_player_gst_widget_motion_notify_event), player);
 		      
     /* Background Image */
-    player->priv->logo_window = GTK_WIDGET (gtk_builder_get_object (builder, "logo_window"));
-    g_signal_connect(player->priv->logo_window, "size-allocate", G_CALLBACK(on_scrollbar_resize), player);
     player->priv->logo = gdk_pixbuf_new_from_file (g_strdup_printf ("%s/parole.png", PIXMAPS_DIR), NULL);
     player->priv->logo_image = GTK_WIDGET (gtk_builder_get_object (builder, "logo"));
-    g_signal_connect(player->priv->logo_image, "draw", G_CALLBACK(on_logo_draw), player);
+    gtk_image_set_from_pixbuf(GTK_IMAGE(player->priv->logo_image), player->priv->logo);
     
     /* Video Box */
     player->priv->videobox = GTK_WIDGET (gtk_builder_get_object (builder, "video_output"));
