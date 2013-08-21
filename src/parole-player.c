@@ -600,7 +600,7 @@ parole_player_reset (ParolePlayer *player)
 {
 	parole_gst_stop (PAROLE_GST (player->priv->gst));
 	player->priv->update_languages = TRUE;
-	gtk_window_set_title (GTK_WINDOW (player->priv->window), "Parole Media Player");
+	gtk_window_set_title (GTK_WINDOW (player->priv->window), _("Parole Media Player"));
 	player->priv->audio_list = NULL;
 	player->priv->subtitle_list = NULL;
 	
@@ -1449,7 +1449,7 @@ parole_player_stopped (ParolePlayer *player)
 			      parole_media_list_is_selected_row (player->priv->list) || 
 			      !parole_media_list_is_empty (player->priv->list));
 			      
-    gtk_window_set_title (GTK_WINDOW (player->priv->window), "Parole Media Player");
+    gtk_window_set_title (GTK_WINDOW (player->priv->window), _("Parole Media Player"));
 
 	gtk_widget_hide(player->priv->videobox);
 	gtk_widget_hide(player->priv->audiobox);
