@@ -149,19 +149,6 @@ fi
 
 XDT_CHECK_LIBX11()
 
-#=======================================================#
-#              Gtkrc  files              		#
-#=======================================================#
-if test "x${prefix}" = "xNONE"; then
-  AC_DEFINE_UNQUOTED(GTKRC_DIR, "${ac_default_prefix}/${DATADIRNAME}/${PACKAGE}/gtk-2.0", [gtkrc directory])
-  gtkrcdir="${ac_default_prefix}/${DATADIRNAME}/${PACKAGE}/gtk-2.0"
-else
-  AC_DEFINE_UNQUOTED(GTKRC_DIR, "${prefix}/${DATADIRNAME}/${PACKAGE}/gtk-2.0", [pixmaps directory])
-  gtkrcdir="${prefix}/${DATADIRNAME}/${PACKAGE}/gtk-2.0"
-fi
-
-AC_SUBST(gtkrcdir)
-
 # Taken from Gnome system tools
 #=======================================================#
 #              Pixmaps  files              		#
@@ -249,7 +236,6 @@ GTK_DOC_CHECK(1.9)
 AC_OUTPUT([
 Makefile
 data/Makefile
-data/gtk-2.0/Makefile
 data/pixmaps/Makefile
 data/interfaces/Makefile
 data/icons/Makefile
