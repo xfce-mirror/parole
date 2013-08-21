@@ -1314,9 +1314,9 @@ parole_media_list_dvd_chapter_activated (GtkMenuItem *widget, ParoleMediaList *l
 
 
 static void
-parole_media_list_show_dvd_menu (GtkToggleToolButton *button, ParoleMediaList *list)
+parole_media_list_show_dvd_menu (GtkToggleButton *button, ParoleMediaList *list)
 {
-    gboolean toggled = gtk_toggle_tool_button_get_active( button );
+    gboolean toggled = gtk_toggle_button_get_active( button );
     GtkBuilder *builder;
 	GtkMenu *menu;
 	GtkMenuItem *dvd_menu, *title_menu, *audio_menu, *angle_menu, *chapter_menu;
@@ -1745,7 +1745,7 @@ parole_media_list_init (ParoleMediaList *list)
     list->priv->playlist_controls = GTK_WIDGET (gtk_builder_get_object(builder, "playlist_controls"));
     list->priv->playlist_notebook = GTK_WIDGET (gtk_builder_get_object(builder, "playlist_notebook"));
     
-    g_signal_connect (GTK_TOGGLE_TOOL_BUTTON(list->priv->dvd_menu_button), "toggled",
+    g_signal_connect (GTK_TOGGLE_BUTTON(list->priv->dvd_menu_button), "toggled",
 		      G_CALLBACK (parole_media_list_show_dvd_menu), list);
     
     list->priv->view = GTK_WIDGET (gtk_builder_get_object (builder, "media-list"));
