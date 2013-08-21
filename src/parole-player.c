@@ -2783,13 +2783,18 @@ on_content_area_size_allocate (GtkWidget *widget, GtkAllocation *allocation, Par
 }
 
 static gboolean
+on_scrollbar_resize (GtkWidget *widget, GdkEventExpose *ev, ParolePlayer *player) {
+    player->priv->scale_logo = TRUE;
+    
+    gtk_widget_queue_draw (player->priv->logo_image);
+}
+
+static gboolean
 on_logo_draw (GtkWidget *widget, GdkEventExpose *ev, ParolePlayer *player) {
-    GtkWidget *parent;
     GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
     static GdkPixbuf *pix = NULL;
     
-    parent = gtk_widget_get_parent(widget);
-    gtk_widget_get_allocation(parent, allocation);
+    gtk_widget_get_allocation(player->priv->logo_window, allocation);
     
     if (player->priv->scale_logo)
     {
@@ -3138,6 +3143,7 @@ parole_player_init (ParolePlayer *player)
 		      
     /* Background Image */
     player->priv->logo_window = GTK_WIDGET (gtk_builder_get_object (builder, "logo_window"));
+    g_signal_connect(player->priv->logo_window, "size-allocate", G_CALLBACK(on_scrollbar_resize), player);
     player->priv->logo = gdk_pixbuf_new_from_file (g_strdup_printf ("%s/parole.png", PIXMAPS_DIR), NULL);
     player->priv->logo_image = GTK_WIDGET (gtk_builder_get_object (builder, "logo"));
     g_signal_connect(player->priv->logo_image, "draw", G_CALLBACK(on_logo_draw), player);
