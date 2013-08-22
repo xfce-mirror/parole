@@ -7,6 +7,12 @@
     <property name="pixel_size">24</property>
     <property name="icon_name">view-fullscreen-symbolic</property>
   </object>
+  <object class="GtkImage" id="image_quit">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixel_size">16</property>
+    <property name="icon_name">system-shutdown-symbolic</property>
+  </object>
   <object class="GtkImage" id="image_media_next">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -41,7 +47,7 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="pixel_size">16</property>
-    <property name="icon_name">network-server-symbolic</property>
+    <property name="icon_name">folder-remote-symbolic</property>
     <property name="icon-size">1</property>
   </object>
   <object class="GtkImage" id="image3">
@@ -172,7 +178,8 @@
                         <property name="label">gtk-quit</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_stock">True</property>
+                        <property name="use_stock">False</property>
+                        <property name="image">image_quit</property>
                         <accelerator key="q" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <signal name="activate" handler="parole_player_menu_exit_cb" swapped="no"/>
                       </object>
