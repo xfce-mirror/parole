@@ -2021,7 +2021,7 @@ void parole_player_leave_fs_cb (GtkButton *button, ParolePlayer *player)
 static void
 parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time)
 {
-    GtkWidget *menu, *mi;
+    GtkWidget *menu, *mi, *icon;
     gboolean sensitive;
     
     player->priv->current_media_type = parole_gst_get_current_stream_type (PAROLE_GST (player->priv->gst));
@@ -2030,9 +2030,10 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
     
     /*Play menu item
      */
-    mi = gtk_image_menu_item_new_from_stock (player->priv->state == PAROLE_STATE_PLAYING 
-					     ? GTK_STOCK_MEDIA_PAUSE : GTK_STOCK_MEDIA_PLAY, 
-					     NULL);
+    mi = gtk_image_menu_item_new_with_mnemonic (player->priv->state == PAROLE_STATE_PLAYING ? _("_Pause"):_("_Play"));
+    icon = gtk_image_new_from_icon_name (player->priv->state == PAROLE_STATE_PLAYING ? "media-playback-pause-symbolic":"media-playback-start-symbolic", GTK_ICON_SIZE_MENU);
+    gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM(mi), GTK_WIDGET(icon));
+
 					     
     g_object_get (G_OBJECT (player->priv->play_pause),
 		  "sensitive", &sensitive,
@@ -2045,10 +2046,11 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
     
     /*
-     * Previous item in playlist.
+     * Next item in playlist.
      */
-    mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_MEDIA_NEXT, NULL);
-					     
+    mi = gtk_image_menu_item_new_with_mnemonic (_("_Next"));
+    icon = gtk_image_new_from_icon_name ("media-skip-forward-symbolic", GTK_ICON_SIZE_MENU);
+    gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM(mi), GTK_WIDGET(icon));
     gtk_widget_set_sensitive (mi, (player->priv->state >= PAROLE_STATE_PAUSED));
     gtk_widget_show (mi);
     g_signal_connect (mi, "activate",
@@ -2056,10 +2058,11 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
     
     /*
-     * Next item in playlist.
+     * Previous item in playlist.
      */
-    mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_MEDIA_PREVIOUS, NULL);
-					     
+    mi = gtk_image_menu_item_new_with_mnemonic (_("_Previous"));
+    icon = gtk_image_new_from_icon_name ("media-skip-backward-symbolic", GTK_ICON_SIZE_MENU);
+    gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM(mi), GTK_WIDGET(icon));
     gtk_widget_set_sensitive (mi, (player->priv->state >= PAROLE_STATE_PAUSED));
     gtk_widget_show (mi);
     g_signal_connect (mi, "activate",
@@ -2069,8 +2072,9 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
     /*
      * Un/Full screen
      */
-    mi = gtk_image_menu_item_new_from_stock (player->priv->full_screen ? GTK_STOCK_LEAVE_FULLSCREEN:
-					     GTK_STOCK_FULLSCREEN, NULL);
+    mi = gtk_image_menu_item_new_with_mnemonic (player->priv->full_screen ? _("_Leave Fullscreen"):_("_Fullscreen"));
+    icon = gtk_image_new_from_icon_name (player->priv->full_screen ? "view-restore-symbolic":"view-fullscreen-symbolic", GTK_ICON_SIZE_MENU);
+    gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM(mi), GTK_WIDGET(icon));
     gtk_widget_show (mi);
     g_signal_connect_swapped (mi, "activate",
 			      G_CALLBACK (parole_player_full_screen_menu_item_activate), player);
@@ -2912,7 +2916,7 @@ parole_player_setup_multimedia_keys (ParolePlayer *player)
 static void
 parole_player_init (ParolePlayer *player)
 {
-    GtkWidget *output;
+    GtkWidget *output, *icon;
     GtkBuilder *builder;
     GdkScreen *screen;
     gint w, h;
@@ -3066,8 +3070,9 @@ parole_player_init (ParolePlayer *player)
     gtk_menu_shell_append(GTK_MENU_SHELL(player->priv->recent_menu), recent_separator);
     
     /* Clear Recent Menu Item */
-    clear_recent = gtk_image_menu_item_new_from_stock(GTK_STOCK_CLEAR, NULL);
-    gtk_menu_item_set_label (GTK_MENU_ITEM(clear_recent), _("Clear recent items..."));
+    clear_recent = gtk_image_menu_item_new_with_mnemonic (_("_Clear recent items..."));
+    icon = gtk_image_new_from_icon_name ("edit-clear-symbolic", GTK_ICON_SIZE_MENU);
+    gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM(clear_recent), GTK_WIDGET(icon));
     g_signal_connect (clear_recent, "activate",
             G_CALLBACK (parole_player_recent_menu_clear_activated_cb), player);
     gtk_menu_shell_append(GTK_MENU_SHELL(player->priv->recent_menu), clear_recent);
