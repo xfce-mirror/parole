@@ -1783,7 +1783,7 @@ parole_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePl
 	    g_object_unref(image);
     }
 	else
-	gtk_image_set_from_icon_name(GTK_IMAGE(player->priv->audiobox_cover), "audio-x-generic", GTK_ICON_SIZE_ARTWORK_FALLBACK);
+	gtk_image_set_from_icon_name(GTK_IMAGE(player->priv->audiobox_cover), "audio-x-generic-symbolic", GTK_ICON_SIZE_ARTWORK_FALLBACK);
     }
 }
 
