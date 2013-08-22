@@ -1629,6 +1629,12 @@ parole_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream, Parole
     }
 }
 
+static void
+on_infobar_close_clicked (GtkButton *button, ParolePlayer *player)
+{
+    gtk_widget_hide(player->priv->infobar);
+}
+
 void
 parole_player_play_pause_clicked (GtkButton *button, ParolePlayer *player)
 {
@@ -2927,7 +2933,7 @@ parole_player_init (ParolePlayer *player)
     
     GtkCellRenderer *cell, *sub_cell;
     
-    GtkWidget *audiotrack_box, *audiotrack_label, *subtitle_box, *subtitle_label;
+    GtkWidget *audiotrack_box, *audiotrack_label, *subtitle_box, *subtitle_label, *infobar_close, *close_icon;
     GtkWidget *content_area;
     
     g_setenv("PULSE_PROP_media.role", "video", TRUE);
@@ -3161,13 +3167,8 @@ parole_player_init (ParolePlayer *player)
 	player->priv->infobar = gtk_info_bar_new ();
 	gtk_info_bar_set_message_type (GTK_INFO_BAR (player->priv->infobar),
                             GTK_MESSAGE_QUESTION);
-	gtk_info_bar_add_button (GTK_INFO_BAR (player->priv->infobar),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_OK);
                             
     gtk_widget_set_no_show_all (player->priv->infobar, TRUE);
-    
-	g_signal_connect (G_OBJECT(player->priv->infobar), "response",
-		              G_CALLBACK (gtk_widget_hide), NULL);
 
 	content_area = gtk_info_bar_get_content_area (GTK_INFO_BAR (player->priv->infobar));
 	g_signal_connect (content_area, "size-allocate",
@@ -3206,6 +3207,13 @@ parole_player_init (ParolePlayer *player)
 	gtk_box_pack_start(GTK_BOX(subtitle_box), subtitle_label, FALSE, FALSE, 0);
 	gtk_box_pack_end(GTK_BOX(subtitle_box), player->priv->combobox_subtitles, FALSE, FALSE, 0);
 	gtk_container_add(GTK_CONTAINER(content_area), subtitle_box);
+	
+	infobar_close = gtk_button_new_with_label(_("Close"));
+	close_icon = gtk_image_new_from_icon_name("dialog-close", GTK_ICON_SIZE_BUTTON);
+	gtk_button_set_image(GTK_BUTTON(infobar_close), close_icon);
+	g_signal_connect (infobar_close, "clicked",
+		      G_CALLBACK (on_infobar_close_clicked), player);
+	gtk_box_pack_end(GTK_BOX(content_area), infobar_close, FALSE, FALSE, 0);
 	
 	gtk_widget_show_all(content_area);
 	
