@@ -2735,6 +2735,19 @@ parole_gst_set_default_aspect_ratio (ParolePlayer *player, GtkBuilder *builder)
 				    TRUE);
 }
 
+static void
+on_bug_report_clicked (GtkWidget *w, ParolePlayer *player)
+{
+    GtkWidget *dialog;
+    if (!gtk_show_uri(NULL, "https://bugzilla.xfce.org/buglist.cgi?product=parole", GDK_CURRENT_TIME, NULL))
+    {
+        dialog = gtk_message_dialog_new(GTK_WINDOW(player->priv->window), GTK_DIALOG_DESTROY_WITH_PARENT, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE, _("Unable to open default web browser"));
+        gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog), _("Please go to https://bugzilla.xfce.org/buglist.cgi?product=parole to report your bug."));
+        gtk_dialog_run(GTK_DIALOG(dialog));
+        gtk_widget_destroy(dialog);
+    }
+}
+
 static gboolean
 parole_audiobox_expose_event (GtkWidget *w, GdkEventExpose *ev, ParolePlayer *player)
 {
@@ -2933,6 +2946,8 @@ parole_player_init (ParolePlayer *player)
     GtkWidget *clear_recent;
     GtkWidget *recent_separator;
     
+    GtkWidget *bug_report;
+    
     gboolean repeat, shuffle;
     
     GtkCellRenderer *cell, *sub_cell;
@@ -3100,6 +3115,9 @@ parole_player_init (ParolePlayer *player)
     player->priv->show_hide_playlist = GTK_WIDGET (gtk_builder_get_object (builder, "show-hide-list"));
     player->priv->shuffle_menu_item = GTK_WIDGET (gtk_builder_get_object (builder, "shuffle"));
     player->priv->repeat_menu_item = GTK_WIDGET (gtk_builder_get_object (builder, "repeat"));
+    
+    bug_report = GTK_WIDGET (gtk_builder_get_object (builder, "bug-report"));
+    g_signal_connect (bug_report, "activate", G_CALLBACK(on_bug_report_clicked), player);
     /* End Menu Bar */
     
 
