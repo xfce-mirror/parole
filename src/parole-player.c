@@ -174,6 +174,12 @@ void            parole_player_menu_open_location_cb     (GtkWidget *widget,
 
 void            parole_player_menu_add_cb               (GtkWidget *widget, 
 							 ParolePlayer *player);
+							 
+void            parole_player_media_menu_select_cb      (GtkMenuItem *widget,
+                             ParolePlayer *player);
+							 
+void            parole_player_save_playlist_cb          (GtkWidget *widget,
+                             ParolePlayer *player);
 
 void            parole_player_menu_exit_cb              (GtkWidget *widget,
 							 ParolePlayer *player);
@@ -358,6 +364,7 @@ struct ParolePlayerPrivate
     
     GtkWidget		*volume;
     GtkWidget		*menu_bar;
+    GtkWidget       *save_playlist;
     GtkWidget		*play_box;
      
     gboolean             exit;
@@ -2206,6 +2213,19 @@ parole_player_menu_add_cb (GtkWidget *widget, ParolePlayer *player)
     parole_media_list_open (player->priv->list);
 }
 
+void
+parole_player_save_playlist_cb (GtkWidget *widget, ParolePlayer *player)
+{
+    parole_media_list_save_cb(widget, player->priv->list);
+}
+
+void
+parole_player_media_menu_select_cb (GtkMenuItem *widget, ParolePlayer *player)
+{
+    gtk_widget_set_sensitive (player->priv->save_playlist, 
+				  !parole_media_list_is_empty (player->priv->list));    
+}
+
 void parole_player_open_preferences_cb	(GtkWidget *widget, ParolePlayer *player)
 {
     ParoleConfDialog *dialog;
@@ -3063,6 +3083,15 @@ parole_player_init (ParolePlayer *player)
     
     /* Menu Bar */
     player->priv->menu_bar = GTK_WIDGET (gtk_builder_get_object (builder, "menubar"));
+    
+    /* Save Playlist Menu Item */
+    player->priv->save_playlist = GTK_WIDGET (gtk_builder_get_object (builder, "menu-save-playlist"));
+    g_signal_connect(   player->priv->save_playlist, 
+                        "activate",
+                        G_CALLBACK(parole_player_save_playlist_cb), 
+                        PAROLE_PLAYER(player) );
+    g_signal_connect (gtk_builder_get_object (builder, "media-menu"), "select",
+	              G_CALLBACK (parole_player_media_menu_select_cb), player);
     
     /* Recent Menu */
     recent_menu = GTK_WIDGET (gtk_builder_get_object (builder, "recent_menu"));

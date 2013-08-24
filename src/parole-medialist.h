@@ -155,6 +155,9 @@ GtkTreeRowReference *parole_media_list_get_row_n (ParoleMediaList *list,
 
 void				 parole_media_list_save_list	    (ParoleMediaList *list);
 
+void 		        parole_media_list_save_cb (GtkWidget *widget, 
+								                        ParoleMediaList *list);
+
 void				 parole_media_list_grab_focus       (ParoleMediaList *list);
 
 void				 parole_media_list_set_repeat_toggled		(ParoleMediaList *list,

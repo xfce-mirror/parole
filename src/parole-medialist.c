@@ -145,9 +145,6 @@ void		parole_media_list_close_save_dialog_cb (GtkButton *button,
 						    
 void		parole_media_list_save_playlist_cb     (GtkButton *button,
 						        ParolePlaylistSave *data);
-						        
-void 		parole_media_list_save_cb (GtkButton *button, 
-								ParoleMediaList *list);
 
 gboolean	parole_media_list_query_tooltip		(GtkWidget *widget,
 							 gint x,
@@ -810,7 +807,7 @@ void parole_media_list_format_cursor_changed_cb (GtkTreeView *view, ParolePlayli
 }
 
 /* Callback to save the current playlist */
-void parole_media_list_save_cb (GtkButton *button, ParoleMediaList *list)
+void parole_media_list_save_cb (GtkWidget *widget, ParoleMediaList *list)
 {
     ParolePlaylistSave *data;
     GtkWidget *chooser;
