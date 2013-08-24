@@ -529,27 +529,15 @@ gboolean parole_media_list_key_press (GtkWidget *widget, GdkEventKey *ev, Parole
     GtkWidget *vbox_player;
     switch ( ev->keyval )
     {
-#if GTK_CHECK_VERSION(3, 0, 0)
         case GDK_KEY_Delete:
-#else
-        case GDK_Delete:
-#endif
             parole_media_list_remove_clicked_cb (NULL, list);
             return TRUE;
             break;
-#if GTK_CHECK_VERSION(3, 0, 0)
         case GDK_KEY_Right:
         case GDK_KEY_Left:
         case GDK_KEY_Page_Down:
         case GDK_KEY_Page_Up:
         case GDK_KEY_Escape:
-#else
-        case GDK_Right:
-        case GDK_Left:
-        case GDK_Page_Down:
-        case GDK_Page_Up:
-        case GDK_Escape:
-#endif
             vbox_player = GTK_WIDGET(gtk_container_get_children( GTK_CONTAINER(gtk_widget_get_parent(gtk_widget_get_parent(gtk_widget_get_parent(gtk_widget_get_parent(gtk_widget_get_parent(gtk_widget_get_parent(widget))))))) )[0].data);
             gtk_widget_grab_focus(vbox_player);
             return TRUE;

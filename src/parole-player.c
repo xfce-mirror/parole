@@ -2140,11 +2140,8 @@ static gboolean parole_player_hide_fs_window (gpointer data)
     GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
     GdkWindow *gdkwindow;
     gint x, y, w, h;
-    
-#if GTK_CHECK_VERSION (3, 0, 0)
     GdkDevice *dev;
     GdkDeviceManager *devmgr;
-#endif
     
     player = PAROLE_PLAYER (data);
     
@@ -2156,14 +2153,10 @@ static gboolean parole_player_hide_fs_window (gpointer data)
 	h = allocation->height;
 	g_free(allocation);
 	
-#if GTK_CHECK_VERSION (3, 0, 0)
     devmgr = gdk_display_get_device_manager(gtk_widget_get_display(GTK_WIDGET(player->priv->fs_window)));
     dev = gdk_device_manager_get_client_pointer(devmgr);
     gdk_window_get_device_position( gtk_widget_get_window(GTK_WIDGET(player->priv->fs_window)),
                                     dev, &x, &y, NULL);
-#else
-	gtk_widget_get_pointer (player->priv->fs_window, &x, &y);
-#endif
 	
 	if ((x >= 0) && (x <= w) && (y >= 0) && (y <= h))
 	    return TRUE;
@@ -2535,33 +2528,18 @@ parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
     
     switch (ev->keyval)
     {
-#if GTK_CHECK_VERSION(3, 0, 0)
 	case GDK_KEY_f:
 	case GDK_KEY_F:
-#else
-    case GDK_f:
-	case GDK_F:
-#endif
             if ( player->priv->embedded != TRUE ) parole_player_full_screen_menu_item_activate (player);
 	    ret_val = TRUE;
 	    break;
-#if GTK_CHECK_VERSION(3, 0, 0)
 	case GDK_KEY_space:
 	case GDK_KEY_p:
 	case GDK_KEY_P:
-#else
-    case GDK_space:
-	case GDK_p:
-	case GDK_P:
-#endif
 	    parole_player_play_pause_clicked (NULL, player);
 	    ret_val = TRUE;
 	    break;
-#if GTK_CHECK_VERSION(3, 0, 0)
     case GDK_KEY_Right:
-#else
-    case GDK_Right:
-#endif
 	    /* Media seekable ?*/
 	    if ( gtk_widget_get_sensitive (player->priv->range) )
 	    {
@@ -2570,11 +2548,7 @@ parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
 	    }
 	    ret_val = TRUE;
 	    break;
-#if GTK_CHECK_VERSION(3, 0, 0)
 	case GDK_KEY_Left:
-#else
-    case GDK_Left:
-#endif
 	    if ( gtk_widget_get_sensitive (player->priv->range) )
 	    {
 		if (ev->state & GDK_CONTROL_MASK) parole_player_seekb_cb (NULL, player, seek_medium);
@@ -2582,39 +2556,22 @@ parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
 	    }
 	    ret_val = TRUE;
 	    break;
-#if GTK_CHECK_VERSION(3, 0, 0)
 	case GDK_KEY_Page_Down:
-#else
-    case GDK_Page_Down:
-#endif
 	    if ( gtk_widget_get_sensitive (player->priv->range) )
 		parole_player_seekb_cb (NULL, player, seek_long);
 	    ret_val = TRUE;
 	    break;
-#if GTK_CHECK_VERSION(3, 0, 0)
 	case GDK_KEY_Page_Up:
-#else
-    case GDK_Page_Up:
-#endif
 	    if ( gtk_widget_get_sensitive (player->priv->range) )
 		parole_player_seekf_cb (NULL, player, seek_long);
 	    ret_val = TRUE;
 	    break;
-#if GTK_CHECK_VERSION(3, 0, 0)
 	case GDK_KEY_s:
 	case GDK_KEY_S:
-#else
-	case GDK_s:
-	case GDK_S:
-#endif
 	    parole_player_stop_clicked (NULL, player);
 	    ret_val = TRUE;
 	    break;
-#if GTK_CHECK_VERSION(3, 0, 0)
 	case GDK_KEY_Escape:
-#else
-    case GDK_Escape:
-#endif
 	    parole_player_full_screen (player, FALSE);
 	    break;
 #ifdef HAVE_XF86_KEYSYM
@@ -2628,13 +2585,8 @@ parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
 	 * Pass these to the media list and tell it to
 	 * grab the focus
 	 */
-#if GTK_CHECK_VERSION(3, 0, 0)
 	case GDK_KEY_Up:
 	case GDK_KEY_Down:
-#else
-    case GDK_Up:
-	case GDK_Down:
-#endif
 	    if (!player->priv->full_screen && gtk_widget_get_visible(player->priv->playlist_nt))
 	        parole_media_list_grab_focus (player->priv->list);
 	    break;
@@ -2656,11 +2608,7 @@ parole_player_key_press (GtkWidget *widget, GdkEventKey *ev, ParolePlayer *playe
 
     switch (ev->keyval)
     {
-#if GTK_CHECK_VERSION(3, 0, 0)
 	case GDK_KEY_F11:
-#else
-    case GDK_F11:
-#endif
             if ( player->priv->embedded != TRUE ) parole_player_full_screen_menu_item_activate (player);
 	    return TRUE;
 #ifdef HAVE_XF86_KEYSYM
@@ -2920,11 +2868,7 @@ parole_player_set_wm_opacity_hint (GtkWidget *widget)
     
     gdkwindow = gtk_widget_get_window (widget);
     
-#if GTK_CHECK_VERSION(3, 0, 0)
     XChangeProperty (xdisplay, gdk_x11_window_get_xid (gdkwindow),
-#else
-    XChangeProperty (xdisplay, gdk_x11_drawable_get_xid (gdkwindow),
-#endif
 		     atom, XA_CARDINAL,
 		     32, PropModeAppend,
 		     (guchar *) &mode, 

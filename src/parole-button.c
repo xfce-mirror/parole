@@ -157,15 +157,9 @@ parole_button_grab_keystring (ParoleButton *button, guint keycode)
     
     gdk_error_trap_push ();
 
-#if GTK_CHECK_VERSION(3, 0, 0)
     ret = XGrabKey (GDK_DISPLAY_XDISPLAY(display), keycode, modmask,
 		    gdk_x11_window_get_xid (button->priv->window), True,
 		    GrabModeAsync, GrabModeAsync);
-#else
-    ret = XGrabKey (GDK_DISPLAY_XDISPLAY(display), keycode, modmask,
-		    gdk_x11_drawable_get_xid (button->priv->window), True,
-		    GrabModeAsync, GrabModeAsync);
-#endif
 		    
     if ( ret == BadAccess )
     {
@@ -175,11 +169,7 @@ parole_button_grab_keystring (ParoleButton *button, guint keycode)
     }
 	
     ret = XGrabKey (GDK_DISPLAY_XDISPLAY(display), keycode, LockMask | modmask,
-#if GTK_CHECK_VERSION(3, 0, 0)
             gdk_x11_window_get_xid (button->priv->window), True,
-#else
-		    gdk_x11_drawable_get_xid (button->priv->window), True,
-#endif
 		    GrabModeAsync, GrabModeAsync);
 			
     if (ret == BadAccess)
@@ -190,11 +180,7 @@ parole_button_grab_keystring (ParoleButton *button, guint keycode)
     }
 
     gdk_flush ();
-#if GTK_CHECK_VERSION(3, 0, 0)
     gdk_error_trap_pop_ignored ();
-#else
-    gdk_error_trap_pop ();
-#endif
     return TRUE;
 }
 

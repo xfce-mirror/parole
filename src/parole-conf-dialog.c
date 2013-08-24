@@ -335,7 +335,6 @@ parole_conf_dialog_init (ParoleConfDialog *self)
 static void
 parole_conf_dialog_add_vis_plugins (gpointer key, gpointer value, GtkWidget *combox)
 {
-#if GTK_CHECK_VERSION(3, 0, 0)
     GtkListStore *store = GTK_LIST_STORE(gtk_combo_box_get_model(GTK_COMBO_BOX(combox)));
     GtkTreeIter iter;
     
@@ -343,9 +342,6 @@ parole_conf_dialog_add_vis_plugins (gpointer key, gpointer value, GtkWidget *com
     gtk_list_store_set( store, &iter, 0, (const gchar *) key, -1 );
     
     g_object_unref (store);
-#else
-    gtk_combo_box_append_text (GTK_COMBO_BOX (combox), (const gchar *) key);
-#endif
 }
 
 /* Set the combobox to the default visualisation plugin */

@@ -247,11 +247,7 @@ parole_gst_realize (GtkWidget *widget)
     ParoleGst *gst;
     GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
     GdkWindowAttr attr;
-#if GTK_CHECK_VERSION(3, 0, 0)
     GdkRGBA color;
-#else
-    GdkColor color;
-#endif
     gint mask;
     
     gtk_widget_set_realized (widget, TRUE);
@@ -264,10 +260,6 @@ parole_gst_realize (GtkWidget *widget)
     attr.width = allocation->width;
     attr.height = allocation->height;
     attr.visual = gtk_widget_get_visual (widget);
-#if GTK_CHECK_VERSION(3, 0, 0)
-#else
-    attr.colormap = gtk_widget_get_colormap (widget);
-#endif
     attr.wclass = GDK_INPUT_OUTPUT;
     attr.window_type = GDK_WINDOW_CHILD;
     attr.event_mask = gtk_widget_get_events (widget) | 
@@ -277,38 +269,20 @@ parole_gst_realize (GtkWidget *widget)
 		      GDK_POINTER_MOTION_MASK |
 		      GDK_KEY_PRESS_MASK;
 		      
-#if GTK_CHECK_VERSION(3, 0, 0)
     mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
-#else
-    mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL | GDK_WA_COLORMAP;
-#endif
 	
     gtk_widget_set_window(widget, gdk_window_new (gtk_widget_get_parent_window (widget),
 				     &attr, mask) );
 				     
     gdk_window_set_user_data (gtk_widget_get_window(widget), widget);
 
-#if GTK_CHECK_VERSION(3, 0, 0)
     gdk_rgba_parse (&color, "black");
     gdk_window_set_background_rgba (gtk_widget_get_window(widget), &color);
-#else
-    gdk_color_parse ("black", &color);
-    gdk_colormap_alloc_color (gtk_widget_get_colormap (widget), &color,
-			      TRUE, TRUE);
-
-    gdk_window_set_background (gtk_widget_get_window(widget), &color);
-
-    gtk_widget_set_style(widget, gtk_style_attach (gtk_widget_get_style(widget), gtk_widget_get_window(widget)));
-#endif
     
     g_signal_connect (gtk_widget_get_toplevel (widget), "configure_event",
 		      G_CALLBACK (parole_gst_configure_event_cb), gst);
 		      
-#if GTK_CHECK_VERSION(3, 0, 0)
     g_signal_connect (gtk_widget_get_parent(gtk_widget_get_parent (widget)), "draw",
-#else
-    g_signal_connect (gtk_widget_get_parent(gtk_widget_get_parent (widget)), "expose-event",
-#endif
 		      G_CALLBACK (parole_gst_parent_expose_event), gst);
 		      
     g_free(allocation);
@@ -1636,11 +1610,7 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
                 gtk_widget_get_realized (GTK_WIDGET (gst)))
             {
                 gst_install_plugins_context_set_xid (ctx,
-#if GTK_CHECK_VERSION(3, 0, 0)
                     gdk_x11_window_get_xid (gtk_widget_get_window(GTK_WIDGET (gst))));
-#else
-                    gdk_x11_drawable_get_xid (gtk_widget_get_window(GTK_WIDGET (gst))));
-#endif
             }
 #endif /* GDK_WINDOWING_X11 */
 
