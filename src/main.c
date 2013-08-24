@@ -88,27 +88,27 @@ parole_send_play_disc (const gchar *uri, const gchar *device)
     
     if ( uri )
     {
-	uri_local = g_strdup (uri);
+        uri_local = g_strdup (uri);
     }
     else
     {
-	uri_local = parole_get_uri_from_unix_device (device);
+        uri_local = parole_get_uri_from_unix_device (device);
     }
     
     proxy = parole_get_proxy (PAROLE_DBUS_PATH, PAROLE_DBUS_INTERFACE);
     
     dbus_g_proxy_call (proxy, "PlayDisc", &error,
-		       G_TYPE_STRING, uri_local,
-		       G_TYPE_STRING, device,
-		       G_TYPE_INVALID,
-		       G_TYPE_INVALID);
+                       G_TYPE_STRING, uri_local,
+                       G_TYPE_STRING, device,
+                       G_TYPE_INVALID,
+                       G_TYPE_INVALID);
     
     g_free (uri_local);
-		       
+               
     if ( error )
     {
-	g_critical ("Unable to send uri to Parole: %s", error->message);
-	g_error_free (error);
+        g_critical ("Unable to send uri to Parole: %s", error->message);
+        g_error_free (error);
     }
     
     g_object_unref (proxy);
@@ -132,30 +132,30 @@ parole_send_files (gchar **filenames, gboolean enqueue)
     guint i;
 
     proxy = parole_get_proxy (PAROLE_DBUS_PLAYLIST_PATH, PAROLE_DBUS_PLAYLIST_INTERFACE);
-	
+    
     if ( !proxy )
-	g_error ("Unable to create proxy for %s", PAROLE_DBUS_NAME);
+        g_error ("Unable to create proxy for %s", PAROLE_DBUS_NAME);
 
     out_paths = g_new0 (gchar *, g_strv_length (filenames));
 
     for ( i = 0; filenames && filenames[i]; i++)
     {
-	file = g_file_new_for_commandline_arg (filenames[i]);
-	out_paths[i] = g_file_get_path (file);
-	g_object_unref (file);
+        file = g_file_new_for_commandline_arg (filenames[i]);
+        out_paths[i] = g_file_get_path (file);
+        g_object_unref (file);
     }
 
     dbus_g_proxy_call (proxy, "AddFiles", &error,
-		       G_TYPE_STRV, out_paths,
-		       G_TYPE_BOOLEAN, enqueue,
-			   G_TYPE_INVALID,
-		       G_TYPE_INVALID);
-		       
-		       
+                       G_TYPE_STRV, out_paths,
+                       G_TYPE_BOOLEAN, enqueue,
+                       G_TYPE_INVALID,
+                       G_TYPE_INVALID);
+               
+               
     if ( error )
     {
-	g_critical ("Unable to send media files to Parole: %s", error->message);
-	g_error_free (error);
+        g_critical ("Unable to send media files to Parole: %s", error->message);
+        g_error_free (error);
     }
 
     g_strfreev (out_paths);
@@ -175,9 +175,9 @@ static void
 parole_send (gchar **filenames, gchar *device, gboolean enqueue)
 {
     if ( g_strv_length (filenames) == 1 && parole_is_uri_disc (filenames[0]))
-	parole_send_play_disc (filenames[0], device);
+        parole_send_play_disc (filenames[0], device);
     else
-	parole_send_files (filenames, enqueue);
+        parole_send_files (filenames, enqueue);
 }
 
 /**
@@ -195,13 +195,13 @@ parole_send_message (const gchar *message)
     proxy = parole_get_proxy (PAROLE_DBUS_PATH, PAROLE_DBUS_INTERFACE);
     
     dbus_g_proxy_call (proxy, message, &error,
-		       G_TYPE_INVALID,
-		       G_TYPE_INVALID);
-		       
+                       G_TYPE_INVALID,
+                       G_TYPE_INVALID);
+               
     if ( error )
     {
-	g_critical ("Failed to send message : %s : %s", message, error->message);
-	g_error_free (error);
+        g_critical ("Failed to send message : %s : %s", message, error->message);
+        g_error_free (error);
     }
     
     g_object_unref (proxy);
@@ -225,19 +225,19 @@ xv_option_given (const gchar *name, const gchar *value, gpointer data, GError **
     ParoleConf *conf;
     
     if ( !g_strcmp0 (value, "TRUE") || !g_strcmp0 (value, "true"))
-	enabled = TRUE;
+        enabled = TRUE;
     else if (!g_strcmp0 (value, "FALSE") || !g_strcmp0 (value, "false"))
-	enabled = FALSE;
+        enabled = FALSE;
     else 
     {
-	g_set_error (error, 0, 0, "%s %s : %s",  name, _("Unknown argument "), value);
-	return FALSE;
+        g_set_error (error, 0, 0, "%s %s : %s",  name, _("Unknown argument "), value);
+        return FALSE;
     }
     
     conf = parole_conf_new ();
     g_object_set (G_OBJECT (conf),
-		  "enable-xv", enabled,
-		  NULL);
+                  "enable-xv", enabled,
+                  NULL);
     
     g_object_unref(conf);
     exit (0);
@@ -268,31 +268,31 @@ int main (int argc, char **argv)
     gboolean no_plugins = FALSE;
     gboolean embedded = FALSE;
     gboolean fullscreen = FALSE;
-	gboolean enqueue = FALSE;
+    gboolean enqueue = FALSE;
     gchar    *client_id = NULL;
     
     /* Command-line options */
     GOptionEntry option_entries[] = 
     {
-	{ "new-instance", 'i', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &new_instance, N_("Open a new instance"), NULL },
-	{ "no-plugins", 'n', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &no_plugins, N_("Do not load plugins"), NULL },
-	{ "device", '\0', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_STRING, &device, N_("Set Audio-CD/VCD/DVD device path"), NULL },
-	{ "play", 'p', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &play, N_("Play or pause if already playing"), NULL },
-	{ "stop", 's', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &stop, N_("Stop playing"), NULL },
-	{ "next-track", 'N', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &next_track, N_("Next track"), NULL },
-	{ "previous-track", 'P', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &prev_track, N_("Previous track"), NULL },
-	{ "seek-f", 'f', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &seek_f, N_("Seek forward"), NULL },
-	{ "seek-b", 'b', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &seek_b, N_("Seek Backward"), NULL },
-	{ "raise-volume", 'r', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &raise_volume, N_("Raise volume"), NULL },
-	{ "lower-volume", 'l', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &lower_volume, N_("Lower volume"), NULL },
-	{ "mute", 'm', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &mute, N_("Mute volume"), NULL },
-	{ "version", 'V', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &version, N_("Version information"), NULL },
-	{ "embedded", 'E', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &embedded, N_("Use embedded mode"), NULL },
-	{ "fullscreen", 'F', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &fullscreen, N_("Start in fullscreen mode"), NULL },
-	{ "xv", '\0', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_CALLBACK, (GOptionArgFunc) xv_option_given, N_("Enabled/Disable XV support"), NULL},
-	{ "add", 'a', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &enqueue, N_("Add files to playlist"), NULL},
-	{ "sm-client-id", 0, G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_STRING, &client_id, NULL, NULL },
-	{G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, &filenames, N_("Media to play"), NULL},
+    { "new-instance", 'i', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &new_instance, N_("Open a new instance"), NULL },
+    { "no-plugins", 'n', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &no_plugins, N_("Do not load plugins"), NULL },
+    { "device", '\0', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_STRING, &device, N_("Set Audio-CD/VCD/DVD device path"), NULL },
+    { "play", 'p', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &play, N_("Play or pause if already playing"), NULL },
+    { "stop", 's', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &stop, N_("Stop playing"), NULL },
+    { "next-track", 'N', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &next_track, N_("Next track"), NULL },
+    { "previous-track", 'P', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &prev_track, N_("Previous track"), NULL },
+    { "seek-f", 'f', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &seek_f, N_("Seek forward"), NULL },
+    { "seek-b", 'b', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &seek_b, N_("Seek Backward"), NULL },
+    { "raise-volume", 'r', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &raise_volume, N_("Raise volume"), NULL },
+    { "lower-volume", 'l', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &lower_volume, N_("Lower volume"), NULL },
+    { "mute", 'm', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &mute, N_("Mute volume"), NULL },
+    { "version", 'V', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &version, N_("Version information"), NULL },
+    { "embedded", 'E', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &embedded, N_("Use embedded mode"), NULL },
+    { "fullscreen", 'F', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &fullscreen, N_("Start in fullscreen mode"), NULL },
+    { "xv", '\0', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_CALLBACK, (GOptionArgFunc) xv_option_given, N_("Enabled/Disable XV support"), NULL},
+    { "add", 'a', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &enqueue, N_("Add files to playlist"), NULL},
+    { "sm-client-id", 0, G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_STRING, &client_id, NULL, NULL },
+    {G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, &filenames, N_("Media to play"), NULL},
         { NULL, },
     };
     
@@ -307,7 +307,7 @@ int main (int argc, char **argv)
         return EXIT_FAILURE;
     }
     
-	XInitThreads();
+    XInitThreads();
 
     xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
     
@@ -326,119 +326,119 @@ int main (int argc, char **argv)
     
     if ( !g_option_context_parse (ctx, &argc, &argv, &error) ) 
     {
-	g_print ("%s\n", error->message);
-	g_print ("Type %s --help to list all available command line options", argv[0]);
-	g_error_free (error);
-	g_option_context_free (ctx);
-	return EXIT_FAILURE;
+        g_print ("%s\n", error->message);
+        g_print ("Type %s --help to list all available command line options", argv[0]);
+        g_error_free (error);
+        g_option_context_free (ctx);
+        return EXIT_FAILURE;
     }
     g_option_context_free (ctx);
     
     if ( version )
-	show_version ();
-	
-	/* Check for cli options if there is an instance of Parole already */
+        show_version ();
+    
+    /* Check for cli options if there is an instance of Parole already */
     if ( !new_instance && parole_dbus_name_has_owner (PAROLE_DBUS_NAME) )
     {
-	if (!enqueue)
-	g_print (_("Parole is already running, use -i to open a new instance\n"));
-	
-	if ( filenames && filenames[0] != NULL )
-	    parole_send (filenames, device, enqueue);
-	else if (device != NULL)
-	    parole_send_play_disc (NULL, device);
-	
-	if ( play )
-	    parole_send_message ("Play");
-	    
-	if ( stop )
-	    parole_send_message ("Stop");
-	    
-	if ( next_track )
-	    parole_send_message ("NextTrack");
-	
-	if ( prev_track )
-	    parole_send_message ("PrevTrack");
-	    
-	if ( seek_f )
-	    parole_send_message ("SeekForward");
-	    
-	if ( seek_b )
-	    parole_send_message ("SeekBackward");
-	    
-	if ( raise_volume )
-	    parole_send_message ("RaiseVolume");
-	    
-	if ( lower_volume )
-	    parole_send_message ("LowerVolume");
-	    
-	if ( mute )
-	    parole_send_message ("Mute");
+        if (!enqueue)
+            g_print (_("Parole is already running, use -i to open a new instance\n"));
+        
+        if ( filenames && filenames[0] != NULL )
+            parole_send (filenames, device, enqueue);
+        else if (device != NULL)
+            parole_send_play_disc (NULL, device);
+        
+        if ( play )
+            parole_send_message ("Play");
+            
+        if ( stop )
+            parole_send_message ("Stop");
+            
+        if ( next_track )
+            parole_send_message ("NextTrack");
+        
+        if ( prev_track )
+            parole_send_message ("PrevTrack");
+            
+        if ( seek_f )
+            parole_send_message ("SeekForward");
+            
+        if ( seek_b )
+            parole_send_message ("SeekBackward");
+            
+        if ( raise_volume )
+            parole_send_message ("RaiseVolume");
+            
+        if ( lower_volume )
+            parole_send_message ("LowerVolume");
+            
+        if ( mute )
+            parole_send_message ("Mute");
     }
-	
-	/* Create a new instance because Parole isn't running */
+    
+    /* Create a new instance because Parole isn't running */
     else
     {
-	builder = parole_builder_get_main_interface ();
-	parole_dbus_register_name (PAROLE_DBUS_NAME);
+        builder = parole_builder_get_main_interface ();
+        parole_dbus_register_name (PAROLE_DBUS_NAME);
 
-	player = parole_player_new (client_id);
-	g_free (client_id);
-	
-	if (embedded)
-	    parole_player_embedded (player);
-	else if (fullscreen)
-	    parole_player_full_screen (player, TRUE);
+        player = parole_player_new (client_id);
+        g_free (client_id);
+        
+        if (embedded)
+            parole_player_embedded (player);
+        else if (fullscreen)
+            parole_player_full_screen (player, TRUE);
 
-	if ( filenames && filenames[0] != NULL )
-	{
-	    if ( g_strv_length (filenames) == 1 && parole_is_uri_disc (filenames[0]))
-	    {
-		parole_player_play_uri_disc (player, filenames[0], device);
-	    }
-	    else
-	    {
-		ParoleMediaList *list;
-		list = parole_player_get_media_list (player);
-		parole_media_list_add_files (list, filenames, enqueue);
-	    }
-	}
-	else if ( device != NULL )
-	{
-	    parole_player_play_uri_disc (player, NULL, device);
-	}
-	
-	if ( xfce_posix_signal_handler_init (&error)) 
-	{
-	    xfce_posix_signal_handler_set_handler(SIGHUP,
-						  parole_sig_handler,
-						  player, NULL);
+        if ( filenames && filenames[0] != NULL )
+        {
+            if ( g_strv_length (filenames) == 1 && parole_is_uri_disc (filenames[0]))
+            {
+                parole_player_play_uri_disc (player, filenames[0], device);
+            }
+            else
+            {
+                ParoleMediaList *list;
+                list = parole_player_get_media_list (player);
+                parole_media_list_add_files (list, filenames, enqueue);
+            }
+        }
+        else if ( device != NULL )
+        {
+            parole_player_play_uri_disc (player, NULL, device);
+        }
+        
+        if ( xfce_posix_signal_handler_init (&error)) 
+        {
+            xfce_posix_signal_handler_set_handler(SIGHUP,
+                                                  parole_sig_handler,
+                                                  player, NULL);
 
-	    xfce_posix_signal_handler_set_handler(SIGINT,
-						  parole_sig_handler,
-						  player, NULL);
+            xfce_posix_signal_handler_set_handler(SIGINT,
+                                                  parole_sig_handler,
+                                                  player, NULL);
 
-	    xfce_posix_signal_handler_set_handler(SIGTERM,
-						  parole_sig_handler,
-						  player, NULL);
-	} 
-	else 
-	{
-	    g_warning ("Unable to set up POSIX signal handlers: %s", error->message);
-	    g_error_free (error);
-	}
+            xfce_posix_signal_handler_set_handler(SIGTERM,
+                                                  parole_sig_handler,
+                                                  player, NULL);
+        } 
+        else 
+        {
+            g_warning ("Unable to set up POSIX signal handlers: %s", error->message);
+            g_error_free (error);
+        }
 
-    /* Initialize the plugin-manager and load the plugins */
-	plugins = parole_plugins_manager_new (!no_plugins);
-	parole_plugins_manager_load (plugins);
-	g_object_unref (builder);
-	
-	/* Start main process */
-	gdk_notify_startup_complete ();
-	gtk_main ();
-	
-	parole_dbus_release_name (PAROLE_DBUS_NAME);
-	g_object_unref (plugins);
+        /* Initialize the plugin-manager and load the plugins */
+        plugins = parole_plugins_manager_new (!no_plugins);
+        parole_plugins_manager_load (plugins);
+        g_object_unref (builder);
+        
+        /* Start main process */
+        gdk_notify_startup_complete ();
+        gtk_main ();
+        
+        parole_dbus_release_name (PAROLE_DBUS_NAME);
+        g_object_unref (plugins);
     }
 
     gst_deinit ();
