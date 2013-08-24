@@ -784,8 +784,12 @@ void parole_media_list_format_cursor_changed_cb (GtkTreeView *view, ParolePlayli
     gchar *filename;
     gchar *fbasename;
     
+    // FIXME: replaces entered filename with Playlist.
     filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (data->chooser));
-    fbasename = g_path_get_basename (filename);
+    if (filename)
+        fbasename = g_path_get_basename (filename);
+    else
+        fbasename = g_strconcat (_("Playlist"), ".m3u", NULL);
     
     g_free (filename);
     
