@@ -3085,7 +3085,7 @@ parole_player_init (ParolePlayer *player)
     gtk_menu_shell_append(GTK_MENU_SHELL(player->priv->recent_menu), recent_separator);
     
     /* Clear Recent Menu Item */
-    clear_recent = gtk_image_menu_item_new_with_mnemonic (_("_Clear recent items..."));
+    clear_recent = gtk_image_menu_item_new_with_mnemonic (_("_Clear recent items…"));
     icon = gtk_image_new_from_icon_name ("edit-clear-symbolic", GTK_ICON_SIZE_MENU);
     gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM(clear_recent), GTK_WIDGET(icon));
     g_signal_connect (clear_recent, "activate",

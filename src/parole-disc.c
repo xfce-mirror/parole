@@ -580,7 +580,7 @@ parole_disc_init (ParoleDisc *disc)
     
     disc->priv->disc_menu_item = GTK_WIDGET (gtk_builder_get_object (builder, "menu-open-disc"));
     
-    g_signal_connect (gtk_builder_get_object (builder, "media-menu-item"), "select",
+    g_signal_connect (gtk_builder_get_object (builder, "media-menu"), "select",
 	              G_CALLBACK (parole_disc_select_cb), disc);
 		      
     g_object_unref (builder);
