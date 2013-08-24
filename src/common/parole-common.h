@@ -27,17 +27,17 @@
 #include <gdk/gdk.h>
 
 
-void		parole_dialog_info			(GtkWindow *parent,
-							 const gchar *title,
-							 const gchar *msg);
+void        parole_dialog_info              (GtkWindow *parent,
+                                             const gchar *title,
+                                             const gchar *msg);
 
-void		parole_dialog_error			(GtkWindow *parent,
-							 const gchar *title,
-							 const gchar *msg);
+void        parole_dialog_error             (GtkWindow *parent,
+                                             const gchar *title,
+                                             const gchar *msg);
 
-void		parole_window_busy_cursor		(GdkWindow *window);
+void        parole_window_busy_cursor       (GdkWindow *window);
 
-void		parole_window_invisible_cursor		(GdkWindow *window);
+void        parole_window_invisible_cursor  (GdkWindow *window);
 
 
 

@@ -36,7 +36,7 @@
 
 #include "parole-screensaver.h"
 
-#define RESET_SCREENSAVER_TIMEOUT	6
+#define RESET_SCREENSAVER_TIMEOUT   6
 
 #define PAROLE_SCREEN_SAVER_GET_PRIVATE(o) \
 (G_TYPE_INSTANCE_GET_PRIVATE ((o), PAROLE_TYPE_SCREENSAVER, ParoleScreenSaverPrivate))
