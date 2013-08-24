@@ -33,22 +33,17 @@
 
 G_BEGIN_DECLS
 
-GtkFileFilter 		*parole_get_supported_audio_filter	(void);
+GtkFileFilter      *parole_get_supported_audio_filter           (void);
+GtkFileFilter      *parole_get_supported_video_filter           (void);
+GtkFileFilter      *parole_get_supported_media_filter           (void);
+GtkFileFilter      *parole_get_supported_files_filter           (void);
+GtkFileFilter      *parole_get_supported_playlist_filter        (void);
 
-GtkFileFilter 		*parole_get_supported_video_filter	(void);
+GtkRecentFilter    *parole_get_supported_recent_media_filter    (void);
+GtkRecentFilter    *parole_get_supported_recent_files_filter    (void);
 
-GtkFileFilter 		*parole_get_supported_media_filter	(void);
-
-GtkRecentFilter     *parole_get_supported_recent_media_filter	(void);
-
-GtkFileFilter 		*parole_get_supported_files_filter	(void);
-
-GtkRecentFilter     *parole_get_supported_recent_files_filter (void);
-
-GtkFileFilter 		*parole_get_supported_playlist_filter	(void);
-
-gboolean		 parole_file_filter			(GtkFileFilter *filter,
-								 ParoleFile *file);
+gboolean            parole_file_filter                          (GtkFileFilter *filter,
+                                                                 ParoleFile *file);
 
 G_END_DECLS
 

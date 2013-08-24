@@ -23,10 +23,10 @@
 /*
  * Based on code from:
  * 
- * Totem pl parser:	Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007 Bastien Nocera
- * 		        Copyright (C) 2003, 2004 Colin Walters <walters@rhythmbox.org>
+ * Totem pl parser: Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007 Bastien Nocera
+ *              Copyright (C) 2003, 2004 Colin Walters <walters@rhythmbox.org>
  * 
- * xfmedia:		Copyright (c) 2004-2005 Brian Tarricone, <bjt23@cornell.edu>
+ * xfmedia:     Copyright (c) 2004-2005 Brian Tarricone, <bjt23@cornell.edu>
  * 
  * Thanks :).
  */
@@ -76,21 +76,21 @@ parole_filename_to_utf8(const gchar* filename)
 
 static void
 parole_xspf_xml_start (GMarkupParseContext *context, const gchar *element_name,
-		       const gchar **attribute_names, const gchar **attribute_values,
-		       gpointer user_data, GError **error)
+                       const gchar **attribute_names, const gchar **attribute_values,
+                       gpointer user_data, GError **error)
 {
     ParoleParserData *data = user_data;
     
     if ( !data->started )
     {
-	if (!g_ascii_strcasecmp (element_name, "playlist") )
-	    data->started = TRUE;
+        if (!g_ascii_strcasecmp (element_name, "playlist") )
+            data->started = TRUE;
     }
 }
 
 static void
 parole_xspf_xml_text (GMarkupParseContext *context, const gchar *text, gsize text_len,  
-		      gpointer user_data, GError **error)
+              gpointer user_data, GError **error)
 {
     ParoleParserData *data = user_data;
     const gchar *element_name;
@@ -103,22 +103,22 @@ parole_xspf_xml_text (GMarkupParseContext *context, const gchar *text, gsize tex
     if (!g_ascii_strcasecmp (element_name, "location") ) 
     {
         if (data->uri) 
-	{
+        {
             g_free (data->uri);
             data->uri = NULL;
         }
-	
+    
         if (text_len > 0)
             data->uri = g_strdup (text);
     }
     else if (!g_ascii_strcasecmp (element_name, "title") ) 
     {
         if (data->title) 
-	{
+        {
             g_free (data->title);
             data->title = NULL;
         }
-	
+    
         if (text_len > 0)
             data->title = g_strdup (text);
     }
@@ -126,64 +126,64 @@ parole_xspf_xml_text (GMarkupParseContext *context, const gchar *text, gsize tex
 
 static void
 parole_xspf_xml_end (GMarkupParseContext *context, const gchar *element_name,
-		     gpointer user_data, GError **error)
+             gpointer user_data, GError **error)
 {
     ParoleParserData *data = user_data;
     ParoleFile *file;
     
     if (! g_ascii_strcasecmp (element_name, "playlist"))
         data->started = FALSE;
-	
+    
     if (!data->started)
         return;
-	
+    
     if (!g_ascii_strcasecmp (element_name, "track")) 
     {
         if (data->uri) 
-	{
-	    file = parole_file_new_with_display_name (data->uri, data->title);
-	    data->list = g_slist_append (data->list, file);
-	    
-	    g_free (data->uri);
-	    data->uri = NULL;
-	}
-	
-	if ( data->title)
-	{
-	    g_free (data->title);
-	    data->title = NULL;
-	}
+        {
+        file = parole_file_new_with_display_name (data->uri, data->title);
+        data->list = g_slist_append (data->list, file);
+        
+        g_free (data->uri);
+        data->uri = NULL;
+        }
+    
+        if ( data->title)
+        {
+            g_free (data->title);
+            data->title = NULL;
+        }
     }
 }
 
 static void
 parole_asx_xml_start (GMarkupParseContext *context, const gchar *element_name,
-		      const gchar **attribute_names, const gchar **attribute_values,
-		      gpointer user_data, GError **error)
+                      const gchar **attribute_names, const gchar **attribute_values,
+                      gpointer user_data, GError **error)
 {
     guint i;
     ParoleParserData *data = user_data;
     
     if ( !data->started )
     {
-	if (!g_ascii_strcasecmp (element_name, "asx") )
-	    data->started = TRUE;
-	else
-	    return;
+        if (!g_ascii_strcasecmp (element_name, "asx") )
+            data->started = TRUE;
+        else
+            return;
     }
     
     if (!g_ascii_strcasecmp (element_name, "ref") ) 
     {
         if (data->uri) 
-	{
+        {
             g_free (data->uri);
             data->uri = NULL;
         }
-	
+    
         for ( i = 0; attribute_names[i]; i++) 
-	{
+        {
             if ( !g_ascii_strcasecmp (attribute_names[i], "href")) 
-	    {
+            {
                 data->uri = g_strdup (attribute_values[i]);
                 break;
             }
@@ -193,7 +193,7 @@ parole_asx_xml_start (GMarkupParseContext *context, const gchar *element_name,
 
 static void
 parole_asx_xml_text (GMarkupParseContext *context, const gchar *text, gsize text_len,  
-		     gpointer user_data, GError **error)
+             gpointer user_data, GError **error)
 {
     ParoleParserData *data = user_data;
     const gchar *element_name;
@@ -206,11 +206,11 @@ parole_asx_xml_text (GMarkupParseContext *context, const gchar *text, gsize text
     if (!g_ascii_strcasecmp (element_name, "title") ) 
     {
         if (data->title) 
-	{
+        {
             g_free (data->title);
             data->title = NULL;
         }
-	
+    
         if (text_len > 0)
             data->title = g_strdup (text);
     }
@@ -218,33 +218,33 @@ parole_asx_xml_text (GMarkupParseContext *context, const gchar *text, gsize text
 
 static void
 parole_asx_xml_end (GMarkupParseContext *context, const gchar *element_name,
-		    gpointer user_data, GError **error)
+            gpointer user_data, GError **error)
 {
     ParoleParserData *data = user_data;
     ParoleFile *file;
     
     if (!g_ascii_strcasecmp (element_name, "ASX"))
         data->started = FALSE;
-	
+    
     if (!data->started)
         return;
-	
+    
     if (!g_ascii_strcasecmp (element_name, "entry")) 
     {
         if (data->uri) 
-	{
-	    file = parole_file_new_with_display_name (data->uri, data->title);
-	    data->list = g_slist_append (data->list, file);
-	    
-	    g_free (data->uri);
-	    data->uri = NULL;
-	}
-	
-	if ( data->title)
-	{
-	    g_free (data->title);
-	    data->title = NULL;
-	}
+        {
+            file = parole_file_new_with_display_name (data->uri, data->title);
+            data->list = g_slist_append (data->list, file);
+            
+            g_free (data->uri);
+            data->uri = NULL;
+        }
+    
+        if ( data->title)
+        {
+            g_free (data->title);
+            data->title = NULL;
+        }
     }
 }
 
@@ -271,33 +271,33 @@ parole_pl_parser_parse_asx (const gchar *filename)
     file = g_file_new_for_path (filename);
     
     if ( !g_file_load_contents (file, NULL, &contents, &size, NULL, NULL) )
-	goto out;
+        goto out;
     
     if ( g_utf8_validate (contents, -1, NULL) == FALSE) 
     {
-	gchar *fixed;
-	fixed = g_convert (contents, -1, "UTF-8", "ISO8859-1", NULL, NULL, NULL);
-	if (fixed != NULL) 
-	{
-	    g_free (contents);
-	    contents = fixed;
-	}
+        gchar *fixed;
+        fixed = g_convert (contents, -1, "UTF-8", "ISO8859-1", NULL, NULL, NULL);
+        if (fixed != NULL) 
+        {
+            g_free (contents);
+            contents = fixed;
+        }
     }
     
     pctx = g_markup_parse_context_new (&parser, 0, &data, NULL);
     
     if ( !g_markup_parse_context_parse (pctx, contents, size, &error) )
     {
-	if ( error )
-	{
-	    g_critical ("Unable to parse asx file : %s : %s\n", filename, error->message);
-	    g_error_free (error);
-	}
+        if ( error )
+        {
+            g_critical ("Unable to parse asx file : %s : %s\n", filename, error->message);
+            g_error_free (error);
+        }
     }
     else
     {
-	if ( !g_markup_parse_context_end_parse (pctx, &error) )
-	{
+        if ( !g_markup_parse_context_end_parse (pctx, &error) )
+        {
             g_critical ("Unable to finish parsing ASX playlist file %s", error->message);
             g_error_free (error);
         }
@@ -337,26 +337,26 @@ parole_pl_parser_parse_m3u (const gchar *filename)
     path = g_path_get_dirname(filename);
     
     if ( !g_file_load_contents (file, NULL, &contents, &size, NULL, NULL) )
-	goto out;
+        goto out;
     
     if ( g_utf8_validate (contents, -1, NULL) == FALSE) 
     {
-	gchar *fixed;
-	fixed = g_convert (contents, -1, "UTF-8", "ISO8859-1", NULL, NULL, NULL);
-	if (fixed != NULL) 
-	{
-	    g_free (contents);
-	    contents = fixed;
-	}
+        gchar *fixed;
+        fixed = g_convert (contents, -1, "UTF-8", "ISO8859-1", NULL, NULL, NULL);
+        if (fixed != NULL) 
+        {
+            g_free (contents);
+            contents = fixed;
+        }
     }
     
     if ( strstr (contents,"\x0d") == NULL) 
     {
-	split_char = "\n";
+        split_char = "\n";
     } 
     else 
     {
-	split_char = "\x0d\n";
+        split_char = "\x0d\n";
     }
     
     lines = g_strsplit (contents, split_char, 0);
@@ -367,18 +367,18 @@ parole_pl_parser_parse_m3u (const gchar *filename)
 
     for ( i = 0; lines[i] != NULL; i++)
     {
-	    if ( lines[i][0] == '\0' || lines[i][0] == '#')
-	        continue;
-	    
+        if ( lines[i][0] == '\0' || lines[i][0] == '#')
+            continue;
+        
         if ( lines[i][0] == '/' ) {
             pl_filename = g_strdup(lines[i]);
         }
 
         else {
-	        pl_filename = g_strjoin("", path, lines[i], NULL);
+            pl_filename = g_strjoin("", path, lines[i], NULL);
         }
-	    
-	    list = g_slist_append (list, parole_file_new (pl_filename));
+        
+        list = g_slist_append (list, parole_file_new (pl_filename));
     }
 
     if (pl_filename)
@@ -409,21 +409,21 @@ parole_pl_parser_parse_pls (const gchar *filename)
         nentries = xfce_rc_read_int_entry (rcfile, "NumberOfEntries", 0);
 
         for (i = 1; i <= nentries; i++) 
-	{
+        {
             g_snprintf (key, 128, "File%d", i);
-	    
+        
             file_entry = xfce_rc_read_entry (rcfile, key, NULL);
-	    
+        
             if (!file_entry)
                 continue;
-	    
-	    g_snprintf (key, 128, "Title%d", i);
-	    
+        
+            g_snprintf (key, 128, "Title%d", i);
+        
             title_entry = xfce_rc_read_entry (rcfile, key, NULL);
-	    
-	    file = parole_file_new_with_display_name (file_entry, title_entry);
-	    list = g_slist_append (list, file);
-	}
+        
+            file = parole_file_new_with_display_name (file_entry, title_entry);
+            list = g_slist_append (list, file);
+        }
     }
     
     xfce_rc_close (rcfile);
@@ -454,33 +454,33 @@ parole_pl_parser_parse_xspf (const gchar *filename)
     file = g_file_new_for_path (filename);
     
     if ( !g_file_load_contents (file, NULL, &contents, &size, NULL, NULL) )
-	goto out;
+        goto out;
     
     if ( g_utf8_validate (contents, -1, NULL) == FALSE) 
     {
-	gchar *fixed;
-	fixed = g_convert (contents, -1, "UTF-8", "ISO8859-1", NULL, NULL, NULL);
-	if (fixed != NULL) 
-	{
-	    g_free (contents);
-	    contents = fixed;
-	}
+        gchar *fixed;
+        fixed = g_convert (contents, -1, "UTF-8", "ISO8859-1", NULL, NULL, NULL);
+        if (fixed != NULL) 
+        {
+            g_free (contents);
+            contents = fixed;
+        }
     }
     
     pctx = g_markup_parse_context_new (&parser, 0, &data, NULL);
     
     if ( !g_markup_parse_context_parse (pctx, contents, size, &error) )
     {
-	if ( error )
-	{
-	    g_critical ("Unable to parse xspf file : %s : %s\n", filename, error->message);
-	    g_error_free (error);
-	}
+        if ( error )
+        {
+            g_critical ("Unable to parse xspf file : %s : %s\n", filename, error->message);
+            g_error_free (error);
+        }
     }
     else
     {
-	if ( !g_markup_parse_context_end_parse (pctx, &error) )
-	{
+        if ( !g_markup_parse_context_end_parse (pctx, &error) )
+        {
             g_critical ("Unable to finish parsing xspf playlist file %s", error->message);
             g_error_free (error);
         }
@@ -500,20 +500,20 @@ parole_pl_parser_parse (ParolePlFormat format, const gchar *filename)
     
     switch (format)
     {
-	case PAROLE_PL_FORMAT_M3U:
-	    list = parole_pl_parser_parse_m3u (filename);
-	    break;
-	case PAROLE_PL_FORMAT_PLS:
-	    list = parole_pl_parser_parse_pls (filename);
-	    break;
-	case PAROLE_PL_FORMAT_ASX:
-	    list = parole_pl_parser_parse_asx (filename);
-	    break;
-	case PAROLE_PL_FORMAT_XSPF:
-	    list = parole_pl_parser_parse_xspf (filename);
-	    break;
-	default:
-	    break;
+    case PAROLE_PL_FORMAT_M3U:
+        list = parole_pl_parser_parse_m3u (filename);
+        break;
+    case PAROLE_PL_FORMAT_PLS:
+        list = parole_pl_parser_parse_pls (filename);
+        break;
+    case PAROLE_PL_FORMAT_ASX:
+        list = parole_pl_parser_parse_asx (filename);
+        break;
+    case PAROLE_PL_FORMAT_XSPF:
+        list = parole_pl_parser_parse_xspf (filename);
+        break;
+    default:
+        break;
     }
 
     return list;
@@ -534,16 +534,16 @@ parole_pl_parser_save_m3u (FILE *f, GSList *files)
     
     for ( i = 0; i < len; i++)
     {
-	    ParoleFile *file;
-	    file = g_slist_nth_data (files, i);
-	    display_name = g_strdup(parole_file_get_display_name (file));
-	    file_name = parole_filename_to_utf8(parole_file_get_file_name (file));
-	
-	    if (display_name && file_name)
-	    {
-	        fprintf (f, "#EXTINF:-1,%s\n", display_name);
-	        fprintf (f, "%s\n\n", file_name);
-	    }
+        ParoleFile *file;
+        file = g_slist_nth_data (files, i);
+        display_name = g_strdup(parole_file_get_display_name (file));
+        file_name = parole_filename_to_utf8(parole_file_get_file_name (file));
+    
+        if (display_name && file_name)
+        {
+            fprintf (f, "#EXTINF:-1,%s\n", display_name);
+            fprintf (f, "%s\n\n", file_name);
+        }
     }
     
     if (display_name)
@@ -568,12 +568,12 @@ parole_pl_parser_save_pls (FILE *f, GSList *files)
     
     for ( i = 1; i <= len; i++)
     {
-	ParoleFile *file;
-	file = g_slist_nth_data (files, i - 1);
-	g_snprintf (key, 128, "File%d", i);
-	fprintf (f, "%s=%s\n", key, parole_filename_to_utf8(parole_file_get_file_name (file)));
-	g_snprintf (key, 128, "Title%d", i);
-	fprintf (f, "%s=%s\n\n", key, parole_file_get_display_name (file));
+        ParoleFile *file;
+        file = g_slist_nth_data (files, i - 1);
+        g_snprintf (key, 128, "File%d", i);
+        fprintf (f, "%s=%s\n", key, parole_filename_to_utf8(parole_file_get_file_name (file)));
+        g_snprintf (key, 128, "Title%d", i);
+        fprintf (f, "%s=%s\n\n", key, parole_file_get_display_name (file));
     }
     
     return TRUE;
@@ -591,11 +591,11 @@ parole_pl_parser_save_asx (FILE *f, GSList *files)
     
     for ( i = 0; i < len; i++)
     {
-	ParoleFile *file;
-	file = g_slist_nth_data (files, i);
-	fprintf (f, "  <ENTRY>\n   <TITLE>%s</TITLE>\n    <REF HREF=\"%s\"/>\n  </ENTRY>\n", 
-		 parole_file_get_display_name (file),
-		 parole_file_get_uri (file));
+        ParoleFile *file;
+        file = g_slist_nth_data (files, i);
+        fprintf (f, "  <ENTRY>\n   <TITLE>%s</TITLE>\n    <REF HREF=\"%s\"/>\n  </ENTRY>\n", 
+             parole_file_get_display_name (file),
+             parole_file_get_uri (file));
     }
     
     fputs ("</ASX>\n", f);
@@ -612,17 +612,17 @@ parole_pl_parser_save_xspf (FILE *f, GSList *files)
     len = g_slist_length (files);
     
     fputs ("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
-	   "<playlist version=\"1\" xmlns=\"http://xspf.org/ns/0/\">\n", f);
-	   
+       "<playlist version=\"1\" xmlns=\"http://xspf.org/ns/0/\">\n", f);
+       
     fputs (" <trackList>\n", f);
     
     for ( i = 0; i < len; i++)
     {
-	ParoleFile *file;
-	
-	file = g_slist_nth_data (files, i);
-	fprintf (f, "  <track>\n    <title>%s</title>\n    <location>%s</location>\n  </track>\n", 
-		 parole_file_get_display_name (file), parole_file_get_uri (file));
+        ParoleFile *file;
+        
+        file = g_slist_nth_data (files, i);
+        fprintf (f, "  <track>\n    <title>%s</title>\n    <location>%s</location>\n  </track>\n", 
+             parole_file_get_display_name (file), parole_file_get_uri (file));
     }
     
     fputs (" </trackList>\n<playlist>", f);
@@ -645,20 +645,20 @@ ParolePlFormat
 parole_pl_parser_guess_format_from_extension (const gchar *filename)
 {
     if ( g_str_has_suffix (filename, ".m3u") || g_str_has_suffix (filename, ".M3U") )
-	return PAROLE_PL_FORMAT_M3U;
-	
+        return PAROLE_PL_FORMAT_M3U;
+    
     if ( g_str_has_suffix (filename, ".pls") || g_str_has_suffix (filename, ".PLS") )
-	return PAROLE_PL_FORMAT_PLS;
-	
+        return PAROLE_PL_FORMAT_PLS;
+    
     if ( g_str_has_suffix (filename, ".xspf") || g_str_has_suffix (filename, ".XSPF") )
-	return PAROLE_PL_FORMAT_XSPF;
-	
+        return PAROLE_PL_FORMAT_XSPF;
+    
     if ( g_str_has_suffix (filename, ".asx") || g_str_has_suffix (filename, ".ASX") )
-	return PAROLE_PL_FORMAT_ASX;
-	
+        return PAROLE_PL_FORMAT_ASX;
+    
     if ( g_str_has_suffix (filename, ".wax") || g_str_has_suffix (filename, ".WAX") )
-	return PAROLE_PL_FORMAT_XSPF;
-	
+        return PAROLE_PL_FORMAT_XSPF;
+    
     return PAROLE_PL_FORMAT_UNKNOWN;
 }
 
@@ -686,19 +686,19 @@ parole_pl_parser_guess_format_from_data (const gchar *filename)
 
     if ( !g_file_load_contents (file, NULL, &contents, &size, NULL, NULL ) )
     {
-	g_debug ("Unable to load content of file=%s", filename);
-	goto out;
+        g_debug ("Unable to load content of file=%s", filename);
+        goto out;
     }
 
     if ( strstr (contents, "<ASX VERSION") )
-	format = PAROLE_PL_FORMAT_ASX;
+        format = PAROLE_PL_FORMAT_ASX;
     else if ( strstr (contents, "<trackList>") || strstr (contents, "<tracklist>") )
-	format = PAROLE_PL_FORMAT_XSPF;
+        format = PAROLE_PL_FORMAT_XSPF;
     else if ( strstr (contents, "NumberOfEntries") )
-	format = PAROLE_PL_FORMAT_PLS;
+        format = PAROLE_PL_FORMAT_PLS;
     else 
-	/* try to load the file as M3U*/
-	format = PAROLE_PL_FORMAT_M3U;
+        /* try to load the file as M3U*/
+        format = PAROLE_PL_FORMAT_M3U;
 
     g_free (contents);
 out:
@@ -730,20 +730,20 @@ gboolean parole_pl_parser_save_from_files (GSList *files, const gchar *filename,
     
     switch (format)
     {
-	case PAROLE_PL_FORMAT_M3U:
-	    ret_val = parole_pl_parser_save_m3u (f, files);
-	    break;
-	case PAROLE_PL_FORMAT_PLS:
-	    ret_val = parole_pl_parser_save_pls (f, files);
-	    break;
-	case PAROLE_PL_FORMAT_ASX:
-	    ret_val = parole_pl_parser_save_asx (f, files);
-	    break;
-	case PAROLE_PL_FORMAT_XSPF:
-	    ret_val = parole_pl_parser_save_xspf (f, files);
-	    break;
-	default:
-	    break;
+        case PAROLE_PL_FORMAT_M3U:
+            ret_val = parole_pl_parser_save_m3u (f, files);
+            break;
+        case PAROLE_PL_FORMAT_PLS:
+            ret_val = parole_pl_parser_save_pls (f, files);
+            break;
+        case PAROLE_PL_FORMAT_ASX:
+            ret_val = parole_pl_parser_save_asx (f, files);
+            break;
+        case PAROLE_PL_FORMAT_XSPF:
+            ret_val = parole_pl_parser_save_xspf (f, files);
+            break;
+        default:
+            break;
     }
     
     fclose (f);
@@ -767,15 +767,15 @@ GSList *parole_pl_parser_parse_from_file_by_extension (const gchar *filename)
     GSList *list = NULL;
     
     if ( (format = parole_pl_parser_guess_format_from_extension (filename)) == PAROLE_PL_FORMAT_UNKNOWN &&
-	 (format = parole_pl_parser_guess_format_from_data (filename)) == PAROLE_PL_FORMAT_UNKNOWN ) 
+         (format = parole_pl_parser_guess_format_from_data (filename)) == PAROLE_PL_FORMAT_UNKNOWN ) 
     {
-	g_debug ("Unable to guess playlist format : %s", filename);
-	goto out;
+        g_debug ("Unable to guess playlist format : %s", filename);
+        goto out;
     }
 
     PAROLE_DEBUG_ENUM_FULL (format, PAROLE_ENUM_TYPE_PL_FORMAT, "playlist %s ", filename);
     list = parole_pl_parser_parse (format, filename);
-	
+    
 out:
     return list;
 }
@@ -825,16 +825,16 @@ gboolean parole_pl_parser_can_parse_data (const guchar *data, gint len)
     
     if ( mime_type && result_uncertain == FALSE )
     {
-	GtkFileFilter *filter = g_object_ref_sink (parole_get_supported_playlist_filter ());
-	GtkFileFilterInfo filter_info;
-	g_debug ("Mime_type=%s", mime_type);
-	filter_info.mime_type = mime_type;
-    
-	filter_info.contains = GTK_FILE_FILTER_MIME_TYPE;
-    
-	result = gtk_file_filter_filter (filter, &filter_info);
-	g_object_unref (filter);
-	g_free (mime_type);
+        GtkFileFilter *filter = g_object_ref_sink (parole_get_supported_playlist_filter ());
+        GtkFileFilterInfo filter_info;
+        g_debug ("Mime_type=%s", mime_type);
+        filter_info.mime_type = mime_type;
+        
+        filter_info.contains = GTK_FILE_FILTER_MIME_TYPE;
+        
+        result = gtk_file_filter_filter (filter, &filter_info);
+        g_object_unref (filter);
+        g_free (mime_type);
     }
     
     return result;

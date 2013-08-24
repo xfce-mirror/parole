@@ -33,37 +33,39 @@
 
 G_BEGIN_DECLS 
 
-#define PAROLE_TYPE_PROVIDER_PLUGIN      	   (parole_provider_plugin_get_type ())
-#define PAROLE_PROVIDER_PLUGIN(o)        	   (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_PROVIDER_PLUGIN, ParoleProviderPlugin))
-#define PAROLE_IS_PROVIDER_PLUGIN(o)      	   (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_PROVIDER_PLUGIN))
-#define PAROLE_PROVIDER_PLUGIN_GET_INTERFACE(o)    (G_TYPE_INSTANCE_GET_INTERFACE((o), PAROLE_TYPE_PROVIDER_PLUGIN, ParoleProviderPluginIface))
+#define PAROLE_TYPE_PROVIDER_PLUGIN                 (parole_provider_plugin_get_type ())
+#define PAROLE_PROVIDER_PLUGIN(o)                   (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_PROVIDER_PLUGIN, ParoleProviderPlugin))
+#define PAROLE_IS_PROVIDER_PLUGIN(o)                (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_PROVIDER_PLUGIN))
+#define PAROLE_PROVIDER_PLUGIN_GET_INTERFACE(o)     (G_TYPE_INSTANCE_GET_INTERFACE((o), PAROLE_TYPE_PROVIDER_PLUGIN, ParoleProviderPluginIface))
 
 typedef struct _ParoleProviderPluginIface ParoleProviderPluginIface;
-typedef struct _ParoleProviderPlugin 	  ParoleProviderPlugin;
+typedef struct _ParoleProviderPlugin      ParoleProviderPlugin;
 
 struct _ParoleProviderPluginIface 
 {
-    GTypeInterface 	__parent__;
+    GTypeInterface  __parent__;
     
     /*< public >*/
-    gboolean	   	 (*get_is_configurable)			(ParoleProviderPlugin *provider);
+    gboolean     (*get_is_configurable)             (ParoleProviderPlugin *provider);
     
-    void		 (*configure)				(ParoleProviderPlugin *provider,
-								 GtkWidget *parent);
-								 
-    void		 (*set_player)				(ParoleProviderPlugin *provider,
-								 ParoleProviderPlayer *player);
+    void         (*configure)                       (ParoleProviderPlugin *provider,
+                                                     GtkWidget *parent);
+                                 
+    void         (*set_player)                      (ParoleProviderPlugin *provider,
+                                                     ParoleProviderPlayer *player);
 };
 
-GType		 	 parole_provider_plugin_get_type	(void) G_GNUC_CONST;
+GType            parole_provider_plugin_get_type    (void) G_GNUC_CONST;
 
-gboolean     		 parole_provider_plugin_get_is_configurable (ParoleProviderPlugin *provider);
+gboolean         
+parole_provider_plugin_get_is_configurable          (ParoleProviderPlugin *provider);
 
-void			 parole_provider_plugin_configure       (ParoleProviderPlugin *provider,
-								 GtkWidget *parent);
-								 
-void			 parole_provider_plugin_set_player	(ParoleProviderPlugin *provider,
-								 ParoleProviderPlayer *player);
+void             parole_provider_plugin_configure   (ParoleProviderPlugin *provider,
+                                                     GtkWidget *parent);
+                                 
+void             parole_provider_plugin_set_player  (ParoleProviderPlugin *provider,
+                                                     ParoleProviderPlayer *player);
+                                                     
 G_END_DECLS
 
 #endif /* __PAROLE_PLUGIN_IFACE_H__ */

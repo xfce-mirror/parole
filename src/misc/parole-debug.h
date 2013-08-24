@@ -40,20 +40,20 @@ G_BEGIN_DECLS
 #define PAROLE_DEBUG_ENUM_FULL(_value, _type, ...)\
     parole_debug_enum_full (__func__, __FILE__, __LINE__, _value, _type, __VA_ARGS__)
 
-void		parole_debug_enum 	(const gchar *func,
-					 const gchar *file,
-					 gint line,
-					 const gchar *text,
-					 gint v_enum, 
-					 GType type);
-					 
-void		parole_debug_enum_full   (const gchar *func,
-					 const gchar *file,
-					 gint line,
-					 gint v_enum,
-					 GType type,
-					 const gchar *format,
-					 ...) G_GNUC_PRINTF (6, 7);
+void        parole_debug_enum   (const gchar *func,
+                                 const gchar *file,
+                                 gint line,
+                                 const gchar *text,
+                                 gint v_enum, 
+                                 GType type);
+                     
+void        parole_debug_enum_full   (const gchar *func,
+                                 const gchar *file,
+                                 gint line,
+                                 gint v_enum,
+                                 GType type,
+                                 const gchar *format,
+                                 ...) G_GNUC_PRINTF (6, 7);
 
 
 #else
