@@ -1,48 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires gtk+ 3.0 -->
-  <object class="GtkImage" id="image_media_prev">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">24</property>
-    <property name="icon_name">media-skip-backward-symbolic</property>
-  </object>
-  <object class="GtkImage" id="image_media_toggleplaylist">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">24</property>
-    <property name="icon_name">view-list-symbolic</property>
-  </object>
-  <object class="GtkImage" id="image1">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">16</property>
-    <property name="icon_name">media-optical-symbolic</property>
-  </object>
-  <object class="GtkImage" id="image10">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">16</property>
-    <property name="icon_name">face-sick-symbolic</property>
-  </object>
-  <object class="GtkImage" id="image2">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">16</property>
-    <property name="icon_name">folder-remote-symbolic</property>
-    <property name="icon-size">1</property>
-  </object>
-  <object class="GtkImage" id="image3">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">16</property>
-    <property name="icon_name">audio-volume-high-symbolic</property>
-  </object>
-  <object class="GtkImage" id="image4">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">16</property>
-    <property name="icon_name">audio-volume-low-symbolic</property>
+  <object class="GtkAdjustment" id="adjustment1">
+    <property name="upper">100</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
   </object>
   <object class="GtkImage" id="image5">
     <property name="visible">True</property>
@@ -92,11 +54,54 @@
     <property name="pixel_size">24</property>
     <property name="icon_name">media-playback-start-symbolic</property>
   </object>
+  <object class="GtkImage" id="image_media_prev">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixel_size">24</property>
+    <property name="icon_name">media-skip-backward-symbolic</property>
+  </object>
+  <object class="GtkImage" id="image_media_toggleplaylist">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixel_size">24</property>
+    <property name="icon_name">view-list-symbolic</property>
+  </object>
   <object class="GtkImage" id="image_quit">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="pixel_size">16</property>
     <property name="icon_name">system-shutdown-symbolic</property>
+  </object>
+  <object class="GtkImage" id="image1">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixel_size">16</property>
+    <property name="icon_name">media-optical-symbolic</property>
+  </object>
+  <object class="GtkImage" id="image10">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixel_size">16</property>
+    <property name="icon_name">face-sick-symbolic</property>
+  </object>
+  <object class="GtkImage" id="image2">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixel_size">16</property>
+    <property name="icon_name">folder-remote-symbolic</property>
+    <property name="icon-size">1</property>
+  </object>
+  <object class="GtkImage" id="image3">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixel_size">16</property>
+    <property name="icon_name">audio-volume-high-symbolic</property>
+  </object>
+  <object class="GtkImage" id="image4">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixel_size">16</property>
+    <property name="icon_name">audio-volume-low-symbolic</property>
   </object>
   <object class="GtkWindow" id="main-window">
     <property name="can_focus">False</property>
@@ -798,6 +803,7 @@
                             <property name="can_focus">False</property>
                             <property name="margin_left">6</property>
                             <property name="margin_right">6</property>
+                            <property name="adjustment">adjustment1</property>
                             <property name="draw_value">False</property>
                             <signal name="value-changed" handler="parole_player_range_value_changed" swapped="no"/>
                           </object>
