@@ -49,11 +49,11 @@ struct _NotifyProvider
     NotifyNotification     *notification;
 };
 
-PAROLE_DEFINE_TYPE_WITH_CODE (NotifyProvider, 
-                        notify_provider, 
-                        G_TYPE_OBJECT,
-                        PAROLE_IMPLEMENT_INTERFACE (PAROLE_TYPE_PROVIDER_PLUGIN, 
-					    notify_provider_iface_init));
+PAROLE_DEFINE_TYPE_WITH_CODE   (NotifyProvider, 
+                                notify_provider, 
+                                G_TYPE_OBJECT,
+                                PAROLE_IMPLEMENT_INTERFACE (PAROLE_TYPE_PROVIDER_PLUGIN, 
+                                notify_provider_iface_init));
 
 static void
 notification_closed_cb (NotifyNotification *n, NotifyProvider *notify)
@@ -67,15 +67,15 @@ close_notification (NotifyProvider *notify)
 {
     if ( notify->notification )
     {
-	GError *error = NULL;
-	notify_notification_close (notify->notification, &error);
-	if ( error )
-	{
-	    g_warning ("Failed to close notification : %s", error->message);
-	    g_error_free (error);
-	}
-	g_object_unref (notify->notification);
-	notify->notification = NULL;
+        GError *error = NULL;
+        notify_notification_close (notify->notification, &error);
+        if ( error )
+        {
+            g_warning ("Failed to close notification : %s", error->message);
+            g_error_free (error);
+        }
+        g_object_unref (notify->notification);
+        notify->notification = NULL;
     }
 }
 
@@ -89,41 +89,41 @@ notify_playing (NotifyProvider *notify, const ParoleStream *stream)
     ParoleMediaType media_type;
     
     g_object_get (G_OBJECT (stream), 
-		  "title", &title,
-		  "album", &album,
-		  "artist", &artist,
-		  "year", &year,
-		  "has-video", &has_video,
-          "media-type", &media_type,	
-          "uri", &stream_uri,  
-		  NULL);
-		  
+                  "title", &title,
+                  "album", &album,
+                  "artist", &artist,
+                  "year", &year,
+                  "has-video", &has_video,
+                  "media-type", &media_type,    
+                  "uri", &stream_uri,  
+                  NULL);
+          
     if ( g_strcmp0(stream_uri, notify->last_played_uri) == 0 )
-    return;
+        return;
     
     notify->last_played_uri = g_strdup(stream_uri);
     g_free(stream_uri);
-		  
+          
     if ( has_video )
-    return;
+        return;
 
     if ( !title )
     {
-	gchar *uri;
-	gchar *filename;
-	g_object_get (G_OBJECT (stream),
-		      "uri", &uri,
-		      NULL);
-		      
-	filename = g_filename_from_uri (uri, NULL, NULL);
-	g_free (uri);
-	if ( filename )
-	{
-	    title  = g_path_get_basename (filename);
-	    g_free (filename);
-	    if ( !title )
-		return;
-	}
+        gchar *uri;
+        gchar *filename;
+        g_object_get (G_OBJECT (stream),
+                      "uri", &uri,
+                      NULL);
+                  
+        filename = g_filename_from_uri (uri, NULL, NULL);
+        g_free (uri);
+        if ( filename )
+        {
+            title  = g_path_get_basename (filename);
+            g_free (filename);
+            if ( !title )
+            return;
+        }
     }
     
     if (!album)
@@ -132,11 +132,11 @@ notify_playing (NotifyProvider *notify, const ParoleStream *stream)
         artist = g_strdup( _("Unknown Artist") );
     
     if (!year)
-    message = g_strdup_printf ("%s %s\n%s %s", _("<i>on</i>"), album, _("<i>by</i>"), artist);
+        message = g_strdup_printf ("%s %s\n%s %s", _("<i>on</i>"), album, _("<i>by</i>"), artist);
     else
     {
-    message = g_strdup_printf ("%s %s (%s)\n%s %s", _("<i>on</i>"), album, year, _("<i>by</i>"), artist);
-    g_free(year);
+        message = g_strdup_printf ("%s %s (%s)\n%s %s", _("<i>on</i>"), album, year, _("<i>by</i>"), artist);
+        g_free(year);
     }
     
     g_free(artist);
@@ -172,25 +172,25 @@ notify_playing (NotifyProvider *notify, const ParoleStream *stream)
 
     if ( pix )
     {
-	notify_notification_set_icon_from_pixbuf (notify->notification, pix);
-	g_object_unref (pix);
+        notify_notification_set_icon_from_pixbuf (notify->notification, pix);
+        g_object_unref (pix);
     }
     notify_notification_set_urgency (notify->notification, NOTIFY_URGENCY_LOW);
     notify_notification_set_timeout (notify->notification, 5000);
     
     notify_notification_show (notify->notification, NULL);
     g_signal_connect (notify->notification, "closed",
-		      G_CALLBACK (notification_closed_cb), notify);
+                      G_CALLBACK (notification_closed_cb), notify);
 }
 
 static void
 state_changed_cb (ParoleProviderPlayer *player, const ParoleStream *stream, ParoleState state, NotifyProvider *notify)
 {
     if ( state == PAROLE_STATE_PLAYING )
-	    notify_playing (notify, stream);
-	    
+        notify_playing (notify, stream);
+        
     else if ( state <= PAROLE_STATE_PAUSED )
-	    close_notification (notify);
+        close_notification (notify);
 }
 
 static gboolean notify_provider_is_configurable (ParoleProviderPlugin *plugin)
@@ -209,9 +209,9 @@ notify_provider_set_player (ParoleProviderPlugin *plugin, ParoleProviderPlayer *
 
     notify->notification = NULL;
     notify_init ("parole-notify");
-				  
+                  
     g_signal_connect (player, "state_changed", 
-		      G_CALLBACK (state_changed_cb), notify);
+                      G_CALLBACK (state_changed_cb), notify);
 }
 
 static void

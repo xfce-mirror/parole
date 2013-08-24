@@ -35,20 +35,20 @@ typedef struct ParolePluginPlayerPrivate ParolePluginPlayerPrivate;
 
 typedef struct
 {
-    GObject         		   parent;
-    ParolePluginPlayerPrivate     *priv;
+    GObject                     parent;
+    ParolePluginPlayerPrivate  *priv;
     
 } ParolePluginPlayer;
 
 typedef struct
 {
-    GObjectClass 		   parent_class;
+    GObjectClass                parent_class;
     
 } ParolePluginPlayerClass;
 
-GType        			   parole_plugin_player_get_type        (void) G_GNUC_CONST;
+GType                           parole_plugin_player_get_type        (void) G_GNUC_CONST;
 
-ParolePluginPlayer                *parole_plugin_player_new             (void);
+ParolePluginPlayer             *parole_plugin_player_new             (void);
 
 G_END_DECLS
 

@@ -37,10 +37,10 @@ G_BEGIN_DECLS
 typedef struct ParoleMediaChooser ParoleMediaChooser;
 typedef struct ParoleMediaChooserClass ParoleMediaChooserClass;
 
-GType        			 parole_media_chooser_get_type      (void) G_GNUC_CONST;
+GType                    parole_media_chooser_get_type      (void) G_GNUC_CONST;
 
-ParoleMediaChooser		*parole_media_chooser_open_local    (GtkWidget *parent);
-								     
+ParoleMediaChooser      *parole_media_chooser_open_local    (GtkWidget *parent);
+                                     
 G_END_DECLS
 
 #endif /* __PAROLE_MEDIA_CHOOSER_H */

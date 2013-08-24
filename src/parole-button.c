@@ -64,7 +64,7 @@ static struct
 
 struct ParoleButtonPrivate
 {
-    GdkScreen	*screen;
+    GdkScreen   *screen;
     GdkWindow   *window;
     
 };
@@ -96,8 +96,8 @@ parole_button_get_key (unsigned int keycode)
     
     for ( i = 0; i < G_N_ELEMENTS (parole_key_map); i++)
     {
-	if ( parole_key_map [i].key_code == keycode )
-	    key = parole_key_map [i].key;
+        if ( parole_key_map [i].key_code == keycode )
+            key = parole_key_map [i].key;
     }
     
     return key;
@@ -120,18 +120,18 @@ parole_button_filter_x_events (GdkXEvent *xevent, GdkEvent *ev, gpointer data)
     XEvent *xev = (XEvent *) xevent;
     
     if ( xev->type != KeyPress )
-    	return GDK_FILTER_CONTINUE;
+        return GDK_FILTER_CONTINUE;
     
     key = parole_button_get_key (xev->xkey.keycode);
     
     if ( key != PAROLE_KEY_UNKNOWN )
     {
-	button = (ParoleButton *) data;
-    
-	PAROLE_DEBUG_ENUM ("Key press", key, ENUM_GTYPE_BUTTON_KEY);
-    
-	g_signal_emit (G_OBJECT(button), signals[BUTTON_PRESSED], 0, key);
-	return GDK_FILTER_REMOVE;
+        button = (ParoleButton *) data;
+        
+        PAROLE_DEBUG_ENUM ("Key press", key, ENUM_GTYPE_BUTTON_KEY);
+        
+        g_signal_emit (G_OBJECT(button), signals[BUTTON_PRESSED], 0, key);
+        return GDK_FILTER_REMOVE;
     }
     
     return GDK_FILTER_CONTINUE;
@@ -158,25 +158,25 @@ parole_button_grab_keystring (ParoleButton *button, guint keycode)
     gdk_error_trap_push ();
 
     ret = XGrabKey (GDK_DISPLAY_XDISPLAY(display), keycode, modmask,
-		    gdk_x11_window_get_xid (button->priv->window), True,
-		    GrabModeAsync, GrabModeAsync);
-		    
+                    gdk_x11_window_get_xid (button->priv->window), True,
+                    GrabModeAsync, GrabModeAsync);
+            
     if ( ret == BadAccess )
     {
-	g_warning ("Failed to grab modmask=%u, keycode=%li",
-		    modmask, (long int) keycode);
-	return FALSE;
+    g_warning ("Failed to grab modmask=%u, keycode=%li",
+                modmask, (long int) keycode);
+    return FALSE;
     }
-	
+    
     ret = XGrabKey (GDK_DISPLAY_XDISPLAY(display), keycode, LockMask | modmask,
-            gdk_x11_window_get_xid (button->priv->window), True,
-		    GrabModeAsync, GrabModeAsync);
-			
+                    gdk_x11_window_get_xid (button->priv->window), True,
+                    GrabModeAsync, GrabModeAsync);
+            
     if (ret == BadAccess)
     {
-	g_warning ("Failed to grab modmask=%u, keycode=%li",
-		   LockMask | modmask, (long int) keycode);
-	return FALSE;
+        g_warning ("Failed to grab modmask=%u, keycode=%li",
+               LockMask | modmask, (long int) keycode);
+        return FALSE;
     }
 
     gdk_flush ();
@@ -201,14 +201,14 @@ parole_button_xevent_key (ParoleButton *button, guint keysym , ParoleButtonKey k
 
     if ( keycode == 0 )
     {
-	g_warning ("could not map keysym %x to keycode\n", keysym);
-	return FALSE;
+        g_warning ("could not map keysym %x to keycode\n", keysym);
+        return FALSE;
     }
     
     if ( !parole_button_grab_keystring(button, keycode)) 
     {
-    	g_warning ("Failed to grab %i\n", keycode);
-	return FALSE;
+        g_warning ("Failed to grab %i\n", keycode);
+        return FALSE;
     }
     
     PAROLE_DEBUG_ENUM_FULL (key, ENUM_GTYPE_BUTTON_KEY, "Grabbed key %li ", (long int) keycode);
@@ -236,8 +236,8 @@ parole_button_setup (ParoleButton *button)
     parole_button_xevent_key (button, XF86XK_AudioPrev, PAROLE_KEY_AUDIO_PREV);
     parole_button_xevent_key (button, XF86XK_AudioNext, PAROLE_KEY_AUDIO_NEXT);
 
-    gdk_window_add_filter (button->priv->window, 
-			   parole_button_filter_x_events, button);
+    gdk_window_add_filter  (button->priv->window, 
+                            parole_button_filter_x_events, button);
 }
 
 /**

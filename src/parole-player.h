@@ -36,39 +36,38 @@ typedef struct ParolePlayerPrivate ParolePlayerPrivate;
 
 typedef struct
 {
-    GObject         		 parent;
-    ParolePlayerPrivate     	*priv;
+    GObject                     parent;
+    ParolePlayerPrivate        *priv;
     
 } ParolePlayer;
 
 typedef struct
 {
-    GObjectClass 		 parent_class;
+    GObjectClass                parent_class;
     
-    void			(*shuffle_toggled)		    (ParolePlayer *list,
-								     gboolean shuffle_toggled);
-								     
-	void			(*repeat_toggled)		    (ParolePlayer *list,
-								     gboolean repeat_toggled);
+    void                        (*shuffle_toggled)              (ParolePlayer *list,
+                                                                 gboolean shuffle_toggled);
+                                     
+    void                        (*repeat_toggled)               (ParolePlayer *list,
+                                                                 gboolean repeat_toggled);
 
-    
 } ParolePlayerClass;
 
-GType        			 parole_player_get_type        (void) G_GNUC_CONST;
-ParolePlayer       		*parole_player_new             (const gchar *client_id);
+GType                           parole_player_get_type          (void) G_GNUC_CONST;
+ParolePlayer                   *parole_player_new               (const gchar *client_id);
 
-ParoleMediaList			*parole_player_get_media_list  (ParolePlayer *player);
+ParoleMediaList                *parole_player_get_media_list    (ParolePlayer *player);
 
-void				 parole_player_play_uri_disc   (ParolePlayer *player,
-								const gchar *uri,
-								const gchar *device);
+void                            parole_player_play_uri_disc     (ParolePlayer *player,
+                                                                 const gchar *uri,
+                                                                 const gchar *device);
 
-void				 parole_player_terminate       (ParolePlayer *player);
+void                            parole_player_terminate         (ParolePlayer *player);
 
-void                parole_player_embedded (ParolePlayer *player);
+void                            parole_player_embedded          (ParolePlayer *player);
 
-void				 parole_player_full_screen     (ParolePlayer *player, 
-								gboolean fullscreen);
+void                            parole_player_full_screen       (ParolePlayer *player, 
+                                                                 gboolean fullscreen);
 
 G_END_DECLS
 

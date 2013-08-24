@@ -46,37 +46,37 @@
 /*
  * GtkBuilder Callbacks
  */
-void    parole_media_chooser_add_clicked (GtkWidget *widget,
-					  ParoleMediaChooser *chooser);
+void    parole_media_chooser_add_clicked    (GtkWidget *widget,
+                                             ParoleMediaChooser *chooser);
 
-void    parole_media_chooser_close_clicked (GtkWidget *widget,
-					    ParoleMediaChooser *chooser);
+void    parole_media_chooser_close_clicked  (GtkWidget *widget,
+                                             ParoleMediaChooser *chooser);
 
-void	parole_media_chooser_destroy_cb (GtkWidget *widget,
-					 ParoleMediaChooser *chooser);
-					 
-void	media_chooser_folder_changed_cb (GtkWidget *widget, 
-					 ParoleMediaChooser *chooser);
+void    parole_media_chooser_destroy_cb     (GtkWidget *widget,
+                                             ParoleMediaChooser *chooser);
+                     
+void    media_chooser_folder_changed_cb     (GtkWidget *widget, 
+                                             ParoleMediaChooser *chooser);
 
-void	media_chooser_file_activate_cb  (GtkFileChooser *filechooser,
-					 ParoleMediaChooser *chooser);
+void    media_chooser_file_activate_cb      (GtkFileChooser *filechooser,
+                                             ParoleMediaChooser *chooser);
 
 struct ParoleMediaChooser
 {
     GObject             parent;
     
-    ParoleConf          *conf;
-    GtkWidget			*window;
-    GtkWidget 			*spinner;
+    ParoleConf         *conf;
+    GtkWidget          *window;
+    GtkWidget          *spinner;
     
 };
 
 struct ParoleMediaChooserClass
 {
-    GObjectClass 		 parent_class;
+    GObjectClass        parent_class;
     
-    void			 (*media_files_opened)		    (ParoleMediaChooser *chooser,
-								     GSList *list);
+    void                (*media_files_opened)   (ParoleMediaChooser *chooser,
+                                                 GSList *list);
 };
 
 enum
@@ -97,10 +97,10 @@ media_chooser_folder_changed_cb (GtkWidget *widget, ParoleMediaChooser *chooser)
     
     if ( folder )
     {
-    g_object_set (G_OBJECT (chooser->conf),
-		  "media-chooser-folder", folder,
-		  NULL);
-	g_free (folder);
+        g_object_set (G_OBJECT (chooser->conf),
+                      "media-chooser-folder", folder,
+                      NULL);
+        g_free (folder);
     }
 }
 
@@ -120,18 +120,18 @@ parole_media_chooser_add (ParoleMediaChooser *chooser, GtkWidget *file_chooser)
     filter = gtk_file_chooser_get_filter (GTK_FILE_CHOOSER (file_chooser));
     
     if ( G_UNLIKELY (files == NULL) )
-	return;
-	
-	g_object_get (G_OBJECT (chooser->conf),
-		  "scan-recursive", &scan_recursive,
-		  NULL);
+        return;
+    
+    g_object_get (G_OBJECT (chooser->conf),
+                  "scan-recursive", &scan_recursive,
+                  NULL);
     
     len = g_slist_length (files);
     
     for ( i = 0; i < len; i++)
     {
-	file = g_slist_nth_data (files, i);
-	parole_get_media_files (filter, file, scan_recursive, &media_files);
+        file = g_slist_nth_data (files, i);
+        parole_get_media_files (filter, file, scan_recursive, &media_files);
     }
     
     g_signal_emit (G_OBJECT (chooser), signals [MEDIA_FILES_OPENED], 0, media_files);
@@ -192,10 +192,10 @@ void media_chooser_file_activate_cb (GtkFileChooser *filechooser, ParoleMediaCho
 static void
 parole_media_chooser_open_internal (ParoleMediaChooser *media_chooser)
 {
-    GtkWidget       *file_chooser;
-    GtkBuilder      *builder;
-    GtkWidget       *recursive;
-    GtkFileFilter   *filter, *all_files;
+    GtkWidget      *file_chooser;
+    GtkBuilder     *builder;
+    GtkWidget      *recursive;
+    GtkFileFilter  *filter, *all_files;
     gboolean        scan_recursive;
     gboolean        replace_playlist;
     gboolean        play;
@@ -224,20 +224,20 @@ parole_media_chooser_open_internal (ParoleMediaChooser *media_chooser)
 
     /* Set the folder that is shown */
     g_object_get (G_OBJECT (media_chooser->conf),
-		  "media-chooser-folder", &folder,
-		  NULL);
+                  "media-chooser-folder", &folder,
+                  NULL);
     
     if ( folder )
-	gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (file_chooser), folder);
+        gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (file_chooser), folder);
     
     gtk_file_chooser_set_select_multiple (GTK_FILE_CHOOSER (file_chooser), TRUE);
 
     /* Get playlist-properties to load files accordingly */
     g_object_get (G_OBJECT (media_chooser->conf),
-		  "scan-recursive", &scan_recursive,
-		  "replace-playlist", &replace_playlist,
-		  "play-opened-files", &play,
-		  NULL);
+                  "scan-recursive", &scan_recursive,
+                  "replace-playlist", &replace_playlist,
+                  "play-opened-files", &play,
+                  NULL);
     
     recursive = GTK_WIDGET (gtk_builder_get_object (builder, "recursive"));
     
@@ -259,7 +259,7 @@ parole_media_chooser_finalize (GObject *object)
     g_object_unref (chooser->conf);
     
     if ( chooser->window )
-	gtk_widget_destroy (chooser->window);
+        gtk_widget_destroy (chooser->window);
     
     G_OBJECT_CLASS (parole_media_chooser_parent_class)->finalize (object);
 }
@@ -270,14 +270,14 @@ parole_media_chooser_class_init (ParoleMediaChooserClass *klass)
     GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
     signals[MEDIA_FILES_OPENED] = 
-        g_signal_new("media-files-opened",
-                      PAROLE_TYPE_MEDIA_CHOOSER,
-                      G_SIGNAL_RUN_LAST,
-                      G_STRUCT_OFFSET (ParoleMediaChooserClass, media_files_opened),
-                      NULL, NULL,
-		      g_cclosure_marshal_VOID__POINTER,
-                      G_TYPE_NONE, 1, 
-		      G_TYPE_POINTER);
+        g_signal_new   ("media-files-opened",
+                        PAROLE_TYPE_MEDIA_CHOOSER,
+                        G_SIGNAL_RUN_LAST,
+                        G_STRUCT_OFFSET (ParoleMediaChooserClass, media_files_opened),
+                        NULL, NULL,
+                        g_cclosure_marshal_VOID__POINTER,
+                        G_TYPE_NONE, 1, 
+                        G_TYPE_POINTER);
 
     object_class->finalize = parole_media_chooser_finalize;
 }
@@ -299,8 +299,8 @@ ParoleMediaChooser *parole_media_chooser_open_local (GtkWidget *parent)
     gtk_window_set_modal (GTK_WINDOW (chooser->window), TRUE);
     
     if ( parent )
-	gtk_window_set_transient_for (GTK_WINDOW (chooser->window), GTK_WINDOW (parent));
-	
+        gtk_window_set_transient_for (GTK_WINDOW (chooser->window), GTK_WINDOW (parent));
+    
     gtk_window_set_position (GTK_WINDOW (chooser->window), GTK_WIN_POS_CENTER_ON_PARENT);
 
     gtk_widget_show_all (chooser->window);

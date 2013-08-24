@@ -36,29 +36,29 @@ typedef struct ParolePluginsManagerPrivate ParolePluginsManagerPrivate;
 
 typedef struct
 {
-    GObject         		     parent;
-    ParolePluginsManagerPrivate     *priv;
+    GObject                         parent;
+    ParolePluginsManagerPrivate    *priv;
     
 } ParolePluginsManager;
 
 typedef struct
 {
-    GObjectClass 		    parent_class;
+    GObjectClass                    parent_class;
     
 } ParolePluginsManagerClass;
 
-GType        			    parole_plugins_manager_get_type       (void) G_GNUC_CONST;
+GType                               parole_plugins_manager_get_type   (void) G_GNUC_CONST;
 
-ParolePluginsManager               *parole_plugins_manager_new            (gboolean load_plugins);
+ParolePluginsManager               *parole_plugins_manager_new        (gboolean load_plugins);
 
-ParolePluginsManager 		   *parole_plugins_manager_get 		  (void);
+ParolePluginsManager               *parole_plugins_manager_get        (void);
 
-void				    parole_plugins_manager_load		  (ParolePluginsManager *manager);
+void                                parole_plugins_manager_load       (ParolePluginsManager *manager);
 
-void 				    parole_plugins_manager_pack 	  (ParolePluginsManager *manager, 
-									   GtkWidget *widget, 
-									   const gchar *title,
-									   ParolePluginContainer container);
+void                                parole_plugins_manager_pack       (ParolePluginsManager *manager, 
+                                                                       GtkWidget *widget, 
+                                                                       const gchar *title,
+                                                                       ParolePluginContainer container);
 
 G_END_DECLS
 

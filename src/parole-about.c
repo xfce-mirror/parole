@@ -47,17 +47,17 @@ void parole_about (GtkWindow *parent)
     /* List of authors */
     static const gchar *authors[] = 
     {
-	"Ali Abdallah <aliov@xfce.org>",
-	"Sean Davis <bluesabre@xfce.org>",
-	"Simon Steinbeiss <simon@xfce.org>",
-	NULL,
+        "Ali Abdallah <aliov@xfce.org>",
+        "Sean Davis <bluesabre@xfce.org>",
+        "Simon Steinbeiss <simon@xfce.org>",
+        NULL,
     };
 
     /* List of documentation writers */
     static const gchar *documenters[] =
     {
-	"Ali Abdallah <aliov@xfce.org>",
-	NULL,
+        "Ali Abdallah <aliov@xfce.org>",
+        NULL,
     };
     
     /* Copyright information */
@@ -65,17 +65,17 @@ void parole_about (GtkWindow *parent)
     "Copyright \302\251 2009-2011 Ali Abdallah\n"
     "Copyright \302\251 2012-2013 Sean Davis, Simon Steinbeiss";
     
-    gtk_show_about_dialog (parent,
-    "authors", authors,
-    "comments", _("Parole Media Player"),
-    "documenters", documenters,
-    "copyright", copyrights,
-    "license", XFCE_LICENSE_GPL,
-    "logo-icon-name", "parole",
-    "program-name", PACKAGE_NAME,
-    "translator-credits", _("translator-credits"),
-    "version", PACKAGE_VERSION,
-    "website", "http://goodies.xfce.org/projects/applications/parole",
-    "website-label", _("Visit Parole website"),
-    NULL);
+    gtk_show_about_dialog  (parent,
+        "authors", authors,
+        "comments", _("Parole Media Player"),
+        "documenters", documenters,
+        "copyright", copyrights,
+        "license", XFCE_LICENSE_GPL,
+        "logo-icon-name", "parole",
+        "program-name", PACKAGE_NAME,
+        "translator-credits", _("translator-credits"),
+        "version", PACKAGE_VERSION,
+        "website", "http://goodies.xfce.org/projects/applications/parole",
+        "website-label", _("Visit Parole website"),
+        NULL);
 }

@@ -51,121 +51,139 @@ typedef struct ParoleMediaListPrivate ParoleMediaListPrivate;
 
 typedef struct
 {
-    GtkVBox         		 parent;
+    GtkVBox                     parent;
     
-    ParoleMediaListPrivate     	*priv;
+    ParoleMediaListPrivate     *priv;
     
 } ParoleMediaList;
 
 typedef struct
 {
-    GtkVBoxClass  		 parent_class;
+    GtkVBoxClass    parent_class;
     
-    void			(*media_activated)		    (ParoleMediaList *list,
-								     GtkTreeRowReference *row);
-								  
-    void			(*media_cursor_changed)		    (ParoleMediaList *list,
-								     gboolean media_selected);
-								     
-    void			(*uri_opened)			    (ParoleMediaList *list,
-								     const gchar *uri);
-								     
-	void			(*shuffle_toggled)		    (ParoleMediaList *list,
-								     gboolean shuffle_toggled);
-								     
-	void			(*repeat_toggled)		    (ParoleMediaList *list,
-								     gboolean repeat_toggled);
-								     
-    void			(*show_playlist)		    (ParoleMediaList *list,
-								     gboolean show_playlist);
-								     
-    void			(*gst_dvd_nav_message)		    (ParoleMediaList *list,
-								     gint gst_dvd_nav_message);
+    void            (*media_activated)              (ParoleMediaList *list,
+                                                     GtkTreeRowReference *row);
+                                  
+    void            (*media_cursor_changed)         (ParoleMediaList *list,
+                                                     gboolean media_selected);
+                                     
+    void            (*uri_opened)                   (ParoleMediaList *list,
+                                                     const gchar *uri);
+                                     
+    void            (*shuffle_toggled)              (ParoleMediaList *list,
+                                                     gboolean shuffle_toggled);
+                                     
+    void            (*repeat_toggled)               (ParoleMediaList *list,
+                                                     gboolean repeat_toggled);
+                                     
+    void            (*show_playlist)                (ParoleMediaList *list,
+                                                     gboolean show_playlist);
+                                     
+    void            (*gst_dvd_nav_message)          (ParoleMediaList *list,
+                                                     gint gst_dvd_nav_message);
     
 } ParoleMediaListClass;
 
-GType        			 parole_media_list_get_type         (void) G_GNUC_CONST;
+GType               parole_media_list_get_type      (void) G_GNUC_CONST;
 
-GtkWidget       		*parole_media_list_get              (void);
+GtkWidget          *parole_media_list_get           (void);
 
-void				 parole_media_list_load             (ParoleMediaList *list);
+void                parole_media_list_load          (ParoleMediaList *list);
 
-void    parole_media_list_set_playlist_view(ParoleMediaList *list, gint view);
+void                    
+parole_media_list_set_playlist_view                 (ParoleMediaList *list, 
+                                                     gint view);
 
-void    parole_media_list_clear_disc_list (ParoleMediaList *list);
+void                    
+parole_media_list_clear_disc_list                   (ParoleMediaList *list);
 
-void	parole_media_list_clear_list 	  (ParoleMediaList *list);
+void                parole_media_list_clear_list    (ParoleMediaList *list);
 
+gboolean            parole_media_list_add_by_path   (ParoleMediaList *list, 
+                                                     const gchar *path, 
+                                                     gboolean emit);
 
-gboolean			 parole_media_list_add_by_path      (ParoleMediaList *list, 
-								     const gchar *path, 
-								     gboolean emit);
+gboolean            
+parole_media_list_is_selected_row                   (ParoleMediaList *list);
 
-gboolean			 parole_media_list_is_selected_row  (ParoleMediaList *list);
+gboolean            parole_media_list_is_empty      (ParoleMediaList *list);
 
-gboolean			 parole_media_list_is_empty	    (ParoleMediaList *list);
+GtkTreeRowReference
+*parole_media_list_get_first_row                    (ParoleMediaList *list);
 
-GtkTreeRowReference             *parole_media_list_get_first_row    (ParoleMediaList *list);
+GtkTreeRowReference
+*parole_media_list_get_selected_row                 (ParoleMediaList *list);
 
-GtkTreeRowReference		*parole_media_list_get_selected_row (ParoleMediaList *list);
+ParoleFile         
+*parole_media_list_get_selected_file                (ParoleMediaList *list);
 
-ParoleFile              *parole_media_list_get_selected_file (ParoleMediaList *list);
+void                parole_media_list_select_row    (ParoleMediaList *list,
+                                                     GtkTreeRowReference *row);
 
-void				 parole_media_list_select_row 	    (ParoleMediaList *list,
-								     GtkTreeRowReference *row);
+GtkTreeRowReference
+*parole_media_list_get_next_row                     (ParoleMediaList *list,
+                                                     GtkTreeRowReference *row,
+                                                     gboolean repeat);
 
-GtkTreeRowReference             *parole_media_list_get_next_row     (ParoleMediaList *list,
-								     GtkTreeRowReference *row,
-								     gboolean repeat);
+GtkTreeRowReference
+*parole_media_list_get_prev_row                     (ParoleMediaList *list,
+                                                     GtkTreeRowReference *row);
 
-GtkTreeRowReference             *parole_media_list_get_prev_row     (ParoleMediaList *list,
-								     GtkTreeRowReference *row);
+GtkTreeRowReference
+*parole_media_list_get_row_random                   (ParoleMediaList *list);
 
-GtkTreeRowReference		*parole_media_list_get_row_random   (ParoleMediaList *list);
+void
+parole_media_list_set_row_pixbuf                    (ParoleMediaList *list,
+                                                     GtkTreeRowReference *row,
+                                                     GdkPixbuf *pix);
+                                     
+gchar              *parole_media_list_get_row_name  (ParoleMediaList *list,
+                                                     GtkTreeRowReference *row);
 
-void				 parole_media_list_set_row_pixbuf   (ParoleMediaList *list,
-								     GtkTreeRowReference *row,
-								     GdkPixbuf *pix);
-								     
-gchar                   *parole_media_list_get_row_name (ParoleMediaList *list,
-GtkTreeRowReference *row);
+void                parole_media_list_set_row_name  (ParoleMediaList *list,
+                                                     GtkTreeRowReference *row,
+                                                     const gchar *name);
 
-void				 parole_media_list_set_row_name     (ParoleMediaList *list,
-							             GtkTreeRowReference *row,
-								     const gchar *name);
+void                
+parole_media_list_set_row_length                    (ParoleMediaList *list,
+                                                     GtkTreeRowReference *row,
+                                                     const gchar *length);
 
+void                parole_media_list_open          (ParoleMediaList *list);
 
-void				 parole_media_list_set_row_length   (ParoleMediaList *list,
-							             GtkTreeRowReference *row,
-								     const gchar *length);
+void                parole_media_list_open_location (ParoleMediaList *list);
 
-void				 parole_media_list_open		    (ParoleMediaList *list);
+gboolean            parole_media_list_add_files     (ParoleMediaList *list,
+                                                     gchar **filenames, 
+                                                     gboolean enqueue);
+                                     
+void                
+parole_media_list_add_cdda_tracks                   (ParoleMediaList *list, 
+                                                     gint n_tracks);
 
-void			         parole_media_list_open_location    (ParoleMediaList *list);
+void                
+parole_media_list_add_dvd_chapters                  (ParoleMediaList *list, 
+                                                     gint n_chapters);
 
-gboolean			 parole_media_list_add_files        (ParoleMediaList *list,
-								     gchar **filenames, gboolean enqueue);
-								     
-void                parole_media_list_add_cdda_tracks (ParoleMediaList *list, gint n_tracks);
+GtkTreeRowReference 
+*parole_media_list_get_row_n                        (ParoleMediaList *list, 
+                                                     gint wanted_row);
 
-void                parole_media_list_add_dvd_chapters (ParoleMediaList *list, gint n_chapters);
+void                parole_media_list_save_list     (ParoleMediaList *list);
 
-GtkTreeRowReference *parole_media_list_get_row_n (ParoleMediaList *list, 
-						                          gint wanted_row);
+void                parole_media_list_save_cb       (GtkWidget *widget, 
+                                                     ParoleMediaList *list);
 
-void				 parole_media_list_save_list	    (ParoleMediaList *list);
+void                parole_media_list_grab_focus    (ParoleMediaList *list);
 
-void 		        parole_media_list_save_cb (GtkWidget *widget, 
-								                        ParoleMediaList *list);
-
-void				 parole_media_list_grab_focus       (ParoleMediaList *list);
-
-void				 parole_media_list_set_repeat_toggled		(ParoleMediaList *list,
-																gboolean repeat_toggled);
-																
-void 				 parole_media_list_set_shuffle_toggled		(ParoleMediaList *list,
-																gboolean shuffle_toggled);
-																
+void                
+parole_media_list_set_repeat_toggled                (ParoleMediaList *list,
+                                                     gboolean repeat_toggled);
+                                                                
+void                
+parole_media_list_set_shuffle_toggled               (ParoleMediaList *list,
+                                                     gboolean shuffle_toggled);
+                                                                
 void parole_media_list_add_dvd (ParoleMediaList *list, gchar *dvd_name);
 
 

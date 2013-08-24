@@ -45,30 +45,30 @@ typedef enum
 
 typedef struct
 {
-    GObject         	   parent;
+    GObject                parent;
     ParoleDiscPrivate     *priv;
     
 } ParoleDisc;
 
 typedef struct
 {
-    GObjectClass 	   parent_class;
+    GObjectClass       parent_class;
     
-    void		   (*disc_selected)	       (ParoleDisc *disc,
-							const gchar *uri,
-							const gchar *device);
-							
-    void			(*label_changed)			    (ParoleDisc *disc,
-								     const gchar *label_changed);
-								     
-	void			(*dvd_enabled)		    (ParoleDisc *disc,
-								     gboolean dvd_enabled);
+    void            (*disc_selected)            (ParoleDisc *disc,
+                                                 const gchar *uri,
+                                                 const gchar *device);
+                            
+    void            (*label_changed)            (ParoleDisc *disc,
+                                                 const gchar *label_changed);
+                                     
+    void            (*dvd_enabled)              (ParoleDisc *disc,
+                                                 gboolean dvd_enabled);
     
 } ParoleDiscClass;
 
-GType                      parole_disc_get_type        (void) G_GNUC_CONST;
+GType               parole_disc_get_type        (void) G_GNUC_CONST;
 
-ParoleDisc                *parole_disc_new             (void);
+ParoleDisc         *parole_disc_new             (void);
 
 G_END_DECLS
 
