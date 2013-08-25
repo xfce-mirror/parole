@@ -140,27 +140,22 @@ parole_disc_get_enabled(ParoleDisc *disc)
 static void
 parole_disc_set_kind(ParoleDisc *disc, ParoleDiscKind kind)
 {
-    GtkWidget *img;
     gboolean enabled = TRUE;
     
     switch (kind)
 	{
 		case PAROLE_DISC_CDDA:
-			img = gtk_image_new_from_icon_name("media-cdrom-audio", GTK_ICON_SIZE_MENU);
 			break;
 		case PAROLE_DISC_SVCD:
 		case PAROLE_DISC_VCD:
 		case PAROLE_DISC_DVD:
-			img = gtk_image_new_from_stock("gtk-cdrom", GTK_ICON_SIZE_MENU);
 			break;
 		default:
-		    img = gtk_image_new_from_stock("gtk-cdrom", GTK_ICON_SIZE_MENU);
 		    parole_disc_set_label(disc, _("Insert Disc") );
 		    enabled = FALSE;
 		    break;
 	}
-	
-	gtk_image_menu_item_set_image( GTK_IMAGE_MENU_ITEM (disc->priv->disc_menu_item), img);
+
 	parole_disc_set_enabled(disc, enabled);
 }
 
