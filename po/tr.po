@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-03 20:28+0200\n"
-"PO-Revision-Date: 2013-08-10 20:28+0000\n"
+"PO-Revision-Date: 2013-08-24 22:42+0000\n"
 "Last-Translator: wexaw\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/xfce/language/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -217,7 +217,7 @@ msgstr ""
 
 #: ../data/interfaces/playlist.ui.h:8
 msgid "Disc Playlist"
-msgstr ""
+msgstr "Disk Oynatma listesi"
 
 #: ../data/interfaces/playlist.ui.h:9 ../src/parole-medialist.c:1009
 #: ../src/parole-medialist.c:1153
@@ -407,7 +407,7 @@ msgstr "<big><b>Ağ Konumu Aç</b></big>"
 
 #: ../data/desktop/parole.desktop.in.in.h:2
 msgid "Play your media"
-msgstr ""
+msgstr "Medya oynatıcınız"
 
 #: ../data/desktop/parole.desktop.in.in.h:3
 msgid "Play/Pause"
@@ -415,11 +415,11 @@ msgstr "Oynat/Duraklat"
 
 #: ../data/desktop/parole.desktop.in.in.h:4
 msgid "Previous Track"
-msgstr ""
+msgstr "Önceki Parça"
 
 #: ../data/desktop/parole.desktop.in.in.h:5
 msgid "Next Track"
-msgstr ""
+msgstr "Sonraki Parça"
 
 #: ../src/common/parole-common.c:67
 msgid "Message"
@@ -466,7 +466,7 @@ msgstr "GStreamer oynatıcı eklentisi yüklenemedi, GStreamer ayarlarınızı k
 #: ../src/gst/parole-gst.c:2246
 msgid ""
 "Unable to load audio GStreamer plugin, check your GStreamer installation"
-msgstr ""
+msgstr "GStreamer ses eklentisi yüklenemedi, GStreamer ayarlarınızı kontrol edin"
 
 #: ../src/gst/parole-gst.c:2269
 msgid ""
@@ -704,7 +704,7 @@ msgstr "Ortam yayını araştırılabilir değil"
 
 #: ../src/parole-player.c:1348
 msgid "Pause"
-msgstr ""
+msgstr "Duraklat"
 
 #: ../src/parole-player.c:1696
 msgid "GStreamer backend error"
@@ -737,11 +737,11 @@ msgstr "Önbelleğe alınıyor"
 
 #: ../src/parole-player.c:2272
 msgid "Mute"
-msgstr ""
+msgstr "Sessiz"
 
 #: ../src/parole-player.c:2277
 msgid "Unmute"
-msgstr ""
+msgstr "Sesi aç"
 
 #: ../src/parole-player.c:2942
 msgid "Clear recent items..."
@@ -952,7 +952,7 @@ msgstr "Çıkmak istediğinizden emin misiniz?"
 
 #: ../src/plugins/tray/tray-provider.c:288
 msgid "Parole can be minimized to the system tray instead."
-msgstr ""
+msgstr "Parole sistem çekmecesine küçültülebilir."
 
 #: ../src/plugins/tray/tray-provider.c:291
 msgid "Minimize to tray"
