@@ -120,15 +120,18 @@ static void
 popup_menu_cb (GtkStatusIcon *icon, guint button, 
                guint activate_time, TrayProvider *tray)
 {
-    GtkWidget *menu, *mi;
+    GtkWidget *menu, *mi, *image;
     
     menu = gtk_menu_new ();
 
     /*
      * Play pause.
      */
-    mi = gtk_image_menu_item_new_from_stock (tray->state == PAROLE_STATE_PLAYING ? GTK_STOCK_MEDIA_PAUSE : 
-                                             GTK_STOCK_MEDIA_PLAY, NULL);
+    image = gtk_image_new_from_icon_name(tray->state == PAROLE_STATE_PLAYING ? "media-playback-pause-symbolic" : 
+                                             "media-playback-start-symbolic", GTK_ICON_SIZE_MENU);
+    mi = gtk_image_menu_item_new_with_mnemonic(tray->state == PAROLE_STATE_PLAYING ? _("_Pause") : 
+                                             _("_Play"));
+    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), image);
     gtk_widget_set_sensitive (mi, TRUE);
     gtk_widget_show (mi);
     g_signal_connect_swapped (mi, "activate", G_CALLBACK (play_pause_activated_cb), tray);
@@ -137,8 +140,9 @@ popup_menu_cb (GtkStatusIcon *icon, guint button,
     /*
      * Previous Track
      */
-    mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_MEDIA_PREVIOUS, NULL);
-    gtk_menu_item_set_label(GTK_MENU_ITEM(mi), _("Previous Track"));
+    image = gtk_image_new_from_icon_name("media-skip-backward-symbolic", GTK_ICON_SIZE_MENU);
+    mi = gtk_image_menu_item_new_with_mnemonic(_("P_revious Track"));
+    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), image);
     gtk_widget_set_sensitive (mi, TRUE);
     gtk_widget_show (mi);
     g_signal_connect_swapped (mi, "activate", G_CALLBACK (previous_activated_cb), tray);
@@ -147,8 +151,9 @@ popup_menu_cb (GtkStatusIcon *icon, guint button,
     /*
      * Next Track
      */
-    mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_MEDIA_NEXT, NULL);
-    gtk_menu_item_set_label(GTK_MENU_ITEM(mi), _("Next Track"));
+    image = gtk_image_new_from_icon_name("media-skip-forward-symbolic", GTK_ICON_SIZE_MENU);
+    mi = gtk_image_menu_item_new_with_mnemonic(_("_Next Track"));
+    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), image);
     gtk_widget_set_sensitive (mi, TRUE);
     gtk_widget_show (mi);
     g_signal_connect_swapped (mi, "activate", G_CALLBACK (next_activated_cb), tray);
@@ -164,7 +169,9 @@ popup_menu_cb (GtkStatusIcon *icon, guint button,
     /*
      * Open
      */
-    mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_OPEN, NULL);
+    image = gtk_image_new_from_icon_name("document-open-symbolic", GTK_ICON_SIZE_MENU);
+    mi = gtk_image_menu_item_new_with_mnemonic(_("_Open"));
+    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), image);
     gtk_widget_show (mi);
     g_signal_connect_swapped (mi, "activate", G_CALLBACK (open_activated_cb), tray);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
@@ -179,7 +186,9 @@ popup_menu_cb (GtkStatusIcon *icon, guint button,
     /*
      * Exit
      */
-    mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_QUIT, NULL);
+    image = gtk_image_new_from_icon_name("system-shutdown-symbolic", GTK_ICON_SIZE_MENU);
+    mi = gtk_image_menu_item_new_with_mnemonic(_("_Quit"));
+    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), image);
     gtk_widget_set_sensitive (mi, TRUE);
     gtk_widget_show (mi);
     g_signal_connect_swapped (mi, "activate", G_CALLBACK (exit_activated_cb), tray);
