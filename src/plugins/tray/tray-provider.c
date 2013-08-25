@@ -339,7 +339,7 @@ delete_event_cb (GtkWidget *widget, GdkEvent *ev, TrayProvider *tray)
     minimize = gtk_dialog_add_button(   GTK_DIALOG(dialog),
                                         _("Minimize to tray"),
                                         GTK_RESPONSE_OK );
-    img = gtk_image_new_from_stock (GTK_STOCK_GO_DOWN, GTK_ICON_SIZE_BUTTON);
+    img = gtk_image_new_from_icon_name ("go-down", GTK_ICON_SIZE_BUTTON);
     gtk_button_set_image (GTK_BUTTON (minimize), img);
     
     gtk_dialog_add_button(  GTK_DIALOG(dialog),

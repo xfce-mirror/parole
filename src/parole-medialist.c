@@ -1123,7 +1123,7 @@ parole_media_list_add_open_containing_folder (ParoleMediaList *list, GtkWidget *
             
             /* Clear */
             mi = gtk_image_menu_item_new_with_label (_("Open Containing Folder"));
-            img = gtk_image_new_from_stock (GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
+            img = gtk_image_new_from_icon_name("document-open-symbolic", GTK_ICON_SIZE_MENU);
             gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi), img);
             gtk_widget_set_sensitive (mi, TRUE);
             gtk_widget_show (mi);
