@@ -543,8 +543,8 @@ parole_player_open_iso_image (ParolePlayer *player, ParoleIsoImage image)
     
     chooser = gtk_file_chooser_dialog_new (_("Open ISO image"), GTK_WINDOW (player->priv->window),
                                            GTK_FILE_CHOOSER_ACTION_OPEN,
-                                           GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-                                           GTK_STOCK_OPEN, GTK_RESPONSE_OK,
+                                           "gtk-cancel", GTK_RESPONSE_CANCEL,
+                                           "document-open", GTK_RESPONSE_OK,
                                            NULL);
                 
     gtk_file_chooser_set_select_multiple (GTK_FILE_CHOOSER (chooser), FALSE);
@@ -956,8 +956,8 @@ parole_player_select_custom_subtitle (GtkMenuItem *widget, gpointer data)
     /* Build the FileChooser dialog for subtitle selection. */
     chooser = gtk_file_chooser_dialog_new (_("Select Subtitle File"), NULL,
                                            GTK_FILE_CHOOSER_ACTION_OPEN,
-                                           GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-                                           GTK_STOCK_OPEN, GTK_RESPONSE_OK,
+                                           "gtk-cancel", GTK_RESPONSE_CANCEL,
+                                           "document-open", GTK_RESPONSE_OK,
                                            NULL);
                 
     gtk_file_chooser_set_select_multiple (GTK_FILE_CHOOSER (chooser), FALSE);
@@ -1151,9 +1151,9 @@ parole_player_recent_menu_clear_activated_cb (GtkWidget *widget, ParolePlayer *p
     gtk_message_dialog_format_secondary_text ( GTK_MESSAGE_DIALOG(dlg), 
     _("Are you sure you wish to clear your recent items history?  This cannot be undone."));
     
-    gtk_dialog_add_button (GTK_DIALOG(dlg), GTK_STOCK_CANCEL, 0);
+    gtk_dialog_add_button (GTK_DIALOG(dlg), "gtk-cancel", 0);
     clear_button = gtk_dialog_add_button(GTK_DIALOG(dlg),
-                                         GTK_STOCK_CLEAR,
+                                         "edit-clear",
                                          1);
     gtk_button_set_label( GTK_BUTTON(clear_button), _("Clear Recent Items") );
     
@@ -1280,9 +1280,9 @@ parole_player_set_playpause_button_image (GtkWidget *widget, const gchar *stock_
     GtkWidget *img;
     gchar *icon_name = NULL;
     
-    if (g_strcmp0(stock_id, GTK_STOCK_MEDIA_PLAY) == 0) {
+    if (g_strcmp0(stock_id, "gtk-media-play") == 0) {
         icon_name = g_strdup("media-playback-start-symbolic");
-    } else if (g_strcmp0(stock_id, GTK_STOCK_MEDIA_PAUSE) == 0) {
+    } else if (g_strcmp0(stock_id, "gtk-media-pause") == 0) {
         icon_name = g_strdup("media-playback-pause-symbolic");
     }
     
@@ -1378,7 +1378,7 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
           
     gtk_widget_set_sensitive (player->priv->play_pause, TRUE);
     
-    parole_player_set_playpause_button_image (player->priv->play_pause, GTK_STOCK_MEDIA_PAUSE);
+    parole_player_set_playpause_button_image (player->priv->play_pause, "gtk-media-pause");
     gtk_widget_set_tooltip_text(player->priv->play_pause, _("Pause"));
     
     gtk_widget_set_sensitive (player->priv->range, seekable);
@@ -1433,14 +1433,14 @@ parole_player_paused (ParolePlayer *player)
     
     TRACE ("Player paused");
     
-    pix = parole_icon_load (GTK_STOCK_MEDIA_PAUSE, 16);
+    pix = parole_icon_load ("media-playback-pause-symbolic", 16);
     parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, pix);
     
     gtk_widget_set_sensitive (player->priv->play_pause, TRUE);
     
     if ( player->priv->user_seeking == FALSE)
     {
-        parole_player_set_playpause_button_image (player->priv->play_pause, GTK_STOCK_MEDIA_PLAY);
+        parole_player_set_playpause_button_image (player->priv->play_pause, "gtk-media-play");
         gtk_widget_set_tooltip_text(player->priv->play_pause, _("Play"));
     }
     
@@ -1475,7 +1475,6 @@ parole_player_stopped (ParolePlayer *player)
     gtk_widget_hide(player->priv->audiobox);
     gtk_widget_show(player->priv->logo_image);
     
-    
     get_time_string (dur_text, 0);
     gtk_label_set_text (GTK_LABEL (player->priv->label_duration), dur_text);
 
@@ -1485,7 +1484,7 @@ parole_player_stopped (ParolePlayer *player)
     gtk_widget_set_sensitive (player->priv->seekf, FALSE);
     gtk_widget_set_sensitive (player->priv->seekb, FALSE);
 
-    parole_player_set_playpause_button_image (player->priv->play_pause, GTK_STOCK_MEDIA_PLAY);
+    parole_player_set_playpause_button_image (player->priv->play_pause, "gtk-media-play");
     gtk_widget_set_tooltip_text(player->priv->play_pause, _("Play"));
     
     parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, NULL);

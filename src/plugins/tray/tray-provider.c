@@ -278,7 +278,7 @@ configure_plugin (TrayProvider *tray, GtkWidget *widget)
     dialog = gtk_dialog_new_with_buttons   (_("Tray icon plugin"), 
                                             GTK_WINDOW (widget),
                                             GTK_DIALOG_DESTROY_WITH_PARENT,
-                                            GTK_STOCK_CLOSE,
+                                            "gtk-close",
                                             GTK_RESPONSE_CANCEL,
                                             NULL);
 
@@ -343,11 +343,11 @@ delete_event_cb (GtkWidget *widget, GdkEvent *ev, TrayProvider *tray)
     gtk_button_set_image (GTK_BUTTON (minimize), img);
     
     gtk_dialog_add_button(  GTK_DIALOG(dialog),
-                            GTK_STOCK_CANCEL,
+                            "gtk-cancel",
                             GTK_RESPONSE_CANCEL );
     
     gtk_dialog_add_button(  GTK_DIALOG(dialog),
-                            GTK_STOCK_QUIT,
+                            "gtk-quit",
                             GTK_RESPONSE_CLOSE );
                                     
     gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);

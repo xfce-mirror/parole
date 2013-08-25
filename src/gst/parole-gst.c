@@ -1494,7 +1494,7 @@ parole_gst_missing_codec_dialog(ParoleGst *gst, GstMessage *msg)
                             NULL );
 #elif defined(__FreeBSD__)
     gtk_dialog_add_button(  GTK_DIALOG(dialog), 
-                            GTK_STOCK_OK,
+                            "gtk-ok",
                             GTK_RESPONSE_ACCEPT);
 #endif
     
@@ -1909,7 +1909,7 @@ parole_gst_check_state_change_timeout (gpointer data)
     if ( gst->priv->state != gst->priv->target )
     {
         gboolean ret_val = xfce_dialog_confirm (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (gst))),
-                                                GTK_STOCK_YES,
+                                                "gtk-yes",
                                                 _("Stop"),
                                                 _("The stream is taking too much time to load"), 
                                                 NULL);
