@@ -543,8 +543,8 @@ parole_player_open_iso_image (ParolePlayer *player, ParoleIsoImage image)
     
     chooser = gtk_file_chooser_dialog_new (_("Open ISO image"), GTK_WINDOW (player->priv->window),
                                            GTK_FILE_CHOOSER_ACTION_OPEN,
-                                           "gtk-cancel", GTK_RESPONSE_CANCEL,
-                                           "document-open", GTK_RESPONSE_OK,
+                                           _("Cancel"), GTK_RESPONSE_CANCEL,
+                                           _("Open"), GTK_RESPONSE_OK,
                                            NULL);
                 
     gtk_file_chooser_set_select_multiple (GTK_FILE_CHOOSER (chooser), FALSE);
@@ -943,7 +943,7 @@ parole_player_select_custom_subtitle (GtkMenuItem *widget, gpointer data)
     ParolePlayer  *player;
     ParoleFile    *file;
     
-    GtkWidget     *chooser;
+    GtkWidget     *chooser, *button, *img;
     GtkFileFilter *filter, *all_files;
     gint           response;
     
@@ -956,9 +956,14 @@ parole_player_select_custom_subtitle (GtkMenuItem *widget, gpointer data)
     /* Build the FileChooser dialog for subtitle selection. */
     chooser = gtk_file_chooser_dialog_new (_("Select Subtitle File"), NULL,
                                            GTK_FILE_CHOOSER_ACTION_OPEN,
-                                           "gtk-cancel", GTK_RESPONSE_CANCEL,
-                                           "document-open", GTK_RESPONSE_OK,
+                                           NULL,
                                            NULL);
+    button = gtk_dialog_add_button(GTK_DIALOG(chooser), _("Cancel"), GTK_RESPONSE_CANCEL);
+    img = gtk_image_new_from_icon_name("gtk-cancel", GTK_ICON_SIZE_BUTTON);
+    gtk_button_set_image(GTK_BUTTON(button), img);
+    button = gtk_dialog_add_button(GTK_DIALOG(chooser), _("Open"), GTK_RESPONSE_OK);
+    img = gtk_image_new_from_icon_name("document-open", GTK_ICON_SIZE_BUTTON);
+    gtk_button_set_image(GTK_BUTTON(button), img);
                 
     gtk_file_chooser_set_select_multiple (GTK_FILE_CHOOSER (chooser), FALSE);
     gtk_file_chooser_set_local_only (GTK_FILE_CHOOSER (chooser), FALSE);
@@ -1151,7 +1156,7 @@ parole_player_recent_menu_clear_activated_cb (GtkWidget *widget, ParolePlayer *p
     gtk_message_dialog_format_secondary_text ( GTK_MESSAGE_DIALOG(dlg), 
     _("Are you sure you wish to clear your recent items history?  This cannot be undone."));
     
-    gtk_dialog_add_button (GTK_DIALOG(dlg), "gtk-cancel", 0);
+    gtk_dialog_add_button (GTK_DIALOG(dlg), _("Cancel"), 0);
     clear_button = gtk_dialog_add_button(GTK_DIALOG(dlg),
                                          "edit-clear",
                                          1);
@@ -1357,10 +1362,10 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
     gboolean seekable;
     gboolean live;
     
-    pix = parole_icon_load ("player_play", 16);
+    pix = parole_icon_load ("media-playback-start-symbolic", 16);
     
     if ( !pix )
-        pix = parole_icon_load ("gtk-media-play-ltr", 16);
+        pix = parole_icon_load ("media-playback-start", 16);
     
     parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, pix);
     
@@ -1861,10 +1866,10 @@ parole_player_dvd_chapter_change_cb (ParoleGst *gst, gint chapter_count, ParoleP
     
     player->priv->row = parole_media_list_get_row_n (player->priv->list, chapter_count-1);
 
-    pix = parole_icon_load ("player_play", 16);
+    pix = parole_icon_load ("media-playback-start-symbolic", 16);
     
     if ( !pix )
-        pix = parole_icon_load ("gtk-media-play-ltr", 16);
+        pix = parole_icon_load ("media-playback-start", 16);
     
     parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, pix);
     parole_media_list_select_row (player->priv->list, player->priv->row);
@@ -3217,7 +3222,7 @@ parole_player_init (ParolePlayer *player)
     gtk_container_add(GTK_CONTAINER(content_area), subtitle_box);
     
     infobar_close = gtk_button_new_with_label(_("Close"));
-    close_icon = gtk_image_new_from_icon_name("dialog-close", GTK_ICON_SIZE_BUTTON);
+    close_icon = gtk_image_new_from_icon_name("gtk-close", GTK_ICON_SIZE_BUTTON);
     gtk_button_set_image(GTK_BUTTON(infobar_close), close_icon);
     g_signal_connect (infobar_close, "clicked",
               G_CALLBACK (on_infobar_close_clicked), player);

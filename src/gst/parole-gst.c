@@ -1494,7 +1494,7 @@ parole_gst_missing_codec_dialog(ParoleGst *gst, GstMessage *msg)
                             NULL );
 #elif defined(__FreeBSD__)
     gtk_dialog_add_button(  GTK_DIALOG(dialog), 
-                            "gtk-ok",
+                            _("OK"),
                             GTK_RESPONSE_ACCEPT);
 #endif
     

@@ -278,7 +278,7 @@ configure_plugin (TrayProvider *tray, GtkWidget *widget)
     dialog = gtk_dialog_new_with_buttons   (_("Tray icon plugin"), 
                                             GTK_WINDOW (widget),
                                             GTK_DIALOG_DESTROY_WITH_PARENT,
-                                            "gtk-close",
+                                            _("Close"),
                                             GTK_RESPONSE_CANCEL,
                                             NULL);
 
@@ -312,7 +312,7 @@ action_on_hide_confirmed_cb (GtkWidget *widget, gpointer data)
 static gboolean
 delete_event_cb (GtkWidget *widget, GdkEvent *ev, TrayProvider *tray)
 {
-    GtkWidget *dialog, *check, *content_area;
+    GtkWidget *dialog, *check, *content_area, *button;
     GtkWidget *minimize, *img;
     gboolean confirmed, ret_val = TRUE, minimize_to_tray;
     
@@ -342,13 +342,17 @@ delete_event_cb (GtkWidget *widget, GdkEvent *ev, TrayProvider *tray)
     img = gtk_image_new_from_icon_name ("go-down", GTK_ICON_SIZE_BUTTON);
     gtk_button_set_image (GTK_BUTTON (minimize), img);
     
-    gtk_dialog_add_button(  GTK_DIALOG(dialog),
-                            "gtk-cancel",
-                            GTK_RESPONSE_CANCEL );
+    button = gtk_dialog_add_button( GTK_DIALOG(dialog),
+                                    _("Cancel"),
+                                    GTK_RESPONSE_CANCEL );
+    img = gtk_image_new_from_icon_name ("gtk-cancel", GTK_ICON_SIZE_BUTTON);
+    gtk_button_set_image(GTK_BUTTON(button), img);
     
     gtk_dialog_add_button(  GTK_DIALOG(dialog),
-                            "gtk-quit",
+                            _("Quit"),
                             GTK_RESPONSE_CLOSE );
+    img = gtk_image_new_from_icon_name ("gtk-quit", GTK_ICON_SIZE_BUTTON);
+    gtk_button_set_image(GTK_BUTTON(button), img);
                                     
     gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
     
