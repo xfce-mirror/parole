@@ -70,15 +70,6 @@ playback status.
 @PAROLE_STATE_PAUSED: 
 @PAROLE_STATE_PLAYING: 
 
-<!-- ##### FUNCTION parole_provider_player_get_main_window ##### -->
-<para>
-
-</para>
-
-@player: 
-@Returns: 
-
-
 <!-- ##### FUNCTION parole_provider_player_pack ##### -->
 <para>
 
@@ -91,15 +82,6 @@ playback status.
 
 
 <!-- ##### FUNCTION parole_provider_player_get_state ##### -->
-<para>
-
-</para>
-
-@player: 
-@Returns: 
-
-
-<!-- ##### FUNCTION parole_provider_player_get_stream ##### -->
 <para>
 
 </para>

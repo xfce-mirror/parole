@@ -73,6 +73,10 @@ struct _ParoleProviderPlayerIface
     
     gboolean     (*stop)                        (ParoleProviderPlayer *player);
     
+    gboolean     (*play_previous)               (ParoleProviderPlayer *player);
+    
+    gboolean     (*play_next)                   (ParoleProviderPlayer *player);
+    
     gboolean     (*seek)                        (ParoleProviderPlayer *player,
                                                  gdouble pos);
                              
@@ -111,6 +115,10 @@ gboolean    parole_provider_player_pause        (ParoleProviderPlayer *player);
 gboolean    parole_provider_player_resume       (ParoleProviderPlayer *player);
 
 gboolean    parole_provider_player_stop         (ParoleProviderPlayer *player);
+
+gboolean    parole_provider_player_play_previous(ParoleProviderPlayer *player);
+
+gboolean    parole_provider_player_play_next    (ParoleProviderPlayer *player);
 
 gboolean    parole_provider_player_seek         (ParoleProviderPlayer *player,
                                                  gdouble pos);

@@ -30,6 +30,7 @@
 
 #include <src/misc/parole-provider-player.h>
 
+#include "parole-dbus.h"
 #include "parole-plugin-player.h"
 #include "parole-plugins-manager.h"
 #include "parole-medialist.h"
@@ -56,6 +57,20 @@ struct ParolePluginPlayerPrivate
 
 G_DEFINE_TYPE_WITH_CODE (ParolePluginPlayer, parole_plugin_player, G_TYPE_OBJECT,
                          G_IMPLEMENT_INTERFACE (PAROLE_TYPE_PROVIDER_PLAYER, parole_plugin_player_iface_init))
+                         
+static void
+parole_plugin_player_send_message (const gchar *message)
+{
+    DBusGProxy *proxy;
+    
+    proxy = parole_get_proxy (PAROLE_DBUS_PATH, PAROLE_DBUS_INTERFACE);
+    
+    dbus_g_proxy_call_no_reply (proxy, message,
+                                G_TYPE_INVALID,
+                                G_TYPE_INVALID);
+    
+    g_object_unref (proxy);
+}
 
 static GtkWidget *
 parole_plugin_player_get_main_window (ParoleProviderPlayer *provider)
@@ -153,6 +168,22 @@ parole_plugin_player_stop (ParoleProviderPlayer *provider)
 }
 
 static gboolean 
+parole_plugin_player_play_previous (ParoleProviderPlayer *provider)
+{
+    parole_plugin_player_send_message ("PrevTrack");
+    
+    return TRUE;
+}
+
+static gboolean 
+parole_plugin_player_play_next (ParoleProviderPlayer *provider)
+{
+    parole_plugin_player_send_message ("NextTrack");
+    
+    return TRUE;
+}
+
+static gboolean 
 parole_plugin_player_seek (ParoleProviderPlayer *provider, gdouble pos)
 {
     ParolePluginPlayer *player;
@@ -184,6 +215,8 @@ static void parole_plugin_player_iface_init (ParoleProviderPlayerIface *iface)
     iface->pause = parole_plugin_player_pause;
     iface->resume = parole_plugin_player_resume;
     iface->stop = parole_plugin_player_stop;
+    iface->play_previous = parole_plugin_player_play_previous;
+    iface->play_next = parole_plugin_player_play_next;
     iface->seek = parole_plugin_player_seek;
     iface->open_media_chooser = parole_plugin_player_open_media_chooser;
 }

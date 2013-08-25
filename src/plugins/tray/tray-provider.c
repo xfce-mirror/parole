@@ -95,6 +95,22 @@ play_pause_activated_cb (TrayProvider *tray)
 }
 
 static void
+previous_activated_cb (TrayProvider *tray)
+{
+    menu_selection_done_cb (tray);
+    
+    parole_provider_player_play_previous (tray->player);
+}
+
+static void
+next_activated_cb (TrayProvider *tray)
+{
+    menu_selection_done_cb (tray);
+    
+    parole_provider_player_play_next (tray->player);
+}
+
+static void
 open_activated_cb (TrayProvider *tray)
 {
     parole_provider_player_open_media_chooser (tray->player);
@@ -116,6 +132,33 @@ popup_menu_cb (GtkStatusIcon *icon, guint button,
     gtk_widget_set_sensitive (mi, TRUE);
     gtk_widget_show (mi);
     g_signal_connect_swapped (mi, "activate", G_CALLBACK (play_pause_activated_cb), tray);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+    
+    /*
+     * Previous Track
+     */
+    mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_MEDIA_PREVIOUS, NULL);
+    gtk_menu_item_set_label(GTK_MENU_ITEM(mi), _("Previous Track"));
+    gtk_widget_set_sensitive (mi, TRUE);
+    gtk_widget_show (mi);
+    g_signal_connect_swapped (mi, "activate", G_CALLBACK (previous_activated_cb), tray);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+    
+    /*
+     * Next Track
+     */
+    mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_MEDIA_NEXT, NULL);
+    gtk_menu_item_set_label(GTK_MENU_ITEM(mi), _("Next Track"));
+    gtk_widget_set_sensitive (mi, TRUE);
+    gtk_widget_show (mi);
+    g_signal_connect_swapped (mi, "activate", G_CALLBACK (next_activated_cb), tray);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+    
+    /*
+     * Separator.
+     */
+    mi = gtk_separator_menu_item_new ();
+    gtk_widget_show (mi);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
     
     /*

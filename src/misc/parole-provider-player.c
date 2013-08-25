@@ -326,6 +326,56 @@ gboolean parole_provider_player_stop (ParoleProviderPlayer *player)
 
 
 /**
+ * parole_provider_player_play_previous:
+ * @player: a #ParoleProviderPlayer
+ * 
+ * Issue a play previous command to the player.
+ * 
+ * Returns: TRUE if the command is processed, FALSE otherwise.
+ * 
+ * Since: 0.6
+ **/
+gboolean parole_provider_player_play_previous (ParoleProviderPlayer *player)
+{
+    gboolean ret = FALSE;
+    
+    g_return_val_if_fail (PAROLE_IS_PROVIDER_PLAYER (player), FALSE);
+    
+    if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->play_previous )
+    {
+        ret = (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->play_previous) (player);
+    }
+    
+    return ret;
+}
+
+
+/**
+ * parole_provider_player_play_next:
+ * @player: a #ParoleProviderPlayer
+ * 
+ * Issue a play next command to the player.
+ * 
+ * Returns: TRUE if the command is processed, FALSE otherwise.
+ * 
+ * Since: 0.6
+ **/
+gboolean parole_provider_player_play_next (ParoleProviderPlayer *player)
+{
+    gboolean ret = FALSE;
+    
+    g_return_val_if_fail (PAROLE_IS_PROVIDER_PLAYER (player), FALSE);
+    
+    if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->play_next )
+    {
+        ret = (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->play_next) (player);
+    }
+    
+    return ret;
+}
+
+
+/**
  * parole_provider_player_seek:
  * @player: a #ParoleProviderPlayer
  * @pos: position to seek.
