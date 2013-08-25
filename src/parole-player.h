@@ -45,11 +45,14 @@ typedef struct
 {
     GObjectClass                parent_class;
     
-    void                        (*shuffle_toggled)              (ParolePlayer *list,
+    void                        (*shuffle_toggled)              (ParolePlayer *player,
                                                                  gboolean shuffle_toggled);
                                      
-    void                        (*repeat_toggled)               (ParolePlayer *list,
+    void                        (*repeat_toggled)               (ParolePlayer *player,
                                                                  gboolean repeat_toggled);
+                                                                 
+    void                        (*gst_dvd_nav_message)          (ParolePlayer *player,
+                                                                 gint gst_dvd_nav_message);
 
 } ParolePlayerClass;
 

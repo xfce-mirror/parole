@@ -368,6 +368,8 @@ struct ParolePlayerPrivate
     GtkWidget          *subtitles_menu_custom;
     GtkWidget          *audio_group;
     
+    GtkWidget          *dvd_menu;
+    
     GtkWidget          *subtitles_menu;
     GtkWidget          *languages_menu;
     
@@ -407,6 +409,15 @@ enum
 {
     PROP_0,
     PROP_CLIENT_ID
+};
+
+enum
+{
+    GST_DVD_ROOT_MENU,
+    GST_DVD_TITLE_MENU,
+    GST_DVD_AUDIO_MENU,
+    GST_DVD_ANGLE_MENU,
+    GST_DVD_CHAPTER_MENU
 };
 
 G_DEFINE_TYPE (ParolePlayer, parole_player, G_TYPE_OBJECT)
@@ -656,7 +667,36 @@ parole_player_dvd_reset (ParolePlayer *player)
     }
 }
 
+void
+parole_player_dvd_menu_activated (GtkMenuItem *widget, ParolePlayer *player)
+{
+    parole_gst_send_navigation_command (PAROLE_GST(player->priv->gst), GST_DVD_ROOT_MENU);
+}
 
+void
+parole_player_dvd_title_activated (GtkMenuItem *widget, ParolePlayer *player)
+{
+    parole_gst_send_navigation_command (PAROLE_GST(player->priv->gst), GST_DVD_TITLE_MENU);
+}
+
+void
+parole_player_dvd_audio_activated (GtkMenuItem *widget, ParolePlayer *player)
+{
+    parole_gst_send_navigation_command (PAROLE_GST(player->priv->gst), GST_DVD_AUDIO_MENU);
+    
+}
+
+void
+parole_player_dvd_angle_activated (GtkMenuItem *widget, ParolePlayer *player)
+{
+    parole_gst_send_navigation_command (PAROLE_GST(player->priv->gst), GST_DVD_ANGLE_MENU);
+}
+
+void
+parole_player_dvd_chapter_activated (GtkMenuItem *widget, ParolePlayer *player)
+{
+    parole_gst_send_navigation_command (PAROLE_GST(player->priv->gst), GST_DVD_CHAPTER_MENU);
+}
 
 static gboolean
 parole_sublang_equal_lists (GList *orig, GList *new)
@@ -1127,7 +1167,6 @@ parole_player_disc_selected_cb (ParoleDisc *disc, const gchar *uri, const gchar 
 static void
 parole_player_disc_label_changed_cb (ParoleDisc *disc, const gchar *label, ParolePlayer *player)
 {
-    parole_media_list_add_dvd(player->priv->list, g_strdup(label));
 }
 
 static void
@@ -1248,7 +1287,7 @@ parole_player_media_list_show_playlist_cb (ParoleMediaList *list, gboolean show_
 static void
 parole_player_media_list_gst_nav_message_cb (ParoleMediaList *list, gint msg_id, ParolePlayer *player)
 {
-    parole_gst_send_navigation_command (PAROLE_GST(player->priv->gst), msg_id);
+    
 }
 
 static void
@@ -2927,6 +2966,8 @@ parole_player_init (ParolePlayer *player)
     GtkWidget *clear_recent;
     GtkWidget *recent_separator;
     
+    GtkMenuItem *dvd_menu, *title_menu, *audio_menu, *angle_menu, *chapter_menu;
+    
     GtkWidget *bug_report;
     
     gboolean repeat, shuffle;
@@ -3088,6 +3129,28 @@ parole_player_init (ParolePlayer *player)
     
     /* Attach the Recent Menu */
     gtk_menu_item_set_submenu( GTK_MENU_ITEM(recent_menu), player->priv->recent_menu );
+    
+    /* DVD Menu */
+    player->priv->dvd_menu = GTK_WIDGET(gtk_builder_get_object (builder, "dvd-menu"));
+    dvd_menu =   GTK_MENU_ITEM (gtk_builder_get_object (builder, "dvd_dvd-menu"));
+    g_signal_connect (dvd_menu, "activate",
+                      G_CALLBACK (parole_player_dvd_menu_activated), player);
+                      
+    title_menu = GTK_MENU_ITEM (gtk_builder_get_object (builder, "dvd_title-menu"));
+    g_signal_connect (title_menu, "activate",
+                      G_CALLBACK (parole_player_dvd_title_activated), player);
+                      
+    audio_menu = GTK_MENU_ITEM (gtk_builder_get_object (builder, "dvd_audio-menu"));
+    g_signal_connect (audio_menu, "activate",
+                      G_CALLBACK (parole_player_dvd_audio_activated), player);
+                      
+    angle_menu = GTK_MENU_ITEM (gtk_builder_get_object (builder, "dvd_angle-menu"));
+    g_signal_connect (angle_menu, "activate",
+                      G_CALLBACK (parole_player_dvd_angle_activated), player);
+                      
+    chapter_menu = GTK_MENU_ITEM (gtk_builder_get_object (builder, "dvd_chapter-menu"));
+    g_signal_connect (chapter_menu, "activate",
+                      G_CALLBACK (parole_player_dvd_chapter_activated), player);
     
     /* Language Menus */
     player->priv->subtitles_menu = GTK_WIDGET (gtk_builder_get_object (builder, "subtitles-menu"));
@@ -3293,9 +3356,6 @@ parole_player_init (ParolePlayer *player)
               
     g_signal_connect (player->priv->list, "show-playlist",
               G_CALLBACK (parole_player_media_list_show_playlist_cb), player);
-              
-    g_signal_connect (player->priv->list, "gst-dvd-nav-message",
-              G_CALLBACK (parole_player_media_list_gst_nav_message_cb), player);
     
     /*
      * Load auto saved media list.
