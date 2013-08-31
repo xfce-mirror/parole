@@ -952,7 +952,7 @@ static void
 parole_gst_element_message_sync (GstBus *bus, GstMessage *message, ParoleGst *gst)
 {
 #if GST_CHECK_VERSION(1, 0, 0)
-    if ( gst_message_has_name (message, "prepare-xwindow-id") )
+    if ( gst_message_has_name (message, "prepare-window-handle") )
 #else
     if ( !message->structure )
         goto out;
