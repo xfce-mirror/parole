@@ -2977,6 +2977,10 @@ parole_player_init (ParolePlayer *player)
     GtkWidget *audiotrack_box, *audiotrack_label, *subtitle_box, *subtitle_label, *infobar_close, *close_icon;
     GtkWidget *content_area;
     
+    GtkWidget *controls_overlay, *tmp_box;
+    GtkWidget *controls_parent;
+    GtkStyleContext *controls_style;
+    
     g_setenv("PULSE_PROP_media.role", "video", TRUE);
     
     player->priv = PAROLE_PLAYER_GET_PRIVATE (player);
@@ -3200,12 +3204,29 @@ parole_player_init (ParolePlayer *player)
             G_CALLBACK(parole_audiobox_expose_event), player);
     /* End Content Area */
     
-    
+    /* FIXME: UGLY CODE IN THE NEXT BLOCK */
     /* Media Controls */
+    controls_overlay = GTK_WIDGET(gtk_overlay_new());
     /* control is a placeholder to put the play_box as it is moved to/from the fs-window */
     player->priv->control = GTK_WIDGET (gtk_builder_get_object (builder, "control"));
     player->priv->play_box = GTK_WIDGET (gtk_builder_get_object (builder, "play-box"));
+    controls_parent = GTK_WIDGET(gtk_builder_get_object (builder, "box2"));
+    gtk_box_pack_start (GTK_BOX(controls_parent), controls_overlay, TRUE, TRUE, 0);
+    gtk_widget_reparent(GTK_WIDGET(player->priv->eventbox_output), controls_overlay);
+    tmp_box = GTK_WIDGET(gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0));
+    gtk_widget_set_vexpand(GTK_WIDGET(tmp_box), FALSE);
+    gtk_widget_set_hexpand(GTK_WIDGET(tmp_box), FALSE);
+    gtk_widget_set_margin_left(tmp_box, 10);
+    gtk_widget_set_margin_right(tmp_box, 10);
+    gtk_widget_set_margin_bottom(tmp_box, 10);
+    gtk_widget_set_margin_top(tmp_box, 10);
+    gtk_widget_set_valign(tmp_box, GTK_ALIGN_END);
+    controls_style = gtk_widget_get_style_context(GTK_WIDGET(tmp_box));
+    gtk_style_context_add_class (controls_style, "osd");
+    gtk_widget_reparent(GTK_WIDGET(player->priv->control), tmp_box);
+    gtk_overlay_add_overlay(GTK_OVERLAY(controls_overlay), tmp_box);
     gtk_box_set_child_packing( GTK_BOX(player->priv->control), GTK_WIDGET(player->priv->play_box), TRUE, TRUE, 2, GTK_PACK_START );
+    gtk_widget_show_all(controls_parent);
     
     /* Previous, Play/Pause, Next */
     player->priv->seekb = GTK_WIDGET (gtk_builder_get_object (builder, "media_prev"));
