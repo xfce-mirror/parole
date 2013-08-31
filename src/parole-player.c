@@ -1984,7 +1984,7 @@ parole_player_reset_controls (ParolePlayer *player, gboolean fullscreen)
 
             gtk_window_unfullscreen (GTK_WINDOW (player->priv->window));
             gtk_notebook_set_current_page (GTK_NOTEBOOK (player->priv->playlist_nt), current_page);
-            gdkwindow = gtk_widget_get_window (player->priv->window);
+            gdkwindow = gtk_widget_get_window (player->priv->gst);
             gdk_window_set_cursor (gdkwindow, NULL);
             player->priv->full_screen = FALSE;
         }
@@ -2169,7 +2169,7 @@ gboolean parole_player_hide_fs_window (gpointer data)
     if ( gtk_widget_get_visible (controls) )
     {
         gtk_widget_hide(controls);
-        gdkwindow = gtk_widget_get_window (controls);
+        gdkwindow = gtk_widget_get_window (GTK_WIDGET(player->priv->gst));
         parole_window_invisible_cursor (gdkwindow);
     }
 
