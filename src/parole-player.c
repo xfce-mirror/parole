@@ -296,6 +296,8 @@ static void parole_player_dvd_chapter_change_cb     (ParoleGst *gst,
 gboolean    parole_player_key_press                 (GtkWidget *widget, 
                                                      GdkEventKey *ev, 
                                                      ParolePlayer *player);
+                                                     
+gboolean parole_player_hide_fs_window (gpointer data);
                              
 static GtkTargetEntry target_entry[] =
 {
@@ -345,9 +347,7 @@ struct ParolePlayerPrivate
     
     GtkWidget          *label_elapsed;
     GtkWidget          *label_duration;
-    GtkWidget          *fs_window; /* Window for packing control widgets 
-                                    * when in full screen mode
-                                    */
+
     GtkWidget          *control; /* contains all play button*/
     GtkWidget          *fullscreen_button;
     GtkWidget          *fullscreen_image;
@@ -667,32 +667,32 @@ parole_player_dvd_reset (ParolePlayer *player)
     }
 }
 
-void
+static void
 parole_player_dvd_menu_activated (GtkMenuItem *widget, ParolePlayer *player)
 {
     parole_gst_send_navigation_command (PAROLE_GST(player->priv->gst), GST_DVD_ROOT_MENU);
 }
 
-void
+static void
 parole_player_dvd_title_activated (GtkMenuItem *widget, ParolePlayer *player)
 {
     parole_gst_send_navigation_command (PAROLE_GST(player->priv->gst), GST_DVD_TITLE_MENU);
 }
 
-void
+static void
 parole_player_dvd_audio_activated (GtkMenuItem *widget, ParolePlayer *player)
 {
     parole_gst_send_navigation_command (PAROLE_GST(player->priv->gst), GST_DVD_AUDIO_MENU);
     
 }
 
-void
+static void
 parole_player_dvd_angle_activated (GtkMenuItem *widget, ParolePlayer *player)
 {
     parole_gst_send_navigation_command (PAROLE_GST(player->priv->gst), GST_DVD_ANGLE_MENU);
 }
 
-void
+static void
 parole_player_dvd_chapter_activated (GtkMenuItem *widget, ParolePlayer *player)
 {
     parole_gst_send_navigation_command (PAROLE_GST(player->priv->gst), GST_DVD_CHAPTER_MENU);
@@ -1285,12 +1285,6 @@ parole_player_media_list_show_playlist_cb (ParoleMediaList *list, gboolean show_
 }
 
 static void
-parole_player_media_list_gst_nav_message_cb (ParoleMediaList *list, gint msg_id, ParolePlayer *player)
-{
-    
-}
-
-static void
 parole_player_media_progressed_cb (ParoleGst *gst, const ParoleStream *stream, gint64 value, ParolePlayer *player)
 {
 #ifdef DEBUG
@@ -1468,6 +1462,8 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
     parole_media_list_select_row (player->priv->list, player->priv->row);
     gtk_widget_grab_focus (player->priv->gst);
     parole_player_update_languages (player, PAROLE_GST(player->priv->gst));
+    
+    g_timeout_add_seconds (4, (GSourceFunc) parole_player_hide_fs_window, player);
 }
 
 static void
@@ -1938,31 +1934,6 @@ parole_player_play_menu_item_activate (ParolePlayer *player)
     gtk_widget_activate (player->priv->play_pause);
 }
 
-static void
-parole_player_move_fs_window (ParolePlayer *player)
-{
-    GdkScreen *screen;
-    GdkRectangle rect;
-    GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
-    
-    screen = gtk_window_get_screen (GTK_WINDOW (player->priv->fs_window));
-    
-    gdk_screen_get_monitor_geometry (screen,
-            gdk_screen_get_monitor_at_window (screen, gtk_widget_get_window( GTK_WIDGET(player->priv->window))),
-            &rect);
-    
-    gtk_widget_get_allocation( GTK_WIDGET(player->priv->play_box), allocation );
-    gtk_window_resize (GTK_WINDOW (player->priv->fs_window), 
-                       rect.width, 
-                       allocation->height);
-    
-    gtk_window_move (GTK_WINDOW (player->priv->fs_window),
-                     rect.x, 
-                     rect.height + rect.y - allocation->height);
-
-    g_free(allocation);
-}
-
 gboolean
 parole_player_window_state_event (GtkWidget *widget, 
                                   GdkEventWindowState *event,
@@ -2001,7 +1972,6 @@ parole_player_reset_controls (ParolePlayer *player, gboolean fullscreen)
         {
             gtk_widget_reparent (player->priv->play_box, player->priv->control);
             gtk_box_set_child_packing( GTK_BOX(player->priv->control), GTK_WIDGET(player->priv->play_box), TRUE, TRUE, 2, GTK_PACK_START );
-            gtk_widget_hide (player->priv->fs_window);
             gtk_widget_show (player->priv->play_box);
             gtk_widget_show (player->priv->menu_bar);
             show_playlist = gtk_check_menu_item_get_active( GTK_CHECK_MENU_ITEM(player->priv->show_hide_playlist) );
@@ -2020,10 +1990,6 @@ parole_player_reset_controls (ParolePlayer *player, gboolean fullscreen)
         }
         else
         {
-            parole_player_move_fs_window (player);
-            gtk_widget_reparent (player->priv->play_box, player->priv->fs_window);
-
-            gtk_widget_hide (player->priv->play_box);
             gtk_widget_hide (player->priv->menu_bar);
             gtk_widget_hide (player->priv->playlist_nt);
             parole_player_set_playlist_visible(player, FALSE);
@@ -2190,35 +2156,20 @@ parole_player_gst_widget_button_release (GtkWidget *widget, GdkEventButton *ev, 
     return ret_val;
 }
 
-static gboolean parole_player_hide_fs_window (gpointer data)
+gboolean parole_player_hide_fs_window (gpointer data)
 {
     ParolePlayer *player;
-    GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
     GdkWindow *gdkwindow;
-    gint x, y, w, h;
-    GdkDevice *dev;
-    GdkDeviceManager *devmgr;
+    GtkWidget *controls;
     
     player = PAROLE_PLAYER (data);
     
-    if ( gtk_widget_get_visible (player->priv->fs_window) )
+    controls = gtk_widget_get_parent(player->priv->control);
+    
+    if ( gtk_widget_get_visible (controls) )
     {
-        /* Don't hide the popup if the pointer is above it*/
-        gtk_widget_get_allocation( GTK_WIDGET(player->priv->fs_window), allocation );
-        w = allocation->width;
-        h = allocation->height;
-        g_free(allocation);
-        
-        devmgr = gdk_display_get_device_manager(gtk_widget_get_display(GTK_WIDGET(player->priv->fs_window)));
-        dev = gdk_device_manager_get_client_pointer(devmgr);
-        gdk_window_get_device_position( gtk_widget_get_window(GTK_WIDGET(player->priv->fs_window)),
-                                        dev, &x, &y, NULL);
-        
-        if ((x >= 0) && (x <= w) && (y >= 0) && (y <= h))
-            return TRUE;
-
-        gtk_widget_hide (player->priv->fs_window);
-        gdkwindow = gtk_widget_get_window (player->priv->window);
+        gtk_widget_hide(controls);
+        gdkwindow = gtk_widget_get_window (controls);
         parole_window_invisible_cursor (gdkwindow);
     }
 
@@ -2231,25 +2182,20 @@ parole_player_gst_widget_motion_notify_event (GtkWidget *widget, GdkEventMotion 
     static gulong hide_timeout = 0;
     GdkWindow *gdkwindow;
     
-    if ( player->priv->full_screen )
-    {
-        gtk_widget_show_all (player->priv->fs_window);
-        gdkwindow = gtk_widget_get_window (player->priv->window);
-        gdk_window_set_cursor (gdkwindow, NULL);
-        if ( hide_timeout != 0 )
-        {
-            g_source_remove (hide_timeout);
-            hide_timeout = 0;
-        }
-            
-        hide_timeout = g_timeout_add_seconds (4, (GSourceFunc) parole_player_hide_fs_window, player);
-    }
-    else if ( hide_timeout != 0)
+    if ( hide_timeout != 0)
     {
         g_source_remove (hide_timeout);
         hide_timeout = 0;
     }
     
+    gtk_widget_show_all (gtk_widget_get_parent(player->priv->control));
+    
+    gdkwindow = gtk_widget_get_window (player->priv->window);
+    gdk_window_set_cursor (gdkwindow, NULL);
+    
+    if ( player->priv->state == PAROLE_STATE_PLAYING )
+        hide_timeout = g_timeout_add_seconds (4, (GSourceFunc) parole_player_hide_fs_window, player);
+
     return FALSE;
 }
 
@@ -2398,13 +2344,6 @@ void parole_player_volume_mute (GtkWidget *widget, ParolePlayer *player)
 }
 
 static void
-parole_player_screen_size_change_changed_cb (GdkScreen *screen, ParolePlayer *player)
-{
-    if ( player->priv->full_screen )
-        parole_player_move_fs_window (player);
-}
-
-static void
 parole_player_sm_quit_requested_cb (ParolePlayer *player)
 {
     player->priv->exit = TRUE;
@@ -2436,9 +2375,6 @@ parole_player_finalize (GObject *object)
     if (player->priv->button)
         g_object_unref (player->priv->button);
 #endif
-
-    gtk_widget_destroy (player->priv->fs_window);
-    
 
     G_OBJECT_CLASS (parole_player_parent_class)->finalize (object);
 }
@@ -2881,7 +2817,6 @@ parole_player_window_notify_is_active (ParolePlayer *player)
     
     if (!gtk_window_is_active (GTK_WINDOW (player->priv->window)) )
     {
-        gtk_widget_hide (player->priv->fs_window);
         parole_gst_set_cursor_visible (PAROLE_GST (player->priv->gst), TRUE);
     } 
     else 
@@ -2951,11 +2886,9 @@ parole_player_init (ParolePlayer *player)
 {
     GtkWidget *output, *icon;
     GtkBuilder *builder;
-    GdkScreen *screen;
     gint w, h;
     gboolean showhide;
     GdkColor background;
-    GtkStyleContext *fullscreen_mode;
     
     gint volume;
 
@@ -3399,22 +3332,10 @@ parole_player_init (ParolePlayer *player)
     gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (gtk_builder_get_object (builder, "shuffle")), shuffle);
                     
     parole_media_list_set_shuffle_toggled(player->priv->list, shuffle);
-
-    player->priv->fs_window = gtk_window_new (GTK_WINDOW_POPUP);
-
-    gtk_window_set_opacity( GTK_WINDOW(player->priv->fs_window), 0.70 );
-    gtk_window_set_gravity (GTK_WINDOW (player->priv->fs_window), GDK_GRAVITY_SOUTH_WEST);
-    gtk_window_set_position (GTK_WINDOW (player->priv->fs_window), GTK_WIN_POS_NONE);
-    fullscreen_mode = gtk_widget_get_style_context(GTK_WIDGET(player->priv->fs_window));
-    gtk_style_context_add_class (fullscreen_mode, "osd");
   
     parole_gst_set_default_aspect_ratio (player, builder);
     
     gtk_builder_connect_signals (builder, player);
-    
-    screen = gtk_widget_get_screen (player->priv->window);
-    g_signal_connect (G_OBJECT (screen), "size-changed",
-              G_CALLBACK (parole_player_screen_size_change_changed_cb), player);
     
     g_object_unref (builder);
     

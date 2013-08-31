@@ -467,7 +467,7 @@ static void
 parole_gst_set_video_overlay (ParoleGst *gst)
 {
     GstElement *video_sink;
-    GtkWidget *label;
+    //GtkWidget *label;
     //GtkStyleContext *context;
     //GdkRGBA *rgba;
     //gchar *converting_value, *hex_value;
