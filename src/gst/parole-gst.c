@@ -27,6 +27,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 #include <glib.h>
 
@@ -466,6 +467,12 @@ static void
 parole_gst_set_video_overlay (ParoleGst *gst)
 {
     GstElement *video_sink;
+    GtkWidget *label;
+    //GtkStyleContext *context;
+    //GdkRGBA *rgba;
+    //gchar *converting_value, *hex_value;
+    //gint hex_int;
+    //char *endptr;
     
     g_object_get (G_OBJECT (gst->priv->playbin),
                   "video-sink", &video_sink,
@@ -481,6 +488,36 @@ parole_gst_set_video_overlay (ParoleGst *gst)
         gst_x_overlay_set_xwindow_id (GST_X_OVERLAY (video_sink),
                           GDK_WINDOW_XID ( gtk_widget_get_window(GTK_WIDGET (gst)) ));
 #endif
+    /* The below code is an attempt to dynamically support theming on the controls.
+    label = GTK_WIDGET(gtk_label_new(""));
+    context = gtk_widget_get_style_context(GTK_WIDGET(label));
+    gtk_style_context_add_class (context, "osd");
+    gtk_style_context_get(context, GTK_STATE_FLAG_NORMAL, 
+                            GTK_STYLE_PROPERTY_BACKGROUND_COLOR, &rgba, NULL);
+    
+    hex_value = g_strdup("");
+    converting_value = g_strdup_printf("%X", (int)(rgba->red * 255.0));
+    if ((int)strlen(converting_value) == 1)
+        hex_value = g_strjoin("", hex_value, "0", NULL);
+    hex_value = g_strjoin("", hex_value, converting_value, NULL);
+    
+    converting_value = g_strdup_printf("%X", (int)(rgba->green * 255.0));
+    if ((int)strlen(converting_value) == 1)
+        hex_value = g_strjoin("", hex_value, "0", NULL);
+    hex_value = g_strjoin("", hex_value, converting_value, NULL);
+    
+    converting_value = g_strdup_printf("%X", (int)(rgba->blue * 255.0));
+    if ((int)strlen(converting_value) == 1)
+        hex_value = g_strjoin("", hex_value, "0", NULL);
+    hex_value = g_strjoin("", hex_value, converting_value, NULL);
+
+    hex_int = (int)strtol(hex_value, &endptr, 16);
+    
+    g_object_set(video_sink, "autopaint-colorkey", FALSE,
+             "colorkey", hex_int, NULL);
+    */
+    g_object_set(video_sink, "autopaint-colorkey", FALSE,
+             "colorkey", 0x080810, NULL);
     
     gst_object_unref (video_sink);
 }
