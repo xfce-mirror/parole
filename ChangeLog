@@ -1,14 +1,16 @@
-2013-08-24: bluesabre@xfce.org
+2013-09-01: bluesabre@xfce.org
     * Road to 0.6.0...
     * Fix remembered playlist not being forgotten when setting disabled.
+    * Fix Gstreamer 1.0 support
     * Port to GTK+3
     * Update artwork (icons, background)
-    * Use OSD class for fullscreen window
+    * Use GtkOverlay for player controls
     * Use symbolic icons
     * Rearrange and improve menubar
     * Add 'Save Playlist' item to menu
     * Add 'Report Bug' item to menu
     * Add Previous/Next menu items to Tray plugin
+    * Add ability to play DVD ISOs (from Open dialog)
 
 2013-07-25: bluesabre@xfce.org
     * Bugfix release 0.5.2
