@@ -84,6 +84,9 @@ typedef struct
                                                      
     void            (*iso_opened)                   (ParoleMediaList *list,
                                                      const gchar *filename);
+                                                     
+    void            (*dvd_chapter_count)            (ParoleMediaList *list,
+                                                     gint chapter_count);
     
 } ParoleMediaListClass;
 

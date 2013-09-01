@@ -363,6 +363,7 @@ struct ParolePlayerPrivate
     GtkWidget          *audio_group;
     
     GtkWidget          *dvd_menu;
+    GtkWidget          *chapters_menu;
     
     GtkWidget          *subtitles_menu;
     GtkWidget          *languages_menu;
@@ -632,6 +633,52 @@ parole_sublang_equal_lists (GList *orig, GList *new)
     }
 
     return retval;
+}
+
+static void
+parole_player_clear_chapters (ParolePlayer *player)
+{
+    GList *menu_items, *menu_iter;
+    gint counter = 0;
+    
+    /* Clear the chapter menu options */
+    menu_items = gtk_container_get_children( GTK_CONTAINER (player->priv->chapters_menu) );
+    //gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(player->priv->subtitles_group), TRUE);
+    
+    for (menu_iter = menu_items; menu_iter != NULL; menu_iter = g_list_next(menu_iter))
+    {
+        if (counter >= 2)
+            gtk_widget_destroy(GTK_WIDGET(menu_iter->data));
+        counter++;
+    }
+    g_list_free(menu_items);
+}
+
+static void
+parole_player_chapter_selection_changed_cb(GtkWidget *widget, ParolePlayer *player)
+{
+    gint chapter_id = atoi((char*)g_object_get_data(G_OBJECT(widget), "chapter-id"));
+    parole_gst_set_dvd_chapter(PAROLE_GST(player->priv->gst)    , chapter_id);
+}
+
+static void
+parole_player_update_chapters (ParolePlayer *player, gint chapter_count)
+{
+    int chapter_id;
+    GtkWidget *menu_item;
+    parole_player_clear_chapters(player);
+
+    for (chapter_id=0; chapter_id<chapter_count; chapter_id++)
+    {
+        menu_item = GTK_WIDGET(gtk_menu_item_new_with_label (g_strdup_printf(_("Chapter %i"), chapter_id+1)));
+        gtk_widget_show (menu_item);
+
+        g_object_set_data(G_OBJECT(menu_item), "chapter-id", g_strdup_printf("%i", chapter_id+1));
+        
+        gtk_menu_shell_append (GTK_MENU_SHELL (player->priv->chapters_menu), menu_item);
+        g_signal_connect   (menu_item, "activate",
+                            G_CALLBACK (parole_player_chapter_selection_changed_cb), player);
+    }
 }
 
 static void
@@ -1808,6 +1855,7 @@ parole_player_dvd_chapter_count_change_cb (ParoleGst *gst, gint chapter_count, P
     //parole_media_list_clear_list (player->priv->list);
     
     parole_media_list_add_dvd_chapters (player->priv->list, chapter_count);
+    parole_player_update_chapters(player, chapter_count);
 }
 
 static void
@@ -3006,6 +3054,8 @@ parole_player_init (ParolePlayer *player)
     chapter_menu = GTK_MENU_ITEM (gtk_builder_get_object (builder, "dvd_chapter-menu"));
     g_signal_connect (chapter_menu, "activate",
                       G_CALLBACK (parole_player_dvd_chapter_activated), player);
+                      
+    player->priv->chapters_menu = GTK_WIDGET (gtk_builder_get_object (builder, "chapters-menu"));
     
     /* Language Menus */
     player->priv->subtitles_menu = GTK_WIDGET (gtk_builder_get_object (builder, "subtitles-menu"));
