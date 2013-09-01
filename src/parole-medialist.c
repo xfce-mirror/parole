@@ -328,7 +328,7 @@ parole_media_list_files_open (ParoleMediaList *list, GSList *files, gboolean dis
     len = g_slist_length (files);
     TRACE ("Adding %i files", len);
     
-    if ( len > 1 )
+    if ( len > 1 && !disc )
         g_signal_emit (G_OBJECT (list), signals [SHOW_PLAYLIST], 0, TRUE);
     
     if ( len != 0 )
