@@ -1221,7 +1221,7 @@ parole_media_list_menu_pos (GtkMenu *menu, gint *px, gint *py, gboolean *push_in
 static void
 parole_media_list_hide_menu (GtkWidget *widget)
 {
-    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( widget ), FALSE );
+    gtk_toggle_tool_button_set_active( GTK_TOGGLE_TOOL_BUTTON( widget ), FALSE );
 }
 
 static void
