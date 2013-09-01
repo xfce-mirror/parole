@@ -77,11 +77,15 @@ struct ParoleMediaChooserClass
     
     void                (*media_files_opened)   (ParoleMediaChooser *chooser,
                                                  GSList *list);
+                                                 
+    void                (*iso_opened)           (ParoleMediaChooser *chooser,
+                                                 gchar *filename);
 };
 
 enum
 {
     MEDIA_FILES_OPENED,
+    ISO_OPENED,
     LAST_SIGNAL
 };
 
@@ -131,6 +135,21 @@ parole_media_chooser_add (ParoleMediaChooser *chooser, GtkWidget *file_chooser)
     for ( i = 0; i < len; i++)
     {
         file = g_slist_nth_data (files, i);
+        if (g_str_has_suffix(file, ".iso"))
+        {
+            // FIXME: Is there some way to add the ISO to the playlist?
+            // For now we will play the ISO if it is the first file found, otherwise ignore.
+            if (g_slist_length(media_files) != 0)
+                continue;
+            g_signal_emit (G_OBJECT (chooser), signals [ISO_OPENED], 0, file);
+            
+            g_slist_free (media_files);
+    
+            g_slist_foreach (files, (GFunc) g_free, NULL);
+            g_slist_free (files);
+            
+            return;
+        }
         parole_get_media_files (filter, file, scan_recursive, &media_files);
     }
     
@@ -215,6 +234,7 @@ parole_media_chooser_open_internal (ParoleMediaChooser *media_chooser)
     gtk_file_filter_set_name( filter, _("Supported files") );
     gtk_file_filter_add_mime_type (GTK_FILE_FILTER (filter), "audio/*");
     gtk_file_filter_add_mime_type (GTK_FILE_FILTER (filter), "video/*");
+    gtk_file_filter_add_mime_type (GTK_FILE_FILTER (filter), "application/x-cd-image");
     gtk_file_chooser_add_filter( GTK_FILE_CHOOSER(file_chooser), filter );
 
     all_files = gtk_file_filter_new();
@@ -274,6 +294,16 @@ parole_media_chooser_class_init (ParoleMediaChooserClass *klass)
                         PAROLE_TYPE_MEDIA_CHOOSER,
                         G_SIGNAL_RUN_LAST,
                         G_STRUCT_OFFSET (ParoleMediaChooserClass, media_files_opened),
+                        NULL, NULL,
+                        g_cclosure_marshal_VOID__POINTER,
+                        G_TYPE_NONE, 1, 
+                        G_TYPE_POINTER);
+                        
+    signals[ISO_OPENED] = 
+        g_signal_new   ("iso-opened",
+                        PAROLE_TYPE_MEDIA_CHOOSER,
+                        G_SIGNAL_RUN_LAST,
+                        G_STRUCT_OFFSET (ParoleMediaChooserClass, iso_opened),
                         NULL, NULL,
                         g_cclosure_marshal_VOID__POINTER,
                         G_TYPE_NONE, 1, 

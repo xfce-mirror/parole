@@ -201,6 +201,7 @@ enum
     SHUFFLE_TOGGLED,
     REPEAT_TOGGLED,
     SHOW_PLAYLIST,
+    ISO_OPENED,
     LAST_SIGNAL
 };
 
@@ -410,6 +411,16 @@ parole_media_list_location_opened_cb (ParoleOpenLocation *obj, const gchar *loca
 }
 
 static void
+parole_media_list_iso_opened_cb (ParoleMediaChooser *chooser, 
+                   gchar *filename, 
+                   ParoleMediaList *list)
+{
+    gchar *uri;
+    uri = g_strdup_printf ("dvd://%s", filename);
+    g_signal_emit (G_OBJECT (list), signals [ISO_OPENED], 0, uri);
+}
+
+static void
 parole_media_list_open_internal (ParoleMediaList *list)
 {
     ParoleMediaChooser *chooser;
@@ -420,6 +431,9 @@ parole_media_list_open_internal (ParoleMediaList *list)
                            
     g_signal_connect (G_OBJECT (chooser), "media_files_opened",
                       G_CALLBACK (parole_media_list_files_opened_cb), list);
+                      
+    g_signal_connect (G_OBJECT (chooser), "iso_opened",
+                      G_CALLBACK (parole_media_list_iso_opened_cb), list);
 }
 
 static void
@@ -1500,6 +1514,15 @@ parole_media_list_class_init (ParoleMediaListClass *klass)
                       NULL, NULL,
                       g_cclosure_marshal_VOID__BOOLEAN,
                       G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
+                      
+    signals[ISO_OPENED] = 
+        g_signal_new ("iso-opened",
+                      PAROLE_TYPE_MEDIA_LIST,
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET (ParoleMediaListClass, iso_opened),
+                      NULL, NULL,
+                      g_cclosure_marshal_VOID__STRING,
+                      G_TYPE_NONE, 1, G_TYPE_STRING);
 
     g_type_class_add_private (klass, sizeof (ParoleMediaListPrivate));
     

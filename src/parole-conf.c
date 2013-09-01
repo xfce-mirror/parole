@@ -51,7 +51,6 @@ enum
     PROP_VIS_NAME,
     PROP_VOLUME,
     /* Folders */
-    PROP_ISO_IMAGE_FOLDER,
     PROP_MEDIA_CHOOSER_FOLDER,
     /* Parole General */
     PROP_MULTIMEDIA_KEYS,
@@ -401,21 +400,6 @@ parole_conf_class_init (ParoleConfClass *klass)
                                             0,
                                             100,
                                             50,
-                                            G_PARAM_READWRITE));
-
-    /**
-     * ParoleConf:iso-image-folder:
-     *
-     * Xfconf property: /folders/last-used-iso
-     *
-     * Path to directory containing last used iso image.
-     **/
-    g_object_class_install_property (object_class,
-                                     PROP_ISO_IMAGE_FOLDER,
-                                     g_param_spec_string  ("iso-image-folder",
-                                            "/folders/last-used-iso", 
-                                            NULL,
-                                            "none",
                                             G_PARAM_READWRITE));
 
     /**

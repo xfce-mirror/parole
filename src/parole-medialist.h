@@ -81,6 +81,9 @@ typedef struct
                                      
     void            (*gst_dvd_nav_message)          (ParoleMediaList *list,
                                                      gint gst_dvd_nav_message);
+                                                     
+    void            (*iso_opened)                   (ParoleMediaList *list,
+                                                     const gchar *filename);
     
 } ParoleMediaListClass;
 

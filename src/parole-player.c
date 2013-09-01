@@ -190,12 +190,6 @@ void        parole_player_save_playlist_cb          (GtkWidget *widget,
 void        parole_player_menu_exit_cb              (GtkWidget *widget,
                                                      ParolePlayer *player);
 
-void        dvd_iso_mi_activated_cb                 (GtkWidget *widget,
-                                                     ParolePlayer *player);
-
-void        cd_iso_mi_activated_cb                  (GtkWidget *widget,
-                                                     ParolePlayer *player);
-
 void        parole_player_volume_up                 (GtkWidget *widget, 
                                                      ParolePlayer *player);
 
@@ -518,93 +512,6 @@ void parole_player_show_hide_playlist (GtkWidget *widget, ParolePlayer *player)
     visible = gtk_widget_get_visible (player->priv->playlist_nt);
 
     parole_player_set_playlist_visible( player, !visible );
-}
-
-typedef enum
-{
-    PAROLE_ISO_IMAGE_DVD,
-    PAROLE_ISO_IMAGE_CD
-} ParoleIsoImage;
-
-
-
-static void
-iso_files_folder_changed_cb (GtkFileChooser *widget, ParolePlayer *player)
-{
-    gchar *folder;
-    folder = gtk_file_chooser_get_current_folder (GTK_FILE_CHOOSER (widget));
-    
-    if ( folder )
-    {
-        g_object_set (G_OBJECT (player->priv->conf),
-                      "iso-image-folder", folder,
-                      NULL);
-        g_free (folder);
-    }
-}
-
-static void
-parole_player_open_iso_image (ParolePlayer *player, ParoleIsoImage image)
-{
-    GtkWidget *chooser;
-    GtkFileFilter *filter;
-    gchar *file = NULL;
-    const gchar *folder;
-    gint response;
-    
-    chooser = gtk_file_chooser_dialog_new (_("Open ISO image"), GTK_WINDOW (player->priv->window),
-                                           GTK_FILE_CHOOSER_ACTION_OPEN,
-                                           _("Cancel"), GTK_RESPONSE_CANCEL,
-                                           _("Open"), GTK_RESPONSE_OK,
-                                           NULL);
-                
-    gtk_file_chooser_set_select_multiple (GTK_FILE_CHOOSER (chooser), FALSE);
-    
-    g_object_get (G_OBJECT (player->priv->conf),
-                  "iso-image-folder", &folder,
-                  NULL);
-    
-    if ( folder )
-        gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (chooser), folder);
-    
-    g_signal_connect (chooser, "current-folder-changed",
-              G_CALLBACK (iso_files_folder_changed_cb), player);
-    
-    filter = gtk_file_filter_new ();
-    gtk_file_filter_set_name (filter, image == PAROLE_ISO_IMAGE_CD ? _("CD image") : _("DVD image"));
-    gtk_file_filter_add_mime_type (filter, "application/x-cd-image");
-    gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (chooser), filter);
-
-    gtk_window_set_default_size (GTK_WINDOW (chooser), 680, 480);
-    response = gtk_dialog_run (GTK_DIALOG (chooser));
-    
-    if ( response == GTK_RESPONSE_OK )
-    {
-        file = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (chooser));
-    }
-    
-    gtk_widget_destroy (chooser);
-    
-    if ( file )
-    {
-        gchar *uri;
-        //FIXME: vcd will work for svcd?
-        uri = g_strdup_printf ("%s%s", PAROLE_ISO_IMAGE_CD ? "dvd://" : ("vcd://"), file);
-        TRACE ("Playing ISO image %s", uri);
-        parole_player_disc_selected_cb (NULL, uri, NULL, player);
-        g_free (file);
-        g_free (uri);
-    }
-}
-
-void dvd_iso_mi_activated_cb (GtkWidget *widget, ParolePlayer *player)
-{
-    parole_player_open_iso_image (player, PAROLE_ISO_IMAGE_DVD);
-}
-
-void cd_iso_mi_activated_cb (GtkWidget *widget,  ParolePlayer *player)
-{
-    parole_player_open_iso_image (player, PAROLE_ISO_IMAGE_CD);
 }
 
 static void
@@ -1174,6 +1081,13 @@ parole_player_uri_opened_cb (ParoleMediaList *list, const gchar *uri, ParolePlay
 {
     parole_player_reset (player);
     parole_gst_play_uri (PAROLE_GST (player->priv->gst), uri, NULL);
+}
+
+static void
+parole_player_iso_opened_cb (ParoleMediaList *list, const gchar *uri, ParolePlayer *player)
+{
+    parole_player_reset (player);
+    parole_player_disc_selected_cb (NULL, uri, NULL, player);
 }
 
 static void
@@ -3314,6 +3228,9 @@ parole_player_init (ParolePlayer *player)
               
     g_signal_connect (player->priv->list, "show-playlist",
               G_CALLBACK (parole_player_media_list_show_playlist_cb), player);
+              
+    g_signal_connect (player->priv->list, "iso-opened",
+              G_CALLBACK (parole_player_iso_opened_cb), player);
     
     /*
      * Load auto saved media list.
