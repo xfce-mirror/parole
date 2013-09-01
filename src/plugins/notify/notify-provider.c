@@ -80,6 +80,18 @@ close_notification (NotifyProvider *notify)
 }
 
 static void
+on_previous_clicked(NotifyNotification *notification, char *action, NotifyProvider *notify)
+{
+    parole_provider_player_play_previous (notify->player);
+}
+
+static void
+on_next_clicked(NotifyNotification *notification, char *action, NotifyProvider *notify)
+{
+    parole_provider_player_play_next (notify->player);
+}
+
+static void
 notify_playing (NotifyProvider *notify, const ParoleStream *stream)
 {
     GdkPixbuf *pix;
@@ -177,6 +189,16 @@ notify_playing (NotifyProvider *notify, const ParoleStream *stream)
     }
     notify_notification_set_urgency (notify->notification, NOTIFY_URGENCY_LOW);
     notify_notification_set_timeout (notify->notification, 5000);
+    
+    notify_notification_add_action (notify->notification, 
+                                    "play-previous", _("Previous Track"), 
+                                    NOTIFY_ACTION_CALLBACK(on_previous_clicked),
+                                    notify, NULL);
+
+    notify_notification_add_action (notify->notification, 
+                                    "play-next", _("Next Track"), 
+                                    NOTIFY_ACTION_CALLBACK(on_next_clicked),
+                                    notify, NULL);
     
     notify_notification_show (notify->notification, NULL);
     g_signal_connect (notify->notification, "closed",
