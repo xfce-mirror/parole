@@ -538,6 +538,7 @@ parole_player_reset (ParolePlayer *player)
     parole_gst_stop (PAROLE_GST (player->priv->gst));
     player->priv->update_languages = TRUE;
     gtk_window_set_title (GTK_WINDOW (player->priv->window), _("Parole Media Player"));
+    gtk_widget_hide(GTK_WIDGET(player->priv->dvd_menu));
     player->priv->audio_list = NULL;
     player->priv->subtitle_list = NULL;
     
@@ -1068,7 +1069,10 @@ parole_player_disc_selected_cb (ParoleDisc *disc, const gchar *uri, const gchar 
         TRACE("END CLEAR PLAYLIST");
     }
     else if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD )
+    {
         parole_media_list_set_playlist_view(player->priv->list, PAROLE_MEDIA_LIST_PLAYLIST_VIEW_DISC);
+        gtk_widget_show(GTK_WIDGET(player->priv->dvd_menu));
+    }
 }
 
 static void
