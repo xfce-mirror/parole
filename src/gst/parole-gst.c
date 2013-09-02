@@ -1938,6 +1938,7 @@ static gboolean
 parole_gst_check_state_change_timeout (gpointer data)
 {
     ParoleGst *gst;
+    GtkWidget *dialog;
     
     gst = PAROLE_GST (data);
 
@@ -1945,13 +1946,15 @@ parole_gst_check_state_change_timeout (gpointer data)
     
     if ( gst->priv->state != gst->priv->target )
     {
-        gboolean ret_val = xfce_dialog_confirm (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (gst))),
-                                                "gtk-yes",
-                                                _("Stop"),
-                                                _("The stream is taking too much time to load"), 
-                                                NULL);
-            
-        if ( ret_val )
+        dialog = gtk_message_dialog_new (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (gst))),
+                                         GTK_DIALOG_MODAL|GTK_DIALOG_DESTROY_WITH_PARENT,
+                                         GTK_MESSAGE_QUESTION,
+                                         GTK_BUTTONS_NONE,
+                                         _("The stream is taking too much time to load"));
+        gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog), _("Do you want to continue loading or stop?"));
+        gtk_dialog_add_button(GTK_DIALOG(dialog), _("Stop"), GTK_RESPONSE_CANCEL);
+        gtk_dialog_add_button(GTK_DIALOG(dialog), _("Continue"), GTK_RESPONSE_CLOSE);
+        if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_CANCEL)
         {
             parole_gst_terminate_internal (gst);
             gst->priv->state_change_id = 0;
