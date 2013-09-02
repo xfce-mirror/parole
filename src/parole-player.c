@@ -1360,10 +1360,7 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
     gboolean seekable;
     gboolean live;
     
-    pix = parole_icon_load ("media-playback-start-symbolic", 16);
-    
-    if ( !pix )
-        pix = parole_icon_load ("media-playback-start", 16);
+    pix = parole_icon_load ("media-playback-start", 16);
     
     parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, pix);
     
@@ -1438,7 +1435,7 @@ parole_player_paused (ParolePlayer *player)
     
     TRACE ("Player paused");
     
-    pix = parole_icon_load ("media-playback-pause-symbolic", 16);
+    pix = parole_icon_load ("media-playback-pause", 16);
     parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, pix);
     
     gtk_widget_set_sensitive (player->priv->play_pause, TRUE);
@@ -1867,10 +1864,7 @@ parole_player_dvd_chapter_change_cb (ParoleGst *gst, gint chapter_count, ParoleP
     
     player->priv->row = parole_media_list_get_row_n (player->priv->list, chapter_count-1);
 
-    pix = parole_icon_load ("media-playback-start-symbolic", 16);
-    
-    if ( !pix )
-        pix = parole_icon_load ("media-playback-start", 16);
+    pix = parole_icon_load ("media-playback-start", 16);
     
     parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, pix);
     parole_media_list_select_row (player->priv->list, player->priv->row);
