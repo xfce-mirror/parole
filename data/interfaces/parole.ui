@@ -141,7 +141,7 @@
     <signal name="destroy" handler="parole_player_destroy_cb" swapped="no"/>
     <signal name="configure-event" handler="parole_player_configure_event_cb" swapped="no"/>
     <signal name="key-press-event" handler="parole_player_key_press" swapped="no"/>
-    <signal name="delete-event" handler="parole_player_delete_event_cb" swapped="no"/>
+    <signal name="delete-event" handler="parole_player_delete_event_cb" after="yes" swapped="no"/>
     <child>
       <object class="GtkBox" id="box1">
         <property name="visible">True</property>
@@ -422,8 +422,8 @@
                         <property name="use_underline">True</property>
                         <property name="image">image3</property>
                         <property name="use_stock">False</property>
-                        <accelerator key="equal" signal="activate"/>
                         <accelerator key="plus" signal="activate"/>
+                        <accelerator key="equal" signal="activate"/>
                         <signal name="activate" handler="parole_player_volume_up" swapped="no"/>
                       </object>
                     </child>

@@ -207,7 +207,11 @@ popup_menu_cb (GtkStatusIcon *icon, guint button,
 static void
 tray_activate_cb (GtkStatusIcon *tray_icon, TrayProvider *tray)
 {
-    gtk_widget_set_visible( tray->window, gtk_widget_get_visible (tray->window) );
+    /* Show the window if it is hidden or does not have focus */
+    if (!gtk_widget_get_visible(tray->window) || !gtk_window_is_active(GTK_WINDOW(tray->window)))
+        gtk_window_present(GTK_WINDOW(tray->window));
+    else
+        gtk_widget_hide(tray->window);
 }
 
 static void
