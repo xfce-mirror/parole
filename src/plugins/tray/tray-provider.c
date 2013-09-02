@@ -352,9 +352,9 @@ delete_event_cb (GtkWidget *widget, GdkEvent *ev, TrayProvider *tray)
     img = gtk_image_new_from_icon_name ("gtk-cancel", GTK_ICON_SIZE_BUTTON);
     gtk_button_set_image(GTK_BUTTON(button), img);
     
-    gtk_dialog_add_button(  GTK_DIALOG(dialog),
-                            _("Quit"),
-                            GTK_RESPONSE_CLOSE );
+    button = gtk_dialog_add_button(  GTK_DIALOG(dialog),
+                                     _("Quit"),
+                                     GTK_RESPONSE_CLOSE );
     img = gtk_image_new_from_icon_name ("gtk-quit", GTK_ICON_SIZE_BUTTON);
     gtk_button_set_image(GTK_BUTTON(button), img);
                                     
