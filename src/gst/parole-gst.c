@@ -50,7 +50,6 @@
 #include <gst/tag/tag.h>
 
 #include <libxfce4util/libxfce4util.h>
-#include <libxfce4ui/libxfce4ui.h>
 
 #include <gdk/gdkx.h>
 
@@ -2115,6 +2114,21 @@ parole_notify_volume_cb (GObject        *object,
 }
 
 static void
+parole_gst_show_error(GtkWindow *window, GError *error)
+{
+    GtkWidget *dialog;
+    gchar *message;
+    dialog = gtk_message_dialog_new (NULL,
+                                     GTK_DIALOG_MODAL|GTK_DIALOG_DESTROY_WITH_PARENT,
+                                     GTK_MESSAGE_ERROR,
+                                     GTK_BUTTONS_CLOSE,
+                                     _("GStreamer Error"));
+    message = g_strdup_printf("%s\n%s", error->message, _("Parole Media Player cannot start."));
+    gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog), message, "%s");
+    gtk_dialog_run(GTK_DIALOG(dialog));
+}
+
+static void
 parole_gst_constructed (GObject *object)
 {
     ParoleGst *gst;
@@ -2136,11 +2150,17 @@ parole_gst_constructed (GObject *object)
     if ( G_UNLIKELY (gst->priv->playbin == NULL) )
     {
         GError *error;
-        error = g_error_new (0, 0, "%s", _("Unable to load playbin GStreamer plugin"
-                                           ", check your GStreamer installation"));
+
+        error = g_error_new (1, 0, _("Unable to load \"%s\" plugin"
+                                     ", check your GStreamer installation."), 
+#if GST_CHECK_VERSION(1, 0, 0)
+                                     "playbin");
+#else
+                                     "playbin2");
+#endif
                             
-        xfce_dialog_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (gst))),
-                                error, NULL);
+        parole_gst_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (gst))),
+                                error);
         g_error_free (error);
         g_error ("playbin load failed");
     }
@@ -2149,10 +2169,10 @@ parole_gst_constructed (GObject *object)
     if ( G_UNLIKELY (gst->priv->audio_sink == NULL) )
     {
         GError *error;
-        error = g_error_new (0, 0, "%s", _("Unable to load audio GStreamer plugin"
-                                           ", check your GStreamer installation"));
-        xfce_dialog_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (gst))),
-                                error, NULL);
+        error = g_error_new (1, 0, _("Unable to load \"%s\" plugin"
+                                     ", check your GStreamer installation."), "autoaudiosink");
+        parole_gst_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (gst))),
+                                error);
         g_error_free (error);
         g_error ("autoaudiosink load failed");
     }
@@ -2172,10 +2192,11 @@ parole_gst_constructed (GObject *object)
         if ( G_UNLIKELY (gst->priv->video_sink == NULL) )
         {
             GError *error;
-            error = g_error_new (0, 0, "%s", _("Unable to load video GStreamer plugin"
-                                               ", check your GStreamer installation"));
-            xfce_dialog_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (gst))),
-                                    error, NULL);
+            error = g_error_new (1, 0, _("Unable to load \"%s\" plugin"
+                                     ", check your GStreamer installation."), 
+                                     enable_xv ? "xvimagesink" : "ximagesink");
+            parole_gst_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (gst))),
+                                    error);
             g_error_free (error);
             g_error ("ximagesink load failed");
         }
