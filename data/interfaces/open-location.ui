@@ -128,6 +128,7 @@
                       <object class="GtkEntry" id="comboboxtext-entry">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="has_focus">True</property>
                         <property name="input_purpose">url</property>
                       </object>
                     </child>

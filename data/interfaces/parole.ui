@@ -422,8 +422,8 @@
                         <property name="use_underline">True</property>
                         <property name="image">image3</property>
                         <property name="use_stock">False</property>
-                        <accelerator key="plus" signal="activate"/>
                         <accelerator key="equal" signal="activate"/>
+                        <accelerator key="plus" signal="activate"/>
                         <signal name="activate" handler="parole_player_volume_up" swapped="no"/>
                       </object>
                     </child>
@@ -864,7 +864,7 @@
                           <object class="GtkButton" id="media_prev">
                             <property name="visible">True</property>
                             <property name="sensitive">False</property>
-                            <property name="can_focus">False</property>
+                            <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
                             <property name="has_tooltip">True</property>
                             <property name="tooltip_markup" translatable="yes">Previous</property>
@@ -884,7 +884,7 @@
                           <object class="GtkButton" id="media_play">
                             <property name="visible">True</property>
                             <property name="sensitive">False</property>
-                            <property name="can_focus">False</property>
+                            <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
                             <property name="has_tooltip">True</property>
                             <property name="tooltip_markup" translatable="yes">Play</property>
@@ -904,7 +904,7 @@
                           <object class="GtkButton" id="media_next">
                             <property name="visible">True</property>
                             <property name="sensitive">False</property>
-                            <property name="can_focus">False</property>
+                            <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
                             <property name="has_tooltip">True</property>
                             <property name="tooltip_markup" translatable="yes">Next</property>
@@ -937,7 +937,7 @@
                           <object class="GtkScale" id="media_progress_slider">
                             <property name="visible">True</property>
                             <property name="sensitive">False</property>
-                            <property name="can_focus">False</property>
+                            <property name="can_focus">True</property>
                             <property name="margin_left">6</property>
                             <property name="margin_right">6</property>
                             <property name="adjustment">adjustment1</property>
@@ -981,7 +981,7 @@
                         <child>
                           <object class="GtkVolumeButton" id="media_volumebutton">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
                             <property name="has_tooltip">True</property>
                             <property name="relief">none</property>
@@ -1004,7 +1004,7 @@ audio-volume-medium-symbolic</property>
                         <child>
                           <object class="GtkButton" id="media_fullscreen">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
                             <property name="has_tooltip">True</property>
                             <property name="tooltip_markup" translatable="yes">Fullscreen</property>
@@ -1023,7 +1023,7 @@ audio-volume-medium-symbolic</property>
                         <child>
                           <object class="GtkToggleButton" id="media_toggleplaylist">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
                             <property name="no_show_all">True</property>
                             <property name="image">image_media_toggleplaylist</property>

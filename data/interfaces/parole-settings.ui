@@ -99,7 +99,7 @@
                             <child>
                               <object class="GtkSwitch" id="reset-saver">
                                 <property name="visible">True</property>
-                                <property name="can_focus">False</property>
+                                <property name="can_focus">True</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -164,7 +164,7 @@
                                 <child>
                                   <object class="GtkSwitch" id="enable-vis">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
+                                    <property name="can_focus">True</property>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -199,7 +199,7 @@
                                 <child>
                                   <object class="GtkComboBox" id="vis-combobox">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
+                                    <property name="can_focus">True</property>
                                     <property name="model">liststore1</property>
                                     <signal name="changed" handler="parole_conf_dialog_vis_plugin_changed_cb" swapped="no"/>
                                     <child>
@@ -273,7 +273,7 @@
                             <child>
                               <object class="GtkSwitch" id="multimedia-keys">
                                 <property name="visible">True</property>
-                                <property name="can_focus">False</property>
+                                <property name="can_focus">True</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -557,7 +557,7 @@
                 <child>
                   <object class="GtkSwitch" id="replace-playlist">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can_focus">True</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -569,7 +569,7 @@
                 <child>
                   <object class="GtkSwitch" id="remove-duplicated">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can_focus">True</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -581,7 +581,7 @@
                 <child>
                   <object class="GtkSwitch" id="start-playing-opened">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can_focus">True</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -593,7 +593,7 @@
                 <child>
                   <object class="GtkSwitch" id="remember-playlist">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can_focus">True</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -650,7 +650,7 @@
                     <child>
                       <object class="GtkSwitch" id="enable-subtitle">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can_focus">True</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -722,7 +722,7 @@
                     <child>
                       <object class="GtkComboBox" id="encoding">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can_focus">True</property>
                         <signal name="changed" handler="parole_conf_dialog_subtitle_encoding_changed_cb" swapped="no"/>
                       </object>
                       <packing>
