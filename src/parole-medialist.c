@@ -178,6 +178,7 @@ struct ParoleMediaListPrivate
     GtkListStore        *disc_store;
     GtkTreeSelection    *sel;
     GtkTreeSelection    *disc_sel;
+    GtkTreeViewColumn   *col, *disc_col;
     
     GtkWidget *playlist_controls;
     
@@ -188,7 +189,6 @@ struct ParoleMediaListPrivate
     GtkWidget *repeat_button;
     GtkWidget *shuffle_button;
     GtkWidget *settings_button;
-    GtkWidget *n_items;
     
     char *history[3];
 };
@@ -281,11 +281,11 @@ parole_media_list_add (ParoleMediaList *list, ParoleFile *file, gboolean disc, g
         gtk_widget_set_sensitive (list->priv->clear_button, TRUE);
         if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0)
         {
-            gtk_label_set_text (GTK_LABEL(list->priv->n_items),g_strdup_printf (_("%i item"),nch));
+            gtk_tree_view_column_set_title (list->priv->col, g_strdup_printf(_("Playlist (%i item)"), nch));
         }
         else
         {
-            gtk_label_set_text (GTK_LABEL(list->priv->n_items),g_strdup_printf (_("%i chapter"),nch));
+            gtk_tree_view_column_set_title (list->priv->disc_col, g_strdup_printf(_("Playlist (%i chapter)"), nch));
         }
     }
     else
@@ -293,16 +293,13 @@ parole_media_list_add (ParoleMediaList *list, ParoleFile *file, gboolean disc, g
         parole_media_list_set_widget_sensitive (list, TRUE);
         if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0)
         {
-            gtk_label_set_text (GTK_LABEL(list->priv->n_items),g_strdup_printf (_("%i items"),nch));
+            gtk_tree_view_column_set_title (list->priv->col, g_strdup_printf(_("Playlist (%i items)"), nch));
         }
         else
         {
-            gtk_label_set_text (GTK_LABEL(list->priv->n_items),g_strdup_printf (_("%i chapters"),nch));
+            gtk_tree_view_column_set_title (list->priv->disc_col, g_strdup_printf(_("Playlist (%i chapters)"), nch));
         }
     }
-    gtk_widget_show (list->priv->n_items);
-    if ( nch == 0 )
-        gtk_widget_hide (list->priv->n_items);
 }
 
 /**
@@ -1002,8 +999,7 @@ parole_media_list_remove_clicked_cb (GtkButton *button, ParoleMediaList *list)
     if ( nch == 0)
     {
         parole_media_list_set_widget_sensitive (list, FALSE);
-        gtk_label_set_text (GTK_LABEL(list->priv->n_items),_("Playlist empty"));
-        gtk_widget_hide (list->priv->n_items);
+        gtk_tree_view_column_set_title (list->priv->col, g_strdup_printf(_("Playlist (%i items)"), nch));
         /*
          * Will emit the signal media_cursor_changed with FALSE because there is no any 
          * row remaining, so the player can disable click on the play button.
@@ -1011,9 +1007,9 @@ parole_media_list_remove_clicked_cb (GtkButton *button, ParoleMediaList *list)
         g_signal_emit (G_OBJECT (list), signals [MEDIA_CURSOR_CHANGED], 0, FALSE);
     }
     else if ( nch == 1 )
-        gtk_label_set_text (GTK_LABEL(list->priv->n_items),g_strdup_printf (_("%i item"),nch));
+        gtk_tree_view_column_set_title (list->priv->col, g_strdup_printf(_("Playlist (%i item)"), nch));
     else
-        gtk_label_set_text (GTK_LABEL(list->priv->n_items),g_strdup_printf (_("%i items"),nch));
+        gtk_tree_view_column_set_title (list->priv->col, g_strdup_printf(_("Playlist (%i items)"), nch));
 }
 
 /**
@@ -1141,8 +1137,7 @@ parole_media_list_clear_list (ParoleMediaList *list)
     TRACE("CLEAR START");
     gtk_list_store_clear (GTK_LIST_STORE (list->priv->store));
     parole_media_list_set_widget_sensitive (list, FALSE);
-    gtk_label_set_text (GTK_LABEL(list->priv->n_items),_("Playlist empty"));
-    gtk_widget_hide (list->priv->n_items);
+    gtk_tree_view_column_set_title (list->priv->col, g_strdup_printf(_("Playlist (%i items)"), 0));
     TRACE("CLEAR END");
 }
 
@@ -1534,7 +1529,6 @@ parole_media_list_setup_view (ParoleMediaList *list)
 {
     GtkTreeSelection *sel, *disc_sel;
     GtkListStore *list_store, *disc_list_store;
-    GtkTreeViewColumn *col, *disc_col;
     GtkCellRenderer *renderer, *disc_renderer;
 
     list_store = gtk_list_store_new (COL_NUMBERS, GDK_TYPE_PIXBUF, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_OBJECT);
@@ -1545,16 +1539,16 @@ parole_media_list_setup_view (ParoleMediaList *list)
     
     gtk_tree_view_set_rules_hint (GTK_TREE_VIEW (list->priv->view), TRUE);
     gtk_tree_view_set_rules_hint (GTK_TREE_VIEW (list->priv->disc_view), TRUE);
-    col = gtk_tree_view_column_new ();
-    disc_col = gtk_tree_view_column_new ();
+    list->priv->col = gtk_tree_view_column_new ();
+    list->priv->disc_col = gtk_tree_view_column_new ();
 
     renderer = gtk_cell_renderer_pixbuf_new ();
     disc_renderer = gtk_cell_renderer_pixbuf_new ();
     
-    gtk_tree_view_column_pack_start(col, renderer, FALSE);
-    gtk_tree_view_column_pack_start(disc_col, disc_renderer, FALSE);
-    gtk_tree_view_column_set_attributes(col, renderer, "pixbuf", PIXBUF_COL, NULL);
-    gtk_tree_view_column_set_attributes(disc_col, disc_renderer, "pixbuf", PIXBUF_COL, NULL);
+    gtk_tree_view_column_pack_start(list->priv->col, renderer, FALSE);
+    gtk_tree_view_column_pack_start(list->priv->disc_col, disc_renderer, FALSE);
+    gtk_tree_view_column_set_attributes(list->priv->col, renderer, "pixbuf", PIXBUF_COL, NULL);
+    gtk_tree_view_column_set_attributes(list->priv->disc_col, disc_renderer, "pixbuf", PIXBUF_COL, NULL);
 
     /**
      * Name col
@@ -1563,14 +1557,14 @@ parole_media_list_setup_view (ParoleMediaList *list)
     renderer = gtk_cell_renderer_text_new();
     disc_renderer = gtk_cell_renderer_text_new();
     
-    gtk_tree_view_column_pack_start (col, renderer, TRUE);
-    gtk_tree_view_column_set_attributes (col, renderer, "text", NAME_COL, NULL);
+    gtk_tree_view_column_pack_start (list->priv->col, renderer, TRUE);
+    gtk_tree_view_column_set_attributes (list->priv->col, renderer, "text", NAME_COL, NULL);
     g_object_set (renderer, 
                   "ellipsize", PANGO_ELLIPSIZE_END, 
                   NULL);
           
-    gtk_tree_view_column_pack_start (disc_col, disc_renderer, TRUE);
-    gtk_tree_view_column_set_attributes (disc_col, disc_renderer, "text", NAME_COL, NULL);
+    gtk_tree_view_column_pack_start (list->priv->disc_col, disc_renderer, TRUE);
+    gtk_tree_view_column_set_attributes (list->priv->disc_col, disc_renderer, "text", NAME_COL, NULL);
     g_object_set (disc_renderer, 
                   "ellipsize", PANGO_ELLIPSIZE_END, 
                   NULL);
@@ -1582,15 +1576,15 @@ parole_media_list_setup_view (ParoleMediaList *list)
     renderer = gtk_cell_renderer_text_new();
     disc_renderer = gtk_cell_renderer_text_new();
     
-    gtk_tree_view_column_pack_start (col, renderer, FALSE);
-    gtk_tree_view_column_pack_start (disc_col, disc_renderer, FALSE);
-    gtk_tree_view_column_set_attributes (col, renderer, "text", LENGTH_COL, NULL);
-    gtk_tree_view_column_set_attributes (disc_col, disc_renderer, "text", LENGTH_COL, NULL);
+    gtk_tree_view_column_pack_start (list->priv->col, renderer, FALSE);
+    gtk_tree_view_column_pack_start (list->priv->disc_col, disc_renderer, FALSE);
+    gtk_tree_view_column_set_attributes (list->priv->col, renderer, "text", LENGTH_COL, NULL);
+    gtk_tree_view_column_set_attributes (list->priv->disc_col, disc_renderer, "text", LENGTH_COL, NULL);
     
-    gtk_tree_view_append_column (GTK_TREE_VIEW (list->priv->view), col);
-    gtk_tree_view_append_column (GTK_TREE_VIEW (list->priv->disc_view), disc_col);
-    gtk_tree_view_column_set_title (col, _("Media list"));
-    gtk_tree_view_column_set_title (disc_col, _("Chapter list"));
+    gtk_tree_view_append_column (GTK_TREE_VIEW (list->priv->view), list->priv->col);
+    gtk_tree_view_append_column (GTK_TREE_VIEW (list->priv->disc_view), list->priv->disc_col);
+    gtk_tree_view_column_set_title (list->priv->col, g_strdup_printf(_("Playlist (%i items)"), 0));
+    gtk_tree_view_column_set_title (list->priv->disc_col, g_strdup_printf(_("Playlist (%i chapters)"), 0));
 
     gtk_drag_dest_set (list->priv->view, GTK_DEST_DEFAULT_ALL, target_entry, G_N_ELEMENTS (target_entry),
                        GDK_ACTION_COPY | GDK_ACTION_MOVE);
@@ -1639,7 +1633,6 @@ parole_media_list_init (ParoleMediaList *list)
     list->priv->repeat_button = GTK_WIDGET (gtk_builder_get_object (builder, "repeat-media"));
     list->priv->shuffle_button = GTK_WIDGET (gtk_builder_get_object (builder, "shuffle-media"));
     list->priv->settings_button = GTK_WIDGET (gtk_builder_get_object (builder, "settings"));
-    list->priv->n_items = GTK_WIDGET (gtk_builder_get_object (builder, "n_items"));
     
     g_signal_connect (GTK_TOGGLE_TOOL_BUTTON(list->priv->settings_button), "toggled",
               G_CALLBACK (parole_media_list_show_button_menu), list);
