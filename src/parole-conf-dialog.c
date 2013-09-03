@@ -589,6 +589,10 @@ void parole_conf_dialog_open (ParoleConfDialog *self, GtkWidget *parent)
         gtk_range_set_range (GTK_RANGE (self->priv->contrast), -1000, 1000);
         gtk_range_set_range (GTK_RANGE (self->priv->saturation), -1000, 1000);
         gtk_range_set_range (GTK_RANGE (self->priv->hue), -1000, 1000);
+        gtk_scale_add_mark (GTK_SCALE (self->priv->brightness), 0, GTK_POS_BOTTOM, NULL);
+        gtk_scale_add_mark (GTK_SCALE (self->priv->contrast), 0, GTK_POS_BOTTOM, NULL);
+        gtk_scale_add_mark (GTK_SCALE (self->priv->saturation), 0, GTK_POS_BOTTOM, NULL);
+        gtk_scale_add_mark (GTK_SCALE (self->priv->hue), 0, GTK_POS_BOTTOM, NULL);
 
         g_object_get (G_OBJECT (self->priv->conf),
                       "brightness", &brightness_value,
