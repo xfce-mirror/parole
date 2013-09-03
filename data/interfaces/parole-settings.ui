@@ -15,10 +15,10 @@
   </object>
   <object class="XfceTitledDialog" id="settings-dialog">
     <property name="can_focus">False</property>
+    <property name="border_width">5</property>
     <property name="title" translatable="yes">Parole Settings</property>
     <property name="modal">True</property>
     <property name="icon_name">parole</property>
-    <property name="border_width">5</property>
     <property name="type_hint">dialog</property>
     <property name="subtitle" translatable="yes">Configure your media player</property>
     <signal name="response" handler="parole_conf_dialog_response_cb" swapped="no"/>
@@ -62,9 +62,9 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="margin_left">6</property>
-                <property name="margin_right">6</property>
+                <property name="margin_right">12</property>
                 <property name="margin_top">9</property>
-                <property name="margin_bottom">6</property>
+                <property name="margin_bottom">12</property>
                 <property name="orientation">vertical</property>
                 <property name="spacing">12</property>
                 <child>
@@ -79,14 +79,34 @@
                         <property name="can_focus">False</property>
                         <property name="left_padding">12</property>
                         <child>
-                          <object class="GtkCheckButton" id="reset-saver">
-                            <property name="label" translatable="yes">Disable screensaver while playing movies</property>
+                          <object class="GtkBox" id="box7">
                             <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">False</property>
-                            <property name="xalign">0</property>
-                            <property name="draw_indicator">True</property>
-                            <signal name="toggled" handler="parole_conf_dialog_reset_saver_changed_cb" swapped="no"/>
+                            <property name="can_focus">False</property>
+                            <property name="spacing">12</property>
+                            <child>
+                              <object class="GtkLabel" id="reset-saver-label">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="xalign">0</property>
+                                <property name="label" translatable="yes">Disable screensaver while playing movies</property>
+                              </object>
+                              <packing>
+                                <property name="expand">True</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkSwitch" id="reset-saver">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
                           </object>
                         </child>
                       </object>
@@ -124,14 +144,34 @@
                             <property name="orientation">vertical</property>
                             <property name="spacing">4</property>
                             <child>
-                              <object class="GtkCheckButton" id="enable-vis">
-                                <property name="label" translatable="yes">Enable visualization when playing audio file</property>
+                              <object class="GtkBox" id="box8">
                                 <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">False</property>
-                                <property name="xalign">0</property>
-                                <property name="draw_indicator">True</property>
-                                <signal name="toggled" handler="parole_conf_dialog_enable_vis_changed_cb" swapped="no"/>
+                                <property name="can_focus">False</property>
+                                <property name="spacing">12</property>
+                                <child>
+                                  <object class="GtkLabel" id="enable-vis-label">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="xalign">0</property>
+                                    <property name="label" translatable="yes">Enable visualization when playing audio file</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">True</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkSwitch" id="enable-vis">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -213,14 +253,34 @@
                         <property name="can_focus">False</property>
                         <property name="left_padding">12</property>
                         <child>
-                          <object class="GtkCheckButton" id="multimedia-keys">
-                            <property name="label" translatable="yes">Enable keyboard multimedia keys</property>
+                          <object class="GtkBox" id="box9">
                             <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">False</property>
-                            <property name="xalign">0</property>
-                            <property name="draw_indicator">True</property>
-                            <signal name="toggled" handler="multimedia_keys_toggled_cb" swapped="no"/>
+                            <property name="can_focus">False</property>
+                            <property name="spacing">12</property>
+                            <child>
+                              <object class="GtkLabel" id="multimedia-keys-label">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="xalign">0</property>
+                                <property name="label" translatable="yes">Enable keyboard multimedia keys</property>
+                              </object>
+                              <packing>
+                                <property name="expand">True</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkSwitch" id="multimedia-keys">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
                           </object>
                         </child>
                       </object>
@@ -428,82 +488,123 @@
               </packing>
             </child>
             <child>
-              <object class="GtkBox" id="box5">
+              <object class="GtkGrid" id="grid3">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="margin_left">12</property>
                 <property name="margin_right">12</property>
                 <property name="margin_top">9</property>
                 <property name="margin_bottom">12</property>
-                <property name="orientation">vertical</property>
-                <property name="spacing">3</property>
+                <property name="row_spacing">3</property>
+                <property name="column_spacing">12</property>
                 <child>
-                  <object class="GtkCheckButton" id="replace-playlist">
+                  <object class="GtkLabel" id="replace-playlist-label">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="hexpand">True</property>
+                    <property name="xalign">0</property>
                     <property name="label" translatable="yes">Always replace playlist with opened files</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">False</property>
-                    <property name="xalign">0</property>
-                    <property name="draw_indicator">True</property>
-                    <signal name="toggled" handler="replace_playlist_toggled_cb" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkCheckButton" id="remove-duplicated">
+                  <object class="GtkLabel" id="remove-duplicated-label">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="xalign">0</property>
                     <property name="label" translatable="yes">Check and remove duplicate media entries</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">False</property>
-                    <property name="xalign">0</property>
-                    <property name="draw_indicator">True</property>
-                    <signal name="toggled" handler="remove_duplicated_toggled_cb" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">1</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkCheckButton" id="start-playing-opened">
+                  <object class="GtkLabel" id="start-playing-opened-label">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="xalign">0</property>
                     <property name="label" translatable="yes">Start playing opened files</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">False</property>
-                    <property name="xalign">0</property>
-                    <property name="draw_indicator">True</property>
-                    <signal name="toggled" handler="start_playing_opened_toggled_cb" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">2</property>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">2</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkCheckButton" id="remember-playlist">
-                    <property name="label" translatable="yes">Remember playlist</property>
+                  <object class="GtkLabel" id="remember-playlist-label">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">False</property>
+                    <property name="can_focus">False</property>
                     <property name="xalign">0</property>
-                    <property name="draw_indicator">True</property>
-                    <signal name="toggled" handler="remember_playlist_toggled_cb" swapped="no"/>
+                    <property name="label" translatable="yes">Remember playlist</property>
                   </object>
                   <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">3</property>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">3</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSwitch" id="replace-playlist">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">0</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSwitch" id="remove-duplicated">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">1</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSwitch" id="start-playing-opened">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">2</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSwitch" id="remember-playlist">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">3</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
                   </packing>
                 </child>
               </object>
               <packing>
-                <property name="position">2</property>
+                <property name="position">4</property>
               </packing>
             </child>
             <child type="tab">
@@ -528,14 +629,35 @@
                 <property name="orientation">vertical</property>
                 <property name="spacing">4</property>
                 <child>
-                  <object class="GtkCheckButton" id="enable-subtitle">
-                    <property name="label" translatable="yes">Automatically show subtitles when playing movie file</property>
+                  <object class="GtkBox" id="box5">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">False</property>
-                    <property name="xalign">0</property>
-                    <property name="draw_indicator">True</property>
-                    <signal name="toggled" handler="parole_conf_dialog_enable_subtitle_changed_cb" swapped="no"/>
+                    <property name="can_focus">False</property>
+                    <property name="margin_bottom">6</property>
+                    <property name="spacing">12</property>
+                    <child>
+                      <object class="GtkLabel" id="enable-subtitle-label">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="xalign">0</property>
+                        <property name="label" translatable="yes">Automatically show subtitles when playing movie file</property>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSwitch" id="enable-subtitle">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -583,10 +705,11 @@
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="hexpand">True</property>
-                        <property name="font">Sans 12</property>
+                        <property name="font"/>
                         <property name="preview_text"/>
                         <property name="show_preview_entry">False</property>
                         <property name="font_name">Sans Bold 20</property>
+                        <property name="use_font">True</property>
                         <signal name="font-set" handler="parole_conf_dialog_font_set_cb" swapped="no"/>
                       </object>
                       <packing>
