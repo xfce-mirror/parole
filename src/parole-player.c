@@ -108,7 +108,9 @@ static void parole_player_disc_selected_cb          (ParoleDisc *disc,
                                                      ParolePlayer *player);
 
 static void parole_player_select_custom_subtitle    (GtkMenuItem *widget, gpointer data);
-                                
+
+static gboolean parole_overlay_expose_event        (GtkWidget *widget, cairo_t *cr, gpointer user_data);
+
 static gboolean parole_audiobox_expose_event        (GtkWidget *w, GdkEventExpose *ev, ParolePlayer *player);
 
 /*
@@ -2670,6 +2672,18 @@ on_bug_report_clicked (GtkWidget *w, ParolePlayer *player)
 }
 
 static gboolean
+parole_overlay_expose_event (GtkWidget *widget, cairo_t *cr, gpointer user_data)
+{
+    GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
+    /* Draw a simple rectangular border around the GtkOverlay */
+    gtk_widget_get_allocation(widget, allocation);
+    cairo_rectangle (cr, 0, 0, allocation->width, allocation->height);
+    cairo_set_source_rgba (cr, 0.95, 0.95, 0.95, 0.3);
+    cairo_stroke (cr);
+    return FALSE;
+}
+
+static gboolean
 parole_audiobox_expose_event (GtkWidget *w, GdkEventExpose *ev, ParolePlayer *player)
 {
     GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
@@ -3153,7 +3167,7 @@ parole_player_init (ParolePlayer *player)
     /* Show/Hide Playlist button */
     player->priv->show_hide_playlist_button = GTK_WIDGET (gtk_builder_get_object (builder, "media_toggleplaylist"));
     /* End Media Controls */
-
+    g_signal_connect(player->priv->control, "draw", G_CALLBACK(parole_overlay_expose_event), NULL);
     
     /* Info Bar */
     /* placeholder widget */
