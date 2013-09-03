@@ -142,6 +142,7 @@
           <object class="GtkToolButton" id="add-media">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <property name="tooltip_text" translatable="yes">Add to playlist…</property>
             <property name="label" translatable="yes">Add</property>
             <property name="use_underline">True</property>
             <property name="icon_name">list-add-symbolic</property>
@@ -157,6 +158,7 @@
             <property name="visible">True</property>
             <property name="sensitive">False</property>
             <property name="can_focus">True</property>
+            <property name="tooltip_text" translatable="yes">Remove selected media</property>
             <property name="label" translatable="yes">Remove</property>
             <property name="use_underline">True</property>
             <property name="icon_name">list-remove-symbolic</property>
@@ -172,6 +174,7 @@
             <property name="visible">True</property>
             <property name="sensitive">False</property>
             <property name="can_focus">True</property>
+            <property name="tooltip_text" translatable="yes">Clear playlist</property>
             <property name="label" translatable="yes">Clear</property>
             <property name="use_underline">True</property>
             <property name="icon_name">list-remove-all-symbolic</property>
@@ -186,6 +189,7 @@
           <object class="GtkToggleToolButton" id="repeat-media">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <property name="tooltip_text" translatable="yes">Repeat</property>
             <property name="label" translatable="yes">Repeat</property>
             <property name="use_underline">True</property>
             <property name="icon_name">media-playlist-repeat-symbolic</property>
@@ -200,6 +204,7 @@
           <object class="GtkToggleToolButton" id="shuffle-media">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <property name="tooltip_text" translatable="yes">Shuffle</property>
             <property name="label" translatable="yes">Shuffle</property>
             <property name="use_underline">True</property>
             <property name="icon_name">media-playlist-shuffle-symbolic</property>
@@ -214,6 +219,7 @@
           <object class="GtkToggleToolButton" id="settings">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <property name="tooltip_text" translatable="yes">Playlist settings</property>
             <property name="label" translatable="yes">Options</property>
             <property name="use_underline">True</property>
             <property name="icon_name">document-properties-symbolic</property>
