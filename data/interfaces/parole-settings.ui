@@ -15,7 +15,7 @@
   </object>
   <object class="XfceTitledDialog" id="settings-dialog">
     <property name="can_focus">False</property>
-    <property name="border_width">5</property>
+    <property name="border_width">0</property>
     <property name="title" translatable="yes">Parole Settings</property>
     <property name="modal">True</property>
     <property name="icon_name">parole</property>
