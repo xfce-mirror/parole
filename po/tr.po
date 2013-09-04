@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Necdet Yücel <necdetyucel@gmail.com>, 2013
 # wexaw, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-03 20:28+0200\n"
-"PO-Revision-Date: 2013-08-24 22:42+0000\n"
-"Last-Translator: wexaw\n"
+"PO-Revision-Date: 2013-09-04 11:23+0000\n"
+"Last-Translator: Necdet Yücel <necdetyucel@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/xfce/language/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -192,15 +193,15 @@ msgstr "DVD Menüsü"
 
 #: ../data/interfaces/playlist.ui.h:2
 msgid "Title Menu"
-msgstr ""
+msgstr "Başlık Menüsü"
 
 #: ../data/interfaces/playlist.ui.h:3
 msgid "Audio Menu"
-msgstr ""
+msgstr "Ses Menüsü"
 
 #: ../data/interfaces/playlist.ui.h:4
 msgid "Angle Menu"
-msgstr ""
+msgstr "Açı Menüsü"
 
 #: ../data/interfaces/playlist.ui.h:5
 msgid "Chapter Menu"
@@ -213,7 +214,7 @@ msgstr "Oynatma listesi"
 
 #: ../data/interfaces/playlist.ui.h:7
 msgid "DVD Name"
-msgstr ""
+msgstr "DVD İsmi"
 
 #: ../data/interfaces/playlist.ui.h:8
 msgid "Disc Playlist"
@@ -432,7 +433,7 @@ msgstr "Hata"
 #: ../src/gst/parole-gst.c:1376 ../src/parole-medialist.c:379
 #, c-format
 msgid "Track %i"
-msgstr ""
+msgstr "Parça %i"
 
 #: ../src/gst/parole-gst.c:1379
 msgid "Audio CD"
@@ -588,22 +589,22 @@ msgstr "Bütün dosyalar"
 #: ../src/parole-medialist.c:305 ../src/parole-medialist.c:1018
 #, c-format
 msgid "%i item"
-msgstr ""
+msgstr "%i nesne"
 
 #: ../src/parole-medialist.c:309
 #, c-format
 msgid "%i chapter"
-msgstr ""
+msgstr "%i bölüm"
 
 #: ../src/parole-medialist.c:317 ../src/parole-medialist.c:1020
 #, c-format
 msgid "%i items"
-msgstr ""
+msgstr "%i nesne"
 
 #: ../src/parole-medialist.c:321
 #, c-format
 msgid "%i chapters"
-msgstr ""
+msgstr "%i bölüm"
 
 #: ../src/parole-medialist.c:395
 #, c-format
