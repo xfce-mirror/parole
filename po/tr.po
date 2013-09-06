@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-03 20:28+0200\n"
-"PO-Revision-Date: 2013-09-04 11:23+0000\n"
+"PO-Revision-Date: 2013-09-06 12:25+0000\n"
 "Last-Translator: Necdet Yücel <necdetyucel@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/xfce/language/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -718,7 +718,7 @@ msgstr "Bilinmeyen Şarkı"
 #: ../src/parole-player.c:1732 ../src/parole-player.c:1734
 #: ../src/parole-player.c:1740
 msgid "on"
-msgstr ""
+msgstr "üzerinde"
 
 #: ../src/parole-player.c:1740 ../src/plugins/notify/notify-provider.c:130
 msgid "Unknown Album"
@@ -726,7 +726,7 @@ msgstr "Bilinmeyen Albüm"
 
 #: ../src/parole-player.c:1747 ../src/parole-player.c:1751
 msgid "by"
-msgstr ""
+msgstr "ile"
 
 #: ../src/parole-player.c:1751 ../src/plugins/notify/notify-provider.c:132
 msgid "Unknown Artist"
@@ -924,12 +924,12 @@ msgstr "Oynatma listesi dosyaları"
 #: ../src/plugins/notify/notify-provider.c:135
 #: ../src/plugins/notify/notify-provider.c:138
 msgid "<i>on</i>"
-msgstr ""
+msgstr "<i>üzerinde</i>"
 
 #: ../src/plugins/notify/notify-provider.c:135
 #: ../src/plugins/notify/notify-provider.c:138
 msgid "<i>by</i>"
-msgstr ""
+msgstr "<i>ile</i>"
 
 #: ../src/plugins/notify/notify.desktop.in.h:1
 msgid "Notify"
