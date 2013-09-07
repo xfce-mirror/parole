@@ -1,50 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires gtk+ 3.0 -->
-  <object class="GtkMenu" id="dvd-menu">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <child>
-      <object class="GtkMenuItem" id="dvd-menu-menu">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="label" translatable="yes">DVD Menu</property>
-        <property name="use_underline">True</property>
-      </object>
-    </child>
-    <child>
-      <object class="GtkMenuItem" id="dvd-menu-title">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="label" translatable="yes">Title Menu</property>
-        <property name="use_underline">True</property>
-      </object>
-    </child>
-    <child>
-      <object class="GtkMenuItem" id="dvd-menu-audio">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="label" translatable="yes">Audio Menu</property>
-        <property name="use_underline">True</property>
-      </object>
-    </child>
-    <child>
-      <object class="GtkMenuItem" id="dvd-menu-angle">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="label" translatable="yes">Angle Menu</property>
-        <property name="use_underline">True</property>
-      </object>
-    </child>
-    <child>
-      <object class="GtkMenuItem" id="dvd-menu-chapter">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="label" translatable="yes">Chapter Menu</property>
-        <property name="use_underline">True</property>
-      </object>
-    </child>
-  </object>
   <object class="GtkBox" id="playlist-box">
     <property name="width_request">220</property>
     <property name="visible">True</property>
@@ -216,13 +172,29 @@
           </packing>
         </child>
         <child>
-          <object class="GtkToggleToolButton" id="settings">
+          <object class="GtkToolButton" id="move-media-up">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="tooltip_text" translatable="yes">Playlist settings</property>
-            <property name="label" translatable="yes">Options</property>
+            <property name="can_focus">False</property>
+            <property name="tooltip_text" translatable="yes">Move Up</property>
+            <property name="label" translatable="yes">Move Up</property>
             <property name="use_underline">True</property>
-            <property name="icon_name">document-properties-symbolic</property>
+            <property name="icon_name">go-up-symbolic</property>
+            <signal name="clicked" handler="parole_media_list_move_up_clicked_cb" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="homogeneous">True</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkToolButton" id="move-media-down">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="tooltip_text" translatable="yes">Move Down</property>
+            <property name="label" translatable="yes">Move Down</property>
+            <property name="use_underline">True</property>
+            <property name="icon_name">go-down-symbolic</property>
+            <signal name="clicked" handler="parole_media_list_move_down_clicked_cb" swapped="no"/>
           </object>
           <packing>
             <property name="expand">False</property>

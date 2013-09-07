@@ -115,6 +115,12 @@ void        parole_media_list_repeat_toggled_cb     (GtkToggleToolButton *button
 
 void        parole_media_list_shuffle_toggled_cb    (GtkToggleToolButton *button,
                                                      ParoleMediaList *list);
+                                                     
+void        parole_media_list_move_up_clicked_cb    (GtkButton *button,
+                                                     ParoleMediaList *list);
+                                                     
+void        parole_media_list_move_down_clicked_cb    (GtkButton *button,
+                                                     ParoleMediaList *list);
 
 void        parole_media_list_row_activated_cb      (GtkTreeView *view, 
                                                      GtkTreePath *path,
@@ -188,7 +194,6 @@ struct ParoleMediaListPrivate
     GtkWidget *clear_button;
     GtkWidget *repeat_button;
     GtkWidget *shuffle_button;
-    GtkWidget *settings_button;
     
     char *history[3];
 };
@@ -1012,6 +1017,100 @@ parole_media_list_remove_clicked_cb (GtkButton *button, ParoleMediaList *list)
         gtk_tree_view_column_set_title (list->priv->col, g_strdup_printf(_("Playlist (%i items)"), nch));
 }
 
+void 
+parole_media_list_move_up_clicked_cb (GtkButton *button, ParoleMediaList *list)
+{
+    GtkTreeModel *model;
+    GList *path_list = NULL;
+    GtkTreeIter current, iter;
+    
+    /* Get the GtkTreePath GList of all selected rows */
+    path_list = gtk_tree_selection_get_selected_rows (list->priv->sel, &model);
+    
+    /**
+     * Select first path before the first path
+     * that we going to move.
+     **/
+    if (g_list_length (path_list) != 0)
+    {
+        GtkTreePath *path, *prev;
+        guint i;
+        
+        /* Get first item */
+        path = g_list_nth_data (path_list, 0);
+        gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &current, path);
+        
+        /* copy it as we don't mess with the list*/
+        prev = gtk_tree_path_copy (path);
+        
+        if ( gtk_tree_path_prev (prev) )
+        {
+            if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, prev))
+            {
+                /* Move each item about the previous path */
+                for (i=0; i<g_list_length(path_list); i++)
+                {
+                    path = g_list_nth_data (path_list, i);
+                    gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &current, path);
+                    gtk_list_store_move_before(GTK_LIST_STORE(model), &current, &iter);
+                }
+            }
+        }
+        gtk_tree_path_free (prev);
+    }
+    
+    g_list_foreach (path_list, (GFunc) gtk_tree_path_free, NULL);
+    g_list_free (path_list);
+}
+                                                     
+void 
+parole_media_list_move_down_clicked_cb (GtkButton *button, ParoleMediaList *list)
+{
+    GtkTreeModel *model;
+    GList *path_list = NULL;
+    GtkTreeIter current, iter;
+    
+    /* Get the GtkTreePath GList of all selected rows */
+    path_list = gtk_tree_selection_get_selected_rows (list->priv->sel, &model);
+    /* Reverse the list to repopulate in the right order */
+    path_list = g_list_reverse(path_list);
+    
+    /**
+     * Select first path before the first path
+     * that we going to move.
+     **/
+    if (g_list_length (path_list) != 0)
+    {
+        GtkTreePath *path, *next;
+        guint i;
+        
+        /* Get first item */
+        path = g_list_nth_data (path_list, 0);
+        gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &current, path);
+        
+        /* copy it as we don't mess with the list*/
+        next = gtk_tree_path_copy (path);
+        
+        gtk_tree_path_next (next);
+
+        if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, next))
+        {
+            /* Move each item about the previous path */
+            for (i=0; i<g_list_length(path_list); i++)
+            {
+                path = g_list_nth_data (path_list, i);
+                gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &current, path);
+                gtk_list_store_move_after(GTK_LIST_STORE(model), &current, &iter);
+            }
+        }
+
+        gtk_tree_path_free (next);
+    }
+    
+    g_list_foreach (path_list, (GFunc) gtk_tree_path_free, NULL);
+    g_list_free (path_list);
+}
+
 /**
  * parole_media_list_row_activated_cb:
  * 
@@ -1214,12 +1313,6 @@ parole_media_list_menu_pos (GtkMenu *menu, gint *px, gint *py, gboolean *push_in
 }
 
 static void
-parole_media_list_hide_menu (GtkWidget *widget)
-{
-    gtk_toggle_tool_button_set_active( GTK_TOGGLE_TOOL_BUTTON( widget ), FALSE );
-}
-
-static void
 parole_media_list_destroy_menu (GtkWidget *menu)
 {
     gchar *dirname;
@@ -1232,90 +1325,6 @@ parole_media_list_destroy_menu (GtkWidget *menu)
     }
     
     gtk_widget_destroy (menu);
-}
-
-static void
-menu_detach( GtkMenu *menu )
-{
-    //gtk_menu_detach (menu);
-}
-
-static void
-parole_media_list_show_button_menu (GtkToggleToolButton *button, ParoleMediaList *list)
-{
-    gboolean toggled = gtk_toggle_tool_button_get_active( button );
-    gboolean val;
-    GtkBuilder *builder;
-    GtkMenu *menu;
-    GtkMenuItem *clear;
-    GtkCheckMenuItem *repeat_menu, *shuffle_menu, *replace, *play_opened;
-    GtkCheckMenuItem *remember;
-    
-    if (!toggled)
-        return;
-    
-    builder = parole_builder_new_from_string (playlist_ui, playlist_ui_length);
-    
-    menu = GTK_MENU (gtk_builder_get_object (builder, "playlist-menu"));
-    repeat_menu = GTK_CHECK_MENU_ITEM (gtk_builder_get_object (builder, "menu-repeat"));
-    shuffle_menu = GTK_CHECK_MENU_ITEM (gtk_builder_get_object (builder, "menu-shuffle"));
-    replace = GTK_CHECK_MENU_ITEM (gtk_builder_get_object (builder, "menu-replace"));
-    play_opened = GTK_CHECK_MENU_ITEM (gtk_builder_get_object (builder, "menu-play-opened"));
-    remember = GTK_CHECK_MENU_ITEM (gtk_builder_get_object (builder, "menu-remember"));
-    clear = GTK_MENU_ITEM (gtk_builder_get_object (builder, "menu-clear"));
-    
-    gtk_menu_attach_to_widget( GTK_MENU(menu), list->priv->settings_button, (GtkMenuDetachFunc) menu_detach );
-
-    g_object_get (G_OBJECT (list->priv->conf),
-                  "repeat", &val,
-                  NULL);
-    gtk_check_menu_item_set_active (repeat_menu, val);
-    g_signal_connect (repeat_menu, "activate",
-                      G_CALLBACK (repeat_activated_cb), list);
-
-    g_object_get (G_OBJECT (list->priv->conf),
-                  "shuffle", &val,
-                  NULL);
-
-    gtk_check_menu_item_set_active (shuffle_menu, val);
-    g_signal_connect (shuffle_menu, "activate",
-                      G_CALLBACK (shuffle_activated_cb), list);
-                  
-    g_object_get (G_OBJECT (list->priv->conf),
-                  "replace-playlist", &val,
-                  NULL);
-
-    gtk_check_menu_item_set_active (replace, val);
-    g_signal_connect (replace, "activate",
-                      G_CALLBACK (replace_list_activated_cb), list->priv->conf);
-                  
-    g_object_get (G_OBJECT (list->priv->conf),
-                  "play-opened-files", &val,
-                  NULL);
-    gtk_check_menu_item_set_active (play_opened, val);
-    g_signal_connect (play_opened, "activate",
-                      G_CALLBACK (play_opened_files_activated_cb), list->priv->conf);
-
-    g_object_get (G_OBJECT (list->priv->conf),
-                  "remember-playlist", &val,
-                  NULL);
-    gtk_check_menu_item_set_active (remember, val);
-    g_signal_connect (remember, "activate",
-                      G_CALLBACK (remember_playlist_activated_cb), list->priv->conf);
-
-    g_signal_connect_swapped (clear, "activate",
-                              G_CALLBACK (parole_media_list_clear_list), list);
-
-    g_signal_connect_swapped (menu, "selection-done",
-                              G_CALLBACK (parole_media_list_destroy_menu), menu);
-                              
-    g_signal_connect_swapped (menu, "destroy",
-                              G_CALLBACK (parole_media_list_hide_menu), list->priv->settings_button);
-    
-    gtk_menu_popup (GTK_MENU (menu), 
-                    NULL, NULL,
-                    (GtkMenuPositionFunc) parole_media_list_menu_pos, NULL,
-                    3, gtk_get_current_event_time ());
 }
 
 static void
@@ -1632,11 +1641,7 @@ parole_media_list_init (ParoleMediaList *list)
     list->priv->clear_button = GTK_WIDGET (gtk_builder_get_object (builder, "clear-media"));
     list->priv->repeat_button = GTK_WIDGET (gtk_builder_get_object (builder, "repeat-media"));
     list->priv->shuffle_button = GTK_WIDGET (gtk_builder_get_object (builder, "shuffle-media"));
-    list->priv->settings_button = GTK_WIDGET (gtk_builder_get_object (builder, "settings"));
     
-    g_signal_connect (GTK_TOGGLE_TOOL_BUTTON(list->priv->settings_button), "toggled",
-              G_CALLBACK (parole_media_list_show_button_menu), list);
-
     gtk_builder_connect_signals (builder, list);
 
     g_object_unref (builder);
