@@ -3141,6 +3141,11 @@ parole_player_init (ParolePlayer *player)
     gtk_widget_set_valign(tmp_box, GTK_ALIGN_END);
     controls_style = gtk_widget_get_style_context(GTK_WIDGET(controls_overlay));
     gtk_style_context_add_class (controls_style, "osd");
+#if GTK_CHECK_VERSION(3,8,0)
+#else
+    gdk_color_parse("#080810", &background);
+    gtk_widget_modify_bg(GTK_WIDGET(controls_overlay), GTK_STATE_NORMAL, &background);
+#endif
     gtk_widget_reparent(GTK_WIDGET(player->priv->control), tmp_box);
     gtk_overlay_add_overlay(GTK_OVERLAY(controls_overlay), tmp_box);
     gtk_box_set_child_packing( GTK_BOX(player->priv->control), GTK_WIDGET(player->priv->play_box), TRUE, TRUE, 2, GTK_PACK_START );
