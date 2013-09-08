@@ -318,6 +318,8 @@ struct ParolePlayerPrivate
     ParoleButton       *button;
 #endif
 
+    ParoleConfDialog   *settings_dialog;
+
     XfceSMClient       *sm_client;
     gchar              *client_id;
     
@@ -2188,11 +2190,7 @@ parole_player_media_menu_select_cb (GtkMenuItem *widget, ParolePlayer *player)
 
 void parole_player_open_preferences_cb  (GtkWidget *widget, ParolePlayer *player)
 {
-    ParoleConfDialog *dialog;
-    
-    dialog = parole_conf_dialog_new ();
-    
-    parole_conf_dialog_open (dialog, player->priv->window);
+    parole_conf_dialog_open (player->priv->settings_dialog, player->priv->window);
 }
 
 void
@@ -2914,6 +2912,7 @@ parole_player_init (ParolePlayer *player)
     builder = parole_builder_get_main_interface ();
     
     player->priv->conf = parole_conf_new ();
+    player->priv->settings_dialog = parole_conf_dialog_new();
     
     g_signal_connect_swapped (player->priv->conf, "notify::reset-saver",
             G_CALLBACK (parole_player_reset_saver_changed_cb), player);

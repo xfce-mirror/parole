@@ -136,8 +136,7 @@ G_DEFINE_TYPE (ParoleConfDialog, parole_conf_dialog, G_TYPE_OBJECT)
 static void 
 parole_conf_dialog_destroy (GtkWidget *widget, ParoleConfDialog *self)
 {
-    gtk_widget_destroy (widget);
-    g_object_unref (self);
+    gtk_widget_hide(widget);
 }
 
 /* Replace the playlist with newly opened files */
@@ -639,6 +638,8 @@ void parole_conf_dialog_open (ParoleConfDialog *self, GtkWidget *parent)
     /* Subtitles/Automatically show subtitles when playing movie file */
     switch_widget = GTK_WIDGET (gtk_builder_get_object (builder, "enable-subtitle"));
     g_signal_connect(G_OBJECT(switch_widget), "notify::active", G_CALLBACK(parole_conf_dialog_enable_subtitle_changed_cb), self);
+    
+    g_signal_connect(G_OBJECT(dialog), "delete-event", G_CALLBACK(gtk_widget_hide_on_delete), NULL);
     
     gtk_builder_connect_signals (builder, self);
     
