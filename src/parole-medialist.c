@@ -64,7 +64,7 @@ typedef struct
     GtkWidget *chooser;
     GtkTreeSelection *sel;
     ParoleMediaList *list;
-    
+    gboolean closing;
 } ParolePlaylistSave;
 
 /* Playlist filetypes */
@@ -147,9 +147,6 @@ gboolean    parole_media_list_key_press             (GtkWidget *widget,
 void        
 parole_media_list_format_cursor_changed_cb          (GtkTreeView *view,
                                                      ParolePlaylistSave *data);
-                                
-void        parole_media_list_close_save_dialog_cb (GtkButton *button,
-                                                    ParolePlaylistSave *data);
                             
 void        parole_media_list_save_playlist_cb     (GtkButton *button,
                                                     ParolePlaylistSave *data);
@@ -580,12 +577,6 @@ parole_media_list_shuffle_toggled_cb (GtkToggleToolButton *button, ParoleMediaLi
     g_signal_emit (G_OBJECT (list), signals [SHUFFLE_TOGGLED], 0, toggled);
 }
 
-void parole_media_list_close_save_dialog_cb (GtkButton *button, ParolePlaylistSave *data)
-{
-    gtk_widget_destroy (GTK_WIDGET (data->chooser));
-    g_free (data);
-}
-
 /**
  * parole_media_list_get_first_selected_row:
  * @list: a #ParoleMediaList
@@ -650,53 +641,61 @@ parole_media_list_get_first_selected_file (ParoleMediaList *list)
     return file;
 }
 
-/* Callback to save the current playlist */
-void parole_media_list_save_playlist_cb (GtkButton *button, ParolePlaylistSave *data)
+static void
+parole_media_list_save_playlist_response_cb        (GtkDialog *dialog,
+                                                    gint response_id,
+                                                    ParolePlaylistSave *data)
 {
-    ParolePlFormat format = PAROLE_PL_FORMAT_UNKNOWN;
-    GSList *list = NULL;
-    GtkTreeModel *model;
-    GtkTreeIter iter;
-    gchar *filename;
-    gchar *dirname;
+    gchar *filename = NULL;
+    gchar *dirname = NULL;
     
-    filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (data->chooser));
-    dirname = g_path_get_dirname (filename);
-    
-    if ( gtk_tree_selection_get_selected (data->sel, &model, &iter ) )
+    if (response_id == GTK_RESPONSE_ACCEPT)
     {
-        gtk_tree_model_get (model, &iter, 2, &format, -1);
-    }
-    
-    if ( g_access (dirname, W_OK) == -1 )
-    {
-        gchar *msg;
-        msg = g_strdup_printf ("%s %s", dirname, _("Permission denied"));
-        parole_dialog_error (GTK_WINDOW (gtk_widget_get_toplevel (data->list->priv->view)),
-                             _("Error saving playlist file"),
-                             msg);
-        g_free (msg);
-        goto out;
-    }
-    
-    if ( format == PAROLE_PL_FORMAT_UNKNOWN )
-    {
-        format = parole_pl_parser_guess_format_from_extension (filename);
-        if ( format == PAROLE_PL_FORMAT_UNKNOWN )
+        ParolePlFormat format = PAROLE_PL_FORMAT_UNKNOWN;
+        GSList *list = NULL;
+        GtkTreeModel *model;
+        GtkTreeIter iter;
+        
+        filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (data->chooser));
+        dirname = g_path_get_dirname (filename);
+        
+        if ( gtk_tree_selection_get_selected (data->sel, &model, &iter ) )
         {
-            parole_dialog_info (GTK_WINDOW (gtk_widget_get_toplevel (data->list->priv->view)),
-                                _("Unknown playlist format"),
-                                _("Please chooser a supported playlist format"));
+            gtk_tree_model_get (model, &iter, 2, &format, -1);
+        }
+        
+        if ( g_access (dirname, W_OK) == -1 )
+        {
+            gchar *msg;
+            msg = g_strdup_printf ("%s %s", dirname, _("Permission denied"));
+            parole_dialog_error (GTK_WINDOW (gtk_widget_get_toplevel (data->list->priv->view)),
+                                 _("Error saving playlist file"),
+                                 msg);
+            g_free (msg);
             goto out;
         }
+        
+        if ( format == PAROLE_PL_FORMAT_UNKNOWN )
+        {
+            format = parole_pl_parser_guess_format_from_extension (filename);
+            if ( format == PAROLE_PL_FORMAT_UNKNOWN )
+            {
+                parole_dialog_info (GTK_WINDOW (gtk_widget_get_toplevel (data->list->priv->view)),
+                                    _("Unknown playlist format"),
+                                    _("Please chooser a supported playlist format"));
+                goto out;
+            }
+        }
+        
+        list = parole_media_list_get_files (data->list);
+        
+        parole_pl_parser_save_from_files (list, filename, format);
+        g_slist_free (list);
+
     }
-    
-    list = parole_media_list_get_files (data->list);
-    
-    parole_media_list_close_save_dialog_cb (NULL, data);
-    
-    parole_pl_parser_save_from_files (list, filename, format);
-    g_slist_free (list);
+    data->closing = TRUE;
+    gtk_widget_destroy(GTK_WIDGET(dialog));
+    g_free(data);
 out:
     g_free (filename);
     g_free (dirname);
@@ -767,6 +766,10 @@ void parole_media_list_format_cursor_changed_cb (GtkTreeView *view, ParolePlayli
     gchar *filename;
     gchar *fbasename;
     
+    /* Workaround for bug where cursor-changed is emitted on destroy */
+    if (data->closing)
+        return;
+    
     // FIXME: replaces entered filename with Playlist.
     filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (data->chooser));
     if (filename)
@@ -807,7 +810,6 @@ void parole_media_list_save_cb (GtkWidget *widget, ParoleMediaList *list)
     data = g_new0 (ParolePlaylistSave, 1);
     
     builder = parole_builder_new_from_string (save_playlist_ui, save_playlist_ui_length);
-    
     chooser = GTK_WIDGET (gtk_builder_get_object (builder, "filechooserdialog"));
     store = GTK_LIST_STORE (gtk_builder_get_object (builder, "liststore"));
 
@@ -854,7 +856,10 @@ void parole_media_list_save_cb (GtkWidget *widget, ParoleMediaList *list)
 
     view = GTK_WIDGET (gtk_builder_get_object (builder, "treeview"));
     
+    g_signal_connect(G_OBJECT(chooser), "response", G_CALLBACK(parole_media_list_save_playlist_response_cb), data);
+    
     data->chooser = chooser;
+    data->closing = FALSE;
     data->sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (view));
     data->list = list;
 
