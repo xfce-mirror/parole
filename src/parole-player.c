@@ -2583,24 +2583,35 @@ on_bug_report_clicked (GtkWidget *w, ParolePlayer *player)
     }
 }
 
+/**
+ * 
+ * Draw a simple rectangular GtkOverlay
+ * using the theme's background and border-color
+ * to keep it on top of the gst-video-widget with Gtk3.8 and above
+ * 
+ * NOTE: Transparency is not supported, so there's also no fadeout.
+ **/
 static gboolean
 parole_overlay_expose_event (GtkWidget *widget, cairo_t *cr, gpointer user_data)
 {
     GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
-    /* FIXME: Get the theme-color and use that to draw the overlay
     GtkStyleContext *context;
     GdkRGBA acolor;
-    context = gtk_widget_get_style_context(GTK_WIDGET(widget));
-    gtk_style_context_get_background_color (context, GTK_STATE_NORMAL, &acolor);
-    gdk_cairo_set_source_rgba (cr, &acolor); */
 
-    /* Draw a simple rectangular border around the GtkOverlay */
     gtk_widget_get_allocation(widget, allocation);
-    cairo_set_source_rgba (cr, 0.0, 0.0, 0.0, 1.0);
     cairo_rectangle (cr, 0, 0, allocation->width, allocation->height);
+
+    context = gtk_widget_get_style_context(GTK_WIDGET(widget));
+    gtk_style_context_add_class (context, "background");
+    gtk_style_context_add_class (context, "osd");
+    gtk_style_context_get_background_color (context, GTK_STATE_NORMAL, &acolor);
+    gdk_cairo_set_source_rgba (cr, &acolor);
     cairo_fill_preserve (cr);
-    cairo_set_source_rgba (cr, 0.95, 0.95, 0.95, 0.3);
+
+    gtk_style_context_get_border_color (context, GTK_STATE_NORMAL, &acolor);
+    gdk_cairo_set_source_rgba (cr, &acolor);
     cairo_stroke (cr);
+
     return FALSE;
 }
 
@@ -2808,7 +2819,6 @@ parole_player_init (ParolePlayer *player)
     
     GtkWidget *controls_overlay, *tmp_box;
     GtkWidget *controls_parent;
-    GtkStyleContext *controls_style;
     
     GtkWidget *action_widget;
     
@@ -3117,8 +3127,7 @@ parole_player_init (ParolePlayer *player)
     gtk_widget_set_margin_bottom(tmp_box, 10);
     gtk_widget_set_margin_top(tmp_box, 10);
     gtk_widget_set_valign(tmp_box, GTK_ALIGN_END);
-    controls_style = gtk_widget_get_style_context(GTK_WIDGET(controls_overlay));
-    gtk_style_context_add_class (controls_style, "osd");
+
 #if GTK_CHECK_VERSION(3,8,0)
 #else
     gdk_color_parse("#080810", &background);
@@ -3127,6 +3136,7 @@ parole_player_init (ParolePlayer *player)
     gtk_widget_reparent(GTK_WIDGET(player->priv->control), tmp_box);
     gtk_overlay_add_overlay(GTK_OVERLAY(controls_overlay), tmp_box);
     gtk_box_set_child_packing( GTK_BOX(player->priv->control), GTK_WIDGET(player->priv->play_box), TRUE, TRUE, 2, GTK_PACK_START );
+    gtk_container_set_border_width(GTK_CONTAINER(player->priv->play_box), 3);
     gtk_widget_show_all(controls_parent);
     
     /* Previous, Play/Pause, Next */
