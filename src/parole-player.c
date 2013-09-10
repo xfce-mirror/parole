@@ -565,6 +565,8 @@ parole_player_reset (ParolePlayer *player)
     
     parole_media_list_set_playlist_view(player->priv->list, PAROLE_MEDIA_LIST_PLAYLIST_VIEW_STANDARD);
     
+    gtk_action_set_sensitive(GTK_ACTION(player->priv->toggle_repeat_action), TRUE);
+    gtk_action_set_sensitive(GTK_ACTION(player->priv->toggle_shuffle_action), TRUE);
 }
 
 static void
@@ -1121,6 +1123,8 @@ parole_player_disc_selected_cb (ParoleDisc *disc, const gchar *uri, const gchar 
     {
         parole_media_list_set_playlist_view(player->priv->list, PAROLE_MEDIA_LIST_PLAYLIST_VIEW_DISC);
         gtk_widget_show(GTK_WIDGET(player->priv->dvd_menu));
+        gtk_action_set_sensitive(GTK_ACTION(player->priv->toggle_repeat_action), FALSE);
+        gtk_action_set_sensitive(GTK_ACTION(player->priv->toggle_shuffle_action), FALSE);
     }
 }
 
