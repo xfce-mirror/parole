@@ -70,12 +70,6 @@ typedef struct
     void            (*uri_opened)                   (ParoleMediaList *list,
                                                      const gchar *uri);
                                      
-    void            (*shuffle_toggled)              (ParoleMediaList *list,
-                                                     gboolean shuffle_toggled);
-                                     
-    void            (*repeat_toggled)               (ParoleMediaList *list,
-                                                     gboolean repeat_toggled);
-                                     
     void            (*show_playlist)                (ParoleMediaList *list,
                                                      gboolean show_playlist);
                                      
@@ -181,14 +175,14 @@ void                parole_media_list_save_cb       (GtkWidget *widget,
                                                      ParoleMediaList *list);
 
 void                parole_media_list_grab_focus    (ParoleMediaList *list);
-
-void                
-parole_media_list_set_repeat_toggled                (ParoleMediaList *list,
-                                                     gboolean repeat_toggled);
-                                                                
-void                
-parole_media_list_set_shuffle_toggled               (ParoleMediaList *list,
-                                                     gboolean shuffle_toggled);
+                                                     
+void
+parole_media_list_connect_repeat_action             (ParoleMediaList *list,
+                                                     GtkAction *action);
+                                                     
+void
+parole_media_list_connect_shuffle_action            (ParoleMediaList *list,
+                                                     GtkAction *action);
                                                                 
 void parole_media_list_add_dvd (ParoleMediaList *list, gchar *dvd_name);
 

@@ -212,10 +212,10 @@ gboolean    parole_player_volume_scroll_event_cb    (GtkWidget *widget,
                                                      GdkEventScroll *ev,
                                                      ParolePlayer *player);
 
-void        parole_player_shuffle_toggled_cb        (GtkWidget *widget,
+void        parole_player_toggle_shuffle_action_cb  (GtkToggleAction *action,
                                                      ParolePlayer *player);
 
-void        parole_player_repeat_toggled_cb         (GtkWidget *widget,
+void        parole_player_toggle_repeat_action_cb   (GtkToggleAction *action,
                                                      ParolePlayer *player);
                              
 static void parole_player_clear_subtitles           (ParolePlayer *player);
@@ -329,8 +329,6 @@ struct ParolePlayerPrivate
     GtkWidget          *window;
     GtkWidget          *recent_menu;
     GtkWidget          *playlist_nt;
-    GtkWidget          *shuffle_menu_item;
-    GtkWidget          *repeat_menu_item;
     GtkWidget          *range;
     
     GtkWidget          *progressbar_buffering;
@@ -400,6 +398,8 @@ struct ParolePlayerPrivate
     GtkAction          *media_previous_action;
     GtkAction          *media_fullscreen_action;
     GtkToggleAction    *toggle_playlist_action;
+    GtkToggleAction    *toggle_repeat_action;
+    GtkToggleAction    *toggle_shuffle_action;
         
 };
 
@@ -1214,32 +1214,6 @@ parole_player_media_cursor_changed_cb (ParoleMediaList *list, gboolean media_sel
     {
     gtk_action_set_sensitive   (player->priv->media_playpause_action, 
                                 media_selected || !parole_media_list_is_empty (player->priv->list));
-    }
-}
-
-static void
-parole_player_media_list_shuffle_toggled_cb (ParoleMediaList *list, gboolean shuffle_toggled, ParolePlayer *player)
-{
-    gboolean toggled;
-    
-    toggled = gtk_check_menu_item_get_active (GTK_CHECK_MENU_ITEM(player->priv->shuffle_menu_item));
-    
-    if (toggled != shuffle_toggled)
-    {
-        gtk_check_menu_item_set_active ( GTK_CHECK_MENU_ITEM(player->priv->shuffle_menu_item), shuffle_toggled);
-    }
-}
-
-static void
-parole_player_media_list_repeat_toggled_cb (ParoleMediaList *list, gboolean repeat_toggled, ParolePlayer *player)
-{
-    gboolean toggled;
-    
-    toggled = gtk_check_menu_item_get_active (GTK_CHECK_MENU_ITEM(player->priv->repeat_menu_item));
-    
-    if (toggled != repeat_toggled)
-    {
-        gtk_check_menu_item_set_active ( GTK_CHECK_MENU_ITEM(player->priv->repeat_menu_item), repeat_toggled);
     }
 }
 
@@ -2148,30 +2122,18 @@ parole_player_menu_exit_cb (GtkWidget *widget, ParolePlayer *player)
 }
 
 
-void parole_player_shuffle_toggled_cb (GtkWidget *widget, ParolePlayer *player)
+void parole_player_toggle_shuffle_action_cb (GtkToggleAction *action, ParolePlayer *player)
 {
-    gboolean toggled;
-    
-    toggled = gtk_check_menu_item_get_active (GTK_CHECK_MENU_ITEM (widget));
-    
     g_object_set (G_OBJECT (player->priv->conf),
-                  "shuffle", toggled,
+                  "shuffle", gtk_toggle_action_get_active (action),
                   NULL);
-          
-    parole_media_list_set_shuffle_toggled(player->priv->list, toggled);
 }
 
-void parole_player_repeat_toggled_cb (GtkWidget *widget, ParolePlayer *player)
+void parole_player_toggle_repeat_action_cb (GtkToggleAction *action, ParolePlayer *player)
 {
-    gboolean toggled;
-    
-    toggled = gtk_check_menu_item_get_active (GTK_CHECK_MENU_ITEM (widget));
-    
     g_object_set (G_OBJECT (player->priv->conf),
-                  "repeat", toggled,
+                  "repeat", gtk_toggle_action_get_active (action),
                   NULL);
-          
-    parole_media_list_set_repeat_toggled(player->priv->list, toggled);
 }
 
 static void
@@ -2972,6 +2934,18 @@ parole_player_init (ParolePlayer *player)
     g_signal_connect(G_OBJECT(player->priv->toggle_playlist_action), "activate", G_CALLBACK(parole_player_toggle_playlist_action_cb), player);
     gtk_action_set_sensitive(GTK_ACTION(player->priv->toggle_playlist_action), TRUE);
     
+    /* Toggle Repeat */
+    player->priv->toggle_repeat_action = gtk_toggle_action_new("toggle_repeat_action", _("Repeat"), _("Repeat"), NULL);
+    gtk_action_set_icon_name(GTK_ACTION(player->priv->toggle_repeat_action), "media-playlist-repeat-symbolic");
+    g_signal_connect(G_OBJECT(player->priv->toggle_repeat_action), "activate", G_CALLBACK(parole_player_toggle_repeat_action_cb), player);
+    gtk_action_set_sensitive(GTK_ACTION(player->priv->toggle_repeat_action), TRUE);
+    
+    /* Toggle Shuffle */
+    player->priv->toggle_shuffle_action = gtk_toggle_action_new("toggle_shuffle_action", _("Shuffle"), _("Shuffle"), NULL);
+    gtk_action_set_icon_name(GTK_ACTION(player->priv->toggle_shuffle_action), "media-playlist-shuffle-symbolic");
+    g_signal_connect(G_OBJECT(player->priv->toggle_shuffle_action), "activate", G_CALLBACK(parole_player_toggle_shuffle_action_cb), player);
+    gtk_action_set_sensitive(GTK_ACTION(player->priv->toggle_shuffle_action), TRUE);
+    
     
     /*
      * GTK Widgets
@@ -3078,8 +3052,15 @@ parole_player_init (ParolePlayer *player)
     gtk_activatable_set_use_action_appearance(GTK_ACTIVATABLE(action_widget), TRUE);
     gtk_activatable_set_related_action(GTK_ACTIVATABLE(action_widget), GTK_ACTION(player->priv->toggle_playlist_action));
     
-    player->priv->shuffle_menu_item = GTK_WIDGET (gtk_builder_get_object (builder, "shuffle"));
-    player->priv->repeat_menu_item = GTK_WIDGET (gtk_builder_get_object (builder, "repeat"));
+    action_widget = GTK_WIDGET (gtk_builder_get_object (builder, "shuffle"));
+    gtk_activatable_set_use_action_appearance(GTK_ACTIVATABLE(action_widget), TRUE);
+    gtk_activatable_set_related_action(GTK_ACTIVATABLE(action_widget), GTK_ACTION(player->priv->toggle_shuffle_action));
+    parole_media_list_connect_shuffle_action(player->priv->list, GTK_ACTION(player->priv->toggle_shuffle_action));
+    
+    action_widget = GTK_WIDGET (gtk_builder_get_object (builder, "repeat"));
+    gtk_activatable_set_use_action_appearance(GTK_ACTIVATABLE(action_widget), TRUE);
+    gtk_activatable_set_related_action(GTK_ACTIVATABLE(action_widget), GTK_ACTION(player->priv->toggle_repeat_action));
+    parole_media_list_connect_repeat_action(player->priv->list, GTK_ACTION(player->priv->toggle_repeat_action));
     
     bug_report = GTK_WIDGET (gtk_builder_get_object (builder, "bug-report"));
     g_signal_connect (bug_report, "activate", G_CALLBACK(on_bug_report_clicked), player);
@@ -3299,12 +3280,6 @@ parole_player_init (ParolePlayer *player)
     g_signal_connect (player->priv->list, "uri-opened",
               G_CALLBACK (parole_player_uri_opened_cb), player);
               
-    g_signal_connect (player->priv->list, "repeat-toggled",
-              G_CALLBACK (parole_player_media_list_repeat_toggled_cb), player);
-              
-    g_signal_connect (player->priv->list, "shuffle-toggled",
-              G_CALLBACK (parole_player_media_list_shuffle_toggled_cb), player);
-              
     g_signal_connect (player->priv->list, "show-playlist",
               G_CALLBACK (parole_player_media_list_show_playlist_cb), player);
               
@@ -3321,13 +3296,9 @@ parole_player_init (ParolePlayer *player)
                   "shuffle", &shuffle,
                   NULL);
 
-    gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (gtk_builder_get_object (builder, "repeat")), repeat);
-                    
-    parole_media_list_set_repeat_toggled(player->priv->list, repeat);
+    gtk_toggle_action_set_active (player->priv->toggle_repeat_action, repeat);
 
-    gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (gtk_builder_get_object (builder, "shuffle")), shuffle);
-                    
-    parole_media_list_set_shuffle_toggled(player->priv->list, shuffle);
+    gtk_toggle_action_set_active (player->priv->toggle_shuffle_action, shuffle);
   
     parole_gst_set_default_aspect_ratio (player, builder);
     

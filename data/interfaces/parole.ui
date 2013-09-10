@@ -6,6 +6,20 @@
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
+  <object class="GtkImage" id="image_disc">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixel_size">16</property>
+    <property name="icon_name">media-optical-symbolic</property>
+    <property name="use_fallback">True</property>
+  </object>
+  <object class="GtkImage" id="image_help_reportbug">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixel_size">16</property>
+    <property name="icon_name">face-sick-symbolic</property>
+    <property name="use_fallback">True</property>
+  </object>
   <object class="GtkImage" id="image_media_fullscreen">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -32,27 +46,6 @@
     <property name="can_focus">False</property>
     <property name="pixel_size">24</property>
     <property name="icon_name">media-skip-backward-symbolic</property>
-    <property name="use_fallback">True</property>
-  </object>
-  <object class="GtkImage" id="image_about">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">16</property>
-    <property name="icon_name">gtk-about-symbolic</property>
-    <property name="use_fallback">True</property>
-  </object>
-  <object class="GtkImage" id="image_disc">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">16</property>
-    <property name="icon_name">media-optical-symbolic</property>
-    <property name="use_fallback">True</property>
-  </object>
-  <object class="GtkImage" id="image_help_reportbug">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">16</property>
-    <property name="icon_name">face-sick-symbolic</property>
     <property name="use_fallback">True</property>
   </object>
   <object class="GtkImage" id="image_menu_fullscreen">
@@ -131,6 +124,13 @@
     <property name="can_focus">False</property>
     <property name="pixel_size">16</property>
     <property name="icon_name">audio-volume-high-symbolic</property>
+    <property name="use_fallback">True</property>
+  </object>
+  <object class="GtkImage" id="image_about">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixel_size">16</property>
+    <property name="icon_name">gtk-about-symbolic</property>
     <property name="use_fallback">True</property>
   </object>
   <object class="GtkWindow" id="main-window">
@@ -263,7 +263,6 @@
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">_Repeat</property>
                         <property name="use_underline">True</property>
-                        <signal name="toggled" handler="parole_player_repeat_toggled_cb" swapped="no"/>
                       </object>
                     </child>
                     <child>
@@ -272,7 +271,6 @@
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">_Shuffle</property>
                         <property name="use_underline">True</property>
-                        <signal name="toggled" handler="parole_player_shuffle_toggled_cb" swapped="no"/>
                       </object>
                     </child>
                     <child>

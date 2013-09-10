@@ -109,12 +109,6 @@ void        parole_media_list_remove_clicked_cb     (GtkButton *button,
 
 void        parole_media_list_clear_clicked_cb      (GtkButton *button, 
                                                      ParoleMediaList *list);
-
-void        parole_media_list_repeat_toggled_cb     (GtkToggleToolButton *button,
-                                                     ParoleMediaList *list);
-
-void        parole_media_list_shuffle_toggled_cb    (GtkToggleToolButton *button,
-                                                     ParoleMediaList *list);
                                                      
 void        parole_media_list_move_up_clicked_cb    (GtkButton *button,
                                                      ParoleMediaList *list);
@@ -189,6 +183,7 @@ struct ParoleMediaListPrivate
 
     GtkWidget *remove_button;
     GtkWidget *clear_button;
+    
     GtkWidget *repeat_button;
     GtkWidget *shuffle_button;
     
@@ -200,8 +195,6 @@ enum
     MEDIA_ACTIVATED,
     MEDIA_CURSOR_CHANGED,
     URI_OPENED,
-    SHUFFLE_TOGGLED,
-    REPEAT_TOGGLED,
     SHOW_PLAYLIST,
     ISO_OPENED,
     LAST_SIGNAL
@@ -553,28 +546,6 @@ void
 parole_media_list_clear_clicked_cb (GtkButton *button, ParoleMediaList *list)
 {
     parole_media_list_clear_list (list);
-}
-
-/* Callback for the repeat togglebutton */
-void
-parole_media_list_repeat_toggled_cb (GtkToggleToolButton *button, ParoleMediaList *list)
-{
-    gboolean toggled;
-    
-    toggled = gtk_toggle_tool_button_get_active (button);
-    
-    g_signal_emit (G_OBJECT (list), signals [REPEAT_TOGGLED], 0, toggled);
-}
-
-/* Callback for the shuffle togglebutton */
-void
-parole_media_list_shuffle_toggled_cb (GtkToggleToolButton *button, ParoleMediaList *list)
-{
-    gboolean toggled;
-    
-    toggled = gtk_toggle_tool_button_get_active (button);
-    
-    g_signal_emit (G_OBJECT (list), signals [SHUFFLE_TOGGLED], 0, toggled);
 }
 
 /**
@@ -1280,20 +1251,6 @@ remember_playlist_activated_cb (GtkWidget *mi, ParoleConf *conf)
     }
 }
 
-static void
-repeat_activated_cb (GtkWidget *mi, ParoleMediaList *list)
-{
-    gboolean active = gtk_check_menu_item_get_active( GTK_CHECK_MENU_ITEM( mi ) );
-    gtk_toggle_tool_button_set_active (GTK_TOGGLE_TOOL_BUTTON( list->priv->repeat_button ), active);
-}
-
-static void
-shuffle_activated_cb (GtkWidget *mi, ParoleMediaList *list)
-{
-    gboolean active = gtk_check_menu_item_get_active( GTK_CHECK_MENU_ITEM( mi ) );
-    gtk_toggle_tool_button_set_active (GTK_TOGGLE_TOOL_BUTTON( list->priv->shuffle_button ), active);
-}
-
 void
 parole_media_list_menu_pos (GtkMenu *menu, gint *px, gint *py, gboolean *push_in, gpointer data)
 {
@@ -1343,35 +1300,18 @@ parole_media_list_show_menu (ParoleMediaList *list, GdkEventButton *ev)
     
     GtkMenu *menu;
     GtkMenuItem *clear;
-    GtkCheckMenuItem *repeat_menu, *shuffle_menu, *replace, *play_opened;
+    GtkCheckMenuItem *replace, *play_opened;
     GtkCheckMenuItem *remember;
     
     builder = parole_builder_new_from_string (playlist_ui, playlist_ui_length);
     
     menu = GTK_MENU (gtk_builder_get_object (builder, "playlist-menu"));
-    repeat_menu = GTK_CHECK_MENU_ITEM (gtk_builder_get_object (builder, "menu-repeat"));
-    shuffle_menu = GTK_CHECK_MENU_ITEM (gtk_builder_get_object (builder, "menu-shuffle"));
     replace = GTK_CHECK_MENU_ITEM (gtk_builder_get_object (builder, "menu-replace"));
     play_opened = GTK_CHECK_MENU_ITEM (gtk_builder_get_object (builder, "menu-play-opened"));
     remember = GTK_CHECK_MENU_ITEM (gtk_builder_get_object (builder, "menu-remember"));
     clear = GTK_MENU_ITEM (gtk_builder_get_object (builder, "menu-clear"));
     
     parole_media_list_add_open_containing_folder (list, GTK_WIDGET(menu), (gint)ev->x, (gint)ev->y);
-
-    g_object_get (G_OBJECT (list->priv->conf),
-                  "repeat", &val,
-                  NULL);
-    gtk_check_menu_item_set_active (repeat_menu, val);
-    g_signal_connect (repeat_menu, "activate",
-                      G_CALLBACK (repeat_activated_cb), list);
-
-    g_object_get (G_OBJECT (list->priv->conf),
-                  "shuffle", &val,
-                  NULL);
-
-    gtk_check_menu_item_set_active (shuffle_menu, val);
-    g_signal_connect (shuffle_menu, "activate",
-                      G_CALLBACK (shuffle_activated_cb), list);
                   
     g_object_get (G_OBJECT (list->priv->conf),
                   "replace-playlist", &val,
@@ -1496,24 +1436,6 @@ parole_media_list_class_init (ParoleMediaListClass *klass)
                       NULL, NULL,
                       g_cclosure_marshal_VOID__STRING,
                       G_TYPE_NONE, 1, G_TYPE_STRING);
-                      
-    signals[SHUFFLE_TOGGLED] = 
-        g_signal_new ("shuffle-toggled",
-                      PAROLE_TYPE_MEDIA_LIST,
-                      G_SIGNAL_RUN_LAST,
-                      G_STRUCT_OFFSET (ParoleMediaListClass, shuffle_toggled),
-                      NULL, NULL,
-                      g_cclosure_marshal_VOID__BOOLEAN,
-                      G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
-                      
-    signals[REPEAT_TOGGLED] = 
-        g_signal_new ("repeat-toggled",
-                      PAROLE_TYPE_MEDIA_LIST,
-                      G_SIGNAL_RUN_LAST,
-                      G_STRUCT_OFFSET (ParoleMediaListClass, repeat_toggled),
-                      NULL, NULL,
-                      g_cclosure_marshal_VOID__BOOLEAN,
-                      G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
                       
     signals[SHOW_PLAYLIST] = 
         g_signal_new ("show-playlist",
@@ -2183,30 +2105,14 @@ void parole_media_list_grab_focus (ParoleMediaList *list)
         gtk_widget_grab_focus (list->priv->view);
 }
 
-void 
-parole_media_list_set_repeat_toggled (ParoleMediaList *list,
-                                      gboolean repeat_toggled)
+void parole_media_list_connect_repeat_action (ParoleMediaList *list, GtkAction *action)
 {
-    gboolean toggled;
-    
-    toggled = gtk_toggle_tool_button_get_active (GTK_TOGGLE_TOOL_BUTTON (list->priv->repeat_button));
-    
-    if (toggled != repeat_toggled)
-    {
-        gtk_toggle_tool_button_set_active( GTK_TOGGLE_TOOL_BUTTON (list->priv->repeat_button), repeat_toggled );
-    }
+    gtk_activatable_set_use_action_appearance(GTK_ACTIVATABLE(list->priv->repeat_button), TRUE);
+    gtk_activatable_set_related_action(GTK_ACTIVATABLE(list->priv->repeat_button), action);
 }
                                                                 
-void 
-parole_media_list_set_shuffle_toggled (ParoleMediaList *list,
-                                      gboolean shuffle_toggled)
+void parole_media_list_connect_shuffle_action (ParoleMediaList *list, GtkAction *action)
 {
-    gboolean toggled;
-    
-    toggled = gtk_toggle_tool_button_get_active (GTK_TOGGLE_TOOL_BUTTON (list->priv->shuffle_button));
-    
-    if (toggled != shuffle_toggled)
-    {
-        gtk_toggle_tool_button_set_active( GTK_TOGGLE_TOOL_BUTTON (list->priv->shuffle_button), shuffle_toggled );
-    }
+    gtk_activatable_set_use_action_appearance(GTK_ACTIVATABLE(list->priv->shuffle_button), TRUE);
+    gtk_activatable_set_related_action(GTK_ACTIVATABLE(list->priv->shuffle_button), action);
 }
