@@ -1258,10 +1258,10 @@ parole_player_set_playpause_button_from_stock (ParolePlayer *player, const gchar
     
     if (g_strcmp0(stock_id, "gtk-media-play") == 0) {
         icon_name = g_strdup("media-playback-start-symbolic");
-        label = _("Play");
+        label = _("_Play");
     } else if (g_strcmp0(stock_id, "gtk-media-pause") == 0) {
         icon_name = g_strdup("media-playback-pause-symbolic");
-        label = _("Pause");
+        label = _("_Pause");
     }
     
     gtk_action_set_icon_name(player->priv->media_playpause_action, icon_name);
@@ -1903,7 +1903,7 @@ parole_player_reset_controls (ParolePlayer *player, gboolean fullscreen)
             show_playlist = gtk_toggle_action_get_active (player->priv->toggle_playlist_action);
             gtk_widget_show (player->priv->playlist_nt);
             parole_player_set_playlist_visible(player, show_playlist);
-            gtk_action_set_label(player->priv->media_fullscreen_action, _("Fullscreen"));
+            gtk_action_set_label(player->priv->media_fullscreen_action, _("_Fullscreen"));
             gtk_widget_set_tooltip_text (player->priv->fullscreen_button, _("Fullscreen"));
             gtk_image_set_from_icon_name (GTK_IMAGE(player->priv->fullscreen_image), "view-fullscreen-symbolic", 24);
             gtk_action_set_icon_name(player->priv->media_fullscreen_action, "view-fullscreen-symbolic");
@@ -1920,7 +1920,7 @@ parole_player_reset_controls (ParolePlayer *player, gboolean fullscreen)
             gtk_widget_hide (player->priv->menu_bar);
             gtk_widget_hide (player->priv->playlist_nt);
             parole_player_set_playlist_visible(player, FALSE);
-            gtk_action_set_label(player->priv->media_fullscreen_action, _("Leave Fullscreen"));
+            gtk_action_set_label(player->priv->media_fullscreen_action, _("Leave _Fullscreen"));
             gtk_widget_set_tooltip_text (player->priv->fullscreen_button, _("Leave Fullscreen"));
             gtk_image_set_from_icon_name (GTK_IMAGE(player->priv->fullscreen_image), "view-restore-symbolic", 24);
             gtk_action_set_icon_name(player->priv->media_fullscreen_action, "view-restore-symbolic");
@@ -2901,47 +2901,49 @@ parole_player_init (ParolePlayer *player)
     /*
      * GTK Actions
      */
+    /* Play/Pause */
+    player->priv->media_playpause_action = gtk_action_new("playpause_action", _("_Play"), _("Play"), NULL);
+    gtk_action_set_icon_name(player->priv->media_playpause_action, "media-playback-start-symbolic");
+    gtk_action_set_always_show_image(player->priv->media_playpause_action, TRUE);
+    g_signal_connect(G_OBJECT(player->priv->media_playpause_action), "activate", G_CALLBACK(parole_player_playpause_action_cb), player);
+    gtk_action_set_sensitive(player->priv->media_playpause_action, FALSE);
+    
     /* Previous Track */
-    player->priv->media_previous_action = gtk_action_new("previous_action", _("Previous Track"), _("Previous Track"), NULL);
+    player->priv->media_previous_action = gtk_action_new("previous_action", _("P_revious Track"), _("Previous Track"), NULL);
     gtk_action_set_icon_name(player->priv->media_previous_action, "media-skip-backward-symbolic");
     gtk_action_set_always_show_image(player->priv->media_previous_action, TRUE);
     g_signal_connect(G_OBJECT(player->priv->media_previous_action), "activate", G_CALLBACK(parole_player_previous_action_cb), player);
     gtk_action_set_sensitive(player->priv->media_previous_action, FALSE);
     
     /* Next Track */
-    player->priv->media_next_action = gtk_action_new("next_action", _("Next Track"), _("Next Track"), NULL);
+    player->priv->media_next_action = gtk_action_new("next_action", _("_Next Track"), _("Next Track"), NULL);
     gtk_action_set_icon_name(player->priv->media_next_action, "media-skip-forward-symbolic");
     gtk_action_set_always_show_image(player->priv->media_next_action, TRUE);
     g_signal_connect(G_OBJECT(player->priv->media_next_action), "activate", G_CALLBACK(parole_player_next_action_cb), player);
     gtk_action_set_sensitive(player->priv->media_next_action, FALSE);
     
-    /* Play/Pause */
-    player->priv->media_playpause_action = gtk_action_new("playpause_action", _("Play"), _("Play"), NULL);
-    gtk_action_set_icon_name(player->priv->media_playpause_action, "media-playback-start-symbolic");
-    gtk_action_set_always_show_image(player->priv->media_playpause_action, TRUE);
-    g_signal_connect(G_OBJECT(player->priv->media_playpause_action), "activate", G_CALLBACK(parole_player_playpause_action_cb), player);
-    gtk_action_set_sensitive(player->priv->media_playpause_action, FALSE);
+
     
     /* Fullscreen */
-    player->priv->media_fullscreen_action = gtk_action_new("fullscreen_action", _("Fullscreen"), _("Fullscreen"), NULL);
+    player->priv->media_fullscreen_action = gtk_action_new("fullscreen_action", _("_Fullscreen"), _("Fullscreen"), NULL);
     gtk_action_set_icon_name(player->priv->media_fullscreen_action, "view-fullscreen-symbolic");
     gtk_action_set_always_show_image(player->priv->media_fullscreen_action, TRUE);
     g_signal_connect(G_OBJECT(player->priv->media_fullscreen_action), "activate", G_CALLBACK(parole_player_fullscreen_action_cb), player);
     gtk_action_set_sensitive(player->priv->media_fullscreen_action, TRUE);
     
     /* Toggle Playlist */
-    player->priv->toggle_playlist_action = gtk_toggle_action_new("toggle_playlist_action", _("Show Playlist"), _("Show Playlist"), NULL);
+    player->priv->toggle_playlist_action = gtk_toggle_action_new("toggle_playlist_action", _("Show _Playlist"), _("Show Playlist"), NULL);
     g_signal_connect(G_OBJECT(player->priv->toggle_playlist_action), "activate", G_CALLBACK(parole_player_toggle_playlist_action_cb), player);
     gtk_action_set_sensitive(GTK_ACTION(player->priv->toggle_playlist_action), TRUE);
     
     /* Toggle Repeat */
-    player->priv->toggle_repeat_action = gtk_toggle_action_new("toggle_repeat_action", _("Repeat"), _("Repeat"), NULL);
+    player->priv->toggle_repeat_action = gtk_toggle_action_new("toggle_repeat_action", _("_Repeat"), _("Repeat"), NULL);
     gtk_action_set_icon_name(GTK_ACTION(player->priv->toggle_repeat_action), "media-playlist-repeat-symbolic");
     g_signal_connect(G_OBJECT(player->priv->toggle_repeat_action), "activate", G_CALLBACK(parole_player_toggle_repeat_action_cb), player);
     gtk_action_set_sensitive(GTK_ACTION(player->priv->toggle_repeat_action), TRUE);
     
     /* Toggle Shuffle */
-    player->priv->toggle_shuffle_action = gtk_toggle_action_new("toggle_shuffle_action", _("Shuffle"), _("Shuffle"), NULL);
+    player->priv->toggle_shuffle_action = gtk_toggle_action_new("toggle_shuffle_action", _("_Shuffle"), _("Shuffle"), NULL);
     gtk_action_set_icon_name(GTK_ACTION(player->priv->toggle_shuffle_action), "media-playlist-shuffle-symbolic");
     g_signal_connect(G_OBJECT(player->priv->toggle_shuffle_action), "activate", G_CALLBACK(parole_player_toggle_shuffle_action_cb), player);
     gtk_action_set_sensitive(GTK_ACTION(player->priv->toggle_shuffle_action), TRUE);
