@@ -2569,7 +2569,7 @@ static void
 on_bug_report_clicked (GtkWidget *w, ParolePlayer *player)
 {
     GtkWidget *dialog;
-    if (!gtk_show_uri(NULL, "https://bugzilla.xfce.org/buglist.cgi?product=parole", GDK_CURRENT_TIME, NULL))
+    if (!gtk_show_uri(NULL, "https://bugzilla.xfce.org/enter_bug.cgi?product=Parole", GDK_CURRENT_TIME, NULL))
     {
         dialog = gtk_message_dialog_new(GTK_WINDOW(player->priv->window), 
                                         GTK_DIALOG_DESTROY_WITH_PARENT, 
@@ -2577,7 +2577,7 @@ on_bug_report_clicked (GtkWidget *w, ParolePlayer *player)
                                         GTK_BUTTONS_CLOSE, 
                                         _("Unable to open default web browser"));
         gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog), 
-                _("Please go to https://bugzilla.xfce.org/buglist.cgi?product=parole to report your bug."));
+                _("https://bugzilla.xfce.org/enter_bug.cgi?product=Parole to report your bug."));
         gtk_dialog_run(GTK_DIALOG(dialog));
         gtk_widget_destroy(dialog);
     }

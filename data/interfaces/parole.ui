@@ -6,6 +6,13 @@
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
+  <object class="GtkImage" id="image_about">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixel_size">16</property>
+    <property name="icon_name">gtk-about-symbolic</property>
+    <property name="use_fallback">True</property>
+  </object>
   <object class="GtkImage" id="image_disc">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -124,13 +131,6 @@
     <property name="can_focus">False</property>
     <property name="pixel_size">16</property>
     <property name="icon_name">audio-volume-high-symbolic</property>
-    <property name="use_fallback">True</property>
-  </object>
-  <object class="GtkImage" id="image_about">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">16</property>
-    <property name="icon_name">gtk-about-symbolic</property>
     <property name="use_fallback">True</property>
   </object>
   <object class="GtkWindow" id="main-window">
@@ -417,8 +417,8 @@
                         <property name="use_underline">True</property>
                         <property name="image">image_volume_up</property>
                         <property name="use_stock">False</property>
-                        <accelerator key="plus" signal="activate"/>
                         <accelerator key="equal" signal="activate"/>
+                        <accelerator key="plus" signal="activate"/>
                         <signal name="activate" handler="parole_player_volume_up" swapped="no"/>
                       </object>
                     </child>
@@ -657,7 +657,7 @@
                     <property name="can_focus">False</property>
                     <child>
                       <object class="GtkImageMenuItem" id="bug-report">
-                        <property name="label" translatable="yes">_Report a bug…</property>
+                        <property name="label" translatable="yes">_Report a Bug…</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
