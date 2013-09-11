@@ -369,6 +369,7 @@ delete_event_cb (GtkWidget *widget, GdkEvent *ev, TrayProvider *tray)
               G_CALLBACK (action_on_hide_confirmed_cb), NULL);
          
     gtk_box_pack_start (GTK_BOX (content_area), check, TRUE, TRUE, 0);
+    gtk_widget_set_margin_left(GTK_WIDGET(check), 3);
                      
     gtk_widget_show_all( GTK_WIDGET(dialog) );
 
