@@ -461,6 +461,17 @@ parole_conf_dialog_set_defaults_playlist (ParoleConfDialog  *self, GtkBuilder *b
                   NULL);
           
     gtk_switch_set_active (GTK_SWITCH (widget), option);
+    
+     /**
+     * Remember playlist
+     **/
+    widget = GTK_WIDGET (gtk_builder_get_object (builder, "remember-playlist"));
+    
+    g_object_get (G_OBJECT (self->priv->conf),
+                  "remember-playlist", &option,
+                  NULL);
+          
+    gtk_switch_set_active (GTK_SWITCH (widget), option);
 }
 
 /* Load the multimedia-button default settings */
