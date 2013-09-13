@@ -284,7 +284,7 @@ void saturation_value_changed_cb (GtkRange *range, ParoleConfDialog *self)
 
 void parole_conf_dialog_vis_plugin_changed_cb (GtkComboBox *widget,  ParoleConfDialog *self)
 {
-    gchar *active;
+    gchar *active = NULL;
     GstElementFactory *f;
     
     GtkTreeIter iter;
@@ -292,6 +292,8 @@ void parole_conf_dialog_vis_plugin_changed_cb (GtkComboBox *widget,  ParoleConfD
     
     if (gtk_combo_box_get_active_iter (widget, &iter))
         gtk_tree_model_get (model, &iter, 0, &active, -1);
+    else
+        return;
     
     f = g_hash_table_lookup (self->priv->vis_plugins, active);
     

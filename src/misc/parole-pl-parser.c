@@ -326,7 +326,7 @@ parole_pl_parser_parse_m3u (const gchar *filename)
     GFile *file;
     gchar **lines;
     gchar *contents;
-    gchar *path, *pl_filename;
+    gchar *path, *pl_filename = NULL;
     GSList *list = NULL;
     gsize size;
     guint num_lines;
@@ -722,7 +722,7 @@ out:
 gboolean parole_pl_parser_save_from_files (GSList *files, const gchar *filename, ParolePlFormat format)
 {
     FILE *f;
-    gboolean ret_val;
+    gboolean ret_val = FALSE;
 
     PAROLE_DEBUG_ENUM_FULL (format, PAROLE_ENUM_TYPE_PL_FORMAT, "Saving playlist %s ", filename);
 

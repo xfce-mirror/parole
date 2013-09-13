@@ -1187,7 +1187,7 @@ parole_player_recent_menu_item_activated_cb (GtkWidget *widget, ParolePlayer *pl
 {
     gchar *uri;
     gchar *filename;
-    gchar *filenames[1];
+    gchar *filenames[] = {NULL, NULL};
     ParoleMediaList *list;
     
     uri = gtk_recent_chooser_get_current_uri(GTK_RECENT_CHOOSER(widget));
@@ -1199,7 +1199,6 @@ parole_player_recent_menu_item_activated_cb (GtkWidget *widget, ParolePlayer *pl
         gtk_recent_manager_add_item (player->priv->recent, uri);
     
         filenames[0] = g_strdup(filename);
-        filenames[1] = NULL;
         
         list = parole_player_get_media_list (player);
         parole_media_list_add_files (list, filenames, FALSE);

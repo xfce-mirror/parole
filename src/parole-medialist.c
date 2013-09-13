@@ -596,7 +596,7 @@ parole_media_list_get_first_selected_row (ParoleMediaList *list)
 static ParoleFile *
 parole_media_list_get_first_selected_file (ParoleMediaList *list)
 {
-    ParoleFile *file;
+    ParoleFile *file = NULL;
     GtkTreeRowReference *row;
     GtkTreeIter iter;
 
@@ -889,7 +889,7 @@ parole_media_list_paths_to_row_list (GList *path_list, GtkTreeModel *model)
         path = g_list_nth_data (path_list, i);
         
         row = gtk_tree_row_reference_new (model, path);
-        path = gtk_tree_row_reference_get_path (row);
+
         row_list = g_list_append (row_list, row);
     }
     
@@ -1027,8 +1027,8 @@ parole_media_list_move_up_clicked_cb (GtkButton *button, ParoleMediaList *list)
                 for (i=0; i<g_list_length(path_list); i++)
                 {
                     path = g_list_nth_data (path_list, i);
-                    gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &current, path);
-                    gtk_list_store_move_before(GTK_LIST_STORE(model), &current, &iter);
+                    if (gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &current, path))
+                        gtk_list_store_move_before(GTK_LIST_STORE(model), &current, &iter);
                 }
             }
         }
@@ -1075,8 +1075,8 @@ parole_media_list_move_down_clicked_cb (GtkButton *button, ParoleMediaList *list
             for (i=0; i<g_list_length(path_list); i++)
             {
                 path = g_list_nth_data (path_list, i);
-                gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &current, path);
-                gtk_list_store_move_after(GTK_LIST_STORE(model), &current, &iter);
+                if (gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &current, path))
+                    gtk_list_store_move_after(GTK_LIST_STORE(model), &current, &iter);
             }
         }
 
@@ -1936,7 +1936,7 @@ GtkTreeRowReference *row)
         else
         {
             if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->disc_store), &iter, path) )
-                gtk_tree_model_get (GTK_TREE_MODEL(list->priv->store), &iter, NAME_COL, &name, -1);
+                gtk_tree_model_get (GTK_TREE_MODEL(list->priv->disc_store), &iter, NAME_COL, &name, -1);
         }
         
         gtk_tree_path_free (path);

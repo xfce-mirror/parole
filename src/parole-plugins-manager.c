@@ -252,36 +252,37 @@ parole_plugins_manager_cell_toggled_cb (GtkCellRendererToggle *cell_renderer,
     ParoleProviderModule *module;
     GtkTreeIter iter;
     GtkTreePath *path;
-    gboolean active;
+    gboolean active = FALSE;
 
     path = gtk_tree_path_new_from_string (path_str);
 
-    gtk_tree_model_get_iter (GTK_TREE_MODEL (pref->store), &iter, path);
-
-    gtk_tree_model_get (GTK_TREE_MODEL (pref->store), &iter, 
-                        COL_ACTIVE, &active, 
-                        COL_MODULE, &module,
-                        -1);
-
-    active ^= 1;
-
-    if ( pref->manager->priv->load_plugins )
+    if (gtk_tree_model_get_iter (GTK_TREE_MODEL (pref->store), &iter, path))
     {
-        if ( active )
-        {
-            g_type_module_use (G_TYPE_MODULE (module));
-            parole_provider_module_new_plugin (module);
-        }
-        else
-        {
-            parole_provider_module_free_plugin (module);
-            g_type_module_unuse (G_TYPE_MODULE (module));
-        }
-    }
+        gtk_tree_model_get (GTK_TREE_MODEL (pref->store), &iter, 
+                            COL_ACTIVE, &active, 
+                            COL_MODULE, &module,
+                            -1);
 
-    gtk_list_store_set (GTK_LIST_STORE (pref->store), &iter, 
-                        COL_ACTIVE, active,
-                        -1);
+        active ^= 1;
+
+        if ( pref->manager->priv->load_plugins )
+        {
+            if ( active )
+            {
+                g_type_module_use (G_TYPE_MODULE (module));
+                parole_provider_module_new_plugin (module);
+            }
+            else
+            {
+                parole_provider_module_free_plugin (module);
+                g_type_module_unuse (G_TYPE_MODULE (module));
+            }
+        }
+
+        gtk_list_store_set (GTK_LIST_STORE (pref->store), &iter, 
+                            COL_ACTIVE, active,
+                            -1);
+    }
 
     gtk_tree_path_free (path);
 

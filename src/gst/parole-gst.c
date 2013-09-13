@@ -2812,10 +2812,6 @@ gst_get_lang_list_for_type (ParoleGst * gst, const gchar * type_name)
                             ret = g_list_prepend (ret, lc);
                         g_free (cd);
                     } 
-                    else if (cd) 
-                    {
-                        ret = g_list_prepend (ret, cd);
-                    } 
                     else 
                     {
                         ret = g_list_prepend (ret, g_strdup_printf (_("Subtitle #%d"), num++));
