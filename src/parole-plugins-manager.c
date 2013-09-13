@@ -249,7 +249,7 @@ parole_plugins_manager_cell_toggled_cb (GtkCellRendererToggle *cell_renderer,
                                         gchar *path_str, 
                                         PrefData *pref)
 {
-    ParoleProviderModule *module;
+    ParoleProviderModule *module = NULL;
     GtkTreeIter iter;
     GtkTreePath *path;
     gboolean active = FALSE;

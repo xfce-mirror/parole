@@ -1014,25 +1014,26 @@ parole_media_list_move_up_clicked_cb (GtkButton *button, ParoleMediaList *list)
         
         /* Get first item */
         path = g_list_nth_data (path_list, 0);
-        gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &current, path);
-        
-        /* copy it as we don't mess with the list*/
-        prev = gtk_tree_path_copy (path);
-        
-        if ( gtk_tree_path_prev (prev) )
+        if (gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &current, path))
         {
-            if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, prev))
+            /* copy it as we don't mess with the list*/
+            prev = gtk_tree_path_copy (path);
+            
+            if ( gtk_tree_path_prev (prev) )
             {
-                /* Move each item about the previous path */
-                for (i=0; i<g_list_length(path_list); i++)
+                if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, prev))
                 {
-                    path = g_list_nth_data (path_list, i);
-                    if (gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &current, path))
-                        gtk_list_store_move_before(GTK_LIST_STORE(model), &current, &iter);
+                    /* Move each item about the previous path */
+                    for (i=0; i<g_list_length(path_list); i++)
+                    {
+                        path = g_list_nth_data (path_list, i);
+                        if (gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &current, path))
+                            gtk_list_store_move_before(GTK_LIST_STORE(model), &current, &iter);
+                    }
                 }
             }
+            gtk_tree_path_free (prev);
         }
-        gtk_tree_path_free (prev);
     }
     
     g_list_foreach (path_list, (GFunc) gtk_tree_path_free, NULL);
@@ -1062,25 +1063,26 @@ parole_media_list_move_down_clicked_cb (GtkButton *button, ParoleMediaList *list
         
         /* Get first item */
         path = g_list_nth_data (path_list, 0);
-        gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &current, path);
-        
-        /* copy it as we don't mess with the list*/
-        next = gtk_tree_path_copy (path);
-        
-        gtk_tree_path_next (next);
-
-        if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, next))
+        if (gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &current, path))
         {
-            /* Move each item about the previous path */
-            for (i=0; i<g_list_length(path_list); i++)
-            {
-                path = g_list_nth_data (path_list, i);
-                if (gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &current, path))
-                    gtk_list_store_move_after(GTK_LIST_STORE(model), &current, &iter);
-            }
-        }
+            /* copy it as we don't mess with the list*/
+            next = gtk_tree_path_copy (path);
+            
+            gtk_tree_path_next (next);
 
-        gtk_tree_path_free (next);
+            if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, next))
+            {
+                /* Move each item about the previous path */
+                for (i=0; i<g_list_length(path_list); i++)
+                {
+                    path = g_list_nth_data (path_list, i);
+                    if (gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &current, path))
+                        gtk_list_store_move_after(GTK_LIST_STORE(model), &current, &iter);
+                }
+            }
+
+            gtk_tree_path_free (next);
+        }
     }
     
     g_list_foreach (path_list, (GFunc) gtk_tree_path_free, NULL);
