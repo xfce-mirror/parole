@@ -286,10 +286,10 @@ int main (int argc, char **argv)
     { "raise-volume", 'r', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &raise_volume, N_("Raise volume"), NULL },
     { "lower-volume", 'l', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &lower_volume, N_("Lower volume"), NULL },
     { "mute", 'm', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &mute, N_("Mute volume"), NULL },
-    { "version", 'V', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &version, N_("Version information"), NULL },
-    { "embedded", 'E', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &embedded, N_("Use embedded mode"), NULL },
+    { "version", 'V', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &version, N_("Print version information and exit"), NULL },
+    { "embedded", 'E', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &embedded, N_("Start in embedded mode"), NULL },
     { "fullscreen", 'F', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &fullscreen, N_("Start in fullscreen mode"), NULL },
-    { "xv", '\0', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_CALLBACK, (GOptionArgFunc) xv_option_given, N_("Enabled/Disable XV support"), NULL},
+    { "xv", '\0', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_CALLBACK, (GOptionArgFunc) xv_option_given, N_("Enable/Disable XV support (true or false)"), NULL},
     { "add", 'a', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &enqueue, N_("Add files to playlist"), NULL},
     { "sm-client-id", 0, G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_STRING, &client_id, NULL, NULL },
     {G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, &filenames, N_("Media to play"), NULL},
@@ -327,7 +327,7 @@ int main (int argc, char **argv)
     if ( !g_option_context_parse (ctx, &argc, &argv, &error) ) 
     {
         g_print ("%s\n", error->message);
-        g_print ("Type %s --help to list all available command line options", argv[0]);
+        g_print (_("Type %s --help to list all available command line options\n"), argv[0]);
         g_error_free (error);
         g_option_context_free (ctx);
         return EXIT_FAILURE;
