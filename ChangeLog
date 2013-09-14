@@ -1,6 +1,6 @@
-2013-09-07: bluesabre@xfce.org
+2013-09-14: bluesabre@xfce.org
     * Road to 0.6.0...
-    * Fix remembered playlist not being forgotten when setting disabled.
+    * Fix Remember Playlist setting (bug 10269)
     * Fix Gstreamer 1.0 support
     * Port to GTK+3
     * Update artwork (icons, background)
@@ -13,6 +13,7 @@
     * Add Previous/Next actions to Notify plugin
     * Add ability to play DVD ISOs (from Open dialog)
     * Add DVD menu item, appears only when playing a DVD or DVD ISO
+    * Add maximized setting in xfconf, remember correct maximization and window size
     * Remove redundant playlist settings button, add move-up/down
 
 2013-07-25: bluesabre@xfce.org
