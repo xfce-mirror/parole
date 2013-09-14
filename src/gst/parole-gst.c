@@ -466,6 +466,7 @@ static void
 parole_gst_set_video_overlay (ParoleGst *gst)
 {
     GstElement *video_sink;
+    gboolean enable_xv;
     
     g_object_get (G_OBJECT (gst->priv->playbin),
                   "video-sink", &video_sink,
@@ -484,8 +485,14 @@ parole_gst_set_video_overlay (ParoleGst *gst)
 
 #if GTK_CHECK_VERSION(3,8,0)
 #else
-    g_object_set(video_sink, "autopaint-colorkey", FALSE,
-                             "colorkey", 0x080810, NULL);
+    g_object_get (G_OBJECT (gst->priv->conf),
+                             "enable-xv", &enable_xv,
+                             NULL);
+    if (enable_xv)
+    {
+        g_object_set(video_sink, "autopaint-colorkey", FALSE,
+                                 "colorkey", 0x080810, NULL);
+    }
 #endif
     
     gst_object_unref (video_sink);
