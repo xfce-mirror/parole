@@ -381,6 +381,7 @@ struct ParolePlayerPrivate
     
     gboolean            embedded;
     gboolean            full_screen;
+    gint                last_h, last_w;
     
     ParoleState         state;
     gboolean            user_seeking;
@@ -1869,6 +1870,15 @@ parole_player_window_state_event (GtkWidget *widget,
                                   ParolePlayer *player)
 {
     gboolean fullscreen = FALSE;
+    
+    if (event->new_window_state & GDK_WINDOW_STATE_MAXIMIZED)
+    {
+        /* Restore the previously saved window size if maximized */
+        g_object_set (G_OBJECT (player->priv->conf),
+                      "window-width", player->priv->last_w,
+                      "window-height", player->priv->last_h,
+                      NULL);
+    }
 
     if (event->new_window_state & GDK_WINDOW_STATE_FULLSCREEN)
         fullscreen = TRUE;
@@ -2667,15 +2677,29 @@ on_content_area_size_allocate (GtkWidget *widget, GtkAllocation *allocation, Par
 gboolean
 parole_player_configure_event_cb (GtkWidget *widget, GdkEventConfigure *ev, ParolePlayer *player)
 {
-    gint w,h;
+    gint old_w, old_h, new_w, new_h;
     
     if ( !player->priv->full_screen )
     {
-        gtk_window_get_size (GTK_WINDOW (widget), &w, &h);
-        g_object_set (G_OBJECT (player->priv->conf),
-                      "window-width", w,
-                      "window-height", h,
+        /* Store the previously saved window size in case of maximize */
+        g_object_get (G_OBJECT (player->priv->conf),
+                      "window-width", &old_w,
+                      "window-height", &old_h,
                       NULL);
+                      
+        /* Get the current window size */
+        gtk_window_get_size (GTK_WINDOW (widget), &new_w, &new_h);
+        
+        /* Configure gets run twice, only change on update */
+        if (old_w != new_w || old_h != new_h)
+        {
+            player->priv->last_w = old_w;
+            player->priv->last_h = old_h;
+            g_object_set (G_OBJECT (player->priv->conf),
+                          "window-width", new_w,
+                          "window-height", new_h,
+                          NULL);
+        }
     }
     
     return FALSE;
@@ -3264,6 +3288,9 @@ parole_player_init (ParolePlayer *player)
                   "window-width", &w,
                   "window-height", &h,
                   NULL);
+                  
+    player->priv->last_w = w;
+    player->priv->last_h = h;
           
     parole_player_set_playlist_visible(player, showhide);
     
