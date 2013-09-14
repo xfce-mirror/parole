@@ -1877,6 +1877,13 @@ parole_player_window_state_event (GtkWidget *widget,
         g_object_set (G_OBJECT (player->priv->conf),
                       "window-width", player->priv->last_w,
                       "window-height", player->priv->last_h,
+                      "window-maximized", TRUE,
+                      NULL);
+    }
+    else
+    {
+        g_object_set (G_OBJECT (player->priv->conf),
+                      "window-maximized", FALSE,
                       NULL);
     }
 
@@ -2816,6 +2823,7 @@ parole_player_init (ParolePlayer *player)
     GtkWidget *output, *icon;
     GtkBuilder *builder;
     gint w, h;
+    gboolean maximized;
     gboolean showhide;
     GdkColor background;
     
@@ -3287,6 +3295,7 @@ parole_player_init (ParolePlayer *player)
     g_object_get (G_OBJECT (player->priv->conf),
                   "window-width", &w,
                   "window-height", &h,
+                  "window-maximized", &maximized,
                   NULL);
                   
     player->priv->last_w = w;
@@ -3296,6 +3305,8 @@ parole_player_init (ParolePlayer *player)
     
     gtk_window_set_default_size (GTK_WINDOW (player->priv->window), w, h);
     gtk_window_resize (GTK_WINDOW (player->priv->window), w, h);
+    if (maximized)
+        gtk_window_maximize(GTK_WINDOW (player->priv->window));
     
     gtk_widget_show_all (player->priv->window);
 

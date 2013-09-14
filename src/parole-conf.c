@@ -78,7 +78,8 @@ enum
     PROP_SATURATION,
     /* Window properties */
     PROP_WINDOW_HEIGHT,
-    PROP_MINIMIZED,
+    PROP_WINDOW_MAXIMIZED,
+    PROP_WINDOW_MINIMIZED,
     PROP_WINDOW_WIDTH,
     N_PROP
 };
@@ -753,9 +754,24 @@ parole_conf_class_init (ParoleConfClass *klass)
      * If Parole should start minimized.
      **/
     g_object_class_install_property (object_class,
-                                     PROP_MINIMIZED,
+                                     PROP_WINDOW_MINIMIZED,
                                      g_param_spec_boolean ("minimized",
                                             "/window/minimized", 
+                                            NULL,
+                                            FALSE,
+                                            G_PARAM_READWRITE));
+                                            
+    /**
+     * ParoleConf:maximized:
+     *
+     * Xfconf property: /window/maximized
+     * 
+     * If Parole should start maximized.
+     **/
+    g_object_class_install_property (object_class,
+                                     PROP_WINDOW_MINIMIZED,
+                                     g_param_spec_boolean ("window-maximized",
+                                            "/window/maximized", 
                                             NULL,
                                             FALSE,
                                             G_PARAM_READWRITE));
