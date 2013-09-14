@@ -585,7 +585,7 @@ parole_gst_tick (ParoleGst *gst)
         {
             return;
         }
-        gst->priv->tick_id = g_timeout_add (1000, (GSourceFunc) parole_gst_tick_timeout, gst);
+        gst->priv->tick_id = g_timeout_add (250, (GSourceFunc) parole_gst_tick_timeout, gst);
     }
     else if ( gst->priv->tick_id != 0)
     {
