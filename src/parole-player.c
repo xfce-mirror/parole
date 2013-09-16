@@ -294,6 +294,21 @@ parole_player_dvd_chapter_count_change_cb           (ParoleGst *gst,
 static void parole_player_dvd_chapter_change_cb     (ParoleGst *gst, 
                                                      gint chapter_count, 
                                                      ParolePlayer *player);
+                                                     
+void        parole_player_dvd_menu_activated        (GtkMenuItem *widget, 
+                                                     ParolePlayer *player);
+
+void        parole_player_dvd_title_activated       (GtkMenuItem *widget, 
+                                                     ParolePlayer *player);
+
+void        parole_player_dvd_audio_activated       (GtkMenuItem *widget, 
+                                                     ParolePlayer *player);
+
+void        parole_player_dvd_angle_activated       (GtkMenuItem *widget, 
+                                                     ParolePlayer *player);
+
+void        parole_player_dvd_chapter_activated     (GtkMenuItem *widget, 
+                                                     ParolePlayer *player);
 
 gboolean    parole_player_key_press                 (GtkWidget *widget, 
                                                      GdkEventKey *ev, 
@@ -581,32 +596,32 @@ parole_player_dvd_reset (ParolePlayer *player)
     }
 }
 
-static void
+void
 parole_player_dvd_menu_activated (GtkMenuItem *widget, ParolePlayer *player)
 {
     parole_gst_send_navigation_command (PAROLE_GST(player->priv->gst), GST_DVD_ROOT_MENU);
 }
 
-static void
+void
 parole_player_dvd_title_activated (GtkMenuItem *widget, ParolePlayer *player)
 {
     parole_gst_send_navigation_command (PAROLE_GST(player->priv->gst), GST_DVD_TITLE_MENU);
 }
 
-static void
+void
 parole_player_dvd_audio_activated (GtkMenuItem *widget, ParolePlayer *player)
 {
     parole_gst_send_navigation_command (PAROLE_GST(player->priv->gst), GST_DVD_AUDIO_MENU);
     
 }
 
-static void
+void
 parole_player_dvd_angle_activated (GtkMenuItem *widget, ParolePlayer *player)
 {
     parole_gst_send_navigation_command (PAROLE_GST(player->priv->gst), GST_DVD_ANGLE_MENU);
 }
 
-static void
+void
 parole_player_dvd_chapter_activated (GtkMenuItem *widget, ParolePlayer *player)
 {
     parole_gst_send_navigation_command (PAROLE_GST(player->priv->gst), GST_DVD_CHAPTER_MENU);
@@ -2838,8 +2853,6 @@ parole_player_init (ParolePlayer *player)
     GtkWidget *clear_recent;
     GtkWidget *recent_separator;
     
-    GtkMenuItem *dvd_menu, *title_menu, *audio_menu, *angle_menu, *chapter_menu;
-    
     GtkWidget *bug_report;
     
     gboolean repeat, shuffle;
@@ -3043,26 +3056,6 @@ parole_player_init (ParolePlayer *player)
     
     /* DVD Menu */
     player->priv->dvd_menu = GTK_WIDGET(gtk_builder_get_object (builder, "dvd-menu"));
-    dvd_menu =   GTK_MENU_ITEM (gtk_builder_get_object (builder, "dvd_dvd-menu"));
-    g_signal_connect (dvd_menu, "activate",
-                      G_CALLBACK (parole_player_dvd_menu_activated), player);
-                      
-    title_menu = GTK_MENU_ITEM (gtk_builder_get_object (builder, "dvd_title-menu"));
-    g_signal_connect (title_menu, "activate",
-                      G_CALLBACK (parole_player_dvd_title_activated), player);
-                      
-    audio_menu = GTK_MENU_ITEM (gtk_builder_get_object (builder, "dvd_audio-menu"));
-    g_signal_connect (audio_menu, "activate",
-                      G_CALLBACK (parole_player_dvd_audio_activated), player);
-                      
-    angle_menu = GTK_MENU_ITEM (gtk_builder_get_object (builder, "dvd_angle-menu"));
-    g_signal_connect (angle_menu, "activate",
-                      G_CALLBACK (parole_player_dvd_angle_activated), player);
-                      
-    chapter_menu = GTK_MENU_ITEM (gtk_builder_get_object (builder, "dvd_chapter-menu"));
-    g_signal_connect (chapter_menu, "activate",
-                      G_CALLBACK (parole_player_dvd_chapter_activated), player);
-                      
     player->priv->chapters_menu = GTK_WIDGET (gtk_builder_get_object (builder, "chapters-menu"));
     
     /* Language Menus */

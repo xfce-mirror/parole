@@ -306,6 +306,7 @@
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">_DVD Menu</property>
                         <property name="use_underline">True</property>
+                        <signal name="activate" handler="parole_player_dvd_menu_activated" swapped="no"/>
                       </object>
                     </child>
                     <child>
@@ -314,6 +315,7 @@
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">_Title Menu</property>
                         <property name="use_underline">True</property>
+                        <signal name="activate" handler="parole_player_dvd_title_activated" swapped="no"/>
                       </object>
                     </child>
                     <child>
@@ -322,6 +324,7 @@
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">_Audio Menu</property>
                         <property name="use_underline">True</property>
+                        <signal name="activate" handler="parole_player_dvd_audio_activated" swapped="no"/>
                       </object>
                     </child>
                     <child>
@@ -330,6 +333,7 @@
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">A_ngle Menu</property>
                         <property name="use_underline">True</property>
+                        <signal name="activate" handler="parole_player_dvd_angle_activated" swapped="no"/>
                       </object>
                     </child>
                     <child>
@@ -354,6 +358,7 @@
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">_Chapter Menu</property>
                                 <property name="use_underline">True</property>
+                                <signal name="activate" handler="parole_player_dvd_chapter_activated" swapped="no"/>
                               </object>
                             </child>
                             <child>
