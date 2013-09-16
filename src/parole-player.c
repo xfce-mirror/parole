@@ -253,6 +253,11 @@ gboolean    parole_player_gst_widget_button_press   (GtkWidget *widget,
 gboolean    parole_player_gst_widget_button_release (GtkWidget *widget, 
                                                      GdkEventButton *ev, 
                                                      ParolePlayer *player);
+                                                     
+gboolean
+parole_player_gst_widget_motion_notify_event        (GtkWidget *widget, 
+                                                     GdkEventMotion *ev, 
+                                                     ParolePlayer *player);
 
 void        parole_show_about                       (GtkWidget *widget,
                                                      ParolePlayer *player);
@@ -2078,7 +2083,7 @@ gboolean parole_player_hide_fs_window (gpointer data)
     return FALSE;
 }
 
-static gboolean
+gboolean
 parole_player_gst_widget_motion_notify_event (GtkWidget *widget, GdkEventMotion *ev, ParolePlayer *player)
 {
     static gulong hide_timeout = 0;
@@ -2918,9 +2923,6 @@ parole_player_init (ParolePlayer *player)
     g_signal_connect (G_OBJECT (player->priv->gst), "dvd-chapter-change",
             G_CALLBACK (parole_player_dvd_chapter_change_cb), player);
     
-    g_signal_connect (G_OBJECT (player->priv->gst), "motion-notify-event",
-            G_CALLBACK (parole_player_gst_widget_motion_notify_event), player);
-    
     g_signal_connect (G_OBJECT (player->priv->gst), "notify::volume",
             G_CALLBACK (parole_property_notify_cb_volume), player);
 
@@ -3109,8 +3111,6 @@ parole_player_init (ParolePlayer *player)
     gdk_color_parse("black", &background);
     gtk_widget_modify_bg(GTK_WIDGET(player->priv->eventbox_output), GTK_STATE_NORMAL, &background);
     gtk_widget_add_events (GTK_WIDGET (player->priv->eventbox_output), GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK);
-    g_signal_connect (G_OBJECT (player->priv->eventbox_output), "motion-notify-event",
-            G_CALLBACK (parole_player_gst_widget_motion_notify_event), player);
               
     /* Background Image */
     logo = gdk_pixbuf_new_from_file (g_strdup_printf ("%s/parole.png", PIXMAPS_DIR), NULL);
