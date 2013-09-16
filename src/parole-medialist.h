@@ -108,6 +108,9 @@ parole_media_list_is_selected_row                   (ParoleMediaList *list);
 
 gboolean            parole_media_list_is_empty      (ParoleMediaList *list);
 
+gint                
+parole_media_list_get_playlist_count                (ParoleMediaList *list);
+
 GtkTreeRowReference
 *parole_media_list_get_first_row                    (ParoleMediaList *list);
 

@@ -1219,6 +1219,11 @@ parole_player_media_cursor_changed_cb (ParoleMediaList *list, gboolean media_sel
     gtk_action_set_sensitive   (player->priv->media_playpause_action, 
                                 media_selected || !parole_media_list_is_empty (player->priv->list));
     }
+    
+    gtk_action_set_sensitive   (player->priv->media_previous_action, 
+                                parole_media_list_get_playlist_count (player->priv->list) > 1);
+    gtk_action_set_sensitive   (player->priv->media_next_action, 
+                                parole_media_list_get_playlist_count (player->priv->list) > 1);
 }
 
 static void
@@ -1351,10 +1356,6 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
     }
           
     gtk_action_set_sensitive (player->priv->media_playpause_action, TRUE);
-    
-    /* FIXME: Better detection for when previous/next should be enabled */
-    gtk_action_set_sensitive (player->priv->media_previous_action, TRUE);
-    gtk_action_set_sensitive (player->priv->media_next_action, TRUE);
     
     parole_player_set_playpause_button_from_stock (player, "gtk-media-pause");
     

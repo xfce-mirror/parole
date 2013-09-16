@@ -249,6 +249,19 @@ parole_media_list_set_playlist_count (ParoleMediaList *list, gint n_items)
     g_signal_emit (G_OBJECT (list), signals [MEDIA_CURSOR_CHANGED], 0, n_items != 0);
 }
 
+gint
+parole_media_list_get_playlist_count (ParoleMediaList *list)
+{
+    if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0)
+    {
+        return gtk_tree_model_iter_n_children(GTK_TREE_MODEL(list->priv->store), NULL);
+    }
+    else
+    {
+        return gtk_tree_model_iter_n_children(GTK_TREE_MODEL(list->priv->disc_store), NULL);
+    }
+}
+
 /**
  * parole_media_list_add:
  * @ParoleMediaList: a #ParoleMediaList
