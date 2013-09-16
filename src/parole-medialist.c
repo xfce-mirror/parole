@@ -211,6 +211,44 @@ parole_media_list_set_widget_sensitive (ParoleMediaList *list, gboolean sensitiv
     gtk_widget_set_sensitive (GTK_WIDGET (list->priv->clear_button), sensitive);
 }
 
+static void
+parole_media_list_set_playlist_count (ParoleMediaList *list, gint n_items)
+{
+    /* Toggle sensitivity based on playlist count */
+    parole_media_list_set_widget_sensitive (list, n_items != 0);
+    gtk_widget_set_sensitive (list->priv->remove_button, n_items != 0);
+    gtk_widget_set_sensitive (list->priv->clear_button, n_items != 0);
+
+    if ( n_items == 1 )
+    {
+        if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0)
+        {
+            gtk_tree_view_column_set_title (list->priv->col, g_strdup_printf(_("Playlist (%i item)"), n_items));
+        }
+        else
+        {
+            gtk_tree_view_column_set_title (list->priv->disc_col, g_strdup_printf(_("Playlist (%i chapter)"), n_items));
+        }
+    }
+    else
+    {
+        if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0)
+        {
+            gtk_tree_view_column_set_title (list->priv->col, g_strdup_printf(_("Playlist (%i items)"), n_items));
+        }
+        else
+        {
+            gtk_tree_view_column_set_title (list->priv->disc_col, g_strdup_printf(_("Playlist (%i chapters)"), n_items));
+        }
+    }
+    
+    /*
+     * Will emit the signal media_cursor_changed with FALSE because there is no any 
+     * row remaining, so the player can disable click on the play button.
+     */
+    g_signal_emit (G_OBJECT (list), signals [MEDIA_CURSOR_CHANGED], 0, n_items != 0);
+}
+
 /**
  * parole_media_list_add:
  * @ParoleMediaList: a #ParoleMediaList
@@ -270,31 +308,7 @@ parole_media_list_add (ParoleMediaList *list, ParoleFile *file, gboolean disc, g
     else
         nch = gtk_tree_model_iter_n_children (GTK_TREE_MODEL (list->priv->store), NULL); 
     
-    if ( nch == 1 )
-    {
-        gtk_widget_set_sensitive (list->priv->remove_button, TRUE);
-        gtk_widget_set_sensitive (list->priv->clear_button, TRUE);
-        if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0)
-        {
-            gtk_tree_view_column_set_title (list->priv->col, g_strdup_printf(_("Playlist (%i item)"), nch));
-        }
-        else
-        {
-            gtk_tree_view_column_set_title (list->priv->disc_col, g_strdup_printf(_("Playlist (%i chapter)"), nch));
-        }
-    }
-    else
-    {
-        parole_media_list_set_widget_sensitive (list, TRUE);
-        if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0)
-        {
-            gtk_tree_view_column_set_title (list->priv->col, g_strdup_printf(_("Playlist (%i items)"), nch));
-        }
-        else
-        {
-            gtk_tree_view_column_set_title (list->priv->disc_col, g_strdup_printf(_("Playlist (%i chapters)"), nch));
-        }
-    }
+    parole_media_list_set_playlist_count(list, nch);
 }
 
 /**
@@ -977,20 +991,7 @@ parole_media_list_remove_clicked_cb (GtkButton *button, ParoleMediaList *list)
      */
     nch = gtk_tree_model_iter_n_children (GTK_TREE_MODEL (list->priv->store), NULL); 
     
-    if ( nch == 0)
-    {
-        parole_media_list_set_widget_sensitive (list, FALSE);
-        gtk_tree_view_column_set_title (list->priv->col, g_strdup_printf(_("Playlist (%i items)"), nch));
-        /*
-         * Will emit the signal media_cursor_changed with FALSE because there is no any 
-         * row remaining, so the player can disable click on the play button.
-         */
-        g_signal_emit (G_OBJECT (list), signals [MEDIA_CURSOR_CHANGED], 0, FALSE);
-    }
-    else if ( nch == 1 )
-        gtk_tree_view_column_set_title (list->priv->col, g_strdup_printf(_("Playlist (%i item)"), nch));
-    else
-        gtk_tree_view_column_set_title (list->priv->col, g_strdup_printf(_("Playlist (%i items)"), nch));
+    parole_media_list_set_playlist_count(list, nch);
 }
 
 void 
@@ -1213,8 +1214,7 @@ parole_media_list_clear_list (ParoleMediaList *list)
 {
     TRACE("CLEAR START");
     gtk_list_store_clear (GTK_LIST_STORE (list->priv->store));
-    parole_media_list_set_widget_sensitive (list, FALSE);
-    gtk_tree_view_column_set_title (list->priv->col, g_strdup_printf(_("Playlist (%i items)"), 0));
+    parole_media_list_set_playlist_count(list, 0);
     TRACE("CLEAR END");
 }
 

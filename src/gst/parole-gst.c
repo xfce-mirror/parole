@@ -466,7 +466,10 @@ static void
 parole_gst_set_video_overlay (ParoleGst *gst)
 {
     GstElement *video_sink;
+#if GTK_CHECK_VERSION(3,8,0)
+#else
     gboolean enable_xv;
+#endif
     
     g_object_get (G_OBJECT (gst->priv->playbin),
                   "video-sink", &video_sink,
