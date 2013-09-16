@@ -2821,7 +2821,7 @@ parole_player_setup_multimedia_keys (ParolePlayer *player)
 static void
 parole_player_init (ParolePlayer *player)
 {
-    GtkWidget *output, *icon;
+    GtkWidget *icon;
     GtkBuilder *builder;
     gint w, h;
     gboolean maximized;
@@ -2925,8 +2925,6 @@ parole_player_init (ParolePlayer *player)
     
     g_signal_connect (G_OBJECT (player->priv->gst), "notify::volume",
             G_CALLBACK (parole_property_notify_cb_volume), player);
-            
-    output = GTK_WIDGET (gtk_builder_get_object (builder, "video_output"));
             
     /*
      * GTK Actions
@@ -3304,7 +3302,7 @@ parole_player_init (ParolePlayer *player)
 
     parole_player_set_wm_opacity_hint (player->priv->window);
     
-    gtk_box_pack_start (GTK_BOX (output), 
+    gtk_box_pack_start (GTK_BOX (player->priv->videobox), 
                         player->priv->gst,
                         TRUE, TRUE, 0);
     
