@@ -249,6 +249,10 @@ void        parole_player_set_playlist_visible      (ParolePlayer *player,
 gboolean    parole_player_gst_widget_button_press   (GtkWidget *widget, 
                                                      GdkEventButton *ev, 
                                                      ParolePlayer *player);
+                                                     
+gboolean    parole_player_gst_widget_button_release (GtkWidget *widget, 
+                                                     GdkEventButton *ev, 
+                                                     ParolePlayer *player);
 
 void        parole_show_about                       (GtkWidget *widget,
                                                      ParolePlayer *player);
@@ -2034,7 +2038,7 @@ parole_player_gst_widget_button_press (GtkWidget *widget, GdkEventButton *ev, Pa
     return ret_val;
 }
 
-static gboolean
+gboolean
 parole_player_gst_widget_button_release (GtkWidget *widget, GdkEventButton *ev, ParolePlayer *player)
 {
     gboolean ret_val = FALSE;
@@ -2913,12 +2917,6 @@ parole_player_init (ParolePlayer *player)
               
     g_signal_connect (G_OBJECT (player->priv->gst), "dvd-chapter-change",
             G_CALLBACK (parole_player_dvd_chapter_change_cb), player);
-    
-    g_signal_connect_after (G_OBJECT (player->priv->gst), "button-release-event",
-            G_CALLBACK (parole_player_gst_widget_button_release), player);
-    
-    g_signal_connect_after (G_OBJECT (player->priv->gst), "button-press-event",
-            G_CALLBACK (parole_player_gst_widget_button_press), player);
     
     g_signal_connect (G_OBJECT (player->priv->gst), "motion-notify-event",
             G_CALLBACK (parole_player_gst_widget_motion_notify_event), player);
