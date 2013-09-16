@@ -410,15 +410,6 @@ enum
     PROP_CLIENT_ID
 };
 
-enum
-{
-    GST_DVD_ROOT_MENU,
-    GST_DVD_TITLE_MENU,
-    GST_DVD_AUDIO_MENU,
-    GST_DVD_ANGLE_MENU,
-    GST_DVD_CHAPTER_MENU
-};
-
 G_DEFINE_TYPE (ParolePlayer, parole_player, G_TYPE_OBJECT)
 
 void parole_show_about  (GtkWidget *widget, ParolePlayer *player)

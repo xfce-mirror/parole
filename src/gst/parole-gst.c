@@ -95,15 +95,6 @@ typedef enum
 
 } GstPlayFlags;
 
-enum
-{
-    GST_DVD_ROOT_MENU,
-    GST_DVD_TITLE_MENU,
-    GST_DVD_AUDIO_MENU,
-    GST_DVD_ANGLE_MENU,
-    GST_DVD_CHAPTER_MENU
-};
-
 struct ParoleGstPrivate
 {
     GstElement         *playbin;
