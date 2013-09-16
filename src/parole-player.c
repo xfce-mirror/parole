@@ -2925,15 +2925,8 @@ parole_player_init (ParolePlayer *player)
     
     g_signal_connect (G_OBJECT (player->priv->gst), "notify::volume",
             G_CALLBACK (parole_property_notify_cb_volume), player);
-
+            
     output = GTK_WIDGET (gtk_builder_get_object (builder, "video_output"));
-    
-    gtk_drag_dest_set  (output, GTK_DEST_DEFAULT_ALL, 
-                        target_entry, G_N_ELEMENTS (target_entry),
-                        GDK_ACTION_COPY | GDK_ACTION_MOVE);
-               
-    g_signal_connect (output, "drag-data-received",
-            G_CALLBACK (parole_player_drag_data_received_cb), player);
             
     /*
      * GTK Actions
@@ -3110,7 +3103,16 @@ parole_player_init (ParolePlayer *player)
     player->priv->eventbox_output = GTK_WIDGET (gtk_builder_get_object (builder, "content_area"));
     gdk_color_parse("black", &background);
     gtk_widget_modify_bg(GTK_WIDGET(player->priv->eventbox_output), GTK_STATE_NORMAL, &background);
+    
+    /* Enable motion-notify event to show/hide controls on mouseover */
     gtk_widget_add_events (GTK_WIDGET (player->priv->eventbox_output), GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK);
+    
+    /* Enable DND for files onto output widget */
+    gtk_drag_dest_set  (player->priv->eventbox_output, GTK_DEST_DEFAULT_ALL, 
+                        target_entry, G_N_ELEMENTS (target_entry),
+                        GDK_ACTION_COPY | GDK_ACTION_MOVE);
+    g_signal_connect   (player->priv->eventbox_output, "drag-data-received",
+                        G_CALLBACK (parole_player_drag_data_received_cb), player);
               
     /* Background Image */
     logo = gdk_pixbuf_new_from_file (g_strdup_printf ("%s/parole.png", PIXMAPS_DIR), NULL);
