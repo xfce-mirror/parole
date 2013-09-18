@@ -2487,6 +2487,11 @@ parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
         case GDK_KEY_Escape:
             parole_player_full_screen (player, FALSE);
             break;
+        case GDK_KEY_m:
+            if (ev->state & GDK_CONTROL_MASK)
+                parole_player_hide_menubar_cb(NULL, player);
+            ret_val = TRUE;
+            break;
 #ifdef HAVE_XF86_KEYSYM
         case XF86XK_OpenURL:
             parole_player_full_screen (player, FALSE);
