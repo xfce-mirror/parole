@@ -269,8 +269,14 @@ parole_plugins_manager_cell_toggled_cb (GtkCellRendererToggle *cell_renderer,
         {
             if ( active )
             {
-                g_type_module_use (G_TYPE_MODULE (module));
-                parole_provider_module_new_plugin (module);
+                if (g_type_module_use (G_TYPE_MODULE (module)))
+                    parole_provider_module_new_plugin (module);
+                else
+                {
+                    g_warning("Failed to load plugin.");
+                    parole_provider_module_free_plugin (module);
+                    g_type_module_unuse (G_TYPE_MODULE (module));
+                }
             }
             else
             {
