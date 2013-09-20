@@ -5,14 +5,15 @@
 # Translators:
 # Nucleo <nucleo@indamail.hu>, 2013
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2010,2012
+# gyeben <gyonkibendeguz@gmail.com>, 2013
 # Imre Benedek <nucleo at indamail dot hu>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-03 20:28+0200\n"
-"PO-Revision-Date: 2013-08-30 23:26+0000\n"
-"Last-Translator: Nucleo <nucleo@indamail.hu>\n"
+"PO-Revision-Date: 2013-09-20 19:12+0000\n"
+"Last-Translator: gyeben <gyonkibendeguz@gmail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/projects/p/xfce/language/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -140,19 +141,19 @@ msgstr "Feliratok:"
 
 #: ../data/interfaces/parole.ui.h:30
 msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
-msgstr ""
+msgstr "<span color='#F4F4F4'><b><big>Ismeretlen dal</big></b></span>"
 
 #: ../data/interfaces/parole.ui.h:31
 msgid ""
 "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
 "Album</span></big>"
-msgstr ""
+msgstr "<big><span color='#BBBBBB'><i></i></span> <span color='#F4F4F4'>Ismeretlen albumon</span></big>"
 
 #: ../data/interfaces/parole.ui.h:32
 msgid ""
 "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
 "Artist</span></big>"
-msgstr ""
+msgstr "<big><span color='#F4F4F4'>Ismeretlen előadó</span> <span color='#BBBBBB'><i>által</i></span></big>"
 
 #: ../data/interfaces/parole.ui.h:33
 msgid "Previous"
@@ -719,7 +720,7 @@ msgstr "Ismeretlen dal"
 #: ../src/parole-player.c:1732 ../src/parole-player.c:1734
 #: ../src/parole-player.c:1740
 msgid "on"
-msgstr ""
+msgstr "ezen:"
 
 #: ../src/parole-player.c:1740 ../src/plugins/notify/notify-provider.c:130
 msgid "Unknown Album"
@@ -727,7 +728,7 @@ msgstr "Ismeretlen album"
 
 #: ../src/parole-player.c:1747 ../src/parole-player.c:1751
 msgid "by"
-msgstr ""
+msgstr "általa:"
 
 #: ../src/parole-player.c:1751 ../src/plugins/notify/notify-provider.c:132
 msgid "Unknown Artist"
@@ -925,12 +926,12 @@ msgstr "Lejátszólistafájlok"
 #: ../src/plugins/notify/notify-provider.c:135
 #: ../src/plugins/notify/notify-provider.c:138
 msgid "<i>on</i>"
-msgstr ""
+msgstr "<i>ezen:</i>"
 
 #: ../src/plugins/notify/notify-provider.c:135
 #: ../src/plugins/notify/notify-provider.c:138
 msgid "<i>by</i>"
-msgstr ""
+msgstr "<i>általa:</i>"
 
 #: ../src/plugins/notify/notify.desktop.in.h:1
 msgid "Notify"
@@ -954,7 +955,7 @@ msgstr "Biztosan ki akar lépni?"
 
 #: ../src/plugins/tray/tray-provider.c:288
 msgid "Parole can be minimized to the system tray instead."
-msgstr ""
+msgstr "A Parolét ehelyett le lehet kicsinyíteni a rendszertálcára."
 
 #: ../src/plugins/tray/tray-provider.c:291
 msgid "Minimize to tray"
