@@ -572,7 +572,15 @@ parole_media_list_add_clicked_cb (GtkButton *button, ParoleMediaList *list)
 void 
 parole_media_list_clear_clicked_cb (GtkButton *button, ParoleMediaList *list)
 {
+    gchar *playlist_filename;
+    GFile *playlist_file;
     parole_media_list_clear_list (list);
+    playlist_filename = xfce_resource_save_location (XFCE_RESOURCE_DATA, 
+                                                         PAROLE_AUTO_SAVED_PLAYLIST, 
+                                                         FALSE);
+    playlist_file = g_file_new_for_path(playlist_filename);
+    g_file_delete(playlist_file, NULL, NULL);
+    g_free(playlist_filename);
 }
 
 /**
