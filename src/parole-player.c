@@ -974,6 +974,7 @@ parole_player_select_custom_subtitle (GtkMenuItem *widget, gpointer data)
                                            GTK_FILE_CHOOSER_ACTION_OPEN,
                                            NULL,
                                            NULL);
+    gtk_window_set_icon_name(GTK_WINDOW(chooser), "parole");
     button = gtk_dialog_add_button(GTK_DIALOG(chooser), _("Cancel"), GTK_RESPONSE_CANCEL);
     img = gtk_image_new_from_icon_name("gtk-cancel", GTK_ICON_SIZE_BUTTON);
     gtk_button_set_image(GTK_BUTTON(button), img);
