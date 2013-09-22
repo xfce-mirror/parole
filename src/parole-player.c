@@ -2044,17 +2044,25 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
      */
     mi = gtk_action_create_menu_item(player->priv->media_fullscreen_action);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+    
+    if (!player->priv->full_screen)
+    {
+        mi = gtk_separator_menu_item_new();
+        gtk_widget_show(GTK_WIDGET(mi));
+        gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
 
-    /*
-     * Un/Hide menubar
-     */
-    mi = gtk_check_menu_item_new_with_label(gtk_widget_get_visible(player->priv->menu_bar) ? _("Hide menubar") : _("Show menubar"));
-    g_signal_connect (mi, "activate",
-        G_CALLBACK (parole_player_hide_menubar_cb), player);
-    gtk_widget_add_accelerator(mi, "activate", accels,
-                           GDK_KEY_m, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
-    gtk_widget_show (mi);
-    gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+        /*
+         * Un/Hide menubar
+         */
+        mi = gtk_check_menu_item_new_with_label(gtk_widget_get_visible(player->priv->menu_bar) ? _("Hide menubar") : _("Show menubar"));
+        g_signal_connect (mi, "activate",
+            G_CALLBACK (parole_player_hide_menubar_cb), player);
+        gtk_widget_add_accelerator(mi, "activate", accels,
+                               GDK_KEY_m, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
+        gtk_widget_show (mi);
+        gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+    
+    }
 
 
     g_signal_connect_swapped (menu, "selection-done",
