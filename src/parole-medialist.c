@@ -2075,6 +2075,11 @@ void parole_media_list_save_list (ParoleMediaList *list)
             parole_pl_parser_save_from_files (fileslist, history, PAROLE_PL_FORMAT_M3U);
             g_slist_foreach (fileslist, (GFunc) g_object_unref, NULL);
         }
+        else
+        {
+            // If the playlist is empty, delete the list.
+            remove(history);
+        }
         g_slist_free (fileslist);
     }
 }
