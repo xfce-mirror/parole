@@ -257,7 +257,6 @@ int main (int argc, char **argv)
     gboolean new_instance = FALSE;
     gboolean version = FALSE;
     gboolean play = FALSE;
-    gboolean stop = FALSE;
     gboolean next_track = FALSE;
     gboolean prev_track = FALSE;
     gboolean raise_volume = FALSE;
@@ -275,20 +274,19 @@ int main (int argc, char **argv)
     {
     { "new-instance", 'i', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &new_instance, N_("Open a new instance"), NULL },
     { "no-plugins", 'n', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &no_plugins, N_("Do not load plugins"), NULL },
-    { "device", '\0', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_STRING, &device, N_("Set Audio-CD/VCD/DVD device path"), NULL },
-    { "play", 'p', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &play, N_("Play or pause if already playing"), NULL },
-    { "stop", 's', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &stop, N_("Stop playing"), NULL },
-    { "next-track", 'N', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &next_track, N_("Next track"), NULL },
-    { "previous-track", 'P', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &prev_track, N_("Previous track"), NULL },
-    { "raise-volume", 'r', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &raise_volume, N_("Raise volume"), NULL },
-    { "lower-volume", 'l', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &lower_volume, N_("Lower volume"), NULL },
-    { "mute", 'm', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &mute, N_("Mute volume"), NULL },
-    { "unmute", 'u', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &unmute, N_("Unmute (restore) volume"), NULL },
-    { "version", 'V', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &version, N_("Print version information and exit"), NULL },
+    { "device", 'd', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_STRING, &device, N_("Set Audio-CD/VCD/DVD device path"), NULL },
+    { "xv", '\0', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_CALLBACK, (GOptionArgFunc) xv_option_given, N_("Enable/Disable XV support (true or false, default=true)"), NULL},
     { "embedded", 'E', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &embedded, N_("Start in embedded mode"), NULL },
     { "fullscreen", 'F', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &fullscreen, N_("Start in fullscreen mode"), NULL },
-    { "xv", '\0', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_CALLBACK, (GOptionArgFunc) xv_option_given, N_("Enable/Disable XV support (true or false)"), NULL},
+    { "play", 'p', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &play, N_("Play or pause if already playing"), NULL },
+    { "next", 'N', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &next_track, N_("Next track"), NULL },
+    { "previous", 'P', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &prev_track, N_("Previous track"), NULL },
+    { "volume-up", 'r', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &raise_volume, N_("Raise volume"), NULL },
+    { "volume-down", 'l', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &lower_volume, N_("Lower volume"), NULL },
+    { "mute", 'm', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &mute, N_("Mute volume"), NULL },
+    { "unmute", 'u', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &unmute, N_("Unmute (restore) volume"), NULL },
     { "add", 'a', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &enqueue, N_("Add files to playlist"), NULL},
+    { "version", 'V', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &version, N_("Print version information and exit"), NULL },
     { "sm-client-id", 0, G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_STRING, &client_id, NULL, NULL },
     {G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, &filenames, N_("Media to play"), NULL},
         { NULL, },
@@ -313,7 +311,7 @@ int main (int argc, char **argv)
     
     gtk_init (&argc, &argv);
     
-    ctx = g_option_context_new (NULL);
+    ctx = g_option_context_new (_("[FILES...] - Play movies and songs"));
     
     gst_option_group = gst_init_get_option_group ();
     g_option_context_add_main_entries (ctx, option_entries, GETTEXT_PACKAGE);
@@ -338,7 +336,7 @@ int main (int argc, char **argv)
     /* Check for cli options if there is an instance of Parole already */
     if ( !new_instance && parole_dbus_name_has_owner (PAROLE_DBUS_NAME) )
     {
-        if (!enqueue && !play && !stop && !next_track && !prev_track && 
+        if (!enqueue && !play && !next_track && !prev_track && 
             !raise_volume && !lower_volume && !mute && !unmute)
             g_print (_("Parole is already running, use -i to open a new instance\n"));
         
@@ -349,9 +347,6 @@ int main (int argc, char **argv)
         
         if ( play )
             parole_send_message ("Play");
-            
-        if ( stop )
-            parole_send_message ("Stop");
             
         if ( next_track )
             parole_send_message ("NextTrack");

@@ -3532,9 +3532,6 @@ void parole_player_terminate (ParolePlayer *player)
 static gboolean     parole_player_dbus_play             (ParolePlayer *player, 
                                                          GError *error);
 
-static gboolean     parole_player_dbus_stop             (ParolePlayer *player, 
-                                                         GError *error);
-
 static gboolean     parole_player_dbus_next_track       (ParolePlayer *player,
                                                          GError *error);
 
@@ -3582,13 +3579,6 @@ static gboolean parole_player_dbus_play (ParolePlayer *player,
                                          GError *error)
 {
     parole_player_toggle_playpause(player);
-    return TRUE;
-}
-
-static gboolean parole_player_dbus_stop (ParolePlayer *player,
-                                         GError *error)
-{
-    parole_gst_stop (PAROLE_GST (player->priv->gst));
     return TRUE;
 }
 
