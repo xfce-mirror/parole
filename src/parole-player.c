@@ -2007,7 +2007,8 @@ void parole_player_fullscreen_action_cb (GtkAction *action, ParolePlayer *player
 
 static void parole_player_hide_menubar_cb (GtkWidget *widget, ParolePlayer *player)
 {
-    gtk_widget_set_visible(player->priv->menu_bar, !gtk_widget_get_visible(player->priv->menu_bar));
+    if (!player->priv->full_screen)
+        gtk_widget_set_visible(player->priv->menu_bar, !gtk_widget_get_visible(player->priv->menu_bar));
 }
 
 static void
@@ -2054,7 +2055,8 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
         /*
          * Un/Hide menubar
          */
-        mi = gtk_check_menu_item_new_with_label(gtk_widget_get_visible(player->priv->menu_bar) ? _("Hide menubar") : _("Show menubar"));
+        mi = gtk_check_menu_item_new_with_label(_("Show menubar"));
+        gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi), gtk_widget_get_visible(player->priv->menu_bar));
         g_signal_connect (mi, "activate",
             G_CALLBACK (parole_player_hide_menubar_cb), player);
         gtk_widget_add_accelerator(mi, "activate", accels,
