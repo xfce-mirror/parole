@@ -2003,7 +2003,7 @@ void parole_player_fullscreen_action_cb (GtkAction *action, ParolePlayer *player
     parole_player_full_screen (player, !player->priv->full_screen);
 }
 
-void parole_player_hide_menubar_cb (GtkWidget *widget, ParolePlayer *player)
+static void parole_player_hide_menubar_cb (GtkWidget *widget, ParolePlayer *player)
 {
     gtk_widget_set_visible(player->priv->menu_bar, !gtk_widget_get_visible(player->priv->menu_bar));
 }

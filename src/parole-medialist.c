@@ -2087,6 +2087,7 @@ void parole_media_list_save_list (ParoleMediaList *list)
         {
             // If the playlist is empty, delete the list.
             remove(history);
+            g_free(history);
         }
         g_slist_free (fileslist);
     }
