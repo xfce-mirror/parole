@@ -60,7 +60,8 @@ show_version (void)
              "Parole Media Player %s\n\n"
              "Part of the Xfce Goodies Project\n"
              "http://goodies.xfce.org\n\n"
-             "Licensed under the GNU GPL.\n\n"), VERSION);
+             "Licensed under the GNU GPL.\n\n"
+             "Please report bugs to <http://bugzilla.xfce.org/>.\n\n"), VERSION);
     exit (EXIT_SUCCESS);
 }
 
