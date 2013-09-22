@@ -153,7 +153,7 @@ void        parole_player_toggle_playlist_action_cb (GtkAction *action,
                                                      
 void        parole_player_fullscreen_action_cb      (GtkAction *action, 
                                                      ParolePlayer *player);
-                             
+
 void        parole_player_seekf_cb                  (GtkWidget *widget, 
                                                      ParolePlayer *player, 
                                                      gdouble seek);
@@ -2003,10 +2003,18 @@ void parole_player_fullscreen_action_cb (GtkAction *action, ParolePlayer *player
     parole_player_full_screen (player, !player->priv->full_screen);
 }
 
+void parole_player_hide_menubar_cb (GtkWidget *widget, ParolePlayer *player)
+{
+    gtk_widget_set_visible(player->priv->menu_bar, !gtk_widget_get_visible(player->priv->menu_bar));
+}
+
 static void
 parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time)
 {
     GtkWidget *menu, *mi;
+    GtkAccelGroup *accels = gtk_accel_group_new();
+
+    gtk_window_add_accel_group(GTK_WINDOW(player->priv->window), accels);
     
     player->priv->current_media_type = parole_gst_get_current_stream_type (PAROLE_GST (player->priv->gst));
     
@@ -2034,6 +2042,18 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
      */
     mi = gtk_action_create_menu_item(player->priv->media_fullscreen_action);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+
+    /*
+     * Un/Hide menubar
+     */
+    mi = gtk_check_menu_item_new_with_label(gtk_widget_get_visible(player->priv->menu_bar) ? _("Hide menubar") : _("Show menubar"));
+    g_signal_connect (mi, "activate",
+        G_CALLBACK (parole_player_hide_menubar_cb), player);
+    gtk_widget_add_accelerator(mi, "activate", accels,
+                           GDK_KEY_m, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
+    gtk_widget_show (mi);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+
 
     g_signal_connect_swapped (menu, "selection-done",
                               G_CALLBACK (gtk_widget_destroy), menu);
@@ -2471,6 +2491,11 @@ parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
             break;
         case GDK_KEY_Escape:
             parole_player_full_screen (player, FALSE);
+            break;
+        case GDK_KEY_m:
+            if (ev->state & GDK_CONTROL_MASK)
+                parole_player_hide_menubar_cb(NULL, player);
+            ret_val = TRUE;
             break;
 #ifdef HAVE_XF86_KEYSYM
         case XF86XK_OpenURL:
