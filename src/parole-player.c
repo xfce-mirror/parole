@@ -397,6 +397,7 @@ struct ParolePlayerPrivate
     GtkWidget          *audiobox_artist;
     
     GtkWidget          *volume;
+    GtkWidget          *mute;
     GtkWidget          *menu_bar;
     GtkWidget          *save_playlist;
     GtkWidget          *play_box;
@@ -2259,12 +2260,12 @@ void parole_player_volume_mute (GtkWidget *widget, ParolePlayer *player)
         g_object_get (G_OBJECT (player->priv->conf),
                       "volume", &value,
                       NULL);
-        gtk_menu_item_set_label( GTK_MENU_ITEM(widget), _("Mute") );
+        gtk_menu_item_set_label( GTK_MENU_ITEM(player->priv->mute), _("Mute") );
     }
     else
     {
         value = 0;
-        gtk_menu_item_set_label( GTK_MENU_ITEM(widget), _("Unmute") );
+        gtk_menu_item_set_label( GTK_MENU_ITEM(player->priv->mute), _("Unmute") );
     }
     gtk_scale_button_set_value (GTK_SCALE_BUTTON (player->priv->volume), (gdouble)(value)/100);
 }
@@ -3205,6 +3206,7 @@ parole_player_init (ParolePlayer *player)
     
     /* Volume Button */
     player->priv->volume = GTK_WIDGET (gtk_builder_get_object (builder, "media_volumebutton"));
+    player->priv->mute = GTK_WIDGET (gtk_builder_get_object (builder, "volume-mute-menu"));
     
     /* (un)Fullscreen button */
     player->priv->fullscreen_button = GTK_WIDGET (gtk_builder_get_object (builder, "media_fullscreen"));
@@ -3539,12 +3541,6 @@ static gboolean     parole_player_dbus_next_track       (ParolePlayer *player,
 static gboolean     parole_player_dbus_prev_track       (ParolePlayer *player,
                                                          GError *error);
 
-static gboolean     parole_player_dbus_seek_forward     (ParolePlayer *player,
-                                                         GError *error);
-
-static gboolean     parole_player_dbus_seek_backward    (ParolePlayer *player,
-                                                         GError *error);
-
 static gboolean     parole_player_dbus_raise_volume     (ParolePlayer *player,
                                                          GError *error);
 
@@ -3552,6 +3548,9 @@ static gboolean     parole_player_dbus_lower_volume     (ParolePlayer *player,
                                                          GError *error);
                      
 static gboolean     parole_player_dbus_mute             (ParolePlayer *player,
+                                                         GError *error);
+                                                         
+static gboolean     parole_player_dbus_unmute           (ParolePlayer *player,
                                                          GError *error);
 
 static gboolean     parole_player_dbus_play_disc        (ParolePlayer *player,
@@ -3606,21 +3605,7 @@ static gboolean parole_player_dbus_prev_track (ParolePlayer *player,
     parole_player_play_prev (player);
     return TRUE;
 }
-
-static gboolean parole_player_dbus_seek_forward (ParolePlayer *player,
-                                                 GError *error)
-{
-    parole_player_play_next (player, TRUE);
-    return TRUE;
-}
-
-static gboolean parole_player_dbus_seek_backward (ParolePlayer *player,
-                                                  GError *error)
-{
-    parole_player_play_prev (player);
-    return TRUE;
-}
-                     
+            
 static gboolean parole_player_dbus_raise_volume (ParolePlayer *player,
                                                  GError *error)
 {
@@ -3638,7 +3623,20 @@ static gboolean parole_player_dbus_lower_volume (ParolePlayer *player,
 static gboolean parole_player_dbus_mute (ParolePlayer *player,
                                          GError *error)
 {
-    gtk_scale_button_set_value (GTK_SCALE_BUTTON (player->priv->volume), 0);
+    if (!gtk_scale_button_get_value (GTK_SCALE_BUTTON (player->priv->volume)) == 0.0)
+    {
+        parole_player_volume_mute(NULL, player);
+    }   
+    return TRUE;
+}
+
+static gboolean parole_player_dbus_unmute (ParolePlayer *player,
+                                         GError *error)
+{
+    if (gtk_scale_button_get_value (GTK_SCALE_BUTTON (player->priv->volume)) == 0.0)
+    {
+        parole_player_volume_mute(NULL, player);
+    }   
     return TRUE;
 }
 

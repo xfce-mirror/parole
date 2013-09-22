@@ -260,11 +260,10 @@ int main (int argc, char **argv)
     gboolean stop = FALSE;
     gboolean next_track = FALSE;
     gboolean prev_track = FALSE;
-    gboolean seek_f = FALSE;
-    gboolean seek_b = FALSE;
     gboolean raise_volume = FALSE;
     gboolean lower_volume = FALSE;
     gboolean mute = FALSE;
+    gboolean unmute = FALSE;
     gboolean no_plugins = FALSE;
     gboolean embedded = FALSE;
     gboolean fullscreen = FALSE;
@@ -281,11 +280,10 @@ int main (int argc, char **argv)
     { "stop", 's', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &stop, N_("Stop playing"), NULL },
     { "next-track", 'N', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &next_track, N_("Next track"), NULL },
     { "previous-track", 'P', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &prev_track, N_("Previous track"), NULL },
-    { "seek-f", 'f', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &seek_f, N_("Seek forward"), NULL },
-    { "seek-b", 'b', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &seek_b, N_("Seek Backward"), NULL },
     { "raise-volume", 'r', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &raise_volume, N_("Raise volume"), NULL },
     { "lower-volume", 'l', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &lower_volume, N_("Lower volume"), NULL },
     { "mute", 'm', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &mute, N_("Mute volume"), NULL },
+    { "unmute", 'u', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &unmute, N_("Unmute (restore) volume"), NULL },
     { "version", 'V', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &version, N_("Print version information and exit"), NULL },
     { "embedded", 'E', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &embedded, N_("Start in embedded mode"), NULL },
     { "fullscreen", 'F', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &fullscreen, N_("Start in fullscreen mode"), NULL },
@@ -340,7 +338,8 @@ int main (int argc, char **argv)
     /* Check for cli options if there is an instance of Parole already */
     if ( !new_instance && parole_dbus_name_has_owner (PAROLE_DBUS_NAME) )
     {
-        if (!enqueue)
+        if (!enqueue && !play && !stop && !next_track && !prev_track && 
+            !raise_volume && !lower_volume && !mute && !unmute)
             g_print (_("Parole is already running, use -i to open a new instance\n"));
         
         if ( filenames && filenames[0] != NULL )
@@ -360,12 +359,6 @@ int main (int argc, char **argv)
         if ( prev_track )
             parole_send_message ("PrevTrack");
             
-        if ( seek_f )
-            parole_send_message ("SeekForward");
-            
-        if ( seek_b )
-            parole_send_message ("SeekBackward");
-            
         if ( raise_volume )
             parole_send_message ("RaiseVolume");
             
@@ -374,6 +367,9 @@ int main (int argc, char **argv)
             
         if ( mute )
             parole_send_message ("Mute");
+            
+        if ( unmute )
+            parole_send_message ("Unmute");
     }
     
     /* Create a new instance because Parole isn't running */

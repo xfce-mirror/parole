@@ -19,12 +19,6 @@
     <method name="PrevTrack">
     </method>
     
-    <method name="SeekForward">
-    </method>
-
-    <method name="SeekBackward">
-    </method>
-    
     <method name="RaiseVolume">
     </method>
     
@@ -32,6 +26,9 @@
     </method>
     
     <method name="Mute">
+    </method>
+    
+    <method name="Unmute">
     </method>
     
     <method name="PlayDisc">
