@@ -142,20 +142,15 @@ void
 parole_media_list_format_cursor_changed_cb          (GtkTreeView *view,
                                                      ParolePlaylistSave *data);
                             
-void        parole_media_list_save_playlist_cb     (GtkButton *button,
-                                                    ParolePlaylistSave *data);
+void        parole_media_list_save_playlist_cb      (GtkButton *button,
+                                                     ParolePlaylistSave *data);
 
-gboolean    parole_media_list_query_tooltip        (GtkWidget *widget,
-                                                    gint x,
-                                                    gint y,
-                                                    gboolean keyboard_mode,
-                                                    GtkTooltip *tooltip,
-                                                    ParoleMediaList *list);
-                             
-void        parole_media_list_menu_pos             (GtkMenu *menu, 
-                                                    gint *px, gint *py, 
-                                                    gboolean *push_in, 
-                                                    gpointer data);
+gboolean    parole_media_list_query_tooltip         (GtkWidget *widget,
+                                                     gint x,
+                                                     gint y,
+                                                     gboolean keyboard_mode,
+                                                     GtkTooltip *tooltip,
+                                                     ParoleMediaList *list);
                              
 /*
  * End of GtkBuilder callbacks
@@ -168,13 +163,9 @@ struct ParoleMediaListPrivate
 {
     DBusGConnection     *bus;
     ParoleConf          *conf;
-    GtkWidget           *view;
-    GtkWidget           *disc_view;
-    GtkWidget           *box;
-    GtkListStore        *store;
-    GtkListStore        *disc_store;
-    GtkTreeSelection    *sel;
-    GtkTreeSelection    *disc_sel;
+    GtkWidget           *view, *disc_view;
+    GtkListStore        *store, *disc_store;
+    GtkTreeSelection    *sel, *disc_sel;
     GtkTreeViewColumn   *col, *disc_col;
     
     GtkWidget *playlist_controls;
@@ -1272,29 +1263,6 @@ remember_playlist_activated_cb (GtkWidget *mi, ParoleConf *conf)
         g_file_delete(playlist_file, NULL, NULL);
         g_free(playlist_filename);
     }
-}
-
-void
-parole_media_list_menu_pos (GtkMenu *menu, gint *px, gint *py, gboolean *push_in, gpointer data)
-{
-    gint x, y;
-    GtkAllocation widget_allocation, menu_allocation;
-    GtkWidget *widget = gtk_menu_get_attach_widget( menu );
-    GdkWindow *window;
-
-    *push_in = TRUE;
-    
-    gtk_widget_get_allocation( widget, &widget_allocation );
-    gtk_widget_get_allocation( GTK_WIDGET(menu), &menu_allocation );
-    
-    window = gtk_widget_get_window( widget );
-    gdk_window_get_position( window, &x, &y );
-    
-    if (widget_allocation.width > 100)
-        gtk_widget_set_size_request(GTK_WIDGET(menu), widget_allocation.width, -1);
-    
-    *px = x + widget_allocation.x;
-    *py = y + widget_allocation.y + widget_allocation.height;
 }
 
 static void
