@@ -405,7 +405,7 @@ parole_plugins_manager_show_plugins_pref (GtkWidget *widget, ParolePluginsManage
     {
         parole_dialog_info (GTK_WINDOW (manager->priv->main_window),
         _("No installed plugins found on this system"),
-        _("No installed plugins found on this system")); 
+        _("Please check your installation.")); 
         return;
     }
 

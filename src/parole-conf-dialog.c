@@ -513,7 +513,6 @@ parole_conf_dialog_set_defaults (ParoleConfDialog *self)
 
     /* Update widget-states according to settings */
     gtk_widget_set_sensitive (self->priv->vis_combox, vis_enabled);
-    gtk_widget_set_sensitive (self->priv->font_button, subtitle);
     
     gtk_switch_set_active (GTK_SWITCH (self->priv->toggle_vis), vis_enabled);
     gtk_switch_set_active (GTK_SWITCH (self->priv->toggle_subtitle), subtitle);
