@@ -314,7 +314,7 @@ gboolean    parole_player_key_press                 (GtkWidget *widget,
                                                      GdkEventKey *ev, 
                                                      ParolePlayer *player);
                                                      
-gboolean parole_player_hide_fs_window (gpointer data);
+gboolean parole_player_hide_controls (gpointer data);
                              
 static GtkTargetEntry target_entry[] =
 {
@@ -334,91 +334,94 @@ struct ParolePlayerPrivate
     ParoleMediaList    *list;
     ParoleDisc         *disc;
     ParoleScreenSaver  *screen_saver;
+    
     ParoleConf         *conf;
-#ifdef HAVE_XF86_KEYSYM
-    ParoleButton       *button;
-#endif
-
     ParoleConfDialog   *settings_dialog;
 
     XfceSMClient       *sm_client;
     gchar              *client_id;
     
+#ifdef HAVE_XF86_KEYSYM
+    ParoleButton       *button;
+#endif
+    
     GtkFileFilter      *video_filter;
     GtkRecentManager   *recent;
 
-    GtkWidget          *gst;
-    ParoleMediaType     current_media_type;
-
     GtkWidget          *window;
-    GtkWidget          *recent_menu;
     GtkWidget          *playlist_nt;
-    GtkWidget          *range;
+    /* Parole Player layouts */
+    gboolean            embedded;
+    gboolean            full_screen;
+    /* Remembered window sizes */
+    gint                last_h, last_w;
+    /* HPaned handle-width for calculating size with playlist */
+    gint                handle_width;
     
-    GtkWidget          *progressbar_buffering;
-    
-    GtkWidget          *label_elapsed;
-    GtkWidget          *label_duration;
+    /* Menubar */
+    GtkWidget          *menu_bar;
+    GtkWidget          *recent_menu;
+    GtkWidget          *save_playlist;
+    GtkWidget          *dvd_menu;
+    GtkWidget          *chapters_menu;
 
-    GtkWidget          *control; /* contains all play button*/
+    /* Media Controls */
+    GtkWidget          *control;
     GtkWidget          *playpause_button;
     GtkWidget          *playpause_image;
     GtkWidget          *fullscreen_button;
     GtkWidget          *fullscreen_image;
-    GtkWidget          *logo_image;
+    GtkWidget          *label_elapsed;
+    GtkWidget          *label_duration;
+    GtkWidget          *range;
+    GtkWidget          *progressbar_buffering;
+    GtkWidget          *volume;
+    GtkWidget          *mute;
     
-    GtkWidget          *hbox_infobar;
+    /* Infobar */
     GtkWidget          *infobar;
+    /* Audio Track */
     GtkWidget          *combobox_audiotrack;
-    GtkWidget          *combobox_subtitles;
     GtkListStore       *liststore_audiotrack;
-    GtkListStore       *liststore_subtitles;
     GList              *audio_list;
-    GList              *subtitle_list;
     gboolean            update_languages;
+    GtkWidget          *audio_group;
+    GtkWidget          *languages_menu;
+    /* Subtitle Track */
+    GtkWidget          *combobox_subtitles;
+    GtkListStore       *liststore_subtitles;
+    GList              *subtitle_list;
     gboolean            updated_subs;
     GtkWidget          *subtitles_group;
     GtkWidget          *subtitles_menu_custom;
-    GtkWidget          *audio_group;
-    
-    GtkWidget          *dvd_menu;
-    GtkWidget          *chapters_menu;
-    
     GtkWidget          *subtitles_menu;
-    GtkWidget          *languages_menu;
     
+    /* Output Widgets */
     GtkWidget          *eventbox_output;
+    /* Idle Logo */
+    GtkWidget          *logo_image;
+    /* VideoBox (Gst Video Output) Widget */
     GtkWidget          *videobox;
-    
+    /* AudioBox (Artwork, Title, Track, Album) Widgets */
     GtkWidget          *audiobox;
     GtkWidget          *audiobox_cover;
     GtkWidget          *audiobox_title;
     GtkWidget          *audiobox_album;
     GtkWidget          *audiobox_artist;
+
+    /* Current media-list row reference */
+    GtkTreeRowReference *row;
     
-    GtkWidget          *volume;
-    GtkWidget          *mute;
-    GtkWidget          *menu_bar;
-    GtkWidget          *save_playlist;
-    GtkWidget          *play_box;
-     
-    gboolean            exit;
-    
-    gboolean            embedded;
-    gboolean            full_screen;
-    gint                last_h, last_w;
-    
+    /* GStreamer */
+    GtkWidget          *gst;
+    ParoleMediaType     current_media_type;
     ParoleState         state;
     gboolean            user_seeking;
     gboolean            internal_range_change;
     gboolean            buffering;
-    
     gboolean            wait_for_gst_disc_info;
-    
-    gint                handle_width;
-    
-    GtkTreeRowReference *row;
-    
+
+    /* Actions */
     GtkAction          *media_next_action;
     GtkAction          *media_playpause_action;
     GtkAction          *media_previous_action;
@@ -426,7 +429,8 @@ struct ParolePlayerPrivate
     GtkToggleAction    *toggle_playlist_action;
     GtkToggleAction    *toggle_repeat_action;
     GtkToggleAction    *toggle_shuffle_action;
-        
+    
+    gboolean            exit;
 };
 
 enum
@@ -1147,11 +1151,6 @@ parole_player_disc_selected_cb (ParoleDisc *disc, const gchar *uri, const gchar 
 }
 
 static void
-parole_player_disc_label_changed_cb (ParoleDisc *disc, const gchar *label, ParolePlayer *player)
-{
-}
-
-static void
 parole_player_uri_opened_cb (ParoleMediaList *list, const gchar *uri, ParolePlayer *player)
 {
     parole_player_reset (player);
@@ -1418,7 +1417,7 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
     gtk_widget_grab_focus (player->priv->gst);
     parole_player_update_languages (player, PAROLE_GST(player->priv->gst));
     
-    g_timeout_add_seconds (4, (GSourceFunc) parole_player_hide_fs_window, player);
+    g_timeout_add_seconds (4, (GSourceFunc) parole_player_hide_controls, player);
 }
 
 static void
@@ -1934,9 +1933,6 @@ parole_player_reset_controls (ParolePlayer *player, gboolean fullscreen)
         /* If the player is in fullscreen mode, change to windowed mode. */
         if ( player->priv->full_screen )
         {
-            gtk_widget_reparent (player->priv->play_box, player->priv->control);
-            gtk_box_set_child_packing( GTK_BOX(player->priv->control), GTK_WIDGET(player->priv->play_box), TRUE, TRUE, 2, GTK_PACK_START );
-            gtk_widget_show (player->priv->play_box);
             gtk_widget_show (player->priv->menu_bar);
             show_playlist = gtk_toggle_action_get_active (player->priv->toggle_playlist_action);
             gtk_widget_show (player->priv->playlist_nt);
@@ -2110,7 +2106,7 @@ parole_player_gst_widget_button_release (GtkWidget *widget, GdkEventButton *ev, 
     return ret_val;
 }
 
-gboolean parole_player_hide_fs_window (gpointer data)
+gboolean parole_player_hide_controls (gpointer data)
 {
     ParolePlayer *player;
     GdkWindow *gdkwindow;
@@ -2148,7 +2144,7 @@ parole_player_gst_widget_motion_notify_event (GtkWidget *widget, GdkEventMotion 
     gdk_window_set_cursor (gdkwindow, NULL);
     
     if ( player->priv->state == PAROLE_STATE_PLAYING )
-        hide_timeout = g_timeout_add_seconds (4, (GSourceFunc) parole_player_hide_fs_window, player);
+        hide_timeout = g_timeout_add_seconds (4, (GSourceFunc) parole_player_hide_controls, player);
 
     return FALSE;
 }
@@ -2896,11 +2892,13 @@ parole_player_init (ParolePlayer *player)
     
     GtkCellRenderer *cell, *sub_cell;
     
+    GtkWidget *hbox_infobar;
     GtkWidget *audiotrack_box, *audiotrack_label, *subtitle_box, *subtitle_label, *infobar_close, *close_icon;
     GtkWidget *content_area;
     
     GtkWidget *controls_overlay, *tmp_box;
     GtkWidget *controls_parent;
+    GtkWidget *play_box;
     
     GtkWidget *action_widget;
     
@@ -2931,9 +2929,6 @@ parole_player_init (ParolePlayer *player)
     player->priv->disc = parole_disc_new ();
     g_signal_connect (player->priv->disc, "disc-selected",
             G_CALLBACK (parole_player_disc_selected_cb), player);
-              
-    g_signal_connect (player->priv->disc, "label-changed",
-            G_CALLBACK (parole_player_disc_label_changed_cb), player);
         
     player->priv->screen_saver = parole_screen_saver_new ();
     player->priv->list = PAROLE_MEDIA_LIST (parole_media_list_get ());
@@ -3165,7 +3160,7 @@ parole_player_init (ParolePlayer *player)
     controls_overlay = GTK_WIDGET(gtk_overlay_new());
     /* control is a placeholder to put the play_box as it is moved to/from the fs-window */
     player->priv->control = GTK_WIDGET (gtk_builder_get_object (builder, "control"));
-    player->priv->play_box = GTK_WIDGET (gtk_builder_get_object (builder, "media_controls"));
+    play_box = GTK_WIDGET (gtk_builder_get_object (builder, "media_controls"));
     
     controls_parent = GTK_WIDGET(gtk_builder_get_object (builder, "box2"));
     gtk_box_pack_start (GTK_BOX(controls_parent), controls_overlay, TRUE, TRUE, 0);
@@ -3186,8 +3181,8 @@ parole_player_init (ParolePlayer *player)
 #endif
     gtk_widget_reparent(GTK_WIDGET(player->priv->control), tmp_box);
     gtk_overlay_add_overlay(GTK_OVERLAY(controls_overlay), tmp_box);
-    gtk_box_set_child_packing( GTK_BOX(player->priv->control), GTK_WIDGET(player->priv->play_box), TRUE, TRUE, 2, GTK_PACK_START );
-    gtk_container_set_border_width(GTK_CONTAINER(player->priv->play_box), 3);
+    gtk_box_set_child_packing( GTK_BOX(player->priv->control), GTK_WIDGET(play_box), TRUE, TRUE, 2, GTK_PACK_START );
+    gtk_container_set_border_width(GTK_CONTAINER(play_box), 3);
     gtk_widget_show_all(controls_parent);
     
     /* Previous, Play/Pause, Next */
@@ -3237,7 +3232,7 @@ parole_player_init (ParolePlayer *player)
     
     /* Info Bar */
     /* placeholder widget */
-    player->priv->hbox_infobar = GTK_WIDGET (gtk_builder_get_object (builder, "infobar_placeholder"));
+    hbox_infobar = GTK_WIDGET (gtk_builder_get_object (builder, "infobar_placeholder"));
     
     /* Initialize the InfoBar */
     player->priv->infobar = gtk_info_bar_new ();
@@ -3250,7 +3245,7 @@ parole_player_init (ParolePlayer *player)
     g_signal_connect (content_area, "size-allocate",
               G_CALLBACK (on_content_area_size_allocate), player);
               
-    gtk_box_pack_start( GTK_BOX( player->priv->hbox_infobar ), player->priv->infobar, TRUE, TRUE, 0);
+    gtk_box_pack_start( GTK_BOX( hbox_infobar ), player->priv->infobar, TRUE, TRUE, 0);
     
     /* Initialize the Audio Track combobox */
     player->priv->liststore_audiotrack = gtk_list_store_new(1, G_TYPE_STRING);
