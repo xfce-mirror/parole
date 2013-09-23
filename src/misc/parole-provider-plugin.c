@@ -110,7 +110,11 @@ void parole_provider_plugin_configure (ParoleProviderPlugin *provider, GtkWidget
  **/
 void parole_provider_plugin_set_player (ParoleProviderPlugin *provider, ParoleProviderPlayer *player)
 {
-    g_return_if_fail (PAROLE_IS_PROVIDER_PLUGIN (provider));
+    if (!PAROLE_IS_PROVIDER_PLUGIN (provider))
+    {
+        g_warning ("Loading plugins failed, a warning dialog is in order.");
+        return;
+    }
     
     if ( PAROLE_PROVIDER_PLUGIN_GET_INTERFACE (provider)->set_player )
     {
