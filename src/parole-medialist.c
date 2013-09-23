@@ -996,21 +996,21 @@ parole_media_list_remove_clicked_cb (GtkButton *button, ParoleMediaList *list)
     g_list_foreach (row_list, (GFunc) gtk_tree_row_reference_free, NULL);
     g_list_free (row_list);
     
-    /* No row was selected, then select the first one*/
-    if (!row_selected)
-    {
-        GtkTreePath *path;
-        path = parole_media_list_get_first_path (model);
-        parole_media_list_select_path (list, FALSE, path);
-        gtk_tree_path_free (path);
-    }
-    
     /*
      * Returns the number of children that iter has. 
      * As a special case, if iter is NULL, 
      * then the number of toplevel nodes is returned. Gtk API doc.
      */
     nch = gtk_tree_model_iter_n_children (GTK_TREE_MODEL (list->priv->store), NULL); 
+    
+    /* No row was selected, then select the first one*/
+    if (!row_selected && nch != 0)
+    {
+        GtkTreePath *path;
+        path = parole_media_list_get_first_path (model);
+        parole_media_list_select_path (list, FALSE, path);
+        gtk_tree_path_free (path);
+    }
     
     parole_media_list_set_playlist_count(list, nch);
 }
