@@ -73,7 +73,6 @@
                     </child>
                     <child>
                       <object class="GtkTreeViewColumn" id="treeviewcolumn1">
-                        <property name="title" translatable="yes">Enabled</property>
                         <child>
                           <object class="GtkCellRendererToggle" id="cellrenderertoggle">
                             <signal name="toggled" handler="parole_plugins_manager_cell_toggled_cb" swapped="no"/>
