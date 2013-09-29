@@ -270,7 +270,14 @@ parole_plugins_manager_cell_toggled_cb (GtkCellRendererToggle *cell_renderer,
             if ( active )
             {
                 g_type_module_use (G_TYPE_MODULE (module));
-                parole_provider_module_new_plugin (module);
+                if (!parole_provider_module_new_plugin (module))
+                {
+                    // If plugin loading fails...
+                    parole_dialog_error(GTK_WINDOW(pref->window), _("Plugin failed to load"), _("Please check your installation"));
+                    parole_provider_module_free_plugin (module);
+                    g_type_module_unuse (G_TYPE_MODULE (module));
+                    active = FALSE;
+                }
             }
             else
             {

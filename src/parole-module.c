@@ -196,22 +196,31 @@ parole_provider_module_new (const gchar *filename, const gchar *desktop_file)
     return module;
 }
 
-
-void parole_provider_module_new_plugin (ParoleProviderModule *module)
+/**
+ * parole_provider_module_new_plugin:
+ * @module : The #ParoleProviderModule that is being initialized.
+ *
+ * Initialize the #ParoleProviderModule plugin. Return #TRUE if successful.
+ **/
+gboolean parole_provider_module_new_plugin (ParoleProviderModule *module)
 {
     TRACE ("start");
     
-    g_return_if_fail (PAROLE_IS_PROVIDER_MODULE (module));
+    g_return_val_if_fail (PAROLE_IS_PROVIDER_MODULE (module), FALSE);
     
 #ifdef debug
-    g_return_if_fail (module->active == TRUE);
-    g_return_if_fail (module->instance == NULL);
-    g_return_if_fail (module->player == NULL);
+    g_return_val_if_fail (module->active == TRUE, FALSE);
+    g_return_val_if_fail (module->instance == NULL, FALSE);
+    g_return_val_if_fail (module->player == NULL, FALSE);
 #endif
 
     module->instance = g_object_new (module->provider_type, NULL);
     module->player = parole_plugin_player_new ();
+    
+    if (!PAROLE_IS_PROVIDER_PLUGIN (PAROLE_PROVIDER_PLUGIN (module->instance)))
+        return FALSE;
     parole_provider_plugin_set_player (PAROLE_PROVIDER_PLUGIN (module->instance), PAROLE_PROVIDER_PLAYER (module->player));
+    return TRUE;
 }
 
 void parole_provider_module_free_plugin (ParoleProviderModule *module)
