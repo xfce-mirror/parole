@@ -101,6 +101,8 @@ parole_module_load (GTypeModule *gtype_module)
     module->provider_type = (*module->initialize) (module);
     module->active = TRUE;
     
+    TRACE ("Finished loading module %s", gtype_module->name);
+    
     return TRUE;
 }
 
@@ -215,11 +217,11 @@ gboolean parole_provider_module_new_plugin (ParoleProviderModule *module)
 #endif
 
     module->instance = g_object_new (module->provider_type, NULL);
+    g_return_val_if_fail (PAROLE_IS_PROVIDER_PLUGIN (PAROLE_PROVIDER_PLUGIN (module->instance)), FALSE);
+
     module->player = parole_plugin_player_new ();
-    
-    if (!PAROLE_IS_PROVIDER_PLUGIN (PAROLE_PROVIDER_PLUGIN (module->instance)))
-        return FALSE;
     parole_provider_plugin_set_player (PAROLE_PROVIDER_PLUGIN (module->instance), PAROLE_PROVIDER_PLAYER (module->player));
+    
     return TRUE;
 }
 
