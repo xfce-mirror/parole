@@ -1,187 +1,185 @@
+# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# mohammad <malham1@gmail.com>, 2012.
-# محمد الحرقان <malham1@gmail.com>, 2012.
-# كريم أولاد الشلحة <herr.linux88@gmail.com>, 2013.
+# 
+# Translators:
+# Karim Oulad Chalha <herr.linux88@gmail.com>, 2013
+# محمد الحرقان <malham1@gmail.com>, 2012
+# Karim Oulad Chalha <herr.linux88@gmail.com>, 2013
+# محمد الحرقان <malham1@gmail.com>, 2012-2013
 msgid ""
 msgstr ""
-"Project-Id-Version: midori\n"
+"Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-05 19:42+0000\n"
-"PO-Revision-Date: 2013-02-07 21:51+0000\n"
-"Last-Translator: كريم أولاد الشلحة <herr.linux88@gmail.com>\n"
-"Language-Team: Arabic <herr.linux88@gmail.com>\n"
+"POT-Creation-Date: 2013-07-03 20:28+0200\n"
+"PO-Revision-Date: 2013-09-30 11:12+0000\n"
+"Last-Translator: mohammad alhargan <malham1@hotmail.com>\n"
+"Language-Team: Arabic (http://www.transifex.com/projects/p/xfce/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ar\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Poedit-Language: Arabic\n"
-"X-Poedit-Country: MOROCCO\n"
-"X-Generator: Lokalize 1.5\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: ../data/interfaces/parole.ui.h:1
-msgid "16:9 (Widescreen)"
-msgstr "16:9 (نافذة العرض)"
+#: ../data/interfaces/parole.ui.h:1 ../data/desktop/parole.desktop.in.in.h:1
+#: ../src/parole-about.c:68
+msgid "Parole Media Player"
+msgstr "مشغل الوسائط Parole"
 
 #: ../data/interfaces/parole.ui.h:2
-msgid "20:9 (DVB)"
-msgstr "20:9 (DVB)"
+msgid "_Media"
+msgstr "_وسيط"
 
 #: ../data/interfaces/parole.ui.h:3
-msgid "4:3 (TV)"
-msgstr "4:3 (TV)"
+msgid "Open _Location"
+msgstr "فتح الم_وقع"
 
 #: ../data/interfaces/parole.ui.h:4
-msgid ""
-"<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
-"Artist</span></big>"
-msgstr ""
-"<big><span color='#BBBBBB'><i>من طرف</i></span> <span color='#F4F4F4'>فنان "
-"مجهول</span></big>"
+msgid "Open Recent"
+msgstr "فتح الملف الحديث"
 
-#: ../data/interfaces/parole.ui.h:5
-msgid ""
-"<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
-"Album</span></big>"
-msgstr ""
-"<big><span color='#BBBBBB'><i>في</i></span> <span color='#F4F4F4'>ألبوم "
-"مجهول</span></big>"
-
-#: ../data/interfaces/parole.ui.h:6
-msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
-msgstr "<span color='#F4F4F4'><b><big>مقطع مجهول</big></b></span>"
-
-#: ../data/interfaces/parole.ui.h:7 ../src/misc/parole-filters.c:64
-msgid "Audio"
-msgstr "ملف صوتي"
-
-#: ../data/interfaces/parole.ui.h:8
-msgid "Audio Track:"
-msgstr "مقطع صوتي:"
-
-#: ../data/interfaces/parole.ui.h:9
-msgid "Auto"
-msgstr "ذاتي"
-
-#: ../data/interfaces/parole.ui.h:11
-#, no-c-format
-msgid "Buffering (0%)"
-msgstr "التخفيف (0%)"
-
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:740
-msgid "Empty"
-msgstr "فارغ"
-
-#: ../data/interfaces/parole.ui.h:13
-msgid "Fullscreen"
-msgstr "ملء الشاشة"
-
-#: ../data/interfaces/parole.ui.h:14 ../src/parole-disc.c:110
+#: ../data/interfaces/parole.ui.h:5 ../src/parole-disc.c:110
 #: ../src/parole-disc.c:156
 msgid "Insert Disc"
 msgstr "إدراج القرص"
 
-#: ../data/interfaces/parole.ui.h:15
-msgid "Languages"
-msgstr "اللغات"
+#: ../data/interfaces/parole.ui.h:6
+msgid "_Edit"
+msgstr "_تحرير"
 
-#: ../data/interfaces/parole.ui.h:16
-msgid "Media player"
-msgstr "مشغل الوسائط"
+#: ../data/interfaces/parole.ui.h:7
+msgid "_Repeat"
+msgstr "_تكرار"
 
-#: ../data/interfaces/parole.ui.h:17
-msgid "Next"
-msgstr "التّالي"
+#: ../data/interfaces/parole.ui.h:8
+msgid "_Shuffle"
+msgstr "_خلط"
 
-#: ../data/interfaces/parole.ui.h:18
-msgid "None"
-msgstr "لا شيء"
-
-#: ../data/interfaces/parole.ui.h:19
-msgid "Open Recent"
-msgstr "فتح الملف الحديث"
-
-#: ../data/interfaces/parole.ui.h:20
-msgid "Open _Location"
-msgstr "فتح الم_وقع"
-
-#: ../data/interfaces/parole.ui.h:21 ../src/parole-about.c:68
-msgid "Parole Media Player"
-msgstr "مشغل الوسائط Parole"
-
-#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:1398
-#: ../src/parole-player.c:1432
-msgid "Play"
-msgstr "مشغل"
-
-#: ../data/interfaces/parole.ui.h:23
+#: ../data/interfaces/parole.ui.h:9
 msgid "Plugins"
 msgstr "ملحقات"
 
-#: ../data/interfaces/parole.ui.h:24
-msgid "Previous"
-msgstr "السّابق"
+#: ../data/interfaces/parole.ui.h:10
+msgid "_View"
+msgstr "_عرض"
 
-#: ../data/interfaces/parole.ui.h:25
-msgid "Select Text Subtitles..."
-msgstr "حدد نص الترجمات"
+#: ../data/interfaces/parole.ui.h:11
+msgid "_Aspect Ratio"
+msgstr "_نسبة الإرتغاع"
 
-#: ../data/interfaces/parole.ui.h:26
-msgid "Show _playlist"
-msgstr "_عرض قائمة التشغيل"
+#: ../data/interfaces/parole.ui.h:12
+msgid "None"
+msgstr "لا شيء"
 
-#: ../data/interfaces/parole.ui.h:27
+#: ../data/interfaces/parole.ui.h:13
+msgid "Auto"
+msgstr "ذاتي"
+
+#: ../data/interfaces/parole.ui.h:14
 msgid "Square"
 msgstr "مربع"
 
-#: ../data/interfaces/parole.ui.h:28
+#: ../data/interfaces/parole.ui.h:15
+msgid "4:3 (TV)"
+msgstr "4:3 (TV)"
+
+#: ../data/interfaces/parole.ui.h:16
+msgid "16:9 (Widescreen)"
+msgstr "16:9 (نافذة العرض)"
+
+#: ../data/interfaces/parole.ui.h:17
+msgid "20:9 (DVB)"
+msgstr "20:9 (DVB)"
+
+#: ../data/interfaces/parole.ui.h:18
 msgid "Subtitles"
 msgstr "ترجمات"
+
+#: ../data/interfaces/parole.ui.h:19
+msgid "Select Text Subtitles..."
+msgstr "حدد نص الترجمات..."
+
+#: ../data/interfaces/parole.ui.h:20
+msgid "Show _playlist"
+msgstr "عرض قائمة التشغيل"
+
+#: ../data/interfaces/parole.ui.h:21 ../src/misc/parole-filters.c:64
+msgid "Audio"
+msgstr "ملف صوتي"
+
+#: ../data/interfaces/parole.ui.h:22
+msgid "Languages"
+msgstr "اللغات"
+
+#: ../data/interfaces/parole.ui.h:23 ../src/parole-player.c:746
+msgid "Empty"
+msgstr "فارغ"
+
+#: ../data/interfaces/parole.ui.h:24
+msgid "Volume _Up"
+msgstr "ر_فع الصوت"
+
+#: ../data/interfaces/parole.ui.h:25
+msgid "Volume _Down"
+msgstr "تخفيض ال_صوت"
+
+#: ../data/interfaces/parole.ui.h:26
+msgid "_Mute"
+msgstr "_أكتم"
+
+#: ../data/interfaces/parole.ui.h:27
+msgid "_Help"
+msgstr "_مساعدة"
+
+#: ../data/interfaces/parole.ui.h:28
+msgid "Audio Track:"
+msgstr "مقطع صوتي:"
 
 #: ../data/interfaces/parole.ui.h:29
 msgid "Subtitles:"
 msgstr "ترجمات:"
 
 #: ../data/interfaces/parole.ui.h:30
-msgid "Volume _Down"
-msgstr "تخفيض ال_صوت"
+msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
+msgstr "<span color='#F4F4F4'><b><big>مقطع مجهول</big></b></span>"
 
 #: ../data/interfaces/parole.ui.h:31
-msgid "Volume _Up"
-msgstr "ر_فع الصوت"
+msgid ""
+"<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
+"Album</span></big>"
+msgstr "<big><span color='#BBBBBB'><i>في</i></span> <span color='#F4F4F4'>ألبوم مجهول</span></big>"
 
 #: ../data/interfaces/parole.ui.h:32
-msgid "_Aspect Ratio"
-msgstr "_نسبة الإرتغاع"
+msgid ""
+"<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
+"Artist</span></big>"
+msgstr "<big><span color='#BBBBBB'><i>من طرف</i></span> <span color='#F4F4F4'>فنان مجهول</span></big>"
 
 #: ../data/interfaces/parole.ui.h:33
-msgid "_Edit"
-msgstr "_تحرير"
+msgid "Previous"
+msgstr "السّابق"
 
-#: ../data/interfaces/parole.ui.h:34
-msgid "_Help"
-msgstr "_مساعدة"
+#: ../data/interfaces/parole.ui.h:34 ../src/parole-player.c:1410
+#: ../src/parole-player.c:1444
+msgid "Play"
+msgstr "مشغل"
 
 #: ../data/interfaces/parole.ui.h:35
-msgid "_Media"
-msgstr "وسي_ط"
-
-#: ../data/interfaces/parole.ui.h:36
-msgid "_Mute"
-msgstr "أ_كتم"
+msgid "Next"
+msgstr "التّالي"
 
 #: ../data/interfaces/parole.ui.h:37
-msgid "_Repeat"
-msgstr "ت_كرار"
+#, no-c-format
+msgid "Buffering (0%)"
+msgstr "التخفيف (0%)"
 
 #: ../data/interfaces/parole.ui.h:38
-msgid "_Shuffle"
-msgstr "خ_لط"
+msgid "Fullscreen"
+msgstr "ملء الشاشة"
 
 #: ../data/interfaces/parole.ui.h:39
-msgid "_View"
-msgstr "_عرض"
+msgid "Media player"
+msgstr "مشغل الوسائط"
 
 #: ../data/interfaces/mediachooser.ui.h:1
 msgid "Open Media Files"
@@ -192,28 +190,29 @@ msgid "_Open"
 msgstr "_فتح"
 
 #: ../data/interfaces/playlist.ui.h:1
-msgid "Add…"
-msgstr "أضف…"
+msgid "DVD Menu"
+msgstr "قائمة دي في دي"
 
 #: ../data/interfaces/playlist.ui.h:2
-msgid "Angle Menu"
-msgstr ""
+msgid "Title Menu"
+msgstr "عنون القائمة"
 
 #: ../data/interfaces/playlist.ui.h:3
 msgid "Audio Menu"
 msgstr "قائمة ملفات الصوتية"
 
 #: ../data/interfaces/playlist.ui.h:4
+msgid "Angle Menu"
+msgstr "زاوية قائمة"
+
+#: ../data/interfaces/playlist.ui.h:5
 msgid "Chapter Menu"
 msgstr "قائمة الفصول"
 
-#: ../data/interfaces/playlist.ui.h:5
-msgid "Clear"
-msgstr "محو"
-
-#: ../data/interfaces/playlist.ui.h:6
-msgid "DVD Menu"
-msgstr "قائمة دي في دي"
+#: ../data/interfaces/playlist.ui.h:6 ../src/parole-medialist.c:821
+#: ../src/parole-player.c:3068
+msgid "Playlist"
+msgstr "قائمة التشغيل"
 
 #: ../data/interfaces/playlist.ui.h:7
 msgid "DVD Name"
@@ -223,191 +222,207 @@ msgstr "إسم دي في دي"
 msgid "Disc Playlist"
 msgstr "قائمة تشغيل القرص"
 
-#: ../data/interfaces/playlist.ui.h:9
-msgid "Play opened files"
-msgstr "تشغيل الملفات المفتوحة"
+#: ../data/interfaces/playlist.ui.h:9 ../src/parole-medialist.c:1009
+#: ../src/parole-medialist.c:1153
+msgid "Playlist empty"
+msgstr "قائمة التشغيل فارغة"
 
-#: ../data/interfaces/playlist.ui.h:10 ../src/parole-medialist.c:784
-#: ../src/parole-player.c:3054
-msgid "Playlist"
-msgstr "قائمة التشغيل"
+#: ../data/interfaces/playlist.ui.h:10
+msgid "Add…"
+msgstr "أضف…"
 
 #: ../data/interfaces/playlist.ui.h:11
-msgid "Playlist options"
-msgstr "خيارات قائمة التشغيل"
-
-#: ../data/interfaces/playlist.ui.h:12
-#: ../data/interfaces/parole-settings.ui.h:17
-msgid "Remember playlist"
-msgstr "تذكّر قائمة التشغيل"
-
-#: ../data/interfaces/playlist.ui.h:13
 msgid "Remove"
 msgstr "حذف"
 
-#: ../data/interfaces/playlist.ui.h:14
+#: ../data/interfaces/playlist.ui.h:12
+msgid "Clear"
+msgstr "محو"
+
+#: ../data/interfaces/playlist.ui.h:13
 msgid "Repeat"
 msgstr "تكرار"
 
-#: ../data/interfaces/playlist.ui.h:15
-msgid "Replace playlist when opening files"
-msgstr "إستبدال قائمة التشغيل عند فتح ملفات"
-
-#: ../data/interfaces/playlist.ui.h:16
+#: ../data/interfaces/playlist.ui.h:14
 msgid "Shuffle"
 msgstr "خلط"
 
+#: ../data/interfaces/playlist.ui.h:15
+msgid "Playlist options"
+msgstr "خيارات قائمة التشغيل"
+
+#: ../data/interfaces/playlist.ui.h:16
+msgid "Replace playlist when opening files"
+msgstr "إستبدال قائمة التشغيل عند فتح ملفات"
+
 #: ../data/interfaces/playlist.ui.h:17
-msgid "Title Menu"
-msgstr "عنون القائمة"
+msgid "Play opened files"
+msgstr "تشغيل الملفات المفتوحة"
+
+#: ../data/interfaces/playlist.ui.h:18
+#: ../data/interfaces/parole-settings.ui.h:20
+msgid "Remember playlist"
+msgstr "تذكّر قائمة التشغيل"
 
 #: ../data/interfaces/plugins.ui.h:1
-msgid "<b>Author</b>"
-msgstr "<b>الفنان</b>"
+msgid "Parole Plugins"
+msgstr "ملحقات Parole"
 
 #: ../data/interfaces/plugins.ui.h:2
-msgid "<b>Description</b>"
-msgstr "<b>الوصف</b>"
+msgid "Extend your media player"
+msgstr "مدد مشغل الوسائط لذيك"
 
 #: ../data/interfaces/plugins.ui.h:3
 msgid "Enabled"
 msgstr "تمكين"
 
 #: ../data/interfaces/plugins.ui.h:4
-msgid "Extend your media player"
-msgstr "مدد مشغل الوسائط لذيك"
-
-#: ../data/interfaces/plugins.ui.h:5
-msgid "Parole Plugins"
-msgstr "ملحقات Parole"
-
-#: ../data/interfaces/plugins.ui.h:6
 msgid "Plugin"
 msgstr "ملحق"
+
+#: ../data/interfaces/plugins.ui.h:5
+msgid "<b>Description</b>"
+msgstr "<b>الوصف</b>"
+
+#: ../data/interfaces/plugins.ui.h:6
+msgid "<b>Author</b>"
+msgstr "<b>الفنان</b>"
 
 #: ../data/interfaces/plugins.ui.h:7
 msgid "Visit Website"
 msgstr "زر الموقع على الشبكة"
 
 #: ../data/interfaces/parole-settings.ui.h:1
-msgid "<b>Audio</b>"
-msgstr "<b>صوتي</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:2
-msgid "<b>Keyboard</b>"
-msgstr "<b>لوحة المفاتيح</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:3
-msgid "<b>Video</b>"
-msgstr "<b>مرئي</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:4
-msgid "Always replace playlist with opened files"
-msgstr "إستبدال قائمة التشغيل في كل الأحوال عنذ فتح ملفات"
-
-#: ../data/interfaces/parole-settings.ui.h:5
-msgid "Automatically show subtitles when playing movie file"
-msgstr "إظهار الترحمات تاقائيا عند تشغيل ملف مرئي"
-
-#: ../data/interfaces/parole-settings.ui.h:6
-msgid "Brightness:"
-msgstr "السطوع:"
-
-#: ../data/interfaces/parole-settings.ui.h:7
-msgid "Check and remove duplicate media entries"
-msgstr "تحقق و حذف إدخلات الملفات المتكررة"
-
-#: ../data/interfaces/parole-settings.ui.h:8
-msgid "Configure your media player"
-msgstr "إعداد مشغل وسائطك"
-
-#: ../data/interfaces/parole-settings.ui.h:9
-msgid "Contrast:"
-msgstr "تباين:"
-
-#: ../data/interfaces/parole-settings.ui.h:10
-msgid "Disable screensaver while playing movies"
-msgstr "تعطيل screensaver عند تشغيل الأفلام"
-
-#: ../data/interfaces/parole-settings.ui.h:11
-msgid "Enable keyboard multimedia keys"
-msgstr "تمكين مفاتيح الوسائط المتعددة في لوحة المفاتيح"
-
-#: ../data/interfaces/parole-settings.ui.h:12
-msgid "Enable visualization when playing audio file"
-msgstr "تمكين المؤثرات البصرية عند تشغيل ملف صوتي"
-
-#: ../data/interfaces/parole-settings.ui.h:13
-msgid "Encoding:"
-msgstr "تشفير:"
-
-#: ../data/interfaces/parole-settings.ui.h:14
-msgid "Font:"
-msgstr "الخطوط:"
-
-#: ../data/interfaces/parole-settings.ui.h:15
-msgid "Hue:"
-msgstr "شكل:"
-
-#: ../data/interfaces/parole-settings.ui.h:16
 msgid "Parole Settings"
 msgstr "إعدادات Parole"
 
-#: ../data/interfaces/parole-settings.ui.h:18
-msgid "Reset to defaults"
-msgstr "إعادة التعيين الإفتراضي"
+#: ../data/interfaces/parole-settings.ui.h:2
+msgid "Configure your media player"
+msgstr "إعداد مشغل وسائطك"
 
-#: ../data/interfaces/parole-settings.ui.h:19
+#: ../data/interfaces/parole-settings.ui.h:3
+msgid "Disable screensaver while playing movies"
+msgstr "تعطيل screensaver عند تشغيل الأفلام"
+
+#: ../data/interfaces/parole-settings.ui.h:4
+msgid "<b>Video</b>"
+msgstr "<b>مرئي</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:5
+msgid "Enable visualization when playing audio file"
+msgstr "تمكين المؤثرات البصرية عند تشغيل ملف صوتي"
+
+#: ../data/interfaces/parole-settings.ui.h:6
+msgid "Visualization type:"
+msgstr "نوع المؤترات المرئية:"
+
+#: ../data/interfaces/parole-settings.ui.h:7
+msgid "<b>Audio</b>"
+msgstr "<b>صوتي</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:8
+msgid "Enable keyboard multimedia keys"
+msgstr "تمكين مفاتيح الوسائط المتعددة في لوحة المفاتيح"
+
+#: ../data/interfaces/parole-settings.ui.h:9
+msgid "<b>Keyboard</b>"
+msgstr "<b>لوحة المفاتيح</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:10
+msgid "_General"
+msgstr "_عام"
+
+#: ../data/interfaces/parole-settings.ui.h:11
+msgid "Brightness:"
+msgstr "السطوع:"
+
+#: ../data/interfaces/parole-settings.ui.h:12
+msgid "Contrast:"
+msgstr "تباين:"
+
+#: ../data/interfaces/parole-settings.ui.h:13
+msgid "Hue:"
+msgstr "شكل:"
+
+#: ../data/interfaces/parole-settings.ui.h:14
 msgid "Saturation:"
 msgstr "إشباع:"
 
-#: ../data/interfaces/parole-settings.ui.h:20
+#: ../data/interfaces/parole-settings.ui.h:15
+msgid "Reset to defaults"
+msgstr "إعادة التعيين الإفتراضي"
+
+#: ../data/interfaces/parole-settings.ui.h:16
+msgid "_Display"
+msgstr "_عرض"
+
+#: ../data/interfaces/parole-settings.ui.h:17
+msgid "Always replace playlist with opened files"
+msgstr "إستبدال قائمة التشغيل في كل الأحوال عنذ فتح ملفات"
+
+#: ../data/interfaces/parole-settings.ui.h:18
+msgid "Check and remove duplicate media entries"
+msgstr "تحقق و حذف إدخلات الملفات المتكررة"
+
+#: ../data/interfaces/parole-settings.ui.h:19
 msgid "Start playing opened files"
 msgstr "بدء تشغيل الملفات المفتوحة"
 
 #: ../data/interfaces/parole-settings.ui.h:21
-msgid "Visualization type:"
-msgstr "نوع المؤترات المرئية"
+msgid "_Playlist"
+msgstr "_قائمة التشغيل"
 
 #: ../data/interfaces/parole-settings.ui.h:22
-msgid "_Display"
-msgstr "العر_ض"
+msgid "Automatically show subtitles when playing movie file"
+msgstr "إظهار الترحمات تاقائيا عند تشغيل ملف مرئي"
 
 #: ../data/interfaces/parole-settings.ui.h:23
-msgid "_General"
-msgstr "_عام"
+msgid "Font:"
+msgstr "الخطوط:"
 
 #: ../data/interfaces/parole-settings.ui.h:24
-msgid "_Playlist"
-msgstr "قائمة التش_غيل"
+msgid "Encoding:"
+msgstr "تشفير:"
 
 #: ../data/interfaces/parole-settings.ui.h:25
 msgid "_Subtitles"
-msgstr "ترج_مات"
+msgstr "_ترجمات"
 
 #: ../data/interfaces/save-playlist.ui.h:1
-msgid "By Extension"
-msgstr "حسب الإمتداد"
-
-#: ../data/interfaces/save-playlist.ui.h:2
 msgid "Select File Types (By Extension)"
 msgstr "حدد توع الملفات (حسب الإمتداد)"
 
+#: ../data/interfaces/save-playlist.ui.h:2
+msgid "By Extension"
+msgstr "حسب الإمتداد"
+
 #: ../data/interfaces/open-location.ui.h:1
-msgid "<big><b>Open Network Location</b></big>"
-msgstr "<big><b>فتح موقع على الشيكة</b></big>"
+msgid "Open Network Location"
+msgstr "فتح موقع على الشيكة"
 
 #: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:192
 msgid "Clear History"
 msgstr "محو التأريخ"
 
 #: ../data/interfaces/open-location.ui.h:3
-msgid "Open Network Location"
-msgstr "فتح موقع على الشيكة"
+msgid "<big><b>Open Network Location</b></big>"
+msgstr "<big><b>فتح موقع على الشيكة</b></big>"
 
-#: ../data/desktop/parole.desktop.in.in.h:1
-msgid "Parole"
-msgstr "Parole"
+#: ../data/desktop/parole.desktop.in.in.h:2
+msgid "Play your media"
+msgstr "شغل الوسائل"
+
+#: ../data/desktop/parole.desktop.in.in.h:3
+msgid "Play/Pause"
+msgstr "شغّل/أوقف مؤقتاً"
+
+#: ../data/desktop/parole.desktop.in.in.h:4
+msgid "Previous Track"
+msgstr "المقطوعة السّابقة"
+
+#: ../data/desktop/parole.desktop.in.in.h:5
+msgid "Next Track"
+msgstr "المقطوعة التّالية"
 
 #: ../src/common/parole-common.c:67
 msgid "Message"
@@ -417,52 +432,56 @@ msgstr "رسالة"
 msgid "Error"
 msgstr "خطأ"
 
-#: ../src/gst/parole-gst.c:1370 ../src/parole-medialist.c:356
+#: ../src/gst/parole-gst.c:1376 ../src/parole-medialist.c:379
 #, c-format
 msgid "Track %i"
 msgstr "مفطع %i"
 
-#: ../src/gst/parole-gst.c:1373
+#: ../src/gst/parole-gst.c:1379
 msgid "Audio CD"
 msgstr "قرص مدمج صوتي"
 
-#: ../src/gst/parole-gst.c:1579
+#: ../src/gst/parole-gst.c:1589
 msgid "Additional software is required."
 msgstr "برامج إضافية مطلوبة."
 
-#: ../src/gst/parole-gst.c:1583
+#: ../src/gst/parole-gst.c:1594
 msgid "Don't Install"
 msgstr "لا تقم بالتثبيت"
 
-#: ../src/gst/parole-gst.c:1585
+#: ../src/gst/parole-gst.c:1596
 msgid "Install"
 msgstr "تثبيت"
 
-#: ../src/gst/parole-gst.c:2008
+#: ../src/gst/parole-gst.c:2028
 msgid "Stop"
 msgstr "أوقف"
 
-#: ../src/gst/parole-gst.c:2009
+#: ../src/gst/parole-gst.c:2029
 msgid "The stream is taking too much time to load"
 msgstr "الشريط قد أخد وقتا طويلا للتحميل"
 
-#: ../src/gst/parole-gst.c:2184
+#: ../src/gst/parole-gst.c:2233
 msgid ""
 "Unable to load playbin GStreamer plugin, check your GStreamer installation"
 msgstr "عاجز عن تحميل الملحق playbin GStreamer، تحقق من تثبيت GStreamer لديك"
 
-#: ../src/gst/parole-gst.c:2208
+#: ../src/gst/parole-gst.c:2246
+msgid ""
+"Unable to load audio GStreamer plugin, check your GStreamer installation"
+msgstr "عاجز عن تحميل ملحق الملفات الصوتية GStreamer، تحقق من تثبيت GStreamer"
+
+#: ../src/gst/parole-gst.c:2269
 msgid ""
 "Unable to load video GStreamer plugin, check your GStreamer installation"
-msgstr ""
-"عاجز عن تحميل الملحق الملفات المرئية GStreamer، تحقق من تثبيت GStreamer لديك"
+msgstr "عاجز عن تحميل الملحق الملفات المرئية GStreamer، تحقق من تثبيت GStreamer لديك"
 
-#: ../src/gst/parole-gst.c:2816 ../src/gst/parole-gst.c:2820
+#: ../src/gst/parole-gst.c:2867 ../src/gst/parole-gst.c:2871
 #, c-format
 msgid "Audio Track #%d"
 msgstr "مقطع صوتي #%d"
 
-#: ../src/gst/parole-gst.c:2860 ../src/gst/parole-gst.c:2864
+#: ../src/gst/parole-gst.c:2911 ../src/gst/parole-gst.c:2915
 #, c-format
 msgid "Subtitle #%d"
 msgstr "ترجمة #%d"
@@ -478,19 +497,11 @@ msgid ""
 "\n"
 "Licensed under the GNU GPL.\n"
 "\n"
-msgstr ""
-"\n"
-"مشغل وسائط Parole %s\n"
-"\n"
-"جزء من مشروع إضافات إكسفس الجديدة\n"
-"http://goodies.xfce.org\n"
-"\n"
-"تحت رخصة جنو العمومية.\n"
-"\n"
+msgstr "\nمشغل وسائط Parole %s\n\nجزء من مشروع إضافات إكسفس الجديدة\nhttp://goodies.xfce.org\n\nتحت رخصة جنو العمومية.\n\n"
 
 #: ../src/main.c:231
 msgid "Unknown argument "
-msgstr "عنصر مجهول"
+msgstr "عنصر مجهول "
 
 #: ../src/main.c:275
 msgid "Open a new instance"
@@ -550,7 +561,7 @@ msgstr "إستعمل النمط المدمج"
 
 #: ../src/main.c:289
 msgid "Start in fullscreen mode"
-msgstr "بدء في في نمط ملء الشاشة"
+msgstr "بدء في نمط ملئ الشاشة"
 
 #: ../src/main.c:290
 msgid "Enabled/Disable XV support"
@@ -573,152 +584,175 @@ msgstr "Parole قيد التشغيل حاليا, إستعمل -i لفتح مما
 msgid "Supported files"
 msgstr "الملفات المدعومة"
 
-#: ../src/parole-mediachooser.c:219 ../src/parole-player.c:955
+#: ../src/parole-mediachooser.c:219 ../src/parole-player.c:961
 msgid "All files"
 msgstr "كل الملفات"
 
-#: ../src/parole-medialist.c:372
+#: ../src/parole-medialist.c:305 ../src/parole-medialist.c:1018
+#, c-format
+msgid "%i item"
+msgstr "%i عنصر"
+
+#: ../src/parole-medialist.c:309
+#, c-format
+msgid "%i chapter"
+msgstr "%i فصل"
+
+#: ../src/parole-medialist.c:317 ../src/parole-medialist.c:1020
+#, c-format
+msgid "%i items"
+msgstr "%i عناصر"
+
+#: ../src/parole-medialist.c:321
+#, c-format
+msgid "%i chapters"
+msgstr "%i فصول"
+
+#: ../src/parole-medialist.c:395
 #, c-format
 msgid "Chapter %i"
 msgstr "مقطع %i"
 
-#: ../src/parole-medialist.c:642
+#: ../src/parole-medialist.c:679
 msgid "Permission denied"
 msgstr "صلاحيات غير كافية"
 
-#: ../src/parole-medialist.c:644
+#: ../src/parole-medialist.c:681
 msgid "Error saving playlist file"
 msgstr "خطا أثناء حفظ ملف قائمة التشغيل"
 
-#: ../src/parole-medialist.c:656
+#: ../src/parole-medialist.c:693
 msgid "Unknown playlist format"
 msgstr "صيغة قائمة التشغيل مجهولة"
 
-#: ../src/parole-medialist.c:657
+#: ../src/parole-medialist.c:694
 msgid "Please chooser a supported playlist format"
 msgstr "الرجاء تحديد صيغة قائمة التشغيل مدعومة"
 
-#: ../src/parole-medialist.c:709 ../src/parole-plugins-manager.c:352
+#: ../src/parole-medialist.c:746 ../src/parole-plugins-manager.c:352
 msgid "Unknown"
 msgstr "مجهول"
 
-#: ../src/parole-medialist.c:791
+#: ../src/parole-medialist.c:828
 msgid "M3U Playlists"
 msgstr "قائمات تشغيل M3U"
 
-#: ../src/parole-medialist.c:799
+#: ../src/parole-medialist.c:836
 msgid "PLS Playlists"
 msgstr "قائمات تشغيل PLS"
 
-#: ../src/parole-medialist.c:807
+#: ../src/parole-medialist.c:844
 msgid "Advanced Stream Redirector"
-msgstr ""
+msgstr "مُعيد توجيه المسارات المتقدمة"
 
-#: ../src/parole-medialist.c:815
+#: ../src/parole-medialist.c:852
 msgid "Shareable Playlist"
 msgstr "قائمة تشغيل قابلة للمشاركة"
 
 #. Clear
-#: ../src/parole-medialist.c:1066
+#: ../src/parole-medialist.c:1109
 msgid "Open Containing Folder"
 msgstr "فتح المجلدات الموجودة داخله"
 
-#: ../src/parole-medialist.c:1640
+#: ../src/parole-medialist.c:1685
 msgid "Media list"
 msgstr "لائحة الوسائط"
 
-#: ../src/parole-medialist.c:1641
+#: ../src/parole-medialist.c:1686
 msgid "Chapter list"
 msgstr "لائحة المقاطع"
 
-#: ../src/parole-player.c:513
+#: ../src/parole-player.c:459
+msgid "Hide playlist"
+msgstr "إخفاء قائمة التشغيل"
+
+#: ../src/parole-player.c:468
+msgid "Show playlist"
+msgstr "عرض قائمة التشغيل"
+
+#: ../src/parole-player.c:519
 msgid "Open ISO image"
 msgstr "فتح صورة ISO"
 
-#: ../src/parole-player.c:532
+#: ../src/parole-player.c:538
 msgid "CD image"
 msgstr "صورة قرص مدمج"
 
-#: ../src/parole-player.c:532
+#: ../src/parole-player.c:538
 msgid "DVD image"
 msgstr "صورة دي في دي"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:925
+#: ../src/parole-player.c:931
 msgid "Select Subtitle File"
 msgstr "حدد ملف ترجمة"
 
-#: ../src/parole-player.c:943
+#: ../src/parole-player.c:949
 msgid "Subtitle Files"
 msgstr "ملفات ترجمة"
 
-#: ../src/parole-player.c:1118 ../src/parole-player.c:1126
+#: ../src/parole-player.c:1124 ../src/parole-player.c:1132
 msgid "Clear Recent Items"
 msgstr "محو العناصر الحديثة"
 
-#: ../src/parole-player.c:1120
+#: ../src/parole-player.c:1126
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
-msgstr ""
-"هل أنت متاكد من أنك ارغب بحو عناصر التاريخ الحديثة؟  هذا الإجراء لا يمكن "
-"التراجع عنه."
+msgstr "هل أنت متاكد من أنك ارغب بحو عناصر التاريخ الحديثة؟  هذا الإجراء لا يمكن التراجع عنه."
 
-#: ../src/parole-player.c:1239 ../src/parole-player.c:1372
+#: ../src/parole-player.c:1245 ../src/parole-player.c:1384
 msgid "Media stream is not seekable"
-msgstr ""
+msgstr "مسار الوسائط غير قابل للقرأة"
 
-#: ../src/parole-player.c:1342
+#: ../src/parole-player.c:1348
 msgid "Pause"
 msgstr "ألبِث"
 
-#: ../src/parole-player.c:1699
+#: ../src/parole-player.c:1696
 msgid "GStreamer backend error"
 msgstr "خطأ في خلفية GStreamer"
 
-#: ../src/parole-player.c:1729
+#: ../src/parole-player.c:1727
 msgid "Unknown Song"
 msgstr "مقطع مجهول"
 
-#: ../src/parole-player.c:1734 ../src/parole-player.c:1736
-#: ../src/parole-player.c:1742
+#: ../src/parole-player.c:1732 ../src/parole-player.c:1734
+#: ../src/parole-player.c:1740
 msgid "on"
 msgstr "في"
 
-#: ../src/parole-player.c:1742 ../src/plugins/notify/notify-provider.c:124
+#: ../src/parole-player.c:1740 ../src/plugins/notify/notify-provider.c:130
 msgid "Unknown Album"
 msgstr "ألبوم مجهول"
 
-#: ../src/parole-player.c:1749 ../src/parole-player.c:1753
+#: ../src/parole-player.c:1747 ../src/parole-player.c:1751
 msgid "by"
 msgstr "من طرف"
 
-#: ../src/parole-player.c:1753 ../src/plugins/notify/notify-provider.c:126
+#: ../src/parole-player.c:1751 ../src/plugins/notify/notify-provider.c:132
 msgid "Unknown Artist"
 msgstr "فنان مجهول"
 
-#: ../src/parole-player.c:1786
+#: ../src/parole-player.c:1784
 msgid "Buffering"
 msgstr "تخفيف"
 
-#: ../src/parole-player.c:2266
+#: ../src/parole-player.c:2272
 msgid "Mute"
 msgstr "أكتم"
 
-#: ../src/parole-player.c:2271
+#: ../src/parole-player.c:2277
 msgid "Unmute"
 msgstr "إفتح الصوت"
 
-#: ../src/parole-player.c:2931
+#: ../src/parole-player.c:2942
 msgid "Clear recent items..."
 msgstr "محو العناصر الحديثة..."
 
 #: ../src/parole-about.c:74
 msgid "translator-credits"
-msgstr ""
-"فريق تعريب إكسفس: "
-"كريم اولاد الشلحة "
-"محمد الحرقان"
+msgstr "فريق تعريب إكسفس: كريم اولاد الشلحة محمد الحرقان"
 
 #: ../src/parole-about.c:77
 msgid "Visit Parole website"
@@ -889,13 +923,13 @@ msgstr "كل الملفات المدعومة"
 msgid "Playlist files"
 msgstr "ملفات قائمة التشغيل"
 
-#: ../src/plugins/notify/notify-provider.c:129
-#: ../src/plugins/notify/notify-provider.c:132
+#: ../src/plugins/notify/notify-provider.c:135
+#: ../src/plugins/notify/notify-provider.c:138
 msgid "<i>on</i>"
 msgstr "<i>في</i>"
 
-#: ../src/plugins/notify/notify-provider.c:129
-#: ../src/plugins/notify/notify-provider.c:132
+#: ../src/plugins/notify/notify-provider.c:135
+#: ../src/plugins/notify/notify-provider.c:138
 msgid "<i>by</i>"
 msgstr "<i>من طرف</i>"
 
@@ -907,2360 +941,34 @@ msgstr "إشعار"
 msgid "Show notifications for currently playing tracks"
 msgstr "عرض الإشعارات للمقاطع المشغلة حاليا"
 
-#: ../src/plugins/tray/tray-provider.c:244
+#: ../src/plugins/tray/tray-provider.c:229
 msgid "Tray icon plugin"
 msgstr "ملحق مصغرات الشريط"
 
-#: ../src/plugins/tray/tray-provider.c:254
+#: ../src/plugins/tray/tray-provider.c:239
 msgid "Always minimize to tray when window is closed"
 msgstr "في كل الأحوال تصغير إلى مصغرات الشريط عنذ إغلاق النافذة"
 
-#: ../src/plugins/tray/tray-provider.c:300
+#: ../src/plugins/tray/tray-provider.c:285
 msgid "Are you sure you want to quit?"
 msgstr "هل أنت متأكد من انك ارغب بالخروج؟"
 
-#: ../src/plugins/tray/tray-provider.c:303
+#: ../src/plugins/tray/tray-provider.c:288
 msgid "Parole can be minimized to the system tray instead."
 msgstr "بدلا من ذلك يمكن تصغير Parole إلى مصغرات شريط النظام."
 
-#: ../src/plugins/tray/tray-provider.c:306
+#: ../src/plugins/tray/tray-provider.c:291
 msgid "Minimize to tray"
 msgstr "تصغير إلى مصغرات الشريط"
 
-#: ../src/plugins/tray/tray-provider.c:323
+#: ../src/plugins/tray/tray-provider.c:308
 msgid "Remember my choice"
 msgstr "تذكّر إختياري"
 
 #: ../src/plugins/tray/system-tray.desktop.in.h:1
-msgid "Show icon in the system tray"
-msgstr "عرض أيقونة في مصغرات شريط النظام"
-
-#: ../src/plugins/tray/system-tray.desktop.in.h:2
 msgid "Tray icon"
 msgstr "أيقونة مصغرات الشريط"
 
-#: ../src/plugins/power-manager/power-manager.desktop.in.h:1
-msgid "Inhibit Power Manager from suspending the machine while playing DVD."
-msgstr "إمنع مدير الطاقة من تعليق الجهاز أثناء تشغيل دي في دي."
-
-#: ../src/plugins/power-manager/power-manager.desktop.in.h:2
-msgid "Power Manager Plugin"
-msgstr "ملحق مدير الطاقة"
-
-#~ msgid "Browse the Web"
-#~ msgstr "تصفّح الإنترنت"
-
-#~ msgid "Internet;WWW;Explorer"
-#~ msgstr "شبكة الإنترنت؛WWW؛إكسبلورر"
-
-#~ msgid "Midori"
-#~ msgstr "ميدوري"
-
-#~ msgid "Midori Web Browser"
-#~ msgstr "مستعرض الويب ميدوري"
-
-#~ msgid "New Private Browsing Window"
-#~ msgstr "نافذة التصفح الخاص الجديدة"
-
-#~ msgid "New Tab"
-#~ msgstr "تبويب جديد"
-
-#~ msgid "New Window"
-#~ msgstr "نافذة جديدة"
-
-#~ msgid "Web Browser"
-#~ msgstr "متصفح الوب"
-
-#~ msgid "Midori Private Browsing"
-#~ msgstr "متصفح ميدوري الخاص"
-
-#~ msgid "Open a new private browsing window"
-#~ msgstr "فتح نافذة تصفح خاصة الجديدة"
-
-#~ msgid "Private Browsing"
-#~ msgstr "التصفح الخاص"
-
-#~ msgid "The configuration couldn't be loaded: %s\n"
-#~ msgstr "لا يمكن تحميل الإعدادات: %s\n"
-
-#~ msgid "Value '%s' is invalid for %s"
-#~ msgstr "القيمة '%s' غير صالحة ل %s"
-
-#~ msgid "Invalid configuration value '%s'"
-#~ msgstr "قيمة الإعدادات '%s' غبر صالحة"
-
-#~ msgid "The search engines couldn't be loaded. %s\n"
-#~ msgstr "فشل تحميل أدوات البحث. %s\n"
-
-#~ msgid "Failed to clear history: %s\n"
-#~ msgstr "فشل محو السجل: %s\n"
-
-#~ msgid "Failed to open database: %s\n"
-#~ msgstr "فشل فتح قاعدة البيانات: %s\n"
-
-#~ msgid "Failed to remove old history items: %s\n"
-#~ msgstr "فشل حذف العناصر القديمة للسجل: %s\n"
-
-#~ msgid "The configuration couldn't be saved. %s"
-#~ msgstr "لا يمكن حفظ الإعدادات. %s"
-
-#~ msgid "The search engines couldn't be saved. %s"
-#~ msgstr "لا يمكن حفظ أدوات البحث. %s"
-
-#~ msgid "The trash couldn't be saved. %s"
-#~ msgstr "لا يمكن حفظ المهملات. %s"
-
-#~ msgid "Privacy"
-#~ msgstr "الخصوصية"
-
-#~ msgid "Delete old Cookies after:"
-#~ msgstr "حذف الكوكيز القديمة بعد:"
-
-#~ msgid "The maximum number of days to save cookies for"
-#~ msgstr "الحد الأقصى لعدد الأيام لحفظ الكوكيز"
-
-#~ msgid "Only accept Cookies from sites you visit"
-#~ msgstr "فقط قبول ملفات تعريف الارتباط من المواقع التي قمت بزيارتها"
-
-#~ msgid "Block cookies sent by third-party websites"
-#~ msgstr "حظر ملفات تعريف الارتباط المرسلة من مواقع الطرف الثالث"
-
-#~ msgid ""
-#~ "Cookies store login data, saved games, or user profiles for advertisement "
-#~ "purposes."
-#~ msgstr ""
-#~ "الكوكيز تخزن بيانات تسجيل الدخول والألعاب المحفوظة ، أو تعريف المستخدم "
-#~ "لأغراض الإعلان."
-
-#~ msgid "Enable offline web application cache"
-#~ msgstr "تمكين التخزين المؤقت لتطبيق ويب"
-
-#~ msgid "Enable HTML5 local storage support"
-#~ msgstr "تمكين دعم HTML5 التخزين المحلية"
-
-#~ msgid "Strip referrer details sent to websites"
-#~ msgstr "قطاع إحالة التفاصيل المرسلة إلى المواقع"
-
-#~ msgid "Whether the \"Referer\" header should be shortened to the hostname"
-#~ msgstr "ما إذا كان ينبغي تقصير مسار \"التجديد\" إلى اسم المضيف"
-
-#~ msgid "Delete pages from history after:"
-#~ msgstr "حذف الصفحات القديمة بعد:"
-
-#~ msgid "The maximum number of days to save the history for"
-#~ msgstr "الحد الأقصى لعدد أيام حفظ تاريخ"
-
-#~ msgid "The session couldn't be saved. %s"
-#~ msgstr "لا يمكن حفظ الجلسة. %s"
-
-#~ msgid ""
-#~ "No root certificate file is available. SSL certificates cannot be "
-#~ "verified."
-#~ msgstr "لا يوجد ملف شهادة جذر متاح. لا يمكن التحقق من شهادات SSL."
-
-#~ msgid ""
-#~ "Midori seems to have crashed the last time it was opened. If this "
-#~ "happened repeatedly, try one of the following options to solve the "
-#~ "problem."
-#~ msgstr ""
-#~ "يبدو أن ميدوري إنهار في المرة الأخيرة التي تم فتحه. إذا تكرر هذا، حاول "
-#~ "أحد الخيارات التالية لحل المشكلة."
-
-#~ msgid "Modify _preferences"
-#~ msgstr "تحرير ال_تفضيلات"
-
-#~ msgid "Disable all _extensions"
-#~ msgstr "تعطيل كل الإمتدادات"
-
-#~ msgid "Show a dialog after Midori crashed"
-#~ msgstr "عرض الحوار بعد تحطم ميدوري"
-
-#~ msgid "Discard old tabs"
-#~ msgstr "تجاهل العلامات القديمة"
-
-#~ msgid "Show last tabs without loading"
-#~ msgstr "أظهر أخر تبويب بدون تحميل"
-
-#~ msgid "Show last open tabs"
-#~ msgstr "أظهر اخر التبويبات المفتوحة"
-
-#~ msgid "The session couldn't be loaded: %s\n"
-#~ msgstr "لا يمكن تحميل الجلسة: %s\n"
-
-#~ msgid "Snapshot saved to: %s\n"
-#~ msgstr "حفظ لقطة في : %s\n"
-
-#~ msgid "Run ADDRESS as a web application"
-#~ msgstr "شغل العنوان كتطبيق وب"
-
-#~ msgid "ADDRESS"
-#~ msgstr "عنوان"
-
-#~ msgid "Use FOLDER as configuration folder"
-#~ msgstr "إستعمل المجلد كمجلد إعدادات"
-
-#~ msgid "FOLDER"
-#~ msgstr "مجلد"
-
-#~ msgid "Private browsing, no changes are saved"
-#~ msgstr "التصفح الخاص ، لا يتم حفظ أية تغييرات"
-
-#~ msgid "Portable mode, all runtime files are stored in one place"
-#~ msgstr "وضع المحمولة، كل ملفات وقت التشغيل يتم تخزينها في مكان واحد"
-
-#~ msgid "Plain GTK+ window with WebKit, akin to GtkLauncher"
-#~ msgstr "نافذة GTK+ خالية مع أدوات، أقرب إلى مطلق GTK"
-
-#~ msgid "Show a diagnostic dialog"
-#~ msgstr "عرض حوار التشخيص"
-
-#~ msgid "Run the specified filename as javascript"
-#~ msgstr "تشغيل ملف جافا سكريبت على النحو المحدد"
-
-#~ msgid "Take a snapshot of the specified URI"
-#~ msgstr "أخذ لقطة للعنوان المحدد"
-
-#~ msgid "Execute the specified command"
-#~ msgstr "تنفيذ الأمر المحدد"
-
-#~ msgid "List available commands to execute with -e/ --execute"
-#~ msgstr "قائمة الأوامر المتوفرة لتنفيذ مع -e/ --execute"
-
-#~ msgid "Display program version"
-#~ msgstr "إظهار نسخة البرنامج"
-
-#~ msgid "Addresses"
-#~ msgstr "عناوين"
-
-#~ msgid "Block URIs according to regular expression PATTERN"
-#~ msgstr "كتلة محددات وفقا للنمط التعبير العادي"
-
-#~ msgid "PATTERN"
-#~ msgstr "نموذج"
-
-#~ msgid "Reset Midori after SECONDS seconds of inactivity"
-#~ msgstr "إرجاع ميدوري بعد ثوان من الخمول"
-
-#~ msgid "SECONDS"
-#~ msgstr "ثواني"
-
-#~ msgid "Redirects console warnings to the specified FILENAME"
-#~ msgstr "إعادة توجيه تحذيرات وحدة التحكم إلى اسم الملف المحدد"
-
-#~ msgid "FILENAME"
-#~ msgstr "إسم الملف"
-
-#~ msgid "Please report comments, suggestions and bugs to:"
-#~ msgstr "الرجاء الإبلاغ عن التعليقات والاقتراحات والعلل إلى:"
-
-#~ msgid "Check for new versions at:"
-#~ msgstr "تحقق من توفر إصدار جديد عند:"
-
-#~ msgid "Saved logins and _passwords"
-#~ msgstr "الحسابات و_كلمات المرور المحفوظة"
-
-#~ msgid "Cookies and Website data"
-#~ msgstr "ملفات تعريف الارتباط وبيانات المواقع"
-
-#~ msgid "Web Cache"
-#~ msgstr "ملفات الوب المؤقتة"
-
-#~ msgid "Website icons"
-#~ msgstr "أيقونات الموقع"
-
-#~ msgid "An unknown error occured"
-#~ msgstr "حدث خطأ مجهول"
-
-#~ msgid "An instance of Midori is already running but not responding.\n"
-#~ msgstr "هناك مثيل لميدوري قيد التشغيل بالفعل ولكن لا يستجيب.\n"
-
-#~ msgid "Bookmarks couldn't be loaded: %s\n"
-#~ msgstr "لا يمكن تحميل العلامات: %s\n"
-
-#~ msgid "The trash couldn't be loaded: %s\n"
-#~ msgstr "لا يمكن تحميل المهلملات: %s\n"
-
-#~ msgid "The history couldn't be loaded: %s\n"
-#~ msgstr "لا يمكن تحميل التاريخ: %s\n"
-
-#~ msgid "The following errors occured:"
-#~ msgstr "حدثت الأخطاء التالية:"
-
-#~ msgid "_Ignore"
-#~ msgstr "_تجاهل"
-
-#~ msgid "Unexpected action '%s'."
-#~ msgstr "حدث غير متوقع'%s'."
-
-#~ msgid "_Bookmarks"
-#~ msgstr "_علامات"
-
-#~ msgid "Add Boo_kmark"
-#~ msgstr "أضِف _علامة"
-
-#~ msgid "_Extensions"
-#~ msgstr "_إمتدادات"
-
-#~ msgid "_History"
-#~ msgstr "_سجل"
-
-#~ msgid "_Userscripts"
-#~ msgstr "_النصوص البرمجية المستخدمة"
-
-#~ msgid "User_styles"
-#~ msgstr "أنماط المستخدم"
-
-#~ msgid "New _Tab"
-#~ msgstr "تب_ويب جديد"
-
-#~ msgid "_Transfers"
-#~ msgstr "_النقل"
-
-#~ msgid "Netscape p_lugins"
-#~ msgstr "Netscape _ملحقات"
-
-#~ msgid "_Closed Tabs"
-#~ msgstr "_التبويبات المغلقة"
-
-#~ msgid "New _Window"
-#~ msgstr "نافذة جديدة"
-
-#~ msgid "New _Folder"
-#~ msgstr "مج_لد جديد"
-
-#~ msgid "[Addresses]"
-#~ msgstr "[عناوين]"
-
-#~ msgid "File not found."
-#~ msgstr "لم يتم العثور على ملف."
-
-#~ msgid "Malformed document."
-#~ msgstr "وثيقة مشوهة."
-
-#~ msgid "Unrecognized bookmark format."
-#~ msgstr "علامات غير معتمدة الصيغة."
-
-#~ msgid "Writing failed."
-#~ msgstr "فشل الكتابة."
-
-#~ msgid "Go forward to the next page"
-#~ msgstr "المضي قدما إلى الصفحة التالية"
-
-#~ msgid "Go to the next sub-page"
-#~ msgstr "انتقل إلى الصفحة الفرعية اللاحقة"
-
-#~ msgid "Reload the current page"
-#~ msgstr "تحديث الصفحة الحالية"
-
-#~ msgid "Stop loading the current page"
-#~ msgstr "إيقاف تحميل الصفحة الحالية"
-
-#~ msgid "Failed to update title: %s\n"
-#~ msgstr "فشل تحديث عنوان: %s\n"
-
-#~ msgid "%s (Private Browsing)"
-#~ msgstr "%s (التصفح الخاص)"
-
-#~ msgid "Bookmarks"
-#~ msgstr "العلامات"
-
-#~ msgid "New folder"
-#~ msgstr "مجلد جديد"
-
-#~ msgid "Edit folder"
-#~ msgstr "تحرير المجلد"
-
-#~ msgid "New bookmark"
-#~ msgstr "علامة حديدة"
-
-#~ msgid "Edit bookmark"
-#~ msgstr "تحرير العلامة"
-
-#~ msgid "Type a name for this bookmark and choose where to keep it."
-#~ msgstr "اكتب اسماً لهذه العلامة، وحدد مكان حفظها."
-
-#~ msgid "Add to _Speed Dial"
-#~ msgstr "أضف إلى _الحوار السريع"
-
-#~ msgid "Show in the tool_bar"
-#~ msgstr "أظهر في شريط الأدوات"
-
-#~ msgid "Run as _web application"
-#~ msgstr "تشغيل كتطبيق انترنت"
-
-#~ msgid "Save file as"
-#~ msgstr "حفظ الملف في"
-
-#~ msgid "Save associated _resources"
-#~ msgstr "حفظ الموارد المرتبطة بها"
-
-#~ msgid "A new window has been opened"
-#~ msgstr "تم فتح نافذة جديدة"
-
-#~ msgid "A new tab has been opened"
-#~ msgstr "تم فتح علامة تبويب جديدة"
-
-#~ msgid "Error opening the image!"
-#~ msgstr "حدث خطأ أثناء فتح الصورة!"
-
-#~ msgid "Can not open selected image in a default viewer."
-#~ msgstr "لا يمكن فتح الصورة المحددة في العارض الافتراضي."
-
-#~ msgid "Error downloading the image!"
-#~ msgstr "خطأ في تحميل الصورة!"
-
-#~ msgid "Can not download selected image."
-#~ msgstr "لا يمكن تنزيل الصورة المحددة."
-
-#~ msgid "Save file"
-#~ msgstr "حفظ الملف"
-
-#~ msgid ""
-#~ "To use the above URI open a news aggregator. There is usually a menu or "
-#~ "button \"New Subscription\", \"New News Feed\" or similar.\n"
-#~ "Alternatively go to Preferences, Applications in Midori, and select a "
-#~ "News Aggregator. Next time you click the news feed icon, it will be added "
-#~ "automatically."
-#~ msgstr ""
-#~ "لاستخدام المسارات أعلاه أفتح مجمع الأخبار. عادة ما يكون هناك قائمة أو زر "
-#~ "\"اشتراك جديد\"، \"الأخبار الجديدة\" أو ما شابه ذلك.\n"
-#~ "ويمكنك أيضاً الذهاب الى تفضيلات، التطبيقات في ميدوري، وحدد مجمع الأخبار. "
-#~ "المرة التالية التي تضغط فوق رمز الأخبار، ستضاف تلقائيا."
-
-#~ msgid "New feed"
-#~ msgstr "تغدية جديدة"
-
-#~ msgid "Add a new bookmark"
-#~ msgstr "أضف علامة جديدة"
-
-#~ msgid "Toggle text cursor navigation"
-#~ msgstr "تبديل نص مؤشر الملاحة"
-
-#~ msgid ""
-#~ "Pressing F7 toggles Caret Browsing. When active, a text cursor appears in "
-#~ "all websites."
-#~ msgstr ""
-#~ "الضغط على F7 يفعل التصفح بالمؤشر. عند نشيطه، يظهر مؤشر نص في جميع المواقع."
-
-#~ msgid "_Enable Caret Browsing"
-#~ msgstr "_فعّل التصفح بالمؤشر"
-
-#~ msgid "Failed to insert new history item: %s\n"
-#~ msgstr "فشل في إدراج التاريخ : %s\n"
-
-#~ msgid "Open all in _Tabs"
-#~ msgstr "فتح الكل في تبويبات"
-
-#~ msgid "Open in New _Tab"
-#~ msgstr "فتح في تبو_يب جديد"
-
-#~ msgid "Open in New _Window"
-#~ msgstr "افتح في _نافذة جديدة"
-
-#~ msgid "Arora"
-#~ msgstr "Arora"
-
-#~ msgid "Kazehakase"
-#~ msgstr "Kazehakase"
-
-#~ msgid "Opera"
-#~ msgstr "أوبرا"
-
-#~ msgid "Konqueror"
-#~ msgstr "كونكيورر"
-
-#~ msgid "Epiphany"
-#~ msgstr "إبِفني"
-
-#~ msgid "Firefox (%s)"
-#~ msgstr "فيَرفُكس (%s)"
-
-#~ msgid "Midori 0.2.6"
-#~ msgstr "ميدوري 0.2.6"
-
-#~ msgid "Import bookmarks…"
-#~ msgstr "يتم الأن إستيراد العلامات…"
-
-#~ msgid "_Import bookmarks"
-#~ msgstr "_إستورد العلامات"
-
-#~ msgid "_Application:"
-#~ msgstr "_تطبيق:"
-
-#~ msgid "Import from XBEL or HTML file"
-#~ msgstr "استيراد من ملف HTML أو XBEL"
-
-#~ msgid "Import from a file"
-#~ msgstr "استيراد من ملفّ"
-
-#~ msgid "Failed to import bookmarks"
-#~ msgstr "فشل إستراد العلامات"
-
-#~ msgid "XBEL Bookmarks"
-#~ msgstr "العلامات XBEL"
-
-#~ msgid "Netscape Bookmarks"
-#~ msgstr "مفضلة نتسكيب"
-
-#~ msgid "Midori can only export to XBEL (*.xbel) and Netscape (*.html)"
-#~ msgstr "يمكن لميدوري تصدير فقط XBEL (*.xbel) ونتسكيب (*.html)"
-
-#~ msgid "Failed to export bookmarks"
-#~ msgstr "فشل تصدير العلامات"
-
-#~ msgid "Clear Private Data"
-#~ msgstr "حذف البيانات الخاصة"
-
-#~ msgid "_Clear private data"
-#~ msgstr "_حذف البيانات الخاصة"
-
-#~ msgid "Clear the following data:"
-#~ msgstr "حذف البيانات التالية:"
-
-#~ msgid "Last open _tabs"
-#~ msgstr "أظهر آخر التبويبات المفتوحة"
-
-#~ msgid "Clear private data when _quitting Midori"
-#~ msgstr "مسح البيانات الخاصة عند الخروج من ميدوري"
-
-#~ msgid "A lightweight web browser."
-#~ msgstr "متصفح الويب الخفيف."
-
-#~ msgid "See about:version for version info."
-#~ msgstr "انظر حول:لمعلومات نسخة الإصدار."
-
-#~ msgid ""
-#~ "This library is free software; you can redistribute it and/or modify it "
-#~ "under the terms of the GNU Lesser General Public License as published by "
-#~ "the Free Software Foundation; either version 2.1 of the License, or (at "
-#~ "your option) any later version."
-#~ msgstr ""
-#~ "هذه مكتبة برمجيات حرة ، ويمكنك إعادة توزيعها و/أو تعديلها تحت شروط رخصة "
-#~ "جنو العمومية الصغرى كما نشرت من قبل مؤسسة البرمجيات الحرة ؛ إما الإصدار "
-#~ "2.1 من الرخصة ، أو (باختيارك) أي إصدار لاحق."
-
-#~ msgid "_File"
-#~ msgstr "_ملف"
-
-#~ msgid "Open a new window"
-#~ msgstr "فتح نافذة جديدة"
-
-#~ msgid "New P_rivate Browsing Window"
-#~ msgstr "نافذة تصفح جديدة خاصة"
-
-#~ msgid "_Save Page As…"
-#~ msgstr "_حفظ الصفحة باسم…"
-
-#~ msgid "Save to a file"
-#~ msgstr "حفظ إلى ملف"
-
-#~ msgid "Add to Speed _dial"
-#~ msgstr "أضف إلى _الحوار السريع"
-
-#~ msgid "Add Shortcut to the _desktop"
-#~ msgstr "إضافة إلى اختصار سطح المكتب"
-
-#~ msgid "Create _Launcher"
-#~ msgstr "إنشاء مطلق"
-
-#~ msgid "Subscribe to News _feed"
-#~ msgstr "الاشتراك في مصدر أخبار"
-
-#~ msgid "_Close Tab"
-#~ msgstr "_غلق التبويب"
-
-#~ msgid "Close the current tab"
-#~ msgstr "إغلاق علامة التبويب الحالية"
-
-#~ msgid "C_lose Window"
-#~ msgstr "غلق التافذة"
-
-#~ msgid "_Share"
-#~ msgstr "_شارِك"
-
-#~ msgid "Share this page"
-#~ msgstr "شارك هذا الصفحة"
-
-#~ msgid "Print the current page"
-#~ msgstr "اطبع الصفحة الحالية"
-
-#~ msgid "Close a_ll Windows"
-#~ msgstr "إغلاق جميع النوافذ"
-
-#~ msgid "_Find…"
-#~ msgstr "_العثور على…"
-
-#~ msgid "Find a word or phrase in the page"
-#~ msgstr "العثور على كلمة أو عبارة في الصفحة"
-
-#~ msgid "Find _Next"
-#~ msgstr "العثور على التالي"
-
-#~ msgid "Find _Previous"
-#~ msgstr "عث_ور على السابق"
-
-#~ msgid "Configure the application preferences"
-#~ msgstr "إعداد تفضيلات التطبيق"
-
-#~ msgid "_Toolbars"
-#~ msgstr "_شريط الأدوات"
-
-#~ msgid "Reload page without caching"
-#~ msgstr "تحديث الصفحة دون التخزين المؤقت"
-
-#~ msgid "Increase the zoom level"
-#~ msgstr "زيادة مستوى التكبير"
-
-#~ msgid "Decrease the zoom level"
-#~ msgstr "انخفاض مستوى التكبير"
-
-#~ msgid "View So_urce"
-#~ msgstr "عرض المصدر"
-
-#~ msgid "Ca_ret Browsing"
-#~ msgstr "إنشاء تصفح"
-
-#~ msgid "Toggle fullscreen view"
-#~ msgstr "تبديل لعرض ملء الشاشة"
-
-#~ msgid "Scroll _Left"
-#~ msgstr "انتقل لليسار"
-
-#~ msgid "Scroll _Right"
-#~ msgstr "انتقل إلى اليمين"
-
-#~ msgid "_Readable"
-#~ msgstr "_قابل للقرائة"
-
-#~ msgid "_Go"
-#~ msgstr "_إذهب"
-
-#~ msgid "Go back to the previous page"
-#~ msgstr "العودة إلى الصفحة السابقة"
-
-#~ msgid "Go to the previous sub-page"
-#~ msgstr "انتقل إلى الصفحة الفرعية السابقة"
-
-#~ msgid "_Homepage"
-#~ msgstr "_الصفحة الرئيسية"
-
-#~ msgid "Go to your homepage"
-#~ msgstr "ذهاب إلى الصفحة الرئيسية"
-
-#~ msgid "Empty Trash"
-#~ msgstr "أفرغ المهملات"
-
-#~ msgid "Undo _Close Tab"
-#~ msgstr "تراجع عن إ_غلاق التبويب"
-
-#~ msgid "Add a new _folder"
-#~ msgstr "أضف مجلد جديد"
-
-#~ msgid "_Export bookmarks"
-#~ msgstr "_صدّر العلامات"
-
-#~ msgid "_Manage Search Engines"
-#~ msgstr "_إدارة محركات البحث"
-
-#~ msgid "_Clear Private Data"
-#~ msgstr "_حذف البيانات الخاصة"
-
-#~ msgid "_Move Tab Forward"
-#~ msgstr "_حرك التبويب إلى الأمام"
-
-#~ msgid "Focus _Current Tab"
-#~ msgstr "فصل التبويب ال_حالي"
-
-#~ msgid "Focus _Next view"
-#~ msgstr "عرض التركيز التالي"
-
-#~ msgid "Only show the Icon of the _Current Tab"
-#~ msgstr "أظهر فقط أ_يقونة التبويب الحالي"
-
-#~ msgid "_Duplicate Current Tab"
-#~ msgstr "_مضاعفة التبويب الحالي"
-
-#~ msgid "Close Ot_her Tabs"
-#~ msgstr "أغلق تبويبات أخر_ى"
-
-#~ msgid "Open last _session"
-#~ msgstr "فتح آخر جلسة"
-
-#~ msgid "_Frequent Questions"
-#~ msgstr "_أسئلة شائعة"
-
-#~ msgid "_Report a Problem…"
-#~ msgstr "_بلغ عن عله…"
-
-#~ msgid "_Tools"
-#~ msgstr "_أدوات"
-
-#~ msgid "_Menubar"
-#~ msgstr "_شريط القائمة"
-
-#~ msgid "_Navigationbar"
-#~ msgstr "_شريط التصفح"
-
-#~ msgid "Side_panel"
-#~ msgstr "لوحة _جانبية"
-
-#~ msgid "Sidepanel"
-#~ msgstr "لوحة جانبية"
-
-#~ msgid "_Bookmarkbar"
-#~ msgstr "_شريط العلامات"
-
-#~ msgid "_Statusbar"
-#~ msgstr "_شريط الحالة"
-
-#~ msgid "_Automatic"
-#~ msgstr "_تلقائي"
-
-#~ msgid "Japanese (SHIFT__JIS)"
-#~ msgstr "ياباني (_Shift-JIS)"
-
-#~ msgid "Korean (EUC-KR)"
-#~ msgstr "كوري (_EUC-KR)"
-
-#~ msgid "Russian (KOI8-R)"
-#~ msgstr "روسي (_KOI8-R)"
-
-#~ msgid "Western (ISO-8859-1)"
-#~ msgstr "غربي (_ISO-8859-1)"
-
-#~ msgid "Custom…"
-#~ msgstr "مخصص…"
-
-#~ msgid "_Separator"
-#~ msgstr "_فاصل"
-
-#~ msgid "_Web Search…"
-#~ msgstr "_بحث في الوِب…"
-
-#~ msgid "Run a web search"
-#~ msgstr "شغل البحث في الوب"
-
-#~ msgid "Reopen a previously closed tab or window"
-#~ msgstr "إعادة فتح تبويب مغلقة سابقا ، أو نافذة"
-
-#~ msgid "Show the saved bookmarks"
-#~ msgstr "عرض العلامات المحفوظة"
-
-#~ msgid "_Window"
-#~ msgstr "_النافذة"
-
-#~ msgid "Show a list of all open tabs"
-#~ msgstr "أظهر قائمة كل التبويبات المفتوحة"
-
-#~ msgid "_Menu"
-#~ msgstr "_قائمة"
-
-#~ msgid "Unexpected setting '%s'"
-#~ msgstr "إعداد غير متوقع '%s'"
-
-#~ msgid "The configuration of the extension '%s' couldn't be loaded: %s\n"
-#~ msgstr "إعدادات الامتداد '%s' لا يمكن تحميلها: %s\n"
-
-#~ msgid "The configuration of the extension '%s' couldn't be saved: %s\n"
-#~ msgstr "إعدادات الامتداد '%s' لا يمكن حفظها: %s\n"
-
-#~ msgid "Export certificate"
-#~ msgstr "استورد الشهادة"
-
-#~ msgid "The signing certificate authority is not known."
-#~ msgstr "مصدر الشهادات المُوقِّعة غير معروف."
-
-#~ msgid ""
-#~ "The certificate does not match the expected identity of the site that it "
-#~ "was retrieved from."
-#~ msgstr "لا تطابق الشهادة هوية الموقع الذي يتم استردادها منه."
-
-#~ msgid "The certificate's activation time is still in the future."
-#~ msgstr "وقت تفعيل الشهادة في المستقبل."
-
-#~ msgid "The certificate has expired"
-#~ msgstr "الشهادة منتهية"
-
-#~ msgid ""
-#~ "The certificate has been revoked according to the GTlsConnection's "
-#~ "certificate revocation list."
-#~ msgstr "تم إبطال الشهادة وفقا لقائمة GTlsConnection's لإبطال الشهادات."
-
-#~ msgid "The certificate's algorithm is considered insecure."
-#~ msgstr "خوارزمية الشهادة تعتبر غير آمنة."
-
-#~ msgid "Some other error occurred validating the certificate."
-#~ msgstr "حدثت بعض الأخطاء عند التحقق من صحة الشهادة."
-
-#~ msgid "_Export certificate"
-#~ msgstr "_استورد الشهادة"
-
-#~ msgid "Self-signed"
-#~ msgstr "وقّع ذاتيا"
-
-#~ msgid "Security details"
-#~ msgstr "تفاصيل أمنية"
-
-#~ msgid "Paste and p_roceed"
-#~ msgstr "ألصق ثم تابع"
-
-#~ msgid "Not verified"
-#~ msgstr "غير متحقق منه"
-
-#~ msgid "Verified and encrypted connection"
-#~ msgstr "التحقق من الاتصال وتشفيره"
-
-#~ msgid "Open, unencrypted connection"
-#~ msgstr "اتصال مفتوح وغير مشفر"
-
-#~ msgid "Align sidepanel to the right"
-#~ msgstr "محاذاة اللوحة الجانبية إلى اليمين"
-
-#~ msgid "Close panel"
-#~ msgstr "أغلق الشريط"
-
-#~ msgid "Align sidepanel to the left"
-#~ msgstr "محاذاة اللوحة الجانبية إلى اليسار"
-
-#~ msgid "Show Speed Dial"
-#~ msgstr "عرض الطلب السريع"
-
-#~ msgid "Show Homepage"
-#~ msgstr "أظهر الصفحة الرئيسية"
-
-#~ msgid "Japanese (SHIFT_JIS)"
-#~ msgstr "ياباني (_Shift-JIS)"
-
-#~ msgid "Custom..."
-#~ msgstr "خصص..."
-
-#~ msgid "New tab"
-#~ msgstr "تبويب جديد"
-
-#~ msgid "New window"
-#~ msgstr "نافذة جديدة"
-
-#~ msgid "Default"
-#~ msgstr "المبدئي"
-
-#~ msgid "Icons"
-#~ msgstr "أيقونات"
-
-#~ msgid "Text"
-#~ msgstr "نص"
-
-#~ msgid "Icons and text"
-#~ msgstr "أيقونات ونص"
-
-#~ msgid "Text beside icons"
-#~ msgstr "نص بجانب الأيقونات"
-
-#~ msgid "Automatic (GNOME or environment)"
-#~ msgstr "تلقائي (جنوم أو environment)"
-
-#~ msgid "HTTP proxy server"
-#~ msgstr "خادم بروكسي HTTP"
-
-#~ msgid "No proxy server"
-#~ msgstr "بدون خادم بروكسي"
-
-#~ msgid "Chrome"
-#~ msgstr "كروم"
-
-#~ msgid "Safari"
-#~ msgstr "سافاري"
-
-#~ msgid "iPhone"
-#~ msgstr "أي فون"
-
-#~ msgid "Firefox"
-#~ msgstr "فيَرفُكس"
-
-#~ msgid "Internet Explorer"
-#~ msgstr "إنترنت إكسبلورر"
-
-#~ msgid "Toolbar Style:"
-#~ msgstr "نمط شريط الأدوات:"
-
-#~ msgid "The style of the toolbar"
-#~ msgstr "نمط شريط الأدوات"
-
-#~ msgid "When Midori starts:"
-#~ msgstr "عندما يبدأ ميدوري:"
-
-#~ msgid "Open new pages in:"
-#~ msgstr "فتح صفحات جديدة في:"
-
-#~ msgid "Identify as"
-#~ msgstr "تعرف كـ"
-
-#~ msgid "What to identify as to web pages"
-#~ msgstr "ما اللذي تحديده كصفحات ويب"
-
-#~ msgid "Always use my font choices"
-#~ msgstr "دائماً استخدام الخطوط التي حددت"
-
-#~ msgid "Override fonts picked by websites with user preferences"
-#~ msgstr "استبدل خطوط المواقع بخطوط تفضيلات المستخدم"
-
-#~ msgid "Failed to injet stylesheet: %s"
-#~ msgstr "فشل injet لصيغة الصفحة : %s"
-
-#~ msgid "Trust this website"
-#~ msgstr "ثق بموقع الويب هذا"
-
-#~ msgid "Security unknown"
-#~ msgstr "الأمن غير معروف"
-
-#~ msgid "%s wants to save an HTML5 database."
-#~ msgstr "%s تريد حفظ قاعدة بيانات HTML5."
-
-#~ msgid "_Deny"
-#~ msgstr "_رفض"
-
-#~ msgid "_Allow"
-#~ msgstr "_سماح"
-
-#~ msgid "%s wants to know your location."
-#~ msgstr "%s يريد أن يعرف مكانك."
-
-#~ msgid "Error - %s"
-#~ msgstr "خطأ - %s"
-
-#~ msgid "The page '%s' couldn't be loaded."
-#~ msgstr "هذه الصفحة '%s' لا يمكن تحميلها."
-
-#~ msgid "Try again"
-#~ msgstr "حاول مجددا"
-
-#~ msgid "Send a message to %s"
-#~ msgstr "ارسال رسالة إلى %s"
-
-#~ msgid "Add _search engine..."
-#~ msgstr "أضف محرك بحث..."
-
-#~ msgid "Inspect _Element"
-#~ msgstr "تفقد عنصر"
-
-#~ msgid "Open Link in New _Tab"
-#~ msgstr "فتح وصلة جديدة في لسان جديد"
-
-#~ msgid "Open Link in _Foreground Tab"
-#~ msgstr "فتح الرابط في لسان للأمام"
-
-#~ msgid "Open Link in _Background Tab"
-#~ msgstr "فتح الرابط في لسان في الخلف"
-
-#~ msgid "Open Link in New _Window"
-#~ msgstr "فتح الرابط في نافذة جديدة"
-
-#~ msgid "Open Link as Web A_pplication"
-#~ msgstr "فتح الرابط كتطبيق"
-
-#~ msgid "Copy Link de_stination"
-#~ msgstr "انسخ وجهة الرابط"
-
-#~ msgid "Open _Image in New Tab"
-#~ msgstr "فتح الصورة في لسان جديد"
-
-#~ msgid "Copy Im_age"
-#~ msgstr "نسخ الصورة"
-
-#~ msgid "Save I_mage"
-#~ msgstr "حفظ الصورة"
-
-#~ msgid "Open in Image _Viewer"
-#~ msgstr "افتح في عارض الصور"
-
-#~ msgid "Copy Video _Address"
-#~ msgstr "نسخ عنوان الفيديو"
-
-#~ msgid "Download _Video"
-#~ msgstr "تحميل الفيديو"
-
-#~ msgid "Search _with"
-#~ msgstr "بحث باستخدام"
-
-#~ msgid "_Search the Web"
-#~ msgstr "_بحث في الانترنت"
-
-#~ msgid "Open Address in New _Tab"
-#~ msgstr "فتح العنوان في لسان جديد"
-
-#~ msgid "Open _Frame in New Tab"
-#~ msgstr "فتح في لسان جديد"
-
-#~ msgid "Open or download file from %s"
-#~ msgstr "فتح أو تحميل الملف من %s"
-
-#~ msgid "File Name: %s"
-#~ msgstr "اسم الملف: %s"
-
-#~ msgid "File Type: '%s'"
-#~ msgstr "نوع الملف: '%s'"
-
-#~ msgid "File Type: %s ('%s')"
-#~ msgstr "نوع الملف: %s ('%s')"
-
-#~ msgid "Size: %s"
-#~ msgstr "الحجم: %s"
-
-#~ msgid "Inspect page - %s"
-#~ msgstr "فحص الصفحة - %s"
-
-#~ msgid "No documentation installed"
-#~ msgstr "لا توجد وثائق مثبتة"
-
-#~ msgid "Midori doesn't store any personal data:"
-#~ msgstr "لا يخزن ميدوري أي بيانات شخصية:"
-
-#~ msgid "No history or web cookies are being saved."
-#~ msgstr "لم يتم حفظ التاريخ أو كعكات الويب."
-
-#~ msgid "Extensions are disabled."
-#~ msgstr "تعطيل الملحقات."
-
-#~ msgid "HTML5 storage, local database and application caches are disabled."
-#~ msgstr "يتم تعطيل تخزين HTML5، قاعدة البيانات المحلية ومخابئ التطبيق."
-
-#~ msgid "Midori prevents websites from tracking the user:"
-#~ msgstr "ميدوري يمنع المواقع من تعقب المستخدم:"
-
-#~ msgid "Referrer URLs are stripped down to the hostname."
-#~ msgstr "تجريد إحالات URLs إلى اسم المضيف."
-
-#~ msgid "DNS prefetching is disabled."
-#~ msgstr "تعطيل الجلب المسبق DNS."
-
-#~ msgid "The language and timezone are not revealed to websites."
-#~ msgstr "اللغة والمنطقة الزمنية لا يكشف عنها لمواقع ويب."
-
-#~ msgid "Flash and other Netscape plugins cannot be listed by websites."
-#~ msgstr "لا يمكن إدراج الفلاش وغيرها من إضافات Netscape بالمواقع."
-
-#~ msgid "Version numbers in brackets show the version used at runtime."
-#~ msgstr "أرقام إصدار في أقواس تظهر النسخة المستخدمة في التشغيل."
-
-#~ msgid "Page loading delayed"
-#~ msgstr "تأخير تحميل الصفحة"
-
-#~ msgid "Loading delayed either due to a recent crash or startup preferences."
-#~ msgstr "تأخر التحميل إما بسبب انهيار أو تفضيلات بدء التشغيل."
-
-#~ msgid "Load Page"
-#~ msgstr "تحميل الصفحة"
-
-#~ msgid "Blank page"
-#~ msgstr "صفحة فارغة"
-
-#~ msgid "_Duplicate Tab"
-#~ msgstr "_ضاعف اللسان"
-
-#~ msgid "Show Tab _Label"
-#~ msgstr "عرض عنوان اللسان"
-
-#~ msgid "Show Tab _Icon Only"
-#~ msgstr "عرض أيقونة اللسان فقط"
-
-#~ msgid "Close Ot_her Tab"
-#~ msgid_plural "Close Ot_her Tabs"
-#~ msgstr[0] "أغلق التبويب الآخر"
-#~ msgstr[1] "أغلق التبويبان أخر_ان"
-#~ msgstr[2] "أغلق التبويبات الأخر_ى"
-#~ msgstr[3] "أغلق التبويبات الأخر_ى"
-#~ msgstr[4] "أغلق التبويبات الأخر_ى"
-#~ msgstr[5] "أغلق التبويبات الأخر_ى"
-
-#~ msgid "previous"
-#~ msgstr "السّابق"
-
-#~ msgid "next"
-#~ msgstr "التّالي"
-
-#~ msgid "Print background images"
-#~ msgstr "طباعة صورة الخلفية"
-
-#~ msgid "Whether background images should be printed"
-#~ msgstr "إذا كان ينبغي طباعة صور الخلفية"
-
-#~ msgid "Features"
-#~ msgstr "الميزّات"
-
-#~ msgid "%s of %s"
-#~ msgstr "%s لـ %s"
-
-#~ msgid "%d hour"
-#~ msgid_plural "%d hours"
-#~ msgstr[0] "%d ساعة"
-#~ msgstr[1] "%d ساعة"
-#~ msgstr[2] "%d ساعات"
-#~ msgstr[3] "%d ساعات"
-#~ msgstr[4] "%d ساعات"
-#~ msgstr[5] "%d ساعات"
-
-#~ msgid "%d minute"
-#~ msgid_plural "%d minutes"
-#~ msgstr[0] "%d دقيقة"
-#~ msgstr[1] "%d دقيقة"
-#~ msgstr[2] "%d دقيقتان"
-#~ msgstr[3] "%d دقائق"
-#~ msgstr[4] "%d دقائق"
-#~ msgstr[5] "%d دقائق"
-
-#~ msgid "%d second"
-#~ msgid_plural "%d seconds"
-#~ msgstr[0] "%d ثانية"
-#~ msgstr[1] "%d ثانية"
-#~ msgstr[2] "%d ثوان"
-#~ msgstr[3] "%d ثوان"
-#~ msgstr[4] "%d ثوان"
-#~ msgstr[5] "%d ثوان"
-
-#~ msgid " - %s remaining"
-#~ msgstr " - %s متبقي"
-
-#~ msgid "?B"
-#~ msgstr "؟B"
-
-#~ msgid " (%s/s)"
-#~ msgstr " (%s/s)"
-
-#~ msgid "The downloaded file is erroneous."
-#~ msgstr "الملف المحمل خاطئ."
-
-#~ msgid ""
-#~ "The checksum provided with the link did not match. This means the file is "
-#~ "probably incomplete or was modified afterwards."
-#~ msgstr ""
-#~ "ارتباط مزود المجموع الاختباري غير متطابق. هذا يعني أن الملف ربما ناقص أو "
-#~ "تم تعديله."
-
-#~ msgid "The file \"%s\" can't be saved in this folder."
-#~ msgstr "الملف \"%s\" لا يمكن حفظه في هذا المجلد."
-
-#~ msgid "You don't have permission to write in this location."
-#~ msgstr "ليس لديك إذن الكتابة في هذا الموقع."
-
-#~ msgid "There is not enough free space to download \"%s\"."
-#~ msgstr "لا توجد مساحة حرة كافية لتحميل \"%s\"."
-
-#~ msgid "The file needs %s but only %s are left."
-#~ msgstr "الملف يحتاج %s ولكن فقط %s مساحة حرة."
-
-#~ msgid "Speed Dial"
-#~ msgstr "الاتصال السريع"
-
-#~ msgid "Click to add a shortcut"
-#~ msgstr "انقر لإضافة اختصار"
-
-#~ msgid "Enter shortcut address"
-#~ msgstr "أدخل عنوان الاختصار"
-
-#~ msgid "Enter shortcut title"
-#~ msgstr "أدخل وسم للاختصار"
-
-#~ msgid "Startup"
-#~ msgstr "بدء التشغيل"
-
-#~ msgid "Homepage:"
-#~ msgstr "الصفحة الرئيسية:"
-
-#~ msgid "Use _current page"
-#~ msgstr "استخدام الصفحة الحالية"
-
-#~ msgid "Use current page as homepage"
-#~ msgstr "استخدام الصفحة الحالية كصفحة بداية"
-
-#~ msgid "Proportional Font Family"
-#~ msgstr "مجموعة خطوط متناسبة"
-
-#~ msgid "The default font family used to display text"
-#~ msgstr "استخدم مجموعة الخط الافتراضي لعرض النص"
-
-#~ msgid "The default font size used to display text"
-#~ msgstr "حجم الخط الافتراضي المستخدم لعرض النص"
-
-#~ msgid "Fixed-width Font Family"
-#~ msgstr "عرض مجموعة خط ثابتة"
-
-#~ msgid "The font family used to display fixed-width text"
-#~ msgstr "مجموعة الخطوط المستخدمة لعرض النص ثابت العرض"
-
-#~ msgid "The font size used to display fixed-width text"
-#~ msgstr "حجم الخط المستخدم لعرض النص ثابت العرض"
-
-#~ msgid "Minimum Font Size"
-#~ msgstr "حجم الخط الأدنى"
-
-#~ msgid "The minimum font size used to display text"
-#~ msgstr "حجم الخط الأدنى المستخدم لعرض النص"
-
-#~ msgid "Preferred Encoding"
-#~ msgstr "الترميز المفضل"
-
-#~ msgid "Behavior"
-#~ msgstr "السلوك"
-
-#~ msgid "Load images automatically"
-#~ msgstr "تحميل الصور تلقائيا"
-
-#~ msgid "Enable Spell Checking"
-#~ msgstr "تمكين التدقيق الإملائي"
-
-#~ msgid "Enable scripts"
-#~ msgstr "تمكين النصوص البرمجية"
-
-#~ msgid "Enable Netscape plugins"
-#~ msgstr "تمكين إضافات نتسكيب"
-
-#~ msgid "Zoom Text and Images"
-#~ msgstr "تكبير النص والصور"
-
-#~ msgid "Allow scripts to open popups"
-#~ msgstr "السماح للنصول البرمجية بفتح النوافذ المنبثقة"
-
-#~ msgid "Whether scripts are allowed to open popup windows automatically"
-#~ msgstr "حتى لو كان مسموحا للنصوص البرمجية لفتح النوافذ المنبثقة تلقائيا"
-
-#~ msgid "Kinetic scrolling"
-#~ msgstr "حركية التمرير"
-
-#~ msgid "Whether scrolling should kinetically move according to speed"
-#~ msgstr "على كل ألأحوال حركة التمرير تناسب سرعة التنقل"
-
-#~ msgid "Middle click opens Selection"
-#~ msgstr "نقر الزر الأوسط يفتح التحديد"
-
-#~ msgid "Load an address from the selection via middle click"
-#~ msgstr "تحميل عنوان محدد بالنقر على الزر الاوسط"
-
-#~ msgid "Enable WebGL support"
-#~ msgstr "تمكين قاعدة بيانات دعم HTML5 في كل الأحوال"
-
-#~ msgid "Flash window on background tabs"
-#~ msgstr "فتح الرابط في لسان في الخلف"
-
-#~ msgid "Preferred languages"
-#~ msgstr "اللغات المفضلة"
-
-#~ msgid ""
-#~ "A comma separated list of languages preferred for rendering multilingual "
-#~ "webpages, for example \"de\", \"ru,nl\" or \"en-us;q=1.0, fr-fr;q=0.667\""
-#~ msgstr ""
-#~ "نقطة للفصل بين قائمة من اللغات المفضلة لجعل صفحات الوب متعددة اللغات, "
-#~ "كمثال \"ar\", \"ru,nl\" or \"en-us;q=1.0, fr-fr;q=0.667\""
-
-#~ msgid "Save downloaded files to:"
-#~ msgstr "حفظ الملفات التي تم تحميلها في:"
-
-#~ msgid "Browsing"
-#~ msgstr "تصفح"
-
-#~ msgid "Close Buttons on Tabs"
-#~ msgstr "أزرار الإغلاق على الألسنة"
-
-#~ msgid "Always Show Tabbar"
-#~ msgstr "أظهر دائما شريط التبويب"
-
-#~ msgid "Open Tabs next to Current"
-#~ msgstr "فتح علامات بجانب الحالية"
-
-#~ msgid ""
-#~ "Whether to open new tabs next to the current tab or after the last one"
-#~ msgstr "فتح علامات تبويب جديدة بجوار علامة التبويب الحالية أو بعد الأخيرة"
-
-#~ msgid "Open tabs in the background"
-#~ msgstr "فتح علامات التبويب في الخلفية"
-
-#~ msgid "Text Editor"
-#~ msgstr "محرر المصوص"
-
-#~ msgid "News Aggregator"
-#~ msgstr "مجمع الأخبار"
-
-#~ msgid "Network"
-#~ msgstr "شبكة"
-
-#~ msgid "Proxy server"
-#~ msgstr "خادم بروكسي"
-
-#~ msgid "Hostname"
-#~ msgstr "اسم الجهاز"
-
-#~ msgid "Port"
-#~ msgstr "المنفذ"
-
-#~ msgid "The maximum size of cached pages on disk"
-#~ msgstr "المساحة القصوى المخصصة لحفظ الصفحات على القرص"
-
-#~ msgid "MB"
-#~ msgstr "MB"
-
-#~ msgid "Add search engine"
-#~ msgstr "أضف أداة البحث"
-
-#~ msgid "Edit search engine"
-#~ msgstr "حرر أداة البحث"
-
-#~ msgid "_Name:"
-#~ msgstr "_الإسم:"
-
-#~ msgid "_Address:"
-#~ msgstr "_عنوان:"
-
-#~ msgid "_Token:"
-#~ msgstr "_علامة:"
-
-#~ msgid "Manage Search Engines"
-#~ msgstr "إدارة أدوات البحث"
-
-#~ msgid "Failed to initialize history: %s"
-#~ msgstr "فشل في تهيئة التاريخ: %s"
-
-#~ msgid "Failed to select from history: %s"
-#~ msgstr "فشل الاختيار من التاريخ: %s"
-
-#~ msgid "Search for %s"
-#~ msgstr "بحث عن %s"
-
-#~ msgid "Search with %s"
-#~ msgstr "البحث بـ %s"
-
-#~ msgid "Search with…"
-#~ msgstr "بحث باستخدام…"
-
-#~ msgid "Open with"
-#~ msgstr "إفتح بـ"
-
-#~ msgid "Choose an application or command to open \"%s\":"
-#~ msgstr "إختر تطبيقا أو أمرا لفتح \"%s\":"
-
-#~ msgid "Could not run external program."
-#~ msgstr "لا يمكن تشغيل البرنامج الخارجي."
-
-#~ msgid "_Inline Find:"
-#~ msgstr "_بحث مضمن:"
-
-#~ msgid "Match Case"
-#~ msgstr "حالة تطابق"
-
-#~ msgid "Close Findbar"
-#~ msgstr "إغلاق شريط المكتشف"
-
-#~ msgid "The file '<b>%s</b>' has been downloaded."
-#~ msgstr "الملف '<b>%s</b>' تم تحميله."
-
-#~ msgid "Transfer completed"
-#~ msgstr "إنتهاء النقل"
-
-#~ msgid "Some files are being downloaded"
-#~ msgstr "يتم تحميل بعض الملفات"
-
-#~ msgid "_Quit Midori"
-#~ msgstr "_خروج من ميدوري"
-
-#~ msgid "The transfers will be cancelled if Midori quits."
-#~ msgstr "سيتم إلغاء النقل اذا تم إنها ميدوري."
-
-#~ msgid "Failed to add bookmark item: %s\n"
-#~ msgstr "فشل إضافة العلامة: %s\n"
-
-#~ msgid "Failed to update bookmark : %s\n"
-#~ msgstr "فشل تجديد العلامة: %s\n"
-
-#~ msgid "Edit the selected bookmark"
-#~ msgstr "حرر العلامة المحددة"
-
-#~ msgid "Delete the selected bookmark"
-#~ msgstr "حذف العلامة المحددة"
-
-#~ msgid "Add a new folder"
-#~ msgstr "أضف مجلد جديد"
-
-#~ msgid "Search Bookmarks"
-#~ msgstr "بحث في العلامات"
-
-#~ msgid "History"
-#~ msgstr "السجل"
-
-#~ msgid "Today"
-#~ msgstr "اليوم"
-
-#~ msgid "%d day ago"
-#~ msgid_plural "%d days ago"
-#~ msgstr[0] "%d سنة مضت"
-#~ msgstr[1] "%d سنتان مضت"
-#~ msgstr[2] "%d سنوات مضت"
-#~ msgstr[3] "%d سنوات مضت"
-#~ msgstr[4] "%d سنوات مضت"
-#~ msgstr[5] "%d سنوات مضت"
-
-#~ msgid "A week ago"
-#~ msgstr "قبل أسبوع"
-
-#~ msgid "Failed to remove history item: %s\n"
-#~ msgstr "فشل حذف عنصر السجل: %s\n"
-
-#~ msgid "Are you sure you want to remove all history items?"
-#~ msgstr "هل تريد حذف كل عناصر التاريخ؟"
-
-#~ msgid "Bookmark the selected history item"
-#~ msgstr "علم التاريخ المحدد"
-
-#~ msgid "Delete the selected history item"
-#~ msgstr "حذف كل عناصر التاريخ"
-
-#~ msgid "Clear the entire history"
-#~ msgstr "مسح تاريخ الدخول"
-
-#~ msgid "Transfers"
-#~ msgstr "النقل"
-
-#~ msgid "Copy Link Loc_ation"
-#~ msgstr "انسخ موقع الرابط"
-
-#~ msgid "Authentication Required"
-#~ msgstr "مطلوب المصادقة"
-
-#~ msgid ""
-#~ "A username and a password are required\n"
-#~ "to open this location:"
-#~ msgstr ""
-#~ "مطلوب اسم مستخدم وكلمة \n"
-#~ "مرور لفتح هذا الموقع:"
-
-#~ msgid "Username"
-#~ msgstr "إسم المستخدم"
-
-#~ msgid "Password"
-#~ msgstr "كلمة المرور"
-
-#~ msgid "Named icon '%s' couldn't be loaded"
-#~ msgstr "الأيقونة المحددة '%s' لا يمكن تحميلها"
-
-#~ msgid "Stock icon '%s' couldn't be loaded"
-#~ msgstr "الرمز المخزن '%s' لا يمكن تحميله"
-
-#~ msgid "Animation frames are broken"
-#~ msgstr "تعطل إطارات الصور المتحركة"
-
-#~ msgid "Property '%s' is invalid for %s"
-#~ msgstr "خصائص '%s' غير صالحة لـ %s"
-
-#~ msgid "Choose file"
-#~ msgstr "إختر ملف"
-
-#~ msgid "Choose folder"
-#~ msgstr "إختر مجلد"
-
-#~ msgid "1 hour"
-#~ msgstr "1 ساعة"
-
-#~ msgid "1 day"
-#~ msgstr "1 يوم"
-
-#~ msgid "1 week"
-#~ msgstr "1 أسبوع"
-
-#~ msgid "1 month"
-#~ msgstr "1 شهر"
-
-#~ msgid "1 year"
-#~ msgstr "1 سنة"
-
-#~ msgid "Preferences for %s"
-#~ msgstr "تفضيلات ل %s"
-
-#~ msgid "MD5-Checksum:"
-#~ msgstr "MD5-Checksum:"
-
-#~ msgid "SHA1-Checksum:"
-#~ msgstr "SHA1-Checksum:"
-
-#~ msgid "Configure Advertisement filters"
-#~ msgstr "إعداد مرشح الإعلانات"
-
-#~ msgid ""
-#~ "Type the address of a preconfigured filter list in the text entry and "
-#~ "click \"Add\" to add it to the list. You can find more lists at %s."
-#~ msgstr ""
-#~ "أدخل عناون القائمة ترشيحات المعدة مسبقا في النص أدخل و إضغط على \"أضف\" "
-#~ "لإضافتها إلى القائمة. يمكنك العثور على المزيد من القوائم في %s."
-
-#~ msgid "Edit rule"
-#~ msgstr "تحرير قاعد"
-
-#~ msgid "_Rule:"
-#~ msgstr "_قاعدة:"
-
-#~ msgid "Bl_ock link"
-#~ msgstr "منع الروابط"
-
-#~ msgid "Advertisement blocker"
-#~ msgstr "منع الإعلانات"
-
-#~ msgid "Block advertisements according to a filter list"
-#~ msgstr "منع الإعلانات وفقا لقائمة التصفية"
-
-#~ msgid ""
-#~ "This page appears to contain a user script. Do you wish to install it?"
-#~ msgstr ""
-#~ "يبدو أن هذه الصفحة تحتوي على نصوص برمجية للمستخدم. هل ترغب في تثبيته؟"
-
-#~ msgid "_Install user script"
-#~ msgstr "_تثبيت النصوص البرمجية"
-
-#~ msgid ""
-#~ "This page appears to contain a user style. Do you wish to install it?"
-#~ msgstr "هذه الصفحة تحتوي على نمط المستخدم. هل ترغب في تثبيته؟"
-
-#~ msgid "_Install user style"
-#~ msgstr "_تثبيت نمط المستخدم"
-
-#~ msgid "Userscripts"
-#~ msgstr "النصوص البرمجية للمستعمل"
-
-#~ msgid "Userstyles"
-#~ msgstr "أنماط المستعمل"
-
-#~ msgid "Do you want to delete '%s'?"
-#~ msgstr "هل تريد حذف '%s'؟"
-
-#~ msgid "Delete user script"
-#~ msgstr "حذف النصوص البرمجية المستخدمة"
-
-#~ msgid "Delete user style"
-#~ msgstr "حذف نمط المستخدم"
-
-#~ msgid "The file <b>%s</b> will be permanently deleted."
-#~ msgstr "الملف <b>%s</b> سيحذف بشكل نهائي."
-
-#~ msgid "Open in Text Editor"
-#~ msgstr "فتح في محرر نص"
-
-#~ msgid "Open Target Folder"
-#~ msgstr "فتح مجلد الهدف"
-
-#~ msgid "Add new addon"
-#~ msgstr "إضافة ملحق جديد"
-
-#~ msgid "Remove selected addon"
-#~ msgstr "إزالة الملحقات المختارة"
-
-#~ msgid "User addons"
-#~ msgstr "إضافات المستخدم"
-
-#~ msgid "Can't monitor folder '%s': %s"
-#~ msgstr "لا تستطيع مراقبة المجلد '%s': %s"
-
-#~ msgid "Support for userscripts and userstyles"
-#~ msgstr "دعم النصوص البرمجية وأنماط المستخدم"
-
-#~ msgid "Colorful Tabs"
-#~ msgstr "الألسنة الملونة"
-
-#~ msgid "Tint each tab distinctly"
-#~ msgstr "لون كل علامة تبويب"
-
-#~ msgid "Cookie Manager"
-#~ msgstr "مدير الكعكات"
-
-#~ msgid "Delete All"
-#~ msgstr "حذف الكل"
-
-#~ msgid ""
-#~ "Deletes all shown cookies. If a filter is set, only those cookies are "
-#~ "deleted which match the filter."
-#~ msgstr ""
-#~ "حذف جميع ملفات تعريف الارتباط. إذا تم تعيين عامل تصفية ، يتم حذف فقط تلك "
-#~ "الملفات التي تطابق عامل التصفية."
-
-#~ msgid "Expand All"
-#~ msgstr "توسيع الكل"
-
-#~ msgid "Collapse All"
-#~ msgstr "طوي الكل"
-
-#~ msgid "Do you really want to delete all cookies?"
-#~ msgstr "هل تريد حذف جميع ملفات تعريف الارتباط؟"
-
-#~ msgid "Question"
-#~ msgstr "سؤال"
-
-#~ msgid "Only cookies which match the filter will be deleted."
-#~ msgstr "سيتم حذف الكوكيز التي تطابق عامل التصفية."
-
-#~ msgid "At the end of the session"
-#~ msgstr "في نهاية الدورة"
-
-#~ msgid ""
-#~ "<b>Host</b>: %s\n"
-#~ "<b>Name</b>: %s\n"
-#~ "<b>Value</b>: %s\n"
-#~ "<b>Path</b>: %s\n"
-#~ "<b>Secure</b>: %s\n"
-#~ "<b>Expires</b>: %s"
-#~ msgstr ""
-#~ "<b>المضيف</b>: %s\n"
-#~ "<b>الإسم</b>: %s\n"
-#~ "<b>القيمة</b>: %s\n"
-#~ "<b>المسار</b>: %s\n"
-#~ "<b>الأمان</b>: %s\n"
-#~ "<b>الإنتهاء</b>: %s"
-
-#~ msgid "Yes"
-#~ msgstr "نعم"
-
-#~ msgid "No"
-#~ msgstr "لا"
-
-#~ msgid ""
-#~ "<b>Domain</b>: %s\n"
-#~ "<b>Cookies</b>: %d"
-#~ msgstr ""
-#~ "<b>نطاق</b>: %s\n"
-#~ "<b>كوكيز</b>: %d"
-
-#~ msgid "_Expand All"
-#~ msgstr "_توسيع الكل"
-
-#~ msgid "_Collapse All"
-#~ msgstr "_طوي الكل"
-
-#~ msgid "Search Cookies by Name or Domain"
-#~ msgstr "البحث عن ملفات تعريف الارتباط بالاسم أو المجال"
-
-#~ msgid "List, view and delete cookies"
-#~ msgstr "قائمة ، عرض وحذف الكوكيز"
-
-#~ msgid "Copy Tab _Addresses"
-#~ msgstr "نسخ عناواين التبويب"
-
-#~ msgid "Copy Addresses of Tabs"
-#~ msgstr "نسخة من عناوين علامات الجدولة"
-
-#~ msgid "Copy the addresses of all tabs to the clipboard"
-#~ msgstr "نسخ عناوين كافة علامات التبويب إلى الحافظة"
-
-#~ msgid "Delayed load"
-#~ msgstr "التحميل المتأخر"
-
-#~ msgid "Delay in seconds until loading the page:"
-#~ msgstr "تأخير بالثوان حتى تحميل الصفحة:"
-
-#~ msgid "Delay page load until you actually use the tab."
-#~ msgstr "تأخير تحميل الصفحة حتى يمكنك فعلا استخدام علامة التبويب."
-
-#~ msgid ""
-#~ "An error occurred when attempting to download a file with the following "
-#~ "plugin:\n"
-#~ msgstr "حدث خطأ عند محاولة تحميل ملف مع البرنامج المساعد التالية:\n"
-
-#~ msgid "External Download Manager - Aria2"
-#~ msgstr "مدير تحميل خارجي - Aria2"
-
-#~ msgid "Download files with Aria2"
-#~ msgstr "تحميل ملفات باستخدام Aria2"
-
-#~ msgid "External Download Manager - SteadyFlow"
-#~ msgstr "مدير تحميل خارجي - SteadyFlow"
-
-#~ msgid "Download files with SteadyFlow"
-#~ msgstr "تحميل ملفات باستخدام SteadyFlow"
-
-#~ msgid "Command:"
-#~ msgstr "أمر:"
-
-#~ msgid "Download files with \"%s\" or a custom command"
-#~ msgstr "تحميل الملفات باستخدام \"%s\" أو أمر مخصص"
-
-#~ msgid "External Download Manager - CommandLine"
-#~ msgstr "مدير تحميل خارجي - CommandLine"
-
-#~ msgid "Failed to find required Atom \"entry\" elements in XML data."
-#~ msgstr "فشل العثور على Atom المطلوب \"entry\" عناصر في بيانات XML."
-
-#~ msgid "Failed to find required Atom \"feed\" elements in XML data."
-#~ msgstr "فشل العثور على Atom المطلوب \"feed\" عناصر في بيانات XML."
-
-#~ msgctxt "Feed"
-#~ msgid "Last updated: %s."
-#~ msgstr "آخر التحديثات: %s."
-
-#~ msgid "Feeds"
-#~ msgstr "تغذيات"
-
-#~ msgid "Add new feed"
-#~ msgstr "أضف تغذية جديدة"
-
-#~ msgid "Delete feed"
-#~ msgstr "حذف التغذية"
-
-#~ msgid "_Feeds"
-#~ msgstr "_تغذية"
-
-#~ msgid "Failed to find root element in feed XML data."
-#~ msgstr "فشل العثور على عنصر الجذر في بيانات تغذية XML."
-
-#~ msgid "Unsupported feed format."
-#~ msgstr "صيغة الخدمة غير معتمدة."
-
-#~ msgid "Failed to parse XML feed: %s"
-#~ msgstr "فشل تحليل تغذية XML: %s"
-
-#~ msgid "Failed to find \"channel\" element in RSS XML data."
-#~ msgstr "فشل العثور على \"channel\" عنصر في بيانات RSS XML."
-
-#~ msgid "Unsupported RSS version found."
-#~ msgstr "العثور على إصدار RSS غير معتمد."
-
-#~ msgid "Failed to find required RSS \"item\" elements in XML data."
-#~ msgstr "فشل العثور على RSS المطلوب \"item\" عناصر في بيانات XML."
-
-#~ msgid "Failed to find required RSS \"channel\" elements in XML data."
-#~ msgstr "فشل العثور على RSS المطلوب \"channel\" عناصر في بيانات XML."
-
-#~ msgid "Feed '%s' already exists"
-#~ msgstr "التغذية '%s' مدخلة مسبقاً"
-
-#~ msgid "Error loading feed '%s'"
-#~ msgstr "خطأ في تحميل التغذية '%s'"
-
-#~ msgid "Feed Panel"
-#~ msgstr "لوحة التغذية"
-
-#~ msgid "Read Atom/ RSS feeds"
-#~ msgstr "قراءة التغذيات Atom/ RSS"
-
-#~ msgid "Failed to add form value: %s\n"
-#~ msgstr "فشل في إضافة قيمة النموذج: %s\n"
-
-#~ msgid "Form history"
-#~ msgstr "تاريخ النموذج"
-
-#~ msgid ""
-#~ "Master password required\n"
-#~ "to open password database"
-#~ msgstr ""
-#~ "كلمة المرور الرئيسية المطلوبة \n"
-#~ "لفتح قاعدة بيانات كلمات المرور"
-
-#~ msgid "Remember password on this page?"
-#~ msgstr "تذكر كلمة المرور على هذه الصفحة؟"
-
-#~ msgid "Not now"
-#~ msgstr "ليس الآن"
-
-#~ msgid "Never for this page"
-#~ msgstr "ابدأ لهذه الصفحة"
-
-#~ msgid "Toggle form history state"
-#~ msgstr "تبديل شكل التاريخ"
-
-#~ msgid "Activate or deactivate form history for the current tab."
-#~ msgstr "تنشيط أو إلغاء تنشيط نموذج التاريخ لعلامة التبويب الحالية."
-
-#~ msgid "Failed to execute database statement: %s\n"
-#~ msgstr "فشل في تنفيذ بيان قاعدة البيانات: %s\n"
-
-#~ msgid "Only activate form history via hotkey (Ctrl+Shift+F) per tab"
-#~ msgstr ""
-#~ "فقط تنشيط النموذج التاريخ عن طريق مفتاح التشغيل السريع (Ctrl + Shift + F) "
-#~ "في علامة التبويب"
-
-#~ msgid "Form history filler"
-#~ msgstr "ترشيح صيغة التاريخ"
-
-#~ msgid "Stores history of entered form data"
-#~ msgstr "تخزين تاريخ بيانات الدخول"
-
-#~ msgid "Failed to select suggestions\n"
-#~ msgstr "فشل في تحديد الاقتراحات\n"
-
-#~ msgid "There are no unvisited tabs"
-#~ msgstr "لا توجد تبويبات لم تسبق زيارتها"
-
-#~ msgid "History-List"
-#~ msgstr "قائمة التاريخ"
-
-#~ msgid "Tab closing behavior"
-#~ msgstr "سلوك إغلاق التبويب"
-
-#~ msgid "Do nothing"
-#~ msgstr "لا تفعل شيئا"
-
-#~ msgid "Switch to last viewed tab"
-#~ msgstr "التبديل إلى آخر تبويب تمت مشاهدته"
-
-#~ msgid "Switch to newest tab"
-#~ msgstr "التحول إلى احدث تبويب"
-
-#~ msgid "Next new Tab (History List)"
-#~ msgstr "علامة التبويب الجديدة القادمة (قائمة التاريخ)"
-
-#~ msgid "Next new tab from history"
-#~ msgstr "التبويب الجديد من التاريخ"
-
-#~ msgid "Previous new Tab (History List)"
-#~ msgstr "تبويب جديدة متقدمة (قائمة التاريخ)"
-
-#~ msgid "Previous new tab from history"
-#~ msgstr "علامة تبويب جديدة من التاريخ السابق"
-
-#~ msgid "Display tab in background (History List)"
-#~ msgstr "عرض التبويب في الخلفية (قائمة التاريخ)"
-
-#~ msgid "Display the current selected tab in background"
-#~ msgstr "عرض علامة التبويب الحالية المحددة في الخلفية"
-
-#~ msgid "History List"
-#~ msgstr "سجل التاريخ"
-
-#~ msgid "Move to the last used tab when switching or closing tabs"
-#~ msgstr "الانتقال إلى علامة التبويب الأخيرة عند إغلاق علامات التبويب"
-
-#~ msgid "Mouse Gestures"
-#~ msgstr "إيماءات الفأرة"
-
-#~ msgid "Control Midori by moving the mouse"
-#~ msgstr "تحكم بميدوري عن طريق تحريك الفأرة"
-
-#~ msgid "Reload page or stop loading"
-#~ msgstr "تحديث الصفحة أو إيقاف التحميل"
-
-#~ msgid "Customize Keyboard shortcuts"
-#~ msgstr "تخصيص اختصارات لوحة المفاتيح"
-
-#~ msgid "Customize Sh_ortcuts..."
-#~ msgstr "تخصيص الاختصارات..."
-
-#~ msgid "Shortcuts"
-#~ msgstr "إختصارات"
-
-#~ msgid "View and edit keyboard shortcuts"
-#~ msgstr "عرض وتحرير إختصار لوحة المفاتيح"
-
-#~ msgid "Statusbar Clock"
-#~ msgstr "شريط حالة الساعة"
-
-#~ msgid "Display date and time in the statusbar"
-#~ msgstr "عرض التاريخ والوقت في شريط الحالة"
-
-#~ msgid "Images"
-#~ msgstr "صور"
-
-#~ msgid "Scripts"
-#~ msgstr "نصوص برمجية"
-
-#~ msgid "Statusbar Features"
-#~ msgstr "سمات شريط الحالة"
-
-#~ msgid "Easily toggle features on web pages on and off"
-#~ msgstr "تبديل ملامح بسهولة على صفحات الويب تشغيل وإيقاف"
-
-#~ msgid "Tab Panel"
-#~ msgstr "لوحة التبويب"
-
-#~ msgid "T_ab Panel"
-#~ msgstr "لوحة التبويب"
-
-#~ msgid "Show tabs in a vertical panel"
-#~ msgstr "عرض علامات التبويب في لوحة عمودية"
-
-#~ msgid "Only Icons on Tabs by default"
-#~ msgstr "فقط الرموز على علامات التبويب افتراضيا"
-
-#~ msgid "New tabs have no label by default"
-#~ msgstr "علامات التبويب الجديدة ليس لها تسمية افتراضيا"
-
-#~ msgid "Customize Toolbar"
-#~ msgstr "تخصيص شريط الأدوات"
-
-#~ msgid ""
-#~ "Select items to be displayed on the toolbar. Items can be reordered by "
-#~ "drag and drop."
-#~ msgstr ""
-#~ "تحديد عناصر ليتم عرضها على شريط الأدوات. يمكن ترتيب العناصر عن طريق السحب "
-#~ "والإفلات."
-
-#~ msgid "Available Items"
-#~ msgstr "العناصر المتوفرة"
-
-#~ msgid "_Customize Toolbar…"
-#~ msgstr "_تخصيص شريط الادوات…"
-
-#~ msgid "Toolbar Editor"
-#~ msgstr "محرر شريط الادوات"
-
-#~ msgid "Easily edit the toolbar layout"
-#~ msgstr "تحرير شريط الادوات بسهولة"
-
-#~ msgid "Cache HTTP communication on disk"
-#~ msgstr "إخفاء اتصالات HTTP على القرص"
-
-#~ msgid "_Bookmark"
-#~ msgstr "_علامة"
-
-#~ msgid "_Console"
-#~ msgstr "_طرفية"
-
-#~ msgid "Toplevel folder"
-#~ msgstr "مجلد المستوي عالي"
-
-#~ msgid "_Title:"
-#~ msgstr "_عنوان:"
-
-#~ msgid "_Folder:"
-#~ msgstr "_مجلد:"
-
-#~ msgid "Remember last window size"
-#~ msgstr "نتذكر حجم الإطار الماضي"
-
-#~ msgid "Whether to save the last window size"
-#~ msgstr "إذا كنت تريد حفظ حجم الإطار الأخير"
-
-#~ msgid "Last window width"
-#~ msgstr "عرض آخر نافذة"
-
-#~ msgid "The last saved window width"
-#~ msgstr "عرض آخر نافذة محفوظة"
-
-#~ msgid "Last window height"
-#~ msgstr "آخر ارتفاع للنافذة"
-
-#~ msgid "The last saved window height"
-#~ msgstr "آخر ارتفاع محفوظ للنافذة"
-
-#~ msgid "Last panel position"
-#~ msgstr "آخر موقع للوحة"
-
-#~ msgid "The last saved panel position"
-#~ msgstr "آخر موقع محفوظ للوحة"
-
-#~ msgid "Last panel page"
-#~ msgstr "آخر صفحة للوحة"
-
-#~ msgid "The last saved panel page"
-#~ msgstr "آخر صفحة لوحة محفوظة"
-
-#~ msgid "Last Web search"
-#~ msgstr "آخر بحث إنترنت"
-
-#~ msgid "The last saved Web search"
-#~ msgstr "آخر بحث ويب محفوظ"
-
-#~ msgid "Show Menubar"
-#~ msgstr "عرض شريط القوائم"
-
-#~ msgid "Whether to show the menubar"
-#~ msgstr "إظهار شريط القوائم في كل ألأحوال"
-
-#~ msgid "Show Navigationbar"
-#~ msgstr "اظهر شريط التصفح"
-
-#~ msgid "Whether to show the navigationbar"
-#~ msgstr "إظهار شريط التصفح في كل ألأحوال"
-
-#~ msgid "Show Bookmarkbar"
-#~ msgstr "إظهار العلامات"
-
-#~ msgid "Whether to show the bookmarkbar"
-#~ msgstr "إظهار العلامات في كل ألأحوال"
-
-#~ msgid "Show Panel"
-#~ msgstr "تظهر لوحة"
-
-#~ msgid "Whether to show the panel"
-#~ msgstr "إظهار لوحة في كل ألأحوال"
-
-#~ msgid "Show Statusbar"
-#~ msgstr "عرض شريط الحالة"
-
-#~ msgid "Whether to show the statusbar"
-#~ msgstr "إظهار شريط الحالة في كل ألأحوال"
-
-#~ msgid "Toolbar Items"
-#~ msgstr "عناصر شريط أدوات"
-
-#~ msgid "The items to show on the toolbar"
-#~ msgstr "العناصر التي تظهر على شريط الأدوات"
-
-#~ msgid "Compact Sidepanel"
-#~ msgstr "ضغط اللوحة الجانبية"
-
-#~ msgid "Whether to make the sidepanel compact"
-#~ msgstr "ضغط اللوحة الجانبية في كل ألأحوال"
-
-#~ msgid "Align sidepanel on the right"
-#~ msgstr "محاذاة اللوحة الجانبية على اليمين"
-
-#~ msgid "Whether to align the sidepanel on the right"
-#~ msgstr "محاذاة اللوحة الجانبية على اليمين في كل ألأحوال"
-
-#~ msgid "Open panels in separate windows"
-#~ msgstr "فتح اللوحات في إطارات منفصلة"
-
-#~ msgid "Whether to always open panels in separate windows"
-#~ msgstr "فتح اللوحات في إطارات منفصلة دائماً"
-
-#~ msgid "What to do when Midori starts"
-#~ msgstr "ماذا تفعل عندما يبدأ ميدوري"
-
-#~ msgid "The homepage"
-#~ msgstr "الصفحة الرئيسية"
-
-#~ msgid "Show crash dialog"
-#~ msgstr "عرض حوار التحطم"
-
-#~ msgid "The folder downloaded files are saved to"
-#~ msgstr "يتم حفظ ملفات التحميل في مجلد"
-
-#~ msgid "An external text editor"
-#~ msgstr "محرر نص خارجي"
-
-#~ msgid "An external news aggregator"
-#~ msgstr "مجمع الأخبار الخارجية"
-
-#~ msgid "Location entry Search"
-#~ msgstr "دخول مكان البحث"
-
-#~ msgid "The search to perform inside the location entry"
-#~ msgstr "أداء البحث داخل الموقع"
-
-#~ msgid "The preferred character encoding"
-#~ msgstr "ترميز الحرف المفضل"
-
-#~ msgid "Always show the tabbar"
-#~ msgstr "أظهر دائما شريط التبويب"
-
-#~ msgid "Whether tabs have close buttons"
-#~ msgstr "حتى إذا كانت العلامات على أزرار قريبة"
-
-#~ msgid "Where to open new pages"
-#~ msgstr "أين يتم فتح صفحات جديدة"
-
-#~ msgid "Whether to open new tabs in the background"
-#~ msgstr "فتح علامات تبويب جديدة في الخلفية في كل الأحوال"
-
-#~ msgid "Open popups in tabs"
-#~ msgstr "فتح النوافذ المنبثقة في علامات تبويب"
-
-#~ msgid "Whether to open popup windows in tabs"
-#~ msgstr "فتح النوافذ المنبثقة في علامات تبويب في كل الأحوال"
-
-#~ msgid "Load and display images automatically"
-#~ msgstr "تحميل وعرض الصور تلقائيا"
-
-#~ msgid "Enable embedded scripting languages"
-#~ msgstr "تمكين لغات البرمجة المضمنة"
-
-#~ msgid "Enable embedded Netscape plugin objects"
-#~ msgstr "تمكين لغات البرمجة المضمنة في إضافات نتسكيب"
-
-#~ msgid "Enable spell checking while typing"
-#~ msgstr "تمكين التدقيق الإملائي أثناء الكتابة"
-
-#~ msgid "Whether to enable HTML5 database support"
-#~ msgstr "تمكين قاعدة بيانات دعم HTML5 في كل الأحوال"
-
-#~ msgid "Whether to enable HTML5 local storage support"
-#~ msgstr "لتفعيل دعم تخزين المحلي HTML5"
-
-#~ msgid "Whether to enable offline web application cache"
-#~ msgstr "لتمكين تخزين المؤقت لتطبيقات الوب"
-
-#~ msgid "Flash the browser window if a new tab was opened in the background"
-#~ msgstr "فتح علامات التبويب الجديدة في الخلفية في كل الأحوال"
-
-#~ msgid "Allow websites to use OpenGL rendering"
-#~ msgstr "السماح للمواقع باستخدام OpenGL للتقديم"
-
-#~ msgid "Whether to zoom text and images"
-#~ msgstr "تكبير النص والصور في كل الاحوال"
-
-#~ msgid "Find inline while typing"
-#~ msgstr "العثور على السطر أثناء الكتابة"
-
-#~ msgid "Whether to automatically find inline while typing"
-#~ msgstr "العثور على السطر أثناء الكتابة في كل الاحوال"
-
-#~ msgid "The type of proxy server to use"
-#~ msgstr "نوع الخادم الوكيل المستخدم"
-
-#~ msgid "HTTP Proxy Server"
-#~ msgstr "خادم وكيل HTTP"
-
-#~ msgid "The proxy server used for HTTP connections"
-#~ msgstr "خادم proxy المستعمل لإتصالات HTTP"
-
-#~ msgid "The proxy server port used for HTTP connections"
-#~ msgstr "منفذ الملقم الوكيل المستخدمة للاتصالات HTTP"
-
-#~ msgid "Identification string"
-#~ msgstr "تعريف الجملة"
-
-#~ msgid "The application identification string"
-#~ msgstr "تطبيق تعريف الجمل"
-
-#~ msgid "Clear private data"
-#~ msgstr "مسح البيانات الخاصة"
-
-#~ msgid "The private data selected for deletion"
-#~ msgstr "البيانات الخاصة المحددة للحذف"
-
-#~ msgid "Clear data"
-#~ msgstr "مسح البيانات"
-
-#~ msgid "The data selected for deletion"
-#~ msgstr "بيانات محددة للحذف"
-
-#~ msgid "Close ot_her Tabs"
-#~ msgstr "غلق ألألسنه الأخري"
-
-#~ msgid "_Icon:"
-#~ msgstr "_ايقونة:"
-
-#~ msgid "Highlight Matches"
-#~ msgstr "ميّز المتشابهات"
-
-#~ msgid "Filter:"
-#~ msgstr "مرشح:"
-
-#~ msgid ""
-#~ "Enter a filter string to show only cookies whose name or domain field "
-#~ "match the entered filter"
-#~ msgstr "ادخل سلسلة أسماء أو نطاقات فلاتر لتصفية الكوكيز"
-
-#~ msgid "_Customize…"
-#~ msgstr "_تخصيص…"
-
-#~ msgid "The bookmarks couldn't be saved. %s"
-#~ msgstr "لا يمكن حفظ العلامات. %s"
-
-#~ msgid "The specified configuration folder is invalid."
-#~ msgstr "إعداد المجلد المحدد غير صالح."
-
-#~ msgid "Cookies"
-#~ msgstr "كعكات"
-
-#~ msgid "'Flash' Cookies"
-#~ msgstr "'فلاش' كعكات"
-
-#~ msgid "HTML5 _Databases"
-#~ msgstr "HTML5 _قاعدة بيانات"
-
-#~ msgid "Offline Application Cache"
-#~ msgstr "ذاكرة التطبيقات بدون اتصال"
-
-#~ msgid "Lightweight web browser"
-#~ msgstr "منصفح الوب الخفيف"
-
-#~ msgid "No filename specified"
-#~ msgstr "لم يتم تحديد إسم الملف"
-
-#~ msgid "Don't save any private data while browsing"
-#~ msgstr "لا تقم بحفظ أي بيانات خاصة أثناء التصفح"
-
-#~ msgid "Add shortcut to speed dial"
-#~ msgstr "إضافة اختصار لسرعة الاتصال الهاتفي"
-
-#~ msgid "Add shortcut to the desktop"
-#~ msgstr "إضافة اختصار إلى سطح المكتب"
-
-#~ msgid "Create a launcher"
-#~ msgstr "إنشاء مطلق"
-
-#~ msgid "Subscribe to this news feed"
-#~ msgstr "اشترك في هذا المصدر الإخباري"
-
-#~ msgid "Close this window"
-#~ msgstr "غلق هذه التافذة"
-
-#~ msgid "Close all open windows"
-#~ msgstr "إغلاق جميع النوافذ المفتوحة"
-
-#~ msgid "Undo the last modification"
-#~ msgstr "تراجع عن الإجراء الأخير"
-
-#~ msgid "Redo the last modification"
-#~ msgstr "أعِد آخر عملية متراجع عنها"
-
-#~ msgid "Cut the selected text"
-#~ msgstr "قص النص المحدد"
-
-#~ msgid "Copy the selected text"
-#~ msgstr "أنسخ النص المحدد"
-
-#~ msgid "Paste text from the clipboard"
-#~ msgstr "ألصق النص من الحافظة"
-
-#~ msgid "Delete the selected text"
-#~ msgstr "حذف النص المحدد"
-
-#~ msgid "Select all text"
-#~ msgstr "حدد كل النص"
-
-#~ msgid "Find the next occurrence of a word or phrase"
-#~ msgstr "العثور على التكرار التالي للكلمة أو جملة"
-
-#~ msgid "Find the previous occurrence of a word or phrase"
-#~ msgstr "العثور على التكرار السابقة من كلمة أو عبارة"
-
-#~ msgid "Reset the zoom level"
-#~ msgstr "إستعادة مستوى التكبير"
-
-#~ msgid "View the source code of the page"
-#~ msgstr "اعرض النص المصدري لهذه الصفحة"
-
-#~ msgid "Scroll to the left"
-#~ msgstr "انتقل إلى اليسار"
-
-#~ msgid "Scroll down"
-#~ msgstr "انتقل إلى للاسفل"
-
-#~ msgid "Scroll up"
-#~ msgstr "انتقل إلى للأعلى"
-
-#~ msgid "Scroll to the right"
-#~ msgstr "انتقل إلى اليمين"
-
-#~ msgid "Delete the contents of the trash"
-#~ msgstr "حذف محتويات سلة المهملات"
-
-#~ msgid "Open the last closed tab"
-#~ msgstr "فتح علامة التبويب المغلقة حديثاً"
-
-#~ msgid "Add a new bookmark folder"
-#~ msgstr "أضف مجلد علامات جديد"
-
-#~ msgid "Add, edit and remove search engines…"
-#~ msgstr "أضف, حرر و إحذف أدوات البحث…"
-
-#~ msgid "Clear private data…"
-#~ msgstr "حذف البيانات الخاصة …"
-
-#~ msgid "Inspect page details and access developer tools…"
-#~ msgstr "معاينة تفاصيل الصفحة  أدوات وصول  المطورين …"
-
-#~ msgid "Switch to the previous tab"
-#~ msgstr "التحول إلى التبويب السابق"
-
-#~ msgid "Switch to the next tab"
-#~ msgstr "التحول إلى التبويب التالي"
-
-#~ msgid "Move tab behind the previous tab"
-#~ msgstr "حرك علامة التبويب السابقة للوراء"
-
-#~ msgid "Move tab in front of the next tab"
-#~ msgstr "الانتقال للتبويب أمام علامة التبويب التالية"
-
-#~ msgid "Focus the current tab"
-#~ msgstr "فصل التبويب الحالي"
-
-#~ msgid "Cycle focus between views"
-#~ msgstr "حلقة التركيز بين طرق العرض"
-
-#~ msgid "Only show the icon of the current tab"
-#~ msgstr "أظهر فقط أيقونة التبويب الحالي"
-
-#~ msgid "Duplicate the current tab"
-#~ msgstr "تكرار التبويب الحالية"
-
-#~ msgid "Close all tabs except the current tab"
-#~ msgstr "أغلق كل التبويبات بإستثناء التبويب الحالي"
-
-#~ msgid "Open the tabs saved in the last session"
-#~ msgstr "فتح العلامات المحفوظة في الدورة الماضية"
-
-#~ msgid "Show the Frequently Asked Questions"
-#~ msgstr "تظهر أسئلة شائعة وأجوبتها"
-
-#~ msgid "Open Midori's bug tracker"
-#~ msgstr "تعقب العلل وفتح ميدوري"
-
-#~ msgid "Show information about the program"
-#~ msgstr "مزيد من المعلومات حول البرنامج"
-
-#~ msgid "Show menubar"
-#~ msgstr "أظهر شريك القائمة"
-
-#~ msgid "Show navigationbar"
-#~ msgstr "أظهر شريط التصفح"
-
-#~ msgid "Show sidepanel"
-#~ msgstr "أظهر لوحة الجانبية"
-
-#~ msgid "Show bookmarkbar"
-#~ msgstr "أظهر شريط العلامات"
-
-#~ msgid "Show statusbar"
-#~ msgstr "عرض شريط الحالة"
-
-#~ msgid "Set number of columns and rows"
-#~ msgstr "تعيين عدد الأعمدة والصفوف"
-
-#~ msgid "Enter number of columns and rows:"
-#~ msgstr "أدخل عدد الأعمدة والصفوف :"
-
-#~ msgid "Invalid input for the size of the speed dial"
-#~ msgstr "المدخلات غير صالحة للطلب السريع"
-
-#~ msgid "Thumb size:"
-#~ msgstr "حجم المصغرات:"
-
-#~ msgid "Small"
-#~ msgstr "صغير"
-
-#~ msgid "Big"
-#~ msgstr "كبير"
-
-#~ msgid "Not available: %s"
-#~ msgstr "غبر متوفر: %s"
-
-#~ msgid "Resource files not installed"
-#~ msgstr "ملفات المصدر غبر مثبتة"
-
-#~ msgid "Reset the last _session"
-#~ msgstr "إستعادة أ_خر جلسة"
-
-#~ msgid "%d%% loaded"
-#~ msgstr "تحميل %d%%"
-
-#~ msgid "Quit the application"
-#~ msgstr "الخروج من التطبيق"
-
-#~ msgid "_Contents"
-#~ msgstr "الم_حتويات"
-
-#~ msgid "Show Blank page"
-#~ msgstr "أظهر صفحة فارغة"
-
-#~ msgid "Session cookies"
-#~ msgstr "جلسة الكعكات"
-
-#~ msgid "Appearance"
-#~ msgstr "مظهر"
-
-#~ msgid "Interface"
-#~ msgstr "واجهة"
-
-#~ msgid "Applications"
-#~ msgstr "تطبيقات"
-
-#~ msgid "External applications"
-#~ msgstr "تكبيقات خارجية"
-
-#~ msgid "Next Tab (History List)"
-#~ msgstr "التبويب التالي (السجل)"
-
-#~ msgid "Previous Tab (History List)"
-#~ msgstr "التبويب السابق (السجل)"
-
-#~ msgid "Previous tab from history"
-#~ msgstr "التبويب السابق من السجل"
-
-#~ msgid "Pageholder"
-#~ msgstr "مالك الصفحة"
-
-#~ msgid "_Pageholder"
-#~ msgstr "_مالك الصفحة"
+#: ../src/plugins/tray/system-tray.desktop.in.h:2
+msgid "Show icon in the system tray"
+msgstr "عرض أيقونة في مصغرات شريط النظام"
