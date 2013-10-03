@@ -420,3 +420,17 @@ void parole_provider_player_open_media_chooser (ParoleProviderPlayer *player)
         (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->open_media_chooser) (player);
     }
 }
+
+/**
+ * parole_provider_player_get_action:
+ * @player: a #ParoleProviderPlayer
+ * @action: the #ParolePlayerAction to retrieve
+ * 
+ * Get GtkAction from Parole.
+ * 
+ * Since: 0.6
+ **/
+GtkAction *parole_provider_player_get_action(ParoleProviderPlayer *player, ParolePlayerAction action)
+{
+    return parole_player_get_action(action);
+}

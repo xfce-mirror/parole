@@ -29,6 +29,7 @@
 
 #include <gtk/gtk.h>
 #include "parole-stream.h"
+#include "parole-player.h"
 
 G_BEGIN_DECLS 
 
@@ -125,6 +126,8 @@ gboolean    parole_provider_player_seek         (ParoleProviderPlayer *player,
 
 void        
 parole_provider_player_open_media_chooser       (ParoleProviderPlayer *player);
+
+GtkAction *parole_provider_player_get_action(ParoleProviderPlayer *player, ParolePlayerAction action);
 
 G_END_DECLS
 

@@ -84,33 +84,6 @@ exit_activated_cb (TrayProvider *tray)
 }
 
 static void
-play_pause_activated_cb (TrayProvider *tray)
-{
-    menu_selection_done_cb (tray);
-    
-    if ( tray->state == PAROLE_STATE_PLAYING )
-        parole_provider_player_pause (tray->player);
-    else if ( tray->state == PAROLE_STATE_PAUSED )
-        parole_provider_player_resume (tray->player);
-}
-
-static void
-previous_activated_cb (TrayProvider *tray)
-{
-    menu_selection_done_cb (tray);
-    
-    parole_provider_player_play_previous (tray->player);
-}
-
-static void
-next_activated_cb (TrayProvider *tray)
-{
-    menu_selection_done_cb (tray);
-    
-    parole_provider_player_play_next (tray->player);
-}
-
-static void
 open_activated_cb (TrayProvider *tray)
 {
     parole_provider_player_open_media_chooser (tray->player);
@@ -121,46 +94,33 @@ popup_menu_cb (GtkStatusIcon *icon, guint button,
                guint activate_time, TrayProvider *tray)
 {
     GtkWidget *menu, *mi, *image;
+    GtkAction *action;
     
     menu = gtk_menu_new ();
 
     /*
-     * Play pause.
+     * Play pause
      */
-    image = gtk_image_new_from_icon_name(tray->state == PAROLE_STATE_PLAYING ? "media-playback-pause-symbolic" : 
-                                             "media-playback-start-symbolic", GTK_ICON_SIZE_MENU);
-    mi = gtk_image_menu_item_new_with_mnemonic(tray->state == PAROLE_STATE_PLAYING ? _("_Pause") : 
-                                             _("_Play"));
-    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), image);
-    gtk_widget_set_sensitive (mi, TRUE);
-    gtk_widget_show (mi);
-    g_signal_connect_swapped (mi, "activate", G_CALLBACK (play_pause_activated_cb), tray);
+    action = parole_provider_player_get_action(PAROLE_PROVIDER_PLAYER(tray->player), PAROLE_PLAYER_ACTION_PLAYPAUSE);
+    mi = gtk_action_create_menu_item(action);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
     
     /*
      * Previous Track
      */
-    image = gtk_image_new_from_icon_name("media-skip-backward-symbolic", GTK_ICON_SIZE_MENU);
-    mi = gtk_image_menu_item_new_with_mnemonic(_("P_revious Track"));
-    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), image);
-    gtk_widget_set_sensitive (mi, TRUE);
-    gtk_widget_show (mi);
-    g_signal_connect_swapped (mi, "activate", G_CALLBACK (previous_activated_cb), tray);
+    action = parole_provider_player_get_action(PAROLE_PROVIDER_PLAYER(tray->player), PAROLE_PLAYER_ACTION_PREVIOUS);
+    mi = gtk_action_create_menu_item(action);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
     
     /*
      * Next Track
      */
-    image = gtk_image_new_from_icon_name("media-skip-forward-symbolic", GTK_ICON_SIZE_MENU);
-    mi = gtk_image_menu_item_new_with_mnemonic(_("_Next Track"));
-    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), image);
-    gtk_widget_set_sensitive (mi, TRUE);
-    gtk_widget_show (mi);
-    g_signal_connect_swapped (mi, "activate", G_CALLBACK (next_activated_cb), tray);
+    action = parole_provider_player_get_action(PAROLE_PROVIDER_PLAYER(tray->player), PAROLE_PLAYER_ACTION_NEXT);
+    mi = gtk_action_create_menu_item(action);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
     
     /*
-     * Separator.
+     * Separator
      */
     mi = gtk_separator_menu_item_new ();
     gtk_widget_show (mi);

@@ -74,6 +74,10 @@
 
 int GTK_ICON_SIZE_ARTWORK_FALLBACK;
 
+GtkAction *playpause_action;
+GtkAction *previous_action;
+GtkAction *next_action;
+
 static void
 get_time_string (gchar *timestring, gint total_seconds)
 {
@@ -1681,6 +1685,24 @@ void parole_player_previous_action_cb (GtkAction *action, ParolePlayer *player)
     parole_player_play_prev (player);
 }
 
+GtkAction *parole_player_get_action(ParolePlayerAction action)
+{
+    switch(action)
+    {
+        case PAROLE_PLAYER_ACTION_PLAYPAUSE:
+            return playpause_action;
+            break;
+        case PAROLE_PLAYER_ACTION_PREVIOUS:
+            return previous_action;
+            break;
+        case PAROLE_PLAYER_ACTION_NEXT:
+            return next_action;
+            break;
+        default:
+            return NULL;
+    }
+}
+
 void parole_player_seekf_cb (GtkWidget *widget, ParolePlayer *player, gdouble seek)
 {
     seek = parole_gst_get_stream_position (PAROLE_GST (player->priv->gst) ) + seek;
@@ -2976,6 +2998,7 @@ parole_player_init (ParolePlayer *player)
      */
     /* Play/Pause */
     player->priv->media_playpause_action = gtk_action_new("playpause_action", _("_Play"), _("Play"), NULL);
+    playpause_action = player->priv->media_playpause_action;
     gtk_action_set_icon_name(player->priv->media_playpause_action, "media-playback-start-symbolic");
     gtk_action_set_always_show_image(player->priv->media_playpause_action, TRUE);
     g_signal_connect(G_OBJECT(player->priv->media_playpause_action), "activate", G_CALLBACK(parole_player_playpause_action_cb), player);
@@ -2983,6 +3006,7 @@ parole_player_init (ParolePlayer *player)
     
     /* Previous Track */
     player->priv->media_previous_action = gtk_action_new("previous_action", _("P_revious Track"), _("Previous Track"), NULL);
+    previous_action = player->priv->media_previous_action;
     gtk_action_set_icon_name(player->priv->media_previous_action, "media-skip-backward-symbolic");
     gtk_action_set_always_show_image(player->priv->media_previous_action, TRUE);
     g_signal_connect(G_OBJECT(player->priv->media_previous_action), "activate", G_CALLBACK(parole_player_previous_action_cb), player);
@@ -2990,13 +3014,12 @@ parole_player_init (ParolePlayer *player)
     
     /* Next Track */
     player->priv->media_next_action = gtk_action_new("next_action", _("_Next Track"), _("Next Track"), NULL);
+    next_action = player->priv->media_next_action;
     gtk_action_set_icon_name(player->priv->media_next_action, "media-skip-forward-symbolic");
     gtk_action_set_always_show_image(player->priv->media_next_action, TRUE);
     g_signal_connect(G_OBJECT(player->priv->media_next_action), "activate", G_CALLBACK(parole_player_next_action_cb), player);
     gtk_action_set_sensitive(player->priv->media_next_action, FALSE);
-    
 
-    
     /* Fullscreen */
     player->priv->media_fullscreen_action = gtk_action_new("fullscreen_action", _("_Fullscreen"), _("Fullscreen"), NULL);
     gtk_action_set_icon_name(player->priv->media_fullscreen_action, "view-fullscreen-symbolic");

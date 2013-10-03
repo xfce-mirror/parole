@@ -99,6 +99,7 @@ notify_playing (NotifyProvider *notify, const ParoleStream *stream)
     gchar *title, *album, *artist, *year, *stream_uri;
     gchar *message;
     ParoleMediaType media_type;
+    GtkAction *action;
     
     g_object_get (G_OBJECT (stream), 
                   "title", &title,
@@ -190,15 +191,25 @@ notify_playing (NotifyProvider *notify, const ParoleStream *stream)
     notify_notification_set_urgency (notify->notification, NOTIFY_URGENCY_LOW);
     notify_notification_set_timeout (notify->notification, 5000);
     
+    /* Only show Previous Track item if clicking previous is possible */
+    action = parole_provider_player_get_action(PAROLE_PROVIDER_PLAYER(notify->player), PAROLE_PLAYER_ACTION_PREVIOUS);
+    if (gtk_action_get_sensitive(action))
+    {
     notify_notification_add_action (notify->notification, 
                                     "play-previous", _("Previous Track"), 
                                     NOTIFY_ACTION_CALLBACK(on_previous_clicked),
                                     notify, NULL);
+    }
 
+    /* Only show Next Track item if clicking next is possible */
+    action = parole_provider_player_get_action(PAROLE_PROVIDER_PLAYER(notify->player), PAROLE_PLAYER_ACTION_NEXT);
+    if (gtk_action_get_sensitive(action))
+    {
     notify_notification_add_action (notify->notification, 
                                     "play-next", _("Next Track"), 
                                     NOTIFY_ACTION_CALLBACK(on_next_clicked),
                                     notify, NULL);
+    }
     
     notify_notification_show (notify->notification, NULL);
     g_signal_connect (notify->notification, "closed",

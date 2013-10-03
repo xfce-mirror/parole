@@ -56,6 +56,13 @@ typedef struct
 
 } ParolePlayerClass;
 
+typedef enum
+{
+    PAROLE_PLAYER_ACTION_PREVIOUS,
+    PAROLE_PLAYER_ACTION_NEXT,
+    PAROLE_PLAYER_ACTION_PLAYPAUSE
+} ParolePlayerAction;
+
 GType                           parole_player_get_type          (void) G_GNUC_CONST;
 ParolePlayer                   *parole_player_new               (const gchar *client_id);
 
@@ -71,6 +78,9 @@ void                            parole_player_embedded          (ParolePlayer *p
 
 void                            parole_player_full_screen       (ParolePlayer *player, 
                                                                  gboolean fullscreen);
+                                                                 
+GtkAction                      *parole_player_get_action(ParolePlayerAction action);
+
 
 G_END_DECLS
 
