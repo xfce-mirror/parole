@@ -26,6 +26,7 @@
       - Updated artwork (background image, icons)
       - Fixed GStreamer 1.0 support
       - Added ability to play DVD ISOs from the Open dialog
+      - Plugins now correctly report when they fail to load
     * Bugs fixed
       - missing option to open DVD from iso (bug #10300)
       - Allow a playlist to be sorted and/or items to be moved (bug #10066)
