@@ -2717,7 +2717,6 @@ parole_audiobox_expose_event (GtkWidget *w, GdkEventExpose *ev, ParolePlayer *pl
     gtk_box_set_homogeneous( GTK_BOX(w), homogeneous );
     if (homogeneous)
     {
-        g_object_set( player->priv->audiobox_cover, "xalign", 1.0, NULL);
         gtk_box_set_child_packing (GTK_BOX(w),
                                    player->priv->audiobox_cover,
                                    TRUE,
@@ -2727,7 +2726,6 @@ parole_audiobox_expose_event (GtkWidget *w, GdkEventExpose *ev, ParolePlayer *pl
     }
     else
     {
-        g_object_set( player->priv->audiobox_cover, "xalign", 0.0, NULL);
         gtk_box_set_child_packing (GTK_BOX(w),
                                    player->priv->audiobox_cover,
                                    FALSE,

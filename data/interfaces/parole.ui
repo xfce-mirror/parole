@@ -752,10 +752,12 @@
                             <property name="homogeneous">True</property>
                             <child>
                               <object class="GtkImage" id="audio_cover">
+                                <property name="width_request">256</property>
+                                <property name="height_request">256</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="xalign">1</property>
-                                <property name="pixel_size">128</property>
+                                <property name="pixel_size">256</property>
                                 <property name="icon_name">audio-x-generic-symbolic</property>
                                 <property name="use_fallback">True</property>
                               </object>
