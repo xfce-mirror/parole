@@ -143,7 +143,7 @@ void        parole_player_range_value_changed       (GtkRange *range,
 void        parole_player_playpause_action_cb       (GtkAction *action,
                                                      ParolePlayer *player);
 
-void        parole_player_stop_clicked              (GtkButton *button, 
+void        parole_player_pause_clicked             (GtkButton *button, 
                                                      ParolePlayer *player);
 
 void        parole_player_next_action_cb            (GtkAction *action, 
@@ -1670,9 +1670,9 @@ parole_player_playpause_action_cb (GtkAction *action, ParolePlayer *player)
 }
 
 void
-parole_player_stop_clicked (GtkButton *button, ParolePlayer *player)
+parole_player_pause_clicked (GtkButton *button, ParolePlayer *player)
 {
-    parole_gst_stop (PAROLE_GST (player->priv->gst));
+    parole_gst_pause (PAROLE_GST (player->priv->gst));
 }
 
 void parole_player_next_action_cb (GtkAction *action, ParolePlayer *player)
@@ -2514,11 +2514,6 @@ parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
             parole_player_seekf_cb (NULL, player, seek_long);
             ret_val = TRUE;
             break;
-        case GDK_KEY_s:
-        case GDK_KEY_S:
-            parole_player_stop_clicked (NULL, player);
-            ret_val = TRUE;
-            break;
         case GDK_KEY_Escape:
             parole_player_full_screen (player, FALSE);
             break;
@@ -2563,7 +2558,7 @@ parole_player_key_press (GtkWidget *widget, GdkEventKey *ev, ParolePlayer *playe
             parole_player_toggle_playpause(player);
             return TRUE;
         case XF86XK_AudioStop:
-            parole_player_stop_clicked (NULL, player);
+            parole_player_pause_clicked (NULL, player);
             return TRUE;
         case XF86XK_AudioRaiseVolume:
             parole_player_volume_up (NULL, player);
@@ -2600,7 +2595,7 @@ parole_player_button_pressed_cb (ParoleButton *button, ParoleButtonKey key, Paro
             parole_player_toggle_playpause(player);
             break;
         case PAROLE_KEY_AUDIO_STOP:
-            parole_player_stop_clicked (NULL, player);
+            parole_player_pause_clicked (NULL, player);
             break;
         case PAROLE_KEY_AUDIO_PREV:
             parole_player_play_prev (player);
