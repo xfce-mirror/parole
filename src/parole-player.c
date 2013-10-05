@@ -2702,37 +2702,31 @@ parole_overlay_expose_event (GtkWidget *widget, cairo_t *cr, gpointer user_data)
     return FALSE;
 }
 
+/* This function allows smoothly adjusting the window alignment with coverart */
 static gboolean
 parole_audiobox_expose_event (GtkWidget *w, GdkEventExpose *ev, ParolePlayer *player)
 {
     GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
     gboolean homogeneous;
+    
+    /* Float the cover and text together in the middle if there is space */
     gtk_widget_get_allocation(w, allocation);
     homogeneous = allocation->width > 536;
     g_free(allocation);
     
+    /* Nothing to do if the homogeneous setting is already good */
     if ( gtk_box_get_homogeneous( GTK_BOX(w) ) == homogeneous )
         return FALSE;
     
     gtk_box_set_homogeneous( GTK_BOX(w), homogeneous );
-    if (homogeneous)
-    {
-        gtk_box_set_child_packing (GTK_BOX(w),
-                                   player->priv->audiobox_cover,
-                                   TRUE,
-                                   TRUE,
-                                   0,
-                                   GTK_PACK_START);
-    }
-    else
-    {
-        gtk_box_set_child_packing (GTK_BOX(w),
-                                   player->priv->audiobox_cover,
-                                   FALSE,
-                                   TRUE,
-                                   0,
-                                   GTK_PACK_START);
-    }
+    
+    /* Expand the coverart if the parent box packing is homogenous */
+    gtk_box_set_child_packing (GTK_BOX(w),
+                               player->priv->audiobox_cover,
+                               homogeneous,
+                               TRUE,
+                               0,
+                               GTK_PACK_START);
 
     return FALSE;
 }
