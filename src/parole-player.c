@@ -381,6 +381,7 @@ struct ParolePlayerPrivate
     GtkWidget          *progressbar_buffering;
     GtkWidget          *volume;
     GtkWidget          *mute;
+    GtkWidget          *showhide_playlist_button;
     
     /* Infobar */
     GtkWidget          *infobar;
@@ -516,6 +517,7 @@ void parole_player_set_playlist_visible (ParolePlayer *player, gboolean visibili
         
         gtk_widget_show (player->priv->playlist_nt);
         gtk_action_set_tooltip( GTK_ACTION( player->priv->toggle_playlist_action ), _("Hide playlist") );
+        gtk_widget_set_tooltip_text (GTK_WIDGET(player->priv->showhide_playlist_button), _("Hide playlist") );
         g_object_set   (G_OBJECT (player->priv->conf),    
                         "showhide-playlist", TRUE,
                         NULL);
@@ -524,6 +526,7 @@ void parole_player_set_playlist_visible (ParolePlayer *player, gboolean visibili
     {
         gtk_widget_hide (player->priv->playlist_nt);
         gtk_action_set_tooltip( GTK_ACTION( player->priv->toggle_playlist_action ), _("Show playlist") );
+        gtk_widget_set_tooltip_text (GTK_WIDGET(player->priv->showhide_playlist_button), _("Show playlist") );
         g_object_set   (G_OBJECT (player->priv->conf),    
                         "showhide-playlist", FALSE,
                         NULL);
@@ -1283,21 +1286,23 @@ parole_player_seekable_notify (ParoleStream *stream, GParamSpec *spec, ParolePla
 static void
 parole_player_set_playpause_button_from_stock (ParolePlayer *player, const gchar *stock_id)
 {
-    gchar *icon_name = NULL, *label = NULL;
+    gchar *icon_name = NULL, *label = NULL, *tooltip = NULL;
     
     if (g_strcmp0(stock_id, "gtk-media-play") == 0) {
         icon_name = g_strdup("media-playback-start-symbolic");
         label = _("_Play");
+        tooltip = _("Play");
     } else if (g_strcmp0(stock_id, "gtk-media-pause") == 0) {
         icon_name = g_strdup("media-playback-pause-symbolic");
         label = _("_Pause");
+        tooltip = _("Pause");
     }
     
     gtk_action_set_icon_name(player->priv->media_playpause_action, icon_name);
     gtk_action_set_label(player->priv->media_playpause_action, label);
-    gtk_action_set_tooltip(player->priv->media_playpause_action, label);
+    gtk_action_set_tooltip(player->priv->media_playpause_action, tooltip);
     gtk_image_set_from_icon_name(GTK_IMAGE(player->priv->playpause_image), icon_name, 24);
-    gtk_widget_set_tooltip_text(GTK_WIDGET(player->priv->playpause_button), label);
+    gtk_widget_set_tooltip_text(GTK_WIDGET(player->priv->playpause_button), tooltip);
 }
 
 static void
@@ -2909,6 +2914,8 @@ parole_player_init (ParolePlayer *player)
     GtkWidget *controls_parent;
     GtkWidget *play_box;
     
+    GList *widgets;
+    
     GtkWidget *action_widget;
     
     g_setenv("PULSE_PROP_media.role", "video", TRUE);
@@ -3168,14 +3175,15 @@ parole_player_init (ParolePlayer *player)
     /* FIXME: UGLY CODE IN THE NEXT BLOCK */
     /* Media Controls */
     controls_overlay = GTK_WIDGET(gtk_overlay_new());
-    /* control is a placeholder to put the play_box as it is moved to/from the fs-window */
+
     player->priv->control = GTK_WIDGET (gtk_builder_get_object (builder, "control"));
+
     play_box = GTK_WIDGET (gtk_builder_get_object (builder, "media_controls"));
-    
     controls_parent = GTK_WIDGET(gtk_builder_get_object (builder, "box2"));
     gtk_box_pack_start (GTK_BOX(controls_parent), controls_overlay, TRUE, TRUE, 0);
     gtk_widget_reparent(GTK_WIDGET(player->priv->eventbox_output), controls_overlay);
-    tmp_box = GTK_WIDGET(gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0));
+    tmp_box = GTK_WIDGET(gtk_event_box_new());
+    
     gtk_widget_set_vexpand(GTK_WIDGET(tmp_box), FALSE);
     gtk_widget_set_hexpand(GTK_WIDGET(tmp_box), FALSE);
     gtk_widget_set_margin_left(tmp_box, 10);
@@ -3195,8 +3203,23 @@ parole_player_init (ParolePlayer *player)
     gtk_container_set_border_width(GTK_CONTAINER(play_box), 3);
     gtk_widget_show_all(controls_parent);
     
+    /* Enable motion-notify event to prevent hiding controls on mouseover */
+    gtk_widget_add_events (GTK_WIDGET (player->priv->control), GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK);
+    g_signal_connect(G_OBJECT(player->priv->control), "motion-notify-event", 
+                     G_CALLBACK(parole_player_gst_widget_motion_notify_event), player);
+                     
+    gtk_widget_add_events (GTK_WIDGET (play_box), GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK);
+    g_signal_connect(G_OBJECT(play_box), "motion-notify-event", 
+                     G_CALLBACK(parole_player_gst_widget_motion_notify_event), player);
+    for (widgets = gtk_container_get_children(GTK_CONTAINER(play_box)); widgets != NULL; widgets = g_list_next(widgets)) {
+        gtk_widget_add_events (GTK_WIDGET (widgets->data), GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK);
+        g_signal_connect(G_OBJECT(widgets->data), "motion-notify-event", 
+                     G_CALLBACK(parole_player_gst_widget_motion_notify_event), player);
+    }
+    
     /* Previous, Play/Pause, Next */
     action_widget = GTK_WIDGET(gtk_builder_get_object(builder, "media_previous"));
+    gtk_widget_set_tooltip_text(GTK_WIDGET(action_widget), _("Previous Track"));
     gtk_activatable_set_use_action_appearance(GTK_ACTIVATABLE(action_widget), FALSE);
     gtk_activatable_set_related_action(GTK_ACTIVATABLE(action_widget), player->priv->media_previous_action);
 
@@ -3206,6 +3229,7 @@ parole_player_init (ParolePlayer *player)
     gtk_activatable_set_related_action(GTK_ACTIVATABLE(player->priv->playpause_button), player->priv->media_playpause_action);
     
     action_widget = GTK_WIDGET(gtk_builder_get_object(builder, "media_next"));
+    gtk_widget_set_tooltip_text(GTK_WIDGET(action_widget), _("Next Track"));
     gtk_activatable_set_use_action_appearance(GTK_ACTIVATABLE(action_widget), FALSE);
     gtk_activatable_set_related_action(GTK_ACTIVATABLE(action_widget), player->priv->media_next_action);
     
@@ -3226,6 +3250,7 @@ parole_player_init (ParolePlayer *player)
     
     /* (un)Fullscreen button */
     player->priv->fullscreen_button = GTK_WIDGET (gtk_builder_get_object (builder, "media_fullscreen"));
+    gtk_widget_set_tooltip_text(GTK_WIDGET(player->priv->fullscreen_button), _("Fullscreen"));
     action_widget = GTK_WIDGET (gtk_builder_get_object (builder, "fullscreen-menu"));
     player->priv->fullscreen_image = GTK_WIDGET (gtk_builder_get_object (builder, "image_media_fullscreen"));
     gtk_activatable_set_use_action_appearance(GTK_ACTIVATABLE(player->priv->fullscreen_button), FALSE);
@@ -3233,9 +3258,9 @@ parole_player_init (ParolePlayer *player)
     gtk_activatable_set_related_action(GTK_ACTIVATABLE(action_widget), player->priv->media_fullscreen_action);
     
     /* Show/Hide Playlist button */
-    action_widget = GTK_WIDGET (gtk_builder_get_object (builder, "media_toggleplaylist"));
-    gtk_activatable_set_use_action_appearance(GTK_ACTIVATABLE(action_widget), FALSE);
-    gtk_activatable_set_related_action(GTK_ACTIVATABLE(action_widget), GTK_ACTION(player->priv->toggle_playlist_action));
+    player->priv->showhide_playlist_button = GTK_WIDGET (gtk_builder_get_object (builder, "media_toggleplaylist"));
+    gtk_activatable_set_use_action_appearance(GTK_ACTIVATABLE(player->priv->showhide_playlist_button), FALSE);
+    gtk_activatable_set_related_action(GTK_ACTIVATABLE(player->priv->showhide_playlist_button), GTK_ACTION(player->priv->toggle_playlist_action));
     /* End Media Controls */
     
     g_signal_connect(player->priv->control, "draw", G_CALLBACK(parole_overlay_expose_event), NULL);
@@ -3328,6 +3353,8 @@ parole_player_init (ParolePlayer *player)
     player->priv->last_h = h;
           
     parole_player_set_playlist_visible(player, showhide);
+    gtk_widget_set_tooltip_text(GTK_WIDGET(player->priv->showhide_playlist_button), 
+                                showhide ? _("Hide Playlist") : _("Show Playlist"));
     
     gtk_window_set_default_size (GTK_WINDOW (player->priv->window), w, h);
     gtk_window_resize (GTK_WINDOW (player->priv->window), w, h);
