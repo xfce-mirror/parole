@@ -2687,6 +2687,7 @@ parole_overlay_expose_event (GtkWidget *widget, cairo_t *cr, gpointer user_data)
 
     gtk_widget_get_allocation(widget, allocation);
     cairo_rectangle (cr, 0, 0, allocation->width, allocation->height);
+    g_free (allocation);
 
     context = gtk_widget_get_style_context(GTK_WIDGET(widget));
     gtk_style_context_add_class (context, "background");
