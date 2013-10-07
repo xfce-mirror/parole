@@ -6,11 +6,11 @@
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
-  <object class="GtkImage" id="image_help_reportbug">
+  <object class="GtkImage" id="image_about">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="pixel_size">16</property>
-    <property name="icon_name">face-sick-symbolic</property>
+    <property name="icon_name">gtk-about-symbolic</property>
     <property name="use_fallback">True</property>
   </object>
   <object class="GtkImage" id="image_disc">
@@ -18,6 +18,13 @@
     <property name="can_focus">False</property>
     <property name="pixel_size">16</property>
     <property name="icon_name">media-optical-symbolic</property>
+    <property name="use_fallback">True</property>
+  </object>
+  <object class="GtkImage" id="image_help_reportbug">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixel_size">16</property>
+    <property name="icon_name">face-sick-symbolic</property>
     <property name="use_fallback">True</property>
   </object>
   <object class="GtkImage" id="image_media_fullscreen">
@@ -46,13 +53,6 @@
     <property name="can_focus">False</property>
     <property name="pixel_size">24</property>
     <property name="icon_name">media-skip-backward-symbolic</property>
-    <property name="use_fallback">True</property>
-  </object>
-  <object class="GtkImage" id="image_about">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">16</property>
-    <property name="icon_name">gtk-about-symbolic</property>
     <property name="use_fallback">True</property>
   </object>
   <object class="GtkImage" id="image_menu_fullscreen">
@@ -864,103 +864,114 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
-                          <object class="GtkButton" id="media_previous">
+                          <object class="GtkBox" id="ltrbox">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="receives_default">True</property>
-                            <property name="image">image_media_previous</property>
-                            <property name="relief">none</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkButton" id="media_playpause">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="receives_default">True</property>
-                            <property name="image">image_media_playpause</property>
-                            <property name="relief">none</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkButton" id="media_next">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="receives_default">True</property>
-                            <property name="image">image_media_next</property>
-                            <property name="relief">none</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">2</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="media_time_elapsed">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="margin_left">12</property>
-                            <property name="label" translatable="yes">0:00</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">3</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkScale" id="media_progress_slider">
-                            <property name="visible">True</property>
-                            <property name="sensitive">False</property>
-                            <property name="can_focus">True</property>
-                            <property name="margin_left">6</property>
-                            <property name="margin_right">6</property>
-                            <property name="adjustment">adjustment1</property>
-                            <property name="draw_value">False</property>
-                            <signal name="value-changed" handler="parole_player_range_value_changed" swapped="no"/>
-                          </object>
-                          <packing>
-                            <property name="expand">True</property>
-                            <property name="fill">True</property>
-                            <property name="position">4</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkProgressBar" id="media_buffering_progressbar">
-                            <property name="can_focus">False</property>
-                            <property name="no_show_all">True</property>
-                            <property name="margin_left">6</property>
-                            <property name="margin_right">6</property>
-                            <property name="text" translatable="yes">Buffering (0%)</property>
-                            <property name="show_text">True</property>
+                            <child>
+                              <object class="GtkButton" id="media_previous">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="receives_default">True</property>
+                                <property name="image">image_media_previous</property>
+                                <property name="relief">none</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="media_playpause">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="receives_default">True</property>
+                                <property name="image">image_media_playpause</property>
+                                <property name="relief">none</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="media_next">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="receives_default">True</property>
+                                <property name="image">image_media_next</property>
+                                <property name="relief">none</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">2</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkLabel" id="media_time_elapsed">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="margin_left">12</property>
+                                <property name="label" translatable="yes">0:00</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">3</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkProgressBar" id="media_buffering_progressbar">
+                                <property name="can_focus">False</property>
+                                <property name="no_show_all">True</property>
+                                <property name="margin_left">6</property>
+                                <property name="margin_right">6</property>
+                                <property name="text" translatable="yes">Buffering (0%)</property>
+                                <property name="show_text">True</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">4</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkScale" id="media_progress_slider">
+                                <property name="visible">True</property>
+                                <property name="sensitive">False</property>
+                                <property name="can_focus">True</property>
+                                <property name="margin_left">6</property>
+                                <property name="margin_right">6</property>
+                                <property name="adjustment">adjustment1</property>
+                                <property name="draw_value">False</property>
+                                <signal name="value-changed" handler="parole_player_range_value_changed" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="expand">True</property>
+                                <property name="fill">True</property>
+                                <property name="position">5</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkLabel" id="media_time_duration">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="margin_right">12</property>
+                                <property name="label" translatable="yes">0:00</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">6</property>
+                              </packing>
+                            </child>
                           </object>
                           <packing>
                             <property name="expand">True</property>
                             <property name="fill">True</property>
                             <property name="position">5</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="media_time_duration">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="margin_right">12</property>
-                            <property name="label" translatable="yes">0:00</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">6</property>
                           </packing>
                         </child>
                         <child>

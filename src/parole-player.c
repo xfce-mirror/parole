@@ -3264,6 +3264,7 @@ parole_player_init (ParolePlayer *player)
     gtk_activatable_set_related_action(GTK_ACTIVATABLE(player->priv->showhide_playlist_button), GTK_ACTION(player->priv->toggle_playlist_action));
     /* End Media Controls */
     
+    gtk_widget_set_direction (GTK_WIDGET (gtk_builder_get_object (builder, "ltrbox")),GTK_TEXT_DIR_LTR);
     g_signal_connect(player->priv->control, "draw", G_CALLBACK(parole_overlay_expose_event), NULL);
     
     /* Info Bar */
