@@ -2144,7 +2144,7 @@ gboolean parole_player_hide_controls (gpointer data)
     controls = gtk_widget_get_parent(player->priv->control);
     
     gtk_widget_hide(controls);
-    gdkwindow = gtk_widget_get_window (GTK_WIDGET(player->priv->gst));
+    gdkwindow = gtk_widget_get_window (GTK_WIDGET(player->priv->eventbox_output));
     parole_window_invisible_cursor (gdkwindow);
 
     return FALSE;
@@ -2164,7 +2164,7 @@ parole_player_gst_widget_motion_notify_event (GtkWidget *widget, GdkEventMotion 
     
     gtk_widget_show_all (gtk_widget_get_parent(player->priv->control));
     
-    gdkwindow = gtk_widget_get_window (player->priv->window);
+    gdkwindow = gtk_widget_get_window (GTK_WIDGET(player->priv->eventbox_output));
     gdk_window_set_cursor (gdkwindow, NULL);
     
     if ( player->priv->state == PAROLE_STATE_PLAYING )
