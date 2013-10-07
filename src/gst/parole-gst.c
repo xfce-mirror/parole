@@ -2714,8 +2714,10 @@ parole_gst_set_cursor_visible (ParoleGst *gst, gboolean visible)
 {
     if ( visible )
     {
-        gst->priv->target == gst->priv->state ? gdk_window_set_cursor (gtk_widget_get_window(GTK_WIDGET (gst)), NULL):
-        parole_window_busy_cursor (gtk_widget_get_window(GTK_WIDGET (gst)));
+        if (gst->priv->target == gst->priv->state)
+            gdk_window_set_cursor (gtk_widget_get_window(GTK_WIDGET (gst)), NULL);
+        else
+            parole_window_busy_cursor (gtk_widget_get_window(GTK_WIDGET (gst)));
     }
     else
         parole_window_invisible_cursor (gtk_widget_get_window(GTK_WIDGET (gst)));
