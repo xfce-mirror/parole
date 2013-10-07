@@ -1951,7 +1951,6 @@ void
 parole_player_reset_controls (ParolePlayer *player, gboolean fullscreen)
 {
     static gint current_page = 0;
-    GdkWindow *gdkwindow;
     
     gboolean show_playlist;
     
@@ -1972,7 +1971,6 @@ parole_player_reset_controls (ParolePlayer *player, gboolean fullscreen)
 
             gtk_window_unfullscreen (GTK_WINDOW (player->priv->window));
             gtk_notebook_set_current_page (GTK_NOTEBOOK (player->priv->playlist_nt), current_page);
-            gdkwindow = gtk_widget_get_window (player->priv->gst);
             parole_gst_set_cursor_visible (PAROLE_GST (player->priv->gst), FALSE);
             player->priv->full_screen = FALSE;
         }
