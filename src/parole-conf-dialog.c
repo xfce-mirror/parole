@@ -41,58 +41,71 @@
  * GtkBuilder Callbacks
  */
 
-void		parole_conf_dialog_response_cb		 	(GtkDialog *dialog, 
-								 gint response_id, 
-								 ParoleConfDialog *self);
-							  
-void		parole_conf_dialog_enable_vis_changed_cb 	(GtkToggleButton *widget,
-								 ParoleConfDialog *self);
+void        parole_conf_dialog_response_cb          (GtkDialog *dialog, 
+                                                     gint response_id, 
+                                                     ParoleConfDialog *self);
+                              
+void        
+parole_conf_dialog_enable_vis_changed_cb            (GObject *object,
+                                                     GParamSpec *pspec,
+                                                     gpointer *data);
 
-void		parole_conf_dialog_reset_saver_changed_cb	(GtkToggleButton *widget,
-								 ParoleConfDialog *self);
+void        
+parole_conf_dialog_reset_saver_changed_cb           (GObject *object,
+                                                     GParamSpec *pspec,
+                                                     gpointer *data);
 
-void		parole_conf_dialog_vis_plugin_changed_cb 	(GtkComboBox *widget,
-								 ParoleConfDialog *self);
+void        
+parole_conf_dialog_vis_plugin_changed_cb            (GtkComboBox *widget,
+                                                     ParoleConfDialog *self);
 
-void		parole_conf_dialog_font_set_cb		 	(GtkFontButton *button,
-								 ParoleConfDialog *self);
+void        parole_conf_dialog_font_set_cb          (GtkFontButton *button,
+                                                     ParoleConfDialog *self);
 
-void		parole_conf_dialog_enable_subtitle_changed_cb 	(GtkToggleButton *widget,
-							         ParoleConfDialog *self);
-	
-void		parole_conf_dialog_subtitle_encoding_changed_cb (GtkComboBox *widget,
-								 ParoleConfDialog *self);
+void        
+parole_conf_dialog_enable_subtitle_changed_cb       (GObject *object,
+                                                     GParamSpec *pspec,
+                                                     gpointer *data);
+    
+void        
+parole_conf_dialog_subtitle_encoding_changed_cb     (GtkComboBox *widget,
+                                                     ParoleConfDialog *self);
 
-void		brightness_value_changed_cb			(GtkRange *range,
-								 ParoleConfDialog *self);
+void        brightness_value_changed_cb             (GtkRange *range,
+                                                     ParoleConfDialog *self);
 
-void		contrast_value_changed_cb			(GtkRange *range,
-								 ParoleConfDialog *self);
+void        contrast_value_changed_cb               (GtkRange *range,
+                                                     ParoleConfDialog *self);
 
-void		hue_value_changed_cb				(GtkRange *range,
-								 ParoleConfDialog *self);
+void        hue_value_changed_cb                    (GtkRange *range,
+                                                     ParoleConfDialog *self);
 
-void		saturation_value_changed_cb			(GtkRange *range,
-								 ParoleConfDialog *self);
+void        saturation_value_changed_cb             (GtkRange *range,
+                                                     ParoleConfDialog *self);
 
-void 	        reset_color_clicked_cb 			        (GtkButton *button, 
-								 ParoleConfDialog *self);
-								 
-void		replace_playlist_toggled_cb			(GtkToggleButton *widget,
-								 ParoleConfDialog *self);
-								 
-void		remove_duplicated_toggled_cb			(GtkToggleButton *widget,
-								 ParoleConfDialog *self);
+void        reset_color_clicked_cb                  (GtkButton *button, 
+                                                     ParoleConfDialog *self);
+                                 
+void        replace_playlist_toggled_cb             (GObject *object,
+                                                     GParamSpec *pspec,
+                                                     gpointer *data);
+                                 
+void        remove_duplicated_toggled_cb            (GObject *object,
+                                                     GParamSpec *pspec,
+                                                     gpointer *data);
 
-void		start_playing_opened_toggled_cb			(GtkToggleButton *widget,
-								 ParoleConfDialog *self);
+void        start_playing_opened_toggled_cb         (GObject *object,
+                                                     GParamSpec *pspec,
+                                                     gpointer *data);
 
-void		remember_playlist_toggled_cb			(GtkToggleButton *widget,
-								 ParoleConfDialog *self);
-								 
-void		multimedia_keys_toggled_cb			(GtkToggleButton *widget,
-								 ParoleConfDialog *self);
-								
+void        remember_playlist_toggled_cb            (GObject *object,
+                                                     GParamSpec *pspec,
+                                                     gpointer *data);
+                                 
+void        multimedia_keys_toggled_cb              (GObject *object,
+                                                     GParamSpec *pspec,
+                                                     gpointer *data);
+                                
 /*
  * End of GtkBuilder callbacks
  */
@@ -123,47 +136,66 @@ G_DEFINE_TYPE (ParoleConfDialog, parole_conf_dialog, G_TYPE_OBJECT)
 static void 
 parole_conf_dialog_destroy (GtkWidget *widget, ParoleConfDialog *self)
 {
-    gtk_widget_destroy (widget);
-    g_object_unref (self);
+    gtk_widget_hide(widget);
 }
 
 /* Replace the playlist with newly opened files */
-void replace_playlist_toggled_cb (GtkToggleButton *widget, ParoleConfDialog *self)
+void replace_playlist_toggled_cb (GObject *object,
+                                  GParamSpec *pspec,
+                                  gpointer *data)
 {
+    ParoleConfDialog *self;
+    self = PAROLE_CONF_DIALOG(data);
     g_object_set (G_OBJECT (self->priv->conf),
-		  "replace-playlist", gtk_toggle_button_get_active (widget),
-		  NULL);
+                  "replace-playlist", gtk_switch_get_active (GTK_SWITCH(GTK_WIDGET(object))),
+                  NULL);
 }
-		
-/* Remove duplicate entries from the playlist FIXME */						 
-void remove_duplicated_toggled_cb (GtkToggleButton *widget, ParoleConfDialog *self)
+        
+/* Remove duplicate entries from the playlist FIXME */                       
+void remove_duplicated_toggled_cb (GObject *object,
+                                   GParamSpec *pspec,
+                                   gpointer *data)
 {
+    ParoleConfDialog *self;
+    self = PAROLE_CONF_DIALOG(data);
     g_object_set (G_OBJECT (self->priv->conf),
-		  "remove-duplicated", gtk_toggle_button_get_active (widget),
-		  NULL);
+                  "remove-duplicated", gtk_switch_get_active (GTK_SWITCH(GTK_WIDGET(object))),
+                  NULL);
 }
 
 /* Automatically start playing opened files (vs. just adding them to the playlist) */
-void start_playing_opened_toggled_cb (GtkToggleButton *widget, ParoleConfDialog *self)
+void start_playing_opened_toggled_cb (GObject *object,
+                                      GParamSpec *pspec,
+                                      gpointer *data)
 {
+    ParoleConfDialog *self;
+    self = PAROLE_CONF_DIALOG(data);
     g_object_set (G_OBJECT (self->priv->conf),
-		  "play-opened-files", gtk_toggle_button_get_active (widget),
-		  NULL);
+                  "play-opened-files", gtk_switch_get_active (GTK_SWITCH(GTK_WIDGET(object))),
+                  NULL);
 }
 
 /* Remember whether the playlist was visible in the previous session */
-void remember_playlist_toggled_cb (GtkToggleButton *widget, ParoleConfDialog *self)
+void remember_playlist_toggled_cb (GObject *object,
+                                   GParamSpec *pspec,
+                                   gpointer *data)
 {
+    ParoleConfDialog *self;
+    self = PAROLE_CONF_DIALOG(data);
     g_object_set (G_OBJECT (self->priv->conf),
-		  "remember-playlist", gtk_toggle_button_get_active (widget),
-		  NULL);
+                  "remember-playlist", gtk_switch_get_active (GTK_SWITCH(GTK_WIDGET(object))),
+                  NULL);
 }
 
-void multimedia_keys_toggled_cb (GtkToggleButton *widget, ParoleConfDialog *self)
+void multimedia_keys_toggled_cb (GObject *object,
+                                 GParamSpec *pspec,
+                                 gpointer *data)
 {
+    ParoleConfDialog *self;
+    self = PAROLE_CONF_DIALOG(data);
     g_object_set (G_OBJECT (self->priv->conf),
-		  "multimedia-keys", gtk_toggle_button_get_active (widget),
-		  NULL);
+                  "multimedia-keys", gtk_switch_get_active (GTK_SWITCH(GTK_WIDGET(object))),
+                  NULL);
 }
 
 /* Change the various image properties */
@@ -179,11 +211,11 @@ void parole_conf_dialog_response_cb (GtkDialog *dialog, gint response_id, Parole
 {
     switch (response_id)
     {
-	case GTK_RESPONSE_HELP:
-	    break;
-	default:
-	    parole_conf_dialog_destroy (GTK_WIDGET (dialog), self);
-	    break;
+        case GTK_RESPONSE_HELP:
+            break;
+        default:
+            parole_conf_dialog_destroy (GTK_WIDGET (dialog), self);
+            break;
     }
 }
 
@@ -191,20 +223,24 @@ void parole_conf_dialog_response_cb (GtkDialog *dialog, gint response_id, Parole
 void parole_conf_dialog_subtitle_encoding_changed_cb (GtkComboBox *widget, ParoleConfDialog *self)
 {
     g_object_set (G_OBJECT (self->priv->conf), 
-		  "subtitle-encoding", parole_subtitle_encoding_get_selected (widget),
-		  NULL);
+                  "subtitle-encoding", parole_subtitle_encoding_get_selected (widget),
+                  NULL);
 }
 
 /* Enable visualisations */
-void parole_conf_dialog_enable_vis_changed_cb (GtkToggleButton *widget, ParoleConfDialog *self)
+void parole_conf_dialog_enable_vis_changed_cb (GObject *object,
+                                               GParamSpec *pspec,
+                                               gpointer *data)
 {
     gboolean active;
+    ParoleConfDialog *self;
+    self = PAROLE_CONF_DIALOG(data);
     
-    active = gtk_toggle_button_get_active (widget);
+    active = gtk_switch_get_active (GTK_SWITCH(GTK_WIDGET(object)));
     
     g_object_set (G_OBJECT (self->priv->conf),
-		  "vis-enabled", active,
-		  NULL);
+                  "vis-enabled", active,
+                  NULL);
     
     gtk_widget_set_sensitive (self->priv->vis_combox, active);
 }
@@ -217,9 +253,9 @@ set_effect_value (ParoleConfDialog *self, GtkRange *range, const gchar *name)
     
     value = gtk_range_get_value (range);
     
-    g_object_set (G_OBJECT (self->priv->conf),	
-		  name, value,
-		  NULL);
+    g_object_set (G_OBJECT (self->priv->conf),  
+                  name, value,
+                  NULL);
 }
 
 /* Change brightness */
@@ -248,48 +284,58 @@ void saturation_value_changed_cb (GtkRange *range, ParoleConfDialog *self)
 
 void parole_conf_dialog_vis_plugin_changed_cb (GtkComboBox *widget,  ParoleConfDialog *self)
 {
-    gchar *active;
+    gchar *active = NULL;
     GstElementFactory *f;
     
-    active = gtk_combo_box_get_active_text (widget);
+    GtkTreeIter iter;
+    GtkTreeModel *model = gtk_combo_box_get_model(widget);
+    
+    if (gtk_combo_box_get_active_iter (widget, &iter))
+        gtk_tree_model_get (model, &iter, 0, &active, -1);
+    else
+        return;
     
     f = g_hash_table_lookup (self->priv->vis_plugins, active);
     
     if ( f )
     {
-	g_object_set (G_OBJECT (self->priv->conf),
-		      "vis-name", gst_object_get_name (GST_OBJECT (f)),
-		      NULL);
+        g_object_set (G_OBJECT (self->priv->conf),
+                      "vis-name", gst_object_get_name (GST_OBJECT (f)),
+                      NULL);
     }
     
     g_free (active);
 }
 
-void parole_conf_dialog_reset_saver_changed_cb (GtkToggleButton *widget, ParoleConfDialog *self)
+void parole_conf_dialog_reset_saver_changed_cb (GObject *object,
+                                                GParamSpec *pspec,
+                                                gpointer *data)
 {
+    ParoleConfDialog *self;
+    self = PAROLE_CONF_DIALOG(data);
     g_object_set (G_OBJECT (self->priv->conf),
-		  "reset-saver", gtk_toggle_button_get_active (widget),
-		  NULL);
+                  "reset-saver", gtk_switch_get_active (GTK_SWITCH(GTK_WIDGET(object))),
+                  NULL);
 }
 
 /* Change subtitle font */
 void parole_conf_dialog_font_set_cb (GtkFontButton *button, ParoleConfDialog *self)
 {
     g_object_set (G_OBJECT (self->priv->conf), 
-		  "subtitle-font", gtk_font_button_get_font_name (button),
-		  NULL);
+                  "subtitle-font", gtk_font_button_get_font_name (button),
+                  NULL);
 }
 
 /* Enable subtitles by default */
-void parole_conf_dialog_enable_subtitle_changed_cb (GtkToggleButton *widget, ParoleConfDialog *self)
+void parole_conf_dialog_enable_subtitle_changed_cb (GObject *object,
+                                                    GParamSpec *pspec,
+                                                    gpointer *data)
 {
-    gboolean active;
-    
-    active = gtk_toggle_button_get_active (widget);
-    
+    ParoleConfDialog *self;
+    self = PAROLE_CONF_DIALOG(data);
     g_object_set (G_OBJECT (self->priv->conf),
-		  "enable-subtitle", active,
-		  NULL);
+                  "enable-subtitle", gtk_switch_get_active (GTK_SWITCH(GTK_WIDGET(object))),
+                  NULL);
 }
 
 /* Finalize the dialog */
@@ -331,13 +377,19 @@ parole_conf_dialog_init (ParoleConfDialog *self)
 static void
 parole_conf_dialog_add_vis_plugins (gpointer key, gpointer value, GtkWidget *combox)
 {
-    gtk_combo_box_append_text (GTK_COMBO_BOX (combox), (const gchar *) key);
+    GtkListStore *store = GTK_LIST_STORE(gtk_combo_box_get_model(GTK_COMBO_BOX(combox)));
+    GtkTreeIter iter;
+    
+    gtk_list_store_append( store, &iter );
+    gtk_list_store_set( store, &iter, 0, (const gchar *) key, -1 );
+    
+    g_object_unref (store);
 }
 
 /* Set the combobox to the default visualisation plugin */
 static gboolean 
 parole_conf_dialog_set_default_vis_plugin (GtkTreeModel *model, GtkTreePath *path,
-					   GtkTreeIter *iter, ParoleConfDialog *self)
+                       GtkTreeIter *iter, ParoleConfDialog *self)
 {
     GstElementFactory *f;
     gchar *vis_name;
@@ -345,27 +397,27 @@ parole_conf_dialog_set_default_vis_plugin (GtkTreeModel *model, GtkTreePath *pat
     gboolean ret = FALSE;
     
     g_object_get (G_OBJECT (self->priv->conf),
-		  "vis-name", &vis_name,
-		  NULL);
+                  "vis-name", &vis_name,
+                  NULL);
 
     gtk_tree_model_get (model, iter, 
-			0, &combox_text,
-			-1);
+                        0, &combox_text,
+                        -1);
 
     f = g_hash_table_lookup (self->priv->vis_plugins, combox_text);
     
     if ( !g_strcmp0 (vis_name, "none") )
     {
-	if ( !g_strcmp0 (gst_object_get_name (GST_OBJECT (f)), "Goom") )
-	    ret = TRUE;
+        if ( !g_strcmp0 (gst_object_get_name (GST_OBJECT (f)), "Goom") )
+            ret = TRUE;
     }
     else if ( !g_strcmp0 (gst_object_get_name (GST_OBJECT (f)), vis_name) )
     {
-	ret = TRUE;
+        ret = TRUE;
     }
     
     if ( ret == TRUE )
-	gtk_combo_box_set_active_iter (GTK_COMBO_BOX (self->priv->vis_combox), iter);
+        gtk_combo_box_set_active_iter (GTK_COMBO_BOX (self->priv->vis_combox), iter);
     
     return ret;
 }
@@ -383,10 +435,10 @@ parole_conf_dialog_set_defaults_playlist (ParoleConfDialog  *self, GtkBuilder *b
     widget = GTK_WIDGET (gtk_builder_get_object (builder, "replace-playlist"));
     
     g_object_get (G_OBJECT (self->priv->conf),
-		  "replace-playlist", &option,
-		  NULL);
-		  
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), option);
+                  "replace-playlist", &option,
+                  NULL);
+          
+    gtk_switch_set_active (GTK_SWITCH (widget), option);
     
      /**
      * Start playing opened files
@@ -394,10 +446,10 @@ parole_conf_dialog_set_defaults_playlist (ParoleConfDialog  *self, GtkBuilder *b
     widget = GTK_WIDGET (gtk_builder_get_object (builder, "start-playing-opened"));
     
     g_object_get (G_OBJECT (self->priv->conf),
-		  "play-opened-files", &option,
-		  NULL);
-		  
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), option);
+                  "play-opened-files", &option,
+                  NULL);
+          
+    gtk_switch_set_active (GTK_SWITCH (widget), option);
     
      /**
      * Remove duplicated playlist entries
@@ -405,10 +457,10 @@ parole_conf_dialog_set_defaults_playlist (ParoleConfDialog  *self, GtkBuilder *b
     widget = GTK_WIDGET (gtk_builder_get_object (builder, "remove-duplicated"));
     
     g_object_get (G_OBJECT (self->priv->conf),
-		  "remove-duplicated", &option,
-		  NULL);
-		  
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), option);
+                  "remove-duplicated", &option,
+                  NULL);
+          
+    gtk_switch_set_active (GTK_SWITCH (widget), option);
     
      /**
      * Remember playlist
@@ -419,7 +471,7 @@ parole_conf_dialog_set_defaults_playlist (ParoleConfDialog  *self, GtkBuilder *b
                   "remember-playlist", &option,
                   NULL);
           
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), option);
+    gtk_switch_set_active (GTK_SWITCH (widget), option);
 }
 
 /* Load the multimedia-button default settings */
@@ -435,10 +487,10 @@ parole_conf_dialog_set_defaults_general (ParoleConfDialog *self, GtkBuilder *bui
     widget = GTK_WIDGET (gtk_builder_get_object (builder, "multimedia-keys"));
     
     g_object_get (G_OBJECT (self->priv->conf),
-		  "multimedia-keys", &option,
-		  NULL);
-		  
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), option);
+                  "multimedia-keys", &option,
+                  NULL);
+          
+    gtk_switch_set_active (GTK_SWITCH (widget), option);
     
 }
 
@@ -453,25 +505,24 @@ parole_conf_dialog_set_defaults (ParoleConfDialog *self)
     gchar *subtitle_encoding;
     
     g_object_get (G_OBJECT (self->priv->conf),
-		  "vis-enabled", &vis_enabled,
-		  "enable-subtitle", &subtitle,
-		  "subtitle-font", &subtitle_font,
-		  "subtitle-encoding", &subtitle_encoding,
-		  NULL);
+                  "vis-enabled", &vis_enabled,
+                  "enable-subtitle", &subtitle,
+                  "subtitle-font", &subtitle_font,
+                  "subtitle-encoding", &subtitle_encoding,
+                  NULL);
 
     /* Update widget-states according to settings */
     gtk_widget_set_sensitive (self->priv->vis_combox, vis_enabled);
-    gtk_widget_set_sensitive (self->priv->font_button, subtitle);
     
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (self->priv->toggle_vis), vis_enabled);
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (self->priv->toggle_subtitle), subtitle);
+    gtk_switch_set_active (GTK_SWITCH (self->priv->toggle_vis), vis_enabled);
+    gtk_switch_set_active (GTK_SWITCH (self->priv->toggle_subtitle), subtitle);
     
     model = gtk_combo_box_get_model (GTK_COMBO_BOX (self->priv->vis_combox));
 
     gtk_tree_model_foreach (model, 
-			    (GtkTreeModelForeachFunc) parole_conf_dialog_set_default_vis_plugin,
-			    self);
-			    
+                            (GtkTreeModelForeachFunc) parole_conf_dialog_set_default_vis_plugin,
+                            self);
+                
     parole_subtitle_encoding_set (GTK_COMBO_BOX (self->priv->encoding), subtitle_encoding);
     
     gtk_font_button_set_font_name (GTK_FONT_BUTTON (self->priv->font_button), subtitle_font);
@@ -496,6 +547,8 @@ void parole_conf_dialog_open (ParoleConfDialog *self, GtkWidget *parent)
     gboolean    with_display;
     gboolean    reset_saver;
     
+    GtkWidget *switch_widget;
+    
     builder = parole_builder_new_from_string (parole_settings_ui, parole_settings_ui_length);
     
     dialog = GTK_WIDGET (gtk_builder_get_object (builder, "settings-dialog"));
@@ -519,48 +572,86 @@ void parole_conf_dialog_open (ParoleConfDialog *self, GtkWidget *parent)
     parole_conf_dialog_set_defaults_playlist (self, builder);
     
     g_object_get (G_OBJECT (self->priv->conf),
-		  "reset-saver", &reset_saver,
-		  NULL);
+                  "reset-saver", &reset_saver,
+                  NULL);
     
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (gtk_builder_get_object (builder, "reset-saver")),
-				  reset_saver);
+    gtk_switch_set_active (GTK_SWITCH (gtk_builder_get_object (builder, "reset-saver")),
+                  reset_saver);
     
     with_display = parole_gst_get_is_xvimage_sink (PAROLE_GST (parole_gst_get ()));
     
     if ( !with_display )
     {
-	gtk_widget_hide (GTK_WIDGET (gtk_builder_get_object (builder, "frame-display")));
+        gtk_widget_hide (GTK_WIDGET (gtk_builder_get_object (builder, "frame-display")));
     }
     else
     {
-	gint brightness_value;
-	gint contrast_value;
-	gint hue_value;
-	gint saturation_value;
-	
-	self->priv->brightness = GTK_WIDGET (gtk_builder_get_object (builder, "brightness"));
-	self->priv->contrast = GTK_WIDGET (gtk_builder_get_object (builder, "contrast"));
-	self->priv->hue = GTK_WIDGET (gtk_builder_get_object (builder, "hue"));
-	self->priv->saturation = GTK_WIDGET (gtk_builder_get_object (builder, "saturation"));
-	
-	gtk_range_set_range (GTK_RANGE (self->priv->brightness), -1000, 1000);
-	gtk_range_set_range (GTK_RANGE (self->priv->contrast), -1000, 1000);
-	gtk_range_set_range (GTK_RANGE (self->priv->saturation), -1000, 1000);
-	gtk_range_set_range (GTK_RANGE (self->priv->hue), -1000, 1000);
+        gint brightness_value;
+        gint contrast_value;
+        gint hue_value;
+        gint saturation_value;
+        
+        self->priv->brightness = GTK_WIDGET (gtk_builder_get_object (builder, "brightness"));
+        self->priv->contrast = GTK_WIDGET (gtk_builder_get_object (builder, "contrast"));
+        self->priv->hue = GTK_WIDGET (gtk_builder_get_object (builder, "hue"));
+        self->priv->saturation = GTK_WIDGET (gtk_builder_get_object (builder, "saturation"));
+        
+        gtk_range_set_range (GTK_RANGE (self->priv->brightness), -1000, 1000);
+        gtk_range_set_range (GTK_RANGE (self->priv->contrast), -1000, 1000);
+        gtk_range_set_range (GTK_RANGE (self->priv->saturation), -1000, 1000);
+        gtk_range_set_range (GTK_RANGE (self->priv->hue), -1000, 1000);
+        gtk_scale_add_mark (GTK_SCALE (self->priv->brightness), 0, GTK_POS_BOTTOM, NULL);
+        gtk_scale_add_mark (GTK_SCALE (self->priv->contrast), 0, GTK_POS_BOTTOM, NULL);
+        gtk_scale_add_mark (GTK_SCALE (self->priv->saturation), 0, GTK_POS_BOTTOM, NULL);
+        gtk_scale_add_mark (GTK_SCALE (self->priv->hue), 0, GTK_POS_BOTTOM, NULL);
 
-	g_object_get (G_OBJECT (self->priv->conf),
-		      "brightness", &brightness_value,
-		      "contrast", &contrast_value,
-		      "hue", &hue_value,
-		      "saturation", &saturation_value,
-		      NULL);
-	
-	gtk_range_set_value (GTK_RANGE (self->priv->brightness), brightness_value);
-	gtk_range_set_value (GTK_RANGE (self->priv->contrast), contrast_value);
-	gtk_range_set_value (GTK_RANGE (self->priv->hue), hue_value);
-	gtk_range_set_value (GTK_RANGE (self->priv->saturation), saturation_value);
-	
+        g_object_get (G_OBJECT (self->priv->conf),
+                      "brightness", &brightness_value,
+                      "contrast", &contrast_value,
+                      "hue", &hue_value,
+                      "saturation", &saturation_value,
+                      NULL);
+        
+        gtk_range_set_value (GTK_RANGE (self->priv->brightness), brightness_value);
+        gtk_range_set_value (GTK_RANGE (self->priv->contrast), contrast_value);
+        gtk_range_set_value (GTK_RANGE (self->priv->hue), hue_value);
+        gtk_range_set_value (GTK_RANGE (self->priv->saturation), saturation_value);
+    
     }
+    
+    /* General/Video/Disable screensaver while playing movies */
+    switch_widget = GTK_WIDGET (gtk_builder_get_object (builder, "reset-saver"));
+    g_signal_connect(G_OBJECT(switch_widget), "notify::active", G_CALLBACK(parole_conf_dialog_reset_saver_changed_cb), self);
+    
+    /* General/Audio/Enable visualization while playing audio file */
+    switch_widget = GTK_WIDGET (gtk_builder_get_object (builder, "enable-vis"));
+    g_signal_connect(G_OBJECT(switch_widget), "notify::active", G_CALLBACK(parole_conf_dialog_enable_vis_changed_cb), self);
+    
+    /* General/Keyboard/Enable keyboard multimedia keys */
+    switch_widget = GTK_WIDGET (gtk_builder_get_object (builder, "multimedia-keys"));
+    g_signal_connect(G_OBJECT(switch_widget), "notify::active", G_CALLBACK(multimedia_keys_toggled_cb), self);
+    
+    /* Playlist/Always replace playlist with opened files */
+    switch_widget = GTK_WIDGET (gtk_builder_get_object (builder, "replace-playlist"));
+    g_signal_connect(G_OBJECT(switch_widget), "notify::active", G_CALLBACK(replace_playlist_toggled_cb), self);
+    
+    /* Playlist/Check and remove duplicate media entries */
+    switch_widget = GTK_WIDGET (gtk_builder_get_object (builder, "remove-duplicated"));
+    g_signal_connect(G_OBJECT(switch_widget), "notify::active", G_CALLBACK(remove_duplicated_toggled_cb), self);
+    
+    /* Playlist/Start playing opened files */
+    switch_widget = GTK_WIDGET (gtk_builder_get_object (builder, "start-playing-opened"));
+    g_signal_connect(G_OBJECT(switch_widget), "notify::active", G_CALLBACK(start_playing_opened_toggled_cb), self);
+    
+    /* Playlist/Remember playlist */
+    switch_widget = GTK_WIDGET (gtk_builder_get_object (builder, "remember-playlist"));
+    g_signal_connect(G_OBJECT(switch_widget), "notify::active", G_CALLBACK(remember_playlist_toggled_cb), self);
+    
+    /* Subtitles/Automatically show subtitles when playing movie file */
+    switch_widget = GTK_WIDGET (gtk_builder_get_object (builder, "enable-subtitle"));
+    g_signal_connect(G_OBJECT(switch_widget), "notify::active", G_CALLBACK(parole_conf_dialog_enable_subtitle_changed_cb), self);
+    
+    g_signal_connect(G_OBJECT(dialog), "delete-event", G_CALLBACK(gtk_widget_hide_on_delete), NULL);
     
     gtk_builder_connect_signals (builder, self);
     

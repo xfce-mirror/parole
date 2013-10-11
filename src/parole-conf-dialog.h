@@ -36,22 +36,22 @@ typedef struct ParoleConfDialogPrivate ParoleConfDialogPrivate;
 
 typedef struct
 {
-    GObject         		 parent;
-    ParoleConfDialogPrivate     *priv;
+    GObject                     parent;
+    ParoleConfDialogPrivate    *priv;
     
 } ParoleConfDialog;
 
 typedef struct
 {
-    GObjectClass 		 parent_class;
+    GObjectClass                parent_class;
     
 } ParoleConfDialogClass;
 
-GType        			 parole_conf_dialog_get_type        (void) G_GNUC_CONST;
-ParoleConfDialog       		*parole_conf_dialog_new             (void);
+GType                   parole_conf_dialog_get_type     (void) G_GNUC_CONST;
+ParoleConfDialog       *parole_conf_dialog_new          (void);
 
-void				 parole_conf_dialog_open	    (ParoleConfDialog *self,
-								     GtkWidget *parent);
+void                    parole_conf_dialog_open         (ParoleConfDialog *self,
+                                                         GtkWidget *parent);
 
 G_END_DECLS
 

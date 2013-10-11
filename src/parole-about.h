@@ -25,6 +25,6 @@
 
 #include <gtk/gtk.h>
 
-void 		parole_about	(GtkWindow *parent);
+void        parole_about    (GtkWindow *parent);
 
 #endif /* __PAROLE_ABOUT_H */

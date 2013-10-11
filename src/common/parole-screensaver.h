@@ -34,22 +34,22 @@ G_BEGIN_DECLS
 
 typedef struct
 {
-    GObject         		  parent;
+    GObject         parent;
     
 } ParoleScreenSaver;
 
 typedef struct
 {
-    GObjectClass 		  parent_class;
+    GObjectClass    parent_class;
     
 } ParoleScreenSaverClass;
 
-GType        			  parole_screen_saver_get_type        (void) G_GNUC_CONST;
-ParoleScreenSaver       	 *parole_screen_saver_new             (void);
+GType               parole_screen_saver_get_type    (void) G_GNUC_CONST;
+ParoleScreenSaver  *parole_screen_saver_new         (void);
 
-void				  parole_screen_saver_inhibit	      (ParoleScreenSaver *saver, GtkWindow *window);
+void                parole_screen_saver_inhibit     (ParoleScreenSaver *saver, GtkWindow *window);
 
-void				  parole_screen_saver_uninhibit	      (ParoleScreenSaver *saver, GtkWindow *window);
+void                parole_screen_saver_uninhibit   (ParoleScreenSaver *saver, GtkWindow *window);
 
 G_END_DECLS
 

@@ -26,6 +26,6 @@
 #include <gst/gst.h>
 #include <glib.h>
 
-GHashTable        *parole_vis_get_plugins			(void);
+GHashTable        *parole_vis_get_plugins           (void);
 
 #endif /* __PAROLE_VIS_H_ */

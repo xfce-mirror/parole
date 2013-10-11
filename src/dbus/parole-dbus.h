@@ -25,23 +25,23 @@
 
 #include <dbus/dbus-glib.h>
 
-#define PAROLE_DBUS_NAME		"org.Parole.Media.Player"
+#define PAROLE_DBUS_NAME                    "org.Parole.Media.Player"
 
-#define PAROLE_DBUS_PATH		"/org/Parole/Media/Player"
-#define PAROLE_DBUS_PLAYLIST_PATH	"/org/Parole/Media/List"
+#define PAROLE_DBUS_PATH                    "/org/Parole/Media/Player"
+#define PAROLE_DBUS_PLAYLIST_PATH           "/org/Parole/Media/List"
 
-#define PAROLE_DBUS_INTERFACE		"org.Parole.Media.Player"
-#define PAROLE_DBUS_PLAYLIST_INTERFACE	"org.Parole.Media.List"
+#define PAROLE_DBUS_INTERFACE               "org.Parole.Media.Player"
+#define PAROLE_DBUS_PLAYLIST_INTERFACE      "org.Parole.Media.List"
 
-DBusGConnection 	*parole_g_session_bus_get		(void);
+DBusGConnection *parole_g_session_bus_get   (void);
 
-DBusGProxy              *parole_get_proxy 		        (const gchar *path,
-								 const gchar *iface);
+DBusGProxy      *parole_get_proxy           (const gchar *path,
+                                             const gchar *iface);
 
-gboolean		 parole_dbus_name_has_owner		(const gchar *name);
+gboolean         parole_dbus_name_has_owner (const gchar *name);
 
-gboolean		 parole_dbus_register_name		(const gchar *name);
+gboolean         parole_dbus_register_name  (const gchar *name);
 
-gboolean		 parole_dbus_release_name		(const gchar *name);
+gboolean         parole_dbus_release_name   (const gchar *name);
 
 #endif /* __PAROLE_DBUS_ */

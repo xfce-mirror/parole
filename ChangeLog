@@ -1,3 +1,37 @@
+2013-10-11: bluesabre@xfce.org
+    * Road to 0.6.0...
+    * Completed port to GTK+3
+      - Remove deprecated GTK+2 items
+      - Use GtkOverlay for player controls
+      - Use symbolic icons for menus, plugins
+    * Improved window maximization
+      - Window dimensions are no longer saved when maximizing
+      - Added "window-maximized" setting to xfconf to keep maximization across sessions
+    * Rearranged and improved menubar
+      - Renamed "Edit" menu to "Playback"
+      - Renamed "Languages" menu item to "Audio Track"
+      - Added Tools menu
+      - Moved Plugins and Preferences to Tools menu
+      - Added DVD menu (visible only when a DVD or DVD ISO is being played)
+      - Added "Save Playlist" item to Media menu
+      - Added "Report Bug" item to Help menu
+    * Improved playlist
+      - Use symbolic icons in an inline toolbar
+      - Removed redundant settings button
+      - Added Move Up/Down buttons
+    * Updated/improved included plugins
+      - Added Previous/Next Track menu items to Tray plugin
+      - Added Previous/Next Track menu items to Notification plugin
+    * Other improvements
+      - Updated artwork (background image, icons)
+      - Fixed GStreamer 1.0 support
+      - Added ability to play DVD ISOs from the Open dialog
+      - Plugins now correctly report when they fail to load
+    * Bugs fixed
+      - missing option to open DVD from iso (bug #10300)
+      - Allow a playlist to be sorted and/or items to be moved (bug #10066)
+      - Remember playlist option in GUI not working (bug #10269)
+
 2013-08-03: bluesabre@xfce.org
     * Bugfix release 0.5.3
     * Fix “Remember playlist” option in GUI not working (bug #10269)

@@ -41,19 +41,19 @@ typedef enum
     
 } ParolePlFormat;
 
-ParolePlFormat		 parole_pl_parser_guess_format_from_extension   	(const gchar *filename);
+ParolePlFormat      parole_pl_parser_guess_format_from_extension    (const gchar *filename);
 
-ParolePlFormat		 parole_pl_parser_guess_format_from_data	   	(const gchar *filename);
+ParolePlFormat      parole_pl_parser_guess_format_from_data         (const gchar *filename);
 
-gboolean		 parole_pl_parser_can_parse_data			(const guchar *data, gint len);
+gboolean            parole_pl_parser_can_parse_data                 (const guchar *data, gint len);
 
-GSList 			*parole_pl_parser_parse_from_file_by_extension     	(const gchar *filename);
+GSList             *parole_pl_parser_parse_from_file_by_extension   (const gchar *filename);
 
-GSList                   *parole_pl_parser_parse_all_from_file			(const gchar *filename);
+GSList             *parole_pl_parser_parse_all_from_file            (const gchar *filename);
 
-gboolean		 parole_pl_parser_save_from_files	        	(GSList *files,
-										 const gchar *filename,
-										 ParolePlFormat format);
+gboolean            parole_pl_parser_save_from_files                (GSList *files,
+                                                                     const gchar *filename,
+                                                                     ParolePlFormat format);
 
 G_END_DECLS
 

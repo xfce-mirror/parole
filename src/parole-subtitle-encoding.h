@@ -32,9 +32,9 @@
 
 #include <gtk/gtk.h>
 
-void 		parole_subtitle_encoding_init 		(GtkComboBox *combo);
+void            parole_subtitle_encoding_init           (GtkComboBox *combo);
 
-void 		parole_subtitle_encoding_set 		(GtkComboBox *combo, const char *encoding);
+void            parole_subtitle_encoding_set            (GtkComboBox *combo, const char *encoding);
 
 const char     *parole_subtitle_encoding_get_selected   (GtkComboBox *combo);
 

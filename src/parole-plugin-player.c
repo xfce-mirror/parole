@@ -30,6 +30,7 @@
 
 #include <src/misc/parole-provider-player.h>
 
+#include "parole-dbus.h"
 #include "parole-plugin-player.h"
 #include "parole-plugins-manager.h"
 #include "parole-medialist.h"
@@ -55,7 +56,21 @@ struct ParolePluginPlayerPrivate
 };
 
 G_DEFINE_TYPE_WITH_CODE (ParolePluginPlayer, parole_plugin_player, G_TYPE_OBJECT,
-    G_IMPLEMENT_INTERFACE (PAROLE_TYPE_PROVIDER_PLAYER, parole_plugin_player_iface_init))
+                         G_IMPLEMENT_INTERFACE (PAROLE_TYPE_PROVIDER_PLAYER, parole_plugin_player_iface_init))
+                         
+static void
+parole_plugin_player_send_message (const gchar *message)
+{
+    DBusGProxy *proxy;
+    
+    proxy = parole_get_proxy (PAROLE_DBUS_PATH, PAROLE_DBUS_INTERFACE);
+    
+    dbus_g_proxy_call_no_reply (proxy, message,
+                                G_TYPE_INVALID,
+                                G_TYPE_INVALID);
+    
+    g_object_unref (proxy);
+}
 
 static GtkWidget *
 parole_plugin_player_get_main_window (ParoleProviderPlayer *provider)
@@ -68,7 +83,7 @@ parole_plugin_player_get_main_window (ParoleProviderPlayer *provider)
 
 static void
 parole_plugin_player_pack_widget (ParoleProviderPlayer *provider, GtkWidget *widget, 
-				  const gchar *title, ParolePluginContainer container_type)
+                                  const gchar *title, ParolePluginContainer container_type)
 {
     ParolePluginPlayer *player;
     ParolePluginsManager *manager;
@@ -104,7 +119,7 @@ parole_plugin_player_get_stream (ParoleProviderPlayer *provider)
     return parole_gst_get_stream (PAROLE_GST (player->priv->gst));
 }
 
-static gboolean	
+static gboolean 
 parole_plugin_player_play_uri (ParoleProviderPlayer *provider, const gchar *uri)
 {
     ParolePluginPlayer *player;
@@ -116,7 +131,7 @@ parole_plugin_player_play_uri (ParoleProviderPlayer *provider, const gchar *uri)
     return TRUE;
 }
 
-static gboolean	
+static gboolean 
 parole_plugin_player_pause (ParoleProviderPlayer *provider)
 {
     ParolePluginPlayer *player;
@@ -128,7 +143,7 @@ parole_plugin_player_pause (ParoleProviderPlayer *provider)
     return TRUE;
 }
 
-static gboolean	
+static gboolean 
 parole_plugin_player_resume (ParoleProviderPlayer *provider)
 {
     ParolePluginPlayer *player;
@@ -140,7 +155,7 @@ parole_plugin_player_resume (ParoleProviderPlayer *provider)
     return TRUE;
 }
 
-static gboolean	
+static gboolean 
 parole_plugin_player_stop (ParoleProviderPlayer *provider)
 {
     ParolePluginPlayer *player;
@@ -152,7 +167,23 @@ parole_plugin_player_stop (ParoleProviderPlayer *provider)
     return TRUE;
 }
 
-static gboolean	
+static gboolean 
+parole_plugin_player_play_previous (ParoleProviderPlayer *provider)
+{
+    parole_plugin_player_send_message ("PrevTrack");
+    
+    return TRUE;
+}
+
+static gboolean 
+parole_plugin_player_play_next (ParoleProviderPlayer *provider)
+{
+    parole_plugin_player_send_message ("NextTrack");
+    
+    return TRUE;
+}
+
+static gboolean 
 parole_plugin_player_seek (ParoleProviderPlayer *provider, gdouble pos)
 {
     ParolePluginPlayer *player;
@@ -184,13 +215,15 @@ static void parole_plugin_player_iface_init (ParoleProviderPlayerIface *iface)
     iface->pause = parole_plugin_player_pause;
     iface->resume = parole_plugin_player_resume;
     iface->stop = parole_plugin_player_stop;
+    iface->play_previous = parole_plugin_player_play_previous;
+    iface->play_next = parole_plugin_player_play_next;
     iface->seek = parole_plugin_player_seek;
     iface->open_media_chooser = parole_plugin_player_open_media_chooser;
 }
 
 static void 
 parole_plugin_player_media_state_changed_cb (ParoleGst *gst, const ParoleStream *stream, 
-					     ParoleState state, ParolePluginPlayer *player)
+                                             ParoleState state, ParolePluginPlayer *player)
 {
     g_signal_emit_by_name (G_OBJECT (player), "state-changed", stream, state);
 }
@@ -219,10 +252,10 @@ parole_plugin_player_init (ParolePluginPlayer *player)
     player->priv->gst = parole_gst_get ();
     
     player->priv->state_changed = g_signal_connect (G_OBJECT (player->priv->gst), "media-state",
-					    G_CALLBACK (parole_plugin_player_media_state_changed_cb), player);
-		      
+                        G_CALLBACK (parole_plugin_player_media_state_changed_cb), player);
+              
     player->priv->tag_message = g_signal_connect (G_OBJECT (player->priv->gst), "media-tag",
-					  G_CALLBACK (parole_plugin_player_media_tag_cb), player);
+                        G_CALLBACK (parole_plugin_player_media_tag_cb), player);
 
     player->priv->packed = FALSE;
     player->priv->box = NULL;
@@ -237,15 +270,15 @@ parole_plugin_player_finalize (GObject *object)
     
     if ( G_IS_OBJECT (player->priv->gst) )
     {
-	if (g_signal_handler_is_connected (player->priv->gst, player->priv->state_changed)) 
-	    g_signal_handler_disconnect (player->priv->gst, player->priv->state_changed);
+        if (g_signal_handler_is_connected (player->priv->gst, player->priv->state_changed)) 
+            g_signal_handler_disconnect (player->priv->gst, player->priv->state_changed);
 
-	if (g_signal_handler_is_connected (player->priv->gst, player->priv->tag_message)) 
-	    g_signal_handler_disconnect (player->priv->gst, player->priv->tag_message);
+        if (g_signal_handler_is_connected (player->priv->gst, player->priv->tag_message)) 
+            g_signal_handler_disconnect (player->priv->gst, player->priv->tag_message);
     }
     
     if ( player->priv->packed && GTK_IS_WIDGET (player->priv->box))
-	gtk_widget_destroy (player->priv->box);
+        gtk_widget_destroy (player->priv->box);
 
     G_OBJECT_CLASS (parole_plugin_player_parent_class)->finalize (object);
 }

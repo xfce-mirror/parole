@@ -56,17 +56,17 @@ parole_g_session_bus_get (void)
     
     if ( G_LIKELY (session_bus_connected) )
     {
-	bus = dbus_g_bus_get (DBUS_BUS_SESSION, NULL);
+        bus = dbus_g_bus_get (DBUS_BUS_SESSION, NULL);
     }
     else
     {
-	bus = dbus_g_bus_get (DBUS_BUS_SESSION, &error);
-    
-	if ( error )
-	{
-	    g_error ("%s", error->message);
-	}
-	session_bus_connected = TRUE;
+        bus = dbus_g_bus_get (DBUS_BUS_SESSION, &error);
+        
+        if ( error )
+        {
+            g_error ("%s", error->message);
+        }
+        session_bus_connected = TRUE;
     }
 
     return bus;
@@ -81,20 +81,21 @@ parole_get_proxy (const gchar *path, const gchar *iface)
     bus = parole_g_session_bus_get ();
     
     proxy = dbus_g_proxy_new_for_name (bus, 
-				       PAROLE_DBUS_NAME,
-				       path,
-				       iface);
-	
+                                       PAROLE_DBUS_NAME,
+                                       path,
+                                       iface);
+    
     if ( !proxy )
-	g_error ("Unable to create proxy for %s", PAROLE_DBUS_NAME);
-	
+        g_error ("Unable to create proxy for %s", PAROLE_DBUS_NAME);
+    
     g_signal_connect_swapped (proxy, "destroy",
-			      G_CALLBACK (proxy_destroy_cb), bus);
+                              G_CALLBACK (proxy_destroy_cb), bus);
     
     return proxy;
 }
 
-gboolean	parole_dbus_name_has_owner		(const gchar *name)
+gboolean 
+parole_dbus_name_has_owner (const gchar *name)
 {
     DBusConnection *bus;
     DBusError error;
@@ -117,7 +118,7 @@ gboolean	parole_dbus_name_has_owner		(const gchar *name)
     return ret;
 }
 
-gboolean	parole_dbus_register_name		(const gchar *name)
+gboolean    parole_dbus_register_name       (const gchar *name)
 {
     DBusConnection *bus;
     DBusError error;
@@ -145,7 +146,7 @@ gboolean	parole_dbus_register_name		(const gchar *name)
     return ret == DBUS_REQUEST_NAME_REPLY_PRIMARY_OWNER ? TRUE : FALSE;
 }
 
-gboolean	parole_dbus_release_name		(const gchar *name)
+gboolean    parole_dbus_release_name        (const gchar *name)
 {
     DBusConnection *bus;
     DBusError error;

@@ -36,7 +36,7 @@
 #if defined(DEBUG) && defined(G_HAVE_ISO_VARARGS)
 
 void parole_debug_enum (const gchar *func, const gchar *file, gint line, 
-		        const gchar *text, gint v_enum, GType type)
+                const gchar *text, gint v_enum, GType type)
 {
     gchar *content = NULL;
     GValue __value__ = { 0, };
@@ -49,12 +49,12 @@ void parole_debug_enum (const gchar *func, const gchar *file, gint line,
     fprintf(stdout, "TRACE[%s:%d] %s(): %s : %s", file, line , func, text, content);
     fprintf(stdout, "\n");
     
-    g_value_unset (&__value__);						
+    g_value_unset (&__value__);                     
     g_free (content);
 }
 
 void parole_debug_enum_full (const gchar *func, const gchar *file, gint line,
-			     gint v_enum, GType type, const gchar *format, ...)
+                 gint v_enum, GType type, const gchar *format, ...)
 {
     va_list args;
     gchar *buffer;
@@ -70,12 +70,12 @@ void parole_debug_enum_full (const gchar *func, const gchar *file, gint line,
     va_start (args, format);
     g_vasprintf (&buffer, format, args);
     va_end (args);
-	
+    
     fprintf(stdout, "TRACE[%s:%d] %s(): ", file, line, func);
     fprintf(stdout, "%s: %s", buffer, content);
     fprintf(stdout, "\n");
     
-    g_value_unset (&__value__);	
+    g_value_unset (&__value__); 
     g_free (content);
     g_free (buffer);
 }

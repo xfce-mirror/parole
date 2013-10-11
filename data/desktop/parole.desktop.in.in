@@ -13,17 +13,17 @@ Actions=Play;Previous;Next;
 [Desktop Action Play]
 Exec=parole --play
 _Name=Play/Pause
-Icon=media-playback-start
+Icon=media-playback-start-symbolic
 OnlyShowIn=Unity;
 
 [Desktop Action Previous]
-Exec=parole --previous-track
+Exec=parole --previous
 _Name=Previous Track
-Icon=media-skip-backward
+Icon=media-skip-backward-symbolic
 OnlyShowIn=Unity;
 
 [Desktop Action Next]
-Exec=parole --next-track
+Exec=parole --next
 _Name=Next Track
-Icon=media-skip-forward
+Icon=media-skip-forward-symbolic
 OnlyShowIn=Unity;

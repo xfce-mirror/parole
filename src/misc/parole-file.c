@@ -44,13 +44,13 @@ typedef struct _ParoleFilePrivate ParoleFilePrivate;
 
 struct _ParoleFilePrivate
 {
-    gchar 	*filename;
-    gchar 	*display_name;
-    gchar 	*uri;
+    gchar   *filename;
+    gchar   *display_name;
+    gchar   *uri;
     gchar   *content_type;
-	gchar	*directory;
-	gchar   *custom_subtitles;
-	gint    dvd_chapter;
+    gchar   *directory;
+    gchar   *custom_subtitles;
+    gint    dvd_chapter;
     
 };
 
@@ -61,9 +61,9 @@ enum
     PROP_DISPLAY_NAME,
     PROP_URI,
     PROP_CONTENT_TYPE,
-	PROP_DIRECTORY,
-	PROP_CUSTOM_SUBTITLES,
-	PROP_DVD_CHAPTER
+    PROP_DIRECTORY,
+    PROP_CUSTOM_SUBTITLES,
+    PROP_DVD_CHAPTER
 };
 
 G_DEFINE_TYPE (ParoleFile, parole_file, G_TYPE_OBJECT)
@@ -78,59 +78,59 @@ parole_file_finalize (GObject *object)
     priv = PAROLE_FILE_GET_PRIVATE (file);
     
     if ( priv->filename )
-	g_free (priv->filename);
+        g_free (priv->filename);
 
     if ( priv->uri )
-	g_free (priv->uri);
-	
+        g_free (priv->uri);
+    
     if ( priv->display_name )
-	g_free (priv->display_name);
-	
+        g_free (priv->display_name);
+    
     if ( priv->content_type )
-	g_free (priv->content_type);
-	
-	if ( priv->directory )
-	g_free (priv->directory);
-	
-	if ( priv->custom_subtitles )
-	g_free (priv->custom_subtitles);
+        g_free (priv->content_type);
+    
+    if ( priv->directory )
+        g_free (priv->directory);
+    
+    if ( priv->custom_subtitles )
+        g_free (priv->custom_subtitles);
     
     G_OBJECT_CLASS (parole_file_parent_class)->finalize (object);
 }
 
 static void
 parole_file_set_property (GObject *object, guint prop_id, 
-			      const GValue *value, GParamSpec *pspec)
+                  const GValue *value, GParamSpec *pspec)
 {
     ParoleFile *file;
     file = PAROLE_FILE (object);
     
     switch (prop_id)
     {
-	case PROP_PATH:
-	    PAROLE_FILE_GET_PRIVATE (file)->filename = g_value_dup_string (value);
-	    break;
-	case PROP_DISPLAY_NAME:
-	    PAROLE_FILE_GET_PRIVATE (file)->display_name = g_value_dup_string (value);
-	    break;
-	case PROP_DIRECTORY:
-		PAROLE_FILE_GET_PRIVATE (file)->directory = g_value_dup_string (value);
-		break;
-	case PROP_CUSTOM_SUBTITLES:
-	    PAROLE_FILE_GET_PRIVATE (file)->custom_subtitles = g_value_dup_string (value);
-	    break;
-    case PROP_DVD_CHAPTER:
-	    PAROLE_FILE_GET_PRIVATE (file)->dvd_chapter = g_value_get_int (value);
-	    break;
-	default:
-	    G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-	    break;
+        case PROP_PATH:
+            PAROLE_FILE_GET_PRIVATE (file)->filename = g_value_dup_string (value);
+            break;
+        case PROP_DISPLAY_NAME:
+            PAROLE_FILE_GET_PRIVATE (file)->display_name = g_value_dup_string (value);
+            break;
+        case PROP_DIRECTORY:
+            PAROLE_FILE_GET_PRIVATE (file)->directory = g_value_dup_string (value);
+            break;
+        case PROP_CUSTOM_SUBTITLES:
+            PAROLE_FILE_GET_PRIVATE (file)->custom_subtitles = g_value_dup_string (value);
+            break;
+        case PROP_DVD_CHAPTER:
+            PAROLE_FILE_GET_PRIVATE (file)->dvd_chapter = g_value_get_int (value);
+            break;
+        default:
+            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+            break;
     }
 }
 
 static void
 parole_file_get_property (GObject *object, guint prop_id, 
-			      GValue *value, GParamSpec *pspec)
+                  GValue *value, GParamSpec *pspec)
 {
     ParoleFile *file;
 
@@ -138,30 +138,30 @@ parole_file_get_property (GObject *object, guint prop_id,
     
     switch (prop_id)
     {
-	case PROP_PATH:
-	    g_value_set_string (value, PAROLE_FILE_GET_PRIVATE (file)->filename);
-	    break;
-	case PROP_URI:
-	    g_value_set_string (value, PAROLE_FILE_GET_PRIVATE (file)->filename);
-	    break;
-	case PROP_CONTENT_TYPE:
-	    g_value_set_string (value, PAROLE_FILE_GET_PRIVATE (file)->content_type);
-	    break;
-	case PROP_DISPLAY_NAME:
-	    g_value_set_string (value, PAROLE_FILE_GET_PRIVATE (file)->display_name);
-	    break;
-	case PROP_DIRECTORY:
-	    g_value_set_string (value, PAROLE_FILE_GET_PRIVATE (file)->directory);
-	    break;
-    case PROP_CUSTOM_SUBTITLES:
-        g_value_set_string (value, PAROLE_FILE_GET_PRIVATE (file)->custom_subtitles);
-        break;
-    case PROP_DVD_CHAPTER:
-	    g_value_set_int (value, PAROLE_FILE_GET_PRIVATE (file)->dvd_chapter);
-	    break;
-	default:
-	    G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-	    break;
+        case PROP_PATH:
+            g_value_set_string (value, PAROLE_FILE_GET_PRIVATE (file)->filename);
+            break;
+        case PROP_URI:
+            g_value_set_string (value, PAROLE_FILE_GET_PRIVATE (file)->filename);
+            break;
+        case PROP_CONTENT_TYPE:
+            g_value_set_string (value, PAROLE_FILE_GET_PRIVATE (file)->content_type);
+            break;
+        case PROP_DISPLAY_NAME:
+            g_value_set_string (value, PAROLE_FILE_GET_PRIVATE (file)->display_name);
+            break;
+        case PROP_DIRECTORY:
+            g_value_set_string (value, PAROLE_FILE_GET_PRIVATE (file)->directory);
+            break;
+        case PROP_CUSTOM_SUBTITLES:
+            g_value_set_string (value, PAROLE_FILE_GET_PRIVATE (file)->custom_subtitles);
+            break;
+        case PROP_DVD_CHAPTER:
+            g_value_set_int (value, PAROLE_FILE_GET_PRIVATE (file)->dvd_chapter);
+            break;
+        default:
+            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+            break;
     }
 }
 
@@ -204,65 +204,65 @@ parole_file_constructed (GObject *object)
     gfile = g_file_new_for_commandline_arg (priv->filename);
 
     info = g_file_query_info (gfile, 
-			      "standard::*,",
-			      0,
-			      NULL,
-			      &error);
-				  
-		
-	priv->directory = g_file_get_path (g_file_get_parent( gfile ));
+                              "standard::*,",
+                              0,
+                              NULL,
+                              &error);
+                  
+        
+    priv->directory = g_file_get_path (g_file_get_parent( gfile ));
 
     if ( error )
     {
-	if ( G_LIKELY (error->code == G_IO_ERROR_NOT_SUPPORTED) )
-	{
-	    g_error_free (error);
-	    if ( !priv->display_name )
-	        priv->display_name = g_file_get_basename (gfile);
-	}
-	else
-	{
-	    if ( !priv->display_name )
-		priv->display_name = g_strdup (priv->filename);
-	    g_warning ("Unable to read file info %s", error->message);
-	}
-	goto out;
+        if ( G_LIKELY (error->code == G_IO_ERROR_NOT_SUPPORTED) )
+        {
+            g_error_free (error);
+            if ( !priv->display_name )
+                priv->display_name = g_file_get_basename (gfile);
+        }
+        else
+        {
+            if ( !priv->display_name )
+                priv->display_name = g_strdup (priv->filename);
+            g_warning ("Unable to read file info %s", error->message);
+        }
+        goto out;
     }
 #ifdef HAVE_TAGLIBC
     else
     {
-	TagLib_File *tag_file;
-	TagLib_Tag *tag;
-	gchar *title;
-	gchar *title_s;
-	
-	tag_file = taglib_file_new (priv->filename);
-	
-	if ( tag_file )
-	{
-	    tag = taglib_file_tag (tag_file);
-	    if ( tag )
-	    {
-		title = taglib_tag_title (tag);
-	    
-		if ( title )
-		{
-		    title_s = g_strstrip (title);
-		    if ( strlen (title_s ) )
-		    {
-			priv->display_name = g_strdup (title_s);
-		    }
-		}
-		    
-		taglib_tag_free_strings ();
-	    }
-	    taglib_file_free (tag_file);
-	}
+        TagLib_File *tag_file;
+        TagLib_Tag *tag;
+        gchar *title;
+        gchar *title_s;
+        
+        tag_file = taglib_file_new (priv->filename);
+        
+        if ( tag_file )
+        {
+            tag = taglib_file_tag (tag_file);
+            if ( tag )
+            {
+                title = taglib_tag_title (tag);
+                
+                if ( title )
+                {
+                    title_s = g_strstrip (title);
+                    if ( strlen (title_s ) )
+                    {
+                        priv->display_name = g_strdup (title_s);
+                    }
+                }
+                    
+                taglib_tag_free_strings ();
+            }
+            taglib_file_free (tag_file);
+        }
     }
 #endif
 
     if (!priv->display_name)
-	priv->display_name = g_strdup (g_file_info_get_display_name (info));
+        priv->display_name = g_strdup (g_file_info_get_display_name (info));
 
     priv->content_type = g_strdup (g_file_info_get_content_type (info));
     
@@ -292,13 +292,13 @@ parole_file_class_init (ParoleFileClass *klass)
      * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
-				     PROP_PATH,
-				     g_param_spec_string ("filename",
-							  "File name", 
-							  "The file name",
-							  NULL,
-							  G_PARAM_CONSTRUCT_ONLY|
-							  G_PARAM_READWRITE));
+                                     PROP_PATH,
+                                     g_param_spec_string ("filename",
+                                              "File name", 
+                                              "The file name",
+                                              NULL,
+                                              G_PARAM_CONSTRUCT_ONLY|
+                                              G_PARAM_READWRITE));
 
     /**
      * ParoleFile:display-name:
@@ -308,13 +308,13 @@ parole_file_class_init (ParoleFileClass *klass)
      * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
-				     PROP_DISPLAY_NAME,
-				     g_param_spec_string ("display-name",
-							  "Display name", 
-							  "A UTF-8 name that can be displayed in the UI",
-							  NULL,
-							  G_PARAM_CONSTRUCT_ONLY|
-							  G_PARAM_READWRITE));
+                                     PROP_DISPLAY_NAME,
+                                     g_param_spec_string ("display-name",
+                                              "Display name", 
+                                              "A UTF-8 name that can be displayed in the UI",
+                                              NULL,
+                                              G_PARAM_CONSTRUCT_ONLY|
+                                              G_PARAM_READWRITE));
 
     /**
      * ParoleFile:uri:
@@ -324,12 +324,12 @@ parole_file_class_init (ParoleFileClass *klass)
      * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
-				     PROP_URI,
-				     g_param_spec_string ("uri",
-							  "Uri", 
-							  "The uri of the file",
-							  NULL,
-							  G_PARAM_READABLE));
+                                     PROP_URI,
+                                     g_param_spec_string ("uri",
+                                              "Uri", 
+                                              "The uri of the file",
+                                              NULL,
+                                              G_PARAM_READABLE));
 
     /**
      * ParoleFile:content-type:
@@ -339,14 +339,14 @@ parole_file_class_init (ParoleFileClass *klass)
      * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
-				     PROP_CONTENT_TYPE,
-				     g_param_spec_string ("content-type",
-							  "Content type", 
-							  "The content type of the file",
-							  NULL,
-  							  G_PARAM_READABLE));
-							  
-	/**
+                                     PROP_CONTENT_TYPE,
+                                     g_param_spec_string ("content-type",
+                                              "Content type", 
+                                              "The content type of the file",
+                                              NULL,
+                                              G_PARAM_READABLE));
+                              
+    /**
      * ParoleFile:directory:
      * 
      * The parent directory of the file.
@@ -354,14 +354,14 @@ parole_file_class_init (ParoleFileClass *klass)
      * Since: 0.2 
      **/
     g_object_class_install_property (object_class,
-				     PROP_DIRECTORY,
-				     g_param_spec_string ("directory",
-							  "Parent directory", 
-							  "The parent directory of the file",
-							  NULL,
-							  G_PARAM_CONSTRUCT_ONLY|
-							  G_PARAM_READWRITE));
-							  
+                                     PROP_DIRECTORY,
+                                     g_param_spec_string ("directory",
+                                              "Parent directory", 
+                                              "The parent directory of the file",
+                                              NULL,
+                                              G_PARAM_CONSTRUCT_ONLY|
+                                              G_PARAM_READWRITE));
+                              
     /**
      * ParoleFile:custom_subtitles:
      *
@@ -370,14 +370,14 @@ parole_file_class_init (ParoleFileClass *klass)
      * Since: 0.4
      **/
     g_object_class_install_property (object_class,
-				     PROP_CUSTOM_SUBTITLES,
-				     g_param_spec_string ("custom_subtitles",
-							  "Custom Subtitles", 
-							  "The custom subtitles set by the user",
-							  NULL,
-							  G_PARAM_CONSTRUCT_ONLY|
-							  G_PARAM_READWRITE));
-							  
+                                     PROP_CUSTOM_SUBTITLES,
+                                     g_param_spec_string ("custom_subtitles",
+                                              "Custom Subtitles", 
+                                              "The custom subtitles set by the user",
+                                              NULL,
+                                              G_PARAM_CONSTRUCT_ONLY|
+                                              G_PARAM_READWRITE));
+                              
     /**
      * ParoleFile:dvd_chapter:
      *
@@ -386,15 +386,15 @@ parole_file_class_init (ParoleFileClass *klass)
      * Since: 0.4
      **/
     g_object_class_install_property (object_class,
-				     PROP_DVD_CHAPTER,
-				     g_param_spec_int ("dvd-chapter",
-							  "DVD Chapter", 
-							  "DVD Chapter, used for seeking a DVD using the playlist.",
-							  -1,
-							  1000,
-							  -1,
-							  G_PARAM_CONSTRUCT_ONLY|
-							  G_PARAM_READWRITE));
+                                     PROP_DVD_CHAPTER,
+                                     g_param_spec_int ("dvd-chapter",
+                                              "DVD Chapter", 
+                                              "DVD Chapter, used for seeking a DVD using the playlist.",
+                                              -1,
+                                              1000,
+                                              -1,
+                                              G_PARAM_CONSTRUCT_ONLY|
+                                              G_PARAM_READWRITE));
 
     g_type_class_add_private (klass, sizeof (ParoleFilePrivate));
 }
@@ -410,9 +410,9 @@ parole_file_init (ParoleFile *file)
     priv->display_name = NULL;
     priv->uri          = NULL;
     priv->content_type    = NULL;
-	priv->directory			= NULL;
-	priv->custom_subtitles = NULL;
-	priv->dvd_chapter = 0;
+    priv->directory         = NULL;
+    priv->custom_subtitles = NULL;
+    priv->dvd_chapter = 0;
 }
 
 /**
@@ -449,9 +449,9 @@ parole_file_new_with_display_name (const gchar *filename, const gchar *display_n
     ParoleFile *file = NULL;
     
     file = g_object_new (PAROLE_TYPE_FILE, 
-			 "filename", filename, 
-			 "display-name", display_name, 
-			 NULL);
+                         "filename", filename, 
+                         "display-name", display_name, 
+                         NULL);
 
     return file;
 }
@@ -473,9 +473,9 @@ parole_file_new_cdda_track (const gint track_num, const gchar *display_name)
     gchar *uri = g_strdup_printf("cdda://%i", track_num);
 
     file = g_object_new (PAROLE_TYPE_FILE, 
-		 "filename", uri, 
-		 "display-name", display_name, 
-		 NULL);
+                         "filename", uri, 
+                         "display-name", display_name, 
+                         NULL);
     
     g_free(uri);
     return file;
@@ -498,10 +498,10 @@ parole_file_new_dvd_chapter (gint chapter_num, const gchar *display_name)
     gchar *uri = "dvd:/";
 
     file = g_object_new (PAROLE_TYPE_FILE, 
-		 "filename", uri, 
-		 "display-name", display_name, 
-		 "dvd-chapter", chapter_num,
-		 NULL);
+                         "filename", uri, 
+                         "display-name", display_name, 
+                         "dvd-chapter", chapter_num,
+                         NULL);
     
     //g_free(uri); FIXME This should probably be freed.
     return file;
@@ -617,12 +617,12 @@ parole_file_set_custom_subtitles (const ParoleFile *file, gchar *suburi)
     g_value_set_static_string (&value, suburi);
     
     parole_file_set_property (G_OBJECT(file), PROP_CUSTOM_SUBTITLES, 
-			      &value, g_param_spec_string ("custom_subtitles",
-							  "Custom Subtitles", 
-							  "The custom subtitles set by the user",
-							  NULL,
-							  G_PARAM_CONSTRUCT_ONLY|
-							  G_PARAM_READWRITE));
+                              &value, g_param_spec_string ("custom_subtitles",
+                                          "Custom Subtitles", 
+                                          "The custom subtitles set by the user",
+                                          NULL,
+                                          G_PARAM_CONSTRUCT_ONLY|
+                                          G_PARAM_READWRITE));
 }
 
 /**
@@ -650,13 +650,13 @@ parole_file_set_dvd_chapter (const ParoleFile *file, gint dvd_chapter)
     g_value_set_int (&value, dvd_chapter);
     
     parole_file_set_property (G_OBJECT(file), PROP_DVD_CHAPTER, 
-			      &value, g_param_spec_int ("dvd-chapter",
-							  "DVD Chapter", 
-							  "DVD Chapter, used for seeking a DVD using the playlist.",
-							  -1,
-							  1000,
-							  -1,
-							  G_PARAM_CONSTRUCT_ONLY|
-							  G_PARAM_READWRITE));
+                              &value, g_param_spec_int ("dvd-chapter",
+                                          "DVD Chapter", 
+                                          "DVD Chapter, used for seeking a DVD using the playlist.",
+                                          -1,
+                                          1000,
+                                          -1,
+                                          G_PARAM_CONSTRUCT_ONLY|
+                                          G_PARAM_READWRITE));
 }
 

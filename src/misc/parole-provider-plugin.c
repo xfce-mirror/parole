@@ -33,21 +33,21 @@ parole_provider_plugin_get_type (void)
 
     if (G_UNLIKELY (type == G_TYPE_INVALID))
     {
-	static const GTypeInfo info =
-	{
-	    sizeof (ParoleProviderPluginIface),
-	    NULL,
-	    NULL,
-	    NULL,
-	    NULL,
-	    NULL,
-	    0,
-	    0,
-	    NULL,
-	    NULL,
-	};
+        static const GTypeInfo info =
+        {
+            sizeof (ParoleProviderPluginIface),
+            NULL,
+            NULL,
+            NULL,
+            NULL,
+            NULL,
+            0,
+            0,
+            NULL,
+            NULL,
+        };
 
-	type = g_type_register_static (G_TYPE_INTERFACE, "ParoleProviderPlugin", &info, 0);
+        type = g_type_register_static (G_TYPE_INTERFACE, "ParoleProviderPlugin", &info, 0);
     }
     
     return type;
@@ -72,7 +72,7 @@ gboolean parole_provider_plugin_get_is_configurable (ParoleProviderPlugin *provi
 
     if ( PAROLE_PROVIDER_PLUGIN_GET_INTERFACE (provider)->get_is_configurable )
     {
-	configurable = (*PAROLE_PROVIDER_PLUGIN_GET_INTERFACE (provider)->get_is_configurable) (provider);
+        configurable = (*PAROLE_PROVIDER_PLUGIN_GET_INTERFACE (provider)->get_is_configurable) (provider);
     }
     
     return configurable;
@@ -94,7 +94,7 @@ void parole_provider_plugin_configure (ParoleProviderPlugin *provider, GtkWidget
     
     if ( PAROLE_PROVIDER_PLUGIN_GET_INTERFACE (provider)->configure )
     {
-	(*PAROLE_PROVIDER_PLUGIN_GET_INTERFACE (provider)->configure) (provider, parent);
+        (*PAROLE_PROVIDER_PLUGIN_GET_INTERFACE (provider)->configure) (provider, parent);
     }
 }
 
@@ -110,10 +110,8 @@ void parole_provider_plugin_configure (ParoleProviderPlugin *provider, GtkWidget
  **/
 void parole_provider_plugin_set_player (ParoleProviderPlugin *provider, ParoleProviderPlayer *player)
 {
-    g_return_if_fail (PAROLE_IS_PROVIDER_PLUGIN (provider));
-    
     if ( PAROLE_PROVIDER_PLUGIN_GET_INTERFACE (provider)->set_player )
     {
-	(*PAROLE_PROVIDER_PLUGIN_GET_INTERFACE (provider)->set_player) (provider, player);
+        (*PAROLE_PROVIDER_PLUGIN_GET_INTERFACE (provider)->set_player) (provider, player);
     }
 }

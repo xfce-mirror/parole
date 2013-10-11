@@ -25,26 +25,26 @@
 
 #include <libxfce4util/libxfce4util.h>
 
-#define PAROLE_RESOURCE_FILE 		"xfce4/src/misc/parole-media-player.rc"
-#define PAROLE_HISTORY_FILE 		"xfce4/parole/history"
+#define PAROLE_RESOURCE_FILE             "xfce4/src/misc/parole-media-player.rc"
+#define PAROLE_HISTORY_FILE              "xfce4/parole/history"
 
-#define PAROLE_RC_GROUP_GENERAL		"General"
-#define PAROLE_RC_GROUP_PLUGINS		"Plugins"
+#define PAROLE_RC_GROUP_GENERAL          "General"
+#define PAROLE_RC_GROUP_PLUGINS          "Plugins"
 
-XfceRc                 *parole_get_resource_file        (const gchar *group, 
-							 gboolean readonly);
+XfceRc   *parole_get_resource_file        (const gchar *group, 
+                                           gboolean readonly);
 
-gchar                 **parole_get_history	        (void);
+gchar   **parole_get_history              (void);
 
-gchar                 **parole_get_history_full	        (const gchar *relpath);
+gchar   **parole_get_history_full         (const gchar *relpath);
 
-void			parole_insert_line_history	(const gchar *line);		
+void      parole_insert_line_history      (const gchar *line);        
 
-void			parole_insert_line_history_full	(const gchar *relpath,
-							 const gchar *line);		
+void      parole_insert_line_history_full (const gchar *relpath,
+                                           const gchar *line);        
 
-void 			parole_clear_history_file	(void);
+void      parole_clear_history_file       (void);
 
-void 			parole_clear_history_file_full  (const gchar *relpath);
+void      parole_clear_history_file_full  (const gchar *relpath);
 
 #endif /* __RC_UTILS_ */

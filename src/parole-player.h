@@ -36,39 +36,51 @@ typedef struct ParolePlayerPrivate ParolePlayerPrivate;
 
 typedef struct
 {
-    GObject         		 parent;
-    ParolePlayerPrivate     	*priv;
+    GObject                     parent;
+    ParolePlayerPrivate        *priv;
     
 } ParolePlayer;
 
 typedef struct
 {
-    GObjectClass 		 parent_class;
+    GObjectClass                parent_class;
     
-    void			(*shuffle_toggled)		    (ParolePlayer *list,
-								     gboolean shuffle_toggled);
-								     
-	void			(*repeat_toggled)		    (ParolePlayer *list,
-								     gboolean repeat_toggled);
+    void                        (*shuffle_toggled)              (ParolePlayer *player,
+                                                                 gboolean shuffle_toggled);
+                                     
+    void                        (*repeat_toggled)               (ParolePlayer *player,
+                                                                 gboolean repeat_toggled);
+                                                                 
+    void                        (*gst_dvd_nav_message)          (ParolePlayer *player,
+                                                                 gint gst_dvd_nav_message);
 
-    
 } ParolePlayerClass;
 
-GType        			 parole_player_get_type        (void) G_GNUC_CONST;
-ParolePlayer       		*parole_player_new             (const gchar *client_id);
+typedef enum
+{
+    PAROLE_PLAYER_ACTION_PREVIOUS,
+    PAROLE_PLAYER_ACTION_NEXT,
+    PAROLE_PLAYER_ACTION_PLAYPAUSE
+} ParolePlayerAction;
 
-ParoleMediaList			*parole_player_get_media_list  (ParolePlayer *player);
+GType                           parole_player_get_type          (void) G_GNUC_CONST;
+ParolePlayer                   *parole_player_new               (const gchar *client_id);
 
-void				 parole_player_play_uri_disc   (ParolePlayer *player,
-								const gchar *uri,
-								const gchar *device);
+ParoleMediaList                *parole_player_get_media_list    (ParolePlayer *player);
 
-void				 parole_player_terminate       (ParolePlayer *player);
+void                            parole_player_play_uri_disc     (ParolePlayer *player,
+                                                                 const gchar *uri,
+                                                                 const gchar *device);
 
-void                parole_player_embedded (ParolePlayer *player);
+void                            parole_player_terminate         (ParolePlayer *player);
 
-void				 parole_player_full_screen     (ParolePlayer *player, 
-								gboolean fullscreen);
+void                            parole_player_embedded          (ParolePlayer *player);
+
+void                            parole_player_full_screen       (ParolePlayer *player, 
+                                                                 gboolean fullscreen);
+                                                                 
+GtkAction                      *parole_player_get_action(ParolePlayerAction action);
+
 
 G_END_DECLS
 

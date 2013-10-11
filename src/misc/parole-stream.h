@@ -66,24 +66,25 @@ typedef struct _ParoleStreamClass ParoleStreamClass;
 
 struct _ParoleStream
 {
-    GObject         		parent;
+    GObject             parent;
     
 };
 
 struct _ParoleStreamClass
 {
-    GObjectClass 		parent_class;
+    GObjectClass        parent_class;
 };
 
-GType        			parole_stream_get_type        (void) G_GNUC_CONST;
+GType                   parole_stream_get_type          (void) G_GNUC_CONST;
 
-void parole_stream_set_image (GObject *object, GdkPixbuf *pixbuf);
+void                    parole_stream_set_image         (GObject *object, 
+                                                         GdkPixbuf *pixbuf);
 
-GdkPixbuf *parole_stream_get_image (GObject *object);
+GdkPixbuf              *parole_stream_get_image         (GObject *object);
 
-ParoleStream       	       *parole_stream_new             (void);
+ParoleStream           *parole_stream_new               (void);
 
-void			        parole_stream_init_properties (ParoleStream *stream);
+void                    parole_stream_init_properties   (ParoleStream *stream);
 
 G_END_DECLS
 

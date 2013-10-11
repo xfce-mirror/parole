@@ -34,8 +34,8 @@
 
 #include "tray-provider.h"
 
-static void   tray_provider_iface_init 	   (ParoleProviderPluginIface *iface);
-static void   tray_provider_finalize       (GObject 	              *object);
+static void   tray_provider_iface_init     (ParoleProviderPluginIface *iface);
+static void   tray_provider_finalize       (GObject                   *object);
 
 
 struct _TrayProviderClass
@@ -55,12 +55,12 @@ struct _TrayProvider
     GtkWidget              *menu;
 };
 
-PAROLE_DEFINE_TYPE_WITH_CODE (TrayProvider, 
-                        tray_provider, 
-                        G_TYPE_OBJECT,
-                        PAROLE_IMPLEMENT_INTERFACE (PAROLE_TYPE_PROVIDER_PLUGIN, 
-					    tray_provider_iface_init));
-	
+PAROLE_DEFINE_TYPE_WITH_CODE   (TrayProvider, 
+                                tray_provider, 
+                                G_TYPE_OBJECT,
+                                PAROLE_IMPLEMENT_INTERFACE (PAROLE_TYPE_PROVIDER_PLUGIN, 
+                                tray_provider_iface_init));
+    
 static void
 menu_selection_done_cb (TrayProvider *tray)
 {
@@ -76,22 +76,11 @@ exit_activated_cb (TrayProvider *tray)
     menu_selection_done_cb (tray);
     
     ev.type = GDK_DELETE;
-    ev.window = tray->window->window;
+    ev.window = gtk_widget_get_window(tray->window);
     ev.send_event = TRUE;
 
     g_signal_handler_block (tray->window, tray->sig);
     gtk_main_do_event ((GdkEvent *) &ev);
-}
-
-static void
-play_pause_activated_cb (TrayProvider *tray)
-{
-    menu_selection_done_cb (tray);
-    
-    if ( tray->state == PAROLE_STATE_PLAYING )
-	parole_provider_player_pause (tray->player);
-    else if ( tray->state == PAROLE_STATE_PAUSED )
-	parole_provider_player_resume (tray->player);
 }
 
 static void
@@ -104,24 +93,45 @@ static void
 popup_menu_cb (GtkStatusIcon *icon, guint button, 
                guint activate_time, TrayProvider *tray)
 {
-    GtkWidget *menu, *mi;
+    GtkWidget *menu, *mi, *image;
+    GtkAction *action;
     
     menu = gtk_menu_new ();
 
     /*
-     * Play pause.
+     * Play pause
      */
-    mi = gtk_image_menu_item_new_from_stock (tray->state == PAROLE_STATE_PLAYING ? GTK_STOCK_MEDIA_PAUSE : 
-					     GTK_STOCK_MEDIA_PLAY, NULL);
-    gtk_widget_set_sensitive (mi, TRUE);
+    action = parole_provider_player_get_action(PAROLE_PROVIDER_PLAYER(tray->player), PAROLE_PLAYER_ACTION_PLAYPAUSE);
+    mi = gtk_action_create_menu_item(action);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+    
+    /*
+     * Previous Track
+     */
+    action = parole_provider_player_get_action(PAROLE_PROVIDER_PLAYER(tray->player), PAROLE_PLAYER_ACTION_PREVIOUS);
+    mi = gtk_action_create_menu_item(action);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+    
+    /*
+     * Next Track
+     */
+    action = parole_provider_player_get_action(PAROLE_PROVIDER_PLAYER(tray->player), PAROLE_PLAYER_ACTION_NEXT);
+    mi = gtk_action_create_menu_item(action);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+    
+    /*
+     * Separator
+     */
+    mi = gtk_separator_menu_item_new ();
     gtk_widget_show (mi);
-    g_signal_connect_swapped (mi, "activate", G_CALLBACK (play_pause_activated_cb), tray);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
     
     /*
      * Open
      */
-    mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_OPEN, NULL);
+    image = gtk_image_new_from_icon_name("document-open-symbolic", GTK_ICON_SIZE_MENU);
+    mi = gtk_image_menu_item_new_with_mnemonic(_("_Open"));
+    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), image);
     gtk_widget_show (mi);
     g_signal_connect_swapped (mi, "activate", G_CALLBACK (open_activated_cb), tray);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
@@ -136,7 +146,9 @@ popup_menu_cb (GtkStatusIcon *icon, guint button,
     /*
      * Exit
      */
-    mi = gtk_image_menu_item_new_from_stock (GTK_STOCK_QUIT, NULL);
+    image = gtk_image_new_from_icon_name("system-shutdown-symbolic", GTK_ICON_SIZE_MENU);
+    mi = gtk_image_menu_item_new_with_mnemonic(_("_Quit"));
+    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), image);
     gtk_widget_set_sensitive (mi, TRUE);
     gtk_widget_show (mi);
     g_signal_connect_swapped (mi, "activate", G_CALLBACK (exit_activated_cb), tray);
@@ -147,7 +159,7 @@ popup_menu_cb (GtkStatusIcon *icon, guint button,
                     icon, button, activate_time);
 
     g_signal_connect_swapped (menu, "selection-done",
-			      G_CALLBACK (menu_selection_done_cb), tray);
+                  G_CALLBACK (menu_selection_done_cb), tray);
 
     tray->menu = menu;
 }
@@ -155,10 +167,11 @@ popup_menu_cb (GtkStatusIcon *icon, guint button,
 static void
 tray_activate_cb (GtkStatusIcon *tray_icon, TrayProvider *tray)
 {
-    if ( GTK_WIDGET_VISIBLE (tray->window) )
-	gtk_widget_hide (tray->window);
+    /* Show the window if it is hidden or does not have focus */
+    if (!gtk_widget_get_visible(tray->window) || !gtk_window_is_active(GTK_WINDOW(tray->window)))
+        gtk_window_present(GTK_WINDOW(tray->window));
     else
-	gtk_widget_show (tray->window);
+        gtk_widget_hide(tray->window);
 }
 
 static void
@@ -168,9 +181,9 @@ state_changed_cb (ParoleProviderPlayer *player, const ParoleStream *stream, Paro
     
     if ( tray->menu )
     {
-	gtk_widget_destroy (tray->menu);
-	tray->menu = NULL;
-	g_signal_emit_by_name (G_OBJECT (tray->tray), "popup-menu", 0, gtk_get_current_event_time ());
+        gtk_widget_destroy (tray->menu);
+        tray->menu = NULL;
+        g_signal_emit_by_name (G_OBJECT (tray->tray), "popup-menu", 0, gtk_get_current_event_time ());
     }
 }
 
@@ -226,12 +239,12 @@ configure_plugin (TrayProvider *tray, GtkWidget *widget)
     GtkWidget *hide_on_delete;
     gboolean hide_on_delete_b;
     
-    dialog = gtk_dialog_new_with_buttons (_("Tray icon plugin"), 
-					  GTK_WINDOW (widget),
-					  GTK_DIALOG_DESTROY_WITH_PARENT,
-					  GTK_STOCK_CLOSE,
-                                          GTK_RESPONSE_CANCEL,
-                                          NULL);
+    dialog = gtk_dialog_new_with_buttons   (_("Tray icon plugin"), 
+                                            GTK_WINDOW (widget),
+                                            GTK_DIALOG_DESTROY_WITH_PARENT,
+                                            _("Close"),
+                                            GTK_RESPONSE_CANCEL,
+                                            NULL);
 
     content_area = gtk_dialog_get_content_area (GTK_DIALOG (dialog));
 
@@ -240,12 +253,12 @@ configure_plugin (TrayProvider *tray, GtkWidget *widget)
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (hide_on_delete), hide_on_delete_b);
     
     g_signal_connect (hide_on_delete, "toggled",
-		      G_CALLBACK (hide_on_delete_toggled_cb), NULL);
+              G_CALLBACK (hide_on_delete_toggled_cb), NULL);
     
-    gtk_box_pack_start_defaults (GTK_BOX (content_area), hide_on_delete);
-	
+    gtk_box_pack_start (GTK_BOX (content_area), hide_on_delete, TRUE, TRUE, 0);
+    
     g_signal_connect (dialog, "response",
-		      G_CALLBACK (gtk_widget_destroy), NULL);
+              G_CALLBACK (gtk_widget_destroy), NULL);
     
     gtk_widget_show_all (dialog);
 }
@@ -263,7 +276,7 @@ action_on_hide_confirmed_cb (GtkWidget *widget, gpointer data)
 static gboolean
 delete_event_cb (GtkWidget *widget, GdkEvent *ev, TrayProvider *tray)
 {
-    GtkWidget *dialog, *check, *content_area;
+    GtkWidget *dialog, *check, *content_area, *button;
     GtkWidget *minimize, *img;
     gboolean confirmed, ret_val = TRUE, minimize_to_tray;
     
@@ -272,34 +285,38 @@ delete_event_cb (GtkWidget *widget, GdkEvent *ev, TrayProvider *tray)
     
     if ( confirmed )
     {
-	return minimize_to_tray ? gtk_widget_hide_on_delete (widget) : FALSE;
+        return minimize_to_tray ? gtk_widget_hide_on_delete (widget) : FALSE;
     }
 
-	dialog = gtk_message_dialog_new(GTK_WINDOW(widget),
-	                                GTK_DIALOG_MODAL,
-	                                GTK_MESSAGE_QUESTION,
-	                                GTK_BUTTONS_NONE,
-	                                NULL);
-	                                
+    dialog = gtk_message_dialog_new(GTK_WINDOW(widget),
+                                    GTK_DIALOG_MODAL,
+                                    GTK_MESSAGE_QUESTION,
+                                    GTK_BUTTONS_NONE,
+                                    NULL);
+                                    
     gtk_message_dialog_set_markup  (GTK_MESSAGE_DIALOG(dialog),
                                     g_strdup_printf("<big><b>%s</b></big>", _("Are you sure you want to quit?")));
                                     
     gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG(dialog),
-        _("Parole can be minimized to the system tray instead."));
+            _("Parole can be minimized to the system tray instead."));
     
     minimize = gtk_dialog_add_button(   GTK_DIALOG(dialog),
                                         _("Minimize to tray"),
                                         GTK_RESPONSE_OK );
-    img = gtk_image_new_from_stock (GTK_STOCK_GO_DOWN, GTK_ICON_SIZE_BUTTON);
+    img = gtk_image_new_from_icon_name ("go-down", GTK_ICON_SIZE_BUTTON);
     gtk_button_set_image (GTK_BUTTON (minimize), img);
     
-    gtk_dialog_add_button(  GTK_DIALOG(dialog),
-                            GTK_STOCK_CANCEL,
-                            GTK_RESPONSE_CANCEL );
+    button = gtk_dialog_add_button( GTK_DIALOG(dialog),
+                                    _("Cancel"),
+                                    GTK_RESPONSE_CANCEL );
+    img = gtk_image_new_from_icon_name ("gtk-cancel", GTK_ICON_SIZE_BUTTON);
+    gtk_button_set_image(GTK_BUTTON(button), img);
     
-    gtk_dialog_add_button(  GTK_DIALOG(dialog),
-                            GTK_STOCK_QUIT,
-                            GTK_RESPONSE_CLOSE );
+    button = gtk_dialog_add_button(  GTK_DIALOG(dialog),
+                                     _("Quit"),
+                                     GTK_RESPONSE_CLOSE );
+    img = gtk_image_new_from_icon_name ("gtk-quit", GTK_ICON_SIZE_BUTTON);
+    gtk_button_set_image(GTK_BUTTON(button), img);
                                     
     gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
     
@@ -309,35 +326,35 @@ delete_event_cb (GtkWidget *widget, GdkEvent *ev, TrayProvider *tray)
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check), FALSE);
     
     g_signal_connect (check, "toggled",
-		      G_CALLBACK (action_on_hide_confirmed_cb), NULL);
-		      
-    gtk_box_pack_start_defaults (GTK_BOX (content_area),
-			         check) ;
-			         
+              G_CALLBACK (action_on_hide_confirmed_cb), NULL);
+         
+    gtk_box_pack_start (GTK_BOX (content_area), check, TRUE, TRUE, 0);
+    gtk_widget_set_margin_left(GTK_WIDGET(check), 3);
+                     
     gtk_widget_show_all( GTK_WIDGET(dialog) );
 
     switch ( gtk_dialog_run (GTK_DIALOG (dialog)) )
     {
-	case GTK_RESPONSE_OK:
-	    {
-		gtk_widget_hide_on_delete (widget);
-		confirmed = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check));
-		if ( confirmed )
-		    write_entry_bool ("minimize-to-tray", TRUE);
-		break;
-	    }
-	case GTK_RESPONSE_CLOSE:
-	    {
-		confirmed = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check));
-		if ( confirmed )
-		    write_entry_bool ("minimize-to-tray", FALSE);
-		ret_val = FALSE;
-	    }
-	    break;
-	case GTK_RESPONSE_CANCEL:
-	    break;
-	default:
-	    break;
+        case GTK_RESPONSE_OK:
+            {
+            gtk_widget_hide_on_delete (widget);
+            confirmed = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check));
+            if ( confirmed )
+                write_entry_bool ("minimize-to-tray", TRUE);
+            break;
+            }
+        case GTK_RESPONSE_CLOSE:
+            {
+            confirmed = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check));
+            if ( confirmed )
+                write_entry_bool ("minimize-to-tray", FALSE);
+            ret_val = FALSE;
+            }
+            break;
+        case GTK_RESPONSE_CANCEL:
+            break;
+        default:
+            break;
     }
     
     gtk_widget_destroy (dialog);
@@ -375,21 +392,21 @@ tray_provider_set_player (ParoleProviderPlugin *plugin, ParoleProviderPlayer *pl
     
     if ( pix )
     {
-	gtk_status_icon_set_from_pixbuf (tray->tray, pix);
-	g_object_unref (pix);
+        gtk_status_icon_set_from_pixbuf (tray->tray, pix);
+        g_object_unref (pix);
     }
     
     g_signal_connect (tray->tray, "popup-menu",
-		      G_CALLBACK (popup_menu_cb), tray);
+              G_CALLBACK (popup_menu_cb), tray);
     
     g_signal_connect (tray->tray, "activate",
-		      G_CALLBACK (tray_activate_cb), tray);
+              G_CALLBACK (tray_activate_cb), tray);
     
     tray->sig = g_signal_connect (tray->window, "delete-event",
-			          G_CALLBACK (delete_event_cb), NULL);
-				  
+              G_CALLBACK (delete_event_cb), NULL);
+                  
     g_signal_connect (player, "state_changed", 
-		      G_CALLBACK (state_changed_cb), tray);
+              G_CALLBACK (state_changed_cb), tray);
 }
 
 static void
@@ -427,7 +444,7 @@ static void tray_provider_finalize (GObject *object)
     tray = TRAY_PROVIDER (object);
     
     if ( GTK_IS_WIDGET (tray->window) && g_signal_handler_is_connected (tray->window, tray->sig) )
-	g_signal_handler_disconnect (tray->window, tray->sig);
+        g_signal_handler_disconnect (tray->window, tray->sig);
 
     g_object_unref (G_OBJECT (tray->tray));
     

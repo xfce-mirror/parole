@@ -35,9 +35,9 @@ typedef struct _NotifyProvider      NotifyProvider;
 #define NOTIFY_IS_PROVIDER_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), NOTIFY_TYPE_PROVIDER))
 #define NOTIFY_PROVIDER_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), NOTIFY_TYPE_PROVIDER, NotifyProviderClass))
 
-GType notify_provider_get_type      	(void) G_GNUC_CONST G_GNUC_INTERNAL;
+GType notify_provider_get_type           (void) G_GNUC_CONST G_GNUC_INTERNAL;
 
-void  notify_provider_register_type	(ParoleProviderPlugin *provider);
+void  notify_provider_register_type (ParoleProviderPlugin *provider);
 
 G_END_DECLS
 

@@ -42,14 +42,14 @@ parole_get_resource_file (const gchar *group, gboolean readonly)
     rc = xfce_rc_simple_open (file, readonly);
     
     if (rc)
-	xfce_rc_set_group (rc, group);
-	
+        xfce_rc_set_group (rc, group);
+    
     g_free (file);
     
     return rc;
 }
 
-gchar **parole_get_history_full	(const gchar *relpath)
+gchar **parole_get_history_full (const gchar *relpath)
 {
     gchar **lines = NULL;
     gchar *history = NULL;
@@ -87,14 +87,14 @@ void parole_insert_line_history_full (const gchar *relpath, const gchar *line)
     
     if ( history ) 
     {
-	FILE *f;
-	f = fopen (history, "a");
-	fprintf (f, "%s\n", line);
-	fclose (f);
-	g_free (history);
+        FILE *f;
+        f = fopen (history, "a");
+        fprintf (f, "%s\n", line);
+        fclose (f);
+        g_free (history);
     }
     else
-	g_warning ("Unable to open cache file");
+        g_warning ("Unable to open cache file");
 }
 
 void parole_clear_history_file (void)
@@ -110,9 +110,9 @@ void parole_clear_history_file_full (const gchar *relpath)
     
     if ( history )
     {
-	FILE *f;
-	f = fopen (history, "w");
-	fclose (f);
-	g_free (history);
+        FILE *f;
+        f = fopen (history, "w");
+        fclose (f);
+        g_free (history);
     }
 }

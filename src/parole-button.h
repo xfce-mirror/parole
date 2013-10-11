@@ -48,23 +48,23 @@ typedef struct ParoleButtonPrivate ParoleButtonPrivate;
 
 typedef struct
 {
-    GObject		  	parent;
-    ParoleButtonPrivate        *priv;
+    GObject                 parent;
+    ParoleButtonPrivate     *priv;
     
 } ParoleButton;
 
 typedef struct
 {
-    GObjectClass 		parent_class;
+    GObjectClass            parent_class;
      
-    void                 	(*button_pressed)		        (ParoleButton *button,
-								         ParoleButtonKey type);
+    void                    (*button_pressed)       (ParoleButton *button,
+                                                     ParoleButtonKey type);
     
 } ParoleButtonClass;
 
-GType                 		parole_button_get_type               	(void) G_GNUC_CONST;
+GType                       parole_button_get_type  (void) G_GNUC_CONST;
 
-ParoleButton       	       *parole_button_new             		(void);
+ParoleButton               *parole_button_new       (void);
 
 G_END_DECLS
 

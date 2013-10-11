@@ -10,19 +10,10 @@
     <method name="Play">
     </method>
 
-    <method name="Stop">
-    </method>
-
     <method name="NextTrack">
     </method>
 
     <method name="PrevTrack">
-    </method>
-    
-    <method name="SeekForward">
-    </method>
-
-    <method name="SeekBackward">
     </method>
     
     <method name="RaiseVolume">
@@ -32,6 +23,9 @@
     </method>
     
     <method name="Mute">
+    </method>
+    
+    <method name="Unmute">
     </method>
     
     <method name="PlayDisc">

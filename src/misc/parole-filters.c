@@ -36,7 +36,6 @@
 #include "data/mime/parole-mime-types.h"
 
 static char *playlist_mime_types[] = {
-    //"text/plain",
     "audio/x-mpegurl",
     "audio/playlist",
     "audio/x-scpls",
@@ -56,7 +55,7 @@ static char *playlist_mime_types[] = {
  * 
  * Since: 0.2
  */
-GtkFileFilter 		*parole_get_supported_audio_filter	(void)
+GtkFileFilter       *parole_get_supported_audio_filter  (void)
 {
     GtkFileFilter *filter;
     guint i;
@@ -66,7 +65,7 @@ GtkFileFilter 		*parole_get_supported_audio_filter	(void)
     gtk_file_filter_set_name (filter, _("Audio"));
     
     for ( i = 0; i < G_N_ELEMENTS (audio_mime_types); i++)
-	gtk_file_filter_add_mime_type (filter, audio_mime_types[i]);
+        gtk_file_filter_add_mime_type (filter, audio_mime_types[i]);
     
     return filter;
 }
@@ -82,7 +81,7 @@ GtkFileFilter 		*parole_get_supported_audio_filter	(void)
  * 
  * Since: 0.2
  */
-GtkFileFilter 		*parole_get_supported_video_filter	(void)
+GtkFileFilter       *parole_get_supported_video_filter  (void)
 {
     GtkFileFilter *filter;
     guint i;
@@ -92,7 +91,7 @@ GtkFileFilter 		*parole_get_supported_video_filter	(void)
     gtk_file_filter_set_name (filter, _("Video"));
     
     for ( i = 0; i < G_N_ELEMENTS (video_mime_types); i++)
-	gtk_file_filter_add_mime_type (filter, video_mime_types[i]);
+        gtk_file_filter_add_mime_type (filter, video_mime_types[i]);
     
     return filter;
 }
@@ -107,7 +106,7 @@ GtkFileFilter 		*parole_get_supported_video_filter	(void)
  * 
  * Since: 0.2
  */
-GtkFileFilter 		*parole_get_supported_media_filter	(void)
+GtkFileFilter       *parole_get_supported_media_filter  (void)
 {
     GtkFileFilter *filter;
     guint i;
@@ -117,15 +116,15 @@ GtkFileFilter 		*parole_get_supported_media_filter	(void)
     gtk_file_filter_set_name (filter, _("Audio and video"));
     
     for ( i = 0; i < G_N_ELEMENTS (audio_mime_types); i++)
-	gtk_file_filter_add_mime_type (filter, audio_mime_types[i]);
-	
+        gtk_file_filter_add_mime_type (filter, audio_mime_types[i]);
+    
     for ( i = 0; i < G_N_ELEMENTS (video_mime_types); i++)
-	gtk_file_filter_add_mime_type (filter, video_mime_types[i]);
+        gtk_file_filter_add_mime_type (filter, video_mime_types[i]);
     
     return filter;
 }
 
-GtkRecentFilter 		*parole_get_supported_recent_media_filter	(void)
+GtkRecentFilter         *parole_get_supported_recent_media_filter   (void)
 {
     GtkRecentFilter *filter;
     guint i;
@@ -135,10 +134,10 @@ GtkRecentFilter 		*parole_get_supported_recent_media_filter	(void)
     gtk_recent_filter_set_name (filter, _("Audio and video"));
     
     for ( i = 0; i < G_N_ELEMENTS (audio_mime_types); i++)
-	gtk_recent_filter_add_mime_type (filter, audio_mime_types[i]);
-	
+        gtk_recent_filter_add_mime_type (filter, audio_mime_types[i]);
+    
     for ( i = 0; i < G_N_ELEMENTS (video_mime_types); i++)
-	gtk_recent_filter_add_mime_type (filter, video_mime_types[i]);
+        gtk_recent_filter_add_mime_type (filter, video_mime_types[i]);
     
     return filter;
 }
@@ -164,7 +163,7 @@ GtkFileFilter *parole_get_supported_files_filter (void)
     gtk_file_filter_set_name (filter, _("All supported files"));
     
     for ( i = 0; i < G_N_ELEMENTS (playlist_mime_types); i++)
-	gtk_file_filter_add_mime_type (filter, playlist_mime_types[i]);
+        gtk_file_filter_add_mime_type (filter, playlist_mime_types[i]);
     
     return filter;
     
@@ -180,7 +179,7 @@ GtkRecentFilter *parole_get_supported_recent_files_filter (void)
     gtk_recent_filter_set_name (filter, _("All supported files"));
     
     for ( i = 0; i < G_N_ELEMENTS (playlist_mime_types); i++)
-	gtk_recent_filter_add_mime_type (filter, playlist_mime_types[i]);
+        gtk_recent_filter_add_mime_type (filter, playlist_mime_types[i]);
     
     return filter;
     
@@ -197,7 +196,7 @@ GtkRecentFilter *parole_get_supported_recent_files_filter (void)
  * 
  * Since: 0.2
  */
-GtkFileFilter 	*parole_get_supported_playlist_filter	(void)
+GtkFileFilter   *parole_get_supported_playlist_filter   (void)
 {
     GtkFileFilter *filter;
     guint i;
@@ -207,7 +206,7 @@ GtkFileFilter 	*parole_get_supported_playlist_filter	(void)
     gtk_file_filter_set_name (filter, _("Playlist files"));
     
     for ( i = 0; i < G_N_ELEMENTS (playlist_mime_types); i++)
-	gtk_file_filter_add_mime_type (filter, playlist_mime_types[i]);
+        gtk_file_filter_add_mime_type (filter, playlist_mime_types[i]);
     
     return filter;
 }

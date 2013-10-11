@@ -28,8 +28,8 @@
 #include "parole-marshal.h"
 #include "parole-enum-types.h"
 
-static void	parole_provider_player_base_init	(gpointer klass);
-static void	parole_provider_player_class_init	(gpointer klass);
+static void parole_provider_player_base_init    (gpointer klass);
+static void parole_provider_player_class_init   (gpointer klass);
 
 GType
 parole_provider_player_get_type (void)
@@ -38,23 +38,23 @@ parole_provider_player_get_type (void)
 
     if (G_UNLIKELY (type == G_TYPE_INVALID))
     {
-	static const GTypeInfo info =
-	{
-	    sizeof (ParoleProviderPlayerIface),
-	    (GBaseInitFunc) parole_provider_player_base_init,
-	    NULL,
-	    (GClassInitFunc) parole_provider_player_class_init,
-	    NULL,
-	    NULL,
-	    0,
-	    0,
-	    NULL,
-	    NULL,
-	};
+        static const GTypeInfo info =
+        {
+            sizeof (ParoleProviderPlayerIface),
+            (GBaseInitFunc) parole_provider_player_base_init,
+            NULL,
+            (GClassInitFunc) parole_provider_player_class_init,
+            NULL,
+            NULL,
+            0,
+            0,
+            NULL,
+            NULL,
+        };
 
-	type = g_type_register_static (G_TYPE_INTERFACE, "ParoleProviderPlayerIface", &info, 0);
+        type = g_type_register_static (G_TYPE_INTERFACE, "ParoleProviderPlayerIface", &info, 0);
 
-	g_type_interface_add_prerequisite (type, G_TYPE_OBJECT);
+        g_type_interface_add_prerequisite (type, G_TYPE_OBJECT);
     }
     
     return type;
@@ -66,43 +66,43 @@ static void parole_provider_player_base_init (gpointer klass)
 
     if (G_UNLIKELY (!initialized))
     {
-	/**
-	 * ParoleProviderPlayerIface::state-changed:
-	 * @player: the object which received the signal.
-	 * @stream: a #ParoleStream.
-	 * @state: the new state.
-	 * 
-	 * Issued when the Parole state changed.
-	 * 
-	 * Since: 0.2 
-	 **/
-        g_signal_new ("state-changed",
-                      G_TYPE_FROM_INTERFACE (klass),
-                      G_SIGNAL_RUN_LAST,
-                      G_STRUCT_OFFSET (ParoleProviderPlayerIface, state_changed),
-                      NULL, NULL,
-                      parole_marshal_VOID__OBJECT_ENUM,
-                      G_TYPE_NONE, 2,
-		      PAROLE_TYPE_STREAM, PAROLE_ENUM_TYPE_STATE);
+        /**
+         * ParoleProviderPlayerIface::state-changed:
+         * @player: the object which received the signal.
+         * @stream: a #ParoleStream.
+         * @state: the new state.
+         * 
+         * Issued when the Parole state changed.
+         * 
+         * Since: 0.2 
+         **/
+        g_signal_new   ("state-changed",
+                        G_TYPE_FROM_INTERFACE (klass),
+                        G_SIGNAL_RUN_LAST,
+                        G_STRUCT_OFFSET (ParoleProviderPlayerIface, state_changed),
+                        NULL, NULL,
+                        parole_marshal_VOID__OBJECT_ENUM,
+                        G_TYPE_NONE, 2,
+                        PAROLE_TYPE_STREAM, PAROLE_ENUM_TYPE_STATE);
 
-	/**
-	 * ParoleProviderPlayerIface::tag-message:
-	 * @player: the object which received the signal.
-	 * @stream: a #ParoleStream.
-	 * 
-	 * Indicated that the stream tags were found and ready to be read.
-	 * 
-	 * Since: 0.2 
-	 **/
-	g_signal_new ("tag-message",
-		      G_TYPE_FROM_INTERFACE (klass),
-		      G_SIGNAL_RUN_LAST,
-		      G_STRUCT_OFFSET (ParoleProviderPlayerIface, tag_message),
-		      NULL, NULL,
-		      g_cclosure_marshal_VOID__OBJECT,
-		      G_TYPE_NONE, 1, PAROLE_TYPE_STREAM);
-			  
-	initialized = TRUE;
+        /**
+         * ParoleProviderPlayerIface::tag-message:
+         * @player: the object which received the signal.
+         * @stream: a #ParoleStream.
+         * 
+         * Indicated that the stream tags were found and ready to be read.
+         * 
+         * Since: 0.2 
+         **/
+        g_signal_new   ("tag-message",
+                        G_TYPE_FROM_INTERFACE (klass),
+                        G_SIGNAL_RUN_LAST,
+                        G_STRUCT_OFFSET (ParoleProviderPlayerIface, tag_message),
+                        NULL, NULL,
+                        g_cclosure_marshal_VOID__OBJECT,
+                        G_TYPE_NONE, 1, PAROLE_TYPE_STREAM);
+                  
+        initialized = TRUE;
     }
 }
 
@@ -128,7 +128,7 @@ GtkWidget *parole_provider_player_get_main_window (ParoleProviderPlayer *player)
     
     if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_main_window )
     {
-	window  = (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_main_window) (player);
+        window  = (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_main_window) (player);
     }
     return window;
 }
@@ -150,7 +150,7 @@ GtkWidget *parole_provider_player_get_main_window (ParoleProviderPlayer *player)
  * Since: 0.2
  **/ 
 void parole_provider_player_pack (ParoleProviderPlayer *player, GtkWidget *widget, 
-				  const gchar *title, ParolePluginContainer container)
+                  const gchar *title, ParolePluginContainer container)
 {
     g_return_if_fail (PAROLE_IS_PROVIDER_PLAYER (player));
     
@@ -159,7 +159,7 @@ void parole_provider_player_pack (ParoleProviderPlayer *player, GtkWidget *widge
         (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->pack) (player, widget, title, container);
     }
 }
-		
+        
 /**
  * parole_provider_player_get_state:
  * @player: a #ParoleProviderPlayer
@@ -179,7 +179,7 @@ ParoleState parole_provider_player_get_state (ParoleProviderPlayer *player)
     
     if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_state )
     {
-	state = (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_state) (player);
+        state = (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_state) (player);
     }
     
     return state;
@@ -201,7 +201,7 @@ const ParoleStream *parole_provider_player_get_stream   (ParoleProviderPlayer *p
     
     if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_stream )
     {
-	return (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_stream) (player);
+        return (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_stream) (player);
     }
     
     return NULL;
@@ -230,7 +230,7 @@ gboolean parole_provider_player_play_uri (ParoleProviderPlayer *player, const gc
     
     if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->play_uri )
     {
-	ret = (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->play_uri) (player, uri);
+        ret = (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->play_uri) (player, uri);
     }
     return ret;
 }
@@ -259,7 +259,7 @@ gboolean parole_provider_player_pause (ParoleProviderPlayer *player)
     
     if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->pause )
     {
-	ret = (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->pause) (player);
+        ret = (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->pause) (player);
     }
     
     return ret;
@@ -290,7 +290,7 @@ gboolean parole_provider_player_resume (ParoleProviderPlayer *player)
     
     if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->resume )
     {
-	ret = (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->resume) (player);
+        ret = (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->resume) (player);
     }
     
     return ret;
@@ -318,7 +318,57 @@ gboolean parole_provider_player_stop (ParoleProviderPlayer *player)
     
     if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->stop )
     {
-	ret = (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->stop) (player);
+        ret = (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->stop) (player);
+    }
+    
+    return ret;
+}
+
+
+/**
+ * parole_provider_player_play_previous:
+ * @player: a #ParoleProviderPlayer
+ * 
+ * Issue a play previous command to the player.
+ * 
+ * Returns: TRUE if the command is processed, FALSE otherwise.
+ * 
+ * Since: 0.6
+ **/
+gboolean parole_provider_player_play_previous (ParoleProviderPlayer *player)
+{
+    gboolean ret = FALSE;
+    
+    g_return_val_if_fail (PAROLE_IS_PROVIDER_PLAYER (player), FALSE);
+    
+    if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->play_previous )
+    {
+        ret = (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->play_previous) (player);
+    }
+    
+    return ret;
+}
+
+
+/**
+ * parole_provider_player_play_next:
+ * @player: a #ParoleProviderPlayer
+ * 
+ * Issue a play next command to the player.
+ * 
+ * Returns: TRUE if the command is processed, FALSE otherwise.
+ * 
+ * Since: 0.6
+ **/
+gboolean parole_provider_player_play_next (ParoleProviderPlayer *player)
+{
+    gboolean ret = FALSE;
+    
+    g_return_val_if_fail (PAROLE_IS_PROVIDER_PLAYER (player), FALSE);
+    
+    if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->play_next )
+    {
+        ret = (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->play_next) (player);
     }
     
     return ret;
@@ -346,7 +396,7 @@ gboolean parole_provider_player_seek (ParoleProviderPlayer *player, gdouble pos)
     
     if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->seek )
     {
-	ret = (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->seek) (player, pos);
+        ret = (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->seek) (player, pos);
     }
     
     return ret;
@@ -367,6 +417,20 @@ void parole_provider_player_open_media_chooser (ParoleProviderPlayer *player)
     
     if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->open_media_chooser )
     {
-	(*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->open_media_chooser) (player);
+        (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->open_media_chooser) (player);
     }
+}
+
+/**
+ * parole_provider_player_get_action:
+ * @player: a #ParoleProviderPlayer
+ * @action: the #ParolePlayerAction to retrieve
+ * 
+ * Get GtkAction from Parole.
+ * 
+ * Since: 0.6
+ **/
+GtkAction *parole_provider_player_get_action(ParoleProviderPlayer *player, ParolePlayerAction action)
+{
+    return parole_player_get_action(action);
 }
