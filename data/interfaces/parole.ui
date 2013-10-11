@@ -30,14 +30,14 @@
   <object class="GtkImage" id="image_media_fullscreen">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixel_size">24</property>
+    <property name="pixel_size">16</property>
     <property name="icon_name">view-fullscreen-symbolic</property>
     <property name="use_fallback">True</property>
   </object>
   <object class="GtkImage" id="image_media_next">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixel_size">24</property>
+    <property name="pixel_size">16</property>
     <property name="icon_name">media-skip-forward-symbolic</property>
     <property name="use_fallback">True</property>
   </object>
@@ -51,7 +51,7 @@
   <object class="GtkImage" id="image_media_previous">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixel_size">24</property>
+    <property name="pixel_size">16</property>
     <property name="icon_name">media-skip-backward-symbolic</property>
     <property name="use_fallback">True</property>
   </object>
@@ -108,7 +108,7 @@
   <object class="GtkImage" id="image_toggleplaylist">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixel_size">24</property>
+    <property name="pixel_size">16</property>
     <property name="icon_name">view-list-symbolic</property>
     <property name="use_fallback">True</property>
   </object>
@@ -422,8 +422,8 @@
                         <property name="use_underline">True</property>
                         <property name="image">image_volume_up</property>
                         <property name="use_stock">False</property>
-                        <accelerator key="plus" signal="activate"/>
                         <accelerator key="equal" signal="activate"/>
+                        <accelerator key="plus" signal="activate"/>
                         <signal name="activate" handler="parole_player_volume_up" swapped="no"/>
                       </object>
                     </child>
@@ -983,7 +983,7 @@
                             <property name="relief">none</property>
                             <property name="focus_on_click">False</property>
                             <property name="orientation">vertical</property>
-                            <property name="size">large-toolbar</property>
+                            <property name="size">menu</property>
                             <property name="icons">audio-volume-muted-symbolic
 audio-volume-high-symbolic
 audio-volume-low-symbolic
