@@ -4,12 +4,13 @@
 # 
 # Translators:
 # jc1 <jc1.quebecos@gmail.com>, 2013
+# jc1 <jc1.quebecos@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-09 18:30+0200\n"
-"PO-Revision-Date: 2013-10-10 10:46+0000\n"
+"POT-Creation-Date: 2013-10-11 12:30+0200\n"
+"PO-Revision-Date: 2013-10-12 09:35+0000\n"
 "Last-Translator: jc1 <jc1.quebecos@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/xfce/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -19,6 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../data/interfaces/parole.ui.h:1 ../data/desktop/parole.desktop.in.in.h:1
+#: ../src/parole-player.c:571 ../src/parole-player.c:1474
 #: ../src/parole-about.c:70
 msgid "Parole Media Player"
 msgstr "Lecteur Média Parole"
@@ -28,236 +30,228 @@ msgid "_Media"
 msgstr "_Média"
 
 #: ../data/interfaces/parole.ui.h:3
-msgid "Open _Location"
-msgstr "Ouvrir un _emplacement"
+msgid "Open _Location…"
+msgstr "Ouvrir _L'emplacement..."
 
 #: ../data/interfaces/parole.ui.h:4
-msgid "Open Recent"
-msgstr "Ouvrir récent"
+msgid "Open _Recent"
+msgstr "Ouvrir _Récent"
 
-#: ../data/interfaces/parole.ui.h:5 ../src/parole-disc.c:112
-#: ../src/parole-disc.c:158
-msgid "Insert Disc"
-msgstr "Insérer un disque"
+#: ../data/interfaces/parole.ui.h:5
+msgid "_Save Playlist…"
+msgstr "_Sauver liste de lecture ..."
 
 #: ../data/interfaces/parole.ui.h:6
-msgid "_Edit"
-msgstr "_Éditer"
+msgid "_Playback"
+msgstr "_Présonorisation"
 
-#: ../data/interfaces/parole.ui.h:7
+#. Toggle Repeat
+#: ../data/interfaces/parole.ui.h:7 ../src/parole-player.c:3028
 msgid "_Repeat"
 msgstr "_Répéter"
 
-#: ../data/interfaces/parole.ui.h:8
+#. Toggle Shuffle
+#: ../data/interfaces/parole.ui.h:8 ../src/parole-player.c:3034
 msgid "_Shuffle"
 msgstr "_Aléatoire"
 
 #: ../data/interfaces/parole.ui.h:9
-msgid "Plugins"
-msgstr "Greffons"
+msgid "_DVD"
+msgstr "_DVD"
 
 #: ../data/interfaces/parole.ui.h:10
-msgid "_View"
-msgstr "_Affichage"
+msgid "_DVD Menu"
+msgstr "Menu _DVD "
 
 #: ../data/interfaces/parole.ui.h:11
-msgid "_Aspect Ratio"
-msgstr "_Ratio d'Aspect"
+msgid "_Title Menu"
+msgstr "Menu _Titre "
 
 #: ../data/interfaces/parole.ui.h:12
-msgid "None"
-msgstr "Aucun"
+msgid "_Audio Menu"
+msgstr "Menu _Son "
 
 #: ../data/interfaces/parole.ui.h:13
-msgid "Auto"
-msgstr "Auto"
+msgid "A_ngle Menu"
+msgstr "Menu A_ngle "
 
 #: ../data/interfaces/parole.ui.h:14
-msgid "Square"
-msgstr "Carré"
+msgid "_Chapters"
+msgstr "_Chapitres"
 
 #: ../data/interfaces/parole.ui.h:15
-msgid "4:3 (TV)"
-msgstr "4:3 (TV)"
+msgid "_Chapter Menu"
+msgstr "Menu _Chapitre"
 
 #: ../data/interfaces/parole.ui.h:16
-msgid "16:9 (Widescreen)"
-msgstr "16:9 (Écran large)"
-
-#: ../data/interfaces/parole.ui.h:17
-msgid "20:9 (DVB)"
-msgstr "20:9 (DVB)"
-
-#: ../data/interfaces/parole.ui.h:18
-msgid "Subtitles"
-msgstr "Sous-titres"
-
-#: ../data/interfaces/parole.ui.h:19
-msgid "Select Text Subtitles..."
-msgstr "Sélectionner le fichier de sous-titres"
-
-#: ../data/interfaces/parole.ui.h:20
-msgid "Show _playlist"
-msgstr "Afficher la liste de lecture"
-
-#: ../data/interfaces/parole.ui.h:21
 msgid "_Audio"
 msgstr "_Audio"
 
-#: ../data/interfaces/parole.ui.h:22
-msgid "Languages"
-msgstr "Langues"
+#: ../data/interfaces/parole.ui.h:17
+msgid "_Audio Track"
+msgstr "Piste _Son "
 
-#: ../data/interfaces/parole.ui.h:23 ../src/parole-player.c:748
+#: ../data/interfaces/parole.ui.h:18 ../src/parole-player.c:798
 msgid "Empty"
 msgstr "Vide"
 
-#: ../data/interfaces/parole.ui.h:24
+#: ../data/interfaces/parole.ui.h:19
 msgid "Volume _Up"
 msgstr "Augmenter le Volume"
 
-#: ../data/interfaces/parole.ui.h:25
+#: ../data/interfaces/parole.ui.h:20
 msgid "Volume _Down"
 msgstr "Diminuer le Volume"
 
-#: ../data/interfaces/parole.ui.h:26
+#: ../data/interfaces/parole.ui.h:21
 msgid "_Mute"
 msgstr "_Mettre en sourdine"
 
+#: ../data/interfaces/parole.ui.h:22
+msgid "_Video"
+msgstr "_Vidéo"
+
+#: ../data/interfaces/parole.ui.h:23
+msgid "_Aspect Ratio"
+msgstr "_Ratio d'Aspect"
+
+#: ../data/interfaces/parole.ui.h:24
+msgid "None"
+msgstr "Aucun"
+
+#: ../data/interfaces/parole.ui.h:25
+msgid "Auto"
+msgstr "Auto"
+
+#: ../data/interfaces/parole.ui.h:26
+msgid "Square"
+msgstr "Carré"
+
 #: ../data/interfaces/parole.ui.h:27
+msgid "4:3 (TV)"
+msgstr "4:3 (TV)"
+
+#: ../data/interfaces/parole.ui.h:28
+msgid "16:9 (Widescreen)"
+msgstr "16:9 (Écran large)"
+
+#: ../data/interfaces/parole.ui.h:29
+msgid "20:9 (DVB)"
+msgstr "20:9 (DVB)"
+
+#: ../data/interfaces/parole.ui.h:30
+msgid "_Subtitles"
+msgstr "_Sous-titres"
+
+#: ../data/interfaces/parole.ui.h:31
+msgid "Select Text Subtitles…"
+msgstr "Sélectionner le texte des sous-titres ..."
+
+#: ../data/interfaces/parole.ui.h:32
+msgid "_Tools"
+msgstr "Outils"
+
+#: ../data/interfaces/parole.ui.h:33
+msgid "P_lugins"
+msgstr "Greffons"
+
+#: ../data/interfaces/parole.ui.h:34
 msgid "_Help"
 msgstr "Aid_e"
 
-#: ../data/interfaces/parole.ui.h:28
-msgid "Audio Track:"
-msgstr "Piste audio :"
+#: ../data/interfaces/parole.ui.h:35
+msgid "_Report a Bug…"
+msgstr "_Rapporter un bogue ..."
 
-#: ../data/interfaces/parole.ui.h:29
-msgid "Subtitles:"
-msgstr "Sous-titres :"
-
-#: ../data/interfaces/parole.ui.h:30
+#: ../data/interfaces/parole.ui.h:36
 msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
 msgstr "<span color='#F4F4F4'><b><big>Chanson inconnue</big></b></span>"
 
-#: ../data/interfaces/parole.ui.h:31
+#: ../data/interfaces/parole.ui.h:37
 msgid ""
 "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
 "Album</span></big>"
 msgstr "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Album inconnu</span></big>"
 
-#: ../data/interfaces/parole.ui.h:32
+#: ../data/interfaces/parole.ui.h:38
 msgid ""
 "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
 "Artist</span></big>"
 msgstr "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Artiste inconnu</span></big>"
 
-#: ../data/interfaces/parole.ui.h:33
-msgid "Previous"
-msgstr "Précédent"
+#: ../data/interfaces/parole.ui.h:39
+msgid "0:00"
+msgstr "0:00"
 
-#: ../data/interfaces/parole.ui.h:34 ../src/parole-player.c:1412
-#: ../src/parole-player.c:1446
-msgid "Play"
-msgstr "Lecture"
-
-#: ../data/interfaces/parole.ui.h:35
-msgid "Next"
-msgstr "Suivant"
-
-#: ../data/interfaces/parole.ui.h:37
+#: ../data/interfaces/parole.ui.h:41
 #, no-c-format
 msgid "Buffering (0%)"
 msgstr "Mise en tampon (0%)"
-
-#: ../data/interfaces/parole.ui.h:38
-msgid "Fullscreen"
-msgstr "Plein écran"
-
-#: ../data/interfaces/parole.ui.h:39
-msgid "Media player"
-msgstr "Lecteur multimédia"
 
 #: ../data/interfaces/mediachooser.ui.h:1
 msgid "Open Media Files"
 msgstr "Ouvrir des fichiers multimédia"
 
-#: ../data/interfaces/mediachooser.ui.h:2
-msgid "_Open"
-msgstr "_Ouvrir"
-
 #: ../data/interfaces/playlist.ui.h:1
-msgid "DVD Menu"
-msgstr "Menu DVD"
-
-#: ../data/interfaces/playlist.ui.h:2
-msgid "Title Menu"
-msgstr "Menu titre"
-
-#: ../data/interfaces/playlist.ui.h:3
-msgid "Audio Menu"
-msgstr "Menu audio"
-
-#: ../data/interfaces/playlist.ui.h:4
-msgid "Angle Menu"
-msgstr "Menu angle"
-
-#: ../data/interfaces/playlist.ui.h:5
-msgid "Chapter Menu"
-msgstr "Menu chapitre"
-
-#: ../data/interfaces/playlist.ui.h:6 ../src/parole-medialist.c:823
-#: ../src/parole-player.c:3070
+#: ../data/interfaces/parole-settings.ui.h:23 ../src/parole-medialist.c:775
+#: ../src/parole-medialist.c:818 ../src/parole-player.c:3339
 msgid "Playlist"
 msgstr "Liste de lecture"
 
-#: ../data/interfaces/playlist.ui.h:7
-msgid "DVD Name"
-msgstr "Nom DVD"
-
-#: ../data/interfaces/playlist.ui.h:8
+#: ../data/interfaces/playlist.ui.h:2
 msgid "Disc Playlist"
 msgstr "Liste de lecture du disque"
 
-#: ../data/interfaces/playlist.ui.h:9 ../src/parole-medialist.c:1011
-#: ../src/parole-medialist.c:1155
-msgid "Playlist empty"
-msgstr "Liste de lecture vide"
+#: ../data/interfaces/playlist.ui.h:3
+msgid "Add to playlist…"
+msgstr "Ajouter à la liste de lecture ..."
 
-#: ../data/interfaces/playlist.ui.h:10
-msgid "Add…"
-msgstr "Ajouter..."
+#: ../data/interfaces/playlist.ui.h:4
+msgid "Add"
+msgstr "Ajouter"
 
-#: ../data/interfaces/playlist.ui.h:11
+#: ../data/interfaces/playlist.ui.h:5
+msgid "Remove selected media"
+msgstr "Retirer les supports sélectionnés"
+
+#: ../data/interfaces/playlist.ui.h:6
 msgid "Remove"
 msgstr "Supprimer"
 
-#: ../data/interfaces/playlist.ui.h:12
+#: ../data/interfaces/playlist.ui.h:7
+msgid "Clear playlist"
+msgstr "Effacer la liste de lecture"
+
+#: ../data/interfaces/playlist.ui.h:8
 msgid "Clear"
 msgstr "Vider"
 
-#: ../data/interfaces/playlist.ui.h:13
+#: ../data/interfaces/playlist.ui.h:9 ../src/parole-player.c:3028
 msgid "Repeat"
 msgstr "Répéter"
 
-#: ../data/interfaces/playlist.ui.h:14
+#: ../data/interfaces/playlist.ui.h:10 ../src/parole-player.c:3034
 msgid "Shuffle"
 msgstr "Aléatoire"
 
-#: ../data/interfaces/playlist.ui.h:15
-msgid "Playlist options"
-msgstr "Options de la liste de lecture"
+#: ../data/interfaces/playlist.ui.h:11
+msgid "Move Up"
+msgstr "Déplacer vers le haut"
 
-#: ../data/interfaces/playlist.ui.h:16
+#: ../data/interfaces/playlist.ui.h:12
+msgid "Move Down"
+msgstr "Déplacer vers le bas"
+
+#: ../data/interfaces/playlist.ui.h:13
 msgid "Replace playlist when opening files"
 msgstr "Remplacer la liste de lecture lors de l'ouverture de fichiers"
 
-#: ../data/interfaces/playlist.ui.h:17
+#: ../data/interfaces/playlist.ui.h:14
 msgid "Play opened files"
 msgstr "Lire les fichiers ouverts"
 
-#: ../data/interfaces/playlist.ui.h:18
-#: ../data/interfaces/parole-settings.ui.h:20
+#: ../data/interfaces/playlist.ui.h:15
+#: ../data/interfaces/parole-settings.ui.h:21
 msgid "Remember playlist"
 msgstr "Se souvenir de la liste de lecture"
 
@@ -270,22 +264,18 @@ msgid "Extend your media player"
 msgstr "Étendre votre lecteur multimédia"
 
 #: ../data/interfaces/plugins.ui.h:3
-msgid "Enabled"
-msgstr "Activé"
-
-#: ../data/interfaces/plugins.ui.h:4
 msgid "Plugin"
 msgstr "Greffon"
 
-#: ../data/interfaces/plugins.ui.h:5
+#: ../data/interfaces/plugins.ui.h:4
 msgid "<b>Description</b>"
 msgstr "<b>Description</b>"
 
-#: ../data/interfaces/plugins.ui.h:6
+#: ../data/interfaces/plugins.ui.h:5
 msgid "<b>Author</b>"
 msgstr "<b>Auteur</b>"
 
-#: ../data/interfaces/plugins.ui.h:7
+#: ../data/interfaces/plugins.ui.h:6
 msgid "Visit Website"
 msgstr "Visiter le site Web"
 
@@ -298,24 +288,24 @@ msgid "Configure your media player"
 msgstr "Configurer votre lecteur multimédia"
 
 #: ../data/interfaces/parole-settings.ui.h:3
-msgid "Disable screensaver while playing movies"
-msgstr "Désactiver l'écran de veille pendant la lecture des vidéos"
+msgid "Disable screensaver when playing movies"
+msgstr "Désactiver l'économiseur d'écran lors de la lecture des films"
 
 #: ../data/interfaces/parole-settings.ui.h:4
-msgid "<b>Video</b>"
-msgstr "<b>Vidéo</b>"
+msgid "<b>Screensaver</b>"
+msgstr "<b>Économiseur d'écran</ b>"
 
 #: ../data/interfaces/parole-settings.ui.h:5
-msgid "Enable visualization when playing audio file"
-msgstr "Activer la visualisation lors de la lecture d'un fichier audio"
+msgid "Show visual effects when an audio file is played"
+msgstr "Afficher les effets visuels quand un fichier audio est joué"
 
 #: ../data/interfaces/parole-settings.ui.h:6
 msgid "Visualization type:"
 msgstr "Type de visualisation :"
 
 #: ../data/interfaces/parole-settings.ui.h:7
-msgid "<b>Audio</b>"
-msgstr "<b>Audio</b>"
+msgid "<b>Audio Visualization</b>"
+msgstr "<b>Visualisation audio</ b>"
 
 #: ../data/interfaces/parole-settings.ui.h:8
 msgid "Enable keyboard multimedia keys"
@@ -326,8 +316,8 @@ msgid "<b>Keyboard</b>"
 msgstr "<b>Clavier</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:10
-msgid "_General"
-msgstr "_Général"
+msgid "General"
+msgstr "Général"
 
 #: ../data/interfaces/parole-settings.ui.h:11
 msgid "Brightness:"
@@ -350,46 +340,66 @@ msgid "Reset to defaults"
 msgstr "Réinitialiser "
 
 #: ../data/interfaces/parole-settings.ui.h:16
-msgid "_Display"
-msgstr "_Affichage"
+msgid "<b>Color Balance</b>"
+msgstr "<b>Balance couleur</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:17
+msgid "Display"
+msgstr "Afficher"
+
+#: ../data/interfaces/parole-settings.ui.h:18
 msgid "Always replace playlist with opened files"
 msgstr "Toujours remplacer la liste de lecture avec les fichiers ouverts"
 
-#: ../data/interfaces/parole-settings.ui.h:18
+#: ../data/interfaces/parole-settings.ui.h:19
 msgid "Check and remove duplicate media entries"
 msgstr "Vérifier et supprimer les doublons"
 
-#: ../data/interfaces/parole-settings.ui.h:19
+#: ../data/interfaces/parole-settings.ui.h:20
 msgid "Start playing opened files"
 msgstr "Démarrer la lecture des fichiers ouverts"
 
-#: ../data/interfaces/parole-settings.ui.h:21
-msgid "_Playlist"
-msgstr "_Liste de lecture"
-
 #: ../data/interfaces/parole-settings.ui.h:22
+msgid "<b>Playlist Settings</b>"
+msgstr "<b>Paramètres de la liste de lecture</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:24
 msgid "Automatically show subtitles when playing movie file"
 msgstr "Afficher automatiquement les sous-tires lors de la lecture d'un fichier vidéo"
 
-#: ../data/interfaces/parole-settings.ui.h:23
+#: ../data/interfaces/parole-settings.ui.h:25
 msgid "Font:"
 msgstr "Police :"
 
-#: ../data/interfaces/parole-settings.ui.h:24
+#: ../data/interfaces/parole-settings.ui.h:26
 msgid "Encoding:"
 msgstr "Encodage :"
 
-#: ../data/interfaces/parole-settings.ui.h:25
-msgid "_Subtitles"
-msgstr "_Sous-titres"
+#: ../data/interfaces/parole-settings.ui.h:27
+msgid "<b>Subtitle Settings</b>"
+msgstr "<b>Paramètres des sous-titres</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:28
+msgid "Subtitles"
+msgstr "Sous-titres"
 
 #: ../data/interfaces/save-playlist.ui.h:1
+msgid "Save Playlist as…"
+msgstr "Sauver la liste de lecture en tant que ..."
+
+#: ../data/interfaces/save-playlist.ui.h:2
+msgid "File Type"
+msgstr "Type de fichier"
+
+#: ../data/interfaces/save-playlist.ui.h:3
+msgid "Extension"
+msgstr "Extension"
+
+#: ../data/interfaces/save-playlist.ui.h:4
 msgid "Select File Types (By Extension)"
 msgstr "Sélectionner les types de fichiers (par extension)"
 
-#: ../data/interfaces/save-playlist.ui.h:2
+#: ../data/interfaces/save-playlist.ui.h:5
 msgid "By Extension"
 msgstr "Par extension"
 
@@ -397,7 +407,7 @@ msgstr "Par extension"
 msgid "Open Network Location"
 msgstr "Ouvrir un emplacement réseau"
 
-#: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:194
+#: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:193
 msgid "Clear History"
 msgstr "Effacer l'historique"
 
@@ -413,72 +423,85 @@ msgstr "Lire votre média"
 msgid "Play/Pause"
 msgstr "Lecture / Pause"
 
-#: ../data/desktop/parole.desktop.in.in.h:4
+#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3000
+#: ../src/parole-player.c:3220 ../src/plugins/notify/notify-provider.c:199
 msgid "Previous Track"
 msgstr "Piste précédente"
 
-#: ../data/desktop/parole.desktop.in.in.h:5
+#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3008
+#: ../src/parole-player.c:3230 ../src/plugins/notify/notify-provider.c:209
 msgid "Next Track"
 msgstr "Piste suivante"
 
-#: ../src/common/parole-common.c:69
+#: ../src/common/parole-common.c:70
 msgid "Message"
 msgstr "Message"
 
-#: ../src/common/parole-common.c:74
+#: ../src/common/parole-common.c:75
 msgid "Error"
 msgstr "Erreur"
 
-#: ../src/gst/parole-gst.c:1377 ../src/parole-medialist.c:381
+#: ../src/gst/parole-gst.c:1278 ../src/parole-medialist.c:368
 #, c-format
 msgid "Track %i"
 msgstr "Piste %i"
 
-#: ../src/gst/parole-gst.c:1380
+#: ../src/gst/parole-gst.c:1281
 msgid "Audio CD"
 msgstr "CD Audio"
 
-#: ../src/gst/parole-gst.c:1590
+#: ../src/gst/parole-gst.c:1492
 msgid "Additional software is required."
 msgstr "Un logiciel supplémentaire est nécessaire."
 
-#: ../src/gst/parole-gst.c:1595
+#: ../src/gst/parole-gst.c:1497
 msgid "Don't Install"
 msgstr "Ne pas installer"
 
-#: ../src/gst/parole-gst.c:1597
+#: ../src/gst/parole-gst.c:1499
 msgid "Install"
 msgstr "Installer"
 
-#: ../src/gst/parole-gst.c:2029
-msgid "Stop"
-msgstr "Arrêt"
+#: ../src/gst/parole-gst.c:1504
+msgid "OK"
+msgstr "OK"
 
-#: ../src/gst/parole-gst.c:2030
+#: ../src/gst/parole-gst.c:1923
 msgid "The stream is taking too much time to load"
 msgstr "Le flux prend trop de temps à se charger"
 
-#: ../src/gst/parole-gst.c:2214
-msgid ""
-"Unable to load playbin GStreamer plugin, check your GStreamer installation"
-msgstr "Impossible de charger le greffon de lecture GStreamer, vérifiez votre installation de GStreamer"
+#: ../src/gst/parole-gst.c:1924
+msgid "Do you want to continue loading or stop?"
+msgstr "Voulez-vous continuer ou arrêter le chargement ?"
 
-#: ../src/gst/parole-gst.c:2227
-msgid ""
-"Unable to load audio GStreamer plugin, check your GStreamer installation"
-msgstr "Impossible de charger le greffon audio GStreamer, vérifiez votre installation de GStreamer"
+#: ../src/gst/parole-gst.c:1925
+msgid "Stop"
+msgstr "Arrêt"
 
-#: ../src/gst/parole-gst.c:2250
-msgid ""
-"Unable to load video GStreamer plugin, check your GStreamer installation"
-msgstr "Impossible de charger le greffon vidéo GStreamer, vérifiez votre installation de GStreamer"
+#: ../src/gst/parole-gst.c:1926
+msgid "Continue"
+msgstr "Continuer"
 
-#: ../src/gst/parole-gst.c:2848 ../src/gst/parole-gst.c:2852
+#: ../src/gst/parole-gst.c:2096
+msgid "GStreamer Error"
+msgstr "Erreur GStreamer"
+
+#: ../src/gst/parole-gst.c:2097
+msgid "Parole Media Player cannot start."
+msgstr "Lecteur Média Parole ne peut pas démarrer."
+
+#: ../src/gst/parole-gst.c:2125 ../src/gst/parole-gst.c:2143
+#: ../src/gst/parole-gst.c:2166
+#, c-format
+msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
+msgstr "Impossible de charger le greffon « %s », vérifier votre installation de GStreamer."
+
+#: ../src/gst/parole-gst.c:2770 ../src/gst/parole-gst.c:2776
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Piste audio #%d"
 
-#: ../src/gst/parole-gst.c:2892 ../src/gst/parole-gst.c:2896
+#: ../src/gst/parole-gst.c:2820 ../src/gst/parole-gst.c:2826
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Sous-titre #%d"
@@ -494,258 +517,333 @@ msgid ""
 "\n"
 "Licensed under the GNU GPL.\n"
 "\n"
-msgstr "\nLecteur Multimédia Parole %s\n\nUne partie du projet « goodies » d' Xfce \nhttp://goodies.xfce.org\n\nSous licence GNU GPL.\n\n"
+"Please report bugs to <http://bugzilla.xfce.org/>.\n"
+"\n"
+msgstr "\nLecteur Média Parole %s\n\nUne partie du projet Xfce Goodies\nhttp://goodies.xfce.org\n\nSous licence GNU GPL.\n\nS'il vous plaît signaler les bogues à<http://bugzilla.xfce.org/>.\n\n"
 
-#: ../src/main.c:233
+#: ../src/main.c:234
 msgid "Unknown argument "
 msgstr "Argument inconnu"
 
-#: ../src/main.c:277
+#: ../src/main.c:276
 msgid "Open a new instance"
 msgstr "Ouvrir une nouvelle instance"
 
-#: ../src/main.c:278
+#: ../src/main.c:277
 msgid "Do not load plugins"
 msgstr "Ne charger pas les greffons"
 
-#: ../src/main.c:279
+#: ../src/main.c:278
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "Sélectionner le chemin vers le périphérique Audio-CD/VCD/DVD"
 
+#: ../src/main.c:279
+msgid "Enable/Disable XV support (true or false, default=true)"
+msgstr "Activer / Désactiver le support XV (vrai ou faux, par défaut = vrai)"
+
 #: ../src/main.c:280
-msgid "Play or pause if already playing"
-msgstr "Lecture ou pause si lecture en cours"
+msgid "Start in embedded mode"
+msgstr "Démarrer en mode intégré"
 
 #: ../src/main.c:281
-msgid "Stop playing"
-msgstr "Stopper la lecture"
-
-#: ../src/main.c:282
-msgid "Next track"
-msgstr "Piste suivante"
-
-#: ../src/main.c:283
-msgid "Previous track"
-msgstr "Piste précédente"
-
-#: ../src/main.c:284
-msgid "Seek forward"
-msgstr "Avancer"
-
-#: ../src/main.c:285
-msgid "Seek Backward"
-msgstr "Reculer"
-
-#: ../src/main.c:286
-msgid "Raise volume"
-msgstr "Augmenter le volume"
-
-#: ../src/main.c:287
-msgid "Lower volume"
-msgstr "Baisser le volume"
-
-#: ../src/main.c:288
-msgid "Mute volume"
-msgstr "Couper le volume"
-
-#: ../src/main.c:289
-msgid "Version information"
-msgstr "Information de version"
-
-#: ../src/main.c:290
-msgid "Use embedded mode"
-msgstr "Utiliser le mode intégré"
-
-#: ../src/main.c:291
 msgid "Start in fullscreen mode"
 msgstr "Démarrer en plein écran"
 
-#: ../src/main.c:292
-msgid "Enabled/Disable XV support"
-msgstr "Activer/Désactiver le support XV"
+#: ../src/main.c:282
+msgid "Play or pause if already playing"
+msgstr "Lecture ou pause si lecture en cours"
 
-#: ../src/main.c:293
+#: ../src/main.c:283
+msgid "Next track"
+msgstr "Piste suivante"
+
+#: ../src/main.c:284
+msgid "Previous track"
+msgstr "Piste précédente"
+
+#: ../src/main.c:285
+msgid "Raise volume"
+msgstr "Augmenter le volume"
+
+#: ../src/main.c:286
+msgid "Lower volume"
+msgstr "Baisser le volume"
+
+#: ../src/main.c:287
+msgid "Mute volume"
+msgstr "Couper le volume"
+
+#: ../src/main.c:288
+msgid "Unmute (restore) volume"
+msgstr "Volume (restaurer) en sourdine"
+
+#: ../src/main.c:289
 msgid "Add files to playlist"
 msgstr "Ajouter des fichiers à la liste de lecture"
 
-#: ../src/main.c:295
+#: ../src/main.c:290
+msgid "Print version information and exit"
+msgstr "Visualiser les informations de la version et quitter"
+
+#: ../src/main.c:292
 msgid "Media to play"
 msgstr "Média à lire"
 
-#: ../src/main.c:344
+#: ../src/main.c:315
+msgid "[FILES...] - Play movies and songs"
+msgstr "[Fichiers ...] - joure les films et les chansons"
+
+#: ../src/main.c:327
+#, c-format
+msgid "Type %s --help to list all available command line options\n"
+msgstr "Taper %s - help pour la liste de toutes les options disponibles en ligne de commande\n"
+
+#: ../src/main.c:342
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole est déjà en cours de fonctionnement. Utilisez -i pour ouvrir une nouvelle instance\n"
 
-#: ../src/parole-mediachooser.c:215
+#: ../src/parole-mediachooser.c:234
 msgid "Supported files"
 msgstr "Fichiers pris en charge"
 
-#: ../src/parole-mediachooser.c:221 ../src/parole-player.c:963
+#: ../src/parole-mediachooser.c:241 ../src/parole-player.c:1020
 msgid "All files"
 msgstr "Tous les fichiers"
 
-#: ../src/parole-medialist.c:307 ../src/parole-medialist.c:1020
+#: ../src/parole-medialist.c:217
 #, c-format
-msgid "%i item"
-msgstr "%i élément"
+msgid "Playlist (%i item)"
+msgstr "Listes de lecture (%i élément)"
 
-#: ../src/parole-medialist.c:311
+#: ../src/parole-medialist.c:221
 #, c-format
-msgid "%i chapter"
-msgstr "%i chapitre"
+msgid "Playlist (%i chapter)"
+msgstr "Liste de lecture (%i chapitre)"
 
-#: ../src/parole-medialist.c:319 ../src/parole-medialist.c:1022
+#: ../src/parole-medialist.c:228 ../src/parole-medialist.c:1513
 #, c-format
-msgid "%i items"
-msgstr "%i éléments"
+msgid "Playlist (%i items)"
+msgstr "Liste de lecture (%i éléments)"
 
-#: ../src/parole-medialist.c:323
+#: ../src/parole-medialist.c:232 ../src/parole-medialist.c:1514
 #, c-format
-msgid "%i chapters"
-msgstr "%i chapitres"
+msgid "Playlist (%i chapters)"
+msgstr "Lists de lecture (%i chapitres)"
 
-#: ../src/parole-medialist.c:397
+#: ../src/parole-medialist.c:384 ../src/parole-player.c:705
 #, c-format
 msgid "Chapter %i"
 msgstr "Chapitre %i"
 
-#: ../src/parole-medialist.c:681
+#: ../src/parole-medialist.c:667
 msgid "Permission denied"
 msgstr "Permission non accordée"
 
-#: ../src/parole-medialist.c:683
+#: ../src/parole-medialist.c:669
 msgid "Error saving playlist file"
 msgstr "Erreur lors de la sauvegarde de la liste de lecture"
 
-#: ../src/parole-medialist.c:695
+#: ../src/parole-medialist.c:681
 msgid "Unknown playlist format"
 msgstr "Format de liste de lecture inconnu"
 
-#: ../src/parole-medialist.c:696
+#: ../src/parole-medialist.c:682
 msgid "Please chooser a supported playlist format"
 msgstr "Veuillez sélectionner un format de liste de lecture pris en charge"
 
-#: ../src/parole-medialist.c:748 ../src/parole-plugins-manager.c:354
+#: ../src/parole-medialist.c:736 ../src/parole-plugins-manager.c:369
 msgid "Unknown"
 msgstr "Inconnu"
 
-#: ../src/parole-medialist.c:830
+#: ../src/parole-medialist.c:825
 msgid "M3U Playlists"
 msgstr "Listes de lecture M3U"
 
-#: ../src/parole-medialist.c:838
+#: ../src/parole-medialist.c:833
 msgid "PLS Playlists"
 msgstr "Listes de lecture PLS"
 
-#: ../src/parole-medialist.c:846
+#: ../src/parole-medialist.c:841
 msgid "Advanced Stream Redirector"
 msgstr "Redirecteur de flux avancé"
 
-#: ../src/parole-medialist.c:854
+#: ../src/parole-medialist.c:849
 msgid "Shareable Playlist"
 msgstr "Liste de lecture partageable"
 
 #. Clear
-#: ../src/parole-medialist.c:1111
+#: ../src/parole-medialist.c:1188
 msgid "Open Containing Folder"
 msgstr "Ouvrir le dossier contenant le fichier"
 
-#: ../src/parole-medialist.c:1697
-msgid "Media list"
-msgstr "Liste des médias"
-
-#: ../src/parole-medialist.c:1698
-msgid "Chapter list"
-msgstr "Liste des chapitres"
-
-#: ../src/parole-player.c:461
+#: ../src/parole-player.c:519 ../src/parole-player.c:520
 msgid "Hide playlist"
 msgstr "Cacher la liste de lecture"
 
-#: ../src/parole-player.c:470
+#: ../src/parole-player.c:528 ../src/parole-player.c:529
 msgid "Show playlist"
 msgstr "Afficher la liste de lecture"
 
-#: ../src/parole-player.c:521
-msgid "Open ISO image"
-msgstr "Ouvrir une image ISO"
-
-#: ../src/parole-player.c:540
-msgid "CD image"
-msgstr "Image CD"
-
-#: ../src/parole-player.c:540
-msgid "DVD image"
-msgstr "Image DVD"
-
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:933
+#: ../src/parole-player.c:984
 msgid "Select Subtitle File"
 msgstr "Sélectionner le fichier de sous-titres"
 
-#: ../src/parole-player.c:951
+#: ../src/parole-player.c:989 ../src/parole-player.c:1193
+#: ../src/plugins/tray/tray-provider.c:310
+msgid "Cancel"
+msgstr "Annuler"
+
+#: ../src/parole-player.c:992
+msgid "Open"
+msgstr "Ouvrir"
+
+#: ../src/parole-player.c:1008
 msgid "Subtitle Files"
 msgstr "Fichiers sous-titres"
 
-#: ../src/parole-player.c:1126 ../src/parole-player.c:1134
+#: ../src/parole-player.c:1189 ../src/parole-player.c:1197
 msgid "Clear Recent Items"
 msgstr "Effacer les éléments récents"
 
-#: ../src/parole-player.c:1128
+#: ../src/parole-player.c:1191
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
 msgstr "Êtes-vous sûr de vouloir effacer votre historique d'éléments récent ? Cela ne peut pas être annulée."
 
-#: ../src/parole-player.c:1247 ../src/parole-player.c:1386
+#: ../src/parole-player.c:1282 ../src/parole-player.c:1419
 msgid "Media stream is not seekable"
 msgstr "Le flux média ne peut être recherché"
 
-#: ../src/parole-player.c:1350
+#. * GTK Actions
+#. 
+#. Play/Pause
+#: ../src/parole-player.c:1293 ../src/parole-player.c:2992
+msgid "_Play"
+msgstr "_Jouer"
+
+#: ../src/parole-player.c:1294 ../src/parole-player.c:2992
+msgid "Play"
+msgstr "Lecture"
+
+#: ../src/parole-player.c:1297
+msgid "_Pause"
+msgstr "_Pause"
+
+#: ../src/parole-player.c:1298
 msgid "Pause"
 msgstr "Pause"
 
-#: ../src/parole-player.c:1698
+#: ../src/parole-player.c:1764
 msgid "GStreamer backend error"
 msgstr "Erreur du moteur GStreamer"
 
-#: ../src/parole-player.c:1729
+#: ../src/parole-player.c:1795
 msgid "Unknown Song"
 msgstr "Chanson Inconnue"
 
-#: ../src/parole-player.c:1734 ../src/parole-player.c:1736
-#: ../src/parole-player.c:1742
+#: ../src/parole-player.c:1800 ../src/parole-player.c:1802
+#: ../src/parole-player.c:1808
 msgid "on"
 msgstr "actif"
 
-#: ../src/parole-player.c:1742 ../src/plugins/notify/notify-provider.c:130
+#: ../src/parole-player.c:1808 ../src/plugins/notify/notify-provider.c:143
 msgid "Unknown Album"
 msgstr "Album inconnu "
 
-#: ../src/parole-player.c:1749 ../src/parole-player.c:1753
+#: ../src/parole-player.c:1815 ../src/parole-player.c:1819
 msgid "by"
 msgstr "par"
 
-#: ../src/parole-player.c:1753 ../src/plugins/notify/notify-provider.c:132
+#: ../src/parole-player.c:1819 ../src/plugins/notify/notify-provider.c:145
 msgid "Unknown Artist"
 msgstr "Artiste inconnu"
 
-#: ../src/parole-player.c:1786
+#: ../src/parole-player.c:1853
 msgid "Buffering"
 msgstr "Mise en tampon"
 
-#: ../src/parole-player.c:2274
+#. Fullscreen
+#: ../src/parole-player.c:1966 ../src/parole-player.c:3016
+msgid "_Fullscreen"
+msgstr "_Plein écran"
+
+#: ../src/parole-player.c:1967 ../src/parole-player.c:3016
+#: ../src/parole-player.c:3251
+msgid "Fullscreen"
+msgstr "Plein écran"
+
+#: ../src/parole-player.c:1982
+msgid "Leave _Fullscreen"
+msgstr "Laisser en _plein écran"
+
+#: ../src/parole-player.c:1983
+msgid "Leave Fullscreen"
+msgstr "Laisser en plein écran"
+
+#. * Un/Hide menubar
+#. 
+#: ../src/parole-player.c:2079
+msgid "Show menubar"
+msgstr "Voir la barre de menu"
+
+#: ../src/parole-player.c:2294
 msgid "Mute"
 msgstr "Mettre en sourdine"
 
-#: ../src/parole-player.c:2279
+#: ../src/parole-player.c:2299
 msgid "Unmute"
 msgstr "Remettre le son"
 
-#: ../src/parole-player.c:2944
-msgid "Clear recent items..."
-msgstr "Effacer les éléments récents..."
+#: ../src/parole-player.c:2662
+msgid "Unable to open default web browser"
+msgstr "Impossible d'ouvrir le navigateur web par défaut"
+
+#: ../src/parole-player.c:2664
+msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
+msgstr "S'il vous plait aller à http://docs.xfce.org/apps/parole/bugs pour signaler votre bogue."
+
+#. Previous Track
+#: ../src/parole-player.c:3000
+msgid "P_revious Track"
+msgstr "Piste p_récédent"
+
+#. Next Track
+#: ../src/parole-player.c:3008
+msgid "_Next Track"
+msgstr "Piste suiva_nte"
+
+#. Toggle Playlist
+#: ../src/parole-player.c:3023
+msgid "Show _Playlist"
+msgstr "Voir la _liste de lecture"
+
+#: ../src/parole-player.c:3023 ../src/parole-player.c:3356
+msgid "Show Playlist"
+msgstr "Voir la liste de lecture"
+
+#. Clear Recent Menu Item
+#: ../src/parole-player.c:3090
+msgid "_Clear recent items…"
+msgstr "_Effacer les articles récents ..."
+
+#: ../src/parole-player.c:3295
+msgid "Audio Track:"
+msgstr "Piste audio :"
+
+#: ../src/parole-player.c:3311
+msgid "Subtitles:"
+msgstr "Sous-titres :"
+
+#: ../src/parole-player.c:3316 ../src/plugins/tray/tray-provider.c:245
+msgid "Close"
+msgstr "Fermer"
+
+#: ../src/parole-player.c:3356
+msgid "Hide Playlist"
+msgstr "Cacher la liste de lecture"
 
 #: ../src/parole-about.c:76
 msgid "translator-credits"
@@ -753,7 +851,11 @@ msgstr "Liste des traducteurs"
 
 #: ../src/parole-about.c:79
 msgid "Visit Parole website"
-msgstr "Visiter le site Web"
+msgstr "Visiter le site Web Parole"
+
+#: ../src/parole-disc.c:112 ../src/parole-disc.c:154
+msgid "Insert Disc"
+msgstr "Insérer un disque"
 
 #: ../src/parole-disc.c:114
 msgid "Play Disc"
@@ -900,37 +1002,50 @@ msgstr "Occident"
 msgid "Vietnamese"
 msgstr "Vietnamien"
 
-#: ../src/parole-plugins-manager.c:393 ../src/parole-plugins-manager.c:394
+#. If plugin loading fails...
+#: ../src/parole-plugins-manager.c:276
+msgid "Plugin failed to load"
+msgstr "Le greffon n'a pas été chargé"
+
+#: ../src/parole-plugins-manager.c:276
+msgid "Please check your installation"
+msgstr "S'il vous plaît vérifier votre installation"
+
+#: ../src/parole-plugins-manager.c:408
 msgid "No installed plugins found on this system"
 msgstr "Pas de greffon installé trouvé sur ce système"
 
-#: ../src/misc/parole-filters.c:66
+#: ../src/parole-plugins-manager.c:409
+msgid "Please check your installation."
+msgstr "S'il vous plaît vérifier votre installation."
+
+#: ../src/misc/parole-filters.c:65
 msgid "Audio"
 msgstr "Audio"
 
-#: ../src/misc/parole-filters.c:92
+#: ../src/misc/parole-filters.c:91
 msgid "Video"
 msgstr "Vidéo"
 
-#: ../src/misc/parole-filters.c:117 ../src/misc/parole-filters.c:135
+#: ../src/misc/parole-filters.c:116 ../src/misc/parole-filters.c:134
 msgid "Audio and video"
 msgstr "Audio et vidéo"
 
-#: ../src/misc/parole-filters.c:164 ../src/misc/parole-filters.c:180
+#: ../src/misc/parole-filters.c:163 ../src/misc/parole-filters.c:179
 msgid "All supported files"
 msgstr "Tous les fichiers pris en charge"
 
-#: ../src/misc/parole-filters.c:207
+#: ../src/misc/parole-filters.c:206
 msgid "Playlist files"
 msgstr "Listes de lecture"
 
-#: ../src/plugins/notify/notify-provider.c:135
-#: ../src/plugins/notify/notify-provider.c:138
+#: ../src/plugins/notify/notify-provider.c:148
+#: ../src/plugins/notify/notify-provider.c:151
 msgid "<i>on</i>"
 msgstr "<i>en</i>"
 
-#: ../src/plugins/notify/notify-provider.c:135
-#: ../src/plugins/notify/notify-provider.c:138
+#: ../src/plugins/notify/notify-provider.c:148
+#: ../src/plugins/notify/notify-provider.c:151
 msgid "<i>by</i>"
 msgstr "<i>par</i>"
 
@@ -942,27 +1057,39 @@ msgstr "Prévenir"
 msgid "Show notifications for currently playing tracks"
 msgstr "Afficher les notifications de la liste de lecture actuelle"
 
-#: ../src/plugins/tray/tray-provider.c:229
+#: ../src/plugins/tray/tray-provider.c:133
+msgid "_Open"
+msgstr "_Ouvrir"
+
+#: ../src/plugins/tray/tray-provider.c:150
+msgid "_Quit"
+msgstr "_Quitter"
+
+#: ../src/plugins/tray/tray-provider.c:242
 msgid "Tray icon plugin"
 msgstr "Greffon de l'icône de la zone de notification"
 
-#: ../src/plugins/tray/tray-provider.c:239
+#: ../src/plugins/tray/tray-provider.c:252
 msgid "Always minimize to tray when window is closed"
 msgstr "Toujours réduire dans la zone de notification lorsque la fenêtre est fermée"
 
-#: ../src/plugins/tray/tray-provider.c:285
+#: ../src/plugins/tray/tray-provider.c:298
 msgid "Are you sure you want to quit?"
 msgstr "Êtes vous sur de vouloir quitter ?"
 
-#: ../src/plugins/tray/tray-provider.c:288
+#: ../src/plugins/tray/tray-provider.c:301
 msgid "Parole can be minimized to the system tray instead."
 msgstr " Parole peut être minimisée dans la barre d'état à la place."
 
-#: ../src/plugins/tray/tray-provider.c:291
+#: ../src/plugins/tray/tray-provider.c:304
 msgid "Minimize to tray"
 msgstr "Minimiser dans la zone de notification"
 
-#: ../src/plugins/tray/tray-provider.c:308
+#: ../src/plugins/tray/tray-provider.c:316
+msgid "Quit"
+msgstr "Quitter"
+
+#: ../src/plugins/tray/tray-provider.c:325
 msgid "Remember my choice"
 msgstr "Se souvenir de mon choix"
 
