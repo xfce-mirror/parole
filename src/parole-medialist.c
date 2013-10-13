@@ -679,7 +679,7 @@ parole_media_list_save_playlist_response_cb        (GtkDialog *dialog,
             {
                 parole_dialog_info (GTK_WINDOW (gtk_widget_get_toplevel (data->list->priv->view)),
                                     _("Unknown playlist format"),
-                                    _("Please chooser a supported playlist format"));
+                                    _("Please choose a supported playlist format"));
                 goto out;
             }
         }

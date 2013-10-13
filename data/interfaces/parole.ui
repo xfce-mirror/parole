@@ -637,7 +637,7 @@
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="preferences">
-                        <property name="label">_Preferences</property>
+                        <property name="label" translatable="yes">_Preferences</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
