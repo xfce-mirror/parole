@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-11 12:30+0200\n"
-"PO-Revision-Date: 2013-10-13 08:44+0000\n"
+"POT-Creation-Date: 2013-10-13 18:30+0200\n"
+"PO-Revision-Date: 2013-10-14 13:10+0000\n"
 "Last-Translator: cri <cri.penta@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/xfce/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -155,34 +155,38 @@ msgid "P_lugins"
 msgstr "P_lugin"
 
 #: ../data/interfaces/parole.ui.h:34
+msgid "_Preferences"
+msgstr "_Preferenze"
+
+#: ../data/interfaces/parole.ui.h:35
 msgid "_Help"
 msgstr "A_iuto"
 
-#: ../data/interfaces/parole.ui.h:35
+#: ../data/interfaces/parole.ui.h:36
 msgid "_Report a Bug…"
 msgstr "_Segnala bug..."
 
-#: ../data/interfaces/parole.ui.h:36
+#: ../data/interfaces/parole.ui.h:37
 msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
 msgstr "<span color='#F4F4F4'><b><big>Brano sconosciuto</big></b></span>"
 
-#: ../data/interfaces/parole.ui.h:37
+#: ../data/interfaces/parole.ui.h:38
 msgid ""
 "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
 "Album</span></big>"
 msgstr "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Album sconosciuto</span></big>"
 
-#: ../data/interfaces/parole.ui.h:38
+#: ../data/interfaces/parole.ui.h:39
 msgid ""
 "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
 "Artist</span></big>"
 msgstr "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Artista sconosciuto</span></big>"
 
-#: ../data/interfaces/parole.ui.h:39
+#: ../data/interfaces/parole.ui.h:40
 msgid "0:00"
 msgstr "0:00"
 
-#: ../data/interfaces/parole.ui.h:41
+#: ../data/interfaces/parole.ui.h:42
 #, no-c-format
 msgid "Buffering (0%)"
 msgstr "Buffering (0%)"
@@ -648,7 +652,7 @@ msgid "Unknown playlist format"
 msgstr "Formato scaletta sconosciuto"
 
 #: ../src/parole-medialist.c:682
-msgid "Please chooser a supported playlist format"
+msgid "Please choose a supported playlist format"
 msgstr "Selezionare un formato di scaletta supportato"
 
 #: ../src/parole-medialist.c:736 ../src/parole-plugins-manager.c:369
