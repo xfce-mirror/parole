@@ -163,7 +163,7 @@
                     <property name="can_focus">False</property>
                     <child>
                       <object class="GtkImageMenuItem" id="menu-add">
-                        <property name="label">_Open…</property>
+                        <property name="label" translatable="yes">_Open…</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
@@ -217,7 +217,7 @@
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="menu-open-disc">
-                        <property name="label">Insert Disk</property>
+                        <property name="label" translatable="yes">Insert Disk</property>
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
                         <property name="can_focus">False</property>
@@ -233,7 +233,7 @@
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="menu-exit">
-                        <property name="label">_Quit</property>
+                        <property name="label" translatable="yes">_Quit</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
@@ -422,8 +422,8 @@
                         <property name="use_underline">True</property>
                         <property name="image">image_volume_up</property>
                         <property name="use_stock">False</property>
-                        <accelerator key="equal" signal="activate"/>
                         <accelerator key="plus" signal="activate"/>
+                        <accelerator key="equal" signal="activate"/>
                         <signal name="activate" handler="parole_player_volume_up" swapped="no"/>
                       </object>
                     </child>
@@ -467,7 +467,7 @@
                     <property name="can_focus">False</property>
                     <child>
                       <object class="GtkImageMenuItem" id="fullscreen-menu">
-                        <property name="label">_Fullscreen</property>
+                        <property name="label" translatable="yes">_Fullscreen</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
@@ -672,7 +672,7 @@
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="about">
-                        <property name="label">_About</property>
+                        <property name="label" translatable="yes">_About</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>

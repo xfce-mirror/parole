@@ -1507,10 +1507,10 @@ parole_gst_missing_codec_dialog(ParoleGst *gst, GstMessage *msg)
     
     gtk_message_dialog_format_secondary_markup(dialog,
 #if defined(__linux__)
-                                             "Parole needs <b>%s</b> to play this file.\n"
-                                             "It can be installed automatically.",
+                                             _("Parole needs <b>%s</b> to play this file.\n"
+                                               "It can be installed automatically."),
 #elif defined(__FreeBSD__)
-                                             "Parole needs <b>%s</b> to play this file.",
+                                             _("Parole needs <b>%s</b> to play this file."),
 #endif
                                              desc);
     
