@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-13 18:30+0200\n"
-"PO-Revision-Date: 2013-10-15 00:24+0000\n"
+"POT-Creation-Date: 2013-10-20 18:30+0200\n"
+"PO-Revision-Date: 2013-10-21 03:00+0000\n"
 "Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/xfce/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -31,164 +31,186 @@ msgid "_Media"
 msgstr "_Mídia"
 
 #: ../data/interfaces/parole.ui.h:3
+msgid "_Open…"
+msgstr "_Abrir…"
+
+#: ../data/interfaces/parole.ui.h:4
 msgid "Open _Location…"
 msgstr "Abrir _localização…"
 
-#: ../data/interfaces/parole.ui.h:4
+#: ../data/interfaces/parole.ui.h:5
 msgid "Open _Recent"
 msgstr "Abrir _recentes"
 
-#: ../data/interfaces/parole.ui.h:5
+#: ../data/interfaces/parole.ui.h:6
 msgid "_Save Playlist…"
 msgstr "_Salvar lista de reprodução…"
 
-#: ../data/interfaces/parole.ui.h:6
+#: ../data/interfaces/parole.ui.h:7
+msgid "Insert Disk"
+msgstr "Insira disco"
+
+#: ../data/interfaces/parole.ui.h:8 ../src/plugins/tray/tray-provider.c:150
+msgid "_Quit"
+msgstr "_Sair"
+
+#: ../data/interfaces/parole.ui.h:9
 msgid "_Playback"
 msgstr "_Reprodução"
 
 #. Toggle Repeat
-#: ../data/interfaces/parole.ui.h:7 ../src/parole-player.c:3028
+#: ../data/interfaces/parole.ui.h:10 ../src/parole-player.c:3028
 msgid "_Repeat"
 msgstr "_Repetir"
 
 #. Toggle Shuffle
-#: ../data/interfaces/parole.ui.h:8 ../src/parole-player.c:3034
+#: ../data/interfaces/parole.ui.h:11 ../src/parole-player.c:3034
 msgid "_Shuffle"
 msgstr "_Embaralhar"
 
-#: ../data/interfaces/parole.ui.h:9
+#: ../data/interfaces/parole.ui.h:12
 msgid "_DVD"
 msgstr "_DVD"
 
-#: ../data/interfaces/parole.ui.h:10
+#: ../data/interfaces/parole.ui.h:13
 msgid "_DVD Menu"
 msgstr "Menu de _DVD"
 
-#: ../data/interfaces/parole.ui.h:11
+#: ../data/interfaces/parole.ui.h:14
 msgid "_Title Menu"
 msgstr "Menu de _título"
 
-#: ../data/interfaces/parole.ui.h:12
+#: ../data/interfaces/parole.ui.h:15
 msgid "_Audio Menu"
 msgstr "Menu de á_udio"
 
-#: ../data/interfaces/parole.ui.h:13
+#: ../data/interfaces/parole.ui.h:16
 msgid "A_ngle Menu"
 msgstr "Menu de â_ngulo"
 
-#: ../data/interfaces/parole.ui.h:14
+#: ../data/interfaces/parole.ui.h:17
 msgid "_Chapters"
 msgstr "_Capítulo"
 
-#: ../data/interfaces/parole.ui.h:15
+#: ../data/interfaces/parole.ui.h:18
 msgid "_Chapter Menu"
 msgstr "Menu de _capítulos"
 
-#: ../data/interfaces/parole.ui.h:16
+#: ../data/interfaces/parole.ui.h:19
 msgid "_Audio"
 msgstr "Á_udio"
 
-#: ../data/interfaces/parole.ui.h:17
+#: ../data/interfaces/parole.ui.h:20
 msgid "_Audio Track"
 msgstr "Faixa de á_udio"
 
-#: ../data/interfaces/parole.ui.h:18 ../src/parole-player.c:798
+#: ../data/interfaces/parole.ui.h:21 ../src/parole-player.c:798
 msgid "Empty"
 msgstr "Vazio"
 
-#: ../data/interfaces/parole.ui.h:19
+#: ../data/interfaces/parole.ui.h:22
 msgid "Volume _Up"
 msgstr "_Aumentar volume"
 
-#: ../data/interfaces/parole.ui.h:20
+#: ../data/interfaces/parole.ui.h:23
 msgid "Volume _Down"
 msgstr "_Diminuir volume"
 
-#: ../data/interfaces/parole.ui.h:21
+#: ../data/interfaces/parole.ui.h:24
 msgid "_Mute"
 msgstr "_Mudo"
 
-#: ../data/interfaces/parole.ui.h:22
+#: ../data/interfaces/parole.ui.h:25
 msgid "_Video"
 msgstr "_Vídeo"
 
-#: ../data/interfaces/parole.ui.h:23
+#. Fullscreen
+#: ../data/interfaces/parole.ui.h:26 ../src/parole-player.c:1966
+#: ../src/parole-player.c:3016
+msgid "_Fullscreen"
+msgstr "Tela _cheia"
+
+#: ../data/interfaces/parole.ui.h:27
 msgid "_Aspect Ratio"
 msgstr "_Taxa de proporção"
 
-#: ../data/interfaces/parole.ui.h:24
+#: ../data/interfaces/parole.ui.h:28
 msgid "None"
 msgstr "Nenhuma"
 
-#: ../data/interfaces/parole.ui.h:25
+#: ../data/interfaces/parole.ui.h:29
 msgid "Auto"
 msgstr "Auto"
 
-#: ../data/interfaces/parole.ui.h:26
+#: ../data/interfaces/parole.ui.h:30
 msgid "Square"
 msgstr "Quadrada"
 
-#: ../data/interfaces/parole.ui.h:27
+#: ../data/interfaces/parole.ui.h:31
 msgid "4:3 (TV)"
 msgstr "4:3 (TV)"
 
-#: ../data/interfaces/parole.ui.h:28
+#: ../data/interfaces/parole.ui.h:32
 msgid "16:9 (Widescreen)"
 msgstr "16:9 (Tela plana)"
 
-#: ../data/interfaces/parole.ui.h:29
+#: ../data/interfaces/parole.ui.h:33
 msgid "20:9 (DVB)"
 msgstr "20:9 (DVB)"
 
-#: ../data/interfaces/parole.ui.h:30
+#: ../data/interfaces/parole.ui.h:34
 msgid "_Subtitles"
 msgstr "_Legendas"
 
-#: ../data/interfaces/parole.ui.h:31
+#: ../data/interfaces/parole.ui.h:35
 msgid "Select Text Subtitles…"
 msgstr "Selecione legendas…"
 
-#: ../data/interfaces/parole.ui.h:32
+#: ../data/interfaces/parole.ui.h:36
 msgid "_Tools"
 msgstr "_Ferramentas"
 
-#: ../data/interfaces/parole.ui.h:33
+#: ../data/interfaces/parole.ui.h:37
 msgid "P_lugins"
 msgstr "P_lugins"
 
-#: ../data/interfaces/parole.ui.h:34
+#: ../data/interfaces/parole.ui.h:38
 msgid "_Preferences"
 msgstr "_Preferências"
 
-#: ../data/interfaces/parole.ui.h:35
+#: ../data/interfaces/parole.ui.h:39
 msgid "_Help"
 msgstr "Aj_uda"
 
-#: ../data/interfaces/parole.ui.h:36
+#: ../data/interfaces/parole.ui.h:40
 msgid "_Report a Bug…"
 msgstr "_Relatar um erro…"
 
-#: ../data/interfaces/parole.ui.h:37
+#: ../data/interfaces/parole.ui.h:41
+msgid "_About"
+msgstr "_Sobre"
+
+#: ../data/interfaces/parole.ui.h:42
 msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
 msgstr "<span color='#F4F4F4'><b><big>Música desconhecida</big></b></span>"
 
-#: ../data/interfaces/parole.ui.h:38
+#: ../data/interfaces/parole.ui.h:43
 msgid ""
 "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
 "Album</span></big>"
 msgstr "<big><span color='#BBBBBB'><i>em</i></span> <span color='#F4F4F4'>Álbum desconhecido</span></big>"
 
-#: ../data/interfaces/parole.ui.h:39
+#: ../data/interfaces/parole.ui.h:44
 msgid ""
 "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
 "Artist</span></big>"
 msgstr "<big><span color='#BBBBBB'><i>por</i></span> <span color='#F4F4F4'>Artista desconhecido</span></big>"
 
-#: ../data/interfaces/parole.ui.h:40
+#: ../data/interfaces/parole.ui.h:45
 msgid "0:00"
 msgstr "0:00"
 
-#: ../data/interfaces/parole.ui.h:42
+#: ../data/interfaces/parole.ui.h:47
 #, no-c-format
 msgid "Buffering (0%)"
 msgstr "Carregando buffer (0%)"
@@ -470,6 +492,18 @@ msgstr "Instalar"
 #: ../src/gst/parole-gst.c:1504
 msgid "OK"
 msgstr "OK"
+
+#: ../src/gst/parole-gst.c:1510
+#, c-format
+msgid ""
+"Parole needs <b>%s</b> to play this file.\n"
+"It can be installed automatically."
+msgstr "Parole precisa de <b>%s</b> para reproduzir este arquivo.\nEle pode ser instalado automaticamente."
+
+#: ../src/gst/parole-gst.c:1513
+#, c-format
+msgid "Parole needs <b>%s</b> to play this file."
+msgstr "Parole precisa de <b>%s</b> para reproduzir este arquivo."
 
 #: ../src/gst/parole-gst.c:1923
 msgid "The stream is taking too much time to load"
@@ -770,11 +804,6 @@ msgstr "Artista desconhecido"
 msgid "Buffering"
 msgstr "Armazenando"
 
-#. Fullscreen
-#: ../src/parole-player.c:1966 ../src/parole-player.c:3016
-msgid "_Fullscreen"
-msgstr "Tela _cheia"
-
 #: ../src/parole-player.c:1967 ../src/parole-player.c:3016
 #: ../src/parole-player.c:3251
 msgid "Fullscreen"
@@ -1065,10 +1094,6 @@ msgstr "Mostrar notificações para as faixas em reprodução"
 #: ../src/plugins/tray/tray-provider.c:133
 msgid "_Open"
 msgstr "_Abrir"
-
-#: ../src/plugins/tray/tray-provider.c:150
-msgid "_Quit"
-msgstr "_Sair"
 
 #: ../src/plugins/tray/tray-provider.c:242
 msgid "Tray icon plugin"
