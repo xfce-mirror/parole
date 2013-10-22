@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-10-20 18:30+0200\n"
-"PO-Revision-Date: 2013-10-22 09:29+0000\n"
+"PO-Revision-Date: 2013-10-22 13:34+0000\n"
 "Last-Translator: Necdet Yücel <necdetyucel@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/xfce/language/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -411,7 +411,7 @@ msgstr "Altyazılar"
 
 #: ../data/interfaces/save-playlist.ui.h:1
 msgid "Save Playlist as…"
-msgstr ""
+msgstr "Çalma Listesini farklı kaydet..."
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "File Type"
@@ -557,7 +557,7 @@ msgid ""
 "\n"
 "Please report bugs to <http://bugzilla.xfce.org/>.\n"
 "\n"
-msgstr ""
+msgstr "\nParole Ortam Oynatıcısı %s\n\nXfce Goodies Projesinin bir parçasıdır\nhttp://goodies.xfce.org\n\nGNU GPL ile lisanslanmıştır.\n\nHataları lütfen <http://bugzilla.xfce.org/> adresine bildirin.\n\n"
 
 #: ../src/main.c:234
 msgid "Unknown argument "
@@ -577,11 +577,11 @@ msgstr "Audio-CD/VCD/DVD aygıt adresini girin"
 
 #: ../src/main.c:279
 msgid "Enable/Disable XV support (true or false, default=true)"
-msgstr ""
+msgstr "XV desteğini Aç/Kapat (true veya false, varsayılan=true)"
 
 #: ../src/main.c:280
 msgid "Start in embedded mode"
-msgstr ""
+msgstr "Gömülü kipte başlat"
 
 #: ../src/main.c:281
 msgid "Start in fullscreen mode"
@@ -621,7 +621,7 @@ msgstr "Dosyaları oynatma listesine ekle"
 
 #: ../src/main.c:290
 msgid "Print version information and exit"
-msgstr ""
+msgstr "Sürüm bilgisini yazdır ve çık"
 
 #: ../src/main.c:292
 msgid "Media to play"
@@ -629,7 +629,7 @@ msgstr "Oynatılacak ortam"
 
 #: ../src/main.c:315
 msgid "[FILES...] - Play movies and songs"
-msgstr ""
+msgstr "[DOSYALAR...] - Filmleri ve şarkıları oynat"
 
 #: ../src/main.c:327
 #, c-format
@@ -652,22 +652,22 @@ msgstr "Bütün dosyalar"
 #: ../src/parole-medialist.c:217
 #, c-format
 msgid "Playlist (%i item)"
-msgstr ""
+msgstr "Çalma Listesi (%i nesne)"
 
 #: ../src/parole-medialist.c:221
 #, c-format
 msgid "Playlist (%i chapter)"
-msgstr ""
+msgstr "Çalma Listesi (%i bölüm)"
 
 #: ../src/parole-medialist.c:228 ../src/parole-medialist.c:1513
 #, c-format
 msgid "Playlist (%i items)"
-msgstr ""
+msgstr "Çalma Listesi (%i nesne)"
 
 #: ../src/parole-medialist.c:232 ../src/parole-medialist.c:1514
 #, c-format
 msgid "Playlist (%i chapters)"
-msgstr ""
+msgstr "Çalma Listesi (%i bölüm)"
 
 #: ../src/parole-medialist.c:384 ../src/parole-player.c:705
 #, c-format
@@ -841,17 +841,17 @@ msgstr "Hata bildirimi için lütfen http://docs.xfce.org/apps/parole/bugs adres
 #. Previous Track
 #: ../src/parole-player.c:3000
 msgid "P_revious Track"
-msgstr ""
+msgstr "_Önceki Parça"
 
 #. Next Track
 #: ../src/parole-player.c:3008
 msgid "_Next Track"
-msgstr ""
+msgstr "_Sonraki Parça"
 
 #. Toggle Playlist
 #: ../src/parole-player.c:3023
 msgid "Show _Playlist"
-msgstr ""
+msgstr "Çalma Listesini _Göster"
 
 #: ../src/parole-player.c:3023 ../src/parole-player.c:3356
 msgid "Show Playlist"
@@ -860,7 +860,7 @@ msgstr "Oynatma Listesini Göster"
 #. Clear Recent Menu Item
 #: ../src/parole-player.c:3090
 msgid "_Clear recent items…"
-msgstr ""
+msgstr "Güncel parçaları _temizle..."
 
 #: ../src/parole-player.c:3295
 msgid "Audio Track:"
@@ -1038,7 +1038,7 @@ msgstr "Vietnamca"
 #. If plugin loading fails...
 #: ../src/parole-plugins-manager.c:276
 msgid "Plugin failed to load"
-msgstr ""
+msgstr "Eklenti yüklenemedi"
 
 #: ../src/parole-plugins-manager.c:276
 msgid "Please check your installation"
