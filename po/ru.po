@@ -9,13 +9,14 @@
 # mrDoctorWho <mrdoctorwho@gmail.com>, 2013
 # asvl <alyoshin.s@gmail.com>, 2013
 # shlyapugin <shlyapugin@gmail.com>, 2013
+# shlyapugin <shlyapugin@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-13 18:30+0200\n"
-"PO-Revision-Date: 2013-10-20 11:35+0000\n"
-"Last-Translator: shlyapugin <shlyapugin@gmail.com>\n"
+"POT-Creation-Date: 2013-10-20 18:30+0200\n"
+"PO-Revision-Date: 2013-10-23 20:26+0000\n"
+"Last-Translator: asvl <alyoshin.s@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/xfce/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,164 +35,186 @@ msgid "_Media"
 msgstr "_Фильм"
 
 #: ../data/interfaces/parole.ui.h:3
-msgid "Open _Location…"
-msgstr "Открыть _адрес..."
+msgid "_Open…"
+msgstr "_Открыть…"
 
 #: ../data/interfaces/parole.ui.h:4
+msgid "Open _Location…"
+msgstr "Открыть _адрес…"
+
+#: ../data/interfaces/parole.ui.h:5
 msgid "Open _Recent"
 msgstr "Открыть _последние"
 
-#: ../data/interfaces/parole.ui.h:5
-msgid "_Save Playlist…"
-msgstr "_Сохранить список всопроизведения"
-
 #: ../data/interfaces/parole.ui.h:6
+msgid "_Save Playlist…"
+msgstr "_Сохранить список воспроизведения…"
+
+#: ../data/interfaces/parole.ui.h:7
+msgid "Insert Disk"
+msgstr "Вставьте диск"
+
+#: ../data/interfaces/parole.ui.h:8 ../src/plugins/tray/tray-provider.c:150
+msgid "_Quit"
+msgstr "_Выйти"
+
+#: ../data/interfaces/parole.ui.h:9
 msgid "_Playback"
 msgstr "_Воспроизведение"
 
 #. Toggle Repeat
-#: ../data/interfaces/parole.ui.h:7 ../src/parole-player.c:3028
+#: ../data/interfaces/parole.ui.h:10 ../src/parole-player.c:3028
 msgid "_Repeat"
-msgstr "По_втор"
+msgstr "_Повтор"
 
 #. Toggle Shuffle
-#: ../data/interfaces/parole.ui.h:8 ../src/parole-player.c:3034
+#: ../data/interfaces/parole.ui.h:11 ../src/parole-player.c:3034
 msgid "_Shuffle"
 msgstr "_Случайно"
 
-#: ../data/interfaces/parole.ui.h:9
+#: ../data/interfaces/parole.ui.h:12
 msgid "_DVD"
 msgstr "_DVD"
 
-#: ../data/interfaces/parole.ui.h:10
+#: ../data/interfaces/parole.ui.h:13
 msgid "_DVD Menu"
 msgstr "Меню _DVD"
 
-#: ../data/interfaces/parole.ui.h:11
+#: ../data/interfaces/parole.ui.h:14
 msgid "_Title Menu"
 msgstr "Меню _эпизода"
 
-#: ../data/interfaces/parole.ui.h:12
+#: ../data/interfaces/parole.ui.h:15
 msgid "_Audio Menu"
 msgstr "Меню _аудио"
 
-#: ../data/interfaces/parole.ui.h:13
+#: ../data/interfaces/parole.ui.h:16
 msgid "A_ngle Menu"
 msgstr "Меню _ракурсов"
 
-#: ../data/interfaces/parole.ui.h:14
+#: ../data/interfaces/parole.ui.h:17
 msgid "_Chapters"
 msgstr "_Фрагменты"
 
-#: ../data/interfaces/parole.ui.h:15
+#: ../data/interfaces/parole.ui.h:18
 msgid "_Chapter Menu"
 msgstr "Меню _фрагментов"
 
-#: ../data/interfaces/parole.ui.h:16
+#: ../data/interfaces/parole.ui.h:19
 msgid "_Audio"
 msgstr "Зву_к"
 
-#: ../data/interfaces/parole.ui.h:17
+#: ../data/interfaces/parole.ui.h:20
 msgid "_Audio Track"
 msgstr "_Звук"
 
-#: ../data/interfaces/parole.ui.h:18 ../src/parole-player.c:798
+#: ../data/interfaces/parole.ui.h:21 ../src/parole-player.c:798
 msgid "Empty"
 msgstr "Пусто"
 
-#: ../data/interfaces/parole.ui.h:19
+#: ../data/interfaces/parole.ui.h:22
 msgid "Volume _Up"
 msgstr "_Громче"
 
-#: ../data/interfaces/parole.ui.h:20
+#: ../data/interfaces/parole.ui.h:23
 msgid "Volume _Down"
 msgstr "_Тише"
 
-#: ../data/interfaces/parole.ui.h:21
+#: ../data/interfaces/parole.ui.h:24
 msgid "_Mute"
 msgstr "_Приглушить"
 
-#: ../data/interfaces/parole.ui.h:22
+#: ../data/interfaces/parole.ui.h:25
 msgid "_Video"
-msgstr "_Видео"
+msgstr "Ви_део"
 
-#: ../data/interfaces/parole.ui.h:23
+#. Fullscreen
+#: ../data/interfaces/parole.ui.h:26 ../src/parole-player.c:1966
+#: ../src/parole-player.c:3016
+msgid "_Fullscreen"
+msgstr "Во весь _экран"
+
+#: ../data/interfaces/parole.ui.h:27
 msgid "_Aspect Ratio"
 msgstr "_Соотношение"
 
-#: ../data/interfaces/parole.ui.h:24
+#: ../data/interfaces/parole.ui.h:28
 msgid "None"
 msgstr "Нет"
 
-#: ../data/interfaces/parole.ui.h:25
+#: ../data/interfaces/parole.ui.h:29
 msgid "Auto"
 msgstr "Авто"
 
-#: ../data/interfaces/parole.ui.h:26
+#: ../data/interfaces/parole.ui.h:30
 msgid "Square"
 msgstr "Квадрат"
 
-#: ../data/interfaces/parole.ui.h:27
+#: ../data/interfaces/parole.ui.h:31
 msgid "4:3 (TV)"
 msgstr "4:3 (TV)"
 
-#: ../data/interfaces/parole.ui.h:28
+#: ../data/interfaces/parole.ui.h:32
 msgid "16:9 (Widescreen)"
 msgstr "16:9 (широкий экран)"
 
-#: ../data/interfaces/parole.ui.h:29
+#: ../data/interfaces/parole.ui.h:33
 msgid "20:9 (DVB)"
 msgstr "20:9 (DVB)"
 
-#: ../data/interfaces/parole.ui.h:30
+#: ../data/interfaces/parole.ui.h:34
 msgid "_Subtitles"
 msgstr "Суб_титры"
 
-#: ../data/interfaces/parole.ui.h:31
+#: ../data/interfaces/parole.ui.h:35
 msgid "Select Text Subtitles…"
-msgstr "Выбрать текстовые субтитры..."
+msgstr "Выбрать субтитры…"
 
-#: ../data/interfaces/parole.ui.h:32
+#: ../data/interfaces/parole.ui.h:36
 msgid "_Tools"
 msgstr "_Инструменты"
 
-#: ../data/interfaces/parole.ui.h:33
+#: ../data/interfaces/parole.ui.h:37
 msgid "P_lugins"
 msgstr "_Модули"
 
-#: ../data/interfaces/parole.ui.h:34
+#: ../data/interfaces/parole.ui.h:38
 msgid "_Preferences"
-msgstr "_Параметры"
+msgstr "Па_раметры"
 
-#: ../data/interfaces/parole.ui.h:35
+#: ../data/interfaces/parole.ui.h:39
 msgid "_Help"
 msgstr "_Справка"
 
-#: ../data/interfaces/parole.ui.h:36
+#: ../data/interfaces/parole.ui.h:40
 msgid "_Report a Bug…"
-msgstr "_Сообщить об ошибке..."
+msgstr "Сообщить об о_шибке…"
 
-#: ../data/interfaces/parole.ui.h:37
+#: ../data/interfaces/parole.ui.h:41
+msgid "_About"
+msgstr "О _программе"
+
+#: ../data/interfaces/parole.ui.h:42
 msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
 msgstr "<span color='#F4F4F4'><b><big>Неизвестная песня</big></b></span>"
 
-#: ../data/interfaces/parole.ui.h:38
+#: ../data/interfaces/parole.ui.h:43
 msgid ""
 "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
 "Album</span></big>"
 msgstr "<big><span color='#BBBBBB'><i>из</i></span> <span color='#F4F4F4'>неизвестного альбома</span></big>"
 
-#: ../data/interfaces/parole.ui.h:39
+#: ../data/interfaces/parole.ui.h:44
 msgid ""
 "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
 "Artist</span></big>"
 msgstr "<big><span color='#BBBBBB'><i>исполнитель</i></span> <span color='#F4F4F4'>неизвестный</span></big>"
 
-#: ../data/interfaces/parole.ui.h:40
+#: ../data/interfaces/parole.ui.h:45
 msgid "0:00"
 msgstr "0:00"
 
-#: ../data/interfaces/parole.ui.h:42
+#: ../data/interfaces/parole.ui.h:47
 #, no-c-format
 msgid "Buffering (0%)"
 msgstr "Буферизация (0%)"
@@ -212,7 +235,7 @@ msgstr "Список воспроизведения"
 
 #: ../data/interfaces/playlist.ui.h:3
 msgid "Add to playlist…"
-msgstr "Добавить в список воспроизведения..."
+msgstr "Добавить в список воспроизведения…"
 
 #: ../data/interfaces/playlist.ui.h:4
 msgid "Add"
@@ -220,7 +243,7 @@ msgstr "Добавить"
 
 #: ../data/interfaces/playlist.ui.h:5
 msgid "Remove selected media"
-msgstr "Извлечь выбранное медиа"
+msgstr "Удалить выбранное медиа"
 
 #: ../data/interfaces/playlist.ui.h:6
 msgid "Remove"
@@ -305,7 +328,7 @@ msgstr "<b>Хранитель экрана</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:5
 msgid "Show visual effects when an audio file is played"
-msgstr "Показывать визуальные эффекты при воспроизведении звуковых файлов"
+msgstr "Показывать визуальные эффекты при воспроизведении аудио"
 
 #: ../data/interfaces/parole-settings.ui.h:6
 msgid "Visualization type:"
@@ -325,7 +348,7 @@ msgstr "<b>Клавиатура</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:10
 msgid "General"
-msgstr "Общие"
+msgstr "Основные"
 
 #: ../data/interfaces/parole-settings.ui.h:11
 msgid "Brightness:"
@@ -393,7 +416,7 @@ msgstr "Субтитры"
 
 #: ../data/interfaces/save-playlist.ui.h:1
 msgid "Save Playlist as…"
-msgstr "Сохранить список воспроизведения как..."
+msgstr "Сохранить список воспроизведения как…"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "File Type"
@@ -474,6 +497,18 @@ msgstr "Установить"
 msgid "OK"
 msgstr "OK"
 
+#: ../src/gst/parole-gst.c:1510
+#, c-format
+msgid ""
+"Parole needs <b>%s</b> to play this file.\n"
+"It can be installed automatically."
+msgstr "Для воспроизведения этого файла Parole требуется <b>%s</b>.\nМожет быть установлено автоматически."
+
+#: ../src/gst/parole-gst.c:1513
+#, c-format
+msgid "Parole needs <b>%s</b> to play this file."
+msgstr "Для воспроизведения этого файла Parole требуется <b>%s</b>."
+
 #: ../src/gst/parole-gst.c:1923
 msgid "The stream is taking too much time to load"
 msgstr "Поток требует слишком много времени для загрузки"
@@ -496,13 +531,13 @@ msgstr "Ошибка GStreamer"
 
 #: ../src/gst/parole-gst.c:2097
 msgid "Parole Media Player cannot start."
-msgstr "Медиапроигрыватель Parole не может запуститься."
+msgstr "Медиапроигрыватель Parole не может быть запущен."
 
 #: ../src/gst/parole-gst.c:2125 ../src/gst/parole-gst.c:2143
 #: ../src/gst/parole-gst.c:2166
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
-msgstr "Невозможно загрузить плагин «%s». Проверьте, все ли необходимые пакеты GStreamer установлены."
+msgstr "Невозможно загрузить модуль «%s». Проверьте, все ли необходимые пакеты GStreamer установлены."
 
 #: ../src/gst/parole-gst.c:2770 ../src/gst/parole-gst.c:2776
 #, c-format
@@ -599,12 +634,12 @@ msgstr "Объект для проигрывания"
 
 #: ../src/main.c:315
 msgid "[FILES...] - Play movies and songs"
-msgstr "[ФАЙЛЫ...] - Воспроизведение фильмов и песен"
+msgstr "[ФАЙЛЫ...] - Воспроизведение видео и аудио"
 
 #: ../src/main.c:327
 #, c-format
 msgid "Type %s --help to list all available command line options\n"
-msgstr "Введите %s --help для просмотра списка всех возможных команд\n"
+msgstr "Введите %s --help для просмотра списка всех возможных параметров\n"
 
 #: ../src/main.c:342
 #, c-format
@@ -642,7 +677,7 @@ msgstr "Список воспроизведения (%i фрагмента(ов)
 #: ../src/parole-medialist.c:384 ../src/parole-player.c:705
 #, c-format
 msgid "Chapter %i"
-msgstr "Глава №%i"
+msgstr "Фрагмент №%i"
 
 #: ../src/parole-medialist.c:667
 msgid "Permission denied"
@@ -696,7 +731,7 @@ msgstr "Показать список воспроизведения"
 #. Build the FileChooser dialog for subtitle selection.
 #: ../src/parole-player.c:984
 msgid "Select Subtitle File"
-msgstr "Выбрать файл субтитров..."
+msgstr "Выбрать файл субтитров"
 
 #: ../src/parole-player.c:989 ../src/parole-player.c:1193
 #: ../src/plugins/tray/tray-provider.c:310
@@ -773,11 +808,6 @@ msgstr "Неизвестный исполнитель"
 msgid "Buffering"
 msgstr "Буферизация"
 
-#. Fullscreen
-#: ../src/parole-player.c:1966 ../src/parole-player.c:3016
-msgid "_Fullscreen"
-msgstr "_Полноэкранный режим"
-
 #: ../src/parole-player.c:1967 ../src/parole-player.c:3016
 #: ../src/parole-player.c:3251
 msgid "Fullscreen"
@@ -785,7 +815,7 @@ msgstr "Полноэкранный режим"
 
 #: ../src/parole-player.c:1982
 msgid "Leave _Fullscreen"
-msgstr "Выйти из полноэкранного режима"
+msgstr "Выйти из полно_экранного режима"
 
 #: ../src/parole-player.c:1983
 msgid "Leave Fullscreen"
@@ -799,15 +829,15 @@ msgstr "Показать строку меню"
 
 #: ../src/parole-player.c:2294
 msgid "Mute"
-msgstr "_Приглушить"
+msgstr "Приглушить"
 
 #: ../src/parole-player.c:2299
 msgid "Unmute"
-msgstr "_Включить звук"
+msgstr "Включить звук"
 
 #: ../src/parole-player.c:2662
 msgid "Unable to open default web browser"
-msgstr "Не удалось открыть браузер по умолчанию"
+msgstr "Не удалось открыть веб-браузер по умолчанию"
 
 #: ../src/parole-player.c:2664
 msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
@@ -816,17 +846,17 @@ msgstr "Пожалуйста, сообщите об ошибке на http://doc
 #. Previous Track
 #: ../src/parole-player.c:3000
 msgid "P_revious Track"
-msgstr "_Предыдущий файл"
+msgstr "_Предыдущий трек"
 
 #. Next Track
 #: ../src/parole-player.c:3008
 msgid "_Next Track"
-msgstr "_Следующий файл"
+msgstr "_Следующий трек"
 
 #. Toggle Playlist
 #: ../src/parole-player.c:3023
 msgid "Show _Playlist"
-msgstr "Показать _список воспроизведения"
+msgstr "Показать список _воспроизведения"
 
 #: ../src/parole-player.c:3023 ../src/parole-player.c:3356
 msgid "Show Playlist"
@@ -835,15 +865,15 @@ msgstr "Показать список воспроизведения"
 #. Clear Recent Menu Item
 #: ../src/parole-player.c:3090
 msgid "_Clear recent items…"
-msgstr "_Очистить историю последних открытых файлов..."
+msgstr "_Очистить историю последних открытых файлов…"
 
 #: ../src/parole-player.c:3295
 msgid "Audio Track:"
-msgstr "Звуковая дорожка:"
+msgstr "Язык звуковой дорожки:"
 
 #: ../src/parole-player.c:3311
 msgid "Subtitles:"
-msgstr "Субтитры:"
+msgstr "Язык субтитров:"
 
 #: ../src/parole-player.c:3316 ../src/plugins/tray/tray-provider.c:245
 msgid "Close"
@@ -855,7 +885,7 @@ msgstr "Скрыть список воспроизведения"
 
 #: ../src/parole-about.c:76
 msgid "translator-credits"
-msgstr "Anatoly Chernov <aichernov@umail.ru>, 2009\nRoman K <mrdoctorwho@gmail.com>, 2013"
+msgstr "Sergey Alyoshin <alyoshin.s@gmail.com>, 2013\nSergey Shlyapugin <shlyapugin@gmail.com>, 2013\nRoman K <mrdoctorwho@gmail.com>, 2013\nAnatoly Chernov <aichernov@umail.ru>, 2009"
 
 #: ../src/parole-about.c:79
 msgid "Visit Parole website"
@@ -1069,10 +1099,6 @@ msgstr "Показывать уведомления для текущих тре
 msgid "_Open"
 msgstr "_Открыть"
 
-#: ../src/plugins/tray/tray-provider.c:150
-msgid "_Quit"
-msgstr "_Выйти"
-
 #: ../src/plugins/tray/tray-provider.c:242
 msgid "Tray icon plugin"
 msgstr "Модуль отображения значка в системном лотке"
@@ -1099,7 +1125,7 @@ msgstr "Выйти"
 
 #: ../src/plugins/tray/tray-provider.c:325
 msgid "Remember my choice"
-msgstr "_Запомнить список воспроизведения"
+msgstr "Запомнить список воспроизведения"
 
 #: ../src/plugins/tray/system-tray.desktop.in.h:1
 msgid "Tray icon"
