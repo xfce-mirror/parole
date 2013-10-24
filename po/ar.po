@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-10-20 18:30+0200\n"
-"PO-Revision-Date: 2013-10-24 04:23+0000\n"
+"PO-Revision-Date: 2013-10-24 04:38+0000\n"
 "Last-Translator: mohammad alhargan <malham1@hotmail.com>\n"
 "Language-Team: Arabic (http://www.transifex.com/projects/p/xfce/language/ar/)\n"
 "MIME-Version: 1.0\n"
@@ -92,7 +92,7 @@ msgstr "قائمة ال_زوايا"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "_Chapters"
-msgstr "الفصول"
+msgstr "_الفصول"
 
 #: ../data/interfaces/parole.ui.h:18
 msgid "_Chapter Menu"
@@ -560,7 +560,7 @@ msgid ""
 "\n"
 "Please report bugs to <http://bugzilla.xfce.org/>.\n"
 "\n"
-msgstr ""
+msgstr "\nتشغيل مُشغل الوسائط %s\n\nجزء جديد من مشروع إكسفس\nhttp://goodies.xfce.org\n\nمرخص تحت GNU GPL.\n\nالرجاء الإبلاغ عن الأخطاء في <http://bugzilla.xfce.org/>.\n\n"
 
 #: ../src/main.c:234
 msgid "Unknown argument "
@@ -580,11 +580,11 @@ msgstr "حدد مسار الجهاز Audio-CD/VCD/DVD"
 
 #: ../src/main.c:279
 msgid "Enable/Disable XV support (true or false, default=true)"
-msgstr ""
+msgstr "تمكين/تعطيل دعم XV (صحيحة أو خطئ، الافتراضي = صحيح)"
 
 #: ../src/main.c:280
 msgid "Start in embedded mode"
-msgstr ""
+msgstr "ابدأ في الوضع المضمن"
 
 #: ../src/main.c:281
 msgid "Start in fullscreen mode"
@@ -616,7 +616,7 @@ msgstr "إكتام"
 
 #: ../src/main.c:288
 msgid "Unmute (restore) volume"
-msgstr ""
+msgstr "إعادة تشغيل الصوت (استعادة)"
 
 #: ../src/main.c:289
 msgid "Add files to playlist"
@@ -624,7 +624,7 @@ msgstr "أضف ملفات إلى قائمة التشغيل"
 
 #: ../src/main.c:290
 msgid "Print version information and exit"
-msgstr ""
+msgstr "طباعة معلومات الإصدار والخروج"
 
 #: ../src/main.c:292
 msgid "Media to play"
@@ -632,12 +632,12 @@ msgstr "وسائط للتشغيل"
 
 #: ../src/main.c:315
 msgid "[FILES...] - Play movies and songs"
-msgstr ""
+msgstr "[الملفات...] - تشغيل أفلام وأغاني"
 
 #: ../src/main.c:327
 #, c-format
 msgid "Type %s --help to list all available command line options\n"
-msgstr ""
+msgstr "نوع %s --help لعرض كافة خيارات سطر الأوامر المتوفرة\n"
 
 #: ../src/main.c:342
 #, c-format
@@ -655,22 +655,22 @@ msgstr "كل الملفات"
 #: ../src/parole-medialist.c:217
 #, c-format
 msgid "Playlist (%i item)"
-msgstr ""
+msgstr "قائمة التشغيل (%i عنصر)"
 
 #: ../src/parole-medialist.c:221
 #, c-format
 msgid "Playlist (%i chapter)"
-msgstr ""
+msgstr "قائمة التشغيل (%i فصل)"
 
 #: ../src/parole-medialist.c:228 ../src/parole-medialist.c:1513
 #, c-format
 msgid "Playlist (%i items)"
-msgstr ""
+msgstr "قائمة التشغيل (%i عناصر)"
 
 #: ../src/parole-medialist.c:232 ../src/parole-medialist.c:1514
 #, c-format
 msgid "Playlist (%i chapters)"
-msgstr ""
+msgstr "قائمة التشغيل (%i فصول)"
 
 #: ../src/parole-medialist.c:384 ../src/parole-player.c:705
 #, c-format
@@ -691,7 +691,7 @@ msgstr "صيغة قائمة التشغيل مجهولة"
 
 #: ../src/parole-medialist.c:682
 msgid "Please choose a supported playlist format"
-msgstr ""
+msgstr "الرجاء اختيار تنسيق قائمة التشغيل المدعومة"
 
 #: ../src/parole-medialist.c:736 ../src/parole-plugins-manager.c:369
 msgid "Unknown"
@@ -734,11 +734,11 @@ msgstr "حدد ملف ترجمة"
 #: ../src/parole-player.c:989 ../src/parole-player.c:1193
 #: ../src/plugins/tray/tray-provider.c:310
 msgid "Cancel"
-msgstr ""
+msgstr "إلغاء"
 
 #: ../src/parole-player.c:992
 msgid "Open"
-msgstr ""
+msgstr "افتح"
 
 #: ../src/parole-player.c:1008
 msgid "Subtitle Files"
@@ -763,7 +763,7 @@ msgstr "مسار الوسائط غير قابل للقرأة"
 #. Play/Pause
 #: ../src/parole-player.c:1293 ../src/parole-player.c:2992
 msgid "_Play"
-msgstr ""
+msgstr "_شغّل"
 
 #: ../src/parole-player.c:1294 ../src/parole-player.c:2992
 msgid "Play"
@@ -771,7 +771,7 @@ msgstr "مشغل"
 
 #: ../src/parole-player.c:1297
 msgid "_Pause"
-msgstr ""
+msgstr "_توقّف مؤقّت"
 
 #: ../src/parole-player.c:1298
 msgid "Pause"
@@ -813,17 +813,17 @@ msgstr "ملء الشاشة"
 
 #: ../src/parole-player.c:1982
 msgid "Leave _Fullscreen"
-msgstr ""
+msgstr "غادر نمط مل_ء الشاشة"
 
 #: ../src/parole-player.c:1983
 msgid "Leave Fullscreen"
-msgstr ""
+msgstr "غادِر نمط ملء الشاشة"
 
 #. * Un/Hide menubar
 #. 
 #: ../src/parole-player.c:2079
 msgid "Show menubar"
-msgstr ""
+msgstr "اعرض شريط القوائم"
 
 #: ../src/parole-player.c:2294
 msgid "Mute"
@@ -835,35 +835,35 @@ msgstr "إفتح الصوت"
 
 #: ../src/parole-player.c:2662
 msgid "Unable to open default web browser"
-msgstr ""
+msgstr "غير قادر على فتح مستعرض ويب الافتراضي"
 
 #: ../src/parole-player.c:2664
 msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
-msgstr ""
+msgstr "الرجاء الذهاب إلى http://docs.xfce.org/apps/parole/bugs للإبلاغ عن الأخطاء."
 
 #. Previous Track
 #: ../src/parole-player.c:3000
 msgid "P_revious Track"
-msgstr ""
+msgstr "المقطوعة السّابقة"
 
 #. Next Track
 #: ../src/parole-player.c:3008
 msgid "_Next Track"
-msgstr ""
+msgstr "المقطوعة التّالية"
 
 #. Toggle Playlist
 #: ../src/parole-player.c:3023
 msgid "Show _Playlist"
-msgstr ""
+msgstr "عر_ض قائمة التشغيل"
 
 #: ../src/parole-player.c:3023 ../src/parole-player.c:3356
 msgid "Show Playlist"
-msgstr ""
+msgstr "عرض قائمة التشغيل"
 
 #. Clear Recent Menu Item
 #: ../src/parole-player.c:3090
 msgid "_Clear recent items…"
-msgstr ""
+msgstr "_محو العناصر الحديثة…"
 
 #: ../src/parole-player.c:3295
 msgid "Audio Track:"
@@ -875,11 +875,11 @@ msgstr "ترجمات:"
 
 #: ../src/parole-player.c:3316 ../src/plugins/tray/tray-provider.c:245
 msgid "Close"
-msgstr ""
+msgstr "أغلق"
 
 #: ../src/parole-player.c:3356
 msgid "Hide Playlist"
-msgstr ""
+msgstr "إخفاء قائمة التشغيل"
 
 #: ../src/parole-about.c:76
 msgid "translator-credits"
@@ -1041,11 +1041,11 @@ msgstr "فتنامي"
 #. If plugin loading fails...
 #: ../src/parole-plugins-manager.c:276
 msgid "Plugin failed to load"
-msgstr ""
+msgstr "فشل تحميل الملحقات"
 
 #: ../src/parole-plugins-manager.c:276
 msgid "Please check your installation"
-msgstr ""
+msgstr "الرجاء التحقق من التثبيت"
 
 #: ../src/parole-plugins-manager.c:408
 msgid "No installed plugins found on this system"
@@ -1053,7 +1053,7 @@ msgstr "لم يتم العثور على ملحقات مثبتة في هذا ال
 
 #: ../src/parole-plugins-manager.c:409
 msgid "Please check your installation."
-msgstr ""
+msgstr "الرجاء التحقق من التثبيت."
 
 #: ../src/misc/parole-filters.c:65
 msgid "Audio"
@@ -1119,7 +1119,7 @@ msgstr "تصغير إلى مصغرات الشريط"
 
 #: ../src/plugins/tray/tray-provider.c:316
 msgid "Quit"
-msgstr ""
+msgstr "خروج"
 
 #: ../src/plugins/tray/tray-provider.c:325
 msgid "Remember my choice"
