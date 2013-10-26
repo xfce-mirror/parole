@@ -274,13 +274,49 @@ parole_media_list_add (ParoleMediaList *list, ParoleFile *file, gboolean disc, g
     GtkTreeIter iter;
     gint nch;
     
+    /* Objects used for the remove-duplicates functionality. */
+    gchar *filename;
+    ParoleFile *row_file;
+    gboolean remove_duplicates;
+    g_object_get (G_OBJECT (list->priv->conf),
+                  "remove-duplicated", &remove_duplicates,
+                  NULL);
+    
+    /* Set the list_store variable based on with store we're viewing. */
     if (disc)
         list_store = GTK_LIST_STORE (gtk_tree_view_get_model (GTK_TREE_VIEW (list->priv->disc_view)));
     else
         list_store = GTK_LIST_STORE (gtk_tree_view_get_model (GTK_TREE_VIEW (list->priv->view)));
+        
+    /* Remove duplicates functionality. If the file being added is already in the
+     * playlist, remove it from its current position in the playlist before
+     * adding it again. */
+    if (!disc && remove_duplicates && gtk_tree_model_iter_n_children (GTK_TREE_MODEL(list_store), NULL) != 0)
+    {
+        filename = g_strdup(parole_file_get_file_name(file));
+                
+        /* Check the first row */
+        gtk_tree_model_get_iter_first(GTK_TREE_MODEL(list_store), &iter);
+        gtk_tree_model_get(GTK_TREE_MODEL(list_store), &iter, DATA_COL, &row_file, -1);
+        if (g_strcmp0(filename, parole_file_get_file_name(row_file)) == 0)
+        {
+            gtk_list_store_remove (GTK_LIST_STORE(list_store), &iter);
+        }
+        
+        /* Check subsequent rows */
+        while (gtk_tree_model_iter_next(GTK_TREE_MODEL(list_store), &iter)) {
+            gtk_tree_model_get(GTK_TREE_MODEL(list_store), &iter, DATA_COL, &row_file, -1);
+            if (g_strcmp0(filename, parole_file_get_file_name(row_file)) == 0)
+            {
+                gtk_list_store_remove (GTK_LIST_STORE(list_store), &iter);
+            }
+        }
+        
+        g_object_unref(row_file);
+    }
     
+    /* Add the file to the playlist */
     gtk_list_store_append (list_store, &iter);
-    
     gtk_list_store_set (list_store, 
                         &iter, 
                         NAME_COL, parole_file_get_display_name (file),
@@ -307,11 +343,8 @@ parole_media_list_add (ParoleMediaList *list, ParoleFile *file, gboolean disc, g
      */
     g_object_unref (file);
     
-    if (disc)
-        nch = gtk_tree_model_iter_n_children (GTK_TREE_MODEL (list->priv->disc_store), NULL); 
-    else
-        nch = gtk_tree_model_iter_n_children (GTK_TREE_MODEL (list->priv->store), NULL); 
-    
+    /* Update the playlist count. */
+    nch = gtk_tree_model_iter_n_children (GTK_TREE_MODEL (list_store), NULL); 
     parole_media_list_set_playlist_count(list, nch);
 }
 
