@@ -375,7 +375,7 @@ parole_pl_parser_parse_m3u (const gchar *filename)
         }
 
         else {
-            pl_filename = g_strjoin("", path, lines[i], NULL);
+            pl_filename = g_strjoin("/", path, lines[i], NULL);
         }
         
         list = g_slist_append (list, parole_file_new (pl_filename));
