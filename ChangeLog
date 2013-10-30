@@ -1,5 +1,9 @@
-2013-10-20: bluesabre@xfce.org
-    * Fix untranslatable strings (bug #10418)"
+2013-10-30: bluesabre@xfce.org
+    * Fix untranslatable strings (bug #10418)
+    * Fix loading of playlists with relative paths (bug #10436)
+    * Add realmedia video to supported video mimetypes (bug #10434)
+    * Fix IF/ELSE for plugin installation on multiple platforms (bugs #10142, #10441)
+    * Fix "Remove Duplicates" functionality.
 
 2013-10-19: bluesabre@xfce.org
     * Development release 0.5.90
