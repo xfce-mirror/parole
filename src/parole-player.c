@@ -675,7 +675,6 @@ parole_player_clear_chapters (ParolePlayer *player)
     
     /* Clear the chapter menu options */
     menu_items = gtk_container_get_children( GTK_CONTAINER (player->priv->chapters_menu) );
-    //gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(player->priv->subtitles_group), TRUE);
     
     for (menu_iter = menu_items; menu_iter != NULL; menu_iter = g_list_next(menu_iter))
     {
@@ -723,7 +722,7 @@ parole_player_clear_subtitles (ParolePlayer *player)
     /* Clear the InfoBar Combobox */
     gtk_list_store_clear(player->priv->liststore_subtitles);
     gtk_list_store_append(GTK_LIST_STORE(player->priv->liststore_subtitles), &iter);
-    gtk_list_store_set(GTK_LIST_STORE(player->priv->liststore_subtitles), &iter, 0, "None", -1);
+    gtk_list_store_set(GTK_LIST_STORE(player->priv->liststore_subtitles), &iter, 0, _("None"), -1);
     gtk_combo_box_set_active( GTK_COMBO_BOX(player->priv->combobox_subtitles), 0 );
     
     /* Clear the subtitle menu options */
