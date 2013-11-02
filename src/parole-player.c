@@ -2050,15 +2050,15 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
     
     /*
-     * Next item in playlist.
-     */
-    mi = gtk_action_create_menu_item(player->priv->media_next_action);
-    gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
-    
-    /*
      * Previous item in playlist.
      */
     mi = gtk_action_create_menu_item(player->priv->media_previous_action);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+    
+    /*
+     * Next item in playlist.
+     */
+    mi = gtk_action_create_menu_item(player->priv->media_next_action);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
     
     /*
