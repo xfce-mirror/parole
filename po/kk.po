@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-10-20 18:30+0200\n"
-"PO-Revision-Date: 2013-11-04 01:26+0000\n"
+"PO-Revision-Date: 2013-11-04 14:49+0000\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh (http://www.transifex.com/projects/p/xfce/language/kk/)\n"
 "MIME-Version: 1.0\n"
@@ -30,7 +30,7 @@ msgstr "_Медиа"
 
 #: ../data/interfaces/parole.ui.h:3
 msgid "_Open…"
-msgstr ""
+msgstr "А_шу…"
 
 #: ../data/interfaces/parole.ui.h:4
 msgid "Open _Location…"
@@ -50,7 +50,7 @@ msgstr ""
 
 #: ../data/interfaces/parole.ui.h:8 ../src/plugins/tray/tray-provider.c:150
 msgid "_Quit"
-msgstr ""
+msgstr "_Шығу"
 
 #: ../data/interfaces/parole.ui.h:9
 msgid "_Playback"
@@ -126,7 +126,7 @@ msgstr "_Видео"
 #: ../data/interfaces/parole.ui.h:26 ../src/parole-player.c:1966
 #: ../src/parole-player.c:3016
 msgid "_Fullscreen"
-msgstr ""
+msgstr "Т_олық экранға"
 
 #: ../data/interfaces/parole.ui.h:27
 msgid "_Aspect Ratio"
@@ -166,7 +166,7 @@ msgstr "Мәтіндік субтитрларды таңдаңыз…"
 
 #: ../data/interfaces/parole.ui.h:36
 msgid "_Tools"
-msgstr ""
+msgstr "Са_ймандар"
 
 #: ../data/interfaces/parole.ui.h:37
 msgid "P_lugins"
@@ -174,7 +174,7 @@ msgstr ""
 
 #: ../data/interfaces/parole.ui.h:38
 msgid "_Preferences"
-msgstr ""
+msgstr "Қалаулар"
 
 #: ../data/interfaces/parole.ui.h:39
 msgid "_Help"
@@ -186,7 +186,7 @@ msgstr ""
 
 #: ../data/interfaces/parole.ui.h:41
 msgid "_About"
-msgstr ""
+msgstr "Осы т_уралы"
 
 #: ../data/interfaces/parole.ui.h:42
 msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
@@ -342,7 +342,7 @@ msgstr "<b>Пернетақта</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:10
 msgid "General"
-msgstr ""
+msgstr "Жалпы"
 
 #: ../data/interfaces/parole-settings.ui.h:11
 msgid "Brightness:"
@@ -370,7 +370,7 @@ msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:17
 msgid "Display"
-msgstr ""
+msgstr "Көрсетілуі"
 
 #: ../data/interfaces/parole-settings.ui.h:18
 msgid "Always replace playlist with opened files"
@@ -620,7 +620,7 @@ msgstr "Ойнату тізіміне файлдарды қосу"
 
 #: ../src/main.c:290
 msgid "Print version information and exit"
-msgstr ""
+msgstr "Нұсқа ақпаратын шығару мен шығу"
 
 #: ../src/main.c:292
 msgid "Media to play"
@@ -730,11 +730,11 @@ msgstr "Субтитрлар файлын таңдау"
 #: ../src/parole-player.c:989 ../src/parole-player.c:1193
 #: ../src/plugins/tray/tray-provider.c:310
 msgid "Cancel"
-msgstr ""
+msgstr "Бас тарту"
 
 #: ../src/parole-player.c:992
 msgid "Open"
-msgstr ""
+msgstr "Ашу"
 
 #: ../src/parole-player.c:1008
 msgid "Subtitle Files"
@@ -759,7 +759,7 @@ msgstr "Мультимедиа ағымында ауысу мүмкін емес
 #. Play/Pause
 #: ../src/parole-player.c:1293 ../src/parole-player.c:2992
 msgid "_Play"
-msgstr ""
+msgstr "Ой_нату"
 
 #: ../src/parole-player.c:1294 ../src/parole-player.c:2992
 msgid "Play"
@@ -767,7 +767,7 @@ msgstr "Ойнату"
 
 #: ../src/parole-player.c:1297
 msgid "_Pause"
-msgstr ""
+msgstr "_Аялдату"
 
 #: ../src/parole-player.c:1298
 msgid "Pause"
@@ -809,11 +809,11 @@ msgstr "Толық экранға"
 
 #: ../src/parole-player.c:1982
 msgid "Leave _Fullscreen"
-msgstr ""
+msgstr "Т_олық экраннан шығу"
 
 #: ../src/parole-player.c:1983
 msgid "Leave Fullscreen"
-msgstr ""
+msgstr "Толық экраннан шығу"
 
 #. * Un/Hide menubar
 #. 
@@ -871,7 +871,7 @@ msgstr "Субтитрлар:"
 
 #: ../src/parole-player.c:3316 ../src/plugins/tray/tray-provider.c:245
 msgid "Close"
-msgstr ""
+msgstr "Жабу"
 
 #: ../src/parole-player.c:3356
 msgid "Hide Playlist"
@@ -1049,7 +1049,7 @@ msgstr "Бұл жүйеден орнатылған плагиндер табыл
 
 #: ../src/parole-plugins-manager.c:409
 msgid "Please check your installation."
-msgstr ""
+msgstr "Орнатуыңызды тексеріңіз."
 
 #: ../src/misc/parole-filters.c:65
 msgid "Audio"
@@ -1115,7 +1115,7 @@ msgstr "Трейге қайыру"
 
 #: ../src/plugins/tray/tray-provider.c:316
 msgid "Quit"
-msgstr ""
+msgstr "Шығу"
 
 #: ../src/plugins/tray/tray-provider.c:325
 msgid "Remember my choice"
