@@ -2474,6 +2474,9 @@ parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
             return FALSE;
         }
     }
+
+    if (ev->state & GDK_MOD1_MASK)
+        return FALSE;
     
     switch (ev->keyval)
     {
