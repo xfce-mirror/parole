@@ -223,6 +223,14 @@ AC_MSG_CHECKING([whether to build the system tray plugin])
 AM_CONDITIONAL([PAROLE_TRAY_PLUGIN], [test x"$ac_tray_plugin" = x"yes"])
 AC_MSG_RESULT([$ac_tray_plugin])
 
+# MPRIS2 plugin.
+#--------------------------
+AC_ARG_ENABLE([mpris2-plugin], AC_HELP_STRING([--disable-mpris2-plugin], [Don't build parole mpris2 plugin]),
+  [ac_mpris2_plugin=$enableval], [ac_mpris2_plugin=yes])
+AC_MSG_CHECKING([whether to build the mpris2 plugin])
+AM_CONDITIONAL([PAROLE_MPRIS2_PLUGIN], [test x"$ac_mpris2_plugin" = x"yes"])
+AC_MSG_RESULT([$ac_mpris2_plugin])
+
 # ===================================================== #
 #             Check for debugging support               #
 # ===================================================== #
@@ -256,6 +264,7 @@ src/plugins/Makefile
 src/plugins/sample/Makefile
 src/plugins/notify/Makefile
 src/plugins/tray/Makefile
+src/plugins/mpris2/Makefile
 docs/Makefile
 docs/plugin-api/version.xml
 docs/plugin-api/Makefile
@@ -284,6 +293,7 @@ echo "
         =================
         Notify:                         ${ac_notify_plugin}
         System Tray icon:               ${ac_tray_plugin}
+        MPRIS2:                         ${ac_mpris2_plugin}
 
 ------------------------------------------------------
 
