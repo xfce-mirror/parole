@@ -4,6 +4,7 @@
 # 
 # Translators:
 # elder <elderlinx@riseup.net>, 2013
+# elder <elderlinx@riseup.net>, 2013
 # Paweł Drożański <pawdro@gmail.com>, 2012
 # Piotr Sokół <psokol@jabster.pl>, 2012-2013
 # Piotr Strębski <strebski@o2.pl>, 2013
@@ -12,8 +13,8 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-10-20 18:30+0200\n"
-"PO-Revision-Date: 2013-10-24 09:23+0000\n"
-"Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
+"PO-Revision-Date: 2013-11-05 10:30+0000\n"
+"Last-Translator: Piotr Sokół <psokol@jabster.pl>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/xfce/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,11 +38,11 @@ msgstr "_Otwórz"
 
 #: ../data/interfaces/parole.ui.h:4
 msgid "Open _Location…"
-msgstr "Otwórz _położenie..."
+msgstr "Otwórz położe_nie..."
 
 #: ../data/interfaces/parole.ui.h:5
 msgid "Open _Recent"
-msgstr "Otwó_rz ostatnie"
+msgstr "Otwórz o_statnie"
 
 #: ../data/interfaces/parole.ui.h:6
 msgid "_Save Playlist…"
@@ -165,7 +166,7 @@ msgstr "_Napisy"
 
 #: ../data/interfaces/parole.ui.h:35
 msgid "Select Text Subtitles…"
-msgstr "Wskaż napisy tekstowe..."
+msgstr "Wskaż listę dialogową..."
 
 #: ../data/interfaces/parole.ui.h:36
 msgid "_Tools"
@@ -325,7 +326,7 @@ msgstr "<b>Wygaszacz ekranu</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:5
 msgid "Show visual effects when an audio file is played"
-msgstr ""
+msgstr "Wyświetlanie wizualizacji podczas odtwarzania plików dźwiękowych"
 
 #: ../data/interfaces/parole-settings.ui.h:6
 msgid "Visualization type:"
@@ -373,7 +374,7 @@ msgstr "<b>Balans kolorów</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:17
 msgid "Display"
-msgstr ""
+msgstr "Wyświetlanie"
 
 #: ../data/interfaces/parole-settings.ui.h:18
 msgid "Always replace playlist with opened files"
@@ -417,7 +418,7 @@ msgstr "Zapisz listę odtwarzania jako..."
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "File Type"
-msgstr ""
+msgstr "Typ pliku"
 
 #: ../data/interfaces/save-playlist.ui.h:3
 msgid "Extension"
@@ -499,12 +500,12 @@ msgstr "OK"
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
-msgstr ""
+msgstr "Do odtworzenia tego pliku, wymagany jest pakiet <b>%s</b>.\nMożna zainstalować go automatycznie."
 
 #: ../src/gst/parole-gst.c:1513
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
-msgstr "Parole potrzebuje <b>%s</b>, aby móc odtworzyć ten plik."
+msgstr "Do odtworzenia tego pliku, wymagany jest pakiet <b>%s</b>."
 
 #: ../src/gst/parole-gst.c:1923
 msgid "The stream is taking too much time to load"
@@ -512,7 +513,7 @@ msgstr "Zbyt długi czas wczytywania strumienia"
 
 #: ../src/gst/parole-gst.c:1924
 msgid "Do you want to continue loading or stop?"
-msgstr ""
+msgstr "Kontynuować wczytywanie czy zatrzymać?"
 
 #: ../src/gst/parole-gst.c:1925
 msgid "Stop"
@@ -623,7 +624,7 @@ msgstr "Dodaje pliki do listy odtwarzania"
 
 #: ../src/main.c:290
 msgid "Print version information and exit"
-msgstr ""
+msgstr "Wypisuje informacje o wersji i kończy"
 
 #: ../src/main.c:292
 msgid "Media to play"
@@ -631,12 +632,12 @@ msgstr "Określa nagranie do odtworzenia"
 
 #: ../src/main.c:315
 msgid "[FILES...] - Play movies and songs"
-msgstr ""
+msgstr "[PLIK...] - Odtwarza nagrania dźwięku i wideo"
 
 #: ../src/main.c:327
 #, c-format
 msgid "Type %s --help to list all available command line options\n"
-msgstr ""
+msgstr "Proszę wprowadzić „%s --help”, aby wypisać pełną listę opcji wiersza poleceń.\n"
 
 #: ../src/main.c:342
 #, c-format
@@ -654,22 +655,22 @@ msgstr "Wszystkie pliki"
 #: ../src/parole-medialist.c:217
 #, c-format
 msgid "Playlist (%i item)"
-msgstr ""
+msgstr "Lista odtwarzania (%i element)"
 
 #: ../src/parole-medialist.c:221
 #, c-format
 msgid "Playlist (%i chapter)"
-msgstr ""
+msgstr "Lista odtwarzania (%i rozdział)"
 
 #: ../src/parole-medialist.c:228 ../src/parole-medialist.c:1513
 #, c-format
 msgid "Playlist (%i items)"
-msgstr ""
+msgstr "Lista odtwarzania (%i elementów)"
 
 #: ../src/parole-medialist.c:232 ../src/parole-medialist.c:1514
 #, c-format
 msgid "Playlist (%i chapters)"
-msgstr ""
+msgstr "Lista odtwarzania (%i rozdziałów)"
 
 #: ../src/parole-medialist.c:384 ../src/parole-player.c:705
 #, c-format
@@ -723,12 +724,12 @@ msgstr "Ukrywa listę odtwarzania"
 
 #: ../src/parole-player.c:528 ../src/parole-player.c:529
 msgid "Show playlist"
-msgstr "Wyświetla listę odtwarzania"
+msgstr "Lista odtwarzania"
 
 #. Build the FileChooser dialog for subtitle selection.
 #: ../src/parole-player.c:984
 msgid "Select Subtitle File"
-msgstr "Wybór Pliku z Napisami"
+msgstr "Wybór pliku"
 
 #: ../src/parole-player.c:989 ../src/parole-player.c:1193
 #: ../src/plugins/tray/tray-provider.c:310
@@ -778,7 +779,7 @@ msgstr "Wstrzymuje odtwarzanie"
 
 #: ../src/parole-player.c:1764
 msgid "GStreamer backend error"
-msgstr "Błąd wewnętrzny Gstreamer"
+msgstr "Błąd modułu obsługi Gstreamer"
 
 #: ../src/parole-player.c:1795
 msgid "Unknown Song"
