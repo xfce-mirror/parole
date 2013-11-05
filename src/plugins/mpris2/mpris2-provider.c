@@ -596,17 +596,20 @@ static void parole_mpris_update_any (Mpris2Provider *provider)
         provider->volume = curr_vol;
         g_variant_builder_add (&b, "{sv}", "Volume", mpris_Player_get_Volume (NULL, provider));
     }
-    if(g_strcmp0(provider->saved_title, stream_uri))
+    if (parole_provider_player_get_state (player) == PAROLE_STATE_PLAYING)
     {
-        change_detected = TRUE;
-        if(provider->saved_title)
-        	g_free(provider->saved_title);
-        if (stream_uri && (stream_uri)[0])
-            provider->saved_title = stream_uri;
-        else
-            provider->saved_title = NULL;
+        if(g_strcmp0(provider->saved_title, stream_uri))
+        {
+            change_detected = TRUE;
+            if(provider->saved_title)
+            	g_free(provider->saved_title);
+            if (stream_uri && (stream_uri)[0])
+                provider->saved_title = stream_uri;
+            else
+                provider->saved_title = NULL;
 
-        g_variant_builder_add (&b, "{sv}", "Metadata", mpris_Player_get_Metadata (NULL, provider));
+            g_variant_builder_add (&b, "{sv}", "Metadata", mpris_Player_get_Metadata (NULL, provider));
+        }
     }
     if(change_detected)
     {
