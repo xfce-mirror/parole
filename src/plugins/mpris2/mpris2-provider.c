@@ -39,6 +39,7 @@ struct _Mpris2Provider
 {
     GObject                 parent;
     ParoleProviderPlayer   *player;
+    ParoleConf             *conf;
 
     guint                   owner_id;
     GDBusNodeInfo          *introspection_data;
@@ -127,16 +128,18 @@ static const gchar mpris2xml[] =
  */
 static void mpris_Root_Raise (GDBusMethodInvocation *invocation, GVariant* parameters, Mpris2Provider *provider)
 {
-    ParoleProviderPlayer *player = provider->player;
-
-    // TODO:
+    GtkWidget *window = parole_provider_player_get_main_window(provider->player);
+    if(window)
+       gtk_widget_show(window);
 
     g_dbus_method_invocation_return_value (invocation, NULL);
 }
 
 static void mpris_Root_Quit (GDBusMethodInvocation *invocation, GVariant* parameters, Mpris2Provider *provider)
 {
-    // TODO:
+   GtkWidget *window = parole_provider_player_get_main_window(provider->player);
+   if(window)
+      gtk_widget_hide(window);
 
     g_dbus_method_invocation_return_value (invocation, NULL);
 }
@@ -158,14 +161,13 @@ static GVariant* mpris_Root_get_HasTrackList (GError **error, Mpris2Provider *pr
 
 static GVariant* mpris_Root_get_Identity (GError **error, Mpris2Provider *provider)
 {
-    // TODO: Set true name.
+    // This is OK
     return g_variant_new_string("Parole");
 }
 
 static GVariant* mpris_Root_get_DesktopEntry (GError **error, Mpris2Provider *provider)
 {
-    GVariant* ret_val = g_variant_new_string("parole");
-    return ret_val;
+    return g_variant_new_string("parole");
 }
 
 static GVariant* mpris_Root_get_SupportedUriSchemes (GError **error, Mpris2Provider *provider)
@@ -192,10 +194,27 @@ static GVariant* mpris_Root_get_SupportedMimeTypes (GError **error, Mpris2Provid
  */
 static void mpris_Player_Play (GDBusMethodInvocation *invocation, GVariant* parameters, Mpris2Provider *provider)
 {
-    // FIXME: How to play any song
-    parole_provider_player_play_next (provider->player);
+   ParoleProviderPlayer *player = provider->player;
+   ParoleState state = parole_provider_player_get_state (player);
 
-    g_dbus_method_invocation_return_value (invocation, NULL);
+   switch(state)
+   {
+      case PAROLE_STATE_PAUSED:
+      parole_provider_player_resume (provider->player);
+      break;
+
+      case PAROLE_STATE_STOPPED:
+      case PAROLE_STATE_PLAYBACK_FINISHED:
+      parole_provider_player_play_next (provider->player);
+      break;
+
+      case PAROLE_STATE_ABOUT_TO_FINISH:
+      case PAROLE_STATE_PLAYING:
+      g_debug("Unexpected: play command while playing");
+      break;
+   }
+
+   g_dbus_method_invocation_return_value (invocation, NULL);
 }
 
 static void mpris_Player_Next (GDBusMethodInvocation *invocation, GVariant* parameters, Mpris2Provider *provider)
@@ -221,16 +240,25 @@ static void mpris_Player_Pause (GDBusMethodInvocation *invocation, GVariant* par
 
 static void mpris_Player_PlayPause (GDBusMethodInvocation *invocation, GVariant* parameters, Mpris2Provider *provider)
 {
-    ParoleState state = PAROLE_STATE_STOPPED;
-	ParoleProviderPlayer *player = provider->player;
+    ParoleProviderPlayer *player = provider->player;
+    ParoleState state = parole_provider_player_get_state (player);
 
-    state = parole_provider_player_get_state (player);
+    switch(state)
+    {
+       case PAROLE_STATE_PAUSED:
+       parole_provider_player_resume (player);
+       break;
 
-    // FIXME: Need handle the rest of the states?
-    if (state == PAROLE_STATE_PAUSED)
-        parole_provider_player_resume (player);
-    else if (state == PAROLE_STATE_PLAYING)
-        parole_provider_player_pause (player);
+       case PAROLE_STATE_STOPPED:
+       case PAROLE_STATE_PLAYBACK_FINISHED:
+       parole_provider_player_play_next (player);
+       break;
+
+       case PAROLE_STATE_ABOUT_TO_FINISH:
+       case PAROLE_STATE_PLAYING:
+       parole_provider_player_play_next(player);
+       break;
+    }
 
     g_dbus_method_invocation_return_value (invocation, NULL);
 }
@@ -279,7 +307,9 @@ static GVariant* mpris_Player_get_PlaybackStatus (GError **error, Mpris2Provider
 {
     ParoleProviderPlayer *player = provider->player;
 
-    switch (parole_provider_player_get_state(player)) {
+    switch (parole_provider_player_get_state(player))
+    {
+        case PAROLE_STATE_ABOUT_TO_FINISH:
         case PAROLE_STATE_PLAYING:
             return g_variant_new_string("Playing");
         case PAROLE_STATE_PAUSED:
@@ -291,12 +321,8 @@ static GVariant* mpris_Player_get_PlaybackStatus (GError **error, Mpris2Provider
 
 static GVariant* mpris_Player_get_LoopStatus (GError **error, Mpris2Provider *provider)
 {
-	gboolean repeat = FALSE;
-    /* TODO: How to get conf properties?
-    g_object_get (G_OBJECT (player->priv->conf),
-                  "shuffle", &shuffle,
-                  "repeat", &repeat,
-                  NULL);*/
+    gboolean repeat = FALSE;
+    g_object_get (G_OBJECT (provider->conf), "repeat", &repeat, NULL);
 
     return g_variant_new_string(repeat ? "Playlist" : "None");
 }
@@ -309,10 +335,7 @@ static void mpris_Player_put_LoopStatus (GVariant *value, GError **error, Mpris2
 
     gboolean repeat = g_strcmp0("Playlist", new_loop) ? FALSE : TRUE;
 
-    /* TODO: How to set conf properties?
-    g_object_set (G_OBJECT (player->priv->conf),
-                  "repeat", repeat,
-                  NULL);*/
+    g_object_set (G_OBJECT (provider->conf), "repeat", repeat, NULL);
 }
 
 static GVariant* mpris_Player_get_Rate (GError **error, Mpris2Provider *provider)
@@ -327,14 +350,10 @@ static void mpris_Player_put_Rate (GVariant *value, GError **error, Mpris2Provid
 
 static GVariant* mpris_Player_get_Shuffle (GError **error, Mpris2Provider *provider)
 {
-    ParoleProviderPlayer *player = provider->player;
     gboolean shuffle = FALSE;
 
-    /* TODO: How to get conf properties?
-    g_object_get (G_OBJECT (player->priv->conf),
-                  "shuffle", &shuffle,
-                  "repeat", &repeat,
-                  NULL);*/
+    g_object_get (G_OBJECT (provider->conf), "shuffle", &shuffle, NULL);
+
     return g_variant_new_boolean(shuffle);
 }
 
@@ -342,15 +361,12 @@ static void mpris_Player_put_Shuffle (GVariant *value, GError **error, Mpris2Pro
 {
 	gboolean shuffle = g_variant_get_boolean(value);
 
-	ParoleProviderPlayer *player = provider->player;
-    /* TODO: How to set conf properties?
-    /*g_object_set (G_OBJECT (player->priv->conf),
-                  "shuffle", shuffle,
-                  NULL);*/
+   g_object_set (G_OBJECT (provider->conf), "shuffle", shuffle, NULL);
 }
 
 static GVariant * handle_get_trackid(const ParoleStream *stream)
 {
+    // TODO: Returning a path requires TrackList interface implementation
     gchar *o = alloca(260);
     if(NULL == stream)
         return g_variant_new_object_path("/");
@@ -406,6 +422,8 @@ static void handle_get_metadata (const ParoleStream *stream, GVariantBuilder *b)
         g_variant_new_int32(0));
     g_variant_builder_add (b, "{sv}", "audio-samplerate",
         g_variant_new_int32(0));
+
+    // TODO: add mpris:artUrl
 
     g_free(title);
     g_free(album);
@@ -492,12 +510,14 @@ static GVariant* mpris_Player_get_CanGoPrevious (GError **error, Mpris2Provider 
 
 static GVariant* mpris_Player_get_CanPlay (GError **error, Mpris2Provider *provider)
 {
+    // TODO: this can cause a UI-lock
     ParoleProviderPlayer *player = provider->player;
     return g_variant_new_boolean(parole_provider_player_get_state (player) == PAROLE_STATE_PAUSED);
 }
 
 static GVariant* mpris_Player_get_CanPause (GError **error, Mpris2Provider *provider)
 {
+    // TODO: this can cause a UI-lock
     ParoleProviderPlayer *player = provider->player;
     return g_variant_new_boolean(parole_provider_player_get_state (player) == PAROLE_STATE_PLAYING);
 }
@@ -702,10 +722,10 @@ handle_set_property (GDBusConnection       *connection,
                      const gchar           *property_name,
                      GVariant              *value,
                      GError               **error,
-                     ParoleProviderPlugin  *plugin)
+                     void                 *user_data)
 {
-    Mpris2Provider *provider;
-    provider = MPRIS2_PROVIDER (plugin);
+    ParoleProviderPlugin *plugin = user_data;
+    Mpris2Provider *provider = MPRIS2_PROVIDER (plugin);
 
     /* org.mpris.MediaPlayer2 */
     BEGIN_INTERFACE(0)
@@ -817,6 +837,8 @@ mpris2_provider_set_player (ParoleProviderPlugin *plugin, ParoleProviderPlayer *
 
     g_signal_connect (player, "state_changed",
                       G_CALLBACK (state_changed_cb), plugin);
+
+    provider->conf = parole_conf_new();
 }
 
 static void

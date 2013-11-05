@@ -22,6 +22,7 @@
 #define MPRIS2_PROVIDER_H_
 
 #include <src/misc/parole.h>
+#include <src/parole-conf.h>
 
 G_BEGIN_DECLS
 
