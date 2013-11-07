@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-10-20 18:30+0200\n"
-"PO-Revision-Date: 2013-11-05 10:30+0000\n"
+"PO-Revision-Date: 2013-11-07 08:50+0000\n"
 "Last-Translator: Piotr Sokół <psokol@jabster.pl>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/xfce/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -80,15 +80,15 @@ msgstr "Menu płyty _DVD"
 
 #: ../data/interfaces/parole.ui.h:14
 msgid "_Title Menu"
-msgstr ""
+msgstr "Menu _tytułów"
 
 #: ../data/interfaces/parole.ui.h:15
 msgid "_Audio Menu"
-msgstr ""
+msgstr "Menu ścieżek _dźwiękowych"
 
 #: ../data/interfaces/parole.ui.h:16
 msgid "A_ngle Menu"
-msgstr ""
+msgstr "Menu kątów _kamery"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "_Chapters"
@@ -96,7 +96,7 @@ msgstr "_Rozdziały"
 
 #: ../data/interfaces/parole.ui.h:18
 msgid "_Chapter Menu"
-msgstr ""
+msgstr "Menu _rozdziałów"
 
 #: ../data/interfaces/parole.ui.h:19
 msgid "_Audio"
@@ -104,7 +104,7 @@ msgstr "_Dźwięk"
 
 #: ../data/interfaces/parole.ui.h:20
 msgid "_Audio Track"
-msgstr ""
+msgstr "Ścieżka _dźwiękowa"
 
 #: ../data/interfaces/parole.ui.h:21 ../src/parole-player.c:798
 msgid "Empty"
@@ -233,7 +233,7 @@ msgstr "Lista odtwarzania płyty"
 
 #: ../data/interfaces/playlist.ui.h:3
 msgid "Add to playlist…"
-msgstr "Dodaj do listy odtwarzania..."
+msgstr "Dodaje pozycje do listy odtwarzania"
 
 #: ../data/interfaces/playlist.ui.h:4
 msgid "Add"
@@ -241,7 +241,7 @@ msgstr "Dodaj"
 
 #: ../data/interfaces/playlist.ui.h:5
 msgid "Remove selected media"
-msgstr "Usuń wybrane media"
+msgstr "Usuwa wybraną pozycje"
 
 #: ../data/interfaces/playlist.ui.h:6
 msgid "Remove"
@@ -249,7 +249,7 @@ msgstr "Usuwa pozycje z listy odtwarzania"
 
 #: ../data/interfaces/playlist.ui.h:7
 msgid "Clear playlist"
-msgstr "Wyczyść listę odtwarzania"
+msgstr "Czyści listę odtwarzania"
 
 #: ../data/interfaces/playlist.ui.h:8
 msgid "Clear"
@@ -257,19 +257,19 @@ msgstr "Wyczyść"
 
 #: ../data/interfaces/playlist.ui.h:9 ../src/parole-player.c:3028
 msgid "Repeat"
-msgstr "Powtarzanie"
+msgstr "Przełącza powtarzanie"
 
 #: ../data/interfaces/playlist.ui.h:10 ../src/parole-player.c:3034
 msgid "Shuffle"
-msgstr "Losowa kolejność"
+msgstr "Przełącza losowanie kolejności"
 
 #: ../data/interfaces/playlist.ui.h:11
 msgid "Move Up"
-msgstr ""
+msgstr "Przemieszcza element listy w górę"
 
 #: ../data/interfaces/playlist.ui.h:12
 msgid "Move Down"
-msgstr ""
+msgstr "Przemieszcza element listy w dół"
 
 #: ../data/interfaces/playlist.ui.h:13
 msgid "Replace playlist when opening files"
@@ -282,11 +282,11 @@ msgstr "Odtwarzanie otwieranych plików"
 #: ../data/interfaces/playlist.ui.h:15
 #: ../data/interfaces/parole-settings.ui.h:21
 msgid "Remember playlist"
-msgstr "Pamiętanie listy odtwarzania"
+msgstr "Przechowywanie listy odtwarzania"
 
 #: ../data/interfaces/plugins.ui.h:1
 msgid "Parole Plugins"
-msgstr "Wtyczki programu Parole"
+msgstr "Wtyczki Parole"
 
 #: ../data/interfaces/plugins.ui.h:2
 msgid "Extend your media player"
@@ -414,7 +414,7 @@ msgstr "Napisy"
 
 #: ../data/interfaces/save-playlist.ui.h:1
 msgid "Save Playlist as…"
-msgstr "Zapisz listę odtwarzania jako..."
+msgstr "Wybór pliku"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "File Type"
@@ -455,12 +455,12 @@ msgstr "Rozpoczyna/wstrzymuje odtwarzanie"
 #: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3000
 #: ../src/parole-player.c:3220 ../src/plugins/notify/notify-provider.c:199
 msgid "Previous Track"
-msgstr "Poprzedni utwór"
+msgstr "Przechodzi do poprzedniego nagrania"
 
 #: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3008
 #: ../src/parole-player.c:3230 ../src/plugins/notify/notify-provider.c:209
 msgid "Next Track"
-msgstr "Następne nagranie"
+msgstr "Przechodzi do następnego nagrania"
 
 #: ../src/common/parole-common.c:70
 msgid "Message"
@@ -525,17 +525,17 @@ msgstr "Wznów"
 
 #: ../src/gst/parole-gst.c:2096
 msgid "GStreamer Error"
-msgstr "Błąd GStreamera"
+msgstr "Błąd GStreamer"
 
 #: ../src/gst/parole-gst.c:2097
 msgid "Parole Media Player cannot start."
-msgstr "Odtwarzacz nagrań Parole nie może się uruchomić."
+msgstr "Nie można uruchomić odtwarzacza nagrań Parole."
 
 #: ../src/gst/parole-gst.c:2125 ../src/gst/parole-gst.c:2143
 #: ../src/gst/parole-gst.c:2166
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
-msgstr "Nie udało się załadować wtyczki \"%s\", sprawdź swoją instalację GStreamera."
+msgstr "Nie można wczytać wtyczki „%s”. Proszę sprawdzić poprawność instalacji programu GStreamer."
 
 #: ../src/gst/parole-gst.c:2770 ../src/gst/parole-gst.c:2776
 #, c-format
@@ -560,7 +560,7 @@ msgid ""
 "\n"
 "Please report bugs to <http://bugzilla.xfce.org/>.\n"
 "\n"
-msgstr ""
+msgstr "\nOdtwarzacz nagrań Parole %s\n\nCzęść projektu Xfce Goodies\nhttp://goodies.xfce.org\n\nWydany na licencji GNU GPL.\n\nProszę zgłaszać błędy na stronie <http://bugzilla.xfce.org/>.\n\n"
 
 #: ../src/main.c:234
 msgid "Unknown argument "
@@ -568,7 +568,7 @@ msgstr "Nieznany parametr"
 
 #: ../src/main.c:276
 msgid "Open a new instance"
-msgstr "Otwiera nowe wystąpienie programu"
+msgstr "Uruchamia nowe wystąpienie programu"
 
 #: ../src/main.c:277
 msgid "Do not load plugins"
@@ -580,11 +580,11 @@ msgstr "Określa położenie napędu płyt Audio-CD/VCD/DVD"
 
 #: ../src/main.c:279
 msgid "Enable/Disable XV support (true or false, default=true)"
-msgstr ""
+msgstr "Przełącza obsługę XV (true lub false, domyślnie=true)"
 
 #: ../src/main.c:280
 msgid "Start in embedded mode"
-msgstr ""
+msgstr "Uruchamia w trybie zintegrowanym"
 
 #: ../src/main.c:281
 msgid "Start in fullscreen mode"
@@ -616,7 +616,7 @@ msgstr "Wycisza dźwięk"
 
 #: ../src/main.c:288
 msgid "Unmute (restore) volume"
-msgstr ""
+msgstr "Wyłącza wyciszenie głośności"
 
 #: ../src/main.c:289
 msgid "Add files to playlist"
@@ -724,7 +724,7 @@ msgstr "Ukrywa listę odtwarzania"
 
 #: ../src/parole-player.c:528 ../src/parole-player.c:529
 msgid "Show playlist"
-msgstr "Lista odtwarzania"
+msgstr "Wyświetla listę odtwarzania"
 
 #. Build the FileChooser dialog for subtitle selection.
 #: ../src/parole-player.c:984
@@ -809,21 +809,21 @@ msgstr "Buforowanie"
 #: ../src/parole-player.c:1967 ../src/parole-player.c:3016
 #: ../src/parole-player.c:3251
 msgid "Fullscreen"
-msgstr "Pełny ekran"
+msgstr "Wyświetla obraz na pełnym ekranie"
 
 #: ../src/parole-player.c:1982
 msgid "Leave _Fullscreen"
-msgstr "Wyłącz tryb _pełnego ekranu"
+msgstr "Wyłącz tryb p_ełnego ekranu"
 
 #: ../src/parole-player.c:1983
 msgid "Leave Fullscreen"
-msgstr "Wyłącz tryb pełnego ekranu"
+msgstr "Wyłącza tryb pełnego ekranu"
 
 #. * Un/Hide menubar
 #. 
 #: ../src/parole-player.c:2079
 msgid "Show menubar"
-msgstr "Pokaż pasek menu"
+msgstr "Wyświetlanie paska menu"
 
 #: ../src/parole-player.c:2294
 msgid "Mute"
@@ -839,22 +839,22 @@ msgstr "Nie można otworzyć domyślnej przeglądarki internetowej"
 
 #: ../src/parole-player.c:2664
 msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
-msgstr ""
+msgstr "Proszę zgłaszać błędy na stronie http://docs.xfce.org/apps/parole/bugs."
 
 #. Previous Track
 #: ../src/parole-player.c:3000
 msgid "P_revious Track"
-msgstr ""
+msgstr "_Poprzednie nagranie"
 
 #. Next Track
 #: ../src/parole-player.c:3008
 msgid "_Next Track"
-msgstr ""
+msgstr "_Następne nagranie"
 
 #. Toggle Playlist
 #: ../src/parole-player.c:3023
 msgid "Show _Playlist"
-msgstr "W_yświetla listę odtwarzania"
+msgstr "Wyświetlanie _listy odtwarzania"
 
 #: ../src/parole-player.c:3023 ../src/parole-player.c:3356
 msgid "Show Playlist"
@@ -1041,11 +1041,11 @@ msgstr "Wietnamskie"
 #. If plugin loading fails...
 #: ../src/parole-plugins-manager.c:276
 msgid "Plugin failed to load"
-msgstr "Błąd wczytania wtyczki"
+msgstr "Nie udało się wczytać wtyczki"
 
 #: ../src/parole-plugins-manager.c:276
 msgid "Please check your installation"
-msgstr "Proszę sprawdzić swoją instalację"
+msgstr "Proszę sprawdzić poprawność instalacji"
 
 #: ../src/parole-plugins-manager.c:408
 msgid "No installed plugins found on this system"
@@ -1053,7 +1053,7 @@ msgstr "Brak zainstalowanych wtyczek"
 
 #: ../src/parole-plugins-manager.c:409
 msgid "Please check your installation."
-msgstr "Proszę sprawdzić swoją instalację."
+msgstr "Proszę sprawdzić poprawność instalacji."
 
 #: ../src/misc/parole-filters.c:65
 msgid "Audio"
@@ -1091,7 +1091,7 @@ msgstr "Powiadomienia"
 
 #: ../src/plugins/notify/notify.desktop.in.h:2
 msgid "Show notifications for currently playing tracks"
-msgstr "Wyświetla powiadomienia dla odtwarzanych ścieżek"
+msgstr "Wyświetla powiadomienia o odtwarzanych ścieżkach"
 
 #: ../src/plugins/tray/tray-provider.c:133
 msgid "_Open"
@@ -1119,7 +1119,7 @@ msgstr "Zminimalizuj"
 
 #: ../src/plugins/tray/tray-provider.c:316
 msgid "Quit"
-msgstr "Wyjście"
+msgstr "Zakończ"
 
 #: ../src/plugins/tray/tray-provider.c:325
 msgid "Remember my choice"
