@@ -258,7 +258,7 @@ static void mpris_Player_PlayPause (GDBusMethodInvocation *invocation, GVariant*
 
        case PAROLE_STATE_ABOUT_TO_FINISH:
        case PAROLE_STATE_PLAYING:
-       parole_provider_player_play_next(player);
+       parole_provider_player_pause(player);
        break;
     }
 
