@@ -42,9 +42,11 @@ struct _Mpris2Provider
     ParoleConf             *conf;
 
     guint                   owner_id;
+    guint                   registration_id0;
+    guint                   registration_id1;
     GDBusNodeInfo          *introspection_data;
     GDBusConnection        *dbus_connection;
-    GQuark                  interface_quarks[4];
+    GQuark                  interface_quarks[2];
 
     gboolean                saved_playbackstatus;
     gboolean                saved_shuffle;
@@ -760,25 +762,33 @@ on_bus_acquired (GDBusConnection *connection,
 {
     Mpris2Provider *provider;
     guint registration_id;
-    gint i;
 
     ParoleProviderPlugin *plugin = user_data;
 
     provider = MPRIS2_PROVIDER (plugin);
 
-    for(i = 0; i < 2; i++)
-    {
-        provider->interface_quarks[i] = g_quark_from_string(provider->introspection_data->interfaces[i]->name);
-        registration_id = g_dbus_connection_register_object (connection,
-                                                             MPRIS_PATH,
-                                                             provider->introspection_data->interfaces[i],
-                                                             &interface_vtable,
-                                                             plugin,  /* user_data */
-                                                             NULL,  /* user_data_free_func */
-                                                             NULL); /* GError** */
-        g_assert (registration_id > 0);
-	}
-	
+    provider->interface_quarks[0] = g_quark_from_string(provider->introspection_data->interfaces[0]->name);
+    registration_id = g_dbus_connection_register_object (connection,
+                                                         MPRIS_PATH,
+                                                         provider->introspection_data->interfaces[0],
+                                                         &interface_vtable,
+                                                         plugin,  /* user_data */
+                                                         NULL,  /* user_data_free_func */
+                                                         NULL); /* GError** */
+    g_assert (registration_id > 0);
+    provider->registration_id0 = registration_id;
+
+    provider->interface_quarks[1] = g_quark_from_string(provider->introspection_data->interfaces[1]->name);
+    registration_id = g_dbus_connection_register_object (connection,
+                                                         MPRIS_PATH,
+                                                         provider->introspection_data->interfaces[1],
+                                                         &interface_vtable,
+                                                         plugin,  /* user_data */
+                                                         NULL,  /* user_data_free_func */
+                                                         NULL); /* GError** */
+    g_assert (registration_id > 0);
+    provider->registration_id1 = registration_id;
+
 	provider->dbus_connection = connection;
 	g_object_ref(G_OBJECT(provider->dbus_connection));
 }
@@ -865,5 +875,32 @@ static void mpris2_provider_init (Mpris2Provider *provider)
 
 static void mpris2_provider_finalize (GObject *object)
 {
+    Mpris2Provider *provider;
+    provider = MPRIS2_PROVIDER (object);
+
+    if (NULL != provider->dbus_connection) {
+        g_dbus_connection_unregister_object (provider->dbus_connection,
+                                             provider->registration_id0);
+        g_dbus_connection_unregister_object (provider->dbus_connection,
+                                             provider->registration_id1);
+    }
+
+    if (NULL != provider->dbus_connection)
+        g_bus_unown_name (provider->owner_id);
+
+    if (NULL != provider->introspection_data) {
+        g_dbus_node_info_unref (provider->introspection_data);
+        provider->introspection_data = NULL;
+    }
+
+    if (NULL != provider->dbus_connection) {
+        g_object_unref (G_OBJECT (provider->dbus_connection));
+        provider->dbus_connection = NULL;
+    }
+
+    g_object_unref (provider->conf);
+
+    g_free (provider->saved_title);
+
     G_OBJECT_CLASS (mpris2_provider_parent_class)->finalize (object);
 }
