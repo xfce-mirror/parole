@@ -571,7 +571,7 @@ static void parole_mpris_update_any (Mpris2Provider *provider)
 
     g_variant_builder_init(&b, G_VARIANT_TYPE("a{sv}"));
 
-    //shuffle = pragha_preferences_get_shuffle (preferences);
+    g_object_get (G_OBJECT (provider->conf), "shuffle", &shuffle, NULL);
     if(provider->saved_shuffle != shuffle)
     {
         change_detected = TRUE;
@@ -584,7 +584,7 @@ static void parole_mpris_update_any (Mpris2Provider *provider)
         provider->state = parole_provider_player_get_state (player);
         g_variant_builder_add (&b, "{sv}", "PlaybackStatus", mpris_Player_get_PlaybackStatus (NULL, provider));
     }
-    //repeat = pragha_preferences_get_repeat (preferences);
+    g_object_get (G_OBJECT (provider->conf), "repeat", &repeat, NULL);
     if(provider->saved_playbackstatus != repeat)
     {
         change_detected = TRUE;
