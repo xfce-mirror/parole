@@ -578,7 +578,7 @@ parole_player_reset (ParolePlayer *player)
 
     if ( player->priv->row )
     {
-        parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, NULL);
+        parole_media_list_set_row_playback_state (player->priv->list, player->priv->row, PAROLE_MEDIA_STATE_NONE);
         gtk_tree_row_reference_free (player->priv->row);
         player->priv->row = NULL;
     }
@@ -602,7 +602,7 @@ parole_player_dvd_reset (ParolePlayer *player)
 {
     if ( player->priv->row )
     {
-        parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, NULL);
+        parole_media_list_set_row_playback_state (player->priv->list, player->priv->row, PAROLE_MEDIA_STATE_NONE);
         gtk_tree_row_reference_free (player->priv->row);
         player->priv->row = NULL;
     }
@@ -1139,7 +1139,7 @@ parole_player_disc_selected_cb (ParoleDisc *disc, const gchar *uri, const gchar 
         player->priv->wait_for_gst_disc_info = TRUE;
         if ( player->priv->row )
         {
-            parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, NULL);
+            parole_media_list_set_row_playback_state (player->priv->list, player->priv->row, PAROLE_MEDIA_STATE_NONE);
             gtk_tree_row_reference_free (player->priv->row);
             player->priv->row = NULL;
         }
@@ -1357,15 +1357,11 @@ out:
 static void
 parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
 {
-    GdkPixbuf *pix = NULL;
-    
     gint64 duration;
     gboolean seekable;
     gboolean live;
     
-    pix = parole_icon_load ("media-playback-start", 16);
-    
-    parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, pix);
+    parole_media_list_set_row_playback_state (player->priv->list, player->priv->row, PAROLE_MEDIA_STATE_PLAYING);
     
     g_object_get (G_OBJECT (stream),
                   "seekable", &seekable,
@@ -1416,9 +1412,6 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
     player->priv->internal_range_change = FALSE;
     
     gtk_widget_set_tooltip_text (GTK_WIDGET (player->priv->range), seekable ? NULL : _("Media stream is not seekable"));
-
-    if ( pix )
-        g_object_unref (pix);
     
     parole_player_save_uri (player, stream);
     parole_media_list_select_row (player->priv->list, player->priv->row);
@@ -1431,12 +1424,9 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
 static void
 parole_player_paused (ParolePlayer *player)
 {
-    GdkPixbuf *pix = NULL;
-    
     TRACE ("Player paused");
-    
-    pix = parole_icon_load ("media-playback-pause", 16);
-    parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, pix);
+
+    parole_media_list_set_row_playback_state (player->priv->list, player->priv->row, PAROLE_MEDIA_STATE_PAUSED);
     
     gtk_action_set_sensitive (player->priv->media_playpause_action, TRUE);
     
@@ -1444,10 +1434,6 @@ parole_player_paused (ParolePlayer *player)
     {
         parole_player_set_playpause_button_from_stock (player, "gtk-media-play");
     }
-    
-    if ( pix )
-        g_object_unref (pix);
-    
 }
 
 static void
@@ -1484,7 +1470,7 @@ parole_player_stopped (ParolePlayer *player)
 
     parole_player_set_playpause_button_from_stock (player, "gtk-media-play");
     
-    parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, NULL);
+    parole_media_list_set_row_playback_state (player->priv->list, player->priv->row, PAROLE_MEDIA_STATE_NONE);
     
     if ( player->priv->exit )
     {
@@ -1525,7 +1511,7 @@ parole_player_play_next (ParolePlayer *player, gboolean allow_shuffle)
     
     if ( player->priv->row )
     {
-        parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, NULL);
+        parole_media_list_set_row_playback_state (player->priv->list, player->priv->row, PAROLE_MEDIA_STATE_NONE);
         
         if ( shuffle && allow_shuffle )
             row = parole_media_list_get_row_random (player->priv->list);
@@ -1561,7 +1547,7 @@ parole_player_play_prev (ParolePlayer *player)
     
     if ( player->priv->row )
     {
-        parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, NULL);
+        parole_media_list_set_row_playback_state (player->priv->list, player->priv->row, PAROLE_MEDIA_STATE_NONE);
         
         row = parole_media_list_get_prev_row (player->priv->list, player->priv->row);
         
@@ -1877,19 +1863,12 @@ parole_player_dvd_chapter_count_change_cb (ParoleGst *gst, gint chapter_count, P
 static void
 parole_player_dvd_chapter_change_cb (ParoleGst *gst, gint chapter_count, ParolePlayer *player)
 {
-    GdkPixbuf *pix = NULL;
-    
-    parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, NULL);
+    parole_media_list_set_row_playback_state (player->priv->list, player->priv->row, PAROLE_MEDIA_STATE_NONE);
     
     player->priv->row = parole_media_list_get_row_n (player->priv->list, chapter_count-1);
 
-    pix = parole_icon_load ("media-playback-start", 16);
-    
-    parole_media_list_set_row_pixbuf (player->priv->list, player->priv->row, pix);
+    parole_media_list_set_row_playback_state (player->priv->list, player->priv->row, PAROLE_MEDIA_STATE_PLAYING);
     parole_media_list_select_row (player->priv->list, player->priv->row);
-    
-    if ( pix )
-        g_object_unref (pix);
 }
 
 gboolean parole_player_delete_event_cb (GtkWidget *widget, GdkEvent *ev, ParolePlayer *player)

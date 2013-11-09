@@ -322,7 +322,7 @@ parole_media_list_add (ParoleMediaList *list, ParoleFile *file, gboolean disc, g
                         NAME_COL, parole_file_get_display_name (file),
                         DATA_COL, file,
                         LENGTH_COL, parole_taglibc_get_media_length (file),
-                        PIXBUF_COL, NULL,
+                        STATE_COL, PAROLE_MEDIA_STATE_NONE,
                         -1);
     
     if ( emit || select_row )
@@ -1485,14 +1485,54 @@ parole_media_list_class_init (ParoleMediaListClass *klass)
 }
 
 static void
+parole_media_list_playing_cell_data_func (GtkTreeViewColumn *column,
+				                          GtkCellRenderer *renderer,
+				                          GtkTreeModel *tree_model,
+				                          GtkTreeIter *iter,
+				                          GtkWidget *view)
+{
+	//RhythmDBEntry *entry;
+	const char *name = NULL;
+
+	//entry = rhythmdb_query_model_iter_to_entry (view->priv->model, iter);
+
+	//if (entry == NULL) {
+	//	return;
+	//}
+    gint state = 0;
+    gtk_tree_model_get (tree_model, iter, STATE_COL, &state, -1);
+
+	//if (entry == view->priv->playing_entry) {
+		switch (state) {
+		case PAROLE_MEDIA_STATE_NONE:
+			name = NULL;
+			break;
+		case PAROLE_MEDIA_STATE_PAUSED:
+			name = "media-playback-pause-symbolic";
+			break;
+		case PAROLE_MEDIA_STATE_PLAYING:
+			name = "media-playback-start-symbolic";
+			break;
+		default:
+			name = NULL;
+			break;
+	//	}
+	}
+
+	g_object_set (renderer, "icon-name", name, NULL);
+
+	//rhythmdb_entry_unref (entry);
+}
+
+static void
 parole_media_list_setup_view (ParoleMediaList *list)
 {
     GtkTreeSelection *sel, *disc_sel;
     GtkListStore *list_store, *disc_list_store;
     GtkCellRenderer *renderer, *disc_renderer;
 
-    list_store = gtk_list_store_new (COL_NUMBERS, GDK_TYPE_PIXBUF, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_OBJECT);
-    disc_list_store = gtk_list_store_new (COL_NUMBERS, GDK_TYPE_PIXBUF, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_OBJECT);
+    list_store = gtk_list_store_new (COL_NUMBERS, G_TYPE_INT, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_OBJECT);
+    disc_list_store = gtk_list_store_new (COL_NUMBERS, G_TYPE_INT, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_OBJECT);
 
     gtk_tree_view_set_model (GTK_TREE_VIEW (list->priv->view), GTK_TREE_MODEL(list_store));
     gtk_tree_view_set_model (GTK_TREE_VIEW (list->priv->disc_view), GTK_TREE_MODEL(disc_list_store));
@@ -1504,11 +1544,21 @@ parole_media_list_setup_view (ParoleMediaList *list)
 
     renderer = gtk_cell_renderer_pixbuf_new ();
     disc_renderer = gtk_cell_renderer_pixbuf_new ();
+    g_object_set (renderer, "stock-size", GTK_ICON_SIZE_MENU, NULL);
+    g_object_set (disc_renderer, "stock-size", GTK_ICON_SIZE_MENU, NULL);
     
     gtk_tree_view_column_pack_start(list->priv->col, renderer, FALSE);
     gtk_tree_view_column_pack_start(list->priv->disc_col, disc_renderer, FALSE);
-    gtk_tree_view_column_set_attributes(list->priv->col, renderer, "pixbuf", PIXBUF_COL, NULL);
-    gtk_tree_view_column_set_attributes(list->priv->disc_col, disc_renderer, "pixbuf", PIXBUF_COL, NULL);
+    gtk_tree_view_column_set_cell_data_func (list->priv->col, renderer,
+							 (GtkTreeCellDataFunc)
+							 parole_media_list_playing_cell_data_func,
+							 list->priv->view,
+							 NULL);
+    gtk_tree_view_column_set_cell_data_func (list->priv->disc_col, disc_renderer,
+							 (GtkTreeCellDataFunc)
+							 parole_media_list_playing_cell_data_func,
+							 list->priv->disc_view,
+							 NULL);
 
     /**
      * Name col
@@ -1917,7 +1967,7 @@ void parole_media_list_select_row (ParoleMediaList *list, GtkTreeRowReference *r
     }
 }
 
-void parole_media_list_set_row_pixbuf  (ParoleMediaList *list, GtkTreeRowReference *row, GdkPixbuf *pix)
+void parole_media_list_set_row_playback_state  (ParoleMediaList *list, GtkTreeRowReference *row, gint state)
 {
     GtkTreeIter iter;
     GtkTreePath *path;
@@ -1929,12 +1979,12 @@ void parole_media_list_set_row_pixbuf  (ParoleMediaList *list, GtkTreeRowReferen
         if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0)
         {
             if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path) )
-                gtk_list_store_set (list->priv->store, &iter, PIXBUF_COL, pix, -1);
+                gtk_list_store_set (list->priv->store, &iter, STATE_COL, state, -1);
         }
         else
         {
             if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->disc_store), &iter, path) )
-                gtk_list_store_set (list->priv->disc_store, &iter, PIXBUF_COL, pix, -1);
+                gtk_list_store_set (list->priv->disc_store, &iter, STATE_COL, state, -1);
         }
 
         gtk_tree_path_free (path);

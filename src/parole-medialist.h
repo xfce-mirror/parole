@@ -34,11 +34,18 @@ G_BEGIN_DECLS
 
 enum
 {
-    PIXBUF_COL,
+    STATE_COL,
     NAME_COL,
     LENGTH_COL,
     DATA_COL,
     COL_NUMBERS
+};
+
+enum
+{
+    PAROLE_MEDIA_STATE_NONE,
+    PAROLE_MEDIA_STATE_PAUSED,
+    PAROLE_MEDIA_STATE_PLAYING
 };
 
 enum
@@ -136,9 +143,9 @@ GtkTreeRowReference
 *parole_media_list_get_row_random                   (ParoleMediaList *list);
 
 void
-parole_media_list_set_row_pixbuf                    (ParoleMediaList *list,
+parole_media_list_set_row_playback_state            (ParoleMediaList *list,
                                                      GtkTreeRowReference *row,
-                                                     GdkPixbuf *pix);
+                                                     gint state);
                                      
 gchar              *parole_media_list_get_row_name  (ParoleMediaList *list,
                                                      GtkTreeRowReference *row);
