@@ -1491,37 +1491,27 @@ parole_media_list_playing_cell_data_func (GtkTreeViewColumn *column,
 				                          GtkTreeIter *iter,
 				                          GtkWidget *view)
 {
-	//RhythmDBEntry *entry;
 	const char *name = NULL;
 
-	//entry = rhythmdb_query_model_iter_to_entry (view->priv->model, iter);
-
-	//if (entry == NULL) {
-	//	return;
-	//}
     gint state = 0;
     gtk_tree_model_get (tree_model, iter, STATE_COL, &state, -1);
 
-	//if (entry == view->priv->playing_entry) {
-		switch (state) {
-		case PAROLE_MEDIA_STATE_NONE:
-			name = NULL;
-			break;
-		case PAROLE_MEDIA_STATE_PAUSED:
-			name = "media-playback-pause-symbolic";
-			break;
-		case PAROLE_MEDIA_STATE_PLAYING:
-			name = "media-playback-start-symbolic";
-			break;
-		default:
-			name = NULL;
-			break;
-	//	}
+	switch (state) {
+	case PAROLE_MEDIA_STATE_NONE:
+		name = NULL;
+		break;
+	case PAROLE_MEDIA_STATE_PAUSED:
+		name = "media-playback-pause-symbolic";
+		break;
+	case PAROLE_MEDIA_STATE_PLAYING:
+		name = "media-playback-start-symbolic";
+		break;
+	default:
+		name = NULL;
+		break;
 	}
 
 	g_object_set (renderer, "icon-name", name, NULL);
-
-	//rhythmdb_entry_unref (entry);
 }
 
 static void
