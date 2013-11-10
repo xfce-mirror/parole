@@ -144,7 +144,7 @@ static void mpris_Root_Raise (GDBusMethodInvocation *invocation, GVariant* param
 
 static void mpris_Root_Quit (GDBusMethodInvocation *invocation, GVariant* parameters, Mpris2Provider *provider)
 {
-    /* TODO: optionally get a real close API */
+    /* TODO: optionally get a real close API since this won't work always */
     gtk_main_quit();
     g_dbus_method_invocation_return_value (invocation, NULL);
 }
@@ -462,14 +462,19 @@ static GVariant* mpris_Player_get_Volume (GError **error, Mpris2Provider *provid
 
     g_object_get (G_OBJECT (provider->conf), "volume", &volume, NULL);
 
-    return g_variant_new_double(volume);
+    return g_variant_new_double(volume / 100.0);
 }
 
 static void mpris_Player_put_Volume (GVariant *value, GError **error, Mpris2Provider *provider)
 {
    gdouble volume = g_variant_get_double(value);
 
-   g_object_set(G_OBJECT(provider->conf), "volume", volume, NULL);
+   if(volume < 0.0)
+      volume = 0.0;
+   if(volume > 1.0)
+      volume = 1.0;
+
+   g_object_set(G_OBJECT(provider->conf), "volume", (gint) volume * 100.0, NULL);
 
 }
 
@@ -479,6 +484,11 @@ static GVariant* mpris_Player_get_Position (GError **error, Mpris2Provider *prov
 
     /* TODO: How get position?
     gdouble position = parole_gst_get_stream_position (PAROLE_GST (player->priv->gst))*/
+
+    /* Possibly:
+    ParoleStream *stream = parole_provider_player_get_stream(provider);
+    g_object_get_property(G_OBJECT(stream), "position", &position);
+    */
 
     return g_variant_new_int64(position);
 }
