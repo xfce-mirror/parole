@@ -130,19 +130,22 @@ static const gchar mpris2xml[] =
  */
 static void mpris_Root_Raise (GDBusMethodInvocation *invocation, GVariant* parameters, Mpris2Provider *provider)
 {
-    GtkWidget *window = parole_provider_player_get_main_window(provider->player);
-    if(window)
-       gtk_widget_show(window);
-
+    GtkWidget *widget = parole_provider_player_get_main_window(provider->player);
+    if(widget)
+    {
+       GdkWindow *window = gtk_widget_get_window(widget);
+       if(window)
+       {
+          gdk_window_raise(window);
+       }
+    }
     g_dbus_method_invocation_return_value (invocation, NULL);
 }
 
 static void mpris_Root_Quit (GDBusMethodInvocation *invocation, GVariant* parameters, Mpris2Provider *provider)
 {
-   GtkWidget *window = parole_provider_player_get_main_window(provider->player);
-   if(window)
-      gtk_widget_hide(window);
-
+    /* TODO: optionally get a real close API */
+    gtk_main_quit();
     g_dbus_method_invocation_return_value (invocation, NULL);
 }
 
@@ -212,7 +215,7 @@ static void mpris_Player_Play (GDBusMethodInvocation *invocation, GVariant* para
 
       case PAROLE_STATE_ABOUT_TO_FINISH:
       case PAROLE_STATE_PLAYING:
-      g_debug("Unexpected: play command while playing");
+      g_debug("MPRIS: Unexpected: play command while playing");
       break;
    }
 
@@ -331,8 +334,6 @@ static GVariant* mpris_Player_get_LoopStatus (GError **error, Mpris2Provider *pr
 
 static void mpris_Player_put_LoopStatus (GVariant *value, GError **error, Mpris2Provider *provider)
 {
-    ParoleProviderPlayer *player = provider->player;
-
     const gchar *new_loop = g_variant_get_string(value, NULL);
 
     gboolean repeat = g_strcmp0("Playlist", new_loop) ? FALSE : TRUE;
@@ -458,24 +459,18 @@ static GVariant* mpris_Player_get_Metadata (GError **error, Mpris2Provider *prov
 static GVariant* mpris_Player_get_Volume (GError **error, Mpris2Provider *provider)
 {
     gdouble volume = 0;
-    ParoleProviderPlayer *player = provider->player;
 
-    /* TODO: How to get conf properties?
-    g_object_get (G_OBJECT (player->priv->conf),
-                  "volume", &volume,
-                  NULL);*/
+    g_object_get (G_OBJECT (provider->conf), "volume", &volume, NULL);
 
     return g_variant_new_double(volume);
 }
 
 static void mpris_Player_put_Volume (GVariant *value, GError **error, Mpris2Provider *provider)
 {
-    ParoleProviderPlayer *player = provider->player;
+   gdouble volume = g_variant_get_double(value);
 
-    gdouble volume = g_variant_get_double(value);
+   g_object_set(G_OBJECT(provider->conf), "volume", volume, NULL);
 
-    /* TODO: How set volume volume?
-    parole_gst_set_volume (PAROLE_GST (player->priv->gst), value);*/
 }
 
 static GVariant* mpris_Player_get_Position (GError **error, Mpris2Provider *provider)
@@ -560,9 +555,9 @@ static void parole_mpris_update_any (Mpris2Provider *provider)
     ParoleProviderPlayer *player = provider->player;
 
     if(NULL == provider->dbus_connection)
-    return; /* better safe than sorry */
+        return; /* better safe than sorry */
 
-    g_debug ("MPRIS update any");
+    g_debug ("MPRIS: update any");
 
     stream = parole_provider_player_get_stream(player);
     g_object_get (G_OBJECT (stream),
@@ -637,6 +632,13 @@ state_changed_cb (ParoleProviderPlayer *player, const ParoleStream *stream, Paro
 {
 	parole_mpris_update_any (provider);
 }
+
+static void
+conf_changed_cb (ParoleConf *conf, GParamSpec *pspec, Mpris2Provider *provider)
+{
+   parole_mpris_update_any (provider);
+}
+
 
 /*
  * Dbus callbacks
@@ -798,7 +800,7 @@ on_name_acquired (GDBusConnection *connection,
                   const gchar     *name,
                   gpointer         user_data)
 {
-    g_debug("Acquired DBus name %s", name);
+    g_debug("MPRIS: Acquired DBus name %s", name);
 }
 
 static void
@@ -852,6 +854,9 @@ mpris2_provider_set_player (ParoleProviderPlugin *plugin, ParoleProviderPlayer *
                       G_CALLBACK (state_changed_cb), plugin);
 
     provider->conf = parole_conf_new();
+
+    g_signal_connect ( provider->conf, "notify::repeat",
+                      G_CALLBACK (conf_changed_cb), plugin);
 }
 
 static void
@@ -871,6 +876,7 @@ static void mpris2_provider_class_init (Mpris2ProviderClass *klass)
 static void mpris2_provider_init (Mpris2Provider *provider)
 {
     provider->player = NULL;
+    provider->conf = NULL;
 }
 
 static void mpris2_provider_finalize (GObject *object)

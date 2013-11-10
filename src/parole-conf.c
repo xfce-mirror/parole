@@ -186,6 +186,21 @@ static void parole_conf_set_property (GObject *object,
 
     /* thaw */
     g_signal_handler_unblock (conf->channel, conf->property_changed_id);
+
+    /* now we can notify the plugins */
+    switch(prop_id)
+    {
+       /* sadly this one recurses */
+       case PROP_VOLUME:
+       break;
+
+       /* these can be consumed by plugins */
+       /* case PROP_SHUFFLE: */
+       /* case PROP_REPEAT: */
+       default:
+       parole_conf_prop_changed(conf->channel, xfconf_nick, value, conf);
+       break;
+    }
 }
 
 /**
@@ -260,8 +275,20 @@ static void parole_conf_prop_changed    (XfconfChannel  *channel,
 
     /* check if the property exists and emit change */
     pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (conf), prop_name + 1);
+    if (!pspec)
+    {
+       /* sometimes only the pure property name works, e.g. 'repeat' */
+       const gchar *base_name = strrchr(prop_name, '/');
+       if(base_name)
+       {
+          base_name++; /* 'repeat', not '/repeat' */
+          pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (conf), base_name);
+       }
+    }
     if (G_LIKELY (pspec != NULL))
         g_object_notify_by_pspec (G_OBJECT (conf), pspec);
+
+    g_debug("Propchange:%s,%p", prop_name, pspec);
 }
 
 /**
