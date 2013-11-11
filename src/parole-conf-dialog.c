@@ -51,6 +51,10 @@ parole_conf_dialog_vis_plugin_changed_cb            (GtkComboBox *widget,
 
 void        parole_conf_dialog_font_set_cb          (GtkFontButton *button,
                                                      ParoleConfDialog *self);
+                                                     
+void parole_conf_dialog_enable_vis_changed_cb (GObject *object,
+                                               GParamSpec *pspec,
+                                               gpointer *data);
     
 void        
 parole_conf_dialog_subtitle_encoding_changed_cb     (GtkComboBox *widget,
@@ -420,7 +424,6 @@ void parole_conf_dialog_open (ParoleConfDialog *self, GtkWidget *parent)
     GtkWidget  *dialog;
     GtkWidget  *combox;
     gboolean    with_display;
-    gboolean    reset_saver;
     
     GtkWidget *switch_widget;
     

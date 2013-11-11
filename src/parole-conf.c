@@ -242,7 +242,7 @@ static void parole_conf_get_property (GObject *object,
     }
 }
 
-gchar *parole_conf_map_xfconf_property_name (const gchar *prop_name)
+static gchar *parole_conf_map_xfconf_property_name (const gchar *prop_name)
 {
     gchar *value = NULL;
     if (g_strcmp0(prop_name, "/audio/visualization-enabled") == 0)
