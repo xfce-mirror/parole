@@ -60,11 +60,6 @@ void
 parole_conf_dialog_subtitle_encoding_changed_cb     (GtkComboBox *widget,
                                                      ParoleConfDialog *self);
 
-void
-parole_conf_dialog_enable_vis_changed_cb            (GObject *object,
-                                                     GParamSpec *pspec,
-                                                     gpointer *data);
-
 void        brightness_value_changed_cb             (GtkRange *range,
                                                      ParoleConfDialog *self);
 
