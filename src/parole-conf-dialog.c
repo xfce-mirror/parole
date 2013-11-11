@@ -420,7 +420,6 @@ void parole_conf_dialog_open (ParoleConfDialog *self, GtkWidget *parent)
     GtkWidget  *dialog;
     GtkWidget  *combox;
     gboolean    with_display;
-    gboolean    reset_saver;
     
     GtkWidget *switch_widget;
     
