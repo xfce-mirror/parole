@@ -91,6 +91,8 @@ static void parole_conf_get_property    (GObject        *object,
                                          guint           prop_id,
                                          GValue         *value,
                                          GParamSpec     *pspec);
+gchar
+*parole_conf_map_xfconf_property_name   (const gchar *prop_name);
 static void parole_conf_set_property    (GObject        *object,
                                          guint           prop_id,
                                          const GValue   *value,
