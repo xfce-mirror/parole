@@ -215,12 +215,6 @@ void        parole_player_volume_value_changed_cb   (GtkScaleButton *widget,
 gboolean    parole_player_volume_scroll_event_cb    (GtkWidget *widget,
                                                      GdkEventScroll *ev,
                                                      ParolePlayer *player);
-
-void        parole_player_toggle_shuffle_action_cb  (GtkToggleAction *action,
-                                                     ParolePlayer *player);
-
-void        parole_player_toggle_repeat_action_cb   (GtkToggleAction *action,
-                                                     ParolePlayer *player);
                              
 static void parole_player_clear_subtitles           (ParolePlayer *player);
 
@@ -2208,21 +2202,6 @@ parole_player_menu_exit_cb (GtkWidget *widget, ParolePlayer *player)
     parole_player_delete_event_cb (NULL, NULL, player);
 }
 
-
-void parole_player_toggle_shuffle_action_cb (GtkToggleAction *action, ParolePlayer *player)
-{
-    g_object_set (G_OBJECT (player->priv->conf),
-                  "shuffle", gtk_toggle_action_get_active (action),
-                  NULL);
-}
-
-void parole_player_toggle_repeat_action_cb (GtkToggleAction *action, ParolePlayer *player)
-{
-    g_object_set (G_OBJECT (player->priv->conf),
-                  "repeat", gtk_toggle_action_get_active (action),
-                  NULL);
-}
-
 static void
 parole_property_notify_cb_volume (ParoleGst *gst, GParamSpec *spec, ParolePlayer *player)
 {
@@ -3029,13 +3008,17 @@ parole_player_init (ParolePlayer *player)
     /* Toggle Repeat */
     player->priv->toggle_repeat_action = gtk_toggle_action_new("toggle_repeat_action", _("_Repeat"), _("Repeat"), NULL);
     gtk_action_set_icon_name(GTK_ACTION(player->priv->toggle_repeat_action), "media-playlist-repeat-symbolic");
-    g_signal_connect(G_OBJECT(player->priv->toggle_repeat_action), "activate", G_CALLBACK(parole_player_toggle_repeat_action_cb), player);
+    g_object_bind_property(G_OBJECT (player->priv->conf), "repeat", 
+                           player->priv->toggle_repeat_action, "active", 
+                           G_BINDING_BIDIRECTIONAL);
     gtk_action_set_sensitive(GTK_ACTION(player->priv->toggle_repeat_action), TRUE);
     
     /* Toggle Shuffle */
     player->priv->toggle_shuffle_action = gtk_toggle_action_new("toggle_shuffle_action", _("_Shuffle"), _("Shuffle"), NULL);
     gtk_action_set_icon_name(GTK_ACTION(player->priv->toggle_shuffle_action), "media-playlist-shuffle-symbolic");
-    g_signal_connect(G_OBJECT(player->priv->toggle_shuffle_action), "activate", G_CALLBACK(parole_player_toggle_shuffle_action_cb), player);
+    g_object_bind_property(G_OBJECT (player->priv->conf), "shuffle", 
+                           player->priv->toggle_shuffle_action, "active", 
+                           G_BINDING_BIDIRECTIONAL);
     gtk_action_set_sensitive(GTK_ACTION(player->priv->toggle_shuffle_action), TRUE);
     
     
@@ -3333,6 +3316,7 @@ parole_player_init (ParolePlayer *player)
                   NULL);
     gtk_scale_button_set_value (GTK_SCALE_BUTTON (player->priv->volume), 
              (gdouble) (volume/100.));
+                                 
     /*
      * Pack the playlist.
      */
