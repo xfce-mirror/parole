@@ -91,6 +91,8 @@ static void parole_conf_get_property    (GObject        *object,
                                          guint           prop_id,
                                          GValue         *value,
                                          GParamSpec     *pspec);
+gchar
+*parole_conf_map_xfconf_property_name   (const gchar *prop_name);
 static void parole_conf_set_property    (GObject        *object,
                                          guint           prop_id,
                                          const GValue   *value,
@@ -257,6 +259,69 @@ static void parole_conf_get_property (GObject *object,
     }
 }
 
+/* Facilitate the conversion from xfconf property name to parole property name */
+gchar *parole_conf_map_xfconf_property_name (const gchar *prop_name)
+{
+    gchar *value = NULL;
+    if (g_strcmp0(prop_name, "/audio/visualization-enabled") == 0)
+        value = g_strdup("vis-enabled");
+    if (g_strcmp0(prop_name, "/audio/visualization-name") == 0)
+        value = g_strdup("vis-name");
+    if (g_strcmp0(prop_name, "/audio/volume") == 0)
+        value = g_strdup("volume");
+    if (g_strcmp0(prop_name, "/folders/last-used-media") == 0)
+        value = g_strdup("media-chooser-folder");
+    if (g_strcmp0(prop_name, "/parole/multimedia-keys") == 0)
+        value = g_strdup("multimedia-keys");
+    if (g_strcmp0(prop_name, "/parole/plugins") == 0)
+        value = g_strdup("plugins");
+    if (g_strcmp0(prop_name, "scan-recursive") == 0)
+        value = g_strdup("/parole/scan-recursive");
+    if (g_strcmp0(prop_name, "/playlist/remember-playlist") == 0)
+        value = g_strdup("remember-playlist");
+    if (g_strcmp0(prop_name, "/playlist/remove-duplicates") == 0)
+        value = g_strdup("remove-duplicated");
+    if (g_strcmp0(prop_name, "/playlist/repeat") == 0)
+        value = g_strdup("repeat");
+    if (g_strcmp0(prop_name, "/playlist/replace-playlist") == 0)
+        value = g_strdup("replace-playlist");
+    if (g_strcmp0(prop_name, "/playlist/show-playlist") == 0)
+        value = g_strdup("showhide-playlist");
+    if (g_strcmp0(prop_name, "/playlist/shuffle") == 0)
+        value = g_strdup("shuffle");
+    if (g_strcmp0(prop_name, "/playlist/play-opened-files") == 0)
+        value = g_strdup("play-opened-files");
+    if (g_strcmp0(prop_name, "/subtitles/enabled") == 0)
+        value = g_strdup("enable-subtitle");
+    if (g_strcmp0(prop_name, "/subtitles/encoding") == 0)
+        value = g_strdup("subtitle-encoding");
+    if (g_strcmp0(prop_name, "/subtitles/font") == 0)
+        value = g_strdup("subtitle-font");
+    if (g_strcmp0(prop_name, "/video/aspect-ratio") == 0)
+        value = g_strdup("aspect-ratio");
+    if (g_strcmp0(prop_name, "/video/brightness") == 0)
+        value = g_strdup("brightness");
+    if (g_strcmp0(prop_name, "/video/contrast") == 0)
+        value = g_strdup("contrast");
+    if (g_strcmp0(prop_name, "/video/disable-screensaver") == 0)
+        value = g_strdup("reset-saver");
+    if (g_strcmp0(prop_name, "/video/enable-xv") == 0)
+        value = g_strdup("enable-xv");
+    if (g_strcmp0(prop_name, "/video/hue") == 0)
+        value = g_strdup("hue");
+    if (g_strcmp0(prop_name, "/video/saturation") == 0)
+        value = g_strdup("saturation");
+    if (g_strcmp0(prop_name, "/window/height") == 0)
+        value = g_strdup("window-height");
+    if (g_strcmp0(prop_name, "/window/minimized") == 0)
+        value = g_strdup("minimized");
+    if (g_strcmp0(prop_name, "/window/maximized") == 0)
+        value = g_strdup("window-maximized");
+    if (g_strcmp0(prop_name, "/window/width") == 0)
+        value = g_strdup("window-width");
+    return value;
+}
+
 /**
  * parole_conf_prop_changed:
  * @channel   : the #XfconfChannel where settings are stored.
@@ -274,17 +339,7 @@ static void parole_conf_prop_changed    (XfconfChannel  *channel,
     GParamSpec *pspec;
 
     /* check if the property exists and emit change */
-    pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (conf), prop_name + 1);
-    if (!pspec)
-    {
-       /* sometimes only the pure property name works, e.g. 'repeat' */
-       const gchar *base_name = strrchr(prop_name, '/');
-       if(base_name)
-       {
-          base_name++; /* 'repeat', not '/repeat' */
-          pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (conf), base_name);
-       }
-    }
+    pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (conf), parole_conf_map_xfconf_property_name(prop_name));
     if (G_LIKELY (pspec != NULL))
         g_object_notify_by_pspec (G_OBJECT (conf), pspec);
 
