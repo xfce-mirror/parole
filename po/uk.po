@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-10-20 18:30+0200\n"
-"PO-Revision-Date: 2013-11-04 22:22+0000\n"
+"PO-Revision-Date: 2013-11-12 10:59+0000\n"
 "Last-Translator: Yarema aka Knedlyk <yupadmin@gmail.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/xfce/language/uk/)\n"
 "MIME-Version: 1.0\n"
@@ -36,19 +36,19 @@ msgstr "_Відкрити"
 
 #: ../data/interfaces/parole.ui.h:4
 msgid "Open _Location…"
-msgstr ""
+msgstr "Відкрити _адресу..."
 
 #: ../data/interfaces/parole.ui.h:5
 msgid "Open _Recent"
-msgstr ""
+msgstr "Відкрити _недавнє"
 
 #: ../data/interfaces/parole.ui.h:6
 msgid "_Save Playlist…"
-msgstr ""
+msgstr "_Зберегти список відтворення..."
 
 #: ../data/interfaces/parole.ui.h:7
 msgid "Insert Disk"
-msgstr ""
+msgstr "Вкладіть диск"
 
 #: ../data/interfaces/parole.ui.h:8 ../src/plugins/tray/tray-provider.c:150
 msgid "_Quit"
@@ -56,7 +56,7 @@ msgstr "Ви_йти"
 
 #: ../data/interfaces/parole.ui.h:9
 msgid "_Playback"
-msgstr ""
+msgstr "_Відтворення"
 
 #. Toggle Repeat
 #: ../data/interfaces/parole.ui.h:10 ../src/parole-player.c:3028
@@ -78,23 +78,23 @@ msgstr "_DVD Меню"
 
 #: ../data/interfaces/parole.ui.h:14
 msgid "_Title Menu"
-msgstr ""
+msgstr "Меню _Назв"
 
 #: ../data/interfaces/parole.ui.h:15
 msgid "_Audio Menu"
-msgstr ""
+msgstr "Меню _Аудіо"
 
 #: ../data/interfaces/parole.ui.h:16
 msgid "A_ngle Menu"
-msgstr ""
+msgstr "_Кутове меню"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "_Chapters"
-msgstr ""
+msgstr "Р_озділи"
 
 #: ../data/interfaces/parole.ui.h:18
 msgid "_Chapter Menu"
-msgstr ""
+msgstr "Меню р_озділу"
 
 #: ../data/interfaces/parole.ui.h:19
 msgid "_Audio"
@@ -102,7 +102,7 @@ msgstr "_Аудіо"
 
 #: ../data/interfaces/parole.ui.h:20
 msgid "_Audio Track"
-msgstr ""
+msgstr "_Аудіо доріжка"
 
 #: ../data/interfaces/parole.ui.h:21 ../src/parole-player.c:798
 msgid "Empty"
@@ -164,15 +164,15 @@ msgstr "С_убтитри"
 
 #: ../data/interfaces/parole.ui.h:35
 msgid "Select Text Subtitles…"
-msgstr ""
+msgstr "Вибрати текстові субтитри..."
 
 #: ../data/interfaces/parole.ui.h:36
 msgid "_Tools"
-msgstr ""
+msgstr "З_наряддя"
 
 #: ../data/interfaces/parole.ui.h:37
 msgid "P_lugins"
-msgstr ""
+msgstr "_Додатки"
 
 #: ../data/interfaces/parole.ui.h:38
 msgid "_Preferences"
@@ -184,7 +184,7 @@ msgstr "_Допомога"
 
 #: ../data/interfaces/parole.ui.h:40
 msgid "_Report a Bug…"
-msgstr ""
+msgstr "_Повідомити про ваду..."
 
 #: ../data/interfaces/parole.ui.h:41
 msgid "_About"
@@ -231,7 +231,7 @@ msgstr "Список відтворення дисків"
 
 #: ../data/interfaces/playlist.ui.h:3
 msgid "Add to playlist…"
-msgstr ""
+msgstr "Додавання до списку відтворення..."
 
 #: ../data/interfaces/playlist.ui.h:4
 msgid "Add"
@@ -239,7 +239,7 @@ msgstr "Додати"
 
 #: ../data/interfaces/playlist.ui.h:5
 msgid "Remove selected media"
-msgstr ""
+msgstr "Вилучити вибрані медіа"
 
 #: ../data/interfaces/playlist.ui.h:6
 msgid "Remove"
@@ -247,7 +247,7 @@ msgstr "Вилучення"
 
 #: ../data/interfaces/playlist.ui.h:7
 msgid "Clear playlist"
-msgstr ""
+msgstr "Очистити список відтворення"
 
 #: ../data/interfaces/playlist.ui.h:8
 msgid "Clear"
@@ -263,11 +263,11 @@ msgstr "Випадковий"
 
 #: ../data/interfaces/playlist.ui.h:11
 msgid "Move Up"
-msgstr ""
+msgstr "Перейти вгору"
 
 #: ../data/interfaces/playlist.ui.h:12
 msgid "Move Down"
-msgstr ""
+msgstr "Перейти вниз"
 
 #: ../data/interfaces/playlist.ui.h:13
 msgid "Replace playlist when opening files"
@@ -316,7 +316,7 @@ msgstr "Налаштувати Ваш програвач медіа"
 
 #: ../data/interfaces/parole-settings.ui.h:3
 msgid "Disable screensaver when playing movies"
-msgstr ""
+msgstr "Виключити зберігач екрану при відтворенні фільмів"
 
 #: ../data/interfaces/parole-settings.ui.h:4
 msgid "<b>Screensaver</b>"
@@ -324,7 +324,7 @@ msgstr "<b>Зберігач екрану</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:5
 msgid "Show visual effects when an audio file is played"
-msgstr ""
+msgstr "Показати візуальні ефекти при програванні аудіо"
 
 #: ../data/interfaces/parole-settings.ui.h:6
 msgid "Visualization type:"
@@ -332,7 +332,7 @@ msgstr "Тип візуалізації:"
 
 #: ../data/interfaces/parole-settings.ui.h:7
 msgid "<b>Audio Visualization</b>"
-msgstr ""
+msgstr "<b>Візуалізація аудіо</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:8
 msgid "Enable keyboard multimedia keys"
@@ -368,11 +368,11 @@ msgstr "Відновити до типових"
 
 #: ../data/interfaces/parole-settings.ui.h:16
 msgid "<b>Color Balance</b>"
-msgstr ""
+msgstr "<b>Баланс кольорів</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:17
 msgid "Display"
-msgstr ""
+msgstr "Дисплей"
 
 #: ../data/interfaces/parole-settings.ui.h:18
 msgid "Always replace playlist with opened files"
@@ -388,7 +388,7 @@ msgstr "Почати відтворення відкритих файлів"
 
 #: ../data/interfaces/parole-settings.ui.h:22
 msgid "<b>Playlist Settings</b>"
-msgstr ""
+msgstr "<b>Налаштування списку відтворення</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:24
 msgid "Automatically show subtitles when playing movie file"
@@ -404,7 +404,7 @@ msgstr "Кодування:"
 
 #: ../data/interfaces/parole-settings.ui.h:27
 msgid "<b>Subtitle Settings</b>"
-msgstr ""
+msgstr "<b>Налаштування субтитрів</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:28
 msgid "Subtitles"
@@ -412,7 +412,7 @@ msgstr "Субтитри"
 
 #: ../data/interfaces/save-playlist.ui.h:1
 msgid "Save Playlist as…"
-msgstr ""
+msgstr "Зберегти список відтворення як..."
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "File Type"
@@ -498,12 +498,12 @@ msgstr "Гаразд"
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
-msgstr ""
+msgstr "Parole потрібно <b>%s</b> для програвання цього файлу.\nЦе можна встановити автоматично."
 
 #: ../src/gst/parole-gst.c:1513
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
-msgstr ""
+msgstr "Parole потрібно <b>%s</b> для програвання цього файлу."
 
 #: ../src/gst/parole-gst.c:1923
 msgid "The stream is taking too much time to load"
@@ -511,7 +511,7 @@ msgstr "Потік потребує забагато часу для заван�
 
 #: ../src/gst/parole-gst.c:1924
 msgid "Do you want to continue loading or stop?"
-msgstr ""
+msgstr "Ви бажаєте продовжувати чи зупинити?"
 
 #: ../src/gst/parole-gst.c:1925
 msgid "Stop"
@@ -523,17 +523,17 @@ msgstr "Продовжити"
 
 #: ../src/gst/parole-gst.c:2096
 msgid "GStreamer Error"
-msgstr ""
+msgstr "Помилка GStreamer"
 
 #: ../src/gst/parole-gst.c:2097
 msgid "Parole Media Player cannot start."
-msgstr ""
+msgstr "Програвач медіа Parole неможливо запустити."
 
 #: ../src/gst/parole-gst.c:2125 ../src/gst/parole-gst.c:2143
 #: ../src/gst/parole-gst.c:2166
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
-msgstr ""
+msgstr "Неможливо завантажити додаток \"%s\", перевірте встановлення GStreamer."
 
 #: ../src/gst/parole-gst.c:2770 ../src/gst/parole-gst.c:2776
 #, c-format
@@ -558,7 +558,7 @@ msgid ""
 "\n"
 "Please report bugs to <http://bugzilla.xfce.org/>.\n"
 "\n"
-msgstr ""
+msgstr "\nПрогравач медіа Parole %s\n\nЧастина проекту Xfce Goodies\nhttp://goodies.xfce.org\n\nВипущено під ліцензією GNU GPL.\n\nБудь ласка, повідомляйте про вади на <http://bugzilla.xfce.org/>.\n\n"
 
 #: ../src/main.c:234
 msgid "Unknown argument "
@@ -578,11 +578,11 @@ msgstr "Встановити шлях до Audio-CD/VCD/DVD пристрою"
 
 #: ../src/main.c:279
 msgid "Enable/Disable XV support (true or false, default=true)"
-msgstr ""
+msgstr "Увімкнути/вимкнути підтримку XV (так або ні, типово=так)"
 
 #: ../src/main.c:280
 msgid "Start in embedded mode"
-msgstr ""
+msgstr "Запускати у режимі вкладення"
 
 #: ../src/main.c:281
 msgid "Start in fullscreen mode"
@@ -614,7 +614,7 @@ msgstr "Вимкнути звук"
 
 #: ../src/main.c:288
 msgid "Unmute (restore) volume"
-msgstr ""
+msgstr "Включити (відновити) звук"
 
 #: ../src/main.c:289
 msgid "Add files to playlist"
@@ -622,7 +622,7 @@ msgstr "Додати файли до списку відтворення"
 
 #: ../src/main.c:290
 msgid "Print version information and exit"
-msgstr ""
+msgstr "Показати інформацію про версію і вийти"
 
 #: ../src/main.c:292
 msgid "Media to play"
@@ -630,12 +630,12 @@ msgstr "Медіа для проигравання"
 
 #: ../src/main.c:315
 msgid "[FILES...] - Play movies and songs"
-msgstr ""
+msgstr "[ФАЙЛИ...] - відтворити фільми і пісні"
 
 #: ../src/main.c:327
 #, c-format
 msgid "Type %s --help to list all available command line options\n"
-msgstr ""
+msgstr "Ввести %s --help для списку всіх можливих опцій командного рядка\n"
 
 #: ../src/main.c:342
 #, c-format
@@ -653,22 +653,22 @@ msgstr "Всі файли"
 #: ../src/parole-medialist.c:217
 #, c-format
 msgid "Playlist (%i item)"
-msgstr ""
+msgstr "Список відтворення (%i пункт)"
 
 #: ../src/parole-medialist.c:221
 #, c-format
 msgid "Playlist (%i chapter)"
-msgstr ""
+msgstr "Список відтворення (%i розділ)"
 
 #: ../src/parole-medialist.c:228 ../src/parole-medialist.c:1513
 #, c-format
 msgid "Playlist (%i items)"
-msgstr ""
+msgstr "Список відтворення (%i пунктів)"
 
 #: ../src/parole-medialist.c:232 ../src/parole-medialist.c:1514
 #, c-format
 msgid "Playlist (%i chapters)"
-msgstr ""
+msgstr "Список відтворення (%i розділів)"
 
 #: ../src/parole-medialist.c:384 ../src/parole-player.c:705
 #, c-format
@@ -689,7 +689,7 @@ msgstr "Невідомий формати списку відтворення"
 
 #: ../src/parole-medialist.c:682
 msgid "Please choose a supported playlist format"
-msgstr ""
+msgstr "Виберіть формат списку відтворення, який підтримується"
 
 #: ../src/parole-medialist.c:736 ../src/parole-plugins-manager.c:369
 msgid "Unknown"
@@ -821,7 +821,7 @@ msgstr "Покинути повноекранний режим"
 #. 
 #: ../src/parole-player.c:2079
 msgid "Show menubar"
-msgstr ""
+msgstr "Показати панель меню"
 
 #: ../src/parole-player.c:2294
 msgid "Mute"
@@ -833,11 +833,11 @@ msgstr "Зі звуком"
 
 #: ../src/parole-player.c:2662
 msgid "Unable to open default web browser"
-msgstr ""
+msgstr "Неможливо відкрити типовий переглядач тенет"
 
 #: ../src/parole-player.c:2664
 msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
-msgstr ""
+msgstr "Перейдіть до http://docs.xfce.org/apps/parole/bugs щоб повідомити про ваду."
 
 #. Previous Track
 #: ../src/parole-player.c:3000
@@ -856,12 +856,12 @@ msgstr "Показати _Список відтворення"
 
 #: ../src/parole-player.c:3023 ../src/parole-player.c:3356
 msgid "Show Playlist"
-msgstr ""
+msgstr "Показати список відтворення"
 
 #. Clear Recent Menu Item
 #: ../src/parole-player.c:3090
 msgid "_Clear recent items…"
-msgstr ""
+msgstr "_Очищення недавньої історії..."
 
 #: ../src/parole-player.c:3295
 msgid "Audio Track:"
@@ -877,7 +877,7 @@ msgstr "Закрити"
 
 #: ../src/parole-player.c:3356
 msgid "Hide Playlist"
-msgstr ""
+msgstr "Сховати список відтворення"
 
 #: ../src/parole-about.c:76
 msgid "translator-credits"
@@ -1039,11 +1039,11 @@ msgstr "В'єтнамська"
 #. If plugin loading fails...
 #: ../src/parole-plugins-manager.c:276
 msgid "Plugin failed to load"
-msgstr ""
+msgstr "Помилка запуску додатку"
 
 #: ../src/parole-plugins-manager.c:276
 msgid "Please check your installation"
-msgstr ""
+msgstr "Перевірте Ваше встановлення"
 
 #: ../src/parole-plugins-manager.c:408
 msgid "No installed plugins found on this system"
@@ -1051,7 +1051,7 @@ msgstr "У Вашій системі не знайдено встановлен�
 
 #: ../src/parole-plugins-manager.c:409
 msgid "Please check your installation."
-msgstr ""
+msgstr "Перевірте Ваше встановлення."
 
 #: ../src/misc/parole-filters.c:65
 msgid "Audio"
