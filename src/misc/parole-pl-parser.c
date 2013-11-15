@@ -40,6 +40,7 @@
 #include <string.h>
 
 #include <gio/gio.h>
+#include <glib.h>
 #include <libxfce4util/libxfce4util.h>
 
 #include "parole-file.h"
@@ -333,6 +334,9 @@ parole_pl_parser_parse_m3u (const gchar *filename)
     const gchar *split_char;
     guint i;
     
+    GRegex *regex;
+    GMatchInfo *match_info;
+    
     file = g_file_new_for_path (filename);
     path = g_path_get_dirname(filename);
     
@@ -362,6 +366,9 @@ parole_pl_parser_parse_m3u (const gchar *filename)
     lines = g_strsplit (contents, split_char, 0);
     g_free (contents);
     
+    /* Regular expression for stream protocols, such as http:// smb:// */
+    regex = g_regex_new ("^(?!/)[a-zA-Z_0-9]+://", 0, 0, NULL);
+    
     num_lines = g_strv_length (lines);
     num_lines--; /* Drop the terminating NULL */
 
@@ -370,12 +377,21 @@ parole_pl_parser_parse_m3u (const gchar *filename)
         if ( lines[i][0] == '\0' || lines[i][0] == '#')
             continue;
         
+        /* Absolute, local path */
         if ( lines[i][0] == '/' ) {
             pl_filename = g_strdup(lines[i]);
         }
-
+        
         else {
-            pl_filename = g_strjoin("/", path, lines[i], NULL);
+            /* Stream protocol */
+            if ( g_regex_match (regex, lines[i], 0, &match_info) ) {
+                pl_filename = g_strdup(lines[i]);
+            }
+
+            else {
+                /* Relative path */
+                pl_filename = g_strjoin("/", path, lines[i], NULL);
+            }
         }
         
         list = g_slist_append (list, parole_file_new (pl_filename));
@@ -384,6 +400,9 @@ parole_pl_parser_parse_m3u (const gchar *filename)
     if (pl_filename)
         g_free(pl_filename);
     g_strfreev (lines);
+    
+    g_match_info_free (match_info);
+    g_regex_unref (regex);
 out:
     
     g_object_unref (file);
