@@ -570,15 +570,19 @@ static GVariant* mpris_Player_get_CanGoPrevious (GError **error, Mpris2Provider 
 static GVariant* mpris_Player_get_CanPlay (GError **error, Mpris2Provider *provider)
 {
     // TODO: this can cause a UI-lock
+    /* The CanPlay property should be true when the player is playing or paused. */
     ParoleProviderPlayer *player = provider->player;
-    return g_variant_new_boolean(parole_provider_player_get_state (player) == PAROLE_STATE_PAUSED);
+    gint state = parole_provider_player_get_state (player);
+    return g_variant_new_boolean (state == PAROLE_STATE_PAUSED || state == PAROLE_STATE_PLAYING);
 }
 
 static GVariant* mpris_Player_get_CanPause (GError **error, Mpris2Provider *provider)
 {
     // TODO: this can cause a UI-lock
+    /* The CanPause property should be true when the player is playing or paused. */
     ParoleProviderPlayer *player = provider->player;
-    return g_variant_new_boolean(parole_provider_player_get_state (player) == PAROLE_STATE_PLAYING);
+    gint state = parole_provider_player_get_state (player);
+    return g_variant_new_boolean (state == PAROLE_STATE_PAUSED || state == PAROLE_STATE_PLAYING);
 }
 
 static GVariant* mpris_Player_get_CanSeek (GError **error, Mpris2Provider *provider)
