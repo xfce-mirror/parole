@@ -1297,6 +1297,8 @@ parole_gst_get_meta_data_local_file (ParoleGst *gst, GstTagList *tag)
 {
     gchar *str;
     GDate *date;
+    guint integer;
+    
     GdkPixbuf *pixbuf;
     
     if ( gst_tag_list_get_string_index (tag, GST_TAG_TITLE, 0, &str) )
@@ -1345,6 +1347,14 @@ parole_gst_get_meta_data_local_file (ParoleGst *gst, GstTagList *tag)
                       "comment", str,
                       NULL);
         g_free (str);
+    }
+    
+    if ( gst_tag_list_get_uint (tag, GST_TAG_TRACK_NUMBER, &integer) )
+    {
+        TRACE ("track:%i", integer);
+        g_object_set (G_OBJECT (gst->priv->stream),
+                      "track", integer,
+                      NULL);
     }
     
     pixbuf = parole_gst_tag_list_get_cover (gst, tag);
