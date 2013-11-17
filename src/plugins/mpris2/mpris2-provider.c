@@ -177,21 +177,47 @@ static GVariant* mpris_Root_get_DesktopEntry (GError **error, Mpris2Provider *pr
 
 static GVariant* mpris_Root_get_SupportedUriSchemes (GError **error, Mpris2Provider *provider)
 {
-    // TODO Complete uris schemes
     return g_variant_parse(G_VARIANT_TYPE("as"),
-        "['file', 'cdda']", NULL, NULL, NULL);
+        "['cdda', 'dvd', 'file', 'icy', 'icyx', 'mms', 'mmsh', net', "
+        "'pnm', 'rtmp', 'rtp', 'rtsp', 'uvox']", NULL, NULL, NULL);
 }
 
 static GVariant* mpris_Root_get_SupportedMimeTypes (GError **error, Mpris2Provider *provider)
 {
-    // TODO Fixs mime tyme. This are of Pragha
     return g_variant_parse(G_VARIANT_TYPE("as"),
-        "['audio/x-mp3', 'audio/mpeg', 'audio/x-mpeg', 'audio/mpeg3', "
-        "'audio/mp3', 'application/ogg', 'application/x-ogg', 'audio/vorbis', "
-        "'audio/x-vorbis', 'audio/ogg', 'audio/x-ogg', 'audio/x-flac', "
-        "'video/x-ms-asf', 'audio/x-ms-wma', 'audio/x-m4a', "
-        "'application/x-ape', 'audio/ape', 'audio/x-ape', "
-        "'application/x-flac', 'audio/flac', 'audio/x-wav']", NULL, NULL, NULL);
+        "['application/mxf', 'application/ogg', 'application/ram', "
+        "'application/sdp', 'application/vnd.apple.mpegurl', "
+        "'application/vnd.ms-wpl', 'application/vnd.rn-realmedia', "
+        "'application/vnd.rn-realmedia', 'application/x-extension-m4a', "
+        "'application/x-extension-mp4', 'application/x-flac', "
+        "'application/x-flash-video', 'application/x-matroska', "
+        "'application/x-netshow-channel', 'application/x-ogg', "
+        "'application/x-quicktimeplayer', 'application/x-shorten', "
+        "'audio/3gpp', 'audio/ac3', 'audio/AMR', 'audio/AMR-WB', "
+        "'audio/basic', 'audio/flac', 'audio/midi', 'audio/mp2', 'audio/mp4', "
+        "'audio/mpeg', 'audio/ogg', 'audio/prs.sid', 'audio/vnd.rn-realaudio', "
+        "'audio/x-aiff', 'audio/x-ape', 'audio/x-flac', 'audio/x-gsm', "
+        "'audio/x-it', 'audio/x-m4a', 'audio/x-matroska', 'audio/x-mod', "
+        "'audio/x-mp3', 'audio/x-mpeg', 'audio/x-ms-asf', 'audio/x-ms-asx', "
+        "'audio/x-ms-wax', 'audio/x-ms-wma', 'audio/x-musepack', "
+        "'audio/x-pn-aiff', 'audio/x-pn-au', 'audio/x-pn-realaudio', "
+        "'audio/x-pn-wav', 'audio/x-pn-windows-acm', 'audio/x-real-audio', "
+        "'audio/x-realaudio', 'audio/x-s3m', 'audio/x-sbc', 'audio/x-speex', "
+        "'audio/x-stm', 'audio/x-tta', 'audio/x-vorbis', 'audio/x-vorbis+ogg', "
+        "'audio/x-wav', 'audio/x-wavpack', 'audio/x-xm', "
+        "'image/vnd.rn-realpix', 'image/x-pict', 'misc/ultravox', "
+        "'text/x-google-video-pointer', 'video/3gp', 'video/3gpp', "
+        "'video/divx', 'video/dv', 'video/fli', 'video/flv', 'video/mp2t', "
+        "'video/mp4', 'video/mp4v-es', 'video/mpeg', 'video/msvideo', "
+        "'video/ogg', 'video/quicktime', 'video/vivo', 'video/vnd.divx', "
+        "'video/vnd.mpegurl', 'video/vnd.rn-realvideo', 'video/vnd.vivo', "
+        "'video/webm', 'video/x-anim', 'video/x-avi', 'video/x-flc', "
+        "'video/x-fli', 'video/x-flic', 'video/x-flv', 'video/x-m4v', "
+        "'video/x-matroska', 'video/x-mpeg', 'video/x-mpeg2', "
+        "'video/x-ms-asf', 'video/x-ms-asx', 'video/x-msvideo', "
+        "'video/x-ms-wm', 'video/x-ms-wmv', 'video/x-ms-wmx', "
+        "'video/x-ms-wvx', 'video/x-nsv', 'video/x-ogm+ogg', "
+        "'video/x-theora+ogg', 'video/x-totem-stream']", NULL, NULL, NULL);
 }
 
 /*
