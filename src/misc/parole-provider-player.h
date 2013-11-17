@@ -80,6 +80,11 @@ struct _ParoleProviderPlayerIface
     
     gboolean     (*seek)                        (ParoleProviderPlayer *player,
                                                  gdouble pos);
+                                                 
+    gboolean     (*get_fullscreen)              (ParoleProviderPlayer *player);
+    
+    gboolean     (*set_fullscreen)              (ParoleProviderPlayer *player,
+                                                 gboolean fullscreen);
                              
     void     (*open_media_chooser)              (ParoleProviderPlayer *player);
                              
@@ -128,6 +133,11 @@ void
 parole_provider_player_open_media_chooser       (ParoleProviderPlayer *player);
 
 GtkAction *parole_provider_player_get_action(ParoleProviderPlayer *player, ParolePlayerAction action);
+
+gboolean    parole_provider_player_get_fullscreen(ParoleProviderPlayer *player);
+
+gboolean    parole_provider_player_set_fullscreen(ParoleProviderPlayer *player, 
+                                                 gboolean fullscreen);
 
 G_END_DECLS
 

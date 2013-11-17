@@ -52,6 +52,8 @@ struct ParolePluginPlayerPrivate
     gulong state_changed;
     gulong tag_message;
     gboolean packed;
+    
+    gboolean fullscreen;
 
 };
 
@@ -205,6 +207,29 @@ static void parole_plugin_player_open_media_chooser (ParoleProviderPlayer *provi
     g_object_unref (list);
 }
 
+static gboolean parole_plugin_player_get_fullscreen (ParoleProviderPlayer *provider)
+{
+    ParolePluginPlayer *player;
+    
+    player = PAROLE_PLUGIN_PLAYER (provider);
+    
+    return player->priv->fullscreen;
+}
+
+static gboolean parole_plugin_player_set_fullscreen (ParoleProviderPlayer *provider, gboolean fullscreen)
+{
+    GtkWidget *window;
+    
+    window = parole_plugin_player_get_main_window (provider);
+    
+    if (fullscreen)
+        gtk_window_fullscreen(GTK_WINDOW(window));
+    else
+        gtk_window_unfullscreen(GTK_WINDOW(window));
+        
+    return TRUE;
+}
+
 static void parole_plugin_player_iface_init (ParoleProviderPlayerIface *iface)
 {
     iface->get_main_window = parole_plugin_player_get_main_window;
@@ -219,6 +244,8 @@ static void parole_plugin_player_iface_init (ParoleProviderPlayerIface *iface)
     iface->play_next = parole_plugin_player_play_next;
     iface->seek = parole_plugin_player_seek;
     iface->open_media_chooser = parole_plugin_player_open_media_chooser;
+    iface->get_fullscreen = parole_plugin_player_get_fullscreen;
+    iface->set_fullscreen = parole_plugin_player_set_fullscreen;
 }
 
 static void 
@@ -234,6 +261,18 @@ parole_plugin_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, P
     g_signal_emit_by_name (G_OBJECT (player), "tag-message", stream);
 }
 
+static gboolean
+parole_plugin_player_window_state_event  (GtkWidget *widget, 
+                                          GdkEventWindowState *event,
+                                          ParolePluginPlayer *player)
+{
+    if (event->new_window_state & GDK_WINDOW_STATE_FULLSCREEN)
+        player->priv->fullscreen = TRUE;
+    else
+        player->priv->fullscreen = FALSE;
+    return FALSE;
+}
+
 static void
 parole_plugin_player_class_init (ParolePluginPlayerClass *klass)
 {
@@ -247,6 +286,7 @@ parole_plugin_player_class_init (ParolePluginPlayerClass *klass)
 static void
 parole_plugin_player_init (ParolePluginPlayer *player)
 {
+    GtkWidget *window;
     player->priv = PAROLE_PLUGIN_PLAYER_GET_PRIVATE (player);
     
     player->priv->gst = parole_gst_get ();
@@ -256,6 +296,13 @@ parole_plugin_player_init (ParolePluginPlayer *player)
               
     player->priv->tag_message = g_signal_connect (G_OBJECT (player->priv->gst), "media-tag",
                         G_CALLBACK (parole_plugin_player_media_tag_cb), player);
+
+    player->priv->fullscreen = FALSE;                        
+    window = GTK_WIDGET(gtk_widget_get_toplevel (player->priv->gst));
+    g_signal_connect(   G_OBJECT(window), 
+                        "window-state-event", 
+                        G_CALLBACK(parole_plugin_player_window_state_event), 
+                        PAROLE_PLAYER(player) );
 
     player->priv->packed = FALSE;
     player->priv->box = NULL;

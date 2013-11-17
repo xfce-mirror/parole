@@ -3027,7 +3027,7 @@ parole_player_init (ParolePlayer *player)
      */
     /* ParolePlayer Window */
     player->priv->window = GTK_WIDGET (gtk_builder_get_object (builder, "main-window"));
-    g_signal_connect(   G_OBJECT(player->priv->window), 
+    g_signal_connect_after(   G_OBJECT(player->priv->window), 
                         "window-state-event", 
                         G_CALLBACK(parole_player_window_state_event), 
                         PAROLE_PLAYER(player) );

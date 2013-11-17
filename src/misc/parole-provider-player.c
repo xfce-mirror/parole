@@ -434,3 +434,46 @@ GtkAction *parole_provider_player_get_action(ParoleProviderPlayer *player, Parol
 {
     return parole_player_get_action(action);
 }
+
+/**
+ * parole_provider_player_get_fullscreen:
+ * @player: a #ParoleProviderPlayer
+ * 
+ * Get fullscreen status for Parole.
+ * 
+ * Since: 0.6
+ **/
+gboolean parole_provider_player_get_fullscreen(ParoleProviderPlayer *player)
+{
+    g_return_val_if_fail (PAROLE_IS_PROVIDER_PLAYER (player), NULL);
+    
+    if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_stream )
+    {
+        return (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_fullscreen) (player);
+    }
+    
+    return FALSE;
+}
+
+/**
+ * parole_provider_player_set_fullscreen:
+ * @player: a #ParoleProviderPlayer
+ * @fullscreen: TRUE for fullscreen, FALSE for unfullscreen
+ * 
+ * Set fullscreen status for Parole.
+ *
+ * Returns: TRUE if the fullscreen command succeeded, FALSE otherwise.
+ * 
+ * Since: 0.6
+ **/
+gboolean parole_provider_player_set_fullscreen(ParoleProviderPlayer *player, gboolean fullscreen)
+{
+    g_return_val_if_fail (PAROLE_IS_PROVIDER_PLAYER (player), NULL);
+    
+    if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_stream )
+    {
+        return (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->set_fullscreen) (player, fullscreen);
+    }
+    
+    return FALSE;
+}

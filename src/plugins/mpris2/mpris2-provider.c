@@ -50,6 +50,7 @@ struct _Mpris2Provider
 
     gboolean                saved_playbackstatus;
     gboolean                saved_shuffle;
+    gboolean                saved_fullscreen;
     gchar                  *saved_title;
     gdouble                 volume;
     ParoleState             state;
@@ -74,6 +75,8 @@ static const gchar mpris2xml[] =
 "                <property name='DesktopEntry' type='s' access='read'/>"
 "                <property name='SupportedUriSchemes' type='as' access='read'/>"
 "                <property name='SupportedMimeTypes' type='as' access='read'/>"
+"                <property name='Fullscreen' type='b' access='readwrite'/>"
+"                <property name='CanSetFullscreen' type='b' access='read'/>"
 "        </interface>"
 "        <interface name='org.mpris.MediaPlayer2.Player'>"
 "                <method name='Next'/>"
@@ -159,6 +162,30 @@ static GVariant* mpris_Root_get_CanRaise (GError **error, Mpris2Provider *provid
     return g_variant_new_boolean(TRUE);
 }
 
+static GVariant* mpris_Root_get_Fullscreen (GError **error, Mpris2Provider *provider)
+{
+    return g_variant_new_boolean(provider->saved_fullscreen);
+}
+
+static void mpris_Root_put_Fullscreen (GVariant *value, GError **error, Mpris2Provider *provider)
+{
+	gboolean fullscreen = g_variant_get_boolean(value);
+
+    GtkWidget *window = parole_provider_player_get_main_window(provider->player);
+    if (window)
+    {
+        if (fullscreen)
+            gtk_window_fullscreen(GTK_WINDOW(window));
+        else
+            gtk_window_unfullscreen(GTK_WINDOW(window));
+    }
+}
+
+static GVariant* mpris_Root_get_CanSetFullscreen (GError **error, Mpris2Provider *provider)
+{
+    return g_variant_new_boolean(TRUE);
+}
+
 static GVariant* mpris_Root_get_HasTrackList (GError **error, Mpris2Provider *provider)
 {
     return g_variant_new_boolean(TRUE);
@@ -166,7 +193,6 @@ static GVariant* mpris_Root_get_HasTrackList (GError **error, Mpris2Provider *pr
 
 static GVariant* mpris_Root_get_Identity (GError **error, Mpris2Provider *provider)
 {
-    // This is OK
     return g_variant_new_string(_("Parole Media Player"));
 }
 
@@ -646,6 +672,12 @@ static void parole_mpris_update_any (Mpris2Provider *provider)
             g_variant_builder_add (&b, "{sv}", "Metadata", mpris_Player_get_Metadata (NULL, provider));
         }
     }
+    if (provider->saved_fullscreen != parole_provider_player_get_fullscreen(player))
+    {
+        change_detected = TRUE;
+        provider->saved_fullscreen = !provider->saved_fullscreen;
+        g_variant_builder_add (&b, "{sv}", "Fullscreen", mpris_Root_get_Fullscreen (NULL, provider));
+    }
     if(change_detected)
     {
         GVariant * tuples[] = {
@@ -736,6 +768,8 @@ handle_get_property (GDBusConnection *connection,
         PROPGET(Root, DesktopEntry)
         PROPGET(Root, SupportedUriSchemes)
         PROPGET(Root, SupportedMimeTypes)
+        PROPGET(Root, Fullscreen)
+        PROPGET(Root, CanSetFullscreen)
     END_INTERFACE
     /* org.mpris.MediaPlayer2.Player */
     BEGIN_INTERFACE(1)
@@ -774,7 +808,7 @@ handle_set_property (GDBusConnection       *connection,
 
     /* org.mpris.MediaPlayer2 */
     BEGIN_INTERFACE(0)
-        /* all properties readonly */
+        PROPPUT(Root, Fullscreen)
     END_INTERFACE
     /* org.mpris.MediaPlayer2.Player */
     BEGIN_INTERFACE(1)
@@ -859,6 +893,15 @@ on_name_lost (GDBusConnection *connection,
     g_warning ("Lost DBus name %s", name);
 }
 
+static gboolean
+on_window_state_event  (GtkWidget *widget, 
+                        GdkEventWindowState *event,
+                        Mpris2Provider *provider)
+{
+    parole_mpris_update_any (provider);
+    return FALSE;
+}
+
 /*
  * Plugin interface.
  */
@@ -872,9 +915,11 @@ static void
 mpris2_provider_set_player (ParoleProviderPlugin *plugin, ParoleProviderPlayer *player)
 {
     Mpris2Provider *provider;
+    GtkWidget *window;
     provider = MPRIS2_PROVIDER (plugin);
     
     provider->player = player;
+    provider->saved_fullscreen = FALSE;
 
     provider->introspection_data = g_dbus_node_info_new_for_xml (mpris2xml, NULL);
     g_assert (provider->introspection_data != NULL);
@@ -895,6 +940,12 @@ mpris2_provider_set_player (ParoleProviderPlugin *plugin, ParoleProviderPlayer *
 
     g_signal_connect ( provider->conf, "notify::repeat",
                       G_CALLBACK (conf_changed_cb), plugin);
+                      
+    window = parole_provider_player_get_main_window(provider->player);
+    g_signal_connect(   G_OBJECT(window), 
+                        "window-state-event", 
+                        G_CALLBACK(on_window_state_event), 
+                        provider );
 }
 
 static void
