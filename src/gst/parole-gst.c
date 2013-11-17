@@ -1367,6 +1367,14 @@ parole_gst_get_meta_data_local_file (ParoleGst *gst, GstTagList *tag)
                       NULL);
     }
     
+    if ( gst_tag_list_get_uint (tag, GST_TAG_BITRATE, &integer) )
+    {
+        TRACE ("bitrate:%i", integer);
+        g_object_set (G_OBJECT (gst->priv->stream),
+                      "bitrate", integer,
+                      NULL);
+    }
+    
     pixbuf = parole_gst_tag_list_get_cover (gst, tag);
     if (pixbuf)
     {

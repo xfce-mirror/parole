@@ -72,6 +72,7 @@ struct _ParoleStreamPrivate
     gchar      *album;
     gchar      *comment;
     gchar      *genre;
+    guint       bitrate;
     GdkPixbuf  *image;
     gchar      *image_uri, *previous_image;
     
@@ -103,6 +104,7 @@ enum
     PROP_ALBUM,
     PROP_COMMENT,
     PROP_GENRE,
+    PROP_BITRATE,
     PROP_IMAGE_URI
 };
 
@@ -230,6 +232,9 @@ static void parole_stream_set_property (GObject *object,
         case PROP_GENRE:
             PAROLE_STREAM_DUP_GVALUE_STRING (PAROLE_STREAM_GET_PRIVATE (stream)->genre, value);
             break;
+        case PROP_BITRATE:
+            PAROLE_STREAM_GET_PRIVATE (stream)->bitrate = g_value_get_uint (value);
+            break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
             break;
@@ -314,6 +319,9 @@ static void parole_stream_get_property (GObject *object,
             break;
         case PROP_GENRE:
             g_value_set_string (value, PAROLE_STREAM_GET_PRIVATE (stream)->genre);
+            break;
+        case PROP_BITRATE:
+            g_value_set_uint (value, PAROLE_STREAM_GET_PRIVATE (stream)->bitrate);
             break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -749,6 +757,22 @@ parole_stream_class_init (ParoleStreamClass *klass)
                                              "URI for the album artwork",
                                              NULL,
                                              G_PARAM_READWRITE));
+                                             
+    /**
+     * ParoleStream:bitrate:
+     * 
+     * Current bitrate in bits/s.
+     * 
+     * Since: 0.6
+     **/
+    g_object_class_install_property (object_class,
+                                     PROP_BITRATE,
+                                     g_param_spec_uint   ("bitrate",
+                                             "Bitrate", 
+                                             "Bitrate",
+                                             0, 2147483647,
+                                             0,
+                                             G_PARAM_READWRITE));
                               
     g_type_class_add_private (klass, sizeof (ParoleStreamPrivate));
 }
@@ -787,6 +811,7 @@ void parole_stream_init_properties (ParoleStream *stream)
     priv->track = 1;
     priv->disp_par_n = 1;
     priv->disp_par_d = 1;
+    priv->bitrate = 0;
     
     PAROLE_STREAM_FREE_STR_PROP (priv->title);
     PAROLE_STREAM_FREE_STR_PROP (priv->uri);
