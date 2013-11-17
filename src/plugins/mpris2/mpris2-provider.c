@@ -469,8 +469,7 @@ static void handle_get_metadata (const ParoleStream *stream, GVariantBuilder *b)
     handle_strings_request(b, "xesam:artist", artist);
     g_variant_builder_add (b, "{sv}", "xesam:album",
         g_variant_new_string(album));
-    g_variant_builder_add (b, "xesam:genre", 
-        g_variant_new_string(genre));
+    handle_strings_request(b, "xesam:genre", genre);
     g_variant_builder_add (b, "{sv}", "xesam:contentCreated",
         g_variant_new_string(year));
     g_variant_builder_add (b, "{sv}", "xesam:trackNumber",
