@@ -167,7 +167,7 @@ static GVariant* mpris_Root_get_HasTrackList (GError **error, Mpris2Provider *pr
 static GVariant* mpris_Root_get_Identity (GError **error, Mpris2Provider *provider)
 {
     // This is OK
-    return g_variant_new_string("Parole");
+    return g_variant_new_string(_("Parole Media Player"));
 }
 
 static GVariant* mpris_Root_get_DesktopEntry (GError **error, Mpris2Provider *provider)
@@ -205,7 +205,7 @@ static GVariant* mpris_Root_get_SupportedMimeTypes (GError **error, Mpris2Provid
         "'audio/x-realaudio', 'audio/x-s3m', 'audio/x-sbc', 'audio/x-speex', "
         "'audio/x-stm', 'audio/x-tta', 'audio/x-vorbis', 'audio/x-vorbis+ogg', "
         "'audio/x-wav', 'audio/x-wavpack', 'audio/x-xm', "
-        "'image/vnd.rn-realpix', 'image/x-pict', 'misc/ultravox', "
+        "'image/vnd.rn-realpix', 'image/x-pict', "
         "'text/x-google-video-pointer', 'video/3gp', 'video/3gpp', "
         "'video/divx', 'video/dv', 'video/fli', 'video/flv', 'video/mp2t', "
         "'video/mp4', 'video/mp4v-es', 'video/mpeg', 'video/msvideo', "
@@ -614,6 +614,8 @@ static void parole_mpris_update_any (Mpris2Provider *provider)
         change_detected = TRUE;
         provider->state = parole_provider_player_get_state (player);
         g_variant_builder_add (&b, "{sv}", "PlaybackStatus", mpris_Player_get_PlaybackStatus (NULL, provider));
+        g_variant_builder_add (&b, "{sv}", "CanPlay", mpris_Player_get_CanPlay(NULL, provider));
+        g_variant_builder_add (&b, "{sv}", "CanPause", mpris_Player_get_CanPause(NULL, provider));
     }
     g_object_get (G_OBJECT (provider->conf), "repeat", &repeat, NULL);
     if(provider->saved_playbackstatus != repeat)
