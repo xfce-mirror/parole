@@ -81,6 +81,8 @@ struct _ParoleProviderPlayerIface
     gboolean     (*seek)                        (ParoleProviderPlayer *player,
                                                  gdouble pos);
                                                  
+    gdouble      (*get_stream_position)         (ParoleProviderPlayer *player);
+                                                 
     gboolean     (*get_fullscreen)              (ParoleProviderPlayer *player);
     
     gboolean     (*set_fullscreen)              (ParoleProviderPlayer *player,
@@ -128,6 +130,8 @@ gboolean    parole_provider_player_play_next    (ParoleProviderPlayer *player);
 
 gboolean    parole_provider_player_seek         (ParoleProviderPlayer *player,
                                                  gdouble pos);
+                                                 
+gdouble parole_provider_player_get_stream_position(ParoleProviderPlayer *player);
 
 void        
 parole_provider_player_open_media_chooser       (ParoleProviderPlayer *player);

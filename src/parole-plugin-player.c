@@ -197,6 +197,19 @@ parole_plugin_player_seek (ParoleProviderPlayer *provider, gdouble pos)
     return TRUE;
 }
 
+static gdouble
+parole_plugin_player_get_stream_position (ParoleProviderPlayer *provider)
+{
+    ParolePluginPlayer *player;
+    gdouble position = 0;
+    
+    player = PAROLE_PLUGIN_PLAYER (provider);
+
+    position = parole_gst_get_stream_position (PAROLE_GST (player->priv->gst));
+    
+    return position;
+}
+
 static void parole_plugin_player_open_media_chooser (ParoleProviderPlayer *provider)
 {
     ParoleMediaList *list;
@@ -243,6 +256,7 @@ static void parole_plugin_player_iface_init (ParoleProviderPlayerIface *iface)
     iface->play_previous = parole_plugin_player_play_previous;
     iface->play_next = parole_plugin_player_play_next;
     iface->seek = parole_plugin_player_seek;
+    iface->get_stream_position = parole_plugin_player_get_stream_position;
     iface->open_media_chooser = parole_plugin_player_open_media_chooser;
     iface->get_fullscreen = parole_plugin_player_get_fullscreen;
     iface->set_fullscreen = parole_plugin_player_set_fullscreen;
@@ -302,7 +316,7 @@ parole_plugin_player_init (ParolePluginPlayer *player)
     g_signal_connect(   G_OBJECT(window), 
                         "window-state-event", 
                         G_CALLBACK(parole_plugin_player_window_state_event), 
-                        PAROLE_PLAYER(player) );
+                        player );
 
     player->priv->packed = FALSE;
     player->priv->box = NULL;

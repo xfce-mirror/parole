@@ -538,15 +538,10 @@ static void mpris_Player_put_Volume (GVariant *value, GError **error, Mpris2Prov
 
 static GVariant* mpris_Player_get_Position (GError **error, Mpris2Provider *provider)
 {
+    ParoleProviderPlayer *player = provider->player;
     gdouble position = 0;
 
-    /* TODO: How get position?
-    gdouble position = parole_gst_get_stream_position (PAROLE_GST (player->priv->gst))*/
-
-    /* Possibly:
-    ParoleStream *stream = parole_provider_player_get_stream(provider);
-    g_object_get_property(G_OBJECT(stream), "position", &position);
-    */
+    position = parole_provider_player_get_stream_position (player);
 
     return g_variant_new_int64(position);
 }

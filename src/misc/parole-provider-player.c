@@ -402,6 +402,26 @@ gboolean parole_provider_player_seek (ParoleProviderPlayer *player, gdouble pos)
     return ret;
 }
 
+/**
+ * parole_provider_player_get_fullscreen:
+ * @player: a #ParoleProviderPlayer
+ * 
+ * Get fullscreen status for Parole.
+ * 
+ * Since: 0.6
+ **/
+gdouble parole_provider_player_get_stream_position(ParoleProviderPlayer *player)
+{
+    g_return_val_if_fail (PAROLE_IS_PROVIDER_PLAYER (player), 0);
+    
+    if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_stream_position )
+    {
+        return (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_stream_position) (player);
+    }
+    
+    return FALSE;
+}
+
 
 /**
  * parole_provider_player_open_media_chooser:
