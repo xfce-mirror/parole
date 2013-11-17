@@ -441,7 +441,7 @@ static void handle_strings_request(GVariantBuilder *b, const gchar *tag, const g
 
 static void handle_get_metadata (const ParoleStream *stream, GVariantBuilder *b)
 {
-    gchar *title, *album, *artist, *year, *comment, *stream_uri;
+    gchar *title, *album, *artist, *year, *comment, *stream_uri, *image_uri;
     gint64 duration;
 
     g_object_get (G_OBJECT (stream),
@@ -452,10 +452,13 @@ static void handle_get_metadata (const ParoleStream *stream, GVariantBuilder *b)
                   "comment", &comment,
                   "duration", &duration,
                   "uri", &stream_uri,
+                  "image_uri", &image_uri,
                   NULL);
 
     g_variant_builder_add (b, "{sv}", "mpris:trackid",
         handle_get_trackid(stream));
+    g_variant_builder_add (b, "{sv}", "mpris:artUrl",
+        g_variant_new_string(image_uri));
     g_variant_builder_add (b, "{sv}", "xesam:url",
         g_variant_new_string(stream_uri));
     g_variant_builder_add (b, "{sv}", "xesam:title",
@@ -477,8 +480,6 @@ static void handle_get_metadata (const ParoleStream *stream, GVariantBuilder *b)
         g_variant_new_int32(0));
     g_variant_builder_add (b, "{sv}", "audio-samplerate",
         g_variant_new_int32(0));
-
-    // TODO: add mpris:artUrl
 
     g_free(title);
     g_free(album);
