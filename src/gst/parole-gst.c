@@ -1280,6 +1280,7 @@ parole_gst_get_meta_data_cdda (ParoleGst *gst, GstTagList *tag)
                       "year", NULL,
                       "album", _("Audio CD"),
                       "comment", NULL,
+                      "genre", NULL,
                       NULL);
                   
         parole_stream_set_image (G_OBJECT (gst->priv->stream), NULL);
@@ -1349,6 +1350,15 @@ parole_gst_get_meta_data_local_file (ParoleGst *gst, GstTagList *tag)
         g_free (str);
     }
     
+    if ( gst_tag_list_get_string_index (tag, GST_TAG_GENRE, 0, &str) )
+    {
+        TRACE ("genre:%s", str);
+        g_object_set (G_OBJECT (gst->priv->stream),
+                      "genre", str,
+                      NULL);
+        g_free (str);
+    }
+    
     if ( gst_tag_list_get_uint (tag, GST_TAG_TRACK_NUMBER, &integer) )
     {
         TRACE ("track:%i", integer);
@@ -1380,6 +1390,7 @@ parole_gst_get_meta_data_unknown (ParoleGst *gst)
                   "year", NULL,
                   "album", NULL,
                   "comment", NULL,
+                  "genre", NULL,
                   NULL);
     
     parole_stream_set_image (G_OBJECT (gst->priv->stream), NULL);

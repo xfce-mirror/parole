@@ -441,7 +441,7 @@ static void handle_strings_request(GVariantBuilder *b, const gchar *tag, const g
 
 static void handle_get_metadata (const ParoleStream *stream, GVariantBuilder *b)
 {
-    gchar *title, *album, *artist, *year, *comment, *stream_uri, *image_uri;
+    gchar *title, *album, *artist, *year, *comment, *stream_uri, *genre, *image_uri;
     gint track_id;
     gint64 duration;
 
@@ -453,6 +453,7 @@ static void handle_get_metadata (const ParoleStream *stream, GVariantBuilder *b)
                   "comment", &comment,
                   "duration", &duration,
                   "uri", &stream_uri,
+                  "genre", &genre,
                   "image_uri", &image_uri,
                   "track", &track_id,
                   NULL);
@@ -468,7 +469,8 @@ static void handle_get_metadata (const ParoleStream *stream, GVariantBuilder *b)
     handle_strings_request(b, "xesam:artist", artist);
     g_variant_builder_add (b, "{sv}", "xesam:album",
         g_variant_new_string(album));
-    handle_strings_request(b, "xesam:genre", "unknown");        // GST_TAG_GENRE
+    g_variant_builder_add (b, "xesam:genre", 
+        g_variant_new_string(genre));
     g_variant_builder_add (b, "{sv}", "xesam:contentCreated",
         g_variant_new_string(year));
     g_variant_builder_add (b, "{sv}", "xesam:trackNumber",

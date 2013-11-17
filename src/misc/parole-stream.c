@@ -71,6 +71,7 @@ struct _ParoleStreamPrivate
     gchar      *year;
     gchar      *album;
     gchar      *comment;
+    gchar      *genre;
     GdkPixbuf  *image;
     gchar      *image_uri, *previous_image;
     
@@ -101,6 +102,7 @@ enum
     PROP_YEAR,
     PROP_ALBUM,
     PROP_COMMENT,
+    PROP_GENRE,
     PROP_IMAGE_URI
 };
 
@@ -225,6 +227,9 @@ static void parole_stream_set_property (GObject *object,
         case PROP_COMMENT:
             PAROLE_STREAM_DUP_GVALUE_STRING (PAROLE_STREAM_GET_PRIVATE (stream)->comment, value);
             break;
+        case PROP_GENRE:
+            PAROLE_STREAM_DUP_GVALUE_STRING (PAROLE_STREAM_GET_PRIVATE (stream)->genre, value);
+            break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
             break;
@@ -306,6 +311,9 @@ static void parole_stream_get_property (GObject *object,
             break;
         case PROP_COMMENT:
             g_value_set_string (value, PAROLE_STREAM_GET_PRIVATE (stream)->comment);
+            break;
+        case PROP_GENRE:
+            g_value_set_string (value, PAROLE_STREAM_GET_PRIVATE (stream)->genre);
             break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -713,6 +721,21 @@ parole_stream_class_init (ParoleStreamClass *klass)
                                              G_PARAM_READWRITE));
                                              
     /**
+     * ParoleStream:genre:
+     * 
+     * Genre.
+     * 
+     * Since: 0.6
+     **/
+    g_object_class_install_property (object_class,
+                                     PROP_GENRE,
+                                     g_param_spec_string ("genre",
+                                             "Genre", 
+                                             "Genre",
+                                             NULL,
+                                             G_PARAM_READWRITE));
+                                             
+    /**
      * ParoleStream:image_uri:
      * 
      * URI for the currently playing album's artwork.
@@ -772,6 +795,7 @@ void parole_stream_init_properties (ParoleStream *stream)
     PAROLE_STREAM_FREE_STR_PROP (priv->year);
     PAROLE_STREAM_FREE_STR_PROP (priv->album);
     PAROLE_STREAM_FREE_STR_PROP (priv->comment);
+    PAROLE_STREAM_FREE_STR_PROP (priv->genre);
     PAROLE_STREAM_FREE_STR_PROP (priv->image_uri);
     
     /* Remove the previous image if it exists */
