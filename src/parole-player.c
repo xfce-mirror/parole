@@ -2881,8 +2881,6 @@ parole_player_init (ParolePlayer *player)
     
     GtkWidget *bug_report;
     
-    gboolean repeat, shuffle;
-    
     GtkCellRenderer *cell, *sub_cell;
     
     GtkWidget *hbox_infobar;
@@ -3010,7 +3008,7 @@ parole_player_init (ParolePlayer *player)
     gtk_action_set_icon_name(GTK_ACTION(player->priv->toggle_repeat_action), "media-playlist-repeat-symbolic");
     g_object_bind_property(G_OBJECT (player->priv->conf), "repeat", 
                            player->priv->toggle_repeat_action, "active", 
-                           G_BINDING_BIDIRECTIONAL);
+                           G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
     gtk_action_set_sensitive(GTK_ACTION(player->priv->toggle_repeat_action), TRUE);
     
     /* Toggle Shuffle */
@@ -3018,7 +3016,7 @@ parole_player_init (ParolePlayer *player)
     gtk_action_set_icon_name(GTK_ACTION(player->priv->toggle_shuffle_action), "media-playlist-shuffle-symbolic");
     g_object_bind_property(G_OBJECT (player->priv->conf), "shuffle", 
                            player->priv->toggle_shuffle_action, "active", 
-                           G_BINDING_BIDIRECTIONAL);
+                           G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
     gtk_action_set_sensitive(GTK_ACTION(player->priv->toggle_shuffle_action), TRUE);
     
     
@@ -3381,15 +3379,6 @@ parole_player_init (ParolePlayer *player)
      * Load auto saved media list.
      */
     parole_media_list_load (player->priv->list);
-    
-    g_object_get (G_OBJECT (player->priv->conf),
-                  "repeat", &repeat,
-                  "shuffle", &shuffle,
-                  NULL);
-
-    gtk_toggle_action_set_active (player->priv->toggle_repeat_action, repeat);
-
-    gtk_toggle_action_set_active (player->priv->toggle_shuffle_action, shuffle);
   
     parole_gst_set_default_aspect_ratio (player, builder);
     
