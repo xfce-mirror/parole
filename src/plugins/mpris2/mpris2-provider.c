@@ -414,9 +414,9 @@ static GVariant* mpris_Player_get_Shuffle (GError **error, Mpris2Provider *provi
 
 static void mpris_Player_put_Shuffle (GVariant *value, GError **error, Mpris2Provider *provider)
 {
-	gboolean shuffle = g_variant_get_boolean(value);
+    gboolean shuffle = g_variant_get_boolean(value);
 
-   g_object_set (G_OBJECT (provider->conf), "shuffle", shuffle, NULL);
+    g_object_set (G_OBJECT (provider->conf), "shuffle", shuffle, NULL);
 }
 
 static GVariant * handle_get_trackid(const ParoleStream *stream)
@@ -431,12 +431,26 @@ static GVariant * handle_get_trackid(const ParoleStream *stream)
     return g_variant_new_object_path(o);
 }
 
-static void handle_strings_request(GVariantBuilder *b, const gchar *tag, const gchar *val)
+static void g_variant_builder_add_array (GVariantBuilder *b, const gchar *tag, const gchar *val)
 {
-	GVariant *vval = g_variant_new_string(val);
-	GVariant *vvals = g_variant_new_array(G_VARIANT_TYPE_STRING, &vval, 1);
+    GVariant *vval = NULL, *vvals = NULL;
 
-	g_variant_builder_add (b, "{sv}", tag, vvals);
+    if (!val)
+        return;
+
+    vval = g_variant_new_string(val);
+    vvals  = g_variant_new_array(G_VARIANT_TYPE_STRING, &vval, 1);
+
+    g_variant_builder_add (b, "{sv}", tag, vvals);
+}
+
+static void g_variant_builder_add_string (GVariantBuilder *b, const gchar *tag, const gchar *val)
+{
+    if (!val)
+        return;
+
+    g_variant_builder_add (b, "{sv}", tag,
+        g_variant_new_string(val));
 }
 
 static void handle_get_metadata (const ParoleStream *stream, GVariantBuilder *b)
@@ -461,21 +475,16 @@ static void handle_get_metadata (const ParoleStream *stream, GVariantBuilder *b)
 
     g_variant_builder_add (b, "{sv}", "mpris:trackid",
         handle_get_trackid(stream));
-    g_variant_builder_add (b, "{sv}", "mpris:artUrl",
-        g_variant_new_string(image_uri));
-    g_variant_builder_add (b, "{sv}", "xesam:url",
-        g_variant_new_string(stream_uri));
-    g_variant_builder_add (b, "{sv}", "xesam:title",
-        g_variant_new_string(title));
-    handle_strings_request(b, "xesam:artist", artist);
-    g_variant_builder_add (b, "{sv}", "xesam:album",
-        g_variant_new_string(album));
-    handle_strings_request(b, "xesam:genre", genre);
-    g_variant_builder_add (b, "{sv}", "xesam:contentCreated",
-        g_variant_new_string(year));
+    g_variant_builder_add_string (b, "mpris:artUrl", image_uri);
+    g_variant_builder_add_string (b, "xesam:url", stream_uri);
+    g_variant_builder_add_string (b, "xesam:title", title);
+    g_variant_builder_add_array  (b, "xesam:artist", artist);
+    g_variant_builder_add_string (b, "xesam:album", album);
+    g_variant_builder_add_array  (b, "xesam:genre", genre);
+    g_variant_builder_add_string (b, "xesam:contentCreated", year);
     g_variant_builder_add (b, "{sv}", "xesam:trackNumber",
         g_variant_new_int32(track_id));
-    handle_strings_request(b, "xesam:comment", comment);
+    g_variant_builder_add_array (b, "xesam:comment", comment);
     g_variant_builder_add (b, "{sv}", "mpris:length",
         g_variant_new_int64((gint64)duration * 1000000));
     g_variant_builder_add (b, "{sv}", "audio-bitrate",
