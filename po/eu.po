@@ -1,477 +1,550 @@
+# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # 
-# Piarres Beobide <pi+debian@beobide.net>, 2009.
+# Translators:
+# Piarres Beobide <pi+debian@beobide.net>, 2009
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-24 18:27+0000\n"
-"PO-Revision-Date: 2009-12-15 12:26+0100\n"
-"Last-Translator: Piarres Beobide <pi+debian@beobide.net>\n"
-"Language-Team: Basque <debian-l10n-basque@lists.debian.org>\n"
+"POT-Creation-Date: 2013-11-13 06:30+0100\n"
+"PO-Revision-Date: 2013-11-19 16:28+0000\n"
+"Last-Translator: Xfce <transifex@xfce.org>\n"
+"Language-Team: Basque (http://www.transifex.com/projects/p/xfce/language/eu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: eu\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../data/interfaces/parole.ui.h:1
-msgid "16:9 (Widescreen)"
-msgstr "16:9 (Panoramikoa)"
-
-#: ../data/interfaces/parole.ui.h:2
-msgid "20:9 (DVB)"
-msgstr "20:9 (DVB)"
-
-#: ../data/interfaces/parole.ui.h:3
-msgid "4:3 (TV)"
-msgstr "4:3 (TV)"
-
-#: ../data/interfaces/parole.ui.h:4
-msgid ""
-"<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
-"Artist</span></big>"
-msgstr ""
-"<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Artista "
-"ezezaguna</span></big>"
-
-#: ../data/interfaces/parole.ui.h:5
-msgid ""
-"<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
-"Album</span></big>"
-msgstr ""
-"<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Album "
-"ezezaguna</span></big>"
-
-#: ../data/interfaces/parole.ui.h:6
-msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
-msgstr "<span color='#F4F4F4'><b><big>Kanta ezezaguna</big></b></span>"
-
-#: ../data/interfaces/parole.ui.h:7 ../src/misc/parole-filters.c:64
-msgid "Audio"
-msgstr "Audioa"
-
-#: ../data/interfaces/parole.ui.h:8
-msgid "Audio Track:"
-msgstr "Audio pista:"
-
-#: ../data/interfaces/parole.ui.h:9
-msgid "Auto"
-msgstr "Auto"
-
-#: ../data/interfaces/parole.ui.h:11
-#, no-c-format
-msgid "Buffering (0%)"
-msgstr "Bufferra betetzen (0%)"
-
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:750
-msgid "Empty"
-msgstr "Hutsa"
-
-#: ../data/interfaces/parole.ui.h:13
-msgid "Fullscreen"
-msgstr "Pantaila-osoa"
-
-#: ../data/interfaces/parole.ui.h:14 ../src/parole-disc.c:110
-#: ../src/parole-disc.c:156
-msgid "Insert Disc"
-msgstr "Sartu diskoa"
-
-#: ../data/interfaces/parole.ui.h:15
-msgid "Languages"
-msgstr "Hizkuntzak"
-
-#: ../data/interfaces/parole.ui.h:16
-msgid "Media player"
-msgstr "Media erreproduzigailua"
-
-#: ../data/interfaces/parole.ui.h:17
-msgid "Next"
-msgstr "Hurrengoa"
-
-#: ../data/interfaces/parole.ui.h:18
-msgid "None"
-msgstr "Batez"
-
-#: ../data/interfaces/parole.ui.h:19
-msgid "Open Recent"
-msgstr "Ireki azkena"
-
-#: ../data/interfaces/parole.ui.h:20
-msgid "Open _Location"
-msgstr "Ireki _kokalekua"
-
-#: ../data/interfaces/parole.ui.h:21 ../data/desktop/parole.desktop.in.in.h:1
-#: ../src/parole-about.c:68
+#: ../data/interfaces/parole.ui.h:1 ../data/desktop/parole.desktop.in.in.h:1
+#: ../src/parole-player.c:565 ../src/parole-player.c:1453
+#: ../src/parole-about.c:70
 msgid "Parole Media Player"
 msgstr "Parole media erreproduzigailua"
 
-#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:1414
-#: ../src/parole-player.c:1448
-msgid "Play"
-msgstr "Erreproduzitu"
-
-#: ../data/interfaces/parole.ui.h:23
-msgid "Plugins"
-msgstr "Pluginak"
-
-#: ../data/interfaces/parole.ui.h:24
-msgid "Previous"
-msgstr "Aurrekoa"
-
-#: ../data/interfaces/parole.ui.h:25
-msgid "Select Text Subtitles..."
-msgstr "Hautatu testu azpitituluak..."
-
-#: ../data/interfaces/parole.ui.h:26
-msgid "Show _playlist"
-msgstr "Ikusi erre_produkzio-zerrenda"
-
-#: ../data/interfaces/parole.ui.h:27
-msgid "Square"
-msgstr "Karratua"
-
-#: ../data/interfaces/parole.ui.h:28
-msgid "Subtitles"
-msgstr "Azpitituluak"
-
-#: ../data/interfaces/parole.ui.h:29
-msgid "Subtitles:"
-msgstr "Azpitituluak:"
-
-#: ../data/interfaces/parole.ui.h:30
-msgid "Volume _Down"
-msgstr "Bolumena _jaitsi"
-
-#: ../data/interfaces/parole.ui.h:31
-msgid "Volume _Up"
-msgstr "Bolumena _igo"
-
-#: ../data/interfaces/parole.ui.h:32
-msgid "_Aspect Ratio"
-msgstr "Itxura _erlazioa"
-
-#: ../data/interfaces/parole.ui.h:33
-msgid "_Edit"
-msgstr "_Editatu"
-
-#: ../data/interfaces/parole.ui.h:34
-msgid "_Help"
-msgstr "_Laguntza"
-
-#: ../data/interfaces/parole.ui.h:35
+#: ../data/interfaces/parole.ui.h:2
 msgid "_Media"
 msgstr "_Euskarria"
 
-#: ../data/interfaces/parole.ui.h:36
-msgid "_Mute"
-msgstr "_Mutu"
+#: ../data/interfaces/parole.ui.h:3
+msgid "_Open…"
+msgstr ""
 
-#: ../data/interfaces/parole.ui.h:37
+#: ../data/interfaces/parole.ui.h:4
+msgid "Open _Location…"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:5
+msgid "Open _Recent"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:6
+msgid "_Save Playlist…"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:112
+#: ../src/parole-disc.c:154
+msgid "Insert Disc"
+msgstr "Sartu diskoa"
+
+#: ../data/interfaces/parole.ui.h:8 ../src/plugins/tray/tray-provider.c:150
+msgid "_Quit"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:9
+msgid "_Playback"
+msgstr ""
+
+#. Toggle Repeat
+#: ../data/interfaces/parole.ui.h:10 ../src/parole-player.c:2988
 msgid "_Repeat"
 msgstr "E_rrepikatu"
 
-#: ../data/interfaces/parole.ui.h:38
+#. Toggle Shuffle
+#: ../data/interfaces/parole.ui.h:11 ../src/parole-player.c:2996
 msgid "_Shuffle"
 msgstr "_Ausaz"
 
+#: ../data/interfaces/parole.ui.h:12
+msgid "_DVD"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:13
+msgid "_DVD Menu"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:14
+msgid "_Title Menu"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:15
+msgid "_Audio Menu"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:16
+msgid "A_ngle Menu"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:17
+msgid "_Chapters"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:18
+msgid "_Chapter Menu"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:19
+msgid "_Audio"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:20
+msgid "_Audio Track"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:21 ../src/parole-player.c:791
+msgid "Empty"
+msgstr "Hutsa"
+
+#: ../data/interfaces/parole.ui.h:22
+msgid "Volume _Up"
+msgstr "Bolumena _igo"
+
+#: ../data/interfaces/parole.ui.h:23
+msgid "Volume _Down"
+msgstr "Bolumena _jaitsi"
+
+#: ../data/interfaces/parole.ui.h:24
+msgid "_Mute"
+msgstr "_Mutu"
+
+#: ../data/interfaces/parole.ui.h:25
+msgid "_Video"
+msgstr ""
+
+#. Fullscreen
+#: ../data/interfaces/parole.ui.h:26 ../src/parole-player.c:1938
+#: ../src/parole-player.c:2976
+msgid "_Fullscreen"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:27
+msgid "_Aspect Ratio"
+msgstr "Itxura _erlazioa"
+
+#: ../data/interfaces/parole.ui.h:28 ../src/parole-player.c:719
+msgid "None"
+msgstr "Batez"
+
+#: ../data/interfaces/parole.ui.h:29
+msgid "Auto"
+msgstr "Auto"
+
+#: ../data/interfaces/parole.ui.h:30
+msgid "Square"
+msgstr "Karratua"
+
+#: ../data/interfaces/parole.ui.h:31
+msgid "4:3 (TV)"
+msgstr "4:3 (TV)"
+
+#: ../data/interfaces/parole.ui.h:32
+msgid "16:9 (Widescreen)"
+msgstr "16:9 (Panoramikoa)"
+
+#: ../data/interfaces/parole.ui.h:33
+msgid "20:9 (DVB)"
+msgstr "20:9 (DVB)"
+
+#: ../data/interfaces/parole.ui.h:34
+msgid "_Subtitles"
+msgstr "A_zpitituluak"
+
+#: ../data/interfaces/parole.ui.h:35
+msgid "Select Text Subtitles…"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:36
+msgid "_Tools"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:37
+msgid "P_lugins"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:38
+msgid "_Preferences"
+msgstr ""
+
 #: ../data/interfaces/parole.ui.h:39
-msgid "_View"
-msgstr "_Ikusi"
+msgid "_Help"
+msgstr "_Laguntza"
+
+#: ../data/interfaces/parole.ui.h:40
+msgid "_Report a Bug…"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:41
+msgid "_About"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:42
+msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
+msgstr "<span color='#F4F4F4'><b><big>Kanta ezezaguna</big></b></span>"
+
+#: ../data/interfaces/parole.ui.h:43
+msgid ""
+"<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
+"Album</span></big>"
+msgstr "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Album ezezaguna</span></big>"
+
+#: ../data/interfaces/parole.ui.h:44
+msgid ""
+"<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
+"Artist</span></big>"
+msgstr "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Artista ezezaguna</span></big>"
+
+#: ../data/interfaces/parole.ui.h:45
+msgid "0:00"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:47
+#, no-c-format
+msgid "Buffering (0%)"
+msgstr "Bufferra betetzen (0%)"
 
 #: ../data/interfaces/mediachooser.ui.h:1
 msgid "Open Media Files"
 msgstr "Ireki euskarri fitxategiak"
 
-#: ../data/interfaces/mediachooser.ui.h:2
-msgid "_Open"
-msgstr "_Ireki"
-
 #: ../data/interfaces/playlist.ui.h:1
-msgid "Add…"
-msgstr "Gehitu..."
-
-#: ../data/interfaces/playlist.ui.h:2
-msgid "Angle Menu"
-msgstr "Angulu menua"
-
-#: ../data/interfaces/playlist.ui.h:3
-msgid "Audio Menu"
-msgstr "Audio menua"
-
-#: ../data/interfaces/playlist.ui.h:4
-msgid "Chapter Menu"
-msgstr "Kapitulu menua"
-
-#: ../data/interfaces/playlist.ui.h:5
-msgid "Clear"
-msgstr "Garbitu"
-
-#: ../data/interfaces/playlist.ui.h:6
-msgid "DVD Menu"
-msgstr "DVD menua"
-
-#: ../data/interfaces/playlist.ui.h:7
-msgid "DVD Name"
-msgstr "DVD Izena"
-
-#: ../data/interfaces/playlist.ui.h:8
-msgid "Disc Playlist"
-msgstr "Disko erreprodukzio-zerrenda "
-
-#: ../data/interfaces/playlist.ui.h:9
-msgid "Play opened files"
-msgstr "Erreproduzitu irekitako fitxategiak"
-
-#: ../data/interfaces/playlist.ui.h:10 ../src/parole-medialist.c:805
-#: ../src/parole-player.c:3074
+#: ../data/interfaces/parole-settings.ui.h:23 ../src/parole-medialist.c:808
+#: ../src/parole-medialist.c:851 ../src/parole-player.c:3304
 msgid "Playlist"
 msgstr "Erreprodukzio-zerrenda "
 
-#: ../data/interfaces/playlist.ui.h:11 ../src/parole-medialist.c:993
-#: ../src/parole-medialist.c:1137
-msgid "Playlist empty"
-msgstr "Erreprodukzio-zerrenda hutsa"
+#: ../data/interfaces/playlist.ui.h:2
+msgid "Disc Playlist"
+msgstr "Disko erreprodukzio-zerrenda "
 
-#: ../data/interfaces/playlist.ui.h:12
-msgid "Playlist options"
-msgstr "Erreprodukzio-zerrenda aukerak"
+#: ../data/interfaces/playlist.ui.h:3
+msgid "Add to playlist…"
+msgstr ""
 
-#: ../data/interfaces/playlist.ui.h:13
-#: ../data/interfaces/parole-settings.ui.h:17
-msgid "Remember playlist"
-msgstr "Gogoratu erreprodukzio-zerrenda"
+#: ../data/interfaces/playlist.ui.h:4
+msgid "Add"
+msgstr ""
 
-#: ../data/interfaces/playlist.ui.h:14
+#: ../data/interfaces/playlist.ui.h:5
+msgid "Remove selected media"
+msgstr ""
+
+#: ../data/interfaces/playlist.ui.h:6
 msgid "Remove"
 msgstr "Kendu"
 
-#: ../data/interfaces/playlist.ui.h:15
+#: ../data/interfaces/playlist.ui.h:7
+msgid "Clear playlist"
+msgstr ""
+
+#: ../data/interfaces/playlist.ui.h:8
+msgid "Clear"
+msgstr "Garbitu"
+
+#: ../data/interfaces/playlist.ui.h:9 ../src/parole-player.c:2988
 msgid "Repeat"
 msgstr "Errepikatu"
 
-#: ../data/interfaces/playlist.ui.h:16
-msgid "Replace playlist when opening files"
-msgstr "Ordeztu erreprodukzio-zerrenda fitxategiak irekitzean"
-
-#: ../data/interfaces/playlist.ui.h:17
+#: ../data/interfaces/playlist.ui.h:10 ../src/parole-player.c:2996
 msgid "Shuffle"
 msgstr "Ausaz"
 
-#: ../data/interfaces/playlist.ui.h:18
-msgid "Title Menu"
-msgstr "Izenburu menua"
+#: ../data/interfaces/playlist.ui.h:11
+msgid "Move Up"
+msgstr ""
+
+#: ../data/interfaces/playlist.ui.h:12
+msgid "Move Down"
+msgstr ""
+
+#: ../data/interfaces/playlist.ui.h:13
+msgid "Replace playlist when opening files"
+msgstr "Ordeztu erreprodukzio-zerrenda fitxategiak irekitzean"
+
+#: ../data/interfaces/playlist.ui.h:14
+msgid "Play opened files"
+msgstr "Erreproduzitu irekitako fitxategiak"
+
+#: ../data/interfaces/playlist.ui.h:15
+#: ../data/interfaces/parole-settings.ui.h:21
+msgid "Remember playlist"
+msgstr "Gogoratu erreprodukzio-zerrenda"
 
 #: ../data/interfaces/plugins.ui.h:1
-msgid "<b>Author</b>"
-msgstr "<b>Autorea:</b>"
-
-#: ../data/interfaces/plugins.ui.h:2
-msgid "<b>Description</b>"
-msgstr "<b>Azalpena:</b>"
-
-#: ../data/interfaces/plugins.ui.h:3
-msgid "Enabled"
-msgstr "Gaiturik "
-
-#: ../data/interfaces/plugins.ui.h:4
-msgid "Extend your media player"
-msgstr "Hedatu euskarri erreproduzigailua "
-
-#: ../data/interfaces/plugins.ui.h:5
 msgid "Parole Plugins"
 msgstr "Parole pluginak"
 
-#: ../data/interfaces/plugins.ui.h:6
+#: ../data/interfaces/plugins.ui.h:2
+msgid "Extend your media player"
+msgstr "Hedatu euskarri erreproduzigailua "
+
+#: ../data/interfaces/plugins.ui.h:3
 msgid "Plugin"
 msgstr "Plugina"
 
-#: ../data/interfaces/plugins.ui.h:7
+#: ../data/interfaces/plugins.ui.h:4
+msgid "<b>Description</b>"
+msgstr "<b>Azalpena:</b>"
+
+#: ../data/interfaces/plugins.ui.h:5
+msgid "<b>Author</b>"
+msgstr "<b>Autorea:</b>"
+
+#: ../data/interfaces/plugins.ui.h:6
 msgid "Visit Website"
 msgstr "Ikusi webgunea"
 
 #: ../data/interfaces/parole-settings.ui.h:1
-msgid "<b>Audio</b>"
-msgstr "<b>Audioa</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:2
-msgid "<b>Keyboard</b>"
-msgstr "<b>Teklatua</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:3
-msgid "<b>Video</b>"
-msgstr "<b>Bideoa</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:4
-msgid "Always replace playlist with opened files"
-msgstr "Beri ordeztu erreprodukzio-zerrenda irekitako fitxategiekin"
-
-#: ../data/interfaces/parole-settings.ui.h:5
-msgid "Automatically show subtitles when playing movie file"
-msgstr "Automatikoki ikusi azpitituluak filma fitxategi bat erreproduzitzean"
-
-#: ../data/interfaces/parole-settings.ui.h:6
-msgid "Brightness:"
-msgstr "Distira:"
-
-#: ../data/interfaces/parole-settings.ui.h:7
-msgid "Check and remove duplicate media entries"
-msgstr "Arakatu eta ezabatu bikoiztutako sarrerak"
-
-#: ../data/interfaces/parole-settings.ui.h:8
-msgid "Configure your media player"
-msgstr "Konfiguratu euskarri erreproduzigailua "
-
-#: ../data/interfaces/parole-settings.ui.h:9
-msgid "Contrast:"
-msgstr "Kontrastea:"
-
-#: ../data/interfaces/parole-settings.ui.h:10
-msgid "Disable screensaver while playing movies"
-msgstr "Desgaitu pantaila-babeslea filmak erreproduzitzean"
-
-#: ../data/interfaces/parole-settings.ui.h:11
-msgid "Enable keyboard multimedia keys"
-msgstr "Gaitu teklatuko multimedia teklak"
-
-#: ../data/interfaces/parole-settings.ui.h:12
-msgid "Enable visualization when playing audio file"
-msgstr "Gailu bistaratzea audio fitxategi bat erreproduzitzean"
-
-#: ../data/interfaces/parole-settings.ui.h:13
-msgid "Encoding:"
-msgstr "Kodeketa: "
-
-#: ../data/interfaces/parole-settings.ui.h:14
-msgid "Font:"
-msgstr "Letra-tipoa:"
-
-#: ../data/interfaces/parole-settings.ui.h:15
-msgid "Hue:"
-msgstr "Ñabardura:"
-
-#: ../data/interfaces/parole-settings.ui.h:16
 msgid "Parole Settings"
 msgstr "Parole ezarpenak"
 
-#: ../data/interfaces/parole-settings.ui.h:18
+#: ../data/interfaces/parole-settings.ui.h:2
+msgid "Configure your media player"
+msgstr "Konfiguratu euskarri erreproduzigailua "
+
+#: ../data/interfaces/parole-settings.ui.h:3
+msgid "Disable screensaver when playing movies"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:4
+msgid "<b>Screensaver</b>"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:5
+msgid "Show visual effects when an audio file is played"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:6
+msgid "Visualization type:"
+msgstr "Bistaratze mota:"
+
+#: ../data/interfaces/parole-settings.ui.h:7
+msgid "<b>Audio Visualization</b>"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:8
+msgid "Enable keyboard multimedia keys"
+msgstr "Gaitu teklatuko multimedia teklak"
+
+#: ../data/interfaces/parole-settings.ui.h:9
+msgid "<b>Keyboard</b>"
+msgstr "<b>Teklatua</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:10
+msgid "General"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:11
+msgid "Brightness:"
+msgstr "Distira:"
+
+#: ../data/interfaces/parole-settings.ui.h:12
+msgid "Contrast:"
+msgstr "Kontrastea:"
+
+#: ../data/interfaces/parole-settings.ui.h:13
+msgid "Hue:"
+msgstr "Ñabardura:"
+
+#: ../data/interfaces/parole-settings.ui.h:14
+msgid "Saturation:"
+msgstr "Saturazioa:"
+
+#: ../data/interfaces/parole-settings.ui.h:15
 msgid "Reset to defaults"
 msgstr "Berrezarri lehenespenetara"
 
+#: ../data/interfaces/parole-settings.ui.h:16
+msgid "<b>Color Balance</b>"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:17
+msgid "Display"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:18
+msgid "Always replace playlist with opened files"
+msgstr "Beri ordeztu erreprodukzio-zerrenda irekitako fitxategiekin"
+
 #: ../data/interfaces/parole-settings.ui.h:19
-msgid "Saturation:"
-msgstr "Saturazioa:"
+msgid "Check and remove duplicate media entries"
+msgstr "Arakatu eta ezabatu bikoiztutako sarrerak"
 
 #: ../data/interfaces/parole-settings.ui.h:20
 msgid "Start playing opened files"
 msgstr "Hasi irekitako fitxategiak erreproduzitzen"
 
-#: ../data/interfaces/parole-settings.ui.h:21
-msgid "Visualization type:"
-msgstr "Bistaratze mota:"
-
 #: ../data/interfaces/parole-settings.ui.h:22
-msgid "_Display"
-msgstr "_Bistaratzea"
-
-#: ../data/interfaces/parole-settings.ui.h:23
-msgid "_General"
-msgstr "_Orokorra"
+msgid "<b>Playlist Settings</b>"
+msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:24
-msgid "_Playlist"
-msgstr "Erre_produkzio-zerrenda "
+msgid "Automatically show subtitles when playing movie file"
+msgstr "Automatikoki ikusi azpitituluak filma fitxategi bat erreproduzitzean"
 
 #: ../data/interfaces/parole-settings.ui.h:25
-msgid "_Subtitles"
-msgstr "A_zpitituluak"
+msgid "Font:"
+msgstr "Letra-tipoa:"
+
+#: ../data/interfaces/parole-settings.ui.h:26
+msgid "Encoding:"
+msgstr "Kodeketa: "
+
+#: ../data/interfaces/parole-settings.ui.h:27
+msgid "<b>Subtitle Settings</b>"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:28
+msgid "Subtitles"
+msgstr "Azpitituluak"
 
 #: ../data/interfaces/save-playlist.ui.h:1
-msgid "By Extension"
-msgstr "Luzapenez"
+msgid "Save Playlist as…"
+msgstr ""
 
 #: ../data/interfaces/save-playlist.ui.h:2
+msgid "File Type"
+msgstr ""
+
+#: ../data/interfaces/save-playlist.ui.h:3
+msgid "Extension"
+msgstr ""
+
+#: ../data/interfaces/save-playlist.ui.h:4
 msgid "Select File Types (By Extension)"
 msgstr "Hautatu fitxategi motak (luzapenez)"
 
-#: ../data/interfaces/open-location.ui.h:1
-msgid "<big><b>Open Network Location</b></big>"
-msgstr "<big><b>Ireki sare kokalekua</b></big>"
+#: ../data/interfaces/save-playlist.ui.h:5
+msgid "By Extension"
+msgstr "Luzapenez"
 
-#: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:192
+#: ../data/interfaces/open-location.ui.h:1
+msgid "Open Network Location"
+msgstr "Ireki sare kokalekua"
+
+#: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:193
 msgid "Clear History"
 msgstr "Garbitu historia"
 
 #: ../data/interfaces/open-location.ui.h:3
-msgid "Open Network Location"
-msgstr "Ireki sare kokalekua"
+msgid "<big><b>Open Network Location</b></big>"
+msgstr "<big><b>Ireki sare kokalekua</b></big>"
 
 #: ../data/desktop/parole.desktop.in.in.h:2
 msgid "Play your media"
 msgstr "Erreproduzitu zure euskarria"
 
-#: ../src/common/parole-common.c:67
+#: ../data/desktop/parole.desktop.in.in.h:3
+msgid "Play/Pause"
+msgstr ""
+
+#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:2960
+#: ../src/parole-player.c:3184 ../src/plugins/notify/notify-provider.c:199
+msgid "Previous Track"
+msgstr ""
+
+#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:2968
+#: ../src/parole-player.c:3194 ../src/plugins/notify/notify-provider.c:209
+msgid "Next Track"
+msgstr ""
+
+#: ../src/common/parole-common.c:70
 msgid "Message"
 msgstr "Mezua"
 
-#: ../src/common/parole-common.c:72
+#: ../src/common/parole-common.c:75
 msgid "Error"
 msgstr "Errorea"
 
-#: ../src/gst/parole-gst.c:1370 ../src/parole-medialist.c:377
+#: ../src/gst/parole-gst.c:1278 ../src/parole-medialist.c:401
 #, c-format
 msgid "Track %i"
 msgstr "%i pista"
 
-#: ../src/gst/parole-gst.c:1373
+#: ../src/gst/parole-gst.c:1281
 msgid "Audio CD"
 msgstr "Audio CDa"
 
-#: ../src/gst/parole-gst.c:1579
+#: ../src/gst/parole-gst.c:1492
 msgid "Additional software is required."
 msgstr "Software gehigarria beharrezko"
 
-#: ../src/gst/parole-gst.c:1583
+#: ../src/gst/parole-gst.c:1497
 msgid "Don't Install"
 msgstr "Ez instalatu"
 
-#: ../src/gst/parole-gst.c:1585
+#: ../src/gst/parole-gst.c:1499
 msgid "Install"
 msgstr "Instalatu"
 
-#: ../src/gst/parole-gst.c:2008
-msgid "Stop"
-msgstr "Gelditu"
+#: ../src/gst/parole-gst.c:1502
+msgid "OK"
+msgstr ""
 
-#: ../src/gst/parole-gst.c:2009
+#: ../src/gst/parole-gst.c:1509
+#, c-format
+msgid ""
+"Parole needs <b>%s</b> to play this file.\n"
+"It can be installed automatically."
+msgstr ""
+
+#: ../src/gst/parole-gst.c:1512
+#, c-format
+msgid "Parole needs <b>%s</b> to play this file."
+msgstr ""
+
+#: ../src/gst/parole-gst.c:1922
 msgid "The stream is taking too much time to load"
 msgstr "Korrontea debora asko tardatzen ari da kargatzeko"
 
-#: ../src/gst/parole-gst.c:2184
-msgid ""
-"Unable to load playbin GStreamer plugin, check your GStreamer installation"
+#: ../src/gst/parole-gst.c:1923
+msgid "Do you want to continue loading or stop?"
 msgstr ""
-"Ezin da playbin GStreamer plugina kargatu, egiaztatu GStreamer instalazioa"
 
-#: ../src/gst/parole-gst.c:2208
-msgid ""
-"Unable to load video GStreamer plugin, check your GStreamer installation"
+#: ../src/gst/parole-gst.c:1924
+msgid "Stop"
+msgstr "Gelditu"
+
+#: ../src/gst/parole-gst.c:1925
+msgid "Continue"
 msgstr ""
-"Ezin da bideo GStreamer plugina kargatu, egiaztatu GStreamer instalazioa"
 
-#: ../src/gst/parole-gst.c:2816 ../src/gst/parole-gst.c:2820
+#: ../src/gst/parole-gst.c:2095
+msgid "GStreamer Error"
+msgstr ""
+
+#: ../src/gst/parole-gst.c:2096
+msgid "Parole Media Player cannot start."
+msgstr ""
+
+#: ../src/gst/parole-gst.c:2124 ../src/gst/parole-gst.c:2142
+#: ../src/gst/parole-gst.c:2165
+#, c-format
+msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
+msgstr ""
+
+#: ../src/gst/parole-gst.c:2769 ../src/gst/parole-gst.c:2775
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Audio %d pista"
 
-#: ../src/gst/parole-gst.c:2860 ../src/gst/parole-gst.c:2864
+#: ../src/gst/parole-gst.c:2819 ../src/gst/parole-gst.c:2825
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Azpititutlu #%d"
 
-#: ../src/main.c:57
+#: ../src/main.c:59
 #, c-format
 msgid ""
 "\n"
@@ -482,280 +555,338 @@ msgid ""
 "\n"
 "Licensed under the GNU GPL.\n"
 "\n"
+"Please report bugs to <http://bugzilla.xfce.org/>.\n"
+"\n"
 msgstr ""
-"\n"
-"Parole euskarri erreproduzigailua %s\n"
-"\n"
-"Xfce Goodies proiektuaren zati\n"
-"http://goodies.xfce.org\n"
-"\n"
-"GNU GPL lizentziapean argitaratua.\n"
-"\n"
 
-#: ../src/main.c:231
+#: ../src/main.c:234
 msgid "Unknown argument "
 msgstr "Argumentu ezezaguna "
 
-#: ../src/main.c:275
+#: ../src/main.c:276
 msgid "Open a new instance"
 msgstr "Ireki instantzia berri bat"
 
-#: ../src/main.c:276
+#: ../src/main.c:277
 msgid "Do not load plugins"
 msgstr "Ez kargatu pluginak"
 
-#: ../src/main.c:277
+#: ../src/main.c:278
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "Ezarri Audio-CD/VCD/DVD gailu bidea"
 
-#: ../src/main.c:278
-msgid "Play or pause if already playing"
-msgstr "Erreproduzitu edo gelditu martxan badago"
-
 #: ../src/main.c:279
-msgid "Stop playing"
-msgstr "Gelditu erreprodukzioa"
+msgid "Enable/Disable XV support (true or false, default=true)"
+msgstr ""
 
 #: ../src/main.c:280
-msgid "Next track"
-msgstr "Hurrengo pista"
+msgid "Start in embedded mode"
+msgstr ""
 
 #: ../src/main.c:281
-msgid "Previous track"
-msgstr "Aurreko pista"
-
-#: ../src/main.c:282
-msgid "Seek forward"
-msgstr "Aurreratu"
-
-#: ../src/main.c:283
-msgid "Seek Backward"
-msgstr "Atzeratu"
-
-#: ../src/main.c:284
-msgid "Raise volume"
-msgstr "Igo bolumena"
-
-#: ../src/main.c:285
-msgid "Lower volume"
-msgstr "Jaitsi bolumena"
-
-#: ../src/main.c:286
-msgid "Mute volume"
-msgstr "Mututu bolumena"
-
-#: ../src/main.c:287
-msgid "Version information"
-msgstr "Bertsio argibideak"
-
-#: ../src/main.c:288
-msgid "Use embedded mode"
-msgstr "Erabili txertatutako modua"
-
-#: ../src/main.c:289
 msgid "Start in fullscreen mode"
 msgstr "Hasi pantaila-osoa moduan"
 
-#: ../src/main.c:290
-msgid "Enabled/Disable XV support"
-msgstr "Gaitu/desgaitu XV onarpena"
+#: ../src/main.c:282
+msgid "Play or pause if already playing"
+msgstr "Erreproduzitu edo gelditu martxan badago"
 
-#: ../src/main.c:291
+#: ../src/main.c:283
+msgid "Next track"
+msgstr "Hurrengo pista"
+
+#: ../src/main.c:284
+msgid "Previous track"
+msgstr "Aurreko pista"
+
+#: ../src/main.c:285
+msgid "Raise volume"
+msgstr "Igo bolumena"
+
+#: ../src/main.c:286
+msgid "Lower volume"
+msgstr "Jaitsi bolumena"
+
+#: ../src/main.c:287
+msgid "Mute volume"
+msgstr "Mututu bolumena"
+
+#: ../src/main.c:288
+msgid "Unmute (restore) volume"
+msgstr ""
+
+#: ../src/main.c:289
 msgid "Add files to playlist"
 msgstr "gehitu fitxategiak erreprodukzio-zerrendara"
 
-#: ../src/main.c:293
+#: ../src/main.c:290
+msgid "Print version information and exit"
+msgstr ""
+
+#: ../src/main.c:292
 msgid "Media to play"
 msgstr "Erreproduzitzeko euskarria"
+
+#: ../src/main.c:315
+msgid "[FILES...] - Play movies and songs"
+msgstr ""
+
+#: ../src/main.c:327
+#, c-format
+msgid "Type %s --help to list all available command line options\n"
+msgstr ""
 
 #: ../src/main.c:342
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
-msgstr ""
-"Parole dagoeneko exekutatzen ari da, -i erabili instantzia berri bat "
-"irekitzeko\n"
+msgstr "Parole dagoeneko exekutatzen ari da, -i erabili instantzia berri bat irekitzeko\n"
 
-#: ../src/parole-mediachooser.c:213
+#: ../src/parole-mediachooser.c:234
 msgid "Supported files"
 msgstr "Onartutako fitxategiak"
 
-#: ../src/parole-mediachooser.c:219 ../src/parole-player.c:965
+#: ../src/parole-mediachooser.c:241 ../src/parole-player.c:1013
 msgid "All files"
 msgstr "Fitxategi guztiak"
 
-#: ../src/parole-medialist.c:303 ../src/parole-medialist.c:1002
+#: ../src/parole-medialist.c:217
 #, c-format
-msgid "%i item"
-msgstr "elementu %i "
+msgid "Playlist (%i item)"
+msgstr ""
 
-#: ../src/parole-medialist.c:307
+#: ../src/parole-medialist.c:221
 #, c-format
-msgid "%i chapter"
-msgstr "kapitulu %i"
+msgid "Playlist (%i chapter)"
+msgstr ""
 
-#: ../src/parole-medialist.c:315 ../src/parole-medialist.c:1004
+#: ../src/parole-medialist.c:228 ../src/parole-medialist.c:1586
 #, c-format
-msgid "%i items"
-msgstr "%i elementu"
+msgid "Playlist (%i items)"
+msgstr ""
 
-#: ../src/parole-medialist.c:319
+#: ../src/parole-medialist.c:232 ../src/parole-medialist.c:1587
 #, c-format
-msgid "%i chapters"
-msgstr "%i kapitulu"
+msgid "Playlist (%i chapters)"
+msgstr ""
 
-#: ../src/parole-medialist.c:393
+#: ../src/parole-medialist.c:417 ../src/parole-player.c:698
 #, c-format
 msgid "Chapter %i"
 msgstr "%i kapitulua"
 
-#: ../src/parole-medialist.c:663
+#: ../src/parole-medialist.c:700
 msgid "Permission denied"
 msgstr "Baimena ukatua"
 
-#: ../src/parole-medialist.c:665
+#: ../src/parole-medialist.c:702
 msgid "Error saving playlist file"
 msgstr "Errorea erreprodukzio-zerrenda gordetzean"
 
-#: ../src/parole-medialist.c:677
+#: ../src/parole-medialist.c:714
 msgid "Unknown playlist format"
 msgstr "Erreprodukzio-zerrenda formatu ezezaguna"
 
-#: ../src/parole-medialist.c:678
-msgid "Please chooser a supported playlist format"
-msgstr "Mesedez hautatu onartzen den erreprodukzio-zerrenda formatu bat"
+#: ../src/parole-medialist.c:715
+msgid "Please choose a supported playlist format"
+msgstr ""
 
-#: ../src/parole-medialist.c:730 ../src/parole-plugins-manager.c:352
+#: ../src/parole-medialist.c:769 ../src/parole-plugins-manager.c:369
 msgid "Unknown"
 msgstr "Ezezaguna"
 
-#: ../src/parole-medialist.c:812
+#: ../src/parole-medialist.c:858
 msgid "M3U Playlists"
 msgstr "M3U Erreprodukzio-zerrenda"
 
-#: ../src/parole-medialist.c:820
+#: ../src/parole-medialist.c:866
 msgid "PLS Playlists"
 msgstr "PLS Erreprodukzio-zerrenda"
 
-#: ../src/parole-medialist.c:828
+#: ../src/parole-medialist.c:874
 msgid "Advanced Stream Redirector"
 msgstr "Korrenten berbidatze aurreratua"
 
-#: ../src/parole-medialist.c:836
+#: ../src/parole-medialist.c:882
 msgid "Shareable Playlist"
 msgstr "Erreprodukzio-zerrenda partekatua"
 
 #. Clear
-#: ../src/parole-medialist.c:1093
+#: ../src/parole-medialist.c:1221
 msgid "Open Containing Folder"
 msgstr "Ireki edukiera karpeta"
 
-#: ../src/parole-medialist.c:1669
-msgid "Media list"
-msgstr "Euskarri zerrenda"
-
-#: ../src/parole-medialist.c:1670
-msgid "Chapter list"
-msgstr "Kapitulu zerrenda"
-
-#: ../src/parole-player.c:463
+#: ../src/parole-player.c:513 ../src/parole-player.c:514
 msgid "Hide playlist"
 msgstr "Ezkutatu erreprodukzio-zerrenda "
 
-#: ../src/parole-player.c:472
+#: ../src/parole-player.c:522 ../src/parole-player.c:523
 msgid "Show playlist"
 msgstr "Ikusi erreprodukzio-zerrenda"
 
-#: ../src/parole-player.c:523
-msgid "Open ISO image"
-msgstr "Ireki ISO irudia"
-
-#: ../src/parole-player.c:542
-msgid "CD image"
-msgstr "CD irudia"
-
-#: ../src/parole-player.c:542
-msgid "DVD image"
-msgstr "DVD irudia"
-
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:935
+#: ../src/parole-player.c:977
 msgid "Select Subtitle File"
 msgstr "Hautatu fitxategi azpitituluak..."
 
-#: ../src/parole-player.c:953
+#: ../src/parole-player.c:982 ../src/parole-player.c:1186
+#: ../src/plugins/tray/tray-provider.c:310
+msgid "Cancel"
+msgstr ""
+
+#: ../src/parole-player.c:985
+msgid "Open"
+msgstr ""
+
+#: ../src/parole-player.c:1001
 msgid "Subtitle Files"
 msgstr "Azpititulu fitxategiak"
 
-#: ../src/parole-player.c:1128 ../src/parole-player.c:1136
+#: ../src/parole-player.c:1182 ../src/parole-player.c:1190
 msgid "Clear Recent Items"
 msgstr "Garbitu azken elementuak "
 
-#: ../src/parole-player.c:1130
+#: ../src/parole-player.c:1184
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
-msgstr ""
-"Ziur zaude azken elementuen historia ezabatu nahi duzula? Hau ezin da "
-"desegin."
+msgstr "Ziur zaude azken elementuen historia ezabatu nahi duzula? Hau ezin da desegin."
 
-#: ../src/parole-player.c:1249 ../src/parole-player.c:1388
+#: ../src/parole-player.c:1275 ../src/parole-player.c:1408
 msgid "Media stream is not seekable"
 msgstr "Euskarri korrontean ezin da salto egin"
 
-#: ../src/parole-player.c:1352
+#. * GTK Actions
+#. 
+#. Play/Pause
+#: ../src/parole-player.c:1286 ../src/parole-player.c:2952
+msgid "_Play"
+msgstr ""
+
+#: ../src/parole-player.c:1287 ../src/parole-player.c:2952
+msgid "Play"
+msgstr "Erreproduzitu"
+
+#: ../src/parole-player.c:1290
+msgid "_Pause"
+msgstr ""
+
+#: ../src/parole-player.c:1291
 msgid "Pause"
 msgstr "Gelditu"
 
-#: ../src/parole-player.c:1715
+#: ../src/parole-player.c:1743
 msgid "GStreamer backend error"
 msgstr "GStreamer interfaze errorea"
 
-#: ../src/parole-player.c:1746
+#: ../src/parole-player.c:1774
 msgid "Unknown Song"
 msgstr "Kanta Ezezaguna"
 
-#: ../src/parole-player.c:1751 ../src/parole-player.c:1753
-#: ../src/parole-player.c:1759
+#: ../src/parole-player.c:1779 ../src/parole-player.c:1781
+#: ../src/parole-player.c:1787
 msgid "on"
 msgstr "-"
 
-#: ../src/parole-player.c:1759 ../src/plugins/notify/notify-provider.c:124
+#: ../src/parole-player.c:1787 ../src/plugins/notify/notify-provider.c:143
 msgid "Unknown Album"
 msgstr "Album ezezaguna"
 
-#: ../src/parole-player.c:1766 ../src/parole-player.c:1770
+#: ../src/parole-player.c:1794 ../src/parole-player.c:1798
 msgid "by"
 msgstr "-"
 
-#: ../src/parole-player.c:1770 ../src/plugins/notify/notify-provider.c:126
+#: ../src/parole-player.c:1798 ../src/plugins/notify/notify-provider.c:145
 msgid "Unknown Artist"
 msgstr "Artista ezezaguna"
 
-#: ../src/parole-player.c:1803
+#: ../src/parole-player.c:1832
 msgid "Buffering"
 msgstr "Bufferra betetzen"
 
-#: ../src/parole-player.c:2283
+#: ../src/parole-player.c:1939 ../src/parole-player.c:2976
+#: ../src/parole-player.c:3215
+msgid "Fullscreen"
+msgstr "Pantaila-osoa"
+
+#: ../src/parole-player.c:1954
+msgid "Leave _Fullscreen"
+msgstr ""
+
+#: ../src/parole-player.c:1955
+msgid "Leave Fullscreen"
+msgstr ""
+
+#. * Un/Hide menubar
+#. 
+#: ../src/parole-player.c:2051
+msgid "Show menubar"
+msgstr ""
+
+#: ../src/parole-player.c:2251
 msgid "Mute"
 msgstr "Mututu"
 
-#: ../src/parole-player.c:2288
+#: ../src/parole-player.c:2256
 msgid "Unmute"
 msgstr "Desmututu"
 
-#: ../src/parole-player.c:2948
-msgid "Clear recent items..."
-msgstr "Garbitu azken elementua..."
+#: ../src/parole-player.c:2622
+msgid "Unable to open default web browser"
+msgstr ""
 
-#: ../src/parole-about.c:74
+#: ../src/parole-player.c:2624
+msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
+msgstr ""
+
+#. Previous Track
+#: ../src/parole-player.c:2960
+msgid "P_revious Track"
+msgstr ""
+
+#. Next Track
+#: ../src/parole-player.c:2968
+msgid "_Next Track"
+msgstr ""
+
+#. Toggle Playlist
+#: ../src/parole-player.c:2983
+msgid "Show _Playlist"
+msgstr ""
+
+#: ../src/parole-player.c:2983 ../src/parole-player.c:3321
+msgid "Show Playlist"
+msgstr ""
+
+#. Clear Recent Menu Item
+#: ../src/parole-player.c:3054
+msgid "_Clear recent items…"
+msgstr ""
+
+#: ../src/parole-player.c:3259
+msgid "Audio Track:"
+msgstr "Audio pista:"
+
+#: ../src/parole-player.c:3275
+msgid "Subtitles:"
+msgstr "Azpitituluak:"
+
+#: ../src/parole-player.c:3280 ../src/plugins/tray/tray-provider.c:245
+msgid "Close"
+msgstr ""
+
+#: ../src/parole-player.c:3321
+msgid "Hide Playlist"
+msgstr ""
+
+#: ../src/parole-about.c:76
 msgid "translator-credits"
 msgstr "Piarres Beobide <pi@beobide.net>"
 
-#: ../src/parole-about.c:77
+#: ../src/parole-about.c:79
 msgid "Visit Parole website"
 msgstr "Ikusi Parole webgunea"
 
-#: ../src/parole-disc.c:112
+#: ../src/parole-disc.c:114
 msgid "Play Disc"
 msgstr "Erreproduzitu diskoa"
 
@@ -900,33 +1031,50 @@ msgstr "Mendebaldekoa"
 msgid "Vietnamese"
 msgstr "Vietnamdarra"
 
-#: ../src/parole-plugins-manager.c:391 ../src/parole-plugins-manager.c:392
+#. If plugin loading fails...
+#: ../src/parole-plugins-manager.c:276
+msgid "Plugin failed to load"
+msgstr ""
+
+#: ../src/parole-plugins-manager.c:276
+msgid "Please check your installation"
+msgstr ""
+
+#: ../src/parole-plugins-manager.c:408
 msgid "No installed plugins found on this system"
 msgstr "Ez da instalaturiko pluginik aurkitu sistema honetan"
 
-#: ../src/misc/parole-filters.c:90
+#: ../src/parole-plugins-manager.c:409
+msgid "Please check your installation."
+msgstr ""
+
+#: ../src/misc/parole-filters.c:65
+msgid "Audio"
+msgstr "Audioa"
+
+#: ../src/misc/parole-filters.c:91
 msgid "Video"
 msgstr "Bideoa"
 
-#: ../src/misc/parole-filters.c:115 ../src/misc/parole-filters.c:133
+#: ../src/misc/parole-filters.c:116 ../src/misc/parole-filters.c:134
 msgid "Audio and video"
 msgstr "Audio eta bideoa"
 
-#: ../src/misc/parole-filters.c:162 ../src/misc/parole-filters.c:178
+#: ../src/misc/parole-filters.c:163 ../src/misc/parole-filters.c:179
 msgid "All supported files"
 msgstr "Onartutako fitxategi guztiak"
 
-#: ../src/misc/parole-filters.c:205
+#: ../src/misc/parole-filters.c:206
 msgid "Playlist files"
 msgstr "Erreprodukzio-zerrenda fitxategiak"
 
-#: ../src/plugins/notify/notify-provider.c:129
-#: ../src/plugins/notify/notify-provider.c:132
+#: ../src/plugins/notify/notify-provider.c:148
+#: ../src/plugins/notify/notify-provider.c:151
 msgid "<i>on</i>"
 msgstr "<i>-</i>"
 
-#: ../src/plugins/notify/notify-provider.c:129
-#: ../src/plugins/notify/notify-provider.c:132
+#: ../src/plugins/notify/notify-provider.c:148
+#: ../src/plugins/notify/notify-provider.c:151
 msgid "<i>by</i>"
 msgstr "<i>-</i>"
 
@@ -938,186 +1086,42 @@ msgstr "Berri-eman"
 msgid "Show notifications for currently playing tracks"
 msgstr "Erreproduzitzen diren pisten berri-emateak ikusi"
 
-#: ../src/plugins/tray/tray-provider.c:244
+#: ../src/plugins/tray/tray-provider.c:133
+msgid "_Open"
+msgstr "_Ireki"
+
+#: ../src/plugins/tray/tray-provider.c:242
 msgid "Tray icon plugin"
 msgstr "Erretilu ikono plugina"
 
-#: ../src/plugins/tray/tray-provider.c:254
+#: ../src/plugins/tray/tray-provider.c:252
 msgid "Always minimize to tray when window is closed"
 msgstr "Beti txikitu erretilura leihoa ixtean"
 
-#: ../src/plugins/tray/tray-provider.c:300
+#: ../src/plugins/tray/tray-provider.c:298
 msgid "Are you sure you want to quit?"
 msgstr "Ziur zaude itxi nahi duzula?"
 
-#: ../src/plugins/tray/tray-provider.c:303
+#: ../src/plugins/tray/tray-provider.c:301
 msgid "Parole can be minimized to the system tray instead."
 msgstr "Parole sistema barrara txikitu daiteke horren ordez."
 
-#: ../src/plugins/tray/tray-provider.c:306
+#: ../src/plugins/tray/tray-provider.c:304
 msgid "Minimize to tray"
 msgstr "Txikitu erretilura"
 
-#: ../src/plugins/tray/tray-provider.c:323
+#: ../src/plugins/tray/tray-provider.c:316
+msgid "Quit"
+msgstr ""
+
+#: ../src/plugins/tray/tray-provider.c:325
 msgid "Remember my choice"
 msgstr "Gogoratu nire hautapena"
 
 #: ../src/plugins/tray/system-tray.desktop.in.h:1
-msgid "Show icon in the system tray"
-msgstr "Ikusi ikonoa sistema erretiluan"
-
-#: ../src/plugins/tray/system-tray.desktop.in.h:2
 msgid "Tray icon"
 msgstr "Erretilu ikonoa"
 
-#: ../src/plugins/power-manager/power-manager.desktop.in.h:1
-msgid "Inhibit Power Manager from suspending the machine while playing DVD."
-msgstr "Galarazi indar kudeatzaileak DVDak erreproduzitzean makina etetea"
-
-#: ../src/plugins/power-manager/power-manager.desktop.in.h:2
-msgid "Power Manager Plugin"
-msgstr "Indar kudeatzaile plugina"
-
-#~ msgid "Parole"
-#~ msgstr "Parole"
-
-#~ msgid "Open _location"
-#~ msgstr "Ireki _kokalekua"
-
-#~ msgid "Please enter a network URL:"
-#~ msgstr "Idatzi sare URL bat:"
-
-#~ msgid "Title:"
-#~ msgstr "Titulua:"
-
-#~ msgid "Artist:"
-#~ msgstr "Artista:"
-
-#~ msgid "Album:"
-#~ msgstr "Albuma:"
-
-#~ msgid "Year:"
-#~ msgstr "Urtea:"
-
-#~ msgid "General"
-#~ msgstr "Orokorra"
-
-#~ msgid "Stream doesn't support tags changes"
-#~ msgstr "Korronteak ez du etiketa aldaketa onartzen"
-
-#~ msgid "Save media tags changes"
-#~ msgstr "Gorde euskarri etiketa aldaketak"
-
-#~ msgid "Properties"
-#~ msgstr "Propietateak"
-
-#~ msgid "Read media properties"
-#~ msgstr "Irakurri euskarri propietateak"
-
-#~ msgid "Stream Properties"
-#~ msgstr "Jario propietateak"
-
-#~ msgid "<b>Playing:</b>"
-#~ msgstr "<b>Erreproduzitzen:</b>"
-
-#~ msgid "<b>Duration:</b>"
-#~ msgstr "<b>Iraupena:</b>"
-
-#~ msgid "Enable notification"
-#~ msgstr "Gaitu berri-ematea"
-
-#~ msgid "Minimize to tray?"
-#~ msgstr "Txikitu erretilura?"
-
-#~ msgid "Media Player plugins"
-#~ msgstr "Euskarri erreproduzigailua pluginak"
-
-#~ msgid "From ISO image"
-#~ msgstr "ISO irudi batetatik"
-
-#~ msgid "Sound"
-#~ msgstr "Soinua"
-
-#~ msgid "Parole Media Chooser"
-#~ msgstr "Parole euskarri hautatzailea"
-
-#~ msgid "Scan folders recursively"
-#~ msgstr "Arakatu karpetak errekurtsiboki"
-
-#~ msgid "Replace playlist with opened files"
-#~ msgstr "Ordeztu erreprodukzio-zerrenda irekitako fitxategiekin"
-
-#~ msgid "<b>Site:</b>"
-#~ msgstr "<b>Gunea:</b>"
-
-#~ msgid "Media Player Settings"
-#~ msgstr "Euskarri erreproduzigailu ezarpenak"
-
-#~ msgid "<b>Display</b>"
-#~ msgstr "<b>Bistaratzea</b>"
-
-#~ msgid "<b>Subtitles</b>"
-#~ msgstr "<b>Azpitituluak</b>"
-
-#~ msgid "DVD"
-#~ msgstr "DVD"
-
-#~ msgid "Previous Chapter"
-#~ msgstr "Aurreko kapitulua"
-
-#~ msgid "Select Track"
-#~ msgstr "Hautatu pista"
-
-#~ msgid "Add"
-#~ msgstr "Gehitu"
-
-#~ msgid "Enter the address of a location to open"
-#~ msgstr "Idatzi irekitzeko helbidea"
-
-#~ msgid "Open location of media file or live stream"
-#~ msgstr ""
-#~ "Ireki euskarri fitxategiaren edo sare bidezko korrontearen kokalekua "
-
-#~ msgid "Next Track"
-#~ msgstr "Hurrengo pista"
-
-#~ msgid "Stopped"
-#~ msgstr "Gelditurik"
-
-#~ msgid "Finished"
-#~ msgstr "Amaiturik"
-
-#~ msgid "Live stream:"
-#~ msgstr "Sare bidezko korrontea:"
-
-#~ msgid "Author/Maintainer"
-#~ msgstr "Garatzaile/Mantenua"
-
-#~ msgid "Playing Track"
-#~ msgstr "Pista erreproduzitzen"
-
-#~ msgid "Set the main window name to the current playing media name."
-#~ msgstr ""
-#~ "Ezarri leiho nagusiaren izenburua erreproduzitzen ari den euskarri "
-#~ "izenetik."
-
-#~ msgid "Window Title"
-#~ msgstr "Leiho izenburua"
-
-#~ msgid "Open location..."
-#~ msgstr "Ireki kokalekua..."
-
-#~ msgid "socket"
-#~ msgstr "socket-a"
-
-#~ msgid "SOCKET ID"
-#~ msgstr "SOCKET IDa"
-
-#~ msgid "url to play"
-#~ msgstr "Erreproduzitzeko url-a"
-
-#~ msgid "URL"
-#~ msgstr "URLa"
-
-#~ msgid "Copy url"
-#~ msgstr "Kopiatu url-a"
+#: ../src/plugins/tray/system-tray.desktop.in.h:2
+msgid "Show icon in the system tray"
+msgstr "Ikusi ikonoa sistema erretiluan"
