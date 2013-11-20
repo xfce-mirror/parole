@@ -204,7 +204,7 @@ static GVariant* mpris_Root_get_DesktopEntry (GError **error, Mpris2Provider *pr
 static GVariant* mpris_Root_get_SupportedUriSchemes (GError **error, Mpris2Provider *provider)
 {
     return g_variant_parse(G_VARIANT_TYPE("as"),
-        "['cdda', 'dvd', 'file', 'icy', 'icyx', 'mms', 'mmsh', net', "
+        "['cdda', 'dvd', 'file', 'icy', 'icyx', 'mms', 'mmsh', 'net', "
         "'pnm', 'rtmp', 'rtp', 'rtsp', 'uvox']", NULL, NULL, NULL);
 }
 
