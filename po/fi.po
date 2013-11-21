@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Jiri Grönroos <jiri.gronroos@iki.fi>, 2013
+# Juhani Numminen <juhaninumminen0@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-11-13 06:30+0100\n"
-"PO-Revision-Date: 2013-11-14 07:08+0000\n"
-"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
+"PO-Revision-Date: 2013-11-21 15:42+0000\n"
+"Last-Translator: Juhani Numminen <juhaninumminen0@gmail.com>\n"
 "Language-Team: Finnish (http://www.transifex.com/projects/p/xfce/language/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -159,7 +160,7 @@ msgstr "20:9 (DVB)"
 
 #: ../data/interfaces/parole.ui.h:34
 msgid "_Subtitles"
-msgstr ""
+msgstr "_Tekstitykset"
 
 #: ../data/interfaces/parole.ui.h:35
 msgid "Select Text Subtitles…"
@@ -191,19 +192,19 @@ msgstr "_Tietoja"
 
 #: ../data/interfaces/parole.ui.h:42
 msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
-msgstr ""
+msgstr "<span color='#F4F4F4'><b><big>Tuntematon kappale</big></b></span>"
 
 #: ../data/interfaces/parole.ui.h:43
 msgid ""
 "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
 "Album</span></big>"
-msgstr ""
+msgstr "<big><span color='#BBBBBB'><i>albumilta</i></span> <span color='#F4F4F4'>Tuntematon albumi</span></big>"
 
 #: ../data/interfaces/parole.ui.h:44
 msgid ""
 "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
 "Artist</span></big>"
-msgstr ""
+msgstr "<big><span color='#BBBBBB'><i>artistilta</i></span> <span color='#F4F4F4'>Tuntematon artisti</span></big>"
 
 #: ../data/interfaces/parole.ui.h:45
 msgid "0:00"
@@ -212,11 +213,11 @@ msgstr "0:00"
 #: ../data/interfaces/parole.ui.h:47
 #, no-c-format
 msgid "Buffering (0%)"
-msgstr ""
+msgstr "Puskuroidaan (0 %)"
 
 #: ../data/interfaces/mediachooser.ui.h:1
 msgid "Open Media Files"
-msgstr ""
+msgstr "Avaa mediatiedostoja"
 
 #: ../data/interfaces/playlist.ui.h:1
 #: ../data/interfaces/parole-settings.ui.h:23 ../src/parole-medialist.c:808
@@ -226,7 +227,7 @@ msgstr "Soittolista"
 
 #: ../data/interfaces/playlist.ui.h:2
 msgid "Disc Playlist"
-msgstr ""
+msgstr "Levyn soittolista"
 
 #: ../data/interfaces/playlist.ui.h:3
 msgid "Add to playlist…"
@@ -270,11 +271,11 @@ msgstr ""
 
 #: ../data/interfaces/playlist.ui.h:13
 msgid "Replace playlist when opening files"
-msgstr ""
+msgstr "Korvaa soittolista tiedostoja avattaessa"
 
 #: ../data/interfaces/playlist.ui.h:14
 msgid "Play opened files"
-msgstr ""
+msgstr "Toista avatut tiedostot"
 
 #: ../data/interfaces/playlist.ui.h:15
 #: ../data/interfaces/parole-settings.ui.h:21
@@ -327,7 +328,7 @@ msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:6
 msgid "Visualization type:"
-msgstr ""
+msgstr "Kuvituksen tyyppi:"
 
 #: ../data/interfaces/parole-settings.ui.h:7
 msgid "<b>Audio Visualization</b>"
@@ -351,15 +352,15 @@ msgstr "Kirkkaus:"
 
 #: ../data/interfaces/parole-settings.ui.h:12
 msgid "Contrast:"
-msgstr ""
+msgstr "Kontrasti:"
 
 #: ../data/interfaces/parole-settings.ui.h:13
 msgid "Hue:"
-msgstr ""
+msgstr "Sävy:"
 
 #: ../data/interfaces/parole-settings.ui.h:14
 msgid "Saturation:"
-msgstr ""
+msgstr "Värikylläisyys:"
 
 #: ../data/interfaces/parole-settings.ui.h:15
 msgid "Reset to defaults"
@@ -399,7 +400,7 @@ msgstr "Kirjasin:"
 
 #: ../data/interfaces/parole-settings.ui.h:26
 msgid "Encoding:"
-msgstr ""
+msgstr "Merkistökoodaus:"
 
 #: ../data/interfaces/parole-settings.ui.h:27
 msgid "<b>Subtitle Settings</b>"
@@ -423,7 +424,7 @@ msgstr ""
 
 #: ../data/interfaces/save-playlist.ui.h:4
 msgid "Select File Types (By Extension)"
-msgstr ""
+msgstr "Valitse tiedostotyypit (tiedostopäätteen mukaan)"
 
 #: ../data/interfaces/save-playlist.ui.h:5
 msgid "By Extension"
@@ -470,7 +471,7 @@ msgstr "Virhe"
 #: ../src/gst/parole-gst.c:1278 ../src/parole-medialist.c:401
 #, c-format
 msgid "Track %i"
-msgstr ""
+msgstr "Raita %i"
 
 #: ../src/gst/parole-gst.c:1281
 msgid "Audio CD"
@@ -537,12 +538,12 @@ msgstr ""
 #: ../src/gst/parole-gst.c:2769 ../src/gst/parole-gst.c:2775
 #, c-format
 msgid "Audio Track #%d"
-msgstr ""
+msgstr "Ääniraita %d"
 
 #: ../src/gst/parole-gst.c:2819 ../src/gst/parole-gst.c:2825
 #, c-format
 msgid "Subtitle #%d"
-msgstr ""
+msgstr "Tekstitys %d"
 
 #: ../src/main.c:59
 #, c-format
@@ -652,7 +653,7 @@ msgstr "Kaikki tiedostot"
 #: ../src/parole-medialist.c:217
 #, c-format
 msgid "Playlist (%i item)"
-msgstr ""
+msgstr "Soittolista (%i kohde)"
 
 #: ../src/parole-medialist.c:221
 #, c-format
@@ -662,7 +663,7 @@ msgstr ""
 #: ../src/parole-medialist.c:228 ../src/parole-medialist.c:1586
 #, c-format
 msgid "Playlist (%i items)"
-msgstr ""
+msgstr "Soittolista (%i kohdetta)"
 
 #: ../src/parole-medialist.c:232 ../src/parole-medialist.c:1587
 #, c-format
@@ -764,7 +765,7 @@ msgstr "_Toista"
 
 #: ../src/parole-player.c:1287 ../src/parole-player.c:2952
 msgid "Play"
-msgstr ""
+msgstr "Toista"
 
 #: ../src/parole-player.c:1290
 msgid "_Pause"
@@ -841,12 +842,12 @@ msgstr "Ilmoita vioista ja ongelmista osoitteeseen http://docs.xfce.org/apps/par
 #. Previous Track
 #: ../src/parole-player.c:2960
 msgid "P_revious Track"
-msgstr ""
+msgstr "_Edellinen raita"
 
 #. Next Track
 #: ../src/parole-player.c:2968
 msgid "_Next Track"
-msgstr ""
+msgstr "_Seuraava raita"
 
 #. Toggle Playlist
 #: ../src/parole-player.c:2983
@@ -864,7 +865,7 @@ msgstr ""
 
 #: ../src/parole-player.c:3259
 msgid "Audio Track:"
-msgstr ""
+msgstr "Ääniraita:"
 
 #: ../src/parole-player.c:3275
 msgid "Subtitles:"
@@ -880,7 +881,7 @@ msgstr "Piilota soittolista"
 
 #: ../src/parole-about.c:76
 msgid "translator-credits"
-msgstr "Jiri Grönroos"
+msgstr "Jiri Grönroos\nJuhani Numminen <juhaninumminen0@gmail.com>"
 
 #: ../src/parole-about.c:79
 msgid "Visit Parole website"
@@ -897,62 +898,62 @@ msgstr "Nykyinen maa-asetus"
 #: ../src/parole-subtitle-encoding.c:168 ../src/parole-subtitle-encoding.c:170
 #: ../src/parole-subtitle-encoding.c:172 ../src/parole-subtitle-encoding.c:174
 msgid "Arabic"
-msgstr ""
+msgstr "Arabialainen"
 
 #: ../src/parole-subtitle-encoding.c:177
 msgid "Armenian"
-msgstr ""
+msgstr "Armenialainen"
 
 #: ../src/parole-subtitle-encoding.c:180 ../src/parole-subtitle-encoding.c:182
 #: ../src/parole-subtitle-encoding.c:184
 msgid "Baltic"
-msgstr ""
+msgstr "Balttilainen"
 
 #: ../src/parole-subtitle-encoding.c:187
 msgid "Celtic"
-msgstr ""
+msgstr "Kelttiläinen"
 
 #: ../src/parole-subtitle-encoding.c:190 ../src/parole-subtitle-encoding.c:192
 #: ../src/parole-subtitle-encoding.c:194 ../src/parole-subtitle-encoding.c:196
 msgid "Central European"
-msgstr ""
+msgstr "Keskieurooppalainen"
 
 #: ../src/parole-subtitle-encoding.c:199 ../src/parole-subtitle-encoding.c:201
 #: ../src/parole-subtitle-encoding.c:203 ../src/parole-subtitle-encoding.c:205
 msgid "Chinese Simplified"
-msgstr ""
+msgstr "Yksinkertaistettu kiinalainen"
 
 #: ../src/parole-subtitle-encoding.c:208 ../src/parole-subtitle-encoding.c:210
 #: ../src/parole-subtitle-encoding.c:212
 msgid "Chinese Traditional"
-msgstr ""
+msgstr "Perinteinen kiinalainen"
 
 #: ../src/parole-subtitle-encoding.c:215
 msgid "Croatian"
-msgstr ""
+msgstr "Kroatialainen"
 
 #: ../src/parole-subtitle-encoding.c:218 ../src/parole-subtitle-encoding.c:220
 #: ../src/parole-subtitle-encoding.c:222 ../src/parole-subtitle-encoding.c:224
 #: ../src/parole-subtitle-encoding.c:226 ../src/parole-subtitle-encoding.c:228
 msgid "Cyrillic"
-msgstr ""
+msgstr "Kyrillinen"
 
 #: ../src/parole-subtitle-encoding.c:231
 msgid "Cyrillic/Russian"
-msgstr ""
+msgstr "Kyrillinen/venäläinen"
 
 #: ../src/parole-subtitle-encoding.c:234 ../src/parole-subtitle-encoding.c:236
 msgid "Cyrillic/Ukrainian"
-msgstr ""
+msgstr "Kyrillinen/ukrainalainen"
 
 #: ../src/parole-subtitle-encoding.c:239
 msgid "Georgian"
-msgstr ""
+msgstr "Georgialainen"
 
 #: ../src/parole-subtitle-encoding.c:242 ../src/parole-subtitle-encoding.c:244
 #: ../src/parole-subtitle-encoding.c:246
 msgid "Greek"
-msgstr ""
+msgstr "Kreikkalainen"
 
 #: ../src/parole-subtitle-encoding.c:249
 msgid "Gujarati"
