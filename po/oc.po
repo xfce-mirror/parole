@@ -1,0 +1,1127 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Cedric31 <cvalmary@yahoo.fr>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Xfce Apps\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-11-13 06:30+0100\n"
+"PO-Revision-Date: 2013-11-28 19:27+0000\n"
+"Last-Translator: Cedric31 <cvalmary@yahoo.fr>\n"
+"Language-Team: Occitan (post 1500) (http://www.transifex.com/projects/p/xfce/language/oc/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: oc\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../data/interfaces/parole.ui.h:1 ../data/desktop/parole.desktop.in.in.h:1
+#: ../src/parole-player.c:565 ../src/parole-player.c:1453
+#: ../src/parole-about.c:70
+msgid "Parole Media Player"
+msgstr "Lector Mèdia Parole"
+
+#: ../data/interfaces/parole.ui.h:2
+msgid "_Media"
+msgstr "_Mèdia"
+
+#: ../data/interfaces/parole.ui.h:3
+msgid "_Open…"
+msgstr "_Dobrir..."
+
+#: ../data/interfaces/parole.ui.h:4
+msgid "Open _Location…"
+msgstr "Dobrir _L'emplaçament..."
+
+#: ../data/interfaces/parole.ui.h:5
+msgid "Open _Recent"
+msgstr "Dobrir _Recent"
+
+#: ../data/interfaces/parole.ui.h:6
+msgid "_Save Playlist…"
+msgstr "_Salvar lista de lectura ..."
+
+#: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:112
+#: ../src/parole-disc.c:154
+msgid "Insert Disc"
+msgstr "Inserir un disc"
+
+#: ../data/interfaces/parole.ui.h:8 ../src/plugins/tray/tray-provider.c:150
+msgid "_Quit"
+msgstr "_Quitar"
+
+#: ../data/interfaces/parole.ui.h:9
+msgid "_Playback"
+msgstr "_Lectura"
+
+#. Toggle Repeat
+#: ../data/interfaces/parole.ui.h:10 ../src/parole-player.c:2988
+msgid "_Repeat"
+msgstr "_Repetir"
+
+#. Toggle Shuffle
+#: ../data/interfaces/parole.ui.h:11 ../src/parole-player.c:2996
+msgid "_Shuffle"
+msgstr "_Aleatòri"
+
+#: ../data/interfaces/parole.ui.h:12
+msgid "_DVD"
+msgstr "_DVD"
+
+#: ../data/interfaces/parole.ui.h:13
+msgid "_DVD Menu"
+msgstr "Menú _DVD"
+
+#: ../data/interfaces/parole.ui.h:14
+msgid "_Title Menu"
+msgstr "Menú _Títol"
+
+#: ../data/interfaces/parole.ui.h:15
+msgid "_Audio Menu"
+msgstr "Menú _Son"
+
+#: ../data/interfaces/parole.ui.h:16
+msgid "A_ngle Menu"
+msgstr "Menú A_ngle"
+
+#: ../data/interfaces/parole.ui.h:17
+msgid "_Chapters"
+msgstr "_Capítols"
+
+#: ../data/interfaces/parole.ui.h:18
+msgid "_Chapter Menu"
+msgstr "Menú _Capítol"
+
+#: ../data/interfaces/parole.ui.h:19
+msgid "_Audio"
+msgstr "_Àudio"
+
+#: ../data/interfaces/parole.ui.h:20
+msgid "_Audio Track"
+msgstr "Pista _Son"
+
+#: ../data/interfaces/parole.ui.h:21 ../src/parole-player.c:791
+msgid "Empty"
+msgstr "Void"
+
+#: ../data/interfaces/parole.ui.h:22
+msgid "Volume _Up"
+msgstr "Aumentar lo volum"
+
+#: ../data/interfaces/parole.ui.h:23
+msgid "Volume _Down"
+msgstr "Demesir lo volum"
+
+#: ../data/interfaces/parole.ui.h:24
+msgid "_Mute"
+msgstr "_Metre en sordina"
+
+#: ../data/interfaces/parole.ui.h:25
+msgid "_Video"
+msgstr "_Vidèo"
+
+#. Fullscreen
+#: ../data/interfaces/parole.ui.h:26 ../src/parole-player.c:1938
+#: ../src/parole-player.c:2976
+msgid "_Fullscreen"
+msgstr "_Ecran complet"
+
+#: ../data/interfaces/parole.ui.h:27
+msgid "_Aspect Ratio"
+msgstr "_Ratio d'aspècte"
+
+#: ../data/interfaces/parole.ui.h:28 ../src/parole-player.c:719
+msgid "None"
+msgstr "Pas cap"
+
+#: ../data/interfaces/parole.ui.h:29
+msgid "Auto"
+msgstr "Auto"
+
+#: ../data/interfaces/parole.ui.h:30
+msgid "Square"
+msgstr "Cairrat"
+
+#: ../data/interfaces/parole.ui.h:31
+msgid "4:3 (TV)"
+msgstr "4:3 (TV)"
+
+#: ../data/interfaces/parole.ui.h:32
+msgid "16:9 (Widescreen)"
+msgstr "16:9 (Ecran larg)"
+
+#: ../data/interfaces/parole.ui.h:33
+msgid "20:9 (DVB)"
+msgstr "20:9 (DVB)"
+
+#: ../data/interfaces/parole.ui.h:34
+msgid "_Subtitles"
+msgstr "_Sostítols"
+
+#: ../data/interfaces/parole.ui.h:35
+msgid "Select Text Subtitles…"
+msgstr "Seleccionar lo tèxte dels sostítols ..."
+
+#: ../data/interfaces/parole.ui.h:36
+msgid "_Tools"
+msgstr "Ai_sinas"
+
+#: ../data/interfaces/parole.ui.h:37
+msgid "P_lugins"
+msgstr "Em_peutons"
+
+#: ../data/interfaces/parole.ui.h:38
+msgid "_Preferences"
+msgstr "_Preferéncias"
+
+#: ../data/interfaces/parole.ui.h:39
+msgid "_Help"
+msgstr "Aju_da"
+
+#: ../data/interfaces/parole.ui.h:40
+msgid "_Report a Bug…"
+msgstr "_Raportar un bug ..."
+
+#: ../data/interfaces/parole.ui.h:41
+msgid "_About"
+msgstr "_A prepaus"
+
+#: ../data/interfaces/parole.ui.h:42
+msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
+msgstr "<span color='#F4F4F4'><b><big>Cançon desconeguda</big></b></span>"
+
+#: ../data/interfaces/parole.ui.h:43
+msgid ""
+"<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
+"Album</span></big>"
+msgstr "<big><span color='#BBBBBB'><i>sus</i></span> <span color='#F4F4F4'>un album desconegut</span></big>"
+
+#: ../data/interfaces/parole.ui.h:44
+msgid ""
+"<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
+"Artist</span></big>"
+msgstr "<big><span color='#BBBBBB'><i>per</i></span> <span color='#F4F4F4'>un artista desconegut</span></big>"
+
+#: ../data/interfaces/parole.ui.h:45
+msgid "0:00"
+msgstr "0:00"
+
+#: ../data/interfaces/parole.ui.h:47
+#, no-c-format
+msgid "Buffering (0%)"
+msgstr "Mesa en tampon (0%)"
+
+#: ../data/interfaces/mediachooser.ui.h:1
+msgid "Open Media Files"
+msgstr "Dobrir de fichièrs multimèdia"
+
+#: ../data/interfaces/playlist.ui.h:1
+#: ../data/interfaces/parole-settings.ui.h:23 ../src/parole-medialist.c:808
+#: ../src/parole-medialist.c:851 ../src/parole-player.c:3304
+msgid "Playlist"
+msgstr "Lista de lectura"
+
+#: ../data/interfaces/playlist.ui.h:2
+msgid "Disc Playlist"
+msgstr "Lista de lectura del disc"
+
+#: ../data/interfaces/playlist.ui.h:3
+msgid "Add to playlist…"
+msgstr "Apondre a la lista de lectura ..."
+
+#: ../data/interfaces/playlist.ui.h:4
+msgid "Add"
+msgstr "Apondre"
+
+#: ../data/interfaces/playlist.ui.h:5
+msgid "Remove selected media"
+msgstr "Levar los supòrts seleccionats"
+
+#: ../data/interfaces/playlist.ui.h:6
+msgid "Remove"
+msgstr "Suprimir"
+
+#: ../data/interfaces/playlist.ui.h:7
+msgid "Clear playlist"
+msgstr "Escafar la lista de lectura"
+
+#: ../data/interfaces/playlist.ui.h:8
+msgid "Clear"
+msgstr "Voidar"
+
+#: ../data/interfaces/playlist.ui.h:9 ../src/parole-player.c:2988
+msgid "Repeat"
+msgstr "Repetir"
+
+#: ../data/interfaces/playlist.ui.h:10 ../src/parole-player.c:2996
+msgid "Shuffle"
+msgstr "Aleatòri"
+
+#: ../data/interfaces/playlist.ui.h:11
+msgid "Move Up"
+msgstr "Desplaçar cap amont"
+
+#: ../data/interfaces/playlist.ui.h:12
+msgid "Move Down"
+msgstr "Desplaçar cap aval"
+
+#: ../data/interfaces/playlist.ui.h:13
+msgid "Replace playlist when opening files"
+msgstr "Remplaçar la lista de lectura al moment de la dobertura de fichièrs"
+
+#: ../data/interfaces/playlist.ui.h:14
+msgid "Play opened files"
+msgstr "Legir los fichièrs dobèrts"
+
+#: ../data/interfaces/playlist.ui.h:15
+#: ../data/interfaces/parole-settings.ui.h:21
+msgid "Remember playlist"
+msgstr "Se remembrar de la lista de lectura"
+
+#: ../data/interfaces/plugins.ui.h:1
+msgid "Parole Plugins"
+msgstr "Empeutons Parole"
+
+#: ../data/interfaces/plugins.ui.h:2
+msgid "Extend your media player"
+msgstr "Espandir vòstre lector multimèdia"
+
+#: ../data/interfaces/plugins.ui.h:3
+msgid "Plugin"
+msgstr "Empeuton"
+
+#: ../data/interfaces/plugins.ui.h:4
+msgid "<b>Description</b>"
+msgstr "<b>Descripcion</b>"
+
+#: ../data/interfaces/plugins.ui.h:5
+msgid "<b>Author</b>"
+msgstr "<b>Autor</b>"
+
+#: ../data/interfaces/plugins.ui.h:6
+msgid "Visit Website"
+msgstr "Visitar lo site Web"
+
+#: ../data/interfaces/parole-settings.ui.h:1
+msgid "Parole Settings"
+msgstr "Paramètres de Parole"
+
+#: ../data/interfaces/parole-settings.ui.h:2
+msgid "Configure your media player"
+msgstr "Configurar vòstre lector multimèdia"
+
+#: ../data/interfaces/parole-settings.ui.h:3
+msgid "Disable screensaver when playing movies"
+msgstr "Desactivar l'estalviador d'ecran al moment de la lectura dels filmes"
+
+#: ../data/interfaces/parole-settings.ui.h:4
+msgid "<b>Screensaver</b>"
+msgstr "<b>Estalviador d'ecran</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:5
+msgid "Show visual effects when an audio file is played"
+msgstr "Afichar los efièches visuals quand un fichièr àudio es jogat"
+
+#: ../data/interfaces/parole-settings.ui.h:6
+msgid "Visualization type:"
+msgstr "Tipe de visualizacion :"
+
+#: ../data/interfaces/parole-settings.ui.h:7
+msgid "<b>Audio Visualization</b>"
+msgstr "<b>Visualizacion àudio</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:8
+msgid "Enable keyboard multimedia keys"
+msgstr "Activar las tòcas multimèdia del clavièr"
+
+#: ../data/interfaces/parole-settings.ui.h:9
+msgid "<b>Keyboard</b>"
+msgstr "<b>Clavièr</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:10
+msgid "General"
+msgstr "General"
+
+#: ../data/interfaces/parole-settings.ui.h:11
+msgid "Brightness:"
+msgstr "Luminositat :"
+
+#: ../data/interfaces/parole-settings.ui.h:12
+msgid "Contrast:"
+msgstr "Contraste :"
+
+#: ../data/interfaces/parole-settings.ui.h:13
+msgid "Hue:"
+msgstr "Tencha :"
+
+#: ../data/interfaces/parole-settings.ui.h:14
+msgid "Saturation:"
+msgstr "Saturacion :"
+
+#: ../data/interfaces/parole-settings.ui.h:15
+msgid "Reset to defaults"
+msgstr "Reïnicializar "
+
+#: ../data/interfaces/parole-settings.ui.h:16
+msgid "<b>Color Balance</b>"
+msgstr "<b>Balança color</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:17
+msgid "Display"
+msgstr "Afichar"
+
+#: ../data/interfaces/parole-settings.ui.h:18
+msgid "Always replace playlist with opened files"
+msgstr "Remplaçar totjorn la lista de lectura amb los fichièrs dobèrts"
+
+#: ../data/interfaces/parole-settings.ui.h:19
+msgid "Check and remove duplicate media entries"
+msgstr "Verificar e suprimir los doblons"
+
+#: ../data/interfaces/parole-settings.ui.h:20
+msgid "Start playing opened files"
+msgstr "Aviar la lectura dels fichièrs dobèrts"
+
+#: ../data/interfaces/parole-settings.ui.h:22
+msgid "<b>Playlist Settings</b>"
+msgstr "<b>Paramètres de la lista de lectura</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:24
+msgid "Automatically show subtitles when playing movie file"
+msgstr "Afichar automaticament los sostítols al moment de la lectura d'un fichièr vidèo"
+
+#: ../data/interfaces/parole-settings.ui.h:25
+msgid "Font:"
+msgstr "Poliça :"
+
+#: ../data/interfaces/parole-settings.ui.h:26
+msgid "Encoding:"
+msgstr "Encodatge :"
+
+#: ../data/interfaces/parole-settings.ui.h:27
+msgid "<b>Subtitle Settings</b>"
+msgstr "<b>Paramètres dels sostítols</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:28
+msgid "Subtitles"
+msgstr "Sostítols"
+
+#: ../data/interfaces/save-playlist.ui.h:1
+msgid "Save Playlist as…"
+msgstr "Salvar la lista de lectura coma ..."
+
+#: ../data/interfaces/save-playlist.ui.h:2
+msgid "File Type"
+msgstr "Tipe de fichièr"
+
+#: ../data/interfaces/save-playlist.ui.h:3
+msgid "Extension"
+msgstr "Extension"
+
+#: ../data/interfaces/save-playlist.ui.h:4
+msgid "Select File Types (By Extension)"
+msgstr "Seleccionar los tipes de fichièrs (per extension)"
+
+#: ../data/interfaces/save-playlist.ui.h:5
+msgid "By Extension"
+msgstr "Per extension"
+
+#: ../data/interfaces/open-location.ui.h:1
+msgid "Open Network Location"
+msgstr "Dobrir un emplaçament ret"
+
+#: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:193
+msgid "Clear History"
+msgstr "Escafar l'istoric"
+
+#: ../data/interfaces/open-location.ui.h:3
+msgid "<big><b>Open Network Location</b></big>"
+msgstr "<big><b>Dobrir un emplaçament ret</b></big>"
+
+#: ../data/desktop/parole.desktop.in.in.h:2
+msgid "Play your media"
+msgstr "Legir vòstre mèdia"
+
+#: ../data/desktop/parole.desktop.in.in.h:3
+msgid "Play/Pause"
+msgstr "Lectura / Pausa"
+
+#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:2960
+#: ../src/parole-player.c:3184 ../src/plugins/notify/notify-provider.c:199
+msgid "Previous Track"
+msgstr "Pista precedenta"
+
+#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:2968
+#: ../src/parole-player.c:3194 ../src/plugins/notify/notify-provider.c:209
+msgid "Next Track"
+msgstr "Pista seguenta"
+
+#: ../src/common/parole-common.c:70
+msgid "Message"
+msgstr "Messatge"
+
+#: ../src/common/parole-common.c:75
+msgid "Error"
+msgstr "Error"
+
+#: ../src/gst/parole-gst.c:1278 ../src/parole-medialist.c:401
+#, c-format
+msgid "Track %i"
+msgstr "Pista %i"
+
+#: ../src/gst/parole-gst.c:1281
+msgid "Audio CD"
+msgstr "CD Àudio"
+
+#: ../src/gst/parole-gst.c:1492
+msgid "Additional software is required."
+msgstr "Un logicial suplementari es necessari."
+
+#: ../src/gst/parole-gst.c:1497
+msgid "Don't Install"
+msgstr "Installar pas"
+
+#: ../src/gst/parole-gst.c:1499
+msgid "Install"
+msgstr "Installar"
+
+#: ../src/gst/parole-gst.c:1502
+msgid "OK"
+msgstr "D'acòrdi"
+
+#: ../src/gst/parole-gst.c:1509
+#, c-format
+msgid ""
+"Parole needs <b>%s</b> to play this file.\n"
+"It can be installed automatically."
+msgstr "Parole a besonh de <b>%s</b> per jogar aqueste fichièr.\nPòt èsser installat automaticament."
+
+#: ../src/gst/parole-gst.c:1512
+#, c-format
+msgid "Parole needs <b>%s</b> to play this file."
+msgstr "Parole a besonh de <b>%s</b> per jogar aqueste fichièr."
+
+#: ../src/gst/parole-gst.c:1922
+msgid "The stream is taking too much time to load"
+msgstr "Lo flux pren tròp de temps per se cargar"
+
+#: ../src/gst/parole-gst.c:1923
+msgid "Do you want to continue loading or stop?"
+msgstr "Volètz contunhar o arrestar lo cargament ?"
+
+#: ../src/gst/parole-gst.c:1924
+msgid "Stop"
+msgstr "Arrèst"
+
+#: ../src/gst/parole-gst.c:1925
+msgid "Continue"
+msgstr "Contunhar"
+
+#: ../src/gst/parole-gst.c:2095
+msgid "GStreamer Error"
+msgstr "Error GStreamer"
+
+#: ../src/gst/parole-gst.c:2096
+msgid "Parole Media Player cannot start."
+msgstr "Lo lector Mèdia Parole se pòt pas aviar."
+
+#: ../src/gst/parole-gst.c:2124 ../src/gst/parole-gst.c:2142
+#: ../src/gst/parole-gst.c:2165
+#, c-format
+msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
+msgstr "Impossible de cargar l'empeuton « %s », verificar vòstra installacion de GStreamer."
+
+#: ../src/gst/parole-gst.c:2769 ../src/gst/parole-gst.c:2775
+#, c-format
+msgid "Audio Track #%d"
+msgstr "Pista àudio #%d"
+
+#: ../src/gst/parole-gst.c:2819 ../src/gst/parole-gst.c:2825
+#, c-format
+msgid "Subtitle #%d"
+msgstr "Sostítol #%d"
+
+#: ../src/main.c:59
+#, c-format
+msgid ""
+"\n"
+"Parole Media Player %s\n"
+"\n"
+"Part of the Xfce Goodies Project\n"
+"http://goodies.xfce.org\n"
+"\n"
+"Licensed under the GNU GPL.\n"
+"\n"
+"Please report bugs to <http://bugzilla.xfce.org/>.\n"
+"\n"
+msgstr "\nLector Mèdia Parole %s\n\nUna partida del projècte Xfce Goodies\nhttp://goodies.xfce.org\n\nJos licéncia GNU GPL.\n\nSe vos plai, senhalatz los bugs a <http://bugzilla.xfce.org/>.\n\n"
+
+#: ../src/main.c:234
+msgid "Unknown argument "
+msgstr "Argument desconegut"
+
+#: ../src/main.c:276
+msgid "Open a new instance"
+msgstr "Dobrir una novèla instància"
+
+#: ../src/main.c:277
+msgid "Do not load plugins"
+msgstr "Cargar pas los empeutons"
+
+#: ../src/main.c:278
+msgid "Set Audio-CD/VCD/DVD device path"
+msgstr "Seleccionar lo camin cap al periferic Àudio-CD/VCD/DVD"
+
+#: ../src/main.c:279
+msgid "Enable/Disable XV support (true or false, default=true)"
+msgstr "Activar / Desactivar lo supòrt XV (verai o fals, per defaut = verai)"
+
+#: ../src/main.c:280
+msgid "Start in embedded mode"
+msgstr "Aviar en mòde integrat"
+
+#: ../src/main.c:281
+msgid "Start in fullscreen mode"
+msgstr "Aviar en ecran complet"
+
+#: ../src/main.c:282
+msgid "Play or pause if already playing"
+msgstr "Lectura o pausa se lectura en cors"
+
+#: ../src/main.c:283
+msgid "Next track"
+msgstr "Pista seguenta"
+
+#: ../src/main.c:284
+msgid "Previous track"
+msgstr "Pista precedenta"
+
+#: ../src/main.c:285
+msgid "Raise volume"
+msgstr "Aumentar lo volum"
+
+#: ../src/main.c:286
+msgid "Lower volume"
+msgstr "Baissar lo volum"
+
+#: ../src/main.c:287
+msgid "Mute volume"
+msgstr "Copar lo volum"
+
+#: ../src/main.c:288
+msgid "Unmute (restore) volume"
+msgstr "Volum (restablir) en sordina"
+
+#: ../src/main.c:289
+msgid "Add files to playlist"
+msgstr "Apondre de fichièrs a la lista de lectura"
+
+#: ../src/main.c:290
+msgid "Print version information and exit"
+msgstr "Visualizar las informacions de la version e quitar"
+
+#: ../src/main.c:292
+msgid "Media to play"
+msgstr "Mèdia a legir"
+
+#: ../src/main.c:315
+msgid "[FILES...] - Play movies and songs"
+msgstr "[Fichièrs ...] - jogar los filmes e las cançons"
+
+#: ../src/main.c:327
+#, c-format
+msgid "Type %s --help to list all available command line options\n"
+msgstr "Picar %s - help per la lista de totas las opcions disponiblas en linha de comanda\n"
+
+#: ../src/main.c:342
+#, c-format
+msgid "Parole is already running, use -i to open a new instance\n"
+msgstr "Parole es ja en cors de foncionament. Utilizatz -i per dobrir una novèla instància\n"
+
+#: ../src/parole-mediachooser.c:234
+msgid "Supported files"
+msgstr "Fichièrs preses en carga"
+
+#: ../src/parole-mediachooser.c:241 ../src/parole-player.c:1013
+msgid "All files"
+msgstr "Totes los fichièrs"
+
+#: ../src/parole-medialist.c:217
+#, c-format
+msgid "Playlist (%i item)"
+msgstr "Listas de lectura (%i element)"
+
+#: ../src/parole-medialist.c:221
+#, c-format
+msgid "Playlist (%i chapter)"
+msgstr "Lista de lectura (%i capítol)"
+
+#: ../src/parole-medialist.c:228 ../src/parole-medialist.c:1586
+#, c-format
+msgid "Playlist (%i items)"
+msgstr "Lista de lectura (%i elements)"
+
+#: ../src/parole-medialist.c:232 ../src/parole-medialist.c:1587
+#, c-format
+msgid "Playlist (%i chapters)"
+msgstr "Lista de lectura (%i capítols)"
+
+#: ../src/parole-medialist.c:417 ../src/parole-player.c:698
+#, c-format
+msgid "Chapter %i"
+msgstr "Capítol %i"
+
+#: ../src/parole-medialist.c:700
+msgid "Permission denied"
+msgstr "Permission pas acordada"
+
+#: ../src/parole-medialist.c:702
+msgid "Error saving playlist file"
+msgstr "Error al moment del salvament del fichièr de la lista de lectura"
+
+#: ../src/parole-medialist.c:714
+msgid "Unknown playlist format"
+msgstr "Format de lista de lectura desconegut"
+
+#: ../src/parole-medialist.c:715
+msgid "Please choose a supported playlist format"
+msgstr "Se vos plai, causissètz un format de lista de lectura suportat"
+
+#: ../src/parole-medialist.c:769 ../src/parole-plugins-manager.c:369
+msgid "Unknown"
+msgstr "Desconegut"
+
+#: ../src/parole-medialist.c:858
+msgid "M3U Playlists"
+msgstr "Listas de lectura M3U"
+
+#: ../src/parole-medialist.c:866
+msgid "PLS Playlists"
+msgstr "Listas de lectura PLS"
+
+#: ../src/parole-medialist.c:874
+msgid "Advanced Stream Redirector"
+msgstr "Redirector de flux avançat"
+
+#: ../src/parole-medialist.c:882
+msgid "Shareable Playlist"
+msgstr "Lista de lectura partejabla"
+
+#. Clear
+#: ../src/parole-medialist.c:1221
+msgid "Open Containing Folder"
+msgstr "Dobrir lo dorsièr que conten lo fichièr"
+
+#: ../src/parole-player.c:513 ../src/parole-player.c:514
+msgid "Hide playlist"
+msgstr "Amagar la lista de lectura"
+
+#: ../src/parole-player.c:522 ../src/parole-player.c:523
+msgid "Show playlist"
+msgstr "Afichar la lista de lectura"
+
+#. Build the FileChooser dialog for subtitle selection.
+#: ../src/parole-player.c:977
+msgid "Select Subtitle File"
+msgstr "Seleccionar lo fichièr de sostítols"
+
+#: ../src/parole-player.c:982 ../src/parole-player.c:1186
+#: ../src/plugins/tray/tray-provider.c:310
+msgid "Cancel"
+msgstr "Anullar"
+
+#: ../src/parole-player.c:985
+msgid "Open"
+msgstr "Dobrir"
+
+#: ../src/parole-player.c:1001
+msgid "Subtitle Files"
+msgstr "Fichièrs sostítols"
+
+#: ../src/parole-player.c:1182 ../src/parole-player.c:1190
+msgid "Clear Recent Items"
+msgstr "Escafar los elements recents"
+
+#: ../src/parole-player.c:1184
+msgid ""
+"Are you sure you wish to clear your recent items history?  This cannot be "
+"undone."
+msgstr "Sètz segur que volètz escafar vòstre istoric d'elements recents ? Aquò pòt pas èsser anullat."
+
+#: ../src/parole-player.c:1275 ../src/parole-player.c:1408
+msgid "Media stream is not seekable"
+msgstr "Lo flux mèdia pòt èsser recercat"
+
+#. * GTK Actions
+#. 
+#. Play/Pause
+#: ../src/parole-player.c:1286 ../src/parole-player.c:2952
+msgid "_Play"
+msgstr "_Lectura"
+
+#: ../src/parole-player.c:1287 ../src/parole-player.c:2952
+msgid "Play"
+msgstr "Lectura"
+
+#: ../src/parole-player.c:1290
+msgid "_Pause"
+msgstr "_Pausa"
+
+#: ../src/parole-player.c:1291
+msgid "Pause"
+msgstr "Pausa"
+
+#: ../src/parole-player.c:1743
+msgid "GStreamer backend error"
+msgstr "Error del motor GStreamer"
+
+#: ../src/parole-player.c:1774
+msgid "Unknown Song"
+msgstr "Cançon desconeguda"
+
+#: ../src/parole-player.c:1779 ../src/parole-player.c:1781
+#: ../src/parole-player.c:1787
+msgid "on"
+msgstr "actiu"
+
+#: ../src/parole-player.c:1787 ../src/plugins/notify/notify-provider.c:143
+msgid "Unknown Album"
+msgstr "Album desconegut "
+
+#: ../src/parole-player.c:1794 ../src/parole-player.c:1798
+msgid "by"
+msgstr "per"
+
+#: ../src/parole-player.c:1798 ../src/plugins/notify/notify-provider.c:145
+msgid "Unknown Artist"
+msgstr "Artista desconegut"
+
+#: ../src/parole-player.c:1832
+msgid "Buffering"
+msgstr "Mesa en tampon"
+
+#: ../src/parole-player.c:1939 ../src/parole-player.c:2976
+#: ../src/parole-player.c:3215
+msgid "Fullscreen"
+msgstr "Ecran complet"
+
+#: ../src/parole-player.c:1954
+msgid "Leave _Fullscreen"
+msgstr "Daissar en ecran com_plet"
+
+#: ../src/parole-player.c:1955
+msgid "Leave Fullscreen"
+msgstr "Daissar en ecran complet"
+
+#. * Un/Hide menubar
+#. 
+#: ../src/parole-player.c:2051
+msgid "Show menubar"
+msgstr "Veire la barra de menú"
+
+#: ../src/parole-player.c:2251
+msgid "Mute"
+msgstr "Metre en sordina"
+
+#: ../src/parole-player.c:2256
+msgid "Unmute"
+msgstr "Remetre lo son"
+
+#: ../src/parole-player.c:2622
+msgid "Unable to open default web browser"
+msgstr "Impossible de dobrir lo navigador Web per defaut"
+
+#: ../src/parole-player.c:2624
+msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
+msgstr "Se vos plai, anatz a http://docs.xfce.org/apps/parole/bugs per senhalar vòstre bug."
+
+#. Previous Track
+#: ../src/parole-player.c:2960
+msgid "P_revious Track"
+msgstr "Pista p_recedenta"
+
+#. Next Track
+#: ../src/parole-player.c:2968
+msgid "_Next Track"
+msgstr "Pista segue_nta"
+
+#. Toggle Playlist
+#: ../src/parole-player.c:2983
+msgid "Show _Playlist"
+msgstr "Veire la _lista de lectura"
+
+#: ../src/parole-player.c:2983 ../src/parole-player.c:3321
+msgid "Show Playlist"
+msgstr "Veire la lista de lectura"
+
+#. Clear Recent Menu Item
+#: ../src/parole-player.c:3054
+msgid "_Clear recent items…"
+msgstr "_Escafar los articles recents ..."
+
+#: ../src/parole-player.c:3259
+msgid "Audio Track:"
+msgstr "Pista àudio :"
+
+#: ../src/parole-player.c:3275
+msgid "Subtitles:"
+msgstr "Sostítols :"
+
+#: ../src/parole-player.c:3280 ../src/plugins/tray/tray-provider.c:245
+msgid "Close"
+msgstr "Tampar"
+
+#: ../src/parole-player.c:3321
+msgid "Hide Playlist"
+msgstr "Amagar la lista de lectura"
+
+#: ../src/parole-about.c:76
+msgid "translator-credits"
+msgstr "Lista dels traductors"
+
+#: ../src/parole-about.c:79
+msgid "Visit Parole website"
+msgstr "Visitar lo site Web Parole"
+
+#: ../src/parole-disc.c:114
+msgid "Play Disc"
+msgstr "Legir un disc"
+
+#: ../src/parole-subtitle-encoding.c:165
+msgid "Current Locale"
+msgstr "Lenga actuala"
+
+#: ../src/parole-subtitle-encoding.c:168 ../src/parole-subtitle-encoding.c:170
+#: ../src/parole-subtitle-encoding.c:172 ../src/parole-subtitle-encoding.c:174
+msgid "Arabic"
+msgstr "Arabi"
+
+#: ../src/parole-subtitle-encoding.c:177
+msgid "Armenian"
+msgstr "Armèni"
+
+#: ../src/parole-subtitle-encoding.c:180 ../src/parole-subtitle-encoding.c:182
+#: ../src/parole-subtitle-encoding.c:184
+msgid "Baltic"
+msgstr "Baltic"
+
+#: ../src/parole-subtitle-encoding.c:187
+msgid "Celtic"
+msgstr "Celtic"
+
+#: ../src/parole-subtitle-encoding.c:190 ../src/parole-subtitle-encoding.c:192
+#: ../src/parole-subtitle-encoding.c:194 ../src/parole-subtitle-encoding.c:196
+msgid "Central European"
+msgstr "Euròpa centrala"
+
+#: ../src/parole-subtitle-encoding.c:199 ../src/parole-subtitle-encoding.c:201
+#: ../src/parole-subtitle-encoding.c:203 ../src/parole-subtitle-encoding.c:205
+msgid "Chinese Simplified"
+msgstr "Chinés simplificat"
+
+#: ../src/parole-subtitle-encoding.c:208 ../src/parole-subtitle-encoding.c:210
+#: ../src/parole-subtitle-encoding.c:212
+msgid "Chinese Traditional"
+msgstr "Chinés tradicional"
+
+#: ../src/parole-subtitle-encoding.c:215
+msgid "Croatian"
+msgstr "Croat"
+
+#: ../src/parole-subtitle-encoding.c:218 ../src/parole-subtitle-encoding.c:220
+#: ../src/parole-subtitle-encoding.c:222 ../src/parole-subtitle-encoding.c:224
+#: ../src/parole-subtitle-encoding.c:226 ../src/parole-subtitle-encoding.c:228
+msgid "Cyrillic"
+msgstr "Cirillic"
+
+#: ../src/parole-subtitle-encoding.c:231
+msgid "Cyrillic/Russian"
+msgstr "Cirillic / Rus "
+
+#: ../src/parole-subtitle-encoding.c:234 ../src/parole-subtitle-encoding.c:236
+msgid "Cyrillic/Ukrainian"
+msgstr "Cirillic / Ucraïnian"
+
+#: ../src/parole-subtitle-encoding.c:239
+msgid "Georgian"
+msgstr "Georgian"
+
+#: ../src/parole-subtitle-encoding.c:242 ../src/parole-subtitle-encoding.c:244
+#: ../src/parole-subtitle-encoding.c:246
+msgid "Greek"
+msgstr "Grèc"
+
+#: ../src/parole-subtitle-encoding.c:249
+msgid "Gujarati"
+msgstr "Gujrati"
+
+#: ../src/parole-subtitle-encoding.c:252
+msgid "Gurmukhi"
+msgstr "Gurmukhī"
+
+#: ../src/parole-subtitle-encoding.c:255 ../src/parole-subtitle-encoding.c:257
+#: ../src/parole-subtitle-encoding.c:259 ../src/parole-subtitle-encoding.c:261
+msgid "Hebrew"
+msgstr "Ebrieu"
+
+#: ../src/parole-subtitle-encoding.c:264
+msgid "Hebrew Visual"
+msgstr "Ebrieu visual"
+
+#: ../src/parole-subtitle-encoding.c:267
+msgid "Hindi"
+msgstr "Indi"
+
+#: ../src/parole-subtitle-encoding.c:270
+msgid "Icelandic"
+msgstr "Islandés"
+
+#: ../src/parole-subtitle-encoding.c:273 ../src/parole-subtitle-encoding.c:275
+#: ../src/parole-subtitle-encoding.c:277
+msgid "Japanese"
+msgstr "Japonés"
+
+#: ../src/parole-subtitle-encoding.c:280 ../src/parole-subtitle-encoding.c:282
+#: ../src/parole-subtitle-encoding.c:284 ../src/parole-subtitle-encoding.c:286
+msgid "Korean"
+msgstr "Corean"
+
+#: ../src/parole-subtitle-encoding.c:289
+msgid "Nordic"
+msgstr "Nordic"
+
+#: ../src/parole-subtitle-encoding.c:292
+msgid "Persian"
+msgstr "Persan"
+
+#: ../src/parole-subtitle-encoding.c:295 ../src/parole-subtitle-encoding.c:297
+msgid "Romanian"
+msgstr "Romanés"
+
+#: ../src/parole-subtitle-encoding.c:300
+msgid "South European"
+msgstr "Euròpa del sud"
+
+#: ../src/parole-subtitle-encoding.c:303
+msgid "Thai"
+msgstr "Tai"
+
+#: ../src/parole-subtitle-encoding.c:306 ../src/parole-subtitle-encoding.c:308
+#: ../src/parole-subtitle-encoding.c:310 ../src/parole-subtitle-encoding.c:312
+msgid "Turkish"
+msgstr "Turc"
+
+#: ../src/parole-subtitle-encoding.c:315 ../src/parole-subtitle-encoding.c:317
+#: ../src/parole-subtitle-encoding.c:319 ../src/parole-subtitle-encoding.c:321
+#: ../src/parole-subtitle-encoding.c:323
+msgid "Unicode"
+msgstr "Unicode"
+
+#: ../src/parole-subtitle-encoding.c:326 ../src/parole-subtitle-encoding.c:328
+#: ../src/parole-subtitle-encoding.c:330 ../src/parole-subtitle-encoding.c:332
+#: ../src/parole-subtitle-encoding.c:334
+msgid "Western"
+msgstr "Occident"
+
+#: ../src/parole-subtitle-encoding.c:337 ../src/parole-subtitle-encoding.c:339
+#: ../src/parole-subtitle-encoding.c:341
+msgid "Vietnamese"
+msgstr "Vietnamian"
+
+#. If plugin loading fails...
+#: ../src/parole-plugins-manager.c:276
+msgid "Plugin failed to load"
+msgstr "L'empeuton es pas estat cargat"
+
+#: ../src/parole-plugins-manager.c:276
+msgid "Please check your installation"
+msgstr "Se vos plai, verificatz vòstra installacion"
+
+#: ../src/parole-plugins-manager.c:408
+msgid "No installed plugins found on this system"
+msgstr "Cap d'empeuton installat pas trobat sus aqueste sistèma"
+
+#: ../src/parole-plugins-manager.c:409
+msgid "Please check your installation."
+msgstr "Se vos plai, verificar vòstra installacion."
+
+#: ../src/misc/parole-filters.c:65
+msgid "Audio"
+msgstr "Àudio"
+
+#: ../src/misc/parole-filters.c:91
+msgid "Video"
+msgstr "Vidèo"
+
+#: ../src/misc/parole-filters.c:116 ../src/misc/parole-filters.c:134
+msgid "Audio and video"
+msgstr "Àudio e vidèo"
+
+#: ../src/misc/parole-filters.c:163 ../src/misc/parole-filters.c:179
+msgid "All supported files"
+msgstr "Totes los fichièrs preses en carga"
+
+#: ../src/misc/parole-filters.c:206
+msgid "Playlist files"
+msgstr "Fichièrs de la lista de lectura"
+
+#: ../src/plugins/notify/notify-provider.c:148
+#: ../src/plugins/notify/notify-provider.c:151
+msgid "<i>on</i>"
+msgstr "<i>en</i>"
+
+#: ../src/plugins/notify/notify-provider.c:148
+#: ../src/plugins/notify/notify-provider.c:151
+msgid "<i>by</i>"
+msgstr "<i>per</i>"
+
+#: ../src/plugins/notify/notify.desktop.in.h:1
+msgid "Notify"
+msgstr "Avisar"
+
+#: ../src/plugins/notify/notify.desktop.in.h:2
+msgid "Show notifications for currently playing tracks"
+msgstr "Afichar las notificacions de la lista de lectura actuala"
+
+#: ../src/plugins/tray/tray-provider.c:133
+msgid "_Open"
+msgstr "_Dobrir"
+
+#: ../src/plugins/tray/tray-provider.c:242
+msgid "Tray icon plugin"
+msgstr "Empeuton de l'icòna de la zòna de notificacion"
+
+#: ../src/plugins/tray/tray-provider.c:252
+msgid "Always minimize to tray when window is closed"
+msgstr "Redusir totjorn dins la zòna de notificacion quand la fenèstra es tampada"
+
+#: ../src/plugins/tray/tray-provider.c:298
+msgid "Are you sure you want to quit?"
+msgstr "Sètz segur que volètz quitar ?"
+
+#: ../src/plugins/tray/tray-provider.c:301
+msgid "Parole can be minimized to the system tray instead."
+msgstr "Parole pòt èsser minimizada dins la barra d'estat a la plaça."
+
+#: ../src/plugins/tray/tray-provider.c:304
+msgid "Minimize to tray"
+msgstr "Minimizar dins la zòna de notificacion"
+
+#: ../src/plugins/tray/tray-provider.c:316
+msgid "Quit"
+msgstr "Quitar"
+
+#: ../src/plugins/tray/tray-provider.c:325
+msgid "Remember my choice"
+msgstr "Se remembrar de ma causida"
+
+#: ../src/plugins/tray/system-tray.desktop.in.h:1
+msgid "Tray icon"
+msgstr "Icòna de la zòna de notificacion"
+
+#: ../src/plugins/tray/system-tray.desktop.in.h:2
+msgid "Show icon in the system tray"
+msgstr "Far veire una icòna dins la zòna de notificacion"
