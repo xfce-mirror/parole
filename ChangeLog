@@ -1,7 +1,7 @@
-2013-10-30: bluesabre@xfce.org
+2013-12-02: bluesabre@xfce.org
     * Next: 0.5.4
     * Fix loading of playlists with relative paths (bug #10436)
-    * Add realmedia video to supported video mimetypes (bug #10434)
+    * Fix file-filters for audio/video mimetypes (bug #10434)
     * Fix IF/ELSE for plugin installation on multiple platforms (bugs #10142, #10441)
     * Fix "Remove Duplicates" functionality.
 
