@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-13 06:30+0100\n"
-"PO-Revision-Date: 2013-11-19 16:28+0000\n"
-"Last-Translator: Xfce <transifex@xfce.org>\n"
+"POT-Creation-Date: 2013-12-02 12:30+0100\n"
+"PO-Revision-Date: 2013-12-03 15:06+0000\n"
+"Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/xfce/language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,7 +31,7 @@ msgstr "媒體(_M)"
 
 #: ../data/interfaces/parole.ui.h:3
 msgid "_Open…"
-msgstr ""
+msgstr "開啟(_O)..."
 
 #: ../data/interfaces/parole.ui.h:4
 msgid "Open _Location…"
@@ -176,7 +176,7 @@ msgstr "插件(_L)"
 
 #: ../data/interfaces/parole.ui.h:38
 msgid "_Preferences"
-msgstr ""
+msgstr "偏好設定(_P)"
 
 #: ../data/interfaces/parole.ui.h:39
 msgid "_Help"
@@ -188,7 +188,7 @@ msgstr "報告錯誤(_R)…"
 
 #: ../data/interfaces/parole.ui.h:41
 msgid "_About"
-msgstr ""
+msgstr "關於(_A)"
 
 #: ../data/interfaces/parole.ui.h:42
 msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
@@ -498,12 +498,12 @@ msgstr "確定"
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
-msgstr ""
+msgstr "Parole 需要有 <b>%s</b> 才能播放這類檔案。\n它可以自動安裝。"
 
 #: ../src/gst/parole-gst.c:1512
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
-msgstr ""
+msgstr "Parole 需要有 <b>%s</b> 才能播放這類檔案。"
 
 #: ../src/gst/parole-gst.c:1922
 msgid "The stream is taking too much time to load"
@@ -642,11 +642,7 @@ msgstr "鍵入 %s --help 列出所有可用的指令列選項\n"
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole 已經在執行中，使用 -i 來開啟新的實體\n"
 
-#: ../src/parole-mediachooser.c:234
-msgid "Supported files"
-msgstr "支援的檔案"
-
-#: ../src/parole-mediachooser.c:241 ../src/parole-player.c:1013
+#: ../src/parole-mediachooser.c:247 ../src/parole-player.c:1013
 msgid "All files"
 msgstr "所有檔案"
 
@@ -689,7 +685,7 @@ msgstr "未知的播放清單格式"
 
 #: ../src/parole-medialist.c:715
 msgid "Please choose a supported playlist format"
-msgstr ""
+msgstr "請選擇支援的播放清單格式"
 
 #: ../src/parole-medialist.c:769 ../src/parole-plugins-manager.c:369
 msgid "Unknown"
