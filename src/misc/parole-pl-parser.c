@@ -64,13 +64,13 @@ gchar *g_substr (const gchar* string, gint start, gint end);
 static gchar*
 parole_filename_to_utf8(const gchar* filename)
 {
-    gsize read, written;
+    gsize read_size, written;
     
     gchar *utf8;
     gchar *tmp = g_strdup(filename);
     tmp = g_strconcat(tmp, "\0", NULL);
     
-    utf8 = g_filename_to_utf8(tmp, -1, &read, &written, NULL);
+    utf8 = g_filename_to_utf8(tmp, -1, &read_size, &written, NULL);
     g_free(tmp);
     return utf8;
 }
