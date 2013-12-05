@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-13 06:30+0100\n"
-"PO-Revision-Date: 2013-11-19 16:28+0000\n"
-"Last-Translator: Xfce <transifex@xfce.org>\n"
+"POT-Creation-Date: 2013-12-02 12:30+0100\n"
+"PO-Revision-Date: 2013-12-05 18:36+0000\n"
+"Last-Translator: Pablo Lezaeta <prflr88@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/xfce/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -51,7 +51,7 @@ msgstr "_Guardar lista de reproducción…"
 #: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:112
 #: ../src/parole-disc.c:154
 msgid "Insert Disc"
-msgstr "Insertar disco"
+msgstr "Inserte disco"
 
 #: ../data/interfaces/parole.ui.h:8 ../src/plugins/tray/tray-provider.c:150
 msgid "_Quit"
@@ -81,7 +81,7 @@ msgstr "Menú del _DVD"
 
 #: ../data/interfaces/parole.ui.h:14
 msgid "_Title Menu"
-msgstr "Menú de _título"
+msgstr "Menú del _título"
 
 #: ../data/interfaces/parole.ui.h:15
 msgid "_Audio Menu"
@@ -125,7 +125,7 @@ msgstr "_Silenciar"
 
 #: ../data/interfaces/parole.ui.h:25
 msgid "_Video"
-msgstr "_Vídeo"
+msgstr "_Video"
 
 #. Fullscreen
 #: ../data/interfaces/parole.ui.h:26 ../src/parole-player.c:1938
@@ -230,7 +230,7 @@ msgstr "Lista de reproducción"
 
 #: ../data/interfaces/playlist.ui.h:2
 msgid "Disc Playlist"
-msgstr "Lista de reproducción de disco"
+msgstr "Lista de reproducción del disco"
 
 #: ../data/interfaces/playlist.ui.h:3
 msgid "Add to playlist…"
@@ -274,7 +274,7 @@ msgstr "Mover hacia abajo"
 
 #: ../data/interfaces/playlist.ui.h:13
 msgid "Replace playlist when opening files"
-msgstr "Reemplazar lista de reproducción cuando se abran archivos"
+msgstr "Remplazar lista de reproducción cuando se abran archivos"
 
 #: ../data/interfaces/playlist.ui.h:14
 msgid "Play opened files"
@@ -379,7 +379,7 @@ msgstr "Mostrar"
 
 #: ../data/interfaces/parole-settings.ui.h:18
 msgid "Always replace playlist with opened files"
-msgstr "Siempre reemplazar la lista de reproducción con los archivos abiertos"
+msgstr "Siempre remplazar la lista de reproducción con los archivos abiertos"
 
 #: ../data/interfaces/parole-settings.ui.h:19
 msgid "Check and remove duplicate media entries"
@@ -439,7 +439,7 @@ msgstr "Abrir una ubicación en red"
 
 #: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:193
 msgid "Clear History"
-msgstr "Limpiar el histórico"
+msgstr "Limpiar el historial"
 
 #: ../data/interfaces/open-location.ui.h:3
 msgid "<big><b>Open Network Location</b></big>"
@@ -645,11 +645,7 @@ msgstr "Escriba %s --help para ver una lista completa de opciones de línea de �
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole ya se está ejecutando, utilice -i para abrir una instancia nueva\n"
 
-#: ../src/parole-mediachooser.c:234
-msgid "Supported files"
-msgstr "Archivos compatibles"
-
-#: ../src/parole-mediachooser.c:241 ../src/parole-player.c:1013
+#: ../src/parole-mediachooser.c:247 ../src/parole-player.c:1013
 msgid "All files"
 msgstr "Todos los archivos"
 
@@ -708,7 +704,7 @@ msgstr "Listas de reproducción PLS"
 
 #: ../src/parole-medialist.c:874
 msgid "Advanced Stream Redirector"
-msgstr "Advanced Stream Redirector"
+msgstr "Redirector de flujos avanzado"
 
 #: ../src/parole-medialist.c:882
 msgid "Shareable Playlist"
@@ -888,7 +884,7 @@ msgstr "Adolfo Jayme Barrientos <fitoschido@ubuntu.com>, 2013\nelega <elega@eleg
 
 #: ../src/parole-about.c:79
 msgid "Visit Parole website"
-msgstr "Visitar el sitio web de Parole"
+msgstr "Visite el sitio web de Parole"
 
 #: ../src/parole-disc.c:114
 msgid "Play Disc"
@@ -919,7 +915,7 @@ msgstr "Céltico"
 #: ../src/parole-subtitle-encoding.c:190 ../src/parole-subtitle-encoding.c:192
 #: ../src/parole-subtitle-encoding.c:194 ../src/parole-subtitle-encoding.c:196
 msgid "Central European"
-msgstr "Europa central"
+msgstr "Europeo central"
 
 #: ../src/parole-subtitle-encoding.c:199 ../src/parole-subtitle-encoding.c:201
 #: ../src/parole-subtitle-encoding.c:203 ../src/parole-subtitle-encoding.c:205
@@ -964,7 +960,7 @@ msgstr "Guyaratí"
 
 #: ../src/parole-subtitle-encoding.c:252
 msgid "Gurmukhi"
-msgstr "Gurmukhi"
+msgstr "Gurmuji"
 
 #: ../src/parole-subtitle-encoding.c:255 ../src/parole-subtitle-encoding.c:257
 #: ../src/parole-subtitle-encoding.c:259 ../src/parole-subtitle-encoding.c:261
@@ -1058,11 +1054,11 @@ msgstr "Sonido"
 
 #: ../src/misc/parole-filters.c:91
 msgid "Video"
-msgstr "Vídeo"
+msgstr "Video"
 
 #: ../src/misc/parole-filters.c:116 ../src/misc/parole-filters.c:134
 msgid "Audio and video"
-msgstr "Sonido y vídeo"
+msgstr "Sonido y video"
 
 #: ../src/misc/parole-filters.c:163 ../src/misc/parole-filters.c:179
 msgid "All supported files"
