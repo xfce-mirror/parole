@@ -426,6 +426,8 @@ void parole_conf_dialog_open (ParoleConfDialog *self, GtkWidget *parent)
     gboolean    with_display;
     
     GtkWidget *switch_widget;
+    GtkAdjustment *adjustment;
+    GValue step_increment = {0};
     
     builder = parole_builder_new_from_string (parole_settings_ui, parole_settings_ui_length);
     
@@ -475,6 +477,18 @@ void parole_conf_dialog_open (ParoleConfDialog *self, GtkWidget *parent)
         gtk_scale_add_mark (GTK_SCALE (self->priv->contrast), 0, GTK_POS_BOTTOM, NULL);
         gtk_scale_add_mark (GTK_SCALE (self->priv->saturation), 0, GTK_POS_BOTTOM, NULL);
         gtk_scale_add_mark (GTK_SCALE (self->priv->hue), 0, GTK_POS_BOTTOM, NULL);
+        
+        /* Set the step increment on the sliders to make them keyboard friendly */
+        g_value_init(&step_increment, G_TYPE_DOUBLE);
+        g_value_set_double(&step_increment, 10.0);
+        adjustment = gtk_range_get_adjustment(GTK_RANGE (self->priv->brightness));
+        g_object_set_property(G_OBJECT(adjustment), "step-increment", &step_increment);
+        adjustment = gtk_range_get_adjustment(GTK_RANGE (self->priv->contrast));
+        g_object_set_property(G_OBJECT(adjustment), "step-increment", &step_increment);
+        adjustment = gtk_range_get_adjustment(GTK_RANGE (self->priv->hue));
+        g_object_set_property(G_OBJECT(adjustment), "step-increment", &step_increment);
+        adjustment = gtk_range_get_adjustment(GTK_RANGE (self->priv->saturation));
+        g_object_set_property(G_OBJECT(adjustment), "step-increment", &step_increment);
 
         g_object_get (G_OBJECT (self->priv->conf),
                       "brightness", &brightness_value,
