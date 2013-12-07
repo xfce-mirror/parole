@@ -579,7 +579,6 @@ static GVariant* mpris_Player_get_CanGoPrevious (GError **error, Mpris2Provider 
 
 static GVariant* mpris_Player_get_CanPlay (GError **error, Mpris2Provider *provider)
 {
-    // TODO: this can cause a UI-lock
     /* The CanPlay property should be true when the player is playing or paused. */
     ParoleProviderPlayer *player = provider->player;
     gint state = parole_provider_player_get_state (player);
@@ -588,7 +587,6 @@ static GVariant* mpris_Player_get_CanPlay (GError **error, Mpris2Provider *provi
 
 static GVariant* mpris_Player_get_CanPause (GError **error, Mpris2Provider *provider)
 {
-    // TODO: this can cause a UI-lock
     /* The CanPause property should be true when the player is playing or paused. */
     ParoleProviderPlayer *player = provider->player;
     gint state = parole_provider_player_get_state (player);
@@ -612,7 +610,6 @@ static GVariant* mpris_Player_get_CanSeek (GError **error, Mpris2Provider *provi
 
 static GVariant* mpris_Player_get_CanControl (GError **error, Mpris2Provider *provider)
 {
-    // always?
     return g_variant_new_boolean(TRUE);
 }
 
@@ -656,6 +653,7 @@ static void parole_mpris_update_any (Mpris2Provider *provider)
         g_variant_builder_add (&b, "{sv}", "PlaybackStatus", mpris_Player_get_PlaybackStatus (NULL, provider));
         g_variant_builder_add (&b, "{sv}", "CanPlay", mpris_Player_get_CanPlay(NULL, provider));
         g_variant_builder_add (&b, "{sv}", "CanPause", mpris_Player_get_CanPause(NULL, provider));
+        g_variant_builder_add (&b, "{sv}", "CanSeek", mpris_Player_get_CanSeek(NULL, provider));
     }
     g_object_get (G_OBJECT (provider->conf), "repeat", &repeat, NULL);
     if(provider->saved_playbackstatus != repeat)

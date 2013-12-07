@@ -207,7 +207,8 @@ parole_plugin_player_get_stream_position (ParoleProviderPlayer *provider)
 
     position = parole_gst_get_stream_position (PAROLE_GST (player->priv->gst));
     
-    return position;
+    /* Return as microseconds */
+    return position*1000000.0;
 }
 
 static void parole_plugin_player_open_media_chooser (ParoleProviderPlayer *provider)
