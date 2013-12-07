@@ -523,13 +523,20 @@ static GVariant* mpris_Player_get_Metadata (GError **error, Mpris2Provider *prov
     return g_variant_builder_end(&b);
 }
 
+static gdouble handle_get_volume (Mpris2Provider *provider)
+{
+    gint volume_int = 0;
+    gdouble volume_double;
+    
+    g_object_get (G_OBJECT (provider->conf), "volume", &volume_int, NULL);
+    volume_double = (double)volume_int / 100.0;
+    
+    return volume_double;
+}
+
 static GVariant* mpris_Player_get_Volume (GError **error, Mpris2Provider *provider)
 {
-    gdouble volume = 0;
-
-    g_object_get (G_OBJECT (provider->conf), "volume", &volume, NULL);
-
-    return g_variant_new_double(volume / 100.0);
+    return g_variant_new_double(handle_get_volume(provider));
 }
 
 static void mpris_Player_put_Volume (GVariant *value, GError **error, Mpris2Provider *provider)
@@ -662,7 +669,7 @@ static void parole_mpris_update_any (Mpris2Provider *provider)
         provider->saved_playbackstatus = repeat;
         g_variant_builder_add (&b, "{sv}", "LoopStatus", mpris_Player_get_LoopStatus (NULL, provider));
     }
-    //curr_vol = pragha_backend_get_volume (backend);
+    curr_vol = handle_get_volume(provider);
     if(provider->volume != curr_vol)
     {
         change_detected = TRUE;
@@ -951,6 +958,9 @@ mpris2_provider_set_player (ParoleProviderPlugin *plugin, ParoleProviderPlayer *
     provider->conf = parole_conf_new();
 
     g_signal_connect ( provider->conf, "notify::repeat",
+                      G_CALLBACK (conf_changed_cb), plugin);
+                      
+    g_signal_connect ( provider->conf, "notify::volume",
                       G_CALLBACK (conf_changed_cb), plugin);
                       
     window = parole_provider_player_get_main_window(provider->player);
