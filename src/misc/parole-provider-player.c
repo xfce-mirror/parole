@@ -403,10 +403,10 @@ gboolean parole_provider_player_seek (ParoleProviderPlayer *player, gdouble pos)
 }
 
 /**
- * parole_provider_player_get_fullscreen:
+ * parole_provider_player_get_stream_position:
  * @player: a #ParoleProviderPlayer
  * 
- * Get fullscreen status for Parole.
+ * Get stream position (microseconds) for Parole.
  * 
  * Since: 0.6
  **/

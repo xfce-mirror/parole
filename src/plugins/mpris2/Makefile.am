@@ -20,6 +20,7 @@ parole_mpris2_la_SOURCES =			\
 parole_mpris2_la_CFLAGS =			\
 	$(PLATFORM_CFLAGS)			\
 	$(GTK_CFLAGS)				\
+    $(GST_INTERFACES_CFLAGS)	\
 	$(LIBXFCE4UTIL_CFLAGS)
 
 parole_mpris2_la_LDFLAGS =			\
@@ -31,6 +32,7 @@ parole_mpris2_la_LDFLAGS =			\
 parole_mpris2_la_LIBADD =				\
 	$(top_builddir)/src/misc/libparole.la	\
 	$(GTK_LIBS)				\
+	$(GST_LIBS)             \
 	$(LIBXFCE4UTIL_LIBS)
 
 #

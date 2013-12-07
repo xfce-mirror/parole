@@ -24,6 +24,8 @@
 
 #include "mpris2-provider.h"
 
+#include <gst/tag/tag.h>
+
 static void   mpris2_provider_iface_init       (ParoleProviderPluginIface *iface);
 static void   mpris2_provider_finalize             (GObject                   *object);
 
@@ -329,13 +331,59 @@ static void mpris_Player_Stop (GDBusMethodInvocation *invocation, GVariant* para
 
 static void mpris_Player_Seek (GDBusMethodInvocation *invocation, GVariant* parameters, Mpris2Provider *provider)
 {
-    // TODO: Implement seek..
+    ParoleProviderPlayer *player = provider->player;
+
+    if(parole_provider_player_get_state (player) == PAROLE_STATE_STOPPED) {
+        g_dbus_method_invocation_return_error_literal (invocation,
+            G_DBUS_ERROR, G_DBUS_ERROR_FAILED, "Nothing to seek");
+        return;
+    }
+    
+    const ParoleStream *stream = parole_provider_player_get_stream(player);
+
+    gint64 param;
+    g_variant_get(parameters, "(x)", &param);
+
+    gint64 curr_pos = parole_provider_player_get_stream_position (player);
+    gint64 seek = (curr_pos + param) / GST_MSECOND;
+    
+    gint64 duration;
+    g_object_get (G_OBJECT (stream), "duration", &duration, NULL);
+    
+    seek = CLAMP (seek, 0, duration);
+
+    parole_provider_player_seek (player, seek);
+
     g_dbus_method_invocation_return_value (invocation, NULL);
 }
 
 static void mpris_Player_SetPosition (GDBusMethodInvocation *invocation, GVariant* parameters, Mpris2Provider *provider)
 {
-    // TODO: Implement set position..
+    ParoleProviderPlayer *player = provider->player;
+
+    if(parole_provider_player_get_state (player) == PAROLE_STATE_STOPPED) {
+        g_dbus_method_invocation_return_error_literal (invocation,
+            G_DBUS_ERROR, G_DBUS_ERROR_FAILED, "Nothing to seek");
+        return;
+    }
+    
+    const ParoleStream *stream = parole_provider_player_get_stream(player);
+    gchar *track_id = NULL;
+
+    /* Do we need to do anything with track_id? */
+    gint64 param;
+    g_variant_get(parameters, "(ox)", &track_id, &param);
+    g_free(track_id);
+
+    gint64 seek = param / GST_MSECOND;
+    
+    gint64 duration;
+    g_object_get (G_OBJECT (stream), "duration", &duration, NULL);
+    
+    seek = CLAMP (seek, 0, duration);
+
+    parole_provider_player_seek (player, seek);
+
     g_dbus_method_invocation_return_value (invocation, NULL);
 }
 
