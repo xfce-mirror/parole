@@ -548,8 +548,7 @@ static void mpris_Player_put_Volume (GVariant *value, GError **error, Mpris2Prov
    if(volume > 1.0)
       volume = 1.0;
 
-   g_object_set(G_OBJECT(provider->conf), "volume", (gint) volume * 100.0, NULL);
-
+   g_object_set(G_OBJECT(provider->conf), "volume", (gint) (volume * 100.0), NULL);
 }
 
 static GVariant* mpris_Player_get_Position (GError **error, Mpris2Provider *provider)

@@ -422,8 +422,8 @@
                         <property name="use_underline">True</property>
                         <property name="image">image_volume_up</property>
                         <property name="use_stock">False</property>
-                        <accelerator key="plus" signal="activate"/>
                         <accelerator key="equal" signal="activate"/>
+                        <accelerator key="plus" signal="activate"/>
                         <signal name="activate" handler="parole_player_volume_up" swapped="no"/>
                       </object>
                     </child>
@@ -932,7 +932,7 @@
                                 <property name="show_text">True</property>
                               </object>
                               <packing>
-                                <property name="expand">False</property>
+                                <property name="expand">True</property>
                                 <property name="fill">True</property>
                                 <property name="position">4</property>
                               </packing>
@@ -990,6 +990,7 @@ audio-volume-low-symbolic
 audio-volume-medium-symbolic</property>
                             <property name="use_symbolic">True</property>
                             <signal name="value-changed" handler="parole_player_volume_value_changed_cb" swapped="no"/>
+                            <signal name="scroll-event" handler="parole_player_volume_scroll_event_cb" swapped="no"/>
                           </object>
                           <packing>
                             <property name="expand">False</property>

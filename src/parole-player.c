@@ -345,6 +345,8 @@ struct ParolePlayerPrivate
     
     GtkFileFilter      *video_filter;
     GtkRecentManager   *recent;
+    
+    gdouble             last_volume;
 
     GtkWidget          *window;
     GtkWidget          *playlist_nt;
@@ -2239,10 +2241,16 @@ void
 parole_player_volume_value_changed_cb (GtkScaleButton *widget, gdouble value, ParolePlayer *player)
 {
     parole_player_change_volume (player, value);
-    if ( value > 0.0 )
-        g_object_set (G_OBJECT (player->priv->conf),
-                      "volume", (gint)(value * 100),
-                      NULL);
+
+    /* Do not update the value unless it has changed! */
+    if ((int)(value*100) != (int)(player->priv->last_volume*100))
+    {
+        player->priv->last_volume = value;
+        if ( value > 0.0 )
+            g_object_set (G_OBJECT (player->priv->conf),
+                          "volume", (gint)(value * 100),
+                          NULL);
+    }
 }
 
 void

@@ -2028,6 +2028,18 @@ parole_gst_conf_notify_cb (GObject *object, GParamSpec *spec, ParoleGst *gst)
     }
 }
 
+static void
+parole_gst_conf_notify_volume_cb (GObject *conf, GParamSpec *pspec, ParoleGst *gst)
+{
+    gint volume;
+
+    g_object_get (G_OBJECT (gst->priv->conf),
+                  "volume", &volume,
+                  NULL);
+                  
+    parole_gst_set_volume (gst, (double)(volume / 100.0));
+}
+
 static void parole_gst_get_property    (GObject *object,
                                         guint prop_id,
                                         GValue *value,
@@ -2081,6 +2093,8 @@ static void parole_gst_set_property    (GObject *object,
 
                 g_signal_connect (G_OBJECT (gst->priv->conf), "notify",
                 G_CALLBACK (parole_gst_conf_notify_cb), gst);
+                g_signal_connect (G_OBJECT (gst->priv->conf), "notify::volume",
+                G_CALLBACK (parole_gst_conf_notify_volume_cb), gst);
             }
             break;
         default:
@@ -2618,13 +2632,17 @@ void parole_gst_seek (ParoleGst *gst, gdouble seek)
 
 void parole_gst_set_volume (ParoleGst *gst, gdouble volume)
 {
-    gst_stream_volume_set_volume   (GST_STREAM_VOLUME (gst->priv->playbin),
-                                    GST_STREAM_VOLUME_FORMAT_CUBIC,
-                                    volume);
     volume = CLAMP (volume, 0.0, 1.0);
-    gst->priv->volume = volume;
-    
-    g_object_notify (G_OBJECT (gst), "volume");
+    if (gst->priv->volume != volume)
+    {
+        gst_stream_volume_set_volume   (GST_STREAM_VOLUME (gst->priv->playbin),
+                                        GST_STREAM_VOLUME_FORMAT_CUBIC,
+                                        volume);
+        
+        gst->priv->volume = volume;
+        
+        g_object_notify (G_OBJECT (gst), "volume");
+    }
 }
                             
 gdouble parole_gst_get_volume (ParoleGst *gst)
