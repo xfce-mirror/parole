@@ -36,7 +36,7 @@ typedef struct _Mpris2Provider      Mpris2Provider;
 #define MPRIS2_IS_PROVIDER_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), MPRIS2_TYPE_PROVIDER))
 #define MPRIS2_PROVIDER_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), MPRIS2_TYPE_PROVIDER, Mpris2ProviderClass))
 
-GType mpris2_provider_get_type          (void) G_GNUC_CONST G_GNUC_INTERNAL;
+GType mpris2_provider_get_type      (void) G_GNUC_CONST G_GNUC_INTERNAL;
 
 void  mpris2_provider_register_type (ParoleProviderPlugin *plugin);
 

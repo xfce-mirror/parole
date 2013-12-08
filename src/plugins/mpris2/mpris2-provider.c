@@ -27,7 +27,7 @@
 #include <gst/tag/tag.h>
 
 static void   mpris2_provider_iface_init       (ParoleProviderPluginIface *iface);
-static void   mpris2_provider_finalize             (GObject                   *object);
+static void   mpris2_provider_finalize         (GObject                   *object);
 
 #define MPRIS_NAME "org.mpris.MediaPlayer2.parole"
 #define MPRIS_PATH "/org/mpris/MediaPlayer2"
@@ -66,67 +66,67 @@ PAROLE_DEFINE_TYPE_WITH_CODE   (Mpris2Provider,
 
 static const gchar mpris2xml[] =
 "<node>"
-"        <interface name='org.mpris.MediaPlayer2'>"
-"                <method name='Raise'/>"
-"                <method name='Quit'/>"
-"                <property name='CanQuit' type='b' access='read'/>"
-"                <property name='CanRaise' type='b' access='read'/>"
-"                <property name='HasTrackList' type='b' access='read'/>"
-"                <property name='Identity' type='s' access='read'/>"
-"                <property name='DesktopEntry' type='s' access='read'/>"
-"                <property name='SupportedUriSchemes' type='as' access='read'/>"
-"                <property name='SupportedMimeTypes' type='as' access='read'/>"
-"                <property name='Fullscreen' type='b' access='readwrite'/>"
-"                <property name='CanSetFullscreen' type='b' access='read'/>"
-"        </interface>"
-"        <interface name='org.mpris.MediaPlayer2.Player'>"
-"                <method name='Next'/>"
-"                <method name='Previous'/>"
-"                <method name='Pause'/>"
-"                <method name='PlayPause'/>"
-"                <method name='Stop'/>"
-"                <method name='Play'/>"
-"                <method name='Seek'>"
-"				 		<arg direction='in' name='Offset' type='x'/>"
-"				 </method>"
-"                <method name='SetPosition'>"
-"						<arg direction='in' name='TrackId' type='o'/>"
-"						<arg direction='in' name='Position' type='x'/>"
-"                </method>"
-"                <method name='OpenUri'>"
-"				 		<arg direction='in' name='Uri' type='s'/>"
-"				 </method>"
-"                <signal name='Seeked'><arg name='Position' type='x'/></signal>"
-"                <property name='PlaybackStatus' type='s' access='read'/>"
-"                <property name='LoopStatus' type='s' access='readwrite'/>"
-"                <property name='Rate' type='d' access='readwrite'/>"
-"                <property name='Shuffle' type='b' access='readwrite'/>"
-"                <property name='Metadata' type='a{sv}' access='read'/>"
-"                <property name='Volume' type='d' access='readwrite'/>"
-"                <property name='Position' type='x' access='read'/>"
-"                <property name='MinimumRate' type='d' access='read'/>"
-"                <property name='MaximumRate' type='d' access='read'/>"
-"                <property name='CanGoNext' type='b' access='read'/>"
-"                <property name='CanGoPrevious' type='b' access='read'/>"
-"                <property name='CanPlay' type='b' access='read'/>"
-"                <property name='CanPause' type='b' access='read'/>"
-"                <property name='CanSeek' type='b' access='read'/>"
-"                <property name='CanControl' type='b' access='read'/>"
-"        </interface>"
+"    <interface name='org.mpris.MediaPlayer2'>"
+"        <method name='Raise'/>"
+"        <method name='Quit'/>"
+"        <property name='CanQuit' type='b' access='read'/>"
+"        <property name='CanRaise' type='b' access='read'/>"
+"        <property name='HasTrackList' type='b' access='read'/>"
+"        <property name='Identity' type='s' access='read'/>"
+"        <property name='DesktopEntry' type='s' access='read'/>"
+"        <property name='SupportedUriSchemes' type='as' access='read'/>"
+"        <property name='SupportedMimeTypes' type='as' access='read'/>"
+"        <property name='Fullscreen' type='b' access='readwrite'/>"
+"        <property name='CanSetFullscreen' type='b' access='read'/>"
+"    </interface>"
+"    <interface name='org.mpris.MediaPlayer2.Player'>"
+"        <method name='Next'/>"
+"        <method name='Previous'/>"
+"        <method name='Pause'/>"
+"        <method name='PlayPause'/>"
+"        <method name='Stop'/>"
+"        <method name='Play'/>"
+"        <method name='Seek'>"
+"            <arg direction='in' name='Offset' type='x'/>"
+"        </method>"
+"        <method name='SetPosition'>"
+"            <arg direction='in' name='TrackId' type='o'/>"
+"            <arg direction='in' name='Position' type='x'/>"
+"        </method>"
+"        <method name='OpenUri'>"
+"            <arg direction='in' name='Uri' type='s'/>"
+"        </method>"
+"        <signal name='Seeked'><arg name='Position' type='x'/></signal>"
+"        <property name='PlaybackStatus' type='s' access='read'/>"
+"        <property name='LoopStatus' type='s' access='readwrite'/>"
+"        <property name='Rate' type='d' access='readwrite'/>"
+"        <property name='Shuffle' type='b' access='readwrite'/>"
+"        <property name='Metadata' type='a{sv}' access='read'/>"
+"        <property name='Volume' type='d' access='readwrite'/>"
+"        <property name='Position' type='x' access='read'/>"
+"        <property name='MinimumRate' type='d' access='read'/>"
+"        <property name='MaximumRate' type='d' access='read'/>"
+"        <property name='CanGoNext' type='b' access='read'/>"
+"        <property name='CanGoPrevious' type='b' access='read'/>"
+"        <property name='CanPlay' type='b' access='read'/>"
+"        <property name='CanPause' type='b' access='read'/>"
+"        <property name='CanSeek' type='b' access='read'/>"
+"        <property name='CanControl' type='b' access='read'/>"
+"    </interface>"
 "</node>";
 
 /* some MFCisms */
 #define BEGIN_INTERFACE(x) \
-	if(g_quark_try_string(interface_name)==provider->interface_quarks[x]) {
+    if(g_quark_try_string(interface_name)==provider->interface_quarks[x]) {
 #define MAP_METHOD(x,y) \
-	if(!g_strcmp0(#y, method_name)) { \
-		mpris_##x##_##y(invocation, parameters, provider); return; }
+    if(!g_strcmp0(#y, method_name)) { \
+        mpris_##x##_##y(invocation, parameters, provider); return; }
 #define PROPGET(x,y) \
-	if(!g_strcmp0(#y, property_name)) \
-		return mpris_##x##_get_##y(error, provider);
+    if(!g_strcmp0(#y, property_name)) \
+        return mpris_##x##_get_##y(error, provider);
 #define PROPPUT(x,y) \
-	if(g_quark_try_string(property_name)==g_quark_from_static_string(#y)) \
-		mpris_##x##_put_##y(value, error, provider);
+    if(g_quark_try_string(property_name)==g_quark_from_static_string(#y)) \
+        mpris_##x##_put_##y(value, error, provider);
 #define END_INTERFACE }
 
 /*
@@ -137,11 +137,11 @@ static void mpris_Root_Raise (GDBusMethodInvocation *invocation, GVariant* param
     GtkWidget *widget = parole_provider_player_get_main_window(provider->player);
     if(widget)
     {
-       GdkWindow *window = gtk_widget_get_window(widget);
-       if(window)
-       {
-          gdk_window_raise(window);
-       }
+        GdkWindow *window = gtk_widget_get_window(widget);
+        if(window)
+        {
+            gdk_window_raise(window);
+        }
     }
     g_dbus_method_invocation_return_value (invocation, NULL);
 }
@@ -170,7 +170,7 @@ static GVariant* mpris_Root_get_Fullscreen (GError **error, Mpris2Provider *prov
 
 static void mpris_Root_put_Fullscreen (GVariant *value, GError **error, Mpris2Provider *provider)
 {
-	gboolean fullscreen = g_variant_get_boolean(value);
+    gboolean fullscreen = g_variant_get_boolean(value);
 
     GtkWidget *window = parole_provider_player_get_main_window(provider->player);
     if (window)
@@ -252,27 +252,27 @@ static GVariant* mpris_Root_get_SupportedMimeTypes (GError **error, Mpris2Provid
  */
 static void mpris_Player_Play (GDBusMethodInvocation *invocation, GVariant* parameters, Mpris2Provider *provider)
 {
-   ParoleProviderPlayer *player = provider->player;
-   ParoleState state = parole_provider_player_get_state (player);
+    ParoleProviderPlayer *player = provider->player;
+    ParoleState state = parole_provider_player_get_state (player);
 
-   switch(state)
-   {
-      case PAROLE_STATE_PAUSED:
-      parole_provider_player_resume (provider->player);
-      break;
+    switch(state)
+    {
+        case PAROLE_STATE_PAUSED:
+            parole_provider_player_resume (provider->player);
+            break;
 
-      case PAROLE_STATE_STOPPED:
-      case PAROLE_STATE_PLAYBACK_FINISHED:
-      parole_provider_player_play_next (provider->player);
-      break;
+        case PAROLE_STATE_STOPPED:
+        case PAROLE_STATE_PLAYBACK_FINISHED:
+            parole_provider_player_play_next (provider->player);
+            break;
 
-      case PAROLE_STATE_ABOUT_TO_FINISH:
-      case PAROLE_STATE_PLAYING:
-      g_debug("MPRIS: Unexpected: play command while playing");
-      break;
-   }
+        case PAROLE_STATE_ABOUT_TO_FINISH:
+        case PAROLE_STATE_PLAYING:
+            g_debug("MPRIS: Unexpected: play command while playing");
+            break;
+    }
 
-   g_dbus_method_invocation_return_value (invocation, NULL);
+    g_dbus_method_invocation_return_value (invocation, NULL);
 }
 
 static void mpris_Player_Next (GDBusMethodInvocation *invocation, GVariant* parameters, Mpris2Provider *provider)
@@ -303,19 +303,19 @@ static void mpris_Player_PlayPause (GDBusMethodInvocation *invocation, GVariant*
 
     switch(state)
     {
-       case PAROLE_STATE_PAUSED:
-       parole_provider_player_resume (player);
-       break;
+        case PAROLE_STATE_PAUSED:
+            parole_provider_player_resume (player);
+            break;
 
-       case PAROLE_STATE_STOPPED:
-       case PAROLE_STATE_PLAYBACK_FINISHED:
-       parole_provider_player_play_next (player);
-       break;
+        case PAROLE_STATE_STOPPED:
+        case PAROLE_STATE_PLAYBACK_FINISHED:
+            parole_provider_player_play_next (player);
+            break;
 
-       case PAROLE_STATE_ABOUT_TO_FINISH:
-       case PAROLE_STATE_PLAYING:
-       parole_provider_player_pause(player);
-       break;
+        case PAROLE_STATE_ABOUT_TO_FINISH:
+        case PAROLE_STATE_PLAYING:
+            parole_provider_player_pause(player);
+            break;
     }
 
     g_dbus_method_invocation_return_value (invocation, NULL);
@@ -391,7 +391,7 @@ static void mpris_Player_OpenUri (GDBusMethodInvocation *invocation, GVariant* p
 {
     gchar *uri = NULL;
     gboolean happened = FALSE;
-	ParoleProviderPlayer *player = provider->player;
+    ParoleProviderPlayer *player = provider->player;
 
     g_variant_get(parameters, "(s)", &uri);
     if (uri) {
@@ -553,13 +553,13 @@ static void handle_get_metadata (const ParoleStream *stream, GVariantBuilder *b)
 
 static GVariant* mpris_Player_get_Metadata (GError **error, Mpris2Provider *provider)
 {
-	GVariantBuilder b;
+    GVariantBuilder b;
     const ParoleStream *stream;
-	ParoleProviderPlayer *player = provider->player;
+    ParoleProviderPlayer *player = provider->player;
 
-	g_variant_builder_init(&b, G_VARIANT_TYPE ("a{sv}"));
+    g_variant_builder_init(&b, G_VARIANT_TYPE ("a{sv}"));
 
-   if (parole_provider_player_get_state(player) != PAROLE_STATE_STOPPED) {
+    if (parole_provider_player_get_state(player) != PAROLE_STATE_STOPPED) {
         stream = parole_provider_player_get_stream(player);
 
         handle_get_metadata (stream, &b);
@@ -589,14 +589,14 @@ static GVariant* mpris_Player_get_Volume (GError **error, Mpris2Provider *provid
 
 static void mpris_Player_put_Volume (GVariant *value, GError **error, Mpris2Provider *provider)
 {
-   gdouble volume = g_variant_get_double(value);
+    gdouble volume = g_variant_get_double(value);
 
-   if(volume < 0.0)
-      volume = 0.0;
-   if(volume > 1.0)
-      volume = 1.0;
+    if(volume < 0.0)
+        volume = 0.0;
+    if(volume > 1.0)
+        volume = 1.0;
 
-   g_object_set(G_OBJECT(provider->conf), "volume", (gint) (volume * 100.0), NULL);
+    g_object_set(G_OBJECT(provider->conf), "volume", (gint) (volume * 100.0), NULL);
 }
 
 static GVariant* mpris_Player_get_Position (GError **error, Mpris2Provider *provider)
@@ -729,7 +729,7 @@ static void parole_mpris_update_any (Mpris2Provider *provider)
         {
             change_detected = TRUE;
             if(provider->saved_title)
-            	g_free(provider->saved_title);
+                g_free(provider->saved_title);
             if (stream_uri && (stream_uri)[0])
                 provider->saved_title = stream_uri;
             else
@@ -766,13 +766,13 @@ static void parole_mpris_update_any (Mpris2Provider *provider)
 static void
 state_changed_cb (ParoleProviderPlayer *player, const ParoleStream *stream, ParoleState state, Mpris2Provider *provider)
 {
-	parole_mpris_update_any (provider);
+    parole_mpris_update_any (provider);
 }
 
 static void
 conf_changed_cb (ParoleConf *conf, GParamSpec *pspec, Mpris2Provider *provider)
 {
-   parole_mpris_update_any (provider);
+    parole_mpris_update_any (provider);
 }
 
 
@@ -913,8 +913,8 @@ on_bus_acquired (GDBusConnection *connection,
                                                          provider->introspection_data->interfaces[0],
                                                          &interface_vtable,
                                                          plugin,  /* user_data */
-                                                         NULL,  /* user_data_free_func */
-                                                         NULL); /* GError** */
+                                                         NULL,    /* user_data_free_func */
+                                                         NULL);   /* GError** */
     g_assert (registration_id > 0);
     provider->registration_id0 = registration_id;
 
@@ -924,13 +924,13 @@ on_bus_acquired (GDBusConnection *connection,
                                                          provider->introspection_data->interfaces[1],
                                                          &interface_vtable,
                                                          plugin,  /* user_data */
-                                                         NULL,  /* user_data_free_func */
-                                                         NULL); /* GError** */
+                                                         NULL,    /* user_data_free_func */
+                                                         NULL);   /* GError** */
     g_assert (registration_id > 0);
     provider->registration_id1 = registration_id;
 
-	provider->dbus_connection = connection;
-	g_object_ref(G_OBJECT(provider->dbus_connection));
+    provider->dbus_connection = connection;
+    g_object_ref(G_OBJECT(provider->dbus_connection));
 }
 
 static void
@@ -1004,10 +1004,10 @@ mpris2_provider_set_player (ParoleProviderPlugin *plugin, ParoleProviderPlayer *
 
     provider->conf = parole_conf_new();
 
-    g_signal_connect ( provider->conf, "notify::repeat",
+    g_signal_connect (provider->conf, "notify::repeat",
                       G_CALLBACK (conf_changed_cb), plugin);
                       
-    g_signal_connect ( provider->conf, "notify::volume",
+    g_signal_connect (provider->conf, "notify::volume",
                       G_CALLBACK (conf_changed_cb), plugin);
                       
     window = parole_provider_player_get_main_window(provider->player);
