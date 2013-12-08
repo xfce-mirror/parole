@@ -101,6 +101,23 @@ static void parole_provider_player_base_init (gpointer klass)
                         NULL, NULL,
                         g_cclosure_marshal_VOID__OBJECT,
                         G_TYPE_NONE, 1, PAROLE_TYPE_STREAM);
+                        
+        /**
+         * ParoleProviderPlayerIface::seeked:
+         * @player: the object which received the signal.
+         * @value: the seeked position.
+         * 
+         * Notifies when the stream has been manually advanced.
+         * 
+         * Since: 0.6
+         **/
+        g_signal_new   ("seeked",
+                        G_TYPE_FROM_INTERFACE (klass),
+                        G_SIGNAL_RUN_LAST,
+                        G_STRUCT_OFFSET (ParoleProviderPlayerIface, seeked),
+                        NULL, NULL,
+                        g_cclosure_marshal_VOID__DOUBLE,
+                        G_TYPE_NONE, 1, G_TYPE_DOUBLE);
                   
         initialized = TRUE;
     }

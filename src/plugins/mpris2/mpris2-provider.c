@@ -770,6 +770,17 @@ state_changed_cb (ParoleProviderPlayer *player, const ParoleStream *stream, Paro
 }
 
 static void
+seeked_cb (ParoleProviderPlayer *player, gdouble seeked, Mpris2Provider *provider)
+{
+    if(NULL == provider->dbus_connection)
+        return; /* better safe than sorry */
+
+    g_dbus_connection_emit_signal(provider->dbus_connection, NULL, MPRIS_PATH,
+            "org.mpris.MediaPlayer2.Player", "Seeked",
+            g_variant_new ("(x)", seeked), NULL);
+}
+
+static void
 conf_changed_cb (ParoleConf *conf, GParamSpec *pspec, Mpris2Provider *provider)
 {
     parole_mpris_update_any (provider);
@@ -1001,6 +1012,9 @@ mpris2_provider_set_player (ParoleProviderPlugin *plugin, ParoleProviderPlayer *
 
     g_signal_connect (player, "state_changed",
                       G_CALLBACK (state_changed_cb), plugin);
+                      
+    g_signal_connect (player, "seeked",
+                      G_CALLBACK (seeked_cb), plugin);
 
     provider->conf = parole_conf_new();
 

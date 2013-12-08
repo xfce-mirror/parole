@@ -147,6 +147,7 @@ enum
     MEDIA_STATE,
     MEDIA_PROGRESSED,
     MEDIA_TAG,
+    MEDIA_SEEKED,
     BUFFERING,
     ERROR,
     DVD_CHAPTER_CHANGE,
@@ -2312,6 +2313,16 @@ parole_gst_class_init (ParoleGstClass *klass)
                         _gmarshal_VOID__OBJECT_INT64,
                         G_TYPE_NONE, 2, 
                         G_TYPE_OBJECT, G_TYPE_INT64);
+                        
+    signals[MEDIA_SEEKED] = 
+        g_signal_new   ("media-seeked",
+                        PAROLE_TYPE_GST,
+                        G_SIGNAL_RUN_LAST,
+                        G_STRUCT_OFFSET (ParoleGstClass, media_seeked),
+                        NULL, NULL,
+                        _gmarshal_VOID__OBJECT_DOUBLE,
+                        G_TYPE_NONE, 1, 
+                        G_TYPE_DOUBLE);
     
     signals [MEDIA_TAG] = 
         g_signal_new   ("media-tag",
@@ -2628,6 +2639,8 @@ void parole_gst_seek (ParoleGst *gst, gdouble seek)
                         GST_SEEK_FLAG_KEY_UNIT | GST_SEEK_FLAG_FLUSH,
                         GST_SEEK_TYPE_SET, (int) seek * GST_SECOND,
                         GST_SEEK_TYPE_NONE, GST_CLOCK_TIME_NONE));
+                        
+    g_signal_emit (G_OBJECT (gst), signals [MEDIA_SEEKED], 0, seek);
 }
 
 void parole_gst_set_volume (ParoleGst *gst, gdouble volume)

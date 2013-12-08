@@ -93,6 +93,9 @@ struct _ParoleProviderPlayerIface
     /*< signals >*/
     void     (*tag_message)                     (ParoleProviderPlayer *player,
                                                  const ParoleStream *stream);
+                                                 
+    void     (*seeked)                          (ParoleProviderPlayer *player,
+                                                 gdouble value);
                              
     void     (*state_changed)                   (ParoleProviderPlayer *player,
                                                  const ParoleStream *stream,

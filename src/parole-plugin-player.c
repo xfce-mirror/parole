@@ -51,6 +51,7 @@ struct ParolePluginPlayerPrivate
     
     gulong state_changed;
     gulong tag_message;
+    gulong seeked;
     gboolean packed;
     
     gboolean fullscreen;
@@ -276,6 +277,12 @@ parole_plugin_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, P
     g_signal_emit_by_name (G_OBJECT (player), "tag-message", stream);
 }
 
+static void
+parole_plugin_player_media_seeked_cb (ParoleGst *gst, gdouble value, ParolePluginPlayer *player)
+{
+    g_signal_emit_by_name (G_OBJECT (player), "seeked", value);
+}
+
 static gboolean
 parole_plugin_player_window_state_event  (GtkWidget *widget, 
                                           GdkEventWindowState *event,
@@ -311,6 +318,9 @@ parole_plugin_player_init (ParolePluginPlayer *player)
               
     player->priv->tag_message = g_signal_connect (G_OBJECT (player->priv->gst), "media-tag",
                         G_CALLBACK (parole_plugin_player_media_tag_cb), player);
+                        
+    player->priv->seeked = g_signal_connect (G_OBJECT (player->priv->gst), "media-seeked",
+                        G_CALLBACK (parole_plugin_player_media_seeked_cb), player);
 
     player->priv->fullscreen = FALSE;                        
     window = GTK_WIDGET(gtk_widget_get_toplevel (player->priv->gst));
@@ -337,6 +347,9 @@ parole_plugin_player_finalize (GObject *object)
 
         if (g_signal_handler_is_connected (player->priv->gst, player->priv->tag_message)) 
             g_signal_handler_disconnect (player->priv->gst, player->priv->tag_message);
+            
+        if (g_signal_handler_is_connected (player->priv->gst, player->priv->seeked)) 
+            g_signal_handler_disconnect (player->priv->gst, player->priv->seeked);
     }
     
     if ( player->priv->packed && GTK_IS_WIDGET (player->priv->box))
