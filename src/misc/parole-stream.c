@@ -370,7 +370,7 @@ parole_stream_set_image (GObject *object, GdkPixbuf *pixbuf)
     {
         PAROLE_STREAM_GET_PRIVATE (stream)->image = NULL;
         PAROLE_STREAM_GET_PRIVATE (stream)->previous_image = NULL;
-        PAROLE_STREAM_GET_PRIVATE (stream)->image_uri = NULL;
+        PAROLE_STREAM_GET_PRIVATE (stream)->image_uri = g_strdup_printf ("file://%s/no-cover.png", PIXMAPS_DIR);
     }
 }
 

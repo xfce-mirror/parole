@@ -64,7 +64,6 @@ PAROLE_DEFINE_TYPE_WITH_CODE   (Mpris2Provider,
                                 PAROLE_IMPLEMENT_INTERFACE (PAROLE_TYPE_PROVIDER_PLUGIN, 
                                 mpris2_provider_iface_init));
 
-
 static const gchar mpris2xml[] =
 "<node>"
 "        <interface name='org.mpris.MediaPlayer2'>"
@@ -332,22 +331,23 @@ static void mpris_Player_Stop (GDBusMethodInvocation *invocation, GVariant* para
 static void mpris_Player_Seek (GDBusMethodInvocation *invocation, GVariant* parameters, Mpris2Provider *provider)
 {
     ParoleProviderPlayer *player = provider->player;
+    const ParoleStream *stream = parole_provider_player_get_stream(player);
+    gint64 param;
+    gint64 curr_pos;
+    gint64 seek;
+    gint64 duration;
 
     if(parole_provider_player_get_state (player) == PAROLE_STATE_STOPPED) {
         g_dbus_method_invocation_return_error_literal (invocation,
             G_DBUS_ERROR, G_DBUS_ERROR_FAILED, "Nothing to seek");
         return;
     }
-    
-    const ParoleStream *stream = parole_provider_player_get_stream(player);
 
-    gint64 param;
     g_variant_get(parameters, "(x)", &param);
 
-    gint64 curr_pos = parole_provider_player_get_stream_position (player);
-    gint64 seek = (curr_pos + param) / GST_MSECOND;
+    curr_pos = parole_provider_player_get_stream_position (player);
+    seek = (curr_pos + param) / GST_MSECOND;
     
-    gint64 duration;
     g_object_get (G_OBJECT (stream), "duration", &duration, NULL);
     
     seek = CLAMP (seek, 0, duration);
@@ -360,24 +360,24 @@ static void mpris_Player_Seek (GDBusMethodInvocation *invocation, GVariant* para
 static void mpris_Player_SetPosition (GDBusMethodInvocation *invocation, GVariant* parameters, Mpris2Provider *provider)
 {
     ParoleProviderPlayer *player = provider->player;
+    const ParoleStream *stream = parole_provider_player_get_stream(player);
+    gchar *track_id = NULL;
+    gint64 param;
+    gint64 seek;
+    gint64 duration;
 
     if(parole_provider_player_get_state (player) == PAROLE_STATE_STOPPED) {
         g_dbus_method_invocation_return_error_literal (invocation,
             G_DBUS_ERROR, G_DBUS_ERROR_FAILED, "Nothing to seek");
         return;
     }
-    
-    const ParoleStream *stream = parole_provider_player_get_stream(player);
-    gchar *track_id = NULL;
 
     /* Do we need to do anything with track_id? */
-    gint64 param;
     g_variant_get(parameters, "(ox)", &track_id, &param);
     g_free(track_id);
 
-    gint64 seek = param / GST_MSECOND;
-    
-    gint64 duration;
+    seek = param / GST_MSECOND;
+
     g_object_get (G_OBJECT (stream), "duration", &duration, NULL);
     
     seek = CLAMP (seek, 0, duration);
