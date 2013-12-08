@@ -506,6 +506,7 @@ static void handle_get_metadata (const ParoleStream *stream, GVariantBuilder *b)
     gchar *title, *album, *artist, *year, *comment, *stream_uri, *genre, *image_uri;
     gint track_id, bitrate;
     gint64 duration;
+    gboolean has_video;
 
     g_object_get (G_OBJECT (stream),
                   "title", &title,
@@ -519,7 +520,14 @@ static void handle_get_metadata (const ParoleStream *stream, GVariantBuilder *b)
                   "image_uri", &image_uri,
                   "track", &track_id,
                   "bitrate", &bitrate,
+                  "has-video", &has_video,
                   NULL);
+                  
+    if (has_video)
+    {
+        g_free(image_uri);
+        image_uri = NULL;
+    }
 
     g_variant_builder_add (b, "{sv}", "mpris:trackid",
         handle_get_trackid(stream));
