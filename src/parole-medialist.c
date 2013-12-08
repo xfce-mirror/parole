@@ -437,20 +437,26 @@ parole_media_list_files_opened_cb (ParoleMediaChooser *chooser,
     parole_media_list_files_open (list, files, FALSE, play);
 }
 
-static void
-parole_media_list_location_opened_cb (ParoleOpenLocation *obj, const gchar *location, ParoleMediaList *list)
+void
+parole_media_list_open_uri (ParoleMediaList *list, const gchar *uri)
 {
     ParoleFile *file;
     
-    if ( parole_is_uri_disc (location) )
+    if ( parole_is_uri_disc (uri) )
     {
-        g_signal_emit (G_OBJECT (list), signals [URI_OPENED], 0, location);
+        g_signal_emit (G_OBJECT (list), signals [URI_OPENED], 0, uri);
     }
     else
     {
-        file = parole_file_new (location);
+        file = parole_file_new (uri);
         parole_media_list_add (list, file, FALSE, TRUE, TRUE);
     }
+}
+
+static void
+parole_media_list_location_opened_cb (ParoleOpenLocation *obj, const gchar *location, ParoleMediaList *list)
+{
+    parole_media_list_open_uri(list, location);
 }
 
 static void

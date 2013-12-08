@@ -125,11 +125,12 @@ parole_plugin_player_get_stream (ParoleProviderPlayer *provider)
 static gboolean 
 parole_plugin_player_play_uri (ParoleProviderPlayer *provider, const gchar *uri)
 {
-    ParolePluginPlayer *player;
+    ParoleMediaList *list;
+
+    list = PAROLE_MEDIA_LIST (parole_media_list_get ());
+    parole_media_list_open_uri (list, uri);
     
-    player = PAROLE_PLUGIN_PLAYER (provider);
-    
-    parole_gst_play_uri (PAROLE_GST (player->priv->gst), uri, NULL);
+    g_object_unref (list);
     
     return TRUE;
 }

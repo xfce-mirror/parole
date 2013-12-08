@@ -156,6 +156,9 @@ void                parole_media_list_open          (ParoleMediaList *list);
 
 void                parole_media_list_open_location (ParoleMediaList *list);
 
+void                parole_media_list_open_uri      (ParoleMediaList *list, 
+                                                     const gchar *uri);
+
 gboolean            parole_media_list_add_files     (ParoleMediaList *list,
                                                      gchar **filenames, 
                                                      gboolean enqueue);
