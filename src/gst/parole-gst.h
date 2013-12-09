@@ -78,8 +78,7 @@ typedef struct
                                              gint64 value);
                                              
     void        (*media_seeked)             (ParoleGst *gst,
-                                             const ParoleStream *stream,
-                                             gdouble value);
+                                             const ParoleStream *stream);
     
     void        (*buffering)                (ParoleGst *gst,
                                              const ParoleStream *stream,

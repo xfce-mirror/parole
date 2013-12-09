@@ -1684,7 +1684,7 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
         if (gst->priv->seeking)
         {
             gst->priv->seeking = FALSE;
-            g_signal_emit (G_OBJECT (gst), signals [MEDIA_SEEKED], 0, 0);
+            g_signal_emit (G_OBJECT (gst), signals [MEDIA_SEEKED], 0);
         }
         break;
     case GST_MESSAGE_WARNING:
@@ -2329,9 +2329,8 @@ parole_gst_class_init (ParoleGstClass *klass)
                         G_SIGNAL_RUN_LAST,
                         G_STRUCT_OFFSET (ParoleGstClass, media_seeked),
                         NULL, NULL,
-                        _gmarshal_VOID__OBJECT_DOUBLE,
-                        G_TYPE_NONE, 1, 
-                        G_TYPE_DOUBLE);
+                        g_cclosure_marshal_VOID__VOID,
+                        G_TYPE_NONE, 0);
     
     signals [MEDIA_TAG] = 
         g_signal_new   ("media-tag",

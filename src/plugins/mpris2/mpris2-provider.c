@@ -778,7 +778,7 @@ state_changed_cb (ParoleProviderPlayer *player, const ParoleStream *stream, Paro
 }
 
 static void
-seeked_cb (ParoleProviderPlayer *player, gdouble seeked, Mpris2Provider *provider)
+seeked_cb (ParoleProviderPlayer *player, Mpris2Provider *provider)
 {
     gint64 position = 0;
 

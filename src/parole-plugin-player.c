@@ -279,9 +279,9 @@ parole_plugin_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, P
 }
 
 static void
-parole_plugin_player_media_seeked_cb (ParoleGst *gst, gdouble value, ParolePluginPlayer *player)
+parole_plugin_player_media_seeked_cb (ParoleGst *gst, ParolePluginPlayer *player)
 {
-    g_signal_emit_by_name (G_OBJECT (player), "seeked", value);
+    g_signal_emit_by_name (G_OBJECT (player), "seeked");
 }
 
 static gboolean
