@@ -2642,7 +2642,7 @@ void parole_gst_shutdown (ParoleGst *gst)
 
 void parole_gst_seek (ParoleGst *gst, gdouble seek)
 {
-    g_print ("Seeking\n");
+    TRACE ("Seeking");
     g_warn_if_fail ( gst_element_seek (gst->priv->playbin,
                         1.0,
                         GST_FORMAT_TIME,
