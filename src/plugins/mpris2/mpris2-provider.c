@@ -602,9 +602,9 @@ static void mpris_Player_put_Volume (GVariant *value, GError **error, Mpris2Prov
 static GVariant* mpris_Player_get_Position (GError **error, Mpris2Provider *provider)
 {
     ParoleProviderPlayer *player = provider->player;
-    gdouble position = 0;
+    gint64 position = 0;
 
-    position = parole_provider_player_get_stream_position (player);
+    position = (gint64) parole_provider_player_get_stream_position (player);
 
     return g_variant_new_int64(position);
 }
@@ -772,12 +772,16 @@ state_changed_cb (ParoleProviderPlayer *player, const ParoleStream *stream, Paro
 static void
 seeked_cb (ParoleProviderPlayer *player, gdouble seeked, Mpris2Provider *provider)
 {
+    gint64 position = 0;
+
     if(NULL == provider->dbus_connection)
         return; /* better safe than sorry */
 
+    position = (gint64) parole_provider_player_get_stream_position (provider->player);
+
     g_dbus_connection_emit_signal(provider->dbus_connection, NULL, MPRIS_PATH,
             "org.mpris.MediaPlayer2.Player", "Seeked",
-            g_variant_new ("(x)", seeked), NULL);
+            g_variant_new ("(x)", position), NULL);
 }
 
 static void

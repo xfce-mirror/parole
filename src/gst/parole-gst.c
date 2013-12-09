@@ -123,6 +123,7 @@ struct ParoleGstPrivate
     gboolean            with_vis;
     gboolean            vis_loaded;
     gboolean            buffering;
+    gboolean            seeking;
     gboolean            update_color_balance;
     
     gdouble             volume;
@@ -923,6 +924,7 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
         case GST_STATE_READY:
         {
             gst->priv->buffering = FALSE;
+            gst->priv->seeking = FALSE;
             gst->priv->media_state = PAROLE_STATE_STOPPED;
             g_signal_emit  (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
                             gst->priv->stream, PAROLE_STATE_STOPPED);
@@ -946,6 +948,7 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
         case GST_STATE_NULL:
         {
             gst->priv->buffering = FALSE;
+            gst->priv->seeking = FALSE;
             gst->priv->media_state = PAROLE_STATE_STOPPED;
             g_signal_emit  (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
                             gst->priv->stream, PAROLE_STATE_STOPPED);
@@ -1677,6 +1680,13 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
     case GST_MESSAGE_STREAM_STATUS:
         TRACE ("Stream status");
         break;
+    case GST_MESSAGE_ASYNC_DONE:
+        if (gst->priv->seeking)
+        {
+            gst->priv->seeking = FALSE;
+            g_signal_emit (G_OBJECT (gst), signals [MEDIA_SEEKED], 0, 0);
+        }
+        break;
     case GST_MESSAGE_WARNING:
     case GST_MESSAGE_STEP_DONE:
     case GST_MESSAGE_CLOCK_PROVIDE:
@@ -1686,7 +1696,6 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
     case GST_MESSAGE_SEGMENT_START:
     case GST_MESSAGE_LATENCY:
     case GST_MESSAGE_ASYNC_START:
-    case GST_MESSAGE_ASYNC_DONE:
     default:
         break;
     }
@@ -2411,6 +2420,7 @@ parole_gst_init (ParoleGst *gst)
     gst->priv->hidecursor_timer = g_timer_new ();
     gst->priv->update_vis = FALSE;
     gst->priv->buffering = FALSE;
+    gst->priv->seeking = FALSE;
     gst->priv->update_color_balance = TRUE;
     gst->priv->state_change_id = 0;
     gst->priv->device = NULL;
@@ -2632,15 +2642,15 @@ void parole_gst_shutdown (ParoleGst *gst)
 
 void parole_gst_seek (ParoleGst *gst, gdouble seek)
 {
-    TRACE ("Seeking");
+    g_print ("Seeking\n");
     g_warn_if_fail ( gst_element_seek (gst->priv->playbin,
                         1.0,
                         GST_FORMAT_TIME,
                         GST_SEEK_FLAG_KEY_UNIT | GST_SEEK_FLAG_FLUSH,
                         GST_SEEK_TYPE_SET, (int) seek * GST_SECOND,
                         GST_SEEK_TYPE_NONE, GST_CLOCK_TIME_NONE));
-                        
-    g_signal_emit (G_OBJECT (gst), signals [MEDIA_SEEKED], 0, seek);
+
+    gst->priv->seeking = TRUE;
 }
 
 void parole_gst_set_volume (ParoleGst *gst, gdouble volume)
