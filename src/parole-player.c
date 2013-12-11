@@ -345,6 +345,8 @@ struct ParolePlayerPrivate
     
     GtkFileFilter      *video_filter;
     GtkRecentManager   *recent;
+    
+    gdouble             last_volume;
 
     GtkWidget          *window;
     GtkWidget          *playlist_nt;
@@ -2218,10 +2220,16 @@ void
 parole_player_volume_value_changed_cb (GtkScaleButton *widget, gdouble value, ParolePlayer *player)
 {
     parole_player_change_volume (player, value);
-    if ( value > 0.0 )
-        g_object_set (G_OBJECT (player->priv->conf),
-                      "volume", (gint)(value * 100),
-                      NULL);
+
+    /* Do not update the value unless it has changed! */
+    if ((int)(value*100) != (int)(player->priv->last_volume*100))
+    {
+        player->priv->last_volume = value;
+        if ( value > 0.0 )
+            g_object_set (G_OBJECT (player->priv->conf),
+                          "volume", (gint)(value * 100),
+                          NULL);
+    }
 }
 
 void
@@ -2860,8 +2868,6 @@ parole_player_init (ParolePlayer *player)
     
     GtkWidget *bug_report;
     
-    gboolean repeat, shuffle;
-    
     GtkCellRenderer *cell, *sub_cell;
     
     GtkWidget *hbox_infobar;
@@ -2989,7 +2995,7 @@ parole_player_init (ParolePlayer *player)
     gtk_action_set_icon_name(GTK_ACTION(player->priv->toggle_repeat_action), "media-playlist-repeat-symbolic");
     g_object_bind_property(G_OBJECT (player->priv->conf), "repeat", 
                            player->priv->toggle_repeat_action, "active", 
-                           G_BINDING_BIDIRECTIONAL);
+                           G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
     gtk_action_set_sensitive(GTK_ACTION(player->priv->toggle_repeat_action), TRUE);
     
     /* Toggle Shuffle */
@@ -2997,7 +3003,7 @@ parole_player_init (ParolePlayer *player)
     gtk_action_set_icon_name(GTK_ACTION(player->priv->toggle_shuffle_action), "media-playlist-shuffle-symbolic");
     g_object_bind_property(G_OBJECT (player->priv->conf), "shuffle", 
                            player->priv->toggle_shuffle_action, "active", 
-                           G_BINDING_BIDIRECTIONAL);
+                           G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
     gtk_action_set_sensitive(GTK_ACTION(player->priv->toggle_shuffle_action), TRUE);
     
     
@@ -3006,7 +3012,7 @@ parole_player_init (ParolePlayer *player)
      */
     /* ParolePlayer Window */
     player->priv->window = GTK_WIDGET (gtk_builder_get_object (builder, "main-window"));
-    g_signal_connect(   G_OBJECT(player->priv->window), 
+    g_signal_connect_after(   G_OBJECT(player->priv->window), 
                         "window-state-event", 
                         G_CALLBACK(parole_player_window_state_event), 
                         PAROLE_PLAYER(player) );
@@ -3360,15 +3366,6 @@ parole_player_init (ParolePlayer *player)
      * Load auto saved media list.
      */
     parole_media_list_load (player->priv->list);
-    
-    g_object_get (G_OBJECT (player->priv->conf),
-                  "repeat", &repeat,
-                  "shuffle", &shuffle,
-                  NULL);
-
-    gtk_toggle_action_set_active (player->priv->toggle_repeat_action, repeat);
-
-    gtk_toggle_action_set_active (player->priv->toggle_shuffle_action, shuffle);
   
     parole_gst_set_default_aspect_ratio (player, builder);
     

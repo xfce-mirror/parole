@@ -76,6 +76,9 @@ typedef struct
     void        (*media_progressed)         (ParoleGst *gst,
                                              const ParoleStream *stream,
                                              gint64 value);
+                                             
+    void        (*media_seeked)             (ParoleGst *gst,
+                                             const ParoleStream *stream);
     
     void        (*buffering)                (ParoleGst *gst,
                                              const ParoleStream *stream,

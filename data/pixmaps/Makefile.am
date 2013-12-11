@@ -1,5 +1,6 @@
 pixmaps =					\
-	parole.png
+	parole.png              \
+	no-cover.png
 
 pixmaps_DATA =					\
 	$(pixmaps)

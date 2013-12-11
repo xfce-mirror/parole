@@ -123,6 +123,7 @@ struct ParoleGstPrivate
     gboolean            with_vis;
     gboolean            vis_loaded;
     gboolean            buffering;
+    gboolean            seeking;
     gboolean            update_color_balance;
     
     gdouble             volume;
@@ -147,6 +148,7 @@ enum
     MEDIA_STATE,
     MEDIA_PROGRESSED,
     MEDIA_TAG,
+    MEDIA_SEEKED,
     BUFFERING,
     ERROR,
     DVD_CHAPTER_CHANGE,
@@ -922,6 +924,7 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
         case GST_STATE_READY:
         {
             gst->priv->buffering = FALSE;
+            gst->priv->seeking = FALSE;
             gst->priv->media_state = PAROLE_STATE_STOPPED;
             g_signal_emit  (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
                             gst->priv->stream, PAROLE_STATE_STOPPED);
@@ -945,6 +948,7 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
         case GST_STATE_NULL:
         {
             gst->priv->buffering = FALSE;
+            gst->priv->seeking = FALSE;
             gst->priv->media_state = PAROLE_STATE_STOPPED;
             g_signal_emit  (G_OBJECT (gst), signals [MEDIA_STATE], 0, 
                             gst->priv->stream, PAROLE_STATE_STOPPED);
@@ -1280,6 +1284,7 @@ parole_gst_get_meta_data_cdda (ParoleGst *gst, GstTagList *tag)
                       "year", NULL,
                       "album", _("Audio CD"),
                       "comment", NULL,
+                      "genre", NULL,
                       NULL);
                   
         parole_stream_set_image (G_OBJECT (gst->priv->stream), NULL);
@@ -1297,6 +1302,8 @@ parole_gst_get_meta_data_local_file (ParoleGst *gst, GstTagList *tag)
 {
     gchar *str;
     GDate *date;
+    guint integer;
+    
     GdkPixbuf *pixbuf;
     
     if ( gst_tag_list_get_string_index (tag, GST_TAG_TITLE, 0, &str) )
@@ -1347,6 +1354,31 @@ parole_gst_get_meta_data_local_file (ParoleGst *gst, GstTagList *tag)
         g_free (str);
     }
     
+    if ( gst_tag_list_get_string_index (tag, GST_TAG_GENRE, 0, &str) )
+    {
+        TRACE ("genre:%s", str);
+        g_object_set (G_OBJECT (gst->priv->stream),
+                      "genre", str,
+                      NULL);
+        g_free (str);
+    }
+    
+    if ( gst_tag_list_get_uint (tag, GST_TAG_TRACK_NUMBER, &integer) )
+    {
+        TRACE ("track:%i", integer);
+        g_object_set (G_OBJECT (gst->priv->stream),
+                      "track", integer,
+                      NULL);
+    }
+    
+    if ( gst_tag_list_get_uint (tag, GST_TAG_BITRATE, &integer) )
+    {
+        TRACE ("bitrate:%i", integer);
+        g_object_set (G_OBJECT (gst->priv->stream),
+                      "bitrate", integer,
+                      NULL);
+    }
+    
     pixbuf = parole_gst_tag_list_get_cover (gst, tag);
     if (pixbuf)
     {
@@ -1370,6 +1402,7 @@ parole_gst_get_meta_data_unknown (ParoleGst *gst)
                   "year", NULL,
                   "album", NULL,
                   "comment", NULL,
+                  "genre", NULL,
                   NULL);
     
     parole_stream_set_image (G_OBJECT (gst->priv->stream), NULL);
@@ -1647,6 +1680,13 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
     case GST_MESSAGE_STREAM_STATUS:
         TRACE ("Stream status");
         break;
+    case GST_MESSAGE_ASYNC_DONE:
+        if (gst->priv->seeking)
+        {
+            gst->priv->seeking = FALSE;
+            g_signal_emit (G_OBJECT (gst), signals [MEDIA_SEEKED], 0);
+        }
+        break;
     case GST_MESSAGE_WARNING:
     case GST_MESSAGE_STEP_DONE:
     case GST_MESSAGE_CLOCK_PROVIDE:
@@ -1656,7 +1696,6 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
     case GST_MESSAGE_SEGMENT_START:
     case GST_MESSAGE_LATENCY:
     case GST_MESSAGE_ASYNC_START:
-    case GST_MESSAGE_ASYNC_DONE:
     default:
         break;
     }
@@ -1999,6 +2038,18 @@ parole_gst_conf_notify_cb (GObject *object, GParamSpec *spec, ParoleGst *gst)
     }
 }
 
+static void
+parole_gst_conf_notify_volume_cb (GObject *conf, GParamSpec *pspec, ParoleGst *gst)
+{
+    gint volume;
+
+    g_object_get (G_OBJECT (gst->priv->conf),
+                  "volume", &volume,
+                  NULL);
+                  
+    parole_gst_set_volume (gst, (double)(volume / 100.0));
+}
+
 static void parole_gst_get_property    (GObject *object,
                                         guint prop_id,
                                         GValue *value,
@@ -2052,6 +2103,8 @@ static void parole_gst_set_property    (GObject *object,
 
                 g_signal_connect (G_OBJECT (gst->priv->conf), "notify",
                 G_CALLBACK (parole_gst_conf_notify_cb), gst);
+                g_signal_connect (G_OBJECT (gst->priv->conf), "notify::volume",
+                G_CALLBACK (parole_gst_conf_notify_volume_cb), gst);
             }
             break;
         default:
@@ -2269,6 +2322,15 @@ parole_gst_class_init (ParoleGstClass *klass)
                         _gmarshal_VOID__OBJECT_INT64,
                         G_TYPE_NONE, 2, 
                         G_TYPE_OBJECT, G_TYPE_INT64);
+                        
+    signals[MEDIA_SEEKED] = 
+        g_signal_new   ("media-seeked",
+                        PAROLE_TYPE_GST,
+                        G_SIGNAL_RUN_LAST,
+                        G_STRUCT_OFFSET (ParoleGstClass, media_seeked),
+                        NULL, NULL,
+                        g_cclosure_marshal_VOID__VOID,
+                        G_TYPE_NONE, 0);
     
     signals [MEDIA_TAG] = 
         g_signal_new   ("media-tag",
@@ -2357,6 +2419,7 @@ parole_gst_init (ParoleGst *gst)
     gst->priv->hidecursor_timer = g_timer_new ();
     gst->priv->update_vis = FALSE;
     gst->priv->buffering = FALSE;
+    gst->priv->seeking = FALSE;
     gst->priv->update_color_balance = TRUE;
     gst->priv->state_change_id = 0;
     gst->priv->device = NULL;
@@ -2585,17 +2648,23 @@ void parole_gst_seek (ParoleGst *gst, gdouble seek)
                         GST_SEEK_FLAG_KEY_UNIT | GST_SEEK_FLAG_FLUSH,
                         GST_SEEK_TYPE_SET, (int) seek * GST_SECOND,
                         GST_SEEK_TYPE_NONE, GST_CLOCK_TIME_NONE));
+
+    gst->priv->seeking = TRUE;
 }
 
 void parole_gst_set_volume (ParoleGst *gst, gdouble volume)
 {
-    gst_stream_volume_set_volume   (GST_STREAM_VOLUME (gst->priv->playbin),
-                                    GST_STREAM_VOLUME_FORMAT_CUBIC,
-                                    volume);
     volume = CLAMP (volume, 0.0, 1.0);
-    gst->priv->volume = volume;
-    
-    g_object_notify (G_OBJECT (gst), "volume");
+    if (gst->priv->volume != volume)
+    {
+        gst_stream_volume_set_volume   (GST_STREAM_VOLUME (gst->priv->playbin),
+                                        GST_STREAM_VOLUME_FORMAT_CUBIC,
+                                        volume);
+        
+        gst->priv->volume = volume;
+        
+        g_object_notify (G_OBJECT (gst), "volume");
+    }
 }
                             
 gdouble parole_gst_get_volume (ParoleGst *gst)

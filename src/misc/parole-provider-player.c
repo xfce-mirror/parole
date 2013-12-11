@@ -101,6 +101,23 @@ static void parole_provider_player_base_init (gpointer klass)
                         NULL, NULL,
                         g_cclosure_marshal_VOID__OBJECT,
                         G_TYPE_NONE, 1, PAROLE_TYPE_STREAM);
+                        
+        /**
+         * ParoleProviderPlayerIface::seeked:
+         * @player: the object which received the signal.
+         * @value: the seeked position.
+         * 
+         * Notifies when the stream has been manually advanced.
+         * 
+         * Since: 0.6
+         **/
+        g_signal_new   ("seeked",
+                        G_TYPE_FROM_INTERFACE (klass),
+                        G_SIGNAL_RUN_LAST,
+                        G_STRUCT_OFFSET (ParoleProviderPlayerIface, seeked),
+                        NULL, NULL,
+                        g_cclosure_marshal_VOID__DOUBLE,
+                        G_TYPE_NONE, 1, G_TYPE_DOUBLE);
                   
         initialized = TRUE;
     }
@@ -402,6 +419,26 @@ gboolean parole_provider_player_seek (ParoleProviderPlayer *player, gdouble pos)
     return ret;
 }
 
+/**
+ * parole_provider_player_get_stream_position:
+ * @player: a #ParoleProviderPlayer
+ * 
+ * Get stream position (microseconds) for Parole.
+ * 
+ * Since: 0.6
+ **/
+gdouble parole_provider_player_get_stream_position(ParoleProviderPlayer *player)
+{
+    g_return_val_if_fail (PAROLE_IS_PROVIDER_PLAYER (player), 0);
+    
+    if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_stream_position )
+    {
+        return (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_stream_position) (player);
+    }
+    
+    return FALSE;
+}
+
 
 /**
  * parole_provider_player_open_media_chooser:
@@ -433,4 +470,47 @@ void parole_provider_player_open_media_chooser (ParoleProviderPlayer *player)
 GtkAction *parole_provider_player_get_action(ParoleProviderPlayer *player, ParolePlayerAction action)
 {
     return parole_player_get_action(action);
+}
+
+/**
+ * parole_provider_player_get_fullscreen:
+ * @player: a #ParoleProviderPlayer
+ * 
+ * Get fullscreen status for Parole.
+ * 
+ * Since: 0.6
+ **/
+gboolean parole_provider_player_get_fullscreen(ParoleProviderPlayer *player)
+{
+    g_return_val_if_fail (PAROLE_IS_PROVIDER_PLAYER (player), NULL);
+    
+    if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_stream )
+    {
+        return (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_fullscreen) (player);
+    }
+    
+    return FALSE;
+}
+
+/**
+ * parole_provider_player_set_fullscreen:
+ * @player: a #ParoleProviderPlayer
+ * @fullscreen: TRUE for fullscreen, FALSE for unfullscreen
+ * 
+ * Set fullscreen status for Parole.
+ *
+ * Returns: TRUE if the fullscreen command succeeded, FALSE otherwise.
+ * 
+ * Since: 0.6
+ **/
+gboolean parole_provider_player_set_fullscreen(ParoleProviderPlayer *player, gboolean fullscreen)
+{
+    g_return_val_if_fail (PAROLE_IS_PROVIDER_PLAYER (player), NULL);
+    
+    if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_stream )
+    {
+        return (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->set_fullscreen) (player, fullscreen);
+    }
+    
+    return FALSE;
 }

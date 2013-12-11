@@ -29,6 +29,7 @@
 #include <string.h>
 
 #include <glib.h>
+#include <glib/gstdio.h>
 
 #include "parole-stream.h"
 #include "parole-enum-types.h"
@@ -70,7 +71,10 @@ struct _ParoleStreamPrivate
     gchar      *year;
     gchar      *album;
     gchar      *comment;
+    gchar      *genre;
+    guint       bitrate;
     GdkPixbuf  *image;
+    gchar      *image_uri, *previous_image;
     
     ParoleMediaType media_type; 
 };
@@ -98,7 +102,10 @@ enum
     PROP_ARTIST,
     PROP_YEAR,
     PROP_ALBUM,
-    PROP_COMMENT
+    PROP_COMMENT,
+    PROP_GENRE,
+    PROP_BITRATE,
+    PROP_IMAGE_URI
 };
 
 G_DEFINE_TYPE (ParoleStream, parole_stream, G_TYPE_OBJECT)
@@ -147,6 +154,11 @@ static void parole_stream_set_property (GObject *object,
             priv = PAROLE_STREAM_GET_PRIVATE (stream);
             priv->uri = g_value_dup_string (value);
             parole_stream_get_media_type_from_uri (stream, priv->uri);
+            break;
+        }
+        case PROP_IMAGE_URI:
+        {
+            PAROLE_STREAM_GET_PRIVATE (stream)->image_uri = g_value_dup_string (value);
             break;
         }
         case PROP_SUBTITLES:
@@ -217,6 +229,12 @@ static void parole_stream_set_property (GObject *object,
         case PROP_COMMENT:
             PAROLE_STREAM_DUP_GVALUE_STRING (PAROLE_STREAM_GET_PRIVATE (stream)->comment, value);
             break;
+        case PROP_GENRE:
+            PAROLE_STREAM_DUP_GVALUE_STRING (PAROLE_STREAM_GET_PRIVATE (stream)->genre, value);
+            break;
+        case PROP_BITRATE:
+            PAROLE_STREAM_GET_PRIVATE (stream)->bitrate = g_value_get_uint (value);
+            break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
             break;
@@ -235,6 +253,9 @@ static void parole_stream_get_property (GObject *object,
     {
         case PROP_URI:
             g_value_set_string (value, PAROLE_STREAM_GET_PRIVATE (stream)->uri);
+            break;
+        case PROP_IMAGE_URI:
+            g_value_set_string (value, PAROLE_STREAM_GET_PRIVATE (stream)->image_uri);
             break;
         case PROP_SUBTITLES:
             g_value_set_string (value, PAROLE_STREAM_GET_PRIVATE (stream)->subtitles);
@@ -296,6 +317,12 @@ static void parole_stream_get_property (GObject *object,
         case PROP_COMMENT:
             g_value_set_string (value, PAROLE_STREAM_GET_PRIVATE (stream)->comment);
             break;
+        case PROP_GENRE:
+            g_value_set_string (value, PAROLE_STREAM_GET_PRIVATE (stream)->genre);
+            break;
+        case PROP_BITRATE:
+            g_value_set_uint (value, PAROLE_STREAM_GET_PRIVATE (stream)->bitrate);
+            break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
             break;
@@ -318,6 +345,8 @@ void
 parole_stream_set_image (GObject *object, GdkPixbuf *pixbuf)
 {
     ParoleStream *stream;
+    gchar *filename = NULL;
+    gint fid;
     
     stream = PAROLE_STREAM (object);
     
@@ -325,9 +354,24 @@ parole_stream_set_image (GObject *object, GdkPixbuf *pixbuf)
         g_object_unref(G_OBJECT(PAROLE_STREAM_GET_PRIVATE (stream)->image));
     
     if (pixbuf)
+    {
         PAROLE_STREAM_GET_PRIVATE (stream)->image = gdk_pixbuf_copy(pixbuf);
+        
+        /* Create a jpeg of the artwork for other components to easily access */
+        fid = g_file_open_tmp ("parole-art-XXXXXX.jpg", &filename, NULL);
+        close(fid);
+        gdk_pixbuf_save (pixbuf, filename, "jpeg", NULL, "quality", "100", NULL);
+        
+        PAROLE_STREAM_GET_PRIVATE (stream)->previous_image = g_strdup(filename);
+        PAROLE_STREAM_GET_PRIVATE (stream)->image_uri = g_strdup_printf("file://%s", filename);
+        g_free(filename);
+    }
     else
+    {
         PAROLE_STREAM_GET_PRIVATE (stream)->image = NULL;
+        PAROLE_STREAM_GET_PRIVATE (stream)->previous_image = NULL;
+        PAROLE_STREAM_GET_PRIVATE (stream)->image_uri = g_strdup_printf ("file://%s/no-cover.png", PIXMAPS_DIR);
+    }
 }
 
 GdkPixbuf *
@@ -683,6 +727,52 @@ parole_stream_class_init (ParoleStreamClass *klass)
                                              "Comment",
                                              NULL,
                                              G_PARAM_READWRITE));
+                                             
+    /**
+     * ParoleStream:genre:
+     * 
+     * Genre.
+     * 
+     * Since: 0.6
+     **/
+    g_object_class_install_property (object_class,
+                                     PROP_GENRE,
+                                     g_param_spec_string ("genre",
+                                             "Genre", 
+                                             "Genre",
+                                             NULL,
+                                             G_PARAM_READWRITE));
+                                             
+    /**
+     * ParoleStream:image_uri:
+     * 
+     * URI for the currently playing album's artwork.
+     * 
+     * Since: 0.6
+     **/
+    g_object_class_install_property (object_class,
+                                     PROP_IMAGE_URI,
+                                     g_param_spec_string ("image_uri",
+                                             "Image URI", 
+                                             "URI for the album artwork",
+                                             NULL,
+                                             G_PARAM_READWRITE));
+                                             
+    /**
+     * ParoleStream:bitrate:
+     * 
+     * Current bitrate in bits/s.
+     * 
+     * Since: 0.6
+     **/
+    g_object_class_install_property (object_class,
+                                     PROP_BITRATE,
+                                     g_param_spec_uint   ("bitrate",
+                                             "Bitrate", 
+                                             "Bitrate",
+                                             0, 2147483647,
+                                             0,
+                                             G_PARAM_READWRITE));
                               
     g_type_class_add_private (klass, sizeof (ParoleStreamPrivate));
 }
@@ -721,6 +811,7 @@ void parole_stream_init_properties (ParoleStream *stream)
     priv->track = 1;
     priv->disp_par_n = 1;
     priv->disp_par_d = 1;
+    priv->bitrate = 0;
     
     PAROLE_STREAM_FREE_STR_PROP (priv->title);
     PAROLE_STREAM_FREE_STR_PROP (priv->uri);
@@ -729,4 +820,13 @@ void parole_stream_init_properties (ParoleStream *stream)
     PAROLE_STREAM_FREE_STR_PROP (priv->year);
     PAROLE_STREAM_FREE_STR_PROP (priv->album);
     PAROLE_STREAM_FREE_STR_PROP (priv->comment);
+    PAROLE_STREAM_FREE_STR_PROP (priv->genre);
+    PAROLE_STREAM_FREE_STR_PROP (priv->image_uri);
+    
+    /* Remove the previous image if it exists */
+    if ( PAROLE_STREAM_GET_PRIVATE (stream)->previous_image )
+    {
+        g_remove (PAROLE_STREAM_GET_PRIVATE (stream)->previous_image);
+    }
+    PAROLE_STREAM_GET_PRIVATE (stream)->previous_image = NULL;
 }
