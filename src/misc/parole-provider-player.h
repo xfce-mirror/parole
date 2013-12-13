@@ -88,7 +88,10 @@ struct _ParoleProviderPlayerIface
     gboolean     (*set_fullscreen)              (ParoleProviderPlayer *player,
                                                  gboolean fullscreen);
                              
-    void     (*open_media_chooser)              (ParoleProviderPlayer *player);
+    void         (*open_media_chooser)          (ParoleProviderPlayer *player);
+    
+    GtkAction*   (*get_action)                  (ParoleProviderPlayer *player,
+                                                 ParolePlayerAction action);
                              
     /*< signals >*/
     void     (*tag_message)                     (ParoleProviderPlayer *player,

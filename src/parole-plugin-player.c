@@ -223,6 +223,11 @@ static void parole_plugin_player_open_media_chooser (ParoleProviderPlayer *provi
     g_object_unref (list);
 }
 
+static GtkAction* parole_plugin_player_get_action (ParoleProviderPlayer *provider, ParolePlayerAction action)
+{
+    return parole_player_get_action (action);
+}
+
 static gboolean parole_plugin_player_get_fullscreen (ParoleProviderPlayer *provider)
 {
     ParolePluginPlayer *player;
@@ -261,6 +266,7 @@ static void parole_plugin_player_iface_init (ParoleProviderPlayerIface *iface)
     iface->seek = parole_plugin_player_seek;
     iface->get_stream_position = parole_plugin_player_get_stream_position;
     iface->open_media_chooser = parole_plugin_player_open_media_chooser;
+    iface->get_action = parole_plugin_player_get_action;
     iface->get_fullscreen = parole_plugin_player_get_fullscreen;
     iface->set_fullscreen = parole_plugin_player_set_fullscreen;
 }

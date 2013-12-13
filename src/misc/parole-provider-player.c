@@ -469,7 +469,16 @@ void parole_provider_player_open_media_chooser (ParoleProviderPlayer *player)
  **/
 GtkAction *parole_provider_player_get_action(ParoleProviderPlayer *player, ParolePlayerAction action)
 {
-    return parole_player_get_action(action);
+    GtkAction *ret = NULL;;
+    
+    g_return_val_if_fail (PAROLE_IS_PROVIDER_PLAYER (player), NULL);
+    
+    if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_action )
+    {
+        ret = (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_action) (player, action);
+    }
+    
+    return ret;
 }
 
 /**
@@ -484,7 +493,7 @@ gboolean parole_provider_player_get_fullscreen(ParoleProviderPlayer *player)
 {
     g_return_val_if_fail (PAROLE_IS_PROVIDER_PLAYER (player), NULL);
     
-    if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_stream )
+    if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_fullscreen )
     {
         return (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_fullscreen) (player);
     }

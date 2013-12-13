@@ -28,6 +28,14 @@ playback status.
 </para>
 
 
+<!-- ##### SIGNAL ParoleProviderPlayerIface::seeked ##### -->
+<para>
+
+</para>
+
+@paroleproviderplayeriface: the object which received the signal.
+@arg1: 
+
 <!-- ##### SIGNAL ParoleProviderPlayerIface::state-changed ##### -->
 <para>
 
