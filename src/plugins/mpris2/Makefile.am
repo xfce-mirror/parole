@@ -20,7 +20,7 @@ parole_mpris2_la_SOURCES =			\
 parole_mpris2_la_CFLAGS =			\
 	$(PLATFORM_CFLAGS)			\
 	$(GTK_CFLAGS)				\
-    $(GST_INTERFACES_CFLAGS)	\
+    $(GST_BASE_CFLAGS)	\
 	$(LIBXFCE4UTIL_CFLAGS)
 
 parole_mpris2_la_LDFLAGS =			\
