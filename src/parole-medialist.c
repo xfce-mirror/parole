@@ -1574,6 +1574,10 @@ parole_media_list_setup_view (ParoleMediaList *list)
     g_object_set (disc_renderer, 
                   "ellipsize", PANGO_ELLIPSIZE_END, 
                   NULL);
+                  
+    /* Make the name column the search target */
+    gtk_tree_view_set_search_column(GTK_TREE_VIEW(list->priv->view), 1);
+    gtk_tree_view_set_search_column(GTK_TREE_VIEW(list->priv->disc_view), 1);
     
     /**
      * Media length

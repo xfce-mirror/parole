@@ -459,7 +459,7 @@ parole_file_new_with_display_name (const gchar *filename, const gchar *display_n
 /**
  * parole_file_new_cdda_track:
  * @track_num: cd track number.
- * 
+ * @display_name: the track name to display.
  * 
  * 
  * Returns: A new #ParoleFile object.
@@ -483,8 +483,8 @@ parole_file_new_cdda_track (const gint track_num, const gchar *display_name)
 
 /**
  * parole_file_new_dvd_chapter:
- * @track_num: dvd chapter number.
- * 
+ * @chapter_num: dvd chapter number.
+ * @display_name: the chapter name to display.
  * 
  * 
  * Returns: A new #ParoleFile object.

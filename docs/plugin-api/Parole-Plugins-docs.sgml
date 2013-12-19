@@ -76,5 +76,35 @@
     <title>API Index</title>
     <xi:include href="xml/api-index-full.xml"><xi:fallback /></xi:include>
   </index>
+  
+  <index id="api-index-0.2">
+    <title>API Index - 0.2</title>
+    <xi:include href="xml/api-index-0.2.xml"><xi:fallback /></xi:include>
+  </index>
+  
+  <index id="api-index-0.4">
+    <title>API Index - 0.4</title>
+    <xi:include href="xml/api-index-0.4.xml"><xi:fallback /></xi:include>
+  </index>
+  
+  <index id="api-index-0.6">
+    <title>API Index - 0.6</title>
+    <xi:include href="xml/api-index-0.6.xml"><xi:fallback /></xi:include>
+  </index>
+  
+  <index id="api-index-deprecated">
+    <title>API Index - Deprecated Symbols</title>
+    <xi:include href="xml/api-index-deprecated.xml"><xi:fallback /></xi:include>
+  </index>
+  
+  <index id="parole-enum-types">
+    <title>Parole Enum Types</title>
+    <xi:include href="xml/parole-enum-types.xml"><xi:fallback /></xi:include>
+  </index>
+  
+  <index id="parole-marshal">
+    <title>Parole Marshal</title>
+    <xi:include href="xml/parole-marshal.xml"><xi:fallback /></xi:include>
+  </index>
 
 </book>

@@ -61,13 +61,6 @@ Simple file handling.
 
 </para>
 
-<!-- ##### STRUCT ParoleFileClass ##### -->
-<para>
-
-</para>
-
-@parent_class: 
-
 <!-- ##### FUNCTION parole_file_new ##### -->
 <para>
 
@@ -83,6 +76,26 @@ Simple file handling.
 </para>
 
 @filename: 
+@display_name: 
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_file_new_cdda_track ##### -->
+<para>
+
+</para>
+
+@track_num: 
+@display_name: 
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_file_new_dvd_chapter ##### -->
+<para>
+
+</para>
+
+@chapter_num: 
 @display_name: 
 @Returns: 
 
@@ -124,6 +137,42 @@ Simple file handling.
 
 
 <!-- ##### FUNCTION parole_file_get_content_type ##### -->
+<para>
+
+</para>
+
+@file: 
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_file_set_dvd_chapter ##### -->
+<para>
+
+</para>
+
+@file: 
+@dvd_chapter: 
+
+
+<!-- ##### FUNCTION parole_file_get_dvd_chapter ##### -->
+<para>
+
+</para>
+
+@file: 
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_file_set_custom_subtitles ##### -->
+<para>
+
+</para>
+
+@file: 
+@suburi: 
+
+
+<!-- ##### FUNCTION parole_file_get_custom_subtitles ##### -->
 <para>
 
 </para>

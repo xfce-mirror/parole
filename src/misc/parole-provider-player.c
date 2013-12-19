@@ -129,11 +129,12 @@ static void parole_provider_player_class_init (gpointer klass)
 
 /**
  * parole_provider_player_get_main_window:
- * @player: a #ParoleProviderPlayer 
+ * @player: a #ParoleProviderPlayer
  * 
  * Ask the Player to get the Parole main window.
  * 
- * Returns: #GtkWidget window.
+ * Returns: a #GtkWidget window.
+ * 
  * 
  * Since: 0.2
  **/
@@ -424,6 +425,8 @@ gboolean parole_provider_player_seek (ParoleProviderPlayer *player, gdouble pos)
  * @player: a #ParoleProviderPlayer
  * 
  * Get stream position (microseconds) for Parole.
+ *
+ * Returns: a #gdouble containing the current stream position in microseconds.
  * 
  * Since: 0.6
  **/
@@ -465,6 +468,9 @@ void parole_provider_player_open_media_chooser (ParoleProviderPlayer *player)
  * 
  * Get GtkAction from Parole.
  * 
+ * Returns: the requested #GtkAction.
+ * 
+ * 
  * Since: 0.6
  **/
 GtkAction *parole_provider_player_get_action(ParoleProviderPlayer *player, ParolePlayerAction action)
@@ -486,6 +492,8 @@ GtkAction *parole_provider_player_get_action(ParoleProviderPlayer *player, Parol
  * @player: a #ParoleProviderPlayer
  * 
  * Get fullscreen status for Parole.
+ *
+ * Returns: TRUE if the player window is fullscreen, FALSE otherwise.
  * 
  * Since: 0.6
  **/

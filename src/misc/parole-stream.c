@@ -341,6 +341,16 @@ parole_stream_finalize (GObject *object)
     G_OBJECT_CLASS (parole_stream_parent_class)->finalize (object);
 }
 
+/**
+ * parole_stream_set_image:
+ * @object: a #ParoleStream object.
+ * @pixbuf: a #GdkPixbuf to set as the stream image.
+ * 
+ * Set the ParoleStream image to a new pixbuf.
+ * 
+ * 
+ * Since: 0.6
+ **/
 void 
 parole_stream_set_image (GObject *object, GdkPixbuf *pixbuf)
 {

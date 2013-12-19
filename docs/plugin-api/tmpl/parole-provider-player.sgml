@@ -89,7 +89,63 @@ playback status.
 @container: 
 
 
+<!-- ##### FUNCTION parole_provider_player_get_action ##### -->
+<para>
+
+</para>
+
+@player: 
+@action: 
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_provider_player_set_fullscreen ##### -->
+<para>
+
+</para>
+
+@player: 
+@fullscreen: 
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_provider_player_get_fullscreen ##### -->
+<para>
+
+</para>
+
+@player: 
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_stream_set_image ##### -->
+<para>
+
+</para>
+
+@object: 
+@pixbuf: 
+
+
+<!-- ##### FUNCTION parole_stream_get_image ##### -->
+<para>
+
+</para>
+
+@object: 
+@Returns: 
+
+
 <!-- ##### FUNCTION parole_provider_player_get_state ##### -->
+<para>
+
+</para>
+
+@player: 
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_provider_player_get_stream_position ##### -->
 <para>
 
 </para>
@@ -127,6 +183,24 @@ playback status.
 
 
 <!-- ##### FUNCTION parole_provider_player_stop ##### -->
+<para>
+
+</para>
+
+@player: 
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_provider_player_play_next ##### -->
+<para>
+
+</para>
+
+@player: 
+@Returns: 
+
+
+<!-- ##### FUNCTION parole_provider_player_play_previous ##### -->
 <para>
 
 </para>

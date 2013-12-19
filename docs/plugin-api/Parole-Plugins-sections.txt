@@ -6,12 +6,20 @@ ParolePluginContainer
 ParoleState
 parole_provider_player_get_main_window
 parole_provider_player_pack
+parole_provider_player_get_action
+parole_provider_player_set_fullscreen
+parole_provider_player_get_fullscreen
+parole_stream_set_image
+parole_stream_get_image
 parole_provider_player_get_state
 parole_provider_player_get_stream
+parole_provider_player_get_stream_position
 parole_provider_player_play_uri
 parole_provider_player_pause
 parole_provider_player_resume
 parole_provider_player_stop
+parole_provider_player_play_next
+parole_provider_player_play_previous
 parole_provider_player_seek
 parole_provider_player_open_media_chooser
 <SUBSECTION Standard>
@@ -24,12 +32,12 @@ parole_provider_player_get_type
 
 <SECTION>
 <FILE>parole-provider-plugin</FILE>
-ParoleProviderPluginIface
 ParoleProviderPlugin
 parole_provider_plugin_get_is_configurable
 parole_provider_plugin_configure
 parole_provider_plugin_set_player
 <SUBSECTION Standard>
+ParoleProviderPluginIface
 PAROLE_PROVIDER_PLUGIN
 PAROLE_IS_PROVIDER_PLUGIN
 PAROLE_TYPE_PROVIDER_PLUGIN
@@ -41,15 +49,21 @@ parole_provider_plugin_get_type
 <FILE>parole-file</FILE>
 <TITLE>ParoleFile</TITLE>
 ParoleFile
-ParoleFileClass
 parole_file_new
 parole_file_new_with_display_name
+parole_file_new_cdda_track
+parole_file_new_dvd_chapter
 parole_file_get_file_name
 parole_file_get_display_name
 parole_file_get_uri
 parole_file_get_directory
 parole_file_get_content_type
+parole_file_set_dvd_chapter
+parole_file_get_dvd_chapter
+parole_file_set_custom_subtitles
+parole_file_get_custom_subtitles
 <SUBSECTION Standard>
+ParoleFileClass
 PAROLE_FILE
 PAROLE_IS_FILE
 PAROLE_TYPE_FILE
@@ -61,8 +75,8 @@ parole_file_get_type
 ParoleMediaType
 <TITLE>ParoleStream</TITLE>
 ParoleStream
-ParoleStreamClass
 <SUBSECTION Standard>
+ParoleStreamClass
 PAROLE_STREAM
 PAROLE_IS_STREAM
 PAROLE_TYPE_STREAM
@@ -110,6 +124,8 @@ PAROLE_DEFINE_TYPE_WITH_CODE
 PAROLE_DEFINE_ABSTRACT_TYPE
 PAROLE_DEFINE_ABSTRACT_TYPE_WITH_CODE
 PAROLE_IMPLEMENT_INTERFACE
+parole_get_supported_recent_files_filter
+parole_get_supported_recent_media_filter
 </SECTION>
 
 <SECTION>
