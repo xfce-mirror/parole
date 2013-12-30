@@ -1,4 +1,5 @@
-2013-10-30: bluesabre@xfce.org
+2013-12-29: bluesabre@xfce.org
+    * Development release 0.5.91
     * Fix untranslatable strings (bug #10418)
     * Fix loading of playlists with relative paths (bug #10436)
     * Add realmedia video to supported video mimetypes (bug #10434)
@@ -7,6 +8,7 @@
     * Fix "Remove Duplicates" functionality.
     * Plugin API documentation updates
     * Fixed playlist search
+    * New MPRIS2 plugin
 
 2013-10-19: bluesabre@xfce.org
     * Development release 0.5.90
