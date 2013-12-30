@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-12-18 06:30+0100\n"
-"PO-Revision-Date: 2013-12-30 10:30+0000\n"
+"PO-Revision-Date: 2013-12-30 16:02+0000\n"
 "Last-Translator: M4he\n"
 "Language-Team: German (http://www.transifex.com/projects/p/xfce/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -32,19 +32,19 @@ msgstr "_Medien"
 
 #: ../data/interfaces/parole.ui.h:3
 msgid "_Open…"
-msgstr ""
+msgstr "_Öffnen …"
 
 #: ../data/interfaces/parole.ui.h:4
 msgid "Open _Location…"
-msgstr ""
+msgstr "_Ort öffnen …"
 
 #: ../data/interfaces/parole.ui.h:5
 msgid "Open _Recent"
-msgstr ""
+msgstr "_Zuletzt geöffnet"
 
 #: ../data/interfaces/parole.ui.h:6
 msgid "_Save Playlist…"
-msgstr "Wiedergabeliste _speichern..."
+msgstr "Wiedergabeliste _speichern …"
 
 #: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:112
 #: ../src/parole-disc.c:154
@@ -53,11 +53,11 @@ msgstr "CD/DVD einlegen"
 
 #: ../data/interfaces/parole.ui.h:8 ../src/plugins/tray/tray-provider.c:152
 msgid "_Quit"
-msgstr ""
+msgstr "_Beenden"
 
 #: ../data/interfaces/parole.ui.h:9
 msgid "_Playback"
-msgstr ""
+msgstr "_Wiedergabe"
 
 #. Toggle Repeat
 #: ../data/interfaces/parole.ui.h:10 ../src/parole-player.c:2994
@@ -71,39 +71,39 @@ msgstr "_Zufallsmodus"
 
 #: ../data/interfaces/parole.ui.h:12
 msgid "_DVD"
-msgstr ""
+msgstr "_DVD"
 
 #: ../data/interfaces/parole.ui.h:13
 msgid "_DVD Menu"
-msgstr ""
+msgstr "_DVD Menü"
 
 #: ../data/interfaces/parole.ui.h:14
 msgid "_Title Menu"
-msgstr ""
+msgstr "_Titelmenü"
 
 #: ../data/interfaces/parole.ui.h:15
 msgid "_Audio Menu"
-msgstr ""
+msgstr "_Audiomenü"
 
 #: ../data/interfaces/parole.ui.h:16
 msgid "A_ngle Menu"
-msgstr ""
+msgstr "Seite_nverhältnismenü"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "_Chapters"
-msgstr ""
+msgstr "_Kapitel"
 
 #: ../data/interfaces/parole.ui.h:18
 msgid "_Chapter Menu"
-msgstr ""
+msgstr "_Kapitelmenü"
 
 #: ../data/interfaces/parole.ui.h:19
 msgid "_Audio"
-msgstr ""
+msgstr "A_udio"
 
 #: ../data/interfaces/parole.ui.h:20
 msgid "_Audio Track"
-msgstr ""
+msgstr "_Audiospur"
 
 #: ../data/interfaces/parole.ui.h:21 ../src/parole-player.c:793
 msgid "Empty"
@@ -123,7 +123,7 @@ msgstr "Stu_mm"
 
 #: ../data/interfaces/parole.ui.h:25
 msgid "_Video"
-msgstr ""
+msgstr "_Video"
 
 #. Fullscreen
 #: ../data/interfaces/parole.ui.h:26 ../src/parole-player.c:1940
@@ -169,15 +169,15 @@ msgstr "Textuntertitel auswählen…"
 
 #: ../data/interfaces/parole.ui.h:36
 msgid "_Tools"
-msgstr ""
+msgstr "_Werkzeuge"
 
 #: ../data/interfaces/parole.ui.h:37
 msgid "P_lugins"
-msgstr ""
+msgstr "P_lugins"
 
 #: ../data/interfaces/parole.ui.h:38
 msgid "_Preferences"
-msgstr ""
+msgstr "_Einstellungen"
 
 #: ../data/interfaces/parole.ui.h:39
 msgid "_Help"
@@ -185,11 +185,11 @@ msgstr "_Hilfe"
 
 #: ../data/interfaces/parole.ui.h:40
 msgid "_Report a Bug…"
-msgstr ""
+msgstr "_Fehler melden …"
 
 #: ../data/interfaces/parole.ui.h:41
 msgid "_About"
-msgstr ""
+msgstr "_Info"
 
 #: ../data/interfaces/parole.ui.h:42
 msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
@@ -232,7 +232,7 @@ msgstr "Disk-Wiedergabeliste"
 
 #: ../data/interfaces/playlist.ui.h:3
 msgid "Add to playlist…"
-msgstr "Zur Wiedergabeliste hinzufügen..."
+msgstr "Zur Wiedergabeliste hinzufügen …"
 
 #: ../data/interfaces/playlist.ui.h:4
 msgid "Add"
@@ -325,7 +325,7 @@ msgstr "<b>Bildschirmschoner</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:5
 msgid "Show visual effects when an audio file is played"
-msgstr ""
+msgstr "Visualisierung anzeigen, wenn eine Audiodatei abgespielt wird"
 
 #: ../data/interfaces/parole-settings.ui.h:6
 msgid "Visualization type:"
@@ -333,7 +333,7 @@ msgstr "Visualisierungstyp:"
 
 #: ../data/interfaces/parole-settings.ui.h:7
 msgid "<b>Audio Visualization</b>"
-msgstr ""
+msgstr "<b>Audio-Visualisierung</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:8
 msgid "Enable keyboard multimedia keys"
@@ -369,7 +369,7 @@ msgstr "Auf Vorgaben zurücksetzen"
 
 #: ../data/interfaces/parole-settings.ui.h:16
 msgid "<b>Color Balance</b>"
-msgstr ""
+msgstr "<b>Farbbalance</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:17
 msgid "Display"
@@ -389,7 +389,7 @@ msgstr "Geöffnete Dateien abspielen"
 
 #: ../data/interfaces/parole-settings.ui.h:22
 msgid "<b>Playlist Settings</b>"
-msgstr ""
+msgstr "<b>Wiedergabelisteneinstellungen</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:24
 msgid "Automatically show subtitles when playing movie file"
@@ -413,7 +413,7 @@ msgstr "Untertitel"
 
 #: ../data/interfaces/save-playlist.ui.h:1
 msgid "Save Playlist as…"
-msgstr "Wiedergabeliste speichern als..."
+msgstr "Wiedergabeliste speichern als …"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "File Type"
@@ -499,12 +499,12 @@ msgstr "OK"
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
-msgstr ""
+msgstr "Parole benötigt <b>%s</b> um diese Datei abzuspielen.\nDies kann automatisch installiert werden."
 
 #: ../src/gst/parole-gst.c:1545
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
-msgstr ""
+msgstr "Parole benötigt <b>%s</b> um diese Datei abzuspielen."
 
 #: ../src/gst/parole-gst.c:1961
 msgid "The stream is taking too much time to load"
@@ -512,7 +512,7 @@ msgstr "Der Stream benötigt zu viel Zeit zum Laden"
 
 #: ../src/gst/parole-gst.c:1962
 msgid "Do you want to continue loading or stop?"
-msgstr ""
+msgstr "Soll das Laden fortgesetzt oder der Vorgang angehalten werden?"
 
 #: ../src/gst/parole-gst.c:1963
 msgid "Stop"
@@ -524,17 +524,17 @@ msgstr "Fortsetzen"
 
 #: ../src/gst/parole-gst.c:2148
 msgid "GStreamer Error"
-msgstr ""
+msgstr "GStreamer-Fehler"
 
 #: ../src/gst/parole-gst.c:2149
 msgid "Parole Media Player cannot start."
-msgstr ""
+msgstr "Parole Medien-Abspieler kann nicht gestartet werden."
 
 #: ../src/gst/parole-gst.c:2177 ../src/gst/parole-gst.c:2195
 #: ../src/gst/parole-gst.c:2218
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
-msgstr ""
+msgstr "Plugin »%s« kann nicht geladen werden, bitte überprüfen Sie Ihre GStreamer-Installation."
 
 #: ../src/gst/parole-gst.c:2838 ../src/gst/parole-gst.c:2844
 #, c-format
@@ -559,7 +559,7 @@ msgid ""
 "\n"
 "Please report bugs to <http://bugzilla.xfce.org/>.\n"
 "\n"
-msgstr ""
+msgstr "\nParole Medien-Abspieler %s\n\nTeil des Projekts Xfce-Goodies\nhttp://goodies.xfce.org\n\nLizensiert unter der GNU GPL.\n\nBitte melden Sie Fehler unter <http://bugzilla.xfce.org/>.\n\n\n\n"
 
 #: ../src/main.c:234
 msgid "Unknown argument "
@@ -579,7 +579,7 @@ msgstr "Pfad des Audio-CD/VCD/DVD Gerätes angeben"
 
 #: ../src/main.c:279
 msgid "Enable/Disable XV support (true or false, default=true)"
-msgstr ""
+msgstr "XV-Unterstützung aktivieren/deaktivieren (true oder false, Standard=true)"
 
 #: ../src/main.c:280
 msgid "Start in embedded mode"
@@ -623,7 +623,7 @@ msgstr "Dateien zu Wiedergabeliste hinzufügen"
 
 #: ../src/main.c:290
 msgid "Print version information and exit"
-msgstr ""
+msgstr "Versionsinformationen anzeigen und Programm beenden."
 
 #: ../src/main.c:292
 msgid "Media to play"
@@ -636,7 +636,7 @@ msgstr ""
 #: ../src/main.c:327
 #, c-format
 msgid "Type %s --help to list all available command line options\n"
-msgstr ""
+msgstr "Geben Sie %s --help ein, um alle verfügbaren Befehlszeilen-Optionen angezeigt zu bekommen\n\n"
 
 #: ../src/main.c:342
 #, c-format
@@ -808,7 +808,7 @@ msgstr "Vollbild"
 
 #: ../src/parole-player.c:1956
 msgid "Leave _Fullscreen"
-msgstr ""
+msgstr "_Vollbildmodus verlassen"
 
 #: ../src/parole-player.c:1957
 msgid "Leave Fullscreen"
@@ -834,22 +834,22 @@ msgstr "Der Standard-Webbrowser konnte nicht geöffnet werden"
 
 #: ../src/parole-player.c:2632
 msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
-msgstr ""
+msgstr "Bitte besuchen Sie http://docs.xfce.org/apps/parole/bugs um den Fehler zu melden."
 
 #. Previous Track
 #: ../src/parole-player.c:2966
 msgid "P_revious Track"
-msgstr ""
+msgstr "_Vorheriger Titel"
 
 #. Next Track
 #: ../src/parole-player.c:2974
 msgid "_Next Track"
-msgstr ""
+msgstr "_Nächster Titel"
 
 #. Toggle Playlist
 #: ../src/parole-player.c:2989
 msgid "Show _Playlist"
-msgstr ""
+msgstr "_Wiedergabeliste anzeigen"
 
 #: ../src/parole-player.c:2989 ../src/parole-player.c:3327
 msgid "Show Playlist"
@@ -858,7 +858,7 @@ msgstr "Wiedergabeliste anzeigen"
 #. Clear Recent Menu Item
 #: ../src/parole-player.c:3060
 msgid "_Clear recent items…"
-msgstr ""
+msgstr "_Zuletzt geöffnete Dateien leeren"
 
 #: ../src/parole-player.c:3265
 msgid "Audio Track:"
@@ -1032,7 +1032,7 @@ msgstr "Vietnamesisch"
 #. If plugin loading fails...
 #: ../src/parole-plugins-manager.c:276
 msgid "Plugin failed to load"
-msgstr ""
+msgstr "Plugin konnte nicht geladen werden"
 
 #: ../src/parole-plugins-manager.c:276
 msgid "Please check your installation"
@@ -1130,4 +1130,4 @@ msgstr "MPRIS2"
 
 #: ../src/plugins/mpris2/mpris2.desktop.in.h:2
 msgid "MPRIS2 remote control"
-msgstr ""
+msgstr "MPRIS2-Fernsteuerung"
