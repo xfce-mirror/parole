@@ -5,13 +5,14 @@
 # Translators:
 # Chipong <chipong.luo@yahoo.com>, 2011-2012
 # 玉堂白鹤 <yjwork@qq.com>, 2013
+# xiaobo zhou <zhouxiaobo.500@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-12-18 06:30+0100\n"
-"PO-Revision-Date: 2013-12-20 08:27+0000\n"
-"Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
+"PO-Revision-Date: 2014-01-04 17:12+0000\n"
+"Last-Translator: xiaobo zhou <zhouxiaobo.500@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/xfce/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -635,7 +636,7 @@ msgstr "[FILES...] - 播放电影和歌曲"
 #: ../src/main.c:327
 #, c-format
 msgid "Type %s --help to list all available command line options\n"
-msgstr ""
+msgstr "输入 %s 以列出所有可能的命令行选项\n"
 
 #: ../src/main.c:342
 #, c-format
