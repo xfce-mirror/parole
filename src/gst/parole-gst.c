@@ -1168,8 +1168,8 @@ parole_gst_tag_list_get_cover_external (ParoleGst *gst)
     g_free(uri);
     g_free(filename);
     g_free(directory);
-    g_free(file_dir);
     g_free(lower);
+    g_dir_close(file_dir);
     
     if (!cover_filename)
         return NULL;
