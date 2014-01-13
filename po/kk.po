@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2013
+# Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2013-2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-13 06:30+0100\n"
-"PO-Revision-Date: 2013-11-19 16:28+0000\n"
-"Last-Translator: Xfce <transifex@xfce.org>\n"
+"POT-Creation-Date: 2013-12-18 06:30+0100\n"
+"PO-Revision-Date: 2014-01-13 08:49+0000\n"
+"Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh (http://www.transifex.com/projects/p/xfce/language/kk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,8 +19,8 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../data/interfaces/parole.ui.h:1 ../data/desktop/parole.desktop.in.in.h:1
-#: ../src/parole-player.c:565 ../src/parole-player.c:1453
-#: ../src/parole-about.c:70
+#: ../src/parole-player.c:567 ../src/parole-player.c:1455
+#: ../src/parole-about.c:70 ../src/plugins/mpris2/mpris2-provider.c:199
 msgid "Parole Media Player"
 msgstr "Parole медиа ойнатқышы"
 
@@ -49,7 +49,7 @@ msgstr "Ойнату тізімін _сақтау…"
 msgid "Insert Disc"
 msgstr "Дискті салыңыз"
 
-#: ../data/interfaces/parole.ui.h:8 ../src/plugins/tray/tray-provider.c:150
+#: ../data/interfaces/parole.ui.h:8 ../src/plugins/tray/tray-provider.c:152
 msgid "_Quit"
 msgstr "_Шығу"
 
@@ -58,12 +58,12 @@ msgid "_Playback"
 msgstr "О_йнату"
 
 #. Toggle Repeat
-#: ../data/interfaces/parole.ui.h:10 ../src/parole-player.c:2988
+#: ../data/interfaces/parole.ui.h:10 ../src/parole-player.c:2994
 msgid "_Repeat"
 msgstr "Қай_талау"
 
 #. Toggle Shuffle
-#: ../data/interfaces/parole.ui.h:11 ../src/parole-player.c:2996
+#: ../data/interfaces/parole.ui.h:11 ../src/parole-player.c:3002
 msgid "_Shuffle"
 msgstr "Арала_стыру"
 
@@ -97,13 +97,13 @@ msgstr "Бөлі_мдер мәзірі"
 
 #: ../data/interfaces/parole.ui.h:19
 msgid "_Audio"
-msgstr ""
+msgstr "_Аудио"
 
 #: ../data/interfaces/parole.ui.h:20
 msgid "_Audio Track"
 msgstr "_Аудио трегі"
 
-#: ../data/interfaces/parole.ui.h:21 ../src/parole-player.c:791
+#: ../data/interfaces/parole.ui.h:21 ../src/parole-player.c:793
 msgid "Empty"
 msgstr "Бос"
 
@@ -124,8 +124,8 @@ msgid "_Video"
 msgstr "_Видео"
 
 #. Fullscreen
-#: ../data/interfaces/parole.ui.h:26 ../src/parole-player.c:1938
-#: ../src/parole-player.c:2976
+#: ../data/interfaces/parole.ui.h:26 ../src/parole-player.c:1940
+#: ../src/parole-player.c:2982
 msgid "_Fullscreen"
 msgstr "Т_олық экранға"
 
@@ -133,7 +133,7 @@ msgstr "Т_олық экранға"
 msgid "_Aspect Ratio"
 msgstr "Ж_ақтар арақатынасы"
 
-#: ../data/interfaces/parole.ui.h:28 ../src/parole-player.c:719
+#: ../data/interfaces/parole.ui.h:28 ../src/parole-player.c:721
 msgid "None"
 msgstr "Ешнәрсе"
 
@@ -171,7 +171,7 @@ msgstr "Са_ймандар"
 
 #: ../data/interfaces/parole.ui.h:37
 msgid "P_lugins"
-msgstr ""
+msgstr "П_лагиндер"
 
 #: ../data/interfaces/parole.ui.h:38
 msgid "_Preferences"
@@ -183,7 +183,7 @@ msgstr "Кө_мек"
 
 #: ../data/interfaces/parole.ui.h:40
 msgid "_Report a Bug…"
-msgstr ""
+msgstr "Ақа_улық жөнінде хабарлау…"
 
 #: ../data/interfaces/parole.ui.h:41
 msgid "_About"
@@ -219,8 +219,8 @@ msgid "Open Media Files"
 msgstr "Медиа файлдарын ашу"
 
 #: ../data/interfaces/playlist.ui.h:1
-#: ../data/interfaces/parole-settings.ui.h:23 ../src/parole-medialist.c:808
-#: ../src/parole-medialist.c:851 ../src/parole-player.c:3304
+#: ../data/interfaces/parole-settings.ui.h:23 ../src/parole-medialist.c:814
+#: ../src/parole-medialist.c:857 ../src/parole-player.c:3310
 msgid "Playlist"
 msgstr "Ойнату тізімі"
 
@@ -230,7 +230,7 @@ msgstr "Дисктің ойнату тізімі"
 
 #: ../data/interfaces/playlist.ui.h:3
 msgid "Add to playlist…"
-msgstr ""
+msgstr "Ойнату тізіміне қосу"
 
 #: ../data/interfaces/playlist.ui.h:4
 msgid "Add"
@@ -238,7 +238,7 @@ msgstr "Қосу"
 
 #: ../data/interfaces/playlist.ui.h:5
 msgid "Remove selected media"
-msgstr ""
+msgstr "Таңдалған медианы өшіру"
 
 #: ../data/interfaces/playlist.ui.h:6
 msgid "Remove"
@@ -252,11 +252,11 @@ msgstr "Ойнату тізімін тазарту"
 msgid "Clear"
 msgstr "Тазарту"
 
-#: ../data/interfaces/playlist.ui.h:9 ../src/parole-player.c:2988
+#: ../data/interfaces/playlist.ui.h:9 ../src/parole-player.c:2994
 msgid "Repeat"
 msgstr "Қайталау"
 
-#: ../data/interfaces/playlist.ui.h:10 ../src/parole-player.c:2996
+#: ../data/interfaces/playlist.ui.h:10 ../src/parole-player.c:3002
 msgid "Shuffle"
 msgstr "Араластыру"
 
@@ -319,7 +319,7 @@ msgstr "Видеоны ойнату кезінде экран қорғауышы
 
 #: ../data/interfaces/parole-settings.ui.h:4
 msgid "<b>Screensaver</b>"
-msgstr ""
+msgstr "<b>Экран қорғаушысы</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:5
 msgid "Show visual effects when an audio file is played"
@@ -387,7 +387,7 @@ msgstr "Ашылған файлдарды ойнатуды бастау"
 
 #: ../data/interfaces/parole-settings.ui.h:22
 msgid "<b>Playlist Settings</b>"
-msgstr ""
+msgstr "<b>Ойнату тізімінің баптаулары</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:24
 msgid "Automatically show subtitles when playing movie file"
@@ -403,7 +403,7 @@ msgstr "Кодталуы:"
 
 #: ../data/interfaces/parole-settings.ui.h:27
 msgid "<b>Subtitle Settings</b>"
-msgstr ""
+msgstr "<b>Субтитрлар баптаулары</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:28
 msgid "Subtitles"
@@ -411,7 +411,7 @@ msgstr "Субтитрлар"
 
 #: ../data/interfaces/save-playlist.ui.h:1
 msgid "Save Playlist as…"
-msgstr ""
+msgstr "Ойнату тізімін қалайша сақтау…"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "File Type"
@@ -449,13 +449,13 @@ msgstr "Медиаңызды ойнату"
 msgid "Play/Pause"
 msgstr "Ойнату/аялдату"
 
-#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:2960
-#: ../src/parole-player.c:3184 ../src/plugins/notify/notify-provider.c:199
+#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:2966
+#: ../src/parole-player.c:3190 ../src/plugins/notify/notify-provider.c:201
 msgid "Previous Track"
 msgstr "Алдыңғы трек"
 
-#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:2968
-#: ../src/parole-player.c:3194 ../src/plugins/notify/notify-provider.c:209
+#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:2974
+#: ../src/parole-player.c:3200 ../src/plugins/notify/notify-provider.c:211
 msgid "Next Track"
 msgstr "Келесі трек"
 
@@ -467,79 +467,79 @@ msgstr "Хабарлама"
 msgid "Error"
 msgstr "Қате"
 
-#: ../src/gst/parole-gst.c:1278 ../src/parole-medialist.c:401
+#: ../src/gst/parole-gst.c:1282 ../src/parole-medialist.c:401
 #, c-format
 msgid "Track %i"
 msgstr "Трек %i"
 
-#: ../src/gst/parole-gst.c:1281
+#: ../src/gst/parole-gst.c:1285
 msgid "Audio CD"
 msgstr "Аудио CD"
 
-#: ../src/gst/parole-gst.c:1492
+#: ../src/gst/parole-gst.c:1525
 msgid "Additional software is required."
 msgstr "Қосымша бағдарламалық қамтама керек болып тұр."
 
-#: ../src/gst/parole-gst.c:1497
+#: ../src/gst/parole-gst.c:1530
 msgid "Don't Install"
 msgstr "Орнатпау"
 
-#: ../src/gst/parole-gst.c:1499
+#: ../src/gst/parole-gst.c:1532
 msgid "Install"
 msgstr "Орнату"
 
-#: ../src/gst/parole-gst.c:1502
+#: ../src/gst/parole-gst.c:1535
 msgid "OK"
 msgstr "ОК"
 
-#: ../src/gst/parole-gst.c:1509
+#: ../src/gst/parole-gst.c:1542
 #, c-format
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
 msgstr ""
 
-#: ../src/gst/parole-gst.c:1512
+#: ../src/gst/parole-gst.c:1545
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
 msgstr ""
 
-#: ../src/gst/parole-gst.c:1922
+#: ../src/gst/parole-gst.c:1961
 msgid "The stream is taking too much time to load"
 msgstr "Ағымды жүктеу үшін тым көп уақыт керек"
 
-#: ../src/gst/parole-gst.c:1923
+#: ../src/gst/parole-gst.c:1962
 msgid "Do you want to continue loading or stop?"
 msgstr ""
 
-#: ../src/gst/parole-gst.c:1924
+#: ../src/gst/parole-gst.c:1963
 msgid "Stop"
 msgstr "Тоқтату"
 
-#: ../src/gst/parole-gst.c:1925
+#: ../src/gst/parole-gst.c:1964
 msgid "Continue"
 msgstr "Жалғастыру"
 
-#: ../src/gst/parole-gst.c:2095
+#: ../src/gst/parole-gst.c:2148
 msgid "GStreamer Error"
 msgstr "GStreamer қатесі"
 
-#: ../src/gst/parole-gst.c:2096
+#: ../src/gst/parole-gst.c:2149
 msgid "Parole Media Player cannot start."
 msgstr "Parole медиа ойнатқышы іске қосыла алмайды."
 
-#: ../src/gst/parole-gst.c:2124 ../src/gst/parole-gst.c:2142
-#: ../src/gst/parole-gst.c:2165
+#: ../src/gst/parole-gst.c:2177 ../src/gst/parole-gst.c:2195
+#: ../src/gst/parole-gst.c:2218
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
 msgstr ""
 
-#: ../src/gst/parole-gst.c:2769 ../src/gst/parole-gst.c:2775
+#: ../src/gst/parole-gst.c:2838 ../src/gst/parole-gst.c:2844
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Аудио трек  #%d"
 
-#: ../src/gst/parole-gst.c:2819 ../src/gst/parole-gst.c:2825
+#: ../src/gst/parole-gst.c:2888 ../src/gst/parole-gst.c:2894
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Субтитрлар #%d"
@@ -641,242 +641,238 @@ msgstr ""
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole іске қосулы тұр, жаңа данасын іске қосу үшін -i қолданыңыз\n"
 
-#: ../src/parole-mediachooser.c:234
-msgid "Supported files"
-msgstr "Қолдауы бар файлдар"
-
-#: ../src/parole-mediachooser.c:241 ../src/parole-player.c:1013
+#: ../src/parole-mediachooser.c:247 ../src/parole-player.c:1015
 msgid "All files"
 msgstr "Барлық файлдар"
 
 #: ../src/parole-medialist.c:217
 #, c-format
 msgid "Playlist (%i item)"
-msgstr ""
+msgstr "Ойнату тізімі (%i нәрсе)"
 
 #: ../src/parole-medialist.c:221
 #, c-format
 msgid "Playlist (%i chapter)"
-msgstr ""
+msgstr "Ойнату тізімі (%i тарау)"
 
-#: ../src/parole-medialist.c:228 ../src/parole-medialist.c:1586
+#: ../src/parole-medialist.c:228 ../src/parole-medialist.c:1592
 #, c-format
 msgid "Playlist (%i items)"
-msgstr ""
+msgstr "Ойнату тізімі (%i нәрсе)"
 
-#: ../src/parole-medialist.c:232 ../src/parole-medialist.c:1587
+#: ../src/parole-medialist.c:232 ../src/parole-medialist.c:1593
 #, c-format
 msgid "Playlist (%i chapters)"
-msgstr ""
+msgstr "Ойнату тізімі (%i тарау)"
 
-#: ../src/parole-medialist.c:417 ../src/parole-player.c:698
+#: ../src/parole-medialist.c:417 ../src/parole-player.c:700
 #, c-format
 msgid "Chapter %i"
 msgstr "Бөлім %i"
 
-#: ../src/parole-medialist.c:700
+#: ../src/parole-medialist.c:706
 msgid "Permission denied"
 msgstr "Рұқсат жоқ"
 
-#: ../src/parole-medialist.c:702
+#: ../src/parole-medialist.c:708
 msgid "Error saving playlist file"
 msgstr "Ойнату тізімі файлын сақтау қатесі"
 
-#: ../src/parole-medialist.c:714
+#: ../src/parole-medialist.c:720
 msgid "Unknown playlist format"
 msgstr "Ойнату тізімінің пішімі белгісіз"
 
-#: ../src/parole-medialist.c:715
+#: ../src/parole-medialist.c:721
 msgid "Please choose a supported playlist format"
 msgstr ""
 
-#: ../src/parole-medialist.c:769 ../src/parole-plugins-manager.c:369
+#: ../src/parole-medialist.c:775 ../src/parole-plugins-manager.c:369
 msgid "Unknown"
 msgstr "Белгісіз"
 
-#: ../src/parole-medialist.c:858
+#: ../src/parole-medialist.c:864
 msgid "M3U Playlists"
 msgstr "M3U ойнату тізімдері"
 
-#: ../src/parole-medialist.c:866
+#: ../src/parole-medialist.c:872
 msgid "PLS Playlists"
 msgstr "PLS ойнату тізімдері"
 
-#: ../src/parole-medialist.c:874
+#: ../src/parole-medialist.c:880
 msgid "Advanced Stream Redirector"
 msgstr "Ағымның кеңейтілген кодтауышы"
 
-#: ../src/parole-medialist.c:882
+#: ../src/parole-medialist.c:888
 msgid "Shareable Playlist"
 msgstr "Жарияланатын ойнату тізімі"
 
 #. Clear
-#: ../src/parole-medialist.c:1221
+#: ../src/parole-medialist.c:1227
 msgid "Open Containing Folder"
 msgstr "Орналасқан бумасын ашу"
 
-#: ../src/parole-player.c:513 ../src/parole-player.c:514
+#: ../src/parole-player.c:515 ../src/parole-player.c:516
 msgid "Hide playlist"
 msgstr "Ойнату тізімін жасыру"
 
-#: ../src/parole-player.c:522 ../src/parole-player.c:523
+#: ../src/parole-player.c:524 ../src/parole-player.c:525
 msgid "Show playlist"
 msgstr "Ойнату тізімін көрсету"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:977
+#: ../src/parole-player.c:979
 msgid "Select Subtitle File"
 msgstr "Субтитрлар файлын таңдау"
 
-#: ../src/parole-player.c:982 ../src/parole-player.c:1186
-#: ../src/plugins/tray/tray-provider.c:310
+#: ../src/parole-player.c:984 ../src/parole-player.c:1188
+#: ../src/plugins/tray/tray-provider.c:312
 msgid "Cancel"
 msgstr "Бас тарту"
 
-#: ../src/parole-player.c:985
+#: ../src/parole-player.c:987
 msgid "Open"
 msgstr "Ашу"
 
-#: ../src/parole-player.c:1001
+#: ../src/parole-player.c:1003
 msgid "Subtitle Files"
 msgstr "Субтитрлар файлдары"
 
-#: ../src/parole-player.c:1182 ../src/parole-player.c:1190
+#: ../src/parole-player.c:1184 ../src/parole-player.c:1192
 msgid "Clear Recent Items"
 msgstr "Жуырдағы нәрселер тарихын тазарту"
 
-#: ../src/parole-player.c:1184
+#: ../src/parole-player.c:1186
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
 msgstr "Жуырдағы ойнатылған файлдар тізімін тазартуды қалайсыз ба? Бұны болдырмауға мүмкін болмайды."
 
-#: ../src/parole-player.c:1275 ../src/parole-player.c:1408
+#: ../src/parole-player.c:1277 ../src/parole-player.c:1410
 msgid "Media stream is not seekable"
 msgstr "Мультимедиа ағымында ауысу мүмкін емес"
 
 #. * GTK Actions
 #. 
 #. Play/Pause
-#: ../src/parole-player.c:1286 ../src/parole-player.c:2952
+#: ../src/parole-player.c:1288 ../src/parole-player.c:2958
 msgid "_Play"
 msgstr "Ой_нату"
 
-#: ../src/parole-player.c:1287 ../src/parole-player.c:2952
+#: ../src/parole-player.c:1289 ../src/parole-player.c:2958
 msgid "Play"
 msgstr "Ойнату"
 
-#: ../src/parole-player.c:1290
+#: ../src/parole-player.c:1292
 msgid "_Pause"
 msgstr "_Аялдату"
 
-#: ../src/parole-player.c:1291
+#: ../src/parole-player.c:1293
 msgid "Pause"
 msgstr "Аялдату"
 
-#: ../src/parole-player.c:1743
+#: ../src/parole-player.c:1745
 msgid "GStreamer backend error"
 msgstr "GStreamer қозғалтқышының қатесі"
 
-#: ../src/parole-player.c:1774
+#: ../src/parole-player.c:1776
 msgid "Unknown Song"
 msgstr "Белгісіз өлең"
 
-#: ../src/parole-player.c:1779 ../src/parole-player.c:1781
-#: ../src/parole-player.c:1787
+#: ../src/parole-player.c:1781 ../src/parole-player.c:1783
+#: ../src/parole-player.c:1789
 msgid "on"
 msgstr "жері"
 
-#: ../src/parole-player.c:1787 ../src/plugins/notify/notify-provider.c:143
+#: ../src/parole-player.c:1789 ../src/plugins/notify/notify-provider.c:145
 msgid "Unknown Album"
 msgstr "Белгісіз альбом"
 
-#: ../src/parole-player.c:1794 ../src/parole-player.c:1798
+#: ../src/parole-player.c:1796 ../src/parole-player.c:1800
 msgid "by"
 msgstr "орындайтын"
 
-#: ../src/parole-player.c:1798 ../src/plugins/notify/notify-provider.c:145
+#: ../src/parole-player.c:1800 ../src/plugins/notify/notify-provider.c:147
 msgid "Unknown Artist"
 msgstr "Белгісіз әртіс"
 
-#: ../src/parole-player.c:1832
+#: ../src/parole-player.c:1834
 msgid "Buffering"
 msgstr "Буфферлеу"
 
-#: ../src/parole-player.c:1939 ../src/parole-player.c:2976
-#: ../src/parole-player.c:3215
+#: ../src/parole-player.c:1941 ../src/parole-player.c:2982
+#: ../src/parole-player.c:3221
 msgid "Fullscreen"
 msgstr "Толық экранға"
 
-#: ../src/parole-player.c:1954
+#: ../src/parole-player.c:1956
 msgid "Leave _Fullscreen"
 msgstr "Т_олық экраннан шығу"
 
-#: ../src/parole-player.c:1955
+#: ../src/parole-player.c:1957
 msgid "Leave Fullscreen"
 msgstr "Толық экраннан шығу"
 
 #. * Un/Hide menubar
 #. 
-#: ../src/parole-player.c:2051
+#: ../src/parole-player.c:2053
 msgid "Show menubar"
-msgstr ""
+msgstr "Мәзір жолағын көрсету"
 
-#: ../src/parole-player.c:2251
+#: ../src/parole-player.c:2259
 msgid "Mute"
 msgstr "Дыбысын басу"
 
-#: ../src/parole-player.c:2256
+#: ../src/parole-player.c:2264
 msgid "Unmute"
 msgstr "Дыбысын қайтару"
 
-#: ../src/parole-player.c:2622
+#: ../src/parole-player.c:2630
 msgid "Unable to open default web browser"
 msgstr ""
 
-#: ../src/parole-player.c:2624
+#: ../src/parole-player.c:2632
 msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr ""
 
 #. Previous Track
-#: ../src/parole-player.c:2960
+#: ../src/parole-player.c:2966
 msgid "P_revious Track"
-msgstr ""
+msgstr "Ал_дыңғы трек"
 
 #. Next Track
-#: ../src/parole-player.c:2968
+#: ../src/parole-player.c:2974
 msgid "_Next Track"
-msgstr ""
+msgstr "_Келесі трек"
 
 #. Toggle Playlist
-#: ../src/parole-player.c:2983
+#: ../src/parole-player.c:2989
 msgid "Show _Playlist"
-msgstr ""
+msgstr "О_йнату тізімін көрсету"
 
-#: ../src/parole-player.c:2983 ../src/parole-player.c:3321
+#: ../src/parole-player.c:2989 ../src/parole-player.c:3327
 msgid "Show Playlist"
-msgstr ""
+msgstr "Ойнату тізімін көрсету"
 
 #. Clear Recent Menu Item
-#: ../src/parole-player.c:3054
+#: ../src/parole-player.c:3060
 msgid "_Clear recent items…"
 msgstr ""
 
-#: ../src/parole-player.c:3259
+#: ../src/parole-player.c:3265
 msgid "Audio Track:"
 msgstr "Аудио трегі:"
 
-#: ../src/parole-player.c:3275
+#: ../src/parole-player.c:3281
 msgid "Subtitles:"
 msgstr "Субтитрлар:"
 
-#: ../src/parole-player.c:3280 ../src/plugins/tray/tray-provider.c:245
+#: ../src/parole-player.c:3286 ../src/plugins/tray/tray-provider.c:247
 msgid "Close"
 msgstr "Жабу"
 
-#: ../src/parole-player.c:3321
+#: ../src/parole-player.c:3327
 msgid "Hide Playlist"
-msgstr ""
+msgstr "Ойнату тізімін жасыру"
 
 #: ../src/parole-about.c:76
 msgid "translator-credits"
@@ -1068,13 +1064,13 @@ msgstr "Барлық қолдауы бар файлдар"
 msgid "Playlist files"
 msgstr "Ойнату тізімдер файлдары"
 
-#: ../src/plugins/notify/notify-provider.c:148
-#: ../src/plugins/notify/notify-provider.c:151
+#: ../src/plugins/notify/notify-provider.c:150
+#: ../src/plugins/notify/notify-provider.c:153
 msgid "<i>on</i>"
 msgstr "<i>жері</i>"
 
-#: ../src/plugins/notify/notify-provider.c:148
-#: ../src/plugins/notify/notify-provider.c:151
+#: ../src/plugins/notify/notify-provider.c:150
+#: ../src/plugins/notify/notify-provider.c:153
 msgid "<i>by</i>"
 msgstr "<i>орындайтын</i>"
 
@@ -1086,35 +1082,35 @@ msgstr "Хабарлау"
 msgid "Show notifications for currently playing tracks"
 msgstr "Ағымдағы ойналып тұрған тректер туралы хабарлауды қолдану"
 
-#: ../src/plugins/tray/tray-provider.c:133
+#: ../src/plugins/tray/tray-provider.c:135
 msgid "_Open"
 msgstr "А_шу"
 
-#: ../src/plugins/tray/tray-provider.c:242
+#: ../src/plugins/tray/tray-provider.c:244
 msgid "Tray icon plugin"
 msgstr "Трей таңбашасы плагині"
 
-#: ../src/plugins/tray/tray-provider.c:252
+#: ../src/plugins/tray/tray-provider.c:254
 msgid "Always minimize to tray when window is closed"
 msgstr "Терезе жабылған кезде, әрқашан трейге қайыру"
 
-#: ../src/plugins/tray/tray-provider.c:298
+#: ../src/plugins/tray/tray-provider.c:300
 msgid "Are you sure you want to quit?"
 msgstr "Шығуды шынымен қалайсыз ба?"
 
-#: ../src/plugins/tray/tray-provider.c:301
+#: ../src/plugins/tray/tray-provider.c:303
 msgid "Parole can be minimized to the system tray instead."
 msgstr "Шығу орнына, Parole қолданбасын трейге қайыруға болады."
 
-#: ../src/plugins/tray/tray-provider.c:304
+#: ../src/plugins/tray/tray-provider.c:306
 msgid "Minimize to tray"
 msgstr "Трейге қайыру"
 
-#: ../src/plugins/tray/tray-provider.c:316
+#: ../src/plugins/tray/tray-provider.c:318
 msgid "Quit"
 msgstr "Шығу"
 
-#: ../src/plugins/tray/tray-provider.c:325
+#: ../src/plugins/tray/tray-provider.c:327
 msgid "Remember my choice"
 msgstr "Таңдауымды еске сақтау"
 
@@ -1125,3 +1121,11 @@ msgstr "Трей таңбашасы"
 #: ../src/plugins/tray/system-tray.desktop.in.h:2
 msgid "Show icon in the system tray"
 msgstr "Жүйелік трейде таңбашаны көрсету"
+
+#: ../src/plugins/mpris2/mpris2.desktop.in.h:1
+msgid "MPRIS2"
+msgstr "MPRIS2"
+
+#: ../src/plugins/mpris2/mpris2.desktop.in.h:2
+msgid "MPRIS2 remote control"
+msgstr "MPRIS2 қашықтан басқару"
