@@ -335,7 +335,7 @@ parole_pl_parser_parse_m3u (const gchar *filename)
     guint i;
     
     GRegex *regex;
-    GMatchInfo *match_info;
+    GMatchInfo *match_info = NULL;
     
     file = g_file_new_for_path (filename);
     path = g_path_get_dirname(filename);
