@@ -1,3 +1,49 @@
+0.6.0
+=======
+- Completed port to GTK+3
+  - Remove deprecated GTK+2 items
+  - Use GtkOverlay for player controls
+  - Use symbolic icons for menus, plugins
+- Improved window maximization
+  - Window dimensions are no longer saved when maximizing
+  - Added "window-maximized" setting to xfconf to keep maximization across sessions
+- Rearranged and improved menubar
+  - Renamed "Edit" menu to "Playback"
+  - Renamed "Languages" menu item to "Audio Track"
+  - Added Tools menu
+  - Moved Plugins and Preferences to Tools menu
+  - Added DVD menu (visible only when a DVD or DVD ISO is being played)
+  - Added "Save Playlist" item to Media menu
+  - Added "Contents" item to Help menu
+  - Added "Report Bug" item to Help menu
+- Improved playlist
+  - Use symbolic icons in an inline toolbar
+  - Removed redundant settings button
+  - Added Move Up/Down buttons
+  - Improved search
+- Plugin updates
+  - Added Previous/Next Track menu items to Tray plugin
+  - Added Previous/Next Track menu items to Notification plugin
+  - Added NEW MPRIS2 plugin
+- Other improvements
+  - Updated artwork (background image, icons)
+  - Fixed GStreamer 1.0 support
+  - Added ability to play DVD ISOs from the Open dialog
+  - Plugins now correctly report when they fail to load
+  - Plugin API documentation updates
+- Bugs fixed
+  - Fixed missing option to open DVD from iso (bug #10300)
+  - Fixed allowing a playlist to be sorted and/or items to be moved (bug #10066)
+  - Fixed Remember playlist option in GUI not working (bug #10269)
+  - Fixed Parole showing irritating edge (bug #10081)
+  - Fixed untranslatable strings (bug #10418)
+  - Fixed loading of playlists with relative paths (bug #10436)
+  - Added realmedia video to supported video mimetypes (bug #10434)
+  - Fixed IF/ELSE for plugin installation on multiple platforms (bugs #10142, #10441)
+  - Fixed building with enable-debug=full on some platforms (bug #10525)
+  - Fixed crash for m3u files with all absolute paths
+  - Fixed "Remove Duplicates" functionality.
+
 0.5.0
 =======
 - Fixed potential file name clash in parole extension (bug #9728)
