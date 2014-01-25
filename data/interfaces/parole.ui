@@ -6,25 +6,18 @@
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
-  <object class="GtkImage" id="image_about">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">16</property>
-    <property name="icon_name">gtk-about-symbolic</property>
-    <property name="use_fallback">True</property>
-  </object>
-  <object class="GtkImage" id="image_disc">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">16</property>
-    <property name="icon_name">media-optical-symbolic</property>
-    <property name="use_fallback">True</property>
-  </object>
   <object class="GtkImage" id="image_help_reportbug">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="pixel_size">16</property>
     <property name="icon_name">face-sad-symbolic</property>
+    <property name="use_fallback">True</property>
+  </object>
+  <object class="GtkImage" id="image_help_reportbug1">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixel_size">16</property>
+    <property name="icon_name">help-info-symbolic</property>
     <property name="use_fallback">True</property>
   </object>
   <object class="GtkImage" id="image_media_fullscreen">
@@ -53,6 +46,20 @@
     <property name="can_focus">False</property>
     <property name="pixel_size">16</property>
     <property name="icon_name">media-skip-backward-symbolic</property>
+    <property name="use_fallback">True</property>
+  </object>
+  <object class="GtkImage" id="image_about">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixel_size">16</property>
+    <property name="icon_name">gtk-about-symbolic</property>
+    <property name="use_fallback">True</property>
+  </object>
+  <object class="GtkImage" id="image_disc">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixel_size">16</property>
+    <property name="icon_name">media-optical-symbolic</property>
     <property name="use_fallback">True</property>
   </object>
   <object class="GtkImage" id="image_menu_fullscreen">
@@ -668,6 +675,19 @@
                         <property name="use_underline">True</property>
                         <property name="image">image_help_reportbug</property>
                         <property name="use_stock">False</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImageMenuItem" id="contents">
+                        <property name="label" translatable="yes">_Contents</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="has_tooltip">True</property>
+                        <property name="tooltip_text" translatable="yes">Display Parole user manual</property>
+                        <property name="use_underline">True</property>
+                        <property name="image">image_help_reportbug1</property>
+                        <property name="use_stock">False</property>
+                        <accelerator key="F1" signal="activate"/>
                       </object>
                     </child>
                     <child>

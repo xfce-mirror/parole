@@ -2635,6 +2635,24 @@ on_bug_report_clicked (GtkWidget *w, ParolePlayer *player)
     }
 }
 
+static void
+on_contents_clicked (GtkWidget *w, ParolePlayer *player)
+{
+    GtkWidget *dialog;
+    if (!gtk_show_uri(NULL, "http://docs.xfce.org/apps/parole/start", GDK_CURRENT_TIME, NULL))
+    {
+        dialog = gtk_message_dialog_new(GTK_WINDOW(player->priv->window), 
+                                        GTK_DIALOG_DESTROY_WITH_PARENT, 
+                                        GTK_MESSAGE_ERROR, 
+                                        GTK_BUTTONS_CLOSE, 
+                                        _("Unable to open default web browser"));
+        gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog), 
+                _("Please go to http://docs.xfce.org/apps/parole/start to read Parole's online documentation."));
+        gtk_dialog_run(GTK_DIALOG(dialog));
+        gtk_widget_destroy(dialog);
+    }
+}
+
 /**
  * 
  * Draw a simple rectangular GtkOverlay
@@ -2866,7 +2884,7 @@ parole_player_init (ParolePlayer *player)
     GtkWidget *clear_recent;
     GtkWidget *recent_separator;
     
-    GtkWidget *bug_report;
+    GtkWidget *bug_report, *contents;
     
     GtkCellRenderer *cell, *sub_cell;
     
@@ -3104,6 +3122,8 @@ parole_player_init (ParolePlayer *player)
     
     bug_report = GTK_WIDGET (gtk_builder_get_object (builder, "bug-report"));
     g_signal_connect (bug_report, "activate", G_CALLBACK(on_bug_report_clicked), player);
+    contents = GTK_WIDGET (gtk_builder_get_object (builder, "contents"));
+    g_signal_connect (contents, "activate", G_CALLBACK(on_contents_clicked), player);
     /* End Menu Bar */
     
 
