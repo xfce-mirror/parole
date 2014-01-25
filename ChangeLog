@@ -1,3 +1,10 @@
+2014-01-25: bluesabre@xfce.org
+    * Stable release 0.6.0
+    * Fix bug with DIR handles not being closed (bug #10600)
+    * Fix crash for m3u files with all absolute paths
+    * Added 128px appicon
+    * Added Contents menu-item to Help menu
+
 2013-12-29: bluesabre@xfce.org
     * Development release 0.5.91
     * Fix untranslatable strings (bug #10418)
