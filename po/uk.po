@@ -4,14 +4,14 @@
 # 
 # Translators:
 # Dmitry Nikitin <luckas_fb@mail.ru>, 2011
-# Yarema aka Knedlyk <yupadmin@gmail.com>, 2013
+# Yarema aka Knedlyk <yupadmin@gmail.com>, 2013-2014
 # zubr139 <zubr139@ukr.net>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-18 06:30+0100\n"
-"PO-Revision-Date: 2013-12-21 22:23+0000\n"
+"POT-Creation-Date: 2014-01-26 00:31+0100\n"
+"PO-Revision-Date: 2014-02-03 12:41+0000\n"
 "Last-Translator: Yarema aka Knedlyk <yupadmin@gmail.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/xfce/language/uk/)\n"
 "MIME-Version: 1.0\n"
@@ -60,12 +60,12 @@ msgid "_Playback"
 msgstr "_Відтворення"
 
 #. Toggle Repeat
-#: ../data/interfaces/parole.ui.h:10 ../src/parole-player.c:2994
+#: ../data/interfaces/parole.ui.h:10 ../src/parole-player.c:3012
 msgid "_Repeat"
 msgstr "_Повтор"
 
 #. Toggle Shuffle
-#: ../data/interfaces/parole.ui.h:11 ../src/parole-player.c:3002
+#: ../data/interfaces/parole.ui.h:11 ../src/parole-player.c:3020
 msgid "_Shuffle"
 msgstr "_Випадковий"
 
@@ -127,7 +127,7 @@ msgstr "_Відео"
 
 #. Fullscreen
 #: ../data/interfaces/parole.ui.h:26 ../src/parole-player.c:1940
-#: ../src/parole-player.c:2982
+#: ../src/parole-player.c:3000
 msgid "_Fullscreen"
 msgstr "Повний екр_ан"
 
@@ -188,30 +188,38 @@ msgid "_Report a Bug…"
 msgstr "_Повідомити про ваду..."
 
 #: ../data/interfaces/parole.ui.h:41
+msgid "_Contents"
+msgstr "_Зміст"
+
+#: ../data/interfaces/parole.ui.h:42
+msgid "Display Parole user manual"
+msgstr "Показати посібник користувача Parole"
+
+#: ../data/interfaces/parole.ui.h:43
 msgid "_About"
 msgstr "_Про"
 
-#: ../data/interfaces/parole.ui.h:42
+#: ../data/interfaces/parole.ui.h:44
 msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
 msgstr "<span color='#F4F4F4'><b><big>Невідома пісня</big></b></span>"
 
-#: ../data/interfaces/parole.ui.h:43
+#: ../data/interfaces/parole.ui.h:45
 msgid ""
 "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
 "Album</span></big>"
 msgstr "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Невідомий альбом</span></big>"
 
-#: ../data/interfaces/parole.ui.h:44
+#: ../data/interfaces/parole.ui.h:46
 msgid ""
 "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
 "Artist</span></big>"
 msgstr "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Невідомий виконавець</span></big>"
 
-#: ../data/interfaces/parole.ui.h:45
+#: ../data/interfaces/parole.ui.h:47
 msgid "0:00"
 msgstr "0:00"
 
-#: ../data/interfaces/parole.ui.h:47
+#: ../data/interfaces/parole.ui.h:49
 #, no-c-format
 msgid "Buffering (0%)"
 msgstr "Буферизація (0%)"
@@ -222,7 +230,7 @@ msgstr "Відкрити медіа-файли"
 
 #: ../data/interfaces/playlist.ui.h:1
 #: ../data/interfaces/parole-settings.ui.h:23 ../src/parole-medialist.c:814
-#: ../src/parole-medialist.c:857 ../src/parole-player.c:3310
+#: ../src/parole-medialist.c:857 ../src/parole-player.c:3330
 msgid "Playlist"
 msgstr "Список відтворення"
 
@@ -254,11 +262,11 @@ msgstr "Очистити список відтворення"
 msgid "Clear"
 msgstr "Очистити"
 
-#: ../data/interfaces/playlist.ui.h:9 ../src/parole-player.c:2994
+#: ../data/interfaces/playlist.ui.h:9 ../src/parole-player.c:3012
 msgid "Repeat"
 msgstr "Повтор"
 
-#: ../data/interfaces/playlist.ui.h:10 ../src/parole-player.c:3002
+#: ../data/interfaces/playlist.ui.h:10 ../src/parole-player.c:3020
 msgid "Shuffle"
 msgstr "Випадковий"
 
@@ -451,13 +459,13 @@ msgstr "Програвання Ваших медіа"
 msgid "Play/Pause"
 msgstr "Програвання/Пауза"
 
-#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:2966
-#: ../src/parole-player.c:3190 ../src/plugins/notify/notify-provider.c:201
+#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:2984
+#: ../src/parole-player.c:3210 ../src/plugins/notify/notify-provider.c:201
 msgid "Previous Track"
 msgstr "Попередня доріжка"
 
-#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:2974
-#: ../src/parole-player.c:3200 ../src/plugins/notify/notify-provider.c:211
+#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:2992
+#: ../src/parole-player.c:3220 ../src/plugins/notify/notify-provider.c:211
 msgid "Next Track"
 msgstr "Наступна доріжка"
 
@@ -657,12 +665,12 @@ msgstr "Список відтворення (%i пункт)"
 msgid "Playlist (%i chapter)"
 msgstr "Список відтворення (%i розділ)"
 
-#: ../src/parole-medialist.c:228 ../src/parole-medialist.c:1592
+#: ../src/parole-medialist.c:228 ../src/parole-medialist.c:1596
 #, c-format
 msgid "Playlist (%i items)"
 msgstr "Список відтворення (%i пунктів)"
 
-#: ../src/parole-medialist.c:232 ../src/parole-medialist.c:1593
+#: ../src/parole-medialist.c:232 ../src/parole-medialist.c:1597
 #, c-format
 msgid "Playlist (%i chapters)"
 msgstr "Список відтворення (%i розділів)"
@@ -754,13 +762,12 @@ msgid "Media stream is not seekable"
 msgstr "Потік медіа не може перемотуватись"
 
 #. * GTK Actions
-#. 
 #. Play/Pause
-#: ../src/parole-player.c:1288 ../src/parole-player.c:2958
+#: ../src/parole-player.c:1288 ../src/parole-player.c:2976
 msgid "_Play"
 msgstr "В_ідтворити"
 
-#: ../src/parole-player.c:1289 ../src/parole-player.c:2958
+#: ../src/parole-player.c:1289 ../src/parole-player.c:2976
 msgid "Play"
 msgstr "Відтворення"
 
@@ -801,8 +808,8 @@ msgstr "Невідомий виконавець"
 msgid "Buffering"
 msgstr "Буферизація"
 
-#: ../src/parole-player.c:1941 ../src/parole-player.c:2982
-#: ../src/parole-player.c:3221
+#: ../src/parole-player.c:1941 ../src/parole-player.c:3000
+#: ../src/parole-player.c:3241
 msgid "Fullscreen"
 msgstr "Повний екран"
 
@@ -815,7 +822,6 @@ msgid "Leave Fullscreen"
 msgstr "Покинути повноекранний режим"
 
 #. * Un/Hide menubar
-#. 
 #: ../src/parole-player.c:2053
 msgid "Show menubar"
 msgstr "Показати панель меню"
@@ -828,7 +834,7 @@ msgstr "Без звуку"
 msgid "Unmute"
 msgstr "Зі звуком"
 
-#: ../src/parole-player.c:2630
+#: ../src/parole-player.c:2630 ../src/parole-player.c:2648
 msgid "Unable to open default web browser"
 msgstr "Неможливо відкрити типовий переглядач тенет"
 
@@ -836,43 +842,49 @@ msgstr "Неможливо відкрити типовий переглядач 
 msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr "Перейдіть до http://docs.xfce.org/apps/parole/bugs щоб повідомити про ваду."
 
+#: ../src/parole-player.c:2650
+msgid ""
+"Please go to http://docs.xfce.org/apps/parole/start to read Parole's online "
+"documentation."
+msgstr "Перейдіть, будь ласка, до онлайн документації Parole на сторінку http://docs.xfce.org/apps/parole/start."
+
 #. Previous Track
-#: ../src/parole-player.c:2966
+#: ../src/parole-player.c:2984
 msgid "P_revious Track"
 msgstr "П_опередня доріжка"
 
 #. Next Track
-#: ../src/parole-player.c:2974
+#: ../src/parole-player.c:2992
 msgid "_Next Track"
 msgstr "_Наступна доріжка"
 
 #. Toggle Playlist
-#: ../src/parole-player.c:2989
+#: ../src/parole-player.c:3007
 msgid "Show _Playlist"
 msgstr "Показати _Список відтворення"
 
-#: ../src/parole-player.c:2989 ../src/parole-player.c:3327
+#: ../src/parole-player.c:3007 ../src/parole-player.c:3347
 msgid "Show Playlist"
 msgstr "Показати список відтворення"
 
 #. Clear Recent Menu Item
-#: ../src/parole-player.c:3060
+#: ../src/parole-player.c:3078
 msgid "_Clear recent items…"
 msgstr "_Очищення недавньої історії..."
 
-#: ../src/parole-player.c:3265
+#: ../src/parole-player.c:3285
 msgid "Audio Track:"
 msgstr "Трек аудіо:"
 
-#: ../src/parole-player.c:3281
+#: ../src/parole-player.c:3301
 msgid "Subtitles:"
 msgstr "Субтитри:"
 
-#: ../src/parole-player.c:3286 ../src/plugins/tray/tray-provider.c:247
+#: ../src/parole-player.c:3306 ../src/plugins/tray/tray-provider.c:247
 msgid "Close"
 msgstr "Закрити"
 
-#: ../src/parole-player.c:3327
+#: ../src/parole-player.c:3347
 msgid "Hide Playlist"
 msgstr "Сховати список відтворення"
 
