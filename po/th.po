@@ -1,0 +1,1144 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Theppitak Karoonboonyanan <thep@linux.thai.net>, 2014
+# theppitak <theppitak@gmail.com>, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: Xfce Apps\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-01-26 00:31+0100\n"
+"PO-Revision-Date: 2014-02-03 14:29+0000\n"
+"Last-Translator: theppitak <theppitak@gmail.com>\n"
+"Language-Team: Thai (http://www.transifex.com/projects/p/xfce/language/th/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: th\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../data/interfaces/parole.ui.h:1 ../data/desktop/parole.desktop.in.in.h:1
+#: ../src/parole-player.c:567 ../src/parole-player.c:1455
+#: ../src/parole-about.c:70 ../src/plugins/mpris2/mpris2-provider.c:199
+msgid "Parole Media Player"
+msgstr "เครื่องมือเล่นสื่อ Parole"
+
+#: ../data/interfaces/parole.ui.h:2
+msgid "_Media"
+msgstr "_สื่อ"
+
+#: ../data/interfaces/parole.ui.h:3
+msgid "_Open…"
+msgstr "_เปิด…"
+
+#: ../data/interfaces/parole.ui.h:4
+msgid "Open _Location…"
+msgstr "เปิด_ตำแหน่งเก็บ…"
+
+#: ../data/interfaces/parole.ui.h:5
+msgid "Open _Recent"
+msgstr "เปิด_ล่าสุด"
+
+#: ../data/interfaces/parole.ui.h:6
+msgid "_Save Playlist…"
+msgstr "_บันทึกผังเล่น…"
+
+#: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:112
+#: ../src/parole-disc.c:154
+msgid "Insert Disc"
+msgstr "ใส่แผ่น"
+
+#: ../data/interfaces/parole.ui.h:8 ../src/plugins/tray/tray-provider.c:152
+msgid "_Quit"
+msgstr "_ออก"
+
+#: ../data/interfaces/parole.ui.h:9
+msgid "_Playback"
+msgstr "เ_ล่น"
+
+#. Toggle Repeat
+#: ../data/interfaces/parole.ui.h:10 ../src/parole-player.c:3012
+msgid "_Repeat"
+msgstr "_วนซ้ำ"
+
+#. Toggle Shuffle
+#: ../data/interfaces/parole.ui.h:11 ../src/parole-player.c:3020
+msgid "_Shuffle"
+msgstr "สุ่_มลำดับ"
+
+#: ../data/interfaces/parole.ui.h:12
+msgid "_DVD"
+msgstr "_ดีวีดี"
+
+#: ../data/interfaces/parole.ui.h:13
+msgid "_DVD Menu"
+msgstr "เมนู_ดีวีดี"
+
+#: ../data/interfaces/parole.ui.h:14
+msgid "_Title Menu"
+msgstr "เมนู_ชื่อเรื่อง"
+
+#: ../data/interfaces/parole.ui.h:15
+msgid "_Audio Menu"
+msgstr "เมนูเ_สียง"
+
+#: ../data/interfaces/parole.ui.h:16
+msgid "A_ngle Menu"
+msgstr "เมนูมุ_มกล้อง"
+
+#: ../data/interfaces/parole.ui.h:17
+msgid "_Chapters"
+msgstr "_ตอน"
+
+#: ../data/interfaces/parole.ui.h:18
+msgid "_Chapter Menu"
+msgstr "เมนู_ตอน"
+
+#: ../data/interfaces/parole.ui.h:19
+msgid "_Audio"
+msgstr "เสีย_ง"
+
+#: ../data/interfaces/parole.ui.h:20
+msgid "_Audio Track"
+msgstr "ร่องเ_สียง"
+
+#: ../data/interfaces/parole.ui.h:21 ../src/parole-player.c:793
+msgid "Empty"
+msgstr "ว่างเปล่า"
+
+#: ../data/interfaces/parole.ui.h:22
+msgid "Volume _Up"
+msgstr "เ_ร่งเสียง"
+
+#: ../data/interfaces/parole.ui.h:23
+msgid "Volume _Down"
+msgstr "_หรี่เสียง"
+
+#: ../data/interfaces/parole.ui.h:24
+msgid "_Mute"
+msgstr "ปิ_ดเสียง"
+
+#: ../data/interfaces/parole.ui.h:25
+msgid "_Video"
+msgstr "วีดิ_ทัศน์"
+
+#. Fullscreen
+#: ../data/interfaces/parole.ui.h:26 ../src/parole-player.c:1940
+#: ../src/parole-player.c:3000
+msgid "_Fullscreen"
+msgstr "เ_ต็มจอ"
+
+#: ../data/interfaces/parole.ui.h:27
+msgid "_Aspect Ratio"
+msgstr "_สัดส่วนภาพ"
+
+#: ../data/interfaces/parole.ui.h:28 ../src/parole-player.c:721
+msgid "None"
+msgstr "ไม่มี"
+
+#: ../data/interfaces/parole.ui.h:29
+msgid "Auto"
+msgstr "อัตโนมัติ"
+
+#: ../data/interfaces/parole.ui.h:30
+msgid "Square"
+msgstr "จัตุรัส"
+
+#: ../data/interfaces/parole.ui.h:31
+msgid "4:3 (TV)"
+msgstr "4:3 (ทีวี)"
+
+#: ../data/interfaces/parole.ui.h:32
+msgid "16:9 (Widescreen)"
+msgstr "16:9 (จอกว้าง)"
+
+#: ../data/interfaces/parole.ui.h:33
+msgid "20:9 (DVB)"
+msgstr "20:9 (DVB)"
+
+#: ../data/interfaces/parole.ui.h:34
+msgid "_Subtitles"
+msgstr "_บทบรรยาย"
+
+#: ../data/interfaces/parole.ui.h:35
+msgid "Select Text Subtitles…"
+msgstr "เลือกข้อความบทบรรยาย…"
+
+#: ../data/interfaces/parole.ui.h:36
+msgid "_Tools"
+msgstr "เ_ครื่องมือ"
+
+#: ../data/interfaces/parole.ui.h:37
+msgid "P_lugins"
+msgstr "ป_ลั๊กอิน"
+
+#: ../data/interfaces/parole.ui.h:38
+msgid "_Preferences"
+msgstr "_ปรับแต่ง"
+
+#: ../data/interfaces/parole.ui.h:39
+msgid "_Help"
+msgstr "_วิธีใช้"
+
+#: ../data/interfaces/parole.ui.h:40
+msgid "_Report a Bug…"
+msgstr "_รายงานปัญหา…"
+
+#: ../data/interfaces/parole.ui.h:41
+msgid "_Contents"
+msgstr "เนื้อ_หา"
+
+#: ../data/interfaces/parole.ui.h:42
+msgid "Display Parole user manual"
+msgstr "แสดงคู่มือผู้ใช้ Parole"
+
+#: ../data/interfaces/parole.ui.h:43
+msgid "_About"
+msgstr "เ_กี่ยวกับ"
+
+#: ../data/interfaces/parole.ui.h:44
+msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
+msgstr "<span color='#F4F4F4'><b><big>เพลงไม่ทราบชื่อ</big></b></span>"
+
+#: ../data/interfaces/parole.ui.h:45
+msgid ""
+"<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
+"Album</span></big>"
+msgstr "<big><span color='#BBBBBB'><i>ใน</i></span> <span color='#F4F4F4'>อัลบั้มไม่ทราบชื่อ</span></big>"
+
+#: ../data/interfaces/parole.ui.h:46
+msgid ""
+"<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
+"Artist</span></big>"
+msgstr "<big><span color='#BBBBBB'><i>โดย</i></span> <span color='#F4F4F4'>ศิลปินไม่ทราบชื่อ</span></big>"
+
+#: ../data/interfaces/parole.ui.h:47
+msgid "0:00"
+msgstr "0:00"
+
+#: ../data/interfaces/parole.ui.h:49
+#, no-c-format
+msgid "Buffering (0%)"
+msgstr "กำลังทำบัฟเฟอร์ (0%)"
+
+#: ../data/interfaces/mediachooser.ui.h:1
+msgid "Open Media Files"
+msgstr "เปิดแฟ้มสื่อ"
+
+#: ../data/interfaces/playlist.ui.h:1
+#: ../data/interfaces/parole-settings.ui.h:23 ../src/parole-medialist.c:814
+#: ../src/parole-medialist.c:857 ../src/parole-player.c:3330
+msgid "Playlist"
+msgstr "ผังเล่น"
+
+#: ../data/interfaces/playlist.ui.h:2
+msgid "Disc Playlist"
+msgstr "ผังเล่นของแผ่น"
+
+#: ../data/interfaces/playlist.ui.h:3
+msgid "Add to playlist…"
+msgstr "เพิ่มในผังเล่น…"
+
+#: ../data/interfaces/playlist.ui.h:4
+msgid "Add"
+msgstr "เพิ่ม"
+
+#: ../data/interfaces/playlist.ui.h:5
+msgid "Remove selected media"
+msgstr "ลบสื่อที่เลือกออก"
+
+#: ../data/interfaces/playlist.ui.h:6
+msgid "Remove"
+msgstr "ลบออก"
+
+#: ../data/interfaces/playlist.ui.h:7
+msgid "Clear playlist"
+msgstr "ล้างผังเล่น"
+
+#: ../data/interfaces/playlist.ui.h:8
+msgid "Clear"
+msgstr "ล้าง"
+
+#: ../data/interfaces/playlist.ui.h:9 ../src/parole-player.c:3012
+msgid "Repeat"
+msgstr "วนซ้ำ"
+
+#: ../data/interfaces/playlist.ui.h:10 ../src/parole-player.c:3020
+msgid "Shuffle"
+msgstr "สุ่มลำดับ"
+
+#: ../data/interfaces/playlist.ui.h:11
+msgid "Move Up"
+msgstr "ย้ายขึ้น"
+
+#: ../data/interfaces/playlist.ui.h:12
+msgid "Move Down"
+msgstr "ย้ายลง"
+
+#: ../data/interfaces/playlist.ui.h:13
+msgid "Replace playlist when opening files"
+msgstr "แทนที่ผังเล่นเมื่อเปิดแฟ้ม"
+
+#: ../data/interfaces/playlist.ui.h:14
+msgid "Play opened files"
+msgstr "เล่นแฟ้มที่เปิด"
+
+#: ../data/interfaces/playlist.ui.h:15
+#: ../data/interfaces/parole-settings.ui.h:21
+msgid "Remember playlist"
+msgstr "จำผังเล่น"
+
+#: ../data/interfaces/plugins.ui.h:1
+msgid "Parole Plugins"
+msgstr "ปลั๊กอินของ Parole"
+
+#: ../data/interfaces/plugins.ui.h:2
+msgid "Extend your media player"
+msgstr "ต่อเติมเครื่องมือเล่นสื่อของคุณ"
+
+#: ../data/interfaces/plugins.ui.h:3
+msgid "Plugin"
+msgstr "ปลั๊กอิน"
+
+#: ../data/interfaces/plugins.ui.h:4
+msgid "<b>Description</b>"
+msgstr "<b>คำบรรยาย</b>"
+
+#: ../data/interfaces/plugins.ui.h:5
+msgid "<b>Author</b>"
+msgstr "<b>ผู้เขียน</b>"
+
+#: ../data/interfaces/plugins.ui.h:6
+msgid "Visit Website"
+msgstr "เยี่ยมชมเว็บไซต์"
+
+#: ../data/interfaces/parole-settings.ui.h:1
+msgid "Parole Settings"
+msgstr "ตั้งค่า Parole"
+
+#: ../data/interfaces/parole-settings.ui.h:2
+msgid "Configure your media player"
+msgstr "ตั้งค่าเครื่องมือเล่นสื่อของคุณ"
+
+#: ../data/interfaces/parole-settings.ui.h:3
+msgid "Disable screensaver when playing movies"
+msgstr "ห้ามโปรแกรมรักษาหน้าจอทำงานระหว่างเล่นภาพยนตร์"
+
+#: ../data/interfaces/parole-settings.ui.h:4
+msgid "<b>Screensaver</b>"
+msgstr "<b>โปรแกรมรักษาหน้าจอ</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:5
+msgid "Show visual effects when an audio file is played"
+msgstr "แสดงภาพเอฟเฟกต์ขณะเล่นแฟ้มเสียง"
+
+#: ../data/interfaces/parole-settings.ui.h:6
+msgid "Visualization type:"
+msgstr "ชนิดของภาพเอฟเฟกต์:"
+
+#: ../data/interfaces/parole-settings.ui.h:7
+msgid "<b>Audio Visualization</b>"
+msgstr "<b>ภาพเอฟเฟกต์ประกอบเสียง</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:8
+msgid "Enable keyboard multimedia keys"
+msgstr "เปิดใช้ปุ่มสื่อผสมของแป้นพิมพ์"
+
+#: ../data/interfaces/parole-settings.ui.h:9
+msgid "<b>Keyboard</b>"
+msgstr "<b>แป้นพิมพ์</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:10
+msgid "General"
+msgstr "ทั่วไป"
+
+#: ../data/interfaces/parole-settings.ui.h:11
+msgid "Brightness:"
+msgstr "ความสว่าง:"
+
+#: ../data/interfaces/parole-settings.ui.h:12
+msgid "Contrast:"
+msgstr "ความต่างระดับสี:"
+
+#: ../data/interfaces/parole-settings.ui.h:13
+msgid "Hue:"
+msgstr "ธาตุสี:"
+
+#: ../data/interfaces/parole-settings.ui.h:14
+msgid "Saturation:"
+msgstr "ความอิ่มสี:"
+
+#: ../data/interfaces/parole-settings.ui.h:15
+msgid "Reset to defaults"
+msgstr "ล้างเป็นค่าปริยาย"
+
+#: ../data/interfaces/parole-settings.ui.h:16
+msgid "<b>Color Balance</b>"
+msgstr "<b>สมดุลสี</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:17
+msgid "Display"
+msgstr "การแสดงผล"
+
+#: ../data/interfaces/parole-settings.ui.h:18
+msgid "Always replace playlist with opened files"
+msgstr "แทนที่ผังเล่นด้วยแฟ้มที่เปิดเสมอ"
+
+#: ../data/interfaces/parole-settings.ui.h:19
+msgid "Check and remove duplicate media entries"
+msgstr "ตรวจสอบและลบรายการสื่อที่ซ้ำกัน"
+
+#: ../data/interfaces/parole-settings.ui.h:20
+msgid "Start playing opened files"
+msgstr "เริ่มเล่นแฟ้มที่เปิดทันที"
+
+#: ../data/interfaces/parole-settings.ui.h:22
+msgid "<b>Playlist Settings</b>"
+msgstr "<b>ตั้งค่าผังเล่น</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:24
+msgid "Automatically show subtitles when playing movie file"
+msgstr "แสดงบทบรรยายโดยอัตโนมัติเมื่อเล่นแฟ้มภาพยนตร์"
+
+#: ../data/interfaces/parole-settings.ui.h:25
+msgid "Font:"
+msgstr "แบบอักษร:"
+
+#: ../data/interfaces/parole-settings.ui.h:26
+msgid "Encoding:"
+msgstr "รหัสอักขระ:"
+
+#: ../data/interfaces/parole-settings.ui.h:27
+msgid "<b>Subtitle Settings</b>"
+msgstr "<b>ตั้งค่าบทบรรยาย</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:28
+msgid "Subtitles"
+msgstr "บทบรรยาย"
+
+#: ../data/interfaces/save-playlist.ui.h:1
+msgid "Save Playlist as…"
+msgstr "บันทึกผังเล่นเป็น…"
+
+#: ../data/interfaces/save-playlist.ui.h:2
+msgid "File Type"
+msgstr "ชนิดแฟ้ม"
+
+#: ../data/interfaces/save-playlist.ui.h:3
+msgid "Extension"
+msgstr "นามสกุล"
+
+#: ../data/interfaces/save-playlist.ui.h:4
+msgid "Select File Types (By Extension)"
+msgstr "เลือกชนิดแฟ้ม (ตามนามสกุล)"
+
+#: ../data/interfaces/save-playlist.ui.h:5
+msgid "By Extension"
+msgstr "ตามนามสกุล"
+
+#: ../data/interfaces/open-location.ui.h:1
+msgid "Open Network Location"
+msgstr "เปิดตำแหน่งในเครือข่าย"
+
+#: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:193
+msgid "Clear History"
+msgstr "ล้างประวัติ"
+
+#: ../data/interfaces/open-location.ui.h:3
+msgid "<big><b>Open Network Location</b></big>"
+msgstr "<big><b>เปิดตำแหน่งในเครือข่าย</b></big>"
+
+#: ../data/desktop/parole.desktop.in.in.h:2
+msgid "Play your media"
+msgstr "เล่นสื่อของคุณ"
+
+#: ../data/desktop/parole.desktop.in.in.h:3
+msgid "Play/Pause"
+msgstr "เล่น/พัก"
+
+#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:2984
+#: ../src/parole-player.c:3210 ../src/plugins/notify/notify-provider.c:201
+msgid "Previous Track"
+msgstr "ร่องก่อนหน้า"
+
+#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:2992
+#: ../src/parole-player.c:3220 ../src/plugins/notify/notify-provider.c:211
+msgid "Next Track"
+msgstr "ร่องถัดไป"
+
+#: ../src/common/parole-common.c:70
+msgid "Message"
+msgstr "ข้อความ"
+
+#: ../src/common/parole-common.c:75
+msgid "Error"
+msgstr "ผิดพลาด"
+
+#: ../src/gst/parole-gst.c:1282 ../src/parole-medialist.c:401
+#, c-format
+msgid "Track %i"
+msgstr "ร่อง %i"
+
+#: ../src/gst/parole-gst.c:1285
+msgid "Audio CD"
+msgstr "ซีดีเพลง"
+
+#: ../src/gst/parole-gst.c:1525
+msgid "Additional software is required."
+msgstr "ต้องใช้ซอฟต์แวร์เพิ่มเติม"
+
+#: ../src/gst/parole-gst.c:1530
+msgid "Don't Install"
+msgstr "ไม่ติดตั้ง"
+
+#: ../src/gst/parole-gst.c:1532
+msgid "Install"
+msgstr "ติดตั้ง"
+
+#: ../src/gst/parole-gst.c:1535
+msgid "OK"
+msgstr "ตกลง"
+
+#: ../src/gst/parole-gst.c:1542
+#, c-format
+msgid ""
+"Parole needs <b>%s</b> to play this file.\n"
+"It can be installed automatically."
+msgstr "Parole ต้องใช้ <b>%s</b> เพื่อเล่นแฟ้มนี้\nซึ่งสามารถติดตั้งได้โดยอัตโนมัติ"
+
+#: ../src/gst/parole-gst.c:1545
+#, c-format
+msgid "Parole needs <b>%s</b> to play this file."
+msgstr "Parole ต้องใช้ <b>%s</b> เพื่อเล่นแฟ้มนี้"
+
+#: ../src/gst/parole-gst.c:1961
+msgid "The stream is taking too much time to load"
+msgstr "สตรีมนี้ใช้เวลาโหลดนานเกินไป"
+
+#: ../src/gst/parole-gst.c:1962
+msgid "Do you want to continue loading or stop?"
+msgstr "คุณต้องการจะโหลดต่อไปหรือจะหยุด?"
+
+#: ../src/gst/parole-gst.c:1963
+msgid "Stop"
+msgstr "หยุด"
+
+#: ../src/gst/parole-gst.c:1964
+msgid "Continue"
+msgstr "โหลดต่อ"
+
+#: ../src/gst/parole-gst.c:2148
+msgid "GStreamer Error"
+msgstr "ข้อผิดพลาดของ GStreamer"
+
+#: ../src/gst/parole-gst.c:2149
+msgid "Parole Media Player cannot start."
+msgstr "เครื่องมือเล่นสื่อ Parole ไม่สามารถเริ่มทำงานได้"
+
+#: ../src/gst/parole-gst.c:2177 ../src/gst/parole-gst.c:2195
+#: ../src/gst/parole-gst.c:2218
+#, c-format
+msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
+msgstr "ไม่สามารถโหลดปลั๊กอิน \"%s\" ได้ กรุณาตรวจสอบการติดตั้ง GStreamer ของคุณ"
+
+#: ../src/gst/parole-gst.c:2838 ../src/gst/parole-gst.c:2844
+#, c-format
+msgid "Audio Track #%d"
+msgstr "ร่องเสียง #%d"
+
+#: ../src/gst/parole-gst.c:2888 ../src/gst/parole-gst.c:2894
+#, c-format
+msgid "Subtitle #%d"
+msgstr "บทบรรยาย #%d"
+
+#: ../src/main.c:59
+#, c-format
+msgid ""
+"\n"
+"Parole Media Player %s\n"
+"\n"
+"Part of the Xfce Goodies Project\n"
+"http://goodies.xfce.org\n"
+"\n"
+"Licensed under the GNU GPL.\n"
+"\n"
+"Please report bugs to <http://bugzilla.xfce.org/>.\n"
+"\n"
+msgstr "\nเครื่องมือเล่นสื่อ Parole %s\n\nส่วนหนึ่งของโครงการ Xfce Goodies\nhttp://goodies.xfce.org\n\nเผยแพร่ภายใต้สัญญาอนุญาต GNU GPL\n\nหากพบปัญหา กรุณารายงานที่ <http://bugzilla.xfce.org/>\n\n"
+
+#: ../src/main.c:234
+msgid "Unknown argument "
+msgstr "ไม่รู้จักอาร์กิวเมนต์ "
+
+#: ../src/main.c:276
+msgid "Open a new instance"
+msgstr "เปิดอินสแตนซ์ใหม่"
+
+#: ../src/main.c:277
+msgid "Do not load plugins"
+msgstr "ไม่ต้องโหลดปลั๊กอิน"
+
+#: ../src/main.c:278
+msgid "Set Audio-CD/VCD/DVD device path"
+msgstr "กำหนดพาธของอุปกรณ์เล่นซีดีเพลง/วีซีดี/ดีวีดี"
+
+#: ../src/main.c:279
+msgid "Enable/Disable XV support (true or false, default=true)"
+msgstr "เปิด/ปิดการรองรับ XV (true หรือ false, ค่าปริยาย=true)"
+
+#: ../src/main.c:280
+msgid "Start in embedded mode"
+msgstr "เปิดทำงานในโหมดฝังตัว"
+
+#: ../src/main.c:281
+msgid "Start in fullscreen mode"
+msgstr "เปิดทำงานในโหมดเต็มจอ"
+
+#: ../src/main.c:282
+msgid "Play or pause if already playing"
+msgstr "เล่นหรือพักถ้ากำลังเล่นอยู่"
+
+#: ../src/main.c:283
+msgid "Next track"
+msgstr "ร่องถัดไป"
+
+#: ../src/main.c:284
+msgid "Previous track"
+msgstr "ร่องก่อนหน้า"
+
+#: ../src/main.c:285
+msgid "Raise volume"
+msgstr "เร่งเสียง"
+
+#: ../src/main.c:286
+msgid "Lower volume"
+msgstr "หรี่เสียง"
+
+#: ../src/main.c:287
+msgid "Mute volume"
+msgstr "ปิดเสียง"
+
+#: ../src/main.c:288
+msgid "Unmute (restore) volume"
+msgstr "เลิกปิดเสียง (คืนระดับความดัง)"
+
+#: ../src/main.c:289
+msgid "Add files to playlist"
+msgstr "เพิ่มแฟ้มในผังเล่น"
+
+#: ../src/main.c:290
+msgid "Print version information and exit"
+msgstr "แสดงข้อมูลรุ่นแล้วจบโปรแกรม"
+
+#: ../src/main.c:292
+msgid "Media to play"
+msgstr "สื่อที่จะเล่น"
+
+#: ../src/main.c:315
+msgid "[FILES...] - Play movies and songs"
+msgstr "[แฟ้ม...] - เล่นภาพยนตร์และเพลง"
+
+#: ../src/main.c:327
+#, c-format
+msgid "Type %s --help to list all available command line options\n"
+msgstr "สั่ง %s --help เพื่อดูตัวเลือกทั้งหมดที่มีของบรรทัดคำสั่ง\n"
+
+#: ../src/main.c:342
+#, c-format
+msgid "Parole is already running, use -i to open a new instance\n"
+msgstr "Parole ทำงานอยู่ก่อนแล้ว ใช้ -i หากต้องการเปิดอินสแตนซ์ใหม่\n"
+
+#: ../src/parole-mediachooser.c:247 ../src/parole-player.c:1015
+msgid "All files"
+msgstr "ทุกแฟ้ม"
+
+#: ../src/parole-medialist.c:217
+#, c-format
+msgid "Playlist (%i item)"
+msgstr "ผังเล่น (%i รายการ)"
+
+#: ../src/parole-medialist.c:221
+#, c-format
+msgid "Playlist (%i chapter)"
+msgstr "ผังเล่น (%i ตอน)"
+
+#: ../src/parole-medialist.c:228 ../src/parole-medialist.c:1596
+#, c-format
+msgid "Playlist (%i items)"
+msgstr "ผังเล่น (%i รายการ)"
+
+#: ../src/parole-medialist.c:232 ../src/parole-medialist.c:1597
+#, c-format
+msgid "Playlist (%i chapters)"
+msgstr "ผังเล่น (%i ตอน)"
+
+#: ../src/parole-medialist.c:417 ../src/parole-player.c:700
+#, c-format
+msgid "Chapter %i"
+msgstr "ตอนที่ %i"
+
+#: ../src/parole-medialist.c:706
+msgid "Permission denied"
+msgstr "ไม่ได้รับอนุญาต"
+
+#: ../src/parole-medialist.c:708
+msgid "Error saving playlist file"
+msgstr "เกิดข้อผิดพลาดขณะบันทึกแฟ้มผังเล่น"
+
+#: ../src/parole-medialist.c:720
+msgid "Unknown playlist format"
+msgstr "ไม่รู้จักฟอร์แมตของผังเล่น"
+
+#: ../src/parole-medialist.c:721
+msgid "Please choose a supported playlist format"
+msgstr "กรุณาเลือกฟอร์แมตผังเล่นที่รองรับ"
+
+#: ../src/parole-medialist.c:775 ../src/parole-plugins-manager.c:369
+msgid "Unknown"
+msgstr "ไม่ทราบ"
+
+#: ../src/parole-medialist.c:864
+msgid "M3U Playlists"
+msgstr "ผังเล่น M3U"
+
+#: ../src/parole-medialist.c:872
+msgid "PLS Playlists"
+msgstr "ผังเล่น PLS"
+
+#: ../src/parole-medialist.c:880
+msgid "Advanced Stream Redirector"
+msgstr "Advanced Stream Redirector"
+
+#: ../src/parole-medialist.c:888
+msgid "Shareable Playlist"
+msgstr "Shareable Playlist"
+
+#. Clear
+#: ../src/parole-medialist.c:1227
+msgid "Open Containing Folder"
+msgstr "เปิดโฟลเดอร์ที่บรรจุ"
+
+#: ../src/parole-player.c:515 ../src/parole-player.c:516
+msgid "Hide playlist"
+msgstr "ซ่อนผังเล่น"
+
+#: ../src/parole-player.c:524 ../src/parole-player.c:525
+msgid "Show playlist"
+msgstr "แสดงผังเล่น"
+
+#. Build the FileChooser dialog for subtitle selection.
+#: ../src/parole-player.c:979
+msgid "Select Subtitle File"
+msgstr "เลือกแฟ้มบทบรรยาย"
+
+#: ../src/parole-player.c:984 ../src/parole-player.c:1188
+#: ../src/plugins/tray/tray-provider.c:312
+msgid "Cancel"
+msgstr "ยกเลิก"
+
+#: ../src/parole-player.c:987
+msgid "Open"
+msgstr "เปิด"
+
+#: ../src/parole-player.c:1003
+msgid "Subtitle Files"
+msgstr "แฟ้มบทบรรยาย"
+
+#: ../src/parole-player.c:1184 ../src/parole-player.c:1192
+msgid "Clear Recent Items"
+msgstr "ล้างรายการล่าสุด"
+
+#: ../src/parole-player.c:1186
+msgid ""
+"Are you sure you wish to clear your recent items history?  This cannot be "
+"undone."
+msgstr "คุณแน่ใจหรือไม่ว่าต้องการล้างประวัติรายการล่าสุดของคุณ? การลบนี้จะเรียกคืนอีกไม่ได้"
+
+#: ../src/parole-player.c:1277 ../src/parole-player.c:1410
+msgid "Media stream is not seekable"
+msgstr "สตรีมของสื่อไม่สามารถเลื่อนตำแหน่งได้"
+
+#. * GTK Actions
+#. Play/Pause
+#: ../src/parole-player.c:1288 ../src/parole-player.c:2976
+msgid "_Play"
+msgstr "เ_ล่น"
+
+#: ../src/parole-player.c:1289 ../src/parole-player.c:2976
+msgid "Play"
+msgstr "เล่น"
+
+#: ../src/parole-player.c:1292
+msgid "_Pause"
+msgstr "_พัก"
+
+#: ../src/parole-player.c:1293
+msgid "Pause"
+msgstr "พัก"
+
+#: ../src/parole-player.c:1745
+msgid "GStreamer backend error"
+msgstr "ข้อผิดพลาดของแบกเอนด์ GStreamer"
+
+#: ../src/parole-player.c:1776
+msgid "Unknown Song"
+msgstr "เพลงไม่ทราบชื่อ"
+
+#: ../src/parole-player.c:1781 ../src/parole-player.c:1783
+#: ../src/parole-player.c:1789
+msgid "on"
+msgstr "ใน"
+
+#: ../src/parole-player.c:1789 ../src/plugins/notify/notify-provider.c:145
+msgid "Unknown Album"
+msgstr "อัลบั้มไม่ทราบชื่อ"
+
+#: ../src/parole-player.c:1796 ../src/parole-player.c:1800
+msgid "by"
+msgstr "โดย"
+
+#: ../src/parole-player.c:1800 ../src/plugins/notify/notify-provider.c:147
+msgid "Unknown Artist"
+msgstr "ศิลปินไม่ทราบชื่อ"
+
+#: ../src/parole-player.c:1834
+msgid "Buffering"
+msgstr "กำลังทำบัฟเฟอร์"
+
+#: ../src/parole-player.c:1941 ../src/parole-player.c:3000
+#: ../src/parole-player.c:3241
+msgid "Fullscreen"
+msgstr "เต็มจอ"
+
+#: ../src/parole-player.c:1956
+msgid "Leave _Fullscreen"
+msgstr "เลิกแสดงเ_ต็มจอ"
+
+#: ../src/parole-player.c:1957
+msgid "Leave Fullscreen"
+msgstr "เลิกแสดงเต็มจอ"
+
+#. * Un/Hide menubar
+#: ../src/parole-player.c:2053
+msgid "Show menubar"
+msgstr "แสดงแถบเมนู"
+
+#: ../src/parole-player.c:2259
+msgid "Mute"
+msgstr "ปิดเสียง"
+
+#: ../src/parole-player.c:2264
+msgid "Unmute"
+msgstr "เลิกปิดเสียง"
+
+#: ../src/parole-player.c:2630 ../src/parole-player.c:2648
+msgid "Unable to open default web browser"
+msgstr "ไม่สามารถเปิดเว็บเบราว์เซอร์ปริยาย"
+
+#: ../src/parole-player.c:2632
+msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
+msgstr "กรุณาไปที่ http://docs.xfce.org/apps/parole/bugs เพื่อรายงานปัญหาของคุณ"
+
+#: ../src/parole-player.c:2650
+msgid ""
+"Please go to http://docs.xfce.org/apps/parole/start to read Parole's online "
+"documentation."
+msgstr "กรุณาไปที่ http://docs.xfce.org/apps/parole/start เพื่ออ่านเอกสารออนไลน์ของ Parole"
+
+#. Previous Track
+#: ../src/parole-player.c:2984
+msgid "P_revious Track"
+msgstr "ร่อง_ก่อนหน้า"
+
+#. Next Track
+#: ../src/parole-player.c:2992
+msgid "_Next Track"
+msgstr "ร่อง_ถัดไป"
+
+#. Toggle Playlist
+#: ../src/parole-player.c:3007
+msgid "Show _Playlist"
+msgstr "แสดง_ผังเล่น"
+
+#: ../src/parole-player.c:3007 ../src/parole-player.c:3347
+msgid "Show Playlist"
+msgstr "แสดงผังเล่น"
+
+#. Clear Recent Menu Item
+#: ../src/parole-player.c:3078
+msgid "_Clear recent items…"
+msgstr "_ล้างรายการล่าสุด…"
+
+#: ../src/parole-player.c:3285
+msgid "Audio Track:"
+msgstr "ร่องเสียง:"
+
+#: ../src/parole-player.c:3301
+msgid "Subtitles:"
+msgstr "บทบรรยาย:"
+
+#: ../src/parole-player.c:3306 ../src/plugins/tray/tray-provider.c:247
+msgid "Close"
+msgstr "ปิด"
+
+#: ../src/parole-player.c:3347
+msgid "Hide Playlist"
+msgstr "ซ่อนผังเล่น"
+
+#: ../src/parole-about.c:76
+msgid "translator-credits"
+msgstr "Theppitak Karoonboonyanan <thep@linux.thai.net>"
+
+#: ../src/parole-about.c:79
+msgid "Visit Parole website"
+msgstr "เยี่ยมชมเว็บไซต์ของ Parole"
+
+#: ../src/parole-disc.c:114
+msgid "Play Disc"
+msgstr "เล่นแผ่น"
+
+#: ../src/parole-subtitle-encoding.c:165
+msgid "Current Locale"
+msgstr "โลแคลปัจจุบัน"
+
+#: ../src/parole-subtitle-encoding.c:168 ../src/parole-subtitle-encoding.c:170
+#: ../src/parole-subtitle-encoding.c:172 ../src/parole-subtitle-encoding.c:174
+msgid "Arabic"
+msgstr "อารบิก"
+
+#: ../src/parole-subtitle-encoding.c:177
+msgid "Armenian"
+msgstr "อาร์เมเนีย"
+
+#: ../src/parole-subtitle-encoding.c:180 ../src/parole-subtitle-encoding.c:182
+#: ../src/parole-subtitle-encoding.c:184
+msgid "Baltic"
+msgstr "บอลติก"
+
+#: ../src/parole-subtitle-encoding.c:187
+msgid "Celtic"
+msgstr "เซลติก"
+
+#: ../src/parole-subtitle-encoding.c:190 ../src/parole-subtitle-encoding.c:192
+#: ../src/parole-subtitle-encoding.c:194 ../src/parole-subtitle-encoding.c:196
+msgid "Central European"
+msgstr "ยุโรปตอนกลาง"
+
+#: ../src/parole-subtitle-encoding.c:199 ../src/parole-subtitle-encoding.c:201
+#: ../src/parole-subtitle-encoding.c:203 ../src/parole-subtitle-encoding.c:205
+msgid "Chinese Simplified"
+msgstr "จีนตัวย่อ"
+
+#: ../src/parole-subtitle-encoding.c:208 ../src/parole-subtitle-encoding.c:210
+#: ../src/parole-subtitle-encoding.c:212
+msgid "Chinese Traditional"
+msgstr "จีนตัวเต็ม"
+
+#: ../src/parole-subtitle-encoding.c:215
+msgid "Croatian"
+msgstr "โครเอเชีย"
+
+#: ../src/parole-subtitle-encoding.c:218 ../src/parole-subtitle-encoding.c:220
+#: ../src/parole-subtitle-encoding.c:222 ../src/parole-subtitle-encoding.c:224
+#: ../src/parole-subtitle-encoding.c:226 ../src/parole-subtitle-encoding.c:228
+msgid "Cyrillic"
+msgstr "ซีริลลิก"
+
+#: ../src/parole-subtitle-encoding.c:231
+msgid "Cyrillic/Russian"
+msgstr "ซีริลลิก/รัสเซีย"
+
+#: ../src/parole-subtitle-encoding.c:234 ../src/parole-subtitle-encoding.c:236
+msgid "Cyrillic/Ukrainian"
+msgstr "ซีริลลิก/ยูเครน"
+
+#: ../src/parole-subtitle-encoding.c:239
+msgid "Georgian"
+msgstr "จอร์เจีย"
+
+#: ../src/parole-subtitle-encoding.c:242 ../src/parole-subtitle-encoding.c:244
+#: ../src/parole-subtitle-encoding.c:246
+msgid "Greek"
+msgstr "กรีก"
+
+#: ../src/parole-subtitle-encoding.c:249
+msgid "Gujarati"
+msgstr "คุชราตี"
+
+#: ../src/parole-subtitle-encoding.c:252
+msgid "Gurmukhi"
+msgstr "คุรุมุขี"
+
+#: ../src/parole-subtitle-encoding.c:255 ../src/parole-subtitle-encoding.c:257
+#: ../src/parole-subtitle-encoding.c:259 ../src/parole-subtitle-encoding.c:261
+msgid "Hebrew"
+msgstr "ฮีบรู"
+
+#: ../src/parole-subtitle-encoding.c:264
+msgid "Hebrew Visual"
+msgstr "ฮีบรู ซ้ายไปขวา"
+
+#: ../src/parole-subtitle-encoding.c:267
+msgid "Hindi"
+msgstr "ฮินดี"
+
+#: ../src/parole-subtitle-encoding.c:270
+msgid "Icelandic"
+msgstr "ไอซ์แลนด์"
+
+#: ../src/parole-subtitle-encoding.c:273 ../src/parole-subtitle-encoding.c:275
+#: ../src/parole-subtitle-encoding.c:277
+msgid "Japanese"
+msgstr "ญี่ปุ่น"
+
+#: ../src/parole-subtitle-encoding.c:280 ../src/parole-subtitle-encoding.c:282
+#: ../src/parole-subtitle-encoding.c:284 ../src/parole-subtitle-encoding.c:286
+msgid "Korean"
+msgstr "เกาหลี"
+
+#: ../src/parole-subtitle-encoding.c:289
+msgid "Nordic"
+msgstr "นอร์ดิก"
+
+#: ../src/parole-subtitle-encoding.c:292
+msgid "Persian"
+msgstr "เปอร์เซีย"
+
+#: ../src/parole-subtitle-encoding.c:295 ../src/parole-subtitle-encoding.c:297
+msgid "Romanian"
+msgstr "โรมาเนีย"
+
+#: ../src/parole-subtitle-encoding.c:300
+msgid "South European"
+msgstr "ยุโรปใต้"
+
+#: ../src/parole-subtitle-encoding.c:303
+msgid "Thai"
+msgstr "ไทย"
+
+#: ../src/parole-subtitle-encoding.c:306 ../src/parole-subtitle-encoding.c:308
+#: ../src/parole-subtitle-encoding.c:310 ../src/parole-subtitle-encoding.c:312
+msgid "Turkish"
+msgstr "ตุรกี"
+
+#: ../src/parole-subtitle-encoding.c:315 ../src/parole-subtitle-encoding.c:317
+#: ../src/parole-subtitle-encoding.c:319 ../src/parole-subtitle-encoding.c:321
+#: ../src/parole-subtitle-encoding.c:323
+msgid "Unicode"
+msgstr "ยูนิโค้ด"
+
+#: ../src/parole-subtitle-encoding.c:326 ../src/parole-subtitle-encoding.c:328
+#: ../src/parole-subtitle-encoding.c:330 ../src/parole-subtitle-encoding.c:332
+#: ../src/parole-subtitle-encoding.c:334
+msgid "Western"
+msgstr "ตะวันตก"
+
+#: ../src/parole-subtitle-encoding.c:337 ../src/parole-subtitle-encoding.c:339
+#: ../src/parole-subtitle-encoding.c:341
+msgid "Vietnamese"
+msgstr "เวียดนาม"
+
+#. If plugin loading fails...
+#: ../src/parole-plugins-manager.c:276
+msgid "Plugin failed to load"
+msgstr "โหลดปลั๊กอินไม่สำเร็จ"
+
+#: ../src/parole-plugins-manager.c:276
+msgid "Please check your installation"
+msgstr "กรุณาตรวจสอบการติดตั้งของคุณ"
+
+#: ../src/parole-plugins-manager.c:408
+msgid "No installed plugins found on this system"
+msgstr "ไม่พบปลั๊กอินติดตั้งไว้ในระบบนี้"
+
+#: ../src/parole-plugins-manager.c:409
+msgid "Please check your installation."
+msgstr "กรุณาตรวจสอบการติดตั้งของคุณ"
+
+#: ../src/misc/parole-filters.c:65
+msgid "Audio"
+msgstr "เสียง"
+
+#: ../src/misc/parole-filters.c:91
+msgid "Video"
+msgstr "วีดิทัศน์"
+
+#: ../src/misc/parole-filters.c:116 ../src/misc/parole-filters.c:134
+msgid "Audio and video"
+msgstr "เสียงและวีดิทัศน์"
+
+#: ../src/misc/parole-filters.c:163 ../src/misc/parole-filters.c:179
+msgid "All supported files"
+msgstr "ทุกแฟ้มที่รองรับ"
+
+#: ../src/misc/parole-filters.c:206
+msgid "Playlist files"
+msgstr "แฟ้มผังเล่น"
+
+#: ../src/plugins/notify/notify-provider.c:150
+#: ../src/plugins/notify/notify-provider.c:153
+msgid "<i>on</i>"
+msgstr "<i>ใน</i>"
+
+#: ../src/plugins/notify/notify-provider.c:150
+#: ../src/plugins/notify/notify-provider.c:153
+msgid "<i>by</i>"
+msgstr "<i>โดย</i>"
+
+#: ../src/plugins/notify/notify.desktop.in.h:1
+msgid "Notify"
+msgstr "แจ้งเหตุ"
+
+#: ../src/plugins/notify/notify.desktop.in.h:2
+msgid "Show notifications for currently playing tracks"
+msgstr "แสดงการแจ้งเหตุเพื่อบอกร่องปัจจุบันที่เล่นอยู่"
+
+#: ../src/plugins/tray/tray-provider.c:135
+msgid "_Open"
+msgstr "_เปิด"
+
+#: ../src/plugins/tray/tray-provider.c:244
+msgid "Tray icon plugin"
+msgstr "ปลั๊กอินไอคอนถาด"
+
+#: ../src/plugins/tray/tray-provider.c:254
+msgid "Always minimize to tray when window is closed"
+msgstr "ย่อเก็บหน้าต่างลงในถาดเสมอเมื่อปิด"
+
+#: ../src/plugins/tray/tray-provider.c:300
+msgid "Are you sure you want to quit?"
+msgstr "คุณแน่ใจหรือไม่ว่าต้องการออกจากโปรแกรม?"
+
+#: ../src/plugins/tray/tray-provider.c:303
+msgid "Parole can be minimized to the system tray instead."
+msgstr "Parole สามารถย่อเก็บลงในถาดระบบแทนได้"
+
+#: ../src/plugins/tray/tray-provider.c:306
+msgid "Minimize to tray"
+msgstr "ย่อเก็บลงในถาด"
+
+#: ../src/plugins/tray/tray-provider.c:318
+msgid "Quit"
+msgstr "ออก"
+
+#: ../src/plugins/tray/tray-provider.c:327
+msgid "Remember my choice"
+msgstr "จำคำตอบไว้"
+
+#: ../src/plugins/tray/system-tray.desktop.in.h:1
+msgid "Tray icon"
+msgstr "ไอคอนถาด"
+
+#: ../src/plugins/tray/system-tray.desktop.in.h:2
+msgid "Show icon in the system tray"
+msgstr "แสดงไอคอนในถาดระบบ"
+
+#: ../src/plugins/mpris2/mpris2.desktop.in.h:1
+msgid "MPRIS2"
+msgstr "MPRIS2"
+
+#: ../src/plugins/mpris2/mpris2.desktop.in.h:2
+msgid "MPRIS2 remote control"
+msgstr "รีโมทคอนโทรล MPRIS2"
