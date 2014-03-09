@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-01-26 00:31+0100\n"
-"PO-Revision-Date: 2014-03-09 08:50+0000\n"
+"PO-Revision-Date: 2014-03-09 20:48+0000\n"
 "Last-Translator: schizo <eveskovic@gmail.com>\n"
 "Language-Team: Croatian (http://www.transifex.com/projects/p/xfce/language/hr/)\n"
 "MIME-Version: 1.0\n"
@@ -32,7 +32,7 @@ msgstr "_Medij"
 
 #: ../data/interfaces/parole.ui.h:3
 msgid "_Open…"
-msgstr ""
+msgstr "_Otvori..."
 
 #: ../data/interfaces/parole.ui.h:4
 msgid "Open _Location…"
@@ -189,11 +189,11 @@ msgstr "_Prijavite problem..."
 
 #: ../data/interfaces/parole.ui.h:41
 msgid "_Contents"
-msgstr ""
+msgstr "_Sadržaj"
 
 #: ../data/interfaces/parole.ui.h:42
 msgid "Display Parole user manual"
-msgstr ""
+msgstr "Prikaži Parole korisnički priručnik"
 
 #: ../data/interfaces/parole.ui.h:43
 msgid "_About"
@@ -321,7 +321,7 @@ msgstr "Parole postavke"
 
 #: ../data/interfaces/parole-settings.ui.h:2
 msgid "Configure your media player"
-msgstr ""
+msgstr "Konfiguriraj svirač medije"
 
 #: ../data/interfaces/parole-settings.ui.h:3
 msgid "Disable screensaver when playing movies"
@@ -345,7 +345,7 @@ msgstr "<b>Audio vizualizacija</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:8
 msgid "Enable keyboard multimedia keys"
-msgstr ""
+msgstr "Omogući multimedijske tipke na tipkovnici"
 
 #: ../data/interfaces/parole-settings.ui.h:9
 msgid "<b>Keyboard</b>"
@@ -389,7 +389,7 @@ msgstr "Uvijek zamijeni listu izvođenja sa otvorenim datotekama"
 
 #: ../data/interfaces/parole-settings.ui.h:19
 msgid "Check and remove duplicate media entries"
-msgstr ""
+msgstr "Provjeri i ukloni duplicirane unose"
 
 #: ../data/interfaces/parole-settings.ui.h:20
 msgid "Start playing opened files"
@@ -409,7 +409,7 @@ msgstr "Font:"
 
 #: ../data/interfaces/parole-settings.ui.h:26
 msgid "Encoding:"
-msgstr ""
+msgstr "Kodiranje:"
 
 #: ../data/interfaces/parole-settings.ui.h:27
 msgid "<b>Subtitle Settings</b>"
@@ -453,7 +453,7 @@ msgstr "<big><b>Otvori mrežnu lokaciju</b></big>"
 
 #: ../data/desktop/parole.desktop.in.in.h:2
 msgid "Play your media"
-msgstr ""
+msgstr "Reproduciraj svoju mediju"
 
 #: ../data/desktop/parole.desktop.in.in.h:3
 msgid "Play/Pause"
@@ -507,16 +507,16 @@ msgstr "OK"
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
-msgstr ""
+msgstr "Parole treba <b>%s</b> kako bi reproducirali ovu datoteku.\nMože biti instaliran automatski."
 
 #: ../src/gst/parole-gst.c:1545
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
-msgstr ""
+msgstr "Parole treba <b>%s</b> kako bi reproducirali ovu datoteku."
 
 #: ../src/gst/parole-gst.c:1961
 msgid "The stream is taking too much time to load"
-msgstr ""
+msgstr "Reprodukcija se predugo učitava"
 
 #: ../src/gst/parole-gst.c:1962
 msgid "Do you want to continue loading or stop?"
@@ -575,7 +575,7 @@ msgstr "Nepoznati argument"
 
 #: ../src/main.c:276
 msgid "Open a new instance"
-msgstr ""
+msgstr "Otvori novu instancu"
 
 #: ../src/main.c:277
 msgid "Do not load plugins"
@@ -639,12 +639,12 @@ msgstr "Medij za izvođenje"
 
 #: ../src/main.c:315
 msgid "[FILES...] - Play movies and songs"
-msgstr ""
+msgstr "[FILES...] - Reproduciraj filmove i glazbu"
 
 #: ../src/main.c:327
 #, c-format
 msgid "Type %s --help to list all available command line options\n"
-msgstr ""
+msgstr "Utipkajte %s --help kako bi izlistali sve opcije naredbe\n\n"
 
 #: ../src/main.c:342
 #, c-format
@@ -658,22 +658,22 @@ msgstr "Sve datoteke"
 #: ../src/parole-medialist.c:217
 #, c-format
 msgid "Playlist (%i item)"
-msgstr ""
+msgstr "Lista izvođenja (%i stavka)"
 
 #: ../src/parole-medialist.c:221
 #, c-format
 msgid "Playlist (%i chapter)"
-msgstr ""
+msgstr "Lista izvođenja (%i poglavlje)"
 
 #: ../src/parole-medialist.c:228 ../src/parole-medialist.c:1596
 #, c-format
 msgid "Playlist (%i items)"
-msgstr ""
+msgstr "Lista izvođenja (%i stvake)"
 
 #: ../src/parole-medialist.c:232 ../src/parole-medialist.c:1597
 #, c-format
 msgid "Playlist (%i chapters)"
-msgstr ""
+msgstr "Lista izvođenja (%i poglavlja)"
 
 #: ../src/parole-medialist.c:417 ../src/parole-player.c:700
 #, c-format
@@ -694,7 +694,7 @@ msgstr "Nepoznati format liste izvođenja"
 
 #: ../src/parole-medialist.c:721
 msgid "Please choose a supported playlist format"
-msgstr ""
+msgstr "Molimo izaberite podržani format liste izvođenja"
 
 #: ../src/parole-medialist.c:775 ../src/parole-plugins-manager.c:369
 msgid "Unknown"
@@ -765,7 +765,7 @@ msgstr "Reproducirana media nije pretraživa"
 #. Play/Pause
 #: ../src/parole-player.c:1288 ../src/parole-player.c:2976
 msgid "_Play"
-msgstr ""
+msgstr "_Pokreni"
 
 #: ../src/parole-player.c:1289 ../src/parole-player.c:2976
 msgid "Play"
@@ -840,13 +840,13 @@ msgstr "Nije moguće otvoriti zadani web preglednik"
 
 #: ../src/parole-player.c:2632
 msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
-msgstr ""
+msgstr "Molimo idite na http://docs.xfce.org/apps/parole/bugs kako bi prijavili grešku."
 
 #: ../src/parole-player.c:2650
 msgid ""
 "Please go to http://docs.xfce.org/apps/parole/start to read Parole's online "
 "documentation."
-msgstr ""
+msgstr "Molimo idite na http://docs.xfce.org/apps/parole/start kako bi pročitali online dokumentaciju za Parole."
 
 #. Previous Track
 #: ../src/parole-player.c:2984
@@ -1044,11 +1044,11 @@ msgstr "Vijetnamski"
 #. If plugin loading fails...
 #: ../src/parole-plugins-manager.c:276
 msgid "Plugin failed to load"
-msgstr ""
+msgstr "Neuspjelo učitavanje dodatka"
 
 #: ../src/parole-plugins-manager.c:276
 msgid "Please check your installation"
-msgstr ""
+msgstr "Molimo provjerite instalaciju"
 
 #: ../src/parole-plugins-manager.c:408
 msgid "No installed plugins found on this system"
@@ -1056,7 +1056,7 @@ msgstr "Nijedan instalirani priključak nije pronađen na ovom sustavu"
 
 #: ../src/parole-plugins-manager.c:409
 msgid "Please check your installation."
-msgstr ""
+msgstr "Molimo provjerite instalaciju."
 
 #: ../src/misc/parole-filters.c:65
 msgid "Audio"
@@ -1138,8 +1138,8 @@ msgstr ""
 
 #: ../src/plugins/mpris2/mpris2.desktop.in.h:1
 msgid "MPRIS2"
-msgstr ""
+msgstr "MPRIS2"
 
 #: ../src/plugins/mpris2/mpris2.desktop.in.h:2
 msgid "MPRIS2 remote control"
-msgstr ""
+msgstr "MPRIS2 daljinski upravljač"
