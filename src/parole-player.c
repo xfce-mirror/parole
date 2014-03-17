@@ -1356,6 +1356,7 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
     gint64 duration;
     gboolean seekable;
     gboolean live;
+    int hide_controls_timeout;
     
     parole_media_list_set_row_playback_state (player->priv->list, player->priv->row, PAROLE_MEDIA_STATE_PLAYING);
     
@@ -1414,7 +1415,10 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
     gtk_widget_grab_focus (player->priv->gst);
     parole_player_update_languages (player, PAROLE_GST(player->priv->gst));
     
-    g_timeout_add_seconds (4, (GSourceFunc) parole_player_hide_controls, player);
+    g_object_get (G_OBJECT (player->priv->conf),
+                  "hide-controls-timeout", &hide_controls_timeout,
+                  NULL);
+    g_timeout_add_seconds (hide_controls_timeout, (GSourceFunc) parole_player_hide_controls, player);
 }
 
 static void
@@ -2128,6 +2132,7 @@ gboolean
 parole_player_gst_widget_motion_notify_event (GtkWidget *widget, GdkEventMotion *ev, ParolePlayer *player)
 {
     static gulong hide_timeout = 0;
+    int hide_controls_timeout;
     GdkWindow *gdkwindow;
     
     if ( hide_timeout != 0)
@@ -2141,8 +2146,11 @@ parole_player_gst_widget_motion_notify_event (GtkWidget *widget, GdkEventMotion 
     gdkwindow = gtk_widget_get_window (GTK_WIDGET(player->priv->eventbox_output));
     gdk_window_set_cursor (gdkwindow, NULL);
     
+    g_object_get (G_OBJECT (player->priv->conf),
+                  "hide-controls-timeout", &hide_controls_timeout,
+                  NULL);
     if ( player->priv->state == PAROLE_STATE_PLAYING )
-        hide_timeout = g_timeout_add_seconds (4, (GSourceFunc) parole_player_hide_controls, player);
+        hide_timeout = g_timeout_add_seconds (hide_controls_timeout, (GSourceFunc) parole_player_hide_controls, player);
 
     return FALSE;
 }
