@@ -2653,6 +2653,86 @@ on_contents_clicked (GtkWidget *w, ParolePlayer *player)
     }
 }
 
+gboolean
+on_goto_position_clicked (GtkWidget *w, ParolePlayer *player)
+{
+    GtkWidget *dialog;
+    GtkWidget *vbox, *hbox, *label, *spin_hrs, *spin_mins, *spin_secs;
+    GtkAdjustment *adjustment;
+    gint response;
+    gdouble duration = 0;
+    int position, hrs, mins, secs;
+
+    /* Create dialog */
+    dialog = gtk_dialog_new_with_buttons (_("Go to position"),
+                                        GTK_WINDOW(player->priv->window),
+                                        GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+                                        _("Cancel"), GTK_RESPONSE_CANCEL,
+                                        _("Go"), GTK_RESPONSE_OK,
+                                        NULL);
+    gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
+    gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+
+    /* pack boxes and spinbutton */
+    vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+    gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG(dialog))), vbox, TRUE, TRUE, 0);
+    gtk_container_set_border_width (GTK_CONTAINER (vbox), 6);
+    //gtk_widget_show (vbox);
+    
+    hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
+    gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 0);
+    //gtk_widget_show (hbox);
+    
+    label = gtk_label_new (_("Position:"));
+    gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 0);
+    gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
+    //gtk_widget_show (label);
+    
+    /* Get the stream length and set that as maximum */
+    adjustment = gtk_range_get_adjustment (GTK_RANGE (player->priv->range));
+    duration = gtk_adjustment_get_upper (adjustment);
+
+    // FIXME: Always round the hrs down
+    spin_hrs = gtk_spin_button_new_with_range (0, duration / 3600, 1);
+    spin_mins = gtk_spin_button_new_with_range (0, 59, 1);
+    spin_secs = gtk_spin_button_new_with_range (0, 59, 1);
+    gtk_box_pack_start (GTK_BOX (hbox), spin_hrs, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (hbox), spin_mins, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (hbox), spin_secs, FALSE, FALSE, 0);
+    gtk_widget_show_all (vbox);
+
+    if ( duration < 3600 )
+        gtk_widget_set_sensitive (GTK_WIDGET (spin_hrs), FALSE);
+    if ( duration < 60 )
+        gtk_widget_set_sensitive (GTK_WIDGET (spin_mins), FALSE);
+    if ( duration = 0 )
+    {
+        gtk_widget_set_sensitive (GTK_WIDGET (spin_secs), FALSE);
+        gtk_label_set_text (GTK_LABEL (label), _("This stream isn't searchable."));
+    }
+    
+    /* Should the player always be paused when opening up that dialog? */
+    //parole_gst_pause (PAROLE_GST (player->priv->gst));
+    
+    // FIXME: Mouse-cursor disappears when it leaves the modal dialog and hovers the content-area
+    /* show dialog */
+    response = gtk_dialog_run (GTK_DIALOG (dialog));
+    if (response == GTK_RESPONSE_OK)
+    {
+        /* update range according to the value */
+        hrs = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (spin_hrs));
+        mins = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (spin_mins));
+        secs = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (spin_secs));
+        position = hrs*3600 + mins*60 + secs;
+        parole_gst_seek (PAROLE_GST (player->priv->gst), position);
+        parole_player_change_range_value (player, (double) position);
+    }
+
+    gtk_widget_destroy (dialog);
+
+    return (response == GTK_RESPONSE_OK);
+}
+
 /**
  * 
  * Draw a simple rectangular GtkOverlay
@@ -2883,6 +2963,7 @@ parole_player_init (ParolePlayer *player)
     GtkRecentFilter *recent_filter;
     GtkWidget *clear_recent;
     GtkWidget *recent_separator;
+    GtkWidget *goto_position;
     
     GtkWidget *bug_report, *contents;
     
@@ -3124,6 +3205,8 @@ parole_player_init (ParolePlayer *player)
     g_signal_connect (bug_report, "activate", G_CALLBACK(on_bug_report_clicked), player);
     contents = GTK_WIDGET (gtk_builder_get_object (builder, "contents"));
     g_signal_connect (contents, "activate", G_CALLBACK(on_contents_clicked), player);
+    goto_position = GTK_WIDGET (gtk_builder_get_object (builder, "goto_position"));
+    g_signal_connect (goto_position, "activate", G_CALLBACK(on_goto_position_clicked), player);
     /* End Menu Bar */
     
 
