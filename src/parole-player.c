@@ -2685,23 +2685,19 @@ on_goto_position_clicked (GtkWidget *w, ParolePlayer *player)
     vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
     gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG(dialog))), vbox, TRUE, TRUE, 0);
     gtk_container_set_border_width (GTK_CONTAINER (vbox), 6);
-    //gtk_widget_show (vbox);
     
     hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
     gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 0);
-    //gtk_widget_show (hbox);
     
     label = gtk_label_new (_("Position:"));
     gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 0);
     gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
-    //gtk_widget_show (label);
     
     /* Get the stream length and set that as maximum */
     adjustment = gtk_range_get_adjustment (GTK_RANGE (player->priv->range));
     duration = gtk_adjustment_get_upper (adjustment);
 
-    // FIXME: Always round the hrs down
-    spin_hrs = gtk_spin_button_new_with_range (0, duration / 3600, 1);
+    spin_hrs = gtk_spin_button_new_with_range (0, (int) ( duration/3600 ), 1);
     spin_mins = gtk_spin_button_new_with_range (0, 59, 1);
     spin_secs = gtk_spin_button_new_with_range (0, 59, 1);
     gtk_box_pack_start (GTK_BOX (hbox), spin_hrs, FALSE, FALSE, 0);
@@ -2714,10 +2710,7 @@ on_goto_position_clicked (GtkWidget *w, ParolePlayer *player)
     if ( duration < 60 )
         gtk_widget_set_sensitive (GTK_WIDGET (spin_mins), FALSE);
     if ( duration = 0 )
-    {
         gtk_widget_set_sensitive (GTK_WIDGET (spin_secs), FALSE);
-        gtk_label_set_text (GTK_LABEL (label), _("This stream isn't searchable."));
-    }
     
     /* Should the player always be paused when opening up that dialog? */
     //parole_gst_pause (PAROLE_GST (player->priv->gst));
