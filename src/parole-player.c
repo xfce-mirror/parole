@@ -364,6 +364,7 @@ struct ParolePlayerPrivate
     GtkWidget          *save_playlist;
     GtkWidget          *dvd_menu;
     GtkWidget          *chapters_menu;
+    GtkWidget          *goto_position;
 
     /* Media Controls */
     GtkWidget          *control;
@@ -2180,6 +2181,13 @@ parole_player_media_menu_select_cb (GtkMenuItem *widget, ParolePlayer *player)
                   !parole_media_list_is_empty (player->priv->list));    
 }
 
+void
+parole_player_playback_menu_select_cb (GtkMenuItem *widget, ParolePlayer *player)
+{
+    gtk_widget_set_sensitive (player->priv->goto_position, 
+                  !parole_media_list_is_empty (player->priv->list));    
+}
+
 void parole_player_open_preferences_cb  (GtkWidget *widget, ParolePlayer *player)
 {
     parole_conf_dialog_open (player->priv->settings_dialog, player->priv->window);
@@ -2696,6 +2704,8 @@ on_goto_position_clicked (GtkWidget *w, ParolePlayer *player)
     /* Get the stream length and set that as maximum */
     adjustment = gtk_range_get_adjustment (GTK_RANGE (player->priv->range));
     duration = gtk_adjustment_get_upper (adjustment);
+    
+    // TODO: get current position and fill the spinbuttons accordingly with it
 
     spin_hrs = gtk_spin_button_new_with_range (0, (int) ( duration/3600 ), 1);
     spin_mins = gtk_spin_button_new_with_range (0, 59, 1);
@@ -3206,8 +3216,11 @@ parole_player_init (ParolePlayer *player)
     g_signal_connect (bug_report, "activate", G_CALLBACK(on_bug_report_clicked), player);
     contents = GTK_WIDGET (gtk_builder_get_object (builder, "contents"));
     g_signal_connect (contents, "activate", G_CALLBACK(on_contents_clicked), player);
-    goto_position = GTK_WIDGET (gtk_builder_get_object (builder, "goto_position"));
-    g_signal_connect (goto_position, "activate", G_CALLBACK(on_goto_position_clicked), player);
+    player->priv->goto_position = GTK_WIDGET (gtk_builder_get_object (builder, "goto_position"));
+    g_signal_connect (player->priv->goto_position, "activate",
+                  G_CALLBACK(on_goto_position_clicked), player);
+    g_signal_connect (gtk_builder_get_object (builder, "playback-menu"), "select",
+                  G_CALLBACK (parole_player_playback_menu_select_cb), player);
     /* End Menu Bar */
     
 
