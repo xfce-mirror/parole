@@ -2673,11 +2673,14 @@ gboolean
 on_goto_position_clicked (GtkWidget *w, ParolePlayer *player)
 {
     GtkWidget *dialog;
-    GtkWidget *vbox, *hbox, *label, *spin_hrs, *spin_mins, *spin_secs;
+    GtkWidget *vbox, *hbox, *label;
+    GtkWidget *spin_hrs, *spin_mins, *spin_secs;
     GtkAdjustment *adjustment;
     gint response;
-    gdouble duration = 0;
-    int position, hrs, mins, secs;
+    gdouble position, duration = 0, current_position = 0;
+    int hrs, mins, secs;
+    int max_hrs, max_mins = 59;
+    int cur_hrs, cur_mins, cur_secs;
 
     /* Create dialog */
     dialog = gtk_dialog_new_with_buttons (_("Go to position"),
@@ -2701,19 +2704,20 @@ on_goto_position_clicked (GtkWidget *w, ParolePlayer *player)
     gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 0);
     gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
     
-    /* Get the stream length and set that as maximum */
+    /* Get the stream length and set that as maximum for hours and minutes */
     adjustment = gtk_range_get_adjustment (GTK_RANGE (player->priv->range));
     duration = gtk_adjustment_get_upper (adjustment);
-    
-    // TODO: get current position and fill the spinbuttons accordingly with it
+    current_position = gtk_range_get_value (GTK_RANGE (player->priv->range));
+    max_hrs = (int) duration/3600;
+    if ( duration/60 <= 59 )
+        max_mins = (int) duration/60;
 
-    spin_hrs = gtk_spin_button_new_with_range (0, (int) ( duration/3600 ), 1);
-    spin_mins = gtk_spin_button_new_with_range (0, 59, 1);
+    spin_hrs = gtk_spin_button_new_with_range (0, max_hrs, 1);
+    spin_mins = gtk_spin_button_new_with_range (0, max_mins, 1);
     spin_secs = gtk_spin_button_new_with_range (0, 59, 1);
     gtk_box_pack_start (GTK_BOX (hbox), spin_hrs, FALSE, FALSE, 0);
     gtk_box_pack_start (GTK_BOX (hbox), spin_mins, FALSE, FALSE, 0);
     gtk_box_pack_start (GTK_BOX (hbox), spin_secs, FALSE, FALSE, 0);
-    gtk_widget_show_all (vbox);
 
     if ( duration < 3600 )
         gtk_widget_set_sensitive (GTK_WIDGET (spin_hrs), FALSE);
@@ -2721,12 +2725,20 @@ on_goto_position_clicked (GtkWidget *w, ParolePlayer *player)
         gtk_widget_set_sensitive (GTK_WIDGET (spin_mins), FALSE);
     if ( duration = 0 )
         gtk_widget_set_sensitive (GTK_WIDGET (spin_secs), FALSE);
-    
-    /* Should the player always be paused when opening up that dialog? */
-    //parole_gst_pause (PAROLE_GST (player->priv->gst));
-    
-    // FIXME: Mouse-cursor disappears when it leaves the modal dialog and hovers the content-area
+
+    if ( current_position != 0 )
+    {
+        cur_hrs = (int) current_position/3600;
+        cur_mins = (int) current_position/60 - cur_hrs*60;
+        cur_secs = (int) current_position - cur_hrs*3600 - cur_mins*60;
+        gtk_spin_button_set_value (GTK_SPIN_BUTTON (spin_hrs), cur_hrs);
+        gtk_spin_button_set_value (GTK_SPIN_BUTTON (spin_mins), cur_mins);
+        gtk_spin_button_set_value (GTK_SPIN_BUTTON (spin_secs), cur_secs);
+    }
+
+    // FIXME: Prevent the mouse-cursor and controls from hiding
     /* show dialog */
+    gtk_widget_show_all (dialog);
     response = gtk_dialog_run (GTK_DIALOG (dialog));
     if (response == GTK_RESPONSE_OK)
     {
@@ -2736,10 +2748,10 @@ on_goto_position_clicked (GtkWidget *w, ParolePlayer *player)
         secs = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (spin_secs));
         position = hrs*3600 + mins*60 + secs;
         parole_gst_seek (PAROLE_GST (player->priv->gst), position);
-        parole_player_change_range_value (player, (double) position);
+        parole_player_change_range_value (player, position);
     }
 
-    gtk_widget_destroy (dialog);
+    gtk_widget_destroy (GTK_WIDGET (dialog));
 
     return (response == GTK_RESPONSE_OK);
 }
