@@ -2561,7 +2561,16 @@ void parole_gst_play_device_uri (ParoleGst *gst, const gchar *uri, const gchar *
     if ( G_UNLIKELY (!g_strcmp0 (uri, "cdda:/") ) )
         local_uri = "cdda://";
     else
-        local_uri = uri;
+    {
+        if (g_str_has_prefix(device, "/dev/"))
+        {
+            local_uri = g_strconcat(uri, "/", device, NULL);
+        }
+        else
+        {
+            local_uri = uri;
+        }
+    }
     
     parole_gst_play_uri (gst, local_uri, NULL);
 }
