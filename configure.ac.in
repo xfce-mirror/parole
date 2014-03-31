@@ -81,6 +81,14 @@ XDT_I18N([@LINGUAS@])
 m4_define([gtk_minimum_version], [3.2.0])
 m4_define([glib_minimum_version], [2.32.0])
 
+m4_define([dbus_minimum_version], [0.60])
+m4_define([dbus_glib_minimum_version], [0.70])
+
+m4_define([libxfce4ui_minimum_version],[4.11.0])
+m4_define([libxfce4util_minimum_version],[4.11.0])
+m4_define([libxfconf_minimum_version], [4.10.0])
+m4_define([libnotify_minimum_version], [0.4.1])
+
 dnl gstreamer version
 AC_ARG_WITH([gstreamer],
             [AS_HELP_STRING([--with-gstreamer=0.10|1.0],[which gstreamer version to compile against (default: 1.0)])],
@@ -107,13 +115,6 @@ case "$with_gstreamer" in
 esac
 AC_DEFINE_UNQUOTED(GSTREAMER_API_VERSION, $gstreamer_api_version, [Define the GStreamer+ API version])
 
-m4_define([dbus_minimum_version], [0.60])
-m4_define([dbus_glib_minimum_version], [0.70])
-
-m4_define([libxfce4ui_minimum_version],[4.10.0])
-m4_define([libxfce4util_minimum_version],[4.10.0])
-
-m4_define([libnotify_minimum_version], [0.4.1])
 
 XDT_CHECK_PACKAGE([GLIB], [glib-2.0], [glib_minimum_version])
 XDT_CHECK_PACKAGE([GOBJECT], [gobject-2.0], [glib_minimum_version])
@@ -125,13 +126,13 @@ XDT_CHECK_PACKAGE([DBUS], [dbus-1], [dbus_minimum_version])
 XDT_CHECK_PACKAGE([DBUS_GLIB], [dbus-glib-1], [dbus_glib_minimum_version])
 
 XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0],[libxfce4util_minimum_version])
-XDT_CHECK_PACKAGE([XFCONF], [libxfconf-0], [4.10.0])
+XDT_CHECK_PACKAGE([XFCONF], [libxfconf-0], [libxfconf_minimum_version])
 
 dnl ************************************
 dnl *** Compile against GTK3 ***
 dnl ************************************
-XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-2], [4.10.0])
-XDT_CHECK_PACKAGE([GTK], [gtk+-3.0], [3.2.0])
+XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-2], [libxfce4ui_minimum_version])
+XDT_CHECK_PACKAGE([GTK], [gtk+-3.0], [gtk_minimum_version])
 
 XDT_CHECK_PACKAGE([GST], [gstreamer-${gstreamer_api_version}], [${gstreamer_minimum_version}])
 XDT_CHECK_PACKAGE([GST_BASE], [gstreamer-base-${gstreamer_api_version}], [${gstreamer_minimum_version}])
