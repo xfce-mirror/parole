@@ -85,7 +85,7 @@ m4_define([dbus_minimum_version], [0.60])
 m4_define([dbus_glib_minimum_version], [0.70])
 
 m4_define([libxfce4ui_minimum_version],[4.11.0])
-m4_define([libxfce4util_minimum_version],[4.11.0])
+m4_define([libxfce4util_minimum_version],[4.10.0])
 m4_define([libxfconf_minimum_version], [4.10.0])
 m4_define([libnotify_minimum_version], [0.4.1])
 
