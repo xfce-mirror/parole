@@ -1,3 +1,12 @@
+2014-04-02: bluesabre@xfce.org
+    * Working towards 0.6.2
+    * Update minimum versions in configure.ac.in (bug #10783)
+    * Correct required libxfce4util version to 4.10
+
+2014-03-30: bluesabre@xfce.org
+    * Stable release 0.6.1
+    * Fix Properly use specified device, use correct URI (lp #1098323)
+
 2014-01-25: bluesabre@xfce.org
     * Stable release 0.6.0
     * Fix bug with DIR handles not being closed (bug #10600)
