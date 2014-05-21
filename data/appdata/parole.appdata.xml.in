@@ -43,40 +43,43 @@
   <releases>
     <release version="0.6.1" timestamp="1396146122">
       <description>
-        <_p>Latest stable release, see:
-           https://mail.xfce.org/pipermail/xfce-announce/2014-March/000318.html
+        <_p>This release fixes a problem with detecting DVD drive locations.
         </_p>
       </description>
     </release>
 
     <release version="0.6.0" timestamp="1390672461">
       <description>
-        <_p>Stable release, see:
-           https://mail.xfce.org/pipermail/xfce-announce/2014-January/000299.html
+        <_p>This release features the completed transition to the Gtk+3 toolkit, improvements
+        in the user-interface (more streamlined menus), better playlists. Furthermore existing
+        plugins have been improved and a new one has been added (MPRIS2). Most of the artwork
+        has been updated for this release and we use the GStreamer1.0 framework now by default.
         </_p>
       </description>
     </release>
 
     <release version="0.5.91" timestamp="1388377669">
       <description>
-        <_p>Development release, see:
-           https://mail.xfce.org/pipermail/xfce-announce/2013-December/000296.html
+        <_p>This unstable development release features mostly bugfixes and introduces the new
+        MPRIS2 plugin.
         </_p>
       </description>
     </release>
 
     <release version="0.5.4" timestamp="1386200468">
       <description>
-        <_p>Previous stable version release, see:
-           https://mail.xfce.org/pipermail/xfce-announce/2013-December/000292.html
+        <_p>This is a bugfix release which fixes the loading of playlists with relative paths,
+        improves the file-filters for audio/video mimetypes and fixes the "Remove duplicates"
+        functionality.
         </_p>
       </description>
     </release>
 
     <release version="0.5.90" timestamp="1382192176">
       <description>
-        <_p>Development release, see:
-           https://mail.xfce.org/pipermail/xfce-announce/2013-October/000286.html
+        <_p>This unstable development release features the complete port to the Gtk+3 toolkit,
+        improvements in the user-interface (more streamlined menus), better playlists. It also
+        brings updated artwork, GStreamer1.0 support, improved plugins and the occasional bugfix.
         </_p>
       </description>
     </release>
