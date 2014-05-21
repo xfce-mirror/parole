@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2014 Sean Davis <bluesabre@xfce.org> and Simon Steinbeiß <simon@xfce.org> -->
+<component type="desktop">
+  <id>parole.desktop</id>
+  <metadata_license>CC-BY-3.0</metadata_license>
+  <project_license>GPL-2.0+</project_license>
+  <name>Parole</name>
+  <summary>Modern and simple media player</summary>
+
+  <description>
+    <p>Parole is a modern simple media player based on the GStreamer
+       framework and written to fit well in the Xfce desktop. It is
+       designed with simplicity, speed and resource usage in mind.
+    </p>
+    <p>Parole features playback of local media files, including
+       video with subtitles support, Audio CDs, DVDs, and live streams.
+       Parole is also extensible via plugins. 
+    </p>
+  </description>
+
+  <screenshots>
+    <screenshot type="default">
+      <image>http://http://i2.wp.com/smdavis.us/wp-content/uploads/2014/04/Numix_parole.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Parole in Xubuntu with the MPRIS2 plugin</caption>
+      <image>http://i2.wp.com/smdavis.us/wp-content/uploads/2014/04/Parole_Plugins.png</image>
+    </screenshot>
+  </screenshots>
+
+  <url type="homepage">http://www.xfce.org/</url>
+  <url type="bugtracker">https://bugzilla.xfce.org/</url>
+  <url type="help">http://http://docs.xfce.org/apps/parole/start</url>
+
+  <updatecontact>xfce4-dev@xfce.org</updatecontact>
+
+  <project_group>XFCE</project_group>
+
+  <provides>
+    <binary>parole</binary>
+  </provides>
+
+  <releases>
+    <release version="0.6.1" timestamp="20140330">
+      <description>
+        <p>Latest stable release, see:
+           https://mail.xfce.org/pipermail/xfce-announce/2014-March/000318.html
+        </p>
+      </description>
+    </release>
+
+    <release version="0.6.0" timestamp="20140125">
+      <description>
+        <p>Stable release, see:
+           https://mail.xfce.org/pipermail/xfce-announce/2014-January/000299.html
+        </p>
+      </description>
+    </release>
+
+    <release version="0.5.91" timestamp="20131230">
+      <description>
+        <p>Development release, see:
+           https://mail.xfce.org/pipermail/xfce-announce/2013-December/000296.html
+        </p>
+      </description>
+    </release>
+
+    <release version="0.5.4" timestamp="20131204">
+      <description>
+        <p>Previous stable version release, see:
+           https://mail.xfce.org/pipermail/xfce-announce/2013-December/000292.html
+        </p>
+      </description>
+    </release>
+
+    <release version="0.5.90" timestamp="20131019">
+      <description>
+        <p>Development release, see:
+           https://mail.xfce.org/pipermail/xfce-announce/2013-October/000286.html
+        </p>
+      </description>
+    </release>
+  </releases>
+
+</component>
