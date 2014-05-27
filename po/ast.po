@@ -5,12 +5,13 @@
 # Translators:
 # Astur I. <malditoastur@gmail.com>, 2009
 # Tornes Llume <l.lumex03.tornes@gmail.com>, 2014
+# Tornes Llume <l.lumex03.tornes@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-01-26 00:31+0100\n"
-"PO-Revision-Date: 2014-04-24 08:23+0000\n"
+"PO-Revision-Date: 2014-05-27 06:56+0000\n"
 "Last-Translator: Tornes Llume <l.lumex03.tornes@gmail.com>\n"
 "Language-Team: Asturian (http://www.transifex.com/projects/p/xfce-apps/language/ast/)\n"
 "MIME-Version: 1.0\n"
@@ -48,7 +49,7 @@ msgstr "_Atroxar llista reproducción..."
 #: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:112
 #: ../src/parole-disc.c:154
 msgid "Insert Disc"
-msgstr ""
+msgstr "Inxerta'l discu"
 
 #: ../data/interfaces/parole.ui.h:8 ../src/plugins/tray/tray-provider.c:152
 msgid "_Quit"
@@ -56,7 +57,7 @@ msgstr "_Colar"
 
 #: ../data/interfaces/parole.ui.h:9
 msgid "_Playback"
-msgstr ""
+msgstr "_Reproducción"
 
 #. Toggle Repeat
 #: ../data/interfaces/parole.ui.h:10 ../src/parole-player.c:3012
@@ -66,7 +67,7 @@ msgstr "_Repetir"
 #. Toggle Shuffle
 #: ../data/interfaces/parole.ui.h:11 ../src/parole-player.c:3020
 msgid "_Shuffle"
-msgstr ""
+msgstr "_Al debalu"
 
 #: ../data/interfaces/parole.ui.h:12
 msgid "_DVD"
@@ -90,11 +91,11 @@ msgstr "Menú d'á_ngulu"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "_Chapters"
-msgstr ""
+msgstr "_Capítulos"
 
 #: ../data/interfaces/parole.ui.h:18
 msgid "_Chapter Menu"
-msgstr ""
+msgstr "_Menú de capítulos"
 
 #: ../data/interfaces/parole.ui.h:19
 msgid "_Audio"
@@ -221,7 +222,7 @@ msgstr "0:00"
 #: ../data/interfaces/parole.ui.h:49
 #, no-c-format
 msgid "Buffering (0%)"
-msgstr ""
+msgstr "Atroxando'l buffer (0%)"
 
 #: ../data/interfaces/mediachooser.ui.h:1
 msgid "Open Media Files"
@@ -235,7 +236,7 @@ msgstr "Llista de reproducción"
 
 #: ../data/interfaces/playlist.ui.h:2
 msgid "Disc Playlist"
-msgstr ""
+msgstr "Llista reproducción del discu"
 
 #: ../data/interfaces/playlist.ui.h:3
 msgid "Add to playlist…"
@@ -271,11 +272,11 @@ msgstr "Al debalu"
 
 #: ../data/interfaces/playlist.ui.h:11
 msgid "Move Up"
-msgstr ""
+msgstr "Mover arriba"
 
 #: ../data/interfaces/playlist.ui.h:12
 msgid "Move Down"
-msgstr ""
+msgstr "Mover abaxo"
 
 #: ../data/interfaces/playlist.ui.h:13
 msgid "Replace playlist when opening files"
@@ -296,7 +297,7 @@ msgstr "Complementos de Parole"
 
 #: ../data/interfaces/plugins.ui.h:2
 msgid "Extend your media player"
-msgstr ""
+msgstr "Estiendi'l to reproductor multimedia"
 
 #: ../data/interfaces/plugins.ui.h:3
 msgid "Plugin"
@@ -380,7 +381,7 @@ msgstr "<b>Balance de color</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:17
 msgid "Display"
-msgstr ""
+msgstr "Amosar"
 
 #: ../data/interfaces/parole-settings.ui.h:18
 msgid "Always replace playlist with opened files"
@@ -452,7 +453,7 @@ msgstr "<big><b>Abrir allugamientu de rede</b></big>"
 
 #: ../data/desktop/parole.desktop.in.in.h:2
 msgid "Play your media"
-msgstr ""
+msgstr "Reproduz la to multimedia"
 
 #: ../data/desktop/parole.desktop.in.in.h:3
 msgid "Play/Pause"
@@ -622,7 +623,7 @@ msgstr "Silenciar volume"
 
 #: ../src/main.c:288
 msgid "Unmute (restore) volume"
-msgstr ""
+msgstr "Restaurar volume"
 
 #: ../src/main.c:289
 msgid "Add files to playlist"
@@ -638,7 +639,7 @@ msgstr "Multimedia pa reproducir"
 
 #: ../src/main.c:315
 msgid "[FILES...] - Play movies and songs"
-msgstr ""
+msgstr "[FILES...] - Reproduz películes y canciones"
 
 #: ../src/main.c:327
 #, c-format
@@ -657,27 +658,27 @@ msgstr "Tolos ficheros"
 #: ../src/parole-medialist.c:217
 #, c-format
 msgid "Playlist (%i item)"
-msgstr ""
+msgstr "Lista reproducción (%i oxetu)"
 
 #: ../src/parole-medialist.c:221
 #, c-format
 msgid "Playlist (%i chapter)"
-msgstr ""
+msgstr "Lista reproducción (%i capítulu)"
 
 #: ../src/parole-medialist.c:228 ../src/parole-medialist.c:1596
 #, c-format
 msgid "Playlist (%i items)"
-msgstr ""
+msgstr "Lista reproducción (%i oxetos)"
 
 #: ../src/parole-medialist.c:232 ../src/parole-medialist.c:1597
 #, c-format
 msgid "Playlist (%i chapters)"
-msgstr ""
+msgstr "Lista reproducción (%i capítulos)"
 
 #: ../src/parole-medialist.c:417 ../src/parole-player.c:700
 #, c-format
 msgid "Chapter %i"
-msgstr ""
+msgstr "Capítulu %i"
 
 #: ../src/parole-medialist.c:706
 msgid "Permission denied"
@@ -718,7 +719,7 @@ msgstr "Llista de reproducción compartible"
 #. Clear
 #: ../src/parole-medialist.c:1227
 msgid "Open Containing Folder"
-msgstr ""
+msgstr "Abrir carpeta contenedora"
 
 #: ../src/parole-player.c:515 ../src/parole-player.c:516
 msgid "Hide playlist"
@@ -831,7 +832,7 @@ msgstr "Silenciar"
 
 #: ../src/parole-player.c:2264
 msgid "Unmute"
-msgstr ""
+msgstr "Non silenciar"
 
 #: ../src/parole-player.c:2630 ../src/parole-player.c:2648
 msgid "Unable to open default web browser"
