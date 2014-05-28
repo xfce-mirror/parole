@@ -11,9 +11,9 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-01-26 00:31+0100\n"
-"PO-Revision-Date: 2014-03-09 20:48+0000\n"
+"PO-Revision-Date: 2014-05-28 20:45+0000\n"
 "Last-Translator: schizo <eveskovic@gmail.com>\n"
-"Language-Team: Croatian (http://www.transifex.com/projects/p/xfce/language/hr/)\n"
+"Language-Team: Croatian (http://www.transifex.com/projects/p/xfce-apps/language/hr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -87,7 +87,7 @@ msgstr "_Audio izbornik"
 
 #: ../data/interfaces/parole.ui.h:16
 msgid "A_ngle Menu"
-msgstr ""
+msgstr "Kutni izbornik"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "_Chapters"
@@ -599,7 +599,7 @@ msgstr "Početak u cijelom zaslonu"
 
 #: ../src/main.c:282
 msgid "Play or pause if already playing"
-msgstr ""
+msgstr "Izvodi ili pauziraj ako se već izvodi"
 
 #: ../src/main.c:283
 msgid "Next track"
@@ -1102,11 +1102,11 @@ msgstr "_Otvori"
 
 #: ../src/plugins/tray/tray-provider.c:244
 msgid "Tray icon plugin"
-msgstr ""
+msgstr "Dodatak u sistemskom pladnju"
 
 #: ../src/plugins/tray/tray-provider.c:254
 msgid "Always minimize to tray when window is closed"
-msgstr ""
+msgstr "Uvijek minimiziraj u sistemski pladanj kada se zatvori prozor"
 
 #: ../src/plugins/tray/tray-provider.c:300
 msgid "Are you sure you want to quit?"
@@ -1114,11 +1114,11 @@ msgstr "Jeste li sigurni da želite isključiti?"
 
 #: ../src/plugins/tray/tray-provider.c:303
 msgid "Parole can be minimized to the system tray instead."
-msgstr ""
+msgstr "Umjesto toga Parole može biti minimiziran u sistemski pladanj."
 
 #: ../src/plugins/tray/tray-provider.c:306
 msgid "Minimize to tray"
-msgstr ""
+msgstr "Minimiziraj u sistemski pladanj"
 
 #: ../src/plugins/tray/tray-provider.c:318
 msgid "Quit"
@@ -1130,11 +1130,11 @@ msgstr "Zapamti moj izbor"
 
 #: ../src/plugins/tray/system-tray.desktop.in.h:1
 msgid "Tray icon"
-msgstr ""
+msgstr "Ikona u sistemskom pladnju"
 
 #: ../src/plugins/tray/system-tray.desktop.in.h:2
 msgid "Show icon in the system tray"
-msgstr ""
+msgstr "Pokazuj ikonu u sistemskom pladnju"
 
 #: ../src/plugins/mpris2/mpris2.desktop.in.h:1
 msgid "MPRIS2"
