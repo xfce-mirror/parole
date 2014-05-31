@@ -1,23 +1,27 @@
-# parole telugu translation.
-# Copyright (C) 2012 e-telugu Localization Team
-# This file is distributed under the same license as the parole package.
-# Praveen Illa <mail2ipn@gmail.com>, 2012.
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# ప్రవీణ్ ఇళ్ళ <mail2ipn@gmail.com>, 2012
+# ప్రవీణ్ ఇళ్ళ <mail2ipn@gmail.com>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: master\n"
+"Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-20 11:45+0200\n"
-"PO-Revision-Date: 2012-01-27 19:44+0530\n"
-"Last-Translator: Praveen Illa <mail2ipn@gmail.com>\n"
-"Language-Team: Telugu <indlinux-telugu@lists.sourceforge.net>\n"
-"Language: \n"
+"POT-Creation-Date: 2014-01-26 00:31+0100\n"
+"PO-Revision-Date: 2014-05-31 09:10+0000\n"
+"Last-Translator: ప్రవీణ్ ఇళ్ళ <mail2ipn@gmail.com>\n"
+"Language-Team: Telugu (http://www.transifex.com/projects/p/xfce-apps/language/te/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"Language: te\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../data/interfaces/parole.ui.h:1 ../src/parole-about.c:89
+#: ../data/interfaces/parole.ui.h:1 ../data/desktop/parole.desktop.in.in.h:1
+#: ../src/parole-player.c:567 ../src/parole-player.c:1455
+#: ../src/parole-about.c:70 ../src/plugins/mpris2/mpris2-provider.c:199
 msgid "Parole Media Player"
 msgstr "పరోల్ మాధ్యమ ప్రదర్శకం"
 
@@ -26,192 +30,308 @@ msgid "_Media"
 msgstr "మాధ్యమం (_M)"
 
 #: ../data/interfaces/parole.ui.h:3
-#, fuzzy
-msgid "Open _location"
-msgstr "ప్రదేశాన్ని తెరువు (_O)"
+msgid "_Open…"
+msgstr "తెరువు...(_O)"
 
 #: ../data/interfaces/parole.ui.h:4
+msgid "Open _Location…"
+msgstr "స్థానాన్ని తెరువు...(_L)"
+
+#: ../data/interfaces/parole.ui.h:5
+msgid "Open _Recent"
+msgstr "ఇటీవలివి తెరువు (_R)"
+
+#: ../data/interfaces/parole.ui.h:6
+msgid "_Save Playlist…"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:112
+#: ../src/parole-disc.c:154
+msgid "Insert Disc"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:8 ../src/plugins/tray/tray-provider.c:152
+msgid "_Quit"
+msgstr "నిష్క్రమించు (_Q)"
+
+#: ../data/interfaces/parole.ui.h:9
+msgid "_Playback"
+msgstr ""
+
+#. Toggle Repeat
+#: ../data/interfaces/parole.ui.h:10 ../src/parole-player.c:3012
+msgid "_Repeat"
+msgstr ""
+
+#. Toggle Shuffle
+#: ../data/interfaces/parole.ui.h:11 ../src/parole-player.c:3020
+msgid "_Shuffle"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:12
 msgid "_DVD"
 msgstr ""
 
-#: ../data/interfaces/parole.ui.h:5
-msgid "From ISO image"
+#: ../data/interfaces/parole.ui.h:13
+msgid "_DVD Menu"
 msgstr ""
 
-#: ../data/interfaces/parole.ui.h:6
-msgid "_Edit"
-msgstr "సవరణ (_E)"
-
-#: ../data/interfaces/parole.ui.h:7
-#, fuzzy
-msgid "_Repeat"
-msgstr "పునరావృతంచేయి"
-
-#: ../data/interfaces/parole.ui.h:8
-#, fuzzy
-msgid "_Shuffle"
-msgstr "గులకరించు"
-
-#: ../data/interfaces/parole.ui.h:9
-#, fuzzy
-msgid "Pl_ugins"
-msgstr "ప్లగిన్లు"
-
-#: ../data/interfaces/parole.ui.h:10
-msgid "_View"
-msgstr "వీక్షణం (_V)"
-
-#: ../data/interfaces/parole.ui.h:11
-#, fuzzy
-msgid "Show _playlist"
-msgstr "ప్రదర్శనజాబితా"
-
-#: ../data/interfaces/parole.ui.h:12
-#, fuzzy
-msgid "_Aspect Ratio"
-msgstr "రూప నిష్పత్తి"
-
-#: ../data/interfaces/parole.ui.h:13
-msgid "None"
-msgstr "ఏదీకాదు"
-
 #: ../data/interfaces/parole.ui.h:14
-msgid "Auto"
-msgstr "స్వయం"
+msgid "_Title Menu"
+msgstr ""
 
 #: ../data/interfaces/parole.ui.h:15
-msgid "Square"
-msgstr "చతురస్రం"
+msgid "_Audio Menu"
+msgstr ""
 
 #: ../data/interfaces/parole.ui.h:16
-msgid "4:3 (TV)"
-msgstr "4:3 (టివి)"
+msgid "A_ngle Menu"
+msgstr ""
 
 #: ../data/interfaces/parole.ui.h:17
-msgid "16:9 (Widescreen)"
-msgstr "16:9 (విస్తృతతెర)"
+msgid "_Chapters"
+msgstr ""
 
 #: ../data/interfaces/parole.ui.h:18
-msgid "20:9 (DVB)"
-msgstr "20:9 (DVB)"
+msgid "_Chapter Menu"
+msgstr ""
 
 #: ../data/interfaces/parole.ui.h:19
-msgid "Sound"
-msgstr "శబ్దం"
+msgid "_Audio"
+msgstr ""
 
 #: ../data/interfaces/parole.ui.h:20
-#, fuzzy
-msgid "_Mute"
-msgstr "నిశబ్దం"
+msgid "_Audio Track"
+msgstr ""
 
-#: ../data/interfaces/parole.ui.h:21
-#, fuzzy
-msgid "Volume _Up"
-msgstr "ధ్వని పెంచు"
+#: ../data/interfaces/parole.ui.h:21 ../src/parole-player.c:793
+msgid "Empty"
+msgstr ""
 
 #: ../data/interfaces/parole.ui.h:22
-#, fuzzy
-msgid "Volume _Down"
-msgstr "ధ్వని తగ్గించు"
+msgid "Volume _Up"
+msgstr ""
 
 #: ../data/interfaces/parole.ui.h:23
-msgid "_Help"
-msgstr "స‌‌హాయం (_H)"
+msgid "Volume _Down"
+msgstr ""
 
 #: ../data/interfaces/parole.ui.h:24
-msgid "Audio Track:"
+msgid "_Mute"
 msgstr ""
 
 #: ../data/interfaces/parole.ui.h:25
-#, fuzzy
-msgid "Subtitles:"
-msgstr "శీర్షిక:"
-
-#: ../data/interfaces/parole.ui.h:26
-msgid "0:00"
+msgid "_Video"
 msgstr ""
 
-#: ../data/interfaces/parole.ui.h:28
+#. Fullscreen
+#: ../data/interfaces/parole.ui.h:26 ../src/parole-player.c:1940
+#: ../src/parole-player.c:3000
+msgid "_Fullscreen"
+msgstr "నిండుతెర (_F)"
+
+#: ../data/interfaces/parole.ui.h:27
+msgid "_Aspect Ratio"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:28 ../src/parole-player.c:721
+msgid "None"
+msgstr "ఏదీకాదు"
+
+#: ../data/interfaces/parole.ui.h:29
+msgid "Auto"
+msgstr "స్వయం"
+
+#: ../data/interfaces/parole.ui.h:30
+msgid "Square"
+msgstr "చతురస్రం"
+
+#: ../data/interfaces/parole.ui.h:31
+msgid "4:3 (TV)"
+msgstr "4:3 (టివి)"
+
+#: ../data/interfaces/parole.ui.h:32
+msgid "16:9 (Widescreen)"
+msgstr "16:9 (విస్తృతతెర)"
+
+#: ../data/interfaces/parole.ui.h:33
+msgid "20:9 (DVB)"
+msgstr "20:9 (DVB)"
+
+#: ../data/interfaces/parole.ui.h:34
+msgid "_Subtitles"
+msgstr "ఉపశీర్షికలు (_S)"
+
+#: ../data/interfaces/parole.ui.h:35
+msgid "Select Text Subtitles…"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:36
+msgid "_Tools"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:37
+msgid "P_lugins"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:38
+msgid "_Preferences"
+msgstr "అభిరుచులు (_P)"
+
+#: ../data/interfaces/parole.ui.h:39
+msgid "_Help"
+msgstr "స‌‌హాయం (_H)"
+
+#: ../data/interfaces/parole.ui.h:40
+msgid "_Report a Bug…"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:41
+msgid "_Contents"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:42
+msgid "Display Parole user manual"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:43
+msgid "_About"
+msgstr "గురించి (_A)"
+
+#: ../data/interfaces/parole.ui.h:44
+msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:45
+msgid ""
+"<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
+"Album</span></big>"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:46
+msgid ""
+"<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
+"Artist</span></big>"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:47
+msgid "0:00"
+msgstr "0:00"
+
+#: ../data/interfaces/parole.ui.h:49
 #, no-c-format
 msgid "Buffering (0%)"
 msgstr ""
 
-#: ../data/interfaces/parole.ui.h:29
-msgid "Media player"
-msgstr "మాధ్యమ ప్రదర్శకం"
-
 #: ../data/interfaces/mediachooser.ui.h:1
-msgid "Parole Media Chooser"
+msgid "Open Media Files"
+msgstr "మాధ్యమ దస్త్రాలను తెరువు"
+
+#: ../data/interfaces/playlist.ui.h:1
+#: ../data/interfaces/parole-settings.ui.h:23 ../src/parole-medialist.c:814
+#: ../src/parole-medialist.c:857 ../src/parole-player.c:3330
+msgid "Playlist"
+msgstr "ప్రదర్శనజాబితా"
+
+#: ../data/interfaces/playlist.ui.h:2
+msgid "Disc Playlist"
 msgstr ""
 
-#: ../data/interfaces/mediachooser.ui.h:2
-msgid "Open media files"
-msgstr "మాధ్యమ ఫైళ్ళను తెరువుము"
-
-#: ../data/interfaces/mediachooser.ui.h:3
-msgid "Open"
+#: ../data/interfaces/playlist.ui.h:3
+msgid "Add to playlist…"
 msgstr ""
 
-#: ../data/interfaces/mediachooser.ui.h:4
-msgid "Scan folders recursively"
+#: ../data/interfaces/playlist.ui.h:4
+msgid "Add"
+msgstr "జతచేయి"
+
+#: ../data/interfaces/playlist.ui.h:5
+msgid "Remove selected media"
+msgstr "ఎంచుకున్న మాధ్యమాన్ని తీసివేయి"
+
+#: ../data/interfaces/playlist.ui.h:6
+msgid "Remove"
+msgstr "తీసివేయి"
+
+#: ../data/interfaces/playlist.ui.h:7
+msgid "Clear playlist"
+msgstr "పాటలజాబితాను చెరిపివేయి"
+
+#: ../data/interfaces/playlist.ui.h:8
+msgid "Clear"
+msgstr "శుభ్రపరుచు"
+
+#: ../data/interfaces/playlist.ui.h:9 ../src/parole-player.c:3012
+msgid "Repeat"
+msgstr "పునరావృతంచేయి"
+
+#: ../data/interfaces/playlist.ui.h:10 ../src/parole-player.c:3020
+msgid "Shuffle"
+msgstr "గులకరించు"
+
+#: ../data/interfaces/playlist.ui.h:11
+msgid "Move Up"
+msgstr "పైకి కదుపు"
+
+#: ../data/interfaces/playlist.ui.h:12
+msgid "Move Down"
+msgstr "కిందికి కదుపు"
+
+#: ../data/interfaces/playlist.ui.h:13
+msgid "Replace playlist when opening files"
 msgstr ""
 
-#: ../data/interfaces/mediachooser.ui.h:5
-msgid "Replace playlist with opened files"
-msgstr ""
+#: ../data/interfaces/playlist.ui.h:14
+msgid "Play opened files"
+msgstr "తెరచిన దస్త్రాలను ఆడించు"
 
-#: ../data/interfaces/mediachooser.ui.h:6
-#: ../data/interfaces/parole-settings.ui.h:20
-msgid "Start playing opened files"
-msgstr ""
+#: ../data/interfaces/playlist.ui.h:15
+#: ../data/interfaces/parole-settings.ui.h:21
+msgid "Remember playlist"
+msgstr "పాటలజాబితాను గుర్తుంచుకొను"
 
 #: ../data/interfaces/plugins.ui.h:1
 msgid "Parole Plugins"
 msgstr "పరోల్ ప్లగిన్లు"
 
 #: ../data/interfaces/plugins.ui.h:2
-msgid "Media Player plugins"
-msgstr "మాధ్యమ ప్రదర్శకం ప్లగిన్లు"
+msgid "Extend your media player"
+msgstr "మీ మాధ్యమ ప్రదర్శకాన్ని పొడిగించండి"
 
 #: ../data/interfaces/plugins.ui.h:3
-msgid "Enabled"
-msgstr ""
+msgid "Plugin"
+msgstr "చొప్పింత"
 
 #: ../data/interfaces/plugins.ui.h:4
-#, fuzzy
-msgid "Plugin"
-msgstr "ప్లగిన్లు"
+msgid "<b>Description</b>"
+msgstr "<b>వివరణ</b>"
 
 #: ../data/interfaces/plugins.ui.h:5
-msgid "<b>Description:</b>"
-msgstr ""
+msgid "<b>Author</b>"
+msgstr "<b>రచయిత</b>"
 
 #: ../data/interfaces/plugins.ui.h:6
-msgid "<b>Author:</b>"
-msgstr ""
-
-#: ../data/interfaces/plugins.ui.h:7
-msgid "<b>Site:</b>"
-msgstr ""
+msgid "Visit Website"
+msgstr "జాలగూడును సందర్శించండి"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "Parole Settings"
 msgstr "పరోల్ అమరికలు"
 
 #: ../data/interfaces/parole-settings.ui.h:2
-msgid "Media Player Settings"
-msgstr "మాధ్యమ ప్రదర్శకం అమరికలు"
+msgid "Configure your media player"
+msgstr "మీ మాధ్యమ ప్రదర్శకాన్ని స్వరూపించుకోండి"
 
 #: ../data/interfaces/parole-settings.ui.h:3
-msgid "Disable screensaver while playing movies"
+msgid "Disable screensaver when playing movies"
 msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:4
-msgid "<b>Video</b>"
-msgstr ""
+msgid "<b>Screensaver</b>"
+msgstr "<b>తెరకాపరి</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:5
-msgid "Enable visualization when playing audio file"
+msgid "Show visual effects when an audio file is played"
 msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:6
@@ -219,19 +339,18 @@ msgid "Visualization type:"
 msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:7
-msgid "<b>Audio</b>"
+msgid "<b>Audio Visualization</b>"
 msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:8
 msgid "Enable keyboard multimedia keys"
-msgstr ""
+msgstr "కీబోర్డు బహుళమాధ్యమ మీటలను చేతనించు"
 
 #: ../data/interfaces/parole-settings.ui.h:9
 msgid "<b>Keyboard</b>"
-msgstr ""
+msgstr "<b>కీబోర్డు</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:10
-#: ../src/plugins/properties/stream-properties-provider.c:341
 msgid "General"
 msgstr "సాధారణం"
 
@@ -253,113 +372,188 @@ msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:15
 msgid "Reset to defaults"
-msgstr ""
+msgstr "అప్రమేయానికి అమర్చు"
 
 #: ../data/interfaces/parole-settings.ui.h:16
-msgid "<b>Display</b>"
-msgstr ""
+msgid "<b>Color Balance</b>"
+msgstr "<b>రంగుల సమతుల్యత</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:17
 msgid "Display"
-msgstr ""
+msgstr "ప్రదర్శన"
 
 #: ../data/interfaces/parole-settings.ui.h:18
 msgid "Always replace playlist with opened files"
 msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:19
-msgid "Check and remove duplicated media entries"
+msgid "Check and remove duplicate media entries"
 msgstr ""
 
-#: ../data/interfaces/parole-settings.ui.h:21
-#, fuzzy
-msgid "<b>Playlist options</b>"
-msgstr "<b>నిడివి:</b>"
+#: ../data/interfaces/parole-settings.ui.h:20
+msgid "Start playing opened files"
+msgstr "తెరచిన దస్త్రాలను ఆడించుట ప్రారంభించు"
 
-#: ../data/interfaces/parole-settings.ui.h:22 ../src/parole-medialist.c:667
-#: ../src/parole-player.c:2315
-msgid "Playlist"
-msgstr "ప్రదర్శనజాబితా"
-
-#: ../data/interfaces/parole-settings.ui.h:23
-msgid "Automatically show subtitles when playing movie file"
-msgstr ""
+#: ../data/interfaces/parole-settings.ui.h:22
+msgid "<b>Playlist Settings</b>"
+msgstr "<b>పాటలజాబితా అమరికలు</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:24
+msgid "Automatically show subtitles when playing movie file"
+msgstr "చలనచిత్ర దస్త్రాన్ని ప్రదర్శిస్తున్నప్పుడు స్వయంచాలకంగా ఉపశీర్షికలను చూపించు"
+
+#: ../data/interfaces/parole-settings.ui.h:25
 msgid "Font:"
 msgstr "ఖతి:"
 
-#: ../data/interfaces/parole-settings.ui.h:25
-#, fuzzy
+#: ../data/interfaces/parole-settings.ui.h:26
 msgid "Encoding:"
 msgstr "సంకేతరచన:"
 
-#: ../data/interfaces/parole-settings.ui.h:26
-msgid "<b>Subtitles</b>"
-msgstr ""
-
 #: ../data/interfaces/parole-settings.ui.h:27
+msgid "<b>Subtitle Settings</b>"
+msgstr "<b>ఉపశీర్షిక అమరికలు</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:28
 msgid "Subtitles"
 msgstr ""
 
 #: ../data/interfaces/save-playlist.ui.h:1
-msgid "Select File Types (By Extension)"
+msgid "Save Playlist as…"
 msgstr ""
 
 #: ../data/interfaces/save-playlist.ui.h:2
+msgid "File Type"
+msgstr "దస్త్ర రకం"
+
+#: ../data/interfaces/save-playlist.ui.h:3
+msgid "Extension"
+msgstr "పొడిగింత"
+
+#: ../data/interfaces/save-playlist.ui.h:4
+msgid "Select File Types (By Extension)"
+msgstr "దస్త్ర రకాలను ఎంచుకొను (పొడిగింతను బట్టి)"
+
+#: ../data/interfaces/save-playlist.ui.h:5
 msgid "By Extension"
-msgstr ""
+msgstr "పొడిగింతను బట్టి"
 
 #: ../data/interfaces/open-location.ui.h:1
-#, fuzzy
-msgid "Open Location"
-msgstr "ప్రదేశాన్ని తెరువు (_O)"
+msgid "Open Network Location"
+msgstr "నెట్‌వర్క్ ప్రాంతాన్ని తెరువు"
 
-#: ../data/interfaces/open-location.ui.h:2
-msgid "Please enter a network URL:"
-msgstr ""
+#: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:193
+msgid "Clear History"
+msgstr "చరిత్రను చెరిపివేయి"
 
-#: ../data/desktop/parole.desktop.in.in.h:1
-msgid "Parole"
-msgstr "పరోలె"
+#: ../data/interfaces/open-location.ui.h:3
+msgid "<big><b>Open Network Location</b></big>"
+msgstr "<big><b>నెట్‌వర్క్ ప్రాంతాన్ని తెరువు</b></big>"
 
-#: ../src/common/parole-common.c:67
+#: ../data/desktop/parole.desktop.in.in.h:2
+msgid "Play your media"
+msgstr "మీ మాధ్యమాన్ని ఆడించండి"
+
+#: ../data/desktop/parole.desktop.in.in.h:3
+msgid "Play/Pause"
+msgstr "ఆడించు/నిలిపివేయి"
+
+#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:2984
+#: ../src/parole-player.c:3210 ../src/plugins/notify/notify-provider.c:201
+msgid "Previous Track"
+msgstr "మునుపటి జాడ"
+
+#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:2992
+#: ../src/parole-player.c:3220 ../src/plugins/notify/notify-provider.c:211
+msgid "Next Track"
+msgstr "తదుపరి జాడ"
+
+#: ../src/common/parole-common.c:70
 msgid "Message"
 msgstr "సందేశం"
 
-#: ../src/common/parole-common.c:72
+#: ../src/common/parole-common.c:75
 msgid "Error"
 msgstr "దోషం"
 
-#: ../src/gst/parole-gst.c:1496
-msgid "Stop"
-msgstr "ఆపివేయి"
+#: ../src/gst/parole-gst.c:1282 ../src/parole-medialist.c:401
+#, c-format
+msgid "Track %i"
+msgstr "జాడ %i"
 
-#: ../src/gst/parole-gst.c:1497
+#: ../src/gst/parole-gst.c:1285
+msgid "Audio CD"
+msgstr "ఆడియో సీడీ"
+
+#: ../src/gst/parole-gst.c:1525
+msgid "Additional software is required."
+msgstr "అదనపు సాఫ్ట్‌వేర్ అవసరం."
+
+#: ../src/gst/parole-gst.c:1530
+msgid "Don't Install"
+msgstr "స్థాపించవద్దు"
+
+#: ../src/gst/parole-gst.c:1532
+msgid "Install"
+msgstr "స్థాపించు"
+
+#: ../src/gst/parole-gst.c:1535
+msgid "OK"
+msgstr "సరే"
+
+#: ../src/gst/parole-gst.c:1542
+#, c-format
+msgid ""
+"Parole needs <b>%s</b> to play this file.\n"
+"It can be installed automatically."
+msgstr ""
+
+#: ../src/gst/parole-gst.c:1545
+#, c-format
+msgid "Parole needs <b>%s</b> to play this file."
+msgstr ""
+
+#: ../src/gst/parole-gst.c:1961
 msgid "The stream is taking too much time to load"
 msgstr ""
 
-#: ../src/gst/parole-gst.c:1666
-msgid ""
-"Unable to load playbin GStreamer plugin, check your GStreamer installation"
+#: ../src/gst/parole-gst.c:1962
+msgid "Do you want to continue loading or stop?"
 msgstr ""
 
-#: ../src/gst/parole-gst.c:1690
-msgid ""
-"Unable to load video GStreamer plugin, check your GStreamer installation"
+#: ../src/gst/parole-gst.c:1963
+msgid "Stop"
+msgstr "ఆపివేయి"
+
+#: ../src/gst/parole-gst.c:1964
+msgid "Continue"
+msgstr "కొనసాగించు"
+
+#: ../src/gst/parole-gst.c:2148
+msgid "GStreamer Error"
+msgstr "జీస్ట్రీమర్ దోషం"
+
+#: ../src/gst/parole-gst.c:2149
+msgid "Parole Media Player cannot start."
 msgstr ""
 
-#: ../src/gst/parole-gst.c:2222 ../src/gst/parole-gst.c:2226
-#, fuzzy, c-format
+#: ../src/gst/parole-gst.c:2177 ../src/gst/parole-gst.c:2195
+#: ../src/gst/parole-gst.c:2218
+#, c-format
+msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
+msgstr ""
+
+#: ../src/gst/parole-gst.c:2838 ../src/gst/parole-gst.c:2844
+#, c-format
 msgid "Audio Track #%d"
-msgstr "పాట %i"
+msgstr "ఆడియో ట్రాక్ #%d"
 
-#: ../src/gst/parole-gst.c:2254 ../src/gst/parole-gst.c:2258
+#: ../src/gst/parole-gst.c:2888 ../src/gst/parole-gst.c:2894
 #, c-format
 msgid "Subtitle #%d"
-msgstr ""
+msgstr "ఉపశీర్షిక #%d"
 
-#: ../src/main.c:53
+#: ../src/main.c:59
 #, c-format
 msgid ""
 "\n"
@@ -370,193 +564,344 @@ msgid ""
 "\n"
 "Licensed under the GNU GPL.\n"
 "\n"
+"Please report bugs to <http://bugzilla.xfce.org/>.\n"
+"\n"
 msgstr ""
 
-#: ../src/main.c:186
+#: ../src/main.c:234
 msgid "Unknown argument "
 msgstr ""
 
-#: ../src/main.c:223
+#: ../src/main.c:276
 msgid "Open a new instance"
-msgstr ""
+msgstr "ఒక కొత్త ప్రక్రియను తెరువు"
 
-#: ../src/main.c:224
+#: ../src/main.c:277
 msgid "Do not load plugins"
-msgstr ""
+msgstr "చొప్పింతలను నింపవద్దు"
 
-#: ../src/main.c:225
+#: ../src/main.c:278
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr ""
 
-#: ../src/main.c:226
+#: ../src/main.c:279
+msgid "Enable/Disable XV support (true or false, default=true)"
+msgstr ""
+
+#: ../src/main.c:280
+msgid "Start in embedded mode"
+msgstr ""
+
+#: ../src/main.c:281
+msgid "Start in fullscreen mode"
+msgstr "నిండుతెర రీతిలో ప్రారంభించు"
+
+#: ../src/main.c:282
 msgid "Play or pause if already playing"
 msgstr ""
 
-#: ../src/main.c:227
-msgid "Stop playing"
-msgstr ""
-
-#: ../src/main.c:228
+#: ../src/main.c:283
 msgid "Next track"
 msgstr "తరువాతి ట్రాక్"
 
-#: ../src/main.c:229
+#: ../src/main.c:284
 msgid "Previous track"
 msgstr "మునుపటి ట్రాక్"
 
-#: ../src/main.c:230
-msgid "Seek forward"
-msgstr ""
-
-#: ../src/main.c:231
-msgid "Seek Backward"
-msgstr ""
-
-#: ../src/main.c:232
+#: ../src/main.c:285
 msgid "Raise volume"
 msgstr "శబ్దాన్ని పెంచు"
 
-#: ../src/main.c:233
+#: ../src/main.c:286
 msgid "Lower volume"
 msgstr "శబ్దాన్ని తగ్గించు"
 
-#: ../src/main.c:234
+#: ../src/main.c:287
 msgid "Mute volume"
 msgstr "నిశబ్దం"
 
-#: ../src/main.c:235
-msgid "Version information"
-msgstr "రూపాంతర సమాచారం"
-
-#: ../src/main.c:236
-msgid "Start in fullscreen mode"
+#: ../src/main.c:288
+msgid "Unmute (restore) volume"
 msgstr ""
 
-#: ../src/main.c:237
-msgid "Enabled/Disable XV support"
+#: ../src/main.c:289
+msgid "Add files to playlist"
+msgstr "పాటలజాబితాకు దస్త్రాలను జోడించండి"
+
+#: ../src/main.c:290
+msgid "Print version information and exit"
 msgstr ""
 
-#: ../src/main.c:239
+#: ../src/main.c:292
 msgid "Media to play"
 msgstr ""
 
-#: ../src/main.c:276
+#: ../src/main.c:315
+msgid "[FILES...] - Play movies and songs"
+msgstr ""
+
+#: ../src/main.c:327
+#, c-format
+msgid "Type %s --help to list all available command line options\n"
+msgstr ""
+
+#: ../src/main.c:342
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr ""
 
-#: ../src/parole-medialist.c:526
+#: ../src/parole-mediachooser.c:247 ../src/parole-player.c:1015
+msgid "All files"
+msgstr "అన్ని దస్త్రాలు"
+
+#: ../src/parole-medialist.c:217
+#, c-format
+msgid "Playlist (%i item)"
+msgstr ""
+
+#: ../src/parole-medialist.c:221
+#, c-format
+msgid "Playlist (%i chapter)"
+msgstr ""
+
+#: ../src/parole-medialist.c:228 ../src/parole-medialist.c:1596
+#, c-format
+msgid "Playlist (%i items)"
+msgstr ""
+
+#: ../src/parole-medialist.c:232 ../src/parole-medialist.c:1597
+#, c-format
+msgid "Playlist (%i chapters)"
+msgstr ""
+
+#: ../src/parole-medialist.c:417 ../src/parole-player.c:700
+#, c-format
+msgid "Chapter %i"
+msgstr "అధ్యాయం %i"
+
+#: ../src/parole-medialist.c:706
 msgid "Permission denied"
 msgstr "అనుమతి నిరాకరించబడింది"
 
-#: ../src/parole-medialist.c:528
+#: ../src/parole-medialist.c:708
 msgid "Error saving playlist file"
 msgstr ""
 
-#: ../src/parole-medialist.c:540
+#: ../src/parole-medialist.c:720
 msgid "Unknown playlist format"
 msgstr ""
 
-#: ../src/parole-medialist.c:541
-msgid "Please chooser a supported playlist format"
+#: ../src/parole-medialist.c:721
+msgid "Please choose a supported playlist format"
 msgstr ""
 
-#: ../src/parole-medialist.c:593 ../src/parole-plugins-manager.c:378
-#: ../src/plugins/properties/stream-properties-provider.c:140
-#: ../src/plugins/properties/stream-properties-provider.c:141
-#: ../src/plugins/properties/stream-properties-provider.c:142
-#: ../src/plugins/properties/stream-properties-provider.c:143
+#: ../src/parole-medialist.c:775 ../src/parole-plugins-manager.c:369
 msgid "Unknown"
 msgstr "తెలియదు"
 
-#: ../src/parole-medialist.c:674
+#: ../src/parole-medialist.c:864
 msgid "M3U Playlists"
 msgstr ""
 
-#: ../src/parole-medialist.c:682
+#: ../src/parole-medialist.c:872
 msgid "PLS Playlists"
 msgstr ""
 
-#: ../src/parole-medialist.c:690
+#: ../src/parole-medialist.c:880
 msgid "Advanced Stream Redirector"
 msgstr ""
 
-#: ../src/parole-medialist.c:698
+#: ../src/parole-medialist.c:888
 msgid "Shareable Playlist"
 msgstr ""
 
 #. Clear
-#: ../src/parole-medialist.c:1105
+#: ../src/parole-medialist.c:1227
 msgid "Open Containing Folder"
 msgstr ""
 
-#: ../src/parole-medialist.c:1217
-msgid "Repeat"
-msgstr "పునరావృతంచేయి"
-
-#: ../src/parole-medialist.c:1233
-msgid "Shuffle"
-msgstr "గులకరించు"
-
-#: ../src/parole-medialist.c:1256
-msgid "Replace playlist when opening files"
+#: ../src/parole-player.c:515 ../src/parole-player.c:516
+msgid "Hide playlist"
 msgstr ""
 
-#: ../src/parole-medialist.c:1272
-msgid "Play opened files"
+#: ../src/parole-player.c:524 ../src/parole-player.c:525
+msgid "Show playlist"
 msgstr ""
 
-#. *
-#. * Remember media list entries
-#. *
-#: ../src/parole-medialist.c:1284
-msgid "Remember playlist"
+#. Build the FileChooser dialog for subtitle selection.
+#: ../src/parole-player.c:979
+msgid "Select Subtitle File"
 msgstr ""
 
-#: ../src/parole-medialist.c:1473
-msgid "Media list"
-msgstr "మాధ్యమ జాబితా"
+#: ../src/parole-player.c:984 ../src/parole-player.c:1188
+#: ../src/plugins/tray/tray-provider.c:312
+msgid "Cancel"
+msgstr "రద్దుచేయి"
 
-#: ../src/parole-player.c:432
-msgid "Open ISO image"
+#: ../src/parole-player.c:987
+msgid "Open"
+msgstr "తెరువు"
+
+#: ../src/parole-player.c:1003
+msgid "Subtitle Files"
 msgstr ""
 
-#: ../src/parole-player.c:449
-msgid "CD image"
+#: ../src/parole-player.c:1184 ../src/parole-player.c:1192
+msgid "Clear Recent Items"
 msgstr ""
 
-#: ../src/parole-player.c:449
-msgid "DVD image"
+#: ../src/parole-player.c:1186
+msgid ""
+"Are you sure you wish to clear your recent items history?  This cannot be "
+"undone."
 msgstr ""
 
-#: ../src/parole-player.c:779 ../src/parole-player.c:902
+#: ../src/parole-player.c:1277 ../src/parole-player.c:1410
 msgid "Media stream is not seekable"
 msgstr ""
 
-#: ../src/parole-player.c:1250
+#. * GTK Actions
+#. Play/Pause
+#: ../src/parole-player.c:1288 ../src/parole-player.c:2976
+msgid "_Play"
+msgstr "ఆడించు (_P)"
+
+#: ../src/parole-player.c:1289 ../src/parole-player.c:2976
+msgid "Play"
+msgstr "ఆడించు"
+
+#: ../src/parole-player.c:1292
+msgid "_Pause"
+msgstr "నిలిపివేయి (_P)"
+
+#: ../src/parole-player.c:1293
+msgid "Pause"
+msgstr ""
+
+#: ../src/parole-player.c:1745
 msgid "GStreamer backend error"
 msgstr ""
 
-#: ../src/parole-player.c:1293
+#: ../src/parole-player.c:1776
+msgid "Unknown Song"
+msgstr ""
+
+#: ../src/parole-player.c:1781 ../src/parole-player.c:1783
+#: ../src/parole-player.c:1789
+msgid "on"
+msgstr ""
+
+#: ../src/parole-player.c:1789 ../src/plugins/notify/notify-provider.c:145
+msgid "Unknown Album"
+msgstr ""
+
+#: ../src/parole-player.c:1796 ../src/parole-player.c:1800
+msgid "by"
+msgstr ""
+
+#: ../src/parole-player.c:1800 ../src/plugins/notify/notify-provider.c:147
+msgid "Unknown Artist"
+msgstr ""
+
+#: ../src/parole-player.c:1834
 msgid "Buffering"
 msgstr ""
 
-#: ../src/parole-about.c:95
+#: ../src/parole-player.c:1941 ../src/parole-player.c:3000
+#: ../src/parole-player.c:3241
+msgid "Fullscreen"
+msgstr "నిండుతెర"
+
+#: ../src/parole-player.c:1956
+msgid "Leave _Fullscreen"
+msgstr "నిండుతెరను వదిలివేయి (_F)"
+
+#: ../src/parole-player.c:1957
+msgid "Leave Fullscreen"
+msgstr "నిండుతెరను వదిలివేయి"
+
+#. * Un/Hide menubar
+#: ../src/parole-player.c:2053
+msgid "Show menubar"
+msgstr "మెనూబార్ చూపించు"
+
+#: ../src/parole-player.c:2259
+msgid "Mute"
+msgstr ""
+
+#: ../src/parole-player.c:2264
+msgid "Unmute"
+msgstr ""
+
+#: ../src/parole-player.c:2630 ../src/parole-player.c:2648
+msgid "Unable to open default web browser"
+msgstr ""
+
+#: ../src/parole-player.c:2632
+msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
+msgstr ""
+
+#: ../src/parole-player.c:2650
+msgid ""
+"Please go to http://docs.xfce.org/apps/parole/start to read Parole's online "
+"documentation."
+msgstr ""
+
+#. Previous Track
+#: ../src/parole-player.c:2984
+msgid "P_revious Track"
+msgstr "మునుపటి జాడ (_r)"
+
+#. Next Track
+#: ../src/parole-player.c:2992
+msgid "_Next Track"
+msgstr "తరువాతి జాడ (_N)"
+
+#. Toggle Playlist
+#: ../src/parole-player.c:3007
+msgid "Show _Playlist"
+msgstr ""
+
+#: ../src/parole-player.c:3007 ../src/parole-player.c:3347
+msgid "Show Playlist"
+msgstr ""
+
+#. Clear Recent Menu Item
+#: ../src/parole-player.c:3078
+msgid "_Clear recent items…"
+msgstr "ఇటీవలి అంశాలను చెరిపివేయి...(_C)"
+
+#: ../src/parole-player.c:3285
+msgid "Audio Track:"
+msgstr ""
+
+#: ../src/parole-player.c:3301
+msgid "Subtitles:"
+msgstr ""
+
+#: ../src/parole-player.c:3306 ../src/plugins/tray/tray-provider.c:247
+msgid "Close"
+msgstr "మూసివేయి"
+
+#: ../src/parole-player.c:3347
+msgid "Hide Playlist"
+msgstr "పాటలజాబితాను దాయి"
+
+#: ../src/parole-about.c:76
 msgid "translator-credits"
-msgstr ""
+msgstr "Praveen Illa <mail2ipn@gmail.com>, 2011-2014."
 
-#: ../src/parole-about.c:98
-#, fuzzy
+#: ../src/parole-about.c:79
 msgid "Visit Parole website"
-msgstr "వెబ్‌సైటుని సందర్శించండి"
+msgstr "పరోల్ జాలగూటిని సందర్శించండి"
 
-#: ../src/parole-disc.c:227
+#: ../src/parole-disc.c:114
 msgid "Play Disc"
-msgstr ""
+msgstr "డిస్కును ఆడించు"
 
 #: ../src/parole-subtitle-encoding.c:165
 msgid "Current Locale"
-msgstr ""
+msgstr "ప్రస్థుత స్థానీకరణం"
 
 #: ../src/parole-subtitle-encoding.c:168 ../src/parole-subtitle-encoding.c:170
 #: ../src/parole-subtitle-encoding.c:172 ../src/parole-subtitle-encoding.c:174
@@ -695,107 +1040,90 @@ msgstr "పాశ్చాత్య"
 msgid "Vietnamese"
 msgstr "వియత్నామీస్"
 
-#: ../src/parole-open-location.c:210
-msgid "Clear History"
+#. If plugin loading fails...
+#: ../src/parole-plugins-manager.c:276
+msgid "Plugin failed to load"
 msgstr ""
 
-#: ../src/parole-plugins-manager.c:302 ../src/parole-plugins-manager.c:440
-msgid "Visit Website"
-msgstr "వెబ్‌సైటుని సందర్శించండి"
+#: ../src/parole-plugins-manager.c:276
+msgid "Please check your installation"
+msgstr "దయచేసి మీ స్థాపనను సరిచూసుకోండి"
 
-#: ../src/parole-plugins-manager.c:418 ../src/parole-plugins-manager.c:419
+#: ../src/parole-plugins-manager.c:408
 msgid "No installed plugins found on this system"
 msgstr ""
 
-#: ../src/misc/parole-filters.c:64
+#: ../src/parole-plugins-manager.c:409
+msgid "Please check your installation."
+msgstr "దయచేసి మీ స్థాపనను సరిచూసుకోండి"
+
+#: ../src/misc/parole-filters.c:65
 msgid "Audio"
 msgstr "ఆడియో"
 
-#: ../src/misc/parole-filters.c:90
+#: ../src/misc/parole-filters.c:91
 msgid "Video"
 msgstr "వీడియో"
 
-#: ../src/misc/parole-filters.c:115
+#: ../src/misc/parole-filters.c:116 ../src/misc/parole-filters.c:134
 msgid "Audio and video"
 msgstr "ఆడియో మరియు వీడియో"
 
-#: ../src/misc/parole-filters.c:144
+#: ../src/misc/parole-filters.c:163 ../src/misc/parole-filters.c:179
 msgid "All supported files"
 msgstr ""
 
-#: ../src/misc/parole-filters.c:171
+#: ../src/misc/parole-filters.c:206
 msgid "Playlist files"
 msgstr ""
 
-#: ../src/plugins/properties/stream-properties-provider.c:254
-msgid "Title:"
-msgstr "శీర్షిక:"
-
-#: ../src/plugins/properties/stream-properties-provider.c:277
-msgid "Artist:"
-msgstr "కళాకారుడు:"
-
-#: ../src/plugins/properties/stream-properties-provider.c:300
-msgid "Album:"
-msgstr "ఆల్బమ్:"
-
-#: ../src/plugins/properties/stream-properties-provider.c:323
-msgid "Year:"
-msgstr "సంవత్సరం:"
-
-#: ../src/plugins/properties/stream-properties-provider.c:392
-msgid "Stream doesn't support tags changes"
+#: ../src/plugins/notify/notify-provider.c:150
+#: ../src/plugins/notify/notify-provider.c:153
+msgid "<i>on</i>"
 msgstr ""
 
-#: ../src/plugins/properties/stream-properties-provider.c:399
-msgid "Save media tags changes"
+#: ../src/plugins/notify/notify-provider.c:150
+#: ../src/plugins/notify/notify-provider.c:153
+msgid "<i>by</i>"
 msgstr ""
 
-#: ../src/plugins/properties/stream-properties-provider.c:524
-msgid "Properties"
-msgstr "లక్షణాలు"
-
-#: ../src/plugins/properties/stream-properties.desktop.in.h:1
-msgid "Stream Properties"
+#: ../src/plugins/notify/notify.desktop.in.h:1
+msgid "Notify"
 msgstr ""
 
-#: ../src/plugins/properties/stream-properties.desktop.in.h:2
-msgid "Read media properties"
+#: ../src/plugins/notify/notify.desktop.in.h:2
+msgid "Show notifications for currently playing tracks"
 msgstr ""
 
-#: ../src/plugins/tray/tray-provider.c:283
-msgid "<b>Playing:</b>"
-msgstr ""
+#: ../src/plugins/tray/tray-provider.c:135
+msgid "_Open"
+msgstr "తెరువు (_O)"
 
-#: ../src/plugins/tray/tray-provider.c:283
-msgid "<b>Duration:</b>"
-msgstr "<b>నిడివి:</b>"
-
-#: ../src/plugins/tray/tray-provider.c:419
+#: ../src/plugins/tray/tray-provider.c:244
 msgid "Tray icon plugin"
 msgstr ""
 
-#: ../src/plugins/tray/tray-provider.c:429
-msgid "Enable notification"
-msgstr ""
-
-#: ../src/plugins/tray/tray-provider.c:438
+#: ../src/plugins/tray/tray-provider.c:254
 msgid "Always minimize to tray when window is closed"
 msgstr ""
 
-#: ../src/plugins/tray/tray-provider.c:477
-msgid "Minimize to tray?"
+#: ../src/plugins/tray/tray-provider.c:300
+msgid "Are you sure you want to quit?"
 msgstr ""
 
-#: ../src/plugins/tray/tray-provider.c:483
+#: ../src/plugins/tray/tray-provider.c:303
+msgid "Parole can be minimized to the system tray instead."
+msgstr ""
+
+#: ../src/plugins/tray/tray-provider.c:306
 msgid "Minimize to tray"
 msgstr ""
 
-#: ../src/plugins/tray/tray-provider.c:499
-msgid "Are you sure you want to quit Parole"
-msgstr ""
+#: ../src/plugins/tray/tray-provider.c:318
+msgid "Quit"
+msgstr "నిష్క్రమించు"
 
-#: ../src/plugins/tray/tray-provider.c:503
+#: ../src/plugins/tray/tray-provider.c:327
 msgid "Remember my choice"
 msgstr ""
 
@@ -807,40 +1135,10 @@ msgstr ""
 msgid "Show icon in the system tray"
 msgstr ""
 
-#: ../src/plugins/power-manager/power-manager.desktop.in.h:1
-msgid "Power Manager Plugin"
+#: ../src/plugins/mpris2/mpris2.desktop.in.h:1
+msgid "MPRIS2"
 msgstr ""
 
-#: ../src/plugins/power-manager/power-manager.desktop.in.h:2
-msgid "Inhibit Power Manager from suspending the machine while playing DVD."
+#: ../src/plugins/mpris2/mpris2.desktop.in.h:2
+msgid "MPRIS2 remote control"
 msgstr ""
-
-#~ msgid "Chapter Menu"
-#~ msgstr "అధ్యాయం మెనూ"
-
-#~ msgid "DVD"
-#~ msgstr "డీవీడీ"
-
-#~ msgid "DVD Menu"
-#~ msgstr "డీవీడీ మెను"
-
-#~ msgid "Next Chapter"
-#~ msgstr "తరువాతి అధ్యాయం"
-
-#~ msgid "Previous Chapter"
-#~ msgstr "మునుపటి అధ్యాయం"
-
-#~ msgid "Add"
-#~ msgstr "జతచేయి"
-
-#~ msgid "Stopped"
-#~ msgstr "ఆపివేయబడింది"
-
-#~ msgid "Finished"
-#~ msgstr "పూర్తయింది"
-
-#~ msgid "Paused"
-#~ msgstr "నిలిపివేయబడింది"
-
-#~ msgid "Playing Track"
-#~ msgstr "ఆడుతున్న పాట"
