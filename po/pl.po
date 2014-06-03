@@ -13,9 +13,9 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-01-26 00:31+0100\n"
-"PO-Revision-Date: 2014-01-29 13:35+0000\n"
-"Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/xfce/language/pl/)\n"
+"PO-Revision-Date: 2014-06-03 15:40+0000\n"
+"Last-Translator: Piotr Sokół <psokol@jabster.pl>\n"
+"Language-Team: Polish (http://www.transifex.com/projects/p/xfce-apps/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -42,7 +42,7 @@ msgstr "Otwórz położe_nie..."
 
 #: ../data/interfaces/parole.ui.h:5
 msgid "Open _Recent"
-msgstr "Otwórz o_statnie"
+msgstr "O_statnio otwarte"
 
 #: ../data/interfaces/parole.ui.h:6
 msgid "_Save Playlist…"
@@ -826,7 +826,7 @@ msgstr "Wyłącza tryb pełnego ekranu"
 #. * Un/Hide menubar
 #: ../src/parole-player.c:2053
 msgid "Show menubar"
-msgstr "Wyświetlanie paska menu"
+msgstr "Pasek menu"
 
 #: ../src/parole-player.c:2259
 msgid "Mute"
@@ -834,7 +834,7 @@ msgstr "Wyciszenie"
 
 #: ../src/parole-player.c:2264
 msgid "Unmute"
-msgstr "Wyłącza wyciszenie"
+msgstr "Wyłącz wyciszenie"
 
 #: ../src/parole-player.c:2630 ../src/parole-player.c:2648
 msgid "Unable to open default web browser"
@@ -848,7 +848,7 @@ msgstr "Proszę zgłaszać błędy na stronie http://docs.xfce.org/apps/parole/b
 msgid ""
 "Please go to http://docs.xfce.org/apps/parole/start to read Parole's online "
 "documentation."
-msgstr "Aby przeczytać dokumentacje Parole prosimy przejść pod adres http://docs.xfce.org/apps/parole/start."
+msgstr "Dokumentację programu można znaleźć pod adresem http://docs.xfce.org/apps/parole/start."
 
 #. Previous Track
 #: ../src/parole-player.c:2984
@@ -863,7 +863,7 @@ msgstr "_Następne nagranie"
 #. Toggle Playlist
 #: ../src/parole-player.c:3007
 msgid "Show _Playlist"
-msgstr "Wyświetlanie _listy odtwarzania"
+msgstr "_Lista odtwarzania"
 
 #: ../src/parole-player.c:3007 ../src/parole-player.c:3347
 msgid "Show Playlist"
@@ -892,7 +892,7 @@ msgstr "Ukrywa listę odtwarzania"
 
 #: ../src/parole-about.c:76
 msgid "translator-credits"
-msgstr "Piotr Sokół <psokol@jabster.pl>, 2012, 2013."
+msgstr "Piotr Sokół <psokol@jabster.pl>, 2012, 2013, 2014."
 
 #: ../src/parole-about.c:79
 msgid "Visit Parole website"
