@@ -63,9 +63,9 @@ static const char subtitle_ext[][4] = {
 
 /*
  * compare_by_name_using_number
- * 
+ *
  * * Copyright (c) 2005-2007 Benedikt Meurer <benny@xfce.org>
- * 
+ *
  */
 static gint
 compare_by_name_using_number (const gchar *ap,
@@ -93,9 +93,9 @@ compare_by_name_using_number (const gchar *ap,
 
 /*
  * thunar_file_compare_by_name
- * 
+ *
  * * Copyright (c) 2005-2007 Benedikt Meurer <benny@xfce.org>
- * 
+ *
  */
 gint
 thunar_file_compare_by_name (ParoleFile *file_a,
@@ -236,15 +236,15 @@ parole_get_name_without_extension (const gchar *name)
 {
     guint len, suffix;
     gchar *ret;
-    
+
     len = strlen (name);
-    
+
     for ( suffix = len -1; suffix > 0;  suffix--)
     {
         if ( name [suffix] == '.' )
             break;
     }
-    
+
     ret = g_strndup (name, sizeof (char) * (suffix));
     return ret;
 }
@@ -255,13 +255,13 @@ parole_get_subtitle_in_dir (const gchar *dir_path, const gchar *file)
     gchar *sub_path = NULL;
     gchar *file_no_ext;
     guint i;
-    
+
     file_no_ext = parole_get_name_without_extension (file);
-    
+
     for ( i = 0; i < G_N_ELEMENTS (subtitle_ext); i++)
     {
         sub_path = g_strdup_printf ("%s%c%s.%s", dir_path, G_DIR_SEPARATOR, file_no_ext, subtitle_ext[i]);
-        
+
         if ( g_file_test (sub_path, G_FILE_TEST_EXISTS | G_FILE_TEST_IS_REGULAR ) )
             break;
 
@@ -270,7 +270,7 @@ parole_get_subtitle_in_dir (const gchar *dir_path, const gchar *file)
     }
 
     g_free (file_no_ext);
-    
+
     return sub_path;
 }
 
@@ -282,51 +282,51 @@ gchar *parole_get_subtitle_path (const gchar *uri)
     gchar *path;
     gchar *file_name;
     gchar *ret = NULL;
-    
+
     file = g_file_new_for_commandline_arg (uri);
     parent = g_file_get_parent (file);
-    
+
     TRACE ("uri : %s", uri);
-    
+
     if ( !parent )
     {
         g_object_unref (file);
         return NULL;
     }
-    
-    info = g_file_query_info (file, 
+
+    info = g_file_query_info (file,
                   "standard::*,",
                   0,
                   NULL,
                   &error);
-    
+
     if ( error )
     {
         g_warning ("%s: \n", error->message);
         g_error_free (error);
         return NULL;
     }
-    
+
     file_name = g_strdup (g_file_info_get_display_name (info));
-    
+
     path = g_file_get_path (parent);
-    
+
     ret = parole_get_subtitle_in_dir (path, file_name);
 
     g_object_unref (file);
     g_object_unref (parent);
     g_object_unref (info);
-    
+
     g_free (file_name);
     g_free (path);
-    
+
     return ret;
 }
 
 gboolean
 parole_is_uri_disc (const gchar *uri)
 {
-    if (   g_str_has_prefix (uri, "dvd:/")  || g_str_has_prefix (uri, "vcd:/") 
+    if (   g_str_has_prefix (uri, "dvd:/")  || g_str_has_prefix (uri, "vcd:/")
         || g_str_has_prefix (uri, "svcd:/") || g_str_has_prefix (uri, "cdda:/"))
         return TRUE;
     else
@@ -337,24 +337,24 @@ GdkPixbuf *parole_icon_load (const gchar *icon_name, gint size)
 {
     GdkPixbuf *pix = NULL;
     GError *error = NULL;
-    
-    pix = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (), 
-                                    icon_name, 
+
+    pix = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
+                                    icon_name,
                                     size,
                                     GTK_ICON_LOOKUP_USE_BUILTIN,
                                     &error);
-                    
+
     if ( error )
     {
         g_warning ("Unable to load icon : %s : %s", icon_name, error->message);
         g_error_free (error);
     }
-    
+
     return pix;
-    
+
 }
 
-void parole_get_media_files (GtkFileFilter *filter, const gchar *path, 
+void parole_get_media_files (GtkFileFilter *filter, const gchar *path,
                  gboolean recursive, GSList **list)
 {
     GtkFileFilter *playlist_filter;
@@ -368,12 +368,12 @@ void parole_get_media_files (GtkFileFilter *filter, const gchar *path,
     g_object_ref_sink (playlist_filter);
 
     gtk_main_iteration_do (FALSE);
-     
+
 
     if ( g_file_test (path, G_FILE_TEST_IS_REGULAR ) )
     {
         file = parole_file_new (path);
-        if ( parole_file_filter (playlist_filter, file) && 
+        if ( parole_file_filter (playlist_filter, file) &&
              parole_pl_parser_guess_format_from_extension (path) != PAROLE_PL_FORMAT_UNKNOWN )
         {
             playlist = parole_pl_parser_parse_from_file_by_extension (path);
@@ -393,10 +393,10 @@ void parole_get_media_files (GtkFileFilter *filter, const gchar *path,
     else if ( g_file_test (path, G_FILE_TEST_IS_DIR ) )
     {
         dir = g_dir_open (path, 0, NULL);
-        
+
         if ( G_UNLIKELY (dir == NULL) )
             return;
-        
+
         while ( (name = g_dir_read_name (dir)) )
         {
             gchar *path_internal = g_build_filename (path, name, NULL);
@@ -441,21 +441,21 @@ void parole_get_media_files (GtkFileFilter *filter, const gchar *path,
 
 gboolean
 parole_device_has_cdda (const gchar *device)
-{   
+{
     gboolean ret_val = FALSE;
- 
+
 #if defined(__linux__)
     gint fd;
     gint drive;
-    
+
     TRACE ("device : %s", device);
-    
+
     if ( (fd = open (device, O_RDONLY)) < 0 )
     {
         g_debug ("Failed to open device : %s", device);
         return FALSE;
     }
-    
+
     if ( (drive = ioctl (fd, CDROM_DRIVE_STATUS, NULL)) )
     {
         if ( drive == CDS_DRIVE_NOT_READY )
@@ -473,7 +473,7 @@ parole_device_has_cdda (const gchar *device)
             }
         }
     }
-    
+
     close (fd);
 #endif /* if defined(__linux__) */
     return ret_val;
@@ -484,11 +484,11 @@ parole_guess_uri_from_mount (GMount *mount)
 {
     GFile *file;
     gchar *uri = NULL;
-    
+
     g_return_val_if_fail (G_IS_MOUNT (mount), NULL);
-    
+
     file = g_mount_get_root (mount);
-    
+
     if ( g_file_has_uri_scheme (file, "cdda") )
     {
         uri = g_strdup ("cdda://");
@@ -497,13 +497,13 @@ parole_guess_uri_from_mount (GMount *mount)
     {
         gchar **content_type;
         int i;
-        
+
         content_type = g_content_type_guess_for_tree (file);
-        
+
         for ( i = 0; content_type && content_type[i]; i++)
         {
             TRACE ("Checking disc content type : %s", content_type[i]);
-            
+
             if ( !g_strcmp0 (content_type[i], "x-content/video-dvd") )
             {
                 uri = g_strdup ("dvd:/");
@@ -525,15 +525,15 @@ parole_guess_uri_from_mount (GMount *mount)
                 break;
             }
         }
-        
+
         if ( content_type )
             g_strfreev (content_type);
     }
-    
+
     g_object_unref (file);
-    
+
     TRACE ("Got uri=%s for mount=%s", uri, g_mount_get_name (mount));
-       
+
     return uri;
 }
 
@@ -545,31 +545,31 @@ parole_get_uri_from_unix_device (const gchar *device)
     guint len;
     guint i;
     gchar *uri = NULL;
-    
+
     if ( device == NULL )
         return NULL;
-    
+
     /*Check for cdda */
     if ( parole_device_has_cdda (device) )
     {
         return g_strdup ("cdda://");
     }
-    
+
     monitor = g_volume_monitor_get ();
-    
+
     list = g_volume_monitor_get_volumes (monitor);
-    
+
     len = g_list_length (list);
-    
+
     for ( i = 0; i < len; i++)
     {
         GVolume *volume;
         GDrive *drive;
-        
+
         volume = g_list_nth_data (list, i);
-        
+
         drive = g_volume_get_drive (volume);
-        
+
         if ( g_drive_can_eject (drive) && g_drive_has_media (drive) )
         {
             gchar *unix_device;
@@ -579,7 +579,7 @@ parole_get_uri_from_unix_device (const gchar *device)
             {
                 GMount *mount;
                 mount = g_volume_get_mount (volume);
-                
+
                 if ( mount )
                 {
                     uri = parole_guess_uri_from_mount (mount);
@@ -591,31 +591,31 @@ parole_get_uri_from_unix_device (const gchar *device)
             }
             g_free (unix_device);
         }
-        
+
         g_object_unref (drive);
     }
-    
+
     g_list_foreach (list, (GFunc) g_object_unref, NULL);
     g_list_free (list);
-    
+
     g_object_unref (monitor);
-    
+
     TRACE ("Got uri=%s for device=%s", uri, device);
-    
+
     return uri;
 }
 
 /**
  * parole_format_media_length:
- * 
+ *
  * @total_seconds: lenght of the media file in seconds
- * 
+ *
  * Returns : formated string for the media lenght
  **/
 gchar *parole_format_media_length (gint total_seconds)
 {
     gchar *timestring;
-    
+
     gint  hours;
     gint  minutes;
     gint  seconds;
@@ -633,44 +633,74 @@ gchar *parole_format_media_length (gint total_seconds)
     {
         timestring = g_strdup_printf ("%i:%02i:%02i", hours, minutes, seconds);
     }
-    
+
     return timestring;
 }
 
 
 /**
  * parole_taglibc_get_media_length:
- * 
+ *
  * @ParoleFile: a ParoleFile
- * 
+ *
  * Returns: the length of the media only if the file is a local
  *          media file.
  **/
 gchar *parole_taglibc_get_media_length (ParoleFile *file)
 {
     #ifdef HAVE_TAGLIBC
-    
+
     TagLib_File *tag_file;
-    
+
     if (g_str_has_prefix (parole_file_get_uri (file), "file:/"))
     {
         tag_file = taglib_file_new (parole_file_get_file_name (file));
-    
+
         if ( tag_file )
         {
             gint length = 0;
             const TagLib_AudioProperties *prop = taglib_file_audioproperties (tag_file);
-            
+
             if (prop)
                 length = taglib_audioproperties_length (prop);
-            
+
             taglib_file_free (tag_file);
-            
+
             if (length != 0)
                 return parole_format_media_length (length);
         }
     }
     #endif /* HAVE_TAGLIBC */
-    
+
     return NULL;
+}
+
+GSimpleAction* g_simple_toggle_action_new (const gchar *action_name,
+                                           const GVariantType *parameter_type)
+{
+    GSimpleAction *simple;
+
+    simple = g_simple_action_new_stateful (action_name, parameter_type,
+                                           g_variant_new_boolean (FALSE));
+
+    return simple;
+}
+
+gboolean g_simple_toggle_action_get_active (GSimpleAction *simple)
+{
+    GVariant *state;
+
+    g_object_get (simple,
+        "state", &state,
+        NULL);
+
+    return g_variant_get_boolean(state);
+}
+
+void g_simple_toggle_action_set_active (GSimpleAction *simple, gboolean active)
+{
+    if (g_simple_toggle_action_get_active(simple) != active)
+    {
+        g_simple_action_set_state (simple, g_variant_new_boolean(active));
+    }
 }

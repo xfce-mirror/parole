@@ -45,15 +45,23 @@ void        parole_get_media_files              (GtkFileFilter *filter,
                                                  const gchar *path,
                                                  gboolean recursive,
                                                  GSList **list);
-                             
+
 gboolean    parole_device_has_cdda              (const gchar *device);
 
 gchar      *parole_guess_uri_from_mount         (GMount *mount);
-                             
+
 gchar      *parole_get_uri_from_unix_device     (const gchar *device);
 
 gchar      *parole_format_media_length          (gint total_seconds);
 
 gchar      *parole_taglibc_get_media_length     (ParoleFile *file);
+
+GSimpleAction* g_simple_toggle_action_new       (const gchar *action_name,
+                                                 const GVariantType *parameter_type);
+
+gboolean g_simple_toggle_action_get_active      (GSimpleAction *simple);
+
+void g_simple_toggle_action_set_active          (GSimpleAction *simple,
+                                                 gboolean active);
 
 #endif /* __PAROLE_UTILS_ */

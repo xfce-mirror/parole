@@ -31,7 +31,7 @@
 #include "parole-stream.h"
 #include "parole-player.h"
 
-G_BEGIN_DECLS 
+G_BEGIN_DECLS
 
 #define PAROLE_TYPE_PROVIDER_PLAYER                 (parole_provider_player_get_type ())
 #define PAROLE_PROVIDER_PLAYER(o)                   (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_PROVIDER_PLAYER, ParoleProviderPlayer))
@@ -49,57 +49,57 @@ typedef enum
 
 
 
-struct _ParoleProviderPlayerIface 
+struct _ParoleProviderPlayerIface
 {
     GTypeInterface __parent__;
-    
+
     /*< private >*/
     GtkWidget   *(*get_main_window)             (ParoleProviderPlayer *player);
-    
+
     void        (*pack)                         (ParoleProviderPlayer *player,
-                                                 GtkWidget *widget, 
+                                                 GtkWidget *widget,
                                                  const gchar *title,
                                                  ParolePluginContainer container);
-                             
+
     ParoleState (*get_state)                    (ParoleProviderPlayer *player);
-    
+
     const ParoleStream *(*get_stream)           (ParoleProviderPlayer *player);
-    
+
     gboolean     (*play_uri)                    (ParoleProviderPlayer *player,
                                                  const gchar *uri);
-                             
+
     gboolean     (*pause)                       (ParoleProviderPlayer *player);
-    
+
     gboolean     (*resume)                      (ParoleProviderPlayer *player);
-    
+
     gboolean     (*stop)                        (ParoleProviderPlayer *player);
-    
+
     gboolean     (*play_previous)               (ParoleProviderPlayer *player);
-    
+
     gboolean     (*play_next)                   (ParoleProviderPlayer *player);
-    
+
     gboolean     (*seek)                        (ParoleProviderPlayer *player,
                                                  gdouble pos);
-                                                 
+
     gdouble      (*get_stream_position)         (ParoleProviderPlayer *player);
-                                                 
+
     gboolean     (*get_fullscreen)              (ParoleProviderPlayer *player);
-    
+
     gboolean     (*set_fullscreen)              (ParoleProviderPlayer *player,
                                                  gboolean fullscreen);
-                             
+
     void         (*open_media_chooser)          (ParoleProviderPlayer *player);
-    
+
     GSimpleAction*   (*get_action)              (ParoleProviderPlayer *player,
                                                  ParolePlayerAction action);
-                             
+
     /*< signals >*/
     void     (*tag_message)                     (ParoleProviderPlayer *player,
                                                  const ParoleStream *stream);
-                                                 
+
     void     (*seeked)                          (ParoleProviderPlayer *player,
                                                  gdouble value);
-                             
+
     void     (*state_changed)                   (ParoleProviderPlayer *player,
                                                  const ParoleStream *stream,
                                                  ParoleState state);
@@ -108,17 +108,17 @@ struct _ParoleProviderPlayerIface
 
 GType        parole_provider_player_get_type    (void) G_GNUC_CONST;
 
-GtkWidget   
+GtkWidget
 *parole_provider_player_get_main_window         (ParoleProviderPlayer *player);
 
-void         parole_provider_player_pack        (ParoleProviderPlayer *player, 
-                                                 GtkWidget *widget, 
+void         parole_provider_player_pack        (ParoleProviderPlayer *player,
+                                                 GtkWidget *widget,
                                                  const gchar *title,
                                                  ParolePluginContainer container);
-                             
+
 ParoleState parole_provider_player_get_state    (ParoleProviderPlayer *player);
 
-const ParoleStream 
+const ParoleStream
 *parole_provider_player_get_stream              (ParoleProviderPlayer *player);
 
 gboolean    parole_provider_player_play_uri     (ParoleProviderPlayer *player,
@@ -136,17 +136,17 @@ gboolean    parole_provider_player_play_next    (ParoleProviderPlayer *player);
 
 gboolean    parole_provider_player_seek         (ParoleProviderPlayer *player,
                                                  gdouble pos);
-                                                 
+
 gdouble parole_provider_player_get_stream_position(ParoleProviderPlayer *player);
 
-void        
+void
 parole_provider_player_open_media_chooser       (ParoleProviderPlayer *player);
 
 GSimpleAction *parole_provider_player_get_action(ParoleProviderPlayer *player, ParolePlayerAction action);
 
 gboolean    parole_provider_player_get_fullscreen(ParoleProviderPlayer *player);
 
-gboolean    parole_provider_player_set_fullscreen(ParoleProviderPlayer *player, 
+gboolean    parole_provider_player_set_fullscreen(ParoleProviderPlayer *player,
                                                  gboolean fullscreen);
 
 G_END_DECLS

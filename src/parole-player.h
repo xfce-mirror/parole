@@ -38,19 +38,19 @@ typedef struct
 {
     GObject                     parent;
     ParolePlayerPrivate        *priv;
-    
+
 } ParolePlayer;
 
 typedef struct
 {
     GObjectClass                parent_class;
-    
+
     void                        (*shuffle_toggled)              (ParolePlayer *player,
                                                                  gboolean shuffle_toggled);
-                                     
+
     void                        (*repeat_toggled)               (ParolePlayer *player,
                                                                  gboolean repeat_toggled);
-                                                                 
+
     void                        (*gst_dvd_nav_message)          (ParolePlayer *player,
                                                                  gint gst_dvd_nav_message);
 
@@ -76,9 +76,9 @@ void                            parole_player_terminate         (ParolePlayer *p
 
 void                            parole_player_embedded          (ParolePlayer *player);
 
-void                            parole_player_full_screen       (ParolePlayer *player, 
+void                            parole_player_full_screen       (ParolePlayer *player,
                                                                  gboolean fullscreen);
-                                                                 
+
 GSimpleAction                  *parole_player_get_action(ParolePlayerAction action);
 
 
