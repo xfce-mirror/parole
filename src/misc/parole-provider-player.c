@@ -473,9 +473,9 @@ void parole_provider_player_open_media_chooser (ParoleProviderPlayer *player)
  * 
  * Since: 0.6
  **/
-GtkAction *parole_provider_player_get_action(ParoleProviderPlayer *player, ParolePlayerAction action)
+GSimpleAction *parole_provider_player_get_action(ParoleProviderPlayer *player, ParolePlayerAction action)
 {
-    GtkAction *ret = NULL;;
+    GSimpleAction *ret = NULL;;
     
     g_return_val_if_fail (PAROLE_IS_PROVIDER_PLAYER (player), NULL);
     

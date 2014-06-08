@@ -85,6 +85,30 @@ exit_activated_cb (TrayProvider *tray)
     gtk_main_do_event ((GdkEvent *) &ev);
 }
 
+play_pause_activated_cb (TrayProvider *tray)
+{
+    menu_selection_done_cb (tray);
+
+    if ( tray->state == PAROLE_STATE_PLAYING )
+        parole_provider_player_pause (tray->player);
+    else if ( tray->state == PAROLE_STATE_PAUSED )
+        parole_provider_player_resume (tray->player);
+}
+
+static void
+previous_activated_cb (TrayProvider *tray)
+{
+    menu_selection_done_cb (tray);
+    parole_provider_player_play_previous (tray->player);
+}
+
+static void
+next_activated_cb (TrayProvider *tray)
+{
+    menu_selection_done_cb (tray);
+    parole_provider_player_play_next (tray->player);
+}
+
 static void
 open_activated_cb (TrayProvider *tray)
 {
@@ -95,30 +119,35 @@ static void
 popup_menu_cb (GtkStatusIcon *icon, guint button, 
                guint activate_time, TrayProvider *tray)
 {
-    GtkWidget *menu, *mi, *image;
-    GtkAction *action;
+    GtkWidget *menu, *mi;
     
     menu = gtk_menu_new ();
 
     /*
      * Play pause
      */
-    action = parole_provider_player_get_action(PAROLE_PROVIDER_PLAYER(tray->player), PAROLE_PLAYER_ACTION_PLAYPAUSE);
-    mi = gtk_action_create_menu_item(action);
+    mi = gtk_menu_item_new_with_mnemonic(tray->state == PAROLE_STATE_PLAYING ? _("_Pause") : _("_Play"));
+    gtk_widget_set_sensitive (mi, TRUE);
+    gtk_widget_show (mi);
+    g_signal_connect_swapped (mi, "activate", G_CALLBACK (play_pause_activated_cb), tray);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
     
     /*
      * Previous Track
      */
-    action = parole_provider_player_get_action(PAROLE_PROVIDER_PLAYER(tray->player), PAROLE_PLAYER_ACTION_PREVIOUS);
-    mi = gtk_action_create_menu_item(action);
+    mi = gtk_menu_item_new_with_mnemonic(_("P_revious Track"));
+    gtk_widget_set_sensitive (mi, TRUE);
+    gtk_widget_show (mi);
+    g_signal_connect_swapped (mi, "activate", G_CALLBACK (previous_activated_cb), tray);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
     
     /*
      * Next Track
      */
-    action = parole_provider_player_get_action(PAROLE_PROVIDER_PLAYER(tray->player), PAROLE_PLAYER_ACTION_NEXT);
-    mi = gtk_action_create_menu_item(action);
+    mi = gtk_menu_item_new_with_mnemonic(_("_Next Track"));
+    gtk_widget_set_sensitive (mi, TRUE);
+    gtk_widget_show (mi);
+    g_signal_connect_swapped (mi, "activate", G_CALLBACK (next_activated_cb), tray);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
     
     /*
@@ -131,9 +160,7 @@ popup_menu_cb (GtkStatusIcon *icon, guint button,
     /*
      * Open
      */
-    image = gtk_image_new_from_icon_name("document-open-symbolic", GTK_ICON_SIZE_MENU);
-    mi = gtk_image_menu_item_new_with_mnemonic(_("_Open"));
-    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), image);
+    mi = gtk_menu_item_new_with_mnemonic(_("_Open"));
     gtk_widget_show (mi);
     g_signal_connect_swapped (mi, "activate", G_CALLBACK (open_activated_cb), tray);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
@@ -148,9 +175,7 @@ popup_menu_cb (GtkStatusIcon *icon, guint button,
     /*
      * Exit
      */
-    image = gtk_image_new_from_icon_name("system-shutdown-symbolic", GTK_ICON_SIZE_MENU);
-    mi = gtk_image_menu_item_new_with_mnemonic(_("_Quit"));
-    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), image);
+    mi = gtk_menu_item_new_with_mnemonic(_("_Quit"));
     gtk_widget_set_sensitive (mi, TRUE);
     gtk_widget_show (mi);
     g_signal_connect_swapped (mi, "activate", G_CALLBACK (exit_activated_cb), tray);

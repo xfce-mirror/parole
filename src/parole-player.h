@@ -79,7 +79,7 @@ void                            parole_player_embedded          (ParolePlayer *p
 void                            parole_player_full_screen       (ParolePlayer *player, 
                                                                  gboolean fullscreen);
                                                                  
-GtkAction                      *parole_player_get_action(ParolePlayerAction action);
+GSimpleAction                  *parole_player_get_action(ParolePlayerAction action);
 
 
 G_END_DECLS

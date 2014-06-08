@@ -191,11 +191,11 @@ void                parole_media_list_grab_focus    (ParoleMediaList *list);
                                                      
 void
 parole_media_list_connect_repeat_action             (ParoleMediaList *list,
-                                                     GtkAction *action);
+                                                     GSimpleAction *simple);
                                                      
 void
 parole_media_list_connect_shuffle_action            (ParoleMediaList *list,
-                                                     GtkAction *action);
+                                                     GSimpleAction *simple);
                                                                 
 void parole_media_list_add_dvd (ParoleMediaList *list, gchar *dvd_name);
 

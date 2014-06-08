@@ -86,6 +86,8 @@ static GtkTargetEntry target_entry[] =
     { "text/uri-list", 0, 1 },
 };
 
+ParoleMediaList *media_list = NULL;
+
 static void     parole_media_list_dbus_class_init   (ParoleMediaListClass *klass);
 static void     parole_media_list_dbus_init         (ParoleMediaList      *list);
 
@@ -193,7 +195,7 @@ enum
 
 static guint signals [LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE (ParoleMediaList, parole_media_list, GTK_TYPE_VBOX)
+G_DEFINE_TYPE (ParoleMediaList, parole_media_list, GTK_TYPE_BOX)
 
 static void
 parole_media_list_set_widget_sensitive (ParoleMediaList *list, gboolean sensitive)
@@ -1224,9 +1226,7 @@ parole_media_list_add_open_containing_folder (ParoleMediaList *list, GtkWidget *
             dirname = g_path_get_dirname (filename);
             
             /* Clear */
-            mi = gtk_image_menu_item_new_with_label (_("Open Containing Folder"));
-            img = gtk_image_new_from_icon_name("document-open-symbolic", GTK_ICON_SIZE_MENU);
-            gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi), img);
+            mi = gtk_menu_item_new_with_label (_("Open Containing Folder"));
             gtk_widget_set_sensitive (mi, TRUE);
             gtk_widget_show (mi);
             g_signal_connect_swapped   (mi, "activate",
@@ -1618,6 +1618,7 @@ parole_media_list_init (ParoleMediaList *list)
     GtkBuilder *builder;
     GtkWidget  *box;
     
+    media_list = list;
     list->priv = PAROLE_MEDIA_LIST_GET_PRIVATE (list);
     
     list->priv->bus = parole_g_session_bus_get ();
@@ -2185,14 +2186,62 @@ void parole_media_list_grab_focus (ParoleMediaList *list)
         gtk_widget_grab_focus (list->priv->view);
 }
 
-void parole_media_list_connect_repeat_action (ParoleMediaList *list, GtkAction *action)
+void repeat_action_state_changed (GSimpleAction *simple, GVariant *value, gpointer user_data)
 {
-    gtk_activatable_set_use_action_appearance(GTK_ACTIVATABLE(list->priv->repeat_button), TRUE);
-    gtk_activatable_set_related_action(GTK_ACTIVATABLE(list->priv->repeat_button), action);
+    GVariant *state;
+    gboolean active;
+
+    g_object_get (simple,
+        "state", &state,
+        NULL);
+        
+    active = g_variant_get_boolean(state);
+    if (gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(media_list->priv->repeat_button)) != active)
+    {
+        gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(media_list->priv->repeat_button), active);
+    }
+}
+
+void repeat_toggled(GtkWidget *widget, GSimpleAction *simple)
+{
+    gboolean active = gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(media_list->priv->repeat_button));
+    g_simple_action_set_state (simple, g_variant_new_boolean(active));
+}
+
+void parole_media_list_connect_repeat_action (ParoleMediaList *list, GSimpleAction *simple)
+{
+    /* Connect state-changed event to modify widget */
+    g_signal_connect(G_OBJECT(simple), "notify::state", G_CALLBACK(repeat_action_state_changed), NULL);
+    /* Connect changed event to modify action */
+    g_signal_connect(G_OBJECT(list->priv->repeat_button), "clicked", G_CALLBACK(repeat_toggled), simple);
 }
                                                                 
-void parole_media_list_connect_shuffle_action (ParoleMediaList *list, GtkAction *action)
+void shuffle_action_state_changed (GSimpleAction *simple, GVariant *value, gpointer user_data)
 {
-    gtk_activatable_set_use_action_appearance(GTK_ACTIVATABLE(list->priv->shuffle_button), TRUE);
-    gtk_activatable_set_related_action(GTK_ACTIVATABLE(list->priv->shuffle_button), action);
+    GVariant *state;
+    gboolean active;
+
+    g_object_get (simple,
+        "state", &state,
+        NULL);
+        
+    active = g_variant_get_boolean(state);
+    if (gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(media_list->priv->shuffle_button)) != active)
+    {
+        gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(media_list->priv->shuffle_button), active);
+    }
+}
+
+void shuffle_toggled(GtkWidget *widget, GSimpleAction *simple)
+{
+    gboolean active = gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(media_list->priv->shuffle_button));
+    g_simple_action_set_state (simple, g_variant_new_boolean(active));
+}
+
+void parole_media_list_connect_shuffle_action (ParoleMediaList *list, GSimpleAction *simple)
+{
+    /* Connect state-changed event to modify widget */
+    g_signal_connect(G_OBJECT(simple), "notify::state", G_CALLBACK(shuffle_action_state_changed), NULL);
+    /* Connect changed event to modify action */
+    g_signal_connect(G_OBJECT(list->priv->repeat_button), "clicked", G_CALLBACK(shuffle_toggled), simple);
 }

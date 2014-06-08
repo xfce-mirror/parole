@@ -223,7 +223,7 @@ static void parole_plugin_player_open_media_chooser (ParoleProviderPlayer *provi
     g_object_unref (list);
 }
 
-static GtkAction* parole_plugin_player_get_action (ParoleProviderPlayer *provider, ParolePlayerAction action)
+static GSimpleAction* parole_plugin_player_get_action (ParoleProviderPlayer *provider, ParolePlayerAction action)
 {
     return parole_player_get_action (action);
 }

@@ -97,11 +97,11 @@ static void
 notify_playing (NotifyProvider *notify, const ParoleStream *stream)
 {
     GdkPixbuf *pix;
-    gboolean has_video;
+    gboolean has_video, enabled;
     gchar *title, *album, *artist, *year, *stream_uri;
     gchar *message;
     ParoleMediaType media_type;
-    GtkAction *action;
+    GSimpleAction *action;
     
     g_object_get (G_OBJECT (stream), 
                   "title", &title,
@@ -195,7 +195,10 @@ notify_playing (NotifyProvider *notify, const ParoleStream *stream)
     
     /* Only show Previous Track item if clicking previous is possible */
     action = parole_provider_player_get_action(PAROLE_PROVIDER_PLAYER(notify->player), PAROLE_PLAYER_ACTION_PREVIOUS);
-    if (gtk_action_get_sensitive(action))
+    g_object_get (G_OBJECT (action),
+                  "enabled", &enabled,
+                  NULL);
+    if (enabled)
     {
     notify_notification_add_action (notify->notification, 
                                     "play-previous", _("Previous Track"), 
@@ -205,7 +208,10 @@ notify_playing (NotifyProvider *notify, const ParoleStream *stream)
 
     /* Only show Next Track item if clicking next is possible */
     action = parole_provider_player_get_action(PAROLE_PROVIDER_PLAYER(notify->player), PAROLE_PLAYER_ACTION_NEXT);
-    if (gtk_action_get_sensitive(action))
+    g_object_get (G_OBJECT (action),
+                  "enabled", &enabled,
+                  NULL);
+    if (enabled)
     {
     notify_notification_add_action (notify->notification, 
                                     "play-next", _("Next Track"), 

@@ -90,7 +90,7 @@ struct _ParoleProviderPlayerIface
                              
     void         (*open_media_chooser)          (ParoleProviderPlayer *player);
     
-    GtkAction*   (*get_action)                  (ParoleProviderPlayer *player,
+    GSimpleAction*   (*get_action)              (ParoleProviderPlayer *player,
                                                  ParolePlayerAction action);
                              
     /*< signals >*/
@@ -142,7 +142,7 @@ gdouble parole_provider_player_get_stream_position(ParoleProviderPlayer *player)
 void        
 parole_provider_player_open_media_chooser       (ParoleProviderPlayer *player);
 
-GtkAction *parole_provider_player_get_action(ParoleProviderPlayer *player, ParolePlayerAction action);
+GSimpleAction *parole_provider_player_get_action(ParoleProviderPlayer *player, ParolePlayerAction action);
 
 gboolean    parole_provider_player_get_fullscreen(ParoleProviderPlayer *player);
 
