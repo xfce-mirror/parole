@@ -59,9 +59,9 @@ gchar      *parole_taglibc_get_media_length     (ParoleFile *file);
 GSimpleAction* g_simple_toggle_action_new       (const gchar *action_name,
                                                  const GVariantType *parameter_type);
 
-gboolean g_simple_toggle_action_get_active      (GSimpleAction *simple);
+gboolean    g_simple_toggle_action_get_active   (GSimpleAction *simple);
 
-void g_simple_toggle_action_set_active          (GSimpleAction *simple,
+void        g_simple_toggle_action_set_active   (GSimpleAction *simple,
                                                  gboolean active);
 
 #endif /* __PAROLE_UTILS_ */
