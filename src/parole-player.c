@@ -368,6 +368,7 @@ struct ParolePlayerPrivate
     GtkWidget          *save_playlist;
     GtkWidget          *dvd_menu;
     GtkWidget          *chapters_menu;
+    GtkWidget          *goto_position;
 
     /* Media Controls */
     GtkWidget          *control;
@@ -1375,6 +1376,8 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
     gboolean seekable;
     gboolean live;
 
+    int hide_controls_timeout;
+
     parole_media_list_set_row_playback_state (player->priv->list, player->priv->row, PAROLE_MEDIA_STATE_PLAYING);
 
     g_object_get (G_OBJECT (stream),
@@ -1432,7 +1435,10 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
     gtk_widget_grab_focus (player->priv->gst);
     parole_player_update_languages (player, PAROLE_GST(player->priv->gst));
 
-    g_timeout_add_seconds (4, (GSourceFunc) parole_player_hide_controls, player);
+    g_object_get (G_OBJECT (player->priv->conf),
+                  "hide-controls-timeout", &hide_controls_timeout,
+                  NULL);
+    g_timeout_add_seconds (hide_controls_timeout, (GSourceFunc) parole_player_hide_controls, player);
 }
 
 static void
@@ -2188,6 +2194,7 @@ gboolean
 parole_player_gst_widget_motion_notify_event (GtkWidget *widget, GdkEventMotion *ev, ParolePlayer *player)
 {
     static gulong hide_timeout = 0;
+    int hide_controls_timeout;
     GdkWindow *gdkwindow;
 
     if ( hide_timeout != 0)
@@ -2201,8 +2208,12 @@ parole_player_gst_widget_motion_notify_event (GtkWidget *widget, GdkEventMotion 
     gdkwindow = gtk_widget_get_window (GTK_WIDGET(player->priv->eventbox_output));
     gdk_window_set_cursor (gdkwindow, NULL);
 
+    g_object_get (G_OBJECT (player->priv->conf),
+                  "hide-controls-timeout", &hide_controls_timeout,
+                  NULL);
+
     if ( player->priv->state == PAROLE_STATE_PLAYING )
-        hide_timeout = g_timeout_add_seconds (4, (GSourceFunc) parole_player_hide_controls, player);
+        hide_timeout = g_timeout_add_seconds (hide_controls_timeout, (GSourceFunc) parole_player_hide_controls, player);
 
     return FALSE;
 }
@@ -2229,6 +2240,13 @@ void
 parole_player_media_menu_select_cb (GtkMenuItem *widget, ParolePlayer *player)
 {
     gtk_widget_set_sensitive (player->priv->save_playlist,
+                  !parole_media_list_is_empty (player->priv->list));
+}
+
+void
+parole_player_playback_menu_select_cb (GtkMenuItem *widget, ParolePlayer *player)
+{
+    gtk_widget_set_sensitive (player->priv->goto_position,
                   !parole_media_list_is_empty (player->priv->list));
 }
 
@@ -2713,6 +2731,93 @@ on_contents_clicked (GtkWidget *w, ParolePlayer *player)
     }
 }
 
+gboolean
+on_goto_position_clicked (GtkWidget *w, ParolePlayer *player)
+{
+    GtkWidget *dialog;
+    GtkWidget *vbox, *hbox, *label;
+    GtkWidget *spin_hrs, *spin_mins, *spin_secs;
+    GtkAdjustment *adjustment;
+    gint response;
+    gdouble position, duration = 0, current_position = 0;
+    int hrs, mins, secs;
+    int max_hrs, max_mins = 59;
+    int cur_hrs, cur_mins, cur_secs;
+
+    /* Create dialog */
+    dialog = gtk_dialog_new_with_buttons (_("Go to position"),
+                                        GTK_WINDOW(player->priv->window),
+                                        GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+                                        _("Cancel"), GTK_RESPONSE_CANCEL,
+                                        _("Go"), GTK_RESPONSE_OK,
+                                        NULL);
+    gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
+    gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+
+    /* pack boxes and spinbutton */
+    vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+    gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG(dialog))), vbox, TRUE, TRUE, 0);
+    gtk_container_set_border_width (GTK_CONTAINER (vbox), 6);
+
+    hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
+    gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 0);
+
+    label = gtk_label_new (_("Position:"));
+    gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 0);
+    gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
+
+    /* Get the stream length and set that as maximum for hours and minutes */
+    adjustment = gtk_range_get_adjustment (GTK_RANGE (player->priv->range));
+    duration = gtk_adjustment_get_upper (adjustment);
+    current_position = gtk_range_get_value (GTK_RANGE (player->priv->range));
+    max_hrs = (int) duration/3600;
+    if ( duration/60 <= 59 )
+        max_mins = (int) duration/60;
+
+    spin_hrs = gtk_spin_button_new_with_range (0, max_hrs, 1);
+    spin_mins = gtk_spin_button_new_with_range (0, max_mins, 1);
+    spin_secs = gtk_spin_button_new_with_range (0, 59, 1);
+    gtk_box_pack_start (GTK_BOX (hbox), spin_hrs, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (hbox), spin_mins, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (hbox), spin_secs, FALSE, FALSE, 0);
+
+    if ( duration < 3600 )
+        gtk_widget_set_sensitive (GTK_WIDGET (spin_hrs), FALSE);
+    if ( duration < 60 )
+        gtk_widget_set_sensitive (GTK_WIDGET (spin_mins), FALSE);
+    if ( duration = 0 )
+        gtk_widget_set_sensitive (GTK_WIDGET (spin_secs), FALSE);
+
+    if ( current_position != 0 )
+    {
+        cur_hrs = (int) current_position/3600;
+        cur_mins = (int) current_position/60 - cur_hrs*60;
+        cur_secs = (int) current_position - cur_hrs*3600 - cur_mins*60;
+        gtk_spin_button_set_value (GTK_SPIN_BUTTON (spin_hrs), cur_hrs);
+        gtk_spin_button_set_value (GTK_SPIN_BUTTON (spin_mins), cur_mins);
+        gtk_spin_button_set_value (GTK_SPIN_BUTTON (spin_secs), cur_secs);
+    }
+
+    // FIXME: Prevent the mouse-cursor and controls from hiding
+    /* show dialog */
+    gtk_widget_show_all (dialog);
+    response = gtk_dialog_run (GTK_DIALOG (dialog));
+    if (response == GTK_RESPONSE_OK)
+    {
+        /* update range according to the value */
+        hrs = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (spin_hrs));
+        mins = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (spin_mins));
+        secs = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (spin_secs));
+        position = hrs*3600 + mins*60 + secs;
+        parole_gst_seek (PAROLE_GST (player->priv->gst), position);
+        parole_player_change_range_value (player, position);
+    }
+
+    gtk_widget_destroy (GTK_WIDGET (dialog));
+
+    return (response == GTK_RESPONSE_OK);
+}
+
 /**
  *
  * Draw a simple rectangular GtkOverlay
@@ -2944,6 +3049,9 @@ parole_player_init (ParolePlayer *player)
     GtkWidget *clear_recent;
     GtkWidget *recent_separator;
 
+    GtkWidget *goto_position;
+
+
     GtkWidget *bug_report, *contents;
 
     GtkCellRenderer *cell, *sub_cell;
@@ -3172,6 +3280,11 @@ parole_player_init (ParolePlayer *player)
     g_signal_connect (bug_report, "activate", G_CALLBACK(on_bug_report_clicked), player);
     contents = GTK_WIDGET (gtk_builder_get_object (builder, "contents"));
     g_signal_connect (contents, "activate", G_CALLBACK(on_contents_clicked), player);
+    player->priv->goto_position = GTK_WIDGET (gtk_builder_get_object (builder, "goto_position"));
+    g_signal_connect (player->priv->goto_position, "activate",
+                  G_CALLBACK(on_goto_position_clicked), player);
+    g_signal_connect (gtk_builder_get_object (builder, "playback-menu"), "select",
+                  G_CALLBACK (parole_player_playback_menu_select_cb), player);
     /* End Menu Bar */
 
 

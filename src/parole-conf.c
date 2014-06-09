@@ -319,6 +319,8 @@ gchar *parole_conf_map_xfconf_property_name (const gchar *prop_name)
         value = g_strdup("window-maximized");
     if (g_strcmp0(prop_name, "/window/width") == 0)
         value = g_strdup("window-width");
+    if (g_strcmp0(prop_name, "/hide-controls-timeout") == 0)
+        value = g_strdup("hide-controls-timeout");
     return value;
 }
 
@@ -873,6 +875,23 @@ parole_conf_class_init (ParoleConfClass *klass)
                                             1,
                                             G_MAXINT16,
                                             760,
+                                            G_PARAM_READWRITE));
+
+    /**
+     * ParoleConf:hide-controls-timeout:
+     * 
+     * Xfconf property: /hide-controls-timeout
+     * 
+     * Control the timeout for the playback controls to hide.
+     **/
+    g_object_class_install_property (object_class,
+                                     PROP_WINDOW_WIDTH,
+                                     g_param_spec_int ("hide-controls-timeout",
+                                            "/hide-controls-timeout", 
+                                            NULL,
+                                            1,
+                                            G_MAXINT16,
+                                            4,
                                             G_PARAM_READWRITE));
 
 }
