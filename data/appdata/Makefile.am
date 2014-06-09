@@ -7,7 +7,7 @@ appdata_DATA = $(appdata_in_files:.xml.in=.xml)
 appdata_in_files = parole.appdata.xml.in
 
 EXTRA_DIST =					\
-	parole.appdata.xml.in
+	$(appdata_in_files)
 
 CLEANFILES =					\
 	$(appdata_DATA)
