@@ -3,4 +3,5 @@ SUBDIRS = 		\
 	pixmaps		\
 	icons		\
 	mime		\
-	desktop
+	desktop		\
+	appdata
