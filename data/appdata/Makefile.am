@@ -1,10 +1,14 @@
 #
 # .appdata
 #
-@INTLTOOL_XML_RULE@
+appdata_in_files = parole.appdata.xml.in
 appdatadir = $(datadir)/appdata
 appdata_DATA = $(appdata_in_files:.xml.in=.xml)
-appdata_in_files = parole.appdata.xml.in
+@INTLTOOL_XML_RULE@
 
-DISTCLEANFILES =					\
+EXTRA_DIST =					\
+	parole.appdata.xml.in
+
+CLEANFILES =					\
+	$(appdata_in_files)			\
 	$(appdata_DATA)
