@@ -504,7 +504,7 @@ void        parole_player_widget_activate_action    (GtkWidget *widget,
     g_action_activate (G_ACTION(action), NULL);
 }
 
-void toggle_action_cb (GtkWidget *widget, GSimpleAction *action)
+static void toggle_action_cb (GtkWidget *widget, GSimpleAction *action)
 {
     if (!block_playlist_updates)
     g_simple_toggle_action_set_active (action,
@@ -1303,15 +1303,13 @@ parole_player_seekable_notify (ParoleStream *stream, GParamSpec *spec, ParolePla
 static void
 parole_player_set_playpause_button_from_stock (ParolePlayer *player, const gchar *stock_id)
 {
-    gchar *icon_name = NULL, *label = NULL, *tooltip = NULL;
+    gchar *icon_name = NULL, *tooltip = NULL;
 
     if (g_strcmp0(stock_id, "gtk-media-play") == 0) {
         icon_name = g_strdup("media-playback-start-symbolic");
-        label = _("_Play");
         tooltip = _("Play");
     } else if (g_strcmp0(stock_id, "gtk-media-pause") == 0) {
         icon_name = g_strdup("media-playback-pause-symbolic");
-        label = _("_Pause");
         tooltip = _("Pause");
     }
 
@@ -1662,7 +1660,8 @@ on_infobar_close_clicked (GtkButton *button, ParolePlayer *player)
     gtk_widget_hide(player->priv->infobar);
 }
 
-void parole_player_repeat_state_changed (GSimpleAction *simple, GVariant *value, ParolePlayer *player)
+static void
+parole_player_repeat_state_changed (GSimpleAction *simple, GVariant *value, ParolePlayer *player)
 {
     gboolean active = g_simple_toggle_action_get_active(simple);
     block_playlist_updates = TRUE;
@@ -1675,7 +1674,8 @@ void parole_player_repeat_state_changed (GSimpleAction *simple, GVariant *value,
     block_playlist_updates = FALSE;
 }
 
-void parole_player_shuffle_state_changed (GSimpleAction *simple, GVariant *value, ParolePlayer *player)
+static void
+parole_player_shuffle_state_changed (GSimpleAction *simple, GVariant *value, ParolePlayer *player)
 {
     gboolean active = g_simple_toggle_action_get_active(simple);
     block_playlist_updates = TRUE;
@@ -2193,13 +2193,13 @@ gboolean parole_player_hide_controls (gpointer data)
 gboolean
 parole_player_gst_widget_motion_notify_event (GtkWidget *widget, GdkEventMotion *ev, ParolePlayer *player)
 {
-    static gulong hide_timeout = 0;
+    static gulong hide_timeout;
     int hide_controls_timeout;
     GdkWindow *gdkwindow;
 
     if ( hide_timeout != 0)
     {
-        g_source_remove (hide_timeout);
+        g_source_remove_by_user_data (player);
         hide_timeout = 0;
     }
 
@@ -2243,7 +2243,7 @@ parole_player_media_menu_select_cb (GtkMenuItem *widget, ParolePlayer *player)
                   !parole_media_list_is_empty (player->priv->list));
 }
 
-void
+static void
 parole_player_playback_menu_select_cb (GtkMenuItem *widget, ParolePlayer *player)
 {
     gtk_widget_set_sensitive (player->priv->goto_position,
@@ -2731,7 +2731,7 @@ on_contents_clicked (GtkWidget *w, ParolePlayer *player)
     }
 }
 
-gboolean
+static gboolean
 on_goto_position_clicked (GtkWidget *w, ParolePlayer *player)
 {
     GtkWidget *dialog;
@@ -2785,7 +2785,7 @@ on_goto_position_clicked (GtkWidget *w, ParolePlayer *player)
         gtk_widget_set_sensitive (GTK_WIDGET (spin_hrs), FALSE);
     if ( duration < 60 )
         gtk_widget_set_sensitive (GTK_WIDGET (spin_mins), FALSE);
-    if ( duration = 0 )
+    if ( duration == 0 )
         gtk_widget_set_sensitive (GTK_WIDGET (spin_secs), FALSE);
 
     if ( current_position != 0 )
@@ -3032,7 +3032,6 @@ parole_player_setup_multimedia_keys (ParolePlayer *player)
 static void
 parole_player_init (ParolePlayer *player)
 {
-    GtkWidget *icon;
     GtkBuilder *builder;
     gint w, h;
     gboolean maximized;
@@ -3048,9 +3047,6 @@ parole_player_init (ParolePlayer *player)
     GtkRecentFilter *recent_filter;
     GtkWidget *clear_recent;
     GtkWidget *recent_separator;
-
-    GtkWidget *goto_position;
-
 
     GtkWidget *bug_report, *contents;
 

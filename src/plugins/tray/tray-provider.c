@@ -85,6 +85,7 @@ exit_activated_cb (TrayProvider *tray)
     gtk_main_do_event ((GdkEvent *) &ev);
 }
 
+static void
 play_pause_activated_cb (TrayProvider *tray)
 {
     menu_selection_done_cb (tray);

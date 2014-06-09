@@ -1220,7 +1220,7 @@ parole_media_list_add_open_containing_folder (ParoleMediaList *list, GtkWidget *
 
         if (g_str_has_prefix (uri, "file:///"))
         {
-            GtkWidget *mi, *img;
+            GtkWidget *mi;
             gchar *dirname;
 
             dirname = g_path_get_dirname (filename);
@@ -2186,7 +2186,8 @@ void parole_media_list_grab_focus (ParoleMediaList *list)
         gtk_widget_grab_focus (list->priv->view);
 }
 
-void repeat_action_state_changed (GSimpleAction *simple, GVariant *value, gpointer user_data)
+static void
+repeat_action_state_changed (GSimpleAction *simple, GVariant *value, gpointer user_data)
 {
     gboolean active = g_simple_toggle_action_get_active(simple);
 
@@ -2196,7 +2197,8 @@ void repeat_action_state_changed (GSimpleAction *simple, GVariant *value, gpoint
     }
 }
 
-void repeat_toggled(GtkWidget *widget, GSimpleAction *simple)
+static void
+repeat_toggled(GtkWidget *widget, GSimpleAction *simple)
 {
     gboolean active = gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(media_list->priv->repeat_button));
     g_simple_toggle_action_set_active(simple, active);
@@ -2210,7 +2212,8 @@ void parole_media_list_connect_repeat_action (ParoleMediaList *list, GSimpleActi
     g_signal_connect(G_OBJECT(list->priv->repeat_button), "clicked", G_CALLBACK(repeat_toggled), simple);
 }
 
-void shuffle_action_state_changed (GSimpleAction *simple, GVariant *value, gpointer user_data)
+static void
+shuffle_action_state_changed (GSimpleAction *simple, GVariant *value, gpointer user_data)
 {
     gboolean active = g_simple_toggle_action_get_active(simple);
 
@@ -2220,7 +2223,8 @@ void shuffle_action_state_changed (GSimpleAction *simple, GVariant *value, gpoin
     }
 }
 
-void shuffle_toggled(GtkWidget *widget, GSimpleAction *simple)
+static void
+shuffle_toggled(GtkWidget *widget, GSimpleAction *simple)
 {
     gboolean active = gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(media_list->priv->shuffle_button));
     g_simple_toggle_action_set_active(simple, active);
