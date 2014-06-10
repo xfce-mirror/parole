@@ -3433,6 +3433,9 @@ parole_player_init (ParolePlayer *player)
     gtk_cell_layout_pack_start( GTK_CELL_LAYOUT( player->priv->combobox_audiotrack ), cell, TRUE );
     gtk_cell_layout_set_attributes( GTK_CELL_LAYOUT( player->priv->combobox_audiotrack ), cell, "text", 0, NULL );
 
+    g_signal_connect (player->priv->combobox_audiotrack, "changed",
+                G_CALLBACK (parole_player_combo_box_audiotrack_changed_cb), player);
+
     /* Humanize and pack the Audio Track combobox */
     audiotrack_box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
     audiotrack_label = gtk_label_new(_("Audio Track:"));
@@ -3448,6 +3451,9 @@ parole_player_init (ParolePlayer *player)
     sub_cell = gtk_cell_renderer_text_new();
     gtk_cell_layout_pack_start( GTK_CELL_LAYOUT( player->priv->combobox_subtitles ), sub_cell, TRUE );
     gtk_cell_layout_set_attributes( GTK_CELL_LAYOUT( player->priv->combobox_subtitles ), sub_cell, "text", 0, NULL );
+
+    g_signal_connect (player->priv->combobox_subtitles, "changed",
+                G_CALLBACK (parole_player_combo_box_subtitles_changed_cb), player);
 
     /* Humanize and pack the Subtitles combobox */
     subtitle_box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
@@ -3693,11 +3699,35 @@ void parole_player_combo_box_audiotrack_changed_cb(GtkWidget *widget, ParolePlay
     parole_player_set_audiotrack_radio_menu_item_selected(player, audio_index);
 }
 
+static gboolean
+get_has_file_extension (gchar* filename, gchar* extension)
+{
+    gchar *lowercase = NULL;
+    gboolean has_ext = FALSE;
+
+    lowercase = g_utf8_strdown (filename, g_utf8_strlen(filename, -1));
+
+    has_ext = g_str_has_suffix(lowercase, extension);
+
+    g_free(lowercase);
+
+    return has_ext;
+}
+
 void parole_player_combo_box_subtitles_changed_cb(GtkWidget *widget, ParolePlayer *player)
 {
+    gchar *uri = parole_gst_get_file_uri(PAROLE_GST(player->priv->gst));
     gint sub_index = gtk_combo_box_get_active(GTK_COMBO_BOX(player->priv->combobox_subtitles));
-    if (player->priv->update_languages == FALSE)
+
+    if (get_has_file_extension(uri, "mkv"))
+    {
         gst_set_current_subtitle_track(PAROLE_GST(player->priv->gst), sub_index);
+    }
+    else
+    {
+        if (player->priv->update_languages == FALSE)
+            gst_set_current_subtitle_track(PAROLE_GST(player->priv->gst), sub_index);
+    }
     parole_player_set_subtitle_radio_menu_item_selected(player, sub_index);
 }
 
