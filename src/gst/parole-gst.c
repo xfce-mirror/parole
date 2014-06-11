@@ -2564,7 +2564,13 @@ void parole_gst_play_device_uri (ParoleGst *gst, const gchar *uri, const gchar *
      * but cdda:// works.
      */
     if ( G_UNLIKELY (!g_strcmp0 (uri, "cdda:/") ) )
+    {
         local_uri = "cdda://";
+    }
+    else if (g_strcmp0(uri, "cdda://") == 0)
+    {
+        local_uri = "cdda://";
+    }
     else
     {
         if (g_str_has_prefix(device, "/dev/"))
