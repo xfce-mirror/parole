@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.16.1 -->
 <interface>
-  <!-- interface-requires gtk+ 3.0 -->
+  <requires lib="gtk+" version="3.2"/>
+  <object class="GtkListStore" id="liststore">
+    <columns>
+      <!-- column-name filetype -->
+      <column type="gchararray"/>
+      <!-- column-name extension -->
+      <column type="gchararray"/>
+      <!-- column-name extension_id -->
+      <column type="guint"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">By Extension</col>
+        <col id="1"> </col>
+        <col id="2">0</col>
+      </row>
+    </data>
+  </object>
   <object class="GtkFileChooserDialog" id="filechooserdialog">
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
     <property name="title" translatable="yes">Save Playlist as…</property>
-    <property name="icon_name">parole</property>
     <property name="role">GtkFileChooserDialog</property>
     <property name="window_position">center-on-parent</property>
+    <property name="icon_name">parole</property>
     <property name="type_hint">dialog</property>
     <property name="action">save</property>
     <property name="do_overwrite_confirmation">True</property>
@@ -120,22 +138,5 @@
       <action-widget response="-6">button1</action-widget>
       <action-widget response="-3">button2</action-widget>
     </action-widgets>
-  </object>
-  <object class="GtkListStore" id="liststore">
-    <columns>
-      <!-- column-name filetype -->
-      <column type="gchararray"/>
-      <!-- column-name extension -->
-      <column type="gchararray"/>
-      <!-- column-name extension_id -->
-      <column type="guint"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes">By Extension</col>
-        <col id="1"> </col>
-        <col id="2">0</col>
-      </row>
-    </data>
   </object>
 </interface>

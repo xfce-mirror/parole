@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.16.1 -->
 <interface>
-  <!-- interface-requires gtk+ 3.0 -->
+  <requires lib="gtk+" version="3.2"/>
   <object class="GtkBox" id="playlist-box">
     <property name="width_request">220</property>
     <property name="visible">True</property>
@@ -17,18 +18,17 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="hscrollbar_policy">never</property>
-            <property name="window_placement_set">True</property>
             <property name="shadow_type">in</property>
             <child>
               <object class="GtkTreeView" id="media-list">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="rules_hint">True</property>
-                <signal name="drag-data-received" handler="parole_media_list_drag_data_received_cb" swapped="no"/>
-                <signal name="row-activated" handler="parole_media_list_row_activated_cb" swapped="no"/>
                 <signal name="button-release-event" handler="parole_media_list_button_release_event" swapped="no"/>
+                <signal name="drag-data-received" handler="parole_media_list_drag_data_received_cb" swapped="no"/>
                 <signal name="key-press-event" handler="parole_media_list_key_press" swapped="no"/>
                 <signal name="query-tooltip" handler="parole_media_list_query_tooltip" swapped="no"/>
+                <signal name="row-activated" handler="parole_media_list_row_activated_cb" swapped="no"/>
                 <child internal-child="selection">
                   <object class="GtkTreeSelection" id="treeview-selection1"/>
                 </child>
@@ -91,9 +91,6 @@
         <property name="can_focus">False</property>
         <property name="show_arrow">False</property>
         <property name="icon_size">1</property>
-        <style>
-          <class name="inline-toolbar"/>
-        </style>
         <child>
           <object class="GtkToolButton" id="add-media">
             <property name="visible">True</property>
@@ -199,6 +196,9 @@
             <property name="homogeneous">True</property>
           </packing>
         </child>
+        <style>
+          <class name="inline-toolbar"/>
+        </style>
       </object>
       <packing>
         <property name="expand">False</property>
