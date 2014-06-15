@@ -516,6 +516,8 @@ void parole_player_set_playlist_visible (ParolePlayer *player, gboolean visibili
     gint window_w, window_h, playlist_w;
     GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
 
+    gtk_widget_set_tooltip_text (GTK_WIDGET(player->priv->showhide_playlist_button), visibility ? _("Hide Playlist"):_("Show Playlist"));
+
     if (gtk_widget_get_visible (player->priv->playlist_nt) == visibility)
         return;
 
@@ -528,6 +530,7 @@ void parole_player_set_playlist_visible (ParolePlayer *player, gboolean visibili
         playlist_w = 220;
 
     g_simple_toggle_action_set_active( player->priv->toggle_playlist_action, visibility );
+    gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM(player->priv->showhide_playlist_menu_item), visibility);
     if ( visibility )
     {
         if ( !player->priv->full_screen )
@@ -3250,7 +3253,7 @@ parole_player_init (ParolePlayer *player)
 
     /* Show/Hide Playlist */
     player->priv->showhide_playlist_menu_item = GTK_WIDGET (gtk_builder_get_object (builder, "show-hide-list"));
-    g_signal_connect(G_OBJECT(player->priv->showhide_playlist_menu_item), "activate", G_CALLBACK(parole_player_widget_activate_action), player->priv->toggle_playlist_action);
+    gtk_menu_item_set_label (GTK_MENU_ITEM(player->priv->showhide_playlist_menu_item), _("Show Playlist"));
 
     player->priv->shuffle_menu_item = GTK_WIDGET (gtk_builder_get_object (builder, "shuffle"));
     g_signal_connect(G_OBJECT(player->priv->shuffle_menu_item), "activate", G_CALLBACK(toggle_action_cb), player->priv->toggle_shuffle_action);
@@ -3498,8 +3501,7 @@ parole_player_init (ParolePlayer *player)
     player->priv->last_h = h;
 
     parole_player_set_playlist_visible(player, showhide);
-    gtk_widget_set_tooltip_text (GTK_WIDGET(player->priv->showhide_playlist_button), _("Show Playlist"));
-    gtk_menu_item_set_label (GTK_MENU_ITEM(player->priv->showhide_playlist_menu_item), _("Show Playlist"));
+    g_signal_connect(G_OBJECT(player->priv->showhide_playlist_menu_item), "activate", G_CALLBACK(parole_player_widget_activate_action), player->priv->toggle_playlist_action);
 
     gtk_window_set_default_size (GTK_WINDOW (player->priv->window), w, h);
     gtk_window_resize (GTK_WINDOW (player->priv->window), w, h);
