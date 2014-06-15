@@ -531,6 +531,7 @@ void parole_player_set_playlist_visible (ParolePlayer *player, gboolean visibili
 
     g_simple_toggle_action_set_active( player->priv->toggle_playlist_action, visibility );
     gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM(player->priv->showhide_playlist_menu_item), visibility);
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(player->priv->showhide_playlist_button), visibility);
     if ( visibility )
     {
         if ( !player->priv->full_screen )
@@ -3399,7 +3400,6 @@ parole_player_init (ParolePlayer *player)
 
     /* Show/Hide Playlist button */
     player->priv->showhide_playlist_button = GTK_WIDGET (gtk_builder_get_object (builder, "media_toggleplaylist"));
-    g_signal_connect(G_OBJECT(player->priv->showhide_playlist_button), "clicked", G_CALLBACK(parole_player_widget_activate_action), player->priv->toggle_playlist_action);
 
     /* End Media Controls */
 
@@ -3502,6 +3502,7 @@ parole_player_init (ParolePlayer *player)
 
     parole_player_set_playlist_visible(player, showhide);
     g_signal_connect(G_OBJECT(player->priv->showhide_playlist_menu_item), "activate", G_CALLBACK(parole_player_widget_activate_action), player->priv->toggle_playlist_action);
+    g_signal_connect(G_OBJECT(player->priv->showhide_playlist_button), "clicked", G_CALLBACK(parole_player_widget_activate_action), player->priv->toggle_playlist_action);
 
     gtk_window_set_default_size (GTK_WINDOW (player->priv->window), w, h);
     gtk_window_resize (GTK_WINDOW (player->priv->window), w, h);
