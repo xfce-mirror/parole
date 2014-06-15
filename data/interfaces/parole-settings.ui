@@ -68,23 +68,23 @@
               <object class="GtkBox" id="box1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">6</property>
-                <property name="margin_right">12</property>
-                <property name="margin_top">9</property>
-                <property name="margin_bottom">12</property>
+                <property name="margin">12</property>
                 <property name="orientation">vertical</property>
-                <property name="spacing">12</property>
+                <property name="spacing">18</property>
                 <child>
                   <object class="GtkFrame" id="frame1">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label_xalign">0</property>
                     <property name="shadow_type">none</property>
+                    <property name="margin_right">12</property>
+                    <property name="margin_bottom">6</property>
                     <child>
                       <object class="GtkAlignment" id="alignment1">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="left_padding">12</property>
+                        <property name="margin_top">6</property>
                         <child>
                           <object class="GtkBox" id="box7">
                             <property name="visible">True</property>
@@ -139,6 +139,8 @@
                     <property name="can_focus">False</property>
                     <property name="label_xalign">0</property>
                     <property name="shadow_type">none</property>
+                    <property name="margin_right">12</property>
+                    <property name="margin_bottom">6</property>
                     <child>
                       <object class="GtkAlignment" id="alignment2">
                         <property name="visible">True</property>
@@ -149,7 +151,9 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="orientation">vertical</property>
-                            <property name="spacing">4</property>
+                            <property name="spacing">6</property>
+                            <property name="margin_top">6</property>
+                            <property name="margin_bottom">6</property>
                             <child>
                               <object class="GtkBox" id="box8">
                                 <property name="visible">True</property>
@@ -254,11 +258,14 @@
                     <property name="can_focus">False</property>
                     <property name="label_xalign">0</property>
                     <property name="shadow_type">none</property>
+                    <property name="margin_right">12</property>
+                    <property name="margin_bottom">6</property>
                     <child>
                       <object class="GtkAlignment" id="alignment3">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="left_padding">12</property>
+                        <property name="margin_top">6</property>
                         <child>
                           <object class="GtkBox" id="box9">
                             <property name="visible">True</property>
@@ -323,9 +330,9 @@
               <object class="GtkFrame" id="frame-display">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">6</property>
-                <property name="margin_right">12</property>
-                <property name="margin_top">9</property>
+                <property name="margin_left">12</property>
+                <property name="margin_right">24</property>
+                <property name="margin_top">12</property>
                 <property name="margin_bottom">12</property>
                 <property name="label_xalign">0</property>
                 <property name="shadow_type">none</property>
@@ -343,6 +350,7 @@
                           <object class="GtkGrid" id="grid1">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="margin_top">6</property>
                             <property name="row_spacing">6</property>
                             <property name="column_spacing">6</property>
                             <child>
@@ -524,9 +532,9 @@
               <object class="GtkFrame" id="frame5">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">6</property>
-                <property name="margin_right">12</property>
-                <property name="margin_top">9</property>
+                <property name="margin_left">12</property>
+                <property name="margin_right">24</property>
+                <property name="margin_top">12</property>
                 <property name="margin_bottom">12</property>
                 <property name="label_xalign">0</property>
                 <property name="shadow_type">none</property>
@@ -535,11 +543,12 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="left_padding">12</property>
+                    <property name="margin_top">6</property>
                     <child>
                       <object class="GtkGrid" id="grid3">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="row_spacing">3</property>
+                        <property name="row_spacing">6</property>
                         <property name="column_spacing">12</property>
                         <child>
                           <object class="GtkLabel" id="replace-playlist-label">
@@ -678,9 +687,9 @@
               <object class="GtkFrame" id="frame6">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">6</property>
-                <property name="margin_right">12</property>
-                <property name="margin_top">9</property>
+                <property name="margin_left">12</property>
+                <property name="margin_right">24</property>
+                <property name="margin_top">12</property>
                 <property name="margin_bottom">12</property>
                 <property name="label_xalign">0</property>
                 <property name="shadow_type">none</property>
@@ -689,12 +698,13 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="margin_left">12</property>
+                    <property name="margin_top">6</property>
                     <child>
                       <object class="GtkBox" id="box6">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="orientation">vertical</property>
-                        <property name="spacing">4</property>
+                        <property name="spacing">6</property>
                         <child>
                           <object class="GtkBox" id="box5">
                             <property name="visible">True</property>
@@ -736,7 +746,7 @@
                           <object class="GtkGrid" id="grid2">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="row_spacing">2</property>
+                            <property name="row_spacing">6</property>
                             <property name="column_spacing">6</property>
                             <property name="row_homogeneous">True</property>
                             <child>
