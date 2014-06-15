@@ -2596,37 +2596,51 @@ parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
 gboolean
 parole_player_key_press (GtkWidget *widget, GdkEventKey *ev, ParolePlayer *player)
 {
+    gboolean enabled;
+
     switch (ev->keyval)
     {
         case GDK_KEY_F11:
                 if ( player->priv->embedded != TRUE ) g_action_activate (G_ACTION(player->priv->media_fullscreen_action), NULL);
             return TRUE;
-#ifdef HAVE_XF86_KEYSYM
-        case XF86XK_AudioPlay:
-            parole_player_toggle_playpause(player);
-            return TRUE;
-        case XF86XK_AudioStop:
-            parole_player_pause_clicked (NULL, player);
-            return TRUE;
-        case XF86XK_AudioRaiseVolume:
-            parole_player_volume_up (NULL, player);
-            return TRUE;
-        case XF86XK_AudioLowerVolume:
-            parole_player_volume_down (NULL, player);
-            return TRUE;
-        case XF86XK_AudioMute:
-            parole_player_volume_mute (NULL, player);
-            return TRUE;
-        case XF86XK_AudioPrev:
-            parole_player_play_prev (player);
-            return TRUE;
-        case XF86XK_AudioNext:
-            parole_player_play_next (player, TRUE);
-            return TRUE;
-#endif /* HAVE_XF86_KEYSYM */
         default:
             break;
     }
+
+#ifdef HAVE_XF86_KEYSYM
+    g_object_get (G_OBJECT (player->priv->conf),
+                  "multimedia-keys", &enabled,
+                  NULL);
+    if (enabled)
+    {
+        switch (ev->keyval)
+        {
+            case XF86XK_AudioPlay:
+                parole_player_toggle_playpause (player);
+                return TRUE;
+            case XF86XK_AudioStop:
+                parole_player_pause_clicked (NULL, player);
+                return TRUE;
+            case XF86XK_AudioRaiseVolume:
+                parole_player_volume_up (NULL, player);
+                return TRUE;
+            case XF86XK_AudioLowerVolume:
+                parole_player_volume_down (NULL, player);
+                return TRUE;
+            case XF86XK_AudioMute:
+                parole_player_volume_mute (NULL, player);
+                return TRUE;
+            case XF86XK_AudioPrev:
+                parole_player_play_prev (player);
+                return TRUE;
+            case XF86XK_AudioNext:
+                parole_player_play_next (player, TRUE);
+                return TRUE;
+            default:
+                break;
+        }
+    }
+#endif /* HAVE_XF86_KEYSYM */
 
     return parole_player_handle_key_press (ev, player);
 }
@@ -2635,6 +2649,15 @@ parole_player_key_press (GtkWidget *widget, GdkEventKey *ev, ParolePlayer *playe
 static void
 parole_player_button_pressed_cb (ParoleButton *button, ParoleButtonKey key, ParolePlayer *player)
 {
+    gboolean enabled;
+
+    g_object_get (G_OBJECT (player->priv->conf),
+                  "multimedia-keys", &enabled,
+                  NULL);
+
+    if (!enabled)
+        return;
+
     PAROLE_DEBUG_ENUM ("Button Press:", key, ENUM_GTYPE_BUTTON_KEY);
 
     switch (key)
@@ -3009,24 +3032,6 @@ parole_player_set_wm_opacity_hint (GtkWidget *widget)
                      32, PropModeAppend,
                      (guchar *) &mode,
                      1);
-}
-
-static void
-parole_player_setup_multimedia_keys (ParolePlayer *player)
-{
-    #ifdef HAVE_XF86_KEYSYM
-    gboolean enabled;
-    g_object_get   (G_OBJECT (player->priv->conf),
-                    "multimedia-keys", &enabled,
-                    NULL);
-
-    if ( enabled )
-    {
-        player->priv->button = parole_button_new ();
-        g_signal_connect (player->priv->button, "button-pressed",
-        G_CALLBACK (parole_player_button_pressed_cb), player);
-    }
-    #endif
 }
 
 static void
@@ -3551,7 +3556,14 @@ parole_player_init (ParolePlayer *player)
 
     g_object_unref (builder);
 
-    parole_player_setup_multimedia_keys (player);
+    /*
+     * Set up multimedia keyboard buttons
+     */
+    #ifdef HAVE_XF86_KEYSYM
+    player->priv->button = parole_button_new ();
+    g_signal_connect (player->priv->button, "button-pressed",
+                      G_CALLBACK (parole_player_button_pressed_cb), player);
+    #endif
 
     g_signal_connect_swapped (player->priv->window, "notify::is-active",
               G_CALLBACK (parole_player_window_notify_is_active), player);
