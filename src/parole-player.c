@@ -534,8 +534,6 @@ void parole_player_set_playlist_visible (ParolePlayer *player, gboolean visibili
             gtk_window_resize(GTK_WINDOW (player->priv->window), window_w+playlist_w+player->priv->handle_width, window_h);
 
         gtk_widget_show (player->priv->playlist_nt);
-        gtk_menu_item_set_label (GTK_MENU_ITEM(player->priv->showhide_playlist_menu_item), _("Hide playlist") );
-        gtk_widget_set_tooltip_text (GTK_WIDGET(player->priv->showhide_playlist_button), _("Hide playlist") );
         g_object_set   (G_OBJECT (player->priv->conf),
                         "showhide-playlist", TRUE,
                         NULL);
@@ -543,8 +541,6 @@ void parole_player_set_playlist_visible (ParolePlayer *player, gboolean visibili
     else
     {
         gtk_widget_hide (player->priv->playlist_nt);
-        gtk_menu_item_set_label (GTK_MENU_ITEM(player->priv->showhide_playlist_menu_item), _("Show playlist") );
-        gtk_widget_set_tooltip_text (GTK_WIDGET(player->priv->showhide_playlist_button), _("Show playlist") );
         g_object_set   (G_OBJECT (player->priv->conf),
                         "showhide-playlist", FALSE,
                         NULL);
@@ -3502,10 +3498,8 @@ parole_player_init (ParolePlayer *player)
     player->priv->last_h = h;
 
     parole_player_set_playlist_visible(player, showhide);
-    gtk_widget_set_tooltip_text (GTK_WIDGET(player->priv->showhide_playlist_button),
-                                 showhide ? _("Hide Playlist") : _("Show Playlist"));
-    gtk_menu_item_set_label (GTK_MENU_ITEM(player->priv->showhide_playlist_menu_item),
-                                 showhide ? _("Hide Playlist") : _("Show Playlist"));
+    gtk_widget_set_tooltip_text (GTK_WIDGET(player->priv->showhide_playlist_button), _("Show Playlist"));
+    gtk_menu_item_set_label (GTK_MENU_ITEM(player->priv->showhide_playlist_menu_item), _("Show Playlist"));
 
     gtk_window_set_default_size (GTK_WINDOW (player->priv->window), w, h);
     gtk_window_resize (GTK_WINDOW (player->priv->window), w, h);
