@@ -69,11 +69,11 @@ enum
     PROP_SUBTITLE_ENCODING,
     PROP_SUBTITLE_FONT,
     /* Video */
+    PROP_VIDEO_SINK,
     PROP_ASPECT_RATIO,
     PROP_BRIGHTNESS,
     PROP_CONTRAST,
     PROP_DISABLE_SCREEN_SAVER,
-    PROP_ENABLE_XV,
     PROP_HUE,
     PROP_SATURATION,
     /* Window properties */
@@ -297,6 +297,8 @@ gchar *parole_conf_map_xfconf_property_name (const gchar *prop_name)
         value = g_strdup("subtitle-encoding");
     if (g_strcmp0(prop_name, "/subtitles/font") == 0)
         value = g_strdup("subtitle-font");
+    if (g_strcmp0(prop_name, "/video/videosink") == 0)
+        value = g_strdup("videosink");
     if (g_strcmp0(prop_name, "/video/aspect-ratio") == 0)
         value = g_strdup("aspect-ratio");
     if (g_strcmp0(prop_name, "/video/brightness") == 0)
@@ -305,8 +307,6 @@ gchar *parole_conf_map_xfconf_property_name (const gchar *prop_name)
         value = g_strdup("contrast");
     if (g_strcmp0(prop_name, "/video/disable-screensaver") == 0)
         value = g_strdup("reset-saver");
-    if (g_strcmp0(prop_name, "/video/enable-xv") == 0)
-        value = g_strdup("enable-xv");
     if (g_strcmp0(prop_name, "/video/hue") == 0)
         value = g_strdup("hue");
     if (g_strcmp0(prop_name, "/video/saturation") == 0)
@@ -700,6 +700,21 @@ parole_conf_class_init (ParoleConfClass *klass)
                                             G_PARAM_READWRITE));
 
     /**
+     * ParoleConf:videosink:
+     *
+     * Xfconf property: /video/videosink
+     *
+     * GStreamer videosink to use for output.
+     **/
+    g_object_class_install_property (object_class,
+                                     PROP_VIDEO_SINK,
+                                     g_param_spec_string  ("videosink",
+                                            "/video/videosink",
+                                            NULL,
+                                            "xvimagesink",
+                                            G_PARAM_READWRITE));
+
+    /**
      * ParoleConf:aspect-ratio:
      *
      * Xfconf property: /video/aspect-ratio
@@ -760,21 +775,6 @@ parole_conf_class_init (ParoleConfClass *klass)
                                      PROP_DISABLE_SCREEN_SAVER,
                                      g_param_spec_boolean ("reset-saver",
                                             "/video/disable-screensaver",
-                                            NULL,
-                                            TRUE,
-                                            G_PARAM_READWRITE));
-
-    /**
-     * ParoleConf:enable-xv:
-     *
-     * Xfconf property: /video/enable-xv
-     *
-     * Enable xv hardware extensions.
-     **/
-    g_object_class_install_property (object_class,
-                                     PROP_ENABLE_XV,
-                                     g_param_spec_boolean ("enable-xv",
-                                            "/video/enable-xv",
                                             NULL,
                                             TRUE,
                                             G_PARAM_READWRITE));

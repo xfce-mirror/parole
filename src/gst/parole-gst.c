@@ -95,6 +95,13 @@ typedef enum
 
 } GstPlayFlags;
 
+typedef enum
+{
+    XIMAGESINK,
+    XVIMAGESINK,
+    CLUTTERSINK
+} ParoleGstVideoSink;
+
 struct ParoleGstPrivate
 {
     GstElement         *playbin;
@@ -136,7 +143,7 @@ struct ParoleGstPrivate
     /*
      * xvimage sink has brightness+hue+saturation+contrast.
      */
-    gboolean            xvimage_sink;
+    ParoleGstVideoSink  image_sink;
 
     gulong              sig1;
     gulong              sig2;
@@ -426,7 +433,7 @@ parole_gst_set_video_color_balance (ParoleGst *gst)
     gint hue_value;
     gint saturation_value;
 
-    if ( !gst->priv->xvimage_sink)
+    if ( gst->priv->image_sink != XVIMAGESINK )
         return;
 
     g_object_get (G_OBJECT (gst->priv->playbin),
@@ -463,7 +470,7 @@ parole_gst_set_video_overlay (ParoleGst *gst)
     GstElement *video_sink;
 #if GTK_CHECK_VERSION(3,8,0)
 #else
-    gboolean enable_xv;
+    gchar *videosink;
 #endif
 
     g_object_get (G_OBJECT (gst->priv->playbin),
@@ -484,9 +491,9 @@ parole_gst_set_video_overlay (ParoleGst *gst)
 #if GTK_CHECK_VERSION(3,8,0)
 #else
     g_object_get (G_OBJECT (gst->priv->conf),
-                             "enable-xv", &enable_xv,
+                             "videosink", &videosink,
                              NULL);
-    if (enable_xv)
+    if (g_strcmp0(videosink, "ximagesink") == 0)
     {
         g_object_set(video_sink, "autopaint-colorkey", FALSE,
                                  "colorkey", 0x080810, NULL);
@@ -2147,12 +2154,12 @@ parole_gst_constructed (GObject *object)
 {
     ParoleGst *gst;
 
-    gboolean enable_xv;
+    gchar *videosink = NULL;
 
     gst = PAROLE_GST (object);
 
     g_object_get (G_OBJECT (gst->priv->conf),
-                  "enable-xv", &enable_xv,
+                  "videosink", &videosink,
                   NULL);
 
 #if GST_CHECK_VERSION(1, 0, 0)
@@ -2191,16 +2198,22 @@ parole_gst_constructed (GObject *object)
         g_error ("autoaudiosink load failed");
     }
 
-    if (enable_xv)
+    if (g_strcmp0(videosink, "xvimagesink") == 0)
     {
         gst->priv->video_sink = gst_element_factory_make ("xvimagesink", "video");
-        gst->priv->xvimage_sink = TRUE;
+        gst->priv->image_sink = XVIMAGESINK;
+    }
+
+    if (g_strcmp0(videosink, "cluttersink") == 0)
+    {
+        gst->priv->video_sink = gst_element_factory_make ("cluttersink", "video");
+        gst->priv->image_sink = CLUTTERSINK;
     }
 
     if ( G_UNLIKELY (gst->priv->video_sink == NULL) )
     {
-        gst->priv->xvimage_sink = FALSE;
-        g_debug ("%s trying to load ximagesink", enable_xv ? "xvimagesink not found " : "xv disabled ");
+        gst->priv->image_sink = XIMAGESINK;
+        g_debug ("%s trying to load ximagesink", g_strcmp0(videosink, "xvimagesink") ? "xvimagesink not found " : "xv disabled ");
         gst->priv->video_sink = gst_element_factory_make ("ximagesink", "video");
 
         if ( G_UNLIKELY (gst->priv->video_sink == NULL) )
@@ -2208,7 +2221,7 @@ parole_gst_constructed (GObject *object)
             GError *error;
             error = g_error_new (1, 0, _("Unable to load \"%s\" plugin"
                                      ", check your GStreamer installation."),
-                                     enable_xv ? "xvimagesink" : "ximagesink");
+                                     videosink);
             parole_gst_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (gst))),
                                     error);
             g_error_free (error);
@@ -2779,7 +2792,7 @@ gint64 parole_gst_get_stream_position (ParoleGst *gst)
 
 gboolean parole_gst_get_is_xvimage_sink (ParoleGst *gst)
 {
-    return gst->priv->xvimage_sink;
+    return gst->priv->image_sink == XVIMAGESINK;
 }
 
 void

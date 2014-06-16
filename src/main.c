@@ -209,41 +209,6 @@ parole_send_message (const gchar *message)
 
 }
 
-/**
- * xv_option_given:
- * @name  : name of the option.
- * @value : "TRUE"/"true" to enable xv hardware extensions or "FALSE"/"false" to 
- *          disable the xv hardware extensions.
- * @data  : user-data passed by the callback function.
- * @error : a #GError to store encoutered errors.
- *
- * Toggle the XV hardware extension via cli argument.
- **/
-static gboolean
-xv_option_given (const gchar *name, const gchar *value, gpointer data, GError **error)
-{
-    gboolean enabled = TRUE;
-    ParoleConf *conf;
-    
-    if ( !g_strcmp0 (value, "TRUE") || !g_strcmp0 (value, "true"))
-        enabled = TRUE;
-    else if (!g_strcmp0 (value, "FALSE") || !g_strcmp0 (value, "false"))
-        enabled = FALSE;
-    else 
-    {
-        g_set_error (error, 0, 0, "%s %s : %s",  name, _("Unknown argument "), value);
-        return FALSE;
-    }
-    
-    conf = parole_conf_new ();
-    g_object_set (G_OBJECT (conf),
-                  "enable-xv", enabled,
-                  NULL);
-    
-    g_object_unref(conf);
-    exit (0);
-}
-
 int main (int argc, char **argv)
 {
     ParolePlayer *player;
@@ -276,7 +241,6 @@ int main (int argc, char **argv)
     { "new-instance", 'i', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &new_instance, N_("Open a new instance"), NULL },
     { "no-plugins", 'n', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &no_plugins, N_("Do not load plugins"), NULL },
     { "device", 'd', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_STRING, &device, N_("Set Audio-CD/VCD/DVD device path"), NULL },
-    { "xv", '\0', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_CALLBACK, (GOptionArgFunc) xv_option_given, N_("Enable/Disable XV support (true or false, default=true)"), NULL},
     { "embedded", 'E', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &embedded, N_("Start in embedded mode"), NULL },
     { "fullscreen", 'F', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &fullscreen, N_("Start in fullscreen mode"), NULL },
     { "play", 'p', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &play, N_("Play or pause if already playing"), NULL },
