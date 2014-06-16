@@ -1998,7 +1998,6 @@ parole_player_reset_controls (ParolePlayer *player, gboolean fullscreen)
 
             gtk_window_unfullscreen (GTK_WINDOW (player->priv->window));
             gtk_notebook_set_current_page (GTK_NOTEBOOK (player->priv->playlist_nt), current_page);
-            parole_player_set_cursor_visible (player, FALSE);
             player->priv->full_screen = FALSE;
         }
         else
