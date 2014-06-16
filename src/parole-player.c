@@ -46,6 +46,9 @@
 
 #include <dbus/dbus-glib.h>
 
+#include <clutter/clutter.h>
+#include <clutter-gtk/clutter-gtk.h>
+
 #include <src/misc/parole-file.h>
 
 #include "parole-builder.h"
@@ -3078,6 +3081,8 @@ parole_player_init (ParolePlayer *player)
     GtkWidget *controls_parent;
     GtkWidget *play_box;
 
+    gchar *videosink = NULL;
+
     GList *widgets;
 
     GtkWidget *action_widget;
@@ -3531,9 +3536,32 @@ parole_player_init (ParolePlayer *player)
 
     parole_player_set_wm_opacity_hint (player->priv->window);
 
-    gtk_box_pack_start (GTK_BOX (player->priv->videobox),
-                        player->priv->gst,
-                        TRUE, TRUE, 0);
+    g_object_get (G_OBJECT (player->priv->conf),
+                  "videosink", &videosink,
+                  NULL);
+    if (g_strcmp0(videosink, "cluttersink") == 0)
+    {
+        GtkWidget *clutterbox;
+        ClutterActor *stage, *texture;
+        GstElement *video_sink;
+
+        clutterbox = gtk_clutter_embed_new();
+        gtk_box_pack_start (GTK_BOX (player->priv->videobox),
+                                     clutterbox,
+                                     TRUE, TRUE, 0);
+        stage = gtk_clutter_embed_get_stage (GTK_CLUTTER_EMBED (clutterbox));
+        texture = CLUTTER_ACTOR (g_object_new (CLUTTER_TYPE_TEXTURE, "disable-slicing", TRUE, NULL));
+        video_sink = parole_gst_video_sink (player->priv->gst);
+        g_object_set (video_sink, "texture", texture, NULL);
+        clutter_actor_add_child (stage, texture);
+        gtk_widget_show (clutterbox);
+    }
+    else
+    {
+        gtk_box_pack_start (GTK_BOX (player->priv->videobox),
+                                     player->priv->gst,
+                                     TRUE, TRUE, 0);
+    }
 
     gtk_widget_realize (player->priv->gst);
     gtk_widget_show (player->priv->gst);

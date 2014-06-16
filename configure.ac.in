@@ -80,6 +80,8 @@ XDT_I18N([@LINGUAS@])
 # ===================================================== #
 m4_define([gtk_minimum_version], [3.2.0])
 m4_define([glib_minimum_version], [2.32.0])
+m4_define([clutter_minimum_version], [1.16.4])
+m4_define([cluttergtk_minimum_version], [1.4.4])
 
 m4_define([dbus_minimum_version], [0.60])
 m4_define([dbus_glib_minimum_version], [0.70])
@@ -133,6 +135,8 @@ dnl *** Compile against GTK3 ***
 dnl ************************************
 XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-2], [libxfce4ui_minimum_version])
 XDT_CHECK_PACKAGE([GTK], [gtk+-3.0], [gtk_minimum_version])
+XDT_CHECK_PACKAGE([CLUTTER], [clutter-1.0], [clutter_minimum_version])
+XDT_CHECK_PACKAGE([CLUTTERGTK], [clutter-gtk-1.0], [cluttergtk_minimum_version])
 
 XDT_CHECK_PACKAGE([GST], [gstreamer-${gstreamer_api_version}], [${gstreamer_minimum_version}])
 XDT_CHECK_PACKAGE([GST_BASE], [gstreamer-base-${gstreamer_api_version}], [${gstreamer_minimum_version}])

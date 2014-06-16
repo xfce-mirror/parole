@@ -3008,3 +3008,12 @@ const ParoleStream     *parole_gst_get_stream       (ParoleGst *gst)
 
     return gst->priv->stream;
 }
+
+const GstElement *parole_gst_video_sink (ParoleGst *gst)
+{
+    GstElement *video_sink;
+    g_object_get (G_OBJECT (gst->priv->playbin),
+                  "video-sink", &video_sink,
+                  NULL);
+    return video_sink;
+}

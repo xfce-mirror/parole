@@ -29,7 +29,9 @@ INCLUDES =					\
 	$(GST_VIDEO_CFLAGS)			\
 	$(GST_INTERFACES_CFLAGS)		\
 	$(TAGLIBC_CFLAGS)			\
-	$(LIBX11_CFLAGS)
+	$(LIBX11_CFLAGS)			\
+	$(CLUTTER_CFLAGS)				\
+	$(CLUTTERGTK_CFLAGS)
 
 GENERATED_FILES =				\
 	gmarshal.c				\
@@ -90,7 +92,9 @@ parole_LDADD =						   	\
 	$(GST_VIDEO_LIBS)			\
 	$(GST_INTERFACES_LIBS)			\
 	$(TAGLIBC_LIBS)				\
-	$(LIBX11_LIBS)
+	$(LIBX11_LIBS)				\
+	$(CLUTTER_LIBS)				\
+	$(CLUTTERGTK_LIBS)
 
 parole_glib_enum_headers =			\
 	parole-conf.h				\
