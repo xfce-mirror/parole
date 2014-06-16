@@ -112,7 +112,6 @@ struct ParoleGstPrivate
     gulong              tick_id;
     GdkPixbuf          *logo;
     gchar              *device;
-    GTimer             *hidecursor_timer;
 
     gpointer            conf; /* Specific for ParoleMediaPlayer*/
 
@@ -565,13 +564,6 @@ parole_gst_tick_timeout (gpointer data)
             g_signal_emit (G_OBJECT (gst), signals [MEDIA_PROGRESSED], 0, gst->priv->stream, value);
         }
     }
-
-#if GST_CHECK_VERSION(1, 0, 0)
-#else
-out:
-    if ( g_timer_elapsed (gst->priv->hidecursor_timer, NULL ) > HIDE_WINDOW_CURSOR_TIMEOUT && video)
-        parole_gst_set_cursor_visible (gst, FALSE);
-#endif
 
     return TRUE;
 }
@@ -1828,13 +1820,7 @@ parole_gst_send_navigation_command(ParoleGst *gst, gint command)
 static gboolean
 parole_gst_motion_notify_event (GtkWidget *widget, GdkEventMotion *ev)
 {
-    ParoleGst *gst;
     gboolean ret = FALSE;
-
-    gst = PAROLE_GST (widget);
-
-    g_timer_reset (gst->priv->hidecursor_timer);
-    parole_gst_set_cursor_visible (gst, TRUE);
 
     if (GTK_WIDGET_CLASS (parole_gst_parent_class)->motion_notify_event)
         ret |= GTK_WIDGET_CLASS (parole_gst_parent_class)->motion_notify_event (widget, ev);
@@ -2421,7 +2407,6 @@ parole_gst_init (ParoleGst *gst)
     g_mutex_init (&gst->priv->lock);
     gst->priv->stream = parole_stream_new ();
     gst->priv->tick_id = 0;
-    gst->priv->hidecursor_timer = g_timer_new ();
     gst->priv->update_vis = FALSE;
     gst->priv->buffering = FALSE;
     gst->priv->seeking = FALSE;

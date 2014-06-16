@@ -316,6 +316,9 @@ gboolean    parole_player_key_press                 (GtkWidget *widget,
 void        parole_player_widget_activate_action    (GtkWidget *widget,
                                                      GSimpleAction *action);
 
+static void parole_player_set_cursor_visible        (ParolePlayer *player,
+                                                     gboolean visible);
+
 gboolean parole_player_hide_controls (gpointer data);
 
 static GtkTargetEntry target_entry[] =
@@ -1995,7 +1998,7 @@ parole_player_reset_controls (ParolePlayer *player, gboolean fullscreen)
 
             gtk_window_unfullscreen (GTK_WINDOW (player->priv->window));
             gtk_notebook_set_current_page (GTK_NOTEBOOK (player->priv->playlist_nt), current_page);
-            parole_gst_set_cursor_visible (PAROLE_GST (player->priv->gst), FALSE);
+            parole_player_set_cursor_visible (player, FALSE);
             player->priv->full_screen = FALSE;
         }
         else
@@ -2174,7 +2177,6 @@ parole_player_gst_widget_button_release (GtkWidget *widget, GdkEventButton *ev, 
 gboolean parole_player_hide_controls (gpointer data)
 {
     ParolePlayer *player;
-    GdkWindow *gdkwindow;
     GtkWidget *controls;
 
     TRACE("start");
@@ -2184,8 +2186,7 @@ gboolean parole_player_hide_controls (gpointer data)
     controls = gtk_widget_get_parent(player->priv->control);
 
     gtk_widget_hide(controls);
-    gdkwindow = gtk_widget_get_window (GTK_WIDGET(player->priv->eventbox_output));
-    parole_window_invisible_cursor (gdkwindow);
+    parole_player_set_cursor_visible (player, FALSE);
 
     return FALSE;
 }
@@ -2195,7 +2196,6 @@ parole_player_gst_widget_motion_notify_event (GtkWidget *widget, GdkEventMotion 
 {
     static gulong hide_timeout;
     int hide_controls_timeout;
-    GdkWindow *gdkwindow;
 
     if ( hide_timeout != 0)
     {
@@ -2205,8 +2205,7 @@ parole_player_gst_widget_motion_notify_event (GtkWidget *widget, GdkEventMotion 
 
     gtk_widget_show_all (gtk_widget_get_parent(player->priv->control));
 
-    gdkwindow = gtk_widget_get_window (GTK_WIDGET(player->priv->eventbox_output));
-    gdk_window_set_cursor (gdkwindow, NULL);
+    parole_player_set_cursor_visible (player, TRUE);
 
     g_object_get (G_OBJECT (player->priv->conf),
                   "hide-controls-timeout", &hide_controls_timeout,
@@ -2981,18 +2980,33 @@ parole_player_drag_data_received_cb (GtkWidget *widget,
 }
 
 static void
-parole_player_window_notify_is_active (ParolePlayer *player)
+parole_player_set_cursor_visible (ParolePlayer *player, gboolean visible)
 {
-    if ( !player->priv->full_screen )
-        return;
+    GdkWindow *gdkwindow;
+    gdkwindow = gtk_widget_get_window (GTK_WIDGET(player->priv->eventbox_output));
 
-    if (!gtk_window_is_active (GTK_WINDOW (player->priv->window)) )
+    if (visible)
     {
         parole_gst_set_cursor_visible (PAROLE_GST (player->priv->gst), TRUE);
+        gdk_window_set_cursor (gdkwindow, NULL);
+    }
+    else if (gtk_window_is_active (GTK_WINDOW (player->priv->window)))
+    {
+        parole_gst_set_cursor_visible (PAROLE_GST (player->priv->gst), FALSE);
+        parole_window_invisible_cursor (gdkwindow);
+    }
+}
+
+static void
+parole_player_window_notify_is_active (ParolePlayer *player)
+{
+    if (!gtk_window_is_active (GTK_WINDOW (player->priv->window)) )
+    {
+        parole_player_set_cursor_visible (player, TRUE);
     }
     else
     {
-        parole_gst_set_cursor_visible (PAROLE_GST (player->priv->gst), FALSE);
+        parole_player_set_cursor_visible (player, FALSE);
     }
 }
 
