@@ -178,6 +178,13 @@ void        gst_set_current_audio_track     (ParoleGst *gst,
 void        gst_set_current_subtitle_track  (ParoleGst *gst,
                                              gint track_no);
 
+void
+parole_gst_get_video_output_size_from_dimensions (ParoleGst *gst,
+                                                  gint w,
+                                                  gint h,
+                                                  gint *ret_w,
+                                                  gint *ret_h);
+
 const ParoleStream
 *parole_gst_get_stream                      (ParoleGst *gst);
 
