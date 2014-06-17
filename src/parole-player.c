@@ -3551,7 +3551,7 @@ parole_player_init (ParolePlayer *player)
                                      TRUE, TRUE, 0);
         stage = gtk_clutter_embed_get_stage (GTK_CLUTTER_EMBED (clutterbox));
         texture = CLUTTER_ACTOR (g_object_new (CLUTTER_TYPE_TEXTURE, "disable-slicing", TRUE, NULL));
-        video_sink = parole_gst_video_sink (player->priv->gst);
+        video_sink = parole_gst_video_sink (PAROLE_GST(player->priv->gst));
         g_object_set (video_sink, "texture", texture, NULL);
         clutter_actor_add_child (stage, texture);
         gtk_widget_show (clutterbox);

@@ -337,7 +337,6 @@ static gboolean
 parole_conf_dialog_set_default_sink_plugin (ParoleConfDialog *self)
 {
     gchar *sink_name;
-    gchar *combox_text;
     gboolean ret = FALSE;
 
     g_object_get (G_OBJECT (self->priv->conf),
