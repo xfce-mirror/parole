@@ -222,23 +222,10 @@ parole_gst_configure_event_cb (GtkWidget *widget, GdkEventConfigure *ev, ParoleG
 }
 
 static gboolean
-parole_gst_parent_expose_event (GtkWidget *w, GdkEventExpose *ev, ParoleGst *gst)
+parole_gst_parent_expose_event (GtkWidget *widget, cairo_t *cr, gpointer user_data)
 {
-    GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
-    cairo_t *cr;
-
-    gtk_widget_get_allocation(w, allocation);
-
-    cr = gdk_cairo_create ( gtk_widget_get_window(w) );
-
-    cairo_set_source_rgb (cr, 0.0f, 0.0f, 0.0f);
-
-    cairo_rectangle (cr, allocation->x, allocation->y, allocation->width, allocation->height);
-
-    cairo_fill (cr);
-    cairo_destroy (cr);
-
-    g_free(allocation);
+    cairo_set_source_rgb (cr, 0.0, 0.0, 0.0);
+    cairo_paint (cr);
 
     return FALSE;
 }
@@ -285,7 +272,7 @@ parole_gst_realize (GtkWidget *widget)
                          G_CALLBACK (parole_gst_configure_event_cb), gst);
 
     g_signal_connect    (gtk_widget_get_parent(gtk_widget_get_parent (widget)), "draw",
-                         G_CALLBACK (parole_gst_parent_expose_event), gst);
+                         G_CALLBACK (parole_gst_parent_expose_event), NULL);
 
     g_free(allocation);
 }
