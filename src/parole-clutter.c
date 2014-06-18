@@ -348,9 +348,9 @@ void parole_clutter_set_video_dimensions (ParoleClutter *clutter, gint w, gint h
     clutter->priv->video_h = h;
 }
 
-ClutterActor *parole_clutter_get_texture (ParoleClutter *clutter)
+void parole_clutter_apply_texture (ParoleClutter *clutter, GstElement **element)
 {
-    return clutter->priv->texture;
+    g_object_set (*element, "texture", clutter->priv->texture, NULL);
 }
 
 GtkWidget *parole_clutter_get_embed_widget (ParoleClutter *clutter)

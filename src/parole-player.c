@@ -3550,18 +3550,16 @@ parole_player_init (ParolePlayer *player)
     {
         GtkWidget *clutterbox;
         GstElement *video_sink;
-        ClutterActor *texture;
 
         player->priv->clutter = parole_clutter_new(player->priv->conf);
         clutterbox = parole_clutter_get_embed_widget(PAROLE_CLUTTER(player->priv->clutter));
-        texture = parole_clutter_get_texture (PAROLE_CLUTTER(player->priv->clutter));
 
         gtk_box_pack_start (GTK_BOX (player->priv->videobox),
                                      clutterbox,
                                      TRUE, TRUE, 0);
 
         video_sink = parole_gst_video_sink (PAROLE_GST(player->priv->gst));
-        g_object_set (video_sink, "texture", texture, NULL);
+        parole_clutter_apply_texture (PAROLE_CLUTTER(player->priv->clutter), &video_sink);
 
         gtk_widget_show (clutterbox);
     }

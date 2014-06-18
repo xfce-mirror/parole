@@ -35,7 +35,8 @@ GtkWidget    *parole_clutter_new              (gpointer conf_obj);
 GtkWidget    *parole_clutter_get              (void);
 GtkWidget    *parole_clutter_get_embed_widget (ParoleClutter *clutter);
 
-ClutterActor *parole_clutter_get_texture      (ParoleClutter *clutter);
+void          parole_clutter_apply_texture    (ParoleClutter *clutter,
+                                               GstElement **element);
 
 void
 parole_clutter_set_video_dimensions           (ParoleClutter *clutter,
