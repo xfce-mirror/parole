@@ -39,6 +39,8 @@ void        parole_window_busy_cursor       (GdkWindow *window);
 
 void        parole_window_invisible_cursor  (GdkWindow *window);
 
+void        parole_window_normal_cursor     (GdkWindow *window);
+
 
 
 #endif /* __PAROLE_COMMON_ */

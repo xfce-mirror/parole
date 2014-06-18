@@ -564,7 +564,7 @@ void    parole_media_list_drag_data_received_cb (GtkWidget *widget,
 
     g_strfreev (uri_list);
 
-    gdk_window_set_cursor (gtk_widget_get_window(GTK_WIDGET (list)), NULL);
+    parole_window_normal_cursor (gtk_widget_get_window(GTK_WIDGET (list)));
     gtk_drag_finish (drag_context, added == i ? TRUE : FALSE, FALSE, drag_time);
 }
 

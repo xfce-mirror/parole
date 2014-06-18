@@ -2966,7 +2966,6 @@ parole_player_drag_data_received_cb (GtkWidget *widget,
                                      guint drag_time,
                                      ParolePlayer *player)
 {
-
     gchar **uri_list;
     guint added  = 0;
     guint i;
@@ -2985,7 +2984,7 @@ parole_player_drag_data_received_cb (GtkWidget *widget,
 
     g_strfreev (uri_list);
 
-    gdk_window_set_cursor (gtk_widget_get_window(widget), NULL);
+    parole_player_set_cursor_visible (player, TRUE);
     gtk_drag_finish (drag_context, added == i ? TRUE : FALSE, FALSE, drag_time);
 }
 
@@ -2998,7 +2997,7 @@ parole_player_set_cursor_visible (ParolePlayer *player, gboolean visible)
     if (visible)
     {
         parole_gst_set_cursor_visible (PAROLE_GST (player->priv->gst), TRUE);
-        gdk_window_set_cursor (gdkwindow, NULL);
+        parole_window_normal_cursor (gdkwindow);
     }
     else if (gtk_window_is_active (GTK_WINDOW (player->priv->window)))
     {

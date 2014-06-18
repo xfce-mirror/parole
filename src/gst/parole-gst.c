@@ -207,14 +207,6 @@ parole_gst_finalize (GObject *object)
     G_OBJECT_CLASS (parole_gst_parent_class)->finalize (object);
 }
 
-static void
-parole_gst_set_window_cursor (GdkWindow *window, GdkCursor *cursor)
-{
-    TRACE ("start");
-    if ( window )
-        gdk_window_set_cursor (window, cursor);
-}
-
 static gboolean
 parole_gst_configure_event_cb (GtkWidget *widget, GdkEventConfigure *ev, ParoleGst *gst)
 {
@@ -951,7 +943,7 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
     if ( gst->priv->target == new )
     {
         gtk_widget_queue_draw (GTK_WIDGET (gst));
-        parole_gst_set_window_cursor ( gtk_widget_get_window(GTK_WIDGET (gst)), NULL);
+        parole_window_normal_cursor (gtk_widget_get_window(GTK_WIDGET (gst)));
         if ( gst->priv->state_change_id != 0 )
         {
             g_source_remove (gst->priv->state_change_id);
@@ -1647,7 +1639,7 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
     {
         GError *error = NULL;
         gchar *debug;
-        parole_gst_set_window_cursor (gtk_widget_get_window(GTK_WIDGET (gst)), NULL);
+        parole_window_normal_cursor (gtk_widget_get_window(GTK_WIDGET (gst)));
         gst->priv->target = GST_STATE_NULL;
         gst->priv->buffering = FALSE;
         parole_gst_change_state (gst, GST_STATE_NULL);
@@ -2866,7 +2858,7 @@ parole_gst_set_cursor_visible (ParoleGst *gst, gboolean visible)
     if ( visible )
     {
         if (gst->priv->target == gst->priv->state)
-            gdk_window_set_cursor (gtk_widget_get_window(GTK_WIDGET (gst)), NULL);
+            parole_window_normal_cursor (gtk_widget_get_window(GTK_WIDGET (gst)));
         else
             parole_window_busy_cursor (gtk_widget_get_window(GTK_WIDGET (gst)));
     }

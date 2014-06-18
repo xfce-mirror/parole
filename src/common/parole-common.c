@@ -36,24 +36,24 @@
 
 
 static void
-parole_dialog_show (GtkWindow *parent, 
+parole_dialog_show (GtkWindow *parent,
                     GtkMessageType type,
                     const gchar *window_title,
-                    const gchar *title, 
+                    const gchar *title,
                     const gchar *msg)
 {
     GtkWidget *dialog;
-    
+
     dialog = gtk_message_dialog_new_with_markup (parent,
                         GTK_DIALOG_DESTROY_WITH_PARENT,
                         type,
                         GTK_BUTTONS_CLOSE,
                         "<span size='larger'><b>%s</b></span>",
                         title);
-                         
+
     gtk_window_set_title (GTK_WINDOW (dialog), window_title);
     gtk_window_set_icon_name (GTK_WINDOW (dialog), "parole");
-    
+
     gtk_message_dialog_format_secondary_markup (GTK_MESSAGE_DIALOG (dialog), "%s", msg);
 
 
@@ -78,15 +78,17 @@ void parole_dialog_error (GtkWindow *parent, const gchar *title, const gchar *ms
 
 void parole_window_busy_cursor (GdkWindow *window)
 {
-    GdkCursor *cursor;
-    
+    GdkCursor *cursor = NULL;
+
     if ( G_UNLIKELY (window == NULL) )
         return;
-    
+
     cursor = gdk_cursor_new (GDK_WATCH);
+
     gdk_window_set_cursor (window, cursor);
-    
-    g_object_unref (cursor);
+
+    if (cursor)
+        g_object_unref (cursor);
 
     gdk_flush ();
 }
@@ -95,10 +97,25 @@ void parole_window_invisible_cursor (GdkWindow *window)
 {
     GdkCursor *cursor = NULL;
 
+    if ( G_UNLIKELY (window == NULL) )
+        return;
+
     cursor = gdk_cursor_new (GDK_BLANK_CURSOR);
 
     gdk_window_set_cursor (window, cursor);
 
     if (cursor)
         g_object_unref (cursor);
+
+    gdk_flush ();
+}
+
+void parole_window_normal_cursor (GdkWindow *window)
+{
+    if ( G_UNLIKELY (window == NULL) )
+        return;
+
+    gdk_window_set_cursor (window, NULL);
+
+    gdk_flush ();
 }
