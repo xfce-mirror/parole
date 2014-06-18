@@ -52,6 +52,8 @@ parole_SOURCES =				\
 	parole-medialist.h			\
 	parole-mediachooser.c			\
 	parole-mediachooser.h			\
+	parole-clutter.c			\
+	parole-clutter.h			\
 	parole-conf.c				\
 	parole-conf.h				\
 	parole-conf-dialog.c			\

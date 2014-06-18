@@ -2218,6 +2218,7 @@ parole_gst_constructed (GObject *object)
     ParoleGst *gst;
 
     gchar *videosink = NULL;
+    gchar *playbin = NULL;
 
     gst = PAROLE_GST (object);
 
@@ -2226,29 +2227,29 @@ parole_gst_constructed (GObject *object)
                   NULL);
 
 #if GST_CHECK_VERSION(1, 0, 0)
-    gst->priv->playbin = gst_element_factory_make ("playbin", "player");
+    playbin = g_strdup("playbin");
 #else
-    gst->priv->playbin = gst_element_factory_make ("playbin2", "player");
+    playbin = g_strdup("playbin2");
 #endif
 
+    /* Configure the playbin */
+    gst->priv->playbin = gst_element_factory_make (playbin, "player");
     if ( G_UNLIKELY (gst->priv->playbin == NULL) )
     {
         GError *error;
 
         error = g_error_new (1, 0, _("Unable to load \"%s\" plugin"
                                      ", check your GStreamer installation."),
-#if GST_CHECK_VERSION(1, 0, 0)
-                                     "playbin");
-#else
-                                     "playbin2");
-#endif
+                                     playbin);
 
         parole_gst_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (gst))),
                                 error);
         g_error_free (error);
         g_error ("playbin load failed");
     }
+    g_free(playbin);
 
+    /* Configure the audio sink */
     gst->priv->audio_sink = gst_element_factory_make ("autoaudiosink", "audio");
     if ( G_UNLIKELY (gst->priv->audio_sink == NULL) )
     {
@@ -2261,16 +2262,17 @@ parole_gst_constructed (GObject *object)
         g_error ("autoaudiosink load failed");
     }
 
+    /* Configure the video sink */
     if (g_strcmp0(videosink, "xvimagesink") == 0)
     {
-        gst->priv->video_sink = gst_element_factory_make ("xvimagesink", "video");
         gst->priv->image_sink = XVIMAGESINK;
+        gst->priv->video_sink = gst_element_factory_make ("xvimagesink", "video");
     }
 
     if (g_strcmp0(videosink, "cluttersink") == 0)
     {
-        gst->priv->video_sink = gst_element_factory_make ("cluttersink", "video");
         gst->priv->image_sink = CLUTTERSINK;
+        gst->priv->video_sink = gst_element_factory_make ("cluttersink", "video");
     }
 
     if ( G_UNLIKELY (gst->priv->video_sink == NULL) )

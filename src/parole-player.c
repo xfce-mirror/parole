@@ -70,6 +70,7 @@
 #include "parole-button.h"
 #include "enum-gtypes.h"
 #include "parole-debug.h"
+#include "parole-clutter.h"
 
 #include "gst/gst-enum-types.h"
 
@@ -437,8 +438,7 @@ struct ParolePlayerPrivate
     gboolean            buffering;
     gboolean            wait_for_gst_disc_info;
 
-    ClutterActor       *stage;
-    ClutterActor       *texture;
+    GtkWidget          *clutter;
 
     /* Actions */
     GSimpleAction      *media_next_action;
@@ -1382,6 +1382,7 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
     gint64 duration;
     gboolean seekable;
     gboolean live;
+    gint height, width;
 
     int hide_controls_timeout;
 
@@ -1390,8 +1391,12 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
     g_object_get (G_OBJECT (stream),
                   "seekable", &seekable,
                   "duration", &duration,
+                  "video-width", &width,
+                  "video-height", &height,
                   "live", &live,
                   NULL);
+
+    parole_clutter_set_video_dimensions (PAROLE_CLUTTER(player->priv->clutter), width, height);
 
     if (player->priv->wait_for_gst_disc_info == TRUE)
     {
@@ -2924,8 +2929,6 @@ gboolean
 parole_player_configure_event_cb (GtkWidget *widget, GdkEventConfigure *ev, ParolePlayer *player)
 {
     gint old_w, old_h, new_w, new_h;
-    gfloat clutter_width, clutter_height, x, y;
-    GtkAllocation *alloc = g_new(GtkAllocation, 1);
 
     /* Get the current window size */
     gtk_window_get_size (GTK_WINDOW (widget), &new_w, &new_h);
@@ -2949,32 +2952,6 @@ parole_player_configure_event_cb (GtkWidget *widget, GdkEventConfigure *ev, Paro
                           NULL);
         }
     }
-
-    gtk_widget_get_allocation(player->priv->videobox, alloc);
-    clutter_actor_set_size (player->priv->stage, alloc->width, alloc->height);
-
-    parole_gst_get_video_output_size_from_dimensions (PAROLE_GST(player->priv->gst), alloc->width, alloc->height, &new_w, &new_h);
-
-    x = 0.0;
-    y = 0.0;
-
-    if ( ((gdouble)alloc->width / (gdouble)new_w) * (gdouble)new_h <= (gdouble)alloc->height )
-    {
-        clutter_height = ((gdouble)alloc->width / (gdouble)new_w) * (gdouble)new_h;
-        clutter_width = alloc->width;
-        y = (alloc->height - clutter_height) / 2.0;
-    }
-
-    else
-    {
-        clutter_width = (((gdouble)alloc->height / (gdouble)new_h) * (gdouble)new_w);
-        clutter_height = alloc->height;
-        x = (alloc->width - clutter_width) / 2.0;
-    }
-
-    clutter_actor_set_size (player->priv->texture, clutter_width, clutter_height);
-    clutter_actor_set_x(player->priv->texture, x);
-    clutter_actor_set_y(player->priv->texture, y);
 
     return FALSE;
 }
@@ -3574,26 +3551,20 @@ parole_player_init (ParolePlayer *player)
     {
         GtkWidget *clutterbox;
         GstElement *video_sink;
-        ClutterColor *color = clutter_color_new(0,0,0,255);
-        GValue value = {0};
-        g_value_init(&value, G_TYPE_BOOLEAN);
-        g_value_set_boolean(&value, TRUE);
+        ClutterActor *texture;
 
-        clutterbox = gtk_clutter_embed_new();
+        player->priv->clutter = parole_clutter_new(player->priv->conf);
+        clutterbox = parole_clutter_get_embed_widget(PAROLE_CLUTTER(player->priv->clutter));
+        texture = parole_clutter_get_texture (PAROLE_CLUTTER(player->priv->clutter));
+
         gtk_box_pack_start (GTK_BOX (player->priv->videobox),
                                      clutterbox,
                                      TRUE, TRUE, 0);
-        player->priv->stage = gtk_clutter_embed_get_stage (GTK_CLUTTER_EMBED (clutterbox));
-        clutter_actor_set_background_color(player->priv->stage, color);
-        player->priv->texture = CLUTTER_ACTOR (g_object_new (CLUTTER_TYPE_TEXTURE, "disable-slicing", TRUE, NULL));
-        clutter_actor_set_x_align(player->priv->texture, CLUTTER_ACTOR_ALIGN_CENTER);
-        clutter_actor_set_y_align(player->priv->texture, CLUTTER_ACTOR_ALIGN_CENTER);
-        g_object_set_property (G_OBJECT(player->priv->texture), "keep-aspect-ratio", &value);
+
         video_sink = parole_gst_video_sink (PAROLE_GST(player->priv->gst));
-        g_object_set (video_sink, "texture", player->priv->texture, NULL);
-        clutter_actor_add_child (player->priv->stage, player->priv->texture);
+        g_object_set (video_sink, "texture", texture, NULL);
+
         gtk_widget_show (clutterbox);
-        g_object_set_property (G_OBJECT(player->priv->texture), "keep-aspect-ratio", &value);
     }
     else
     {
