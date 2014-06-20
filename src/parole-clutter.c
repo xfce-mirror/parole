@@ -1,3 +1,25 @@
+/*
+ * * Copyright (C) 2009-2011 Ali <aliov@xfce.org>
+ * * Copyright (C) 2012-2014 Sean Davis <smd.seandavis@gmail.com>
+ * * Copyright (C) 2012-2014 Simon Steinbeiß <ochosi@xfce.org>
+ *
+ * Licensed under the GNU General Public License Version 2
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+
 #include <gtk/gtk.h>
 #include <glib.h>
 #include <gdk/gdkx.h>
@@ -56,11 +78,27 @@ parole_clutter_finalize (GObject *object)
 static void
 parole_clutter_show (GtkWidget *widget)
 {
-    if ( gtk_widget_get_window(widget) )
-        gdk_window_show (gtk_widget_get_window(widget));
+    ParoleClutter *clutter = PAROLE_CLUTTER(parole_clutter_get());
+    GtkWidget *embed_window = clutter->priv->embed;
+
+    if ( gtk_widget_get_window(embed_window) )
+        gdk_window_show (gtk_widget_get_window(embed_window));
 
     if ( GTK_WIDGET_CLASS (parole_clutter_parent_class)->show )
-        GTK_WIDGET_CLASS (parole_clutter_parent_class)->show (widget);
+        GTK_WIDGET_CLASS (parole_clutter_parent_class)->show (embed_window);
+}
+
+static void
+parole_clutter_hide (GtkWidget *widget)
+{
+    ParoleClutter *clutter = PAROLE_CLUTTER(parole_clutter_get());
+    GtkWidget *embed_window = clutter->priv->embed;
+
+    if ( gtk_widget_get_window(embed_window) )
+        gdk_window_hide (gtk_widget_get_window(embed_window));
+
+    if ( GTK_WIDGET_CLASS (parole_clutter_parent_class)->hide )
+        GTK_WIDGET_CLASS (parole_clutter_parent_class)->hide (embed_window);
 }
 
 static void
@@ -262,7 +300,8 @@ parole_clutter_class_init (ParoleClutterClass *klass)
     object_class->get_property = parole_clutter_get_property;
 
     widget_class->show = parole_clutter_show;
-    
+    widget_class->hide = parole_clutter_hide;
+
     g_object_class_install_property    (object_class,
                                         PROP_CONF_OBJ,
                                         g_param_spec_pointer ("conf-object",

@@ -46,9 +46,6 @@
 
 #include <dbus/dbus-glib.h>
 
-#include <clutter/clutter.h>
-#include <clutter-gtk/clutter-gtk.h>
-
 #include <src/misc/parole-file.h>
 
 #include "parole-builder.h"
@@ -3561,7 +3558,7 @@ parole_player_init (ParolePlayer *player)
         video_sink = parole_gst_video_sink (PAROLE_GST(player->priv->gst));
         parole_clutter_apply_texture (PAROLE_CLUTTER(player->priv->clutter), &video_sink);
 
-        gtk_widget_show (clutterbox);
+        gtk_widget_show (player->priv->clutter);
     }
     else
     {

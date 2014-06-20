@@ -75,8 +75,8 @@ struct _ParoleStreamPrivate
     guint       bitrate;
     GdkPixbuf  *image;
     gchar      *image_uri, *previous_image;
-    
-    ParoleMediaType media_type; 
+
+    ParoleMediaType media_type;
 };
 
 enum
@@ -114,9 +114,9 @@ static void
 parole_stream_get_media_type_from_uri (ParoleStream *stream, const gchar *uri)
 {
     GValue val = { 0, };
-    
+
     ParoleMediaType type = PAROLE_MEDIA_TYPE_UNKNOWN;
-    
+
     if ( g_str_has_prefix (uri, "file:/") )
         type = PAROLE_MEDIA_TYPE_LOCAL_FILE;
     else if ( g_str_has_prefix (uri, "dvd:/") )
@@ -129,9 +129,9 @@ parole_stream_get_media_type_from_uri (ParoleStream *stream, const gchar *uri)
         type = PAROLE_MEDIA_TYPE_CDDA;
     else if ( g_str_has_prefix (uri, "dvb:/") )
         type = PAROLE_MEDIA_TYPE_DVB;
-    else 
+    else
         type = PAROLE_MEDIA_TYPE_UNKNOWN;
-    
+
     g_value_init (&val, PAROLE_ENUM_TYPE_MEDIA_TYPE);
     g_value_set_enum (&val, type);
     g_object_set_property (G_OBJECT (stream), "media-type", &val);
@@ -168,7 +168,7 @@ static void parole_stream_set_property (GObject *object,
         {
             ParoleStreamPrivate *priv;
             gboolean maybe_remote;
-            
+
             priv = PAROLE_STREAM_GET_PRIVATE (stream);
             maybe_remote = priv->media_type == PAROLE_MEDIA_TYPE_REMOTE ||
                            priv->media_type == PAROLE_MEDIA_TYPE_UNKNOWN;
@@ -335,7 +335,7 @@ parole_stream_finalize (GObject *object)
     ParoleStream *stream;
 
     stream = PAROLE_STREAM (object);
-    
+
     parole_stream_init_properties (stream);
 
     G_OBJECT_CLASS (parole_stream_parent_class)->finalize (object);
@@ -345,33 +345,33 @@ parole_stream_finalize (GObject *object)
  * parole_stream_set_image:
  * @object: a #ParoleStream object.
  * @pixbuf: a #GdkPixbuf to set as the stream image.
- * 
+ *
  * Set the ParoleStream image to a new pixbuf.
- * 
- * 
+ *
+ *
  * Since: 0.6
  **/
-void 
+void
 parole_stream_set_image (GObject *object, GdkPixbuf *pixbuf)
 {
     ParoleStream *stream;
     gchar *filename = NULL;
     gint fid;
-    
+
     stream = PAROLE_STREAM (object);
-    
+
     if ( PAROLE_STREAM_GET_PRIVATE (stream)->image )
         g_object_unref(G_OBJECT(PAROLE_STREAM_GET_PRIVATE (stream)->image));
-    
+
     if (pixbuf)
     {
         PAROLE_STREAM_GET_PRIVATE (stream)->image = gdk_pixbuf_copy(pixbuf);
-        
+
         /* Create a jpeg of the artwork for other components to easily access */
         fid = g_file_open_tmp ("parole-art-XXXXXX.jpg", &filename, NULL);
         close(fid);
         gdk_pixbuf_save (pixbuf, filename, "jpeg", NULL, "quality", "100", NULL);
-        
+
         PAROLE_STREAM_GET_PRIVATE (stream)->previous_image = g_strdup(filename);
         PAROLE_STREAM_GET_PRIVATE (stream)->image_uri = g_strdup_printf("file://%s", filename);
         g_free(filename);
@@ -389,14 +389,14 @@ parole_stream_get_image (GObject *object)
 {
     ParoleStream *stream;
     GdkPixbuf *pixbuf;
-    
+
     stream = PAROLE_STREAM (object);
-    
+
     if (PAROLE_STREAM_GET_PRIVATE (stream)->image)
         pixbuf = gdk_pixbuf_copy(GDK_PIXBUF(PAROLE_STREAM_GET_PRIVATE (stream)->image));
     else
         pixbuf = NULL;
-    
+
     return pixbuf;
 }
 
@@ -412,41 +412,41 @@ parole_stream_class_init (ParoleStreamClass *klass)
 
     /**
      * ParoleStream:uri:
-     * 
+     *
      * Currently loaded uri.
-     * 
-     * Since: 0.2 
+     *
+     * Since: 0.2
      **/
     g_object_class_install_property (object_class,
                                      PROP_URI,
                                      g_param_spec_string ("uri",
-                                             "Uri", 
+                                             "Uri",
                                              "Uri",
                                              NULL,
                                              G_PARAM_READWRITE));
-    
+
     /**
      * ParoleStream:subtitles:
-     * 
+     *
      * Subtitles path, this is only valid if the property
      * "media-type" has the value PAROLE_MEDIA_TYPE_LOCAL_FILE.
-     * 
-     * Since: 0.2 
+     *
+     * Since: 0.2
      **/
     g_object_class_install_property (object_class,
                                      PROP_SUBTITLES,
                                      g_param_spec_string ("subtitles",
-                                             "Subtitles", 
+                                             "Subtitles",
                                              "Subtitle file",
                                              NULL,
                                              G_PARAM_READWRITE));
-    
+
     /**
      * ParoleStream:has-audio:
-     * 
+     *
      * Whether the stream has audio.
-     * 
-     * Since: 0.2 
+     *
+     * Since: 0.2
      **/
     g_object_class_install_property (object_class,
                                      PROP_HAS_AUDIO,
@@ -457,45 +457,45 @@ parole_stream_class_init (ParoleStreamClass *klass)
                                              G_PARAM_READWRITE));
     /**
      * ParoleStream:has-video:
-     * 
+     *
      * Whether the stream has video.
-     * 
-     * Since: 0.2 
+     *
+     * Since: 0.2
      **/
     g_object_class_install_property (object_class,
                                      PROP_HAS_VIDEO,
                                      g_param_spec_boolean ("has-video",
-                                             "Has video", 
+                                             "Has video",
                                              "Has video",
                                              FALSE,
                                              G_PARAM_READWRITE));
-    
+
     /**
      * ParoleStream:live:
-     * 
+     *
      * Whether the stream is a live stream.
-     * 
-     * Since: 0.2 
+     *
+     * Since: 0.2
      **/
     g_object_class_install_property (object_class,
                                      PROP_LIVE,
                                      g_param_spec_boolean ("live",
-                                             "Live", 
+                                             "Live",
                                              "Live",
                                              FALSE,
                                              G_PARAM_READWRITE));
 
     /**
      * ParoleStream:media-type:
-     * 
+     *
      *  The media type.
-     * 
-     * Since: 0.2 
+     *
+     * Since: 0.2
      **/
     g_object_class_install_property (object_class,
                                      PROP_MEDIA_TYPE,
                                      g_param_spec_enum ("media-type",
-                                             "Media type", 
+                                             "Media type",
                                              "Media type",
                                              PAROLE_ENUM_TYPE_MEDIA_TYPE,
                                              PAROLE_MEDIA_TYPE_UNKNOWN,
@@ -503,31 +503,31 @@ parole_stream_class_init (ParoleStreamClass *klass)
 
     /**
      * ParoleStream:seekable:
-     * 
-     * Whether the stream is seekable, for example live 
+     *
+     * Whether the stream is seekable, for example live
      * streams are not seekable.
-     * 
-     * Since: 0.2 
+     *
+     * Since: 0.2
      **/
     g_object_class_install_property (object_class,
                                      PROP_SEEKABLE,
                                      g_param_spec_boolean ("seekable",
-                                             "Seekable", 
+                                             "Seekable",
                                              "Seekable",
                                              FALSE,
                                              G_PARAM_READWRITE));
 
     /**
      * ParoleStream:duration:
-     * 
-     * 
-     * 
-     * Since: 0.2 
+     *
+     *
+     *
+     * Since: 0.2
      **/
     g_object_class_install_property (object_class,
                                      PROP_DURATION,
                                      g_param_spec_int64 ("duration",
-                                             "Duration", 
+                                             "Duration",
                                              "Duration",
                                              0, G_MAXINT64,
                                              0,
@@ -535,10 +535,10 @@ parole_stream_class_init (ParoleStreamClass *klass)
 
     /**
      * ParoleStream:tag-available:
-     * 
+     *
      * Whether tags information are available on the current stream.
-     * 
-     * Since: 0.2 
+     *
+     * Since: 0.2
      **/
     g_object_class_install_property (object_class,
                                      PROP_TAG_AVAILABLE,
@@ -550,10 +550,10 @@ parole_stream_class_init (ParoleStreamClass *klass)
 
     /**
      * ParoleStream:absolute-duration:
-     * 
-     * 
-     * 
-     * Since: 0.2 
+     *
+     *
+     *
+     * Since: 0.2
      **/
     g_object_class_install_property (object_class,
                                      PROP_ABSOLUTE_DURATION,
@@ -566,10 +566,10 @@ parole_stream_class_init (ParoleStreamClass *klass)
 
     /**
      * ParoleStream:disp-par-n:
-     * 
-     * 
-     * 
-     * Since: 0.2 
+     *
+     *
+     *
+     * Since: 0.2
      **/
     g_object_class_install_property (object_class,
                                      PROP_DISP_PAR_N,
@@ -579,13 +579,13 @@ parole_stream_class_init (ParoleStreamClass *klass)
                                              1, G_MAXUINT,
                                              1,
                                              G_PARAM_READWRITE));
-                              
+
     /**
      * ParoleStream:disp-par-n:
-     * 
-     * 
-     * 
-     * Since: 0.2 
+     *
+     *
+     *
+     * Since: 0.2
      **/
     g_object_class_install_property (object_class,
                                      PROP_DISP_PAR_D,
@@ -595,13 +595,13 @@ parole_stream_class_init (ParoleStreamClass *klass)
                                              1, G_MAXUINT,
                                              1,
                                              G_PARAM_READWRITE));
-                            
+
     /**
      * ParoleStream:video-width:
-     * 
-     * 
-     * 
-     * Since: 0.2 
+     *
+     *
+     *
+     * Since: 0.2
      **/
     g_object_class_install_property (object_class,
                                      PROP_VIDEO_WIDTH,
@@ -611,13 +611,13 @@ parole_stream_class_init (ParoleStreamClass *klass)
                                              0, G_MAXINT,
                                              0,
                                              G_PARAM_READWRITE));
-                              
+
     /**
      * ParoleStream:video-height:
-     * 
-     * 
-     * 
-     * Since: 0.2 
+     *
+     *
+     *
+     * Since: 0.2
      **/
     g_object_class_install_property (object_class,
                                      PROP_VIDEO_HEIGHT,
@@ -627,14 +627,14 @@ parole_stream_class_init (ParoleStreamClass *klass)
                                              0, G_MAXINT,
                                              0,
                                              G_PARAM_READWRITE));
-    
+
     /**
      * ParoleStream:num-tracks:
-     * 
+     *
      * Number of tracks in the cdda source, only valid if
      * ParoleStream:media-type: is PAROLE_MEDIA_TYPE_CDDA.
-     * 
-     * Since: 0.2 
+     *
+     * Since: 0.2
      **/
     g_object_class_install_property (object_class,
                                      PROP_TRACKS,
@@ -644,35 +644,35 @@ parole_stream_class_init (ParoleStreamClass *klass)
                                              1, 99,
                                              1,
                                              G_PARAM_READWRITE));
-                              
+
     /**
      * ParoleStream:track:
-     * 
+     *
      * Currently playing track, this is only valid if
-     * #ParoleStream:media-type: is PAROLE_MEDIA_TYPE_CDDA 
+     * #ParoleStream:media-type: is PAROLE_MEDIA_TYPE_CDDA
      *                           or PAROLE_MEDIA_TYPE_DVD.
-     * 
-     * Since: 0.2 
+     *
+     * Since: 0.2
      **/
     g_object_class_install_property (object_class,
                                      PROP_TRACK,
                                      g_param_spec_uint   ("track",
-                                             "Track", 
+                                             "Track",
                                              "Track",
                                              0, 99,
                                              1,
                                              G_PARAM_READWRITE));
     /**
      * ParoleStream:title:
-     * 
-     * 
-     * 
-     * Since: 0.2 
+     *
+     *
+     *
+     * Since: 0.2
      **/
     g_object_class_install_property (object_class,
                                      PROP_TITLE,
                                      g_param_spec_string ("title",
-                                             "Title", 
+                                             "Title",
                                              "Title",
                                              NULL,
                                              G_PARAM_READWRITE));
@@ -680,110 +680,110 @@ parole_stream_class_init (ParoleStreamClass *klass)
 
     /**
      * ParoleStream:artist:
-     * 
-     * 
-     * 
-     * Since: 0.2 
+     *
+     *
+     *
+     * Since: 0.2
      **/
     g_object_class_install_property (object_class,
                                      PROP_ARTIST,
                                      g_param_spec_string ("artist",
-                                             "Artist", 
+                                             "Artist",
                                              "Artist",
                                              NULL,
                                              G_PARAM_READWRITE));
-                              
+
     /**
      * ParoleStream:year:
-     * 
-     * 
-     * 
-     * Since: 0.2 
+     *
+     *
+     *
+     * Since: 0.2
      **/
     g_object_class_install_property (object_class,
                                      PROP_YEAR,
                                      g_param_spec_string ("year",
-                                             "Year", 
+                                             "Year",
                                              "Year",
                                              NULL,
                                              G_PARAM_READWRITE));
-                              
+
     /**
      * ParoleStream:album:
-     * 
-     * 
-     * 
-     * Since: 0.2 
+     *
+     *
+     *
+     * Since: 0.2
      **/
     g_object_class_install_property (object_class,
                                      PROP_ALBUM,
                                      g_param_spec_string ("album",
-                                             "Album", 
+                                             "Album",
                                              "Album",
                                              NULL,
                                              G_PARAM_READWRITE));
-                              
+
     /**
      * ParoleStream:comment:
-     * 
+     *
      * Extra comment block.
-     * 
-     * Since: 0.2 
+     *
+     * Since: 0.2
      **/
     g_object_class_install_property (object_class,
                                      PROP_COMMENT,
                                      g_param_spec_string ("comment",
-                                             "Comment", 
+                                             "Comment",
                                              "Comment",
                                              NULL,
                                              G_PARAM_READWRITE));
-                                             
+
     /**
      * ParoleStream:genre:
-     * 
+     *
      * Genre.
-     * 
+     *
      * Since: 0.6
      **/
     g_object_class_install_property (object_class,
                                      PROP_GENRE,
                                      g_param_spec_string ("genre",
-                                             "Genre", 
+                                             "Genre",
                                              "Genre",
                                              NULL,
                                              G_PARAM_READWRITE));
-                                             
+
     /**
      * ParoleStream:image_uri:
-     * 
+     *
      * URI for the currently playing album's artwork.
-     * 
+     *
      * Since: 0.6
      **/
     g_object_class_install_property (object_class,
                                      PROP_IMAGE_URI,
                                      g_param_spec_string ("image_uri",
-                                             "Image URI", 
+                                             "Image URI",
                                              "URI for the album artwork",
                                              NULL,
                                              G_PARAM_READWRITE));
-                                             
+
     /**
      * ParoleStream:bitrate:
-     * 
+     *
      * Current bitrate in bits/s.
-     * 
+     *
      * Since: 0.6
      **/
     g_object_class_install_property (object_class,
                                      PROP_BITRATE,
                                      g_param_spec_uint   ("bitrate",
-                                             "Bitrate", 
+                                             "Bitrate",
                                              "Bitrate",
                                              0, 2147483647,
                                              0,
                                              G_PARAM_READWRITE));
-                              
+
     g_type_class_add_private (klass, sizeof (ParoleStreamPrivate));
 }
 
@@ -804,9 +804,9 @@ parole_stream_new (void)
 void parole_stream_init_properties (ParoleStream *stream)
 {
     ParoleStreamPrivate *priv;
-    
+
     priv = PAROLE_STREAM_GET_PRIVATE (stream);
-    
+
     priv->live = FALSE;
     priv->seekable = FALSE;
     priv->has_audio = FALSE;
@@ -822,7 +822,7 @@ void parole_stream_init_properties (ParoleStream *stream)
     priv->disp_par_n = 1;
     priv->disp_par_d = 1;
     priv->bitrate = 0;
-    
+
     PAROLE_STREAM_FREE_STR_PROP (priv->title);
     PAROLE_STREAM_FREE_STR_PROP (priv->uri);
     PAROLE_STREAM_FREE_STR_PROP (priv->subtitles);
@@ -832,7 +832,7 @@ void parole_stream_init_properties (ParoleStream *stream)
     PAROLE_STREAM_FREE_STR_PROP (priv->comment);
     PAROLE_STREAM_FREE_STR_PROP (priv->genre);
     PAROLE_STREAM_FREE_STR_PROP (priv->image_uri);
-    
+
     /* Remove the previous image if it exists */
     if ( PAROLE_STREAM_GET_PRIVATE (stream)->previous_image )
     {
