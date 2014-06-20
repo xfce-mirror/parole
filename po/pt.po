@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Nuno Miguel <nunomgue@gmail.com>, 2013
+# Nuno Miguel <nunomgue@gmail.com>, 2013-2014
 # Sérgio Marques <smarquespt@gmail.com>, 2013-2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-06-16 06:30+0200\n"
-"PO-Revision-Date: 2014-06-17 13:11+0000\n"
-"Last-Translator: Sérgio Marques <smarquespt@gmail.com>\n"
+"PO-Revision-Date: 2014-06-20 11:03+0000\n"
+"Last-Translator: Nuno Miguel <nunomgue@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/xfce-apps/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -496,7 +496,7 @@ msgid ""
 "Parole is a modern simple media player based on the GStreamer framework and "
 "written to fit well in the Xfce desktop. It is designed with simplicity, "
 "speed and resource usage in mind."
-msgstr ""
+msgstr "Parole é um simples e moderno leitor de multimédia baseado na plataforma GStreamer e escrito para integrar-se bem no ambiente Xfce. É desenhado tendo em mente, a simplicidade, velocidade e uso de recursos."
 
 #: ../data/appdata/parole.appdata.xml.in.h:2
 msgid ""
@@ -529,7 +529,7 @@ msgid ""
 "This is a bugfix release which fixes the loading of playlists with relative "
 "paths, improves the file-filters for audio/video mimetypes and fixes the "
 "\"Remove duplicates\" functionality."
-msgstr ""
+msgstr "Este é um lançamento de corrção de \"bugs\" que corrige o carregamento de listas com caminhos relativos, melhora os filtros de tipos ficheiro de áudio/vídeo e corrige a funcionalidade \"Remover duplicados\"."
 
 #: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
@@ -537,7 +537,7 @@ msgid ""
 "toolkit, improvements in the user-interface (more streamlined menus), better"
 " playlists. It also brings updated artwork, GStreamer1.0 support, improved "
 "plugins and the occasional bugfix."
-msgstr ""
+msgstr "Este lançamento não estável completa a migração para o Gtk+3, melhora a interface (menus mais fluidos), melhores listas. Tem também melhor aparência, suporte a GStreamer1.0, plugins melhorados e correções ocasionais."
 
 #: ../src/common/parole-common.c:70
 msgid "Message"
