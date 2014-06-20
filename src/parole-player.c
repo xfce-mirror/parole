@@ -67,7 +67,10 @@
 #include "parole-button.h"
 #include "enum-gtypes.h"
 #include "parole-debug.h"
+
+#ifdef HAVE_CLUTTER
 #include "parole-clutter.h"
+#endif
 
 #include "gst/gst-enum-types.h"
 
@@ -435,7 +438,10 @@ struct ParolePlayerPrivate
     gboolean            buffering;
     gboolean            wait_for_gst_disc_info;
 
+#ifdef HAVE_CLUTTER
     GtkWidget          *clutter;
+    gboolean            use_clutter;
+#endif
 
     /* Actions */
     GSimpleAction      *media_next_action;
@@ -1393,7 +1399,10 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
                   "live", &live,
                   NULL);
 
-    parole_clutter_set_video_dimensions (PAROLE_CLUTTER(player->priv->clutter), width, height);
+#ifdef HAVE_CLUTTER
+    if (player->priv->use_clutter)
+        parole_clutter_set_video_dimensions (PAROLE_CLUTTER(player->priv->clutter), width, height);
+#endif
 
     if (player->priv->wait_for_gst_disc_info == TRUE)
     {
@@ -3543,7 +3552,10 @@ parole_player_init (ParolePlayer *player)
     g_object_get (G_OBJECT (player->priv->conf),
                   "videosink", &videosink,
                   NULL);
-    if (g_strcmp0(videosink, "cluttersink") == 0)
+
+#ifdef HAVE_CLUTTER
+    player->priv->use_clutter = g_strcmp0(videosink, "cluttersink") == 0;
+    if (player->priv->use_clutter)
     {
         GtkWidget *clutterbox;
         GstElement *video_sink;
@@ -3565,10 +3577,18 @@ parole_player_init (ParolePlayer *player)
         gtk_box_pack_start (GTK_BOX (player->priv->videobox),
                                      player->priv->gst,
                                      TRUE, TRUE, 0);
+
+        gtk_widget_realize (player->priv->gst);
+        gtk_widget_show (player->priv->gst);
     }
+#else
+    gtk_box_pack_start (GTK_BOX (player->priv->videobox),
+                                 player->priv->gst,
+                                 TRUE, TRUE, 0);
 
     gtk_widget_realize (player->priv->gst);
     gtk_widget_show (player->priv->gst);
+#endif
 
     g_signal_connect (G_OBJECT (parole_gst_get_stream (PAROLE_GST (player->priv->gst))), "notify::seekable",
               G_CALLBACK (parole_player_seekable_notify), player);

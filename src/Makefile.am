@@ -4,7 +4,7 @@ SUBDIRS = 					\
 	common					\
 	gst					\
 	dbus					\
-	plugins					
+	plugins
 
 INCLUDES =					\
 	-I$(top_srcdir)				\
@@ -20,18 +20,16 @@ INCLUDES =					\
 	-DPAROLE_PLUGINS_DIR=\"$(libdir)/parole-$(PAROLE_VERSION_API)\"\
 	-DPAROLE_PLUGINS_DATA_DIR=\"$(datadir)/parole/parole-plugins-$(PAROLE_VERSION_API)\"\
 	-DPAROLE_COMPILATION			\
-        $(GTHREAD_CFLAGS)                       \
+	$(GTHREAD_CFLAGS)                       \
 	$(GIO_CFLAGS)				\
 	$(GMODULE_CFLAGS)			\
-        $(DBUS_GLIB_CFLAGS)                     \
-        $(LIBXFCE4UI_CFLAGS)                   \
-        $(XFCONF_CFLAGS)                   \
+	$(DBUS_GLIB_CFLAGS)                     \
+	$(LIBXFCE4UI_CFLAGS)                   \
+	$(XFCONF_CFLAGS)                   \
 	$(GST_VIDEO_CFLAGS)			\
 	$(GST_INTERFACES_CFLAGS)		\
 	$(TAGLIBC_CFLAGS)			\
-	$(LIBX11_CFLAGS)			\
-	$(CLUTTER_CFLAGS)				\
-	$(CLUTTERGTK_CFLAGS)
+	$(LIBX11_CFLAGS)
 
 GENERATED_FILES =				\
 	gmarshal.c				\
@@ -52,8 +50,6 @@ parole_SOURCES =				\
 	parole-medialist.h			\
 	parole-mediachooser.c			\
 	parole-mediachooser.h			\
-	parole-clutter.c			\
-	parole-clutter.h			\
 	parole-conf.c				\
 	parole-conf.h				\
 	parole-conf-dialog.c			\
@@ -85,22 +81,32 @@ parole_LDADD =						   	\
 	$(top_builddir)/src/gst/libparolegst.la 	   	\
 	$(top_builddir)/src/common/libparolecommon.la      	\
 	$(top_builddir)/src/common/libparolescreensaver.la 	\
-        $(GTHREAD_LIBS)                         \
+	$(GTHREAD_LIBS)                         \
 	$(GIO_LIBS)				\
 	$(GMODULE_LIBS)				\
-        $(DBUS_GLIB_LIBS)                       \
-        $(LIBXFCE4UI_LIBS)                     \
-        $(XFCONF_LIBS)                     \
+	$(DBUS_GLIB_LIBS)                       \
+	$(LIBXFCE4UI_LIBS)                     \
+	$(XFCONF_LIBS)                     \
 	$(GST_VIDEO_LIBS)			\
 	$(GST_INTERFACES_LIBS)			\
 	$(TAGLIBC_LIBS)				\
-	$(LIBX11_LIBS)				\
-	$(CLUTTER_LIBS)				\
-	$(CLUTTERGTK_LIBS)
+	$(LIBX11_LIBS)
 
 parole_glib_enum_headers =			\
 	parole-conf.h				\
 	parole-button.h
+
+if PAROLE_CLUTTER_BACKEND
+INCLUDES +=			\
+	$(CLUTTER_CFLAGS)				\
+	$(CLUTTERGTK_CFLAGS)
+parole_SOURCES +=				\
+	parole-clutter.c			\
+	parole-clutter.h
+parole_LDADD +=				\
+	$(CLUTTER_LIBS)				\
+	$(CLUTTERGTK_LIBS)
+endif
 
 if MAINTAINER_MODE
 
@@ -151,7 +157,7 @@ endif
 EXTRA_DIST =					\
 	gmarshal.list               \
 	org.parole.media.player.xml \
-	org.parole.media.list.xml   
+	org.parole.media.list.xml
 
 DISTCLEANFILES =				\
 	$(BUILT_SOURCES)			\
