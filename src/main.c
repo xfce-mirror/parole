@@ -137,7 +137,7 @@ parole_send_files (gchar **filenames, gboolean enqueue)
     if ( !proxy )
         g_error ("Unable to create proxy for %s", PAROLE_DBUS_NAME);
 
-    out_paths = g_new0 (gchar *, g_strv_length (filenames) + 1);
+    out_paths = g_new0 (gchar *, g_strv_length (filenames));
 
     for ( i = 0; filenames && filenames[i]; i++)
     {
