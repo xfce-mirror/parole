@@ -394,6 +394,9 @@ struct ParolePlayerPrivate
     GtkWidget          *showhide_playlist_menu_item;
     GtkWidget          *repeat_menu_item;
     GtkWidget          *shuffle_menu_item;
+#if GTK_CHECK_VERSION(3,10,0)
+    GtkWidget          *revealer;
+#endif
 
     /* Infobar */
     GtkWidget          *infobar;
@@ -2193,15 +2196,22 @@ parole_player_gst_widget_button_release (GtkWidget *widget, GdkEventButton *ev, 
 gboolean parole_player_hide_controls (gpointer data)
 {
     ParolePlayer *player;
+#if GTK_CHECK_VERSION(3,10,0)
+#else
     GtkWidget *controls;
+#endif
 
     TRACE("start");
 
     player = PAROLE_PLAYER (data);
 
+#if GTK_CHECK_VERSION(3,10,0)
+    gtk_revealer_set_reveal_child(GTK_REVEALER(player->priv->revealer), FALSE);
+#else
     controls = gtk_widget_get_parent(player->priv->control);
-
     gtk_widget_hide(controls);
+#endif
+
     parole_player_set_cursor_visible (player, FALSE);
 
     return FALSE;
@@ -2223,12 +2233,37 @@ parole_player_gst_widget_motion_notify_event (GtkWidget *widget, GdkEventMotion 
 
     parole_player_set_cursor_visible (player, TRUE);
 
-    g_object_get (G_OBJECT (player->priv->conf),
-                  "hide-controls-timeout", &hide_controls_timeout,
-                  NULL);
+#if GTK_CHECK_VERSION(3,10,0)
+    if (gtk_revealer_get_reveal_child(GTK_REVEALER(player->priv->revealer)))
+    {
+        if ((gdouble)gtk_widget_get_allocated_height(widget) - ev->y >= 32.0)
+        {
+            if ( player->priv->state == PAROLE_STATE_PLAYING )
+            {
+                g_object_get (G_OBJECT (player->priv->conf),
+                              "hide-controls-timeout", &hide_controls_timeout,
+                              NULL);
 
+                hide_timeout = g_timeout_add_seconds (hide_controls_timeout,
+                                                      (GSourceFunc) parole_player_hide_controls, player);
+            }
+        }
+    }
+    else
+    {
+        gtk_revealer_set_reveal_child(GTK_REVEALER(player->priv->revealer), TRUE);
+    }
+#else
     if ( player->priv->state == PAROLE_STATE_PLAYING )
-        hide_timeout = g_timeout_add_seconds (hide_controls_timeout, (GSourceFunc) parole_player_hide_controls, player);
+    {
+        g_object_get (G_OBJECT (player->priv->conf),
+                      "hide-controls-timeout", &hide_controls_timeout,
+                      NULL);
+
+        hide_timeout = g_timeout_add_seconds (hide_controls_timeout,
+                                              (GSourceFunc) parole_player_hide_controls, player);
+    }
+#endif
 
     return FALSE;
 }
@@ -3363,6 +3398,27 @@ parole_player_init (ParolePlayer *player)
     controls_parent = GTK_WIDGET(gtk_builder_get_object (builder, "box2"));
     gtk_box_pack_start (GTK_BOX(controls_parent), controls_overlay, TRUE, TRUE, 0);
     gtk_widget_reparent(GTK_WIDGET(player->priv->eventbox_output), controls_overlay);
+
+#if GTK_CHECK_VERSION(3,8,0)
+#else
+    gdk_color_parse("#080810", &background);
+    gtk_widget_modify_bg(GTK_WIDGET(controls_overlay), GTK_STATE_NORMAL, &background);
+#endif
+
+#if GTK_CHECK_VERSION(3,10,0)
+    player->priv->revealer = gtk_revealer_new ();
+    gtk_widget_set_vexpand(GTK_WIDGET(player->priv->revealer), FALSE);
+    gtk_widget_set_hexpand(GTK_WIDGET(player->priv->revealer), FALSE);
+    gtk_revealer_set_transition_duration (GTK_REVEALER(player->priv->revealer), 1000);
+    gtk_revealer_set_transition_type (GTK_REVEALER(player->priv->revealer), GTK_REVEALER_TRANSITION_TYPE_SLIDE_UP);
+    gtk_revealer_set_reveal_child(GTK_REVEALER(player->priv->revealer), TRUE);
+    gtk_widget_set_valign(player->priv->revealer, GTK_ALIGN_END);
+
+    gtk_widget_reparent(GTK_WIDGET(player->priv->control), player->priv->revealer);
+
+    gtk_overlay_add_overlay(GTK_OVERLAY(controls_overlay), player->priv->revealer);
+    gtk_widget_show_all(player->priv->revealer);
+#else
     tmp_box = GTK_WIDGET(gtk_event_box_new());
 
     gtk_widget_set_vexpand(GTK_WIDGET(tmp_box), FALSE);
@@ -3373,13 +3429,11 @@ parole_player_init (ParolePlayer *player)
     gtk_widget_set_margin_top(tmp_box, 10);
     gtk_widget_set_valign(tmp_box, GTK_ALIGN_END);
 
-#if GTK_CHECK_VERSION(3,8,0)
-#else
-    gdk_color_parse("#080810", &background);
-    gtk_widget_modify_bg(GTK_WIDGET(controls_overlay), GTK_STATE_NORMAL, &background);
-#endif
     gtk_widget_reparent(GTK_WIDGET(player->priv->control), tmp_box);
+
     gtk_overlay_add_overlay(GTK_OVERLAY(controls_overlay), tmp_box);
+#endif
+
     gtk_box_set_child_packing( GTK_BOX(player->priv->control), GTK_WIDGET(play_box), TRUE, TRUE, 2, GTK_PACK_START );
     gtk_container_set_border_width(GTK_CONTAINER(play_box), 3);
     gtk_widget_show_all(controls_parent);
