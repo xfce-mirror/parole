@@ -2916,10 +2916,12 @@ parole_overlay_expose_event (GtkWidget *widget, cairo_t *cr, gpointer user_data)
     gtk_style_context_add_class (context, "osd");
     gtk_style_context_get_background_color (context, GTK_STATE_NORMAL, &acolor);
     gdk_cairo_set_source_rgba (cr, &acolor);
-    cairo_fill_preserve (cr);
+    cairo_fill (cr);
 
     gtk_style_context_get_border_color (context, GTK_STATE_NORMAL, &acolor);
     gdk_cairo_set_source_rgba (cr, &acolor);
+    cairo_move_to (cr, 0, 0);
+    cairo_line_to (cr, allocation->width, 0);
     cairo_stroke (cr);
 
     return FALSE;
