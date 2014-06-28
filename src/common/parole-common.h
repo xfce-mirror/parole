@@ -26,6 +26,8 @@
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 
+gboolean    parole_widget_reparent          (GtkWidget *widget,
+                                             GtkWidget *new_parent);
 
 void        parole_dialog_info              (GtkWindow *parent,
                                              const gchar *title,

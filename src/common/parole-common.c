@@ -34,6 +34,24 @@
 
 #include "parole-common.h"
 
+gboolean
+parole_widget_reparent (GtkWidget *widget, GtkWidget *new_parent)
+{
+    GtkWidget *parent;
+
+    parent = gtk_widget_get_parent(widget);
+    if (parent)
+    {
+        g_object_ref (widget);
+        gtk_container_remove (GTK_CONTAINER(parent), widget);
+        gtk_container_add (GTK_CONTAINER(new_parent), widget);
+        g_object_unref (widget);
+
+        return TRUE;
+    }
+
+    return FALSE;
+}
 
 static void
 parole_dialog_show (GtkWindow *parent,

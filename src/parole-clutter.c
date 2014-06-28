@@ -341,12 +341,6 @@ parole_clutter_init (ParoleClutter *clutter)
     clutter_actor_add_child (clutter->priv->stage, clutter->priv->texture);
 
     gtk_widget_set_can_focus (GTK_WIDGET (clutter), TRUE);
-
-    /*
-     * Disable double buffering on the video output to avoid
-     * flickering when resizing the window.
-     */
-    gtk_widget_set_double_buffered (GTK_WIDGET (clutter), FALSE);
 }
 
 GtkWidget *

@@ -2837,7 +2837,8 @@ on_goto_position_clicked (GtkWidget *w, ParolePlayer *player)
 
     label = gtk_label_new (_("Position:"));
     gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 0);
-    gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
+    gtk_widget_set_halign (GTK_WIDGET(label), GTK_ALIGN_START);
+    gtk_widget_set_valign (GTK_WIDGET(label), GTK_ALIGN_CENTER);
 
     /* Get the stream length and set that as maximum for hours and minutes */
     adjustment = gtk_range_get_adjustment (GTK_RANGE (player->priv->range));
@@ -3125,7 +3126,11 @@ parole_player_init (ParolePlayer *player)
     GtkWidget *audiotrack_box, *audiotrack_label, *subtitle_box, *subtitle_label, *infobar_close, *close_icon;
     GtkWidget *content_area;
 
-    GtkWidget *controls_overlay, *tmp_box;
+    GtkWidget *controls_overlay;
+#if GTK_CHECK_VERSION(3,10,0)
+#else
+    GtkWidget *tmp_box;
+#endif
     GtkWidget *controls_parent;
     GtkWidget *play_box;
 
@@ -3397,7 +3402,8 @@ parole_player_init (ParolePlayer *player)
     play_box = GTK_WIDGET (gtk_builder_get_object (builder, "media_controls"));
     controls_parent = GTK_WIDGET(gtk_builder_get_object (builder, "box2"));
     gtk_box_pack_start (GTK_BOX(controls_parent), controls_overlay, TRUE, TRUE, 0);
-    gtk_widget_reparent(GTK_WIDGET(player->priv->eventbox_output), controls_overlay);
+
+    parole_widget_reparent(GTK_WIDGET(player->priv->eventbox_output), controls_overlay);
 
 #if GTK_CHECK_VERSION(3,8,0)
 #else
@@ -3414,7 +3420,7 @@ parole_player_init (ParolePlayer *player)
     gtk_revealer_set_reveal_child(GTK_REVEALER(player->priv->revealer), TRUE);
     gtk_widget_set_valign(player->priv->revealer, GTK_ALIGN_END);
 
-    gtk_widget_reparent(GTK_WIDGET(player->priv->control), player->priv->revealer);
+    parole_widget_reparent(GTK_WIDGET(player->priv->control), player->priv->revealer);
 
     gtk_overlay_add_overlay(GTK_OVERLAY(controls_overlay), player->priv->revealer);
     gtk_widget_show_all(player->priv->revealer);
