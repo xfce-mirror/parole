@@ -3417,7 +3417,7 @@ parole_player_init (ParolePlayer *player)
     player->priv->revealer = gtk_revealer_new ();
     gtk_widget_set_vexpand(GTK_WIDGET(player->priv->revealer), FALSE);
     gtk_widget_set_hexpand(GTK_WIDGET(player->priv->revealer), FALSE);
-    gtk_revealer_set_transition_duration (GTK_REVEALER(player->priv->revealer), 1000);
+    gtk_revealer_set_transition_duration (GTK_REVEALER(player->priv->revealer), 250);
     gtk_revealer_set_transition_type (GTK_REVEALER(player->priv->revealer), GTK_REVEALER_TRANSITION_TYPE_SLIDE_UP);
     gtk_revealer_set_reveal_child(GTK_REVEALER(player->priv->revealer), TRUE);
     gtk_widget_set_valign(player->priv->revealer, GTK_ALIGN_END);
