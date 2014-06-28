@@ -1459,7 +1459,13 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
     g_object_get (G_OBJECT (player->priv->conf),
                   "hide-controls-timeout", &hide_controls_timeout,
                   NULL);
-    g_timeout_add_seconds (hide_controls_timeout, (GSourceFunc) parole_player_hide_controls, player);
+    if (hide_controls_timeout != 0 || player->priv->full_screen)
+    {
+        if (player->priv->full_screen)
+            g_timeout_add_seconds (4, (GSourceFunc) parole_player_hide_controls, player);
+        else
+            g_timeout_add_seconds (hide_controls_timeout, (GSourceFunc) parole_player_hide_controls, player);
+    }
 }
 
 static void
@@ -2244,8 +2250,15 @@ parole_player_gst_widget_motion_notify_event (GtkWidget *widget, GdkEventMotion 
                               "hide-controls-timeout", &hide_controls_timeout,
                               NULL);
 
-                hide_timeout = g_timeout_add_seconds (hide_controls_timeout,
+                if (hide_controls_timeout != 0 || player->priv->full_screen)
+                {
+                    if (player->priv->full_screen)
+                        hide_timeout = g_timeout_add_seconds (4,
                                                       (GSourceFunc) parole_player_hide_controls, player);
+                    else
+                        hide_timeout = g_timeout_add_seconds (hide_controls_timeout,
+                                                      (GSourceFunc) parole_player_hide_controls, player);
+                }
             }
         }
     }
@@ -2260,8 +2273,15 @@ parole_player_gst_widget_motion_notify_event (GtkWidget *widget, GdkEventMotion 
                       "hide-controls-timeout", &hide_controls_timeout,
                       NULL);
 
-        hide_timeout = g_timeout_add_seconds (hide_controls_timeout,
+        if (hide_controls_timeout != 0 || player->priv->full_screen)
+        {
+            if (player->priv->full_screen)
+                hide_timeout = g_timeout_add_seconds (4,
                                               (GSourceFunc) parole_player_hide_controls, player);
+            else
+                hide_timeout = g_timeout_add_seconds (hide_controls_timeout,
+                                              (GSourceFunc) parole_player_hide_controls, player);
+        }
     }
 #endif
 
