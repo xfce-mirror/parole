@@ -2266,19 +2266,6 @@ parole_gst_constructed (GObject *object)
 }
 
 static void
-parole_gst_style_set (GtkWidget *widget, GtkStyle *prev_style)
-{
-    ParoleGst *gst;
-
-    gst = PAROLE_GST (widget);
-
-    if ( gst->priv->logo )
-        g_object_unref (gst->priv->logo);
-
-    gtk_widget_queue_draw (widget);
-}
-
-static void
 parole_gst_class_init (ParoleGstClass *klass)
 {
     GObjectClass *object_class = G_OBJECT_CLASS (klass);
@@ -2296,7 +2283,6 @@ parole_gst_class_init (ParoleGstClass *klass)
     widget_class->motion_notify_event = parole_gst_motion_notify_event;
     widget_class->button_press_event = parole_gst_button_press_event;
     widget_class->button_release_event = parole_gst_button_release_event;
-    widget_class->style_set = parole_gst_style_set;
 
     signals[MEDIA_STATE] =
         g_signal_new   ("media-state",
