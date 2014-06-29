@@ -466,9 +466,9 @@ void parole_provider_player_open_media_chooser (ParoleProviderPlayer *player)
  * @player: a #ParoleProviderPlayer
  * @action: the #ParolePlayerAction to retrieve
  *
- * Get GtkAction from Parole.
+ * Get GSimpleAction from Parole.
  *
- * Returns: the requested #GtkAction.
+ * Returns: the requested #GSimpleAction.
  *
  *
  * Since: 0.6

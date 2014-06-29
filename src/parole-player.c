@@ -83,9 +83,7 @@ GSimpleAction *previous_action;
 GSimpleAction *next_action;
 gboolean block_playlist_updates = FALSE;
 
-/* With the loss of GtkAction and the inability to pass objects or pointers
- * with GAction, we'll leave a reference to ParolePlayer on the outside
- * for now. */
+/* Temporary reference to ParolePlayer to cover for GSimpleAction. */
 ParolePlayer *parole_player = NULL;
 
 static void
