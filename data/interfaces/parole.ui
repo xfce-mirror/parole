@@ -7,34 +7,6 @@
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
-  <object class="GtkImage" id="image_about">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">16</property>
-    <property name="icon_name">gtk-about-symbolic</property>
-    <property name="use_fallback">True</property>
-  </object>
-  <object class="GtkImage" id="image_disc">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">16</property>
-    <property name="icon_name">media-optical-symbolic</property>
-    <property name="use_fallback">True</property>
-  </object>
-  <object class="GtkImage" id="image_help_reportbug">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">16</property>
-    <property name="icon_name">face-sad-symbolic</property>
-    <property name="use_fallback">True</property>
-  </object>
-  <object class="GtkImage" id="image_help_reportbug1">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">16</property>
-    <property name="icon_name">help-info-symbolic</property>
-    <property name="use_fallback">True</property>
-  </object>
   <object class="GtkImage" id="image_media_fullscreen">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -63,89 +35,11 @@
     <property name="icon_name">media-skip-backward-symbolic</property>
     <property name="use_fallback">True</property>
   </object>
-  <object class="GtkImage" id="image_menu_fullscreen">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">16</property>
-    <property name="icon_name">view-fullscreen-symbolic</property>
-    <property name="use_fallback">True</property>
-  </object>
-  <object class="GtkImage" id="image_open">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">16</property>
-    <property name="icon_name">document-open-symbolic</property>
-    <property name="use_fallback">True</property>
-  </object>
-  <object class="GtkImage" id="image_open1">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">16</property>
-    <property name="icon_name">go-jump-symbolic</property>
-    <property name="use_fallback">True</property>
-  </object>
-  <object class="GtkImage" id="image_open_location">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">16</property>
-    <property name="icon_name">folder-remote-symbolic</property>
-    <property name="use_fallback">True</property>
-    <property name="icon_size">1</property>
-  </object>
-  <object class="GtkImage" id="image_plugins">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">16</property>
-    <property name="icon_name">parole-extension-symbolic</property>
-    <property name="use_fallback">True</property>
-  </object>
-  <object class="GtkImage" id="image_preferences">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">16</property>
-    <property name="icon_name">document-properties-symbolic</property>
-    <property name="use_fallback">True</property>
-  </object>
-  <object class="GtkImage" id="image_quit">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">16</property>
-    <property name="icon_name">system-shutdown-symbolic</property>
-    <property name="use_fallback">True</property>
-  </object>
-  <object class="GtkImage" id="image_saveplaylist">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">16</property>
-    <property name="icon_name">document-save-as-symbolic</property>
-    <property name="use_fallback">True</property>
-  </object>
   <object class="GtkImage" id="image_toggleplaylist">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="pixel_size">16</property>
     <property name="icon_name">view-list-symbolic</property>
-    <property name="use_fallback">True</property>
-  </object>
-  <object class="GtkImage" id="image_volume_down">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">16</property>
-    <property name="icon_name">audio-volume-low-symbolic</property>
-    <property name="use_fallback">True</property>
-  </object>
-  <object class="GtkImage" id="image_volume_mute">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">16</property>
-    <property name="icon_name">audio-volume-muted-symbolic</property>
-    <property name="use_fallback">True</property>
-  </object>
-  <object class="GtkImage" id="image_volume_up">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixel_size">16</property>
-    <property name="icon_name">audio-volume-high-symbolic</property>
     <property name="use_fallback">True</property>
   </object>
   <object class="GtkWindow" id="main-window">
@@ -177,25 +71,21 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkImageMenuItem" id="menu-add">
-                        <property name="label" translatable="yes">_Open…</property>
+                      <object class="GtkMenuItem" id="menu-add">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">_Open…</property>
                         <property name="use_underline">True</property>
-                        <property name="image">image_open</property>
-                        <property name="use_stock">False</property>
                         <signal name="activate" handler="parole_player_menu_add_cb" swapped="no"/>
                         <accelerator key="o" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="menu-open-location">
-                        <property name="label" translatable="yes">Open _Location…</property>
+                      <object class="GtkMenuItem" id="menu-open-location">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Open _Location…</property>
                         <property name="use_underline">True</property>
-                        <property name="image">image_open_location</property>
-                        <property name="use_stock">False</property>
                         <signal name="activate" handler="parole_player_menu_open_location_cb" swapped="no"/>
                         <accelerator key="l" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
@@ -215,13 +105,11 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="menu-save-playlist">
-                        <property name="label" translatable="yes">_Save Playlist…</property>
+                      <object class="GtkMenuItem" id="menu-save-playlist">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">_Save Playlist…</property>
                         <property name="use_underline">True</property>
-                        <property name="image">image_saveplaylist</property>
-                        <property name="use_stock">False</property>
                       </object>
                     </child>
                     <child>
@@ -231,13 +119,11 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="menu-open-disc">
-                        <property name="label" translatable="yes">Insert Disc</property>
+                      <object class="GtkMenuItem" id="menu-open-disc">
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
                         <property name="can_focus">False</property>
-                        <property name="image">image_disc</property>
-                        <property name="use_stock">False</property>
+                        <property name="label" translatable="yes">Insert Disc</property>
                       </object>
                     </child>
                     <child>
@@ -247,13 +133,11 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="menu-exit">
-                        <property name="label" translatable="yes">_Quit</property>
+                      <object class="GtkMenuItem" id="menu-exit">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">_Quit</property>
                         <property name="use_underline">True</property>
-                        <property name="image">image_quit</property>
-                        <property name="use_stock">False</property>
                         <signal name="activate" handler="parole_player_menu_exit_cb" swapped="no"/>
                         <accelerator key="q" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
@@ -302,12 +186,10 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="goto_position">
-                        <property name="label" translatable="yes">Go to position</property>
+                      <object class="GtkMenuItem" id="goto_position">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="image">image_open1</property>
-                        <property name="use_stock">False</property>
+                        <property name="label" translatable="yes">Go to position</property>
                         <accelerator key="g" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
                     </child>
@@ -440,38 +322,32 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="volume-up-menu">
-                        <property name="label" translatable="yes">Volume _Up</property>
+                      <object class="GtkMenuItem" id="volume-up-menu">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Volume _Up</property>
                         <property name="use_underline">True</property>
-                        <property name="image">image_volume_up</property>
-                        <property name="use_stock">False</property>
                         <signal name="activate" handler="parole_player_volume_up" swapped="no"/>
                         <accelerator key="plus" signal="activate"/>
                         <accelerator key="equal" signal="activate"/>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="volume-down-menu">
-                        <property name="label" translatable="yes">Volume _Down</property>
+                      <object class="GtkMenuItem" id="volume-down-menu">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Volume _Down</property>
                         <property name="use_underline">True</property>
-                        <property name="image">image_volume_down</property>
-                        <property name="use_stock">False</property>
                         <signal name="activate" handler="parole_player_volume_down" swapped="no"/>
                         <accelerator key="minus" signal="activate"/>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="volume-mute-menu">
-                        <property name="label" translatable="yes">_Mute</property>
+                      <object class="GtkMenuItem" id="volume-mute-menu">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">_Mute</property>
                         <property name="use_underline">True</property>
-                        <property name="image">image_volume_mute</property>
-                        <property name="use_stock">False</property>
                         <signal name="activate" handler="parole_player_volume_mute" swapped="no"/>
                         <accelerator key="0" signal="activate"/>
                       </object>
@@ -491,13 +367,11 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkImageMenuItem" id="fullscreen-menu">
-                        <property name="label" translatable="yes">_Fullscreen</property>
+                      <object class="GtkMenuItem" id="fullscreen-menu">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">_Fullscreen</property>
                         <property name="use_underline">True</property>
-                        <property name="image">image_menu_fullscreen</property>
-                        <property name="use_stock">False</property>
                         <accelerator key="F11" signal="activate"/>
                       </object>
                     </child>
@@ -651,23 +525,19 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkImageMenuItem" id="plugins-menu-item">
-                        <property name="label" translatable="yes">P_lugins</property>
+                      <object class="GtkMenuItem" id="plugins-menu-item">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">P_lugins</property>
                         <property name="use_underline">True</property>
-                        <property name="image">image_plugins</property>
-                        <property name="use_stock">False</property>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="preferences">
-                        <property name="label" translatable="yes">_Preferences</property>
+                      <object class="GtkMenuItem" id="preferences">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">_Preferences</property>
                         <property name="use_underline">True</property>
-                        <property name="image">image_preferences</property>
-                        <property name="use_stock">False</property>
                         <signal name="activate" handler="parole_player_open_preferences_cb" swapped="no"/>
                       </object>
                     </child>
@@ -686,36 +556,30 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkImageMenuItem" id="bug-report">
-                        <property name="label" translatable="yes">_Report a Bug…</property>
+                      <object class="GtkMenuItem" id="bug-report">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">_Report a Bug…</property>
                         <property name="use_underline">True</property>
-                        <property name="image">image_help_reportbug</property>
-                        <property name="use_stock">False</property>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="contents">
-                        <property name="label" translatable="yes">_Contents</property>
+                      <object class="GtkMenuItem" id="contents">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="has_tooltip">True</property>
                         <property name="tooltip_text" translatable="yes">Display Parole user manual</property>
+                        <property name="label" translatable="yes">_Contents</property>
                         <property name="use_underline">True</property>
-                        <property name="image">image_help_reportbug1</property>
-                        <property name="use_stock">False</property>
                         <accelerator key="F1" signal="activate"/>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="about">
-                        <property name="label" translatable="yes">_About</property>
+                      <object class="GtkMenuItem" id="about">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">_About</property>
                         <property name="use_underline">True</property>
-                        <property name="image">image_about</property>
-                        <property name="use_stock">False</property>
                         <signal name="activate" handler="parole_show_about" swapped="no"/>
                       </object>
                     </child>
