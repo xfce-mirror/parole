@@ -379,6 +379,8 @@ struct ParolePlayerPrivate
 
     /* Media Controls */
     GtkWidget          *control;
+    GtkWidget          *previous_button;
+    GtkWidget          *next_button;
     GtkWidget          *playpause_button;
     GtkWidget          *playpause_image;
     GtkWidget          *fullscreen_button;
@@ -1269,16 +1271,24 @@ parole_player_recent_menu_item_activated_cb (GtkWidget *widget, ParolePlayer *pl
 static void
 parole_player_media_cursor_changed_cb (ParoleMediaList *list, gboolean media_selected, ParolePlayer *player)
 {
+    gboolean enabled;
+
+    /* Play/Pause */
     if (player->priv->state < PAROLE_STATE_PAUSED)
     {
     g_simple_action_set_enabled (player->priv->media_playpause_action,
                                  media_selected || !parole_media_list_is_empty (player->priv->list));
     }
 
-    g_simple_action_set_enabled (player->priv->media_previous_action,
-                                 parole_media_list_get_playlist_count (player->priv->list) > 1);
-    g_simple_action_set_enabled (player->priv->media_next_action,
-                                 parole_media_list_get_playlist_count (player->priv->list) > 1);
+    enabled = parole_media_list_get_playlist_count (player->priv->list) > 1;
+
+    /* Previous */
+    gtk_widget_set_sensitive (player->priv->previous_button, enabled);
+    g_simple_action_set_enabled (player->priv->media_previous_action, enabled);
+
+    /* Next */
+    gtk_widget_set_sensitive (player->priv->next_button, enabled);
+    g_simple_action_set_enabled (player->priv->media_next_action, enabled);
 }
 
 static void
@@ -3160,8 +3170,6 @@ parole_player_init (ParolePlayer *player)
 
     GList *widgets;
 
-    GtkWidget *action_widget;
-
     g_setenv("PULSE_PROP_media.role", "video", TRUE);
 
     player->priv = PAROLE_PLAYER_GET_PRIVATE (player);
@@ -3481,17 +3489,17 @@ parole_player_init (ParolePlayer *player)
     }
 
     /* Previous, Play/Pause, Next */
-    action_widget = GTK_WIDGET(gtk_builder_get_object(builder, "media_previous"));
-    gtk_widget_set_tooltip_text(GTK_WIDGET(action_widget), _("Previous Track"));
-    g_signal_connect(G_OBJECT(action_widget), "clicked", G_CALLBACK(parole_player_widget_activate_action), player->priv->media_previous_action);
+    player->priv->previous_button = GTK_WIDGET(gtk_builder_get_object(builder, "media_previous"));
+    gtk_widget_set_tooltip_text(GTK_WIDGET(player->priv->previous_button), _("Previous Track"));
+    g_signal_connect(G_OBJECT(player->priv->previous_button), "clicked", G_CALLBACK(parole_player_widget_activate_action), player->priv->media_previous_action);
 
     player->priv->playpause_button = GTK_WIDGET(gtk_builder_get_object(builder, "media_playpause"));
     player->priv->playpause_image = GTK_WIDGET(gtk_builder_get_object(builder, "image_media_playpause"));
     g_signal_connect(G_OBJECT(player->priv->playpause_button), "clicked", G_CALLBACK(parole_player_widget_activate_action), player->priv->media_playpause_action);
 
-    action_widget = GTK_WIDGET(gtk_builder_get_object(builder, "media_next"));
-    gtk_widget_set_tooltip_text(GTK_WIDGET(action_widget), _("Next Track"));
-    g_signal_connect(G_OBJECT(action_widget), "clicked", G_CALLBACK(parole_player_widget_activate_action), player->priv->media_next_action);
+    player->priv->next_button = GTK_WIDGET(gtk_builder_get_object(builder, "media_next"));
+    gtk_widget_set_tooltip_text(GTK_WIDGET(player->priv->next_button), _("Next Track"));
+    g_signal_connect(G_OBJECT(player->priv->next_button), "clicked", G_CALLBACK(parole_player_widget_activate_action), player->priv->media_next_action);
 
     /* Elapsed/Duration labels */
     player->priv->label_duration = GTK_WIDGET(gtk_builder_get_object(builder, "media_time_duration"));
