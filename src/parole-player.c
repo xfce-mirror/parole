@@ -3535,8 +3535,8 @@ parole_player_init (ParolePlayer *player)
 
     #if GTK_CHECK_VERSION(3,8,0)
     #else
-        gdk_color_parse("#080810", &background);
-        gtk_widget_modify_bg(GTK_WIDGET(controls_overlay), GTK_STATE_NORMAL, &background);
+        gdk_rgba_parse (&background, "#080810");
+        gtk_widget_override_background_color(GTK_WIDGET(controls_overlay), GTK_STATE_FLAG_NORMAL, &background);
     #endif
 
     #if GTK_CHECK_VERSION(3,10,0)
