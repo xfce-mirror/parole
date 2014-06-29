@@ -58,7 +58,7 @@ typedef struct ParoleMediaListPrivate ParoleMediaListPrivate;
 
 typedef struct
 {
-    GtkVBox                     parent;
+    GtkBox                      parent;
 
     ParoleMediaListPrivate     *priv;
 
@@ -66,7 +66,7 @@ typedef struct
 
 typedef struct
 {
-    GtkVBoxClass    parent_class;
+    GtkBoxClass     parent_class;
 
     void            (*media_activated)              (ParoleMediaList *list,
                                                      GtkTreeRowReference *row);
