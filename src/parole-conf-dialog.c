@@ -28,6 +28,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <src/misc/parole.h>
+
 #include "interfaces/parole-settings_ui.h"
 
 #include "parole-gst.h"
@@ -296,6 +298,21 @@ parole_conf_dialog_add_vis_plugins (gpointer key, gpointer value, GtkWidget *com
     g_object_unref (store);
 }
 
+#ifdef HAVE_CLUTTER
+static void
+parole_conf_dialog_add_clutter_sink (ParoleConfDialog *dialog, GtkComboBox *combobox)
+{
+    GtkListStore *store = GTK_LIST_STORE(gtk_combo_box_get_model(GTK_COMBO_BOX(combobox)));
+    GtkTreeIter iter;
+
+    gtk_list_store_append( store, &iter );
+    gtk_list_store_set( store, &iter, 0, g_strdup("cluttersink"), -1 );
+    gtk_list_store_set( store, &iter, 1, g_strdup(_("Clutter (OpenGL)")), -1 );
+
+    g_object_unref (store);
+}
+#endif
+
 /* Set the combobox to the default visualisation plugin */
 static gboolean
 parole_conf_dialog_set_default_vis_plugin (GtkTreeModel *model, GtkTreePath *path,
@@ -337,7 +354,6 @@ static gboolean
 parole_conf_dialog_set_default_sink_plugin (ParoleConfDialog *self)
 {
     gchar *sink_name;
-    gboolean ret = FALSE;
 
     g_object_get (G_OBJECT (self->priv->conf),
                   "videosink", &sink_name,
@@ -349,15 +365,23 @@ parole_conf_dialog_set_default_sink_plugin (ParoleConfDialog *self)
         return TRUE;
     }
 
-    if (g_strcmp0(sink_name, "ximagesink") == 0)
+    else if (g_strcmp0(sink_name, "ximagesink") == 0)
     {
         gtk_combo_box_set_active (GTK_COMBO_BOX (self->priv->sink_combox), 1);
         return TRUE;
     }
-
-    gtk_combo_box_set_active (GTK_COMBO_BOX (self->priv->sink_combox), 2);
-
-    return ret;
+    #ifdef HAVE_CLUTTER
+    else if (g_strcmp0(sink_name, "cluttersink") == 0)
+    {
+        gtk_combo_box_set_active (GTK_COMBO_BOX (self->priv->sink_combox), 2);
+        return TRUE;
+    }
+    #endif
+    else
+    {
+        gtk_combo_box_set_active (GTK_COMBO_BOX (self->priv->sink_combox), 1);
+        return FALSE;
+    }
 }
 
 /* Load the rest of the settings stored in the rc file */
@@ -430,7 +454,10 @@ void parole_conf_dialog_open (ParoleConfDialog *self, GtkWidget *parent)
     gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (parent));
 
     self->priv->vis_combox = combox;
-    self->priv->sink_combox = GTK_WIDGET (gtk_builder_get_object (builder, "vis-combobox"));
+    self->priv->sink_combox = GTK_WIDGET (gtk_builder_get_object (builder, "combobox-sink"));
+    #ifdef HAVE_CLUTTER
+        parole_conf_dialog_add_clutter_sink (self, GTK_COMBO_BOX(self->priv->sink_combox));
+    #endif
 
     parole_conf_dialog_set_defaults (self);
 
@@ -438,7 +465,7 @@ void parole_conf_dialog_open (ParoleConfDialog *self, GtkWidget *parent)
 
     if ( !with_display )
     {
-        gtk_widget_hide (GTK_WIDGET (gtk_builder_get_object (builder, "frame-display")));
+        gtk_widget_set_sensitive (GTK_WIDGET (gtk_builder_get_object (builder, "frame-display")), FALSE);
     }
     else
     {

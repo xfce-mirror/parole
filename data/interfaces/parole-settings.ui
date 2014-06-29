@@ -30,10 +30,6 @@
         <col id="0">ximagesink</col>
         <col id="1" translatable="yes">X Window System (No Xv)</col>
       </row>
-      <row>
-        <col id="0">cluttersink</col>
-        <col id="1" translatable="yes">Other (Configure with Xfconf)</col>
-      </row>
     </data>
   </object>
   <object class="XfceTitledDialog" id="settings-dialog">
