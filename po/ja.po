@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-16 06:30+0200\n"
-"PO-Revision-Date: 2014-06-17 17:07+0000\n"
+"POT-Creation-Date: 2014-06-30 00:30+0200\n"
+"PO-Revision-Date: 2014-07-02 10:37+0000\n"
 "Last-Translator: Masato HASHIMOTO <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/xfce-apps/language/ja/)\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../data/interfaces/parole.ui.h:1 ../data/desktop/parole.desktop.in.in.h:1
-#: ../src/parole-player.c:592 ../src/parole-player.c:1480
+#: ../src/parole-player.c:604 ../src/parole-player.c:1514
 #: ../src/parole-about.c:70 ../src/plugins/mpris2/mpris2-provider.c:199
 msgid "Parole Media Player"
 msgstr "Parole メディアプレーヤー"
@@ -66,7 +66,7 @@ msgid "_Shuffle"
 msgstr "シャッフル(_S)"
 
 #. Create dialog
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2769
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2849
 msgid "Go to position"
 msgstr "指定時間に移動"
 
@@ -106,7 +106,7 @@ msgstr "オーディオ(_A)"
 msgid "_Audio Track"
 msgstr "オーディオトラック(_A)"
 
-#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:818
+#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:830
 msgid "Empty"
 msgstr "空"
 
@@ -126,8 +126,8 @@ msgstr "ミュート(_M)"
 msgid "_Video"
 msgstr "ビデオ(_V)"
 
-#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:1994
-#: ../src/parole-player.c:2107
+#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2028
+#: ../src/parole-player.c:2141
 msgid "_Fullscreen"
 msgstr "全画面化(_F)"
 
@@ -135,7 +135,7 @@ msgstr "全画面化(_F)"
 msgid "_Aspect Ratio"
 msgstr "アスペクト比(_A)"
 
-#: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:746
+#: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:758
 msgid "None"
 msgstr "なし"
 
@@ -188,12 +188,12 @@ msgid "_Report a Bug…"
 msgstr "バグの報告(_R)…"
 
 #: ../data/interfaces/parole.ui.h:42
-msgid "_Contents"
-msgstr "目次(_C)"
-
-#: ../data/interfaces/parole.ui.h:43
 msgid "Display Parole user manual"
 msgstr "Parole ユーザーマニュアルを開きます"
+
+#: ../data/interfaces/parole.ui.h:43
+msgid "_Contents"
+msgstr "目次(_C)"
 
 #: ../data/interfaces/parole.ui.h:44
 msgid "_About"
@@ -229,8 +229,8 @@ msgid "Open Media Files"
 msgstr "メディアファイルを開く"
 
 #: ../data/interfaces/playlist.ui.h:1
-#: ../data/interfaces/parole-settings.ui.h:28 ../src/parole-medialist.c:816
-#: ../src/parole-medialist.c:859 ../src/parole-player.c:3506
+#: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:816
+#: ../src/parole-medialist.c:859 ../src/parole-player.c:3262
 msgid "Playlist"
 msgstr "プレイリスト"
 
@@ -287,7 +287,7 @@ msgid "Play opened files"
 msgstr "開いたファイルを再生する"
 
 #: ../data/interfaces/playlist.ui.h:15
-#: ../data/interfaces/parole-settings.ui.h:26
+#: ../data/interfaces/parole-settings.ui.h:25
 msgid "Remember playlist"
 msgstr "プレイリストを記憶する"
 
@@ -324,118 +324,114 @@ msgid "X Window System (No Xv)"
 msgstr "X Window System (Xv なし)"
 
 #: ../data/interfaces/parole-settings.ui.h:3
-msgid "Other (Configure with Xfconf)"
-msgstr "その他 (Xfconf で設定)"
-
-#: ../data/interfaces/parole-settings.ui.h:4
 msgid "Parole Settings"
 msgstr "Parole の設定"
 
-#: ../data/interfaces/parole-settings.ui.h:5
+#: ../data/interfaces/parole-settings.ui.h:4
 msgid "Configure your media player"
 msgstr "メディアプレーヤーの設定"
 
-#: ../data/interfaces/parole-settings.ui.h:6
+#: ../data/interfaces/parole-settings.ui.h:5
 msgid "Disable screensaver when playing movies"
 msgstr "動画再生中はスクリーンセーバーを無効にする"
 
-#: ../data/interfaces/parole-settings.ui.h:7
+#: ../data/interfaces/parole-settings.ui.h:6
 msgid "<b>Screensaver</b>"
 msgstr "<b>スクリーンセーバー</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:8
+#: ../data/interfaces/parole-settings.ui.h:7
 msgid "Show visual effects when an audio file is played"
 msgstr "オーディオファイルの再生時に視覚効果を表示する"
 
-#: ../data/interfaces/parole-settings.ui.h:9
+#: ../data/interfaces/parole-settings.ui.h:8
 msgid "Visualization type:"
 msgstr "視覚化タイプ:"
 
-#: ../data/interfaces/parole-settings.ui.h:10
+#: ../data/interfaces/parole-settings.ui.h:9
 msgid "<b>Audio Visualization</b>"
 msgstr "<b>オーディオの視覚化</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:11
+#: ../data/interfaces/parole-settings.ui.h:10
 msgid "Enable keyboard multimedia keys"
 msgstr "キーボードのマルチメディアキーを有効にする"
 
-#: ../data/interfaces/parole-settings.ui.h:12
+#: ../data/interfaces/parole-settings.ui.h:11
 msgid "<b>Keyboard</b>"
 msgstr "<b>キーボード</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:13
+#: ../data/interfaces/parole-settings.ui.h:12
 msgid "General"
 msgstr "一般"
 
-#: ../data/interfaces/parole-settings.ui.h:14
+#: ../data/interfaces/parole-settings.ui.h:13
 msgid "<i>Changes to this field require Parole to be restarted.</i>"
 msgstr "<i>この設定の変更を適用するには Parole の再起動が必要です。</i>"
 
-#: ../data/interfaces/parole-settings.ui.h:15
+#: ../data/interfaces/parole-settings.ui.h:14
 msgid "<b>Video Output</b>"
 msgstr "<b>ビデオ出力</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:16
+#: ../data/interfaces/parole-settings.ui.h:15
 msgid "Brightness:"
 msgstr "明るさ:"
 
-#: ../data/interfaces/parole-settings.ui.h:17
+#: ../data/interfaces/parole-settings.ui.h:16
 msgid "Contrast:"
 msgstr "コントラスト:"
 
-#: ../data/interfaces/parole-settings.ui.h:18
+#: ../data/interfaces/parole-settings.ui.h:17
 msgid "Hue:"
 msgstr "色あい:"
 
-#: ../data/interfaces/parole-settings.ui.h:19
+#: ../data/interfaces/parole-settings.ui.h:18
 msgid "Saturation:"
 msgstr "色の濃さ:"
 
-#: ../data/interfaces/parole-settings.ui.h:20
+#: ../data/interfaces/parole-settings.ui.h:19
 msgid "Reset to defaults"
 msgstr "デフォルトにリセット"
 
-#: ../data/interfaces/parole-settings.ui.h:21
+#: ../data/interfaces/parole-settings.ui.h:20
 msgid "<b>Color Balance</b>"
 msgstr "<b>カラーバランス</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:22
+#: ../data/interfaces/parole-settings.ui.h:21
 msgid "Display"
 msgstr "ディスプレイ"
 
-#: ../data/interfaces/parole-settings.ui.h:23
+#: ../data/interfaces/parole-settings.ui.h:22
 msgid "Always replace playlist with opened files"
 msgstr "常に開いたファイルでプレイリストを置き換える"
 
-#: ../data/interfaces/parole-settings.ui.h:24
+#: ../data/interfaces/parole-settings.ui.h:23
 msgid "Check and remove duplicate media entries"
 msgstr "重複するメディアエントリをチェックおよび除去する"
 
-#: ../data/interfaces/parole-settings.ui.h:25
+#: ../data/interfaces/parole-settings.ui.h:24
 msgid "Start playing opened files"
 msgstr "開いたファイルを再生する"
 
-#: ../data/interfaces/parole-settings.ui.h:27
+#: ../data/interfaces/parole-settings.ui.h:26
 msgid "<b>Playlist Settings</b>"
 msgstr "<b>プレイリストの設定</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:29
+#: ../data/interfaces/parole-settings.ui.h:28
 msgid "Automatically show subtitles when playing movie file"
 msgstr "動画再生時に字幕を自動的に表示する"
 
-#: ../data/interfaces/parole-settings.ui.h:30
+#: ../data/interfaces/parole-settings.ui.h:29
 msgid "Font:"
 msgstr "フォント:"
 
-#: ../data/interfaces/parole-settings.ui.h:31
+#: ../data/interfaces/parole-settings.ui.h:30
 msgid "Encoding:"
 msgstr "エンコーディング:"
 
-#: ../data/interfaces/parole-settings.ui.h:32
+#: ../data/interfaces/parole-settings.ui.h:31
 msgid "<b>Subtitle Settings</b>"
 msgstr "<b>字幕の設定</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:33
+#: ../data/interfaces/parole-settings.ui.h:32
 msgid "Subtitles"
 msgstr "字幕"
 
@@ -479,12 +475,12 @@ msgstr "映像や音楽メディアを再生します。"
 msgid "Play/Pause"
 msgstr "再生/一時停止"
 
-#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3385
+#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3410
 #: ../src/plugins/notify/notify-provider.c:204
 msgid "Previous Track"
 msgstr "前のトラック"
 
-#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3393
+#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3428
 #: ../src/plugins/notify/notify-provider.c:217
 msgid "Next Track"
 msgstr "次のトラック"
@@ -537,87 +533,87 @@ msgid ""
 "plugins and the occasional bugfix."
 msgstr "この開発版リリースでは、Gtk+3 への完全移行、ユーザーインターフェイスの改善 (ストリームライン化されたメニュー)、プレイリストの強化が行われました。ほかに、アートワークの更新、GStreamer1.0 のサポート、プラグインの改善、および特定の条件下で発生するバグの修正が行われました。"
 
-#: ../src/common/parole-common.c:70
+#: ../src/common/parole-common.c:88
 msgid "Message"
 msgstr "メッセージ"
 
-#: ../src/common/parole-common.c:75
+#: ../src/common/parole-common.c:93
 msgid "Error"
 msgstr "エラー"
 
-#: ../src/gst/parole-gst.c:1285 ../src/parole-medialist.c:403
+#: ../src/gst/parole-gst.c:1272 ../src/parole-medialist.c:403
 #, c-format
 msgid "Track %i"
 msgstr "トラック %i"
 
-#: ../src/gst/parole-gst.c:1288
+#: ../src/gst/parole-gst.c:1275
 msgid "Audio CD"
 msgstr "オーディオ CD"
 
-#: ../src/gst/parole-gst.c:1528
+#: ../src/gst/parole-gst.c:1515
 msgid "Additional software is required."
 msgstr "追加のソフトウェアが必要です。"
 
-#: ../src/gst/parole-gst.c:1533
+#: ../src/gst/parole-gst.c:1520
 msgid "Don't Install"
 msgstr "インストールしない"
 
-#: ../src/gst/parole-gst.c:1535
+#: ../src/gst/parole-gst.c:1522
 msgid "Install"
 msgstr "インストール"
 
-#: ../src/gst/parole-gst.c:1538
+#: ../src/gst/parole-gst.c:1525
 msgid "OK"
 msgstr "OK"
 
-#: ../src/gst/parole-gst.c:1545
+#: ../src/gst/parole-gst.c:1532
 #, c-format
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
 msgstr "Parole がこのファイルを再生するためには <b>%s</b> が必要です。\nこれを自動的にインストールできます。"
 
-#: ../src/gst/parole-gst.c:1548
+#: ../src/gst/parole-gst.c:1535
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
 msgstr "Parole がこのファイルを再生するためには <b>%s</b> が必要です。"
 
-#: ../src/gst/parole-gst.c:1959
+#: ../src/gst/parole-gst.c:1946
 msgid "The stream is taking too much time to load"
 msgstr "このストリームを読み込むにはかなり時間がかかります"
 
-#: ../src/gst/parole-gst.c:1960
+#: ../src/gst/parole-gst.c:1947
 msgid "Do you want to continue loading or stop?"
 msgstr "読み込みを続けますか、それとも停止しますか?"
 
-#: ../src/gst/parole-gst.c:1961
+#: ../src/gst/parole-gst.c:1948
 msgid "Stop"
 msgstr "停止"
 
-#: ../src/gst/parole-gst.c:1962
+#: ../src/gst/parole-gst.c:1949
 msgid "Continue"
 msgstr "続行"
 
-#: ../src/gst/parole-gst.c:2146
+#: ../src/gst/parole-gst.c:2133
 msgid "GStreamer Error"
 msgstr "GStreamer エラー"
 
-#: ../src/gst/parole-gst.c:2147
+#: ../src/gst/parole-gst.c:2134
 msgid "Parole Media Player cannot start."
 msgstr "Parole メディアプレーヤー を起動できません。"
 
-#: ../src/gst/parole-gst.c:2175 ../src/gst/parole-gst.c:2193
-#: ../src/gst/parole-gst.c:2222
+#: ../src/gst/parole-gst.c:2165 ../src/gst/parole-gst.c:2181
+#: ../src/gst/parole-gst.c:2213
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
 msgstr "\"%s\" プラグインを読み込めません。GStreamer が正しくインストールされているか確認してください。"
 
-#: ../src/gst/parole-gst.c:2856 ../src/gst/parole-gst.c:2862
+#: ../src/gst/parole-gst.c:2837 ../src/gst/parole-gst.c:2843
 #, c-format
 msgid "Audio Track #%d"
 msgstr "オーディオトラック #%d"
 
-#: ../src/gst/parole-gst.c:2906 ../src/gst/parole-gst.c:2912
+#: ../src/gst/parole-gst.c:2887 ../src/gst/parole-gst.c:2893
 #, c-format
 msgid "Subtitle #%d"
 msgstr "字幕 #%d"
@@ -711,7 +707,7 @@ msgstr "%s --help と入力すると利用可能なすべてのコマンドラ�
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole はすでに起動しています。新しいインスタンスを開くには -i を使用してください\n"
 
-#: ../src/parole-mediachooser.c:247 ../src/parole-player.c:1040
+#: ../src/parole-mediachooser.c:247 ../src/parole-player.c:1052
 msgid "All files"
 msgstr "すべてのファイル"
 
@@ -735,7 +731,7 @@ msgstr "プレイリスト (%i 個のアイテム)"
 msgid "Playlist (%i chapters)"
 msgstr "プレイリスト (%i 個のチャプター)"
 
-#: ../src/parole-medialist.c:419 ../src/parole-player.c:725
+#: ../src/parole-medialist.c:419 ../src/parole-player.c:737
 #, c-format
 msgid "Chapter %i"
 msgstr "チャプター %i"
@@ -781,169 +777,170 @@ msgstr "共有プレイリスト"
 msgid "Open Containing Folder"
 msgstr "このファイルのあるフォルダーを開く"
 
-#: ../src/parole-player.c:522
+#: ../src/parole-player.c:534
 msgid "Hide Playlist"
 msgstr "プレイリストを隠す"
 
-#: ../src/parole-player.c:522 ../src/parole-player.c:3275
+#: ../src/parole-player.c:534 ../src/parole-player.c:3470
 msgid "Show Playlist"
 msgstr "プレイリストを表示"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:1004
+#: ../src/parole-player.c:1016
 msgid "Select Subtitle File"
 msgstr "字幕ファイルの選択"
 
-#: ../src/parole-player.c:1009 ../src/parole-player.c:1213
-#: ../src/parole-player.c:2772 ../src/plugins/tray/tray-provider.c:338
+#: ../src/parole-player.c:1021 ../src/parole-player.c:1225
+#: ../src/parole-player.c:2852 ../src/plugins/tray/tray-provider.c:338
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: ../src/parole-player.c:1012
+#: ../src/parole-player.c:1024
 msgid "Open"
 msgstr "開く"
 
-#: ../src/parole-player.c:1028
+#: ../src/parole-player.c:1040
 msgid "Subtitle Files"
 msgstr "字幕ファイル"
 
-#: ../src/parole-player.c:1209 ../src/parole-player.c:1217
+#: ../src/parole-player.c:1221 ../src/parole-player.c:1229
 msgid "Clear Recent Items"
 msgstr "最近開いたアイテムのクリア"
 
-#: ../src/parole-player.c:1211
+#: ../src/parole-player.c:1223
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
 msgstr "最近開いたファイルの履歴をクリアしますか? これはやり直せません。"
 
-#: ../src/parole-player.c:1302 ../src/parole-player.c:1432
+#: ../src/parole-player.c:1322 ../src/parole-player.c:1460
 msgid "Media stream is not seekable"
 msgstr "メディアストリームはシークできません"
 
-#: ../src/parole-player.c:1313
+#: ../src/parole-player.c:1333
 msgid "Play"
 msgstr "再生"
 
-#: ../src/parole-player.c:1316
+#: ../src/parole-player.c:1336
 msgid "Pause"
 msgstr "一時停止"
 
-#: ../src/parole-player.c:1798
+#: ../src/parole-player.c:1832
 msgid "GStreamer backend error"
 msgstr "GStreamer バックエンドエラー"
 
-#: ../src/parole-player.c:1829
+#: ../src/parole-player.c:1863
 msgid "Unknown Song"
 msgstr "未知の楽曲"
 
-#: ../src/parole-player.c:1834 ../src/parole-player.c:1836
-#: ../src/parole-player.c:1842
+#: ../src/parole-player.c:1868 ../src/parole-player.c:1870
+#: ../src/parole-player.c:1876
 msgid "on"
 msgstr "なし"
 
-#: ../src/parole-player.c:1842 ../src/plugins/notify/notify-provider.c:145
+#: ../src/parole-player.c:1876 ../src/plugins/notify/notify-provider.c:145
 msgid "Unknown Album"
 msgstr "未知のアルバム"
 
-#: ../src/parole-player.c:1849 ../src/parole-player.c:1853
+#: ../src/parole-player.c:1883 ../src/parole-player.c:1887
 msgid "by"
 msgstr "by"
 
-#: ../src/parole-player.c:1853 ../src/plugins/notify/notify-provider.c:147
+#: ../src/parole-player.c:1887 ../src/plugins/notify/notify-provider.c:147
 msgid "Unknown Artist"
 msgstr "未知のアーティスト"
 
-#: ../src/parole-player.c:1887
+#: ../src/parole-player.c:1921
 msgid "Buffering"
 msgstr "バッファーしています"
 
-#: ../src/parole-player.c:1995 ../src/parole-player.c:3414
+#: ../src/parole-player.c:2029 ../src/parole-player.c:3445
 msgid "Fullscreen"
 msgstr "全画面化"
 
-#: ../src/parole-player.c:2008
+#: ../src/parole-player.c:2042
 msgid "Leave _Fullscreen"
 msgstr "元に戻す(_F)"
 
-#: ../src/parole-player.c:2009
+#: ../src/parole-player.c:2043
 msgid "Leave Fullscreen"
 msgstr "元に戻す"
 
 #. Play menu item
 #. * Play pause
-#: ../src/parole-player.c:2075 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2109 ../src/plugins/tray/tray-provider.c:130
 msgid "_Pause"
 msgstr "一時停止(_P)"
 
-#: ../src/parole-player.c:2075 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2109 ../src/plugins/tray/tray-provider.c:130
 msgid "_Play"
 msgstr "再生(_P)"
 
 #. * Previous item in playlist.
-#: ../src/parole-player.c:2089
+#: ../src/parole-player.c:2123
 msgid "_Previous"
 msgstr "前(_P)"
 
 #. * Next item in playlist.
-#: ../src/parole-player.c:2098
+#: ../src/parole-player.c:2132
 msgid "_Next"
 msgstr "次(_N)"
 
 #. * Un/Full screen
-#: ../src/parole-player.c:2107
+#: ../src/parole-player.c:2141
 msgid "_Leave Fullscreen"
 msgstr "元に戻す(_L)"
 
 #. * Un/Hide menubar
-#: ../src/parole-player.c:2121
+#: ../src/parole-player.c:2155
 msgid "Show menubar"
 msgstr "メニューバーを表示"
 
-#: ../src/parole-player.c:2335
+#: ../src/parole-player.c:2415
 msgid "Mute"
 msgstr "ミュート"
 
-#: ../src/parole-player.c:2340
+#: ../src/parole-player.c:2420
 msgid "Unmute"
 msgstr "ミュート解除"
 
-#: ../src/parole-player.c:2729 ../src/parole-player.c:2747
+#: ../src/parole-player.c:2809 ../src/parole-player.c:2827
 msgid "Unable to open default web browser"
 msgstr "デフォルトのウェブブラウザーを開けません"
 
-#: ../src/parole-player.c:2731
+#: ../src/parole-player.c:2811
 msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr "http://docs.xfce.org/apps/parole/bugs を参照してバグの報告をお願いします。"
 
-#: ../src/parole-player.c:2749
+#: ../src/parole-player.c:2829
 msgid ""
 "Please go to http://docs.xfce.org/apps/parole/start to read Parole's online "
 "documentation."
 msgstr "http://docs.xfce.org/apps/parole/start を開いて Parole のオンラインドキュメントを参照してください。"
 
-#: ../src/parole-player.c:2773
+#: ../src/parole-player.c:2853
 msgid "Go"
 msgstr "移動"
 
-#: ../src/parole-player.c:2786
+#: ../src/parole-player.c:2866
 msgid "Position:"
 msgstr "指定時間"
 
 #. Clear Recent Menu Item
-#: ../src/parole-player.c:3243
+#: ../src/parole-player.c:3303
 msgid "_Clear recent items…"
 msgstr "最近開いたアイテムのクリア(_C)…"
 
-#: ../src/parole-player.c:3458
+#: ../src/parole-player.c:3640
 msgid "Audio Track:"
 msgstr "オーディオトラック:"
 
-#: ../src/parole-player.c:3477
+#: ../src/parole-player.c:3659
 msgid "Subtitles:"
 msgstr "字幕:"
 
-#: ../src/parole-player.c:3482 ../src/plugins/tray/tray-provider.c:273
+#. Add a close button to the Infobar
+#: ../src/parole-player.c:3665 ../src/plugins/tray/tray-provider.c:273
 msgid "Close"
 msgstr "閉じる"
 
@@ -954,6 +951,10 @@ msgstr "Masato Hashimoto <hashimo@xfce.org>"
 #: ../src/parole-about.c:79
 msgid "Visit Parole website"
 msgstr "Parole ウェブサイトへ"
+
+#: ../src/parole-conf-dialog.c:310
+msgid "Clutter (OpenGL)"
+msgstr "Clutter (OpenGL)"
 
 #: ../src/parole-disc.c:114
 msgid "Play Disc"
@@ -1117,23 +1118,23 @@ msgstr "インストールされているプラグインが見つかりません
 msgid "Please check your installation."
 msgstr "正しくインストールされているか確認してください。"
 
-#: ../src/misc/parole-filters.c:65
+#: ../src/misc/parole-filters.c:64
 msgid "Audio"
 msgstr "オーディオ"
 
-#: ../src/misc/parole-filters.c:91
+#: ../src/misc/parole-filters.c:90
 msgid "Video"
 msgstr "ビデオ"
 
-#: ../src/misc/parole-filters.c:116 ../src/misc/parole-filters.c:134
+#: ../src/misc/parole-filters.c:115 ../src/misc/parole-filters.c:133
 msgid "Audio and video"
 msgstr "オーディオとビデオ"
 
-#: ../src/misc/parole-filters.c:163 ../src/misc/parole-filters.c:179
+#: ../src/misc/parole-filters.c:162 ../src/misc/parole-filters.c:178
 msgid "All supported files"
 msgstr "すべてのサポートファイル"
 
-#: ../src/misc/parole-filters.c:206
+#: ../src/misc/parole-filters.c:205
 msgid "Playlist files"
 msgstr "プレイリストファイル"
 
