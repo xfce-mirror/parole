@@ -212,27 +212,15 @@ parole_media_list_set_playlist_count (ParoleMediaList *list, gint n_items)
     gtk_widget_set_sensitive (list->priv->remove_button, n_items != 0);
     gtk_widget_set_sensitive (list->priv->clear_button, n_items != 0);
 
-    if ( n_items == 1 )
-    {
-        if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0)
-        {
-            gtk_tree_view_column_set_title (list->priv->col, g_strdup_printf(_("Playlist (%i item)"), n_items));
-        }
-        else
-        {
-            gtk_tree_view_column_set_title (list->priv->disc_col, g_strdup_printf(_("Playlist (%i chapter)"), n_items));
-        }
-    }
-    else
-    {
-        if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0)
-        {
-            gtk_tree_view_column_set_title (list->priv->col, g_strdup_printf(_("Playlist (%i items)"), n_items));
-        }
-        else
-        {
-            gtk_tree_view_column_set_title (list->priv->disc_col, g_strdup_printf(_("Playlist (%i chapters)"), n_items));
-        }
+     if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0)
+     {
+         gtk_tree_view_column_set_title (list->priv->col,
+                 g_strdup_printf(ngettext("Playlist (%i item)", "Playlist (%i items)", n_items), n_items));
+     }
+     else
+     {
+         gtk_tree_view_column_set_title (list->priv->disc_col,
+                 g_strdup_printf(ngettext("Playlist (%i chapter)", "Playlist (%i chapters)", n_items), n_items));
     }
 
     /*
@@ -1593,8 +1581,11 @@ parole_media_list_setup_view (ParoleMediaList *list)
 
     gtk_tree_view_append_column (GTK_TREE_VIEW (list->priv->view), list->priv->col);
     gtk_tree_view_append_column (GTK_TREE_VIEW (list->priv->disc_view), list->priv->disc_col);
-    gtk_tree_view_column_set_title (list->priv->col, g_strdup_printf(_("Playlist (%i items)"), 0));
-    gtk_tree_view_column_set_title (list->priv->disc_col, g_strdup_printf(_("Playlist (%i chapters)"), 0));
+
+    gtk_tree_view_column_set_title (list->priv->col,
+            g_strdup_printf(ngettext("Playlist (%i item)", "Playlist (%i items)", 0), 0));
+    gtk_tree_view_column_set_title (list->priv->disc_col,
+            g_strdup_printf(ngettext("Playlist (%i chapter)", "Playlist (%i chapters)", 0), 0));
 
     gtk_drag_dest_set (list->priv->view, GTK_DEST_DEFAULT_ALL, target_entry, G_N_ELEMENTS (target_entry),
                        GDK_ACTION_COPY | GDK_ACTION_MOVE);
