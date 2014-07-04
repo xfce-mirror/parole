@@ -41,6 +41,15 @@
   </provides>
 
   <releases>
+    <release version="0.7.0" timestamp="">
+      <description>
+        <_p>This unstable development release adds the new clutter backend and cleans up
+        deprecated Gtk3 symbols. It also adds a "go to position" feature and several bugs
+        have been addressed.
+        </_p>
+      </description>
+    </release>
+
     <release version="0.6.1" timestamp="1396146122">
       <description>
         <_p>This release fixes a problem with detecting DVD drive locations.
