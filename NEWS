@@ -16,6 +16,8 @@
   - Fixed playlist file filter
   - Playback controls can now be always-enabled (Bug 10976)
   - Fixed subtitles with MKV files (Bug 9880)
+  - Fixed audio cd playback (Bug 10902)
+  - Fixed segmentation fault when sending filenames to existing instance (Bug 10962)
 
 0.6.1
 =======
