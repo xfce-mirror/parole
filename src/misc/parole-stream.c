@@ -836,7 +836,8 @@ void parole_stream_init_properties (ParoleStream *stream)
     /* Remove the previous image if it exists */
     if ( PAROLE_STREAM_GET_PRIVATE (stream)->previous_image )
     {
-        g_remove (PAROLE_STREAM_GET_PRIVATE (stream)->previous_image);
+        if (g_remove (PAROLE_STREAM_GET_PRIVATE (stream)->previous_image) != 0)
+            g_warning ("Failed to remove temporary artwork");
     }
     PAROLE_STREAM_GET_PRIVATE (stream)->previous_image = NULL;
 }

@@ -286,23 +286,25 @@ parole_media_list_add (ParoleMediaList *list, ParoleFile *file, gboolean disc, g
         filename = g_strdup(parole_file_get_file_name(file));
 
         /* Check the first row */
-        gtk_tree_model_get_iter_first(GTK_TREE_MODEL(list_store), &iter);
-        gtk_tree_model_get(GTK_TREE_MODEL(list_store), &iter, DATA_COL, &row_file, -1);
-        if (g_strcmp0(filename, parole_file_get_file_name(row_file)) == 0)
+        if (gtk_tree_model_get_iter_first(GTK_TREE_MODEL(list_store), &iter))
         {
-            gtk_list_store_remove (GTK_LIST_STORE(list_store), &iter);
-        }
-
-        /* Check subsequent rows */
-        while (gtk_tree_model_iter_next(GTK_TREE_MODEL(list_store), &iter)) {
             gtk_tree_model_get(GTK_TREE_MODEL(list_store), &iter, DATA_COL, &row_file, -1);
             if (g_strcmp0(filename, parole_file_get_file_name(row_file)) == 0)
             {
                 gtk_list_store_remove (GTK_LIST_STORE(list_store), &iter);
             }
-        }
 
-        g_object_unref(row_file);
+            /* Check subsequent rows */
+            while (gtk_tree_model_iter_next(GTK_TREE_MODEL(list_store), &iter)) {
+                gtk_tree_model_get(GTK_TREE_MODEL(list_store), &iter, DATA_COL, &row_file, -1);
+                if (g_strcmp0(filename, parole_file_get_file_name(row_file)) == 0)
+                {
+                    gtk_list_store_remove (GTK_LIST_STORE(list_store), &iter);
+                }
+            }
+
+            g_object_unref(row_file);
+        }
     }
 
     /* Add the file to the playlist */
@@ -2129,7 +2131,8 @@ void parole_media_list_save_list (ParoleMediaList *list)
         else
         {
             // If the playlist is empty, delete the list.
-            remove(history);
+            if (remove(history) != 0)
+                g_warning ("Failed to remove playlist");
             g_free(history);
         }
         g_slist_free (fileslist);
