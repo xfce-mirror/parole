@@ -96,6 +96,7 @@ struct ParoleConfDialogPrivate
 
     GtkWidget  *vis_combox;
     GtkWidget  *sink_combox;
+    GtkWidget  *backend_infobar;
     GtkWidget  *toggle_vis;
     GtkWidget  *toggle_subtitle;
     GtkWidget  *font_button;
@@ -238,6 +239,8 @@ void parole_conf_dialog_sink_plugin_changed_cb (GtkComboBox *widget,  ParoleConf
                       "videosink", g_strdup(active),
                       NULL);
     }
+
+    gtk_widget_show (self->priv->backend_infobar);
 
     g_free (active);
 }
@@ -458,6 +461,7 @@ void parole_conf_dialog_open (ParoleConfDialog *self, GtkWidget *parent)
     #ifdef HAVE_CLUTTER
         parole_conf_dialog_add_clutter_sink (self, GTK_COMBO_BOX(self->priv->sink_combox));
     #endif
+    self->priv->backend_infobar = GTK_WIDGET (gtk_builder_get_object (builder, "backend-infobar"));
 
     parole_conf_dialog_set_defaults (self);
 
