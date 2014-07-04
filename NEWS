@@ -1,3 +1,22 @@
+0.7.0 (Development Release)
+======
+- New Features
+  - New Clutter video backend (build with --enable-clutter)
+  - Video backend selection from Preferences dialog
+  - New "Go to position" feature
+  - GtkRevealer is now used for the controls with Gtk 3.10+
+  - New "hide-controls-timeout" setting to specify when controls should be hidden 
+- Cleaned up deprecated widgets and callbacks
+- Bugs Fixed
+  - Fixed "value invalid or out of range" errors
+  - Fixed "Source ID not found" errors
+  - Prevent mouse cursor from hiding when dialogs are open
+  - Multimedia keys can now be properly disabled with the Preferences dialog
+  - Fixed "Show Playlist" appearance in the menu and overlay
+  - Fixed playlist file filter
+  - Playback controls can now be always-enabled (Bug 10976)
+  - Fixed subtitles with MKV files (Bug 9880)
+
 0.6.1
 =======
 - Properly use specified device, use correct URI (lp: #1098323)
