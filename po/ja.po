@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-30 00:30+0200\n"
-"PO-Revision-Date: 2014-07-02 10:37+0000\n"
+"POT-Creation-Date: 2014-07-04 18:30+0200\n"
+"PO-Revision-Date: 2014-07-05 09:28+0000\n"
 "Last-Translator: Masato HASHIMOTO <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/xfce-apps/language/ja/)\n"
 "MIME-Version: 1.0\n"
@@ -37,7 +37,7 @@ msgstr "場所を開く(_L)…"
 
 #: ../data/interfaces/parole.ui.h:5
 msgid "Open _Recent"
-msgstr "最近開いたファイル(_R)"
+msgstr "最近開いたアイテム(_R)"
 
 #: ../data/interfaces/parole.ui.h:6
 msgid "_Save Playlist…"
@@ -46,7 +46,7 @@ msgstr "プレイリストの保存(_S)…"
 #: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:112
 #: ../src/parole-disc.c:154
 msgid "Insert Disc"
-msgstr "ディスクを挿入してください"
+msgstr "ディスクは挿入されていません"
 
 #. * Exit
 #: ../data/interfaces/parole.ui.h:8 ../src/plugins/tray/tray-provider.c:179
@@ -229,8 +229,8 @@ msgid "Open Media Files"
 msgstr "メディアファイルを開く"
 
 #: ../data/interfaces/playlist.ui.h:1
-#: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:816
-#: ../src/parole-medialist.c:859 ../src/parole-player.c:3262
+#: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:806
+#: ../src/parole-medialist.c:849 ../src/parole-player.c:3262
 msgid "Playlist"
 msgstr "プレイリスト"
 
@@ -364,8 +364,8 @@ msgid "General"
 msgstr "一般"
 
 #: ../data/interfaces/parole-settings.ui.h:13
-msgid "<i>Changes to this field require Parole to be restarted.</i>"
-msgstr "<i>この設定の変更を適用するには Parole の再起動が必要です。</i>"
+msgid "Please restart Parole for this change to take effect."
+msgstr "この変更を適用するために Parole を再起動してください。"
 
 #: ../data/interfaces/parole-settings.ui.h:14
 msgid "<b>Video Output</b>"
@@ -500,10 +500,17 @@ msgid ""
 msgstr "Parole は字幕をサポートする動画を含むローカルメディアファイル、音楽 CD、DVD、およびライブストリームの再生を行えます。また、プラグインによって拡張可能です。"
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
+msgid ""
+"This unstable development release adds the new clutter backend and cleans up"
+" deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
+"several bugs have been addressed."
+msgstr "この開発版リリースでは、新しく Clutter バックエンドが追加され、廃止予定の Gtk3 シンボルが整理されました。他に \"指定時間へ移動\" 機能が追加され、いくつかのバグが修正されました。"
+
+#: ../data/appdata/parole.appdata.xml.in.h:4
 msgid "This release fixes a problem with detecting DVD drive locations."
 msgstr "このリリースでは DVD ドライブの検出に関する問題が修正されました。"
 
-#: ../data/appdata/parole.appdata.xml.in.h:4
+#: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
 "This release features the completed transition to the Gtk+3 toolkit, "
 "improvements in the user-interface (more streamlined menus), better "
@@ -512,20 +519,20 @@ msgid ""
 "and we use the GStreamer1.0 framework now by default."
 msgstr "このリリースでは、Gtk+3 への完全移行、ユーザーインターフェイスの改善 (ストリームライン化されたメニュー)、およびプレイリストの強化が行われました。さらに、既存のプラグインも改善され、新たに MPRIS2 が追加されました。多くのアートワークが更新され、デフォルトで GStreamer1.0 フレームワークを使用するようになりました。"
 
-#: ../data/appdata/parole.appdata.xml.in.h:5
+#: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
 "This unstable development release features mostly bugfixes and introduces "
 "the new MPRIS2 plugin."
 msgstr "この開発版リリースではほとんどのバグが修正され、新しく MPRIS2 プラグインが追加されました。"
 
-#: ../data/appdata/parole.appdata.xml.in.h:6
+#: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This is a bugfix release which fixes the loading of playlists with relative "
 "paths, improves the file-filters for audio/video mimetypes and fixes the "
 "\"Remove duplicates\" functionality."
 msgstr "これはバグフィックスリリースです。相対パスでのプレイリストの読み込み、音楽/動画 MIME タイプのファイルフィルター、および \"重複するエントリの削除\" 機能に関する問題が修正されました。"
 
-#: ../data/appdata/parole.appdata.xml.in.h:7
+#: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
 "This unstable development release features the complete port to the Gtk+3 "
 "toolkit, improvements in the user-interface (more streamlined menus), better"
@@ -541,7 +548,7 @@ msgstr "メッセージ"
 msgid "Error"
 msgstr "エラー"
 
-#: ../src/gst/parole-gst.c:1272 ../src/parole-medialist.c:403
+#: ../src/gst/parole-gst.c:1272 ../src/parole-medialist.c:393
 #, c-format
 msgid "Track %i"
 msgstr "トラック %i"
@@ -711,69 +718,61 @@ msgstr "Parole はすでに起動しています。新しいインスタンス�
 msgid "All files"
 msgstr "すべてのファイル"
 
-#: ../src/parole-medialist.c:219
+#: ../src/parole-medialist.c:218 ../src/parole-medialist.c:1588
 #, c-format
 msgid "Playlist (%i item)"
-msgstr "プレイリスト (%i 個のアイテム)"
+msgid_plural "Playlist (%i items)"
+msgstr[0] "プレイリスト (%i 個のアイテム)"
 
-#: ../src/parole-medialist.c:223
+#: ../src/parole-medialist.c:223 ../src/parole-medialist.c:1590
 #, c-format
 msgid "Playlist (%i chapter)"
-msgstr "プレイリスト (%i 個のチャプター)"
+msgid_plural "Playlist (%i chapters)"
+msgstr[0] "プレイリスト (%i 個のチャプター)"
 
-#: ../src/parole-medialist.c:230 ../src/parole-medialist.c:1596
-#, c-format
-msgid "Playlist (%i items)"
-msgstr "プレイリスト (%i 個のアイテム)"
-
-#: ../src/parole-medialist.c:234 ../src/parole-medialist.c:1597
-#, c-format
-msgid "Playlist (%i chapters)"
-msgstr "プレイリスト (%i 個のチャプター)"
-
-#: ../src/parole-medialist.c:419 ../src/parole-player.c:737
+#: ../src/parole-medialist.c:409 ../src/parole-player.c:737
 #, c-format
 msgid "Chapter %i"
 msgstr "チャプター %i"
 
-#: ../src/parole-medialist.c:708
+#: ../src/parole-medialist.c:698
 msgid "Permission denied"
 msgstr "アクセス権がありません"
 
-#: ../src/parole-medialist.c:710
+#: ../src/parole-medialist.c:700
 msgid "Error saving playlist file"
 msgstr "プレイリストファイルの保存でエラーです"
 
-#: ../src/parole-medialist.c:722
+#: ../src/parole-medialist.c:712
 msgid "Unknown playlist format"
 msgstr "未知のプレイリスト形式"
 
-#: ../src/parole-medialist.c:723
+#: ../src/parole-medialist.c:713
 msgid "Please choose a supported playlist format"
 msgstr "サポートされているプレイリスト形式を選択してください"
 
-#: ../src/parole-medialist.c:777 ../src/parole-plugins-manager.c:369
+#: ../src/parole-medialist.c:767 ../src/parole-plugins-manager.c:369
 msgid "Unknown"
 msgstr "不明"
 
-#: ../src/parole-medialist.c:866
+#: ../src/parole-medialist.c:856
 msgid "M3U Playlists"
 msgstr "M3U プレイリスト"
 
-#: ../src/parole-medialist.c:874
+#: ../src/parole-medialist.c:864
 msgid "PLS Playlists"
 msgstr "PLS プレイリスト"
 
-#: ../src/parole-medialist.c:882
+#: ../src/parole-medialist.c:872
 msgid "Advanced Stream Redirector"
 msgstr "Advanced Stream Redirector"
 
-#: ../src/parole-medialist.c:890
+#: ../src/parole-medialist.c:880
 msgid "Shareable Playlist"
 msgstr "共有プレイリスト"
 
 #. Clear
-#: ../src/parole-medialist.c:1229
+#: ../src/parole-medialist.c:1219
 msgid "Open Containing Folder"
 msgstr "このファイルのあるフォルダーを開く"
 
@@ -811,7 +810,7 @@ msgstr "最近開いたアイテムのクリア"
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
-msgstr "最近開いたファイルの履歴をクリアしますか? これはやり直せません。"
+msgstr "最近開いたアイテムの履歴をクリアしますか? これはやり直せません。"
 
 #: ../src/parole-player.c:1322 ../src/parole-player.c:1460
 msgid "Media stream is not seekable"
@@ -952,7 +951,7 @@ msgstr "Masato Hashimoto <hashimo@xfce.org>"
 msgid "Visit Parole website"
 msgstr "Parole ウェブサイトへ"
 
-#: ../src/parole-conf-dialog.c:310
+#: ../src/parole-conf-dialog.c:313
 msgid "Clutter (OpenGL)"
 msgstr "Clutter (OpenGL)"
 
