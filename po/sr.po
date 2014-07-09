@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-16 06:30+0200\n"
-"PO-Revision-Date: 2014-06-18 18:42+0000\n"
+"POT-Creation-Date: 2014-07-04 18:30+0200\n"
+"PO-Revision-Date: 2014-07-09 12:04+0000\n"
 "Last-Translator: Саша Петровић <salepetronije@gmail.com>\n"
 "Language-Team: Serbian (http://www.transifex.com/projects/p/xfce-apps/language/sr/)\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: ../data/interfaces/parole.ui.h:1 ../data/desktop/parole.desktop.in.in.h:1
-#: ../src/parole-player.c:592 ../src/parole-player.c:1480
+#: ../src/parole-player.c:604 ../src/parole-player.c:1514
 #: ../src/parole-about.c:70 ../src/plugins/mpris2/mpris2-provider.c:199
 msgid "Parole Media Player"
 msgstr "Програм за извођење звука и видеа Часноречац"
@@ -69,7 +69,7 @@ msgid "_Shuffle"
 msgstr "_Мешај"
 
 #. Create dialog
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2769
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2849
 msgid "Go to position"
 msgstr "Иди на положај"
 
@@ -109,7 +109,7 @@ msgstr "_Звук"
 msgid "_Audio Track"
 msgstr "_Звучна стаза"
 
-#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:818
+#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:830
 msgid "Empty"
 msgstr "Празно"
 
@@ -129,8 +129,8 @@ msgstr "_Мук"
 msgid "_Video"
 msgstr "_Видео"
 
-#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:1994
-#: ../src/parole-player.c:2107
+#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2028
+#: ../src/parole-player.c:2141
 msgid "_Fullscreen"
 msgstr "_Преко целог екана"
 
@@ -138,7 +138,7 @@ msgstr "_Преко целог екана"
 msgid "_Aspect Ratio"
 msgstr "_Однос ширине и висине"
 
-#: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:746
+#: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:758
 msgid "None"
 msgstr "Ништа"
 
@@ -191,12 +191,12 @@ msgid "_Report a Bug…"
 msgstr "_Пријави грешку..."
 
 #: ../data/interfaces/parole.ui.h:42
-msgid "_Contents"
-msgstr "_Садржај"
-
-#: ../data/interfaces/parole.ui.h:43
 msgid "Display Parole user manual"
 msgstr "Прикажи упутство Часноречца"
+
+#: ../data/interfaces/parole.ui.h:43
+msgid "_Contents"
+msgstr "_Садржај"
 
 #: ../data/interfaces/parole.ui.h:44
 msgid "_About"
@@ -232,8 +232,8 @@ msgid "Open Media Files"
 msgstr "Отвори датотеке звука и видеа"
 
 #: ../data/interfaces/playlist.ui.h:1
-#: ../data/interfaces/parole-settings.ui.h:28 ../src/parole-medialist.c:816
-#: ../src/parole-medialist.c:859 ../src/parole-player.c:3506
+#: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:806
+#: ../src/parole-medialist.c:849 ../src/parole-player.c:3262
 msgid "Playlist"
 msgstr "Списак нумера"
 
@@ -290,7 +290,7 @@ msgid "Play opened files"
 msgstr "Пусти отворене датотеке"
 
 #: ../data/interfaces/playlist.ui.h:15
-#: ../data/interfaces/parole-settings.ui.h:26
+#: ../data/interfaces/parole-settings.ui.h:25
 msgid "Remember playlist"
 msgstr "Запамти списак нумера"
 
@@ -327,118 +327,114 @@ msgid "X Window System (No Xv)"
 msgstr "Икс систем прозора(без Xv)"
 
 #: ../data/interfaces/parole-settings.ui.h:3
-msgid "Other (Configure with Xfconf)"
-msgstr "Друго (подеси преко ИксФпоставки - Xfconf-а)"
-
-#: ../data/interfaces/parole-settings.ui.h:4
 msgid "Parole Settings"
 msgstr "Подешавања Часноречца"
 
-#: ../data/interfaces/parole-settings.ui.h:5
+#: ../data/interfaces/parole-settings.ui.h:4
 msgid "Configure your media player"
 msgstr "Подесите извођача звука и видеа"
 
-#: ../data/interfaces/parole-settings.ui.h:6
+#: ../data/interfaces/parole-settings.ui.h:5
 msgid "Disable screensaver when playing movies"
 msgstr "Онемогући чувара екрана приликом извођења филмова"
 
-#: ../data/interfaces/parole-settings.ui.h:7
+#: ../data/interfaces/parole-settings.ui.h:6
 msgid "<b>Screensaver</b>"
 msgstr "<b>Чувар·екрана</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:8
+#: ../data/interfaces/parole-settings.ui.h:7
 msgid "Show visual effects when an audio file is played"
 msgstr "Приказуј видне утиске при извођењу звучних записа"
 
-#: ../data/interfaces/parole-settings.ui.h:9
+#: ../data/interfaces/parole-settings.ui.h:8
 msgid "Visualization type:"
 msgstr "Врста утиска:"
 
-#: ../data/interfaces/parole-settings.ui.h:10
+#: ../data/interfaces/parole-settings.ui.h:9
 msgid "<b>Audio Visualization</b>"
 msgstr "<b>Звучни утисци</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:11
+#: ../data/interfaces/parole-settings.ui.h:10
 msgid "Enable keyboard multimedia keys"
 msgstr "Омогућава дугмад тастатуре за управљање извођењем"
 
-#: ../data/interfaces/parole-settings.ui.h:12
+#: ../data/interfaces/parole-settings.ui.h:11
 msgid "<b>Keyboard</b>"
 msgstr "<b>Тастатура</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:13
+#: ../data/interfaces/parole-settings.ui.h:12
 msgid "General"
 msgstr "Опште"
 
-#: ../data/interfaces/parole-settings.ui.h:14
-msgid "<i>Changes to this field require Parole to be restarted.</i>"
-msgstr "<i>Да би се применила измена на овом пољу, неопходно је поново покренути Часноречца.</i>"
+#: ../data/interfaces/parole-settings.ui.h:13
+msgid "Please restart Parole for this change to take effect."
+msgstr "Покрените поново Часноречца да би се измене примениле."
 
-#: ../data/interfaces/parole-settings.ui.h:15
+#: ../data/interfaces/parole-settings.ui.h:14
 msgid "<b>Video Output</b>"
 msgstr "<b>Видео излаз</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:16
+#: ../data/interfaces/parole-settings.ui.h:15
 msgid "Brightness:"
 msgstr "Осветљење:"
 
-#: ../data/interfaces/parole-settings.ui.h:17
+#: ../data/interfaces/parole-settings.ui.h:16
 msgid "Contrast:"
 msgstr "Контраст:"
 
-#: ../data/interfaces/parole-settings.ui.h:18
+#: ../data/interfaces/parole-settings.ui.h:17
 msgid "Hue:"
 msgstr "Нијанса:"
 
-#: ../data/interfaces/parole-settings.ui.h:19
+#: ../data/interfaces/parole-settings.ui.h:18
 msgid "Saturation:"
 msgstr "Засићење:"
 
-#: ../data/interfaces/parole-settings.ui.h:20
+#: ../data/interfaces/parole-settings.ui.h:19
 msgid "Reset to defaults"
 msgstr "Врати на подразумеване вредности"
 
-#: ../data/interfaces/parole-settings.ui.h:21
+#: ../data/interfaces/parole-settings.ui.h:20
 msgid "<b>Color Balance</b>"
 msgstr "<b>Равнотежа боја</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:22
+#: ../data/interfaces/parole-settings.ui.h:21
 msgid "Display"
 msgstr "Приказ"
 
-#: ../data/interfaces/parole-settings.ui.h:23
+#: ../data/interfaces/parole-settings.ui.h:22
 msgid "Always replace playlist with opened files"
 msgstr "Увек замени списак за пуштање отвореним датотекама"
 
-#: ../data/interfaces/parole-settings.ui.h:24
+#: ../data/interfaces/parole-settings.ui.h:23
 msgid "Check and remove duplicate media entries"
 msgstr "Провери и уклони двоструке ставке звука и видеа"
 
-#: ../data/interfaces/parole-settings.ui.h:25
+#: ../data/interfaces/parole-settings.ui.h:24
 msgid "Start playing opened files"
 msgstr "Почни извођење отворених датотека"
 
-#: ../data/interfaces/parole-settings.ui.h:27
+#: ../data/interfaces/parole-settings.ui.h:26
 msgid "<b>Playlist Settings</b>"
 msgstr "<b>Поставке списка за извођење</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:29
+#: ../data/interfaces/parole-settings.ui.h:28
 msgid "Automatically show subtitles when playing movie file"
 msgstr "Самостално прикажи преводе при извођењу филма"
 
-#: ../data/interfaces/parole-settings.ui.h:30
+#: ../data/interfaces/parole-settings.ui.h:29
 msgid "Font:"
 msgstr "Словни лик:"
 
-#: ../data/interfaces/parole-settings.ui.h:31
+#: ../data/interfaces/parole-settings.ui.h:30
 msgid "Encoding:"
 msgstr "Кодирање:"
 
-#: ../data/interfaces/parole-settings.ui.h:32
+#: ../data/interfaces/parole-settings.ui.h:31
 msgid "<b>Subtitle Settings</b>"
 msgstr "<b>Поставке превода</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:33
+#: ../data/interfaces/parole-settings.ui.h:32
 msgid "Subtitles"
 msgstr "Преводи"
 
@@ -482,12 +478,12 @@ msgstr "Изведи садржај"
 msgid "Play/Pause"
 msgstr "Изведи/застани"
 
-#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3385
+#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3410
 #: ../src/plugins/notify/notify-provider.c:204
 msgid "Previous Track"
 msgstr "Претходна ставка"
 
-#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3393
+#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3428
 #: ../src/plugins/notify/notify-provider.c:217
 msgid "Next Track"
 msgstr "Следећи запис"
@@ -507,10 +503,17 @@ msgid ""
 msgstr "Часноречац подржава извођење месних датотека, укључујући снимке са преводима, звучне ЦД-је, ДВД снимке и живе токове. Могућности Часноречца су прошириве преко прикључака."
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
+msgid ""
+"This unstable development release adds the new clutter backend and cleans up"
+" deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
+"several bugs have been addressed."
+msgstr ""
+
+#: ../data/appdata/parole.appdata.xml.in.h:4
 msgid "This release fixes a problem with detecting DVD drive locations."
 msgstr "Ово издање исправља потешкоћу са препознавањем уређаја читача ДВД-ја."
 
-#: ../data/appdata/parole.appdata.xml.in.h:4
+#: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
 "This release features the completed transition to the Gtk+3 toolkit, "
 "improvements in the user-interface (more streamlined menus), better "
@@ -519,20 +522,20 @@ msgid ""
 "and we use the GStreamer1.0 framework now by default."
 msgstr "Ово издање доноси потпуни прелаз на ГТК+3 алате, побољшање у корисничком сучељу (течније изборнике) боље спискове за извођење. Постојећи прикључци су побољшани и нови су додати (МПРИС2). Већи део уметничких радова су обновљени за ово издање и подразумевано се користи Гстример1.0."
 
-#: ../data/appdata/parole.appdata.xml.in.h:5
+#: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
 "This unstable development release features mostly bugfixes and introduces "
 "the new MPRIS2 plugin."
 msgstr "Ово нестабилно развојно издање углавном доноси исправке буба и представља нови прикључак МПРИС2."
 
-#: ../data/appdata/parole.appdata.xml.in.h:6
+#: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This is a bugfix release which fixes the loading of playlists with relative "
 "paths, improves the file-filters for audio/video mimetypes and fixes the "
 "\"Remove duplicates\" functionality."
 msgstr "Ово је издање са исправкама бубе која се јавља при учитавању списка за извођење са односном путањом, побољшаним пропусницима за миме врсте звучних и датотека снимака и исправком могућношћу „Уклони удвостручено“."
 
-#: ../data/appdata/parole.appdata.xml.in.h:7
+#: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
 "This unstable development release features the complete port to the Gtk+3 "
 "toolkit, improvements in the user-interface (more streamlined menus), better"
@@ -540,87 +543,87 @@ msgid ""
 "plugins and the occasional bugfix."
 msgstr "Ово је нестабилно развојно издање које представља потпуни прелазак на ГТК+3 алате, побољшање у корисничком сучељу (течније изборнике) боље спискове за извођење.  Већи део уметничких радова су обновљени за ово издање и подразумевано се користи Гстример1.0."
 
-#: ../src/common/parole-common.c:70
+#: ../src/common/parole-common.c:88
 msgid "Message"
 msgstr "Порука"
 
-#: ../src/common/parole-common.c:75
+#: ../src/common/parole-common.c:93
 msgid "Error"
 msgstr "Грeшкa"
 
-#: ../src/gst/parole-gst.c:1285 ../src/parole-medialist.c:403
+#: ../src/gst/parole-gst.c:1272 ../src/parole-medialist.c:393
 #, c-format
 msgid "Track %i"
 msgstr "Звучна нумера #%d"
 
-#: ../src/gst/parole-gst.c:1288
+#: ../src/gst/parole-gst.c:1275
 msgid "Audio CD"
 msgstr "Звучни ЦД"
 
-#: ../src/gst/parole-gst.c:1528
+#: ../src/gst/parole-gst.c:1515
 msgid "Additional software is required."
 msgstr "Потребни су додатни програми."
 
-#: ../src/gst/parole-gst.c:1533
+#: ../src/gst/parole-gst.c:1520
 msgid "Don't Install"
 msgstr "Не уграђуј"
 
-#: ../src/gst/parole-gst.c:1535
+#: ../src/gst/parole-gst.c:1522
 msgid "Install"
 msgstr "Угради"
 
-#: ../src/gst/parole-gst.c:1538
+#: ../src/gst/parole-gst.c:1525
 msgid "OK"
 msgstr "У реду"
 
-#: ../src/gst/parole-gst.c:1545
+#: ../src/gst/parole-gst.c:1532
 #, c-format
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
 msgstr "Часноречцу је ради извођења ове датотеке потребан <b>%s</b>.\nМоже бити самостално уграђен."
 
-#: ../src/gst/parole-gst.c:1548
+#: ../src/gst/parole-gst.c:1535
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
 msgstr "Часноречцу је ради извођења ове датотеке потребан <b>%s</b>."
 
-#: ../src/gst/parole-gst.c:1959
+#: ../src/gst/parole-gst.c:1946
 msgid "The stream is taking too much time to load"
 msgstr "Току је потребно превише времена за учитавање"
 
-#: ../src/gst/parole-gst.c:1960
+#: ../src/gst/parole-gst.c:1947
 msgid "Do you want to continue loading or stop?"
 msgstr "Желите ли да наставим учитавање или да га зауставим?"
 
-#: ../src/gst/parole-gst.c:1961
+#: ../src/gst/parole-gst.c:1948
 msgid "Stop"
 msgstr "Заустави"
 
-#: ../src/gst/parole-gst.c:1962
+#: ../src/gst/parole-gst.c:1949
 msgid "Continue"
 msgstr "Настави"
 
-#: ../src/gst/parole-gst.c:2146
+#: ../src/gst/parole-gst.c:2133
 msgid "GStreamer Error"
 msgstr "Грешка Гстримера"
 
-#: ../src/gst/parole-gst.c:2147
+#: ../src/gst/parole-gst.c:2134
 msgid "Parole Media Player cannot start."
 msgstr "Нисам успео да покренем Часноречца"
 
-#: ../src/gst/parole-gst.c:2175 ../src/gst/parole-gst.c:2193
-#: ../src/gst/parole-gst.c:2222
+#: ../src/gst/parole-gst.c:2165 ../src/gst/parole-gst.c:2181
+#: ../src/gst/parole-gst.c:2213
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
 msgstr "Нисам успео да учитам прикључак „%s“. Проверите уградњу Гстримера."
 
-#: ../src/gst/parole-gst.c:2856 ../src/gst/parole-gst.c:2862
+#: ../src/gst/parole-gst.c:2837 ../src/gst/parole-gst.c:2843
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Звучна нумера #%d"
 
-#: ../src/gst/parole-gst.c:2906 ../src/gst/parole-gst.c:2912
+#: ../src/gst/parole-gst.c:2887 ../src/gst/parole-gst.c:2893
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Превод #%d"
@@ -714,239 +717,236 @@ msgstr "Укуцајте %s --help за списак доступних могу
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Часноречац је већ покренут, користите „-i“ за отварање новог примерка\n"
 
-#: ../src/parole-mediachooser.c:247 ../src/parole-player.c:1040
+#: ../src/parole-mediachooser.c:247 ../src/parole-player.c:1052
 msgid "All files"
 msgstr "Све датотеке"
 
-#: ../src/parole-medialist.c:219
+#: ../src/parole-medialist.c:218 ../src/parole-medialist.c:1588
 #, c-format
 msgid "Playlist (%i item)"
-msgstr "Списак (%i ставка)"
+msgid_plural "Playlist (%i items)"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
-#: ../src/parole-medialist.c:223
+#: ../src/parole-medialist.c:223 ../src/parole-medialist.c:1590
 #, c-format
 msgid "Playlist (%i chapter)"
-msgstr "Списак за извођење (%i поглавље)"
+msgid_plural "Playlist (%i chapters)"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
-#: ../src/parole-medialist.c:230 ../src/parole-medialist.c:1596
-#, c-format
-msgid "Playlist (%i items)"
-msgstr "Списак за извођење (%i ставки)"
-
-#: ../src/parole-medialist.c:234 ../src/parole-medialist.c:1597
-#, c-format
-msgid "Playlist (%i chapters)"
-msgstr "Списак за извођење (%i поглавља)"
-
-#: ../src/parole-medialist.c:419 ../src/parole-player.c:725
+#: ../src/parole-medialist.c:409 ../src/parole-player.c:737
 #, c-format
 msgid "Chapter %i"
 msgstr "Поглавље %i"
 
-#: ../src/parole-medialist.c:708
+#: ../src/parole-medialist.c:698
 msgid "Permission denied"
 msgstr "Приступ је одбијен"
 
-#: ../src/parole-medialist.c:710
+#: ../src/parole-medialist.c:700
 msgid "Error saving playlist file"
 msgstr "Грешка чувања списка нумера"
 
-#: ../src/parole-medialist.c:722
+#: ../src/parole-medialist.c:712
 msgid "Unknown playlist format"
 msgstr "Непознати облик списка нумера"
 
-#: ../src/parole-medialist.c:723
+#: ../src/parole-medialist.c:713
 msgid "Please choose a supported playlist format"
 msgstr "Изаберите подржани облик списка нумера"
 
-#: ../src/parole-medialist.c:777 ../src/parole-plugins-manager.c:369
+#: ../src/parole-medialist.c:767 ../src/parole-plugins-manager.c:369
 msgid "Unknown"
 msgstr "Непознато"
 
-#: ../src/parole-medialist.c:866
+#: ../src/parole-medialist.c:856
 msgid "M3U Playlists"
 msgstr "М3У списак нумера"
 
-#: ../src/parole-medialist.c:874
+#: ../src/parole-medialist.c:864
 msgid "PLS Playlists"
 msgstr "ПЛС спискови нумера"
 
-#: ../src/parole-medialist.c:882
+#: ../src/parole-medialist.c:872
 msgid "Advanced Stream Redirector"
 msgstr "Напредно преусмерење тока"
 
-#: ../src/parole-medialist.c:890
+#: ../src/parole-medialist.c:880
 msgid "Shareable Playlist"
 msgstr "Дељиви списак датотека"
 
 #. Clear
-#: ../src/parole-medialist.c:1229
+#: ../src/parole-medialist.c:1219
 msgid "Open Containing Folder"
 msgstr "Отвори фасциклу садржаја"
 
-#: ../src/parole-player.c:522
+#: ../src/parole-player.c:534
 msgid "Hide Playlist"
 msgstr "Сакриј списак за извођење"
 
-#: ../src/parole-player.c:522 ../src/parole-player.c:3275
+#: ../src/parole-player.c:534 ../src/parole-player.c:3470
 msgid "Show Playlist"
 msgstr "Приказуј списак за извођење"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:1004
+#: ../src/parole-player.c:1016
 msgid "Select Subtitle File"
 msgstr "Одабери датотеку поднаслова"
 
-#: ../src/parole-player.c:1009 ../src/parole-player.c:1213
-#: ../src/parole-player.c:2772 ../src/plugins/tray/tray-provider.c:338
+#: ../src/parole-player.c:1021 ../src/parole-player.c:1225
+#: ../src/parole-player.c:2852 ../src/plugins/tray/tray-provider.c:338
 msgid "Cancel"
 msgstr "Одустани"
 
-#: ../src/parole-player.c:1012
+#: ../src/parole-player.c:1024
 msgid "Open"
 msgstr "Отвори"
 
-#: ../src/parole-player.c:1028
+#: ../src/parole-player.c:1040
 msgid "Subtitle Files"
 msgstr "Датотеке поднаслова"
 
-#: ../src/parole-player.c:1209 ../src/parole-player.c:1217
+#: ../src/parole-player.c:1221 ../src/parole-player.c:1229
 msgid "Clear Recent Items"
 msgstr "Очисти скорашње ставке"
 
-#: ../src/parole-player.c:1211
+#: ../src/parole-player.c:1223
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
 msgstr "Да ли сте сигурни да желите очистити скорашње ставке? Чишћење се не може поништити."
 
-#: ../src/parole-player.c:1302 ../src/parole-player.c:1432
+#: ../src/parole-player.c:1322 ../src/parole-player.c:1460
 msgid "Media stream is not seekable"
 msgstr "Ток се не може претраживати"
 
-#: ../src/parole-player.c:1313
+#: ../src/parole-player.c:1333
 msgid "Play"
 msgstr "Изведи"
 
-#: ../src/parole-player.c:1316
+#: ../src/parole-player.c:1336
 msgid "Pause"
 msgstr "Застанак"
 
-#: ../src/parole-player.c:1798
+#: ../src/parole-player.c:1832
 msgid "GStreamer backend error"
 msgstr "Грешка Гстример позадине"
 
-#: ../src/parole-player.c:1829
+#: ../src/parole-player.c:1863
 msgid "Unknown Song"
 msgstr "Непозната песма"
 
-#: ../src/parole-player.c:1834 ../src/parole-player.c:1836
-#: ../src/parole-player.c:1842
+#: ../src/parole-player.c:1868 ../src/parole-player.c:1870
+#: ../src/parole-player.c:1876
 msgid "on"
 msgstr "на"
 
-#: ../src/parole-player.c:1842 ../src/plugins/notify/notify-provider.c:145
+#: ../src/parole-player.c:1876 ../src/plugins/notify/notify-provider.c:145
 msgid "Unknown Album"
 msgstr "Непознат албум"
 
-#: ../src/parole-player.c:1849 ../src/parole-player.c:1853
+#: ../src/parole-player.c:1883 ../src/parole-player.c:1887
 msgid "by"
 msgstr "од"
 
-#: ../src/parole-player.c:1853 ../src/plugins/notify/notify-provider.c:147
+#: ../src/parole-player.c:1887 ../src/plugins/notify/notify-provider.c:147
 msgid "Unknown Artist"
 msgstr "Непознат извођач"
 
-#: ../src/parole-player.c:1887
+#: ../src/parole-player.c:1921
 msgid "Buffering"
 msgstr "Смештам у међумеморију"
 
-#: ../src/parole-player.c:1995 ../src/parole-player.c:3414
+#: ../src/parole-player.c:2029 ../src/parole-player.c:3445
 msgid "Fullscreen"
 msgstr "Преко целог екрана"
 
-#: ../src/parole-player.c:2008
+#: ../src/parole-player.c:2042
 msgid "Leave _Fullscreen"
 msgstr "Напусти _цео екран"
 
-#: ../src/parole-player.c:2009
+#: ../src/parole-player.c:2043
 msgid "Leave Fullscreen"
 msgstr "Напусти цео екран"
 
 #. Play menu item
 #. * Play pause
-#: ../src/parole-player.c:2075 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2109 ../src/plugins/tray/tray-provider.c:130
 msgid "_Pause"
 msgstr "_Застанак"
 
-#: ../src/parole-player.c:2075 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2109 ../src/plugins/tray/tray-provider.c:130
 msgid "_Play"
 msgstr "_Изведи"
 
 #. * Previous item in playlist.
-#: ../src/parole-player.c:2089
+#: ../src/parole-player.c:2123
 msgid "_Previous"
 msgstr "_Претходно"
 
 #. * Next item in playlist.
-#: ../src/parole-player.c:2098
+#: ../src/parole-player.c:2132
 msgid "_Next"
 msgstr "_Следеће"
 
 #. * Un/Full screen
-#: ../src/parole-player.c:2107
+#: ../src/parole-player.c:2141
 msgid "_Leave Fullscreen"
 msgstr "_Остани на пуном екрану"
 
 #. * Un/Hide menubar
-#: ../src/parole-player.c:2121
+#: ../src/parole-player.c:2155
 msgid "Show menubar"
 msgstr "Приказуј траку изборника"
 
-#: ../src/parole-player.c:2335
+#: ../src/parole-player.c:2415
 msgid "Mute"
 msgstr "Тише"
 
-#: ../src/parole-player.c:2340
+#: ../src/parole-player.c:2420
 msgid "Unmute"
 msgstr "Гласније"
 
-#: ../src/parole-player.c:2729 ../src/parole-player.c:2747
+#: ../src/parole-player.c:2809 ../src/parole-player.c:2827
 msgid "Unable to open default web browser"
 msgstr "Нисам успео да покренем подразумеваног веб прегледника"
 
-#: ../src/parole-player.c:2731
+#: ../src/parole-player.c:2811
 msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr "За слање извештаја о грешкама идите на http://docs.xfce.org/apps/parole/bugs."
 
-#: ../src/parole-player.c:2749
+#: ../src/parole-player.c:2829
 msgid ""
 "Please go to http://docs.xfce.org/apps/parole/start to read Parole's online "
 "documentation."
 msgstr "За читање упутства на мрежи програма Часноречца отворите адресу http://docs.xfce.org/apps/parole/start"
 
-#: ../src/parole-player.c:2773
+#: ../src/parole-player.c:2853
 msgid "Go"
 msgstr "Иди"
 
-#: ../src/parole-player.c:2786
+#: ../src/parole-player.c:2866
 msgid "Position:"
 msgstr "Положај:"
 
 #. Clear Recent Menu Item
-#: ../src/parole-player.c:3243
+#: ../src/parole-player.c:3303
 msgid "_Clear recent items…"
 msgstr "_Очисти недавне ставке..."
 
-#: ../src/parole-player.c:3458
+#: ../src/parole-player.c:3640
 msgid "Audio Track:"
 msgstr "Звучни запис:"
 
-#: ../src/parole-player.c:3477
+#: ../src/parole-player.c:3659
 msgid "Subtitles:"
 msgstr "Преводи:"
 
-#: ../src/parole-player.c:3482 ../src/plugins/tray/tray-provider.c:273
+#. Add a close button to the Infobar
+#: ../src/parole-player.c:3665 ../src/plugins/tray/tray-provider.c:273
 msgid "Close"
 msgstr "Затвори"
 
@@ -957,6 +957,10 @@ msgstr "Саша Петровић <salepetronije@gmail.com> и Мирослав 
 #: ../src/parole-about.c:79
 msgid "Visit Parole website"
 msgstr "Посетите веб страницу Часноречца"
+
+#: ../src/parole-conf-dialog.c:313
+msgid "Clutter (OpenGL)"
+msgstr ""
 
 #: ../src/parole-disc.c:114
 msgid "Play Disc"
@@ -1120,23 +1124,23 @@ msgstr "Нисам успео да пронађем уграђене прикљ�
 msgid "Please check your installation."
 msgstr "Проверите уградњу."
 
-#: ../src/misc/parole-filters.c:65
+#: ../src/misc/parole-filters.c:64
 msgid "Audio"
 msgstr "Звук"
 
-#: ../src/misc/parole-filters.c:91
+#: ../src/misc/parole-filters.c:90
 msgid "Video"
 msgstr "Видео"
 
-#: ../src/misc/parole-filters.c:116 ../src/misc/parole-filters.c:134
+#: ../src/misc/parole-filters.c:115 ../src/misc/parole-filters.c:133
 msgid "Audio and video"
 msgstr "Звук и видео"
 
-#: ../src/misc/parole-filters.c:163 ../src/misc/parole-filters.c:179
+#: ../src/misc/parole-filters.c:162 ../src/misc/parole-filters.c:178
 msgid "All supported files"
 msgstr "Све подржане датотеке"
 
-#: ../src/misc/parole-filters.c:206
+#: ../src/misc/parole-filters.c:205
 msgid "Playlist files"
 msgstr "Датотеке списка"
 
