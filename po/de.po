@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-04 18:30+0200\n"
-"PO-Revision-Date: 2014-07-08 13:11+0000\n"
+"PO-Revision-Date: 2014-07-10 14:18+0000\n"
 "Last-Translator: Tobias Bannert\n"
 "Language-Team: German (http://www.transifex.com/projects/p/xfce-apps/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -88,7 +88,7 @@ msgstr "_Titelmenü"
 
 #: ../data/interfaces/parole.ui.h:16
 msgid "_Audio Menu"
-msgstr "_Audiomenü"
+msgstr "_Tonmenü"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "A_ngle Menu"
@@ -104,7 +104,7 @@ msgstr "_Kapitelmenü"
 
 #: ../data/interfaces/parole.ui.h:20
 msgid "_Audio"
-msgstr "A_udio"
+msgstr "_Ton"
 
 #: ../data/interfaces/parole.ui.h:21
 msgid "_Audio Track"
@@ -137,7 +137,7 @@ msgstr "_Vollbild"
 
 #: ../data/interfaces/parole.ui.h:28
 msgid "_Aspect Ratio"
-msgstr "Seiten_verhältnis"
+msgstr "_Seitenverhältnis"
 
 #: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:758
 msgid "None"
@@ -177,7 +177,7 @@ msgstr "_Werkzeuge"
 
 #: ../data/interfaces/parole.ui.h:38
 msgid "P_lugins"
-msgstr "P_lugins"
+msgstr "Er_weiterungen"
 
 #: ../data/interfaces/parole.ui.h:39
 msgid "_Preferences"
@@ -317,15 +317,15 @@ msgstr "<b>Autor</b>"
 
 #: ../data/interfaces/plugins.ui.h:6
 msgid "Visit Website"
-msgstr "Web-Seite besuchen"
+msgstr "Internetseite besuchen"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "X Window System (X11/XShm/Xv)"
-msgstr ""
+msgstr "X-Window-System (X11/XShm/Xv)"
 
 #: ../data/interfaces/parole-settings.ui.h:2
 msgid "X Window System (No Xv)"
-msgstr ""
+msgstr "X-Window-System (No Xv)"
 
 #: ../data/interfaces/parole-settings.ui.h:3
 msgid "Parole Settings"
@@ -345,7 +345,7 @@ msgstr "<b>Bildschirmschoner</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:7
 msgid "Show visual effects when an audio file is played"
-msgstr "Visualisierung anzeigen, wenn eine Audiodatei abgespielt wird"
+msgstr "Visualisierung anzeigen, wenn eine Tondatei abgespielt wird"
 
 #: ../data/interfaces/parole-settings.ui.h:8
 msgid "Visualization type:"
@@ -353,7 +353,7 @@ msgstr "Visualisierungstyp:"
 
 #: ../data/interfaces/parole-settings.ui.h:9
 msgid "<b>Audio Visualization</b>"
-msgstr "<b>Audio-Visualisierung</b>"
+msgstr "<b>Tonvisualisierung</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:10
 msgid "Enable keyboard multimedia keys"
@@ -501,7 +501,7 @@ msgid ""
 "Parole features playback of local media files, including video with "
 "subtitles support, Audio CDs, DVDs, and live streams. Parole is also "
 "extensible via plugins."
-msgstr "Parole unterstützt die Wiedergabe lokaler Mediendateien, einschließlich Videos mit Untertiteln, Audio-CDs, DVDs und Live-Streams. Parole kann zudem durch Erweiterungen erweitert werden."
+msgstr "Parole unterstützt die Wiedergabe lokaler Mediendateien, einschließlich Filmen mit Untertiteln, Audio-CDs, DVDs und Direktübertragungen. Parole kann zudem durch Erweiterungen erweitert werden."
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid ""
@@ -512,7 +512,7 @@ msgstr ""
 
 #: ../data/appdata/parole.appdata.xml.in.h:4
 msgid "This release fixes a problem with detecting DVD drive locations."
-msgstr ""
+msgstr "Diese Ausgabe behebt ein Problem, mit dem Erkennen des Ortes von DVD-Laufwerken."
 
 #: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
@@ -527,7 +527,7 @@ msgstr ""
 msgid ""
 "This unstable development release features mostly bugfixes and introduces "
 "the new MPRIS2 plugin."
-msgstr ""
+msgstr "Diese instabile Entwicklungsversion stellt vor allem Fehlerbehebungen bereit und führt die neue MPRIS2-Erweiterung ein."
 
 #: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
@@ -911,7 +911,7 @@ msgstr "Laut"
 
 #: ../src/parole-player.c:2809 ../src/parole-player.c:2827
 msgid "Unable to open default web browser"
-msgstr "Der Standard-Webbrowser konnte nicht geöffnet werden"
+msgstr "Der vorgegebene Netznavigator konnte nicht geöffnet werden"
 
 #: ../src/parole-player.c:2811
 msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
@@ -955,7 +955,7 @@ msgstr "Mario Blättermann <mario.blaettermann@gmail.com>\n\r\nChristoph Wickert
 
 #: ../src/parole-about.c:79
 msgid "Visit Parole website"
-msgstr "Parole-Website besuchen"
+msgstr "Parole-Internetseite besuchen"
 
 #: ../src/parole-conf-dialog.c:313
 msgid "Clutter (OpenGL)"
@@ -1125,7 +1125,7 @@ msgstr "Bitte überprüfen Sie Ihre Installation."
 
 #: ../src/misc/parole-filters.c:64
 msgid "Audio"
-msgstr "Audio"
+msgstr "Ton"
 
 #: ../src/misc/parole-filters.c:90
 msgid "Video"
@@ -1133,7 +1133,7 @@ msgstr "Video"
 
 #: ../src/misc/parole-filters.c:115 ../src/misc/parole-filters.c:133
 msgid "Audio and video"
-msgstr "Audio und Video"
+msgstr "Ton und Film"
 
 #: ../src/misc/parole-filters.c:162 ../src/misc/parole-filters.c:178
 msgid "All supported files"
@@ -1159,7 +1159,7 @@ msgstr "Benachrichtigen"
 
 #: ../src/plugins/notify/notify.desktop.in.h:2
 msgid "Show notifications for currently playing tracks"
-msgstr "Zeige Benachrichtigungen für gerade laufende Titel"
+msgstr "Benachrichtigungen für gerade laufende Titel anzeigen"
 
 #. * Previous Track
 #: ../src/plugins/tray/tray-provider.c:139
