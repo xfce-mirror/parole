@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-04 18:30+0200\n"
-"PO-Revision-Date: 2014-07-10 14:18+0000\n"
+"PO-Revision-Date: 2014-07-14 14:59+0000\n"
 "Last-Translator: Tobias Bannert\n"
 "Language-Team: German (http://www.transifex.com/projects/p/xfce-apps/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -205,19 +205,19 @@ msgstr "_Über"
 
 #: ../data/interfaces/parole.ui.h:45
 msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
-msgstr "<span color='#F4F4F4'><b><big>Unbekannter Song</big></b></span>"
+msgstr "<span color='#F4F4F4'><b><big>Unbekanntes Lied</big></b></span>"
 
 #: ../data/interfaces/parole.ui.h:46
 msgid ""
 "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
 "Album</span></big>"
-msgstr "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unbekanntes Album</span></big>"
+msgstr "<big><span color='#BBBBBB'><i>auf</i></span> <span color='#F4F4F4'>Unbekanntem Album</span></big>"
 
 #: ../data/interfaces/parole.ui.h:47
 msgid ""
 "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
 "Artist</span></big>"
-msgstr "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unbekannter Interpret</span></big>"
+msgstr "<big><span color='#BBBBBB'><i>von</i></span> <span color='#F4F4F4'>Unbekanntem Künstler</span></big>"
 
 #: ../data/interfaces/parole.ui.h:48
 msgid "0:00"
@@ -373,7 +373,7 @@ msgstr "Bitte Parole neustarten, damit die Änderung wirksam wird."
 
 #: ../data/interfaces/parole-settings.ui.h:14
 msgid "<b>Video Output</b>"
-msgstr "<b>Video-Ausgabe</b>"
+msgstr "<b>Filmausgabe</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:15
 msgid "Brightness:"
@@ -465,7 +465,7 @@ msgstr "Netzwerkpfad öffnen"
 
 #: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:193
 msgid "Clear History"
-msgstr "Chronik leeren"
+msgstr "Verlauf leeren"
 
 #: ../data/interfaces/open-location.ui.h:3
 msgid "<big><b>Open Network Location</b></big>"
@@ -473,7 +473,7 @@ msgstr "<big><b>Netzwerkpfad öffnen</b></big>"
 
 #: ../data/desktop/parole.desktop.in.in.h:2
 msgid "Play your media"
-msgstr "Abspielen von Mediendateien"
+msgstr "Medien wiedergaben"
 
 #: ../data/desktop/parole.desktop.in.in.h:3
 msgid "Play/Pause"
@@ -508,7 +508,7 @@ msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
-msgstr ""
+msgstr "Diese instabile Entwicklungsversion fügt die neue Clutter-Bibliothek hinzu und bereinigt veraltete GTK3-Symbole. Es wurde auch eine »Gehen zu Position«-Funktion hinzugefügt und einige Fehler wurden behoben."
 
 #: ../data/appdata/parole.appdata.xml.in.h:4
 msgid "This release fixes a problem with detecting DVD drive locations."
@@ -521,7 +521,7 @@ msgid ""
 "playlists. Furthermore existing plugins have been improved and a new one has"
 " been added (MPRIS2). Most of the artwork has been updated for this release "
 "and we use the GStreamer1.0 framework now by default."
-msgstr ""
+msgstr "Diese Version enthält die abgeschlossene Übergang auf den GTK+3-Werkzeugsatz, Verbesserungen der Benutzerschnittstelle (schlankere Menüs),  bessere Wiedergabelisten. Weiterhin bestehende Erweiterungen wurden verbessert und eine neue wurde hinzugefügt (MPRIS2). Die meisten der Grafiken wurde für diese Version aktualisiert und wir verwenden jetzt den GStreamer1.0-Framework standardmäßig."
 
 #: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
@@ -534,7 +534,7 @@ msgid ""
 "This is a bugfix release which fixes the loading of playlists with relative "
 "paths, improves the file-filters for audio/video mimetypes and fixes the "
 "\"Remove duplicates\" functionality."
-msgstr ""
+msgstr "Das ist eine Fehlerbehebungsversion, die das Laden von Wiedergabelisten mit relativen Pfaden behebt, verbessert die Dateifilter für Ton/Film-MIME-Typen und behebt die »Doppelte entfernen«-Funktion."
 
 #: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
@@ -542,7 +542,7 @@ msgid ""
 "toolkit, improvements in the user-interface (more streamlined menus), better"
 " playlists. It also brings updated artwork, GStreamer1.0 support, improved "
 "plugins and the occasional bugfix."
-msgstr ""
+msgstr "Diese instabile Entwicklungsversion bietet den kompletten Anschluss an die GTK+3-Werkzeugsatz, Verbesserungen der Benutzerschnittstelle (schlankere Menüs), bessere Wiedergabelisten. Sie bringt auch aktualisierte Krafiken, GStreamer1.0-Unterstützung, verbesserte Erweiterungen und vereinzelte Fehlerbehebungen."
 
 #: ../src/common/parole-common.c:88
 msgid "Message"
@@ -563,7 +563,7 @@ msgstr "Audio-CD"
 
 #: ../src/gst/parole-gst.c:1515
 msgid "Additional software is required."
-msgstr "Zusätzliche Software wird benötigt."
+msgstr "Eine zusätzliche Anwendung wird benötigt."
 
 #: ../src/gst/parole-gst.c:1520
 msgid "Don't Install"
@@ -582,7 +582,7 @@ msgstr "OK"
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
-msgstr "Parole benötigt <b>%s</b> um diese Datei abzuspielen.\nDies kann automatisch installiert werden."
+msgstr "Parole benötigt <b>%s</b> um diese Datei abzuspielen.\nDas kann automatisch installiert werden."
 
 #: ../src/gst/parole-gst.c:1535
 #, c-format
@@ -591,7 +591,7 @@ msgstr "Parole benötigt <b>%s</b> um diese Datei abzuspielen."
 
 #: ../src/gst/parole-gst.c:1946
 msgid "The stream is taking too much time to load"
-msgstr "Der Stream benötigt zu viel Zeit zum Laden"
+msgstr "Der Datenstrom benötigt zu viel Zeit zum Laden"
 
 #: ../src/gst/parole-gst.c:1947
 msgid "Do you want to continue loading or stop?"
@@ -599,7 +599,7 @@ msgstr "Soll das Laden fortgesetzt oder der Vorgang angehalten werden?"
 
 #: ../src/gst/parole-gst.c:1948
 msgid "Stop"
-msgstr "Stop"
+msgstr "Anhalten"
 
 #: ../src/gst/parole-gst.c:1949
 msgid "Continue"
@@ -627,7 +627,7 @@ msgstr "Tonspur %d"
 #: ../src/gst/parole-gst.c:2887 ../src/gst/parole-gst.c:2893
 #, c-format
 msgid "Subtitle #%d"
-msgstr "Untertitel Nr. %d"
+msgstr "Untertitel %d"
 
 #: ../src/main.c:59
 #, c-format
@@ -711,12 +711,12 @@ msgstr "[DATEIEN …] - Filme und Lieder abspielen"
 #: ../src/main.c:291
 #, c-format
 msgid "Type %s --help to list all available command line options\n"
-msgstr "Geben Sie %s --help ein, um alle verfügbaren Befehlszeilen-Optionen angezeigt zu bekommen\n\n"
+msgstr "%s --help eingeben, zum Anzeigen aller verfügbaren Befehlszeilenoptionen\n"
 
 #: ../src/main.c:306
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
-msgstr "Parole läuft bereits, verwenden Sie -i, um eine neue Instanz zu öffnen\n"
+msgstr "Parole läuft bereits, -i benutzen, um eine neue Instanz zu öffnen\n"
 
 #: ../src/parole-mediachooser.c:247 ../src/parole-player.c:1052
 msgid "All files"
@@ -820,7 +820,7 @@ msgstr "Sind Sie sicher, dass sie die Liste der zuletzt geöffneten Dateien leer
 
 #: ../src/parole-player.c:1322 ../src/parole-player.c:1460
 msgid "Media stream is not seekable"
-msgstr "Medien-Stream ist nicht durchsuchbar"
+msgstr "Mediendatenstrom ist nicht durchsuchbar"
 
 #: ../src/parole-player.c:1333
 msgid "Play"
@@ -836,7 +836,7 @@ msgstr "GStreamer-Backend-Fehler"
 
 #: ../src/parole-player.c:1863
 msgid "Unknown Song"
-msgstr "Unbekannter Titel"
+msgstr "Unbekanntes Lied"
 
 #: ../src/parole-player.c:1868 ../src/parole-player.c:1870
 #: ../src/parole-player.c:1876
@@ -845,7 +845,7 @@ msgstr "auf"
 
 #: ../src/parole-player.c:1876 ../src/plugins/notify/notify-provider.c:145
 msgid "Unknown Album"
-msgstr "Unbekanntes Album"
+msgstr "Unbekanntem Album"
 
 #: ../src/parole-player.c:1883 ../src/parole-player.c:1887
 msgid "by"
@@ -853,7 +853,7 @@ msgstr "von"
 
 #: ../src/parole-player.c:1887 ../src/plugins/notify/notify-provider.c:147
 msgid "Unknown Artist"
-msgstr "Unbekanntem Interpret"
+msgstr "Unbekanntem Künstler"
 
 #: ../src/parole-player.c:1921
 msgid "Buffering"
@@ -1141,7 +1141,7 @@ msgstr "Unterstützte Dateien"
 
 #: ../src/misc/parole-filters.c:205
 msgid "Playlist files"
-msgstr "Wiedergabelisten-Dateien"
+msgstr "Wiedergabelistendateien"
 
 #: ../src/plugins/notify/notify-provider.c:150
 #: ../src/plugins/notify/notify-provider.c:153
@@ -1182,7 +1182,7 @@ msgstr "Benachrichtigungsfelderweiterung"
 
 #: ../src/plugins/tray/tray-provider.c:280
 msgid "Always minimize to tray when window is closed"
-msgstr "Immer ins Benachrichtigungsfeld minimieren, wenn das Fenster geschlossen wird"
+msgstr "Immer ins Benachrichtigungsfeld verkleinern, wenn das Fenster geschlossen wird"
 
 #: ../src/plugins/tray/tray-provider.c:326
 msgid "Are you sure you want to quit?"
@@ -1190,11 +1190,11 @@ msgstr "Sind Sie sicher, dass Sie Parole beenden wollen?"
 
 #: ../src/plugins/tray/tray-provider.c:329
 msgid "Parole can be minimized to the system tray instead."
-msgstr "Parole kann stattdessen in die Systemleiste minimiert werden."
+msgstr "Parole kann stattdessen in die Systemleiste verkleinert werden."
 
 #: ../src/plugins/tray/tray-provider.c:332
 msgid "Minimize to tray"
-msgstr "Ins Benachrichtigungsfeld minimieren"
+msgstr "Ins Benachrichtigungsfeld verkleinern"
 
 #: ../src/plugins/tray/tray-provider.c:344
 msgid "Quit"
