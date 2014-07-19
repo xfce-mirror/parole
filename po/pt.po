@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-30 00:30+0200\n"
-"PO-Revision-Date: 2014-07-01 23:21+0000\n"
+"POT-Creation-Date: 2014-07-04 18:30+0200\n"
+"PO-Revision-Date: 2014-07-19 13:49+0000\n"
 "Last-Translator: Alexandre Fidalgo <alexandremagnos15@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/xfce-apps/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -232,8 +232,8 @@ msgid "Open Media Files"
 msgstr "Abrir ficheiros"
 
 #: ../data/interfaces/playlist.ui.h:1
-#: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:816
-#: ../src/parole-medialist.c:859 ../src/parole-player.c:3262
+#: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:806
+#: ../src/parole-medialist.c:849 ../src/parole-player.c:3262
 msgid "Playlist"
 msgstr "Lista de reprodução"
 
@@ -367,8 +367,8 @@ msgid "General"
 msgstr "Geral"
 
 #: ../data/interfaces/parole-settings.ui.h:13
-msgid "<i>Changes to this field require Parole to be restarted.</i>"
-msgstr "<i>Tem que reiniciar o Parole para aplicar as alterações a este campo.</i>"
+msgid "Please restart Parole for this change to take effect."
+msgstr "Por favor reinicie o Parole para que estas alterações tenha efeito."
 
 #: ../data/interfaces/parole-settings.ui.h:14
 msgid "<b>Video Output</b>"
@@ -503,10 +503,17 @@ msgid ""
 msgstr "Com o Parole, consegue reproduzir ficheiros locais, incluindo vídeos com suporte a legendas, CDs áudio, DVDs e emissões web. O Parole também pode ser expandido através dos plugins."
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
+msgid ""
+"This unstable development release adds the new clutter backend and cleans up"
+" deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
+"several bugs have been addressed."
+msgstr "Esta versão instável em desenvolvimento adiciona o novo clutter backend e limpa símbolos GTK3 obsoletos. Também adiciona um recurso de \"ir para a posição\" e vários erros foram resolvidos."
+
+#: ../data/appdata/parole.appdata.xml.in.h:4
 msgid "This release fixes a problem with detecting DVD drive locations."
 msgstr "Esta versão corrige alguns problemas com a deteção de unidades de DVD."
 
-#: ../data/appdata/parole.appdata.xml.in.h:4
+#: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
 "This release features the completed transition to the Gtk+3 toolkit, "
 "improvements in the user-interface (more streamlined menus), better "
@@ -515,20 +522,20 @@ msgid ""
 "and we use the GStreamer1.0 framework now by default."
 msgstr "Esta versão conclui a transição para a infraestrutura GTK+3, inclui melhorias na interface do utilizador (nos menus) e nas listas de reprodução. Foram efetuadas melhorias nos plugins existentes e adicionado um novo plugin (MPRIS2). O trabalho artístico foi atualizado nesta versão e agora é utilizada, por omissão, a infraestrutura GStreamer 1.0."
 
-#: ../data/appdata/parole.appdata.xml.in.h:5
+#: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
 "This unstable development release features mostly bugfixes and introduces "
 "the new MPRIS2 plugin."
 msgstr "Esta versão de desenvolvimento disponibiliza correções e introduz o novo plugin MPRIS2."
 
-#: ../data/appdata/parole.appdata.xml.in.h:6
+#: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This is a bugfix release which fixes the loading of playlists with relative "
 "paths, improves the file-filters for audio/video mimetypes and fixes the "
 "\"Remove duplicates\" functionality."
 msgstr "Este é um lançamento de corrção de \"bugs\" que corrige o carregamento de listas com caminhos relativos, melhora os filtros de tipos ficheiro de áudio/vídeo e corrige a funcionalidade \"Remover duplicados\"."
 
-#: ../data/appdata/parole.appdata.xml.in.h:7
+#: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
 "This unstable development release features the complete port to the Gtk+3 "
 "toolkit, improvements in the user-interface (more streamlined menus), better"
@@ -544,7 +551,7 @@ msgstr "Mensagem"
 msgid "Error"
 msgstr "Erro"
 
-#: ../src/gst/parole-gst.c:1272 ../src/parole-medialist.c:403
+#: ../src/gst/parole-gst.c:1272 ../src/parole-medialist.c:393
 #, c-format
 msgid "Track %i"
 msgstr "Faixa %i"
@@ -714,69 +721,63 @@ msgstr "O Parole já está em execução. Use -i para abrir uma nova instância.
 msgid "All files"
 msgstr "Todos os ficheiros"
 
-#: ../src/parole-medialist.c:219
+#: ../src/parole-medialist.c:218 ../src/parole-medialist.c:1588
 #, c-format
 msgid "Playlist (%i item)"
-msgstr "Listas de reprodução (%i item)"
+msgid_plural "Playlist (%i items)"
+msgstr[0] ""
+msgstr[1] ""
 
-#: ../src/parole-medialist.c:223
+#: ../src/parole-medialist.c:223 ../src/parole-medialist.c:1590
 #, c-format
 msgid "Playlist (%i chapter)"
-msgstr "Lista de reprodução (%i capítulo)"
+msgid_plural "Playlist (%i chapters)"
+msgstr[0] ""
+msgstr[1] ""
 
-#: ../src/parole-medialist.c:230 ../src/parole-medialist.c:1596
-#, c-format
-msgid "Playlist (%i items)"
-msgstr "Lista de reprodução (%i itens)"
-
-#: ../src/parole-medialist.c:234 ../src/parole-medialist.c:1597
-#, c-format
-msgid "Playlist (%i chapters)"
-msgstr "Lista de reprodução (%i capítulos)"
-
-#: ../src/parole-medialist.c:419 ../src/parole-player.c:737
+#: ../src/parole-medialist.c:409 ../src/parole-player.c:737
 #, c-format
 msgid "Chapter %i"
 msgstr "Capítulo %i"
 
-#: ../src/parole-medialist.c:708
+#: ../src/parole-medialist.c:698
 msgid "Permission denied"
 msgstr "Permissão negada"
 
-#: ../src/parole-medialist.c:710
+#: ../src/parole-medialist.c:700
 msgid "Error saving playlist file"
 msgstr "Erro ao gravar a lista de reprodução"
 
-#: ../src/parole-medialist.c:722
+#: ../src/parole-medialist.c:712
 msgid "Unknown playlist format"
 msgstr "Formato desconhecido"
 
-#: ../src/parole-medialist.c:723
+#: ../src/parole-medialist.c:713
 msgid "Please choose a supported playlist format"
 msgstr "Por favor selecione um formato suportado"
 
-#: ../src/parole-medialist.c:777 ../src/parole-plugins-manager.c:369
+#: ../src/parole-medialist.c:767 ../src/parole-plugins-manager.c:369
 msgid "Unknown"
 msgstr "Desconhecido"
 
-#: ../src/parole-medialist.c:866
+#: ../src/parole-medialist.c:856
 msgid "M3U Playlists"
 msgstr "Listas M3U"
 
-#: ../src/parole-medialist.c:874
+#: ../src/parole-medialist.c:864
 msgid "PLS Playlists"
 msgstr "Listas PLS"
 
-#: ../src/parole-medialist.c:882
+#: ../src/parole-medialist.c:872
 msgid "Advanced Stream Redirector"
 msgstr "Redirecionador avançado de emissões"
 
-#: ../src/parole-medialist.c:890
+#: ../src/parole-medialist.c:880
 msgid "Shareable Playlist"
 msgstr "Lista partilhável"
 
 #. Clear
-#: ../src/parole-medialist.c:1229
+#: ../src/parole-medialist.c:1219
 msgid "Open Containing Folder"
 msgstr "Abrir pasta correspondente"
 
@@ -955,7 +956,7 @@ msgstr "Sérgio Marques <smarquespt@gmail.com>"
 msgid "Visit Parole website"
 msgstr "Visitar sítio web do Parole"
 
-#: ../src/parole-conf-dialog.c:310
+#: ../src/parole-conf-dialog.c:313
 msgid "Clutter (OpenGL)"
 msgstr "Desorganização (OpenGL)"
 
