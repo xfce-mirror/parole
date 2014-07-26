@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-04 18:30+0200\n"
-"PO-Revision-Date: 2014-07-19 13:49+0000\n"
+"PO-Revision-Date: 2014-07-26 12:17+0000\n"
 "Last-Translator: Alexandre Fidalgo <alexandremagnos15@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/xfce-apps/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -725,15 +725,15 @@ msgstr "Todos os ficheiros"
 #, c-format
 msgid "Playlist (%i item)"
 msgid_plural "Playlist (%i items)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Lista de reprodução (%i item)"
+msgstr[1] "Lista de reprodução (%i itens)"
 
 #: ../src/parole-medialist.c:223 ../src/parole-medialist.c:1590
 #, c-format
 msgid "Playlist (%i chapter)"
 msgid_plural "Playlist (%i chapters)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Lista de reprodução (%i capítulo)"
+msgstr[1] "Lista de reprodução (%i capítulos)"
 
 #: ../src/parole-medialist.c:409 ../src/parole-player.c:737
 #, c-format
