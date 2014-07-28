@@ -541,7 +541,7 @@ parole_gst_tick_timeout (gpointer data)
     gst_element_query_position (gst->priv->playbin, &format, &pos);
 
     if ( G_UNLIKELY (format != GST_FORMAT_TIME ) )
-        goto out;
+        return FALSE;
 #endif
 
     if ( gst->priv->state == GST_STATE_PLAYING )
