@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-04 18:30+0200\n"
-"PO-Revision-Date: 2014-07-06 10:24+0000\n"
+"PO-Revision-Date: 2014-08-05 14:19+0000\n"
 "Last-Translator: Pjotr <pjotrvertaalt@gmail.com>\n"
 "Language-Team: Dutch (http://www.transifex.com/projects/p/xfce-apps/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -723,15 +723,15 @@ msgstr "Alle bestanden"
 #, c-format
 msgid "Playlist (%i item)"
 msgid_plural "Playlist (%i items)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Speellijst (%i element)"
+msgstr[1] "Speellijst (%i elementen)"
 
 #: ../src/parole-medialist.c:223 ../src/parole-medialist.c:1590
 #, c-format
 msgid "Playlist (%i chapter)"
 msgid_plural "Playlist (%i chapters)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Speellijst (%i hoofdstuk)"
+msgstr[1] "Speellijst (%i hoofdstukken)"
 
 #: ../src/parole-medialist.c:409 ../src/parole-player.c:737
 #, c-format
