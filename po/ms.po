@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-04 18:30+0200\n"
-"PO-Revision-Date: 2014-08-08 04:30+0000\n"
+"PO-Revision-Date: 2014-08-08 04:33+0000\n"
 "Last-Translator: abuyop <abuyop@gmail.com>\n"
 "Language-Team: Malay (http://www.transifex.com/projects/p/xfce-apps/language/ms/)\n"
 "MIME-Version: 1.0\n"
@@ -750,19 +750,19 @@ msgstr "Format senarai main tidak diketahui"
 
 #: ../src/parole-medialist.c:713
 msgid "Please choose a supported playlist format"
-msgstr ""
+msgstr "Sila pilih format senarai main yang disokong"
 
 #: ../src/parole-medialist.c:767 ../src/parole-plugins-manager.c:369
 msgid "Unknown"
-msgstr ""
+msgstr "Tidak diketahui"
 
 #: ../src/parole-medialist.c:856
 msgid "M3U Playlists"
-msgstr ""
+msgstr "Senarai Main M3U"
 
 #: ../src/parole-medialist.c:864
 msgid "PLS Playlists"
-msgstr ""
+msgstr "Senarai Main PLS"
 
 #: ../src/parole-medialist.c:872
 msgid "Advanced Stream Redirector"
@@ -770,42 +770,42 @@ msgstr ""
 
 #: ../src/parole-medialist.c:880
 msgid "Shareable Playlist"
-msgstr ""
+msgstr "Senarai  Main Boleh Kongsi"
 
 #. Clear
 #: ../src/parole-medialist.c:1219
 msgid "Open Containing Folder"
-msgstr ""
+msgstr "Buka Folder Mengandungi"
 
 #: ../src/parole-player.c:534
 msgid "Hide Playlist"
-msgstr ""
+msgstr "Sembunyi Senarai Main"
 
 #: ../src/parole-player.c:534 ../src/parole-player.c:3470
 msgid "Show Playlist"
-msgstr ""
+msgstr "Tunjuk Senarai Main"
 
 #. Build the FileChooser dialog for subtitle selection.
 #: ../src/parole-player.c:1016
 msgid "Select Subtitle File"
-msgstr ""
+msgstr "Pilih Fail Sarikata"
 
 #: ../src/parole-player.c:1021 ../src/parole-player.c:1225
 #: ../src/parole-player.c:2852 ../src/plugins/tray/tray-provider.c:338
 msgid "Cancel"
-msgstr ""
+msgstr "Batal"
 
 #: ../src/parole-player.c:1024
 msgid "Open"
-msgstr ""
+msgstr "Buka"
 
 #: ../src/parole-player.c:1040
 msgid "Subtitle Files"
-msgstr ""
+msgstr "Fail Sarikata"
 
 #: ../src/parole-player.c:1221 ../src/parole-player.c:1229
 msgid "Clear Recent Items"
-msgstr ""
+msgstr "Kosongkan Item Baru-baru Ini"
 
 #: ../src/parole-player.c:1223
 msgid ""
@@ -815,40 +815,40 @@ msgstr ""
 
 #: ../src/parole-player.c:1322 ../src/parole-player.c:1460
 msgid "Media stream is not seekable"
-msgstr ""
+msgstr "Strim media tidak boleh dijangkau"
 
 #: ../src/parole-player.c:1333
 msgid "Play"
-msgstr ""
+msgstr "Main"
 
 #: ../src/parole-player.c:1336
 msgid "Pause"
-msgstr ""
+msgstr "Jeda"
 
 #: ../src/parole-player.c:1832
 msgid "GStreamer backend error"
-msgstr ""
+msgstr "Ralat bahagian belakang GStreamer"
 
 #: ../src/parole-player.c:1863
 msgid "Unknown Song"
-msgstr ""
+msgstr "Lagu Tidak Diketahui"
 
 #: ../src/parole-player.c:1868 ../src/parole-player.c:1870
 #: ../src/parole-player.c:1876
 msgid "on"
-msgstr ""
+msgstr "hidup"
 
 #: ../src/parole-player.c:1876 ../src/plugins/notify/notify-provider.c:145
 msgid "Unknown Album"
-msgstr ""
+msgstr "Album Tidak Diketahui"
 
 #: ../src/parole-player.c:1883 ../src/parole-player.c:1887
 msgid "by"
-msgstr ""
+msgstr "oleh"
 
 #: ../src/parole-player.c:1887 ../src/plugins/notify/notify-provider.c:147
 msgid "Unknown Artist"
-msgstr ""
+msgstr "Artis Tidak Diketahui"
 
 #: ../src/parole-player.c:1921
 msgid "Buffering"
