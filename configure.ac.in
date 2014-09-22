@@ -1,4 +1,4 @@
-m4_define([intltool_minimum_version], [0.31])
+m4_define([intltool_minimum_version], [0.35])
 m4_define([parole_verinfo],           [0:7:0])
 m4_define([parole_version_api],       [0])
 m4_define([parole_version_major],     [0])
@@ -38,7 +38,7 @@ AC_PROG_CXX()
 AM_PROG_CC_C_O()
 AC_PROG_LD()
 AC_PROG_INSTALL()
-AC_PROG_INTLTOOL([intltool_minimum_version], [no-xml])
+IT_PROG_INTLTOOL([intltool_minimum_version], [no-xml])
 
 # ===================================================== #
 #                 Initialize libtool                    #
