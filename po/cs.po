@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Alois Nešpor <info@aloisnespor.info>, 2013-2014
+# Michal Várady <miko.vaji@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-04 18:30+0200\n"
-"PO-Revision-Date: 2014-08-31 21:27+0000\n"
-"Last-Translator: Alois Nešpor <info@aloisnespor.info>\n"
+"PO-Revision-Date: 2014-10-03 21:18+0000\n"
+"Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech (http://www.transifex.com/projects/p/xfce-apps/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -509,7 +510,7 @@ msgstr "Tato nestabilní vydání vývoj přidá nový clutter backend a vyčist
 
 #: ../data/appdata/parole.appdata.xml.in.h:4
 msgid "This release fixes a problem with detecting DVD drive locations."
-msgstr ""
+msgstr "Toto vydání opravuje potíže při detekci umístění mechanik DVD."
 
 #: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
@@ -518,20 +519,20 @@ msgid ""
 "playlists. Furthermore existing plugins have been improved and a new one has"
 " been added (MPRIS2). Most of the artwork has been updated for this release "
 "and we use the GStreamer1.0 framework now by default."
-msgstr ""
+msgstr "Toto vydání představuje kompletní přechod na sadu nástrojů Gtk+3, vylepšení v uživatelském rozhraní (více streamlined nabídek), lepší seznamy médií. Navíc byly vylepšeny existující zásuvné moduly a byl přidán jeden nový (MPRIS2). V tomto vydání byla aktualizována většina grafických prvků a ve výchozím nastavení se nyní používá framework GStreamer1.0."
 
 #: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
 "This unstable development release features mostly bugfixes and introduces "
 "the new MPRIS2 plugin."
-msgstr ""
+msgstr "Toto nestabilní vývojářské vydání představuje především opravy chyb a nový zásuvný modul MPRIS2"
 
 #: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This is a bugfix release which fixes the loading of playlists with relative "
 "paths, improves the file-filters for audio/video mimetypes and fixes the "
 "\"Remove duplicates\" functionality."
-msgstr ""
+msgstr "Toto vydání opravuje chyby při zavádění seznamů médií s relativními cestami, vylepšuje filtry souborů pro typy souborů audio a video podle MIME a opravuje funkci \"Odebrat duplicity\""
 
 #: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
@@ -539,7 +540,7 @@ msgid ""
 "toolkit, improvements in the user-interface (more streamlined menus), better"
 " playlists. It also brings updated artwork, GStreamer1.0 support, improved "
 "plugins and the occasional bugfix."
-msgstr ""
+msgstr "Toto nestabilní vývojářské vydání představuje kompletní přesun na sadu nástrojů Gtk+3, vylepšení v uživatelském rozhraní (více streamlined nabídek), lepší seznamy médií. Také přináší aktualizované grafické prvky, podporu GStreamer1.0, vylepšené zásuvné moduly a opravy některých chyb."
 
 #: ../src/common/parole-common.c:88
 msgid "Message"
