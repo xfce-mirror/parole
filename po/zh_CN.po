@@ -4,15 +4,16 @@
 # 
 # Translators:
 # Chipong Luo <chipong.luo@yahoo.com>, 2011-2012
-# yjwork <yjwork@qq.com>, 2013-2014
+# 玉堂白鹤 <yjwork@qq.com>, 2013-2014
 # 周潇波 <zhouxiaobo.500@gmail.com>, 2014
+# 玉堂白鹤 <yjwork@qq.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-04 18:30+0200\n"
-"PO-Revision-Date: 2014-08-27 14:09+0000\n"
-"Last-Translator: yjwork <yjwork@qq.com>\n"
+"PO-Revision-Date: 2014-10-07 07:31+0000\n"
+"Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/xfce-apps/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -71,7 +72,7 @@ msgstr "随机(_S)"
 #. Create dialog
 #: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2849
 msgid "Go to position"
-msgstr ""
+msgstr "转至位置"
 
 #: ../data/interfaces/parole.ui.h:13
 msgid "_DVD"
@@ -493,25 +494,25 @@ msgid ""
 "Parole is a modern simple media player based on the GStreamer framework and "
 "written to fit well in the Xfce desktop. It is designed with simplicity, "
 "speed and resource usage in mind."
-msgstr ""
+msgstr "Parole 是一个现代且简洁的媒体播放器，基于 GStreamer 的框架并以符合 Xfce 桌面设计理念的方式编写。它的设计力求简洁，快速与低资源消耗。"
 
 #: ../data/appdata/parole.appdata.xml.in.h:2
 msgid ""
 "Parole features playback of local media files, including video with "
 "subtitles support, Audio CDs, DVDs, and live streams. Parole is also "
 "extensible via plugins."
-msgstr ""
+msgstr "Parole 支持本地媒体文件的播放，包含了有字幕影片的支持，音乐 CD，DVD 以及直播流的支持。Parole 也可以使用插件扩充其功能。"
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
-msgstr ""
+msgstr "这个不稳定的开发版本增加了新的 clutter 后端并清理了过时的 Gtk3 符号。它还增加了一个“转至位置”功能。一些错误也得到修正。"
 
 #: ../data/appdata/parole.appdata.xml.in.h:4
 msgid "This release fixes a problem with detecting DVD drive locations."
-msgstr ""
+msgstr "这个版本修复了一个关于 DVD 位置侦测的问题。"
 
 #: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
@@ -526,7 +527,7 @@ msgstr ""
 msgid ""
 "This unstable development release features mostly bugfixes and introduces "
 "the new MPRIS2 plugin."
-msgstr ""
+msgstr "这个不稳定的开发版本的主要特性是错误修正及新的 MPRIS2 插件。"
 
 #: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
@@ -922,7 +923,7 @@ msgstr "请移步至 http://docs.xfce.org/apps/parole/start 阅读 Parole 在线
 
 #: ../src/parole-player.c:2853
 msgid "Go"
-msgstr ""
+msgstr "转至"
 
 #: ../src/parole-player.c:2866
 msgid "Position:"
@@ -956,7 +957,7 @@ msgstr "访问 Parole 网站"
 
 #: ../src/parole-conf-dialog.c:313
 msgid "Clutter (OpenGL)"
-msgstr ""
+msgstr "Clutter (OpenGL)"
 
 #: ../src/parole-disc.c:114
 msgid "Play Disc"
