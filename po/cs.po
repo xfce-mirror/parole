@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-04 18:30+0200\n"
-"PO-Revision-Date: 2014-10-03 21:18+0000\n"
+"PO-Revision-Date: 2014-10-29 21:25+0000\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech (http://www.transifex.com/projects/p/xfce-apps/language/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -31,7 +31,7 @@ msgstr "_Média"
 
 #: ../data/interfaces/parole.ui.h:3
 msgid "_Open…"
-msgstr "_Otevřít.."
+msgstr "_Otevřít..."
 
 #: ../data/interfaces/parole.ui.h:4
 msgid "Open _Location…"
@@ -43,7 +43,7 @@ msgstr "Otevřít _nedávné"
 
 #: ../data/interfaces/parole.ui.h:6
 msgid "_Save Playlist…"
-msgstr "_Uložit playlist..."
+msgstr "_Uložit seznam médií..."
 
 #: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:112
 #: ../src/parole-disc.c:154
@@ -78,19 +78,19 @@ msgstr "_DVD"
 
 #: ../data/interfaces/parole.ui.h:14
 msgid "_DVD Menu"
-msgstr "_DVD Menu"
+msgstr "Nabídka disku _DVD"
 
 #: ../data/interfaces/parole.ui.h:15
 msgid "_Title Menu"
-msgstr "Menu _titulu"
+msgstr "Nabídka _titulu"
 
 #: ../data/interfaces/parole.ui.h:16
 msgid "_Audio Menu"
-msgstr "Menu _zvuku"
+msgstr "Nabídka _zvuku"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "A_ngle Menu"
-msgstr "Menu ú_hlu"
+msgstr "Nabídka ú_hlu"
 
 #: ../data/interfaces/parole.ui.h:18
 msgid "_Chapters"
@@ -98,7 +98,7 @@ msgstr "_Kapitoly"
 
 #: ../data/interfaces/parole.ui.h:19
 msgid "_Chapter Menu"
-msgstr "Menu _kapitoly"
+msgstr "Nabídka _kapitoly"
 
 #: ../data/interfaces/parole.ui.h:20
 msgid "_Audio"
@@ -238,11 +238,11 @@ msgstr "Seznam médií"
 
 #: ../data/interfaces/playlist.ui.h:2
 msgid "Disc Playlist"
-msgstr "Playlist disku"
+msgstr "Seznam médií disku"
 
 #: ../data/interfaces/playlist.ui.h:3
 msgid "Add to playlist…"
-msgstr "Přidat do playlistu..."
+msgstr "Přidat do seznamu médií..."
 
 #: ../data/interfaces/playlist.ui.h:4
 msgid "Add"
@@ -258,7 +258,7 @@ msgstr "Odebrat"
 
 #: ../data/interfaces/playlist.ui.h:7
 msgid "Clear playlist"
-msgstr "Vyčistit playlist"
+msgstr "Vyčistit seznam médií"
 
 #: ../data/interfaces/playlist.ui.h:8
 msgid "Clear"
@@ -351,7 +351,7 @@ msgstr "Typ vizualizace:"
 
 #: ../data/interfaces/parole-settings.ui.h:9
 msgid "<b>Audio Visualization</b>"
-msgstr "<b>Vizualizace audia</b>"
+msgstr "<b>Vizualizace zvuku</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:10
 msgid "Enable keyboard multimedia keys"
@@ -415,7 +415,7 @@ msgstr "Zahájit přehrávání otevřených souborů"
 
 #: ../data/interfaces/parole-settings.ui.h:26
 msgid "<b>Playlist Settings</b>"
-msgstr "<b>Nastavení playlistu</b>"
+msgstr "<b>Nastavení seznamu médií</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:28
 msgid "Automatically show subtitles when playing movie file"
@@ -443,7 +443,7 @@ msgstr "Podle přípony"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "Save Playlist as…"
-msgstr "Uložit playlist jako..."
+msgstr "Uložit seznam médií jako..."
 
 #: ../data/interfaces/save-playlist.ui.h:3
 msgid "File Type"
@@ -463,7 +463,7 @@ msgstr "Otevřít umístění v síti"
 
 #: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:193
 msgid "Clear History"
-msgstr "Vyčistit historii"
+msgstr "Vymazat historii"
 
 #: ../data/interfaces/open-location.ui.h:3
 msgid "<big><b>Open Network Location</b></big>"
@@ -499,7 +499,7 @@ msgid ""
 "Parole features playback of local media files, including video with "
 "subtitles support, Audio CDs, DVDs, and live streams. Parole is also "
 "extensible via plugins."
-msgstr "Parole nabízí přehrávání lokálních mediálních souborů, včetně videa s podporou titulků, audio CD, DVD a streamů. Parole je také rozšiřitelný pomocí pluginů."
+msgstr "Parole nabízí přehrávání lokálních mediálních souborů, včetně videa s podporou titulků, zvukových disků CD, DVD a streamů. Parole je také rozšiřitelný pomocí zásuvných modulů."
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid ""
@@ -532,7 +532,7 @@ msgid ""
 "This is a bugfix release which fixes the loading of playlists with relative "
 "paths, improves the file-filters for audio/video mimetypes and fixes the "
 "\"Remove duplicates\" functionality."
-msgstr "Toto vydání opravuje chyby při zavádění seznamů médií s relativními cestami, vylepšuje filtry souborů pro typy souborů audio a video podle MIME a opravuje funkci \"Odebrat duplicity\""
+msgstr "Toto vydání opravuje chyby při zavádění seznamů médií s relativními cestami, vylepšuje filtry souborů pro zvukové a video typy podle MIME a opravuje funkci \"Odebrat duplicity\""
 
 #: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
@@ -557,7 +557,7 @@ msgstr "Stopa %i"
 
 #: ../src/gst/parole-gst.c:1275
 msgid "Audio CD"
-msgstr "Audio CD"
+msgstr "Zvukový disk CD"
 
 #: ../src/gst/parole-gst.c:1515
 msgid "Additional software is required."
@@ -589,7 +589,7 @@ msgstr "K přehrání tohoto souboru Parole potřebuje <b>%s</b>"
 
 #: ../src/gst/parole-gst.c:1946
 msgid "The stream is taking too much time to load"
-msgstr "Načtení datového proudu trvá příliš dlouho"
+msgstr "Načtení streamu trvá příliš dlouho"
 
 #: ../src/gst/parole-gst.c:1947
 msgid "Do you want to continue loading or stop?"
@@ -615,7 +615,7 @@ msgstr "Parole nelze spustit."
 #: ../src/gst/parole-gst.c:2213
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
-msgstr "Nelze nahrát plugin \"%s\", zkontrolujte instalaci GStreameru."
+msgstr "Nelze zavést zásuvný modul \"%s\", zkontrolujte instalaci GStreameru."
 
 #: ../src/gst/parole-gst.c:2837 ../src/gst/parole-gst.c:2843
 #, c-format
@@ -724,17 +724,17 @@ msgstr "Všechny soubory"
 #, c-format
 msgid "Playlist (%i item)"
 msgid_plural "Playlist (%i items)"
-msgstr[0] "Playlist (%i položka)"
-msgstr[1] "Playlist (%i položek)"
-msgstr[2] "Playlist (%i položek)"
+msgstr[0] "Seznam médií (%i položka)"
+msgstr[1] "Seznam médií (%i položky)"
+msgstr[2] "Seznam médií (%i položek)"
 
 #: ../src/parole-medialist.c:223 ../src/parole-medialist.c:1590
 #, c-format
 msgid "Playlist (%i chapter)"
 msgid_plural "Playlist (%i chapters)"
-msgstr[0] "Playlist (%i kapitola)"
-msgstr[1] "Playlist (%i kapitol)"
-msgstr[2] "Playlist (%i kapitol)"
+msgstr[0] "Seznam médií (%i kapitola)"
+msgstr[1] "Seznam médií (%i kapitoly)"
+msgstr[2] "Seznam médií (%i kapitol)"
 
 #: ../src/parole-medialist.c:409 ../src/parole-player.c:737
 #, c-format
@@ -755,7 +755,7 @@ msgstr "Neznámý formát seznamu médií"
 
 #: ../src/parole-medialist.c:713
 msgid "Please choose a supported playlist format"
-msgstr "Prosím vyberte podporovaný formát playlistu"
+msgstr "Prosím vyberte podporovaný formát seznamu médií"
 
 #: ../src/parole-medialist.c:767 ../src/parole-plugins-manager.c:369
 msgid "Unknown"
@@ -771,7 +771,7 @@ msgstr "Seznamy médií PLS"
 
 #: ../src/parole-medialist.c:872
 msgid "Advanced Stream Redirector"
-msgstr "Pokročilé přesměrování datového toku"
+msgstr "Pokročilé přesměrování streamu"
 
 #: ../src/parole-medialist.c:880
 msgid "Shareable Playlist"
@@ -784,11 +784,11 @@ msgstr "Otevřít složku obsahující soubor"
 
 #: ../src/parole-player.c:534
 msgid "Hide Playlist"
-msgstr "Skrýt playlist"
+msgstr "Skrýt seznam médií"
 
 #: ../src/parole-player.c:534 ../src/parole-player.c:3470
 msgid "Show Playlist"
-msgstr "Zobrazit playlist"
+msgstr "Zobrazit seznam médií"
 
 #. Build the FileChooser dialog for subtitle selection.
 #: ../src/parole-player.c:1016
@@ -816,11 +816,11 @@ msgstr "Vymazat nedávné položky"
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
-msgstr "Jste si jisti, že chcete vymazat historii? Toto nelze vrátit zpět."
+msgstr "Opravdu chcete vymazat historii položek? Toto nelze vrátit zpět."
 
 #: ../src/parole-player.c:1322 ../src/parole-player.c:1460
 msgid "Media stream is not seekable"
-msgstr "Datový tok neumožňuje přesouvání"
+msgstr "Stream neumožňuje přesouvání"
 
 #: ../src/parole-player.c:1333
 msgid "Play"
@@ -1109,7 +1109,7 @@ msgstr "Vietnamské"
 #. If plugin loading fails...
 #: ../src/parole-plugins-manager.c:276
 msgid "Plugin failed to load"
-msgstr "Selhalo nahrání pluginu"
+msgstr "Zavedení zásuvného modulu se nezdařilo"
 
 #: ../src/parole-plugins-manager.c:276
 msgid "Please check your installation"
@@ -1125,7 +1125,7 @@ msgstr "Prosím zkontrolujte vaši instalaci."
 
 #: ../src/misc/parole-filters.c:64
 msgid "Audio"
-msgstr "Audio"
+msgstr "Zvuk"
 
 #: ../src/misc/parole-filters.c:90
 msgid "Video"
@@ -1133,7 +1133,7 @@ msgstr "Video"
 
 #: ../src/misc/parole-filters.c:115 ../src/misc/parole-filters.c:133
 msgid "Audio and video"
-msgstr "Audio a video"
+msgstr "Zvuk a video"
 
 #: ../src/misc/parole-filters.c:162 ../src/misc/parole-filters.c:178
 msgid "All supported files"
@@ -1218,4 +1218,4 @@ msgstr "MPRIS2"
 
 #: ../src/plugins/mpris2/mpris2.desktop.in.h:2
 msgid "MPRIS2 remote control"
-msgstr "MPRIS2 dálkové ovládání"
+msgstr "Dálkové ovládání MPRIS2"
