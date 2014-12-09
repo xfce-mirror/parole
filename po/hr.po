@@ -4,15 +4,16 @@
 # 
 # Translators:
 # Edin Veskovic <edin.veskovic@openmailbox.org>, 2014
+# Edin Veskovic <edin.veskovic@openmailbox.org>, 2014
 # Ivica  Kolić <ikoli@yahoo.com>, 2013-2014
 # Ivica  Kolić <ikoli@yahoo.com>, 2011
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-04 18:30+0200\n"
-"PO-Revision-Date: 2014-10-19 16:13+0000\n"
-"Last-Translator: Ivica  Kolić <ikoli@yahoo.com>\n"
+"POT-Creation-Date: 2014-12-09 06:30+0100\n"
+"PO-Revision-Date: 2014-12-09 20:01+0000\n"
+"Last-Translator: Edin Veskovic <edin.veskovic@openmailbox.org>\n"
 "Language-Team: Croatian (http://www.transifex.com/projects/p/xfce-apps/language/hr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -69,7 +70,7 @@ msgid "_Shuffle"
 msgstr "_Izmješano"
 
 #. Create dialog
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2849
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2837
 msgid "Go to position"
 msgstr "Odi na poziciju"
 
@@ -233,7 +234,7 @@ msgstr "Otvori datoteke medija"
 
 #: ../data/interfaces/playlist.ui.h:1
 #: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:806
-#: ../src/parole-medialist.c:849 ../src/parole-player.c:3262
+#: ../src/parole-medialist.c:849 ../src/parole-player.c:3250
 msgid "Playlist"
 msgstr "Lista izvođenja"
 
@@ -300,7 +301,7 @@ msgstr "Parole priključci"
 
 #: ../data/interfaces/plugins.ui.h:2
 msgid "Extend your media player"
-msgstr ""
+msgstr "Proširi Parole dodatcima"
 
 #: ../data/interfaces/plugins.ui.h:3
 msgid "Plugin"
@@ -478,12 +479,12 @@ msgstr "Reproduciraj svoju medij"
 msgid "Play/Pause"
 msgstr "Izvodi/Pauziraj"
 
-#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3410
+#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3398
 #: ../src/plugins/notify/notify-provider.c:204
 msgid "Previous Track"
 msgstr "Prethodni zapis"
 
-#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3428
+#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3416
 #: ../src/plugins/notify/notify-provider.c:217
 msgid "Next Track"
 msgstr "Slijedeći zapis"
@@ -610,7 +611,7 @@ msgstr "GStreamer greška"
 
 #: ../src/gst/parole-gst.c:2134
 msgid "Parole Media Player cannot start."
-msgstr ""
+msgstr "Parole se ne može pokrenuti."
 
 #: ../src/gst/parole-gst.c:2165 ../src/gst/parole-gst.c:2181
 #: ../src/gst/parole-gst.c:2213
@@ -641,7 +642,7 @@ msgid ""
 "\n"
 "Please report bugs to <http://bugzilla.xfce.org/>.\n"
 "\n"
-msgstr ""
+msgstr "\nParole svirač multimedije %s\n\nDio je Xfce Goodies projekta\nhttp://goodies.xfce.org\n\nLicenciran pod GNU GPL.\n\nMolimo prijavite greške na <http://bugzilla.xfce.org/>.\n\n"
 
 #: ../src/main.c:241
 msgid "Open a new instance"
@@ -787,7 +788,7 @@ msgstr "Otvori sadržavajuću mapu"
 msgid "Hide Playlist"
 msgstr "Sakrij listu izvođenja"
 
-#: ../src/parole-player.c:534 ../src/parole-player.c:3470
+#: ../src/parole-player.c:534 ../src/parole-player.c:3458
 msgid "Show Playlist"
 msgstr "Pokaži listu izvođenja"
 
@@ -797,7 +798,7 @@ msgid "Select Subtitle File"
 msgstr "Odaberi datoteku podnapisa..."
 
 #: ../src/parole-player.c:1021 ../src/parole-player.c:1225
-#: ../src/parole-player.c:2852 ../src/plugins/tray/tray-provider.c:338
+#: ../src/parole-player.c:2840 ../src/plugins/tray/tray-provider.c:338
 msgid "Cancel"
 msgstr "Otkaži"
 
@@ -860,7 +861,7 @@ msgstr "Nepoznati umjetnik"
 msgid "Buffering"
 msgstr "Međupohrana"
 
-#: ../src/parole-player.c:2029 ../src/parole-player.c:3445
+#: ../src/parole-player.c:2029 ../src/parole-player.c:3433
 msgid "Fullscreen"
 msgstr "Cijeli zaslon"
 
@@ -910,7 +911,7 @@ msgstr "Isključi zvuk"
 msgid "Unmute"
 msgstr "Vrati zvuk"
 
-#: ../src/parole-player.c:2809 ../src/parole-player.c:2827
+#: ../src/parole-player.c:2809
 msgid "Unable to open default web browser"
 msgstr "Nije moguće otvoriti zadani web preglednik"
 
@@ -918,35 +919,29 @@ msgstr "Nije moguće otvoriti zadani web preglednik"
 msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr "Molimo idite na http://docs.xfce.org/apps/parole/bugs kako bi prijavili grešku."
 
-#: ../src/parole-player.c:2829
-msgid ""
-"Please go to http://docs.xfce.org/apps/parole/start to read Parole's online "
-"documentation."
-msgstr "Molimo idite na http://docs.xfce.org/apps/parole/start kako bi pročitali online dokumentaciju za Parole."
-
-#: ../src/parole-player.c:2853
+#: ../src/parole-player.c:2841
 msgid "Go"
 msgstr "Idi"
 
-#: ../src/parole-player.c:2866
+#: ../src/parole-player.c:2854
 msgid "Position:"
 msgstr "Pozicija:"
 
 #. Clear Recent Menu Item
-#: ../src/parole-player.c:3303
+#: ../src/parole-player.c:3291
 msgid "_Clear recent items…"
 msgstr "_Očisti nedavne stavke..."
 
-#: ../src/parole-player.c:3640
+#: ../src/parole-player.c:3628
 msgid "Audio Track:"
 msgstr "Audio zapis:"
 
-#: ../src/parole-player.c:3659
+#: ../src/parole-player.c:3647
 msgid "Subtitles:"
 msgstr "Podnapisi:"
 
 #. Add a close button to the Infobar
-#: ../src/parole-player.c:3665 ../src/plugins/tray/tray-provider.c:273
+#: ../src/parole-player.c:3653 ../src/plugins/tray/tray-provider.c:273
 msgid "Close"
 msgstr "Zatvori"
 
@@ -960,11 +955,11 @@ msgstr "Posjetite Parole web stranicu"
 
 #: ../src/parole-conf-dialog.c:313
 msgid "Clutter (OpenGL)"
-msgstr ""
+msgstr "Clutter (OpenGL)"
 
 #: ../src/parole-disc.c:114
 msgid "Play Disc"
-msgstr ""
+msgstr "Sviraj disk"
 
 #: ../src/parole-subtitle-encoding.c:165
 msgid "Current Locale"
