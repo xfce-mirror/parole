@@ -61,6 +61,16 @@ AC_SUBST([PAROLE_VERSION_MAJOR])
 AC_SUBST([PAROLE_VERSION_MINOR])
 AC_SUBST([PAROLE_VERSION_MICRO])
 
+dnl define a short version string for parole
+m4_append([parole_version_short], ["])
+m4_append([parole_version_short], [parole_version_major])
+m4_append([parole_version_short], [.])
+m4_append([parole_version_short], [parole_version_minor])
+m4_append([parole_version_short], ["])
+
+dnl define parole's short version (major.minor)
+AC_DEFINE([PAROLE_VERSION_SHORT], [parole_version_short], [Short version string of parole])
+
 # ===================================================== #
 #   Check for headers needed for standard interfaces    #
 # ===================================================== #

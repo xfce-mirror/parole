@@ -2817,19 +2817,7 @@ on_bug_report_clicked (GtkWidget *w, ParolePlayer *player)
 static void
 on_contents_clicked (GtkWidget *w, ParolePlayer *player)
 {
-    GtkWidget *dialog;
-    if (!gtk_show_uri(NULL, "http://docs.xfce.org/apps/parole/start", GDK_CURRENT_TIME, NULL))
-    {
-        dialog = gtk_message_dialog_new(GTK_WINDOW(player->priv->window),
-                                        GTK_DIALOG_DESTROY_WITH_PARENT,
-                                        GTK_MESSAGE_ERROR,
-                                        GTK_BUTTONS_CLOSE,
-                                        _("Unable to open default web browser"));
-        gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog),
-                _("Please go to http://docs.xfce.org/apps/parole/start to read Parole's online documentation."));
-        gtk_dialog_run(GTK_DIALOG(dialog));
-        gtk_widget_destroy(dialog);
-    }
+    xfce_dialog_show_help_with_version (NULL, "parole", "start", NULL, PAROLE_VERSION_SHORT);
 }
 
 static gboolean
