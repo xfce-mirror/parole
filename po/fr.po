@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-04 18:30+0200\n"
-"PO-Revision-Date: 2014-11-23 19:22+0000\n"
+"POT-Creation-Date: 2014-12-09 06:30+0100\n"
+"PO-Revision-Date: 2014-12-21 08:52+0000\n"
 "Last-Translator: Urien Desterres <urien.desterres@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/xfce-apps/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -70,7 +70,7 @@ msgid "_Shuffle"
 msgstr "_Aléatoire"
 
 #. Create dialog
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2849
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2837
 msgid "Go to position"
 msgstr "Aller à la position"
 
@@ -116,11 +116,11 @@ msgstr "Vide"
 
 #: ../data/interfaces/parole.ui.h:23
 msgid "Volume _Up"
-msgstr "Augmenter le volume"
+msgstr "_Monter le son"
 
 #: ../data/interfaces/parole.ui.h:24
 msgid "Volume _Down"
-msgstr "Diminuer le volume"
+msgstr "_Baisser le son"
 
 #: ../data/interfaces/parole.ui.h:25
 msgid "_Mute"
@@ -234,7 +234,7 @@ msgstr "Ouvrir des fichiers multimédias"
 
 #: ../data/interfaces/playlist.ui.h:1
 #: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:806
-#: ../src/parole-medialist.c:849 ../src/parole-player.c:3262
+#: ../src/parole-medialist.c:849 ../src/parole-player.c:3250
 msgid "Playlist"
 msgstr "Liste de lecture"
 
@@ -479,12 +479,12 @@ msgstr "Lisez votre contenu multimédia"
 msgid "Play/Pause"
 msgstr "Lecture / Pause"
 
-#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3410
+#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3398
 #: ../src/plugins/notify/notify-provider.c:204
 msgid "Previous Track"
 msgstr "Piste précédente"
 
-#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3428
+#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3416
 #: ../src/plugins/notify/notify-provider.c:217
 msgid "Next Track"
 msgstr "Piste suivante"
@@ -678,11 +678,11 @@ msgstr "Piste précédente"
 
 #: ../src/main.c:249
 msgid "Raise volume"
-msgstr "Augmenter le volume"
+msgstr "Monter le son"
 
 #: ../src/main.c:250
 msgid "Lower volume"
-msgstr "Diminuer le volume"
+msgstr "Baisser le son"
 
 #: ../src/main.c:251
 msgid "Mute volume"
@@ -786,7 +786,7 @@ msgstr "Ouvrir le dossier contenant le fichier"
 msgid "Hide Playlist"
 msgstr "Masquer la liste de lecture"
 
-#: ../src/parole-player.c:534 ../src/parole-player.c:3470
+#: ../src/parole-player.c:534 ../src/parole-player.c:3458
 msgid "Show Playlist"
 msgstr "Afficher la liste de lecture"
 
@@ -796,7 +796,7 @@ msgid "Select Subtitle File"
 msgstr "Sélectionner le fichier de sous-titres"
 
 #: ../src/parole-player.c:1021 ../src/parole-player.c:1225
-#: ../src/parole-player.c:2852 ../src/plugins/tray/tray-provider.c:338
+#: ../src/parole-player.c:2840 ../src/plugins/tray/tray-provider.c:338
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -859,7 +859,7 @@ msgstr "Artiste inconnu"
 msgid "Buffering"
 msgstr "Mise en mémoire tampon"
 
-#: ../src/parole-player.c:2029 ../src/parole-player.c:3445
+#: ../src/parole-player.c:2029 ../src/parole-player.c:3433
 msgid "Fullscreen"
 msgstr "Plein écran"
 
@@ -909,7 +909,7 @@ msgstr "Couper le son"
 msgid "Unmute"
 msgstr "Rétablir le son"
 
-#: ../src/parole-player.c:2809 ../src/parole-player.c:2827
+#: ../src/parole-player.c:2809
 msgid "Unable to open default web browser"
 msgstr "Impossible d’ouvrir le navigateur Web par défaut"
 
@@ -917,35 +917,29 @@ msgstr "Impossible d’ouvrir le navigateur Web par défaut"
 msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr "Veuillez vous rendre sur http://docs.xfce.org/apps/parole/bugs pour signaler votre bogue."
 
-#: ../src/parole-player.c:2829
-msgid ""
-"Please go to http://docs.xfce.org/apps/parole/start to read Parole's online "
-"documentation."
-msgstr "Veuillez vous rendre sur http://docs.xfce.org/apps/parole/start pour lire la documentation en ligne de Parole."
-
-#: ../src/parole-player.c:2853
+#: ../src/parole-player.c:2841
 msgid "Go"
 msgstr "Aller"
 
-#: ../src/parole-player.c:2866
+#: ../src/parole-player.c:2854
 msgid "Position:"
 msgstr "Position :"
 
 #. Clear Recent Menu Item
-#: ../src/parole-player.c:3303
+#: ../src/parole-player.c:3291
 msgid "_Clear recent items…"
 msgstr "_Effacer l’historique..."
 
-#: ../src/parole-player.c:3640
+#: ../src/parole-player.c:3628
 msgid "Audio Track:"
 msgstr "Piste audio :"
 
-#: ../src/parole-player.c:3659
+#: ../src/parole-player.c:3647
 msgid "Subtitles:"
 msgstr "Sous-titres :"
 
 #. Add a close button to the Infobar
-#: ../src/parole-player.c:3665 ../src/plugins/tray/tray-provider.c:273
+#: ../src/parole-player.c:3653 ../src/plugins/tray/tray-provider.c:273
 msgid "Close"
 msgstr "Fermer"
 
