@@ -3,8 +3,8 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Adolfo Jayme Barrientos <fitoschido@ubuntu.com>, 2013
-# Adolfo Jayme Barrientos <fitoschido@ubuntu.com>, 2014
+# Adolfo Jayme Barrientos <fito@libreoffice.org>, 2013
+# Adolfo Jayme Barrientos <fito@libreoffice.org>, 2014
 # elega <elega@elega.com.ar>, 2009
 # gabrieltandil <gabriel.tandil@gmail.com>, 2014
 # Hernan Gabriel Alvarez Guerra <hernan.alvarez.guerra@gmail.com>, 2013
@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-04 18:30+0200\n"
-"PO-Revision-Date: 2014-08-03 06:13+0000\n"
+"POT-Creation-Date: 2014-12-09 06:30+0100\n"
+"PO-Revision-Date: 2014-12-26 20:55+0000\n"
 "Last-Translator: Pablo Roberto Francisco Lezaeta Reyes <prflr88@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/xfce-apps/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -73,7 +73,7 @@ msgid "_Shuffle"
 msgstr "_Aleatorio"
 
 #. Create dialog
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2849
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2837
 msgid "Go to position"
 msgstr "Ir a la posición"
 
@@ -237,7 +237,7 @@ msgstr "Abrir archivos multimedia"
 
 #: ../data/interfaces/playlist.ui.h:1
 #: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:806
-#: ../src/parole-medialist.c:849 ../src/parole-player.c:3262
+#: ../src/parole-medialist.c:849 ../src/parole-player.c:3250
 msgid "Playlist"
 msgstr "Lista de reproducción"
 
@@ -482,12 +482,12 @@ msgstr "Reproducir sus medios"
 msgid "Play/Pause"
 msgstr "Reproducir/pausar"
 
-#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3410
+#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3398
 #: ../src/plugins/notify/notify-provider.c:204
 msgid "Previous Track"
 msgstr "Pista anterior"
 
-#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3428
+#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3416
 #: ../src/plugins/notify/notify-provider.c:217
 msgid "Next Track"
 msgstr "Siguiente"
@@ -789,7 +789,7 @@ msgstr "Abrir la carpeta contenedora"
 msgid "Hide Playlist"
 msgstr "Ocultar lista de reproducion"
 
-#: ../src/parole-player.c:534 ../src/parole-player.c:3470
+#: ../src/parole-player.c:534 ../src/parole-player.c:3458
 msgid "Show Playlist"
 msgstr "Mostrar lista de reproducción"
 
@@ -799,7 +799,7 @@ msgid "Select Subtitle File"
 msgstr "Seleccione el archivo de subtítulos"
 
 #: ../src/parole-player.c:1021 ../src/parole-player.c:1225
-#: ../src/parole-player.c:2852 ../src/plugins/tray/tray-provider.c:338
+#: ../src/parole-player.c:2840 ../src/plugins/tray/tray-provider.c:338
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -862,7 +862,7 @@ msgstr "Artista desconocido"
 msgid "Buffering"
 msgstr "Almacenando en búfer"
 
-#: ../src/parole-player.c:2029 ../src/parole-player.c:3445
+#: ../src/parole-player.c:2029 ../src/parole-player.c:3433
 msgid "Fullscreen"
 msgstr "Pantalla completa"
 
@@ -912,7 +912,7 @@ msgstr "Silenciar"
 msgid "Unmute"
 msgstr "Activar el sonido"
 
-#: ../src/parole-player.c:2809 ../src/parole-player.c:2827
+#: ../src/parole-player.c:2809
 msgid "Unable to open default web browser"
 msgstr "No se puede abrir el navegador web predeterminado"
 
@@ -920,41 +920,35 @@ msgstr "No se puede abrir el navegador web predeterminado"
 msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr "Vaya a http://docs.xfce.org/apps/parole/bugs para informar de un error."
 
-#: ../src/parole-player.c:2829
-msgid ""
-"Please go to http://docs.xfce.org/apps/parole/start to read Parole's online "
-"documentation."
-msgstr "Ingrese a http://docs.xfce.org/apps/parole/start para leer la documentación en línea de Parole."
-
-#: ../src/parole-player.c:2853
+#: ../src/parole-player.c:2841
 msgid "Go"
 msgstr "Ir"
 
-#: ../src/parole-player.c:2866
+#: ../src/parole-player.c:2854
 msgid "Position:"
 msgstr "Posición:"
 
 #. Clear Recent Menu Item
-#: ../src/parole-player.c:3303
+#: ../src/parole-player.c:3291
 msgid "_Clear recent items…"
 msgstr "_Vaciar elementos recientes…"
 
-#: ../src/parole-player.c:3640
+#: ../src/parole-player.c:3628
 msgid "Audio Track:"
 msgstr "Pista de sonido:"
 
-#: ../src/parole-player.c:3659
+#: ../src/parole-player.c:3647
 msgid "Subtitles:"
 msgstr "Subtítulos:"
 
 #. Add a close button to the Infobar
-#: ../src/parole-player.c:3665 ../src/plugins/tray/tray-provider.c:273
+#: ../src/parole-player.c:3653 ../src/plugins/tray/tray-provider.c:273
 msgid "Close"
 msgstr "Cerrar"
 
 #: ../src/parole-about.c:76
 msgid "translator-credits"
-msgstr "Adolfo Jayme Barrientos <fitoschido@ubuntu.com>, 2013, 2014\nelega <elega@elega.com.ar>, 2009\nhernan144 <hernan.alvarez.guerra@gmail.com>, 2013\nMC <correomc2000-ing@yahoo.es>, 2013\nPablo Roberto Francisco Lezaeta Reyes <prflr88@gmail.com>, 2013"
+msgstr "Adolfo Jayme Barrientos <fitoschido@ubuntu.com>, 2013, 2014\nelega <elega@elega.com.ar>, 2009\nhernan144 <hernan.alvarez.guerra@gmail.com>, 2013\nMC <correomc2000-ing@yahoo.es>, 2013\nPablo Roberto Francisco Lezaeta Reyes <prflr88@gmail.com>, 2013-2015"
 
 #: ../src/parole-about.c:79
 msgid "Visit Parole website"
