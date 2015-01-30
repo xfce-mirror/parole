@@ -949,7 +949,6 @@
                                 <property name="receives_default">True</property>
                                 <property name="hexpand">True</property>
                                 <property name="font">Sans 12</property>
-                                <property name="preview_text"/>
                                 <property name="show_preview_entry">False</property>
                                 <property name="use_font">True</property>
                                 <signal name="font-set" handler="parole_conf_dialog_font_set_cb" swapped="no"/>
