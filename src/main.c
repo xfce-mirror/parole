@@ -301,6 +301,9 @@ int main (int argc, char **argv)
     /* Check for cli options if there is an instance of Parole already */
     if ( !new_instance && parole_dbus_name_has_owner (PAROLE_DBUS_NAME) )
     {
+        /* Clear startup notification */
+        gdk_notify_startup_complete ();
+
         if (!enqueue && !play && !next_track && !prev_track && 
             !raise_volume && !lower_volume && !mute && !unmute)
             g_print (_("Parole is already running, use -i to open a new instance\n"));
