@@ -13,7 +13,7 @@ AC_PREREQ(2.59c)
 
 AC_CONFIG_MACRO_DIR([m4])
 
-AM_INIT_AUTOMAKE([1.8 dist-bzip2 tar-ustar])
+AM_INIT_AUTOMAKE([1.8 dist-bzip2 tar-ustar no-dist-gzip])
 AM_CONFIG_HEADER([config.h])
 
 if test x${enable_gtk_doc} = x"yes"; then 
