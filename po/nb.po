@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Allan Nordhøy <comradekingu@gmail.com>, 2014
+# Allan Nordhøy <comradekingu@gmail.com>, 2014-2015
 # Harald <haarektrans@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-04 18:30+0200\n"
-"PO-Revision-Date: 2014-07-29 14:43+0000\n"
-"Last-Translator: Harald <haarektrans@gmail.com>\n"
+"POT-Creation-Date: 2014-12-09 06:30+0100\n"
+"PO-Revision-Date: 2015-02-21 15:24+0000\n"
+"Last-Translator: Allan Nordhøy <comradekingu@gmail.com>\n"
 "Language-Team: Norwegian Bokmål (http://www.transifex.com/projects/p/xfce-apps/language/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -68,7 +68,7 @@ msgid "_Shuffle"
 msgstr "_Omstokkning"
 
 #. Create dialog
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2849
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2837
 msgid "Go to position"
 msgstr "Gå til posisjon"
 
@@ -232,7 +232,7 @@ msgstr "Åpne mediafiler"
 
 #: ../data/interfaces/playlist.ui.h:1
 #: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:806
-#: ../src/parole-medialist.c:849 ../src/parole-player.c:3262
+#: ../src/parole-medialist.c:849 ../src/parole-player.c:3250
 msgid "Playlist"
 msgstr "Spilleliste"
 
@@ -371,7 +371,7 @@ msgstr "Vennligst start Parole på nytt for at denne endringen skal tre i kraft.
 
 #: ../data/interfaces/parole-settings.ui.h:14
 msgid "<b>Video Output</b>"
-msgstr ""
+msgstr "<b>Video-utgang</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:15
 msgid "Brightness:"
@@ -477,12 +477,12 @@ msgstr "Spill dine mediafiler"
 msgid "Play/Pause"
 msgstr "Spill av/Pause"
 
-#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3410
+#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3398
 #: ../src/plugins/notify/notify-provider.c:204
 msgid "Previous Track"
 msgstr "Forrige spor"
 
-#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3428
+#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3416
 #: ../src/plugins/notify/notify-provider.c:217
 msgid "Next Track"
 msgstr "Neste spor"
@@ -506,7 +506,7 @@ msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
-msgstr ""
+msgstr "Denne ustabile utviklingsutgivelsen legger til et nytt Clutter-bakstykke og rydder opp i avleggse Gtk3-symboler. Den legger også til et \"gå til posisjon\"-trekkplaster og fikser flerfoldige feil."
 
 #: ../data/appdata/parole.appdata.xml.in.h:4
 msgid "This release fixes a problem with detecting DVD drive locations."
@@ -784,7 +784,7 @@ msgstr "Åpne mappe som inneholder denne"
 msgid "Hide Playlist"
 msgstr "Skjul spilleliste"
 
-#: ../src/parole-player.c:534 ../src/parole-player.c:3470
+#: ../src/parole-player.c:534 ../src/parole-player.c:3458
 msgid "Show Playlist"
 msgstr "Vis spilleliste"
 
@@ -794,7 +794,7 @@ msgid "Select Subtitle File"
 msgstr "Velg undertekst-fil"
 
 #: ../src/parole-player.c:1021 ../src/parole-player.c:1225
-#: ../src/parole-player.c:2852 ../src/plugins/tray/tray-provider.c:338
+#: ../src/parole-player.c:2840 ../src/plugins/tray/tray-provider.c:338
 msgid "Cancel"
 msgstr "Avbryt"
 
@@ -857,7 +857,7 @@ msgstr "Ukjent artist"
 msgid "Buffering"
 msgstr "Mellomlagrer"
 
-#: ../src/parole-player.c:2029 ../src/parole-player.c:3445
+#: ../src/parole-player.c:2029 ../src/parole-player.c:3433
 msgid "Fullscreen"
 msgstr "Fullskjerm"
 
@@ -907,7 +907,7 @@ msgstr "Demp"
 msgid "Unmute"
 msgstr "Skru på lyden"
 
-#: ../src/parole-player.c:2809 ../src/parole-player.c:2827
+#: ../src/parole-player.c:2809
 msgid "Unable to open default web browser"
 msgstr "Kunne ikke åpne forvalgt nettleser"
 
@@ -915,35 +915,29 @@ msgstr "Kunne ikke åpne forvalgt nettleser"
 msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr "Gå til http://docs.xfce.org/apps/parole/bugs for å rapportere feil."
 
-#: ../src/parole-player.c:2829
-msgid ""
-"Please go to http://docs.xfce.org/apps/parole/start to read Parole's online "
-"documentation."
-msgstr "Gå til http://docs.xfce.org/apps/parole/start for å lese nettbasert dokumentasjon av Parole."
-
-#: ../src/parole-player.c:2853
+#: ../src/parole-player.c:2841
 msgid "Go"
 msgstr "Gå"
 
-#: ../src/parole-player.c:2866
+#: ../src/parole-player.c:2854
 msgid "Position:"
 msgstr "Posisjon:"
 
 #. Clear Recent Menu Item
-#: ../src/parole-player.c:3303
+#: ../src/parole-player.c:3291
 msgid "_Clear recent items…"
 msgstr "_Slett nylige elementer..."
 
-#: ../src/parole-player.c:3640
+#: ../src/parole-player.c:3628
 msgid "Audio Track:"
 msgstr "Lydspor:"
 
-#: ../src/parole-player.c:3659
+#: ../src/parole-player.c:3647
 msgid "Subtitles:"
 msgstr "Undertekster:"
 
 #. Add a close button to the Infobar
-#: ../src/parole-player.c:3665 ../src/plugins/tray/tray-provider.c:273
+#: ../src/parole-player.c:3653 ../src/plugins/tray/tray-provider.c:273
 msgid "Close"
 msgstr "Lukk"
 
@@ -957,7 +951,7 @@ msgstr "Besøk Parole-nettsiden"
 
 #: ../src/parole-conf-dialog.c:313
 msgid "Clutter (OpenGL)"
-msgstr ""
+msgstr "Clutter (OpenGL)"
 
 #: ../src/parole-disc.c:114
 msgid "Play Disc"
