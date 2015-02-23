@@ -3,9 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Adolfo Jayme Barrientos <fito@libreoffice.org>, 2013
-# Adolfo Jayme Barrientos <fito@libreoffice.org>, 2014
+# Adolfo Jayme Barrientos, 2013-2014
+# Adolfo Jayme Barrientos, 2013
+# Adolfo Jayme Barrientos, 2014
 # elega <elega@elega.com.ar>, 2009
+# elega <elega@elega.com.ar>, 2009
+# gabrieltandil <gabriel.tandil@gmail.com>, 2014
 # gabrieltandil <gabriel.tandil@gmail.com>, 2014
 # Hernan Gabriel Alvarez Guerra <hernan.alvarez.guerra@gmail.com>, 2013
 # mc <correomc2000-ing@yahoo.es>, 2013
@@ -15,8 +18,8 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-12-09 06:30+0100\n"
-"PO-Revision-Date: 2014-12-26 20:55+0000\n"
-"Last-Translator: Pablo Roberto Francisco Lezaeta Reyes <prflr88@gmail.com>\n"
+"PO-Revision-Date: 2015-02-23 14:17+0000\n"
+"Last-Translator: Manolo Díaz <diaz.manolo@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/xfce-apps/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -48,7 +51,7 @@ msgstr "Abrir r_eciente"
 
 #: ../data/interfaces/parole.ui.h:6
 msgid "_Save Playlist…"
-msgstr "_Guardar lista de reproducción…"
+msgstr "_Guardar la lista de reproducción…"
 
 #: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:112
 #: ../src/parole-disc.c:154
@@ -196,7 +199,7 @@ msgstr "_Informar de un problema…"
 
 #: ../data/interfaces/parole.ui.h:42
 msgid "Display Parole user manual"
-msgstr "Mostrar manual de usuario de Parole"
+msgstr "Mostrar el manual de usuario de Parole"
 
 #: ../data/interfaces/parole.ui.h:43
 msgid "_Contents"
@@ -247,7 +250,7 @@ msgstr "Lista de reproducción del disco"
 
 #: ../data/interfaces/playlist.ui.h:3
 msgid "Add to playlist…"
-msgstr "Añadir a lista de reproducción…"
+msgstr "Añadir a la lista de reproducción…"
 
 #: ../data/interfaces/playlist.ui.h:4
 msgid "Add"
@@ -255,7 +258,7 @@ msgstr "Añadir"
 
 #: ../data/interfaces/playlist.ui.h:5
 msgid "Remove selected media"
-msgstr "Eliminar medios seleccionados"
+msgstr "Eliminar los medios seleccionados"
 
 #: ../data/interfaces/playlist.ui.h:6
 msgid "Remove"
@@ -263,7 +266,7 @@ msgstr "Quitar"
 
 #: ../data/interfaces/playlist.ui.h:7
 msgid "Clear playlist"
-msgstr "Vaciar lista de reproducción"
+msgstr "Vaciar la lista de reproducción"
 
 #: ../data/interfaces/playlist.ui.h:8
 msgid "Clear"
@@ -287,16 +290,16 @@ msgstr "Mover hacia abajo"
 
 #: ../data/interfaces/playlist.ui.h:13
 msgid "Replace playlist when opening files"
-msgstr "Reemplazar lista de reproducción al abrir archivos"
+msgstr "Remplazar la lista de reproducción al abrir archivos"
 
 #: ../data/interfaces/playlist.ui.h:14
 msgid "Play opened files"
-msgstr "Reproducir archivos abiertos"
+msgstr "Reproducir los archivos abiertos"
 
 #: ../data/interfaces/playlist.ui.h:15
 #: ../data/interfaces/parole-settings.ui.h:25
 msgid "Remember playlist"
-msgstr "Recordar lista de reproducción"
+msgstr "Recordar la lista de reproducción"
 
 #: ../data/interfaces/plugins.ui.h:1
 msgid "Parole Plugins"
@@ -396,7 +399,7 @@ msgstr "Saturación:"
 
 #: ../data/interfaces/parole-settings.ui.h:19
 msgid "Reset to defaults"
-msgstr "Restablecer valores predeterminados"
+msgstr "Restablecer los valores predeterminados"
 
 #: ../data/interfaces/parole-settings.ui.h:20
 msgid "<b>Color Balance</b>"
@@ -408,11 +411,11 @@ msgstr "Mostrar"
 
 #: ../data/interfaces/parole-settings.ui.h:22
 msgid "Always replace playlist with opened files"
-msgstr "Siempre reemplazar lista de reproducción con archivos abiertos"
+msgstr "Siempre remplazar la lista de reproducción con los archivos abiertos"
 
 #: ../data/interfaces/parole-settings.ui.h:23
 msgid "Check and remove duplicate media entries"
-msgstr "Comprobar y eliminar entradas de medios duplicadas"
+msgstr "Comprobar y eliminar las entradas de medios duplicadas"
 
 #: ../data/interfaces/parole-settings.ui.h:24
 msgid "Start playing opened files"
@@ -420,7 +423,7 @@ msgstr "Comenzar a reproducir los archivos abiertos"
 
 #: ../data/interfaces/parole-settings.ui.h:26
 msgid "<b>Playlist Settings</b>"
-msgstr "<b>Configuración de listas de reproducción</b>"
+msgstr "<b>Configuración de las listas de reproducción</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:28
 msgid "Automatically show subtitles when playing movie file"
@@ -448,7 +451,7 @@ msgstr "Por extensión"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "Save Playlist as…"
-msgstr "Guardar lista de reproducción como…"
+msgstr "Guardar la lista de reproducción como…"
 
 #: ../data/interfaces/save-playlist.ui.h:3
 msgid "File Type"
@@ -497,21 +500,21 @@ msgid ""
 "Parole is a modern simple media player based on the GStreamer framework and "
 "written to fit well in the Xfce desktop. It is designed with simplicity, "
 "speed and resource usage in mind."
-msgstr "Parole es un reproductor multimedia basado en la infraestructura digital de GStreamer y escrito para incorporarse con el entorno de escritorio Xfce. Está diseñado con la simplicidad, velocidad y correcto uso de recursos en mente."
+msgstr "Parole es un reproductor multimedia basado en la infraestructura digital de GStreamer y escrito para incorporarse con el entorno de escritorio Xfce. Está diseñado con simplicidad, velocidad y correcto uso de recursos en mente."
 
 #: ../data/appdata/parole.appdata.xml.in.h:2
 msgid ""
 "Parole features playback of local media files, including video with "
 "subtitles support, Audio CDs, DVDs, and live streams. Parole is also "
 "extensible via plugins."
-msgstr "Parole puede reproducir archivos localmente incluyendo videos con sporte para subtítulos, CD de audio, DVD y trasmisiones en continuo. Además las funcionalidades de Parole pueden ser extendidas a travez de complementos."
+msgstr "Parole puede reproducir archivos localmente incluyendo videos con subtítulos, CD de audio, DVD y trasmisiones en continuo. Además, las funcionalidades de Parole pueden ser extendidas a través de complementos."
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
-msgstr "Esta versión de desarrollo añade un nuevo motor de <i>clutter</i> y elimina símbolos GTK3 obsoletos. Además añade la funcionalidad «Ir a la posición» y corrige un sinnumero de errores."
+msgstr "Esta versión de desarrollo añade un nuevo motor de <i>clutter</i> y elimina símbolos GTK3 obsoletos. Además añade la funcionalidad «Ir a la posición» y corrige un sinnúmero de errores."
 
 #: ../data/appdata/parole.appdata.xml.in.h:4
 msgid "This release fixes a problem with detecting DVD drive locations."
@@ -524,7 +527,7 @@ msgid ""
 "playlists. Furthermore existing plugins have been improved and a new one has"
 " been added (MPRIS2). Most of the artwork has been updated for this release "
 "and we use the GStreamer1.0 framework now by default."
-msgstr "Esta nueva verión comprende una completa transición a GTK+3, mejorando la interfaz de usuario (menús simplificados), mejora en la lista de reproducción, Además complementos existentes han sido mejoradas y uno nuevo se ha añadido (MPRIS2). La mayor parte del tarte en esta versión se actualizó y además ahora la infraestructura digital de GStreamer 1.0 es la utilizada por omición."
+msgstr "Esta nueva versión comprende una completa transición a GTK+3, mejorando la interfaz de usuario (menús simplificados) y la lista de reproducción. Además, los complementos existentes han sido mejoradas y uno nuevo se ha añadido (MPRIS2). La mayor parte del arte en esta versión se actualizó y ahora la infraestructura digital de GStreamer 1.0 es la utilizada de forma predeterminada."
 
 #: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
@@ -545,7 +548,7 @@ msgid ""
 "toolkit, improvements in the user-interface (more streamlined menus), better"
 " playlists. It also brings updated artwork, GStreamer1.0 support, improved "
 "plugins and the occasional bugfix."
-msgstr "Esta versión de desarrollo inestable cuenta con el transisión completa a Gtk+3, mejoras en las interfaz de usuario (menús simplificados), mejora en la lista de reproducción. También trae arte actualizado, soporte para GStreamer 1.0, mejoras en los complementos y la corrección de errores."
+msgstr "Esta versión de desarrollo inestable cuenta con el transición completa a Gtk+3, mejoras en las interfaz de usuario (menús simplificados), mejora en la lista de reproducción. También trae arte actualizado, soporte para GStreamer 1.0, mejoras en los complementos y la corrección de errores."
 
 #: ../src/common/parole-common.c:88
 msgid "Message"
@@ -594,7 +597,7 @@ msgstr "Parole necesita <b>%s</b> para reproducir el archivo."
 
 #: ../src/gst/parole-gst.c:1946
 msgid "The stream is taking too much time to load"
-msgstr "El flujo está demorando demasiado tiempo para cargar"
+msgstr "El flujo está tardando mucho en cargarse"
 
 #: ../src/gst/parole-gst.c:1947
 msgid "Do you want to continue loading or stop?"
@@ -701,7 +704,7 @@ msgstr "Añadir archivos a lista de reproducción"
 
 #: ../src/main.c:254
 msgid "Print version information and exit"
-msgstr "Mostrar información de versión y salir"
+msgstr "Mostrar información de la versión y salir"
 
 #: ../src/main.c:256
 msgid "Media to play"
@@ -750,7 +753,7 @@ msgstr "Permiso denegado"
 
 #: ../src/parole-medialist.c:700
 msgid "Error saving playlist file"
-msgstr "Error al guardar el archivo de lista de reproducción"
+msgstr "No se pudo guardar el archivo de la lista de reproducción"
 
 #: ../src/parole-medialist.c:712
 msgid "Unknown playlist format"
@@ -787,7 +790,7 @@ msgstr "Abrir la carpeta contenedora"
 
 #: ../src/parole-player.c:534
 msgid "Hide Playlist"
-msgstr "Ocultar lista de reproducion"
+msgstr "Ocultar la lista de reproducción"
 
 #: ../src/parole-player.c:534 ../src/parole-player.c:3458
 msgid "Show Playlist"
@@ -902,7 +905,7 @@ msgstr "_Cambiar a pantalla completa"
 #. * Un/Hide menubar
 #: ../src/parole-player.c:2155
 msgid "Show menubar"
-msgstr "Mostrar barra de menús"
+msgstr "Mostrar la barra de menús"
 
 #: ../src/parole-player.c:2415
 msgid "Mute"
