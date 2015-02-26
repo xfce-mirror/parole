@@ -6,13 +6,13 @@
 # Chipong Luo <chipong.luo@yahoo.com>, 2011-2012
 # 玉堂白鹤 <yjwork@qq.com>, 2013-2014
 # 周潇波 <zhouxiaobo.500@gmail.com>, 2014
-# 玉堂白鹤 <yjwork@qq.com>, 2014
+# 玉堂白鹤 <yjwork@qq.com>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-12-09 06:30+0100\n"
-"PO-Revision-Date: 2015-02-25 02:59+0000\n"
+"PO-Revision-Date: 2015-02-26 15:36+0000\n"
 "Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/xfce-apps/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -521,7 +521,7 @@ msgid ""
 "playlists. Furthermore existing plugins have been improved and a new one has"
 " been added (MPRIS2). Most of the artwork has been updated for this release "
 "and we use the GStreamer1.0 framework now by default."
-msgstr ""
+msgstr "这个版本的主要特性是，完全转移到 Gtk+3 工具包，改进了用户界面(更精简的菜单)，更好的播放列表。另外，现有的插件被改进并增加了一个新的插件(MPRIS2)。大量的艺术品都在这个版本被更新了，我们现在默认使用了GStreamer1.0 框架。"
 
 #: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
@@ -534,7 +534,7 @@ msgid ""
 "This is a bugfix release which fixes the loading of playlists with relative "
 "paths, improves the file-filters for audio/video mimetypes and fixes the "
 "\"Remove duplicates\" functionality."
-msgstr ""
+msgstr "这是一个错误修正版本，修复了以相对路径载入播放列表，改进了音频/视频类型的文件过滤器，并修复了\"移除重复项\"的功能。"
 
 #: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
@@ -542,7 +542,7 @@ msgid ""
 "toolkit, improvements in the user-interface (more streamlined menus), better"
 " playlists. It also brings updated artwork, GStreamer1.0 support, improved "
 "plugins and the occasional bugfix."
-msgstr ""
+msgstr "这个不稳定版本的主要特性是，完全转移到 Gtk+3 工具包，改进了用户界面(更精简的菜单)，更好的播放列表。另外，它也带来了艺术品的更新,GStreamer1.0 的支持,改进的插件和更多的错误修复。"
 
 #: ../src/common/parole-common.c:88
 msgid "Message"
