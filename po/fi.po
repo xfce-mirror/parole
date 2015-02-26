@@ -5,13 +5,13 @@
 # Translators:
 # Jiri Grönroos <jiri.gronroos@iki.fi>, 2013
 # Juhani Numminen <juhaninumminen0@gmail.com>, 2013
-# Pasi Lallinaho <pasi@shimmerproject.org>, 2014
+# Pasi Lallinaho <pasi@shimmerproject.org>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-04 18:30+0200\n"
-"PO-Revision-Date: 2014-08-22 16:05+0000\n"
+"POT-Creation-Date: 2014-12-09 06:30+0100\n"
+"PO-Revision-Date: 2015-02-26 01:24+0000\n"
 "Last-Translator: Pasi Lallinaho <pasi@shimmerproject.org>\n"
 "Language-Team: Finnish (http://www.transifex.com/projects/p/xfce-apps/language/fi/)\n"
 "MIME-Version: 1.0\n"
@@ -69,7 +69,7 @@ msgid "_Shuffle"
 msgstr "_Sekoita"
 
 #. Create dialog
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2849
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2837
 msgid "Go to position"
 msgstr "Siirry sijaintiin"
 
@@ -233,7 +233,7 @@ msgstr "Avaa mediatiedostoja"
 
 #: ../data/interfaces/playlist.ui.h:1
 #: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:806
-#: ../src/parole-medialist.c:849 ../src/parole-player.c:3262
+#: ../src/parole-medialist.c:849 ../src/parole-player.c:3250
 msgid "Playlist"
 msgstr "Soittolista"
 
@@ -478,12 +478,12 @@ msgstr "Toista mediasi"
 msgid "Play/Pause"
 msgstr "Toista/keskeytä"
 
-#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3410
+#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3398
 #: ../src/plugins/notify/notify-provider.c:204
 msgid "Previous Track"
 msgstr "Edellinen kappale"
 
-#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3428
+#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3416
 #: ../src/plugins/notify/notify-provider.c:217
 msgid "Next Track"
 msgstr "Seuraava kappale"
@@ -507,11 +507,11 @@ msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
-msgstr ""
+msgstr "Tämä epävakaa kehitysversio lisää uuden Clutter-taustapalvelun ja puhdistaa käytöstä poistettuja Gtk3-symboleita. Se lisää myös \"siirry sijaintiin\" -toiminnon ja korjaa muutamia virheitä."
 
 #: ../data/appdata/parole.appdata.xml.in.h:4
 msgid "This release fixes a problem with detecting DVD drive locations."
-msgstr ""
+msgstr "Tämä julkaisu korjaa ongelman DVD-asemien sijaintien paikantamisessa."
 
 #: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
@@ -520,20 +520,20 @@ msgid ""
 "playlists. Furthermore existing plugins have been improved and a new one has"
 " been added (MPRIS2). Most of the artwork has been updated for this release "
 "and we use the GStreamer1.0 framework now by default."
-msgstr ""
+msgstr "Tämä julkaisu sisältää täydellisen siirtymän Gtk+3-kirjastoon, parannuksia käyttöliittymään (keveämmät valikot) ja paremmat soittolistat. Lisäksi olemassa olevia liitännäisiä on paranneltu ja uusi liitännäinen lisätty (MPRIS2). Suurin osa ulkoasusta on päivitetty tätä versiota varten. GStreamer1.0-kirjasto on nyt käytössä oletuksena."
 
 #: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
 "This unstable development release features mostly bugfixes and introduces "
 "the new MPRIS2 plugin."
-msgstr ""
+msgstr "Tämä epävakaa kehitysversio korjaa lähinnä virheitä sekä lisää uuden MPRIS2-liitännäisen."
 
 #: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This is a bugfix release which fixes the loading of playlists with relative "
 "paths, improves the file-filters for audio/video mimetypes and fixes the "
 "\"Remove duplicates\" functionality."
-msgstr ""
+msgstr "Tämä on virheenkorjausversio, joka korjaa soittolistat, joilla on suhteellinen polku, parantaa tiedostosuodattimia ääni- ja videomimetyypeille sekä korjaa \"Poista kaksoiskappaleet\" -ominaisuuden."
 
 #: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
@@ -541,7 +541,7 @@ msgid ""
 "toolkit, improvements in the user-interface (more streamlined menus), better"
 " playlists. It also brings updated artwork, GStreamer1.0 support, improved "
 "plugins and the occasional bugfix."
-msgstr ""
+msgstr "Tämä julkaisu sisältää täydellisen siirtymän Gtk+3-kirjastoon, parannuksia käyttöliittymään (keveämmät valikot) ja paremmat soittolistat. Lisäksi se parantaa ulkoasua, lisää GStreamer1.0-tuen, parantaa liitännäisiä ja korjaa muutamia virheitä."
 
 #: ../src/common/parole-common.c:88
 msgid "Message"
@@ -785,7 +785,7 @@ msgstr "Avaa sisältävä kansio"
 msgid "Hide Playlist"
 msgstr "Piilota soittolista"
 
-#: ../src/parole-player.c:534 ../src/parole-player.c:3470
+#: ../src/parole-player.c:534 ../src/parole-player.c:3458
 msgid "Show Playlist"
 msgstr "Näytä soittolista"
 
@@ -795,7 +795,7 @@ msgid "Select Subtitle File"
 msgstr "Valitse tekstitystiedosto"
 
 #: ../src/parole-player.c:1021 ../src/parole-player.c:1225
-#: ../src/parole-player.c:2852 ../src/plugins/tray/tray-provider.c:338
+#: ../src/parole-player.c:2840 ../src/plugins/tray/tray-provider.c:338
 msgid "Cancel"
 msgstr "Peru"
 
@@ -858,7 +858,7 @@ msgstr "Tuntematon artisti"
 msgid "Buffering"
 msgstr "Puskuroidaan"
 
-#: ../src/parole-player.c:2029 ../src/parole-player.c:3445
+#: ../src/parole-player.c:2029 ../src/parole-player.c:3433
 msgid "Fullscreen"
 msgstr "Koko näyttö"
 
@@ -908,7 +908,7 @@ msgstr "Vaimenna"
 msgid "Unmute"
 msgstr "Palauta ääni"
 
-#: ../src/parole-player.c:2809 ../src/parole-player.c:2827
+#: ../src/parole-player.c:2809
 msgid "Unable to open default web browser"
 msgstr "Oletusselaimen avaaminen epäonnistui"
 
@@ -916,35 +916,29 @@ msgstr "Oletusselaimen avaaminen epäonnistui"
 msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr "Ilmoita vioista ja ongelmista osoitteeseen http://docs.xfce.org/apps/parole/bugs."
 
-#: ../src/parole-player.c:2829
-msgid ""
-"Please go to http://docs.xfce.org/apps/parole/start to read Parole's online "
-"documentation."
-msgstr "Mene osoitteeseen http://docs.xfce.org/apps/parole/start lukeaksesi Parolen dokumentaatiota verkossa."
-
-#: ../src/parole-player.c:2853
+#: ../src/parole-player.c:2841
 msgid "Go"
 msgstr "Siirry"
 
-#: ../src/parole-player.c:2866
+#: ../src/parole-player.c:2854
 msgid "Position:"
 msgstr "Sijainti:"
 
 #. Clear Recent Menu Item
-#: ../src/parole-player.c:3303
+#: ../src/parole-player.c:3291
 msgid "_Clear recent items…"
 msgstr "_Tyhjennä viimeisimmät kohteet"
 
-#: ../src/parole-player.c:3640
+#: ../src/parole-player.c:3628
 msgid "Audio Track:"
 msgstr "Ääniraita:"
 
-#: ../src/parole-player.c:3659
+#: ../src/parole-player.c:3647
 msgid "Subtitles:"
 msgstr "Tekstitys:"
 
 #. Add a close button to the Infobar
-#: ../src/parole-player.c:3665 ../src/plugins/tray/tray-provider.c:273
+#: ../src/parole-player.c:3653 ../src/plugins/tray/tray-provider.c:273
 msgid "Close"
 msgstr "Sulje"
 
