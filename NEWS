@@ -1,3 +1,17 @@
+0.8.0
+======
+- Increased required intltool version (0.35) (Bug 11180)
+- Use libxfce4ui's versioned help call for the documentation
+- Bugs Fixed
+  - Fallback to GStreamer 0.10 at build time if 1.0 is not available (Bug 11053)
+  - Fix build with GStreamer 0.10 (Bug 11052)
+  - Show preview text in the font selection dialog (Bug 11425)
+  - Clear startup notification when already running (Bug 11487)
+- Translation Updates: Arabic, Asturian, Bulgarian, Chinese (China), Croatian,
+  Czech, Danish, Dutch, English (Australia), Finnish, French, German, Hungarian,
+  Italian, Korean, Malay, Norwegian Bokmal, Polish, Portuguese,
+  Portuguese (Brazilian), Russian, Serbian, Spanish, Thai, Turkish, Ukrainian
+
 0.7.0 (Development Release)
 ======
 - New Features
