@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-12-09 06:30+0100\n"
-"PO-Revision-Date: 2015-03-13 15:30+0000\n"
+"PO-Revision-Date: 2015-03-16 17:27+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/projects/p/xfce-apps/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -74,11 +74,11 @@ msgstr "Pereiti į laiką"
 
 #: ../data/interfaces/parole.ui.h:13
 msgid "_DVD"
-msgstr ""
+msgstr "_DVD"
 
 #: ../data/interfaces/parole.ui.h:14
 msgid "_DVD Menu"
-msgstr ""
+msgstr "_DVD Meniu"
 
 #: ../data/interfaces/parole.ui.h:15
 msgid "_Title Menu"
@@ -203,7 +203,7 @@ msgstr "_Apie"
 
 #: ../data/interfaces/parole.ui.h:45
 msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
-msgstr ""
+msgstr "<span color='#F4F4F4'><b><big>Nežinoma Daina</big></b></span>"
 
 #: ../data/interfaces/parole.ui.h:46
 msgid ""
@@ -219,12 +219,12 @@ msgstr ""
 
 #: ../data/interfaces/parole.ui.h:48
 msgid "0:00"
-msgstr ""
+msgstr "0:00"
 
 #: ../data/interfaces/parole.ui.h:50
 #, no-c-format
 msgid "Buffering (0%)"
-msgstr ""
+msgstr "Buferizacija (0%)"
 
 #: ../data/interfaces/mediachooser.ui.h:1
 msgid "Open Media Files"
@@ -319,11 +319,11 @@ msgstr "Aplankyti tinklalapį"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "X Window System (X11/XShm/Xv)"
-msgstr ""
+msgstr "X Langų Sistema (X11/XShm/Xv)"
 
 #: ../data/interfaces/parole-settings.ui.h:2
 msgid "X Window System (No Xv)"
-msgstr ""
+msgstr "X Langų Sistema (Be Xv)"
 
 #: ../data/interfaces/parole-settings.ui.h:3
 msgid "Parole Settings"
@@ -355,7 +355,7 @@ msgstr "<b>Garso Įrašų Vizualizavimas</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:10
 msgid "Enable keyboard multimedia keys"
-msgstr ""
+msgstr "Įjungti multimedinius klaviatūros klavišus"
 
 #: ../data/interfaces/parole-settings.ui.h:11
 msgid "<b>Keyboard</b>"
@@ -367,7 +367,7 @@ msgstr "Bendra"
 
 #: ../data/interfaces/parole-settings.ui.h:13
 msgid "Please restart Parole for this change to take effect."
-msgstr ""
+msgstr "Prašome paleisti Parole iš naujo, kad įsigaliotų šis pakeitimas."
 
 #: ../data/interfaces/parole-settings.ui.h:14
 msgid "<b>Video Output</b>"
@@ -407,7 +407,7 @@ msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:23
 msgid "Check and remove duplicate media entries"
-msgstr ""
+msgstr "Tikrinti ir šalinti besidubliuojančius medijos įrašus"
 
 #: ../data/interfaces/parole-settings.ui.h:24
 msgid "Start playing opened files"
@@ -419,7 +419,7 @@ msgstr "<b>Grojaraščio Nustatymai</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:28
 msgid "Automatically show subtitles when playing movie file"
-msgstr ""
+msgstr "Automatiškai rodyti subtitrus, grojant filmo failą"
 
 #: ../data/interfaces/parole-settings.ui.h:29
 msgid "Font:"
@@ -443,15 +443,15 @@ msgstr "Pagal plėtinį"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "Save Playlist as…"
-msgstr ""
+msgstr "Išsaugoti Grojaraštį kaip..."
 
 #: ../data/interfaces/save-playlist.ui.h:3
 msgid "File Type"
-msgstr ""
+msgstr "Failo Tipas"
 
 #: ../data/interfaces/save-playlist.ui.h:4
 msgid "Extension"
-msgstr ""
+msgstr "Plėtinys"
 
 #: ../data/interfaces/save-playlist.ui.h:5
 msgid "Select File Types (By Extension)"
@@ -459,19 +459,19 @@ msgstr "Pasirinkite failų tipus (pagal plėtinį)"
 
 #: ../data/interfaces/open-location.ui.h:1
 msgid "Open Network Location"
-msgstr ""
+msgstr "Atverti Vietą Tinkle"
 
 #: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:193
 msgid "Clear History"
-msgstr ""
+msgstr "Išvalyti Istoriją"
 
 #: ../data/interfaces/open-location.ui.h:3
 msgid "<big><b>Open Network Location</b></big>"
-msgstr ""
+msgstr "<big><b>Atverti Vietą Tinkle</b></big>"
 
 #: ../data/desktop/parole.desktop.in.in.h:2
 msgid "Play your media"
-msgstr ""
+msgstr "Grokite savo mediją"
 
 #: ../data/desktop/parole.desktop.in.in.h:3
 msgid "Play/Pause"
@@ -561,7 +561,7 @@ msgstr ""
 
 #: ../src/gst/parole-gst.c:1515
 msgid "Additional software is required."
-msgstr ""
+msgstr "Reikalinga papildoma programinė įranga."
 
 #: ../src/gst/parole-gst.c:1520
 msgid "Don't Install"
@@ -573,7 +573,7 @@ msgstr ""
 
 #: ../src/gst/parole-gst.c:1525
 msgid "OK"
-msgstr ""
+msgstr "Gerai"
 
 #: ../src/gst/parole-gst.c:1532
 #, c-format
@@ -615,7 +615,7 @@ msgstr ""
 #: ../src/gst/parole-gst.c:2213
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
-msgstr ""
+msgstr "Nepavyko įkelti \"%s\" įskiepio, patikrinkite savo GStreamer diegimą."
 
 #: ../src/gst/parole-gst.c:2837 ../src/gst/parole-gst.c:2843
 #, c-format
@@ -625,7 +625,7 @@ msgstr ""
 #: ../src/gst/parole-gst.c:2887 ../src/gst/parole-gst.c:2893
 #, c-format
 msgid "Subtitle #%d"
-msgstr ""
+msgstr "Subtitrai #%d"
 
 #: ../src/main.c:59
 #, c-format
@@ -802,7 +802,7 @@ msgstr "Atšaukti"
 
 #: ../src/parole-player.c:1024
 msgid "Open"
-msgstr ""
+msgstr "Atverti"
 
 #: ../src/parole-player.c:1040
 msgid "Subtitle Files"
@@ -1103,11 +1103,11 @@ msgstr "Vietnamiečių"
 #. If plugin loading fails...
 #: ../src/parole-plugins-manager.c:276
 msgid "Plugin failed to load"
-msgstr ""
+msgstr "Įskiepio įkėlimas nepavyko"
 
 #: ../src/parole-plugins-manager.c:276
 msgid "Please check your installation"
-msgstr ""
+msgstr "Prašome patikrinti savo diegimą"
 
 #: ../src/parole-plugins-manager.c:408
 msgid "No installed plugins found on this system"
@@ -1115,7 +1115,7 @@ msgstr "Sistemoj įdiegtų įskiepių nerasta"
 
 #: ../src/parole-plugins-manager.c:409
 msgid "Please check your installation."
-msgstr ""
+msgstr "Prašome patikrinti savo diegimą."
 
 #: ../src/misc/parole-filters.c:64
 msgid "Audio"
