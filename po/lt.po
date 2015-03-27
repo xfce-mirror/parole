@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-12-09 06:30+0100\n"
-"PO-Revision-Date: 2015-03-16 17:47+0000\n"
+"PO-Revision-Date: 2015-03-27 11:48+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/projects/p/xfce-apps/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -94,11 +94,11 @@ msgstr ""
 
 #: ../data/interfaces/parole.ui.h:18
 msgid "_Chapters"
-msgstr ""
+msgstr "_Skyriai"
 
 #: ../data/interfaces/parole.ui.h:19
 msgid "_Chapter Menu"
-msgstr ""
+msgstr "_Skyrių Meniu"
 
 #: ../data/interfaces/parole.ui.h:20
 msgid "_Audio"
@@ -238,7 +238,7 @@ msgstr "Grojaraštis"
 
 #: ../data/interfaces/playlist.ui.h:2
 msgid "Disc Playlist"
-msgstr ""
+msgstr "Disko Grojaraštis"
 
 #: ../data/interfaces/playlist.ui.h:3
 msgid "Add to playlist…"
@@ -475,7 +475,7 @@ msgstr "Grokite savo mediją"
 
 #: ../data/desktop/parole.desktop.in.in.h:3
 msgid "Play/Pause"
-msgstr ""
+msgstr "Groti/Pristabdyti"
 
 #: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3398
 #: ../src/plugins/notify/notify-provider.c:204
@@ -585,7 +585,7 @@ msgstr ""
 #: ../src/gst/parole-gst.c:1535
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
-msgstr ""
+msgstr "Parole reikia <b>%s</b>, kad groti šį failą."
 
 #: ../src/gst/parole-gst.c:1946
 msgid "The stream is taking too much time to load"
@@ -664,7 +664,7 @@ msgstr "Paleisti viso ekrano režimu"
 
 #: ../src/main.c:246
 msgid "Play or pause if already playing"
-msgstr "Jei jau atkuriama groti arba sustabdyti"
+msgstr "Groti arba pristabdyti, jei jau grojama"
 
 #: ../src/main.c:247
 msgid "Next track"
@@ -709,7 +709,7 @@ msgstr ""
 #: ../src/main.c:291
 #, c-format
 msgid "Type %s --help to list all available command line options\n"
-msgstr ""
+msgstr "Įveskite %s --help, norėdami pamatyti visas prieinamas komandų eilutės parinktis\n"
 
 #: ../src/main.c:306
 #, c-format
@@ -732,9 +732,9 @@ msgstr[2] "Grojaraštis (%i elementų)"
 #, c-format
 msgid "Playlist (%i chapter)"
 msgid_plural "Playlist (%i chapters)"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Grojaraštis (%i skyrius)"
+msgstr[1] "Grojaraštis (%i skyriai)"
+msgstr[2] "Grojaraštis (%i skyrių)"
 
 #: ../src/parole-medialist.c:409 ../src/parole-player.c:737
 #, c-format
