@@ -374,6 +374,7 @@ struct ParolePlayerPrivate
     GtkWidget          *dvd_menu;
     GtkWidget          *chapters_menu;
     GtkWidget          *goto_position;
+    gboolean            show_menubar;
 
     /* Media Controls */
     GtkWidget          *control;
@@ -2014,13 +2015,22 @@ parole_player_reset_controls (ParolePlayer *player, gboolean fullscreen)
     static gint current_page = 0;
 
     gboolean show_playlist;
+    gboolean always_hide_menubar = FALSE;
+
+    g_object_get (G_OBJECT (player->priv->conf),
+              "always-hide-menubar", &always_hide_menubar,
+              NULL);
 
     if ( player->priv->full_screen != fullscreen )
     {
         /* If the player is in fullscreen mode, change to windowed mode. */
         if ( player->priv->full_screen )
         {
-            gtk_widget_show (player->priv->menu_bar);
+            if (player->priv->show_menubar == TRUE)
+                gtk_widget_show (player->priv->menu_bar);
+            else if (always_hide_menubar == TRUE)
+                gtk_widget_hide (player->priv->menu_bar);
+
             show_playlist = g_simple_toggle_action_get_active (player->priv->toggle_playlist_action);
             gtk_widget_show (player->priv->playlist_nt);
             parole_player_set_playlist_visible(player, show_playlist);
@@ -2087,8 +2097,9 @@ void parole_player_fullscreen_action_cb (GSimpleAction *action)
 
 static void parole_player_hide_menubar_cb (GtkWidget *widget, ParolePlayer *player)
 {
+    player->priv->show_menubar = !gtk_widget_get_visible (player->priv->menu_bar);
     if (!player->priv->full_screen)
-        gtk_widget_set_visible(player->priv->menu_bar, !gtk_widget_get_visible(player->priv->menu_bar));
+        gtk_widget_set_visible (player->priv->menu_bar, player->priv->show_menubar);
 }
 
 static void
@@ -3162,6 +3173,7 @@ parole_player_init (ParolePlayer *player)
     gint w, h;
     gboolean maximized;
     gboolean showhide;
+    gboolean always_hide_menubar = FALSE;
     gint volume;
 
 
@@ -3331,6 +3343,8 @@ parole_player_init (ParolePlayer *player)
 
     g_signal_connect (gtk_builder_get_object (builder, "playback-menu"), "select",
             G_CALLBACK (parole_player_playback_menu_select_cb), player);
+
+    player->priv->show_menubar = TRUE;
     /* End Menu Bar */
 
 
@@ -3781,6 +3795,12 @@ parole_player_init (ParolePlayer *player)
         gtk_window_maximize(GTK_WINDOW (player->priv->window));
 
     gtk_widget_show_all (player->priv->window);
+
+    g_object_get (G_OBJECT (player->priv->conf),
+              "always-hide-menubar", &always_hide_menubar,
+              NULL);
+    if (always_hide_menubar == TRUE)
+        parole_player_hide_menubar_cb (NULL, player);
 
     parole_player_set_wm_opacity_hint (player->priv->window);
 }

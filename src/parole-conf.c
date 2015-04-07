@@ -81,6 +81,8 @@ enum
     PROP_WINDOW_MAXIMIZED,
     PROP_WINDOW_MINIMIZED,
     PROP_WINDOW_WIDTH,
+    PROP_HIDE_CONTROLS_TIMEOUT,
+    PROP_ALWAYS_HIDE_MENUBAR,
     N_PROP
 };
 
@@ -885,13 +887,28 @@ parole_conf_class_init (ParoleConfClass *klass)
      * Control the timeout for the playback controls to hide.
      **/
     g_object_class_install_property (object_class,
-                                     PROP_WINDOW_WIDTH,
+                                     PROP_HIDE_CONTROLS_TIMEOUT,
                                      g_param_spec_int ("hide-controls-timeout",
                                             "/hide-controls-timeout",
                                             NULL,
                                             1,
                                             G_MAXINT16,
                                             4,
+                                            G_PARAM_READWRITE));
+
+    /**
+     * ParoleConf:always-hide-menubar:
+     *
+     * Xfconf property: /always-hide-menubar
+     *
+     * Persistently hide the menubar.
+     **/
+    g_object_class_install_property (object_class,
+                                     PROP_ALWAYS_HIDE_MENUBAR,
+                                     g_param_spec_boolean ("always-hide-menubar",
+                                            "/always-hide-menubar",
+                                            NULL,
+                                            FALSE,
                                             G_PARAM_READWRITE));
 
 }
