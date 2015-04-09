@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-12-09 06:30+0100\n"
-"PO-Revision-Date: 2015-03-27 11:48+0000\n"
+"PO-Revision-Date: 2015-04-09 21:30+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/projects/p/xfce-apps/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -499,7 +499,7 @@ msgid ""
 "Parole features playback of local media files, including video with "
 "subtitles support, Audio CDs, DVDs, and live streams. Parole is also "
 "extensible via plugins."
-msgstr ""
+msgstr "Parole gali groti vietinius medija failus, įskaitant vaizdo įrašus su subtitrų palaikymu, garso įrašus, CD, DVD, bei tiesioginius srautinius siuntimus. Parole taip pat yra išplečiama per įskiepius."
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid ""
@@ -510,7 +510,7 @@ msgstr ""
 
 #: ../data/appdata/parole.appdata.xml.in.h:4
 msgid "This release fixes a problem with detecting DVD drive locations."
-msgstr ""
+msgstr "Ši laida ištaiso problemą, susijusią su DVD disko vietos aptikimu."
 
 #: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
@@ -525,7 +525,7 @@ msgstr ""
 msgid ""
 "This unstable development release features mostly bugfixes and introduces "
 "the new MPRIS2 plugin."
-msgstr ""
+msgstr "Šioje nestabilioje kūrimo laidoje yra ištaisytos klaidos ir pristatomas naujas MPRIS2 įskiepis."
 
 #: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
@@ -553,7 +553,7 @@ msgstr "Klaida"
 #: ../src/gst/parole-gst.c:1272 ../src/parole-medialist.c:393
 #, c-format
 msgid "Track %i"
-msgstr ""
+msgstr "Takelis %i"
 
 #: ../src/gst/parole-gst.c:1275
 msgid "Audio CD"
@@ -793,7 +793,7 @@ msgstr "Rodyti Grojaraštį"
 #. Build the FileChooser dialog for subtitle selection.
 #: ../src/parole-player.c:1016
 msgid "Select Subtitle File"
-msgstr ""
+msgstr "Pasirinkti Subtitrų Failą"
 
 #: ../src/parole-player.c:1021 ../src/parole-player.c:1225
 #: ../src/parole-player.c:2840 ../src/plugins/tray/tray-provider.c:338
@@ -953,7 +953,7 @@ msgstr "Aplankyti Parole svetainę"
 
 #: ../src/parole-conf-dialog.c:313
 msgid "Clutter (OpenGL)"
-msgstr ""
+msgstr "Clutter (OpenGL)"
 
 #: ../src/parole-disc.c:114
 msgid "Play Disc"
