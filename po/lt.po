@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-12-09 06:30+0100\n"
-"PO-Revision-Date: 2015-04-09 21:30+0000\n"
+"PO-Revision-Date: 2015-04-24 19:11+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/projects/p/xfce-apps/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -209,13 +209,13 @@ msgstr "<span color='#F4F4F4'><b><big>Nežinoma Daina</big></b></span>"
 msgid ""
 "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
 "Album</span></big>"
-msgstr ""
+msgstr "<big><span color='#BBBBBB'><i>iš</i></span> <span color='#F4F4F4'>Nežinomo Albumo</span></big>"
 
 #: ../data/interfaces/parole.ui.h:47
 msgid ""
 "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
 "Artist</span></big>"
-msgstr ""
+msgstr "<big><span color='#BBBBBB'><i>kurią atlieka</i></span> <span color='#F4F4F4'>Nežinomas Atlikėjas</span></big>"
 
 #: ../data/interfaces/parole.ui.h:48
 msgid "0:00"
@@ -282,7 +282,7 @@ msgstr "Perkelti Žemyn"
 
 #: ../data/interfaces/playlist.ui.h:13
 msgid "Replace playlist when opening files"
-msgstr "Pakeisti grojaraštį atvertiant failus"
+msgstr "Pakeisti grojaraštį atveriant failus"
 
 #: ../data/interfaces/playlist.ui.h:14
 msgid "Play opened files"
@@ -403,7 +403,7 @@ msgstr "Ekranas"
 
 #: ../data/interfaces/parole-settings.ui.h:22
 msgid "Always replace playlist with opened files"
-msgstr ""
+msgstr "Visuomet pakeisti grojaraštį atvertais failais"
 
 #: ../data/interfaces/parole-settings.ui.h:23
 msgid "Check and remove duplicate media entries"
@@ -557,7 +557,7 @@ msgstr "Takelis %i"
 
 #: ../src/gst/parole-gst.c:1275
 msgid "Audio CD"
-msgstr ""
+msgstr "Garso CD"
 
 #: ../src/gst/parole-gst.c:1515
 msgid "Additional software is required."
@@ -580,7 +580,7 @@ msgstr "Gerai"
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
-msgstr ""
+msgstr "Parole reikia <b>%s</b>, kad grotų šį failą.\nTai gali būti įdiegta automatiškai."
 
 #: ../src/gst/parole-gst.c:1535
 #, c-format
@@ -609,7 +609,7 @@ msgstr "GStreamer Klaida"
 
 #: ../src/gst/parole-gst.c:2134
 msgid "Parole Media Player cannot start."
-msgstr ""
+msgstr "Parole Medija Grotuvas negali būti paleistas."
 
 #: ../src/gst/parole-gst.c:2165 ../src/gst/parole-gst.c:2181
 #: ../src/gst/parole-gst.c:2213
@@ -620,7 +620,7 @@ msgstr "Nepavyko įkelti \"%s\" įskiepio, patikrinkite savo GStreamer diegimą.
 #: ../src/gst/parole-gst.c:2837 ../src/gst/parole-gst.c:2843
 #, c-format
 msgid "Audio Track #%d"
-msgstr ""
+msgstr "Garso Takelis #%d"
 
 #: ../src/gst/parole-gst.c:2887 ../src/gst/parole-gst.c:2893
 #, c-format
@@ -739,7 +739,7 @@ msgstr[2] "Grojaraštis (%i skyrių)"
 #: ../src/parole-medialist.c:409 ../src/parole-player.c:737
 #, c-format
 msgid "Chapter %i"
-msgstr ""
+msgstr "Skyrius %i"
 
 #: ../src/parole-medialist.c:698
 msgid "Permission denied"
@@ -841,7 +841,7 @@ msgstr "Nežinoma Daina"
 #: ../src/parole-player.c:1868 ../src/parole-player.c:1870
 #: ../src/parole-player.c:1876
 msgid "on"
-msgstr ""
+msgstr "iš"
 
 #: ../src/parole-player.c:1876 ../src/plugins/notify/notify-provider.c:145
 msgid "Unknown Album"
@@ -849,7 +849,7 @@ msgstr "Nežinomas Albumas"
 
 #: ../src/parole-player.c:1883 ../src/parole-player.c:1887
 msgid "by"
-msgstr ""
+msgstr "kurią atlieka"
 
 #: ../src/parole-player.c:1887 ../src/plugins/notify/notify-provider.c:147
 msgid "Unknown Artist"
@@ -884,12 +884,12 @@ msgstr "_Groti"
 #. * Previous item in playlist.
 #: ../src/parole-player.c:2123
 msgid "_Previous"
-msgstr ""
+msgstr "_Kitas"
 
 #. * Next item in playlist.
 #: ../src/parole-player.c:2132
 msgid "_Next"
-msgstr ""
+msgstr "_Ankstesnis"
 
 #. * Un/Full screen
 #: ../src/parole-player.c:2141
@@ -919,7 +919,7 @@ msgstr "Norint pranešti apie klaidą, prašome apsilankyti http://docs.xfce.org
 
 #: ../src/parole-player.c:2841
 msgid "Go"
-msgstr ""
+msgstr "Eiti"
 
 #: ../src/parole-player.c:2854
 msgid "Position:"
@@ -932,7 +932,7 @@ msgstr "_Išvalyti vėliausius elementus..."
 
 #: ../src/parole-player.c:3628
 msgid "Audio Track:"
-msgstr ""
+msgstr "Garso Takelis:"
 
 #: ../src/parole-player.c:3647
 msgid "Subtitles:"
@@ -1140,16 +1140,16 @@ msgstr "Grojaraščio failai"
 #: ../src/plugins/notify/notify-provider.c:150
 #: ../src/plugins/notify/notify-provider.c:153
 msgid "<i>on</i>"
-msgstr ""
+msgstr "<i>iš</i>"
 
 #: ../src/plugins/notify/notify-provider.c:150
 #: ../src/plugins/notify/notify-provider.c:153
 msgid "<i>by</i>"
-msgstr ""
+msgstr "<i>kurią atlieka</i>"
 
 #: ../src/plugins/notify/notify.desktop.in.h:1
 msgid "Notify"
-msgstr ""
+msgstr "Rodyti pranešimus"
 
 #: ../src/plugins/notify/notify.desktop.in.h:2
 msgid "Show notifications for currently playing tracks"
