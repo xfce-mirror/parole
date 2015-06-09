@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-12-09 06:30+0100\n"
-"PO-Revision-Date: 2015-04-24 19:11+0000\n"
+"PO-Revision-Date: 2015-06-09 20:13+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/projects/p/xfce-apps/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -82,15 +82,15 @@ msgstr "_DVD Meniu"
 
 #: ../data/interfaces/parole.ui.h:15
 msgid "_Title Menu"
-msgstr ""
+msgstr "_Antraščių Meniu"
 
 #: ../data/interfaces/parole.ui.h:16
 msgid "_Audio Menu"
-msgstr ""
+msgstr "_Garso Meniu"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "A_ngle Menu"
-msgstr ""
+msgstr "Ka_mpų Meniu"
 
 #: ../data/interfaces/parole.ui.h:18
 msgid "_Chapters"
@@ -492,7 +492,7 @@ msgid ""
 "Parole is a modern simple media player based on the GStreamer framework and "
 "written to fit well in the Xfce desktop. It is designed with simplicity, "
 "speed and resource usage in mind."
-msgstr ""
+msgstr "Parole yra šiuolaikinis paprastas medijos grotuvas, pagrįstas GStreamer karkasu ir sukurtas taip, kad pritaptų prie Xfce darbalaukio. Jis sukurtas, turint omenyje paprastumą, greitį ir išteklių naudojimą."
 
 #: ../data/appdata/parole.appdata.xml.in.h:2
 msgid ""
@@ -506,7 +506,7 @@ msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
-msgstr ""
+msgstr "Ši nestabili laida prideda naują clutter vidinę pusę bei išvalo nebereikalingus Gtk3 simbolius. Taip pat joje pridedama ypatybė \"Pereiti į laiką\" bei ištaisytos kelios klaidos."
 
 #: ../data/appdata/parole.appdata.xml.in.h:4
 msgid "This release fixes a problem with detecting DVD drive locations."
@@ -519,7 +519,7 @@ msgid ""
 "playlists. Furthermore existing plugins have been improved and a new one has"
 " been added (MPRIS2). Most of the artwork has been updated for this release "
 "and we use the GStreamer1.0 framework now by default."
-msgstr ""
+msgstr "Ši laida pasižymi užbaigtu perėjimu prie Gtk+3 įrankinės, patobulinimais naudotojo sąsajoje (labiau tiesmukiški meniu), geresniais grojaraščiais. Be to, buvo patobulinti esami įskiepiai ir pridėtas vienas naujas įskiepis (MPRIS2). Didžioji apipavidalinimų dalis buvo atnaujinta ir dabar, pagal numatymą, mes naudojame GStreamer1.0 karkasą."
 
 #: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
@@ -532,7 +532,7 @@ msgid ""
 "This is a bugfix release which fixes the loading of playlists with relative "
 "paths, improves the file-filters for audio/video mimetypes and fixes the "
 "\"Remove duplicates\" functionality."
-msgstr ""
+msgstr "Tai yra klaidų taisymo laida, kuri ištaiso grojaraščių su santykiniais keliais, įkėlimą, patobulina garso/vaizdo mime tipų failų filtravimą ir ištaiso \"Šalinti dublikatus\" funkcionalumą."
 
 #: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
@@ -540,7 +540,7 @@ msgid ""
 "toolkit, improvements in the user-interface (more streamlined menus), better"
 " playlists. It also brings updated artwork, GStreamer1.0 support, improved "
 "plugins and the occasional bugfix."
-msgstr ""
+msgstr "Ši nestabili kūrimo laida pasižymi pilnu perėjimu prie Gtk+3 įrankinės, patobulinimais naudotojo sąsajoje (labiau tiesmukiški meniu), geresniais grojaraščiais. Joje taip pat yra atnaujinti apipavidalinimai, GStreamer1.0 palaikymas, patobulinti įskiepiai ir ištaisytos kelios klaidos."
 
 #: ../src/common/parole-common.c:88
 msgid "Message"
@@ -688,7 +688,7 @@ msgstr "Nutildyti"
 
 #: ../src/main.c:252
 msgid "Unmute (restore) volume"
-msgstr ""
+msgstr "Įjungti (atkurti) garsį"
 
 #: ../src/main.c:253
 msgid "Add files to playlist"
@@ -704,7 +704,7 @@ msgstr "Medija atkūrimui"
 
 #: ../src/main.c:279
 msgid "[FILES...] - Play movies and songs"
-msgstr ""
+msgstr "[FAILAI...] - Groti filmus ir dainas"
 
 #: ../src/main.c:291
 #, c-format
