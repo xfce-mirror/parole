@@ -5,15 +5,15 @@
 # Translators:
 # Georg Eckert <eckert.georg@gmx.de>, 2013-2014
 # Mario Blättermann <mariobl@gnome.org>, 2009
-# Markus Hentsch, 2013
-# Tobias Bannert, 2014
+# Markus, 2013
+# Tobias Bannert <tobannert@gmail.com>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-04 18:30+0200\n"
-"PO-Revision-Date: 2014-07-14 14:59+0000\n"
-"Last-Translator: Tobias Bannert\n"
+"POT-Creation-Date: 2014-12-09 06:30+0100\n"
+"PO-Revision-Date: 2015-07-01 15:25+0000\n"
+"Last-Translator: Tobias Bannert <tobannert@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/xfce-apps/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -70,7 +70,7 @@ msgid "_Shuffle"
 msgstr "_Zufallsmodus"
 
 #. Create dialog
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2849
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2837
 msgid "Go to position"
 msgstr "Zu Position gehen"
 
@@ -234,7 +234,7 @@ msgstr "Mediendateien öffnen"
 
 #: ../data/interfaces/playlist.ui.h:1
 #: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:806
-#: ../src/parole-medialist.c:849 ../src/parole-player.c:3262
+#: ../src/parole-medialist.c:849 ../src/parole-player.c:3250
 msgid "Playlist"
 msgstr "Wiedergabeliste"
 
@@ -479,12 +479,12 @@ msgstr "Medien wiedergaben"
 msgid "Play/Pause"
 msgstr "Abspielen/Pause"
 
-#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3410
+#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3398
 #: ../src/plugins/notify/notify-provider.c:204
 msgid "Previous Track"
 msgstr "Vorheriger Titel"
 
-#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3428
+#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3416
 #: ../src/plugins/notify/notify-provider.c:217
 msgid "Next Track"
 msgstr "Nachfolgender Titel"
@@ -786,7 +786,7 @@ msgstr "Beinhaltenden Ordner öffnen"
 msgid "Hide Playlist"
 msgstr "Wiedergabeliste verstecken"
 
-#: ../src/parole-player.c:534 ../src/parole-player.c:3470
+#: ../src/parole-player.c:534 ../src/parole-player.c:3458
 msgid "Show Playlist"
 msgstr "Wiedergabeliste anzeigen"
 
@@ -796,7 +796,7 @@ msgid "Select Subtitle File"
 msgstr "Untertiteldatei auswählen"
 
 #: ../src/parole-player.c:1021 ../src/parole-player.c:1225
-#: ../src/parole-player.c:2852 ../src/plugins/tray/tray-provider.c:338
+#: ../src/parole-player.c:2840 ../src/plugins/tray/tray-provider.c:338
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -859,7 +859,7 @@ msgstr "Unbekanntem Künstler"
 msgid "Buffering"
 msgstr "Puffervorgang"
 
-#: ../src/parole-player.c:2029 ../src/parole-player.c:3445
+#: ../src/parole-player.c:2029 ../src/parole-player.c:3433
 msgid "Fullscreen"
 msgstr "Vollbild"
 
@@ -909,7 +909,7 @@ msgstr "Stumm"
 msgid "Unmute"
 msgstr "Laut"
 
-#: ../src/parole-player.c:2809 ../src/parole-player.c:2827
+#: ../src/parole-player.c:2809
 msgid "Unable to open default web browser"
 msgstr "Der vorgegebene Netznavigator konnte nicht geöffnet werden"
 
@@ -917,41 +917,35 @@ msgstr "Der vorgegebene Netznavigator konnte nicht geöffnet werden"
 msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr "Bitte besuchen Sie http://docs.xfce.org/apps/parole/bugs um den Fehler zu melden."
 
-#: ../src/parole-player.c:2829
-msgid ""
-"Please go to http://docs.xfce.org/apps/parole/start to read Parole's online "
-"documentation."
-msgstr "Bitte folgende Seite aufrufen, um die Parole online Dokumentation zu lesen. http://docs.xfce.org/apps/parole/start"
-
-#: ../src/parole-player.c:2853
+#: ../src/parole-player.c:2841
 msgid "Go"
 msgstr "Gehen zu"
 
-#: ../src/parole-player.c:2866
+#: ../src/parole-player.c:2854
 msgid "Position:"
 msgstr "Position:"
 
 #. Clear Recent Menu Item
-#: ../src/parole-player.c:3303
+#: ../src/parole-player.c:3291
 msgid "_Clear recent items…"
 msgstr "_Zuletzt geöffnete Dateien leeren"
 
-#: ../src/parole-player.c:3640
+#: ../src/parole-player.c:3628
 msgid "Audio Track:"
 msgstr "Tonspur:"
 
-#: ../src/parole-player.c:3659
+#: ../src/parole-player.c:3647
 msgid "Subtitles:"
 msgstr "Untertitel:"
 
 #. Add a close button to the Infobar
-#: ../src/parole-player.c:3665 ../src/plugins/tray/tray-provider.c:273
+#: ../src/parole-player.c:3653 ../src/plugins/tray/tray-provider.c:273
 msgid "Close"
 msgstr "Schließen"
 
 #: ../src/parole-about.c:76
 msgid "translator-credits"
-msgstr "Mario Blättermann <mario.blaettermann@gmail.com>\n\r\nChristoph Wickert <cwickert@fedoraproject.org>"
+msgstr "Christoph Wickert\nGeorg Eckert\nMario Blättermann\nMarkus Hentsch\nTobias Bannert"
 
 #: ../src/parole-about.c:79
 msgid "Visit Parole website"
