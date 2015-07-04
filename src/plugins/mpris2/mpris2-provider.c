@@ -1035,6 +1035,9 @@ mpris2_provider_set_player (ParoleProviderPlugin *plugin, ParoleProviderPlayer *
     g_signal_connect (provider->conf, "notify::repeat",
                       G_CALLBACK (conf_changed_cb), plugin);
                       
+    g_signal_connect (provider->conf, "notify::shuffle",
+                      G_CALLBACK (conf_changed_cb), plugin);
+
     g_signal_connect (provider->conf, "notify::volume",
                       G_CALLBACK (conf_changed_cb), plugin);
                       
