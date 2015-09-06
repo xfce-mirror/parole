@@ -4062,7 +4062,7 @@ static gboolean parole_player_dbus_lower_volume (ParolePlayer *player,
 static gboolean parole_player_dbus_mute (ParolePlayer *player,
                                          GError *error)
 {
-    if (!gtk_scale_button_get_value (GTK_SCALE_BUTTON (player->priv->volume)) == 0.0)
+    if (gtk_scale_button_get_value (GTK_SCALE_BUTTON (player->priv->volume)) != 0.0)
     {
         parole_player_volume_mute(NULL, player);
     }
