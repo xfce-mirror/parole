@@ -12,5 +12,5 @@ EXTRA_DIST =					\
 CLEANFILES =					\
 	$(appdata_DATA)
 
-check:
+check-appdata:
 	appstream-util validate-relax --nonet parole.appdata.xml
