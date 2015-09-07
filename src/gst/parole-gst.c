@@ -2623,11 +2623,19 @@ void parole_gst_terminate (ParoleGst *gst)
 
 void parole_gst_shutdown (ParoleGst *gst)
 {
-    if ( g_signal_handler_is_connected (gst->priv->playbin, gst->priv->sig1) )
-        g_signal_handler_disconnect (gst->priv->playbin, gst->priv->sig1);
+    /**
+     * FIXME: See https://bugzilla.xfce.org/show_bug.cgi?id=12169
+     * Seems to be some last-second threading issues. When parole is closed,
+     * these signals are disconnected before the process ends. With recent
+     * library versions, parole crashes at this point. Since the signals will
+     * be disconnected when everything stops, should not be necessary to
+     * disconnect these signals manually.
+        if ( g_signal_handler_is_connected (gst->priv->playbin, gst->priv->sig1) )
+            g_signal_handler_disconnect (gst->priv->playbin, gst->priv->sig1);
 
-    if ( g_signal_handler_is_connected (gst->priv->playbin, gst->priv->sig2) )
-        g_signal_handler_disconnect (gst->priv->playbin, gst->priv->sig2);
+        if ( g_signal_handler_is_connected (gst->priv->playbin, gst->priv->sig2) )
+            g_signal_handler_disconnect (gst->priv->playbin, gst->priv->sig2);
+    */
 
     if ( gst->priv->bus )
         g_object_unref (gst->priv->bus);
