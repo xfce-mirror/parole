@@ -4,15 +4,15 @@
 # 
 # Translators:
 # Theppitak Karoonboonyanan <thep@linux.thai.net>, 2014
-# Theppitak Karoonboonyanan <theppitak@gmail.com>, 2014
+# Theppitak Karoonboonyanan <theppitak@gmail.com>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-04 18:30+0200\n"
-"PO-Revision-Date: 2014-07-19 08:17+0000\n"
+"POT-Creation-Date: 2015-09-07 18:30+0200\n"
+"PO-Revision-Date: 2015-09-28 05:00+0000\n"
 "Last-Translator: Theppitak Karoonboonyanan <theppitak@gmail.com>\n"
-"Language-Team: Thai (http://www.transifex.com/projects/p/xfce-apps/language/th/)\n"
+"Language-Team: Thai (http://www.transifex.com/xfce/xfce-apps/language/th/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../data/interfaces/parole.ui.h:1 ../data/desktop/parole.desktop.in.in.h:1
-#: ../src/parole-player.c:604 ../src/parole-player.c:1514
+#: ../src/parole-player.c:605 ../src/parole-player.c:1515
 #: ../src/parole-about.c:70 ../src/plugins/mpris2/mpris2-provider.c:199
 msgid "Parole Media Player"
 msgstr "เครื่องมือเล่นสื่อ Parole"
@@ -68,7 +68,7 @@ msgid "_Shuffle"
 msgstr "สุ่_มลำดับ"
 
 #. Create dialog
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2849
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2848
 msgid "Go to position"
 msgstr "ไปที่ตำแหน่งเล่น"
 
@@ -108,7 +108,7 @@ msgstr "เสีย_ง"
 msgid "_Audio Track"
 msgstr "ร่องเ_สียง"
 
-#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:830
+#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:831
 msgid "Empty"
 msgstr "ว่างเปล่า"
 
@@ -128,8 +128,8 @@ msgstr "ปิ_ดเสียง"
 msgid "_Video"
 msgstr "วีดิ_ทัศน์"
 
-#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2028
-#: ../src/parole-player.c:2141
+#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2038
+#: ../src/parole-player.c:2152
 msgid "_Fullscreen"
 msgstr "เ_ต็มจอ"
 
@@ -137,7 +137,7 @@ msgstr "เ_ต็มจอ"
 msgid "_Aspect Ratio"
 msgstr "_สัดส่วนภาพ"
 
-#: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:758
+#: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:759
 msgid "None"
 msgstr "ไม่มี"
 
@@ -477,12 +477,12 @@ msgstr "เล่นสื่อของคุณ"
 msgid "Play/Pause"
 msgstr "เล่น/พัก"
 
-#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3410
+#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3412
 #: ../src/plugins/notify/notify-provider.c:204
 msgid "Previous Track"
 msgstr "ร่องก่อนหน้า"
 
-#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3428
+#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3430
 #: ../src/plugins/notify/notify-provider.c:217
 msgid "Next Track"
 msgstr "ร่องถัดไป"
@@ -503,16 +503,22 @@ msgstr "Parole รองรับการเล่นแฟ้มสื่อ�
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid ""
+"This release improves the build process and includes several bug fixes. This"
+" new stable release is a recommended upgrade for all users."
+msgstr "รุ่นนี้มีการปรับปรุงกระบวนการประกอบสร้างและมีการแก้บั๊กหลายรายการ ขอแนะนำให้ผู้ใช้ทุกท่านอัปเกรดเป็นรุ่นเสถียรรุ่นใหม่นี้"
+
+#: ../data/appdata/parole.appdata.xml.in.h:4
+msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
 msgstr "รุ่นพัฒนาที่ไม่เสถียรรุ่นนี้ได้เพิ่มแบ็กเอนด์ clutter และได้กำจัดการใช้ฟังก์ชันที่ไม่แนะนำให้ใช้แล้วของ Gtk3 ออกไป นอกจากนี้ยังได้เพิ่มความสามารถเรื่อง \"ไปที่ตำแหน่งเล่น\" และมีการแก้บั๊กอีกหลายรายการ"
 
-#: ../data/appdata/parole.appdata.xml.in.h:4
+#: ../data/appdata/parole.appdata.xml.in.h:5
 msgid "This release fixes a problem with detecting DVD drive locations."
 msgstr "รุ่นนี้แก้ปัญหาการตรวจหาตำแหน่งของไดรว์ดีวีดี"
 
-#: ../data/appdata/parole.appdata.xml.in.h:5
+#: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
 "This release features the completed transition to the Gtk+3 toolkit, "
 "improvements in the user-interface (more streamlined menus), better "
@@ -521,20 +527,20 @@ msgid ""
 "and we use the GStreamer1.0 framework now by default."
 msgstr "รุ่นนี้ได้ย้ายไปยัง Gtk+3 อย่างสมบูรณ์, มีการปรับปรุงส่วนติดต่อผู้ใช้ (เมนูเป็นขั้นเป็นตอนมากขึ้น), มีผังเล่นที่ดีขึ้น นอกจากนี้ ปลั๊กอินที่มีก็ยังได้รับการปรับปรุง และมีการเพิ่มปลั๊กอินใหม่ (MPRIS2) งานศิลป์ต่างๆ ก็มีการปรับปรุงในรุ่นนี้ และเราเริ่มใช้กรอบงาน GStreamer1.0 โดยปริยายแล้ว"
 
-#: ../data/appdata/parole.appdata.xml.in.h:6
+#: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This unstable development release features mostly bugfixes and introduces "
 "the new MPRIS2 plugin."
 msgstr "รุ่นพัฒนาที่ไม่เสถียรรุ่นนี้เป็นการแก้บั๊กเสียส่วนใหญ่ และมีการเพิ่มปลั๊กอิน MPRIS2"
 
-#: ../data/appdata/parole.appdata.xml.in.h:7
+#: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
 "This is a bugfix release which fixes the loading of playlists with relative "
 "paths, improves the file-filters for audio/video mimetypes and fixes the "
 "\"Remove duplicates\" functionality."
 msgstr "นี่เป็นรุ่นแก้บั๊กซึ่งได้แก้ปัญหาการโหลดผังเล่นที่มีพาธสัมพัทธ์, ปรับปรุงตัวกรองแฟ้มสำหรับชนิด MIME ของเสียง/วีดิทัศน์, และแก้ปัญหาในเรื่อง \"ลบรายการที่ซ้ำ\""
 
-#: ../data/appdata/parole.appdata.xml.in.h:8
+#: ../data/appdata/parole.appdata.xml.in.h:9
 msgid ""
 "This unstable development release features the complete port to the Gtk+3 "
 "toolkit, improvements in the user-interface (more streamlined menus), better"
@@ -617,12 +623,12 @@ msgstr "เครื่องมือเล่นสื่อ Parole ไม่�
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
 msgstr "ไม่สามารถโหลดปลั๊กอิน \"%s\" ได้ กรุณาตรวจสอบการติดตั้ง GStreamer ของคุณ"
 
-#: ../src/gst/parole-gst.c:2837 ../src/gst/parole-gst.c:2843
+#: ../src/gst/parole-gst.c:2845 ../src/gst/parole-gst.c:2851
 #, c-format
 msgid "Audio Track #%d"
 msgstr "ร่องเสียง #%d"
 
-#: ../src/gst/parole-gst.c:2887 ../src/gst/parole-gst.c:2893
+#: ../src/gst/parole-gst.c:2895 ../src/gst/parole-gst.c:2901
 #, c-format
 msgid "Subtitle #%d"
 msgstr "บทบรรยาย #%d"
@@ -711,12 +717,12 @@ msgstr "[แฟ้ม...] - เล่นภาพยนตร์และเพ�
 msgid "Type %s --help to list all available command line options\n"
 msgstr "สั่ง %s --help เพื่อดูตัวเลือกทั้งหมดที่มีของบรรทัดคำสั่ง\n"
 
-#: ../src/main.c:306
+#: ../src/main.c:309
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole ทำงานอยู่ก่อนแล้ว ใช้ -i หากต้องการเปิดอินสแตนซ์ใหม่\n"
 
-#: ../src/parole-mediachooser.c:247 ../src/parole-player.c:1052
+#: ../src/parole-mediachooser.c:247 ../src/parole-player.c:1053
 msgid "All files"
 msgstr "ทุกแฟ้ม"
 
@@ -732,7 +738,7 @@ msgid "Playlist (%i chapter)"
 msgid_plural "Playlist (%i chapters)"
 msgstr[0] "ผังเล่น (%i ตอน)"
 
-#: ../src/parole-medialist.c:409 ../src/parole-player.c:737
+#: ../src/parole-medialist.c:409 ../src/parole-player.c:738
 #, c-format
 msgid "Chapter %i"
 msgstr "ตอนที่ %i"
@@ -778,152 +784,146 @@ msgstr "Shareable Playlist"
 msgid "Open Containing Folder"
 msgstr "เปิดโฟลเดอร์ที่บรรจุ"
 
-#: ../src/parole-player.c:534
+#: ../src/parole-player.c:535
 msgid "Hide Playlist"
 msgstr "ซ่อนผังเล่น"
 
-#: ../src/parole-player.c:534 ../src/parole-player.c:3470
+#: ../src/parole-player.c:535 ../src/parole-player.c:3472
 msgid "Show Playlist"
 msgstr "แสดงผังเล่น"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:1016
+#: ../src/parole-player.c:1017
 msgid "Select Subtitle File"
 msgstr "เลือกแฟ้มบทบรรยาย"
 
-#: ../src/parole-player.c:1021 ../src/parole-player.c:1225
-#: ../src/parole-player.c:2852 ../src/plugins/tray/tray-provider.c:338
+#: ../src/parole-player.c:1022 ../src/parole-player.c:1226
+#: ../src/parole-player.c:2851 ../src/plugins/tray/tray-provider.c:338
 msgid "Cancel"
 msgstr "ยกเลิก"
 
-#: ../src/parole-player.c:1024
+#: ../src/parole-player.c:1025
 msgid "Open"
 msgstr "เปิด"
 
-#: ../src/parole-player.c:1040
+#: ../src/parole-player.c:1041
 msgid "Subtitle Files"
 msgstr "แฟ้มบทบรรยาย"
 
-#: ../src/parole-player.c:1221 ../src/parole-player.c:1229
+#: ../src/parole-player.c:1222 ../src/parole-player.c:1230
 msgid "Clear Recent Items"
 msgstr "ล้างรายการล่าสุด"
 
-#: ../src/parole-player.c:1223
+#: ../src/parole-player.c:1224
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
 msgstr "คุณแน่ใจหรือไม่ว่าต้องการล้างประวัติรายการล่าสุดของคุณ? การลบนี้จะเรียกคืนอีกไม่ได้"
 
-#: ../src/parole-player.c:1322 ../src/parole-player.c:1460
+#: ../src/parole-player.c:1323 ../src/parole-player.c:1461
 msgid "Media stream is not seekable"
 msgstr "สตรีมของสื่อไม่สามารถเลื่อนตำแหน่งได้"
 
-#: ../src/parole-player.c:1333
+#: ../src/parole-player.c:1334
 msgid "Play"
 msgstr "เล่น"
 
-#: ../src/parole-player.c:1336
+#: ../src/parole-player.c:1337
 msgid "Pause"
 msgstr "พัก"
 
-#: ../src/parole-player.c:1832
+#: ../src/parole-player.c:1833
 msgid "GStreamer backend error"
 msgstr "ข้อผิดพลาดของแบกเอนด์ GStreamer"
 
-#: ../src/parole-player.c:1863
+#: ../src/parole-player.c:1864
 msgid "Unknown Song"
 msgstr "เพลงไม่ทราบชื่อ"
 
-#: ../src/parole-player.c:1868 ../src/parole-player.c:1870
-#: ../src/parole-player.c:1876
+#: ../src/parole-player.c:1869 ../src/parole-player.c:1871
+#: ../src/parole-player.c:1877
 msgid "on"
 msgstr "ใน"
 
-#: ../src/parole-player.c:1876 ../src/plugins/notify/notify-provider.c:145
+#: ../src/parole-player.c:1877 ../src/plugins/notify/notify-provider.c:145
 msgid "Unknown Album"
 msgstr "อัลบั้มไม่ทราบชื่อ"
 
-#: ../src/parole-player.c:1883 ../src/parole-player.c:1887
+#: ../src/parole-player.c:1884 ../src/parole-player.c:1888
 msgid "by"
 msgstr "โดย"
 
-#: ../src/parole-player.c:1887 ../src/plugins/notify/notify-provider.c:147
+#: ../src/parole-player.c:1888 ../src/plugins/notify/notify-provider.c:147
 msgid "Unknown Artist"
 msgstr "ศิลปินไม่ทราบชื่อ"
 
-#: ../src/parole-player.c:1921
+#: ../src/parole-player.c:1922
 msgid "Buffering"
 msgstr "กำลังทำบัฟเฟอร์"
 
-#: ../src/parole-player.c:2029 ../src/parole-player.c:3445
+#: ../src/parole-player.c:2039 ../src/parole-player.c:3447
 msgid "Fullscreen"
 msgstr "เต็มจอ"
 
-#: ../src/parole-player.c:2042
+#: ../src/parole-player.c:2052
 msgid "Leave _Fullscreen"
 msgstr "เลิกแสดงเ_ต็มจอ"
 
-#: ../src/parole-player.c:2043
+#: ../src/parole-player.c:2053
 msgid "Leave Fullscreen"
 msgstr "เลิกแสดงเต็มจอ"
 
 #. Play menu item
 #. * Play pause
-#: ../src/parole-player.c:2109 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2120 ../src/plugins/tray/tray-provider.c:130
 msgid "_Pause"
 msgstr "_พัก"
 
-#: ../src/parole-player.c:2109 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2120 ../src/plugins/tray/tray-provider.c:130
 msgid "_Play"
 msgstr "เ_ล่น"
 
 #. * Previous item in playlist.
-#: ../src/parole-player.c:2123
+#: ../src/parole-player.c:2134
 msgid "_Previous"
 msgstr "_ก่อนหน้า"
 
 #. * Next item in playlist.
-#: ../src/parole-player.c:2132
+#: ../src/parole-player.c:2143
 msgid "_Next"
 msgstr "_ถัดไป"
 
 #. * Un/Full screen
-#: ../src/parole-player.c:2141
+#: ../src/parole-player.c:2152
 msgid "_Leave Fullscreen"
 msgstr "เ_ลิกแสดงเต็มจอ"
 
 #. * Un/Hide menubar
-#: ../src/parole-player.c:2155
+#: ../src/parole-player.c:2166
 msgid "Show menubar"
 msgstr "แสดงแถบเมนู"
 
-#: ../src/parole-player.c:2415
+#: ../src/parole-player.c:2426
 msgid "Mute"
 msgstr "ปิดเสียง"
 
-#: ../src/parole-player.c:2420
+#: ../src/parole-player.c:2431
 msgid "Unmute"
 msgstr "เลิกปิดเสียง"
 
-#: ../src/parole-player.c:2809 ../src/parole-player.c:2827
+#: ../src/parole-player.c:2820
 msgid "Unable to open default web browser"
 msgstr "ไม่สามารถเปิดเว็บเบราว์เซอร์ปริยาย"
 
-#: ../src/parole-player.c:2811
+#: ../src/parole-player.c:2822
 msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr "กรุณาไปที่ http://docs.xfce.org/apps/parole/bugs เพื่อรายงานปัญหาของคุณ"
 
-#: ../src/parole-player.c:2829
-msgid ""
-"Please go to http://docs.xfce.org/apps/parole/start to read Parole's online "
-"documentation."
-msgstr "กรุณาไปที่ http://docs.xfce.org/apps/parole/start เพื่ออ่านเอกสารออนไลน์ของ Parole"
-
-#: ../src/parole-player.c:2853
+#: ../src/parole-player.c:2852
 msgid "Go"
 msgstr "ไป"
 
-#: ../src/parole-player.c:2866
+#: ../src/parole-player.c:2865
 msgid "Position:"
 msgstr "ตำแหน่งเล่น:"
 
@@ -932,16 +932,16 @@ msgstr "ตำแหน่งเล่น:"
 msgid "_Clear recent items…"
 msgstr "_ล้างรายการล่าสุด…"
 
-#: ../src/parole-player.c:3640
+#: ../src/parole-player.c:3642
 msgid "Audio Track:"
 msgstr "ร่องเสียง:"
 
-#: ../src/parole-player.c:3659
+#: ../src/parole-player.c:3661
 msgid "Subtitles:"
 msgstr "บทบรรยาย:"
 
 #. Add a close button to the Infobar
-#: ../src/parole-player.c:3665 ../src/plugins/tray/tray-provider.c:273
+#: ../src/parole-player.c:3667 ../src/plugins/tray/tray-provider.c:273
 msgid "Close"
 msgstr "ปิด"
 
