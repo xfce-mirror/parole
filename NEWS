@@ -1,3 +1,16 @@
+0.8.1
+=====
+- New hidden setting to persistently hide the menubar
+- Bugs Fixed
+  - MPRIS2 plugin: Add missing signal watch on shuffle property (Bug 12045)
+  - Fixed building in debug mode
+  - Fix crash on close that would happen in some systen configurations (Bug 12169)
+  - Make appdata validate (Bug 11653)
+- Translation Updates: Chinese (China), Chinese (Taiwan), English (Australia),
+  Finnish, French, Galician, German, Greek, Hebrew, Italian, Korean, Lithuanian,
+  Malay, Polish, Portuguese, Portuguese (Brazilian), Russian, Spanish, Swedish,
+  Thai, Ukrainian
+
 0.8.0
 ======
 - Increased required intltool version (0.35) (Bug 11180)
