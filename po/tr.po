@@ -5,7 +5,7 @@
 # Translators:
 # aybuke <aybuke.147@gmail.com>, 2013
 # Natavan Mirzayeva <mirzayevanatavan@gmail.com>, 2014
-# Necdet Yücel <necdetyucel@gmail.com>, 2013-2014
+# Necdet Yücel <necdetyucel@gmail.com>, 2013-2015
 # Redcode, 2013-2014
 # yakup <mutouk@yandex.ru>, 2013
 # zeki <zeki.ozguryazilim@gmail.com>, 2014
@@ -13,10 +13,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-09 06:30+0100\n"
-"PO-Revision-Date: 2014-12-13 00:43+0000\n"
-"Last-Translator: Natavan Mirzayeva <mirzayevanatavan@gmail.com>\n"
-"Language-Team: Turkish (http://www.transifex.com/projects/p/xfce-apps/language/tr/)\n"
+"POT-Creation-Date: 2015-09-07 18:30+0200\n"
+"PO-Revision-Date: 2015-12-06 20:30+0000\n"
+"Last-Translator: Necdet Yücel <necdetyucel@gmail.com>\n"
+"Language-Team: Turkish (http://www.transifex.com/xfce/xfce-apps/language/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../data/interfaces/parole.ui.h:1 ../data/desktop/parole.desktop.in.in.h:1
-#: ../src/parole-player.c:604 ../src/parole-player.c:1514
+#: ../src/parole-player.c:605 ../src/parole-player.c:1515
 #: ../src/parole-about.c:70 ../src/plugins/mpris2/mpris2-provider.c:199
 msgid "Parole Media Player"
 msgstr "Parole Ortam Oynatıcısı"
@@ -72,7 +72,7 @@ msgid "_Shuffle"
 msgstr "_Rastgele"
 
 #. Create dialog
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2837
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2848
 msgid "Go to position"
 msgstr "Konuma git"
 
@@ -112,7 +112,7 @@ msgstr "_Ses"
 msgid "_Audio Track"
 msgstr "_Ses Parçası"
 
-#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:830
+#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:831
 msgid "Empty"
 msgstr "Boş"
 
@@ -132,8 +132,8 @@ msgstr "Sessiz"
 msgid "_Video"
 msgstr "_Video"
 
-#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2028
-#: ../src/parole-player.c:2141
+#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2038
+#: ../src/parole-player.c:2152
 msgid "_Fullscreen"
 msgstr "_Tam Ekran"
 
@@ -141,7 +141,7 @@ msgstr "_Tam Ekran"
 msgid "_Aspect Ratio"
 msgstr "_Görüntü Oranı"
 
-#: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:758
+#: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:759
 msgid "None"
 msgstr "Hiç"
 
@@ -236,7 +236,7 @@ msgstr "Ortam dosyalarını aç"
 
 #: ../data/interfaces/playlist.ui.h:1
 #: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:806
-#: ../src/parole-medialist.c:849 ../src/parole-player.c:3250
+#: ../src/parole-medialist.c:849 ../src/parole-player.c:3262
 msgid "Playlist"
 msgstr "Oynatma listesi"
 
@@ -481,12 +481,12 @@ msgstr "Medya oynatıcınız"
 msgid "Play/Pause"
 msgstr "Oynat/Duraklat"
 
-#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3398
+#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3412
 #: ../src/plugins/notify/notify-provider.c:204
 msgid "Previous Track"
 msgstr "Önceki Parça"
 
-#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3416
+#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3430
 #: ../src/plugins/notify/notify-provider.c:217
 msgid "Next Track"
 msgstr "Sonraki Parça"
@@ -507,16 +507,22 @@ msgstr "Parole yerel medya dosyalarının oynatılmasının,altyazı desteği de
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid ""
+"This release improves the build process and includes several bug fixes. This"
+" new stable release is a recommended upgrade for all users."
+msgstr "Bu sürüm derleme sürecini iyileştirdiği gibi birçok hata düzeltmesi de içermektedir. Tüm kullanıcıların bu yeni kararlı sürüme yükseltme yapmaları önerilmektedir."
+
+#: ../data/appdata/parole.appdata.xml.in.h:4
+msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
 msgstr "Bu istikrarsız geliştirme sürümü yeni karışıklığı arka uça ekler ve önerilmeyen Gtk3 sembollerini temizler.Aynı zamanda \"go to position\" özelliği ekler ve başka hataları ele alır."
 
-#: ../data/appdata/parole.appdata.xml.in.h:4
+#: ../data/appdata/parole.appdata.xml.in.h:5
 msgid "This release fixes a problem with detecting DVD drive locations."
 msgstr "Bu sürüm DVD sürücüsü yerleri tespiti ile sorunu giderir."
 
-#: ../data/appdata/parole.appdata.xml.in.h:5
+#: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
 "This release features the completed transition to the Gtk+3 toolkit, "
 "improvements in the user-interface (more streamlined menus), better "
@@ -525,20 +531,20 @@ msgid ""
 "and we use the GStreamer1.0 framework now by default."
 msgstr "Bu sürümün özellikleri Gtk+3 aracına tamamlanmamış geçiş,kullanıcı arabirimindeki iyileştirmeler(daha akıcı menüler),daha iyi çalma listeleridir.Ayrıca mevcut eklentileri geliştirilmiştir ve  yeni bir (MPRIS2) eklentisi ilave edilmiştir.Çizimlerin çoğu bu sürüm için güncel edilmiştir ve biz şimdi varsayılan GStreamer1.0 yapısını kullanıyoruz."
 
-#: ../data/appdata/parole.appdata.xml.in.h:6
+#: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This unstable development release features mostly bugfixes and introduces "
 "the new MPRIS2 plugin."
 msgstr "Bu istikrarsız geliştirilmiş ürünün sürüm özellikleri çoğunlukla hata düzeltmeleri ve yeni MPRIS2 eklentisini tanıtır."
 
-#: ../data/appdata/parole.appdata.xml.in.h:7
+#: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
 "This is a bugfix release which fixes the loading of playlists with relative "
 "paths, improves the file-filters for audio/video mimetypes and fixes the "
 "\"Remove duplicates\" functionality."
 msgstr "Bu,bağlantı yolları ile çalma listeleri yüklenmesini gideren,audio-video  myme tipleri için dosya filtrelerini geliştiren ve \"Çiftleri kaldır\" işlevselliğini düzelten onarım özelliğidir."
 
-#: ../data/appdata/parole.appdata.xml.in.h:8
+#: ../data/appdata/parole.appdata.xml.in.h:9
 msgid ""
 "This unstable development release features the complete port to the Gtk+3 "
 "toolkit, improvements in the user-interface (more streamlined menus), better"
@@ -621,12 +627,12 @@ msgstr "Parole Ortam Oynatıcısı başlatılamıyor."
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
 msgstr "\"%s\" eklentisi yüklenemedi, GStreamer kurulumunuzu kontrol edin."
 
-#: ../src/gst/parole-gst.c:2837 ../src/gst/parole-gst.c:2843
+#: ../src/gst/parole-gst.c:2845 ../src/gst/parole-gst.c:2851
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Parça %i"
 
-#: ../src/gst/parole-gst.c:2887 ../src/gst/parole-gst.c:2893
+#: ../src/gst/parole-gst.c:2895 ../src/gst/parole-gst.c:2901
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Altyazı #%d"
@@ -715,12 +721,12 @@ msgstr "[DOSYALAR...] - Filmleri ve şarkıları oynat"
 msgid "Type %s --help to list all available command line options\n"
 msgstr "Kullanılabilir tüm komut satırı seçeneklerini listelemek için %s --help\n"
 
-#: ../src/main.c:306
+#: ../src/main.c:309
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole zaten çalışıyor, -i kullanarak yeni bir tane açabilirsiniz\n"
 
-#: ../src/parole-mediachooser.c:247 ../src/parole-player.c:1052
+#: ../src/parole-mediachooser.c:247 ../src/parole-player.c:1053
 msgid "All files"
 msgstr "Bütün dosyalar"
 
@@ -738,7 +744,7 @@ msgid_plural "Playlist (%i chapters)"
 msgstr[0] "Çalma Listesi(%i bölüm)"
 msgstr[1] "Çalma listesi (%i bölüm)"
 
-#: ../src/parole-medialist.c:409 ../src/parole-player.c:737
+#: ../src/parole-medialist.c:409 ../src/parole-player.c:738
 #, c-format
 msgid "Chapter %i"
 msgstr "Bölüm %i"
@@ -784,164 +790,164 @@ msgstr "Paylaşılabilir Oynatma Listesi"
 msgid "Open Containing Folder"
 msgstr "İçeren Dizini Aç"
 
-#: ../src/parole-player.c:534
+#: ../src/parole-player.c:535
 msgid "Hide Playlist"
 msgstr "Oynatma Listesini Gizle"
 
-#: ../src/parole-player.c:534 ../src/parole-player.c:3458
+#: ../src/parole-player.c:535 ../src/parole-player.c:3472
 msgid "Show Playlist"
 msgstr "Oynatma Listesini Göster"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:1016
+#: ../src/parole-player.c:1017
 msgid "Select Subtitle File"
 msgstr "Altyazı Dosyası Seç"
 
-#: ../src/parole-player.c:1021 ../src/parole-player.c:1225
-#: ../src/parole-player.c:2840 ../src/plugins/tray/tray-provider.c:338
+#: ../src/parole-player.c:1022 ../src/parole-player.c:1226
+#: ../src/parole-player.c:2851 ../src/plugins/tray/tray-provider.c:338
 msgid "Cancel"
 msgstr "İptal"
 
-#: ../src/parole-player.c:1024
+#: ../src/parole-player.c:1025
 msgid "Open"
 msgstr "Aç"
 
-#: ../src/parole-player.c:1040
+#: ../src/parole-player.c:1041
 msgid "Subtitle Files"
 msgstr "Altyazı Dosyaları"
 
-#: ../src/parole-player.c:1221 ../src/parole-player.c:1229
+#: ../src/parole-player.c:1222 ../src/parole-player.c:1230
 msgid "Clear Recent Items"
 msgstr "Son Oynatılanları Temizle"
 
-#: ../src/parole-player.c:1223
+#: ../src/parole-player.c:1224
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
 msgstr "Son oynatılanlar geçmişini temizlemek istediğinizden emin misiniz? Bu geri alınamaz."
 
-#: ../src/parole-player.c:1322 ../src/parole-player.c:1460
+#: ../src/parole-player.c:1323 ../src/parole-player.c:1461
 msgid "Media stream is not seekable"
 msgstr "Ortam yayını araştırılabilir değil"
 
-#: ../src/parole-player.c:1333
+#: ../src/parole-player.c:1334
 msgid "Play"
 msgstr "Oynat"
 
-#: ../src/parole-player.c:1336
+#: ../src/parole-player.c:1337
 msgid "Pause"
 msgstr "Duraklat"
 
-#: ../src/parole-player.c:1832
+#: ../src/parole-player.c:1833
 msgid "GStreamer backend error"
 msgstr "GStreamer arkauç hatası"
 
-#: ../src/parole-player.c:1863
+#: ../src/parole-player.c:1864
 msgid "Unknown Song"
 msgstr "Bilinmeyen Şarkı"
 
-#: ../src/parole-player.c:1868 ../src/parole-player.c:1870
-#: ../src/parole-player.c:1876
+#: ../src/parole-player.c:1869 ../src/parole-player.c:1871
+#: ../src/parole-player.c:1877
 msgid "on"
 msgstr "üzerinde"
 
-#: ../src/parole-player.c:1876 ../src/plugins/notify/notify-provider.c:145
+#: ../src/parole-player.c:1877 ../src/plugins/notify/notify-provider.c:145
 msgid "Unknown Album"
 msgstr "Bilinmeyen Albüm"
 
-#: ../src/parole-player.c:1883 ../src/parole-player.c:1887
+#: ../src/parole-player.c:1884 ../src/parole-player.c:1888
 msgid "by"
 msgstr "ile"
 
-#: ../src/parole-player.c:1887 ../src/plugins/notify/notify-provider.c:147
+#: ../src/parole-player.c:1888 ../src/plugins/notify/notify-provider.c:147
 msgid "Unknown Artist"
 msgstr "Bilinmeyen Sanatçı"
 
-#: ../src/parole-player.c:1921
+#: ../src/parole-player.c:1922
 msgid "Buffering"
 msgstr "Önbelleğe alınıyor"
 
-#: ../src/parole-player.c:2029 ../src/parole-player.c:3433
+#: ../src/parole-player.c:2039 ../src/parole-player.c:3447
 msgid "Fullscreen"
 msgstr "Tam ekran"
 
-#: ../src/parole-player.c:2042
+#: ../src/parole-player.c:2052
 msgid "Leave _Fullscreen"
 msgstr "Tam Ekrandan _Ayrıl"
 
-#: ../src/parole-player.c:2043
+#: ../src/parole-player.c:2053
 msgid "Leave Fullscreen"
 msgstr "Tam Ekrandan Ayrıl"
 
 #. Play menu item
 #. * Play pause
-#: ../src/parole-player.c:2109 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2120 ../src/plugins/tray/tray-provider.c:130
 msgid "_Pause"
 msgstr "_Duraklat"
 
-#: ../src/parole-player.c:2109 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2120 ../src/plugins/tray/tray-provider.c:130
 msgid "_Play"
 msgstr "_Oynat"
 
 #. * Previous item in playlist.
-#: ../src/parole-player.c:2123
+#: ../src/parole-player.c:2134
 msgid "_Previous"
 msgstr "_Önceki"
 
 #. * Next item in playlist.
-#: ../src/parole-player.c:2132
+#: ../src/parole-player.c:2143
 msgid "_Next"
 msgstr "_Sonraki"
 
 #. * Un/Full screen
-#: ../src/parole-player.c:2141
+#: ../src/parole-player.c:2152
 msgid "_Leave Fullscreen"
 msgstr "_Tam ekrandan ayrıl"
 
 #. * Un/Hide menubar
-#: ../src/parole-player.c:2155
+#: ../src/parole-player.c:2166
 msgid "Show menubar"
 msgstr "Menü çubuğunu göster"
 
-#: ../src/parole-player.c:2415
+#: ../src/parole-player.c:2426
 msgid "Mute"
 msgstr "Sessiz"
 
-#: ../src/parole-player.c:2420
+#: ../src/parole-player.c:2431
 msgid "Unmute"
 msgstr "Sesi aç"
 
-#: ../src/parole-player.c:2809
+#: ../src/parole-player.c:2820
 msgid "Unable to open default web browser"
 msgstr "varsayılan tarayıcı açılamadı"
 
-#: ../src/parole-player.c:2811
+#: ../src/parole-player.c:2822
 msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr "Hata bildirimi için lütfen http://docs.xfce.org/apps/parole/bugs adresine gidin."
 
-#: ../src/parole-player.c:2841
+#: ../src/parole-player.c:2852
 msgid "Go"
 msgstr "Git"
 
-#: ../src/parole-player.c:2854
+#: ../src/parole-player.c:2865
 msgid "Position:"
 msgstr "Konum:"
 
 #. Clear Recent Menu Item
-#: ../src/parole-player.c:3291
+#: ../src/parole-player.c:3303
 msgid "_Clear recent items…"
 msgstr "Güncel parçaları _temizle..."
 
-#: ../src/parole-player.c:3628
+#: ../src/parole-player.c:3642
 msgid "Audio Track:"
 msgstr "Ses izi:"
 
-#: ../src/parole-player.c:3647
+#: ../src/parole-player.c:3661
 msgid "Subtitles:"
 msgstr "Altyazılar:"
 
 #. Add a close button to the Infobar
-#: ../src/parole-player.c:3653 ../src/plugins/tray/tray-provider.c:273
+#: ../src/parole-player.c:3667 ../src/plugins/tray/tray-provider.c:273
 msgid "Close"
 msgstr "Kapat"
 
