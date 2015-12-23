@@ -1,27 +1,27 @@
-# Catalan translations for parole package
-# Traduccions al català del paquet «parole».
-# Copyright (C) 2009 THE parole'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the parole package.
-#
-# Carles Muñoz Gorriz <carlesmu@internautas.org>, 2009.
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Carles Muñoz Gorriz <carlesmu@internautas.org>, 2009
+# Davidmp <medipas@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: parole\n"
+"Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-20 11:45+0200\n"
-"PO-Revision-Date: 2011-08-11 17:49+0100\n"
-"Last-Translator: Pol Ruzafa <kiari62@gmail.com>\n"
-"Language-Team: Catalan\n"
-"Language: \n"
+"POT-Creation-Date: 2015-09-07 18:30+0200\n"
+"PO-Revision-Date: 2015-12-23 21:56+0000\n"
+"Last-Translator: Davidmp <medipas@gmail.com>\n"
+"Language-Team: Catalan (http://www.transifex.com/xfce/xfce-apps/language/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-Language: Catalan\n"
-"X-Poedit-SourceCharset: utf-8\n"
 
-#: ../data/interfaces/parole.ui.h:1 ../src/parole-about.c:89
+#: ../data/interfaces/parole.ui.h:1 ../data/desktop/parole.desktop.in.in.h:1
+#: ../src/parole-player.c:605 ../src/parole-player.c:1515
+#: ../src/parole-about.c:70 ../src/plugins/mpris2/mpris2-provider.c:199
 msgid "Parole Media Player"
 msgstr "Reproductor de suports Parole"
 
@@ -30,351 +30,610 @@ msgid "_Media"
 msgstr "_Suport"
 
 #: ../data/interfaces/parole.ui.h:3
-#, fuzzy
-msgid "Open _location"
-msgstr "_Obre una ubicació"
+msgid "_Open…"
+msgstr "_Obre..."
 
 #: ../data/interfaces/parole.ui.h:4
-msgid "_DVD"
-msgstr ""
+msgid "Open _Location…"
+msgstr "Obre _la ubicació..."
 
 #: ../data/interfaces/parole.ui.h:5
-msgid "From ISO image"
-msgstr "D'una imatge ISO"
+msgid "Open _Recent"
+msgstr "Obre el _recent"
 
 #: ../data/interfaces/parole.ui.h:6
-msgid "_Edit"
-msgstr "_Edita"
+msgid "_Save Playlist…"
+msgstr "_Desa la llista de reproducció..."
 
-#: ../data/interfaces/parole.ui.h:7
-#, fuzzy
-msgid "_Repeat"
-msgstr "Repetició"
+#: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:112
+#: ../src/parole-disc.c:154
+msgid "Insert Disc"
+msgstr "Insereix un disc"
 
-#: ../data/interfaces/parole.ui.h:8
-#, fuzzy
-msgid "_Shuffle"
-msgstr "Ordre aleatori"
+#. * Exit
+#: ../data/interfaces/parole.ui.h:8 ../src/plugins/tray/tray-provider.c:179
+msgid "_Quit"
+msgstr "S_urt"
 
 #: ../data/interfaces/parole.ui.h:9
-#, fuzzy
-msgid "Pl_ugins"
-msgstr "Connectors"
+msgid "_Playback"
+msgstr "Llista de re_producció"
 
 #: ../data/interfaces/parole.ui.h:10
-msgid "_View"
-msgstr "_Visualitza"
+msgid "_Repeat"
+msgstr "_Repetició"
 
 #: ../data/interfaces/parole.ui.h:11
-#, fuzzy
-msgid "Show _playlist"
-msgstr "Mostra la llista de reproducció"
+msgid "_Shuffle"
+msgstr "_Ordre aleatori"
 
-#: ../data/interfaces/parole.ui.h:12
-#, fuzzy
-msgid "_Aspect Ratio"
-msgstr "Relació d'aspecte"
+#. Create dialog
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2848
+msgid "Go to position"
+msgstr "Vés a la posició"
 
 #: ../data/interfaces/parole.ui.h:13
+msgid "_DVD"
+msgstr "_DVD"
+
+#: ../data/interfaces/parole.ui.h:14
+msgid "_DVD Menu"
+msgstr "Menú del _DVD"
+
+#: ../data/interfaces/parole.ui.h:15
+msgid "_Title Menu"
+msgstr "Menú del _títol"
+
+#: ../data/interfaces/parole.ui.h:16
+msgid "_Audio Menu"
+msgstr "Menú d'à_udio"
+
+#: ../data/interfaces/parole.ui.h:17
+msgid "A_ngle Menu"
+msgstr "Menú d'a_ngle"
+
+#: ../data/interfaces/parole.ui.h:18
+msgid "_Chapters"
+msgstr "_Capítols"
+
+#: ../data/interfaces/parole.ui.h:19
+msgid "_Chapter Menu"
+msgstr "Menú de _capítols"
+
+#: ../data/interfaces/parole.ui.h:20
+msgid "_Audio"
+msgstr "_Àudio"
+
+#: ../data/interfaces/parole.ui.h:21
+msgid "_Audio Track"
+msgstr "_Pista d'àudio"
+
+#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:831
+msgid "Empty"
+msgstr "Buit"
+
+#: ../data/interfaces/parole.ui.h:23
+msgid "Volume _Up"
+msgstr "Més vol_um"
+
+#: ../data/interfaces/parole.ui.h:24
+msgid "Volume _Down"
+msgstr "Men_ys volum"
+
+#: ../data/interfaces/parole.ui.h:25
+msgid "_Mute"
+msgstr "S_ilenci"
+
+#: ../data/interfaces/parole.ui.h:26
+msgid "_Video"
+msgstr "_Vídeo"
+
+#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2038
+#: ../src/parole-player.c:2152
+msgid "_Fullscreen"
+msgstr "_Pantalla completa"
+
+#: ../data/interfaces/parole.ui.h:28
+msgid "_Aspect Ratio"
+msgstr "Relació d'_aspecte"
+
+#: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:759
 msgid "None"
 msgstr "Cap"
 
-#: ../data/interfaces/parole.ui.h:14
+#: ../data/interfaces/parole.ui.h:30
 msgid "Auto"
 msgstr "Automàtic"
 
-#: ../data/interfaces/parole.ui.h:15
+#: ../data/interfaces/parole.ui.h:31
 msgid "Square"
 msgstr "Quadrat"
 
-#: ../data/interfaces/parole.ui.h:16
+#: ../data/interfaces/parole.ui.h:32
 msgid "4:3 (TV)"
 msgstr "4:3 (TV)"
 
-#: ../data/interfaces/parole.ui.h:17
+#: ../data/interfaces/parole.ui.h:33
 msgid "16:9 (Widescreen)"
 msgstr "16:9 (Pantalla ampla)"
 
-#: ../data/interfaces/parole.ui.h:18
+#: ../data/interfaces/parole.ui.h:34
 msgid "20:9 (DVB)"
 msgstr "20:9 (DVB)"
 
-#: ../data/interfaces/parole.ui.h:19
-msgid "Sound"
-msgstr "Só"
+#: ../data/interfaces/parole.ui.h:35
+msgid "_Subtitles"
+msgstr "_Subtítols"
 
-#: ../data/interfaces/parole.ui.h:20
-#, fuzzy
-msgid "_Mute"
-msgstr "Silenci"
+#: ../data/interfaces/parole.ui.h:36
+msgid "Select Text Subtitles…"
+msgstr "Seleccioneu el text dels subtítols..."
 
-#: ../data/interfaces/parole.ui.h:21
-#, fuzzy
-msgid "Volume _Up"
-msgstr "Més volum"
+#: ../data/interfaces/parole.ui.h:37
+msgid "_Tools"
+msgstr "_Eines"
 
-#: ../data/interfaces/parole.ui.h:22
-#, fuzzy
-msgid "Volume _Down"
-msgstr "Menys volum"
+#: ../data/interfaces/parole.ui.h:38
+msgid "P_lugins"
+msgstr "_Connectors"
 
-#: ../data/interfaces/parole.ui.h:23
+#: ../data/interfaces/parole.ui.h:39
+msgid "_Preferences"
+msgstr "_Preferències"
+
+#: ../data/interfaces/parole.ui.h:40
 msgid "_Help"
-msgstr "A_juda"
+msgstr "_Ajuda"
 
-#: ../data/interfaces/parole.ui.h:24
-#, fuzzy
-msgid "Audio Track:"
-msgstr "Pista anterior"
+#: ../data/interfaces/parole.ui.h:41
+msgid "_Report a Bug…"
+msgstr "Info_rmeu d'un error..."
 
-#: ../data/interfaces/parole.ui.h:25
-#, fuzzy
-msgid "Subtitles:"
-msgstr "<b>Subtítols</b>"
+#: ../data/interfaces/parole.ui.h:42
+msgid "Display Parole user manual"
+msgstr "Mostra el manual d'usuari del Parole"
 
-#: ../data/interfaces/parole.ui.h:26
+#: ../data/interfaces/parole.ui.h:43
+msgid "_Contents"
+msgstr "_Continguts"
+
+#: ../data/interfaces/parole.ui.h:44
+msgid "_About"
+msgstr "_Quant a"
+
+#: ../data/interfaces/parole.ui.h:45
+msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
+msgstr "<span color='#F4F4F4'><b><big>Cançó desconeguda</big></b></span>"
+
+#: ../data/interfaces/parole.ui.h:46
+msgid ""
+"<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
+"Album</span></big>"
+msgstr "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Àlbum desconegut</span></big>"
+
+#: ../data/interfaces/parole.ui.h:47
+msgid ""
+"<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
+"Artist</span></big>"
+msgstr "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Artista desconegut</span></big>"
+
+#: ../data/interfaces/parole.ui.h:48
 msgid "0:00"
-msgstr ""
+msgstr "0:00"
 
-#: ../data/interfaces/parole.ui.h:28
-#, fuzzy, no-c-format
+#: ../data/interfaces/parole.ui.h:50
+#, no-c-format
 msgid "Buffering (0%)"
-msgstr "Memòria intermèdia"
-
-#: ../data/interfaces/parole.ui.h:29
-msgid "Media player"
-msgstr "Reproductor de suports"
+msgstr "Carregant (0%)"
 
 #: ../data/interfaces/mediachooser.ui.h:1
-msgid "Parole Media Chooser"
-msgstr "Reproductor de suports Parole"
+msgid "Open Media Files"
+msgstr "Obre fitxers multimèdia"
 
-#: ../data/interfaces/mediachooser.ui.h:2
-msgid "Open media files"
-msgstr "Obre fitxers de suports"
+#: ../data/interfaces/playlist.ui.h:1
+#: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:806
+#: ../src/parole-medialist.c:849 ../src/parole-player.c:3262
+msgid "Playlist"
+msgstr "Llista de reproducció"
 
-#: ../data/interfaces/mediachooser.ui.h:3
-msgid "Open"
-msgstr ""
+#: ../data/interfaces/playlist.ui.h:2
+msgid "Disc Playlist"
+msgstr "Llista de reproducció del disc"
 
-#: ../data/interfaces/mediachooser.ui.h:4
-msgid "Scan folders recursively"
-msgstr "Explorar els directoris recursivament"
+#: ../data/interfaces/playlist.ui.h:3
+msgid "Add to playlist…"
+msgstr "Afegeix a la llista de reproducció"
 
-#: ../data/interfaces/mediachooser.ui.h:5
-msgid "Replace playlist with opened files"
-msgstr "Substitueix la llista de reproducció pels fitxers oberts"
+#: ../data/interfaces/playlist.ui.h:4
+msgid "Add"
+msgstr "Afegeix"
 
-#: ../data/interfaces/mediachooser.ui.h:6
-#: ../data/interfaces/parole-settings.ui.h:20
-msgid "Start playing opened files"
-msgstr "Començar a reproduir els fitxers oberts"
+#: ../data/interfaces/playlist.ui.h:5
+msgid "Remove selected media"
+msgstr "Elimina els mitjans seleccionats"
+
+#: ../data/interfaces/playlist.ui.h:6
+msgid "Remove"
+msgstr "Elimina"
+
+#: ../data/interfaces/playlist.ui.h:7
+msgid "Clear playlist"
+msgstr "Neteja la llista de reproducció"
+
+#: ../data/interfaces/playlist.ui.h:8
+msgid "Clear"
+msgstr "Neteja"
+
+#: ../data/interfaces/playlist.ui.h:9
+msgid "Repeat"
+msgstr "Repeteix"
+
+#: ../data/interfaces/playlist.ui.h:10
+msgid "Shuffle"
+msgstr "Ordre aleatori"
+
+#: ../data/interfaces/playlist.ui.h:11
+msgid "Move Up"
+msgstr "Mou amunt"
+
+#: ../data/interfaces/playlist.ui.h:12
+msgid "Move Down"
+msgstr "Mou avall"
+
+#: ../data/interfaces/playlist.ui.h:13
+msgid "Replace playlist when opening files"
+msgstr "Substitueix la llista de reproducció en obrir fitxers"
+
+#: ../data/interfaces/playlist.ui.h:14
+msgid "Play opened files"
+msgstr "Reprodueix els fitxers oberts"
+
+#: ../data/interfaces/playlist.ui.h:15
+#: ../data/interfaces/parole-settings.ui.h:25
+msgid "Remember playlist"
+msgstr "Recorda la llista de reproducció"
 
 #: ../data/interfaces/plugins.ui.h:1
 msgid "Parole Plugins"
 msgstr "Connectors de Parole"
 
 #: ../data/interfaces/plugins.ui.h:2
-msgid "Media Player plugins"
-msgstr "Connectors del reproductor de suports"
-
-#: ../data/interfaces/plugins.ui.h:3
-msgid "Enabled"
+msgid "Extend your media player"
 msgstr ""
 
-#: ../data/interfaces/plugins.ui.h:4
+#: ../data/interfaces/plugins.ui.h:3
 msgid "Plugin"
 msgstr "Connectors"
 
+#: ../data/interfaces/plugins.ui.h:4
+msgid "<b>Description</b>"
+msgstr "<b>Descripció</b>"
+
 #: ../data/interfaces/plugins.ui.h:5
-msgid "<b>Description:</b>"
-msgstr "<b>Descripció:</b>"
+msgid "<b>Author</b>"
+msgstr "<b>Autor</b>"
 
 #: ../data/interfaces/plugins.ui.h:6
-msgid "<b>Author:</b>"
-msgstr "<b>Autor:</b>"
-
-#: ../data/interfaces/plugins.ui.h:7
-msgid "<b>Site:</b>"
-msgstr "<b>Lloc:</b>"
+msgid "Visit Website"
+msgstr "Vés al lloc web"
 
 #: ../data/interfaces/parole-settings.ui.h:1
-msgid "Parole Settings"
-msgstr "Opcions de Parole"
+msgid "X Window System (X11/XShm/Xv)"
+msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:2
-msgid "Media Player Settings"
-msgstr "Ajustaments del reproductor de suports"
+msgid "X Window System (No Xv)"
+msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:3
-#, fuzzy
-msgid "Disable screensaver while playing movies"
-msgstr "Desactivar el protector de pantalla mentre es reprodueix un vídeo"
+msgid "Parole Settings"
+msgstr "Opcions del Parole"
 
 #: ../data/interfaces/parole-settings.ui.h:4
-msgid "<b>Video</b>"
-msgstr "<b>Vídeo</b>"
+msgid "Configure your media player"
+msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:5
-msgid "Enable visualization when playing audio file"
-msgstr "Mostra efectes visuals quan es reprodueixen fitxers d'àudio"
+msgid "Disable screensaver when playing movies"
+msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:6
+msgid "<b>Screensaver</b>"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:7
+msgid "Show visual effects when an audio file is played"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:8
 msgid "Visualization type:"
 msgstr "Tipus de visualització:"
 
-#: ../data/interfaces/parole-settings.ui.h:7
-msgid "<b>Audio</b>"
-msgstr "<b>Àudio</b>"
+#: ../data/interfaces/parole-settings.ui.h:9
+msgid "<b>Audio Visualization</b>"
+msgstr ""
 
-#: ../data/interfaces/parole-settings.ui.h:8
+#: ../data/interfaces/parole-settings.ui.h:10
 msgid "Enable keyboard multimedia keys"
 msgstr ""
 
-#: ../data/interfaces/parole-settings.ui.h:9
-#, fuzzy
+#: ../data/interfaces/parole-settings.ui.h:11
 msgid "<b>Keyboard</b>"
-msgstr "<b>Vídeo</b>"
+msgstr ""
 
-#: ../data/interfaces/parole-settings.ui.h:10
-#: ../src/plugins/properties/stream-properties-provider.c:341
+#: ../data/interfaces/parole-settings.ui.h:12
 msgid "General"
 msgstr "General"
 
-#: ../data/interfaces/parole-settings.ui.h:11
+#: ../data/interfaces/parole-settings.ui.h:13
+msgid "Please restart Parole for this change to take effect."
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:14
+msgid "<b>Video Output</b>"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:15
 msgid "Brightness:"
 msgstr "Brillantor:"
 
-#: ../data/interfaces/parole-settings.ui.h:12
+#: ../data/interfaces/parole-settings.ui.h:16
 msgid "Contrast:"
 msgstr "Contrast:"
 
-#: ../data/interfaces/parole-settings.ui.h:13
+#: ../data/interfaces/parole-settings.ui.h:17
 msgid "Hue:"
 msgstr "Matís:"
 
-#: ../data/interfaces/parole-settings.ui.h:14
+#: ../data/interfaces/parole-settings.ui.h:18
 msgid "Saturation:"
 msgstr "Saturació:"
 
-#: ../data/interfaces/parole-settings.ui.h:15
-#, fuzzy
+#: ../data/interfaces/parole-settings.ui.h:19
 msgid "Reset to defaults"
 msgstr "Ajusta als valor per defecte"
 
-#: ../data/interfaces/parole-settings.ui.h:16
-msgid "<b>Display</b>"
-msgstr "<b>Pantalla</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:17
-#, fuzzy
-msgid "Display"
-msgstr "<b>Pantalla</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:18
-#, fuzzy
-msgid "Always replace playlist with opened files"
-msgstr "Substitueix la llista de reproducció pels fitxers oberts"
-
-#: ../data/interfaces/parole-settings.ui.h:19
-msgid "Check and remove duplicated media entries"
+#: ../data/interfaces/parole-settings.ui.h:20
+msgid "<b>Color Balance</b>"
 msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:21
-#, fuzzy
-msgid "<b>Playlist options</b>"
-msgstr "<b>S'està reproduint:</b>"
+msgid "Display"
+msgstr "Visualització"
 
-#: ../data/interfaces/parole-settings.ui.h:22 ../src/parole-medialist.c:667
-#: ../src/parole-player.c:2315
-msgid "Playlist"
-msgstr "Llista de reproducció"
+#: ../data/interfaces/parole-settings.ui.h:22
+msgid "Always replace playlist with opened files"
+msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:23
-#, fuzzy
+msgid "Check and remove duplicate media entries"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:24
+msgid "Start playing opened files"
+msgstr "Començar a reproduir els fitxers oberts"
+
+#: ../data/interfaces/parole-settings.ui.h:26
+msgid "<b>Playlist Settings</b>"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:28
 msgid "Automatically show subtitles when playing movie file"
 msgstr "Carrega els subtítols automàticament quan es reprodueixi una peŀlícula"
 
-#: ../data/interfaces/parole-settings.ui.h:24
+#: ../data/interfaces/parole-settings.ui.h:29
 msgid "Font:"
 msgstr "Tipus de lletra:"
 
-#: ../data/interfaces/parole-settings.ui.h:25
-#, fuzzy
+#: ../data/interfaces/parole-settings.ui.h:30
 msgid "Encoding:"
 msgstr "Codificació: "
 
-#: ../data/interfaces/parole-settings.ui.h:26
-msgid "<b>Subtitles</b>"
-msgstr "<b>Subtítols</b>"
+#: ../data/interfaces/parole-settings.ui.h:31
+msgid "<b>Subtitle Settings</b>"
+msgstr ""
 
-#: ../data/interfaces/parole-settings.ui.h:27
-#, fuzzy
+#: ../data/interfaces/parole-settings.ui.h:32
 msgid "Subtitles"
-msgstr "<b>Subtítols</b>"
+msgstr ""
 
 #: ../data/interfaces/save-playlist.ui.h:1
-msgid "Select File Types (By Extension)"
-msgstr "Seleccioneu el tipus de fitxer (per extensió)"
-
-#: ../data/interfaces/save-playlist.ui.h:2
 msgid "By Extension"
 msgstr "Per extensió"
 
-#: ../data/interfaces/open-location.ui.h:1
-#, fuzzy
-msgid "Open Location"
-msgstr "_Obre una ubicació"
+#: ../data/interfaces/save-playlist.ui.h:2
+msgid "Save Playlist as…"
+msgstr "Desa la llista de reproducció com a..."
 
-#: ../data/interfaces/open-location.ui.h:2
-msgid "Please enter a network URL:"
+#: ../data/interfaces/save-playlist.ui.h:3
+msgid "File Type"
+msgstr "Tipus de fitxer"
+
+#: ../data/interfaces/save-playlist.ui.h:4
+msgid "Extension"
+msgstr "Extensió"
+
+#: ../data/interfaces/save-playlist.ui.h:5
+msgid "Select File Types (By Extension)"
+msgstr "Seleccioneu el tipus de fitxer (per extensió)"
+
+#: ../data/interfaces/open-location.ui.h:1
+msgid "Open Network Location"
+msgstr "Obre una ubicació de xarxa"
+
+#: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:193
+msgid "Clear History"
+msgstr "Neteja l'historial"
+
+#: ../data/interfaces/open-location.ui.h:3
+msgid "<big><b>Open Network Location</b></big>"
+msgstr "<big><b>Obre una ubicació de xarxa</b></big>"
+
+#: ../data/desktop/parole.desktop.in.in.h:2
+msgid "Play your media"
+msgstr "Reproduïu els fitxers multimèdia"
+
+#: ../data/desktop/parole.desktop.in.in.h:3
+msgid "Play/Pause"
+msgstr "Reprodueix/Pausa"
+
+#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3412
+#: ../src/plugins/notify/notify-provider.c:204
+msgid "Previous Track"
+msgstr "Pista anterior"
+
+#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3430
+#: ../src/plugins/notify/notify-provider.c:217
+msgid "Next Track"
+msgstr "Pista següent"
+
+#: ../data/appdata/parole.appdata.xml.in.h:1
+msgid ""
+"Parole is a modern simple media player based on the GStreamer framework and "
+"written to fit well in the Xfce desktop. It is designed with simplicity, "
+"speed and resource usage in mind."
 msgstr ""
 
-#: ../data/desktop/parole.desktop.in.in.h:1
-msgid "Parole"
-msgstr "Parole"
+#: ../data/appdata/parole.appdata.xml.in.h:2
+msgid ""
+"Parole features playback of local media files, including video with "
+"subtitles support, Audio CDs, DVDs, and live streams. Parole is also "
+"extensible via plugins."
+msgstr ""
 
-#: ../src/common/parole-common.c:67
+#: ../data/appdata/parole.appdata.xml.in.h:3
+msgid ""
+"This release improves the build process and includes several bug fixes. This"
+" new stable release is a recommended upgrade for all users."
+msgstr ""
+
+#: ../data/appdata/parole.appdata.xml.in.h:4
+msgid ""
+"This unstable development release adds the new clutter backend and cleans up"
+" deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
+"several bugs have been addressed."
+msgstr ""
+
+#: ../data/appdata/parole.appdata.xml.in.h:5
+msgid "This release fixes a problem with detecting DVD drive locations."
+msgstr ""
+
+#: ../data/appdata/parole.appdata.xml.in.h:6
+msgid ""
+"This release features the completed transition to the Gtk+3 toolkit, "
+"improvements in the user-interface (more streamlined menus), better "
+"playlists. Furthermore existing plugins have been improved and a new one has"
+" been added (MPRIS2). Most of the artwork has been updated for this release "
+"and we use the GStreamer1.0 framework now by default."
+msgstr ""
+
+#: ../data/appdata/parole.appdata.xml.in.h:7
+msgid ""
+"This unstable development release features mostly bugfixes and introduces "
+"the new MPRIS2 plugin."
+msgstr ""
+
+#: ../data/appdata/parole.appdata.xml.in.h:8
+msgid ""
+"This is a bugfix release which fixes the loading of playlists with relative "
+"paths, improves the file-filters for audio/video mimetypes and fixes the "
+"\"Remove duplicates\" functionality."
+msgstr ""
+
+#: ../data/appdata/parole.appdata.xml.in.h:9
+msgid ""
+"This unstable development release features the complete port to the Gtk+3 "
+"toolkit, improvements in the user-interface (more streamlined menus), better"
+" playlists. It also brings updated artwork, GStreamer1.0 support, improved "
+"plugins and the occasional bugfix."
+msgstr ""
+
+#: ../src/common/parole-common.c:88
 msgid "Message"
 msgstr "Missatge"
 
-#: ../src/common/parole-common.c:72
+#: ../src/common/parole-common.c:93
 msgid "Error"
 msgstr "Error"
 
-#: ../src/gst/parole-gst.c:1496
-msgid "Stop"
-msgstr "Para"
+#: ../src/gst/parole-gst.c:1272 ../src/parole-medialist.c:393
+#, c-format
+msgid "Track %i"
+msgstr "Pista %i"
 
-#: ../src/gst/parole-gst.c:1497
+#: ../src/gst/parole-gst.c:1275
+msgid "Audio CD"
+msgstr "CD d'àudio"
+
+#: ../src/gst/parole-gst.c:1515
+msgid "Additional software is required."
+msgstr ""
+
+#: ../src/gst/parole-gst.c:1520
+msgid "Don't Install"
+msgstr ""
+
+#: ../src/gst/parole-gst.c:1522
+msgid "Install"
+msgstr "Instal·la"
+
+#: ../src/gst/parole-gst.c:1525
+msgid "OK"
+msgstr ""
+
+#: ../src/gst/parole-gst.c:1532
+#, c-format
+msgid ""
+"Parole needs <b>%s</b> to play this file.\n"
+"It can be installed automatically."
+msgstr ""
+
+#: ../src/gst/parole-gst.c:1535
+#, c-format
+msgid "Parole needs <b>%s</b> to play this file."
+msgstr ""
+
+#: ../src/gst/parole-gst.c:1946
 msgid "The stream is taking too much time to load"
 msgstr "Cal massa temps per carregar el flux"
 
-#: ../src/gst/parole-gst.c:1666
-msgid ""
-"Unable to load playbin GStreamer plugin, check your GStreamer installation"
+#: ../src/gst/parole-gst.c:1947
+msgid "Do you want to continue loading or stop?"
 msgstr ""
-"No s'ha pogut carregar el connector playbin Gstreamer, comproveu la vostra "
-"instaŀlació de Gstreamer"
 
-#: ../src/gst/parole-gst.c:1690
-msgid ""
-"Unable to load video GStreamer plugin, check your GStreamer installation"
+#: ../src/gst/parole-gst.c:1948
+msgid "Stop"
+msgstr "Para"
+
+#: ../src/gst/parole-gst.c:1949
+msgid "Continue"
+msgstr "Continua"
+
+#: ../src/gst/parole-gst.c:2133
+msgid "GStreamer Error"
 msgstr ""
-"No s'ha pogut carregar el connector de vídeo Gstreamer, comproveu la vostra "
-"instaŀlació de Gstreamer"
 
-#: ../src/gst/parole-gst.c:2222 ../src/gst/parole-gst.c:2226
-#, fuzzy, c-format
+#: ../src/gst/parole-gst.c:2134
+msgid "Parole Media Player cannot start."
+msgstr ""
+
+#: ../src/gst/parole-gst.c:2165 ../src/gst/parole-gst.c:2181
+#: ../src/gst/parole-gst.c:2213
+#, c-format
+msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
+msgstr ""
+
+#: ../src/gst/parole-gst.c:2845 ../src/gst/parole-gst.c:2851
+#, c-format
 msgid "Audio Track #%d"
-msgstr "Pista %i"
+msgstr "Pista d'àudio #%d"
 
-#: ../src/gst/parole-gst.c:2254 ../src/gst/parole-gst.c:2258
+#: ../src/gst/parole-gst.c:2895 ../src/gst/parole-gst.c:2901
 #, c-format
 msgid "Subtitle #%d"
-msgstr ""
+msgstr "Subtítol #%d"
 
-#: ../src/main.c:53
+#: ../src/main.c:59
 #, c-format
 msgid ""
 "\n"
@@ -385,198 +644,322 @@ msgid ""
 "\n"
 "Licensed under the GNU GPL.\n"
 "\n"
+"Please report bugs to <http://bugzilla.xfce.org/>.\n"
+"\n"
 msgstr ""
-"\n"
-"Reproductor de suports Parole %s\n"
-"\n"
-"Forma par del projecte Xfce Goodies\n"
-"http://goodies.xfce.org\n"
-"\n"
-"Amb llicència GNU GPL.\n"
-"\n"
 
-#: ../src/main.c:186
-msgid "Unknown argument "
-msgstr "Paràmetre desconegut"
-
-#: ../src/main.c:223
+#: ../src/main.c:241
 msgid "Open a new instance"
 msgstr "Obre una instància nova"
 
-#: ../src/main.c:224
+#: ../src/main.c:242
 msgid "Do not load plugins"
 msgstr "No carregar els connectors"
 
-#: ../src/main.c:225
+#: ../src/main.c:243
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "Establir el camí per a Audio-CD/VCD/DVD"
 
-#: ../src/main.c:226
-msgid "Play or pause if already playing"
-msgstr "Reprodueix o pausa si ja s'està reproduint"
+#: ../src/main.c:244
+msgid "Start in embedded mode"
+msgstr ""
 
-#: ../src/main.c:227
-msgid "Stop playing"
-msgstr "Atura la reproducció"
-
-#: ../src/main.c:228
-msgid "Next track"
-msgstr "Pista següent"
-
-#: ../src/main.c:229
-msgid "Previous track"
-msgstr "Pista anterior"
-
-#: ../src/main.c:230
-msgid "Seek forward"
-msgstr "Saltant endavant"
-
-#: ../src/main.c:231
-msgid "Seek Backward"
-msgstr "Saltant enredera"
-
-#: ../src/main.c:232
-msgid "Raise volume"
-msgstr "Puja el volum"
-
-#: ../src/main.c:233
-msgid "Lower volume"
-msgstr "Baix el volum"
-
-#: ../src/main.c:234
-msgid "Mute volume"
-msgstr "Volum silenciat"
-
-#: ../src/main.c:235
-msgid "Version information"
-msgstr "Informació de la versió"
-
-#: ../src/main.c:236
+#: ../src/main.c:245
 msgid "Start in fullscreen mode"
 msgstr "Comença el mode a pantalla completa"
 
-#: ../src/main.c:237
-msgid "Enabled/Disable XV support"
-msgstr "Activar/Desactivar suport per a XV"
+#: ../src/main.c:246
+msgid "Play or pause if already playing"
+msgstr "Reprodueix o pausa si ja s'està reproduint"
 
-#: ../src/main.c:239
+#: ../src/main.c:247
+msgid "Next track"
+msgstr "Pista següent"
+
+#: ../src/main.c:248
+msgid "Previous track"
+msgstr "Pista anterior"
+
+#: ../src/main.c:249
+msgid "Raise volume"
+msgstr "Puja el volum"
+
+#: ../src/main.c:250
+msgid "Lower volume"
+msgstr "Baix el volum"
+
+#: ../src/main.c:251
+msgid "Mute volume"
+msgstr "Volum silenciat"
+
+#: ../src/main.c:252
+msgid "Unmute (restore) volume"
+msgstr ""
+
+#: ../src/main.c:253
+msgid "Add files to playlist"
+msgstr ""
+
+#: ../src/main.c:254
+msgid "Print version information and exit"
+msgstr ""
+
+#: ../src/main.c:256
 msgid "Media to play"
 msgstr "Suport a reproduir"
 
-#: ../src/main.c:276
+#: ../src/main.c:279
+msgid "[FILES...] - Play movies and songs"
+msgstr ""
+
+#: ../src/main.c:291
+#, c-format
+msgid "Type %s --help to list all available command line options\n"
+msgstr ""
+
+#: ../src/main.c:309
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Ja s'està executant Parole, empreu -i per obrir una instància nova\n"
 
-#: ../src/parole-medialist.c:526
+#: ../src/parole-mediachooser.c:247 ../src/parole-player.c:1053
+msgid "All files"
+msgstr ""
+
+#: ../src/parole-medialist.c:218 ../src/parole-medialist.c:1588
+#, c-format
+msgid "Playlist (%i item)"
+msgid_plural "Playlist (%i items)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../src/parole-medialist.c:223 ../src/parole-medialist.c:1590
+#, c-format
+msgid "Playlist (%i chapter)"
+msgid_plural "Playlist (%i chapters)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../src/parole-medialist.c:409 ../src/parole-player.c:738
+#, c-format
+msgid "Chapter %i"
+msgstr ""
+
+#: ../src/parole-medialist.c:698
 msgid "Permission denied"
 msgstr "S'ha denegat el permís"
 
-#: ../src/parole-medialist.c:528
+#: ../src/parole-medialist.c:700
 msgid "Error saving playlist file"
 msgstr "S'ha produït un error en desar la llista de reproducció"
 
-#: ../src/parole-medialist.c:540
+#: ../src/parole-medialist.c:712
 msgid "Unknown playlist format"
 msgstr "Format de la llista de reproducció desconegut"
 
-#: ../src/parole-medialist.c:541
-msgid "Please chooser a supported playlist format"
+#: ../src/parole-medialist.c:713
+msgid "Please choose a supported playlist format"
 msgstr ""
-"No es reconeix el format de la llista de reproducció. Seleccioneu un format "
-"de llista de reproducció compatible"
 
-#: ../src/parole-medialist.c:593 ../src/parole-plugins-manager.c:378
-#: ../src/plugins/properties/stream-properties-provider.c:140
-#: ../src/plugins/properties/stream-properties-provider.c:141
-#: ../src/plugins/properties/stream-properties-provider.c:142
-#: ../src/plugins/properties/stream-properties-provider.c:143
+#: ../src/parole-medialist.c:767 ../src/parole-plugins-manager.c:369
 msgid "Unknown"
 msgstr "Desconegut"
 
-#: ../src/parole-medialist.c:674
+#: ../src/parole-medialist.c:856
 msgid "M3U Playlists"
 msgstr "Llistes de reproducció M3U"
 
-#: ../src/parole-medialist.c:682
+#: ../src/parole-medialist.c:864
 msgid "PLS Playlists"
 msgstr "Llistes de reproducció PLS"
 
-#: ../src/parole-medialist.c:690
+#: ../src/parole-medialist.c:872
 msgid "Advanced Stream Redirector"
 msgstr "Redirecció avançada del flux"
 
-#: ../src/parole-medialist.c:698
+#: ../src/parole-medialist.c:880
 msgid "Shareable Playlist"
 msgstr "La llista de reproducció es pot compartir"
 
 #. Clear
-#: ../src/parole-medialist.c:1105
+#: ../src/parole-medialist.c:1219
 msgid "Open Containing Folder"
 msgstr "Obre la carpeta contenedora"
 
-#: ../src/parole-medialist.c:1217
-msgid "Repeat"
-msgstr "Repetició"
+#: ../src/parole-player.c:535
+msgid "Hide Playlist"
+msgstr ""
 
-#: ../src/parole-medialist.c:1233
-msgid "Shuffle"
-msgstr "Ordre aleatori"
+#: ../src/parole-player.c:535 ../src/parole-player.c:3472
+msgid "Show Playlist"
+msgstr ""
 
-#: ../src/parole-medialist.c:1256
-msgid "Replace playlist when opening files"
-msgstr "Substitueix la llista de reproducció en obrir fitxers"
+#. Build the FileChooser dialog for subtitle selection.
+#: ../src/parole-player.c:1017
+msgid "Select Subtitle File"
+msgstr ""
 
-#: ../src/parole-medialist.c:1272
-msgid "Play opened files"
-msgstr "Reprodueix els fitxers oberts"
+#: ../src/parole-player.c:1022 ../src/parole-player.c:1226
+#: ../src/parole-player.c:2851 ../src/plugins/tray/tray-provider.c:338
+msgid "Cancel"
+msgstr ""
 
-#. *
-#. * Remember media list entries
-#. *
-#: ../src/parole-medialist.c:1284
-msgid "Remember playlist"
-msgstr "Recorda la llista de reproducció"
+#: ../src/parole-player.c:1025
+msgid "Open"
+msgstr ""
 
-#: ../src/parole-medialist.c:1473
-msgid "Media list"
-msgstr "Llista de suports"
+#: ../src/parole-player.c:1041
+msgid "Subtitle Files"
+msgstr ""
 
-#: ../src/parole-player.c:432
-msgid "Open ISO image"
-msgstr "Obrir una imatge ISO"
+#: ../src/parole-player.c:1222 ../src/parole-player.c:1230
+msgid "Clear Recent Items"
+msgstr ""
 
-#: ../src/parole-player.c:449
-msgid "CD image"
-msgstr "Imatge de CD"
+#: ../src/parole-player.c:1224
+msgid ""
+"Are you sure you wish to clear your recent items history?  This cannot be "
+"undone."
+msgstr ""
 
-#: ../src/parole-player.c:449
-msgid "DVD image"
-msgstr "Imatge de DVD"
-
-#: ../src/parole-player.c:779 ../src/parole-player.c:902
+#: ../src/parole-player.c:1323 ../src/parole-player.c:1461
 msgid "Media stream is not seekable"
 msgstr "El flux del suport no es pot cercar"
 
-#: ../src/parole-player.c:1250
+#: ../src/parole-player.c:1334
+msgid "Play"
+msgstr ""
+
+#: ../src/parole-player.c:1337
+msgid "Pause"
+msgstr ""
+
+#: ../src/parole-player.c:1833
 msgid "GStreamer backend error"
 msgstr ""
 
-#: ../src/parole-player.c:1293
+#: ../src/parole-player.c:1864
+msgid "Unknown Song"
+msgstr ""
+
+#: ../src/parole-player.c:1869 ../src/parole-player.c:1871
+#: ../src/parole-player.c:1877
+msgid "on"
+msgstr ""
+
+#: ../src/parole-player.c:1877 ../src/plugins/notify/notify-provider.c:145
+msgid "Unknown Album"
+msgstr ""
+
+#: ../src/parole-player.c:1884 ../src/parole-player.c:1888
+msgid "by"
+msgstr ""
+
+#: ../src/parole-player.c:1888 ../src/plugins/notify/notify-provider.c:147
+msgid "Unknown Artist"
+msgstr ""
+
+#: ../src/parole-player.c:1922
 msgid "Buffering"
 msgstr "Memòria intermèdia"
 
-#: ../src/parole-about.c:95
-#, fuzzy
+#: ../src/parole-player.c:2039 ../src/parole-player.c:3447
+msgid "Fullscreen"
+msgstr ""
+
+#: ../src/parole-player.c:2052
+msgid "Leave _Fullscreen"
+msgstr ""
+
+#: ../src/parole-player.c:2053
+msgid "Leave Fullscreen"
+msgstr ""
+
+#. Play menu item
+#. * Play pause
+#: ../src/parole-player.c:2120 ../src/plugins/tray/tray-provider.c:130
+msgid "_Pause"
+msgstr ""
+
+#: ../src/parole-player.c:2120 ../src/plugins/tray/tray-provider.c:130
+msgid "_Play"
+msgstr ""
+
+#. * Previous item in playlist.
+#: ../src/parole-player.c:2134
+msgid "_Previous"
+msgstr "_Anterior"
+
+#. * Next item in playlist.
+#: ../src/parole-player.c:2143
+msgid "_Next"
+msgstr "_Següent"
+
+#. * Un/Full screen
+#: ../src/parole-player.c:2152
+msgid "_Leave Fullscreen"
+msgstr ""
+
+#. * Un/Hide menubar
+#: ../src/parole-player.c:2166
+msgid "Show menubar"
+msgstr ""
+
+#: ../src/parole-player.c:2426
+msgid "Mute"
+msgstr ""
+
+#: ../src/parole-player.c:2431
+msgid "Unmute"
+msgstr ""
+
+#: ../src/parole-player.c:2820
+msgid "Unable to open default web browser"
+msgstr ""
+
+#: ../src/parole-player.c:2822
+msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
+msgstr ""
+
+#: ../src/parole-player.c:2852
+msgid "Go"
+msgstr ""
+
+#: ../src/parole-player.c:2865
+msgid "Position:"
+msgstr ""
+
+#. Clear Recent Menu Item
+#: ../src/parole-player.c:3303
+msgid "_Clear recent items…"
+msgstr ""
+
+#: ../src/parole-player.c:3642
+msgid "Audio Track:"
+msgstr ""
+
+#: ../src/parole-player.c:3661
+msgid "Subtitles:"
+msgstr ""
+
+#. Add a close button to the Infobar
+#: ../src/parole-player.c:3667 ../src/plugins/tray/tray-provider.c:273
+msgid "Close"
+msgstr ""
+
+#: ../src/parole-about.c:76
 msgid "translator-credits"
-msgstr "Traductor (%s)"
+msgstr "Traducció catalana al Transifex"
 
-#: ../src/parole-about.c:98
-#, fuzzy
+#: ../src/parole-about.c:79
 msgid "Visit Parole website"
-msgstr "Vés al lloc web"
+msgstr ""
 
-#: ../src/parole-disc.c:227
+#: ../src/parole-conf-dialog.c:313
+msgid "Clutter (OpenGL)"
+msgstr ""
+
+#: ../src/parole-disc.c:114
 msgid "Play Disc"
 msgstr "Reprodueix el disc"
 
@@ -721,18 +1104,22 @@ msgstr "Occidental"
 msgid "Vietnamese"
 msgstr "Vietnamita"
 
-#: ../src/parole-open-location.c:210
-#, fuzzy
-msgid "Clear History"
-msgstr "Neteja l'historial"
+#. If plugin loading fails...
+#: ../src/parole-plugins-manager.c:276
+msgid "Plugin failed to load"
+msgstr ""
 
-#: ../src/parole-plugins-manager.c:302 ../src/parole-plugins-manager.c:440
-msgid "Visit Website"
-msgstr "Vés al lloc web"
+#: ../src/parole-plugins-manager.c:276
+msgid "Please check your installation"
+msgstr ""
 
-#: ../src/parole-plugins-manager.c:418 ../src/parole-plugins-manager.c:419
+#: ../src/parole-plugins-manager.c:408
 msgid "No installed plugins found on this system"
 msgstr "No s'han trobat connectors al sistema"
+
+#: ../src/parole-plugins-manager.c:409
+msgid "Please check your installation."
+msgstr ""
 
 #: ../src/misc/parole-filters.c:64
 msgid "Audio"
@@ -742,87 +1129,76 @@ msgstr "Àudio"
 msgid "Video"
 msgstr "Vídeo"
 
-#: ../src/misc/parole-filters.c:115
+#: ../src/misc/parole-filters.c:115 ../src/misc/parole-filters.c:133
 msgid "Audio and video"
 msgstr "Àudio i vídeo"
 
-#: ../src/misc/parole-filters.c:144
+#: ../src/misc/parole-filters.c:162 ../src/misc/parole-filters.c:178
 msgid "All supported files"
 msgstr "Tots els fitxers compatibles"
 
-#: ../src/misc/parole-filters.c:171
+#: ../src/misc/parole-filters.c:205
 msgid "Playlist files"
 msgstr "Fitxers de llistes de reproducció"
 
-#: ../src/plugins/properties/stream-properties-provider.c:254
-msgid "Title:"
-msgstr "Títol:"
+#: ../src/plugins/notify/notify-provider.c:150
+#: ../src/plugins/notify/notify-provider.c:153
+msgid "<i>on</i>"
+msgstr ""
 
-#: ../src/plugins/properties/stream-properties-provider.c:277
-msgid "Artist:"
-msgstr "Artista:"
+#: ../src/plugins/notify/notify-provider.c:150
+#: ../src/plugins/notify/notify-provider.c:153
+msgid "<i>by</i>"
+msgstr ""
 
-#: ../src/plugins/properties/stream-properties-provider.c:300
-msgid "Album:"
-msgstr "Àlbum:"
+#: ../src/plugins/notify/notify.desktop.in.h:1
+msgid "Notify"
+msgstr ""
 
-#: ../src/plugins/properties/stream-properties-provider.c:323
-msgid "Year:"
-msgstr "Any:"
+#: ../src/plugins/notify/notify.desktop.in.h:2
+msgid "Show notifications for currently playing tracks"
+msgstr ""
 
-#: ../src/plugins/properties/stream-properties-provider.c:392
-msgid "Stream doesn't support tags changes"
-msgstr "El flux no permet el canvi d'etiquetes"
+#. * Previous Track
+#: ../src/plugins/tray/tray-provider.c:139
+msgid "P_revious Track"
+msgstr ""
 
-#: ../src/plugins/properties/stream-properties-provider.c:399
-msgid "Save media tags changes"
-msgstr "Desa els canvis de les etiquetes del suport"
+#. * Next Track
+#: ../src/plugins/tray/tray-provider.c:148
+msgid "_Next Track"
+msgstr ""
 
-#: ../src/plugins/properties/stream-properties-provider.c:524
-msgid "Properties"
-msgstr "Propietats"
+#. * Open
+#: ../src/plugins/tray/tray-provider.c:164
+msgid "_Open"
+msgstr ""
 
-#: ../src/plugins/properties/stream-properties.desktop.in.h:1
-msgid "Stream Properties"
-msgstr "Propietats del corrent"
-
-#: ../src/plugins/properties/stream-properties.desktop.in.h:2
-msgid "Read media properties"
-msgstr "Llegeix les propietats del suport"
-
-#: ../src/plugins/tray/tray-provider.c:283
-msgid "<b>Playing:</b>"
-msgstr "<b>S'està reproduint:</b>"
-
-#: ../src/plugins/tray/tray-provider.c:283
-msgid "<b>Duration:</b>"
-msgstr "<b>Duració:</b>"
-
-#: ../src/plugins/tray/tray-provider.c:419
+#: ../src/plugins/tray/tray-provider.c:270
 msgid "Tray icon plugin"
 msgstr "Connector de la icona de safata"
 
-#: ../src/plugins/tray/tray-provider.c:429
-msgid "Enable notification"
-msgstr "Habilita la notificació"
-
-#: ../src/plugins/tray/tray-provider.c:438
+#: ../src/plugins/tray/tray-provider.c:280
 msgid "Always minimize to tray when window is closed"
 msgstr "Minimitza sempre a la safata quan es tanca la finestra"
 
-#: ../src/plugins/tray/tray-provider.c:477
-msgid "Minimize to tray?"
-msgstr "Voleu minimitzar a la safata?"
+#: ../src/plugins/tray/tray-provider.c:326
+msgid "Are you sure you want to quit?"
+msgstr ""
 
-#: ../src/plugins/tray/tray-provider.c:483
+#: ../src/plugins/tray/tray-provider.c:329
+msgid "Parole can be minimized to the system tray instead."
+msgstr ""
+
+#: ../src/plugins/tray/tray-provider.c:332
 msgid "Minimize to tray"
 msgstr "Minimitza a la safata"
 
-#: ../src/plugins/tray/tray-provider.c:499
-msgid "Are you sure you want to quit Parole"
-msgstr "Segur que voleu sortir de Parole?"
+#: ../src/plugins/tray/tray-provider.c:344
+msgid "Quit"
+msgstr ""
 
-#: ../src/plugins/tray/tray-provider.c:503
+#: ../src/plugins/tray/tray-provider.c:353
 msgid "Remember my choice"
 msgstr "Recorda la selecció"
 
@@ -834,95 +1210,10 @@ msgstr "Icona de la safata"
 msgid "Show icon in the system tray"
 msgstr "Mostra la icona a la safata del sistema"
 
-#: ../src/plugins/power-manager/power-manager.desktop.in.h:1
-msgid "Power Manager Plugin"
-msgstr "Connector del gestor d'energia"
-
-#: ../src/plugins/power-manager/power-manager.desktop.in.h:2
-msgid "Inhibit Power Manager from suspending the machine while playing DVD."
+#: ../src/plugins/mpris2/mpris2.desktop.in.h:1
+msgid "MPRIS2"
 msgstr ""
-"Inhabilitar la suspensió de l'ordinador per part el gestor d'energia mentre "
-"es reprodueix un DVD."
 
-#~ msgid "Chapter Menu"
-#~ msgstr "Menú de capítols"
-
-#~ msgid "DVD"
-#~ msgstr "DVD"
-
-#~ msgid "DVD Menu"
-#~ msgstr "Menú DVD"
-
-#~ msgid "Next Chapter"
-#~ msgstr "Capítol següent"
-
-#~ msgid "Previous Chapter"
-#~ msgstr "Capítol anterior"
-
-#~ msgid "Select Track"
-#~ msgstr "Selecciona pista"
-
-#~ msgid "Add"
-#~ msgstr "Afegeix"
-
-#~ msgid "Enter the address of a location to open"
-#~ msgstr "Entra l'adreça del lloc a obrir"
-
-#~ msgid "Open location of media file or live stream"
-#~ msgstr "<b>Obre un lloc de fitxer de suoprt o de flux en directe:</b>"
-
-#~ msgid "Hide playlist"
-#~ msgstr "Amaga la llista de reproducció"
-
-#~ msgid "Next Track"
-#~ msgstr "Pista següent"
-
-#~ msgid "Stopped"
-#~ msgstr "Parat"
-
-#~ msgid "Finished"
-#~ msgstr "Acabat"
-
-#~ msgid "Paused"
-#~ msgstr "Aturat"
-
-#~ msgid "Playing"
-#~ msgstr "Reproduint"
-
-#~ msgid "Live stream:"
-#~ msgstr "flux en directe:"
-
-#~ msgid "Author/Maintainer"
-#~ msgstr "Autor/Mantenidor"
-
-#~ msgid "Playing Track"
-#~ msgstr "S'està reproduint la pista"
-
-#~ msgid "Set the main window name to the current playing media name."
-#~ msgstr ""
-#~ "Fixa el nom de la finestra principal amb el nom actual del mitjà en "
-#~ "reproducció."
-
-#~ msgid "Window Title"
-#~ msgstr "Títol de la finestra"
-
-#~ msgid "Open location..."
-#~ msgstr "Obre una ubicació…"
-
-#~ msgid "socket"
-#~ msgstr "socket"
-
-#~ msgid "SOCKET ID"
-#~ msgstr "SOCKET ID"
-
-#~ msgid "url to play"
-#~ msgstr "Ubicació a reproduir"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#~ msgid "Fullscreen"
-#~ msgstr "Pantalla completa"
-
-#~ msgid "Copy url"
-#~ msgstr "Copiar ubicació"
+#: ../src/plugins/mpris2/mpris2.desktop.in.h:2
+msgid "MPRIS2 remote control"
+msgstr ""
