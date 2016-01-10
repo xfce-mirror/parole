@@ -564,7 +564,8 @@ parole_plugins_manager_load_plugins (ParolePluginsManager *manager)
 
         for ( i = 0; i < len; i++)
         {
-            if ( !g_strcmp0 (plugins_rc[i], module->name) )
+            if ( !g_strcmp0 (plugins_rc[i], module->name) ||
+                 !g_strcmp0 (plugins_rc[i], PAROLE_PROVIDER_MODULE (module)->library_name) )
             {
                 TRACE ("Loading plugin :%s", module->name);
                 if ( !g_type_module_use (module) )
@@ -713,7 +714,7 @@ void parole_plugins_manager_load (ParolePluginsManager *manager)
                 continue;
             }
             TRACE ("Creating a module for %s desktop file %s", library_path, desktop_file);
-            module = parole_provider_module_new (library_path, desktop_file);
+            module = parole_provider_module_new (library_path, desktop_file, library_name);
             g_ptr_array_add (manager->priv->array, module);
 
             g_free (library_name);

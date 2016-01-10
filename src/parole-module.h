@@ -45,6 +45,7 @@ struct _ParoleProviderModule
     GTypeModule              parent;
     
     GModule                *library;
+    gchar                  *library_name;
     ParolePluginPlayer     *player;
     
     GType                   (*initialize)   (ParoleProviderModule *module);
@@ -65,7 +66,8 @@ struct _ParoleProviderModuleClass
 GType                       parole_provider_module_get_type        (void) G_GNUC_CONST;
 
 ParoleProviderModule       *parole_provider_module_new             (const gchar *filename,
-                                                                    const gchar *desktop_file);
+                                                                    const gchar *desktop_file,
+                                                                    const gchar *library_name);
 
 gboolean                    parole_provider_module_new_plugin      (ParoleProviderModule *module);
 

@@ -172,6 +172,7 @@ static void
 parole_provider_module_init (ParoleProviderModule *module)
 {
     module->library = NULL;
+    module->library_name = NULL;
     module->initialize = NULL;
     module->shutdown = NULL;
     module->active = FALSE;
@@ -183,7 +184,7 @@ parole_provider_module_init (ParoleProviderModule *module)
 }
 
 ParoleProviderModule *
-parole_provider_module_new (const gchar *filename, const gchar *desktop_file)
+parole_provider_module_new (const gchar *filename, const gchar *desktop_file, const gchar *library_name)
 {
     ParoleProviderModule *module = NULL;
     
@@ -194,7 +195,11 @@ parole_provider_module_new (const gchar *filename, const gchar *desktop_file)
     module->desktop_file = g_strdup (desktop_file);
     g_object_set_data_full (G_OBJECT (module), "desktop-file", 
                  module->desktop_file, (GDestroyNotify) g_free);
-    
+
+    module->library_name = g_strdup (library_name);
+    g_object_set_data_full (G_OBJECT (module), "library-name",
+                 module->library_name, (GDestroyNotify) g_free);
+
     return module;
 }
 
