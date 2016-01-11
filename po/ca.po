@@ -4,13 +4,13 @@
 # 
 # Translators:
 # Carles Muñoz Gorriz <carlesmu@internautas.org>, 2009
-# Davidmp <medipas@gmail.com>, 2015
+# Davidmp <medipas@gmail.com>, 2015-2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-07 18:30+0200\n"
-"PO-Revision-Date: 2015-12-23 21:56+0000\n"
+"POT-Creation-Date: 2016-01-11 06:30+0100\n"
+"PO-Revision-Date: 2016-01-11 17:30+0000\n"
 "Last-Translator: Davidmp <medipas@gmail.com>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfce-apps/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -68,7 +68,7 @@ msgid "_Shuffle"
 msgstr "_Ordre aleatori"
 
 #. Create dialog
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2848
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2860
 msgid "Go to position"
 msgstr "Vés a la posició"
 
@@ -128,8 +128,8 @@ msgstr "S_ilenci"
 msgid "_Video"
 msgstr "_Vídeo"
 
-#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2038
-#: ../src/parole-player.c:2152
+#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2050
+#: ../src/parole-player.c:2164
 msgid "_Fullscreen"
 msgstr "_Pantalla completa"
 
@@ -232,7 +232,7 @@ msgstr "Obre fitxers multimèdia"
 
 #: ../data/interfaces/playlist.ui.h:1
 #: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:806
-#: ../src/parole-medialist.c:849 ../src/parole-player.c:3262
+#: ../src/parole-medialist.c:849 ../src/parole-player.c:3274
 msgid "Playlist"
 msgstr "Llista de reproducció"
 
@@ -299,7 +299,7 @@ msgstr "Connectors de Parole"
 
 #: ../data/interfaces/plugins.ui.h:2
 msgid "Extend your media player"
-msgstr ""
+msgstr "Amplieu el reproductor multimèdia"
 
 #: ../data/interfaces/plugins.ui.h:3
 msgid "Plugin"
@@ -319,7 +319,7 @@ msgstr "Vés al lloc web"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "X Window System (X11/XShm/Xv)"
-msgstr ""
+msgstr "Sistema X Window (X11/XShm/Xv)"
 
 #: ../data/interfaces/parole-settings.ui.h:2
 msgid "X Window System (No Xv)"
@@ -477,12 +477,12 @@ msgstr "Reproduïu els fitxers multimèdia"
 msgid "Play/Pause"
 msgstr "Reprodueix/Pausa"
 
-#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3412
+#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3424
 #: ../src/plugins/notify/notify-provider.c:204
 msgid "Previous Track"
 msgstr "Pista anterior"
 
-#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3430
+#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3442
 #: ../src/plugins/notify/notify-provider.c:217
 msgid "Next Track"
 msgstr "Pista següent"
@@ -790,7 +790,7 @@ msgstr "Obre la carpeta contenedora"
 msgid "Hide Playlist"
 msgstr ""
 
-#: ../src/parole-player.c:535 ../src/parole-player.c:3472
+#: ../src/parole-player.c:535 ../src/parole-player.c:3484
 msgid "Show Playlist"
 msgstr ""
 
@@ -800,7 +800,7 @@ msgid "Select Subtitle File"
 msgstr ""
 
 #: ../src/parole-player.c:1022 ../src/parole-player.c:1226
-#: ../src/parole-player.c:2851 ../src/plugins/tray/tray-provider.c:338
+#: ../src/parole-player.c:2863 ../src/plugins/tray/tray-provider.c:338
 msgid "Cancel"
 msgstr ""
 
@@ -838,112 +838,108 @@ msgstr ""
 msgid "GStreamer backend error"
 msgstr ""
 
-#: ../src/parole-player.c:1864
-msgid "Unknown Song"
-msgstr ""
-
-#: ../src/parole-player.c:1869 ../src/parole-player.c:1871
-#: ../src/parole-player.c:1877
+#: ../src/parole-player.c:1881 ../src/parole-player.c:1883
+#: ../src/parole-player.c:1889
 msgid "on"
 msgstr ""
 
-#: ../src/parole-player.c:1877 ../src/plugins/notify/notify-provider.c:145
+#: ../src/parole-player.c:1889 ../src/plugins/notify/notify-provider.c:145
 msgid "Unknown Album"
 msgstr ""
 
-#: ../src/parole-player.c:1884 ../src/parole-player.c:1888
+#: ../src/parole-player.c:1896 ../src/parole-player.c:1900
 msgid "by"
 msgstr ""
 
-#: ../src/parole-player.c:1888 ../src/plugins/notify/notify-provider.c:147
+#: ../src/parole-player.c:1900 ../src/plugins/notify/notify-provider.c:147
 msgid "Unknown Artist"
 msgstr ""
 
-#: ../src/parole-player.c:1922
+#: ../src/parole-player.c:1934
 msgid "Buffering"
 msgstr "Memòria intermèdia"
 
-#: ../src/parole-player.c:2039 ../src/parole-player.c:3447
+#: ../src/parole-player.c:2051 ../src/parole-player.c:3459
 msgid "Fullscreen"
 msgstr ""
 
-#: ../src/parole-player.c:2052
+#: ../src/parole-player.c:2064
 msgid "Leave _Fullscreen"
 msgstr ""
 
-#: ../src/parole-player.c:2053
+#: ../src/parole-player.c:2065
 msgid "Leave Fullscreen"
 msgstr ""
 
 #. Play menu item
 #. * Play pause
-#: ../src/parole-player.c:2120 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2132 ../src/plugins/tray/tray-provider.c:130
 msgid "_Pause"
 msgstr ""
 
-#: ../src/parole-player.c:2120 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2132 ../src/plugins/tray/tray-provider.c:130
 msgid "_Play"
 msgstr ""
 
 #. * Previous item in playlist.
-#: ../src/parole-player.c:2134
+#: ../src/parole-player.c:2146
 msgid "_Previous"
 msgstr "_Anterior"
 
 #. * Next item in playlist.
-#: ../src/parole-player.c:2143
+#: ../src/parole-player.c:2155
 msgid "_Next"
 msgstr "_Següent"
 
 #. * Un/Full screen
-#: ../src/parole-player.c:2152
+#: ../src/parole-player.c:2164
 msgid "_Leave Fullscreen"
 msgstr ""
 
 #. * Un/Hide menubar
-#: ../src/parole-player.c:2166
+#: ../src/parole-player.c:2178
 msgid "Show menubar"
 msgstr ""
 
-#: ../src/parole-player.c:2426
+#: ../src/parole-player.c:2438
 msgid "Mute"
 msgstr ""
 
-#: ../src/parole-player.c:2431
+#: ../src/parole-player.c:2443
 msgid "Unmute"
 msgstr ""
 
-#: ../src/parole-player.c:2820
+#: ../src/parole-player.c:2832
 msgid "Unable to open default web browser"
 msgstr ""
 
-#: ../src/parole-player.c:2822
+#: ../src/parole-player.c:2834
 msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr ""
 
-#: ../src/parole-player.c:2852
+#: ../src/parole-player.c:2864
 msgid "Go"
 msgstr ""
 
-#: ../src/parole-player.c:2865
+#: ../src/parole-player.c:2877
 msgid "Position:"
 msgstr ""
 
 #. Clear Recent Menu Item
-#: ../src/parole-player.c:3303
+#: ../src/parole-player.c:3315
 msgid "_Clear recent items…"
 msgstr ""
 
-#: ../src/parole-player.c:3642
+#: ../src/parole-player.c:3654
 msgid "Audio Track:"
 msgstr ""
 
-#: ../src/parole-player.c:3661
+#: ../src/parole-player.c:3673
 msgid "Subtitles:"
 msgstr ""
 
 #. Add a close button to the Infobar
-#: ../src/parole-player.c:3667 ../src/plugins/tray/tray-provider.c:273
+#: ../src/parole-player.c:3679 ../src/plugins/tray/tray-provider.c:273
 msgid "Close"
 msgstr ""
 
