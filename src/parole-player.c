@@ -1842,6 +1842,9 @@ parole_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePl
     gchar *album;
     gchar *artist;
     gchar *year;
+    gchar *uri;
+    gchar *filename;
+    gchar *decoded;
     GdkPixbuf *image = NULL;
 
     if ( player->priv->row )
@@ -1851,6 +1854,7 @@ parole_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePl
                       "album", &album,
                       "artist", &artist,
                       "year", &year,
+                      "uri", &uri,
                       NULL);
 
         if ( title )
@@ -1861,7 +1865,15 @@ parole_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePl
             g_free (title);
         }
         else
-            gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), g_strdup_printf("<span color='#F4F4F4'><b><big>%s</big></b></span>", _("Unknown Song")));
+        {
+            /* No ID3, no problem! Show the filename instead */
+            decoded = g_filename_from_uri(uri, NULL, NULL);
+            filename = g_path_get_basename(decoded);
+            gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), g_strdup_printf("<span color='#F4F4F4'><b><big>%s</big></b></span>", filename));
+            g_free (filename);
+            g_free (decoded);
+        }
+        g_free(uri);
 
         if ( album )
         {
