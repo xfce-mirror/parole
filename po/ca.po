@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-11 06:30+0100\n"
-"PO-Revision-Date: 2016-01-11 17:30+0000\n"
+"PO-Revision-Date: 2016-01-11 17:55+0000\n"
 "Last-Translator: Davidmp <medipas@gmail.com>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfce-apps/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -323,7 +323,7 @@ msgstr "Sistema X Window (X11/XShm/Xv)"
 
 #: ../data/interfaces/parole-settings.ui.h:2
 msgid "X Window System (No Xv)"
-msgstr ""
+msgstr "Sistema X Window (No Xv)"
 
 #: ../data/interfaces/parole-settings.ui.h:3
 msgid "Parole Settings"
@@ -331,19 +331,19 @@ msgstr "Opcions del Parole"
 
 #: ../data/interfaces/parole-settings.ui.h:4
 msgid "Configure your media player"
-msgstr ""
+msgstr "Configureu el reproductor multimèdia"
 
 #: ../data/interfaces/parole-settings.ui.h:5
 msgid "Disable screensaver when playing movies"
-msgstr ""
+msgstr "Inhabilita el protector de pantalla mentre es reprodueixi una pel·lícula"
 
 #: ../data/interfaces/parole-settings.ui.h:6
 msgid "<b>Screensaver</b>"
-msgstr ""
+msgstr "<b>Protector de pantalla</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:7
 msgid "Show visual effects when an audio file is played"
-msgstr ""
+msgstr "Mostra els efectes visuals quan es reprodueixi un fitxer d'àudio"
 
 #: ../data/interfaces/parole-settings.ui.h:8
 msgid "Visualization type:"
@@ -351,15 +351,15 @@ msgstr "Tipus de visualització:"
 
 #: ../data/interfaces/parole-settings.ui.h:9
 msgid "<b>Audio Visualization</b>"
-msgstr ""
+msgstr "<b>Visualització d'àudio</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:10
 msgid "Enable keyboard multimedia keys"
-msgstr ""
+msgstr "Habilita les tecles multimèdia del teclat"
 
 #: ../data/interfaces/parole-settings.ui.h:11
 msgid "<b>Keyboard</b>"
-msgstr ""
+msgstr "<b>Teclat</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:12
 msgid "General"
@@ -367,11 +367,11 @@ msgstr "General"
 
 #: ../data/interfaces/parole-settings.ui.h:13
 msgid "Please restart Parole for this change to take effect."
-msgstr ""
+msgstr "Reinicieu el Parole perquè aquest canvi tingui efecte."
 
 #: ../data/interfaces/parole-settings.ui.h:14
 msgid "<b>Video Output</b>"
-msgstr ""
+msgstr "<b>Sortida de vídeo</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:15
 msgid "Brightness:"
@@ -395,7 +395,7 @@ msgstr "Ajusta als valor per defecte"
 
 #: ../data/interfaces/parole-settings.ui.h:20
 msgid "<b>Color Balance</b>"
-msgstr ""
+msgstr "<b>Balanç de color</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:21
 msgid "Display"
@@ -403,11 +403,11 @@ msgstr "Visualització"
 
 #: ../data/interfaces/parole-settings.ui.h:22
 msgid "Always replace playlist with opened files"
-msgstr ""
+msgstr "Reemplaça sempre la llista de reproducció amb els fitxers oberts"
 
 #: ../data/interfaces/parole-settings.ui.h:23
 msgid "Check and remove duplicate media entries"
-msgstr ""
+msgstr "Comprova i elimina les entrades multimèdia duplicades"
 
 #: ../data/interfaces/parole-settings.ui.h:24
 msgid "Start playing opened files"
@@ -415,7 +415,7 @@ msgstr "Començar a reproduir els fitxers oberts"
 
 #: ../data/interfaces/parole-settings.ui.h:26
 msgid "<b>Playlist Settings</b>"
-msgstr ""
+msgstr "<b>Configuració de la llista de reproducció</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:28
 msgid "Automatically show subtitles when playing movie file"
@@ -431,11 +431,11 @@ msgstr "Codificació: "
 
 #: ../data/interfaces/parole-settings.ui.h:31
 msgid "<b>Subtitle Settings</b>"
-msgstr ""
+msgstr "<b>Configuració dels subtítols</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:32
 msgid "Subtitles"
-msgstr ""
+msgstr "Subtítols"
 
 #: ../data/interfaces/save-playlist.ui.h:1
 msgid "By Extension"
@@ -567,11 +567,11 @@ msgstr "CD d'àudio"
 
 #: ../src/gst/parole-gst.c:1515
 msgid "Additional software is required."
-msgstr ""
+msgstr "Cal programari addicional"
 
 #: ../src/gst/parole-gst.c:1520
 msgid "Don't Install"
-msgstr ""
+msgstr "No ho instal·lis"
 
 #: ../src/gst/parole-gst.c:1522
 msgid "Install"
@@ -579,19 +579,19 @@ msgstr "Instal·la"
 
 #: ../src/gst/parole-gst.c:1525
 msgid "OK"
-msgstr ""
+msgstr "D'acord"
 
 #: ../src/gst/parole-gst.c:1532
 #, c-format
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
-msgstr ""
+msgstr "El Parole necessita <b>%s</b> per reproduir aquest fitxer.\nEs pot instal·lar automàticament."
 
 #: ../src/gst/parole-gst.c:1535
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
-msgstr ""
+msgstr "El Parole necessita <b>%s</b> per reproduir aquest fitxer."
 
 #: ../src/gst/parole-gst.c:1946
 msgid "The stream is taking too much time to load"
@@ -599,7 +599,7 @@ msgstr "Cal massa temps per carregar el flux"
 
 #: ../src/gst/parole-gst.c:1947
 msgid "Do you want to continue loading or stop?"
-msgstr ""
+msgstr "Voleu que continuï la càrrega o la voleu aturar?"
 
 #: ../src/gst/parole-gst.c:1948
 msgid "Stop"
@@ -611,11 +611,11 @@ msgstr "Continua"
 
 #: ../src/gst/parole-gst.c:2133
 msgid "GStreamer Error"
-msgstr ""
+msgstr "Error del GStreamer"
 
 #: ../src/gst/parole-gst.c:2134
 msgid "Parole Media Player cannot start."
-msgstr ""
+msgstr "El reproductor multimèdia Parole no es pot inciar."
 
 #: ../src/gst/parole-gst.c:2165 ../src/gst/parole-gst.c:2181
 #: ../src/gst/parole-gst.c:2213
@@ -662,7 +662,7 @@ msgstr "Establir el camí per a Audio-CD/VCD/DVD"
 
 #: ../src/main.c:244
 msgid "Start in embedded mode"
-msgstr ""
+msgstr "Inicia en mode encastat"
 
 #: ../src/main.c:245
 msgid "Start in fullscreen mode"
@@ -694,11 +694,11 @@ msgstr "Volum silenciat"
 
 #: ../src/main.c:252
 msgid "Unmute (restore) volume"
-msgstr ""
+msgstr "Activa (restaura) el volum"
 
 #: ../src/main.c:253
 msgid "Add files to playlist"
-msgstr ""
+msgstr "Afegeix fitxers a la llista de reproducció"
 
 #: ../src/main.c:254
 msgid "Print version information and exit"
@@ -724,26 +724,26 @@ msgstr "Ja s'està executant Parole, empreu -i per obrir una instància nova\n"
 
 #: ../src/parole-mediachooser.c:247 ../src/parole-player.c:1053
 msgid "All files"
-msgstr ""
+msgstr "Tots els fitxers"
 
 #: ../src/parole-medialist.c:218 ../src/parole-medialist.c:1588
 #, c-format
 msgid "Playlist (%i item)"
 msgid_plural "Playlist (%i items)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Llista de reproducció (%i element)"
+msgstr[1] "Llista de reproducció (%i elements)"
 
 #: ../src/parole-medialist.c:223 ../src/parole-medialist.c:1590
 #, c-format
 msgid "Playlist (%i chapter)"
 msgid_plural "Playlist (%i chapters)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Llista de reproducció (%i capítol)"
+msgstr[1] "Llista de reproducció (%i capítols)"
 
 #: ../src/parole-medialist.c:409 ../src/parole-player.c:738
 #, c-format
 msgid "Chapter %i"
-msgstr ""
+msgstr "Capítol %i"
 
 #: ../src/parole-medialist.c:698
 msgid "Permission denied"
@@ -759,7 +759,7 @@ msgstr "Format de la llista de reproducció desconegut"
 
 #: ../src/parole-medialist.c:713
 msgid "Please choose a supported playlist format"
-msgstr ""
+msgstr "Trieu un format de llista de reproducció suportat, si us plau."
 
 #: ../src/parole-medialist.c:767 ../src/parole-plugins-manager.c:369
 msgid "Unknown"
@@ -788,39 +788,39 @@ msgstr "Obre la carpeta contenedora"
 
 #: ../src/parole-player.c:535
 msgid "Hide Playlist"
-msgstr ""
+msgstr "Amaga la llista de reproducció"
 
 #: ../src/parole-player.c:535 ../src/parole-player.c:3484
 msgid "Show Playlist"
-msgstr ""
+msgstr "Mostra la llista de reproducció"
 
 #. Build the FileChooser dialog for subtitle selection.
 #: ../src/parole-player.c:1017
 msgid "Select Subtitle File"
-msgstr ""
+msgstr "Seleccioneu el fitxer de subtítols"
 
 #: ../src/parole-player.c:1022 ../src/parole-player.c:1226
 #: ../src/parole-player.c:2863 ../src/plugins/tray/tray-provider.c:338
 msgid "Cancel"
-msgstr ""
+msgstr "Cancel·la"
 
 #: ../src/parole-player.c:1025
 msgid "Open"
-msgstr ""
+msgstr "Obre"
 
 #: ../src/parole-player.c:1041
 msgid "Subtitle Files"
-msgstr ""
+msgstr "Fitxers de subtítols"
 
 #: ../src/parole-player.c:1222 ../src/parole-player.c:1230
 msgid "Clear Recent Items"
-msgstr ""
+msgstr "Neteja els elements recents"
 
 #: ../src/parole-player.c:1224
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
-msgstr ""
+msgstr "Esteu segur que voleu eliminar l'historial dels elements recents? L'acció no es pot desfer."
 
 #: ../src/parole-player.c:1323 ../src/parole-player.c:1461
 msgid "Media stream is not seekable"
@@ -828,32 +828,32 @@ msgstr "El flux del suport no es pot cercar"
 
 #: ../src/parole-player.c:1334
 msgid "Play"
-msgstr ""
+msgstr "Reprodueix"
 
 #: ../src/parole-player.c:1337
 msgid "Pause"
-msgstr ""
+msgstr "Pausa"
 
 #: ../src/parole-player.c:1833
 msgid "GStreamer backend error"
-msgstr ""
+msgstr "Error del rerefons de GStreamer"
 
 #: ../src/parole-player.c:1881 ../src/parole-player.c:1883
 #: ../src/parole-player.c:1889
 msgid "on"
-msgstr ""
+msgstr "a"
 
 #: ../src/parole-player.c:1889 ../src/plugins/notify/notify-provider.c:145
 msgid "Unknown Album"
-msgstr ""
+msgstr "Àlbum desconegut"
 
 #: ../src/parole-player.c:1896 ../src/parole-player.c:1900
 msgid "by"
-msgstr ""
+msgstr "de"
 
 #: ../src/parole-player.c:1900 ../src/plugins/notify/notify-provider.c:147
 msgid "Unknown Artist"
-msgstr ""
+msgstr "Artista desconegut"
 
 #: ../src/parole-player.c:1934
 msgid "Buffering"
@@ -861,25 +861,25 @@ msgstr "Memòria intermèdia"
 
 #: ../src/parole-player.c:2051 ../src/parole-player.c:3459
 msgid "Fullscreen"
-msgstr ""
+msgstr "Pantalla completa"
 
 #: ../src/parole-player.c:2064
 msgid "Leave _Fullscreen"
-msgstr ""
+msgstr "_Surt de la pantalla completa"
 
 #: ../src/parole-player.c:2065
 msgid "Leave Fullscreen"
-msgstr ""
+msgstr "Surt de la pantalla completa"
 
 #. Play menu item
 #. * Play pause
 #: ../src/parole-player.c:2132 ../src/plugins/tray/tray-provider.c:130
 msgid "_Pause"
-msgstr ""
+msgstr "_Pausa"
 
 #: ../src/parole-player.c:2132 ../src/plugins/tray/tray-provider.c:130
 msgid "_Play"
-msgstr ""
+msgstr "_Reprodueix"
 
 #. * Previous item in playlist.
 #: ../src/parole-player.c:2146
@@ -894,54 +894,54 @@ msgstr "_Següent"
 #. * Un/Full screen
 #: ../src/parole-player.c:2164
 msgid "_Leave Fullscreen"
-msgstr ""
+msgstr "_Surt de la pantalla completa"
 
 #. * Un/Hide menubar
 #: ../src/parole-player.c:2178
 msgid "Show menubar"
-msgstr ""
+msgstr "Mostra la barra del menú"
 
 #: ../src/parole-player.c:2438
 msgid "Mute"
-msgstr ""
+msgstr "Silencia"
 
 #: ../src/parole-player.c:2443
 msgid "Unmute"
-msgstr ""
+msgstr "Activa el so"
 
 #: ../src/parole-player.c:2832
 msgid "Unable to open default web browser"
-msgstr ""
+msgstr "No es pot obrir el navegador per defecte"
 
 #: ../src/parole-player.c:2834
 msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
-msgstr ""
+msgstr "Aneu a http://docs.xfce.org/apps/parole/bugs per informar de l'error, si us plau."
 
 #: ../src/parole-player.c:2864
 msgid "Go"
-msgstr ""
+msgstr "Vés-hi"
 
 #: ../src/parole-player.c:2877
 msgid "Position:"
-msgstr ""
+msgstr "Posició:"
 
 #. Clear Recent Menu Item
 #: ../src/parole-player.c:3315
 msgid "_Clear recent items…"
-msgstr ""
+msgstr "_Neteja els elements recents..."
 
 #: ../src/parole-player.c:3654
 msgid "Audio Track:"
-msgstr ""
+msgstr "Pista d'àudio:"
 
 #: ../src/parole-player.c:3673
 msgid "Subtitles:"
-msgstr ""
+msgstr "Subtítols:"
 
 #. Add a close button to the Infobar
 #: ../src/parole-player.c:3679 ../src/plugins/tray/tray-provider.c:273
 msgid "Close"
-msgstr ""
+msgstr "Tanca"
 
 #: ../src/parole-about.c:76
 msgid "translator-credits"
@@ -949,11 +949,11 @@ msgstr "Traducció catalana al Transifex"
 
 #: ../src/parole-about.c:79
 msgid "Visit Parole website"
-msgstr ""
+msgstr "Visita la pàgina web del Parole"
 
 #: ../src/parole-conf-dialog.c:313
 msgid "Clutter (OpenGL)"
-msgstr ""
+msgstr "Clutter (OpenGL)"
 
 #: ../src/parole-disc.c:114
 msgid "Play Disc"
@@ -1103,11 +1103,11 @@ msgstr "Vietnamita"
 #. If plugin loading fails...
 #: ../src/parole-plugins-manager.c:276
 msgid "Plugin failed to load"
-msgstr ""
+msgstr "El connector ha fallat en carregar-se"
 
 #: ../src/parole-plugins-manager.c:276
 msgid "Please check your installation"
-msgstr ""
+msgstr "Si us plau, comproveu la instal·lació"
 
 #: ../src/parole-plugins-manager.c:408
 msgid "No installed plugins found on this system"
@@ -1115,7 +1115,7 @@ msgstr "No s'han trobat connectors al sistema"
 
 #: ../src/parole-plugins-manager.c:409
 msgid "Please check your installation."
-msgstr ""
+msgstr "Si us plau, comproveu la instal·lació."
 
 #: ../src/misc/parole-filters.c:64
 msgid "Audio"
@@ -1140,16 +1140,16 @@ msgstr "Fitxers de llistes de reproducció"
 #: ../src/plugins/notify/notify-provider.c:150
 #: ../src/plugins/notify/notify-provider.c:153
 msgid "<i>on</i>"
-msgstr ""
+msgstr "<i>a</i>"
 
 #: ../src/plugins/notify/notify-provider.c:150
 #: ../src/plugins/notify/notify-provider.c:153
 msgid "<i>by</i>"
-msgstr ""
+msgstr "<i>de</i>"
 
 #: ../src/plugins/notify/notify.desktop.in.h:1
 msgid "Notify"
-msgstr ""
+msgstr "Notifica"
 
 #: ../src/plugins/notify/notify.desktop.in.h:2
 msgid "Show notifications for currently playing tracks"
@@ -1158,17 +1158,17 @@ msgstr ""
 #. * Previous Track
 #: ../src/plugins/tray/tray-provider.c:139
 msgid "P_revious Track"
-msgstr ""
+msgstr "Pista ante_rior"
 
 #. * Next Track
 #: ../src/plugins/tray/tray-provider.c:148
 msgid "_Next Track"
-msgstr ""
+msgstr "Pista següe_nt"
 
 #. * Open
 #: ../src/plugins/tray/tray-provider.c:164
 msgid "_Open"
-msgstr ""
+msgstr "_Obre"
 
 #: ../src/plugins/tray/tray-provider.c:270
 msgid "Tray icon plugin"
@@ -1180,11 +1180,11 @@ msgstr "Minimitza sempre a la safata quan es tanca la finestra"
 
 #: ../src/plugins/tray/tray-provider.c:326
 msgid "Are you sure you want to quit?"
-msgstr ""
+msgstr "Segur que voleu sortir?"
 
 #: ../src/plugins/tray/tray-provider.c:329
 msgid "Parole can be minimized to the system tray instead."
-msgstr ""
+msgstr "El Parole es pot minimitzar a la safata del sistema."
 
 #: ../src/plugins/tray/tray-provider.c:332
 msgid "Minimize to tray"
@@ -1192,7 +1192,7 @@ msgstr "Minimitza a la safata"
 
 #: ../src/plugins/tray/tray-provider.c:344
 msgid "Quit"
-msgstr ""
+msgstr "Surt"
 
 #: ../src/plugins/tray/tray-provider.c:353
 msgid "Remember my choice"
@@ -1208,7 +1208,7 @@ msgstr "Mostra la icona a la safata del sistema"
 
 #: ../src/plugins/mpris2/mpris2.desktop.in.h:1
 msgid "MPRIS2"
-msgstr ""
+msgstr "MPRIS2"
 
 #: ../src/plugins/mpris2/mpris2.desktop.in.h:2
 msgid "MPRIS2 remote control"
