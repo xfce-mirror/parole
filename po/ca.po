@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-11 06:30+0100\n"
-"PO-Revision-Date: 2016-01-12 16:00+0000\n"
+"PO-Revision-Date: 2016-01-12 17:52+0000\n"
 "Last-Translator: Davidmp <medipas@gmail.com>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfce-apps/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -702,7 +702,7 @@ msgstr "Afegeix fitxers a la llista de reproducció"
 
 #: ../src/main.c:254
 msgid "Print version information and exit"
-msgstr ""
+msgstr "Imprimeix la informació de la versió i surt"
 
 #: ../src/main.c:256
 msgid "Media to play"
@@ -710,12 +710,12 @@ msgstr "Suport a reproduir"
 
 #: ../src/main.c:279
 msgid "[FILES...] - Play movies and songs"
-msgstr ""
+msgstr "[FITXERS...] - Reprodueix pel·lícules i cançons"
 
 #: ../src/main.c:291
 #, c-format
 msgid "Type %s --help to list all available command line options\n"
-msgstr ""
+msgstr "Escriviu %s --help per veure una llista de totes les opcions de la línia d'ordres\n"
 
 #: ../src/main.c:309
 #, c-format
@@ -1153,7 +1153,7 @@ msgstr "Notifica"
 
 #: ../src/plugins/notify/notify.desktop.in.h:2
 msgid "Show notifications for currently playing tracks"
-msgstr ""
+msgstr "Mostra notificacions per a les pistes que s'estan reproduint"
 
 #. * Previous Track
 #: ../src/plugins/tray/tray-provider.c:139
@@ -1212,4 +1212,4 @@ msgstr "MPRIS2"
 
 #: ../src/plugins/mpris2/mpris2.desktop.in.h:2
 msgid "MPRIS2 remote control"
-msgstr ""
+msgstr "Control remot MPRIS2"
