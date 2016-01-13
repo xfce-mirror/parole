@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-11 06:30+0100\n"
-"PO-Revision-Date: 2016-01-13 01:09+0000\n"
+"PO-Revision-Date: 2016-01-13 21:29+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/xfce/xfce-apps/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -35,20 +35,20 @@ msgstr "_Atverti..."
 
 #: ../data/interfaces/parole.ui.h:4
 msgid "Open _Location…"
-msgstr "Atverti _Vietą..."
+msgstr "Atverti _vietą..."
 
 #: ../data/interfaces/parole.ui.h:5
 msgid "Open _Recent"
-msgstr "Atverti Vė_liausius"
+msgstr "Atverti vė_liausius"
 
 #: ../data/interfaces/parole.ui.h:6
 msgid "_Save Playlist…"
-msgstr "_Išsaugoti Grojaraštį..."
+msgstr "_Išsaugoti grojaraštį..."
 
 #: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:112
 #: ../src/parole-disc.c:154
 msgid "Insert Disc"
-msgstr "Įdėti Diską"
+msgstr "Įdėti diską"
 
 #. * Exit
 #: ../data/interfaces/parole.ui.h:8 ../src/plugins/tray/tray-provider.c:179
@@ -78,19 +78,19 @@ msgstr "_DVD"
 
 #: ../data/interfaces/parole.ui.h:14
 msgid "_DVD Menu"
-msgstr "_DVD Meniu"
+msgstr "_DVD meniu"
 
 #: ../data/interfaces/parole.ui.h:15
 msgid "_Title Menu"
-msgstr "_Antraščių Meniu"
+msgstr "_Antraščių meniu"
 
 #: ../data/interfaces/parole.ui.h:16
 msgid "_Audio Menu"
-msgstr "_Garso Meniu"
+msgstr "_Garso meniu"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "A_ngle Menu"
-msgstr "Ka_mpų Meniu"
+msgstr "Ka_mpų meniu"
 
 #: ../data/interfaces/parole.ui.h:18
 msgid "_Chapters"
@@ -98,7 +98,7 @@ msgstr "_Skyriai"
 
 #: ../data/interfaces/parole.ui.h:19
 msgid "_Chapter Menu"
-msgstr "_Skyrių Meniu"
+msgstr "_Skyrių meniu"
 
 #: ../data/interfaces/parole.ui.h:20
 msgid "_Audio"
@@ -106,7 +106,7 @@ msgstr "_Garsas"
 
 #: ../data/interfaces/parole.ui.h:21
 msgid "_Audio Track"
-msgstr "Garso _Takelis"
+msgstr "Garso _takelis"
 
 #: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:831
 msgid "Empty"
@@ -167,7 +167,7 @@ msgstr "_Subtitrai"
 
 #: ../data/interfaces/parole.ui.h:36
 msgid "Select Text Subtitles…"
-msgstr "Pasirinkti Subtitrus..."
+msgstr "Pasirinkti subtitrus..."
 
 #: ../data/interfaces/parole.ui.h:37
 msgid "_Tools"
@@ -187,7 +187,7 @@ msgstr "_Žinynas"
 
 #: ../data/interfaces/parole.ui.h:41
 msgid "_Report a Bug…"
-msgstr "P_ranešti apie Klaidą..."
+msgstr "P_ranešti apie klaidą..."
 
 #: ../data/interfaces/parole.ui.h:42
 msgid "Display Parole user manual"
@@ -228,7 +228,7 @@ msgstr "Buferizacija (0%)"
 
 #: ../data/interfaces/mediachooser.ui.h:1
 msgid "Open Media Files"
-msgstr "Atverti Medija Failus"
+msgstr "Atverti medija failus"
 
 #: ../data/interfaces/playlist.ui.h:1
 #: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:806
@@ -238,7 +238,7 @@ msgstr "Grojaraštis"
 
 #: ../data/interfaces/playlist.ui.h:2
 msgid "Disc Playlist"
-msgstr "Disko Grojaraštis"
+msgstr "Disko grojaraštis"
 
 #: ../data/interfaces/playlist.ui.h:3
 msgid "Add to playlist…"
@@ -274,11 +274,11 @@ msgstr "Maišyti"
 
 #: ../data/interfaces/playlist.ui.h:11
 msgid "Move Up"
-msgstr "Perkelti Aukštyn"
+msgstr "Perkelti aukštyn"
 
 #: ../data/interfaces/playlist.ui.h:12
 msgid "Move Down"
-msgstr "Perkelti Žemyn"
+msgstr "Nuleisti žemyn"
 
 #: ../data/interfaces/playlist.ui.h:13
 msgid "Replace playlist when opening files"
@@ -351,7 +351,7 @@ msgstr "Vizualizacijos tipas:"
 
 #: ../data/interfaces/parole-settings.ui.h:9
 msgid "<b>Audio Visualization</b>"
-msgstr "<b>Garso Įrašų Vizualizavimas</b>"
+msgstr "<b>Garso įrašų vizualizavimas</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:10
 msgid "Enable keyboard multimedia keys"
@@ -371,7 +371,7 @@ msgstr "Prašome paleisti Parole iš naujo, kad įsigaliotų šis pakeitimas."
 
 #: ../data/interfaces/parole-settings.ui.h:14
 msgid "<b>Video Output</b>"
-msgstr "<b>Vaizdo Išvestis</b>"
+msgstr "<b>Vaizdo išvestis</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:15
 msgid "Brightness:"
@@ -395,7 +395,7 @@ msgstr "Atstatyti numatytuosius"
 
 #: ../data/interfaces/parole-settings.ui.h:20
 msgid "<b>Color Balance</b>"
-msgstr "<b>Spalvų Balansas</b>"
+msgstr "<b>Spalvų balansas</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:21
 msgid "Display"
@@ -415,7 +415,7 @@ msgstr "Pridėjus, pradėti atkurti"
 
 #: ../data/interfaces/parole-settings.ui.h:26
 msgid "<b>Playlist Settings</b>"
-msgstr "<b>Grojaraščio Nustatymai</b>"
+msgstr "<b>Grojaraščio nustatymai</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:28
 msgid "Automatically show subtitles when playing movie file"
@@ -431,7 +431,7 @@ msgstr "Koduotė:"
 
 #: ../data/interfaces/parole-settings.ui.h:31
 msgid "<b>Subtitle Settings</b>"
-msgstr "<b>Subtitrų Nustatymai</b>"
+msgstr "<b>Subtitrų nustatymai</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:32
 msgid "Subtitles"
@@ -443,11 +443,11 @@ msgstr "Pagal plėtinį"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "Save Playlist as…"
-msgstr "Išsaugoti Grojaraštį kaip..."
+msgstr "Išsaugoti grojaraštį kaip..."
 
 #: ../data/interfaces/save-playlist.ui.h:3
 msgid "File Type"
-msgstr "Failo Tipas"
+msgstr "Failo tipas"
 
 #: ../data/interfaces/save-playlist.ui.h:4
 msgid "Extension"
@@ -459,15 +459,15 @@ msgstr "Pasirinkite failų tipus (pagal plėtinį)"
 
 #: ../data/interfaces/open-location.ui.h:1
 msgid "Open Network Location"
-msgstr "Atverti Vietą Tinkle"
+msgstr "Atverti vietą tinkle"
 
 #: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:193
 msgid "Clear History"
-msgstr "Išvalyti Istoriją"
+msgstr "Išvalyti istoriją"
 
 #: ../data/interfaces/open-location.ui.h:3
 msgid "<big><b>Open Network Location</b></big>"
-msgstr "<big><b>Atverti Vietą Tinkle</b></big>"
+msgstr "<big><b>Atverti vietą tinkle</b></big>"
 
 #: ../data/desktop/parole.desktop.in.in.h:2
 msgid "Play your media"
@@ -480,12 +480,12 @@ msgstr "Groti/Pristabdyti"
 #: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3424
 #: ../src/plugins/notify/notify-provider.c:204
 msgid "Previous Track"
-msgstr "Ankstesnis Takelis"
+msgstr "Ankstesnis takelis"
 
 #: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3442
 #: ../src/plugins/notify/notify-provider.c:217
 msgid "Next Track"
-msgstr "Kitas Takelis"
+msgstr "Kitas takelis"
 
 #: ../data/appdata/parole.appdata.xml.in.h:1
 msgid ""
@@ -591,7 +591,7 @@ msgstr "Parole reikia <b>%s</b>, kad grotų šį failą.\nTai gali būti įdiegt
 #: ../src/gst/parole-gst.c:1535
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
-msgstr "Parole reikia <b>%s</b>, kad groti šį failą."
+msgstr "Parole reikia <b>%s</b>, kad grotų šį failą."
 
 #: ../src/gst/parole-gst.c:1946
 msgid "The stream is taking too much time to load"
@@ -611,11 +611,11 @@ msgstr "Tęsti"
 
 #: ../src/gst/parole-gst.c:2133
 msgid "GStreamer Error"
-msgstr "GStreamer Klaida"
+msgstr "GStreamer klaida"
 
 #: ../src/gst/parole-gst.c:2134
 msgid "Parole Media Player cannot start."
-msgstr "Parole Medija Grotuvas negali būti paleistas."
+msgstr "Parole medija grotuvas negali būti paleistas."
 
 #: ../src/gst/parole-gst.c:2165 ../src/gst/parole-gst.c:2181
 #: ../src/gst/parole-gst.c:2213
@@ -626,7 +626,7 @@ msgstr "Nepavyko įkelti \"%s\" įskiepio, patikrinkite savo GStreamer diegimą.
 #: ../src/gst/parole-gst.c:2845 ../src/gst/parole-gst.c:2851
 #, c-format
 msgid "Audio Track #%d"
-msgstr "Garso Takelis #%d"
+msgstr "Garso takelis #%d"
 
 #: ../src/gst/parole-gst.c:2895 ../src/gst/parole-gst.c:2901
 #, c-format
@@ -646,7 +646,7 @@ msgid ""
 "\n"
 "Please report bugs to <http://bugzilla.xfce.org/>.\n"
 "\n"
-msgstr "\nParole Medija Grotuvas %s\n\nXfce Goodies Projekto Dalis\nhttp://goodies.xfce.org\n\nLicencijuota pagal GNU GPL.\n\nApie klaidas prašome pranešti adresu <http://bugzilla.xfce.org/>.\n\n"
+msgstr "\nParole medija grotuvas %s\n\nXfce Goodies projekto dalis\nhttp://goodies.xfce.org\n\nLicencijuota pagal GNU GPL.\n\nApie klaidas prašome pranešti adresu <http://bugzilla.xfce.org/>.\n\n"
 
 #: ../src/main.c:241
 msgid "Open a new instance"
@@ -790,16 +790,16 @@ msgstr "Atverti aplanką"
 
 #: ../src/parole-player.c:535
 msgid "Hide Playlist"
-msgstr "Slėpti Grojaraštį"
+msgstr "Slėpti grojaraštį"
 
 #: ../src/parole-player.c:535 ../src/parole-player.c:3484
 msgid "Show Playlist"
-msgstr "Rodyti Grojaraštį"
+msgstr "Rodyti grojaraštį"
 
 #. Build the FileChooser dialog for subtitle selection.
 #: ../src/parole-player.c:1017
 msgid "Select Subtitle File"
-msgstr "Pasirinkti Subtitrų Failą"
+msgstr "Pasirinkti subtitrų failą"
 
 #: ../src/parole-player.c:1022 ../src/parole-player.c:1226
 #: ../src/parole-player.c:2863 ../src/plugins/tray/tray-provider.c:338
@@ -812,11 +812,11 @@ msgstr "Atverti"
 
 #: ../src/parole-player.c:1041
 msgid "Subtitle Files"
-msgstr "Subtitrų Failai"
+msgstr "Subtitrų failai"
 
 #: ../src/parole-player.c:1222 ../src/parole-player.c:1230
 msgid "Clear Recent Items"
-msgstr "Išvalyti Vėliausius Elementus"
+msgstr "Išvalyti vėliausius elementus"
 
 #: ../src/parole-player.c:1224
 msgid ""
@@ -847,7 +847,7 @@ msgstr "iš"
 
 #: ../src/parole-player.c:1889 ../src/plugins/notify/notify-provider.c:145
 msgid "Unknown Album"
-msgstr "Nežinomas Albumas"
+msgstr "Nežinomas albumas"
 
 #: ../src/parole-player.c:1896 ../src/parole-player.c:1900
 msgid "by"
@@ -855,7 +855,7 @@ msgstr "kurią atlieka"
 
 #: ../src/parole-player.c:1900 ../src/plugins/notify/notify-provider.c:147
 msgid "Unknown Artist"
-msgstr "Nežinomas Atlikėjas"
+msgstr "Nežinomas atlikėjas"
 
 #: ../src/parole-player.c:1934
 msgid "Buffering"
@@ -934,7 +934,7 @@ msgstr "_Išvalyti vėliausius elementus..."
 
 #: ../src/parole-player.c:3654
 msgid "Audio Track:"
-msgstr "Garso Takelis:"
+msgstr "Garso takelis:"
 
 #: ../src/parole-player.c:3673
 msgid "Subtitles:"
@@ -1160,12 +1160,12 @@ msgstr "Rodyti pranešimus apie šiuo metu grojamus takelius"
 #. * Previous Track
 #: ../src/plugins/tray/tray-provider.c:139
 msgid "P_revious Track"
-msgstr "_Ankstesnis Takelis"
+msgstr "_Ankstesnis takelis"
 
 #. * Next Track
 #: ../src/plugins/tray/tray-provider.c:148
 msgid "_Next Track"
-msgstr "_Kitas Takelis"
+msgstr "_Kitas takelis"
 
 #. * Open
 #: ../src/plugins/tray/tray-provider.c:164
