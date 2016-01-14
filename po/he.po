@@ -4,14 +4,14 @@
 # 
 # Translators:
 # GenghisKhan <genghiskhan@gmx.ca>, 2015
-# GenghisKhan <genghiskhan@gmx.ca>, 2015
+# GenghisKhan <genghiskhan@gmx.ca>, 2015-2016
 # Yaron Shahrabani <sh.yaron@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-07 18:30+0200\n"
-"PO-Revision-Date: 2015-11-14 03:42+0000\n"
+"POT-Creation-Date: 2016-01-11 06:30+0100\n"
+"PO-Revision-Date: 2016-01-14 04:14+0000\n"
 "Last-Translator: GenghisKhan <genghiskhan@gmx.ca>\n"
 "Language-Team: Hebrew (http://www.transifex.com/xfce/xfce-apps/language/he/)\n"
 "MIME-Version: 1.0\n"
@@ -69,7 +69,7 @@ msgid "_Shuffle"
 msgstr "_ערבל"
 
 #. Create dialog
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2848
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2860
 msgid "Go to position"
 msgstr "עבור אל מיקום"
 
@@ -129,8 +129,8 @@ msgstr "ה_שתק"
 msgid "_Video"
 msgstr "_וידאו"
 
-#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2038
-#: ../src/parole-player.c:2152
+#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2050
+#: ../src/parole-player.c:2164
 msgid "_Fullscreen"
 msgstr "_מסך מלא"
 
@@ -233,7 +233,7 @@ msgstr "פתח קבצי מדיה"
 
 #: ../data/interfaces/playlist.ui.h:1
 #: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:806
-#: ../src/parole-medialist.c:849 ../src/parole-player.c:3262
+#: ../src/parole-medialist.c:849 ../src/parole-player.c:3274
 msgid "Playlist"
 msgstr "רשימת נגינה"
 
@@ -478,12 +478,12 @@ msgstr "נגן את המדיה שלך"
 msgid "Play/Pause"
 msgstr "נגן/השהה"
 
-#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3412
+#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3424
 #: ../src/plugins/notify/notify-provider.c:204
 msgid "Previous Track"
 msgstr "רצועה קודמת"
 
-#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3430
+#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3442
 #: ../src/plugins/notify/notify-provider.c:217
 msgid "Next Track"
 msgstr "רצועה הבאה"
@@ -791,7 +791,7 @@ msgstr "פתח תיקייה מכילה"
 msgid "Hide Playlist"
 msgstr "הסתר רשימת נגינה"
 
-#: ../src/parole-player.c:535 ../src/parole-player.c:3472
+#: ../src/parole-player.c:535 ../src/parole-player.c:3484
 msgid "Show Playlist"
 msgstr "הצג רשימת נגינה"
 
@@ -801,7 +801,7 @@ msgid "Select Subtitle File"
 msgstr "בחר קובץ כתוביות"
 
 #: ../src/parole-player.c:1022 ../src/parole-player.c:1226
-#: ../src/parole-player.c:2851 ../src/plugins/tray/tray-provider.c:338
+#: ../src/parole-player.c:2863 ../src/plugins/tray/tray-provider.c:338
 msgid "Cancel"
 msgstr "ביטול"
 
@@ -811,7 +811,7 @@ msgstr "פתח"
 
 #: ../src/parole-player.c:1041
 msgid "Subtitle Files"
-msgstr "קובצי כתוביות"
+msgstr "קבצי כתוביות"
 
 #: ../src/parole-player.c:1222 ../src/parole-player.c:1230
 msgid "Clear Recent Items"
@@ -839,112 +839,108 @@ msgstr "השהה"
 msgid "GStreamer backend error"
 msgstr "שגיאת מגשר עורפי GStreamer"
 
-#: ../src/parole-player.c:1864
-msgid "Unknown Song"
-msgstr "שיר לא ידוע"
-
-#: ../src/parole-player.c:1869 ../src/parole-player.c:1871
-#: ../src/parole-player.c:1877
+#: ../src/parole-player.c:1881 ../src/parole-player.c:1883
+#: ../src/parole-player.c:1889
 msgid "on"
 msgstr "מתוך"
 
-#: ../src/parole-player.c:1877 ../src/plugins/notify/notify-provider.c:145
+#: ../src/parole-player.c:1889 ../src/plugins/notify/notify-provider.c:145
 msgid "Unknown Album"
 msgstr "אלבום לא ידוע"
 
-#: ../src/parole-player.c:1884 ../src/parole-player.c:1888
+#: ../src/parole-player.c:1896 ../src/parole-player.c:1900
 msgid "by"
 msgstr "מאת"
 
-#: ../src/parole-player.c:1888 ../src/plugins/notify/notify-provider.c:147
+#: ../src/parole-player.c:1900 ../src/plugins/notify/notify-provider.c:147
 msgid "Unknown Artist"
 msgstr "אמן לא ידוע"
 
-#: ../src/parole-player.c:1922
+#: ../src/parole-player.c:1934
 msgid "Buffering"
 msgstr "כעת אוגר"
 
-#: ../src/parole-player.c:2039 ../src/parole-player.c:3447
+#: ../src/parole-player.c:2051 ../src/parole-player.c:3459
 msgid "Fullscreen"
 msgstr "מסך מלא"
 
-#: ../src/parole-player.c:2052
+#: ../src/parole-player.c:2064
 msgid "Leave _Fullscreen"
 msgstr "עזוב _מסך מלא"
 
-#: ../src/parole-player.c:2053
+#: ../src/parole-player.c:2065
 msgid "Leave Fullscreen"
 msgstr "עזוב מסך מלא"
 
 #. Play menu item
 #. * Play pause
-#: ../src/parole-player.c:2120 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2132 ../src/plugins/tray/tray-provider.c:130
 msgid "_Pause"
 msgstr "_השהה"
 
-#: ../src/parole-player.c:2120 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2132 ../src/plugins/tray/tray-provider.c:130
 msgid "_Play"
 msgstr "_נגן"
 
 #. * Previous item in playlist.
-#: ../src/parole-player.c:2134
+#: ../src/parole-player.c:2146
 msgid "_Previous"
 msgstr "_קודם"
 
 #. * Next item in playlist.
-#: ../src/parole-player.c:2143
+#: ../src/parole-player.c:2155
 msgid "_Next"
 msgstr "ה_בא"
 
 #. * Un/Full screen
-#: ../src/parole-player.c:2152
+#: ../src/parole-player.c:2164
 msgid "_Leave Fullscreen"
 msgstr "_עזוב מסך מלא"
 
 #. * Un/Hide menubar
-#: ../src/parole-player.c:2166
+#: ../src/parole-player.c:2178
 msgid "Show menubar"
 msgstr "הצג שורת תפריט"
 
-#: ../src/parole-player.c:2426
+#: ../src/parole-player.c:2438
 msgid "Mute"
 msgstr "השתק"
 
-#: ../src/parole-player.c:2431
+#: ../src/parole-player.c:2443
 msgid "Unmute"
 msgstr "בטל השתקה"
 
-#: ../src/parole-player.c:2820
+#: ../src/parole-player.c:2832
 msgid "Unable to open default web browser"
 msgstr "לא מסוגל לפתוח דפדפן רשת"
 
-#: ../src/parole-player.c:2822
+#: ../src/parole-player.c:2834
 msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr "אנא פנה אל http://docs.xfce.org/apps/parole/bugs כדי לדווח על הבאג שלך."
 
-#: ../src/parole-player.c:2852
+#: ../src/parole-player.c:2864
 msgid "Go"
 msgstr "עבור"
 
-#: ../src/parole-player.c:2865
+#: ../src/parole-player.c:2877
 msgid "Position:"
 msgstr "מיקום:"
 
 #. Clear Recent Menu Item
-#: ../src/parole-player.c:3303
+#: ../src/parole-player.c:3315
 msgid "_Clear recent items…"
 msgstr "_טהר פריטים אחרונים…"
 
-#: ../src/parole-player.c:3642
+#: ../src/parole-player.c:3654
 msgid "Audio Track:"
 msgstr "רצועת שמע:"
 
-#: ../src/parole-player.c:3661
+#: ../src/parole-player.c:3673
 msgid "Subtitles:"
 msgstr "כתוביות:"
 
 #. Add a close button to the Infobar
-#: ../src/parole-player.c:3667 ../src/plugins/tray/tray-provider.c:273
+#: ../src/parole-player.c:3679 ../src/plugins/tray/tray-provider.c:273
 msgid "Close"
 msgstr "סגור"
 
