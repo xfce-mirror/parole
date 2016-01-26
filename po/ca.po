@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-11 06:30+0100\n"
-"PO-Revision-Date: 2016-01-13 00:31+0000\n"
+"PO-Revision-Date: 2016-01-26 15:29+0000\n"
 "Last-Translator: Davidmp <medipas@gmail.com>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfce-apps/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -492,31 +492,31 @@ msgid ""
 "Parole is a modern simple media player based on the GStreamer framework and "
 "written to fit well in the Xfce desktop. It is designed with simplicity, "
 "speed and resource usage in mind."
-msgstr ""
+msgstr "El Parole és un reproductor multimèdia simple modern basat en el marc del GStreamer i escrit per encaixar bé a l'escriptori Xfce. S'ha dissenyat tenint en compte la simplicitat, la velocitat i l'ús de recursos."
 
 #: ../data/appdata/parole.appdata.xml.in.h:2
 msgid ""
 "Parole features playback of local media files, including video with "
 "subtitles support, Audio CDs, DVDs, and live streams. Parole is also "
 "extensible via plugins."
-msgstr ""
+msgstr "El Parole compta amb la reproducció de fitxers de mitjans locals, inclou vídeo amb  suport de subtítols, CD d'àudio, DVD i vídeos en viu. És extensible a través de connectors."
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid ""
 "This release improves the build process and includes several bug fixes. This"
 " new stable release is a recommended upgrade for all users."
-msgstr ""
+msgstr "Aquesta versió millora el procés de construcció i inclou diverses correccions d'errors. Aquesta nova versió estable és una actualització recomanada per a tots els usuaris."
 
 #: ../data/appdata/parole.appdata.xml.in.h:4
 msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
-msgstr ""
+msgstr "Aquesta versió de desenvolupament inestable afegeix el nou rerefons clutter i neteja símbols gtk3 en desús. També afegeix una característica d'\"anar a la posició\" i s'han abordat diversos errors."
 
 #: ../data/appdata/parole.appdata.xml.in.h:5
 msgid "This release fixes a problem with detecting DVD drive locations."
-msgstr ""
+msgstr "Aquesta versió corregeix un problema amb la detecció d'ubicacions d'unitats de DVD."
 
 #: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
@@ -525,20 +525,20 @@ msgid ""
 "playlists. Furthermore existing plugins have been improved and a new one has"
 " been added (MPRIS2). Most of the artwork has been updated for this release "
 "and we use the GStreamer1.0 framework now by default."
-msgstr ""
+msgstr "Aquesta versió compta amb la transició completa a les eines Gtk+3, millores a la interfície d'usuari (menús més racionals) i millors llistes de reproducció. A més, els connectors existents s'han millorat i se n'ha afegit un de nou (MPRIS2). La major part de l'obra artística s'ha actualitzat per a aquesta versió i utilitzem el marc GStreamer1.0 ara per defecte."
 
 #: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This unstable development release features mostly bugfixes and introduces "
 "the new MPRIS2 plugin."
-msgstr ""
+msgstr "Aquesta versió de desenvolupament inestable compta sobretot amb correccions d'errors i introdueix el nou connector MPRIS2."
 
 #: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
 "This is a bugfix release which fixes the loading of playlists with relative "
 "paths, improves the file-filters for audio/video mimetypes and fixes the "
 "\"Remove duplicates\" functionality."
-msgstr ""
+msgstr "Aquesta és una versió de correcció d'errors que corregeix la càrrega de llistes de reproducció amb rutes relatives, millora els filtres de fitxers de tipus MIME d'àudio / vídeo i corregeix la funcionalitat \"Elimina duplicats\"."
 
 #: ../data/appdata/parole.appdata.xml.in.h:9
 msgid ""
@@ -546,7 +546,7 @@ msgid ""
 "toolkit, improvements in the user-interface (more streamlined menus), better"
 " playlists. It also brings updated artwork, GStreamer1.0 support, improved "
 "plugins and the occasional bugfix."
-msgstr ""
+msgstr "Aquesta versió de desenvolupament inestable compta amb el port complet a les eines Gtk+3, millores a la interfície d'usuari (menús més racionals), millors llistes de reproducció. També té obra artística actualitzada, suport de GStreamer 1.0, la millora de connectors i la correcció d'errors."
 
 #: ../src/common/parole-common.c:88
 msgid "Message"
@@ -621,7 +621,7 @@ msgstr "El reproductor multimèdia Parole no es pot inciar."
 #: ../src/gst/parole-gst.c:2213
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
-msgstr ""
+msgstr "No es pot carregar el connector \"%s\", comproveu la instal·lació del GStreamer."
 
 #: ../src/gst/parole-gst.c:2845 ../src/gst/parole-gst.c:2851
 #, c-format
@@ -646,7 +646,7 @@ msgid ""
 "\n"
 "Please report bugs to <http://bugzilla.xfce.org/>.\n"
 "\n"
-msgstr ""
+msgstr "\nParole Media Player %s\n\nPart del projecte Xfce Goodies\nhttp://goodies.xfce.org\n\nAmb llicència de GNU GPL.\n\nSi us plau, informeu d'errors a <http://bugzilla.xfce.org/>.\n\n"
 
 #: ../src/main.c:241
 msgid "Open a new instance"
