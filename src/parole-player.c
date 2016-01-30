@@ -3377,7 +3377,7 @@ parole_player_init (ParolePlayer *player)
                         G_CALLBACK (parole_player_drag_data_received_cb), player);
 
     // Background Image
-    logo = gdk_pixbuf_new_from_file (g_strdup_printf ("%s/parole.png", PIXMAPS_DIR), NULL);
+    logo = gdk_pixbuf_new_from_file (g_strdup_printf ("%s/play.png", PIXMAPS_DIR), NULL);
     player->priv->logo_image = GTK_WIDGET (gtk_builder_get_object (builder, "logo"));
     gtk_image_set_from_pixbuf(GTK_IMAGE(player->priv->logo_image), logo);
 

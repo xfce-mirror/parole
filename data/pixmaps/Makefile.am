@@ -1,5 +1,6 @@
 pixmaps =					\
-	parole.png              \
+	play.png				\
+	replay.png				\
 	no-cover.png
 
 pixmaps_DATA =					\
