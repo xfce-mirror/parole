@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-11 06:30+0100\n"
-"PO-Revision-Date: 2016-02-07 22:01+0000\n"
+"PO-Revision-Date: 2016-02-08 22:26+0000\n"
 "Last-Translator: Apostolos Papadimitriu <apostolos.papadimitriu@gmail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/xfce/xfce-apps/language/el/)\n"
 "MIME-Version: 1.0\n"
@@ -83,11 +83,11 @@ msgstr "Μενού _DVD"
 
 #: ../data/interfaces/parole.ui.h:15
 msgid "_Title Menu"
-msgstr "Μενού _Τίτλου"
+msgstr "Μενού _τίτλου"
 
 #: ../data/interfaces/parole.ui.h:16
 msgid "_Audio Menu"
-msgstr "Μενού _Ήχου"
+msgstr "Μενού _ήχου"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "A_ngle Menu"
@@ -99,7 +99,7 @@ msgstr "_Κεφάλαια"
 
 #: ../data/interfaces/parole.ui.h:19
 msgid "_Chapter Menu"
-msgstr "_Μενού Κεφαλαίων"
+msgstr "_Μενού κεφαλαίων"
 
 #: ../data/interfaces/parole.ui.h:20
 msgid "_Audio"
@@ -107,7 +107,7 @@ msgstr "_Ήχος"
 
 #: ../data/interfaces/parole.ui.h:21
 msgid "_Audio Track"
-msgstr "_Κομμάτι Ήχου"
+msgstr "_Κομμάτι ήχου"
 
 #: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:831
 msgid "Empty"
@@ -132,7 +132,7 @@ msgstr "_Βίντεο"
 #: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2050
 #: ../src/parole-player.c:2164
 msgid "_Fullscreen"
-msgstr "Πλήρης Οθόνη"
+msgstr "Πλήρης οθόνη"
 
 #: ../data/interfaces/parole.ui.h:28
 msgid "_Aspect Ratio"
@@ -275,11 +275,11 @@ msgstr "Τυχαία αναπαραγωγή"
 
 #: ../data/interfaces/playlist.ui.h:11
 msgid "Move Up"
-msgstr "Μετακίνηση Πάνω"
+msgstr "Μετακίνηση πάνω"
 
 #: ../data/interfaces/playlist.ui.h:12
 msgid "Move Down"
-msgstr "Μετακίνηση Κάτω"
+msgstr "Μετακίνηση κάτω"
 
 #: ../data/interfaces/playlist.ui.h:13
 msgid "Replace playlist when opening files"
@@ -320,11 +320,11 @@ msgstr "Επίσκεψη στην ιστοσελίδα"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "X Window System (X11/XShm/Xv)"
-msgstr "Σύστημα Παραθύρων Χ (X11/XShm/Xv)"
+msgstr "Σύστημα παραθύρων Χ (X11/XShm/Xv)"
 
 #: ../data/interfaces/parole-settings.ui.h:2
 msgid "X Window System (No Xv)"
-msgstr "Σύστημα Παραθύρων X (Χωρίς Xv)"
+msgstr "Σύστημα παραθύρων X (Χωρίς Xv)"
 
 #: ../data/interfaces/parole-settings.ui.h:3
 msgid "Parole Settings"
@@ -352,7 +352,7 @@ msgstr "Είδος οπτικού εφέ:"
 
 #: ../data/interfaces/parole-settings.ui.h:9
 msgid "<b>Audio Visualization</b>"
-msgstr "<b>Οπτικοποίηση Ήχου</b>"
+msgstr "<b>Οπτικοποίηση ήχου</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:10
 msgid "Enable keyboard multimedia keys"
@@ -372,7 +372,7 @@ msgstr "Επανεκκινήστε το Parole για να ενεργοποιη�
 
 #: ../data/interfaces/parole-settings.ui.h:14
 msgid "<b>Video Output</b>"
-msgstr "<b>Έξοδος Βίντεο</b>"
+msgstr "<b>Έξοδος βίντεο</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:15
 msgid "Brightness:"
@@ -396,7 +396,7 @@ msgstr "Επαναφορά αρχικών τιμών"
 
 #: ../data/interfaces/parole-settings.ui.h:20
 msgid "<b>Color Balance</b>"
-msgstr "<b>Ισορροπία Χρωμάτων</b>"
+msgstr "<b>Ισορροπία χρωμάτων</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:21
 msgid "Display"
@@ -416,7 +416,7 @@ msgstr "Εκκίνιση αναπαραγωγής ανοιγμένων αρχε�
 
 #: ../data/interfaces/parole-settings.ui.h:26
 msgid "<b>Playlist Settings</b>"
-msgstr "<b>Ρυθμίσεις Λιστών Αναπαραγωγής</b>"
+msgstr "<b>Ρυθμίσεις λιστών αναπαραγωγής</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:28
 msgid "Automatically show subtitles when playing movie file"
@@ -432,7 +432,7 @@ msgstr "Κωδικοποίηση:"
 
 #: ../data/interfaces/parole-settings.ui.h:31
 msgid "<b>Subtitle Settings</b>"
-msgstr "<b>Ρυθμίσεις Υποτίτλων</b>"
+msgstr "<b>Ρυθμίσεις υποτίτλων</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:32
 msgid "Subtitles"
@@ -444,11 +444,11 @@ msgstr "Κατά επέκταση"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "Save Playlist as…"
-msgstr "Αποθήκευση Λίστας Αναπαραγωγής ως..."
+msgstr "Αποθήκευση λίστας αναπαραγωγής ως..."
 
 #: ../data/interfaces/save-playlist.ui.h:3
 msgid "File Type"
-msgstr "Τύπος Αρχείου"
+msgstr "Τύπος αρχείου"
 
 #: ../data/interfaces/save-playlist.ui.h:4
 msgid "Extension"
@@ -663,7 +663,7 @@ msgstr "Ορισμός της διαδρομής της συσκευής Audio-C
 
 #: ../src/main.c:244
 msgid "Start in embedded mode"
-msgstr ""
+msgstr "Εκκίνηση σε ενσωματωμένη κατάσταση λειτουργίας"
 
 #: ../src/main.c:245
 msgid "Start in fullscreen mode"
@@ -731,15 +731,15 @@ msgstr "Όλα τα αρχεία"
 #, c-format
 msgid "Playlist (%i item)"
 msgid_plural "Playlist (%i items)"
-msgstr[0] "Λίστα Αναπαραγωγής (%i αντικείμενο)"
-msgstr[1] "Λίστα Αναπαραγωγής (%i αντικείμενα)"
+msgstr[0] "Λίστα αναπαραγωγής (%i αντικείμενο)"
+msgstr[1] "Λίστα αναπαραγωγής (%i αντικείμενα)"
 
 #: ../src/parole-medialist.c:223 ../src/parole-medialist.c:1590
 #, c-format
 msgid "Playlist (%i chapter)"
 msgid_plural "Playlist (%i chapters)"
 msgstr[0] "Λίστα Αναπαραγωγής (%i κεφάλαιο)"
-msgstr[1] "Λίστα Αναπαραγωγής (%i κεφάλαια)"
+msgstr[1] "Λίστα αναπαραγωγής (%i κεφάλαια)"
 
 #: ../src/parole-medialist.c:409 ../src/parole-player.c:738
 #, c-format
@@ -789,11 +789,11 @@ msgstr "Άνοιγμα φακέλου που τα περιέχει"
 
 #: ../src/parole-player.c:535
 msgid "Hide Playlist"
-msgstr "Απόκρυψη Λίστας Αναπαραγωγής"
+msgstr "Απόκρυψη λίστας αναπαραγωγής"
 
 #: ../src/parole-player.c:535 ../src/parole-player.c:3484
 msgid "Show Playlist"
-msgstr "Εμφάνιση Λίστας Αναπαραγωγής"
+msgstr "Εμφάνιση λίστας αναπαραγωγής"
 
 #. Build the FileChooser dialog for subtitle selection.
 #: ../src/parole-player.c:1017
@@ -815,7 +815,7 @@ msgstr "Αρχεία υποτίτλων"
 
 #: ../src/parole-player.c:1222 ../src/parole-player.c:1230
 msgid "Clear Recent Items"
-msgstr "Καθαρισμός Πρόσφατων Αντικειμένων"
+msgstr "Καθαρισμός πρόσφατων αντικειμένων"
 
 #: ../src/parole-player.c:1224
 msgid ""
@@ -866,11 +866,11 @@ msgstr "Πλήρης Οθόνη"
 
 #: ../src/parole-player.c:2064
 msgid "Leave _Fullscreen"
-msgstr "Έξοδος από την _Πλήρη Οθόνη"
+msgstr "Έξοδος από την _πλήρη οθόνη"
 
 #: ../src/parole-player.c:2065
 msgid "Leave Fullscreen"
-msgstr "Έξοδος από την Πλήρη Οθόνη"
+msgstr "Έξοδος από την πλήρη οθόνη"
 
 #. Play menu item
 #. * Play pause
@@ -895,7 +895,7 @@ msgstr "Επόμενο"
 #. * Un/Full screen
 #: ../src/parole-player.c:2164
 msgid "_Leave Fullscreen"
-msgstr "_Έξοδος από την Πλήρη Οθόνη"
+msgstr "_Έξοδος από την πλήρη οθόνη"
 
 #. * Un/Hide menubar
 #: ../src/parole-player.c:2178
@@ -908,7 +908,7 @@ msgstr "Σίγαση"
 
 #: ../src/parole-player.c:2443
 msgid "Unmute"
-msgstr "Αναίρεση Σίγασης"
+msgstr "Αναίρεση σίγασης"
 
 #: ../src/parole-player.c:2832
 msgid "Unable to open default web browser"
@@ -1164,7 +1164,7 @@ msgstr "Προηγούμενο Κομμάτι"
 #. * Next Track
 #: ../src/plugins/tray/tray-provider.c:148
 msgid "_Next Track"
-msgstr "Επόμενο Κομμάτι"
+msgstr "Επόμενο κομμάτι"
 
 #. * Open
 #: ../src/plugins/tray/tray-provider.c:164
