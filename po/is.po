@@ -1,24 +1,27 @@
-# translation of parole.master.untitled.po to Icelandic
-# Copyright (C) 2011 Free Software Foundation
-# This file is distributed under the same license as the PAROLE package.
-#
-# Sveinn í Felli <sveinki@nett.is>, 2011.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Sveinn í Felli <sv1@fellsnet.is>, 2011,2014,2016
+# Sveinn í Felli <sv1@fellsnet.is>, 2011
 msgid ""
 msgstr ""
-"Project-Id-Version: parole.master.untitled\n"
+"Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-20 11:45+0200\n"
-"PO-Revision-Date: 2011-12-01 20:28+0000\n"
-"Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
-"Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
-"Language: \n"
+"POT-Creation-Date: 2016-01-11 06:30+0100\n"
+"PO-Revision-Date: 2016-02-10 08:05+0000\n"
+"Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
+"Language-Team: Icelandic (http://www.transifex.com/xfce/xfce-apps/language/is/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
-"Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Language: is\n"
+"Plural-Forms: nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);\n"
 
-#: ../data/interfaces/parole.ui.h:1 ../src/parole-about.c:89
+#: ../data/interfaces/parole.ui.h:1 ../data/desktop/parole.desktop.in.in.h:1
+#: ../src/parole-player.c:605 ../src/parole-player.c:1515
+#: ../src/parole-about.c:70 ../src/plugins/mpris2/mpris2-provider.c:199
 msgid "Parole Media Player"
 msgstr "Parole margmiðlunarspilari"
 
@@ -27,349 +30,610 @@ msgid "_Media"
 msgstr "_Gagnamiðill"
 
 #: ../data/interfaces/parole.ui.h:3
-#, fuzzy
-msgid "Open _location"
-msgstr "_Opna staðsetningu"
+msgid "_Open…"
+msgstr "_Opna…"
 
 #: ../data/interfaces/parole.ui.h:4
-msgid "_DVD"
-msgstr ""
+msgid "Open _Location…"
+msgstr "O_pna staðsetningu…"
 
 #: ../data/interfaces/parole.ui.h:5
-msgid "From ISO image"
-msgstr "Frá ISO diskmynd"
+msgid "Open _Recent"
+msgstr "Opna _nýlegt"
 
 #: ../data/interfaces/parole.ui.h:6
-msgid "_Edit"
-msgstr "_Breyta"
+msgid "_Save Playlist…"
+msgstr "Vista _spilunarlista…"
 
-#: ../data/interfaces/parole.ui.h:7
-#, fuzzy
-msgid "_Repeat"
-msgstr "Endurtaka"
+#: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:112
+#: ../src/parole-disc.c:154
+msgid "Insert Disc"
+msgstr "Settu inn disk"
 
-#: ../data/interfaces/parole.ui.h:8
-#, fuzzy
-msgid "_Shuffle"
-msgstr "Stokka"
+#. * Exit
+#: ../data/interfaces/parole.ui.h:8 ../src/plugins/tray/tray-provider.c:179
+msgid "_Quit"
+msgstr "_Hætta"
 
 #: ../data/interfaces/parole.ui.h:9
-#, fuzzy
-msgid "Pl_ugins"
-msgstr "Viðbætur"
+msgid "_Playback"
+msgstr "_Afspilun"
 
 #: ../data/interfaces/parole.ui.h:10
-msgid "_View"
-msgstr "S_koða"
+msgid "_Repeat"
+msgstr "Endu_rtaka"
 
 #: ../data/interfaces/parole.ui.h:11
-#, fuzzy
-msgid "Show _playlist"
-msgstr "Sýna lagalista"
+msgid "_Shuffle"
+msgstr "_Stokka"
 
-#: ../data/interfaces/parole.ui.h:12
-#, fuzzy
-msgid "_Aspect Ratio"
-msgstr "Stærðarhlutföll"
+#. Create dialog
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2860
+msgid "Go to position"
+msgstr "Fara á staðsetningu"
 
 #: ../data/interfaces/parole.ui.h:13
+msgid "_DVD"
+msgstr "_DVD"
+
+#: ../data/interfaces/parole.ui.h:14
+msgid "_DVD Menu"
+msgstr "_DVD-valmynd"
+
+#: ../data/interfaces/parole.ui.h:15
+msgid "_Title Menu"
+msgstr "_Titilvalmynd"
+
+#: ../data/interfaces/parole.ui.h:16
+msgid "_Audio Menu"
+msgstr "_Hljóðvalmynd"
+
+#: ../data/interfaces/parole.ui.h:17
+msgid "A_ngle Menu"
+msgstr "Sjó_narhornsvalmynd"
+
+#: ../data/interfaces/parole.ui.h:18
+msgid "_Chapters"
+msgstr "_Kaflar"
+
+#: ../data/interfaces/parole.ui.h:19
+msgid "_Chapter Menu"
+msgstr "_Kaflavalmynd"
+
+#: ../data/interfaces/parole.ui.h:20
+msgid "_Audio"
+msgstr "_Hljóð"
+
+#: ../data/interfaces/parole.ui.h:21
+msgid "_Audio Track"
+msgstr "_Hljóðspor"
+
+#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:831
+msgid "Empty"
+msgstr "Tómt"
+
+#: ../data/interfaces/parole.ui.h:23
+msgid "Volume _Up"
+msgstr "Hækka hljóðst_yrk"
+
+#: ../data/interfaces/parole.ui.h:24
+msgid "Volume _Down"
+msgstr "Lækka h_ljóðstyrk"
+
+#: ../data/interfaces/parole.ui.h:25
+msgid "_Mute"
+msgstr "Þa_gga niður"
+
+#: ../data/interfaces/parole.ui.h:26
+msgid "_Video"
+msgstr "_Myndmerki"
+
+#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2050
+#: ../src/parole-player.c:2164
+msgid "_Fullscreen"
+msgstr "_Fylla skjáinn"
+
+#: ../data/interfaces/parole.ui.h:28
+msgid "_Aspect Ratio"
+msgstr "Stærð_arhlutföll"
+
+#: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:759
 msgid "None"
 msgstr "Enginn"
 
-#: ../data/interfaces/parole.ui.h:14
+#: ../data/interfaces/parole.ui.h:30
 msgid "Auto"
 msgstr "Sjálfvirkt"
 
-#: ../data/interfaces/parole.ui.h:15
-#, fuzzy
+#: ../data/interfaces/parole.ui.h:31
 msgid "Square"
 msgstr "Ferningur"
 
-#: ../data/interfaces/parole.ui.h:16
+#: ../data/interfaces/parole.ui.h:32
 msgid "4:3 (TV)"
 msgstr "4:3 (sjónvarp)"
 
-#: ../data/interfaces/parole.ui.h:17
+#: ../data/interfaces/parole.ui.h:33
 msgid "16:9 (Widescreen)"
 msgstr "16:9 (víðskjár)"
 
-#: ../data/interfaces/parole.ui.h:18
+#: ../data/interfaces/parole.ui.h:34
 msgid "20:9 (DVB)"
 msgstr "20:9 (DVB)"
 
-#: ../data/interfaces/parole.ui.h:19
-msgid "Sound"
-msgstr "Hljóð"
+#: ../data/interfaces/parole.ui.h:35
+msgid "_Subtitles"
+msgstr "_Skjátextar"
 
-#: ../data/interfaces/parole.ui.h:20
-#, fuzzy
-msgid "_Mute"
-msgstr "Þagga"
+#: ../data/interfaces/parole.ui.h:36
+msgid "Select Text Subtitles…"
+msgstr "Veldu skjátextaskrá…"
 
-#: ../data/interfaces/parole.ui.h:21
-#, fuzzy
-msgid "Volume _Up"
-msgstr "Hækka hljóðstyrk"
+#: ../data/interfaces/parole.ui.h:37
+msgid "_Tools"
+msgstr "_Verkfæri"
 
-#: ../data/interfaces/parole.ui.h:22
-#, fuzzy
-msgid "Volume _Down"
-msgstr "Lækka hljóðstyrk"
+#: ../data/interfaces/parole.ui.h:38
+msgid "P_lugins"
+msgstr "Við_bætur"
 
-#: ../data/interfaces/parole.ui.h:23
+#: ../data/interfaces/parole.ui.h:39
+msgid "_Preferences"
+msgstr "_Kjörstillingar"
+
+#: ../data/interfaces/parole.ui.h:40
 msgid "_Help"
 msgstr "_Hjálp"
 
-#: ../data/interfaces/parole.ui.h:24
-#, fuzzy
-msgid "Audio Track:"
-msgstr "Fyrra spor"
+#: ../data/interfaces/parole.ui.h:41
+msgid "_Report a Bug…"
+msgstr "Tilkynna um _villu…"
 
-#: ../data/interfaces/parole.ui.h:25
-#, fuzzy
-msgid "Subtitles:"
-msgstr "<b>Skjátextar</b>"
+#: ../data/interfaces/parole.ui.h:42
+msgid "Display Parole user manual"
+msgstr "Birta Parole handbókina"
 
-#: ../data/interfaces/parole.ui.h:26
+#: ../data/interfaces/parole.ui.h:43
+msgid "_Contents"
+msgstr "_Innihald"
+
+#: ../data/interfaces/parole.ui.h:44
+msgid "_About"
+msgstr "_Um forritið"
+
+#: ../data/interfaces/parole.ui.h:45
+msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
+msgstr "<span color='#F4F4F4'><b><big>Óþekkt lag</big></b></span>"
+
+#: ../data/interfaces/parole.ui.h:46
+msgid ""
+"<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
+"Album</span></big>"
+msgstr "<big><span color='#BBBBBB'><i>á</i></span> <span color='#F4F4F4'>óþekktu albúmi</span></big>"
+
+#: ../data/interfaces/parole.ui.h:47
+msgid ""
+"<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
+"Artist</span></big>"
+msgstr "<big><span color='#BBBBBB'><i>með</i></span> <span color='#F4F4F4'>óþekktum flytjanda</span></big>"
+
+#: ../data/interfaces/parole.ui.h:48
 msgid "0:00"
-msgstr ""
+msgstr "0:00"
 
-#: ../data/interfaces/parole.ui.h:28
-#, fuzzy, no-c-format
+#: ../data/interfaces/parole.ui.h:50
+#, no-c-format
 msgid "Buffering (0%)"
-msgstr "Hleð í biðminni"
-
-#: ../data/interfaces/parole.ui.h:29
-msgid "Media player"
-msgstr "Margmiðlunarspilari"
+msgstr "Hleð í biðminni (0%)"
 
 #: ../data/interfaces/mediachooser.ui.h:1
-msgid "Parole Media Chooser"
-msgstr ""
-
-#: ../data/interfaces/mediachooser.ui.h:2
-msgid "Open media files"
+msgid "Open Media Files"
 msgstr "Opna margmiðlunarskrár"
 
-#: ../data/interfaces/mediachooser.ui.h:3
-msgid "Open"
-msgstr ""
+#: ../data/interfaces/playlist.ui.h:1
+#: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:806
+#: ../src/parole-medialist.c:849 ../src/parole-player.c:3274
+msgid "Playlist"
+msgstr "Spilunarlisti"
 
-#: ../data/interfaces/mediachooser.ui.h:4
-msgid "Scan folders recursively"
-msgstr "Leita einnig í undirmöppum"
+#: ../data/interfaces/playlist.ui.h:2
+msgid "Disc Playlist"
+msgstr "Spilunarlisti disks"
 
-#: ../data/interfaces/mediachooser.ui.h:5
-msgid "Replace playlist with opened files"
-msgstr ""
+#: ../data/interfaces/playlist.ui.h:3
+msgid "Add to playlist…"
+msgstr "Bæta við spilunarlista…"
 
-#: ../data/interfaces/mediachooser.ui.h:6
-#: ../data/interfaces/parole-settings.ui.h:20
-msgid "Start playing opened files"
-msgstr "Byrja spila opnaðar skrár"
+#: ../data/interfaces/playlist.ui.h:4
+msgid "Add"
+msgstr "Bæta við"
+
+#: ../data/interfaces/playlist.ui.h:5
+msgid "Remove selected media"
+msgstr "Fjarlægja valinn miðil"
+
+#: ../data/interfaces/playlist.ui.h:6
+msgid "Remove"
+msgstr "Fjarlægja"
+
+#: ../data/interfaces/playlist.ui.h:7
+msgid "Clear playlist"
+msgstr "Hreinsa spilunarlista"
+
+#: ../data/interfaces/playlist.ui.h:8
+msgid "Clear"
+msgstr "Hreinsa"
+
+#: ../data/interfaces/playlist.ui.h:9
+msgid "Repeat"
+msgstr "Endurtaka"
+
+#: ../data/interfaces/playlist.ui.h:10
+msgid "Shuffle"
+msgstr "Stokka"
+
+#: ../data/interfaces/playlist.ui.h:11
+msgid "Move Up"
+msgstr "Færa upp"
+
+#: ../data/interfaces/playlist.ui.h:12
+msgid "Move Down"
+msgstr "Færa niður"
+
+#: ../data/interfaces/playlist.ui.h:13
+msgid "Replace playlist when opening files"
+msgstr "Skipta út spilunarlista þegar skrár eru opnaðar"
+
+#: ../data/interfaces/playlist.ui.h:14
+msgid "Play opened files"
+msgstr "Spila opnaðar skrár"
+
+#: ../data/interfaces/playlist.ui.h:15
+#: ../data/interfaces/parole-settings.ui.h:25
+msgid "Remember playlist"
+msgstr "Muna spilunarlista"
 
 #: ../data/interfaces/plugins.ui.h:1
 msgid "Parole Plugins"
 msgstr "Parole viðbætur"
 
 #: ../data/interfaces/plugins.ui.h:2
-msgid "Media Player plugins"
-msgstr "Viðbætur fyrir margmiðlunarspilara"
+msgid "Extend your media player"
+msgstr "Bættu við eiginleika margmiðlunarspilarans"
 
 #: ../data/interfaces/plugins.ui.h:3
-msgid "Enabled"
-msgstr ""
-
-#: ../data/interfaces/plugins.ui.h:4
-#, fuzzy
 msgid "Plugin"
 msgstr "Viðbætur"
 
-#: ../data/interfaces/plugins.ui.h:5
-msgid "<b>Description:</b>"
-msgstr "<b>Lýsing:</b>"
+#: ../data/interfaces/plugins.ui.h:4
+msgid "<b>Description</b>"
+msgstr "<b>Lýsing</b>"
 
-#: ../data/interfaces/plugins.ui.h:6
-msgid "<b>Author:</b>"
+#: ../data/interfaces/plugins.ui.h:5
+msgid "<b>Author</b>"
 msgstr "<b>Höfundur:</b>"
 
-#: ../data/interfaces/plugins.ui.h:7
-msgid "<b>Site:</b>"
-msgstr "<b>Vefur:</b>"
+#: ../data/interfaces/plugins.ui.h:6
+msgid "Visit Website"
+msgstr "Fara á heimasíðu"
 
 #: ../data/interfaces/parole-settings.ui.h:1
-msgid "Parole Settings"
-msgstr ""
+msgid "X Window System (X11/XShm/Xv)"
+msgstr "X gluggakerfi (X11/XShm/Xv)"
 
 #: ../data/interfaces/parole-settings.ui.h:2
-msgid "Media Player Settings"
-msgstr ""
+msgid "X Window System (No Xv)"
+msgstr "X gluggakerfi (ekkert Xv)"
 
 #: ../data/interfaces/parole-settings.ui.h:3
-#, fuzzy
-msgid "Disable screensaver while playing movies"
-msgstr "Óvirkja skjáhvíla þegar horft er á kvikmynd"
+msgid "Parole Settings"
+msgstr "Stillingar Parole"
 
 #: ../data/interfaces/parole-settings.ui.h:4
-msgid "<b>Video</b>"
-msgstr "<b>Mynd</b>"
+msgid "Configure your media player"
+msgstr "Stilltu margmiðlunarspilarann"
 
 #: ../data/interfaces/parole-settings.ui.h:5
-msgid "Enable visualization when playing audio file"
-msgstr ""
+msgid "Disable screensaver when playing movies"
+msgstr "Gera skjáhvílu óvirka við afspilun myndskeiða"
 
 #: ../data/interfaces/parole-settings.ui.h:6
-msgid "Visualization type:"
-msgstr ""
+msgid "<b>Screensaver</b>"
+msgstr "<b>Skjáhvíla</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:7
-msgid "<b>Audio</b>"
-msgstr "<b>Hljóð</b>"
+msgid "Show visual effects when an audio file is played"
+msgstr "Sýna sjónræna effekta þegar hljóðskrá er spiluð"
 
 #: ../data/interfaces/parole-settings.ui.h:8
-msgid "Enable keyboard multimedia keys"
-msgstr ""
+msgid "Visualization type:"
+msgstr "Gerð sjónbrellna:"
 
 #: ../data/interfaces/parole-settings.ui.h:9
-#, fuzzy
-msgid "<b>Keyboard</b>"
-msgstr "<b>Mynd</b>"
+msgid "<b>Audio Visualization</b>"
+msgstr "<b>Sjónbrellur með hljóði</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:10
-#: ../src/plugins/properties/stream-properties-provider.c:341
+msgid "Enable keyboard multimedia keys"
+msgstr "Virkja margmiðlunarhnappa á lyklaborði"
+
+#: ../data/interfaces/parole-settings.ui.h:11
+msgid "<b>Keyboard</b>"
+msgstr "<b>Lyklaborð</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:12
 msgid "General"
 msgstr "Almennt"
 
-#: ../data/interfaces/parole-settings.ui.h:11
+#: ../data/interfaces/parole-settings.ui.h:13
+msgid "Please restart Parole for this change to take effect."
+msgstr "Þú þarft að endurræsa Parole til að þessi breyting taki gildi."
+
+#: ../data/interfaces/parole-settings.ui.h:14
+msgid "<b>Video Output</b>"
+msgstr "<b>Myndmerkisúttak</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:15
 msgid "Brightness:"
 msgstr "Birtustig:"
 
-#: ../data/interfaces/parole-settings.ui.h:12
+#: ../data/interfaces/parole-settings.ui.h:16
 msgid "Contrast:"
 msgstr "Birtuskil:"
 
-#: ../data/interfaces/parole-settings.ui.h:13
+#: ../data/interfaces/parole-settings.ui.h:17
 msgid "Hue:"
 msgstr "Litblær:"
 
-#: ../data/interfaces/parole-settings.ui.h:14
+#: ../data/interfaces/parole-settings.ui.h:18
 msgid "Saturation:"
 msgstr "Litmettun:"
 
-#: ../data/interfaces/parole-settings.ui.h:15
-#, fuzzy
-msgid "Reset to defaults"
-msgstr "Endursetja til Sjálfgefið"
-
-#: ../data/interfaces/parole-settings.ui.h:16
-msgid "<b>Display</b>"
-msgstr "<b>Birting</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:17
-#, fuzzy
-msgid "Display"
-msgstr "<b>Birting</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:18
-#, fuzzy
-msgid "Always replace playlist with opened files"
-msgstr "Byrja spila opnaðar skrár"
-
 #: ../data/interfaces/parole-settings.ui.h:19
-msgid "Check and remove duplicated media entries"
-msgstr ""
+msgid "Reset to defaults"
+msgstr "Frumstilla á sjálfgefin gildi"
+
+#: ../data/interfaces/parole-settings.ui.h:20
+msgid "<b>Color Balance</b>"
+msgstr "<b>Litajafnvægi</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:21
-#, fuzzy
-msgid "<b>Playlist options</b>"
-msgstr "<b>Spila:</b>"
+msgid "Display"
+msgstr "Birting"
 
-#: ../data/interfaces/parole-settings.ui.h:22 ../src/parole-medialist.c:667
-#: ../src/parole-player.c:2315
-msgid "Playlist"
-msgstr "Lagalisti"
+#: ../data/interfaces/parole-settings.ui.h:22
+msgid "Always replace playlist with opened files"
+msgstr "Alltaf skipta út spilunarlista með opnuðum skrám"
 
 #: ../data/interfaces/parole-settings.ui.h:23
-#, fuzzy
-msgid "Automatically show subtitles when playing movie file"
-msgstr "Hlaða sjálfkrafa inn undirtexta þegar horft er á myndbönd"
+msgid "Check and remove duplicate media entries"
+msgstr "Athuga með og fjarlægja endurteknar miðlafærslur"
 
 #: ../data/interfaces/parole-settings.ui.h:24
+msgid "Start playing opened files"
+msgstr "Byrja spila opnaðar skrár"
+
+#: ../data/interfaces/parole-settings.ui.h:26
+msgid "<b>Playlist Settings</b>"
+msgstr "<b>Stillingar spilunarlista</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:28
+msgid "Automatically show subtitles when playing movie file"
+msgstr "Hlaða sjálfvirkt inn skjátexta þegar horft er á myndbönd"
+
+#: ../data/interfaces/parole-settings.ui.h:29
 msgid "Font:"
 msgstr "Letur:"
 
-#: ../data/interfaces/parole-settings.ui.h:25
-#, fuzzy
+#: ../data/interfaces/parole-settings.ui.h:30
 msgid "Encoding:"
-msgstr "Afkóðun "
+msgstr "Kóðun:"
 
-#: ../data/interfaces/parole-settings.ui.h:26
-msgid "<b>Subtitles</b>"
-msgstr "<b>Skjátextar</b>"
+#: ../data/interfaces/parole-settings.ui.h:31
+msgid "<b>Subtitle Settings</b>"
+msgstr "<b>Stillingar skjátexta</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:27
-#, fuzzy
+#: ../data/interfaces/parole-settings.ui.h:32
 msgid "Subtitles"
-msgstr "<b>Skjátextar</b>"
+msgstr "Skjátextar"
 
 #: ../data/interfaces/save-playlist.ui.h:1
-msgid "Select File Types (By Extension)"
-msgstr ""
-
-#: ../data/interfaces/save-playlist.ui.h:2
 msgid "By Extension"
 msgstr "Eftir skráarendingu"
 
-#: ../data/interfaces/open-location.ui.h:1
-#, fuzzy
-msgid "Open Location"
-msgstr "_Opna staðsetningu"
+#: ../data/interfaces/save-playlist.ui.h:2
+msgid "Save Playlist as…"
+msgstr "Vista spilunarlista sem…"
 
-#: ../data/interfaces/open-location.ui.h:2
-msgid "Please enter a network URL:"
+#: ../data/interfaces/save-playlist.ui.h:3
+msgid "File Type"
+msgstr "Skráartegund"
+
+#: ../data/interfaces/save-playlist.ui.h:4
+msgid "Extension"
+msgstr "Skráarending"
+
+#: ../data/interfaces/save-playlist.ui.h:5
+msgid "Select File Types (By Extension)"
+msgstr "Veldu skráartegund (eftir skráarendingu)"
+
+#: ../data/interfaces/open-location.ui.h:1
+msgid "Open Network Location"
+msgstr "Opna staðsetningu á neti"
+
+#: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:193
+msgid "Clear History"
+msgstr "Hreinsa feril"
+
+#: ../data/interfaces/open-location.ui.h:3
+msgid "<big><b>Open Network Location</b></big>"
+msgstr "<big><b>Opna staðsetningu á neti</b></big>"
+
+#: ../data/desktop/parole.desktop.in.in.h:2
+msgid "Play your media"
+msgstr "Spilaðu efnið þitt"
+
+#: ../data/desktop/parole.desktop.in.in.h:3
+msgid "Play/Pause"
+msgstr "Spila/Bíða"
+
+#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3424
+#: ../src/plugins/notify/notify-provider.c:204
+msgid "Previous Track"
+msgstr "Fyrra spor"
+
+#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3442
+#: ../src/plugins/notify/notify-provider.c:217
+msgid "Next Track"
+msgstr "Næsta spor"
+
+#: ../data/appdata/parole.appdata.xml.in.h:1
+msgid ""
+"Parole is a modern simple media player based on the GStreamer framework and "
+"written to fit well in the Xfce desktop. It is designed with simplicity, "
+"speed and resource usage in mind."
 msgstr ""
 
-#: ../data/desktop/parole.desktop.in.in.h:1
-msgid "Parole"
-msgstr "Parole"
+#: ../data/appdata/parole.appdata.xml.in.h:2
+msgid ""
+"Parole features playback of local media files, including video with "
+"subtitles support, Audio CDs, DVDs, and live streams. Parole is also "
+"extensible via plugins."
+msgstr ""
 
-#: ../src/common/parole-common.c:67
+#: ../data/appdata/parole.appdata.xml.in.h:3
+msgid ""
+"This release improves the build process and includes several bug fixes. This"
+" new stable release is a recommended upgrade for all users."
+msgstr ""
+
+#: ../data/appdata/parole.appdata.xml.in.h:4
+msgid ""
+"This unstable development release adds the new clutter backend and cleans up"
+" deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
+"several bugs have been addressed."
+msgstr ""
+
+#: ../data/appdata/parole.appdata.xml.in.h:5
+msgid "This release fixes a problem with detecting DVD drive locations."
+msgstr ""
+
+#: ../data/appdata/parole.appdata.xml.in.h:6
+msgid ""
+"This release features the completed transition to the Gtk+3 toolkit, "
+"improvements in the user-interface (more streamlined menus), better "
+"playlists. Furthermore existing plugins have been improved and a new one has"
+" been added (MPRIS2). Most of the artwork has been updated for this release "
+"and we use the GStreamer1.0 framework now by default."
+msgstr ""
+
+#: ../data/appdata/parole.appdata.xml.in.h:7
+msgid ""
+"This unstable development release features mostly bugfixes and introduces "
+"the new MPRIS2 plugin."
+msgstr ""
+
+#: ../data/appdata/parole.appdata.xml.in.h:8
+msgid ""
+"This is a bugfix release which fixes the loading of playlists with relative "
+"paths, improves the file-filters for audio/video mimetypes and fixes the "
+"\"Remove duplicates\" functionality."
+msgstr ""
+
+#: ../data/appdata/parole.appdata.xml.in.h:9
+msgid ""
+"This unstable development release features the complete port to the Gtk+3 "
+"toolkit, improvements in the user-interface (more streamlined menus), better"
+" playlists. It also brings updated artwork, GStreamer1.0 support, improved "
+"plugins and the occasional bugfix."
+msgstr ""
+
+#: ../src/common/parole-common.c:88
 msgid "Message"
 msgstr "Skilaboð"
 
-#: ../src/common/parole-common.c:72
+#: ../src/common/parole-common.c:93
 msgid "Error"
 msgstr "Villa"
 
-#: ../src/gst/parole-gst.c:1496
+#: ../src/gst/parole-gst.c:1272 ../src/parole-medialist.c:393
+#, c-format
+msgid "Track %i"
+msgstr "Spor %i"
+
+#: ../src/gst/parole-gst.c:1275
+msgid "Audio CD"
+msgstr "CD hljóðdiskur"
+
+#: ../src/gst/parole-gst.c:1515
+msgid "Additional software is required."
+msgstr "Krefst viðbótarhugbúnaðar."
+
+#: ../src/gst/parole-gst.c:1520
+msgid "Don't Install"
+msgstr "Ekki setja upp"
+
+#: ../src/gst/parole-gst.c:1522
+msgid "Install"
+msgstr "Setja upp"
+
+#: ../src/gst/parole-gst.c:1525
+msgid "OK"
+msgstr "Í lagi"
+
+#: ../src/gst/parole-gst.c:1532
+#, c-format
+msgid ""
+"Parole needs <b>%s</b> to play this file.\n"
+"It can be installed automatically."
+msgstr "Parole þarfnast <b>%s</b> til að spila þessa skrá.\nHægt er að setja það sjálfvirkt upp."
+
+#: ../src/gst/parole-gst.c:1535
+#, c-format
+msgid "Parole needs <b>%s</b> to play this file."
+msgstr "Parole þarfnast <b>%s</b> til að spila þessa skrá."
+
+#: ../src/gst/parole-gst.c:1946
+msgid "The stream is taking too much time to load"
+msgstr "Það tekur of langan tíma að hlaða inn streyminu"
+
+#: ../src/gst/parole-gst.c:1947
+msgid "Do you want to continue loading or stop?"
+msgstr "Viltu halda áfram að hlaða inn eða hætta?"
+
+#: ../src/gst/parole-gst.c:1948
 msgid "Stop"
 msgstr "Stöðva"
 
-#: ../src/gst/parole-gst.c:1497
-msgid "The stream is taking too much time to load"
-msgstr ""
+#: ../src/gst/parole-gst.c:1949
+msgid "Continue"
+msgstr "Halda áfram"
 
-#: ../src/gst/parole-gst.c:1666
-msgid ""
-"Unable to load playbin GStreamer plugin, check your GStreamer installation"
-msgstr ""
+#: ../src/gst/parole-gst.c:2133
+msgid "GStreamer Error"
+msgstr "Villa í GStreamer"
 
-#: ../src/gst/parole-gst.c:1690
-msgid ""
-"Unable to load video GStreamer plugin, check your GStreamer installation"
-msgstr ""
+#: ../src/gst/parole-gst.c:2134
+msgid "Parole Media Player cannot start."
+msgstr "Parole margmiðlunarspilarinn ræsist ekki."
 
-#: ../src/gst/parole-gst.c:2222 ../src/gst/parole-gst.c:2226
-#, fuzzy, c-format
+#: ../src/gst/parole-gst.c:2165 ../src/gst/parole-gst.c:2181
+#: ../src/gst/parole-gst.c:2213
+#, c-format
+msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
+msgstr "Tókst ekki að hlaða inn \"%s\" viðbótinni, athugaðu GStreamer-uppsetninguna þína."
+
+#: ../src/gst/parole-gst.c:2845 ../src/gst/parole-gst.c:2851
+#, c-format
 msgid "Audio Track #%d"
-msgstr "Spor %i"
+msgstr "Hljóðspor #%d"
 
-#: ../src/gst/parole-gst.c:2254 ../src/gst/parole-gst.c:2258
+#: ../src/gst/parole-gst.c:2895 ../src/gst/parole-gst.c:2901
 #, c-format
 msgid "Subtitle #%d"
-msgstr ""
+msgstr "Skjátexti #%d"
 
-#: ../src/main.c:53
+#: ../src/main.c:59
 #, c-format
 msgid ""
 "\n"
@@ -380,188 +644,318 @@ msgid ""
 "\n"
 "Licensed under the GNU GPL.\n"
 "\n"
-msgstr ""
+"Please report bugs to <http://bugzilla.xfce.org/>.\n"
+"\n"
+msgstr "\nParole margmiðlunarspilarinn %s\n\nHluti af Xfce Goodies verkefninu\nhttp://goodies.xfce.org\n\nGefið út með GNU GPL notkunarleyfi.\n\nTilkynntu um villur til <http://bugzilla.xfce.org/>.\n\n"
 
-#: ../src/main.c:186
-msgid "Unknown argument "
-msgstr "Óþekkt frumbreyta"
-
-#: ../src/main.c:223
+#: ../src/main.c:241
 msgid "Open a new instance"
-msgstr ""
+msgstr "Opna nýtt tilvik"
 
-#: ../src/main.c:224
+#: ../src/main.c:242
 msgid "Do not load plugins"
 msgstr "Ekki hlaða inn viðbótum"
 
-#: ../src/main.c:225
+#: ../src/main.c:243
 msgid "Set Audio-CD/VCD/DVD device path"
-msgstr ""
+msgstr "Setja slóð hljóð-CD/VCD/DVD-tækis"
 
-#: ../src/main.c:226
-msgid "Play or pause if already playing"
-msgstr ""
+#: ../src/main.c:244
+msgid "Start in embedded mode"
+msgstr "Byrja í innfelldum ham"
 
-#: ../src/main.c:227
-msgid "Stop playing"
-msgstr "Stöðva spilun"
-
-#: ../src/main.c:228
-msgid "Next track"
-msgstr "Næsta lag"
-
-#: ../src/main.c:229
-msgid "Previous track"
-msgstr "Fyrra lag"
-
-#: ../src/main.c:230
-msgid "Seek forward"
-msgstr "Leita áfram"
-
-#: ../src/main.c:231
-msgid "Seek Backward"
-msgstr "Leita afturábak"
-
-#: ../src/main.c:232
-msgid "Raise volume"
-msgstr "Hækka hljóð"
-
-#: ../src/main.c:233
-msgid "Lower volume"
-msgstr "Lækka hljóð"
-
-#: ../src/main.c:234
-msgid "Mute volume"
-msgstr "Þagga niður hljóð"
-
-#: ../src/main.c:235
-msgid "Version information"
-msgstr "Útgáfuupplýsingar"
-
-#: ../src/main.c:236
+#: ../src/main.c:245
 msgid "Start in fullscreen mode"
 msgstr "Fylla allan skjáinn í byrjun"
 
-#: ../src/main.c:237
-msgid "Enabled/Disable XV support"
-msgstr ""
+#: ../src/main.c:246
+msgid "Play or pause if already playing"
+msgstr "Spila eða setja í hlé ef þegar í afspilun"
 
-#: ../src/main.c:239
+#: ../src/main.c:247
+msgid "Next track"
+msgstr "Næsta lag"
+
+#: ../src/main.c:248
+msgid "Previous track"
+msgstr "Fyrra lag"
+
+#: ../src/main.c:249
+msgid "Raise volume"
+msgstr "Hækka hljóð"
+
+#: ../src/main.c:250
+msgid "Lower volume"
+msgstr "Lækka hljóð"
+
+#: ../src/main.c:251
+msgid "Mute volume"
+msgstr "Þagga niður hljóð"
+
+#: ../src/main.c:252
+msgid "Unmute (restore) volume"
+msgstr "Endurheimta hljóðstyrk"
+
+#: ../src/main.c:253
+msgid "Add files to playlist"
+msgstr "Bæta skrám við spilunarlista"
+
+#: ../src/main.c:254
+msgid "Print version information and exit"
+msgstr "Birta upplýsingar um útgáfu og hætta"
+
+#: ../src/main.c:256
 msgid "Media to play"
 msgstr "Miðill til að spila"
 
-#: ../src/main.c:276
+#: ../src/main.c:279
+msgid "[FILES...] - Play movies and songs"
+msgstr "[SKRÁR...] - Spila kvikmyndir og tónlist"
+
+#: ../src/main.c:291
+#, c-format
+msgid "Type %s --help to list all available command line options\n"
+msgstr "Skrifaðu %s --help til að fá lista af leyfilegum valkostum á skipanalínu\n"
+
+#: ../src/main.c:309
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
-msgstr ""
+msgstr "Parole er þegar í gangi, notaðu -i til að opna nýtt tilvik\n"
 
-#: ../src/parole-medialist.c:526
+#: ../src/parole-mediachooser.c:247 ../src/parole-player.c:1053
+msgid "All files"
+msgstr "Allar skrár"
+
+#: ../src/parole-medialist.c:218 ../src/parole-medialist.c:1588
+#, c-format
+msgid "Playlist (%i item)"
+msgid_plural "Playlist (%i items)"
+msgstr[0] "Spilunarlisti (%i atriði)"
+msgstr[1] "Spilunarlisti (%i atriði)"
+
+#: ../src/parole-medialist.c:223 ../src/parole-medialist.c:1590
+#, c-format
+msgid "Playlist (%i chapter)"
+msgid_plural "Playlist (%i chapters)"
+msgstr[0] "Spilunarlisti (%i kafli)"
+msgstr[1] "Spilunarlisti (%i kaflar)"
+
+#: ../src/parole-medialist.c:409 ../src/parole-player.c:738
+#, c-format
+msgid "Chapter %i"
+msgstr "Kafli %i"
+
+#: ../src/parole-medialist.c:698
 msgid "Permission denied"
 msgstr "Aðgangi hafnað"
 
-#: ../src/parole-medialist.c:528
+#: ../src/parole-medialist.c:700
 msgid "Error saving playlist file"
-msgstr "Villa við að vista lagalista"
+msgstr "Villa við að vista spilunarlista"
 
-#: ../src/parole-medialist.c:540
+#: ../src/parole-medialist.c:712
 msgid "Unknown playlist format"
-msgstr ""
+msgstr "Óþekkt snið spilunarlista"
 
-#: ../src/parole-medialist.c:541
-msgid "Please chooser a supported playlist format"
-msgstr ""
+#: ../src/parole-medialist.c:713
+msgid "Please choose a supported playlist format"
+msgstr "Veldu eitthvað snið spilunarlista með stuðning"
 
-#: ../src/parole-medialist.c:593 ../src/parole-plugins-manager.c:378
-#: ../src/plugins/properties/stream-properties-provider.c:140
-#: ../src/plugins/properties/stream-properties-provider.c:141
-#: ../src/plugins/properties/stream-properties-provider.c:142
-#: ../src/plugins/properties/stream-properties-provider.c:143
+#: ../src/parole-medialist.c:767 ../src/parole-plugins-manager.c:369
 msgid "Unknown"
 msgstr "Óþekkt"
 
-#: ../src/parole-medialist.c:674
+#: ../src/parole-medialist.c:856
 msgid "M3U Playlists"
-msgstr "M3U lagalistar"
+msgstr "M3U spilunarlistar"
 
-#: ../src/parole-medialist.c:682
+#: ../src/parole-medialist.c:864
 msgid "PLS Playlists"
-msgstr "PLSr lagalistar"
+msgstr "PLS spilunarlistar"
 
-#: ../src/parole-medialist.c:690
+#: ../src/parole-medialist.c:872
 msgid "Advanced Stream Redirector"
 msgstr ""
 
-#: ../src/parole-medialist.c:698
+#: ../src/parole-medialist.c:880
 msgid "Shareable Playlist"
-msgstr "Deilanlegur lagalisti"
+msgstr "Deilanlegur spilunarlisti"
 
 #. Clear
-#: ../src/parole-medialist.c:1105
+#: ../src/parole-medialist.c:1219
 msgid "Open Containing Folder"
 msgstr "Opna geymslumöppu"
 
-#: ../src/parole-medialist.c:1217
-msgid "Repeat"
-msgstr "Endurtaka"
+#: ../src/parole-player.c:535
+msgid "Hide Playlist"
+msgstr "Fela spilunarlista"
 
-#: ../src/parole-medialist.c:1233
-msgid "Shuffle"
-msgstr "Stokka"
+#: ../src/parole-player.c:535 ../src/parole-player.c:3484
+msgid "Show Playlist"
+msgstr "Birta spilunarlista"
 
-#: ../src/parole-medialist.c:1256
-msgid "Replace playlist when opening files"
-msgstr ""
+#. Build the FileChooser dialog for subtitle selection.
+#: ../src/parole-player.c:1017
+msgid "Select Subtitle File"
+msgstr "Veldu skjátextaskrá"
 
-#: ../src/parole-medialist.c:1272
-msgid "Play opened files"
-msgstr "Spila opnaðar skrár"
+#: ../src/parole-player.c:1022 ../src/parole-player.c:1226
+#: ../src/parole-player.c:2863 ../src/plugins/tray/tray-provider.c:338
+msgid "Cancel"
+msgstr "Hætta við"
 
-#. *
-#. * Remember media list entries
-#. *
-#: ../src/parole-medialist.c:1284
-msgid "Remember playlist"
-msgstr "Muna lagalista"
+#: ../src/parole-player.c:1025
+msgid "Open"
+msgstr "Opna"
 
-#: ../src/parole-medialist.c:1473
-msgid "Media list"
-msgstr ""
+#: ../src/parole-player.c:1041
+msgid "Subtitle Files"
+msgstr "Skjátextaskrár"
 
-#: ../src/parole-player.c:432
-msgid "Open ISO image"
-msgstr "Opna ISO diskmynd"
+#: ../src/parole-player.c:1222 ../src/parole-player.c:1230
+msgid "Clear Recent Items"
+msgstr "Hreinsa feril nýlegra atriða"
 
-#: ../src/parole-player.c:449
-msgid "CD image"
-msgstr "CD diskmynd"
+#: ../src/parole-player.c:1224
+msgid ""
+"Are you sure you wish to clear your recent items history?  This cannot be "
+"undone."
+msgstr "Ertu viss um að þú viljir hreinsa feril nýlegra atriða? Það er ekki hægt að taka þetta aftur."
 
-#: ../src/parole-player.c:449
-msgid "DVD image"
-msgstr "DVD diskmynd"
-
-#: ../src/parole-player.c:779 ../src/parole-player.c:902
+#: ../src/parole-player.c:1323 ../src/parole-player.c:1461
 msgid "Media stream is not seekable"
-msgstr ""
+msgstr "Það er ekki hægt að leita í margmiðlunarstraumnum"
 
-#: ../src/parole-player.c:1250
+#: ../src/parole-player.c:1334
+msgid "Play"
+msgstr "Spila"
+
+#: ../src/parole-player.c:1337
+msgid "Pause"
+msgstr "Bíða"
+
+#: ../src/parole-player.c:1833
 msgid "GStreamer backend error"
-msgstr ""
+msgstr "Villa í GStreamer bakenda"
 
-#: ../src/parole-player.c:1293
+#: ../src/parole-player.c:1881 ../src/parole-player.c:1883
+#: ../src/parole-player.c:1889
+msgid "on"
+msgstr "á"
+
+#: ../src/parole-player.c:1889 ../src/plugins/notify/notify-provider.c:145
+msgid "Unknown Album"
+msgstr "óþekktu albúmi"
+
+#: ../src/parole-player.c:1896 ../src/parole-player.c:1900
+msgid "by"
+msgstr "með"
+
+#: ../src/parole-player.c:1900 ../src/plugins/notify/notify-provider.c:147
+msgid "Unknown Artist"
+msgstr "óþekktum flytjanda"
+
+#: ../src/parole-player.c:1934
 msgid "Buffering"
 msgstr "Hleð í biðminni"
 
-#: ../src/parole-about.c:95
-#, fuzzy
+#: ../src/parole-player.c:2051 ../src/parole-player.c:3459
+msgid "Fullscreen"
+msgstr "Fylla skjá"
+
+#: ../src/parole-player.c:2064
+msgid "Leave _Fullscreen"
+msgstr "Hætta í skjá_fylliham"
+
+#: ../src/parole-player.c:2065
+msgid "Leave Fullscreen"
+msgstr "Hætta í skjáfylliham"
+
+#. Play menu item
+#. * Play pause
+#: ../src/parole-player.c:2132 ../src/plugins/tray/tray-provider.c:130
+msgid "_Pause"
+msgstr "_Bíða"
+
+#: ../src/parole-player.c:2132 ../src/plugins/tray/tray-provider.c:130
+msgid "_Play"
+msgstr "_Afspilun"
+
+#. * Previous item in playlist.
+#: ../src/parole-player.c:2146
+msgid "_Previous"
+msgstr "_Fyrra"
+
+#. * Next item in playlist.
+#: ../src/parole-player.c:2155
+msgid "_Next"
+msgstr "_Næsta"
+
+#. * Un/Full screen
+#: ../src/parole-player.c:2164
+msgid "_Leave Fullscreen"
+msgstr "_Hætta í heilskjá"
+
+#. * Un/Hide menubar
+#: ../src/parole-player.c:2178
+msgid "Show menubar"
+msgstr "Sýna _valmyndastiku"
+
+#: ../src/parole-player.c:2438
+msgid "Mute"
+msgstr "Þagga hljóð"
+
+#: ../src/parole-player.c:2443
+msgid "Unmute"
+msgstr "Virkja hljóð"
+
+#: ../src/parole-player.c:2832
+msgid "Unable to open default web browser"
+msgstr "Gat ekki ræst sjálfgefinn vefvafra"
+
+#: ../src/parole-player.c:2834
+msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
+msgstr "Farðu á http://docs.xfce.org/apps/parole/bugs til að senda inn villuskýrslur."
+
+#: ../src/parole-player.c:2864
+msgid "Go"
+msgstr "Fara"
+
+#: ../src/parole-player.c:2877
+msgid "Position:"
+msgstr "Staðsetning:"
+
+#. Clear Recent Menu Item
+#: ../src/parole-player.c:3315
+msgid "_Clear recent items…"
+msgstr "_Hreinsa feril nýlegra atriða…"
+
+#: ../src/parole-player.c:3654
+msgid "Audio Track:"
+msgstr "Hljóðspor:"
+
+#: ../src/parole-player.c:3673
+msgid "Subtitles:"
+msgstr "Skjátextar:"
+
+#. Add a close button to the Infobar
+#: ../src/parole-player.c:3679 ../src/plugins/tray/tray-provider.c:273
+msgid "Close"
+msgstr "Loka"
+
+#: ../src/parole-about.c:76
 msgid "translator-credits"
-msgstr "Þýðandi (%s)"
+msgstr "Sveinn í Felli, sv1@fellsnet.is"
 
-#: ../src/parole-about.c:98
-#, fuzzy
+#: ../src/parole-about.c:79
 msgid "Visit Parole website"
-msgstr "Fara á heimasíðu"
+msgstr "Fara á heimasíðu Parole"
 
-#: ../src/parole-disc.c:227
+#: ../src/parole-conf-dialog.c:313
+msgid "Clutter (OpenGL)"
+msgstr "Clutter (OpenGL)"
+
+#: ../src/parole-disc.c:114
 msgid "Play Disc"
 msgstr "Spila disk"
 
@@ -706,18 +1100,22 @@ msgstr "Vestræn"
 msgid "Vietnamese"
 msgstr "Víetnamska"
 
-#: ../src/parole-open-location.c:210
-#, fuzzy
-msgid "Clear History"
-msgstr "Hreinsa feril"
+#. If plugin loading fails...
+#: ../src/parole-plugins-manager.c:276
+msgid "Plugin failed to load"
+msgstr "Mistókst að hlaða inn viðbót"
 
-#: ../src/parole-plugins-manager.c:302 ../src/parole-plugins-manager.c:440
-msgid "Visit Website"
-msgstr "Fara á heimasíðu"
+#: ../src/parole-plugins-manager.c:276
+msgid "Please check your installation"
+msgstr "Athugaðu uppsetninguna þína"
 
-#: ../src/parole-plugins-manager.c:418 ../src/parole-plugins-manager.c:419
+#: ../src/parole-plugins-manager.c:408
 msgid "No installed plugins found on this system"
-msgstr ""
+msgstr "Engar uppsettar viðbætur fundust á kerfinu"
+
+#: ../src/parole-plugins-manager.c:409
+msgid "Please check your installation."
+msgstr "Athugaðu uppsetninguna þína."
 
 #: ../src/misc/parole-filters.c:64
 msgid "Audio"
@@ -727,87 +1125,76 @@ msgstr "Hljóð"
 msgid "Video"
 msgstr "Myndskeið"
 
-#: ../src/misc/parole-filters.c:115
+#: ../src/misc/parole-filters.c:115 ../src/misc/parole-filters.c:133
 msgid "Audio and video"
 msgstr "Hljóð og mynd"
 
-#: ../src/misc/parole-filters.c:144
+#: ../src/misc/parole-filters.c:162 ../src/misc/parole-filters.c:178
 msgid "All supported files"
 msgstr "Allar studdar skrár"
 
-#: ../src/misc/parole-filters.c:171
+#: ../src/misc/parole-filters.c:205
 msgid "Playlist files"
-msgstr "Lagalistaskrár"
+msgstr "Spilunarlistaskrár"
 
-#: ../src/plugins/properties/stream-properties-provider.c:254
-msgid "Title:"
-msgstr "Titill:"
+#: ../src/plugins/notify/notify-provider.c:150
+#: ../src/plugins/notify/notify-provider.c:153
+msgid "<i>on</i>"
+msgstr "<i>á</i>"
 
-#: ../src/plugins/properties/stream-properties-provider.c:277
-msgid "Artist:"
-msgstr "Flytjandi:"
+#: ../src/plugins/notify/notify-provider.c:150
+#: ../src/plugins/notify/notify-provider.c:153
+msgid "<i>by</i>"
+msgstr "<i>með</i>"
 
-#: ../src/plugins/properties/stream-properties-provider.c:300
-msgid "Album:"
-msgstr "Plata:"
+#: ../src/plugins/notify/notify.desktop.in.h:1
+msgid "Notify"
+msgstr "Tilkynna"
 
-#: ../src/plugins/properties/stream-properties-provider.c:323
-msgid "Year:"
-msgstr "Ár:"
+#: ../src/plugins/notify/notify.desktop.in.h:2
+msgid "Show notifications for currently playing tracks"
+msgstr "Birta upplýsingar um spilandi lög í tilkynningakerfi"
 
-#: ../src/plugins/properties/stream-properties-provider.c:392
-msgid "Stream doesn't support tags changes"
-msgstr ""
+#. * Previous Track
+#: ../src/plugins/tray/tray-provider.c:139
+msgid "P_revious Track"
+msgstr "Fy_rra spor"
 
-#: ../src/plugins/properties/stream-properties-provider.c:399
-msgid "Save media tags changes"
-msgstr ""
+#. * Next Track
+#: ../src/plugins/tray/tray-provider.c:148
+msgid "_Next Track"
+msgstr "_Næsta spor"
 
-#: ../src/plugins/properties/stream-properties-provider.c:524
-msgid "Properties"
-msgstr "Eiginleikar"
+#. * Open
+#: ../src/plugins/tray/tray-provider.c:164
+msgid "_Open"
+msgstr "_Opna"
 
-#: ../src/plugins/properties/stream-properties.desktop.in.h:1
-msgid "Stream Properties"
-msgstr "Eiginleikar straums"
-
-#: ../src/plugins/properties/stream-properties.desktop.in.h:2
-msgid "Read media properties"
-msgstr ""
-
-#: ../src/plugins/tray/tray-provider.c:283
-msgid "<b>Playing:</b>"
-msgstr "<b>Spila:</b>"
-
-#: ../src/plugins/tray/tray-provider.c:283
-msgid "<b>Duration:</b>"
-msgstr "<b>Lengd:</b>"
-
-#: ../src/plugins/tray/tray-provider.c:419
+#: ../src/plugins/tray/tray-provider.c:270
 msgid "Tray icon plugin"
-msgstr ""
+msgstr "Viðbót fyrir táknmynd í kerfisbakka"
 
-#: ../src/plugins/tray/tray-provider.c:429
-msgid "Enable notification"
-msgstr ""
-
-#: ../src/plugins/tray/tray-provider.c:438
+#: ../src/plugins/tray/tray-provider.c:280
 msgid "Always minimize to tray when window is closed"
-msgstr ""
+msgstr "Alltaf lágmarka í kerfisbakka þegar glugga er lokað"
 
-#: ../src/plugins/tray/tray-provider.c:477
-msgid "Minimize to tray?"
-msgstr ""
+#: ../src/plugins/tray/tray-provider.c:326
+msgid "Are you sure you want to quit?"
+msgstr "Ertu viss að þú viljir hætta?"
 
-#: ../src/plugins/tray/tray-provider.c:483
+#: ../src/plugins/tray/tray-provider.c:329
+msgid "Parole can be minimized to the system tray instead."
+msgstr "Hægt er að lágmarka Parole í kerfisbakkann í staðinn."
+
+#: ../src/plugins/tray/tray-provider.c:332
 msgid "Minimize to tray"
-msgstr ""
+msgstr "Lágmarka í kerfisbakka"
 
-#: ../src/plugins/tray/tray-provider.c:499
-msgid "Are you sure you want to quit Parole"
-msgstr "Ertu viss að þú viljir hætta nota Parole"
+#: ../src/plugins/tray/tray-provider.c:344
+msgid "Quit"
+msgstr "Hætta"
 
-#: ../src/plugins/tray/tray-provider.c:503
+#: ../src/plugins/tray/tray-provider.c:353
 msgid "Remember my choice"
 msgstr "Muna val mitt"
 
@@ -817,63 +1204,12 @@ msgstr "Táknmynd í kerfisbakka"
 
 #: ../src/plugins/tray/system-tray.desktop.in.h:2
 msgid "Show icon in the system tray"
-msgstr ""
+msgstr "Birta táknmynd í kerfisslá"
 
-#: ../src/plugins/power-manager/power-manager.desktop.in.h:1
-msgid "Power Manager Plugin"
-msgstr "Orkustjórnunarviðbót"
+#: ../src/plugins/mpris2/mpris2.desktop.in.h:1
+msgid "MPRIS2"
+msgstr "MPRIS2"
 
-#: ../src/plugins/power-manager/power-manager.desktop.in.h:2
-msgid "Inhibit Power Manager from suspending the machine while playing DVD."
-msgstr ""
-
-#~ msgid "Chapter Menu"
-#~ msgstr "Kaflavalmynd"
-
-#~ msgid "DVD"
-#~ msgstr "DVD"
-
-#~ msgid "DVD Menu"
-#~ msgstr "DVD-valmynd"
-
-#~ msgid "Next Chapter"
-#~ msgstr "Næsti kafli"
-
-#~ msgid "Previous Chapter"
-#~ msgstr "Fyrri kafli"
-
-#~ msgid "Select Track"
-#~ msgstr "Velja spor"
-
-#~ msgid "Add"
-#~ msgstr "Bæta við"
-
-#~ msgid "Hide playlist"
-#~ msgstr "Fela lagalista"
-
-#~ msgid "Next Track"
-#~ msgstr "Næsta spor"
-
-#~ msgid "Stopped"
-#~ msgstr "Stöðvað"
-
-#~ msgid "Finished"
-#~ msgstr "Lokið"
-
-#~ msgid "Paused"
-#~ msgstr "Í bið"
-
-#~ msgid "Playing"
-#~ msgstr "Í spilun"
-
-#~ msgid "Live stream:"
-#~ msgstr "Beinn straumur:"
-
-#~ msgid "Author/Maintainer"
-#~ msgstr "Höfundur/umsjónarmaður"
-
-#~ msgid "Playing Track"
-#~ msgstr "Spila spor"
-
-#~ msgid "Window Title"
-#~ msgstr "Gluggatitill"
+#: ../src/plugins/mpris2/mpris2.desktop.in.h:2
+msgid "MPRIS2 remote control"
+msgstr "MPRIS2 fjarstýring"
