@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-11 06:30+0100\n"
-"PO-Revision-Date: 2016-01-13 21:29+0000\n"
+"PO-Revision-Date: 2016-03-01 21:08+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/xfce/xfce-apps/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -658,7 +658,7 @@ msgstr "Neįkelti įskiepių"
 
 #: ../src/main.c:243
 msgid "Set Audio-CD/VCD/DVD device path"
-msgstr "Nustatyti Audio-CD/VCD/DVD įrenginio kelią"
+msgstr "Nustatyti Garso-CD/VCD/DVD įrenginio kelią"
 
 #: ../src/main.c:244
 msgid "Start in embedded mode"
@@ -1178,7 +1178,7 @@ msgstr "Dėklo piktogramos įskiepis"
 
 #: ../src/plugins/tray/tray-provider.c:280
 msgid "Always minimize to tray when window is closed"
-msgstr "Visada užvėrus langą sumažinti į sistemos dėklą"
+msgstr "Visada užvėrus langą suskleisti į sistemos dėklą"
 
 #: ../src/plugins/tray/tray-provider.c:326
 msgid "Are you sure you want to quit?"
@@ -1190,7 +1190,7 @@ msgstr "Vietoj to, Parole gali būti suskleista į sistemos dėklą."
 
 #: ../src/plugins/tray/tray-provider.c:332
 msgid "Minimize to tray"
-msgstr "Sumažinti į sistemos dėklą"
+msgstr "Suskleisti į sistemos dėklą"
 
 #: ../src/plugins/tray/tray-provider.c:344
 msgid "Quit"
