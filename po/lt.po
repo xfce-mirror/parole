@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-11 06:30+0100\n"
-"PO-Revision-Date: 2016-03-01 21:08+0000\n"
+"PO-Revision-Date: 2016-03-17 17:55+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/xfce/xfce-apps/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -43,7 +43,7 @@ msgstr "Atverti vė_liausius"
 
 #: ../data/interfaces/parole.ui.h:6
 msgid "_Save Playlist…"
-msgstr "_Išsaugoti grojaraštį..."
+msgstr "Į_rašyti grojaraštį..."
 
 #: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:112
 #: ../src/parole-disc.c:154
@@ -443,7 +443,7 @@ msgstr "Pagal plėtinį"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "Save Playlist as…"
-msgstr "Išsaugoti grojaraštį kaip..."
+msgstr "Įrašyti grojaraštį kaip..."
 
 #: ../data/interfaces/save-playlist.ui.h:3
 msgid "File Type"
@@ -595,7 +595,7 @@ msgstr "Parole reikia <b>%s</b>, kad grotų šį failą."
 
 #: ../src/gst/parole-gst.c:1946
 msgid "The stream is taking too much time to load"
-msgstr "Srautas kraunasi per ilgai"
+msgstr "Srautas įkeliamas pernelyg ilgai"
 
 #: ../src/gst/parole-gst.c:1947
 msgid "Do you want to continue loading or stop?"
@@ -753,7 +753,7 @@ msgstr "Neturite teisės"
 
 #: ../src/parole-medialist.c:700
 msgid "Error saving playlist file"
-msgstr "Klaida saugant grojaraščio failą"
+msgstr "Klaida įrašant grojaraščio failą"
 
 #: ../src/parole-medialist.c:712
 msgid "Unknown playlist format"
@@ -804,7 +804,7 @@ msgstr "Pasirinkti subtitrų failą"
 #: ../src/parole-player.c:1022 ../src/parole-player.c:1226
 #: ../src/parole-player.c:2863 ../src/plugins/tray/tray-provider.c:338
 msgid "Cancel"
-msgstr "Atšaukti"
+msgstr "Atsisakyti"
 
 #: ../src/parole-player.c:1025
 msgid "Open"
