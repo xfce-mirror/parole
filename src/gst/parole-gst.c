@@ -2417,12 +2417,9 @@ parole_gst_init (ParoleGst *gst)
     /*
      * Disable double buffering on the video output to avoid
      * flickering when resizing the window.
+     * Deprecated in GTK+ 3.12, but clutter is broken so adding back.
      */
-#if GTK_CHECK_VERSION(3,12,0)
-    /* Deprecated in 3.12, noticeable regression with X, XV, no change for clutter */
-#else
     gtk_widget_set_double_buffered (GTK_WIDGET (gst), FALSE);
-#endif
 }
 
 GtkWidget *
