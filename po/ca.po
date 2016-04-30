@@ -5,13 +5,14 @@
 # Translators:
 # Carles Muñoz Gorriz <carlesmu@internautas.org>, 2009
 # Davidmp <medipas@gmail.com>, 2015-2016
+# Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-11 06:30+0100\n"
-"PO-Revision-Date: 2016-01-26 15:29+0000\n"
-"Last-Translator: Davidmp <medipas@gmail.com>\n"
+"PO-Revision-Date: 2016-04-30 22:14+0000\n"
+"Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfce-apps/language/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -191,7 +192,7 @@ msgstr "Info_rmeu d'un error..."
 
 #: ../data/interfaces/parole.ui.h:42
 msgid "Display Parole user manual"
-msgstr "Mostra el manual d'usuari del Parole"
+msgstr "Mostra el manual d'usuari de Parole"
 
 #: ../data/interfaces/parole.ui.h:43
 msgid "_Contents"
@@ -327,7 +328,7 @@ msgstr "Sistema X Window (No Xv)"
 
 #: ../data/interfaces/parole-settings.ui.h:3
 msgid "Parole Settings"
-msgstr "Opcions del Parole"
+msgstr "Opcions de Parole"
 
 #: ../data/interfaces/parole-settings.ui.h:4
 msgid "Configure your media player"
@@ -399,11 +400,11 @@ msgstr "<b>Balanç de color</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:21
 msgid "Display"
-msgstr "Visualització"
+msgstr "Pantalla"
 
 #: ../data/interfaces/parole-settings.ui.h:22
 msgid "Always replace playlist with opened files"
-msgstr "Reemplaça sempre la llista de reproducció amb els fitxers oberts"
+msgstr "Substitueix sempre la llista de reproducció amb els fitxers oberts"
 
 #: ../data/interfaces/parole-settings.ui.h:23
 msgid "Check and remove duplicate media entries"
@@ -411,7 +412,7 @@ msgstr "Comprova i elimina les entrades multimèdia duplicades"
 
 #: ../data/interfaces/parole-settings.ui.h:24
 msgid "Start playing opened files"
-msgstr "Començar a reproduir els fitxers oberts"
+msgstr "Comença la reproducció dels fitxers oberts"
 
 #: ../data/interfaces/parole-settings.ui.h:26
 msgid "<b>Playlist Settings</b>"
@@ -419,7 +420,7 @@ msgstr "<b>Configuració de la llista de reproducció</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:28
 msgid "Automatically show subtitles when playing movie file"
-msgstr "Carrega els subtítols automàticament quan es reprodueixi una peŀlícula"
+msgstr "Carrega automàticament els subtítols quan es reprodueixi una pel·lícula"
 
 #: ../data/interfaces/parole-settings.ui.h:29
 msgid "Font:"
@@ -492,7 +493,7 @@ msgid ""
 "Parole is a modern simple media player based on the GStreamer framework and "
 "written to fit well in the Xfce desktop. It is designed with simplicity, "
 "speed and resource usage in mind."
-msgstr "El Parole és un reproductor multimèdia simple modern basat en el marc del GStreamer i escrit per encaixar bé a l'escriptori Xfce. S'ha dissenyat tenint en compte la simplicitat, la velocitat i l'ús de recursos."
+msgstr "Parole és un reproductor multimèdia simple i modern que està basat amb el marc de treball de GStreamer i que està escrit per encaixar bé a l'escriptori Xfce. S'ha dissenyat tenint en compte la simplicitat, la velocitat i l'ús dels recursos."
 
 #: ../data/appdata/parole.appdata.xml.in.h:2
 msgid ""
@@ -949,7 +950,7 @@ msgstr "Traducció catalana al Transifex"
 
 #: ../src/parole-about.c:79
 msgid "Visit Parole website"
-msgstr "Visita la pàgina web del Parole"
+msgstr "Visita la pàgina web de Parole"
 
 #: ../src/parole-conf-dialog.c:313
 msgid "Clutter (OpenGL)"
@@ -1004,15 +1005,15 @@ msgstr "Croat"
 #: ../src/parole-subtitle-encoding.c:222 ../src/parole-subtitle-encoding.c:224
 #: ../src/parole-subtitle-encoding.c:226 ../src/parole-subtitle-encoding.c:228
 msgid "Cyrillic"
-msgstr "Ciríŀlic"
+msgstr "Ciríl·lic"
 
 #: ../src/parole-subtitle-encoding.c:231
 msgid "Cyrillic/Russian"
-msgstr "Ciríŀlic/rus"
+msgstr "Ciríl·lic/rus"
 
 #: ../src/parole-subtitle-encoding.c:234 ../src/parole-subtitle-encoding.c:236
 msgid "Cyrillic/Ukrainian"
-msgstr "Ciríŀlic/ucraïnès"
+msgstr "Ciríl·lic/ucraïnès"
 
 #: ../src/parole-subtitle-encoding.c:239
 msgid "Georgian"
@@ -1184,7 +1185,7 @@ msgstr "Segur que voleu sortir?"
 
 #: ../src/plugins/tray/tray-provider.c:329
 msgid "Parole can be minimized to the system tray instead."
-msgstr "El Parole es pot minimitzar a la safata del sistema."
+msgstr "Parole es pot minimitzar a la safata del sistema."
 
 #: ../src/plugins/tray/tray-provider.c:332
 msgid "Minimize to tray"
