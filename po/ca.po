@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-11 06:30+0100\n"
-"PO-Revision-Date: 2016-04-30 22:14+0000\n"
+"PO-Revision-Date: 2016-05-01 13:09+0000\n"
 "Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfce-apps/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -368,7 +368,7 @@ msgstr "General"
 
 #: ../data/interfaces/parole-settings.ui.h:13
 msgid "Please restart Parole for this change to take effect."
-msgstr "Reinicieu el Parole perquè aquest canvi tingui efecte."
+msgstr "Reinicieu Parole perquè aquest canvi tingui efecte."
 
 #: ../data/interfaces/parole-settings.ui.h:14
 msgid "<b>Video Output</b>"
@@ -500,7 +500,7 @@ msgid ""
 "Parole features playback of local media files, including video with "
 "subtitles support, Audio CDs, DVDs, and live streams. Parole is also "
 "extensible via plugins."
-msgstr "El Parole compta amb la reproducció de fitxers de mitjans locals, inclou vídeo amb  suport de subtítols, CD d'àudio, DVD i vídeos en viu. És extensible a través de connectors."
+msgstr "Parole compta amb la reproducció de fitxers de mitjans locals, inclou vídeo amb  suport de subtítols, CD d'àudio, DVD i vídeos en viu. És extensible a través de connectors."
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid ""
@@ -587,12 +587,12 @@ msgstr "D'acord"
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
-msgstr "El Parole necessita <b>%s</b> per reproduir aquest fitxer.\nEs pot instal·lar automàticament."
+msgstr "Parole necessita <b>%s</b> per reproduir aquest fitxer.\nEs pot instal·lar automàticament."
 
 #: ../src/gst/parole-gst.c:1535
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
-msgstr "El Parole necessita <b>%s</b> per reproduir aquest fitxer."
+msgstr "Parole necessita <b>%s</b> per reproduir aquest fitxer."
 
 #: ../src/gst/parole-gst.c:1946
 msgid "The stream is taking too much time to load"
@@ -616,13 +616,13 @@ msgstr "Error del GStreamer"
 
 #: ../src/gst/parole-gst.c:2134
 msgid "Parole Media Player cannot start."
-msgstr "El reproductor multimèdia Parole no es pot inciar."
+msgstr "No es pot iniciar el reproductor multimèdia Parole."
 
 #: ../src/gst/parole-gst.c:2165 ../src/gst/parole-gst.c:2181
 #: ../src/gst/parole-gst.c:2213
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
-msgstr "No es pot carregar el connector \"%s\", comproveu la instal·lació del GStreamer."
+msgstr "No es pot carregar el connector «%s», comproveu la instal·lació de GStreamer."
 
 #: ../src/gst/parole-gst.c:2845 ../src/gst/parole-gst.c:2851
 #, c-format
@@ -785,7 +785,7 @@ msgstr "La llista de reproducció es pot compartir"
 #. Clear
 #: ../src/parole-medialist.c:1219
 msgid "Open Containing Folder"
-msgstr "Obre la carpeta contenedora"
+msgstr "Obre la carpeta contenidora"
 
 #: ../src/parole-player.c:535
 msgid "Hide Playlist"
@@ -962,7 +962,7 @@ msgstr "Reprodueix el disc"
 
 #: ../src/parole-subtitle-encoding.c:165
 msgid "Current Locale"
-msgstr "Localització actual"
+msgstr "Configuració regional actual"
 
 #: ../src/parole-subtitle-encoding.c:168 ../src/parole-subtitle-encoding.c:170
 #: ../src/parole-subtitle-encoding.c:172 ../src/parole-subtitle-encoding.c:174
