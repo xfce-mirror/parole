@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-11 06:30+0100\n"
-"PO-Revision-Date: 2016-05-01 13:09+0000\n"
+"PO-Revision-Date: 2016-05-02 13:12+0000\n"
 "Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfce-apps/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -24,11 +24,11 @@ msgstr ""
 #: ../src/parole-player.c:605 ../src/parole-player.c:1515
 #: ../src/parole-about.c:70 ../src/plugins/mpris2/mpris2-provider.c:199
 msgid "Parole Media Player"
-msgstr "Reproductor de suports Parole"
+msgstr "Reproductor de mitjans audiovisuals Parole"
 
 #: ../data/interfaces/parole.ui.h:2
 msgid "_Media"
-msgstr "_Suport"
+msgstr "_Mitjà audiovisual"
 
 #: ../data/interfaces/parole.ui.h:3
 msgid "_Open…"
@@ -229,7 +229,7 @@ msgstr "Carregant (0%)"
 
 #: ../data/interfaces/mediachooser.ui.h:1
 msgid "Open Media Files"
-msgstr "Obre fitxers multimèdia"
+msgstr "Obre fitxers de mitjans audiovisuals"
 
 #: ../data/interfaces/playlist.ui.h:1
 #: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:806
@@ -251,7 +251,7 @@ msgstr "Afegeix"
 
 #: ../data/interfaces/playlist.ui.h:5
 msgid "Remove selected media"
-msgstr "Elimina els mitjans seleccionats"
+msgstr "Elimina els mitjans audiovisuals seleccionats"
 
 #: ../data/interfaces/playlist.ui.h:6
 msgid "Remove"
@@ -300,7 +300,7 @@ msgstr "Connectors de Parole"
 
 #: ../data/interfaces/plugins.ui.h:2
 msgid "Extend your media player"
-msgstr "Amplieu el reproductor multimèdia"
+msgstr "Amplieu el vostre reproductor de mitjans audiovisuals"
 
 #: ../data/interfaces/plugins.ui.h:3
 msgid "Plugin"
@@ -328,19 +328,19 @@ msgstr "Sistema X Window (No Xv)"
 
 #: ../data/interfaces/parole-settings.ui.h:3
 msgid "Parole Settings"
-msgstr "Opcions de Parole"
+msgstr "Ajusts de Parole"
 
 #: ../data/interfaces/parole-settings.ui.h:4
 msgid "Configure your media player"
-msgstr "Configureu el reproductor multimèdia"
+msgstr "Configureu el vostre reproductor de mitjans audiovisuals"
 
 #: ../data/interfaces/parole-settings.ui.h:5
 msgid "Disable screensaver when playing movies"
-msgstr "Inhabilita el protector de pantalla mentre es reprodueixi una pel·lícula"
+msgstr "Inhabilita l'estalvi de pantalla mentre es reprodueixi una pel·lícula"
 
 #: ../data/interfaces/parole-settings.ui.h:6
 msgid "<b>Screensaver</b>"
-msgstr "<b>Protector de pantalla</b>"
+msgstr "<b>Estalvi de pantalla</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:7
 msgid "Show visual effects when an audio file is played"
@@ -408,7 +408,7 @@ msgstr "Substitueix sempre la llista de reproducció amb els fitxers oberts"
 
 #: ../data/interfaces/parole-settings.ui.h:23
 msgid "Check and remove duplicate media entries"
-msgstr "Comprova i elimina les entrades multimèdia duplicades"
+msgstr "Comprova i elimina les entrades duplicades de mitjans audiovisuals"
 
 #: ../data/interfaces/parole-settings.ui.h:24
 msgid "Start playing opened files"
@@ -416,7 +416,7 @@ msgstr "Comença la reproducció dels fitxers oberts"
 
 #: ../data/interfaces/parole-settings.ui.h:26
 msgid "<b>Playlist Settings</b>"
-msgstr "<b>Configuració de la llista de reproducció</b>"
+msgstr "<b>Ajusts de la llista de reproducció</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:28
 msgid "Automatically show subtitles when playing movie file"
@@ -432,7 +432,7 @@ msgstr "Codificació: "
 
 #: ../data/interfaces/parole-settings.ui.h:31
 msgid "<b>Subtitle Settings</b>"
-msgstr "<b>Configuració dels subtítols</b>"
+msgstr "<b>Ajusts dels subtítols</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:32
 msgid "Subtitles"
@@ -472,7 +472,7 @@ msgstr "<big><b>Obre una ubicació de xarxa</b></big>"
 
 #: ../data/desktop/parole.desktop.in.in.h:2
 msgid "Play your media"
-msgstr "Reproduïu els fitxers multimèdia"
+msgstr "Reproduïu els vostres mitjans audiovisuals"
 
 #: ../data/desktop/parole.desktop.in.in.h:3
 msgid "Play/Pause"
@@ -493,14 +493,14 @@ msgid ""
 "Parole is a modern simple media player based on the GStreamer framework and "
 "written to fit well in the Xfce desktop. It is designed with simplicity, "
 "speed and resource usage in mind."
-msgstr "Parole és un reproductor multimèdia simple i modern que està basat amb el marc de treball de GStreamer i que està escrit per encaixar bé a l'escriptori Xfce. S'ha dissenyat tenint en compte la simplicitat, la velocitat i l'ús dels recursos."
+msgstr "Parole és un reproductor de mitjans audiovisuals simple i modern que està basat amb el marc de treball de GStreamer i que està escrit per encaixar bé a l'escriptori Xfce. S'ha dissenyat tenint en compte la simplicitat, la velocitat i l'ús dels recursos."
 
 #: ../data/appdata/parole.appdata.xml.in.h:2
 msgid ""
 "Parole features playback of local media files, including video with "
 "subtitles support, Audio CDs, DVDs, and live streams. Parole is also "
 "extensible via plugins."
-msgstr "Parole compta amb la reproducció de fitxers de mitjans locals, inclou vídeo amb  suport de subtítols, CD d'àudio, DVD i vídeos en viu. És extensible a través de connectors."
+msgstr "Parole compta amb la reproducció de fitxers locals de mitjans audiovisuals, incloent-hi vídeo amb suport de subtítols, CD d'àudio, DVD i fluxes en viu. Parole també es pot extendre a través de connectors."
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid ""
@@ -616,7 +616,7 @@ msgstr "Error del GStreamer"
 
 #: ../src/gst/parole-gst.c:2134
 msgid "Parole Media Player cannot start."
-msgstr "No es pot iniciar el reproductor multimèdia Parole."
+msgstr "No es pot iniciar el reproductor de mitjans audiovisuals Parole."
 
 #: ../src/gst/parole-gst.c:2165 ../src/gst/parole-gst.c:2181
 #: ../src/gst/parole-gst.c:2213
@@ -647,7 +647,7 @@ msgid ""
 "\n"
 "Please report bugs to <http://bugzilla.xfce.org/>.\n"
 "\n"
-msgstr "\nParole Media Player %s\n\nPart del projecte Xfce Goodies\nhttp://goodies.xfce.org\n\nAmb llicència de GNU GPL.\n\nSi us plau, informeu d'errors a <http://bugzilla.xfce.org/>.\n\n"
+msgstr "\nParole Media Player %s\n\nPart del projecte Xfce Goodies\nhttp://goodies.xfce.org\n\nEstà llicenciat sota la llicència GNU GPL.\n\nSi us plau, informeu d'errors a <http://bugzilla.xfce.org/>.\n\n"
 
 #: ../src/main.c:241
 msgid "Open a new instance"
@@ -707,7 +707,7 @@ msgstr "Imprimeix la informació de la versió i surt"
 
 #: ../src/main.c:256
 msgid "Media to play"
-msgstr "Suport a reproduir"
+msgstr "Mitjà audiovisual a reproduir"
 
 #: ../src/main.c:279
 msgid "[FILES...] - Play movies and songs"
@@ -825,7 +825,7 @@ msgstr "Esteu segur que voleu eliminar l'historial dels elements recents? L'acci
 
 #: ../src/parole-player.c:1323 ../src/parole-player.c:1461
 msgid "Media stream is not seekable"
-msgstr "El flux del suport no es pot cercar"
+msgstr "El flux del mitjà audiovisual no és reubicable"
 
 #: ../src/parole-player.c:1334
 msgid "Play"
@@ -946,7 +946,7 @@ msgstr "Tanca"
 
 #: ../src/parole-about.c:76
 msgid "translator-credits"
-msgstr "Traducció catalana al Transifex"
+msgstr "Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>"
 
 #: ../src/parole-about.c:79
 msgid "Visit Parole website"
