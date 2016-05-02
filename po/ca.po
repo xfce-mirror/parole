@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-11 06:30+0100\n"
-"PO-Revision-Date: 2016-05-02 13:12+0000\n"
+"PO-Revision-Date: 2016-05-02 19:53+0000\n"
 "Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfce-apps/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -392,7 +392,7 @@ msgstr "Saturació:"
 
 #: ../data/interfaces/parole-settings.ui.h:19
 msgid "Reset to defaults"
-msgstr "Ajusta als valor per defecte"
+msgstr "Restableix als valors predeterminats"
 
 #: ../data/interfaces/parole-settings.ui.h:20
 msgid "<b>Color Balance</b>"
@@ -568,7 +568,7 @@ msgstr "CD d'àudio"
 
 #: ../src/gst/parole-gst.c:1515
 msgid "Additional software is required."
-msgstr "Cal programari addicional"
+msgstr "Cal programari addicional."
 
 #: ../src/gst/parole-gst.c:1520
 msgid "Don't Install"
@@ -663,7 +663,7 @@ msgstr "Establir el camí per a Audio-CD/VCD/DVD"
 
 #: ../src/main.c:244
 msgid "Start in embedded mode"
-msgstr "Inicia en mode encastat"
+msgstr "Inicia en mode incrustat"
 
 #: ../src/main.c:245
 msgid "Start in fullscreen mode"
@@ -821,7 +821,7 @@ msgstr "Neteja els elements recents"
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
-msgstr "Esteu segur que voleu eliminar l'historial dels elements recents? L'acció no es pot desfer."
+msgstr "Esteu segur que voleu netejar l'historial dels elements recents? L'acció no es pot desfer."
 
 #: ../src/parole-player.c:1323 ../src/parole-player.c:1461
 msgid "Media stream is not seekable"
@@ -900,7 +900,7 @@ msgstr "_Surt de la pantalla completa"
 #. * Un/Hide menubar
 #: ../src/parole-player.c:2178
 msgid "Show menubar"
-msgstr "Mostra la barra del menú"
+msgstr "Mostra la barra de menús"
 
 #: ../src/parole-player.c:2438
 msgid "Mute"
