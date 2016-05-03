@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-11 06:30+0100\n"
-"PO-Revision-Date: 2016-05-02 19:53+0000\n"
+"PO-Revision-Date: 2016-05-03 08:41+0000\n"
 "Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfce-apps/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -225,7 +225,7 @@ msgstr "0:00"
 #: ../data/interfaces/parole.ui.h:50
 #, no-c-format
 msgid "Buffering (0%)"
-msgstr "Carregant (0%)"
+msgstr "Memòria intermèdia (0%)"
 
 #: ../data/interfaces/mediachooser.ui.h:1
 msgid "Open Media Files"
@@ -721,7 +721,7 @@ msgstr "Escriviu %s --help per veure una llista de totes les opcions de la líni
 #: ../src/main.c:309
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
-msgstr "Ja s'està executant Parole, empreu -i per obrir una instància nova\n"
+msgstr "Ja s'està executant Parole, utilitzeu -i per obrir una instància nova\n"
 
 #: ../src/parole-mediachooser.c:247 ../src/parole-player.c:1053
 msgid "All files"
