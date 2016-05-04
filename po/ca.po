@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-11 06:30+0100\n"
-"PO-Revision-Date: 2016-05-03 08:41+0000\n"
+"PO-Revision-Date: 2016-05-04 08:55+0000\n"
 "Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfce-apps/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -500,7 +500,7 @@ msgid ""
 "Parole features playback of local media files, including video with "
 "subtitles support, Audio CDs, DVDs, and live streams. Parole is also "
 "extensible via plugins."
-msgstr "Parole compta amb la reproducció de fitxers locals de mitjans audiovisuals, incloent-hi vídeo amb suport de subtítols, CD d'àudio, DVD i fluxes en viu. Parole també es pot extendre a través de connectors."
+msgstr "Parole compta amb la reproducció de fitxers locals de mitjans audiovisuals, incloent-hi vídeo amb suport de subtítols, CD d'àudio, DVD i fluxos en viu. Parole també es pot ampliar a través de connectors."
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid ""
@@ -659,7 +659,7 @@ msgstr "No carregar els connectors"
 
 #: ../src/main.c:243
 msgid "Set Audio-CD/VCD/DVD device path"
-msgstr "Establir el camí per a Audio-CD/VCD/DVD"
+msgstr "Estableix el camí al dispositiu CD/VCD/DVD d'àudio"
 
 #: ../src/main.c:244
 msgid "Start in embedded mode"
@@ -683,11 +683,11 @@ msgstr "Pista anterior"
 
 #: ../src/main.c:249
 msgid "Raise volume"
-msgstr "Puja el volum"
+msgstr "Apuja el volum"
 
 #: ../src/main.c:250
 msgid "Lower volume"
-msgstr "Baix el volum"
+msgstr "Abaixa el volum"
 
 #: ../src/main.c:251
 msgid "Mute volume"
@@ -789,7 +789,7 @@ msgstr "Obre la carpeta contenidora"
 
 #: ../src/parole-player.c:535
 msgid "Hide Playlist"
-msgstr "Amaga la llista de reproducció"
+msgstr "Oculta la llista de reproducció"
 
 #: ../src/parole-player.c:535 ../src/parole-player.c:3484
 msgid "Show Playlist"
