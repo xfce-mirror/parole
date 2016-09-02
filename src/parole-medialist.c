@@ -183,8 +183,10 @@ struct ParoleMediaListPrivate
     char *history[3];
     /*
      * n_shuffled_items stores the number of already shuffled items in the list.
+     * The special value -1 is only used when Repeat mode is on to skip the
+     * control process on this variable.
      */
-    guint n_shuffled_items;
+    gint  n_shuffled_items;
 };
 
 enum
@@ -1864,10 +1866,10 @@ GtkTreeRowReference *parole_media_list_get_row_random (ParoleMediaList *list)
 
     if ( nch == 1 || nch == 0 )
     {
-        return  NULL;
+        return NULL;
     }
 
-    if (nch == list->priv->n_shuffled_items)
+    if (nch == list->priv->n_shuffled_items && list->priv->n_shuffled_items != -1)
     {
         /* Stop playing since (almost) every items in the list have been chosen */
         list->priv->n_shuffled_items = 0;
@@ -1887,7 +1889,6 @@ GtkTreeRowReference *parole_media_list_get_row_random (ParoleMediaList *list)
         list->priv->n_shuffled_items = 1;
     }
 
-
     while (g_strcmp0(list->priv->history[0], path_str) == 0 || g_strcmp0(list->priv->history[1], path_str) == 0 || g_strcmp0(list->priv->history[2], path_str) == 0 || g_strcmp0(current_path, path_str) == 0)
     {
         path_str = g_strdup_printf ("%i", g_random_int_range (0, nch));
@@ -1906,7 +1907,10 @@ GtkTreeRowReference *parole_media_list_get_row_random (ParoleMediaList *list)
     if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path))
     {
         row  = gtk_tree_row_reference_new (GTK_TREE_MODEL (list->priv->store), path);
-        list->priv->n_shuffled_items += 1;
+        if (list->priv->n_shuffled_items != -1)
+        {
+            list->priv->n_shuffled_items += 1;
+        }
     }
 
     gtk_tree_path_free (path);
@@ -2215,6 +2219,22 @@ void parole_media_list_grab_focus (ParoleMediaList *list)
         gtk_widget_grab_focus (list->priv->view);
 }
 
+void
+update_media_list_n_shuffled_items(void)
+{
+    gboolean repeat = gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(media_list->priv->repeat_button));
+    if (repeat)
+    {
+        /* Disable the control on the number of shuffled items in case of randomization */
+        media_list->priv->n_shuffled_items = -1;
+    }
+    else
+    {
+        /* Enable the control on the number of shuffled items in case of randomization */
+        media_list->priv->n_shuffled_items = 0;
+    }
+}
+
 static void
 repeat_action_state_changed (GSimpleAction *simple, GVariant *value, gpointer user_data)
 {
@@ -2224,6 +2244,8 @@ repeat_action_state_changed (GSimpleAction *simple, GVariant *value, gpointer us
     {
         gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(media_list->priv->repeat_button), active);
     }
+
+    update_media_list_n_shuffled_items();
 }
 
 static void
@@ -2250,6 +2272,8 @@ shuffle_action_state_changed (GSimpleAction *simple, GVariant *value, gpointer u
     {
         gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(media_list->priv->shuffle_button), active);
     }
+
+    update_media_list_n_shuffled_items();
 }
 
 static void
