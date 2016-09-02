@@ -181,6 +181,10 @@ struct ParoleMediaListPrivate
     GtkWidget *shuffle_button;
 
     char *history[3];
+    /*
+     * n_shuffled_items stores the number of already shuffled items in the list.
+     */
+    guint n_shuffled_items;
 };
 
 enum
@@ -1863,11 +1867,26 @@ GtkTreeRowReference *parole_media_list_get_row_random (ParoleMediaList *list)
         return  NULL;
     }
 
+    if (nch == list->priv->n_shuffled_items)
+    {
+        /* Stop playing since (almost) every items in the list have been chosen */
+        list->priv->n_shuffled_items = 0;
+        return NULL;
+    }
+
     current_path = gtk_tree_path_to_string(gtk_tree_row_reference_get_path(parole_media_list_get_selected_row(list)));
     path_str = g_strdup(current_path);
 
     if (!list->priv->history[0])
+    {
         list->priv->history[0] = g_strdup(path_str);
+    }
+
+    if (list->priv->n_shuffled_items == 0)
+    {
+        list->priv->n_shuffled_items = 1;
+    }
+
 
     while (g_strcmp0(list->priv->history[0], path_str) == 0 || g_strcmp0(list->priv->history[1], path_str) == 0 || g_strcmp0(list->priv->history[2], path_str) == 0 || g_strcmp0(current_path, path_str) == 0)
     {
@@ -1887,6 +1906,7 @@ GtkTreeRowReference *parole_media_list_get_row_random (ParoleMediaList *list)
     if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path))
     {
         row  = gtk_tree_row_reference_new (GTK_TREE_MODEL (list->priv->store), path);
+        list->priv->n_shuffled_items += 1;
     }
 
     gtk_tree_path_free (path);
