@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-11 06:30+0100\n"
-"PO-Revision-Date: 2016-06-24 12:39+0000\n"
+"PO-Revision-Date: 2016-09-07 13:10+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/xfce/xfce-apps/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -39,7 +39,7 @@ msgstr "Atverti _vietą..."
 
 #: ../data/interfaces/parole.ui.h:5
 msgid "Open _Recent"
-msgstr "Atverti vė_liausius"
+msgstr "Atverti _paskiausiai naudotus"
 
 #: ../data/interfaces/parole.ui.h:6
 msgid "_Save Playlist…"
@@ -53,7 +53,7 @@ msgstr "Įdėti diską"
 #. * Exit
 #: ../data/interfaces/parole.ui.h:8 ../src/plugins/tray/tray-provider.c:179
 msgid "_Quit"
-msgstr "_Baigti"
+msgstr "_Išeiti"
 
 #: ../data/interfaces/parole.ui.h:9
 msgid "_Playback"
@@ -816,13 +816,13 @@ msgstr "Subtitrų failai"
 
 #: ../src/parole-player.c:1222 ../src/parole-player.c:1230
 msgid "Clear Recent Items"
-msgstr "Išvalyti vėliausius elementus"
+msgstr "Išvalyti paskiausiai naudotus elementus"
 
 #: ../src/parole-player.c:1224
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
-msgstr "Ar tikrai norite išvalyti vėliausių elementų istoriją? Šio veiksmo neįmanoma bus atšaukti."
+msgstr "Ar tikrai norite išvalyti paskiausiai naudotų elementų istoriją? Šio veiksmo neįmanoma bus atšaukti."
 
 #: ../src/parole-player.c:1323 ../src/parole-player.c:1461
 msgid "Media stream is not seekable"
@@ -930,7 +930,7 @@ msgstr "Pozicija:"
 #. Clear Recent Menu Item
 #: ../src/parole-player.c:3315
 msgid "_Clear recent items…"
-msgstr "_Išvalyti vėliausius elementus..."
+msgstr "_Išvalyti paskiausiai naudotus elementus..."
 
 #: ../src/parole-player.c:3654
 msgid "Audio Track:"
