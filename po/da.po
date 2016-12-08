@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-11 06:30+0100\n"
-"PO-Revision-Date: 2016-12-08 07:47+0000\n"
+"PO-Revision-Date: 2016-12-08 23:07+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -235,7 +235,7 @@ msgstr "Åbn mediefiler"
 #: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:806
 #: ../src/parole-medialist.c:849 ../src/parole-player.c:3274
 msgid "Playlist"
-msgstr "Spilleliste"
+msgstr "Afspilningsliste"
 
 #: ../data/interfaces/playlist.ui.h:2
 msgid "Disc Playlist"
@@ -283,7 +283,7 @@ msgstr "Flyt ned"
 
 #: ../data/interfaces/playlist.ui.h:13
 msgid "Replace playlist when opening files"
-msgstr "Erstat spilleliste når filer åbnes"
+msgstr "Erstat afspilningsliste når filer åbnes"
 
 #: ../data/interfaces/playlist.ui.h:14
 msgid "Play opened files"
@@ -292,7 +292,7 @@ msgstr "Afspil åbnede filer"
 #: ../data/interfaces/playlist.ui.h:15
 #: ../data/interfaces/parole-settings.ui.h:25
 msgid "Remember playlist"
-msgstr "Husk spilleliste"
+msgstr "Husk afspilningsliste"
 
 #: ../data/interfaces/plugins.ui.h:1
 msgid "Parole Plugins"
@@ -404,7 +404,7 @@ msgstr "Visning"
 
 #: ../data/interfaces/parole-settings.ui.h:22
 msgid "Always replace playlist with opened files"
-msgstr "Erstat altid spilleliste med åbne filer"
+msgstr "Erstat altid afspilningslister med åbne filer"
 
 #: ../data/interfaces/parole-settings.ui.h:23
 msgid "Check and remove duplicate media entries"
@@ -526,20 +526,20 @@ msgid ""
 "playlists. Furthermore existing plugins have been improved and a new one has"
 " been added (MPRIS2). Most of the artwork has been updated for this release "
 "and we use the GStreamer1.0 framework now by default."
-msgstr ""
+msgstr "Denne udgivelse byder på den komplette overgang til Gtk+3-værktøjskittet, forbedringer til brugerfladen (mere strømlinet menuer), bedre afspilningslister. Derudover er eksisterende udvidelsesmoduler blevet forbedret og en ny er blevet tilføjet (MPRIS2). Det meste af det grafiske materiale er blevet opdateret til denne udgivelse og vi bruger nu GStreamer1.0-frameworket som standard."
 
 #: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This unstable development release features mostly bugfixes and introduces "
 "the new MPRIS2 plugin."
-msgstr "Denne ustabile udviklingsudgivelse byder mest på rettelser af fejl og introducerer den ny MPRIS2-udvidelsesmodul."
+msgstr "Denne ustabile udviklingsudgivelse byder mest på fejlrettelser og introducerer den ny MPRIS2-udvidelsesmodul."
 
 #: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
 "This is a bugfix release which fixes the loading of playlists with relative "
 "paths, improves the file-filters for audio/video mimetypes and fixes the "
 "\"Remove duplicates\" functionality."
-msgstr ""
+msgstr "Dette er en udgivelse med fejlrettelse som rette indlæsningen af afspilningslister med relative stier, forbedre filfiltrene og lyd-/video-mime-typer og retter funktionen \"Fjern duplikater\"."
 
 #: ../data/appdata/parole.appdata.xml.in.h:9
 msgid ""
@@ -547,7 +547,7 @@ msgid ""
 "toolkit, improvements in the user-interface (more streamlined menus), better"
 " playlists. It also brings updated artwork, GStreamer1.0 support, improved "
 "plugins and the occasional bugfix."
-msgstr ""
+msgstr "Denne ustabile udviklingsudgivelse byder på den komplette portning til Gtk+3-værktøjskittet, forbedringer til brugerfladen (mere strømlinet menuer), bedre afspilningslister. Og opdateret grafisk materiale, understøttelse af GStreamer1.0, forbedrede udvidelsesmoduler og den sporadiske fejlrettelse."
 
 #: ../src/common/parole-common.c:88
 msgid "Message"
@@ -752,7 +752,7 @@ msgstr "Adgang nægtet"
 
 #: ../src/parole-medialist.c:700
 msgid "Error saving playlist file"
-msgstr "Fejl opstod ved gem af spilleliste"
+msgstr "Fejl opstod ved gem af afspilningsliste"
 
 #: ../src/parole-medialist.c:712
 msgid "Unknown playlist format"
@@ -760,7 +760,7 @@ msgstr "Ukendt format til spllleliste "
 
 #: ../src/parole-medialist.c:713
 msgid "Please choose a supported playlist format"
-msgstr "Vælg venligst et understøttet format til spillelisten"
+msgstr "Vælg venligst et understøttet format til afspilningslisten"
 
 #: ../src/parole-medialist.c:767 ../src/parole-plugins-manager.c:369
 msgid "Unknown"
@@ -768,11 +768,11 @@ msgstr "Ukendt"
 
 #: ../src/parole-medialist.c:856
 msgid "M3U Playlists"
-msgstr "M3U spillelister"
+msgstr "M3U-afspilningslister"
 
 #: ../src/parole-medialist.c:864
 msgid "PLS Playlists"
-msgstr "PLS spillelister"
+msgstr "PLS-afspilningslister"
 
 #: ../src/parole-medialist.c:872
 msgid "Advanced Stream Redirector"
@@ -780,7 +780,7 @@ msgstr "Avanceret omdirigering af strøm"
 
 #: ../src/parole-medialist.c:880
 msgid "Shareable Playlist"
-msgstr "Delbar spilleliste"
+msgstr "Delbar afspilningslister"
 
 #. Clear
 #: ../src/parole-medialist.c:1219
@@ -789,7 +789,7 @@ msgstr "Åbn indholdsmappe"
 
 #: ../src/parole-player.c:535
 msgid "Hide Playlist"
-msgstr "Skjul spilleliste"
+msgstr "Skjul afspilningsliste"
 
 #: ../src/parole-player.c:535 ../src/parole-player.c:3484
 msgid "Show Playlist"
@@ -1136,7 +1136,7 @@ msgstr "Alle understøttede filer"
 
 #: ../src/misc/parole-filters.c:205
 msgid "Playlist files"
-msgstr "Spillelistefiler"
+msgstr "Afspilningslistefiler"
 
 #: ../src/plugins/notify/notify-provider.c:150
 #: ../src/plugins/notify/notify-provider.c:153
