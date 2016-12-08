@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Aputsiaĸ Niels Janussen <aj@isit.gl>, 2013-2014
+# Aputsiak Niels Janussen <aj@isit.gl>, 2013-2014
 # Chris Darnell <chris@cedeel.com>, 2013
+# scootergrisen, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-11 06:30+0100\n"
-"PO-Revision-Date: 2016-02-22 22:30+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"PO-Revision-Date: 2016-12-08 07:47+0000\n"
+"Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -315,7 +316,7 @@ msgstr "<b>Forfatter</b>"
 
 #: ../data/interfaces/plugins.ui.h:6
 msgid "Visit Website"
-msgstr "Besøg netsted"
+msgstr "Besøg websted"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "X Window System (X11/XShm/Xv)"
@@ -435,7 +436,7 @@ msgstr "<b>Indstillinger for undertekster</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:32
 msgid "Subtitles"
-msgstr "_Undertekster"
+msgstr "Undertekster"
 
 #: ../data/interfaces/save-playlist.ui.h:1
 msgid "By Extension"
@@ -505,14 +506,14 @@ msgstr "Parole tilbyder afspilning af lokale mediefiler, inklusive videoer som u
 msgid ""
 "This release improves the build process and includes several bug fixes. This"
 " new stable release is a recommended upgrade for all users."
-msgstr ""
+msgstr "Denne udgivelse forbedre byg-processen og inkludere adskillige rettelse af fejl. Denne nye stabile udgivelse er en anbefalet opgradering til alle brugere."
 
 #: ../data/appdata/parole.appdata.xml.in.h:4
 msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
-msgstr "Denne ustabile udviklingsversion tilføjer den nye clutter-motor og rydder op i udgåede Gtk3-symboler. Den tilføjer også en \"gå til placering\"-funktion og adskillige fejl er blevet adresseret."
+msgstr "Denne ustabile udviklingsudgivelse tilføjer den nye clutter-motor og rydder op i udgåede Gtk3-symboler. Den tilføjer også en \"gå til placering\"-funktion og adskillige fejl er blevet adresseret."
 
 #: ../data/appdata/parole.appdata.xml.in.h:5
 msgid "This release fixes a problem with detecting DVD drive locations."
@@ -531,7 +532,7 @@ msgstr ""
 msgid ""
 "This unstable development release features mostly bugfixes and introduces "
 "the new MPRIS2 plugin."
-msgstr ""
+msgstr "Denne ustabile udviklingsudgivelse byder mest på rettelser af fejl og introducerer den ny MPRIS2-udvidelsesmodul."
 
 #: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
@@ -949,7 +950,7 @@ msgstr "Per Kongstad, Aputsiaq Niels Janussen\n\nDansk-gruppen <dansk@dansk-grup
 
 #: ../src/parole-about.c:79
 msgid "Visit Parole website"
-msgstr "Besøg Paroles netsted"
+msgstr "Besøg Paroles websted"
 
 #: ../src/parole-conf-dialog.c:313
 msgid "Clutter (OpenGL)"
