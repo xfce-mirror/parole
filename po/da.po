@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-11 06:30+0100\n"
-"PO-Revision-Date: 2016-12-08 23:07+0000\n"
+"PO-Revision-Date: 2016-12-09 04:47+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -756,7 +756,7 @@ msgstr "Fejl opstod ved gem af afspilningsliste"
 
 #: ../src/parole-medialist.c:712
 msgid "Unknown playlist format"
-msgstr "Ukendt format til spllleliste "
+msgstr "Ukendt format til spllleliste"
 
 #: ../src/parole-medialist.c:713
 msgid "Please choose a supported playlist format"
@@ -929,7 +929,7 @@ msgstr "Placering:"
 #. Clear Recent Menu Item
 #: ../src/parole-player.c:3315
 msgid "_Clear recent items…"
-msgstr "_Ryd nylige elementer"
+msgstr "_Ryd nylige elementer…"
 
 #: ../src/parole-player.c:3654
 msgid "Audio Track:"
