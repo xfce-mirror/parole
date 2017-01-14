@@ -5,13 +5,13 @@
 # Translators:
 # Aputsiak Niels Janussen <aj@isit.gl>, 2013-2014
 # Chris Darnell <chris@cedeel.com>, 2013
-# scootergrisen, 2016
+# scootergrisen, 2016-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-11 06:30+0100\n"
-"PO-Revision-Date: 2016-12-09 04:47+0000\n"
+"PO-Revision-Date: 2017-01-14 10:58+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -32,11 +32,11 @@ msgstr "_Medie"
 
 #: ../data/interfaces/parole.ui.h:3
 msgid "_Open…"
-msgstr "_Åbn ..."
+msgstr "_Åbn …"
 
 #: ../data/interfaces/parole.ui.h:4
 msgid "Open _Location…"
-msgstr "Åbn _sted..."
+msgstr "Åbn _sted …"
 
 #: ../data/interfaces/parole.ui.h:5
 msgid "Open _Recent"
@@ -44,7 +44,7 @@ msgstr "Åbn _nylig"
 
 #: ../data/interfaces/parole.ui.h:6
 msgid "_Save Playlist…"
-msgstr "_Gem afspilningsliste..."
+msgstr "_Gem afspilningsliste …"
 
 #: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:112
 #: ../src/parole-disc.c:154
@@ -156,7 +156,7 @@ msgstr "4:3 (TV)"
 
 #: ../data/interfaces/parole.ui.h:33
 msgid "16:9 (Widescreen)"
-msgstr "16:9 (Widescreen)"
+msgstr "16:9 (widescreen)"
 
 #: ../data/interfaces/parole.ui.h:34
 msgid "20:9 (DVB)"
@@ -168,7 +168,7 @@ msgstr "_Undertekster"
 
 #: ../data/interfaces/parole.ui.h:36
 msgid "Select Text Subtitles…"
-msgstr "Vælg tekst-undertekster..."
+msgstr "Vælg tekst-undertekster …"
 
 #: ../data/interfaces/parole.ui.h:37
 msgid "_Tools"
@@ -188,7 +188,7 @@ msgstr "_Hjælp"
 
 #: ../data/interfaces/parole.ui.h:41
 msgid "_Report a Bug…"
-msgstr "_Rapportér en fejl..."
+msgstr "_Rapportér en fejl …"
 
 #: ../data/interfaces/parole.ui.h:42
 msgid "Display Parole user manual"
@@ -243,7 +243,7 @@ msgstr "Disk-afspilningsliste"
 
 #: ../data/interfaces/playlist.ui.h:3
 msgid "Add to playlist…"
-msgstr "Tilføj til afspilningsliste..."
+msgstr "Tilføj til afspilningsliste …"
 
 #: ../data/interfaces/playlist.ui.h:4
 msgid "Add"
@@ -444,7 +444,7 @@ msgstr "Efter filendelse"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "Save Playlist as…"
-msgstr "Gem afspilningsliste som..."
+msgstr "Gem afspilningsliste som …"
 
 #: ../data/interfaces/save-playlist.ui.h:3
 msgid "File Type"
