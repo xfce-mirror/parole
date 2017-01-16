@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-11 06:30+0100\n"
-"PO-Revision-Date: 2017-01-15 20:17+0000\n"
+"PO-Revision-Date: 2017-01-16 11:22+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -123,7 +123,7 @@ msgstr "Lydstyrke _ned"
 
 #: ../data/interfaces/parole.ui.h:25
 msgid "_Mute"
-msgstr "Slå _lyd fra"
+msgstr "Slå _lyden fra"
 
 #: ../data/interfaces/parole.ui.h:26
 msgid "_Video"
@@ -428,7 +428,7 @@ msgstr "Skrifttype:"
 
 #: ../data/interfaces/parole-settings.ui.h:30
 msgid "Encoding:"
-msgstr "Inkodning:"
+msgstr "Kodning:"
 
 #: ../data/interfaces/parole-settings.ui.h:31
 msgid "<b>Subtitle Settings</b>"
@@ -580,7 +580,7 @@ msgstr "Installer"
 
 #: ../src/gst/parole-gst.c:1525
 msgid "OK"
-msgstr "O.k."
+msgstr "OK"
 
 #: ../src/gst/parole-gst.c:1532
 #, c-format
@@ -667,7 +667,7 @@ msgstr "Start i indlejret tilstand"
 
 #: ../src/main.c:245
 msgid "Start in fullscreen mode"
-msgstr "Start i fuldskærm"
+msgstr "Start i fuldskærmstilstand"
 
 #: ../src/main.c:246
 msgid "Play or pause if already playing"
@@ -695,7 +695,7 @@ msgstr "Mute lydstyrke"
 
 #: ../src/main.c:252
 msgid "Unmute (restore) volume"
-msgstr "Slå lyd til (gendan)"
+msgstr "Slå lyden til (gendan)"
 
 #: ../src/main.c:253
 msgid "Add files to playlist"
@@ -703,7 +703,7 @@ msgstr "Tilføj filer til afspilningsliste"
 
 #: ../src/main.c:254
 msgid "Print version information and exit"
-msgstr "Vis versionsinformation og afslut"
+msgstr "Udskriv versionsinformation og afslut"
 
 #: ../src/main.c:256
 msgid "Media to play"
@@ -821,7 +821,7 @@ msgstr "Ryd nylige elementer"
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
-msgstr "Er du sikker på, at du ønsker at rydde historikken for dine nylige elementer? Dette kan ikke fortrydes."
+msgstr "Er du sikker på, at du vil rydde historikken for dine nylige elementer? Dette kan ikke fortrydes."
 
 #: ../src/parole-player.c:1323 ../src/parole-player.c:1461
 msgid "Media stream is not seekable"
@@ -904,11 +904,11 @@ msgstr "Vis menulinje"
 
 #: ../src/parole-player.c:2438
 msgid "Mute"
-msgstr "Slå lyd fra"
+msgstr "Slå lyden fra"
 
 #: ../src/parole-player.c:2443
 msgid "Unmute"
-msgstr "Slå lyd til"
+msgstr "Slå lyden til"
 
 #: ../src/parole-player.c:2832
 msgid "Unable to open default web browser"
@@ -990,12 +990,12 @@ msgstr "Centraleuropæisk"
 #: ../src/parole-subtitle-encoding.c:199 ../src/parole-subtitle-encoding.c:201
 #: ../src/parole-subtitle-encoding.c:203 ../src/parole-subtitle-encoding.c:205
 msgid "Chinese Simplified"
-msgstr "Kinesisk, simpelt"
+msgstr "Kinesisk (forenklet)"
 
 #: ../src/parole-subtitle-encoding.c:208 ../src/parole-subtitle-encoding.c:210
 #: ../src/parole-subtitle-encoding.c:212
 msgid "Chinese Traditional"
-msgstr "Kinesisk, traditionelt"
+msgstr "Kinesisk (traditionel)"
 
 #: ../src/parole-subtitle-encoding.c:215
 msgid "Croatian"
@@ -1039,7 +1039,7 @@ msgstr "Hebræisk"
 
 #: ../src/parole-subtitle-encoding.c:264
 msgid "Hebrew Visual"
-msgstr "Hebræisk, visuelt"
+msgstr "Hebræisk (visuelt)"
 
 #: ../src/parole-subtitle-encoding.c:267
 msgid "Hindi"
@@ -1181,7 +1181,7 @@ msgstr "Minimér altid til statusfelt når vindue er lukket"
 
 #: ../src/plugins/tray/tray-provider.c:326
 msgid "Are you sure you want to quit?"
-msgstr "Er du sikker på at du ønsker at afslutte?"
+msgstr "Er du sikker på, at du vil afslutte?"
 
 #: ../src/plugins/tray/tray-provider.c:329
 msgid "Parole can be minimized to the system tray instead."
