@@ -4,14 +4,15 @@
 # 
 # Translators:
 # Allan Nordhøy <epost@anotheragency.no>, 2014-2015
-# Harald <haarektrans@gmail.com>, 2014-2015
+# Allan Nordhøy <epost@anotheragency.no>, 2017
+# Harald H. <haarektrans@gmail.com>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-07 18:30+0200\n"
-"PO-Revision-Date: 2015-10-28 21:29+0000\n"
-"Last-Translator: Harald <haarektrans@gmail.com>\n"
+"POT-Creation-Date: 2016-01-11 06:30+0100\n"
+"PO-Revision-Date: 2017-02-02 03:03+0000\n"
+"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål (http://www.transifex.com/xfce/xfce-apps/language/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,11 +32,11 @@ msgstr "_Media"
 
 #: ../data/interfaces/parole.ui.h:3
 msgid "_Open…"
-msgstr "_Åpne..."
+msgstr "_Åpne…"
 
 #: ../data/interfaces/parole.ui.h:4
 msgid "Open _Location…"
-msgstr "Åpne _plassering..."
+msgstr "Åpne _plassering…"
 
 #: ../data/interfaces/parole.ui.h:5
 msgid "Open _Recent"
@@ -43,7 +44,7 @@ msgstr "Åpne _nylige"
 
 #: ../data/interfaces/parole.ui.h:6
 msgid "_Save Playlist…"
-msgstr "_Lagre spilleliste..."
+msgstr "_Lagre spilleliste…"
 
 #: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:112
 #: ../src/parole-disc.c:154
@@ -68,7 +69,7 @@ msgid "_Shuffle"
 msgstr "_Omstokkning"
 
 #. Create dialog
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2848
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2860
 msgid "Go to position"
 msgstr "Gå til posisjon"
 
@@ -128,8 +129,8 @@ msgstr "_Demp"
 msgid "_Video"
 msgstr "_Video"
 
-#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2038
-#: ../src/parole-player.c:2152
+#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2050
+#: ../src/parole-player.c:2164
 msgid "_Fullscreen"
 msgstr "_Fullskjerm"
 
@@ -167,7 +168,7 @@ msgstr "_Undertekster"
 
 #: ../data/interfaces/parole.ui.h:36
 msgid "Select Text Subtitles…"
-msgstr "Velg undertitler..."
+msgstr "Velg undertitler…"
 
 #: ../data/interfaces/parole.ui.h:37
 msgid "_Tools"
@@ -187,7 +188,7 @@ msgstr "_Hjelp"
 
 #: ../data/interfaces/parole.ui.h:41
 msgid "_Report a Bug…"
-msgstr "_Rapporter feil..."
+msgstr "_Rapporter feil…"
 
 #: ../data/interfaces/parole.ui.h:42
 msgid "Display Parole user manual"
@@ -232,7 +233,7 @@ msgstr "Åpne mediafiler"
 
 #: ../data/interfaces/playlist.ui.h:1
 #: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:806
-#: ../src/parole-medialist.c:849 ../src/parole-player.c:3262
+#: ../src/parole-medialist.c:849 ../src/parole-player.c:3274
 msgid "Playlist"
 msgstr "Spilleliste"
 
@@ -242,7 +243,7 @@ msgstr "Disk-spilleliste"
 
 #: ../data/interfaces/playlist.ui.h:3
 msgid "Add to playlist…"
-msgstr "Legg til i spilleliste..."
+msgstr "Legg til i spilleliste…"
 
 #: ../data/interfaces/playlist.ui.h:4
 msgid "Add"
@@ -443,7 +444,7 @@ msgstr "Etter filendelse"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "Save Playlist as…"
-msgstr "Lagre spilleliste som..."
+msgstr "Lagre spilleliste som…"
 
 #: ../data/interfaces/save-playlist.ui.h:3
 msgid "File Type"
@@ -477,12 +478,12 @@ msgstr "Spill dine mediafiler"
 msgid "Play/Pause"
 msgstr "Spill av/Pause"
 
-#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3412
+#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3424
 #: ../src/plugins/notify/notify-provider.c:204
 msgid "Previous Track"
 msgstr "Forrige spor"
 
-#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3430
+#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3442
 #: ../src/plugins/notify/notify-provider.c:217
 msgid "Next Track"
 msgstr "Neste spor"
@@ -710,7 +711,7 @@ msgstr "Media til avspilling"
 
 #: ../src/main.c:279
 msgid "[FILES...] - Play movies and songs"
-msgstr "[FILES...] - Spill filmer og låter"
+msgstr "[FILES…] - Spill filmer og låter"
 
 #: ../src/main.c:291
 #, c-format
@@ -790,7 +791,7 @@ msgstr "Åpne mappe som inneholder denne"
 msgid "Hide Playlist"
 msgstr "Skjul spilleliste"
 
-#: ../src/parole-player.c:535 ../src/parole-player.c:3472
+#: ../src/parole-player.c:535 ../src/parole-player.c:3484
 msgid "Show Playlist"
 msgstr "Vis spilleliste"
 
@@ -800,7 +801,7 @@ msgid "Select Subtitle File"
 msgstr "Velg undertekst-fil"
 
 #: ../src/parole-player.c:1022 ../src/parole-player.c:1226
-#: ../src/parole-player.c:2851 ../src/plugins/tray/tray-provider.c:338
+#: ../src/parole-player.c:2863 ../src/plugins/tray/tray-provider.c:338
 msgid "Cancel"
 msgstr "Avbryt"
 
@@ -838,112 +839,108 @@ msgstr "Pause"
 msgid "GStreamer backend error"
 msgstr "Gstreamer bakstykke-feil"
 
-#: ../src/parole-player.c:1864
-msgid "Unknown Song"
-msgstr "Ukjent sang"
-
-#: ../src/parole-player.c:1869 ../src/parole-player.c:1871
-#: ../src/parole-player.c:1877
+#: ../src/parole-player.c:1881 ../src/parole-player.c:1883
+#: ../src/parole-player.c:1889
 msgid "on"
 msgstr "på"
 
-#: ../src/parole-player.c:1877 ../src/plugins/notify/notify-provider.c:145
+#: ../src/parole-player.c:1889 ../src/plugins/notify/notify-provider.c:145
 msgid "Unknown Album"
 msgstr "Ukjent album"
 
-#: ../src/parole-player.c:1884 ../src/parole-player.c:1888
+#: ../src/parole-player.c:1896 ../src/parole-player.c:1900
 msgid "by"
 msgstr "av"
 
-#: ../src/parole-player.c:1888 ../src/plugins/notify/notify-provider.c:147
+#: ../src/parole-player.c:1900 ../src/plugins/notify/notify-provider.c:147
 msgid "Unknown Artist"
 msgstr "Ukjent artist"
 
-#: ../src/parole-player.c:1922
+#: ../src/parole-player.c:1934
 msgid "Buffering"
 msgstr "Mellomlagrer"
 
-#: ../src/parole-player.c:2039 ../src/parole-player.c:3447
+#: ../src/parole-player.c:2051 ../src/parole-player.c:3459
 msgid "Fullscreen"
 msgstr "Fullskjerm"
 
-#: ../src/parole-player.c:2052
+#: ../src/parole-player.c:2064
 msgid "Leave _Fullscreen"
 msgstr "Forlat _Fullskjerm"
 
-#: ../src/parole-player.c:2053
+#: ../src/parole-player.c:2065
 msgid "Leave Fullscreen"
 msgstr "Forlat fullskjerm"
 
 #. Play menu item
 #. * Play pause
-#: ../src/parole-player.c:2120 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2132 ../src/plugins/tray/tray-provider.c:130
 msgid "_Pause"
 msgstr "_Pause"
 
-#: ../src/parole-player.c:2120 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2132 ../src/plugins/tray/tray-provider.c:130
 msgid "_Play"
 msgstr "_Spill"
 
 #. * Previous item in playlist.
-#: ../src/parole-player.c:2134
+#: ../src/parole-player.c:2146
 msgid "_Previous"
 msgstr "_Forrige"
 
 #. * Next item in playlist.
-#: ../src/parole-player.c:2143
+#: ../src/parole-player.c:2155
 msgid "_Next"
 msgstr "_Neste"
 
 #. * Un/Full screen
-#: ../src/parole-player.c:2152
+#: ../src/parole-player.c:2164
 msgid "_Leave Fullscreen"
 msgstr "_Forlat fullskjerm"
 
 #. * Un/Hide menubar
-#: ../src/parole-player.c:2166
+#: ../src/parole-player.c:2178
 msgid "Show menubar"
 msgstr "Vis menylinje"
 
-#: ../src/parole-player.c:2426
+#: ../src/parole-player.c:2438
 msgid "Mute"
 msgstr "Demp"
 
-#: ../src/parole-player.c:2431
+#: ../src/parole-player.c:2443
 msgid "Unmute"
 msgstr "Skru på lyden"
 
-#: ../src/parole-player.c:2820
+#: ../src/parole-player.c:2832
 msgid "Unable to open default web browser"
 msgstr "Kunne ikke åpne forvalgt nettleser"
 
-#: ../src/parole-player.c:2822
+#: ../src/parole-player.c:2834
 msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr "Gå til http://docs.xfce.org/apps/parole/bugs for å rapportere feil."
 
-#: ../src/parole-player.c:2852
+#: ../src/parole-player.c:2864
 msgid "Go"
 msgstr "Gå"
 
-#: ../src/parole-player.c:2865
+#: ../src/parole-player.c:2877
 msgid "Position:"
 msgstr "Posisjon:"
 
 #. Clear Recent Menu Item
-#: ../src/parole-player.c:3303
+#: ../src/parole-player.c:3315
 msgid "_Clear recent items…"
-msgstr "_Slett nylige elementer..."
+msgstr "_Slett nylige elementer…"
 
-#: ../src/parole-player.c:3642
+#: ../src/parole-player.c:3654
 msgid "Audio Track:"
 msgstr "Lydspor:"
 
-#: ../src/parole-player.c:3661
+#: ../src/parole-player.c:3673
 msgid "Subtitles:"
 msgstr "Undertekster:"
 
 #. Add a close button to the Infobar
-#: ../src/parole-player.c:3667 ../src/plugins/tray/tray-provider.c:273
+#: ../src/parole-player.c:3679 ../src/plugins/tray/tray-provider.c:273
 msgid "Close"
 msgstr "Lukk"
 
