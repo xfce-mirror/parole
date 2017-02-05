@@ -1878,6 +1878,7 @@ parole_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePl
             /* No ID3, no problem! Show the filename instead */
             decoded = g_filename_from_uri(uri, NULL, NULL);
             filename = g_path_get_basename(decoded);
+            gtk_window_set_title (GTK_WINDOW (player->priv->window), filename);
             gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), g_strdup_printf("<span color='#F4F4F4'><b><big>%s</big></b></span>", filename));
             g_free (filename);
             g_free (decoded);
