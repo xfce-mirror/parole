@@ -786,6 +786,7 @@
                             <child>
                               <object class="GtkButton" id="media_playpause">
                                 <property name="visible">True</property>
+                                <property name="sensitive">False</property>
                                 <property name="can_focus">False</property>
                                 <property name="receives_default">True</property>
                                 <property name="image">image_media_playpause</property>

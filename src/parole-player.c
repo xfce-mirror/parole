@@ -1404,6 +1404,8 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
 
     int hide_controls_timeout;
 
+    gtk_widget_set_sensitive(player->priv->playpause_button, TRUE);
+
     parole_media_list_set_row_playback_state (player->priv->list, player->priv->row, PAROLE_MEDIA_STATE_PLAYING);
 
     g_object_get (G_OBJECT (stream),
@@ -1508,6 +1510,7 @@ parole_player_quit (ParolePlayer *player)
 static void
 parole_player_stopped (ParolePlayer *player)
 {
+    GdkPixbuf *logo;
     gchar dur_text[128];
     TRACE ("Player stopped");
 
@@ -1519,6 +1522,9 @@ parole_player_stopped (ParolePlayer *player)
 
     gtk_widget_hide(player->priv->videobox);
     gtk_widget_hide(player->priv->audiobox);
+
+    logo = gdk_pixbuf_new_from_file (g_strdup_printf ("%s/replay.png", PIXMAPS_DIR), NULL);
+    gtk_image_set_from_pixbuf(GTK_IMAGE(player->priv->logo_image), logo);
     gtk_widget_show(player->priv->logo_image);
 
     get_time_string (dur_text, 0);
@@ -2261,11 +2267,24 @@ gboolean
 parole_player_gst_widget_button_press (GtkWidget *widget, GdkEventButton *ev, ParolePlayer *player)
 {
     gboolean ret_val = FALSE;
+    gboolean sensitive = FALSE;
 
     if ( ev->type == GDK_2BUTTON_PRESS )
     {
         g_action_activate (G_ACTION(player->priv->media_fullscreen_action), NULL);
         ret_val = TRUE;
+    }
+
+    else if ( gtk_widget_get_visible (player->priv->logo_image) )
+    {
+        g_object_get (G_OBJECT (player->priv->playpause_button),
+            "sensitive", &sensitive,
+            NULL);
+
+        if (sensitive)
+            parole_player_toggle_playpause (player);
+        else
+            parole_media_list_open (player->priv->list);
     }
 
     return ret_val;
