@@ -2257,10 +2257,14 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
     g_signal_connect_swapped (menu, "selection-done",
                               G_CALLBACK (gtk_widget_destroy), menu);
 
+#if GTK_CHECK_VERSION(3,22,0)
+    gtk_menu_popup_at_pointer (GTK_MENU (menu), NULL);
+#else
     gtk_menu_popup (GTK_MENU (menu),
                     NULL, NULL,
                     NULL, NULL,
                     button, activate_time);
+#endif
 }
 
 gboolean
@@ -3033,6 +3037,9 @@ parole_overlay_expose_event (GtkWidget *widget, cairo_t *cr, gpointer user_data)
     context = gtk_widget_get_style_context(GTK_WIDGET(widget));
     gtk_style_context_add_class (context, "background");
     gtk_style_context_add_class (context, "osd");
+
+#if GTK_CHECK_VERSION(3,16,0)
+#else
     gtk_style_context_get_background_color (context, GTK_STATE_NORMAL, &acolor);
     gdk_cairo_set_source_rgba (cr, &acolor);
     cairo_fill (cr);
@@ -3042,6 +3049,7 @@ parole_overlay_expose_event (GtkWidget *widget, cairo_t *cr, gpointer user_data)
     cairo_move_to (cr, 0, 0);
     cairo_line_to (cr, allocation->width, 0);
     cairo_stroke (cr);
+#endif
 
     return FALSE;
 }
@@ -3444,8 +3452,12 @@ parole_player_init (ParolePlayer *player)
 
     /* Content Area (Background, Audio, Video) */
     player->priv->eventbox_output = GTK_WIDGET (gtk_builder_get_object (builder, "content_area"));
+
+#if GTK_CHECK_VERSION(3,16,0)
+#else
     gdk_rgba_parse(&background, "black");
     gtk_widget_override_background_color(GTK_WIDGET(player->priv->eventbox_output), GTK_STATE_NORMAL, &background);
+#endif
 
     // Enable motion-notify event to show/hide controls on mouseover
     gtk_widget_add_events (GTK_WIDGET (player->priv->eventbox_output),

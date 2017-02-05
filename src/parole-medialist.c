@@ -1361,10 +1361,14 @@ parole_media_list_show_menu (ParoleMediaList *list, GdkEventButton *ev)
     g_signal_connect_swapped (menu, "selection-done",
                               G_CALLBACK (parole_media_list_destroy_menu), menu);
 
+#if GTK_CHECK_VERSION(3,22,0)
+    gtk_menu_popup_at_pointer (GTK_MENU (menu), NULL);
+#else
     gtk_menu_popup (GTK_MENU (menu),
                     NULL, NULL,
                     NULL, NULL,
                     button, activate_time);
+#endif
 }
 
 gboolean
@@ -1523,8 +1527,12 @@ parole_media_list_setup_view (ParoleMediaList *list)
     gtk_tree_view_set_model (GTK_TREE_VIEW (list->priv->view), GTK_TREE_MODEL(list_store));
     gtk_tree_view_set_model (GTK_TREE_VIEW (list->priv->disc_view), GTK_TREE_MODEL(disc_list_store));
 
+#if GTK_CHECK_VERSION(3,14,0)
+#else
     gtk_tree_view_set_rules_hint (GTK_TREE_VIEW (list->priv->view), TRUE);
     gtk_tree_view_set_rules_hint (GTK_TREE_VIEW (list->priv->disc_view), TRUE);
+#endif
+
     list->priv->col = gtk_tree_view_column_new ();
     list->priv->disc_col = gtk_tree_view_column_new ();
 

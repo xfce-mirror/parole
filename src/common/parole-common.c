@@ -101,7 +101,7 @@ void parole_window_busy_cursor (GdkWindow *window)
     if ( G_UNLIKELY (window == NULL) )
         return;
 
-    cursor = gdk_cursor_new (GDK_WATCH);
+    cursor = gdk_cursor_new_for_display (gdk_display_get_default(), GDK_WATCH);
 
     gdk_window_set_cursor (window, cursor);
 
@@ -118,7 +118,7 @@ void parole_window_invisible_cursor (GdkWindow *window)
     if ( G_UNLIKELY (window == NULL) )
         return;
 
-    cursor = gdk_cursor_new (GDK_BLANK_CURSOR);
+    cursor = gdk_cursor_new_for_display (gdk_display_get_default(), GDK_BLANK_CURSOR);
 
     gdk_window_set_cursor (window, cursor);
 

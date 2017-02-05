@@ -257,8 +257,11 @@ parole_gst_realize (GtkWidget *widget)
 
     gdk_window_set_user_data (gtk_widget_get_window(widget), widget);
 
+#if GTK_CHECK_VERSION(3,22,0)
+#else
     gdk_rgba_parse (&color, "black");
     gdk_window_set_background_rgba (gtk_widget_get_window(widget), &color);
+#endif
 
     g_signal_connect    (gtk_widget_get_toplevel (widget), "configure_event",
                          G_CALLBACK (parole_gst_configure_event_cb), gst);
@@ -2419,7 +2422,9 @@ parole_gst_init (ParoleGst *gst)
      * flickering when resizing the window.
      * Deprecated in GTK+ 3.12, but clutter is broken so adding back.
      */
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     gtk_widget_set_double_buffered (GTK_WIDGET (gst), FALSE);
+    G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 GtkWidget *
