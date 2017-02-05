@@ -1131,4 +1131,3 @@ parole_conf_xfconf_init_failed (void)
 {
   no_xfconf = TRUE;
 }
-

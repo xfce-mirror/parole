@@ -362,6 +362,7 @@ struct ParolePlayerPrivate
     /* Parole Player layouts */
     gboolean            embedded;
     gboolean            full_screen;
+    gboolean            mini_mode;
     /* Remembered window sizes */
     gint                last_h, last_w;
     /* HPaned handle-width for calculating size with playlist */
@@ -387,6 +388,7 @@ struct ParolePlayerPrivate
     GtkWidget          *fullscreen_menu_item;
     GtkWidget          *label_elapsed;
     GtkWidget          *label_duration;
+    GtkWidget          *label_divider;
     GtkWidget          *range;
     GtkWidget          *progressbar_buffering;
     GtkWidget          *volume;
@@ -426,6 +428,7 @@ struct ParolePlayerPrivate
     /* AudioBox (Artwork, Title, Track, Album) Widgets */
     GtkWidget          *audiobox;
     GtkWidget          *audiobox_cover;
+    GtkWidget          *audiobox_text;
     GtkWidget          *audiobox_title;
     GtkWidget          *audiobox_album;
     GtkWidget          *audiobox_artist;
@@ -2029,8 +2032,12 @@ parole_player_reset_controls (ParolePlayer *player, gboolean fullscreen)
     gboolean show_playlist;
     gboolean always_hide_menubar = FALSE;
 
+    gint h, w;
+
     g_object_get (G_OBJECT (player->priv->conf),
               "always-hide-menubar", &always_hide_menubar,
+              "window-height", &h,
+              "window-width", &w,
               NULL);
 
     if ( player->priv->full_screen != fullscreen )
@@ -2080,6 +2087,40 @@ parole_player_reset_controls (ParolePlayer *player, gboolean fullscreen)
         gtk_widget_hide (player->priv->fullscreen_button);
         gtk_widget_hide (player->priv->showhide_playlist_button);
     }
+
+    else
+    {
+        if ( player->priv->mini_mode )
+        {
+            gtk_widget_hide (player->priv->menu_bar);
+            gtk_widget_hide (player->priv->playlist_nt);
+            gtk_widget_hide (player->priv->fullscreen_button);
+            gtk_widget_hide (player->priv->showhide_playlist_button);
+            gtk_widget_hide (player->priv->audiobox_text);
+            gtk_widget_set_halign (player->priv->audiobox_cover, GTK_ALIGN_CENTER);
+
+            gtk_widget_hide(player->priv->range);
+            gtk_widget_show(player->priv->label_divider);
+
+            gtk_window_resize (GTK_WINDOW (player->priv->window), 256, 256);
+        }
+
+        else
+        {
+            gtk_widget_show (player->priv->audiobox_text);
+            gtk_widget_show (player->priv->fullscreen_button);
+            gtk_widget_hide(player->priv->label_divider);
+            gtk_widget_show(player->priv->range);
+            gtk_widget_set_halign (player->priv->audiobox_cover, GTK_ALIGN_FILL);
+
+            if ( !player->priv->full_screen )
+            {
+                gtk_widget_show (player->priv->menu_bar);
+                gtk_widget_show (player->priv->showhide_playlist_button);
+                gtk_window_resize (GTK_WINDOW (player->priv->window), w, h);
+            }
+        }
+    }
 }
 
 void
@@ -2112,6 +2153,13 @@ static void parole_player_hide_menubar_cb (GtkWidget *widget, ParolePlayer *play
     player->priv->show_menubar = !gtk_widget_get_visible (player->priv->menu_bar);
     if (!player->priv->full_screen)
         gtk_widget_set_visible (player->priv->menu_bar, player->priv->show_menubar);
+}
+
+static void parole_player_toggle_mini_mode_cb (GtkWidget *widget, ParolePlayer *player)
+{
+    gboolean active = gtk_check_menu_item_get_active (GTK_CHECK_MENU_ITEM(widget));
+    player->priv->mini_mode = active;
+    parole_player_reset_controls(player, FALSE);
 }
 
 static void
@@ -2184,8 +2232,21 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
         gtk_widget_show (mi);
         gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
 
-    }
+        if ( player->priv->mini_mode ) {
+            gtk_widget_set_sensitive(GTK_WIDGET(mi), FALSE);
+        }
 
+        mi = gtk_separator_menu_item_new();
+        gtk_widget_show(GTK_WIDGET(mi));
+        gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+
+        mi = gtk_check_menu_item_new_with_label(_("Mini Mode"));
+        gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi), player->priv->mini_mode);
+        g_signal_connect (mi, "activate",
+            G_CALLBACK (parole_player_toggle_mini_mode_cb), player);
+        gtk_widget_show (mi);
+        gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+    }
 
     g_signal_connect_swapped (menu, "selection-done",
                               G_CALLBACK (gtk_widget_destroy), menu);
@@ -2266,7 +2327,7 @@ parole_player_gst_widget_motion_notify_event (GtkWidget *widget, GdkEventMotion 
         hide_timeout = 0;
     }
 
-    gtk_widget_show_all (gtk_widget_get_parent(player->priv->control));
+    gtk_widget_show (gtk_widget_get_parent(player->priv->control));
 
     parole_player_set_cursor_visible (player, TRUE);
 
@@ -3029,10 +3090,12 @@ parole_player_configure_event_cb (GtkWidget *widget, GdkEventConfigure *ev, Paro
         {
             player->priv->last_w = old_w;
             player->priv->last_h = old_h;
-            g_object_set (G_OBJECT (player->priv->conf),
-                          "window-width", new_w,
-                          "window-height", new_h,
-                          NULL);
+
+            if ( !player->priv->mini_mode )
+                g_object_set (G_OBJECT (player->priv->conf),
+                              "window-width", new_w,
+                              "window-height", new_h,
+                              NULL);
         }
     }
 
@@ -3387,6 +3450,7 @@ parole_player_init (ParolePlayer *player)
     // Audio Box
     player->priv->audiobox = GTK_WIDGET (gtk_builder_get_object (builder, "audio_output"));
     player->priv->audiobox_cover = GTK_WIDGET (gtk_builder_get_object (builder, "audio_cover"));
+    player->priv->audiobox_text = GTK_WIDGET (gtk_builder_get_object (builder, "audio_text"));
     player->priv->audiobox_title = GTK_WIDGET (gtk_builder_get_object (builder, "audio_title"));
     player->priv->audiobox_album = GTK_WIDGET (gtk_builder_get_object (builder, "audio_album"));
     player->priv->audiobox_artist = GTK_WIDGET (gtk_builder_get_object (builder, "audio_artist"));
@@ -3603,6 +3667,7 @@ parole_player_init (ParolePlayer *player)
     /* Elapsed/Duration labels */
     player->priv->label_duration = GTK_WIDGET(gtk_builder_get_object(builder, "media_time_duration"));
     player->priv->label_elapsed = GTK_WIDGET(gtk_builder_get_object(builder, "media_time_elapsed"));
+    player->priv->label_divider = GTK_WIDGET(gtk_builder_get_object(builder, "media_time_divider"));
 
     /* Time Slider */
     player->priv->range = GTK_WIDGET (gtk_builder_get_object (builder, "media_progress_slider"));
@@ -4105,4 +4170,3 @@ static gboolean parole_player_dbus_play_disc (ParolePlayer *player,
 
     return TRUE;
 }
-

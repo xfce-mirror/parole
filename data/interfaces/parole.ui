@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.16.1 -->
+<!-- Generated with glade 3.20.0 -->
 <interface>
   <requires lib="gtk+" version="3.2"/>
   <object class="GtkAdjustment" id="adjustment1">
@@ -328,8 +328,8 @@
                         <property name="label" translatable="yes">Volume _Up</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="parole_player_volume_up" swapped="no"/>
-                        <accelerator key="plus" signal="activate"/>
                         <accelerator key="equal" signal="activate"/>
+                        <accelerator key="plus" signal="activate"/>
                       </object>
                     </child>
                     <child>
@@ -620,7 +620,7 @@
                 </child>
                 <child>
                   <object class="GtkEventBox" id="content_area">
-                    <property name="width_request">380</property>
+                    <property name="width_request">256</property>
                     <property name="height_request">256</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
@@ -670,7 +670,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkBox" id="box5">
+                              <object class="GtkBox" id="audio_text">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="orientation">vertical</property>
@@ -679,11 +679,11 @@
                                   <object class="GtkLabel" id="audio_title">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
-                                    <property name="xalign">0</property>
-                                    <property name="yalign">1</property>
                                     <property name="label" translatable="yes">&lt;span color='#F4F4F4'&gt;&lt;b&gt;&lt;big&gt;Unknown Song&lt;/big&gt;&lt;/b&gt;&lt;/span&gt;</property>
                                     <property name="use_markup">True</property>
                                     <property name="ellipsize">end</property>
+                                    <property name="xalign">0</property>
+                                    <property name="yalign">1</property>
                                   </object>
                                   <packing>
                                     <property name="expand">True</property>
@@ -695,10 +695,10 @@
                                   <object class="GtkLabel" id="audio_album">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
-                                    <property name="xalign">0</property>
                                     <property name="label" translatable="yes">&lt;big&gt;&lt;span color='#BBBBBB'&gt;&lt;i&gt;on&lt;/i&gt;&lt;/span&gt; &lt;span color='#F4F4F4'&gt;Unknown Album&lt;/span&gt;&lt;/big&gt;</property>
                                     <property name="use_markup">True</property>
                                     <property name="ellipsize">end</property>
+                                    <property name="xalign">0</property>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -710,11 +710,11 @@
                                   <object class="GtkLabel" id="audio_artist">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
-                                    <property name="xalign">0</property>
-                                    <property name="yalign">0</property>
                                     <property name="label" translatable="yes">&lt;big&gt;&lt;span color='#BBBBBB'&gt;&lt;i&gt;by&lt;/i&gt;&lt;/span&gt; &lt;span color='#F4F4F4'&gt;Unknown Artist&lt;/span&gt;&lt;/big&gt;</property>
                                     <property name="use_markup">True</property>
                                     <property name="ellipsize">end</property>
+                                    <property name="xalign">0</property>
+                                    <property name="yalign">0</property>
                                   </object>
                                   <packing>
                                     <property name="expand">True</property>
@@ -857,6 +857,20 @@
                               </packing>
                             </child>
                             <child>
+                              <object class="GtkLabel" id="media_time_divider">
+                                <property name="can_focus">False</property>
+                                <property name="no_show_all">True</property>
+                                <property name="margin_left">6</property>
+                                <property name="margin_right">6</property>
+                                <property name="label" translatable="yes">/</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">6</property>
+                              </packing>
+                            </child>
+                            <child>
                               <object class="GtkLabel" id="media_time_duration">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
@@ -866,7 +880,7 @@
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">True</property>
-                                <property name="position">6</property>
+                                <property name="position">7</property>
                               </packing>
                             </child>
                           </object>
@@ -880,17 +894,16 @@
                           <object class="GtkVolumeButton" id="media_volumebutton">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
+                            <property name="focus_on_click">False</property>
                             <property name="receives_default">True</property>
                             <property name="has_tooltip">True</property>
                             <property name="relief">none</property>
-                            <property name="focus_on_click">False</property>
                             <property name="orientation">vertical</property>
                             <property name="size">menu</property>
                             <property name="icons">audio-volume-muted-symbolic
 audio-volume-high-symbolic
 audio-volume-low-symbolic
 audio-volume-medium-symbolic</property>
-                            <property name="use_symbolic">True</property>
                             <signal name="scroll-event" handler="parole_player_volume_scroll_event_cb" swapped="no"/>
                             <signal name="value-changed" handler="parole_player_volume_value_changed_cb" swapped="no"/>
                             <child internal-child="plus_button">
