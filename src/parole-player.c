@@ -2110,10 +2110,17 @@ parole_player_reset_controls (ParolePlayer *player, gboolean fullscreen)
             gtk_widget_show(player->priv->label_divider);
 
             gtk_window_resize (GTK_WINDOW (player->priv->window), 256, 256);
+            gtk_widget_set_size_request (GTK_WIDGET (player->priv->window), 256, 256);
+            gtk_window_set_default_size (GTK_WINDOW (player->priv->window), 256, 256);
+            gtk_window_set_resizable (GTK_WINDOW (player->priv->window), FALSE);
         }
 
         else
         {
+            gtk_widget_set_size_request (GTK_WIDGET (player->priv->window), -1, -1);
+            gtk_window_set_default_size (GTK_WINDOW (player->priv->window), -1, -1);
+            gtk_window_set_resizable (GTK_WINDOW (player->priv->window), TRUE);
+
             gtk_widget_show (player->priv->audiobox_text);
             gtk_widget_show (player->priv->fullscreen_button);
             gtk_widget_hide(player->priv->label_divider);
@@ -2124,6 +2131,8 @@ parole_player_reset_controls (ParolePlayer *player, gboolean fullscreen)
             {
                 gtk_widget_show (player->priv->menu_bar);
                 gtk_widget_show (player->priv->showhide_playlist_button);
+                if ( gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (player->priv->showhide_playlist_button)) )
+                    gtk_widget_show (player->priv->playlist_nt);
                 gtk_window_resize (GTK_WINDOW (player->priv->window), w, h);
             }
         }
@@ -2762,7 +2771,6 @@ parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
             parole_media_list_open_location (player->priv->list);
             break;
 #endif
-        break;
         /*
          * Pass these to the media list and tell it to
          * grab the focus
@@ -4053,7 +4061,7 @@ static gboolean
 get_has_file_extension (gchar* filename, gchar* extension)
 {
     gchar *lowercase = NULL;
-    gboolean has_ext = FALSE;
+    gboolean has_ext;
 
     lowercase = g_utf8_strdown (filename, g_utf8_strlen(filename, -1));
 
