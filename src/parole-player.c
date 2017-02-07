@@ -2282,6 +2282,7 @@ parole_player_gst_widget_button_press (GtkWidget *widget, GdkEventButton *ev, Pa
 {
     gboolean ret_val = FALSE;
     gboolean sensitive = FALSE;
+    gint w, h;
 
     if ( ev->type == GDK_2BUTTON_PRESS )
     {
@@ -2289,16 +2290,24 @@ parole_player_gst_widget_button_press (GtkWidget *widget, GdkEventButton *ev, Pa
         ret_val = TRUE;
     }
 
-    else if ( gtk_widget_get_visible (player->priv->logo_image) )
+    else if ( ev->button == 1 && gtk_widget_get_visible (player->priv->logo_image) )
     {
-        g_object_get (G_OBJECT (player->priv->playpause_button),
-            "sensitive", &sensitive,
-            NULL);
+        /* Clicking on the play or replay logo will activate appropriate functionality */
+        h = gtk_widget_get_allocated_height ( widget );
+        w = gtk_widget_get_allocated_width ( widget );
 
-        if (sensitive)
-            parole_player_toggle_playpause (player);
-        else
-            parole_media_list_open (player->priv->list);
+        if ( (ev->x > ((w / 2) - 128) && ev->x < ((w / 2) + 128)) &&
+             (ev->y > ((h / 2) - 128) && ev->y < ((h / 2) + 128)) )
+        {
+            g_object_get (G_OBJECT (player->priv->playpause_button),
+                "sensitive", &sensitive,
+                NULL);
+
+            if (sensitive)
+                parole_player_toggle_playpause (player);
+            else
+                parole_media_list_open (player->priv->list);
+        }
     }
 
     return ret_val;
