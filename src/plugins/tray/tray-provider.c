@@ -182,9 +182,11 @@ popup_menu_cb (GtkStatusIcon *icon, guint button,
     g_signal_connect_swapped (mi, "activate", G_CALLBACK (exit_activated_cb), tray);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
 
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     gtk_menu_popup (GTK_MENU (menu), NULL, NULL,
                     gtk_status_icon_position_menu,
                     icon, button, activate_time);
+    G_GNUC_END_IGNORE_DEPRECATIONS
 
     g_signal_connect_swapped (menu, "selection-done",
                   G_CALLBACK (menu_selection_done_cb), tray);
@@ -413,7 +415,10 @@ tray_provider_set_player (ParoleProviderPlugin *plugin, ParoleProviderPlayer *pl
 
     tray->window = parole_provider_player_get_main_window (player);
 
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     tray->tray = gtk_status_icon_new ();
+    G_GNUC_END_IGNORE_DEPRECATIONS
+
     tray->player = player;
     tray->menu = NULL;
 
@@ -425,7 +430,10 @@ tray_provider_set_player (ParoleProviderPlugin *plugin, ParoleProviderPlayer *pl
 
     if ( pix )
     {
+        G_GNUC_BEGIN_IGNORE_DEPRECATIONS
         gtk_status_icon_set_from_pixbuf (tray->tray, pix);
+        G_GNUC_END_IGNORE_DEPRECATIONS
+
         g_object_unref (pix);
     }
 
