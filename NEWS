@@ -1,3 +1,18 @@
+0.9.0
+=====
+- New "mini mode", toggled by right click in content area
+- New play and replay icons, now actionable on click
+- Replace most deprecated calls (except for GtkStatusIcon)
+- Reenable double-buffering for X11 video
+- Set the window title and artwork to the filename when no ID3 tags are found
+- Support loading plugins by basename (plugin-name.so)
+- Theme developers take note! This release drops the background color styles
+  for the controls. Tweak your "osd" class accordingly!
+- Translation Updates: Asturian, Bulgarian, Catalan, Chinese (China), Croatian,
+  Czech, Danish, Dutch, French, German, Greek, Hebrew, Hungarian, Icelandic,
+  Japanese, Kazakh, Korean, Lithuanian, Norwegian Bokmal, Polish,
+  Portuguese (Brazilian), Russian, Slovak, Spanish, Swedish, Turkish, Ukrainian
+
 0.8.1
 =====
 - New hidden setting to persistently hide the menubar
@@ -32,7 +47,7 @@
   - Video backend selection from Preferences dialog
   - New "Go to position" feature
   - GtkRevealer is now used for the controls with Gtk 3.10+
-  - New "hide-controls-timeout" setting to specify when controls should be hidden 
+  - New "hide-controls-timeout" setting to specify when controls should be hidden
 - Cleaned up deprecated widgets and callbacks
 - Bugs Fixed
   - Fixed "value invalid or out of range" errors
@@ -219,7 +234,7 @@
 - Don't hide the controls in full screen when cursor is above
   the popup window.
 - Respect browser plugin dir installation directory.
-- Support for playlist format in the media browser plugin, that it, the 
+- Support for playlist format in the media browser plugin, that it, the
   plugin now gets the data from the browser, save it in a temporary
   file parse it and play it...
 - Added an option in the media chooser to chooer whether to start
@@ -244,7 +259,7 @@
 - Handle CTL_O and XF86XK_OpenURL.
 - Use cdda:// for audio disc, sine cdda:/ doesn't work!
 - Give focus to media list view on GDK_Up and Down.
-- Added an option in the media chooser to replace current playlist 
+- Added an option in the media chooser to replace current playlist
   with opened files
 - Hide control full screen popup when switch from a desktop to another.
 - Enter/leave fullscreen on double click on the video widget, thanks
