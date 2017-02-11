@@ -2,10 +2,10 @@ m4_define([intltool_minimum_version], [0.35])
 m4_define([parole_verinfo],           [0:8:1])
 m4_define([parole_version_api],       [0])
 m4_define([parole_version_major],     [0])
-m4_define([parole_version_minor],     [8])
-m4_define([parole_version_micro],     [1])
+m4_define([parole_version_minor],     [9])
+m4_define([parole_version_micro],     [0])
 m4_define([parole_version_build],     [@REVISION@])
-m4_define([parole_version_tag],       [git])
+m4_define([parole_version_tag],       [])
 m4_define([parole_version], [parole_version_major().parole_version_minor().parole_version_micro()ifelse(parole_version_tag(), [git], [parole_version_tag().parole_version_build()], [parole_version_tag()])])
 
 AC_INIT([parole], [parole_version], [http://docs.xfce.org/apps/parole/bugs])
@@ -16,10 +16,10 @@ AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE([1.8 dist-bzip2 tar-ustar no-dist-gzip])
 AM_CONFIG_HEADER([config.h])
 
-if test x${enable_gtk_doc} = x"yes"; then 
+if test x${enable_gtk_doc} = x"yes"; then
     AM_MAINTAINER_MODE([enable])
 else
-    if test x${enable_debug} != x"no"; then 
+    if test x${enable_debug} != x"no"; then
         AM_MAINTAINER_MODE([enable])
     else
         AM_MAINTAINER_MODE()
@@ -210,9 +210,9 @@ fi
 #                   TagLib support                      #
 # ===================================================== #
 TAGLIB_FOUND="no"
-XDT_CHECK_OPTIONAL_PACKAGE([TAGLIB], 
+XDT_CHECK_OPTIONAL_PACKAGE([TAGLIB],
     [taglib], [1.4],
-    [taglib], 
+    [taglib],
     [tag lib], [yes])
 
 if test x"$TAGLIB_FOUND" = x"yes"; then
@@ -245,7 +245,7 @@ AC_MSG_RESULT([$ac_notify_plugin])
 LIBNOTIFY_FOUND="no"
 if test x"$ac_notify_plugin" = x"yes"; then
     XDT_CHECK_PACKAGE([LIBNOTIFY],
-    [libnotify], [libnotify_minimum_version]) 
+    [libnotify], [libnotify_minimum_version])
 fi
 
 # Tray plugin.
