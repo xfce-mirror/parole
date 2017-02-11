@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2014 Sean Davis <bluesabre@xfce.org> and Simon Steinbeiß <simon@xfce.org> -->
+<!-- Copyright 2014-2017 Sean Davis <bluesabre@xfce.org> and Simon Steinbeiß <simon@xfce.org> -->
 <component type="desktop">
-  <id>parole.desktop</id>
+  <id>org.xfce.Parole.desktop</id>
   <metadata_license>CC-BY-3.0</metadata_license>
   <project_license>GPL-2.0+</project_license>
   <name>Parole</name>
   <summary>Modern and simple media player</summary>
+  <translation type="gettext">parole</translation>
 
   <description>
     <_p>Parole is a modern simple media player based on the GStreamer
@@ -20,11 +21,16 @@
 
   <screenshots>
     <screenshot type="default">
-      <image>http://i2.wp.com/smdavis.us/wp-content/uploads/2014/04/Numix_parole.png</image>
+      <caption>Parole playing Big Buck Bunny</caption>
+      <image>https://screenshots.smdavis.us/parole/parole-01.png</image>
     </screenshot>
     <screenshot>
-      <caption>Parole in Xubuntu with the MPRIS2 plugin</caption>
-      <image>http://i2.wp.com/smdavis.us/wp-content/uploads/2014/04/Parole_Plugins.png</image>
+      <caption>Parole playing a LAS podcast</caption>
+      <image>https://screenshots.smdavis.us/parole/parole-02.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Parole playing a LAS podcast in Mini Mode (0.9+)</caption>
+      <image>https://screenshots.smdavis.us/parole/parole-03.png</image>
     </screenshot>
   </screenshots>
 
@@ -41,7 +47,16 @@
   </provides>
 
   <releases>
-    <release version="0.8.1" timestamp="1444908600">
+    <release version="0.9.0" date="2017-02-11">
+      <description>
+        <_p>This development release adds a new mini mode and the abilty to play
+        or replay content by clicking the the circle icons. Theming is simplfied
+        and filenames are displayed when no ID3 tags are found.
+        </_p>
+      </description>
+    </release>
+
+    <release version="0.8.1" date="2015-10-15">
       <description>
         <_p>This release improves the build process and includes several bug fixes.
         This new stable release is a recommended upgrade for all users.
@@ -49,7 +64,7 @@
       </description>
     </release>
 
-    <release version="0.8.0" timestamp="1425137149">
+    <release version="0.8.0" date="2015-02-28">
       <description>
         <_p>This release improves the build process and includes several bug fixes.
         This new stable release is a recommended upgrade for all users.
@@ -57,7 +72,7 @@
       </description>
     </release>
 
-    <release version="0.7.0" timestamp="1396146123">
+    <release version="0.7.0" date="2014-03-29">
       <description>
         <_p>This unstable development release adds the new clutter backend and cleans up
         deprecated Gtk3 symbols. It also adds a "go to position" feature and several bugs
@@ -66,14 +81,14 @@
       </description>
     </release>
 
-    <release version="0.6.1" timestamp="1396146122">
+    <release version="0.6.1" date="2014-03-29">
       <description>
         <_p>This release fixes a problem with detecting DVD drive locations.
         </_p>
       </description>
     </release>
 
-    <release version="0.6.0" timestamp="1390672461">
+    <release version="0.6.0" date="2014-01-25">
       <description>
         <_p>This release features the completed transition to the Gtk+3 toolkit, improvements
         in the user-interface (more streamlined menus), better playlists. Furthermore existing
@@ -83,7 +98,7 @@
       </description>
     </release>
 
-    <release version="0.5.91" timestamp="1388377669">
+    <release version="0.5.91" date="2013-12-29">
       <description>
         <_p>This unstable development release features mostly bugfixes and introduces the new
         MPRIS2 plugin.
@@ -91,7 +106,7 @@
       </description>
     </release>
 
-    <release version="0.5.4" timestamp="1386200468">
+    <release version="0.5.4" date="2013-12-04">
       <description>
         <_p>This is a bugfix release which fixes the loading of playlists with relative paths,
         improves the file-filters for audio/video mimetypes and fixes the "Remove duplicates"
@@ -100,7 +115,7 @@
       </description>
     </release>
 
-    <release version="0.5.90" timestamp="1382192176">
+    <release version="0.5.90" date="2013-10-19">
       <description>
         <_p>This unstable development release features the complete port to the Gtk+3 toolkit,
         improvements in the user-interface (more streamlined menus), better playlists. It also

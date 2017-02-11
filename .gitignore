@@ -20,7 +20,7 @@ config.status
 config.sub
 configure
 configure.ac
-data/desktop/parole.desktop.in
+data/desktop/org.xfce.Parole.desktop.in
 data/interfaces/*.h
 data/mime/parole-mime-types.h
 depcomp
@@ -55,6 +55,7 @@ ltmain.sh
 m4
 missing
 mkinstalldirs
+parole-*.tar.bz2
 po/.intltool-merge-cache
 po/Makefile.in.in
 po/POTFILES
@@ -79,6 +80,7 @@ src/parole
 src/stamp-enum-gtypes.h
 stamp-enum-types.h
 stamp-h1
+test-driver
 .cproject
 .project
 .settings
