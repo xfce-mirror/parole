@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-05 06:31+0100\n"
-"PO-Revision-Date: 2017-02-05 13:47+0000\n"
+"POT-Creation-Date: 2017-02-12 00:31+0100\n"
+"PO-Revision-Date: 2017-02-12 07:23+0000\n"
 "Last-Translator: Kiril Kirilov <cybercop_montana@abv.bg>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/xfce/xfce-apps/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,8 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../data/interfaces/parole.ui.h:1 ../data/desktop/parole.desktop.in.in.h:1
+#: ../data/interfaces/parole.ui.h:1
+#: ../data/desktop/org.xfce.Parole.desktop.in.in.h:1
 #: ../src/parole-player.c:608 ../src/parole-player.c:1521
 #: ../src/parole-about.c:70 ../src/plugins/mpris2/mpris2-provider.c:199
 msgid "Parole Media Player"
@@ -70,7 +71,7 @@ msgid "_Shuffle"
 msgstr "Случайно"
 
 #. Create dialog
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2945
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2962
 msgid "Go to position"
 msgstr "Отиди на позиция"
 
@@ -131,7 +132,7 @@ msgid "_Video"
 msgstr "Видео"
 
 #: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2064
-#: ../src/parole-player.c:2219
+#: ../src/parole-player.c:2228
 msgid "_Fullscreen"
 msgstr "Цял екран"
 
@@ -238,7 +239,7 @@ msgstr "Отваряне на мултимедийни файлове"
 
 #: ../data/interfaces/playlist.ui.h:1
 #: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:806
-#: ../src/parole-medialist.c:849 ../src/parole-player.c:3365
+#: ../src/parole-medialist.c:849 ../src/parole-player.c:3382
 msgid "Playlist"
 msgstr "Списък за изпълнение"
 
@@ -475,21 +476,21 @@ msgstr "Изчистване на историята"
 msgid "<big><b>Open Network Location</b></big>"
 msgstr "<big><b>Отваряне на местоположение в мрежата</b></big>"
 
-#: ../data/desktop/parole.desktop.in.in.h:2
+#: ../data/desktop/org.xfce.Parole.desktop.in.in.h:2
 msgid "Play your media"
 msgstr "Изпълнение на мултимедията"
 
-#: ../data/desktop/parole.desktop.in.in.h:3
+#: ../data/desktop/org.xfce.Parole.desktop.in.in.h:3
 msgid "Play/Pause"
 msgstr "Изпълнение/Пауза"
 
-#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3520
-#: ../src/plugins/notify/notify-provider.c:204
+#: ../data/desktop/org.xfce.Parole.desktop.in.in.h:4
+#: ../src/parole-player.c:3537 ../src/plugins/notify/notify-provider.c:204
 msgid "Previous Track"
 msgstr "Предишен запис"
 
-#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3538
-#: ../src/plugins/notify/notify-provider.c:217
+#: ../data/desktop/org.xfce.Parole.desktop.in.in.h:5
+#: ../src/parole-player.c:3555 ../src/plugins/notify/notify-provider.c:217
 msgid "Next Track"
 msgstr "Следващ запис"
 
@@ -509,22 +510,29 @@ msgstr "Parole включва функции за възпроизвеждане
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid ""
+"This development release adds a new mini mode and the abilty to play or "
+"replay content by clicking the the circle icons. Theming is simplfied and "
+"filenames are displayed when no ID3 tags are found."
+msgstr "Тази версия в процес на разработка, добавя нов режим с минимален изглед и възможност за изпълнение или заместване на съдържание с кликване върху иконите в кръга. Изгледът е опростен, а имената на файловете се показват, когато бъдат открити ID3 тагове."
+
+#: ../data/appdata/parole.appdata.xml.in.h:4
+msgid ""
 "This release improves the build process and includes several bug fixes. This"
 " new stable release is a recommended upgrade for all users."
 msgstr "Тази версия е подобрена и включва няколко корекции на грешки. Препоръчва се на всички потребители да надградят до тази стабилна версия."
 
-#: ../data/appdata/parole.appdata.xml.in.h:4
+#: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
 msgstr "Това е нестабилна версия в процес на разработка. Добавена е поддръжка на Clutter и са премахнати неподдържаните GTK3 символи. Добавяна е опция „отиване към местоположение“ и са отстранени няколко грешки."
 
-#: ../data/appdata/parole.appdata.xml.in.h:5
+#: ../data/appdata/parole.appdata.xml.in.h:6
 msgid "This release fixes a problem with detecting DVD drive locations."
 msgstr "В тази версия са отстранени проблеми със засичането на DVD устройства."
 
-#: ../data/appdata/parole.appdata.xml.in.h:6
+#: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This release features the completed transition to the Gtk+3 toolkit, "
 "improvements in the user-interface (more streamlined menus), better "
@@ -533,20 +541,20 @@ msgid ""
 "and we use the GStreamer1.0 framework now by default."
 msgstr "Тази версия е със завършена поддръжка на Gtk +3 , подобрен потребителски интерфейс (по-оптимизирани менюта) , по-добри плейлисти. Освен съществуващите плъгини е добавен (MPRIS2). По- голяма част от разработката е актуализирана в тази версия, и сега, ние използваме GStreamer1.0 по подразбиране."
 
-#: ../data/appdata/parole.appdata.xml.in.h:7
+#: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
 "This unstable development release features mostly bugfixes and introduces "
 "the new MPRIS2 plugin."
 msgstr "Това издание се отличава най- вече с поправка на грешки и въвеждане на MPRIS2 плъгина."
 
-#: ../data/appdata/parole.appdata.xml.in.h:8
+#: ../data/appdata/parole.appdata.xml.in.h:9
 msgid ""
 "This is a bugfix release which fixes the loading of playlists with relative "
 "paths, improves the file-filters for audio/video mimetypes and fixes the "
 "\"Remove duplicates\" functionality."
 msgstr "Това е издание с отстранени грешки, свързани със зареждането на списъците с пътища до файловете , подобрени файлови филтри за аудио / видео асоциации и функция „Премахване на дубликати“."
 
-#: ../data/appdata/parole.appdata.xml.in.h:9
+#: ../data/appdata/parole.appdata.xml.in.h:10
 msgid ""
 "This unstable development release features the complete port to the Gtk+3 "
 "toolkit, improvements in the user-interface (more streamlined menus), better"
@@ -796,7 +804,7 @@ msgstr "Отваряне на съдържащата папка"
 msgid "Hide Playlist"
 msgstr "Скриване на списъка"
 
-#: ../src/parole-player.c:538 ../src/parole-player.c:3580
+#: ../src/parole-player.c:538 ../src/parole-player.c:3597
 msgid "Show Playlist"
 msgstr "Покажи списъка за изпълнение"
 
@@ -806,7 +814,7 @@ msgid "Select Subtitle File"
 msgstr "Избор на файл със субтитри..."
 
 #: ../src/parole-player.c:1025 ../src/parole-player.c:1229
-#: ../src/parole-player.c:2948 ../src/plugins/tray/tray-provider.c:338
+#: ../src/parole-player.c:2965 ../src/plugins/tray/tray-provider.c:340
 msgid "Cancel"
 msgstr "Затваряне"
 
@@ -865,7 +873,7 @@ msgstr "Неизвестен Изпълнител"
 msgid "Buffering"
 msgstr "Буфериране"
 
-#: ../src/parole-player.c:2065 ../src/parole-player.c:3555
+#: ../src/parole-player.c:2065 ../src/parole-player.c:3572
 msgid "Fullscreen"
 msgstr "Режим на цял екран"
 
@@ -879,77 +887,77 @@ msgstr "Изход от цял екран"
 
 #. Play menu item
 #. * Play pause
-#: ../src/parole-player.c:2187 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2196 ../src/plugins/tray/tray-provider.c:130
 msgid "_Pause"
 msgstr "Пауза"
 
-#: ../src/parole-player.c:2187 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2196 ../src/plugins/tray/tray-provider.c:130
 msgid "_Play"
 msgstr "Изпълнение"
 
 #. * Previous item in playlist.
-#: ../src/parole-player.c:2201
+#: ../src/parole-player.c:2210
 msgid "_Previous"
 msgstr "Предишен"
 
 #. * Next item in playlist.
-#: ../src/parole-player.c:2210
+#: ../src/parole-player.c:2219
 msgid "_Next"
 msgstr "Следващ"
 
 #. * Un/Full screen
-#: ../src/parole-player.c:2219
+#: ../src/parole-player.c:2228
 msgid "_Leave Fullscreen"
 msgstr "Изход от Цял екран"
 
 #. * Un/Hide menubar
-#: ../src/parole-player.c:2233
+#: ../src/parole-player.c:2242
 msgid "Show menubar"
 msgstr "Покажи лентата с менюта"
 
-#: ../src/parole-player.c:2250
+#: ../src/parole-player.c:2259
 msgid "Mini Mode"
 msgstr "Минимален режим"
 
-#: ../src/parole-player.c:2523
+#: ../src/parole-player.c:2541
 msgid "Mute"
 msgstr "Заглушаване на звука"
 
-#: ../src/parole-player.c:2528
+#: ../src/parole-player.c:2546
 msgid "Unmute"
 msgstr "Пускане на звука"
 
-#: ../src/parole-player.c:2917
+#: ../src/parole-player.c:2934
 msgid "Unable to open default web browser"
 msgstr "Не може да бъде отворен уеб браузъра по подразбиране"
 
-#: ../src/parole-player.c:2919
+#: ../src/parole-player.c:2936
 msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr "Моля, докладвайте грешката на http://docs.xfce.org/apps/parole/bugs."
 
-#: ../src/parole-player.c:2949
+#: ../src/parole-player.c:2966
 msgid "Go"
 msgstr "Напред"
 
-#: ../src/parole-player.c:2962
+#: ../src/parole-player.c:2979
 msgid "Position:"
 msgstr "Позиция:"
 
 #. Clear Recent Menu Item
-#: ../src/parole-player.c:3406
+#: ../src/parole-player.c:3423
 msgid "_Clear recent items…"
 msgstr "Покажи последно използваните обекти..."
 
-#: ../src/parole-player.c:3751
+#: ../src/parole-player.c:3768
 msgid "Audio Track:"
 msgstr "Аудио запис:"
 
-#: ../src/parole-player.c:3770
+#: ../src/parole-player.c:3787
 msgid "Subtitles:"
 msgstr "Субтитри:"
 
 #. Add a close button to the Infobar
-#: ../src/parole-player.c:3776 ../src/plugins/tray/tray-provider.c:273
+#: ../src/parole-player.c:3793 ../src/plugins/tray/tray-provider.c:275
 msgid "Close"
 msgstr "Затваряне"
 
@@ -1180,31 +1188,31 @@ msgstr "Следващ запис"
 msgid "_Open"
 msgstr "_Отваряне"
 
-#: ../src/plugins/tray/tray-provider.c:270
+#: ../src/plugins/tray/tray-provider.c:272
 msgid "Tray icon plugin"
 msgstr "Показване на икона в системната табла"
 
-#: ../src/plugins/tray/tray-provider.c:280
+#: ../src/plugins/tray/tray-provider.c:282
 msgid "Always minimize to tray when window is closed"
 msgstr "Винаги минимизирай в системната табла, когато прозорецът е затворен"
 
-#: ../src/plugins/tray/tray-provider.c:326
+#: ../src/plugins/tray/tray-provider.c:328
 msgid "Are you sure you want to quit?"
 msgstr "Сигурен ли сте, че искате да излезете?"
 
-#: ../src/plugins/tray/tray-provider.c:329
+#: ../src/plugins/tray/tray-provider.c:331
 msgid "Parole can be minimized to the system tray instead."
 msgstr "Parole може да бъде минимизиран в системната табла."
 
-#: ../src/plugins/tray/tray-provider.c:332
+#: ../src/plugins/tray/tray-provider.c:334
 msgid "Minimize to tray"
 msgstr "Минимизиране в системната табла"
 
-#: ../src/plugins/tray/tray-provider.c:344
+#: ../src/plugins/tray/tray-provider.c:346
 msgid "Quit"
 msgstr "Спиране"
 
-#: ../src/plugins/tray/tray-provider.c:353
+#: ../src/plugins/tray/tray-provider.c:355
 msgid "Remember my choice"
 msgstr "Запомняне на избора"
 
