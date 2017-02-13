@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Edin Veskovic <edin.veskovic@openmailbox.org>, 2014-2015
+# Edin Veskovic <edin.veskovic@openmailbox.org>, 2014-2015,2017
 # Edin Veskovic <edin.veskovic@openmailbox.org>, 2014
 # Ivica  Kolić <ikoli@yahoo.com>, 2013-2014,2016
 # Ivica  Kolić <ikoli@yahoo.com>, 2011
@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-05 06:31+0100\n"
-"PO-Revision-Date: 2017-02-05 11:41+0000\n"
-"Last-Translator: Lovro Kudelić <lovro.kudelic@outlook.com>\n"
+"POT-Creation-Date: 2017-02-12 00:31+0100\n"
+"PO-Revision-Date: 2017-02-13 19:02+0000\n"
+"Last-Translator: Edin Veskovic <edin.veskovic@openmailbox.org>\n"
 "Language-Team: Croatian (http://www.transifex.com/xfce/xfce-apps/language/hr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +22,8 @@ msgstr ""
 "Language: hr\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#: ../data/interfaces/parole.ui.h:1 ../data/desktop/parole.desktop.in.in.h:1
+#: ../data/interfaces/parole.ui.h:1
+#: ../data/desktop/org.xfce.Parole.desktop.in.in.h:1
 #: ../src/parole-player.c:608 ../src/parole-player.c:1521
 #: ../src/parole-about.c:70 ../src/plugins/mpris2/mpris2-provider.c:199
 msgid "Parole Media Player"
@@ -71,7 +72,7 @@ msgid "_Shuffle"
 msgstr "_Izmješano"
 
 #. Create dialog
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2945
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2962
 msgid "Go to position"
 msgstr "Odi na poziciju"
 
@@ -132,7 +133,7 @@ msgid "_Video"
 msgstr "_Video"
 
 #: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2064
-#: ../src/parole-player.c:2219
+#: ../src/parole-player.c:2228
 msgid "_Fullscreen"
 msgstr "_Cijeli zaslon"
 
@@ -239,7 +240,7 @@ msgstr "Otvori datoteke medija"
 
 #: ../data/interfaces/playlist.ui.h:1
 #: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:806
-#: ../src/parole-medialist.c:849 ../src/parole-player.c:3365
+#: ../src/parole-medialist.c:849 ../src/parole-player.c:3382
 msgid "Playlist"
 msgstr "Lista izvođenja"
 
@@ -476,21 +477,21 @@ msgstr "Očisti povijest"
 msgid "<big><b>Open Network Location</b></big>"
 msgstr "<big><b>Otvori mrežnu lokaciju</b></big>"
 
-#: ../data/desktop/parole.desktop.in.in.h:2
+#: ../data/desktop/org.xfce.Parole.desktop.in.in.h:2
 msgid "Play your media"
 msgstr "Reproduciraj svoju medij"
 
-#: ../data/desktop/parole.desktop.in.in.h:3
+#: ../data/desktop/org.xfce.Parole.desktop.in.in.h:3
 msgid "Play/Pause"
 msgstr "Izvodi/Pauziraj"
 
-#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3520
-#: ../src/plugins/notify/notify-provider.c:204
+#: ../data/desktop/org.xfce.Parole.desktop.in.in.h:4
+#: ../src/parole-player.c:3537 ../src/plugins/notify/notify-provider.c:204
 msgid "Previous Track"
 msgstr "Prethodni zapis"
 
-#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3538
-#: ../src/plugins/notify/notify-provider.c:217
+#: ../data/desktop/org.xfce.Parole.desktop.in.in.h:5
+#: ../src/parole-player.c:3555 ../src/plugins/notify/notify-provider.c:217
 msgid "Next Track"
 msgstr "Slijedeći zapis"
 
@@ -510,22 +511,29 @@ msgstr "Parole pruža mogućnost izvođenja lokalnih datoteka uključujući vide
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid ""
+"This development release adds a new mini mode and the abilty to play or "
+"replay content by clicking the the circle icons. Theming is simplfied and "
+"filenames are displayed when no ID3 tags are found."
+msgstr "Ova razvojna verzija dodaje novi mini način rada te mogućnost izvođenja ili ponavljanja sadržaja klikom na kružnu ikonu. Pojednostavljeno je temiranje te se prikazuju imena datoteka kada nisu nađene ID3 oznake."
+
+#: ../data/appdata/parole.appdata.xml.in.h:4
+msgid ""
 "This release improves the build process and includes several bug fixes. This"
 " new stable release is a recommended upgrade for all users."
 msgstr "Ovo ažuriranje poboljšava proces izgradnje i uključuje nekoliko ispravaka. Ova stabilna verzija je preporučena nadogradnja za sve korisnike."
 
-#: ../data/appdata/parole.appdata.xml.in.h:4
+#: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
 msgstr "Ova nestabilna razvojna verzija donosi novi clutter backend i čišćenje zastarjelih Gtk3 simbola. Također dodaje \"Idi na poziciju\" mogućnost kao i ispravljanje nekoliko grešaka."
 
-#: ../data/appdata/parole.appdata.xml.in.h:5
+#: ../data/appdata/parole.appdata.xml.in.h:6
 msgid "This release fixes a problem with detecting DVD drive locations."
 msgstr "Ova verzija rješava problem s pravilnim otkrivanjem lokacije DVD pogona."
 
-#: ../data/appdata/parole.appdata.xml.in.h:6
+#: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This release features the completed transition to the Gtk+3 toolkit, "
 "improvements in the user-interface (more streamlined menus), better "
@@ -534,20 +542,20 @@ msgid ""
 "and we use the GStreamer1.0 framework now by default."
 msgstr "Ova verzija pruža kompletnu tranziciju na Gtk+3 set alata, poboljšanja u korisničkom sučelju (efikasniji izbornici), bolje liste izvođenja. Poboljšani su postojeći dodatci te su dodani novi (MPRIS2), ažurirana je većina ilustracija, GStreamer 1.0 framework sada se koristi kao zadani. "
 
-#: ../data/appdata/parole.appdata.xml.in.h:7
+#: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
 "This unstable development release features mostly bugfixes and introduces "
 "the new MPRIS2 plugin."
 msgstr "Ova nestabilna razvojna verzija donosi ispravke te predstavlja novi MPRIS2 dodatak."
 
-#: ../data/appdata/parole.appdata.xml.in.h:8
+#: ../data/appdata/parole.appdata.xml.in.h:9
 msgid ""
 "This is a bugfix release which fixes the loading of playlists with relative "
 "paths, improves the file-filters for audio/video mimetypes and fixes the "
 "\"Remove duplicates\" functionality."
 msgstr "Ova verzija donosi ispravke učitavnja lista izvođenja s relativnim putanjama, poboljšava filtere datoteka za audio/video mime vrste te ispravlja \"Ukloni duplikate\" funkciju."
 
-#: ../data/appdata/parole.appdata.xml.in.h:9
+#: ../data/appdata/parole.appdata.xml.in.h:10
 msgid ""
 "This unstable development release features the complete port to the Gtk+3 "
 "toolkit, improvements in the user-interface (more streamlined menus), better"
@@ -799,7 +807,7 @@ msgstr "Otvori sadržavajuću mapu"
 msgid "Hide Playlist"
 msgstr "Sakrij listu izvođenja"
 
-#: ../src/parole-player.c:538 ../src/parole-player.c:3580
+#: ../src/parole-player.c:538 ../src/parole-player.c:3597
 msgid "Show Playlist"
 msgstr "Pokaži listu izvođenja"
 
@@ -809,7 +817,7 @@ msgid "Select Subtitle File"
 msgstr "Odaberi datoteku podnapisa..."
 
 #: ../src/parole-player.c:1025 ../src/parole-player.c:1229
-#: ../src/parole-player.c:2948 ../src/plugins/tray/tray-provider.c:338
+#: ../src/parole-player.c:2965 ../src/plugins/tray/tray-provider.c:340
 msgid "Cancel"
 msgstr "Otkaži"
 
@@ -868,7 +876,7 @@ msgstr "Nepoznati umjetnik"
 msgid "Buffering"
 msgstr "Međupohrana"
 
-#: ../src/parole-player.c:2065 ../src/parole-player.c:3555
+#: ../src/parole-player.c:2065 ../src/parole-player.c:3572
 msgid "Fullscreen"
 msgstr "Cijeli zaslon"
 
@@ -882,77 +890,77 @@ msgstr "Napusti cijeli zaslon"
 
 #. Play menu item
 #. * Play pause
-#: ../src/parole-player.c:2187 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2196 ../src/plugins/tray/tray-provider.c:130
 msgid "_Pause"
 msgstr "_Pauza"
 
-#: ../src/parole-player.c:2187 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2196 ../src/plugins/tray/tray-provider.c:130
 msgid "_Play"
 msgstr "_Pokreni"
 
 #. * Previous item in playlist.
-#: ../src/parole-player.c:2201
+#: ../src/parole-player.c:2210
 msgid "_Previous"
 msgstr "_Prethodno"
 
 #. * Next item in playlist.
-#: ../src/parole-player.c:2210
+#: ../src/parole-player.c:2219
 msgid "_Next"
 msgstr "_Slijedeće"
 
 #. * Un/Full screen
-#: ../src/parole-player.c:2219
+#: ../src/parole-player.c:2228
 msgid "_Leave Fullscreen"
 msgstr "_Napusti cijeli zaslon"
 
 #. * Un/Hide menubar
-#: ../src/parole-player.c:2233
+#: ../src/parole-player.c:2242
 msgid "Show menubar"
 msgstr "Pokaži traku izbornika"
 
-#: ../src/parole-player.c:2250
+#: ../src/parole-player.c:2259
 msgid "Mini Mode"
 msgstr "Minimalan način"
 
-#: ../src/parole-player.c:2523
+#: ../src/parole-player.c:2541
 msgid "Mute"
 msgstr "Isključi zvuk"
 
-#: ../src/parole-player.c:2528
+#: ../src/parole-player.c:2546
 msgid "Unmute"
 msgstr "Vrati zvuk"
 
-#: ../src/parole-player.c:2917
+#: ../src/parole-player.c:2934
 msgid "Unable to open default web browser"
 msgstr "Nije moguće otvoriti zadani web preglednik"
 
-#: ../src/parole-player.c:2919
+#: ../src/parole-player.c:2936
 msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr "Molimo idite na http://docs.xfce.org/apps/parole/bugs kako bi prijavili grešku."
 
-#: ../src/parole-player.c:2949
+#: ../src/parole-player.c:2966
 msgid "Go"
 msgstr "Idi"
 
-#: ../src/parole-player.c:2962
+#: ../src/parole-player.c:2979
 msgid "Position:"
 msgstr "Pozicija:"
 
 #. Clear Recent Menu Item
-#: ../src/parole-player.c:3406
+#: ../src/parole-player.c:3423
 msgid "_Clear recent items…"
 msgstr "_Očisti nedavne stavke..."
 
-#: ../src/parole-player.c:3751
+#: ../src/parole-player.c:3768
 msgid "Audio Track:"
 msgstr "Audio zapis:"
 
-#: ../src/parole-player.c:3770
+#: ../src/parole-player.c:3787
 msgid "Subtitles:"
 msgstr "Podnapisi:"
 
 #. Add a close button to the Infobar
-#: ../src/parole-player.c:3776 ../src/plugins/tray/tray-provider.c:273
+#: ../src/parole-player.c:3793 ../src/plugins/tray/tray-provider.c:275
 msgid "Close"
 msgstr "Zatvori"
 
@@ -1183,31 +1191,31 @@ msgstr "_Slijedeći zapis"
 msgid "_Open"
 msgstr "_Otvori"
 
-#: ../src/plugins/tray/tray-provider.c:270
+#: ../src/plugins/tray/tray-provider.c:272
 msgid "Tray icon plugin"
 msgstr "Dodatak u sistemskom pladnju"
 
-#: ../src/plugins/tray/tray-provider.c:280
+#: ../src/plugins/tray/tray-provider.c:282
 msgid "Always minimize to tray when window is closed"
 msgstr "Uvijek minimiziraj u sistemski pladanj kada se zatvori prozor"
 
-#: ../src/plugins/tray/tray-provider.c:326
+#: ../src/plugins/tray/tray-provider.c:328
 msgid "Are you sure you want to quit?"
 msgstr "Jeste li sigurni da želite isključiti?"
 
-#: ../src/plugins/tray/tray-provider.c:329
+#: ../src/plugins/tray/tray-provider.c:331
 msgid "Parole can be minimized to the system tray instead."
 msgstr "Umjesto toga Parole može biti minimiziran u sistemski pladanj."
 
-#: ../src/plugins/tray/tray-provider.c:332
+#: ../src/plugins/tray/tray-provider.c:334
 msgid "Minimize to tray"
 msgstr "Minimiziraj u sistemski pladanj"
 
-#: ../src/plugins/tray/tray-provider.c:344
+#: ../src/plugins/tray/tray-provider.c:346
 msgid "Quit"
 msgstr "Isključi"
 
-#: ../src/plugins/tray/tray-provider.c:353
+#: ../src/plugins/tray/tray-provider.c:355
 msgid "Remember my choice"
 msgstr "Zapamti moj izbor"
 
