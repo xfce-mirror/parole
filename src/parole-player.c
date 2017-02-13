@@ -2647,7 +2647,7 @@ parole_player_constructed (GObject *object)
                                 player->priv->client_id,
                                 current_dir,
                                 restart_command,
-                                DESKTOPDIR "/" PACKAGE_NAME ".desktop");
+                                DESKTOPDIR "/org.xfce.Parole.desktop");
 
     if ( xfce_sm_client_connect (player->priv->sm_client, NULL ) )
     {
