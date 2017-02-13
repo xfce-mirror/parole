@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-02-12 00:31+0100\n"
-"PO-Revision-Date: 2017-02-13 05:25+0000\n"
+"PO-Revision-Date: 2017-02-13 09:30+0000\n"
 "Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfce-apps/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -289,7 +289,7 @@ msgstr "Mou avall"
 
 #: ../data/interfaces/playlist.ui.h:13
 msgid "Replace playlist when opening files"
-msgstr "Substitueix la llista de reproducció en obrir fitxers"
+msgstr "Substitueix la llista de reproducció quan s'obrin fitxers"
 
 #: ../data/interfaces/playlist.ui.h:14
 msgid "Play opened files"
@@ -342,7 +342,7 @@ msgstr "Configureu el vostre reproductor de mitjans audiovisuals"
 
 #: ../data/interfaces/parole-settings.ui.h:5
 msgid "Disable screensaver when playing movies"
-msgstr "Inhabilita l'estalvi de pantalla mentre es reprodueixi una pel·lícula"
+msgstr "Inhabilita l'estalvi de pantalla quan es reprodueixi una pel·lícula"
 
 #: ../data/interfaces/parole-settings.ui.h:6
 msgid "<b>Screensaver</b>"
@@ -506,7 +506,7 @@ msgid ""
 "Parole features playback of local media files, including video with "
 "subtitles support, Audio CDs, DVDs, and live streams. Parole is also "
 "extensible via plugins."
-msgstr "Parole compta amb la reproducció de fitxers locals de mitjans audiovisuals, incloent-hi vídeo amb suport de subtítols, CD d'àudio, DVD i fluxos en viu. Parole també es pot ampliar a través de connectors."
+msgstr "Parole compta amb la reproducció de fitxers locals de mitjans audiovisuals, incloent-hi vídeo amb subtítols, CD d'àudio, DVD i transmissions en viu. Parole també es pot ampliar a través de connectors."
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid ""
@@ -560,7 +560,7 @@ msgid ""
 "toolkit, improvements in the user-interface (more streamlined menus), better"
 " playlists. It also brings updated artwork, GStreamer1.0 support, improved "
 "plugins and the occasional bugfix."
-msgstr "Aquesta versió de desenvolupament inestable compta amb el port complet a les eines Gtk+3, millores a la interfície d'usuari (menús més racionals), millors llistes de reproducció. També té obra artística actualitzada, suport de GStreamer 1.0, la millora de connectors i la correcció d'errors."
+msgstr "Aquesta versió de desenvolupament inestable compta amb el port complet a les eines Gtk+3, millores a la interfície d'usuari (menús més racionals), millors llistes de reproducció. També porta un treball artístic actualitzat, compatibilitat amb GStreamer 1.0, la millora de connectors i la correcció d'errors."
 
 #: ../src/common/parole-common.c:88
 msgid "Message"
@@ -617,7 +617,7 @@ msgstr "Voleu que continuï la càrrega o la voleu aturar?"
 
 #: ../src/gst/parole-gst.c:1951
 msgid "Stop"
-msgstr "Para"
+msgstr "Atura"
 
 #: ../src/gst/parole-gst.c:1952
 msgid "Continue"
@@ -668,7 +668,7 @@ msgstr "Obre una instància nova"
 
 #: ../src/main.c:242
 msgid "Do not load plugins"
-msgstr "No carregar els connectors"
+msgstr "No carreguis els connectors"
 
 #: ../src/main.c:243
 msgid "Set Audio-CD/VCD/DVD device path"
@@ -773,7 +773,7 @@ msgstr "Format de la llista de reproducció desconegut"
 
 #: ../src/parole-medialist.c:713
 msgid "Please choose a supported playlist format"
-msgstr "Trieu un format de llista de reproducció suportat, si us plau."
+msgstr "Trieu un format de llista de reproducció compatible, si us plau."
 
 #: ../src/parole-medialist.c:767 ../src/parole-plugins-manager.c:369
 msgid "Unknown"
@@ -929,7 +929,7 @@ msgstr "Activa el so"
 
 #: ../src/parole-player.c:2934
 msgid "Unable to open default web browser"
-msgstr "No es pot obrir el navegador per defecte"
+msgstr "No es pot obrir el navegador predeterminat"
 
 #: ../src/parole-player.c:2936
 msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
