@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-05 06:31+0100\n"
-"PO-Revision-Date: 2017-02-05 22:22+0000\n"
+"POT-Creation-Date: 2017-02-12 00:31+0100\n"
+"PO-Revision-Date: 2017-02-13 11:16+0000\n"
 "Last-Translator: Pjotr <pjotrvertaalt@gmail.com>\n"
 "Language-Team: Dutch (http://www.transifex.com/xfce/xfce-apps/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,8 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../data/interfaces/parole.ui.h:1 ../data/desktop/parole.desktop.in.in.h:1
+#: ../data/interfaces/parole.ui.h:1
+#: ../data/desktop/org.xfce.Parole.desktop.in.in.h:1
 #: ../src/parole-player.c:608 ../src/parole-player.c:1521
 #: ../src/parole-about.c:70 ../src/plugins/mpris2/mpris2-provider.c:199
 msgid "Parole Media Player"
@@ -67,7 +68,7 @@ msgid "_Shuffle"
 msgstr "_Schuffelen"
 
 #. Create dialog
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2945
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2962
 msgid "Go to position"
 msgstr "Ga naar positie"
 
@@ -128,7 +129,7 @@ msgid "_Video"
 msgstr "Video"
 
 #: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2064
-#: ../src/parole-player.c:2219
+#: ../src/parole-player.c:2228
 msgid "_Fullscreen"
 msgstr "Volledig scherm"
 
@@ -235,7 +236,7 @@ msgstr "Open mediabestanden"
 
 #: ../data/interfaces/playlist.ui.h:1
 #: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:806
-#: ../src/parole-medialist.c:849 ../src/parole-player.c:3365
+#: ../src/parole-medialist.c:849 ../src/parole-player.c:3382
 msgid "Playlist"
 msgstr "Speellijst"
 
@@ -472,21 +473,21 @@ msgstr "Verwijder geschiedenis"
 msgid "<big><b>Open Network Location</b></big>"
 msgstr "<big><b>Open netwerklocatie</b></big>"
 
-#: ../data/desktop/parole.desktop.in.in.h:2
+#: ../data/desktop/org.xfce.Parole.desktop.in.in.h:2
 msgid "Play your media"
 msgstr "Speel uw media af"
 
-#: ../data/desktop/parole.desktop.in.in.h:3
+#: ../data/desktop/org.xfce.Parole.desktop.in.in.h:3
 msgid "Play/Pause"
 msgstr "Afspelen/Pauzeren"
 
-#: ../data/desktop/parole.desktop.in.in.h:4 ../src/parole-player.c:3520
-#: ../src/plugins/notify/notify-provider.c:204
+#: ../data/desktop/org.xfce.Parole.desktop.in.in.h:4
+#: ../src/parole-player.c:3537 ../src/plugins/notify/notify-provider.c:204
 msgid "Previous Track"
 msgstr "Vorig nummer"
 
-#: ../data/desktop/parole.desktop.in.in.h:5 ../src/parole-player.c:3538
-#: ../src/plugins/notify/notify-provider.c:217
+#: ../data/desktop/org.xfce.Parole.desktop.in.in.h:5
+#: ../src/parole-player.c:3555 ../src/plugins/notify/notify-provider.c:217
 msgid "Next Track"
 msgstr "Volgende nummer"
 
@@ -506,22 +507,29 @@ msgstr "Parole heeft de volgende functies: afspelen van lokale mediabestanden, i
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid ""
+"This development release adds a new mini mode and the abilty to play or "
+"replay content by clicking the the circle icons. Theming is simplfied and "
+"filenames are displayed when no ID3 tags are found."
+msgstr "Deze ontwikkelversie voegt een nieuwe minimodus toe en de mogelijkheid om bestanden af te spelen of te herhalen door te klikken op de cirkelpictogrammen. De thema's zijn vereenvoudigd en er worden bestandsnamen getoond wanneer er geen ID3-etiketten worden aangetroffen."
+
+#: ../data/appdata/parole.appdata.xml.in.h:4
+msgid ""
 "This release improves the build process and includes several bug fixes. This"
 " new stable release is a recommended upgrade for all users."
 msgstr "Deze versie verbetert het bouwproces en bevat verschillende foutreparaties. Deze nieuwe stabiele versie is een aanbevolen opwaardering voor alle gebruikers."
 
-#: ../data/appdata/parole.appdata.xml.in.h:4
+#: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
 msgstr "Deze instabiele ontwikkelingsversie voegt de nieuwe achtergronddienst clutter toe en verwijdert verouderde Gtk3-symbolen. Hij voegt ook de functie \"ga naar positie\" toe. Verder zijn er verscheidene fouten hersteld."
 
-#: ../data/appdata/parole.appdata.xml.in.h:5
+#: ../data/appdata/parole.appdata.xml.in.h:6
 msgid "This release fixes a problem with detecting DVD drive locations."
 msgstr "Deze versie herstelt een probleem met het herkennen van lokaties van DVD-stations."
 
-#: ../data/appdata/parole.appdata.xml.in.h:6
+#: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This release features the completed transition to the Gtk+3 toolkit, "
 "improvements in the user-interface (more streamlined menus), better "
@@ -530,20 +538,20 @@ msgid ""
 "and we use the GStreamer1.0 framework now by default."
 msgstr "Deze versie bevat de voltooide overgang naar de GTK+3-gereedschapskist, verbeteringen in de gebruikersschil (beter gestroomlijnde menu's) en betere afspeellijsten. Buitendien zijn bestaande invoegtoepassingen verbeterd en is er een nieuwe toegevoegd (MPRIS2). De meeste grafische kunst is voor deze versie bijgewerkt en we gebruiken nu standaard GStreamer1.0."
 
-#: ../data/appdata/parole.appdata.xml.in.h:7
+#: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
 "This unstable development release features mostly bugfixes and introduces "
 "the new MPRIS2 plugin."
 msgstr "Deze onstabiele ontwikkelingsversie bevat voornamelijk foutreparaties en introduceert de nieuwe invoegtoepassing MPRIS2."
 
-#: ../data/appdata/parole.appdata.xml.in.h:8
+#: ../data/appdata/parole.appdata.xml.in.h:9
 msgid ""
 "This is a bugfix release which fixes the loading of playlists with relative "
 "paths, improves the file-filters for audio/video mimetypes and fixes the "
 "\"Remove duplicates\" functionality."
 msgstr "Dit is een versie die vooral is gericht op foutreparaties. Ze herstelt het laden van afspeellijsten met relatieve paden, verbetert de bestandenfilters voor audio/video-bestandtypes en herstelt de functionaliteit voor \"Duplicaten verwijderen\"."
 
-#: ../data/appdata/parole.appdata.xml.in.h:9
+#: ../data/appdata/parole.appdata.xml.in.h:10
 msgid ""
 "This unstable development release features the complete port to the Gtk+3 "
 "toolkit, improvements in the user-interface (more streamlined menus), better"
@@ -793,7 +801,7 @@ msgstr "Open map waar het inzit"
 msgid "Hide Playlist"
 msgstr "Speellijst verbergen"
 
-#: ../src/parole-player.c:538 ../src/parole-player.c:3580
+#: ../src/parole-player.c:538 ../src/parole-player.c:3597
 msgid "Show Playlist"
 msgstr "Speellijst tonen"
 
@@ -803,7 +811,7 @@ msgid "Select Subtitle File"
 msgstr "Kies ondertitelbestand"
 
 #: ../src/parole-player.c:1025 ../src/parole-player.c:1229
-#: ../src/parole-player.c:2948 ../src/plugins/tray/tray-provider.c:338
+#: ../src/parole-player.c:2965 ../src/plugins/tray/tray-provider.c:340
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -862,7 +870,7 @@ msgstr "Onbekende artiest"
 msgid "Buffering"
 msgstr "Aan het bufferen"
 
-#: ../src/parole-player.c:2065 ../src/parole-player.c:3555
+#: ../src/parole-player.c:2065 ../src/parole-player.c:3572
 msgid "Fullscreen"
 msgstr "Schermvullend"
 
@@ -876,77 +884,77 @@ msgstr "Volledig scherm verlaten"
 
 #. Play menu item
 #. * Play pause
-#: ../src/parole-player.c:2187 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2196 ../src/plugins/tray/tray-provider.c:130
 msgid "_Pause"
 msgstr "Pauzeren"
 
-#: ../src/parole-player.c:2187 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2196 ../src/plugins/tray/tray-provider.c:130
 msgid "_Play"
 msgstr "Afspelen"
 
 #. * Previous item in playlist.
-#: ../src/parole-player.c:2201
+#: ../src/parole-player.c:2210
 msgid "_Previous"
 msgstr "_Vorige"
 
 #. * Next item in playlist.
-#: ../src/parole-player.c:2210
+#: ../src/parole-player.c:2219
 msgid "_Next"
 msgstr "Vo_lgende"
 
 #. * Un/Full screen
-#: ../src/parole-player.c:2219
+#: ../src/parole-player.c:2228
 msgid "_Leave Fullscreen"
 msgstr "Volledig _scherm verlaten"
 
 #. * Un/Hide menubar
-#: ../src/parole-player.c:2233
+#: ../src/parole-player.c:2242
 msgid "Show menubar"
 msgstr "Menubalk tonen"
 
-#: ../src/parole-player.c:2250
+#: ../src/parole-player.c:2259
 msgid "Mini Mode"
 msgstr "Minimodus"
 
-#: ../src/parole-player.c:2523
+#: ../src/parole-player.c:2541
 msgid "Mute"
 msgstr "Dempen"
 
-#: ../src/parole-player.c:2528
+#: ../src/parole-player.c:2546
 msgid "Unmute"
 msgstr "Demping opheffen"
 
-#: ../src/parole-player.c:2917
+#: ../src/parole-player.c:2934
 msgid "Unable to open default web browser"
 msgstr "Kan standaard-webbrowser niet openen"
 
-#: ../src/parole-player.c:2919
+#: ../src/parole-player.c:2936
 msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr "Ga a.u.b. naar http://docs.xfce.org/apps/parole/bugs om uw fout te melden."
 
-#: ../src/parole-player.c:2949
+#: ../src/parole-player.c:2966
 msgid "Go"
 msgstr "Gaan"
 
-#: ../src/parole-player.c:2962
+#: ../src/parole-player.c:2979
 msgid "Position:"
 msgstr "Positie:"
 
 #. Clear Recent Menu Item
-#: ../src/parole-player.c:3406
+#: ../src/parole-player.c:3423
 msgid "_Clear recent items…"
 msgstr "Recente elementen verwijderen..."
 
-#: ../src/parole-player.c:3751
+#: ../src/parole-player.c:3768
 msgid "Audio Track:"
 msgstr "Muzieknummer:"
 
-#: ../src/parole-player.c:3770
+#: ../src/parole-player.c:3787
 msgid "Subtitles:"
 msgstr "Ondertitels:"
 
 #. Add a close button to the Infobar
-#: ../src/parole-player.c:3776 ../src/plugins/tray/tray-provider.c:273
+#: ../src/parole-player.c:3793 ../src/plugins/tray/tray-provider.c:275
 msgid "Close"
 msgstr "Sluiten"
 
@@ -1177,31 +1185,31 @@ msgstr "Volgend nummer"
 msgid "_Open"
 msgstr "_Openen"
 
-#: ../src/plugins/tray/tray-provider.c:270
+#: ../src/plugins/tray/tray-provider.c:272
 msgid "Tray icon plugin"
 msgstr "Systeemvak-invoegtoepassing"
 
-#: ../src/plugins/tray/tray-provider.c:280
+#: ../src/plugins/tray/tray-provider.c:282
 msgid "Always minimize to tray when window is closed"
 msgstr "Als het venster gesloten wordt, altijd minimaliseren naar het systeemvak"
 
-#: ../src/plugins/tray/tray-provider.c:326
+#: ../src/plugins/tray/tray-provider.c:328
 msgid "Are you sure you want to quit?"
 msgstr "Weet u zeker dat u wilt afsluiten?"
 
-#: ../src/plugins/tray/tray-provider.c:329
+#: ../src/plugins/tray/tray-provider.c:331
 msgid "Parole can be minimized to the system tray instead."
 msgstr "Parole kan namelijk ook worden geminimaliseerd naar het systeemvak."
 
-#: ../src/plugins/tray/tray-provider.c:332
+#: ../src/plugins/tray/tray-provider.c:334
 msgid "Minimize to tray"
 msgstr "Minimaliseren naar systeemvak"
 
-#: ../src/plugins/tray/tray-provider.c:344
+#: ../src/plugins/tray/tray-provider.c:346
 msgid "Quit"
 msgstr "Sluiten"
 
-#: ../src/plugins/tray/tray-provider.c:353
+#: ../src/plugins/tray/tray-provider.c:355
 msgid "Remember my choice"
 msgstr "Onthoud mijn keuze"
 
