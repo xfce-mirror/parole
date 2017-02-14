@@ -1844,6 +1844,39 @@ parole_player_error_cb (ParoleGst *gst, const gchar *error, ParolePlayer *player
     parole_player_stopped (player);
 }
 
+static gchar *
+parole_player_get_filename_from_uri (gchar *uri)
+{
+    gchar *filename;
+    gchar *scheme;
+
+    scheme = g_uri_parse_scheme(uri);
+    if (strcmp(scheme, "http") == 0 || strcmp(scheme, "https") == 0 || strcmp(scheme, "ftp") == 0) {
+        GRegex *regex;
+        GMatchInfo *match_info;
+
+        regex = g_regex_new ("^.*://.*/(?<filename>[^?#/]+)", 0, 0, NULL);
+        g_regex_match (regex, uri, 0, &match_info);
+        if (g_match_info_matches (match_info))
+        {
+            gchar *word = g_match_info_fetch_named (match_info, "filename");
+            filename = g_strdup(word);
+            g_free (word);
+        }
+        g_match_info_free (match_info);
+        g_regex_unref (regex);
+    } else {
+        gchar *decoded;
+        decoded = g_filename_from_uri(uri, NULL, NULL);
+        filename = g_path_get_basename(decoded);
+        g_free (decoded);
+    }
+
+    g_free (scheme);
+
+    return filename;
+}
+
 static void
 parole_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePlayer *player)
 {
@@ -1853,7 +1886,6 @@ parole_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePl
     gchar *year;
     gchar *uri;
     gchar *filename;
-    gchar *decoded;
     GdkPixbuf *image = NULL;
 
     if ( player->priv->row )
@@ -1876,12 +1908,10 @@ parole_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePl
         else
         {
             /* No ID3, no problem! Show the filename instead */
-            decoded = g_filename_from_uri(uri, NULL, NULL);
-            filename = g_path_get_basename(decoded);
+            filename = parole_player_get_filename_from_uri (uri);
             gtk_window_set_title (GTK_WINDOW (player->priv->window), filename);
             gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), g_strdup_printf("<span color='#F4F4F4'><b><big>%s</big></b></span>", filename));
             g_free (filename);
-            g_free (decoded);
         }
         g_free(uri);
 
