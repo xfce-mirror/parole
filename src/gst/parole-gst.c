@@ -1033,6 +1033,10 @@ parole_gst_tag_list_get_cover_external (ParoleGst *gst)
                   NULL);
 
     filename = g_filename_from_uri(uri, NULL, NULL);
+    if (!filename)
+    {
+        return NULL;
+    }
 
     directory = g_path_get_dirname(filename);
 
@@ -1291,7 +1295,7 @@ parole_gst_get_meta_data_cdda (ParoleGst *gst, GstTagList *tag)
 }
 
 static void
-parole_gst_get_meta_data_local_file (ParoleGst *gst, GstTagList *tag)
+parole_gst_get_meta_data_file (ParoleGst *gst, GstTagList *tag)
 {
     gchar *str;
     GDate *date;
@@ -1359,9 +1363,12 @@ parole_gst_get_meta_data_local_file (ParoleGst *gst, GstTagList *tag)
     if ( gst_tag_list_get_uint (tag, GST_TAG_TRACK_NUMBER, &integer) )
     {
         TRACE ("track:%i", integer);
-        g_object_set (G_OBJECT (gst->priv->stream),
-                      "track", integer,
-                      NULL);
+        if (integer < 100)
+        {
+            g_object_set (G_OBJECT (gst->priv->stream),
+                          "track", integer,
+                          NULL);
+        }
     }
 
     if ( gst_tag_list_get_uint (tag, GST_TAG_BITRATE, &integer) )
@@ -1419,7 +1426,8 @@ parole_gst_get_meta_data (ParoleGst *gst, GstTagList *tag)
     switch ( media_type )
     {
         case PAROLE_MEDIA_TYPE_LOCAL_FILE:
-            parole_gst_get_meta_data_local_file (gst, tag);
+        case PAROLE_MEDIA_TYPE_REMOTE:
+            parole_gst_get_meta_data_file (gst, tag);
             break;
         case PAROLE_MEDIA_TYPE_CDDA:
             parole_gst_get_meta_data_cdda (gst, tag);
@@ -1427,7 +1435,6 @@ parole_gst_get_meta_data (ParoleGst *gst, GstTagList *tag)
         case PAROLE_MEDIA_TYPE_DVD:
             parole_gst_get_meta_data_dvd (gst);
             break;
-        case PAROLE_MEDIA_TYPE_REMOTE:
         case PAROLE_MEDIA_TYPE_UNKNOWN:
             parole_gst_get_meta_data_unknown (gst);
             break;

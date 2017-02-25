@@ -119,6 +119,8 @@ parole_stream_get_media_type_from_uri (ParoleStream *stream, const gchar *uri)
 
     if ( g_str_has_prefix (uri, "file:/") )
         type = PAROLE_MEDIA_TYPE_LOCAL_FILE;
+    else if ( g_str_has_prefix (uri, "http:/") || g_str_has_prefix (uri, "https:/") )
+        type = PAROLE_MEDIA_TYPE_REMOTE;
     else if ( g_str_has_prefix (uri, "dvd:/") )
         type = PAROLE_MEDIA_TYPE_DVD;
     else if ( g_str_has_prefix (uri, "vcd:") )
