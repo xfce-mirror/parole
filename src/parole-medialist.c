@@ -1313,8 +1313,11 @@ static void
 parole_media_list_show_menu (ParoleMediaList *list, GdkEventButton *ev)
 {
     gboolean val;
+#if GTK_CHECK_VERSION(3,22,0)
+#else
     guint button = ev->button;
     guint activate_time = ev->time;
+#endif
 
     GtkBuilder *builder;
 

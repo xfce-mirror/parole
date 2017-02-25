@@ -499,7 +499,7 @@ GSimpleAction *parole_provider_player_get_action(ParoleProviderPlayer *player, P
  **/
 gboolean parole_provider_player_get_fullscreen(ParoleProviderPlayer *player)
 {
-    g_return_val_if_fail (PAROLE_IS_PROVIDER_PLAYER (player), NULL);
+    g_return_val_if_fail (PAROLE_IS_PROVIDER_PLAYER (player), FALSE);
 
     if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_fullscreen )
     {
@@ -522,7 +522,7 @@ gboolean parole_provider_player_get_fullscreen(ParoleProviderPlayer *player)
  **/
 gboolean parole_provider_player_set_fullscreen(ParoleProviderPlayer *player, gboolean fullscreen)
 {
-    g_return_val_if_fail (PAROLE_IS_PROVIDER_PLAYER (player), NULL);
+    g_return_val_if_fail (PAROLE_IS_PROVIDER_PLAYER (player), FALSE);
 
     if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_stream )
     {

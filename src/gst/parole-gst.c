@@ -228,7 +228,10 @@ parole_gst_realize (GtkWidget *widget)
     ParoleGst *gst;
     GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
     GdkWindowAttr attr;
+#if GTK_CHECK_VERSION(3,22,0)
+#else
     GdkRGBA color;
+#endif
     gint mask;
 
     gtk_widget_set_realized (widget, TRUE);

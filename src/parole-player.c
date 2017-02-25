@@ -3076,7 +3076,10 @@ parole_overlay_expose_event (GtkWidget *widget, cairo_t *cr, gpointer user_data)
 {
     GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
     GtkStyleContext *context;
+#if GTK_CHECK_VERSION(3,16,0)
+#else
     GdkRGBA acolor;
+#endif
 
     gtk_widget_get_allocation(widget, allocation);
     cairo_rectangle (cr, 0, 0, allocation->width, allocation->height);
@@ -3306,13 +3309,16 @@ parole_player_init (ParolePlayer *player)
 
     /* Content Area */
     GtkWidget *controls_overlay;
-    #if GTK_CHECK_VERSION(3,10,0)
-    #else
-        GtkWidget *tmp_box;
-    #endif
+#if GTK_CHECK_VERSION(3,10,0)
+#else
+    GtkWidget *tmp_box;
+#endif
     GtkWidget *controls_parent;
     GtkWidget *play_box;
+#if GTK_CHECK_VERSION(3,16,0)
+#else
     GdkRGBA background;
+#endif
     GdkPixbuf *logo;
 
     /* Player Controls */
