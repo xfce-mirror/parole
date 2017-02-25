@@ -613,7 +613,7 @@ parole_gst_query_duration (ParoleGst *gst)
         duration =  absolute_duration / GST_SECOND;
         live = ( absolute_duration == 0 );
 
-        TRACE ("Duration %" G_GINT64_FORMAT "is_live=%d", duration, live);
+        TRACE ("Duration %" G_GINT64_FORMAT ", is_live=%d", duration, live);
 
         g_object_set (G_OBJECT (gst->priv->stream),
                       "absolute-duration", absolute_duration,
