@@ -47,6 +47,16 @@
   </provides>
 
   <releases>
+    <release version="0.9.1" date="2017-02-26">
+      <description>
+        <_p>This development release fixes several bugs, typos, and historical
+        details present in the documentation. Tags are now processed on files
+        delivered over HTTP/S. The clutter video backend is disabled for GTK+
+        3.22 and newer due to significant API changes.
+        </_p>
+      </description>
+    </release>
+
     <release version="0.9.0" date="2017-02-11">
       <description>
         <_p>This development release adds a new mini mode and the ability to play

@@ -1,3 +1,19 @@
+0.9.1
+=====
+- Fixed desktop file name for xfce-sm-client
+- Corrections to THANKS regarding the history of Aldegonde
+- Fixed null filenames with remote files
+- Enabled GStreamer tag lookup for remote files
+- Fixed debug builds (bad return types)
+- Fixed typos in appdata and parole-gst
+- Disabled the clutter video backend for GTK 3.22+, needs significant
+  updates to be functional again
+- Bumped the minimum GTK version to 3.14 to simplify code maintenance
+- Translation Updates: Bulgarian, Catalan, Chinese (China),
+  Chinese (Taiwan), Croatian, Czech, Danish, Dutch, French, Japanese,
+  Korean, Lithuanian, Portuguese (Brazil), Russian, Serbian, Spanish,
+  Swedish, Ukrainian
+
 0.9.0
 =====
 - New "mini mode", toggled by right click in content area
