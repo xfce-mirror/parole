@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-12 00:31+0100\n"
-"PO-Revision-Date: 2017-02-17 20:10+0000\n"
+"POT-Creation-Date: 2017-02-26 06:32+0100\n"
+"PO-Revision-Date: 2017-02-26 16:42+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/xfce/xfce-apps/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: ../data/interfaces/parole.ui.h:1
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:1
-#: ../src/parole-player.c:608 ../src/parole-player.c:1521
+#: ../src/parole-player.c:606 ../src/parole-player.c:1519
 #: ../src/parole-about.c:70 ../src/plugins/mpris2/mpris2-provider.c:199
 msgid "Parole Media Player"
 msgstr "Parole medija grotuvas"
@@ -109,7 +109,7 @@ msgstr "_Garsas"
 msgid "_Audio Track"
 msgstr "Garso _takelis"
 
-#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:834
+#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:832
 msgid "Empty"
 msgstr "Tuščia"
 
@@ -129,8 +129,8 @@ msgstr "_Nutildyti"
 msgid "_Video"
 msgstr "_Vaizdas"
 
-#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2064
-#: ../src/parole-player.c:2228
+#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2092
+#: ../src/parole-player.c:2256
 msgid "_Fullscreen"
 msgstr "Visas _ekranas"
 
@@ -138,7 +138,7 @@ msgstr "Visas _ekranas"
 msgid "_Aspect Ratio"
 msgstr "_Proporcija"
 
-#: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:762
+#: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:760
 msgid "None"
 msgstr "Joks"
 
@@ -237,7 +237,7 @@ msgstr "Atverti medija failus"
 
 #: ../data/interfaces/playlist.ui.h:1
 #: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:806
-#: ../src/parole-medialist.c:849 ../src/parole-player.c:3382
+#: ../src/parole-medialist.c:849 ../src/parole-player.c:3384
 msgid "Playlist"
 msgstr "Grojaraštis"
 
@@ -483,12 +483,12 @@ msgid "Play/Pause"
 msgstr "Groti/Pristabdyti"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:4
-#: ../src/parole-player.c:3537 ../src/plugins/notify/notify-provider.c:204
+#: ../src/parole-player.c:3539 ../src/plugins/notify/notify-provider.c:204
 msgid "Previous Track"
 msgstr "Ankstesnis takelis"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:5
-#: ../src/parole-player.c:3555 ../src/plugins/notify/notify-provider.c:217
+#: ../src/parole-player.c:3557 ../src/plugins/notify/notify-provider.c:217
 msgid "Next Track"
 msgstr "Kitas takelis"
 
@@ -508,10 +508,10 @@ msgstr "Parole gali groti vietinius medija failus, įskaitant vaizdo įrašus su
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid ""
-"This development release adds a new mini mode and the abilty to play or "
-"replay content by clicking the the circle icons. Theming is simplfied and "
+"This development release adds a new mini mode and the ability to play or "
+"replay content by clicking the circle icons. Theming is simplified and "
 "filenames are displayed when no ID3 tags are found."
-msgstr "Ši kūrimo laida prideda naują minimalią veikseną ir galimybę groti ar iš naujo groti turinį, spustelėjant apskritimo piktogramas. Apipavidalinimas yra supaprastintas, o kuomet nerandama ID3 žymių, yra rodomi failų pavadinimai."
+msgstr "Ši kūrimo laida prideda naują minimalią veikseną ir galimybę atkurti ar iš naujo atkurti turinį, spustelėjant apskritimo piktogramas. Apipavidalinimas yra supaprastintas, o kuomet nerandama ID3 žymių, yra rodomi failų pavadinimai."
 
 #: ../data/appdata/parole.appdata.xml.in.h:4
 msgid ""
@@ -560,87 +560,87 @@ msgid ""
 "plugins and the occasional bugfix."
 msgstr "Ši nestabili kūrimo laida pasižymi pilnu perėjimu prie Gtk+3 įrankinės, patobulinimais naudotojo sąsajoje (labiau tiesmukiški meniu), geresniais grojaraščiais. Joje taip pat yra atnaujinti apipavidalinimai, GStreamer1.0 palaikymas, patobulinti įskiepiai ir ištaisytos kelios klaidos."
 
-#: ../src/common/parole-common.c:88
+#: ../src/common/parole-common.c:87
 msgid "Message"
 msgstr "Pranešimas"
 
-#: ../src/common/parole-common.c:93
+#: ../src/common/parole-common.c:92
 msgid "Error"
 msgstr "Klaida"
 
-#: ../src/gst/parole-gst.c:1275 ../src/parole-medialist.c:393
+#: ../src/gst/parole-gst.c:1266 ../src/parole-medialist.c:393
 #, c-format
 msgid "Track %i"
 msgstr "Takelis %i"
 
-#: ../src/gst/parole-gst.c:1278
+#: ../src/gst/parole-gst.c:1269
 msgid "Audio CD"
 msgstr "Garso CD"
 
-#: ../src/gst/parole-gst.c:1518
+#: ../src/gst/parole-gst.c:1512
 msgid "Additional software is required."
 msgstr "Reikalinga papildoma programinė įranga."
 
-#: ../src/gst/parole-gst.c:1523
+#: ../src/gst/parole-gst.c:1517
 msgid "Don't Install"
 msgstr "Neįdiegti"
 
-#: ../src/gst/parole-gst.c:1525
+#: ../src/gst/parole-gst.c:1519
 msgid "Install"
 msgstr "Įdiegti"
 
-#: ../src/gst/parole-gst.c:1528
+#: ../src/gst/parole-gst.c:1522
 msgid "OK"
 msgstr "Gerai"
 
-#: ../src/gst/parole-gst.c:1535
+#: ../src/gst/parole-gst.c:1529
 #, c-format
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
 msgstr "Parole reikia <b>%s</b>, kad grotų šį failą.\nTai gali būti įdiegta automatiškai."
 
-#: ../src/gst/parole-gst.c:1538
+#: ../src/gst/parole-gst.c:1532
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
 msgstr "Parole reikia <b>%s</b>, kad grotų šį failą."
 
-#: ../src/gst/parole-gst.c:1949
+#: ../src/gst/parole-gst.c:1943
 msgid "The stream is taking too much time to load"
 msgstr "Srautas įkeliamas pernelyg ilgai"
 
-#: ../src/gst/parole-gst.c:1950
+#: ../src/gst/parole-gst.c:1944
 msgid "Do you want to continue loading or stop?"
 msgstr "Norite tęsti įkėlimą ar sustabdyti?"
 
-#: ../src/gst/parole-gst.c:1951
+#: ../src/gst/parole-gst.c:1945
 msgid "Stop"
 msgstr "Stabdyti"
 
-#: ../src/gst/parole-gst.c:1952
+#: ../src/gst/parole-gst.c:1946
 msgid "Continue"
 msgstr "Tęsti"
 
-#: ../src/gst/parole-gst.c:2136
+#: ../src/gst/parole-gst.c:2130
 msgid "GStreamer Error"
 msgstr "GStreamer klaida"
 
-#: ../src/gst/parole-gst.c:2137
+#: ../src/gst/parole-gst.c:2131
 msgid "Parole Media Player cannot start."
 msgstr "Parole medija grotuvas negali būti paleistas."
 
-#: ../src/gst/parole-gst.c:2168 ../src/gst/parole-gst.c:2184
-#: ../src/gst/parole-gst.c:2216
+#: ../src/gst/parole-gst.c:2162 ../src/gst/parole-gst.c:2178
+#: ../src/gst/parole-gst.c:2210
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
 msgstr "Nepavyko įkelti \"%s\" įskiepio, patikrinkite savo GStreamer diegimą."
 
-#: ../src/gst/parole-gst.c:2847 ../src/gst/parole-gst.c:2853
+#: ../src/gst/parole-gst.c:2841 ../src/gst/parole-gst.c:2847
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Garso takelis #%d"
 
-#: ../src/gst/parole-gst.c:2897 ../src/gst/parole-gst.c:2903
+#: ../src/gst/parole-gst.c:2891 ../src/gst/parole-gst.c:2897
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Subtitrai #%d"
@@ -734,11 +734,11 @@ msgstr "Įveskite %s --help, norėdami pamatyti visas prieinamas komandų eilut�
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole jau veikia, naudokite „-i“ jei norite atverti naują kopiją\n"
 
-#: ../src/parole-mediachooser.c:247 ../src/parole-player.c:1056
+#: ../src/parole-mediachooser.c:247 ../src/parole-player.c:1054
 msgid "All files"
 msgstr "Visi failai"
 
-#: ../src/parole-medialist.c:218 ../src/parole-medialist.c:1596
+#: ../src/parole-medialist.c:218 ../src/parole-medialist.c:1599
 #, c-format
 msgid "Playlist (%i item)"
 msgid_plural "Playlist (%i items)"
@@ -746,7 +746,7 @@ msgstr[0] "Grojaraštis (%i elementas)"
 msgstr[1] "Grojaraštis (%i elementai)"
 msgstr[2] "Grojaraštis (%i elementų)"
 
-#: ../src/parole-medialist.c:223 ../src/parole-medialist.c:1598
+#: ../src/parole-medialist.c:223 ../src/parole-medialist.c:1601
 #, c-format
 msgid "Playlist (%i chapter)"
 msgid_plural "Playlist (%i chapters)"
@@ -754,7 +754,7 @@ msgstr[0] "Grojaraštis (%i skyrius)"
 msgstr[1] "Grojaraštis (%i skyriai)"
 msgstr[2] "Grojaraštis (%i skyrių)"
 
-#: ../src/parole-medialist.c:409 ../src/parole-player.c:741
+#: ../src/parole-medialist.c:409 ../src/parole-player.c:739
 #, c-format
 msgid "Chapter %i"
 msgstr "Skyrius %i"
@@ -800,122 +800,122 @@ msgstr "Bendrinamas grojaraštis"
 msgid "Open Containing Folder"
 msgstr "Atverti aplanką"
 
-#: ../src/parole-player.c:538
+#: ../src/parole-player.c:536
 msgid "Hide Playlist"
 msgstr "Slėpti grojaraštį"
 
-#: ../src/parole-player.c:538 ../src/parole-player.c:3597
+#: ../src/parole-player.c:536 ../src/parole-player.c:3599
 msgid "Show Playlist"
 msgstr "Rodyti grojaraštį"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:1020
+#: ../src/parole-player.c:1018
 msgid "Select Subtitle File"
 msgstr "Pasirinkti subtitrų failą"
 
-#: ../src/parole-player.c:1025 ../src/parole-player.c:1229
+#: ../src/parole-player.c:1023 ../src/parole-player.c:1227
 #: ../src/parole-player.c:2965 ../src/plugins/tray/tray-provider.c:340
 msgid "Cancel"
 msgstr "Atsisakyti"
 
-#: ../src/parole-player.c:1028
+#: ../src/parole-player.c:1026
 msgid "Open"
 msgstr "Atverti"
 
-#: ../src/parole-player.c:1044
+#: ../src/parole-player.c:1042
 msgid "Subtitle Files"
 msgstr "Subtitrų failai"
 
-#: ../src/parole-player.c:1225 ../src/parole-player.c:1233
+#: ../src/parole-player.c:1223 ../src/parole-player.c:1231
 msgid "Clear Recent Items"
 msgstr "Išvalyti paskiausiai naudotus elementus"
 
-#: ../src/parole-player.c:1227
+#: ../src/parole-player.c:1225
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
 msgstr "Ar tikrai norite išvalyti paskiausiai naudotų elementų istoriją? Šio veiksmo neįmanoma bus atšaukti."
 
-#: ../src/parole-player.c:1326 ../src/parole-player.c:1466
+#: ../src/parole-player.c:1324 ../src/parole-player.c:1464
 msgid "Media stream is not seekable"
 msgstr "Medija srautas nepersukamas"
 
-#: ../src/parole-player.c:1337
+#: ../src/parole-player.c:1335
 msgid "Play"
 msgstr "Groti"
 
-#: ../src/parole-player.c:1340
+#: ../src/parole-player.c:1338
 msgid "Pause"
 msgstr "Pristabdyti"
 
-#: ../src/parole-player.c:1842
+#: ../src/parole-player.c:1840
 msgid "GStreamer backend error"
 msgstr "GStreamer vidinės sąsajos klaida"
 
-#: ../src/parole-player.c:1891 ../src/parole-player.c:1893
-#: ../src/parole-player.c:1899
+#: ../src/parole-player.c:1919 ../src/parole-player.c:1921
+#: ../src/parole-player.c:1927
 msgid "on"
 msgstr "iš"
 
-#: ../src/parole-player.c:1899 ../src/plugins/notify/notify-provider.c:145
+#: ../src/parole-player.c:1927 ../src/plugins/notify/notify-provider.c:145
 msgid "Unknown Album"
 msgstr "Nežinomas albumas"
 
-#: ../src/parole-player.c:1906 ../src/parole-player.c:1910
+#: ../src/parole-player.c:1934 ../src/parole-player.c:1938
 msgid "by"
 msgstr "kurią atlieka"
 
-#: ../src/parole-player.c:1910 ../src/plugins/notify/notify-provider.c:147
+#: ../src/parole-player.c:1938 ../src/plugins/notify/notify-provider.c:147
 msgid "Unknown Artist"
 msgstr "Nežinomas atlikėjas"
 
-#: ../src/parole-player.c:1944
+#: ../src/parole-player.c:1972
 msgid "Buffering"
 msgstr "Buferiavimas"
 
-#: ../src/parole-player.c:2065 ../src/parole-player.c:3572
+#: ../src/parole-player.c:2093 ../src/parole-player.c:3574
 msgid "Fullscreen"
 msgstr "Visas ekranas"
 
-#: ../src/parole-player.c:2078
+#: ../src/parole-player.c:2106
 msgid "Leave _Fullscreen"
 msgstr "Išjungti _viso ekrano veikseną"
 
-#: ../src/parole-player.c:2079
+#: ../src/parole-player.c:2107
 msgid "Leave Fullscreen"
 msgstr "Išjungti viso ekrano veikseną"
 
 #. Play menu item
 #. * Play pause
-#: ../src/parole-player.c:2196 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2224 ../src/plugins/tray/tray-provider.c:130
 msgid "_Pause"
 msgstr "_Pristabdyti"
 
-#: ../src/parole-player.c:2196 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2224 ../src/plugins/tray/tray-provider.c:130
 msgid "_Play"
 msgstr "_Groti"
 
 #. * Previous item in playlist.
-#: ../src/parole-player.c:2210
+#: ../src/parole-player.c:2238
 msgid "_Previous"
 msgstr "_Ankstesnis"
 
 #. * Next item in playlist.
-#: ../src/parole-player.c:2219
+#: ../src/parole-player.c:2247
 msgid "_Next"
 msgstr "_Kitas"
 
 #. * Un/Full screen
-#: ../src/parole-player.c:2228
+#: ../src/parole-player.c:2256
 msgid "_Leave Fullscreen"
 msgstr "Išjungti _viso ekrano veikseną"
 
 #. * Un/Hide menubar
-#: ../src/parole-player.c:2242
+#: ../src/parole-player.c:2270
 msgid "Show menubar"
 msgstr "Rodyti meniu juostą"
 
-#: ../src/parole-player.c:2259
+#: ../src/parole-player.c:2287
 msgid "Mini Mode"
 msgstr "Minimali veiksena"
 
@@ -944,20 +944,20 @@ msgid "Position:"
 msgstr "Pozicija:"
 
 #. Clear Recent Menu Item
-#: ../src/parole-player.c:3423
+#: ../src/parole-player.c:3425
 msgid "_Clear recent items…"
 msgstr "_Išvalyti paskiausiai naudotus elementus..."
 
-#: ../src/parole-player.c:3768
+#: ../src/parole-player.c:3746
 msgid "Audio Track:"
 msgstr "Garso takelis:"
 
-#: ../src/parole-player.c:3787
+#: ../src/parole-player.c:3765
 msgid "Subtitles:"
 msgstr "Subtitrai:"
 
 #. Add a close button to the Infobar
-#: ../src/parole-player.c:3793 ../src/plugins/tray/tray-provider.c:275
+#: ../src/parole-player.c:3771 ../src/plugins/tray/tray-provider.c:275
 msgid "Close"
 msgstr "Užverti"
 
