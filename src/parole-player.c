@@ -1436,12 +1436,14 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
     {
         parole_player_change_range_value (player, 0);
         gtk_widget_set_visible( player->priv->label_duration, FALSE );
+        gtk_widget_set_visible( player->priv->label_divider, FALSE );
         gtk_widget_set_visible( player->priv->label_elapsed, FALSE );
     }
     else
     {
         gtk_range_set_range (GTK_RANGE (player->priv->range), 0, duration);
         gtk_widget_set_visible( player->priv->label_duration, TRUE );
+        gtk_widget_set_visible( player->priv->label_divider, TRUE );
         gtk_widget_set_visible( player->priv->label_elapsed, TRUE );
     }
 
@@ -1845,7 +1847,7 @@ parole_player_error_cb (ParoleGst *gst, const gchar *error, ParolePlayer *player
 static gchar *
 parole_player_get_filename_from_uri (gchar *uri)
 {
-    gchar *filename;
+    gchar *filename = NULL;
     gchar *scheme;
 
     scheme = g_uri_parse_scheme(uri);
@@ -1907,9 +1909,17 @@ parole_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePl
         {
             /* No ID3, no problem! Show the filename instead */
             filename = parole_player_get_filename_from_uri (uri);
-            gtk_window_set_title (GTK_WINDOW (player->priv->window), filename);
-            gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), g_strdup_printf("<span color='#F4F4F4'><b><big>%s</big></b></span>", filename));
-            g_free (filename);
+            if ( filename )
+            {
+                gtk_window_set_title (GTK_WINDOW (player->priv->window), filename);
+                gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), g_strdup_printf("<span color='#F4F4F4'><b><big>%s</big></b></span>", filename));
+                g_free (filename);
+            }
+            else
+            {
+                gtk_window_set_title (GTK_WINDOW (player->priv->window), _("Parole Media Player"));
+                gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), g_strdup_printf("<span color='#F4F4F4'><b><big>%s</big></b></span>", _("Unknown Song")));
+            }
         }
         g_free(uri);
 
@@ -1959,7 +1969,10 @@ parole_player_buffering_cb (ParoleGst *gst, const ParoleStream *stream, gint per
         parole_gst_resume (PAROLE_GST (player->priv->gst));
         gtk_widget_hide (player->priv->progressbar_buffering);
         gtk_widget_show (player->priv->label_duration);
-        gtk_widget_show (player->priv->range);
+        if ( player->priv->mini_mode )
+            gtk_widget_show (player->priv->label_divider);
+        else
+            gtk_widget_show (player->priv->range);
         gtk_widget_show (player->priv->label_elapsed);
     }
     else
@@ -1974,6 +1987,7 @@ parole_player_buffering_cb (ParoleGst *gst, const ParoleStream *stream, gint per
         gtk_progress_bar_set_text (GTK_PROGRESS_BAR (player->priv->progressbar_buffering), buff);
         gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (player->priv->progressbar_buffering), (gdouble) percentage/100);
         gtk_widget_hide (player->priv->label_duration);
+        gtk_widget_hide (player->priv->label_divider);
         gtk_widget_hide (player->priv->range);
         gtk_widget_hide (player->priv->label_elapsed);
         gtk_widget_show (player->priv->progressbar_buffering);

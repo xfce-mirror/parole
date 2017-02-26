@@ -592,6 +592,11 @@ parole_gst_query_duration (ParoleGst *gst)
 #endif
                                 &absolute_duration);
 
+    if (absolute_duration < 0)
+    {
+        absolute_duration = 0;
+    }
+
     if (gst_time == GST_FORMAT_TIME)
     {
         duration =  absolute_duration / GST_SECOND;
