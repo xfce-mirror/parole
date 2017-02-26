@@ -397,9 +397,7 @@ struct ParolePlayerPrivate
     GtkWidget          *showhide_playlist_menu_item;
     GtkWidget          *repeat_menu_item;
     GtkWidget          *shuffle_menu_item;
-#if GTK_CHECK_VERSION(3,10,0)
     GtkWidget          *revealer;
-#endif
 
     /* Infobar */
     GtkWidget          *infobar;
@@ -2155,7 +2153,7 @@ parole_player_reset_controls (ParolePlayer *player, gboolean fullscreen)
             gtk_widget_show (player->priv->fullscreen_button);
             gtk_widget_hide(player->priv->label_divider);
             gtk_widget_show(player->priv->range);
-            gtk_widget_set_halign (player->priv->audiobox_cover, GTK_ALIGN_FILL);
+            gtk_widget_set_halign (player->priv->audiobox_cover, GTK_ALIGN_END);
 
             if ( !player->priv->full_screen )
             {
@@ -2366,21 +2364,12 @@ parole_player_gst_widget_button_release (GtkWidget *widget, GdkEventButton *ev, 
 gboolean parole_player_hide_controls (gpointer data)
 {
     ParolePlayer *player;
-#if GTK_CHECK_VERSION(3,10,0)
-#else
-    GtkWidget *controls;
-#endif
 
     TRACE("start");
 
     player = PAROLE_PLAYER (data);
 
-#if GTK_CHECK_VERSION(3,10,0)
     gtk_revealer_set_reveal_child(GTK_REVEALER(player->priv->revealer), FALSE);
-#else
-    controls = gtk_widget_get_parent(player->priv->control);
-    gtk_widget_hide(controls);
-#endif
 
     parole_player_set_cursor_visible (player, FALSE);
 
@@ -2403,7 +2392,6 @@ parole_player_gst_widget_motion_notify_event (GtkWidget *widget, GdkEventMotion 
 
     parole_player_set_cursor_visible (player, TRUE);
 
-#if GTK_CHECK_VERSION(3,10,0)
     if (gtk_revealer_get_reveal_child(GTK_REVEALER(player->priv->revealer)))
     {
         if ((gdouble)gtk_widget_get_allocated_height(widget) - ev->y >= 32.0)
@@ -2430,24 +2418,6 @@ parole_player_gst_widget_motion_notify_event (GtkWidget *widget, GdkEventMotion 
     {
         gtk_revealer_set_reveal_child(GTK_REVEALER(player->priv->revealer), TRUE);
     }
-#else
-    if ( player->priv->state == PAROLE_STATE_PLAYING )
-    {
-        g_object_get (G_OBJECT (player->priv->conf),
-                      "hide-controls-timeout", &hide_controls_timeout,
-                      NULL);
-
-        if (hide_controls_timeout != 0 || player->priv->full_screen)
-        {
-            if (player->priv->full_screen)
-                hide_timeout = g_timeout_add_seconds (4,
-                                              (GSourceFunc) parole_player_hide_controls, player);
-            else
-                hide_timeout = g_timeout_add_seconds (hide_controls_timeout,
-                                              (GSourceFunc) parole_player_hide_controls, player);
-        }
-    }
-#endif
 
     return FALSE;
 }
@@ -3309,10 +3279,6 @@ parole_player_init (ParolePlayer *player)
 
     /* Content Area */
     GtkWidget *controls_overlay;
-#if GTK_CHECK_VERSION(3,10,0)
-#else
-    GtkWidget *tmp_box;
-#endif
     GtkWidget *controls_parent;
     GtkWidget *play_box;
 #if GTK_CHECK_VERSION(3,16,0)
@@ -3694,42 +3660,18 @@ parole_player_init (ParolePlayer *player)
 
     parole_widget_reparent(GTK_WIDGET(player->priv->eventbox_output), controls_overlay);
 
-    #if GTK_CHECK_VERSION(3,8,0)
-    #else
-        gdk_rgba_parse (&background, "#080810");
-        gtk_widget_override_background_color(GTK_WIDGET(controls_overlay), GTK_STATE_FLAG_NORMAL, &background);
-    #endif
+    player->priv->revealer = gtk_revealer_new ();
+    gtk_widget_set_vexpand(GTK_WIDGET(player->priv->revealer), FALSE);
+    gtk_widget_set_hexpand(GTK_WIDGET(player->priv->revealer), FALSE);
+    gtk_revealer_set_transition_duration (GTK_REVEALER(player->priv->revealer), 250);
+    gtk_revealer_set_transition_type (GTK_REVEALER(player->priv->revealer), GTK_REVEALER_TRANSITION_TYPE_SLIDE_UP);
+    gtk_revealer_set_reveal_child(GTK_REVEALER(player->priv->revealer), TRUE);
+    gtk_widget_set_valign(player->priv->revealer, GTK_ALIGN_END);
 
-    #if GTK_CHECK_VERSION(3,10,0)
-        /* Use GtkRevealer for GTK 3.10 and newer */
-        player->priv->revealer = gtk_revealer_new ();
-        gtk_widget_set_vexpand(GTK_WIDGET(player->priv->revealer), FALSE);
-        gtk_widget_set_hexpand(GTK_WIDGET(player->priv->revealer), FALSE);
-        gtk_revealer_set_transition_duration (GTK_REVEALER(player->priv->revealer), 250);
-        gtk_revealer_set_transition_type (GTK_REVEALER(player->priv->revealer), GTK_REVEALER_TRANSITION_TYPE_SLIDE_UP);
-        gtk_revealer_set_reveal_child(GTK_REVEALER(player->priv->revealer), TRUE);
-        gtk_widget_set_valign(player->priv->revealer, GTK_ALIGN_END);
+    parole_widget_reparent(GTK_WIDGET(player->priv->control), player->priv->revealer);
 
-        parole_widget_reparent(GTK_WIDGET(player->priv->control), player->priv->revealer);
-
-        gtk_overlay_add_overlay(GTK_OVERLAY(controls_overlay), player->priv->revealer);
-        gtk_widget_show_all(player->priv->revealer);
-    #else
-        /* Use floating overlay for GTK 3.8 and older */
-        tmp_box = GTK_WIDGET(gtk_event_box_new());
-
-        gtk_widget_set_vexpand(GTK_WIDGET(tmp_box), FALSE);
-        gtk_widget_set_hexpand(GTK_WIDGET(tmp_box), FALSE);
-        gtk_widget_set_margin_left(tmp_box, 10);
-        gtk_widget_set_margin_right(tmp_box, 10);
-        gtk_widget_set_margin_bottom(tmp_box, 10);
-        gtk_widget_set_margin_top(tmp_box, 10);
-        gtk_widget_set_valign(tmp_box, GTK_ALIGN_END);
-
-        gtk_widget_reparent(GTK_WIDGET(player->priv->control), tmp_box);
-
-        gtk_overlay_add_overlay(GTK_OVERLAY(controls_overlay), tmp_box);
-    #endif
+    gtk_overlay_add_overlay(GTK_OVERLAY(controls_overlay), player->priv->revealer);
+    gtk_widget_show_all(player->priv->revealer);
 
     gtk_box_set_child_packing( GTK_BOX(player->priv->control), GTK_WIDGET(play_box), TRUE, TRUE, 2, GTK_PACK_START );
     gtk_container_set_border_width(GTK_CONTAINER(play_box), 3);

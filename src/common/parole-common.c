@@ -74,7 +74,6 @@ parole_dialog_show (GtkWindow *parent,
 
     gtk_message_dialog_format_secondary_markup (GTK_MESSAGE_DIALOG (dialog), "%s", msg);
 
-
     g_signal_connect_swapped   (dialog,
                                 "response",
                                 G_CALLBACK (gtk_widget_destroy),

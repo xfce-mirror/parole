@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.16.1 -->
+<!-- Generated with glade 3.20.0 -->
 <interface>
-  <requires lib="gtk+" version="3.2"/>
+  <requires lib="gtk+" version="3.14"/>
   <object class="GtkDialog" id="chooser">
     <property name="can_focus">False</property>
-    <property name="border_width">5</property>
+    <property name="border_width">0</property>
     <property name="title" translatable="yes">Open Media Files</property>
     <property name="modal">True</property>
     <property name="default_width">640</property>
@@ -79,7 +79,7 @@
           <object class="GtkFileChooserWidget" id="filechooserwidget">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="border_width">5</property>
+            <property name="border_width">0</property>
             <signal name="current-folder-changed" handler="media_chooser_folder_changed_cb" swapped="no"/>
             <signal name="file-activated" handler="media_chooser_file_activate_cb" swapped="no"/>
           </object>

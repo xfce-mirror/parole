@@ -461,10 +461,6 @@ static void
 parole_gst_set_video_overlay (ParoleGst *gst)
 {
     GstElement *video_sink;
-#if GTK_CHECK_VERSION(3,8,0)
-#else
-    gchar *videosink;
-#endif
 
     g_object_get (G_OBJECT (gst->priv->playbin),
                   "video-sink", &video_sink,
@@ -479,18 +475,6 @@ parole_gst_set_video_overlay (ParoleGst *gst)
 #else
         gst_x_overlay_set_xwindow_id (GST_X_OVERLAY (video_sink),
                           GDK_WINDOW_XID ( gtk_widget_get_window(GTK_WIDGET (gst)) ));
-#endif
-
-#if GTK_CHECK_VERSION(3,8,0)
-#else
-    g_object_get (G_OBJECT (gst->priv->conf),
-                             "videosink", &videosink,
-                             NULL);
-    if (g_strcmp0(videosink, "ximagesink") == 0)
-    {
-        g_object_set(video_sink, "autopaint-colorkey", FALSE,
-                                 "colorkey", 0x080810, NULL);
-    }
 #endif
 
     gst_object_unref (video_sink);
