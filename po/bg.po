@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-12 00:31+0100\n"
-"PO-Revision-Date: 2017-02-12 07:23+0000\n"
+"POT-Creation-Date: 2017-02-26 06:32+0100\n"
+"PO-Revision-Date: 2017-02-26 11:38+0000\n"
 "Last-Translator: Kiril Kirilov <cybercop_montana@abv.bg>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/xfce/xfce-apps/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: ../data/interfaces/parole.ui.h:1
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:1
-#: ../src/parole-player.c:608 ../src/parole-player.c:1521
+#: ../src/parole-player.c:606 ../src/parole-player.c:1519
 #: ../src/parole-about.c:70 ../src/plugins/mpris2/mpris2-provider.c:199
 msgid "Parole Media Player"
 msgstr "Мултимедиен плеър Parole"
@@ -111,7 +111,7 @@ msgstr "Аудио"
 msgid "_Audio Track"
 msgstr "Аудио запис"
 
-#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:834
+#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:832
 msgid "Empty"
 msgstr "Празно"
 
@@ -131,8 +131,8 @@ msgstr "_Заглушаване"
 msgid "_Video"
 msgstr "Видео"
 
-#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2064
-#: ../src/parole-player.c:2228
+#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2092
+#: ../src/parole-player.c:2256
 msgid "_Fullscreen"
 msgstr "Цял екран"
 
@@ -140,7 +140,7 @@ msgstr "Цял екран"
 msgid "_Aspect Ratio"
 msgstr "Формат на екрана"
 
-#: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:762
+#: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:760
 msgid "None"
 msgstr "Няма"
 
@@ -239,7 +239,7 @@ msgstr "Отваряне на мултимедийни файлове"
 
 #: ../data/interfaces/playlist.ui.h:1
 #: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:806
-#: ../src/parole-medialist.c:849 ../src/parole-player.c:3382
+#: ../src/parole-medialist.c:849 ../src/parole-player.c:3384
 msgid "Playlist"
 msgstr "Списък за изпълнение"
 
@@ -485,12 +485,12 @@ msgid "Play/Pause"
 msgstr "Изпълнение/Пауза"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:4
-#: ../src/parole-player.c:3537 ../src/plugins/notify/notify-provider.c:204
+#: ../src/parole-player.c:3539 ../src/plugins/notify/notify-provider.c:204
 msgid "Previous Track"
 msgstr "Предишен запис"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:5
-#: ../src/parole-player.c:3555 ../src/plugins/notify/notify-provider.c:217
+#: ../src/parole-player.c:3557 ../src/plugins/notify/notify-provider.c:217
 msgid "Next Track"
 msgstr "Следващ запис"
 
@@ -510,10 +510,10 @@ msgstr "Parole включва функции за възпроизвеждане
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid ""
-"This development release adds a new mini mode and the abilty to play or "
-"replay content by clicking the the circle icons. Theming is simplfied and "
+"This development release adds a new mini mode and the ability to play or "
+"replay content by clicking the circle icons. Theming is simplified and "
 "filenames are displayed when no ID3 tags are found."
-msgstr "Тази версия в процес на разработка, добавя нов режим с минимален изглед и възможност за изпълнение или заместване на съдържание с кликване върху иконите в кръга. Изгледът е опростен, а имената на файловете се показват, когато бъдат открити ID3 тагове."
+msgstr "Това издание в процес на разработка е с добавен нов Мини режим и възможност за възпроизвеждане на съдържание с кликване върху иконите в кръга. Изгледът е опростен и имената на файловете се показват, когато не са намерени ID3 тагове."
 
 #: ../data/appdata/parole.appdata.xml.in.h:4
 msgid ""
@@ -562,87 +562,87 @@ msgid ""
 "plugins and the occasional bugfix."
 msgstr "Това разработващо се издание се характеризира с пълна поддръжка на Gtk+3, подобрен потребителски интерфейс (по-оптимизирани менюта), по-добри плейлисти. Също така включва актуализирана визия, поддръжка на GStreamer1.0 и подобрена работа с разширения."
 
-#: ../src/common/parole-common.c:88
+#: ../src/common/parole-common.c:87
 msgid "Message"
 msgstr "Съобщение"
 
-#: ../src/common/parole-common.c:93
+#: ../src/common/parole-common.c:92
 msgid "Error"
 msgstr "Грешка"
 
-#: ../src/gst/parole-gst.c:1275 ../src/parole-medialist.c:393
+#: ../src/gst/parole-gst.c:1266 ../src/parole-medialist.c:393
 #, c-format
 msgid "Track %i"
 msgstr "Запис %i"
 
-#: ../src/gst/parole-gst.c:1278
+#: ../src/gst/parole-gst.c:1269
 msgid "Audio CD"
 msgstr "Аудио CD"
 
-#: ../src/gst/parole-gst.c:1518
+#: ../src/gst/parole-gst.c:1512
 msgid "Additional software is required."
 msgstr "Необходим е допълнителен софтуер."
 
-#: ../src/gst/parole-gst.c:1523
+#: ../src/gst/parole-gst.c:1517
 msgid "Don't Install"
 msgstr "Не инсталирай"
 
-#: ../src/gst/parole-gst.c:1525
+#: ../src/gst/parole-gst.c:1519
 msgid "Install"
 msgstr "Инсталиране"
 
-#: ../src/gst/parole-gst.c:1528
+#: ../src/gst/parole-gst.c:1522
 msgid "OK"
 msgstr "OK"
 
-#: ../src/gst/parole-gst.c:1535
+#: ../src/gst/parole-gst.c:1529
 #, c-format
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
 msgstr "Parole се нуждае <b>%s</b> за да изпълни този файл.⏎\nТой може да бъде инсталиран автоматично."
 
-#: ../src/gst/parole-gst.c:1538
+#: ../src/gst/parole-gst.c:1532
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
 msgstr "Parole се нуждае от <b>%s</b> за да изпълни този файл."
 
-#: ../src/gst/parole-gst.c:1949
+#: ../src/gst/parole-gst.c:1943
 msgid "The stream is taking too much time to load"
 msgstr "Потокът се изчаква да зареди прекалено дълго"
 
-#: ../src/gst/parole-gst.c:1950
+#: ../src/gst/parole-gst.c:1944
 msgid "Do you want to continue loading or stop?"
 msgstr "Искате ли да продължите зареждането или да бъде спряно?"
 
-#: ../src/gst/parole-gst.c:1951
+#: ../src/gst/parole-gst.c:1945
 msgid "Stop"
 msgstr "Спиране"
 
-#: ../src/gst/parole-gst.c:1952
+#: ../src/gst/parole-gst.c:1946
 msgid "Continue"
 msgstr "Продължаване"
 
-#: ../src/gst/parole-gst.c:2136
+#: ../src/gst/parole-gst.c:2130
 msgid "GStreamer Error"
 msgstr "Грешка в GStreamer"
 
-#: ../src/gst/parole-gst.c:2137
+#: ../src/gst/parole-gst.c:2131
 msgid "Parole Media Player cannot start."
 msgstr "Мултимедиен плеър Parole не може да стартира"
 
-#: ../src/gst/parole-gst.c:2168 ../src/gst/parole-gst.c:2184
-#: ../src/gst/parole-gst.c:2216
+#: ../src/gst/parole-gst.c:2162 ../src/gst/parole-gst.c:2178
+#: ../src/gst/parole-gst.c:2210
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
 msgstr "Неуспешно зареждане на добавката „%s“ , проверете, дали е GStreamer е инсталиран."
 
-#: ../src/gst/parole-gst.c:2847 ../src/gst/parole-gst.c:2853
+#: ../src/gst/parole-gst.c:2841 ../src/gst/parole-gst.c:2847
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Аудио запис #%d"
 
-#: ../src/gst/parole-gst.c:2897 ../src/gst/parole-gst.c:2903
+#: ../src/gst/parole-gst.c:2891 ../src/gst/parole-gst.c:2897
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Субтитри #%d"
@@ -736,25 +736,25 @@ msgstr "Напиши %s --help за да се покаже списък на д�
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole вече е стартиран, използвайте -i за да отворите ново копие.\n"
 
-#: ../src/parole-mediachooser.c:247 ../src/parole-player.c:1056
+#: ../src/parole-mediachooser.c:247 ../src/parole-player.c:1054
 msgid "All files"
 msgstr "Всички файлове"
 
-#: ../src/parole-medialist.c:218 ../src/parole-medialist.c:1596
+#: ../src/parole-medialist.c:218 ../src/parole-medialist.c:1599
 #, c-format
 msgid "Playlist (%i item)"
 msgid_plural "Playlist (%i items)"
 msgstr[0] "Списък (%i елемент)"
 msgstr[1] "Списък (%i елемента)"
 
-#: ../src/parole-medialist.c:223 ../src/parole-medialist.c:1598
+#: ../src/parole-medialist.c:223 ../src/parole-medialist.c:1601
 #, c-format
 msgid "Playlist (%i chapter)"
 msgid_plural "Playlist (%i chapters)"
 msgstr[0] "Списък (%i заглавие)"
 msgstr[1] "Списък (%i заглавия)"
 
-#: ../src/parole-medialist.c:409 ../src/parole-player.c:741
+#: ../src/parole-medialist.c:409 ../src/parole-player.c:739
 #, c-format
 msgid "Chapter %i"
 msgstr "Заглавие %i"
@@ -800,122 +800,122 @@ msgstr "Споделяем списък за изпълнение"
 msgid "Open Containing Folder"
 msgstr "Отваряне на съдържащата папка"
 
-#: ../src/parole-player.c:538
+#: ../src/parole-player.c:536
 msgid "Hide Playlist"
 msgstr "Скриване на списъка"
 
-#: ../src/parole-player.c:538 ../src/parole-player.c:3597
+#: ../src/parole-player.c:536 ../src/parole-player.c:3599
 msgid "Show Playlist"
 msgstr "Покажи списъка за изпълнение"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:1020
+#: ../src/parole-player.c:1018
 msgid "Select Subtitle File"
 msgstr "Избор на файл със субтитри..."
 
-#: ../src/parole-player.c:1025 ../src/parole-player.c:1229
+#: ../src/parole-player.c:1023 ../src/parole-player.c:1227
 #: ../src/parole-player.c:2965 ../src/plugins/tray/tray-provider.c:340
 msgid "Cancel"
 msgstr "Затваряне"
 
-#: ../src/parole-player.c:1028
+#: ../src/parole-player.c:1026
 msgid "Open"
 msgstr "Отваряне"
 
-#: ../src/parole-player.c:1044
+#: ../src/parole-player.c:1042
 msgid "Subtitle Files"
 msgstr "Файл със субтитри"
 
-#: ../src/parole-player.c:1225 ../src/parole-player.c:1233
+#: ../src/parole-player.c:1223 ../src/parole-player.c:1231
 msgid "Clear Recent Items"
 msgstr "Изчистване на последно използваните елементи"
 
-#: ../src/parole-player.c:1227
+#: ../src/parole-player.c:1225
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
 msgstr "Сигурен ли сте, че искате да изтриете последните използвани елементи от историята?  Това не може да бъде отменено."
 
-#: ../src/parole-player.c:1326 ../src/parole-player.c:1466
+#: ../src/parole-player.c:1324 ../src/parole-player.c:1464
 msgid "Media stream is not seekable"
 msgstr "Мултимедийният поток не е достъпен"
 
-#: ../src/parole-player.c:1337
+#: ../src/parole-player.c:1335
 msgid "Play"
 msgstr "Изпълнение"
 
-#: ../src/parole-player.c:1340
+#: ../src/parole-player.c:1338
 msgid "Pause"
 msgstr "Пауза"
 
-#: ../src/parole-player.c:1842
+#: ../src/parole-player.c:1840
 msgid "GStreamer backend error"
 msgstr "Грешка в GStreamer"
 
-#: ../src/parole-player.c:1891 ../src/parole-player.c:1893
-#: ../src/parole-player.c:1899
+#: ../src/parole-player.c:1919 ../src/parole-player.c:1921
+#: ../src/parole-player.c:1927
 msgid "on"
 msgstr "на"
 
-#: ../src/parole-player.c:1899 ../src/plugins/notify/notify-provider.c:145
+#: ../src/parole-player.c:1927 ../src/plugins/notify/notify-provider.c:145
 msgid "Unknown Album"
 msgstr "Неизвестен Албум"
 
-#: ../src/parole-player.c:1906 ../src/parole-player.c:1910
+#: ../src/parole-player.c:1934 ../src/parole-player.c:1938
 msgid "by"
 msgstr "от"
 
-#: ../src/parole-player.c:1910 ../src/plugins/notify/notify-provider.c:147
+#: ../src/parole-player.c:1938 ../src/plugins/notify/notify-provider.c:147
 msgid "Unknown Artist"
 msgstr "Неизвестен Изпълнител"
 
-#: ../src/parole-player.c:1944
+#: ../src/parole-player.c:1972
 msgid "Buffering"
 msgstr "Буфериране"
 
-#: ../src/parole-player.c:2065 ../src/parole-player.c:3572
+#: ../src/parole-player.c:2093 ../src/parole-player.c:3574
 msgid "Fullscreen"
 msgstr "Режим на цял екран"
 
-#: ../src/parole-player.c:2078
+#: ../src/parole-player.c:2106
 msgid "Leave _Fullscreen"
 msgstr "Изход от цял екран"
 
-#: ../src/parole-player.c:2079
+#: ../src/parole-player.c:2107
 msgid "Leave Fullscreen"
 msgstr "Изход от цял екран"
 
 #. Play menu item
 #. * Play pause
-#: ../src/parole-player.c:2196 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2224 ../src/plugins/tray/tray-provider.c:130
 msgid "_Pause"
 msgstr "Пауза"
 
-#: ../src/parole-player.c:2196 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2224 ../src/plugins/tray/tray-provider.c:130
 msgid "_Play"
 msgstr "Изпълнение"
 
 #. * Previous item in playlist.
-#: ../src/parole-player.c:2210
+#: ../src/parole-player.c:2238
 msgid "_Previous"
 msgstr "Предишен"
 
 #. * Next item in playlist.
-#: ../src/parole-player.c:2219
+#: ../src/parole-player.c:2247
 msgid "_Next"
 msgstr "Следващ"
 
 #. * Un/Full screen
-#: ../src/parole-player.c:2228
+#: ../src/parole-player.c:2256
 msgid "_Leave Fullscreen"
 msgstr "Изход от Цял екран"
 
 #. * Un/Hide menubar
-#: ../src/parole-player.c:2242
+#: ../src/parole-player.c:2270
 msgid "Show menubar"
 msgstr "Покажи лентата с менюта"
 
-#: ../src/parole-player.c:2259
+#: ../src/parole-player.c:2287
 msgid "Mini Mode"
 msgstr "Минимален режим"
 
@@ -944,20 +944,20 @@ msgid "Position:"
 msgstr "Позиция:"
 
 #. Clear Recent Menu Item
-#: ../src/parole-player.c:3423
+#: ../src/parole-player.c:3425
 msgid "_Clear recent items…"
 msgstr "Покажи последно използваните обекти..."
 
-#: ../src/parole-player.c:3768
+#: ../src/parole-player.c:3746
 msgid "Audio Track:"
 msgstr "Аудио запис:"
 
-#: ../src/parole-player.c:3787
+#: ../src/parole-player.c:3765
 msgid "Subtitles:"
 msgstr "Субтитри:"
 
 #. Add a close button to the Infobar
-#: ../src/parole-player.c:3793 ../src/plugins/tray/tray-provider.c:275
+#: ../src/parole-player.c:3771 ../src/plugins/tray/tray-provider.c:275
 msgid "Close"
 msgstr "Затваряне"
 
