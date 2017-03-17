@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-12 00:31+0100\n"
-"PO-Revision-Date: 2017-02-16 18:50+0000\n"
+"POT-Creation-Date: 2017-02-26 18:31+0100\n"
+"PO-Revision-Date: 2017-03-17 21:12+0000\n"
 "Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfce-apps/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -23,8 +23,9 @@ msgstr ""
 
 #: ../data/interfaces/parole.ui.h:1
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:1
-#: ../src/parole-player.c:608 ../src/parole-player.c:1521
-#: ../src/parole-about.c:70 ../src/plugins/mpris2/mpris2-provider.c:199
+#: ../src/parole-player.c:606 ../src/parole-player.c:1521
+#: ../src/parole-player.c:1920 ../src/parole-about.c:70
+#: ../src/plugins/mpris2/mpris2-provider.c:199
 msgid "Parole Media Player"
 msgstr "Reproductor de mitjans audiovisuals Parole"
 
@@ -71,7 +72,7 @@ msgid "_Shuffle"
 msgstr "_Ordre aleatori"
 
 #. Create dialog
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2962
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2976
 msgid "Go to position"
 msgstr "Vés a la posició"
 
@@ -111,7 +112,7 @@ msgstr "_Àudio"
 msgid "_Audio Track"
 msgstr "_Pista d'àudio"
 
-#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:834
+#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:832
 msgid "Empty"
 msgstr "Buit"
 
@@ -131,8 +132,8 @@ msgstr "S_ilencia"
 msgid "_Video"
 msgstr "_Vídeo"
 
-#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2064
-#: ../src/parole-player.c:2228
+#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2106
+#: ../src/parole-player.c:2270
 msgid "_Fullscreen"
 msgstr "_Pantalla completa"
 
@@ -140,7 +141,7 @@ msgstr "_Pantalla completa"
 msgid "_Aspect Ratio"
 msgstr "Relació d'_aspecte"
 
-#: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:762
+#: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:760
 msgid "None"
 msgstr "Cap"
 
@@ -239,7 +240,7 @@ msgstr "Obre fitxers de mitjans audiovisuals"
 
 #: ../data/interfaces/playlist.ui.h:1
 #: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:806
-#: ../src/parole-medialist.c:849 ../src/parole-player.c:3382
+#: ../src/parole-medialist.c:849 ../src/parole-player.c:3398
 msgid "Playlist"
 msgstr "Llista de reproducció"
 
@@ -430,7 +431,7 @@ msgstr "Carrega automàticament els subtítols quan es reprodueixi una pel·líc
 
 #: ../data/interfaces/parole-settings.ui.h:29
 msgid "Font:"
-msgstr "Tipus de lletra:"
+msgstr "Lletra:"
 
 #: ../data/interfaces/parole-settings.ui.h:30
 msgid "Encoding:"
@@ -485,12 +486,12 @@ msgid "Play/Pause"
 msgstr "Reprodueix/Pausa"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:4
-#: ../src/parole-player.c:3537 ../src/plugins/notify/notify-provider.c:204
+#: ../src/parole-player.c:3553 ../src/plugins/notify/notify-provider.c:204
 msgid "Previous Track"
 msgstr "Pista anterior"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:5
-#: ../src/parole-player.c:3555 ../src/plugins/notify/notify-provider.c:217
+#: ../src/parole-player.c:3571 ../src/plugins/notify/notify-provider.c:217
 msgid "Next Track"
 msgstr "Pista següent"
 
@@ -510,29 +511,37 @@ msgstr "Parole compta amb la reproducció de fitxers locals de mitjans audiovisu
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid ""
-"This development release adds a new mini mode and the abilty to play or "
-"replay content by clicking the the circle icons. Theming is simplfied and "
+"This development release fixes several bugs, typos, and historical details "
+"present in the documentation. Tags are now processed on files delivered over"
+" HTTP/S. The clutter video backend is disabled for GTK+ 3.22 and newer due "
+"to significant API changes."
+msgstr "Aquesta versió de desenvolupament corregeix diversos errors, errors tipogràfics, i detalls històrics presents en la documentació. Le etiquetes ara es processen als fitxers lliurats a través d'HTTP/S. El dorsal de vídeo clutter està inhabilitat per a GTK+ 3.22 i posteriors a causa dels canvis significatius de l'API."
+
+#: ../data/appdata/parole.appdata.xml.in.h:4
+msgid ""
+"This development release adds a new mini mode and the ability to play or "
+"replay content by clicking the circle icons. Theming is simplified and "
 "filenames are displayed when no ID3 tags are found."
 msgstr "Aquesta versió de desenvolupament afegeix un nou mode reduït i la capacitat de reproduir o tornar a reproduir el contingut en fer clic a les icones circulars. La tematització se simplifica i els noms de fitxer es visualitzen quan no es troben les etiquetes ID3."
 
-#: ../data/appdata/parole.appdata.xml.in.h:4
+#: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
 "This release improves the build process and includes several bug fixes. This"
 " new stable release is a recommended upgrade for all users."
 msgstr "Aquesta versió millora el procés de construcció i inclou diverses correccions d'errors. Aquesta versió nova estable és una actualització recomanada per a tots els usuaris."
 
-#: ../data/appdata/parole.appdata.xml.in.h:5
+#: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
 msgstr "Aquesta versió de desenvolupament inestable afegeix el nou rerefons clutter i neteja símbols gtk3 en desús. També afegeix una característica d'\"anar a la posició\" i s'han abordat diversos errors."
 
-#: ../data/appdata/parole.appdata.xml.in.h:6
+#: ../data/appdata/parole.appdata.xml.in.h:7
 msgid "This release fixes a problem with detecting DVD drive locations."
 msgstr "Aquesta versió corregeix un problema amb la detecció d'ubicacions d'unitats de DVD."
 
-#: ../data/appdata/parole.appdata.xml.in.h:7
+#: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
 "This release features the completed transition to the Gtk+3 toolkit, "
 "improvements in the user-interface (more streamlined menus), better "
@@ -541,20 +550,20 @@ msgid ""
 "and we use the GStreamer1.0 framework now by default."
 msgstr "Aquesta versió compta amb la transició completa a les eines Gtk+3, millores a la interfície d'usuari (menús més racionals) i millors llistes de reproducció. A més, els connectors existents s'han millorat i se n'ha afegit un de nou (MPRIS2). La major part de l'obra artística s'ha actualitzat per a aquesta versió i utilitzem el marc GStreamer1.0 ara per defecte."
 
-#: ../data/appdata/parole.appdata.xml.in.h:8
+#: ../data/appdata/parole.appdata.xml.in.h:9
 msgid ""
 "This unstable development release features mostly bugfixes and introduces "
 "the new MPRIS2 plugin."
 msgstr "Aquesta versió de desenvolupament inestable compta sobretot amb correccions d'errors i introdueix el connector nou MPRIS2."
 
-#: ../data/appdata/parole.appdata.xml.in.h:9
+#: ../data/appdata/parole.appdata.xml.in.h:10
 msgid ""
 "This is a bugfix release which fixes the loading of playlists with relative "
 "paths, improves the file-filters for audio/video mimetypes and fixes the "
 "\"Remove duplicates\" functionality."
 msgstr "Aquesta és una versió de correcció d'errors que corregeix la càrrega de les llistes de reproducció amb camins relatius, millora els filtres de fitxers de tipus MIME d'àudio / vídeo i corregeix la funcionalitat «Elimina els duplicats»."
 
-#: ../data/appdata/parole.appdata.xml.in.h:10
+#: ../data/appdata/parole.appdata.xml.in.h:11
 msgid ""
 "This unstable development release features the complete port to the Gtk+3 "
 "toolkit, improvements in the user-interface (more streamlined menus), better"
@@ -562,87 +571,87 @@ msgid ""
 "plugins and the occasional bugfix."
 msgstr "Aquesta versió de desenvolupament inestable compta amb el port complet a les eines Gtk+3, millores a la interfície d'usuari (menús més racionals), millors llistes de reproducció. També porta un treball artístic actualitzat, compatibilitat amb GStreamer 1.0, la millora de connectors i la correcció d'errors."
 
-#: ../src/common/parole-common.c:88
+#: ../src/common/parole-common.c:87
 msgid "Message"
 msgstr "Missatge"
 
-#: ../src/common/parole-common.c:93
+#: ../src/common/parole-common.c:92
 msgid "Error"
 msgstr "Error"
 
-#: ../src/gst/parole-gst.c:1275 ../src/parole-medialist.c:393
+#: ../src/gst/parole-gst.c:1271 ../src/parole-medialist.c:393
 #, c-format
 msgid "Track %i"
 msgstr "Pista %i"
 
-#: ../src/gst/parole-gst.c:1278
+#: ../src/gst/parole-gst.c:1274
 msgid "Audio CD"
 msgstr "CD d'àudio"
 
-#: ../src/gst/parole-gst.c:1518
+#: ../src/gst/parole-gst.c:1517
 msgid "Additional software is required."
 msgstr "Cal programari addicional."
 
-#: ../src/gst/parole-gst.c:1523
+#: ../src/gst/parole-gst.c:1522
 msgid "Don't Install"
 msgstr "No ho instal·lis"
 
-#: ../src/gst/parole-gst.c:1525
+#: ../src/gst/parole-gst.c:1524
 msgid "Install"
 msgstr "Instal·la"
 
-#: ../src/gst/parole-gst.c:1528
+#: ../src/gst/parole-gst.c:1527
 msgid "OK"
 msgstr "D'acord"
 
-#: ../src/gst/parole-gst.c:1535
+#: ../src/gst/parole-gst.c:1534
 #, c-format
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
 msgstr "Parole necessita <b>%s</b> per reproduir aquest fitxer.\nEs pot instal·lar automàticament."
 
-#: ../src/gst/parole-gst.c:1538
+#: ../src/gst/parole-gst.c:1537
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
 msgstr "Parole necessita <b>%s</b> per reproduir aquest fitxer."
 
-#: ../src/gst/parole-gst.c:1949
+#: ../src/gst/parole-gst.c:1948
 msgid "The stream is taking too much time to load"
 msgstr "Cal massa temps per carregar el flux"
 
-#: ../src/gst/parole-gst.c:1950
+#: ../src/gst/parole-gst.c:1949
 msgid "Do you want to continue loading or stop?"
 msgstr "Voleu que continuï la càrrega o la voleu aturar?"
 
-#: ../src/gst/parole-gst.c:1951
+#: ../src/gst/parole-gst.c:1950
 msgid "Stop"
 msgstr "Atura"
 
-#: ../src/gst/parole-gst.c:1952
+#: ../src/gst/parole-gst.c:1951
 msgid "Continue"
 msgstr "Continua"
 
-#: ../src/gst/parole-gst.c:2136
+#: ../src/gst/parole-gst.c:2135
 msgid "GStreamer Error"
 msgstr "Error del GStreamer"
 
-#: ../src/gst/parole-gst.c:2137
+#: ../src/gst/parole-gst.c:2136
 msgid "Parole Media Player cannot start."
 msgstr "No es pot iniciar el reproductor de mitjans audiovisuals Parole."
 
-#: ../src/gst/parole-gst.c:2168 ../src/gst/parole-gst.c:2184
-#: ../src/gst/parole-gst.c:2216
+#: ../src/gst/parole-gst.c:2167 ../src/gst/parole-gst.c:2183
+#: ../src/gst/parole-gst.c:2215
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
 msgstr "No es pot carregar el connector «%s», comproveu la instal·lació de GStreamer."
 
-#: ../src/gst/parole-gst.c:2847 ../src/gst/parole-gst.c:2853
+#: ../src/gst/parole-gst.c:2846 ../src/gst/parole-gst.c:2852
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Pista d'àudio #%d"
 
-#: ../src/gst/parole-gst.c:2897 ../src/gst/parole-gst.c:2903
+#: ../src/gst/parole-gst.c:2896 ../src/gst/parole-gst.c:2902
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Subtítol #%d"
@@ -736,25 +745,25 @@ msgstr "Teclegeu %s --help per a llistar totes les opcions de la línia d'ordres
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Ja s'està executant Parole, utilitzeu -i per obrir una instància nova\n"
 
-#: ../src/parole-mediachooser.c:247 ../src/parole-player.c:1056
+#: ../src/parole-mediachooser.c:247 ../src/parole-player.c:1054
 msgid "All files"
 msgstr "Tots els fitxers"
 
-#: ../src/parole-medialist.c:218 ../src/parole-medialist.c:1596
+#: ../src/parole-medialist.c:218 ../src/parole-medialist.c:1599
 #, c-format
 msgid "Playlist (%i item)"
 msgid_plural "Playlist (%i items)"
 msgstr[0] "Llista de reproducció (%i element)"
 msgstr[1] "Llista de reproducció (%i elements)"
 
-#: ../src/parole-medialist.c:223 ../src/parole-medialist.c:1598
+#: ../src/parole-medialist.c:223 ../src/parole-medialist.c:1601
 #, c-format
 msgid "Playlist (%i chapter)"
 msgid_plural "Playlist (%i chapters)"
 msgstr[0] "Llista de reproducció (%i capítol)"
 msgstr[1] "Llista de reproducció (%i capítols)"
 
-#: ../src/parole-medialist.c:409 ../src/parole-player.c:741
+#: ../src/parole-medialist.c:409 ../src/parole-player.c:739
 #, c-format
 msgid "Chapter %i"
 msgstr "Capítol %i"
@@ -800,51 +809,51 @@ msgstr "La llista de reproducció es pot compartir"
 msgid "Open Containing Folder"
 msgstr "Obre la carpeta contenidora"
 
-#: ../src/parole-player.c:538
+#: ../src/parole-player.c:536
 msgid "Hide Playlist"
 msgstr "Oculta la llista de reproducció"
 
-#: ../src/parole-player.c:538 ../src/parole-player.c:3597
+#: ../src/parole-player.c:536 ../src/parole-player.c:3613
 msgid "Show Playlist"
 msgstr "Mostra la llista de reproducció"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:1020
+#: ../src/parole-player.c:1018
 msgid "Select Subtitle File"
 msgstr "Seleccioneu el fitxer de subtítols"
 
-#: ../src/parole-player.c:1025 ../src/parole-player.c:1229
-#: ../src/parole-player.c:2965 ../src/plugins/tray/tray-provider.c:340
+#: ../src/parole-player.c:1023 ../src/parole-player.c:1227
+#: ../src/parole-player.c:2979 ../src/plugins/tray/tray-provider.c:340
 msgid "Cancel"
 msgstr "Cancel·la"
 
-#: ../src/parole-player.c:1028
+#: ../src/parole-player.c:1026
 msgid "Open"
 msgstr "Obre"
 
-#: ../src/parole-player.c:1044
+#: ../src/parole-player.c:1042
 msgid "Subtitle Files"
 msgstr "Fitxers de subtítols"
 
-#: ../src/parole-player.c:1225 ../src/parole-player.c:1233
+#: ../src/parole-player.c:1223 ../src/parole-player.c:1231
 msgid "Clear Recent Items"
 msgstr "Neteja els elements recents"
 
-#: ../src/parole-player.c:1227
+#: ../src/parole-player.c:1225
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
 msgstr "Esteu segur que voleu netejar l'historial dels elements recents? L'acció no es pot desfer."
 
-#: ../src/parole-player.c:1326 ../src/parole-player.c:1466
+#: ../src/parole-player.c:1324 ../src/parole-player.c:1466
 msgid "Media stream is not seekable"
 msgstr "El flux del mitjà audiovisual no és reubicable"
 
-#: ../src/parole-player.c:1337
+#: ../src/parole-player.c:1335
 msgid "Play"
 msgstr "Reprodueix"
 
-#: ../src/parole-player.c:1340
+#: ../src/parole-player.c:1338
 msgid "Pause"
 msgstr "Pausa"
 
@@ -852,112 +861,116 @@ msgstr "Pausa"
 msgid "GStreamer backend error"
 msgstr "Error del rerefons de GStreamer"
 
-#: ../src/parole-player.c:1891 ../src/parole-player.c:1893
-#: ../src/parole-player.c:1899
+#: ../src/parole-player.c:1921
+msgid "Unknown Song"
+msgstr "Cançó desconeguda"
+
+#: ../src/parole-player.c:1929 ../src/parole-player.c:1931
+#: ../src/parole-player.c:1937
 msgid "on"
 msgstr "a"
 
-#: ../src/parole-player.c:1899 ../src/plugins/notify/notify-provider.c:145
+#: ../src/parole-player.c:1937 ../src/plugins/notify/notify-provider.c:145
 msgid "Unknown Album"
 msgstr "Àlbum desconegut"
 
-#: ../src/parole-player.c:1906 ../src/parole-player.c:1910
+#: ../src/parole-player.c:1944 ../src/parole-player.c:1948
 msgid "by"
 msgstr "de"
 
-#: ../src/parole-player.c:1910 ../src/plugins/notify/notify-provider.c:147
+#: ../src/parole-player.c:1948 ../src/plugins/notify/notify-provider.c:147
 msgid "Unknown Artist"
 msgstr "Artista desconegut"
 
-#: ../src/parole-player.c:1944
+#: ../src/parole-player.c:1985
 msgid "Buffering"
 msgstr "Memòria intermèdia"
 
-#: ../src/parole-player.c:2065 ../src/parole-player.c:3572
+#: ../src/parole-player.c:2107 ../src/parole-player.c:3588
 msgid "Fullscreen"
 msgstr "Pantalla completa"
 
-#: ../src/parole-player.c:2078
+#: ../src/parole-player.c:2120
 msgid "Leave _Fullscreen"
 msgstr "_Surt de la pantalla completa"
 
-#: ../src/parole-player.c:2079
+#: ../src/parole-player.c:2121
 msgid "Leave Fullscreen"
 msgstr "Surt de la pantalla completa"
 
 #. Play menu item
 #. * Play pause
-#: ../src/parole-player.c:2196 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2238 ../src/plugins/tray/tray-provider.c:130
 msgid "_Pause"
 msgstr "_Pausa"
 
-#: ../src/parole-player.c:2196 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2238 ../src/plugins/tray/tray-provider.c:130
 msgid "_Play"
 msgstr "_Reprodueix"
 
 #. * Previous item in playlist.
-#: ../src/parole-player.c:2210
+#: ../src/parole-player.c:2252
 msgid "_Previous"
 msgstr "_Anterior"
 
 #. * Next item in playlist.
-#: ../src/parole-player.c:2219
+#: ../src/parole-player.c:2261
 msgid "_Next"
 msgstr "_Següent"
 
 #. * Un/Full screen
-#: ../src/parole-player.c:2228
+#: ../src/parole-player.c:2270
 msgid "_Leave Fullscreen"
 msgstr "_Surt de la pantalla completa"
 
 #. * Un/Hide menubar
-#: ../src/parole-player.c:2242
+#: ../src/parole-player.c:2284
 msgid "Show menubar"
 msgstr "Mostra la barra de menús"
 
-#: ../src/parole-player.c:2259
+#: ../src/parole-player.c:2301
 msgid "Mini Mode"
 msgstr "Mode reduït"
 
-#: ../src/parole-player.c:2541
+#: ../src/parole-player.c:2555
 msgid "Mute"
 msgstr "Silencia"
 
-#: ../src/parole-player.c:2546
+#: ../src/parole-player.c:2560
 msgid "Unmute"
 msgstr "Activa el so"
 
-#: ../src/parole-player.c:2934
+#: ../src/parole-player.c:2948
 msgid "Unable to open default web browser"
 msgstr "No es pot obrir el navegador predeterminat"
 
-#: ../src/parole-player.c:2936
+#: ../src/parole-player.c:2950
 msgid "Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr "Aneu a http://docs.xfce.org/apps/parole/bugs per informar de l'error, si us plau."
 
-#: ../src/parole-player.c:2966
+#: ../src/parole-player.c:2980
 msgid "Go"
 msgstr "Vés-hi"
 
-#: ../src/parole-player.c:2979
+#: ../src/parole-player.c:2993
 msgid "Position:"
 msgstr "Posició:"
 
 #. Clear Recent Menu Item
-#: ../src/parole-player.c:3423
+#: ../src/parole-player.c:3439
 msgid "_Clear recent items…"
 msgstr "_Neteja els elements recents..."
 
-#: ../src/parole-player.c:3768
+#: ../src/parole-player.c:3760
 msgid "Audio Track:"
 msgstr "Pista d'àudio:"
 
-#: ../src/parole-player.c:3787
+#: ../src/parole-player.c:3779
 msgid "Subtitles:"
 msgstr "Subtítols:"
 
 #. Add a close button to the Infobar
-#: ../src/parole-player.c:3793 ../src/plugins/tray/tray-provider.c:275
+#: ../src/parole-player.c:3785 ../src/plugins/tray/tray-provider.c:275
 msgid "Close"
 msgstr "Tanca"
 
