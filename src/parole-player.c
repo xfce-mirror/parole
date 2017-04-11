@@ -1912,13 +1912,13 @@ parole_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePl
             if ( filename )
             {
                 gtk_window_set_title (GTK_WINDOW (player->priv->window), filename);
-                gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), g_strdup_printf("<span color='#F4F4F4'><b><big>%s</big></b></span>", filename));
+                gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), g_markup_printf_escaped("<span color='#F4F4F4'><b><big>%s</big></b></span>", filename));
                 g_free (filename);
             }
             else
             {
                 gtk_window_set_title (GTK_WINDOW (player->priv->window), _("Parole Media Player"));
-                gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), g_strdup_printf("<span color='#F4F4F4'><b><big>%s</big></b></span>", _("Unknown Song")));
+                gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), g_markup_printf_escaped("<span color='#F4F4F4'><b><big>%s</big></b></span>", _("Unknown Song")));
             }
         }
         g_free(uri);
@@ -1934,7 +1934,7 @@ parole_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePl
         }
 
         else
-            gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), g_strdup_printf("<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s</span></big>", _("on"), _("Unknown Album")));
+            gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), g_markup_printf_escaped("<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s</span></big>", _("on"), _("Unknown Album")));
 
         if (year)
             g_free (year);
@@ -1945,7 +1945,7 @@ parole_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePl
             g_free (artist);
         }
         else
-            gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_artist), g_strdup_printf("<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s</span></big>", _("by"), _("Unknown Artist")));
+            gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_artist), g_markup_printf_escaped("<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s</span></big>", _("by"), _("Unknown Artist")));
 
         image = parole_stream_get_image(G_OBJECT(stream));
         if (image)
