@@ -2939,7 +2939,11 @@ static void
 on_bug_report_clicked (GtkWidget *w, ParolePlayer *player)
 {
     GtkWidget *dialog;
+#if GTK_CHECK_VERSION(3,22,0)
+    if (!gtk_show_uri_on_window(GTK_WINDOW(player->priv->window), "http://docs.xfce.org/apps/parole/bugs", GDK_CURRENT_TIME, NULL))
+#else
     if (!gtk_show_uri(NULL, "http://docs.xfce.org/apps/parole/bugs", GDK_CURRENT_TIME, NULL))
+#endif
     {
         dialog = gtk_message_dialog_new(GTK_WINDOW(player->priv->window),
                                         GTK_DIALOG_DESTROY_WITH_PARENT,

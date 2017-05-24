@@ -1171,7 +1171,11 @@ parole_media_list_open_folder (GtkWidget *menu)
         gchar *uri;
         uri = g_filename_to_uri (dirname, NULL, NULL);
         TRACE ("Opening %s", dirname);
+#if GTK_CHECK_VERSION(3,22,0)
+        gtk_show_uri_on_window (GTK_WINDOW (gtk_menu_get_attach_widget (GTK_MENU (menu))), uri, GDK_CURRENT_TIME, NULL);
+#else
         gtk_show_uri (gtk_widget_get_screen (menu),  uri, GDK_CURRENT_TIME, NULL);
+#endif
 
         g_free (uri);
     }
