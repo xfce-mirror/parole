@@ -1235,7 +1235,19 @@ parole_player_recent_menu_clear_activated_cb (GtkWidget *widget, ParolePlayer *p
     response = gtk_dialog_run(GTK_DIALOG(dlg));
     if (response == 1)
     {
-        gtk_recent_manager_purge_items(player->priv->recent, NULL);
+        GList *items, *l;
+
+        items = gtk_recent_manager_get_items (player->priv->recent);
+        for (l = items; l != NULL; l = l->next) {
+            GtkRecentInfo *info = l->data;
+
+            if (gtk_recent_info_has_application(info, "parole"))
+                gtk_recent_manager_remove_item (player->priv->recent,
+                                                gtk_recent_info_get_uri(info),
+                                                NULL);
+        }
+
+        g_list_free_full (items, (GDestroyNotify) gtk_recent_info_unref);
     }
     gtk_widget_destroy(dlg);
 }
