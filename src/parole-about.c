@@ -75,7 +75,7 @@ void parole_about (GtkWindow *parent)
         "program-name", PACKAGE_NAME,
         "translator-credits", _("translator-credits"),
         "version", PACKAGE_VERSION,
-        "website", "http://docs.xfce.org/apps/parole/start",
+        "website", "https://docs.xfce.org/apps/parole/start",
         "website-label", _("Visit Parole website"),
         NULL);
 }

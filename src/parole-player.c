@@ -2952,9 +2952,9 @@ on_bug_report_clicked (GtkWidget *w, ParolePlayer *player)
 {
     GtkWidget *dialog;
 #if GTK_CHECK_VERSION(3,22,0)
-    if (!gtk_show_uri_on_window(GTK_WINDOW(player->priv->window), "http://docs.xfce.org/apps/parole/bugs", GDK_CURRENT_TIME, NULL))
+    if (!gtk_show_uri_on_window(GTK_WINDOW(player->priv->window), "https://docs.xfce.org/apps/parole/bugs", GDK_CURRENT_TIME, NULL))
 #else
-    if (!gtk_show_uri(NULL, "http://docs.xfce.org/apps/parole/bugs", GDK_CURRENT_TIME, NULL))
+    if (!gtk_show_uri(NULL, "https://docs.xfce.org/apps/parole/bugs", GDK_CURRENT_TIME, NULL))
 #endif
     {
         dialog = gtk_message_dialog_new(GTK_WINDOW(player->priv->window),
@@ -2963,7 +2963,7 @@ on_bug_report_clicked (GtkWidget *w, ParolePlayer *player)
                                         GTK_BUTTONS_CLOSE,
                                         _("Unable to open default web browser"));
         gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog),
-                _("Please go to http://docs.xfce.org/apps/parole/bugs to report your bug."));
+                _("Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."));
         gtk_dialog_run(GTK_DIALOG(dialog));
         gtk_widget_destroy(dialog);
     }
