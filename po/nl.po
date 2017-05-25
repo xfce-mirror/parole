@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-26 18:31+0100\n"
-"PO-Revision-Date: 2017-02-27 22:06+0000\n"
+"POT-Creation-Date: 2017-05-25 12:30+0200\n"
+"PO-Revision-Date: 2017-05-25 19:01+0000\n"
 "Last-Translator: Pjotr <pjotrvertaalt@gmail.com>\n"
 "Language-Team: Dutch (http://www.transifex.com/xfce/xfce-apps/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -20,8 +20,8 @@ msgstr ""
 
 #: ../data/interfaces/parole.ui.h:1
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:1
-#: ../src/parole-player.c:606 ../src/parole-player.c:1521
-#: ../src/parole-player.c:1920 ../src/parole-about.c:70
+#: ../src/parole-player.c:606 ../src/parole-player.c:1533
+#: ../src/parole-player.c:1932 ../src/parole-about.c:70
 #: ../src/plugins/mpris2/mpris2-provider.c:199
 msgid "Parole Media Player"
 msgstr "Parole mediaspeler"
@@ -69,7 +69,7 @@ msgid "_Shuffle"
 msgstr "_Schuffelen"
 
 #. Create dialog
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2976
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2992
 msgid "Go to position"
 msgstr "Ga naar positie"
 
@@ -129,8 +129,8 @@ msgstr "_Dempen"
 msgid "_Video"
 msgstr "Video"
 
-#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2106
-#: ../src/parole-player.c:2270
+#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2118
+#: ../src/parole-player.c:2282
 msgid "_Fullscreen"
 msgstr "Volledig scherm"
 
@@ -237,7 +237,7 @@ msgstr "Open mediabestanden"
 
 #: ../data/interfaces/playlist.ui.h:1
 #: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:806
-#: ../src/parole-medialist.c:849 ../src/parole-player.c:3398
+#: ../src/parole-medialist.c:849 ../src/parole-player.c:3414
 msgid "Playlist"
 msgstr "Speellijst"
 
@@ -483,12 +483,12 @@ msgid "Play/Pause"
 msgstr "Afspelen/Pauzeren"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:4
-#: ../src/parole-player.c:3553 ../src/plugins/notify/notify-provider.c:204
+#: ../src/parole-player.c:3569 ../src/plugins/notify/notify-provider.c:204
 msgid "Previous Track"
 msgstr "Vorig nummer"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:5
-#: ../src/parole-player.c:3571 ../src/plugins/notify/notify-provider.c:217
+#: ../src/parole-player.c:3587 ../src/plugins/notify/notify-provider.c:217
 msgid "Next Track"
 msgstr "Volgende nummer"
 
@@ -666,7 +666,7 @@ msgid ""
 "\n"
 "Please report bugs to <https://bugzilla.xfce.org/>.\n"
 "\n"
-msgstr "\nParole mediaspeler %s\n\nOnderdeel van het Xfce Goodies Project\nhttps://goodies.xfce.org\n\nGelicentieerd onder de GNU GPL.\n\nStuur a.u.b. foutmeldingen naar <https://bugzilla.xfce.org/>.\n\n"
+msgstr "\nParole mediaspeler %s\n\nDeel van het Xfce Goodies Project\nhttps://goodies.xfce.org\n\nGelicentieerd onder de GNU GPL.\n\nMeld fouten a.u.b. op <https://bugzilla.xfce.org/>.\n\n"
 
 #: ../src/main.c:241
 msgid "Open a new instance"
@@ -746,14 +746,14 @@ msgstr "Parole is al actief, gebruik -i om een nieuwe instantie te openen\n"
 msgid "All files"
 msgstr "Alle bestanden"
 
-#: ../src/parole-medialist.c:218 ../src/parole-medialist.c:1599
+#: ../src/parole-medialist.c:218 ../src/parole-medialist.c:1603
 #, c-format
 msgid "Playlist (%i item)"
 msgid_plural "Playlist (%i items)"
 msgstr[0] "Speellijst (%i element)"
 msgstr[1] "Speellijst (%i elementen)"
 
-#: ../src/parole-medialist.c:223 ../src/parole-medialist.c:1601
+#: ../src/parole-medialist.c:223 ../src/parole-medialist.c:1605
 #, c-format
 msgid "Playlist (%i chapter)"
 msgid_plural "Playlist (%i chapters)"
@@ -802,7 +802,7 @@ msgid "Shareable Playlist"
 msgstr "Deelbare speellijst"
 
 #. Clear
-#: ../src/parole-medialist.c:1219
+#: ../src/parole-medialist.c:1223
 msgid "Open Containing Folder"
 msgstr "Open map waar het inzit"
 
@@ -810,7 +810,7 @@ msgstr "Open map waar het inzit"
 msgid "Hide Playlist"
 msgstr "Speellijst verbergen"
 
-#: ../src/parole-player.c:536 ../src/parole-player.c:3613
+#: ../src/parole-player.c:536 ../src/parole-player.c:3629
 msgid "Show Playlist"
 msgstr "Speellijst tonen"
 
@@ -820,7 +820,7 @@ msgid "Select Subtitle File"
 msgstr "Kies ondertitelbestand"
 
 #: ../src/parole-player.c:1023 ../src/parole-player.c:1227
-#: ../src/parole-player.c:2979 ../src/plugins/tray/tray-provider.c:340
+#: ../src/parole-player.c:2995 ../src/plugins/tray/tray-provider.c:340
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -842,132 +842,133 @@ msgid ""
 "undone."
 msgstr "Weet u zeker dat u de geschiedenis van uw recente elementen wil verwijderen? Dit kan niet ongedaan worden gemaakt."
 
-#: ../src/parole-player.c:1324 ../src/parole-player.c:1466
+#: ../src/parole-player.c:1336 ../src/parole-player.c:1478
 msgid "Media stream is not seekable"
 msgstr "Mediastroom is niet doorzoekbaar"
 
-#: ../src/parole-player.c:1335
+#: ../src/parole-player.c:1347
 msgid "Play"
 msgstr "Afspelen"
 
-#: ../src/parole-player.c:1338
+#: ../src/parole-player.c:1350
 msgid "Pause"
 msgstr "Pauzeren"
 
-#: ../src/parole-player.c:1842
+#: ../src/parole-player.c:1854
 msgid "GStreamer backend error"
 msgstr "Fout van Gstreamer-achtergronddienst"
 
-#: ../src/parole-player.c:1921
+#: ../src/parole-player.c:1933
 msgid "Unknown Song"
 msgstr "Onbekend nummer"
 
-#: ../src/parole-player.c:1929 ../src/parole-player.c:1931
-#: ../src/parole-player.c:1937
+#: ../src/parole-player.c:1941 ../src/parole-player.c:1943
+#: ../src/parole-player.c:1949
 msgid "on"
 msgstr "op"
 
-#: ../src/parole-player.c:1937 ../src/plugins/notify/notify-provider.c:145
+#: ../src/parole-player.c:1949 ../src/plugins/notify/notify-provider.c:145
 msgid "Unknown Album"
 msgstr "Onbekend album"
 
-#: ../src/parole-player.c:1944 ../src/parole-player.c:1948
+#: ../src/parole-player.c:1956 ../src/parole-player.c:1960
 msgid "by"
 msgstr "door"
 
-#: ../src/parole-player.c:1948 ../src/plugins/notify/notify-provider.c:147
+#: ../src/parole-player.c:1960 ../src/plugins/notify/notify-provider.c:147
 msgid "Unknown Artist"
 msgstr "Onbekende artiest"
 
-#: ../src/parole-player.c:1985
+#: ../src/parole-player.c:1997
 msgid "Buffering"
 msgstr "Aan het bufferen"
 
-#: ../src/parole-player.c:2107 ../src/parole-player.c:3588
+#: ../src/parole-player.c:2119 ../src/parole-player.c:3604
 msgid "Fullscreen"
 msgstr "Schermvullend"
 
-#: ../src/parole-player.c:2120
+#: ../src/parole-player.c:2132
 msgid "Leave _Fullscreen"
 msgstr "Volledig scherm verlaten"
 
-#: ../src/parole-player.c:2121
+#: ../src/parole-player.c:2133
 msgid "Leave Fullscreen"
 msgstr "Volledig scherm verlaten"
 
 #. Play menu item
 #. * Play pause
-#: ../src/parole-player.c:2238 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2250 ../src/plugins/tray/tray-provider.c:130
 msgid "_Pause"
 msgstr "Pauzeren"
 
-#: ../src/parole-player.c:2238 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2250 ../src/plugins/tray/tray-provider.c:130
 msgid "_Play"
 msgstr "Afspelen"
 
 #. * Previous item in playlist.
-#: ../src/parole-player.c:2252
+#: ../src/parole-player.c:2264
 msgid "_Previous"
 msgstr "_Vorige"
 
 #. * Next item in playlist.
-#: ../src/parole-player.c:2261
+#: ../src/parole-player.c:2273
 msgid "_Next"
 msgstr "Vo_lgende"
 
 #. * Un/Full screen
-#: ../src/parole-player.c:2270
+#: ../src/parole-player.c:2282
 msgid "_Leave Fullscreen"
 msgstr "Volledig _scherm verlaten"
 
 #. * Un/Hide menubar
-#: ../src/parole-player.c:2284
+#: ../src/parole-player.c:2296
 msgid "Show menubar"
 msgstr "Menubalk tonen"
 
-#: ../src/parole-player.c:2301
+#: ../src/parole-player.c:2313
 msgid "Mini Mode"
 msgstr "Minimodus"
 
-#: ../src/parole-player.c:2555
+#: ../src/parole-player.c:2567
 msgid "Mute"
 msgstr "Dempen"
 
-#: ../src/parole-player.c:2560
+#: ../src/parole-player.c:2572
 msgid "Unmute"
 msgstr "Demping opheffen"
 
-#: ../src/parole-player.c:2948
+#: ../src/parole-player.c:2964
 msgid "Unable to open default web browser"
 msgstr "Kan standaard-webbrowser niet openen"
 
-#: ../src/parole-player.c:2950
-msgid "Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
+#: ../src/parole-player.c:2966
+msgid ""
+"Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr "Ga a.u.b. naar https://docs.xfce.org/apps/parole/bugs om uw fout te melden."
 
-#: ../src/parole-player.c:2980
+#: ../src/parole-player.c:2996
 msgid "Go"
 msgstr "Gaan"
 
-#: ../src/parole-player.c:2993
+#: ../src/parole-player.c:3009
 msgid "Position:"
 msgstr "Positie:"
 
 #. Clear Recent Menu Item
-#: ../src/parole-player.c:3439
+#: ../src/parole-player.c:3455
 msgid "_Clear recent items…"
 msgstr "Recente elementen verwijderen..."
 
-#: ../src/parole-player.c:3760
+#: ../src/parole-player.c:3776
 msgid "Audio Track:"
 msgstr "Muzieknummer:"
 
-#: ../src/parole-player.c:3779
+#: ../src/parole-player.c:3795
 msgid "Subtitles:"
 msgstr "Ondertitels:"
 
 #. Add a close button to the Infobar
-#: ../src/parole-player.c:3785 ../src/plugins/tray/tray-provider.c:275
+#: ../src/parole-player.c:3801 ../src/plugins/tray/tray-provider.c:275
 msgid "Close"
 msgstr "Sluiten"
 
