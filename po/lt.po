@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-26 18:31+0100\n"
-"PO-Revision-Date: 2017-05-15 18:49+0000\n"
+"POT-Creation-Date: 2017-05-25 12:30+0200\n"
+"PO-Revision-Date: 2017-05-25 21:44+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/xfce/xfce-apps/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -21,11 +21,11 @@ msgstr ""
 
 #: ../data/interfaces/parole.ui.h:1
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:1
-#: ../src/parole-player.c:606 ../src/parole-player.c:1521
-#: ../src/parole-player.c:1920 ../src/parole-about.c:70
+#: ../src/parole-player.c:606 ../src/parole-player.c:1533
+#: ../src/parole-player.c:1932 ../src/parole-about.c:70
 #: ../src/plugins/mpris2/mpris2-provider.c:199
 msgid "Parole Media Player"
-msgstr "Parole medija grotuvas"
+msgstr "Parole medijos grotuvas"
 
 #: ../data/interfaces/parole.ui.h:2
 msgid "_Media"
@@ -70,7 +70,7 @@ msgid "_Shuffle"
 msgstr "_Maišyti"
 
 #. Create dialog
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2976
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2992
 msgid "Go to position"
 msgstr "Pereiti į laiką"
 
@@ -130,8 +130,8 @@ msgstr "_Nutildyti"
 msgid "_Video"
 msgstr "_Vaizdas"
 
-#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2106
-#: ../src/parole-player.c:2270
+#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2118
+#: ../src/parole-player.c:2282
 msgid "_Fullscreen"
 msgstr "Visas _ekranas"
 
@@ -234,11 +234,11 @@ msgstr "/"
 
 #: ../data/interfaces/mediachooser.ui.h:1
 msgid "Open Media Files"
-msgstr "Atverti medija failus"
+msgstr "Atverti medijos failus"
 
 #: ../data/interfaces/playlist.ui.h:1
 #: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:806
-#: ../src/parole-medialist.c:849 ../src/parole-player.c:3398
+#: ../src/parole-medialist.c:849 ../src/parole-player.c:3414
 msgid "Playlist"
 msgstr "Grojaraštis"
 
@@ -305,7 +305,7 @@ msgstr "Parole įskiepiai"
 
 #: ../data/interfaces/plugins.ui.h:2
 msgid "Extend your media player"
-msgstr "Išplėskite savo medija grotuvą"
+msgstr "Išplėskite savo medijos grotuvą"
 
 #: ../data/interfaces/plugins.ui.h:3
 msgid "Plugin"
@@ -337,7 +337,7 @@ msgstr "Parole nustatymai"
 
 #: ../data/interfaces/parole-settings.ui.h:4
 msgid "Configure your media player"
-msgstr "Konfigūruokite savo medija grotuvą"
+msgstr "Konfigūruokite savo medijos grotuvą"
 
 #: ../data/interfaces/parole-settings.ui.h:5
 msgid "Disable screensaver when playing movies"
@@ -484,12 +484,12 @@ msgid "Play/Pause"
 msgstr "Groti/Pristabdyti"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:4
-#: ../src/parole-player.c:3553 ../src/plugins/notify/notify-provider.c:204
+#: ../src/parole-player.c:3569 ../src/plugins/notify/notify-provider.c:204
 msgid "Previous Track"
 msgstr "Ankstesnis takelis"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:5
-#: ../src/parole-player.c:3571 ../src/plugins/notify/notify-provider.c:217
+#: ../src/parole-player.c:3587 ../src/plugins/notify/notify-provider.c:217
 msgid "Next Track"
 msgstr "Kitas takelis"
 
@@ -636,7 +636,7 @@ msgstr "GStreamer klaida"
 
 #: ../src/gst/parole-gst.c:2136
 msgid "Parole Media Player cannot start."
-msgstr "Parole medija grotuvas negali būti paleistas."
+msgstr "Parole medijos grotuvas negali būti paleistas."
 
 #: ../src/gst/parole-gst.c:2167 ../src/gst/parole-gst.c:2183
 #: ../src/gst/parole-gst.c:2215
@@ -667,7 +667,7 @@ msgid ""
 "\n"
 "Please report bugs to <https://bugzilla.xfce.org/>.\n"
 "\n"
-msgstr "\nParole medija grotuvas %s\n\nXfce Goodies projekto dalis\nhttps://goodies.xfce.org\n\nLicencijuota pagal GNU GPL.\n\nApie klaidas prašome pranešti adresu <https://bugzilla.xfce.org/>.\n\n"
+msgstr "\nParole medijos grotuvas %s\n\nXfce Goodies projekto dalis\nhttps://goodies.xfce.org\n\nLicencijuota pagal GNU GPL.\n\nPrašome apie klaidas pranešti adresu <https://bugzilla.xfce.org/>.\n\n"
 
 #: ../src/main.c:241
 msgid "Open a new instance"
@@ -727,7 +727,7 @@ msgstr "Parodyti versijos informaciją ir išeiti"
 
 #: ../src/main.c:256
 msgid "Media to play"
-msgstr "Medija atkūrimui"
+msgstr "Medija, kurią atkurti"
 
 #: ../src/main.c:279
 msgid "[FILES...] - Play movies and songs"
@@ -747,7 +747,7 @@ msgstr "Parole jau veikia, naudokite „-i“ jei norite atverti naują kopiją\
 msgid "All files"
 msgstr "Visi failai"
 
-#: ../src/parole-medialist.c:218 ../src/parole-medialist.c:1599
+#: ../src/parole-medialist.c:218 ../src/parole-medialist.c:1603
 #, c-format
 msgid "Playlist (%i item)"
 msgid_plural "Playlist (%i items)"
@@ -755,7 +755,7 @@ msgstr[0] "Grojaraštis (%i elementas)"
 msgstr[1] "Grojaraštis (%i elementai)"
 msgstr[2] "Grojaraštis (%i elementų)"
 
-#: ../src/parole-medialist.c:223 ../src/parole-medialist.c:1601
+#: ../src/parole-medialist.c:223 ../src/parole-medialist.c:1605
 #, c-format
 msgid "Playlist (%i chapter)"
 msgid_plural "Playlist (%i chapters)"
@@ -805,7 +805,7 @@ msgid "Shareable Playlist"
 msgstr "Bendrinamas grojaraštis"
 
 #. Clear
-#: ../src/parole-medialist.c:1219
+#: ../src/parole-medialist.c:1223
 msgid "Open Containing Folder"
 msgstr "Atverti aplanką"
 
@@ -813,7 +813,7 @@ msgstr "Atverti aplanką"
 msgid "Hide Playlist"
 msgstr "Slėpti grojaraštį"
 
-#: ../src/parole-player.c:536 ../src/parole-player.c:3613
+#: ../src/parole-player.c:536 ../src/parole-player.c:3629
 msgid "Show Playlist"
 msgstr "Rodyti grojaraštį"
 
@@ -823,7 +823,7 @@ msgid "Select Subtitle File"
 msgstr "Pasirinkti subtitrų failą"
 
 #: ../src/parole-player.c:1023 ../src/parole-player.c:1227
-#: ../src/parole-player.c:2979 ../src/plugins/tray/tray-provider.c:340
+#: ../src/parole-player.c:2995 ../src/plugins/tray/tray-provider.c:340
 msgid "Cancel"
 msgstr "Atsisakyti"
 
@@ -845,132 +845,133 @@ msgid ""
 "undone."
 msgstr "Ar tikrai norite išvalyti paskiausiai naudotų elementų istoriją? Šio veiksmo neįmanoma bus atšaukti."
 
-#: ../src/parole-player.c:1324 ../src/parole-player.c:1466
+#: ../src/parole-player.c:1336 ../src/parole-player.c:1478
 msgid "Media stream is not seekable"
-msgstr "Medija srautas nepersukamas"
+msgstr "Medijos srautas nepersukamas"
 
-#: ../src/parole-player.c:1335
+#: ../src/parole-player.c:1347
 msgid "Play"
 msgstr "Groti"
 
-#: ../src/parole-player.c:1338
+#: ../src/parole-player.c:1350
 msgid "Pause"
 msgstr "Pristabdyti"
 
-#: ../src/parole-player.c:1842
+#: ../src/parole-player.c:1854
 msgid "GStreamer backend error"
 msgstr "GStreamer vidinės sąsajos klaida"
 
-#: ../src/parole-player.c:1921
+#: ../src/parole-player.c:1933
 msgid "Unknown Song"
 msgstr "Nežinoma daina"
 
-#: ../src/parole-player.c:1929 ../src/parole-player.c:1931
-#: ../src/parole-player.c:1937
+#: ../src/parole-player.c:1941 ../src/parole-player.c:1943
+#: ../src/parole-player.c:1949
 msgid "on"
 msgstr "iš"
 
-#: ../src/parole-player.c:1937 ../src/plugins/notify/notify-provider.c:145
+#: ../src/parole-player.c:1949 ../src/plugins/notify/notify-provider.c:145
 msgid "Unknown Album"
 msgstr "Nežinomas albumas"
 
-#: ../src/parole-player.c:1944 ../src/parole-player.c:1948
+#: ../src/parole-player.c:1956 ../src/parole-player.c:1960
 msgid "by"
 msgstr "kurią atlieka"
 
-#: ../src/parole-player.c:1948 ../src/plugins/notify/notify-provider.c:147
+#: ../src/parole-player.c:1960 ../src/plugins/notify/notify-provider.c:147
 msgid "Unknown Artist"
 msgstr "Nežinomas atlikėjas"
 
-#: ../src/parole-player.c:1985
+#: ../src/parole-player.c:1997
 msgid "Buffering"
 msgstr "Buferiavimas"
 
-#: ../src/parole-player.c:2107 ../src/parole-player.c:3588
+#: ../src/parole-player.c:2119 ../src/parole-player.c:3604
 msgid "Fullscreen"
 msgstr "Visas ekranas"
 
-#: ../src/parole-player.c:2120
+#: ../src/parole-player.c:2132
 msgid "Leave _Fullscreen"
 msgstr "Išjungti _viso ekrano veikseną"
 
-#: ../src/parole-player.c:2121
+#: ../src/parole-player.c:2133
 msgid "Leave Fullscreen"
 msgstr "Išjungti viso ekrano veikseną"
 
 #. Play menu item
 #. * Play pause
-#: ../src/parole-player.c:2238 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2250 ../src/plugins/tray/tray-provider.c:130
 msgid "_Pause"
 msgstr "_Pristabdyti"
 
-#: ../src/parole-player.c:2238 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2250 ../src/plugins/tray/tray-provider.c:130
 msgid "_Play"
 msgstr "_Groti"
 
 #. * Previous item in playlist.
-#: ../src/parole-player.c:2252
+#: ../src/parole-player.c:2264
 msgid "_Previous"
 msgstr "_Ankstesnis"
 
 #. * Next item in playlist.
-#: ../src/parole-player.c:2261
+#: ../src/parole-player.c:2273
 msgid "_Next"
 msgstr "_Kitas"
 
 #. * Un/Full screen
-#: ../src/parole-player.c:2270
+#: ../src/parole-player.c:2282
 msgid "_Leave Fullscreen"
 msgstr "Išjungti _viso ekrano veikseną"
 
 #. * Un/Hide menubar
-#: ../src/parole-player.c:2284
+#: ../src/parole-player.c:2296
 msgid "Show menubar"
 msgstr "Rodyti meniu juostą"
 
-#: ../src/parole-player.c:2301
+#: ../src/parole-player.c:2313
 msgid "Mini Mode"
 msgstr "Minimali veiksena"
 
-#: ../src/parole-player.c:2555
+#: ../src/parole-player.c:2567
 msgid "Mute"
 msgstr "Nutildyti"
 
-#: ../src/parole-player.c:2560
+#: ../src/parole-player.c:2572
 msgid "Unmute"
 msgstr "Įjungti garsą"
 
-#: ../src/parole-player.c:2948
+#: ../src/parole-player.c:2964
 msgid "Unable to open default web browser"
 msgstr "Nepavyko atverti numatytosios naršyklės"
 
-#: ../src/parole-player.c:2950
-msgid "Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
+#: ../src/parole-player.c:2966
+msgid ""
+"Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr "Norint pranešti apie klaidą, prašome apsilankyti https://docs.xfce.org/apps/parole/bugs"
 
-#: ../src/parole-player.c:2980
+#: ../src/parole-player.c:2996
 msgid "Go"
 msgstr "Eiti"
 
-#: ../src/parole-player.c:2993
+#: ../src/parole-player.c:3009
 msgid "Position:"
 msgstr "Pozicija:"
 
 #. Clear Recent Menu Item
-#: ../src/parole-player.c:3439
+#: ../src/parole-player.c:3455
 msgid "_Clear recent items…"
 msgstr "_Išvalyti paskiausiai naudotus elementus..."
 
-#: ../src/parole-player.c:3760
+#: ../src/parole-player.c:3776
 msgid "Audio Track:"
 msgstr "Garso takelis:"
 
-#: ../src/parole-player.c:3779
+#: ../src/parole-player.c:3795
 msgid "Subtitles:"
 msgstr "Subtitrai:"
 
 #. Add a close button to the Infobar
-#: ../src/parole-player.c:3785 ../src/plugins/tray/tray-provider.c:275
+#: ../src/parole-player.c:3801 ../src/plugins/tray/tray-provider.c:275
 msgid "Close"
 msgstr "Užverti"
 
