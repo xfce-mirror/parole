@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) 2001-2006 Bastien Nocera <hadess@hadess.net>
  *
  * encoding list copied from gnome-terminal/encoding.c
@@ -495,7 +495,7 @@ parole_subtitle_encoding_get_selected (GtkComboBox * combo)
   }
   if (index_i == -1)
     return NULL;
-    
+
   return subtitle_encoding_get_charset (index_i);
 }
 
@@ -510,10 +510,10 @@ parole_subtitle_encoding_set (GtkComboBox * combo, const char *encoding)
 
   model = gtk_combo_box_get_model (combo);
   index_i = subtitle_encoding_get_index (encoding);
-  
+
   if (gtk_tree_model_get_iter_first (model, &iter))
   {
-  
+
       do {
         if (!gtk_tree_model_iter_has_child (model, &iter))
           continue;

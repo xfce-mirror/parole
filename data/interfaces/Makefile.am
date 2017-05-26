@@ -6,7 +6,7 @@ interfaces =					\
 	save-playlist.ui			\
 	plugins.ui				\
 	open-location.ui
-	
+
 interfaces_h = 					\
 	$(interfaces:.ui=_ui.h)
 
@@ -33,12 +33,12 @@ open-location_ui.h: open-location.ui
 
 plugins_ui.h: plugins.ui
 	xdt-csource --static --strip-comments --strip-content --name=plugins_ui $< > $@
-	
+
 endif
 
 DISTCLEANFILES =					\
 	$(interfaces_h)
-	
+
 EXTRA_DIST =					\
 	$(interfaces)				\
 	$(interfaces_h)

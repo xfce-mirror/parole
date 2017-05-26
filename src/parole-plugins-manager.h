@@ -38,13 +38,13 @@ typedef struct
 {
     GObject                         parent;
     ParolePluginsManagerPrivate    *priv;
-    
+
 } ParolePluginsManager;
 
 typedef struct
 {
     GObjectClass                    parent_class;
-    
+
 } ParolePluginsManagerClass;
 
 GType                               parole_plugins_manager_get_type   (void) G_GNUC_CONST;
@@ -55,8 +55,8 @@ ParolePluginsManager               *parole_plugins_manager_get        (void);
 
 void                                parole_plugins_manager_load       (ParolePluginsManager *manager);
 
-void                                parole_plugins_manager_pack       (ParolePluginsManager *manager, 
-                                                                       GtkWidget *widget, 
+void                                parole_plugins_manager_pack       (ParolePluginsManager *manager,
+                                                                       GtkWidget *widget,
                                                                        const gchar *title,
                                                                        ParolePluginContainer container);
 

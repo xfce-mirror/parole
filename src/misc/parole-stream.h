@@ -46,7 +46,7 @@ typedef enum
     PAROLE_MEDIA_TYPE_DVD,
     PAROLE_MEDIA_TYPE_DVB,
     PAROLE_MEDIA_TYPE_REMOTE
-    
+
 } ParoleMediaType;
 
 
@@ -57,7 +57,7 @@ typedef enum
     PAROLE_STATE_ABOUT_TO_FINISH,
     PAROLE_STATE_PAUSED,
     PAROLE_STATE_PLAYING
-    
+
 } ParoleState;
 
 
@@ -67,7 +67,7 @@ typedef struct _ParoleStreamClass ParoleStreamClass;
 struct _ParoleStream
 {
     GObject             parent;
-    
+
 };
 
 struct _ParoleStreamClass
@@ -77,7 +77,7 @@ struct _ParoleStreamClass
 
 GType                   parole_stream_get_type          (void) G_GNUC_CONST;
 
-void                    parole_stream_set_image         (GObject *object, 
+void                    parole_stream_set_image         (GObject *object,
                                                          GdkPixbuf *pixbuf);
 
 GdkPixbuf              *parole_stream_get_image         (GObject *object);

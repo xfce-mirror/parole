@@ -44,4 +44,4 @@ snapshot: dist
 
 snapshot-bz2: dist-bz2
 	mv $(PACKAGE)-$(VERSION).tar.bz2 \
-	$(PACKAGE)-$(VERSION)-r@REVISION@.tar.bz2         
+	$(PACKAGE)-$(VERSION)-r@REVISION@.tar.bz2

@@ -60,10 +60,10 @@ struct _Mpris2Provider
     ParoleState             state;
 };
 
-PAROLE_DEFINE_TYPE_WITH_CODE   (Mpris2Provider, 
-                                mpris2_provider, 
+PAROLE_DEFINE_TYPE_WITH_CODE   (Mpris2Provider,
+                                mpris2_provider,
                                 G_TYPE_OBJECT,
-                                PAROLE_IMPLEMENT_INTERFACE (PAROLE_TYPE_PROVIDER_PLUGIN, 
+                                PAROLE_IMPLEMENT_INTERFACE (PAROLE_TYPE_PROVIDER_PLUGIN,
                                 mpris2_provider_iface_init));
 
 static const gchar mpris2xml[] =
@@ -349,9 +349,9 @@ static void mpris_Player_Seek (GDBusMethodInvocation *invocation, GVariant* para
 
     curr_pos = parole_provider_player_get_stream_position (player);
     seek = (curr_pos + param) / GST_MSECOND;
-    
+
     g_object_get (G_OBJECT (stream), "duration", &duration, NULL);
-    
+
     seek = CLAMP (seek, 0, duration);
 
     parole_provider_player_seek (player, seek);
@@ -381,7 +381,7 @@ static void mpris_Player_SetPosition (GDBusMethodInvocation *invocation, GVarian
     seek = param / GST_MSECOND;
 
     g_object_get (G_OBJECT (stream), "duration", &duration, NULL);
-    
+
     seek = CLAMP (seek, 0, duration);
 
     parole_provider_player_seek (player, seek);
@@ -524,7 +524,7 @@ static void handle_get_metadata (const ParoleStream *stream, GVariantBuilder *b)
                   "bitrate", &bitrate,
                   "has-video", &has_video,
                   NULL);
-                  
+
     if (has_video)
     {
         g_free(image_uri);
@@ -585,10 +585,10 @@ static gdouble handle_get_volume (Mpris2Provider *provider)
 {
     gint volume_int = 0;
     gdouble volume_double;
-    
+
     g_object_get (G_OBJECT (provider->conf), "volume", &volume_int, NULL);
     volume_double = (double)volume_int / 100.0;
-    
+
     return volume_double;
 }
 
@@ -985,7 +985,7 @@ on_name_lost (GDBusConnection *connection,
 }
 
 static gboolean
-on_window_state_event  (GtkWidget *widget, 
+on_window_state_event  (GtkWidget *widget,
                         GdkEventWindowState *event,
                         Mpris2Provider *provider)
 {
@@ -1008,7 +1008,7 @@ mpris2_provider_set_player (ParoleProviderPlugin *plugin, ParoleProviderPlayer *
     Mpris2Provider *provider;
     GtkWidget *window;
     provider = MPRIS2_PROVIDER (plugin);
-    
+
     provider->player = player;
     provider->saved_fullscreen = FALSE;
 
@@ -1026,7 +1026,7 @@ mpris2_provider_set_player (ParoleProviderPlugin *plugin, ParoleProviderPlayer *
 
     g_signal_connect (player, "state_changed",
                       G_CALLBACK (state_changed_cb), plugin);
-                      
+
     g_signal_connect (player, "seeked",
                       G_CALLBACK (seeked_cb), plugin);
 
@@ -1034,17 +1034,17 @@ mpris2_provider_set_player (ParoleProviderPlugin *plugin, ParoleProviderPlayer *
 
     g_signal_connect (provider->conf, "notify::repeat",
                       G_CALLBACK (conf_changed_cb), plugin);
-                      
+
     g_signal_connect (provider->conf, "notify::shuffle",
                       G_CALLBACK (conf_changed_cb), plugin);
 
     g_signal_connect (provider->conf, "notify::volume",
                       G_CALLBACK (conf_changed_cb), plugin);
-                      
+
     window = parole_provider_player_get_main_window(provider->player);
-    g_signal_connect(   G_OBJECT(window), 
-                        "window-state-event", 
-                        G_CALLBACK(on_window_state_event), 
+    g_signal_connect(   G_OBJECT(window),
+                        "window-state-event",
+                        G_CALLBACK(on_window_state_event),
                         provider );
 }
 
@@ -1058,7 +1058,7 @@ mpris2_provider_iface_init (ParoleProviderPluginIface *iface)
 static void mpris2_provider_class_init (Mpris2ProviderClass *klass)
 {
     GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
-    
+
     gobject_class->finalize = mpris2_provider_finalize;
 }
 

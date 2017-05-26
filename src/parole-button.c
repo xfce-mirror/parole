@@ -24,7 +24,7 @@
 /*
  * Based on code from gpm-button (gnome power manager)
  * Copyright (C) 2006-2007 Richard Hughes <richard@hughsie.com>
- * 
+ *
  */
 
 #ifdef HAVE_CONFIG_H
@@ -66,7 +66,7 @@ struct ParoleButtonPrivate
 {
     GdkScreen   *screen;
     GdkWindow   *window;
-    
+
 };
 
 enum
@@ -91,15 +91,15 @@ static guint
 parole_button_get_key (unsigned int keycode)
 {
     ParoleButtonKey key = PAROLE_KEY_UNKNOWN;
-    
+
     guint i;
-    
+
     for ( i = 0; i < G_N_ELEMENTS (parole_key_map); i++)
     {
         if ( parole_key_map [i].key_code == keycode )
             key = parole_key_map [i].key;
     }
-    
+
     return key;
 }
 
@@ -116,24 +116,24 @@ parole_button_filter_x_events (GdkXEvent *xevent, GdkEvent *ev, gpointer data)
 {
     ParoleButtonKey key;
     ParoleButton *button;
-    
+
     XEvent *xev = (XEvent *) xevent;
-    
+
     if ( xev->type != KeyPress )
         return GDK_FILTER_CONTINUE;
-    
+
     key = parole_button_get_key (xev->xkey.keycode);
-    
+
     if ( key != PAROLE_KEY_UNKNOWN )
     {
         button = (ParoleButton *) data;
-        
+
         PAROLE_DEBUG_ENUM ("Key press", key, ENUM_GTYPE_BUTTON_KEY);
-        
+
         g_signal_emit (G_OBJECT(button), signals[BUTTON_PRESSED], 0, key);
         return GDK_FILTER_REMOVE;
     }
-    
+
     return GDK_FILTER_CONTINUE;
 }
 
@@ -143,35 +143,35 @@ parole_button_filter_x_events (GdkXEvent *xevent, GdkEvent *ev, gpointer data)
  * @keycode : the #int representing the pressed key on the keyboard.
  *
  * Attempt to get the pressed key and modifier keys.
- * 
+ *
  * Return value: %TRUE on success, else %FALSE.
- **/ 
+ **/
 static gboolean
 parole_button_grab_keystring (ParoleButton *button, guint keycode)
 {
     GdkDisplay *display;
     guint ret;
     guint modmask = 0;
-    
+
     display = gdk_display_get_default();
-    
+
     gdk_error_trap_push ();
 
     ret = XGrabKey (GDK_DISPLAY_XDISPLAY(display), keycode, modmask,
                     gdk_x11_window_get_xid (button->priv->window), True,
                     GrabModeAsync, GrabModeAsync);
-            
+
     if ( ret == BadAccess )
     {
     g_warning ("Failed to grab modmask=%u, keycode=%li",
                 modmask, (long int) keycode);
     return FALSE;
     }
-    
+
     ret = XGrabKey (GDK_DISPLAY_XDISPLAY(display), keycode, LockMask | modmask,
                     gdk_x11_window_get_xid (button->priv->window), True,
                     GrabModeAsync, GrabModeAsync);
-            
+
     if (ret == BadAccess)
     {
         g_warning ("Failed to grab modmask=%u, keycode=%li",
@@ -204,18 +204,18 @@ parole_button_xevent_key (ParoleButton *button, guint keysym , ParoleButtonKey k
         g_warning ("could not map keysym %x to keycode\n", keysym);
         return FALSE;
     }
-    
-    if ( !parole_button_grab_keystring(button, keycode)) 
+
+    if ( !parole_button_grab_keystring(button, keycode))
     {
         g_warning ("Failed to grab %i\n", keycode);
         return FALSE;
     }
-    
+
     PAROLE_DEBUG_ENUM_FULL (key, ENUM_GTYPE_BUTTON_KEY, "Grabbed key %li ", (long int) keycode);
-    
+
     parole_key_map [key].key_code = keycode;
     parole_key_map [key].key = key;
-    
+
     return TRUE;
 }
 
@@ -230,13 +230,13 @@ parole_button_setup (ParoleButton *button)
 {
     button->priv->screen = gdk_screen_get_default ();
     button->priv->window = gdk_screen_get_root_window (button->priv->screen);
-    
+
     parole_button_xevent_key (button, XF86XK_AudioPlay, PAROLE_KEY_AUDIO_PLAY);
     parole_button_xevent_key (button, XF86XK_AudioStop, PAROLE_KEY_AUDIO_STOP);
     parole_button_xevent_key (button, XF86XK_AudioPrev, PAROLE_KEY_AUDIO_PREV);
     parole_button_xevent_key (button, XF86XK_AudioNext, PAROLE_KEY_AUDIO_NEXT);
 
-    gdk_window_add_filter  (button->priv->window, 
+    gdk_window_add_filter  (button->priv->window,
                             parole_button_filter_x_events, button);
 }
 
@@ -251,7 +251,7 @@ parole_button_class_init(ParoleButtonClass *klass)
 {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
-    signals [BUTTON_PRESSED] = 
+    signals [BUTTON_PRESSED] =
         g_signal_new ("button-pressed",
                       PAROLE_TYPE_BUTTON,
                       G_SIGNAL_RUN_LAST,
@@ -275,10 +275,10 @@ static void
 parole_button_init (ParoleButton *button)
 {
     button->priv = PAROLE_BUTTON_GET_PRIVATE (button);
-    
+
     button->priv->screen = NULL;
     button->priv->window = NULL;
-    
+
     parole_button_setup (button);
 }
 
@@ -303,9 +303,9 @@ ParoleButton *
 parole_button_new (void)
 {
     ParoleButton *button = NULL;
-    
+
     button = g_object_new (PAROLE_TYPE_BUTTON, NULL);
-    
+
     return button;
 }
 

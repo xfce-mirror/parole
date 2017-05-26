@@ -43,15 +43,15 @@ typedef struct _ParoleProviderModule ParoleProviderModule;
 struct _ParoleProviderModule
 {
     GTypeModule              parent;
-    
+
     GModule                *library;
     gchar                  *library_name;
     ParolePluginPlayer     *player;
-    
+
     GType                   (*initialize)   (ParoleProviderModule *module);
 
     void                    (*shutdown)     (void);
-    
+
     GType                   provider_type;
     gboolean                active;
     gpointer                instance;

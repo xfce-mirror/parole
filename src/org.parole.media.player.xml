@@ -15,19 +15,19 @@
 
     <method name="PrevTrack">
     </method>
-    
+
     <method name="RaiseVolume">
     </method>
-    
+
     <method name="LowerVolume">
     </method>
-    
+
     <method name="Mute">
     </method>
-    
+
     <method name="Unmute">
     </method>
-    
+
     <method name="PlayDisc">
 	<arg type="s" name="uri" direction="in"/>
 	<arg type="s" name="device" direction="in"/>

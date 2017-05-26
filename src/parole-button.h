@@ -33,7 +33,7 @@ typedef enum
     PAROLE_KEY_AUDIO_PREV,
     PAROLE_KEY_AUDIO_NEXT,
     PAROLE_KEY_NUMBERS,
-    
+
 } ParoleButtonKey;
 
 #ifdef HAVE_XF86_KEYSYM
@@ -50,16 +50,16 @@ typedef struct
 {
     GObject                 parent;
     ParoleButtonPrivate     *priv;
-    
+
 } ParoleButton;
 
 typedef struct
 {
     GObjectClass            parent_class;
-     
+
     void                    (*button_pressed)       (ParoleButton *button,
                                                      ParoleButtonKey type);
-    
+
 } ParoleButtonClass;
 
 GType                       parole_button_get_type  (void) G_GNUC_CONST;

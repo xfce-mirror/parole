@@ -49,32 +49,32 @@ parole_provider_plugin_get_type (void)
 
         type = g_type_register_static (G_TYPE_INTERFACE, "ParoleProviderPlugin", &info, 0);
     }
-    
+
     return type;
 }
 
 /**
  * parole_provider_plugin_get_is_configurable:
  * @provider: a #ParoleProviderPlugin
- * 
+ *
  * Get if the plugin is configurable.
- * 
+ *
  * Returns: TRUE if the plugin is configurable, FALSE otherwise.
- * 
- * 
+ *
+ *
  * Since: 0.2
  **/
 gboolean parole_provider_plugin_get_is_configurable (ParoleProviderPlugin *provider)
 {
     gboolean configurable = FALSE;
-    
+
     g_return_val_if_fail (PAROLE_IS_PROVIDER_PLUGIN (provider), FALSE);
 
     if ( PAROLE_PROVIDER_PLUGIN_GET_INTERFACE (provider)->get_is_configurable )
     {
         configurable = (*PAROLE_PROVIDER_PLUGIN_GET_INTERFACE (provider)->get_is_configurable) (provider);
     }
-    
+
     return configurable;
 }
 
@@ -82,16 +82,16 @@ gboolean parole_provider_plugin_get_is_configurable (ParoleProviderPlugin *provi
  * parole_provider_plugin_configure:
  * @provider: a #ParoleProviderPlugin
  * @parent: a #GtkWidget parent window
- * 
+ *
  * Open the plugin configuration dialog
- * 
- * 
+ *
+ *
  * Since: 0.2
  **/
 void parole_provider_plugin_configure (ParoleProviderPlugin *provider, GtkWidget *parent)
 {
     g_return_if_fail (PAROLE_IS_PROVIDER_PLUGIN (provider));
-    
+
     if ( PAROLE_PROVIDER_PLUGIN_GET_INTERFACE (provider)->configure )
     {
         (*PAROLE_PROVIDER_PLUGIN_GET_INTERFACE (provider)->configure) (provider, parent);
@@ -102,10 +102,10 @@ void parole_provider_plugin_configure (ParoleProviderPlugin *provider, GtkWidget
  * parole_provider_plugin_set_player:
  * @provider: a #ParoleProviderPlugin
  * @player: a #ParoleProviderPlayer
- * 
+ *
  * The player calls this method on the iface_init funtion implemented by the plugin
  * to set the #ParoleProviderPlayer, don't take any reference of the Player.
- * 
+ *
  * Since: 0.2
  **/
 void parole_provider_plugin_set_player (ParoleProviderPlugin *provider, ParoleProviderPlayer *player)

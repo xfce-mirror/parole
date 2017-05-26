@@ -37,15 +37,15 @@ parole_get_resource_file (const gchar *group, gboolean readonly)
 {
     gchar *file;
     XfceRc *rc;
-    
+
     file = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, PAROLE_RESOURCE_FILE, TRUE);
     rc = xfce_rc_simple_open (file, readonly);
-    
+
     if (rc)
         xfce_rc_set_group (rc, group);
-    
+
     g_free (file);
-    
+
     return rc;
 }
 
@@ -55,17 +55,17 @@ gchar **parole_get_history_full (const gchar *relpath)
     gchar *history = NULL;
     gchar *contents = NULL;
     gsize length = 0;
-    
+
     history = xfce_resource_lookup (XFCE_RESOURCE_CACHE, relpath);
-    
-    if (history && g_file_get_contents (history, &contents, &length, NULL)) 
+
+    if (history && g_file_get_contents (history, &contents, &length, NULL))
     {
         lines = g_strsplit (contents, "\n", -1);
         g_free (contents);
     }
-    
+
     g_free (history);
-    
+
     return lines;
 }
 
@@ -82,10 +82,10 @@ void parole_insert_line_history (const gchar *line)
 void parole_insert_line_history_full (const gchar *relpath, const gchar *line)
 {
     gchar *history = NULL;
-    
+
     history = xfce_resource_save_location (XFCE_RESOURCE_CACHE, relpath, TRUE);
-    
-    if ( history ) 
+
+    if ( history )
     {
         FILE *f;
         f = fopen (history, "a");
@@ -105,9 +105,9 @@ void parole_clear_history_file (void)
 void parole_clear_history_file_full (const gchar *relpath)
 {
     gchar *history = NULL;
-    
+
     history = xfce_resource_save_location (XFCE_RESOURCE_CACHE, relpath, FALSE);
-    
+
     if ( history )
     {
         FILE *f;

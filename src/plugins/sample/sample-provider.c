@@ -41,12 +41,12 @@ struct _SampleProvider
     ParoleProviderPlayer   *player;
 };
 
-PAROLE_DEFINE_TYPE_WITH_CODE   (SampleProvider, 
-                                sample_provider, 
+PAROLE_DEFINE_TYPE_WITH_CODE   (SampleProvider,
+                                sample_provider,
                                 G_TYPE_OBJECT,
-                                PAROLE_IMPLEMENT_INTERFACE (PAROLE_TYPE_PROVIDER_PLUGIN, 
+                                PAROLE_IMPLEMENT_INTERFACE (PAROLE_TYPE_PROVIDER_PLUGIN,
                                 sample_provider_iface_init));
-                              
+
 static gboolean sample_provider_is_configurable (ParoleProviderPlugin *plugin)
 {
     return FALSE;
@@ -57,7 +57,7 @@ sample_provider_set_player (ParoleProviderPlugin *plugin, ParoleProviderPlayer *
 {
     SampleProvider *provider;
     provider = SAMPLE_PROVIDER (plugin);
-    
+
     provider->player = player;
 }
 
@@ -71,7 +71,7 @@ sample_provider_iface_init (ParoleProviderPluginIface *iface)
 static void sample_provider_class_init (SampleProviderClass *klass)
 {
     GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
-    
+
     gobject_class->finalize = sample_provider_finalize;
 }
 

@@ -3,7 +3,7 @@
 	This section explains the steps required to write a plugin for Parole using
 	the C language interface.
     </para>
-    
+
     <para>
 	A simple example can be found in the parole plugins dir shipped with the source code, the sample
 	plugin.
@@ -14,15 +14,15 @@
 	its properties dialog when needed, to set the <link linkend="ParoleProviderPlayer"><type>ParoleProviderPlayer</type></link>
 	interface used by plugins to access the the Parole player backend.
     </para>
-    
+
 
   <sect1>
     <title>Plugin structure.</title>
     sample-plugin.c
     <programlisting>
- 
+
 #include "sample-provider.h"
-    
+
 /* Avoid a no previous function declaration compiler warning*/
 G_MODULE_EXPORT GType	parole_plugin_initialize (ParoleProviderPlugin *plugin);
 G_MODULE_EXPORT void	parole_plugin_shutdown   (void);
@@ -38,10 +38,10 @@ parole_plugin_initialize (ParoleProviderPlugin *plugin)
 G_MODULE_EXPORT void
 parole_plugin_shutdown (void)
 {
-    
+
 }
     </programlisting>
-    
+
     sample-provider.h
     <programlisting>
 #ifndef SAMPLE_PROVIDER_H_
@@ -67,7 +67,7 @@ void  sample_provider_register_type	(ParoleProviderPlugin *plugin);
 
 G_END_DECLS
     </programlisting>
-    
+
     sample-provider.c
     <programlisting>
 
@@ -88,12 +88,12 @@ struct _SampleProvider
     ParoleProviderPlayer *player;
 };
 
-PAROLE_DEFINE_TYPE_WITH_CODE (SampleProvider, 
-			      sample_provider, 
+PAROLE_DEFINE_TYPE_WITH_CODE (SampleProvider,
+			      sample_provider,
 			      G_TYPE_OBJECT,
-			      PAROLE_IMPLEMENT_INTERFACE (PAROLE_TYPE_PROVIDER_PLUGIN, 
+			      PAROLE_IMPLEMENT_INTERFACE (PAROLE_TYPE_PROVIDER_PLUGIN,
 							  sample_provider_iface_init));
-		
+
 static void  sample_provider_configure (ParoleProviderPlugin *provider, GtkWidget *parent)
 {
     /*Open the configuration dialog, parent is the window transient for*/
@@ -109,7 +109,7 @@ sample_provider_set_player (ParoleProviderPlugin *plugin, ParoleProviderPlayer *
 {
     SampleProvider *provider;
     provider = SAMPLE_PROVIDER (plugin);
-    
+
     provider->player = player;
 }
 
@@ -124,7 +124,7 @@ sample_provider_iface_init (ParoleProviderPluginIface *iface)
 static void sample_provider_class_init (SampleProviderClass *klass)
 {
     GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
-    
+
     gobject_class->finalize = sample_provider_finalize;
 }
 
@@ -136,7 +136,7 @@ static void sample_provider_init (SampleProvider *provider)
 static void sample_provider_finalize (GObject *object)
 {
     G_OBJECT_CLASS (sample_provider_parent_class)->finalize (object);
-}    
+}
     </programlisting>
-    
+
   </sect1>

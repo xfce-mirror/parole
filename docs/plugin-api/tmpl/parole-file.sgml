@@ -66,8 +66,8 @@ Simple file handling.
 
 </para>
 
-@filename: 
-@Returns: 
+@filename:
+@Returns:
 
 
 <!-- ##### FUNCTION parole_file_new_with_display_name ##### -->
@@ -75,9 +75,9 @@ Simple file handling.
 
 </para>
 
-@filename: 
-@display_name: 
-@Returns: 
+@filename:
+@display_name:
+@Returns:
 
 
 <!-- ##### FUNCTION parole_file_new_cdda_track ##### -->
@@ -85,9 +85,9 @@ Simple file handling.
 
 </para>
 
-@track_num: 
-@display_name: 
-@Returns: 
+@track_num:
+@display_name:
+@Returns:
 
 
 <!-- ##### FUNCTION parole_file_new_dvd_chapter ##### -->
@@ -95,9 +95,9 @@ Simple file handling.
 
 </para>
 
-@chapter_num: 
-@display_name: 
-@Returns: 
+@chapter_num:
+@display_name:
+@Returns:
 
 
 <!-- ##### FUNCTION parole_file_get_file_name ##### -->
@@ -105,8 +105,8 @@ Simple file handling.
 
 </para>
 
-@file: 
-@Returns: 
+@file:
+@Returns:
 
 
 <!-- ##### FUNCTION parole_file_get_display_name ##### -->
@@ -114,8 +114,8 @@ Simple file handling.
 
 </para>
 
-@file: 
-@Returns: 
+@file:
+@Returns:
 
 
 <!-- ##### FUNCTION parole_file_get_uri ##### -->
@@ -123,8 +123,8 @@ Simple file handling.
 
 </para>
 
-@file: 
-@Returns: 
+@file:
+@Returns:
 
 
 <!-- ##### FUNCTION parole_file_get_directory ##### -->
@@ -132,8 +132,8 @@ Simple file handling.
 
 </para>
 
-@file: 
-@Returns: 
+@file:
+@Returns:
 
 
 <!-- ##### FUNCTION parole_file_get_content_type ##### -->
@@ -141,8 +141,8 @@ Simple file handling.
 
 </para>
 
-@file: 
-@Returns: 
+@file:
+@Returns:
 
 
 <!-- ##### FUNCTION parole_file_set_dvd_chapter ##### -->
@@ -150,8 +150,8 @@ Simple file handling.
 
 </para>
 
-@file: 
-@dvd_chapter: 
+@file:
+@dvd_chapter:
 
 
 <!-- ##### FUNCTION parole_file_get_dvd_chapter ##### -->
@@ -159,8 +159,8 @@ Simple file handling.
 
 </para>
 
-@file: 
-@Returns: 
+@file:
+@Returns:
 
 
 <!-- ##### FUNCTION parole_file_set_custom_subtitles ##### -->
@@ -168,8 +168,8 @@ Simple file handling.
 
 </para>
 
-@file: 
-@suburi: 
+@file:
+@suburi:
 
 
 <!-- ##### FUNCTION parole_file_get_custom_subtitles ##### -->
@@ -177,7 +177,7 @@ Simple file handling.
 
 </para>
 
-@file: 
-@Returns: 
+@file:
+@Returns:
 
 

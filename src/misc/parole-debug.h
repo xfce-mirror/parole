@@ -44,9 +44,9 @@ void        parole_debug_enum   (const gchar *func,
                                  const gchar *file,
                                  gint line,
                                  const gchar *text,
-                                 gint v_enum, 
+                                 gint v_enum,
                                  GType type);
-                     
+
 void        parole_debug_enum_full   (const gchar *func,
                                  const gchar *file,
                                  gint line,

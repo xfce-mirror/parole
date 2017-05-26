@@ -31,17 +31,17 @@
 #define PAROLE_RC_GROUP_GENERAL          "General"
 #define PAROLE_RC_GROUP_PLUGINS          "Plugins"
 
-XfceRc   *parole_get_resource_file        (const gchar *group, 
+XfceRc   *parole_get_resource_file        (const gchar *group,
                                            gboolean readonly);
 
 gchar   **parole_get_history              (void);
 
 gchar   **parole_get_history_full         (const gchar *relpath);
 
-void      parole_insert_line_history      (const gchar *line);        
+void      parole_insert_line_history      (const gchar *line);
 
 void      parole_insert_line_history_full (const gchar *relpath,
-                                           const gchar *line);        
+                                           const gchar *line);
 
 void      parole_clear_history_file       (void);
 

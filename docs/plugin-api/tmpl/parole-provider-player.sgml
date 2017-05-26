@@ -6,7 +6,7 @@ The interface of the player.
 
 <!-- ##### SECTION Long_Description ##### -->
 <para>
-The player interface that the plugins should use in order to, issue playback 
+The player interface that the plugins should use in order to, issue playback
 commands to the Parole GStreamer backend or to get information about the current
 playback status.
 </para>
@@ -34,7 +34,7 @@ playback status.
 </para>
 
 @paroleproviderplayeriface: the object which received the signal.
-@arg1: 
+@arg1:
 
 <!-- ##### SIGNAL ParoleProviderPlayerIface::state-changed ##### -->
 <para>
@@ -42,8 +42,8 @@ playback status.
 </para>
 
 @paroleproviderplayeriface: the object which received the signal.
-@arg1: 
-@arg2: 
+@arg1:
+@arg2:
 
 <!-- ##### SIGNAL ParoleProviderPlayerIface::tag-message ##### -->
 <para>
@@ -51,7 +51,7 @@ playback status.
 </para>
 
 @paroleproviderplayeriface: the object which received the signal.
-@arg1: 
+@arg1:
 
 <!-- ##### STRUCT ParoleProviderPlayer ##### -->
 <para>
@@ -64,29 +64,29 @@ playback status.
 
 </para>
 
-@PAROLE_PLUGIN_CONTAINER_PLAYLIST: 
-@PAROLE_PLUGIN_CONTAINER_MAIN_VIEW: 
+@PAROLE_PLUGIN_CONTAINER_PLAYLIST:
+@PAROLE_PLUGIN_CONTAINER_MAIN_VIEW:
 
 <!-- ##### ENUM ParoleState ##### -->
 <para>
 
 </para>
 
-@PAROLE_STATE_STOPPED: 
-@PAROLE_STATE_PLAYBACK_FINISHED: 
-@PAROLE_STATE_ABOUT_TO_FINISH: 
-@PAROLE_STATE_PAUSED: 
-@PAROLE_STATE_PLAYING: 
+@PAROLE_STATE_STOPPED:
+@PAROLE_STATE_PLAYBACK_FINISHED:
+@PAROLE_STATE_ABOUT_TO_FINISH:
+@PAROLE_STATE_PAUSED:
+@PAROLE_STATE_PLAYING:
 
 <!-- ##### FUNCTION parole_provider_player_pack ##### -->
 <para>
 
 </para>
 
-@player: 
-@widget: 
-@title: 
-@container: 
+@player:
+@widget:
+@title:
+@container:
 
 
 <!-- ##### FUNCTION parole_provider_player_get_action ##### -->
@@ -94,9 +94,9 @@ playback status.
 
 </para>
 
-@player: 
-@action: 
-@Returns: 
+@player:
+@action:
+@Returns:
 
 
 <!-- ##### FUNCTION parole_provider_player_set_fullscreen ##### -->
@@ -104,9 +104,9 @@ playback status.
 
 </para>
 
-@player: 
-@fullscreen: 
-@Returns: 
+@player:
+@fullscreen:
+@Returns:
 
 
 <!-- ##### FUNCTION parole_provider_player_get_fullscreen ##### -->
@@ -114,8 +114,8 @@ playback status.
 
 </para>
 
-@player: 
-@Returns: 
+@player:
+@Returns:
 
 
 <!-- ##### FUNCTION parole_stream_set_image ##### -->
@@ -123,8 +123,8 @@ playback status.
 
 </para>
 
-@object: 
-@pixbuf: 
+@object:
+@pixbuf:
 
 
 <!-- ##### FUNCTION parole_stream_get_image ##### -->
@@ -132,8 +132,8 @@ playback status.
 
 </para>
 
-@object: 
-@Returns: 
+@object:
+@Returns:
 
 
 <!-- ##### FUNCTION parole_provider_player_get_state ##### -->
@@ -141,8 +141,8 @@ playback status.
 
 </para>
 
-@player: 
-@Returns: 
+@player:
+@Returns:
 
 
 <!-- ##### FUNCTION parole_provider_player_get_stream_position ##### -->
@@ -150,8 +150,8 @@ playback status.
 
 </para>
 
-@player: 
-@Returns: 
+@player:
+@Returns:
 
 
 <!-- ##### FUNCTION parole_provider_player_play_uri ##### -->
@@ -159,9 +159,9 @@ playback status.
 
 </para>
 
-@player: 
-@uri: 
-@Returns: 
+@player:
+@uri:
+@Returns:
 
 
 <!-- ##### FUNCTION parole_provider_player_pause ##### -->
@@ -169,8 +169,8 @@ playback status.
 
 </para>
 
-@player: 
-@Returns: 
+@player:
+@Returns:
 
 
 <!-- ##### FUNCTION parole_provider_player_resume ##### -->
@@ -178,8 +178,8 @@ playback status.
 
 </para>
 
-@player: 
-@Returns: 
+@player:
+@Returns:
 
 
 <!-- ##### FUNCTION parole_provider_player_stop ##### -->
@@ -187,8 +187,8 @@ playback status.
 
 </para>
 
-@player: 
-@Returns: 
+@player:
+@Returns:
 
 
 <!-- ##### FUNCTION parole_provider_player_play_next ##### -->
@@ -196,8 +196,8 @@ playback status.
 
 </para>
 
-@player: 
-@Returns: 
+@player:
+@Returns:
 
 
 <!-- ##### FUNCTION parole_provider_player_play_previous ##### -->
@@ -205,8 +205,8 @@ playback status.
 
 </para>
 
-@player: 
-@Returns: 
+@player:
+@Returns:
 
 
 <!-- ##### FUNCTION parole_provider_player_seek ##### -->
@@ -214,9 +214,9 @@ playback status.
 
 </para>
 
-@player: 
-@pos: 
-@Returns: 
+@player:
+@pos:
+@Returns:
 
 
 <!-- ##### FUNCTION parole_provider_player_open_media_chooser ##### -->
@@ -224,6 +224,6 @@ playback status.
 
 </para>
 
-@player: 
+@player:
 
 

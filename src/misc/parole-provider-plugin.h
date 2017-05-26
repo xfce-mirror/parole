@@ -31,7 +31,7 @@
 #include <src/misc/parole-stream.h>
 #include <src/misc/parole-provider-player.h>
 
-G_BEGIN_DECLS 
+G_BEGIN_DECLS
 
 #define PAROLE_TYPE_PROVIDER_PLUGIN                 (parole_provider_plugin_get_type ())
 #define PAROLE_PROVIDER_PLUGIN(o)                   (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_PROVIDER_PLUGIN, ParoleProviderPlugin))
@@ -41,31 +41,31 @@ G_BEGIN_DECLS
 typedef struct _ParoleProviderPluginIface ParoleProviderPluginIface;
 typedef struct _ParoleProviderPlugin      ParoleProviderPlugin;
 
-struct _ParoleProviderPluginIface 
+struct _ParoleProviderPluginIface
 {
     GTypeInterface  __parent__;
-    
+
     /*< public >*/
     gboolean     (*get_is_configurable)             (ParoleProviderPlugin *provider);
-    
+
     void         (*configure)                       (ParoleProviderPlugin *provider,
                                                      GtkWidget *parent);
-                                 
+
     void         (*set_player)                      (ParoleProviderPlugin *provider,
                                                      ParoleProviderPlayer *player);
 };
 
 GType            parole_provider_plugin_get_type    (void) G_GNUC_CONST;
 
-gboolean         
+gboolean
 parole_provider_plugin_get_is_configurable          (ParoleProviderPlugin *provider);
 
 void             parole_provider_plugin_configure   (ParoleProviderPlugin *provider,
                                                      GtkWidget *parent);
-                                 
+
 void             parole_provider_plugin_set_player  (ParoleProviderPlugin *provider,
                                                      ParoleProviderPlayer *player);
-                                                     
+
 G_END_DECLS
 
 #endif /* __PAROLE_PLUGIN_IFACE_H__ */

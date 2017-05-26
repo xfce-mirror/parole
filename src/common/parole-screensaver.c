@@ -82,7 +82,7 @@ void parole_screen_saver_inhibit (ParoleScreenSaver *saver, GtkWindow *window)
 
     cmd = g_strdup_printf("xdg-screensaver suspend %i", (int)GDK_WINDOW_XID (gtk_widget_get_window (GTK_WIDGET (window))));
     returncode = system(cmd);
-    
+
     TRACE("\'xdg-screensaver suspend\' returned %i", returncode);
 
     g_free(cmd);
@@ -97,7 +97,7 @@ void parole_screen_saver_uninhibit (ParoleScreenSaver *saver, GtkWindow *window)
 
     cmd = g_strdup_printf("xdg-screensaver resume %i", (int)GDK_WINDOW_XID (gtk_widget_get_window (GTK_WIDGET (window))));
     returncode = system(cmd);
-    
+
     TRACE("\'xdg-screensaver resume\' returned %i", returncode);
 
     g_free(cmd);

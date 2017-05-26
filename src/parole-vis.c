@@ -37,15 +37,15 @@ static gboolean
 parole_vis_filter (GstPluginFeature *feature, gpointer data)
 {
     GstElementFactory *factory;
-    
+
     if ( !GST_IS_ELEMENT_FACTORY (feature) )
         return FALSE;
-    
+
     factory = GST_ELEMENT_FACTORY (feature);
-    
+
     if ( !g_strrstr (gst_element_factory_get_klass (factory), "Visualization"))
         return FALSE;
-    
+
     return TRUE;
 }
 
@@ -59,9 +59,9 @@ GHashTable *parole_vis_get_plugins (void)
 {
     GList *plugins = NULL;
     GHashTable *hash;
-    
+
     hash = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, NULL);
-    
+
 #if GST_CHECK_VERSION(1, 0, 0)
     plugins = gst_registry_feature_filter (gst_registry_get (),
 #else
@@ -70,10 +70,10 @@ GHashTable *parole_vis_get_plugins (void)
                                            parole_vis_filter,
                                            FALSE,
                                            NULL);
-                       
+
     g_list_foreach (plugins, (GFunc) parole_vis_get_name, &hash);
-    
+
     gst_plugin_feature_list_free (plugins);
-    
+
     return hash;
 }

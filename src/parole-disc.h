@@ -40,30 +40,30 @@ typedef enum
     PAROLE_DISC_VCD,
     PAROLE_DISC_SVCD,
     PAROLE_DISC_DVD
-    
+
 } ParoleDiscKind;
 
 typedef struct
 {
     GObject                parent;
     ParoleDiscPrivate     *priv;
-    
+
 } ParoleDisc;
 
 typedef struct
 {
     GObjectClass       parent_class;
-    
+
     void            (*disc_selected)            (ParoleDisc *disc,
                                                  const gchar *uri,
                                                  const gchar *device);
-                            
+
     void            (*label_changed)            (ParoleDisc *disc,
                                                  const gchar *label_changed);
-                                     
+
     void            (*dvd_enabled)              (ParoleDisc *disc,
                                                  gboolean dvd_enabled);
-    
+
 } ParoleDiscClass;
 
 GType               parole_disc_get_type        (void) G_GNUC_CONST;

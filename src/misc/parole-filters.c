@@ -45,81 +45,81 @@ static char *playlist_file_extensions[] = {
 
 /**
  * parole_get_supported_audio_filter:
- * 
- * 
+ *
+ *
  * Get a #GtkFileFilter according to the supported
  * Parole audio mime types.
- * 
+ *
  * Returns: A #GtkFileFilter for supported audio formats.
- * 
+ *
  * Since: 0.2
  */
 GtkFileFilter       *parole_get_supported_audio_filter  (void)
 {
     GtkFileFilter *filter;
     guint i;
-    
+
     filter = gtk_file_filter_new ();
-    
+
     gtk_file_filter_set_name (filter, _("Audio"));
-    
+
     for ( i = 0; i < G_N_ELEMENTS (audio_mime_types); i++)
         gtk_file_filter_add_mime_type (filter, audio_mime_types[i]);
-    
+
     return filter;
 }
 
 /**
  * parole_get_supported_video_filter:
- * 
- * 
+ *
+ *
  * Get a #GtkFileFilter according to the supported
  * Parole video mime types.
- * 
+ *
  * Returns: A #GtkFileFilter for supported video formats.
- * 
+ *
  * Since: 0.2
  */
 GtkFileFilter       *parole_get_supported_video_filter  (void)
 {
     GtkFileFilter *filter;
     guint i;
-    
+
     filter = gtk_file_filter_new ();
-    
+
     gtk_file_filter_set_name (filter, _("Video"));
-    
+
     for ( i = 0; i < G_N_ELEMENTS (video_mime_types); i++)
         gtk_file_filter_add_mime_type (filter, video_mime_types[i]);
-    
+
     return filter;
 }
 
 /**
  * parole_get_supported_media_filter:
- * 
+ *
  * Get a #GtkFileFilter according to the supported
  * Parole media mime types, including audio and vide.
- * 
+ *
  * Returns: A #GtkFileFilter for supported media formats.
- * 
+ *
  * Since: 0.2
  */
 GtkFileFilter       *parole_get_supported_media_filter  (void)
 {
     GtkFileFilter *filter;
     guint i;
-    
+
     filter = gtk_file_filter_new ();
-    
+
     gtk_file_filter_set_name (filter, _("Audio and video"));
-    
+
     for ( i = 0; i < G_N_ELEMENTS (audio_mime_types); i++)
         gtk_file_filter_add_mime_type (filter, audio_mime_types[i]);
-    
+
     for ( i = 0; i < G_N_ELEMENTS (video_mime_types); i++)
         gtk_file_filter_add_mime_type (filter, video_mime_types[i]);
-    
+
     return filter;
 }
 
@@ -127,86 +127,86 @@ GtkRecentFilter         *parole_get_supported_recent_media_filter   (void)
 {
     GtkRecentFilter *filter;
     guint i;
-    
+
     filter = gtk_recent_filter_new ();
-    
+
     gtk_recent_filter_set_name (filter, _("Audio and video"));
-    
+
     for ( i = 0; i < G_N_ELEMENTS (audio_mime_types); i++)
         gtk_recent_filter_add_mime_type (filter, audio_mime_types[i]);
-    
+
     for ( i = 0; i < G_N_ELEMENTS (video_mime_types); i++)
         gtk_recent_filter_add_mime_type (filter, video_mime_types[i]);
-    
+
     return filter;
 }
 
 /**
  * parole_get_supported_files_filter:
- * 
- * 
+ *
+ *
  * Get a #GtkFileFilter according to the supported
  * Parole files mime types, including audio/video/play list formats.
- * 
+ *
  * Returns: A #GtkFileFilter for supported files formats.
- * 
+ *
  * Since: 0.2
  */
 GtkFileFilter *parole_get_supported_files_filter (void)
 {
     GtkFileFilter *filter;
     guint i;
-    
+
     filter = parole_get_supported_media_filter ();
-    
+
     gtk_file_filter_set_name (filter, _("All supported files"));
-    
+
     for ( i = 0; i < G_N_ELEMENTS (playlist_file_extensions); i++)
         gtk_file_filter_add_pattern (filter, playlist_file_extensions[i]);
-    
+
     return filter;
-    
+
 }
 
 GtkRecentFilter *parole_get_supported_recent_files_filter (void)
 {
     GtkRecentFilter *filter;
     guint i;
-    
+
     filter = parole_get_supported_recent_media_filter ();
-    
+
     gtk_recent_filter_set_name (filter, _("All supported files"));
-    
+
     for ( i = 0; i < G_N_ELEMENTS (playlist_file_extensions); i++)
         gtk_recent_filter_add_pattern (filter, playlist_file_extensions[i]);
-    
+
     return filter;
-    
+
 }
 
 /**
  * parole_get_supported_playlist_filter:
- * 
- * 
+ *
+ *
  * Get a #GtkFileFilter according to the supported
  * Parole play-list mime types.
- * 
+ *
  * Returns: A #GtkFileFilter for supported playlist formats.
- * 
+ *
  * Since: 0.2
  */
 GtkFileFilter   *parole_get_supported_playlist_filter   (void)
 {
     GtkFileFilter *filter;
     guint i;
-    
+
     filter = gtk_file_filter_new ();
-    
+
     gtk_file_filter_set_name (filter, _("Playlist files"));
-    
+
     for ( i = 0; i < G_N_ELEMENTS (playlist_file_extensions); i++)
         gtk_file_filter_add_pattern (filter, playlist_file_extensions[i]);
-    
+
     return filter;
 }
 
@@ -214,11 +214,11 @@ GtkFileFilter   *parole_get_supported_playlist_filter   (void)
  * parole_file_filter:
  * @filter: a #GtkFileFilter.
  * @file: a #ParoleFile
- * 
+ *
  * Tests whether a file should be displayed according to filter
- * 
+ *
  * Returns: TRUE if the file should be displayed.
- * 
+ *
  * Since: 0.2
  */
 gboolean parole_file_filter (GtkFileFilter *filter, ParoleFile *file)
@@ -226,13 +226,13 @@ gboolean parole_file_filter (GtkFileFilter *filter, ParoleFile *file)
     GtkFileFilterInfo filter_info;
 
     gboolean ret;
-    
+
     filter_info.display_name = parole_file_get_display_name (file);
     filter_info.mime_type = parole_file_get_content_type (file);
-    
+
     filter_info.contains = GTK_FILE_FILTER_DISPLAY_NAME | GTK_FILE_FILTER_MIME_TYPE;
-    
+
     ret = gtk_file_filter_filter (filter, &filter_info);
-    
+
     return ret;
 }

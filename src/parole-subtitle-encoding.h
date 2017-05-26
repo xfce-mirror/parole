@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) 2001-2006 Bastien Nocera <hadess@hadess.net>
  *
  * encoding list copied from gnome-terminal/encoding.c

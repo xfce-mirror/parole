@@ -43,14 +43,14 @@ ParoleConf              *parole_conf_new                (void);
 
 gboolean                 parole_conf_get_property_bool  (ParoleConf *conf,
                                                          const gchar *name);
-                                                         
+
 gchar                  **parole_conf_read_entry_list    (ParoleConf *conf,
                                                          const gchar *name);
-                                                         
-void                     parole_conf_write_entry_list   (ParoleConf *conf, 
+
+void                     parole_conf_write_entry_list   (ParoleConf *conf,
                                                          const gchar *name,
-                                                         gchar **value);                                 
-                     
+                                                         gchar **value);
+
 void                     parole_conf_xfconf_init_failed (void);
 
 G_END_DECLS;

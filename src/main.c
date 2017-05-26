@@ -86,7 +86,7 @@ parole_send_play_disc (const gchar *uri, const gchar *device)
     DBusGProxy *proxy;
     GError *error = NULL;
     gchar *uri_local;
-    
+
     if ( uri )
     {
         uri_local = g_strdup (uri);
@@ -95,23 +95,23 @@ parole_send_play_disc (const gchar *uri, const gchar *device)
     {
         uri_local = parole_get_uri_from_unix_device (device);
     }
-    
+
     proxy = parole_get_proxy (PAROLE_DBUS_PATH, PAROLE_DBUS_INTERFACE);
-    
+
     dbus_g_proxy_call (proxy, "PlayDisc", &error,
                        G_TYPE_STRING, uri_local,
                        G_TYPE_STRING, device,
                        G_TYPE_INVALID,
                        G_TYPE_INVALID);
-    
+
     g_free (uri_local);
-               
+
     if ( error )
     {
         g_critical ("Unable to send uri to Parole: %s", error->message);
         g_error_free (error);
     }
-    
+
     g_object_unref (proxy);
 }
 
@@ -133,7 +133,7 @@ parole_send_files (gchar **filenames, gboolean enqueue)
     guint i;
 
     proxy = parole_get_proxy (PAROLE_DBUS_PLAYLIST_PATH, PAROLE_DBUS_PLAYLIST_INTERFACE);
-    
+
     if ( !proxy )
         g_error ("Unable to create proxy for %s", PAROLE_DBUS_NAME);
 
@@ -151,8 +151,8 @@ parole_send_files (gchar **filenames, gboolean enqueue)
                        G_TYPE_BOOLEAN, enqueue,
                        G_TYPE_INVALID,
                        G_TYPE_INVALID);
-               
-               
+
+
     if ( error )
     {
         g_critical ("Unable to send media files to Parole: %s", error->message);
@@ -192,19 +192,19 @@ parole_send_message (const gchar *message)
 {
     DBusGProxy *proxy;
     GError *error = NULL;
-    
+
     proxy = parole_get_proxy (PAROLE_DBUS_PATH, PAROLE_DBUS_INTERFACE);
-    
+
     dbus_g_proxy_call (proxy, message, &error,
                        G_TYPE_INVALID,
                        G_TYPE_INVALID);
-               
+
     if ( error )
     {
         g_critical ("Failed to send message : %s : %s", message, error->message);
         g_error_free (error);
     }
-    
+
     g_object_unref (proxy);
 
 }
@@ -217,7 +217,7 @@ int main (int argc, char **argv)
     GOptionContext *ctx;
     GOptionGroup *gst_option_group;
     GError *error = NULL;
-    
+
     gchar **filenames = NULL;
     gchar *device = NULL;
     gboolean new_instance = FALSE;
@@ -234,9 +234,9 @@ int main (int argc, char **argv)
     gboolean fullscreen = FALSE;
     gboolean enqueue = FALSE;
     gchar    *client_id = NULL;
-    
+
     /* Command-line options */
-    GOptionEntry option_entries[] = 
+    GOptionEntry option_entries[] =
     {
     { "new-instance", 'i', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &new_instance, N_("Open a new instance"), NULL },
     { "no-plugins", 'n', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &no_plugins, N_("Do not load plugins"), NULL },
@@ -256,10 +256,10 @@ int main (int argc, char **argv)
     {G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, &filenames, N_("Media to play"), NULL},
         { NULL, },
     };
-    
+
     if (g_thread_supported ())
         dbus_threads_init_default ();
-    
+
     /* initialize xfconf */
     if (!xfconf_init (&error))
     {
@@ -267,25 +267,25 @@ int main (int argc, char **argv)
         g_error_free (error);
         return EXIT_FAILURE;
     }
-    
+
     XInitThreads();
 
     xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
-    
+
     g_set_application_name (PACKAGE_NAME);
-    
+
     gtk_init (&argc, &argv);
-    
+
     ctx = g_option_context_new (_("[FILES...] - Play movies and songs"));
-    
+
     gst_option_group = gst_init_get_option_group ();
     g_option_context_add_main_entries (ctx, option_entries, GETTEXT_PACKAGE);
     g_option_context_set_translation_domain (ctx, GETTEXT_PACKAGE);
     g_option_context_add_group (ctx, gst_option_group);
 
     g_option_context_add_group (ctx, gtk_get_option_group (TRUE));
-    
-    if ( !g_option_context_parse (ctx, &argc, &argv, &error) ) 
+
+    if ( !g_option_context_parse (ctx, &argc, &argv, &error) )
     {
         g_print ("%s\n", error->message);
         g_print (_("Type %s --help to list all available command line options\n"), argv[0]);
@@ -294,47 +294,47 @@ int main (int argc, char **argv)
         return EXIT_FAILURE;
     }
     g_option_context_free (ctx);
-    
+
     if ( version )
         show_version ();
-    
+
     /* Check for cli options if there is an instance of Parole already */
     if ( !new_instance && parole_dbus_name_has_owner (PAROLE_DBUS_NAME) )
     {
         /* Clear startup notification */
         gdk_notify_startup_complete ();
 
-        if (!enqueue && !play && !next_track && !prev_track && 
+        if (!enqueue && !play && !next_track && !prev_track &&
             !raise_volume && !lower_volume && !mute && !unmute)
             g_print (_("Parole is already running, use -i to open a new instance\n"));
-        
+
         if ( filenames && filenames[0] != NULL )
             parole_send (filenames, device, enqueue);
         else if (device != NULL)
             parole_send_play_disc (NULL, device);
-        
+
         if ( play )
             parole_send_message ("Play");
-            
+
         if ( next_track )
             parole_send_message ("NextTrack");
-        
+
         if ( prev_track )
             parole_send_message ("PrevTrack");
-            
+
         if ( raise_volume )
             parole_send_message ("RaiseVolume");
-            
+
         if ( lower_volume )
             parole_send_message ("LowerVolume");
-            
+
         if ( mute )
             parole_send_message ("Mute");
-            
+
         if ( unmute )
             parole_send_message ("Unmute");
     }
-    
+
     /* Create a new instance because Parole isn't running */
     else
     {
@@ -343,7 +343,7 @@ int main (int argc, char **argv)
 
         player = parole_player_new (client_id);
         g_free (client_id);
-        
+
         if (embedded)
             parole_player_embedded (player);
         else if (fullscreen)
@@ -366,8 +366,8 @@ int main (int argc, char **argv)
         {
             parole_player_play_uri_disc (player, NULL, device);
         }
-        
-        if ( xfce_posix_signal_handler_init (&error)) 
+
+        if ( xfce_posix_signal_handler_init (&error))
         {
             xfce_posix_signal_handler_set_handler(SIGHUP,
                                                   parole_sig_handler,
@@ -380,8 +380,8 @@ int main (int argc, char **argv)
             xfce_posix_signal_handler_set_handler(SIGTERM,
                                                   parole_sig_handler,
                                                   player, NULL);
-        } 
-        else 
+        }
+        else
         {
             g_warning ("Unable to set up POSIX signal handlers: %s", error->message);
             g_error_free (error);
@@ -391,11 +391,11 @@ int main (int argc, char **argv)
         plugins = parole_plugins_manager_new (!no_plugins);
         parole_plugins_manager_load (plugins);
         g_object_unref (builder);
-        
+
         /* Start main process */
         gdk_notify_startup_complete ();
         gtk_main ();
-        
+
         parole_dbus_release_name (PAROLE_DBUS_NAME);
         g_object_unref (plugins);
     }

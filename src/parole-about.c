@@ -45,7 +45,7 @@
 void parole_about (GtkWindow *parent)
 {
     /* List of authors */
-    static const gchar *authors[] = 
+    static const gchar *authors[] =
     {
         "Ali Abdallah <aliov@xfce.org>",
         "Sean Davis <bluesabre@xfce.org>",
@@ -59,12 +59,12 @@ void parole_about (GtkWindow *parent)
         "Ali Abdallah <aliov@xfce.org>",
         NULL,
     };
-    
+
     /* Copyright information */
-    static const gchar *copyrights = 
+    static const gchar *copyrights =
     "Copyright \302\251 2009-2011 Ali Abdallah\n"
     "Copyright \302\251 2012-2014 Sean Davis, Simon Steinbeiss";
-    
+
     gtk_show_about_dialog  (parent,
         "authors", authors,
         "comments", _("Parole Media Player"),
