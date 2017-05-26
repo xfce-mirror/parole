@@ -2800,6 +2800,16 @@ parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
                 parole_player_hide_menubar_cb(NULL, player);
             ret_val = TRUE;
             break;
+        case GDK_KEY_n:
+        case GDK_KEY_N:
+            parole_player_play_next(player, TRUE);
+            ret_val = TRUE;
+            break;
+        case GDK_KEY_b:
+        case GDK_KEY_B:
+            parole_player_play_prev(player);
+            ret_val = TRUE;
+            break;
 #ifdef HAVE_XF86_KEYSYM
         case XF86XK_OpenURL:
             parole_player_full_screen (player, FALSE);
