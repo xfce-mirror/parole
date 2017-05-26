@@ -64,6 +64,8 @@ parole_SOURCES =				\
 	parole-module.h				\
 	parole-about.c				\
 	parole-about.h				\
+	parole-shortcuts.c				\
+	parole-shortcuts.h				\
 	parole-builder.c			\
 	parole-builder.h			\
 	parole-subtitle-encoding.c		\

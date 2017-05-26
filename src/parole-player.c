@@ -50,6 +50,7 @@
 
 #include "parole-builder.h"
 #include "parole-about.h"
+#include "parole-shortcuts.h"
 
 #include "parole-player.h"
 #include "parole-gst.h"
@@ -263,6 +264,9 @@ parole_player_gst_widget_motion_notify_event        (GtkWidget *widget,
 void        parole_show_about                       (GtkWidget *widget,
                                                      ParolePlayer *player);
 
+void        parole_show_shortcuts                   (GtkWidget *widget,
+                                                     ParolePlayer *player);
+
 void        parole_player_set_audiotrack_radio_menu_item_selected(
                                                      ParolePlayer *player,
                                                      gint audio_index);
@@ -471,6 +475,11 @@ G_DEFINE_TYPE (ParolePlayer, parole_player, G_TYPE_OBJECT)
 void parole_show_about  (GtkWidget *widget, ParolePlayer *player)
 {
     parole_about (GTK_WINDOW (player->priv->window));
+}
+
+void parole_show_shortcuts  (GtkWidget *widget, ParolePlayer *player)
+{
+    parole_shortcuts (GTK_WIDGET (player->priv->window));
 }
 
 void ratio_none_toggled_cb (GtkWidget *widget, ParolePlayer *player)

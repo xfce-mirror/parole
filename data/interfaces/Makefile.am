@@ -5,7 +5,8 @@ interfaces =					\
 	mediachooser.ui				\
 	save-playlist.ui			\
 	plugins.ui				\
-	open-location.ui
+	open-location.ui			\
+	shortcuts.ui
 
 interfaces_h = 					\
 	$(interfaces:.ui=_ui.h)
@@ -33,6 +34,9 @@ open-location_ui.h: open-location.ui
 
 plugins_ui.h: plugins.ui
 	xdt-csource --static --strip-comments --strip-content --name=plugins_ui $< > $@
+
+shortcuts_ui.h: shortcuts.ui
+	xdt-csource --static --strip-comments --strip-content --name=shortcuts_ui $< > $@
 
 endif
 

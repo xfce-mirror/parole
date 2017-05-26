@@ -328,8 +328,8 @@
                         <property name="label" translatable="yes">Volume _Up</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="parole_player_volume_up" swapped="no"/>
-                        <accelerator key="equal" signal="activate"/>
                         <accelerator key="plus" signal="activate"/>
+                        <accelerator key="equal" signal="activate"/>
                       </object>
                     </child>
                     <child>
@@ -561,6 +561,15 @@
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">_Report a Bug…</property>
                         <property name="use_underline">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuItem" id="shortcuts">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">_Keyboard Shortcuts</property>
+                        <property name="use_underline">True</property>
+                        <signal name="activate" handler="parole_show_shortcuts" swapped="no"/>
                       </object>
                     </child>
                     <child>
