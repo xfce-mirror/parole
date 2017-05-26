@@ -2904,11 +2904,9 @@ gst_get_lang_list_for_type (ParoleGst * gst, const gchar * type_name)
             }
         }
 
-        ret = g_list_reverse (ret);
-
         if ( gst->priv->use_custom_subtitles == TRUE )
         {
-            ret = g_list_prepend (ret, g_strdup_printf("%s",gst->priv->custom_subtitles));
+            ret = g_list_append (ret, g_strdup_printf("%s",gst->priv->custom_subtitles));
         }
     }
     else
@@ -2917,7 +2915,7 @@ gst_get_lang_list_for_type (ParoleGst * gst, const gchar * type_name)
         return NULL;
     }
 
-    return ret;
+    return g_list_reverse (ret);
 }
 
 gboolean
