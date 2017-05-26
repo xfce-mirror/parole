@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-26 18:31+0100\n"
-"PO-Revision-Date: 2017-05-03 02:49+0000\n"
+"POT-Creation-Date: 2017-05-25 12:30+0200\n"
+"PO-Revision-Date: 2017-05-26 02:19+0000\n"
 "Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/xfce/xfce-apps/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -26,8 +26,8 @@ msgstr ""
 
 #: ../data/interfaces/parole.ui.h:1
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:1
-#: ../src/parole-player.c:606 ../src/parole-player.c:1521
-#: ../src/parole-player.c:1920 ../src/parole-about.c:70
+#: ../src/parole-player.c:606 ../src/parole-player.c:1533
+#: ../src/parole-player.c:1932 ../src/parole-about.c:70
 #: ../src/plugins/mpris2/mpris2-provider.c:199
 msgid "Parole Media Player"
 msgstr "Parole 媒体播放器"
@@ -75,7 +75,7 @@ msgid "_Shuffle"
 msgstr "随机(_S)"
 
 #. Create dialog
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2976
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2992
 msgid "Go to position"
 msgstr "转至位置"
 
@@ -135,8 +135,8 @@ msgstr "静音(_M)"
 msgid "_Video"
 msgstr "视频(_V)"
 
-#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2106
-#: ../src/parole-player.c:2270
+#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2118
+#: ../src/parole-player.c:2282
 msgid "_Fullscreen"
 msgstr "全屏(_F)"
 
@@ -243,7 +243,7 @@ msgstr "打开媒体文件"
 
 #: ../data/interfaces/playlist.ui.h:1
 #: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:806
-#: ../src/parole-medialist.c:849 ../src/parole-player.c:3398
+#: ../src/parole-medialist.c:849 ../src/parole-player.c:3414
 msgid "Playlist"
 msgstr "播放列表"
 
@@ -489,12 +489,12 @@ msgid "Play/Pause"
 msgstr "播放/暂停"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:4
-#: ../src/parole-player.c:3553 ../src/plugins/notify/notify-provider.c:204
+#: ../src/parole-player.c:3569 ../src/plugins/notify/notify-provider.c:204
 msgid "Previous Track"
 msgstr "上一音轨"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:5
-#: ../src/parole-player.c:3571 ../src/plugins/notify/notify-provider.c:217
+#: ../src/parole-player.c:3587 ../src/plugins/notify/notify-provider.c:217
 msgid "Next Track"
 msgstr "下一音轨"
 
@@ -672,7 +672,7 @@ msgid ""
 "\n"
 "Please report bugs to <https://bugzilla.xfce.org/>.\n"
 "\n"
-msgstr "\nParole 媒体播放器 %s\n\nXfce 珍品项目的一部分\nhttps://goodies.xfce.org\n\n以 GNU GPL 发布。\n\n请报告 bug 至 <https://bugzilla.xfce.org/>.\n\n"
+msgstr "\nParole 媒体播放器 %s\n\nXfce 珍品项目的一部分\nhttps://goodies.xfce.org\n\n以 GNU GPL 发布。\n\n请报告 bug 至 <https://bugzilla.xfce.org/>。\n\n"
 
 #: ../src/main.c:241
 msgid "Open a new instance"
@@ -752,13 +752,13 @@ msgstr "Parole 已经在运行，使用 -i 打开新实例\n"
 msgid "All files"
 msgstr "所有文件"
 
-#: ../src/parole-medialist.c:218 ../src/parole-medialist.c:1599
+#: ../src/parole-medialist.c:218 ../src/parole-medialist.c:1603
 #, c-format
 msgid "Playlist (%i item)"
 msgid_plural "Playlist (%i items)"
 msgstr[0] "Playlist (%i 项)"
 
-#: ../src/parole-medialist.c:223 ../src/parole-medialist.c:1601
+#: ../src/parole-medialist.c:223 ../src/parole-medialist.c:1605
 #, c-format
 msgid "Playlist (%i chapter)"
 msgid_plural "Playlist (%i chapters)"
@@ -806,7 +806,7 @@ msgid "Shareable Playlist"
 msgstr "可共享的播放列表"
 
 #. Clear
-#: ../src/parole-medialist.c:1219
+#: ../src/parole-medialist.c:1223
 msgid "Open Containing Folder"
 msgstr "打开包含的文件夹"
 
@@ -814,7 +814,7 @@ msgstr "打开包含的文件夹"
 msgid "Hide Playlist"
 msgstr "隐藏播放列表"
 
-#: ../src/parole-player.c:536 ../src/parole-player.c:3613
+#: ../src/parole-player.c:536 ../src/parole-player.c:3629
 msgid "Show Playlist"
 msgstr "显示播放列表"
 
@@ -824,7 +824,7 @@ msgid "Select Subtitle File"
 msgstr "选择字幕文件"
 
 #: ../src/parole-player.c:1023 ../src/parole-player.c:1227
-#: ../src/parole-player.c:2979 ../src/plugins/tray/tray-provider.c:340
+#: ../src/parole-player.c:2995 ../src/plugins/tray/tray-provider.c:340
 msgid "Cancel"
 msgstr "取消"
 
@@ -846,132 +846,133 @@ msgid ""
 "undone."
 msgstr "您确定要清除最近打开的历史项？执行后不可撤销。"
 
-#: ../src/parole-player.c:1324 ../src/parole-player.c:1466
+#: ../src/parole-player.c:1336 ../src/parole-player.c:1478
 msgid "Media stream is not seekable"
 msgstr "媒体流媒体不可查找"
 
-#: ../src/parole-player.c:1335
+#: ../src/parole-player.c:1347
 msgid "Play"
 msgstr "播放"
 
-#: ../src/parole-player.c:1338
+#: ../src/parole-player.c:1350
 msgid "Pause"
 msgstr "暂停"
 
-#: ../src/parole-player.c:1842
+#: ../src/parole-player.c:1854
 msgid "GStreamer backend error"
 msgstr "GStreamer 的后端错误"
 
-#: ../src/parole-player.c:1921
+#: ../src/parole-player.c:1933
 msgid "Unknown Song"
 msgstr "未知歌曲"
 
-#: ../src/parole-player.c:1929 ../src/parole-player.c:1931
-#: ../src/parole-player.c:1937
+#: ../src/parole-player.c:1941 ../src/parole-player.c:1943
+#: ../src/parole-player.c:1949
 msgid "on"
 msgstr "来自"
 
-#: ../src/parole-player.c:1937 ../src/plugins/notify/notify-provider.c:145
+#: ../src/parole-player.c:1949 ../src/plugins/notify/notify-provider.c:145
 msgid "Unknown Album"
 msgstr "未知专辑"
 
-#: ../src/parole-player.c:1944 ../src/parole-player.c:1948
+#: ../src/parole-player.c:1956 ../src/parole-player.c:1960
 msgid "by"
 msgstr "出自"
 
-#: ../src/parole-player.c:1948 ../src/plugins/notify/notify-provider.c:147
+#: ../src/parole-player.c:1960 ../src/plugins/notify/notify-provider.c:147
 msgid "Unknown Artist"
 msgstr "未知艺术家"
 
-#: ../src/parole-player.c:1985
+#: ../src/parole-player.c:1997
 msgid "Buffering"
 msgstr "正在缓冲"
 
-#: ../src/parole-player.c:2107 ../src/parole-player.c:3588
+#: ../src/parole-player.c:2119 ../src/parole-player.c:3604
 msgid "Fullscreen"
 msgstr "全屏"
 
-#: ../src/parole-player.c:2120
+#: ../src/parole-player.c:2132
 msgid "Leave _Fullscreen"
 msgstr "退出全屏(_F)"
 
-#: ../src/parole-player.c:2121
+#: ../src/parole-player.c:2133
 msgid "Leave Fullscreen"
 msgstr "退出全屏"
 
 #. Play menu item
 #. * Play pause
-#: ../src/parole-player.c:2238 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2250 ../src/plugins/tray/tray-provider.c:130
 msgid "_Pause"
 msgstr "暂停(_P)"
 
-#: ../src/parole-player.c:2238 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2250 ../src/plugins/tray/tray-provider.c:130
 msgid "_Play"
 msgstr "播放(_P)"
 
 #. * Previous item in playlist.
-#: ../src/parole-player.c:2252
+#: ../src/parole-player.c:2264
 msgid "_Previous"
 msgstr "上一个(_P)"
 
 #. * Next item in playlist.
-#: ../src/parole-player.c:2261
+#: ../src/parole-player.c:2273
 msgid "_Next"
 msgstr "下一个(_N)"
 
 #. * Un/Full screen
-#: ../src/parole-player.c:2270
+#: ../src/parole-player.c:2282
 msgid "_Leave Fullscreen"
 msgstr "退出全屏(_L)"
 
 #. * Un/Hide menubar
-#: ../src/parole-player.c:2284
+#: ../src/parole-player.c:2296
 msgid "Show menubar"
 msgstr "显示菜单栏"
 
-#: ../src/parole-player.c:2301
+#: ../src/parole-player.c:2313
 msgid "Mini Mode"
 msgstr "迷你模式"
 
-#: ../src/parole-player.c:2555
+#: ../src/parole-player.c:2567
 msgid "Mute"
 msgstr "静音"
 
-#: ../src/parole-player.c:2560
+#: ../src/parole-player.c:2572
 msgid "Unmute"
 msgstr "取消静音"
 
-#: ../src/parole-player.c:2948
+#: ../src/parole-player.c:2964
 msgid "Unable to open default web browser"
 msgstr "无法打开默认的 Web 浏览器"
 
-#: ../src/parole-player.c:2950
-msgid "Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
+#: ../src/parole-player.c:2966
+msgid ""
+"Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr "请移步至 https://docs.xfce.org/apps/parole/bugs 报告您遇到的 bug。"
 
-#: ../src/parole-player.c:2980
+#: ../src/parole-player.c:2996
 msgid "Go"
 msgstr "转至"
 
-#: ../src/parole-player.c:2993
+#: ../src/parole-player.c:3009
 msgid "Position:"
 msgstr "位置:"
 
 #. Clear Recent Menu Item
-#: ../src/parole-player.c:3439
+#: ../src/parole-player.c:3455
 msgid "_Clear recent items…"
 msgstr "清除最近的项目..."
 
-#: ../src/parole-player.c:3760
+#: ../src/parole-player.c:3776
 msgid "Audio Track:"
 msgstr "音轨:"
 
-#: ../src/parole-player.c:3779
+#: ../src/parole-player.c:3795
 msgid "Subtitles:"
 msgstr "字幕:"
 
 #. Add a close button to the Infobar
-#: ../src/parole-player.c:3785 ../src/plugins/tray/tray-provider.c:275
+#: ../src/parole-player.c:3801 ../src/plugins/tray/tray-provider.c:275
 msgid "Close"
 msgstr "关闭"
 
