@@ -2219,7 +2219,7 @@ void parole_media_list_grab_focus (ParoleMediaList *list)
         gtk_widget_grab_focus (list->priv->view);
 }
 
-void
+static void
 update_media_list_n_shuffled_items(void)
 {
     gboolean repeat = gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(media_list->priv->repeat_button));
