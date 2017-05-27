@@ -108,8 +108,8 @@ struct _ParoleProviderPlayerIface
 
 GType        parole_provider_player_get_type    (void) G_GNUC_CONST;
 
-GtkWidget
-*parole_provider_player_get_main_window         (ParoleProviderPlayer *player);
+GtkWidget   *parole_provider_player_get_main_window
+                                                (ParoleProviderPlayer *player);
 
 void         parole_provider_player_pack        (ParoleProviderPlayer *player,
                                                  GtkWidget *widget,
@@ -118,8 +118,8 @@ void         parole_provider_player_pack        (ParoleProviderPlayer *player,
 
 ParoleState parole_provider_player_get_state    (ParoleProviderPlayer *player);
 
-const ParoleStream
-*parole_provider_player_get_stream              (ParoleProviderPlayer *player);
+const ParoleStream *parole_provider_player_get_stream
+                                                (ParoleProviderPlayer *player);
 
 gboolean    parole_provider_player_play_uri     (ParoleProviderPlayer *player,
                                                  const gchar *uri);
