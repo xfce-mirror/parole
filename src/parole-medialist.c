@@ -73,11 +73,11 @@ static struct
     ParolePlFormat format;
     gchar * ext;
 } playlist_format_map [] = {
-  { PAROLE_PL_FORMAT_UNKNOWN, ""      },
-  { PAROLE_PL_FORMAT_M3U,     ".m3u"  },
-  { PAROLE_PL_FORMAT_PLS,     ".pls"  },
-  { PAROLE_PL_FORMAT_ASX,     ".asx"  },
-  { PAROLE_PL_FORMAT_XSPF,    ".xspf" }
+    { PAROLE_PL_FORMAT_UNKNOWN, ""      },
+    { PAROLE_PL_FORMAT_M3U,     ".m3u"  },
+    { PAROLE_PL_FORMAT_PLS,     ".pls"  },
+    { PAROLE_PL_FORMAT_ASX,     ".asx"  },
+    { PAROLE_PL_FORMAT_XSPF,    ".xspf" }
 };
 
 static GtkTargetEntry target_entry[] =
@@ -1482,32 +1482,32 @@ parole_media_list_class_init (ParoleMediaListClass *klass)
 
 static void
 parole_media_list_playing_cell_data_func (GtkTreeViewColumn *column,
-				                          GtkCellRenderer *renderer,
-				                          GtkTreeModel *tree_model,
-				                          GtkTreeIter *iter,
-				                          GtkWidget *view)
+                                          GtkCellRenderer *renderer,
+                                          GtkTreeModel *tree_model,
+                                          GtkTreeIter *iter,
+                                          GtkWidget *view)
 {
-	const char *name = NULL;
+    const char *name = NULL;
 
     gint state = 0;
     gtk_tree_model_get (tree_model, iter, STATE_COL, &state, -1);
 
-	switch (state) {
-	case PAROLE_MEDIA_STATE_NONE:
-		name = NULL;
-		break;
-	case PAROLE_MEDIA_STATE_PAUSED:
-		name = "media-playback-pause-symbolic";
-		break;
-	case PAROLE_MEDIA_STATE_PLAYING:
-		name = "media-playback-start-symbolic";
-		break;
-	default:
-		name = NULL;
-		break;
-	}
+    switch (state) {
+    case PAROLE_MEDIA_STATE_NONE:
+        name = NULL;
+        break;
+    case PAROLE_MEDIA_STATE_PAUSED:
+        name = "media-playback-pause-symbolic";
+        break;
+    case PAROLE_MEDIA_STATE_PLAYING:
+        name = "media-playback-start-symbolic";
+        break;
+    default:
+        name = NULL;
+        break;
+    }
 
-	g_object_set (renderer, "icon-name", name, NULL);
+    g_object_set (renderer, "icon-name", name, NULL);
 }
 
 static void
@@ -1540,15 +1540,15 @@ parole_media_list_setup_view (ParoleMediaList *list)
     gtk_tree_view_column_pack_start(list->priv->col, renderer, FALSE);
     gtk_tree_view_column_pack_start(list->priv->disc_col, disc_renderer, FALSE);
     gtk_tree_view_column_set_cell_data_func (list->priv->col, renderer,
-							 (GtkTreeCellDataFunc)
-							 parole_media_list_playing_cell_data_func,
-							 list->priv->view,
-							 NULL);
+                             (GtkTreeCellDataFunc)
+                             parole_media_list_playing_cell_data_func,
+                             list->priv->view,
+                             NULL);
     gtk_tree_view_column_set_cell_data_func (list->priv->disc_col, disc_renderer,
-							 (GtkTreeCellDataFunc)
-							 parole_media_list_playing_cell_data_func,
-							 list->priv->disc_view,
-							 NULL);
+                             (GtkTreeCellDataFunc)
+                             parole_media_list_playing_cell_data_func,
+                             list->priv->disc_view,
+                             NULL);
 
     /**
      * Name col

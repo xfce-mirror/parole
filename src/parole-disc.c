@@ -58,7 +58,7 @@ struct ParoleDiscPrivate
 
     GtkWidget      *disc_menu_item;
 
-    gboolean	    needs_update;
+    gboolean        needs_update;
 };
 
 enum
@@ -94,10 +94,10 @@ free_mount_data (gpointer data)
     mount = (MountData *) data;
 
     if ( mount->uri )
-	    g_free (mount->uri);
+        g_free (mount->uri);
 
     if ( mount->device )
-	    g_free (mount->device);
+        g_free (mount->device);
 
     g_free (mount);
 }
@@ -139,19 +139,19 @@ parole_disc_set_kind(ParoleDisc *disc, ParoleDiscKind kind)
     gboolean enabled = TRUE;
 
     switch (kind) {
-		case PAROLE_DISC_CDDA:
-			break;
-		case PAROLE_DISC_SVCD:
-		case PAROLE_DISC_VCD:
-		case PAROLE_DISC_DVD:
-			break;
-		default:
-		    parole_disc_set_label(disc, _("Insert Disc") );
-		    enabled = FALSE;
-		    break;
-	}
+        case PAROLE_DISC_CDDA:
+            break;
+        case PAROLE_DISC_SVCD:
+        case PAROLE_DISC_VCD:
+        case PAROLE_DISC_DVD:
+            break;
+        default:
+            parole_disc_set_label(disc, _("Insert Disc") );
+            enabled = FALSE;
+            break;
+    }
 
-	parole_disc_set_enabled(disc, enabled);
+    parole_disc_set_enabled(disc, enabled);
 }
 
 
@@ -184,17 +184,17 @@ parole_disc_media_activate_cb (GtkWidget *widget, ParoleDisc *disc)
 static void
 parole_disc_show_menu_item (ParoleDisc *disc, MountData *data, const gchar *label)
 {
-	parole_disc_set_kind (disc, data->kind);
-	parole_disc_set_label(disc, label);
+    parole_disc_set_kind (disc, data->kind);
+    parole_disc_set_label(disc, label);
 
-	if (parole_disc_get_enabled(disc)) {
-	    data->mi = disc->priv->disc_menu_item;
+    if (parole_disc_get_enabled(disc)) {
+        data->mi = disc->priv->disc_menu_item;
 
         g_object_set_data  (G_OBJECT (data->mi),
-		                    "mount-data", data);
+                            "mount-data", data);
 
-	    g_signal_connect (data->mi, "activate",
-		          G_CALLBACK (parole_disc_media_activate_cb), disc);
+        g_signal_connect (data->mi, "activate",
+                  G_CALLBACK (parole_disc_media_activate_cb), disc);
     }
 }
 
@@ -209,9 +209,9 @@ parole_disc_show_menu_item (ParoleDisc *disc, MountData *data, const gchar *labe
  **/
 static MountData *
 parole_disc_get_mount_data (ParoleDisc *disc,
-			    const gchar *uri,
-			    const gchar *device,
-			    ParoleDiscKind kind)
+                            const gchar *uri,
+                            const gchar *device,
+                            ParoleDiscKind kind)
 {
     MountData *data;
 
@@ -246,16 +246,16 @@ parole_disc_add_mount_to_menu (ParoleDisc *disc, GMount *mount, const gchar *dev
 
     if ( g_file_has_uri_scheme (file, "cdda") )
     {
-	    kind = PAROLE_DISC_CDDA;
-	    uri = g_strdup ("cdda://");
-	    goto got_cdda;
+        kind = PAROLE_DISC_CDDA;
+        uri = g_strdup ("cdda://");
+        goto got_cdda;
     }
 
     if ( g_file_has_uri_scheme (file, "dvd") )
     {
-	    kind = PAROLE_DISC_DVD;
-	    uri = g_strdup ("dvd:/");
-	    goto got_cdda;
+        kind = PAROLE_DISC_DVD;
+        uri = g_strdup ("dvd:/");
+        goto got_cdda;
     }
 
     content_type = g_content_type_guess_for_tree (file);
@@ -263,46 +263,46 @@ parole_disc_add_mount_to_menu (ParoleDisc *disc, GMount *mount, const gchar *dev
     /* Determine the type of disc */
     for ( i = 0; content_type && content_type[i]; i++)
     {
-	    TRACE ("Checking disc content type : %s", content_type[i]);
+        TRACE ("Checking disc content type : %s", content_type[i]);
 
-	    if ( !g_strcmp0 (content_type[i], "x-content/video-dvd") ) {
-	        kind = PAROLE_DISC_DVD;
-	        uri = g_strdup ("dvd:/");
-	        break;
-	    } else if ( !g_strcmp0 (content_type[i], "x-content/video-vcd") ) {
-	        kind = PAROLE_DISC_VCD;
-	        uri = g_strdup ("vcd:/");
-	        break;
-	    } else if ( !g_strcmp0 (content_type[i], "x-content/video-svcd") ) {
-	        kind = PAROLE_DISC_SVCD;
-	        uri = g_strdup ("svcd:/");
-	        break;
-	    } else if ( !g_strcmp0 (content_type[i], "x-content/audio-cdda") ) {
-	        kind = PAROLE_DISC_CDDA;
-	        uri = g_strdup ("cdda://");
-	        break;
-	    }
+        if ( !g_strcmp0 (content_type[i], "x-content/video-dvd") ) {
+            kind = PAROLE_DISC_DVD;
+            uri = g_strdup ("dvd:/");
+            break;
+        } else if ( !g_strcmp0 (content_type[i], "x-content/video-vcd") ) {
+            kind = PAROLE_DISC_VCD;
+            uri = g_strdup ("vcd:/");
+            break;
+        } else if ( !g_strcmp0 (content_type[i], "x-content/video-svcd") ) {
+            kind = PAROLE_DISC_SVCD;
+            uri = g_strdup ("svcd:/");
+            break;
+        } else if ( !g_strcmp0 (content_type[i], "x-content/audio-cdda") ) {
+            kind = PAROLE_DISC_CDDA;
+            uri = g_strdup ("cdda://");
+            break;
+        }
     }
 
     if ( content_type )
-	    g_strfreev (content_type);
+        g_strfreev (content_type);
 
 got_cdda:
     if ( kind != PAROLE_DISC_UNKNOWN )
     {
-	    MountData *data;
-	    gchar *name;
+        MountData *data;
+        gchar *name;
 
-	    name = g_mount_get_name (mount);
+        name = g_mount_get_name (mount);
 
-	    data = parole_disc_get_mount_data (disc, uri, device, kind);
-	    parole_disc_show_menu_item (disc, data, name);
+        data = parole_disc_get_mount_data (disc, uri, device, kind);
+        parole_disc_show_menu_item (disc, data, name);
 
-	    if ( uri )
-	        g_free (uri);
+        if ( uri )
+            g_free (uri);
 
-	    g_ptr_array_add (disc->priv->array, data);
-	    g_free (name);
+        g_ptr_array_add (disc->priv->array, data);
+        g_free (name);
     }
 
     g_object_unref (file);
@@ -325,33 +325,33 @@ parole_disc_check_cdrom (ParoleDisc *disc, GVolume *volume, const gchar *device)
 
     MountData *data;
 
-	gchar *name;
+    gchar *name;
 
     TRACE ("device : %s", device);
 
     if ( (fd = open (device, O_RDONLY)) < 0 )
     {
-	    g_debug ("Failed to open device : %s", device);
-	    disc->priv->needs_update = TRUE;
-	    goto out;
+        g_debug ("Failed to open device : %s", device);
+        disc->priv->needs_update = TRUE;
+        goto out;
     }
 
     if ( (drive = ioctl (fd, CDROM_DRIVE_STATUS, NULL)) ) {
-	    if ( drive == CDS_DRIVE_NOT_READY ) {
-	        g_print ("Drive :%s is not yet ready\n", device);
-	        disc->priv->needs_update = TRUE;
-	    } else if ( drive == CDS_DISC_OK ) {
-	        if ( (drive = ioctl (fd, CDROM_DISC_STATUS, NULL)) > 0 ) {
-		        if ( drive == CDS_AUDIO || drive == CDS_MIXED ) {
-		            data = parole_disc_get_mount_data (disc, "cdda://", device, PAROLE_DISC_CDDA);
+        if ( drive == CDS_DRIVE_NOT_READY ) {
+            g_print ("Drive :%s is not yet ready\n", device);
+            disc->priv->needs_update = TRUE;
+        } else if ( drive == CDS_DISC_OK ) {
+            if ( (drive = ioctl (fd, CDROM_DISC_STATUS, NULL)) > 0 ) {
+                if ( drive == CDS_AUDIO || drive == CDS_MIXED ) {
+                    data = parole_disc_get_mount_data (disc, "cdda://", device, PAROLE_DISC_CDDA);
 
-			        name = g_volume_get_name (volume);
+                    name = g_volume_get_name (volume);
 
-		            parole_disc_show_menu_item (disc, data, name);
-		            g_ptr_array_add (disc->priv->array, data);
-		        }
-	        }
-	    }
+                    parole_disc_show_menu_item (disc, data, name);
+                    g_ptr_array_add (disc->priv->array, data);
+                }
+            }
+        }
     }
 
     close (fd);
@@ -380,21 +380,21 @@ parole_disc_add_drive (ParoleDisc *disc, GDrive *drive, const gchar *device)
 
     for ( i = 0; i < len; i++)
     {
-	    GVolume *volume;
-	    GMount *mount;
+        GVolume *volume;
+        GMount *mount;
 
-	    volume = g_list_nth_data (list, i);
-	    TRACE ("Volume name %s", g_volume_get_name (volume));
+        volume = g_list_nth_data (list, i);
+        TRACE ("Volume name %s", g_volume_get_name (volume));
 
-	    mount = g_volume_get_mount (volume);
-	    if ( mount ) {
-	        TRACE ("Mount name : %s", g_mount_get_name (mount));
-	        parole_disc_add_mount_to_menu (disc, mount, device);
-	        g_object_unref (mount);
-	    } else {
-	        /* Could be a cdda?*/
-	        parole_disc_check_cdrom (disc, volume, device);
-	    }
+        mount = g_volume_get_mount (volume);
+        if ( mount ) {
+            TRACE ("Mount name : %s", g_mount_get_name (mount));
+            parole_disc_add_mount_to_menu (disc, mount, device);
+            g_object_unref (mount);
+        } else {
+            /* Could be a cdda?*/
+            parole_disc_check_cdrom (disc, volume, device);
+        }
     }
 
     g_list_foreach (list, (GFunc) g_object_unref, NULL);
@@ -426,19 +426,19 @@ parole_disc_get_drives (ParoleDisc *disc)
 
     for ( i = 0; i < len; i++)
     {
-	    GDrive *drive;
-	    gchar *device = NULL;
+        GDrive *drive;
+        gchar *device = NULL;
 
-	    drive = g_list_nth_data (list, i);
+        drive = g_list_nth_data (list, i);
 
-	    /* FIXME what happens if there is more than one disc drive? */
-	    if ( g_drive_can_eject (drive) && g_drive_has_media (drive) )
-	    {
-	        device = g_drive_get_identifier (drive, G_VOLUME_IDENTIFIER_KIND_UNIX_DEVICE);
-	        parole_disc_add_drive (disc, drive, device);
-	        if ( device )
-		        g_free (device);
-	    }
+        /* FIXME what happens if there is more than one disc drive? */
+        if ( g_drive_can_eject (drive) && g_drive_has_media (drive) )
+        {
+            device = g_drive_get_identifier (drive, G_VOLUME_IDENTIFIER_KIND_UNIX_DEVICE);
+            parole_disc_add_drive (disc, drive, device);
+            if ( device )
+                g_free (device);
+        }
     }
 
     g_list_foreach (list, (GFunc) g_object_unref, NULL);
@@ -457,7 +457,7 @@ static void
 parole_disc_select_cb (GtkMenuItem *item, ParoleDisc *disc)
 {
     if ( disc->priv->needs_update )
-	    parole_disc_get_drives (disc);
+        parole_disc_get_drives (disc);
 }
 
 /**
@@ -534,22 +534,22 @@ parole_disc_init (ParoleDisc *disc)
 
     /* Connect the various disc signals */
     g_signal_connect (G_OBJECT (disc->priv->monitor), "volume-added",
-		      G_CALLBACK (parole_disc_monitor_changed_cb), disc);
+              G_CALLBACK (parole_disc_monitor_changed_cb), disc);
 
     g_signal_connect (G_OBJECT (disc->priv->monitor), "volume-removed",
-		      G_CALLBACK (parole_disc_monitor_changed_cb), disc);
+              G_CALLBACK (parole_disc_monitor_changed_cb), disc);
 
     g_signal_connect (G_OBJECT (disc->priv->monitor), "mount-added",
-		      G_CALLBACK (parole_disc_monitor_changed_cb), disc);
+              G_CALLBACK (parole_disc_monitor_changed_cb), disc);
 
     g_signal_connect (G_OBJECT (disc->priv->monitor), "mount-removed",
-		      G_CALLBACK (parole_disc_monitor_changed_cb), disc);
+              G_CALLBACK (parole_disc_monitor_changed_cb), disc);
 
     g_signal_connect (G_OBJECT (disc->priv->monitor), "drive-disconnected",
-		      G_CALLBACK (parole_disc_monitor_changed_cb), disc);
+              G_CALLBACK (parole_disc_monitor_changed_cb), disc);
 
     g_signal_connect (G_OBJECT (disc->priv->monitor), "drive-eject-button",
-		      G_CALLBACK (parole_disc_monitor_changed_cb), disc);
+              G_CALLBACK (parole_disc_monitor_changed_cb), disc);
 
     disc->priv->disc_menu_item = GTK_WIDGET (gtk_builder_get_object (builder, "menu-open-disc"));
 
