@@ -139,8 +139,7 @@ parole_disc_set_kind(ParoleDisc *disc, ParoleDiscKind kind)
 {
     gboolean enabled = TRUE;
 
-    switch (kind)
-	{
+    switch (kind) {
 		case PAROLE_DISC_CDDA:
 			break;
 		case PAROLE_DISC_SVCD:
@@ -189,8 +188,7 @@ parole_disc_show_menu_item (ParoleDisc *disc, MountData *data, const gchar *labe
 	parole_disc_set_kind (disc, data->kind);
 	parole_disc_set_label(disc, label);
 
-	if (parole_disc_get_enabled(disc))
-	{
+	if (parole_disc_get_enabled(disc)) {
 	    data->mi = disc->priv->disc_menu_item;
 
         g_object_set_data  (G_OBJECT (data->mi),
@@ -359,7 +357,7 @@ parole_disc_check_cdrom (ParoleDisc *disc, GVolume *volume, const gchar *device)
 
     close (fd);
 out:
-    ;
+    {}
 #endif /* if defined(__linux__) */
 }
 

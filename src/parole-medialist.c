@@ -1065,7 +1065,7 @@ parole_media_list_move_up_clicked_cb (GtkButton *button, ParoleMediaList *list)
                 if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, prev))
                 {
                     /* Move each item about the previous path */
-                    for (i=0; i<g_list_length(path_list); i++)
+                    for (i=0; i < g_list_length(path_list); i++)
                     {
                         path = g_list_nth_data (path_list, i);
                         if (gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &current, path))
@@ -1114,7 +1114,7 @@ parole_media_list_move_down_clicked_cb (GtkButton *button, ParoleMediaList *list
             if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, next))
             {
                 /* Move each item about the previous path */
-                for (i=0; i<g_list_length(path_list); i++)
+                for (i=0; i < g_list_length(path_list); i++)
                 {
                     path = g_list_nth_data (path_list, i);
                     if (gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &current, path))
@@ -1168,7 +1168,7 @@ parole_media_list_open_folder (GtkWidget *menu)
         gchar *uri;
         uri = g_filename_to_uri (dirname, NULL, NULL);
         TRACE ("Opening %s", dirname);
-#if GTK_CHECK_VERSION(3,22,0)
+#if GTK_CHECK_VERSION(3, 22, 0)
         gtk_show_uri_on_window (GTK_WINDOW (gtk_menu_get_attach_widget (GTK_MENU (menu))), uri, GDK_CURRENT_TIME, NULL);
 #else
         gtk_show_uri (gtk_widget_get_screen (menu),  uri, GDK_CURRENT_TIME, NULL);
@@ -1314,7 +1314,7 @@ static void
 parole_media_list_show_menu (ParoleMediaList *list, GdkEventButton *ev)
 {
     gboolean val;
-#if GTK_CHECK_VERSION(3,22,0)
+#if GTK_CHECK_VERSION(3, 22, 0)
 #else
     guint button = ev->button;
     guint activate_time = ev->time;
@@ -1365,7 +1365,7 @@ parole_media_list_show_menu (ParoleMediaList *list, GdkEventButton *ev)
     g_signal_connect_swapped (menu, "selection-done",
                               G_CALLBACK (parole_media_list_destroy_menu), menu);
 
-#if GTK_CHECK_VERSION(3,22,0)
+#if GTK_CHECK_VERSION(3, 22, 0)
     gtk_menu_popup_at_pointer (GTK_MENU (menu), NULL);
 #else
     gtk_menu_popup (GTK_MENU (menu),
@@ -1528,7 +1528,7 @@ parole_media_list_setup_view (ParoleMediaList *list)
     gtk_tree_view_set_model (GTK_TREE_VIEW (list->priv->view), GTK_TREE_MODEL(list_store));
     gtk_tree_view_set_model (GTK_TREE_VIEW (list->priv->disc_view), GTK_TREE_MODEL(disc_list_store));
 
-#if GTK_CHECK_VERSION(3,14,0)
+#if GTK_CHECK_VERSION(3, 14, 0)
 #else
     gtk_tree_view_set_rules_hint (GTK_TREE_VIEW (list->priv->view), TRUE);
     gtk_tree_view_set_rules_hint (GTK_TREE_VIEW (list->priv->disc_view), TRUE);
@@ -1754,11 +1754,11 @@ GtkTreeRowReference *parole_media_list_get_next_row (ParoleMediaList *list,
 
     gtk_tree_path_next (path);
 
-    if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path)) {
+    if (gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path)) {
         next = gtk_tree_row_reference_new (GTK_TREE_MODEL (list->priv->store), path);
         //parole_media_list_select_path (list, path);
     } else if ( repeat ) { /* Repeat playing ?*/
-        if ( gtk_tree_model_get_iter_first (GTK_TREE_MODEL (list->priv->store), &iter)) {
+        if (gtk_tree_model_get_iter_first (GTK_TREE_MODEL (list->priv->store), &iter)) {
             next =  parole_media_list_get_row_reference_from_iter (list, &iter, TRUE);
         }
     }
@@ -1784,7 +1784,7 @@ GtkTreeRowReference *parole_media_list_get_prev_row (ParoleMediaList *list,
 
     gtk_tree_path_prev (path);
 
-    if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path)) {
+    if (gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path)) {
         prev = gtk_tree_row_reference_new (GTK_TREE_MODEL (list->priv->store), path);
         //parole_media_list_select_path (list, path);
     } else {

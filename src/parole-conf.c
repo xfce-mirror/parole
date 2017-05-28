@@ -187,7 +187,7 @@ static void parole_conf_set_property (GObject *object,
     g_signal_handler_unblock (conf->channel, conf->property_changed_id);
 
     /* now we can notify the plugins */
-    switch(prop_id)
+    switch (prop_id)
     {
        /* sadly this one recurses */
        case PROP_VOLUME:

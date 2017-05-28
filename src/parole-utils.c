@@ -361,40 +361,40 @@ void parole_get_media_files (GtkFileFilter *filter, const gchar *path,
     gtk_main_iteration_do (FALSE);
 
 
-    if ( g_file_test (path, G_FILE_TEST_IS_REGULAR ) ) {
+    if (g_file_test (path, G_FILE_TEST_IS_REGULAR)) {
         file = parole_file_new (path);
         if ( parole_file_filter (playlist_filter, file) &&
              parole_pl_parser_guess_format_from_extension (path) != PAROLE_PL_FORMAT_UNKNOWN )
         {
             playlist = parole_pl_parser_parse_from_file_by_extension (path);
             g_object_unref (file);
-            if ( playlist) {
+            if (playlist) {
                 *list = g_slist_concat (*list, playlist);
             }
-        } else if ( parole_file_filter (filter, file) ) {
+        } else if (parole_file_filter (filter, file)) {
             *list = g_slist_append (*list, file);
         } else {
             g_object_unref (file);
         }
-    } else if ( g_file_test (path, G_FILE_TEST_IS_DIR ) ) {
+    } else if (g_file_test (path, G_FILE_TEST_IS_DIR)) {
         dir = g_dir_open (path, 0, NULL);
 
         if ( G_UNLIKELY (dir == NULL) )
             return;
 
-        while ( (name = g_dir_read_name (dir)) )
+        while ((name = g_dir_read_name (dir)))
         {
             gchar *path_internal = g_build_filename (path, name, NULL);
-            if ( g_file_test (path_internal, G_FILE_TEST_IS_DIR) && recursive) {
+            if (g_file_test (path_internal, G_FILE_TEST_IS_DIR) && recursive) {
                 parole_get_media_files (filter, path_internal, TRUE, list);
             } else if ( g_file_test (path_internal, G_FILE_TEST_IS_REGULAR) ) {
                 file = parole_file_new (path_internal);
-                if ( parole_file_filter (playlist_filter, file) &&
+                if (parole_file_filter (playlist_filter, file) &&
                      parole_pl_parser_guess_format_from_extension (path) != PAROLE_PL_FORMAT_UNKNOWN)
                 {
                     playlist = parole_pl_parser_parse_from_file_by_extension (path_internal);
                     g_object_unref (file);
-                    if ( playlist) {
+                    if (playlist) {
                         *list = g_slist_concat (*list, playlist);
                     }
                 } else if ( parole_file_filter (filter, file) ) {

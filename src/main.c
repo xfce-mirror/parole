@@ -345,7 +345,7 @@ int main (int argc, char **argv)
             parole_player_full_screen (player, TRUE);
 
         if ( filenames && filenames[0] != NULL ) {
-            if ( g_strv_length (filenames) == 1 && parole_is_uri_disc (filenames[0])) {
+            if (g_strv_length (filenames) == 1 && parole_is_uri_disc (filenames[0])) {
                 parole_player_play_uri_disc (player, filenames[0], device);
             } else {
                 ParoleMediaList *list;
@@ -356,7 +356,7 @@ int main (int argc, char **argv)
             parole_player_play_uri_disc (player, NULL, device);
         }
 
-        if ( xfce_posix_signal_handler_init (&error)) {
+        if (xfce_posix_signal_handler_init (&error)) {
             xfce_posix_signal_handler_set_handler(SIGHUP,
                                                   parole_sig_handler,
                                                   player, NULL);

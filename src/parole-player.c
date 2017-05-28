@@ -736,7 +736,7 @@ parole_player_update_chapters (ParolePlayer *player, gint chapter_count)
     GtkWidget *menu_item;
     parole_player_clear_chapters(player);
 
-    for (chapter_id=0; chapter_id<chapter_count; chapter_id++)
+    for (chapter_id=0; chapter_id < chapter_count; chapter_id++)
     {
         menu_item = GTK_WIDGET(gtk_menu_item_new_with_label (g_strdup_printf(_("Chapter %i"), chapter_id+1)));
         gtk_widget_show (menu_item);
@@ -1436,7 +1436,7 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
     gtk_widget_set_sensitive (player->priv->range, seekable);
 
     player->priv->internal_range_change = TRUE;
-    if ( live || duration == 0) {
+    if (live || duration == 0) {
         parole_player_change_range_value (player, 0);
         gtk_widget_set_visible( player->priv->label_duration, FALSE );
         gtk_widget_set_visible( player->priv->label_divider, FALSE );
@@ -1448,7 +1448,7 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
         gtk_widget_set_visible( player->priv->label_elapsed, TRUE );
     }
 
-    if ( duration != 0) {
+    if (duration != 0) {
         gchar dur_text[128];
         get_time_string (dur_text, duration);
 
@@ -1748,7 +1748,7 @@ void parole_player_previous_action_cb (GSimpleAction *action)
 
 GSimpleAction *parole_player_get_action(ParolePlayerAction action)
 {
-    switch(action)
+    switch (action)
     {
         case PAROLE_PLAYER_ACTION_PLAYPAUSE:
             return playpause_action;
@@ -2258,7 +2258,7 @@ parole_player_show_menu (ParolePlayer *player, guint button, guint activate_time
     g_signal_connect_swapped (menu, "selection-done",
                               G_CALLBACK (gtk_widget_destroy), menu);
 
-#if GTK_CHECK_VERSION(3,22,0)
+#if GTK_CHECK_VERSION(3, 22, 0)
     gtk_menu_popup_at_pointer (GTK_MENU (menu), NULL);
 #else
     gtk_menu_popup (GTK_MENU (menu),
@@ -2898,7 +2898,7 @@ static void
 on_bug_report_clicked (GtkWidget *w, ParolePlayer *player)
 {
     GtkWidget *dialog;
-#if GTK_CHECK_VERSION(3,22,0)
+#if GTK_CHECK_VERSION(3, 22, 0)
     if (!gtk_show_uri_on_window(GTK_WINDOW(player->priv->window), "https://docs.xfce.org/apps/parole/bugs", GDK_CURRENT_TIME, NULL))
 #else
     if (!gtk_show_uri(NULL, "https://docs.xfce.org/apps/parole/bugs", GDK_CURRENT_TIME, NULL))
@@ -3023,7 +3023,7 @@ parole_overlay_expose_event (GtkWidget *widget, cairo_t *cr, gpointer user_data)
 {
     GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
     GtkStyleContext *context;
-#if GTK_CHECK_VERSION(3,16,0)
+#if GTK_CHECK_VERSION(3, 16, 0)
 #else
     GdkRGBA acolor;
 #endif
@@ -3036,7 +3036,7 @@ parole_overlay_expose_event (GtkWidget *widget, cairo_t *cr, gpointer user_data)
     gtk_style_context_add_class (context, "background");
     gtk_style_context_add_class (context, "osd");
 
-#if GTK_CHECK_VERSION(3,16,0)
+#if GTK_CHECK_VERSION(3, 16, 0)
 #else
     gtk_style_context_get_background_color (context, GTK_STATE_NORMAL, &acolor);
     gdk_cairo_set_source_rgba (cr, &acolor);
@@ -3177,7 +3177,7 @@ parole_player_set_cursor_visible (ParolePlayer *player, gboolean visible)
 static void
 parole_player_window_notify_is_active (ParolePlayer *player)
 {
-    if (!gtk_window_is_active (GTK_WINDOW (player->priv->window)) ) {
+    if (!gtk_window_is_active (GTK_WINDOW (player->priv->window))) {
         parole_player_set_cursor_visible (player, TRUE);
     } else {
         parole_player_set_cursor_visible (player, FALSE);
@@ -3252,7 +3252,7 @@ parole_player_init (ParolePlayer *player)
     GtkWidget *controls_overlay;
     GtkWidget *controls_parent;
     GtkWidget *play_box;
-#if GTK_CHECK_VERSION(3,16,0)
+#if GTK_CHECK_VERSION(3, 16, 0)
 #else
     GdkRGBA background;
 #endif
@@ -3444,7 +3444,7 @@ parole_player_init (ParolePlayer *player)
     /* Content Area (Background, Audio, Video) */
     player->priv->eventbox_output = GTK_WIDGET (gtk_builder_get_object (builder, "content_area"));
 
-#if GTK_CHECK_VERSION(3,16,0)
+#if GTK_CHECK_VERSION(3, 16, 0)
 #else
     gdk_rgba_parse(&background, "black");
     gtk_widget_override_background_color(GTK_WIDGET(player->priv->eventbox_output), GTK_STATE_NORMAL, &background);
@@ -3679,7 +3679,7 @@ parole_player_init (ParolePlayer *player)
     player->priv->mute = GTK_WIDGET (gtk_builder_get_object (builder, "volume-mute-menu"));
     parole_player_change_volume (player, (gdouble) (volume/100.));
 
-    gtk_widget_set_direction (GTK_WIDGET (gtk_builder_get_object (builder, "ltrbox")),GTK_TEXT_DIR_LTR);
+    gtk_widget_set_direction (GTK_WIDGET (gtk_builder_get_object (builder, "ltrbox")), GTK_TEXT_DIR_LTR);
     g_signal_connect(player->priv->control, "draw", G_CALLBACK(parole_overlay_expose_event), NULL);
     /* End Media Controls */
 

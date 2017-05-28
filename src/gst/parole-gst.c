@@ -228,7 +228,7 @@ parole_gst_realize (GtkWidget *widget)
     ParoleGst *gst;
     GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
     GdkWindowAttr attr;
-#if GTK_CHECK_VERSION(3,22,0)
+#if GTK_CHECK_VERSION(3, 22, 0)
 #else
     GdkRGBA color;
 #endif
@@ -260,7 +260,7 @@ parole_gst_realize (GtkWidget *widget)
 
     gdk_window_set_user_data (gtk_widget_get_window(widget), widget);
 
-#if GTK_CHECK_VERSION(3,22,0)
+#if GTK_CHECK_VERSION(3, 22, 0)
 #else
     gdk_rgba_parse (&color, "black");
     gdk_window_set_background_rgba (gtk_widget_get_window(widget), &color);
@@ -558,12 +558,12 @@ parole_gst_tick (ParoleGst *gst)
                   "live", &live,
                   NULL);
 
-    if ( gst->priv->state >= GST_STATE_PAUSED && !live) {
-        if ( gst->priv->tick_id != 0 ) {
+    if (gst->priv->state >= GST_STATE_PAUSED && !live) {
+        if (gst->priv->tick_id != 0) {
             return;
         }
         gst->priv->tick_id = g_timeout_add (250, (GSourceFunc) parole_gst_tick_timeout, gst);
-    } else if ( gst->priv->tick_id != 0) {
+    } else if (gst->priv->tick_id != 0) {
         g_source_remove (gst->priv->tick_id);
         gst->priv->tick_id = 0;
     }
@@ -903,11 +903,11 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
             g_signal_emit  (G_OBJECT (gst), signals [MEDIA_STATE], 0,
                             gst->priv->stream, PAROLE_STATE_STOPPED);
 
-            if ( gst->priv->target == GST_STATE_PLAYING && pending < GST_STATE_PAUSED) {
+            if (gst->priv->target == GST_STATE_PLAYING && pending < GST_STATE_PAUSED) {
                 parole_gst_play_file_internal (gst);
-            } else if ( gst->priv->target == GST_STATE_PAUSED) {
+            } else if (gst->priv->target == GST_STATE_PAUSED) {
                 parole_gst_change_state (gst, GST_STATE_PAUSED);
-            } else if ( gst->priv->target == GST_STATE_READY) {
+            } else if (gst->priv->target == GST_STATE_READY) {
                 gtk_widget_get_allocation( GTK_WIDGET (gst), allocation );
                 parole_gst_size_allocate (GTK_WIDGET (gst), allocation);
                 g_free(allocation);
@@ -944,7 +944,7 @@ parole_gst_element_message_sync (GstBus *bus, GstMessage *message, ParoleGst *gs
 #if GST_CHECK_VERSION (1, 0, 0)
 #else
 out:
-    ;
+    {}
 #endif
 }
 
@@ -1969,9 +1969,9 @@ parole_gst_conf_notify_cb (GObject *object, GParamSpec *spec, ParoleGst *gst)
     GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
     if ( !g_strcmp0 ("vis-enabled", spec->name) || !g_strcmp0 ("vis-name", spec->name) ) {
         gst->priv->update_vis = TRUE;
-    } else if ( !g_strcmp0 ("subtitle-font", spec->name) || !g_strcmp0 ("enable-subtitle", spec->name)  ) {
+    } else if (!g_strcmp0("subtitle-font", spec->name) || !g_strcmp0("enable-subtitle", spec->name)) {
         parole_gst_set_subtitle_font (gst);
-    } else if (!g_strcmp0 ("subtitle-encoding", spec->name) ) {
+    } else if (!g_strcmp0 ("subtitle-encoding", spec->name)) {
         parole_gst_set_subtitle_encoding (gst);
     } else if ( !g_strcmp0 ("brightness", spec->name) || !g_strcmp0 ("hue", spec->name) ||
           !g_strcmp0 ("contrast", spec->name) || !g_strcmp0 ("saturation", spec->name) )
@@ -2838,7 +2838,7 @@ gst_get_lang_list_for_type (ParoleGst * gst, const gchar * type_name)
 
         if ( gst->priv->use_custom_subtitles == TRUE )
         {
-            ret = g_list_append (ret, g_strdup_printf("%s",gst->priv->custom_subtitles));
+            ret = g_list_append (ret, g_strdup_printf("%s", gst->priv->custom_subtitles));
         }
     } else {
         g_critical ("Invalid stream type '%s'", type_name);

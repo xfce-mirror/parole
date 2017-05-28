@@ -101,7 +101,7 @@ parole_xspf_xml_text (GMarkupParseContext *context, const gchar *text, gsize tex
 
     element_name = g_markup_parse_context_get_element (context);
 
-    if (!g_ascii_strcasecmp (element_name, "location") ) {
+    if (!g_ascii_strcasecmp (element_name, "location")) {
         if (data->uri) {
             g_free (data->uri);
             data->uri = NULL;
@@ -109,7 +109,7 @@ parole_xspf_xml_text (GMarkupParseContext *context, const gchar *text, gsize tex
 
         if (text_len > 0)
             data->uri = g_strdup (text);
-    } else if (!g_ascii_strcasecmp (element_name, "title") ) {
+    } else if (!g_ascii_strcasecmp (element_name, "title")) {
         if (data->title) {
             g_free (data->title);
             data->title = NULL;
@@ -266,10 +266,10 @@ parole_pl_parser_parse_asx (const gchar *filename)
 
     file = g_file_new_for_path (filename);
 
-    if ( !g_file_load_contents (file, NULL, &contents, &size, NULL, NULL) )
+    if (!g_file_load_contents (file, NULL, &contents, &size, NULL, NULL))
         goto out;
 
-    if ( g_utf8_validate (contents, -1, NULL) == FALSE) {
+    if (g_utf8_validate (contents, -1, NULL) == FALSE) {
         gchar *fixed;
         fixed = g_convert (contents, -1, "UTF-8", "ISO8859-1", NULL, NULL, NULL);
         if (fixed != NULL) {
@@ -328,21 +328,19 @@ parole_pl_parser_parse_m3u (const gchar *filename)
     file = g_file_new_for_path (filename);
     path = g_path_get_dirname(filename);
 
-    if ( !g_file_load_contents (file, NULL, &contents, &size, NULL, NULL) )
+    if (!g_file_load_contents (file, NULL, &contents, &size, NULL, NULL))
         goto out;
 
-    if ( g_utf8_validate (contents, -1, NULL) == FALSE)
-    {
+    if (g_utf8_validate (contents, -1, NULL) == FALSE) {
         gchar *fixed;
         fixed = g_convert (contents, -1, "UTF-8", "ISO8859-1", NULL, NULL, NULL);
-        if (fixed != NULL)
-        {
+        if (fixed != NULL) {
             g_free (contents);
             contents = fixed;
         }
     }
 
-    if ( strstr (contents,"\x0d") == NULL) {
+    if (strstr (contents, "\x0d") == NULL) {
         split_char = "\n";
     } else {
         split_char = "\x0d\n";
@@ -357,7 +355,7 @@ parole_pl_parser_parse_m3u (const gchar *filename)
     num_lines = g_strv_length (lines);
     num_lines--; /* Drop the terminating NULL */
 
-    for ( i = 0; lines[i] != NULL; i++) {
+    for (i = 0; lines[i] != NULL; i++) {
         if ( lines[i][0] == '\0' || lines[i][0] == '#')
             continue;
 

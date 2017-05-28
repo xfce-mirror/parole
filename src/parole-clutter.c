@@ -320,7 +320,7 @@ parole_clutter_init (ParoleClutter *clutter)
     g_value_init(&value, G_TYPE_BOOLEAN);
     g_value_set_boolean(&value, TRUE);
 
-    black = clutter_color_new(0,0,0,255);
+    black = clutter_color_new(0, 0, 0, 255);
 
     clutter->priv->embed = gtk_clutter_embed_new();
     g_signal_connect (G_OBJECT(clutter->priv->embed), "size-allocate",
