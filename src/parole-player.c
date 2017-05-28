@@ -694,10 +694,11 @@ parole_sublang_equal_lists (GList *orig, GList *new)
     n = new;
     while (o != NULL && n != NULL && retval != FALSE)
     {
-        if (g_str_equal (o->data, n->data) == FALSE)
+        if (g_str_equal (o->data, n->data) == FALSE) {
             retval = FALSE;
-                o = g_list_next (o);
-                n = g_list_next (n);
+        }
+        o = g_list_next (o);
+        n = g_list_next (n);
     }
 
     return retval;
@@ -2897,11 +2898,10 @@ on_bug_report_clicked (GtkWidget *w, ParolePlayer *player)
 {
     GtkWidget *dialog;
 #if GTK_CHECK_VERSION(3, 22, 0)
-    if (!gtk_show_uri_on_window(GTK_WINDOW(player->priv->window), "https://docs.xfce.org/apps/parole/bugs", GDK_CURRENT_TIME, NULL))
+    if (!gtk_show_uri_on_window(GTK_WINDOW(player->priv->window), "https://docs.xfce.org/apps/parole/bugs", GDK_CURRENT_TIME, NULL)) {
 #else
-    if (!gtk_show_uri(NULL, "https://docs.xfce.org/apps/parole/bugs", GDK_CURRENT_TIME, NULL))
+    if (!gtk_show_uri(NULL, "https://docs.xfce.org/apps/parole/bugs", GDK_CURRENT_TIME, NULL)) {
 #endif
-    {
         dialog = gtk_message_dialog_new(GTK_WINDOW(player->priv->window),
                                         GTK_DIALOG_DESTROY_WITH_PARENT,
                                         GTK_MESSAGE_ERROR,

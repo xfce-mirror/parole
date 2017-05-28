@@ -1182,11 +1182,10 @@ parole_gst_get_meta_data_dvd (ParoleGst *gst)
 
     /* Get the number of chapters for the current title. */
 #if GST_CHECK_VERSION(1, 0, 0)
-    if ( gst_element_query_duration (gst->priv->playbin, format, &val) )
+    if (gst_element_query_duration (gst->priv->playbin, format, &val)) {
 #else
-    if ( gst_element_query_duration (gst->priv->playbin, &format, &val) )
+    if (gst_element_query_duration (gst->priv->playbin, &format, &val)) {
 #endif
-    {
         n_chapters = (gint) val;
         num_chapters = (guint) n_chapters;
         TRACE("Number of chapters: %i", n_chapters);
@@ -1205,11 +1204,10 @@ parole_gst_get_meta_data_dvd (ParoleGst *gst)
     /* Get the current chapter. */
     val = -1;
 #if GST_CHECK_VERSION(1, 0, 0)
-    if ( gst_element_query_position (gst->priv->playbin, format, &val) )
+    if (gst_element_query_position (gst->priv->playbin, format, &val)) {
 #else
-    if ( gst_element_query_position (gst->priv->playbin, &format, &val) )
+    if (gst_element_query_position (gst->priv->playbin, &format, &val)) {
 #endif
-    {
         chapter = (guint)(gint) val;
         TRACE("Current chapter: %i", chapter);
         if ( chapter != current_chapter || num_chapters != 1 )
@@ -1411,7 +1409,7 @@ parole_gst_application_message (ParoleGst *gst, GstMessage *msg)
 {
     GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
 #if GST_CHECK_VERSION(1, 0, 0)
-    if ( gst_message_has_name (msg, "notify-streaminfo") )
+    if (gst_message_has_name (msg, "notify-streaminfo")) {
 #else
     const gchar *name;
     name = gst_structure_get_name (msg->structure);
@@ -1419,18 +1417,15 @@ parole_gst_application_message (ParoleGst *gst, GstMessage *msg)
     if ( !name )
         return;
 
-    if ( !g_strcmp0 (name, "notify-streaminfo") )
+    if (!g_strcmp0 (name, "notify-streaminfo")) {
 #endif
-    {
         parole_gst_update_stream_info (gst);
-    }
 
 #if GST_CHECK_VERSION(1, 0, 0)
-    else if ( gst_message_has_name (msg, "video-size") )
+    } else if (gst_message_has_name (msg, "video-size")) {
 #else
-    else if ( !g_strcmp0 (name, "video-size") )
+    } else if (!g_strcmp0 (name, "video-size")) {
 #endif
-    {
         gtk_widget_get_allocation(GTK_WIDGET (gst), allocation);
         parole_gst_size_allocate (GTK_WIDGET (gst), allocation);
         g_free(allocation);
@@ -1850,11 +1845,10 @@ parole_gst_seek_by_format (ParoleGst *gst, GstFormat format, gint step)
     gint64 val = 1;
 
 #if GST_CHECK_VERSION(1, 0, 0)
-    if ( gst_element_query_position (gst->priv->playbin, format, &val) )
+    if (gst_element_query_position (gst->priv->playbin, format, &val)) {
 #else
-    if ( gst_element_query_position (gst->priv->playbin, &format, &val) )
+    if (gst_element_query_position (gst->priv->playbin, &format, &val)) {
 #endif
-    {
         val += step;
         if ( !gst_element_seek (gst->priv->playbin, 1.0, format,
                                 GST_SEEK_FLAG_FLUSH, GST_SEEK_TYPE_SET,
@@ -1965,8 +1959,8 @@ parole_gst_conf_notify_cb (GObject *object, GParamSpec *spec, ParoleGst *gst)
         parole_gst_set_subtitle_font (gst);
     } else if (!g_strcmp0 ("subtitle-encoding", spec->name)) {
         parole_gst_set_subtitle_encoding (gst);
-    } else if ( !g_strcmp0 ("brightness", spec->name) || !g_strcmp0 ("hue", spec->name) ||
-          !g_strcmp0 ("contrast", spec->name) || !g_strcmp0 ("saturation", spec->name) )
+    } else if (!g_strcmp0 ("brightness", spec->name) || !g_strcmp0 ("hue", spec->name) ||
+          !g_strcmp0 ("contrast", spec->name) || !g_strcmp0 ("saturation", spec->name))
     {
         gst->priv->update_color_balance = TRUE;
 
@@ -2687,11 +2681,10 @@ gint parole_gst_get_current_cdda_track (ParoleGst *gst)
     gint ret_val = 1;
 
 #if GST_CHECK_VERSION(1, 0, 0)
-    if ( gst_element_query_position (gst->priv->playbin, format, &pos) )
+    if (gst_element_query_position (gst->priv->playbin, format, &pos)) {
 #else
-    if ( gst_element_query_position (gst->priv->playbin, &format, &pos) )
+    if (gst_element_query_position (gst->priv->playbin, &format, &pos)) {
 #endif
-    {
         TRACE ("Pos %" G_GINT64_FORMAT, pos);
         ret_val = (gint) pos;
     }
