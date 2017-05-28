@@ -330,10 +330,10 @@ parole_plugin_player_init (ParolePluginPlayer *player)
 
     player->priv->fullscreen = FALSE;
     window = GTK_WIDGET(gtk_widget_get_toplevel (player->priv->gst));
-    g_signal_connect(   G_OBJECT(window),
-                        "window-state-event",
-                        G_CALLBACK(parole_plugin_player_window_state_event),
-                        player );
+    g_signal_connect(G_OBJECT(window),
+                     "window-state-event",
+                     G_CALLBACK(parole_plugin_player_window_state_event),
+                     player);
 
     player->priv->packed = FALSE;
     player->priv->box = NULL;

@@ -232,7 +232,7 @@ parole_get_name_without_extension (const gchar *name)
 
     for ( suffix = len -1; suffix > 0;  suffix--)
     {
-        if ( name [suffix] == '.' )
+        if ( name[suffix] == '.' )
             break;
     }
 

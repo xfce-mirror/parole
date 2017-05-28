@@ -60,7 +60,7 @@ static struct
 {
     ParoleButtonKey    key;
     guint              key_code;
-} parole_key_map [PAROLE_KEY_NUMBERS] = { {0, 0}, };
+} parole_key_map[PAROLE_KEY_NUMBERS] = { {0, 0}, };
 
 struct ParoleButtonPrivate
 {
@@ -95,8 +95,8 @@ parole_button_get_key (unsigned int keycode)
 
     for ( i = 0; i < G_N_ELEMENTS (parole_key_map); i++)
     {
-        if ( parole_key_map [i].key_code == keycode )
-            key = parole_key_map [i].key;
+        if ( parole_key_map[i].key_code == keycode )
+            key = parole_key_map[i].key;
     }
 
     return key;
@@ -212,8 +212,8 @@ parole_button_xevent_key (ParoleButton *button, guint keysym , ParoleButtonKey k
 
     PAROLE_DEBUG_ENUM_FULL (key, ENUM_GTYPE_BUTTON_KEY, "Grabbed key %li ", (long int) keycode);
 
-    parole_key_map [key].key_code = keycode;
-    parole_key_map [key].key = key;
+    parole_key_map[key].key_code = keycode;
+    parole_key_map[key].key = key;
 
     return TRUE;
 }
@@ -250,7 +250,7 @@ parole_button_class_init(ParoleButtonClass *klass)
 {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
-    signals [BUTTON_PRESSED] =
+    signals[BUTTON_PRESSED] =
         g_signal_new ("button-pressed",
                       PAROLE_TYPE_BUTTON,
                       G_SIGNAL_RUN_LAST,

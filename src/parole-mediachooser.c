@@ -88,7 +88,7 @@ enum
     LAST_SIGNAL
 };
 
-static guint signals [LAST_SIGNAL] = { 0 };
+static guint signals[LAST_SIGNAL] = { 0 };
 
 G_DEFINE_TYPE (ParoleMediaChooser, parole_media_chooser, G_TYPE_OBJECT)
 
@@ -140,7 +140,7 @@ parole_media_chooser_add (ParoleMediaChooser *chooser, GtkWidget *file_chooser)
             // For now we will play the ISO if it is the first file found, otherwise ignore.
             if (g_slist_length(media_files) != 0)
                 continue;
-            g_signal_emit (G_OBJECT (chooser), signals [ISO_OPENED], 0, file);
+            g_signal_emit (G_OBJECT (chooser), signals[ISO_OPENED], 0, file);
 
             g_slist_free (media_files);
 
@@ -152,7 +152,7 @@ parole_media_chooser_add (ParoleMediaChooser *chooser, GtkWidget *file_chooser)
         parole_get_media_files (filter, file, scan_recursive, &media_files);
     }
 
-    g_signal_emit (G_OBJECT (chooser), signals [MEDIA_FILES_OPENED], 0, media_files);
+    g_signal_emit (G_OBJECT (chooser), signals[MEDIA_FILES_OPENED], 0, media_files);
     g_slist_free (media_files);
 
     g_slist_foreach (files, (GFunc) g_free, NULL);
@@ -181,7 +181,7 @@ parole_media_chooser_open (ParoleMediaChooser *chooser)
 {
     parole_window_busy_cursor (gtk_widget_get_window(GTK_WIDGET(chooser->window)));
 
-    gtk_widget_show( chooser->spinner );
+    gtk_widget_show(chooser->spinner);
 
     g_idle_add ((GSourceFunc) parole_media_chooser_add_idle, chooser);
 }
@@ -224,28 +224,28 @@ parole_media_chooser_open_internal (ParoleMediaChooser *media_chooser)
     media_chooser->window = GTK_WIDGET (gtk_builder_get_object (builder, "chooser"));
     media_chooser->spinner = GTK_WIDGET (gtk_builder_get_object (builder, "spinner"));
 
-    gtk_widget_hide( media_chooser->spinner );
+    gtk_widget_hide(media_chooser->spinner);
 
     file_chooser = GTK_WIDGET (gtk_builder_get_object (builder, "filechooserwidget"));
 
     /* Set filters for the filechooser */
     filter = parole_get_supported_files_filter();
     gtk_file_filter_add_mime_type (GTK_FILE_FILTER (filter), "application/x-cd-image");
-    gtk_file_chooser_add_filter( GTK_FILE_CHOOSER(file_chooser), filter );
+    gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(file_chooser), filter);
 
     audio_filter = parole_get_supported_audio_filter();
-    gtk_file_chooser_add_filter( GTK_FILE_CHOOSER(file_chooser), audio_filter );
+    gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(file_chooser), audio_filter);
 
     video_filter = parole_get_supported_video_filter();
-    gtk_file_chooser_add_filter( GTK_FILE_CHOOSER(file_chooser), video_filter );
+    gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(file_chooser), video_filter);
 
     playlist_filter = parole_get_supported_playlist_filter();
-    gtk_file_chooser_add_filter( GTK_FILE_CHOOSER(file_chooser), playlist_filter );
+    gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(file_chooser), playlist_filter);
 
     all_files = gtk_file_filter_new();
-    gtk_file_filter_set_name( all_files, _("All files") );
-    gtk_file_filter_add_pattern ( all_files, "*");
-    gtk_file_chooser_add_filter( GTK_FILE_CHOOSER(file_chooser), all_files );
+    gtk_file_filter_set_name(all_files, _("All files"));
+    gtk_file_filter_add_pattern (all_files, "*");
+    gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(file_chooser), all_files);
 
     /* Set the folder that is shown */
     g_object_get (G_OBJECT (media_chooser->conf),

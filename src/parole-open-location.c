@@ -65,7 +65,7 @@ enum
     N_COLS
 };
 
-static guint signals [LAST_SIGNAL] = { 0 };
+static guint signals[LAST_SIGNAL] = { 0 };
 
 G_DEFINE_TYPE (ParoleOpenLocation, parole_open_location, G_TYPE_OBJECT)
 
@@ -88,7 +88,7 @@ parole_open_location_response_cb (GtkDialog *dialog, gint response_id, ParoleOpe
         TRACE ("Location %s", location);
 
         gtk_widget_hide (GTK_WIDGET (dialog));
-        g_signal_emit (G_OBJECT (self), signals [LOCATION_OPENED], 0, location);
+        g_signal_emit (G_OBJECT (self), signals[LOCATION_OPENED], 0, location);
     }
 
 out:
@@ -116,7 +116,7 @@ parole_open_location_get_completion_model (void)
             {
                 gtk_list_store_append (store, &iter);
                 gtk_list_store_set (store, &iter,
-                                    COL_ADDRESS, lines [i],
+                                    COL_ADDRESS, lines[i],
                                     -1);
             }
         }

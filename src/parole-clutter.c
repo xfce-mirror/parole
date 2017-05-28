@@ -230,7 +230,7 @@ parole_clutter_conf_notify_cb (GObject *object, GParamSpec *spec, ParoleClutter 
                       "aspect-ratio", &clutter->priv->aspect_ratio,
                       NULL);
 
-        gtk_widget_get_allocation( GTK_WIDGET (clutter), allocation );
+        gtk_widget_get_allocation(GTK_WIDGET (clutter), allocation);
         parole_clutter_size_allocate (GTK_WIDGET (clutter->priv->embed), allocation);
         g_free(allocation);
     }

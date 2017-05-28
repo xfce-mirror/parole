@@ -171,7 +171,7 @@ enum
 
 static gpointer parole_gst_object = NULL;
 
-static guint signals [LAST_SIGNAL] = { 0 };
+static guint signals[LAST_SIGNAL] = { 0 };
 
 G_DEFINE_TYPE (ParoleGst, parole_gst, GTK_TYPE_WIDGET)
 
@@ -464,13 +464,13 @@ parole_gst_set_video_overlay (ParoleGst *gst)
 
     g_assert (video_sink != NULL);
 
-    if ( GDK_IS_WINDOW (gtk_widget_get_window(GTK_WIDGET (gst))) )
+    if (GDK_IS_WINDOW (gtk_widget_get_window(GTK_WIDGET (gst))))
 #if GST_CHECK_VERSION(1, 0, 0)
         gst_video_overlay_set_window_handle (GST_VIDEO_OVERLAY (video_sink),
-                          GDK_WINDOW_XID ( gtk_widget_get_window(GTK_WIDGET (gst)) ));
+                          GDK_WINDOW_XID (gtk_widget_get_window(GTK_WIDGET (gst))));
 #else
         gst_x_overlay_set_xwindow_id (GST_X_OVERLAY (video_sink),
-                          GDK_WINDOW_XID ( gtk_widget_get_window(GTK_WIDGET (gst)) ));
+                          GDK_WINDOW_XID (gtk_widget_get_window(GTK_WIDGET (gst))));
 #endif
 
     gst_object_unref (video_sink);
@@ -538,7 +538,7 @@ parole_gst_tick_timeout (gpointer data)
 
         if ( G_LIKELY (value > 0) )
         {
-            g_signal_emit (G_OBJECT (gst), signals [MEDIA_PROGRESSED], 0, gst->priv->stream, value);
+            g_signal_emit (G_OBJECT (gst), signals[MEDIA_PROGRESSED], 0, gst->priv->stream, value);
         }
     }
 
@@ -589,7 +589,7 @@ parole_gst_query_duration (ParoleGst *gst)
     if (gst_time == GST_FORMAT_TIME)
     {
         duration =  absolute_duration / GST_SECOND;
-        live = ( absolute_duration == 0 );
+        live = (absolute_duration == 0);
 
         TRACE ("Duration %" G_GINT64_FORMAT ", is_live=%d", duration, live);
 
@@ -728,7 +728,7 @@ parole_gst_get_pad_capabilities (GObject *object, GParamSpec *pspec, ParoleGst *
                           NULL);
         }
 
-        gtk_widget_get_allocation( GTK_WIDGET (gst), allocation );
+        gtk_widget_get_allocation(GTK_WIDGET (gst), allocation);
         parole_gst_size_allocate (GTK_WIDGET (gst), allocation);
         g_free(allocation);
     }
@@ -872,7 +872,7 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
             parole_gst_query_capabilities (gst);
             parole_gst_query_info (gst);
             parole_gst_query_duration (gst);
-            g_signal_emit  (G_OBJECT (gst), signals [MEDIA_STATE], 0,
+            g_signal_emit  (G_OBJECT (gst), signals[MEDIA_STATE], 0,
                             gst->priv->stream, PAROLE_STATE_PLAYING);
             break;
         }
@@ -887,7 +887,7 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
             }
 
             gst->priv->media_state = PAROLE_STATE_PAUSED;
-            g_signal_emit  (G_OBJECT (gst), signals [MEDIA_STATE], 0,
+            g_signal_emit  (G_OBJECT (gst), signals[MEDIA_STATE], 0,
                             gst->priv->stream, PAROLE_STATE_PAUSED);
             break;
         }
@@ -896,7 +896,7 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
             gst->priv->buffering = FALSE;
             gst->priv->seeking = FALSE;
             gst->priv->media_state = PAROLE_STATE_STOPPED;
-            g_signal_emit  (G_OBJECT (gst), signals [MEDIA_STATE], 0,
+            g_signal_emit  (G_OBJECT (gst), signals[MEDIA_STATE], 0,
                             gst->priv->stream, PAROLE_STATE_STOPPED);
 
             if (gst->priv->target == GST_STATE_PLAYING && pending < GST_STATE_PAUSED) {
@@ -904,7 +904,7 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
             } else if (gst->priv->target == GST_STATE_PAUSED) {
                 parole_gst_change_state (gst, GST_STATE_PAUSED);
             } else if (gst->priv->target == GST_STATE_READY) {
-                gtk_widget_get_allocation( GTK_WIDGET (gst), allocation );
+                gtk_widget_get_allocation(GTK_WIDGET (gst), allocation);
                 parole_gst_size_allocate (GTK_WIDGET (gst), allocation);
                 g_free(allocation);
             }
@@ -915,7 +915,7 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
             gst->priv->buffering = FALSE;
             gst->priv->seeking = FALSE;
             gst->priv->media_state = PAROLE_STATE_STOPPED;
-            g_signal_emit  (G_OBJECT (gst), signals [MEDIA_STATE], 0,
+            g_signal_emit  (G_OBJECT (gst), signals[MEDIA_STATE], 0,
                             gst->priv->stream, PAROLE_STATE_STOPPED);
             break;
         }
@@ -1175,10 +1175,10 @@ parole_gst_get_meta_data_dvd (ParoleGst *gst)
 
     TRACE("START");
 
-    g_object_get (  G_OBJECT (gst->priv->stream),
-                    "num-tracks", &current_num_chapters,
-                    "track", &current_chapter,
-                    NULL);
+    g_object_get (G_OBJECT (gst->priv->stream),
+                  "num-tracks", &current_num_chapters,
+                  "track", &current_chapter,
+                  NULL);
 
     /* Get the number of chapters for the current title. */
 #if GST_CHECK_VERSION(1, 0, 0)
@@ -1197,7 +1197,7 @@ parole_gst_get_meta_data_dvd (ParoleGst *gst)
                           NULL);
             TRACE("Updated DVD chapter count: %i", n_chapters);
 
-            g_signal_emit  (G_OBJECT (gst), signals [DVD_CHAPTER_COUNT_CHANGE], 0,
+            g_signal_emit  (G_OBJECT (gst), signals[DVD_CHAPTER_COUNT_CHANGE], 0,
                             n_chapters);
         }
     }
@@ -1220,7 +1220,7 @@ parole_gst_get_meta_data_dvd (ParoleGst *gst)
             TRACE("Updated current DVD chapter: %i", chapter);
 
             if (current_chapter != 1)
-                g_signal_emit  (G_OBJECT (gst), signals [DVD_CHAPTER_CHANGE], 0,
+                g_signal_emit  (G_OBJECT (gst), signals[DVD_CHAPTER_CHANGE], 0,
                                 chapter);
         }
     }
@@ -1253,7 +1253,7 @@ parole_gst_get_meta_data_cdda (ParoleGst *gst, GstTagList *tag)
                       NULL);
 
         TRACE ("num_tracks=%i track=%i", num_tracks, track);
-        g_signal_emit (G_OBJECT (gst), signals [MEDIA_TAG], 0, gst->priv->stream);
+        g_signal_emit (G_OBJECT (gst), signals[MEDIA_TAG], 0, gst->priv->stream);
     }
 }
 
@@ -1353,7 +1353,7 @@ parole_gst_get_meta_data_file (ParoleGst *gst, GstTagList *tag)
                   "tag-available", TRUE,
                   NULL);
 
-    g_signal_emit (G_OBJECT (gst), signals [MEDIA_TAG], 0, gst->priv->stream);
+    g_signal_emit (G_OBJECT (gst), signals[MEDIA_TAG], 0, gst->priv->stream);
 }
 
 static void
@@ -1374,7 +1374,7 @@ parole_gst_get_meta_data_unknown (ParoleGst *gst)
                   "tag-available", FALSE,
                   NULL);
 
-    g_signal_emit (G_OBJECT (gst), signals [MEDIA_TAG], 0, gst->priv->stream);
+    g_signal_emit (G_OBJECT (gst), signals[MEDIA_TAG], 0, gst->priv->stream);
 }
 
 static void
@@ -1485,10 +1485,9 @@ parole_gst_missing_codec_dialog(ParoleGst *gst, GstMessage *msg)
 #endif
                             GTK_BUTTONS_NONE,
                             "<b><big>%s</big></b>",
-                            _("Additional software is required.")
-                            ));
+                            _("Additional software is required.")));
 
-    gtk_dialog_add_buttons( GTK_DIALOG(dialog),
+    gtk_dialog_add_buttons(GTK_DIALOG(dialog),
 #if defined(__linux__)
                             _("Don't Install"),
                             GTK_RESPONSE_REJECT,
@@ -1498,7 +1497,7 @@ parole_gst_missing_codec_dialog(ParoleGst *gst, GstMessage *msg)
                             _("OK"),
                             GTK_RESPONSE_ACCEPT,
 #endif
-                            NULL );
+                            NULL);
 
     gtk_message_dialog_format_secondary_markup(dialog,
 #if defined(__linux__)
@@ -1536,7 +1535,7 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
                           NULL);
 
             gst->priv->media_state = PAROLE_STATE_PLAYBACK_FINISHED;
-            g_signal_emit  (G_OBJECT (gst), signals [MEDIA_STATE], 0,
+            g_signal_emit  (G_OBJECT (gst), signals[MEDIA_STATE], 0,
                             gst->priv->stream, PAROLE_STATE_PLAYBACK_FINISHED);
             break;
         }
@@ -1550,7 +1549,7 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
         parole_gst_change_state (gst, GST_STATE_NULL);
         gst_message_parse_error (msg, &error, &debug);
         TRACE ("*** ERROR %s : %s ***", error->message, debug);
-        g_signal_emit (G_OBJECT (gst), signals [ERROR], 0, error->message);
+        g_signal_emit (G_OBJECT (gst), signals[ERROR], 0, error->message);
         g_error_free (error);
         g_free (debug);
         gtk_widget_queue_draw (GTK_WIDGET (gst));
@@ -1561,7 +1560,7 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
         gint per = 0;
         gst_message_parse_buffering (msg, &per);
         TRACE ("Buffering %d %%", per);
-        g_signal_emit  (G_OBJECT (gst), signals [BUFFERING], 0,
+        g_signal_emit  (G_OBJECT (gst), signals[BUFFERING], 0,
                         gst->priv->stream, per);
 
         gst->priv->buffering = per != 100;
@@ -1647,7 +1646,7 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
         if (gst->priv->seeking)
         {
             gst->priv->seeking = FALSE;
-            g_signal_emit (G_OBJECT (gst), signals [MEDIA_SEEKED], 0);
+            g_signal_emit (G_OBJECT (gst), signals[MEDIA_SEEKED], 0);
         }
         break;
     case GST_MESSAGE_WARNING:
@@ -1952,7 +1951,7 @@ parole_gst_about_to_finish_cb (GstElement *elm, gpointer data)
 
     gst = PAROLE_GST (data);
 
-    g_signal_emit  (G_OBJECT (gst), signals [MEDIA_STATE], 0,
+    g_signal_emit  (G_OBJECT (gst), signals[MEDIA_STATE], 0,
                     gst->priv->stream, PAROLE_STATE_ABOUT_TO_FINISH);
 }
 
@@ -1978,7 +1977,7 @@ parole_gst_conf_notify_cb (GObject *object, GParamSpec *spec, ParoleGst *gst)
                       "aspect-ratio", &gst->priv->aspect_ratio,
                       NULL);
 
-        gtk_widget_get_allocation( GTK_WIDGET (gst), allocation );
+        gtk_widget_get_allocation(GTK_WIDGET (gst), allocation);
         parole_gst_size_allocate (GTK_WIDGET (gst), allocation);
         g_free(allocation);
     }
@@ -2274,7 +2273,7 @@ parole_gst_class_init (ParoleGstClass *klass)
                         g_cclosure_marshal_VOID__VOID,
                         G_TYPE_NONE, 0);
 
-    signals [MEDIA_TAG] =
+    signals[MEDIA_TAG] =
         g_signal_new   ("media-tag",
                         PAROLE_TYPE_GST,
                         G_SIGNAL_RUN_LAST,
@@ -2594,7 +2593,7 @@ void parole_gst_shutdown (ParoleGst *gst)
 void parole_gst_seek (ParoleGst *gst, gdouble seek)
 {
     TRACE ("Seeking");
-    g_warn_if_fail ( gst_element_seek (gst->priv->playbin,
+    g_warn_if_fail (gst_element_seek (gst->priv->playbin,
                         1.0,
                         GST_FORMAT_TIME,
                         GST_SEEK_FLAG_KEY_UNIT | GST_SEEK_FLAG_FLUSH,
@@ -2841,7 +2840,7 @@ gst_get_lang_list_for_type (ParoleGst * gst, const gchar * type_name)
 }
 
 gboolean
-gst_get_has_vis( ParoleGst *gst )
+gst_get_has_vis(ParoleGst *gst)
 {
     gboolean has_vis;
 
@@ -2853,7 +2852,7 @@ gst_get_has_vis( ParoleGst *gst )
 }
 
 gboolean
-gst_get_has_video( ParoleGst *gst )
+gst_get_has_video(ParoleGst *gst)
 {
     gboolean playing_video;
 
@@ -2865,13 +2864,13 @@ gst_get_has_video( ParoleGst *gst )
 }
 
 void
-gst_set_current_audio_track( ParoleGst *gst, gint track_no )
+gst_set_current_audio_track(ParoleGst *gst, gint track_no)
 {
     g_object_set (G_OBJECT (gst->priv->playbin), "current-audio", (track_no), NULL);
 }
 
 void
-gst_set_current_subtitle_track( ParoleGst *gst, gint track_no )
+gst_set_current_subtitle_track(ParoleGst *gst, gint track_no)
 {
     gchar *uri, *sub;
     gint flags;
@@ -2905,7 +2904,7 @@ gst_set_current_subtitle_track( ParoleGst *gst, gint track_no )
         g_object_get (gst->priv->playbin, "current-text", &track_no, NULL);
     }
 
-    parole_gst_load_subtitle( gst );
+    parole_gst_load_subtitle(gst);
 }
 
 const ParoleStream     *parole_gst_get_stream       (ParoleGst *gst)

@@ -126,7 +126,7 @@ parole_xspf_xml_end (GMarkupParseContext *context, const gchar *element_name,
     ParoleParserData *data = user_data;
     ParoleFile *file;
 
-    if (! g_ascii_strcasecmp (element_name, "playlist"))
+    if (!g_ascii_strcasecmp (element_name, "playlist"))
         data->started = FALSE;
 
     if (!data->started)
@@ -348,7 +348,7 @@ parole_pl_parser_parse_m3u (const gchar *filename)
     lines = g_strsplit (contents, split_char, 0);
     g_free (contents);
 
-    /* Regular expression for stream protocols, such as http:// smb:// */
+    // Regular expression for stream protocols, such as http:// and smb://
     regex = g_regex_new ("^(?!/)[a-zA-Z_0-9]+://", 0, 0, NULL);
 
     num_lines = g_strv_length (lines);

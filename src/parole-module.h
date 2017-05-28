@@ -61,7 +61,7 @@ struct _ParoleProviderModule
 struct _ParoleProviderModuleClass
 {
     GTypeModuleClass        parent_class;
-} ;
+};
 
 GType                       parole_provider_module_get_type        (void) G_GNUC_CONST;
 

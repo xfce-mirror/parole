@@ -295,8 +295,8 @@ parole_conf_dialog_add_vis_plugins (gpointer key, gpointer value, GtkWidget *com
     GtkListStore *store = GTK_LIST_STORE(gtk_combo_box_get_model(GTK_COMBO_BOX(combox)));
     GtkTreeIter iter;
 
-    gtk_list_store_append( store, &iter );
-    gtk_list_store_set( store, &iter, 0, (const gchar *) key, -1 );
+    gtk_list_store_append(store, &iter);
+    gtk_list_store_set(store, &iter, 0, (const gchar *) key, -1);
 
     g_object_unref (store);
 }
@@ -308,9 +308,9 @@ parole_conf_dialog_add_clutter_sink (ParoleConfDialog *dialog, GtkComboBox *comb
     GtkListStore *store = GTK_LIST_STORE(gtk_combo_box_get_model(GTK_COMBO_BOX(combobox)));
     GtkTreeIter iter;
 
-    gtk_list_store_append( store, &iter );
-    gtk_list_store_set( store, &iter, 0, g_strdup("cluttersink"), -1 );
-    gtk_list_store_set( store, &iter, 1, g_strdup(_("Clutter (OpenGL)")), -1 );
+    gtk_list_store_append(store, &iter);
+    gtk_list_store_set(store, &iter, 0, g_strdup("cluttersink"), -1);
+    gtk_list_store_set(store, &iter, 1, g_strdup(_("Clutter (OpenGL)")), -1);
 
     g_object_unref (store);
 }

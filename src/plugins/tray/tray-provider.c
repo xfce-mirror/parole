@@ -330,21 +330,21 @@ delete_event_cb (GtkWidget *widget, GdkEvent *ev, TrayProvider *tray)
     gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG(dialog),
             _("Parole can be minimized to the system tray instead."));
 
-    minimize = gtk_dialog_add_button(   GTK_DIALOG(dialog),
-                                        _("Minimize to tray"),
-                                        GTK_RESPONSE_OK );
+    minimize = gtk_dialog_add_button(GTK_DIALOG(dialog),
+                                     _("Minimize to tray"),
+                                     GTK_RESPONSE_OK);
     img = gtk_image_new_from_icon_name ("go-down", GTK_ICON_SIZE_BUTTON);
     gtk_button_set_image (GTK_BUTTON (minimize), img);
 
-    button = gtk_dialog_add_button( GTK_DIALOG(dialog),
-                                    _("Cancel"),
-                                    GTK_RESPONSE_CANCEL );
+    button = gtk_dialog_add_button(GTK_DIALOG(dialog),
+                                   _("Cancel"),
+                                   GTK_RESPONSE_CANCEL);
     img = gtk_image_new_from_icon_name ("gtk-cancel", GTK_ICON_SIZE_BUTTON);
     gtk_button_set_image(GTK_BUTTON(button), img);
 
-    button = gtk_dialog_add_button(  GTK_DIALOG(dialog),
-                                     _("Quit"),
-                                     GTK_RESPONSE_CLOSE );
+    button = gtk_dialog_add_button(GTK_DIALOG(dialog),
+                                   _("Quit"),
+                                   GTK_RESPONSE_CLOSE);
     img = gtk_image_new_from_icon_name ("gtk-quit", GTK_ICON_SIZE_BUTTON);
     gtk_button_set_image(GTK_BUTTON(button), img);
 
@@ -362,9 +362,9 @@ delete_event_cb (GtkWidget *widget, GdkEvent *ev, TrayProvider *tray)
 
     gtk_widget_set_margin_start (GTK_WIDGET(check), 3);
 
-    gtk_widget_show_all( GTK_WIDGET(dialog) );
+    gtk_widget_show_all(GTK_WIDGET(dialog));
 
-    switch ( gtk_dialog_run (GTK_DIALOG (dialog)) )
+    switch (gtk_dialog_run (GTK_DIALOG (dialog)))
     {
         case GTK_RESPONSE_OK:
             {

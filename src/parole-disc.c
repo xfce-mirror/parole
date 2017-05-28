@@ -68,7 +68,7 @@ enum
     LAST_SIGNAL
 };
 
-static guint signals [LAST_SIGNAL] = { 0 };
+static guint signals[LAST_SIGNAL] = { 0 };
 
 G_DEFINE_TYPE (ParoleDisc, parole_disc, G_TYPE_OBJECT)
 
@@ -110,21 +110,21 @@ parole_disc_set_label(ParoleDisc *disc, const gchar *label)
 
     if ( g_strcmp0(label, _("Insert Disc")) != 0 ) {
         menu_label = g_strdup_printf ("%s '%s'", _("Play Disc"), label);
-        g_signal_emit (G_OBJECT (disc), signals [LABEL_CHANGED], 0, label);
+        g_signal_emit (G_OBJECT (disc), signals[LABEL_CHANGED], 0, label);
     } else {
         menu_label = g_strdup(label);
-        g_signal_emit (G_OBJECT (disc), signals [LABEL_CHANGED], 0, label);
+        g_signal_emit (G_OBJECT (disc), signals[LABEL_CHANGED], 0, label);
     }
 
-    gtk_menu_item_set_label( GTK_MENU_ITEM (disc->priv->disc_menu_item), menu_label );
+    gtk_menu_item_set_label(GTK_MENU_ITEM (disc->priv->disc_menu_item), menu_label);
     g_free(menu_label);
 }
 
 static void
 parole_disc_set_enabled(ParoleDisc *disc, gboolean enabled)
 {
-    gtk_widget_set_sensitive( GTK_WIDGET(disc->priv->disc_menu_item), enabled);
-    // g_signal_emit (G_OBJECT (disc), signals [DVD_ENABLED], 0, enabled);
+    gtk_widget_set_sensitive(GTK_WIDGET(disc->priv->disc_menu_item), enabled);
+    // g_signal_emit (G_OBJECT (disc), signals[DVD_ENABLED], 0, enabled);
 }
 
 static gboolean
@@ -169,7 +169,7 @@ parole_disc_media_activate_cb (GtkWidget *widget, ParoleDisc *disc)
 
     data = g_object_get_data (G_OBJECT (widget), "mount-data");
 
-    g_signal_emit (G_OBJECT (disc), signals [DISC_SELECTED], 0, data->uri, data->device);
+    g_signal_emit (G_OBJECT (disc), signals[DISC_SELECTED], 0, data->uri, data->device);
 }
 
 /**

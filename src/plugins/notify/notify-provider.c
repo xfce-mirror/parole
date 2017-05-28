@@ -142,9 +142,9 @@ notify_playing (NotifyProvider *notify, const ParoleStream *stream)
     }
 
     if (!album)
-        album = g_strdup( _("Unknown Album") );
+        album = g_strdup(_("Unknown Album"));
     if (!artist)
-        artist = g_strdup( _("Unknown Artist") );
+        artist = g_strdup(_("Unknown Artist"));
 
     if (!year)
         message = g_strdup_printf ("%s %s\n%s %s", _("<i>on</i>"), album, _("<i>by</i>"), artist);

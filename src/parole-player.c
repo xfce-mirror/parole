@@ -538,7 +538,7 @@ void parole_player_set_playlist_visible (ParolePlayer *player, gboolean visibili
     gint window_w, window_h, playlist_w;
     GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
 
-    gtk_widget_set_tooltip_text (GTK_WIDGET(player->priv->showhide_playlist_button), visibility ? _("Hide Playlist"):_("Show Playlist"));
+    gtk_widget_set_tooltip_text (GTK_WIDGET(player->priv->showhide_playlist_button), visibility ? _("Hide Playlist") : _("Show Playlist"));
 
     if (gtk_widget_get_visible (player->priv->playlist_nt) == visibility)
         return;
@@ -546,12 +546,12 @@ void parole_player_set_playlist_visible (ParolePlayer *player, gboolean visibili
     gtk_window_get_size (GTK_WINDOW (player->priv->window), &window_w, &window_h);
 
     /* Get the playlist width.  If we fail to get it, use the default 220. */
-    gtk_widget_get_allocation( GTK_WIDGET( player->priv->playlist_nt ), allocation );
+    gtk_widget_get_allocation(GTK_WIDGET(player->priv->playlist_nt), allocation);
     playlist_w = allocation->width;
     if (playlist_w == 1)
         playlist_w = 220;
 
-    g_simple_toggle_action_set_active( player->priv->toggle_playlist_action, visibility );
+    g_simple_toggle_action_set_active(player->priv->toggle_playlist_action, visibility);
     gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM(player->priv->showhide_playlist_menu_item), visibility);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(player->priv->showhide_playlist_button), visibility);
     if ( visibility ) {
@@ -579,7 +579,7 @@ void parole_player_toggle_playlist_action_cb (GSimpleAction *action)
 
     visible = gtk_widget_get_visible (parole_player->priv->playlist_nt);
 
-    parole_player_set_playlist_visible (parole_player, !visible );
+    parole_player_set_playlist_visible (parole_player, !visible);
 }
 
 static void
@@ -710,7 +710,7 @@ parole_player_clear_chapters (ParolePlayer *player)
     gint counter = 0;
 
     /* Clear the chapter menu options */
-    menu_items = gtk_container_get_children( GTK_CONTAINER (player->priv->chapters_menu) );
+    menu_items = gtk_container_get_children(GTK_CONTAINER(player->priv->chapters_menu));
 
     for (menu_iter = menu_items; menu_iter != NULL; menu_iter = g_list_next(menu_iter))
     {
@@ -759,10 +759,10 @@ parole_player_clear_subtitles (ParolePlayer *player)
     gtk_list_store_clear(player->priv->liststore_subtitles);
     gtk_list_store_append(GTK_LIST_STORE(player->priv->liststore_subtitles), &iter);
     gtk_list_store_set(GTK_LIST_STORE(player->priv->liststore_subtitles), &iter, 0, _("None"), -1);
-    gtk_combo_box_set_active( GTK_COMBO_BOX(player->priv->combobox_subtitles), 0 );
+    gtk_combo_box_set_active(GTK_COMBO_BOX(player->priv->combobox_subtitles), 0);
 
     /* Clear the subtitle menu options */
-    menu_items = gtk_container_get_children( GTK_CONTAINER (player->priv->subtitles_menu) );
+    menu_items = gtk_container_get_children(GTK_CONTAINER(player->priv->subtitles_menu));
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(player->priv->subtitles_group), TRUE);
 
     for (menu_iter = menu_items; menu_iter != NULL; menu_iter = g_list_next(menu_iter))
@@ -785,7 +785,7 @@ parole_player_set_subtitles_list (ParolePlayer *player, GList *subtitle_list)
 
     GtkWidget *menu_item;
 
-    parole_player_clear_subtitles( player );
+    parole_player_clear_subtitles(player);
 
     player->priv->subtitle_list = subtitle_list;
 
@@ -824,15 +824,15 @@ parole_player_clear_audio_tracks (ParolePlayer *player)
 
     /* Clear the subtitle menu options */
 
-    menu_items = gtk_container_get_children( GTK_CONTAINER (player->priv->languages_menu) );
+    menu_items = gtk_container_get_children(GTK_CONTAINER(player->priv->languages_menu));
 
     for (menu_iter = menu_items; menu_iter != NULL; menu_iter = g_list_next(menu_iter))
         gtk_widget_destroy(GTK_WIDGET(menu_iter->data));
     g_list_free(menu_items);
 
     empty_item = gtk_menu_item_new_with_label(_("Empty"));
-    gtk_widget_set_sensitive( empty_item, FALSE );
-    gtk_widget_show( empty_item );
+    gtk_widget_set_sensitive(empty_item, FALSE);
+    gtk_widget_show(empty_item);
 
     gtk_menu_shell_append (GTK_MENU_SHELL (player->priv->languages_menu), empty_item);
 }
@@ -848,9 +848,9 @@ parole_player_set_audio_list (ParolePlayer *player, GList *audio_list)
 
     GtkWidget *menu_item;
 
-    parole_player_clear_audio_tracks( player );
+    parole_player_clear_audio_tracks(player);
 
-    menu_iter = gtk_container_get_children( GTK_CONTAINER (player->priv->languages_menu) );
+    menu_iter = gtk_container_get_children(GTK_CONTAINER (player->priv->languages_menu));
 
     gtk_widget_destroy(GTK_WIDGET(menu_iter->data));
     g_list_free(menu_iter);
@@ -884,13 +884,13 @@ parole_player_set_audio_list (ParolePlayer *player, GList *audio_list)
         g_free (language);
     }
 
-    gtk_combo_box_set_active( GTK_COMBO_BOX(player->priv->combobox_audiotrack), 0 );
+    gtk_combo_box_set_active(GTK_COMBO_BOX(player->priv->combobox_audiotrack), 0);
 
     if (g_list_length (audio_list) >= 2) {
-        gtk_widget_set_sensitive( GTK_WIDGET( player->priv->combobox_audiotrack ), TRUE );
+        gtk_widget_set_sensitive(GTK_WIDGET(player->priv->combobox_audiotrack), TRUE);
         gtk_widget_show(player->priv->infobar);
     } else {
-        gtk_widget_set_sensitive( GTK_WIDGET( player->priv->combobox_audiotrack ), FALSE );
+        gtk_widget_set_sensitive(GTK_WIDGET(player->priv->combobox_audiotrack), FALSE);
     }
 }
 
@@ -939,7 +939,7 @@ parole_player_update_subtitles (ParolePlayer *player, ParoleGst *gst)
 
     parole_player_set_subtitles_list (player, list);
 
-    gtk_combo_box_set_active( GTK_COMBO_BOX(player->priv->combobox_subtitles), sub_index );
+    gtk_combo_box_set_active(GTK_COMBO_BOX(player->priv->combobox_subtitles), sub_index);
 
     if (g_list_length (list) != 1) {
         gtk_widget_show(player->priv->infobar);
@@ -953,7 +953,7 @@ static void
 parole_player_update_languages (ParolePlayer *player, ParoleGst *gst)
 {
     if (player->priv->update_languages == TRUE) {
-        if (gst_get_has_video( PAROLE_GST(player->priv->gst) )) {
+        if (gst_get_has_video(PAROLE_GST(player->priv->gst))) {
             parole_player_update_audio_tracks(player, gst);
             parole_player_update_subtitles(player, gst);
 
@@ -974,8 +974,8 @@ parole_player_show_audiobox (ParolePlayer *player)
     /* Only show the audiobox if we're sure there's no video playing and
        visualizations are disabled. */
     gtk_widget_hide(player->priv->logo_image);
-    if (!gst_get_has_video ( PAROLE_GST(player->priv->gst) ) &&
-        !gst_get_has_vis   ( PAROLE_GST(player->priv->gst) ) )
+    if (!gst_get_has_video(PAROLE_GST(player->priv->gst)) &&
+        !gst_get_has_vis(PAROLE_GST(player->priv->gst)))
     {
         gtk_widget_show(player->priv->audiobox);
         gtk_widget_hide(player->priv->videobox);
@@ -1073,7 +1073,7 @@ parole_player_select_custom_subtitle (GtkMenuItem *widget, gpointer data)
             TRACE ("Trying to use subtitle file %s", sub);
             player->priv->updated_subs = TRUE;
 
-            file = parole_media_list_get_selected_file( player->priv->list );
+            file = parole_media_list_get_selected_file(player->priv->list);
 
             /* Set the subtitles in gst as well as in the media list, for later
                retrieval. */
@@ -1212,14 +1212,14 @@ parole_player_recent_menu_clear_activated_cb (GtkWidget *widget, ParolePlayer *p
     gtk_message_dialog_set_markup  (GTK_MESSAGE_DIALOG(dlg),
                                     g_strdup_printf("<big><b>%s</b></big>",
                                     _("Clear Recent Items")));
-    gtk_message_dialog_format_secondary_text ( GTK_MESSAGE_DIALOG(dlg),
+    gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG(dlg),
     _("Are you sure you wish to clear your recent items history?  This cannot be undone."));
 
     gtk_dialog_add_button (GTK_DIALOG(dlg), _("Cancel"), 0);
     clear_button = gtk_dialog_add_button(GTK_DIALOG(dlg),
                                          "edit-clear",
                                          1);
-    gtk_button_set_label( GTK_BUTTON(clear_button), _("Clear Recent Items") );
+    gtk_button_set_label(GTK_BUTTON(clear_button), _("Clear Recent Items"));
 
     gtk_widget_show_all(dlg);
 
@@ -1436,14 +1436,14 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
     player->priv->internal_range_change = TRUE;
     if (live || duration == 0) {
         parole_player_change_range_value (player, 0);
-        gtk_widget_set_visible( player->priv->label_duration, FALSE );
-        gtk_widget_set_visible( player->priv->label_divider, FALSE );
-        gtk_widget_set_visible( player->priv->label_elapsed, FALSE );
+        gtk_widget_set_visible(player->priv->label_duration, FALSE);
+        gtk_widget_set_visible(player->priv->label_divider, FALSE);
+        gtk_widget_set_visible(player->priv->label_elapsed, FALSE);
     } else {
         gtk_range_set_range (GTK_RANGE (player->priv->range), 0, duration);
-        gtk_widget_set_visible( player->priv->label_duration, TRUE );
-        gtk_widget_set_visible( player->priv->label_divider, TRUE );
-        gtk_widget_set_visible( player->priv->label_elapsed, TRUE );
+        gtk_widget_set_visible(player->priv->label_duration, TRUE);
+        gtk_widget_set_visible(player->priv->label_divider, TRUE);
+        gtk_widget_set_visible(player->priv->label_elapsed, TRUE);
     }
 
     if (duration != 0) {
@@ -2019,8 +2019,8 @@ parole_player_window_state_event (GtkWidget *widget,
     if (event->new_window_state & GDK_WINDOW_STATE_FULLSCREEN)
         fullscreen = TRUE;
 
-    if ( player->priv->full_screen != fullscreen )
-        parole_player_reset_controls( player, fullscreen );
+    if (player->priv->full_screen != fullscreen)
+        parole_player_reset_controls(player, fullscreen);
 
     return TRUE;
 }
@@ -2276,10 +2276,10 @@ parole_player_gst_widget_button_press (GtkWidget *widget, GdkEventButton *ev, Pa
     if ( ev->type == GDK_2BUTTON_PRESS ) {
         g_action_activate (G_ACTION(player->priv->media_fullscreen_action), NULL);
         ret_val = TRUE;
-    } else if ( ev->button == 1 && gtk_widget_get_visible (player->priv->logo_image) ) {
+    } else if (ev->button == 1 && gtk_widget_get_visible (player->priv->logo_image)) {
         /* Clicking on the play or replay logo will activate appropriate functionality */
-        h = gtk_widget_get_allocated_height ( widget );
-        w = gtk_widget_get_allocated_width ( widget );
+        h = gtk_widget_get_allocated_height (widget);
+        w = gtk_widget_get_allocated_width (widget);
 
         if ( (ev->x > ((w / 2) - 128) && ev->x < ((w / 2) + 128)) &&
              (ev->y > ((h / 2) - 128) && ev->y < ((h / 2) + 128)) )
@@ -2482,10 +2482,10 @@ void parole_player_volume_mute (GtkWidget *widget, ParolePlayer *player)
         g_object_get (G_OBJECT (player->priv->conf),
                       "volume", &value,
                       NULL);
-        gtk_menu_item_set_label( GTK_MENU_ITEM(player->priv->mute), _("Mute") );
+        gtk_menu_item_set_label(GTK_MENU_ITEM(player->priv->mute), _("Mute"));
     } else {
         value = 0;
-        gtk_menu_item_set_label( GTK_MENU_ITEM(player->priv->mute), _("Unmute") );
+        gtk_menu_item_set_label(GTK_MENU_ITEM(player->priv->mute), _("Unmute"));
     }
     gtk_scale_button_set_value (GTK_SCALE_BUTTON (player->priv->volume), (gdouble)(value)/100);
 }
@@ -3063,10 +3063,10 @@ parole_audiobox_expose_event (GtkWidget *w, GdkEventExpose *ev, ParolePlayer *pl
     g_free(allocation);
 
     /* Nothing to do if the homogeneous setting is already good */
-    if ( gtk_box_get_homogeneous( GTK_BOX(w) ) == homogeneous )
+    if (gtk_box_get_homogeneous(GTK_BOX(w)) == homogeneous)
         return FALSE;
 
-    gtk_box_set_homogeneous( GTK_BOX(w), homogeneous );
+    gtk_box_set_homogeneous(GTK_BOX(w), homogeneous);
 
     /* Expand the coverart if the parent box packing is homogenous */
     gtk_box_set_child_packing (GTK_BOX(w),
@@ -3383,8 +3383,8 @@ parole_player_init (ParolePlayer *player)
 
     // Recent Menu file filter
     recent_filter = parole_get_supported_recent_media_filter ();
-    gtk_recent_filter_add_application( recent_filter, "parole" );
-    gtk_recent_chooser_set_filter( GTK_RECENT_CHOOSER(player->priv->recent_menu), recent_filter);
+    gtk_recent_filter_add_application(recent_filter, "parole");
+    gtk_recent_chooser_set_filter(GTK_RECENT_CHOOSER(player->priv->recent_menu), recent_filter);
 
     // Recent Menu Separator
     recent_separator = gtk_separator_menu_item_new();
@@ -3401,7 +3401,7 @@ parole_player_init (ParolePlayer *player)
             G_CALLBACK (parole_player_recent_menu_clear_activated_cb), player);
 
     /* Attach the Recent Menu */
-    gtk_menu_item_set_submenu( GTK_MENU_ITEM(recent_menu), player->priv->recent_menu );
+    gtk_menu_item_set_submenu(GTK_MENU_ITEM(recent_menu), player->priv->recent_menu);
 
     /* DVD Menu */
     player->priv->dvd_menu = GTK_WIDGET(gtk_builder_get_object (builder, "dvd-menu"));
@@ -3642,7 +3642,7 @@ parole_player_init (ParolePlayer *player)
     gtk_overlay_add_overlay(GTK_OVERLAY(controls_overlay), player->priv->revealer);
     gtk_widget_show_all(player->priv->revealer);
 
-    gtk_box_set_child_packing( GTK_BOX(player->priv->control), GTK_WIDGET(play_box), TRUE, TRUE, 2, GTK_PACK_START );
+    gtk_box_set_child_packing(GTK_BOX(player->priv->control), GTK_WIDGET(play_box), TRUE, TRUE, 2, GTK_PACK_START);
     gtk_container_set_border_width(GTK_CONTAINER(play_box), 3);
     gtk_widget_show_all(controls_parent);
 
@@ -3667,7 +3667,7 @@ parole_player_init (ParolePlayer *player)
 
     /* Time Slider */
     player->priv->range = GTK_WIDGET (gtk_builder_get_object (builder, "media_progress_slider"));
-    gtk_widget_set_name( player->priv->range, "ParoleScale" );
+    gtk_widget_set_name(player->priv->range, "ParoleScale");
 
     /* Buffering Progressbar */
     player->priv->progressbar_buffering = GTK_WIDGET (gtk_builder_get_object (builder, "media_buffering_progressbar"));
@@ -3687,8 +3687,8 @@ parole_player_init (ParolePlayer *player)
 
     // Initialize the InfoBar
     player->priv->infobar = gtk_info_bar_new ();
-    gtk_info_bar_set_message_type (GTK_INFO_BAR (player->priv->infobar),
-                                   GTK_MESSAGE_QUESTION);
+    gtk_info_bar_set_message_type(GTK_INFO_BAR(player->priv->infobar),
+                                  GTK_MESSAGE_QUESTION);
 
     gtk_widget_set_no_show_all (player->priv->infobar, TRUE);
 
@@ -3696,7 +3696,7 @@ parole_player_init (ParolePlayer *player)
     g_signal_connect (content_area, "size-allocate",
               G_CALLBACK (on_content_area_size_allocate), player);
 
-    gtk_box_pack_start( GTK_BOX( hbox_infobar ), player->priv->infobar, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(hbox_infobar), player->priv->infobar, TRUE, TRUE, 0);
 
     // Initialize the Audio Track combobox
     player->priv->liststore_audiotrack = gtk_list_store_new(1, G_TYPE_STRING);
@@ -3704,8 +3704,8 @@ parole_player_init (ParolePlayer *player)
     player->priv->audio_list = NULL;
 
     cell = gtk_cell_renderer_text_new();
-    gtk_cell_layout_pack_start( GTK_CELL_LAYOUT( player->priv->combobox_audiotrack ), cell, TRUE );
-    gtk_cell_layout_set_attributes( GTK_CELL_LAYOUT( player->priv->combobox_audiotrack ), cell, "text", 0, NULL );
+    gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(player->priv->combobox_audiotrack), cell, TRUE);
+    gtk_cell_layout_set_attributes(GTK_CELL_LAYOUT(player->priv->combobox_audiotrack), cell, "text", 0, NULL);
 
     g_signal_connect (player->priv->combobox_audiotrack, "changed",
             G_CALLBACK (parole_player_combo_box_audiotrack_changed_cb), player);
@@ -3723,8 +3723,8 @@ parole_player_init (ParolePlayer *player)
     player->priv->subtitle_list = NULL;
 
     sub_cell = gtk_cell_renderer_text_new();
-    gtk_cell_layout_pack_start( GTK_CELL_LAYOUT( player->priv->combobox_subtitles ), sub_cell, TRUE );
-    gtk_cell_layout_set_attributes( GTK_CELL_LAYOUT( player->priv->combobox_subtitles ), sub_cell, "text", 0, NULL );
+    gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(player->priv->combobox_subtitles), sub_cell, TRUE);
+    gtk_cell_layout_set_attributes(GTK_CELL_LAYOUT(player->priv->combobox_subtitles), sub_cell, "text", 0, NULL);
 
     g_signal_connect (player->priv->combobox_subtitles, "changed",
             G_CALLBACK (parole_player_combo_box_subtitles_changed_cb), player);
@@ -3907,7 +3907,7 @@ void parole_player_set_audiotrack_radio_menu_item_selected(ParolePlayer *player,
     GList *menu_items, *menu_iter;
     gint counter = 0;
 
-    menu_items = gtk_container_get_children( GTK_CONTAINER (player->priv->languages_menu) );
+    menu_items = gtk_container_get_children(GTK_CONTAINER (player->priv->languages_menu));
 
     for (menu_iter = menu_items; menu_iter != NULL; menu_iter = g_list_next(menu_iter))
     {
@@ -3923,7 +3923,7 @@ void parole_player_set_audiotrack_radio_menu_item_selected(ParolePlayer *player,
 void parole_player_set_subtitle_radio_menu_item_selected(ParolePlayer *player, gint sub_index)
 {
     GList *menu_items, *menu_iter;
-    menu_items = gtk_container_get_children( GTK_CONTAINER (player->priv->subtitles_menu) );
+    menu_items = gtk_container_get_children(GTK_CONTAINER (player->priv->subtitles_menu));
 
     if (sub_index <= 0) {
         gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menu_items->data), TRUE);
@@ -3948,7 +3948,7 @@ void parole_player_audiotrack_radio_menu_item_changed_cb(GtkWidget *widget, Paro
     gint counter = 0;
     gint combobox_index;
 
-    menu_items = gtk_container_get_children( GTK_CONTAINER (player->priv->languages_menu) );
+    menu_items = gtk_container_get_children(GTK_CONTAINER (player->priv->languages_menu));
 
     for (menu_iter = menu_items; menu_iter != NULL; menu_iter = g_list_next(menu_iter))
     {
@@ -3972,7 +3972,7 @@ void parole_player_subtitles_radio_menu_item_changed_cb(GtkWidget *widget, Parol
     gint counter = 0;
 
     GList *menu_items, *menu_iter;
-    menu_items = gtk_container_get_children( GTK_CONTAINER (player->priv->subtitles_menu) );
+    menu_items = gtk_container_get_children(GTK_CONTAINER (player->priv->subtitles_menu));
 
     for (menu_iter = menu_items; menu_iter != NULL; menu_iter = g_list_next(menu_iter))
     {

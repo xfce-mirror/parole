@@ -72,7 +72,7 @@ static struct
 {
     ParolePlFormat format;
     gchar * ext;
-} playlist_format_map [] = {
+} playlist_format_map[] = {
     { PAROLE_PL_FORMAT_UNKNOWN, ""      },
     { PAROLE_PL_FORMAT_M3U,     ".m3u"  },
     { PAROLE_PL_FORMAT_PLS,     ".pls"  },
@@ -199,7 +199,7 @@ enum
     LAST_SIGNAL
 };
 
-static guint signals [LAST_SIGNAL] = { 0 };
+static guint signals[LAST_SIGNAL] = { 0 };
 
 G_DEFINE_TYPE (ParoleMediaList, parole_media_list, GTK_TYPE_BOX)
 
@@ -230,7 +230,7 @@ parole_media_list_set_playlist_count (ParoleMediaList *list, gint n_items)
      * Will emit the signal media_cursor_changed with FALSE because there is no any
      * row remaining, so the player can disable click on the play button.
      */
-    g_signal_emit (G_OBJECT (list), signals [MEDIA_CURSOR_CHANGED], 0, n_items != 0);
+    g_signal_emit (G_OBJECT (list), signals[MEDIA_CURSOR_CHANGED], 0, n_items != 0);
 }
 
 gint
@@ -325,7 +325,7 @@ parole_media_list_add (ParoleMediaList *list, ParoleFile *file, gboolean disc, g
             parole_media_list_select_path (list, disc, path);
         gtk_tree_path_free (path);
         if ( emit )
-            g_signal_emit (G_OBJECT (list), signals [MEDIA_ACTIVATED], 0, row);
+            g_signal_emit (G_OBJECT (list), signals[MEDIA_ACTIVATED], 0, row);
         gtk_tree_row_reference_free (row);
     }
 
@@ -364,7 +364,7 @@ parole_media_list_files_open (ParoleMediaList *list, GSList *files, gboolean dis
     TRACE ("Adding %i files", len);
 
     if ( len > 1 && !disc )
-        g_signal_emit (G_OBJECT (list), signals [SHOW_PLAYLIST], 0, TRUE);
+        g_signal_emit (G_OBJECT (list), signals[SHOW_PLAYLIST], 0, TRUE);
 
     if ( len != 0 )
     {
@@ -390,7 +390,7 @@ parole_media_list_add_cdda_tracks (ParoleMediaList *list, gint n_tracks)
 
     for (i = 0; i < n_tracks; i++)
     {
-        file = parole_file_new_cdda_track( i+1, g_strdup_printf( _("Track %i"), i+1) );
+        file = parole_file_new_cdda_track(i+1, g_strdup_printf(_("Track %i"), i+1));
         files = g_slist_append(files, file);
     }
 
@@ -406,7 +406,7 @@ parole_media_list_add_dvd_chapters (ParoleMediaList *list, gint n_chapters)
 
     for (i = 0; i < n_chapters; i++)
     {
-        file = PAROLE_FILE(parole_file_new_dvd_chapter( i+1, g_strdup_printf( _("Chapter %i"), i+1) ));
+        file = PAROLE_FILE(parole_file_new_dvd_chapter(i+1, g_strdup_printf(_("Chapter %i"), i+1)));
         files = g_slist_append(files, file);
     }
 
@@ -435,7 +435,7 @@ parole_media_list_open_uri (ParoleMediaList *list, const gchar *uri)
     ParoleFile *file;
 
     if ( parole_is_uri_disc (uri) ) {
-        g_signal_emit (G_OBJECT (list), signals [URI_OPENED], 0, uri);
+        g_signal_emit (G_OBJECT (list), signals[URI_OPENED], 0, uri);
     } else {
         file = parole_file_new (uri);
         parole_media_list_add (list, file, FALSE, TRUE, TRUE);
@@ -455,7 +455,7 @@ parole_media_list_iso_opened_cb (ParoleMediaChooser *chooser,
 {
     gchar *uri;
     uri = g_strdup_printf ("dvd://%s", filename);
-    g_signal_emit (G_OBJECT (list), signals [ISO_OPENED], 0, uri);
+    g_signal_emit (G_OBJECT (list), signals[ISO_OPENED], 0, uri);
 }
 
 static void
@@ -570,7 +570,7 @@ gboolean parole_media_list_key_press (GtkWidget *widget, GdkEventKey *ev, Parole
         case GDK_KEY_Page_Up:
         case GDK_KEY_Escape:
             // FIXME: There has got to be a better way.
-            vbox_player = GTK_WIDGET(gtk_container_get_children( GTK_CONTAINER(gtk_widget_get_parent(gtk_widget_get_parent(gtk_widget_get_parent(gtk_widget_get_parent(gtk_widget_get_parent(gtk_widget_get_parent(widget))))))) )[0].data);
+            vbox_player = GTK_WIDGET(gtk_container_get_children(GTK_CONTAINER(gtk_widget_get_parent(gtk_widget_get_parent(gtk_widget_get_parent(gtk_widget_get_parent(gtk_widget_get_parent(gtk_widget_get_parent(widget))))))) )[0].data);
             gtk_widget_grab_focus(vbox_player);
             return TRUE;
             break;
@@ -1144,13 +1144,13 @@ parole_media_list_row_activated_cb (GtkTreeView *view, GtkTreePath *path,
     else
         row = gtk_tree_row_reference_new (gtk_tree_view_get_model (GTK_TREE_VIEW (list->priv->disc_view)), path);
 
-    g_signal_emit (G_OBJECT (list), signals [MEDIA_ACTIVATED], 0, row);
+    g_signal_emit (G_OBJECT (list), signals[MEDIA_ACTIVATED], 0, row);
 }
 
 static void
 parole_media_list_selection_changed_cb (GtkTreeSelection *sel, ParoleMediaList *list)
 {
-    g_signal_emit  (G_OBJECT (list), signals [MEDIA_CURSOR_CHANGED], 0,
+    g_signal_emit  (G_OBJECT (list), signals[MEDIA_CURSOR_CHANGED], 0,
                     gtk_tree_selection_count_selected_rows (sel) > 0);
 }
 
@@ -1709,7 +1709,7 @@ parole_media_list_add_by_path (ParoleMediaList *list, const gchar *path, gboolea
     if (g_path_is_absolute(path)) {
         full_path = g_strdup(path);
     } else {
-        if (g_file_test( g_strjoin("/", g_get_current_dir(), g_strdup(path), NULL), G_FILE_TEST_EXISTS)) {
+        if (g_file_test(g_strjoin("/", g_get_current_dir(), g_strdup(path), NULL), G_FILE_TEST_EXISTS)) {
             full_path = g_strjoin("/", g_get_current_dir(), g_strdup(path), NULL);
         } else {
             full_path = g_strdup(path);
@@ -1800,7 +1800,7 @@ GtkTreeRowReference *parole_media_list_get_row_n (ParoleMediaList *list,
     if (wanted_row == -1)
         return NULL;
 
-    path = gtk_tree_path_new_from_string( g_strdup_printf("%i", wanted_row) );
+    path = gtk_tree_path_new_from_string(g_strdup_printf("%i", wanted_row));
 
     if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0) {
         if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path))

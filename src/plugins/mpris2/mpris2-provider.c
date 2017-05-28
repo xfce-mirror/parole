@@ -1031,10 +1031,10 @@ mpris2_provider_set_player (ParoleProviderPlugin *plugin, ParoleProviderPlayer *
                       G_CALLBACK (conf_changed_cb), plugin);
 
     window = parole_provider_player_get_main_window(provider->player);
-    g_signal_connect(   G_OBJECT(window),
-                        "window-state-event",
-                        G_CALLBACK(on_window_state_event),
-                        provider );
+    g_signal_connect(G_OBJECT(window),
+                     "window-state-event",
+                     G_CALLBACK(on_window_state_event),
+                     provider);
 }
 
 static void
