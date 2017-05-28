@@ -67,7 +67,6 @@
 #include "parole-debug.h"
 #include "parole-button.h"
 #include "enum-gtypes.h"
-#include "parole-debug.h"
 
 #ifdef HAVE_CLUTTER
 #include "parole-clutter.h"
