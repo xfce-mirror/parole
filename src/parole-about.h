@@ -20,11 +20,11 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_ABOUT_H
-#define __PAROLE_ABOUT_H
+#ifndef SRC_PAROLE_ABOUT_H_
+#define SRC_PAROLE_ABOUT_H_
 
 #include <gtk/gtk.h>
 
 void        parole_about    (GtkWindow *parent);
 
-#endif /* __PAROLE_ABOUT_H */
+#endif /* SRC_PAROLE_ABOUT_H_ */

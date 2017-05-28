@@ -20,8 +20,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_PLUGINS_MANAGER_H
-#define __PAROLE_PLUGINS_MANAGER_H
+#ifndef SRC_PAROLE_PLUGINS_MANAGER_H_
+#define SRC_PAROLE_PLUGINS_MANAGER_H_
 
 #include <glib-object.h>
 #include <src/misc/parole-provider-player.h>
@@ -62,4 +62,4 @@ void                                parole_plugins_manager_pack       (ParolePlu
 
 G_END_DECLS
 
-#endif /* __PAROLE_PLUGIN_MANAGER_H */
+#endif /* SRC_PAROLE_PLUGINS_MANAGER_H_ */

@@ -24,8 +24,8 @@
 #error "Only <parole.h> can be included directly."
 #endif
 
-#ifndef __PAROLE_STREAM_H
-#define __PAROLE_STREAM_H
+#ifndef SRC_MISC_PAROLE_STREAM_H_
+#define SRC_MISC_PAROLE_STREAM_H_
 
 #include <glib-object.h>
 #include <gdk/gdkx.h>
@@ -112,4 +112,4 @@ void                    parole_stream_init_properties   (ParoleStream *stream);
 
 G_END_DECLS
 
-#endif /* __PAROLE_STREAM_H */
+#endif /* SRC_MISC_PAROLE_STREAM_H_ */

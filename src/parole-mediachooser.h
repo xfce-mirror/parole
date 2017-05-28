@@ -20,8 +20,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_MEDIA_CHOOSER_H
-#define __PAROLE_MEDIA_CHOOSER_H
+#ifndef SRC_PAROLE_MEDIACHOOSER_H_
+#define SRC_PAROLE_MEDIACHOOSER_H_
 
 #include <glib-object.h>
 #include <gtk/gtk.h>
@@ -43,4 +43,4 @@ ParoleMediaChooser      *parole_media_chooser_open_local    (GtkWidget *parent);
 
 G_END_DECLS
 
-#endif /* __PAROLE_MEDIA_CHOOSER_H */
+#endif /* SRC_PAROLE_MEDIACHOOSER_H_ */

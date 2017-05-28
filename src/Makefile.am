@@ -126,10 +126,10 @@ enum-gtypes.h: stamp-enum-gtypes.h
 	@true
 stamp-enum-gtypes.h: $(parole_glib_enum_headers) Makefile
 	( cd $(srcdir) && glib-mkenums \
-		--fhead "#ifndef __ENUM_GTYPES_H__\n#define __ENUM_GTYPES_H__\n#include <glib-object.h>\nG_BEGIN_DECLS\n" \
+		--fhead "#ifndef SRC_ENUM_GTYPES_H_\n#define SRC_ENUM_GTYPES_H_\n#include <glib-object.h>\nG_BEGIN_DECLS\n" \
 		--fprod "/* enumerations from \"@filename@\" */\n" \
 		--vhead "GType @enum_name@_get_type (void);\n#define ENUM_GTYPE_@ENUMSHORT@ (@enum_name@_get_type())\n" \
-		--ftail "G_END_DECLS\n\n#endif /* __ENUM_GTYPES_H__ */" \
+		--ftail "G_END_DECLS\n\n#endif /* SRC_ENUM_GTYPES_H_ */" \
 		$(parole_glib_enum_headers) ) > xgen-enum.h \
 	&& (cmp -s xgen-enum.h enum-gtypes.h || cp xgen-enum.h enum-gtypes.h) \
 	&& rm -f xgen-enum.h \

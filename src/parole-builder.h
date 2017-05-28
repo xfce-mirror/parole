@@ -20,8 +20,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_BUILDER_H
-#define __PAROLE_BUILDER_H
+#ifndef SRC_PAROLE_BUILDER_H_
+#define SRC_PAROLE_BUILDER_H_
 
 #include <glib-object.h>
 #include <gtk/gtk.h>
@@ -35,4 +35,4 @@ GtkBuilder      *parole_builder_new_from_string     (const gchar *ui,
 
 G_END_DECLS
 
-#endif /* __PAROLE_BUILDER_H */
+#endif /* SRC_PAROLE_BUILDER_H_ */

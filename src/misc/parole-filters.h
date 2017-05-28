@@ -24,8 +24,8 @@
 #error "Only <parole.h> can be included directly."
 #endif
 
-#ifndef __PAROLE_FILTERS_H
-#define __PAROLE_FILTERS_H
+#ifndef SRC_MISC_PAROLE_FILTERS_H_
+#define SRC_MISC_PAROLE_FILTERS_H_
 
 #include <gtk/gtk.h>
 
@@ -47,4 +47,4 @@ gboolean            parole_file_filter                          (GtkFileFilter *
 
 G_END_DECLS
 
-#endif /* PAROLE_FILTERS_H */
+#endif /* SRC_MISC_PAROLE_FILTERS_H_ */

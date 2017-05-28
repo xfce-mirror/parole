@@ -20,8 +20,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_COMMON_H_
-#define __PAROLE_COMMON_H_
+#ifndef SRC_COMMON_PAROLE_COMMON_H_
+#define SRC_COMMON_PAROLE_COMMON_H_
 
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
@@ -45,4 +45,4 @@ void        parole_window_normal_cursor     (GdkWindow *window);
 
 
 
-#endif /* __PAROLE_COMMON_ */
+#endif /* SRC_COMMON_PAROLE_COMMON_H_ */

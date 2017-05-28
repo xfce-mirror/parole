@@ -20,8 +20,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_H_
-#define __PAROLE_H_
+#ifndef SRC_MISC_PAROLE_H_
+#define SRC_MISC_PAROLE_H_
 
 #define __PAROLE_H_INSIDE__
 
@@ -187,4 +187,4 @@ type_name##_register_type (ParoleProviderPlugin *provider_plugin_def) 		\
 
 #undef __PAROLE_H_INSIDE__
 
-#endif /*__PAROLE_H_*/
+#endif /* SRC_MISC_PAROLE_H_ */

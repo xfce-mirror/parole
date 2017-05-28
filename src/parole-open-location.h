@@ -20,8 +20,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_OPEN_LOCATION_H
-#define __PAROLE_OPEN_LOCATION_H
+#ifndef SRC_PAROLE_OPEN_LOCATION_H_
+#define SRC_PAROLE_OPEN_LOCATION_H_
 
 #include <glib-object.h>
 #include <gtk/gtk.h>
@@ -41,4 +41,4 @@ ParoleOpenLocation  *parole_open_location            (GtkWidget *parent);
 
 G_END_DECLS
 
-#endif /* __PAROLE_OPEN_LOCATION_H */
+#endif /* SRC_PAROLE_OPEN_LOCATION_H_ */

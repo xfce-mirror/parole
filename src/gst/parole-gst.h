@@ -20,8 +20,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_GST_H
-#define __PAROLE_GST_H
+#ifndef SRC_GST_PAROLE_GST_H_
+#define SRC_GST_PAROLE_GST_H_
 
 #include <glib-object.h>
 #include <gst/gst.h>
@@ -183,4 +183,4 @@ const ParoleStream
 
 G_END_DECLS
 
-#endif /* __PAROLE_GST_H */
+#endif /* SRC_GST_PAROLE_GST_H_ */

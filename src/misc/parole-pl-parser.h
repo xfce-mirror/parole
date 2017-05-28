@@ -24,8 +24,8 @@
 #error "Only <parole.h> can be included directly."
 #endif
 
-#ifndef __PAROLE_PL_PARSER_H
-#define __PAROLE_PL_PARSER_H
+#ifndef SRC_MISC_PAROLE_PL_PARSER_H_
+#define SRC_MISC_PAROLE_PL_PARSER_H_
 
 #include <glib.h>
 
@@ -68,4 +68,4 @@ gboolean            parole_pl_parser_save_from_files                (GSList *fil
 
 G_END_DECLS
 
-#endif /* __PAROLE_PL_PARSER_H */
+#endif /* SRC_MISC_PAROLE_PL_PARSER_H_ */

@@ -27,8 +27,8 @@
  *
  */
 
-#ifndef PAROLE_SUBTITLE_ENCODING_H
-#define PAROLE_SUBTITLE_ENCODING_H
+#ifndef SRC_PAROLE_SUBTITLE_ENCODING_H_
+#define SRC_PAROLE_SUBTITLE_ENCODING_H_
 
 #include <gtk/gtk.h>
 
@@ -38,4 +38,4 @@ void            parole_subtitle_encoding_set            (GtkComboBox *combo, con
 
 const char     *parole_subtitle_encoding_get_selected   (GtkComboBox *combo);
 
-#endif /* PAROLE_SUBTITLE_ENCODING_H */
+#endif /* SRC_PAROLE_SUBTITLE_ENCODING_H_ */

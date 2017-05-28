@@ -20,8 +20,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_SCREEN_SAVER_H
-#define __PAROLE_SCREEN_SAVER_H
+#ifndef SRC_COMMON_PAROLE_SCREENSAVER_H_
+#define SRC_COMMON_PAROLE_SCREENSAVER_H_
 
 #include <glib-object.h>
 #include <gtk/gtk.h>
@@ -53,4 +53,4 @@ void                parole_screen_saver_uninhibit   (ParoleScreenSaver *saver, G
 
 G_END_DECLS
 
-#endif /* __PAROLE_SCREEN_SAVER_H */
+#endif /* SRC_COMMON_PAROLE_SCREENSAVER_H_ */

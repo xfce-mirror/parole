@@ -20,8 +20,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef MPRIS2_PROVIDER_H_
-#define MPRIS2_PROVIDER_H_
+#ifndef SRC_PLUGINS_MPRIS2_MPRIS2_PROVIDER_H_
+#define SRC_PLUGINS_MPRIS2_MPRIS2_PROVIDER_H_
 
 #include <src/misc/parole.h>
 #include <src/parole-conf.h>
@@ -44,4 +44,4 @@ void  mpris2_provider_register_type (ParoleProviderPlugin *plugin);
 
 G_END_DECLS
 
-#endif /*MPRIS2_PROVIDER_H_*/
+#endif /* SRC_PLUGINS_MPRIS2_MPRIS2_PROVIDER_H_ */

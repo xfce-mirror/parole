@@ -20,8 +20,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_DEBUG_H
-#define __PAROLE_DEBUG_H
+#ifndef SRC_MISC_PAROLE_DEBUG_H_
+#define SRC_MISC_PAROLE_DEBUG_H_
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -65,4 +65,4 @@ void        parole_debug_enum_full   (const gchar *func,
 
 G_END_DECLS
 
-#endif /* __PAROLE_DEBUG_H */
+#endif /* SRC_MISC_PAROLE_DEBUG_H_ */

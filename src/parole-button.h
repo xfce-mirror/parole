@@ -20,8 +20,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_BUTTON_H
-#define __PAROLE_BUTTON_H
+#ifndef SRC_PAROLE_BUTTON_H_
+#define SRC_PAROLE_BUTTON_H_
 
 #include <glib-object.h>
 
@@ -70,4 +70,4 @@ G_END_DECLS
 
 #endif /*HAVE_XF86_KEYSYM*/
 
-#endif /* __PAROLE_BUTTON_H */
+#endif /* SRC_PAROLE_BUTTON_H_ */

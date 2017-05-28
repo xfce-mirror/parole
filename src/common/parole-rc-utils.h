@@ -20,8 +20,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __RC_UTILS_
-#define __RC_UTILS_
+#ifndef SRC_COMMON_PAROLE_RC_UTILS_H_
+#define SRC_COMMON_PAROLE_RC_UTILS_H_
 
 #include <libxfce4util/libxfce4util.h>
 
@@ -47,4 +47,4 @@ void      parole_clear_history_file       (void);
 
 void      parole_clear_history_file_full  (const gchar *relpath);
 
-#endif /* __RC_UTILS_ */
+#endif /* SRC_COMMON_PAROLE_RC_UTILS_H_ */

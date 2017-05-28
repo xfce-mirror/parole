@@ -20,8 +20,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_CONF_H
-#define __PAROLE_CONF_H
+#ifndef SRC_PAROLE_CONF_H_
+#define SRC_PAROLE_CONF_H_
 
 #include <glib-object.h>
 
@@ -55,4 +55,4 @@ void                     parole_conf_xfconf_init_failed (void);
 
 G_END_DECLS;
 
-#endif /* __PAROLE_CONF_H */
+#endif /* SRC_PAROLE_CONF_H_ */

@@ -20,12 +20,12 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_VIS_H_
-#define __PAROLE_VIS_H_
+#ifndef SRC_PAROLE_VIS_H_
+#define SRC_PAROLE_VIS_H_
 
 #include <gst/gst.h>
 #include <glib.h>
 
 GHashTable        *parole_vis_get_plugins           (void);
 
-#endif /* __PAROLE_VIS_H_ */
+#endif /* SRC_PAROLE_VIS_H_ */

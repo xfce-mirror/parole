@@ -20,8 +20,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_UTILS_H_
-#define __PAROLE_UTILS_H_
+#ifndef SRC_PAROLE_UTILS_H_
+#define SRC_PAROLE_UTILS_H_
 
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
@@ -64,4 +64,4 @@ gboolean    g_simple_toggle_action_get_active   (GSimpleAction *simple);
 void        g_simple_toggle_action_set_active   (GSimpleAction *simple,
                                                  gboolean active);
 
-#endif /* __PAROLE_UTILS_ */
+#endif /* SRC_PAROLE_UTILS_H_ */

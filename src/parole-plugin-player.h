@@ -20,8 +20,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_PLUGIN_PLAYER_H
-#define __PAROLE_PLUGIN_PLAYER_H
+#ifndef SRC_PAROLE_PLUGIN_PLAYER_H_
+#define SRC_PAROLE_PLUGIN_PLAYER_H_
 
 #include <glib-object.h>
 
@@ -52,4 +52,4 @@ ParolePluginPlayer             *parole_plugin_player_new             (void);
 
 G_END_DECLS
 
-#endif /* __PAROLE_PLUGIN_PLAYER_H */
+#endif /* SRC_PAROLE_PLUGIN_PLAYER_H_ */

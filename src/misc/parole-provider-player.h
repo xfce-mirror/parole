@@ -24,8 +24,8 @@
 #error "Only <parole.h> can be included directly."
 #endif
 
-#ifndef __PAROLE_PROVIDER_PLAYER_H__
-#define __PAROLE_PROVIDER_PLAYER_H__
+#ifndef SRC_MISC_PAROLE_PROVIDER_PLAYER_H_
+#define SRC_MISC_PAROLE_PROVIDER_PLAYER_H_
 
 #include <gtk/gtk.h>
 #include "parole-stream.h"
@@ -159,4 +159,4 @@ gboolean    parole_provider_player_set_fullscreen(ParoleProviderPlayer *player,
 
 G_END_DECLS
 
-#endif /* __PAROLE_PLUGIN_IFACE_H__ */
+#endif /* SRC_MISC_PAROLE_PROVIDER_PLAYER_H_ */

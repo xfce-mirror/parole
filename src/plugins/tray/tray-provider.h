@@ -20,8 +20,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef TRAY_PROVIDER_H_
-#define TRAY_PROVIDER_H_
+#ifndef SRC_PLUGINS_TRAY_TRAY_PROVIDER_H_
+#define SRC_PLUGINS_TRAY_TRAY_PROVIDER_H_
 
 #include <src/misc/parole.h>
 
@@ -43,4 +43,4 @@ void  tray_provider_register_type   (ParoleProviderPlugin *provider);
 
 G_END_DECLS
 
-#endif /*TRAY_PROVIDER_H_*/
+#endif /* SRC_PLUGINS_TRAY_TRAY_PROVIDER_H_ */

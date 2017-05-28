@@ -20,8 +20,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_PLAYER_H
-#define __PAROLE_PLAYER_H
+#ifndef SRC_PAROLE_PLAYER_H_
+#define SRC_PAROLE_PLAYER_H_
 
 #include <glib-object.h>
 #include "parole-medialist.h"
@@ -84,4 +84,4 @@ GSimpleAction                  *parole_player_get_action(ParolePlayerAction acti
 
 G_END_DECLS
 
-#endif /* __PAROLE_PLAYER_H */
+#endif /* SRC_PAROLE_PLAYER_H_ */

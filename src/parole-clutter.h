@@ -20,8 +20,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_CLUTTER_H
-#define __PAROLE_CLUTTER_H
+#ifndef SRC_PAROLE_CLUTTER_H_
+#define SRC_PAROLE_CLUTTER_H_
 
 #include <glib-object.h>
 #include <gst/gst.h>
@@ -66,4 +66,4 @@ parole_clutter_set_video_dimensions           (ParoleClutter *clutter,
 
 G_END_DECLS
 
-#endif /* __PAROLE_CLUTTER_H */
+#endif /* SRC_PAROLE_CLUTTER_H_ */

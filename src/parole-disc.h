@@ -20,8 +20,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_DISC_H
-#define __PAROLE_DISC_H
+#ifndef SRC_PAROLE_DISC_H_
+#define SRC_PAROLE_DISC_H_
 
 #include <glib-object.h>
 
@@ -72,4 +72,4 @@ ParoleDisc         *parole_disc_new             (void);
 
 G_END_DECLS
 
-#endif /* __PAROLE_DISC_H */
+#endif /* SRC_PAROLE_DISC_H_ */

@@ -20,8 +20,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_DBUS_H_
-#define __PAROLE_DBUS_H_
+#ifndef SRC_DBUS_PAROLE_DBUS_H_
+#define SRC_DBUS_PAROLE_DBUS_H_
 
 #include <dbus/dbus-glib.h>
 
@@ -44,4 +44,4 @@ gboolean         parole_dbus_register_name  (const gchar *name);
 
 gboolean         parole_dbus_release_name   (const gchar *name);
 
-#endif /* __PAROLE_DBUS_ */
+#endif /* SRC_DBUS_PAROLE_DBUS_H_ */

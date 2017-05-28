@@ -20,8 +20,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_MODULE_H
-#define __PAROLE_MODULE_H
+#ifndef SRC_PAROLE_MODULE_H_
+#define SRC_PAROLE_MODULE_H_
 
 #include <glib-object.h>
 #include <src/misc/parole.h>
@@ -77,4 +77,4 @@ gboolean                    parole_provider_module_get_is_active   (ParoleProvid
 
 G_END_DECLS
 
-#endif /* __PAROLE_MODULE_H */
+#endif /* SRC_PAROLE_MODULE_H_ */

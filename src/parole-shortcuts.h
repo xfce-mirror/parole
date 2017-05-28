@@ -18,8 +18,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_SHORTCUTS_H
-#define __PAROLE_SHORTCUTS_H
+#ifndef SRC_PAROLE_SHORTCUTS_H_
+#define SRC_PAROLE_SHORTCUTS_H_
 
 #include <glib-object.h>
 #include <gtk/gtk.h>
@@ -39,4 +39,4 @@ ParoleShortcuts     *parole_shortcuts            (GtkWidget *parent);
 
 G_END_DECLS
 
-#endif /* __PAROLE_SHORTCUTS_H */
+#endif /* SRC_PAROLE_SHORTCUTS_H_ */

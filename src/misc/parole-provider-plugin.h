@@ -24,8 +24,8 @@
 #error "Only <parole.h> can be included directly."
 #endif
 
-#ifndef __PAROLE_PROVIDER_PLUGIN_H__
-#define __PAROLE_PROVIDER_PLUGIN_H__
+#ifndef SRC_MISC_PAROLE_PROVIDER_PLUGIN_H_
+#define SRC_MISC_PAROLE_PROVIDER_PLUGIN_H_
 
 #include <gtk/gtk.h>
 #include <src/misc/parole-stream.h>
@@ -68,4 +68,4 @@ void             parole_provider_plugin_set_player  (ParoleProviderPlugin *provi
 
 G_END_DECLS
 
-#endif /* __PAROLE_PLUGIN_IFACE_H__ */
+#endif /* SRC_MISC_PAROLE_PROVIDER_PLUGIN_H_ */

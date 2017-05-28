@@ -20,8 +20,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_MEDIA_LIST_H
-#define __PAROLE_MEDIA_LIST_H
+#ifndef SRC_PAROLE_MEDIALIST_H_
+#define SRC_PAROLE_MEDIALIST_H_
 
 #include <gtk/gtk.h>
 #include <src/misc/parole-file.h>
@@ -202,4 +202,4 @@ void parole_media_list_add_dvd (ParoleMediaList *list, gchar *dvd_name);
 
 G_END_DECLS
 
-#endif /* __PAROLE_MEDIA_LIST_H */
+#endif /* SRC_PAROLE_MEDIALIST_H_ */

@@ -24,8 +24,8 @@
 #error "Only <parole.h> can be included directly."
 #endif
 
-#ifndef __PAROLE_MEDIA_FILE_H
-#define __PAROLE_MEDIA_FILE_H
+#ifndef SRC_MISC_PAROLE_FILE_H_
+#define SRC_MISC_PAROLE_FILE_H_
 
 #include <glib-object.h>
 
@@ -88,4 +88,4 @@ G_CONST_RETURN *parole_file_get_custom_subtitles    (const ParoleFile *file) G_G
 
 G_END_DECLS
 
-#endif /* __PAROLE_MEDIA_FILE_H */
+#endif /* SRC_MISC_PAROLE_FILE_H_ */

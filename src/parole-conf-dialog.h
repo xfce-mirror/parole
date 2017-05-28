@@ -20,8 +20,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __PAROLE_CONF_DIALOG_H
-#define __PAROLE_CONF_DIALOG_H
+#ifndef SRC_PAROLE_CONF_DIALOG_H_
+#define SRC_PAROLE_CONF_DIALOG_H_
 
 #include <glib-object.h>
 #include <gtk/gtk.h>
@@ -55,4 +55,4 @@ void                    parole_conf_dialog_open         (ParoleConfDialog *self,
 
 G_END_DECLS
 
-#endif /* __PAROLE_CONF_DIALOG_H */
+#endif /* SRC_PAROLE_CONF_DIALOG_H_ */
