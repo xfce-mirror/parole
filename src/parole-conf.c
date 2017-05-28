@@ -30,11 +30,11 @@
 
 #include <glib.h>
 
+#include <xfconf/xfconf.h>
+
 #include "parole-conf.h"
 #include "parole-rc-utils.h"
 #include "enum-gtypes.h"
-
-#include <xfconf/xfconf.h>
 
 #include "gst/parole-gst.h"
 #include "gst/gst-enum-types.h"

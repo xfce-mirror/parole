@@ -43,15 +43,15 @@
 #include <dbus/dbus-glib.h>
 #include <dbus/dbus-glib-lowlevel.h>
 
+#include <X11/X.h>
+#include <X11/Xlib.h>
+
 #include "parole-player.h"
 #include "parole-plugins-manager.h"
 #include "parole-utils.h"
 #include "parole-dbus.h"
 #include "parole-builder.h"
 #include "parole-conf.h"
-
-#include <X11/X.h>
-#include <X11/Xlib.h>
 
 static void G_GNUC_NORETURN
 show_version (void)
