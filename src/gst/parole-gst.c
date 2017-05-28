@@ -353,13 +353,10 @@ parole_gst_get_video_output_size (ParoleGst *gst, gint *ret_w, gint *ret_h)
                                                         video_par_n, video_par_d,
                                                         disp_par_n, disp_par_d) )
                 {
-                    if (video_w % dar_n == 0)
-                    {
+                    if (video_w % dar_n == 0) {
                         *ret_w = video_w;
                         *ret_h = (guint) gst_util_uint64_scale (video_w, dar_d, dar_n);
-                    }
-                    else
-                    {
+                    } else {
                         *ret_w = (guint) gst_util_uint64_scale (video_h, dar_n, dar_d);
                         *ret_h = video_h;
                     }
@@ -561,16 +558,12 @@ parole_gst_tick (ParoleGst *gst)
                   "live", &live,
                   NULL);
 
-    if ( gst->priv->state >= GST_STATE_PAUSED && !live)
-    {
-        if ( gst->priv->tick_id != 0 )
-        {
+    if ( gst->priv->state >= GST_STATE_PAUSED && !live) {
+        if ( gst->priv->tick_id != 0 ) {
             return;
         }
         gst->priv->tick_id = g_timeout_add (250, (GSourceFunc) parole_gst_tick_timeout, gst);
-    }
-    else if ( gst->priv->tick_id != 0)
-    {
+    } else if ( gst->priv->tick_id != 0) {
         g_source_remove (gst->priv->tick_id);
         gst->priv->tick_id = 0;
     }
@@ -821,24 +814,20 @@ parole_gst_update_vis (ParoleGst *gst)
                   "flags", &flags,
                   NULL);
 
-    if ( gst->priv->with_vis )
-    {
+    if ( gst->priv->with_vis ) {
         GstElement *vis_sink;
         flags |= GST_PLAY_FLAG_VIS;
 
         vis_sink = gst_element_factory_make (vis_name, "vis");
 
-        if (vis_sink)
-        {
+        if (vis_sink) {
             g_object_set (G_OBJECT (gst->priv->playbin),
                           "vis-plugin", vis_sink,
                           NULL);
 
             gst->priv->vis_loaded = TRUE;
         }
-    }
-    else
-    {
+    } else {
         flags &= ~GST_PLAY_FLAG_VIS;
         g_object_set (G_OBJECT (gst->priv->playbin),
                       "vis-plugin", NULL,
@@ -914,16 +903,11 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
             g_signal_emit  (G_OBJECT (gst), signals [MEDIA_STATE], 0,
                             gst->priv->stream, PAROLE_STATE_STOPPED);
 
-            if ( gst->priv->target == GST_STATE_PLAYING && pending < GST_STATE_PAUSED)
-            {
+            if ( gst->priv->target == GST_STATE_PLAYING && pending < GST_STATE_PAUSED) {
                 parole_gst_play_file_internal (gst);
-            }
-            else if ( gst->priv->target == GST_STATE_PAUSED)
-            {
+            } else if ( gst->priv->target == GST_STATE_PAUSED) {
                 parole_gst_change_state (gst, GST_STATE_PAUSED);
-            }
-            else if ( gst->priv->target == GST_STATE_READY)
-            {
+            } else if ( gst->priv->target == GST_STATE_READY) {
                 gtk_widget_get_allocation( GTK_WIDGET (gst), allocation );
                 parole_gst_size_allocate (GTK_WIDGET (gst), allocation);
                 g_free(allocation);
@@ -987,13 +971,10 @@ parole_gst_buffer_to_pixbuf (GstBuffer *buffer)
         gdk_pixbuf_loader_close (loader, &err))
     {
         pixbuf = gdk_pixbuf_loader_get_pixbuf (loader);
-        if (pixbuf)
-        {
+        if (pixbuf) {
             g_object_ref (pixbuf);
         }
-    }
-    else
-    {
+    } else {
         GST_WARNING("could not convert tag image to pixbuf: %s", err->message);
         g_error_free (err);
     }
@@ -1162,19 +1143,14 @@ parole_gst_tag_list_get_cover (ParoleGst *gst, GstTagList *tag_list)
             return NULL;
     }
 
-    if (gdk_pixbuf_get_width(pixbuf) == gdk_pixbuf_get_height(pixbuf))
-    {
+    if (gdk_pixbuf_get_width(pixbuf) == gdk_pixbuf_get_height(pixbuf)) {
         height = 256;
         width  = 256;
-    }
-    else if (gdk_pixbuf_get_width(pixbuf) < gdk_pixbuf_get_height(pixbuf))
-    {
+    } else if (gdk_pixbuf_get_width(pixbuf) < gdk_pixbuf_get_height(pixbuf)) {
         multiplier = gdk_pixbuf_get_height(pixbuf)/256.0;
         height = 256;
         width = gdk_pixbuf_get_width(pixbuf) / multiplier;
-    }
-    else
-    {
+    } else {
         multiplier = gdk_pixbuf_get_width(pixbuf)/256.0;
         height = gdk_pixbuf_get_height(pixbuf)/multiplier;
         width  = 256;
@@ -1658,9 +1634,9 @@ parole_gst_bus_event (GstBus *bus, GstMessage *msg, gpointer data)
                  gst_install_plugins_async(details, ctx, parole_gst_install_plugins_result_func, gst);
 #endif
                  gst_install_plugins_context_free(ctx);
-            }
-            else if ( (response == GTK_RESPONSE_REJECT) || (response == GTK_RESPONSE_OK) )
+            } else if ( (response == GTK_RESPONSE_REJECT) || (response == GTK_RESPONSE_OK) ) {
                 gtk_widget_destroy(GTK_WIDGET(dialog));
+            }
         }
         break;
     case GST_MESSAGE_INFO:
@@ -1896,10 +1872,8 @@ parole_gst_seek_by_format (ParoleGst *gst, GstFormat format, gint step)
         {
             g_warning ("Seek failed : %s", gst_format_get_name (format));
         }
-    }
-    else
-    {
-    g_warning ("Failed to query element position: %s", gst_format_get_name (format));
+    } else {
+        g_warning ("Failed to query element position: %s", gst_format_get_name (format));
     }
 }
 
@@ -1993,28 +1967,20 @@ static void
 parole_gst_conf_notify_cb (GObject *object, GParamSpec *spec, ParoleGst *gst)
 {
     GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
-    if ( !g_strcmp0 ("vis-enabled", spec->name) || !g_strcmp0 ("vis-name", spec->name) )
-    {
+    if ( !g_strcmp0 ("vis-enabled", spec->name) || !g_strcmp0 ("vis-name", spec->name) ) {
         gst->priv->update_vis = TRUE;
-    }
-    else if ( !g_strcmp0 ("subtitle-font", spec->name) || !g_strcmp0 ("enable-subtitle", spec->name)  )
-    {
+    } else if ( !g_strcmp0 ("subtitle-font", spec->name) || !g_strcmp0 ("enable-subtitle", spec->name)  ) {
         parole_gst_set_subtitle_font (gst);
-    }
-    else if (!g_strcmp0 ("subtitle-encoding", spec->name) )
-    {
+    } else if (!g_strcmp0 ("subtitle-encoding", spec->name) ) {
         parole_gst_set_subtitle_encoding (gst);
-    }
-    else if ( !g_strcmp0 ("brightness", spec->name) || !g_strcmp0 ("hue", spec->name) ||
+    } else if ( !g_strcmp0 ("brightness", spec->name) || !g_strcmp0 ("hue", spec->name) ||
           !g_strcmp0 ("contrast", spec->name) || !g_strcmp0 ("saturation", spec->name) )
     {
         gst->priv->update_color_balance = TRUE;
 
         if ( gst->priv->state >= GST_STATE_PAUSED )
             parole_gst_set_video_color_balance (gst);
-    }
-    else if ( !g_strcmp0 ("aspect-ratio", spec->name) )
-    {
+    } else if ( !g_strcmp0 ("aspect-ratio", spec->name) ) {
         g_object_get (G_OBJECT (gst->priv->conf),
                       "aspect-ratio", &gst->priv->aspect_ratio,
                       NULL);
@@ -2440,17 +2406,14 @@ parole_gst_new (gpointer conf_obj)
 
 GtkWidget *parole_gst_get (void)
 {
-    if ( G_LIKELY (parole_gst_object != NULL ) )
-    {
+    if ( G_LIKELY (parole_gst_object != NULL ) ) {
     /*
      * Don't increase the reference count of this object as
      * we need it to be destroyed immediately when the main
      * window is destroyed.
      */
     //g_object_ref (parole_gst_object);
-    }
-    else
-    {
+    } else {
         parole_gst_object = g_object_new (PAROLE_TYPE_GST, NULL);
         g_object_add_weak_pointer (parole_gst_object, &parole_gst_object);
     }
@@ -2476,13 +2439,10 @@ parole_gst_play_idle (gpointer data)
 
 void parole_gst_set_custom_subtitles (ParoleGst *gst, const gchar* sub_file)
 {
-    if ( sub_file == NULL )
-    {
+    if ( sub_file == NULL ) {
         gst->priv->use_custom_subtitles = FALSE;
         gst->priv->custom_subtitles = NULL;
-    }
-    else
-    {
+    } else {
         gst->priv->use_custom_subtitles = TRUE;
         gst->priv->custom_subtitles = g_strdup(sub_file);
     }
@@ -2543,22 +2503,14 @@ void parole_gst_play_device_uri (ParoleGst *gst, const gchar *uri, const gchar *
      * Don't play cdda:/ as gstreamer gives an error
      * but cdda:// works.
      */
-    if ( G_UNLIKELY (!g_strcmp0 (uri, "cdda:/") ) )
-    {
+    if ( G_UNLIKELY (!g_strcmp0 (uri, "cdda:/") ) ) {
         local_uri = "cdda://";
-    }
-    else if (g_strcmp0(uri, "cdda://") == 0)
-    {
+    } else if (g_strcmp0(uri, "cdda://") == 0) {
         local_uri = "cdda://";
-    }
-    else
-    {
-        if (g_str_has_prefix(device, "/dev/"))
-        {
+    } else {
+        if (g_str_has_prefix(device, "/dev/")) {
             local_uri = g_strconcat(uri, "/", device, NULL);
-        }
-        else
-        {
+        } else {
             local_uri = uri;
         }
     }
@@ -2788,15 +2740,14 @@ gboolean parole_gst_get_is_xvimage_sink (ParoleGst *gst)
 void
 parole_gst_set_cursor_visible (ParoleGst *gst, gboolean visible)
 {
-    if ( visible )
-    {
+    if ( visible ) {
         if (gst->priv->target == gst->priv->state)
             parole_window_normal_cursor (gtk_widget_get_window(GTK_WIDGET (gst)));
         else
             parole_window_busy_cursor (gtk_widget_get_window(GTK_WIDGET (gst)));
-    }
-    else
+    } else {
         parole_window_invisible_cursor (gtk_widget_get_window(GTK_WIDGET (gst)));
+    }
 }
 
 GList *
@@ -2805,8 +2756,7 @@ gst_get_lang_list_for_type (ParoleGst * gst, const gchar * type_name)
     GList *ret = NULL;
     gint num = 1;
 
-    if (g_str_equal (type_name, "AUDIO"))
-    {
+    if (g_str_equal (type_name, "AUDIO")) {
         gint i, n;
 
         g_object_get (G_OBJECT (gst->priv->playbin), "n-audio", &n, NULL);
@@ -2819,42 +2769,31 @@ gst_get_lang_list_for_type (ParoleGst * gst, const gchar * type_name)
             g_signal_emit_by_name  (G_OBJECT (gst->priv->playbin), "get-audio-tags",
                                     i, &tags);
 
-            if (tags)
-            {
+            if (tags) {
                 gchar *lc = NULL, *cd = NULL, *language_name = NULL;
 
                 gst_tag_list_get_string (tags, GST_TAG_LANGUAGE_CODE, &lc);
                 gst_tag_list_get_string (tags, GST_TAG_CODEC, &cd);
 
-                if (lc)
-                {
+                if (lc) {
                     language_name = g_strdup(gst_tag_get_language_name(lc));
-                    if (language_name)
-                    {
+                    if (language_name) {
                         ret = g_list_prepend (ret, language_name);
-                    }
-                    else
+                    } else {
                         ret = g_list_prepend (ret, lc);
+                    }
                     g_free (cd);
-                }
-                else if (cd)
-                {
+                } else if (cd) {
                     ret = g_list_prepend (ret, cd);
-                }
-                else
-                {
+                } else {
                     ret = g_list_prepend (ret, g_strdup_printf (_("Audio Track #%d"), num++));
                 }
                 gst_tag_list_free (tags);
-            }
-            else
-            {
+            } else {
                 ret = g_list_prepend (ret, g_strdup_printf (_("Audio Track #%d"), num++));
             }
         }
-    }
-    else if (g_str_equal (type_name, "TEXT"))
-    {
+    } else if (g_str_equal (type_name, "TEXT")) {
         gint i, n = 0;
 
         g_object_get (G_OBJECT (gst->priv->playbin), "n-text", &n, NULL);
@@ -2865,17 +2804,14 @@ gst_get_lang_list_for_type (ParoleGst * gst, const gchar * type_name)
         if ( gst->priv->use_custom_subtitles == TRUE )
             n--;
 
-        if (n != 0)
-        {
-            for (i = 0; i < n; i++)
-            {
+        if (n != 0) {
+            for (i = 0; i < n; i++) {
                 GstTagList *tags = NULL;
 
                 g_signal_emit_by_name (G_OBJECT (gst->priv->playbin), "get-text-tags",
                     i, &tags);
 
-                if (tags)
-                {
+                if (tags) {
                     gchar *lc = NULL, *cd = NULL, *language_name = NULL;
 
                     gst_tag_list_get_string (tags, GST_TAG_LANGUAGE_CODE, &lc);
@@ -2886,19 +2822,15 @@ gst_get_lang_list_for_type (ParoleGst * gst, const gchar * type_name)
                         if (language_name)
                         {
                             ret = g_list_prepend (ret, language_name);
-                        }
-                        else
+                        } else {
                             ret = g_list_prepend (ret, lc);
+                        }
                         g_free (cd);
-                    }
-                    else
-                    {
+                    } else {
                         ret = g_list_prepend (ret, g_strdup_printf (_("Subtitle #%d"), num++));
                     }
                     gst_tag_list_free (tags);
-                }
-                else
-                {
+                } else {
                     ret = g_list_prepend (ret, g_strdup_printf (_("Subtitle #%d"), num++));
                 }
             }
@@ -2908,9 +2840,7 @@ gst_get_lang_list_for_type (ParoleGst * gst, const gchar * type_name)
         {
             ret = g_list_append (ret, g_strdup_printf("%s",gst->priv->custom_subtitles));
         }
-    }
-    else
-    {
+    } else {
         g_critical ("Invalid stream type '%s'", type_name);
         return NULL;
     }
@@ -2968,13 +2898,10 @@ gst_set_current_subtitle_track( ParoleGst *gst, gint track_no )
 
     track_no = track_no -1;
 
-    if (track_no <= -1)
-    {
+    if (track_no <= -1) {
         flags &= ~GST_PLAY_FLAG_TEXT;
         track_no = -1;
-    }
-    else
-    {
+    } else {
         flags |= GST_PLAY_FLAG_TEXT;
     }
 

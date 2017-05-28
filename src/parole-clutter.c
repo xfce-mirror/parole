@@ -166,13 +166,10 @@ parole_clutter_get_video_output_size (ParoleClutter *clutter, gint *ret_w, gint 
                                                 video_par_n, video_par_d,
                                                 disp_par_n, disp_par_d) )
         {
-            if (video_w % dar_n == 0)
-            {
+            if (video_w % dar_n == 0) {
                 *ret_w = video_w;
                 *ret_h = (guint) gst_util_uint64_scale (video_w, dar_d, dar_n);
-            }
-            else
-            {
+            } else {
                 *ret_w = (guint) gst_util_uint64_scale (video_h, dar_n, dar_d);
                 *ret_h = video_h;
             }
@@ -357,16 +354,13 @@ parole_clutter_new (gpointer conf_obj)
 
 GtkWidget *parole_clutter_get (void)
 {
-    if ( G_LIKELY (parole_clutter_object != NULL ) )
-    {
+    if ( G_LIKELY (parole_clutter_object != NULL ) ) {
     /*
      * Don't increase the reference count of this object as
      * we need it to be destroyed immediately when the main
      * window is destroyed.
      */
-    }
-    else
-    {
+    } else {
         parole_clutter_object = g_object_new (PAROLE_TYPE_CLUTTER, NULL);
         g_object_add_weak_pointer (parole_clutter_object, &parole_clutter_object);
     }

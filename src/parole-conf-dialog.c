@@ -336,13 +336,10 @@ parole_conf_dialog_set_default_vis_plugin (GtkTreeModel *model, GtkTreePath *pat
 
     f = g_hash_table_lookup (self->priv->vis_plugins, combox_text);
 
-    if ( !g_strcmp0 (vis_name, "none") )
-    {
+    if ( !g_strcmp0 (vis_name, "none") ) {
         if ( !g_strcmp0 (gst_object_get_name (GST_OBJECT (f)), "Goom") )
             ret = TRUE;
-    }
-    else if ( !g_strcmp0 (gst_object_get_name (GST_OBJECT (f)), vis_name) )
-    {
+    } else if ( !g_strcmp0 (gst_object_get_name (GST_OBJECT (f)), vis_name) ) {
         ret = TRUE;
     }
 
@@ -362,26 +359,18 @@ parole_conf_dialog_set_default_sink_plugin (ParoleConfDialog *self)
                   "videosink", &sink_name,
                   NULL);
 
-    if (g_strcmp0(sink_name, "xvimagesink") == 0)
-    {
+    if (g_strcmp0(sink_name, "xvimagesink") == 0) {
         gtk_combo_box_set_active (GTK_COMBO_BOX (self->priv->sink_combox), 0);
         return TRUE;
-    }
-
-    else if (g_strcmp0(sink_name, "ximagesink") == 0)
-    {
+    } else if (g_strcmp0(sink_name, "ximagesink") == 0) {
         gtk_combo_box_set_active (GTK_COMBO_BOX (self->priv->sink_combox), 1);
         return TRUE;
-    }
     #ifdef HAVE_CLUTTER
-    else if (g_strcmp0(sink_name, "cluttersink") == 0)
-    {
+    } else if (g_strcmp0(sink_name, "cluttersink") == 0) {
         gtk_combo_box_set_active (GTK_COMBO_BOX (self->priv->sink_combox), 2);
         return TRUE;
-    }
     #endif
-    else
-    {
+    } else {
         gtk_combo_box_set_active (GTK_COMBO_BOX (self->priv->sink_combox), 1);
         return FALSE;
     }
@@ -467,12 +456,9 @@ void parole_conf_dialog_open (ParoleConfDialog *self, GtkWidget *parent)
 
     with_display = parole_gst_get_is_xvimage_sink (PAROLE_GST (parole_gst_get ()));
 
-    if ( !with_display )
-    {
+    if ( !with_display ) {
         gtk_widget_set_sensitive (GTK_WIDGET (gtk_builder_get_object (builder, "frame-display")), FALSE);
-    }
-    else
-    {
+    } else {
         gint brightness_value;
         gint contrast_value;
         gint hue_value;
@@ -575,4 +561,3 @@ void parole_conf_dialog_open (ParoleConfDialog *self, GtkWidget *parent)
 
     gtk_widget_show (dialog);
 }
-

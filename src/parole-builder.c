@@ -44,12 +44,9 @@ parole_builder_get_main_interface (void)
 {
     static gpointer parole_builder_object = NULL;
 
-    if ( G_LIKELY (parole_builder_object != NULL) )
-    {
+    if ( G_LIKELY (parole_builder_object != NULL) ) {
         g_object_ref (parole_builder_object);
-    }
-    else
-    {
+    } else {
         parole_builder_object = parole_builder_new_from_string (parole_ui, parole_ui_length);
         g_object_add_weak_pointer (parole_builder_object, &parole_builder_object);
     }

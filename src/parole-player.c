@@ -98,12 +98,9 @@ get_time_string (gchar *timestring, gint total_seconds)
     hours = minutes / 60;
     minutes = minutes % 60;
 
-    if ( hours == 0 )
-    {
+    if ( hours == 0 ) {
         g_snprintf (timestring, 128, "%02i:%02i", minutes, seconds);
-    }
-    else
-    {
+    } else {
         g_snprintf (timestring, 128, "%i:%02i:%02i", hours, minutes, seconds);
     }
 }
@@ -557,8 +554,7 @@ void parole_player_set_playlist_visible (ParolePlayer *player, gboolean visibili
     g_simple_toggle_action_set_active( player->priv->toggle_playlist_action, visibility );
     gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM(player->priv->showhide_playlist_menu_item), visibility);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(player->priv->showhide_playlist_button), visibility);
-    if ( visibility )
-    {
+    if ( visibility ) {
         if ( !player->priv->full_screen )
             gtk_window_resize(GTK_WINDOW (player->priv->window), window_w+playlist_w+player->priv->handle_width, window_h);
 
@@ -566,9 +562,7 @@ void parole_player_set_playlist_visible (ParolePlayer *player, gboolean visibili
         g_object_set   (G_OBJECT (player->priv->conf),
                         "showhide-playlist", TRUE,
                         NULL);
-    }
-    else
-    {
+    } else {
         gtk_widget_hide (player->priv->playlist_nt);
         g_object_set   (G_OBJECT (player->priv->conf),
                         "showhide-playlist", FALSE,
@@ -871,8 +865,7 @@ parole_player_set_audio_list (ParolePlayer *player, GList *audio_list)
         gtk_list_store_append(GTK_LIST_STORE(player->priv->liststore_audiotrack), &iter);
         gtk_list_store_set(GTK_LIST_STORE(player->priv->liststore_audiotrack), &iter, 0, language, -1);
 
-        if (player->priv->audio_group == NULL)
-        {
+        if (player->priv->audio_group == NULL) {
             player->priv->audio_group = GTK_WIDGET (gtk_radio_menu_item_new_with_label (NULL, language));
             gtk_widget_show (GTK_WIDGET(player->priv->audio_group));
             gtk_menu_shell_append (GTK_MENU_SHELL (player->priv->languages_menu), GTK_WIDGET(player->priv->audio_group));
@@ -898,8 +891,7 @@ parole_player_set_audio_list (ParolePlayer *player, GList *audio_list)
     if (g_list_length (audio_list) >= 2) {
         gtk_widget_set_sensitive( GTK_WIDGET( player->priv->combobox_audiotrack ), TRUE );
         gtk_widget_show(player->priv->infobar);
-    }
-    else {
+    } else {
         gtk_widget_set_sensitive( GTK_WIDGET( player->priv->combobox_audiotrack ), FALSE );
     }
 }
@@ -962,19 +954,18 @@ parole_player_update_subtitles (ParolePlayer *player, ParoleGst *gst)
 static void
 parole_player_update_languages (ParolePlayer *player, ParoleGst *gst)
 {
-    if (player->priv->update_languages == TRUE)
-    {
-        if (gst_get_has_video( PAROLE_GST(player->priv->gst) ))
-        {
+    if (player->priv->update_languages == TRUE) {
+        if (gst_get_has_video( PAROLE_GST(player->priv->gst) )) {
             parole_player_update_audio_tracks(player, gst);
             parole_player_update_subtitles(player, gst);
 
             /* Enable custom subtitles for video as long as its not a DVD. */
             gtk_widget_set_sensitive(player->priv->subtitles_menu_custom,
                 player->priv->current_media_type != PAROLE_MEDIA_TYPE_DVD);
-        }
-        else
+        } else {
             gtk_widget_set_sensitive(player->priv->subtitles_menu_custom, FALSE);
+        }
+
         player->priv->update_languages = FALSE;
     }
 }
@@ -990,9 +981,7 @@ parole_player_show_audiobox (ParolePlayer *player)
     {
         gtk_widget_show(player->priv->audiobox);
         gtk_widget_hide(player->priv->videobox);
-    }
-    else
-    {
+    } else {
         gtk_widget_hide(player->priv->audiobox);
         gtk_widget_show(player->priv->videobox);
     }
@@ -1177,11 +1166,9 @@ parole_player_disc_selected_cb (ParoleDisc *disc, const gchar *uri, const gchar 
     parole_gst_play_device_uri (PAROLE_GST (player->priv->gst), uri, device);
     player->priv->current_media_type = parole_gst_get_current_stream_type (PAROLE_GST (player->priv->gst));
 
-    if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_CDDA )
-    {
+    if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_CDDA ) {
         player->priv->wait_for_gst_disc_info = TRUE;
-        if ( player->priv->row )
-        {
+        if ( player->priv->row ) {
             parole_media_list_set_row_playback_state (player->priv->list, player->priv->row, PAROLE_MEDIA_STATE_NONE);
             gtk_tree_row_reference_free (player->priv->row);
             player->priv->row = NULL;
@@ -1189,9 +1176,7 @@ parole_player_disc_selected_cb (ParoleDisc *disc, const gchar *uri, const gchar 
         TRACE("CLEAR PLAYLIST");
         parole_media_list_clear_list (player->priv->list);
         TRACE("END CLEAR PLAYLIST");
-    }
-    else if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD )
-    {
+    } else if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD ) {
         parole_media_list_set_playlist_view(player->priv->list, PAROLE_MEDIA_LIST_PLAYLIST_VIEW_DISC);
         gtk_widget_show(GTK_WIDGET(player->priv->dvd_menu));
         g_simple_action_set_enabled (player->priv->toggle_repeat_action, FALSE);
@@ -1439,8 +1424,7 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
         parole_clutter_set_video_dimensions (PAROLE_CLUTTER(player->priv->clutter), width, height);
 #endif
 
-    if (player->priv->wait_for_gst_disc_info == TRUE)
-    {
+    if (player->priv->wait_for_gst_disc_info == TRUE) {
         parole_media_list_add_cdda_tracks(player->priv->list, parole_gst_get_num_tracks(PAROLE_GST (player->priv->gst)));
         player->priv->wait_for_gst_disc_info = FALSE;
     }
@@ -1452,29 +1436,24 @@ parole_player_playing (ParolePlayer *player, const ParoleStream *stream)
     gtk_widget_set_sensitive (player->priv->range, seekable);
 
     player->priv->internal_range_change = TRUE;
-    if ( live || duration == 0)
-    {
+    if ( live || duration == 0) {
         parole_player_change_range_value (player, 0);
         gtk_widget_set_visible( player->priv->label_duration, FALSE );
         gtk_widget_set_visible( player->priv->label_divider, FALSE );
         gtk_widget_set_visible( player->priv->label_elapsed, FALSE );
-    }
-    else
-    {
+    } else {
         gtk_range_set_range (GTK_RANGE (player->priv->range), 0, duration);
         gtk_widget_set_visible( player->priv->label_duration, TRUE );
         gtk_widget_set_visible( player->priv->label_divider, TRUE );
         gtk_widget_set_visible( player->priv->label_elapsed, TRUE );
     }
 
-    if ( duration != 0)
-    {
+    if ( duration != 0) {
         gchar dur_text[128];
         get_time_string (dur_text, duration);
 
         gtk_label_set_text (GTK_LABEL (player->priv->label_duration), dur_text);
-        if ( player->priv->current_media_type != PAROLE_MEDIA_TYPE_DVD )
-        {
+        if ( player->priv->current_media_type != PAROLE_MEDIA_TYPE_DVD ) {
             parole_media_list_set_row_length (player->priv->list,
                                               player->priv->row,
                                               dur_text);
@@ -1583,8 +1562,7 @@ parole_player_play_next (ParolePlayer *player, gboolean allow_shuffle)
     gboolean repeat, shuffle;
     GtkTreeRowReference *row;
 
-    if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD )
-    {
+    if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD ) {
         parole_gst_next_dvd_chapter (PAROLE_GST(player->priv->gst));
         return;
     }
@@ -1594,8 +1572,7 @@ parole_player_play_next (ParolePlayer *player, gboolean allow_shuffle)
                   "repeat", &repeat,
                   NULL);
 
-    if ( player->priv->row )
-    {
+    if ( player->priv->row ) {
         parole_media_list_set_row_playback_state (player->priv->list, player->priv->row, PAROLE_MEDIA_STATE_NONE);
 
         if ( shuffle && allow_shuffle )
@@ -1603,13 +1580,10 @@ parole_player_play_next (ParolePlayer *player, gboolean allow_shuffle)
         else
             row = parole_media_list_get_next_row (player->priv->list, player->priv->row, repeat);
 
-        if ( row )
-        {
+        if ( row ) {
             parole_player_media_activated_cb (player->priv->list, row, player);
             return;
-        }
-        else
-        {
+        } else {
             TRACE ("No remaining media in the list");
             gtk_tree_row_reference_free (player->priv->row);
             player->priv->row = NULL;
@@ -1624,25 +1598,20 @@ parole_player_play_prev (ParolePlayer *player)
 {
     GtkTreeRowReference *row;
 
-    if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD )
-    {
+    if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD ) {
         parole_gst_prev_dvd_chapter (PAROLE_GST(player->priv->gst));
         return;
     }
 
-    if ( player->priv->row )
-    {
+    if ( player->priv->row ) {
         parole_media_list_set_row_playback_state (player->priv->list, player->priv->row, PAROLE_MEDIA_STATE_NONE);
 
         row = parole_media_list_get_prev_row (player->priv->list, player->priv->row);
 
-        if ( row )
-        {
+        if ( row ) {
             parole_player_media_activated_cb (player->priv->list, row, player);
             return;
-        }
-        else
-        {
+        } else {
             TRACE ("No remaining media in the list");
             gtk_tree_row_reference_free (player->priv->row);
             player->priv->row = NULL;
@@ -1663,23 +1632,21 @@ parole_player_reset_saver_changed (ParolePlayer *player, const ParoleStream *str
                   "reset-saver", &reset_saver,
                   NULL);
 
-    if ( !reset_saver )
+    if ( !reset_saver ) {
         parole_screen_saver_uninhibit (player->priv->screen_saver, GTK_WINDOW (player->priv->window));
-    else if ( player->priv->state ==  PAROLE_STATE_PLAYING )
-    {
+    } else if ( player->priv->state ==  PAROLE_STATE_PLAYING ) {
         gboolean has_video;
 
         g_object_get (G_OBJECT (stream),
                       "has-video", &has_video,
                       NULL);
 
-        if ( has_video )
-        {
+        if ( has_video ) {
             parole_screen_saver_inhibit (player->priv->screen_saver, GTK_WINDOW (player->priv->window));
         }
+    } else {
+        parole_screen_saver_uninhibit (player->priv->screen_saver, GTK_WINDOW (player->priv->window));
     }
-    else
-    parole_screen_saver_uninhibit (player->priv->screen_saver, GTK_WINDOW (player->priv->window));
 }
 
 static void
@@ -1690,30 +1657,21 @@ parole_player_media_state_cb (ParoleGst *gst, const ParoleStream *stream, Parole
     player->priv->state = state;
     parole_player_reset_saver_changed (player, stream);
 
-    if ( state == PAROLE_STATE_PLAYING )
-    {
+    if ( state == PAROLE_STATE_PLAYING ) {
         parole_player_playing (player, stream);
         parole_player_show_audiobox(player);
-    }
-    else if ( state == PAROLE_STATE_PAUSED )
-    {
+    } else if ( state == PAROLE_STATE_PAUSED ) {
         parole_player_paused (player);
-    }
-    else if ( state == PAROLE_STATE_STOPPED )
-    {
+    } else if ( state == PAROLE_STATE_STOPPED ) {
         parole_player_stopped (player);
-    }
     /* PAROLE_STATE_ABOUT_TO_FINISH is used for continuous playback of audio CDs */
-    else if ( state == PAROLE_STATE_ABOUT_TO_FINISH )
-    {
+    } else if ( state == PAROLE_STATE_ABOUT_TO_FINISH ) {
 #ifdef DEBUG
         TRACE ("***Playback about to finish***");
 #endif
         if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD )
             parole_player_play_next (player, TRUE);
-    }
-    else if ( state == PAROLE_STATE_PLAYBACK_FINISHED )
-    {
+    } else if ( state == PAROLE_STATE_PLAYBACK_FINISHED ) {
 #ifdef DEBUG
         TRACE ("***Playback finished***");
 #endif
@@ -1908,8 +1866,7 @@ parole_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePl
     gchar *filename;
     GdkPixbuf *image = NULL;
 
-    if ( player->priv->row )
-    {
+    if ( player->priv->row ) {
         g_object_get (G_OBJECT (stream),
                       "title", &title,
                       "album", &album,
@@ -1918,63 +1875,53 @@ parole_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePl
                       "uri", &uri,
                       NULL);
 
-        if ( title )
-        {
+        if ( title ) {
             parole_media_list_set_row_name (player->priv->list, player->priv->row, title);
             gtk_window_set_title (GTK_WINDOW (player->priv->window), title);
             gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), g_markup_printf_escaped("<span color='#F4F4F4'><b><big>%s</big></b></span>", title));
             g_free (title);
-        }
-        else
-        {
+        } else {
             /* No ID3, no problem! Show the filename instead */
             filename = parole_player_get_filename_from_uri (uri);
-            if ( filename )
-            {
+            if ( filename ) {
                 gtk_window_set_title (GTK_WINDOW (player->priv->window), filename);
                 gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), g_markup_printf_escaped("<span color='#F4F4F4'><b><big>%s</big></b></span>", filename));
                 g_free (filename);
-            }
-            else
-            {
+            } else {
                 gtk_window_set_title (GTK_WINDOW (player->priv->window), _("Parole Media Player"));
                 gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), g_markup_printf_escaped("<span color='#F4F4F4'><b><big>%s</big></b></span>", _("Unknown Song")));
             }
         }
         g_free(uri);
 
-        if ( album )
-        {
+        if ( album ) {
             if (year)
                 gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), g_markup_printf_escaped("<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s (%s)</span></big>", _("on"), album, year));
             else
                 gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), g_markup_printf_escaped("<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s</span></big>", _("on"), album));
 
             g_free (album);
-        }
-
-        else
+        } else {
             gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), g_markup_printf_escaped("<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s</span></big>", _("on"), _("Unknown Album")));
+        }
 
         if (year)
             g_free (year);
 
-        if ( artist )
-        {
+        if ( artist ) {
             gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_artist), g_markup_printf_escaped("<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s</span></big>", _("by"), artist));
             g_free (artist);
-        }
-        else
+        } else {
             gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_artist), g_markup_printf_escaped("<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s</span></big>", _("by"), _("Unknown Artist")));
+        }
 
         image = parole_stream_get_image(G_OBJECT(stream));
-        if (image)
-        {
+        if (image) {
             gtk_image_set_from_pixbuf(GTK_IMAGE(player->priv->audiobox_cover), image);
             g_object_unref(image);
+        } else {
+            gtk_image_set_from_icon_name(GTK_IMAGE(player->priv->audiobox_cover), "audio-x-generic-symbolic", GTK_ICON_SIZE_ARTWORK_FALLBACK);
         }
-        else
-        gtk_image_set_from_icon_name(GTK_IMAGE(player->priv->audiobox_cover), "audio-x-generic-symbolic", GTK_ICON_SIZE_ARTWORK_FALLBACK);
     }
 }
 
@@ -1983,8 +1930,7 @@ parole_player_buffering_cb (ParoleGst *gst, const ParoleStream *stream, gint per
 {
     gchar *buff;
 
-    if ( percentage == 100 )
-    {
+    if ( percentage == 100 ) {
         player->priv->buffering = FALSE;
         parole_gst_resume (PAROLE_GST (player->priv->gst));
         gtk_widget_hide (player->priv->progressbar_buffering);
@@ -1994,9 +1940,7 @@ parole_player_buffering_cb (ParoleGst *gst, const ParoleStream *stream, gint per
         else
             gtk_widget_show (player->priv->range);
         gtk_widget_show (player->priv->label_elapsed);
-    }
-    else
-    {
+    } else {
         player->priv->buffering = TRUE;
 
         if ( player->priv->state == PAROLE_STATE_PLAYING )
@@ -2061,17 +2005,14 @@ parole_player_window_state_event (GtkWidget *widget,
 {
     gboolean fullscreen = FALSE;
 
-    if (event->new_window_state & GDK_WINDOW_STATE_MAXIMIZED)
-    {
+    if (event->new_window_state & GDK_WINDOW_STATE_MAXIMIZED) {
         /* Restore the previously saved window size if maximized */
         g_object_set (G_OBJECT (player->priv->conf),
                       "window-width", player->priv->last_w,
                       "window-height", player->priv->last_h,
                       "window-maximized", TRUE,
                       NULL);
-    }
-    else
-    {
+    } else {
         g_object_set (G_OBJECT (player->priv->conf),
                       "window-maximized", FALSE,
                       NULL);
@@ -2109,8 +2050,7 @@ parole_player_reset_controls (ParolePlayer *player, gboolean fullscreen)
               "window-width", &w,
               NULL);
 
-    if ( player->priv->full_screen != fullscreen )
-    {
+    if ( player->priv->full_screen != fullscreen ) {
         /* If the player is in fullscreen mode, change to windowed mode. */
         if ( player->priv->full_screen )
         {
@@ -2131,9 +2071,7 @@ parole_player_reset_controls (ParolePlayer *player, gboolean fullscreen)
             gtk_window_unfullscreen (GTK_WINDOW (player->priv->window));
             gtk_notebook_set_current_page (GTK_NOTEBOOK (player->priv->playlist_nt), current_page);
             player->priv->full_screen = FALSE;
-        }
-        else
-        {
+        } else {
             gtk_widget_hide (player->priv->menu_bar);
             gtk_widget_hide (player->priv->playlist_nt);
             parole_player_set_playlist_visible(player, FALSE);
@@ -2149,18 +2087,13 @@ parole_player_reset_controls (ParolePlayer *player, gboolean fullscreen)
         }
     }
 
-    if ( player->priv->embedded )
-    {
+    if ( player->priv->embedded ) {
         gtk_widget_hide (player->priv->menu_bar);
         gtk_widget_hide (player->priv->playlist_nt);
         gtk_widget_hide (player->priv->fullscreen_button);
         gtk_widget_hide (player->priv->showhide_playlist_button);
-    }
-
-    else
-    {
-        if ( player->priv->mini_mode )
-        {
+    } else {
+        if ( player->priv->mini_mode ) {
             gtk_widget_hide (player->priv->menu_bar);
             gtk_widget_hide (player->priv->playlist_nt);
             gtk_widget_hide (player->priv->fullscreen_button);
@@ -2175,10 +2108,7 @@ parole_player_reset_controls (ParolePlayer *player, gboolean fullscreen)
             gtk_widget_set_size_request (GTK_WIDGET (player->priv->window), 256, 256);
             gtk_window_set_default_size (GTK_WINDOW (player->priv->window), 256, 256);
             gtk_window_set_resizable (GTK_WINDOW (player->priv->window), FALSE);
-        }
-
-        else
-        {
+        } else {
             gtk_widget_set_size_request (GTK_WIDGET (player->priv->window), -1, -1);
             gtk_window_set_default_size (GTK_WINDOW (player->priv->window), -1, -1);
             gtk_window_set_resizable (GTK_WINDOW (player->priv->window), TRUE);
@@ -2189,8 +2119,7 @@ parole_player_reset_controls (ParolePlayer *player, gboolean fullscreen)
             gtk_widget_show(player->priv->range);
             gtk_widget_set_halign (player->priv->audiobox_cover, GTK_ALIGN_END);
 
-            if ( !player->priv->full_screen )
-            {
+            if ( !player->priv->full_screen ) {
                 gtk_widget_show (player->priv->menu_bar);
                 gtk_widget_show (player->priv->showhide_playlist_button);
                 if ( gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (player->priv->showhide_playlist_button)) )
@@ -2346,14 +2275,10 @@ parole_player_gst_widget_button_press (GtkWidget *widget, GdkEventButton *ev, Pa
     gboolean sensitive = FALSE;
     gint w, h;
 
-    if ( ev->type == GDK_2BUTTON_PRESS )
-    {
+    if ( ev->type == GDK_2BUTTON_PRESS ) {
         g_action_activate (G_ACTION(player->priv->media_fullscreen_action), NULL);
         ret_val = TRUE;
-    }
-
-    else if ( ev->button == 1 && gtk_widget_get_visible (player->priv->logo_image) )
-    {
+    } else if ( ev->button == 1 && gtk_widget_get_visible (player->priv->logo_image) ) {
         /* Clicking on the play or replay logo will activate appropriate functionality */
         h = gtk_widget_get_allocated_height ( widget );
         w = gtk_widget_get_allocated_width ( widget );
@@ -2380,14 +2305,11 @@ parole_player_gst_widget_button_release (GtkWidget *widget, GdkEventButton *ev, 
 {
     gboolean ret_val = FALSE;
 
-    if ( ev->button == 3 )
-    {
+    if ( ev->button == 3 ) {
         parole_player_show_menu (player, ev->button, ev->time);
         gtk_widget_grab_focus (widget);
         ret_val = TRUE;
-    }
-    else if ( ev->button == 1 )
-    {
+    } else if ( ev->button == 1 ) {
         gtk_widget_grab_focus (widget);
         ret_val = TRUE;
     }
@@ -2426,18 +2348,14 @@ parole_player_gst_widget_motion_notify_event (GtkWidget *widget, GdkEventMotion 
 
     parole_player_set_cursor_visible (player, TRUE);
 
-    if (gtk_revealer_get_reveal_child(GTK_REVEALER(player->priv->revealer)))
-    {
-        if ((gdouble)gtk_widget_get_allocated_height(widget) - ev->y >= 32.0)
-        {
-            if ( player->priv->state == PAROLE_STATE_PLAYING )
-            {
+    if (gtk_revealer_get_reveal_child(GTK_REVEALER(player->priv->revealer))) {
+        if ((gdouble)gtk_widget_get_allocated_height(widget) - ev->y >= 32.0) {
+            if ( player->priv->state == PAROLE_STATE_PLAYING ) {
                 g_object_get (G_OBJECT (player->priv->conf),
                               "hide-controls-timeout", &hide_controls_timeout,
                               NULL);
 
-                if (hide_controls_timeout != 0 || player->priv->full_screen)
-                {
+                if (hide_controls_timeout != 0 || player->priv->full_screen) {
                     if (player->priv->full_screen)
                         hide_timeout = g_timeout_add_seconds (4,
                                                       (GSourceFunc) parole_player_hide_controls, player);
@@ -2447,9 +2365,7 @@ parole_player_gst_widget_motion_notify_event (GtkWidget *widget, GdkEventMotion 
                 }
             }
         }
-    }
-    else
-    {
+    } else {
         gtk_revealer_set_reveal_child(GTK_REVEALER(player->priv->revealer), TRUE);
     }
 
@@ -2518,13 +2434,10 @@ parole_player_volume_scroll_event_cb (GtkWidget *widget, GdkEventScroll *ev, Par
 {
     gboolean ret_val = FALSE;
 
-    if ( ev->direction == GDK_SCROLL_UP )
-    {
+    if ( ev->direction == GDK_SCROLL_UP ) {
         parole_player_volume_up (NULL, player);
         ret_val = TRUE;
-    }
-    else if ( ev->direction == GDK_SCROLL_DOWN )
-    {
+    } else if ( ev->direction == GDK_SCROLL_DOWN ) {
         parole_player_volume_down (NULL, player);
         ret_val = TRUE;
     }
@@ -2567,15 +2480,12 @@ parole_player_volume_down (GtkWidget *widget, ParolePlayer *player)
 void parole_player_volume_mute (GtkWidget *widget, ParolePlayer *player)
 {
     gint value;
-    if (gtk_scale_button_get_value (GTK_SCALE_BUTTON (player->priv->volume)) == 0.0)
-    {
+    if (gtk_scale_button_get_value (GTK_SCALE_BUTTON (player->priv->volume)) == 0.0) {
         g_object_get (G_OBJECT (player->priv->conf),
                       "volume", &value,
                       NULL);
         gtk_menu_item_set_label( GTK_MENU_ITEM(player->priv->mute), _("Mute") );
-    }
-    else
-    {
+    } else {
         value = 0;
         gtk_menu_item_set_label( GTK_MENU_ITEM(player->priv->mute), _("Unmute") );
     }
@@ -2764,7 +2674,9 @@ parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
     {
         case GDK_KEY_f:
         case GDK_KEY_F:
-                if ( player->priv->embedded != TRUE ) g_action_activate (G_ACTION(player->priv->media_fullscreen_action), NULL);
+            if ( player->priv->embedded != TRUE ) {
+                g_action_activate (G_ACTION(player->priv->media_fullscreen_action), NULL);
+            }
             ret_val = TRUE;
             break;
         case GDK_KEY_space:
@@ -2777,35 +2689,44 @@ parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
             /* Media seekable ?*/
             if ( gtk_widget_get_sensitive (player->priv->range) )
             {
-            if (ev->state & GDK_CONTROL_MASK) parole_player_seekf_cb (NULL, player, seek_medium);
-            else parole_player_seekf_cb (NULL, player, seek_short);
+                if (ev->state & GDK_CONTROL_MASK) {
+                    parole_player_seekf_cb (NULL, player, seek_medium);
+                } else {
+                    parole_player_seekf_cb (NULL, player, seek_short);
+                }
             }
             ret_val = TRUE;
             break;
         case GDK_KEY_Left:
             if ( gtk_widget_get_sensitive (player->priv->range) )
             {
-            if (ev->state & GDK_CONTROL_MASK) parole_player_seekb_cb (NULL, player, seek_medium);
-            else parole_player_seekb_cb (NULL, player, seek_short);
+                if (ev->state & GDK_CONTROL_MASK) {
+                    parole_player_seekb_cb (NULL, player, seek_medium);
+                } else {
+                    parole_player_seekb_cb (NULL, player, seek_short);
+                }
             }
             ret_val = TRUE;
             break;
         case GDK_KEY_Page_Down:
-            if ( gtk_widget_get_sensitive (player->priv->range) )
-            parole_player_seekb_cb (NULL, player, seek_long);
+            if ( gtk_widget_get_sensitive (player->priv->range) ) {
+                parole_player_seekb_cb (NULL, player, seek_long);
+            }
             ret_val = TRUE;
             break;
         case GDK_KEY_Page_Up:
-            if ( gtk_widget_get_sensitive (player->priv->range) )
-            parole_player_seekf_cb (NULL, player, seek_long);
+            if ( gtk_widget_get_sensitive (player->priv->range) ) {
+                parole_player_seekf_cb (NULL, player, seek_long);
+            }
             ret_val = TRUE;
             break;
         case GDK_KEY_Escape:
             parole_player_full_screen (player, FALSE);
             break;
         case GDK_KEY_m:
-            if (ev->state & GDK_CONTROL_MASK)
+            if (ev->state & GDK_CONTROL_MASK) {
                 parole_player_hide_menubar_cb(NULL, player);
+            }
             ret_val = TRUE;
             break;
         case GDK_KEY_n:
@@ -2837,8 +2758,9 @@ parole_player_handle_key_press (GdkEventKey *ev, ParolePlayer *player)
          */
         case GDK_KEY_Up:
         case GDK_KEY_Down:
-            if (!player->priv->full_screen && gtk_widget_get_visible(player->priv->playlist_nt))
+            if (!player->priv->full_screen && gtk_widget_get_visible(player->priv->playlist_nt)) {
                 parole_media_list_grab_focus (player->priv->list);
+            }
             break;
         default:
             break;
@@ -3243,13 +3165,10 @@ parole_player_set_cursor_visible (ParolePlayer *player, gboolean visible)
     GdkWindow *gdkwindow;
     gdkwindow = gtk_widget_get_window (GTK_WIDGET(player->priv->eventbox_output));
 
-    if (visible)
-    {
+    if (visible) {
         parole_gst_set_cursor_visible (PAROLE_GST (player->priv->gst), TRUE);
         parole_window_normal_cursor (gdkwindow);
-    }
-    else if (gtk_window_is_active (GTK_WINDOW (player->priv->window)))
-    {
+    } else if (gtk_window_is_active (GTK_WINDOW (player->priv->window))) {
         parole_gst_set_cursor_visible (PAROLE_GST (player->priv->gst), FALSE);
         parole_window_invisible_cursor (gdkwindow);
     }
@@ -3258,12 +3177,9 @@ parole_player_set_cursor_visible (ParolePlayer *player, gboolean visible)
 static void
 parole_player_window_notify_is_active (ParolePlayer *player)
 {
-    if (!gtk_window_is_active (GTK_WINDOW (player->priv->window)) )
-    {
+    if (!gtk_window_is_active (GTK_WINDOW (player->priv->window)) ) {
         parole_player_set_cursor_visible (player, TRUE);
-    }
-    else
-    {
+    } else {
         parole_player_set_cursor_visible (player, FALSE);
     }
 }
@@ -3838,8 +3754,7 @@ parole_player_init (ParolePlayer *player)
 
     #ifdef HAVE_CLUTTER
         player->priv->use_clutter = g_strcmp0(videosink, "cluttersink") == 0;
-        if (player->priv->use_clutter)
-        {
+        if (player->priv->use_clutter) {
             GtkWidget *clutterbox;
             GstElement *video_sink;
 
@@ -3855,9 +3770,7 @@ parole_player_init (ParolePlayer *player)
 
             gtk_widget_show (player->priv->clutter);
             gtk_widget_grab_focus (player->priv->clutter);
-        }
-        else
-        {
+        } else {
             gtk_box_pack_start (GTK_BOX (player->priv->videobox),
                                          player->priv->gst,
                                          TRUE, TRUE, 0);
@@ -3980,15 +3893,11 @@ ParoleMediaList *parole_player_get_media_list (ParolePlayer *player)
 
 void parole_player_play_uri_disc (ParolePlayer *player, const gchar *uri, const gchar *device)
 {
-    if ( uri )
-    {
+    if ( uri ) {
         parole_player_disc_selected_cb (NULL, uri, device, player);
-    }
-    else if (device)
-    {
+    } else if (device) {
         gchar *uri_local = parole_get_uri_from_unix_device (device);
-        if ( uri_local )
-        {
+        if ( uri_local ) {
             parole_player_disc_selected_cb (NULL, uri_local, device, player);
             g_free (uri_local);
         }
@@ -4018,12 +3927,9 @@ void parole_player_set_subtitle_radio_menu_item_selected(ParolePlayer *player, g
     GList *menu_items, *menu_iter;
     menu_items = gtk_container_get_children( GTK_CONTAINER (player->priv->subtitles_menu) );
 
-    if (sub_index <= 0)
-    {
+    if (sub_index <= 0) {
         gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menu_items->data), TRUE);
-    }
-    else
-    {
+    } else {
         gint counter = -3;
         for (menu_iter = menu_items; menu_iter != NULL; menu_iter = g_list_next(menu_iter))
         {
@@ -4119,12 +4025,9 @@ void parole_player_combo_box_subtitles_changed_cb(GtkWidget *widget, ParolePlaye
     gchar *uri = parole_gst_get_file_uri(PAROLE_GST(player->priv->gst));
     gint sub_index = gtk_combo_box_get_active(GTK_COMBO_BOX(player->priv->combobox_subtitles));
 
-    if (get_has_file_extension(uri, "mkv"))
-    {
+    if (get_has_file_extension(uri, "mkv")) {
         gst_set_current_subtitle_track(PAROLE_GST(player->priv->gst), sub_index);
-    }
-    else
-    {
+    } else {
         if (player->priv->update_languages == FALSE)
             gst_set_current_subtitle_track(PAROLE_GST(player->priv->gst), sub_index);
     }

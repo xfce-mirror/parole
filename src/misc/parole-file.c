@@ -214,14 +214,11 @@ parole_file_constructed (GObject *object)
 
     if ( error )
     {
-        if ( G_LIKELY (error->code == G_IO_ERROR_NOT_SUPPORTED) )
-        {
+        if ( G_LIKELY (error->code == G_IO_ERROR_NOT_SUPPORTED) ) {
             g_error_free (error);
             if ( !priv->display_name )
                 priv->display_name = g_file_get_basename (gfile);
-        }
-        else
-        {
+        } else {
             if ( !priv->display_name )
                 priv->display_name = g_strdup (priv->filename);
             g_warning ("Unable to read file info %s", error->message);
@@ -659,4 +656,3 @@ parole_file_set_dvd_chapter (const ParoleFile *file, gint dvd_chapter)
                                           G_PARAM_CONSTRUCT_ONLY|
                                           G_PARAM_READWRITE));
 }
-

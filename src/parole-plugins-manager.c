@@ -212,8 +212,7 @@ parole_plugins_manager_save_rc (ParolePluginsManager *manager, gchar *filename, 
     if ( saved_plugins )
         num = g_strv_length (saved_plugins);
 
-    if ( active )
-    {
+    if ( active ) {
         plugins_rc = g_new0 (gchar *, num + 2);
 
         for ( i = 0; i < num; i++)
@@ -224,15 +223,12 @@ parole_plugins_manager_save_rc (ParolePluginsManager *manager, gchar *filename, 
         plugins_rc[num] = g_strdup (filename);
         plugins_rc[num + 1] = NULL;
         parole_conf_write_entry_list (PAROLE_CONF(manager->priv->conf), "plugins", plugins_rc);
-    }
-    else
-    {
+    } else {
         plugins_rc = g_new0 (gchar *, num + 1);
 
         for ( i = 0; i < num; i++)
         {
-            if ( g_strcmp0 (saved_plugins[i], filename) != 0 )
-            {
+            if ( g_strcmp0 (saved_plugins[i], filename) != 0 ) {
                 plugins_rc[count] = g_strdup (saved_plugins[i]);
                 count++;
             }
@@ -265,22 +261,17 @@ parole_plugins_manager_cell_toggled_cb (GtkCellRendererToggle *cell_renderer,
 
         active ^= 1;
 
-        if ( pref->manager->priv->load_plugins )
-        {
-            if ( active )
-            {
+        if ( pref->manager->priv->load_plugins ) {
+            if ( active ) {
                 g_type_module_use (G_TYPE_MODULE (module));
-                if (!parole_provider_module_new_plugin (module))
-                {
+                if (!parole_provider_module_new_plugin (module)) {
                     // If plugin loading fails...
                     parole_dialog_error(GTK_WINDOW(pref->window), _("Plugin failed to load"), _("Please check your installation"));
                     parole_provider_module_free_plugin (module);
                     g_type_module_unuse (G_TYPE_MODULE (module));
                     active = FALSE;
                 }
-            }
-            else
-            {
+            } else {
                 parole_provider_module_free_plugin (module);
                 g_type_module_unuse (G_TYPE_MODULE (module));
             }
@@ -568,14 +559,11 @@ parole_plugins_manager_load_plugins (ParolePluginsManager *manager)
                  !g_strcmp0 (plugins_rc[i], PAROLE_PROVIDER_MODULE (module)->library_name) )
             {
                 TRACE ("Loading plugin :%s", module->name);
-                if ( !g_type_module_use (module) )
-                {
+                if ( !g_type_module_use (module) ) {
                     parole_plugins_manager_save_rc (manager, module->name, FALSE);
                     g_ptr_array_remove (manager->priv->array, module);
                     g_object_unref (module);
-                }
-                else
-                {
+                } else {
                     parole_provider_module_new_plugin (PAROLE_PROVIDER_MODULE (module));
                 }
                 break;
@@ -654,12 +642,9 @@ parole_plugins_manager_finalize (GObject *object)
 ParolePluginsManager *
 parole_plugins_manager_new (gboolean load_plugins)
 {
-    if ( G_LIKELY (parole_plugins_manager_object != NULL) )
-    {
+    if ( G_LIKELY (parole_plugins_manager_object != NULL) ) {
         g_object_ref (parole_plugins_manager_object);
-    }
-    else
-    {
+    } else {
         parole_plugins_manager_object = g_object_new   (PAROLE_TYPE_PLUGINS_MANAGER,
                                                         "load-plugins", load_plugins,
                                                         NULL);

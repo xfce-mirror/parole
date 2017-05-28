@@ -87,12 +87,9 @@ parole_send_play_disc (const gchar *uri, const gchar *device)
     GError *error = NULL;
     gchar *uri_local;
 
-    if ( uri )
-    {
+    if ( uri ) {
         uri_local = g_strdup (uri);
-    }
-    else
-    {
+    } else {
         uri_local = parole_get_uri_from_unix_device (device);
     }
 
@@ -333,11 +330,9 @@ int main (int argc, char **argv)
 
         if ( unmute )
             parole_send_message ("Unmute");
-    }
 
     /* Create a new instance because Parole isn't running */
-    else
-    {
+    } else {
         builder = parole_builder_get_main_interface ();
         parole_dbus_register_name (PAROLE_DBUS_NAME);
 
@@ -349,26 +344,19 @@ int main (int argc, char **argv)
         else if (fullscreen)
             parole_player_full_screen (player, TRUE);
 
-        if ( filenames && filenames[0] != NULL )
-        {
-            if ( g_strv_length (filenames) == 1 && parole_is_uri_disc (filenames[0]))
-            {
+        if ( filenames && filenames[0] != NULL ) {
+            if ( g_strv_length (filenames) == 1 && parole_is_uri_disc (filenames[0])) {
                 parole_player_play_uri_disc (player, filenames[0], device);
-            }
-            else
-            {
+            } else {
                 ParoleMediaList *list;
                 list = parole_player_get_media_list (player);
                 parole_media_list_add_files (list, filenames, enqueue);
             }
-        }
-        else if ( device != NULL )
-        {
+        } else if ( device != NULL ) {
             parole_player_play_uri_disc (player, NULL, device);
         }
 
-        if ( xfce_posix_signal_handler_init (&error))
-        {
+        if ( xfce_posix_signal_handler_init (&error)) {
             xfce_posix_signal_handler_set_handler(SIGHUP,
                                                   parole_sig_handler,
                                                   player, NULL);
@@ -380,9 +368,7 @@ int main (int argc, char **argv)
             xfce_posix_signal_handler_set_handler(SIGTERM,
                                                   parole_sig_handler,
                                                   player, NULL);
-        }
-        else
-        {
+        } else {
             g_warning ("Unable to set up POSIX signal handlers: %s", error->message);
             g_error_free (error);
         }

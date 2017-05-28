@@ -573,8 +573,7 @@ static GVariant* mpris_Player_get_Metadata (GError **error, Mpris2Provider *prov
         stream = parole_provider_player_get_stream(player);
 
         handle_get_metadata (stream, &b);
-    }
-    else {
+    } else {
         g_variant_builder_add (&b, "{sv}", "mpris:trackid",
             handle_get_trackid(NULL));
     }
@@ -704,14 +703,12 @@ static void parole_mpris_update_any (Mpris2Provider *provider)
     g_variant_builder_init(&b, G_VARIANT_TYPE("a{sv}"));
 
     g_object_get (G_OBJECT (provider->conf), "shuffle", &shuffle, NULL);
-    if(provider->saved_shuffle != shuffle)
-    {
+    if(provider->saved_shuffle != shuffle) {
         change_detected = TRUE;
         provider->saved_shuffle = shuffle;
         g_variant_builder_add (&b, "{sv}", "Shuffle", mpris_Player_get_Shuffle (NULL, provider));
     }
-    if(provider->state != parole_provider_player_get_state (player))
-    {
+    if (provider->state != parole_provider_player_get_state (player)) {
         change_detected = TRUE;
         provider->state = parole_provider_player_get_state (player);
         g_variant_builder_add (&b, "{sv}", "PlaybackStatus", mpris_Player_get_PlaybackStatus (NULL, provider));
@@ -720,23 +717,19 @@ static void parole_mpris_update_any (Mpris2Provider *provider)
         g_variant_builder_add (&b, "{sv}", "CanSeek", mpris_Player_get_CanSeek(NULL, provider));
     }
     g_object_get (G_OBJECT (provider->conf), "repeat", &repeat, NULL);
-    if(provider->saved_playbackstatus != repeat)
-    {
+    if (provider->saved_playbackstatus != repeat) {
         change_detected = TRUE;
         provider->saved_playbackstatus = repeat;
         g_variant_builder_add (&b, "{sv}", "LoopStatus", mpris_Player_get_LoopStatus (NULL, provider));
     }
     curr_vol = handle_get_volume(provider);
-    if(provider->volume != curr_vol)
-    {
+    if (provider->volume != curr_vol) {
         change_detected = TRUE;
         provider->volume = curr_vol;
         g_variant_builder_add (&b, "{sv}", "Volume", mpris_Player_get_Volume (NULL, provider));
     }
-    if (parole_provider_player_get_state (player) == PAROLE_STATE_PLAYING)
-    {
-        if(g_strcmp0(provider->saved_title, stream_uri))
-        {
+    if (parole_provider_player_get_state (player) == PAROLE_STATE_PLAYING) {
+        if(g_strcmp0(provider->saved_title, stream_uri)) {
             change_detected = TRUE;
             if(provider->saved_title)
                 g_free(provider->saved_title);
@@ -748,14 +741,12 @@ static void parole_mpris_update_any (Mpris2Provider *provider)
             g_variant_builder_add (&b, "{sv}", "Metadata", mpris_Player_get_Metadata (NULL, provider));
         }
     }
-    if (provider->saved_fullscreen != parole_provider_player_get_fullscreen(player))
-    {
+    if (provider->saved_fullscreen != parole_provider_player_get_fullscreen(player)) {
         change_detected = TRUE;
         provider->saved_fullscreen = !provider->saved_fullscreen;
         g_variant_builder_add (&b, "{sv}", "Fullscreen", mpris_Root_get_Fullscreen (NULL, provider));
     }
-    if(change_detected)
-    {
+    if (change_detected) {
         GVariant * tuples[] = {
             g_variant_new_string("org.mpris.MediaPlayer2.Player"),
             g_variant_builder_end(&b),
@@ -765,9 +756,7 @@ static void parole_mpris_update_any (Mpris2Provider *provider)
         g_dbus_connection_emit_signal(provider->dbus_connection, NULL, MPRIS_PATH,
             "org.freedesktop.DBus.Properties", "PropertiesChanged",
             g_variant_new_tuple(tuples, 3) , NULL);
-    }
-    else
-    {
+    } else {
         g_variant_builder_clear(&b);
     }
 }

@@ -365,8 +365,7 @@ parole_stream_set_image (GObject *object, GdkPixbuf *pixbuf)
     if ( PAROLE_STREAM_GET_PRIVATE (stream)->image )
         g_object_unref(G_OBJECT(PAROLE_STREAM_GET_PRIVATE (stream)->image));
 
-    if (pixbuf)
-    {
+    if (pixbuf) {
         PAROLE_STREAM_GET_PRIVATE (stream)->image = gdk_pixbuf_copy(pixbuf);
 
         /* Create a jpeg of the artwork for other components to easily access */
@@ -377,9 +376,7 @@ parole_stream_set_image (GObject *object, GdkPixbuf *pixbuf)
         PAROLE_STREAM_GET_PRIVATE (stream)->previous_image = g_strdup(filename);
         PAROLE_STREAM_GET_PRIVATE (stream)->image_uri = g_strdup_printf("file://%s", filename);
         g_free(filename);
-    }
-    else
-    {
+    } else {
         PAROLE_STREAM_GET_PRIVATE (stream)->image = NULL;
         PAROLE_STREAM_GET_PRIVATE (stream)->previous_image = NULL;
         PAROLE_STREAM_GET_PRIVATE (stream)->image_uri = g_strdup_printf ("file://%s/no-cover.png", PIXMAPS_DIR);

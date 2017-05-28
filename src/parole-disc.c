@@ -109,13 +109,10 @@ parole_disc_set_label(ParoleDisc *disc, const gchar *label)
 {
     gchar *menu_label;
 
-    if ( g_strcmp0(label, _("Insert Disc")) != 0 )
-    {
+    if ( g_strcmp0(label, _("Insert Disc")) != 0 ) {
         menu_label = g_strdup_printf ("%s '%s'", _("Play Disc"), label);
         g_signal_emit (G_OBJECT (disc), signals [LABEL_CHANGED], 0, label);
-    }
-    else
-    {
+    } else {
         menu_label = g_strdup(label);
         g_signal_emit (G_OBJECT (disc), signals [LABEL_CHANGED], 0, label);
     }
@@ -271,26 +268,19 @@ parole_disc_add_mount_to_menu (ParoleDisc *disc, GMount *mount, const gchar *dev
     {
 	    TRACE ("Checking disc content type : %s", content_type[i]);
 
-	    if ( !g_strcmp0 (content_type[i], "x-content/video-dvd") )
-	    {
+	    if ( !g_strcmp0 (content_type[i], "x-content/video-dvd") ) {
 	        kind = PAROLE_DISC_DVD;
 	        uri = g_strdup ("dvd:/");
 	        break;
-	    }
-	    else if ( !g_strcmp0 (content_type[i], "x-content/video-vcd") )
-	    {
+	    } else if ( !g_strcmp0 (content_type[i], "x-content/video-vcd") ) {
 	        kind = PAROLE_DISC_VCD;
 	        uri = g_strdup ("vcd:/");
 	        break;
-	    }
-	    else if ( !g_strcmp0 (content_type[i], "x-content/video-svcd") )
-	    {
+	    } else if ( !g_strcmp0 (content_type[i], "x-content/video-svcd") ) {
 	        kind = PAROLE_DISC_SVCD;
 	        uri = g_strdup ("svcd:/");
 	        break;
-	    }
-	    else if ( !g_strcmp0 (content_type[i], "x-content/audio-cdda") )
-	    {
+	    } else if ( !g_strcmp0 (content_type[i], "x-content/audio-cdda") ) {
 	        kind = PAROLE_DISC_CDDA;
 	        uri = g_strdup ("cdda://");
 	        break;
@@ -349,19 +339,13 @@ parole_disc_check_cdrom (ParoleDisc *disc, GVolume *volume, const gchar *device)
 	    goto out;
     }
 
-    if ( (drive = ioctl (fd, CDROM_DRIVE_STATUS, NULL)) )
-    {
-	    if ( drive == CDS_DRIVE_NOT_READY )
-	    {
+    if ( (drive = ioctl (fd, CDROM_DRIVE_STATUS, NULL)) ) {
+	    if ( drive == CDS_DRIVE_NOT_READY ) {
 	        g_print ("Drive :%s is not yet ready\n", device);
 	        disc->priv->needs_update = TRUE;
-	    }
-	    else if ( drive == CDS_DISC_OK )
-	    {
-	        if ( (drive = ioctl (fd, CDROM_DISC_STATUS, NULL)) > 0 )
-	        {
-		        if ( drive == CDS_AUDIO || drive == CDS_MIXED )
-		        {
+	    } else if ( drive == CDS_DISC_OK ) {
+	        if ( (drive = ioctl (fd, CDROM_DISC_STATUS, NULL)) > 0 ) {
+		        if ( drive == CDS_AUDIO || drive == CDS_MIXED ) {
 		            data = parole_disc_get_mount_data (disc, "cdda://", device, PAROLE_DISC_CDDA);
 
 			        name = g_volume_get_name (volume);
@@ -406,14 +390,11 @@ parole_disc_add_drive (ParoleDisc *disc, GDrive *drive, const gchar *device)
 	    TRACE ("Volume name %s", g_volume_get_name (volume));
 
 	    mount = g_volume_get_mount (volume);
-	    if ( mount )
-	    {
+	    if ( mount ) {
 	        TRACE ("Mount name : %s", g_mount_get_name (mount));
 	        parole_disc_add_mount_to_menu (disc, mount, device);
 	        g_object_unref (mount);
-	    }
-	    else
-	    {
+	    } else {
 	        /* Could be a cdda?*/
 	        parole_disc_check_cdrom (disc, volume, device);
 	    }

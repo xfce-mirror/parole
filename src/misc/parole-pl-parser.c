@@ -101,21 +101,16 @@ parole_xspf_xml_text (GMarkupParseContext *context, const gchar *text, gsize tex
 
     element_name = g_markup_parse_context_get_element (context);
 
-    if (!g_ascii_strcasecmp (element_name, "location") )
-    {
-        if (data->uri)
-        {
+    if (!g_ascii_strcasecmp (element_name, "location") ) {
+        if (data->uri) {
             g_free (data->uri);
             data->uri = NULL;
         }
 
         if (text_len > 0)
             data->uri = g_strdup (text);
-    }
-    else if (!g_ascii_strcasecmp (element_name, "title") )
-    {
-        if (data->title)
-        {
+    } else if (!g_ascii_strcasecmp (element_name, "title") ) {
+        if (data->title) {
             g_free (data->title);
             data->title = NULL;
         }
@@ -274,12 +269,10 @@ parole_pl_parser_parse_asx (const gchar *filename)
     if ( !g_file_load_contents (file, NULL, &contents, &size, NULL, NULL) )
         goto out;
 
-    if ( g_utf8_validate (contents, -1, NULL) == FALSE)
-    {
+    if ( g_utf8_validate (contents, -1, NULL) == FALSE) {
         gchar *fixed;
         fixed = g_convert (contents, -1, "UTF-8", "ISO8859-1", NULL, NULL, NULL);
-        if (fixed != NULL)
-        {
+        if (fixed != NULL) {
             g_free (contents);
             contents = fixed;
         }
@@ -287,18 +280,13 @@ parole_pl_parser_parse_asx (const gchar *filename)
 
     pctx = g_markup_parse_context_new (&parser, 0, &data, NULL);
 
-    if ( !g_markup_parse_context_parse (pctx, contents, size, &error) )
-    {
-        if ( error )
-        {
+    if ( !g_markup_parse_context_parse (pctx, contents, size, &error) ) {
+        if ( error ) {
             g_critical ("Unable to parse asx file : %s : %s\n", filename, error->message);
             g_error_free (error);
         }
-    }
-    else
-    {
-        if ( !g_markup_parse_context_end_parse (pctx, &error) )
-        {
+    } else {
+        if ( !g_markup_parse_context_end_parse (pctx, &error) ) {
             g_critical ("Unable to finish parsing ASX playlist file %s", error->message);
             g_error_free (error);
         }
@@ -354,12 +342,9 @@ parole_pl_parser_parse_m3u (const gchar *filename)
         }
     }
 
-    if ( strstr (contents,"\x0d") == NULL)
-    {
+    if ( strstr (contents,"\x0d") == NULL) {
         split_char = "\n";
-    }
-    else
-    {
+    } else {
         split_char = "\x0d\n";
     }
 
@@ -372,23 +357,18 @@ parole_pl_parser_parse_m3u (const gchar *filename)
     num_lines = g_strv_length (lines);
     num_lines--; /* Drop the terminating NULL */
 
-    for ( i = 0; lines[i] != NULL; i++)
-    {
+    for ( i = 0; lines[i] != NULL; i++) {
         if ( lines[i][0] == '\0' || lines[i][0] == '#')
             continue;
 
         /* Absolute, local path */
         if ( lines[i][0] == '/' ) {
             pl_filename = g_strdup(lines[i]);
-        }
-
-        else {
+        } else {
             /* Stream protocol */
             if ( g_regex_match (regex, lines[i], 0, &match_info) ) {
                 pl_filename = g_strdup(lines[i]);
-            }
-
-            else {
+            } else {
                 /* Relative path */
                 pl_filename = g_strjoin("/", path, lines[i], NULL);
             }
@@ -488,18 +468,13 @@ parole_pl_parser_parse_xspf (const gchar *filename)
 
     pctx = g_markup_parse_context_new (&parser, 0, &data, NULL);
 
-    if ( !g_markup_parse_context_parse (pctx, contents, size, &error) )
-    {
-        if ( error )
-        {
+    if ( !g_markup_parse_context_parse (pctx, contents, size, &error) ) {
+        if ( error ) {
             g_critical ("Unable to parse xspf file : %s : %s\n", filename, error->message);
             g_error_free (error);
         }
-    }
-    else
-    {
-        if ( !g_markup_parse_context_end_parse (pctx, &error) )
-        {
+    } else {
+        if ( !g_markup_parse_context_end_parse (pctx, &error) ) {
             g_critical ("Unable to finish parsing xspf playlist file %s", error->message);
             g_error_free (error);
         }

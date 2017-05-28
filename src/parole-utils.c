@@ -113,8 +113,7 @@ thunar_file_compare_by_name (ParoleFile *file_a,
     bp = parole_file_get_display_name (file_b);
 
     /* check if we should ignore case */
-    if (G_LIKELY (case_sensitive))
-    {
+    if (G_LIKELY (case_sensitive)) {
         /* try simple (fast) ASCII comparison first */
         for (;; ++ap, ++bp)
             {
@@ -126,20 +125,17 @@ thunar_file_compare_by_name (ParoleFile *file_a,
         }
 
         /* fallback to Unicode comparison */
-        if (G_UNLIKELY (ac > 127 || bc > 127))
+        if (G_UNLIKELY (ac > 127 || bc > 127)) {
+            for (;; ap = g_utf8_next_char (ap), bp = g_utf8_next_char (bp))
             {
-                for (;; ap = g_utf8_next_char (ap), bp = g_utf8_next_char (bp))
-                {
-                /* check if characters differ or end of string */
-                ac = g_utf8_get_char (ap);
-                bc = g_utf8_get_char (bp);
-                if (ac != bc || ac == 0)
-                    break;
-                }
+            /* check if characters differ or end of string */
+            ac = g_utf8_get_char (ap);
+            bc = g_utf8_get_char (bp);
+            if (ac != bc || ac == 0)
+                break;
             }
-    }
-    else
-    {
+        }
+    } else {
         /* try simple (fast) ASCII comparison first (case-insensitive!) */
         for (;; ++ap, ++bp)
         {
@@ -151,8 +147,7 @@ thunar_file_compare_by_name (ParoleFile *file_a,
         }
 
         /* fallback to Unicode comparison (case-insensitive!) */
-        if (G_UNLIKELY (ac > 127 || bc > 127))
-        {
+        if (G_UNLIKELY (ac > 127 || bc > 127)) {
             for (;; ap = g_utf8_next_char (ap), bp = g_utf8_next_char (bp))
             {
                 /* check if characters differ or end of string */
@@ -193,17 +188,13 @@ thunar_file_compare_by_name (ParoleFile *file_a,
      * would be too expensive)
      */
 #ifdef HAVE_STRCOLL
-    if ((ac > 127 || bc > 127) && g_get_charset (NULL))
-    {
+    if ((ac > 127 || bc > 127) && g_get_charset (NULL)) {
         /* case-sensitive is easy, case-insensitive is expensive,
              * but we use a simple optimization to make it fast.
              */
-        if (G_LIKELY (case_sensitive))
-        {
+        if (G_LIKELY (case_sensitive)) {
             return strcoll (ap, bp);
-        }
-        else
-        {
+        } else {
             /* we use a trick here, so we don't need to allocate
                  * and transform the two strings completely first (8
                  * byte for each buffer, so all compilers should align
@@ -370,28 +361,22 @@ void parole_get_media_files (GtkFileFilter *filter, const gchar *path,
     gtk_main_iteration_do (FALSE);
 
 
-    if ( g_file_test (path, G_FILE_TEST_IS_REGULAR ) )
-    {
+    if ( g_file_test (path, G_FILE_TEST_IS_REGULAR ) ) {
         file = parole_file_new (path);
         if ( parole_file_filter (playlist_filter, file) &&
              parole_pl_parser_guess_format_from_extension (path) != PAROLE_PL_FORMAT_UNKNOWN )
         {
             playlist = parole_pl_parser_parse_from_file_by_extension (path);
             g_object_unref (file);
-            if ( playlist)
-            {
+            if ( playlist) {
                 *list = g_slist_concat (*list, playlist);
             }
-        }
-        else if ( parole_file_filter (filter, file) )
-        {
+        } else if ( parole_file_filter (filter, file) ) {
             *list = g_slist_append (*list, file);
-        }
-        else
+        } else {
             g_object_unref (file);
-    }
-    else if ( g_file_test (path, G_FILE_TEST_IS_DIR ) )
-    {
+        }
+    } else if ( g_file_test (path, G_FILE_TEST_IS_DIR ) ) {
         dir = g_dir_open (path, 0, NULL);
 
         if ( G_UNLIKELY (dir == NULL) )
@@ -400,30 +385,24 @@ void parole_get_media_files (GtkFileFilter *filter, const gchar *path,
         while ( (name = g_dir_read_name (dir)) )
         {
             gchar *path_internal = g_build_filename (path, name, NULL);
-            if ( g_file_test (path_internal, G_FILE_TEST_IS_DIR) && recursive)
-            {
+            if ( g_file_test (path_internal, G_FILE_TEST_IS_DIR) && recursive) {
                 parole_get_media_files (filter, path_internal, TRUE, list);
-            }
-            else if ( g_file_test (path_internal, G_FILE_TEST_IS_REGULAR) )
-            {
+            } else if ( g_file_test (path_internal, G_FILE_TEST_IS_REGULAR) ) {
                 file = parole_file_new (path_internal);
                 if ( parole_file_filter (playlist_filter, file) &&
                      parole_pl_parser_guess_format_from_extension (path) != PAROLE_PL_FORMAT_UNKNOWN)
                 {
                     playlist = parole_pl_parser_parse_from_file_by_extension (path_internal);
                     g_object_unref (file);
-                    if ( playlist)
-                    {
+                    if ( playlist) {
                         *list = g_slist_concat (*list, playlist);
                     }
-                }
-                else if ( parole_file_filter (filter, file) )
-                {
+                } else if ( parole_file_filter (filter, file) ) {
                     list_internal = g_slist_append (list_internal, file);
-                }
-                else
+                } else {
                     g_object_unref (file);
                 }
+            }
             g_free (path_internal);
         }
         list_internal = g_slist_sort (list_internal, (GCompareFunc) thunar_file_compare_by_name);
@@ -450,24 +429,17 @@ parole_device_has_cdda (const gchar *device)
 
     TRACE ("device : %s", device);
 
-    if ( (fd = open (device, O_RDONLY)) < 0 )
-    {
+    if ( (fd = open (device, O_RDONLY)) < 0 ) {
         g_debug ("Failed to open device : %s", device);
         return FALSE;
     }
 
-    if ( (drive = ioctl (fd, CDROM_DRIVE_STATUS, NULL)) )
-    {
-        if ( drive == CDS_DRIVE_NOT_READY )
-        {
+    if ( (drive = ioctl (fd, CDROM_DRIVE_STATUS, NULL)) ) {
+        if ( drive == CDS_DRIVE_NOT_READY ) {
             g_debug ("Drive :%s is not yet ready\n", device);
-        }
-        else if ( drive == CDS_DISC_OK )
-        {
-            if ( (drive = ioctl (fd, CDROM_DISC_STATUS, NULL)) > 0 )
-            {
-                if ( drive == CDS_AUDIO )
-                {
+        } else if ( drive == CDS_DISC_OK ) {
+            if ( (drive = ioctl (fd, CDROM_DISC_STATUS, NULL)) > 0 ) {
+                if ( drive == CDS_AUDIO ) {
                     ret_val = TRUE;
                 }
             }
@@ -489,12 +461,9 @@ parole_guess_uri_from_mount (GMount *mount)
 
     file = g_mount_get_root (mount);
 
-    if ( g_file_has_uri_scheme (file, "cdda") )
-    {
+    if ( g_file_has_uri_scheme (file, "cdda") ) {
         uri = g_strdup ("cdda://");
-    }
-    else
-    {
+    } else {
         gchar **content_type;
         int i;
 
@@ -504,23 +473,16 @@ parole_guess_uri_from_mount (GMount *mount)
         {
             TRACE ("Checking disc content type : %s", content_type[i]);
 
-            if ( !g_strcmp0 (content_type[i], "x-content/video-dvd") )
-            {
+            if ( !g_strcmp0 (content_type[i], "x-content/video-dvd") ) {
                 uri = g_strdup ("dvd:/");
                 break;
-            }
-            else if ( !g_strcmp0 (content_type[i], "x-content/video-vcd") )
-            {
+            } else if ( !g_strcmp0 (content_type[i], "x-content/video-vcd") ) {
                 uri = g_strdup ("vcd:/");
                 break;
-            }
-            else if ( !g_strcmp0 (content_type[i], "x-content/video-svcd") )
-            {
+            } else if ( !g_strcmp0 (content_type[i], "x-content/video-svcd") ) {
                 uri = g_strdup ("svcd:/");
                 break;
-            }
-            else if ( !g_strcmp0 (content_type[i], "x-content/audio-cdda") )
-            {
+            } else if ( !g_strcmp0 (content_type[i], "x-content/audio-cdda") ) {
                 uri = g_strdup ("cdda://");
                 break;
             }
@@ -625,12 +587,9 @@ gchar *parole_format_media_length (gint total_seconds)
     hours = minutes / 60;
     minutes = minutes % 60;
 
-    if ( hours == 0 )
-    {
+    if ( hours == 0 ) {
         timestring = g_strdup_printf ("%02i:%02i", minutes, seconds);
-    }
-    else
-    {
+    } else {
         timestring = g_strdup_printf ("%i:%02i:%02i", hours, minutes, seconds);
     }
 

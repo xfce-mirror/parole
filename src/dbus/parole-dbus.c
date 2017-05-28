@@ -54,12 +54,9 @@ parole_g_session_bus_get (void)
     DBusGConnection *bus;
     GError *error = NULL;
 
-    if ( G_LIKELY (session_bus_connected) )
-    {
+    if ( G_LIKELY (session_bus_connected) ) {
         bus = dbus_g_bus_get (DBUS_BUS_SESSION, NULL);
-    }
-    else
-    {
+    } else {
         bus = dbus_g_bus_get (DBUS_BUS_SESSION, &error);
 
         if ( error )

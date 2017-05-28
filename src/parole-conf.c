@@ -165,25 +165,20 @@ static void parole_conf_set_property (GObject *object,
     /* freeze */
     g_signal_handler_block (conf->channel, conf->property_changed_id);
 
-    if (G_VALUE_HOLDS_ENUM (value))
-    {
+    if (G_VALUE_HOLDS_ENUM (value)) {
         /* convert into a string */
         g_value_init (&dst, G_TYPE_STRING);
         if (g_value_transform (value, &dst))
             xfconf_channel_set_property (conf->channel, xfconf_nick, &dst);
         g_value_unset (&dst);
-    }
-    else if (G_VALUE_HOLDS (value, G_TYPE_STRV))
-    {
+    } else if (G_VALUE_HOLDS (value, G_TYPE_STRV)) {
         /* convert to a GValue GPtrArray in xfconf */
         array = g_value_get_boxed (value);
         if (array != NULL && *array != NULL)
             xfconf_channel_set_string_list (conf->channel, xfconf_nick, (const gchar * const *) array);
         else
             xfconf_channel_reset_property (conf->channel, xfconf_nick, FALSE);
-    }
-    else
-    {
+    } else {
         /* other types we support directly */
         xfconf_channel_set_property (conf->channel, xfconf_nick, value);
     }
@@ -240,22 +235,17 @@ static void parole_conf_get_property (GObject *object,
     /* store xfconf values using the spec nick */
     xfconf_nick = g_strdup_printf("%s", g_param_spec_get_nick(pspec));
 
-    if (G_VALUE_TYPE (value) == G_TYPE_STRV)
-    {
+    if (G_VALUE_TYPE (value) == G_TYPE_STRV) {
         /* handle arrays directly since we cannot transform those */
         array = xfconf_channel_get_string_list (conf->channel, xfconf_nick);
         g_value_take_boxed (value, array);
-    }
-    else if (xfconf_channel_get_property (conf->channel, xfconf_nick, &src))
-    {
+    } else if (xfconf_channel_get_property (conf->channel, xfconf_nick, &src)) {
         if (G_VALUE_TYPE (value) == G_VALUE_TYPE (&src))
             g_value_copy (&src, value);
         else if (!g_value_transform (&src, value))
             g_printerr ("Parole: Failed to transform property %s\n", prop_name);
         g_value_unset (&src);
-    }
-    else
-    {
+    } else {
         /* value is not found, return default */
         g_param_value_set_default (pspec, value);
     }
@@ -972,19 +962,14 @@ parole_conf_load_rc_file (ParoleConf *conf)
         g_value_set_static_string (&src, string);
 
         /* store string and enums directly */
-        if (G_IS_PARAM_SPEC_STRING (pspec) || G_IS_PARAM_SPEC_ENUM (pspec))
-        {
+        if (G_IS_PARAM_SPEC_STRING (pspec) || G_IS_PARAM_SPEC_ENUM (pspec)) {
             xfconf_channel_set_property (conf->channel, prop_name, &src);
-        }
-        else if (g_value_type_transformable (G_TYPE_STRING, G_PARAM_SPEC_VALUE_TYPE (pspec)))
-        {
+        } else if (g_value_type_transformable (G_TYPE_STRING, G_PARAM_SPEC_VALUE_TYPE (pspec))) {
             g_value_init (&dst, G_PARAM_SPEC_VALUE_TYPE (pspec));
             if (g_value_transform (&src, &dst))
                 xfconf_channel_set_property (conf->channel, prop_name, &dst);
             g_value_unset (&dst);
-        }
-        else
-        {
+        } else {
             g_warning ("Failed to migrate property \"%s\"", g_param_spec_get_name (pspec));
         }
 
@@ -1042,12 +1027,9 @@ parole_conf_init (ParoleConf *conf)
 ParoleConf *
 parole_conf_new (void)
 {
-    if ( parole_conf_object != NULL )
-    {
+    if ( parole_conf_object != NULL ) {
         g_object_ref (parole_conf_object);
-    }
-    else
-    {
+    } else {
         parole_conf_object = g_object_new (PAROLE_TYPE_CONF, NULL);
         g_object_add_weak_pointer (parole_conf_object, &parole_conf_object);
     }
