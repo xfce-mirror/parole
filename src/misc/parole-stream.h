@@ -36,6 +36,20 @@ G_BEGIN_DECLS
 #define PAROLE_STREAM(o)          (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_STREAM, ParoleStream))
 #define PAROLE_IS_STREAM(o)       (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_STREAM))
 
+/**
+ * ParoleMediaType:
+ * @PAROLE_MEDIA_TYPE_UNKNOWN: Unknown media type
+ * @PAROLE_MEDIA_TYPE_LOCAL_FILE: File found on hard disk
+ * @PAROLE_MEDIA_TYPE_CDDA: Audio CD
+ * @PAROLE_MEDIA_TYPE_VCD: Video CD
+ * @PAROLE_MEDIA_TYPE_SVCD: Super Video CD
+ * @PAROLE_MEDIA_TYPE_DVD: DVD
+ * @PAROLE_MEDIA_TYPE_DVB: Digital Video Broadcast
+ * @PAROLE_MEDIA_TYPE_REMOTE: File stored remotely
+ *
+ * Media types.
+ *
+ **/
 typedef enum
 {
     PAROLE_MEDIA_TYPE_UNKNOWN,
@@ -49,7 +63,17 @@ typedef enum
 
 } ParoleMediaType;
 
-
+/**
+ * ParoleState:
+ * @PAROLE_STATE_STOPPED: Playback is stopped
+ * @PAROLE_STATE_PLAYBACK_FINISHED: Playback has finished
+ * @PAROLE_STATE_ABOUT_TO_FINISH: Playback is about to finish
+ * @PAROLE_STATE_PAUSED: Playback is paused
+ * @PAROLE_STATE_PLAYING: Playback is active
+ *
+ * Media playback states.
+ *
+ **/
 typedef enum
 {
     PAROLE_STATE_STOPPED = 0,

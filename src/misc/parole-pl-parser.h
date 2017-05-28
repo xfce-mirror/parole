@@ -31,6 +31,17 @@
 
 G_BEGIN_DECLS
 
+/**
+ * ParolePlFormat:
+ * @PAROLE_PL_FORMAT_UNKNOWN: Unknown format
+ * @PAROLE_PL_FORMAT_M3U: M3U format
+ * @PAROLE_PL_FORMAT_PLS: PLS format
+ * @PAROLE_PL_FORMAT_ASX: ASX format
+ * @PAROLE_PL_FORMAT_XSPF: XSPF format
+ *
+ * Parole Playlist Formats.
+ *
+ **/
 typedef enum
 {
     PAROLE_PL_FORMAT_UNKNOWN,

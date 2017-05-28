@@ -41,6 +41,14 @@ G_BEGIN_DECLS
 typedef struct _ParoleProviderPlayerIface ParoleProviderPlayerIface;
 typedef struct _ParoleProviderPlayer      ParoleProviderPlayer;
 
+/**
+ * ParolePluginContainer:
+ * @PAROLE_PLUGIN_CONTAINER_PLAYLIST: Playlist container
+ * @PAROLE_PLUGIN_CONTAINER_MAIN_VIEW: Main view container
+ *
+ * Available plugin widget containers.
+ *
+ **/
 typedef enum
 {
     PAROLE_PLUGIN_CONTAINER_PLAYLIST,
