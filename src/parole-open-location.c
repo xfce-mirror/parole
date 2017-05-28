@@ -36,7 +36,7 @@
 
 #include "interfaces/open-location_ui.h"
 
-static void parole_open_location_finalize   (GObject *object);
+static void parole_open_location_finalize(GObject *object);
 
 struct ParoleOpenLocation
 {
@@ -49,7 +49,7 @@ struct ParoleOpenLocationClass
 {
     GObjectClass    parent_class;
 
-    void            (*location_opened)  (ParoleOpenLocation *self,
+    void(*location_opened)(ParoleOpenLocation *self,
                                          const gchar *address);
 };
 
@@ -67,11 +67,11 @@ enum
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE (ParoleOpenLocation, parole_open_location, G_TYPE_OBJECT)
+G_DEFINE_TYPE(ParoleOpenLocation, parole_open_location, G_TYPE_OBJECT)
 
 /* Callback for the open button which passes on the location and closes the dialog */
 static void
-parole_open_location_response_cb (GtkDialog *dialog, gint response_id, ParoleOpenLocation *self)
+parole_open_location_response_cb(GtkDialog *dialog, gint response_id, ParoleOpenLocation *self)
 {
     const gchar *location;
 
@@ -80,33 +80,33 @@ parole_open_location_response_cb (GtkDialog *dialog, gint response_id, ParoleOpe
 
     if ( response_id == GTK_RESPONSE_OK )
     {
-        location = gtk_combo_box_text_get_active_text  (GTK_COMBO_BOX_TEXT(self->entry));
+        location = gtk_combo_box_text_get_active_text(GTK_COMBO_BOX_TEXT(self->entry));
 
         if ( !location || strlen (location) == 0)
             goto out;
 
-        TRACE ("Location %s", location);
+        TRACE("Location %s", location);
 
-        gtk_widget_hide (GTK_WIDGET (dialog));
-        g_signal_emit (G_OBJECT (self), signals[LOCATION_OPENED], 0, location);
+        gtk_widget_hide(GTK_WIDGET(dialog));
+        g_signal_emit(G_OBJECT(self), signals[LOCATION_OPENED], 0, location);
     }
 
 out:
-    gtk_widget_destroy (GTK_WIDGET (dialog));
+    gtk_widget_destroy(GTK_WIDGET(dialog));
 }
 
 /* Populate the history-popup */
 static GtkTreeModel *
-parole_open_location_get_completion_model (void)
+parole_open_location_get_completion_model(void)
 {
     GtkListStore *store;
     GtkTreeIter iter;
     gchar **lines = NULL;
     guint i;
 
-    store = gtk_list_store_new (N_COLS, G_TYPE_STRING);
+    store = gtk_list_store_new(N_COLS, G_TYPE_STRING);
 
-    lines = parole_get_history ();
+    lines = parole_get_history();
 
     if ( lines )
     {
@@ -114,22 +114,22 @@ parole_open_location_get_completion_model (void)
         {
             if ( g_strcmp0(lines[i], "") != 0 )
             {
-                gtk_list_store_append (store, &iter);
-                gtk_list_store_set (store, &iter,
+                gtk_list_store_append(store, &iter);
+                gtk_list_store_set(store, &iter,
                                     COL_ADDRESS, lines[i],
                                     -1);
             }
         }
 
-        g_strfreev (lines);
+        g_strfreev(lines);
     }
     return GTK_TREE_MODEL (store);
 }
 
 static void
-parole_open_location_class_init (ParoleOpenLocationClass *klass)
+parole_open_location_class_init(ParoleOpenLocationClass *klass)
 {
-    GObjectClass *object_class = G_OBJECT_CLASS (klass);
+    GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
     object_class->finalize = parole_open_location_finalize;
 
@@ -137,69 +137,69 @@ parole_open_location_class_init (ParoleOpenLocationClass *klass)
         g_signal_new("location-opened",
                       PAROLE_TYPE_OPEN_LOCATION,
                       G_SIGNAL_RUN_LAST,
-                      G_STRUCT_OFFSET (ParoleOpenLocationClass, location_opened),
+                      G_STRUCT_OFFSET(ParoleOpenLocationClass, location_opened),
                       NULL, NULL,
                       g_cclosure_marshal_VOID__STRING,
                       G_TYPE_NONE, 1, G_TYPE_STRING);
 }
 
 static void
-parole_open_location_init (ParoleOpenLocation *self)
+parole_open_location_init(ParoleOpenLocation *self)
 {
 }
 
 static void
-parole_open_location_finalize (GObject *object)
+parole_open_location_finalize(GObject *object)
 {
-    G_OBJECT_CLASS (parole_open_location_parent_class)->finalize (object);
+    G_OBJECT_CLASS(parole_open_location_parent_class)->finalize(object);
 }
 
 /* Clear the location history */
 static void
-parole_open_location_clear_history (GtkTreeModel *model)
+parole_open_location_clear_history(GtkTreeModel *model)
 {
-    parole_clear_history_file ();
-    gtk_list_store_clear (GTK_LIST_STORE (model));
+    parole_clear_history_file();
+    gtk_list_store_clear(GTK_LIST_STORE(model));
 }
 
 /* Main function to open the "open location" dialog */
-ParoleOpenLocation *parole_open_location (GtkWidget *parent)
+ParoleOpenLocation *parole_open_location(GtkWidget *parent)
 {
     ParoleOpenLocation *self;
     GtkWidget *dialog;
     GtkTreeModel *model;
     GtkBuilder *builder;
 
-    self = g_object_new (PAROLE_TYPE_OPEN_LOCATION, NULL);
+    self = g_object_new(PAROLE_TYPE_OPEN_LOCATION, NULL);
 
-    builder = parole_builder_new_from_string (open_location_ui, open_location_ui_length);
+    builder = parole_builder_new_from_string(open_location_ui, open_location_ui_length);
 
-    dialog = GTK_WIDGET (gtk_builder_get_object (builder, "open-location"));
+    dialog = GTK_WIDGET(gtk_builder_get_object(builder, "open-location"));
 
     if ( parent )
-        gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (parent));
+        gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(parent));
 
-    gtk_window_set_position (GTK_WINDOW (dialog), GTK_WIN_POS_CENTER_ON_PARENT);
+    gtk_window_set_position(GTK_WINDOW(dialog), GTK_WIN_POS_CENTER_ON_PARENT);
 
-    self->entry = GTK_WIDGET (gtk_builder_get_object (builder, "entry"));
-    model = parole_open_location_get_completion_model ();
+    self->entry = GTK_WIDGET(gtk_builder_get_object(builder, "entry"));
+    model = parole_open_location_get_completion_model();
 
     gtk_combo_box_set_model(GTK_COMBO_BOX(self->entry), model);
 
-    gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
+    gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_OK);
 
-    g_signal_connect_swapped (gtk_builder_get_object (builder, "clear-history"), "clicked",
-                              G_CALLBACK (parole_open_location_clear_history), model);
-    gtk_widget_set_tooltip_text (GTK_WIDGET (gtk_builder_get_object (builder, "clear-history")), _("Clear History"));
+    g_signal_connect_swapped(gtk_builder_get_object(builder, "clear-history"), "clicked",
+                              G_CALLBACK(parole_open_location_clear_history), model);
+    gtk_widget_set_tooltip_text(GTK_WIDGET(gtk_builder_get_object(builder, "clear-history")), _("Clear History"));
 
-    g_signal_connect (dialog, "delete-event",
-                      G_CALLBACK (gtk_widget_destroy), NULL);
+    g_signal_connect(dialog, "delete-event",
+                      G_CALLBACK(gtk_widget_destroy), NULL);
 
-    g_signal_connect (dialog, "response",
-                      G_CALLBACK (parole_open_location_response_cb), self);
+    g_signal_connect(dialog, "response",
+                      G_CALLBACK(parole_open_location_response_cb), self);
 
-    gtk_widget_show_all (dialog);
-    g_object_unref (builder);
+    gtk_widget_show_all(dialog);
+    g_object_unref(builder);
 
     return self;
 }

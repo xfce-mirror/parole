@@ -36,32 +36,32 @@
 #include "parole-dbus.h"
 
 static void
-proxy_destroy_cb (DBusGConnection *bus)
+proxy_destroy_cb(DBusGConnection *bus)
 {
-    dbus_g_connection_unref (bus);
+    dbus_g_connection_unref(bus);
 }
 
 static DBusConnection *
-parole_session_bus_get (void)
+parole_session_bus_get(void)
 {
     return dbus_g_connection_get_connection (parole_g_session_bus_get ());
 }
 
 DBusGConnection *
-parole_g_session_bus_get (void)
+parole_g_session_bus_get(void)
 {
     static gboolean session_bus_connected = FALSE;
     DBusGConnection *bus;
     GError *error = NULL;
 
-    if ( G_LIKELY (session_bus_connected) ) {
-        bus = dbus_g_bus_get (DBUS_BUS_SESSION, NULL);
+    if ( G_LIKELY(session_bus_connected) ) {
+        bus = dbus_g_bus_get(DBUS_BUS_SESSION, NULL);
     } else {
-        bus = dbus_g_bus_get (DBUS_BUS_SESSION, &error);
+        bus = dbus_g_bus_get(DBUS_BUS_SESSION, &error);
 
         if ( error )
         {
-            g_error ("%s", error->message);
+            g_error("%s", error->message);
         }
         session_bus_connected = TRUE;
     }
@@ -70,100 +70,100 @@ parole_g_session_bus_get (void)
 }
 
 DBusGProxy *
-parole_get_proxy (const gchar *path, const gchar *iface)
+parole_get_proxy(const gchar *path, const gchar *iface)
 {
     DBusGConnection *bus;
     DBusGProxy *proxy;
 
-    bus = parole_g_session_bus_get ();
+    bus = parole_g_session_bus_get();
 
-    proxy = dbus_g_proxy_new_for_name (bus,
+    proxy = dbus_g_proxy_new_for_name(bus,
                                        PAROLE_DBUS_NAME,
                                        path,
                                        iface);
 
     if ( !proxy )
-        g_error ("Unable to create proxy for %s", PAROLE_DBUS_NAME);
+        g_error("Unable to create proxy for %s", PAROLE_DBUS_NAME);
 
-    g_signal_connect_swapped (proxy, "destroy",
-                              G_CALLBACK (proxy_destroy_cb), bus);
+    g_signal_connect_swapped(proxy, "destroy",
+                              G_CALLBACK(proxy_destroy_cb), bus);
 
     return proxy;
 }
 
 gboolean
-parole_dbus_name_has_owner (const gchar *name)
+parole_dbus_name_has_owner(const gchar *name)
 {
     DBusConnection *bus;
     DBusError error;
     gboolean ret;
 
-    bus = parole_session_bus_get ();
+    bus = parole_session_bus_get();
 
-    dbus_error_init (&error);
+    dbus_error_init(&error);
 
-    ret = dbus_bus_name_has_owner (bus, name, &error);
+    ret = dbus_bus_name_has_owner(bus, name, &error);
 
-    dbus_connection_unref (bus);
+    dbus_connection_unref(bus);
 
     if ( dbus_error_is_set (&error) )
     {
-        g_warning ("Failed to get name owner: %s\n", error.message);
-        dbus_error_free (&error);
+        g_warning("Failed to get name owner: %s\n", error.message);
+        dbus_error_free(&error);
     }
 
     return ret;
 }
 
-gboolean    parole_dbus_register_name       (const gchar *name)
+gboolean    parole_dbus_register_name(const gchar *name)
 {
     DBusConnection *bus;
     DBusError error;
     int ret;
 
-    bus = parole_session_bus_get ();
+    bus = parole_session_bus_get();
 
-    dbus_error_init (&error);
+    dbus_error_init(&error);
 
     ret =
-        dbus_bus_request_name (bus,
+        dbus_bus_request_name(bus,
                                name,
                                DBUS_NAME_FLAG_ALLOW_REPLACEMENT,
                                &error);
 
-    dbus_connection_unref (bus);
+    dbus_connection_unref(bus);
 
     if ( dbus_error_is_set (&error) )
     {
-        g_warning ("Error: %s\n", error.message);
-        dbus_error_free (&error);
+        g_warning("Error: %s\n", error.message);
+        dbus_error_free(&error);
         return FALSE;
     }
 
     return ret == DBUS_REQUEST_NAME_REPLY_PRIMARY_OWNER ? TRUE : FALSE;
 }
 
-gboolean    parole_dbus_release_name        (const gchar *name)
+gboolean    parole_dbus_release_name(const gchar *name)
 {
     DBusConnection *bus;
     DBusError error;
     int ret;
 
-    bus = parole_session_bus_get ();
+    bus = parole_session_bus_get();
 
-    dbus_error_init (&error);
+    dbus_error_init(&error);
 
     ret =
-        dbus_bus_release_name (bus,
+        dbus_bus_release_name(bus,
                                name,
                                &error);
 
-    dbus_connection_unref (bus);
+    dbus_connection_unref(bus);
 
     if ( dbus_error_is_set (&error) )
     {
-        g_warning ("Error: %s\n", error.message);
-        dbus_error_free (&error);
+        g_warning("Error: %s\n", error.message);
+        dbus_error_free(&error);
         return FALSE;
     }
 

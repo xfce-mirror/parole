@@ -28,21 +28,21 @@
 
 #include "notify-provider.h"
 
-G_MODULE_EXPORT GType       parole_plugin_initialize (ParoleProviderPlugin *plugin);
+G_MODULE_EXPORT GType       parole_plugin_initialize(ParoleProviderPlugin *plugin);
 
-G_MODULE_EXPORT void        parole_plugin_shutdown   (void);
+G_MODULE_EXPORT void        parole_plugin_shutdown(void);
 
 G_MODULE_EXPORT GType
-parole_plugin_initialize    (ParoleProviderPlugin *plugin)
+parole_plugin_initialize(ParoleProviderPlugin *plugin)
 {
-    xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
+    xfce_textdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
 
-    notify_provider_register_type (plugin);
+    notify_provider_register_type(plugin);
 
     return NOTIFY_TYPE_PROVIDER;
 }
 
 G_MODULE_EXPORT void
-parole_plugin_shutdown (void)
+parole_plugin_shutdown(void)
 {
 }

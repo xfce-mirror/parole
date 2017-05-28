@@ -34,7 +34,7 @@
 
 #include "interfaces/shortcuts_ui.h"
 
-static void parole_shortcuts_finalize   (GObject *object);
+static void parole_shortcuts_finalize(GObject *object);
 
 struct ParoleShortcuts
 {
@@ -46,7 +46,7 @@ struct ParoleShortcutsClass
     GObjectClass    parent_class;
 };
 
-G_DEFINE_TYPE (ParoleShortcuts, parole_shortcuts, G_TYPE_OBJECT)
+G_DEFINE_TYPE(ParoleShortcuts, parole_shortcuts, G_TYPE_OBJECT)
 
 /*
 static void
@@ -57,49 +57,49 @@ parole_shortcuts_close_cb (GtkShortcutsWindow *window, ParoleShortcuts *self)
 */
 
 static void
-parole_shortcuts_class_init (ParoleShortcutsClass *klass)
+parole_shortcuts_class_init(ParoleShortcutsClass *klass)
 {
-    GObjectClass *object_class = G_OBJECT_CLASS (klass);
+    GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
     object_class->finalize = parole_shortcuts_finalize;
 }
 
 static void
-parole_shortcuts_init (ParoleShortcuts *self)
+parole_shortcuts_init(ParoleShortcuts *self)
 {
 }
 
 static void
-parole_shortcuts_finalize (GObject *object)
+parole_shortcuts_finalize(GObject *object)
 {
-    G_OBJECT_CLASS (parole_shortcuts_parent_class)->finalize (object);
+    G_OBJECT_CLASS(parole_shortcuts_parent_class)->finalize(object);
 }
 
-ParoleShortcuts *parole_shortcuts (GtkWidget *parent)
+ParoleShortcuts *parole_shortcuts(GtkWidget *parent)
 {
     ParoleShortcuts *self;
     GtkWidget *window;
     GtkBuilder *builder;
 
-    self = g_object_new (PAROLE_TYPE_SHORTCUTS, NULL);
+    self = g_object_new(PAROLE_TYPE_SHORTCUTS, NULL);
 
-    builder = parole_builder_new_from_string (shortcuts_ui, shortcuts_ui_length);
+    builder = parole_builder_new_from_string(shortcuts_ui, shortcuts_ui_length);
 
-    window = GTK_WIDGET (gtk_builder_get_object (builder, "shortcuts"));
+    window = GTK_WIDGET(gtk_builder_get_object(builder, "shortcuts"));
 
     if ( parent )
-        gtk_window_set_transient_for (GTK_WINDOW (window), GTK_WINDOW (parent));
+        gtk_window_set_transient_for(GTK_WINDOW(window), GTK_WINDOW(parent));
 
-    gtk_window_set_position (GTK_WINDOW (window), GTK_WIN_POS_CENTER_ON_PARENT);
+    gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER_ON_PARENT);
 
-    g_signal_connect (window, "delete-event",
-                      G_CALLBACK (gtk_widget_destroy), NULL);
+    g_signal_connect(window, "delete-event",
+                      G_CALLBACK(gtk_widget_destroy), NULL);
 
-    g_signal_connect (window, "close",
-                      G_CALLBACK (gtk_widget_destroy), NULL);
+    g_signal_connect(window, "close",
+                      G_CALLBACK(gtk_widget_destroy), NULL);
 
-    gtk_widget_show_all (window);
-    g_object_unref (builder);
+    gtk_widget_show_all(window);
+    g_object_unref(builder);
 
     return self;
 }

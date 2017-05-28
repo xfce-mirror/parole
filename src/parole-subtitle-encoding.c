@@ -341,7 +341,7 @@ static SubtitleEncoding encodings[] = {
 };
 
 static const SubtitleEncoding *
-find_encoding_by_charset (const char *charset)
+find_encoding_by_charset(const char *charset)
 {
   int i;
 
@@ -361,14 +361,14 @@ find_encoding_by_charset (const char *charset)
 }
 
 static void
-subtitle_encoding_init (void)
+subtitle_encoding_init(void)
 {
   guint i;
 
-  g_get_charset ((const char **)
+  g_get_charset((const char **)
       &encodings[SUBTITLE_ENCODING_CURRENT_LOCALE].charset);
 
-  g_assert (G_N_ELEMENTS (encodings) == SUBTITLE_ENCODING_LAST);
+  g_assert(G_N_ELEMENTS(encodings) == SUBTITLE_ENCODING_LAST);
 
   for (i = 0; i < SUBTITLE_ENCODING_LAST; i++) {
     /* Translate the names */
@@ -377,11 +377,11 @@ subtitle_encoding_init (void)
 }
 
 static int
-subtitle_encoding_get_index (const char *charset)
+subtitle_encoding_get_index(const char *charset)
 {
   const SubtitleEncoding *e;
 
-  e = find_encoding_by_charset (charset);
+  e = find_encoding_by_charset(charset);
   if (e != NULL)
     return e->index;
   else
@@ -389,7 +389,7 @@ subtitle_encoding_get_index (const char *charset)
 }
 
 static const char *
-subtitle_encoding_get_charset (int index_i)
+subtitle_encoding_get_charset(int index_i)
 {
   const SubtitleEncoding *e;
 
@@ -409,35 +409,35 @@ enum
 };
 
 static gint
-compare (GtkTreeModel * model, GtkTreeIter * a, GtkTreeIter * b, gpointer data)
+compare(GtkTreeModel * model, GtkTreeIter * a, GtkTreeIter * b, gpointer data)
 {
   gchar *str_a, *str_b;
   gint result;
 
-  gtk_tree_model_get (model, a, NAME_COL, &str_a, -1);
-  gtk_tree_model_get (model, b, NAME_COL, &str_b, -1);
+  gtk_tree_model_get(model, a, NAME_COL, &str_a, -1);
+  gtk_tree_model_get(model, b, NAME_COL, &str_b, -1);
 
-  result = strcmp (str_a, str_b);
+  result = strcmp(str_a, str_b);
 
-  g_free (str_a);
-  g_free (str_b);
+  g_free(str_a);
+  g_free(str_b);
 
   return result;
 }
 
 static void
-is_encoding_sensitive (GtkCellLayout * cell_layout,
+is_encoding_sensitive(GtkCellLayout * cell_layout,
     GtkCellRenderer * cell,
     GtkTreeModel * tree_model, GtkTreeIter * iter, gpointer data)
 {
   gboolean sensitive;
 
-  sensitive = !gtk_tree_model_iter_has_child (tree_model, iter);
-  g_object_set (cell, "sensitive", sensitive, NULL);
+  sensitive = !gtk_tree_model_iter_has_child(tree_model, iter);
+  g_object_set(cell, "sensitive", sensitive, NULL);
 }
 
 static GtkTreeModel *
-subtitle_encoding_create_store (void)
+subtitle_encoding_create_store(void)
 {
   gchar *label;
   gchar *lastlang = "";
@@ -445,51 +445,51 @@ subtitle_encoding_create_store (void)
   GtkTreeStore *store;
   int i;
 
-  store = gtk_tree_store_new (2, G_TYPE_INT, G_TYPE_STRING);
+  store = gtk_tree_store_new(2, G_TYPE_INT, G_TYPE_STRING);
 
   for (i = 0; i < SUBTITLE_ENCODING_LAST; i++) {
-    if (strcmp (lastlang, encodings[i].name)) {
+    if (strcmp(lastlang, encodings[i].name)) {
       lastlang = g_strdup(encodings[i].name);
-      gtk_tree_store_append (store, &iter, NULL);
-      gtk_tree_store_set (store, &iter, INDEX_COL,
+      gtk_tree_store_append(store, &iter, NULL);
+      gtk_tree_store_set(store, &iter, INDEX_COL,
           -1, NAME_COL, lastlang, -1);
     }
     label = g_strdup_printf("%s (%s)", lastlang, encodings[i].charset);
-    gtk_tree_store_append (store, &iter2, &iter);
-    gtk_tree_store_set (store, &iter2, INDEX_COL,
+    gtk_tree_store_append(store, &iter2, &iter);
+    gtk_tree_store_set(store, &iter2, INDEX_COL,
         encodings[i].index, NAME_COL, label, -1);
     g_free(label);
   }
-  gtk_tree_sortable_set_default_sort_func (GTK_TREE_SORTABLE (store),
+  gtk_tree_sortable_set_default_sort_func(GTK_TREE_SORTABLE(store),
       compare, NULL, NULL);
-  gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (store),
+  gtk_tree_sortable_set_sort_column_id(GTK_TREE_SORTABLE(store),
       NAME_COL, GTK_SORT_ASCENDING);
   return GTK_TREE_MODEL (store);
 }
 
 static void
-subtitle_encoding_combo_render (GtkComboBox * combo)
+subtitle_encoding_combo_render(GtkComboBox * combo)
 {
   GtkCellRenderer *renderer;
 
-  renderer = gtk_cell_renderer_text_new ();
-  gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (combo), renderer, TRUE);
-  gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (combo), renderer,
+  renderer = gtk_cell_renderer_text_new();
+  gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(combo), renderer, TRUE);
+  gtk_cell_layout_set_attributes(GTK_CELL_LAYOUT(combo), renderer,
       "text", NAME_COL, NULL);
-  gtk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (combo),
+  gtk_cell_layout_set_cell_data_func(GTK_CELL_LAYOUT(combo),
       renderer, is_encoding_sensitive, NULL, NULL);
 }
 
 const char *
-parole_subtitle_encoding_get_selected (GtkComboBox * combo)
+parole_subtitle_encoding_get_selected(GtkComboBox * combo)
 {
   GtkTreeModel *model;
   GtkTreeIter iter;
   gint index_i = -1;
 
-  model = gtk_combo_box_get_model (combo);
-  if (gtk_combo_box_get_active_iter (combo, &iter)) {
-    gtk_tree_model_get (model, &iter, INDEX_COL, &index_i, -1);
+  model = gtk_combo_box_get_model(combo);
+  if (gtk_combo_box_get_active_iter(combo, &iter)) {
+    gtk_tree_model_get(model, &iter, INDEX_COL, &index_i, -1);
   }
   if (index_i == -1)
     return NULL;
@@ -498,16 +498,16 @@ parole_subtitle_encoding_get_selected (GtkComboBox * combo)
 }
 
 void
-parole_subtitle_encoding_set (GtkComboBox * combo, const char *encoding)
+parole_subtitle_encoding_set(GtkComboBox * combo, const char *encoding)
 {
   GtkTreeModel *model;
   GtkTreeIter iter, iter2;
   gint index_i, i;
 
-  g_return_if_fail (encoding != NULL);
+  g_return_if_fail(encoding != NULL);
 
-  model = gtk_combo_box_get_model (combo);
-  index_i = subtitle_encoding_get_index (encoding);
+  model = gtk_combo_box_get_model(combo);
+  index_i = subtitle_encoding_get_index(encoding);
 
   if (gtk_tree_model_get_iter_first (model, &iter))
   {
@@ -517,26 +517,26 @@ parole_subtitle_encoding_set (GtkComboBox * combo, const char *encoding)
         if (!gtk_tree_model_iter_children (model, &iter2, &iter))
           continue;
         do {
-          gtk_tree_model_get (model, &iter2, INDEX_COL, &i, -1);
+          gtk_tree_model_get(model, &iter2, INDEX_COL, &i, -1);
           if (i == index_i)
             break;
-        } while (gtk_tree_model_iter_next (model, &iter2));
+        } while (gtk_tree_model_iter_next(model, &iter2));
         if (i == index_i)
           break;
-      } while (gtk_tree_model_iter_next (model, &iter));
-      gtk_combo_box_set_active_iter (combo, &iter2);
+      } while (gtk_tree_model_iter_next(model, &iter));
+      gtk_combo_box_set_active_iter(combo, &iter2);
   }
 }
 
 void
-parole_subtitle_encoding_init (GtkComboBox *combo)
+parole_subtitle_encoding_init(GtkComboBox *combo)
 {
   GtkTreeModel *model;
-  subtitle_encoding_init ();
-  model = subtitle_encoding_create_store ();
-  gtk_combo_box_set_model (combo, model);
-  g_object_unref (model);
-  subtitle_encoding_combo_render (combo);
+  subtitle_encoding_init();
+  model = subtitle_encoding_create_store();
+  gtk_combo_box_set_model(combo, model);
+  g_object_unref(model);
+  subtitle_encoding_combo_render(combo);
 }
 
 /*

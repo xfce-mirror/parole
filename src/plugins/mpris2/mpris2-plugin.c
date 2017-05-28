@@ -28,19 +28,19 @@
 
 #include "mpris2-provider.h"
 
-G_MODULE_EXPORT GType   parole_plugin_initialize (ParoleProviderPlugin *plugin);
+G_MODULE_EXPORT GType   parole_plugin_initialize(ParoleProviderPlugin *plugin);
 
-G_MODULE_EXPORT void    parole_plugin_shutdown   (void);
+G_MODULE_EXPORT void    parole_plugin_shutdown(void);
 
 G_MODULE_EXPORT GType
-parole_plugin_initialize (ParoleProviderPlugin *plugin)
+parole_plugin_initialize(ParoleProviderPlugin *plugin)
 {
-    xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
-    mpris2_provider_register_type (plugin);
+    xfce_textdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
+    mpris2_provider_register_type(plugin);
     return MPRIS2_TYPE_PROVIDER;
 }
 
 G_MODULE_EXPORT void
-parole_plugin_shutdown (void)
+parole_plugin_shutdown(void)
 {
 }

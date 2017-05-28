@@ -37,12 +37,12 @@
 
 #include "gst/parole-gst.h"
 
-static void parole_plugin_player_iface_init   (ParoleProviderPlayerIface *iface);
+static void parole_plugin_player_iface_init(ParoleProviderPlayerIface *iface);
 
-static void parole_plugin_player_finalize     (GObject *object);
+static void parole_plugin_player_finalize(GObject *object);
 
 #define PAROLE_PLUGIN_PLAYER_GET_PRIVATE(o) \
-(G_TYPE_INSTANCE_GET_PRIVATE ((o), PAROLE_TYPE_PLUGIN_PLAYER, ParolePluginPlayerPrivate))
+(G_TYPE_INSTANCE_GET_PRIVATE((o), PAROLE_TYPE_PLUGIN_PLAYER, ParolePluginPlayerPrivate))
 
 struct ParolePluginPlayerPrivate
 {
@@ -57,190 +57,190 @@ struct ParolePluginPlayerPrivate
     gboolean fullscreen;
 };
 
-G_DEFINE_TYPE_WITH_CODE (ParolePluginPlayer, parole_plugin_player, G_TYPE_OBJECT,
-                         G_IMPLEMENT_INTERFACE (PAROLE_TYPE_PROVIDER_PLAYER, parole_plugin_player_iface_init))
+G_DEFINE_TYPE_WITH_CODE(ParolePluginPlayer, parole_plugin_player, G_TYPE_OBJECT,
+                         G_IMPLEMENT_INTERFACE(PAROLE_TYPE_PROVIDER_PLAYER, parole_plugin_player_iface_init))
 
 static void
-parole_plugin_player_send_message (const gchar *message)
+parole_plugin_player_send_message(const gchar *message)
 {
     DBusGProxy *proxy;
 
-    proxy = parole_get_proxy (PAROLE_DBUS_PATH, PAROLE_DBUS_INTERFACE);
+    proxy = parole_get_proxy(PAROLE_DBUS_PATH, PAROLE_DBUS_INTERFACE);
 
-    dbus_g_proxy_call_no_reply (proxy, message,
+    dbus_g_proxy_call_no_reply(proxy, message,
                                 G_TYPE_INVALID,
                                 G_TYPE_INVALID);
 
-    g_object_unref (proxy);
+    g_object_unref(proxy);
 }
 
 static GtkWidget *
-parole_plugin_player_get_main_window (ParoleProviderPlayer *provider)
+parole_plugin_player_get_main_window(ParoleProviderPlayer *provider)
 {
     ParolePluginPlayer *player;
 
-    player = PAROLE_PLUGIN_PLAYER (provider);
+    player = PAROLE_PLUGIN_PLAYER(provider);
     return gtk_widget_get_toplevel (player->priv->gst);
 }
 
 static void
-parole_plugin_player_pack_widget (ParoleProviderPlayer *provider, GtkWidget *widget,
+parole_plugin_player_pack_widget(ParoleProviderPlayer *provider, GtkWidget *widget,
                                   const gchar *title, ParolePluginContainer container_type)
 {
     ParolePluginPlayer *player;
     ParolePluginsManager *manager;
 
-    manager = parole_plugins_manager_get ();
-    player = PAROLE_PLUGIN_PLAYER (provider);
+    manager = parole_plugins_manager_get();
+    player = PAROLE_PLUGIN_PLAYER(provider);
 
-    g_return_if_fail (player->priv->packed == FALSE);
+    g_return_if_fail(player->priv->packed == FALSE);
 
     player->priv->packed = TRUE;
     player->priv->box = widget;
 
-    parole_plugins_manager_pack (manager, widget, title, container_type);
+    parole_plugins_manager_pack(manager, widget, title, container_type);
 }
 
 static ParoleState
-parole_plugin_player_get_state (ParoleProviderPlayer *provider)
+parole_plugin_player_get_state(ParoleProviderPlayer *provider)
 {
     ParolePluginPlayer *player;
 
-    player = PAROLE_PLUGIN_PLAYER (provider);
+    player = PAROLE_PLUGIN_PLAYER(provider);
 
     return parole_gst_get_state (PAROLE_GST (player->priv->gst));
 }
 
 static const ParoleStream *
-parole_plugin_player_get_stream (ParoleProviderPlayer *provider)
+parole_plugin_player_get_stream(ParoleProviderPlayer *provider)
 {
     ParolePluginPlayer *player;
 
-    player = PAROLE_PLUGIN_PLAYER (provider);
+    player = PAROLE_PLUGIN_PLAYER(provider);
 
     return parole_gst_get_stream (PAROLE_GST (player->priv->gst));
 }
 
 static gboolean
-parole_plugin_player_play_uri (ParoleProviderPlayer *provider, const gchar *uri)
+parole_plugin_player_play_uri(ParoleProviderPlayer *provider, const gchar *uri)
 {
     ParoleMediaList *list;
 
-    list = PAROLE_MEDIA_LIST (parole_media_list_get ());
-    parole_media_list_open_uri (list, uri);
+    list = PAROLE_MEDIA_LIST(parole_media_list_get());
+    parole_media_list_open_uri(list, uri);
 
-    g_object_unref (list);
+    g_object_unref(list);
 
     return TRUE;
 }
 
 static gboolean
-parole_plugin_player_pause (ParoleProviderPlayer *provider)
+parole_plugin_player_pause(ParoleProviderPlayer *provider)
 {
     ParolePluginPlayer *player;
 
-    player = PAROLE_PLUGIN_PLAYER (provider);
+    player = PAROLE_PLUGIN_PLAYER(provider);
 
-    parole_gst_pause (PAROLE_GST (player->priv->gst));
+    parole_gst_pause(PAROLE_GST(player->priv->gst));
 
     return TRUE;
 }
 
 static gboolean
-parole_plugin_player_resume (ParoleProviderPlayer *provider)
+parole_plugin_player_resume(ParoleProviderPlayer *provider)
 {
     ParolePluginPlayer *player;
 
-    player = PAROLE_PLUGIN_PLAYER (provider);
+    player = PAROLE_PLUGIN_PLAYER(provider);
 
-    parole_gst_resume (PAROLE_GST (player->priv->gst));
+    parole_gst_resume(PAROLE_GST(player->priv->gst));
 
     return TRUE;
 }
 
 static gboolean
-parole_plugin_player_stop (ParoleProviderPlayer *provider)
+parole_plugin_player_stop(ParoleProviderPlayer *provider)
 {
     ParolePluginPlayer *player;
 
-    player = PAROLE_PLUGIN_PLAYER (provider);
+    player = PAROLE_PLUGIN_PLAYER(provider);
 
-    parole_gst_stop (PAROLE_GST (player->priv->gst));
+    parole_gst_stop(PAROLE_GST(player->priv->gst));
 
     return TRUE;
 }
 
 static gboolean
-parole_plugin_player_play_previous (ParoleProviderPlayer *provider)
+parole_plugin_player_play_previous(ParoleProviderPlayer *provider)
 {
-    parole_plugin_player_send_message ("PrevTrack");
+    parole_plugin_player_send_message("PrevTrack");
 
     return TRUE;
 }
 
 static gboolean
-parole_plugin_player_play_next (ParoleProviderPlayer *provider)
+parole_plugin_player_play_next(ParoleProviderPlayer *provider)
 {
-    parole_plugin_player_send_message ("NextTrack");
+    parole_plugin_player_send_message("NextTrack");
 
     return TRUE;
 }
 
 static gboolean
-parole_plugin_player_seek (ParoleProviderPlayer *provider, gdouble pos)
+parole_plugin_player_seek(ParoleProviderPlayer *provider, gdouble pos)
 {
     ParolePluginPlayer *player;
 
-    player = PAROLE_PLUGIN_PLAYER (provider);
+    player = PAROLE_PLUGIN_PLAYER(provider);
 
-    parole_gst_seek (PAROLE_GST (player->priv->gst), pos);
+    parole_gst_seek(PAROLE_GST(player->priv->gst), pos);
 
     return TRUE;
 }
 
 static gdouble
-parole_plugin_player_get_stream_position (ParoleProviderPlayer *provider)
+parole_plugin_player_get_stream_position(ParoleProviderPlayer *provider)
 {
     ParolePluginPlayer *player;
     gdouble position = 0;
 
-    player = PAROLE_PLUGIN_PLAYER (provider);
+    player = PAROLE_PLUGIN_PLAYER(provider);
 
-    position = parole_gst_get_stream_position (PAROLE_GST (player->priv->gst));
+    position = parole_gst_get_stream_position(PAROLE_GST(player->priv->gst));
 
     /* Return as microseconds */
     return position*1000000.0;
 }
 
-static void parole_plugin_player_open_media_chooser (ParoleProviderPlayer *provider)
+static void parole_plugin_player_open_media_chooser(ParoleProviderPlayer *provider)
 {
     ParoleMediaList *list;
 
-    list = PAROLE_MEDIA_LIST (parole_media_list_get ());
-    parole_media_list_open (list);
+    list = PAROLE_MEDIA_LIST(parole_media_list_get());
+    parole_media_list_open(list);
 
-    g_object_unref (list);
+    g_object_unref(list);
 }
 
-static GSimpleAction* parole_plugin_player_get_action (ParoleProviderPlayer *provider, ParolePlayerAction action)
+static GSimpleAction* parole_plugin_player_get_action(ParoleProviderPlayer *provider, ParolePlayerAction action)
 {
     return parole_player_get_action (action);
 }
 
-static gboolean parole_plugin_player_get_fullscreen (ParoleProviderPlayer *provider)
+static gboolean parole_plugin_player_get_fullscreen(ParoleProviderPlayer *provider)
 {
     ParolePluginPlayer *player;
 
-    player = PAROLE_PLUGIN_PLAYER (provider);
+    player = PAROLE_PLUGIN_PLAYER(provider);
 
     return player->priv->fullscreen;
 }
 
-static gboolean parole_plugin_player_set_fullscreen (ParoleProviderPlayer *provider, gboolean fullscreen)
+static gboolean parole_plugin_player_set_fullscreen(ParoleProviderPlayer *provider, gboolean fullscreen)
 {
     GtkWidget *window;
 
-    window = parole_plugin_player_get_main_window (provider);
+    window = parole_plugin_player_get_main_window(provider);
 
     if (fullscreen)
         gtk_window_fullscreen(GTK_WINDOW(window));
@@ -250,7 +250,7 @@ static gboolean parole_plugin_player_set_fullscreen (ParoleProviderPlayer *provi
     return TRUE;
 }
 
-static void parole_plugin_player_iface_init (ParoleProviderPlayerIface *iface)
+static void parole_plugin_player_iface_init(ParoleProviderPlayerIface *iface)
 {
     iface->get_main_window = parole_plugin_player_get_main_window;
     iface->pack = parole_plugin_player_pack_widget;
@@ -271,26 +271,26 @@ static void parole_plugin_player_iface_init (ParoleProviderPlayerIface *iface)
 }
 
 static void
-parole_plugin_player_media_state_changed_cb (ParoleGst *gst, const ParoleStream *stream,
+parole_plugin_player_media_state_changed_cb(ParoleGst *gst, const ParoleStream *stream,
                                              ParoleState state, ParolePluginPlayer *player)
 {
-    g_signal_emit_by_name (G_OBJECT (player), "state-changed", stream, state);
+    g_signal_emit_by_name(G_OBJECT(player), "state-changed", stream, state);
 }
 
 static void
-parole_plugin_player_media_tag_cb (ParoleGst *gst, const ParoleStream *stream, ParolePluginPlayer *player)
+parole_plugin_player_media_tag_cb(ParoleGst *gst, const ParoleStream *stream, ParolePluginPlayer *player)
 {
-    g_signal_emit_by_name (G_OBJECT (player), "tag-message", stream);
+    g_signal_emit_by_name(G_OBJECT(player), "tag-message", stream);
 }
 
 static void
-parole_plugin_player_media_seeked_cb (ParoleGst *gst, ParolePluginPlayer *player)
+parole_plugin_player_media_seeked_cb(ParoleGst *gst, ParolePluginPlayer *player)
 {
-    g_signal_emit_by_name (G_OBJECT (player), "seeked");
+    g_signal_emit_by_name(G_OBJECT(player), "seeked");
 }
 
 static gboolean
-parole_plugin_player_window_state_event  (GtkWidget *widget,
+parole_plugin_player_window_state_event(GtkWidget *widget,
                                           GdkEventWindowState *event,
                                           ParolePluginPlayer *player)
 {
@@ -302,9 +302,9 @@ parole_plugin_player_window_state_event  (GtkWidget *widget,
 }
 
 static void
-parole_plugin_player_class_init (ParolePluginPlayerClass *klass)
+parole_plugin_player_class_init(ParolePluginPlayerClass *klass)
 {
-    GObjectClass *object_class = G_OBJECT_CLASS (klass);
+    GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
     object_class->finalize = parole_plugin_player_finalize;
 
@@ -312,24 +312,24 @@ parole_plugin_player_class_init (ParolePluginPlayerClass *klass)
 }
 
 static void
-parole_plugin_player_init (ParolePluginPlayer *player)
+parole_plugin_player_init(ParolePluginPlayer *player)
 {
     GtkWidget *window;
-    player->priv = PAROLE_PLUGIN_PLAYER_GET_PRIVATE (player);
+    player->priv = PAROLE_PLUGIN_PLAYER_GET_PRIVATE(player);
 
-    player->priv->gst = parole_gst_get ();
+    player->priv->gst = parole_gst_get();
 
-    player->priv->state_changed = g_signal_connect (G_OBJECT (player->priv->gst), "media-state",
-                        G_CALLBACK (parole_plugin_player_media_state_changed_cb), player);
+    player->priv->state_changed = g_signal_connect(G_OBJECT(player->priv->gst), "media-state",
+                        G_CALLBACK(parole_plugin_player_media_state_changed_cb), player);
 
-    player->priv->tag_message = g_signal_connect (G_OBJECT (player->priv->gst), "media-tag",
-                        G_CALLBACK (parole_plugin_player_media_tag_cb), player);
+    player->priv->tag_message = g_signal_connect(G_OBJECT(player->priv->gst), "media-tag",
+                        G_CALLBACK(parole_plugin_player_media_tag_cb), player);
 
-    player->priv->seeked = g_signal_connect (G_OBJECT (player->priv->gst), "media-seeked",
-                        G_CALLBACK (parole_plugin_player_media_seeked_cb), player);
+    player->priv->seeked = g_signal_connect(G_OBJECT(player->priv->gst), "media-seeked",
+                        G_CALLBACK(parole_plugin_player_media_seeked_cb), player);
 
     player->priv->fullscreen = FALSE;
-    window = GTK_WIDGET(gtk_widget_get_toplevel (player->priv->gst));
+    window = GTK_WIDGET(gtk_widget_get_toplevel(player->priv->gst));
     g_signal_connect(G_OBJECT(window),
                      "window-state-event",
                      G_CALLBACK(parole_plugin_player_window_state_event),
@@ -340,36 +340,36 @@ parole_plugin_player_init (ParolePluginPlayer *player)
 }
 
 static void
-parole_plugin_player_finalize (GObject *object)
+parole_plugin_player_finalize(GObject *object)
 {
     ParolePluginPlayer *player;
 
-    player = PAROLE_PLUGIN_PLAYER (object);
+    player = PAROLE_PLUGIN_PLAYER(object);
 
     if ( G_IS_OBJECT (player->priv->gst) )
     {
         if (g_signal_handler_is_connected (player->priv->gst, player->priv->state_changed))
-            g_signal_handler_disconnect (player->priv->gst, player->priv->state_changed);
+            g_signal_handler_disconnect(player->priv->gst, player->priv->state_changed);
 
         if (g_signal_handler_is_connected (player->priv->gst, player->priv->tag_message))
-            g_signal_handler_disconnect (player->priv->gst, player->priv->tag_message);
+            g_signal_handler_disconnect(player->priv->gst, player->priv->tag_message);
 
         if (g_signal_handler_is_connected (player->priv->gst, player->priv->seeked))
-            g_signal_handler_disconnect (player->priv->gst, player->priv->seeked);
+            g_signal_handler_disconnect(player->priv->gst, player->priv->seeked);
     }
 
     if ( player->priv->packed && GTK_IS_WIDGET (player->priv->box))
-        gtk_widget_destroy (player->priv->box);
+        gtk_widget_destroy(player->priv->box);
 
-    G_OBJECT_CLASS (parole_plugin_player_parent_class)->finalize (object);
+    G_OBJECT_CLASS(parole_plugin_player_parent_class)->finalize(object);
 }
 
 ParolePluginPlayer *
-parole_plugin_player_new (void)
+parole_plugin_player_new(void)
 {
     ParolePluginPlayer *player = NULL;
 
-    player = g_object_new (PAROLE_TYPE_PLUGIN_PLAYER, NULL);
+    player = g_object_new(PAROLE_TYPE_PLUGIN_PLAYER, NULL);
 
     return player;
 }

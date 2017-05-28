@@ -40,15 +40,15 @@
  * Build Parole's UI from the interface-file.
  **/
 GtkBuilder *
-parole_builder_get_main_interface (void)
+parole_builder_get_main_interface(void)
 {
     static gpointer parole_builder_object = NULL;
 
-    if ( G_LIKELY (parole_builder_object != NULL) ) {
-        g_object_ref (parole_builder_object);
+    if ( G_LIKELY(parole_builder_object != NULL) ) {
+        g_object_ref(parole_builder_object);
     } else {
-        parole_builder_object = parole_builder_new_from_string (parole_ui, parole_ui_length);
-        g_object_add_weak_pointer (parole_builder_object, &parole_builder_object);
+        parole_builder_object = parole_builder_new_from_string(parole_ui, parole_ui_length);
+        g_object_add_weak_pointer(parole_builder_object, &parole_builder_object);
     }
 
     return GTK_BUILDER (parole_builder_object);
@@ -62,22 +62,22 @@ parole_builder_get_main_interface (void)
  * Build Parole's UI from the condensed glade string.
  **/
 GtkBuilder *
-parole_builder_new_from_string (const gchar *ui, gsize length)
+parole_builder_new_from_string(const gchar *ui, gsize length)
 {
     GError *error = NULL;
     GtkBuilder *builder;
 
-    builder = gtk_builder_new ();
+    builder = gtk_builder_new();
 
     /* Set the locale before loading the GtkBuilder interface definition. */
-    xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
+    xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
 
-    gtk_builder_add_from_string (builder, ui, length, &error);
+    gtk_builder_add_from_string(builder, ui, length, &error);
 
     if ( error )
     {
-        g_critical ("%s", error->message);
-        g_error_free (error);
+        g_critical("%s", error->message);
+        g_error_free(error);
     }
 
     return builder;

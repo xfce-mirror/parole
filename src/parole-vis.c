@@ -34,14 +34,14 @@
 #include "parole-vis.h"
 
 static gboolean
-parole_vis_filter (GstPluginFeature *feature, gpointer data)
+parole_vis_filter(GstPluginFeature *feature, gpointer data)
 {
     GstElementFactory *factory;
 
     if ( !GST_IS_ELEMENT_FACTORY (feature) )
         return FALSE;
 
-    factory = GST_ELEMENT_FACTORY (feature);
+    factory = GST_ELEMENT_FACTORY(feature);
 
     if ( !g_strrstr (gst_element_factory_get_klass (factory), "Visualization"))
         return FALSE;
@@ -50,30 +50,30 @@ parole_vis_filter (GstPluginFeature *feature, gpointer data)
 }
 
 static void
-parole_vis_get_name (GstElementFactory *factory, GHashTable **hash)
+parole_vis_get_name(GstElementFactory *factory, GHashTable **hash)
 {
-    g_hash_table_insert (*hash, g_strdup (gst_element_factory_get_longname (factory)), factory);
+    g_hash_table_insert(*hash, g_strdup(gst_element_factory_get_longname(factory)), factory);
 }
 
-GHashTable *parole_vis_get_plugins (void)
+GHashTable *parole_vis_get_plugins(void)
 {
     GList *plugins = NULL;
     GHashTable *hash;
 
-    hash = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, NULL);
+    hash = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, NULL);
 
 #if GST_CHECK_VERSION(1, 0, 0)
-    plugins = gst_registry_feature_filter (gst_registry_get (),
+    plugins = gst_registry_feature_filter(gst_registry_get(),
 #else
-    plugins = gst_registry_feature_filter (gst_registry_get_default (),
+    plugins = gst_registry_feature_filter(gst_registry_get_default(),
 #endif
                                            parole_vis_filter,
                                            FALSE,
                                            NULL);
 
-    g_list_foreach (plugins, (GFunc) parole_vis_get_name, &hash);
+    g_list_foreach(plugins, (GFunc)parole_vis_get_name, &hash);
 
-    gst_plugin_feature_list_free (plugins);
+    gst_plugin_feature_list_free(plugins);
 
     return hash;
 }

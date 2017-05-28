@@ -35,16 +35,16 @@
 #include "parole-enum-types.h"
 
 #define PAROLE_STREAM_GET_PRIVATE(o) \
-(G_TYPE_INSTANCE_GET_PRIVATE ((o), PAROLE_TYPE_STREAM, ParoleStreamPrivate))
+(G_TYPE_INSTANCE_GET_PRIVATE((o), PAROLE_TYPE_STREAM, ParoleStreamPrivate))
 
 #define PAROLE_STREAM_FREE_STR_PROP(str)        \
     if ( str )                      \
-    g_free (str);                   \
+    g_free(str);                   \
     str = NULL;                     \
 
 #define PAROLE_STREAM_DUP_GVALUE_STRING(str, value) \
-    PAROLE_STREAM_FREE_STR_PROP (str);          \
-    str = g_value_dup_string (value);           \
+    PAROLE_STREAM_FREE_STR_PROP(str);          \
+    str = g_value_dup_string(value);           \
 
 typedef struct _ParoleStreamPrivate ParoleStreamPrivate;
 
@@ -108,10 +108,10 @@ enum
     PROP_IMAGE_URI
 };
 
-G_DEFINE_TYPE (ParoleStream, parole_stream, G_TYPE_OBJECT)
+G_DEFINE_TYPE(ParoleStream, parole_stream, G_TYPE_OBJECT)
 
 static void
-parole_stream_get_media_type_from_uri (ParoleStream *stream, const gchar *uri)
+parole_stream_get_media_type_from_uri(ParoleStream *stream, const gchar *uri)
 {
     GValue val = { 0, };
 
@@ -134,213 +134,213 @@ parole_stream_get_media_type_from_uri (ParoleStream *stream, const gchar *uri)
     else
         type = PAROLE_MEDIA_TYPE_UNKNOWN;
 
-    g_value_init (&val, PAROLE_ENUM_TYPE_MEDIA_TYPE);
-    g_value_set_enum (&val, type);
-    g_object_set_property (G_OBJECT (stream), "media-type", &val);
-    g_value_unset (&val);
+    g_value_init(&val, PAROLE_ENUM_TYPE_MEDIA_TYPE);
+    g_value_set_enum(&val, type);
+    g_object_set_property(G_OBJECT(stream), "media-type", &val);
+    g_value_unset(&val);
 }
 
-static void parole_stream_set_property (GObject *object,
+static void parole_stream_set_property(GObject *object,
                                         guint prop_id,
                                         const GValue *value,
                                         GParamSpec *pspec)
 {
     ParoleStream *stream;
-    stream = PAROLE_STREAM (object);
+    stream = PAROLE_STREAM(object);
 
     switch (prop_id)
     {
         case PROP_URI:
         {
             ParoleStreamPrivate *priv;
-            priv = PAROLE_STREAM_GET_PRIVATE (stream);
-            priv->uri = g_value_dup_string (value);
-            parole_stream_get_media_type_from_uri (stream, priv->uri);
+            priv = PAROLE_STREAM_GET_PRIVATE(stream);
+            priv->uri = g_value_dup_string(value);
+            parole_stream_get_media_type_from_uri(stream, priv->uri);
             break;
         }
         case PROP_IMAGE_URI:
         {
-            PAROLE_STREAM_GET_PRIVATE (stream)->image_uri = g_value_dup_string (value);
+            PAROLE_STREAM_GET_PRIVATE(stream)->image_uri = g_value_dup_string(value);
             break;
         }
         case PROP_SUBTITLES:
-            PAROLE_STREAM_DUP_GVALUE_STRING (PAROLE_STREAM_GET_PRIVATE (stream)->subtitles, value);
+            PAROLE_STREAM_DUP_GVALUE_STRING(PAROLE_STREAM_GET_PRIVATE(stream)->subtitles, value);
             break;
         case PROP_LIVE:
         {
             ParoleStreamPrivate *priv;
             gboolean maybe_remote;
 
-            priv = PAROLE_STREAM_GET_PRIVATE (stream);
+            priv = PAROLE_STREAM_GET_PRIVATE(stream);
             maybe_remote = priv->media_type == PAROLE_MEDIA_TYPE_REMOTE ||
                            priv->media_type == PAROLE_MEDIA_TYPE_UNKNOWN;
-            priv->live = g_value_get_boolean (value) && maybe_remote;
+            priv->live = g_value_get_boolean(value) && maybe_remote;
             break;
         }
         case PROP_MEDIA_TYPE:
-            PAROLE_STREAM_GET_PRIVATE (stream)->media_type = g_value_get_enum (value);
+            PAROLE_STREAM_GET_PRIVATE(stream)->media_type = g_value_get_enum(value);
             break;
         case PROP_HAS_AUDIO:
-            PAROLE_STREAM_GET_PRIVATE (stream)->has_audio = g_value_get_boolean (value);
+            PAROLE_STREAM_GET_PRIVATE(stream)->has_audio = g_value_get_boolean(value);
             break;
         case PROP_HAS_VIDEO:
-            PAROLE_STREAM_GET_PRIVATE (stream)->has_video = g_value_get_boolean (value);
+            PAROLE_STREAM_GET_PRIVATE(stream)->has_video = g_value_get_boolean(value);
             break;
         case PROP_SEEKABLE:
-            PAROLE_STREAM_GET_PRIVATE (stream)->seekable = g_value_get_boolean (value);
+            PAROLE_STREAM_GET_PRIVATE(stream)->seekable = g_value_get_boolean(value);
             break;
         case PROP_DISP_PAR_D:
-            PAROLE_STREAM_GET_PRIVATE (stream)->disp_par_d = g_value_get_uint (value);
+            PAROLE_STREAM_GET_PRIVATE(stream)->disp_par_d = g_value_get_uint(value);
             break;
         case PROP_DISP_PAR_N:
-            PAROLE_STREAM_GET_PRIVATE (stream)->disp_par_n = g_value_get_uint (value);
+            PAROLE_STREAM_GET_PRIVATE(stream)->disp_par_n = g_value_get_uint(value);
             break;
         case PROP_TRACKS:
-            PAROLE_STREAM_GET_PRIVATE (stream)->tracks = g_value_get_uint (value);
+            PAROLE_STREAM_GET_PRIVATE(stream)->tracks = g_value_get_uint(value);
             break;
         case PROP_TRACK:
-            PAROLE_STREAM_GET_PRIVATE (stream)->track = g_value_get_uint (value);
+            PAROLE_STREAM_GET_PRIVATE(stream)->track = g_value_get_uint(value);
             break;
         case PROP_TAG_AVAILABLE:
-            PAROLE_STREAM_GET_PRIVATE (stream)->tag_available = g_value_get_boolean (value);
+            PAROLE_STREAM_GET_PRIVATE(stream)->tag_available = g_value_get_boolean(value);
             break;
         case PROP_DURATION:
-            PAROLE_STREAM_GET_PRIVATE (stream)->duration = g_value_get_int64 (value);
+            PAROLE_STREAM_GET_PRIVATE(stream)->duration = g_value_get_int64(value);
             break;
         case PROP_ABSOLUTE_DURATION:
-            PAROLE_STREAM_GET_PRIVATE (stream)->absolute_duration = g_value_get_int64 (value);
+            PAROLE_STREAM_GET_PRIVATE(stream)->absolute_duration = g_value_get_int64(value);
             break;
         case PROP_VIDEO_HEIGHT:
-            PAROLE_STREAM_GET_PRIVATE (stream)->video_h = g_value_get_int (value);
+            PAROLE_STREAM_GET_PRIVATE(stream)->video_h = g_value_get_int(value);
             break;
         case PROP_VIDEO_WIDTH:
-            PAROLE_STREAM_GET_PRIVATE (stream)->video_w = g_value_get_int (value);
+            PAROLE_STREAM_GET_PRIVATE(stream)->video_w = g_value_get_int(value);
             break;
         case PROP_TITLE:
-            PAROLE_STREAM_DUP_GVALUE_STRING (PAROLE_STREAM_GET_PRIVATE (stream)->title, value);
+            PAROLE_STREAM_DUP_GVALUE_STRING(PAROLE_STREAM_GET_PRIVATE(stream)->title, value);
             break;
         case PROP_ARTIST:
-            PAROLE_STREAM_DUP_GVALUE_STRING (PAROLE_STREAM_GET_PRIVATE (stream)->artist, value);
+            PAROLE_STREAM_DUP_GVALUE_STRING(PAROLE_STREAM_GET_PRIVATE(stream)->artist, value);
             break;
         case PROP_YEAR:
-            PAROLE_STREAM_DUP_GVALUE_STRING (PAROLE_STREAM_GET_PRIVATE (stream)->year, value);
+            PAROLE_STREAM_DUP_GVALUE_STRING(PAROLE_STREAM_GET_PRIVATE(stream)->year, value);
             break;
         case PROP_ALBUM:
-            PAROLE_STREAM_DUP_GVALUE_STRING (PAROLE_STREAM_GET_PRIVATE (stream)->album, value);
+            PAROLE_STREAM_DUP_GVALUE_STRING(PAROLE_STREAM_GET_PRIVATE(stream)->album, value);
             break;
         case PROP_COMMENT:
-            PAROLE_STREAM_DUP_GVALUE_STRING (PAROLE_STREAM_GET_PRIVATE (stream)->comment, value);
+            PAROLE_STREAM_DUP_GVALUE_STRING(PAROLE_STREAM_GET_PRIVATE(stream)->comment, value);
             break;
         case PROP_GENRE:
-            PAROLE_STREAM_DUP_GVALUE_STRING (PAROLE_STREAM_GET_PRIVATE (stream)->genre, value);
+            PAROLE_STREAM_DUP_GVALUE_STRING(PAROLE_STREAM_GET_PRIVATE(stream)->genre, value);
             break;
         case PROP_BITRATE:
-            PAROLE_STREAM_GET_PRIVATE (stream)->bitrate = g_value_get_uint (value);
+            PAROLE_STREAM_GET_PRIVATE(stream)->bitrate = g_value_get_uint(value);
             break;
         default:
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+            G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
             break;
     }
 }
 
-static void parole_stream_get_property (GObject *object,
+static void parole_stream_get_property(GObject *object,
                                         guint prop_id,
                                         GValue *value,
                                         GParamSpec *pspec)
 {
     ParoleStream *stream;
-    stream = PAROLE_STREAM (object);
+    stream = PAROLE_STREAM(object);
 
     switch (prop_id)
     {
         case PROP_URI:
-            g_value_set_string (value, PAROLE_STREAM_GET_PRIVATE (stream)->uri);
+            g_value_set_string(value, PAROLE_STREAM_GET_PRIVATE(stream)->uri);
             break;
         case PROP_IMAGE_URI:
-            g_value_set_string (value, PAROLE_STREAM_GET_PRIVATE (stream)->image_uri);
+            g_value_set_string(value, PAROLE_STREAM_GET_PRIVATE(stream)->image_uri);
             break;
         case PROP_SUBTITLES:
-            g_value_set_string (value, PAROLE_STREAM_GET_PRIVATE (stream)->subtitles);
+            g_value_set_string(value, PAROLE_STREAM_GET_PRIVATE(stream)->subtitles);
             break;
         case PROP_LIVE:
-            g_value_set_boolean (value, PAROLE_STREAM_GET_PRIVATE (stream)->live);
+            g_value_set_boolean(value, PAROLE_STREAM_GET_PRIVATE(stream)->live);
             break;
         case PROP_MEDIA_TYPE:
-            g_value_set_enum (value, PAROLE_STREAM_GET_PRIVATE (stream)->media_type);
+            g_value_set_enum(value, PAROLE_STREAM_GET_PRIVATE(stream)->media_type);
             break;
         case PROP_HAS_AUDIO:
-            g_value_set_boolean (value, PAROLE_STREAM_GET_PRIVATE (stream)->has_audio);
+            g_value_set_boolean(value, PAROLE_STREAM_GET_PRIVATE(stream)->has_audio);
             break;
         case PROP_HAS_VIDEO:
-            g_value_set_boolean (value, PAROLE_STREAM_GET_PRIVATE (stream)->has_video);
+            g_value_set_boolean(value, PAROLE_STREAM_GET_PRIVATE(stream)->has_video);
             break;
         case PROP_SEEKABLE:
-            g_value_set_boolean (value, PAROLE_STREAM_GET_PRIVATE (stream)->seekable);
+            g_value_set_boolean(value, PAROLE_STREAM_GET_PRIVATE(stream)->seekable);
             break;
         case PROP_DISP_PAR_D:
-            g_value_set_uint (value, PAROLE_STREAM_GET_PRIVATE (stream)->disp_par_d);
+            g_value_set_uint(value, PAROLE_STREAM_GET_PRIVATE(stream)->disp_par_d);
             break;
         case PROP_DISP_PAR_N:
-            g_value_set_uint (value, PAROLE_STREAM_GET_PRIVATE (stream)->disp_par_n);
+            g_value_set_uint(value, PAROLE_STREAM_GET_PRIVATE(stream)->disp_par_n);
             break;
         case PROP_DURATION:
-            g_value_set_int64 (value, PAROLE_STREAM_GET_PRIVATE (stream)->duration);
+            g_value_set_int64(value, PAROLE_STREAM_GET_PRIVATE(stream)->duration);
             break;
         case PROP_TRACKS:
-            g_value_set_uint (value, PAROLE_STREAM_GET_PRIVATE (stream)->tracks);
+            g_value_set_uint(value, PAROLE_STREAM_GET_PRIVATE(stream)->tracks);
             break;
         case PROP_TRACK:
-            g_value_set_uint (value, PAROLE_STREAM_GET_PRIVATE (stream)->track);
+            g_value_set_uint(value, PAROLE_STREAM_GET_PRIVATE(stream)->track);
             break;
         case PROP_TAG_AVAILABLE:
-            g_value_set_double (value, PAROLE_STREAM_GET_PRIVATE (stream)->tag_available);
+            g_value_set_double(value, PAROLE_STREAM_GET_PRIVATE(stream)->tag_available);
             break;
         case PROP_ABSOLUTE_DURATION:
-            g_value_set_int64 (value, PAROLE_STREAM_GET_PRIVATE (stream)->absolute_duration);
+            g_value_set_int64(value, PAROLE_STREAM_GET_PRIVATE(stream)->absolute_duration);
             break;
         case PROP_VIDEO_HEIGHT:
-            g_value_set_int (value, PAROLE_STREAM_GET_PRIVATE (stream)->video_h);
+            g_value_set_int(value, PAROLE_STREAM_GET_PRIVATE(stream)->video_h);
             break;
         case PROP_VIDEO_WIDTH:
-            g_value_set_int (value, PAROLE_STREAM_GET_PRIVATE (stream)->video_w);
+            g_value_set_int(value, PAROLE_STREAM_GET_PRIVATE(stream)->video_w);
             break;
         case PROP_TITLE:
-            g_value_set_string (value, PAROLE_STREAM_GET_PRIVATE (stream)->title);
+            g_value_set_string(value, PAROLE_STREAM_GET_PRIVATE(stream)->title);
             break;
         case PROP_ARTIST:
-            g_value_set_string (value, PAROLE_STREAM_GET_PRIVATE (stream)->artist);
+            g_value_set_string(value, PAROLE_STREAM_GET_PRIVATE(stream)->artist);
             break;
         case PROP_YEAR:
-            g_value_set_string (value, PAROLE_STREAM_GET_PRIVATE (stream)->year);
+            g_value_set_string(value, PAROLE_STREAM_GET_PRIVATE(stream)->year);
             break;
         case PROP_ALBUM:
-            g_value_set_string (value, PAROLE_STREAM_GET_PRIVATE (stream)->album);
+            g_value_set_string(value, PAROLE_STREAM_GET_PRIVATE(stream)->album);
             break;
         case PROP_COMMENT:
-            g_value_set_string (value, PAROLE_STREAM_GET_PRIVATE (stream)->comment);
+            g_value_set_string(value, PAROLE_STREAM_GET_PRIVATE(stream)->comment);
             break;
         case PROP_GENRE:
-            g_value_set_string (value, PAROLE_STREAM_GET_PRIVATE (stream)->genre);
+            g_value_set_string(value, PAROLE_STREAM_GET_PRIVATE(stream)->genre);
             break;
         case PROP_BITRATE:
-            g_value_set_uint (value, PAROLE_STREAM_GET_PRIVATE (stream)->bitrate);
+            g_value_set_uint(value, PAROLE_STREAM_GET_PRIVATE(stream)->bitrate);
             break;
         default:
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+            G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
             break;
     }
 }
 
 static void
-parole_stream_finalize (GObject *object)
+parole_stream_finalize(GObject *object)
 {
     ParoleStream *stream;
 
-    stream = PAROLE_STREAM (object);
+    stream = PAROLE_STREAM(object);
 
-    parole_stream_init_properties (stream);
+    parole_stream_init_properties(stream);
 
-    G_OBJECT_CLASS (parole_stream_parent_class)->finalize (object);
+    G_OBJECT_CLASS(parole_stream_parent_class)->finalize(object);
 }
 
 /**
@@ -354,45 +354,45 @@ parole_stream_finalize (GObject *object)
  * Since: 0.6
  **/
 void
-parole_stream_set_image (GObject *object, GdkPixbuf *pixbuf)
+parole_stream_set_image(GObject *object, GdkPixbuf *pixbuf)
 {
     ParoleStream *stream;
     gchar *filename = NULL;
     gint fid;
 
-    stream = PAROLE_STREAM (object);
+    stream = PAROLE_STREAM(object);
 
     if ( PAROLE_STREAM_GET_PRIVATE (stream)->image )
-        g_object_unref(G_OBJECT(PAROLE_STREAM_GET_PRIVATE (stream)->image));
+        g_object_unref(G_OBJECT(PAROLE_STREAM_GET_PRIVATE(stream)->image));
 
     if (pixbuf) {
-        PAROLE_STREAM_GET_PRIVATE (stream)->image = gdk_pixbuf_copy(pixbuf);
+        PAROLE_STREAM_GET_PRIVATE(stream)->image = gdk_pixbuf_copy(pixbuf);
 
         /* Create a jpeg of the artwork for other components to easily access */
-        fid = g_file_open_tmp ("parole-art-XXXXXX.jpg", &filename, NULL);
+        fid = g_file_open_tmp("parole-art-XXXXXX.jpg", &filename, NULL);
         close(fid);
-        gdk_pixbuf_save (pixbuf, filename, "jpeg", NULL, "quality", "100", NULL);
+        gdk_pixbuf_save(pixbuf, filename, "jpeg", NULL, "quality", "100", NULL);
 
-        PAROLE_STREAM_GET_PRIVATE (stream)->previous_image = g_strdup(filename);
-        PAROLE_STREAM_GET_PRIVATE (stream)->image_uri = g_strdup_printf("file://%s", filename);
+        PAROLE_STREAM_GET_PRIVATE(stream)->previous_image = g_strdup(filename);
+        PAROLE_STREAM_GET_PRIVATE(stream)->image_uri = g_strdup_printf("file://%s", filename);
         g_free(filename);
     } else {
-        PAROLE_STREAM_GET_PRIVATE (stream)->image = NULL;
-        PAROLE_STREAM_GET_PRIVATE (stream)->previous_image = NULL;
-        PAROLE_STREAM_GET_PRIVATE (stream)->image_uri = g_strdup_printf ("file://%s/no-cover.png", PIXMAPS_DIR);
+        PAROLE_STREAM_GET_PRIVATE(stream)->image = NULL;
+        PAROLE_STREAM_GET_PRIVATE(stream)->previous_image = NULL;
+        PAROLE_STREAM_GET_PRIVATE(stream)->image_uri = g_strdup_printf("file://%s/no-cover.png", PIXMAPS_DIR);
     }
 }
 
 GdkPixbuf *
-parole_stream_get_image (GObject *object)
+parole_stream_get_image(GObject *object)
 {
     ParoleStream *stream;
     GdkPixbuf *pixbuf;
 
-    stream = PAROLE_STREAM (object);
+    stream = PAROLE_STREAM(object);
 
     if (PAROLE_STREAM_GET_PRIVATE (stream)->image)
-        pixbuf = gdk_pixbuf_copy(GDK_PIXBUF(PAROLE_STREAM_GET_PRIVATE (stream)->image));
+        pixbuf = gdk_pixbuf_copy(GDK_PIXBUF(PAROLE_STREAM_GET_PRIVATE(stream)->image));
     else
         pixbuf = NULL;
 
@@ -400,9 +400,9 @@ parole_stream_get_image (GObject *object)
 }
 
 static void
-parole_stream_class_init (ParoleStreamClass *klass)
+parole_stream_class_init(ParoleStreamClass *klass)
 {
-    GObjectClass *object_class = G_OBJECT_CLASS (klass);
+    GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
     object_class->finalize = parole_stream_finalize;
 
@@ -416,9 +416,9 @@ parole_stream_class_init (ParoleStreamClass *klass)
      *
      * Since: 0.2
      **/
-    g_object_class_install_property (object_class,
+    g_object_class_install_property(object_class,
                                      PROP_URI,
-                                     g_param_spec_string ("uri",
+                                     g_param_spec_string("uri",
                                              "Uri",
                                              "Uri",
                                              NULL,
@@ -432,9 +432,9 @@ parole_stream_class_init (ParoleStreamClass *klass)
      *
      * Since: 0.2
      **/
-    g_object_class_install_property (object_class,
+    g_object_class_install_property(object_class,
                                      PROP_SUBTITLES,
-                                     g_param_spec_string ("subtitles",
+                                     g_param_spec_string("subtitles",
                                              "Subtitles",
                                              "Subtitle file",
                                              NULL,
@@ -447,9 +447,9 @@ parole_stream_class_init (ParoleStreamClass *klass)
      *
      * Since: 0.2
      **/
-    g_object_class_install_property (object_class,
+    g_object_class_install_property(object_class,
                                      PROP_HAS_AUDIO,
-                                     g_param_spec_boolean ("has-audio",
+                                     g_param_spec_boolean("has-audio",
                                              "Has audio",
                                              "Has audio",
                                              FALSE,
@@ -461,9 +461,9 @@ parole_stream_class_init (ParoleStreamClass *klass)
      *
      * Since: 0.2
      **/
-    g_object_class_install_property (object_class,
+    g_object_class_install_property(object_class,
                                      PROP_HAS_VIDEO,
-                                     g_param_spec_boolean ("has-video",
+                                     g_param_spec_boolean("has-video",
                                              "Has video",
                                              "Has video",
                                              FALSE,
@@ -476,9 +476,9 @@ parole_stream_class_init (ParoleStreamClass *klass)
      *
      * Since: 0.2
      **/
-    g_object_class_install_property (object_class,
+    g_object_class_install_property(object_class,
                                      PROP_LIVE,
-                                     g_param_spec_boolean ("live",
+                                     g_param_spec_boolean("live",
                                              "Live",
                                              "Live",
                                              FALSE,
@@ -491,9 +491,9 @@ parole_stream_class_init (ParoleStreamClass *klass)
      *
      * Since: 0.2
      **/
-    g_object_class_install_property (object_class,
+    g_object_class_install_property(object_class,
                                      PROP_MEDIA_TYPE,
-                                     g_param_spec_enum ("media-type",
+                                     g_param_spec_enum("media-type",
                                              "Media type",
                                              "Media type",
                                              PAROLE_ENUM_TYPE_MEDIA_TYPE,
@@ -508,9 +508,9 @@ parole_stream_class_init (ParoleStreamClass *klass)
      *
      * Since: 0.2
      **/
-    g_object_class_install_property (object_class,
+    g_object_class_install_property(object_class,
                                      PROP_SEEKABLE,
-                                     g_param_spec_boolean ("seekable",
+                                     g_param_spec_boolean("seekable",
                                              "Seekable",
                                              "Seekable",
                                              FALSE,
@@ -523,9 +523,9 @@ parole_stream_class_init (ParoleStreamClass *klass)
      *
      * Since: 0.2
      **/
-    g_object_class_install_property (object_class,
+    g_object_class_install_property(object_class,
                                      PROP_DURATION,
-                                     g_param_spec_int64 ("duration",
+                                     g_param_spec_int64("duration",
                                              "Duration",
                                              "Duration",
                                              0, G_MAXINT64,
@@ -539,9 +539,9 @@ parole_stream_class_init (ParoleStreamClass *klass)
      *
      * Since: 0.2
      **/
-    g_object_class_install_property (object_class,
+    g_object_class_install_property(object_class,
                                      PROP_TAG_AVAILABLE,
-                                     g_param_spec_boolean ("tag-available",
+                                     g_param_spec_boolean("tag-available",
                                              "Tag available",
                                              "Tag available",
                                              FALSE,
@@ -554,9 +554,9 @@ parole_stream_class_init (ParoleStreamClass *klass)
      *
      * Since: 0.2
      **/
-    g_object_class_install_property (object_class,
+    g_object_class_install_property(object_class,
                                      PROP_ABSOLUTE_DURATION,
-                                     g_param_spec_int64 ("absolute-duration",
+                                     g_param_spec_int64("absolute-duration",
                                              "Absolution duration",
                                              "Absolution duration",
                                              0, G_MAXINT64,
@@ -570,9 +570,9 @@ parole_stream_class_init (ParoleStreamClass *klass)
      *
      * Since: 0.2
      **/
-    g_object_class_install_property (object_class,
+    g_object_class_install_property(object_class,
                                      PROP_DISP_PAR_N,
-                                     g_param_spec_uint ("disp-par-n",
+                                     g_param_spec_uint("disp-par-n",
                                              "Disp par n",
                                              "Disp par n",
                                              1, G_MAXUINT,
@@ -586,9 +586,9 @@ parole_stream_class_init (ParoleStreamClass *klass)
      *
      * Since: 0.2
      **/
-    g_object_class_install_property (object_class,
+    g_object_class_install_property(object_class,
                                      PROP_DISP_PAR_D,
-                                     g_param_spec_uint ("disp-par-d",
+                                     g_param_spec_uint("disp-par-d",
                                              "Disp par d",
                                              "Disp par d",
                                              1, G_MAXUINT,
@@ -602,9 +602,9 @@ parole_stream_class_init (ParoleStreamClass *klass)
      *
      * Since: 0.2
      **/
-    g_object_class_install_property (object_class,
+    g_object_class_install_property(object_class,
                                      PROP_VIDEO_WIDTH,
-                                     g_param_spec_int    ("video-width",
+                                     g_param_spec_int("video-width",
                                              "Video width",
                                              "Video width",
                                              0, G_MAXINT,
@@ -618,9 +618,9 @@ parole_stream_class_init (ParoleStreamClass *klass)
      *
      * Since: 0.2
      **/
-    g_object_class_install_property (object_class,
+    g_object_class_install_property(object_class,
                                      PROP_VIDEO_HEIGHT,
-                                     g_param_spec_int    ("video-height",
+                                     g_param_spec_int("video-height",
                                              "Video height",
                                              "Video height",
                                              0, G_MAXINT,
@@ -635,9 +635,9 @@ parole_stream_class_init (ParoleStreamClass *klass)
      *
      * Since: 0.2
      **/
-    g_object_class_install_property (object_class,
+    g_object_class_install_property(object_class,
                                      PROP_TRACKS,
-                                     g_param_spec_uint   ("num-tracks",
+                                     g_param_spec_uint("num-tracks",
                                              "Num tracks",
                                              "Number of tracks in the audio disc",
                                              1, 99,
@@ -653,9 +653,9 @@ parole_stream_class_init (ParoleStreamClass *klass)
      *
      * Since: 0.2
      **/
-    g_object_class_install_property (object_class,
+    g_object_class_install_property(object_class,
                                      PROP_TRACK,
-                                     g_param_spec_uint   ("track",
+                                     g_param_spec_uint("track",
                                              "Track",
                                              "Track",
                                              0, 99,
@@ -668,9 +668,9 @@ parole_stream_class_init (ParoleStreamClass *klass)
      *
      * Since: 0.2
      **/
-    g_object_class_install_property (object_class,
+    g_object_class_install_property(object_class,
                                      PROP_TITLE,
-                                     g_param_spec_string ("title",
+                                     g_param_spec_string("title",
                                              "Title",
                                              "Title",
                                              NULL,
@@ -684,9 +684,9 @@ parole_stream_class_init (ParoleStreamClass *klass)
      *
      * Since: 0.2
      **/
-    g_object_class_install_property (object_class,
+    g_object_class_install_property(object_class,
                                      PROP_ARTIST,
-                                     g_param_spec_string ("artist",
+                                     g_param_spec_string("artist",
                                              "Artist",
                                              "Artist",
                                              NULL,
@@ -699,9 +699,9 @@ parole_stream_class_init (ParoleStreamClass *klass)
      *
      * Since: 0.2
      **/
-    g_object_class_install_property (object_class,
+    g_object_class_install_property(object_class,
                                      PROP_YEAR,
-                                     g_param_spec_string ("year",
+                                     g_param_spec_string("year",
                                              "Year",
                                              "Year",
                                              NULL,
@@ -714,9 +714,9 @@ parole_stream_class_init (ParoleStreamClass *klass)
      *
      * Since: 0.2
      **/
-    g_object_class_install_property (object_class,
+    g_object_class_install_property(object_class,
                                      PROP_ALBUM,
-                                     g_param_spec_string ("album",
+                                     g_param_spec_string("album",
                                              "Album",
                                              "Album",
                                              NULL,
@@ -729,9 +729,9 @@ parole_stream_class_init (ParoleStreamClass *klass)
      *
      * Since: 0.2
      **/
-    g_object_class_install_property (object_class,
+    g_object_class_install_property(object_class,
                                      PROP_COMMENT,
-                                     g_param_spec_string ("comment",
+                                     g_param_spec_string("comment",
                                              "Comment",
                                              "Comment",
                                              NULL,
@@ -744,9 +744,9 @@ parole_stream_class_init (ParoleStreamClass *klass)
      *
      * Since: 0.6
      **/
-    g_object_class_install_property (object_class,
+    g_object_class_install_property(object_class,
                                      PROP_GENRE,
-                                     g_param_spec_string ("genre",
+                                     g_param_spec_string("genre",
                                              "Genre",
                                              "Genre",
                                              NULL,
@@ -759,9 +759,9 @@ parole_stream_class_init (ParoleStreamClass *klass)
      *
      * Since: 0.6
      **/
-    g_object_class_install_property (object_class,
+    g_object_class_install_property(object_class,
                                      PROP_IMAGE_URI,
-                                     g_param_spec_string ("image_uri",
+                                     g_param_spec_string("image_uri",
                                              "Image URI",
                                              "URI for the album artwork",
                                              NULL,
@@ -774,9 +774,9 @@ parole_stream_class_init (ParoleStreamClass *klass)
      *
      * Since: 0.6
      **/
-    g_object_class_install_property (object_class,
+    g_object_class_install_property(object_class,
                                      PROP_BITRATE,
-                                     g_param_spec_uint   ("bitrate",
+                                     g_param_spec_uint("bitrate",
                                              "Bitrate",
                                              "Bitrate",
                                              0, 2147483647,
@@ -787,24 +787,24 @@ parole_stream_class_init (ParoleStreamClass *klass)
 }
 
 static void
-parole_stream_init (ParoleStream *stream)
+parole_stream_init(ParoleStream *stream)
 {
-    parole_stream_init_properties (stream);
+    parole_stream_init_properties(stream);
 }
 
 ParoleStream *
-parole_stream_new (void)
+parole_stream_new(void)
 {
     ParoleStream *stream = NULL;
-    stream = g_object_new (PAROLE_TYPE_STREAM, NULL);
+    stream = g_object_new(PAROLE_TYPE_STREAM, NULL);
     return stream;
 }
 
-void parole_stream_init_properties (ParoleStream *stream)
+void parole_stream_init_properties(ParoleStream *stream)
 {
     ParoleStreamPrivate *priv;
 
-    priv = PAROLE_STREAM_GET_PRIVATE (stream);
+    priv = PAROLE_STREAM_GET_PRIVATE(stream);
 
     priv->live = FALSE;
     priv->seekable = FALSE;
@@ -822,21 +822,21 @@ void parole_stream_init_properties (ParoleStream *stream)
     priv->disp_par_d = 1;
     priv->bitrate = 0;
 
-    PAROLE_STREAM_FREE_STR_PROP (priv->title);
-    PAROLE_STREAM_FREE_STR_PROP (priv->uri);
-    PAROLE_STREAM_FREE_STR_PROP (priv->subtitles);
-    PAROLE_STREAM_FREE_STR_PROP (priv->artist);
-    PAROLE_STREAM_FREE_STR_PROP (priv->year);
-    PAROLE_STREAM_FREE_STR_PROP (priv->album);
-    PAROLE_STREAM_FREE_STR_PROP (priv->comment);
-    PAROLE_STREAM_FREE_STR_PROP (priv->genre);
-    PAROLE_STREAM_FREE_STR_PROP (priv->image_uri);
+    PAROLE_STREAM_FREE_STR_PROP(priv->title);
+    PAROLE_STREAM_FREE_STR_PROP(priv->uri);
+    PAROLE_STREAM_FREE_STR_PROP(priv->subtitles);
+    PAROLE_STREAM_FREE_STR_PROP(priv->artist);
+    PAROLE_STREAM_FREE_STR_PROP(priv->year);
+    PAROLE_STREAM_FREE_STR_PROP(priv->album);
+    PAROLE_STREAM_FREE_STR_PROP(priv->comment);
+    PAROLE_STREAM_FREE_STR_PROP(priv->genre);
+    PAROLE_STREAM_FREE_STR_PROP(priv->image_uri);
 
     /* Remove the previous image if it exists */
     if ( PAROLE_STREAM_GET_PRIVATE (stream)->previous_image )
     {
         if (g_remove (PAROLE_STREAM_GET_PRIVATE (stream)->previous_image) != 0)
-            g_warning ("Failed to remove temporary artwork");
+            g_warning("Failed to remove temporary artwork");
     }
-    PAROLE_STREAM_GET_PRIVATE (stream)->previous_image = NULL;
+    PAROLE_STREAM_GET_PRIVATE(stream)->previous_image = NULL;
 }
