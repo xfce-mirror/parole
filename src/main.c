@@ -203,7 +203,6 @@ parole_send_message (const gchar *message)
     }
 
     g_object_unref (proxy);
-
 }
 
 int main (int argc, char **argv)

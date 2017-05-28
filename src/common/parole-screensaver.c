@@ -56,7 +56,6 @@ parole_screen_saver_class_init (ParoleScreenSaverClass *klass)
     GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
     object_class->finalize = parole_screen_saver_finalize;
-
 }
 
 static void

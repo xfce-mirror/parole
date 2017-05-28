@@ -49,7 +49,6 @@ typedef enum
     PAROLE_PL_FORMAT_PLS,
     PAROLE_PL_FORMAT_ASX,
     PAROLE_PL_FORMAT_XSPF
-
 } ParolePlFormat;
 
 ParolePlFormat      parole_pl_parser_guess_format_from_extension    (const gchar *filename);

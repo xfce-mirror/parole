@@ -51,7 +51,6 @@ struct _ParoleFilePrivate
     gchar   *directory;
     gchar   *custom_subtitles;
     gint    dvd_chapter;
-
 };
 
 enum
@@ -500,7 +499,7 @@ parole_file_new_dvd_chapter (gint chapter_num, const gchar *display_name)
                          "dvd-chapter", chapter_num,
                          NULL);
 
-    //g_free(uri); FIXME This should probably be freed.
+    // g_free(uri); FIXME This should probably be freed.
     return file;
 }
 
@@ -634,7 +633,7 @@ parole_file_set_custom_subtitles (const ParoleFile *file, gchar *suburi)
 gint
 parole_file_get_dvd_chapter (const ParoleFile *file)
 {
-    //g_return_val_if_fail (PAROLE_IS_FILE (file), NULL);
+    // g_return_val_if_fail (PAROLE_IS_FILE (file), NULL);
 
     return PAROLE_FILE_GET_PRIVATE (file)->dvd_chapter;
 }

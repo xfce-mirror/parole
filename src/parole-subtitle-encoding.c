@@ -160,7 +160,6 @@ typedef struct
 
 
 static SubtitleEncoding encodings[] = {
-
   {SUBTITLE_ENCODING_CURRENT_LOCALE,
       NULL, N_("Current Locale")},
 
@@ -431,7 +430,6 @@ is_encoding_sensitive (GtkCellLayout * cell_layout,
     GtkCellRenderer * cell,
     GtkTreeModel * tree_model, GtkTreeIter * iter, gpointer data)
 {
-
   gboolean sensitive;
 
   sensitive = !gtk_tree_model_iter_has_child (tree_model, iter);
@@ -513,7 +511,6 @@ parole_subtitle_encoding_set (GtkComboBox * combo, const char *encoding)
 
   if (gtk_tree_model_get_iter_first (model, &iter))
   {
-
       do {
         if (!gtk_tree_model_iter_has_child (model, &iter))
           continue;

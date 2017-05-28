@@ -342,7 +342,6 @@ GdkPixbuf *parole_icon_load (const gchar *icon_name, gint size)
     }
 
     return pix;
-
 }
 
 void parole_get_media_files (GtkFileFilter *filter, const gchar *path,

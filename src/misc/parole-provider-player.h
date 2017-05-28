@@ -111,7 +111,6 @@ struct _ParoleProviderPlayerIface
     void     (*state_changed)                   (ParoleProviderPlayer *player,
                                                  const ParoleStream *stream,
                                                  ParoleState state);
-
 };
 
 GType        parole_provider_player_get_type    (void) G_GNUC_CONST;

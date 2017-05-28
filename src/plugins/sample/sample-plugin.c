@@ -43,5 +43,4 @@ parole_plugin_initialize (ParoleProviderPlugin *plugin)
 G_MODULE_EXPORT void
 parole_plugin_shutdown (void)
 {
-
 }

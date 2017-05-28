@@ -38,7 +38,6 @@ typedef struct
 {
     GObject                     parent;
     ParolePlayerPrivate        *priv;
-
 } ParolePlayer;
 
 typedef struct
@@ -53,7 +52,6 @@ typedef struct
 
     void                        (*gst_dvd_nav_message)          (ParolePlayer *player,
                                                                  gint gst_dvd_nav_message);
-
 } ParolePlayerClass;
 
 typedef enum

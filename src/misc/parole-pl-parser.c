@@ -56,7 +56,6 @@ typedef struct
     gboolean  started;
     gchar    *uri;
     gchar    *title;
-
 } ParoleParserData;
 
 gchar *g_substr (const gchar* string, gint start, gint end);

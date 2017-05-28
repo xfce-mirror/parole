@@ -38,13 +38,11 @@ typedef struct
 {
     GObject                     parent;
     ParoleConfDialogPrivate    *priv;
-
 } ParoleConfDialog;
 
 typedef struct
 {
     GObjectClass                parent_class;
-
 } ParoleConfDialogClass;
 
 GType                   parole_conf_dialog_get_type     (void) G_GNUC_CONST;

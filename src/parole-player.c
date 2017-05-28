@@ -661,7 +661,6 @@ void
 parole_player_dvd_audio_activated (GtkMenuItem *widget, ParolePlayer *player)
 {
     parole_gst_send_navigation_command (PAROLE_GST(player->priv->gst), GST_DVD_AUDIO_MENU);
-
 }
 
 void
@@ -874,7 +873,6 @@ parole_player_set_audio_list (ParolePlayer *player, GList *audio_list)
             g_signal_connect (player->priv->audio_group, "activate",
                               G_CALLBACK (parole_player_audiotrack_radio_menu_item_changed_cb), player);
         } else {
-
             menu_item = gtk_radio_menu_item_new_with_label_from_widget (GTK_RADIO_MENU_ITEM(player->priv->audio_group), language);
             gtk_widget_show (menu_item);
             gtk_menu_shell_append (GTK_MENU_SHELL (player->priv->languages_menu), menu_item);
@@ -1966,7 +1964,7 @@ parole_player_dvd_chapter_count_change_cb (ParoleGst *gst, gint chapter_count, P
     player->priv->row = NULL;
 
     /* FIXME Cannot clear list prior to adding new chapters. */
-    //parole_media_list_clear_list (player->priv->list);
+    // parole_media_list_clear_list (player->priv->list);
 
     parole_media_list_add_dvd_chapters (player->priv->list, chapter_count);
     parole_player_update_chapters(player, chapter_count);

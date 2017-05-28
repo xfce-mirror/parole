@@ -44,7 +44,6 @@ typedef enum
     PAROLE_ASPECT_RATIO_4_3,
     PAROLE_ASPECT_RATIO_16_9,
     PAROLE_ASPECT_RATIO_DVB
-
 } ParoleAspectRatio;
 
 enum
@@ -62,7 +61,6 @@ typedef struct
 {
     GtkWidget           parent;
     ParoleGstPrivate   *priv;
-
 } ParoleGst;
 
 typedef struct
@@ -95,7 +93,6 @@ typedef struct
 
     void        (*dvd_chapter_count_change) (ParoleGst *gst,
                                              gint dvd_chapter_change);
-
 } ParoleGstClass;
 
 GType       parole_gst_get_type             (void) G_GNUC_CONST;

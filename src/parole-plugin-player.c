@@ -55,7 +55,6 @@ struct ParolePluginPlayerPrivate
     gboolean packed;
 
     gboolean fullscreen;
-
 };
 
 G_DEFINE_TYPE_WITH_CODE (ParolePluginPlayer, parole_plugin_player, G_TYPE_OBJECT,

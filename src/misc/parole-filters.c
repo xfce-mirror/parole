@@ -165,7 +165,6 @@ GtkFileFilter *parole_get_supported_files_filter (void)
         gtk_file_filter_add_pattern (filter, playlist_file_extensions[i]);
 
     return filter;
-
 }
 
 GtkRecentFilter *parole_get_supported_recent_files_filter (void)
@@ -181,7 +180,6 @@ GtkRecentFilter *parole_get_supported_recent_files_filter (void)
         gtk_recent_filter_add_pattern (filter, playlist_file_extensions[i]);
 
     return filter;
-
 }
 
 /**

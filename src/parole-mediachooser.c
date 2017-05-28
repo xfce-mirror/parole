@@ -68,7 +68,6 @@ struct ParoleMediaChooser
     ParoleConf         *conf;
     GtkWidget          *window;
     GtkWidget          *spinner;
-
 };
 
 struct ParoleMediaChooserClass

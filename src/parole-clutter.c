@@ -66,9 +66,9 @@ G_DEFINE_TYPE (ParoleClutter, parole_clutter, GTK_TYPE_WIDGET)
 static void
 parole_clutter_finalize (GObject *object)
 {
-    //ParoleClutter *clutter;
+    // ParoleClutter *clutter;
 
-    //clutter = PAROLE_CLUTTER (object);
+    // clutter = PAROLE_CLUTTER (object);
 
     TRACE ("start");
 
@@ -104,9 +104,9 @@ parole_clutter_hide (GtkWidget *widget)
 static void
 parole_clutter_constructed (GObject *object)
 {
-    //ParoleClutter *clutter;
+    // ParoleClutter *clutter;
 
-    //clutter = PAROLE_CLUTTER (object);
+    // clutter = PAROLE_CLUTTER (object);
 }
 
 static void
@@ -366,7 +366,6 @@ GtkWidget *parole_clutter_get (void)
     }
 
     return GTK_WIDGET (parole_clutter_object);
-
 }
 
 void parole_clutter_set_video_dimensions (ParoleClutter *clutter, gint w, gint h)

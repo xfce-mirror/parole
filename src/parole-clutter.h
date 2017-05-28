@@ -42,13 +42,11 @@ typedef struct
 {
     GtkWidget               parent;
     ParoleClutterPrivate   *priv;
-
 } ParoleClutter;
 
 typedef struct
 {
     GtkWidgetClass  parent_class;
-
 } ParoleClutterClass;
 
 GType         parole_clutter_get_type         (void) G_GNUC_CONST;

@@ -78,7 +78,6 @@ typedef struct
     gchar          *uri;
     gchar          *device;
     ParoleDiscKind  kind;
-
 } MountData;
 
 /**
@@ -125,7 +124,7 @@ static void
 parole_disc_set_enabled(ParoleDisc *disc, gboolean enabled)
 {
     gtk_widget_set_sensitive( GTK_WIDGET(disc->priv->disc_menu_item), enabled);
-    //g_signal_emit (G_OBJECT (disc), signals [DVD_ENABLED], 0, enabled);
+    // g_signal_emit (G_OBJECT (disc), signals [DVD_ENABLED], 0, enabled);
 }
 
 static gboolean

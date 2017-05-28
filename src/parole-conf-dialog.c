@@ -501,7 +501,6 @@ void parole_conf_dialog_open (ParoleConfDialog *self, GtkWidget *parent)
         gtk_range_set_value (GTK_RANGE (self->priv->contrast), contrast_value);
         gtk_range_set_value (GTK_RANGE (self->priv->hue), hue_value);
         gtk_range_set_value (GTK_RANGE (self->priv->saturation), saturation_value);
-
     }
 
     /* General/Video/Disable screensaver while playing movies */

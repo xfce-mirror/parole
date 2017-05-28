@@ -58,7 +58,6 @@ typedef struct
     gchar *authors;
     gchar *desc;
     gchar *website;
-
 } ParolePluginInfo;
 
 typedef struct
@@ -72,7 +71,6 @@ typedef struct
     GtkWidget *author;
     GtkWidget *site;
     GtkWidget *configure;
-
 } PrefData;
 
 void parole_plugins_manager_pref_response_cb       (GtkDialog *dialog,
@@ -328,7 +326,7 @@ parole_plugins_manager_unload_all (gpointer data, gpointer user_data)
         parole_provider_module_free_plugin (module);
         g_type_module_unuse (G_TYPE_MODULE (data));
     }
-    //g_object_unref (module);
+    // g_object_unref (module);
 }
 
 static ParolePluginInfo *
@@ -711,7 +709,6 @@ void parole_plugins_manager_load (ParolePluginsManager *manager)
 
     if ( manager->priv->load_plugins )
         parole_plugins_manager_load_plugins (manager);
-
 }
 
 void

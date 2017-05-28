@@ -92,7 +92,6 @@ typedef enum
     GST_PLAY_FLAG_DOWNLOAD      = (1 << 7),
     GST_PLAY_FLAG_BUFFERING     = (1 << 8),
     GST_PLAY_FLAG_DEINTERLACE   = (1 << 9)
-
 } GstPlayFlags;
 
 typedef enum
@@ -485,9 +484,7 @@ parole_gst_query_capabilities (ParoleGst *gst)
 
     query = gst_query_new_seeking (GST_FORMAT_TIME);
 
-    if ( gst_element_query (gst->priv->playbin, query) )
-    {
-
+    if (gst_element_query (gst->priv->playbin, query)) {
         gst_query_parse_seeking (query,
                                  NULL,
                                  &seekable,
@@ -497,7 +494,6 @@ parole_gst_query_capabilities (ParoleGst *gst)
         g_object_set (G_OBJECT (gst->priv->stream),
                       "seekable", seekable,
                       NULL);
-
     }
     gst_query_unref (query);
 }
@@ -1228,7 +1224,6 @@ parole_gst_get_meta_data_dvd (ParoleGst *gst)
                                 chapter);
         }
     }
-
 }
 
 
@@ -1761,8 +1756,7 @@ parole_gst_send_navigation_command(ParoleGst *gst, gint command)
     GstNavigation *nav;
     nav = GST_NAVIGATION (gst->priv->video_sink);
 
-    switch (command)
-    {
+    switch (command) {
         case GST_DVD_ROOT_MENU:
             TRACE("Root Menu");
             gst_navigation_send_command (nav, GST_NAVIGATION_COMMAND_DVD_MENU);
@@ -1786,7 +1780,6 @@ parole_gst_send_navigation_command(ParoleGst *gst, gint command)
         default:
             break;
     }
-
 }
 
 static gboolean
@@ -2412,14 +2405,13 @@ GtkWidget *parole_gst_get (void)
      * we need it to be destroyed immediately when the main
      * window is destroyed.
      */
-    //g_object_ref (parole_gst_object);
+    // g_object_ref (parole_gst_object);
     } else {
         parole_gst_object = g_object_new (PAROLE_TYPE_GST, NULL);
         g_object_add_weak_pointer (parole_gst_object, &parole_gst_object);
     }
 
     return GTK_WIDGET (parole_gst_object);
-
 }
 
 static gboolean
@@ -2881,7 +2873,6 @@ gst_set_current_audio_track( ParoleGst *gst, gint track_no )
 void
 gst_set_current_subtitle_track( ParoleGst *gst, gint track_no )
 {
-
     gchar *uri, *sub;
     gint flags;
 

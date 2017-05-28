@@ -410,7 +410,7 @@ parole_media_list_add_dvd_chapters (ParoleMediaList *list, gint n_chapters)
         files = g_slist_append(files, file);
     }
 
-    //parole_media_list_clear_list (list);
+    // parole_media_list_clear_list (list);
     parole_media_list_files_open(list, files, TRUE, TRUE);
 }
 
@@ -716,7 +716,6 @@ parole_media_list_save_playlist_response_cb        (GtkDialog *dialog,
 
         parole_pl_parser_save_from_files (list, filename, format);
         g_slist_free (list);
-
     }
     data->closing = TRUE;
     gtk_widget_destroy(GTK_WIDGET(dialog));
@@ -818,7 +817,6 @@ void parole_media_list_format_cursor_changed_cb (GtkTreeView *view, ParolePlayli
         }
     }
     g_free (fbasename);
-
 }
 
 /* Callback to save the current playlist */
@@ -1182,7 +1180,6 @@ static void
 parole_media_list_add_open_containing_folder (ParoleMediaList *list, GtkWidget *menu,
                           gint x, gint y)
 {
-
     GtkTreePath *path;
 
     if (gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (list->priv->view),
@@ -1193,48 +1190,47 @@ parole_media_list_add_open_containing_folder (ParoleMediaList *list, GtkWidget *
                                        NULL,
                                        NULL))
     {
+        GtkTreeIter iter;
 
-    GtkTreeIter iter;
-
-    if ( path && gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path))
-    {
-        ParoleFile *file;
-        const gchar *filename;
-        const gchar *uri;
-
-        gtk_tree_model_get (GTK_TREE_MODEL (list->priv->store), &iter,
-                            DATA_COL, &file,
-                            -1);
-
-        filename = parole_file_get_file_name (file);
-        uri = parole_file_get_uri (file);
-
-        if (g_str_has_prefix (uri, "file:///"))
+        if ( path && gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path))
         {
-            GtkWidget *mi;
-            gchar *dirname;
+            ParoleFile *file;
+            const gchar *filename;
+            const gchar *uri;
 
-            dirname = g_path_get_dirname (filename);
+            gtk_tree_model_get (GTK_TREE_MODEL (list->priv->store), &iter,
+                                DATA_COL, &file,
+                                -1);
 
-            /* Clear */
-            mi = gtk_menu_item_new_with_label (_("Open Containing Folder"));
-            gtk_widget_set_sensitive (mi, TRUE);
-            gtk_widget_show (mi);
-            g_signal_connect_swapped   (mi, "activate",
-                                        G_CALLBACK (parole_media_list_open_folder), menu);
+            filename = parole_file_get_file_name (file);
+            uri = parole_file_get_uri (file);
 
-            g_object_set_data (G_OBJECT (menu), "folder", dirname);
+            if (g_str_has_prefix (uri, "file:///"))
+            {
+                GtkWidget *mi;
+                gchar *dirname;
 
-            gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+                dirname = g_path_get_dirname (filename);
+
+                /* Clear */
+                mi = gtk_menu_item_new_with_label (_("Open Containing Folder"));
+                gtk_widget_set_sensitive (mi, TRUE);
+                gtk_widget_show (mi);
+                g_signal_connect_swapped   (mi, "activate",
+                                            G_CALLBACK (parole_media_list_open_folder), menu);
+
+                g_object_set_data (G_OBJECT (menu), "folder", dirname);
+
+                gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
 
 
-            mi = gtk_separator_menu_item_new ();
-            gtk_widget_show (mi);
-            gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+                mi = gtk_separator_menu_item_new ();
+                gtk_widget_show (mi);
+                gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+            }
+
+            gtk_tree_path_free (path);
         }
-
-        gtk_tree_path_free (path);
-    }
     }
 }
 
@@ -1274,7 +1270,6 @@ play_opened_files_activated_cb (GtkWidget *mi, ParoleConf *conf)
     g_object_set (G_OBJECT (conf),
                   "play-opened-files", gtk_check_menu_item_get_active (GTK_CHECK_MENU_ITEM (mi)),
                   NULL);
-
 }
 
 static void
@@ -1697,7 +1692,6 @@ void parole_media_list_load (ParoleMediaList *list)
             g_slist_free (fileslist);
         }
     }
-
 }
 
 gboolean
@@ -1756,7 +1750,7 @@ GtkTreeRowReference *parole_media_list_get_next_row (ParoleMediaList *list,
 
     if (gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path)) {
         next = gtk_tree_row_reference_new (GTK_TREE_MODEL (list->priv->store), path);
-        //parole_media_list_select_path (list, path);
+        // parole_media_list_select_path (list, path);
     } else if ( repeat ) { /* Repeat playing ?*/
         if (gtk_tree_model_get_iter_first (GTK_TREE_MODEL (list->priv->store), &iter)) {
             next =  parole_media_list_get_row_reference_from_iter (list, &iter, TRUE);
@@ -1786,7 +1780,7 @@ GtkTreeRowReference *parole_media_list_get_prev_row (ParoleMediaList *list,
 
     if (gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path)) {
         prev = gtk_tree_row_reference_new (GTK_TREE_MODEL (list->priv->store), path);
-        //parole_media_list_select_path (list, path);
+        // parole_media_list_select_path (list, path);
     } else {
         prev = row;
     }

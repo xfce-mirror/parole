@@ -61,7 +61,6 @@ typedef struct
     GtkBox                      parent;
 
     ParoleMediaListPrivate     *priv;
-
 } ParoleMediaList;
 
 typedef struct
@@ -88,7 +87,6 @@ typedef struct
 
     void            (*dvd_chapter_count)            (ParoleMediaList *list,
                                                      gint chapter_count);
-
 } ParoleMediaListClass;
 
 GType               parole_media_list_get_type      (void) G_GNUC_CONST;

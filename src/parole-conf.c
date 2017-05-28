@@ -900,7 +900,6 @@ parole_conf_class_init (ParoleConfClass *klass)
                                             NULL,
                                             FALSE,
                                             G_PARAM_READWRITE));
-
 }
 
 /**

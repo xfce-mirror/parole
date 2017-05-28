@@ -66,7 +66,6 @@ struct ParoleButtonPrivate
 {
     GdkScreen   *screen;
     GdkWindow   *window;
-
 };
 
 enum

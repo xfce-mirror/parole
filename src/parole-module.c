@@ -123,7 +123,6 @@ parole_module_unload (GTypeModule *gtype_module)
     module->library = NULL;
     module->provider_type = G_TYPE_INVALID;
     module->active = FALSE;
-
 }
 
 static void
