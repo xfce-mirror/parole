@@ -26,7 +26,7 @@
 
 #include <libxfce4util/libxfce4util.h>
 
-#include "notify-provider.h"
+#include "src/plugins/notify/notify-provider.h"
 
 G_MODULE_EXPORT GType       parole_plugin_initialize(ParoleProviderPlugin *plugin);
 

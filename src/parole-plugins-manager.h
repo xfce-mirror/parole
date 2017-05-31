@@ -24,7 +24,8 @@
 #define SRC_PAROLE_PLUGINS_MANAGER_H_
 
 #include <glib-object.h>
-#include <src/misc/parole-provider-player.h>
+
+#include "src/misc/parole-provider-player.h"
 
 G_BEGIN_DECLS
 

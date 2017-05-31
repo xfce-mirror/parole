@@ -24,9 +24,10 @@
 #define SRC_PAROLE_MODULE_H_
 
 #include <glib-object.h>
-#include <src/misc/parole.h>
 
-#include "parole-plugin-player.h"
+#include "src/misc/parole.h"
+
+#include "src/parole-plugin-player.h"
 
 G_BEGIN_DECLS
 

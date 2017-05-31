@@ -24,9 +24,10 @@
 #include <config.h>
 #endif
 
-#include "parole-provider-player.h"
-#include "parole-marshal.h"
-#include "parole-enum-types.h"
+#include "src/misc/parole-enum-types.h"
+#include "src/misc/parole-marshal.h"
+
+#include "src/misc/parole-provider-player.h"
 
 static void parole_provider_player_base_init(gpointer klass);
 static void parole_provider_player_class_init(gpointer klass);

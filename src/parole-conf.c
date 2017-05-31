@@ -32,12 +32,14 @@
 
 #include <xfconf/xfconf.h>
 
-#include "parole-conf.h"
-#include "parole-rc-utils.h"
-#include "enum-gtypes.h"
+#include "src/common/parole-rc-utils.h"
 
-#include "gst/parole-gst.h"
-#include "gst/gst-enum-types.h"
+#include "src/gst/parole-gst.h"
+#include "src/gst/gst-enum-types.h"
+
+#include "src/enum-gtypes.h"
+
+#include "src/parole-conf.h"
 
 
 static gpointer parole_conf_object = NULL;

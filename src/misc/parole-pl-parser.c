@@ -41,14 +41,15 @@
 
 #include <gio/gio.h>
 #include <glib.h>
+
 #include <libxfce4util/libxfce4util.h>
 
-#include "parole-file.h"
+#include "src/misc/parole-debug.h"
+#include "src/misc/parole-enum-types.h"
+#include "src/misc/parole-file.h"
+#include "src/misc/parole-filters.h"
 
-#include "parole-pl-parser.h"
-#include "parole-filters.h"
-#include "parole-debug.h"
-#include "parole-enum-types.h"
+#include "src/misc/parole-pl-parser.h"
 
 typedef struct {
     GSList    *list;

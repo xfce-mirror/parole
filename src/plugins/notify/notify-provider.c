@@ -27,11 +27,11 @@
 #include <glib.h>
 #include <gtk/gtk.h>
 
-#include <src/misc/parole.h>
-
 #include <libnotify/notify.h>
 
-#include "notify-provider.h"
+#include "src/misc/parole.h"
+
+#include "src/plugins/notify/notify-provider.h"
 
 static void   notify_provider_iface_init(ParoleProviderPluginIface *iface);
 static void   notify_provider_finalize(GObject                   *object);

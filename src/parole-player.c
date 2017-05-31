@@ -46,35 +46,37 @@
 
 #include <dbus/dbus-glib.h>
 
-#include <src/misc/parole-file.h>
+#include "src/common/parole-common.h"
+#include "src/common/parole-rc-utils.h"
+#include "src/common/parole-screensaver.h"
 
-#include "parole-builder.h"
-#include "parole-about.h"
-#include "parole-shortcuts.h"
+#include "src/dbus/parole-dbus.h"
 
-#include "parole-player.h"
-#include "parole-gst.h"
-#include "parole-dbus.h"
-#include "parole-mediachooser.h"
-#include "parole-medialist.h"
-#include "parole-filters.h"
-#include "parole-disc.h"
-#include "parole-screensaver.h"
-#include "parole-conf-dialog.h"
-#include "parole-conf.h"
-#include "parole-rc-utils.h"
-#include "parole-utils.h"
-#include "parole-debug.h"
-#include "parole-button.h"
-#include "enum-gtypes.h"
+#include "src/gst/gst-enum-types.h"
+#include "src/gst/parole-gst.h"
+
+#include "src/misc/parole-debug.h"
+#include "src/misc/parole-file.h"
+#include "src/misc/parole-filters.h"
+
+#include "src/enum-gtypes.h"
+#include "src/parole-about.h"
+#include "src/parole-builder.h"
+#include "src/parole-button.h"
 
 #ifdef HAVE_CLUTTER
-#include "parole-clutter.h"
+#include "src/parole-clutter.h"
 #endif
 
-#include "gst/gst-enum-types.h"
+#include "src/parole-conf.h"
+#include "src/parole-conf-dialog.h"
+#include "src/parole-disc.h"
+#include "src/parole-mediachooser.h"
+#include "src/parole-medialist.h"
+#include "src/parole-shortcuts.h"
+#include "src/parole-utils.h"
 
-#include "common/parole-common.h"
+#include "src/parole-player.h"
 
 int GTK_ICON_SIZE_ARTWORK_FALLBACK;
 
@@ -1295,7 +1297,7 @@ parole_player_save_uri(ParolePlayer *player, const ParoleStream *stream) {
 
     if (lines) {
         for (i = 0; lines[i]; i++) {
-            if (!g_strcmp0 (lines[i], uri)) {
+            if (!g_strcmp0(lines[i], uri)) {
                 save = FALSE;
                 break;
             }
@@ -3850,7 +3852,7 @@ static gboolean     parole_player_dbus_play_disc(ParolePlayer *player,
                                                          gchar *in_device,
                                                          GError **error);
 
-#include "org.parole.media.player.h"
+#include "src/org.parole.media.player.h"
 
 /*
  * DBus server implementation

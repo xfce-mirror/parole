@@ -46,12 +46,13 @@
 #include <X11/X.h>
 #include <X11/Xlib.h>
 
-#include "parole-player.h"
-#include "parole-plugins-manager.h"
-#include "parole-utils.h"
-#include "parole-dbus.h"
-#include "parole-builder.h"
-#include "parole-conf.h"
+#include "src/dbus/parole-dbus.h"
+
+#include "src/parole-builder.h"
+#include "src/parole-conf.h"
+#include "src/parole-player.h"
+#include "src/parole-plugins-manager.h"
+#include "src/parole-utils.h"
 
 static void G_GNUC_NORETURN
 show_version(void) {

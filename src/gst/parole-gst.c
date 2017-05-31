@@ -31,7 +31,7 @@
 
 #include <glib.h>
 
-#include "parole-gst.h"
+#include <gst/gst.h>
 
 #if GST_CHECK_VERSION(1, 0, 0)
 #include <gst/video/videooverlay.h>
@@ -46,19 +46,21 @@
 #include <gst/pbutils/missing-plugins.h>
 #include <gst/pbutils/install-plugins.h>
 
-#include <gst/video/video.h>
 #include <gst/tag/tag.h>
-
-#include <libxfce4util/libxfce4util.h>
+#include <gst/video/video.h>
 
 #include <gdk/gdkx.h>
 
-#include "common/parole-common.h"
+#include <libxfce4util/libxfce4util.h>
 
-#include "parole-utils.h"
+#include "src/gst/gst-enum-types.h"
+#include "src/gst/gstmarshal.h"
 
-#include "gst-enum-types.h"
-#include "gstmarshal.h"
+#include "src/common/parole-common.h"
+
+#include "src/parole-utils.h"
+
+#include "src/gst/parole-gst.h"
 
 #define HIDE_WINDOW_CURSOR_TIMEOUT 3.0f
 
@@ -1519,7 +1521,7 @@ parole_gst_bus_event(GstBus *bus, GstMessage *msg, gpointer data) {
                  ctx = gst_install_plugins_context_new();
 
 #ifdef GDK_WINDOWING_X11
-            if (gtk_widget_get_window (GTK_WIDGET (gst)) != NULL && gtk_widget_get_realized(GTK_WIDGET(gst))) {
+            if (gtk_widget_get_window(GTK_WIDGET(gst)) != NULL && gtk_widget_get_realized(GTK_WIDGET(gst))) {
                 gst_install_plugins_context_set_xid(ctx,
                     gdk_x11_window_get_xid(gtk_widget_get_window(GTK_WIDGET(gst))));
             }
@@ -1842,7 +1844,7 @@ parole_gst_conf_notify_cb(GObject *object, GParamSpec *spec, ParoleGst *gst) {
         parole_gst_set_subtitle_font(gst);
     } else if (!g_strcmp0("subtitle-encoding", spec->name)) {
         parole_gst_set_subtitle_encoding(gst);
-    } else if (!g_strcmp0 ("brightness", spec->name) || !g_strcmp0 ("hue", spec->name) || !g_strcmp0("contrast", spec->name) || !g_strcmp0("saturation", spec->name)) {
+    } else if (!g_strcmp0("brightness", spec->name) || !g_strcmp0("hue", spec->name) || !g_strcmp0("contrast", spec->name) || !g_strcmp0("saturation", spec->name)) {
         gst->priv->update_color_balance = TRUE;
 
         if ( gst->priv->state >= GST_STATE_PAUSED )

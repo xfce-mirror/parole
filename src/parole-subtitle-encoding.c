@@ -38,7 +38,7 @@
 #include <glib.h>
 #include <libxfce4util/libxfce4util.h>
 
-#include "parole-subtitle-encoding.h"
+#include "src/parole-subtitle-encoding.h"
 
 typedef enum {
   SUBTITLE_ENCODING_CURRENT_LOCALE,

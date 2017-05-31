@@ -23,7 +23,7 @@
 #ifndef SRC_PLUGINS_SAMPLE_SAMPLE_PROVIDER_H_
 #define SRC_PLUGINS_SAMPLE_SAMPLE_PROVIDER_H_
 
-#include <src/misc/parole.h>
+#include "src/misc/parole.h"
 
 G_BEGIN_DECLS
 

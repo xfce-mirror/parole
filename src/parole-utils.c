@@ -46,9 +46,9 @@
 
 #include <libxfce4util/libxfce4util.h>
 
-#include <src/misc/parole.h>
+#include "src/misc/parole.h"
 
-#include "parole-utils.h"
+#include "src/parole-utils.h"
 
 /* List from xine-lib's demux_sputext.c */
 static const char subtitle_ext[][4] = {

@@ -27,14 +27,13 @@
 #include <glib.h>
 #include <gtk/gtk.h>
 
-#include <src/misc/parole.h>
-
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4ui/libxfce4ui.h>
-
 #include <xfconf/xfconf.h>
 
-#include "tray-provider.h"
+#include "src/misc/parole.h"
+
+#include "src/plugins/tray/tray-provider.h"
 
 static void   tray_provider_iface_init(ParoleProviderPluginIface *iface);
 static void   tray_provider_finalize(GObject                   *object);

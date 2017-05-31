@@ -28,8 +28,9 @@
 #define SRC_MISC_PAROLE_PROVIDER_PLUGIN_H_
 
 #include <gtk/gtk.h>
-#include <src/misc/parole-stream.h>
-#include <src/misc/parole-provider-player.h>
+
+#include "src/misc/parole-stream.h"
+#include "src/misc/parole-provider-player.h"
 
 G_BEGIN_DECLS
 

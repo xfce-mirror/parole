@@ -28,16 +28,17 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <src/misc/parole.h>
+#include "data/interfaces/parole-settings_ui.h"
 
-#include "interfaces/parole-settings_ui.h"
+#include "src/gst/parole-gst.h"
 
-#include "parole-gst.h"
-#include "parole-builder.h"
-#include "parole-conf-dialog.h"
-#include "parole-conf.h"
-#include "parole-vis.h"
-#include "parole-subtitle-encoding.h"
+#include "src/misc/parole.h"
+
+#include "src/parole-builder.h"
+#include "src/parole-conf.h"
+#include "src/parole-conf-dialog.h"
+#include "src/parole-subtitle-encoding.h"
+#include "src/parole-vis.h"
 
 /*
  * GtkBuilder Callbacks

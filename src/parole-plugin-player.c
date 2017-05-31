@@ -28,14 +28,16 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <src/misc/parole-provider-player.h>
+#include "src/dbus/parole-dbus.h"
 
-#include "parole-dbus.h"
-#include "parole-plugin-player.h"
-#include "parole-plugins-manager.h"
-#include "parole-medialist.h"
+#include "src/gst/parole-gst.h"
 
-#include "gst/parole-gst.h"
+#include "src/misc/parole-provider-player.h"
+
+#include "src/parole-medialist.h"
+#include "src/parole-plugin-player.h"
+#include "src/parole-plugins-manager.h"
+
 
 static void parole_plugin_player_iface_init(ParoleProviderPlayerIface *iface);
 

@@ -24,7 +24,7 @@
 #include <config.h>
 #endif
 
-#include "parole-provider-plugin.h"
+#include "src/misc/parole-provider-plugin.h"
 
 GType
 parole_provider_plugin_get_type(void) {

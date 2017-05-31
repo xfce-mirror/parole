@@ -24,9 +24,9 @@
 #include <config.h>
 #endif
 
-#include <src/misc/parole.h>
+#include "src/misc/parole.h"
 
-#include "mpris2-provider.h"
+#include "src/plugins/mpris2/mpris2-provider.h"
 
 G_MODULE_EXPORT GType   parole_plugin_initialize(ParoleProviderPlugin *plugin);
 

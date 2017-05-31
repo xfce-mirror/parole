@@ -24,7 +24,8 @@
 #define SRC_PAROLE_MEDIALIST_H_
 
 #include <gtk/gtk.h>
-#include <src/misc/parole-file.h>
+
+#include "src/misc/parole-file.h"
 
 G_BEGIN_DECLS
 

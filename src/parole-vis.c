@@ -31,7 +31,7 @@
 #include <gst/gst.h>
 #include <glib.h>
 
-#include "parole-vis.h"
+#include "src/parole-vis.h"
 
 static gboolean
 parole_vis_filter(GstPluginFeature *feature, gpointer data) {

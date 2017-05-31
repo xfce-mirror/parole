@@ -31,17 +31,19 @@
 #include <gtk/gtk.h>
 #include <glib.h>
 
-#include <src/misc/parole-file.h>
+#include "data/interfaces/mediachooser_ui.h"
 
-#include "interfaces/mediachooser_ui.h"
+#include "src/common/parole-common.h"
+#include "src/common/parole-rc-utils.h"
 
-#include "parole-mediachooser.h"
-#include "parole-builder.h"
-#include "parole-filters.h"
-#include "parole-rc-utils.h"
-#include "parole-utils.h"
+#include "src/misc/parole-file.h"
+#include "src/misc/parole-filters.h"
 
-#include "common/parole-common.h"
+#include "src/parole-builder.h"
+#include "src/parole-utils.h"
+
+#include "src/parole-mediachooser.h"
+
 
 /*
  * GtkBuilder Callbacks

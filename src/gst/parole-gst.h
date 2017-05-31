@@ -27,8 +27,8 @@
 #include <gst/gst.h>
 #include <gtk/gtk.h>
 
-#include <src/misc/parole-stream.h>
-#include <src/misc/parole-enum-types.h>
+#include "src/misc/parole-enum-types.h"
+#include "src/misc/parole-stream.h"
 
 G_BEGIN_DECLS
 

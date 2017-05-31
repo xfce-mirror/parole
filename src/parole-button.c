@@ -47,9 +47,10 @@
 
 #include <libxfce4util/libxfce4util.h>
 
-#include "parole-button.h"
-#include "parole-debug.h"
-#include "enum-gtypes.h"
+#include "src/misc/parole-debug.h"
+
+#include "src/enum-gtypes.h"
+#include "src/parole-button.h"
 
 static void parole_button_finalize(GObject *object);
 

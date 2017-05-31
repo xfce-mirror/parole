@@ -29,7 +29,7 @@
 
 #include <gtk/gtk.h>
 
-#include "parole-file.h"
+#include "src/misc/parole-file.h"
 
 G_BEGIN_DECLS
 

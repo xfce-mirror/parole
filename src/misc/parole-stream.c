@@ -31,8 +31,9 @@
 #include <glib.h>
 #include <glib/gstdio.h>
 
-#include "parole-stream.h"
-#include "parole-enum-types.h"
+#include "src/misc/parole-enum-types.h"
+
+#include "src/misc/parole-stream.h"
 
 #define PAROLE_STREAM_GET_PRIVATE(o) \
 (G_TYPE_INSTANCE_GET_PRIVATE((o), PAROLE_TYPE_STREAM, ParoleStreamPrivate))

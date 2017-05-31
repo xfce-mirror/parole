@@ -23,7 +23,7 @@
 #ifndef SRC_PLUGINS_NOTIFY_NOTIFY_PROVIDER_H_
 #define SRC_PLUGINS_NOTIFY_NOTIFY_PROVIDER_H_
 
-#include <src/misc/parole.h>
+#include "src/misc/parole.h"
 
 G_BEGIN_DECLS
 

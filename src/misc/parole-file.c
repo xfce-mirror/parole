@@ -35,7 +35,7 @@
 #include <taglib/tag_c.h>
 #endif
 
-#include "parole-file.h"
+#include "src/misc/parole-file.h"
 
 #define PAROLE_FILE_GET_PRIVATE(o) \
 (G_TYPE_INSTANCE_GET_PRIVATE((o), PAROLE_TYPE_FILE, ParoleFilePrivate))

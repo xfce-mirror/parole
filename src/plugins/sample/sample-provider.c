@@ -24,7 +24,7 @@
 #include <config.h>
 #endif
 
-#include "sample-provider.h"
+#include "src/plugins/sample/sample-provider.h"
 
 static void   sample_provider_iface_init(ParoleProviderPluginIface *iface);
 static void   sample_provider_finalize(GObject                   *object);

@@ -31,9 +31,10 @@
 
 #include <libxfce4util/libxfce4util.h>
 
-#include "gst/gst-enum-types.h"
-#include "parole-gst.h"
-#include "parole-clutter.h"
+#include "src/gst/gst-enum-types.h"
+#include "src/gst/parole-gst.h"
+
+#include "src/parole-clutter.h"
 
 #define PAROLE_CLUTTER_GET_PRIVATE(o) \
 (G_TYPE_INSTANCE_GET_PRIVATE((o), PAROLE_TYPE_CLUTTER, ParoleClutterPrivate))

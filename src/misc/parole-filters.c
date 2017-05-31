@@ -28,12 +28,15 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <libxfce4util/libxfce4util.h>
 #include <glib.h>
 
-#include "parole-filters.h"
-#include "parole-pl-parser.h"
+#include <libxfce4util/libxfce4util.h>
+
 #include "data/mime/parole-mime-types.h"
+
+#include "src/misc/parole-pl-parser.h"
+
+#include "src/misc/parole-filters.h"
 
 static char *playlist_file_extensions[] = {
     "*.asx",

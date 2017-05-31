@@ -24,14 +24,15 @@
 #include <config.h>
 #endif
 
-#include <glib.h>
-#include <glib-object.h>
-#include <glib/gprintf.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdarg.h>
 
-#include "parole-debug.h"
+#include <glib.h>
+#include <glib-object.h>
+#include <glib/gprintf.h>
+
+#include "src/misc/parole-debug.h"
 
 #if defined(DEBUG) && defined(G_HAVE_ISO_VARARGS)
 

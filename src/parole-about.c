@@ -33,7 +33,7 @@
 #endif
 #include <libxfce4util/libxfce4util.h>
 
-#include "parole-about.h"
+#include "src/parole-about.h"
 
 
 /**

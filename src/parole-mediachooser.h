@@ -26,7 +26,7 @@
 #include <glib-object.h>
 #include <gtk/gtk.h>
 
-#include "parole-conf.h"
+#include "src/parole-conf.h"
 
 G_BEGIN_DECLS
 

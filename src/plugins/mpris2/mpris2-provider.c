@@ -24,9 +24,9 @@
 #include <config.h>
 #endif
 
-#include "mpris2-provider.h"
-
 #include <gst/tag/tag.h>
+
+#include "src/plugins/mpris2/mpris2-provider.h"
 
 static void   mpris2_provider_iface_init(ParoleProviderPluginIface *iface);
 static void   mpris2_provider_finalize(GObject                   *object);

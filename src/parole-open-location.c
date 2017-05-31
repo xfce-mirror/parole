@@ -30,11 +30,14 @@
 
 #include <libxfce4util/libxfce4util.h>
 
-#include "parole-open-location.h"
-#include "parole-rc-utils.h"
-#include "parole-builder.h"
+#include "data/interfaces/open-location_ui.h"
 
-#include "interfaces/open-location_ui.h"
+#include "src/common/parole-rc-utils.h"
+
+#include "src/parole-builder.h"
+
+#include "src/parole-open-location.h"
+
 
 static void parole_open_location_finalize(GObject *object);
 

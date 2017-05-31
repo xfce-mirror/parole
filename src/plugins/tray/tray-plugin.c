@@ -26,7 +26,7 @@
 
 #include <libxfce4util/libxfce4util.h>
 
-#include "tray-provider.h"
+#include "src/plugins/tray/tray-provider.h"
 
 G_MODULE_EXPORT GType   parole_plugin_initialize(ParoleProviderPlugin *plugin);
 

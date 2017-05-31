@@ -28,11 +28,13 @@
 
 #include <libxfce4util/libxfce4util.h>
 
-#include "parole-shortcuts.h"
-#include "parole-rc-utils.h"
-#include "parole-builder.h"
+#include "data/interfaces/shortcuts_ui.h"
 
-#include "interfaces/shortcuts_ui.h"
+#include "src/common/parole-rc-utils.h"
+
+#include "src/parole-builder.h"
+
+#include "src/parole-shortcuts.h"
 
 static void parole_shortcuts_finalize(GObject *object);
 

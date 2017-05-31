@@ -38,24 +38,26 @@
 
 #include <libxfce4util/libxfce4util.h>
 
-#include <src/misc/parole-file.h>
+#include "data/interfaces/playlist_ui.h"
+#include "data/interfaces/save-playlist_ui.h"
 
-#include "interfaces/playlist_ui.h"
-#include "interfaces/save-playlist_ui.h"
+#include "src/common/parole-common.h"
 
-#include "parole-builder.h"
-#include "parole-player.h"
-#include "parole-medialist.h"
-#include "parole-mediachooser.h"
-#include "parole-open-location.h"
-#include "parole-conf.h"
+#include "src/dbus/parole-dbus.h"
 
-#include "parole-filters.h"
-#include "parole-pl-parser.h"
-#include "parole-utils.h"
-#include "parole-dbus.h"
+#include "src/misc/parole-file.h"
+#include "src/misc/parole-filters.h"
+#include "src/misc/parole-pl-parser.h"
 
-#include "common/parole-common.h"
+#include "src/parole-builder.h"
+#include "src/parole-conf.h"
+#include "src/parole-mediachooser.h"
+#include "src/parole-open-location.h"
+#include "src/parole-player.h"
+#include "src/parole-utils.h"
+
+#include "src/parole-medialist.h"
+
 
 #define PAROLE_AUTO_SAVED_PLAYLIST  "xfce4/parole/auto-saved-playlist.m3u"
 
@@ -613,7 +615,7 @@ parole_media_list_get_first_selected_file(ParoleMediaList *list) {
 
     row = parole_media_list_get_first_selected_row(list);
 
-    if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, gtk_tree_row_reference_get_path(row)) ) {
+    if (gtk_tree_model_get_iter(GTK_TREE_MODEL(list->priv->store), &iter, gtk_tree_row_reference_get_path(row))) {
         gtk_tree_model_get(GTK_TREE_MODEL(list->priv->store), &iter, DATA_COL, &file, -1);
     }
 
@@ -680,7 +682,7 @@ gboolean    parole_media_list_query_tooltip(GtkWidget *widget,
                                             ParoleMediaList *list) {
     GtkTreePath *path;
 
-    if (gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (list->priv->view), x, y, &path, NULL, NULL, NULL)) {
+    if (gtk_tree_view_get_path_at_pos(GTK_TREE_VIEW(list->priv->view), x, y, &path, NULL, NULL, NULL)) {
         GtkTreeIter iter;
 
         if (path && gtk_tree_model_get_iter(GTK_TREE_MODEL(list->priv->store), &iter, path)) {
@@ -1086,7 +1088,7 @@ static void
 parole_media_list_add_open_containing_folder(ParoleMediaList *list, GtkWidget *menu, gint x, gint y) {
     GtkTreePath *path;
 
-    if (gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (list->priv->view), x, y, &path, NULL, NULL, NULL)) {
+    if (gtk_tree_view_get_path_at_pos(GTK_TREE_VIEW(list->priv->view), x, y, &path, NULL, NULL, NULL)) {
         GtkTreeIter iter;
 
         if (path && gtk_tree_model_get_iter(GTK_TREE_MODEL(list->priv->store), &iter, path)) {
@@ -1964,7 +1966,7 @@ static gboolean  parole_media_list_dbus_add_files(ParoleMediaList *list,
                                                     gchar **in_files, gboolean enqueue,
                                                     GError **error);
 
-#include "org.parole.media.list.h"
+#include "src/org.parole.media.list.h"
 
 /*
  * DBus server implementation

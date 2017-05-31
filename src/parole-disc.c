@@ -42,9 +42,11 @@
 
 #include <libxfce4util/libxfce4util.h>
 
-#include "parole-disc.h"
-#include "parole-builder.h"
-#include "gmarshal.h"
+#include "src/gmarshal.h"
+#include "src/parole-builder.h"
+
+#include "src/parole-disc.h"
+
 
 static void parole_disc_finalize(GObject *object);
 

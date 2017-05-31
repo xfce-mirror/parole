@@ -28,10 +28,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <src/misc/parole-provider-plugin.h>
 #include <libxfce4util/libxfce4util.h>
 
-#include "parole-module.h"
+#include "src/misc/parole-provider-plugin.h"
+
+#include "src/parole-module.h"
+
 
 static void     parole_provider_module_plugin_init(ParoleProviderPluginIface  *iface);
 

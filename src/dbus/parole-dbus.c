@@ -28,12 +28,12 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <glib.h>
+
 #include <dbus/dbus.h>
 #include <dbus/dbus-glib-lowlevel.h>
 
-#include <glib.h>
-
-#include "parole-dbus.h"
+#include "src/dbus/parole-dbus.h"
 
 static void
 proxy_destroy_cb(DBusGConnection *bus) {

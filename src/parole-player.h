@@ -24,7 +24,8 @@
 #define SRC_PAROLE_PLAYER_H_
 
 #include <glib-object.h>
-#include "parole-medialist.h"
+
+#include "src/parole-medialist.h"
 
 G_BEGIN_DECLS
 

@@ -24,9 +24,9 @@
 #include <config.h>
 #endif
 
-#include <src/misc/parole.h>
+#include "src/misc/parole.h"
 
-#include "sample-provider.h"
+#include "src/plugins/sample/sample-provider.h"
 
 G_MODULE_EXPORT GType   parole_plugin_initialize(ParoleProviderPlugin *plugin);
 

@@ -30,25 +30,26 @@
 
 #include <glib.h>
 
-
 #ifdef XFCE_DISABLE_DEPRECATED
 #undef XFCE_DISABLE_DEPRECATED
 #endif
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4ui/libxfce4ui.h>
 
-#include <src/misc/parole-provider-plugin.h>
+#include "data/interfaces/plugins_ui.h"
 
-#include "interfaces/plugins_ui.h"
+#include "src/common/parole-common.h"
 
-#include "parole-builder.h"
-#include "parole-utils.h"
-#include "parole-plugins-manager.h"
-#include "parole-module.h"
-#include "parole-conf.h"
+#include "src/gst/parole-gst.h"
 
-#include "gst/parole-gst.h"
-#include "common/parole-common.h"
+#include "src/misc/parole-provider-plugin.h"
+
+#include "src/parole-builder.h"
+#include "src/parole-utils.h"
+#include "src/parole-module.h"
+#include "src/parole-conf.h"
+
+#include "src/parole-plugins-manager.h"
 
 #define PAROLE_PLUGIN_EXT = ".desktop"
 

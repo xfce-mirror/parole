@@ -27,15 +27,15 @@
 
 #include <glib-object.h>
 
-#include <src/misc/parole-provider-plugin.h>
-#include <src/misc/parole-provider-player.h>
-#include <src/misc/parole-file.h>
-#include <src/misc/parole-stream.h>
-#include <src/misc/parole-pl-parser.h>
-#include <src/misc/parole-filters.h>
-#include <src/misc/parole-debug.h>
-
 #include <libxfce4util/libxfce4util.h>
+
+#include "src/misc/parole-debug.h"
+#include "src/misc/parole-file.h"
+#include "src/misc/parole-filters.h"
+#include "src/misc/parole-pl-parser.h"
+#include "src/misc/parole-provider-player.h"
+#include "src/misc/parole-provider-plugin.h"
+#include "src/misc/parole-stream.h"
 
 #define PAROLE_MAJOR_VERSION		@PAROLE_VERSION_MAJOR@
 #define PAROLE_MINOR_VERSION		@PAROLE_VERSION_MINOR@

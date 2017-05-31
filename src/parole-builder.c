@@ -30,8 +30,9 @@
 
 #include <libxfce4util/libxfce4util.h>
 
-#include "interfaces/parole_ui.h"
-#include "parole-builder.h"
+#include "data/interfaces/parole_ui.h"
+
+#include "src/parole-builder.h"
 
 
 /**
