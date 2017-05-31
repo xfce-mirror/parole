@@ -88,8 +88,7 @@ void        reset_color_clicked_cb(GtkButton *button,
 #define PAROLE_CONF_DIALOG_GET_PRIVATE(o) \
 (G_TYPE_INSTANCE_GET_PRIVATE((o), PAROLE_TYPE_CONF_DIALOG, ParoleConfDialogPrivate))
 
-struct ParoleConfDialogPrivate
-{
+struct ParoleConfDialogPrivate {
     ParoleConf *conf;
 
     GHashTable *vis_plugins;
@@ -111,24 +110,20 @@ G_DEFINE_TYPE(ParoleConfDialog, parole_conf_dialog, G_TYPE_OBJECT)
 
 /* Destroy the dialog */
 static void
-parole_conf_dialog_destroy(GtkWidget *widget, ParoleConfDialog *self)
-{
+parole_conf_dialog_destroy(GtkWidget *widget, ParoleConfDialog *self) {
     gtk_widget_hide(widget);
 }
 
 /* Change the various image properties */
-void reset_color_clicked_cb(GtkButton *button, ParoleConfDialog *self)
-{
+void reset_color_clicked_cb(GtkButton *button, ParoleConfDialog *self) {
     gtk_range_set_value(GTK_RANGE(self->priv->brightness), 0);
     gtk_range_set_value(GTK_RANGE(self->priv->contrast), 0);
     gtk_range_set_value(GTK_RANGE(self->priv->hue), 0);
     gtk_range_set_value(GTK_RANGE(self->priv->saturation), 0);
 }
 
-void parole_conf_dialog_response_cb(GtkDialog *dialog, gint response_id, ParoleConfDialog *self)
-{
-    switch (response_id)
-    {
+void parole_conf_dialog_response_cb(GtkDialog *dialog, gint response_id, ParoleConfDialog *self) {
+    switch (response_id) {
         case GTK_RESPONSE_HELP:
             break;
         default:
@@ -138,18 +133,14 @@ void parole_conf_dialog_response_cb(GtkDialog *dialog, gint response_id, ParoleC
 }
 
 /* Change subtitle encoding */
-void parole_conf_dialog_subtitle_encoding_changed_cb(GtkComboBox *widget, ParoleConfDialog *self)
-{
+void parole_conf_dialog_subtitle_encoding_changed_cb(GtkComboBox *widget, ParoleConfDialog *self) {
     g_object_set(G_OBJECT(self->priv->conf),
-                  "subtitle-encoding", parole_subtitle_encoding_get_selected(widget),
-                  NULL);
+                 "subtitle-encoding", parole_subtitle_encoding_get_selected(widget),
+                 NULL);
 }
 
 /* Enable visualisations */
-void parole_conf_dialog_enable_vis_changed_cb(GObject *object,
-                                               GParamSpec *pspec,
-                                               gpointer *data)
-{
+void parole_conf_dialog_enable_vis_changed_cb(GObject *object, GParamSpec *pspec, gpointer *data) {
     gboolean active;
     ParoleConfDialog *self;
     self = PAROLE_CONF_DIALOG(data);
@@ -161,8 +152,7 @@ void parole_conf_dialog_enable_vis_changed_cb(GObject *object,
 
 /* Generic function to change all image properties */
 static void
-set_effect_value(ParoleConfDialog *self, GtkRange *range, const gchar *name)
-{
+set_effect_value(ParoleConfDialog *self, GtkRange *range, const gchar *name) {
     gint value;
 
     value = gtk_range_get_value(range);
@@ -173,31 +163,26 @@ set_effect_value(ParoleConfDialog *self, GtkRange *range, const gchar *name)
 }
 
 /* Change brightness */
-void brightness_value_changed_cb(GtkRange *range, ParoleConfDialog *self)
-{
+void brightness_value_changed_cb(GtkRange *range, ParoleConfDialog *self) {
     set_effect_value(self, range, "brightness");
 }
 
 /* Change contrast */
-void contrast_value_changed_cb(GtkRange *range, ParoleConfDialog *self)
-{
+void contrast_value_changed_cb(GtkRange *range, ParoleConfDialog *self) {
     set_effect_value(self, range, "contrast");
 }
 
 /* Change hue */
-void hue_value_changed_cb(GtkRange *range, ParoleConfDialog *self)
-{
+void hue_value_changed_cb(GtkRange *range, ParoleConfDialog *self) {
     set_effect_value(self, range, "hue");
 }
 
 /* Change saturation */
-void saturation_value_changed_cb(GtkRange *range, ParoleConfDialog *self)
-{
+void saturation_value_changed_cb(GtkRange *range, ParoleConfDialog *self) {
     set_effect_value(self, range, "saturation");
 }
 
-void parole_conf_dialog_vis_plugin_changed_cb(GtkComboBox *widget,  ParoleConfDialog *self)
-{
+void parole_conf_dialog_vis_plugin_changed_cb(GtkComboBox *widget,  ParoleConfDialog *self) {
     gchar *active = NULL;
     GstElementFactory *f;
 
@@ -211,8 +196,7 @@ void parole_conf_dialog_vis_plugin_changed_cb(GtkComboBox *widget,  ParoleConfDi
 
     f = g_hash_table_lookup(self->priv->vis_plugins, active);
 
-    if ( f )
-    {
+    if (f) {
         g_object_set(G_OBJECT(self->priv->conf),
                       "vis-name", gst_object_get_name(GST_OBJECT(f)),
                       NULL);
@@ -221,8 +205,7 @@ void parole_conf_dialog_vis_plugin_changed_cb(GtkComboBox *widget,  ParoleConfDi
     g_free(active);
 }
 
-void parole_conf_dialog_sink_plugin_changed_cb(GtkComboBox *widget,  ParoleConfDialog *self)
-{
+void parole_conf_dialog_sink_plugin_changed_cb(GtkComboBox *widget,  ParoleConfDialog *self) {
     gchar *active = NULL;
 
     GtkTreeIter iter;
@@ -233,8 +216,7 @@ void parole_conf_dialog_sink_plugin_changed_cb(GtkComboBox *widget,  ParoleConfD
     else
         return;
 
-    if (g_strcmp0(active, "other") != 0)
-    {
+    if (g_strcmp0(active, "other") != 0) {
         g_object_set(G_OBJECT(self->priv->conf),
                       "videosink", g_strdup(active),
                       NULL);
@@ -246,8 +228,7 @@ void parole_conf_dialog_sink_plugin_changed_cb(GtkComboBox *widget,  ParoleConfD
 }
 
 /* Change subtitle font */
-void parole_conf_dialog_font_set_cb(GtkFontButton *button, ParoleConfDialog *self)
-{
+void parole_conf_dialog_font_set_cb(GtkFontButton *button, ParoleConfDialog *self) {
     g_object_set(G_OBJECT(self->priv->conf),
                   "subtitle-font", gtk_font_button_get_font_name(button),
                   NULL);
@@ -255,8 +236,7 @@ void parole_conf_dialog_font_set_cb(GtkFontButton *button, ParoleConfDialog *sel
 
 /* Finalize the dialog */
 static void
-parole_conf_dialog_finalize(GObject *object)
-{
+parole_conf_dialog_finalize(GObject *object) {
     ParoleConfDialog *self;
 
     self = PAROLE_CONF_DIALOG(object);
@@ -269,8 +249,7 @@ parole_conf_dialog_finalize(GObject *object)
 
 /* Initialize the config-dialog class */
 static void
-parole_conf_dialog_class_init(ParoleConfDialogClass *klass)
-{
+parole_conf_dialog_class_init(ParoleConfDialogClass *klass) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
     object_class->finalize = parole_conf_dialog_finalize;
@@ -280,8 +259,7 @@ parole_conf_dialog_class_init(ParoleConfDialogClass *klass)
 
 /* Initialize the dialog */
 static void
-parole_conf_dialog_init(ParoleConfDialog *self)
-{
+parole_conf_dialog_init(ParoleConfDialog *self) {
     self->priv = PAROLE_CONF_DIALOG_GET_PRIVATE(self);
     self->priv->conf = parole_conf_new();
 
@@ -290,8 +268,7 @@ parole_conf_dialog_init(ParoleConfDialog *self)
 
 /* Fill the combobox with visualisations */
 static void
-parole_conf_dialog_add_vis_plugins(gpointer key, gpointer value, GtkWidget *combox)
-{
+parole_conf_dialog_add_vis_plugins(gpointer key, gpointer value, GtkWidget *combox) {
     GtkListStore *store = GTK_LIST_STORE(gtk_combo_box_get_model(GTK_COMBO_BOX(combox)));
     GtkTreeIter iter;
 
@@ -303,8 +280,7 @@ parole_conf_dialog_add_vis_plugins(gpointer key, gpointer value, GtkWidget *comb
 
 #ifdef HAVE_CLUTTER
 static void
-parole_conf_dialog_add_clutter_sink(ParoleConfDialog *dialog, GtkComboBox *combobox)
-{
+parole_conf_dialog_add_clutter_sink(ParoleConfDialog *dialog, GtkComboBox *combobox) {
     GtkListStore *store = GTK_LIST_STORE(gtk_combo_box_get_model(GTK_COMBO_BOX(combobox)));
     GtkTreeIter iter;
 
@@ -318,9 +294,7 @@ parole_conf_dialog_add_clutter_sink(ParoleConfDialog *dialog, GtkComboBox *combo
 
 /* Set the combobox to the default visualisation plugin */
 static gboolean
-parole_conf_dialog_set_default_vis_plugin(GtkTreeModel *model, GtkTreePath *path,
-                       GtkTreeIter *iter, ParoleConfDialog *self)
-{
+parole_conf_dialog_set_default_vis_plugin(GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, ParoleConfDialog *self) {
     GstElementFactory *f;
     gchar *vis_name;
     gchar *combox_text;
@@ -351,8 +325,7 @@ parole_conf_dialog_set_default_vis_plugin(GtkTreeModel *model, GtkTreePath *path
 
 /* Set the combobox to the default sink plugin */
 static gboolean
-parole_conf_dialog_set_default_sink_plugin(ParoleConfDialog *self)
-{
+parole_conf_dialog_set_default_sink_plugin(ParoleConfDialog *self) {
     gchar *sink_name;
 
     g_object_get(G_OBJECT(self->priv->conf),
@@ -378,8 +351,7 @@ parole_conf_dialog_set_default_sink_plugin(ParoleConfDialog *self)
 
 /* Load the rest of the settings stored in the rc file */
 static void
-parole_conf_dialog_set_defaults(ParoleConfDialog *self)
-{
+parole_conf_dialog_set_defaults(ParoleConfDialog *self) {
     GtkTreeModel *model;
     gboolean vis_enabled;
     gchar *subtitle_font;
@@ -411,15 +383,13 @@ parole_conf_dialog_set_defaults(ParoleConfDialog *self)
 }
 
 ParoleConfDialog *
-parole_conf_dialog_new(void)
-{
+parole_conf_dialog_new(void) {
     ParoleConfDialog *parole_conf_dialog = NULL;
     parole_conf_dialog = g_object_new(PAROLE_TYPE_CONF_DIALOG, NULL);
     return parole_conf_dialog;
 }
 
-void parole_conf_dialog_open(ParoleConfDialog *self, GtkWidget *parent)
-{
+void parole_conf_dialog_open(ParoleConfDialog *self, GtkWidget *parent) {
     GtkBuilder *builder;
     GtkWidget  *dialog;
     GtkWidget  *combox;

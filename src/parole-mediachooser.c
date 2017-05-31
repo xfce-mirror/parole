@@ -61,8 +61,7 @@ void    media_chooser_folder_changed_cb(GtkWidget *widget,
 void    media_chooser_file_activate_cb(GtkFileChooser *filechooser,
                                              ParoleMediaChooser *chooser);
 
-struct ParoleMediaChooser
-{
+struct ParoleMediaChooser {
     GObject             parent;
 
     ParoleConf         *conf;
@@ -70,8 +69,7 @@ struct ParoleMediaChooser
     GtkWidget          *spinner;
 };
 
-struct ParoleMediaChooserClass
-{
+struct ParoleMediaChooserClass {
     GObjectClass        parent_class;
 
     void(*media_files_opened)(ParoleMediaChooser *chooser,
@@ -81,8 +79,7 @@ struct ParoleMediaChooserClass
                                                  gchar *filename);
 };
 
-enum
-{
+enum {
     MEDIA_FILES_OPENED,
     ISO_OPENED,
     LAST_SIGNAL
@@ -93,24 +90,21 @@ static guint signals[LAST_SIGNAL] = { 0 };
 G_DEFINE_TYPE(ParoleMediaChooser, parole_media_chooser, G_TYPE_OBJECT)
 
 void
-media_chooser_folder_changed_cb(GtkWidget *widget, ParoleMediaChooser *chooser)
-{
+media_chooser_folder_changed_cb(GtkWidget *widget, ParoleMediaChooser *chooser) {
     gchar *folder;
     folder = gtk_file_chooser_get_current_folder(GTK_FILE_CHOOSER(widget));
 
-    if ( folder )
-    {
+    if ( folder ) {
         g_object_set(G_OBJECT(chooser->conf),
-                      "media-chooser-folder", folder,
-                      NULL);
+                     "media-chooser-folder", folder,
+                     NULL);
         g_free(folder);
     }
 }
 
 /* Add one or more files from the filechooser-widget to the playlist */
 static void
-parole_media_chooser_add(ParoleMediaChooser *chooser, GtkWidget *file_chooser)
-{
+parole_media_chooser_add(ParoleMediaChooser *chooser, GtkWidget *file_chooser) {
     GSList *media_files = NULL;
     GSList *files;
     GtkFileFilter *filter;
@@ -131,11 +125,9 @@ parole_media_chooser_add(ParoleMediaChooser *chooser, GtkWidget *file_chooser)
 
     len = g_slist_length(files);
 
-    for ( i = 0; i < len; i++)
-    {
+    for (i = 0; i < len; i++) {
         file = g_slist_nth_data(files, i);
-        if (g_str_has_suffix(file, ".iso"))
-        {
+        if (g_str_has_suffix(file, ".iso")) {
             // FIXME: Is there some way to add the ISO to the playlist?
             // For now we will play the ISO if it is the first file found, otherwise ignore.
             if (g_slist_length(media_files) != 0)
@@ -160,8 +152,7 @@ parole_media_chooser_add(ParoleMediaChooser *chooser, GtkWidget *file_chooser)
 }
 
 static gboolean
-parole_media_chooser_add_idle(gpointer data)
-{
+parole_media_chooser_add_idle(gpointer data) {
     ParoleMediaChooser *chooser;
     GtkWidget *file_chooser;
 
@@ -177,8 +168,7 @@ parole_media_chooser_add_idle(gpointer data)
 }
 
 static void
-parole_media_chooser_open(ParoleMediaChooser *chooser)
-{
+parole_media_chooser_open(ParoleMediaChooser *chooser) {
     parole_window_busy_cursor(gtk_widget_get_window(GTK_WIDGET(chooser->window)));
 
     gtk_widget_show(chooser->spinner);
@@ -186,30 +176,25 @@ parole_media_chooser_open(ParoleMediaChooser *chooser)
     g_idle_add((GSourceFunc) parole_media_chooser_add_idle, chooser);
 }
 
-void parole_media_chooser_add_clicked(GtkWidget *widget, ParoleMediaChooser *chooser)
-{
+void parole_media_chooser_add_clicked(GtkWidget *widget, ParoleMediaChooser *chooser) {
     parole_media_chooser_open(chooser);
 }
 
 /* Destroy the widget when close is clicked */
-void parole_media_chooser_close_clicked(GtkWidget *widget, ParoleMediaChooser *chooser)
-{
+void parole_media_chooser_close_clicked(GtkWidget *widget, ParoleMediaChooser *chooser) {
     gtk_widget_destroy(chooser->window);
 }
 
-void parole_media_chooser_destroy_cb(GtkWidget *widget, ParoleMediaChooser *chooser)
-{
+void parole_media_chooser_destroy_cb(GtkWidget *widget, ParoleMediaChooser *chooser) {
     g_object_unref(chooser);
 }
 
-void media_chooser_file_activate_cb(GtkFileChooser *filechooser, ParoleMediaChooser *chooser)
-{
+void media_chooser_file_activate_cb(GtkFileChooser *filechooser, ParoleMediaChooser *chooser) {
     parole_media_chooser_open(chooser);
 }
 
 static void
-parole_media_chooser_open_internal(ParoleMediaChooser *media_chooser)
-{
+parole_media_chooser_open_internal(ParoleMediaChooser *media_chooser) {
     GtkWidget      *file_chooser;
     GtkBuilder     *builder;
     GtkWidget      *recursive;
@@ -249,8 +234,8 @@ parole_media_chooser_open_internal(ParoleMediaChooser *media_chooser)
 
     /* Set the folder that is shown */
     g_object_get(G_OBJECT(media_chooser->conf),
-                  "media-chooser-folder", &folder,
-                  NULL);
+                 "media-chooser-folder", &folder,
+                 NULL);
 
     if ( folder )
         gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER(file_chooser), folder);
@@ -259,10 +244,10 @@ parole_media_chooser_open_internal(ParoleMediaChooser *media_chooser)
 
     /* Get playlist-properties to load files accordingly */
     g_object_get(G_OBJECT(media_chooser->conf),
-                  "scan-recursive", &scan_recursive,
-                  "replace-playlist", &replace_playlist,
-                  "play-opened-files", &play,
-                  NULL);
+                 "scan-recursive", &scan_recursive,
+                 "replace-playlist", &replace_playlist,
+                 "play-opened-files", &play,
+                 NULL);
 
     recursive = GTK_WIDGET(gtk_builder_get_object(builder, "recursive"));
 
@@ -275,8 +260,7 @@ parole_media_chooser_open_internal(ParoleMediaChooser *media_chooser)
 }
 
 static void
-parole_media_chooser_finalize(GObject *object)
-{
+parole_media_chooser_finalize(GObject *object) {
     ParoleMediaChooser *chooser;
 
     chooser = PAROLE_MEDIA_CHOOSER(object);
@@ -290,41 +274,38 @@ parole_media_chooser_finalize(GObject *object)
 }
 
 static void
-parole_media_chooser_class_init(ParoleMediaChooserClass *klass)
-{
+parole_media_chooser_class_init(ParoleMediaChooserClass *klass) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
     signals[MEDIA_FILES_OPENED] =
         g_signal_new("media-files-opened",
-                        PAROLE_TYPE_MEDIA_CHOOSER,
-                        G_SIGNAL_RUN_LAST,
-                        G_STRUCT_OFFSET(ParoleMediaChooserClass, media_files_opened),
-                        NULL, NULL,
-                        g_cclosure_marshal_VOID__POINTER,
-                        G_TYPE_NONE, 1,
-                        G_TYPE_POINTER);
+                     PAROLE_TYPE_MEDIA_CHOOSER,
+                     G_SIGNAL_RUN_LAST,
+                     G_STRUCT_OFFSET(ParoleMediaChooserClass, media_files_opened),
+                     NULL, NULL,
+                     g_cclosure_marshal_VOID__POINTER,
+                     G_TYPE_NONE, 1,
+                     G_TYPE_POINTER);
 
     signals[ISO_OPENED] =
         g_signal_new("iso-opened",
-                        PAROLE_TYPE_MEDIA_CHOOSER,
-                        G_SIGNAL_RUN_LAST,
-                        G_STRUCT_OFFSET(ParoleMediaChooserClass, iso_opened),
-                        NULL, NULL,
-                        g_cclosure_marshal_VOID__POINTER,
-                        G_TYPE_NONE, 1,
-                        G_TYPE_POINTER);
+                     PAROLE_TYPE_MEDIA_CHOOSER,
+                     G_SIGNAL_RUN_LAST,
+                     G_STRUCT_OFFSET(ParoleMediaChooserClass, iso_opened),
+                     NULL, NULL,
+                     g_cclosure_marshal_VOID__POINTER,
+                     G_TYPE_NONE, 1,
+                     G_TYPE_POINTER);
 
     object_class->finalize = parole_media_chooser_finalize;
 }
 
 static void
-parole_media_chooser_init(ParoleMediaChooser *chooser)
-{
+parole_media_chooser_init(ParoleMediaChooser *chooser) {
     chooser->conf = parole_conf_new();
 }
 
-ParoleMediaChooser *parole_media_chooser_open_local(GtkWidget *parent)
-{
+ParoleMediaChooser *parole_media_chooser_open_local(GtkWidget *parent) {
     ParoleMediaChooser *chooser;
 
     chooser = g_object_new(PAROLE_TYPE_MEDIA_CHOOSER, NULL);

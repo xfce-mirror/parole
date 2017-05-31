@@ -51,8 +51,7 @@ static void parole_disc_finalize(GObject *object);
 #define PAROLE_DISC_GET_PRIVATE(o) \
 (G_TYPE_INSTANCE_GET_PRIVATE((o), PAROLE_TYPE_DISC, ParoleDiscPrivate))
 
-struct ParoleDiscPrivate
-{
+struct ParoleDiscPrivate {
     GVolumeMonitor *monitor;
     GPtrArray      *array;
 
@@ -61,8 +60,7 @@ struct ParoleDiscPrivate
     gboolean        needs_update;
 };
 
-enum
-{
+enum {
     DISC_SELECTED,
     LABEL_CHANGED,
     LAST_SIGNAL
@@ -72,8 +70,7 @@ static guint signals[LAST_SIGNAL] = { 0 };
 
 G_DEFINE_TYPE(ParoleDisc, parole_disc, G_TYPE_OBJECT)
 
-typedef struct
-{
+typedef struct {
     GtkWidget      *mi;
     gchar          *uri;
     gchar          *device;
@@ -87,8 +84,7 @@ typedef struct
  * Free the mount-point.
  **/
 static void
-free_mount_data(gpointer data)
-{
+free_mount_data(gpointer data) {
     MountData *mount;
 
     mount = (MountData *) data;
@@ -104,8 +100,7 @@ free_mount_data(gpointer data)
 
 
 static void
-parole_disc_set_label(ParoleDisc *disc, const gchar *label)
-{
+parole_disc_set_label(ParoleDisc *disc, const gchar *label) {
     gchar *menu_label;
 
     if ( g_strcmp0(label, _("Insert Disc")) != 0 ) {
@@ -121,21 +116,18 @@ parole_disc_set_label(ParoleDisc *disc, const gchar *label)
 }
 
 static void
-parole_disc_set_enabled(ParoleDisc *disc, gboolean enabled)
-{
+parole_disc_set_enabled(ParoleDisc *disc, gboolean enabled) {
     gtk_widget_set_sensitive(GTK_WIDGET(disc->priv->disc_menu_item), enabled);
     // g_signal_emit (G_OBJECT (disc), signals[DVD_ENABLED], 0, enabled);
 }
 
 static gboolean
-parole_disc_get_enabled(ParoleDisc *disc)
-{
+parole_disc_get_enabled(ParoleDisc *disc) {
     return gtk_widget_get_sensitive( GTK_WIDGET(disc->priv->disc_menu_item) );
 }
 
 static void
-parole_disc_set_kind(ParoleDisc *disc, ParoleDiscKind kind)
-{
+parole_disc_set_kind(ParoleDisc *disc, ParoleDiscKind kind) {
     gboolean enabled = TRUE;
 
     switch (kind) {
@@ -163,8 +155,7 @@ parole_disc_set_kind(ParoleDisc *disc, ParoleDiscKind kind)
  * Callback function for when the CD/DVD menu item is activated.
  **/
 static void
-parole_disc_media_activate_cb(GtkWidget *widget, ParoleDisc *disc)
-{
+parole_disc_media_activate_cb(GtkWidget *widget, ParoleDisc *disc) {
     MountData *data;
 
     data = g_object_get_data(G_OBJECT(widget), "mount-data");
@@ -182,8 +173,7 @@ parole_disc_media_activate_cb(GtkWidget *widget, ParoleDisc *disc)
  * disc is detected.
  **/
 static void
-parole_disc_show_menu_item(ParoleDisc *disc, MountData *data, const gchar *label)
-{
+parole_disc_show_menu_item(ParoleDisc *disc, MountData *data, const gchar *label) {
     parole_disc_set_kind(disc, data->kind);
     parole_disc_set_label(disc, label);
 
@@ -209,10 +199,9 @@ parole_disc_show_menu_item(ParoleDisc *disc, MountData *data, const gchar *label
  **/
 static MountData *
 parole_disc_get_mount_data(ParoleDisc *disc,
-                            const gchar *uri,
-                            const gchar *device,
-                            ParoleDiscKind kind)
-{
+                           const gchar *uri,
+                           const gchar *device,
+                           ParoleDiscKind kind) {
     MountData *data;
 
     data = g_new0(MountData, 1);
@@ -234,8 +223,7 @@ parole_disc_get_mount_data(ParoleDisc *disc,
  * Add the mounted disc to the "Media" menu.
  **/
 static void
-parole_disc_add_mount_to_menu(ParoleDisc *disc, GMount *mount, const gchar *device)
-{
+parole_disc_add_mount_to_menu(ParoleDisc *disc, GMount *mount, const gchar *device) {
     GFile *file;
     gchar **content_type;
     guint i;
@@ -244,15 +232,13 @@ parole_disc_add_mount_to_menu(ParoleDisc *disc, GMount *mount, const gchar *devi
 
     file = g_mount_get_root(mount);
 
-    if ( g_file_has_uri_scheme (file, "cdda") )
-    {
+    if (g_file_has_uri_scheme(file, "cdda")) {
         kind = PAROLE_DISC_CDDA;
         uri = g_strdup("cdda://");
         goto got_cdda;
     }
 
-    if ( g_file_has_uri_scheme (file, "dvd") )
-    {
+    if (g_file_has_uri_scheme(file, "dvd")) {
         kind = PAROLE_DISC_DVD;
         uri = g_strdup("dvd:/");
         goto got_cdda;
@@ -261,8 +247,7 @@ parole_disc_add_mount_to_menu(ParoleDisc *disc, GMount *mount, const gchar *devi
     content_type = g_content_type_guess_for_tree(file);
 
     /* Determine the type of disc */
-    for ( i = 0; content_type && content_type[i]; i++)
-    {
+    for (i = 0; content_type && content_type[i]; i++) {
         TRACE("Checking disc content type : %s", content_type[i]);
 
         if ( !g_strcmp0(content_type[i], "x-content/video-dvd") ) {
@@ -288,8 +273,7 @@ parole_disc_add_mount_to_menu(ParoleDisc *disc, GMount *mount, const gchar *devi
         g_strfreev(content_type);
 
 got_cdda:
-    if ( kind != PAROLE_DISC_UNKNOWN )
-    {
+    if ( kind != PAROLE_DISC_UNKNOWN ) {
         MountData *data;
         gchar *name;
 
@@ -317,8 +301,7 @@ got_cdda:
  * Check the state of the drive.
  **/
 static void
-parole_disc_check_cdrom(ParoleDisc *disc, GVolume *volume, const gchar *device)
-{
+parole_disc_check_cdrom(ParoleDisc *disc, GVolume *volume, const gchar *device) {
 #if defined(__linux__)
     gint fd;
     gint drive;
@@ -329,8 +312,7 @@ parole_disc_check_cdrom(ParoleDisc *disc, GVolume *volume, const gchar *device)
 
     TRACE("device : %s", device);
 
-    if ( (fd = open (device, O_RDONLY)) < 0 )
-    {
+    if ((fd = open(device, O_RDONLY)) < 0) {
         g_debug("Failed to open device : %s", device);
         disc->priv->needs_update = TRUE;
         goto out;
@@ -369,8 +351,7 @@ out:
  * Add the disc drive to the menu.
  **/
 static void
-parole_disc_add_drive(ParoleDisc *disc, GDrive *drive, const gchar *device)
-{
+parole_disc_add_drive(ParoleDisc *disc, GDrive *drive, const gchar *device) {
     GList *list;
     guint len;
     guint i;
@@ -378,8 +359,7 @@ parole_disc_add_drive(ParoleDisc *disc, GDrive *drive, const gchar *device)
     list = g_drive_get_volumes(drive);
     len = g_list_length(list);
 
-    for ( i = 0; i < len; i++)
-    {
+    for (i = 0; i < len; i++) {
         GVolume *volume;
         GMount *mount;
 
@@ -408,8 +388,7 @@ parole_disc_add_drive(ParoleDisc *disc, GDrive *drive, const gchar *device)
  * Get the list of available drives and attempt to add each to the menu.
  **/
 static void
-parole_disc_get_drives(ParoleDisc *disc)
-{
+parole_disc_get_drives(ParoleDisc *disc) {
     GList *list;
     guint len;
     guint i;
@@ -424,16 +403,14 @@ parole_disc_get_drives(ParoleDisc *disc)
      */
     disc->priv->needs_update = FALSE;
 
-    for ( i = 0; i < len; i++)
-    {
+    for (i = 0; i < len; i++) {
         GDrive *drive;
         gchar *device = NULL;
 
         drive = g_list_nth_data(list, i);
 
         /* FIXME what happens if there is more than one disc drive? */
-        if ( g_drive_can_eject (drive) && g_drive_has_media (drive) )
-        {
+        if (g_drive_can_eject(drive) && g_drive_has_media(drive)) {
             device = g_drive_get_identifier(drive, G_VOLUME_IDENTIFIER_KIND_UNIX_DEVICE);
             parole_disc_add_drive(disc, drive, device);
             if ( device )
@@ -454,8 +431,7 @@ parole_disc_get_drives(ParoleDisc *disc)
  * needed, perform it when the menu item is activated.
  **/
 static void
-parole_disc_select_cb(GtkMenuItem *item, ParoleDisc *disc)
-{
+parole_disc_select_cb(GtkMenuItem *item, ParoleDisc *disc) {
     if ( disc->priv->needs_update )
         parole_disc_get_drives(disc);
 }
@@ -470,8 +446,7 @@ parole_disc_select_cb(GtkMenuItem *item, ParoleDisc *disc)
  * to blank and tell the #ParoleDisc to check for updates.
  **/
 static void
-parole_disc_monitor_changed_cb(GVolumeMonitor *monitor, gpointer *device, ParoleDisc *disc)
-{
+parole_disc_monitor_changed_cb(GVolumeMonitor *monitor, gpointer *device, ParoleDisc *disc) {
     parole_disc_set_kind(disc, PAROLE_DISC_UNKNOWN);
 
     disc->priv->needs_update = TRUE;
@@ -484,8 +459,7 @@ parole_disc_monitor_changed_cb(GVolumeMonitor *monitor, gpointer *device, Parole
  * Initialize the #ParoleDiscClass.
  **/
 static void
-parole_disc_class_init(ParoleDiscClass *klass)
-{
+parole_disc_class_init(ParoleDiscClass *klass) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
     signals[DISC_SELECTED] =
@@ -519,8 +493,7 @@ parole_disc_class_init(ParoleDiscClass *klass)
  * Initialize the disc monitor.
  **/
 static void
-parole_disc_init(ParoleDisc *disc)
-{
+parole_disc_init(ParoleDisc *disc) {
     GtkBuilder *builder;
 
     disc->priv = PAROLE_DISC_GET_PRIVATE(disc);
@@ -566,8 +539,7 @@ parole_disc_init(ParoleDisc *disc)
  * Finalize a #ParoleDisc object.
  **/
 static void
-parole_disc_finalize(GObject *object)
-{
+parole_disc_finalize(GObject *object) {
     ParoleDisc *disc;
 
     disc = PAROLE_DISC(object);
@@ -586,8 +558,7 @@ parole_disc_finalize(GObject *object)
  * Create a new #ParoleDisc instance.
  **/
 ParoleDisc *
-parole_disc_new(void)
-{
+parole_disc_new(void) {
     ParoleDisc *disc = NULL;
     disc = g_object_new(PAROLE_TYPE_DISC, NULL);
     return disc;

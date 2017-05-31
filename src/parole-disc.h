@@ -33,8 +33,7 @@ G_BEGIN_DECLS
 
 typedef struct ParoleDiscPrivate ParoleDiscPrivate;
 
-typedef enum
-{
+typedef enum {
     PAROLE_DISC_UNKNOWN,
     PAROLE_DISC_CDDA,
     PAROLE_DISC_VCD,
@@ -42,14 +41,12 @@ typedef enum
     PAROLE_DISC_DVD
 } ParoleDiscKind;
 
-typedef struct
-{
+typedef struct {
     GObject                parent;
     ParoleDiscPrivate     *priv;
 } ParoleDisc;
 
-typedef struct
-{
+typedef struct {
     GObjectClass       parent_class;
 
     void            (*disc_selected)            (ParoleDisc *disc,

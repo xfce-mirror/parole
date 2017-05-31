@@ -38,14 +38,12 @@ G_BEGIN_DECLS
 
 typedef struct ParoleClutterPrivate ParoleClutterPrivate;
 
-typedef struct
-{
+typedef struct {
     GtkWidget               parent;
     ParoleClutterPrivate   *priv;
 } ParoleClutter;
 
-typedef struct
-{
+typedef struct {
     GtkWidgetClass  parent_class;
 } ParoleClutterClass;
 

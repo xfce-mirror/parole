@@ -34,8 +34,7 @@
 #include "parole-vis.h"
 
 static gboolean
-parole_vis_filter(GstPluginFeature *feature, gpointer data)
-{
+parole_vis_filter(GstPluginFeature *feature, gpointer data) {
     GstElementFactory *factory;
 
     if ( !GST_IS_ELEMENT_FACTORY (feature) )
@@ -50,13 +49,11 @@ parole_vis_filter(GstPluginFeature *feature, gpointer data)
 }
 
 static void
-parole_vis_get_name(GstElementFactory *factory, GHashTable **hash)
-{
+parole_vis_get_name(GstElementFactory *factory, GHashTable **hash) {
     g_hash_table_insert(*hash, g_strdup(gst_element_factory_get_longname(factory)), factory);
 }
 
-GHashTable *parole_vis_get_plugins(void)
-{
+GHashTable *parole_vis_get_plugins(void) {
     GList *plugins = NULL;
     GHashTable *hash;
 

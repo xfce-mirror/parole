@@ -36,13 +36,11 @@
 
 static void parole_shortcuts_finalize(GObject *object);
 
-struct ParoleShortcuts
-{
+struct ParoleShortcuts {
     GObject             parent;
 };
 
-struct ParoleShortcutsClass
-{
+struct ParoleShortcutsClass {
     GObjectClass    parent_class;
 };
 
@@ -57,26 +55,22 @@ parole_shortcuts_close_cb (GtkShortcutsWindow *window, ParoleShortcuts *self)
 */
 
 static void
-parole_shortcuts_class_init(ParoleShortcutsClass *klass)
-{
+parole_shortcuts_class_init(ParoleShortcutsClass *klass) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
     object_class->finalize = parole_shortcuts_finalize;
 }
 
 static void
-parole_shortcuts_init(ParoleShortcuts *self)
-{
+parole_shortcuts_init(ParoleShortcuts *self) {
 }
 
 static void
-parole_shortcuts_finalize(GObject *object)
-{
+parole_shortcuts_finalize(GObject *object) {
     G_OBJECT_CLASS(parole_shortcuts_parent_class)->finalize(object);
 }
 
-ParoleShortcuts *parole_shortcuts(GtkWidget *parent)
-{
+ParoleShortcuts *parole_shortcuts(GtkWidget *parent) {
     ParoleShortcuts *self;
     GtkWidget *window;
     GtkBuilder *builder;

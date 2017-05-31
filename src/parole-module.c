@@ -39,14 +39,11 @@ static void     parole_provider_module_class_init(ParoleProviderModuleClass  *kl
 static void     parole_provider_module_init(ParoleProviderModule *module);
 
 GType
-parole_provider_module_get_type(void)
-{
+parole_provider_module_get_type(void) {
     static GType type = G_TYPE_INVALID;
 
-    if (G_UNLIKELY (type == G_TYPE_INVALID))
-    {
-        static const GTypeInfo info =
-        {
+    if (G_UNLIKELY(type == G_TYPE_INVALID)) {
+        static const GTypeInfo info = {
             sizeof (ParoleProviderModuleClass),
             NULL,
             NULL,
@@ -59,8 +56,7 @@ parole_provider_module_get_type(void)
             NULL,
         };
 
-        static const GInterfaceInfo plugin_info =
-        {
+        static const GInterfaceInfo plugin_info = {
             (GInterfaceInitFunc) parole_provider_module_plugin_init,
             NULL,
             NULL,
@@ -74,23 +70,20 @@ parole_provider_module_get_type(void)
 }
 
 static gboolean
-parole_module_load(GTypeModule *gtype_module)
-{
+parole_module_load(GTypeModule *gtype_module) {
     ParoleProviderModule *module;
 
     module = PAROLE_PROVIDER_MODULE(gtype_module);
 
     module->library = g_module_open(gtype_module->name, G_MODULE_BIND_LOCAL);
 
-    if ( G_UNLIKELY (module->library == NULL) )
-    {
+    if (G_UNLIKELY(module->library == NULL)) {
         g_critical("Failed to load plugin : %s", g_module_error());
         return FALSE;
     }
 
     if ( !g_module_symbol(module->library, "parole_plugin_initialize", (gpointer)&module->initialize) ||
-         !g_module_symbol(module->library, "parole_plugin_shutdown", (gpointer)&module->shutdown))
-    {
+         !g_module_symbol(module->library, "parole_plugin_shutdown", (gpointer)&module->shutdown)) {
         g_critical("Plugin %s missing required symbols", gtype_module->name);
         g_module_close(module->library);
         return FALSE;
@@ -107,8 +100,7 @@ parole_module_load(GTypeModule *gtype_module)
 }
 
 static void
-parole_module_unload(GTypeModule *gtype_module)
-{
+parole_module_unload(GTypeModule *gtype_module) {
     ParoleProviderModule *module;
 
     module = PAROLE_PROVIDER_MODULE(gtype_module);
@@ -126,8 +118,7 @@ parole_module_unload(GTypeModule *gtype_module)
 }
 
 static void
-parole_provider_module_class_init(ParoleProviderModuleClass *klass)
-{
+parole_provider_module_class_init(ParoleProviderModuleClass *klass) {
     GTypeModuleClass *gtype_module_class;
 
     gtype_module_class = G_TYPE_MODULE_CLASS(klass);
@@ -137,8 +128,7 @@ parole_provider_module_class_init(ParoleProviderModuleClass *klass)
 }
 
 static gboolean
-parole_provider_module_get_is_configurable(ParoleProviderPlugin *plugin)
-{
+parole_provider_module_get_is_configurable(ParoleProviderPlugin *plugin) {
     ParoleProviderModule *module;
 
     module = PAROLE_PROVIDER_MODULE(plugin);
@@ -150,8 +140,7 @@ parole_provider_module_get_is_configurable(ParoleProviderPlugin *plugin)
 }
 
 static void
-parole_provider_module_configure(ParoleProviderPlugin *plugin, GtkWidget *parent)
-{
+parole_provider_module_configure(ParoleProviderPlugin *plugin, GtkWidget *parent) {
     ParoleProviderModule *module;
 
     module = PAROLE_PROVIDER_MODULE(plugin);
@@ -161,15 +150,13 @@ parole_provider_module_configure(ParoleProviderPlugin *plugin, GtkWidget *parent
 }
 
 static void
-parole_provider_module_plugin_init(ParoleProviderPluginIface *iface)
-{
+parole_provider_module_plugin_init(ParoleProviderPluginIface *iface) {
     iface->get_is_configurable = parole_provider_module_get_is_configurable;
     iface->configure = parole_provider_module_configure;
 }
 
 static void
-parole_provider_module_init(ParoleProviderModule *module)
-{
+parole_provider_module_init(ParoleProviderModule *module) {
     module->library = NULL;
     module->library_name = NULL;
     module->initialize = NULL;
@@ -183,8 +170,7 @@ parole_provider_module_init(ParoleProviderModule *module)
 }
 
 ParoleProviderModule *
-parole_provider_module_new(const gchar *filename, const gchar *desktop_file, const gchar *library_name)
-{
+parole_provider_module_new(const gchar *filename, const gchar *desktop_file, const gchar *library_name) {
     ParoleProviderModule *module = NULL;
 
     module = g_object_new(PAROLE_TYPE_PROVIDER_MODULE, NULL);
@@ -208,8 +194,7 @@ parole_provider_module_new(const gchar *filename, const gchar *desktop_file, con
  *
  * Initialize the #ParoleProviderModule plugin. Return #TRUE if successful.
  **/
-gboolean parole_provider_module_new_plugin(ParoleProviderModule *module)
-{
+gboolean parole_provider_module_new_plugin(ParoleProviderModule *module) {
     TRACE("start");
 
     g_return_val_if_fail(PAROLE_IS_PROVIDER_MODULE(module), FALSE);
@@ -229,28 +214,24 @@ gboolean parole_provider_module_new_plugin(ParoleProviderModule *module)
     return TRUE;
 }
 
-void parole_provider_module_free_plugin(ParoleProviderModule *module)
-{
+void parole_provider_module_free_plugin(ParoleProviderModule *module) {
     TRACE("start");
 
     g_return_if_fail(PAROLE_IS_PROVIDER_MODULE(module));
 
-    if ( module->instance )
-    {
+    if ( module->instance ) {
         g_object_unref(module->instance);
         module->instance = NULL;
     }
 
-    if ( module->player )
-    {
+    if ( module->player ) {
         g_object_unref(module->player);
         module->player = NULL;
     }
 }
 
 gboolean
-parole_provider_module_get_is_active(ParoleProviderModule *module)
-{
+parole_provider_module_get_is_active(ParoleProviderModule *module) {
     g_return_val_if_fail(PAROLE_IS_PROVIDER_MODULE(module), FALSE);
 
     return module->active;

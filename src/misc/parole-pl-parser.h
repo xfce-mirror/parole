@@ -42,8 +42,7 @@ G_BEGIN_DECLS
  * Parole Playlist Formats.
  *
  **/
-typedef enum
-{
+typedef enum {
     PAROLE_PL_FORMAT_UNKNOWN,
     PAROLE_PL_FORMAT_M3U,
     PAROLE_PL_FORMAT_PLS,

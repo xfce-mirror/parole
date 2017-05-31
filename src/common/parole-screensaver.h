@@ -32,13 +32,11 @@ G_BEGIN_DECLS
 #define PAROLE_SCREEN_SAVER(o)         (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_SCREENSAVER, ParoleScreenSaver))
 #define PAROLE_IS_SCREENSAVER(o)       (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_SCREENSAVER))
 
-typedef struct
-{
+typedef struct {
     GObject         parent;
 } ParoleScreenSaver;
 
-typedef struct
-{
+typedef struct {
     GObjectClass    parent_class;
 } ParoleScreenSaverClass;
 

@@ -35,13 +35,11 @@
 #include "parole-common.h"
 
 gboolean
-parole_widget_reparent(GtkWidget *widget, GtkWidget *new_parent)
-{
+parole_widget_reparent(GtkWidget *widget, GtkWidget *new_parent) {
     GtkWidget *parent;
 
     parent = gtk_widget_get_parent(widget);
-    if (parent)
-    {
+    if (parent) {
         g_object_ref(widget);
         gtk_container_remove(GTK_CONTAINER(parent), widget);
         gtk_container_add(GTK_CONTAINER(new_parent), widget);
@@ -55,11 +53,10 @@ parole_widget_reparent(GtkWidget *widget, GtkWidget *new_parent)
 
 static void
 parole_dialog_show(GtkWindow *parent,
-                    GtkMessageType type,
-                    const gchar *window_title,
-                    const gchar *title,
-                    const gchar *msg)
-{
+                   GtkMessageType type,
+                   const gchar *window_title,
+                   const gchar *title,
+                   const gchar *msg) {
     GtkWidget *dialog;
 
     dialog = gtk_message_dialog_new_with_markup(parent,
@@ -82,19 +79,16 @@ parole_dialog_show(GtkWindow *parent,
     gtk_widget_show_all(dialog);
 }
 
-void parole_dialog_info(GtkWindow *parent, const gchar *title, const gchar *msg)
-{
+void parole_dialog_info(GtkWindow *parent, const gchar *title, const gchar *msg) {
     parole_dialog_show(parent, GTK_MESSAGE_INFO, _("Message"), title, msg);
 }
 
-void parole_dialog_error(GtkWindow *parent, const gchar *title, const gchar *msg)
-{
+void parole_dialog_error(GtkWindow *parent, const gchar *title, const gchar *msg) {
     parole_dialog_show(parent, GTK_MESSAGE_ERROR, _("Error"), title, msg);
 }
 
 
-void parole_window_busy_cursor(GdkWindow *window)
-{
+void parole_window_busy_cursor(GdkWindow *window) {
     GdkCursor *cursor = NULL;
 
     if ( G_UNLIKELY (window == NULL) )
@@ -110,8 +104,7 @@ void parole_window_busy_cursor(GdkWindow *window)
     gdk_flush();
 }
 
-void parole_window_invisible_cursor(GdkWindow *window)
-{
+void parole_window_invisible_cursor(GdkWindow *window) {
     GdkCursor *cursor = NULL;
 
     if ( G_UNLIKELY (window == NULL) )
@@ -127,8 +120,7 @@ void parole_window_invisible_cursor(GdkWindow *window)
     gdk_flush();
 }
 
-void parole_window_normal_cursor(GdkWindow *window)
-{
+void parole_window_normal_cursor(GdkWindow *window) {
     if ( G_UNLIKELY (window == NULL) )
         return;
 

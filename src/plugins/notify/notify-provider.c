@@ -37,13 +37,11 @@ static void   notify_provider_iface_init(ParoleProviderPluginIface *iface);
 static void   notify_provider_finalize(GObject                   *object);
 
 
-struct _NotifyProviderClass
-{
+struct _NotifyProviderClass {
     GObjectClass parent_class;
 };
 
-struct _NotifyProvider
-{
+struct _NotifyProvider {
     GObject                 parent;
     ParoleProviderPlayer   *player;
     gchar                  *last_played_uri;
@@ -52,27 +50,23 @@ struct _NotifyProvider
 };
 
 PAROLE_DEFINE_TYPE_WITH_CODE(NotifyProvider,
-                                notify_provider,
-                                G_TYPE_OBJECT,
-                                PAROLE_IMPLEMENT_INTERFACE(PAROLE_TYPE_PROVIDER_PLUGIN,
-                                notify_provider_iface_init));
+                             notify_provider,
+                             G_TYPE_OBJECT,
+                             PAROLE_IMPLEMENT_INTERFACE(PAROLE_TYPE_PROVIDER_PLUGIN,
+                             notify_provider_iface_init));
 
 static void
-notification_closed_cb(NotifyNotification *n, NotifyProvider *notify)
-{
+notification_closed_cb(NotifyNotification *n, NotifyProvider *notify) {
     g_object_unref(notify->notification);
     notify->notification = NULL;
 }
 
 static void
-close_notification(NotifyProvider *notify)
-{
-    if ( notify->notification )
-    {
+close_notification(NotifyProvider *notify) {
+    if ( notify->notification ) {
         GError *error = NULL;
         notify_notification_close(notify->notification, &error);
-        if ( error )
-        {
+        if ( error ) {
             g_warning("Failed to close notification : %s", error->message);
             g_error_free(error);
         }
@@ -82,20 +76,17 @@ close_notification(NotifyProvider *notify)
 }
 
 static void
-on_previous_clicked(NotifyNotification *notification, char *action, NotifyProvider *notify)
-{
+on_previous_clicked(NotifyNotification *notification, char *action, NotifyProvider *notify) {
     parole_provider_player_play_previous(notify->player);
 }
 
 static void
-on_next_clicked(NotifyNotification *notification, char *action, NotifyProvider *notify)
-{
+on_next_clicked(NotifyNotification *notification, char *action, NotifyProvider *notify) {
     parole_provider_player_play_next(notify->player);
 }
 
 static void
-notify_playing(NotifyProvider *notify, const ParoleStream *stream)
-{
+notify_playing(NotifyProvider *notify, const ParoleStream *stream) {
     GdkPixbuf *pix;
     gboolean has_video, enabled;
     gchar *title, *album, *artist, *year, *stream_uri;
@@ -104,14 +95,14 @@ notify_playing(NotifyProvider *notify, const ParoleStream *stream)
     GSimpleAction *action;
 
     g_object_get(G_OBJECT(stream),
-                  "title", &title,
-                  "album", &album,
-                  "artist", &artist,
-                  "year", &year,
-                  "has-video", &has_video,
-                  "media-type", &media_type,
-                  "uri", &stream_uri,
-                  NULL);
+                 "title", &title,
+                 "album", &album,
+                 "artist", &artist,
+                 "year", &year,
+                 "has-video", &has_video,
+                 "media-type", &media_type,
+                 "uri", &stream_uri,
+                 NULL);
 
     if ( g_strcmp0(stream_uri, notify->last_played_uri) == 0 )
         return;
@@ -122,8 +113,7 @@ notify_playing(NotifyProvider *notify, const ParoleStream *stream)
     if ( has_video )
         return;
 
-    if ( !title )
-    {
+    if ( !title ) {
         gchar *uri;
         gchar *filename;
         g_object_get(G_OBJECT(stream),
@@ -132,8 +122,7 @@ notify_playing(NotifyProvider *notify, const ParoleStream *stream)
 
         filename = g_filename_from_uri(uri, NULL, NULL);
         g_free(uri);
-        if ( filename )
-        {
+        if ( filename ) {
             title  = g_path_get_basename(filename);
             g_free(filename);
             if ( !title )
@@ -146,10 +135,9 @@ notify_playing(NotifyProvider *notify, const ParoleStream *stream)
     if (!artist)
         artist = g_strdup(_("Unknown Artist"));
 
-    if (!year)
+    if (!year) {
         message = g_strdup_printf("%s %s\n%s %s", _("<i>on</i>"), album, _("<i>by</i>"), artist);
-    else
-    {
+    } else {
         message = g_strdup_printf("%s %s(%s)\n%s %s", _("<i>on</i>"), album, year, _("<i>by</i>"), artist);
         g_free(year);
     }
@@ -185,8 +173,7 @@ notify_playing(NotifyProvider *notify, const ParoleStream *stream)
                                         GTK_ICON_LOOKUP_USE_BUILTIN,
                                         NULL);
 
-    if ( pix )
-    {
+    if ( pix ) {
         notify_notification_set_icon_from_pixbuf(notify->notification, pix);
         g_object_unref(pix);
     }
@@ -198,12 +185,11 @@ notify_playing(NotifyProvider *notify, const ParoleStream *stream)
     g_object_get(G_OBJECT(action),
                   "enabled", &enabled,
                   NULL);
-    if (enabled)
-    {
-    notify_notification_add_action(notify->notification,
-                                    "play-previous", _("Previous Track"),
-                                    NOTIFY_ACTION_CALLBACK(on_previous_clicked),
-                                    notify, NULL);
+    if (enabled) {
+        notify_notification_add_action(notify->notification,
+                                       "play-previous", _("Previous Track"),
+                                       NOTIFY_ACTION_CALLBACK(on_previous_clicked),
+                                       notify, NULL);
     }
 
     /* Only show Next Track item if clicking next is possible */
@@ -211,12 +197,11 @@ notify_playing(NotifyProvider *notify, const ParoleStream *stream)
     g_object_get(G_OBJECT(action),
                   "enabled", &enabled,
                   NULL);
-    if (enabled)
-    {
-    notify_notification_add_action(notify->notification,
-                                    "play-next", _("Next Track"),
-                                    NOTIFY_ACTION_CALLBACK(on_next_clicked),
-                                    notify, NULL);
+    if (enabled) {
+        notify_notification_add_action(notify->notification,
+                                       "play-next", _("Next Track"),
+                                       NOTIFY_ACTION_CALLBACK(on_next_clicked),
+                                       notify, NULL);
     }
 
     notify_notification_show(notify->notification, NULL);
@@ -225,8 +210,7 @@ notify_playing(NotifyProvider *notify, const ParoleStream *stream)
 }
 
 static void
-state_changed_cb(ParoleProviderPlayer *player, const ParoleStream *stream, ParoleState state, NotifyProvider *notify)
-{
+state_changed_cb(ParoleProviderPlayer *player, const ParoleStream *stream, ParoleState state, NotifyProvider *notify) {
     if ( state == PAROLE_STATE_PLAYING )
         notify_playing(notify, stream);
 
@@ -234,14 +218,12 @@ state_changed_cb(ParoleProviderPlayer *player, const ParoleStream *stream, Parol
         close_notification(notify);
 }
 
-static gboolean notify_provider_is_configurable(ParoleProviderPlugin *plugin)
-{
+static gboolean notify_provider_is_configurable(ParoleProviderPlugin *plugin) {
     return FALSE;
 }
 
 static void
-notify_provider_set_player(ParoleProviderPlugin *plugin, ParoleProviderPlayer *player)
-{
+notify_provider_set_player(ParoleProviderPlugin *plugin, ParoleProviderPlayer *player) {
     NotifyProvider *notify;
 
     notify = NOTIFY_PROVIDER(plugin);
@@ -256,26 +238,22 @@ notify_provider_set_player(ParoleProviderPlugin *plugin, ParoleProviderPlayer *p
 }
 
 static void
-notify_provider_iface_init(ParoleProviderPluginIface *iface)
-{
+notify_provider_iface_init(ParoleProviderPluginIface *iface) {
     iface->get_is_configurable = notify_provider_is_configurable;
     iface->set_player = notify_provider_set_player;
 }
 
-static void notify_provider_class_init(NotifyProviderClass *klass)
-{
+static void notify_provider_class_init(NotifyProviderClass *klass) {
     GObjectClass *gobject_class = G_OBJECT_CLASS(klass);
 
     gobject_class->finalize = notify_provider_finalize;
 }
 
-static void notify_provider_init(NotifyProvider *provider)
-{
+static void notify_provider_init(NotifyProvider *provider) {
     provider->player = NULL;
 }
 
-static void notify_provider_finalize(GObject *object)
-{
+static void notify_provider_finalize(GObject *object) {
     NotifyProvider *notify;
 
     notify = NOTIFY_PROVIDER(object);

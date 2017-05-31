@@ -36,20 +36,17 @@
 #include "parole-dbus.h"
 
 static void
-proxy_destroy_cb(DBusGConnection *bus)
-{
+proxy_destroy_cb(DBusGConnection *bus) {
     dbus_g_connection_unref(bus);
 }
 
 static DBusConnection *
-parole_session_bus_get(void)
-{
+parole_session_bus_get(void) {
     return dbus_g_connection_get_connection (parole_g_session_bus_get ());
 }
 
 DBusGConnection *
-parole_g_session_bus_get(void)
-{
+parole_g_session_bus_get(void) {
     static gboolean session_bus_connected = FALSE;
     DBusGConnection *bus;
     GError *error = NULL;
@@ -59,8 +56,7 @@ parole_g_session_bus_get(void)
     } else {
         bus = dbus_g_bus_get(DBUS_BUS_SESSION, &error);
 
-        if ( error )
-        {
+        if ( error ) {
             g_error("%s", error->message);
         }
         session_bus_connected = TRUE;
@@ -70,8 +66,7 @@ parole_g_session_bus_get(void)
 }
 
 DBusGProxy *
-parole_get_proxy(const gchar *path, const gchar *iface)
-{
+parole_get_proxy(const gchar *path, const gchar *iface) {
     DBusGConnection *bus;
     DBusGProxy *proxy;
 
@@ -92,8 +87,7 @@ parole_get_proxy(const gchar *path, const gchar *iface)
 }
 
 gboolean
-parole_dbus_name_has_owner(const gchar *name)
-{
+parole_dbus_name_has_owner(const gchar *name) {
     DBusConnection *bus;
     DBusError error;
     gboolean ret;
@@ -106,8 +100,7 @@ parole_dbus_name_has_owner(const gchar *name)
 
     dbus_connection_unref(bus);
 
-    if ( dbus_error_is_set (&error) )
-    {
+    if (dbus_error_is_set(&error)) {
         g_warning("Failed to get name owner: %s\n", error.message);
         dbus_error_free(&error);
     }
@@ -115,8 +108,7 @@ parole_dbus_name_has_owner(const gchar *name)
     return ret;
 }
 
-gboolean    parole_dbus_register_name(const gchar *name)
-{
+gboolean parole_dbus_register_name(const gchar *name) {
     DBusConnection *bus;
     DBusError error;
     int ret;
@@ -133,8 +125,7 @@ gboolean    parole_dbus_register_name(const gchar *name)
 
     dbus_connection_unref(bus);
 
-    if ( dbus_error_is_set (&error) )
-    {
+    if (dbus_error_is_set(&error)) {
         g_warning("Error: %s\n", error.message);
         dbus_error_free(&error);
         return FALSE;
@@ -143,8 +134,7 @@ gboolean    parole_dbus_register_name(const gchar *name)
     return ret == DBUS_REQUEST_NAME_REPLY_PRIMARY_OWNER ? TRUE : FALSE;
 }
 
-gboolean    parole_dbus_release_name(const gchar *name)
-{
+gboolean parole_dbus_release_name(const gchar *name) {
     DBusConnection *bus;
     DBusError error;
     int ret;
@@ -160,8 +150,7 @@ gboolean    parole_dbus_release_name(const gchar *name)
 
     dbus_connection_unref(bus);
 
-    if ( dbus_error_is_set (&error) )
-    {
+    if (dbus_error_is_set(&error)) {
         g_warning("Error: %s\n", error.message);
         dbus_error_free(&error);
         return FALSE;

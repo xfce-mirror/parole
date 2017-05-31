@@ -32,14 +32,11 @@ static void parole_provider_player_base_init(gpointer klass);
 static void parole_provider_player_class_init(gpointer klass);
 
 GType
-parole_provider_player_get_type(void)
-{
+parole_provider_player_get_type(void) {
     static GType type = G_TYPE_INVALID;
 
-    if (G_UNLIKELY (type == G_TYPE_INVALID))
-    {
-        static const GTypeInfo info =
-        {
+    if (G_UNLIKELY(type == G_TYPE_INVALID)) {
+        static const GTypeInfo info = {
             sizeof (ParoleProviderPlayerIface),
             (GBaseInitFunc) parole_provider_player_base_init,
             NULL,
@@ -60,12 +57,10 @@ parole_provider_player_get_type(void)
     return type;
 }
 
-static void parole_provider_player_base_init(gpointer klass)
-{
+static void parole_provider_player_base_init(gpointer klass) {
     static gboolean initialized = FALSE;
 
-    if (G_UNLIKELY (!initialized))
-    {
+    if (G_UNLIKELY(!initialized)) {
         /**
          * ParoleProviderPlayerIface::state-changed:
          * @player: the object which received the signal.
@@ -123,8 +118,7 @@ static void parole_provider_player_base_init(gpointer klass)
     }
 }
 
-static void parole_provider_player_class_init(gpointer klass)
-{
+static void parole_provider_player_class_init(gpointer klass) {
 }
 
 /**
@@ -138,15 +132,13 @@ static void parole_provider_player_class_init(gpointer klass)
  *
  * Since: 0.2
  **/
-GtkWidget *parole_provider_player_get_main_window(ParoleProviderPlayer *player)
-{
+GtkWidget *parole_provider_player_get_main_window(ParoleProviderPlayer *player) {
     GtkWidget *window = NULL;
 
     g_return_val_if_fail(PAROLE_IS_PROVIDER_PLAYER(player), NULL);
 
-    if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_main_window )
-    {
-        window  =(*PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->get_main_window)(player);
+    if (PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->get_main_window) {
+        window = (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->get_main_window)(player);
     }
     return window;
 }
@@ -167,14 +159,11 @@ GtkWidget *parole_provider_player_get_main_window(ParoleProviderPlayer *player)
  *
  * Since: 0.2
  **/
-void parole_provider_player_pack(ParoleProviderPlayer *player, GtkWidget *widget,
-                  const gchar *title, ParolePluginContainer container)
-{
+void parole_provider_player_pack(ParoleProviderPlayer *player, GtkWidget *widget, const gchar *title, ParolePluginContainer container) {
     g_return_if_fail(PAROLE_IS_PROVIDER_PLAYER(player));
 
-    if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->pack )
-    {
-(*PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->pack)(player, widget, title, container);
+    if (PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->pack) {
+        (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->pack)(player, widget, title, container);
     }
 }
 
@@ -189,14 +178,12 @@ void parole_provider_player_pack(ParoleProviderPlayer *player, GtkWidget *widget
  *
  * Since: 0.2
  **/
-ParoleState parole_provider_player_get_state(ParoleProviderPlayer *player)
-{
+ParoleState parole_provider_player_get_state(ParoleProviderPlayer *player) {
     ParoleState state = PAROLE_STATE_STOPPED;
 
     g_return_val_if_fail(PAROLE_IS_PROVIDER_PLAYER(player), PAROLE_STATE_STOPPED);
 
-    if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_state )
-    {
+    if (PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->get_state) {
         state =(*PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->get_state)(player);
     }
 
@@ -213,13 +200,11 @@ ParoleState parole_provider_player_get_state(ParoleProviderPlayer *player)
  *
  * Since: 0.2
  **/
-const ParoleStream *parole_provider_player_get_stream(ParoleProviderPlayer *player)
-{
+const ParoleStream *parole_provider_player_get_stream(ParoleProviderPlayer *player) {
     g_return_val_if_fail(PAROLE_IS_PROVIDER_PLAYER(player), NULL);
 
-    if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_stream )
-    {
-        return (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_stream) (player);
+    if (PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->get_stream) {
+        return (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->get_stream) (player);
     }
 
     return NULL;
@@ -240,14 +225,12 @@ const ParoleStream *parole_provider_player_get_stream(ParoleProviderPlayer *play
  *
  * Since: 0.2
  **/
-gboolean parole_provider_player_play_uri(ParoleProviderPlayer *player, const gchar *uri)
-{
+gboolean parole_provider_player_play_uri(ParoleProviderPlayer *player, const gchar *uri) {
     gboolean ret = FALSE;
 
     g_return_val_if_fail(PAROLE_IS_PROVIDER_PLAYER(player), FALSE);
 
-    if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->play_uri )
-    {
+    if (PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->play_uri) {
         ret =(*PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->play_uri)(player, uri);
     }
     return ret;
@@ -269,14 +252,12 @@ gboolean parole_provider_player_play_uri(ParoleProviderPlayer *player, const gch
  *
  * Since: 0.2
  **/
-gboolean parole_provider_player_pause(ParoleProviderPlayer *player)
-{
+gboolean parole_provider_player_pause(ParoleProviderPlayer *player) {
     gboolean ret = FALSE;
 
     g_return_val_if_fail(PAROLE_IS_PROVIDER_PLAYER(player), FALSE);
 
-    if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->pause )
-    {
+    if (PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->pause) {
         ret =(*PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->pause)(player);
     }
 
@@ -300,14 +281,12 @@ gboolean parole_provider_player_pause(ParoleProviderPlayer *player)
  *
  * Since: 0.2
  **/
-gboolean parole_provider_player_resume(ParoleProviderPlayer *player)
-{
+gboolean parole_provider_player_resume(ParoleProviderPlayer *player) {
     gboolean ret = FALSE;
 
     g_return_val_if_fail(PAROLE_IS_PROVIDER_PLAYER(player), FALSE);
 
-    if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->resume )
-    {
+    if (PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->resume) {
         ret =(*PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->resume)(player);
     }
 
@@ -328,14 +307,12 @@ gboolean parole_provider_player_resume(ParoleProviderPlayer *player)
  *
  * Since: 0.2
  **/
-gboolean parole_provider_player_stop(ParoleProviderPlayer *player)
-{
+gboolean parole_provider_player_stop(ParoleProviderPlayer *player) {
     gboolean ret = FALSE;
 
     g_return_val_if_fail(PAROLE_IS_PROVIDER_PLAYER(player), FALSE);
 
-    if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->stop )
-    {
+    if (PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->stop) {
         ret =(*PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->stop)(player);
     }
 
@@ -353,14 +330,12 @@ gboolean parole_provider_player_stop(ParoleProviderPlayer *player)
  *
  * Since: 0.6
  **/
-gboolean parole_provider_player_play_previous(ParoleProviderPlayer *player)
-{
+gboolean parole_provider_player_play_previous(ParoleProviderPlayer *player) {
     gboolean ret = FALSE;
 
     g_return_val_if_fail(PAROLE_IS_PROVIDER_PLAYER(player), FALSE);
 
-    if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->play_previous )
-    {
+    if (PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->play_previous) {
         ret =(*PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->play_previous)(player);
     }
 
@@ -378,14 +353,12 @@ gboolean parole_provider_player_play_previous(ParoleProviderPlayer *player)
  *
  * Since: 0.6
  **/
-gboolean parole_provider_player_play_next(ParoleProviderPlayer *player)
-{
+gboolean parole_provider_player_play_next(ParoleProviderPlayer *player) {
     gboolean ret = FALSE;
 
     g_return_val_if_fail(PAROLE_IS_PROVIDER_PLAYER(player), FALSE);
 
-    if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->play_next )
-    {
+    if (PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->play_next) {
         ret =(*PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->play_next)(player);
     }
 
@@ -406,14 +379,12 @@ gboolean parole_provider_player_play_next(ParoleProviderPlayer *player)
  *
  * Since: 0.2
  **/
-gboolean parole_provider_player_seek(ParoleProviderPlayer *player, gdouble pos)
-{
+gboolean parole_provider_player_seek(ParoleProviderPlayer *player, gdouble pos) {
     gboolean ret = FALSE;
 
     g_return_val_if_fail(PAROLE_IS_PROVIDER_PLAYER(player), FALSE);
 
-    if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->seek )
-    {
+    if (PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->seek) {
         ret =(*PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->seek)(player, pos);
     }
 
@@ -430,13 +401,11 @@ gboolean parole_provider_player_seek(ParoleProviderPlayer *player, gdouble pos)
  *
  * Since: 0.6
  **/
-gdouble parole_provider_player_get_stream_position(ParoleProviderPlayer *player)
-{
+gdouble parole_provider_player_get_stream_position(ParoleProviderPlayer *player) {
     g_return_val_if_fail(PAROLE_IS_PROVIDER_PLAYER(player), 0);
 
-    if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_stream_position )
-    {
-        return (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_stream_position) (player);
+    if (PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->get_stream_position) {
+        return (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->get_stream_position) (player);
     }
 
     return FALSE;
@@ -451,13 +420,11 @@ gdouble parole_provider_player_get_stream_position(ParoleProviderPlayer *player)
  *
  * Since: 0.2
  **/
-void parole_provider_player_open_media_chooser(ParoleProviderPlayer *player)
-{
+void parole_provider_player_open_media_chooser(ParoleProviderPlayer *player) {
     g_return_if_fail(PAROLE_IS_PROVIDER_PLAYER(player));
 
-    if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->open_media_chooser )
-    {
-(*PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->open_media_chooser)(player);
+    if (PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->open_media_chooser) {
+        (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->open_media_chooser)(player);
     }
 }
 
@@ -473,14 +440,12 @@ void parole_provider_player_open_media_chooser(ParoleProviderPlayer *player)
  *
  * Since: 0.6
  **/
-GSimpleAction *parole_provider_player_get_action(ParoleProviderPlayer *player, ParolePlayerAction action)
-{
+GSimpleAction *parole_provider_player_get_action(ParoleProviderPlayer *player, ParolePlayerAction action) {
     GSimpleAction *ret = NULL;;
 
     g_return_val_if_fail(PAROLE_IS_PROVIDER_PLAYER(player), NULL);
 
-    if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_action )
-    {
+    if (PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->get_action) {
         ret =(*PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->get_action)(player, action);
     }
 
@@ -497,12 +462,10 @@ GSimpleAction *parole_provider_player_get_action(ParoleProviderPlayer *player, P
  *
  * Since: 0.6
  **/
-gboolean parole_provider_player_get_fullscreen(ParoleProviderPlayer *player)
-{
+gboolean parole_provider_player_get_fullscreen(ParoleProviderPlayer *player) {
     g_return_val_if_fail(PAROLE_IS_PROVIDER_PLAYER(player), FALSE);
 
-    if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_fullscreen )
-    {
+    if (PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->get_fullscreen) {
         return (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_fullscreen) (player);
     }
 
@@ -520,12 +483,10 @@ gboolean parole_provider_player_get_fullscreen(ParoleProviderPlayer *player)
  *
  * Since: 0.6
  **/
-gboolean parole_provider_player_set_fullscreen(ParoleProviderPlayer *player, gboolean fullscreen)
-{
+gboolean parole_provider_player_set_fullscreen(ParoleProviderPlayer *player, gboolean fullscreen) {
     g_return_val_if_fail(PAROLE_IS_PROVIDER_PLAYER(player), FALSE);
 
-    if ( PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->get_stream )
-    {
+    if (PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->get_stream) {
         return (*PAROLE_PROVIDER_PLAYER_GET_INTERFACE (player)->set_fullscreen) (player, fullscreen);
     }
 

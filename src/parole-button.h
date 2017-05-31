@@ -25,8 +25,7 @@
 
 #include <glib-object.h>
 
-typedef enum
-{
+typedef enum {
     PAROLE_KEY_UNKNOWN,
     PAROLE_KEY_AUDIO_PLAY,
     PAROLE_KEY_AUDIO_STOP,
@@ -45,14 +44,12 @@ G_BEGIN_DECLS
 
 typedef struct ParoleButtonPrivate ParoleButtonPrivate;
 
-typedef struct
-{
+typedef struct {
     GObject                 parent;
     ParoleButtonPrivate     *priv;
 } ParoleButton;
 
-typedef struct
-{
+typedef struct {
     GObjectClass            parent_class;
 
     void                    (*button_pressed)       (ParoleButton *button,

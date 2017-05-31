@@ -40,8 +40,7 @@
  * Build Parole's UI from the interface-file.
  **/
 GtkBuilder *
-parole_builder_get_main_interface(void)
-{
+parole_builder_get_main_interface(void) {
     static gpointer parole_builder_object = NULL;
 
     if ( G_LIKELY(parole_builder_object != NULL) ) {
@@ -62,8 +61,7 @@ parole_builder_get_main_interface(void)
  * Build Parole's UI from the condensed glade string.
  **/
 GtkBuilder *
-parole_builder_new_from_string(const gchar *ui, gsize length)
-{
+parole_builder_new_from_string(const gchar *ui, gsize length) {
     GError *error = NULL;
     GtkBuilder *builder;
 
@@ -74,8 +72,7 @@ parole_builder_new_from_string(const gchar *ui, gsize length)
 
     gtk_builder_add_from_string(builder, ui, length, &error);
 
-    if ( error )
-    {
+    if ( error ) {
         g_critical("%s", error->message);
         g_error_free(error);
     }

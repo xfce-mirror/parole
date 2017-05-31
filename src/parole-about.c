@@ -42,11 +42,9 @@
  *
  * Display the About dialog for Parole.
  **/
-void parole_about(GtkWindow *parent)
-{
+void parole_about(GtkWindow *parent) {
     /* List of authors */
-    static const gchar *authors[] =
-    {
+    static const gchar *authors[] = {
         "Ali Abdallah <aliov@xfce.org>",
         "Sean Davis <bluesabre@xfce.org>",
         "Simon Steinbeiss <simon@xfce.org>",
@@ -54,8 +52,7 @@ void parole_about(GtkWindow *parent)
     };
 
     /* List of documentation writers */
-    static const gchar *documenters[] =
-    {
+    static const gchar *documenters[] = {
         "Ali Abdallah <aliov@xfce.org>",
         NULL,
     };

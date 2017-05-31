@@ -54,8 +54,7 @@ static char *playlist_file_extensions[] = {
  *
  * Since: 0.2
  */
-GtkFileFilter       *parole_get_supported_audio_filter(void)
-{
+GtkFileFilter *parole_get_supported_audio_filter(void) {
     GtkFileFilter *filter;
     guint i;
 
@@ -80,8 +79,7 @@ GtkFileFilter       *parole_get_supported_audio_filter(void)
  *
  * Since: 0.2
  */
-GtkFileFilter       *parole_get_supported_video_filter(void)
-{
+GtkFileFilter *parole_get_supported_video_filter(void) {
     GtkFileFilter *filter;
     guint i;
 
@@ -105,8 +103,7 @@ GtkFileFilter       *parole_get_supported_video_filter(void)
  *
  * Since: 0.2
  */
-GtkFileFilter       *parole_get_supported_media_filter(void)
-{
+GtkFileFilter *parole_get_supported_media_filter(void) {
     GtkFileFilter *filter;
     guint i;
 
@@ -123,8 +120,7 @@ GtkFileFilter       *parole_get_supported_media_filter(void)
     return filter;
 }
 
-GtkRecentFilter         *parole_get_supported_recent_media_filter(void)
-{
+GtkRecentFilter *parole_get_supported_recent_media_filter(void) {
     GtkRecentFilter *filter;
     guint i;
 
@@ -152,8 +148,7 @@ GtkRecentFilter         *parole_get_supported_recent_media_filter(void)
  *
  * Since: 0.2
  */
-GtkFileFilter *parole_get_supported_files_filter(void)
-{
+GtkFileFilter *parole_get_supported_files_filter(void) {
     GtkFileFilter *filter;
     guint i;
 
@@ -167,8 +162,7 @@ GtkFileFilter *parole_get_supported_files_filter(void)
     return filter;
 }
 
-GtkRecentFilter *parole_get_supported_recent_files_filter(void)
-{
+GtkRecentFilter *parole_get_supported_recent_files_filter(void) {
     GtkRecentFilter *filter;
     guint i;
 
@@ -193,8 +187,7 @@ GtkRecentFilter *parole_get_supported_recent_files_filter(void)
  *
  * Since: 0.2
  */
-GtkFileFilter   *parole_get_supported_playlist_filter(void)
-{
+GtkFileFilter *parole_get_supported_playlist_filter(void) {
     GtkFileFilter *filter;
     guint i;
 
@@ -219,8 +212,7 @@ GtkFileFilter   *parole_get_supported_playlist_filter(void)
  *
  * Since: 0.2
  */
-gboolean parole_file_filter(GtkFileFilter *filter, ParoleFile *file)
-{
+gboolean parole_file_filter(GtkFileFilter *filter, ParoleFile *file) {
     GtkFileFilterInfo filter_info;
 
     gboolean ret;

@@ -40,8 +40,7 @@ G_BEGIN_DECLS
 typedef struct _ParoleProviderModuleClass ParoleProviderModuleClass;
 typedef struct _ParoleProviderModule ParoleProviderModule;
 
-struct _ParoleProviderModule
-{
+struct _ParoleProviderModule {
     GTypeModule              parent;
 
     GModule                *library;
@@ -58,8 +57,7 @@ struct _ParoleProviderModule
     gchar                  *desktop_file;
 };
 
-struct _ParoleProviderModuleClass
-{
+struct _ParoleProviderModuleClass {
     GTypeModuleClass        parent_class;
 };
 

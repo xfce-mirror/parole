@@ -32,8 +32,7 @@ G_BEGIN_DECLS
 #define PAROLE_MEDIA_LIST(o)          (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_MEDIA_LIST, ParoleMediaList))
 #define PAROLE_IS_MEDIA_LIST(o)       (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_MEDIA_LIST))
 
-enum
-{
+enum {
     STATE_COL,
     NAME_COL,
     LENGTH_COL,
@@ -41,30 +40,25 @@ enum
     COL_NUMBERS
 };
 
-enum
-{
+enum {
     PAROLE_MEDIA_STATE_NONE,
     PAROLE_MEDIA_STATE_PAUSED,
     PAROLE_MEDIA_STATE_PLAYING
 };
 
-enum
-{
+enum {
     PAROLE_MEDIA_LIST_PLAYLIST_VIEW_STANDARD,
     PAROLE_MEDIA_LIST_PLAYLIST_VIEW_DISC
 };
 
 typedef struct ParoleMediaListPrivate ParoleMediaListPrivate;
 
-typedef struct
-{
+typedef struct {
     GtkBox                      parent;
-
     ParoleMediaListPrivate     *priv;
 } ParoleMediaList;
 
-typedef struct
-{
+typedef struct {
     GtkBoxClass     parent_class;
 
     void            (*media_activated)              (ParoleMediaList *list,

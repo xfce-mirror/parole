@@ -38,29 +38,25 @@
 
 static void parole_open_location_finalize(GObject *object);
 
-struct ParoleOpenLocation
-{
+struct ParoleOpenLocation {
     GObject             parent;
 
     GtkWidget          *entry;
 };
 
-struct ParoleOpenLocationClass
-{
+struct ParoleOpenLocationClass {
     GObjectClass    parent_class;
 
     void(*location_opened)(ParoleOpenLocation *self,
                                          const gchar *address);
 };
 
-enum
-{
+enum {
     LOCATION_OPENED,
     LAST_SIGNAL
 };
 
-enum
-{
+enum {
     COL_ADDRESS,
     N_COLS
 };
@@ -71,15 +67,13 @@ G_DEFINE_TYPE(ParoleOpenLocation, parole_open_location, G_TYPE_OBJECT)
 
 /* Callback for the open button which passes on the location and closes the dialog */
 static void
-parole_open_location_response_cb(GtkDialog *dialog, gint response_id, ParoleOpenLocation *self)
-{
+parole_open_location_response_cb(GtkDialog *dialog, gint response_id, ParoleOpenLocation *self) {
     const gchar *location;
 
     if ( response_id == 0 )
         return;
 
-    if ( response_id == GTK_RESPONSE_OK )
-    {
+    if ( response_id == GTK_RESPONSE_OK ) {
         location = gtk_combo_box_text_get_active_text(GTK_COMBO_BOX_TEXT(self->entry));
 
         if ( !location || strlen (location) == 0)
@@ -97,8 +91,7 @@ out:
 
 /* Populate the history-popup */
 static GtkTreeModel *
-parole_open_location_get_completion_model(void)
-{
+parole_open_location_get_completion_model(void) {
     GtkListStore *store;
     GtkTreeIter iter;
     gchar **lines = NULL;
@@ -108,12 +101,9 @@ parole_open_location_get_completion_model(void)
 
     lines = parole_get_history();
 
-    if ( lines )
-    {
-        for ( i = 0; lines[i]; i++)
-        {
-            if ( g_strcmp0(lines[i], "") != 0 )
-            {
+    if ( lines ) {
+        for (i = 0; lines[i]; i++) {
+            if ( g_strcmp0(lines[i], "") != 0 ) {
                 gtk_list_store_append(store, &iter);
                 gtk_list_store_set(store, &iter,
                                     COL_ADDRESS, lines[i],
@@ -127,44 +117,39 @@ parole_open_location_get_completion_model(void)
 }
 
 static void
-parole_open_location_class_init(ParoleOpenLocationClass *klass)
-{
+parole_open_location_class_init(ParoleOpenLocationClass *klass) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
     object_class->finalize = parole_open_location_finalize;
 
     signals[LOCATION_OPENED] =
         g_signal_new("location-opened",
-                      PAROLE_TYPE_OPEN_LOCATION,
-                      G_SIGNAL_RUN_LAST,
-                      G_STRUCT_OFFSET(ParoleOpenLocationClass, location_opened),
-                      NULL, NULL,
-                      g_cclosure_marshal_VOID__STRING,
-                      G_TYPE_NONE, 1, G_TYPE_STRING);
+                     PAROLE_TYPE_OPEN_LOCATION,
+                     G_SIGNAL_RUN_LAST,
+                     G_STRUCT_OFFSET(ParoleOpenLocationClass, location_opened),
+                     NULL, NULL,
+                     g_cclosure_marshal_VOID__STRING,
+                     G_TYPE_NONE, 1, G_TYPE_STRING);
 }
 
 static void
-parole_open_location_init(ParoleOpenLocation *self)
-{
+parole_open_location_init(ParoleOpenLocation *self) {
 }
 
 static void
-parole_open_location_finalize(GObject *object)
-{
+parole_open_location_finalize(GObject *object) {
     G_OBJECT_CLASS(parole_open_location_parent_class)->finalize(object);
 }
 
 /* Clear the location history */
 static void
-parole_open_location_clear_history(GtkTreeModel *model)
-{
+parole_open_location_clear_history(GtkTreeModel *model) {
     parole_clear_history_file();
     gtk_list_store_clear(GTK_LIST_STORE(model));
 }
 
 /* Main function to open the "open location" dialog */
-ParoleOpenLocation *parole_open_location(GtkWidget *parent)
-{
+ParoleOpenLocation *parole_open_location(GtkWidget *parent) {
     ParoleOpenLocation *self;
     GtkWidget *dialog;
     GtkTreeModel *model;

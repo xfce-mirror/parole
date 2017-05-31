@@ -40,13 +40,11 @@ static void   tray_provider_iface_init(ParoleProviderPluginIface *iface);
 static void   tray_provider_finalize(GObject                   *object);
 
 
-struct _TrayProviderClass
-{
+struct _TrayProviderClass {
     GObjectClass parent_class;
 };
 
-struct _TrayProvider
-{
+struct _TrayProvider {
     GObject                 parent;
     ParoleProviderPlayer   *player;
     GtkStatusIcon          *tray;
@@ -64,15 +62,13 @@ PAROLE_DEFINE_TYPE_WITH_CODE(TrayProvider,
                                 tray_provider_iface_init));
 
 static void
-menu_selection_done_cb(TrayProvider *tray)
-{
+menu_selection_done_cb(TrayProvider *tray) {
     gtk_widget_destroy(tray->menu);
     tray->menu = NULL;
 }
 
 static void
-exit_activated_cb(TrayProvider *tray)
-{
+exit_activated_cb(TrayProvider *tray) {
     GdkEventAny ev;
 
     menu_selection_done_cb(tray);
@@ -86,8 +82,7 @@ exit_activated_cb(TrayProvider *tray)
 }
 
 static void
-play_pause_activated_cb(TrayProvider *tray)
-{
+play_pause_activated_cb(TrayProvider *tray) {
     menu_selection_done_cb(tray);
 
     if ( tray->state == PAROLE_STATE_PLAYING )
@@ -97,29 +92,24 @@ play_pause_activated_cb(TrayProvider *tray)
 }
 
 static void
-previous_activated_cb(TrayProvider *tray)
-{
+previous_activated_cb(TrayProvider *tray) {
     menu_selection_done_cb(tray);
     parole_provider_player_play_previous(tray->player);
 }
 
 static void
-next_activated_cb(TrayProvider *tray)
-{
+next_activated_cb(TrayProvider *tray) {
     menu_selection_done_cb(tray);
     parole_provider_player_play_next(tray->player);
 }
 
 static void
-open_activated_cb(TrayProvider *tray)
-{
+open_activated_cb(TrayProvider *tray) {
     parole_provider_player_open_media_chooser(tray->player);
 }
 
 static void
-popup_menu_cb(GtkStatusIcon *icon, guint button,
-               guint activate_time, TrayProvider *tray)
-{
+popup_menu_cb(GtkStatusIcon *icon, guint button, guint activate_time, TrayProvider *tray) {
     GtkWidget *menu, *mi;
 
     menu = gtk_menu_new();
@@ -195,8 +185,7 @@ popup_menu_cb(GtkStatusIcon *icon, guint button,
 }
 
 static void
-tray_activate_cb(GtkStatusIcon *tray_icon, TrayProvider *tray)
-{
+tray_activate_cb(GtkStatusIcon *tray_icon, TrayProvider *tray) {
     /* Show the window if it is hidden or does not have focus */
     if (!gtk_widget_get_visible(tray->window) || !gtk_window_is_active(GTK_WINDOW(tray->window)))
         gtk_window_present(GTK_WINDOW(tray->window));
@@ -205,12 +194,10 @@ tray_activate_cb(GtkStatusIcon *tray_icon, TrayProvider *tray)
 }
 
 static void
-state_changed_cb(ParoleProviderPlayer *player, const ParoleStream *stream, ParoleState state, TrayProvider *tray)
-{
+state_changed_cb(ParoleProviderPlayer *player, const ParoleStream *stream, ParoleState state, TrayProvider *tray) {
     tray->state = state;
 
-    if ( tray->menu )
-    {
+    if ( tray->menu ) {
         gtk_widget_destroy(tray->menu);
         tray->menu = NULL;
         g_signal_emit_by_name(G_OBJECT(tray->tray), "popup-menu", 0, gtk_get_current_event_time());
@@ -218,8 +205,7 @@ state_changed_cb(ParoleProviderPlayer *player, const ParoleStream *stream, Parol
 }
 
 static gboolean
-read_entry_bool(const gchar *entry, gboolean fallback)
-{
+read_entry_bool(const gchar *entry, gboolean fallback) {
     XfconfChannel *channel;
     gboolean ret_val = fallback;
     gchar prop_name[64];
@@ -237,8 +223,7 @@ read_entry_bool(const gchar *entry, gboolean fallback)
 }
 
 static void
-write_entry_bool(const gchar *entry, gboolean value)
-{
+write_entry_bool(const gchar *entry, gboolean value) {
     XfconfChannel *channel;
     gchar prop_name[64];
     GValue dst = { 0, };
@@ -253,16 +238,14 @@ write_entry_bool(const gchar *entry, gboolean value)
 }
 
 static void
-hide_on_delete_toggled_cb(GtkWidget *widget, gpointer tray)
-{
+hide_on_delete_toggled_cb(GtkWidget *widget, gpointer tray) {
     gboolean toggled;
     toggled = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget));
     write_entry_bool("minimize-to-tray", toggled);
 }
 
 static void
-configure_plugin(TrayProvider *tray, GtkWidget *widget)
-{
+configure_plugin(TrayProvider *tray, GtkWidget *widget) {
     GtkWidget *dialog;
     GtkWidget *content_area;
 
@@ -294,8 +277,7 @@ configure_plugin(TrayProvider *tray, GtkWidget *widget)
 }
 
 static void
-action_on_hide_confirmed_cb(GtkWidget *widget, gpointer data)
-{
+action_on_hide_confirmed_cb(GtkWidget *widget, gpointer data) {
     gboolean toggled;
 
     toggled = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget));
@@ -304,8 +286,7 @@ action_on_hide_confirmed_cb(GtkWidget *widget, gpointer data)
 }
 
 static gboolean
-delete_event_cb(GtkWidget *widget, GdkEvent *ev, TrayProvider *tray)
-{
+delete_event_cb(GtkWidget *widget, GdkEvent *ev, TrayProvider *tray) {
     GtkWidget *dialog, *check, *content_area, *button;
     GtkWidget *minimize, *img;
     gboolean confirmed, ret_val = TRUE, minimize_to_tray;
@@ -313,8 +294,7 @@ delete_event_cb(GtkWidget *widget, GdkEvent *ev, TrayProvider *tray)
     confirmed = read_entry_bool("remember-quit-action", FALSE);
     minimize_to_tray = read_entry_bool("minimize-to-tray", TRUE);
 
-    if ( confirmed )
-    {
+    if ( confirmed ) {
         return minimize_to_tray ? gtk_widget_hide_on_delete (widget) : FALSE;
     }
 
@@ -364,8 +344,7 @@ delete_event_cb(GtkWidget *widget, GdkEvent *ev, TrayProvider *tray)
 
     gtk_widget_show_all(GTK_WIDGET(dialog));
 
-    switch (gtk_dialog_run (GTK_DIALOG (dialog)))
-    {
+    switch (gtk_dialog_run(GTK_DIALOG(dialog))) {
         case GTK_RESPONSE_OK:
             {
             gtk_widget_hide_on_delete(widget);
@@ -392,14 +371,12 @@ delete_event_cb(GtkWidget *widget, GdkEvent *ev, TrayProvider *tray)
     return ret_val;
 }
 
-static gboolean tray_provider_is_configurable(ParoleProviderPlugin *plugin)
-{
+static gboolean tray_provider_is_configurable(ParoleProviderPlugin *plugin) {
     return TRUE;
 }
 
 static void
-tray_provider_set_player(ParoleProviderPlugin *plugin, ParoleProviderPlayer *player)
-{
+tray_provider_set_player(ParoleProviderPlugin *plugin, ParoleProviderPlayer *player) {
     TrayProvider *tray;
     GdkPixbuf *pix;
 
@@ -424,8 +401,7 @@ tray_provider_set_player(ParoleProviderPlugin *plugin, ParoleProviderPlayer *pla
                                     GTK_ICON_LOOKUP_USE_BUILTIN,
                                     NULL);
 
-    if ( pix )
-    {
+    if ( pix ) {
         G_GNUC_BEGIN_IGNORE_DEPRECATIONS
         gtk_status_icon_set_from_pixbuf(tray->tray, pix);
         G_GNUC_END_IGNORE_DEPRECATIONS
@@ -447,35 +423,30 @@ tray_provider_set_player(ParoleProviderPlugin *plugin, ParoleProviderPlayer *pla
 }
 
 static void
-tray_provider_configure(ParoleProviderPlugin *provider, GtkWidget *parent)
-{
+tray_provider_configure(ParoleProviderPlugin *provider, GtkWidget *parent) {
     TrayProvider *tray;
     tray = TRAY_PROVIDER(provider);
     configure_plugin(tray, parent);
 }
 
 static void
-tray_provider_iface_init(ParoleProviderPluginIface *iface)
-{
+tray_provider_iface_init(ParoleProviderPluginIface *iface) {
     iface->set_player = tray_provider_set_player;
     iface->configure = tray_provider_configure;
     iface->get_is_configurable = tray_provider_is_configurable;
 }
 
-static void tray_provider_class_init(TrayProviderClass *klass)
-{
+static void tray_provider_class_init(TrayProviderClass *klass) {
     GObjectClass *gobject_class = G_OBJECT_CLASS(klass);
 
     gobject_class->finalize = tray_provider_finalize;
 }
 
-static void tray_provider_init(TrayProvider *provider)
-{
+static void tray_provider_init(TrayProvider *provider) {
     provider->player = NULL;
 }
 
-static void tray_provider_finalize(GObject *object)
-{
+static void tray_provider_finalize(GObject *object) {
     TrayProvider *tray;
 
     tray = TRAY_PROVIDER(object);

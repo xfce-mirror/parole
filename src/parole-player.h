@@ -34,14 +34,12 @@ G_BEGIN_DECLS
 
 typedef struct ParolePlayerPrivate ParolePlayerPrivate;
 
-typedef struct
-{
+typedef struct {
     GObject                     parent;
     ParolePlayerPrivate        *priv;
 } ParolePlayer;
 
-typedef struct
-{
+typedef struct {
     GObjectClass                parent_class;
 
     void                        (*shuffle_toggled)              (ParolePlayer *player,
@@ -54,8 +52,7 @@ typedef struct
                                                                  gint gst_dvd_nav_message);
 } ParolePlayerClass;
 
-typedef enum
-{
+typedef enum {
     PAROLE_PLAYER_ACTION_PREVIOUS,
     PAROLE_PLAYER_ACTION_NEXT,
     PAROLE_PLAYER_ACTION_PLAYPAUSE

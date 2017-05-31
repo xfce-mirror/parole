@@ -34,14 +34,12 @@ G_BEGIN_DECLS
 
 typedef struct ParoleConfDialogPrivate ParoleConfDialogPrivate;
 
-typedef struct
-{
+typedef struct {
     GObject                     parent;
     ParoleConfDialogPrivate    *priv;
 } ParoleConfDialog;
 
-typedef struct
-{
+typedef struct {
     GObjectClass                parent_class;
 } ParoleConfDialogClass;
 

@@ -33,8 +33,7 @@
 #include "parole-rc-utils.h"
 
 XfceRc *
-parole_get_resource_file(const gchar *group, gboolean readonly)
-{
+parole_get_resource_file(const gchar *group, gboolean readonly) {
     gchar *file;
     XfceRc *rc;
 
@@ -49,8 +48,7 @@ parole_get_resource_file(const gchar *group, gboolean readonly)
     return rc;
 }
 
-gchar **parole_get_history_full(const gchar *relpath)
-{
+gchar **parole_get_history_full(const gchar *relpath) {
     gchar **lines = NULL;
     gchar *history = NULL;
     gchar *contents = NULL;
@@ -58,8 +56,7 @@ gchar **parole_get_history_full(const gchar *relpath)
 
     history = xfce_resource_lookup(XFCE_RESOURCE_CACHE, relpath);
 
-    if (history && g_file_get_contents (history, &contents, &length, NULL))
-    {
+    if (history && g_file_get_contents(history, &contents, &length, NULL)) {
         lines = g_strsplit(contents, "\n", -1);
         g_free(contents);
     }
@@ -69,18 +66,15 @@ gchar **parole_get_history_full(const gchar *relpath)
     return lines;
 }
 
-gchar **parole_get_history(void)
-{
+gchar **parole_get_history(void) {
     return parole_get_history_full (PAROLE_HISTORY_FILE);
 }
 
-void parole_insert_line_history(const gchar *line)
-{
+void parole_insert_line_history(const gchar *line) {
     parole_insert_line_history_full(PAROLE_HISTORY_FILE, line);
 }
 
-void parole_insert_line_history_full(const gchar *relpath, const gchar *line)
-{
+void parole_insert_line_history_full(const gchar *relpath, const gchar *line) {
     gchar *history = NULL;
 
     history = xfce_resource_save_location(XFCE_RESOURCE_CACHE, relpath, TRUE);
@@ -96,19 +90,16 @@ void parole_insert_line_history_full(const gchar *relpath, const gchar *line)
     }
 }
 
-void parole_clear_history_file(void)
-{
+void parole_clear_history_file(void) {
     parole_clear_history_file_full(PAROLE_HISTORY_FILE);
 }
 
-void parole_clear_history_file_full(const gchar *relpath)
-{
+void parole_clear_history_file_full(const gchar *relpath) {
     gchar *history = NULL;
 
     history = xfce_resource_save_location(XFCE_RESOURCE_CACHE, relpath, FALSE);
 
-    if ( history )
-    {
+    if ( history ) {
         FILE *f;
         f = fopen(history, "w");
         fclose(f);

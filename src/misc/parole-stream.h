@@ -50,8 +50,7 @@ G_BEGIN_DECLS
  * Media types.
  *
  **/
-typedef enum
-{
+typedef enum {
     PAROLE_MEDIA_TYPE_UNKNOWN,
     PAROLE_MEDIA_TYPE_LOCAL_FILE,
     PAROLE_MEDIA_TYPE_CDDA,
@@ -73,8 +72,7 @@ typedef enum
  * Media playback states.
  *
  **/
-typedef enum
-{
+typedef enum {
     PAROLE_STATE_STOPPED = 0,
     PAROLE_STATE_PLAYBACK_FINISHED,
     PAROLE_STATE_ABOUT_TO_FINISH,
@@ -86,13 +84,11 @@ typedef enum
 typedef struct _ParoleStream      ParoleStream;
 typedef struct _ParoleStreamClass ParoleStreamClass;
 
-struct _ParoleStream
-{
+struct _ParoleStream {
     GObject             parent;
 };
 
-struct _ParoleStreamClass
-{
+struct _ParoleStreamClass {
     GObjectClass        parent_class;
 };
 

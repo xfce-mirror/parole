@@ -38,8 +38,7 @@
 #define PAROLE_CLUTTER_GET_PRIVATE(o) \
 (G_TYPE_INSTANCE_GET_PRIVATE((o), PAROLE_TYPE_CLUTTER, ParoleClutterPrivate))
 
-struct ParoleClutterPrivate
-{
+struct ParoleClutterPrivate {
     GtkWidget          *embed;
 
     ClutterActor       *stage;
@@ -53,8 +52,7 @@ struct ParoleClutterPrivate
     gint                video_h;
 };
 
-enum
-{
+enum {
     PROP_0,
     PROP_CONF_OBJ
 };
@@ -64,8 +62,7 @@ static gpointer parole_clutter_object = NULL;
 G_DEFINE_TYPE(ParoleClutter, parole_clutter, GTK_TYPE_WIDGET)
 
 static void
-parole_clutter_finalize(GObject *object)
-{
+parole_clutter_finalize(GObject *object) {
     // ParoleClutter *clutter;
 
     // clutter = PAROLE_CLUTTER (object);
@@ -76,8 +73,7 @@ parole_clutter_finalize(GObject *object)
 }
 
 static void
-parole_clutter_show(GtkWidget *widget)
-{
+parole_clutter_show(GtkWidget *widget) {
     ParoleClutter *clutter = PAROLE_CLUTTER(parole_clutter_get());
     GtkWidget *embed_window = clutter->priv->embed;
 
@@ -89,8 +85,7 @@ parole_clutter_show(GtkWidget *widget)
 }
 
 static void
-parole_clutter_hide(GtkWidget *widget)
-{
+parole_clutter_hide(GtkWidget *widget) {
     ParoleClutter *clutter = PAROLE_CLUTTER(parole_clutter_get());
     GtkWidget *embed_window = clutter->priv->embed;
 
@@ -102,16 +97,14 @@ parole_clutter_hide(GtkWidget *widget)
 }
 
 static void
-parole_clutter_constructed(GObject *object)
-{
+parole_clutter_constructed(GObject *object) {
     // ParoleClutter *clutter;
 
     // clutter = PAROLE_CLUTTER (object);
 }
 
 static void
-parole_clutter_get_video_output_size(ParoleClutter *clutter, gint *ret_w, gint *ret_h)
-{
+parole_clutter_get_video_output_size(ParoleClutter *clutter, gint *ret_w, gint *ret_h) {
     guint video_w, video_h;
     guint video_par_n, video_par_d;
     guint dar_n, dar_d;
@@ -131,10 +124,8 @@ parole_clutter_get_video_output_size(ParoleClutter *clutter, gint *ret_w, gint *
     video_w = clutter->priv->video_w;
     video_h = clutter->priv->video_h;
 
-    if ( video_w != 0 && video_h != 0 )
-    {
-        switch ( clutter->priv->aspect_ratio )
-        {
+    if ( video_w != 0 && video_h != 0 ) {
+        switch ( clutter->priv->aspect_ratio ) {
             case PAROLE_ASPECT_RATIO_NONE:
                 return;
             case PAROLE_ASPECT_RATIO_AUTO:
@@ -164,8 +155,7 @@ parole_clutter_get_video_output_size(ParoleClutter *clutter, gint *ret_w, gint *
         if ( gst_video_calculate_display_ratio (&dar_n, &dar_d,
                                                 video_w, video_h,
                                                 video_par_n, video_par_d,
-                                                disp_par_n, disp_par_d) )
-        {
+                                                disp_par_n, disp_par_d) ) {
             if (video_w % dar_n == 0) {
                 *ret_w = video_w;
                 *ret_h =(guint) gst_util_uint64_scale(video_w, dar_d, dar_n);
@@ -179,16 +169,14 @@ parole_clutter_get_video_output_size(ParoleClutter *clutter, gint *ret_w, gint *
 }
 
 static void
-parole_clutter_size_allocate(GtkWidget *widget, GtkAllocation *allocation)
-{
+parole_clutter_size_allocate(GtkWidget *widget, GtkAllocation *allocation) {
     ParoleClutter *clutter;
 
     g_return_if_fail(allocation != NULL);
 
     gtk_widget_set_allocation(widget, allocation);
 
-    if ( gtk_widget_get_realized (widget) )
-    {
+    if (gtk_widget_get_realized(widget)) {
         gint w, h;
         gdouble ratio, width, height;
 
@@ -221,14 +209,12 @@ parole_clutter_size_allocate(GtkWidget *widget, GtkAllocation *allocation)
 }
 
 static void
-parole_clutter_conf_notify_cb(GObject *object, GParamSpec *spec, ParoleClutter *clutter)
-{
+parole_clutter_conf_notify_cb(GObject *object, GParamSpec *spec, ParoleClutter *clutter) {
     GtkAllocation *allocation = g_new0(GtkAllocation, 1);
-    if ( !g_strcmp0 ("aspect-ratio", spec->name) )
-    {
+    if (!g_strcmp0("aspect-ratio", spec->name)) {
         g_object_get(G_OBJECT(clutter->priv->conf),
-                      "aspect-ratio", &clutter->priv->aspect_ratio,
-                      NULL);
+                     "aspect-ratio", &clutter->priv->aspect_ratio,
+                     NULL);
 
         gtk_widget_get_allocation(GTK_WIDGET(clutter), allocation);
         parole_clutter_size_allocate(GTK_WIDGET(clutter->priv->embed), allocation);
@@ -239,13 +225,11 @@ parole_clutter_conf_notify_cb(GObject *object, GParamSpec *spec, ParoleClutter *
 static void parole_clutter_get_property(GObject *object,
                                         guint prop_id,
                                         GValue *value,
-                                        GParamSpec *pspec)
-{
+                                        GParamSpec *pspec) {
     ParoleClutter *clutter;
     clutter = PAROLE_CLUTTER(object);
 
-    switch (prop_id)
-    {
+    switch (prop_id) {
         case PROP_CONF_OBJ:
             g_value_set_pointer(value, clutter->priv->conf);
             break;
@@ -256,20 +240,17 @@ static void parole_clutter_get_property(GObject *object,
 }
 
 static void parole_clutter_set_property(GObject *object,
-                                            guint prop_id,
-                                            const GValue *value,
-                                            GParamSpec *pspec)
-{
+                                        guint prop_id,
+                                        const GValue *value,
+                                        GParamSpec *pspec) {
     ParoleClutter *clutter;
     clutter = PAROLE_CLUTTER(object);
 
-    switch (prop_id)
-    {
+    switch (prop_id) {
         case PROP_CONF_OBJ:
             clutter->priv->conf = g_value_get_pointer(value);
 
-            if (clutter->priv->conf)
-            {
+            if (clutter->priv->conf) {
                 g_object_get(G_OBJECT(clutter->priv->conf),
                               "aspect-ratio", &clutter->priv->aspect_ratio,
                               NULL);
@@ -285,8 +266,7 @@ static void parole_clutter_set_property(GObject *object,
 }
 
 static void
-parole_clutter_class_init(ParoleClutterClass *klass)
-{
+parole_clutter_class_init(ParoleClutterClass *klass) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
     GtkWidgetClass *widget_class = GTK_WIDGET_CLASS(klass);
 
@@ -310,8 +290,7 @@ parole_clutter_class_init(ParoleClutterClass *klass)
 }
 
 static void
-parole_clutter_init(ParoleClutter *clutter)
-{
+parole_clutter_init(ParoleClutter *clutter) {
     ClutterColor *black;
     GValue value = {0};
 
@@ -341,19 +320,17 @@ parole_clutter_init(ParoleClutter *clutter)
 }
 
 GtkWidget *
-parole_clutter_new(gpointer conf_obj)
-{
+parole_clutter_new(gpointer conf_obj) {
     parole_clutter_object = g_object_new(PAROLE_TYPE_CLUTTER,
-                                          "conf-object", conf_obj,
-                                          NULL);
+                                         "conf-object", conf_obj,
+                                         NULL);
 
     g_object_add_weak_pointer(parole_clutter_object, &parole_clutter_object);
 
     return GTK_WIDGET (parole_clutter_object);
 }
 
-GtkWidget *parole_clutter_get(void)
-{
+GtkWidget *parole_clutter_get(void) {
     if ( G_LIKELY(parole_clutter_object != NULL ) ) {
     /*
      * Don't increase the reference count of this object as
@@ -368,18 +345,15 @@ GtkWidget *parole_clutter_get(void)
     return GTK_WIDGET (parole_clutter_object);
 }
 
-void parole_clutter_set_video_dimensions(ParoleClutter *clutter, gint w, gint h)
-{
+void parole_clutter_set_video_dimensions(ParoleClutter *clutter, gint w, gint h) {
     clutter->priv->video_w = w;
     clutter->priv->video_h = h;
 }
 
-void parole_clutter_apply_texture(ParoleClutter *clutter, GstElement **element)
-{
+void parole_clutter_apply_texture(ParoleClutter *clutter, GstElement **element) {
     g_object_set(*element, "texture", clutter->priv->texture, NULL);
 }
 
-GtkWidget *parole_clutter_get_embed_widget(ParoleClutter *clutter)
-{
+GtkWidget *parole_clutter_get_embed_widget(ParoleClutter *clutter) {
     return clutter->priv->embed;
 }

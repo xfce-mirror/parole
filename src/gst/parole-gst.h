@@ -36,8 +36,7 @@ G_BEGIN_DECLS
 #define PAROLE_GST(o)          (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_GST, ParoleGst))
 #define PAROLE_IS_GST(o)       (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_GST))
 
-typedef enum
-{
+typedef enum {
     PAROLE_ASPECT_RATIO_NONE,
     PAROLE_ASPECT_RATIO_AUTO,
     PAROLE_ASPECT_RATIO_SQUARE,
@@ -46,8 +45,7 @@ typedef enum
     PAROLE_ASPECT_RATIO_DVB
 } ParoleAspectRatio;
 
-enum
-{
+enum {
     GST_DVD_ROOT_MENU,
     GST_DVD_TITLE_MENU,
     GST_DVD_AUDIO_MENU,
@@ -57,14 +55,12 @@ enum
 
 typedef struct ParoleGstPrivate ParoleGstPrivate;
 
-typedef struct
-{
+typedef struct {
     GtkWidget           parent;
     ParoleGstPrivate   *priv;
 } ParoleGst;
 
-typedef struct
-{
+typedef struct {
     GtkWidgetClass  parent_class;
 
     void        (*media_state)              (ParoleGst *gst,

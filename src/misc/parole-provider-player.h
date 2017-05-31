@@ -49,16 +49,14 @@ typedef struct _ParoleProviderPlayer      ParoleProviderPlayer;
  * Available plugin widget containers.
  *
  **/
-typedef enum
-{
+typedef enum {
     PAROLE_PLUGIN_CONTAINER_PLAYLIST,
     PAROLE_PLUGIN_CONTAINER_MAIN_VIEW
 } ParolePluginContainer;
 
 
 
-struct _ParoleProviderPlayerIface
-{
+struct _ParoleProviderPlayerIface {
     GTypeInterface __parent__;
 
     /*< private >*/

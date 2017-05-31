@@ -59,8 +59,7 @@
 
 #define PAROLE_AUTO_SAVED_PLAYLIST  "xfce4/parole/auto-saved-playlist.m3u"
 
-typedef struct
-{
+typedef struct {
     GtkWidget *chooser;
     GtkTreeSelection *sel;
     ParoleMediaList *list;
@@ -68,8 +67,7 @@ typedef struct
 } ParolePlaylistSave;
 
 /* Playlist filetypes */
-static struct
-{
+static struct {
     ParolePlFormat format;
     gchar * ext;
 } playlist_format_map[] = {
@@ -80,8 +78,7 @@ static struct
     { PAROLE_PL_FORMAT_XSPF,    ".xspf" }
 };
 
-static GtkTargetEntry target_entry[] =
-{
+static GtkTargetEntry target_entry[] = {
     { "STRING",        0, 0 },
     { "text/uri-list", 0, 1 },
 };
@@ -161,8 +158,7 @@ gboolean    parole_media_list_query_tooltip(GtkWidget *widget,
 #define PAROLE_MEDIA_LIST_GET_PRIVATE(o) \
 (G_TYPE_INSTANCE_GET_PRIVATE((o), PAROLE_TYPE_MEDIA_LIST, ParoleMediaListPrivate))
 
-struct ParoleMediaListPrivate
-{
+struct ParoleMediaListPrivate {
     DBusGConnection     *bus;
     ParoleConf          *conf;
     GtkWidget           *view, *disc_view;
@@ -189,8 +185,7 @@ struct ParoleMediaListPrivate
     gint  n_shuffled_items;
 };
 
-enum
-{
+enum {
     MEDIA_ACTIVATED,
     MEDIA_CURSOR_CHANGED,
     URI_OPENED,
@@ -204,15 +199,13 @@ static guint signals[LAST_SIGNAL] = { 0 };
 G_DEFINE_TYPE(ParoleMediaList, parole_media_list, GTK_TYPE_BOX)
 
 static void
-parole_media_list_set_widget_sensitive(ParoleMediaList *list, gboolean sensitive)
-{
+parole_media_list_set_widget_sensitive(ParoleMediaList *list, gboolean sensitive) {
     gtk_widget_set_sensitive(GTK_WIDGET(list->priv->remove_button), sensitive);
     gtk_widget_set_sensitive(GTK_WIDGET(list->priv->clear_button), sensitive);
 }
 
 static void
-parole_media_list_set_playlist_count(ParoleMediaList *list, gint n_items)
-{
+parole_media_list_set_playlist_count(ParoleMediaList *list, gint n_items) {
     /* Toggle sensitivity based on playlist count */
     parole_media_list_set_widget_sensitive(list, n_items != 0);
     gtk_widget_set_sensitive(list->priv->remove_button, n_items != 0);
@@ -234,8 +227,7 @@ parole_media_list_set_playlist_count(ParoleMediaList *list, gint n_items)
 }
 
 gint
-parole_media_list_get_playlist_count(ParoleMediaList *list)
-{
+parole_media_list_get_playlist_count(ParoleMediaList *list) {
     if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0) {
         return gtk_tree_model_iter_n_children(GTK_TREE_MODEL(list->priv->store), NULL);
     } else {
@@ -256,8 +248,7 @@ parole_media_list_get_playlist_count(ParoleMediaList *list)
  * start playing the added file.
  **/
 static void
-parole_media_list_add(ParoleMediaList *list, ParoleFile *file, gboolean disc, gboolean emit, gboolean select_row)
-{
+parole_media_list_add(ParoleMediaList *list, ParoleFile *file, gboolean disc, gboolean emit, gboolean select_row) {
     GtkListStore *list_store;
     GtkTreePath *path;
     GtkTreeRowReference *row;
@@ -281,24 +272,20 @@ parole_media_list_add(ParoleMediaList *list, ParoleFile *file, gboolean disc, gb
     /* Remove duplicates functionality. If the file being added is already in the
      * playlist, remove it from its current position in the playlist before
      * adding it again. */
-    if (!disc && remove_duplicates && gtk_tree_model_iter_n_children (GTK_TREE_MODEL(list_store), NULL) != 0)
-    {
+    if (!disc && remove_duplicates && gtk_tree_model_iter_n_children(GTK_TREE_MODEL(list_store), NULL) != 0) {
         filename = g_strdup(parole_file_get_file_name(file));
 
         /* Check the first row */
-        if (gtk_tree_model_get_iter_first(GTK_TREE_MODEL(list_store), &iter))
-        {
+        if (gtk_tree_model_get_iter_first(GTK_TREE_MODEL(list_store), &iter)) {
             gtk_tree_model_get(GTK_TREE_MODEL(list_store), &iter, DATA_COL, &row_file, -1);
-            if (g_strcmp0(filename, parole_file_get_file_name(row_file)) == 0)
-            {
+            if (g_strcmp0(filename, parole_file_get_file_name(row_file)) == 0) {
                 gtk_list_store_remove(GTK_LIST_STORE(list_store), &iter);
             }
 
             /* Check subsequent rows */
             while (gtk_tree_model_iter_next(GTK_TREE_MODEL(list_store), &iter)) {
                 gtk_tree_model_get(GTK_TREE_MODEL(list_store), &iter, DATA_COL, &row_file, -1);
-                if (g_strcmp0(filename, parole_file_get_file_name(row_file)) == 0)
-                {
+                if (g_strcmp0(filename, parole_file_get_file_name(row_file)) == 0) {
                     gtk_list_store_remove(GTK_LIST_STORE(list_store), &iter);
                 }
             }
@@ -310,15 +297,14 @@ parole_media_list_add(ParoleMediaList *list, ParoleFile *file, gboolean disc, gb
     /* Add the file to the playlist */
     gtk_list_store_append(list_store, &iter);
     gtk_list_store_set(list_store,
-                        &iter,
-                        NAME_COL, parole_file_get_display_name(file),
-                        DATA_COL, file,
-                        LENGTH_COL, parole_taglibc_get_media_length(file),
-                        STATE_COL, PAROLE_MEDIA_STATE_NONE,
-                        -1);
+                       &iter,
+                       NAME_COL, parole_file_get_display_name(file),
+                       DATA_COL, file,
+                       LENGTH_COL, parole_taglibc_get_media_length(file),
+                       STATE_COL, PAROLE_MEDIA_STATE_NONE,
+                       -1);
 
-    if ( emit || select_row )
-    {
+    if ( emit || select_row ) {
         path = gtk_tree_model_get_path(GTK_TREE_MODEL(list_store), &iter);
         row = gtk_tree_row_reference_new(GTK_TREE_MODEL(list_store), path);
         if ( select_row )
@@ -349,16 +335,15 @@ parole_media_list_add(ParoleMediaList *list, ParoleFile *file, gboolean disc, gb
  *
  **/
 static void
-parole_media_list_files_open(ParoleMediaList *list, GSList *files, gboolean disc, gboolean emit)
-{
+parole_media_list_files_open(ParoleMediaList *list, GSList *files, gboolean disc, gboolean emit) {
     ParoleFile *file;
     gboolean replace;
     guint len;
     guint i;
 
     g_object_get(G_OBJECT(list->priv->conf),
-                  "replace-playlist", &replace,
-                  NULL);
+                 "replace-playlist", &replace,
+                 NULL);
 
     len = g_slist_length(files);
     TRACE("Adding %i files", len);
@@ -366,30 +351,26 @@ parole_media_list_files_open(ParoleMediaList *list, GSList *files, gboolean disc
     if ( len > 1 && !disc )
         g_signal_emit(G_OBJECT(list), signals[SHOW_PLAYLIST], 0, TRUE);
 
-    if ( len != 0 )
-    {
+    if ( len != 0 ) {
         if ( replace )
             parole_media_list_clear_list(list);
         file = g_slist_nth_data(files, 0);
         parole_media_list_add(list, file, disc, emit, TRUE);
     }
 
-    for ( i = 1; i < len; i++)
-    {
+    for (i = 1; i < len; i++) {
         file = g_slist_nth_data(files, i);
         parole_media_list_add(list, file, disc, FALSE, FALSE);
     }
 }
 
 void
-parole_media_list_add_cdda_tracks(ParoleMediaList *list, gint n_tracks)
-{
+parole_media_list_add_cdda_tracks(ParoleMediaList *list, gint n_tracks) {
     GSList *files = NULL;
     ParoleFile *file;
     int i;
 
-    for (i = 0; i < n_tracks; i++)
-    {
+    for (i = 0; i < n_tracks; i++) {
         file = parole_file_new_cdda_track(i+1, g_strdup_printf(_("Track %i"), i+1));
         files = g_slist_append(files, file);
     }
@@ -398,14 +379,12 @@ parole_media_list_add_cdda_tracks(ParoleMediaList *list, gint n_tracks)
 }
 
 void
-parole_media_list_add_dvd_chapters(ParoleMediaList *list, gint n_chapters)
-{
+parole_media_list_add_dvd_chapters(ParoleMediaList *list, gint n_chapters) {
     GSList *files = NULL;
     ParoleFile *file;
     gint i;
 
-    for (i = 0; i < n_chapters; i++)
-    {
+    for (i = 0; i < n_chapters; i++) {
         file = PAROLE_FILE(parole_file_new_dvd_chapter(i+1, g_strdup_printf(_("Chapter %i"), i+1)));
         files = g_slist_append(files, file);
     }
@@ -416,10 +395,7 @@ parole_media_list_add_dvd_chapters(ParoleMediaList *list, gint n_chapters)
 
 /* Callback to determine whether opened files should start playing immediately */
 static void
-parole_media_list_files_opened_cb(ParoleMediaChooser *chooser,
-                   GSList *files,
-                   ParoleMediaList *list)
-{
+parole_media_list_files_opened_cb(ParoleMediaChooser *chooser, GSList *files, ParoleMediaList *list) {
     gboolean play;
 
     g_object_get(G_OBJECT(list->priv->conf),
@@ -430,8 +406,7 @@ parole_media_list_files_opened_cb(ParoleMediaChooser *chooser,
 }
 
 void
-parole_media_list_open_uri(ParoleMediaList *list, const gchar *uri)
-{
+parole_media_list_open_uri(ParoleMediaList *list, const gchar *uri) {
     ParoleFile *file;
 
     if ( parole_is_uri_disc(uri) ) {
@@ -443,24 +418,19 @@ parole_media_list_open_uri(ParoleMediaList *list, const gchar *uri)
 }
 
 static void
-parole_media_list_location_opened_cb(ParoleOpenLocation *obj, const gchar *location, ParoleMediaList *list)
-{
+parole_media_list_location_opened_cb(ParoleOpenLocation *obj, const gchar *location, ParoleMediaList *list) {
     parole_media_list_open_uri(list, location);
 }
 
 static void
-parole_media_list_iso_opened_cb(ParoleMediaChooser *chooser,
-                   gchar *filename,
-                   ParoleMediaList *list)
-{
+parole_media_list_iso_opened_cb(ParoleMediaChooser *chooser, gchar *filename, ParoleMediaList *list) {
     gchar *uri;
     uri = g_strdup_printf("dvd://%s", filename);
     g_signal_emit(G_OBJECT(list), signals[ISO_OPENED], 0, uri);
 }
 
 static void
-parole_media_list_open_internal(ParoleMediaList *list)
-{
+parole_media_list_open_internal(ParoleMediaList *list) {
     ParoleMediaChooser *chooser;
 
     TRACE("start");
@@ -468,21 +438,20 @@ parole_media_list_open_internal(ParoleMediaList *list)
     chooser = parole_media_chooser_open_local(gtk_widget_get_toplevel(GTK_WIDGET(list)));
 
     g_signal_connect(G_OBJECT(chooser), "media_files_opened",
-                      G_CALLBACK(parole_media_list_files_opened_cb), list);
+                     G_CALLBACK(parole_media_list_files_opened_cb), list);
 
     g_signal_connect(G_OBJECT(chooser), "iso_opened",
-                      G_CALLBACK(parole_media_list_iso_opened_cb), list);
+                     G_CALLBACK(parole_media_list_iso_opened_cb), list);
 }
 
 static void
-parole_media_list_open_location_internal(ParoleMediaList *list)
-{
+parole_media_list_open_location_internal(ParoleMediaList *list) {
     ParoleOpenLocation *location;
 
     location = parole_open_location(gtk_widget_get_toplevel(GTK_WIDGET(list)));
 
     g_signal_connect(G_OBJECT(location), "location-opened",
-                      G_CALLBACK(parole_media_list_location_opened_cb), list);
+                     G_CALLBACK(parole_media_list_location_opened_cb), list);
 }
 
 /**
@@ -496,8 +465,7 @@ parole_media_list_open_location_internal(ParoleMediaList *list)
  *
  **/
 static GSList *
-parole_media_list_get_files(ParoleMediaList *list)
-{
+parole_media_list_get_files(ParoleMediaList *list) {
     ParoleFile *file;
     GtkTreeIter iter;
     gboolean valid;
@@ -505,8 +473,7 @@ parole_media_list_get_files(ParoleMediaList *list)
 
     for ( valid = gtk_tree_model_get_iter_first (GTK_TREE_MODEL (list->priv->store), &iter);
         valid;
-        valid = gtk_tree_model_iter_next(GTK_TREE_MODEL(list->priv->store), &iter))
-    {
+        valid = gtk_tree_model_iter_next(GTK_TREE_MODEL(list->priv->store), &iter)) {
         gtk_tree_model_get(GTK_TREE_MODEL(list->priv->store), &iter,
                             DATA_COL, &file,
                             -1);
@@ -525,8 +492,7 @@ void    parole_media_list_drag_data_received_cb(GtkWidget *widget,
                                                  GtkSelectionData *data,
                                                  guint info,
                                                  guint drag_time,
-                                                 ParoleMediaList *list)
-{
+                                                 ParoleMediaList *list) {
     gchar **uri_list;
     gchar *path;
     guint i;
@@ -536,13 +502,12 @@ void    parole_media_list_drag_data_received_cb(GtkWidget *widget,
     parole_window_busy_cursor(gtk_widget_get_window(GTK_WIDGET(list)));
 
     g_object_get(G_OBJECT(list->priv->conf),
-                  "play-opened-files", &play,
-                  NULL);
+                 "play-opened-files", &play,
+                 NULL);
 
     uri_list = g_uri_list_extract_uris((const gchar *)gtk_selection_data_get_data(data));
 
-    for ( i = 0; uri_list[i] != NULL; i++)
-    {
+    for (i = 0; uri_list[i] != NULL; i++) {
         path = g_filename_from_uri(uri_list[i], NULL, NULL);
         added += parole_media_list_add_by_path(list, path, i == 0 ? play : FALSE);
 
@@ -555,11 +520,9 @@ void    parole_media_list_drag_data_received_cb(GtkWidget *widget,
     gtk_drag_finish(drag_context, added == i ? TRUE : FALSE, FALSE, drag_time);
 }
 
-gboolean parole_media_list_key_press(GtkWidget *widget, GdkEventKey *ev, ParoleMediaList *list)
-{
+gboolean parole_media_list_key_press(GtkWidget *widget, GdkEventKey *ev, ParoleMediaList *list) {
     GtkWidget *vbox_player;
-    switch ( ev->keyval )
-    {
+    switch ( ev->keyval ) {
         case GDK_KEY_Delete:
             parole_media_list_remove_clicked_cb(NULL, list);
             return TRUE;
@@ -582,15 +545,13 @@ gboolean parole_media_list_key_press(GtkWidget *widget, GdkEventKey *ev, ParoleM
 
 /* Callback for the add button */
 void
-parole_media_list_add_clicked_cb(GtkButton *button, ParoleMediaList *list)
-{
+parole_media_list_add_clicked_cb(GtkButton *button, ParoleMediaList *list) {
     parole_media_list_open_internal(list);
 }
 
 /* Callback for the clear button */
 void
-parole_media_list_clear_clicked_cb(GtkButton *button, ParoleMediaList *list)
-{
+parole_media_list_clear_clicked_cb(GtkButton *button, ParoleMediaList *list) {
     gchar *playlist_filename;
     GFile *playlist_file;
     parole_media_list_clear_list(list);
@@ -613,8 +574,7 @@ parole_media_list_clear_clicked_cb(GtkButton *button, ParoleMediaList *list)
  *
  **/
 static GtkTreeRowReference *
-parole_media_list_get_first_selected_row(ParoleMediaList *list)
-{
+parole_media_list_get_first_selected_row(ParoleMediaList *list) {
     GtkTreeModel *model;
     GtkTreeRowReference *row = NULL;
     GtkTreeIter iter;
@@ -622,13 +582,11 @@ parole_media_list_get_first_selected_row(ParoleMediaList *list)
 
     path_list = gtk_tree_selection_get_selected_rows(list->priv->sel, &model);
 
-    if ( g_list_length (path_list) > 0 )
-    {
+    if (g_list_length(path_list) > 0) {
         GtkTreePath *path;
         path = g_list_nth_data(path_list, 0);
 
-        if ( G_LIKELY (gtk_tree_model_get_iter (model, &iter, path) == TRUE ))
-        {
+        if (G_LIKELY(gtk_tree_model_get_iter(model, &iter, path) == TRUE)) {
             row = parole_media_list_get_row_reference_from_iter(list, &iter, FALSE);
         }
     }
@@ -648,18 +606,14 @@ parole_media_list_get_first_selected_row(ParoleMediaList *list)
  * Returns: a #ParoleFile
  **/
 static ParoleFile *
-parole_media_list_get_first_selected_file(ParoleMediaList *list)
-{
+parole_media_list_get_first_selected_file(ParoleMediaList *list) {
     ParoleFile *file = NULL;
     GtkTreeRowReference *row;
     GtkTreeIter iter;
 
     row = parole_media_list_get_first_selected_row(list);
 
-    if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store),
-                                  &iter,
-                                  gtk_tree_row_reference_get_path(row)) )
-    {
+    if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, gtk_tree_row_reference_get_path(row)) ) {
         gtk_tree_model_get(GTK_TREE_MODEL(list->priv->store), &iter, DATA_COL, &file, -1);
     }
 
@@ -667,15 +621,11 @@ parole_media_list_get_first_selected_file(ParoleMediaList *list)
 }
 
 static void
-parole_media_list_save_playlist_response_cb(GtkDialog *dialog,
-                                                    gint response_id,
-                                                    ParolePlaylistSave *data)
-{
+parole_media_list_save_playlist_response_cb(GtkDialog *dialog, gint response_id, ParolePlaylistSave *data) {
     gchar *filename = NULL;
     gchar *dirname = NULL;
 
-    if (response_id == GTK_RESPONSE_ACCEPT)
-    {
+    if (response_id == GTK_RESPONSE_ACCEPT) {
         ParolePlFormat format = PAROLE_PL_FORMAT_UNKNOWN;
         GSList *list = NULL;
         GtkTreeModel *model;
@@ -684,13 +634,11 @@ parole_media_list_save_playlist_response_cb(GtkDialog *dialog,
         filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(data->chooser));
         dirname = g_path_get_dirname(filename);
 
-        if ( gtk_tree_selection_get_selected (data->sel, &model, &iter ) )
-        {
+        if (gtk_tree_selection_get_selected(data->sel, &model, &iter)) {
             gtk_tree_model_get(model, &iter, 2, &format, -1);
         }
 
-        if ( g_access (dirname, W_OK) == -1 )
-        {
+        if (g_access(dirname, W_OK) == -1) {
             gchar *msg;
             msg = g_strdup_printf("%s %s", dirname, _("Permission denied"));
             parole_dialog_error(GTK_WINDOW(gtk_widget_get_toplevel(data->list->priv->view)),
@@ -700,11 +648,9 @@ parole_media_list_save_playlist_response_cb(GtkDialog *dialog,
             goto out;
         }
 
-        if ( format == PAROLE_PL_FORMAT_UNKNOWN )
-        {
+        if ( format == PAROLE_PL_FORMAT_UNKNOWN ) {
             format = parole_pl_parser_guess_format_from_extension(filename);
-            if ( format == PAROLE_PL_FORMAT_UNKNOWN )
-            {
+            if ( format == PAROLE_PL_FORMAT_UNKNOWN ) {
                 parole_dialog_info(GTK_WINDOW(gtk_widget_get_toplevel(data->list->priv->view)),
                                     _("Unknown playlist format"),
                                     _("Please choose a supported playlist format"));
@@ -727,39 +673,29 @@ out:
 
 /* Query to get the data to populate the tooltip */
 gboolean    parole_media_list_query_tooltip(GtkWidget *widget,
-                                                 gint x,
-                                                 gint y,
-                                                 gboolean keyboard_mode,
-                                                 GtkTooltip *tooltip,
-                                                 ParoleMediaList *list)
-{
+                                            gint x,
+                                            gint y,
+                                            gboolean keyboard_mode,
+                                            GtkTooltip *tooltip,
+                                            ParoleMediaList *list) {
     GtkTreePath *path;
 
-    if (gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (list->priv->view),
-            x,
-            y,
-            &path,
-            NULL,
-            NULL,
-            NULL))
-    {
+    if (gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (list->priv->view), x, y, &path, NULL, NULL, NULL)) {
         GtkTreeIter iter;
 
-        if ( path && gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path))
-        {
+        if (path && gtk_tree_model_get_iter(GTK_TREE_MODEL(list->priv->store), &iter, path)) {
             ParoleFile *file;
             gchar *tip;
             gchar *name;
             gchar *len;
 
             gtk_tree_model_get(GTK_TREE_MODEL(list->priv->store), &iter,
-                                DATA_COL, &file,
-                                NAME_COL, &name,
-                                LENGTH_COL, &len,
-                                -1);
+                               DATA_COL, &file,
+                               NAME_COL, &name,
+                               LENGTH_COL, &len,
+                               -1);
 
-            if (!len)
-            {
+            if (!len) {
                 len = g_strdup(_("Unknown"));
             }
 
@@ -782,8 +718,7 @@ gboolean    parole_media_list_query_tooltip(GtkWidget *widget,
     return FALSE;
 }
 
-void parole_media_list_format_cursor_changed_cb(GtkTreeView *view, ParolePlaylistSave *data)
-{
+void parole_media_list_format_cursor_changed_cb(GtkTreeView *view, ParolePlaylistSave *data) {
     GtkTreeIter iter;
     GtkTreeModel *model;
     ParolePlFormat format;
@@ -803,11 +738,9 @@ void parole_media_list_format_cursor_changed_cb(GtkTreeView *view, ParolePlaylis
 
     g_free(filename);
 
-    if ( gtk_tree_selection_get_selected (data->sel, &model, &iter ) )
-    {
+    if (gtk_tree_selection_get_selected(data->sel, &model, &iter)) {
         gtk_tree_model_get(model, &iter, 2, &format, -1);
-        if ( format != PAROLE_PL_FORMAT_UNKNOWN )
-        {
+        if ( format != PAROLE_PL_FORMAT_UNKNOWN ) {
             gchar *name, *new_name;
             name = parole_get_name_without_extension(fbasename);
             new_name = g_strdup_printf("%s%s", name, playlist_format_map[format].ext);
@@ -820,8 +753,7 @@ void parole_media_list_format_cursor_changed_cb(GtkTreeView *view, ParolePlaylis
 }
 
 /* Callback to save the current playlist */
-void parole_media_list_save_cb(GtkWidget *widget, ParoleMediaList *list)
-{
+void parole_media_list_save_cb(GtkWidget *widget, ParoleMediaList *list) {
     ParolePlaylistSave *data;
     GtkWidget *chooser;
     GtkWidget *view;
@@ -900,13 +832,11 @@ void parole_media_list_save_cb(GtkWidget *widget, ParoleMediaList *list)
  * Returns: a #GtkTreePath
  **/
 static GtkTreePath *
-parole_media_list_get_first_path(GtkTreeModel *model)
-{
+parole_media_list_get_first_path(GtkTreeModel *model) {
     GtkTreePath *path = NULL;
     GtkTreeIter iter;
 
-    if (gtk_tree_model_get_iter_first (model, &iter) )
-    {
+    if (gtk_tree_model_get_iter_first(model, &iter)) {
         path = gtk_tree_model_get_path(GTK_TREE_MODEL(model), &iter);
     }
 
@@ -926,15 +856,13 @@ parole_media_list_get_first_path(GtkTreeModel *model)
  *
  **/
 static GList *
-parole_media_list_paths_to_row_list(GList *path_list, GtkTreeModel *model)
-{
+parole_media_list_paths_to_row_list(GList *path_list, GtkTreeModel *model) {
     GList *row_list = NULL;
     guint len, i;
 
     len = g_list_length(path_list);
 
-    for ( i = 0; i < len; i++)
-    {
+    for (i = 0; i < len; i++) {
         GtkTreePath *path;
         GtkTreeRowReference *row;
 
@@ -950,8 +878,7 @@ parole_media_list_paths_to_row_list(GList *path_list, GtkTreeModel *model)
 
 /* Callback for the remove-from-playlist button */
 void
-parole_media_list_remove_clicked_cb(GtkButton *button, ParoleMediaList *list)
-{
+parole_media_list_remove_clicked_cb(GtkButton *button, ParoleMediaList *list) {
     GtkTreeModel *model;
     GList *path_list = NULL;
     GList *row_list = NULL;
@@ -973,8 +900,7 @@ parole_media_list_remove_clicked_cb(GtkButton *button, ParoleMediaList *list)
      * Select first path before the first path
      * that we going to remove.
      **/
-    if (g_list_length (path_list) != 0)
-    {
+    if (g_list_length(path_list) != 0) {
         GtkTreePath *path, *prev;
 
         /* Get first item */
@@ -983,8 +909,7 @@ parole_media_list_remove_clicked_cb(GtkButton *button, ParoleMediaList *list)
         /* copy it as we don't mess with the list*/
         prev = gtk_tree_path_copy(path);
 
-        if ( gtk_tree_path_prev (prev) )
-        {
+        if (gtk_tree_path_prev(prev)) {
             parole_media_list_select_path(list, FALSE, prev);
             row_selected = TRUE;
         }
@@ -996,15 +921,13 @@ parole_media_list_remove_clicked_cb(GtkButton *button, ParoleMediaList *list)
 
     len = g_list_length(row_list);
 
-    for ( i = 0; i < len; i++)
-    {
+    for (i = 0; i < len; i++) {
         GtkTreePath *path;
         GtkTreeRowReference *row;
         row = g_list_nth_data(row_list, i);
         path = gtk_tree_row_reference_get_path(row);
 
-        if ( G_LIKELY (gtk_tree_model_get_iter (model, &iter, path) == TRUE ) )
-        {
+        if (G_LIKELY(gtk_tree_model_get_iter(model, &iter, path) == TRUE)) {
             gtk_list_store_remove(GTK_LIST_STORE(model),
                        &iter);
         }
@@ -1021,8 +944,7 @@ parole_media_list_remove_clicked_cb(GtkButton *button, ParoleMediaList *list)
     nch = gtk_tree_model_iter_n_children(GTK_TREE_MODEL(list->priv->store), NULL);
 
     /* No row was selected, then select the first one*/
-    if (!row_selected && nch != 0)
-    {
+    if (!row_selected && nch != 0) {
         GtkTreePath *path;
         path = parole_media_list_get_first_path(model);
         parole_media_list_select_path(list, FALSE, path);
@@ -1033,8 +955,7 @@ parole_media_list_remove_clicked_cb(GtkButton *button, ParoleMediaList *list)
 }
 
 void
-parole_media_list_move_up_clicked_cb(GtkButton *button, ParoleMediaList *list)
-{
+parole_media_list_move_up_clicked_cb(GtkButton *button, ParoleMediaList *list) {
     GtkTreeModel *model;
     GList *path_list = NULL;
     GtkTreeIter current, iter;
@@ -1046,25 +967,20 @@ parole_media_list_move_up_clicked_cb(GtkButton *button, ParoleMediaList *list)
      * Select first path before the first path
      * that we going to move.
      **/
-    if (g_list_length (path_list) != 0)
-    {
+    if (g_list_length(path_list) != 0) {
         GtkTreePath *path, *prev;
         guint i;
 
         /* Get first item */
         path = g_list_nth_data(path_list, 0);
-        if (gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &current, path))
-        {
+        if (gtk_tree_model_get_iter(GTK_TREE_MODEL(list->priv->store), &current, path)) {
             /* copy it as we don't mess with the list*/
             prev = gtk_tree_path_copy(path);
 
-            if ( gtk_tree_path_prev (prev) )
-            {
-                if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, prev))
-                {
+            if (gtk_tree_path_prev(prev)) {
+                if (gtk_tree_model_get_iter(GTK_TREE_MODEL(list->priv->store), &iter, prev)) {
                     /* Move each item about the previous path */
-                    for (i=0; i < g_list_length(path_list); i++)
-                    {
+                    for (i=0; i < g_list_length(path_list); i++) {
                         path = g_list_nth_data(path_list, i);
                         if (gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &current, path))
                             gtk_list_store_move_before(GTK_LIST_STORE(model), &current, &iter);
@@ -1080,8 +996,7 @@ parole_media_list_move_up_clicked_cb(GtkButton *button, ParoleMediaList *list)
 }
 
 void
-parole_media_list_move_down_clicked_cb(GtkButton *button, ParoleMediaList *list)
-{
+parole_media_list_move_down_clicked_cb(GtkButton *button, ParoleMediaList *list) {
     GtkTreeModel *model;
     GList *path_list = NULL;
     GtkTreeIter current, iter;
@@ -1095,25 +1010,21 @@ parole_media_list_move_down_clicked_cb(GtkButton *button, ParoleMediaList *list)
      * Select first path before the first path
      * that we going to move.
      **/
-    if (g_list_length (path_list) != 0)
-    {
+    if (g_list_length(path_list) != 0) {
         GtkTreePath *path, *next;
         guint i;
 
         /* Get first item */
         path = g_list_nth_data(path_list, 0);
-        if (gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &current, path))
-        {
+        if (gtk_tree_model_get_iter(GTK_TREE_MODEL(list->priv->store), &current, path)) {
             /* copy it as we don't mess with the list*/
             next = gtk_tree_path_copy(path);
 
             gtk_tree_path_next(next);
 
-            if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, next))
-            {
+            if (gtk_tree_model_get_iter(GTK_TREE_MODEL(list->priv->store), &iter, next)) {
                 /* Move each item about the previous path */
-                for (i=0; i < g_list_length(path_list); i++)
-                {
+                for (i=0; i < g_list_length(path_list); i++) {
                     path = g_list_nth_data(path_list, i);
                     if (gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &current, path))
                         gtk_list_store_move_after(GTK_LIST_STORE(model), &current, &iter);
@@ -1134,9 +1045,7 @@ parole_media_list_move_down_clicked_cb(GtkButton *button, ParoleMediaList *list)
  *
  **/
 void
-parole_media_list_row_activated_cb(GtkTreeView *view, GtkTreePath *path,
-                    GtkTreeViewColumn *col, ParoleMediaList *list)
-{
+parole_media_list_row_activated_cb(GtkTreeView *view, GtkTreePath *path, GtkTreeViewColumn *col, ParoleMediaList *list) {
     GtkTreeRowReference *row;
 
     if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0)
@@ -1148,21 +1057,18 @@ parole_media_list_row_activated_cb(GtkTreeView *view, GtkTreePath *path,
 }
 
 static void
-parole_media_list_selection_changed_cb(GtkTreeSelection *sel, ParoleMediaList *list)
-{
+parole_media_list_selection_changed_cb(GtkTreeSelection *sel, ParoleMediaList *list) {
     g_signal_emit(G_OBJECT(list), signals[MEDIA_CURSOR_CHANGED], 0,
-                    gtk_tree_selection_count_selected_rows(sel) > 0);
+                  gtk_tree_selection_count_selected_rows(sel) > 0);
 }
 
 static void
-parole_media_list_open_folder(GtkWidget *menu)
-{
+parole_media_list_open_folder(GtkWidget *menu) {
     gchar *dirname;
 
     dirname =(gchar *) g_object_get_data(G_OBJECT(menu), "folder");
 
-    if (dirname)
-    {
+    if (dirname) {
         gchar *uri;
         uri = g_filename_to_uri(dirname, NULL, NULL);
         TRACE("Opening %s", dirname);
@@ -1177,36 +1083,25 @@ parole_media_list_open_folder(GtkWidget *menu)
 }
 
 static void
-parole_media_list_add_open_containing_folder(ParoleMediaList *list, GtkWidget *menu,
-                          gint x, gint y)
-{
+parole_media_list_add_open_containing_folder(ParoleMediaList *list, GtkWidget *menu, gint x, gint y) {
     GtkTreePath *path;
 
-    if (gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (list->priv->view),
-                                       x,
-                                       y,
-                                       &path,
-                                       NULL,
-                                       NULL,
-                                       NULL))
-    {
+    if (gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (list->priv->view), x, y, &path, NULL, NULL, NULL)) {
         GtkTreeIter iter;
 
-        if ( path && gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path))
-        {
+        if (path && gtk_tree_model_get_iter(GTK_TREE_MODEL(list->priv->store), &iter, path)) {
             ParoleFile *file;
             const gchar *filename;
             const gchar *uri;
 
             gtk_tree_model_get(GTK_TREE_MODEL(list->priv->store), &iter,
-                                DATA_COL, &file,
-                                -1);
+                               DATA_COL, &file,
+                               -1);
 
             filename = parole_file_get_file_name(file);
             uri = parole_file_get_uri(file);
 
-            if (g_str_has_prefix (uri, "file:///"))
-            {
+            if (g_str_has_prefix(uri, "file:///")) {
                 GtkWidget *mi;
                 gchar *dirname;
 
@@ -1235,21 +1130,18 @@ parole_media_list_add_open_containing_folder(ParoleMediaList *list, GtkWidget *m
 }
 
 void
-parole_media_list_set_playlist_view(ParoleMediaList *list, gint view)
-{
+parole_media_list_set_playlist_view(ParoleMediaList *list, gint view) {
     gtk_notebook_set_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook), view);
     gtk_widget_set_sensitive(list->priv->playlist_controls, !view);
 }
 
 void
-parole_media_list_clear_disc_list(ParoleMediaList *list)
-{
+parole_media_list_clear_disc_list(ParoleMediaList *list) {
     gtk_list_store_clear(GTK_LIST_STORE(list->priv->disc_store));
 }
 
 void
-parole_media_list_clear_list(ParoleMediaList *list)
-{
+parole_media_list_clear_list(ParoleMediaList *list) {
     TRACE("CLEAR START");
     gtk_list_store_clear(GTK_LIST_STORE(list->priv->store));
     parole_media_list_set_playlist_count(list, 0);
@@ -1257,29 +1149,26 @@ parole_media_list_clear_list(ParoleMediaList *list)
 }
 
 static void
-replace_list_activated_cb(GtkWidget *mi, ParoleConf *conf)
-{
+replace_list_activated_cb(GtkWidget *mi, ParoleConf *conf) {
     g_object_set(G_OBJECT(conf),
-                  "replace-playlist", gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(mi)),
-                  NULL);
+                 "replace-playlist", gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(mi)),
+                 NULL);
 }
 
 static void
-play_opened_files_activated_cb(GtkWidget *mi, ParoleConf *conf)
-{
+play_opened_files_activated_cb(GtkWidget *mi, ParoleConf *conf) {
     g_object_set(G_OBJECT(conf),
-                  "play-opened-files", gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(mi)),
-                  NULL);
+                 "play-opened-files", gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(mi)),
+                 NULL);
 }
 
 static void
-remember_playlist_activated_cb(GtkWidget *mi, ParoleConf *conf)
-{
+remember_playlist_activated_cb(GtkWidget *mi, ParoleConf *conf) {
     gchar *playlist_filename;
     GFile *playlist_file;
     g_object_set(G_OBJECT(conf),
-                  "remember-playlist", gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(mi)),
-                  NULL);
+                 "remember-playlist", gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(mi)),
+                 NULL);
     if (!gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(mi))) {
         playlist_filename = xfce_resource_save_location(XFCE_RESOURCE_DATA,
                                                          PAROLE_AUTO_SAVED_PLAYLIST,
@@ -1291,14 +1180,12 @@ remember_playlist_activated_cb(GtkWidget *mi, ParoleConf *conf)
 }
 
 static void
-parole_media_list_destroy_menu(GtkWidget *menu)
-{
+parole_media_list_destroy_menu(GtkWidget *menu) {
     gchar *dirname;
 
     dirname =(gchar *) g_object_get_data(G_OBJECT(menu), "folder");
 
-    if (dirname)
-    {
+    if (dirname) {
         g_free(dirname);
     }
 
@@ -1306,8 +1193,7 @@ parole_media_list_destroy_menu(GtkWidget *menu)
 }
 
 static void
-parole_media_list_show_menu(ParoleMediaList *list, GdkEventButton *ev)
-{
+parole_media_list_show_menu(ParoleMediaList *list, GdkEventButton *ev) {
     gboolean val;
 #if GTK_CHECK_VERSION(3, 22, 0)
 #else
@@ -1371,10 +1257,8 @@ parole_media_list_show_menu(ParoleMediaList *list, GdkEventButton *ev)
 }
 
 gboolean
-parole_media_list_button_release_event(GtkWidget *widget, GdkEventButton *ev, ParoleMediaList *list)
-{
-    if ( ev->button == 3 )
-    {
+parole_media_list_button_release_event(GtkWidget *widget, GdkEventButton *ev, ParoleMediaList *list) {
+    if ( ev->button == 3 ) {
         parole_media_list_show_menu(list, ev);
         return TRUE;
     }
@@ -1383,8 +1267,7 @@ parole_media_list_button_release_event(GtkWidget *widget, GdkEventButton *ev, Pa
 }
 
 static void
-parole_media_list_select_path(ParoleMediaList *list, gboolean disc, GtkTreePath *path)
-{
+parole_media_list_select_path(ParoleMediaList *list, gboolean disc, GtkTreePath *path) {
     if (disc) {
         gtk_tree_selection_select_path(list->priv->disc_sel, path);
         gtk_tree_view_set_cursor(GTK_TREE_VIEW(list->priv->disc_view), path, NULL, FALSE);
@@ -1395,8 +1278,7 @@ parole_media_list_select_path(ParoleMediaList *list, gboolean disc, GtkTreePath 
 }
 
 static GtkTreeRowReference *
-parole_media_list_get_row_reference_from_iter(ParoleMediaList *list, GtkTreeIter *iter, gboolean select_path)
-{
+parole_media_list_get_row_reference_from_iter(ParoleMediaList *list, GtkTreeIter *iter, gboolean select_path) {
     GtkTreePath *path;
     GtkTreeRowReference *row;
 
@@ -1412,8 +1294,7 @@ parole_media_list_get_row_reference_from_iter(ParoleMediaList *list, GtkTreeIter
 }
 
 static void
-parole_media_list_finalize(GObject *object)
-{
+parole_media_list_finalize(GObject *object) {
     ParoleMediaList *list;
 
     list = PAROLE_MEDIA_LIST(object);
@@ -1424,8 +1305,7 @@ parole_media_list_finalize(GObject *object)
 }
 
 static void
-parole_media_list_class_init(ParoleMediaListClass *klass)
-{
+parole_media_list_class_init(ParoleMediaListClass *klass) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
     object_class->finalize = parole_media_list_finalize;
@@ -1482,11 +1362,10 @@ parole_media_list_class_init(ParoleMediaListClass *klass)
 
 static void
 parole_media_list_playing_cell_data_func(GtkTreeViewColumn *column,
-                                          GtkCellRenderer *renderer,
-                                          GtkTreeModel *tree_model,
-                                          GtkTreeIter *iter,
-                                          GtkWidget *view)
-{
+                                         GtkCellRenderer *renderer,
+                                         GtkTreeModel *tree_model,
+                                         GtkTreeIter *iter,
+                                         GtkWidget *view) {
     const char *name = NULL;
 
     gint state = 0;
@@ -1511,8 +1390,7 @@ parole_media_list_playing_cell_data_func(GtkTreeViewColumn *column,
 }
 
 static void
-parole_media_list_setup_view(ParoleMediaList *list)
-{
+parole_media_list_setup_view(ParoleMediaList *list) {
     GtkTreeSelection *sel, *disc_sel;
     GtkListStore *list_store, *disc_list_store;
     GtkCellRenderer *renderer, *disc_renderer;
@@ -1610,8 +1488,7 @@ parole_media_list_setup_view(ParoleMediaList *list)
 }
 
 static void
-parole_media_list_init(ParoleMediaList *list)
-{
+parole_media_list_init(ParoleMediaList *list) {
     GtkBuilder *builder;
     GtkWidget  *box;
 
@@ -1651,8 +1528,7 @@ parole_media_list_init(ParoleMediaList *list)
 }
 
 GtkWidget *
-parole_media_list_get(void)
-{
+parole_media_list_get(void) {
     static gpointer list = NULL;
 
     if ( G_LIKELY(list != NULL ) ) {
@@ -1665,26 +1541,23 @@ parole_media_list_get(void)
     return GTK_WIDGET (list);
 }
 
-void parole_media_list_load(ParoleMediaList *list)
-{
+void parole_media_list_load(ParoleMediaList *list) {
     gboolean    load_saved_list;
     gboolean    play;
     GSList     *fileslist = NULL;
 
     g_object_get(G_OBJECT(list->priv->conf),
-                  "play-opened-files", &play,
-                  "remember-playlist", &load_saved_list,
-                  NULL);
+                 "play-opened-files", &play,
+                 "remember-playlist", &load_saved_list,
+                 NULL);
 
-    if ( load_saved_list )
-    {
+    if ( load_saved_list ) {
         gchar *playlist_file;
 
         playlist_file = xfce_resource_save_location(XFCE_RESOURCE_DATA,
                                      PAROLE_AUTO_SAVED_PLAYLIST,
                                  FALSE);
-        if ( playlist_file )
-        {
+        if ( playlist_file ) {
             fileslist = parole_pl_parser_parse_from_file_by_extension(playlist_file);
             g_free(playlist_file);
 
@@ -1695,8 +1568,7 @@ void parole_media_list_load(ParoleMediaList *list)
 }
 
 gboolean
-parole_media_list_add_by_path(ParoleMediaList *list, const gchar *path, gboolean emit)
-{
+parole_media_list_add_by_path(ParoleMediaList *list, const gchar *path, gboolean emit) {
     GSList *files_list = NULL;
     GtkFileFilter *filter;
     guint len;
@@ -1731,10 +1603,7 @@ parole_media_list_add_by_path(ParoleMediaList *list, const gchar *path, gboolean
     return ret;
 }
 
-GtkTreeRowReference *parole_media_list_get_next_row(ParoleMediaList *list,
-                             GtkTreeRowReference *row,
-                             gboolean repeat)
-{
+GtkTreeRowReference *parole_media_list_get_next_row(ParoleMediaList *list, GtkTreeRowReference *row, gboolean repeat) {
     GtkTreeRowReference *next = NULL;
     GtkTreePath *path;
     GtkTreeIter iter;
@@ -1762,9 +1631,7 @@ GtkTreeRowReference *parole_media_list_get_next_row(ParoleMediaList *list,
     return next;
 }
 
-GtkTreeRowReference *parole_media_list_get_prev_row(ParoleMediaList *list,
-                             GtkTreeRowReference *row)
-{
+GtkTreeRowReference *parole_media_list_get_prev_row(ParoleMediaList *list, GtkTreeRowReference *row) {
     GtkTreeRowReference *prev = NULL;
     GtkTreePath *path;
     GtkTreeIter iter;
@@ -1790,9 +1657,7 @@ GtkTreeRowReference *parole_media_list_get_prev_row(ParoleMediaList *list,
     return prev;
 }
 
-GtkTreeRowReference *parole_media_list_get_row_n(ParoleMediaList *list,
-                                                  gint wanted_row)
-{
+GtkTreeRowReference *parole_media_list_get_row_n(ParoleMediaList *list, gint wanted_row) {
     GtkTreeRowReference *row = NULL;
     GtkTreePath *path;
     GtkTreeIter iter;
@@ -1818,8 +1683,7 @@ GtkTreeRowReference *parole_media_list_get_row_n(ParoleMediaList *list,
     return row;
 }
 
-GtkTreeRowReference *parole_media_list_get_row_random(ParoleMediaList *list)
-{
+GtkTreeRowReference *parole_media_list_get_row_random(ParoleMediaList *list) {
     GtkTreeRowReference *row = NULL;
     GtkTreeIter iter;
     GtkTreePath *path;
@@ -1830,13 +1694,11 @@ GtkTreeRowReference *parole_media_list_get_row_random(ParoleMediaList *list)
 
     nch = gtk_tree_model_iter_n_children(GTK_TREE_MODEL(list->priv->store), NULL);
 
-    if ( nch == 1 || nch == 0 )
-    {
+    if ( nch == 1 || nch == 0 ) {
         return NULL;
     }
 
-    if (nch == list->priv->n_shuffled_items && list->priv->n_shuffled_items != -1)
-    {
+    if (nch == list->priv->n_shuffled_items && list->priv->n_shuffled_items != -1) {
         /* Stop playing since (almost) every items in the list have been chosen */
         list->priv->n_shuffled_items = 0;
         return NULL;
@@ -1845,18 +1707,15 @@ GtkTreeRowReference *parole_media_list_get_row_random(ParoleMediaList *list)
     current_path = gtk_tree_path_to_string(gtk_tree_row_reference_get_path(parole_media_list_get_selected_row(list)));
     path_str = g_strdup(current_path);
 
-    if (!list->priv->history[0])
-    {
+    if (!list->priv->history[0]) {
         list->priv->history[0] = g_strdup(path_str);
     }
 
-    if (list->priv->n_shuffled_items == 0)
-    {
+    if (list->priv->n_shuffled_items == 0) {
         list->priv->n_shuffled_items = 1;
     }
 
-    while (g_strcmp0(list->priv->history[0], path_str) == 0 || g_strcmp0(list->priv->history[1], path_str) == 0 || g_strcmp0(list->priv->history[2], path_str) == 0 || g_strcmp0(current_path, path_str) == 0)
-    {
+    while (g_strcmp0(list->priv->history[0], path_str) == 0 || g_strcmp0(list->priv->history[1], path_str) == 0 || g_strcmp0(list->priv->history[2], path_str) == 0 || g_strcmp0(current_path, path_str) == 0) {
         path_str = g_strdup_printf("%i", g_random_int_range(0, nch));
         count += 1;
         if (count >= 10 && g_strcmp0(current_path, path_str) != 0)
@@ -1870,11 +1729,9 @@ GtkTreeRowReference *parole_media_list_get_row_random(ParoleMediaList *list)
     path = gtk_tree_path_new_from_string(path_str);
     g_free(path_str);
 
-    if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path))
-    {
+    if (gtk_tree_model_get_iter(GTK_TREE_MODEL(list->priv->store), &iter, path)) {
         row  = gtk_tree_row_reference_new(GTK_TREE_MODEL(list->priv->store), path);
-        if (list->priv->n_shuffled_items != -1)
-        {
+        if (list->priv->n_shuffled_items != -1) {
             list->priv->n_shuffled_items += 1;
         }
     }
@@ -1884,16 +1741,14 @@ GtkTreeRowReference *parole_media_list_get_row_random(ParoleMediaList *list)
     return row;
 }
 
-gboolean parole_media_list_is_selected_row(ParoleMediaList *list)
-{
+gboolean parole_media_list_is_selected_row(ParoleMediaList *list) {
     if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0)
         return gtk_tree_selection_count_selected_rows (list->priv->sel) > 0;
     else
         return gtk_tree_selection_count_selected_rows (list->priv->disc_sel) > 0;
 }
 
-gboolean parole_media_list_is_empty(ParoleMediaList *list)
-{
+gboolean parole_media_list_is_empty(ParoleMediaList *list) {
     GtkTreeIter iter;
 
     if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0)
@@ -1909,8 +1764,7 @@ gboolean parole_media_list_is_empty(ParoleMediaList *list)
  *
  * Returns: a #GtkTreeRowReference of the first row in the media list.
  **/
-GtkTreeRowReference *parole_media_list_get_first_row(ParoleMediaList *list)
-{
+GtkTreeRowReference *parole_media_list_get_first_row(ParoleMediaList *list) {
     GtkTreeRowReference *row = NULL;
     GtkTreeIter iter;
 
@@ -1932,8 +1786,7 @@ GtkTreeRowReference *parole_media_list_get_first_row(ParoleMediaList *list)
  *
  * Returns: a #GtkTreeRowReference of the selected row.
  **/
-GtkTreeRowReference *parole_media_list_get_selected_row(ParoleMediaList *list)
-{
+GtkTreeRowReference *parole_media_list_get_selected_row(ParoleMediaList *list) {
     return parole_media_list_get_first_selected_row (list);
 }
 
@@ -1944,17 +1797,14 @@ GtkTreeRowReference *parole_media_list_get_selected_row(ParoleMediaList *list)
  *
  * Returns: a #ParoleFile of the selected row.
  **/
-ParoleFile *parole_media_list_get_selected_file(ParoleMediaList *list)
-{
+ParoleFile *parole_media_list_get_selected_file(ParoleMediaList *list) {
     return parole_media_list_get_first_selected_file (list);
 }
 
-void parole_media_list_select_row(ParoleMediaList *list, GtkTreeRowReference *row)
-{
+void parole_media_list_select_row(ParoleMediaList *list, GtkTreeRowReference *row) {
     GtkTreePath *path;
 
-    if ( gtk_tree_row_reference_valid (row) )
-    {
+    if (gtk_tree_row_reference_valid(row)) {
         path = gtk_tree_row_reference_get_path(row);
         parole_media_list_select_path(list,
             gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 1,
@@ -1963,8 +1813,7 @@ void parole_media_list_select_row(ParoleMediaList *list, GtkTreeRowReference *ro
     }
 }
 
-void parole_media_list_set_row_playback_state(ParoleMediaList *list, GtkTreeRowReference *row, gint state)
-{
+void parole_media_list_set_row_playback_state(ParoleMediaList *list, GtkTreeRowReference *row, gint state) {
     GtkTreeIter iter;
     GtkTreePath *path;
 
@@ -1983,15 +1832,12 @@ void parole_media_list_set_row_playback_state(ParoleMediaList *list, GtkTreeRowR
     }
 }
 
-gchar* parole_media_list_get_row_name(ParoleMediaList *list,
-GtkTreeRowReference *row)
-{
+gchar* parole_media_list_get_row_name(ParoleMediaList *list, GtkTreeRowReference *row) {
     GtkTreeIter iter;
     GtkTreePath *path;
     gchar *name = NULL;
 
-    if ( gtk_tree_row_reference_valid (row) )
-    {
+    if (gtk_tree_row_reference_valid(row)) {
         path = gtk_tree_row_reference_get_path(row);
 
         if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0) {
@@ -2008,8 +1854,7 @@ GtkTreeRowReference *row)
     return name;
 }
 
-void parole_media_list_set_row_name(ParoleMediaList *list, GtkTreeRowReference *row, const gchar *name)
-{
+void parole_media_list_set_row_name(ParoleMediaList *list, GtkTreeRowReference *row, const gchar *name) {
     GtkTreeIter iter;
     GtkTreePath *path;
 
@@ -2028,8 +1873,7 @@ void parole_media_list_set_row_name(ParoleMediaList *list, GtkTreeRowReference *
     }
 }
 
-void parole_media_list_set_row_length(ParoleMediaList *list, GtkTreeRowReference *row, const gchar *len)
-{
+void parole_media_list_set_row_length(ParoleMediaList *list, GtkTreeRowReference *row, const gchar *len) {
     GtkTreeIter iter;
     GtkTreePath *path;
 
@@ -2048,23 +1892,19 @@ void parole_media_list_set_row_length(ParoleMediaList *list, GtkTreeRowReference
     }
 }
 
-void parole_media_list_open(ParoleMediaList *list)
-{
+void parole_media_list_open(ParoleMediaList *list) {
     parole_media_list_open_internal(list);
 }
 
-void parole_media_list_open_location(ParoleMediaList *list)
-{
+void parole_media_list_open_location(ParoleMediaList *list) {
     parole_media_list_open_location_internal(list);
 }
 
-gboolean parole_media_list_add_files(ParoleMediaList *list, gchar **filenames, gboolean enqueue)
-{
+gboolean parole_media_list_add_files(ParoleMediaList *list, gchar **filenames, gboolean enqueue) {
     guint i;
     guint added = 0;
 
-    for ( i = 0; filenames && filenames[i] != NULL; i++)
-    {
+    for (i = 0; filenames && filenames[i] != NULL; i++) {
         /*
          * File on disk?
          */
@@ -2088,16 +1928,14 @@ gboolean parole_media_list_add_files(ParoleMediaList *list, gchar **filenames, g
     return added > 0;
 }
 
-void parole_media_list_save_list(ParoleMediaList *list)
-{
+void parole_media_list_save_list(ParoleMediaList *list) {
     gboolean save;
 
     g_object_get(G_OBJECT(list->priv->conf),
-                  "remember-playlist", &save,
-                  NULL);
+                 "remember-playlist", &save,
+                 NULL);
 
-    if ( save )
-    {
+    if ( save ) {
         GSList *fileslist;
         gchar *history;
 
@@ -2132,24 +1970,21 @@ static gboolean  parole_media_list_dbus_add_files(ParoleMediaList *list,
  * DBus server implementation
  */
 static void
-parole_media_list_dbus_class_init(ParoleMediaListClass *klass)
-{
+parole_media_list_dbus_class_init(ParoleMediaListClass *klass) {
     dbus_g_object_type_install_info(G_TYPE_FROM_CLASS(klass),
                      &dbus_glib_parole_media_list_object_info);
 }
 
 static void
-parole_media_list_dbus_init(ParoleMediaList *list)
-{
+parole_media_list_dbus_init(ParoleMediaList *list) {
     dbus_g_connection_register_g_object(list->priv->bus,
                      PAROLE_DBUS_PLAYLIST_PATH,
                      G_OBJECT(list));
 }
 
 static gboolean  parole_media_list_dbus_add_files(ParoleMediaList *list,
-                           gchar **in_files, gboolean enqueue,
-                           GError **error)
-{
+                                                  gchar **in_files, gboolean enqueue,
+                                                  GError **error) {
     TRACE("Adding files for DBus request");
     gtk_window_present(GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(list))));
     parole_media_list_add_files(list, in_files, enqueue);
@@ -2157,15 +1992,13 @@ static gboolean  parole_media_list_dbus_add_files(ParoleMediaList *list,
     return TRUE;
 }
 
-void parole_media_list_grab_focus(ParoleMediaList *list)
-{
+void parole_media_list_grab_focus(ParoleMediaList *list) {
     if (gtk_widget_get_visible (list->priv->view) )
         gtk_widget_grab_focus(list->priv->view);
 }
 
 static void
-update_media_list_n_shuffled_items(void)
-{
+update_media_list_n_shuffled_items(void) {
     gboolean repeat = gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(media_list->priv->repeat_button));
     if (repeat) {
         /* Disable the control on the number of shuffled items in case of randomization */
@@ -2177,12 +2010,10 @@ update_media_list_n_shuffled_items(void)
 }
 
 static void
-repeat_action_state_changed(GSimpleAction *simple, GVariant *value, gpointer user_data)
-{
+repeat_action_state_changed(GSimpleAction *simple, GVariant *value, gpointer user_data) {
     gboolean active = g_simple_toggle_action_get_active(simple);
 
-    if (gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(media_list->priv->repeat_button)) != active)
-    {
+    if (gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(media_list->priv->repeat_button)) != active) {
         gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(media_list->priv->repeat_button), active);
     }
 
@@ -2190,14 +2021,12 @@ repeat_action_state_changed(GSimpleAction *simple, GVariant *value, gpointer use
 }
 
 static void
-repeat_toggled(GtkWidget *widget, GSimpleAction *simple)
-{
+repeat_toggled(GtkWidget *widget, GSimpleAction *simple) {
     gboolean active = gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(media_list->priv->repeat_button));
     g_simple_toggle_action_set_active(simple, active);
 }
 
-void parole_media_list_connect_repeat_action(ParoleMediaList *list, GSimpleAction *simple)
-{
+void parole_media_list_connect_repeat_action(ParoleMediaList *list, GSimpleAction *simple) {
     /* Connect state-changed event to modify widget */
     g_signal_connect(G_OBJECT(simple), "notify::state", G_CALLBACK(repeat_action_state_changed), NULL);
     /* Connect changed event to modify action */
@@ -2205,12 +2034,10 @@ void parole_media_list_connect_repeat_action(ParoleMediaList *list, GSimpleActio
 }
 
 static void
-shuffle_action_state_changed(GSimpleAction *simple, GVariant *value, gpointer user_data)
-{
+shuffle_action_state_changed(GSimpleAction *simple, GVariant *value, gpointer user_data) {
     gboolean active = g_simple_toggle_action_get_active(simple);
 
-    if (gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(media_list->priv->shuffle_button)) != active)
-    {
+    if (gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(media_list->priv->shuffle_button)) != active) {
         gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(media_list->priv->shuffle_button), active);
     }
 
@@ -2218,14 +2045,12 @@ shuffle_action_state_changed(GSimpleAction *simple, GVariant *value, gpointer us
 }
 
 static void
-shuffle_toggled(GtkWidget *widget, GSimpleAction *simple)
-{
+shuffle_toggled(GtkWidget *widget, GSimpleAction *simple) {
     gboolean active = gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(media_list->priv->shuffle_button));
     g_simple_toggle_action_set_active(simple, active);
 }
 
-void parole_media_list_connect_shuffle_action(ParoleMediaList *list, GSimpleAction *simple)
-{
+void parole_media_list_connect_shuffle_action(ParoleMediaList *list, GSimpleAction *simple) {
     /* Connect state-changed event to modify widget */
     g_signal_connect(G_OBJECT(simple), "notify::state", G_CALLBACK(shuffle_action_state_changed), NULL);
     /* Connect changed event to modify action */

@@ -45,35 +45,30 @@ G_DEFINE_TYPE(ParoleScreenSaver, parole_screen_saver, G_TYPE_OBJECT)
 
 
 static void
-parole_screen_saver_finalize(GObject *object)
-{
+parole_screen_saver_finalize(GObject *object) {
     G_OBJECT_CLASS(parole_screen_saver_parent_class)->finalize(object);
 }
 
 static void
-parole_screen_saver_class_init(ParoleScreenSaverClass *klass)
-{
+parole_screen_saver_class_init(ParoleScreenSaverClass *klass) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
     object_class->finalize = parole_screen_saver_finalize;
 }
 
 static void
-parole_screen_saver_init(ParoleScreenSaver *saver)
-{
+parole_screen_saver_init(ParoleScreenSaver *saver) {
     return;
 }
 
 ParoleScreenSaver *
-parole_screen_saver_new(void)
-{
+parole_screen_saver_new(void) {
     ParoleScreenSaver *saver = NULL;
     saver = g_object_new(PAROLE_TYPE_SCREENSAVER, NULL);
     return saver;
 }
 
-void parole_screen_saver_inhibit(ParoleScreenSaver *saver, GtkWindow *window)
-{
+void parole_screen_saver_inhibit(ParoleScreenSaver *saver, GtkWindow *window) {
     gchar *cmd;
     gint returncode;
 
@@ -87,8 +82,7 @@ void parole_screen_saver_inhibit(ParoleScreenSaver *saver, GtkWindow *window)
     g_free(cmd);
 }
 
-void parole_screen_saver_uninhibit(ParoleScreenSaver *saver, GtkWindow *window)
-{
+void parole_screen_saver_uninhibit(ParoleScreenSaver *saver, GtkWindow *window) {
     gchar *cmd;
     gint returncode;
 

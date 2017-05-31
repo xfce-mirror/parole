@@ -36,8 +36,7 @@
 #if defined(DEBUG) && defined(G_HAVE_ISO_VARARGS)
 
 void parole_debug_enum(const gchar *func, const gchar *file, gint line,
-                const gchar *text, gint v_enum, GType type)
-{
+                const gchar *text, gint v_enum, GType type) {
     gchar *content = NULL;
     GValue __value__ = { 0, };
 
@@ -54,8 +53,7 @@ void parole_debug_enum(const gchar *func, const gchar *file, gint line,
 }
 
 void parole_debug_enum_full(const gchar *func, const gchar *file, gint line,
-                 gint v_enum, GType type, const gchar *format, ...)
-{
+                 gint v_enum, GType type, const gchar *format, ...) {
     va_list args;
     gchar *buffer;
 

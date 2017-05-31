@@ -38,13 +38,11 @@ G_BEGIN_DECLS
 typedef struct _ParoleFile      ParoleFile;
 typedef struct _ParoleFileClass ParoleFileClass;
 
-struct _ParoleFile
-{
+struct _ParoleFile {
     GObject             parent;
 };
 
-struct _ParoleFileClass
-{
+struct _ParoleFileClass {
     GObjectClass        parent_class;
 };
 

@@ -41,8 +41,7 @@ G_BEGIN_DECLS
 typedef struct _ParoleProviderPluginIface ParoleProviderPluginIface;
 typedef struct _ParoleProviderPlugin      ParoleProviderPlugin;
 
-struct _ParoleProviderPluginIface
-{
+struct _ParoleProviderPluginIface {
     GTypeInterface  __parent__;
 
     /*< public >*/

@@ -54,8 +54,7 @@
 #include "parole-conf.h"
 
 static void G_GNUC_NORETURN
-show_version(void)
-{
+show_version(void) {
     g_print(_("\n"
              "Parole Media Player %s\n\n"
              "Part of the Xfce Goodies Project\n"
@@ -66,8 +65,7 @@ show_version(void)
 }
 
 static void
-parole_sig_handler(gint sig, gpointer data)
-{
+parole_sig_handler(gint sig, gpointer data) {
     ParolePlayer *player = (ParolePlayer *) data;
 
     parole_player_terminate(player);
@@ -81,8 +79,7 @@ parole_sig_handler(gint sig, gpointer data)
  * Load the discs that is passed as a cli argument to Parole.
  **/
 static void
-parole_send_play_disc(const gchar *uri, const gchar *device)
-{
+parole_send_play_disc(const gchar *uri, const gchar *device) {
     DBusGProxy *proxy;
     GError *error = NULL;
     gchar *uri_local;
@@ -103,8 +100,7 @@ parole_send_play_disc(const gchar *uri, const gchar *device)
 
     g_free(uri_local);
 
-    if ( error )
-    {
+    if ( error ) {
         g_critical("Unable to send uri to Parole: %s", error->message);
         g_error_free(error);
     }
@@ -121,8 +117,7 @@ parole_send_play_disc(const gchar *uri, const gchar *device)
  * Load files that are passed as cli arguments to Parole.
  **/
 static void
-parole_send_files(gchar **filenames, gboolean enqueue)
-{
+parole_send_files(gchar **filenames, gboolean enqueue) {
     DBusGProxy *proxy;
     GFile *file;
     gchar **out_paths;
@@ -136,8 +131,7 @@ parole_send_files(gchar **filenames, gboolean enqueue)
 
     out_paths = g_new0(gchar *, g_strv_length(filenames) + 1);
 
-    for ( i = 0; filenames && filenames[i]; i++)
-    {
+    for (i = 0; filenames && filenames[i]; i++) {
         file = g_file_new_for_commandline_arg(filenames[i]);
         out_paths[i] = g_file_get_path(file);
         g_object_unref(file);
@@ -150,8 +144,7 @@ parole_send_files(gchar **filenames, gboolean enqueue)
                        G_TYPE_INVALID);
 
 
-    if ( error )
-    {
+    if ( error ) {
         g_critical("Unable to send media files to Parole: %s", error->message);
         g_error_free(error);
     }
@@ -170,8 +163,7 @@ parole_send_files(gchar **filenames, gboolean enqueue)
  * Load the files or device that are passed as cli arguments to Parole.
  **/
 static void
-parole_send(gchar **filenames, gchar *device, gboolean enqueue)
-{
+parole_send(gchar **filenames, gchar *device, gboolean enqueue) {
     if ( g_strv_length (filenames) == 1 && parole_is_uri_disc (filenames[0]))
         parole_send_play_disc(filenames[0], device);
     else
@@ -185,8 +177,7 @@ parole_send(gchar **filenames, gchar *device, gboolean enqueue)
  * Send a message via DBUS to Parole.
  **/
 static void
-parole_send_message(const gchar *message)
-{
+parole_send_message(const gchar *message) {
     DBusGProxy *proxy;
     GError *error = NULL;
 
@@ -196,8 +187,7 @@ parole_send_message(const gchar *message)
                        G_TYPE_INVALID,
                        G_TYPE_INVALID);
 
-    if ( error )
-    {
+    if ( error ) {
         g_critical("Failed to send message : %s : %s", message, error->message);
         g_error_free(error);
     }
@@ -205,8 +195,7 @@ parole_send_message(const gchar *message)
     g_object_unref(proxy);
 }
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
     ParolePlayer *player;
     ParolePluginsManager *plugins;
     GtkBuilder *builder;
@@ -232,24 +221,23 @@ int main(int argc, char **argv)
     gchar    *client_id = NULL;
 
     /* Command-line options */
-    GOptionEntry option_entries[] =
-    {
-    { "new-instance", 'i', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &new_instance, N_("Open a new instance"), NULL },
-    { "no-plugins", 'n', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &no_plugins, N_("Do not load plugins"), NULL },
-    { "device", 'd', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_STRING, &device, N_("Set Audio-CD/VCD/DVD device path"), NULL },
-    { "embedded", 'E', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &embedded, N_("Start in embedded mode"), NULL },
-    { "fullscreen", 'F', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &fullscreen, N_("Start in fullscreen mode"), NULL },
-    { "play", 'p', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &play, N_("Play or pause if already playing"), NULL },
-    { "next", 'N', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &next_track, N_("Next track"), NULL },
-    { "previous", 'P', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &prev_track, N_("Previous track"), NULL },
-    { "volume-up", 'r', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &raise_volume, N_("Raise volume"), NULL },
-    { "volume-down", 'l', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &lower_volume, N_("Lower volume"), NULL },
-    { "mute", 'm', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &mute, N_("Mute volume"), NULL },
-    { "unmute", 'u', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &unmute, N_("Unmute (restore) volume"), NULL },
-    { "add", 'a', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &enqueue, N_("Add files to playlist"), NULL},
-    { "version", 'V', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &version, N_("Print version information and exit"), NULL },
-    { "sm-client-id", 0, G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_STRING, &client_id, NULL, NULL },
-    {G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, &filenames, N_("Media to play"), NULL},
+    GOptionEntry option_entries[] = {
+        { "new-instance", 'i', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &new_instance, N_("Open a new instance"), NULL },
+        { "no-plugins", 'n', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &no_plugins, N_("Do not load plugins"), NULL },
+        { "device", 'd', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_STRING, &device, N_("Set Audio-CD/VCD/DVD device path"), NULL },
+        { "embedded", 'E', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &embedded, N_("Start in embedded mode"), NULL },
+        { "fullscreen", 'F', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &fullscreen, N_("Start in fullscreen mode"), NULL },
+        { "play", 'p', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &play, N_("Play or pause if already playing"), NULL },
+        { "next", 'N', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &next_track, N_("Next track"), NULL },
+        { "previous", 'P', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &prev_track, N_("Previous track"), NULL },
+        { "volume-up", 'r', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &raise_volume, N_("Raise volume"), NULL },
+        { "volume-down", 'l', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &lower_volume, N_("Lower volume"), NULL },
+        { "mute", 'm', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &mute, N_("Mute volume"), NULL },
+        { "unmute", 'u', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &unmute, N_("Unmute (restore) volume"), NULL },
+        { "add", 'a', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &enqueue, N_("Add files to playlist"), NULL},
+        { "version", 'V', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &version, N_("Print version information and exit"), NULL },
+        { "sm-client-id", 0, G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_STRING, &client_id, NULL, NULL },
+        {G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, &filenames, N_("Media to play"), NULL},
         { NULL, },
     };
 
@@ -257,8 +245,7 @@ int main(int argc, char **argv)
         dbus_threads_init_default();
 
     /* initialize xfconf */
-    if (!xfconf_init (&error))
-    {
+    if (!xfconf_init(&error)) {
         g_critical("Failed to initialize Xfconf: %s", error->message);
         g_error_free(error);
         return EXIT_FAILURE;
@@ -281,8 +268,7 @@ int main(int argc, char **argv)
 
     g_option_context_add_group(ctx, gtk_get_option_group(TRUE));
 
-    if ( !g_option_context_parse (ctx, &argc, &argv, &error) )
-    {
+    if (!g_option_context_parse(ctx, &argc, &argv, &error)) {
         g_print("%s\n", error->message);
         g_print(_("Type %s --help to list all available command line options\n"), argv[0]);
         g_error_free(error);
@@ -295,8 +281,7 @@ int main(int argc, char **argv)
         show_version();
 
     /* Check for cli options if there is an instance of Parole already */
-    if ( !new_instance && parole_dbus_name_has_owner (PAROLE_DBUS_NAME) )
-    {
+    if (!new_instance && parole_dbus_name_has_owner(PAROLE_DBUS_NAME)) {
         /* Clear startup notification */
         gdk_notify_startup_complete();
 

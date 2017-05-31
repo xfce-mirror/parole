@@ -27,14 +27,11 @@
 #include "parole-provider-plugin.h"
 
 GType
-parole_provider_plugin_get_type(void)
-{
+parole_provider_plugin_get_type(void) {
     static GType type = G_TYPE_INVALID;
 
-    if (G_UNLIKELY (type == G_TYPE_INVALID))
-    {
-        static const GTypeInfo info =
-        {
+    if (G_UNLIKELY(type == G_TYPE_INVALID)) {
+        static const GTypeInfo info = {
             sizeof (ParoleProviderPluginIface),
             NULL,
             NULL,
@@ -64,14 +61,12 @@ parole_provider_plugin_get_type(void)
  *
  * Since: 0.2
  **/
-gboolean parole_provider_plugin_get_is_configurable(ParoleProviderPlugin *provider)
-{
+gboolean parole_provider_plugin_get_is_configurable(ParoleProviderPlugin *provider) {
     gboolean configurable = FALSE;
 
     g_return_val_if_fail(PAROLE_IS_PROVIDER_PLUGIN(provider), FALSE);
 
-    if ( PAROLE_PROVIDER_PLUGIN_GET_INTERFACE (provider)->get_is_configurable )
-    {
+    if (PAROLE_PROVIDER_PLUGIN_GET_INTERFACE(provider)->get_is_configurable) {
         configurable =(*PAROLE_PROVIDER_PLUGIN_GET_INTERFACE(provider)->get_is_configurable)(provider);
     }
 
@@ -88,13 +83,11 @@ gboolean parole_provider_plugin_get_is_configurable(ParoleProviderPlugin *provid
  *
  * Since: 0.2
  **/
-void parole_provider_plugin_configure(ParoleProviderPlugin *provider, GtkWidget *parent)
-{
+void parole_provider_plugin_configure(ParoleProviderPlugin *provider, GtkWidget *parent) {
     g_return_if_fail(PAROLE_IS_PROVIDER_PLUGIN(provider));
 
-    if ( PAROLE_PROVIDER_PLUGIN_GET_INTERFACE (provider)->configure )
-    {
-(*PAROLE_PROVIDER_PLUGIN_GET_INTERFACE(provider)->configure)(provider, parent);
+    if (PAROLE_PROVIDER_PLUGIN_GET_INTERFACE(provider)->configure) {
+        (*PAROLE_PROVIDER_PLUGIN_GET_INTERFACE(provider)->configure)(provider, parent);
     }
 }
 
@@ -108,10 +101,8 @@ void parole_provider_plugin_configure(ParoleProviderPlugin *provider, GtkWidget 
  *
  * Since: 0.2
  **/
-void parole_provider_plugin_set_player(ParoleProviderPlugin *provider, ParoleProviderPlayer *player)
-{
-    if ( PAROLE_PROVIDER_PLUGIN_GET_INTERFACE (provider)->set_player )
-    {
-(*PAROLE_PROVIDER_PLUGIN_GET_INTERFACE(provider)->set_player)(provider, player);
+void parole_provider_plugin_set_player(ParoleProviderPlugin *provider, ParoleProviderPlayer *player) {
+    if (PAROLE_PROVIDER_PLUGIN_GET_INTERFACE(provider)->set_player) {
+        (*PAROLE_PROVIDER_PLUGIN_GET_INTERFACE(provider)->set_player)(provider, player);
     }
 }

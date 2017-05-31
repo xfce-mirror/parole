@@ -33,14 +33,12 @@ G_BEGIN_DECLS
 
 typedef struct ParolePluginPlayerPrivate ParolePluginPlayerPrivate;
 
-typedef struct
-{
+typedef struct {
     GObject                     parent;
     ParolePluginPlayerPrivate  *priv;
 } ParolePluginPlayer;
 
-typedef struct
-{
+typedef struct {
     GObjectClass                parent_class;
 } ParolePluginPlayerClass;
 

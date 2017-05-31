@@ -40,8 +40,7 @@
 
 #include "parole-subtitle-encoding.h"
 
-typedef enum
-{
+typedef enum {
   SUBTITLE_ENCODING_CURRENT_LOCALE,
 
   SUBTITLE_ENCODING_ISO_8859_6,
@@ -151,8 +150,7 @@ typedef enum
 } SubtitleEncodingIndex;
 
 
-typedef struct
-{
+typedef struct {
   int index;
   const char *charset;
   const char *name;
@@ -341,8 +339,7 @@ static SubtitleEncoding encodings[] = {
 };
 
 static const SubtitleEncoding *
-find_encoding_by_charset(const char *charset)
-{
+find_encoding_by_charset(const char *charset) {
   int i;
 
   i = 1;                        /* skip current locale */
@@ -361,8 +358,7 @@ find_encoding_by_charset(const char *charset)
 }
 
 static void
-subtitle_encoding_init(void)
-{
+subtitle_encoding_init(void) {
   guint i;
 
   g_get_charset((const char **)
@@ -377,8 +373,7 @@ subtitle_encoding_init(void)
 }
 
 static int
-subtitle_encoding_get_index(const char *charset)
-{
+subtitle_encoding_get_index(const char *charset) {
   const SubtitleEncoding *e;
 
   e = find_encoding_by_charset(charset);
@@ -389,8 +384,7 @@ subtitle_encoding_get_index(const char *charset)
 }
 
 static const char *
-subtitle_encoding_get_charset(int index_i)
-{
+subtitle_encoding_get_charset(int index_i) {
   const SubtitleEncoding *e;
 
   if (index_i >= SUBTITLE_ENCODING_LAST)
@@ -402,15 +396,13 @@ subtitle_encoding_get_charset(int index_i)
   return e->charset;
 }
 
-enum
-{
+enum {
   INDEX_COL,
   NAME_COL
 };
 
 static gint
-compare(GtkTreeModel * model, GtkTreeIter * a, GtkTreeIter * b, gpointer data)
-{
+compare(GtkTreeModel * model, GtkTreeIter * a, GtkTreeIter * b, gpointer data) {
   gchar *str_a, *str_b;
   gint result;
 
@@ -427,9 +419,8 @@ compare(GtkTreeModel * model, GtkTreeIter * a, GtkTreeIter * b, gpointer data)
 
 static void
 is_encoding_sensitive(GtkCellLayout * cell_layout,
-    GtkCellRenderer * cell,
-    GtkTreeModel * tree_model, GtkTreeIter * iter, gpointer data)
-{
+                      GtkCellRenderer * cell,
+                      GtkTreeModel * tree_model, GtkTreeIter * iter, gpointer data) {
   gboolean sensitive;
 
   sensitive = !gtk_tree_model_iter_has_child(tree_model, iter);
@@ -437,8 +428,7 @@ is_encoding_sensitive(GtkCellLayout * cell_layout,
 }
 
 static GtkTreeModel *
-subtitle_encoding_create_store(void)
-{
+subtitle_encoding_create_store(void) {
   gchar *label;
   gchar *lastlang = "";
   GtkTreeIter iter, iter2;
@@ -468,8 +458,7 @@ subtitle_encoding_create_store(void)
 }
 
 static void
-subtitle_encoding_combo_render(GtkComboBox * combo)
-{
+subtitle_encoding_combo_render(GtkComboBox * combo) {
   GtkCellRenderer *renderer;
 
   renderer = gtk_cell_renderer_text_new();
@@ -481,8 +470,7 @@ subtitle_encoding_combo_render(GtkComboBox * combo)
 }
 
 const char *
-parole_subtitle_encoding_get_selected(GtkComboBox * combo)
-{
+parole_subtitle_encoding_get_selected(GtkComboBox * combo) {
   GtkTreeModel *model;
   GtkTreeIter iter;
   gint index_i = -1;
@@ -498,8 +486,7 @@ parole_subtitle_encoding_get_selected(GtkComboBox * combo)
 }
 
 void
-parole_subtitle_encoding_set(GtkComboBox * combo, const char *encoding)
-{
+parole_subtitle_encoding_set(GtkComboBox * combo, const char *encoding) {
   GtkTreeModel *model;
   GtkTreeIter iter, iter2;
   gint index_i, i;
@@ -509,8 +496,7 @@ parole_subtitle_encoding_set(GtkComboBox * combo, const char *encoding)
   model = gtk_combo_box_get_model(combo);
   index_i = subtitle_encoding_get_index(encoding);
 
-  if (gtk_tree_model_get_iter_first (model, &iter))
-  {
+  if (gtk_tree_model_get_iter_first(model, &iter)) {
       do {
         if (!gtk_tree_model_iter_has_child (model, &iter))
           continue;
@@ -529,8 +515,7 @@ parole_subtitle_encoding_set(GtkComboBox * combo, const char *encoding)
 }
 
 void
-parole_subtitle_encoding_init(GtkComboBox *combo)
-{
+parole_subtitle_encoding_init(GtkComboBox *combo) {
   GtkTreeModel *model;
   subtitle_encoding_init();
   model = subtitle_encoding_create_store();
