@@ -58,7 +58,7 @@ typedef struct {
     gchar    *title;
 } ParoleParserData;
 
-gchar *g_substr(const gchar* string, gint start, gint end);
+gchar *g_substr(const gchar* str, gint start, gint end);
 
 static gchar*
 parole_filename_to_utf8(const gchar* filename) {
@@ -277,10 +277,10 @@ out:
 }
 
 gchar *
-g_substr(const gchar* string, gint start, gint end) {
+g_substr(const gchar* str, gint start, gint end) {
     gsize len = (end - start + 1);
     gchar *output = g_malloc0(len + 1);
-    return g_utf8_strncpy (output, &string[start], len);
+    return g_utf8_strncpy (output, &str[start], len);
 }
 
 static GSList *

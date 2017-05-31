@@ -900,7 +900,7 @@ parole_conf_load_rc_file(ParoleConf *conf) {
     GParamSpec   *pspec;
     XfceRc       *rc;
     guint         nspecs, n;
-    const gchar  *string;
+    const gchar  *str;
     GValue        dst = { 0, };
     GValue        src = { 0, };
     gchar         prop_name[64];
@@ -929,8 +929,8 @@ parole_conf_load_rc_file(ParoleConf *conf) {
             continue;
 
         /* read the value from the rc file */
-        string = xfce_rc_read_entry(rc, nick, NULL);
-        if (G_UNLIKELY (string == NULL))
+        str = xfce_rc_read_entry(rc, nick, NULL);
+        if (G_UNLIKELY (str == NULL))
             continue;
 
         /* xfconf property name, continue if exists */
@@ -940,7 +940,7 @@ parole_conf_load_rc_file(ParoleConf *conf) {
 
         /* source property */
         g_value_init(&src, G_TYPE_STRING);
-        g_value_set_static_string(&src, string);
+        g_value_set_static_string(&src, str);
 
         /* store string and enums directly */
         if (G_IS_PARAM_SPEC_STRING(pspec) || G_IS_PARAM_SPEC_ENUM(pspec)) {
