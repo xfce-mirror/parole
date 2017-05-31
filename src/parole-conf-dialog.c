@@ -295,7 +295,10 @@ parole_conf_dialog_add_clutter_sink(ParoleConfDialog *dialog, GtkComboBox *combo
 
 /* Set the combobox to the default visualisation plugin */
 static gboolean
-parole_conf_dialog_set_default_vis_plugin(GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, ParoleConfDialog *self) {
+parole_conf_dialog_set_default_vis_plugin(GtkTreeModel *model,
+                                          GtkTreePath *path,
+                                          GtkTreeIter *iter,
+                                          ParoleConfDialog *self) {
     GstElementFactory *f;
     gchar *vis_name;
     gchar *combox_text;
@@ -485,7 +488,8 @@ void parole_conf_dialog_open(ParoleConfDialog *self, GtkWidget *parent) {
     g_object_bind_property(G_OBJECT(self->priv->conf), "vis-enabled",
                            switch_widget, "active",
                            G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
-    g_signal_connect(G_OBJECT(switch_widget), "notify::active", G_CALLBACK(parole_conf_dialog_enable_vis_changed_cb), self);
+    g_signal_connect(G_OBJECT(switch_widget), "notify::active",
+                     G_CALLBACK(parole_conf_dialog_enable_vis_changed_cb), self);
 
     /* General/Keyboard/Enable keyboard multimedia keys */
     switch_widget = GTK_WIDGET(gtk_builder_get_object(builder, "multimedia-keys"));

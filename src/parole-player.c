@@ -524,7 +524,8 @@ void parole_player_set_playlist_visible(ParolePlayer *player, gboolean visibilit
     gint window_w, window_h, playlist_w;
     GtkAllocation *allocation = g_new0(GtkAllocation, 1);
 
-    gtk_widget_set_tooltip_text(GTK_WIDGET(player->priv->showhide_playlist_button), visibility ? _("Hide Playlist") : _("Show Playlist"));
+    gtk_widget_set_tooltip_text(GTK_WIDGET(player->priv->showhide_playlist_button),
+        visibility ? _("Hide Playlist") : _("Show Playlist"));
 
     if (gtk_widget_get_visible (player->priv->playlist_nt) == visibility)
         return;
@@ -542,7 +543,8 @@ void parole_player_set_playlist_visible(ParolePlayer *player, gboolean visibilit
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(player->priv->showhide_playlist_button), visibility);
     if ( visibility ) {
         if ( !player->priv->full_screen )
-            gtk_window_resize(GTK_WINDOW(player->priv->window), window_w+playlist_w+player->priv->handle_width, window_h);
+            gtk_window_resize(GTK_WINDOW(player->priv->window),
+                window_w+playlist_w+player->priv->handle_width, window_h);
 
         gtk_widget_show(player->priv->playlist_nt);
         g_object_set(G_OBJECT(player->priv->conf),
@@ -555,7 +557,8 @@ void parole_player_set_playlist_visible(ParolePlayer *player, gboolean visibilit
                         NULL);
 
         if ( !player->priv->full_screen )
-            gtk_window_resize(GTK_WINDOW(player->priv->window), window_w-playlist_w-player->priv->handle_width, window_h);
+            gtk_window_resize(GTK_WINDOW(player->priv->window),
+                window_w-playlist_w-player->priv->handle_width, window_h);
     }
 }
 
@@ -759,7 +762,8 @@ parole_player_set_subtitles_list(ParolePlayer *player, GList *subtitle_list) {
         gtk_list_store_append(GTK_LIST_STORE(player->priv->liststore_subtitles), &iter);
         gtk_list_store_set(GTK_LIST_STORE(player->priv->liststore_subtitles), &iter, 0, language, -1);
 
-        menu_item = gtk_radio_menu_item_new_with_label_from_widget(GTK_RADIO_MENU_ITEM(player->priv->subtitles_group), language);
+        menu_item = gtk_radio_menu_item_new_with_label_from_widget(
+            GTK_RADIO_MENU_ITEM(player->priv->subtitles_group), language);
         gtk_widget_show(menu_item);
 
         gtk_menu_shell_append(GTK_MENU_SHELL(player->priv->subtitles_menu), menu_item);
@@ -833,7 +837,8 @@ parole_player_set_audio_list(ParolePlayer *player, GList *audio_list) {
             g_signal_connect(player->priv->audio_group, "activate",
                               G_CALLBACK(parole_player_audiotrack_radio_menu_item_changed_cb), player);
         } else {
-            menu_item = gtk_radio_menu_item_new_with_label_from_widget(GTK_RADIO_MENU_ITEM(player->priv->audio_group), language);
+            menu_item = gtk_radio_menu_item_new_with_label_from_widget(
+                GTK_RADIO_MENU_ITEM(player->priv->audio_group), language);
             gtk_widget_show(menu_item);
             gtk_menu_shell_append(GTK_MENU_SHELL(player->priv->languages_menu), menu_item);
 
@@ -1085,7 +1090,8 @@ parole_player_media_activated_cb(ParoleMediaList *list, GtkTreeRowReference *row
                                  parole_file_get_uri(file),
                                  sub);
 
-            gtk_window_set_title(GTK_WINDOW(player->priv->window), parole_media_list_get_row_name(player->priv->list, player->priv->row));
+            gtk_window_set_title(GTK_WINDOW(player->priv->window),
+                                 parole_media_list_get_row_name(player->priv->list, player->priv->row));
 
             if ( directory ) {
                 g_object_set(G_OBJECT(player->priv->conf),
@@ -1762,41 +1768,73 @@ parole_player_media_tag_cb(ParoleGst *gst, const ParoleStream *stream, ParolePla
         if ( title ) {
             parole_media_list_set_row_name(player->priv->list, player->priv->row, title);
             gtk_window_set_title(GTK_WINDOW(player->priv->window), title);
-            gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), g_markup_printf_escaped("<span color='#F4F4F4'><b><big>%s</big></b></span>", title));
+            gtk_label_set_markup(
+                GTK_LABEL(player->priv->audiobox_title),
+                g_markup_printf_escaped(
+                    "<span color='#F4F4F4'><b><big>%s</big></b></span>",
+                    title));
             g_free(title);
         } else {
             /* No ID3, no problem! Show the filename instead */
             filename = parole_player_get_filename_from_uri(uri);
             if ( filename ) {
                 gtk_window_set_title(GTK_WINDOW(player->priv->window), filename);
-                gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), g_markup_printf_escaped("<span color='#F4F4F4'><b><big>%s</big></b></span>", filename));
+                gtk_label_set_markup(
+                    GTK_LABEL(player->priv->audiobox_title),
+                    g_markup_printf_escaped(
+                        "<span color='#F4F4F4'><b><big>%s</big></b></span>",
+                        filename));
                 g_free(filename);
             } else {
                 gtk_window_set_title(GTK_WINDOW(player->priv->window), _("Parole Media Player"));
-                gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), g_markup_printf_escaped("<span color='#F4F4F4'><b><big>%s</big></b></span>", _("Unknown Song")));
+                gtk_label_set_markup(
+                    GTK_LABEL(player->priv->audiobox_title),
+                    g_markup_printf_escaped(
+                        "<span color='#F4F4F4'><b><big>%s</big></b></span>",
+                        _("Unknown Song")));
             }
         }
         g_free(uri);
 
         if ( album ) {
             if (year)
-                gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), g_markup_printf_escaped("<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s (%s)</span></big>", _("on"), album, year));
+                gtk_label_set_markup(
+                    GTK_LABEL(player->priv->audiobox_album),
+                    g_markup_printf_escaped(
+                        "<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s (%s)</span></big>",
+                        _("on"), album, year));
             else
-                gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), g_markup_printf_escaped("<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s</span></big>", _("on"), album));
+                gtk_label_set_markup(
+                    GTK_LABEL(player->priv->audiobox_album),
+                    g_markup_printf_escaped(
+                        "<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s</span></big>",
+                        _("on"), album));
 
             g_free(album);
         } else {
-            gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), g_markup_printf_escaped("<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s</span></big>", _("on"), _("Unknown Album")));
+            gtk_label_set_markup(
+                GTK_LABEL(player->priv->audiobox_album),
+                g_markup_printf_escaped(
+                    "<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s</span></big>",
+                    _("on"), _("Unknown Album")));
         }
 
         if (year)
             g_free(year);
 
         if ( artist ) {
-            gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_artist), g_markup_printf_escaped("<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s</span></big>", _("by"), artist));
+            gtk_label_set_markup(
+                GTK_LABEL(player->priv->audiobox_artist),
+                g_markup_printf_escaped(
+                    "<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s</span></big>",
+                    _("by"), artist));
             g_free(artist);
         } else {
-            gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_artist), g_markup_printf_escaped("<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s</span></big>", _("by"), _("Unknown Artist")));
+            gtk_label_set_markup(
+                GTK_LABEL(player->priv->audiobox_artist),
+                g_markup_printf_escaped(
+                    "<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s</span></big>",
+                    _("by"), _("Unknown Artist")));
         }
 
         image = parole_stream_get_image(G_OBJECT(stream));
@@ -1804,7 +1842,9 @@ parole_player_media_tag_cb(ParoleGst *gst, const ParoleStream *stream, ParolePla
             gtk_image_set_from_pixbuf(GTK_IMAGE(player->priv->audiobox_cover), image);
             g_object_unref(image);
         } else {
-            gtk_image_set_from_icon_name(GTK_IMAGE(player->priv->audiobox_cover), "audio-x-generic-symbolic", GTK_ICON_SIZE_ARTWORK_FALLBACK);
+            gtk_image_set_from_icon_name(GTK_IMAGE(player->priv->audiobox_cover),
+                                         "audio-x-generic-symbolic",
+                                         GTK_ICON_SIZE_ARTWORK_FALLBACK);
         }
     }
 }
@@ -2062,7 +2102,9 @@ parole_player_show_menu(ParolePlayer *player, guint button, guint activate_time)
 
     gtk_widget_set_sensitive(mi, sensitive);
     gtk_widget_show(mi);
-    g_signal_connect(G_OBJECT(mi), "activate", G_CALLBACK(parole_player_widget_activate_action), player->priv->media_playpause_action);
+    g_signal_connect(G_OBJECT(mi), "activate",
+                     G_CALLBACK(parole_player_widget_activate_action),
+                     player->priv->media_playpause_action);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
 
     /*
@@ -2071,7 +2113,9 @@ parole_player_show_menu(ParolePlayer *player, guint button, guint activate_time)
     mi = gtk_menu_item_new_with_mnemonic(_("_Previous"));
     gtk_widget_set_sensitive(mi, (player->priv->state >= PAROLE_STATE_PAUSED));
     gtk_widget_show(mi);
-    g_signal_connect(G_OBJECT(mi), "activate", G_CALLBACK(parole_player_widget_activate_action), player->priv->media_previous_action);
+    g_signal_connect(G_OBJECT(mi), "activate",
+                     G_CALLBACK(parole_player_widget_activate_action),
+                     player->priv->media_previous_action);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
 
     /*
@@ -2080,7 +2124,9 @@ parole_player_show_menu(ParolePlayer *player, guint button, guint activate_time)
     mi = gtk_menu_item_new_with_mnemonic(_("_Next"));
     gtk_widget_set_sensitive(mi, (player->priv->state >= PAROLE_STATE_PAUSED));
     gtk_widget_show(mi);
-    g_signal_connect(G_OBJECT(mi), "activate", G_CALLBACK(parole_player_widget_activate_action), player->priv->media_next_action);
+    g_signal_connect(G_OBJECT(mi), "activate",
+                     G_CALLBACK(parole_player_widget_activate_action),
+                     player->priv->media_next_action);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
 
     /*
@@ -2088,7 +2134,9 @@ parole_player_show_menu(ParolePlayer *player, guint button, guint activate_time)
      */
     mi = gtk_menu_item_new_with_mnemonic(player->priv->full_screen ? _("_Leave Fullscreen"):_("_Fullscreen"));
     gtk_widget_show(mi);
-    g_signal_connect(G_OBJECT(mi), "activate", G_CALLBACK(parole_player_widget_activate_action), player->priv->media_fullscreen_action);
+    g_signal_connect(G_OBJECT(mi), "activate",
+                     G_CALLBACK(parole_player_widget_activate_action),
+                     player->priv->media_fullscreen_action);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
 
     if (!player->priv->full_screen) {
@@ -2606,7 +2654,9 @@ parole_player_key_press(GtkWidget *widget, GdkEventKey *ev, ParolePlayer *player
 
     switch (ev->keyval) {
         case GDK_KEY_F11:
-            if ( player->priv->embedded != TRUE ) g_action_activate (G_ACTION(player->priv->media_fullscreen_action), NULL);
+            if ( player->priv->embedded != TRUE ) {
+                g_action_activate(G_ACTION(player->priv->media_fullscreen_action), NULL);
+            }
             return TRUE;
         default:
             break;
@@ -2721,7 +2771,10 @@ static void
 on_bug_report_clicked(GtkWidget *w, ParolePlayer *player) {
     GtkWidget *dialog;
 #if GTK_CHECK_VERSION(3, 22, 0)
-    if (!gtk_show_uri_on_window(GTK_WINDOW(player->priv->window), "https://docs.xfce.org/apps/parole/bugs", GDK_CURRENT_TIME, NULL)) {
+    if (!gtk_show_uri_on_window(GTK_WINDOW(player->priv->window),
+                                "https://docs.xfce.org/apps/parole/bugs",
+                                GDK_CURRENT_TIME,
+                                NULL)) {
 #else
     if (!gtk_show_uri(NULL, "https://docs.xfce.org/apps/parole/bugs", GDK_CURRENT_TIME, NULL)) {
 #endif
@@ -3460,7 +3513,9 @@ parole_player_init(ParolePlayer *player) {
     gtk_widget_add_events(GTK_WIDGET(play_box), GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK);
     g_signal_connect(G_OBJECT(play_box), "motion-notify-event",
                      G_CALLBACK(parole_player_gst_widget_motion_notify_event), player);
-    for (widgets = gtk_container_get_children(GTK_CONTAINER(play_box)); widgets != NULL; widgets = g_list_next(widgets)) {
+    for (widgets = gtk_container_get_children(GTK_CONTAINER(play_box));
+         widgets != NULL;
+         widgets = g_list_next(widgets)) {
         gtk_widget_add_events(GTK_WIDGET(widgets->data), GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK);
         g_signal_connect(G_OBJECT(widgets->data), "motion-notify-event",
                      G_CALLBACK(parole_player_gst_widget_motion_notify_event), player);
@@ -3506,7 +3561,8 @@ parole_player_init(ParolePlayer *player) {
 
     // Initialize the Audio Track combobox
     player->priv->liststore_audiotrack = gtk_list_store_new(1, G_TYPE_STRING);
-    player->priv->combobox_audiotrack = gtk_combo_box_new_with_model(GTK_TREE_MODEL(player->priv->liststore_audiotrack));
+    player->priv->combobox_audiotrack = gtk_combo_box_new_with_model(
+        GTK_TREE_MODEL(player->priv->liststore_audiotrack));
     player->priv->audio_list = NULL;
 
     cell = gtk_cell_renderer_text_new();

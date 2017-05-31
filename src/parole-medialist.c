@@ -522,6 +522,13 @@ void    parole_media_list_drag_data_received_cb(GtkWidget *widget,
     gtk_drag_finish(drag_context, added == i ? TRUE : FALSE, FALSE, drag_time);
 }
 
+static GtkWidget *
+parole_media_list_get_player_widget(ParoleMediaList *list) {
+    GtkWidget *paned = gtk_widget_get_ancestor(GTK_WIDGET(list->priv->view), GTK_TYPE_PANED);
+    GtkWidget *player = GTK_WIDGET(gtk_container_get_children(GTK_CONTAINER(paned))[0].data);
+    return player;
+}
+
 gboolean parole_media_list_key_press(GtkWidget *widget, GdkEventKey *ev, ParoleMediaList *list) {
     GtkWidget *vbox_player;
     switch ( ev->keyval ) {
@@ -534,8 +541,7 @@ gboolean parole_media_list_key_press(GtkWidget *widget, GdkEventKey *ev, ParoleM
         case GDK_KEY_Page_Down:
         case GDK_KEY_Page_Up:
         case GDK_KEY_Escape:
-            // FIXME: There has got to be a better way.
-            vbox_player = GTK_WIDGET(gtk_container_get_children(GTK_CONTAINER(gtk_widget_get_parent(gtk_widget_get_parent(gtk_widget_get_parent(gtk_widget_get_parent(gtk_widget_get_parent(gtk_widget_get_parent(widget))))))) )[0].data);
+            vbox_player = parole_media_list_get_player_widget(list);
             gtk_widget_grab_focus(vbox_player);
             return TRUE;
             break;
@@ -1047,7 +1053,10 @@ parole_media_list_move_down_clicked_cb(GtkButton *button, ParoleMediaList *list)
  *
  **/
 void
-parole_media_list_row_activated_cb(GtkTreeView *view, GtkTreePath *path, GtkTreeViewColumn *col, ParoleMediaList *list) {
+parole_media_list_row_activated_cb(GtkTreeView *view,
+                                   GtkTreePath *path,
+                                   GtkTreeViewColumn *col,
+                                   ParoleMediaList *list) {
     GtkTreeRowReference *row;
 
     if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0)
@@ -1717,7 +1726,10 @@ GtkTreeRowReference *parole_media_list_get_row_random(ParoleMediaList *list) {
         list->priv->n_shuffled_items = 1;
     }
 
-    while (g_strcmp0(list->priv->history[0], path_str) == 0 || g_strcmp0(list->priv->history[1], path_str) == 0 || g_strcmp0(list->priv->history[2], path_str) == 0 || g_strcmp0(current_path, path_str) == 0) {
+    while (g_strcmp0(list->priv->history[0], path_str) == 0 ||
+           g_strcmp0(list->priv->history[1], path_str) == 0 ||
+           g_strcmp0(list->priv->history[2], path_str) == 0 ||
+           g_strcmp0(current_path, path_str) == 0) {
         path_str = g_strdup_printf("%i", g_random_int_range(0, nch));
         count += 1;
         if (count >= 10 && g_strcmp0(current_path, path_str) != 0)

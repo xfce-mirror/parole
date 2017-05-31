@@ -149,7 +149,9 @@ void parole_plugins_manager_pref_response_cb(GtkDialog *dialog, gint reponse_id,
 }
 
 static void
-parole_plugins_manager_get_selected_module_data(PrefData *pref, ParoleProviderModule **module, ParolePluginInfo **info) {
+parole_plugins_manager_get_selected_module_data(PrefData *pref,
+                                                ParoleProviderModule **module,
+                                                ParolePluginInfo **info) {
     GtkTreeModel     *model;
     GtkTreeSelection *sel;
     GtkTreeIter       iter;
@@ -247,7 +249,9 @@ parole_plugins_manager_cell_toggled_cb(GtkCellRendererToggle *cell_renderer,
                 g_type_module_use(G_TYPE_MODULE(module));
                 if (!parole_provider_module_new_plugin(module)) {
                     // If plugin loading fails...
-                    parole_dialog_error(GTK_WINDOW(pref->window), _("Plugin failed to load"), _("Please check your installation"));
+                    parole_dialog_error(GTK_WINDOW(pref->window),
+                        _("Plugin failed to load"),
+                        _("Please check your installation"));
                     parole_provider_module_free_plugin(module);
                     g_type_module_unuse(G_TYPE_MODULE(module));
                     active = FALSE;
@@ -662,7 +666,9 @@ void parole_plugins_manager_load(ParolePluginsManager *manager) {
 }
 
 void
-parole_plugins_manager_pack(ParolePluginsManager *manager, GtkWidget *widget, const gchar *title, ParolePluginContainer container) {
+parole_plugins_manager_pack(ParolePluginsManager *manager,
+                            GtkWidget *widget, const gchar *title,
+                            ParolePluginContainer container) {
     if ( container == PAROLE_PLUGIN_CONTAINER_PLAYLIST ) {
         gtk_notebook_append_page(GTK_NOTEBOOK(manager->priv->list_nt), widget, gtk_label_new(title));
         gtk_widget_show_all(widget);

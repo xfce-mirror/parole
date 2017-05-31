@@ -333,7 +333,9 @@ static void mpris_Player_Seek(GDBusMethodInvocation *invocation, GVariant* param
     g_dbus_method_invocation_return_value(invocation, NULL);
 }
 
-static void mpris_Player_SetPosition(GDBusMethodInvocation *invocation, GVariant* parameters, Mpris2Provider *provider) {
+static void mpris_Player_SetPosition(GDBusMethodInvocation *invocation,
+                                     GVariant* parameters,
+                                     Mpris2Provider *provider) {
     ParoleProviderPlayer *player = provider->player;
     const ParoleStream *stream = parole_provider_player_get_stream(player);
     gchar *track_id = NULL;
@@ -708,7 +710,10 @@ static void parole_mpris_update_any(Mpris2Provider *provider) {
 
 
 static void
-state_changed_cb(ParoleProviderPlayer *player, const ParoleStream *stream, ParoleState state, Mpris2Provider *provider) {
+state_changed_cb(ParoleProviderPlayer *player,
+                 const ParoleStream *stream,
+                 ParoleState state,
+                 Mpris2Provider *provider) {
     parole_mpris_update_any(provider);
 }
 

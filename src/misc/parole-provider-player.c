@@ -160,7 +160,8 @@ GtkWidget *parole_provider_player_get_main_window(ParoleProviderPlayer *player) 
  *
  * Since: 0.2
  **/
-void parole_provider_player_pack(ParoleProviderPlayer *player, GtkWidget *widget, const gchar *title, ParolePluginContainer container) {
+void parole_provider_player_pack(ParoleProviderPlayer *player, GtkWidget *widget,
+                                 const gchar *title, ParolePluginContainer container) {
     g_return_if_fail(PAROLE_IS_PROVIDER_PLAYER(player));
 
     if (PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->pack) {
