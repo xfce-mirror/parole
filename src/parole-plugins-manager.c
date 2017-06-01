@@ -265,11 +265,11 @@ parole_plugins_manager_cell_toggled_cb(GtkCellRendererToggle *cell_renderer,
         gtk_list_store_set(GTK_LIST_STORE(pref->store), &iter,
                             COL_ACTIVE, active,
                             -1);
+
+        parole_plugins_manager_save_rc(pref->manager, G_TYPE_MODULE(module)->name, active);
     }
 
     gtk_tree_path_free(path);
-
-    parole_plugins_manager_save_rc(pref->manager, G_TYPE_MODULE(module)->name, active);
 }
 
 void parole_plugins_manager_tree_cursor_changed_cb(GtkTreeView *view, PrefData *pref) {
