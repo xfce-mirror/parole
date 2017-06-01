@@ -59,14 +59,10 @@ GHashTable *parole_vis_get_plugins(void) {
 
     hash = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, NULL);
 
-#if GST_CHECK_VERSION(1, 0, 0)
     plugins = gst_registry_feature_filter(gst_registry_get(),
-#else
-    plugins = gst_registry_feature_filter(gst_registry_get_default(),
-#endif
-                                           parole_vis_filter,
-                                           FALSE,
-                                           NULL);
+                                          parole_vis_filter,
+                                          FALSE,
+                                          NULL);
 
     g_list_foreach(plugins, (GFunc)parole_vis_get_name, &hash);
 

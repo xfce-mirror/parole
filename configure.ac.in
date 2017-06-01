@@ -121,51 +121,19 @@ dnl ************************************
 XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-2], [libxfce4ui_minimum_version])
 XDT_CHECK_PACKAGE([GTK], [gtk+-3.0], [gtk_minimum_version])
 
-dnl gstreamer version
-AC_ARG_WITH([gstreamer],
-            [AS_HELP_STRING([--with-gstreamer=0.10|1.0],[which gstreamer version to compile against (default: 1.0)])],
-            [case "$with_gstreamer" in
-                0.10|1.0) ;;
-                *) AC_MSG_ERROR([invalid gstreamer version specified]) ;;
-             esac],
-            [with_gstreamer=1.0]
-)
-
-dnl try the latest version first, if it fails, fallback to the next version
-if test "x$with_gstreamer" = "x1.0"; then
-  gstreamer_api_version=1.0
-  gstreamer_minimum_version=1.0.0
-  GST_API_VERSION=1.0
-  GST_REQS=1.0.0
-  GSTPLUG_REQS=1.0.0
-  XDT_CHECK_PACKAGE([GST], [gstreamer-${gstreamer_api_version}], [${gstreamer_minimum_version}], [], [with_gstreamer="0.10"])
-  XDT_CHECK_PACKAGE([GST_BASE], [gstreamer-base-${gstreamer_api_version}], [${gstreamer_minimum_version}], [], [with_gstreamer="0.10"])
-  XDT_CHECK_PACKAGE([GST_VIDEO], [gstreamer-video-${gstreamer_api_version}], [${gstreamer_minimum_version}], [], [with_gstreamer="0.10"])
-  XDT_CHECK_PACKAGE([GST_PBUTILS], [gstreamer-pbutils-${gstreamer_api_version}], [${gstreamer_minimum_version}], [], [with_gstreamer="0.10"])
-fi
-
-dnl 0.10 is the last supported version so fail the build if it's not installed
-if test "x$with_gstreamer" = "x0.10"; then
-  gstreamer_api_version=0.10
-  gstreamer_minimum_version=0.10.31
-  GST_API_VERSION=0.10
-  GST_REQS=0.10.30
-  GSTPLUG_REQS=0.10.30
-  XDT_CHECK_PACKAGE([GST], [gstreamer-${gstreamer_api_version}], [${gstreamer_minimum_version}])
-  XDT_CHECK_PACKAGE([GST_BASE], [gstreamer-base-${gstreamer_api_version}], [${gstreamer_minimum_version}])
-  XDT_CHECK_PACKAGE([GST_VIDEO], [gstreamer-video-${gstreamer_api_version}], [${gstreamer_minimum_version}])
-  XDT_CHECK_PACKAGE([GST_PBUTILS], [gstreamer-pbutils-${gstreamer_api_version}], [${gstreamer_minimum_version}])
-fi
-AC_DEFINE_UNQUOTED(GSTREAMER_API_VERSION, $gstreamer_api_version, [Define the GStreamer+ API version])
-
-if test x"${gstreamer_api_version}" = x"0.10"; then
-  XDT_CHECK_PACKAGE([GST_INTERFACES], [gstreamer-interfaces-${gstreamer_api_version}], [${gstreamer_minimum_version}])
-  GST_LIBS="$GST_LIBS -lgstbase-$GST_API_VERSION -lgstinterfaces-$GST_API_VERSION -lgstvideo-$GST_API_VERSION -lgstaudio-$GST_API_VERSION -lgstpbutils-$GST_API_VERSION -lgsttag-$GST_API_VERSION"
-else
-  GST_LIBS="$GST_LIBS -lgstbase-$GST_API_VERSION -lgstvideo-$GST_API_VERSION -lgstaudio-$GST_API_VERSION -lgstpbutils-$GST_API_VERSION -lgsttag-$GST_API_VERSION"
-fi
-
-
+dnl ************************************
+dnl *** GStreamer 1.0 ***
+dnl ************************************
+gstreamer_api_version=1.0
+gstreamer_minimum_version=1.0.0
+GST_API_VERSION=1.0
+GST_REQS=1.0.0
+GSTPLUG_REQS=1.0.0
+XDT_CHECK_PACKAGE([GST], [gstreamer-${gstreamer_api_version}], [${gstreamer_minimum_version}])
+XDT_CHECK_PACKAGE([GST_BASE], [gstreamer-base-${gstreamer_api_version}], [${gstreamer_minimum_version}])
+XDT_CHECK_PACKAGE([GST_VIDEO], [gstreamer-video-${gstreamer_api_version}], [${gstreamer_minimum_version}])
+XDT_CHECK_PACKAGE([GST_PBUTILS], [gstreamer-pbutils-${gstreamer_api_version}], [${gstreamer_minimum_version}])
+GST_LIBS="$GST_LIBS -lgstbase-$GST_API_VERSION -lgstvideo-$GST_API_VERSION -lgstaudio-$GST_API_VERSION -lgstpbutils-$GST_API_VERSION -lgsttag-$GST_API_VERSION"
 
 XDT_CHECK_LIBX11()
 
