@@ -2892,10 +2892,6 @@ static gboolean
 parole_overlay_expose_event(GtkWidget *widget, cairo_t *cr, gpointer user_data) {
     GtkAllocation *allocation = g_new0(GtkAllocation, 1);
     GtkStyleContext *context;
-#if GTK_CHECK_VERSION(3, 16, 0)
-#else
-    GdkRGBA acolor;
-#endif
 
     gtk_widget_get_allocation(widget, allocation);
     cairo_rectangle(cr, 0, 0, allocation->width, allocation->height);
@@ -2904,19 +2900,6 @@ parole_overlay_expose_event(GtkWidget *widget, cairo_t *cr, gpointer user_data) 
     context = gtk_widget_get_style_context(GTK_WIDGET(widget));
     gtk_style_context_add_class(context, "background");
     gtk_style_context_add_class(context, "osd");
-
-#if GTK_CHECK_VERSION(3, 16, 0)
-#else
-    gtk_style_context_get_background_color(context, GTK_STATE_NORMAL, &acolor);
-    gdk_cairo_set_source_rgba(cr, &acolor);
-    cairo_fill(cr);
-
-    gtk_style_context_get_border_color(context, GTK_STATE_NORMAL, &acolor);
-    gdk_cairo_set_source_rgba(cr, &acolor);
-    cairo_move_to(cr, 0, 0);
-    cairo_line_to(cr, allocation->width, 0);
-    cairo_stroke(cr);
-#endif
 
     return FALSE;
 }
@@ -3109,10 +3092,6 @@ parole_player_init(ParolePlayer *player) {
     GtkWidget *controls_overlay;
     GtkWidget *controls_parent;
     GtkWidget *play_box;
-#if GTK_CHECK_VERSION(3, 16, 0)
-#else
-    GdkRGBA background;
-#endif
     GdkPixbuf *logo;
 
     /* Player Controls */
@@ -3300,12 +3279,6 @@ parole_player_init(ParolePlayer *player) {
 
     /* Content Area (Background, Audio, Video) */
     player->priv->eventbox_output = GTK_WIDGET(gtk_builder_get_object(builder, "content_area"));
-
-#if GTK_CHECK_VERSION(3, 16, 0)
-#else
-    gdk_rgba_parse(&background, "black");
-    gtk_widget_override_background_color(GTK_WIDGET(player->priv->eventbox_output), GTK_STATE_NORMAL, &background);
-#endif
 
     // Enable motion-notify event to show/hide controls on mouseover
     gtk_widget_add_events(GTK_WIDGET(player->priv->eventbox_output),

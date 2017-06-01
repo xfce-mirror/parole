@@ -1412,12 +1412,6 @@ parole_media_list_setup_view(ParoleMediaList *list) {
     gtk_tree_view_set_model(GTK_TREE_VIEW(list->priv->view), GTK_TREE_MODEL(list_store));
     gtk_tree_view_set_model(GTK_TREE_VIEW(list->priv->disc_view), GTK_TREE_MODEL(disc_list_store));
 
-#if GTK_CHECK_VERSION(3, 14, 0)
-#else
-    gtk_tree_view_set_rules_hint(GTK_TREE_VIEW(list->priv->view), TRUE);
-    gtk_tree_view_set_rules_hint(GTK_TREE_VIEW(list->priv->disc_view), TRUE);
-#endif
-
     list->priv->col = gtk_tree_view_column_new();
     list->priv->disc_col = gtk_tree_view_column_new();
 
