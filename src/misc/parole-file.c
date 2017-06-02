@@ -393,11 +393,11 @@ parole_file_init(ParoleFile *file) {
 
 /**
  * parole_file_new:
- * @filename: filename.
+ * @filename: filename
  *
- * Create a new #ParoleFile
+ * Create a new #ParoleFile.
  *
- * Returns: A new #ParoleFile object.
+ * Returns: A new #ParoleFile object
  *
  * Since: 0.2
  **/
@@ -410,12 +410,12 @@ parole_file_new(const gchar *filename) {
 
 /**
  * parole_file_new_with_display_name:
- * @filename: filename.
- * @display_name: the name to display.
+ * @filename: filename
+ * @display_name: the name to display
  *
- * Create a new #ParoleFile for a file stored on the filesystem
+ * Create a new #ParoleFile for a file stored on the filesystem.
  *
- * Returns: A new #ParoleFile object.
+ * Returns: A new #ParoleFile object
  *
  * Since: 0.2
  **/
@@ -433,12 +433,12 @@ parole_file_new_with_display_name(const gchar *filename, const gchar *display_na
 
 /**
  * parole_file_new_cdda_track:
- * @track_num: cd track number.
- * @display_name: the track name to display.
+ * @track_num: cd track number
+ * @display_name: the track name to display
  *
- * Create a new #ParoleFile object for a CD track number
+ * Create a new #ParoleFile object for a CD track number.
  *
- * Returns: A new #ParoleFile object.
+ * Returns: A new #ParoleFile object
  *
  * Since: 0.4
  **/
@@ -458,12 +458,12 @@ parole_file_new_cdda_track(const gint track_num, const gchar *display_name) {
 
 /**
  * parole_file_new_dvd_chapter:
- * @chapter_num: dvd chapter number.
- * @display_name: the chapter name to display.
+ * @chapter_num: dvd chapter number
+ * @display_name: the chapter name to display
  *
- * Create a new #ParoleFile object for a DVD chapter number
+ * Create a new #ParoleFile object for a DVD chapter number.
  *
- * Returns: A new #ParoleFile object.
+ * Returns: A new #ParoleFile object
  *
  * Since: 0.4
  **/
@@ -484,11 +484,11 @@ parole_file_new_dvd_chapter(gint chapter_num, const gchar *display_name) {
 
 /**
  * parole_file_get_file_name:
- * @file: a #ParoleFile.
+ * @file: a #ParoleFile
  *
- * Get the filename for a #ParoleFile
+ * Get the filename for a #ParoleFile.
  *
- * Returns: A string containing the file name.
+ * Returns: A string containing the file name
  *
  * Since: 0.2
  **/
@@ -501,11 +501,11 @@ parole_file_get_file_name(const ParoleFile *file) {
 
 /**
  * parole_file_get_display_name:
- * @file: a #ParoleFile.
+ * @file: a #ParoleFile
  *
- * Get the display name for a #ParoleFile
+ * Get the display name for a #ParoleFile.
  *
- * Returns: A string containing the display name.
+ * Returns: A string containing the display name
  *
  * Since: 0.2
  **/
@@ -518,11 +518,11 @@ parole_file_get_display_name(const ParoleFile *file) {
 
 /**
  * parole_file_get_uri:
- * @file: a #ParoleFile.
+ * @file: a #ParoleFile
  *
- * Get the file uri for a #ParoleFile
+ * Get the file uri for a #ParoleFile.
  *
- * Returns: A string containing the file uri.
+ * Returns: A string containing the file uri
  *
  * Since: 0.2
  **/
@@ -535,11 +535,11 @@ parole_file_get_uri(const ParoleFile *file) {
 
 /**
  * parole_file_get_content_type:
- * @file: a #ParoleFile.
+ * @file: a #ParoleFile
  *
- * Get the content type for a #ParoleFile
+ * Get the content type for a #ParoleFile.
  *
- * Returns: A string containing the content type of the file.
+ * Returns: A string containing the content type of the file
  *
  * Since: 0.2
  **/
@@ -552,11 +552,11 @@ parole_file_get_content_type(const ParoleFile *file) {
 
 /**
  * parole_file_get_directory:
- * @file: a #ParoleFile.
+ * @file: a #ParoleFile
  *
- * Get the parent directory path for a #ParoleFile
+ * Get the parent directory path for a #ParoleFile.
  *
- * Returns: A string containing the parent directory path.
+ * Returns: A string containing the parent directory path
  *
  * Since: 0.2
  **/
@@ -569,11 +569,11 @@ parole_file_get_directory(const ParoleFile *file) {
 
 /**
  * parole_file_get_custom_subtitles:
- * @file: a #ParoleFile.
+ * @file: a #ParoleFile
  *
- * Get the custom subtitles path for a #ParoleFile
+ * Get the custom subtitles path for a #ParoleFile.
  *
- * Returns: A string containing the custom subtitles file path.
+ * Returns: A string containing the custom subtitles file path
  *
  * Since: 0.4
  **/
@@ -586,10 +586,10 @@ parole_file_get_custom_subtitles(const ParoleFile *file) {
 
 /**
  * parole_file_set_custom_subtitles:
- * @file: a #ParoleFile.
- * @suburi: uri for the subtitles file.
+ * @file: a #ParoleFile
+ * @suburi: uri for the subtitles file
  *
- * Set the custom subtitles path for a #ParoleFile
+ * Set the custom subtitles path for a #ParoleFile.
  *
  * Since: 0.4
  **/
@@ -610,11 +610,11 @@ parole_file_set_custom_subtitles(const ParoleFile *file, gchar *suburi) {
 
 /**
  * parole_file_get_dvd_chapter:
- * @file: a #ParoleFile.
+ * @file: a #ParoleFile
  *
- * Get the chapter number for a #ParoleFile
+ * Get the chapter number for a #ParoleFile.
  *
- * Returns: An int containing the dvd chapter number.
+ * Returns: An int containing the dvd chapter number
  *
  * Since: 0.4
  **/
@@ -627,10 +627,10 @@ parole_file_get_dvd_chapter(const ParoleFile *file) {
 
 /**
  * parole_file_set_dvd_chapter:
- * @file: a #ParoleFile.
- * @dvd_chapter: chapter number to store.
+ * @file: a #ParoleFile
+ * @dvd_chapter: chapter number to store
  *
- * Set the chapter number for a #ParoleFile
+ * Set the chapter number for a #ParoleFile.
  *
  * Since: 0.4
  **/

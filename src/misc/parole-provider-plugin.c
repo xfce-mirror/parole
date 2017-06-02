@@ -54,9 +54,9 @@ parole_provider_plugin_get_type(void) {
  * parole_provider_plugin_get_is_configurable:
  * @provider: a #ParoleProviderPlugin
  *
- * Get if the plugin is configurable.
+ * Check if the plugin is configurable.
  *
- * Returns: TRUE if the plugin is configurable, FALSE otherwise.
+ * Returns: TRUE if the plugin is configurable, FALSE otherwise
  *
  *
  * Since: 0.2
@@ -78,7 +78,7 @@ gboolean parole_provider_plugin_get_is_configurable(ParoleProviderPlugin *provid
  * @provider: a #ParoleProviderPlugin
  * @parent: a #GtkWidget parent window
  *
- * Open the plugin configuration dialog
+ * Open the plugin configuration dialog.
  *
  *
  * Since: 0.2

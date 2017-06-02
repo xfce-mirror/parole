@@ -56,8 +56,8 @@ parole_builder_get_main_interface(void) {
 
 /**
  * parole_builder_new_from_string:
- * @ui     : the string containing parole's condensed glade interface.
- * @length : the length of the ui string.
+ * @ui     : the string containing parole's condensed glade interface
+ * @length : the length of the ui string
  *
  * Build Parole's UI from the condensed glade string.
  **/

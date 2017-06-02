@@ -1258,8 +1258,8 @@ parole_gst_application_message(ParoleGst *gst, GstMessage *msg) {
 
 /**
  * parole_gst_install_plugins_result_func:
- * @result    : %GST_INSTALL_PLUGINS_SUCCESS (0) if successful.
- * @user_data : gst instance passed as user_data for callback function.
+ * @result    : %GST_INSTALL_PLUGINS_SUCCESS (0) if successful
+ * @user_data : gst instance passed as user_data for callback function
  *
  * Callback function for when asynchronous codec installation finishes.  Update
  * the gstreamer plugin registry and restart playback.

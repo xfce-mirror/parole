@@ -192,7 +192,7 @@ parole_provider_module_new(const gchar *filename, const gchar *desktop_file, con
 
 /**
  * parole_provider_module_new_plugin:
- * @module : The #ParoleProviderModule that is being initialized.
+ * @module : The #ParoleProviderModule that is being initialized
  *
  * Initialize the #ParoleProviderModule plugin. Return #TRUE if successful.
  **/

@@ -27,7 +27,7 @@
 #include "src/plugins/sample/sample-provider.h"
 
 static void   sample_provider_iface_init(ParoleProviderPluginIface *iface);
-static void   sample_provider_finalize(GObject                   *object);
+static void   sample_provider_finalize(GObject                     *object);
 
 
 struct _SampleProviderClass {
@@ -40,10 +40,10 @@ struct _SampleProvider {
 };
 
 PAROLE_DEFINE_TYPE_WITH_CODE(SampleProvider,
-                                sample_provider,
-                                G_TYPE_OBJECT,
-                                PAROLE_IMPLEMENT_INTERFACE(PAROLE_TYPE_PROVIDER_PLUGIN,
-                                sample_provider_iface_init));
+                             sample_provider,
+                             G_TYPE_OBJECT,
+                             PAROLE_IMPLEMENT_INTERFACE(PAROLE_TYPE_PROVIDER_PLUGIN,
+                             sample_provider_iface_init));
 
 static gboolean sample_provider_is_configurable(ParoleProviderPlugin *plugin) {
     return FALSE;

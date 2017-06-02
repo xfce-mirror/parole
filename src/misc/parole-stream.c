@@ -338,8 +338,8 @@ parole_stream_finalize(GObject *object) {
 
 /**
  * parole_stream_set_image:
- * @object: a #ParoleStream object.
- * @pixbuf: a #GdkPixbuf to set as the stream image.
+ * @object: a #ParoleStream object
+ * @pixbuf: a #GdkPixbuf to set as the stream image
  *
  * Set the ParoleStream image to a new pixbuf.
  *
@@ -377,7 +377,7 @@ parole_stream_set_image(GObject *object, GdkPixbuf *pixbuf) {
 
 /**
  * parole_stream_get_image:
- * @object: a #ParoleStream object.
+ * @object: a #ParoleStream object
  *
  * Get the ParoleStream image pixbuf.
  *

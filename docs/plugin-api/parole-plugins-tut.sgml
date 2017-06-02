@@ -20,34 +20,32 @@
     <title>Plugin structure.</title>
     sample-plugin.c
     <programlisting>
+#include "src/misc/parole.h"
 
-#include "sample-provider.h"
+#include "src/plugins/sample/sample-provider.h"
 
-/* Avoid a no previous function declaration compiler warning*/
-G_MODULE_EXPORT GType	parole_plugin_initialize (ParoleProviderPlugin *plugin);
-G_MODULE_EXPORT void	parole_plugin_shutdown   (void);
+G_MODULE_EXPORT GType   parole_plugin_initialize(ParoleProviderPlugin *plugin);
+
+G_MODULE_EXPORT void    parole_plugin_shutdown(void);
 
 G_MODULE_EXPORT GType
-parole_plugin_initialize (ParoleProviderPlugin *plugin)
-{
-    xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
-    sample_provider_register_type (plugin);
+parole_plugin_initialize(ParoleProviderPlugin *plugin) {
+    xfce_textdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
+    sample_provider_register_type(plugin);
     return SAMPLE_TYPE_PROVIDER;
 }
 
 G_MODULE_EXPORT void
-parole_plugin_shutdown (void)
-{
-
+parole_plugin_shutdown(void) {
 }
     </programlisting>
 
     sample-provider.h
     <programlisting>
-#ifndef SAMPLE_PROVIDER_H_
-#define SAMPLE_PROVIDER_H_
+#ifndef SRC_PLUGINS_SAMPLE_SAMPLE_PROVIDER_H_
+#define SRC_PLUGINS_SAMPLE_SAMPLE_PROVIDER_H_
 
-#include &lt;src/misc/parole.h&gt;
+#include "src/misc/parole.h"
 
 G_BEGIN_DECLS
 
@@ -61,81 +59,68 @@ typedef struct _SampleProvider      SampleProvider;
 #define SAMPLE_IS_PROVIDER_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), SAMPLE_TYPE_PROVIDER))
 #define SAMPLE_PROVIDER_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), SAMPLE_TYPE_PROVIDER, SampleProviderClass))
 
-GType sample_provider_get_type      	(void) G_GNUC_CONST G_GNUC_INTERNAL;
+GType sample_provider_get_type           (void) G_GNUC_CONST G_GNUC_INTERNAL;
 
-void  sample_provider_register_type	(ParoleProviderPlugin *plugin);
+void  sample_provider_register_type      (ParoleProviderPlugin *plugin);
 
 G_END_DECLS
+
+#endif /* SRC_PLUGINS_SAMPLE_SAMPLE_PROVIDER_H_ */
     </programlisting>
 
     sample-provider.c
     <programlisting>
+#include "src/plugins/sample/sample-provider.h"
 
-#include "sample-provider.h"
-
-static void   sample_provider_iface_init 	   (ParoleProviderPluginIface *iface);
-static void   sample_provider_finalize             (GObject 	              *object);
+static void   sample_provider_iface_init(ParoleProviderPluginIface *iface);
+static void   sample_provider_finalize(GObject                     *object);
 
 
-struct _SampleProviderClass
-{
+struct _SampleProviderClass {
     GObjectClass parent_class;
 };
 
-struct _SampleProvider
-{
-    GObject      parent;
-    ParoleProviderPlayer *player;
+struct _SampleProvider {
+    GObject                 parent;
+    ParoleProviderPlayer   *player;
 };
 
-PAROLE_DEFINE_TYPE_WITH_CODE (SampleProvider,
-			      sample_provider,
-			      G_TYPE_OBJECT,
-			      PAROLE_IMPLEMENT_INTERFACE (PAROLE_TYPE_PROVIDER_PLUGIN,
-							  sample_provider_iface_init));
+PAROLE_DEFINE_TYPE_WITH_CODE(SampleProvider,
+                             sample_provider,
+                             G_TYPE_OBJECT,
+                             PAROLE_IMPLEMENT_INTERFACE(PAROLE_TYPE_PROVIDER_PLUGIN,
+                             sample_provider_iface_init));
 
-static void  sample_provider_configure (ParoleProviderPlugin *provider, GtkWidget *parent)
-{
-    /*Open the configuration dialog, parent is the window transient for*/
-}
-
-static gboolean sample_provider_is_configurable (ParoleProviderPlugin *plugin)
-{
-    return TRUE; /*Returns FALSE and don't override the iface->configure function*/
+static gboolean sample_provider_is_configurable(ParoleProviderPlugin *plugin) {
+    return FALSE;
 }
 
 static void
-sample_provider_set_player (ParoleProviderPlugin *plugin, ParoleProviderPlayer *player)
-{
+sample_provider_set_player(ParoleProviderPlugin *plugin, ParoleProviderPlayer *player) {
     SampleProvider *provider;
-    provider = SAMPLE_PROVIDER (plugin);
+    provider = SAMPLE_PROVIDER(plugin);
 
     provider->player = player;
 }
 
 static void
-sample_provider_iface_init (ParoleProviderPluginIface *iface)
-{
+sample_provider_iface_init(ParoleProviderPluginIface *iface) {
     iface->get_is_configurable = sample_provider_is_configurable;
-    iface->configure = sample_provider_configure;
     iface->set_player = sample_provider_set_player;
 }
 
-static void sample_provider_class_init (SampleProviderClass *klass)
-{
-    GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
+static void sample_provider_class_init(SampleProviderClass *klass) {
+    GObjectClass *gobject_class = G_OBJECT_CLASS(klass);
 
     gobject_class->finalize = sample_provider_finalize;
 }
 
-static void sample_provider_init (SampleProvider *provider)
-{
+static void sample_provider_init(SampleProvider *provider) {
     provider->player = NULL;
 }
 
-static void sample_provider_finalize (GObject *object)
-{
-    G_OBJECT_CLASS (sample_provider_parent_class)->finalize (object);
+static void sample_provider_finalize(GObject *object) {
+    G_OBJECT_CLASS(sample_provider_parent_class)->finalize(object);
 }
     </programlisting>
 

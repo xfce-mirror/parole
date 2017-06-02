@@ -38,7 +38,7 @@
 
 /**
  * parole_about:
- * @parent : the parent application window.
+ * @parent : the parent application window
  *
  * Display the About dialog for Parole.
  **/

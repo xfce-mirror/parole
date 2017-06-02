@@ -944,8 +944,8 @@ parole_player_show_audiobox(ParolePlayer *player) {
 
 /**
  * parole_player_select_custom_subtitle:
- * @widget : The #GtkMenuItem for selecting a custom subtitle file.
- * @data   : The #ParolePlayer instance passed by the callback function.
+ * @widget : The #GtkMenuItem for selecting a custom subtitle file
+ * @data   : The #ParolePlayer instance passed by the callback function
  *
  * Display the #FileChooserDialog for selecting a custom subtitle file and load
  * the subtitles selected.
@@ -1947,8 +1947,8 @@ parole_player_window_state_event(GtkWidget *widget,
 
 /**
  * parole_player_reset_controls:
- * @player     : the #ParolePlayer instance.
- * @fullscreen : %TRUE if player should be fullscreen, else %FALSE.
+ * @player     : the #ParolePlayer instance
+ * @fullscreen : %TRUE if player should be fullscreen, else %FALSE
  *
  * Reset the player controls based on existing conditions.
  **/

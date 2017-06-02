@@ -2,7 +2,7 @@
 ParoleProviderPlugin
 
 <!-- ##### SECTION Short_Description ##### -->
-The interface of the plugin type registration.
+Plugin type registration interface
 
 <!-- ##### SECTION Long_Description ##### -->
 <para>
@@ -54,5 +54,3 @@ can use to get access to various functionalities of the player.
 
 @provider:
 @player:
-
-

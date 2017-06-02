@@ -580,12 +580,12 @@ parole_pl_parser_save_xspf(FILE *f, GSList *files) {
 
 /**
  * parole_pl_parser_guess_format_from_extension:
- * @filename: a filename.
+ * @filename: a filename
  *
  * Guess a playlist format from the filename extension.
  *
  * Returns: PAROLE_PL_FORMAT_UNKNOWN if unable to get the playlist format, and a valid
- *          playlist format otherwise.
+ *          playlist format otherwise
  *
  * Since: 0.2
  */
@@ -611,12 +611,12 @@ parole_pl_parser_guess_format_from_extension(const gchar *filename) {
 
 /**
  * parole_pl_parser_guess_format_from_data:
- * @filename: a filename.
+ * @filename: a filename
  *
  * Guess a playlist format from its data.
  *
  * Returns: PAROLE_PL_FORMAT_UNKNOWN if unable to get the playlist format, and a valid
- *          playlist format otherwise.
+ *          playlist format otherwise
  *
  * Since: 0.2
  */
@@ -653,14 +653,14 @@ out:
 
 /**
  * parole_pl_parser_save_from_files:
- * @files: a #GSList list of #ParoleFile files.
- * @filename: a filename to save.
- * @format: a #ParolePlFormat format of the playlist.
+ * @files: a #GSList list of #ParoleFile files
+ * @filename: a filename to save
+ * @format: a #ParolePlFormat format of the playlist
  *
  * Saves a #GSList containing a list of #ParoleFile files to filename.
  *
  *
- * Returns: TRUE if the playlist was saved, FALSE otherwise.
+ * Returns: TRUE if the playlist was saved, FALSE otherwise
  *
  * Since: 0.2
  **/
@@ -696,12 +696,12 @@ gboolean parole_pl_parser_save_from_files(GSList *files, const gchar *filename, 
 
 /**
  * parole_pl_parser_parse_from_file_by_extension:
- * @filename: a filename.
+ * @filename: a filename
  *
  * Parse a playlist into a series of #ParoleFile
  *
  * Returns: a #GSList containts a list of #ParoleFile parsed from the playlist,
- *          or NULL if no files were parsed.
+ *          or NULL if no files were parsed
  *
  * Since: 0.2
  */
@@ -730,7 +730,7 @@ out:
  *
  *
  * Returns: a #GSList containts a list of #ParoleFile parsed from the playlist,
- *          or NULL if no files were parsed.
+ *          or NULL if no files were parsed
  *
  * Since: 0.2
  */
@@ -747,12 +747,12 @@ GSList *parole_pl_parser_parse_all_from_file(const gchar *filename) {
 
 /**
  * parole_pl_parser_can_parse_data:
- * @data: data.
- * @len: length of data.
+ * @data: data
+ * @len: length of data
  *
  * Get if the Parole parser can parse from the passed data.
  *
- * Returns: TRUE if it can parse from the data, FALSE otherwise.
+ * Returns: TRUE if it can parse from the data, FALSE otherwise
  *
  * Since: 0.2
  */

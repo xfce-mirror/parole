@@ -66,9 +66,9 @@
 
 /**
  * PAROLE_CHECK_VERSION:
- * @major: major version number.
- * @minor: minor version number.
- * @micro: micor version number.
+ * @major: major version number
+ * @minor: minor version number
+ * @micro: micor version number
  *
  * Checks the parole version.
  *
@@ -85,23 +85,23 @@
  */
 /**
  * PAROLE_DEFINE_TYPE:
- * @TN: The name of the new type, in Camel case.
- * @t_n: The name of the new type, in lowercase, with words separated by '_'.
- * @T_P: The #GType of the parent type.
+ * @TN: The name of the new type, in Camel case
+ * @t_n: The name of the new type, in lowercase, with words separated by '_'
+ * @T_P: The #GType of the parent type
  *
  * Create a new type definition.
  *
  * Since: 0.2
  */
-#define PAROLE_DEFINE_TYPE(TN, t_n, T_P)			PAROLE_DEFINE_TYPE_EXTENDED (TN, t_n, T_P, 0, {})
+#define PAROLE_DEFINE_TYPE(TN, t_n, T_P) PAROLE_DEFINE_TYPE_EXTENDED (TN, t_n, T_P, 0, {})
 
 /**
  * PAROLE_DEFINE_TYPE_EXTENDED:
- * @TN: The name of the new type, in Camel case.
- * @t_n: The name of the new type, in lowercase, with words separated by '_'.
- * @T_P: The #GType of the parent type.
- * @_f_: #GTypeFlags to pass to g_type_module_register_type ().
- * @_C_: Custom code that gets inserted in *_get_type() function.
+ * @TN: The name of the new type, in Camel case
+ * @t_n: The name of the new type, in lowercase, with words separated by '_'
+ * @T_P: The #GType of the parent type
+ * @_f_: #GTypeFlags to pass to g_type_module_register_type ()
+ * @_C_: Custom code that gets inserted in *_get_type() function
  *
  * Create a new type definition, passing flags and custom code to be inserted in the *_get_type() function.
  *
@@ -111,35 +111,35 @@
 
 /**
  * PAROLE_DEFINE_TYPE_WITH_CODE:
- * @TN: The name of the new type, in Camel case.
- * @t_n: The name of the new type, in lowercase, with words separated by '_'.
- * @T_P: The #GType of the parent type.
- * @_C_: Custom code that gets inserted in *_get_type() function.
+ * @TN: The name of the new type, in Camel case
+ * @t_n: The name of the new type, in lowercase, with words separated by '_'
+ * @T_P: The #GType of the parent type
+ * @_C_: Custom code that gets inserted in *_get_type() function
  *
  * Create a new type definition, passing custom code to be inserted in the *_get_type() function.
  *
  * Since: 0.2
  */
-#define PAROLE_DEFINE_TYPE_WITH_CODE(TN, t_n, T_P, _C_)		_PAROLE_DEFINE_TYPE_EXTENDED_BEGIN(TN, t_n, T_P, 0) {_C_;} _PAROLE_DEFINE_TYPE_EXTENDED_END()
+#define PAROLE_DEFINE_TYPE_WITH_CODE(TN, t_n, T_P, _C_)	_PAROLE_DEFINE_TYPE_EXTENDED_BEGIN(TN, t_n, T_P, 0) {_C_;} _PAROLE_DEFINE_TYPE_EXTENDED_END()
 
 /**
  * PAROLE_DEFINE_ABSTRACT_TYPE:
- * @TN: The name of the new type, in Camel case.
- * @t_n: The name of the new type, in lowercase, with words separated by '_'.
- * @T_P: The #GType of the parent type.
+ * @TN: The name of the new type, in Camel case
+ * @t_n: The name of the new type, in lowercase, with words separated by '_'
+ * @T_P: The #GType of the parent type
  *
  * Create a new abstract type definition.
  *
  * Since: 0.2
  */
-#define PAROLE_DEFINE_ABSTRACT_TYPE(TN, t_n, T_P)		PAROLE_DEFINE_TYPE_EXTENDED (TN, t_n, T_P, G_TYPE_FLAG_ABSTRACT, {})
+#define PAROLE_DEFINE_ABSTRACT_TYPE(TN, t_n, T_P) PAROLE_DEFINE_TYPE_EXTENDED (TN, t_n, T_P, G_TYPE_FLAG_ABSTRACT, {})
 
 /**
  * PAROLE_DEFINE_ABSTRACT_TYPE_WITH_CODE:
- * @TN: The name of the new type, in Camel case.
- * @t_n: The name of the new type, in lowercase, with words separated by '_'.
- * @T_P: The #GType of the parent type.
- * @_C_: Custom code that gets inserted in *_get_type() function.
+ * @TN: The name of the new type, in Camel case
+ * @t_n: The name of the new type, in lowercase, with words separated by '_'
+ * @T_P: The #GType of the parent type
+ * @_C_: Custom code that gets inserted in *_get_type() function
  *
  * Create a new abstract type definition, passing custom code to be inserted in the *_get_type() function.
  *
@@ -201,8 +201,8 @@ type_name##_register_type (ParoleProviderPlugin *provider_plugin_def) 		\
 
 /**
  * PAROLE_IMPLEMENT_INTERFACE:
- * @TYPE_IFACE: the #GType of the interface to add.
- * @iface_init: The interface init function.
+ * @TYPE_IFACE: the #GType of the interface to add
+ * @iface_init: The interface init function
  *
  * Convenience function for interface implementation.
  *

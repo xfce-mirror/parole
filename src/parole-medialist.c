@@ -241,8 +241,8 @@ parole_media_list_get_playlist_count(ParoleMediaList *list) {
  * parole_media_list_add:
  * @ParoleMediaList: a #ParoleMediaList
  * @file: a #ParoleFile
- * @disc: TRUE if added to disc playlist.
- * @emit: TRUE to emit a play signal.
+ * @disc: TRUE if added to disc playlist
+ * @emit: TRUE to emit a play signal
  * @select_row: TRUE to select the added row
  *
  * All the media items added to the media list view are added by
@@ -332,8 +332,8 @@ parole_media_list_add(ParoleMediaList *list, ParoleFile *file, gboolean disc, gb
  * parole_media_list_files_open:
  * @ParoleMediaList: a #ParoleMediaList
  * @files: a #GSList contains a list of #ParoleFile
- * @disc: TRUE if files are opened to the disc playlist.
- * @emit: TRUE to emit a play signal.
+ * @disc: TRUE if files are opened to the disc playlist
+ * @emit: TRUE to emit a play signal
  *
  **/
 static void
@@ -859,7 +859,7 @@ parole_media_list_get_first_path(GtkTreeModel *model) {
  *
  * Converts a list of #GtkTreePath to a list of #GtkTreeRowReference
  *
- * Returns: a #GList contains a list of #GtkTreeRowReference.
+ * Returns: a #GList contains a list of #GtkTreeRowReference
  *
  *
  **/
@@ -1770,7 +1770,7 @@ gboolean parole_media_list_is_empty(ParoleMediaList *list) {
  * @list: a #ParoleMediaList
  *
  *
- * Returns: a #GtkTreeRowReference of the first row in the media list.
+ * Returns: a #GtkTreeRowReference of the first row in the media list
  **/
 GtkTreeRowReference *parole_media_list_get_first_row(ParoleMediaList *list) {
     GtkTreeRowReference *row = NULL;
@@ -1792,7 +1792,7 @@ GtkTreeRowReference *parole_media_list_get_first_row(ParoleMediaList *list) {
  * @list: a #ParoleMediaList
  *
  *
- * Returns: a #GtkTreeRowReference of the selected row.
+ * Returns: a #GtkTreeRowReference of the selected row
  **/
 GtkTreeRowReference *parole_media_list_get_selected_row(ParoleMediaList *list) {
     return parole_media_list_get_first_selected_row (list);
@@ -1803,7 +1803,7 @@ GtkTreeRowReference *parole_media_list_get_selected_row(ParoleMediaList *list) {
  * @list: a #ParoleMediaList
  *
  *
- * Returns: a #ParoleFile of the selected row.
+ * Returns: a #ParoleFile of the selected row
  **/
 ParoleFile *parole_media_list_get_selected_file(ParoleMediaList *list) {
     return parole_media_list_get_first_selected_file (list);

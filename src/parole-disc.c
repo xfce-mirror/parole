@@ -81,7 +81,7 @@ typedef struct {
 
 /**
  * free_mount_data:
- * @data : pointer to the mount point.
+ * @data : pointer to the mount point
  *
  * Free the mount-point.
  **/
@@ -151,8 +151,8 @@ parole_disc_set_kind(ParoleDisc *disc, ParoleDiscKind kind) {
 
 /**
  * parole_disc_media_activate_cb:
- * @widget : the #GtkWidget activated for this callback function.
- * @disc   : the #ParoleDisc instance.
+ * @widget : the #GtkWidget activated for this callback function
+ * @disc   : the #ParoleDisc instance
  *
  * Callback function for when the CD/DVD menu item is activated.
  **/
@@ -167,9 +167,9 @@ parole_disc_media_activate_cb(GtkWidget *widget, ParoleDisc *disc) {
 
 /**
  * parole_disc_show_menu_item:
- * @disc  : the #ParoleDisc instance.
- * @data  : the #MountData of the inserted disc.
- * @label : the name of the inserted disc.
+ * @disc  : the #ParoleDisc instance
+ * @data  : the #MountData of the inserted disc
+ * @label : the name of the inserted disc
  *
  * Show the respective disc-item in the "Media" menu, or "Insert Disc" if no
  * disc is detected.
@@ -192,10 +192,10 @@ parole_disc_show_menu_item(ParoleDisc *disc, MountData *data, const gchar *label
 
 /**
  * parole_disc_get_mount_data:
- * @disc   : the #ParoleDisc instance.
- * @uri    : the URI of the mount point.
- * @device : the device identifier of the mount point.
- * @kind   : the #ParoleDiscKind representing the type of disc (CD/DVD/SVCD).
+ * @disc   : the #ParoleDisc instance
+ * @uri    : the URI of the mount point
+ * @device : the device identifier of the mount point
+ * @kind   : the #ParoleDiscKind representing the type of disc (CD/DVD/SVCD)
  *
  * Get data from the mount-point.
  **/
@@ -218,9 +218,9 @@ parole_disc_get_mount_data(ParoleDisc *disc,
 
 /**
  * parole_disc_add_mount_to_menu:
- * @disc   : the #ParoleDisc instance.
- * @mount  : the #GMount representing the mounted disc.
- * @device : the device identifier of the mount point.
+ * @disc   : the #ParoleDisc instance
+ * @mount  : the #GMount representing the mounted disc
+ * @device : the device identifier of the mount point
  *
  * Add the mounted disc to the "Media" menu.
  **/
@@ -296,9 +296,9 @@ got_cdda:
 
 /**
  * parole_disc_check_cdrom:
- * @disc   : the #ParoleDisc instance.
- * @volume : the #GVolume for the mounted disc.
- * @device : the device identifier of the mount point.
+ * @disc   : the #ParoleDisc instance
+ * @volume : the #GVolume for the mounted disc
+ * @device : the device identifier of the mount point
  *
  * Check the state of the drive.
  **/
@@ -346,9 +346,9 @@ out:
 
 /**
  * parole_disc_add_drive:
- * @disc   : the #ParoleDisc instance.
- * @drive  : the #GDrive for the mounted disc.
- * @device : the device identifier of the mount point.
+ * @disc   : the #ParoleDisc instance
+ * @drive  : the #GDrive for the mounted disc
+ * @device : the device identifier of the mount point
  *
  * Add the disc drive to the menu.
  **/
@@ -385,7 +385,7 @@ parole_disc_add_drive(ParoleDisc *disc, GDrive *drive, const gchar *device) {
 
 /**
  * parole_disc_get_drives:
- * @disc : the #ParoleDisc instance.
+ * @disc : the #ParoleDisc instance
  *
  * Get the list of available drives and attempt to add each to the menu.
  **/
@@ -426,8 +426,8 @@ parole_disc_get_drives(ParoleDisc *disc) {
 
 /**
  * parole_disc_select_cb:
- * @item : "Media" menu item passed to the callback function.
- * @disc : the #ParoleDisc instance.
+ * @item : "Media" menu item passed to the callback function
+ * @disc : the #ParoleDisc instance
  *
  * Callback function for selecting the "Media" menu item.  If a disc update is
  * needed, perform it when the menu item is activated.
@@ -440,9 +440,9 @@ parole_disc_select_cb(GtkMenuItem *item, ParoleDisc *disc) {
 
 /**
  * parole_disc_monitor_changed_cb:
- * @monitor : the #GVolumeMonitor that monitors changes to attached volumes.
- * @device  : the device identifier of the mount point.
- * @disc    : the #ParoleDisc instance.
+ * @monitor : the #GVolumeMonitor that monitors changes to attached volumes
+ * @device  : the device identifier of the mount point
+ * @disc    : the #ParoleDisc instance
  *
  * Callback function for when attached volumes are modified.  Set the disc item
  * to blank and tell the #ParoleDisc to check for updates.
@@ -456,7 +456,7 @@ parole_disc_monitor_changed_cb(GVolumeMonitor *monitor, gpointer *device, Parole
 
 /**
  * parole_disc_class_init:
- * @klass : the #ParoleDiscClass to initialize.
+ * @klass : the #ParoleDiscClass to initialize
  *
  * Initialize the #ParoleDiscClass.
  **/
@@ -490,7 +490,7 @@ parole_disc_class_init(ParoleDiscClass *klass) {
 
 /**
  * parole_disc_init:
- * @disc : the #ParoleDisc to initialize.
+ * @disc : the #ParoleDisc to initialize
  *
  * Initialize the disc monitor.
  **/
@@ -536,7 +536,7 @@ parole_disc_init(ParoleDisc *disc) {
 
 /**
  * parole_disc_finalize:
- * @object : a base #GObject to be made into a #ParoleDisc object.
+ * @object : a base #GObject to be made into a #ParoleDisc object
  *
  * Finalize a #ParoleDisc object.
  **/

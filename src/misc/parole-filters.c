@@ -53,7 +53,7 @@ static char *playlist_file_extensions[] = {
  * Get a #GtkFileFilter according to the supported
  * Parole audio mime types.
  *
- * Returns: A #GtkFileFilter for supported audio formats.
+ * Returns: A #GtkFileFilter for supported audio formats
  *
  * Since: 0.2
  */
@@ -78,7 +78,7 @@ GtkFileFilter *parole_get_supported_audio_filter(void) {
  * Get a #GtkFileFilter according to the supported
  * Parole video mime types.
  *
- * Returns: A #GtkFileFilter for supported video formats.
+ * Returns: A #GtkFileFilter for supported video formats
  *
  * Since: 0.2
  */
@@ -100,9 +100,9 @@ GtkFileFilter *parole_get_supported_video_filter(void) {
  * parole_get_supported_media_filter:
  *
  * Get a #GtkFileFilter according to the supported
- * Parole media mime types, including audio and vide.
+ * Parole media mime types, including audio and video.
  *
- * Returns: A #GtkFileFilter for supported media formats.
+ * Returns: A #GtkFileFilter for supported media formats
  *
  * Since: 0.2
  */
@@ -127,9 +127,9 @@ GtkFileFilter *parole_get_supported_media_filter(void) {
  * parole_get_supported_recent_media_filter:
  *
  * Get a #GtkRecentFilter according to the supported
- * Parole files mime types, including audio/video/play list formats.
+ * Parole file mime types, including audio/video/playlist formats.
  *
- * Returns: A #GtkRecentFilter for supported files formats.
+ * Returns: A #GtkRecentFilter for supported files formats
  *
  * Since: 0.2
  */
@@ -154,9 +154,9 @@ GtkRecentFilter *parole_get_supported_recent_media_filter(void) {
  * parole_get_supported_files_filter:
  *
  * Get a #GtkFileFilter according to the supported
- * Parole files mime types, including audio/video/play list formats.
+ * Parole file mime types, including audio/video/playlist formats.
  *
- * Returns: A #GtkFileFilter for supported files formats.
+ * Returns: A #GtkFileFilter for supported files formats
  *
  * Since: 0.2
  */
@@ -178,9 +178,9 @@ GtkFileFilter *parole_get_supported_files_filter(void) {
  * parole_get_supported_recent_files_filter:
  *
  * Get a #GtkRecentFilter according to the supported
- * Parole files mime types, including audio/video/play list formats.
+ * Parole file mime types, including audio/video/playlist formats.
  *
- * Returns: A #GtkRecentFilter for supported files formats.
+ * Returns: A #GtkRecentFilter for supported files formats
  *
  * Since: 0.2
  */
@@ -202,9 +202,9 @@ GtkRecentFilter *parole_get_supported_recent_files_filter(void) {
  * parole_get_supported_playlist_filter:
  *
  * Get a #GtkFileFilter according to the supported
- * Parole play-list mime types.
+ * Parole playlist mime types.
  *
- * Returns: A #GtkFileFilter for supported playlist formats.
+ * Returns: A #GtkFileFilter for supported playlist formats
  *
  * Since: 0.2
  */
@@ -224,12 +224,12 @@ GtkFileFilter *parole_get_supported_playlist_filter(void) {
 
 /**
  * parole_file_filter:
- * @filter: a #GtkFileFilter.
+ * @filter: a #GtkFileFilter
  * @file: a #ParoleFile
  *
- * Tests whether a file should be displayed according to filter
+ * Tests whether a file should be displayed according to filter.
  *
- * Returns: TRUE if the file should be displayed.
+ * Returns: TRUE if the file should be displayed
  *
  * Since: 0.2
  */

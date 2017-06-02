@@ -64,9 +64,9 @@ static void parole_provider_player_base_init(gpointer klass) {
     if (G_UNLIKELY(!initialized)) {
         /**
          * ParoleProviderPlayerIface::state-changed:
-         * @player: the object which received the signal.
-         * @stream: a #ParoleStream.
-         * @state: the new state.
+         * @player: the object which received the signal
+         * @stream: a #ParoleStream
+         * @state: the new state
          *
          * Issued when the Parole state changed.
          *
@@ -83,10 +83,10 @@ static void parole_provider_player_base_init(gpointer klass) {
 
         /**
          * ParoleProviderPlayerIface::tag-message:
-         * @player: the object which received the signal.
-         * @stream: a #ParoleStream.
+         * @player: the object which received the signal
+         * @stream: a #ParoleStream
          *
-         * Indicated that the stream tags were found and ready to be read.
+         * Indicates that the stream tags were found and ready to be read.
          *
          * Since: 0.2
          **/
@@ -100,8 +100,8 @@ static void parole_provider_player_base_init(gpointer klass) {
 
         /**
          * ParoleProviderPlayerIface::seeked:
-         * @player: the object which received the signal.
-         * @value: the seeked position.
+         * @player: the object which received the signal
+         * @value: the seeked position
          *
          * Notifies when the stream has been manually advanced.
          *
@@ -128,7 +128,7 @@ static void parole_provider_player_class_init(gpointer klass) {
  *
  * Ask the Player to get the Parole main window.
  *
- * Returns: a #GtkWidget window.
+ * Returns: a #GtkWidget window
  *
  * Since: 0.2
  **/
@@ -146,9 +146,9 @@ GtkWidget *parole_provider_player_get_main_window(ParoleProviderPlayer *player) 
 /**
  * parole_provider_player_pack:
  * @player: a #ParoleProviderPlayer
- * @widget: a #GtkWidget.
+ * @widget: a #GtkWidget
  * @title: title
- * @container: a #ParolePluginContainer.
+ * @container: a #ParolePluginContainer
  *
  * Ask the player to pack a widget in the playlist notebook if PAROLE_PLUGIN_CONTAINER_PLAYLIST
  * is specified or in the main window notebook if PAROLE_PLUGIN_CONTAINER_MAIN_VIEW is specified.
@@ -174,7 +174,7 @@ void parole_provider_player_pack(ParoleProviderPlayer *player, GtkWidget *widget
  *
  * Get the current state of the player.
  *
- * Returns: a #ParoleState.
+ * Returns: a #ParoleState
  *
  *
  * Since: 0.2
@@ -197,7 +197,7 @@ ParoleState parole_provider_player_get_state(ParoleProviderPlayer *player) {
  *
  * Get the #ParoleStream object.
  *
- * Returns: the #ParoleStream object.
+ * Returns: the #ParoleStream object
  *
  * Since: 0.2
  **/
@@ -222,7 +222,7 @@ const ParoleStream *parole_provider_player_get_stream(ParoleProviderPlayer *play
  * Returning TRUE doesn't mean that the funtion succeeded to change the state of the player,
  * the state change is indicated asynchronously by #ParoleProviderPlayerIface::state-changed signal.
  *
- * Returns: TRUE if the command is processed, FALSE otherwise.
+ * Returns: TRUE if the command is processed, FALSE otherwise
  *
  * Since: 0.2
  **/
@@ -248,7 +248,7 @@ gboolean parole_provider_player_play_uri(ParoleProviderPlayer *player, const gch
  * Returning TRUE doesn't mean that the funtion succeeded to change the state of the player,
  * the state change is indicated asynchronously by #ParoleProviderPlayerIface::state-changed signal.
  *
- * Returns: TRUE if the command is processed, FALSE otherwise.
+ * Returns: TRUE if the command is processed, FALSE otherwise
  *
  *
  * Since: 0.2
@@ -277,7 +277,7 @@ gboolean parole_provider_player_pause(ParoleProviderPlayer *player) {
  * Returning TRUE doesn't mean that the funtion succeeded to change the state of the player,
  * the state change is indicated asynchronously by #ParoleProviderPlayerIface::state-changed signal.
  *
- * Returns: TRUE if the command is processed, FALSE otherwise.
+ * Returns: TRUE if the command is processed, FALSE otherwise
  *
  *
  * Since: 0.2
@@ -304,7 +304,7 @@ gboolean parole_provider_player_resume(ParoleProviderPlayer *player) {
  * Returning TRUE doesn't mean that the funtion succeeded to change the state of the player,
  * the state change is indicated asynchronously by #ParoleProviderPlayerIface::state-changed signal.
  *
- * Returns: TRUE if the command is processed, FALSE otherwise.
+ * Returns: TRUE if the command is processed, FALSE otherwise
  *
  * Since: 0.2
  **/
@@ -327,7 +327,7 @@ gboolean parole_provider_player_stop(ParoleProviderPlayer *player) {
  *
  * Issue a play previous command to the player.
  *
- * Returns: TRUE if the command is processed, FALSE otherwise.
+ * Returns: TRUE if the command is processed, FALSE otherwise
  *
  * Since: 0.6
  **/
@@ -350,7 +350,7 @@ gboolean parole_provider_player_play_previous(ParoleProviderPlayer *player) {
  *
  * Issue a play next command to the player.
  *
- * Returns: TRUE if the command is processed, FALSE otherwise.
+ * Returns: TRUE if the command is processed, FALSE otherwise
  *
  * Since: 0.6
  **/
@@ -370,12 +370,12 @@ gboolean parole_provider_player_play_next(ParoleProviderPlayer *player) {
 /**
  * parole_provider_player_seek:
  * @player: a #ParoleProviderPlayer
- * @pos: position to seek.
+ * @pos: position to seek
  *
  *
  * Issue a seek command.
  *
- * Returns: TRUE if the seek command succeeded, FALSE otherwise.
+ * Returns: TRUE if the seek command succeeded, FALSE otherwise
  *
  *
  * Since: 0.2
@@ -396,9 +396,9 @@ gboolean parole_provider_player_seek(ParoleProviderPlayer *player, gdouble pos) 
  * parole_provider_player_get_stream_position:
  * @player: a #ParoleProviderPlayer
  *
- * Get stream position (microseconds) for Parole.
+ * Get the stream position (in microseconds) for Parole.
  *
- * Returns: a #gdouble containing the current stream position in microseconds.
+ * Returns: a #gdouble containing the current stream position in microseconds
  *
  * Since: 0.6
  **/
@@ -436,7 +436,7 @@ void parole_provider_player_open_media_chooser(ParoleProviderPlayer *player) {
  *
  * Get GSimpleAction from Parole.
  *
- * Returns: the requested #GSimpleAction.
+ * Returns: the requested #GSimpleAction
  *
  *
  * Since: 0.6
@@ -459,7 +459,7 @@ GSimpleAction *parole_provider_player_get_action(ParoleProviderPlayer *player, P
  *
  * Get fullscreen status for Parole.
  *
- * Returns: TRUE if the player window is fullscreen, FALSE otherwise.
+ * Returns: TRUE if the player window is fullscreen, FALSE otherwise
  *
  * Since: 0.6
  **/
@@ -480,7 +480,7 @@ gboolean parole_provider_player_get_fullscreen(ParoleProviderPlayer *player) {
  *
  * Set fullscreen status for Parole.
  *
- * Returns: TRUE if the fullscreen command succeeded, FALSE otherwise.
+ * Returns: TRUE if the fullscreen command succeeded, FALSE otherwise
  *
  * Since: 0.6
  **/

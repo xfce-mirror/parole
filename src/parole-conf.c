@@ -133,10 +133,10 @@ G_DEFINE_TYPE(ParoleConf, parole_conf, G_TYPE_OBJECT)
 
 /**
  * parole_conf_set_property:
- * @object  : a #ParoleConf instance passed as #GObject.
- * @prop_id : the ID of the property being set.
- * @value   : the value of the property being set.
- * @pspec   : the property #GParamSpec.
+ * @object  : a #ParoleConf instance passed as #GObject
+ * @prop_id : the ID of the property being set
+ * @value   : the value of the property being set
+ * @pspec   : the property #GParamSpec
  *
  * Write property-values to the Xfconf channel.
  **/
@@ -201,10 +201,10 @@ static void parole_conf_set_property(GObject *object,
 
 /**
  * parole_conf_get_property:
- * @object  : a #ParoleConf instance passed as #GObject.
- * @prop_id : the ID of the property being retrieved.
- * @value   : the return variable for the value of the property being retrieved.
- * @pspec   : the property #GParamSpec.
+ * @object  : a #ParoleConf instance passed as #GObject
+ * @prop_id : the ID of the property being retrieved
+ * @value   : the return variable for the value of the property being retrieved
+ * @pspec   : the property #GParamSpec
  *
  * Read property-values from the Xfconf channel
  **/
@@ -312,10 +312,10 @@ gchar *parole_conf_map_xfconf_property_name(const gchar *prop_name) {
 
 /**
  * parole_conf_prop_changed:
- * @channel   : the #XfconfChannel where settings are stored.
- * @prop_name : the name of the property being modified.
- * @value     : the updated value of the property being modified.
- * @conf      : the #ParoleConf instance.
+ * @channel   : the #XfconfChannel where settings are stored
+ * @prop_name : the name of the property being modified
+ * @value     : the updated value of the property being modified
+ * @conf      : the #ParoleConf instance
  *
  * Event handler for when a property is modified.
  **/
@@ -335,7 +335,7 @@ static void parole_conf_prop_changed(XfconfChannel  *channel,
 
 /**
  * parole_conf_finalize:
- * @object : a #ParoleConf instance passed as #GObject.
+ * @object : a #ParoleConf instance passed as #GObject
  *
  * Finalize a #ParoleConf instance.
  **/
@@ -351,8 +351,8 @@ parole_conf_finalize(GObject *object) {
 
 /**
  * transform_string_to_boolean:
- * @src : source #GValue string to be transformed.
- * @dst : destination #GValue boolean variable to store the transformed string.
+ * @src : source #GValue string to be transformed
+ * @dst : destination #GValue boolean variable to store the transformed string
  *
  * Transform a #GValue string into a #GValue boolean.
  **/
@@ -363,8 +363,8 @@ transform_string_to_boolean(const GValue *src, GValue *dst) {
 
 /**
  * transform_string_to_int:
- * @src : source #GValue string to be transformed.
- * @dst : destination #GValue int variable to store the transformed string.
+ * @src : source #GValue string to be transformed
+ * @dst : destination #GValue int variable to store the transformed string
  *
  * Transform a #GValue string into a #GValue int.
  **/
@@ -375,8 +375,8 @@ transform_string_to_int(const GValue *src, GValue *dst) {
 
 /**
  * transform_string_to_enum:
- * @src : source #GValue string to be transformed.
- * @dst : destination #GValue enum variable to store the transformed string.
+ * @src : source #GValue string to be transformed
+ * @dst : destination #GValue enum variable to store the transformed string
  *
  * Transform a #GValue string into a #GValue enum.
  **/
@@ -395,7 +395,7 @@ transform_string_to_enum(const GValue *src, GValue *dst) {
 
 /**
  * parole_conf_class_init:
- * @klass : a #ParoleConfClass to initialize.
+ * @klass : a #ParoleConfClass to initialize
  *
  * Initialize a base #ParoleConfClass instance.
  **/
@@ -889,7 +889,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
 
 /**
  * parole_conf_load_rc_file:
- * @conf : a #ParoleConf instance.
+ * @conf : a #ParoleConf instance
  *
  * Load Parole's rc file.  Since Parole now uses Xfconf, this will import any
  * existing settings into Xfconf and the rc file will no longer be needed.
@@ -968,7 +968,7 @@ parole_conf_load_rc_file(ParoleConf *conf) {
 
 /**
  * parole_conf_init:
- * @conf : a #ParoleConf instance.
+ * @conf : a #ParoleConf instance
  *
  * Initialize a #ParoleConf instance.
  **/
@@ -1001,7 +1001,7 @@ parole_conf_init(ParoleConf *conf) {
 /**
  * parole_conf_new:
  *
- * Create a new #ParoleConf instance.
+ * Create a new #ParoleConf instance
  **/
 ParoleConf *
 parole_conf_new(void) {
@@ -1017,8 +1017,8 @@ parole_conf_new(void) {
 
 /**
  * parole_conf_get_property_bool:
- * @conf : a #ParoleConf instance.
- * @name : the name of the property being retrieved.
+ * @conf : a #ParoleConf instance
+ * @name : the name of the property being retrieved
  *
  * Return a boolean value from a property.
  **/
@@ -1077,8 +1077,6 @@ parole_conf_read_entry_list(ParoleConf *conf, const gchar *name) {
 
     return ret_val;
 }
-
-
 
 void
 parole_conf_xfconf_init_failed(void) {

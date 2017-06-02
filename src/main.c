@@ -74,8 +74,8 @@ parole_sig_handler(gint sig, gpointer data) {
 
 /**
  * parole_send_play_disc:
- * @uri    : the URI address of a disc or %NULL.
- * @device : the UNIX device for a disc or %NULL.
+ * @uri    : the URI address of a disc or %NULL
+ * @device : the UNIX device for a disc or %NULL
  *
  * Load the discs that is passed as a cli argument to Parole.
  **/
@@ -111,9 +111,9 @@ parole_send_play_disc(const gchar *uri, const gchar *device) {
 
 /**
  * parole_send_files:
- * @filenames : the list of files to be played in Parole.
+ * @filenames : the list of files to be played in Parole
  * @enqueue   : %TRUE if files should be added to the playlist or %FALSE if the
- *              playlist should be replaced.
+ *              playlist should be replaced
  *
  * Load files that are passed as cli arguments to Parole.
  **/
@@ -156,10 +156,10 @@ parole_send_files(gchar **filenames, gboolean enqueue) {
 
 /**
  * parole_send:
- * @filenames : a list of files to be played.
- * @device    : a URI pointing to a disc to be played or %NULL.
+ * @filenames : a list of files to be played
+ * @device    : a URI pointing to a disc to be played or %NULL
  * @enqueue   : %TRUE if files should be added to the playlist or %FALSE if the
- *              playlist should be replaced.
+ *              playlist should be replaced
  *
  * Load the files or device that are passed as cli arguments to Parole.
  **/
@@ -173,7 +173,7 @@ parole_send(gchar **filenames, gchar *device, gboolean enqueue) {
 
 /**
  * parole_send_message:
- * @message : message string to be sent to DBUS.
+ * @message : message string to be sent to DBUS
  *
  * Send a message via DBUS to Parole.
  **/
