@@ -123,6 +123,16 @@ GtkFileFilter *parole_get_supported_media_filter(void) {
     return filter;
 }
 
+/**
+ * parole_get_supported_recent_media_filter:
+ *
+ * Get a #GtkRecentFilter according to the supported
+ * Parole files mime types, including audio/video/play list formats.
+ *
+ * Returns: A #GtkRecentFilter for supported files formats.
+ *
+ * Since: 0.2
+ */
 GtkRecentFilter *parole_get_supported_recent_media_filter(void) {
     GtkRecentFilter *filter;
     guint i;
@@ -142,7 +152,6 @@ GtkRecentFilter *parole_get_supported_recent_media_filter(void) {
 
 /**
  * parole_get_supported_files_filter:
- *
  *
  * Get a #GtkFileFilter according to the supported
  * Parole files mime types, including audio/video/play list formats.
@@ -165,6 +174,16 @@ GtkFileFilter *parole_get_supported_files_filter(void) {
     return filter;
 }
 
+/**
+ * parole_get_supported_recent_files_filter:
+ *
+ * Get a #GtkRecentFilter according to the supported
+ * Parole files mime types, including audio/video/play list formats.
+ *
+ * Returns: A #GtkRecentFilter for supported files formats.
+ *
+ * Since: 0.2
+ */
 GtkRecentFilter *parole_get_supported_recent_files_filter(void) {
     GtkRecentFilter *filter;
     guint i;
@@ -181,7 +200,6 @@ GtkRecentFilter *parole_get_supported_recent_files_filter(void) {
 
 /**
  * parole_get_supported_playlist_filter:
- *
  *
  * Get a #GtkFileFilter according to the supported
  * Parole play-list mime types.

@@ -130,7 +130,6 @@ static void parole_provider_player_class_init(gpointer klass) {
  *
  * Returns: a #GtkWidget window.
  *
- *
  * Since: 0.2
  **/
 GtkWidget *parole_provider_player_get_main_window(ParoleProviderPlayer *player) {

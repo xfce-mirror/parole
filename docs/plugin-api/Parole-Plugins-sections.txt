@@ -86,18 +86,6 @@ parole_stream_init_properties
 </SECTION>
 
 <SECTION>
-<FILE>parole-enum-types</FILE>
-parole_media_type_get_type
-PAROLE_ENUM_TYPE_MEDIA_TYPE
-parole_plugin_container_get_type
-PAROLE_ENUM_TYPE_PLUGIN_CONTAINER
-parole_state_get_type
-PAROLE_ENUM_TYPE_STATE
-parole_pl_format_get_type
-PAROLE_ENUM_TYPE_PL_FORMAT
-</SECTION>
-
-<SECTION>
 <FILE>parole-pl-parser</FILE>
 ParolePlFormat
 parole_pl_parser_guess_format_from_extension
@@ -152,4 +140,3 @@ PAROLE_DEBUG_ENUM_FULL
 parole_debug_enum
 parole_debug_enum_full
 </SECTION>
-

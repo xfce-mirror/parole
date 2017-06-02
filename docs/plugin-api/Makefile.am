@@ -92,4 +92,3 @@ EXTRA_DIST +=			\
 	version.xml.in			\
 	$(DOC_MAIN_SGML_FILE)	\
 	parole-plugins-tut.sgml
-

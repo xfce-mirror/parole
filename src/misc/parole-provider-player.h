@@ -40,7 +40,24 @@ G_BEGIN_DECLS
 #define PAROLE_IS_PROVIDER_PLAYER(o)                (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_PROVIDER_PLAYER))
 #define PAROLE_PROVIDER_PLAYER_GET_INTERFACE(o)     (G_TYPE_INSTANCE_GET_INTERFACE((o), PAROLE_TYPE_PROVIDER_PLAYER, ParoleProviderPlayerIface))
 
+/**
+ * ParoleProviderPlayerIface:
+ *
+ * Interface for #ParoleProviderPlayer
+ *
+ * Since: 0.2
+ */
 typedef struct _ParoleProviderPlayerIface ParoleProviderPlayerIface;
+
+/**
+ * ParoleProviderPlayer:
+ *
+ * The player interface that the plugins should use in order to, issue playback
+ * commands to the Parole GStreamer backend or to get information about the
+ * current playback status.
+ *
+ * Since: 0.2
+ */
 typedef struct _ParoleProviderPlayer      ParoleProviderPlayer;
 
 /**

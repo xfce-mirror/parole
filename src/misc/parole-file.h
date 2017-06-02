@@ -38,6 +38,13 @@ G_BEGIN_DECLS
 typedef struct _ParoleFile      ParoleFile;
 typedef struct _ParoleFileClass ParoleFileClass;
 
+/**
+ * ParoleFile:
+ *
+ * File instance used by Parole.
+ *
+ * Since: 0.2
+ */
 struct _ParoleFile {
     GObject             parent;
 };

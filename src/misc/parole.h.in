@@ -37,8 +37,31 @@
 #include "src/misc/parole-provider-plugin.h"
 #include "src/misc/parole-stream.h"
 
+/**
+ * PAROLE_MAJOR_VERSION:
+ *
+ * Major version number.
+ *
+ * Since: 0.2
+ */
 #define PAROLE_MAJOR_VERSION		@PAROLE_VERSION_MAJOR@
+
+/**
+ * PAROLE_MINOR_VERSION:
+ *
+ * Minor version number.
+ *
+ * Since: 0.2
+ */
 #define PAROLE_MINOR_VERSION		@PAROLE_VERSION_MINOR@
+
+/**
+ * PAROLE_MICRO_VERSION:
+ *
+ * Micro version number.
+ *
+ * Since: 0.2
+ */
 #define PAROLE_MICRO_VERSION		@PAROLE_VERSION_MICRO@
 
 /**
@@ -66,6 +89,8 @@
  * @t_n: The name of the new type, in lowercase, with words separated by '_'.
  * @T_P: The #GType of the parent type.
  *
+ * Create a new type definition.
+ *
  * Since: 0.2
  */
 #define PAROLE_DEFINE_TYPE(TN, t_n, T_P)			PAROLE_DEFINE_TYPE_EXTENDED (TN, t_n, T_P, 0, {})
@@ -78,6 +103,8 @@
  * @_f_: #GTypeFlags to pass to g_type_module_register_type ().
  * @_C_: Custom code that gets inserted in *_get_type() function.
  *
+ * Create a new type definition, passing flags and custom code to be inserted in the *_get_type() function.
+ *
  * Since: 0.2
  */
 #define PAROLE_DEFINE_TYPE_EXTENDED(TN, t_n, T_P, _f_, _C_)	_PAROLE_DEFINE_TYPE_EXTENDED_BEGIN(TN, t_n, T_P, _f_) {_C_;} _PAROLE_DEFINE_TYPE_EXTENDED_END()
@@ -89,6 +116,8 @@
  * @T_P: The #GType of the parent type.
  * @_C_: Custom code that gets inserted in *_get_type() function.
  *
+ * Create a new type definition, passing custom code to be inserted in the *_get_type() function.
+ *
  * Since: 0.2
  */
 #define PAROLE_DEFINE_TYPE_WITH_CODE(TN, t_n, T_P, _C_)		_PAROLE_DEFINE_TYPE_EXTENDED_BEGIN(TN, t_n, T_P, 0) {_C_;} _PAROLE_DEFINE_TYPE_EXTENDED_END()
@@ -98,6 +127,8 @@
  * @TN: The name of the new type, in Camel case.
  * @t_n: The name of the new type, in lowercase, with words separated by '_'.
  * @T_P: The #GType of the parent type.
+ *
+ * Create a new abstract type definition.
  *
  * Since: 0.2
  */
@@ -109,6 +140,8 @@
  * @t_n: The name of the new type, in lowercase, with words separated by '_'.
  * @T_P: The #GType of the parent type.
  * @_C_: Custom code that gets inserted in *_get_type() function.
+ *
+ * Create a new abstract type definition, passing custom code to be inserted in the *_get_type() function.
  *
  * Since: 0.2
  */
@@ -170,6 +203,9 @@ type_name##_register_type (ParoleProviderPlugin *provider_plugin_def) 		\
  * PAROLE_IMPLEMENT_INTERFACE:
  * @TYPE_IFACE: the #GType of the interface to add.
  * @iface_init: The interface init function.
+ *
+ * Convenience function for interface implementation.
+ *
  */
 #define PAROLE_IMPLEMENT_INTERFACE(TYPE_IFACE, iface_init) 			\
 { 										\

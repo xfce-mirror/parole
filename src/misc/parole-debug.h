@@ -34,9 +34,27 @@ G_BEGIN_DECLS
 
 #if defined(DEBUG) && defined(G_HAVE_ISO_VARARGS)
 
+/**
+ * PAROLE_DEBUG_ENUM:
+ * @_text: text to display
+ * @_value: enum to evaluate
+ * @_type: enum type
+ *
+ * A macro to print debug information for an enum.
+ *
+ */
 #define PAROLE_DEBUG_ENUM(_text, _value, _type)\
     parole_debug_enum (__func__, __FILE__, __LINE__, _text, _value, _type)
 
+/**
+ * PAROLE_DEBUG_ENUM_FULL:
+ * @_value: enum to evaluate
+ * @_type: enum type
+ * @...: format string, followed by parameters to insert into the format string (as with printf())
+ *
+ * A macro to print debug information with extended content for an enum.
+ *
+ */
 #define PAROLE_DEBUG_ENUM_FULL(_value, _type, ...)\
     parole_debug_enum_full (__func__, __FILE__, __LINE__, _value, _type, __VA_ARGS__)
 

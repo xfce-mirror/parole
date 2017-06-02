@@ -536,9 +536,9 @@ parole_get_uri_from_unix_device(const gchar *device) {
 /**
  * parole_format_media_length:
  *
- * @total_seconds: lenght of the media file in seconds
+ * @total_seconds: length of the media file in seconds
  *
- * Returns : formated string for the media lenght
+ * Returns : formated string for the media length
  **/
 gchar *parole_format_media_length(gint total_seconds) {
     gchar *timestring;

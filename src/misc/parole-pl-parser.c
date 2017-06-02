@@ -698,6 +698,7 @@ gboolean parole_pl_parser_save_from_files(GSList *files, const gchar *filename, 
  * parole_pl_parser_parse_from_file_by_extension:
  * @filename: a filename.
  *
+ * Parse a playlist into a series of #ParoleFile
  *
  * Returns: a #GSList containts a list of #ParoleFile parsed from the playlist,
  *          or NULL if no files were parsed.

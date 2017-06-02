@@ -375,6 +375,16 @@ parole_stream_set_image(GObject *object, GdkPixbuf *pixbuf) {
     }
 }
 
+/**
+ * parole_stream_get_image:
+ * @object: a #ParoleStream object.
+ *
+ * Get the ParoleStream image pixbuf.
+ *
+ * Returns: a #GdkPixbuf
+ *
+ * Since: 0.6
+ **/
 GdkPixbuf *
 parole_stream_get_image(GObject *object) {
     ParoleStream *stream;

@@ -80,7 +80,16 @@ typedef enum {
     PAROLE_STATE_PLAYING
 } ParoleState;
 
-
+/**
+ * ParoleStream:
+ *
+ * This object contains all the information describing the current processed
+ * stream by Parole, this object is used with the callback function the
+ * #ParoleProviderPlayerIface::state-changed signal of the player, the plugin
+ * shouldn't take reference and all the properties are read-only for the plugins.
+ *
+ * Since: 0.2
+ */
 typedef struct _ParoleStream      ParoleStream;
 typedef struct _ParoleStreamClass ParoleStreamClass;
 

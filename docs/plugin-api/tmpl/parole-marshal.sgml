@@ -1,12 +1,12 @@
 <!-- ##### SECTION Title ##### -->
-parole-marshal
+Parole Marshal
 
 <!-- ##### SECTION Short_Description ##### -->
-
+Marshal functions for Parole
 
 <!-- ##### SECTION Long_Description ##### -->
 <para>
-
+Marshal functions for Parole
 </para>
 
 <!-- ##### SECTION See_Also ##### -->
@@ -22,40 +22,38 @@ parole-marshal
 
 <!-- ##### FUNCTION parole_marshal_VOID__OBJECT_ENUM ##### -->
 <para>
-
+VOID:OBJECT,ENUM
 </para>
 
-@closure:
-@return_value:
-@n_param_values:
-@param_values:
-@invocation_hint:
-@marshal_data:
+@closure: closure
+@return_value: return value
+@n_param_values: number of parameter values
+@param_values: parameter values
+@invocation_hint: invocation hint
+@marshal_data: marshal data
 
 
 <!-- ##### FUNCTION parole_marshal_VOID__OBJECT_DOUBLE ##### -->
 <para>
-
+VOID:OBJECT,DOUBLE
 </para>
 
-@closure:
-@return_value:
-@n_param_values:
-@param_values:
-@invocation_hint:
-@marshal_data:
+@closure: closure
+@return_value: return value
+@n_param_values: number of parameter values
+@param_values: parameter values
+@invocation_hint: invocation hint
+@marshal_data: marshal data
 
 
 <!-- ##### FUNCTION parole_marshal_VOID__OBJECT_INT ##### -->
 <para>
-
+VOID:OBJECT,INT
 </para>
 
-@closure:
-@return_value:
-@n_param_values:
-@param_values:
-@invocation_hint:
-@marshal_data:
-
-
+@closure: closure
+@return_value: return value
+@n_param_values: number of parameter values
+@param_values: parameter values
+@invocation_hint: invocation hint
+@marshal_data: marshal data

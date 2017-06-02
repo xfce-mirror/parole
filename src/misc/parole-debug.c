@@ -36,8 +36,20 @@
 
 #if defined(DEBUG) && defined(G_HAVE_ISO_VARARGS)
 
+/**
+ * parole_debug_enum:
+ * @func: calling function
+ * @file: calling file
+ * @line: calling line
+ * @text: text to display
+ * @v_enum: enum to evaluate
+ * @type: enum type
+ *
+ * A function to print debug information for an enum.
+ *
+ **/
 void parole_debug_enum(const gchar *func, const gchar *file, gint line,
-                const gchar *text, gint v_enum, GType type) {
+                       const gchar *text, gint v_enum, GType type) {
     gchar *content = NULL;
     GValue __value__ = { 0, };
 
@@ -53,8 +65,21 @@ void parole_debug_enum(const gchar *func, const gchar *file, gint line,
     g_free(content);
 }
 
+/**
+ * parole_debug_enum_full:
+ * @func: calling function
+ * @file: calling file
+ * @line: calling line
+ * @v_enum: enum to evaluate
+ * @type: enum type
+ * @format: format string, followed by parameters to insert into the format string (as with printf())
+ * @...: parameters to insert into the format string
+ *
+ * A function to print debug information with extended content for an enum.
+ *
+ **/
 void parole_debug_enum_full(const gchar *func, const gchar *file, gint line,
-                 gint v_enum, GType type, const gchar *format, ...) {
+                            gint v_enum, GType type, const gchar *format, ...) {
     va_list args;
     gchar *buffer;
 

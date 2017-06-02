@@ -39,7 +39,26 @@ G_BEGIN_DECLS
 #define PAROLE_IS_PROVIDER_PLUGIN(o)                (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_PROVIDER_PLUGIN))
 #define PAROLE_PROVIDER_PLUGIN_GET_INTERFACE(o)     (G_TYPE_INSTANCE_GET_INTERFACE((o), PAROLE_TYPE_PROVIDER_PLUGIN, ParoleProviderPluginIface))
 
+/**
+ * ParoleProviderPluginIface:
+ *
+ * Interface for #ParoleProviderPlugin
+ *
+ * Since: 0.2
+ */
 typedef struct _ParoleProviderPluginIface ParoleProviderPluginIface;
+
+/**
+ * ParoleProviderPlugin:
+ *
+ * The methods of this interface should be overridden by the plugin, the Parole
+ * player calls these methods to determine if the plugin is configurable, to ask
+ * the plugin to open its configuration dialog or to set the
+ * #ParoleProviderPlayer that the plugin can use to get access to various
+ * functionalities of the player.
+ *
+ * Since: 0.2
+ */
 typedef struct _ParoleProviderPlugin      ParoleProviderPlugin;
 
 struct _ParoleProviderPluginIface {
