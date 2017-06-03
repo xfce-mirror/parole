@@ -4,7 +4,14 @@
 *.libs
 *.lo
 *.o
+*.orig
+*.swp
+*~
+.cproject
 .deps
+.project
+.settings
+.vscode
 INSTALL
 Makefile
 Makefile.in
@@ -20,11 +27,11 @@ config.status
 config.sub
 configure
 configure.ac
+cov-int/
 data/desktop/org.xfce.Parole.desktop.in
 data/interfaces/*.h
 data/mime/parole-mime-types.h
 depcomp
-docs/plugin-api/version.xml
 docs/plugin-api/Parole-Plugins-decl-list.txt
 docs/plugin-api/Parole-Plugins-decl.txt
 docs/plugin-api/Parole-Plugins-undeclared.txt
@@ -35,6 +42,7 @@ docs/plugin-api/Parole-Plugins.hierarchy
 docs/plugin-api/Parole-Plugins.interfaces
 docs/plugin-api/Parole-Plugins.prerequisites
 docs/plugin-api/Parole-Plugins.signals
+docs/plugin-api/Parole-Plugins.types
 docs/plugin-api/html-build.stamp
 docs/plugin-api/html.stamp
 docs/plugin-api/html/
@@ -44,6 +52,7 @@ docs/plugin-api/sgml-build.stamp
 docs/plugin-api/sgml.stamp
 docs/plugin-api/tmpl-build.stamp
 docs/plugin-api/tmpl.stamp
+docs/plugin-api/version.xml
 docs/plugin-api/xml/
 gtk-doc.make
 install-sh
@@ -81,6 +90,3 @@ src/stamp-enum-gtypes.h
 stamp-enum-types.h
 stamp-h1
 test-driver
-.cproject
-.project
-.settings
