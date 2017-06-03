@@ -1,3 +1,892 @@
+commit 535bba61c6fef0100fdaf2538405946620d7d264
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Sat Jun 3 07:26:46 2017 -0400
+
+    Fix typo and bump requirements in README
+
+commit b51bd56f98487b0aee961cb9b109bf74f92ebd5c
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Sat Jun 3 06:13:00 2017 -0400
+
+    Drop generated Parole-Plugins.type from git, add new definitions to .gitignore and sort
+
+commit 058b6612aa83e8703a3bbf3f72f22874e6115c87
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Sat Jun 3 06:04:45 2017 -0400
+
+    Drop directory includes where needed to satisfy distcheck
+
+commit 0efa16365194736a14e4f5734186912db8623561
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Sat Jun 3 05:52:44 2017 -0400
+
+    Correct typos
+
+commit e4c963d83f9b1230df44c351964a30d2b91e0e6f
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Fri Jun 2 06:54:09 2017 -0400
+
+    Bump copyright notices
+
+commit 072dc2cff896be5a5a591c005f31c04967e8952a
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Fri Jun 2 06:29:49 2017 -0400
+
+    Improve documentation quality
+
+commit 33bcaf34f24384cf365cbfb276041fc5183f8ba1
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Thu Jun 1 23:00:42 2017 -0400
+
+    Complete the Parole Plugins documentation.
+    100% symbol docs coverage.
+    132 symbols documented.
+    0 symbols incomplete.
+    0 not documented.
+
+commit 23229241238c68f48d81fa2ee63b851cf9a7685f
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Wed May 31 22:58:05 2017 -0400
+
+    FIX CID 1375856: Explicit null dereferenced
+
+commit c025d15d98799cc535bcff388b7d718f65b7e35b
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Wed May 31 22:20:43 2017 -0400
+
+    Bump minimum GTK version to 3.20, minimum stable version for GtkShortcutsWindow
+
+commit 719bcb14f22fc6c4fd29b38f9bca2f84b9be81b1
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Wed May 31 22:07:54 2017 -0400
+
+    Drop GStreamer 0.10 support
+
+commit c83ac732d2ed81228e3e71b8baa9cd7bcf0db341
+Merge: 97a9009 63a3310
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Wed May 31 06:31:42 2017 -0400
+
+    Merge branch 'master' of ssh://git.xfce.org/apps/parole
+
+commit 97a9009cc755ca694c0930a5b1e1284df5db7b3e
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Wed May 31 06:31:31 2017 -0400
+
+    cpplint: Fix false positive, Add #include <string> for string  [build/include_what_you_use] [4]
+
+commit 63a33109297e8fc55b8b58bd6d61124281fd2735
+Author: Pablo Roberto “Jristz” Lezaeta Reyes <prflr88@gmail.com>
+Date:   Wed May 31 12:31:03 2017 +0200
+
+    I18n: Update translation es (100%).
+    
+    298 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit ea63bef24f131fc5313b8d2cae63b98ce170ed91
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Wed May 31 06:28:06 2017 -0400
+
+    cpplint: Lines should be <= 120 characters long  [whitespace/line_length] [2]
+
+commit 35ffca7c00dc07392c2003d83962b709c2294ba8
+Author: 玉堂白鹤 <yjwork@qq.com>
+Date:   Wed May 31 06:30:59 2017 +0200
+
+    I18n: Update translation zh_CN (100%).
+    
+    298 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 98ba29a1d91124b9fbf86337373d5dbc2c66c2ef
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Tue May 30 22:19:07 2017 -0400
+
+    cpplint: Include the directory when naming .h files  [build/include_subdir] [4]
+
+commit 157600ba94373ba45bfde30e67558f5eb4f599a1
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Tue May 30 20:58:33 2017 -0400
+
+    cpplint: Final batch of whitespace fixes
+    { should almost always be at the end of the previous line  [whitespace/braces] [4]
+    Extra space after (  [whitespace/parens] [2]
+    Extra space before ( in function call  [whitespace/parens] [4]
+    If an else has a brace on one side, it should have it on both  [readability/braces] [5]
+    Mismatching spaces inside () in for  [whitespace/parens] [5]
+    Mismatching spaces inside () in if  [whitespace/parens] [5]
+
+commit 2f23e21bcddf7ecdba4fc54b43446c2a46275bd0
+Author: Anonymous <noreply@xfce.org>
+Date:   Wed May 31 00:30:55 2017 +0200
+
+    I18n: Update translation da (100%).
+    
+    298 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 1074465ff27c300e1af44857a488c9f4449c34ea
+Author: Theppitak Karoonboonyanan <theppitak@gmail.com>
+Date:   Tue May 30 18:30:58 2017 +0200
+
+    I18n: Update translation th (100%).
+    
+    298 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 67b285bb6e29a29752b9ac4a0ff05831391c64e5
+Author: Petr Šimáček <petr.simacek@gmail.com>
+Date:   Mon May 29 12:31:04 2017 +0200
+
+    I18n: Update translation cs (100%).
+    
+    298 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit e41ba5f75005cb86354f831388c0c4e9376f0737
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Sun May 28 19:01:14 2017 -0400
+
+    cpplint: Another batch of whitespace fixes
+    Extra space before ( in function call  [whitespace/parens] [4]
+    Mismatching spaces inside () in if  [whitespace/parens] [5]
+    Missing space after ,  [whitespace/comma] [3]
+    Missing space before ( in while(  [whitespace/parens] [5]
+
+commit af7292c4826d06aee27d7c8b7ffdc8540a28f5b3
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Sun May 28 15:59:35 2017 -0400
+
+    cpplint: If/else bodies with multiple statements require braces  [readability/braces] [4]
+
+commit 856ccf7ab55c8855ec2a1c519988f5218cb17023
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Sun May 28 15:43:49 2017 -0400
+
+    cpplint: Found C system header after other header.
+
+commit 4becf63a73f3fc144a2e43a86cc79d0ea585fd42
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Sun May 28 15:24:55 2017 -0400
+
+    cpplint: Even more whitespace fixes
+    Closing ) should be moved to the previous line  [whitespace/parens] [2]
+    At least two spaces is best between code and comments  [whitespace/comments] [2]
+    Complex multi-line /*...*/-style comment found. Lint may give bogus warnings.  Consider replacing these with //-style comments, with #if 0...#endif, or with more clearly structured multi-line comments.  [readability/multiline_comment] [5]
+    Extra space after (  [whitespace/parens] [2]
+    Extra space after ( in function call  [whitespace/parens] [4]
+    Extra space before )  [whitespace/parens] [2]
+    Extra space before [  [whitespace/braces] [5]
+    Extra space before last semicolon. If this should be an empty statement, use {} instead.  [whitespace/semicolon] [5]
+    Extra space for operator !   [whitespace/operators] [4]
+
+commit 0a3084c72e32fc0eecdd6c7939db2a7c88cddb3b
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Sun May 28 14:30:13 2017 -0400
+
+    cpplint: Tab found; better to use spaces  [whitespace/tab] [1]
+
+commit 44eb022a0b8825da7a3eb41605e53526fc02a726
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Sun May 28 14:15:56 2017 -0400
+
+    cpplint: More whitespace fixes
+    Redundant blank line at the end of a code block should be deleted.  [whitespace/blank_line] [3]
+    Redundant blank line at the start of a code block should be deleted.  [whitespace/blank_line] [2]
+    Should have a space between // and comment  [whitespace/comments] [4]
+
+commit 0464661a04b6b33365ca81257fa0dd100c5f6d65
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Sun May 28 10:44:57 2017 -0400
+
+    cpplint: Whitespace Fixes
+    Mismatching spaces inside () in if  [whitespace/parens] [5]
+    Missing space after ,  [whitespace/comma] [3]
+    Missing space before ( in if(  [whitespace/parens] [5]
+    Missing space before ( in switch(  [whitespace/parens] [5]
+    Missing space before {  [whitespace/braces] [5]
+    Missing spaces around <  [whitespace/operators] [3]
+    Line contains only semicolon. If this should be an empty statement, use {} instead.  [whitespace/semicolon] [5]
+
+commit 0952a4058a2f1980dd1b43aed550afe8484e21b1
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Sun May 28 09:38:41 2017 -0400
+
+    cpplint: An else should appear on the same line as the preceding }
+
+commit b3a1cdd1ebf457f76c4e3b0ba74e6e6b4e2395f7
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Sat May 27 22:43:50 2017 -0400
+
+    Fix most cpplint header guard notices
+
+commit c78e797ffc8352a6a6629a3ded268605e6c04ba5
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Sat May 27 21:23:20 2017 -0400
+
+    Drop double include
+
+commit 071d8ed0e818a3c343520890099de11cb8c3819c
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Sat May 27 20:33:01 2017 -0400
+
+    gtk-doc: Add missing value descriptions
+
+commit 7cf3eb176b25b41c4d9fd90f301a92019bee7f66
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Sat May 27 19:56:47 2017 -0400
+
+    Fix undeclared symbol detection with gtk-doc
+
+commit 44681fa771b270308fc94651bd0e1d063733ce8f
+Author: Igor <f2404@yandex.ru>
+Date:   Sat May 27 18:31:08 2017 +0200
+
+    I18n: Update translation ru (100%).
+    
+    298 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit a8d77bcad0be7c5ed330a144a4572d769f545f0a
+Author: 박정규(Jung-Kyu Park) <bagjunggyu@gmail.com>
+Date:   Sat May 27 18:31:08 2017 +0200
+
+    I18n: Update translation ko (100%).
+    
+    298 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 7710c48478fb4584781f6441bca566313767c41a
+Author: jc1 <jc1.quebecos@gmail.com>
+Date:   Sat May 27 18:31:08 2017 +0200
+
+    I18n: Update translation fr (100%).
+    
+    298 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 8fb4a467cc5ddb681c34c486bd31cf59fb505835
+Author: Dušan Kazik <prescott66@gmail.com>
+Date:   Sat May 27 12:30:56 2017 +0200
+
+    I18n: Update translation sk (99%).
+    
+    296 translated messages, 2 untranslated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit b508908a92b5971ffdbcc0e2720c334ee3d786b9
+Author: Kukuh Syafaat <syafaatkukuh@gmail.com>
+Date:   Sat May 27 12:30:56 2017 +0200
+
+    I18n: Update translation id (100%).
+    
+    298 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 738c8d1146910d7fade5b856b20eb6f89eae8f44
+Author: Elishai Eliyahu <e1907@mm.st>
+Date:   Sat May 27 12:30:56 2017 +0200
+
+    I18n: Update translation he (100%).
+    
+    298 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 950f981e35492336d42b3baf51fe4f4f46c4c042
+Author: Yannick Le Guen <leguen.yannick@gmail.com>
+Date:   Sat May 27 12:30:56 2017 +0200
+
+    I18n: Update translation fr (95%).
+    
+    285 translated messages, 13 untranslated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 594a3ac1d5add9bf42f586c9008a47b187e28218
+Author: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>
+Date:   Sat May 27 12:30:56 2017 +0200
+
+    I18n: Update translation ca (100%).
+    
+    298 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 92c3ebd0bf13b5f4d1c6f377971f2bdd1beadb3b
+Author: André Miranda <andre42m@gmail.com>
+Date:   Fri May 26 18:30:53 2017 +0200
+
+    I18n: Update translation pt_BR (99%).
+    
+    276 translated messages, 1 untranslated message.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit b0763aeff02c4630ac8aeb2d4951f8b5a2b1c1e2
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Fri May 26 06:39:47 2017 -0400
+
+    Add keyboard shortcuts helper to Parole
+
+commit 4bbd70d2e4372aa2cb7dee274328a7dd2490eaed
+Author: 박정규(Jung-Kyu Park) <bagjunggyu@gmail.com>
+Date:   Fri May 26 12:30:55 2017 +0200
+
+    I18n: Update translation ko (100%).
+    
+    277 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit c9645df9507c668d61f2639d18743eab38f3899b
+Author: 玉堂白鹤 <yjwork@qq.com>
+Date:   Fri May 26 06:30:54 2017 +0200
+
+    I18n: Update translation zh_CN (100%).
+    
+    277 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit c8876fb6b9db62bfb3918c6121e75659cc54e1bd
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Thu May 25 23:05:40 2017 -0400
+
+    Tidy up trailing whitespace
+
+commit 69f31052223f24b4227072b4352c045aedc3f55f
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Thu May 25 22:11:14 2017 -0400
+
+    Support Ctrl-Q in fullscreen (bug #13549)
+
+commit 5af2127b6fd396d7800f58f95bd6cc42be4f1d24
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Thu May 25 22:05:59 2017 -0400
+
+    Add N/B keybindings for next and previous track, inspired by Totem (bug #12951)
+
+commit ef3c6ebf89028f2cdea7c1ca860f1a11ed69912e
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Thu May 25 21:54:07 2017 -0400
+
+    Fix adding directories to the queue from cli (bug #12899)
+
+commit 62016eb9f4e86cad734e3b734793d89da596456b
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Thu May 25 21:46:53 2017 -0400
+
+    Add static to update_media_list_n_shuffled_items
+
+commit 17dcf57cb3a728651278669ad8d63ac610d1f89a
+Author: Julien Sopik <jsopik81-xfce-dev@yahoo.fr>
+Date:   Fri Sep 2 17:58:21 2016 +0200
+
+    Fix bug 12010.
+    
+    Recover the Repeat mode when Shuffle is on by setting n_shuffled_items
+    to the special value -1.
+    
+    Update the value of n_shuffled_items whenever Repeat or Shuffle
+    buttons are toggled to insure consistency between the modes.
+    
+    Signed-off-by: Sean Davis <smd.seandavis@gmail.com>
+
+commit 7197bd375f2bd59b253696662f4211abe2b70e91
+Author: Julien Sopik <jsopik81-xfce-dev@yahoo.fr>
+Date:   Fri Sep 2 17:46:01 2016 +0200
+
+    Fix bug 12010.
+    
+    Add a control on a new variable, n_shuffled_items, to insure that
+    (almost) all items are played only once when Shuffle mode is enabled.
+    
+    TODO:
+    
+    Restore the Repeat mode when both Shuffle and Repeat modes are enabled.
+    
+    Signed-off-by: Sean Davis <smd.seandavis@gmail.com>
+
+commit ff47412f360e480f9057e14a7910c325ff58cd0b
+Author: Matija Skala <mskala@gmx.com>
+Date:   Thu May 25 21:00:16 2017 -0400
+
+    Display audio and subtitle tracks in correct order (bug #13268)
+
+commit 9b66e3dac08d00930528d4c3894c538db8105078
+Author: Pjotr <pjotrvertaalt@gmail.com>
+Date:   Fri May 26 00:31:07 2017 +0200
+
+    I18n: Update translation nl (100%).
+    
+    277 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit f7a7798d464b8492e184050ecf6cc1a924bd193a
+Author: Anonymous <noreply@xfce.org>
+Date:   Fri May 26 00:31:07 2017 +0200
+
+    I18n: Update translation lt (100%).
+    
+    277 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 36a7bfdf68a02ca5322c6c7b8f3dab5f143efb7b
+Author: Elishai Eliyahu <e1907@mm.st>
+Date:   Fri May 26 00:31:07 2017 +0200
+
+    I18n: Update translation he (100%).
+    
+    277 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit ccb09eb546c88595b50cd0a6934479dd4a19253b
+Author: Yannick Le Guen <leguen.yannick@gmail.com>
+Date:   Fri May 26 00:31:06 2017 +0200
+
+    I18n: Update translation fr (100%).
+    
+    277 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 7a8e515a1950db6c22c623fca9e561b58694ac0b
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Thu May 25 06:13:30 2017 -0400
+
+    Update parole plugin homepage to docs.xfce
+
+commit 9eecbb1dad5245b2af02f0919a99d50199c76d26
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Thu May 25 06:10:10 2017 -0400
+
+    Switch to https for xfce URLs
+
+commit 4999fecc63307938d9613eb13189a368bfda9151
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Wed May 24 06:23:16 2017 -0400
+
+    Clear only the history created by Parole, GtkRecentManager no longer accounts for applied filters when purging (bug #13493)
+
+commit f7168030ce2b6edddf365098e753023baf411c65
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Wed May 24 05:52:49 2017 -0400
+
+    Replace deprecated gtk_show_uri
+
+commit 3c995d0c69fd34ebbd6ec3f79ea0f33fa85da9ec
+Author: Kukuh Syafaat <syafaatkukuh@gmail.com>
+Date:   Fri May 19 12:31:16 2017 +0200
+
+    I18n: Update translation id (100%).
+    
+    277 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 98f305eae233cbe6dab8c9572db49c1b50fc52ce
+Author: Yarema aka Knedlyk <yupadmin@gmail.com>
+Date:   Tue May 16 12:31:22 2017 +0200
+
+    I18n: Update translation uk (100%).
+    
+    277 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 6e21b4be413abc61394792ad8c2aa9c4dfcfdd8c
+Author: Anonymous <noreply@xfce.org>
+Date:   Tue May 16 00:31:08 2017 +0200
+
+    I18n: Update translation lt (100%).
+    
+    277 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit bca643fff811189836d686809e5fda697f8cc7f0
+Author: Allan Nordhøy <epost@anotheragency.no>
+Date:   Sun May 7 12:31:08 2017 +0200
+
+    I18n: Update translation nb (100%).
+    
+    277 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit ab9dcbc5d67c3970433755482f7f8c853cf21d3b
+Author: 玉堂白鹤 <yjwork@qq.com>
+Date:   Wed May 3 06:31:06 2017 +0200
+
+    I18n: Update translation zh_CN (100%).
+    
+    277 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit a6ff1757aae20348737a79222010556a164fb71e
+Author: Саша Петровић <salepetronije@gmail.com>
+Date:   Fri Apr 28 00:31:07 2017 +0200
+
+    I18n: Update translation sr (99%).
+    
+    276 translated messages, 1 untranslated message.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 25ede4259518391ba51e602eb1f95acf0ef099c3
+Author: Theppitak Karoonboonyanan <theppitak@gmail.com>
+Date:   Thu Apr 27 06:30:53 2017 +0200
+
+    I18n: Update translation th (100%).
+    
+    277 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 62c9fee88f40f190c93f3af78ba9c4c3f359f7e7
+Author: Enrico <allin@infinito.it>
+Date:   Mon Apr 24 18:31:23 2017 +0200
+
+    I18n: Update translation it (100%).
+    
+    277 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 226d7fa0adc7bace716dc40e4a2c41b0ea5f19af
+Author: Anonymous <noreply@xfce.org>
+Date:   Thu Apr 13 18:31:35 2017 +0200
+
+    I18n: Update translation lt (100%).
+    
+    277 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit b22047dd72a62552341741d14bc839c4eff4b2e9
+Author: Tobias Bannert <tobannert@gmail.com>
+Date:   Tue Apr 11 18:31:06 2017 +0200
+
+    I18n: Update translation de (99%).
+    
+    275 translated messages, 2 untranslated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit eb0609e9b96fe8ffdb8e40679d2353e26a5a079b
+Author: Simon Marchi <simon.marchi@polymtl.ca>
+Date:   Tue Apr 11 05:08:27 2017 -0400
+
+    Add missing escaping in audiobox
+
+commit 5badf1f78e132e6fd91759ca451b7c46c4e51b84
+Author: Piotr Sokół <psokol.l10n@gmail.com>
+Date:   Mon Apr 3 12:30:57 2017 +0200
+
+    I18n: Update translation pl (100%).
+    
+    277 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 3c86c2fb66d3d35d9cd7a8f55e3fc05bfd2ca477
+Author: Charles Monzat <superboa@hotmail.fr>
+Date:   Tue Mar 21 00:31:47 2017 +0100
+
+    I18n: Update translation fr (100%).
+    
+    277 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit b50bc2a01fbf02a0dc6db0d66aa3b724d63bfd29
+Author: abuyop <abuyop@gmail.com>
+Date:   Sat Mar 18 12:31:03 2017 +0100
+
+    I18n: Update translation ms (100%).
+    
+    277 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 624554c355fdac40dc57fc1c1eede4e789b49b07
+Author: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>
+Date:   Sat Mar 18 00:31:09 2017 +0100
+
+    I18n: Update translation ca (100%).
+    
+    277 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 3cc96436cc26198579195f0c8b8ee1ab4bec92ee
+Author: Nuno Miguel <nunomgue@gmail.com>
+Date:   Thu Mar 16 18:31:04 2017 +0100
+
+    I18n: Update translation pt (100%).
+    
+    277 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit f6162bc32bc0fe5b7c93efc705470fd942a9d09e
+Author: 박정규(Jung-Kyu Park) <bagjunggyu@gmail.com>
+Date:   Mon Mar 13 18:31:52 2017 +0100
+
+    I18n: Update translation ko (100%).
+    
+    277 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 6388594a5966872b0ddaed7e767ec9bcf8b72ecc
+Author: Pablo Roberto “Jristz” Lezaeta Reyes <prflr88@gmail.com>
+Date:   Mon Mar 13 06:31:08 2017 +0100
+
+    I18n: Update translation es (100%).
+    
+    277 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 04b08591894ad135a9d55d24b4ba729759967b00
+Author: Apóstolos Papaðimitríu <apostolos.papadimitriu@gmail.com>
+Date:   Sun Mar 12 00:31:07 2017 +0100
+
+    I18n: Update translation el (95%).
+    
+    265 translated messages, 12 untranslated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 47bc8c279e282cd881836aae9b16b4937d9bfac8
+Author: 玉堂白鹤 <yjwork@qq.com>
+Date:   Thu Mar 9 06:30:46 2017 +0100
+
+    I18n: Update translation zh_CN (99%).
+    
+    276 translated messages, 1 untranslated message.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 7425c3734bd6ae8b4aa29c8b65045bc52df63fe7
+Author: Påvel Nicklasson <pavel2@frimix.se>
+Date:   Wed Mar 8 00:31:02 2017 +0100
+
+    I18n: Update translation sv (100%).
+    
+    277 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit ccee384314c15a206976e1e86856ae8d629855b5
+Author: 玉堂白鹤 <yjwork@qq.com>
+Date:   Fri Mar 3 06:30:57 2017 +0100
+
+    I18n: Update translation zh_CN (99%).
+    
+    275 translated messages, 2 untranslated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 234837b05343f19887c235046a14e925694af189
+Author: m4sk1n <m4sk1n@o2.pl>
+Date:   Fri Mar 3 00:30:46 2017 +0100
+
+    I18n: Update translation pl (100%).
+    
+    277 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit fad8cf64e275fa4f2c0930a7bbcb8b52ffb24d0b
+Author: Edin Veskovic <edin.veskovic@openmailbox.org>
+Date:   Tue Feb 28 18:30:54 2017 +0100
+
+    I18n: Update translation hr (100%).
+    
+    277 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit fe51d41aac55098f8c7979cf47d58472ab35cd5c
+Author: Elishai Eliyahu <e1907@mm.st>
+Date:   Tue Feb 28 12:31:06 2017 +0100
+
+    I18n: Update translation he (100%).
+    
+    277 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit c36c308ad46d108d2b5ea1e06baa767d991d8c2b
+Author: Manolo Díaz <diaz.manolo@gmail.com>
+Date:   Tue Feb 28 06:30:48 2017 +0100
+
+    I18n: Update translation es (99%).
+    
+    276 translated messages, 1 untranslated message.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 19b776125566b77816b384fa27316a4cdc7e4821
+Author: Anonymous <noreply@xfce.org>
+Date:   Tue Feb 28 06:30:48 2017 +0100
+
+    I18n: Update translation da (100%).
+    
+    277 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 13544a4054307afdd816ac0ff864e9e87d3eaf4f
+Author: m4sk1n <m4sk1n@o2.pl>
+Date:   Tue Feb 28 00:31:00 2017 +0100
+
+    I18n: Update translation pl (99%).
+    
+    275 translated messages, 2 untranslated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 6e23c67ee8dded5aa338af39e9610e19dbdf6ca9
+Author: Pjotr <pjotrvertaalt@gmail.com>
+Date:   Tue Feb 28 00:31:00 2017 +0100
+
+    I18n: Update translation nl (100%).
+    
+    277 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 71ec2b46d9a3406553ece552377f0eae17c4c540
+Author: Yannick Le Guen <leguen.yannick@gmail.com>
+Date:   Tue Feb 28 00:31:00 2017 +0100
+
+    I18n: Update translation fr (99%).
+    
+    276 translated messages, 1 untranslated message.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 6fe994e24eac9c55856e191ec302adf32c670c87
+Author: Yannick Le Guen <leguen.yannick@gmail.com>
+Date:   Mon Feb 27 18:30:48 2017 +0100
+
+    I18n: Update translation fr (99%).
+    
+    275 translated messages, 2 untranslated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit f5642f865fb26a5f601d6af2c3977c7eecca0863
+Author: Dušan Kazik <prescott66@gmail.com>
+Date:   Mon Feb 27 12:31:03 2017 +0100
+
+    I18n: Update translation sk (99%).
+    
+    275 translated messages, 2 untranslated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 28c6956b455b61ee0a0824532a23862946fe7b55
+Author: Igor <f2404@yandex.ru>
+Date:   Mon Feb 27 12:31:03 2017 +0100
+
+    I18n: Update translation ru (100%).
+    
+    277 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 4b3e46081c7640f944011efba7313dac75fea72f
+Author: Jeff Huang <s8321414@gmail.com>
+Date:   Mon Feb 27 06:30:52 2017 +0100
+
+    I18n: Update translation zh_TW (100%).
+    
+    277 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit c2ce33b4119a54563bd3afebd672c9fa67645182
+Author: Jeff Huang <s8321414@gmail.com>
+Date:   Sun Feb 26 18:30:59 2017 +0100
+
+    I18n: Update translation zh_TW (100%).
+    
+    275 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 0b1f30a35d3f8c62f0fc1194f19d406a9425275e
+Author: Anonymous <noreply@xfce.org>
+Date:   Sun Feb 26 18:30:59 2017 +0100
+
+    I18n: Update translation lt (100%).
+    
+    275 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit a6aa382e4e3e2f33ee654b6561876b5e639ed20d
+Author: Edin Veskovic <edin.veskovic@openmailbox.org>
+Date:   Sun Feb 26 18:30:59 2017 +0100
+
+    I18n: Update translation hr (100%).
+    
+    275 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 83bdd7cec8016375e31bc728cbe9a933952ea881
+Author: Anonymous <noreply@xfce.org>
+Date:   Sun Feb 26 18:30:59 2017 +0100
+
+    I18n: Update translation da (100%).
+    
+    275 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit 82f46969db2ebd0c100d8fee8fb25c074816f474
+Author: Kiril Kirilov <cybercop_montana@abv.bg>
+Date:   Sun Feb 26 18:30:59 2017 +0100
+
+    I18n: Update translation bg (100%).
+    
+    275 translated messages.
+    
+    Transifex (https://www.transifex.com/projects/p/xfce/).
+
+commit e50ec3507a959a2f2a6457843e469c473541ad7c
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Sun Feb 26 09:41:13 2017 -0500
+
+    Post release tag bump
+
+commit f288aa04d6fe3d121ff0d38e67dcb02bc39e4dbc
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Sun Feb 26 09:35:53 2017 -0500
+
+    Updates for release
+
 commit 2922856a11821235e3e0aafe66f01483cf8d7d1d
 Author: Sean Davis <smd.seandavis@gmail.com>
 Date:   Sun Feb 26 09:20:22 2017 -0500

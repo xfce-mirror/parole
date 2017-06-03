@@ -1,3 +1,41 @@
+0.9.2
+=====
+- General
+  - Update homepage to docs.xfce.org
+  - Switch Xfce URLs to HTTPS
+- New Features
+  - Keyboard shortcuts helper available in the Help menu
+  - New B/N keybindings for previous and next track (Bug 12951)
+- Bug Fixes
+  - Fixed null pointer dereference (CID 1375856)
+  - Fixed adding directories to queue via commandline (Bug 12899)
+  - Fixed shuffle functionality also repeating (Bug 12010)
+  - Fixed display order of audio and subtitle tracks (Bug 13268)
+  - Fixed "Clear Recent" clearing global history (Bug 13493)
+  - Fixed Ctrl-Q keybinding when in fullscreen (Bug 13549)
+  - Fixed string escaping in audiobox widget
+- Deprecations
+  - GTK minimum version bumped to 3.20
+  - GStreamer minimum version bumped to 1.0
+  - Replaced deprecated gtk_show_uri for GTK 3.22+
+- Documentation
+  - Complete the Parole Plugins documentation (100% symbol coverage)
+  - Improved documentation quality
+  - Corrected typos where found
+- Code Quality
+  - Standardize header guards (cpplint)
+  - Standardize includes (native, system, project, related)
+  - Include directory when naming .h files (cpplint)
+  - Numerous whitespace fixes (cpplint)
+  - Add braces for if/else bodies with multiple statements (cpplint)
+  - String length reduced to 120 characters
+  - Cleanup .gitignore and add more definitions
+- Translation Updates: Bulgarian, Catalan, Chinese (China), Chinese (Taiwan),
+  Croatian, Czech, Danish, Dutch, French, German, Greek, Hebrew, Indonesian,
+  Italian, Korean, Lithuanian, Malay, Norwegian Bokmal, Polish, Portuguese,
+  Portuguese (Brazil), Russian, Serbian, Slovak, Spanish, Swedish, Thai,
+  Ukrainian
+
 0.9.1
 =====
 - Bumped the minimum GTK version to 3.14 to simplify code maintenance
