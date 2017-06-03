@@ -33,7 +33,7 @@
 #include <dbus/dbus.h>
 #include <dbus/dbus-glib-lowlevel.h>
 
-#include "src/dbus/parole-dbus.h"
+#include "parole-dbus.h"
 
 static void
 proxy_destroy_cb(DBusGConnection *bus) {

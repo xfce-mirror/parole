@@ -32,7 +32,7 @@
 
 #include <libxfce4util/libxfce4util.h>
 
-#include "src/common/parole-common.h"
+#include "parole-common.h"
 
 gboolean
 parole_widget_reparent(GtkWidget *widget, GtkWidget *new_parent) {

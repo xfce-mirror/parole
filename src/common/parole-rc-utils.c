@@ -30,7 +30,7 @@
 
 #include <glib.h>
 
-#include "src/common/parole-rc-utils.h"
+#include "parole-rc-utils.h"
 
 XfceRc *
 parole_get_resource_file(const gchar *group, gboolean readonly) {
