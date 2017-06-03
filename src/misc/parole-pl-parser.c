@@ -700,7 +700,7 @@ gboolean parole_pl_parser_save_from_files(GSList *files, const gchar *filename, 
  *
  * Parse a playlist into a series of #ParoleFile
  *
- * Returns: a #GSList containts a list of #ParoleFile parsed from the playlist,
+ * Returns: a #GSList containing a list of #ParoleFile parsed from the playlist,
  *          or NULL if no files were parsed
  *
  * Since: 0.2
@@ -729,7 +729,7 @@ out:
  * This function tries to parse a playlist without guessing the playlist format.
  *
  *
- * Returns: a #GSList containts a list of #ParoleFile parsed from the playlist,
+ * Returns: a #GSList containing a list of #ParoleFile parsed from the playlist,
  *          or NULL if no files were parsed
  *
  * Since: 0.2

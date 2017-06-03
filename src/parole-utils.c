@@ -195,7 +195,7 @@ thunar_file_compare_by_name(ParoleFile *file_a,
             gchar bbuf[8];
 
             /* transform the unicode chars to strings and
-                 * make sure the strings are nul-terminated.
+                 * make sure the strings are null-terminated.
              */
             abuf[g_unichar_to_utf8(ac, abuf)] = '\0';
             bbuf[g_unichar_to_utf8(bc, bbuf)] = '\0';
@@ -538,7 +538,7 @@ parole_get_uri_from_unix_device(const gchar *device) {
  *
  * @total_seconds: length of the media file in seconds
  *
- * Returns : formated string for the media length
+ * Returns : formatted string for the media length
  **/
 gchar *parole_format_media_length(gint total_seconds) {
     gchar *timestring;

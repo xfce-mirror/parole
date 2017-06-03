@@ -140,7 +140,7 @@ void parole_conf_dialog_subtitle_encoding_changed_cb(GtkComboBox *widget, Parole
                  NULL);
 }
 
-/* Enable visualisations */
+/* Enable visualizations */
 void parole_conf_dialog_enable_vis_changed_cb(GObject *object, GParamSpec *pspec, gpointer *data) {
     gboolean active;
     ParoleConfDialog *self;
@@ -267,7 +267,7 @@ parole_conf_dialog_init(ParoleConfDialog *self) {
     self->priv->vis_plugins = parole_vis_get_plugins();
 }
 
-/* Fill the combobox with visualisations */
+/* Fill the combobox with visualizations */
 static void
 parole_conf_dialog_add_vis_plugins(gpointer key, gpointer value, GtkWidget *combox) {
     GtkListStore *store = GTK_LIST_STORE(gtk_combo_box_get_model(GTK_COMBO_BOX(combox)));
@@ -293,7 +293,7 @@ parole_conf_dialog_add_clutter_sink(ParoleConfDialog *dialog, GtkComboBox *combo
 }
 #endif
 
-/* Set the combobox to the default visualisation plugin */
+/* Set the combobox to the default visualization plugin */
 static gboolean
 parole_conf_dialog_set_default_vis_plugin(GtkTreeModel *model,
                                           GtkTreePath *path,

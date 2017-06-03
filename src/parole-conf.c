@@ -514,7 +514,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
      *
      * Xfconf property: /parole/scan-recursive
      *
-     * If openening a directory should also open subdirectories.
+     * If opening a directory should also open subdirectories.
      **/
     g_object_class_install_property(object_class,
                                     PROP_SCAN_FOLDER_RECURSIVELY,

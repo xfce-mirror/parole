@@ -2921,7 +2921,7 @@ parole_audiobox_expose_event(GtkWidget *w, GdkEventExpose *ev, ParolePlayer *pla
 
     gtk_box_set_homogeneous(GTK_BOX(w), homogeneous);
 
-    /* Expand the coverart if the parent box packing is homogenous */
+    /* Expand the coverart if the parent box packing is homogeneous */
     gtk_box_set_child_packing(GTK_BOX(w),
                                player->priv->audiobox_cover,
                                homogeneous,
