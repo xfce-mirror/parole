@@ -7,13 +7,14 @@
 # Mario Blättermann <mariobl@gnome.org>, 2009
 # Markus, 2013
 # Tobias Bannert <tobannert@gmail.com>, 2014-2015,2017
+# Vinzenz Vietzke <vinz@vinzv.de>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-03 18:30+0200\n"
-"PO-Revision-Date: 2017-07-19 13:27+0000\n"
-"Last-Translator: Tobias Bannert <tobannert@gmail.com>\n"
+"PO-Revision-Date: 2017-08-10 22:45+0000\n"
+"Last-Translator: Vinzenz Vietzke <vinz@vinzv.de>\n"
 "Language-Team: German (http://www.transifex.com/xfce/xfce-apps/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -195,7 +196,7 @@ msgstr "_Fehler melden …"
 
 #: ../data/interfaces/parole.ui.h:42
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_Tastaturkürzel"
 
 #: ../data/interfaces/parole.ui.h:43
 msgid "Display Parole user manual"
@@ -497,7 +498,7 @@ msgstr "Beenden"
 
 #: ../data/interfaces/shortcuts.ui.h:5
 msgid "View"
-msgstr ""
+msgstr "Anzeigen"
 
 #: ../data/interfaces/shortcuts.ui.h:6
 msgid "Toggle fullscreen"
@@ -509,7 +510,7 @@ msgstr "Vollbild verlassen"
 
 #: ../data/interfaces/shortcuts.ui.h:8
 msgid "Toggle menubar"
-msgstr ""
+msgstr "Menüleiste umschalten"
 
 #: ../data/interfaces/shortcuts.ui.h:9
 msgid "Volume"
@@ -517,11 +518,11 @@ msgstr "Lautstärke"
 
 #: ../data/interfaces/shortcuts.ui.h:10
 msgid "Increase volume"
-msgstr ""
+msgstr "Lautstärke erhöhen"
 
 #: ../data/interfaces/shortcuts.ui.h:11
 msgid "Decrease volume"
-msgstr ""
+msgstr "Lautstärke senken"
 
 #: ../data/interfaces/shortcuts.ui.h:12 ../src/parole-player.c:2383
 msgid "Mute"
@@ -529,23 +530,23 @@ msgstr "Stumm"
 
 #: ../data/interfaces/shortcuts.ui.h:14
 msgid "Toggle playlist"
-msgstr ""
+msgstr "Wiedergabeliste umschalten"
 
 #: ../data/interfaces/shortcuts.ui.h:15
 msgid "Select previous item"
-msgstr ""
+msgstr "Vorherigen Eintrag wählen"
 
 #: ../data/interfaces/shortcuts.ui.h:16
 msgid "Select next item"
-msgstr ""
+msgstr "Nächsten Eintrag wählen"
 
 #: ../data/interfaces/shortcuts.ui.h:17
 msgid "Remove selected item"
-msgstr ""
+msgstr "Gewählten Eintrag entfernen"
 
 #: ../data/interfaces/shortcuts.ui.h:18
 msgid "Playback"
-msgstr ""
+msgstr "Wiedergabe"
 
 #: ../data/interfaces/shortcuts.ui.h:19
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:3
@@ -562,27 +563,27 @@ msgstr "Nachfolgender Titel"
 
 #: ../data/interfaces/shortcuts.ui.h:22
 msgid "Go back 10 seconds"
-msgstr ""
+msgstr "Gehe 10 Sekunden zurück"
 
 #: ../data/interfaces/shortcuts.ui.h:23
 msgid "Go forward 10 seconds"
-msgstr ""
+msgstr "Gehe 10 Sekunden vorwärts"
 
 #: ../data/interfaces/shortcuts.ui.h:24
 msgid "Go back 60 seconds"
-msgstr ""
+msgstr "Gehe 60 Sekunden zurück"
 
 #: ../data/interfaces/shortcuts.ui.h:25
 msgid "Go forward 60 seconds"
-msgstr ""
+msgstr "Gehe 60 Sekunden vorwärts"
 
 #: ../data/interfaces/shortcuts.ui.h:26
 msgid "Go back 10 minutes"
-msgstr ""
+msgstr "Gehe 10 Minuten zurück"
 
 #: ../data/interfaces/shortcuts.ui.h:27
 msgid "Go forward 10 minutes"
-msgstr ""
+msgstr "Gehe 10 Minuten vorwärts"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:2
 msgid "Play your media"
@@ -618,7 +619,7 @@ msgid ""
 "lighter and easier to improve. All URLs have been updated to HTTPS. A large "
 "number of bugs have been resolved and a new keyboard shortcuts helper has "
 "been introduced."
-msgstr ""
+msgstr "Diese Entwicklungsveröffentlichung ist eine große Bereinigung der Codebasis, was Parole leichter und einfacher zu verbessern macht. Alle URLs wurden zu HTTPS aktualisiert. Eine große Zahl an Fehlern wurden behoben und ein neuer Helfer für Tastaturkürzel eingeführt."
 
 #: ../data/appdata/parole.appdata.xml.in.h:4
 msgid ""
@@ -626,14 +627,14 @@ msgid ""
 "present in the documentation. Tags are now processed on files delivered over"
 " HTTP/S. The clutter video backend is disabled for GTK+ 3.22 and newer due "
 "to significant API changes."
-msgstr ""
+msgstr "Diese Entwicklungsveröffentlichung behebt einige Fehler, Tippfehler und historische Details in der Dokumentation. Schlagwörter werden nun in über HTTP/S ausgelieferten Dateien verarbeitet. Das Clutter Videobackend ist nun auf Grund von signifikanten Änderungen an der API für GTK+ 3.22 und neuer deaktiviert."
 
 #: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
 "This development release adds a new mini mode and the ability to play or "
 "replay content by clicking the circle icons. Theming is simplified and "
 "filenames are displayed when no ID3 tags are found."
-msgstr ""
+msgstr "Diese Entwicklungsveröffentlichung bringt einen neuen Mini-Modus mit, sowie die Fähigkeit Inhalte durch Klick auf die Kreissymbole (erneut) abzuspielen. Theming wurde vereinfacht und Dateinamen werden angezeigt, falls keine ID3 Tags gefunden wurden."
 
 #: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
@@ -780,7 +781,7 @@ msgid ""
 "\n"
 "Please report bugs to <https://bugzilla.xfce.org/>.\n"
 "\n"
-msgstr ""
+msgstr "\nParole Media Player %s\n\nTeil des Xfce Goodies Projekts\nhttps://goodies.xfce.org\n\nLizensiert unter der GNU GPL\n\nBitte melden Sie Fehler an <https://bugzilla.xfce.org/>.\n\n"
 
 #: ../src/main.c:227
 msgid "Open a new instance"
@@ -1046,7 +1047,7 @@ msgstr "Der vorgegebene Netznavigator konnte nicht geöffnet werden"
 #: ../src/parole-player.c:2787
 msgid ""
 "Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
-msgstr ""
+msgstr "Bitte besuchen Sie https://docs.xfce.org/apps/parole/bugs um Ihren Fehler zu melden."
 
 #: ../src/parole-player.c:2815
 msgid "Go"
