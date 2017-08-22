@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-26 18:31+0100\n"
-"PO-Revision-Date: 2017-03-18 08:07+0000\n"
+"POT-Creation-Date: 2017-06-03 18:30+0200\n"
+"PO-Revision-Date: 2017-08-22 05:46+0000\n"
 "Last-Translator: abuyop <abuyop@gmail.com>\n"
 "Language-Team: Malay (http://www.transifex.com/xfce/xfce-apps/language/ms/)\n"
 "MIME-Version: 1.0\n"
@@ -20,9 +20,9 @@ msgstr ""
 
 #: ../data/interfaces/parole.ui.h:1
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:1
-#: ../src/parole-player.c:606 ../src/parole-player.c:1521
-#: ../src/parole-player.c:1920 ../src/parole-about.c:70
-#: ../src/plugins/mpris2/mpris2-provider.c:199
+#: ../src/parole-player.c:593 ../src/parole-player.c:1438
+#: ../src/parole-player.c:1789 ../src/parole-about.c:68
+#: ../src/plugins/mpris2/mpris2-provider.c:187
 msgid "Parole Media Player"
 msgstr "Pemain Media Parole"
 
@@ -46,13 +46,13 @@ msgstr "Buka _Baru-baru Ini"
 msgid "_Save Playlist…"
 msgstr "_Simpan Senarai  Main..."
 
-#: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:112
-#: ../src/parole-disc.c:154
+#: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:108
+#: ../src/parole-disc.c:143
 msgid "Insert Disc"
 msgstr "Sisip Cakera"
 
 #. * Exit
-#: ../data/interfaces/parole.ui.h:8 ../src/plugins/tray/tray-provider.c:179
+#: ../data/interfaces/parole.ui.h:8 ../src/plugins/tray/tray-provider.c:168
 msgid "_Quit"
 msgstr "_Keluar"
 
@@ -69,7 +69,7 @@ msgid "_Shuffle"
 msgstr "Ko_cok"
 
 #. Create dialog
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2976
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2811
 msgid "Go to position"
 msgstr "Pergi ke kedudukan"
 
@@ -109,7 +109,7 @@ msgstr "_Audio"
 msgid "_Audio Track"
 msgstr "Trek _Audio"
 
-#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:832
+#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:799
 msgid "Empty"
 msgstr "Kosong"
 
@@ -129,8 +129,8 @@ msgstr "Sen_yap"
 msgid "_Video"
 msgstr "_Video"
 
-#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2106
-#: ../src/parole-player.c:2270
+#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:1982
+#: ../src/parole-player.c:2135
 msgid "_Fullscreen"
 msgstr "Skrin _Penuh"
 
@@ -138,7 +138,7 @@ msgstr "Skrin _Penuh"
 msgid "_Aspect Ratio"
 msgstr "Nisbah Bi_dang"
 
-#: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:760
+#: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:730
 msgid "None"
 msgstr "Tiada"
 
@@ -191,43 +191,47 @@ msgid "_Report a Bug…"
 msgstr "_Lapor pepijat..."
 
 #: ../data/interfaces/parole.ui.h:42
+msgid "_Keyboard Shortcuts"
+msgstr "Pintasan Papan _Kekunci"
+
+#: ../data/interfaces/parole.ui.h:43
 msgid "Display Parole user manual"
 msgstr "Papar panduan pengguna Parole"
 
-#: ../data/interfaces/parole.ui.h:43
+#: ../data/interfaces/parole.ui.h:44
 msgid "_Contents"
 msgstr "Ka_ndungan"
 
-#: ../data/interfaces/parole.ui.h:44
+#: ../data/interfaces/parole.ui.h:45
 msgid "_About"
 msgstr "Perih_al"
 
-#: ../data/interfaces/parole.ui.h:45
+#: ../data/interfaces/parole.ui.h:46
 msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
 msgstr "<span color='#F4F4F4'><b><big>Lagu Tidak Diketahui</big></b></span>"
 
-#: ../data/interfaces/parole.ui.h:46
+#: ../data/interfaces/parole.ui.h:47
 msgid ""
 "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
 "Album</span></big>"
 msgstr "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Album Tidak Diketahui</span></big>"
 
-#: ../data/interfaces/parole.ui.h:47
+#: ../data/interfaces/parole.ui.h:48
 msgid ""
 "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
 "Artist</span></big>"
 msgstr "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Artist Tidak Diketahui</span></big>"
 
-#: ../data/interfaces/parole.ui.h:48
+#: ../data/interfaces/parole.ui.h:49
 msgid "0:00"
 msgstr "0:00"
 
-#: ../data/interfaces/parole.ui.h:50
+#: ../data/interfaces/parole.ui.h:51
 #, no-c-format
 msgid "Buffering (0%)"
 msgstr "Menimbal (0%)"
 
-#: ../data/interfaces/parole.ui.h:51
+#: ../data/interfaces/parole.ui.h:52
 msgid "/"
 msgstr "/"
 
@@ -236,8 +240,9 @@ msgid "Open Media Files"
 msgstr "Buka Fail Media"
 
 #: ../data/interfaces/playlist.ui.h:1
-#: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:806
-#: ../src/parole-medialist.c:849 ../src/parole-player.c:3398
+#: ../data/interfaces/parole-settings.ui.h:27
+#: ../data/interfaces/shortcuts.ui.h:13 ../src/parole-medialist.c:745
+#: ../src/parole-medialist.c:784 ../src/parole-player.c:3191
 msgid "Playlist"
 msgstr "Senarai Main"
 
@@ -367,6 +372,7 @@ msgid "<b>Keyboard</b>"
 msgstr "<b>Papan Kekunci</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:12
+#: ../data/interfaces/shortcuts.ui.h:1
 msgid "General"
 msgstr "Am"
 
@@ -466,7 +472,7 @@ msgstr "Pilih Jenis Fail (Mengikut Sambungan)"
 msgid "Open Network Location"
 msgstr "Buka Lokasi Rangkaian"
 
-#: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:193
+#: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:181
 msgid "Clear History"
 msgstr "Kosongkan Sejarah"
 
@@ -474,21 +480,118 @@ msgstr "Kosongkan Sejarah"
 msgid "<big><b>Open Network Location</b></big>"
 msgstr "<big><b>Buka Lokasi Rangkaian</b></big>"
 
-#: ../data/desktop/org.xfce.Parole.desktop.in.in.h:2
-msgid "Play your media"
-msgstr "Main media anda"
+#: ../data/interfaces/shortcuts.ui.h:2
+msgid "Open file"
+msgstr "Buka fail"
 
+#: ../data/interfaces/shortcuts.ui.h:3
+msgid "Open location"
+msgstr "Buka lokasi"
+
+#: ../data/interfaces/shortcuts.ui.h:4 ../src/plugins/tray/tray-provider.c:325
+msgid "Quit"
+msgstr "Keluar"
+
+#: ../data/interfaces/shortcuts.ui.h:5
+msgid "View"
+msgstr "Lihat"
+
+#: ../data/interfaces/shortcuts.ui.h:6
+msgid "Toggle fullscreen"
+msgstr "Togol skrin penuh"
+
+#: ../data/interfaces/shortcuts.ui.h:7
+msgid "Exit fullscreen"
+msgstr "Keluar dari skrin penuh"
+
+#: ../data/interfaces/shortcuts.ui.h:8
+msgid "Toggle menubar"
+msgstr "Togol palang menu"
+
+#: ../data/interfaces/shortcuts.ui.h:9
+msgid "Volume"
+msgstr "Volum"
+
+#: ../data/interfaces/shortcuts.ui.h:10
+msgid "Increase volume"
+msgstr "Tingkatkan volum"
+
+#: ../data/interfaces/shortcuts.ui.h:11
+msgid "Decrease volume"
+msgstr "Kurangkan volum"
+
+#: ../data/interfaces/shortcuts.ui.h:12 ../src/parole-player.c:2383
+msgid "Mute"
+msgstr "Senyap"
+
+#: ../data/interfaces/shortcuts.ui.h:14
+msgid "Toggle playlist"
+msgstr "Togol senarai main"
+
+#: ../data/interfaces/shortcuts.ui.h:15
+msgid "Select previous item"
+msgstr "Pilih item terdahulu"
+
+#: ../data/interfaces/shortcuts.ui.h:16
+msgid "Select next item"
+msgstr "Pilih item berikutnya"
+
+#: ../data/interfaces/shortcuts.ui.h:17
+msgid "Remove selected item"
+msgstr "Buang item terpilih"
+
+#: ../data/interfaces/shortcuts.ui.h:18
+msgid "Playback"
+msgstr "Main Balik"
+
+#: ../data/interfaces/shortcuts.ui.h:19
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:3
 msgid "Play/Pause"
 msgstr "Main/Jeda"
 
+#: ../data/interfaces/shortcuts.ui.h:20 ../src/main.c:241
+msgid "Previous track"
+msgstr "Trek terdahulu"
+
+#: ../data/interfaces/shortcuts.ui.h:21 ../src/main.c:239
+msgid "Next track"
+msgstr "Trek berikutnya"
+
+#: ../data/interfaces/shortcuts.ui.h:22
+msgid "Go back 10 seconds"
+msgstr "Undur 10 saat"
+
+#: ../data/interfaces/shortcuts.ui.h:23
+msgid "Go forward 10 seconds"
+msgstr "Maju 10 saat"
+
+#: ../data/interfaces/shortcuts.ui.h:24
+msgid "Go back 60 seconds"
+msgstr "Undur 60 saat"
+
+#: ../data/interfaces/shortcuts.ui.h:25
+msgid "Go forward 60 seconds"
+msgstr "Maju 60 saat"
+
+#: ../data/interfaces/shortcuts.ui.h:26
+msgid "Go back 10 minutes"
+msgstr "Undur 10 minit"
+
+#: ../data/interfaces/shortcuts.ui.h:27
+msgid "Go forward 10 minutes"
+msgstr "Maju 10 minit"
+
+#: ../data/desktop/org.xfce.Parole.desktop.in.in.h:2
+msgid "Play your media"
+msgstr "Main media anda"
+
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:4
-#: ../src/parole-player.c:3553 ../src/plugins/notify/notify-provider.c:204
+#: ../src/parole-player.c:3340 ../src/plugins/notify/notify-provider.c:190
 msgid "Previous Track"
 msgstr "Trek Terdahulu"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:5
-#: ../src/parole-player.c:3571 ../src/plugins/notify/notify-provider.c:217
+#: ../src/parole-player.c:3358 ../src/plugins/notify/notify-provider.c:202
 msgid "Next Track"
 msgstr "Trek Berikutnya"
 
@@ -508,37 +611,45 @@ msgstr "Parole fiturkan main balik fail media setempat, termasuklah video dengan
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid ""
+"This development release is a large cleanup of the codebase, making Parole "
+"lighter and easier to improve. All URLs have been updated to HTTPS. A large "
+"number of bugs have been resolved and a new keyboard shortcuts helper has "
+"been introduced."
+msgstr "Keluaran pembangunan ini melibatkan pembersihan besar-besaran tapak kod, menjadikan Parole lebih ringan dan lebih mudah ditambahbaik. Semua URL telah dikemaskini dengan HTTPS. Sebahagian besar pepijat telah dileraikan dan satu pembantu pintasan papan kekunci baharu telah diperkenalkan."
+
+#: ../data/appdata/parole.appdata.xml.in.h:4
+msgid ""
 "This development release fixes several bugs, typos, and historical details "
 "present in the documentation. Tags are now processed on files delivered over"
 " HTTP/S. The clutter video backend is disabled for GTK+ 3.22 and newer due "
 "to significant API changes."
 msgstr "Keluaran pembangunan ini mengeluarkan beberapa pembaikan pepijat, salah taip, dan perincian bersejarah yang ada di dalam dokumentasi. Tag kini diproses pada fail yang dihantar menerusi HTTP/S. Bahagian belakang video yang berselerak telah dilumpuhkan bagi GTK+ 3.22 dan yang lebih baharu atas sebab perubahan API yang signifikan."
 
-#: ../data/appdata/parole.appdata.xml.in.h:4
+#: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
 "This development release adds a new mini mode and the ability to play or "
 "replay content by clicking the circle icons. Theming is simplified and "
 "filenames are displayed when no ID3 tags are found."
 msgstr "Keluaran pembangunan ini menambah satu mod mini baharu dan keupayaan memainkan atau memainkan semula kandungan dengan mengklik ikon bulatan. Penemaan adalah ringkas dan nama fail dipaparkan bila tiada tag ID3 ditemui."
 
-#: ../data/appdata/parole.appdata.xml.in.h:5
+#: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
 "This release improves the build process and includes several bug fixes. This"
 " new stable release is a recommended upgrade for all users."
 msgstr "Keluaran ini menambahbaik proses binaan dan menyertakan beberapa pembaikan pepijat. Keluaran stabil baharu ini merupakan tatar saranan untuk semua pengguna."
 
-#: ../data/appdata/parole.appdata.xml.in.h:6
+#: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
 msgstr "Keluaran pembangunan tidak stabil ini menambah bahagian belakang clutter baharu dan membersihkan simbol Gtk3 yang lapuk. Ia juga menambah fitur \"pergi ke kedudukan\" dan beberapa pepijat telah diselesaikan."
 
-#: ../data/appdata/parole.appdata.xml.in.h:7
+#: ../data/appdata/parole.appdata.xml.in.h:8
 msgid "This release fixes a problem with detecting DVD drive locations."
 msgstr "Keluaran ini telah membaiki masalah dengan pengesanan lokasi pemacu DVD."
 
-#: ../data/appdata/parole.appdata.xml.in.h:8
+#: ../data/appdata/parole.appdata.xml.in.h:9
 msgid ""
 "This release features the completed transition to the Gtk+3 toolkit, "
 "improvements in the user-interface (more streamlined menus), better "
@@ -547,20 +658,20 @@ msgid ""
 "and we use the GStreamer1.0 framework now by default."
 msgstr "Keluaran ini fiturkan peralihan lengkap ke kit alat Gtk+3, penambahbaikan dalam antaramuka-pengguna (menu mengikut arus-perdana), senarai main lebih baik. Tambahan pula, pemalam sedia ada telah dipertingkatkan dan pemalam baharu ditambah (MPRIS2). Kebanyakan kerja seni telah dikemaskini untuk keluaran ini dan kini bingkai kerja GStreamer1.0 dijadikan sebagai lalai."
 
-#: ../data/appdata/parole.appdata.xml.in.h:9
+#: ../data/appdata/parole.appdata.xml.in.h:10
 msgid ""
 "This unstable development release features mostly bugfixes and introduces "
 "the new MPRIS2 plugin."
 msgstr "Keluaran pembangunan tidak stabil ini fiturkan kebanyakan pembaikan pepijjat dan memperkenalkan pemalam MPRIS2 baharu."
 
-#: ../data/appdata/parole.appdata.xml.in.h:10
+#: ../data/appdata/parole.appdata.xml.in.h:11
 msgid ""
 "This is a bugfix release which fixes the loading of playlists with relative "
 "paths, improves the file-filters for audio/video mimetypes and fixes the "
 "\"Remove duplicates\" functionality."
 msgstr "Ini merupakan keluaran pembaikan pepijat yang membaiki pemuatan senarai main dengan laluan relatif, memperbaiki penapis-fail untuk jenis mime audio/video dan membaiki kefungsian \"Buang pendua\"."
 
-#: ../data/appdata/parole.appdata.xml.in.h:11
+#: ../data/appdata/parole.appdata.xml.in.h:12
 msgid ""
 "This unstable development release features the complete port to the Gtk+3 "
 "toolkit, improvements in the user-interface (more streamlined menus), better"
@@ -568,87 +679,87 @@ msgid ""
 "plugins and the occasional bugfix."
 msgstr "Keluaran pembangunan tidak stabil ini fiturkan port lengkap ke kit alat Gtk+3, penambahnaikan dalam antaramuka-pengguna (menu mengikut arus-perdana), senarai main lebih baik. Ia juga mempersembahkan kerja seni terkemaskini, sokongan GStreamer1.0, pemalam dipertingkatkan dan pembaikan pepijat."
 
-#: ../src/common/parole-common.c:87
+#: ../src/common/parole-common.c:83
 msgid "Message"
 msgstr "Mesej"
 
-#: ../src/common/parole-common.c:92
+#: ../src/common/parole-common.c:87
 msgid "Error"
 msgstr "Ralat"
 
-#: ../src/gst/parole-gst.c:1271 ../src/parole-medialist.c:393
+#: ../src/gst/parole-gst.c:1094 ../src/parole-medialist.c:376
 #, c-format
 msgid "Track %i"
 msgstr "Trek %i"
 
-#: ../src/gst/parole-gst.c:1274
+#: ../src/gst/parole-gst.c:1097
 msgid "Audio CD"
 msgstr "CD Audio"
 
-#: ../src/gst/parole-gst.c:1517
+#: ../src/gst/parole-gst.c:1304
 msgid "Additional software is required."
 msgstr "Perisian tambahan diperlukan."
 
-#: ../src/gst/parole-gst.c:1522
+#: ../src/gst/parole-gst.c:1308
 msgid "Don't Install"
 msgstr "Jangan Pasang"
 
-#: ../src/gst/parole-gst.c:1524
+#: ../src/gst/parole-gst.c:1310
 msgid "Install"
 msgstr "Pasang"
 
-#: ../src/gst/parole-gst.c:1527
+#: ../src/gst/parole-gst.c:1313
 msgid "OK"
 msgstr "OK"
 
-#: ../src/gst/parole-gst.c:1534
+#: ../src/gst/parole-gst.c:1320
 #, c-format
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
 msgstr "Parole perlukan <b>%s</b> untuk main fail\nini. Ia boleh dipasang secara automatik."
 
-#: ../src/gst/parole-gst.c:1537
+#: ../src/gst/parole-gst.c:1323
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
 msgstr "Parole perlukan <b>%s</b> untuk main fail ini."
 
-#: ../src/gst/parole-gst.c:1948
+#: ../src/gst/parole-gst.c:1692
 msgid "The stream is taking too much time to load"
 msgstr "Strim mengambil masa terlalu banyak untuk dimuatkan"
 
-#: ../src/gst/parole-gst.c:1949
+#: ../src/gst/parole-gst.c:1694
 msgid "Do you want to continue loading or stop?"
 msgstr "Anda mahu terus memuatkan atau henti?"
 
-#: ../src/gst/parole-gst.c:1950
+#: ../src/gst/parole-gst.c:1695
 msgid "Stop"
 msgstr "Henti"
 
-#: ../src/gst/parole-gst.c:1951
+#: ../src/gst/parole-gst.c:1696
 msgid "Continue"
 msgstr "Teruskan"
 
-#: ../src/gst/parole-gst.c:2135
+#: ../src/gst/parole-gst.c:1860
 msgid "GStreamer Error"
 msgstr "Ralat GStreamer"
 
-#: ../src/gst/parole-gst.c:2136
+#: ../src/gst/parole-gst.c:1861
 msgid "Parole Media Player cannot start."
 msgstr "Pemain Media Parole tidak dapat mula."
 
-#: ../src/gst/parole-gst.c:2167 ../src/gst/parole-gst.c:2183
-#: ../src/gst/parole-gst.c:2215
+#: ../src/gst/parole-gst.c:1886 ../src/gst/parole-gst.c:1901
+#: ../src/gst/parole-gst.c:1930
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
 msgstr "Tidak boleh muatkan pemalam \"%s\", semak pemasangan GStreamer anda."
 
-#: ../src/gst/parole-gst.c:2846 ../src/gst/parole-gst.c:2852
+#: ../src/gst/parole-gst.c:2490 ../src/gst/parole-gst.c:2494
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Trek Audio #%d"
 
-#: ../src/gst/parole-gst.c:2896 ../src/gst/parole-gst.c:2902
+#: ../src/gst/parole-gst.c:2530 ../src/gst/parole-gst.c:2534
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Sarikata #%d"
@@ -668,63 +779,55 @@ msgid ""
 "\n"
 msgstr "\nPemain Media Parole  %s\n\nSebahagian dari Projek Kudapan Xfce\nhttps://goodies.xfce.org\n\nDilesenkan bawah GNU GPL.\n\nSila laporkan pepijat kepada <https://bugzilla.xfce.org/>.\n\n"
 
-#: ../src/main.c:241
+#: ../src/main.c:227
 msgid "Open a new instance"
 msgstr "Buka kejadian baharu"
 
-#: ../src/main.c:242
+#: ../src/main.c:229
 msgid "Do not load plugins"
 msgstr "Jangan muatkan pemalam"
 
-#: ../src/main.c:243
+#: ../src/main.c:231
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "Tetapkan laluan peranti CD-Audio/VCD/DVD"
 
-#: ../src/main.c:244
+#: ../src/main.c:233
 msgid "Start in embedded mode"
 msgstr "Mula dalam mod terbenam"
 
-#: ../src/main.c:245
+#: ../src/main.c:235
 msgid "Start in fullscreen mode"
 msgstr "Mula dalam mod berskrin penuh"
 
-#: ../src/main.c:246
+#: ../src/main.c:237
 msgid "Play or pause if already playing"
 msgstr "Main atau jeda jika sudah dimainkan"
 
-#: ../src/main.c:247
-msgid "Next track"
-msgstr "Trek berikutnya"
-
-#: ../src/main.c:248
-msgid "Previous track"
-msgstr "Trek terdahulu"
-
-#: ../src/main.c:249
+#: ../src/main.c:243
 msgid "Raise volume"
 msgstr "Naikkan volum"
 
-#: ../src/main.c:250
+#: ../src/main.c:245
 msgid "Lower volume"
 msgstr "Turunkan volum"
 
-#: ../src/main.c:251
+#: ../src/main.c:247
 msgid "Mute volume"
 msgstr "Senyapkan volum"
 
-#: ../src/main.c:252
+#: ../src/main.c:249
 msgid "Unmute (restore) volume"
 msgstr "Suarakan (pulih) volum"
 
-#: ../src/main.c:253
+#: ../src/main.c:251
 msgid "Add files to playlist"
 msgstr "Tambah fail ke senarai main"
 
-#: ../src/main.c:254
+#: ../src/main.c:253
 msgid "Print version information and exit"
 msgstr "Cetak maklumat versi dan keluar"
 
-#: ../src/main.c:256
+#: ../src/main.c:257
 msgid "Media to play"
 msgstr "Media untuk dimainkan"
 
@@ -732,444 +835,440 @@ msgstr "Media untuk dimainkan"
 msgid "[FILES...] - Play movies and songs"
 msgstr "[FILES...] - Main cereka dan lagu"
 
-#: ../src/main.c:291
+#: ../src/main.c:290
 #, c-format
 msgid "Type %s --help to list all available command line options\n"
 msgstr "Taip %s --help untuk lihat senarai pilihan baris perintah yang tersedia.\n"
 
-#: ../src/main.c:309
+#: ../src/main.c:307
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole sudah dijalankan, guna -i untuk buka kejadian baharu\n"
 
-#: ../src/parole-mediachooser.c:247 ../src/parole-player.c:1054
+#: ../src/parole-mediachooser.c:233 ../src/parole-player.c:1005
 msgid "All files"
 msgstr "Semua fail"
 
-#: ../src/parole-medialist.c:218 ../src/parole-medialist.c:1599
+#: ../src/parole-medialist.c:218 ../src/parole-medialist.c:1475
 #, c-format
 msgid "Playlist (%i item)"
 msgid_plural "Playlist (%i items)"
 msgstr[0] "Senarai main (%i item)"
 
-#: ../src/parole-medialist.c:223 ../src/parole-medialist.c:1601
+#: ../src/parole-medialist.c:221 ../src/parole-medialist.c:1477
 #, c-format
 msgid "Playlist (%i chapter)"
 msgid_plural "Playlist (%i chapters)"
 msgstr[0] "Senarai main (%i bab)"
 
-#: ../src/parole-medialist.c:409 ../src/parole-player.c:739
+#: ../src/parole-medialist.c:390 ../src/parole-player.c:710
 #, c-format
 msgid "Chapter %i"
 msgstr "Bab %i"
 
-#: ../src/parole-medialist.c:698
+#: ../src/parole-medialist.c:651
 msgid "Permission denied"
 msgstr "Keizinan dinafikan"
 
-#: ../src/parole-medialist.c:700
+#: ../src/parole-medialist.c:653
 msgid "Error saving playlist file"
 msgstr "Ralat menyimpan fail senarai main"
 
-#: ../src/parole-medialist.c:712
+#: ../src/parole-medialist.c:663
 msgid "Unknown playlist format"
 msgstr "Format senarai main tidak diketahui"
 
-#: ../src/parole-medialist.c:713
+#: ../src/parole-medialist.c:664
 msgid "Please choose a supported playlist format"
 msgstr "Sila pilih format senarai main yang disokong"
 
-#: ../src/parole-medialist.c:767 ../src/parole-plugins-manager.c:369
+#: ../src/parole-medialist.c:707 ../src/parole-plugins-manager.c:338
 msgid "Unknown"
 msgstr "Tidak diketahui"
 
-#: ../src/parole-medialist.c:856
+#: ../src/parole-medialist.c:791
 msgid "M3U Playlists"
 msgstr "Senarai Main M3U"
 
-#: ../src/parole-medialist.c:864
+#: ../src/parole-medialist.c:799
 msgid "PLS Playlists"
 msgstr "Senarai Main PLS"
 
-#: ../src/parole-medialist.c:872
+#: ../src/parole-medialist.c:807
 msgid "Advanced Stream Redirector"
 msgstr "Arah Semula Strim Lanjutan"
 
-#: ../src/parole-medialist.c:880
+#: ../src/parole-medialist.c:815
 msgid "Shareable Playlist"
 msgstr "Senarai  Main Boleh Kongsi"
 
 #. Clear
-#: ../src/parole-medialist.c:1219
+#: ../src/parole-medialist.c:1122
 msgid "Open Containing Folder"
 msgstr "Buka Folder Mengandungi"
 
-#: ../src/parole-player.c:536
+#: ../src/parole-player.c:528
 msgid "Hide Playlist"
 msgstr "Sembunyi Senarai Main"
 
-#: ../src/parole-player.c:536 ../src/parole-player.c:3613
+#: ../src/parole-player.c:528 ../src/parole-player.c:3400
 msgid "Show Playlist"
 msgstr "Tunjuk Senarai Main"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:1018
+#: ../src/parole-player.c:969
 msgid "Select Subtitle File"
 msgstr "Pilih Fail Sarikata"
 
-#: ../src/parole-player.c:1023 ../src/parole-player.c:1227
-#: ../src/parole-player.c:2979 ../src/plugins/tray/tray-provider.c:340
+#: ../src/parole-player.c:974 ../src/parole-player.c:1161
+#: ../src/parole-player.c:2814 ../src/plugins/tray/tray-provider.c:319
 msgid "Cancel"
 msgstr "Batal"
 
-#: ../src/parole-player.c:1026
+#: ../src/parole-player.c:977
 msgid "Open"
 msgstr "Buka"
 
-#: ../src/parole-player.c:1042
+#: ../src/parole-player.c:993
 msgid "Subtitle Files"
 msgstr "Fail Sarikata"
 
-#: ../src/parole-player.c:1223 ../src/parole-player.c:1231
+#: ../src/parole-player.c:1157 ../src/parole-player.c:1165
 msgid "Clear Recent Items"
 msgstr "Kosongkan Item Baru-baru Ini"
 
-#: ../src/parole-player.c:1225
+#: ../src/parole-player.c:1159
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
 msgstr "Anda pasti ingin kosongkan sejarah item baru-baru ini anda? Ia tidak boleh dikembalikan."
 
-#: ../src/parole-player.c:1324 ../src/parole-player.c:1466
+#: ../src/parole-player.c:1261 ../src/parole-player.c:1388
 msgid "Media stream is not seekable"
 msgstr "Strim media tidak boleh dijangkau"
 
-#: ../src/parole-player.c:1335
+#: ../src/parole-player.c:1271
 msgid "Play"
 msgstr "Main"
 
-#: ../src/parole-player.c:1338
+#: ../src/parole-player.c:1274
 msgid "Pause"
 msgstr "Jeda"
 
-#: ../src/parole-player.c:1842
+#: ../src/parole-player.c:1713
 msgid "GStreamer backend error"
 msgstr "Ralat bahagian belakang GStreamer"
 
-#: ../src/parole-player.c:1921
+#: ../src/parole-player.c:1794
 msgid "Unknown Song"
 msgstr "Lagu Tidak Diketahui"
 
-#: ../src/parole-player.c:1929 ../src/parole-player.c:1931
-#: ../src/parole-player.c:1937
+#: ../src/parole-player.c:1805 ../src/parole-player.c:1811
+#: ../src/parole-player.c:1819
 msgid "on"
 msgstr "hidup"
 
-#: ../src/parole-player.c:1937 ../src/plugins/notify/notify-provider.c:145
+#: ../src/parole-player.c:1819 ../src/plugins/notify/notify-provider.c:134
 msgid "Unknown Album"
 msgstr "Album Tidak Diketahui"
 
-#: ../src/parole-player.c:1944 ../src/parole-player.c:1948
+#: ../src/parole-player.c:1830 ../src/parole-player.c:1837
 msgid "by"
 msgstr "oleh"
 
-#: ../src/parole-player.c:1948 ../src/plugins/notify/notify-provider.c:147
+#: ../src/parole-player.c:1837 ../src/plugins/notify/notify-provider.c:136
 msgid "Unknown Artist"
 msgstr "Artis Tidak Diketahui"
 
-#: ../src/parole-player.c:1985
+#: ../src/parole-player.c:1872
 msgid "Buffering"
 msgstr "Menimbal"
 
-#: ../src/parole-player.c:2107 ../src/parole-player.c:3588
+#: ../src/parole-player.c:1983 ../src/parole-player.c:3375
 msgid "Fullscreen"
 msgstr "Skrin Penuh"
 
-#: ../src/parole-player.c:2120
+#: ../src/parole-player.c:1994
 msgid "Leave _Fullscreen"
 msgstr "Tinggalkan Skrin _Penuh"
 
-#: ../src/parole-player.c:2121
+#: ../src/parole-player.c:1995
 msgid "Leave Fullscreen"
 msgstr "Tinggalkan Skrin Penuh"
 
 #. Play menu item
 #. * Play pause
-#: ../src/parole-player.c:2238 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2097 ../src/plugins/tray/tray-provider.c:119
 msgid "_Pause"
 msgstr "_Jeda"
 
-#: ../src/parole-player.c:2238 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2097 ../src/plugins/tray/tray-provider.c:119
 msgid "_Play"
 msgstr "_Main"
 
 #. * Previous item in playlist.
-#: ../src/parole-player.c:2252
+#: ../src/parole-player.c:2113
 msgid "_Previous"
 msgstr "_Terdahulu"
 
 #. * Next item in playlist.
-#: ../src/parole-player.c:2261
+#: ../src/parole-player.c:2124
 msgid "_Next"
 msgstr "_Berikutnya"
 
 #. * Un/Full screen
-#: ../src/parole-player.c:2270
+#: ../src/parole-player.c:2135
 msgid "_Leave Fullscreen"
 msgstr "T_inggalkan Skrin Penuh"
 
 #. * Un/Hide menubar
-#: ../src/parole-player.c:2284
+#: ../src/parole-player.c:2150
 msgid "Show menubar"
 msgstr "Tunjuk Palang _Menu"
 
-#: ../src/parole-player.c:2301
+#: ../src/parole-player.c:2167
 msgid "Mini Mode"
 msgstr "Mod Mini"
 
-#: ../src/parole-player.c:2555
-msgid "Mute"
-msgstr "Senyap"
-
-#: ../src/parole-player.c:2560
+#: ../src/parole-player.c:2386
 msgid "Unmute"
 msgstr "Suarakan"
 
-#: ../src/parole-player.c:2948
+#: ../src/parole-player.c:2785
 msgid "Unable to open default web browser"
 msgstr "Tidak boleh buka pelayar sesawang lalai"
 
-#: ../src/parole-player.c:2950
-msgid "Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
+#: ../src/parole-player.c:2787
+msgid ""
+"Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr "Sila pergi ke https://docs.xfce.org/apps/parole/bugs untuk laporkan pepijat anda."
 
-#: ../src/parole-player.c:2980
+#: ../src/parole-player.c:2815
 msgid "Go"
 msgstr "Pergi"
 
-#: ../src/parole-player.c:2993
+#: ../src/parole-player.c:2828
 msgid "Position:"
 msgstr "Kedudukan:"
 
 #. Clear Recent Menu Item
-#: ../src/parole-player.c:3439
+#: ../src/parole-player.c:3232
 msgid "_Clear recent items…"
 msgstr "K_osongkan Item Baru-baru Ini..."
 
-#: ../src/parole-player.c:3760
+#: ../src/parole-player.c:3550
 msgid "Audio Track:"
 msgstr "Trek Audio:"
 
-#: ../src/parole-player.c:3779
+#: ../src/parole-player.c:3569
 msgid "Subtitles:"
 msgstr "Sarikata:"
 
 #. Add a close button to the Infobar
-#: ../src/parole-player.c:3785 ../src/plugins/tray/tray-provider.c:275
+#: ../src/parole-player.c:3575 ../src/plugins/tray/tray-provider.c:257
 msgid "Close"
 msgstr "Tutup"
 
-#: ../src/parole-about.c:76
+#: ../src/parole-about.c:74
 msgid "translator-credits"
 msgstr "Abuyop <abuyop@gmail.com>"
 
-#: ../src/parole-about.c:79
+#: ../src/parole-about.c:77
 msgid "Visit Parole website"
 msgstr "Lawati laman sesawang Parole"
 
-#: ../src/parole-conf-dialog.c:313
+#: ../src/parole-conf-dialog.c:290
 msgid "Clutter (OpenGL)"
 msgstr "Clutter (OpenGL)"
 
-#: ../src/parole-disc.c:114
+#: ../src/parole-disc.c:109
 msgid "Play Disc"
 msgstr "Main Cakera"
 
-#: ../src/parole-subtitle-encoding.c:165
+#: ../src/parole-subtitle-encoding.c:162
 msgid "Current Locale"
 msgstr "Lokal Semasa"
 
-#: ../src/parole-subtitle-encoding.c:168 ../src/parole-subtitle-encoding.c:170
-#: ../src/parole-subtitle-encoding.c:172 ../src/parole-subtitle-encoding.c:174
+#: ../src/parole-subtitle-encoding.c:165 ../src/parole-subtitle-encoding.c:167
+#: ../src/parole-subtitle-encoding.c:169 ../src/parole-subtitle-encoding.c:171
 msgid "Arabic"
 msgstr "Arab"
 
-#: ../src/parole-subtitle-encoding.c:177
+#: ../src/parole-subtitle-encoding.c:174
 msgid "Armenian"
 msgstr "Armenia"
 
-#: ../src/parole-subtitle-encoding.c:180 ../src/parole-subtitle-encoding.c:182
-#: ../src/parole-subtitle-encoding.c:184
+#: ../src/parole-subtitle-encoding.c:177 ../src/parole-subtitle-encoding.c:179
+#: ../src/parole-subtitle-encoding.c:181
 msgid "Baltic"
 msgstr "Baltik"
 
-#: ../src/parole-subtitle-encoding.c:187
+#: ../src/parole-subtitle-encoding.c:184
 msgid "Celtic"
 msgstr "Celt"
 
-#: ../src/parole-subtitle-encoding.c:190 ../src/parole-subtitle-encoding.c:192
-#: ../src/parole-subtitle-encoding.c:194 ../src/parole-subtitle-encoding.c:196
+#: ../src/parole-subtitle-encoding.c:187 ../src/parole-subtitle-encoding.c:189
+#: ../src/parole-subtitle-encoding.c:191 ../src/parole-subtitle-encoding.c:193
 msgid "Central European"
 msgstr "Eropah Tengah"
 
-#: ../src/parole-subtitle-encoding.c:199 ../src/parole-subtitle-encoding.c:201
-#: ../src/parole-subtitle-encoding.c:203 ../src/parole-subtitle-encoding.c:205
+#: ../src/parole-subtitle-encoding.c:196 ../src/parole-subtitle-encoding.c:198
+#: ../src/parole-subtitle-encoding.c:200 ../src/parole-subtitle-encoding.c:202
 msgid "Chinese Simplified"
 msgstr "Cina Mudah"
 
-#: ../src/parole-subtitle-encoding.c:208 ../src/parole-subtitle-encoding.c:210
-#: ../src/parole-subtitle-encoding.c:212
+#: ../src/parole-subtitle-encoding.c:205 ../src/parole-subtitle-encoding.c:207
+#: ../src/parole-subtitle-encoding.c:209
 msgid "Chinese Traditional"
 msgstr "Cina Tradisional"
 
-#: ../src/parole-subtitle-encoding.c:215
+#: ../src/parole-subtitle-encoding.c:212
 msgid "Croatian"
 msgstr "Croatia"
 
-#: ../src/parole-subtitle-encoding.c:218 ../src/parole-subtitle-encoding.c:220
-#: ../src/parole-subtitle-encoding.c:222 ../src/parole-subtitle-encoding.c:224
-#: ../src/parole-subtitle-encoding.c:226 ../src/parole-subtitle-encoding.c:228
+#: ../src/parole-subtitle-encoding.c:215 ../src/parole-subtitle-encoding.c:217
+#: ../src/parole-subtitle-encoding.c:219 ../src/parole-subtitle-encoding.c:221
+#: ../src/parole-subtitle-encoding.c:223 ../src/parole-subtitle-encoding.c:225
 msgid "Cyrillic"
 msgstr "Cyril"
 
-#: ../src/parole-subtitle-encoding.c:231
+#: ../src/parole-subtitle-encoding.c:228
 msgid "Cyrillic/Russian"
 msgstr "Cyril/Russia"
 
-#: ../src/parole-subtitle-encoding.c:234 ../src/parole-subtitle-encoding.c:236
+#: ../src/parole-subtitle-encoding.c:231 ../src/parole-subtitle-encoding.c:233
 msgid "Cyrillic/Ukrainian"
 msgstr "Cyril/Ukraine"
 
-#: ../src/parole-subtitle-encoding.c:239
+#: ../src/parole-subtitle-encoding.c:236
 msgid "Georgian"
 msgstr "Georgia"
 
-#: ../src/parole-subtitle-encoding.c:242 ../src/parole-subtitle-encoding.c:244
-#: ../src/parole-subtitle-encoding.c:246
+#: ../src/parole-subtitle-encoding.c:239 ../src/parole-subtitle-encoding.c:241
+#: ../src/parole-subtitle-encoding.c:243
 msgid "Greek"
 msgstr "Yunani"
 
-#: ../src/parole-subtitle-encoding.c:249
+#: ../src/parole-subtitle-encoding.c:246
 msgid "Gujarati"
 msgstr "Gujarati"
 
-#: ../src/parole-subtitle-encoding.c:252
+#: ../src/parole-subtitle-encoding.c:249
 msgid "Gurmukhi"
 msgstr "Gurmukhi"
 
-#: ../src/parole-subtitle-encoding.c:255 ../src/parole-subtitle-encoding.c:257
-#: ../src/parole-subtitle-encoding.c:259 ../src/parole-subtitle-encoding.c:261
+#: ../src/parole-subtitle-encoding.c:252 ../src/parole-subtitle-encoding.c:254
+#: ../src/parole-subtitle-encoding.c:256 ../src/parole-subtitle-encoding.c:258
 msgid "Hebrew"
 msgstr "Ibrani"
 
-#: ../src/parole-subtitle-encoding.c:264
+#: ../src/parole-subtitle-encoding.c:261
 msgid "Hebrew Visual"
 msgstr "Ibrani Tampak"
 
-#: ../src/parole-subtitle-encoding.c:267
+#: ../src/parole-subtitle-encoding.c:264
 msgid "Hindi"
 msgstr "Hindi"
 
-#: ../src/parole-subtitle-encoding.c:270
+#: ../src/parole-subtitle-encoding.c:267
 msgid "Icelandic"
 msgstr "Iceland"
 
-#: ../src/parole-subtitle-encoding.c:273 ../src/parole-subtitle-encoding.c:275
-#: ../src/parole-subtitle-encoding.c:277
+#: ../src/parole-subtitle-encoding.c:270 ../src/parole-subtitle-encoding.c:272
+#: ../src/parole-subtitle-encoding.c:274
 msgid "Japanese"
 msgstr "Jepun"
 
-#: ../src/parole-subtitle-encoding.c:280 ../src/parole-subtitle-encoding.c:282
-#: ../src/parole-subtitle-encoding.c:284 ../src/parole-subtitle-encoding.c:286
+#: ../src/parole-subtitle-encoding.c:277 ../src/parole-subtitle-encoding.c:279
+#: ../src/parole-subtitle-encoding.c:281 ../src/parole-subtitle-encoding.c:283
 msgid "Korean"
 msgstr "Korea"
 
-#: ../src/parole-subtitle-encoding.c:289
+#: ../src/parole-subtitle-encoding.c:286
 msgid "Nordic"
 msgstr "Nord"
 
-#: ../src/parole-subtitle-encoding.c:292
+#: ../src/parole-subtitle-encoding.c:289
 msgid "Persian"
 msgstr "Parsi"
 
-#: ../src/parole-subtitle-encoding.c:295 ../src/parole-subtitle-encoding.c:297
+#: ../src/parole-subtitle-encoding.c:292 ../src/parole-subtitle-encoding.c:294
 msgid "Romanian"
 msgstr "Romania"
 
-#: ../src/parole-subtitle-encoding.c:300
+#: ../src/parole-subtitle-encoding.c:297
 msgid "South European"
 msgstr "Eropah Selatan"
 
-#: ../src/parole-subtitle-encoding.c:303
+#: ../src/parole-subtitle-encoding.c:300
 msgid "Thai"
 msgstr "Siam"
 
-#: ../src/parole-subtitle-encoding.c:306 ../src/parole-subtitle-encoding.c:308
-#: ../src/parole-subtitle-encoding.c:310 ../src/parole-subtitle-encoding.c:312
+#: ../src/parole-subtitle-encoding.c:303 ../src/parole-subtitle-encoding.c:305
+#: ../src/parole-subtitle-encoding.c:307 ../src/parole-subtitle-encoding.c:309
 msgid "Turkish"
 msgstr "Turki"
 
-#: ../src/parole-subtitle-encoding.c:315 ../src/parole-subtitle-encoding.c:317
-#: ../src/parole-subtitle-encoding.c:319 ../src/parole-subtitle-encoding.c:321
-#: ../src/parole-subtitle-encoding.c:323
+#: ../src/parole-subtitle-encoding.c:312 ../src/parole-subtitle-encoding.c:314
+#: ../src/parole-subtitle-encoding.c:316 ../src/parole-subtitle-encoding.c:318
+#: ../src/parole-subtitle-encoding.c:320
 msgid "Unicode"
 msgstr "Unikod"
 
-#: ../src/parole-subtitle-encoding.c:326 ../src/parole-subtitle-encoding.c:328
-#: ../src/parole-subtitle-encoding.c:330 ../src/parole-subtitle-encoding.c:332
-#: ../src/parole-subtitle-encoding.c:334
+#: ../src/parole-subtitle-encoding.c:323 ../src/parole-subtitle-encoding.c:325
+#: ../src/parole-subtitle-encoding.c:327 ../src/parole-subtitle-encoding.c:329
+#: ../src/parole-subtitle-encoding.c:331
 msgid "Western"
 msgstr "Barat"
 
-#: ../src/parole-subtitle-encoding.c:337 ../src/parole-subtitle-encoding.c:339
-#: ../src/parole-subtitle-encoding.c:341
+#: ../src/parole-subtitle-encoding.c:334 ../src/parole-subtitle-encoding.c:336
+#: ../src/parole-subtitle-encoding.c:338
 msgid "Vietnamese"
 msgstr "Vietnam"
 
-#. If plugin loading fails...
-#: ../src/parole-plugins-manager.c:276
+#: ../src/parole-plugins-manager.c:253
 msgid "Plugin failed to load"
 msgstr "Pemalam gagal dimuatkan"
 
-#: ../src/parole-plugins-manager.c:276
+#: ../src/parole-plugins-manager.c:254
 msgid "Please check your installation"
 msgstr "Sila semak pemasangan anda"
 
-#: ../src/parole-plugins-manager.c:408
+#: ../src/parole-plugins-manager.c:375
 msgid "No installed plugins found on this system"
 msgstr "Tiada pemalam terpasang ditemui dalam sistem ini"
 
-#: ../src/parole-plugins-manager.c:409
+#: ../src/parole-plugins-manager.c:376
 msgid "Please check your installation."
 msgstr "Sila semak pemasangan anda."
 
-#: ../src/misc/parole-filters.c:64
+#: ../src/misc/parole-filters.c:66
 msgid "Audio"
 msgstr "Audio"
 
-#: ../src/misc/parole-filters.c:90
+#: ../src/misc/parole-filters.c:91
 msgid "Video"
 msgstr "Video"
 
-#: ../src/misc/parole-filters.c:115 ../src/misc/parole-filters.c:133
+#: ../src/misc/parole-filters.c:115 ../src/misc/parole-filters.c:142
 msgid "Audio and video"
 msgstr "Audio dan video"
 
-#: ../src/misc/parole-filters.c:162 ../src/misc/parole-filters.c:178
+#: ../src/misc/parole-filters.c:169 ../src/misc/parole-filters.c:193
 msgid "All supported files"
 msgstr "Semua fail disokong"
 
-#: ../src/misc/parole-filters.c:205
+#: ../src/misc/parole-filters.c:217
 msgid "Playlist files"
 msgstr "Fail senarai main"
 
-#: ../src/plugins/notify/notify-provider.c:150
-#: ../src/plugins/notify/notify-provider.c:153
+#: ../src/plugins/notify/notify-provider.c:139
+#: ../src/plugins/notify/notify-provider.c:141
 msgid "<i>on</i>"
 msgstr "<i>pada</i>"
 
-#: ../src/plugins/notify/notify-provider.c:150
-#: ../src/plugins/notify/notify-provider.c:153
+#: ../src/plugins/notify/notify-provider.c:139
+#: ../src/plugins/notify/notify-provider.c:141
 msgid "<i>by</i>"
 msgstr "<i>oleh</i>"
 
@@ -1182,45 +1281,41 @@ msgid "Show notifications for currently playing tracks"
 msgstr "Tunjuk pemberitahuan untuk trek semasa dimainkan"
 
 #. * Previous Track
-#: ../src/plugins/tray/tray-provider.c:139
+#: ../src/plugins/tray/tray-provider.c:128
 msgid "P_revious Track"
 msgstr "Trek Te_rdahulu"
 
 #. * Next Track
-#: ../src/plugins/tray/tray-provider.c:148
+#: ../src/plugins/tray/tray-provider.c:137
 msgid "_Next Track"
 msgstr "Trek Berikut_nya"
 
 #. * Open
-#: ../src/plugins/tray/tray-provider.c:164
+#: ../src/plugins/tray/tray-provider.c:153
 msgid "_Open"
 msgstr "B_uka"
 
-#: ../src/plugins/tray/tray-provider.c:272
+#: ../src/plugins/tray/tray-provider.c:254
 msgid "Tray icon plugin"
 msgstr "Pemalam ikon talam"
 
-#: ../src/plugins/tray/tray-provider.c:282
+#: ../src/plugins/tray/tray-provider.c:264
 msgid "Always minimize to tray when window is closed"
 msgstr "Sentiasa diminimum ke talam bila tetingkap ditutup"
 
-#: ../src/plugins/tray/tray-provider.c:328
+#: ../src/plugins/tray/tray-provider.c:307
 msgid "Are you sure you want to quit?"
 msgstr "Anda pasti hendak keluar?"
 
-#: ../src/plugins/tray/tray-provider.c:331
+#: ../src/plugins/tray/tray-provider.c:310
 msgid "Parole can be minimized to the system tray instead."
 msgstr "Parole boleh diminimumkan ke talam sistem."
 
-#: ../src/plugins/tray/tray-provider.c:334
+#: ../src/plugins/tray/tray-provider.c:313
 msgid "Minimize to tray"
 msgstr "Minimumkan ke talam"
 
-#: ../src/plugins/tray/tray-provider.c:346
-msgid "Quit"
-msgstr "Keluar"
-
-#: ../src/plugins/tray/tray-provider.c:355
+#: ../src/plugins/tray/tray-provider.c:334
 msgid "Remember my choice"
 msgstr "Ingat pilihan saya"
 
