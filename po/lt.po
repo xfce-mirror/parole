@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-03 18:30+0200\n"
-"PO-Revision-Date: 2017-06-17 23:19+0000\n"
+"PO-Revision-Date: 2017-08-31 22:08+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/xfce/xfce-apps/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr ""
 #: ../src/parole-player.c:1789 ../src/parole-about.c:68
 #: ../src/plugins/mpris2/mpris2-provider.c:187
 msgid "Parole Media Player"
-msgstr "Parole medijos grotuvas"
+msgstr "Parole medijos leistuvė"
 
 #: ../data/interfaces/parole.ui.h:2
 msgid "_Media"
@@ -310,7 +310,7 @@ msgstr "Parole įskiepiai"
 
 #: ../data/interfaces/plugins.ui.h:2
 msgid "Extend your media player"
-msgstr "Išplėskite savo medijos grotuvą"
+msgstr "Išplėskite savo medijos leistuvę"
 
 #: ../data/interfaces/plugins.ui.h:3
 msgid "Plugin"
@@ -342,7 +342,7 @@ msgstr "Parole nustatymai"
 
 #: ../data/interfaces/parole-settings.ui.h:4
 msgid "Configure your media player"
-msgstr "Konfigūruokite savo medijos grotuvą"
+msgstr "Konfigūruokite savo medijos leistuvę"
 
 #: ../data/interfaces/parole-settings.ui.h:5
 msgid "Disable screensaver when playing movies"
@@ -584,7 +584,7 @@ msgstr "Pereiti 10 minučių pirmyn"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:2
 msgid "Play your media"
-msgstr "Grokite savo mediją"
+msgstr "Groti savo mediją"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:4
 #: ../src/parole-player.c:3340 ../src/plugins/notify/notify-provider.c:190
@@ -601,14 +601,14 @@ msgid ""
 "Parole is a modern simple media player based on the GStreamer framework and "
 "written to fit well in the Xfce desktop. It is designed with simplicity, "
 "speed and resource usage in mind."
-msgstr "Parole yra šiuolaikinis paprastas medijos grotuvas, pagrįstas GStreamer karkasu ir sukurtas taip, kad pritaptų prie Xfce darbalaukio. Jis sukurtas, turint omenyje paprastumą, greitį ir išteklių naudojimą."
+msgstr "Parole yra šiuolaikinė paprasta medijos leistuvė, pagrįsta GStreamer karkasu ir sukurta taip, kad pritaptų prie Xfce darbalaukio. Ji sukurta, turint omenyje paprastumą, greitį ir išteklių naudojimą."
 
 #: ../data/appdata/parole.appdata.xml.in.h:2
 msgid ""
 "Parole features playback of local media files, including video with "
 "subtitles support, Audio CDs, DVDs, and live streams. Parole is also "
 "extensible via plugins."
-msgstr "Parole gali groti vietinius medija failus, įskaitant vaizdo įrašus su subtitrų palaikymu, garso įrašus, CD, DVD, bei tiesioginius srautinius siuntimus. Parole taip pat yra išplečiama per įskiepius."
+msgstr "Parole gali atkurti vietinius medijos failus, įskaitant vaizdo įrašus su subtitrų palaikymu, garso įrašus, CD, DVD, bei tiesioginius srautinius siuntimus. Parole taip pat yra išplečiama per įskiepius."
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid ""
@@ -747,7 +747,7 @@ msgstr "GStreamer klaida"
 
 #: ../src/gst/parole-gst.c:1861
 msgid "Parole Media Player cannot start."
-msgstr "Parole medijos grotuvas negali būti paleistas."
+msgstr "Parole medijos leistuvė negali būti paleista."
 
 #: ../src/gst/parole-gst.c:1886 ../src/gst/parole-gst.c:1901
 #: ../src/gst/parole-gst.c:1930
@@ -778,7 +778,7 @@ msgid ""
 "\n"
 "Please report bugs to <https://bugzilla.xfce.org/>.\n"
 "\n"
-msgstr "\nParole medijos grotuvas %s\n\nXfce Goodies projekto dalis\nhttps://goodies.xfce.org\n\nLicencijuota pagal GNU GPL.\n\nPrašome apie klaidas pranešti adresu <https://bugzilla.xfce.org/>.\n\n"
+msgstr "\nParole medijos leistuvė %s\n\nXfce Goodies projekto dalis\nhttps://goodies.xfce.org\n\nLicencijuota pagal GNU GPL.\n\nPrašome apie klaidas pranešti adresu <https://bugzilla.xfce.org/>.\n\n"
 
 #: ../src/main.c:227
 msgid "Open a new instance"
