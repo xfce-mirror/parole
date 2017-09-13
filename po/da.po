@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-03 18:30+0200\n"
-"PO-Revision-Date: 2017-06-06 11:24+0000\n"
+"PO-Revision-Date: 2017-09-13 16:31+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -182,7 +182,7 @@ msgstr "Udvidelsesmodu_ler"
 
 #: ../data/interfaces/parole.ui.h:39
 msgid "_Preferences"
-msgstr "_Indstillinger"
+msgstr "_Præferencer"
 
 #: ../data/interfaces/parole.ui.h:40
 msgid "_Help"
@@ -754,7 +754,7 @@ msgstr "Parole medieafspilleren kan ikke starte."
 #: ../src/gst/parole-gst.c:1930
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
-msgstr "Kunne ikke indlæse udvidelsesmodulet \"%s\", kontroller din GStreamer-installation."
+msgstr "Kan ikke indlæse udvidelsesmodulet \"%s\", kontroller din GStreamer-installation."
 
 #: ../src/gst/parole-gst.c:2490 ../src/gst/parole-gst.c:2494
 #, c-format
@@ -872,7 +872,7 @@ msgstr "Kapitel %i"
 
 #: ../src/parole-medialist.c:651
 msgid "Permission denied"
-msgstr "Adgang nægtet"
+msgstr "Tilladelse nægtet"
 
 #: ../src/parole-medialist.c:653
 msgid "Error saving playlist file"
@@ -1040,7 +1040,7 @@ msgstr "Slå lyden til"
 
 #: ../src/parole-player.c:2785
 msgid "Unable to open default web browser"
-msgstr "Kunne ikke åbne standardwebbrowser"
+msgstr "Kan ikke åbne standardwebbrowser"
 
 #: ../src/parole-player.c:2787
 msgid ""
@@ -1075,7 +1075,7 @@ msgstr "Luk"
 
 #: ../src/parole-about.c:74
 msgid "translator-credits"
-msgstr "Per Kongstad, Aputsiaq Niels Janussen\n\nDansk-gruppen <dansk@dansk-gruppen.dk>\nMere info: http://www.dansk-gruppen.dk"
+msgstr "Per Kongstad\nAputsiaq Niels Janussen\n\nDansk-gruppen <dansk@dansk-gruppen.dk>\nMere info: http://www.dansk-gruppen.dk"
 
 #: ../src/parole-about.c:77
 msgid "Visit Parole website"
