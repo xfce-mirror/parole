@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-26 18:31+0100\n"
-"PO-Revision-Date: 2017-05-16 08:34+0000\n"
-"Last-Translator: Yarema aka Knedlyk <yupadmin@gmail.com>\n"
+"POT-Creation-Date: 2017-06-03 18:30+0200\n"
+"PO-Revision-Date: 2017-09-19 18:05+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/xfce/xfce-apps/language/uk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,9 +22,9 @@ msgstr ""
 
 #: ../data/interfaces/parole.ui.h:1
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:1
-#: ../src/parole-player.c:606 ../src/parole-player.c:1521
-#: ../src/parole-player.c:1920 ../src/parole-about.c:70
-#: ../src/plugins/mpris2/mpris2-provider.c:199
+#: ../src/parole-player.c:593 ../src/parole-player.c:1438
+#: ../src/parole-player.c:1789 ../src/parole-about.c:68
+#: ../src/plugins/mpris2/mpris2-provider.c:187
 msgid "Parole Media Player"
 msgstr "Медіапрогравач Parole"
 
@@ -48,13 +48,13 @@ msgstr "Відкрити _недавнє"
 msgid "_Save Playlist…"
 msgstr "_Зберегти список відтворення..."
 
-#: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:112
-#: ../src/parole-disc.c:154
+#: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:108
+#: ../src/parole-disc.c:143
 msgid "Insert Disc"
 msgstr "Вставити диск"
 
 #. * Exit
-#: ../data/interfaces/parole.ui.h:8 ../src/plugins/tray/tray-provider.c:179
+#: ../data/interfaces/parole.ui.h:8 ../src/plugins/tray/tray-provider.c:168
 msgid "_Quit"
 msgstr "Ви_йти"
 
@@ -71,7 +71,7 @@ msgid "_Shuffle"
 msgstr "_Випадковий"
 
 #. Create dialog
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2976
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2811
 msgid "Go to position"
 msgstr "Перейти до позиції"
 
@@ -111,7 +111,7 @@ msgstr "_Аудіо"
 msgid "_Audio Track"
 msgstr "_Аудіо доріжка"
 
-#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:832
+#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:799
 msgid "Empty"
 msgstr "Пусто"
 
@@ -131,8 +131,8 @@ msgstr "_Без звуку"
 msgid "_Video"
 msgstr "_Відео"
 
-#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:2106
-#: ../src/parole-player.c:2270
+#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:1982
+#: ../src/parole-player.c:2135
 msgid "_Fullscreen"
 msgstr "Повний екр_ан"
 
@@ -140,7 +140,7 @@ msgstr "Повний екр_ан"
 msgid "_Aspect Ratio"
 msgstr "_Розмір екрану"
 
-#: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:760
+#: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:730
 msgid "None"
 msgstr "Нічого"
 
@@ -193,43 +193,47 @@ msgid "_Report a Bug…"
 msgstr "_Повідомити про ваду..."
 
 #: ../data/interfaces/parole.ui.h:42
+msgid "_Keyboard Shortcuts"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:43
 msgid "Display Parole user manual"
 msgstr "Показати посібник користувача Parole"
 
-#: ../data/interfaces/parole.ui.h:43
+#: ../data/interfaces/parole.ui.h:44
 msgid "_Contents"
 msgstr "_Зміст"
 
-#: ../data/interfaces/parole.ui.h:44
+#: ../data/interfaces/parole.ui.h:45
 msgid "_About"
 msgstr "_Про"
 
-#: ../data/interfaces/parole.ui.h:45
+#: ../data/interfaces/parole.ui.h:46
 msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
 msgstr "<span color='#F4F4F4'><b><big>Невідома пісня</big></b></span>"
 
-#: ../data/interfaces/parole.ui.h:46
+#: ../data/interfaces/parole.ui.h:47
 msgid ""
 "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
 "Album</span></big>"
 msgstr "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Невідомий альбом</span></big>"
 
-#: ../data/interfaces/parole.ui.h:47
+#: ../data/interfaces/parole.ui.h:48
 msgid ""
 "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
 "Artist</span></big>"
 msgstr "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Невідомий виконавець</span></big>"
 
-#: ../data/interfaces/parole.ui.h:48
+#: ../data/interfaces/parole.ui.h:49
 msgid "0:00"
 msgstr "0:00"
 
-#: ../data/interfaces/parole.ui.h:50
+#: ../data/interfaces/parole.ui.h:51
 #, no-c-format
 msgid "Buffering (0%)"
 msgstr "Буферизація (0%)"
 
-#: ../data/interfaces/parole.ui.h:51
+#: ../data/interfaces/parole.ui.h:52
 msgid "/"
 msgstr "/"
 
@@ -238,8 +242,9 @@ msgid "Open Media Files"
 msgstr "Відкрити медіа-файли"
 
 #: ../data/interfaces/playlist.ui.h:1
-#: ../data/interfaces/parole-settings.ui.h:27 ../src/parole-medialist.c:806
-#: ../src/parole-medialist.c:849 ../src/parole-player.c:3398
+#: ../data/interfaces/parole-settings.ui.h:27
+#: ../data/interfaces/shortcuts.ui.h:13 ../src/parole-medialist.c:745
+#: ../src/parole-medialist.c:784 ../src/parole-player.c:3191
 msgid "Playlist"
 msgstr "Список відтворення"
 
@@ -369,6 +374,7 @@ msgid "<b>Keyboard</b>"
 msgstr "<b>Клавіатура</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:12
+#: ../data/interfaces/shortcuts.ui.h:1
 msgid "General"
 msgstr "Загальне"
 
@@ -468,7 +474,7 @@ msgstr "Вибрати тип файлу (за розширенням)"
 msgid "Open Network Location"
 msgstr "Відкрити посилання в мережі"
 
-#: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:193
+#: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:181
 msgid "Clear History"
 msgstr "Очистити історію"
 
@@ -476,21 +482,118 @@ msgstr "Очистити історію"
 msgid "<big><b>Open Network Location</b></big>"
 msgstr "<big><b>Відкрити посилання в мережі</b></big>"
 
-#: ../data/desktop/org.xfce.Parole.desktop.in.in.h:2
-msgid "Play your media"
-msgstr "Програвання Ваших медіа"
+#: ../data/interfaces/shortcuts.ui.h:2
+msgid "Open file"
+msgstr ""
 
+#: ../data/interfaces/shortcuts.ui.h:3
+msgid "Open location"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:4 ../src/plugins/tray/tray-provider.c:325
+msgid "Quit"
+msgstr "Вийти"
+
+#: ../data/interfaces/shortcuts.ui.h:5
+msgid "View"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:6
+msgid "Toggle fullscreen"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:7
+msgid "Exit fullscreen"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:8
+msgid "Toggle menubar"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:9
+msgid "Volume"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:10
+msgid "Increase volume"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:11
+msgid "Decrease volume"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:12 ../src/parole-player.c:2383
+msgid "Mute"
+msgstr "Без звуку"
+
+#: ../data/interfaces/shortcuts.ui.h:14
+msgid "Toggle playlist"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:15
+msgid "Select previous item"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:16
+msgid "Select next item"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:17
+msgid "Remove selected item"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:18
+msgid "Playback"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:19
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:3
 msgid "Play/Pause"
 msgstr "Програвання/Пауза"
 
+#: ../data/interfaces/shortcuts.ui.h:20 ../src/main.c:241
+msgid "Previous track"
+msgstr "Попередня доріжка"
+
+#: ../data/interfaces/shortcuts.ui.h:21 ../src/main.c:239
+msgid "Next track"
+msgstr "Наступна доріжка"
+
+#: ../data/interfaces/shortcuts.ui.h:22
+msgid "Go back 10 seconds"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:23
+msgid "Go forward 10 seconds"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:24
+msgid "Go back 60 seconds"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:25
+msgid "Go forward 60 seconds"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:26
+msgid "Go back 10 minutes"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:27
+msgid "Go forward 10 minutes"
+msgstr ""
+
+#: ../data/desktop/org.xfce.Parole.desktop.in.in.h:2
+msgid "Play your media"
+msgstr "Програвання Ваших медіа"
+
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:4
-#: ../src/parole-player.c:3553 ../src/plugins/notify/notify-provider.c:204
+#: ../src/parole-player.c:3340 ../src/plugins/notify/notify-provider.c:190
 msgid "Previous Track"
 msgstr "Попередня доріжка"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:5
-#: ../src/parole-player.c:3571 ../src/plugins/notify/notify-provider.c:217
+#: ../src/parole-player.c:3358 ../src/plugins/notify/notify-provider.c:202
 msgid "Next Track"
 msgstr "Наступна доріжка"
 
@@ -510,37 +613,45 @@ msgstr "Parole може програвати локальні медіа фай�
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid ""
+"This development release is a large cleanup of the codebase, making Parole "
+"lighter and easier to improve. All URLs have been updated to HTTPS. A large "
+"number of bugs have been resolved and a new keyboard shortcuts helper has "
+"been introduced."
+msgstr ""
+
+#: ../data/appdata/parole.appdata.xml.in.h:4
+msgid ""
 "This development release fixes several bugs, typos, and historical details "
 "present in the documentation. Tags are now processed on files delivered over"
 " HTTP/S. The clutter video backend is disabled for GTK+ 3.22 and newer due "
 "to significant API changes."
 msgstr "Цей розробницький випуск містить виправлення кількох вад, описок і історичних деталей в документації. Теги тепер обробляються на файлах, що переносяться через HTTP/S. У зв'язку зі змінами в API виключено бекенд clutter video для GTK+ 3.22 і новіших."
 
-#: ../data/appdata/parole.appdata.xml.in.h:4
+#: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
 "This development release adds a new mini mode and the ability to play or "
 "replay content by clicking the circle icons. Theming is simplified and "
 "filenames are displayed when no ID3 tags are found."
 msgstr "У цьому розробницькому випуску додано новий міні-режим і можливість програвати або програвати заново вміст, клацаючи на круглі значки. Теми спрощено і показуються назви файлів, якщо не знайдено тегів ID3."
 
-#: ../data/appdata/parole.appdata.xml.in.h:5
+#: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
 "This release improves the build process and includes several bug fixes. This"
 " new stable release is a recommended upgrade for all users."
 msgstr "В цьому випуску покращено процес збирання і вирішено кілька проблем. Всім користувачам рекомендовано оновитися до цього нового стабільного випуску."
 
-#: ../data/appdata/parole.appdata.xml.in.h:6
+#: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
 msgstr "Це є нестабільний випуск, додано надбудову над clutter і очищено непотрібні Gtk3 символи. Додано також можливість \"перейти на позицію\", виправлено кілька вад."
 
-#: ../data/appdata/parole.appdata.xml.in.h:7
+#: ../data/appdata/parole.appdata.xml.in.h:8
 msgid "This release fixes a problem with detecting DVD drive locations."
 msgstr "Це випуск виправляє проблему з визначенням знаходження DVD пристрою."
 
-#: ../data/appdata/parole.appdata.xml.in.h:8
+#: ../data/appdata/parole.appdata.xml.in.h:9
 msgid ""
 "This release features the completed transition to the Gtk+3 toolkit, "
 "improvements in the user-interface (more streamlined menus), better "
@@ -549,20 +660,20 @@ msgid ""
 "and we use the GStreamer1.0 framework now by default."
 msgstr "Цей випуск містить повний перехід на Gkt+3, вдосконалення інтерфейсу користувача (швидші меню), кращий список програвань. Більше того, вдосконалено існуючі додатки і додано новий додаток (MPRIS2). Більша частина графіки оновлена для цього випуску. Тепер ми використовуємо GStreamer1.0 по замовчуванню."
 
-#: ../data/appdata/parole.appdata.xml.in.h:9
+#: ../data/appdata/parole.appdata.xml.in.h:10
 msgid ""
 "This unstable development release features mostly bugfixes and introduces "
 "the new MPRIS2 plugin."
 msgstr "Цей нестабільний розробницький випуск в основному містить виправлення і містить новий додаток MPRIS2."
 
-#: ../data/appdata/parole.appdata.xml.in.h:10
+#: ../data/appdata/parole.appdata.xml.in.h:11
 msgid ""
 "This is a bugfix release which fixes the loading of playlists with relative "
 "paths, improves the file-filters for audio/video mimetypes and fixes the "
 "\"Remove duplicates\" functionality."
 msgstr "Це є випуск з виправленнями у викликанні списку програвань з відносними шляхами, вдосконалення фільтрів файлів аудіо/відео і виправленнях функціональності \"Вилучення дублікатів\"."
 
-#: ../data/appdata/parole.appdata.xml.in.h:11
+#: ../data/appdata/parole.appdata.xml.in.h:12
 msgid ""
 "This unstable development release features the complete port to the Gtk+3 "
 "toolkit, improvements in the user-interface (more streamlined menus), better"
@@ -570,87 +681,87 @@ msgid ""
 "plugins and the occasional bugfix."
 msgstr "Цей нестабільний випуск містить повний перехід на Gkt+3, вдосконалення інтерфейсу користувача (швидші меню), кращий список програвань. Більша частина графіки оновлена для цього випуску, підтримка GStreamer1.0, вдосконалені додатки та інші виправлення."
 
-#: ../src/common/parole-common.c:87
+#: ../src/common/parole-common.c:83
 msgid "Message"
 msgstr "Повідомлення"
 
-#: ../src/common/parole-common.c:92
+#: ../src/common/parole-common.c:87
 msgid "Error"
 msgstr "Помилка"
 
-#: ../src/gst/parole-gst.c:1271 ../src/parole-medialist.c:393
+#: ../src/gst/parole-gst.c:1094 ../src/parole-medialist.c:376
 #, c-format
 msgid "Track %i"
 msgstr "Доріжка %i"
 
-#: ../src/gst/parole-gst.c:1274
+#: ../src/gst/parole-gst.c:1097
 msgid "Audio CD"
 msgstr "Аудіо CD"
 
-#: ../src/gst/parole-gst.c:1517
+#: ../src/gst/parole-gst.c:1304
 msgid "Additional software is required."
 msgstr "Вимагаються додаткові програми."
 
-#: ../src/gst/parole-gst.c:1522
+#: ../src/gst/parole-gst.c:1308
 msgid "Don't Install"
 msgstr "Не встановлювати"
 
-#: ../src/gst/parole-gst.c:1524
+#: ../src/gst/parole-gst.c:1310
 msgid "Install"
 msgstr "Встановлювати"
 
-#: ../src/gst/parole-gst.c:1527
+#: ../src/gst/parole-gst.c:1313
 msgid "OK"
 msgstr "Гаразд"
 
-#: ../src/gst/parole-gst.c:1534
+#: ../src/gst/parole-gst.c:1320
 #, c-format
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
 msgstr "Parole потрібно <b>%s</b> для програвання цього файлу.\nЦе можна встановити автоматично."
 
-#: ../src/gst/parole-gst.c:1537
+#: ../src/gst/parole-gst.c:1323
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
 msgstr "Parole потрібно <b>%s</b> для програвання цього файлу."
 
-#: ../src/gst/parole-gst.c:1948
+#: ../src/gst/parole-gst.c:1692
 msgid "The stream is taking too much time to load"
 msgstr "Потік потребує забагато часу для завантаження"
 
-#: ../src/gst/parole-gst.c:1949
+#: ../src/gst/parole-gst.c:1694
 msgid "Do you want to continue loading or stop?"
 msgstr "Ви бажаєте продовжувати чи зупинити?"
 
-#: ../src/gst/parole-gst.c:1950
+#: ../src/gst/parole-gst.c:1695
 msgid "Stop"
 msgstr "Зупинити"
 
-#: ../src/gst/parole-gst.c:1951
+#: ../src/gst/parole-gst.c:1696
 msgid "Continue"
 msgstr "Продовжити"
 
-#: ../src/gst/parole-gst.c:2135
+#: ../src/gst/parole-gst.c:1860
 msgid "GStreamer Error"
 msgstr "Помилка GStreamer"
 
-#: ../src/gst/parole-gst.c:2136
+#: ../src/gst/parole-gst.c:1861
 msgid "Parole Media Player cannot start."
 msgstr "Програвач медіа Parole неможливо запустити."
 
-#: ../src/gst/parole-gst.c:2167 ../src/gst/parole-gst.c:2183
-#: ../src/gst/parole-gst.c:2215
+#: ../src/gst/parole-gst.c:1886 ../src/gst/parole-gst.c:1901
+#: ../src/gst/parole-gst.c:1930
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
 msgstr "Неможливо завантажити додаток \"%s\", перевірте встановлення GStreamer."
 
-#: ../src/gst/parole-gst.c:2846 ../src/gst/parole-gst.c:2852
+#: ../src/gst/parole-gst.c:2490 ../src/gst/parole-gst.c:2494
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Доріжка #%d"
 
-#: ../src/gst/parole-gst.c:2896 ../src/gst/parole-gst.c:2902
+#: ../src/gst/parole-gst.c:2530 ../src/gst/parole-gst.c:2534
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Субтитри #%d"
@@ -668,65 +779,57 @@ msgid ""
 "\n"
 "Please report bugs to <https://bugzilla.xfce.org/>.\n"
 "\n"
-msgstr "\nПрогравач медіа Parole %s\n\nЧастина проекту Xfce Goodies\nhttps://goodies.xfce.org\n\nВипущено під ліцензією GNU GPL.\n\nБудь ласка, повідомляйте про вади на <https://bugzilla.xfce.org/>.\n\n"
+msgstr ""
 
-#: ../src/main.c:241
+#: ../src/main.c:227
 msgid "Open a new instance"
 msgstr "відкрити нове вікно"
 
-#: ../src/main.c:242
+#: ../src/main.c:229
 msgid "Do not load plugins"
 msgstr "Не завантажувати модулі"
 
-#: ../src/main.c:243
+#: ../src/main.c:231
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "Встановити шлях до Audio-CD/VCD/DVD пристрою"
 
-#: ../src/main.c:244
+#: ../src/main.c:233
 msgid "Start in embedded mode"
 msgstr "Запускати у режимі вкладення"
 
-#: ../src/main.c:245
+#: ../src/main.c:235
 msgid "Start in fullscreen mode"
 msgstr "Стартувати в повному екрані"
 
-#: ../src/main.c:246
+#: ../src/main.c:237
 msgid "Play or pause if already playing"
 msgstr "Відтворити чи зупинити, якщо вже відтворюється"
 
-#: ../src/main.c:247
-msgid "Next track"
-msgstr "Наступна доріжка"
-
-#: ../src/main.c:248
-msgid "Previous track"
-msgstr "Попередня доріжка"
-
-#: ../src/main.c:249
+#: ../src/main.c:243
 msgid "Raise volume"
 msgstr "Збільшити гучність"
 
-#: ../src/main.c:250
+#: ../src/main.c:245
 msgid "Lower volume"
 msgstr "Зменшити гучність"
 
-#: ../src/main.c:251
+#: ../src/main.c:247
 msgid "Mute volume"
 msgstr "Вимкнути звук"
 
-#: ../src/main.c:252
+#: ../src/main.c:249
 msgid "Unmute (restore) volume"
 msgstr "Включити (відновити) звук"
 
-#: ../src/main.c:253
+#: ../src/main.c:251
 msgid "Add files to playlist"
 msgstr "Додати файли до списку відтворення"
 
-#: ../src/main.c:254
+#: ../src/main.c:253
 msgid "Print version information and exit"
 msgstr "Показати інформацію про версію і вийти"
 
-#: ../src/main.c:256
+#: ../src/main.c:257
 msgid "Media to play"
 msgstr "Медіа для проигравання"
 
@@ -734,21 +837,21 @@ msgstr "Медіа для проигравання"
 msgid "[FILES...] - Play movies and songs"
 msgstr "[ФАЙЛИ...] - відтворити фільми і пісні"
 
-#: ../src/main.c:291
+#: ../src/main.c:290
 #, c-format
 msgid "Type %s --help to list all available command line options\n"
 msgstr "Ввести %s --help для списку всіх можливих опцій командного рядка\n"
 
-#: ../src/main.c:309
+#: ../src/main.c:307
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole вже працює, використайте-i для відкриття нового\n"
 
-#: ../src/parole-mediachooser.c:247 ../src/parole-player.c:1054
+#: ../src/parole-mediachooser.c:233 ../src/parole-player.c:1005
 msgid "All files"
 msgstr "Всі файли"
 
-#: ../src/parole-medialist.c:218 ../src/parole-medialist.c:1599
+#: ../src/parole-medialist.c:218 ../src/parole-medialist.c:1475
 #, c-format
 msgid "Playlist (%i item)"
 msgid_plural "Playlist (%i items)"
@@ -756,7 +859,7 @@ msgstr[0] "Список відтворення (%i пункт)"
 msgstr[1] "Список відтворення (%i пунктів)"
 msgstr[2] "Список відтворення (%i пунктів)"
 
-#: ../src/parole-medialist.c:223 ../src/parole-medialist.c:1601
+#: ../src/parole-medialist.c:221 ../src/parole-medialist.c:1477
 #, c-format
 msgid "Playlist (%i chapter)"
 msgid_plural "Playlist (%i chapters)"
@@ -764,418 +867,414 @@ msgstr[0] "Список відтворення (%i розділ)"
 msgstr[1] "Список відтворення (%i розділів)"
 msgstr[2] "Список відтворення (%i розділів)"
 
-#: ../src/parole-medialist.c:409 ../src/parole-player.c:739
+#: ../src/parole-medialist.c:390 ../src/parole-player.c:710
 #, c-format
 msgid "Chapter %i"
 msgstr "Розділ %i"
 
-#: ../src/parole-medialist.c:698
+#: ../src/parole-medialist.c:651
 msgid "Permission denied"
 msgstr "Відмовлено в доступі"
 
-#: ../src/parole-medialist.c:700
+#: ../src/parole-medialist.c:653
 msgid "Error saving playlist file"
 msgstr "Помилки при збереженні списку відтворення"
 
-#: ../src/parole-medialist.c:712
+#: ../src/parole-medialist.c:663
 msgid "Unknown playlist format"
 msgstr "Невідомий формати списку відтворення"
 
-#: ../src/parole-medialist.c:713
+#: ../src/parole-medialist.c:664
 msgid "Please choose a supported playlist format"
 msgstr "Виберіть формат списку відтворення, який підтримується"
 
-#: ../src/parole-medialist.c:767 ../src/parole-plugins-manager.c:369
+#: ../src/parole-medialist.c:707 ../src/parole-plugins-manager.c:338
 msgid "Unknown"
 msgstr "Невідомий"
 
-#: ../src/parole-medialist.c:856
+#: ../src/parole-medialist.c:791
 msgid "M3U Playlists"
 msgstr "M3U списки відтворення"
 
-#: ../src/parole-medialist.c:864
+#: ../src/parole-medialist.c:799
 msgid "PLS Playlists"
 msgstr "PLS списки відтворення"
 
-#: ../src/parole-medialist.c:872
+#: ../src/parole-medialist.c:807
 msgid "Advanced Stream Redirector"
 msgstr "Розширене перенаправлення потоку"
 
-#: ../src/parole-medialist.c:880
+#: ../src/parole-medialist.c:815
 msgid "Shareable Playlist"
 msgstr "Публічний список відтворення"
 
 #. Clear
-#: ../src/parole-medialist.c:1219
+#: ../src/parole-medialist.c:1122
 msgid "Open Containing Folder"
 msgstr "Відкрити теку, що містить"
 
-#: ../src/parole-player.c:536
+#: ../src/parole-player.c:528
 msgid "Hide Playlist"
 msgstr "Сховати список відтворення"
 
-#: ../src/parole-player.c:536 ../src/parole-player.c:3613
+#: ../src/parole-player.c:528 ../src/parole-player.c:3400
 msgid "Show Playlist"
 msgstr "Показати список відтворення"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:1018
+#: ../src/parole-player.c:969
 msgid "Select Subtitle File"
 msgstr "Вибрати файл субтитрів"
 
-#: ../src/parole-player.c:1023 ../src/parole-player.c:1227
-#: ../src/parole-player.c:2979 ../src/plugins/tray/tray-provider.c:340
+#: ../src/parole-player.c:974 ../src/parole-player.c:1161
+#: ../src/parole-player.c:2814 ../src/plugins/tray/tray-provider.c:319
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: ../src/parole-player.c:1026
+#: ../src/parole-player.c:977
 msgid "Open"
 msgstr "Відкрити"
 
-#: ../src/parole-player.c:1042
+#: ../src/parole-player.c:993
 msgid "Subtitle Files"
 msgstr "Файли субтитрів"
 
-#: ../src/parole-player.c:1223 ../src/parole-player.c:1231
+#: ../src/parole-player.c:1157 ../src/parole-player.c:1165
 msgid "Clear Recent Items"
 msgstr "Очищення недавніх програвань"
 
-#: ../src/parole-player.c:1225
+#: ../src/parole-player.c:1159
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
 msgstr "Ви впевнені, що бажаєте очистити недавню історію? Її неможливо буде відновити."
 
-#: ../src/parole-player.c:1324 ../src/parole-player.c:1466
+#: ../src/parole-player.c:1261 ../src/parole-player.c:1388
 msgid "Media stream is not seekable"
 msgstr "Потік медіа не може перемотуватись"
 
-#: ../src/parole-player.c:1335
+#: ../src/parole-player.c:1271
 msgid "Play"
 msgstr "Відтворення"
 
-#: ../src/parole-player.c:1338
+#: ../src/parole-player.c:1274
 msgid "Pause"
 msgstr "Пауза"
 
-#: ../src/parole-player.c:1842
+#: ../src/parole-player.c:1713
 msgid "GStreamer backend error"
 msgstr "Помилка процесу Gstreamer"
 
-#: ../src/parole-player.c:1921
+#: ../src/parole-player.c:1794
 msgid "Unknown Song"
 msgstr "Невідома пісня"
 
-#: ../src/parole-player.c:1929 ../src/parole-player.c:1931
-#: ../src/parole-player.c:1937
+#: ../src/parole-player.c:1805 ../src/parole-player.c:1811
+#: ../src/parole-player.c:1819
 msgid "on"
 msgstr "в"
 
-#: ../src/parole-player.c:1937 ../src/plugins/notify/notify-provider.c:145
+#: ../src/parole-player.c:1819 ../src/plugins/notify/notify-provider.c:134
 msgid "Unknown Album"
 msgstr "Невідомий альбом"
 
-#: ../src/parole-player.c:1944 ../src/parole-player.c:1948
+#: ../src/parole-player.c:1830 ../src/parole-player.c:1837
 msgid "by"
 msgstr "виконана"
 
-#: ../src/parole-player.c:1948 ../src/plugins/notify/notify-provider.c:147
+#: ../src/parole-player.c:1837 ../src/plugins/notify/notify-provider.c:136
 msgid "Unknown Artist"
 msgstr "Невідомий виконавець"
 
-#: ../src/parole-player.c:1985
+#: ../src/parole-player.c:1872
 msgid "Buffering"
 msgstr "Буферизація"
 
-#: ../src/parole-player.c:2107 ../src/parole-player.c:3588
+#: ../src/parole-player.c:1983 ../src/parole-player.c:3375
 msgid "Fullscreen"
 msgstr "Повний екран"
 
-#: ../src/parole-player.c:2120
+#: ../src/parole-player.c:1994
 msgid "Leave _Fullscreen"
 msgstr "Залишити повноекр_анний режим"
 
-#: ../src/parole-player.c:2121
+#: ../src/parole-player.c:1995
 msgid "Leave Fullscreen"
 msgstr "Покинути повноекранний режим"
 
 #. Play menu item
 #. * Play pause
-#: ../src/parole-player.c:2238 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2097 ../src/plugins/tray/tray-provider.c:119
 msgid "_Pause"
 msgstr "_Пауза"
 
-#: ../src/parole-player.c:2238 ../src/plugins/tray/tray-provider.c:130
+#: ../src/parole-player.c:2097 ../src/plugins/tray/tray-provider.c:119
 msgid "_Play"
 msgstr "В_ідтворити"
 
 #. * Previous item in playlist.
-#: ../src/parole-player.c:2252
+#: ../src/parole-player.c:2113
 msgid "_Previous"
 msgstr "_Попереднє"
 
 #. * Next item in playlist.
-#: ../src/parole-player.c:2261
+#: ../src/parole-player.c:2124
 msgid "_Next"
 msgstr "_Наступне"
 
 #. * Un/Full screen
-#: ../src/parole-player.c:2270
+#: ../src/parole-player.c:2135
 msgid "_Leave Fullscreen"
 msgstr "Покинути повний _екран"
 
 #. * Un/Hide menubar
-#: ../src/parole-player.c:2284
+#: ../src/parole-player.c:2150
 msgid "Show menubar"
 msgstr "Показати панель меню"
 
-#: ../src/parole-player.c:2301
+#: ../src/parole-player.c:2167
 msgid "Mini Mode"
 msgstr "Режим міні"
 
-#: ../src/parole-player.c:2555
-msgid "Mute"
-msgstr "Без звуку"
-
-#: ../src/parole-player.c:2560
+#: ../src/parole-player.c:2386
 msgid "Unmute"
 msgstr "Зі звуком"
 
-#: ../src/parole-player.c:2948
+#: ../src/parole-player.c:2785
 msgid "Unable to open default web browser"
 msgstr "Неможливо відкрити типовий переглядач тенет"
 
-#: ../src/parole-player.c:2950
-msgid "Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
-msgstr "Перейдіть до https://docs.xfce.org/apps/parole/bugs щоб повідомити про ваду."
+#: ../src/parole-player.c:2787
+msgid ""
+"Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
+msgstr ""
 
-#: ../src/parole-player.c:2980
+#: ../src/parole-player.c:2815
 msgid "Go"
 msgstr "Перейти"
 
-#: ../src/parole-player.c:2993
+#: ../src/parole-player.c:2828
 msgid "Position:"
 msgstr "Позиція:"
 
 #. Clear Recent Menu Item
-#: ../src/parole-player.c:3439
+#: ../src/parole-player.c:3232
 msgid "_Clear recent items…"
 msgstr "_Очищення недавньої історії..."
 
-#: ../src/parole-player.c:3760
+#: ../src/parole-player.c:3550
 msgid "Audio Track:"
 msgstr "Трек аудіо:"
 
-#: ../src/parole-player.c:3779
+#: ../src/parole-player.c:3569
 msgid "Subtitles:"
 msgstr "Субтитри:"
 
 #. Add a close button to the Infobar
-#: ../src/parole-player.c:3785 ../src/plugins/tray/tray-provider.c:275
+#: ../src/parole-player.c:3575 ../src/plugins/tray/tray-provider.c:257
 msgid "Close"
 msgstr "Закрити"
 
-#: ../src/parole-about.c:76
+#: ../src/parole-about.c:74
 msgid "translator-credits"
 msgstr "Yarema aka Knedlyk <yupadmin@gmail.com>"
 
-#: ../src/parole-about.c:79
+#: ../src/parole-about.c:77
 msgid "Visit Parole website"
 msgstr "Відвідати веб-сторінку Parole"
 
-#: ../src/parole-conf-dialog.c:313
+#: ../src/parole-conf-dialog.c:290
 msgid "Clutter (OpenGL)"
 msgstr "Clutter (OpenGL)"
 
-#: ../src/parole-disc.c:114
+#: ../src/parole-disc.c:109
 msgid "Play Disc"
 msgstr "Грати диск"
 
-#: ../src/parole-subtitle-encoding.c:165
+#: ../src/parole-subtitle-encoding.c:162
 msgid "Current Locale"
 msgstr "Поточна локаль"
 
-#: ../src/parole-subtitle-encoding.c:168 ../src/parole-subtitle-encoding.c:170
-#: ../src/parole-subtitle-encoding.c:172 ../src/parole-subtitle-encoding.c:174
+#: ../src/parole-subtitle-encoding.c:165 ../src/parole-subtitle-encoding.c:167
+#: ../src/parole-subtitle-encoding.c:169 ../src/parole-subtitle-encoding.c:171
 msgid "Arabic"
 msgstr "Арабська"
 
-#: ../src/parole-subtitle-encoding.c:177
+#: ../src/parole-subtitle-encoding.c:174
 msgid "Armenian"
 msgstr "Армянська"
 
-#: ../src/parole-subtitle-encoding.c:180 ../src/parole-subtitle-encoding.c:182
-#: ../src/parole-subtitle-encoding.c:184
+#: ../src/parole-subtitle-encoding.c:177 ../src/parole-subtitle-encoding.c:179
+#: ../src/parole-subtitle-encoding.c:181
 msgid "Baltic"
 msgstr "Прибалтійська"
 
-#: ../src/parole-subtitle-encoding.c:187
+#: ../src/parole-subtitle-encoding.c:184
 msgid "Celtic"
 msgstr "Кельтська"
 
-#: ../src/parole-subtitle-encoding.c:190 ../src/parole-subtitle-encoding.c:192
-#: ../src/parole-subtitle-encoding.c:194 ../src/parole-subtitle-encoding.c:196
+#: ../src/parole-subtitle-encoding.c:187 ../src/parole-subtitle-encoding.c:189
+#: ../src/parole-subtitle-encoding.c:191 ../src/parole-subtitle-encoding.c:193
 msgid "Central European"
 msgstr "Центрально-европейська"
 
-#: ../src/parole-subtitle-encoding.c:199 ../src/parole-subtitle-encoding.c:201
-#: ../src/parole-subtitle-encoding.c:203 ../src/parole-subtitle-encoding.c:205
+#: ../src/parole-subtitle-encoding.c:196 ../src/parole-subtitle-encoding.c:198
+#: ../src/parole-subtitle-encoding.c:200 ../src/parole-subtitle-encoding.c:202
 msgid "Chinese Simplified"
 msgstr "Китайська спрощена"
 
-#: ../src/parole-subtitle-encoding.c:208 ../src/parole-subtitle-encoding.c:210
-#: ../src/parole-subtitle-encoding.c:212
+#: ../src/parole-subtitle-encoding.c:205 ../src/parole-subtitle-encoding.c:207
+#: ../src/parole-subtitle-encoding.c:209
 msgid "Chinese Traditional"
 msgstr "Китайська традиційна"
 
-#: ../src/parole-subtitle-encoding.c:215
+#: ../src/parole-subtitle-encoding.c:212
 msgid "Croatian"
 msgstr "Хорватська"
 
-#: ../src/parole-subtitle-encoding.c:218 ../src/parole-subtitle-encoding.c:220
-#: ../src/parole-subtitle-encoding.c:222 ../src/parole-subtitle-encoding.c:224
-#: ../src/parole-subtitle-encoding.c:226 ../src/parole-subtitle-encoding.c:228
+#: ../src/parole-subtitle-encoding.c:215 ../src/parole-subtitle-encoding.c:217
+#: ../src/parole-subtitle-encoding.c:219 ../src/parole-subtitle-encoding.c:221
+#: ../src/parole-subtitle-encoding.c:223 ../src/parole-subtitle-encoding.c:225
 msgid "Cyrillic"
 msgstr "Кирилиця"
 
-#: ../src/parole-subtitle-encoding.c:231
+#: ../src/parole-subtitle-encoding.c:228
 msgid "Cyrillic/Russian"
 msgstr "Кирилиця/Росія"
 
-#: ../src/parole-subtitle-encoding.c:234 ../src/parole-subtitle-encoding.c:236
+#: ../src/parole-subtitle-encoding.c:231 ../src/parole-subtitle-encoding.c:233
 msgid "Cyrillic/Ukrainian"
 msgstr "Кирилиця/Україна"
 
-#: ../src/parole-subtitle-encoding.c:239
+#: ../src/parole-subtitle-encoding.c:236
 msgid "Georgian"
 msgstr "Грузинська"
 
-#: ../src/parole-subtitle-encoding.c:242 ../src/parole-subtitle-encoding.c:244
-#: ../src/parole-subtitle-encoding.c:246
+#: ../src/parole-subtitle-encoding.c:239 ../src/parole-subtitle-encoding.c:241
+#: ../src/parole-subtitle-encoding.c:243
 msgid "Greek"
 msgstr "Грецька"
 
-#: ../src/parole-subtitle-encoding.c:249
+#: ../src/parole-subtitle-encoding.c:246
 msgid "Gujarati"
 msgstr "Гуджараті"
 
-#: ../src/parole-subtitle-encoding.c:252
+#: ../src/parole-subtitle-encoding.c:249
 msgid "Gurmukhi"
 msgstr "Гурмукі"
 
-#: ../src/parole-subtitle-encoding.c:255 ../src/parole-subtitle-encoding.c:257
-#: ../src/parole-subtitle-encoding.c:259 ../src/parole-subtitle-encoding.c:261
+#: ../src/parole-subtitle-encoding.c:252 ../src/parole-subtitle-encoding.c:254
+#: ../src/parole-subtitle-encoding.c:256 ../src/parole-subtitle-encoding.c:258
 msgid "Hebrew"
 msgstr "Іврит"
 
-#: ../src/parole-subtitle-encoding.c:264
+#: ../src/parole-subtitle-encoding.c:261
 msgid "Hebrew Visual"
 msgstr "Іврит Візуал"
 
-#: ../src/parole-subtitle-encoding.c:267
+#: ../src/parole-subtitle-encoding.c:264
 msgid "Hindi"
 msgstr "Хінді"
 
-#: ../src/parole-subtitle-encoding.c:270
+#: ../src/parole-subtitle-encoding.c:267
 msgid "Icelandic"
 msgstr "Ісланська"
 
-#: ../src/parole-subtitle-encoding.c:273 ../src/parole-subtitle-encoding.c:275
-#: ../src/parole-subtitle-encoding.c:277
+#: ../src/parole-subtitle-encoding.c:270 ../src/parole-subtitle-encoding.c:272
+#: ../src/parole-subtitle-encoding.c:274
 msgid "Japanese"
 msgstr "Японська"
 
-#: ../src/parole-subtitle-encoding.c:280 ../src/parole-subtitle-encoding.c:282
-#: ../src/parole-subtitle-encoding.c:284 ../src/parole-subtitle-encoding.c:286
+#: ../src/parole-subtitle-encoding.c:277 ../src/parole-subtitle-encoding.c:279
+#: ../src/parole-subtitle-encoding.c:281 ../src/parole-subtitle-encoding.c:283
 msgid "Korean"
 msgstr "Корейська"
 
-#: ../src/parole-subtitle-encoding.c:289
+#: ../src/parole-subtitle-encoding.c:286
 msgid "Nordic"
 msgstr "Скандинавська"
 
-#: ../src/parole-subtitle-encoding.c:292
+#: ../src/parole-subtitle-encoding.c:289
 msgid "Persian"
 msgstr "Перська"
 
-#: ../src/parole-subtitle-encoding.c:295 ../src/parole-subtitle-encoding.c:297
+#: ../src/parole-subtitle-encoding.c:292 ../src/parole-subtitle-encoding.c:294
 msgid "Romanian"
 msgstr "Румунська"
 
-#: ../src/parole-subtitle-encoding.c:300
+#: ../src/parole-subtitle-encoding.c:297
 msgid "South European"
 msgstr "Південна європейська"
 
-#: ../src/parole-subtitle-encoding.c:303
+#: ../src/parole-subtitle-encoding.c:300
 msgid "Thai"
 msgstr "Тайська"
 
-#: ../src/parole-subtitle-encoding.c:306 ../src/parole-subtitle-encoding.c:308
-#: ../src/parole-subtitle-encoding.c:310 ../src/parole-subtitle-encoding.c:312
+#: ../src/parole-subtitle-encoding.c:303 ../src/parole-subtitle-encoding.c:305
+#: ../src/parole-subtitle-encoding.c:307 ../src/parole-subtitle-encoding.c:309
 msgid "Turkish"
 msgstr "Турецька"
 
-#: ../src/parole-subtitle-encoding.c:315 ../src/parole-subtitle-encoding.c:317
-#: ../src/parole-subtitle-encoding.c:319 ../src/parole-subtitle-encoding.c:321
-#: ../src/parole-subtitle-encoding.c:323
+#: ../src/parole-subtitle-encoding.c:312 ../src/parole-subtitle-encoding.c:314
+#: ../src/parole-subtitle-encoding.c:316 ../src/parole-subtitle-encoding.c:318
+#: ../src/parole-subtitle-encoding.c:320
 msgid "Unicode"
 msgstr "Юнікод"
 
-#: ../src/parole-subtitle-encoding.c:326 ../src/parole-subtitle-encoding.c:328
-#: ../src/parole-subtitle-encoding.c:330 ../src/parole-subtitle-encoding.c:332
-#: ../src/parole-subtitle-encoding.c:334
+#: ../src/parole-subtitle-encoding.c:323 ../src/parole-subtitle-encoding.c:325
+#: ../src/parole-subtitle-encoding.c:327 ../src/parole-subtitle-encoding.c:329
+#: ../src/parole-subtitle-encoding.c:331
 msgid "Western"
 msgstr "Західна"
 
-#: ../src/parole-subtitle-encoding.c:337 ../src/parole-subtitle-encoding.c:339
-#: ../src/parole-subtitle-encoding.c:341
+#: ../src/parole-subtitle-encoding.c:334 ../src/parole-subtitle-encoding.c:336
+#: ../src/parole-subtitle-encoding.c:338
 msgid "Vietnamese"
 msgstr "В'єтнамська"
 
-#. If plugin loading fails...
-#: ../src/parole-plugins-manager.c:276
+#: ../src/parole-plugins-manager.c:253
 msgid "Plugin failed to load"
 msgstr "Помилка запуску додатку"
 
-#: ../src/parole-plugins-manager.c:276
+#: ../src/parole-plugins-manager.c:254
 msgid "Please check your installation"
 msgstr "Перевірте Ваше встановлення"
 
-#: ../src/parole-plugins-manager.c:408
+#: ../src/parole-plugins-manager.c:375
 msgid "No installed plugins found on this system"
 msgstr "У Вашій системі не знайдено встановлених модулів"
 
-#: ../src/parole-plugins-manager.c:409
+#: ../src/parole-plugins-manager.c:376
 msgid "Please check your installation."
 msgstr "Перевірте Ваше встановлення."
 
-#: ../src/misc/parole-filters.c:64
+#: ../src/misc/parole-filters.c:66
 msgid "Audio"
 msgstr "Аудіо"
 
-#: ../src/misc/parole-filters.c:90
+#: ../src/misc/parole-filters.c:91
 msgid "Video"
 msgstr "Відео"
 
-#: ../src/misc/parole-filters.c:115 ../src/misc/parole-filters.c:133
+#: ../src/misc/parole-filters.c:115 ../src/misc/parole-filters.c:142
 msgid "Audio and video"
 msgstr "Аудіо та відео"
 
-#: ../src/misc/parole-filters.c:162 ../src/misc/parole-filters.c:178
+#: ../src/misc/parole-filters.c:169 ../src/misc/parole-filters.c:193
 msgid "All supported files"
 msgstr "Всі підтримувані файли"
 
-#: ../src/misc/parole-filters.c:205
+#: ../src/misc/parole-filters.c:217
 msgid "Playlist files"
 msgstr "Файли списків відтворення"
 
-#: ../src/plugins/notify/notify-provider.c:150
-#: ../src/plugins/notify/notify-provider.c:153
+#: ../src/plugins/notify/notify-provider.c:139
+#: ../src/plugins/notify/notify-provider.c:141
 msgid "<i>on</i>"
 msgstr "<i>на</i>"
 
-#: ../src/plugins/notify/notify-provider.c:150
-#: ../src/plugins/notify/notify-provider.c:153
+#: ../src/plugins/notify/notify-provider.c:139
+#: ../src/plugins/notify/notify-provider.c:141
 msgid "<i>by</i>"
 msgstr "<i>від</i>"
 
@@ -1188,45 +1287,41 @@ msgid "Show notifications for currently playing tracks"
 msgstr "Показати повідомлення про поточну доріжку"
 
 #. * Previous Track
-#: ../src/plugins/tray/tray-provider.c:139
+#: ../src/plugins/tray/tray-provider.c:128
 msgid "P_revious Track"
 msgstr "П_опередня доріжка"
 
 #. * Next Track
-#: ../src/plugins/tray/tray-provider.c:148
+#: ../src/plugins/tray/tray-provider.c:137
 msgid "_Next Track"
 msgstr "_Наступна доріжка"
 
 #. * Open
-#: ../src/plugins/tray/tray-provider.c:164
+#: ../src/plugins/tray/tray-provider.c:153
 msgid "_Open"
 msgstr "_Відкрити"
 
-#: ../src/plugins/tray/tray-provider.c:272
+#: ../src/plugins/tray/tray-provider.c:254
 msgid "Tray icon plugin"
 msgstr "Модуль відображення значка в системному лотку"
 
-#: ../src/plugins/tray/tray-provider.c:282
+#: ../src/plugins/tray/tray-provider.c:264
 msgid "Always minimize to tray when window is closed"
 msgstr "Завжди згортати в трей, коли вікно закрите"
 
-#: ../src/plugins/tray/tray-provider.c:328
+#: ../src/plugins/tray/tray-provider.c:307
 msgid "Are you sure you want to quit?"
 msgstr "Ви впевнені, що бажаєте вийти з Parole?"
 
-#: ../src/plugins/tray/tray-provider.c:331
+#: ../src/plugins/tray/tray-provider.c:310
 msgid "Parole can be minimized to the system tray instead."
 msgstr "Parole можна згорнути до системного лотка."
 
-#: ../src/plugins/tray/tray-provider.c:334
+#: ../src/plugins/tray/tray-provider.c:313
 msgid "Minimize to tray"
 msgstr "Згорнути в трей"
 
-#: ../src/plugins/tray/tray-provider.c:346
-msgid "Quit"
-msgstr "Вийти"
-
-#: ../src/plugins/tray/tray-provider.c:355
+#: ../src/plugins/tray/tray-provider.c:334
 msgid "Remember my choice"
 msgstr "Запам'ятати мій вибір"
 
