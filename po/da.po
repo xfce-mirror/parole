@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-03 18:30+0200\n"
-"PO-Revision-Date: 2017-09-29 17:23+0000\n"
+"PO-Revision-Date: 2017-09-30 14:43+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -307,7 +307,7 @@ msgstr "Husk afspilningsliste"
 
 #: ../data/interfaces/plugins.ui.h:1
 msgid "Parole Plugins"
-msgstr "Udvidelsesmoduler til Parole"
+msgstr "Parole-plugin"
 
 #: ../data/interfaces/plugins.ui.h:2
 msgid "Extend your media player"
@@ -315,7 +315,7 @@ msgstr "Udvid din medieafspiller"
 
 #: ../data/interfaces/plugins.ui.h:3
 msgid "Plugin"
-msgstr "Udvidelsesmodul"
+msgstr "Plugin"
 
 #: ../data/interfaces/plugins.ui.h:4
 msgid "<b>Description</b>"
@@ -464,7 +464,7 @@ msgstr "Filtype"
 
 #: ../data/interfaces/save-playlist.ui.h:4
 msgid "Extension"
-msgstr "Udvidelsesmodul"
+msgstr "Filendelse"
 
 #: ../data/interfaces/save-playlist.ui.h:5
 msgid "Select File Types (By Extension)"
@@ -609,7 +609,7 @@ msgid ""
 "Parole features playback of local media files, including video with "
 "subtitles support, Audio CDs, DVDs, and live streams. Parole is also "
 "extensible via plugins."
-msgstr "Parole tilbyder afspilning af lokale mediefiler, inklusive videoer som understøtter undertekster, lyd-cd'er, dvd'er og live-strømme. Parole kan også udvides gennem udvidelsesmoduler."
+msgstr "Parole tilbyder afspilning af lokale mediefiler, inklusive videoer som understøtter undertekster, lyd-cd'er, dvd'er og live-strømme. Parole kan også udvides gennem plugins."
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid ""
@@ -658,13 +658,13 @@ msgid ""
 "playlists. Furthermore existing plugins have been improved and a new one has"
 " been added (MPRIS2). Most of the artwork has been updated for this release "
 "and we use the GStreamer1.0 framework now by default."
-msgstr "Denne udgivelse byder på den komplette overgang til Gtk+3-værktøjskittet, forbedringer til brugerfladen (mere strømlinet menuer), bedre afspilningslister. Derudover er eksisterende udvidelsesmoduler blevet forbedret og en ny er blevet tilføjet (MPRIS2). Det meste af det grafiske materiale er blevet opdateret til denne udgivelse og vi bruger nu GStreamer1.0-frameworket som standard."
+msgstr "Denne udgivelse byder på den komplette overgang til Gtk+3-værktøjskittet, forbedringer til brugerfladen (mere strømlinet menuer), bedre afspilningslister. Derudover er eksisterende plugins blevet forbedret og en ny er blevet tilføjet (MPRIS2). Det meste af det grafiske materiale er blevet opdateret til denne udgivelse og vi bruger nu GStreamer1.0-frameworket som standard."
 
 #: ../data/appdata/parole.appdata.xml.in.h:10
 msgid ""
 "This unstable development release features mostly bugfixes and introduces "
 "the new MPRIS2 plugin."
-msgstr "Denne ustabile udviklingsudgivelse byder mest på fejlrettelser og introducerer den ny MPRIS2-udvidelsesmodul."
+msgstr "Denne ustabile udviklingsudgivelse byder mest på fejlrettelser og introducerer den ny MPRIS2-plugin."
 
 #: ../data/appdata/parole.appdata.xml.in.h:11
 msgid ""
@@ -679,7 +679,7 @@ msgid ""
 "toolkit, improvements in the user-interface (more streamlined menus), better"
 " playlists. It also brings updated artwork, GStreamer1.0 support, improved "
 "plugins and the occasional bugfix."
-msgstr "Denne ustabile udviklingsudgivelse byder på den komplette portning til Gtk+3-værktøjskittet, forbedringer til brugerfladen (mere strømlinet menuer), bedre afspilningslister. Og opdateret grafisk materiale, understøttelse af GStreamer1.0, forbedrede udvidelsesmoduler og den sporadiske fejlrettelse."
+msgstr "Denne ustabile udviklingsudgivelse byder på den komplette portning til Gtk+3-værktøjskittet, forbedringer til brugerfladen (mere strømlinet menuer), bedre afspilningslister. Og opdateret grafisk materiale, understøttelse af GStreamer1.0, forbedrede plugins og den sporadiske fejlrettelse."
 
 #: ../src/common/parole-common.c:83
 msgid "Message"
@@ -754,7 +754,7 @@ msgstr "Parole medieafspilleren kan ikke starte."
 #: ../src/gst/parole-gst.c:1930
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
-msgstr "Kan ikke indlæse udvidelsesmodulet \"%s\", kontroller din GStreamer-installation."
+msgstr "Kan ikke indlæse pluginet \"%s\", kontroller din GStreamer-installation."
 
 #: ../src/gst/parole-gst.c:2490 ../src/gst/parole-gst.c:2494
 #, c-format
@@ -787,7 +787,7 @@ msgstr "Åbn en ny instans"
 
 #: ../src/main.c:229
 msgid "Do not load plugins"
-msgstr "Undlad at indlæse udvidelsesmoduler"
+msgstr "Undlad at indlæse plugins"
 
 #: ../src/main.c:231
 msgid "Set Audio-CD/VCD/DVD device path"
@@ -1232,7 +1232,7 @@ msgstr "Vietnamesisk"
 
 #: ../src/parole-plugins-manager.c:253
 msgid "Plugin failed to load"
-msgstr "Udvidelsesmodul kunne ikke indlæses"
+msgstr "Plugin kunne ikke indlæses"
 
 #: ../src/parole-plugins-manager.c:254
 msgid "Please check your installation"
@@ -1240,7 +1240,7 @@ msgstr "Kontroller venligst din installation"
 
 #: ../src/parole-plugins-manager.c:375
 msgid "No installed plugins found on this system"
-msgstr "Ingen installerede udvidelsesmoduler fundet på dette system"
+msgstr "Ingen installerede plugins fundet på dette system"
 
 #: ../src/parole-plugins-manager.c:376
 msgid "Please check your installation."
@@ -1301,7 +1301,7 @@ msgstr "_Åbn"
 
 #: ../src/plugins/tray/tray-provider.c:254
 msgid "Tray icon plugin"
-msgstr "Udvidelsesmodul til statusikon"
+msgstr "Plugin til statusikon"
 
 #: ../src/plugins/tray/tray-provider.c:264
 msgid "Always minimize to tray when window is closed"
