@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Nobuhiro Iwamatsu <iwamatsu@nigauri.org>, 2016-2017
+# 出口　憲 <kdeguchi@sz.tokoha-u.ac.jp>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-03 18:30+0200\n"
-"PO-Revision-Date: 2017-09-23 19:02+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"PO-Revision-Date: 2017-10-29 21:39+0000\n"
+"Last-Translator: 出口　憲 <kdeguchi@sz.tokoha-u.ac.jp>\n"
 "Language-Team: Japanese (http://www.transifex.com/xfce/xfce-apps/language/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -192,7 +193,7 @@ msgstr "バグの報告(_R)…"
 
 #: ../data/interfaces/parole.ui.h:42
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "キーボードショートカット(_K)"
 
 #: ../data/interfaces/parole.ui.h:43
 msgid "Display Parole user manual"
@@ -482,11 +483,11 @@ msgstr "<big><b>ネットワークの場所を開く</b></big>"
 
 #: ../data/interfaces/shortcuts.ui.h:2
 msgid "Open file"
-msgstr ""
+msgstr "ファイルを開く"
 
 #: ../data/interfaces/shortcuts.ui.h:3
 msgid "Open location"
-msgstr ""
+msgstr "場所を開く"
 
 #: ../data/interfaces/shortcuts.ui.h:4 ../src/plugins/tray/tray-provider.c:325
 msgid "Quit"
@@ -498,27 +499,27 @@ msgstr ""
 
 #: ../data/interfaces/shortcuts.ui.h:6
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "フルスクリーンの表示を切り替える"
 
 #: ../data/interfaces/shortcuts.ui.h:7
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "フルスクリーンを終了"
 
 #: ../data/interfaces/shortcuts.ui.h:8
 msgid "Toggle menubar"
-msgstr ""
+msgstr "メニューバーの表示を切り替える"
 
 #: ../data/interfaces/shortcuts.ui.h:9
 msgid "Volume"
-msgstr ""
+msgstr "音量"
 
 #: ../data/interfaces/shortcuts.ui.h:10
 msgid "Increase volume"
-msgstr ""
+msgstr "音量を上げる"
 
 #: ../data/interfaces/shortcuts.ui.h:11
 msgid "Decrease volume"
-msgstr ""
+msgstr "音量を下げる"
 
 #: ../data/interfaces/shortcuts.ui.h:12 ../src/parole-player.c:2383
 msgid "Mute"
@@ -526,19 +527,19 @@ msgstr "ミュート"
 
 #: ../data/interfaces/shortcuts.ui.h:14
 msgid "Toggle playlist"
-msgstr ""
+msgstr "プレイリストの表示を切り替える"
 
 #: ../data/interfaces/shortcuts.ui.h:15
 msgid "Select previous item"
-msgstr ""
+msgstr "前のアイテムを選択"
 
 #: ../data/interfaces/shortcuts.ui.h:16
 msgid "Select next item"
-msgstr ""
+msgstr "次のアイテムを選択"
 
 #: ../data/interfaces/shortcuts.ui.h:17
 msgid "Remove selected item"
-msgstr ""
+msgstr "選択したアイテムを削除"
 
 #: ../data/interfaces/shortcuts.ui.h:18
 msgid "Playback"
@@ -559,27 +560,27 @@ msgstr "次のトラック"
 
 #: ../data/interfaces/shortcuts.ui.h:22
 msgid "Go back 10 seconds"
-msgstr ""
+msgstr "10秒戻す"
 
 #: ../data/interfaces/shortcuts.ui.h:23
 msgid "Go forward 10 seconds"
-msgstr ""
+msgstr "10秒進む"
 
 #: ../data/interfaces/shortcuts.ui.h:24
 msgid "Go back 60 seconds"
-msgstr ""
+msgstr "60秒戻す"
 
 #: ../data/interfaces/shortcuts.ui.h:25
 msgid "Go forward 60 seconds"
-msgstr ""
+msgstr "60秒進む"
 
 #: ../data/interfaces/shortcuts.ui.h:26
 msgid "Go back 10 minutes"
-msgstr ""
+msgstr "10分戻す"
 
 #: ../data/interfaces/shortcuts.ui.h:27
 msgid "Go forward 10 minutes"
-msgstr ""
+msgstr "10分進む"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:2
 msgid "Play your media"
@@ -961,7 +962,7 @@ msgstr "GStreamer バックエンドエラー"
 
 #: ../src/parole-player.c:1794
 msgid "Unknown Song"
-msgstr ""
+msgstr "未知の楽曲"
 
 #: ../src/parole-player.c:1805 ../src/parole-player.c:1811
 #: ../src/parole-player.c:1819
