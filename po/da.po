@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-03 18:30+0200\n"
-"PO-Revision-Date: 2017-11-01 05:08+0000\n"
+"PO-Revision-Date: 2017-11-01 07:42+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -1301,11 +1301,11 @@ msgstr "_Åbn"
 
 #: ../src/plugins/tray/tray-provider.c:254
 msgid "Tray icon plugin"
-msgstr "Plugin til statusikon"
+msgstr "Plugin til bakkeikon"
 
 #: ../src/plugins/tray/tray-provider.c:264
 msgid "Always minimize to tray when window is closed"
-msgstr "Minimér altid til statusfelt når vindue er lukket"
+msgstr "Minimér altid til bakke når vindue er lukket"
 
 #: ../src/plugins/tray/tray-provider.c:307
 msgid "Are you sure you want to quit?"
@@ -1317,7 +1317,7 @@ msgstr "Parole kan minimeres til systembakken i stedet."
 
 #: ../src/plugins/tray/tray-provider.c:313
 msgid "Minimize to tray"
-msgstr "Minimér til statusfelt"
+msgstr "Minimér til bakke"
 
 #: ../src/plugins/tray/tray-provider.c:334
 msgid "Remember my choice"
@@ -1325,11 +1325,11 @@ msgstr "Husk mit valg"
 
 #: ../src/plugins/tray/system-tray.desktop.in.h:1
 msgid "Tray icon"
-msgstr "Statusikon"
+msgstr "Bakkeikon"
 
 #: ../src/plugins/tray/system-tray.desktop.in.h:2
 msgid "Show icon in the system tray"
-msgstr "Vis ikon i proceslinien"
+msgstr "Vis ikon i systembakken"
 
 #: ../src/plugins/mpris2/mpris2.desktop.in.h:1
 msgid "MPRIS2"
