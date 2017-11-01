@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-03 18:30+0200\n"
-"PO-Revision-Date: 2017-09-19 18:05+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"PO-Revision-Date: 2017-11-01 15:33+0000\n"
+"Last-Translator: Yarema aka Knedlyk <yupadmin@gmail.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/xfce/xfce-apps/language/uk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -194,7 +194,7 @@ msgstr "_Повідомити про ваду..."
 
 #: ../data/interfaces/parole.ui.h:42
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_Клавіатурні швидкі кнопки"
 
 #: ../data/interfaces/parole.ui.h:43
 msgid "Display Parole user manual"
@@ -484,11 +484,11 @@ msgstr "<big><b>Відкрити посилання в мережі</b></big>"
 
 #: ../data/interfaces/shortcuts.ui.h:2
 msgid "Open file"
-msgstr ""
+msgstr "Відкрити файл"
 
 #: ../data/interfaces/shortcuts.ui.h:3
 msgid "Open location"
-msgstr ""
+msgstr "Відкрити адресу"
 
 #: ../data/interfaces/shortcuts.ui.h:4 ../src/plugins/tray/tray-provider.c:325
 msgid "Quit"
@@ -496,31 +496,31 @@ msgstr "Вийти"
 
 #: ../data/interfaces/shortcuts.ui.h:5
 msgid "View"
-msgstr ""
+msgstr "Вигляд"
 
 #: ../data/interfaces/shortcuts.ui.h:6
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "Перемикання повноекранного режиму"
 
 #: ../data/interfaces/shortcuts.ui.h:7
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "Покинути повноекранний режим"
 
 #: ../data/interfaces/shortcuts.ui.h:8
 msgid "Toggle menubar"
-msgstr ""
+msgstr "Показати панель меню"
 
 #: ../data/interfaces/shortcuts.ui.h:9
 msgid "Volume"
-msgstr ""
+msgstr "Гучність"
 
 #: ../data/interfaces/shortcuts.ui.h:10
 msgid "Increase volume"
-msgstr ""
+msgstr "Збільшити гучність"
 
 #: ../data/interfaces/shortcuts.ui.h:11
 msgid "Decrease volume"
-msgstr ""
+msgstr "Зменшити гучність"
 
 #: ../data/interfaces/shortcuts.ui.h:12 ../src/parole-player.c:2383
 msgid "Mute"
@@ -528,23 +528,23 @@ msgstr "Без звуку"
 
 #: ../data/interfaces/shortcuts.ui.h:14
 msgid "Toggle playlist"
-msgstr ""
+msgstr "Показати список відтворення"
 
 #: ../data/interfaces/shortcuts.ui.h:15
 msgid "Select previous item"
-msgstr ""
+msgstr "Вибрати попередній елемент"
 
 #: ../data/interfaces/shortcuts.ui.h:16
 msgid "Select next item"
-msgstr ""
+msgstr "Вибрати наступний елемент"
 
 #: ../data/interfaces/shortcuts.ui.h:17
 msgid "Remove selected item"
-msgstr ""
+msgstr "Вилучити вибраний елемент"
 
 #: ../data/interfaces/shortcuts.ui.h:18
 msgid "Playback"
-msgstr ""
+msgstr "Відтворення"
 
 #: ../data/interfaces/shortcuts.ui.h:19
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:3
@@ -561,27 +561,27 @@ msgstr "Наступна доріжка"
 
 #: ../data/interfaces/shortcuts.ui.h:22
 msgid "Go back 10 seconds"
-msgstr ""
+msgstr "Вернутися назад на 10 секунд"
 
 #: ../data/interfaces/shortcuts.ui.h:23
 msgid "Go forward 10 seconds"
-msgstr ""
+msgstr "Перейти на 10 секунд вперед"
 
 #: ../data/interfaces/shortcuts.ui.h:24
 msgid "Go back 60 seconds"
-msgstr ""
+msgstr "Вернутися назад на 60 секунд"
 
 #: ../data/interfaces/shortcuts.ui.h:25
 msgid "Go forward 60 seconds"
-msgstr ""
+msgstr "Перейти на 60 секунд вперед"
 
 #: ../data/interfaces/shortcuts.ui.h:26
 msgid "Go back 10 minutes"
-msgstr ""
+msgstr "Вернутися назад на 10 хвилин"
 
 #: ../data/interfaces/shortcuts.ui.h:27
 msgid "Go forward 10 minutes"
-msgstr ""
+msgstr "Перейти на 10 хвилин вперед"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:2
 msgid "Play your media"
@@ -617,7 +617,7 @@ msgid ""
 "lighter and easier to improve. All URLs have been updated to HTTPS. A large "
 "number of bugs have been resolved and a new keyboard shortcuts helper has "
 "been introduced."
-msgstr ""
+msgstr "Цей розробницький випуск є великим очищенням коду, який робить Parole легшим і простішим в користуванні. Всі URL оновлені на HTTPS. Велика кількість вад було виправлено і додано нові швидкі клавіатурні скорочення."
 
 #: ../data/appdata/parole.appdata.xml.in.h:4
 msgid ""
@@ -779,7 +779,7 @@ msgid ""
 "\n"
 "Please report bugs to <https://bugzilla.xfce.org/>.\n"
 "\n"
-msgstr ""
+msgstr "\nПрогравач медіа Parole %s\n\nЧастина проекту Xfce Goodies\nhttps://goodies.xfce.org\n\nВипущено під ліцензією GNU GPL.\n\nБудь ласка, повідомляйте про вади на <https://bugzilla.xfce.org/>.\n\n"
 
 #: ../src/main.c:227
 msgid "Open a new instance"
@@ -1047,7 +1047,7 @@ msgstr "Неможливо відкрити типовий переглядач 
 #: ../src/parole-player.c:2787
 msgid ""
 "Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
-msgstr ""
+msgstr "Перейдіть до https://docs.xfce.org/apps/parole/bugs щоб повідомити про ваду."
 
 #: ../src/parole-player.c:2815
 msgid "Go"
