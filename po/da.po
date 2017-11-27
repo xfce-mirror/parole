@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-03 18:30+0200\n"
-"PO-Revision-Date: 2017-11-17 15:03+0000\n"
+"PO-Revision-Date: 2017-11-27 21:31+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -331,11 +331,11 @@ msgstr "Besøg websted"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "X Window System (X11/XShm/Xv)"
-msgstr "X Window System (X11/XShm/Xv)"
+msgstr "X-vinduessystem (X11/XShm/Xv)"
 
 #: ../data/interfaces/parole-settings.ui.h:2
 msgid "X Window System (No Xv)"
-msgstr "X Window System (ingen Xv)"
+msgstr "X-vinduessystem (ingen Xv)"
 
 #: ../data/interfaces/parole-settings.ui.h:3
 msgid "Parole Settings"
@@ -343,7 +343,7 @@ msgstr "Indstillinger til parole"
 
 #: ../data/interfaces/parole-settings.ui.h:4
 msgid "Configure your media player"
-msgstr "Konfigurér din medieafspiller"
+msgstr "Konfigurer din medieafspiller"
 
 #: ../data/interfaces/parole-settings.ui.h:5
 msgid "Disable screensaver when playing movies"
@@ -876,11 +876,11 @@ msgstr "Tilladelse nægtet"
 
 #: ../src/parole-medialist.c:653
 msgid "Error saving playlist file"
-msgstr "Fejl opstod ved gem af afspilningsliste"
+msgstr "Fejl ved gem af afspilningsliste"
 
 #: ../src/parole-medialist.c:663
 msgid "Unknown playlist format"
-msgstr "Ukendt format til spllleliste"
+msgstr "Ukendt format til spillleliste"
 
 #: ../src/parole-medialist.c:664
 msgid "Please choose a supported playlist format"
@@ -961,7 +961,7 @@ msgstr "Pause"
 
 #: ../src/parole-player.c:1713
 msgid "GStreamer backend error"
-msgstr "GStreamer bagende-fejl"
+msgstr "GStreamer-backend-fejl"
 
 #: ../src/parole-player.c:1794
 msgid "Unknown Song"
