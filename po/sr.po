@@ -6,13 +6,14 @@
 # Саша Петровић <salepetronije@gmail.com>, 2012
 # Саша Петровић <salepetronije@gmail.com>, 2012-2014,2017
 # Саша Петровић <salepetronije@gmail.com>, 2014-2015
+# Саша Петровић <salepetronije@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-03 18:30+0200\n"
-"PO-Revision-Date: 2017-09-19 18:05+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"PO-Revision-Date: 2017-12-23 21:33+0000\n"
+"Last-Translator: Саша Петровић <salepetronije@gmail.com>\n"
 "Language-Team: Serbian (http://www.transifex.com/xfce/xfce-apps/language/sr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -194,7 +195,7 @@ msgstr "_Пријави грешку..."
 
 #: ../data/interfaces/parole.ui.h:42
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "Пречице _дугмади"
 
 #: ../data/interfaces/parole.ui.h:43
 msgid "Display Parole user manual"
@@ -484,11 +485,11 @@ msgstr "<big><b>Отвори место на мрежи</b></big>"
 
 #: ../data/interfaces/shortcuts.ui.h:2
 msgid "Open file"
-msgstr ""
+msgstr "Отвори датотеку"
 
 #: ../data/interfaces/shortcuts.ui.h:3
 msgid "Open location"
-msgstr ""
+msgstr "Отвори место"
 
 #: ../data/interfaces/shortcuts.ui.h:4 ../src/plugins/tray/tray-provider.c:325
 msgid "Quit"
@@ -496,55 +497,55 @@ msgstr "Напусти"
 
 #: ../data/interfaces/shortcuts.ui.h:5
 msgid "View"
-msgstr ""
+msgstr "Преглед"
 
 #: ../data/interfaces/shortcuts.ui.h:6
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "Прекидач целог екрана"
 
 #: ../data/interfaces/shortcuts.ui.h:7
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "Прекини цео екран"
 
 #: ../data/interfaces/shortcuts.ui.h:8
 msgid "Toggle menubar"
-msgstr ""
+msgstr "Прекидач траке изборника"
 
 #: ../data/interfaces/shortcuts.ui.h:9
 msgid "Volume"
-msgstr ""
+msgstr "Гласноћа"
 
 #: ../data/interfaces/shortcuts.ui.h:10
 msgid "Increase volume"
-msgstr ""
+msgstr "Појачај звук"
 
 #: ../data/interfaces/shortcuts.ui.h:11
 msgid "Decrease volume"
-msgstr ""
+msgstr "Смањи звук"
 
 #: ../data/interfaces/shortcuts.ui.h:12 ../src/parole-player.c:2383
 msgid "Mute"
-msgstr "Тише"
+msgstr "Умукни"
 
 #: ../data/interfaces/shortcuts.ui.h:14
 msgid "Toggle playlist"
-msgstr ""
+msgstr "Прекидач списка за извођење"
 
 #: ../data/interfaces/shortcuts.ui.h:15
 msgid "Select previous item"
-msgstr ""
+msgstr "Изабери претходну ставку"
 
 #: ../data/interfaces/shortcuts.ui.h:16
 msgid "Select next item"
-msgstr ""
+msgstr "Изабери наредну ставку"
 
 #: ../data/interfaces/shortcuts.ui.h:17
 msgid "Remove selected item"
-msgstr ""
+msgstr "Уклони изабрану ставку"
 
 #: ../data/interfaces/shortcuts.ui.h:18
 msgid "Playback"
-msgstr ""
+msgstr "Извођење"
 
 #: ../data/interfaces/shortcuts.ui.h:19
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:3
@@ -561,27 +562,27 @@ msgstr "Следећа ставка"
 
 #: ../data/interfaces/shortcuts.ui.h:22
 msgid "Go back 10 seconds"
-msgstr ""
+msgstr "Иди назад 10 секунди"
 
 #: ../data/interfaces/shortcuts.ui.h:23
 msgid "Go forward 10 seconds"
-msgstr ""
+msgstr "Врати 10 секунди"
 
 #: ../data/interfaces/shortcuts.ui.h:24
 msgid "Go back 60 seconds"
-msgstr ""
+msgstr "Врати 60 секунди"
 
 #: ../data/interfaces/shortcuts.ui.h:25
 msgid "Go forward 60 seconds"
-msgstr ""
+msgstr "Прескочи 60 секунди"
 
 #: ../data/interfaces/shortcuts.ui.h:26
 msgid "Go back 10 minutes"
-msgstr ""
+msgstr "Врати 10 минута"
 
 #: ../data/interfaces/shortcuts.ui.h:27
 msgid "Go forward 10 minutes"
-msgstr ""
+msgstr "Прескочи 10 минута"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:2
 msgid "Play your media"
@@ -779,7 +780,7 @@ msgid ""
 "\n"
 "Please report bugs to <https://bugzilla.xfce.org/>.\n"
 "\n"
-msgstr ""
+msgstr "\nИзвођач садржаја Часноречац %s\n\nДео добрица ИксФЦЕ-а\nhttps://goodies.xfce.org\n\nПод ГНУ ОЈЛ.\n\nМолим, грешке пријављујте на <https://bugzilla.xfce.org/>.\n\n"
 
 #: ../src/main.c:227
 msgid "Open a new instance"
@@ -1047,7 +1048,7 @@ msgstr "Нисам успео да покренем подразумеваног
 #: ../src/parole-player.c:2787
 msgid ""
 "Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
-msgstr ""
+msgstr "Идите на https://docs.xfce.org/apps/parole/bugs ради пријаве грешака, молим."
 
 #: ../src/parole-player.c:2815
 msgid "Go"
@@ -1136,15 +1137,15 @@ msgstr "Хрватски"
 #: ../src/parole-subtitle-encoding.c:219 ../src/parole-subtitle-encoding.c:221
 #: ../src/parole-subtitle-encoding.c:223 ../src/parole-subtitle-encoding.c:225
 msgid "Cyrillic"
-msgstr "Ћирилични"
+msgstr "Азбучни"
 
 #: ../src/parole-subtitle-encoding.c:228
 msgid "Cyrillic/Russian"
-msgstr "Ћирилични/руски"
+msgstr "Азбучни/руски"
 
 #: ../src/parole-subtitle-encoding.c:231 ../src/parole-subtitle-encoding.c:233
 msgid "Cyrillic/Ukrainian"
-msgstr "Ћирилични/украјински"
+msgstr "Азбучни/украјински"
 
 #: ../src/parole-subtitle-encoding.c:236
 msgid "Georgian"
