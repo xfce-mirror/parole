@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Ammuu5, 2017
+# Ammuu5, 2017-2018
 # Jiri Grönroos <jiri.gronroos@iki.fi>, 2013
 # Juhani Numminen <juhaninumminen0@gmail.com>, 2013
 # Pasi Lallinaho <pasi@shimmerproject.org>, 2014-2015
@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-03 18:30+0200\n"
-"PO-Revision-Date: 2017-12-19 06:08+0000\n"
+"PO-Revision-Date: 2018-01-06 23:54+0000\n"
 "Last-Translator: Ammuu5\n"
 "Language-Team: Finnish (http://www.transifex.com/xfce/xfce-apps/language/fi/)\n"
 "MIME-Version: 1.0\n"
@@ -236,7 +236,7 @@ msgstr "Puskuroidaan (0 %)"
 
 #: ../data/interfaces/parole.ui.h:52
 msgid "/"
-msgstr ""
+msgstr "/"
 
 #: ../data/interfaces/mediachooser.ui.h:1
 msgid "Open Media Files"
@@ -485,11 +485,11 @@ msgstr "<big><b>Avaa verkkosijainti</b></big>"
 
 #: ../data/interfaces/shortcuts.ui.h:2
 msgid "Open file"
-msgstr ""
+msgstr "Avaa tiedosto"
 
 #: ../data/interfaces/shortcuts.ui.h:3
 msgid "Open location"
-msgstr ""
+msgstr "Avaa sijainti"
 
 #: ../data/interfaces/shortcuts.ui.h:4 ../src/plugins/tray/tray-provider.c:325
 msgid "Quit"
@@ -513,15 +513,15 @@ msgstr ""
 
 #: ../data/interfaces/shortcuts.ui.h:9
 msgid "Volume"
-msgstr ""
+msgstr "Äänenvoimakkuus"
 
 #: ../data/interfaces/shortcuts.ui.h:10
 msgid "Increase volume"
-msgstr ""
+msgstr "Lisää äänenvoimakkuutta"
 
 #: ../data/interfaces/shortcuts.ui.h:11
 msgid "Decrease volume"
-msgstr ""
+msgstr "Vähennä äänenvoimakkuutta"
 
 #: ../data/interfaces/shortcuts.ui.h:12 ../src/parole-player.c:2383
 msgid "Mute"
@@ -545,7 +545,7 @@ msgstr ""
 
 #: ../data/interfaces/shortcuts.ui.h:18
 msgid "Playback"
-msgstr ""
+msgstr "Toisto"
 
 #: ../data/interfaces/shortcuts.ui.h:19
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:3
@@ -562,27 +562,27 @@ msgstr "Seuraava kappale"
 
 #: ../data/interfaces/shortcuts.ui.h:22
 msgid "Go back 10 seconds"
-msgstr ""
+msgstr "Siirry taaksepäin 10 sekuntia"
 
 #: ../data/interfaces/shortcuts.ui.h:23
 msgid "Go forward 10 seconds"
-msgstr ""
+msgstr "Siirry eteenpäin 10 sekuntia"
 
 #: ../data/interfaces/shortcuts.ui.h:24
 msgid "Go back 60 seconds"
-msgstr ""
+msgstr "Siirry taaksepäin 60 sekuntia"
 
 #: ../data/interfaces/shortcuts.ui.h:25
 msgid "Go forward 60 seconds"
-msgstr ""
+msgstr "Siirry eteenpäin 60 sekuntia"
 
 #: ../data/interfaces/shortcuts.ui.h:26
 msgid "Go back 10 minutes"
-msgstr ""
+msgstr "Siirry taaksepäin 10 minuuttia"
 
 #: ../data/interfaces/shortcuts.ui.h:27
 msgid "Go forward 10 minutes"
-msgstr ""
+msgstr "Siirry eteenpäin 10 minuuttia"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:2
 msgid "Play your media"
@@ -780,7 +780,7 @@ msgid ""
 "\n"
 "Please report bugs to <https://bugzilla.xfce.org/>.\n"
 "\n"
-msgstr ""
+msgstr "\nParole -mediasoitin %s\n\nOsa Xfce Goodies -projektia\nhttps://goodies.xfce.org\n\nLisensöity GNU GPL -lisenssillä.\n\nRaportoi bugit osoitteessa <https://bugzilla.xfce.org/>.\n\n"
 
 #: ../src/main.c:227
 msgid "Open a new instance"
@@ -966,7 +966,7 @@ msgstr "GStreamer-taustaosan virhe"
 
 #: ../src/parole-player.c:1794
 msgid "Unknown Song"
-msgstr ""
+msgstr "Tuntematon kappale"
 
 #: ../src/parole-player.c:1805 ../src/parole-player.c:1811
 #: ../src/parole-player.c:1819
@@ -1033,7 +1033,7 @@ msgstr "Näytä valikkopalkki"
 
 #: ../src/parole-player.c:2167
 msgid "Mini Mode"
-msgstr ""
+msgstr "Mini-tila"
 
 #: ../src/parole-player.c:2386
 msgid "Unmute"
@@ -1046,7 +1046,7 @@ msgstr "Oletusselaimen avaaminen epäonnistui"
 #: ../src/parole-player.c:2787
 msgid ""
 "Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
-msgstr ""
+msgstr "Ilmoita vioista ja ongelmista osoitteeseen https://docs.xfce.org/apps/parole/bugs."
 
 #: ../src/parole-player.c:2815
 msgid "Go"
