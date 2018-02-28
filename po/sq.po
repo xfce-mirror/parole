@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-03 18:30+0200\n"
-"PO-Revision-Date: 2018-02-28 00:52+0000\n"
+"PO-Revision-Date: 2018-02-28 16:28+0000\n"
 "Last-Translator: Besnik <besnik@programeshqip.org>\n"
 "Language-Team: Albanian (http://www.transifex.com/xfce/xfce-apps/language/sq/)\n"
 "MIME-Version: 1.0\n"
@@ -39,11 +39,11 @@ msgstr "Hapni _Vendndodhje…"
 
 #: ../data/interfaces/parole.ui.h:5
 msgid "Open _Recent"
-msgstr ""
+msgstr "Hap _Së Fundi"
 
 #: ../data/interfaces/parole.ui.h:6
 msgid "_Save Playlist…"
-msgstr ""
+msgstr "_Ruani Luajlistë…"
 
 #: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:108
 #: ../src/parole-disc.c:143
@@ -57,20 +57,20 @@ msgstr "_Dil"
 
 #: ../data/interfaces/parole.ui.h:9
 msgid "_Playback"
-msgstr ""
+msgstr "_Luajtje"
 
 #: ../data/interfaces/parole.ui.h:10
 msgid "_Repeat"
-msgstr ""
+msgstr "_Përsërite"
 
 #: ../data/interfaces/parole.ui.h:11
 msgid "_Shuffle"
-msgstr ""
+msgstr "_Përzieji"
 
 #. Create dialog
 #: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2811
 msgid "Go to position"
-msgstr ""
+msgstr "Kalo te pozicioni"
 
 #: ../data/interfaces/parole.ui.h:13
 msgid "_DVD"
@@ -78,19 +78,19 @@ msgstr "_DVD"
 
 #: ../data/interfaces/parole.ui.h:14
 msgid "_DVD Menu"
-msgstr ""
+msgstr "Menu _DVD-je"
 
 #: ../data/interfaces/parole.ui.h:15
 msgid "_Title Menu"
-msgstr ""
+msgstr "Menu _Titujsh"
 
 #: ../data/interfaces/parole.ui.h:16
 msgid "_Audio Menu"
-msgstr ""
+msgstr "Menu _Audio"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "A_ngle Menu"
-msgstr ""
+msgstr "Menu _Këndi"
 
 #: ../data/interfaces/parole.ui.h:18
 msgid "_Chapters"
@@ -98,7 +98,7 @@ msgstr "_Kapituj"
 
 #: ../data/interfaces/parole.ui.h:19
 msgid "_Chapter Menu"
-msgstr ""
+msgstr "Menu _Kapitujsh"
 
 #: ../data/interfaces/parole.ui.h:20
 msgid "_Audio"
@@ -114,15 +114,15 @@ msgstr "E zbrazët"
 
 #: ../data/interfaces/parole.ui.h:23
 msgid "Volume _Up"
-msgstr "umin"
+msgstr "_Ngrije Volumin"
 
 #: ../data/interfaces/parole.ui.h:24
 msgid "Volume _Down"
-msgstr ""
+msgstr "_Ule Volumin"
 
 #: ../data/interfaces/parole.ui.h:25
 msgid "_Mute"
-msgstr ""
+msgstr "P_a Zë"
 
 #: ../data/interfaces/parole.ui.h:26
 msgid "_Video"
@@ -135,7 +135,7 @@ msgstr "_Sa krejt ekrani"
 
 #: ../data/interfaces/parole.ui.h:28
 msgid "_Aspect Ratio"
-msgstr ""
+msgstr "Përpj_esëtim"
 
 #: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:730
 msgid "None"
@@ -207,19 +207,19 @@ msgstr "_Mbi"
 
 #: ../data/interfaces/parole.ui.h:46
 msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
-msgstr ""
+msgstr "<span color='#F4F4F4'><b><big>Këngë e Panjohur</big></b></span>"
 
 #: ../data/interfaces/parole.ui.h:47
 msgid ""
 "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
 "Album</span></big>"
-msgstr ""
+msgstr "<big><span color='#BBBBBB'><i>në</i></span> <span color='#F4F4F4'>Album të Panjohur</span></big>"
 
 #: ../data/interfaces/parole.ui.h:48
 msgid ""
 "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
 "Artist</span></big>"
-msgstr ""
+msgstr "<big><span color='#BBBBBB'><i>nga</i></span> <span color='#F4F4F4'>Artist i Panjohur</span></big>"
 
 #: ../data/interfaces/parole.ui.h:49
 msgid "0:00"
@@ -232,7 +232,7 @@ msgstr ""
 
 #: ../data/interfaces/parole.ui.h:52
 msgid "/"
-msgstr ""
+msgstr "/"
 
 #: ../data/interfaces/mediachooser.ui.h:1
 msgid "Open Media Files"
@@ -247,7 +247,7 @@ msgstr "Luajlistë"
 
 #: ../data/interfaces/playlist.ui.h:2
 msgid "Disc Playlist"
-msgstr ""
+msgstr "Luajlistë Disku"
 
 #: ../data/interfaces/playlist.ui.h:3
 msgid "Add to playlist…"
@@ -291,24 +291,24 @@ msgstr "Zbrite"
 
 #: ../data/interfaces/playlist.ui.h:13
 msgid "Replace playlist when opening files"
-msgstr ""
+msgstr "Zëvendëso luajlistën kur hapen kartela"
 
 #: ../data/interfaces/playlist.ui.h:14
 msgid "Play opened files"
-msgstr "Luaj kartela të hapura"
+msgstr "Luaji kartela të hapura"
 
 #: ../data/interfaces/playlist.ui.h:15
 #: ../data/interfaces/parole-settings.ui.h:25
 msgid "Remember playlist"
-msgstr ""
+msgstr "Mbani mend luajlistë"
 
 #: ../data/interfaces/plugins.ui.h:1
 msgid "Parole Plugins"
-msgstr ""
+msgstr "Shtojca Parole-i"
 
 #: ../data/interfaces/plugins.ui.h:2
 msgid "Extend your media player"
-msgstr ""
+msgstr "Zgjeroni lojtësin tuaj të mediave"
 
 #: ../data/interfaces/plugins.ui.h:3
 msgid "Plugin"
@@ -328,11 +328,11 @@ msgstr "Vizitoni Sajtin"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "X Window System (X11/XShm/Xv)"
-msgstr ""
+msgstr "X Window System (X11/XShm/Xv)"
 
 #: ../data/interfaces/parole-settings.ui.h:2
 msgid "X Window System (No Xv)"
-msgstr ""
+msgstr "X Window System (Pa Xv)"
 
 #: ../data/interfaces/parole-settings.ui.h:3
 msgid "Parole Settings"
@@ -344,27 +344,27 @@ msgstr "Formësoni lojtësin tuaj të mediave"
 
 #: ../data/interfaces/parole-settings.ui.h:5
 msgid "Disable screensaver when playing movies"
-msgstr ""
+msgstr "Çaktivizo kursyes ekrani kur luhen filma"
 
 #: ../data/interfaces/parole-settings.ui.h:6
 msgid "<b>Screensaver</b>"
-msgstr ""
+msgstr "<b>Kursyes ekrani</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:7
 msgid "Show visual effects when an audio file is played"
-msgstr ""
+msgstr "Shfaq efekte pamore kur luhet një kartelë audio"
 
 #: ../data/interfaces/parole-settings.ui.h:8
 msgid "Visualization type:"
-msgstr ""
+msgstr "Lloj vizualizimi:"
 
 #: ../data/interfaces/parole-settings.ui.h:9
 msgid "<b>Audio Visualization</b>"
-msgstr ""
+msgstr "<b>Vizualizim Audio</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:10
 msgid "Enable keyboard multimedia keys"
-msgstr ""
+msgstr "Aktivizo taste multimedia në tastierë"
 
 #: ../data/interfaces/parole-settings.ui.h:11
 msgid "<b>Keyboard</b>"
@@ -377,11 +377,11 @@ msgstr "Të përgjithshme"
 
 #: ../data/interfaces/parole-settings.ui.h:13
 msgid "Please restart Parole for this change to take effect."
-msgstr ""
+msgstr "Ju lutemi, rinisni Parole-in, që të hyjë në fuqi ky ndryshim."
 
 #: ../data/interfaces/parole-settings.ui.h:14
 msgid "<b>Video Output</b>"
-msgstr ""
+msgstr "<b>Video Në Dalje</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:15
 msgid "Brightness:"
@@ -405,7 +405,7 @@ msgstr "Riktheje te parazgjedhjet"
 
 #: ../data/interfaces/parole-settings.ui.h:20
 msgid "<b>Color Balance</b>"
-msgstr ""
+msgstr "<b>Balancim Ngjyrash</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:21
 msgid "Display"
@@ -413,23 +413,23 @@ msgstr "Ekran"
 
 #: ../data/interfaces/parole-settings.ui.h:22
 msgid "Always replace playlist with opened files"
-msgstr ""
+msgstr "Zëvendëso përherë luajlistën me kartela të hapura"
 
 #: ../data/interfaces/parole-settings.ui.h:23
 msgid "Check and remove duplicate media entries"
-msgstr ""
+msgstr "Kontrollo dhe hiq zëra media të përsëdytur"
 
 #: ../data/interfaces/parole-settings.ui.h:24
 msgid "Start playing opened files"
-msgstr ""
+msgstr "Fillo luajtjen e kartelave të hapura"
 
 #: ../data/interfaces/parole-settings.ui.h:26
 msgid "<b>Playlist Settings</b>"
-msgstr ""
+msgstr "<b>Rregullime Luajliste</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:28
 msgid "Automatically show subtitles when playing movie file"
-msgstr ""
+msgstr "Shfaq vetvetiu titra kur luhet një kartelë filmi"
 
 #: ../data/interfaces/parole-settings.ui.h:29
 msgid "Font:"
@@ -449,11 +449,11 @@ msgstr "Titra"
 
 #: ../data/interfaces/save-playlist.ui.h:1
 msgid "By Extension"
-msgstr ""
+msgstr "Sipas Zgjatimesh"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "Save Playlist as…"
-msgstr ""
+msgstr "Ruajeni Luajlistën si…"
 
 #: ../data/interfaces/save-playlist.ui.h:3
 msgid "File Type"
@@ -461,11 +461,11 @@ msgstr "Lloj Kartele"
 
 #: ../data/interfaces/save-playlist.ui.h:4
 msgid "Extension"
-msgstr "Zgjerim"
+msgstr "Zgjatim"
 
 #: ../data/interfaces/save-playlist.ui.h:5
 msgid "Select File Types (By Extension)"
-msgstr ""
+msgstr "Përzgjidhni Lloj Kartele (Sipas Zgjatimi):"
 
 #: ../data/interfaces/open-location.ui.h:1
 msgid "Open Network Location"
@@ -477,7 +477,7 @@ msgstr "Pastro Historikun"
 
 #: ../data/interfaces/open-location.ui.h:3
 msgid "<big><b>Open Network Location</b></big>"
-msgstr ""
+msgstr "<big><b>Hap Vendndodhje Rrjeti</b></big>"
 
 #: ../data/interfaces/shortcuts.ui.h:2
 msgid "Open file"
@@ -497,15 +497,15 @@ msgstr "Shiheni"
 
 #: ../data/interfaces/shortcuts.ui.h:6
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "Aktivizo/çaktivizo mënyrën ekran i plotë"
 
 #: ../data/interfaces/shortcuts.ui.h:7
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "Dil nga mënyra krejt ekrani"
 
 #: ../data/interfaces/shortcuts.ui.h:8
 msgid "Toggle menubar"
-msgstr ""
+msgstr "Shfaq/fshih shtyllë menush"
 
 #: ../data/interfaces/shortcuts.ui.h:9
 msgid "Volume"
@@ -513,11 +513,11 @@ msgstr "Volum"
 
 #: ../data/interfaces/shortcuts.ui.h:10
 msgid "Increase volume"
-msgstr "Ngrini volumin"
+msgstr "Ngriji volumin"
 
 #: ../data/interfaces/shortcuts.ui.h:11
 msgid "Decrease volume"
-msgstr "Ulni volumin"
+msgstr "Uli volumin"
 
 #: ../data/interfaces/shortcuts.ui.h:12 ../src/parole-player.c:2383
 msgid "Mute"
@@ -525,23 +525,23 @@ msgstr "Pa Zë"
 
 #: ../data/interfaces/shortcuts.ui.h:14
 msgid "Toggle playlist"
-msgstr ""
+msgstr "Shfaq/fshih luajlistë"
 
 #: ../data/interfaces/shortcuts.ui.h:15
 msgid "Select previous item"
-msgstr ""
+msgstr "Përzgjidhni objektin e mëparshëm"
 
 #: ../data/interfaces/shortcuts.ui.h:16
 msgid "Select next item"
-msgstr ""
+msgstr "Përzgjidhni objektin pasues"
 
 #: ../data/interfaces/shortcuts.ui.h:17
 msgid "Remove selected item"
-msgstr ""
+msgstr "Hiqe objektin e përzgjedhur"
 
 #: ../data/interfaces/shortcuts.ui.h:18
 msgid "Playback"
-msgstr ""
+msgstr "Luajtje"
 
 #: ../data/interfaces/shortcuts.ui.h:19
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:3
@@ -582,7 +582,7 @@ msgstr "Shko para 10 minuta"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:2
 msgid "Play your media"
-msgstr ""
+msgstr "Luani media tuajat"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:4
 #: ../src/parole-player.c:3340 ../src/plugins/notify/notify-provider.c:190
@@ -592,21 +592,21 @@ msgstr "Pjesa e Mëparshme"
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:5
 #: ../src/parole-player.c:3358 ../src/plugins/notify/notify-provider.c:202
 msgid "Next Track"
-msgstr "Pjesa P"
+msgstr "Pjesa Pasuese"
 
 #: ../data/appdata/parole.appdata.xml.in.h:1
 msgid ""
 "Parole is a modern simple media player based on the GStreamer framework and "
 "written to fit well in the Xfce desktop. It is designed with simplicity, "
 "speed and resource usage in mind."
-msgstr ""
+msgstr "Parole është një lojtës modern, i thjeshtë mediash, i bazuar në platformën GStreamer dhe shkruar që të puqet mirë me desktopin Xfce. Është konceptuar duke pasur në mendje thjeshtësinë, shpejtësinë dhe shfrytëzimin e efektshëm të burimeve."
 
 #: ../data/appdata/parole.appdata.xml.in.h:2
 msgid ""
 "Parole features playback of local media files, including video with "
 "subtitles support, Audio CDs, DVDs, and live streams. Parole is also "
 "extensible via plugins."
-msgstr ""
+msgstr "Parole përmban luajtje kartelash media vendore, përfshi video me titra, CD audio, DVD, dhe rrjedha të drejtpërdrejta. Parole gjithashtu mund të thellohet përmes shtojcash."
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid ""
@@ -614,7 +614,7 @@ msgid ""
 "lighter and easier to improve. All URLs have been updated to HTTPS. A large "
 "number of bugs have been resolved and a new keyboard shortcuts helper has "
 "been introduced."
-msgstr ""
+msgstr "Kjo hedhje në qarkullim zhvillim përfaqëson një pastrim të madh të bazës së kodit, duke e bërë Parole-in më të lehtë dhe përmirësimin e tij më të kollajtë. Krejt URL-të janë përditësuar si HTTPS. Një numër i madh të metash janë zgjidhur dhe janë sjellë për herë të parë shkurtore të reja tastiere."
 
 #: ../data/appdata/parole.appdata.xml.in.h:4
 msgid ""
@@ -622,31 +622,31 @@ msgid ""
 "present in the documentation. Tags are now processed on files delivered over"
 " HTTP/S. The clutter video backend is disabled for GTK+ 3.22 and newer due "
 "to significant API changes."
-msgstr ""
+msgstr "Kjo hedhje në qarkullim zhvillim ndreq disa të meta, gabime shkrimi, dhe hollësi historike të pranishme në dokumentim. Tashmë përpunohen etiketa në kartela të dërguara përmes HTTP/S. Mekanizmi <em>clutter video</em> është çaktivizuar për GTK+ 3.22 dhe versione më të rinj, për shkak ndryshime thelbësore të API-t."
 
 #: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
 "This development release adds a new mini mode and the ability to play or "
 "replay content by clicking the circle icons. Theming is simplified and "
 "filenames are displayed when no ID3 tags are found."
-msgstr ""
+msgstr "Kjo hedhje në qarkullim zhvillim shton një mënyrë mini dhe aftësinë për të luajtur ose riluajtur lëndë duke klikuar mbi ikona rreth. Përshtatja grafike është thjeshtësuar dhe shfaqen emra kartelash kur s’gjenden etiketa ID3."
 
 #: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
 "This release improves the build process and includes several bug fixes. This"
 " new stable release is a recommended upgrade for all users."
-msgstr ""
+msgstr "Kjo hedhje në qarkullim përmirëson procesin e montimit dhe përfshin disa ndreqje të metash. Kjo hedhje e re, e qëndrueshme, në qarkullim është një përmirësim i këshilluar për krejt përdoruesit."
 
 #: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
-msgstr ""
+msgstr "Kjo hedhje e paqëndrueshme zhvillim në qarkullim shton mekanizmin e ri <em>clutter</em> dhe pastron simbole Gtk3 të nxjerrë jashtë përdorimit. Shton edhe veçorinë \"shko te pozicion\" dhe janë trajtuar disa të meta."
 
 #: ../data/appdata/parole.appdata.xml.in.h:8
 msgid "This release fixes a problem with detecting DVD drive locations."
-msgstr ""
+msgstr "Kjo hedhje në qarkullim ndreq një problem me pikasjen e vendndodhjeve të pajisjeve DVD."
 
 #: ../data/appdata/parole.appdata.xml.in.h:9
 msgid ""
@@ -655,20 +655,20 @@ msgid ""
 "playlists. Furthermore existing plugins have been improved and a new one has"
 " been added (MPRIS2). Most of the artwork has been updated for this release "
 "and we use the GStreamer1.0 framework now by default."
-msgstr ""
+msgstr "Kjo hedhje në qarkullim përmban tranzicionin e plotë në grupin e mjeteve Gtk+3, përmirësime në ndërfaqen e përdoruesit (menu më të hajthme), luajlista të përmirësuara. Më tej, shtojca ekzistuese janë përmirësuar dhe janë është shtuar një e re (MPRIS2). Shumica e anës grafike është përditësuar për këtë hedhje në qarkullim dhe tani, si parazgjedhje, përdorim platformën GStreamer1.0."
 
 #: ../data/appdata/parole.appdata.xml.in.h:10
 msgid ""
 "This unstable development release features mostly bugfixes and introduces "
 "the new MPRIS2 plugin."
-msgstr ""
+msgstr "Kjo hedhje e paqëndrueshme zhvillim në qarkullim përmban kryesisht ndreqje të metash dhe sjell për herë të parë shtojcën e re MPRIS2."
 
 #: ../data/appdata/parole.appdata.xml.in.h:11
 msgid ""
 "This is a bugfix release which fixes the loading of playlists with relative "
 "paths, improves the file-filters for audio/video mimetypes and fixes the "
 "\"Remove duplicates\" functionality."
-msgstr ""
+msgstr "Kjo është një hedhje e paqëndrueshme zhvillim në qarkullim që ndreq ngarkimin e luajlistave me shtigje relative, përmirëson filtra kartelash për lloje MIME audio/video dhe ndreq funksionin \"Hiq përsëdytje\"."
 
 #: ../data/appdata/parole.appdata.xml.in.h:12
 msgid ""
@@ -676,7 +676,7 @@ msgid ""
 "toolkit, improvements in the user-interface (more streamlined menus), better"
 " playlists. It also brings updated artwork, GStreamer1.0 support, improved "
 "plugins and the occasional bugfix."
-msgstr ""
+msgstr "Kjo hedhje e paqëndrueshme zhvillim në qarkullim përmban kalimin e plotë në grupin e mjeteve Gtk+3, përmirësime në ndërfaqen e përdoruesit (menu më të hajthme), luajlista. Sjell gjithashtu anë grafike të përditësuar, mbulim për GStreamer1.0, shtojca të përmirësuara dhe ndreqjet e rastit të të metave."
 
 #: ../src/common/parole-common.c:83
 msgid "Message"
@@ -689,7 +689,7 @@ msgstr "Gabim"
 #: ../src/gst/parole-gst.c:1094 ../src/parole-medialist.c:376
 #, c-format
 msgid "Track %i"
-msgstr "Pjesë %i"
+msgstr "Pjesa %i"
 
 #: ../src/gst/parole-gst.c:1097
 msgid "Audio CD"
@@ -716,20 +716,20 @@ msgstr "OK"
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
-msgstr ""
+msgstr "Parole lyp <b>%s</b> që të luhet kjo kartelë.\nMund të instalohet automatikisht."
 
 #: ../src/gst/parole-gst.c:1323
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
-msgstr ""
+msgstr "Parole lyp <b>%s</b> që të luhet kjo kartelë."
 
 #: ../src/gst/parole-gst.c:1692
 msgid "The stream is taking too much time to load"
-msgstr ""
+msgstr "Rrjedha po e zgjat si shumë ngarkimin"
 
 #: ../src/gst/parole-gst.c:1694
 msgid "Do you want to continue loading or stop?"
-msgstr ""
+msgstr "Doni vërtet të vazhdohet ngarkimi apo të ndalet?"
 
 #: ../src/gst/parole-gst.c:1695
 msgid "Stop"
@@ -745,13 +745,13 @@ msgstr "Gabim GStreamer-i"
 
 #: ../src/gst/parole-gst.c:1861
 msgid "Parole Media Player cannot start."
-msgstr ""
+msgstr "Lojtësi i Mediave Parole s’niset dot."
 
 #: ../src/gst/parole-gst.c:1886 ../src/gst/parole-gst.c:1901
 #: ../src/gst/parole-gst.c:1930
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
-msgstr ""
+msgstr "S’arrihet të ngarkohet shtojca \"%s\", kontrolloni instalimin tuaj të GStreamer-it."
 
 #: ../src/gst/parole-gst.c:2490 ../src/gst/parole-gst.c:2494
 #, c-format
@@ -776,7 +776,7 @@ msgid ""
 "\n"
 "Please report bugs to <https://bugzilla.xfce.org/>.\n"
 "\n"
-msgstr ""
+msgstr "\nLuajtësi Media Parole %s\n\nPjesë e Projektit Xfce Goodies\nhttps://goodies.xfce.org\n\nLicencuar sipas GNU GPL.\n\nJu lutemi, njoftoni të meta te <https://bugzilla.xfce.org/>.\n\n"
 
 #: ../src/main.c:227
 msgid "Open a new instance"
@@ -788,61 +788,61 @@ msgstr "Mos ngarko shtojca"
 
 #: ../src/main.c:231
 msgid "Set Audio-CD/VCD/DVD device path"
-msgstr ""
+msgstr "Caktoni shteg pajisjeje Audio-CD/VCD/DVD"
 
 #: ../src/main.c:233
 msgid "Start in embedded mode"
-msgstr ""
+msgstr "Fillo nën mënyrën i trupëzuar"
 
 #: ../src/main.c:235
 msgid "Start in fullscreen mode"
-msgstr ""
+msgstr "Fillo nën mënyrën sa krejt ekrani"
 
 #: ../src/main.c:237
 msgid "Play or pause if already playing"
-msgstr ""
+msgstr "Luaje ose pushoje, nëse po luhet"
 
 #: ../src/main.c:243
 msgid "Raise volume"
-msgstr "Ngrini volumin"
+msgstr "Ngriji volumin"
 
 #: ../src/main.c:245
 msgid "Lower volume"
-msgstr "Ulni volumin"
+msgstr "Uli volumin"
 
 #: ../src/main.c:247
 msgid "Mute volume"
-msgstr ""
+msgstr "Heshtoje"
 
 #: ../src/main.c:249
 msgid "Unmute (restore) volume"
-msgstr ""
+msgstr "Hiqja heshtimin (riktheji volumin)"
 
 #: ../src/main.c:251
 msgid "Add files to playlist"
-msgstr ""
+msgstr "Shtoni kartela në luajlistë"
 
 #: ../src/main.c:253
 msgid "Print version information and exit"
-msgstr ""
+msgstr "Shtyp të dhëna versioni dhe dil"
 
 #: ../src/main.c:257
 msgid "Media to play"
-msgstr ""
+msgstr "Media për luajtje"
 
 #: ../src/main.c:279
 msgid "[FILES...] - Play movies and songs"
-msgstr ""
+msgstr "[KARTELA…] - Luani filma dhe këngë"
 
 #: ../src/main.c:290
 #, c-format
 msgid "Type %s --help to list all available command line options\n"
-msgstr ""
+msgstr "Shtypni %s --help që të shfaqen krejt mundësitë e gatshme për rresht urdhrash\n"
 
 #: ../src/main.c:307
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
-msgstr ""
+msgstr "Parole është duke xhiruar, përdorni -i që të hapet një instancë e re\n"
 
 #: ../src/parole-mediachooser.c:233 ../src/parole-player.c:1005
 msgid "All files"
@@ -852,15 +852,15 @@ msgstr "Tërë kartelat"
 #, c-format
 msgid "Playlist (%i item)"
 msgid_plural "Playlist (%i items)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Luajlistë (%i zë)"
+msgstr[1] "Luajlistë (%i zëra)"
 
 #: ../src/parole-medialist.c:221 ../src/parole-medialist.c:1477
 #, c-format
 msgid "Playlist (%i chapter)"
 msgid_plural "Playlist (%i chapters)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Luajlistë (%i kapitull)"
+msgstr[1] "Luajlistë (%i kapituj)"
 
 #: ../src/parole-medialist.c:390 ../src/parole-player.c:710
 #, c-format
@@ -873,15 +873,15 @@ msgstr "Leje e mohuar"
 
 #: ../src/parole-medialist.c:653
 msgid "Error saving playlist file"
-msgstr ""
+msgstr "Gabim në ruajtjen e kartelës luajliste"
 
 #: ../src/parole-medialist.c:663
 msgid "Unknown playlist format"
-msgstr ""
+msgstr "Format i panjohur luajlistash"
 
 #: ../src/parole-medialist.c:664
 msgid "Please choose a supported playlist format"
-msgstr ""
+msgstr "Ju lutemi, zgjidhni një format luajlistash që mbulohet"
 
 #: ../src/parole-medialist.c:707 ../src/parole-plugins-manager.c:338
 msgid "Unknown"
@@ -897,29 +897,29 @@ msgstr "Luajlista PLS"
 
 #: ../src/parole-medialist.c:807
 msgid "Advanced Stream Redirector"
-msgstr ""
+msgstr "Ridrejtues i Thelluar Rrjedhash"
 
 #: ../src/parole-medialist.c:815
 msgid "Shareable Playlist"
-msgstr ""
+msgstr "Luajlistë e Ndashme Me të Tjerët"
 
 #. Clear
 #: ../src/parole-medialist.c:1122
 msgid "Open Containing Folder"
-msgstr ""
+msgstr "Hap Dosjen Që e Përmban"
 
 #: ../src/parole-player.c:528
 msgid "Hide Playlist"
-msgstr ""
+msgstr "Fshihe Luajlistën"
 
 #: ../src/parole-player.c:528 ../src/parole-player.c:3400
 msgid "Show Playlist"
-msgstr ""
+msgstr "Shfaqe Luajlistën"
 
 #. Build the FileChooser dialog for subtitle selection.
 #: ../src/parole-player.c:969
 msgid "Select Subtitle File"
-msgstr ""
+msgstr "Përzgjidhni Kartelë Titrash"
 
 #: ../src/parole-player.c:974 ../src/parole-player.c:1161
 #: ../src/parole-player.c:2814 ../src/plugins/tray/tray-provider.c:319
@@ -936,17 +936,17 @@ msgstr "Kartela Titrash"
 
 #: ../src/parole-player.c:1157 ../src/parole-player.c:1165
 msgid "Clear Recent Items"
-msgstr ""
+msgstr "Pastro Zëra Së Fundi"
 
 #: ../src/parole-player.c:1159
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
-msgstr ""
+msgstr "Jeni i sigurt se doni të pastrohet historiku juaj i freskët i zërave?  Kjo s’mund të zhbëhet."
 
 #: ../src/parole-player.c:1261 ../src/parole-player.c:1388
 msgid "Media stream is not seekable"
-msgstr ""
+msgstr "Te rrjedha media nuk mund të kërkohet"
 
 #: ../src/parole-player.c:1271
 msgid "Play"
@@ -958,7 +958,7 @@ msgstr "Pauzë"
 
 #: ../src/parole-player.c:1713
 msgid "GStreamer backend error"
-msgstr ""
+msgstr "Gabim mekanizmi GStreamer"
 
 #: ../src/parole-player.c:1794
 msgid "Unknown Song"
@@ -967,7 +967,7 @@ msgstr "Këngë e Panjohur"
 #: ../src/parole-player.c:1805 ../src/parole-player.c:1811
 #: ../src/parole-player.c:1819
 msgid "on"
-msgstr ""
+msgstr "në"
 
 #: ../src/parole-player.c:1819 ../src/plugins/notify/notify-provider.c:134
 msgid "Unknown Album"
@@ -975,7 +975,7 @@ msgstr "Album i Panjohur"
 
 #: ../src/parole-player.c:1830 ../src/parole-player.c:1837
 msgid "by"
-msgstr ""
+msgstr "nga"
 
 #: ../src/parole-player.c:1837 ../src/plugins/notify/notify-provider.c:136
 msgid "Unknown Artist"
@@ -1025,37 +1025,37 @@ msgstr "_Dil nga Sa tërë ekrani"
 #. * Un/Hide menubar
 #: ../src/parole-player.c:2150
 msgid "Show menubar"
-msgstr ""
+msgstr "Shfaq shtyllë menush"
 
 #: ../src/parole-player.c:2167
 msgid "Mini Mode"
-msgstr ""
+msgstr "Mënyra Mini"
 
 #: ../src/parole-player.c:2386
 msgid "Unmute"
-msgstr ""
+msgstr "Çheshtoje"
 
 #: ../src/parole-player.c:2785
 msgid "Unable to open default web browser"
-msgstr ""
+msgstr "S’arrihet të hapet setuesi parazgjedhje"
 
 #: ../src/parole-player.c:2787
 msgid ""
 "Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
-msgstr ""
+msgstr "Që të njoftoni të metën tuaj, ju lutemi, shkoni https://docs.xfce.org/apps/parole/bugs."
 
 #: ../src/parole-player.c:2815
 msgid "Go"
-msgstr ""
+msgstr "Shko"
 
 #: ../src/parole-player.c:2828
 msgid "Position:"
-msgstr ""
+msgstr "Pozicion:"
 
 #. Clear Recent Menu Item
 #: ../src/parole-player.c:3232
 msgid "_Clear recent items…"
-msgstr ""
+msgstr "_Pastroni zëra të freskët…"
 
 #: ../src/parole-player.c:3550
 msgid "Audio Track:"
@@ -1072,7 +1072,7 @@ msgstr "Mbylle"
 
 #: ../src/parole-about.c:74
 msgid "translator-credits"
-msgstr ""
+msgstr "translator-credits"
 
 #: ../src/parole-about.c:77
 msgid "Visit Parole website"
@@ -1084,11 +1084,11 @@ msgstr ""
 
 #: ../src/parole-disc.c:109
 msgid "Play Disc"
-msgstr ""
+msgstr "Luaje Diskun"
 
 #: ../src/parole-subtitle-encoding.c:162
 msgid "Current Locale"
-msgstr ""
+msgstr "Vendorja e Tanishme"
 
 #: ../src/parole-subtitle-encoding.c:165 ../src/parole-subtitle-encoding.c:167
 #: ../src/parole-subtitle-encoding.c:169 ../src/parole-subtitle-encoding.c:171
@@ -1165,7 +1165,7 @@ msgstr "Hebraike"
 
 #: ../src/parole-subtitle-encoding.c:261
 msgid "Hebrew Visual"
-msgstr ""
+msgstr "Hebraike Pamore"
 
 #: ../src/parole-subtitle-encoding.c:264
 msgid "Hindi"
@@ -1229,7 +1229,7 @@ msgstr "Vietnameze"
 
 #: ../src/parole-plugins-manager.c:253
 msgid "Plugin failed to load"
-msgstr ""
+msgstr "Shtojca s’arriti të ngarkohet"
 
 #: ../src/parole-plugins-manager.c:254
 msgid "Please check your installation"
@@ -1237,7 +1237,7 @@ msgstr "Ju lutemi, kontrolloni instalimin tuaj"
 
 #: ../src/parole-plugins-manager.c:375
 msgid "No installed plugins found on this system"
-msgstr ""
+msgstr "S’u gjetën shtojca të instaluara në këtë sistem"
 
 #: ../src/parole-plugins-manager.c:376
 msgid "Please check your installation."
@@ -1261,12 +1261,12 @@ msgstr "Tërë kartelat e mbuluara"
 
 #: ../src/misc/parole-filters.c:217
 msgid "Playlist files"
-msgstr ""
+msgstr "Kartela luajlistash"
 
 #: ../src/plugins/notify/notify-provider.c:139
 #: ../src/plugins/notify/notify-provider.c:141
 msgid "<i>on</i>"
-msgstr ""
+msgstr "<i>në</i>"
 
 #: ../src/plugins/notify/notify-provider.c:139
 #: ../src/plugins/notify/notify-provider.c:141
@@ -1279,17 +1279,17 @@ msgstr "Njofto"
 
 #: ../src/plugins/notify/notify.desktop.in.h:2
 msgid "Show notifications for currently playing tracks"
-msgstr ""
+msgstr "Shfaq njoftime për pjesët që luhen në atë çast"
 
 #. * Previous Track
 #: ../src/plugins/tray/tray-provider.c:128
 msgid "P_revious Track"
-msgstr ""
+msgstr "Pjesa e _Mëparshme"
 
 #. * Next Track
 #: ../src/plugins/tray/tray-provider.c:137
 msgid "_Next Track"
-msgstr ""
+msgstr "Pjesa _Pasuese"
 
 #. * Open
 #: ../src/plugins/tray/tray-provider.c:153
@@ -1298,40 +1298,40 @@ msgstr "_Hap"
 
 #: ../src/plugins/tray/tray-provider.c:254
 msgid "Tray icon plugin"
-msgstr ""
+msgstr "Shtojcë ikone paneli"
 
 #: ../src/plugins/tray/tray-provider.c:264
 msgid "Always minimize to tray when window is closed"
-msgstr ""
+msgstr "Ule gjithmonë te paneli kur mbyllet dritarja"
 
 #: ../src/plugins/tray/tray-provider.c:307
 msgid "Are you sure you want to quit?"
-msgstr ""
+msgstr "Jeni i sigurt se doni të dilet?"
 
 #: ../src/plugins/tray/tray-provider.c:310
 msgid "Parole can be minimized to the system tray instead."
-msgstr ""
+msgstr "Në vend të kësaj, Parole mund të minimizohet te paneli i sistemit."
 
 #: ../src/plugins/tray/tray-provider.c:313
 msgid "Minimize to tray"
-msgstr ""
+msgstr "Ule te shtylla"
 
 #: ../src/plugins/tray/tray-provider.c:334
 msgid "Remember my choice"
-msgstr ""
+msgstr "Mbaje mend zgjedhjen time"
 
 #: ../src/plugins/tray/system-tray.desktop.in.h:1
 msgid "Tray icon"
-msgstr ""
+msgstr "Ikonë paneli"
 
 #: ../src/plugins/tray/system-tray.desktop.in.h:2
 msgid "Show icon in the system tray"
-msgstr ""
+msgstr "Shfaq ikonë te paneli i sistemit"
 
 #: ../src/plugins/mpris2/mpris2.desktop.in.h:1
 msgid "MPRIS2"
-msgstr ""
+msgstr "MPRIS2"
 
 #: ../src/plugins/mpris2/mpris2.desktop.in.h:2
 msgid "MPRIS2 remote control"
-msgstr ""
+msgstr "Kontroll së largëti MPRIS2"
