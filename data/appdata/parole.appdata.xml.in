@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2014-2017 Sean Davis <bluesabre@xfce.org> and Simon Steinbeiß <simon@xfce.org> -->
-<component type="desktop">
+<component type="desktop-application">
   <id>org.xfce.Parole.desktop</id>
   <metadata_license>CC-BY-3.0</metadata_license>
   <project_license>GPL-2.0+</project_license>
@@ -18,6 +18,8 @@
        Parole is also extensible via plugins.
     </_p>
   </description>
+
+  <launchable type="desktop-id">org.xfce.Parole.desktop</launchable>
 
   <screenshots>
     <screenshot type="default">
@@ -37,8 +39,6 @@
   <url type="homepage">https://www.xfce.org/</url>
   <url type="bugtracker">https://bugzilla.xfce.org/</url>
   <url type="help">https://docs.xfce.org/apps/parole/start</url>
-
-  <updatecontact>xfce4-dev@xfce.org</updatecontact>
 
   <project_group>XFCE</project_group>
 
@@ -118,31 +118,6 @@
       </description>
     </release>
 
-    <release version="0.5.91" date="2013-12-29">
-      <description>
-        <_p>This unstable development release features mostly bugfixes and introduces the new
-        MPRIS2 plugin.
-        </_p>
-      </description>
-    </release>
-
-    <release version="0.5.4" date="2013-12-04">
-      <description>
-        <_p>This is a bugfix release which fixes the loading of playlists with relative paths,
-        improves the file-filters for audio/video mimetypes and fixes the "Remove duplicates"
-        functionality.
-        </_p>
-      </description>
-    </release>
-
-    <release version="0.5.90" date="2013-10-19">
-      <description>
-        <_p>This unstable development release features the complete port to the Gtk+3 toolkit,
-        improvements in the user-interface (more streamlined menus), better playlists. It also
-        brings updated artwork, GStreamer1.0 support, improved plugins and the occasional bugfix.
-        </_p>
-      </description>
-    </release>
   </releases>
 
 </component>
