@@ -90,6 +90,7 @@ typedef enum {
 } GstPlayFlags;
 
 typedef enum {
+    AUTOIMAGESINK,
     XIMAGESINK,
     XVIMAGESINK,
     CLUTTERSINK
@@ -1907,6 +1908,11 @@ parole_gst_constructed(GObject *object) {
     }
 
     /* Configure the video sink */
+    if (g_strcmp0(videosink, "autoimagesink") == 0) {
+        gst->priv->image_sink = AUTOIMAGESINK;
+        gst->priv->video_sink = gst_element_factory_make("autoimagesink", "video");
+    }
+
     if (g_strcmp0(videosink, "xvimagesink") == 0) {
         gst->priv->image_sink = XVIMAGESINK;
         gst->priv->video_sink = gst_element_factory_make("xvimagesink", "video");

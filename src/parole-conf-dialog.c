@@ -336,19 +336,22 @@ parole_conf_dialog_set_default_sink_plugin(ParoleConfDialog *self) {
                   "videosink", &sink_name,
                   NULL);
 
-    if (g_strcmp0(sink_name, "xvimagesink") == 0) {
+    if (g_strcmp0(sink_name, "autoimagesink") == 0) {
         gtk_combo_box_set_active(GTK_COMBO_BOX(self->priv->sink_combox), 0);
         return TRUE;
-    } else if (g_strcmp0(sink_name, "ximagesink") == 0) {
+    } else if (g_strcmp0(sink_name, "xvimagesink") == 0) {
         gtk_combo_box_set_active(GTK_COMBO_BOX(self->priv->sink_combox), 1);
+        return TRUE;
+    } else if (g_strcmp0(sink_name, "ximagesink") == 0) {
+        gtk_combo_box_set_active(GTK_COMBO_BOX(self->priv->sink_combox), 2);
         return TRUE;
     #ifdef HAVE_CLUTTER
     } else if (g_strcmp0(sink_name, "cluttersink") == 0) {
-        gtk_combo_box_set_active(GTK_COMBO_BOX(self->priv->sink_combox), 2);
+        gtk_combo_box_set_active(GTK_COMBO_BOX(self->priv->sink_combox), 3);
         return TRUE;
     #endif
     } else {
-        gtk_combo_box_set_active(GTK_COMBO_BOX(self->priv->sink_combox), 1);
+        gtk_combo_box_set_active(GTK_COMBO_BOX(self->priv->sink_combox), 0);
         return FALSE;
     }
 }

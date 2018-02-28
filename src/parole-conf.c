@@ -688,7 +688,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     g_param_spec_string("videosink",
                                     "/video/videosink",
                                     NULL,
-                                    "xvimagesink",
+                                    "autoimagesink",
                                     G_PARAM_READWRITE));
 
     /**
