@@ -4,14 +4,14 @@
 # 
 # Translators:
 # Cheng-Chia Tseng <pswo10680@gmail.com>, 2011
-# Jeff Huang <s8321414@gmail.com>, 2014-2015,2017
+# Jeff Huang <s8321414@gmail.com>, 2014-2015,2017-2018
 # Walter Cheuk <wwycheuk@gmail.com>, 2013-2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-03 18:30+0200\n"
-"PO-Revision-Date: 2017-09-19 18:05+0000\n"
+"POT-Creation-Date: 2018-02-28 18:31+0100\n"
+"PO-Revision-Date: 2018-03-01 00:22+0000\n"
 "Last-Translator: Jeff Huang <s8321414@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/xfce/xfce-apps/language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
@@ -242,7 +242,7 @@ msgid "Open Media Files"
 msgstr "開啟媒體檔案"
 
 #: ../data/interfaces/playlist.ui.h:1
-#: ../data/interfaces/parole-settings.ui.h:27
+#: ../data/interfaces/parole-settings.ui.h:28
 #: ../data/interfaces/shortcuts.ui.h:13 ../src/parole-medialist.c:745
 #: ../src/parole-medialist.c:784 ../src/parole-player.c:3191
 msgid "Playlist"
@@ -301,7 +301,7 @@ msgid "Play opened files"
 msgstr "播放開啟的檔案"
 
 #: ../data/interfaces/playlist.ui.h:15
-#: ../data/interfaces/parole-settings.ui.h:25
+#: ../data/interfaces/parole-settings.ui.h:26
 msgid "Remember playlist"
 msgstr "記住播放清單"
 
@@ -330,123 +330,127 @@ msgid "Visit Website"
 msgstr "造訪網站"
 
 #: ../data/interfaces/parole-settings.ui.h:1
+msgid "Automatic"
+msgstr "自動"
+
+#: ../data/interfaces/parole-settings.ui.h:2
 msgid "X Window System (X11/XShm/Xv)"
 msgstr "X Window 系統 (X11/XShm/Xv)"
 
-#: ../data/interfaces/parole-settings.ui.h:2
+#: ../data/interfaces/parole-settings.ui.h:3
 msgid "X Window System (No Xv)"
 msgstr "X Window 系統 (No Xv)"
 
-#: ../data/interfaces/parole-settings.ui.h:3
+#: ../data/interfaces/parole-settings.ui.h:4
 msgid "Parole Settings"
 msgstr "Parole 設定"
 
-#: ../data/interfaces/parole-settings.ui.h:4
+#: ../data/interfaces/parole-settings.ui.h:5
 msgid "Configure your media player"
 msgstr "設定媒體播放器"
 
-#: ../data/interfaces/parole-settings.ui.h:5
+#: ../data/interfaces/parole-settings.ui.h:6
 msgid "Disable screensaver when playing movies"
 msgstr "播放電影時停用螢幕保護程式"
 
-#: ../data/interfaces/parole-settings.ui.h:6
+#: ../data/interfaces/parole-settings.ui.h:7
 msgid "<b>Screensaver</b>"
 msgstr "<b>螢幕保護程式</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:7
+#: ../data/interfaces/parole-settings.ui.h:8
 msgid "Show visual effects when an audio file is played"
 msgstr "播放音樂時顯示視覺特效"
 
-#: ../data/interfaces/parole-settings.ui.h:8
+#: ../data/interfaces/parole-settings.ui.h:9
 msgid "Visualization type:"
 msgstr "視覺特效類型："
 
-#: ../data/interfaces/parole-settings.ui.h:9
+#: ../data/interfaces/parole-settings.ui.h:10
 msgid "<b>Audio Visualization</b>"
 msgstr "<b>音訊視覺特效</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:10
+#: ../data/interfaces/parole-settings.ui.h:11
 msgid "Enable keyboard multimedia keys"
 msgstr "啟用鍵盤多媒體按鍵"
 
-#: ../data/interfaces/parole-settings.ui.h:11
+#: ../data/interfaces/parole-settings.ui.h:12
 msgid "<b>Keyboard</b>"
 msgstr "<b>鍵盤</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:12
+#: ../data/interfaces/parole-settings.ui.h:13
 #: ../data/interfaces/shortcuts.ui.h:1
 msgid "General"
 msgstr "一般"
 
-#: ../data/interfaces/parole-settings.ui.h:13
+#: ../data/interfaces/parole-settings.ui.h:14
 msgid "Please restart Parole for this change to take effect."
 msgstr "請重新啟動 Parole 以讓此更動生效。"
 
-#: ../data/interfaces/parole-settings.ui.h:14
+#: ../data/interfaces/parole-settings.ui.h:15
 msgid "<b>Video Output</b>"
 msgstr "<b>視訊輸出</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:15
+#: ../data/interfaces/parole-settings.ui.h:16
 msgid "Brightness:"
 msgstr "亮度："
 
-#: ../data/interfaces/parole-settings.ui.h:16
+#: ../data/interfaces/parole-settings.ui.h:17
 msgid "Contrast:"
 msgstr "對比："
 
-#: ../data/interfaces/parole-settings.ui.h:17
+#: ../data/interfaces/parole-settings.ui.h:18
 msgid "Hue:"
 msgstr "色調："
 
-#: ../data/interfaces/parole-settings.ui.h:18
+#: ../data/interfaces/parole-settings.ui.h:19
 msgid "Saturation:"
 msgstr "飽和度："
 
-#: ../data/interfaces/parole-settings.ui.h:19
+#: ../data/interfaces/parole-settings.ui.h:20
 msgid "Reset to defaults"
 msgstr "重設為預設值"
 
-#: ../data/interfaces/parole-settings.ui.h:20
+#: ../data/interfaces/parole-settings.ui.h:21
 msgid "<b>Color Balance</b>"
 msgstr "<b>色彩平衡</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:21
+#: ../data/interfaces/parole-settings.ui.h:22
 msgid "Display"
 msgstr "顯示"
 
-#: ../data/interfaces/parole-settings.ui.h:22
+#: ../data/interfaces/parole-settings.ui.h:23
 msgid "Always replace playlist with opened files"
 msgstr "總是以開啟的檔案替換播放清單"
 
-#: ../data/interfaces/parole-settings.ui.h:23
+#: ../data/interfaces/parole-settings.ui.h:24
 msgid "Check and remove duplicate media entries"
 msgstr "檢查並移除重複的媒體項目"
 
-#: ../data/interfaces/parole-settings.ui.h:24
+#: ../data/interfaces/parole-settings.ui.h:25
 msgid "Start playing opened files"
 msgstr "開始播放開啟的檔案"
 
-#: ../data/interfaces/parole-settings.ui.h:26
+#: ../data/interfaces/parole-settings.ui.h:27
 msgid "<b>Playlist Settings</b>"
 msgstr "<b>播放清單設定</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:28
+#: ../data/interfaces/parole-settings.ui.h:29
 msgid "Automatically show subtitles when playing movie file"
 msgstr "播放電影檔時自動顯示字幕"
 
-#: ../data/interfaces/parole-settings.ui.h:29
+#: ../data/interfaces/parole-settings.ui.h:30
 msgid "Font:"
 msgstr "字型："
 
-#: ../data/interfaces/parole-settings.ui.h:30
+#: ../data/interfaces/parole-settings.ui.h:31
 msgid "Encoding:"
 msgstr "編碼："
 
-#: ../data/interfaces/parole-settings.ui.h:31
+#: ../data/interfaces/parole-settings.ui.h:32
 msgid "<b>Subtitle Settings</b>"
 msgstr "<b>字幕設定</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:32
+#: ../data/interfaces/parole-settings.ui.h:33
 msgid "Subtitles"
 msgstr "字幕"
 
@@ -660,27 +664,6 @@ msgid ""
 "and we use the GStreamer1.0 framework now by default."
 msgstr "這個版本的主要特性是，完全的轉移到 Gtk+3工具箱，在使用者介面方面的改進(更多流水線式的選單)，更佳的播放清單。另外，已經存在的插件被改進並多了一個新的(MPRIS2)。多數的藝術品都在這個版本被更新了，我現在們並使用了 GStreamer1.0 框架作為預設。"
 
-#: ../data/appdata/parole.appdata.xml.in.h:10
-msgid ""
-"This unstable development release features mostly bugfixes and introduces "
-"the new MPRIS2 plugin."
-msgstr "這個不穩定的開發版本的主要特性是錯誤修復及新的 MPRIS2插件。"
-
-#: ../data/appdata/parole.appdata.xml.in.h:11
-msgid ""
-"This is a bugfix release which fixes the loading of playlists with relative "
-"paths, improves the file-filters for audio/video mimetypes and fixes the "
-"\"Remove duplicates\" functionality."
-msgstr "這是一個錯誤修復版本，修復了以相對路徑載入播放清單，改進了影音檔案類型的檔案過濾器，並修復了「移除重覆檔案」的功能。"
-
-#: ../data/appdata/parole.appdata.xml.in.h:12
-msgid ""
-"This unstable development release features the complete port to the Gtk+3 "
-"toolkit, improvements in the user-interface (more streamlined menus), better"
-" playlists. It also brings updated artwork, GStreamer1.0 support, improved "
-"plugins and the occasional bugfix."
-msgstr "這個不穩定版本的主要特性是，完全的移植到 Gtk+3工具箱，在使用者介面方面的改進(更多流水線式的選單)，更佳的播放清單。它也帶來了藝術品的更新、GStreamer1.0支援、改進的插件及更多的錯誤修復。"
-
 #: ../src/common/parole-common.c:83
 msgid "Message"
 msgstr "訊息"
@@ -689,79 +672,79 @@ msgstr "訊息"
 msgid "Error"
 msgstr "錯誤"
 
-#: ../src/gst/parole-gst.c:1094 ../src/parole-medialist.c:376
+#: ../src/gst/parole-gst.c:1095 ../src/parole-medialist.c:376
 #, c-format
 msgid "Track %i"
 msgstr "第 %i 軌"
 
-#: ../src/gst/parole-gst.c:1097
+#: ../src/gst/parole-gst.c:1098
 msgid "Audio CD"
 msgstr "音訊 CD"
 
-#: ../src/gst/parole-gst.c:1304
+#: ../src/gst/parole-gst.c:1305
 msgid "Additional software is required."
 msgstr "需要額外軟體"
 
-#: ../src/gst/parole-gst.c:1308
+#: ../src/gst/parole-gst.c:1309
 msgid "Don't Install"
 msgstr "不安裝"
 
-#: ../src/gst/parole-gst.c:1310
+#: ../src/gst/parole-gst.c:1311
 msgid "Install"
 msgstr "安裝"
 
-#: ../src/gst/parole-gst.c:1313
+#: ../src/gst/parole-gst.c:1314
 msgid "OK"
 msgstr "確定"
 
-#: ../src/gst/parole-gst.c:1320
+#: ../src/gst/parole-gst.c:1321
 #, c-format
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
 msgstr "Parole 需要有 <b>%s</b> 才能播放這類檔案。\n它可以自動安裝。"
 
-#: ../src/gst/parole-gst.c:1323
+#: ../src/gst/parole-gst.c:1324
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
 msgstr "Parole 需要有 <b>%s</b> 才能播放此檔案。"
 
-#: ../src/gst/parole-gst.c:1692
+#: ../src/gst/parole-gst.c:1693
 msgid "The stream is taking too much time to load"
 msgstr "串流花費過多時間載入"
 
-#: ../src/gst/parole-gst.c:1694
+#: ../src/gst/parole-gst.c:1695
 msgid "Do you want to continue loading or stop?"
 msgstr "要繼續載入還是停止？"
 
-#: ../src/gst/parole-gst.c:1695
+#: ../src/gst/parole-gst.c:1696
 msgid "Stop"
 msgstr "停止"
 
-#: ../src/gst/parole-gst.c:1696
+#: ../src/gst/parole-gst.c:1697
 msgid "Continue"
 msgstr "繼續"
 
-#: ../src/gst/parole-gst.c:1860
+#: ../src/gst/parole-gst.c:1861
 msgid "GStreamer Error"
 msgstr "GStreamer 出錯"
 
-#: ../src/gst/parole-gst.c:1861
+#: ../src/gst/parole-gst.c:1862
 msgid "Parole Media Player cannot start."
 msgstr "Parole 媒體播放器無法停止。"
 
-#: ../src/gst/parole-gst.c:1886 ../src/gst/parole-gst.c:1901
-#: ../src/gst/parole-gst.c:1930
+#: ../src/gst/parole-gst.c:1887 ../src/gst/parole-gst.c:1902
+#: ../src/gst/parole-gst.c:1936
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
 msgstr "無法載入「%s」插件，請檢查 GStreamer 是否安裝妥當。"
 
-#: ../src/gst/parole-gst.c:2490 ../src/gst/parole-gst.c:2494
+#: ../src/gst/parole-gst.c:2496 ../src/gst/parole-gst.c:2500
 #, c-format
 msgid "Audio Track #%d"
 msgstr "第 %d 音軌"
 
-#: ../src/gst/parole-gst.c:2530 ../src/gst/parole-gst.c:2534
+#: ../src/gst/parole-gst.c:2536 ../src/gst/parole-gst.c:2540
 #, c-format
 msgid "Subtitle #%d"
 msgstr "第 %d 字幕"
