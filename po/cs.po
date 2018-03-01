@@ -4,15 +4,15 @@
 # 
 # Translators:
 # Alois Nešpor <info@aloisnespor.info>, 2013-2014
-# Michal Várady <miko.vaji@gmail.com>, 2014-2015,2017
+# Michal Várady <miko.vaji@gmail.com>, 2014-2015,2017-2018
 # Petr Šimáček <petr.simacek@gmail.com>, 2015,2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-03 18:30+0200\n"
-"PO-Revision-Date: 2017-09-19 18:05+0000\n"
-"Last-Translator: Petr Šimáček <petr.simacek@gmail.com>\n"
+"POT-Creation-Date: 2018-02-28 18:31+0100\n"
+"PO-Revision-Date: 2018-02-28 23:44+0000\n"
+"Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech (http://www.transifex.com/xfce/xfce-apps/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -242,7 +242,7 @@ msgid "Open Media Files"
 msgstr "Otevřít soubory médií"
 
 #: ../data/interfaces/playlist.ui.h:1
-#: ../data/interfaces/parole-settings.ui.h:27
+#: ../data/interfaces/parole-settings.ui.h:28
 #: ../data/interfaces/shortcuts.ui.h:13 ../src/parole-medialist.c:745
 #: ../src/parole-medialist.c:784 ../src/parole-player.c:3191
 msgid "Playlist"
@@ -301,7 +301,7 @@ msgid "Play opened files"
 msgstr "Přehrát otevřené soubory"
 
 #: ../data/interfaces/playlist.ui.h:15
-#: ../data/interfaces/parole-settings.ui.h:25
+#: ../data/interfaces/parole-settings.ui.h:26
 msgid "Remember playlist"
 msgstr "Zapamatovat si seznam médií"
 
@@ -330,123 +330,127 @@ msgid "Visit Website"
 msgstr "Navštívit webovou stránku"
 
 #: ../data/interfaces/parole-settings.ui.h:1
+msgid "Automatic"
+msgstr "Automatické"
+
+#: ../data/interfaces/parole-settings.ui.h:2
 msgid "X Window System (X11/XShm/Xv)"
 msgstr "X Window System (X11/XShm/Xv)"
 
-#: ../data/interfaces/parole-settings.ui.h:2
+#: ../data/interfaces/parole-settings.ui.h:3
 msgid "X Window System (No Xv)"
 msgstr "X Window System (bez Xv)"
 
-#: ../data/interfaces/parole-settings.ui.h:3
+#: ../data/interfaces/parole-settings.ui.h:4
 msgid "Parole Settings"
 msgstr "Nastavení aplikace Parole"
 
-#: ../data/interfaces/parole-settings.ui.h:4
+#: ../data/interfaces/parole-settings.ui.h:5
 msgid "Configure your media player"
 msgstr "Konfigurovat přehrávač médií"
 
-#: ../data/interfaces/parole-settings.ui.h:5
+#: ../data/interfaces/parole-settings.ui.h:6
 msgid "Disable screensaver when playing movies"
 msgstr "Při přehrávání filmů zakázat šetřič obrazovky"
 
-#: ../data/interfaces/parole-settings.ui.h:6
+#: ../data/interfaces/parole-settings.ui.h:7
 msgid "<b>Screensaver</b>"
 msgstr "<b>Šetřič obrazovky</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:7
+#: ../data/interfaces/parole-settings.ui.h:8
 msgid "Show visual effects when an audio file is played"
 msgstr "Zobrazit vizuální efekty při přehrávání zvukových souborů"
 
-#: ../data/interfaces/parole-settings.ui.h:8
+#: ../data/interfaces/parole-settings.ui.h:9
 msgid "Visualization type:"
 msgstr "Typ vizualizace:"
 
-#: ../data/interfaces/parole-settings.ui.h:9
+#: ../data/interfaces/parole-settings.ui.h:10
 msgid "<b>Audio Visualization</b>"
 msgstr "<b>Vizualizace zvuku</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:10
+#: ../data/interfaces/parole-settings.ui.h:11
 msgid "Enable keyboard multimedia keys"
 msgstr "Povolit multimediální tlačítka klávesnice"
 
-#: ../data/interfaces/parole-settings.ui.h:11
+#: ../data/interfaces/parole-settings.ui.h:12
 msgid "<b>Keyboard</b>"
 msgstr "<b>Klávesnice</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:12
+#: ../data/interfaces/parole-settings.ui.h:13
 #: ../data/interfaces/shortcuts.ui.h:1
 msgid "General"
 msgstr "Hlavní"
 
-#: ../data/interfaces/parole-settings.ui.h:13
+#: ../data/interfaces/parole-settings.ui.h:14
 msgid "Please restart Parole for this change to take effect."
 msgstr "Restartujte prosím aplikaci Parole, aby se změny projevily."
 
-#: ../data/interfaces/parole-settings.ui.h:14
+#: ../data/interfaces/parole-settings.ui.h:15
 msgid "<b>Video Output</b>"
 msgstr "<b>Video výstup</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:15
+#: ../data/interfaces/parole-settings.ui.h:16
 msgid "Brightness:"
 msgstr "Jas:"
 
-#: ../data/interfaces/parole-settings.ui.h:16
+#: ../data/interfaces/parole-settings.ui.h:17
 msgid "Contrast:"
 msgstr "Kontrast:"
 
-#: ../data/interfaces/parole-settings.ui.h:17
+#: ../data/interfaces/parole-settings.ui.h:18
 msgid "Hue:"
 msgstr "Odstín:"
 
-#: ../data/interfaces/parole-settings.ui.h:18
+#: ../data/interfaces/parole-settings.ui.h:19
 msgid "Saturation:"
 msgstr "Sytost:"
 
-#: ../data/interfaces/parole-settings.ui.h:19
+#: ../data/interfaces/parole-settings.ui.h:20
 msgid "Reset to defaults"
 msgstr "Obnovit výchozí"
 
-#: ../data/interfaces/parole-settings.ui.h:20
+#: ../data/interfaces/parole-settings.ui.h:21
 msgid "<b>Color Balance</b>"
 msgstr "<b>Vyvážení barev</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:21
+#: ../data/interfaces/parole-settings.ui.h:22
 msgid "Display"
 msgstr "Obrazovka"
 
-#: ../data/interfaces/parole-settings.ui.h:22
+#: ../data/interfaces/parole-settings.ui.h:23
 msgid "Always replace playlist with opened files"
 msgstr "Vždy nahradit seznam médií otevíranými soubory"
 
-#: ../data/interfaces/parole-settings.ui.h:23
+#: ../data/interfaces/parole-settings.ui.h:24
 msgid "Check and remove duplicate media entries"
 msgstr "Zkontrolovat a odstranit duplicitní média"
 
-#: ../data/interfaces/parole-settings.ui.h:24
+#: ../data/interfaces/parole-settings.ui.h:25
 msgid "Start playing opened files"
 msgstr "Zahájit přehrávání otevřených souborů"
 
-#: ../data/interfaces/parole-settings.ui.h:26
+#: ../data/interfaces/parole-settings.ui.h:27
 msgid "<b>Playlist Settings</b>"
 msgstr "<b>Nastavení seznamu médií</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:28
+#: ../data/interfaces/parole-settings.ui.h:29
 msgid "Automatically show subtitles when playing movie file"
 msgstr "Automaticky zobrazovat titulky při přehrávání filmu"
 
-#: ../data/interfaces/parole-settings.ui.h:29
+#: ../data/interfaces/parole-settings.ui.h:30
 msgid "Font:"
 msgstr "Písmo:"
 
-#: ../data/interfaces/parole-settings.ui.h:30
+#: ../data/interfaces/parole-settings.ui.h:31
 msgid "Encoding:"
 msgstr "Kódování:"
 
-#: ../data/interfaces/parole-settings.ui.h:31
+#: ../data/interfaces/parole-settings.ui.h:32
 msgid "<b>Subtitle Settings</b>"
 msgstr "<b>Nastavení titulků</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:32
+#: ../data/interfaces/parole-settings.ui.h:33
 msgid "Subtitles"
 msgstr "Titulky"
 
@@ -660,27 +664,6 @@ msgid ""
 "and we use the GStreamer1.0 framework now by default."
 msgstr "Toto vydání představuje kompletní přechod na sadu nástrojů Gtk+3, vylepšení v uživatelském rozhraní (více streamlined nabídek), lepší seznamy médií. Navíc byly vylepšeny existující zásuvné moduly a byl přidán jeden nový (MPRIS2). V tomto vydání byla aktualizována většina grafických prvků a ve výchozím nastavení se nyní používá framework GStreamer1.0."
 
-#: ../data/appdata/parole.appdata.xml.in.h:10
-msgid ""
-"This unstable development release features mostly bugfixes and introduces "
-"the new MPRIS2 plugin."
-msgstr "Toto nestabilní vývojářské vydání představuje především opravy chyb a nový zásuvný modul MPRIS2"
-
-#: ../data/appdata/parole.appdata.xml.in.h:11
-msgid ""
-"This is a bugfix release which fixes the loading of playlists with relative "
-"paths, improves the file-filters for audio/video mimetypes and fixes the "
-"\"Remove duplicates\" functionality."
-msgstr "Toto vydání opravuje chyby při zavádění seznamů médií s relativními cestami, vylepšuje filtry souborů pro zvukové a video typy podle MIME a opravuje funkci \"Odebrat duplicity\""
-
-#: ../data/appdata/parole.appdata.xml.in.h:12
-msgid ""
-"This unstable development release features the complete port to the Gtk+3 "
-"toolkit, improvements in the user-interface (more streamlined menus), better"
-" playlists. It also brings updated artwork, GStreamer1.0 support, improved "
-"plugins and the occasional bugfix."
-msgstr "Toto nestabilní vývojářské vydání představuje kompletní přesun na sadu nástrojů Gtk+3, vylepšení v uživatelském rozhraní (více streamlined nabídek), lepší seznamy médií. Také přináší aktualizované grafické prvky, podporu GStreamer1.0, vylepšené zásuvné moduly a opravy některých chyb."
-
 #: ../src/common/parole-common.c:83
 msgid "Message"
 msgstr "Zpráva"
@@ -689,79 +672,79 @@ msgstr "Zpráva"
 msgid "Error"
 msgstr "Chyba"
 
-#: ../src/gst/parole-gst.c:1094 ../src/parole-medialist.c:376
+#: ../src/gst/parole-gst.c:1095 ../src/parole-medialist.c:376
 #, c-format
 msgid "Track %i"
 msgstr "Stopa %i"
 
-#: ../src/gst/parole-gst.c:1097
+#: ../src/gst/parole-gst.c:1098
 msgid "Audio CD"
 msgstr "Zvukový disk CD"
 
-#: ../src/gst/parole-gst.c:1304
+#: ../src/gst/parole-gst.c:1305
 msgid "Additional software is required."
 msgstr "Je požadován další software."
 
-#: ../src/gst/parole-gst.c:1308
+#: ../src/gst/parole-gst.c:1309
 msgid "Don't Install"
 msgstr "Neinstalovat"
 
-#: ../src/gst/parole-gst.c:1310
+#: ../src/gst/parole-gst.c:1311
 msgid "Install"
 msgstr "Instalovat"
 
-#: ../src/gst/parole-gst.c:1313
+#: ../src/gst/parole-gst.c:1314
 msgid "OK"
 msgstr "OK"
 
-#: ../src/gst/parole-gst.c:1320
+#: ../src/gst/parole-gst.c:1321
 #, c-format
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
 msgstr "K přehrání tohoto souboru Parole potřebuje <b>%s</b>.\nMůže být automaticky nainstalované."
 
-#: ../src/gst/parole-gst.c:1323
+#: ../src/gst/parole-gst.c:1324
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
 msgstr "K přehrání tohoto souboru Parole potřebuje <b>%s</b>"
 
-#: ../src/gst/parole-gst.c:1692
+#: ../src/gst/parole-gst.c:1693
 msgid "The stream is taking too much time to load"
 msgstr "Načtení streamu trvá příliš dlouho"
 
-#: ../src/gst/parole-gst.c:1694
+#: ../src/gst/parole-gst.c:1695
 msgid "Do you want to continue loading or stop?"
 msgstr "Chcete pokračovat v nahrávání nebo zastavit?"
 
-#: ../src/gst/parole-gst.c:1695
+#: ../src/gst/parole-gst.c:1696
 msgid "Stop"
 msgstr "Zastavit"
 
-#: ../src/gst/parole-gst.c:1696
+#: ../src/gst/parole-gst.c:1697
 msgid "Continue"
 msgstr "Pokračovat"
 
-#: ../src/gst/parole-gst.c:1860
+#: ../src/gst/parole-gst.c:1861
 msgid "GStreamer Error"
 msgstr "Chyba GStreameru"
 
-#: ../src/gst/parole-gst.c:1861
+#: ../src/gst/parole-gst.c:1862
 msgid "Parole Media Player cannot start."
 msgstr "Přehrávač médií Parole nelze spustit."
 
-#: ../src/gst/parole-gst.c:1886 ../src/gst/parole-gst.c:1901
-#: ../src/gst/parole-gst.c:1930
+#: ../src/gst/parole-gst.c:1887 ../src/gst/parole-gst.c:1902
+#: ../src/gst/parole-gst.c:1936
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
 msgstr "Nelze zavést zásuvný modul \"%s\", zkontrolujte instalaci GStreameru."
 
-#: ../src/gst/parole-gst.c:2490 ../src/gst/parole-gst.c:2494
+#: ../src/gst/parole-gst.c:2496 ../src/gst/parole-gst.c:2500
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Zvuková stopa č. %d"
 
-#: ../src/gst/parole-gst.c:2530 ../src/gst/parole-gst.c:2534
+#: ../src/gst/parole-gst.c:2536 ../src/gst/parole-gst.c:2540
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Titulek č. %d"
