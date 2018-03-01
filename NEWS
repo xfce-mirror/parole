@@ -1,3 +1,24 @@
+1.0.0
+=====
+First stable release of the Parole 1.0.x series!
+- New Features
+  - Added "Automatic" video output option. This uses the autoimagesink to
+    provide the best available video sink for the environment, eliminating
+    the dreaded 'Could not initialise Xv output' error (Xfce #11950)
+- Bug Fixes
+  - Fixed 32-bit crashes when using the MPRIS2 plugin (LP #1374887)
+  - Fixed crash on "Clear History" button press (LP #1214514)
+  - Fixed appdata validation (Xfce #13632)
+  - Fixed full debug builds and resolved implicit-fallthrough build warning
+  - Replaced stock icon by freedesktop.org compliant option (Xfce #13738)
+- Translation Updates: Albanian, Arabic, Asturian, Basque, Bulgarian,
+  Catalan, Chinese (China), Chinese (Taiwan), Croatian, Czech, Danish, Dutch,
+  English (Australia), Finnish, French, Galician, German, Greek, Hebrew,
+  Hungarian, Icelandic, Indonesian, Italian, Japanese, Kazakh, Korean,
+  Lithuanian, Malay, Norwegian Bokmål, Occitan (post 1500), Polish,
+  Portuguese, Portuguese (Brazil), Russian, Serbian, Slovak, Spanish,
+  Swedish, Thai, Turkish, Uighur, Ukrainian
+
 0.9.2
 =====
 - General
