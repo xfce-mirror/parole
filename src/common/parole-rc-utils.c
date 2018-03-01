@@ -29,6 +29,7 @@
 #include <string.h>
 
 #include <glib.h>
+#include <glib/gstdio.h>
 
 #include "parole-rc-utils.h"
 
@@ -100,9 +101,6 @@ void parole_clear_history_file_full(const gchar *relpath) {
     history = xfce_resource_save_location(XFCE_RESOURCE_CACHE, relpath, FALSE);
 
     if ( history ) {
-        FILE *f;
-        f = fopen(history, "w");
-        fclose(f);
-        g_free(history);
+        g_unlink (history);
     }
 }
