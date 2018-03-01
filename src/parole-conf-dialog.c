@@ -230,9 +230,11 @@ void parole_conf_dialog_sink_plugin_changed_cb(GtkComboBox *widget,  ParoleConfD
 
 /* Change subtitle font */
 void parole_conf_dialog_font_set_cb(GtkFontButton *button, ParoleConfDialog *self) {
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     g_object_set(G_OBJECT(self->priv->conf),
-                  "subtitle-font", gtk_font_button_get_font_name(button),
-                  NULL);
+                 "subtitle-font", gtk_font_button_get_font_name(button),
+                 NULL);
+    G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 /* Finalize the dialog */
@@ -383,7 +385,9 @@ parole_conf_dialog_set_defaults(ParoleConfDialog *self) {
 
     parole_subtitle_encoding_set(GTK_COMBO_BOX(self->priv->encoding), subtitle_encoding);
 
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     gtk_font_button_set_font_name(GTK_FONT_BUTTON(self->priv->font_button), subtitle_font);
+    G_GNUC_END_IGNORE_DEPRECATIONS
 
     g_free(subtitle_font);
     g_free(subtitle_encoding);

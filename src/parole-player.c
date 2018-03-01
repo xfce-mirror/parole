@@ -2623,8 +2623,8 @@ parole_player_handle_key_press(GdkEventKey *ev, ParolePlayer *player) {
             if (ev->state & GDK_CONTROL_MASK) {
                 parole_player_quit(player);
                 ret_val = TRUE;
-                break;
             }
+            break;
 #ifdef HAVE_XF86_KEYSYM
         case XF86XK_OpenURL:
             parole_player_full_screen(player, FALSE);

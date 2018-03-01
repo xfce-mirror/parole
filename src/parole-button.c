@@ -147,7 +147,9 @@ parole_button_grab_keystring(ParoleButton *button, guint keycode) {
 
     display = gdk_display_get_default();
 
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     gdk_error_trap_push();
+    G_GNUC_END_IGNORE_DEPRECATIONS
 
     ret = XGrabKey(GDK_DISPLAY_XDISPLAY(display), keycode, modmask,
                     gdk_x11_window_get_xid(button->priv->window), True,
@@ -169,8 +171,11 @@ parole_button_grab_keystring(ParoleButton *button, guint keycode) {
         return FALSE;
     }
 
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     gdk_flush();
     gdk_error_trap_pop_ignored();
+    G_GNUC_END_IGNORE_DEPRECATIONS
+
     return TRUE;
 }
 

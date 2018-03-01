@@ -101,7 +101,9 @@ void parole_window_busy_cursor(GdkWindow *window) {
     if (cursor)
         g_object_unref(cursor);
 
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     gdk_flush();
+    G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 void parole_window_invisible_cursor(GdkWindow *window) {
@@ -117,7 +119,9 @@ void parole_window_invisible_cursor(GdkWindow *window) {
     if (cursor)
         g_object_unref(cursor);
 
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     gdk_flush();
+    G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 void parole_window_normal_cursor(GdkWindow *window) {
@@ -126,5 +130,7 @@ void parole_window_normal_cursor(GdkWindow *window) {
 
     gdk_window_set_cursor(window, NULL);
 
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     gdk_flush();
+    G_GNUC_END_IGNORE_DEPRECATIONS
 }
