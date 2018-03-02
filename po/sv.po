@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-03 18:30+0200\n"
-"PO-Revision-Date: 2017-09-19 18:05+0000\n"
+"POT-Creation-Date: 2018-03-01 06:32+0100\n"
+"PO-Revision-Date: 2018-03-02 12:49+0000\n"
 "Last-Translator: Påvel Nicklasson <pavel2@frimix.se>\n"
 "Language-Team: Swedish (http://www.transifex.com/xfce/xfce-apps/language/sv/)\n"
 "MIME-Version: 1.0\n"
@@ -242,7 +242,7 @@ msgid "Open Media Files"
 msgstr "Öppna mediafiler"
 
 #: ../data/interfaces/playlist.ui.h:1
-#: ../data/interfaces/parole-settings.ui.h:27
+#: ../data/interfaces/parole-settings.ui.h:28
 #: ../data/interfaces/shortcuts.ui.h:13 ../src/parole-medialist.c:745
 #: ../src/parole-medialist.c:784 ../src/parole-player.c:3191
 msgid "Playlist"
@@ -301,7 +301,7 @@ msgid "Play opened files"
 msgstr "Spela öppnade filer"
 
 #: ../data/interfaces/playlist.ui.h:15
-#: ../data/interfaces/parole-settings.ui.h:25
+#: ../data/interfaces/parole-settings.ui.h:26
 msgid "Remember playlist"
 msgstr "Kom ihåg spellista"
 
@@ -330,123 +330,127 @@ msgid "Visit Website"
 msgstr "Besök webbplats"
 
 #: ../data/interfaces/parole-settings.ui.h:1
+msgid "Automatic"
+msgstr "Automatiskt"
+
+#: ../data/interfaces/parole-settings.ui.h:2
 msgid "X Window System (X11/XShm/Xv)"
 msgstr "X-fönstersystem (X11/XShm/Xv)"
 
-#: ../data/interfaces/parole-settings.ui.h:2
+#: ../data/interfaces/parole-settings.ui.h:3
 msgid "X Window System (No Xv)"
 msgstr "X-fönstersystem (No Xv)"
 
-#: ../data/interfaces/parole-settings.ui.h:3
+#: ../data/interfaces/parole-settings.ui.h:4
 msgid "Parole Settings"
 msgstr "Inställningar för Parole"
 
-#: ../data/interfaces/parole-settings.ui.h:4
+#: ../data/interfaces/parole-settings.ui.h:5
 msgid "Configure your media player"
 msgstr "Anpassa din mediaspelare"
 
-#: ../data/interfaces/parole-settings.ui.h:5
+#: ../data/interfaces/parole-settings.ui.h:6
 msgid "Disable screensaver when playing movies"
 msgstr "Inaktivera skärmsläckaren då filmer spelas"
 
-#: ../data/interfaces/parole-settings.ui.h:6
+#: ../data/interfaces/parole-settings.ui.h:7
 msgid "<b>Screensaver</b>"
 msgstr "<b>Skärmsläckare</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:7
+#: ../data/interfaces/parole-settings.ui.h:8
 msgid "Show visual effects when an audio file is played"
 msgstr "Visa visuella effekter då en ljudfil spelas"
 
-#: ../data/interfaces/parole-settings.ui.h:8
+#: ../data/interfaces/parole-settings.ui.h:9
 msgid "Visualization type:"
 msgstr "Typ av visualisering:"
 
-#: ../data/interfaces/parole-settings.ui.h:9
+#: ../data/interfaces/parole-settings.ui.h:10
 msgid "<b>Audio Visualization</b>"
 msgstr "<b>Ljudvisualisering</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:10
+#: ../data/interfaces/parole-settings.ui.h:11
 msgid "Enable keyboard multimedia keys"
 msgstr "Aktivera tangentbordets multimediatangenter"
 
-#: ../data/interfaces/parole-settings.ui.h:11
+#: ../data/interfaces/parole-settings.ui.h:12
 msgid "<b>Keyboard</b>"
 msgstr "<b>Tangentbord</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:12
+#: ../data/interfaces/parole-settings.ui.h:13
 #: ../data/interfaces/shortcuts.ui.h:1
 msgid "General"
 msgstr "Allmänt"
 
-#: ../data/interfaces/parole-settings.ui.h:13
+#: ../data/interfaces/parole-settings.ui.h:14
 msgid "Please restart Parole for this change to take effect."
 msgstr "Starta om Parole för att ändringen ska träda i kraft."
 
-#: ../data/interfaces/parole-settings.ui.h:14
+#: ../data/interfaces/parole-settings.ui.h:15
 msgid "<b>Video Output</b>"
 msgstr "<b>Videoutmatning</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:15
+#: ../data/interfaces/parole-settings.ui.h:16
 msgid "Brightness:"
 msgstr "Ljusstyrka:"
 
-#: ../data/interfaces/parole-settings.ui.h:16
+#: ../data/interfaces/parole-settings.ui.h:17
 msgid "Contrast:"
 msgstr "Kontrast:"
 
-#: ../data/interfaces/parole-settings.ui.h:17
+#: ../data/interfaces/parole-settings.ui.h:18
 msgid "Hue:"
 msgstr "Nyans:"
 
-#: ../data/interfaces/parole-settings.ui.h:18
+#: ../data/interfaces/parole-settings.ui.h:19
 msgid "Saturation:"
 msgstr "Mättnad:"
 
-#: ../data/interfaces/parole-settings.ui.h:19
+#: ../data/interfaces/parole-settings.ui.h:20
 msgid "Reset to defaults"
 msgstr "Återställ till standardvärden"
 
-#: ../data/interfaces/parole-settings.ui.h:20
+#: ../data/interfaces/parole-settings.ui.h:21
 msgid "<b>Color Balance</b>"
 msgstr "<b>Färgbalans</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:21
+#: ../data/interfaces/parole-settings.ui.h:22
 msgid "Display"
 msgstr "Skärm"
 
-#: ../data/interfaces/parole-settings.ui.h:22
+#: ../data/interfaces/parole-settings.ui.h:23
 msgid "Always replace playlist with opened files"
 msgstr "Ersätt alltid spellista med öppnade filer"
 
-#: ../data/interfaces/parole-settings.ui.h:23
+#: ../data/interfaces/parole-settings.ui.h:24
 msgid "Check and remove duplicate media entries"
 msgstr "Kontrollera och ta bort dubblerade mediaposter"
 
-#: ../data/interfaces/parole-settings.ui.h:24
+#: ../data/interfaces/parole-settings.ui.h:25
 msgid "Start playing opened files"
 msgstr "Starta uppspelning av öppnade filer"
 
-#: ../data/interfaces/parole-settings.ui.h:26
+#: ../data/interfaces/parole-settings.ui.h:27
 msgid "<b>Playlist Settings</b>"
 msgstr "<b>Inställningar för spellistor</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:28
+#: ../data/interfaces/parole-settings.ui.h:29
 msgid "Automatically show subtitles when playing movie file"
 msgstr "Visa automatiskt undertexter då filmer spelas"
 
-#: ../data/interfaces/parole-settings.ui.h:29
+#: ../data/interfaces/parole-settings.ui.h:30
 msgid "Font:"
 msgstr "Typsnitt:"
 
-#: ../data/interfaces/parole-settings.ui.h:30
+#: ../data/interfaces/parole-settings.ui.h:31
 msgid "Encoding:"
 msgstr "Kodning:"
 
-#: ../data/interfaces/parole-settings.ui.h:31
+#: ../data/interfaces/parole-settings.ui.h:32
 msgid "<b>Subtitle Settings</b>"
 msgstr "<b>Inställningar för undertexter</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:32
+#: ../data/interfaces/parole-settings.ui.h:33
 msgid "Subtitles"
 msgstr "Undertexter"
 
@@ -613,13 +617,21 @@ msgstr "Parole erbjuder uppspelning av lokala mediafiler, inklusive filmer med s
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid ""
+"This release marks the first stable release of the 1.0 series. A new "
+"Automatic video output option was added to improve usage on virtual machines"
+" and low power devices. A large number of bugs were also resolved, making "
+"this release suitable for all users."
+msgstr "Den här versionen utgör den första stabila utgåvan av 1.0 serien. Ett nytt automatiskt videoutmatningsalternativ las till för att förbättra användning av virtuella maskiner på lågresursmaskiner. Ett stort antal fel rättades också till, vilket gör denna utgåva lämplig för alla användare."
+
+#: ../data/appdata/parole.appdata.xml.in.h:4
+msgid ""
 "This development release is a large cleanup of the codebase, making Parole "
 "lighter and easier to improve. All URLs have been updated to HTTPS. A large "
 "number of bugs have been resolved and a new keyboard shortcuts helper has "
 "been introduced."
 msgstr "Denna utvecklingsversion är en stor upprensning av kodbasen, som gör Parole resurssnålare och lättare att förbättra. Alla URLs har uppdaterats till HTTPS. Ett stort antal fel har rättats till och en ny tangentbordsgenvägshjälp har införts."
 
-#: ../data/appdata/parole.appdata.xml.in.h:4
+#: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
 "This development release fixes several bugs, typos, and historical details "
 "present in the documentation. Tags are now processed on files delivered over"
@@ -627,31 +639,31 @@ msgid ""
 "to significant API changes."
 msgstr "Denna utvecklingsversion rättar åtskilliga fel, stavfel, och historiska detaljer i dokumentationen. Flikar hanteras nu på filer levererade över HTTP/S. Videobakänden clutter är avaktiverad för GTK+ 3.22 och nyare på grund av betydande API-förändringar."
 
-#: ../data/appdata/parole.appdata.xml.in.h:5
+#: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
 "This development release adds a new mini mode and the ability to play or "
 "replay content by clicking the circle icons. Theming is simplified and "
 "filenames are displayed when no ID3 tags are found."
 msgstr "Denna utvecklingsversion lägger till ett nytt miniatyrläge och möjligheten att spela upp eller spela om innehåll genom att klicka på cirkelikonerna. Teman är förenklade och filnamn visas då inga ID3-etiketter hittas."
 
-#: ../data/appdata/parole.appdata.xml.in.h:6
+#: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This release improves the build process and includes several bug fixes. This"
 " new stable release is a recommended upgrade for all users."
 msgstr "Denna version förbättrar byggprocessen och inkluderar åtskilliga felrättningar. Denna nya stabila version är en rekommenderad uppgradering för alla användare."
 
-#: ../data/appdata/parole.appdata.xml.in.h:7
+#: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
 msgstr "Den här instabila utvecklingsversionen lägger till den nya clutter-bakänden och städar upp föråldrade Gtk3-symboler. Den lägger också till en \"gå till position\" funktion och flera fel har rättats till."
 
-#: ../data/appdata/parole.appdata.xml.in.h:8
+#: ../data/appdata/parole.appdata.xml.in.h:9
 msgid "This release fixes a problem with detecting DVD drive locations."
 msgstr "Den här versionen rättar till ett problem med att hitta DVD-enheter."
 
-#: ../data/appdata/parole.appdata.xml.in.h:9
+#: ../data/appdata/parole.appdata.xml.in.h:10
 msgid ""
 "This release features the completed transition to the Gtk+3 toolkit, "
 "improvements in the user-interface (more streamlined menus), better "
@@ -659,27 +671,6 @@ msgid ""
 " been added (MPRIS2). Most of the artwork has been updated for this release "
 "and we use the GStreamer1.0 framework now by default."
 msgstr "Den här versionen innehåller den färdiga övergången till Gtk+3 verktygslådan, förbättringar i användargränssnittet (mer enhetliga menyer), bättre spellistor. Dessutom har befintliga insticksprogram förbättrats och ett nytt har lagts till (MPRIS2). Större delen av den visuella utformningen har uppdaterats i den här versionen och vi använder nu GStreamer1.0-ramverket som standard."
-
-#: ../data/appdata/parole.appdata.xml.in.h:10
-msgid ""
-"This unstable development release features mostly bugfixes and introduces "
-"the new MPRIS2 plugin."
-msgstr "Den här instabila utvecklingsversionen innehåller mestadels felrättningar och introducerar det nya MPRIS2-insticksprogrammet."
-
-#: ../data/appdata/parole.appdata.xml.in.h:11
-msgid ""
-"This is a bugfix release which fixes the loading of playlists with relative "
-"paths, improves the file-filters for audio/video mimetypes and fixes the "
-"\"Remove duplicates\" functionality."
-msgstr "Det här är en felrättningsversion som rättar till inläsning av spellistor med relativa sökvägar, förbättrar filfiltren för ljud/film-mimetyper och rättar till \"Ta bort dubletter\" funktionen."
-
-#: ../data/appdata/parole.appdata.xml.in.h:12
-msgid ""
-"This unstable development release features the complete port to the Gtk+3 "
-"toolkit, improvements in the user-interface (more streamlined menus), better"
-" playlists. It also brings updated artwork, GStreamer1.0 support, improved "
-"plugins and the occasional bugfix."
-msgstr "Den här instabila utvecklingsversionen innehåller hela portningen till Gtk+3 verktygslådan, förbättringar i användargränssnittet (mer enhetliga menyer), bättre spellistor. Den har också uppdaterad visuell utformning, GStreamer1.0-stöd, förbättrade insticksprogram och några felrättningar."
 
 #: ../src/common/parole-common.c:83
 msgid "Message"
@@ -689,79 +680,79 @@ msgstr "Meddelande"
 msgid "Error"
 msgstr "Fel"
 
-#: ../src/gst/parole-gst.c:1094 ../src/parole-medialist.c:376
+#: ../src/gst/parole-gst.c:1095 ../src/parole-medialist.c:376
 #, c-format
 msgid "Track %i"
 msgstr "Spår %i"
 
-#: ../src/gst/parole-gst.c:1097
+#: ../src/gst/parole-gst.c:1098
 msgid "Audio CD"
 msgstr "Ljud CD"
 
-#: ../src/gst/parole-gst.c:1304
+#: ../src/gst/parole-gst.c:1305
 msgid "Additional software is required."
 msgstr "Ytterligare mjukvara behövs"
 
-#: ../src/gst/parole-gst.c:1308
+#: ../src/gst/parole-gst.c:1309
 msgid "Don't Install"
 msgstr "Installera inte"
 
-#: ../src/gst/parole-gst.c:1310
+#: ../src/gst/parole-gst.c:1311
 msgid "Install"
 msgstr "Installera"
 
-#: ../src/gst/parole-gst.c:1313
+#: ../src/gst/parole-gst.c:1314
 msgid "OK"
 msgstr "OK"
 
-#: ../src/gst/parole-gst.c:1320
+#: ../src/gst/parole-gst.c:1321
 #, c-format
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
 msgstr "Parole behöver <b>%s</b> för att spela den här filen.\nDet kan installeras automatiskt."
 
-#: ../src/gst/parole-gst.c:1323
+#: ../src/gst/parole-gst.c:1324
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
 msgstr "Parole behöver <b>%s</b> för att spela den här filen."
 
-#: ../src/gst/parole-gst.c:1692
+#: ../src/gst/parole-gst.c:1693
 msgid "The stream is taking too much time to load"
 msgstr "Strömmen tar för lång tid att ladda"
 
-#: ../src/gst/parole-gst.c:1694
+#: ../src/gst/parole-gst.c:1695
 msgid "Do you want to continue loading or stop?"
 msgstr "Vill du fortsätta ladda eller stoppa?"
 
-#: ../src/gst/parole-gst.c:1695
+#: ../src/gst/parole-gst.c:1696
 msgid "Stop"
 msgstr "Stoppa"
 
-#: ../src/gst/parole-gst.c:1696
+#: ../src/gst/parole-gst.c:1697
 msgid "Continue"
 msgstr "Fortsätt"
 
-#: ../src/gst/parole-gst.c:1860
+#: ../src/gst/parole-gst.c:1861
 msgid "GStreamer Error"
 msgstr "GStreamer fel"
 
-#: ../src/gst/parole-gst.c:1861
+#: ../src/gst/parole-gst.c:1862
 msgid "Parole Media Player cannot start."
 msgstr "Mediaspelaren Parole kan inte starta."
 
-#: ../src/gst/parole-gst.c:1886 ../src/gst/parole-gst.c:1901
-#: ../src/gst/parole-gst.c:1930
+#: ../src/gst/parole-gst.c:1887 ../src/gst/parole-gst.c:1902
+#: ../src/gst/parole-gst.c:1936
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
 msgstr "Det gick inte att ladda \"%s\" insticksprogram, kontrollera din GStreamer-installation."
 
-#: ../src/gst/parole-gst.c:2490 ../src/gst/parole-gst.c:2494
+#: ../src/gst/parole-gst.c:2496 ../src/gst/parole-gst.c:2500
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Ljudspår #%d"
 
-#: ../src/gst/parole-gst.c:2530 ../src/gst/parole-gst.c:2534
+#: ../src/gst/parole-gst.c:2536 ../src/gst/parole-gst.c:2540
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Undertext #%d"
@@ -1081,7 +1072,7 @@ msgstr "Påvel Nicklasson"
 msgid "Visit Parole website"
 msgstr "Besök Paroles hemsida"
 
-#: ../src/parole-conf-dialog.c:290
+#: ../src/parole-conf-dialog.c:292
 msgid "Clutter (OpenGL)"
 msgstr "Clutter (OpenGL)"
 
