@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-28 18:31+0100\n"
-"PO-Revision-Date: 2018-03-01 03:24+0000\n"
+"POT-Creation-Date: 2018-03-01 06:32+0100\n"
+"PO-Revision-Date: 2018-03-03 03:35+0000\n"
 "Last-Translator: Andre Miranda <andre42m@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/xfce/xfce-apps/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -621,13 +621,21 @@ msgstr "Parole apresenta a reprodução de arquivos de mídia locais, incluindo 
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid ""
+"This release marks the first stable release of the 1.0 series. A new "
+"Automatic video output option was added to improve usage on virtual machines"
+" and low power devices. A large number of bugs were also resolved, making "
+"this release suitable for all users."
+msgstr "Esta versão marca o primeiro lançamento estável da série 1.0. Uma nova opção de saída de vídeo automático foi adicionada para melhorar o uso em máquinas virtuais e dispositivos de baixa potência. Um grande número de erros também foram resolvidos, tornando esta versão adequada para todos os usuários."
+
+#: ../data/appdata/parole.appdata.xml.in.h:4
+msgid ""
 "This development release is a large cleanup of the codebase, making Parole "
 "lighter and easier to improve. All URLs have been updated to HTTPS. A large "
 "number of bugs have been resolved and a new keyboard shortcuts helper has "
 "been introduced."
 msgstr "Esta versão de desenvolvimento é uma grande limpeza da base de código, tornando o Parole mais leve e fácil de melhorar. Todas as URLs foram atualizadas para HTTPS. Um grande número de erros foram corrigidos e foi introduzido um novo guia de atalhos de teclado."
 
-#: ../data/appdata/parole.appdata.xml.in.h:4
+#: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
 "This development release fixes several bugs, typos, and historical details "
 "present in the documentation. Tags are now processed on files delivered over"
@@ -635,31 +643,31 @@ msgid ""
 "to significant API changes."
 msgstr "Esta versão de desenvolvimento corrige vários erros, erros de digitação, e detalhes históricos presentes na documentação. Tags agora são processadas em arquivos entregues via HTTP/S. O backend de vídeo clutter foi desabilitado para GTK+ 3.22 e mais recente devido a mudanças significativas na API."
 
-#: ../data/appdata/parole.appdata.xml.in.h:5
+#: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
 "This development release adds a new mini mode and the ability to play or "
 "replay content by clicking the circle icons. Theming is simplified and "
 "filenames are displayed when no ID3 tags are found."
 msgstr "Esta versão de desenvolvimento inclui um novo modo miniatura e a capacidade de reproduzir ou reiniciar o conteúdo ao clicar no ícone circular. A aparência foi simplificada e os nomes dos arquivos são exibidos quando nenhuma tag ID3 for encontrada."
 
-#: ../data/appdata/parole.appdata.xml.in.h:6
+#: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This release improves the build process and includes several bug fixes. This"
 " new stable release is a recommended upgrade for all users."
 msgstr "Esta versão melhora o processo de compilação e inclui várias correções de bugs. Esta nova versão estável é uma atualização recomendada para todos os usuários."
 
-#: ../data/appdata/parole.appdata.xml.in.h:7
+#: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
 msgstr "Esta versão de desenvolvimento instável adiciona o novo backend clutter e limpa símbolos obsoletos do GTK3. Também adiciona um recurso de \"ir para a posição\" e vários bugs foram resolvidos."
 
-#: ../data/appdata/parole.appdata.xml.in.h:8
+#: ../data/appdata/parole.appdata.xml.in.h:9
 msgid "This release fixes a problem with detecting DVD drive locations."
 msgstr "Este versão um problema com detecção de unidade de DVDs locais."
 
-#: ../data/appdata/parole.appdata.xml.in.h:9
+#: ../data/appdata/parole.appdata.xml.in.h:10
 msgid ""
 "This release features the completed transition to the Gtk+3 toolkit, "
 "improvements in the user-interface (more streamlined menus), better "
@@ -1068,7 +1076,7 @@ msgstr "Sérgio Cipolla\nRafael Ferreira"
 msgid "Visit Parole website"
 msgstr "Visitar website do Parole"
 
-#: ../src/parole-conf-dialog.c:290
+#: ../src/parole-conf-dialog.c:292
 msgid "Clutter (OpenGL)"
 msgstr "Clutter (OpenGL)"
 
