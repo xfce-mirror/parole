@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-03-01 06:32+0100\n"
-"PO-Revision-Date: 2018-03-04 08:13+0000\n"
+"PO-Revision-Date: 2018-03-04 19:53+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -34,11 +34,11 @@ msgstr "_Medie"
 
 #: ../data/interfaces/parole.ui.h:3
 msgid "_Open…"
-msgstr "_Åbn …"
+msgstr "_Åbn…"
 
 #: ../data/interfaces/parole.ui.h:4
 msgid "Open _Location…"
-msgstr "Åbn _sted …"
+msgstr "Åbn _sted…"
 
 #: ../data/interfaces/parole.ui.h:5
 msgid "Open _Recent"
@@ -46,7 +46,7 @@ msgstr "Åbn _nylige"
 
 #: ../data/interfaces/parole.ui.h:6
 msgid "_Save Playlist…"
-msgstr "_Gem afspilningsliste …"
+msgstr "_Gem afspilningsliste…"
 
 #: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:108
 #: ../src/parole-disc.c:143
@@ -170,7 +170,7 @@ msgstr "_Undertekster"
 
 #: ../data/interfaces/parole.ui.h:36
 msgid "Select Text Subtitles…"
-msgstr "Vælg tekst-undertekster …"
+msgstr "Vælg tekst-undertekster…"
 
 #: ../data/interfaces/parole.ui.h:37
 msgid "_Tools"
@@ -190,7 +190,7 @@ msgstr "_Hjælp"
 
 #: ../data/interfaces/parole.ui.h:41
 msgid "_Report a Bug…"
-msgstr "_Rapportér en fejl …"
+msgstr "_Rapportér en fejl…"
 
 #: ../data/interfaces/parole.ui.h:42
 msgid "_Keyboard Shortcuts"
@@ -254,7 +254,7 @@ msgstr "Disk-afspilningsliste"
 
 #: ../data/interfaces/playlist.ui.h:3
 msgid "Add to playlist…"
-msgstr "Tilføj til afspilningsliste …"
+msgstr "Tilføj til afspilningsliste…"
 
 #: ../data/interfaces/playlist.ui.h:4
 msgid "Add"
@@ -460,7 +460,7 @@ msgstr "Efter filendelse"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "Save Playlist as…"
-msgstr "Gem afspilningsliste som …"
+msgstr "Gem afspilningsliste som…"
 
 #: ../data/interfaces/save-playlist.ui.h:3
 msgid "File Type"
@@ -637,7 +637,7 @@ msgid ""
 "present in the documentation. Tags are now processed on files delivered over"
 " HTTP/S. The clutter video backend is disabled for GTK+ 3.22 and newer due "
 "to significant API changes."
-msgstr "Denne udviklingsudgivelse retter adskillige fejl, stavefejl og historiske detaljer som er tilstede i dokumentationen. Tags bahandles nu på filer leveret over HTTP/S. Clutter-video-backend'en er deaktiveret til GTK+ 3.22 og nyere, på grund af betydelige API-ændringer."
+msgstr "Denne udviklingsudgivelse retter adskillige fejl, stavefejl og historiske detaljer som er tilstede i dokumentationen. Tags behandles nu på filer leveret over HTTP/S. Clutter-video-backend'en er deaktiveret til GTK+ 3.22 og nyere, på grund af betydelige API-ændringer."
 
 #: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
@@ -871,7 +871,7 @@ msgstr "Fejl ved gem af afspilningsliste"
 
 #: ../src/parole-medialist.c:663
 msgid "Unknown playlist format"
-msgstr "Ukendt format til spillleliste"
+msgstr "Ukendt format til spilleliste"
 
 #: ../src/parole-medialist.c:664
 msgid "Please choose a supported playlist format"
