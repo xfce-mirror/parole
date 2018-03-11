@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-28 18:31+0100\n"
-"PO-Revision-Date: 2018-02-28 23:44+0000\n"
+"POT-Creation-Date: 2018-03-01 06:32+0100\n"
+"PO-Revision-Date: 2018-03-11 15:54+0000\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech (http://www.transifex.com/xfce/xfce-apps/language/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -617,13 +617,21 @@ msgstr "Parole nabízí přehrávání lokálních mediálních souborů, včetn
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid ""
+"This release marks the first stable release of the 1.0 series. A new "
+"Automatic video output option was added to improve usage on virtual machines"
+" and low power devices. A large number of bugs were also resolved, making "
+"this release suitable for all users."
+msgstr "Toto vydání je prvním stabilním vydáním série 1.0. Pro zlepšení využití na virtuálních strojích a zařízeních s nízkou spotřebou energie byla přidána nová volba automatického video výstupu. Bylo vyřešeno velké množství chyb a tím se toto vydání stalo vhodným pro všechny uživatele."
+
+#: ../data/appdata/parole.appdata.xml.in.h:4
+msgid ""
 "This development release is a large cleanup of the codebase, making Parole "
 "lighter and easier to improve. All URLs have been updated to HTTPS. A large "
 "number of bugs have been resolved and a new keyboard shortcuts helper has "
 "been introduced."
 msgstr "V tomto vývojovém vydání byla rozsáhle vyčištěna kódová základna, což usnadnilo zrychlení a zjednodušení Parole. Všechny adresy URL byly aktualizovány na HTTPS. Bylo vyřešeno velké množství chyb a byl představen nový dialog pro klávesové zkratky."
 
-#: ../data/appdata/parole.appdata.xml.in.h:4
+#: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
 "This development release fixes several bugs, typos, and historical details "
 "present in the documentation. Tags are now processed on files delivered over"
@@ -631,31 +639,31 @@ msgid ""
 "to significant API changes."
 msgstr "Toto vývojářské vydání opravuje několik vážných chyb, překlepů a historických detailů v dokumentaci. Nyní se zpracovávají tagy na souborech přenášených protokolem HTTP/S. Clutter backend pro video je v sadě nástrojů GTK+ 3.22 a novější zakázaný kvůli značným změnám v rozhraní API."
 
-#: ../data/appdata/parole.appdata.xml.in.h:5
+#: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
 "This development release adds a new mini mode and the ability to play or "
 "replay content by clicking the circle icons. Theming is simplified and "
 "filenames are displayed when no ID3 tags are found."
 msgstr "Toto vývojářské vydání přidává nový zmenšený režim a schopnost přehrávat obsah kliknutím na kulaté ikony. Použití motivů je zjednodušeno a pokud nejsou nalezeny tagy ID3, zobrazí se názvy souborů."
 
-#: ../data/appdata/parole.appdata.xml.in.h:6
+#: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This release improves the build process and includes several bug fixes. This"
 " new stable release is a recommended upgrade for all users."
 msgstr "Toto vydání zlepšuje proces sestavení a obsahuje i opravy několika chyb. Aktualizace na tuto novou stabilní verzi je doporučena všem uživatelům."
 
-#: ../data/appdata/parole.appdata.xml.in.h:7
+#: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
 msgstr "Toto nestabilní vývojářské vydání přidává nový clutter backend a čistí zastaralé symboly sady Gtk3. Také přidává funkci \"Jdi na pozici\" a bylo opraveno několik závažných chyb."
 
-#: ../data/appdata/parole.appdata.xml.in.h:8
+#: ../data/appdata/parole.appdata.xml.in.h:9
 msgid "This release fixes a problem with detecting DVD drive locations."
 msgstr "Toto vydání opravuje potíže při detekci umístění mechanik DVD."
 
-#: ../data/appdata/parole.appdata.xml.in.h:9
+#: ../data/appdata/parole.appdata.xml.in.h:10
 msgid ""
 "This release features the completed transition to the Gtk+3 toolkit, "
 "improvements in the user-interface (more streamlined menus), better "
@@ -1066,7 +1074,7 @@ msgstr "Michal Várady (miko.vaji@gmail.com)\nAlois Nešpor (info@aloisnespor.in
 msgid "Visit Parole website"
 msgstr "Navštívit webovou stránku aplikace Parole"
 
-#: ../src/parole-conf-dialog.c:290
+#: ../src/parole-conf-dialog.c:292
 msgid "Clutter (OpenGL)"
 msgstr "Clutter (OpenGL)"
 
