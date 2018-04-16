@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-01 06:32+0100\n"
-"PO-Revision-Date: 2018-03-11 15:37+0000\n"
+"POT-Creation-Date: 2018-04-12 06:31+0200\n"
+"PO-Revision-Date: 2018-04-16 13:02+0000\n"
 "Last-Translator: Elishai Eliyahu <e1907@mm.st>\n"
 "Language-Team: Hebrew (http://www.transifex.com/xfce/xfce-apps/language/he/)\n"
 "MIME-Version: 1.0\n"
@@ -617,6 +617,10 @@ msgid ""
 msgstr "‏Parole טומן בחובו ניגון של קבצי מדיה מקומיים, כולל וידאו עם תמיכה בכתוביות, תקליטורי שמע CD, DVD, וזרמים חיים. Parole הינו בר הרחבה דרך תוספים."
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
+msgid "This is a minor translations-only release."
+msgstr "זוהי גרסה משנית לתרגומים בלבד."
+
+#: ../data/appdata/parole.appdata.xml.in.h:4
 msgid ""
 "This release marks the first stable release of the 1.0 series. A new "
 "Automatic video output option was added to improve usage on virtual machines"
@@ -624,7 +628,7 @@ msgid ""
 "this release suitable for all users."
 msgstr "גרסה זו מסמנת את הגרסה היציבה הראשונה של סדרה 1.0. אפשרות פלט וידאו אוטומטי חדשה נוספה על מנת לשפר צריכה במכונות וירטואליות והתקני הספק נמוך. מספר גדול של באגים תוקנו, כך שהגירסה הזו מתאימה לכל המשתמשים."
 
-#: ../data/appdata/parole.appdata.xml.in.h:4
+#: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
 "This development release is a large cleanup of the codebase, making Parole "
 "lighter and easier to improve. All URLs have been updated to HTTPS. A large "
@@ -632,7 +636,7 @@ msgid ""
 "been introduced."
 msgstr "גרסת פיתוח זו הינה ניקוי גדול של בסיס הקוד, ההופך את Parole לקלה יותר וניתנת לשיפור באופן קל יותר. כל כתובות ה-URL עודכנו ל-HTTPS. תוקן מספר גדול של באגים והוכנס עוזר חדש לקיצורי מקלדת."
 
-#: ../data/appdata/parole.appdata.xml.in.h:5
+#: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
 "This development release fixes several bugs, typos, and historical details "
 "present in the documentation. Tags are now processed on files delivered over"
@@ -640,31 +644,31 @@ msgid ""
 "to significant API changes."
 msgstr "גרסת פיתוח זו מתקנת מספר באגים, שגיאות כתיב, ופרטים היסטוריים הקיימים בתיעוד. תגים מעובדים כעת על קבצים שנמסרו דרך HTTP/S. המגשר העורפי של וידאו אי סדר מנוטרל עבור GTK+ 3.22 וחדשים יותר עקב שינויים מהותיים ב-API. "
 
-#: ../data/appdata/parole.appdata.xml.in.h:6
+#: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This development release adds a new mini mode and the ability to play or "
 "replay content by clicking the circle icons. Theming is simplified and "
 "filenames are displayed when no ID3 tags are found."
 msgstr "גרסת פיתוח זו מוסיפה מצב מיני חדש ואת היכולת לנגן או לנגן בהילוך חוזר תוכן בעזרת קליק באיקוני המעגל. ביצוע ערכת נושא הפך פשוט יותר ושמות קבצים מוצגים כאשר תגי ID3 לא נמצאים."
 
-#: ../data/appdata/parole.appdata.xml.in.h:7
+#: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
 "This release improves the build process and includes several bug fixes. This"
 " new stable release is a recommended upgrade for all users."
 msgstr "שחרור זה משפר את תהליך הבניה וכולל מספר תיקוני באגים. שחרור יציב חדש זה הינו שדרוג מומלץ עבור כל המשתמשים."
 
-#: ../data/appdata/parole.appdata.xml.in.h:8
+#: ../data/appdata/parole.appdata.xml.in.h:9
 msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
 msgstr "שחרור פיתוח לא יציב זה מוסיף את המגשר עורפי clutter החדש וגם מנקה סמלי Gtk3 פחותים. זה גם מוסיף תכונת \"עבור אל מיקום\" וגם מספר באגים הופנו."
 
-#: ../data/appdata/parole.appdata.xml.in.h:9
+#: ../data/appdata/parole.appdata.xml.in.h:10
 msgid "This release fixes a problem with detecting DVD drive locations."
 msgstr "שחרור זה מתקן בעיה באיתור מיקומי כונני DVD."
 
-#: ../data/appdata/parole.appdata.xml.in.h:10
+#: ../data/appdata/parole.appdata.xml.in.h:11
 msgid ""
 "This release features the completed transition to the Gtk+3 toolkit, "
 "improvements in the user-interface (more streamlined menus), better "
