@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-01 06:32+0100\n"
-"PO-Revision-Date: 2018-03-23 15:47+0000\n"
+"POT-Creation-Date: 2018-04-12 06:31+0200\n"
+"PO-Revision-Date: 2018-04-17 06:21+0000\n"
 "Last-Translator: Yarema aka Knedlyk <yupadmin@gmail.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/xfce/xfce-apps/language/uk/)\n"
 "MIME-Version: 1.0\n"
@@ -616,6 +616,10 @@ msgid ""
 msgstr "Parole може програвати локальні медіа файли, включаючи відео з підтримкою субтитрів, Аудіо CD, DVD, і потокові медіа. Функціональність Parole можна розширити додатками."
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
+msgid "This is a minor translations-only release."
+msgstr "Це є невеликий випуск лише для перекладу."
+
+#: ../data/appdata/parole.appdata.xml.in.h:4
 msgid ""
 "This release marks the first stable release of the 1.0 series. A new "
 "Automatic video output option was added to improve usage on virtual machines"
@@ -623,7 +627,7 @@ msgid ""
 "this release suitable for all users."
 msgstr "Цей випуск позначений як перший стабільний випуск з 1.0 серії. Новий параметр Автоматичного відтворення відео додана, щоб покращити використання на віртуальних машинах і малопотужних пристроїв. Дуже багато вад було виправлено, завдяки чому цей випуск став зручним для всіх користувачів."
 
-#: ../data/appdata/parole.appdata.xml.in.h:4
+#: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
 "This development release is a large cleanup of the codebase, making Parole "
 "lighter and easier to improve. All URLs have been updated to HTTPS. A large "
@@ -631,7 +635,7 @@ msgid ""
 "been introduced."
 msgstr "Цей розробницький випуск є великим очищенням коду, який робить Parole легшим і простішим в користуванні. Всі URL оновлені на HTTPS. Велика кількість вад було виправлено і додано нові швидкі клавіатурні скорочення."
 
-#: ../data/appdata/parole.appdata.xml.in.h:5
+#: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
 "This development release fixes several bugs, typos, and historical details "
 "present in the documentation. Tags are now processed on files delivered over"
@@ -639,31 +643,31 @@ msgid ""
 "to significant API changes."
 msgstr "Цей розробницький випуск містить виправлення кількох вад, описок і історичних деталей в документації. Теги тепер обробляються на файлах, що переносяться через HTTP/S. У зв'язку зі змінами в API виключено бекенд clutter video для GTK+ 3.22 і новіших."
 
-#: ../data/appdata/parole.appdata.xml.in.h:6
+#: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This development release adds a new mini mode and the ability to play or "
 "replay content by clicking the circle icons. Theming is simplified and "
 "filenames are displayed when no ID3 tags are found."
 msgstr "У цьому розробницькому випуску додано новий міні-режим і можливість програвати або програвати заново вміст, клацаючи на круглі значки. Теми спрощено і показуються назви файлів, якщо не знайдено тегів ID3."
 
-#: ../data/appdata/parole.appdata.xml.in.h:7
+#: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
 "This release improves the build process and includes several bug fixes. This"
 " new stable release is a recommended upgrade for all users."
 msgstr "В цьому випуску покращено процес збирання і вирішено кілька проблем. Всім користувачам рекомендовано оновитися до цього нового стабільного випуску."
 
-#: ../data/appdata/parole.appdata.xml.in.h:8
+#: ../data/appdata/parole.appdata.xml.in.h:9
 msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
 msgstr "Це є нестабільний випуск, додано надбудову над clutter і очищено непотрібні Gtk3 символи. Додано також можливість \"перейти на позицію\", виправлено кілька вад."
 
-#: ../data/appdata/parole.appdata.xml.in.h:9
+#: ../data/appdata/parole.appdata.xml.in.h:10
 msgid "This release fixes a problem with detecting DVD drive locations."
 msgstr "Це випуск виправляє проблему з визначенням знаходження DVD пристрою."
 
-#: ../data/appdata/parole.appdata.xml.in.h:10
+#: ../data/appdata/parole.appdata.xml.in.h:11
 msgid ""
 "This release features the completed transition to the Gtk+3 toolkit, "
 "improvements in the user-interface (more streamlined menus), better "
