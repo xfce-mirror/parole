@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-01 06:32+0100\n"
-"PO-Revision-Date: 2018-03-04 19:53+0000\n"
+"POT-Creation-Date: 2018-04-12 06:31+0200\n"
+"PO-Revision-Date: 2018-04-18 18:59+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -616,6 +616,10 @@ msgid ""
 msgstr "Parole tilbyder afspilning af lokale mediefiler, inklusive videoer som understøtter undertekster, lyd-cd'er, dvd'er og live-strømme. Parole kan også udvides gennem plugins."
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
+msgid "This is a minor translations-only release."
+msgstr "Dette er en mindre udgivelse som kun påvirker oversættelser."
+
+#: ../data/appdata/parole.appdata.xml.in.h:4
 msgid ""
 "This release marks the first stable release of the 1.0 series. A new "
 "Automatic video output option was added to improve usage on virtual machines"
@@ -623,7 +627,7 @@ msgid ""
 "this release suitable for all users."
 msgstr "Denne udgivelse markerer den første stabile udgivelse i 1.0-serien. Et nyt automatisk video-output er blevet tilføjet for at forbedre anvendelsen i virtuelle maskiner og enheder med lav ydelse. Et stort antal fejl blev også løst, hvilket gør denne udgivelse egnet til alle brugere."
 
-#: ../data/appdata/parole.appdata.xml.in.h:4
+#: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
 "This development release is a large cleanup of the codebase, making Parole "
 "lighter and easier to improve. All URLs have been updated to HTTPS. A large "
@@ -631,7 +635,7 @@ msgid ""
 "been introduced."
 msgstr "Denne udviklingsudgivelse er en stor oprydning af kodebasen, der gør Parole lettere og nemmere at forbedre. Alle URL'er er blevet opdateret til HTTPS. Et stort antal fejl er blevet løst og en ny genvejshjælper til tastaturlayout er blevet introduceret."
 
-#: ../data/appdata/parole.appdata.xml.in.h:5
+#: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
 "This development release fixes several bugs, typos, and historical details "
 "present in the documentation. Tags are now processed on files delivered over"
@@ -639,31 +643,31 @@ msgid ""
 "to significant API changes."
 msgstr "Denne udviklingsudgivelse retter adskillige fejl, stavefejl og historiske detaljer som er tilstede i dokumentationen. Tags behandles nu på filer leveret over HTTP/S. Clutter-video-backend'en er deaktiveret til GTK+ 3.22 og nyere, på grund af betydelige API-ændringer."
 
-#: ../data/appdata/parole.appdata.xml.in.h:6
+#: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This development release adds a new mini mode and the ability to play or "
 "replay content by clicking the circle icons. Theming is simplified and "
 "filenames are displayed when no ID3 tags are found."
 msgstr "Denne udviklingsudgivelse tilføjet en ny minitilstand og mulighed for at afspille og genafspille indhold ved at klikke på cirkelikonet. Temaer er gjort enkelt og filnavne vises når der ikke findes nogen ID3-tags."
 
-#: ../data/appdata/parole.appdata.xml.in.h:7
+#: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
 "This release improves the build process and includes several bug fixes. This"
 " new stable release is a recommended upgrade for all users."
 msgstr "Denne udgivelse forbedre byg-processen og inkludere adskillige rettelse af fejl. Denne nye stabile udgivelse er en anbefalet opgradering til alle brugere."
 
-#: ../data/appdata/parole.appdata.xml.in.h:8
+#: ../data/appdata/parole.appdata.xml.in.h:9
 msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
 msgstr "Denne ustabile udviklingsudgivelse tilføjer den nye clutter-motor og rydder op i udgåede Gtk3-symboler. Den tilføjer også en \"gå til placering\"-funktion og adskillige fejl er blevet adresseret."
 
-#: ../data/appdata/parole.appdata.xml.in.h:9
+#: ../data/appdata/parole.appdata.xml.in.h:10
 msgid "This release fixes a problem with detecting DVD drive locations."
 msgstr "Denne udgivelse retter et problem knyttet til registrering af placeringen af dvd-drev."
 
-#: ../data/appdata/parole.appdata.xml.in.h:10
+#: ../data/appdata/parole.appdata.xml.in.h:11
 msgid ""
 "This release features the completed transition to the Gtk+3 toolkit, "
 "improvements in the user-interface (more streamlined menus), better "
