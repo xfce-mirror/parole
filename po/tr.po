@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-01 06:32+0100\n"
-"PO-Revision-Date: 2018-03-05 00:23+0000\n"
+"POT-Creation-Date: 2018-04-12 06:31+0200\n"
+"PO-Revision-Date: 2018-04-22 18:57+0000\n"
 "Last-Translator: Necdet Yücel <necdetyucel@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/xfce/xfce-apps/language/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -619,6 +619,10 @@ msgid ""
 msgstr "Parole yerel medya dosyalarının oynatılmasının,altyazı desteği de dahil olmak üzere,ses CD'leri DVD'leri ve canlı akışların özellikleridir.Ayrıca Parole eklentiler yolu ile genişletilebilir."
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
+msgid "This is a minor translations-only release."
+msgstr "Bu sürüm sadece basit çeviri güncellemeleri içerir."
+
+#: ../data/appdata/parole.appdata.xml.in.h:4
 msgid ""
 "This release marks the first stable release of the 1.0 series. A new "
 "Automatic video output option was added to improve usage on virtual machines"
@@ -626,7 +630,7 @@ msgid ""
 "this release suitable for all users."
 msgstr "Bu sürüm 1.0 serisinin ilk kararlı sürümüdür. Sanal makinelerde ve düşük güçlü cihazlarda kullanımını iyileştirmek için yeni bir Otomatik video çıkışı seçeneği eklendi. Ayrıca, çok sayıda hata da giderildi ve bu sürüm tüm kullanıcılar için uygun hale geldi."
 
-#: ../data/appdata/parole.appdata.xml.in.h:4
+#: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
 "This development release is a large cleanup of the codebase, making Parole "
 "lighter and easier to improve. All URLs have been updated to HTTPS. A large "
@@ -634,7 +638,7 @@ msgid ""
 "been introduced."
 msgstr "Bu geliştirme sürümü, Parole'yi hafifletmek ve geliştirmeyi daha kolay hale getirmek için kod tabanının geniş bir temizlenmesidir. Tüm adresler HTTPS olarak güncellendi. Çok sayıda hata giderildi ve yeni klavye kısayolları atandı."
 
-#: ../data/appdata/parole.appdata.xml.in.h:5
+#: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
 "This development release fixes several bugs, typos, and historical details "
 "present in the documentation. Tags are now processed on files delivered over"
@@ -642,31 +646,31 @@ msgid ""
 "to significant API changes."
 msgstr "Bu geliştirme sürümü belgelerde bulunan çeşitli hataları, yazım hatalarını ve tarihi ayrıntıları düzeltir. Etiketler artık HTTP/S üzerinden iletilen dosyalar üzerinde işleniyor. Dağınık video arka uç, önemli API değişiklikleri nedeniyle GTK+ 3.22 ve daha yeni sürümler için devre dışı bırakılmıştır."
 
-#: ../data/appdata/parole.appdata.xml.in.h:6
+#: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This development release adds a new mini mode and the ability to play or "
 "replay content by clicking the circle icons. Theming is simplified and "
 "filenames are displayed when no ID3 tags are found."
 msgstr "Bu geliştirme sürümü yeni bir mini kip ve daire simgelerini tıklatarak içeriği oynatma veya yeniden oynatma becerisi ekliyor. Tema basitleştirildi ve hiç ID3 etiketi bulunmadığında dosya isimleri gösteriliyor."
 
-#: ../data/appdata/parole.appdata.xml.in.h:7
+#: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
 "This release improves the build process and includes several bug fixes. This"
 " new stable release is a recommended upgrade for all users."
 msgstr "Bu sürüm derleme sürecini iyileştirdiği gibi birçok hata düzeltmesi de içermektedir. Tüm kullanıcıların bu yeni kararlı sürüme yükseltme yapmaları önerilmektedir."
 
-#: ../data/appdata/parole.appdata.xml.in.h:8
+#: ../data/appdata/parole.appdata.xml.in.h:9
 msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
 msgstr "Bu istikrarsız geliştirme sürümü yeni karışıklığı arka uça ekler ve önerilmeyen Gtk3 sembollerini temizler.Aynı zamanda \"go to position\" özelliği ekler ve başka hataları ele alır."
 
-#: ../data/appdata/parole.appdata.xml.in.h:9
+#: ../data/appdata/parole.appdata.xml.in.h:10
 msgid "This release fixes a problem with detecting DVD drive locations."
 msgstr "Bu sürüm DVD sürücüsü yerleri tespiti ile sorunu giderir."
 
-#: ../data/appdata/parole.appdata.xml.in.h:10
+#: ../data/appdata/parole.appdata.xml.in.h:11
 msgid ""
 "This release features the completed transition to the Gtk+3 toolkit, "
 "improvements in the user-interface (more streamlined menus), better "
