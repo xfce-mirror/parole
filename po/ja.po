@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-01 06:32+0100\n"
-"PO-Revision-Date: 2018-03-20 05:25+0000\n"
+"POT-Creation-Date: 2018-04-12 06:31+0200\n"
+"PO-Revision-Date: 2018-04-23 23:04+0000\n"
 "Last-Translator: Nobuhiro Iwamatsu <iwamatsu@nigauri.org>\n"
 "Language-Team: Japanese (http://www.transifex.com/xfce/xfce-apps/language/ja/)\n"
 "MIME-Version: 1.0\n"
@@ -615,6 +615,10 @@ msgid ""
 msgstr "Parole は字幕をサポートする動画を含むローカルメディアファイル、音楽 CD、DVD、およびライブストリームの再生を行えます。また、プラグインによって拡張可能です。"
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
+msgid "This is a minor translations-only release."
+msgstr "これは翻訳のみのマイナーリリースです。"
+
+#: ../data/appdata/parole.appdata.xml.in.h:4
 msgid ""
 "This release marks the first stable release of the 1.0 series. A new "
 "Automatic video output option was added to improve usage on virtual machines"
@@ -622,7 +626,7 @@ msgid ""
 "this release suitable for all users."
 msgstr "このリリースは 1.0 シリーズの最初の安定リリースです。 新しい自動ビデオ出力オプションが追加され、仮想マシンと低消費電力デバイスでの使用を強化しました。 多くのバグも修正され、すべてのユーザーに向けたリリースとなっています。"
 
-#: ../data/appdata/parole.appdata.xml.in.h:4
+#: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
 "This development release is a large cleanup of the codebase, making Parole "
 "lighter and easier to improve. All URLs have been updated to HTTPS. A large "
@@ -630,7 +634,7 @@ msgid ""
 "been introduced."
 msgstr "この開発版リリースは、コードベースの大規模なクリーンアップを行っており、Parole は軽量化され、より改善されました。すべての URL が HTTPSに更新されました。多数のバグが修正され、新しいキーボードショートカットヘルパーが導入されました。"
 
-#: ../data/appdata/parole.appdata.xml.in.h:5
+#: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
 "This development release fixes several bugs, typos, and historical details "
 "present in the documentation. Tags are now processed on files delivered over"
@@ -638,31 +642,31 @@ msgid ""
 "to significant API changes."
 msgstr "この開発版リリースでは、ドキュメントにあるいくつかのバグ、タイプミス、詳細履歴が修正されています。 タグは HTTP/S 経由で配信されるファイルで処理されるようになりました。clutter ビデオのバックエンドは大幅な API の変更により、GTK+ 3.22 以降で無効になります。"
 
-#: ../data/appdata/parole.appdata.xml.in.h:6
+#: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This development release adds a new mini mode and the ability to play or "
 "replay content by clicking the circle icons. Theming is simplified and "
 "filenames are displayed when no ID3 tags are found."
 msgstr "この開発版リリースでは、新しいミニモードとサークルアイコンをクリックしてコンテンツを再生とリプレイする機能が追加されました。ID3 タグが見つからない場合は、テーマは簡略化され、ファイル名が表示されます。"
 
-#: ../data/appdata/parole.appdata.xml.in.h:7
+#: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
 "This release improves the build process and includes several bug fixes. This"
 " new stable release is a recommended upgrade for all users."
 msgstr "このリリースでは、ビルドプロセスを改善し、いくつかのバグ修正が含まれています。この新しい安定版リリースは、すべてのユーザーへの推奨アップグレードです。"
 
-#: ../data/appdata/parole.appdata.xml.in.h:8
+#: ../data/appdata/parole.appdata.xml.in.h:9
 msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
 msgstr "この開発版リリースでは、新しく Clutter バックエンドが追加され、廃止予定の Gtk3 シンボルが整理されました。他に \"指定時間へ移動\" 機能が追加され、いくつかのバグが修正されました。"
 
-#: ../data/appdata/parole.appdata.xml.in.h:9
+#: ../data/appdata/parole.appdata.xml.in.h:10
 msgid "This release fixes a problem with detecting DVD drive locations."
 msgstr "このリリースでは DVD ドライブの検出に関する問題が修正されました。"
 
-#: ../data/appdata/parole.appdata.xml.in.h:10
+#: ../data/appdata/parole.appdata.xml.in.h:11
 msgid ""
 "This release features the completed transition to the Gtk+3 toolkit, "
 "improvements in the user-interface (more streamlined menus), better "
