@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# John Humphrys <john.humphrys@protonmail.com>, 2018
+# John Humphrys <john.humphrys@pm.me>, 2018
 # Michael Findlay <translate@cobber-linux.org>, 2013-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-01 06:32+0100\n"
-"PO-Revision-Date: 2018-03-21 06:05+0000\n"
-"Last-Translator: John Humphrys <john.humphrys@protonmail.com>\n"
+"POT-Creation-Date: 2018-04-12 06:31+0200\n"
+"PO-Revision-Date: 2018-04-27 00:10+0000\n"
+"Last-Translator: John Humphrys <john.humphrys@pm.me>\n"
 "Language-Team: English (Australia) (http://www.transifex.com/xfce/xfce-apps/language/en_AU/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -615,6 +615,10 @@ msgid ""
 msgstr "Parole features playback of local media files, including video with subtitles support, Audio CDs, DVDs, and live streams. Parole is also extensible via plugins."
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
+msgid "This is a minor translations-only release."
+msgstr "This is a minor translations-only release."
+
+#: ../data/appdata/parole.appdata.xml.in.h:4
 msgid ""
 "This release marks the first stable release of the 1.0 series. A new "
 "Automatic video output option was added to improve usage on virtual machines"
@@ -622,7 +626,7 @@ msgid ""
 "this release suitable for all users."
 msgstr "This release marks the first stable release of the 1.0 series. A new Automatic video output option was added to improve usage on virtual machines and low power devices. A large number of bugs were also resolved, making this release suitable for all users."
 
-#: ../data/appdata/parole.appdata.xml.in.h:4
+#: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
 "This development release is a large cleanup of the codebase, making Parole "
 "lighter and easier to improve. All URLs have been updated to HTTPS. A large "
@@ -630,7 +634,7 @@ msgid ""
 "been introduced."
 msgstr "This development release is a large cleanup of the codebase, making Parole lighter and easier to improve. All URLs have been updated to HTTPS. A large number of bugs have been resolved and a new keyboard shortcuts helper has been introduced."
 
-#: ../data/appdata/parole.appdata.xml.in.h:5
+#: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
 "This development release fixes several bugs, typos, and historical details "
 "present in the documentation. Tags are now processed on files delivered over"
@@ -638,31 +642,31 @@ msgid ""
 "to significant API changes."
 msgstr "This development release fixes several bugs, typos, and historical details present in the documentation. Tags are now processed on files delivered over HTTP/S. The clutter video backend is disabled for GTK+ 3.22 and newer due to significant API changes."
 
-#: ../data/appdata/parole.appdata.xml.in.h:6
+#: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This development release adds a new mini mode and the ability to play or "
 "replay content by clicking the circle icons. Theming is simplified and "
 "filenames are displayed when no ID3 tags are found."
 msgstr "This development release adds a new mini mode and the ability to play or replay content by clicking the circle icons. Theming is simplified and filenames are displayed when no ID3 tags are found."
 
-#: ../data/appdata/parole.appdata.xml.in.h:7
+#: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
 "This release improves the build process and includes several bug fixes. This"
 " new stable release is a recommended upgrade for all users."
 msgstr "This release improves the build process and includes several bug fixes. This new stable release is a recommended upgrade for all users."
 
-#: ../data/appdata/parole.appdata.xml.in.h:8
+#: ../data/appdata/parole.appdata.xml.in.h:9
 msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
 msgstr "This unstable development release adds the new clutter backend and cleans up deprecated Gtk3 symbols. It also adds a \"go to position\" feature and several bugs have been addressed."
 
-#: ../data/appdata/parole.appdata.xml.in.h:9
+#: ../data/appdata/parole.appdata.xml.in.h:10
 msgid "This release fixes a problem with detecting DVD drive locations."
 msgstr "This release fixes a problem with detecting DVD drive locations."
 
-#: ../data/appdata/parole.appdata.xml.in.h:10
+#: ../data/appdata/parole.appdata.xml.in.h:11
 msgid ""
 "This release features the completed transition to the Gtk+3 toolkit, "
 "improvements in the user-interface (more streamlined menus), better "
