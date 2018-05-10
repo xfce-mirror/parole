@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Edin Veskovic <edin.lockedin@gmail.com>, 2018
 # Edin Veskovic <edin.lockedin@gmail.com>, 2014-2015,2017
 # Edin Veskovic <edin.lockedin@gmail.com>, 2014
 # Ivica  Kolić <ikoli@yahoo.com>, 2013-2014,2016-2017
@@ -12,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-03 18:30+0200\n"
-"PO-Revision-Date: 2017-10-12 20:29+0000\n"
+"POT-Creation-Date: 2018-04-12 06:31+0200\n"
+"PO-Revision-Date: 2018-05-10 14:10+0000\n"
 "Last-Translator: Ivica  Kolić <ikoli@yahoo.com>\n"
 "Language-Team: Croatian (http://www.transifex.com/xfce/xfce-apps/language/hr/)\n"
 "MIME-Version: 1.0\n"
@@ -244,7 +245,7 @@ msgid "Open Media Files"
 msgstr "Otvori datoteke medija"
 
 #: ../data/interfaces/playlist.ui.h:1
-#: ../data/interfaces/parole-settings.ui.h:27
+#: ../data/interfaces/parole-settings.ui.h:28
 #: ../data/interfaces/shortcuts.ui.h:13 ../src/parole-medialist.c:745
 #: ../src/parole-medialist.c:784 ../src/parole-player.c:3191
 msgid "Playlist"
@@ -303,7 +304,7 @@ msgid "Play opened files"
 msgstr "Izvodi otvorene datoteke"
 
 #: ../data/interfaces/playlist.ui.h:15
-#: ../data/interfaces/parole-settings.ui.h:25
+#: ../data/interfaces/parole-settings.ui.h:26
 msgid "Remember playlist"
 msgstr "Zapamti listu izvođenja"
 
@@ -332,123 +333,127 @@ msgid "Visit Website"
 msgstr "Posjetite web stranicu"
 
 #: ../data/interfaces/parole-settings.ui.h:1
+msgid "Automatic"
+msgstr "Automatski"
+
+#: ../data/interfaces/parole-settings.ui.h:2
 msgid "X Window System (X11/XShm/Xv)"
 msgstr "X prozorski sustav (X11/XShm/Xv)"
 
-#: ../data/interfaces/parole-settings.ui.h:2
+#: ../data/interfaces/parole-settings.ui.h:3
 msgid "X Window System (No Xv)"
 msgstr "X prozorski sustav (Ne Xv)"
 
-#: ../data/interfaces/parole-settings.ui.h:3
+#: ../data/interfaces/parole-settings.ui.h:4
 msgid "Parole Settings"
 msgstr "Parole postavke"
 
-#: ../data/interfaces/parole-settings.ui.h:4
+#: ../data/interfaces/parole-settings.ui.h:5
 msgid "Configure your media player"
 msgstr "Konfiguriraj svirač medije"
 
-#: ../data/interfaces/parole-settings.ui.h:5
+#: ../data/interfaces/parole-settings.ui.h:6
 msgid "Disable screensaver when playing movies"
 msgstr "Onemogući čuvar zaslona za vrijeme izvođenja filma"
 
-#: ../data/interfaces/parole-settings.ui.h:6
+#: ../data/interfaces/parole-settings.ui.h:7
 msgid "<b>Screensaver</b>"
 msgstr "<b>Čuvar zaslona</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:7
+#: ../data/interfaces/parole-settings.ui.h:8
 msgid "Show visual effects when an audio file is played"
 msgstr "Pokazuj vizualne efekte prilikom reprodukcije glazbe"
 
-#: ../data/interfaces/parole-settings.ui.h:8
+#: ../data/interfaces/parole-settings.ui.h:9
 msgid "Visualization type:"
 msgstr "Vrsta vizualizacije:"
 
-#: ../data/interfaces/parole-settings.ui.h:9
+#: ../data/interfaces/parole-settings.ui.h:10
 msgid "<b>Audio Visualization</b>"
 msgstr "<b>Audio vizualizacija</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:10
+#: ../data/interfaces/parole-settings.ui.h:11
 msgid "Enable keyboard multimedia keys"
 msgstr "Omogući multimedijske tipke na tipkovnici"
 
-#: ../data/interfaces/parole-settings.ui.h:11
+#: ../data/interfaces/parole-settings.ui.h:12
 msgid "<b>Keyboard</b>"
 msgstr "<b>Tipkovnica</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:12
+#: ../data/interfaces/parole-settings.ui.h:13
 #: ../data/interfaces/shortcuts.ui.h:1
 msgid "General"
 msgstr "Općenito"
 
-#: ../data/interfaces/parole-settings.ui.h:13
+#: ../data/interfaces/parole-settings.ui.h:14
 msgid "Please restart Parole for this change to take effect."
 msgstr "Molimo ponovno pokrenite Parole kako bi se ove promijene primjenile."
 
-#: ../data/interfaces/parole-settings.ui.h:14
+#: ../data/interfaces/parole-settings.ui.h:15
 msgid "<b>Video Output</b>"
 msgstr "<b>Video izlaz</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:15
+#: ../data/interfaces/parole-settings.ui.h:16
 msgid "Brightness:"
 msgstr "Svjetlina:"
 
-#: ../data/interfaces/parole-settings.ui.h:16
+#: ../data/interfaces/parole-settings.ui.h:17
 msgid "Contrast:"
 msgstr "Kontrast:"
 
-#: ../data/interfaces/parole-settings.ui.h:17
+#: ../data/interfaces/parole-settings.ui.h:18
 msgid "Hue:"
 msgstr "Nijansa:"
 
-#: ../data/interfaces/parole-settings.ui.h:18
+#: ../data/interfaces/parole-settings.ui.h:19
 msgid "Saturation:"
 msgstr "Zasićenost:"
 
-#: ../data/interfaces/parole-settings.ui.h:19
+#: ../data/interfaces/parole-settings.ui.h:20
 msgid "Reset to defaults"
 msgstr "Vrati na zadano"
 
-#: ../data/interfaces/parole-settings.ui.h:20
+#: ../data/interfaces/parole-settings.ui.h:21
 msgid "<b>Color Balance</b>"
 msgstr "<b>Balans boje</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:21
+#: ../data/interfaces/parole-settings.ui.h:22
 msgid "Display"
 msgstr "Zaslon"
 
-#: ../data/interfaces/parole-settings.ui.h:22
+#: ../data/interfaces/parole-settings.ui.h:23
 msgid "Always replace playlist with opened files"
 msgstr "Uvijek zamijeni listu izvođenja sa otvorenim datotekama"
 
-#: ../data/interfaces/parole-settings.ui.h:23
+#: ../data/interfaces/parole-settings.ui.h:24
 msgid "Check and remove duplicate media entries"
 msgstr "Provjeri i ukloni duplicirane unose"
 
-#: ../data/interfaces/parole-settings.ui.h:24
+#: ../data/interfaces/parole-settings.ui.h:25
 msgid "Start playing opened files"
 msgstr "Zaočni izvođenje otvorenih datoteka"
 
-#: ../data/interfaces/parole-settings.ui.h:26
+#: ../data/interfaces/parole-settings.ui.h:27
 msgid "<b>Playlist Settings</b>"
 msgstr "<b>Postavke liste izvođenja</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:28
+#: ../data/interfaces/parole-settings.ui.h:29
 msgid "Automatically show subtitles when playing movie file"
 msgstr "Automatski pokaži podnapise kada se izvodi datoteka filma"
 
-#: ../data/interfaces/parole-settings.ui.h:29
+#: ../data/interfaces/parole-settings.ui.h:30
 msgid "Font:"
 msgstr "Font:"
 
-#: ../data/interfaces/parole-settings.ui.h:30
+#: ../data/interfaces/parole-settings.ui.h:31
 msgid "Encoding:"
 msgstr "Kodiranje:"
 
-#: ../data/interfaces/parole-settings.ui.h:31
+#: ../data/interfaces/parole-settings.ui.h:32
 msgid "<b>Subtitle Settings</b>"
 msgstr "<b>Postavke podnapisa</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:32
+#: ../data/interfaces/parole-settings.ui.h:33
 msgid "Subtitles"
 msgstr "Podnapisi"
 
@@ -614,6 +619,18 @@ msgid ""
 msgstr "Parole pruža mogućnost izvođenja lokalnih datoteka uključujući video s podrškom za podnapise, Audio CDa, DVDa te izvođenje strajanja uživo. Parole je također moguće proširiti dodatcima."
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
+msgid "This is a minor translations-only release."
+msgstr "Ovo je manje izdanje sa ažuriranim prijevodima."
+
+#: ../data/appdata/parole.appdata.xml.in.h:4
+msgid ""
+"This release marks the first stable release of the 1.0 series. A new "
+"Automatic video output option was added to improve usage on virtual machines"
+" and low power devices. A large number of bugs were also resolved, making "
+"this release suitable for all users."
+msgstr "Ova inačica predstavlja prvo stabilno izdanje 1.0 serije. Dodan je novi Automatski način izvođenja radi poboljšanja izvođenja na virtualnim mašinama i uređajima manje snage. Ispravljen je velik broj grešaka što ovu inačicu čini primjerenom za sve korisnike."
+
+#: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
 "This development release is a large cleanup of the codebase, making Parole "
 "lighter and easier to improve. All URLs have been updated to HTTPS. A large "
@@ -621,7 +638,7 @@ msgid ""
 "been introduced."
 msgstr "Ova razvojna verzija obuhvaća veliko čišćenje koda što Parole čini generalno lakšim tako i lakšim za održavnje i poboljšavanje. Svi URL-ovi zamijenjeni su sigurnijim HTTPS verzijama. Otklonjen je veliki broj pogrešaka te je uveden novi pomoćnik za kratice tipkovnice."
 
-#: ../data/appdata/parole.appdata.xml.in.h:4
+#: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
 "This development release fixes several bugs, typos, and historical details "
 "present in the documentation. Tags are now processed on files delivered over"
@@ -629,31 +646,31 @@ msgid ""
 "to significant API changes."
 msgstr "Ova razvojna verzija donosi popravke za nekoliko bagova, pogrešaka i povijesnih detalja prisutnih u dokumentaciji. Oznaka se sada procesuiraju i za datoteke dohvaćene preko HTTP/S-a. Pozadinski video program Clutter je onemogućen za GTK+ 3.22 i novije zbog znatnih izmjena u API-ju. "
 
-#: ../data/appdata/parole.appdata.xml.in.h:5
+#: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This development release adds a new mini mode and the ability to play or "
 "replay content by clicking the circle icons. Theming is simplified and "
 "filenames are displayed when no ID3 tags are found."
 msgstr "Ova razvojna verzija dodaje novi mini način rada te mogućnost izvođenja ili ponavljanja sadržaja klikom na kružnu ikonu. Pojednostavljeno je temiranje te se prikazuju imena datoteka kada nisu nađene ID3 oznake."
 
-#: ../data/appdata/parole.appdata.xml.in.h:6
+#: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
 "This release improves the build process and includes several bug fixes. This"
 " new stable release is a recommended upgrade for all users."
 msgstr "Ovo ažuriranje poboljšava proces izgradnje i uključuje nekoliko ispravaka. Ova stabilna verzija je preporučena nadogradnja za sve korisnike."
 
-#: ../data/appdata/parole.appdata.xml.in.h:7
+#: ../data/appdata/parole.appdata.xml.in.h:9
 msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
 msgstr "Ova nestabilna razvojna verzija donosi novi clutter backend i čišćenje zastarjelih Gtk3 simbola. Također dodaje \"Idi na poziciju\" mogućnost kao i ispravljanje nekoliko grešaka."
 
-#: ../data/appdata/parole.appdata.xml.in.h:8
+#: ../data/appdata/parole.appdata.xml.in.h:10
 msgid "This release fixes a problem with detecting DVD drive locations."
 msgstr "Ova verzija rješava problem s pravilnim otkrivanjem lokacije DVD pogona."
 
-#: ../data/appdata/parole.appdata.xml.in.h:9
+#: ../data/appdata/parole.appdata.xml.in.h:11
 msgid ""
 "This release features the completed transition to the Gtk+3 toolkit, "
 "improvements in the user-interface (more streamlined menus), better "
@@ -661,27 +678,6 @@ msgid ""
 " been added (MPRIS2). Most of the artwork has been updated for this release "
 "and we use the GStreamer1.0 framework now by default."
 msgstr "Ova verzija pruža kompletnu tranziciju na Gtk+3 set alata, poboljšanja u korisničkom sučelju (efikasniji izbornici), bolje liste izvođenja. Poboljšani su postojeći dodatci te su dodani novi (MPRIS2), ažurirana je većina ilustracija, GStreamer 1.0 framework sada se koristi kao zadani. "
-
-#: ../data/appdata/parole.appdata.xml.in.h:10
-msgid ""
-"This unstable development release features mostly bugfixes and introduces "
-"the new MPRIS2 plugin."
-msgstr "Ova nestabilna razvojna verzija donosi ispravke te predstavlja novi MPRIS2 dodatak."
-
-#: ../data/appdata/parole.appdata.xml.in.h:11
-msgid ""
-"This is a bugfix release which fixes the loading of playlists with relative "
-"paths, improves the file-filters for audio/video mimetypes and fixes the "
-"\"Remove duplicates\" functionality."
-msgstr "Ova verzija donosi ispravke učitavnja lista izvođenja s relativnim putanjama, poboljšava filtere datoteka za audio/video mime vrste te ispravlja \"Ukloni duplikate\" funkciju."
-
-#: ../data/appdata/parole.appdata.xml.in.h:12
-msgid ""
-"This unstable development release features the complete port to the Gtk+3 "
-"toolkit, improvements in the user-interface (more streamlined menus), better"
-" playlists. It also brings updated artwork, GStreamer1.0 support, improved "
-"plugins and the occasional bugfix."
-msgstr "Ova nestabilna razvojna verzija pruža kompletnu tranziciju na Gtk+3 set alata, poboljšanja u korisničkom sučelju (efikasniji izbornici), bolje liste izvođenja. Ažurirana je većina ilustracija, GStreamer 1.0 framework sada se koristi kao zadani, poboljšani su dodatci te uvedeni neki ispravci."
 
 #: ../src/common/parole-common.c:83
 msgid "Message"
@@ -691,79 +687,79 @@ msgstr "Poruka"
 msgid "Error"
 msgstr "Greška"
 
-#: ../src/gst/parole-gst.c:1094 ../src/parole-medialist.c:376
+#: ../src/gst/parole-gst.c:1095 ../src/parole-medialist.c:376
 #, c-format
 msgid "Track %i"
 msgstr "Zapis %i"
 
-#: ../src/gst/parole-gst.c:1097
+#: ../src/gst/parole-gst.c:1098
 msgid "Audio CD"
 msgstr "Audio CD"
 
-#: ../src/gst/parole-gst.c:1304
+#: ../src/gst/parole-gst.c:1305
 msgid "Additional software is required."
 msgstr "Potraban je dodatni software."
 
-#: ../src/gst/parole-gst.c:1308
+#: ../src/gst/parole-gst.c:1309
 msgid "Don't Install"
 msgstr "Ne instaliraj"
 
-#: ../src/gst/parole-gst.c:1310
+#: ../src/gst/parole-gst.c:1311
 msgid "Install"
 msgstr "Instaliraj"
 
-#: ../src/gst/parole-gst.c:1313
+#: ../src/gst/parole-gst.c:1314
 msgid "OK"
 msgstr "U redu"
 
-#: ../src/gst/parole-gst.c:1320
+#: ../src/gst/parole-gst.c:1321
 #, c-format
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
 msgstr "Parole treba <b>%s</b> kako bi reproducirali ovu datoteku.\nMože biti instaliran automatski."
 
-#: ../src/gst/parole-gst.c:1323
+#: ../src/gst/parole-gst.c:1324
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
 msgstr "Parole treba <b>%s</b> kako bi reproducirao ovu datoteku."
 
-#: ../src/gst/parole-gst.c:1692
+#: ../src/gst/parole-gst.c:1693
 msgid "The stream is taking too much time to load"
 msgstr "Reprodukcija se predugo učitava"
 
-#: ../src/gst/parole-gst.c:1694
+#: ../src/gst/parole-gst.c:1695
 msgid "Do you want to continue loading or stop?"
 msgstr "Želite li nastaviti učitavanje ili stati?"
 
-#: ../src/gst/parole-gst.c:1695
+#: ../src/gst/parole-gst.c:1696
 msgid "Stop"
 msgstr "Stop"
 
-#: ../src/gst/parole-gst.c:1696
+#: ../src/gst/parole-gst.c:1697
 msgid "Continue"
 msgstr "Nastavi"
 
-#: ../src/gst/parole-gst.c:1860
+#: ../src/gst/parole-gst.c:1861
 msgid "GStreamer Error"
 msgstr "GStreamer greška"
 
-#: ../src/gst/parole-gst.c:1861
+#: ../src/gst/parole-gst.c:1862
 msgid "Parole Media Player cannot start."
 msgstr "Parole se ne može pokrenuti."
 
-#: ../src/gst/parole-gst.c:1886 ../src/gst/parole-gst.c:1901
-#: ../src/gst/parole-gst.c:1930
+#: ../src/gst/parole-gst.c:1887 ../src/gst/parole-gst.c:1902
+#: ../src/gst/parole-gst.c:1936
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
 msgstr "NIje moguće učitati \"%s\" priključak, provjerite vašu GStreamer instalaciju."
 
-#: ../src/gst/parole-gst.c:2490 ../src/gst/parole-gst.c:2494
+#: ../src/gst/parole-gst.c:2496 ../src/gst/parole-gst.c:2500
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Audio zapis #%d"
 
-#: ../src/gst/parole-gst.c:2530 ../src/gst/parole-gst.c:2534
+#: ../src/gst/parole-gst.c:2536 ../src/gst/parole-gst.c:2540
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Podnapis #%d"
@@ -1085,7 +1081,7 @@ msgstr "Ivica Kolić <ikoli@yahoo.com>"
 msgid "Visit Parole website"
 msgstr "Posjetite Parole web stranicu"
 
-#: ../src/parole-conf-dialog.c:290
+#: ../src/parole-conf-dialog.c:292
 msgid "Clutter (OpenGL)"
 msgstr "Clutter (OpenGL)"
 
