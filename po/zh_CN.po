@@ -5,19 +5,19 @@
 # Translators:
 # Chipong Luo <chipong.luo@yahoo.com>, 2011-2012
 # bnw, 2015
-# Mingcong Bai <jeffbai@aosc.xyz>, 2017
+# Mingcong Bai <jeffbai@aosc.xyz>, 2017-2018
 # wwj402 <wwj402@gmail.com>, 2018
-# Xiaobo Zhou <zhouxiaobo.500@gmail.com>, 2017
+# xiaobo zhou <zhouxiaobo.500@gmail.com>, 2017
 # 玉堂白鹤 <yjwork@qq.com>, 2013-2014
-# Xiaobo Zhou <zhouxiaobo.500@gmail.com>, 2014
+# xiaobo zhou <zhouxiaobo.500@gmail.com>, 2014
 # 玉堂白鹤 <yjwork@qq.com>, 2014-2015,2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-01 06:32+0100\n"
-"PO-Revision-Date: 2018-03-01 13:12+0000\n"
-"Last-Translator: wwj402 <wwj402@gmail.com>\n"
+"POT-Creation-Date: 2018-04-12 06:31+0200\n"
+"PO-Revision-Date: 2018-05-10 15:54+0000\n"
+"Last-Translator: Mingcong Bai <jeffbai@aosc.xyz>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/xfce/xfce-apps/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -621,6 +621,10 @@ msgid ""
 msgstr "Parole 支持本地媒体文件的播放，包含了有字幕影片的支持，音乐 CD，DVD 以及直播流的支持。Parole 也可以使用插件扩充其功能。"
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
+msgid "This is a minor translations-only release."
+msgstr "该版本仅更新翻译。"
+
+#: ../data/appdata/parole.appdata.xml.in.h:4
 msgid ""
 "This release marks the first stable release of the 1.0 series. A new "
 "Automatic video output option was added to improve usage on virtual machines"
@@ -628,7 +632,7 @@ msgid ""
 "this release suitable for all users."
 msgstr "此版本标志着 1.0 系列的第一个稳定版本。新增了自动视频输出选项，以提高虚拟机和低功耗设备的使用率。大量的缺陷也得到了解决，使得这个版本适合所有用户。"
 
-#: ../data/appdata/parole.appdata.xml.in.h:4
+#: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
 "This development release is a large cleanup of the codebase, making Parole "
 "lighter and easier to improve. All URLs have been updated to HTTPS. A large "
@@ -636,7 +640,7 @@ msgid ""
 "been introduced."
 msgstr "该开发版本的主要目的是大幅度清理代码以便为 Parole 减重并方便后续开发。所有 URL 都已更新为 HTTPS。该版本还修复了大量问题并引入了一个新的键盘快捷键助手。"
 
-#: ../data/appdata/parole.appdata.xml.in.h:5
+#: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
 "This development release fixes several bugs, typos, and historical details "
 "present in the documentation. Tags are now processed on files delivered over"
@@ -644,31 +648,31 @@ msgid ""
 "to significant API changes."
 msgstr "此开发版本修复了许多错误，错字和历史详细信息。 现在，通过 HTTP/S 传递的文件也能处理标签了。 由于 API 变动过大，GTK + 3.22 和更新版本的 clutter 视频后端被禁用。"
 
-#: ../data/appdata/parole.appdata.xml.in.h:6
+#: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This development release adds a new mini mode and the ability to play or "
 "replay content by clicking the circle icons. Theming is simplified and "
 "filenames are displayed when no ID3 tags are found."
 msgstr "该开发版本引入了新的迷你模式和通过点击圆形图标以进行播放或回放内容的能力、图标的简化以及无ID3标签时的文件名显示。"
 
-#: ../data/appdata/parole.appdata.xml.in.h:7
+#: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
 "This release improves the build process and includes several bug fixes. This"
 " new stable release is a recommended upgrade for all users."
 msgstr "此次发布改进了建构过程，并修正了几个缺陷，推荐所有用户升级到这个稳定版。"
 
-#: ../data/appdata/parole.appdata.xml.in.h:8
+#: ../data/appdata/parole.appdata.xml.in.h:9
 msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
 msgstr "这个不稳定的开发版本增加了新的 clutter 后端并清理了过时的 Gtk3 符号。它还增加了一个“转至位置”功能。一些错误也得到修正。"
 
-#: ../data/appdata/parole.appdata.xml.in.h:9
+#: ../data/appdata/parole.appdata.xml.in.h:10
 msgid "This release fixes a problem with detecting DVD drive locations."
 msgstr "这个版本修复了一个关于 DVD 位置侦测的问题。"
 
-#: ../data/appdata/parole.appdata.xml.in.h:10
+#: ../data/appdata/parole.appdata.xml.in.h:11
 msgid ""
 "This release features the completed transition to the Gtk+3 toolkit, "
 "improvements in the user-interface (more streamlined menus), better "
