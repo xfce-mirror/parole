@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-12 06:31+0200\n"
-"PO-Revision-Date: 2018-04-13 06:00+0000\n"
+"PO-Revision-Date: 2018-05-17 11:21+0000\n"
 "Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfce-apps/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -159,7 +159,7 @@ msgstr "4:3 (TV)"
 
 #: ../data/interfaces/parole.ui.h:33
 msgid "16:9 (Widescreen)"
-msgstr "16:9 (Pantalla ampla)"
+msgstr "16:9 (pantalla ampla)"
 
 #: ../data/interfaces/parole.ui.h:34
 msgid "20:9 (DVB)"
@@ -851,8 +851,8 @@ msgstr "Tots els fitxers"
 #, c-format
 msgid "Playlist (%i item)"
 msgid_plural "Playlist (%i items)"
-msgstr[0] "Llista de reproducció (%i element)"
-msgstr[1] "Llista de reproducció (%i elements)"
+msgstr[0] "Llista de reproducció (%i ítem)"
+msgstr[1] "Llista de reproducció (%i ítems)"
 
 #: ../src/parole-medialist.c:221 ../src/parole-medialist.c:1477
 #, c-format
@@ -935,13 +935,13 @@ msgstr "Fitxers de subtítols"
 
 #: ../src/parole-player.c:1157 ../src/parole-player.c:1165
 msgid "Clear Recent Items"
-msgstr "Neteja els elements recents"
+msgstr "Neteja els ítems recents"
 
 #: ../src/parole-player.c:1159
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
-msgstr "Esteu segur que voleu netejar l'historial dels elements recents? L'acció no es pot desfer."
+msgstr "Esteu segur que voleu netejar l'historial dels ítems recents? L'acció no es pot desfer."
 
 #: ../src/parole-player.c:1261 ../src/parole-player.c:1388
 msgid "Media stream is not seekable"
@@ -1054,7 +1054,7 @@ msgstr "Posició:"
 #. Clear Recent Menu Item
 #: ../src/parole-player.c:3232
 msgid "_Clear recent items…"
-msgstr "_Neteja els elements recents..."
+msgstr "_Neteja els ítems recents..."
 
 #: ../src/parole-player.c:3550
 msgid "Audio Track:"
