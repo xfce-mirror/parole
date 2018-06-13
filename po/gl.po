@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-12 06:31+0200\n"
-"PO-Revision-Date: 2018-06-12 22:23+0000\n"
+"PO-Revision-Date: 2018-06-13 10:00+0000\n"
 "Last-Translator: Daniel Muñiz Fontoira <dani@damufo.com>\n"
 "Language-Team: Galician (http://www.transifex.com/xfce/xfce-apps/language/gl/)\n"
 "MIME-Version: 1.0\n"
@@ -30,7 +30,7 @@ msgstr "Reprodutor multimedia Parole"
 
 #: ../data/interfaces/parole.ui.h:2
 msgid "_Media"
-msgstr "_Soportes"
+msgstr "_Multimedia"
 
 #: ../data/interfaces/parole.ui.h:3
 msgid "_Open…"
@@ -239,7 +239,7 @@ msgstr "/"
 
 #: ../data/interfaces/mediachooser.ui.h:1
 msgid "Open Media Files"
-msgstr "Abrir ficheiros multimedia"
+msgstr "Abrir os ficheiros multimedia"
 
 #: ../data/interfaces/playlist.ui.h:1
 #: ../data/interfaces/parole-settings.ui.h:28
@@ -262,7 +262,7 @@ msgstr "Engadir"
 
 #: ../data/interfaces/playlist.ui.h:5
 msgid "Remove selected media"
-msgstr "Retirar os recursos seleccionados"
+msgstr "Retirar os soportes seleccionados"
 
 #: ../data/interfaces/playlist.ui.h:6
 msgid "Remove"
@@ -347,7 +347,7 @@ msgstr "Configuración do Parole"
 
 #: ../data/interfaces/parole-settings.ui.h:5
 msgid "Configure your media player"
-msgstr "Configure o seu reprodutor de multimedia"
+msgstr "Configurar o seu reprodutor de multimedia"
 
 #: ../data/interfaces/parole-settings.ui.h:6
 msgid "Disable screensaver when playing movies"
@@ -424,7 +424,7 @@ msgstr "Substituír sempre a lista de reprodución polos ficheiros abertos"
 
 #: ../data/interfaces/parole-settings.ui.h:24
 msgid "Check and remove duplicate media entries"
-msgstr "Comprobar e retirar as entradas de recursos duplicados"
+msgstr "Comprobar e retirar as os ficheiros duplicados"
 
 #: ../data/interfaces/parole-settings.ui.h:25
 msgid "Start playing opened files"
@@ -565,31 +565,31 @@ msgstr "Seguinte pista"
 
 #: ../data/interfaces/shortcuts.ui.h:22
 msgid "Go back 10 seconds"
-msgstr ""
+msgstr "Recuar 10 segundos"
 
 #: ../data/interfaces/shortcuts.ui.h:23
 msgid "Go forward 10 seconds"
-msgstr ""
+msgstr "Avanzar 10 segundos"
 
 #: ../data/interfaces/shortcuts.ui.h:24
 msgid "Go back 60 seconds"
-msgstr ""
+msgstr "Recuar 60 segundos"
 
 #: ../data/interfaces/shortcuts.ui.h:25
 msgid "Go forward 60 seconds"
-msgstr ""
+msgstr "Avanzar 60 segundos"
 
 #: ../data/interfaces/shortcuts.ui.h:26
 msgid "Go back 10 minutes"
-msgstr ""
+msgstr "Recuar 10 minutos"
 
 #: ../data/interfaces/shortcuts.ui.h:27
 msgid "Go forward 10 minutes"
-msgstr ""
+msgstr "Avanzar 10 minutos"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:2
 msgid "Play your media"
-msgstr ""
+msgstr "Reproducir os ficheiros"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:4
 #: ../src/parole-player.c:3340 ../src/plugins/notify/notify-provider.c:190
@@ -606,18 +606,18 @@ msgid ""
 "Parole is a modern simple media player based on the GStreamer framework and "
 "written to fit well in the Xfce desktop. It is designed with simplicity, "
 "speed and resource usage in mind."
-msgstr ""
+msgstr "Parole é un reprodutor multimedia simple baseado na infraestrutura GStreamer escrito para axustarse ben ó escritorio Xfce. Está deseñado tendo na mente a simplicidade, a velocidade e uso dos recursos."
 
 #: ../data/appdata/parole.appdata.xml.in.h:2
 msgid ""
 "Parole features playback of local media files, including video with "
 "subtitles support, Audio CDs, DVDs, and live streams. Parole is also "
 "extensible via plugins."
-msgstr ""
+msgstr "O Parole reproduce os ficheiros multimedia locais, incluído o vídeo con compatibilidade para subtítulos, CDs de son, DVDs e transmisións en directo. O parole tamén é extensible a traveso de complementos."
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid "This is a minor translations-only release."
-msgstr ""
+msgstr "Esta é unha versión menor de só de traducións."
 
 #: ../data/appdata/parole.appdata.xml.in.h:4
 msgid ""
@@ -625,7 +625,7 @@ msgid ""
 "Automatic video output option was added to improve usage on virtual machines"
 " and low power devices. A large number of bugs were also resolved, making "
 "this release suitable for all users."
-msgstr ""
+msgstr "Esta versión marca a primeira versión estábel da serie 1.0. Engadiuse unha nova opción de saída automática de vídeo para mellorar o uso en máquinas virtuais e dispositivos de baixa potencia. Tamén foron resoltos unha grande cantidade de erros, facendo que esta versión sexa axeitada para todos os usuarios."
 
 #: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
@@ -633,7 +633,7 @@ msgid ""
 "lighter and easier to improve. All URLs have been updated to HTTPS. A large "
 "number of bugs have been resolved and a new keyboard shortcuts helper has "
 "been introduced."
-msgstr ""
+msgstr "Esta versión de desenvolvemento contén unha grande limpeza da base de código, facendo que o Parole sexa máis lixeiro e máis fácil de mellorar. Todos os URLs foron actualizados a HTTPS. Foron resoltos unha chea de erros e introduciuse un novo asistente de atallos de teclado."
 
 #: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
@@ -641,31 +641,31 @@ msgid ""
 "present in the documentation. Tags are now processed on files delivered over"
 " HTTP/S. The clutter video backend is disabled for GTK+ 3.22 and newer due "
 "to significant API changes."
-msgstr ""
+msgstr "Esta versión de desenvolvemento resolve varios erros, erros de tecleado e detalles históricos presentes na documentación. Agora as etiquetas procésanse nos ficheiros entregados a traveso de HTTP/S. O motor de vídeo en segundo plano está desactivado para GTK+ 3.22 e máis novo debido a cambios importantes na API."
 
 #: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This development release adds a new mini mode and the ability to play or "
 "replay content by clicking the circle icons. Theming is simplified and "
 "filenames are displayed when no ID3 tags are found."
-msgstr ""
+msgstr "Esta versión de desenvolvemento engade un novo modo mini e a capacidade de reproducir ou volver reproducir contido facendo clic nas iconas de círculo. Os temas foron simplificados e cando non se atopan etiquetas ID3 amósanse os nomes dos ficheiros."
 
 #: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
 "This release improves the build process and includes several bug fixes. This"
 " new stable release is a recommended upgrade for all users."
-msgstr ""
+msgstr "Esta versión mellora o proceso de compilación e inclúe varias correccións de erros. Esta nova versión estábel é unha actualización recomendada para todos os usuarios."
 
 #: ../data/appdata/parole.appdata.xml.in.h:9
 msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
-msgstr ""
+msgstr "Esta versión de desenvolvemento inestable engade o novo motor en segundo plano e limpa os símbolos obsoletos de Gtk3. Tamén engade unha función de \"ir a posición\" así como a resolución de varios problemas."
 
 #: ../data/appdata/parole.appdata.xml.in.h:10
 msgid "This release fixes a problem with detecting DVD drive locations."
-msgstr ""
+msgstr "Esta versión soluciona un problema coa detección das localizacións das unidades DVD."
 
 #: ../data/appdata/parole.appdata.xml.in.h:11
 msgid ""
@@ -743,7 +743,7 @@ msgstr "Erro de GStreamer"
 
 #: ../src/gst/parole-gst.c:1862
 msgid "Parole Media Player cannot start."
-msgstr ""
+msgstr "O reprodutor multimedia Parole non é quen de arrancar."
 
 #: ../src/gst/parole-gst.c:1887 ../src/gst/parole-gst.c:1902
 #: ../src/gst/parole-gst.c:1936
@@ -774,7 +774,7 @@ msgid ""
 "\n"
 "Please report bugs to <https://bugzilla.xfce.org/>.\n"
 "\n"
-msgstr ""
+msgstr "\nReprodutor multimedia Parole %s\n\nParte do Proxecto de Extras de Xfce\nhttps://goodies.xfce.org\n\nLicenciado baixo a GNU GPL.\n\nPor favor, envíe os erros a <https://bugzilla.xfce.org/>.\n\n"
 
 #: ../src/main.c:227
 msgid "Open a new instance"
@@ -944,7 +944,7 @@ msgstr "Confirma que desexa limpar o historial de elementos recentes? Non é pos
 
 #: ../src/parole-player.c:1261 ../src/parole-player.c:1388
 msgid "Media stream is not seekable"
-msgstr "O fluxo do soporte non é posicionable"
+msgstr "O fluxo do soporte non permite buscas"
 
 #: ../src/parole-player.c:1271
 msgid "Play"
