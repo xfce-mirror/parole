@@ -11,9 +11,9 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-12 06:31+0200\n"
-"PO-Revision-Date: 2018-06-13 10:00+0000\n"
+"PO-Revision-Date: 2018-06-13 11:35+0000\n"
 "Last-Translator: Daniel Muñiz Fontoira <dani@damufo.com>\n"
-"Language-Team: Galician (http://www.transifex.com/xfce/xfce-apps/language/gl/)\n"
+"Language-Team: Galician (http://beta.transifex.com/xfce/xfce-apps/language/gl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -674,7 +674,7 @@ msgid ""
 "playlists. Furthermore existing plugins have been improved and a new one has"
 " been added (MPRIS2). Most of the artwork has been updated for this release "
 "and we use the GStreamer1.0 framework now by default."
-msgstr ""
+msgstr "Esta versión presenta a transición completa ao grupo de ferramentas Gtk+3, melloras na interface de usuario (menús máis estilizados), mellores listas de reprodución. Ademais, melloráronse os complementos existentes e engadiuse un novo (MPRIS2). A maior parte do material gráfico foi actualizado para esta versión e agora usamos a infraestrutura GStreamer1.0 de xeito predeterminado."
 
 #: ../src/common/parole-common.c:83
 msgid "Message"
@@ -790,7 +790,7 @@ msgstr "Definir a ruta do dispositivo de Audio-CD/VCD/DVD"
 
 #: ../src/main.c:233
 msgid "Start in embedded mode"
-msgstr ""
+msgstr "Comezar o modo embebido"
 
 #: ../src/main.c:235
 msgid "Start in fullscreen mode"
@@ -814,7 +814,7 @@ msgstr "Silenciar"
 
 #: ../src/main.c:249
 msgid "Unmute (restore) volume"
-msgstr ""
+msgstr "Desenmudecer (restaura) o volume"
 
 #: ../src/main.c:251
 msgid "Add files to playlist"
@@ -879,7 +879,7 @@ msgstr "Formato de lista de reprodución descoñecido"
 
 #: ../src/parole-medialist.c:664
 msgid "Please choose a supported playlist format"
-msgstr ""
+msgstr "Escolla un formato de lista compatíbel"
 
 #: ../src/parole-medialist.c:707 ../src/parole-plugins-manager.c:338
 msgid "Unknown"
@@ -960,7 +960,7 @@ msgstr "Erro da infraestrutura de GStreamer"
 
 #: ../src/parole-player.c:1794
 msgid "Unknown Song"
-msgstr ""
+msgstr "Canción descoñecida"
 
 #: ../src/parole-player.c:1805 ../src/parole-player.c:1811
 #: ../src/parole-player.c:1819
@@ -999,7 +999,7 @@ msgstr "Saír da pantalla completa"
 #. * Play pause
 #: ../src/parole-player.c:2097 ../src/plugins/tray/tray-provider.c:119
 msgid "_Pause"
-msgstr ""
+msgstr "Interrom_per"
 
 #: ../src/parole-player.c:2097 ../src/plugins/tray/tray-provider.c:119
 msgid "_Play"
@@ -1027,11 +1027,11 @@ msgstr "Mostrar a barra de menú"
 
 #: ../src/parole-player.c:2167
 msgid "Mini Mode"
-msgstr ""
+msgstr "Modo mini"
 
 #: ../src/parole-player.c:2386
 msgid "Unmute"
-msgstr ""
+msgstr "Desenmudecer"
 
 #: ../src/parole-player.c:2785
 msgid "Unable to open default web browser"
@@ -1040,7 +1040,7 @@ msgstr "Non foi posíbel abrir o navegador web predeterminado"
 #: ../src/parole-player.c:2787
 msgid ""
 "Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
-msgstr ""
+msgstr "Por favor, vaia a https://docs.xfce.org/apps/parole/bugs para informar do  erro."
 
 #: ../src/parole-player.c:2815
 msgid "Go"
@@ -1308,7 +1308,7 @@ msgstr "Confirma que desexa saír?"
 
 #: ../src/plugins/tray/tray-provider.c:310
 msgid "Parole can be minimized to the system tray instead."
-msgstr ""
+msgstr "O Parole tamén pode ser minimizado á zona do sistema."
 
 #: ../src/plugins/tray/tray-provider.c:313
 msgid "Minimize to tray"
