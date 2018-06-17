@@ -380,7 +380,7 @@ void parole_get_media_files(GtkFileFilter *filter, const gchar *path, gboolean r
             }
             g_free(path_internal);
         }
-        list_internal = g_slist_sort(list_internal, (GCompareFunc)thunar_file_compare_by_name);
+        list_internal = g_slist_sort(list_internal, (GCompareFunc) (void (*)(void)) thunar_file_compare_by_name);
         g_dir_close(dir);
         *list = g_slist_concat(*list, list_internal);
     }
@@ -523,7 +523,7 @@ parole_get_uri_from_unix_device(const gchar *device) {
         g_object_unref(drive);
     }
 
-    g_list_foreach(list, (GFunc)g_object_unref, NULL);
+    g_list_foreach(list, (GFunc) (void (*)(void)) g_object_unref, NULL);
     g_list_free(list);
 
     g_object_unref(monitor);

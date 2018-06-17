@@ -379,7 +379,7 @@ parole_disc_add_drive(ParoleDisc *disc, GDrive *drive, const gchar *device) {
         }
     }
 
-    g_list_foreach(list, (GFunc)g_object_unref, NULL);
+    g_list_foreach(list, (GFunc) (void (*)(void)) g_object_unref, NULL);
     g_list_free(list);
 }
 
@@ -420,7 +420,7 @@ parole_disc_get_drives(ParoleDisc *disc) {
         }
     }
 
-    g_list_foreach(list, (GFunc)g_object_unref, NULL);
+    g_list_foreach(list, (GFunc) (void (*)(void)) g_object_unref, NULL);
     g_list_free(list);
 }
 
@@ -548,7 +548,7 @@ parole_disc_finalize(GObject *object) {
 
     g_object_unref(disc->priv->monitor);
 
-    g_ptr_array_foreach(disc->priv->array, (GFunc)free_mount_data, NULL);
+    g_ptr_array_foreach(disc->priv->array, (GFunc) (void (*)(void)) free_mount_data, NULL);
     g_ptr_array_free(disc->priv->array, TRUE);
 
     G_OBJECT_CLASS(parole_disc_parent_class)->finalize(object);

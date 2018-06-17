@@ -177,12 +177,12 @@ type_name##_register_type (ParoleProviderPlugin *provider_plugin_def) 		\
 	sizeof (TypeName##Class), 						\
 	NULL, 									\
 	NULL, 									\
-	(GClassInitFunc) type_name##_class_intern_init, 			\
+	(GClassInitFunc) (void (*)(void)) type_name##_class_intern_init, 			\
 	NULL, 									\
 	NULL, 									\
 	sizeof (TypeName), 							\
 	0, 									\
-	(GInstanceInitFunc) type_name##_init, 					\
+	(GInstanceInitFunc) (void (*)(void)) type_name##_init, 					\
 	NULL, 									\
     }; 										\
 										\
@@ -211,7 +211,7 @@ type_name##_register_type (ParoleProviderPlugin *provider_plugin_def) 		\
 { 										\
     static const GInterfaceInfo parole_implement_interface_info = 		\
     { 										\
-	(GInterfaceInitFunc) iface_init 					\
+	(GInterfaceInitFunc) (void (*)(void)) iface_init 					\
     }; 										\
 										\
     g_type_module_add_interface ((GTypeModule*)provider_plugin_def, 		\

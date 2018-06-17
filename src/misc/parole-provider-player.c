@@ -41,7 +41,7 @@ parole_provider_player_get_type(void) {
             sizeof (ParoleProviderPlayerIface),
             (GBaseInitFunc) parole_provider_player_base_init,
             NULL,
-            (GClassInitFunc) parole_provider_player_class_init,
+            (GClassInitFunc) (void (*)(void)) parole_provider_player_class_init,
             NULL,
             NULL,
             0,

@@ -599,7 +599,7 @@ parole_media_list_get_first_selected_row(ParoleMediaList *list) {
         }
     }
 
-    g_list_foreach(path_list, (GFunc)gtk_tree_path_free, NULL);
+    g_list_foreach(path_list, (GFunc) (void (*)(void)) gtk_tree_path_free, NULL);
     g_list_free(path_list);
 
     return row;
@@ -924,7 +924,7 @@ parole_media_list_remove_clicked_cb(GtkButton *button, ParoleMediaList *list) {
         gtk_tree_path_free(prev);
     }
 
-    g_list_foreach(path_list, (GFunc)gtk_tree_path_free, NULL);
+    g_list_foreach(path_list, (GFunc) (void (*)(void)) gtk_tree_path_free, NULL);
     g_list_free(path_list);
 
     len = g_list_length(row_list);
@@ -941,7 +941,7 @@ parole_media_list_remove_clicked_cb(GtkButton *button, ParoleMediaList *list) {
         }
     }
 
-    g_list_foreach(row_list, (GFunc)gtk_tree_row_reference_free, NULL);
+    g_list_foreach(row_list, (GFunc) (void (*)(void)) gtk_tree_row_reference_free, NULL);
     g_list_free(row_list);
 
     /*
@@ -999,7 +999,7 @@ parole_media_list_move_up_clicked_cb(GtkButton *button, ParoleMediaList *list) {
         }
     }
 
-    g_list_foreach(path_list, (GFunc)gtk_tree_path_free, NULL);
+    g_list_foreach(path_list, (GFunc) (void (*)(void)) gtk_tree_path_free, NULL);
     g_list_free(path_list);
 }
 
@@ -1043,7 +1043,7 @@ parole_media_list_move_down_clicked_cb(GtkButton *button, ParoleMediaList *list)
         }
     }
 
-    g_list_foreach(path_list, (GFunc)gtk_tree_path_free, NULL);
+    g_list_foreach(path_list, (GFunc) (void (*)(void)) gtk_tree_path_free, NULL);
     g_list_free(path_list);
 }
 
@@ -1957,7 +1957,7 @@ void parole_media_list_save_list(ParoleMediaList *list) {
         fileslist = parole_media_list_get_files(list);
         if ( g_slist_length(fileslist) > 0 ) {
             parole_pl_parser_save_from_files(fileslist, history, PAROLE_PL_FORMAT_M3U);
-            g_slist_foreach(fileslist, (GFunc)g_object_unref, NULL);
+            g_slist_foreach(fileslist, (GFunc) (void (*)(void)) g_object_unref, NULL);
         } else {
             // If the playlist is empty, delete the list.
             if (remove(history) != 0)

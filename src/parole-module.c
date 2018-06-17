@@ -49,17 +49,17 @@ parole_provider_module_get_type(void) {
             sizeof (ParoleProviderModuleClass),
             NULL,
             NULL,
-            (GClassInitFunc) parole_provider_module_class_init,
+            (GClassInitFunc) (void (*)(void)) parole_provider_module_class_init,
             NULL,
             NULL,
             sizeof (ParoleProviderModule),
             0,
-            (GInstanceInitFunc) parole_provider_module_init,
+            (GInstanceInitFunc) (void (*)(void)) parole_provider_module_init,
             NULL,
         };
 
         static const GInterfaceInfo plugin_info = {
-            (GInterfaceInitFunc) parole_provider_module_plugin_init,
+            (GInterfaceInitFunc) (void (*)(void)) parole_provider_module_plugin_init,
             NULL,
             NULL,
         };

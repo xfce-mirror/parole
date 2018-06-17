@@ -138,7 +138,7 @@ parole_media_chooser_add(ParoleMediaChooser *chooser, GtkWidget *file_chooser) {
 
             g_slist_free(media_files);
 
-            g_slist_foreach(files, (GFunc)g_free, NULL);
+            g_slist_foreach(files, (GFunc) (void (*)(void)) g_free, NULL);
             g_slist_free(files);
 
             return;
@@ -149,7 +149,7 @@ parole_media_chooser_add(ParoleMediaChooser *chooser, GtkWidget *file_chooser) {
     g_signal_emit(G_OBJECT(chooser), signals[MEDIA_FILES_OPENED], 0, media_files);
     g_slist_free(media_files);
 
-    g_slist_foreach(files, (GFunc)g_free, NULL);
+    g_slist_foreach(files, (GFunc) (void (*)(void)) g_free, NULL);
     g_slist_free(files);
 }
 
