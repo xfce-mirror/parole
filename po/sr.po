@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-01 06:32+0100\n"
-"PO-Revision-Date: 2018-03-03 00:19+0000\n"
+"POT-Creation-Date: 2018-04-12 06:31+0200\n"
+"PO-Revision-Date: 2018-06-25 14:32+0000\n"
 "Last-Translator: Nikola Radovanović <cobisimo@gmail.com>\n"
 "Language-Team: Serbian (http://www.transifex.com/xfce/xfce-apps/language/sr/)\n"
 "MIME-Version: 1.0\n"
@@ -618,6 +618,10 @@ msgid ""
 msgstr "Часноречац подржава извођење датотека, укључујући снимке са преводима, звучне ЦД-је, ДВД снимке и живе токове. Могућности Часноречца су прошириве преко прикључака."
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
+msgid "This is a minor translations-only release."
+msgstr "Ово је мало издање које садржи само исправљене преводе."
+
+#: ../data/appdata/parole.appdata.xml.in.h:4
 msgid ""
 "This release marks the first stable release of the 1.0 series. A new "
 "Automatic video output option was added to improve usage on virtual machines"
@@ -625,7 +629,7 @@ msgid ""
 "this release suitable for all users."
 msgstr ""
 
-#: ../data/appdata/parole.appdata.xml.in.h:4
+#: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
 "This development release is a large cleanup of the codebase, making Parole "
 "lighter and easier to improve. All URLs have been updated to HTTPS. A large "
@@ -633,7 +637,7 @@ msgid ""
 "been introduced."
 msgstr ""
 
-#: ../data/appdata/parole.appdata.xml.in.h:5
+#: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
 "This development release fixes several bugs, typos, and historical details "
 "present in the documentation. Tags are now processed on files delivered over"
@@ -641,31 +645,31 @@ msgid ""
 "to significant API changes."
 msgstr ""
 
-#: ../data/appdata/parole.appdata.xml.in.h:6
+#: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This development release adds a new mini mode and the ability to play or "
 "replay content by clicking the circle icons. Theming is simplified and "
 "filenames are displayed when no ID3 tags are found."
 msgstr "Овом развојном издању је придодат мали начин рада и могућност да изводи или понавља садржај кликом на сличицу. Постављање тема је упрошћено и имена датотека се приказују и  кад нема пронађених ознака ИД3."
 
-#: ../data/appdata/parole.appdata.xml.in.h:7
+#: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
 "This release improves the build process and includes several bug fixes. This"
 " new stable release is a recommended upgrade for all users."
 msgstr "Ово издање олакшава начин градње програма и укључује неколико исправки грешака. Ово ново стабилно издање је препоручиво за надоградњу свим корисницима."
 
-#: ../data/appdata/parole.appdata.xml.in.h:8
+#: ../data/appdata/parole.appdata.xml.in.h:9
 msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
 msgstr "У ово нестабилно развојно издање је додат нови позадински програм за погон и очишћена су застарела знамења ГТК-а. Такође, додата је могућност да „иде на положај“ и исправљено је неколико грешака."
 
-#: ../data/appdata/parole.appdata.xml.in.h:9
+#: ../data/appdata/parole.appdata.xml.in.h:10
 msgid "This release fixes a problem with detecting DVD drive locations."
 msgstr "Ово издање исправља потешкоћу са препознавањем уређаја читача ДВД-ја."
 
-#: ../data/appdata/parole.appdata.xml.in.h:10
+#: ../data/appdata/parole.appdata.xml.in.h:11
 msgid ""
 "This release features the completed transition to the Gtk+3 toolkit, "
 "improvements in the user-interface (more streamlined menus), better "
