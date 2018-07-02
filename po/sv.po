@@ -4,14 +4,15 @@
 # 
 # Translators:
 # Daniel Nylander <po@danielnylander.se>, 2009
+# Påvel Nicklasson <pavel2@frimix.se>, 2018
 # Påvel Nicklasson<pavel@frimix.se>, 2015
 # Påvel Nicklasson <pavel2@frimix.se>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-01 06:32+0100\n"
-"PO-Revision-Date: 2018-03-02 12:49+0000\n"
+"POT-Creation-Date: 2018-04-12 06:31+0200\n"
+"PO-Revision-Date: 2018-07-02 13:02+0000\n"
 "Last-Translator: Påvel Nicklasson <pavel2@frimix.se>\n"
 "Language-Team: Swedish (http://www.transifex.com/xfce/xfce-apps/language/sv/)\n"
 "MIME-Version: 1.0\n"
@@ -616,6 +617,10 @@ msgid ""
 msgstr "Parole erbjuder uppspelning av lokala mediafiler, inklusive filmer med stöd för undertexter, ljud-CD:s DVD:er, och direktsändningar. Parole går också att bygga ut med insticksprogram."
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
+msgid "This is a minor translations-only release."
+msgstr "Detta är endast en mindre översättningsutgåva."
+
+#: ../data/appdata/parole.appdata.xml.in.h:4
 msgid ""
 "This release marks the first stable release of the 1.0 series. A new "
 "Automatic video output option was added to improve usage on virtual machines"
@@ -623,7 +628,7 @@ msgid ""
 "this release suitable for all users."
 msgstr "Den här versionen utgör den första stabila utgåvan av 1.0 serien. Ett nytt automatiskt videoutmatningsalternativ las till för att förbättra användning av virtuella maskiner på lågresursmaskiner. Ett stort antal fel rättades också till, vilket gör denna utgåva lämplig för alla användare."
 
-#: ../data/appdata/parole.appdata.xml.in.h:4
+#: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
 "This development release is a large cleanup of the codebase, making Parole "
 "lighter and easier to improve. All URLs have been updated to HTTPS. A large "
@@ -631,7 +636,7 @@ msgid ""
 "been introduced."
 msgstr "Denna utvecklingsversion är en stor upprensning av kodbasen, som gör Parole resurssnålare och lättare att förbättra. Alla URLs har uppdaterats till HTTPS. Ett stort antal fel har rättats till och en ny tangentbordsgenvägshjälp har införts."
 
-#: ../data/appdata/parole.appdata.xml.in.h:5
+#: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
 "This development release fixes several bugs, typos, and historical details "
 "present in the documentation. Tags are now processed on files delivered over"
@@ -639,31 +644,31 @@ msgid ""
 "to significant API changes."
 msgstr "Denna utvecklingsversion rättar åtskilliga fel, stavfel, och historiska detaljer i dokumentationen. Flikar hanteras nu på filer levererade över HTTP/S. Videobakänden clutter är avaktiverad för GTK+ 3.22 och nyare på grund av betydande API-förändringar."
 
-#: ../data/appdata/parole.appdata.xml.in.h:6
+#: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This development release adds a new mini mode and the ability to play or "
 "replay content by clicking the circle icons. Theming is simplified and "
 "filenames are displayed when no ID3 tags are found."
 msgstr "Denna utvecklingsversion lägger till ett nytt miniatyrläge och möjligheten att spela upp eller spela om innehåll genom att klicka på cirkelikonerna. Teman är förenklade och filnamn visas då inga ID3-etiketter hittas."
 
-#: ../data/appdata/parole.appdata.xml.in.h:7
+#: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
 "This release improves the build process and includes several bug fixes. This"
 " new stable release is a recommended upgrade for all users."
 msgstr "Denna version förbättrar byggprocessen och inkluderar åtskilliga felrättningar. Denna nya stabila version är en rekommenderad uppgradering för alla användare."
 
-#: ../data/appdata/parole.appdata.xml.in.h:8
+#: ../data/appdata/parole.appdata.xml.in.h:9
 msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
 msgstr "Den här instabila utvecklingsversionen lägger till den nya clutter-bakänden och städar upp föråldrade Gtk3-symboler. Den lägger också till en \"gå till position\" funktion och flera fel har rättats till."
 
-#: ../data/appdata/parole.appdata.xml.in.h:9
+#: ../data/appdata/parole.appdata.xml.in.h:10
 msgid "This release fixes a problem with detecting DVD drive locations."
 msgstr "Den här versionen rättar till ett problem med att hitta DVD-enheter."
 
-#: ../data/appdata/parole.appdata.xml.in.h:10
+#: ../data/appdata/parole.appdata.xml.in.h:11
 msgid ""
 "This release features the completed transition to the Gtk+3 toolkit, "
 "improvements in the user-interface (more streamlined menus), better "
