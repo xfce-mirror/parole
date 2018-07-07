@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-12 06:31+0200\n"
-"PO-Revision-Date: 2018-06-16 16:26+0000\n"
+"PO-Revision-Date: 2018-07-07 13:35+0000\n"
 "Last-Translator: Emanuele Petriglia <inbox@emanuelepetriglia.me>\n"
 "Language-Team: Italian (http://www.transifex.com/xfce/xfce-apps/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -27,11 +27,11 @@ msgstr ""
 #: ../src/parole-player.c:1789 ../src/parole-about.c:68
 #: ../src/plugins/mpris2/mpris2-provider.c:187
 msgid "Parole Media Player"
-msgstr "Media player Parole"
+msgstr "Riproduttore multimediale Parole"
 
 #: ../data/interfaces/parole.ui.h:2
 msgid "_Media"
-msgstr "_Contenuti"
+msgstr "_File multimediali"
 
 #: ../data/interfaces/parole.ui.h:3
 msgid "_Open…"
@@ -82,19 +82,19 @@ msgstr "_DVD"
 
 #: ../data/interfaces/parole.ui.h:14
 msgid "_DVD Menu"
-msgstr "Menu _DVD"
+msgstr "Menù _DVD"
 
 #: ../data/interfaces/parole.ui.h:15
 msgid "_Title Menu"
-msgstr "Menu _titolo"
+msgstr "Menù _titolo"
 
 #: ../data/interfaces/parole.ui.h:16
 msgid "_Audio Menu"
-msgstr "Menu _audio"
+msgstr "Menù _audio"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "A_ngle Menu"
-msgstr "Menu d'a_ngolo"
+msgstr "Menù d'a_ngolo"
 
 #: ../data/interfaces/parole.ui.h:18
 msgid "_Chapters"
@@ -102,7 +102,7 @@ msgstr "_Capitoli"
 
 #: ../data/interfaces/parole.ui.h:19
 msgid "_Chapter Menu"
-msgstr "Menu _capitoli"
+msgstr "Menù _capitoli"
 
 #: ../data/interfaces/parole.ui.h:20
 msgid "_Audio"
@@ -139,7 +139,7 @@ msgstr "A schermo inter_o"
 
 #: ../data/interfaces/parole.ui.h:28
 msgid "_Aspect Ratio"
-msgstr "_Rapporto d'aspetto"
+msgstr "_Proporzioni"
 
 #: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:730
 msgid "None"
@@ -147,7 +147,7 @@ msgstr "Nessuno"
 
 #: ../data/interfaces/parole.ui.h:30
 msgid "Auto"
-msgstr "Auto"
+msgstr "Automatico"
 
 #: ../data/interfaces/parole.ui.h:31
 msgid "Square"
@@ -179,7 +179,7 @@ msgstr "_Strumenti"
 
 #: ../data/interfaces/parole.ui.h:38
 msgid "P_lugins"
-msgstr "P_lugin"
+msgstr "Co_mponenti aggiuntivi"
 
 #: ../data/interfaces/parole.ui.h:39
 msgid "_Preferences"
@@ -199,7 +199,7 @@ msgstr "_Scorciatoie da tastiera"
 
 #: ../data/interfaces/parole.ui.h:43
 msgid "Display Parole user manual"
-msgstr "Visualizza il manuale dell'utente di Parole"
+msgstr "Visualizza il manuale utente di Parole"
 
 #: ../data/interfaces/parole.ui.h:44
 msgid "_Contents"
@@ -263,7 +263,7 @@ msgstr "Aggiungi"
 
 #: ../data/interfaces/playlist.ui.h:5
 msgid "Remove selected media"
-msgstr "Elimina contenuto selezionato"
+msgstr "Elimina il file multimediale selezionato"
 
 #: ../data/interfaces/playlist.ui.h:6
 msgid "Remove"
@@ -271,7 +271,7 @@ msgstr "Elimina"
 
 #: ../data/interfaces/playlist.ui.h:7
 msgid "Clear playlist"
-msgstr "Svuota al scaletta"
+msgstr "Svuota la scaletta"
 
 #: ../data/interfaces/playlist.ui.h:8
 msgid "Clear"
@@ -308,7 +308,7 @@ msgstr "Ricorda la scaletta"
 
 #: ../data/interfaces/plugins.ui.h:1
 msgid "Parole Plugins"
-msgstr "Plugin di Parole"
+msgstr "Componenti aggiuntivi di Parole"
 
 #: ../data/interfaces/plugins.ui.h:2
 msgid "Extend your media player"
@@ -316,7 +316,7 @@ msgstr "Estendi il riproduttore multimediale"
 
 #: ../data/interfaces/plugins.ui.h:3
 msgid "Plugin"
-msgstr "Plugin"
+msgstr "Componente aggiuntivo"
 
 #: ../data/interfaces/plugins.ui.h:4
 msgid "<b>Description</b>"
@@ -328,7 +328,7 @@ msgstr "<b>Autore</b>"
 
 #: ../data/interfaces/plugins.ui.h:6
 msgid "Visit Website"
-msgstr "Visita il sito"
+msgstr "Visita il sito Web"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "Automatic"
@@ -385,11 +385,11 @@ msgstr "Generali"
 
 #: ../data/interfaces/parole-settings.ui.h:14
 msgid "Please restart Parole for this change to take effect."
-msgstr "Riavviare Parole per rendere effettive le modifiche"
+msgstr "Riavviare Parole per rendere effettive le modifiche."
 
 #: ../data/interfaces/parole-settings.ui.h:15
 msgid "<b>Video Output</b>"
-msgstr "<b>Output video</b>"
+msgstr "<b>Uscita video</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:16
 msgid "Brightness:"
@@ -401,7 +401,7 @@ msgstr "Contrasto:"
 
 #: ../data/interfaces/parole-settings.ui.h:18
 msgid "Hue:"
-msgstr "Colore:"
+msgstr "Tonalità:"
 
 #: ../data/interfaces/parole-settings.ui.h:19
 msgid "Saturation:"
@@ -461,7 +461,7 @@ msgstr "Per estensione"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "Save Playlist as…"
-msgstr "Salva scaletta come..."
+msgstr "Salva scaletta come…"
 
 #: ../data/interfaces/save-playlist.ui.h:3
 msgid "File Type"
@@ -481,7 +481,7 @@ msgstr "Apre posizione di rete"
 
 #: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:181
 msgid "Clear History"
-msgstr "Svuota cronologia"
+msgstr "Svuota la cronologia"
 
 #: ../data/interfaces/open-location.ui.h:3
 msgid "<big><b>Open Network Location</b></big>"
@@ -533,19 +533,19 @@ msgstr "Muto"
 
 #: ../data/interfaces/shortcuts.ui.h:14
 msgid "Toggle playlist"
-msgstr "Abilita playlist"
+msgstr "Abilita scaletta"
 
 #: ../data/interfaces/shortcuts.ui.h:15
 msgid "Select previous item"
-msgstr "Scegli oggetto precedente"
+msgstr "Scegli elemento precedente"
 
 #: ../data/interfaces/shortcuts.ui.h:16
 msgid "Select next item"
-msgstr "Scegli oggetto successivo"
+msgstr "Scegli elemento successivo"
 
 #: ../data/interfaces/shortcuts.ui.h:17
 msgid "Remove selected item"
-msgstr "Rimuovi oggetto selezionato"
+msgstr "Rimuovi elemento selezionato"
 
 #: ../data/interfaces/shortcuts.ui.h:18
 msgid "Playback"
@@ -590,7 +590,7 @@ msgstr "Avanti di 10 minuti"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:2
 msgid "Play your media"
-msgstr "Riproduttore di media"
+msgstr "Riproduttore di file multimediali"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:4
 #: ../src/parole-player.c:3340 ../src/plugins/notify/notify-provider.c:190
@@ -614,7 +614,7 @@ msgid ""
 "Parole features playback of local media files, including video with "
 "subtitles support, Audio CDs, DVDs, and live streams. Parole is also "
 "extensible via plugins."
-msgstr "Parole è in grado di riprodurre file multimediali locali, compresi i video sottotitolati, CD audio, DVD, e flussi live. PArole è inoltre estensibile attraverso plugin."
+msgstr "Parole è in grado di riprodurre file multimediali locali, compresi i video sottotitolati, CD audio, DVD, e flussi live. Parole è inoltre estensibile attraverso i componenti aggiuntivi."
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid "This is a minor translations-only release."
@@ -634,7 +634,7 @@ msgid ""
 "lighter and easier to improve. All URLs have been updated to HTTPS. A large "
 "number of bugs have been resolved and a new keyboard shortcuts helper has "
 "been introduced."
-msgstr "Questa versione di sviluppo porta una notevole pulizia del codice, facendo diventare Parole più leggero e facile da migliorare. Tutti gli URL sono stati aggiornati ad HTTPS e molti bug sono stati risolti. Introdotte nuove scorciatoie da tastiera."
+msgstr "Questa versione di sviluppo porta una notevole pulizia del codice, facendo diventare Parole più leggero e facile da migliorare. Tutti gli URL sono stati aggiornati ad HTTPS e molti bug sono stati risolti. Sono state introdotte nuove scorciatoie da tastiera."
 
 #: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
@@ -655,7 +655,7 @@ msgstr "Questa versione di sviluppo introduce la nuova modalità mini e la possi
 msgid ""
 "This release improves the build process and includes several bug fixes. This"
 " new stable release is a recommended upgrade for all users."
-msgstr "Questo rilascio migliora il processo di compialzione e include varie correzioni. Si raccomanda a tutti gli utenti di eseguire l'aggiornamento a quest'ultimo rilascio"
+msgstr "Questo rilascio migliora il processo di compilazione ed include varie correzioni. Si raccomanda a tutti gli utenti di eseguire l'aggiornamento a quest'ultimo rilascio stabile."
 
 #: ../data/appdata/parole.appdata.xml.in.h:9
 msgid ""
@@ -666,7 +666,7 @@ msgstr "Questo rilascio instabile di sviluppo aggiunge il nuovo backend clutter 
 
 #: ../data/appdata/parole.appdata.xml.in.h:10
 msgid "This release fixes a problem with detecting DVD drive locations."
-msgstr "Questo rilascio corregge un problema relativo all'individuazione delle posizioni dei dispositivi DVD"
+msgstr "Questo rilascio corregge un problema relativo all'individuazione delle posizioni dei dischi DVD."
 
 #: ../data/appdata/parole.appdata.xml.in.h:11
 msgid ""
@@ -675,7 +675,7 @@ msgid ""
 "playlists. Furthermore existing plugins have been improved and a new one has"
 " been added (MPRIS2). Most of the artwork has been updated for this release "
 "and we use the GStreamer1.0 framework now by default."
-msgstr "Questo rilascio completa la transizione al toolkit Gtk+3 e fornisce dei migliorament all'interfaccia utente (menu più efficienti) e alle scalette. Inoltre i plugin esistenti sono stati migliorati e ne è stato aggiunto uno nuovo (MPRIS2). La maggior parte degli elementi grafici è stata aggiornata per questo rilascio e ora viene utilizzata di default l'infrastruttura GStreamer1.0."
+msgstr "Questo rilascio completa la transizione al toolkit GTK+3 e fornisce dei migliorament all'interfaccia utente (menu più efficienti) e alle scalette. Inoltre i componenti aggiuntivi esistenti sono stati migliorati e ne è stato aggiunto uno nuovo (MPRIS2). La maggior parte degli elementi grafici è stata aggiornata per questo rilascio e ora viene utilizzata di default l'infrastruttura GStreamer1.0."
 
 #: ../src/common/parole-common.c:83
 msgid "Message"
@@ -715,7 +715,7 @@ msgstr "OK"
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
-msgstr "Parole ha bisogno di <b>%s</b> per riprodurre il file.\nPuò essere installato automaticamente"
+msgstr "Parole ha bisogno di <b>%s</b> per riprodurre il file.\nPuò essere installato automaticamente."
 
 #: ../src/gst/parole-gst.c:1324
 #, c-format
@@ -740,17 +740,17 @@ msgstr "Continue"
 
 #: ../src/gst/parole-gst.c:1861
 msgid "GStreamer Error"
-msgstr "Errore Gstreamer"
+msgstr "Errore di Gstreamer"
 
 #: ../src/gst/parole-gst.c:1862
 msgid "Parole Media Player cannot start."
-msgstr "Il media player Parole non può avviarsi."
+msgstr "Il riproduttore multimediale Parole non può avviarsi."
 
 #: ../src/gst/parole-gst.c:1887 ../src/gst/parole-gst.c:1902
 #: ../src/gst/parole-gst.c:1936
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
-msgstr "Impossibile caricare il plugin \"%s\"; controllare la propria installazione di GStreamer"
+msgstr "Impossibile caricare il componente aggiuntivo \"%s\"; controllare la propria installazione di GStreamer."
 
 #: ../src/gst/parole-gst.c:2496 ../src/gst/parole-gst.c:2500
 #, c-format
@@ -775,7 +775,7 @@ msgid ""
 "\n"
 "Please report bugs to <https://bugzilla.xfce.org/>.\n"
 "\n"
-msgstr "\nParole Media Player %s\n\nParte del Xfce Goodies Project\nhttps://goodies.xfce.org\n\nRilasciato sotto licenza GNU GPL.\n\nSegnala i bug su <https://bugzilla.xfce.org/>.\n\n"
+msgstr "\nRiproduttore multimediale Parole %s\n\nParte del progetto Goodies Xfce\nhttps://goodies.xfce.org\n\nRilasciato sotto licenza GNU GPL.\n\nSegnalare i bug su <https://bugzilla.xfce.org/>.\n\n"
 
 #: ../src/main.c:227
 msgid "Open a new instance"
@@ -791,7 +791,7 @@ msgstr "Imposta il percorso del dispositivo Audio-CD/VCD/DVD"
 
 #: ../src/main.c:233
 msgid "Start in embedded mode"
-msgstr "Avvia in modalità embedded"
+msgstr "Avvia in modalità incorporata"
 
 #: ../src/main.c:235
 msgid "Start in fullscreen mode"
@@ -811,7 +811,7 @@ msgstr "Diminuisce il volume"
 
 #: ../src/main.c:247
 msgid "Mute volume"
-msgstr "Esclude l'audio"
+msgstr "Muta l'audio"
 
 #: ../src/main.c:249
 msgid "Unmute (restore) volume"
@@ -827,11 +827,11 @@ msgstr "Visualizza le informazioni sulla versione ed esce"
 
 #: ../src/main.c:257
 msgid "Media to play"
-msgstr "Contenuto da riprodurre"
+msgstr "File multimediale da riprodurre"
 
 #: ../src/main.c:279
 msgid "[FILES...] - Play movies and songs"
-msgstr "[FILES...] - Riproduce film o canzoni"
+msgstr "[FILES…] - Riproduce film o canzoni"
 
 #: ../src/main.c:290
 #, c-format
@@ -945,7 +945,7 @@ msgstr "Cancellare veramente l'elenco degli elementi recenti? L'operazione non p
 
 #: ../src/parole-player.c:1261 ../src/parole-player.c:1388
 msgid "Media stream is not seekable"
-msgstr "Il contenuto in streaming non è raggiungibile"
+msgstr "Il file multimediale in streaming non è raggiungibile"
 
 #: ../src/parole-player.c:1271
 msgid "Play"
