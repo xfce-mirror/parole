@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-12 06:31+0200\n"
-"PO-Revision-Date: 2018-07-07 13:35+0000\n"
+"PO-Revision-Date: 2018-07-08 11:50+0000\n"
 "Last-Translator: Emanuele Petriglia <inbox@emanuelepetriglia.me>\n"
 "Language-Team: Italian (http://www.transifex.com/xfce/xfce-apps/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -783,7 +783,7 @@ msgstr "Apre una nuova istanza"
 
 #: ../src/main.c:229
 msgid "Do not load plugins"
-msgstr "Non carica i plugin"
+msgstr "Non carica i componenti aggiuntivi"
 
 #: ../src/main.c:231
 msgid "Set Audio-CD/VCD/DVD device path"
@@ -815,7 +815,7 @@ msgstr "Muta l'audio"
 
 #: ../src/main.c:249
 msgid "Unmute (restore) volume"
-msgstr "Ripristina il volume"
+msgstr "Riattiva (ripristina) il volume"
 
 #: ../src/main.c:251
 msgid "Add files to playlist"
@@ -941,11 +941,11 @@ msgstr "Elimina elementi recenti"
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
-msgstr "Cancellare veramente l'elenco degli elementi recenti? L'operazione non può essere annullata"
+msgstr "Cancellare veramente la cronologia degli elementi recenti? L'operazione non può essere annullata."
 
 #: ../src/parole-player.c:1261 ../src/parole-player.c:1388
 msgid "Media stream is not seekable"
-msgstr "Il file multimediale in streaming non è raggiungibile"
+msgstr "Il flusso multimediale in streaming non è raggiungibile"
 
 #: ../src/parole-player.c:1271
 msgid "Play"
@@ -1032,7 +1032,7 @@ msgstr "Modalità Mini"
 
 #: ../src/parole-player.c:2386
 msgid "Unmute"
-msgstr "Riattiva"
+msgstr "Riattiva audio"
 
 #: ../src/parole-player.c:2785
 msgid "Unable to open default web browser"
@@ -1041,7 +1041,7 @@ msgstr "Impossibile aprire il browser web predefinito"
 #: ../src/parole-player.c:2787
 msgid ""
 "Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
-msgstr "Si prega di andare su https://docs.xfce.org/apps/parole/bugs per segnalare bug."
+msgstr "Andare su https://docs.xfce.org/apps/parole/bugs per segnalare bug."
 
 #: ../src/parole-player.c:2815
 msgid "Go"
@@ -1071,11 +1071,11 @@ msgstr "Chiude"
 
 #: ../src/parole-about.c:74
 msgid "translator-credits"
-msgstr "Cristian Marchi, <cri.penta@gmail.com> 2013"
+msgstr "Emanuele Petriglia, <inbox@emanuelepetriglia.me> 2018\nCristian Marchi, <cri.penta@gmail.com> 2013"
 
 #: ../src/parole-about.c:77
 msgid "Visit Parole website"
-msgstr "Visita il sito di Parole"
+msgstr "Visita il sito web di Parole"
 
 #: ../src/parole-conf-dialog.c:292
 msgid "Clutter (OpenGL)"
@@ -1228,7 +1228,7 @@ msgstr "Vietnamita"
 
 #: ../src/parole-plugins-manager.c:253
 msgid "Plugin failed to load"
-msgstr "Impossibile caricare il plugin"
+msgstr "Impossibile caricare il componente aggiuntivo"
 
 #: ../src/parole-plugins-manager.c:254
 msgid "Please check your installation"
@@ -1236,11 +1236,11 @@ msgstr "Controllare la propria installazione"
 
 #: ../src/parole-plugins-manager.c:375
 msgid "No installed plugins found on this system"
-msgstr "Non sono installati plugin in questo sistema"
+msgstr "Non sono installati componenti aggiuntivi in questo sistema"
 
 #: ../src/parole-plugins-manager.c:376
 msgid "Please check your installation."
-msgstr "Controllare la propria installazione"
+msgstr "Controllare la propria installazione."
 
 #: ../src/misc/parole-filters.c:66
 msgid "Audio"
@@ -1297,7 +1297,7 @@ msgstr "_Apri"
 
 #: ../src/plugins/tray/tray-provider.c:254
 msgid "Tray icon plugin"
-msgstr "Plugin dell'icona di vassoio"
+msgstr "Componente aggiuntivo dell'icona di vassoio"
 
 #: ../src/plugins/tray/tray-provider.c:264
 msgid "Always minimize to tray when window is closed"
@@ -1309,7 +1309,7 @@ msgstr "Uscire davvero?"
 
 #: ../src/plugins/tray/tray-provider.c:310
 msgid "Parole can be minimized to the system tray instead."
-msgstr "Parole può invece essere minimizzato nel vassoio di sistema"
+msgstr "Parole può invece essere minimizzato nel vassoio di sistema."
 
 #: ../src/plugins/tray/tray-provider.c:313
 msgid "Minimize to tray"
