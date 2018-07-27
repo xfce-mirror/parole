@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-12 06:31+0200\n"
-"PO-Revision-Date: 2018-07-27 10:30+0000\n"
+"PO-Revision-Date: 2018-07-27 11:16+0000\n"
 "Last-Translator: Aitor Beriain <beriain@bitmessage.ch>\n"
 "Language-Team: Basque (http://www.transifex.com/xfce/xfce-apps/language/eu/)\n"
 "MIME-Version: 1.0\n"
@@ -133,7 +133,7 @@ msgstr "_Bideoa"
 #: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:1982
 #: ../src/parole-player.c:2135
 msgid "_Fullscreen"
-msgstr "_Pantaila osoa"
+msgstr "_Pantaila-osoa"
 
 #: ../data/interfaces/parole.ui.h:28
 msgid "_Aspect Ratio"
@@ -261,7 +261,7 @@ msgstr "Gehitu"
 
 #: ../data/interfaces/playlist.ui.h:5
 msgid "Remove selected media"
-msgstr ""
+msgstr "Hautatutako media kendu"
 
 #: ../data/interfaces/playlist.ui.h:6
 msgid "Remove"
@@ -503,11 +503,11 @@ msgstr "Ikusi"
 
 #: ../data/interfaces/shortcuts.ui.h:6
 msgid "Toggle fullscreen"
-msgstr "Txandakatu pantaila osoko modua"
+msgstr "Txandakatu pantaila-osoko modua"
 
 #: ../data/interfaces/shortcuts.ui.h:7
 msgid "Exit fullscreen"
-msgstr "Irten pantaila osoko modutik"
+msgstr "Irten pantaila-osoko modutik"
 
 #: ../data/interfaces/shortcuts.ui.h:8
 msgid "Toggle menubar"
@@ -605,18 +605,18 @@ msgid ""
 "Parole is a modern simple media player based on the GStreamer framework and "
 "written to fit well in the Xfce desktop. It is designed with simplicity, "
 "speed and resource usage in mind."
-msgstr ""
+msgstr "Parole media erreproduzigailu moderno eta sinple bat da, GStreamer lan-inguruan oinarritua eta Xfce mahaiganean ondo ahokatzeko idatzia. Sinpletasuna, abiadura eta baliabideen erabilera aintzat hartuz diseinatu da."
 
 #: ../data/appdata/parole.appdata.xml.in.h:2
 msgid ""
 "Parole features playback of local media files, including video with "
 "subtitles support, Audio CDs, DVDs, and live streams. Parole is also "
 "extensible via plugins."
-msgstr ""
+msgstr "Parolek media fitxategi lokalak erreproduzitu ditzake, baita bideoak azpitituluekin, audio CDak, DVDak, eta zuzeneko jarioak ere. Paroleren ezaugarriak pluginen bidez luzatu daitezke."
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid "This is a minor translations-only release."
-msgstr ""
+msgstr "Hau itzulpenak soilik eguneratzen dituen argitalpen txiki bat da."
 
 #: ../data/appdata/parole.appdata.xml.in.h:4
 msgid ""
@@ -713,12 +713,12 @@ msgstr "Ados"
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
-msgstr ""
+msgstr "Parolek <b>%s</b> behar du fitxategi hau erreproduzitzeko.\nAutomatikoki instalatu daiteke."
 
 #: ../src/gst/parole-gst.c:1324
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
-msgstr ""
+msgstr "Parolek <b>%s</b> behar du fitxategi hau erreproduzitzeko."
 
 #: ../src/gst/parole-gst.c:1693
 msgid "The stream is taking too much time to load"
@@ -726,7 +726,7 @@ msgstr "Korrontea debora asko tardatzen ari da kargatzeko"
 
 #: ../src/gst/parole-gst.c:1695
 msgid "Do you want to continue loading or stop?"
-msgstr ""
+msgstr "Kargatzen jarraitu edo gelditzea nahi duzu?"
 
 #: ../src/gst/parole-gst.c:1696
 msgid "Stop"
@@ -742,13 +742,13 @@ msgstr "GStreameren errorea"
 
 #: ../src/gst/parole-gst.c:1862
 msgid "Parole Media Player cannot start."
-msgstr ""
+msgstr "Parole media erreproduzigailua ezin da abiarazi."
 
 #: ../src/gst/parole-gst.c:1887 ../src/gst/parole-gst.c:1902
 #: ../src/gst/parole-gst.c:1936
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
-msgstr ""
+msgstr "Ezin izan da \"%s\" plugina kargatu, egiaztatu ezazu zure GStreameren instalazioa."
 
 #: ../src/gst/parole-gst.c:2496 ../src/gst/parole-gst.c:2500
 #, c-format
@@ -773,7 +773,7 @@ msgid ""
 "\n"
 "Please report bugs to <https://bugzilla.xfce.org/>.\n"
 "\n"
-msgstr ""
+msgstr "\nParole media erreproduzigailua %s\n\nXfce Goodies proiektuaren zati\nhttps://goodies.xfce.org\n\nGNU GPL lizentziapean argitaratua.\n\nMesedez eman akatsen berri hemen <https://bugzilla.xfce.org/>.\n\n"
 
 #: ../src/main.c:227
 msgid "Open a new instance"
@@ -789,7 +789,7 @@ msgstr "Ezarri Audio-CD/VCD/DVD gailu bidea"
 
 #: ../src/main.c:233
 msgid "Start in embedded mode"
-msgstr ""
+msgstr "Abiarazi txertatutako moduan"
 
 #: ../src/main.c:235
 msgid "Start in fullscreen mode"
@@ -813,7 +813,7 @@ msgstr "Mututu bolumena"
 
 #: ../src/main.c:249
 msgid "Unmute (restore) volume"
-msgstr ""
+msgstr "Ez isilarazi (berrezarri) bolumena"
 
 #: ../src/main.c:251
 msgid "Add files to playlist"
@@ -821,7 +821,7 @@ msgstr "gehitu fitxategiak erreprodukzio-zerrendara"
 
 #: ../src/main.c:253
 msgid "Print version information and exit"
-msgstr ""
+msgstr "Bertsio argibideak bistarazi eta irten"
 
 #: ../src/main.c:257
 msgid "Media to play"
@@ -829,12 +829,12 @@ msgstr "Erreproduzitzeko euskarria"
 
 #: ../src/main.c:279
 msgid "[FILES...] - Play movies and songs"
-msgstr ""
+msgstr "[FITXATEGIAK...] - Erreproduzitu filmak eta abestiak"
 
 #: ../src/main.c:290
 #, c-format
 msgid "Type %s --help to list all available command line options\n"
-msgstr ""
+msgstr "Idatzi %s --help komando lerroko aukera erabilgarri guztiak zerrendatzeko\n"
 
 #: ../src/main.c:307
 #, c-format
