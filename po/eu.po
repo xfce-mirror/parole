@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-12 06:31+0200\n"
-"PO-Revision-Date: 2018-07-24 09:13+0000\n"
+"PO-Revision-Date: 2018-07-27 10:30+0000\n"
 "Last-Translator: Aitor Beriain <beriain@bitmessage.ch>\n"
 "Language-Team: Basque (http://www.transifex.com/xfce/xfce-apps/language/eu/)\n"
 "MIME-Version: 1.0\n"
@@ -334,11 +334,11 @@ msgstr "Automatikoa"
 
 #: ../data/interfaces/parole-settings.ui.h:2
 msgid "X Window System (X11/XShm/Xv)"
-msgstr ""
+msgstr "X leiho sistema (X11/XShm/Xv)"
 
 #: ../data/interfaces/parole-settings.ui.h:3
 msgid "X Window System (No Xv)"
-msgstr ""
+msgstr "X leiho sistema (Xv ez)"
 
 #: ../data/interfaces/parole-settings.ui.h:4
 msgid "Parole Settings"
@@ -552,7 +552,7 @@ msgstr "Erreprodukzioa"
 #: ../data/interfaces/shortcuts.ui.h:19
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:3
 msgid "Play/Pause"
-msgstr ""
+msgstr "Erreproduzitu/Gelditu"
 
 #: ../data/interfaces/shortcuts.ui.h:20 ../src/main.c:241
 msgid "Previous track"
@@ -849,15 +849,15 @@ msgstr "Fitxategi guztiak"
 #, c-format
 msgid "Playlist (%i item)"
 msgid_plural "Playlist (%i items)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Erreprodukzio-zerrenda (elementu %i)"
+msgstr[1] "Erreprodukzio-zerrenda (%i elementu)"
 
 #: ../src/parole-medialist.c:221 ../src/parole-medialist.c:1477
 #, c-format
 msgid "Playlist (%i chapter)"
 msgid_plural "Playlist (%i chapters)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Erreprodukzio-zerrenda (kapitulu %i)"
+msgstr[1] "Erreprodukzio-zerrenda (%i kapitulu)"
 
 #: ../src/parole-medialist.c:390 ../src/parole-player.c:710
 #, c-format
@@ -878,7 +878,7 @@ msgstr "Erreprodukzio-zerrenda formatu ezezaguna"
 
 #: ../src/parole-medialist.c:664
 msgid "Please choose a supported playlist format"
-msgstr ""
+msgstr "Mesedez hautatu onartutako erreprodukzio-zerrenda formatu bat"
 
 #: ../src/parole-medialist.c:707 ../src/parole-plugins-manager.c:338
 msgid "Unknown"
@@ -959,7 +959,7 @@ msgstr "GStreamer interfaze errorea"
 
 #: ../src/parole-player.c:1794
 msgid "Unknown Song"
-msgstr ""
+msgstr "Abesti ezezaguna"
 
 #: ../src/parole-player.c:1805 ../src/parole-player.c:1811
 #: ../src/parole-player.c:1819
@@ -988,45 +988,45 @@ msgstr "Pantaila-osoa"
 
 #: ../src/parole-player.c:1994
 msgid "Leave _Fullscreen"
-msgstr ""
+msgstr "Utzi _pantaila-osoa"
 
 #: ../src/parole-player.c:1995
 msgid "Leave Fullscreen"
-msgstr ""
+msgstr "Utzi pantaila-osoa"
 
 #. Play menu item
 #. * Play pause
 #: ../src/parole-player.c:2097 ../src/plugins/tray/tray-provider.c:119
 msgid "_Pause"
-msgstr ""
+msgstr "_Gelditu"
 
 #: ../src/parole-player.c:2097 ../src/plugins/tray/tray-provider.c:119
 msgid "_Play"
-msgstr ""
+msgstr "Erre_produzitu"
 
 #. * Previous item in playlist.
 #: ../src/parole-player.c:2113
 msgid "_Previous"
-msgstr ""
+msgstr "_Aurrekoa"
 
 #. * Next item in playlist.
 #: ../src/parole-player.c:2124
 msgid "_Next"
-msgstr ""
+msgstr "_Hurrengoa"
 
 #. * Un/Full screen
 #: ../src/parole-player.c:2135
 msgid "_Leave Fullscreen"
-msgstr ""
+msgstr "_Utzi pantaila-osoa"
 
 #. * Un/Hide menubar
 #: ../src/parole-player.c:2150
 msgid "Show menubar"
-msgstr ""
+msgstr "Ikusi menu-barra"
 
 #: ../src/parole-player.c:2167
 msgid "Mini Mode"
-msgstr ""
+msgstr "Mini modua"
 
 #: ../src/parole-player.c:2386
 msgid "Unmute"
@@ -1034,25 +1034,25 @@ msgstr "Desmututu"
 
 #: ../src/parole-player.c:2785
 msgid "Unable to open default web browser"
-msgstr ""
+msgstr "Ezin izan da lehenetsitako nabigatzailea ireki"
 
 #: ../src/parole-player.c:2787
 msgid ""
 "Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
-msgstr ""
+msgstr "Mesedez jo ezazu https://docs.xfce.org/apps/parole/bugs helbidera zure arazoaren berri emateko."
 
 #: ../src/parole-player.c:2815
 msgid "Go"
-msgstr ""
+msgstr "Joan"
 
 #: ../src/parole-player.c:2828
 msgid "Position:"
-msgstr ""
+msgstr "Kokapena:"
 
 #. Clear Recent Menu Item
 #: ../src/parole-player.c:3232
 msgid "_Clear recent items…"
-msgstr ""
+msgstr "_Garbitu azken elementuak…"
 
 #: ../src/parole-player.c:3550
 msgid "Audio Track:"
@@ -1077,7 +1077,7 @@ msgstr "Ikusi Parole webgunea"
 
 #: ../src/parole-conf-dialog.c:292
 msgid "Clutter (OpenGL)"
-msgstr ""
+msgstr "Clutter (OpenGL)"
 
 #: ../src/parole-disc.c:109
 msgid "Play Disc"
@@ -1226,11 +1226,11 @@ msgstr "Vietnamdarra"
 
 #: ../src/parole-plugins-manager.c:253
 msgid "Plugin failed to load"
-msgstr ""
+msgstr "Pluginak huts egin du kargatzerakoan"
 
 #: ../src/parole-plugins-manager.c:254
 msgid "Please check your installation"
-msgstr ""
+msgstr "Mesedez egiaztatu ezazu zure instalazioa"
 
 #: ../src/parole-plugins-manager.c:375
 msgid "No installed plugins found on this system"
@@ -1238,7 +1238,7 @@ msgstr "Ez da instalaturiko pluginik aurkitu sistema honetan"
 
 #: ../src/parole-plugins-manager.c:376
 msgid "Please check your installation."
-msgstr ""
+msgstr "Mesedez egiaztatu ezazu zure instalazioa."
 
 #: ../src/misc/parole-filters.c:66
 msgid "Audio"
@@ -1281,12 +1281,12 @@ msgstr "Erreproduzitzen diren pisten berri-emateak ikusi"
 #. * Previous Track
 #: ../src/plugins/tray/tray-provider.c:128
 msgid "P_revious Track"
-msgstr ""
+msgstr "_Aurreko pista"
 
 #. * Next Track
 #: ../src/plugins/tray/tray-provider.c:137
 msgid "_Next Track"
-msgstr ""
+msgstr "_Hurrengo pista"
 
 #. * Open
 #: ../src/plugins/tray/tray-provider.c:153
@@ -1331,4 +1331,4 @@ msgstr "MPRIS2"
 
 #: ../src/plugins/mpris2/mpris2.desktop.in.h:2
 msgid "MPRIS2 remote control"
-msgstr ""
+msgstr "MPRIS2 urrutiko kontrola"
