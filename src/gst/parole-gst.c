@@ -1257,6 +1257,26 @@ parole_gst_application_message(ParoleGst *gst, GstMessage *msg) {
     }
 }
 
+static void
+parole_gst_missing_codec_helper_dialog(void) {
+    GtkMessageDialog *dialog;
+    gchar*     desc;
+
+    dialog = GTK_MESSAGE_DIALOG(gtk_message_dialog_new_with_markup(
+                            NULL,
+                            GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+                            GTK_MESSAGE_WARNING,
+                            GTK_BUTTONS_OK,
+                            "<b><big>%s</big></b>",
+                            _("Unable to install missing codecs.")));
+
+    gtk_message_dialog_format_secondary_markup(dialog,
+                                               _("No available plugin installer was found."));
+
+    gtk_dialog_run(GTK_DIALOG(dialog));
+    gtk_widget_destroy(GTK_WIDGET(dialog));
+}
+
 /**
  * parole_gst_install_plugins_result_func:
  * @result    : %GST_INSTALL_PLUGINS_SUCCESS (0) if successful
@@ -1278,6 +1298,9 @@ parole_gst_install_plugins_result_func(GstInstallPluginsReturn result, gpointer 
             break;
         case GST_INSTALL_PLUGINS_USER_ABORT:
             g_debug("User aborted plugin install.\n");
+            break;
+        case GST_INSTALL_PLUGINS_HELPER_MISSING:
+            parole_gst_missing_codec_helper_dialog();
             break;
         default:
             g_debug("Plugin installation failed with code %i\n", result);
