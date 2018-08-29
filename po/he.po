@@ -11,15 +11,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-12 06:31+0200\n"
-"PO-Revision-Date: 2018-04-16 13:02+0000\n"
+"POT-Creation-Date: 2018-08-25 12:31+0200\n"
+"PO-Revision-Date: 2018-08-29 11:24+0000\n"
 "Last-Translator: Elishai Eliyahu <e1907@mm.st>\n"
 "Language-Team: Hebrew (http://www.transifex.com/xfce/xfce-apps/language/he/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: he\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
 
 #: ../data/interfaces/parole.ui.h:1
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:1
@@ -694,70 +694,78 @@ msgstr "רצועה %i"
 msgid "Audio CD"
 msgstr "תקליטור שמע"
 
-#: ../src/gst/parole-gst.c:1305
+#: ../src/gst/parole-gst.c:1271
+msgid "Unable to install missing codecs."
+msgstr "לא ניתן להתקין מקודדים חסרים."
+
+#: ../src/gst/parole-gst.c:1274
+msgid "No available plugin installer was found."
+msgstr "לא נמצא מתקין תוסף זמין."
+
+#: ../src/gst/parole-gst.c:1328
 msgid "Additional software is required."
 msgstr "נחוצה תוכנה נוספת."
 
-#: ../src/gst/parole-gst.c:1309
+#: ../src/gst/parole-gst.c:1332
 msgid "Don't Install"
 msgstr "אל תתקין"
 
-#: ../src/gst/parole-gst.c:1311
+#: ../src/gst/parole-gst.c:1334
 msgid "Install"
 msgstr "התקן"
 
-#: ../src/gst/parole-gst.c:1314
+#: ../src/gst/parole-gst.c:1337
 msgid "OK"
 msgstr "אישור"
 
-#: ../src/gst/parole-gst.c:1321
+#: ../src/gst/parole-gst.c:1344
 #, c-format
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
 msgstr "‏Parole צריך <b>%s</b> כדי לנגן את קובץ זה.\nזה ניתן להתקנה אוטומטית."
 
-#: ../src/gst/parole-gst.c:1324
+#: ../src/gst/parole-gst.c:1347
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
 msgstr "‏Parole צריך <b>%s</b> כדי לנגן את קובץ זה."
 
-#: ../src/gst/parole-gst.c:1693
+#: ../src/gst/parole-gst.c:1716
 msgid "The stream is taking too much time to load"
 msgstr "לזרם לוקח יותר מדי זמן לעלות"
 
-#: ../src/gst/parole-gst.c:1695
+#: ../src/gst/parole-gst.c:1718
 msgid "Do you want to continue loading or stop?"
 msgstr "האם ברצונך להמשיך בטעינה או לעצור?"
 
-#: ../src/gst/parole-gst.c:1696
+#: ../src/gst/parole-gst.c:1719
 msgid "Stop"
 msgstr "עצור"
 
-#: ../src/gst/parole-gst.c:1697
+#: ../src/gst/parole-gst.c:1720
 msgid "Continue"
 msgstr "המשך"
 
-#: ../src/gst/parole-gst.c:1861
+#: ../src/gst/parole-gst.c:1884
 msgid "GStreamer Error"
 msgstr "שגיאת GStreamer"
 
-#: ../src/gst/parole-gst.c:1862
+#: ../src/gst/parole-gst.c:1885
 msgid "Parole Media Player cannot start."
 msgstr "‭.Parole Media Player תא ליחהתל ןתינ אל"
 
-#: ../src/gst/parole-gst.c:1887 ../src/gst/parole-gst.c:1902
-#: ../src/gst/parole-gst.c:1936
+#: ../src/gst/parole-gst.c:1910 ../src/gst/parole-gst.c:1925
+#: ../src/gst/parole-gst.c:1959
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
 msgstr "‭.ךלש GStreamer תנקתה תא קודב ,\"%s\" ףסות תולעהל לוכי אל."
 
-#: ../src/gst/parole-gst.c:2496 ../src/gst/parole-gst.c:2500
+#: ../src/gst/parole-gst.c:2519 ../src/gst/parole-gst.c:2523
 #, c-format
 msgid "Audio Track #%d"
 msgstr "רצועת שמע מס׳ %d"
 
-#: ../src/gst/parole-gst.c:2536 ../src/gst/parole-gst.c:2540
+#: ../src/gst/parole-gst.c:2559 ../src/gst/parole-gst.c:2563
 #, c-format
 msgid "Subtitle #%d"
 msgstr "כתובית מס׳ %d"
@@ -853,6 +861,8 @@ msgid "Playlist (%i item)"
 msgid_plural "Playlist (%i items)"
 msgstr[0] "רשימת נגינה (פריט %i)"
 msgstr[1] "רשימת נגינה (%i פריטים)"
+msgstr[2] "רשימת נגינה (%i פריטים)"
+msgstr[3] "רשימת נגינה (%i פריטים)"
 
 #: ../src/parole-medialist.c:221 ../src/parole-medialist.c:1477
 #, c-format
@@ -860,6 +870,8 @@ msgid "Playlist (%i chapter)"
 msgid_plural "Playlist (%i chapters)"
 msgstr[0] "רשימת נגינה (פרק %i)"
 msgstr[1] "רשימת נגינה (%i פרקים)"
+msgstr[2] "רשימת נגינה (%i פרקים)"
+msgstr[3] "רשימת נגינה (%i פרקים)"
 
 #: ../src/parole-medialist.c:390 ../src/parole-player.c:710
 #, c-format
