@@ -1299,9 +1299,6 @@ parole_gst_install_plugins_result_func(GstInstallPluginsReturn result, gpointer 
         case GST_INSTALL_PLUGINS_USER_ABORT:
             g_debug("User aborted plugin install.\n");
             break;
-        case GST_INSTALL_PLUGINS_HELPER_MISSING:
-            parole_gst_missing_codec_helper_dialog();
-            break;
         default:
             g_debug("Plugin installation failed with code %i\n", result);
             break;
@@ -1436,6 +1433,8 @@ parole_gst_bus_event(GstBus *bus, GstMessage *msg, gpointer data) {
         break;
     case GST_MESSAGE_ELEMENT:
         if (gst_is_missing_plugin_message(msg)) {
+            GstInstallPluginsReturn result;
+
             g_debug("Missing plugin\n");
             parole_gst_stop(gst);
             dialog = parole_gst_missing_codec_dialog(gst, msg);
@@ -1453,9 +1452,13 @@ parole_gst_bus_event(GstBus *bus, GstMessage *msg, gpointer data) {
                 }
 #endif /* GDK_WINDOWING_X11 */
 
-                 gst_install_plugins_async((const gchar * const *) details, ctx,
-                                           parole_gst_install_plugins_result_func, gst);
-                 gst_install_plugins_context_free(ctx);
+                result = gst_install_plugins_async((const gchar * const *) details,
+                    ctx, parole_gst_install_plugins_result_func, gst);
+
+                if (result == GST_INSTALL_PLUGINS_HELPER_MISSING)
+                    parole_gst_missing_codec_helper_dialog();
+
+                gst_install_plugins_context_free(ctx);
             } else if ( (response == GTK_RESPONSE_REJECT) || (response == GTK_RESPONSE_OK) ) {
                 gtk_widget_destroy(GTK_WIDGET(dialog));
             }
