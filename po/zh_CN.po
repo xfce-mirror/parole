@@ -10,14 +10,14 @@
 # xiaobo zhou <zhouxiaobo.500@gmail.com>, 2017
 # 玉堂白鹤 <yjwork@qq.com>, 2013-2014
 # xiaobo zhou <zhouxiaobo.500@gmail.com>, 2014
-# 玉堂白鹤 <yjwork@qq.com>, 2014-2015,2017
+# 玉堂白鹤 <yjwork@qq.com>, 2014-2015,2017-2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-12 06:31+0200\n"
-"PO-Revision-Date: 2018-05-10 15:54+0000\n"
-"Last-Translator: Mingcong Bai <jeffbai@aosc.xyz>\n"
+"POT-Creation-Date: 2018-08-25 12:31+0200\n"
+"PO-Revision-Date: 2018-08-31 04:22+0000\n"
+"Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/xfce/xfce-apps/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -698,70 +698,78 @@ msgstr "轨 %i"
 msgid "Audio CD"
 msgstr "音频 CD"
 
-#: ../src/gst/parole-gst.c:1305
+#: ../src/gst/parole-gst.c:1271
+msgid "Unable to install missing codecs."
+msgstr "未能安装缺失的编解码器。"
+
+#: ../src/gst/parole-gst.c:1274
+msgid "No available plugin installer was found."
+msgstr "找不到可用的插件安装程序。"
+
+#: ../src/gst/parole-gst.c:1328
 msgid "Additional software is required."
 msgstr "需要额外的软件。"
 
-#: ../src/gst/parole-gst.c:1309
+#: ../src/gst/parole-gst.c:1332
 msgid "Don't Install"
 msgstr "不安装"
 
-#: ../src/gst/parole-gst.c:1311
+#: ../src/gst/parole-gst.c:1334
 msgid "Install"
 msgstr "安装"
 
-#: ../src/gst/parole-gst.c:1314
+#: ../src/gst/parole-gst.c:1337
 msgid "OK"
 msgstr "OK"
 
-#: ../src/gst/parole-gst.c:1321
+#: ../src/gst/parole-gst.c:1344
 #, c-format
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
 msgstr "Parole 需要 < b>%s</b> 来播放此文件。\n它可以自动安装。"
 
-#: ../src/gst/parole-gst.c:1324
+#: ../src/gst/parole-gst.c:1347
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
 msgstr "Parole 需要 < b>%s</b> 来播放此文件。"
 
-#: ../src/gst/parole-gst.c:1693
+#: ../src/gst/parole-gst.c:1716
 msgid "The stream is taking too much time to load"
 msgstr "载入此流媒体使用时间过长"
 
-#: ../src/gst/parole-gst.c:1695
+#: ../src/gst/parole-gst.c:1718
 msgid "Do you want to continue loading or stop?"
 msgstr "您想继续加载或是停止？"
 
-#: ../src/gst/parole-gst.c:1696
+#: ../src/gst/parole-gst.c:1719
 msgid "Stop"
 msgstr "停止"
 
-#: ../src/gst/parole-gst.c:1697
+#: ../src/gst/parole-gst.c:1720
 msgid "Continue"
 msgstr "继续"
 
-#: ../src/gst/parole-gst.c:1861
+#: ../src/gst/parole-gst.c:1884
 msgid "GStreamer Error"
 msgstr "GStreamer 出错"
 
-#: ../src/gst/parole-gst.c:1862
+#: ../src/gst/parole-gst.c:1885
 msgid "Parole Media Player cannot start."
 msgstr "Parole 媒体播放器无法启动。"
 
-#: ../src/gst/parole-gst.c:1887 ../src/gst/parole-gst.c:1902
-#: ../src/gst/parole-gst.c:1936
+#: ../src/gst/parole-gst.c:1910 ../src/gst/parole-gst.c:1925
+#: ../src/gst/parole-gst.c:1959
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
 msgstr "无法加载 \"%s\"  插件，请检查您的 GStreamer 安装。"
 
-#: ../src/gst/parole-gst.c:2496 ../src/gst/parole-gst.c:2500
+#: ../src/gst/parole-gst.c:2519 ../src/gst/parole-gst.c:2523
 #, c-format
 msgid "Audio Track #%d"
 msgstr "音轨  #%d"
 
-#: ../src/gst/parole-gst.c:2536 ../src/gst/parole-gst.c:2540
+#: ../src/gst/parole-gst.c:2559 ../src/gst/parole-gst.c:2563
 #, c-format
 msgid "Subtitle #%d"
 msgstr "字幕 #%d"
