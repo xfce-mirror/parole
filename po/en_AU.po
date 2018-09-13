@@ -4,13 +4,14 @@
 # 
 # Translators:
 # John Humphrys <john.humphrys@pm.me>, 2018
+# John Humphrys <john.humphrys@pm.me>, 2018
 # Michael Findlay <translate@cobber-linux.org>, 2013-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-12 06:31+0200\n"
-"PO-Revision-Date: 2018-04-27 00:10+0000\n"
+"POT-Creation-Date: 2018-08-25 12:31+0200\n"
+"PO-Revision-Date: 2018-09-13 10:52+0000\n"
 "Last-Translator: John Humphrys <john.humphrys@pm.me>\n"
 "Language-Team: English (Australia) (http://www.transifex.com/xfce/xfce-apps/language/en_AU/)\n"
 "MIME-Version: 1.0\n"
@@ -692,70 +693,78 @@ msgstr "Track %i"
 msgid "Audio CD"
 msgstr "Audio CD"
 
-#: ../src/gst/parole-gst.c:1305
+#: ../src/gst/parole-gst.c:1271
+msgid "Unable to install missing codecs."
+msgstr "Unable to install missing codecs."
+
+#: ../src/gst/parole-gst.c:1274
+msgid "No available plugin installer was found."
+msgstr "No available plugin installer was found."
+
+#: ../src/gst/parole-gst.c:1328
 msgid "Additional software is required."
 msgstr "Additional software is required."
 
-#: ../src/gst/parole-gst.c:1309
+#: ../src/gst/parole-gst.c:1332
 msgid "Don't Install"
 msgstr "Don't Install"
 
-#: ../src/gst/parole-gst.c:1311
+#: ../src/gst/parole-gst.c:1334
 msgid "Install"
 msgstr "Install"
 
-#: ../src/gst/parole-gst.c:1314
+#: ../src/gst/parole-gst.c:1337
 msgid "OK"
 msgstr "OK"
 
-#: ../src/gst/parole-gst.c:1321
+#: ../src/gst/parole-gst.c:1344
 #, c-format
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
 msgstr "Parole needs <b>%s</b> to play this file.\nIt can be installed automatically."
 
-#: ../src/gst/parole-gst.c:1324
+#: ../src/gst/parole-gst.c:1347
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
 msgstr "Parole needs <b>%s</b> to play this file."
 
-#: ../src/gst/parole-gst.c:1693
+#: ../src/gst/parole-gst.c:1716
 msgid "The stream is taking too much time to load"
 msgstr "The stream is taking too much time to load"
 
-#: ../src/gst/parole-gst.c:1695
+#: ../src/gst/parole-gst.c:1718
 msgid "Do you want to continue loading or stop?"
 msgstr "Do you want to continue loading or stop?"
 
-#: ../src/gst/parole-gst.c:1696
+#: ../src/gst/parole-gst.c:1719
 msgid "Stop"
 msgstr "Stop"
 
-#: ../src/gst/parole-gst.c:1697
+#: ../src/gst/parole-gst.c:1720
 msgid "Continue"
 msgstr "Continue"
 
-#: ../src/gst/parole-gst.c:1861
+#: ../src/gst/parole-gst.c:1884
 msgid "GStreamer Error"
 msgstr "GStreamer Error"
 
-#: ../src/gst/parole-gst.c:1862
+#: ../src/gst/parole-gst.c:1885
 msgid "Parole Media Player cannot start."
 msgstr "Parole Media Player cannot start."
 
-#: ../src/gst/parole-gst.c:1887 ../src/gst/parole-gst.c:1902
-#: ../src/gst/parole-gst.c:1936
+#: ../src/gst/parole-gst.c:1910 ../src/gst/parole-gst.c:1925
+#: ../src/gst/parole-gst.c:1959
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
 msgstr "Unable to load \"%s\" plugin, check your GStreamer installation."
 
-#: ../src/gst/parole-gst.c:2496 ../src/gst/parole-gst.c:2500
+#: ../src/gst/parole-gst.c:2519 ../src/gst/parole-gst.c:2523
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Audio Track #%d"
 
-#: ../src/gst/parole-gst.c:2536 ../src/gst/parole-gst.c:2540
+#: ../src/gst/parole-gst.c:2559 ../src/gst/parole-gst.c:2563
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Subtitle #%d"
