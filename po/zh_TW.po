@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-01 06:32+0100\n"
-"PO-Revision-Date: 2018-03-01 23:45+0000\n"
+"POT-Creation-Date: 2018-08-25 12:31+0200\n"
+"PO-Revision-Date: 2018-09-14 00:16+0000\n"
 "Last-Translator: Jeff Huang <s8321414@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/xfce/xfce-apps/language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
@@ -616,6 +616,10 @@ msgid ""
 msgstr "Parole 著眼於本機媒體檔案的播放，包含了有字幕影片的支援，音樂 CD、DVD、以及直播串流。Parole 也可以經由插件擴充。"
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
+msgid "This is a minor translations-only release."
+msgstr "這是一個僅更新翻譯的次要版本。"
+
+#: ../data/appdata/parole.appdata.xml.in.h:4
 msgid ""
 "This release marks the first stable release of the 1.0 series. A new "
 "Automatic video output option was added to improve usage on virtual machines"
@@ -623,7 +627,7 @@ msgid ""
 "this release suitable for all users."
 msgstr "此版本標記了 1.0 系列的第一個穩定版本。加入了新的自動視訊輸出選項以改善在虛擬機器與低功率的機器上的表現。修復了大量的臭蟲，讓此版本適合所有使用者使用。"
 
-#: ../data/appdata/parole.appdata.xml.in.h:4
+#: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
 "This development release is a large cleanup of the codebase, making Parole "
 "lighter and easier to improve. All URLs have been updated to HTTPS. A large "
@@ -631,7 +635,7 @@ msgid ""
 "been introduced."
 msgstr "這個開發版本是程式碼庫的大清理版本，讓 Parole 更輕量且更容易改進。所有 URL 都已更新為 HTTPS。並修復了大量臭蟲及引入了新的鍵盤快捷鍵。"
 
-#: ../data/appdata/parole.appdata.xml.in.h:5
+#: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
 "This development release fixes several bugs, typos, and historical details "
 "present in the documentation. Tags are now processed on files delivered over"
@@ -639,31 +643,31 @@ msgid ""
 "to significant API changes."
 msgstr "這個開發版本修復了許多臭蟲、錯字與在文件中的歷史詳細資訊。透過 HTTP/S 遞送的檔案現在也會處理標籤了。而 GTK+ 3.22 以及更新版本的 clutter 視訊後端已被停用，因為其 API 變動太大了。"
 
-#: ../data/appdata/parole.appdata.xml.in.h:6
+#: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This development release adds a new mini mode and the ability to play or "
 "replay content by clicking the circle icons. Theming is simplified and "
 "filenames are displayed when no ID3 tags are found."
 msgstr "這個開發版本加入了新的迷你模式與點選圓形圖示來播放或重新播放內容的能力。主題化也更簡單了，而檔案名稱將會在找不到 ID3 標籤時顯示。"
 
-#: ../data/appdata/parole.appdata.xml.in.h:7
+#: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
 "This release improves the build process and includes several bug fixes. This"
 " new stable release is a recommended upgrade for all users."
 msgstr "此版本改善了構建過程並修復了許多臭蟲。建議所有的使用者更新到這個新的穩定版本。"
 
-#: ../data/appdata/parole.appdata.xml.in.h:8
+#: ../data/appdata/parole.appdata.xml.in.h:9
 msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
 msgstr "不穩定開發版本加入了新的 clutter 後端及清理廢棄的 Gtk3 符號。也加入了「到某位置」的功能，一些臭蟲也被解決。"
 
-#: ../data/appdata/parole.appdata.xml.in.h:9
+#: ../data/appdata/parole.appdata.xml.in.h:10
 msgid "This release fixes a problem with detecting DVD drive locations."
 msgstr "這個版本修復了一個偵測 DVD 光碟位置的問題。"
 
-#: ../data/appdata/parole.appdata.xml.in.h:10
+#: ../data/appdata/parole.appdata.xml.in.h:11
 msgid ""
 "This release features the completed transition to the Gtk+3 toolkit, "
 "improvements in the user-interface (more streamlined menus), better "
@@ -689,70 +693,78 @@ msgstr "第 %i 軌"
 msgid "Audio CD"
 msgstr "音訊 CD"
 
-#: ../src/gst/parole-gst.c:1305
+#: ../src/gst/parole-gst.c:1271
+msgid "Unable to install missing codecs."
+msgstr "無法安裝遺失的編解碼器。"
+
+#: ../src/gst/parole-gst.c:1274
+msgid "No available plugin installer was found."
+msgstr "找不到可用的外掛程式之安裝程式。"
+
+#: ../src/gst/parole-gst.c:1328
 msgid "Additional software is required."
 msgstr "需要額外軟體"
 
-#: ../src/gst/parole-gst.c:1309
+#: ../src/gst/parole-gst.c:1332
 msgid "Don't Install"
 msgstr "不安裝"
 
-#: ../src/gst/parole-gst.c:1311
+#: ../src/gst/parole-gst.c:1334
 msgid "Install"
 msgstr "安裝"
 
-#: ../src/gst/parole-gst.c:1314
+#: ../src/gst/parole-gst.c:1337
 msgid "OK"
 msgstr "確定"
 
-#: ../src/gst/parole-gst.c:1321
+#: ../src/gst/parole-gst.c:1344
 #, c-format
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
 msgstr "Parole 需要有 <b>%s</b> 才能播放這類檔案。\n它可以自動安裝。"
 
-#: ../src/gst/parole-gst.c:1324
+#: ../src/gst/parole-gst.c:1347
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
 msgstr "Parole 需要有 <b>%s</b> 才能播放此檔案。"
 
-#: ../src/gst/parole-gst.c:1693
+#: ../src/gst/parole-gst.c:1716
 msgid "The stream is taking too much time to load"
 msgstr "串流花費過多時間載入"
 
-#: ../src/gst/parole-gst.c:1695
+#: ../src/gst/parole-gst.c:1718
 msgid "Do you want to continue loading or stop?"
 msgstr "要繼續載入還是停止？"
 
-#: ../src/gst/parole-gst.c:1696
+#: ../src/gst/parole-gst.c:1719
 msgid "Stop"
 msgstr "停止"
 
-#: ../src/gst/parole-gst.c:1697
+#: ../src/gst/parole-gst.c:1720
 msgid "Continue"
 msgstr "繼續"
 
-#: ../src/gst/parole-gst.c:1861
+#: ../src/gst/parole-gst.c:1884
 msgid "GStreamer Error"
 msgstr "GStreamer 出錯"
 
-#: ../src/gst/parole-gst.c:1862
+#: ../src/gst/parole-gst.c:1885
 msgid "Parole Media Player cannot start."
 msgstr "Parole 媒體播放器無法停止。"
 
-#: ../src/gst/parole-gst.c:1887 ../src/gst/parole-gst.c:1902
-#: ../src/gst/parole-gst.c:1936
+#: ../src/gst/parole-gst.c:1910 ../src/gst/parole-gst.c:1925
+#: ../src/gst/parole-gst.c:1959
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
 msgstr "無法載入「%s」插件，請檢查 GStreamer 是否安裝妥當。"
 
-#: ../src/gst/parole-gst.c:2496 ../src/gst/parole-gst.c:2500
+#: ../src/gst/parole-gst.c:2519 ../src/gst/parole-gst.c:2523
 #, c-format
 msgid "Audio Track #%d"
 msgstr "第 %d 音軌"
 
-#: ../src/gst/parole-gst.c:2536 ../src/gst/parole-gst.c:2540
+#: ../src/gst/parole-gst.c:2559 ../src/gst/parole-gst.c:2563
 #, c-format
 msgid "Subtitle #%d"
 msgstr "第 %d 字幕"
