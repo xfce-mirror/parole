@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-01 06:32+0100\n"
-"PO-Revision-Date: 2018-03-08 18:37+0000\n"
+"POT-Creation-Date: 2018-08-25 12:31+0200\n"
+"PO-Revision-Date: 2018-09-14 00:16+0000\n"
 "Last-Translator: Pasi Lallinaho <pasi@shimmerproject.org>\n"
 "Language-Team: Finnish (http://www.transifex.com/xfce/xfce-apps/language/fi/)\n"
 "MIME-Version: 1.0\n"
@@ -617,6 +617,10 @@ msgid ""
 msgstr "Parole tukee paikallisten tiedostojen (mukaan lukien tekstitettyjen videoiden), ääni- ja DVD-levyjen toistamista sekä suoratoistoa. Lisäksi se on laajennettavissa lisäosin."
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
+msgid "This is a minor translations-only release."
+msgstr ""
+
+#: ../data/appdata/parole.appdata.xml.in.h:4
 msgid ""
 "This release marks the first stable release of the 1.0 series. A new "
 "Automatic video output option was added to improve usage on virtual machines"
@@ -624,7 +628,7 @@ msgid ""
 "this release suitable for all users."
 msgstr "Tämä julkaisu on ensimmäinen vakaa julkaisu 1.0-sarjassa. Uusi automaattinen videontoistovalinta lisättiin parantamaan käyttöä virtuaalikoneissa ja pieniresurssisissa koneissa. Myös iso määrä bugeja korjattiin, tehden tämän julkaisun sopivan kaikille käyttäjille."
 
-#: ../data/appdata/parole.appdata.xml.in.h:4
+#: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
 "This development release is a large cleanup of the codebase, making Parole "
 "lighter and easier to improve. All URLs have been updated to HTTPS. A large "
@@ -632,7 +636,7 @@ msgid ""
 "been introduced."
 msgstr "Tämä kehitysversio on puhdistaa koodia laajalti, tehden Parolesta kevyemmän ja helpomman parannella. Kaikki verkko-osoitteet on päivitetty käyttämään HTTPS-protokollaa. Iso määrä bugeja on korjattu ja uusi työkalu pikanäppäinten muokkaamiseen on lisätty."
 
-#: ../data/appdata/parole.appdata.xml.in.h:5
+#: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
 "This development release fixes several bugs, typos, and historical details "
 "present in the documentation. Tags are now processed on files delivered over"
@@ -640,31 +644,31 @@ msgid ""
 "to significant API changes."
 msgstr "Tämä kehitysversio korjaa useita bugeja, kirjoitusvirheitä ja dokumentaatiosta löytyviä historiallisia yksityiskohtia. Tagit prosessoidaan nyt HTTP/S-protokollan yli lähetettävillä tiedostoilla. Clutter video -taustapalvelu on kytketty pois päältä GTK+:n versioille 3.22 ja uudemmat merkittävien rajapinnan muutosten takia."
 
-#: ../data/appdata/parole.appdata.xml.in.h:6
+#: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This development release adds a new mini mode and the ability to play or "
 "replay content by clicking the circle icons. Theming is simplified and "
 "filenames are displayed when no ID3 tags are found."
 msgstr "Tämä kehitysversio lisää uuden pienoiskokoisen tilan ja mahdollisuuden toistaa (uudelleen) sisältöä ympyrän muotoisia kuvakkeita napsauttamalla. Teemoitus on yksinkertaistettu ja tiedostonimet näytetään kun ID3-tageja ei löydy."
 
-#: ../data/appdata/parole.appdata.xml.in.h:7
+#: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
 "This release improves the build process and includes several bug fixes. This"
 " new stable release is a recommended upgrade for all users."
 msgstr "Tämä julkaisu parantaa kääntöprosessia ja sisältää muutamia bugikorjauksia. Tämä uusi vakaa julkaisu on suositeltava päivitys kaikille käyttäjille."
 
-#: ../data/appdata/parole.appdata.xml.in.h:8
+#: ../data/appdata/parole.appdata.xml.in.h:9
 msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
 msgstr "Tämä epävakaa kehitysversio lisää uuden Clutter-taustapalvelun ja puhdistaa käytöstä poistettuja Gtk3-symboleita. Se lisää myös \"siirry sijaintiin\" -toiminnon ja korjaa muutamia virheitä."
 
-#: ../data/appdata/parole.appdata.xml.in.h:9
+#: ../data/appdata/parole.appdata.xml.in.h:10
 msgid "This release fixes a problem with detecting DVD drive locations."
 msgstr "Tämä julkaisu korjaa ongelman DVD-asemien sijaintien paikantamisessa."
 
-#: ../data/appdata/parole.appdata.xml.in.h:10
+#: ../data/appdata/parole.appdata.xml.in.h:11
 msgid ""
 "This release features the completed transition to the Gtk+3 toolkit, "
 "improvements in the user-interface (more streamlined menus), better "
@@ -690,70 +694,78 @@ msgstr "Raita %i"
 msgid "Audio CD"
 msgstr "Ääni-CD"
 
-#: ../src/gst/parole-gst.c:1305
+#: ../src/gst/parole-gst.c:1271
+msgid "Unable to install missing codecs."
+msgstr ""
+
+#: ../src/gst/parole-gst.c:1274
+msgid "No available plugin installer was found."
+msgstr ""
+
+#: ../src/gst/parole-gst.c:1328
 msgid "Additional software is required."
 msgstr "Lisäohjelmisto tarvitaan."
 
-#: ../src/gst/parole-gst.c:1309
+#: ../src/gst/parole-gst.c:1332
 msgid "Don't Install"
 msgstr "Älä asenna"
 
-#: ../src/gst/parole-gst.c:1311
+#: ../src/gst/parole-gst.c:1334
 msgid "Install"
 msgstr "Asenna"
 
-#: ../src/gst/parole-gst.c:1314
+#: ../src/gst/parole-gst.c:1337
 msgid "OK"
 msgstr "OK"
 
-#: ../src/gst/parole-gst.c:1321
+#: ../src/gst/parole-gst.c:1344
 #, c-format
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
 msgstr "Parole tarvitsee <b>%s</b> -paketin toistaakseen tämän tiedoston.\nSe voidaan asentaa automaattisesti."
 
-#: ../src/gst/parole-gst.c:1324
+#: ../src/gst/parole-gst.c:1347
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
 msgstr "Parole tarvitsee <b>%s</b> -paketin toistaakseen tämän tiedoston."
 
-#: ../src/gst/parole-gst.c:1693
+#: ../src/gst/parole-gst.c:1716
 msgid "The stream is taking too much time to load"
 msgstr "Tämän suoratoistovirran lataaminen kestää liian kauan"
 
-#: ../src/gst/parole-gst.c:1695
+#: ../src/gst/parole-gst.c:1718
 msgid "Do you want to continue loading or stop?"
 msgstr "Haluatko pysäyttää lataamisen vai jatkaa lataamista?"
 
-#: ../src/gst/parole-gst.c:1696
+#: ../src/gst/parole-gst.c:1719
 msgid "Stop"
 msgstr "Pysäytä"
 
-#: ../src/gst/parole-gst.c:1697
+#: ../src/gst/parole-gst.c:1720
 msgid "Continue"
 msgstr "Jatka"
 
-#: ../src/gst/parole-gst.c:1861
+#: ../src/gst/parole-gst.c:1884
 msgid "GStreamer Error"
 msgstr "GStreamer-virhe"
 
-#: ../src/gst/parole-gst.c:1862
+#: ../src/gst/parole-gst.c:1885
 msgid "Parole Media Player cannot start."
 msgstr "Parole-mediasoitinta ei voida käynnistää."
 
-#: ../src/gst/parole-gst.c:1887 ../src/gst/parole-gst.c:1902
-#: ../src/gst/parole-gst.c:1936
+#: ../src/gst/parole-gst.c:1910 ../src/gst/parole-gst.c:1925
+#: ../src/gst/parole-gst.c:1959
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
 msgstr "Ei voida ladata lisäosaa \"%s\", tarkista GStreamer-asennuksesi."
 
-#: ../src/gst/parole-gst.c:2496 ../src/gst/parole-gst.c:2500
+#: ../src/gst/parole-gst.c:2519 ../src/gst/parole-gst.c:2523
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Ääniraita %d"
 
-#: ../src/gst/parole-gst.c:2536 ../src/gst/parole-gst.c:2540
+#: ../src/gst/parole-gst.c:2559 ../src/gst/parole-gst.c:2563
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Tekstitys %d"
