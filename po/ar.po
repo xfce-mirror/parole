@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-03 18:30+0200\n"
-"PO-Revision-Date: 2017-09-19 18:05+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"POT-Creation-Date: 2018-08-25 12:31+0200\n"
+"PO-Revision-Date: 2018-09-14 00:16+0000\n"
+"Last-Translator: عبدالله رضوان <abbodmar@gmail.com>\n"
 "Language-Team: Arabic (http://www.transifex.com/xfce/xfce-apps/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -245,7 +245,7 @@ msgid "Open Media Files"
 msgstr "فتح ملفات الوسائط"
 
 #: ../data/interfaces/playlist.ui.h:1
-#: ../data/interfaces/parole-settings.ui.h:27
+#: ../data/interfaces/parole-settings.ui.h:28
 #: ../data/interfaces/shortcuts.ui.h:13 ../src/parole-medialist.c:745
 #: ../src/parole-medialist.c:784 ../src/parole-player.c:3191
 msgid "Playlist"
@@ -304,7 +304,7 @@ msgid "Play opened files"
 msgstr "تشغيل الملفات المفتوحة"
 
 #: ../data/interfaces/playlist.ui.h:15
-#: ../data/interfaces/parole-settings.ui.h:25
+#: ../data/interfaces/parole-settings.ui.h:26
 msgid "Remember playlist"
 msgstr "تذكّر قائمة التشغيل"
 
@@ -333,123 +333,127 @@ msgid "Visit Website"
 msgstr "زر الموقع على الشبكة"
 
 #: ../data/interfaces/parole-settings.ui.h:1
-msgid "X Window System (X11/XShm/Xv)"
+msgid "Automatic"
 msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:2
-msgid "X Window System (No Xv)"
+msgid "X Window System (X11/XShm/Xv)"
 msgstr ""
 
 #: ../data/interfaces/parole-settings.ui.h:3
+msgid "X Window System (No Xv)"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:4
 msgid "Parole Settings"
 msgstr "إعدادات Parole"
 
-#: ../data/interfaces/parole-settings.ui.h:4
+#: ../data/interfaces/parole-settings.ui.h:5
 msgid "Configure your media player"
 msgstr "إعداد مشغل وسائطك"
 
-#: ../data/interfaces/parole-settings.ui.h:5
+#: ../data/interfaces/parole-settings.ui.h:6
 msgid "Disable screensaver when playing movies"
 msgstr "عطّل حافظة الشاشة أثناء عرض الفيديو"
 
-#: ../data/interfaces/parole-settings.ui.h:6
+#: ../data/interfaces/parole-settings.ui.h:7
 msgid "<b>Screensaver</b>"
 msgstr "<b>حافظة الشاشة</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:7
+#: ../data/interfaces/parole-settings.ui.h:8
 msgid "Show visual effects when an audio file is played"
 msgstr "أظهر مؤثرات _مرئية عند تشغيل ملف صوتي"
 
-#: ../data/interfaces/parole-settings.ui.h:8
+#: ../data/interfaces/parole-settings.ui.h:9
 msgid "Visualization type:"
 msgstr "نوع المؤترات المرئية:"
 
-#: ../data/interfaces/parole-settings.ui.h:9
+#: ../data/interfaces/parole-settings.ui.h:10
 msgid "<b>Audio Visualization</b>"
 msgstr "<b>مؤثرات الصوت المرئية</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:10
+#: ../data/interfaces/parole-settings.ui.h:11
 msgid "Enable keyboard multimedia keys"
 msgstr "تمكين مفاتيح الوسائط المتعددة في لوحة المفاتيح"
 
-#: ../data/interfaces/parole-settings.ui.h:11
+#: ../data/interfaces/parole-settings.ui.h:12
 msgid "<b>Keyboard</b>"
 msgstr "<b>لوحة المفاتيح</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:12
+#: ../data/interfaces/parole-settings.ui.h:13
 #: ../data/interfaces/shortcuts.ui.h:1
 msgid "General"
 msgstr "عام"
 
-#: ../data/interfaces/parole-settings.ui.h:13
+#: ../data/interfaces/parole-settings.ui.h:14
 msgid "Please restart Parole for this change to take effect."
 msgstr "يرجى إعادة تشغيل Parole لحفظ التغييرات"
 
-#: ../data/interfaces/parole-settings.ui.h:14
+#: ../data/interfaces/parole-settings.ui.h:15
 msgid "<b>Video Output</b>"
 msgstr "<b>إخراج الفيديو</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:15
+#: ../data/interfaces/parole-settings.ui.h:16
 msgid "Brightness:"
 msgstr "السطوع:"
 
-#: ../data/interfaces/parole-settings.ui.h:16
+#: ../data/interfaces/parole-settings.ui.h:17
 msgid "Contrast:"
 msgstr "تباين:"
 
-#: ../data/interfaces/parole-settings.ui.h:17
+#: ../data/interfaces/parole-settings.ui.h:18
 msgid "Hue:"
 msgstr "شكل:"
 
-#: ../data/interfaces/parole-settings.ui.h:18
+#: ../data/interfaces/parole-settings.ui.h:19
 msgid "Saturation:"
 msgstr "إشباع:"
 
-#: ../data/interfaces/parole-settings.ui.h:19
+#: ../data/interfaces/parole-settings.ui.h:20
 msgid "Reset to defaults"
 msgstr "إعادة التعيين الإفتراضي"
 
-#: ../data/interfaces/parole-settings.ui.h:20
+#: ../data/interfaces/parole-settings.ui.h:21
 msgid "<b>Color Balance</b>"
 msgstr "<b>توازن الألوان</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:21
+#: ../data/interfaces/parole-settings.ui.h:22
 msgid "Display"
 msgstr "عرض"
 
-#: ../data/interfaces/parole-settings.ui.h:22
+#: ../data/interfaces/parole-settings.ui.h:23
 msgid "Always replace playlist with opened files"
 msgstr "إستبدال قائمة التشغيل في كل الأحوال عنذ فتح ملفات"
 
-#: ../data/interfaces/parole-settings.ui.h:23
+#: ../data/interfaces/parole-settings.ui.h:24
 msgid "Check and remove duplicate media entries"
 msgstr "تحقق و حذف إدخلات الملفات المتكررة"
 
-#: ../data/interfaces/parole-settings.ui.h:24
+#: ../data/interfaces/parole-settings.ui.h:25
 msgid "Start playing opened files"
 msgstr "بدء تشغيل الملفات المفتوحة"
 
-#: ../data/interfaces/parole-settings.ui.h:26
+#: ../data/interfaces/parole-settings.ui.h:27
 msgid "<b>Playlist Settings</b>"
 msgstr "<b>إعدادات قائمة العرض</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:28
+#: ../data/interfaces/parole-settings.ui.h:29
 msgid "Automatically show subtitles when playing movie file"
 msgstr "إظهار الترحمات تاقائيا عند تشغيل ملف مرئي"
 
-#: ../data/interfaces/parole-settings.ui.h:29
+#: ../data/interfaces/parole-settings.ui.h:30
 msgid "Font:"
 msgstr "الخطوط:"
 
-#: ../data/interfaces/parole-settings.ui.h:30
+#: ../data/interfaces/parole-settings.ui.h:31
 msgid "Encoding:"
 msgstr "تشفير:"
 
-#: ../data/interfaces/parole-settings.ui.h:31
+#: ../data/interfaces/parole-settings.ui.h:32
 msgid "<b>Subtitle Settings</b>"
 msgstr "<b>إعدادات العنوان الفرعي</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:32
+#: ../data/interfaces/parole-settings.ui.h:33
 msgid "Subtitles"
 msgstr "ترجمات"
 
@@ -499,7 +503,7 @@ msgstr "خروج"
 
 #: ../data/interfaces/shortcuts.ui.h:5
 msgid "View"
-msgstr ""
+msgstr "عرض"
 
 #: ../data/interfaces/shortcuts.ui.h:6
 msgid "Toggle fullscreen"
@@ -615,6 +619,18 @@ msgid ""
 msgstr ""
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
+msgid "This is a minor translations-only release."
+msgstr ""
+
+#: ../data/appdata/parole.appdata.xml.in.h:4
+msgid ""
+"This release marks the first stable release of the 1.0 series. A new "
+"Automatic video output option was added to improve usage on virtual machines"
+" and low power devices. A large number of bugs were also resolved, making "
+"this release suitable for all users."
+msgstr ""
+
+#: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
 "This development release is a large cleanup of the codebase, making Parole "
 "lighter and easier to improve. All URLs have been updated to HTTPS. A large "
@@ -622,7 +638,7 @@ msgid ""
 "been introduced."
 msgstr ""
 
-#: ../data/appdata/parole.appdata.xml.in.h:4
+#: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
 "This development release fixes several bugs, typos, and historical details "
 "present in the documentation. Tags are now processed on files delivered over"
@@ -630,31 +646,31 @@ msgid ""
 "to significant API changes."
 msgstr ""
 
-#: ../data/appdata/parole.appdata.xml.in.h:5
+#: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This development release adds a new mini mode and the ability to play or "
 "replay content by clicking the circle icons. Theming is simplified and "
 "filenames are displayed when no ID3 tags are found."
 msgstr ""
 
-#: ../data/appdata/parole.appdata.xml.in.h:6
+#: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
 "This release improves the build process and includes several bug fixes. This"
 " new stable release is a recommended upgrade for all users."
 msgstr ""
 
-#: ../data/appdata/parole.appdata.xml.in.h:7
+#: ../data/appdata/parole.appdata.xml.in.h:9
 msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
 msgstr ""
 
-#: ../data/appdata/parole.appdata.xml.in.h:8
+#: ../data/appdata/parole.appdata.xml.in.h:10
 msgid "This release fixes a problem with detecting DVD drive locations."
 msgstr ""
 
-#: ../data/appdata/parole.appdata.xml.in.h:9
+#: ../data/appdata/parole.appdata.xml.in.h:11
 msgid ""
 "This release features the completed transition to the Gtk+3 toolkit, "
 "improvements in the user-interface (more streamlined menus), better "
@@ -662,27 +678,6 @@ msgid ""
 " been added (MPRIS2). Most of the artwork has been updated for this release "
 "and we use the GStreamer1.0 framework now by default."
 msgstr ""
-
-#: ../data/appdata/parole.appdata.xml.in.h:10
-msgid ""
-"This unstable development release features mostly bugfixes and introduces "
-"the new MPRIS2 plugin."
-msgstr ""
-
-#: ../data/appdata/parole.appdata.xml.in.h:11
-msgid ""
-"This is a bugfix release which fixes the loading of playlists with relative "
-"paths, improves the file-filters for audio/video mimetypes and fixes the "
-"\"Remove duplicates\" functionality."
-msgstr ""
-
-#: ../data/appdata/parole.appdata.xml.in.h:12
-msgid ""
-"This unstable development release features the complete port to the Gtk+3 "
-"toolkit, improvements in the user-interface (more streamlined menus), better"
-" playlists. It also brings updated artwork, GStreamer1.0 support, improved "
-"plugins and the occasional bugfix."
-msgstr "هذا الإصدار إصدار تطويري غير مستقر، يتميز بالمنفذ الكامل إلى مجموعة أدوات GTK+3، والتحسينات في واجهة المستخدم، وقوائم تشغيل أفضل، دعم GStreamer1.0، وتحسين الإضافات وبعض الانهيارات."
 
 #: ../src/common/parole-common.c:83
 msgid "Message"
@@ -692,79 +687,87 @@ msgstr "رسالة"
 msgid "Error"
 msgstr "خطأ"
 
-#: ../src/gst/parole-gst.c:1094 ../src/parole-medialist.c:376
+#: ../src/gst/parole-gst.c:1095 ../src/parole-medialist.c:376
 #, c-format
 msgid "Track %i"
 msgstr "مفطع %i"
 
-#: ../src/gst/parole-gst.c:1097
+#: ../src/gst/parole-gst.c:1098
 msgid "Audio CD"
 msgstr "قرص مدمج صوتي"
 
-#: ../src/gst/parole-gst.c:1304
+#: ../src/gst/parole-gst.c:1271
+msgid "Unable to install missing codecs."
+msgstr ""
+
+#: ../src/gst/parole-gst.c:1274
+msgid "No available plugin installer was found."
+msgstr ""
+
+#: ../src/gst/parole-gst.c:1328
 msgid "Additional software is required."
 msgstr "برامج إضافية مطلوبة."
 
-#: ../src/gst/parole-gst.c:1308
+#: ../src/gst/parole-gst.c:1332
 msgid "Don't Install"
 msgstr "لا تقم بالتثبيت"
 
-#: ../src/gst/parole-gst.c:1310
+#: ../src/gst/parole-gst.c:1334
 msgid "Install"
 msgstr "تثبيت"
 
-#: ../src/gst/parole-gst.c:1313
+#: ../src/gst/parole-gst.c:1337
 msgid "OK"
 msgstr "موافق"
 
-#: ../src/gst/parole-gst.c:1320
+#: ../src/gst/parole-gst.c:1344
 #, c-format
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
 msgstr "تحتاج <b>%s</b> لتشغيل هذا الملف.\nويمكن تثبيته تلقائيا."
 
-#: ../src/gst/parole-gst.c:1323
+#: ../src/gst/parole-gst.c:1347
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
 msgstr "تحتاج <b>%s</b> لتشغيل هذا الملف."
 
-#: ../src/gst/parole-gst.c:1692
+#: ../src/gst/parole-gst.c:1716
 msgid "The stream is taking too much time to load"
 msgstr "الشريط قد أخد وقتا طويلا للتحميل"
 
-#: ../src/gst/parole-gst.c:1694
+#: ../src/gst/parole-gst.c:1718
 msgid "Do you want to continue loading or stop?"
 msgstr "هل تريد متابعة التشغيل أو التوقف؟"
 
-#: ../src/gst/parole-gst.c:1695
+#: ../src/gst/parole-gst.c:1719
 msgid "Stop"
 msgstr "أوقف"
 
-#: ../src/gst/parole-gst.c:1696
+#: ../src/gst/parole-gst.c:1720
 msgid "Continue"
 msgstr "استمر"
 
-#: ../src/gst/parole-gst.c:1860
+#: ../src/gst/parole-gst.c:1884
 msgid "GStreamer Error"
 msgstr "خطأ في GStreamer"
 
-#: ../src/gst/parole-gst.c:1861
+#: ../src/gst/parole-gst.c:1885
 msgid "Parole Media Player cannot start."
 msgstr "لا يمكن تشغيل مُشغل الوسائط."
 
-#: ../src/gst/parole-gst.c:1886 ../src/gst/parole-gst.c:1901
-#: ../src/gst/parole-gst.c:1930
+#: ../src/gst/parole-gst.c:1910 ../src/gst/parole-gst.c:1925
+#: ../src/gst/parole-gst.c:1959
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
 msgstr "غير قادر على تحميل الإضافة \"%s\" ، تأكد من تثبيت GStreamer."
 
-#: ../src/gst/parole-gst.c:2490 ../src/gst/parole-gst.c:2494
+#: ../src/gst/parole-gst.c:2519 ../src/gst/parole-gst.c:2523
 #, c-format
 msgid "Audio Track #%d"
 msgstr "مقطع صوتي #%d"
 
-#: ../src/gst/parole-gst.c:2530 ../src/gst/parole-gst.c:2534
+#: ../src/gst/parole-gst.c:2559 ../src/gst/parole-gst.c:2563
 #, c-format
 msgid "Subtitle #%d"
 msgstr "ترجمة #%d"
@@ -976,7 +979,7 @@ msgstr "خطأ في خلفية GStreamer"
 
 #: ../src/parole-player.c:1794
 msgid "Unknown Song"
-msgstr ""
+msgstr "مقطع مجهول"
 
 #: ../src/parole-player.c:1805 ../src/parole-player.c:1811
 #: ../src/parole-player.c:1819
@@ -1092,7 +1095,7 @@ msgstr "فريق تعريب إكسفس: كريم اولاد الشلحة محم�
 msgid "Visit Parole website"
 msgstr "زر موقع Parole على الشيكة"
 
-#: ../src/parole-conf-dialog.c:290
+#: ../src/parole-conf-dialog.c:292
 msgid "Clutter (OpenGL)"
 msgstr "فوضى (برنامج OpenGL)"
 
