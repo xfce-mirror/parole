@@ -7,13 +7,13 @@
 # Саша Петровић <salepetronije@gmail.com>, 2012
 # Саша Петровић <salepetronije@gmail.com>, 2012-2014,2017
 # Саша Петровић <salepetronije@gmail.com>, 2014-2015
-# Саша Петровић <salepetronije@gmail.com>, 2017
+# Саша Петровић <salepetronije@gmail.com>, 2017-2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-25 12:31+0200\n"
-"PO-Revision-Date: 2018-09-14 00:16+0000\n"
+"PO-Revision-Date: 2018-09-27 15:01+0000\n"
 "Last-Translator: Саша Петровић <salepetronije@gmail.com>\n"
 "Language-Team: Serbian (http://www.transifex.com/xfce/xfce-apps/language/sr/)\n"
 "MIME-Version: 1.0\n"
@@ -325,7 +325,7 @@ msgstr "<b>Опис</b>"
 
 #: ../data/interfaces/plugins.ui.h:5
 msgid "<b>Author</b>"
-msgstr "<b>Аутор:</b>"
+msgstr "<b>Стваралац</b>"
 
 #: ../data/interfaces/plugins.ui.h:6
 msgid "Visit Website"
@@ -697,11 +697,11 @@ msgstr "Звучни ЦД"
 
 #: ../src/gst/parole-gst.c:1271
 msgid "Unable to install missing codecs."
-msgstr ""
+msgstr "Нисам успео да уградим недостајуће кодеке."
 
 #: ../src/gst/parole-gst.c:1274
 msgid "No available plugin installer was found."
-msgstr ""
+msgstr "Нисам нашао одговарајућег уграђивача прикључака."
 
 #: ../src/gst/parole-gst.c:1328
 msgid "Additional software is required."
