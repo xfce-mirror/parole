@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-25 12:31+0200\n"
-"PO-Revision-Date: 2018-10-11 10:30+0000\n"
+"PO-Revision-Date: 2018-10-11 12:51+0000\n"
 "Last-Translator: Charles Monzat <c.monzat@laposte.net>\n"
 "Language-Team: French (http://www.transifex.com/xfce/xfce-apps/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -423,7 +423,7 @@ msgstr "Affichage"
 
 #: ../data/interfaces/parole-settings.ui.h:23
 msgid "Always replace playlist with opened files"
-msgstr "Toujours remplacer la liste de lecture avec les fichiers ouverts"
+msgstr "Toujours remplacer la liste de lecture par les fichiers ouverts"
 
 #: ../data/interfaces/parole-settings.ui.h:24
 msgid "Check and remove duplicate media entries"
@@ -718,7 +718,7 @@ msgstr "Installer"
 
 #: ../src/gst/parole-gst.c:1337
 msgid "OK"
-msgstr "OK"
+msgstr "Valider"
 
 #: ../src/gst/parole-gst.c:1344
 #, c-format
@@ -785,7 +785,7 @@ msgid ""
 "\n"
 "Please report bugs to <https://bugzilla.xfce.org/>.\n"
 "\n"
-msgstr "\nLecteur multimédia Parole %s\n\nFait partie du projet Xfce Extras\nhttps://goodies.xfce.org\n\nSous licence GNU GPL.\n\nVeuillez signaler les bogues sur <https://bugzilla.xfce.org/>.\n\n"
+msgstr "\nLecteur multimédia Parole %s\n\nFait partie du projet Xfce Extras\nhttps://goodies.xfce.org\n\nSous licence GNU GPL.\n\nVeuillez signaler les bogues à <https://bugzilla.xfce.org/>.\n\n"
 
 #: ../src/main.c:227
 msgid "Open a new instance"
@@ -813,11 +813,11 @@ msgstr "Lire ou mettre en pause si lecture en cours"
 
 #: ../src/main.c:243
 msgid "Raise volume"
-msgstr "Monter le son"
+msgstr "Augmenter le volume"
 
 #: ../src/main.c:245
 msgid "Lower volume"
-msgstr "Baisser le son"
+msgstr "Diminuer le volume"
 
 #: ../src/main.c:247
 msgid "Mute volume"
@@ -833,7 +833,7 @@ msgstr "Ajouter des fichiers à la liste de lecture"
 
 #: ../src/main.c:253
 msgid "Print version information and exit"
-msgstr "Imprimer les informations de la version et quitter"
+msgstr "Afficher les informations de version et quitter"
 
 #: ../src/main.c:257
 msgid "Media to play"
@@ -841,12 +841,12 @@ msgstr "Média à lire"
 
 #: ../src/main.c:279
 msgid "[FILES...] - Play movies and songs"
-msgstr "[Fichiers...] - Lire films et chansons"
+msgstr "[Fichiers…] - Lire films et chansons"
 
 #: ../src/main.c:290
 #, c-format
 msgid "Type %s --help to list all available command line options\n"
-msgstr "Taper %s --help pour lister toutes les options de ligne de commande disponibles\n"
+msgstr "Tapez %s --help pour lister toutes les options en ligne de commande disponibles\n"
 
 #: ../src/main.c:307
 #, c-format
@@ -915,7 +915,7 @@ msgstr "Liste de lecture partageable"
 #. Clear
 #: ../src/parole-medialist.c:1122
 msgid "Open Containing Folder"
-msgstr "Ouvrir le dossier contenant le fichier"
+msgstr "Ouvrir le dossier parent"
 
 #: ../src/parole-player.c:528
 msgid "Hide Playlist"
@@ -951,7 +951,7 @@ msgstr "Effacer l’historique"
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
-msgstr "Êtes-vous sûr de vouloir effacer l’historique des éléments récemments ouverts ? Cette opération est irréversible."
+msgstr "Voulez-vous vraiment effacer l’historique des éléments récents ? Cette opération est irréversible."
 
 #: ../src/parole-player.c:1261 ../src/parole-player.c:1388
 msgid "Media stream is not seekable"
@@ -1059,20 +1059,20 @@ msgstr "Aller"
 
 #: ../src/parole-player.c:2828
 msgid "Position:"
-msgstr "Position :"
+msgstr "Position :"
 
 #. Clear Recent Menu Item
 #: ../src/parole-player.c:3232
 msgid "_Clear recent items…"
-msgstr "_Effacer l’historique..."
+msgstr "_Effacer l’historique…"
 
 #: ../src/parole-player.c:3550
 msgid "Audio Track:"
-msgstr "Piste audio :"
+msgstr "Piste audio :"
 
 #: ../src/parole-player.c:3569
 msgid "Subtitles:"
-msgstr "Sous-titres :"
+msgstr "Sous-titres :"
 
 #. Add a close button to the Infobar
 #: ../src/parole-player.c:3575 ../src/plugins/tray/tray-provider.c:257
@@ -1315,15 +1315,15 @@ msgstr "Toujours réduire dans la zone de notification lorsque la fenêtre est f
 
 #: ../src/plugins/tray/tray-provider.c:307
 msgid "Are you sure you want to quit?"
-msgstr "Voulez-vous vraiment quitter ?"
+msgstr "Voulez-vous vraiment quitter ?"
 
 #: ../src/plugins/tray/tray-provider.c:310
 msgid "Parole can be minimized to the system tray instead."
-msgstr "Parole peut être minimisé dans la barre d’état à la place."
+msgstr "Parole peut être réduit dans la zone de notification."
 
 #: ../src/plugins/tray/tray-provider.c:313
 msgid "Minimize to tray"
-msgstr "Minimiser dans la zone de notification"
+msgstr "Réduire dans la zone de notification"
 
 #: ../src/plugins/tray/tray-provider.c:334
 msgid "Remember my choice"
@@ -1335,7 +1335,7 @@ msgstr "Icône de la zone de notification"
 
 #: ../src/plugins/tray/system-tray.desktop.in.h:2
 msgid "Show icon in the system tray"
-msgstr "Montrer l’icône dans la zone de notification"
+msgstr "Afficher l’icône dans la zone de notification"
 
 #: ../src/plugins/mpris2/mpris2.desktop.in.h:1
 msgid "MPRIS2"
