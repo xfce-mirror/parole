@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-25 12:31+0200\n"
-"PO-Revision-Date: 2018-10-10 20:58+0000\n"
+"PO-Revision-Date: 2018-10-11 10:30+0000\n"
 "Last-Translator: Charles Monzat <c.monzat@laposte.net>\n"
 "Language-Team: French (http://www.transifex.com/xfce/xfce-apps/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -54,7 +54,7 @@ msgstr "_Enregistrer la liste de lecture…"
 #: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:108
 #: ../src/parole-disc.c:143
 msgid "Insert Disc"
-msgstr "Insérez un disque"
+msgstr "Insérer un disque"
 
 #. * Exit
 #: ../data/interfaces/parole.ui.h:8 ../src/plugins/tray/tray-provider.c:168
@@ -124,7 +124,7 @@ msgstr "_Augmenter le volume"
 
 #: ../data/interfaces/parole.ui.h:24
 msgid "Volume _Down"
-msgstr "_Baisser le volume"
+msgstr "_Diminuer le volume"
 
 #: ../data/interfaces/parole.ui.h:25
 msgid "_Mute"
@@ -157,15 +157,15 @@ msgstr "Carré"
 
 #: ../data/interfaces/parole.ui.h:32
 msgid "4:3 (TV)"
-msgstr "4:3 (télévision)"
+msgstr "4/3 (télévision)"
 
 #: ../data/interfaces/parole.ui.h:33
 msgid "16:9 (Widescreen)"
-msgstr "16:9 (écran large)"
+msgstr "16/9 (écran large)"
 
 #: ../data/interfaces/parole.ui.h:34
 msgid "20:9 (DVB)"
-msgstr "20:9 (diffusion numérique)"
+msgstr "20/9 (diffusion numérique)"
 
 #: ../data/interfaces/parole.ui.h:35
 msgid "_Subtitles"
@@ -173,7 +173,7 @@ msgstr "_Sous-titres"
 
 #: ../data/interfaces/parole.ui.h:36
 msgid "Select Text Subtitles…"
-msgstr "Sélectionner le fichier de sous-titres..."
+msgstr "Sélectionner le fichier de sous-titres…"
 
 #: ../data/interfaces/parole.ui.h:37
 msgid "_Tools"
@@ -193,7 +193,7 @@ msgstr "Aid_e"
 
 #: ../data/interfaces/parole.ui.h:41
 msgid "_Report a Bug…"
-msgstr "_Signaler un bogue..."
+msgstr "_Signaler un bogue…"
 
 #: ../data/interfaces/parole.ui.h:42
 msgid "_Keyboard Shortcuts"
@@ -234,7 +234,7 @@ msgstr "0:00"
 #: ../data/interfaces/parole.ui.h:51
 #, no-c-format
 msgid "Buffering (0%)"
-msgstr "Mise en mémoire tampon (0%)"
+msgstr "Mise en mémoire tampon (0 %)"
 
 #: ../data/interfaces/parole.ui.h:52
 msgid "/"
@@ -257,7 +257,7 @@ msgstr "Liste de lecture du disque"
 
 #: ../data/interfaces/playlist.ui.h:3
 msgid "Add to playlist…"
-msgstr "Ajouter à la liste de lecture..."
+msgstr "Ajouter à la liste de lecture…"
 
 #: ../data/interfaces/playlist.ui.h:4
 msgid "Add"
@@ -366,7 +366,7 @@ msgstr "Afficher des effets visuels lorsqu’un fichier audio est joué"
 
 #: ../data/interfaces/parole-settings.ui.h:9
 msgid "Visualization type:"
-msgstr "Type de visualisation :"
+msgstr "Type de visualisation :"
 
 #: ../data/interfaces/parole-settings.ui.h:10
 msgid "<b>Audio Visualization</b>"
@@ -395,19 +395,19 @@ msgstr "<b>Sortie vidéo</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:16
 msgid "Brightness:"
-msgstr "Luminosité :"
+msgstr "Luminosité :"
 
 #: ../data/interfaces/parole-settings.ui.h:17
 msgid "Contrast:"
-msgstr "Contraste :"
+msgstr "Contraste :"
 
 #: ../data/interfaces/parole-settings.ui.h:18
 msgid "Hue:"
-msgstr "Teinte :"
+msgstr "Teinte :"
 
 #: ../data/interfaces/parole-settings.ui.h:19
 msgid "Saturation:"
-msgstr "Saturation :"
+msgstr "Saturation :"
 
 #: ../data/interfaces/parole-settings.ui.h:20
 msgid "Reset to defaults"
@@ -419,7 +419,7 @@ msgstr "<b>Balance des couleurs</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:22
 msgid "Display"
-msgstr "Afficher"
+msgstr "Affichage"
 
 #: ../data/interfaces/parole-settings.ui.h:23
 msgid "Always replace playlist with opened files"
@@ -443,11 +443,11 @@ msgstr "Afficher automatiquement les sous-titres lors de la lecture d’un fichi
 
 #: ../data/interfaces/parole-settings.ui.h:30
 msgid "Font:"
-msgstr "Police :"
+msgstr "Police :"
 
 #: ../data/interfaces/parole-settings.ui.h:31
 msgid "Encoding:"
-msgstr "Encodage :"
+msgstr "Codage :"
 
 #: ../data/interfaces/parole-settings.ui.h:32
 msgid "<b>Subtitle Settings</b>"
@@ -463,7 +463,7 @@ msgstr "Par extension"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "Save Playlist as…"
-msgstr "Enregistrer la liste de lecture sous..."
+msgstr "Enregistrer la liste de lecture sous…"
 
 #: ../data/interfaces/save-playlist.ui.h:3
 msgid "File Type"
@@ -628,7 +628,7 @@ msgid ""
 "Automatic video output option was added to improve usage on virtual machines"
 " and low power devices. A large number of bugs were also resolved, making "
 "this release suitable for all users."
-msgstr "Cette version marque la première version stable de la série 1.0. Une nouvelle option de sortie vidéo automatique a été ajoutée afin d’améliorer l’utilisation sur les machines virtuelles et les périphériques basse consommation. Un grand nombre de bogues ont également été résolus, rendant cette version adaptée à tous les utilisateurs."
+msgstr "Cette version marque la première version stable de la série 1.0. Une nouvelle option de sortie vidéo automatique a été ajoutée afin d’améliorer l’utilisation sur les machines virtuelles et les périphériques de basse puissance. Un grand nombre de bogues a également été corrigé, rendant cette version adaptée à tous les utilisateurs."
 
 #: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
@@ -636,7 +636,7 @@ msgid ""
 "lighter and easier to improve. All URLs have been updated to HTTPS. A large "
 "number of bugs have been resolved and a new keyboard shortcuts helper has "
 "been introduced."
-msgstr "Cette version de développement représente un grand nettoyage du code de base, rendant Parole plus léger et plus facile à améliorer. Toutes les URLs ont été mises à jour vers HTTPS. Un grand nombre de bogues ont été résolus et un nouvel assistant des raccourcis clavier a été introduit."
+msgstr "Cette version de développement représente un grand nettoyage du code de base, rendant Parole plus léger et plus facile à améliorer. Tous les URL ont été mis à jour vers HTTPS. Un grand nombre de bogues a été corrigé et un nouvel assistant des raccourcis clavier a été introduit."
 
 #: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
@@ -644,14 +644,14 @@ msgid ""
 "present in the documentation. Tags are now processed on files delivered over"
 " HTTP/S. The clutter video backend is disabled for GTK+ 3.22 and newer due "
 "to significant API changes."
-msgstr "Cette version de développement corrige plusieurs bogues, des fautes de frappe, et des détails historiques présents dans la documentation. Les balises sont désormais traitées pour les fichiers distribués via HTTP/S. Le moteur vidéo clutter est désactivé pour GTK+ 3.22 et ultérieur en raison de changements d’API significatifs."
+msgstr "Cette version de développement corrige plusieurs bogues, des fautes de frappe, ainsi que des détails historiques présents dans la documentation. Les balises sont désormais traitées pour les fichiers distribués via HTTP/S. Le moteur vidéo clutter est désactivé pour GTK+ 3.22 et ultérieur en raison de changements d’API significatifs."
 
 #: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This development release adds a new mini mode and the ability to play or "
 "replay content by clicking the circle icons. Theming is simplified and "
 "filenames are displayed when no ID3 tags are found."
-msgstr "Cette version intègre un nouveau mode mini et la possibilité de lire ou relire un contenu en cliquant sur l’icône en forme de flèche circulaire. L’ajout de thèmes a été simplifié et en cas d’absence d’étiquette ID3, c’est le nom du fichier qui s’affiche."
+msgstr "Cette version intègre un nouveau mode mini et la possibilité de lire ou relire un contenu en cliquant sur l’icône en forme de flèche circulaire. L’ajout de thèmes a été simplifié et en cas d’absence d’étiquette ID3, le nom du fichier est affiché."
 
 #: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
@@ -664,7 +664,7 @@ msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
-msgstr "Cette version de développement instable intègre le nouveau moteur clutter et nettoie les symboles Gtk3 obsolètes. Elle ajoute également une fonctionnalité « aller à la position » et corrige plusieurs bogues."
+msgstr "Cette version de développement instable intègre le nouveau moteur Clutter et nettoie les symboles GTK3 obsolètes. Elle ajoute également une fonctionnalité « aller à la position » et corrige plusieurs bogues."
 
 #: ../data/appdata/parole.appdata.xml.in.h:10
 msgid "This release fixes a problem with detecting DVD drive locations."
@@ -677,7 +677,7 @@ msgid ""
 "playlists. Furthermore existing plugins have been improved and a new one has"
 " been added (MPRIS2). Most of the artwork has been updated for this release "
 "and we use the GStreamer1.0 framework now by default."
-msgstr "Cette version achève la transition vers la boite à outils Gtk+3, améliore l’interface utilisateur (menus simplifiés) et les listes de lecture. De plus, les greffons existants ont été amendés et un nouveau a été ajouté (MPRIS2). La plus grande partie de l’aspect visuel a été mise à jour et nous utilisons dorénavant le moteur GStreamer 1.0 par défaut."
+msgstr "Cette version achève la transition vers la boîte à outils GTK+3, améliore l’interface utilisateur (menus simplifiés) et les listes de lecture. De plus, les greffons existants ont été amendés et un nouveau a été ajouté (MPRIS2). La plus grande partie de l’aspect visuel a été mise à jour et nous utilisons dorénavant le moteur GStreamer 1.0 par défaut."
 
 #: ../src/common/parole-common.c:83
 msgid "Message"
@@ -725,12 +725,12 @@ msgstr "OK"
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
-msgstr "Parole a besoin de <b>%s</b> pour jouer ce fichier.\nIl peut être installé automatiquement."
+msgstr "Parole a besoin de <b>%s</b> pour lire ce fichier.\nIl peut être installé automatiquement."
 
 #: ../src/gst/parole-gst.c:1347
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
-msgstr "Parole a besoin de <b>%s</b> pour jouer ce fichier."
+msgstr "Parole a besoin de <b>%s</b> pour lire ce fichier."
 
 #: ../src/gst/parole-gst.c:1716
 msgid "The stream is taking too much time to load"
@@ -738,7 +738,7 @@ msgstr "Le flux prend trop de temps à charger"
 
 #: ../src/gst/parole-gst.c:1718
 msgid "Do you want to continue loading or stop?"
-msgstr "Voulez-vous continuer le chargement ou arrêter ?"
+msgstr "Voulez-vous continuer le chargement ou arrêter ?"
 
 #: ../src/gst/parole-gst.c:1719
 msgid "Stop"
@@ -760,7 +760,7 @@ msgstr "Le lecteur multimédia Parole ne peut pas démarrer."
 #: ../src/gst/parole-gst.c:1959
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
-msgstr "Impossible de charger le greffon « %s ». Vérifiez votre installation de GStreamer."
+msgstr "Impossible de charger le greffon « %s ». Vérifiez votre installation de GStreamer."
 
 #: ../src/gst/parole-gst.c:2519 ../src/gst/parole-gst.c:2523
 #, c-format
