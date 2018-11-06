@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Sveinn í Felli <sv1@fellsnet.is>, 2011,2014,2016
+# Sveinn í Felli <sv1@fellsnet.is>, 2011,2014,2016,2018
 # Sveinn í Felli <sv1@fellsnet.is>, 2011
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-25 12:31+0200\n"
-"PO-Revision-Date: 2018-09-14 00:16+0000\n"
+"PO-Revision-Date: 2018-11-06 17:40+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic (http://www.transifex.com/xfce/xfce-apps/language/is/)\n"
 "MIME-Version: 1.0\n"
@@ -193,7 +193,7 @@ msgstr "Tilkynna um _villu…"
 
 #: ../data/interfaces/parole.ui.h:42
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "Flýtileiðir á ly_klaborði"
 
 #: ../data/interfaces/parole.ui.h:43
 msgid "Display Parole user manual"
@@ -234,7 +234,7 @@ msgstr "Hleð í biðminni (0%)"
 
 #: ../data/interfaces/parole.ui.h:52
 msgid "/"
-msgstr ""
+msgstr "/"
 
 #: ../data/interfaces/mediachooser.ui.h:1
 msgid "Open Media Files"
@@ -330,7 +330,7 @@ msgstr "Fara á heimasíðu"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "Automatic"
-msgstr ""
+msgstr "Sjálfvirkt"
 
 #: ../data/interfaces/parole-settings.ui.h:2
 msgid "X Window System (X11/XShm/Xv)"
@@ -487,11 +487,11 @@ msgstr "<big><b>Opna staðsetningu á neti</b></big>"
 
 #: ../data/interfaces/shortcuts.ui.h:2
 msgid "Open file"
-msgstr ""
+msgstr "Opna skrá"
 
 #: ../data/interfaces/shortcuts.ui.h:3
 msgid "Open location"
-msgstr ""
+msgstr "Opna staðsetningu"
 
 #: ../data/interfaces/shortcuts.ui.h:4 ../src/plugins/tray/tray-provider.c:325
 msgid "Quit"
@@ -503,27 +503,27 @@ msgstr "Skoða"
 
 #: ../data/interfaces/shortcuts.ui.h:6
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "Víxla skjáfylli"
 
 #: ../data/interfaces/shortcuts.ui.h:7
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "Hætta í skjáfylli"
 
 #: ../data/interfaces/shortcuts.ui.h:8
 msgid "Toggle menubar"
-msgstr ""
+msgstr "Víxla valmyndastiku af/á"
 
 #: ../data/interfaces/shortcuts.ui.h:9
 msgid "Volume"
-msgstr ""
+msgstr "Hljóðstyrkur"
 
 #: ../data/interfaces/shortcuts.ui.h:10
 msgid "Increase volume"
-msgstr ""
+msgstr "Auka hljóðstyrk"
 
 #: ../data/interfaces/shortcuts.ui.h:11
 msgid "Decrease volume"
-msgstr ""
+msgstr "Minnka hljóðstyrk"
 
 #: ../data/interfaces/shortcuts.ui.h:12 ../src/parole-player.c:2383
 msgid "Mute"
@@ -531,23 +531,23 @@ msgstr "Þagga hljóð"
 
 #: ../data/interfaces/shortcuts.ui.h:14
 msgid "Toggle playlist"
-msgstr ""
+msgstr "Víxla spilunarlista af/á"
 
 #: ../data/interfaces/shortcuts.ui.h:15
 msgid "Select previous item"
-msgstr ""
+msgstr "Velja fyrra atriði"
 
 #: ../data/interfaces/shortcuts.ui.h:16
 msgid "Select next item"
-msgstr ""
+msgstr "Velja næsta atriði"
 
 #: ../data/interfaces/shortcuts.ui.h:17
 msgid "Remove selected item"
-msgstr ""
+msgstr "Fjarlægja valið atriði"
 
 #: ../data/interfaces/shortcuts.ui.h:18
 msgid "Playback"
-msgstr ""
+msgstr "Afspilun"
 
 #: ../data/interfaces/shortcuts.ui.h:19
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:3
@@ -564,27 +564,27 @@ msgstr "Næsta lag"
 
 #: ../data/interfaces/shortcuts.ui.h:22
 msgid "Go back 10 seconds"
-msgstr ""
+msgstr "Fara afturábak um 10 sekúndur"
 
 #: ../data/interfaces/shortcuts.ui.h:23
 msgid "Go forward 10 seconds"
-msgstr ""
+msgstr "Fara áfram um 10 sekúndur"
 
 #: ../data/interfaces/shortcuts.ui.h:24
 msgid "Go back 60 seconds"
-msgstr ""
+msgstr "Fara afturábak um 60 sekúndur"
 
 #: ../data/interfaces/shortcuts.ui.h:25
 msgid "Go forward 60 seconds"
-msgstr ""
+msgstr "Fara áfram um 60 sekúndur"
 
 #: ../data/interfaces/shortcuts.ui.h:26
 msgid "Go back 10 minutes"
-msgstr ""
+msgstr "Fara afturábak um 10 mínútur"
 
 #: ../data/interfaces/shortcuts.ui.h:27
 msgid "Go forward 10 minutes"
-msgstr ""
+msgstr "Fara áfram um 10 mínútur"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:2
 msgid "Play your media"
@@ -616,7 +616,7 @@ msgstr ""
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid "This is a minor translations-only release."
-msgstr ""
+msgstr "Þessi útgáfa er minniháttar uppfærsla, eingöngu fyrir þýðingar."
 
 #: ../data/appdata/parole.appdata.xml.in.h:4
 msgid ""
@@ -664,7 +664,7 @@ msgstr ""
 
 #: ../data/appdata/parole.appdata.xml.in.h:10
 msgid "This release fixes a problem with detecting DVD drive locations."
-msgstr ""
+msgstr "Þessi útgáfa leysir vandamál við að skynja staðsetningu DVD-drifa."
 
 #: ../data/appdata/parole.appdata.xml.in.h:11
 msgid ""
@@ -694,11 +694,11 @@ msgstr "CD hljóðdiskur"
 
 #: ../src/gst/parole-gst.c:1271
 msgid "Unable to install missing codecs."
-msgstr ""
+msgstr "Ekki tókst að setja upp kóðunarlyklana sem vantaði."
 
 #: ../src/gst/parole-gst.c:1274
 msgid "No available plugin installer was found."
-msgstr ""
+msgstr "Ekkert tiltækt uppsetningarforrit fyrir viðbætur fannst."
 
 #: ../src/gst/parole-gst.c:1328
 msgid "Additional software is required."
@@ -781,7 +781,7 @@ msgid ""
 "\n"
 "Please report bugs to <https://bugzilla.xfce.org/>.\n"
 "\n"
-msgstr ""
+msgstr "\nParole margmiðlunarspilarinn %s\n\nHluti af XFCE Goodies verkefninu\nhttp://goodies.xfce.org\n\nGefið út með GNU GPL notkunarleyfi.\n\nTilkynntu um villur á <https://bugzilla.xfce.org/>.\n\n"
 
 #: ../src/main.c:227
 msgid "Open a new instance"
@@ -967,7 +967,7 @@ msgstr "Villa í GStreamer bakenda"
 
 #: ../src/parole-player.c:1794
 msgid "Unknown Song"
-msgstr ""
+msgstr "Óþekkt lag"
 
 #: ../src/parole-player.c:1805 ../src/parole-player.c:1811
 #: ../src/parole-player.c:1819
@@ -1034,7 +1034,7 @@ msgstr "Sýna _valmyndastiku"
 
 #: ../src/parole-player.c:2167
 msgid "Mini Mode"
-msgstr ""
+msgstr "Smáhamur"
 
 #: ../src/parole-player.c:2386
 msgid "Unmute"
@@ -1047,7 +1047,7 @@ msgstr "Gat ekki ræst sjálfgefinn vefvafra"
 #: ../src/parole-player.c:2787
 msgid ""
 "Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
-msgstr ""
+msgstr "Farðu á https://docs.xfce.org/apps/parole/bugs til að tilkynna um villuna."
 
 #: ../src/parole-player.c:2815
 msgid "Go"
@@ -1331,7 +1331,7 @@ msgstr "Táknmynd í kerfisbakka"
 
 #: ../src/plugins/tray/system-tray.desktop.in.h:2
 msgid "Show icon in the system tray"
-msgstr "Birta táknmynd í kerfisslá"
+msgstr "Birta táknmynd í kerfisbakka"
 
 #: ../src/plugins/mpris2/mpris2.desktop.in.h:1
 msgid "MPRIS2"
