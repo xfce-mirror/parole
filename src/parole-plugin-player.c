@@ -43,9 +43,6 @@ static void parole_plugin_player_iface_init(ParoleProviderPlayerIface *iface);
 
 static void parole_plugin_player_finalize(GObject *object);
 
-#define PAROLE_PLUGIN_PLAYER_GET_PRIVATE(o) \
-(G_TYPE_INSTANCE_GET_PRIVATE((o), PAROLE_TYPE_PLUGIN_PLAYER, ParolePluginPlayerPrivate))
-
 struct ParolePluginPlayerPrivate {
     GtkWidget *gst;
     GtkWidget *box;
@@ -60,7 +57,9 @@ struct ParolePluginPlayerPrivate {
 };
 
 G_DEFINE_TYPE_WITH_CODE(ParolePluginPlayer, parole_plugin_player, G_TYPE_OBJECT,
-                         G_IMPLEMENT_INTERFACE(PAROLE_TYPE_PROVIDER_PLAYER, parole_plugin_player_iface_init))
+                        G_ADD_PRIVATE(ParolePluginPlayer)
+                        G_IMPLEMENT_INTERFACE(PAROLE_TYPE_PROVIDER_PLAYER,
+                                              parole_plugin_player_iface_init))
 
 static void
 parole_plugin_player_send_message(const gchar *message) {
@@ -286,14 +285,12 @@ parole_plugin_player_class_init(ParolePluginPlayerClass *klass) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
     object_class->finalize = parole_plugin_player_finalize;
-
-    g_type_class_add_private (klass, sizeof (ParolePluginPlayerPrivate));
 }
 
 static void
 parole_plugin_player_init(ParolePluginPlayer *player) {
     GtkWidget *window;
-    player->priv = PAROLE_PLUGIN_PLAYER_GET_PRIVATE(player);
+    player->priv = parole_plugin_player_get_instance_private(player);
 
     player->priv->gst = parole_gst_get();
 
@@ -334,9 +331,11 @@ parole_plugin_player_finalize(GObject *object) {
         if (g_signal_handler_is_connected (player->priv->gst, player->priv->seeked))
             g_signal_handler_disconnect(player->priv->gst, player->priv->seeked);
 
-        window = GTK_WIDGET(gtk_widget_get_toplevel(player->priv->gst));
-        if (g_signal_handler_is_connected (window, player->priv->window_state_changed))
-            g_signal_handler_disconnect(window, player->priv->window_state_changed);
+        if (GTK_IS_WIDGET (player->priv->gst)) {
+            window = GTK_WIDGET(gtk_widget_get_toplevel(player->priv->gst));
+            if (g_signal_handler_is_connected(window, player->priv->window_state_changed))
+                g_signal_handler_disconnect(window, player->priv->window_state_changed);
+        }
     }
 
     if ( player->priv->packed && GTK_IS_WIDGET (player->priv->box))

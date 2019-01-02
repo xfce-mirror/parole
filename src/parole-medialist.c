@@ -157,9 +157,6 @@ gboolean    parole_media_list_query_tooltip(GtkWidget *widget,
  * End of GtkBuilder callbacks
  */
 
-#define PAROLE_MEDIA_LIST_GET_PRIVATE(o) \
-(G_TYPE_INSTANCE_GET_PRIVATE((o), PAROLE_TYPE_MEDIA_LIST, ParoleMediaListPrivate))
-
 struct ParoleMediaListPrivate {
     DBusGConnection     *bus;
     ParoleConf          *conf;
@@ -198,7 +195,7 @@ enum {
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE(ParoleMediaList, parole_media_list, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE(ParoleMediaList, parole_media_list, GTK_TYPE_BOX)
 
 static void
 parole_media_list_set_widget_sensitive(ParoleMediaList *list, gboolean sensitive) {
@@ -1366,8 +1363,6 @@ parole_media_list_class_init(ParoleMediaListClass *klass) {
                       g_cclosure_marshal_VOID__STRING,
                       G_TYPE_NONE, 1, G_TYPE_STRING);
 
-    g_type_class_add_private (klass, sizeof (ParoleMediaListPrivate));
-
     parole_media_list_dbus_class_init(klass);
 }
 
@@ -1498,7 +1493,7 @@ parole_media_list_init(ParoleMediaList *list) {
     GtkWidget  *box;
 
     media_list = list;
-    list->priv = PAROLE_MEDIA_LIST_GET_PRIVATE(list);
+    list->priv = parole_media_list_get_instance_private(list);
 
     list->priv->bus = parole_g_session_bus_get();
 

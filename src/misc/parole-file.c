@@ -37,10 +37,6 @@
 
 #include "src/misc/parole-file.h"
 
-#define PAROLE_FILE_GET_PRIVATE(o) \
-(G_TYPE_INSTANCE_GET_PRIVATE((o), PAROLE_TYPE_FILE, ParoleFilePrivate))
-
-typedef struct _ParoleFilePrivate ParoleFilePrivate;
 
 struct _ParoleFilePrivate {
     gchar   *filename;
@@ -63,33 +59,31 @@ enum {
     PROP_DVD_CHAPTER
 };
 
-G_DEFINE_TYPE(ParoleFile, parole_file, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE(ParoleFile, parole_file, G_TYPE_OBJECT)
 
 static void
 parole_file_finalize(GObject *object) {
     ParoleFile *file;
-    ParoleFilePrivate *priv;
 
     file = PAROLE_FILE(object);
-    priv = PAROLE_FILE_GET_PRIVATE(file);
 
-    if ( priv->filename )
-        g_free(priv->filename);
+    if ( file->priv->filename )
+        g_free(file->priv->filename);
 
-    if ( priv->uri )
-        g_free(priv->uri);
+    if ( file->priv->uri )
+        g_free(file->priv->uri);
 
-    if ( priv->display_name )
-        g_free(priv->display_name);
+    if ( file->priv->display_name )
+        g_free(file->priv->display_name);
 
-    if ( priv->content_type )
-        g_free(priv->content_type);
+    if ( file->priv->content_type )
+        g_free(file->priv->content_type);
 
-    if ( priv->directory )
-        g_free(priv->directory);
+    if ( file->priv->directory )
+        g_free(file->priv->directory);
 
-    if ( priv->custom_subtitles )
-        g_free(priv->custom_subtitles);
+    if ( file->priv->custom_subtitles )
+        g_free(file->priv->custom_subtitles);
 
     G_OBJECT_CLASS(parole_file_parent_class)->finalize(object);
 }
@@ -101,19 +95,19 @@ parole_file_set_property(GObject *object, guint prop_id, const GValue *value, GP
 
     switch (prop_id) {
         case PROP_PATH:
-            PAROLE_FILE_GET_PRIVATE(file)->filename = g_value_dup_string(value);
+            file->priv->filename = g_value_dup_string(value);
             break;
         case PROP_DISPLAY_NAME:
-            PAROLE_FILE_GET_PRIVATE(file)->display_name = g_value_dup_string(value);
+            file->priv->display_name = g_value_dup_string(value);
             break;
         case PROP_DIRECTORY:
-            PAROLE_FILE_GET_PRIVATE(file)->directory = g_value_dup_string(value);
+            file->priv->directory = g_value_dup_string(value);
             break;
         case PROP_CUSTOM_SUBTITLES:
-            PAROLE_FILE_GET_PRIVATE(file)->custom_subtitles = g_value_dup_string(value);
+            file->priv->custom_subtitles = g_value_dup_string(value);
             break;
         case PROP_DVD_CHAPTER:
-            PAROLE_FILE_GET_PRIVATE(file)->dvd_chapter = g_value_get_int(value);
+            file->priv->dvd_chapter = g_value_get_int(value);
             break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
@@ -129,25 +123,25 @@ parole_file_get_property(GObject *object, guint prop_id, GValue *value, GParamSp
 
     switch (prop_id) {
         case PROP_PATH:
-            g_value_set_string(value, PAROLE_FILE_GET_PRIVATE(file)->filename);
+            g_value_set_string(value, file->priv->filename);
             break;
         case PROP_URI:
-            g_value_set_string(value, PAROLE_FILE_GET_PRIVATE(file)->filename);
+            g_value_set_string(value, file->priv->filename);
             break;
         case PROP_CONTENT_TYPE:
-            g_value_set_string(value, PAROLE_FILE_GET_PRIVATE(file)->content_type);
+            g_value_set_string(value, file->priv->content_type);
             break;
         case PROP_DISPLAY_NAME:
-            g_value_set_string(value, PAROLE_FILE_GET_PRIVATE(file)->display_name);
+            g_value_set_string(value, file->priv->display_name);
             break;
         case PROP_DIRECTORY:
-            g_value_set_string(value, PAROLE_FILE_GET_PRIVATE(file)->directory);
+            g_value_set_string(value, file->priv->directory);
             break;
         case PROP_CUSTOM_SUBTITLES:
-            g_value_set_string(value, PAROLE_FILE_GET_PRIVATE(file)->custom_subtitles);
+            g_value_set_string(value, file->priv->custom_subtitles);
             break;
         case PROP_DVD_CHAPTER:
-            g_value_set_int(value, PAROLE_FILE_GET_PRIVATE(file)->dvd_chapter);
+            g_value_set_int(value, file->priv->dvd_chapter);
             break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
@@ -160,35 +154,33 @@ parole_file_constructed(GObject *object) {
     GFile *gfile;
     GFileInfo *info;
     ParoleFile *file;
-    ParoleFilePrivate *priv;
     GError *error = NULL;
 
     gchar *filename;
 
     file = PAROLE_FILE(object);
-    priv = PAROLE_FILE_GET_PRIVATE(file);
 
-    filename = g_strdup(priv->filename);
+    filename = g_strdup(file->priv->filename);
 
     if ( g_str_has_prefix(filename, "cdda") ) {
-        priv->directory = NULL;
-        priv->uri = g_strdup(filename);
-        priv->content_type = g_strdup("cdda");
+        file->priv->directory = NULL;
+        file->priv->uri = g_strdup(filename);
+        file->priv->content_type = g_strdup("cdda");
         g_free(filename);
         return;
     }
 
     if ( g_str_has_prefix(filename, "dvd") ) {
-        priv->directory = NULL;
-        priv->uri = g_strdup("dvd:/");
-        priv->content_type = g_strdup("dvd");
+        file->priv->directory = NULL;
+        file->priv->uri = g_strdup("dvd:/");
+        file->priv->content_type = g_strdup("dvd");
         g_free(filename);
         return;
     }
 
     g_free(filename);
 
-    gfile = g_file_new_for_commandline_arg(priv->filename);
+    gfile = g_file_new_for_commandline_arg(file->priv->filename);
 
     info = g_file_query_info(gfile,
                              "standard::*,",
@@ -197,16 +189,16 @@ parole_file_constructed(GObject *object) {
                              &error);
 
 
-    priv->directory = g_file_get_path(g_file_get_parent(gfile));
+    file->priv->directory = g_file_get_path(g_file_get_parent(gfile));
 
     if ( error ) {
         if (G_LIKELY(error->code == G_IO_ERROR_NOT_SUPPORTED)) {
             g_error_free(error);
-            if (!priv->display_name)
-                priv->display_name = g_file_get_basename(gfile);
+            if (!file->priv->display_name)
+                file->priv->display_name = g_file_get_basename(gfile);
         } else {
-            if (!priv->display_name)
-                priv->display_name = g_strdup(priv->filename);
+            if (!file->priv->display_name)
+                file->priv->display_name = g_strdup(file->priv->filename);
             g_warning("Unable to read file info %s", error->message);
         }
         goto out;
@@ -218,7 +210,7 @@ parole_file_constructed(GObject *object) {
         gchar *title;
         gchar *title_s;
 
-        tag_file = taglib_file_new(priv->filename);
+        tag_file = taglib_file_new(file->priv->filename);
 
         if ( tag_file ) {
             tag = taglib_file_tag(tag_file);
@@ -228,7 +220,7 @@ parole_file_constructed(GObject *object) {
                 if ( title ) {
                     title_s = g_strstrip(title);
                     if ( strlen(title_s) ) {
-                        priv->display_name = g_strdup(title_s);
+                        file->priv->display_name = g_strdup(title_s);
                     }
                 }
 
@@ -239,15 +231,15 @@ parole_file_constructed(GObject *object) {
     }
 #endif
 
-    if (!priv->display_name)
-        priv->display_name = g_strdup(g_file_info_get_display_name(info));
+    if (!file->priv->display_name)
+        file->priv->display_name = g_strdup(g_file_info_get_display_name(info));
 
-    priv->content_type = g_strdup(g_file_info_get_content_type(info));
+    file->priv->content_type = g_strdup(g_file_info_get_content_type(info));
 
     g_object_unref(info);
 
 out:
-    priv->uri = g_file_get_uri(gfile);
+    file->priv->uri = g_file_get_uri(gfile);
     g_object_unref(gfile);
 }
 
@@ -372,23 +364,19 @@ parole_file_class_init(ParoleFileClass *klass) {
                                                      -1,
                                                      G_PARAM_CONSTRUCT_ONLY|
                                                      G_PARAM_READWRITE));
-
-    g_type_class_add_private (klass, sizeof (ParoleFilePrivate));
 }
 
 static void
 parole_file_init(ParoleFile *file) {
-    ParoleFilePrivate *priv;
+    file->priv = parole_file_get_instance_private(file);
 
-    priv = PAROLE_FILE_GET_PRIVATE(file);
-
-    priv->filename         = NULL;
-    priv->display_name = NULL;
-    priv->uri          = NULL;
-    priv->content_type    = NULL;
-    priv->directory         = NULL;
-    priv->custom_subtitles = NULL;
-    priv->dvd_chapter = 0;
+    file->priv->filename         = NULL;
+    file->priv->display_name     = NULL;
+    file->priv->uri              = NULL;
+    file->priv->content_type     = NULL;
+    file->priv->directory        = NULL;
+    file->priv->custom_subtitles = NULL;
+    file->priv->dvd_chapter      = 0;
 }
 
 /**
@@ -496,7 +484,7 @@ const gchar *
 parole_file_get_file_name(const ParoleFile *file) {
     g_return_val_if_fail(PAROLE_IS_FILE(file), NULL);
 
-    return PAROLE_FILE_GET_PRIVATE (file)->filename;
+    return file->priv->filename;
 }
 
 /**
@@ -513,7 +501,7 @@ const gchar *
 parole_file_get_display_name(const ParoleFile *file) {
     g_return_val_if_fail(PAROLE_IS_FILE(file), NULL);
 
-    return PAROLE_FILE_GET_PRIVATE (file)->display_name;
+    return file->priv->display_name;
 }
 
 /**
@@ -530,7 +518,7 @@ const gchar *
 parole_file_get_uri(const ParoleFile *file) {
     g_return_val_if_fail(PAROLE_IS_FILE(file), NULL);
 
-    return PAROLE_FILE_GET_PRIVATE (file)->uri;
+    return file->priv->uri;
 }
 
 /**
@@ -547,7 +535,7 @@ const gchar *
 parole_file_get_content_type(const ParoleFile *file) {
     g_return_val_if_fail(PAROLE_IS_FILE(file), NULL);
 
-    return PAROLE_FILE_GET_PRIVATE (file)->content_type;
+    return file->priv->content_type;
 }
 
 /**
@@ -564,7 +552,7 @@ const gchar *
 parole_file_get_directory(const ParoleFile *file) {
     g_return_val_if_fail(PAROLE_IS_FILE(file), NULL);
 
-    return PAROLE_FILE_GET_PRIVATE (file)->directory;
+    return file->priv->directory;
 }
 
 /**
@@ -581,7 +569,7 @@ const gchar *
 parole_file_get_custom_subtitles(const ParoleFile *file) {
     g_return_val_if_fail(PAROLE_IS_FILE(file), NULL);
 
-    return PAROLE_FILE_GET_PRIVATE (file)->custom_subtitles;
+    return file->priv->custom_subtitles;
 }
 
 /**
@@ -622,7 +610,7 @@ gint
 parole_file_get_dvd_chapter(const ParoleFile *file) {
     // g_return_val_if_fail (PAROLE_IS_FILE (file), NULL);
 
-    return PAROLE_FILE_GET_PRIVATE (file)->dvd_chapter;
+    return file->priv->dvd_chapter;
 }
 
 /**

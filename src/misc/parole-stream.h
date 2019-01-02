@@ -90,15 +90,17 @@ typedef enum {
  *
  * Since: 0.2
  */
-typedef struct _ParoleStream      ParoleStream;
-typedef struct _ParoleStreamClass ParoleStreamClass;
+typedef struct _ParoleStream        ParoleStream;
+typedef struct _ParoleStreamClass   ParoleStreamClass;
+typedef struct _ParoleStreamPrivate ParoleStreamPrivate;
 
 struct _ParoleStream {
-    GObject             parent;
+    GObject              parent;
+    ParoleStreamPrivate *priv;
 };
 
 struct _ParoleStreamClass {
-    GObjectClass        parent_class;
+    GObjectClass         parent_class;
 };
 
 GType                   parole_stream_get_type          (void) G_GNUC_CONST;

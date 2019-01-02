@@ -86,9 +86,6 @@ void        reset_color_clicked_cb(GtkButton *button,
  * End of GtkBuilder callbacks
  */
 
-#define PAROLE_CONF_DIALOG_GET_PRIVATE(o) \
-(G_TYPE_INSTANCE_GET_PRIVATE((o), PAROLE_TYPE_CONF_DIALOG, ParoleConfDialogPrivate))
-
 struct ParoleConfDialogPrivate {
     ParoleConf *conf;
 
@@ -107,7 +104,7 @@ struct ParoleConfDialogPrivate {
     GtkWidget  *saturation;
 };
 
-G_DEFINE_TYPE(ParoleConfDialog, parole_conf_dialog, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE(ParoleConfDialog, parole_conf_dialog, G_TYPE_OBJECT)
 
 /* Destroy the dialog */
 static void
@@ -256,14 +253,12 @@ parole_conf_dialog_class_init(ParoleConfDialogClass *klass) {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
     object_class->finalize = parole_conf_dialog_finalize;
-
-    g_type_class_add_private (klass, sizeof (ParoleConfDialogPrivate));
 }
 
 /* Initialize the dialog */
 static void
 parole_conf_dialog_init(ParoleConfDialog *self) {
-    self->priv = PAROLE_CONF_DIALOG_GET_PRIVATE(self);
+    self->priv = parole_conf_dialog_get_instance_private(self);
     self->priv->conf = parole_conf_new();
 
     self->priv->vis_plugins = parole_vis_get_plugins();

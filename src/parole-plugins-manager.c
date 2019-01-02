@@ -95,9 +95,6 @@ static void parole_plugins_manager_set_property(GObject *object,
                                                     const GValue *value,
                                                     GParamSpec *pspec);
 
-#define PAROLE_PLUGINS_MANAGER_GET_PRIVATE(o) \
-(G_TYPE_INSTANCE_GET_PRIVATE((o), PAROLE_TYPE_PLUGINS_MANAGER, ParolePluginsManagerPrivate))
-
 struct ParolePluginsManagerPrivate {
     GtkWidget *list_nt;
     GtkWidget *main_window;
@@ -111,7 +108,7 @@ struct ParolePluginsManagerPrivate {
 
 static gpointer parole_plugins_manager_object = NULL;
 
-G_DEFINE_TYPE(ParolePluginsManager, parole_plugins_manager, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE(ParolePluginsManager, parole_plugins_manager, G_TYPE_OBJECT)
 
 enum {
     COL_ACTIVE,
@@ -553,15 +550,13 @@ parole_plugins_manager_class_init(ParolePluginsManagerClass *klass) {
                                                               TRUE,
                                                               G_PARAM_CONSTRUCT_ONLY|
                                                               G_PARAM_READWRITE));
-
-    g_type_class_add_private (klass, sizeof (ParolePluginsManagerPrivate));
 }
 
 static void
 parole_plugins_manager_init(ParolePluginsManager *manager) {
     GtkBuilder *builder;
 
-    manager->priv = PAROLE_PLUGINS_MANAGER_GET_PRIVATE(manager);
+    manager->priv = parole_plugins_manager_get_instance_private(manager);
 
     manager->priv->array = g_ptr_array_new();
 

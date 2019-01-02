@@ -58,9 +58,6 @@
 
 #define HIDE_WINDOW_CURSOR_TIMEOUT 3.0f
 
-#define PAROLE_GST_GET_PRIVATE(o) \
-(G_TYPE_INSTANCE_GET_PRIVATE((o), PAROLE_TYPE_GST, ParoleGstPrivate))
-
 static void       parole_gst_play_file_internal(ParoleGst *gst);
 
 static void       parole_gst_change_state(ParoleGst *gst,
@@ -165,7 +162,7 @@ static gpointer parole_gst_object = NULL;
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE(ParoleGst, parole_gst, GTK_TYPE_WIDGET)
+G_DEFINE_TYPE_WITH_PRIVATE(ParoleGst, parole_gst, GTK_TYPE_WIDGET)
 
 static void
 parole_gst_finalize(GObject *object) {
@@ -1260,7 +1257,6 @@ parole_gst_application_message(ParoleGst *gst, GstMessage *msg) {
 static void
 parole_gst_missing_codec_helper_dialog(void) {
     GtkMessageDialog *dialog;
-    gchar*     desc;
 
     dialog = GTK_MESSAGE_DIALOG(gtk_message_dialog_new_with_markup(
                             NULL,
@@ -2125,13 +2121,11 @@ parole_gst_class_init(ParoleGstClass *klass) {
                                             NULL, NULL,
                                             TRUE,
                                             G_PARAM_READWRITE));
-
-    g_type_class_add_private (klass, sizeof (ParoleGstPrivate));
 }
 
 static void
 parole_gst_init(ParoleGst *gst) {
-    gst->priv = PAROLE_GST_GET_PRIVATE(gst);
+    gst->priv = parole_gst_get_instance_private(gst);
 
     gst->priv->state = GST_STATE_VOID_PENDING;
     gst->priv->target = GST_STATE_VOID_PENDING;

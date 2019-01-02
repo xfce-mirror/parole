@@ -332,8 +332,6 @@ static GtkTargetEntry target_entry[] = {
 /*
  * End of GtkBuilder Callbacks
  */
-#define PAROLE_PLAYER_GET_PRIVATE(o) \
-(G_TYPE_INSTANCE_GET_PRIVATE((o), PAROLE_TYPE_PLAYER, ParolePlayerPrivate))
 
 struct ParolePlayerPrivate {
     DBusGConnection    *bus;
@@ -464,7 +462,7 @@ enum {
     PROP_CLIENT_ID
 };
 
-G_DEFINE_TYPE(ParolePlayer, parole_player, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE(ParolePlayer, parole_player, G_TYPE_OBJECT)
 
 void parole_show_about(GtkWidget *widget, ParolePlayer *player) {
     parole_about(GTK_WINDOW(player->priv->window));
@@ -2514,8 +2512,6 @@ parole_player_class_init(ParolePlayerClass *klass) {
                               NULL,
                               G_PARAM_READWRITE|G_PARAM_CONSTRUCT_ONLY));
 
-    g_type_class_add_private (klass, sizeof (ParolePlayerPrivate));
-
     parole_player_dbus_class_init(klass);
 }
 
@@ -3109,7 +3105,7 @@ parole_player_init(ParolePlayer *player) {
 
     g_setenv("PULSE_PROP_media.role", "video", TRUE);
 
-    player->priv = PAROLE_PLAYER_GET_PRIVATE(player);
+    player->priv = parole_player_get_instance_private(player);
 
     player->priv->client_id = NULL;
     player->priv->sm_client = NULL;

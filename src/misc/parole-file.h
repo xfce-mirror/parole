@@ -35,8 +35,9 @@ G_BEGIN_DECLS
 #define PAROLE_FILE(o)          (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_FILE, ParoleFile))
 #define PAROLE_IS_FILE(o)       (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_FILE))
 
-typedef struct _ParoleFile      ParoleFile;
-typedef struct _ParoleFileClass ParoleFileClass;
+typedef struct _ParoleFile        ParoleFile;
+typedef struct _ParoleFileClass   ParoleFileClass;
+typedef struct _ParoleFilePrivate ParoleFilePrivate;
 
 /**
  * ParoleFile:
@@ -47,6 +48,7 @@ typedef struct _ParoleFileClass ParoleFileClass;
  */
 struct _ParoleFile {
     GObject             parent;
+    ParoleFilePrivate  *priv;
 };
 
 struct _ParoleFileClass {

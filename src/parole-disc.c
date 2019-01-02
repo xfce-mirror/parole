@@ -50,9 +50,6 @@
 
 static void parole_disc_finalize(GObject *object);
 
-#define PAROLE_DISC_GET_PRIVATE(o) \
-(G_TYPE_INSTANCE_GET_PRIVATE((o), PAROLE_TYPE_DISC, ParoleDiscPrivate))
-
 struct ParoleDiscPrivate {
     GVolumeMonitor *monitor;
     GPtrArray      *array;
@@ -70,7 +67,7 @@ enum {
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE(ParoleDisc, parole_disc, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE(ParoleDisc, parole_disc, G_TYPE_OBJECT)
 
 typedef struct {
     GtkWidget      *mi;
@@ -484,8 +481,6 @@ parole_disc_class_init(ParoleDiscClass *klass) {
                         G_TYPE_NONE, 1, G_TYPE_STRING);
 
     object_class->finalize = parole_disc_finalize;
-
-    g_type_class_add_private (klass, sizeof (ParoleDiscPrivate));
 }
 
 /**
@@ -498,7 +493,7 @@ static void
 parole_disc_init(ParoleDisc *disc) {
     GtkBuilder *builder;
 
-    disc->priv = PAROLE_DISC_GET_PRIVATE(disc);
+    disc->priv = parole_disc_get_instance_private(disc);
 
     builder = parole_builder_get_main_interface();
 

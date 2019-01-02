@@ -1001,7 +1001,7 @@ static void mpris2_provider_finalize(GObject *object) {
 
     if (provider->window_state_changed > 0) {
         window = parole_provider_player_get_main_window(provider->player);
-        if (g_signal_handler_is_connected(window, provider->window_state_changed))
+        if (window != NULL && g_signal_handler_is_connected(window, provider->window_state_changed))
             g_signal_handler_disconnect(window, provider->window_state_changed);
     }
 

@@ -35,9 +35,6 @@
 
 #include "src/misc/parole-stream.h"
 
-#define PAROLE_STREAM_GET_PRIVATE(o) \
-(G_TYPE_INSTANCE_GET_PRIVATE((o), PAROLE_TYPE_STREAM, ParoleStreamPrivate))
-
 #define PAROLE_STREAM_FREE_STR_PROP(str)        \
     if ( str )                      \
     g_free(str);                   \
@@ -46,8 +43,6 @@
 #define PAROLE_STREAM_DUP_GVALUE_STRING(str, value) \
     PAROLE_STREAM_FREE_STR_PROP(str);          \
     str = g_value_dup_string(value);           \
-
-typedef struct _ParoleStreamPrivate ParoleStreamPrivate;
 
 struct _ParoleStreamPrivate {
     /*Properties*/
@@ -107,7 +102,7 @@ enum {
     PROP_IMAGE_URI
 };
 
-G_DEFINE_TYPE(ParoleStream, parole_stream, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE(ParoleStream, parole_stream, G_TYPE_OBJECT)
 
 static void
 parole_stream_get_media_type_from_uri(ParoleStream *stream, const gchar *uri) {
@@ -148,90 +143,86 @@ static void parole_stream_set_property(GObject *object,
     switch (prop_id) {
         case PROP_URI:
         {
-            ParoleStreamPrivate *priv;
-            priv = PAROLE_STREAM_GET_PRIVATE(stream);
-            priv->uri = g_value_dup_string(value);
-            parole_stream_get_media_type_from_uri(stream, priv->uri);
+            stream->priv->uri = g_value_dup_string(value);
+            parole_stream_get_media_type_from_uri(stream, stream->priv->uri);
             break;
         }
         case PROP_IMAGE_URI:
         {
-            PAROLE_STREAM_GET_PRIVATE(stream)->image_uri = g_value_dup_string(value);
+            stream->priv->image_uri = g_value_dup_string(value);
             break;
         }
         case PROP_SUBTITLES:
-            PAROLE_STREAM_DUP_GVALUE_STRING(PAROLE_STREAM_GET_PRIVATE(stream)->subtitles, value);
+            PAROLE_STREAM_DUP_GVALUE_STRING(stream->priv->subtitles, value);
             break;
         case PROP_LIVE:
         {
-            ParoleStreamPrivate *priv;
             gboolean maybe_remote;
 
-            priv = PAROLE_STREAM_GET_PRIVATE(stream);
-            maybe_remote = priv->media_type == PAROLE_MEDIA_TYPE_REMOTE ||
-                           priv->media_type == PAROLE_MEDIA_TYPE_UNKNOWN;
-            priv->live = g_value_get_boolean(value) && maybe_remote;
+            maybe_remote = stream->priv->media_type == PAROLE_MEDIA_TYPE_REMOTE ||
+                           stream->priv->media_type == PAROLE_MEDIA_TYPE_UNKNOWN;
+            stream->priv->live = g_value_get_boolean(value) && maybe_remote;
             break;
         }
         case PROP_MEDIA_TYPE:
-            PAROLE_STREAM_GET_PRIVATE(stream)->media_type = g_value_get_enum(value);
+            stream->priv->media_type = g_value_get_enum(value);
             break;
         case PROP_HAS_AUDIO:
-            PAROLE_STREAM_GET_PRIVATE(stream)->has_audio = g_value_get_boolean(value);
+            stream->priv->has_audio = g_value_get_boolean(value);
             break;
         case PROP_HAS_VIDEO:
-            PAROLE_STREAM_GET_PRIVATE(stream)->has_video = g_value_get_boolean(value);
+            stream->priv->has_video = g_value_get_boolean(value);
             break;
         case PROP_SEEKABLE:
-            PAROLE_STREAM_GET_PRIVATE(stream)->seekable = g_value_get_boolean(value);
+            stream->priv->seekable = g_value_get_boolean(value);
             break;
         case PROP_DISP_PAR_D:
-            PAROLE_STREAM_GET_PRIVATE(stream)->disp_par_d = g_value_get_uint(value);
+            stream->priv->disp_par_d = g_value_get_uint(value);
             break;
         case PROP_DISP_PAR_N:
-            PAROLE_STREAM_GET_PRIVATE(stream)->disp_par_n = g_value_get_uint(value);
+            stream->priv->disp_par_n = g_value_get_uint(value);
             break;
         case PROP_TRACKS:
-            PAROLE_STREAM_GET_PRIVATE(stream)->tracks = g_value_get_uint(value);
+            stream->priv->tracks = g_value_get_uint(value);
             break;
         case PROP_TRACK:
-            PAROLE_STREAM_GET_PRIVATE(stream)->track = g_value_get_uint(value);
+            stream->priv->track = g_value_get_uint(value);
             break;
         case PROP_TAG_AVAILABLE:
-            PAROLE_STREAM_GET_PRIVATE(stream)->tag_available = g_value_get_boolean(value);
+            stream->priv->tag_available = g_value_get_boolean(value);
             break;
         case PROP_DURATION:
-            PAROLE_STREAM_GET_PRIVATE(stream)->duration = g_value_get_int64(value);
+            stream->priv->duration = g_value_get_int64(value);
             break;
         case PROP_ABSOLUTE_DURATION:
-            PAROLE_STREAM_GET_PRIVATE(stream)->absolute_duration = g_value_get_int64(value);
+            stream->priv->absolute_duration = g_value_get_int64(value);
             break;
         case PROP_VIDEO_HEIGHT:
-            PAROLE_STREAM_GET_PRIVATE(stream)->video_h = g_value_get_int(value);
+            stream->priv->video_h = g_value_get_int(value);
             break;
         case PROP_VIDEO_WIDTH:
-            PAROLE_STREAM_GET_PRIVATE(stream)->video_w = g_value_get_int(value);
+            stream->priv->video_w = g_value_get_int(value);
             break;
         case PROP_TITLE:
-            PAROLE_STREAM_DUP_GVALUE_STRING(PAROLE_STREAM_GET_PRIVATE(stream)->title, value);
+            PAROLE_STREAM_DUP_GVALUE_STRING(stream->priv->title, value);
             break;
         case PROP_ARTIST:
-            PAROLE_STREAM_DUP_GVALUE_STRING(PAROLE_STREAM_GET_PRIVATE(stream)->artist, value);
+            PAROLE_STREAM_DUP_GVALUE_STRING(stream->priv->artist, value);
             break;
         case PROP_YEAR:
-            PAROLE_STREAM_DUP_GVALUE_STRING(PAROLE_STREAM_GET_PRIVATE(stream)->year, value);
+            PAROLE_STREAM_DUP_GVALUE_STRING(stream->priv->year, value);
             break;
         case PROP_ALBUM:
-            PAROLE_STREAM_DUP_GVALUE_STRING(PAROLE_STREAM_GET_PRIVATE(stream)->album, value);
+            PAROLE_STREAM_DUP_GVALUE_STRING(stream->priv->album, value);
             break;
         case PROP_COMMENT:
-            PAROLE_STREAM_DUP_GVALUE_STRING(PAROLE_STREAM_GET_PRIVATE(stream)->comment, value);
+            PAROLE_STREAM_DUP_GVALUE_STRING(stream->priv->comment, value);
             break;
         case PROP_GENRE:
-            PAROLE_STREAM_DUP_GVALUE_STRING(PAROLE_STREAM_GET_PRIVATE(stream)->genre, value);
+            PAROLE_STREAM_DUP_GVALUE_STRING(stream->priv->genre, value);
             break;
         case PROP_BITRATE:
-            PAROLE_STREAM_GET_PRIVATE(stream)->bitrate = g_value_get_uint(value);
+            stream->priv->bitrate = g_value_get_uint(value);
             break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
@@ -248,76 +239,76 @@ static void parole_stream_get_property(GObject *object,
 
     switch (prop_id) {
         case PROP_URI:
-            g_value_set_string(value, PAROLE_STREAM_GET_PRIVATE(stream)->uri);
+            g_value_set_string(value, stream->priv->uri);
             break;
         case PROP_IMAGE_URI:
-            g_value_set_string(value, PAROLE_STREAM_GET_PRIVATE(stream)->image_uri);
+            g_value_set_string(value, stream->priv->image_uri);
             break;
         case PROP_SUBTITLES:
-            g_value_set_string(value, PAROLE_STREAM_GET_PRIVATE(stream)->subtitles);
+            g_value_set_string(value, stream->priv->subtitles);
             break;
         case PROP_LIVE:
-            g_value_set_boolean(value, PAROLE_STREAM_GET_PRIVATE(stream)->live);
+            g_value_set_boolean(value, stream->priv->live);
             break;
         case PROP_MEDIA_TYPE:
-            g_value_set_enum(value, PAROLE_STREAM_GET_PRIVATE(stream)->media_type);
+            g_value_set_enum(value, stream->priv->media_type);
             break;
         case PROP_HAS_AUDIO:
-            g_value_set_boolean(value, PAROLE_STREAM_GET_PRIVATE(stream)->has_audio);
+            g_value_set_boolean(value, stream->priv->has_audio);
             break;
         case PROP_HAS_VIDEO:
-            g_value_set_boolean(value, PAROLE_STREAM_GET_PRIVATE(stream)->has_video);
+            g_value_set_boolean(value, stream->priv->has_video);
             break;
         case PROP_SEEKABLE:
-            g_value_set_boolean(value, PAROLE_STREAM_GET_PRIVATE(stream)->seekable);
+            g_value_set_boolean(value, stream->priv->seekable);
             break;
         case PROP_DISP_PAR_D:
-            g_value_set_uint(value, PAROLE_STREAM_GET_PRIVATE(stream)->disp_par_d);
+            g_value_set_uint(value, stream->priv->disp_par_d);
             break;
         case PROP_DISP_PAR_N:
-            g_value_set_uint(value, PAROLE_STREAM_GET_PRIVATE(stream)->disp_par_n);
+            g_value_set_uint(value, stream->priv->disp_par_n);
             break;
         case PROP_DURATION:
-            g_value_set_int64(value, PAROLE_STREAM_GET_PRIVATE(stream)->duration);
+            g_value_set_int64(value, stream->priv->duration);
             break;
         case PROP_TRACKS:
-            g_value_set_uint(value, PAROLE_STREAM_GET_PRIVATE(stream)->tracks);
+            g_value_set_uint(value, stream->priv->tracks);
             break;
         case PROP_TRACK:
-            g_value_set_uint(value, PAROLE_STREAM_GET_PRIVATE(stream)->track);
+            g_value_set_uint(value, stream->priv->track);
             break;
         case PROP_TAG_AVAILABLE:
-            g_value_set_double(value, PAROLE_STREAM_GET_PRIVATE(stream)->tag_available);
+            g_value_set_double(value, stream->priv->tag_available);
             break;
         case PROP_ABSOLUTE_DURATION:
-            g_value_set_int64(value, PAROLE_STREAM_GET_PRIVATE(stream)->absolute_duration);
+            g_value_set_int64(value, stream->priv->absolute_duration);
             break;
         case PROP_VIDEO_HEIGHT:
-            g_value_set_int(value, PAROLE_STREAM_GET_PRIVATE(stream)->video_h);
+            g_value_set_int(value, stream->priv->video_h);
             break;
         case PROP_VIDEO_WIDTH:
-            g_value_set_int(value, PAROLE_STREAM_GET_PRIVATE(stream)->video_w);
+            g_value_set_int(value, stream->priv->video_w);
             break;
         case PROP_TITLE:
-            g_value_set_string(value, PAROLE_STREAM_GET_PRIVATE(stream)->title);
+            g_value_set_string(value, stream->priv->title);
             break;
         case PROP_ARTIST:
-            g_value_set_string(value, PAROLE_STREAM_GET_PRIVATE(stream)->artist);
+            g_value_set_string(value, stream->priv->artist);
             break;
         case PROP_YEAR:
-            g_value_set_string(value, PAROLE_STREAM_GET_PRIVATE(stream)->year);
+            g_value_set_string(value, stream->priv->year);
             break;
         case PROP_ALBUM:
-            g_value_set_string(value, PAROLE_STREAM_GET_PRIVATE(stream)->album);
+            g_value_set_string(value, stream->priv->album);
             break;
         case PROP_COMMENT:
-            g_value_set_string(value, PAROLE_STREAM_GET_PRIVATE(stream)->comment);
+            g_value_set_string(value, stream->priv->comment);
             break;
         case PROP_GENRE:
-            g_value_set_string(value, PAROLE_STREAM_GET_PRIVATE(stream)->genre);
+            g_value_set_string(value, stream->priv->genre);
             break;
         case PROP_BITRATE:
-            g_value_set_uint(value, PAROLE_STREAM_GET_PRIVATE(stream)->bitrate);
+            g_value_set_uint(value, stream->priv->bitrate);
             break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
@@ -354,24 +345,24 @@ parole_stream_set_image(GObject *object, GdkPixbuf *pixbuf) {
 
     stream = PAROLE_STREAM(object);
 
-    if ( PAROLE_STREAM_GET_PRIVATE (stream)->image )
-        g_object_unref(G_OBJECT(PAROLE_STREAM_GET_PRIVATE(stream)->image));
+    if ( stream->priv->image )
+        g_object_unref(G_OBJECT(stream->priv->image));
 
     if (pixbuf) {
-        PAROLE_STREAM_GET_PRIVATE(stream)->image = gdk_pixbuf_copy(pixbuf);
+        stream->priv->image = gdk_pixbuf_copy(pixbuf);
 
         /* Create a jpeg of the artwork for other components to easily access */
         fid = g_file_open_tmp("parole-art-XXXXXX.jpg", &filename, NULL);
         close(fid);
         gdk_pixbuf_save(pixbuf, filename, "jpeg", NULL, "quality", "100", NULL);
 
-        PAROLE_STREAM_GET_PRIVATE(stream)->previous_image = g_strdup(filename);
-        PAROLE_STREAM_GET_PRIVATE(stream)->image_uri = g_strdup_printf("file://%s", filename);
+        stream->priv->previous_image = g_strdup(filename);
+        stream->priv->image_uri = g_strdup_printf("file://%s", filename);
         g_free(filename);
     } else {
-        PAROLE_STREAM_GET_PRIVATE(stream)->image = NULL;
-        PAROLE_STREAM_GET_PRIVATE(stream)->previous_image = NULL;
-        PAROLE_STREAM_GET_PRIVATE(stream)->image_uri = g_strdup_printf("file://%s/no-cover.png", PIXMAPS_DIR);
+        stream->priv->image = NULL;
+        stream->priv->previous_image = NULL;
+        stream->priv->image_uri = g_strdup_printf("file://%s/no-cover.png", PIXMAPS_DIR);
     }
 }
 
@@ -392,8 +383,8 @@ parole_stream_get_image(GObject *object) {
 
     stream = PAROLE_STREAM(object);
 
-    if (PAROLE_STREAM_GET_PRIVATE (stream)->image)
-        pixbuf = gdk_pixbuf_copy(GDK_PIXBUF(PAROLE_STREAM_GET_PRIVATE(stream)->image));
+    if (stream->priv->image)
+        pixbuf = gdk_pixbuf_copy(GDK_PIXBUF(stream->priv->image));
     else
         pixbuf = NULL;
 
@@ -782,12 +773,12 @@ parole_stream_class_init(ParoleStreamClass *klass) {
                                     0, 2147483647,
                                     0,
                                     G_PARAM_READWRITE));
-
-    g_type_class_add_private (klass, sizeof (ParoleStreamPrivate));
 }
 
 static void
 parole_stream_init(ParoleStream *stream) {
+	stream->priv = parole_stream_get_instance_private(stream);
+
     parole_stream_init_properties(stream);
 }
 
@@ -799,40 +790,36 @@ parole_stream_new(void) {
 }
 
 void parole_stream_init_properties(ParoleStream *stream) {
-    ParoleStreamPrivate *priv;
+    stream->priv->live = FALSE;
+    stream->priv->seekable = FALSE;
+    stream->priv->has_audio = FALSE;
+    stream->priv->has_video = FALSE;
+    stream->priv->absolute_duration = 0;
+    stream->priv->duration = 0;
+    stream->priv->tag_available = FALSE;
+    stream->priv->media_type = PAROLE_MEDIA_TYPE_UNKNOWN;
+    stream->priv->video_h = 0;
+    stream->priv->video_w = 0;
+    stream->priv->tracks = 1;
+    stream->priv->track = 1;
+    stream->priv->disp_par_n = 1;
+    stream->priv->disp_par_d = 1;
+    stream->priv->bitrate = 0;
 
-    priv = PAROLE_STREAM_GET_PRIVATE(stream);
-
-    priv->live = FALSE;
-    priv->seekable = FALSE;
-    priv->has_audio = FALSE;
-    priv->has_video = FALSE;
-    priv->absolute_duration = 0;
-    priv->duration = 0;
-    priv->tag_available = FALSE;
-    priv->media_type = PAROLE_MEDIA_TYPE_UNKNOWN;
-    priv->video_h = 0;
-    priv->video_w = 0;
-    priv->tracks = 1;
-    priv->track = 1;
-    priv->disp_par_n = 1;
-    priv->disp_par_d = 1;
-    priv->bitrate = 0;
-
-    PAROLE_STREAM_FREE_STR_PROP(priv->title);
-    PAROLE_STREAM_FREE_STR_PROP(priv->uri);
-    PAROLE_STREAM_FREE_STR_PROP(priv->subtitles);
-    PAROLE_STREAM_FREE_STR_PROP(priv->artist);
-    PAROLE_STREAM_FREE_STR_PROP(priv->year);
-    PAROLE_STREAM_FREE_STR_PROP(priv->album);
-    PAROLE_STREAM_FREE_STR_PROP(priv->comment);
-    PAROLE_STREAM_FREE_STR_PROP(priv->genre);
-    PAROLE_STREAM_FREE_STR_PROP(priv->image_uri);
+    PAROLE_STREAM_FREE_STR_PROP(stream->priv->title);
+    PAROLE_STREAM_FREE_STR_PROP(stream->priv->uri);
+    PAROLE_STREAM_FREE_STR_PROP(stream->priv->subtitles);
+    PAROLE_STREAM_FREE_STR_PROP(stream->priv->artist);
+    PAROLE_STREAM_FREE_STR_PROP(stream->priv->year);
+    PAROLE_STREAM_FREE_STR_PROP(stream->priv->album);
+    PAROLE_STREAM_FREE_STR_PROP(stream->priv->comment);
+    PAROLE_STREAM_FREE_STR_PROP(stream->priv->genre);
+    PAROLE_STREAM_FREE_STR_PROP(stream->priv->image_uri);
 
     /* Remove the previous image if it exists */
-    if (PAROLE_STREAM_GET_PRIVATE(stream)->previous_image) {
-        if (g_remove (PAROLE_STREAM_GET_PRIVATE (stream)->previous_image) != 0)
+    if (stream->priv->previous_image) {
+        if (g_remove (stream->priv->previous_image) != 0)
             g_warning("Failed to remove temporary artwork");
     }
-    PAROLE_STREAM_GET_PRIVATE(stream)->previous_image = NULL;
+    stream->priv->previous_image = NULL;
 }

@@ -54,9 +54,6 @@
 
 static void parole_button_finalize(GObject *object);
 
-#define PAROLE_BUTTON_GET_PRIVATE(o) \
-(G_TYPE_INSTANCE_GET_PRIVATE((o), PAROLE_TYPE_BUTTON, ParoleButtonPrivate))
-
 static struct {
     ParoleButtonKey    key;
     guint              key_code;
@@ -76,7 +73,7 @@ enum {
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE(ParoleButton, parole_button, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE(ParoleButton, parole_button, G_TYPE_OBJECT)
 
 /**
  * parole_button_get_key:
@@ -251,8 +248,6 @@ parole_button_class_init(ParoleButtonClass *klass) {
                       G_TYPE_NONE, 1, ENUM_GTYPE_BUTTON_KEY);
 
     object_class->finalize = parole_button_finalize;
-
-    g_type_class_add_private (klass, sizeof (ParoleButtonPrivate));
 }
 
 /**
@@ -263,7 +258,7 @@ parole_button_class_init(ParoleButtonClass *klass) {
  **/
 static void
 parole_button_init(ParoleButton *button) {
-    button->priv = PAROLE_BUTTON_GET_PRIVATE(button);
+    button->priv = parole_button_get_instance_private(button);
 
     button->priv->screen = NULL;
     button->priv->window = NULL;
