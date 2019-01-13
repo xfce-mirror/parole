@@ -9,14 +9,14 @@
 # John Smith <mrdoctorwho@gmail.com>, 2013
 # Sergey Alyoshin <alyoshin.s@gmail.com>, 2013
 # Sergey Shlyapugin <shlyapugin@gmail.com>, 2013
-# Zmicer Turok <zmicerturok@gmail.com>, 2018
+# Zmicer Turok <zmicerturok@gmail.com>, 2018-2019
 # Zmicer Turok <zmicerturok@gmail.com >, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-25 12:31+0200\n"
-"PO-Revision-Date: 2018-09-14 00:16+0000\n"
+"PO-Revision-Date: 2019-01-13 17:29+0000\n"
 "Last-Translator: Zmicer Turok <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian (http://www.transifex.com/xfce/xfce-apps/language/be/)\n"
 "MIME-Version: 1.0\n"
@@ -171,11 +171,11 @@ msgstr "20:9 (DVB)"
 
 #: ../data/interfaces/parole.ui.h:35
 msgid "_Subtitles"
-msgstr "_Субтытры"
+msgstr "_Субцітры"
 
 #: ../data/interfaces/parole.ui.h:36
 msgid "Select Text Subtitles…"
-msgstr "Абраць субтытры…"
+msgstr "Абраць субцітры…"
 
 #: ../data/interfaces/parole.ui.h:37
 msgid "_Tools"
@@ -477,7 +477,7 @@ msgstr "Пашырэнне"
 
 #: ../data/interfaces/save-playlist.ui.h:5
 msgid "Select File Types (By Extension)"
-msgstr "Абраць тып файла (па пашырэнню)"
+msgstr "Абраць тып файла (па пашырэнні)"
 
 #: ../data/interfaces/open-location.ui.h:1
 msgid "Open Network Location"
@@ -509,7 +509,7 @@ msgstr "Выгляд"
 
 #: ../data/interfaces/shortcuts.ui.h:6
 msgid "Toggle fullscreen"
-msgstr "Рэжым на ўвесь экран"
+msgstr "Поўнаэкранны рэжым"
 
 #: ../data/interfaces/shortcuts.ui.h:7
 msgid "Exit fullscreen"
@@ -618,11 +618,11 @@ msgid ""
 "Parole features playback of local media files, including video with "
 "subtitles support, Audio CDs, DVDs, and live streams. Parole is also "
 "extensible via plugins."
-msgstr "Parole можа прайграваць лакальныя файлы, ўключаючы відэа з субтытрамі, аўдыя-CD, DVD і патокавае відэа. Магчымасці Parole можна пашырыць убудовамі."
+msgstr "Parole можа прайграваць лакальныя файлы, ўключаючы відэа з субцітрамі, аўдыя-CD, DVD і патокавае відэа. Магчымасці Parole можна пашырыць убудовамі."
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid "This is a minor translations-only release."
-msgstr "У гэтым прамежкавым выпуску абноўлены лакалізацыі."
+msgstr "У гэтым прамежкавым выпуску абноўленыя лакалізацыі."
 
 #: ../data/appdata/parole.appdata.xml.in.h:4
 msgid ""
@@ -630,7 +630,7 @@ msgid ""
 "Automatic video output option was added to improve usage on virtual machines"
 " and low power devices. A large number of bugs were also resolved, making "
 "this release suitable for all users."
-msgstr "Гэта першы стабільны выпуск серыі 1.0. Для паляпшэння выкарыстання ў віртуальных машынах і слабых прыладахдададзены новы параметр для вываду відэа. Выпраўлена вялікая колькасць памылак, што робіць выпуск прыдатным для ўсіх карыстальнікаў."
+msgstr "Гэта першы стабільны выпуск серыі 1.0. Для паляпшэння выкарыстання ў віртуальных машынах і слабых прыладах дададзены новы параметр для вываду відэа. Выпраўлена вялікая колькасць памылак, што робіць выпуск прыдатным для ўсіх карыстальнікаў."
 
 #: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
@@ -679,7 +679,7 @@ msgid ""
 "playlists. Furthermore existing plugins have been improved and a new one has"
 " been added (MPRIS2). Most of the artwork has been updated for this release "
 "and we use the GStreamer1.0 framework now by default."
-msgstr "Ад гэтага выпуску праграма цалкам перайшла на GTK+3, спрошчана меню інтэрфейсу, палепшаны плэйлісты. Палепшаны існуючыя ўбудовы і дададзена новая - MPRIS2. Абноўлена большая частка аздаблення і здзейснены пераход на GStreamer1.0."
+msgstr "Ад гэтага выпуску праграма цалкам перайшла на GTK+3, спрошчана меню інтэрфейсу, палепшаныя плэйлісты. Палепшаны існуючыя ўбудовы і дададзена новая - MPRIS2. Абноўлена большая частка аздаблення і здзейснены пераход на GStreamer1.0."
 
 #: ../src/common/parole-common.c:83
 msgid "Message"
@@ -762,7 +762,7 @@ msgstr "Медыяпрайгравальнік Parole немагчыма зап�
 #: ../src/gst/parole-gst.c:1959
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
-msgstr "Немагчыма загрузіць убудову \"%s\". Праверце ці ўсталяваны ўсе неабходныя пакункіGStreamer."
+msgstr "Немагчыма загрузіць убудову \"%s\". Праверце ці ўсталяваныя ўсе неабходныя пакункі GStreamer."
 
 #: ../src/gst/parole-gst.c:2519 ../src/gst/parole-gst.c:2523
 #, c-format
@@ -772,7 +772,7 @@ msgstr "Аўдыятрэк №%d"
 #: ../src/gst/parole-gst.c:2559 ../src/gst/parole-gst.c:2563
 #, c-format
 msgid "Subtitle #%d"
-msgstr "Субтытры №%d"
+msgstr "Субцітры №%d"
 
 #: ../src/main.c:59
 #, c-format
@@ -934,7 +934,7 @@ msgstr "Паказаць плэйліст"
 #. Build the FileChooser dialog for subtitle selection.
 #: ../src/parole-player.c:969
 msgid "Select Subtitle File"
-msgstr "Абраць файл субтытраў"
+msgstr "Абраць файл субцітраў"
 
 #: ../src/parole-player.c:974 ../src/parole-player.c:1161
 #: ../src/parole-player.c:2814 ../src/plugins/tray/tray-provider.c:319
@@ -947,7 +947,7 @@ msgstr "Адкрыць"
 
 #: ../src/parole-player.c:993
 msgid "Subtitle Files"
-msgstr "Файлы субтытраў"
+msgstr "Файлы субцітраў"
 
 #: ../src/parole-player.c:1157 ../src/parole-player.c:1165
 msgid "Clear Recent Items"
@@ -1078,7 +1078,7 @@ msgstr "Аўдыятрэк:"
 
 #: ../src/parole-player.c:3569
 msgid "Subtitles:"
-msgstr "Субтытры:"
+msgstr "Субцітры:"
 
 #. Add a close button to the Infobar
 #: ../src/parole-player.c:3575 ../src/plugins/tray/tray-provider.c:257
