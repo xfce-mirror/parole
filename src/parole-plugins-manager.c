@@ -192,6 +192,7 @@ static void
 parole_plugins_manager_save_rc(ParolePluginsManager *manager, gchar *filename, gboolean active) {
     gchar **saved_plugins;
     gchar **plugins_rc;
+    gchar  *basename;
     guint num = 0, i, count = 0;
 
     saved_plugins = parole_conf_read_entry_list(PAROLE_CONF(manager->priv->conf), "plugins");
@@ -206,17 +207,19 @@ parole_plugins_manager_save_rc(ParolePluginsManager *manager, gchar *filename, g
             plugins_rc[i] = g_strdup(saved_plugins[i]);
         }
 
-        plugins_rc[num] = g_strdup(filename);
+        plugins_rc[num] = g_path_get_basename(filename);
         plugins_rc[num + 1] = NULL;
         parole_conf_write_entry_list(PAROLE_CONF(manager->priv->conf), "plugins", plugins_rc);
     } else {
         plugins_rc = g_new0(gchar *, num + 1);
 
         for (i = 0; i < num; i++) {
-            if ( g_strcmp0(saved_plugins[i], filename) != 0 ) {
+            basename = g_path_get_basename (filename);
+            if ( g_strcmp0(saved_plugins[i], filename) != 0 && g_strcmp0(saved_plugins[i], basename) != 0 ) {
                 plugins_rc[count] = g_strdup(saved_plugins[i]);
                 count++;
             }
+            g_free (basename);
         }
         plugins_rc[num] = NULL;
         parole_conf_write_entry_list(PAROLE_CONF(manager->priv->conf), "plugins", plugins_rc);
