@@ -249,19 +249,19 @@ parole_plugins_manager_cell_toggled_cb(GtkCellRendererToggle *cell_renderer,
 
         if ( pref->manager->priv->load_plugins ) {
             if ( active ) {
-                g_type_module_use(G_TYPE_MODULE(module));
+                parole_provider_module_use(module);
                 if (!parole_provider_module_new_plugin(module)) {
                     // If plugin loading fails...
                     parole_dialog_error(GTK_WINDOW(pref->window),
                         _("Plugin failed to load"),
                         _("Please check your installation"));
                     parole_provider_module_free_plugin(module);
-                    g_type_module_unuse(G_TYPE_MODULE(module));
+                    parole_provider_module_unuse(module);
                     active = FALSE;
                 }
             } else {
                 parole_provider_module_free_plugin(module);
-                g_type_module_unuse(G_TYPE_MODULE(module));
+                parole_provider_module_unuse(module);
             }
         }
 
@@ -524,7 +524,7 @@ parole_plugins_manager_load_plugins(ParolePluginsManager *manager) {
             if ( !g_strcmp0 (plugins_rc[i], module->name) ||
                  !g_strcmp0(plugins_rc[i], PAROLE_PROVIDER_MODULE(module)->library_name) ) {
                 TRACE("Loading plugin :%s", module->name);
-                if ( !g_type_module_use(module) ) {
+                if ( !parole_provider_module_use (PAROLE_PROVIDER_MODULE(module)) ) {
                     parole_plugins_manager_save_rc(manager, module->name, FALSE);
                     g_ptr_array_remove(manager->priv->array, module);
                     g_object_unref(module);

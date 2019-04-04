@@ -56,6 +56,8 @@ struct _ParoleProviderModule {
     gboolean                active;
     gpointer                instance;
     gchar                  *desktop_file;
+
+    gulong                  use_count;
 };
 
 struct _ParoleProviderModuleClass {
@@ -73,6 +75,9 @@ gboolean                    parole_provider_module_new_plugin      (ParoleProvid
 void                        parole_provider_module_free_plugin     (ParoleProviderModule *module);
 
 gboolean                    parole_provider_module_get_is_active   (ParoleProviderModule *module);
+
+gboolean                    parole_provider_module_use             (ParoleProviderModule *module);
+void                        parole_provider_module_unuse           (ParoleProviderModule *module);
 
 G_END_DECLS
 

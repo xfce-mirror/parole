@@ -94,7 +94,6 @@ parole_module_load(GTypeModule *gtype_module) {
     TRACE("Loading module %s", gtype_module->name);
 
     module->provider_type = (*module->initialize) (module);
-    module->active = TRUE;
 
     TRACE("Finished loading module %s", gtype_module->name);
 
@@ -116,8 +115,26 @@ parole_module_unload(GTypeModule *gtype_module) {
     module->shutdown = NULL;
     module->library = NULL;
     module->provider_type = G_TYPE_INVALID;
+    module->use_count = 0;
     module->active = FALSE;
 }
+
+gboolean parole_provider_module_use(ParoleProviderModule *module) {
+    if (g_type_module_use(G_TYPE_MODULE(module))) {
+        module->use_count++;
+        module->active = TRUE;
+        return TRUE;
+    }
+    return FALSE;
+}
+
+void parole_provider_module_unuse(ParoleProviderModule *module) {
+    module->use_count--;
+    if (module->use_count == 0) {
+        module->active = FALSE;
+    }
+}
+
 
 static void
 parole_provider_module_class_init(ParoleProviderModuleClass *klass) {
