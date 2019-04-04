@@ -1501,8 +1501,8 @@ parole_gst_change_state (ParoleGst *gst, GstState new) {
     switch (ret) {
         case GST_STATE_CHANGE_SUCCESS:
             parole_gst_evaluate_state(gst,
-                                        GST_STATE_RETURN(gst->priv->playbin),
                                         GST_STATE(gst->priv->playbin),
+                                        GST_STATE_TARGET(gst->priv->playbin),
                                         GST_STATE_PENDING(gst->priv->playbin));
             break;
         case GST_STATE_CHANGE_ASYNC:
