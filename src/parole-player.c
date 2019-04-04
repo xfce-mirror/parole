@@ -1217,8 +1217,9 @@ parole_player_media_cursor_changed_cb(ParoleMediaList *list, gboolean media_sele
 
     /* Play/Pause */
     if (player->priv->state < PAROLE_STATE_PAUSED) {
-        g_simple_action_set_enabled(player->priv->media_playpause_action,
-                                     media_selected || !parole_media_list_is_empty(player->priv->list));
+        enabled = media_selected || !parole_media_list_is_empty(player->priv->list);
+        gtk_widget_set_sensitive(player->priv->playpause_button, enabled);
+        g_simple_action_set_enabled(player->priv->media_playpause_action, enabled);
     }
 
     enabled = parole_media_list_get_playlist_count(player->priv->list) > 1;
