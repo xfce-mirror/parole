@@ -50,6 +50,7 @@ struct ParolePluginPlayerPrivate {
     GtkWidget *gst;
     GtkWidget *box;
 
+    gulong window_state_changed;
     gulong state_changed;
     gulong tag_message;
     gulong seeked;
@@ -307,10 +308,10 @@ parole_plugin_player_init(ParolePluginPlayer *player) {
 
     player->priv->fullscreen = FALSE;
     window = GTK_WIDGET(gtk_widget_get_toplevel(player->priv->gst));
-    g_signal_connect(G_OBJECT(window),
-                     "window-state-event",
-                     G_CALLBACK(parole_plugin_player_window_state_event),
-                     player);
+    player->priv->window_state_changed = g_signal_connect(G_OBJECT(window),
+                                                          "window-state-event",
+                                                          G_CALLBACK(parole_plugin_player_window_state_event),
+                                                          player);
 
     player->priv->packed = FALSE;
     player->priv->box = NULL;
@@ -319,6 +320,7 @@ parole_plugin_player_init(ParolePluginPlayer *player) {
 static void
 parole_plugin_player_finalize(GObject *object) {
     ParolePluginPlayer *player;
+    GtkWidget          *window;
 
     player = PAROLE_PLUGIN_PLAYER(object);
 
@@ -331,6 +333,10 @@ parole_plugin_player_finalize(GObject *object) {
 
         if (g_signal_handler_is_connected (player->priv->gst, player->priv->seeked))
             g_signal_handler_disconnect(player->priv->gst, player->priv->seeked);
+
+        window = GTK_WIDGET(gtk_widget_get_toplevel(player->priv->gst));
+        if (g_signal_handler_is_connected (window, player->priv->window_state_changed))
+            g_signal_handler_disconnect(window, player->priv->window_state_changed);
     }
 
     if ( player->priv->packed && GTK_IS_WIDGET (player->priv->box))

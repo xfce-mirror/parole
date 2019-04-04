@@ -58,6 +58,8 @@ struct _Mpris2Provider {
     gchar                  *saved_title;
     gdouble                 volume;
     ParoleState             state;
+
+    gulong                  window_state_changed;
 };
 
 PAROLE_DEFINE_TYPE_WITH_CODE(Mpris2Provider,
@@ -969,10 +971,10 @@ mpris2_provider_set_player(ParoleProviderPlugin *plugin, ParoleProviderPlayer *p
                       G_CALLBACK(conf_changed_cb), plugin);
 
     window = parole_provider_player_get_main_window(provider->player);
-    g_signal_connect(G_OBJECT(window),
-                     "window-state-event",
-                     G_CALLBACK(on_window_state_event),
-                     provider);
+    provider->window_state_changed = g_signal_connect(G_OBJECT(window),
+                                                      "window-state-event",
+                                                      G_CALLBACK(on_window_state_event),
+                                                      provider);
 }
 
 static void
@@ -993,8 +995,15 @@ static void mpris2_provider_init(Mpris2Provider *provider) {
 }
 
 static void mpris2_provider_finalize(GObject *object) {
+    GtkWidget      *window;
     Mpris2Provider *provider;
     provider = MPRIS2_PROVIDER(object);
+
+    if (provider->window_state_changed > 0) {
+        window = parole_provider_player_get_main_window(provider->player);
+        if (g_signal_handler_is_connected(window, provider->window_state_changed))
+            g_signal_handler_disconnect(window, provider->window_state_changed);
+    }
 
     if (NULL != provider->dbus_connection) {
         g_dbus_connection_unregister_object(provider->dbus_connection,
