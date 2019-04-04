@@ -1,6 +1,23 @@
 1.0.2 (UNRELEASED)
 =====
-- Fixed compiler error -Wcast-function-type (GCC 8)
+- Bug Fixes
+  - Added support for GST_INSTALL_PLUGINS_HELPER_MISSING
+    when attempting to install missing codecs (Xfce #14529)
+  - Fixed compiler error -Wcast-function-type (GCC 8)
+  - Fixed disabling vendor-enabled plugins
+  - Fixed crash when disabling plugins (LP #1698540)
+  - Fixed play button sensitivity items are added to playlist (Xfce #13724,
+    LP #1705243)
+  - Fixed Appstream validation by removing <em> tags (Xfce #14260)
+  - Fixed plugin active state when reopening the Plugins dialog
+  - Resolved g_type_class_add_private warnings (Xfce #15014)
+- Translation Updates: Albanian, Arabic, Asturian, Basque, Belarusian,
+  Bulgarian, Catalan, Chinese (China), Chinese (Taiwan), Croatian, Czech,
+  Danish, Dutch, English (Australia), Finnish, French, Galician, German,
+  Greek, Hebrew, Hungarian, Icelandic, Indonesian, Italian, Japanese,
+  Kazakh, Korean, Lithuanian, Malay, Norwegian Bokmål, Occitan (post 1500),
+  Polish, Portuguese, Portuguese (Brazil), Russian, Serbian, Slovak,
+  Slovenian, Spanish, Swedish, Telugu, Thai, Turkish, Uighur, Ukrainian
 
 1.0.1
 =====
