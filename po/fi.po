@@ -6,13 +6,13 @@
 # Ammuu5, 2017-2018
 # Jiri Grönroos <jiri.gronroos@iki.fi>, 2013,2018
 # Juhani Numminen <juhaninumminen0@gmail.com>, 2013
-# Pasi Lallinaho <pasi@shimmerproject.org>, 2014-2015,2018
+# Pasi Lallinaho <pasi@shimmerproject.org>, 2014-2015,2018-2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-25 12:31+0200\n"
-"PO-Revision-Date: 2018-09-14 00:16+0000\n"
+"PO-Revision-Date: 2019-04-06 06:22+0000\n"
 "Last-Translator: Pasi Lallinaho <pasi@shimmerproject.org>\n"
 "Language-Team: Finnish (http://www.transifex.com/xfce/xfce-apps/language/fi/)\n"
 "MIME-Version: 1.0\n"
@@ -618,7 +618,7 @@ msgstr "Parole tukee paikallisten tiedostojen (mukaan lukien tekstitettyjen vide
 
 #: ../data/appdata/parole.appdata.xml.in.h:3
 msgid "This is a minor translations-only release."
-msgstr ""
+msgstr "Tämä on pieni, vain käännöksiä päivittävä julkaisu."
 
 #: ../data/appdata/parole.appdata.xml.in.h:4
 msgid ""
@@ -696,11 +696,11 @@ msgstr "Ääni-CD"
 
 #: ../src/gst/parole-gst.c:1271
 msgid "Unable to install missing codecs."
-msgstr ""
+msgstr "Puuttuvia koodekkeja ei voitu asentaa."
 
 #: ../src/gst/parole-gst.c:1274
 msgid "No available plugin installer was found."
-msgstr ""
+msgstr "Saatavilla olevaa lisäosien asennusohjelmaa ei löytynyt."
 
 #: ../src/gst/parole-gst.c:1328
 msgid "Additional software is required."
