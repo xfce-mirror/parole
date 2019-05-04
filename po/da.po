@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-25 12:31+0200\n"
-"PO-Revision-Date: 2019-04-30 14:32+0000\n"
+"PO-Revision-Date: 2019-05-04 16:14+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr ""
 #: ../src/parole-player.c:1789 ../src/parole-about.c:68
 #: ../src/plugins/mpris2/mpris2-provider.c:187
 msgid "Parole Media Player"
-msgstr "Parole medieafspiller"
+msgstr "Parole Media Player"
 
 #: ../data/interfaces/parole.ui.h:2
 msgid "_Media"
@@ -751,7 +751,7 @@ msgstr "GStreamer-fejl"
 
 #: ../src/gst/parole-gst.c:1885
 msgid "Parole Media Player cannot start."
-msgstr "Parole medieafspilleren kan ikke starte."
+msgstr "Parole Media Player kan ikke starte."
 
 #: ../src/gst/parole-gst.c:1910 ../src/gst/parole-gst.c:1925
 #: ../src/gst/parole-gst.c:1959
@@ -782,7 +782,7 @@ msgid ""
 "\n"
 "Please report bugs to <https://bugzilla.xfce.org/>.\n"
 "\n"
-msgstr "\nParole medieafspiller %s\n\nDel af Xfce Goodies-projektet\nhttps://goodies.xfce.org\n\nLicenseret under GNU GPL.\n\nRapportér venligst fejl til <https://bugzilla.xfce.org/>.\n\n"
+msgstr "\nParole Media Player %s\n\nDel af Xfce Goodies-projektet\nhttps://goodies.xfce.org\n\nLicenseret under GNU GPL.\n\nRapportér venligst fejl til <https://bugzilla.xfce.org/>.\n\n"
 
 #: ../src/main.c:227
 msgid "Open a new instance"
