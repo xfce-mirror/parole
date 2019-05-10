@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Sveinn í Felli <sv1@fellsnet.is>, 2011,2014,2016,2018
+# Sveinn í Felli <sv1@fellsnet.is>, 2011,2014,2016,2018-2019
 # Sveinn í Felli <sv1@fellsnet.is>, 2011
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-25 12:31+0200\n"
-"PO-Revision-Date: 2018-11-29 11:24+0000\n"
+"PO-Revision-Date: 2019-05-10 10:22+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic (http://www.transifex.com/xfce/xfce-apps/language/is/)\n"
 "MIME-Version: 1.0\n"
@@ -653,14 +653,14 @@ msgstr ""
 msgid ""
 "This release improves the build process and includes several bug fixes. This"
 " new stable release is a recommended upgrade for all users."
-msgstr ""
+msgstr "Þessi útgáfa bætir byggingarferlið og inniheldur ýmsar villuleiðréttingar. Mælt er með þessari stöðugu útgáfu fyrir alla notendur."
 
 #: ../data/appdata/parole.appdata.xml.in.h:9
 msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
-msgstr ""
+msgstr "Þessi óstöðuga þróunarútgáfa bætir við hinum nýja 'clutter'-bakenda og hreinsar út úrelt GTK3-tákn. Hér er einnig bætt við 'fara á stöðu' eiginleika og ýmsar villuleiðréttingar hafa átt sér stað."
 
 #: ../data/appdata/parole.appdata.xml.in.h:10
 msgid "This release fixes a problem with detecting DVD drive locations."
@@ -673,7 +673,7 @@ msgid ""
 "playlists. Furthermore existing plugins have been improved and a new one has"
 " been added (MPRIS2). Most of the artwork has been updated for this release "
 "and we use the GStreamer1.0 framework now by default."
-msgstr ""
+msgstr "Þessi útgáfa lýkur yfirfærslunni í Gtk+3 viðmótshlutasafnið, kemur með endurbætur á notendaviðmóti (straumlínulagaðri valmyndir) og betri spilunarlista. Ennfremur hafa fyrirliggjandi viðbætur verið bættar og einni nýrri bætt við (MPRIS2). Mest af myndefninu hefur verið uppfært fyrir þessa útgáfu og núna notum við sjálfgefið GStreamer1.0 bakvinnslukerfið."
 
 #: ../src/common/parole-common.c:83
 msgid "Message"
