@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-25 12:31+0200\n"
-"PO-Revision-Date: 2019-05-10 11:26+0000\n"
+"PO-Revision-Date: 2019-05-17 09:22+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic (http://www.transifex.com/xfce/xfce-apps/language/is/)\n"
 "MIME-Version: 1.0\n"
@@ -624,7 +624,7 @@ msgid ""
 "Automatic video output option was added to improve usage on virtual machines"
 " and low power devices. A large number of bugs were also resolved, making "
 "this release suitable for all users."
-msgstr ""
+msgstr "Þessi útgáfa markar fyrstu stöðugu útgáfu 1.0 raðarinnar. Nýr valkostur fyrir sjálfvirkt myndmerkisúttak bættist við til að bæta notkunina í sýndarvélum og lágorkutækjum. Leyst var úr fjölda villna/galla, sem þá gerir þessa útgáfu nothæfa fyrir alla notendur."
 
 #: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
@@ -632,7 +632,7 @@ msgid ""
 "lighter and easier to improve. All URLs have been updated to HTTPS. A large "
 "number of bugs have been resolved and a new keyboard shortcuts helper has "
 "been introduced."
-msgstr ""
+msgstr "Þessi þróunarútgáfa er afurð stórhreinsunar á kóðagrunninum, sem gerir Parole léttara í keyrslu og einfaldari fyrir betrumbætur. Allar slóðir hafa verið uppfærðar í HTTPS. Leystir hafa verið fjölmargir gallar og nú er komið hjálparforrit til stuðnings flýtiunum á lyklaborði."
 
 #: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
@@ -640,14 +640,14 @@ msgid ""
 "present in the documentation. Tags are now processed on files delivered over"
 " HTTP/S. The clutter video backend is disabled for GTK+ 3.22 and newer due "
 "to significant API changes."
-msgstr ""
+msgstr "Þessi þróunarútgáfa leysir marga galla, stafsetningarvillur og úrelt fyrirbæri í hjálparskjölum. Merkingar eru núna unnar á skrám sem tengst er við yfir HTTP/S. Clutter-myndmerkisbakendinn er óvirkur í GTK+ 3.22 og nýrri útgáfum vegna umtalsverðra breytinga á API-forritunarviðmóti."
 
 #: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
 "This development release adds a new mini mode and the ability to play or "
 "replay content by clicking the circle icons. Theming is simplified and "
 "filenames are displayed when no ID3 tags are found."
-msgstr ""
+msgstr "Þessi þróunarútgáfa bætir við smækkuðum ham og eiginleika til að spila efni met því að smella á hringtáknin. Þemu eru einfölduð og skráaheiti eru birt ef engin ID3-merki finnast."
 
 #: ../data/appdata/parole.appdata.xml.in.h:8
 msgid ""
