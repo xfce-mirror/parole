@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-25 12:31+0200\n"
-"PO-Revision-Date: 2019-05-16 16:12+0000\n"
+"PO-Revision-Date: 2019-05-17 11:44+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -34,11 +34,11 @@ msgstr "_Medie"
 
 #: ../data/interfaces/parole.ui.h:3
 msgid "_Open…"
-msgstr "_Åbn…"
+msgstr "_Åbn …"
 
 #: ../data/interfaces/parole.ui.h:4
 msgid "Open _Location…"
-msgstr "Åbn _sted…"
+msgstr "Åbn _sted …"
 
 #: ../data/interfaces/parole.ui.h:5
 msgid "Open _Recent"
@@ -46,7 +46,7 @@ msgstr "Åbn _nylige"
 
 #: ../data/interfaces/parole.ui.h:6
 msgid "_Save Playlist…"
-msgstr "_Gem afspilningsliste…"
+msgstr "_Gem afspilningsliste …"
 
 #: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:108
 #: ../src/parole-disc.c:143
@@ -170,7 +170,7 @@ msgstr "_Undertekster"
 
 #: ../data/interfaces/parole.ui.h:36
 msgid "Select Text Subtitles…"
-msgstr "Vælg tekst-undertekster…"
+msgstr "Vælg tekst-undertekster …"
 
 #: ../data/interfaces/parole.ui.h:37
 msgid "_Tools"
@@ -190,7 +190,7 @@ msgstr "_Hjælp"
 
 #: ../data/interfaces/parole.ui.h:41
 msgid "_Report a Bug…"
-msgstr "_Rapportér en fejl…"
+msgstr "_Rapportér en fejl …"
 
 #: ../data/interfaces/parole.ui.h:42
 msgid "_Keyboard Shortcuts"
@@ -254,7 +254,7 @@ msgstr "Disk-afspilningsliste"
 
 #: ../data/interfaces/playlist.ui.h:3
 msgid "Add to playlist…"
-msgstr "Tilføj til afspilningsliste…"
+msgstr "Tilføj til afspilningsliste …"
 
 #: ../data/interfaces/playlist.ui.h:4
 msgid "Add"
@@ -460,7 +460,7 @@ msgstr "Efter filendelse"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "Save Playlist as…"
-msgstr "Gem afspilningsliste som…"
+msgstr "Gem afspilningsliste som …"
 
 #: ../data/interfaces/save-playlist.ui.h:3
 msgid "File Type"
@@ -838,7 +838,7 @@ msgstr "Media til afspilning"
 
 #: ../src/main.c:279
 msgid "[FILES...] - Play movies and songs"
-msgstr "[FILER...] - Afspil film og sange"
+msgstr "[FILER ...] - Afspil film og sange"
 
 #: ../src/main.c:290
 #, c-format
@@ -1061,7 +1061,7 @@ msgstr "Placering:"
 #. Clear Recent Menu Item
 #: ../src/parole-player.c:3232
 msgid "_Clear recent items…"
-msgstr "_Ryd nylige elementer…"
+msgstr "_Ryd nylige elementer …"
 
 #: ../src/parole-player.c:3550
 msgid "Audio Track:"
