@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-25 12:31+0200\n"
-"PO-Revision-Date: 2019-05-19 08:16+0000\n"
+"PO-Revision-Date: 2019-05-20 14:12+0000\n"
 "Last-Translator: Daniel Muñiz Fontoira <dani@damufo.com>\n"
 "Language-Team: Galician (http://www.transifex.com/xfce/xfce-apps/language/gl/)\n"
 "MIME-Version: 1.0\n"
@@ -198,7 +198,7 @@ msgstr "Atallos de _teclado"
 
 #: ../data/interfaces/parole.ui.h:43
 msgid "Display Parole user manual"
-msgstr "Mostrar o manual de usuario do Parole"
+msgstr "Amosar o manual de usuario do Parole"
 
 #: ../data/interfaces/parole.ui.h:44
 msgid "_Contents"
@@ -359,7 +359,7 @@ msgstr "<b>Salvapantallas</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:8
 msgid "Show visual effects when an audio file is played"
-msgstr "Mostrar efectos visuais mentres se reproduce un ficheiro de son"
+msgstr "Amosar efectos visuais mentres se reproduce un ficheiro de son"
 
 #: ../data/interfaces/parole-settings.ui.h:9
 msgid "Visualization type:"
@@ -416,7 +416,7 @@ msgstr "<b>Balance da cor</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:22
 msgid "Display"
-msgstr "Mostrar"
+msgstr "Amosar"
 
 #: ../data/interfaces/parole-settings.ui.h:23
 msgid "Always replace playlist with opened files"
@@ -424,7 +424,7 @@ msgstr "Substituír sempre a lista de reprodución polos ficheiros abertos"
 
 #: ../data/interfaces/parole-settings.ui.h:24
 msgid "Check and remove duplicate media entries"
-msgstr "Comprobar e retirar as os ficheiros duplicados"
+msgstr "Comprobar e retirar as entradas de recursos duplicados"
 
 #: ../data/interfaces/parole-settings.ui.h:25
 msgid "Start playing opened files"
@@ -436,7 +436,7 @@ msgstr "<b>Configuración das listas de reprodución</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:29
 msgid "Automatically show subtitles when playing movie file"
-msgstr "Mostrar automaticamente os subtítulos ao reproducir unha película"
+msgstr "Amosar automaticamente os subtítulos ao reproducir unha película"
 
 #: ../data/interfaces/parole-settings.ui.h:30
 msgid "Font:"
@@ -830,7 +830,7 @@ msgstr "Engadir ficheiros á lista de reprodución"
 
 #: ../src/main.c:253
 msgid "Print version information and exit"
-msgstr "Mostrar a información da versión e saír"
+msgstr "Amosar a información da versión e saír"
 
 #: ../src/main.c:257
 msgid "Media to play"
@@ -920,7 +920,7 @@ msgstr "Agochar a lista de reprodución"
 
 #: ../src/parole-player.c:528 ../src/parole-player.c:3400
 msgid "Show Playlist"
-msgstr "Mostrar a lista de reprodución"
+msgstr "Amosar a lista de reprodución"
 
 #. Build the FileChooser dialog for subtitle selection.
 #: ../src/parole-player.c:969
@@ -1031,7 +1031,7 @@ msgstr "_Saír da pantalla completa"
 #. * Un/Hide menubar
 #: ../src/parole-player.c:2150
 msgid "Show menubar"
-msgstr "Mostrar a barra de menú"
+msgstr "Amosar a barra de menú"
 
 #: ../src/parole-player.c:2167
 msgid "Mini Mode"
@@ -1285,7 +1285,7 @@ msgstr "Notificar"
 
 #: ../src/plugins/notify/notify.desktop.in.h:2
 msgid "Show notifications for currently playing tracks"
-msgstr "Mostrar notificacións das pistas en execución"
+msgstr "Amosar notificacións das pistas en execución"
 
 #. * Previous Track
 #: ../src/plugins/tray/tray-provider.c:128
@@ -1332,7 +1332,7 @@ msgstr "Icona de zona de notificación"
 
 #: ../src/plugins/tray/system-tray.desktop.in.h:2
 msgid "Show icon in the system tray"
-msgstr "Mostrar a icona na área de notificación"
+msgstr "Amosar a icona na área de notificación"
 
 #: ../src/plugins/mpris2/mpris2.desktop.in.h:1
 msgid "MPRIS2"
