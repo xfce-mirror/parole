@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-25 12:31+0200\n"
-"PO-Revision-Date: 2019-05-20 14:12+0000\n"
+"PO-Revision-Date: 2019-05-20 17:20+0000\n"
 "Last-Translator: Daniel Muñiz Fontoira <dani@damufo.com>\n"
 "Language-Team: Galician (http://www.transifex.com/xfce/xfce-apps/language/gl/)\n"
 "MIME-Version: 1.0\n"
@@ -625,7 +625,7 @@ msgid ""
 "Automatic video output option was added to improve usage on virtual machines"
 " and low power devices. A large number of bugs were also resolved, making "
 "this release suitable for all users."
-msgstr "Esta versión marca a primeira versión estábel da serie 1.0. Engadiuse unha nova opción de saída automática de vídeo para mellorar o uso en máquinas virtuais e dispositivos de baixa potencia. Tamén foron resoltos unha grande cantidade de erros, facendo que esta versión sexa axeitada para todos os usuarios."
+msgstr "Esta versión marca a primeira versión estábel da serie 1.0. Engadiuse unha nova opción de saída automática de vídeo para mellorar o uso en máquinas virtuais e dispositivos de baixa potencia. Tamén foron resoltos unha grande cantidade de fallos, facendo que esta versión sexa axeitada para todos os usuarios."
 
 #: ../data/appdata/parole.appdata.xml.in.h:5
 msgid ""
@@ -633,7 +633,7 @@ msgid ""
 "lighter and easier to improve. All URLs have been updated to HTTPS. A large "
 "number of bugs have been resolved and a new keyboard shortcuts helper has "
 "been introduced."
-msgstr "Esta versión de desenvolvemento contén unha grande limpeza da base de código, facendo que o Parole sexa máis lixeiro e máis fácil de mellorar. Todos os URLs foron actualizados a HTTPS. Foron resoltos unha chea de erros e introduciuse un novo asistente de atallos de teclado."
+msgstr "Esta versión de desenvolvemento contén unha grande limpeza da base de código, facendo que o Parole sexa máis lixeiro e máis fácil de mellorar. Todos os URLs foron actualizados a HTTPS. Foron resoltos unha chea de fallos e introduciuse un novo asistente de atallos de teclado."
 
 #: ../data/appdata/parole.appdata.xml.in.h:6
 msgid ""
@@ -641,7 +641,7 @@ msgid ""
 "present in the documentation. Tags are now processed on files delivered over"
 " HTTP/S. The clutter video backend is disabled for GTK+ 3.22 and newer due "
 "to significant API changes."
-msgstr "Esta versión de desenvolvemento resolve varios erros, erros de tecleado e detalles históricos presentes na documentación. Agora as etiquetas procésanse nos ficheiros entregados a traveso de HTTP/S. O motor de vídeo en segundo plano está desactivado para GTK+ 3.22 e máis novo debido a cambios importantes na API."
+msgstr "Esta versión de desenvolvemento resolve varios fallos, erros de escritura e detalles históricos presentes na documentación. Agora as etiquetas procésanse nos ficheiros entregados a traveso de HTTP/S. O motor de vídeo en segundo plano está desactivado para GTK+ 3.22 e máis novo debido a cambios importantes na API."
 
 #: ../data/appdata/parole.appdata.xml.in.h:7
 msgid ""
@@ -654,14 +654,14 @@ msgstr "Esta versión de desenvolvemento engade un novo modo mini e a capacidade
 msgid ""
 "This release improves the build process and includes several bug fixes. This"
 " new stable release is a recommended upgrade for all users."
-msgstr "Esta versión mellora o proceso de compilación e inclúe varias correccións de erros. Esta nova versión estábel é unha actualización recomendada para todos os usuarios."
+msgstr "Esta versión mellora o proceso de compilación e inclúe a corrección de varios fallos. Esta nova versión estábel é unha anovación recomendada para todos os usuarios."
 
 #: ../data/appdata/parole.appdata.xml.in.h:9
 msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
-msgstr "Esta versión de desenvolvemento inestable engade o novo motor en segundo plano e limpa os símbolos obsoletos de Gtk3. Tamén engade unha función de \"ir a posición\" así como a resolución de varios problemas."
+msgstr "Esta versión de desenvolvemento inestable engade a nova infraestrutura Clutter e limpa os símbolos obsoletos de Gtk3. Tamén engade unha función de \"ir a posición\" así como a resolución de varios fallos."
 
 #: ../data/appdata/parole.appdata.xml.in.h:10
 msgid "This release fixes a problem with detecting DVD drive locations."
@@ -782,7 +782,7 @@ msgid ""
 "\n"
 "Please report bugs to <https://bugzilla.xfce.org/>.\n"
 "\n"
-msgstr "\nReprodutor multimedia Parole %s\n\nParte do Proxecto de Extras de Xfce\nhttps://goodies.xfce.org\n\nLicenciado baixo a GNU GPL.\n\nPor favor, envíe os erros a <https://bugzilla.xfce.org/>.\n\n"
+msgstr "\nReprodutor multimedia Parole %s\n\nParte do Proxecto de Extras de Xfce\nhttps://goodies.xfce.org\n\nLicenciado baixo a GNU GPL.\n\nPor favor, informe dos fallos en <https://bugzilla.xfce.org/>.\n\n"
 
 #: ../src/main.c:227
 msgid "Open a new instance"
@@ -1048,7 +1048,7 @@ msgstr "Non foi posíbel abrir o navegador web predeterminado"
 #: ../src/parole-player.c:2787
 msgid ""
 "Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
-msgstr "Por favor, vaia a https://docs.xfce.org/apps/parole/bugs para informar do  erro."
+msgstr "Por favor, vaia a https://docs.xfce.org/apps/parole/bugs para informar do  fallo."
 
 #: ../src/parole-player.c:2815
 msgid "Go"
@@ -1263,7 +1263,7 @@ msgstr "Son e vídeo"
 
 #: ../src/misc/parole-filters.c:169 ../src/misc/parole-filters.c:193
 msgid "All supported files"
-msgstr "Todos os ficheiros soportados"
+msgstr "Todos os ficheiros compatíbeis"
 
 #: ../src/misc/parole-filters.c:217
 msgid "Playlist files"
@@ -1285,7 +1285,7 @@ msgstr "Notificar"
 
 #: ../src/plugins/notify/notify.desktop.in.h:2
 msgid "Show notifications for currently playing tracks"
-msgstr "Amosar notificacións das pistas en execución"
+msgstr "Amosar notificacións das pistas en reprodución"
 
 #. * Previous Track
 #: ../src/plugins/tray/tray-provider.c:128
