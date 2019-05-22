@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-25 12:31+0200\n"
-"PO-Revision-Date: 2019-05-21 20:09+0000\n"
+"PO-Revision-Date: 2019-05-21 22:32+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -512,7 +512,7 @@ msgstr "Forlad fuldskærm"
 
 #: ../data/interfaces/shortcuts.ui.h:8
 msgid "Toggle menubar"
-msgstr "Menulinje til/bar"
+msgstr "Menulinje til/fra"
 
 #: ../data/interfaces/shortcuts.ui.h:9
 msgid "Volume"
@@ -883,7 +883,7 @@ msgstr "Fejl ved gem af afspilningsliste"
 
 #: ../src/parole-medialist.c:663
 msgid "Unknown playlist format"
-msgstr "Ukendt format til spilleliste"
+msgstr "Ukendt format til afspilningsliste"
 
 #: ../src/parole-medialist.c:664
 msgid "Please choose a supported playlist format"
