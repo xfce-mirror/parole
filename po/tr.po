@@ -8,6 +8,7 @@
 # Natavan Mirzayeva <mirzayevanatavan@gmail.com>, 2014
 # Necdet Yücel <necdetyucel@gmail.com>, 2013-2015,2017-2018
 # Recep, 2013-2014
+# Serdar Sağlam <teknomobil@msn.com>, 2019
 # yakup <mutouk@yandex.ru>, 2013
 # zeki <zeki.ozguryazilim@gmail.com>, 2014
 msgid ""
@@ -15,7 +16,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-25 12:31+0200\n"
-"PO-Revision-Date: 2019-05-23 15:47+0000\n"
+"PO-Revision-Date: 2019-05-24 01:27+0000\n"
 "Last-Translator: Serdar Sağlam <teknomobil@msn.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/xfce/xfce-apps/language/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -55,7 +56,7 @@ msgstr "Çalma Listesini _Kaydet..."
 #: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:108
 #: ../src/parole-disc.c:143
 msgid "Insert Disc"
-msgstr "Disk Yerleştirin"
+msgstr "Disk Yerleştir"
 
 #. * Exit
 #: ../data/interfaces/parole.ui.h:8 ../src/plugins/tray/tray-provider.c:168
@@ -64,7 +65,7 @@ msgstr "_Çık"
 
 #: ../data/interfaces/parole.ui.h:9
 msgid "_Playback"
-msgstr "_Oynatma"
+msgstr "_Oynat"
 
 #: ../data/interfaces/parole.ui.h:10
 msgid "_Repeat"
@@ -85,7 +86,7 @@ msgstr "_DVD"
 
 #: ../data/interfaces/parole.ui.h:14
 msgid "_DVD Menu"
-msgstr "_DVD Menu"
+msgstr "_DVD Menü"
 
 #: ../data/interfaces/parole.ui.h:15
 msgid "_Title Menu"
@@ -129,7 +130,7 @@ msgstr "_Sesi Azalt"
 
 #: ../data/interfaces/parole.ui.h:25
 msgid "_Mute"
-msgstr "Sessiz"
+msgstr "_Sessiz"
 
 #: ../data/interfaces/parole.ui.h:26
 msgid "_Video"
@@ -146,7 +147,7 @@ msgstr "_Görüntü Oranı"
 
 #: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:730
 msgid "None"
-msgstr "Hiç"
+msgstr "Yok"
 
 #: ../data/interfaces/parole.ui.h:30
 msgid "Auto"
@@ -170,7 +171,7 @@ msgstr "20:9 (DVB)"
 
 #: ../data/interfaces/parole.ui.h:35
 msgid "_Subtitles"
-msgstr "Altyazılar"
+msgstr "_Altyazılar"
 
 #: ../data/interfaces/parole.ui.h:36
 msgid "Select Text Subtitles…"
@@ -254,7 +255,7 @@ msgstr "Oynatma listesi"
 
 #: ../data/interfaces/playlist.ui.h:2
 msgid "Disc Playlist"
-msgstr "Disk Oynatma listesi"
+msgstr "Disk oynatma listesi"
 
 #: ../data/interfaces/playlist.ui.h:3
 msgid "Add to playlist…"
@@ -315,7 +316,7 @@ msgstr "Parole Eklentileri"
 
 #: ../data/interfaces/plugins.ui.h:2
 msgid "Extend your media player"
-msgstr "Ortamçalarınızı genişletin"
+msgstr "Ortam oynatıcıyı geliştir"
 
 #: ../data/interfaces/plugins.ui.h:3
 msgid "Plugin"
@@ -323,11 +324,11 @@ msgstr "Eklentiler"
 
 #: ../data/interfaces/plugins.ui.h:4
 msgid "<b>Description</b>"
-msgstr "Açıklama:"
+msgstr "<b>Açıklama</b>"
 
 #: ../data/interfaces/plugins.ui.h:5
 msgid "<b>Author</b>"
-msgstr "İyesi:"
+msgstr "<b>Yazar</b>"
 
 #: ../data/interfaces/plugins.ui.h:6
 msgid "Visit Website"
@@ -351,7 +352,7 @@ msgstr "Parole Ayarları"
 
 #: ../data/interfaces/parole-settings.ui.h:5
 msgid "Configure your media player"
-msgstr "Ortam çalıcınızı ayarlayın"
+msgstr "Ortam oynatıcıyı yapılandır"
 
 #: ../data/interfaces/parole-settings.ui.h:6
 msgid "Disable screensaver when playing movies"
@@ -412,7 +413,7 @@ msgstr "Renk doygunluğu:"
 
 #: ../data/interfaces/parole-settings.ui.h:20
 msgid "Reset to defaults"
-msgstr "Öntanımlılara Döndür"
+msgstr "Varsayılana sıfırla"
 
 #: ../data/interfaces/parole-settings.ui.h:21
 msgid "<b>Color Balance</b>"
@@ -484,7 +485,7 @@ msgstr "Ağ Konumu Aç"
 
 #: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:181
 msgid "Clear History"
-msgstr "Geçmişi temizle"
+msgstr "Geçmişi Temizle"
 
 #: ../data/interfaces/open-location.ui.h:3
 msgid "<big><b>Open Network Location</b></big>"
@@ -548,7 +549,7 @@ msgstr "Sonraki ögeyi seç"
 
 #: ../data/interfaces/shortcuts.ui.h:17
 msgid "Remove selected item"
-msgstr "Seçili ögeyi çıkart"
+msgstr "Seçili ögeyi kaldır"
 
 #: ../data/interfaces/shortcuts.ui.h:18
 msgid "Playback"
@@ -682,7 +683,7 @@ msgstr "Bu sürümün özellikleri Gtk+3 aracına tamamlanmamış geçiş,kullan
 
 #: ../src/common/parole-common.c:83
 msgid "Message"
-msgstr "Mesaj"
+msgstr "İleti"
 
 #: ../src/common/parole-common.c:87
 msgid "Error"
@@ -711,11 +712,11 @@ msgstr "Ek yazılım gerekli."
 
 #: ../src/gst/parole-gst.c:1332
 msgid "Don't Install"
-msgstr "Kur"
+msgstr "Kurulum Yapma"
 
 #: ../src/gst/parole-gst.c:1334
 msgid "Install"
-msgstr "Kurma"
+msgstr "Kurulum Yap"
 
 #: ../src/gst/parole-gst.c:1337
 msgid "OK"
@@ -747,7 +748,7 @@ msgstr "Durdur"
 
 #: ../src/gst/parole-gst.c:1720
 msgid "Continue"
-msgstr "Devam et"
+msgstr "Devam"
 
 #: ../src/gst/parole-gst.c:1884
 msgid "GStreamer Error"
@@ -766,7 +767,7 @@ msgstr "\"%s\" eklentisi yüklenemedi, GStreamer kurulumunuzu kontrol edin."
 #: ../src/gst/parole-gst.c:2519 ../src/gst/parole-gst.c:2523
 #, c-format
 msgid "Audio Track #%d"
-msgstr "Parça %i"
+msgstr "Ses Parçası #%d"
 
 #: ../src/gst/parole-gst.c:2559 ../src/gst/parole-gst.c:2563
 #, c-format
@@ -790,11 +791,11 @@ msgstr "\nParole Medya Oynatıcı %s\n\nXfce Goodies Projesinin parçasıdır\nh
 
 #: ../src/main.c:227
 msgid "Open a new instance"
-msgstr "Yeni aç"
+msgstr "Yeni bir örnek aç"
 
 #: ../src/main.c:229
 msgid "Do not load plugins"
-msgstr "Eklentileri çağırma"
+msgstr "Eklentileri yüklemeyin"
 
 #: ../src/main.c:231
 msgid "Set Audio-CD/VCD/DVD device path"
@@ -826,7 +827,7 @@ msgstr "Sesi kapat"
 
 #: ../src/main.c:249
 msgid "Unmute (restore) volume"
-msgstr "Ses ayarını aç(yeniden)"
+msgstr "Ses ayarını aç (yeniden)"
 
 #: ../src/main.c:251
 msgid "Add files to playlist"
@@ -856,14 +857,14 @@ msgstr "Parole zaten çalışıyor, -i kullanarak yeni bir tane açabilirsiniz\n
 
 #: ../src/parole-mediachooser.c:233 ../src/parole-player.c:1005
 msgid "All files"
-msgstr "Bütün dosyalar"
+msgstr "Tüm dosyalar"
 
 #: ../src/parole-medialist.c:218 ../src/parole-medialist.c:1475
 #, c-format
 msgid "Playlist (%i item)"
 msgid_plural "Playlist (%i items)"
-msgstr[0] "Çalma listesi(%i ürün)"
-msgstr[1] "Çalma listesi (%i ürün)"
+msgstr[0] "Çalma listesi(%i öge)"
+msgstr[1] "Çalma listesi (%i öge)"
 
 #: ../src/parole-medialist.c:221 ../src/parole-medialist.c:1477
 #, c-format
@@ -879,7 +880,7 @@ msgstr "Bölüm %i"
 
 #: ../src/parole-medialist.c:651
 msgid "Permission denied"
-msgstr "Yetkiniz yok"
+msgstr "İzin reddedildi"
 
 #: ../src/parole-medialist.c:653
 msgid "Error saving playlist file"
@@ -1030,7 +1031,7 @@ msgstr "_Sonraki"
 #. * Un/Full screen
 #: ../src/parole-player.c:2135
 msgid "_Leave Fullscreen"
-msgstr "_Tam ekrandan ayrıl"
+msgstr "_Tam Ekrandan Ayrıl"
 
 #. * Un/Hide menubar
 #: ../src/parole-player.c:2150
@@ -1069,7 +1070,7 @@ msgstr "Güncel parçaları _temizle..."
 
 #: ../src/parole-player.c:3550
 msgid "Audio Track:"
-msgstr "Ses izi:"
+msgstr "Ses İzi:"
 
 #: ../src/parole-player.c:3569
 msgid "Subtitles:"
