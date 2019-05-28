@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-25 12:31+0200\n"
-"PO-Revision-Date: 2019-05-25 21:04+0000\n"
+"PO-Revision-Date: 2019-05-28 15:59+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -42,7 +42,7 @@ msgstr "Åbn _sted …"
 
 #: ../data/interfaces/parole.ui.h:5
 msgid "Open _Recent"
-msgstr "Åbn _nylige"
+msgstr "Åbn s_eneste"
 
 #: ../data/interfaces/parole.ui.h:6
 msgid "_Save Playlist…"
@@ -942,13 +942,13 @@ msgstr "Undertekstfiler"
 
 #: ../src/parole-player.c:1157 ../src/parole-player.c:1165
 msgid "Clear Recent Items"
-msgstr "Ryd nylige elementer"
+msgstr "Ryd seneste elementer"
 
 #: ../src/parole-player.c:1159
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
-msgstr "Er du sikker på, at du vil rydde historikken for dine nylige elementer? Dette kan ikke fortrydes."
+msgstr "Er du sikker på, at du vil rydde historikken for dine seneste elementer? Det kan ikke fortrydes."
 
 #: ../src/parole-player.c:1261 ../src/parole-player.c:1388
 msgid "Media stream is not seekable"
@@ -1061,7 +1061,7 @@ msgstr "Placering:"
 #. Clear Recent Menu Item
 #: ../src/parole-player.c:3232
 msgid "_Clear recent items…"
-msgstr "_Ryd nylige elementer …"
+msgstr "_Ryd seneste elementer …"
 
 #: ../src/parole-player.c:3550
 msgid "Audio Track:"
