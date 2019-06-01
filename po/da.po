@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-25 12:31+0200\n"
-"PO-Revision-Date: 2019-05-29 11:49+0000\n"
+"PO-Revision-Date: 2019-06-01 14:34+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -420,7 +420,7 @@ msgstr "Visning"
 
 #: ../data/interfaces/parole-settings.ui.h:23
 msgid "Always replace playlist with opened files"
-msgstr "Erstat altid afspilningslister med åbne filer"
+msgstr "Erstat altid afspilningslister med åbnede filer"
 
 #: ../data/interfaces/parole-settings.ui.h:24
 msgid "Check and remove duplicate media entries"
@@ -428,7 +428,7 @@ msgstr "Kontrollér og fjern duplikerede medieelementer"
 
 #: ../data/interfaces/parole-settings.ui.h:25
 msgid "Start playing opened files"
-msgstr "Begynd at afspille åbne filer"
+msgstr "Begynd at afspille åbnede filer"
 
 #: ../data/interfaces/parole-settings.ui.h:27
 msgid "<b>Playlist Settings</b>"
@@ -810,15 +810,15 @@ msgstr "Afspil eller pause hvis allerede afspiller"
 
 #: ../src/main.c:243
 msgid "Raise volume"
-msgstr "Forøg lydstyrke"
+msgstr "Højere lydstyrke"
 
 #: ../src/main.c:245
 msgid "Lower volume"
-msgstr "Formindsk lydstyrke"
+msgstr "Lavere lydstyrke"
 
 #: ../src/main.c:247
 msgid "Mute volume"
-msgstr "Mute lydstyrke"
+msgstr "Lydløs lydstyrke"
 
 #: ../src/main.c:249
 msgid "Unmute (restore) volume"
@@ -1285,7 +1285,7 @@ msgstr "Underret"
 
 #: ../src/plugins/notify/notify.desktop.in.h:2
 msgid "Show notifications for currently playing tracks"
-msgstr "Vis underretninger for spor som afspilles på nuværende tidspunkt"
+msgstr "Vis underretninger for spor som afspilles"
 
 #. * Previous Track
 #: ../src/plugins/tray/tray-provider.c:128
@@ -1308,7 +1308,7 @@ msgstr "Plugin til bakkeikon"
 
 #: ../src/plugins/tray/tray-provider.c:264
 msgid "Always minimize to tray when window is closed"
-msgstr "Minimér altid til bakke når vindue er lukket"
+msgstr "Minimér altid til bakke når vinduet lukkes"
 
 #: ../src/plugins/tray/tray-provider.c:307
 msgid "Are you sure you want to quit?"
