@@ -4,13 +4,14 @@
 # 
 # Translators:
 # beriain, 2018
+# beriain, 2019
 # Piarres Beobide <pi+debian@beobide.net>, 2009
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-25 12:31+0200\n"
-"PO-Revision-Date: 2018-09-24 15:30+0000\n"
+"PO-Revision-Date: 2019-07-08 15:37+0000\n"
 "Last-Translator: beriain\n"
 "Language-Team: Basque (http://www.transifex.com/xfce/xfce-apps/language/eu/)\n"
 "MIME-Version: 1.0\n"
@@ -124,7 +125,7 @@ msgstr "Bolumena _jaitsi"
 
 #: ../data/interfaces/parole.ui.h:25
 msgid "_Mute"
-msgstr "_Mutu"
+msgstr "_Mututu"
 
 #: ../data/interfaces/parole.ui.h:26
 msgid "_Video"
@@ -141,11 +142,11 @@ msgstr "Itxura _erlazioa"
 
 #: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:730
 msgid "None"
-msgstr "Batez"
+msgstr "Bat ere ez"
 
 #: ../data/interfaces/parole.ui.h:30
 msgid "Auto"
-msgstr "Auto"
+msgstr "Automatikoa"
 
 #: ../data/interfaces/parole.ui.h:31
 msgid "Square"
@@ -342,7 +343,7 @@ msgstr "X leiho sistema (Xv ez)"
 
 #: ../data/interfaces/parole-settings.ui.h:4
 msgid "Parole Settings"
-msgstr "Parole ezarpenak"
+msgstr "Paroleren ezarpenak"
 
 #: ../data/interfaces/parole-settings.ui.h:5
 msgid "Configure your media player"
