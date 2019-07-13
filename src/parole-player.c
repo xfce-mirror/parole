@@ -1366,7 +1366,7 @@ parole_player_playing(ParolePlayer *player, const ParoleStream *stream) {
     } else {
         gtk_range_set_range(GTK_RANGE(player->priv->range), 0, duration);
         gtk_widget_set_visible(player->priv->label_duration, TRUE);
-        gtk_widget_set_visible(player->priv->label_divider, TRUE);
+        gtk_widget_set_visible(player->priv->label_divider, player->priv->mini_mode);
         gtk_widget_set_visible(player->priv->label_elapsed, TRUE);
     }
 
@@ -3495,6 +3495,7 @@ parole_player_init(ParolePlayer *player) {
     player->priv->label_duration = GTK_WIDGET(gtk_builder_get_object(builder, "media_time_duration"));
     player->priv->label_elapsed = GTK_WIDGET(gtk_builder_get_object(builder, "media_time_elapsed"));
     player->priv->label_divider = GTK_WIDGET(gtk_builder_get_object(builder, "media_time_divider"));
+    gtk_widget_hide (player->priv->label_divider);
 
     /* Time Slider */
     player->priv->range = GTK_WIDGET(gtk_builder_get_object(builder, "media_progress_slider"));
