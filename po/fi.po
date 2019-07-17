@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-25 12:31+0200\n"
-"PO-Revision-Date: 2019-07-16 21:47+0000\n"
+"PO-Revision-Date: 2019-07-17 07:52+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish (http://www.transifex.com/xfce/xfce-apps/language/fi/)\n"
 "MIME-Version: 1.0\n"
@@ -783,7 +783,7 @@ msgid ""
 "\n"
 "Please report bugs to <https://bugzilla.xfce.org/>.\n"
 "\n"
-msgstr "\nParole -mediasoitin %s\n\nOsa Xfce Goodies -projektia\nhttps://goodies.xfce.org\n\nLisensöity GNU GPL -lisenssillä.\n\nRaportoi bugit osoitteessa <https://bugzilla.xfce.org/>.\n\n"
+msgstr "\nParole-mediasoitin %s\n\nOsa Xfce Goodies -projektia\nhttps://goodies.xfce.org\n\nLisensöity GNU GPL -lisenssillä.\n\nRaportoi bugit osoitteessa <https://bugzilla.xfce.org/>.\n\n"
 
 #: ../src/main.c:227
 msgid "Open a new instance"
@@ -795,7 +795,7 @@ msgstr "Älä lataa liitännäisiä"
 
 #: ../src/main.c:231
 msgid "Set Audio-CD/VCD/DVD device path"
-msgstr "Aseta ääni-CD/VCD/DVD -laitteen polku"
+msgstr "Aseta ääni-CD-/VCD-/DVD-laitteen polku"
 
 #: ../src/main.c:233
 msgid "Start in embedded mode"
@@ -949,7 +949,7 @@ msgstr "Tyhjennä viimeisimmät kohteet"
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
-msgstr "Oletko varma että haluat tyhjentää viimeisimpien kohteiden historiasi? Et voi perua tätä toimintoa."
+msgstr "Haluatko varmasti tyhjentää viimeisimpien kohteiden historian? Et voi perua tätä toimintoa."
 
 #: ../src/parole-player.c:1261 ../src/parole-player.c:1388
 msgid "Media stream is not seekable"
