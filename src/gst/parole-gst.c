@@ -2347,7 +2347,7 @@ void parole_gst_shutdown(ParoleGst *gst) {
     if ( gst->priv->bus )
         g_object_unref(gst->priv->bus);
 
-    gst_element_set_state(gst->priv->playbin, GST_STATE_VOID_PENDING);
+    gst_element_set_state(gst->priv->playbin, GST_STATE_NULL);
 
     if ( gst->priv->playbin )
         g_object_unref(gst->priv->playbin);
