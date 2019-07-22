@@ -32,11 +32,11 @@ msgid "_Media"
 msgstr "미디어(_M)"
 
 #: ../data/interfaces/parole.ui.h:3
-msgid "_Open…"
+msgid "_Open..."
 msgstr "열기(_O)..."
 
 #: ../data/interfaces/parole.ui.h:4
-msgid "Open _Location…"
+msgid "Open _Location..."
 msgstr "위치 열기(_L)..."
 
 #: ../data/interfaces/parole.ui.h:5
@@ -44,7 +44,7 @@ msgid "Open _Recent"
 msgstr "최근 목록 열기(_R)"
 
 #: ../data/interfaces/parole.ui.h:6
-msgid "_Save Playlist…"
+msgid "_Save Playlist..."
 msgstr "재생 목록 저장(_S)..."
 
 #: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:108
@@ -168,7 +168,7 @@ msgid "_Subtitles"
 msgstr "자막(_S)"
 
 #: ../data/interfaces/parole.ui.h:36
-msgid "Select Text Subtitles…"
+msgid "Select Text Subtitles..."
 msgstr "텍스트 자막을 선택하십시오..."
 
 #: ../data/interfaces/parole.ui.h:37
@@ -188,7 +188,7 @@ msgid "_Help"
 msgstr "도움말(_H)"
 
 #: ../data/interfaces/parole.ui.h:41
-msgid "_Report a Bug…"
+msgid "_Report a Bug..."
 msgstr "버그 보고하기(_R)..."
 
 #: ../data/interfaces/parole.ui.h:42
@@ -252,7 +252,7 @@ msgid "Disc Playlist"
 msgstr "디스크 재생 목록"
 
 #: ../data/interfaces/playlist.ui.h:3
-msgid "Add to playlist…"
+msgid "Add to playlist..."
 msgstr "재생 목록에 추가..."
 
 #: ../data/interfaces/playlist.ui.h:4
@@ -458,7 +458,7 @@ msgid "By Extension"
 msgstr "확장자별"
 
 #: ../data/interfaces/save-playlist.ui.h:2
-msgid "Save Playlist as…"
+msgid "Save Playlist as..."
 msgstr "다른 이름으로 재생 목록 저장..."
 
 #: ../data/interfaces/save-playlist.ui.h:3
@@ -1057,7 +1057,7 @@ msgstr "위치:"
 
 #. Clear Recent Menu Item
 #: ../src/parole-player.c:3232
-msgid "_Clear recent items…"
+msgid "_Clear recent items..."
 msgstr "최근 목록 지우기(_C)..."
 
 #: ../src/parole-player.c:3550

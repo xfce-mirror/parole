@@ -36,20 +36,20 @@ msgid "_Media"
 msgstr "_Média"
 
 #: ../data/interfaces/parole.ui.h:3
-msgid "_Open…"
-msgstr "_Ouvrir…"
+msgid "_Open..."
+msgstr "_Ouvrir..."
 
 #: ../data/interfaces/parole.ui.h:4
-msgid "Open _Location…"
-msgstr "Ouvrir un empl_acement…"
+msgid "Open _Location..."
+msgstr "Ouvrir un empl_acement..."
 
 #: ../data/interfaces/parole.ui.h:5
 msgid "Open _Recent"
 msgstr "_Récemment ouvert"
 
 #: ../data/interfaces/parole.ui.h:6
-msgid "_Save Playlist…"
-msgstr "_Enregistrer la liste de lecture…"
+msgid "_Save Playlist..."
+msgstr "_Enregistrer la liste de lecture..."
 
 #: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:108
 #: ../src/parole-disc.c:143
@@ -172,8 +172,8 @@ msgid "_Subtitles"
 msgstr "_Sous-titres"
 
 #: ../data/interfaces/parole.ui.h:36
-msgid "Select Text Subtitles…"
-msgstr "Sélectionner le fichier de sous-titres…"
+msgid "Select Text Subtitles..."
+msgstr "Sélectionner le fichier de sous-titres..."
 
 #: ../data/interfaces/parole.ui.h:37
 msgid "_Tools"
@@ -192,8 +192,8 @@ msgid "_Help"
 msgstr "Aid_e"
 
 #: ../data/interfaces/parole.ui.h:41
-msgid "_Report a Bug…"
-msgstr "_Signaler un bogue…"
+msgid "_Report a Bug..."
+msgstr "_Signaler un bogue..."
 
 #: ../data/interfaces/parole.ui.h:42
 msgid "_Keyboard Shortcuts"
@@ -256,8 +256,8 @@ msgid "Disc Playlist"
 msgstr "Liste de lecture du disque"
 
 #: ../data/interfaces/playlist.ui.h:3
-msgid "Add to playlist…"
-msgstr "Ajouter à la liste de lecture…"
+msgid "Add to playlist..."
+msgstr "Ajouter à la liste de lecture..."
 
 #: ../data/interfaces/playlist.ui.h:4
 msgid "Add"
@@ -462,8 +462,8 @@ msgid "By Extension"
 msgstr "Par extension"
 
 #: ../data/interfaces/save-playlist.ui.h:2
-msgid "Save Playlist as…"
-msgstr "Enregistrer la liste de lecture sous…"
+msgid "Save Playlist as..."
+msgstr "Enregistrer la liste de lecture sous..."
 
 #: ../data/interfaces/save-playlist.ui.h:3
 msgid "File Type"
@@ -841,7 +841,7 @@ msgstr "Média à lire"
 
 #: ../src/main.c:279
 msgid "[FILES...] - Play movies and songs"
-msgstr "[Fichiers…] - Lire films et chansons"
+msgstr "[Fichiers...] - Lire films et chansons"
 
 #: ../src/main.c:290
 #, c-format
@@ -1063,8 +1063,8 @@ msgstr "Position :"
 
 #. Clear Recent Menu Item
 #: ../src/parole-player.c:3232
-msgid "_Clear recent items…"
-msgstr "_Effacer l’historique…"
+msgid "_Clear recent items..."
+msgstr "_Effacer l’historique..."
 
 #: ../src/parole-player.c:3550
 msgid "Audio Track:"

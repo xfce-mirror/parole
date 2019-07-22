@@ -33,20 +33,20 @@ msgid "_Media"
 msgstr "_สื่อ"
 
 #: ../data/interfaces/parole.ui.h:3
-msgid "_Open…"
-msgstr "_เปิด…"
+msgid "_Open..."
+msgstr "_เปิด..."
 
 #: ../data/interfaces/parole.ui.h:4
-msgid "Open _Location…"
-msgstr "เปิด_ตำแหน่งเก็บ…"
+msgid "Open _Location..."
+msgstr "เปิด_ตำแหน่งเก็บ..."
 
 #: ../data/interfaces/parole.ui.h:5
 msgid "Open _Recent"
 msgstr "เปิด_ล่าสุด"
 
 #: ../data/interfaces/parole.ui.h:6
-msgid "_Save Playlist…"
-msgstr "_บันทึกผังเล่น…"
+msgid "_Save Playlist..."
+msgstr "_บันทึกผังเล่น..."
 
 #: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:108
 #: ../src/parole-disc.c:143
@@ -169,8 +169,8 @@ msgid "_Subtitles"
 msgstr "_บทบรรยาย"
 
 #: ../data/interfaces/parole.ui.h:36
-msgid "Select Text Subtitles…"
-msgstr "เลือกข้อความบทบรรยาย…"
+msgid "Select Text Subtitles..."
+msgstr "เลือกข้อความบทบรรยาย..."
 
 #: ../data/interfaces/parole.ui.h:37
 msgid "_Tools"
@@ -189,8 +189,8 @@ msgid "_Help"
 msgstr "_วิธีใช้"
 
 #: ../data/interfaces/parole.ui.h:41
-msgid "_Report a Bug…"
-msgstr "_รายงานปัญหา…"
+msgid "_Report a Bug..."
+msgstr "_รายงานปัญหา..."
 
 #: ../data/interfaces/parole.ui.h:42
 msgid "_Keyboard Shortcuts"
@@ -253,8 +253,8 @@ msgid "Disc Playlist"
 msgstr "ผังเล่นของแผ่น"
 
 #: ../data/interfaces/playlist.ui.h:3
-msgid "Add to playlist…"
-msgstr "เพิ่มในผังเล่น…"
+msgid "Add to playlist..."
+msgstr "เพิ่มในผังเล่น..."
 
 #: ../data/interfaces/playlist.ui.h:4
 msgid "Add"
@@ -459,8 +459,8 @@ msgid "By Extension"
 msgstr "ตามนามสกุล"
 
 #: ../data/interfaces/save-playlist.ui.h:2
-msgid "Save Playlist as…"
-msgstr "บันทึกผังเล่นเป็น…"
+msgid "Save Playlist as..."
+msgstr "บันทึกผังเล่นเป็น..."
 
 #: ../data/interfaces/save-playlist.ui.h:3
 msgid "File Type"
@@ -1058,8 +1058,8 @@ msgstr "ตำแหน่งเล่น:"
 
 #. Clear Recent Menu Item
 #: ../src/parole-player.c:3232
-msgid "_Clear recent items…"
-msgstr "_ล้างรายการล่าสุด…"
+msgid "_Clear recent items..."
+msgstr "_ล้างรายการล่าสุด..."
 
 #: ../src/parole-player.c:3550
 msgid "Audio Track:"

@@ -32,11 +32,11 @@ msgid "_Media"
 msgstr "_Միջավայր"
 
 #: ../data/interfaces/parole.ui.h:3
-msgid "_Open…"
+msgid "_Open..."
 msgstr "_Բացել․․․"
 
 #: ../data/interfaces/parole.ui.h:4
-msgid "Open _Location…"
+msgid "Open _Location..."
 msgstr "Բացել _տեղադրութիւնը․․․"
 
 #: ../data/interfaces/parole.ui.h:5
@@ -44,8 +44,8 @@ msgid "Open _Recent"
 msgstr "Բացել _վերջիններից․․․"
 
 #: ../data/interfaces/parole.ui.h:6
-msgid "_Save Playlist…"
-msgstr "_Պահել նուագացուցակը…"
+msgid "_Save Playlist..."
+msgstr "_Պահել նուագացուցակը..."
 
 #: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:108
 #: ../src/parole-disc.c:143
@@ -168,7 +168,7 @@ msgid "_Subtitles"
 msgstr "_Սուբտիտրեր"
 
 #: ../data/interfaces/parole.ui.h:36
-msgid "Select Text Subtitles…"
+msgid "Select Text Subtitles..."
 msgstr "Ընտրել գրոյթի սուբրիտրերը․․․"
 
 #: ../data/interfaces/parole.ui.h:37
@@ -188,7 +188,7 @@ msgid "_Help"
 msgstr "_Աջակցութիւն"
 
 #: ../data/interfaces/parole.ui.h:41
-msgid "_Report a Bug…"
+msgid "_Report a Bug..."
 msgstr "_Զեկուցել խնդրի մասին․․․"
 
 #: ../data/interfaces/parole.ui.h:42
@@ -252,7 +252,7 @@ msgid "Disc Playlist"
 msgstr "Սկավառակի նուագացուցակ"
 
 #: ../data/interfaces/playlist.ui.h:3
-msgid "Add to playlist…"
+msgid "Add to playlist..."
 msgstr "Աւելացնել նուագացուցակում"
 
 #: ../data/interfaces/playlist.ui.h:4
@@ -458,7 +458,7 @@ msgid "By Extension"
 msgstr "Ըստ յաւելման"
 
 #: ../data/interfaces/save-playlist.ui.h:2
-msgid "Save Playlist as…"
+msgid "Save Playlist as..."
 msgstr "Պահել նուագացուցակը որպէս․․"
 
 #: ../data/interfaces/save-playlist.ui.h:3
@@ -1059,8 +1059,8 @@ msgstr "Դիրք․"
 
 #. Clear Recent Menu Item
 #: ../src/parole-player.c:3232
-msgid "_Clear recent items…"
-msgstr "_Մաքրել վերջին տարրերը…"
+msgid "_Clear recent items..."
+msgstr "_Մաքրել վերջին տարրերը..."
 
 #: ../src/parole-player.c:3550
 msgid "Audio Track:"

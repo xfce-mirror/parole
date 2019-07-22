@@ -35,19 +35,19 @@ msgid "_Media"
 msgstr "_Датотека"
 
 #: ../data/interfaces/parole.ui.h:3
-msgid "_Open…"
+msgid "_Open..."
 msgstr "_Отвори..."
 
 #: ../data/interfaces/parole.ui.h:4
-msgid "Open _Location…"
-msgstr "Отвори _место…"
+msgid "Open _Location..."
+msgstr "Отвори _место..."
 
 #: ../data/interfaces/parole.ui.h:5
 msgid "Open _Recent"
 msgstr "Отвори _скорашње датотеке"
 
 #: ../data/interfaces/parole.ui.h:6
-msgid "_Save Playlist…"
+msgid "_Save Playlist..."
 msgstr "_Сачувај музички списак..."
 
 #: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:108
@@ -171,7 +171,7 @@ msgid "_Subtitles"
 msgstr "_Преводи"
 
 #: ../data/interfaces/parole.ui.h:36
-msgid "Select Text Subtitles…"
+msgid "Select Text Subtitles..."
 msgstr "Изабери преводе..."
 
 #: ../data/interfaces/parole.ui.h:37
@@ -191,7 +191,7 @@ msgid "_Help"
 msgstr "_Помоћ"
 
 #: ../data/interfaces/parole.ui.h:41
-msgid "_Report a Bug…"
+msgid "_Report a Bug..."
 msgstr "_Пријави грешку..."
 
 #: ../data/interfaces/parole.ui.h:42
@@ -255,7 +255,7 @@ msgid "Disc Playlist"
 msgstr "Списак нумера диска"
 
 #: ../data/interfaces/playlist.ui.h:3
-msgid "Add to playlist…"
+msgid "Add to playlist..."
 msgstr "Додај у списак за ивођење..."
 
 #: ../data/interfaces/playlist.ui.h:4
@@ -461,8 +461,8 @@ msgid "By Extension"
 msgstr "Према наставку"
 
 #: ../data/interfaces/save-playlist.ui.h:2
-msgid "Save Playlist as…"
-msgstr "Сачувај музички списак као…"
+msgid "Save Playlist as..."
+msgstr "Сачувај музички списак као..."
 
 #: ../data/interfaces/save-playlist.ui.h:3
 msgid "File Type"
@@ -1064,7 +1064,7 @@ msgstr "Положај:"
 
 #. Clear Recent Menu Item
 #: ../src/parole-player.c:3232
-msgid "_Clear recent items…"
+msgid "_Clear recent items..."
 msgstr "_Очисти недавне ставке..."
 
 #: ../src/parole-player.c:3550

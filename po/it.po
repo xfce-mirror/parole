@@ -34,11 +34,11 @@ msgid "_Media"
 msgstr "_File multimediali"
 
 #: ../data/interfaces/parole.ui.h:3
-msgid "_Open…"
+msgid "_Open..."
 msgstr "_Apri..."
 
 #: ../data/interfaces/parole.ui.h:4
-msgid "Open _Location…"
+msgid "Open _Location..."
 msgstr "Apri _posizione"
 
 #: ../data/interfaces/parole.ui.h:5
@@ -46,7 +46,7 @@ msgid "Open _Recent"
 msgstr "Apri _recenti"
 
 #: ../data/interfaces/parole.ui.h:6
-msgid "_Save Playlist…"
+msgid "_Save Playlist..."
 msgstr "Salva sca_letta"
 
 #: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:108
@@ -170,7 +170,7 @@ msgid "_Subtitles"
 msgstr "_Sottotitoli"
 
 #: ../data/interfaces/parole.ui.h:36
-msgid "Select Text Subtitles…"
+msgid "Select Text Subtitles..."
 msgstr "Seleziona sottotitoli..."
 
 #: ../data/interfaces/parole.ui.h:37
@@ -190,7 +190,7 @@ msgid "_Help"
 msgstr "A_iuto"
 
 #: ../data/interfaces/parole.ui.h:41
-msgid "_Report a Bug…"
+msgid "_Report a Bug..."
 msgstr "_Segnala bug..."
 
 #: ../data/interfaces/parole.ui.h:42
@@ -254,7 +254,7 @@ msgid "Disc Playlist"
 msgstr "Scaletta disco"
 
 #: ../data/interfaces/playlist.ui.h:3
-msgid "Add to playlist…"
+msgid "Add to playlist..."
 msgstr "Aggiungi alla scaletta..."
 
 #: ../data/interfaces/playlist.ui.h:4
@@ -460,8 +460,8 @@ msgid "By Extension"
 msgstr "Per estensione"
 
 #: ../data/interfaces/save-playlist.ui.h:2
-msgid "Save Playlist as…"
-msgstr "Salva scaletta come…"
+msgid "Save Playlist as..."
+msgstr "Salva scaletta come..."
 
 #: ../data/interfaces/save-playlist.ui.h:3
 msgid "File Type"
@@ -839,7 +839,7 @@ msgstr "File multimediale da riprodurre"
 
 #: ../src/main.c:279
 msgid "[FILES...] - Play movies and songs"
-msgstr "[FILES…] - Riproduce film o canzoni"
+msgstr "[FILES...] - Riproduce film o canzoni"
 
 #: ../src/main.c:290
 #, c-format
@@ -1061,7 +1061,7 @@ msgstr "Posizione:"
 
 #. Clear Recent Menu Item
 #: ../src/parole-player.c:3232
-msgid "_Clear recent items…"
+msgid "_Clear recent items..."
 msgstr "_Elimina elementi recenti..."
 
 #: ../src/parole-player.c:3550

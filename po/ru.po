@@ -40,20 +40,20 @@ msgid "_Media"
 msgstr "_Фильм"
 
 #: ../data/interfaces/parole.ui.h:3
-msgid "_Open…"
-msgstr "_Открыть…"
+msgid "_Open..."
+msgstr "_Открыть..."
 
 #: ../data/interfaces/parole.ui.h:4
-msgid "Open _Location…"
-msgstr "Открыть _адрес…"
+msgid "Open _Location..."
+msgstr "Открыть _адрес..."
 
 #: ../data/interfaces/parole.ui.h:5
 msgid "Open _Recent"
 msgstr "Открыть _последние"
 
 #: ../data/interfaces/parole.ui.h:6
-msgid "_Save Playlist…"
-msgstr "_Сохранить список воспроизведения…"
+msgid "_Save Playlist..."
+msgstr "_Сохранить список воспроизведения..."
 
 #: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:108
 #: ../src/parole-disc.c:143
@@ -176,8 +176,8 @@ msgid "_Subtitles"
 msgstr "Суб_титры"
 
 #: ../data/interfaces/parole.ui.h:36
-msgid "Select Text Subtitles…"
-msgstr "Выбрать субтитры…"
+msgid "Select Text Subtitles..."
+msgstr "Выбрать субтитры..."
 
 #: ../data/interfaces/parole.ui.h:37
 msgid "_Tools"
@@ -196,8 +196,8 @@ msgid "_Help"
 msgstr "_Справка"
 
 #: ../data/interfaces/parole.ui.h:41
-msgid "_Report a Bug…"
-msgstr "Сообщить об о_шибке…"
+msgid "_Report a Bug..."
+msgstr "Сообщить об о_шибке..."
 
 #: ../data/interfaces/parole.ui.h:42
 msgid "_Keyboard Shortcuts"
@@ -260,8 +260,8 @@ msgid "Disc Playlist"
 msgstr "Список воспроизведения"
 
 #: ../data/interfaces/playlist.ui.h:3
-msgid "Add to playlist…"
-msgstr "Добавить в список воспроизведения…"
+msgid "Add to playlist..."
+msgstr "Добавить в список воспроизведения..."
 
 #: ../data/interfaces/playlist.ui.h:4
 msgid "Add"
@@ -466,8 +466,8 @@ msgid "By Extension"
 msgstr "По расширению"
 
 #: ../data/interfaces/save-playlist.ui.h:2
-msgid "Save Playlist as…"
-msgstr "Сохранить список воспроизведения как…"
+msgid "Save Playlist as..."
+msgstr "Сохранить список воспроизведения как..."
 
 #: ../data/interfaces/save-playlist.ui.h:3
 msgid "File Type"
@@ -1071,8 +1071,8 @@ msgstr "Позиция:"
 
 #. Clear Recent Menu Item
 #: ../src/parole-player.c:3232
-msgid "_Clear recent items…"
-msgstr "_Очистить историю последних открытых файлов…"
+msgid "_Clear recent items..."
+msgstr "_Очистить историю последних открытых файлов..."
 
 #: ../src/parole-player.c:3550
 msgid "Audio Track:"

@@ -35,20 +35,20 @@ msgid "_Media"
 msgstr "_Media"
 
 #: ../data/interfaces/parole.ui.h:3
-msgid "_Open…"
-msgstr "_Åpne…"
+msgid "_Open..."
+msgstr "_Åpne..."
 
 #: ../data/interfaces/parole.ui.h:4
-msgid "Open _Location…"
-msgstr "Åpne _plassering…"
+msgid "Open _Location..."
+msgstr "Åpne _plassering..."
 
 #: ../data/interfaces/parole.ui.h:5
 msgid "Open _Recent"
 msgstr "Åpne _nylige"
 
 #: ../data/interfaces/parole.ui.h:6
-msgid "_Save Playlist…"
-msgstr "_Lagre spilleliste…"
+msgid "_Save Playlist..."
+msgstr "_Lagre spilleliste..."
 
 #: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:108
 #: ../src/parole-disc.c:143
@@ -171,8 +171,8 @@ msgid "_Subtitles"
 msgstr "_Undertekster"
 
 #: ../data/interfaces/parole.ui.h:36
-msgid "Select Text Subtitles…"
-msgstr "Velg undertitler…"
+msgid "Select Text Subtitles..."
+msgstr "Velg undertitler..."
 
 #: ../data/interfaces/parole.ui.h:37
 msgid "_Tools"
@@ -191,8 +191,8 @@ msgid "_Help"
 msgstr "_Hjelp"
 
 #: ../data/interfaces/parole.ui.h:41
-msgid "_Report a Bug…"
-msgstr "_Rapporter feil…"
+msgid "_Report a Bug..."
+msgstr "_Rapporter feil..."
 
 #: ../data/interfaces/parole.ui.h:42
 msgid "_Keyboard Shortcuts"
@@ -255,8 +255,8 @@ msgid "Disc Playlist"
 msgstr "Disk-spilleliste"
 
 #: ../data/interfaces/playlist.ui.h:3
-msgid "Add to playlist…"
-msgstr "Legg til i spilleliste…"
+msgid "Add to playlist..."
+msgstr "Legg til i spilleliste..."
 
 #: ../data/interfaces/playlist.ui.h:4
 msgid "Add"
@@ -461,8 +461,8 @@ msgid "By Extension"
 msgstr "Etter filendelse"
 
 #: ../data/interfaces/save-playlist.ui.h:2
-msgid "Save Playlist as…"
-msgstr "Lagre spilleliste som…"
+msgid "Save Playlist as..."
+msgstr "Lagre spilleliste som..."
 
 #: ../data/interfaces/save-playlist.ui.h:3
 msgid "File Type"
@@ -840,7 +840,7 @@ msgstr "Media til avspilling"
 
 #: ../src/main.c:279
 msgid "[FILES...] - Play movies and songs"
-msgstr "[FILES…] - Spill filmer og låter"
+msgstr "[FILES...] - Spill filmer og låter"
 
 #: ../src/main.c:290
 #, c-format
@@ -1062,8 +1062,8 @@ msgstr "Posisjon:"
 
 #. Clear Recent Menu Item
 #: ../src/parole-player.c:3232
-msgid "_Clear recent items…"
-msgstr "_Slett nylige elementer…"
+msgid "_Clear recent items..."
+msgstr "_Slett nylige elementer..."
 
 #: ../src/parole-player.c:3550
 msgid "Audio Track:"

@@ -32,20 +32,20 @@ msgid "_Media"
 msgstr "メディア(_M)"
 
 #: ../data/interfaces/parole.ui.h:3
-msgid "_Open…"
-msgstr "開く(_O)…"
+msgid "_Open..."
+msgstr "開く(_O)..."
 
 #: ../data/interfaces/parole.ui.h:4
-msgid "Open _Location…"
-msgstr "場所を開く(_L)…"
+msgid "Open _Location..."
+msgstr "場所を開く(_L)..."
 
 #: ../data/interfaces/parole.ui.h:5
 msgid "Open _Recent"
 msgstr "最近開いたアイテム(_R)"
 
 #: ../data/interfaces/parole.ui.h:6
-msgid "_Save Playlist…"
-msgstr "プレイリストの保存(_S)…"
+msgid "_Save Playlist..."
+msgstr "プレイリストの保存(_S)..."
 
 #: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:108
 #: ../src/parole-disc.c:143
@@ -168,8 +168,8 @@ msgid "_Subtitles"
 msgstr "字幕(_S)"
 
 #: ../data/interfaces/parole.ui.h:36
-msgid "Select Text Subtitles…"
-msgstr "字幕の選択…"
+msgid "Select Text Subtitles..."
+msgstr "字幕の選択..."
 
 #: ../data/interfaces/parole.ui.h:37
 msgid "_Tools"
@@ -188,8 +188,8 @@ msgid "_Help"
 msgstr "ヘルプ(_H)"
 
 #: ../data/interfaces/parole.ui.h:41
-msgid "_Report a Bug…"
-msgstr "バグの報告(_R)…"
+msgid "_Report a Bug..."
+msgstr "バグの報告(_R)..."
 
 #: ../data/interfaces/parole.ui.h:42
 msgid "_Keyboard Shortcuts"
@@ -252,8 +252,8 @@ msgid "Disc Playlist"
 msgstr "ディスクプレイリスト"
 
 #: ../data/interfaces/playlist.ui.h:3
-msgid "Add to playlist…"
-msgstr "プレイリストに追加…"
+msgid "Add to playlist..."
+msgstr "プレイリストに追加..."
 
 #: ../data/interfaces/playlist.ui.h:4
 msgid "Add"
@@ -458,8 +458,8 @@ msgid "By Extension"
 msgstr "拡張子"
 
 #: ../data/interfaces/save-playlist.ui.h:2
-msgid "Save Playlist as…"
-msgstr "プレイリストを名前をつけて保存…"
+msgid "Save Playlist as..."
+msgstr "プレイリストを名前をつけて保存..."
 
 #: ../data/interfaces/save-playlist.ui.h:3
 msgid "File Type"
@@ -1057,8 +1057,8 @@ msgstr "指定時間"
 
 #. Clear Recent Menu Item
 #: ../src/parole-player.c:3232
-msgid "_Clear recent items…"
-msgstr "最近開いたアイテムのクリア(_C)…"
+msgid "_Clear recent items..."
+msgstr "最近開いたアイテムのクリア(_C)..."
 
 #: ../src/parole-player.c:3550
 msgid "Audio Track:"

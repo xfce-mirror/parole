@@ -33,20 +33,20 @@ msgid "_Media"
 msgstr "媒體(_M)"
 
 #: ../data/interfaces/parole.ui.h:3
-msgid "_Open…"
+msgid "_Open..."
 msgstr "開啟(_O)..."
 
 #: ../data/interfaces/parole.ui.h:4
-msgid "Open _Location…"
-msgstr "開啟位置(_L)…"
+msgid "Open _Location..."
+msgstr "開啟位置(_L)..."
 
 #: ../data/interfaces/parole.ui.h:5
 msgid "Open _Recent"
 msgstr "開啟最近播放(_R)"
 
 #: ../data/interfaces/parole.ui.h:6
-msgid "_Save Playlist…"
-msgstr "儲存播放清單(_S)…"
+msgid "_Save Playlist..."
+msgstr "儲存播放清單(_S)..."
 
 #: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:108
 #: ../src/parole-disc.c:143
@@ -169,8 +169,8 @@ msgid "_Subtitles"
 msgstr "字幕(_S)"
 
 #: ../data/interfaces/parole.ui.h:36
-msgid "Select Text Subtitles…"
-msgstr "選取文字字幕…"
+msgid "Select Text Subtitles..."
+msgstr "選取文字字幕..."
 
 #: ../data/interfaces/parole.ui.h:37
 msgid "_Tools"
@@ -189,8 +189,8 @@ msgid "_Help"
 msgstr "幫助(_H)"
 
 #: ../data/interfaces/parole.ui.h:41
-msgid "_Report a Bug…"
-msgstr "報告錯誤(_R)…"
+msgid "_Report a Bug..."
+msgstr "報告錯誤(_R)..."
 
 #: ../data/interfaces/parole.ui.h:42
 msgid "_Keyboard Shortcuts"
@@ -253,8 +253,8 @@ msgid "Disc Playlist"
 msgstr "光碟播放清單"
 
 #: ../data/interfaces/playlist.ui.h:3
-msgid "Add to playlist…"
-msgstr "加入至播放清單…"
+msgid "Add to playlist..."
+msgstr "加入至播放清單..."
 
 #: ../data/interfaces/playlist.ui.h:4
 msgid "Add"
@@ -459,8 +459,8 @@ msgid "By Extension"
 msgstr "依延伸檔名"
 
 #: ../data/interfaces/save-playlist.ui.h:2
-msgid "Save Playlist as…"
-msgstr "將播放清單儲存為…"
+msgid "Save Playlist as..."
+msgstr "將播放清單儲存為..."
 
 #: ../data/interfaces/save-playlist.ui.h:3
 msgid "File Type"
@@ -1058,7 +1058,7 @@ msgstr "位置："
 
 #. Clear Recent Menu Item
 #: ../src/parole-player.c:3232
-msgid "_Clear recent items…"
+msgid "_Clear recent items..."
 msgstr "清除最近播放項目(_C)..."
 
 #: ../src/parole-player.c:3550

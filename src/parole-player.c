@@ -3226,7 +3226,7 @@ parole_player_init(ParolePlayer *player) {
     gtk_menu_shell_append(GTK_MENU_SHELL(player->priv->recent_menu), recent_separator);
 
     // Clear Recent Menu Item
-    clear_recent = gtk_menu_item_new_with_mnemonic(_("_Clear recent items…"));
+    clear_recent = gtk_menu_item_new_with_mnemonic(_("_Clear recent items..."));
     gtk_menu_shell_append(GTK_MENU_SHELL(player->priv->recent_menu), clear_recent);
 
     // Recent Menu signals
