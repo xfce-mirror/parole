@@ -1,3 +1,16 @@
+1.0.3 (UNRELEASED)
+=====
+- Bug Fixes
+  - Drop deprecated OnlyShowIn keys in desktop actions (Xfce #15259)
+  - Ensure the time divider is shown/hidden correctly
+  - Fix closing of Parole process with Ctrl-Q (Xfce #15698)
+  - Fix compiler warnings (clang) (Xfce #15260)"
+  - Fix Gtk-CRITICAL when closing main window (Xfce #15621)
+- General
+  - Change text '…' to '...' for consistency with other Xfce apps (Xfce #14266)
+  - Change text '60 seconds' to '1 minute' (Xfce #15529)
+  - Move appdata to metainfo (Xfce #15381)
+
 1.0.2
 =====
 - Bug Fixes
