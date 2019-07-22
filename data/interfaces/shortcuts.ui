@@ -171,14 +171,14 @@
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;Left</property>
-                <property name="title" translatable="yes">Go back 60 seconds</property>
+                <property name="title" translatable="yes">Go back 1 minute</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;Right</property>
-                <property name="title" translatable="yes">Go forward 60 seconds</property>
+                <property name="title" translatable="yes">Go forward 1 minute</property>
               </object>
             </child>
             <child>
