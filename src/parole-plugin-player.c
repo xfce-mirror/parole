@@ -79,7 +79,10 @@ parole_plugin_player_get_main_window(ParoleProviderPlayer *provider) {
     ParolePluginPlayer *player;
 
     player = PAROLE_PLUGIN_PLAYER(provider);
-    return gtk_widget_get_toplevel (player->priv->gst);
+    if (GTK_IS_WIDGET (player->priv->gst)) {
+        return gtk_widget_get_toplevel (player->priv->gst);
+    }
+    return NULL;
 }
 
 static void
