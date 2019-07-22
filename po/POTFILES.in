@@ -8,7 +8,7 @@
 [type: gettext/glade]data/interfaces/open-location.ui
 [type: gettext/glade]data/interfaces/shortcuts.ui
 data/desktop/org.xfce.Parole.desktop.in.in
-data/appdata/parole.appdata.xml.in
+data/metainfo/parole.appdata.xml.in
 src/common/parole-common.c
 src/gst/parole-gst.c
 src/main.c

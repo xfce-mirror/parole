@@ -4,4 +4,4 @@ SUBDIRS = 		\
 	icons		\
 	mime		\
 	desktop		\
-	appdata
+	metainfo
