@@ -49,6 +49,7 @@
 #include "src/common/parole-common.h"
 #include "src/common/parole-rc-utils.h"
 #include "src/common/parole-screensaver.h"
+#include "src/common/parole-powermanager.h"
 
 #include "src/dbus/parole-dbus.h"
 
@@ -338,6 +339,8 @@ struct ParolePlayerPrivate {
     ParoleMediaList    *list;
     ParoleDisc         *disc;
     ParoleScreenSaver  *screen_saver;
+    GDBusConnection    *connection;
+    guint32             inhibit_cookie;
 
     ParoleConf         *conf;
     ParoleConfDialog   *settings_dialog;
@@ -1546,6 +1549,9 @@ parole_player_reset_saver_changed(ParolePlayer *player, const ParoleStream *stre
 
     if ( !reset_saver ) {
         parole_screen_saver_uninhibit(player->priv->screen_saver, GTK_WINDOW(player->priv->window));
+        if (player->priv->inhibit_cookie > 0)
+            parole_power_manager_uninhibit (player->priv->connection, player->priv->inhibit_cookie);
+        player->priv->inhibit_cookie = 0;
     } else if ( player->priv->state ==  PAROLE_STATE_PLAYING ) {
         gboolean has_video;
 
@@ -1554,10 +1560,15 @@ parole_player_reset_saver_changed(ParolePlayer *player, const ParoleStream *stre
                       NULL);
 
         if ( has_video ) {
-            parole_screen_saver_inhibit(player->priv->screen_saver, GTK_WINDOW(player->priv->window));
+            parole_screen_saver_inhibit (player->priv->screen_saver, GTK_WINDOW(player->priv->window));
+            if (player->priv->inhibit_cookie == 0)
+                player->priv->inhibit_cookie = parole_power_manager_inhibit (player->priv->connection);
         }
     } else {
         parole_screen_saver_uninhibit(player->priv->screen_saver, GTK_WINDOW(player->priv->window));
+        if (player->priv->inhibit_cookie > 0)
+            parole_power_manager_uninhibit (player->priv->connection, player->priv->inhibit_cookie);
+        player->priv->inhibit_cookie = 0;
     }
 }
 
@@ -2407,6 +2418,7 @@ parole_player_finalize(GObject *object) {
     g_object_unref(player->priv->video_filter);
     g_object_unref(player->priv->disc);
     g_object_unref(player->priv->screen_saver);
+    g_object_unref(player->priv->connection);
 
     if ( player->priv->client_id )
         g_free(player->priv->client_id);
@@ -3143,6 +3155,10 @@ parole_player_init(ParolePlayer *player) {
 
     /* ParoleScreenSaver */
     player->priv->screen_saver = parole_screen_saver_new();
+
+    /* PowerManagement Inhibit cookie */
+    player->priv->connection = parole_power_manager_dbus_init ();
+    player->priv->inhibit_cookie = 0;
 
     /* ParoleMediaList */
     player->priv->list = PAROLE_MEDIA_LIST(parole_media_list_get());

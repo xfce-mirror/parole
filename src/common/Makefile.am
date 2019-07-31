@@ -6,7 +6,9 @@ libparolecommon_la_SOURCES =		\
 	parole-common.c			\
 	parole-common.h			\
 	parole-rc-utils.c		\
-	parole-rc-utils.h
+	parole-rc-utils.h		\
+	parole-powermanager.c	\
+	parole-powermanager.h
 
 libparolecommon_la_CFLAGS =		\
 	$(GTK_CFLAGS)			\
