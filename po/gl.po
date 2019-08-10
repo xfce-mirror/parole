@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-23 00:31+0200\n"
-"PO-Revision-Date: 2019-07-30 10:23+0000\n"
+"PO-Revision-Date: 2019-08-10 06:51+0000\n"
 "Last-Translator: Daniel Muñiz Fontoira <dani@damufo.com>\n"
 "Language-Team: Galician (http://www.transifex.com/xfce/xfce-apps/language/gl/)\n"
 "MIME-Version: 1.0\n"
@@ -190,7 +190,7 @@ msgstr "A_xuda"
 
 #: ../data/interfaces/parole.ui.h:41
 msgid "_Report a Bug..."
-msgstr "_Informar dun erro..."
+msgstr "_Informar dun fallo..."
 
 #: ../data/interfaces/parole.ui.h:42
 msgid "_Keyboard Shortcuts"
@@ -606,14 +606,14 @@ msgid ""
 "Parole is a modern simple media player based on the GStreamer framework and "
 "written to fit well in the Xfce desktop. It is designed with simplicity, "
 "speed and resource usage in mind."
-msgstr "Parole é un reprodutor multimedia simple baseado na infraestrutura GStreamer escrito para axustarse ben ó escritorio Xfce. Está deseñado tendo na mente a simplicidade, a velocidade e uso dos recursos."
+msgstr "Parole é un reprodutor multimedia simple baseado na infraestrutura GStreamer escrito para axustarse ben ao escritorio Xfce. Está deseñado tendo na mente a simplicidade, a velocidade e uso dos recursos."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:2
 msgid ""
 "Parole features playback of local media files, including video with "
 "subtitles support, Audio CDs, DVDs, and live streams. Parole is also "
 "extensible via plugins."
-msgstr "O Parole reproduce os ficheiros multimedia locais, incluído o vídeo con compatibilidade para subtítulos, CDs de son, DVDs e transmisións en directo. O parole tamén é extensible a traveso de complementos."
+msgstr "O Parole reproduce os ficheiros multimedia locais, incluído o vídeo con compatibilidade para subtítulos, CDs de son, DVDs e transmisións en directo. O parole tamén é extensíbel a través de complementos."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:3
 msgid "This is a minor translations-only release."
@@ -641,7 +641,7 @@ msgid ""
 "present in the documentation. Tags are now processed on files delivered over"
 " HTTP/S. The clutter video backend is disabled for GTK+ 3.22 and newer due "
 "to significant API changes."
-msgstr "Esta versión de desenvolvemento resolve varios fallos, erros de escritura e detalles históricos presentes na documentación. Agora as etiquetas procésanse nos ficheiros entregados a traveso de HTTP/S. O motor de vídeo en segundo plano está desactivado para GTK+ 3.22 e máis novo debido a cambios importantes na API."
+msgstr "Esta versión de desenvolvemento resolve varios fallos, erros de escritura e detalles históricos presentes na documentación. Agora as etiquetas procésanse nos ficheiros entregados a través de HTTP/S. A infraestrutura de vídeo en segundo plano está desactivado para GTK+ 3.22 e máis novo debido a cambios importantes na API."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:7
 msgid ""
@@ -699,7 +699,7 @@ msgstr "Non se puido instalar os códecs que faltan."
 
 #: ../src/gst/parole-gst.c:1270
 msgid "No available plugin installer was found."
-msgstr "Non se atopou ningún instalador de engadido dispoñible."
+msgstr "Non se atopou ningún instalador de engadido dispoñíbel."
 
 #: ../src/gst/parole-gst.c:1321
 msgid "Additional software is required."
@@ -794,7 +794,7 @@ msgstr "Non cargar engadidos"
 
 #: ../src/main.c:231
 msgid "Set Audio-CD/VCD/DVD device path"
-msgstr "Definir a ruta do dispositivo de Audio-CD/VCD/DVD"
+msgstr "Definir a ruta do dispositivo do CD de son/VCD/DVD"
 
 #: ../src/main.c:233
 msgid "Start in embedded mode"
@@ -907,7 +907,7 @@ msgstr "Advanced Stream Redirector"
 
 #: ../src/parole-medialist.c:812
 msgid "Shareable Playlist"
-msgstr "Lista de reprodución compartible"
+msgstr "Lista de reprodución compartíbel"
 
 #. Clear
 #: ../src/parole-medialist.c:1119
@@ -1235,7 +1235,7 @@ msgstr "Vietnamita"
 
 #: ../src/parole-plugins-manager.c:253
 msgid "Plugin failed to load"
-msgstr "Produciuse un erro ao cargar o engadido"
+msgstr "Produciuse un fallo ao cargar o engadido"
 
 #: ../src/parole-plugins-manager.c:254
 msgid "Please check your installation"
