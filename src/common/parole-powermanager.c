@@ -61,15 +61,16 @@ parole_power_manager_inhibit (GDBusConnection *connection) {
                                          NULL,
                                          &error);
 
-    if (error) {
-        g_warning ("Inhibiting power management failed %s", error->message);
-        g_error_free (error);
-    }
     if (reply != NULL) {
         g_variant_get (reply, "(u)", &cookie, NULL);
         g_variant_unref (reply);
         return cookie;
     }
+    if (error) {
+        g_warning ("Inhibiting power management failed %s", error->message);
+        g_error_free (error);
+    }
+    return 0;
 }
 
 void
