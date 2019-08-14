@@ -100,7 +100,7 @@ parole_power_manager_uninhibit (GDBusConnection *connection,
 }
 
 GDBusConnection *
-parole_power_manager_dbus_init ()
+parole_power_manager_dbus_init (void)
 {
     GDBusConnection *connection;
     GError          *error = NULL;
