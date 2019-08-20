@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-23 00:31+0200\n"
-"PO-Revision-Date: 2019-08-10 06:51+0000\n"
+"PO-Revision-Date: 2019-08-20 19:40+0000\n"
 "Last-Translator: Daniel Muñiz Fontoira <dani@damufo.com>\n"
 "Language-Team: Galician (http://www.transifex.com/xfce/xfce-apps/language/gl/)\n"
 "MIME-Version: 1.0\n"
@@ -757,7 +757,7 @@ msgstr "O reprodutor multimedia Parole non é quen de arrancar."
 #: ../src/gst/parole-gst.c:1958
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
-msgstr "Non foi posíbel cargar o engadido «%s»; comprobe a instalación de GStreamer."
+msgstr "Non se puido cargar o engadido «%s»; comprobe a instalación de GStreamer."
 
 #: ../src/gst/parole-gst.c:2516 ../src/gst/parole-gst.c:2520
 #, c-format
@@ -1043,7 +1043,7 @@ msgstr "Desenmudecer"
 
 #: ../src/parole-player.c:2782
 msgid "Unable to open default web browser"
-msgstr "Non foi posíbel abrir o navegador web predeterminado"
+msgstr "Non se puido abrir o navegador web predeterminado"
 
 #: ../src/parole-player.c:2784
 msgid ""
@@ -1312,7 +1312,7 @@ msgstr "Sempre minimizar á zona de notificación cando se pecha a xanela"
 
 #: ../src/plugins/tray/tray-provider.c:307
 msgid "Are you sure you want to quit?"
-msgstr "Confirma que desexa saír?"
+msgstr "Desexa realmente saír?"
 
 #: ../src/plugins/tray/tray-provider.c:310
 msgid "Parole can be minimized to the system tray instead."
