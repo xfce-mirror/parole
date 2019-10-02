@@ -328,8 +328,6 @@
                         <property name="label" translatable="yes">Volume _Up</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="parole_player_volume_up" swapped="no"/>
-                        <accelerator key="plus" signal="activate"/>
-                        <accelerator key="equal" signal="activate"/>
                       </object>
                     </child>
                     <child>
@@ -339,7 +337,6 @@
                         <property name="label" translatable="yes">Volume _Down</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="parole_player_volume_down" swapped="no"/>
-                        <accelerator key="minus" signal="activate"/>
                       </object>
                     </child>
                     <child>
@@ -349,7 +346,6 @@
                         <property name="label" translatable="yes">_Mute</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="parole_player_volume_mute" swapped="no"/>
-                        <accelerator key="0" signal="activate"/>
                       </object>
                     </child>
                   </object>

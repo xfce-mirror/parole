@@ -2650,6 +2650,16 @@ parole_player_handle_key_press(GdkEventKey *ev, ParolePlayer *player) {
                 parole_media_list_grab_focus(player->priv->list);
             }
             break;
+        case GDK_KEY_plus:
+        case GDK_KEY_equal:
+            parole_player_volume_up(NULL, player);
+            break;
+        case GDK_KEY_minus:
+            parole_player_volume_down(NULL, player);
+            break;
+        case GDK_KEY_0:
+            parole_player_volume_mute(NULL, player);
+            break;
         default:
             break;
     }
