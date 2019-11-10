@@ -1112,6 +1112,7 @@ parole_gst_get_meta_data_file(ParoleGst *gst, GstTagList *tag) {
     gchar *str;
     GDate *date;
     guint integer;
+    gboolean has_artwork;
 
     GdkPixbuf *pixbuf;
 
@@ -1182,10 +1183,15 @@ parole_gst_get_meta_data_file(ParoleGst *gst, GstTagList *tag) {
                      NULL);
     }
 
-    pixbuf = parole_gst_tag_list_get_cover(gst, tag);
-    if (pixbuf) {
-        parole_stream_set_image(G_OBJECT(gst->priv->stream), pixbuf);
-        g_object_unref(pixbuf);
+    g_object_get(G_OBJECT(gst->priv->stream),
+                 "has_artwork", &has_artwork,
+                 NULL);
+    if (!has_artwork) {
+        pixbuf = parole_gst_tag_list_get_cover(gst, tag);
+        if (pixbuf) {
+            parole_stream_set_image(G_OBJECT(gst->priv->stream), pixbuf);
+            g_object_unref(pixbuf);
+        }
     }
 
     g_object_set(G_OBJECT(gst->priv->stream),

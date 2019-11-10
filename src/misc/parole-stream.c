@@ -50,6 +50,7 @@ struct _ParoleStreamPrivate {
     gchar      *subtitles;
     gboolean    has_audio;
     gboolean    has_video;
+    gboolean    has_artwork;
     gboolean    live;
     gboolean    seekable;
     gboolean    tag_available;
@@ -82,6 +83,7 @@ enum {
     PROP_MEDIA_TYPE,
     PROP_HAS_AUDIO,
     PROP_HAS_VIDEO,
+    PROP_HAS_ARTWORK,
     PROP_SEEKABLE,
     PROP_DISP_PAR_N,
     PROP_DISP_PAR_D,
@@ -173,6 +175,9 @@ static void parole_stream_set_property(GObject *object,
         case PROP_HAS_VIDEO:
             stream->priv->has_video = g_value_get_boolean(value);
             break;
+        case PROP_HAS_ARTWORK:
+            stream->priv->has_artwork = g_value_get_boolean(value);
+            break;
         case PROP_SEEKABLE:
             stream->priv->seekable = g_value_get_boolean(value);
             break;
@@ -258,6 +263,9 @@ static void parole_stream_get_property(GObject *object,
             break;
         case PROP_HAS_VIDEO:
             g_value_set_boolean(value, stream->priv->has_video);
+            break;
+        case PROP_HAS_ARTWORK:
+            g_value_set_boolean(value, stream->priv->has_artwork);
             break;
         case PROP_SEEKABLE:
             g_value_set_boolean(value, stream->priv->seekable);
@@ -348,6 +356,11 @@ parole_stream_set_image(GObject *object, GdkPixbuf *pixbuf) {
     if ( stream->priv->image )
         g_object_unref(G_OBJECT(stream->priv->image));
 
+    if (stream->priv->previous_image) {
+        if (g_remove (stream->priv->previous_image) != 0)
+            g_warning("Failed to remove temporary artwork");
+    }
+
     if (pixbuf) {
         stream->priv->image = gdk_pixbuf_copy(pixbuf);
 
@@ -358,11 +371,13 @@ parole_stream_set_image(GObject *object, GdkPixbuf *pixbuf) {
 
         stream->priv->previous_image = g_strdup(filename);
         stream->priv->image_uri = g_strdup_printf("file://%s", filename);
+        stream->priv->has_artwork = TRUE;
         g_free(filename);
     } else {
         stream->priv->image = NULL;
         stream->priv->previous_image = NULL;
         stream->priv->image_uri = g_strdup_printf("file://%s/no-cover.png", PIXMAPS_DIR);
+        stream->priv->has_artwork = FALSE;
     }
 }
 
@@ -445,6 +460,7 @@ parole_stream_class_init(ParoleStreamClass *klass) {
                                     "Has audio",
                                     FALSE,
                                     G_PARAM_READWRITE));
+
     /**
      * ParoleStream:has-video:
      *
@@ -457,6 +473,21 @@ parole_stream_class_init(ParoleStreamClass *klass) {
                                     g_param_spec_boolean("has-video",
                                     "Has video",
                                     "Has video",
+                                    FALSE,
+                                    G_PARAM_READWRITE));
+
+    /**
+     * ParoleStream:has-artwork:
+     *
+     * Whether the stream has artwork.
+     *
+     * Since: 1.0.5
+     **/
+    g_object_class_install_property(object_class,
+                                    PROP_HAS_ARTWORK,
+                                    g_param_spec_boolean("has-artwork",
+                                    "Has artwork",
+                                    "Has artwork",
                                     FALSE,
                                     G_PARAM_READWRITE));
 
@@ -794,6 +825,7 @@ void parole_stream_init_properties(ParoleStream *stream) {
     stream->priv->seekable = FALSE;
     stream->priv->has_audio = FALSE;
     stream->priv->has_video = FALSE;
+    stream->priv->has_artwork = FALSE;
     stream->priv->absolute_duration = 0;
     stream->priv->duration = 0;
     stream->priv->tag_available = FALSE;
