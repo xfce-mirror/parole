@@ -1,7 +1,12 @@
-1.0.5 (UNRELEASED)
-=====
+1.0.5
+======
 - Bug Fixes
-  - Fix Parole creating and not cleaning up thumbnails (Bug #16026)
+  - Fix creation cleanup of thumbnails (Xfce #16026)
+  - Fix volume hotkeys in fullscreen (Xfce #16005)
+  - Fix compiler warnings
+- Translation Updates:
+  English (United Kingdom), Galician, Hebrew, Korean, Malay, Serbian,
+  Slovenian, Thai
 
 1.0.4
 =====
@@ -417,4 +422,3 @@ First stable release of the Parole 1.0.x series!
 0.1.90
 ====
 First release.
-
