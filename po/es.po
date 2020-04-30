@@ -14,6 +14,7 @@
 # gabrieltandil <gabriel.tandil@gmail.com>, 2014
 # gabrieltandil <gabriel.tandil@gmail.com>, 2014
 # Hernan Gabriel Alvarez Guerra <hernan.alvarez.guerra@gmail.com>, 2013
+# Ignacio Poggi <ignaciop.3@gmail.com>, 2020
 # 629cf3e396111bb8c5fb6664e2dbc91d, 2017
 # mc <correomc2000-ing@yahoo.es>, 2013
 # Miguel Hernández <mhdez@protonmail.com>, 2015
@@ -25,8 +26,8 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-23 00:31+0200\n"
-"PO-Revision-Date: 2019-07-23 07:10+0000\n"
-"Last-Translator: Casper casper\n"
+"PO-Revision-Date: 2020-04-30 16:30+0000\n"
+"Last-Translator: Ignacio Poggi <ignaciop.3@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/xfce/xfce-apps/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -308,7 +309,7 @@ msgstr "Mover hacia abajo"
 
 #: ../data/interfaces/playlist.ui.h:13
 msgid "Replace playlist when opening files"
-msgstr "Remplazar la lista de reproducción al abrir archivos"
+msgstr "Reemplazar la lista de reproducción al abrir archivos"
 
 #: ../data/interfaces/playlist.ui.h:14
 msgid "Play opened files"
@@ -434,7 +435,7 @@ msgstr "Mostrar"
 
 #: ../data/interfaces/parole-settings.ui.h:23
 msgid "Always replace playlist with opened files"
-msgstr "Siempre remplazar la lista de reproducción con los archivos abiertos"
+msgstr "Siempre reemplazar la lista de reproducción con los archivos abiertos"
 
 #: ../data/interfaces/parole-settings.ui.h:24
 msgid "Check and remove duplicate media entries"
@@ -962,7 +963,7 @@ msgstr "Vaciar elementos recientes"
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
-msgstr "¿Está seguro de que quiere vaciar el historial de elementos recientes? Esta acción no se puede deshacer."
+msgstr "¿Está seguro que quiere vaciar el historial de elementos recientes? Esta acción no se puede deshacer."
 
 #: ../src/parole-player.c:1260 ../src/parole-player.c:1387
 msgid "Media stream is not seekable"
@@ -1326,7 +1327,7 @@ msgstr "Siempre minimizar al área de notificación cuando se cierra la ventana"
 
 #: ../src/plugins/tray/tray-provider.c:307
 msgid "Are you sure you want to quit?"
-msgstr "¿Está seguro de que quiere salir?"
+msgstr "¿Está seguro que quiere salir?"
 
 #: ../src/plugins/tray/tray-provider.c:310
 msgid "Parole can be minimized to the system tray instead."
