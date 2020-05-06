@@ -1,0 +1,1341 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Priit Jõerüüt <transifex@joeruut.com>, 2020
+msgid ""
+msgstr ""
+"Project-Id-Version: Xfce Apps\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-23 00:31+0200\n"
+"PO-Revision-Date: 2020-05-06 21:02+0000\n"
+"Last-Translator: Priit Jõerüüt <transifex@joeruut.com>\n"
+"Language-Team: Estonian (http://www.transifex.com/xfce/xfce-apps/language/et/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: et\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../data/interfaces/parole.ui.h:1
+#: ../data/desktop/org.xfce.Parole.desktop.in.in.h:1
+#: ../src/parole-player.c:591 ../src/parole-player.c:1437
+#: ../src/parole-player.c:1788 ../src/parole-about.c:68
+#: ../src/plugins/mpris2/mpris2-provider.c:189
+msgid "Parole Media Player"
+msgstr "Parole meediamängija"
+
+#: ../data/interfaces/parole.ui.h:2
+msgid "_Media"
+msgstr "_Meedia"
+
+#: ../data/interfaces/parole.ui.h:3
+msgid "_Open..."
+msgstr "_Ava..."
+
+#: ../data/interfaces/parole.ui.h:4
+msgid "Open _Location..."
+msgstr "Ava asu_koht..."
+
+#: ../data/interfaces/parole.ui.h:5
+msgid "Open _Recent"
+msgstr "Ava _hiljuti esitatud"
+
+#: ../data/interfaces/parole.ui.h:6
+msgid "_Save Playlist..."
+msgstr "_Salvesta esitusloend..."
+
+#: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:105
+#: ../src/parole-disc.c:140
+msgid "Insert Disc"
+msgstr "Sisesta plaat"
+
+#. * Exit
+#: ../data/interfaces/parole.ui.h:8 ../src/plugins/tray/tray-provider.c:168
+msgid "_Quit"
+msgstr "_Sulge"
+
+#: ../data/interfaces/parole.ui.h:9
+msgid "_Playback"
+msgstr "_Taasesitus"
+
+#: ../data/interfaces/parole.ui.h:10
+msgid "_Repeat"
+msgstr "_Korda"
+
+#: ../data/interfaces/parole.ui.h:11
+msgid "_Shuffle"
+msgstr "_Sega järjekord"
+
+#. Create dialog
+#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2808
+msgid "Go to position"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:13
+msgid "_DVD"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:14
+msgid "_DVD Menu"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:15
+msgid "_Title Menu"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:16
+msgid "_Audio Menu"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:17
+msgid "A_ngle Menu"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:18
+msgid "_Chapters"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:19
+msgid "_Chapter Menu"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:20
+msgid "_Audio"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:21
+msgid "_Audio Track"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:797
+msgid "Empty"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:23
+msgid "Volume _Up"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:24
+msgid "Volume _Down"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:25
+msgid "_Mute"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:26
+msgid "_Video"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:1981
+#: ../src/parole-player.c:2134
+msgid "_Fullscreen"
+msgstr "_Täisekraanirežiim"
+
+#: ../data/interfaces/parole.ui.h:28
+msgid "_Aspect Ratio"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:728
+msgid "None"
+msgstr "Puudub"
+
+#: ../data/interfaces/parole.ui.h:30
+msgid "Auto"
+msgstr "Automaatselt valitud"
+
+#: ../data/interfaces/parole.ui.h:31
+msgid "Square"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:32
+msgid "4:3 (TV)"
+msgstr "4:3 (TV)"
+
+#: ../data/interfaces/parole.ui.h:33
+msgid "16:9 (Widescreen)"
+msgstr "16:9 (Laiekraan)"
+
+#: ../data/interfaces/parole.ui.h:34
+msgid "20:9 (DVB)"
+msgstr "20:9 (DVB)"
+
+#: ../data/interfaces/parole.ui.h:35
+msgid "_Subtitles"
+msgstr "_Subtiitrid"
+
+#: ../data/interfaces/parole.ui.h:36
+msgid "Select Text Subtitles..."
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:37
+msgid "_Tools"
+msgstr "_Tarvikud"
+
+#: ../data/interfaces/parole.ui.h:38
+msgid "P_lugins"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:39
+msgid "_Preferences"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:40
+msgid "_Help"
+msgstr "_Abi"
+
+#: ../data/interfaces/parole.ui.h:41
+msgid "_Report a Bug..."
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:42
+msgid "_Keyboard Shortcuts"
+msgstr "_Kiirklahvid"
+
+#: ../data/interfaces/parole.ui.h:43
+msgid "Display Parole user manual"
+msgstr "Näita Parole inglisekeelset kasutusjuhendit"
+
+#: ../data/interfaces/parole.ui.h:44
+msgid "_Contents"
+msgstr "_Sisukord"
+
+#: ../data/interfaces/parole.ui.h:45
+msgid "_About"
+msgstr "Te_ave"
+
+#: ../data/interfaces/parole.ui.h:46
+msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
+msgstr "<span color='#F4F4F4'><b><big>Tundmatu lugu</big></b></span>"
+
+#: ../data/interfaces/parole.ui.h:47
+msgid ""
+"<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
+"Album</span></big>"
+msgstr "<big><span color='#BBBBBB'><i>albumil</i></span> <span color='#F4F4F4'>Tundmatu album</span></big>"
+
+#: ../data/interfaces/parole.ui.h:48
+msgid ""
+"<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
+"Artist</span></big>"
+msgstr "<big><span color='#BBBBBB'><i>esitajaks</i></span> <span color='#F4F4F4'>Tundmatu esitaja</span></big>"
+
+#: ../data/interfaces/parole.ui.h:49
+msgid "0:00"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:51
+#, no-c-format
+msgid "Buffering (0%)"
+msgstr "Puhverdan (0%)"
+
+#: ../data/interfaces/parole.ui.h:52
+msgid "/"
+msgstr ""
+
+#: ../data/interfaces/mediachooser.ui.h:1
+msgid "Open Media Files"
+msgstr ""
+
+#: ../data/interfaces/playlist.ui.h:1
+#: ../data/interfaces/parole-settings.ui.h:28
+#: ../data/interfaces/shortcuts.ui.h:13 ../src/parole-medialist.c:742
+#: ../src/parole-medialist.c:781 ../src/parole-player.c:3188
+msgid "Playlist"
+msgstr " Esitusloend"
+
+#: ../data/interfaces/playlist.ui.h:2
+msgid "Disc Playlist"
+msgstr ""
+
+#: ../data/interfaces/playlist.ui.h:3
+msgid "Add to playlist..."
+msgstr "Lisa esitusloendisse"
+
+#: ../data/interfaces/playlist.ui.h:4
+msgid "Add"
+msgstr "Lisa"
+
+#: ../data/interfaces/playlist.ui.h:5
+msgid "Remove selected media"
+msgstr "Eemalda valitud meedia"
+
+#: ../data/interfaces/playlist.ui.h:6
+msgid "Remove"
+msgstr "Eemalda"
+
+#: ../data/interfaces/playlist.ui.h:7
+msgid "Clear playlist"
+msgstr "Tühjenda esitusloend"
+
+#: ../data/interfaces/playlist.ui.h:8
+msgid "Clear"
+msgstr "Puhasta"
+
+#: ../data/interfaces/playlist.ui.h:9
+msgid "Repeat"
+msgstr "Korda"
+
+#: ../data/interfaces/playlist.ui.h:10
+msgid "Shuffle"
+msgstr "Sega järjekord"
+
+#: ../data/interfaces/playlist.ui.h:11
+msgid "Move Up"
+msgstr "Liiguta üles"
+
+#: ../data/interfaces/playlist.ui.h:12
+msgid "Move Down"
+msgstr "Liiguta alla"
+
+#: ../data/interfaces/playlist.ui.h:13
+msgid "Replace playlist when opening files"
+msgstr "Asenda esitusloend viimati avatud failidega"
+
+#: ../data/interfaces/playlist.ui.h:14
+msgid "Play opened files"
+msgstr "Esita avatud faile"
+
+#: ../data/interfaces/playlist.ui.h:15
+#: ../data/interfaces/parole-settings.ui.h:26
+msgid "Remember playlist"
+msgstr "Jäta esitusloend meelde"
+
+#: ../data/interfaces/plugins.ui.h:1
+msgid "Parole Plugins"
+msgstr ""
+
+#: ../data/interfaces/plugins.ui.h:2
+msgid "Extend your media player"
+msgstr ""
+
+#: ../data/interfaces/plugins.ui.h:3
+msgid "Plugin"
+msgstr ""
+
+#: ../data/interfaces/plugins.ui.h:4
+msgid "<b>Description</b>"
+msgstr ""
+
+#: ../data/interfaces/plugins.ui.h:5
+msgid "<b>Author</b>"
+msgstr ""
+
+#: ../data/interfaces/plugins.ui.h:6
+msgid "Visit Website"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:1
+msgid "Automatic"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:2
+msgid "X Window System (X11/XShm/Xv)"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:3
+msgid "X Window System (No Xv)"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:4
+msgid "Parole Settings"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:5
+msgid "Configure your media player"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:6
+msgid "Disable screensaver when playing movies"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:7
+msgid "<b>Screensaver</b>"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:8
+msgid "Show visual effects when an audio file is played"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:9
+msgid "Visualization type:"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:10
+msgid "<b>Audio Visualization</b>"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:11
+msgid "Enable keyboard multimedia keys"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:12
+msgid "<b>Keyboard</b>"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:13
+#: ../data/interfaces/shortcuts.ui.h:1
+msgid "General"
+msgstr "Üldine"
+
+#: ../data/interfaces/parole-settings.ui.h:14
+msgid "Please restart Parole for this change to take effect."
+msgstr "Selle muudatuse jõustamiseks palun taaskäivita Parole."
+
+#: ../data/interfaces/parole-settings.ui.h:15
+msgid "<b>Video Output</b>"
+msgstr "<b>Videoväljund</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:16
+msgid "Brightness:"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:17
+msgid "Contrast:"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:18
+msgid "Hue:"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:19
+msgid "Saturation:"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:20
+msgid "Reset to defaults"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:21
+msgid "<b>Color Balance</b>"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:22
+msgid "Display"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:23
+msgid "Always replace playlist with opened files"
+msgstr "Alati asenda esitusloend viimati avatud failidega"
+
+#: ../data/interfaces/parole-settings.ui.h:24
+msgid "Check and remove duplicate media entries"
+msgstr "Kontrolli ja eemalda topeltkirjed"
+
+#: ../data/interfaces/parole-settings.ui.h:25
+msgid "Start playing opened files"
+msgstr "Alusta avatud failide esitamist"
+
+#: ../data/interfaces/parole-settings.ui.h:27
+msgid "<b>Playlist Settings</b>"
+msgstr "<b>Esitusloendi eelistused</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:29
+msgid "Automatically show subtitles when playing movie file"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:30
+msgid "Font:"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:31
+msgid "Encoding:"
+msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:32
+msgid "<b>Subtitle Settings</b>"
+msgstr "<b>Subtiitrite seadistused</b>"
+
+#: ../data/interfaces/parole-settings.ui.h:33
+msgid "Subtitles"
+msgstr "Subtiitrid"
+
+#: ../data/interfaces/save-playlist.ui.h:1
+msgid "By Extension"
+msgstr ""
+
+#: ../data/interfaces/save-playlist.ui.h:2
+msgid "Save Playlist as..."
+msgstr "Salvesta esitusloend kui..."
+
+#: ../data/interfaces/save-playlist.ui.h:3
+msgid "File Type"
+msgstr "Faili tüüp"
+
+#: ../data/interfaces/save-playlist.ui.h:4
+msgid "Extension"
+msgstr ""
+
+#: ../data/interfaces/save-playlist.ui.h:5
+msgid "Select File Types (By Extension)"
+msgstr ""
+
+#: ../data/interfaces/open-location.ui.h:1
+msgid "Open Network Location"
+msgstr "Ava asukoht võrgust"
+
+#: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:181
+msgid "Clear History"
+msgstr "Kustuta ajalugu"
+
+#: ../data/interfaces/open-location.ui.h:3
+msgid "<big><b>Open Network Location</b></big>"
+msgstr "<big><b>Ava asukoht võrgust</b></big>"
+
+#: ../data/interfaces/shortcuts.ui.h:2
+msgid "Open file"
+msgstr "Ava fail"
+
+#: ../data/interfaces/shortcuts.ui.h:3
+msgid "Open location"
+msgstr "Ava asukoht"
+
+#: ../data/interfaces/shortcuts.ui.h:4 ../src/plugins/tray/tray-provider.c:325
+msgid "Quit"
+msgstr "Välju"
+
+#: ../data/interfaces/shortcuts.ui.h:5
+msgid "View"
+msgstr "Välimus"
+
+#: ../data/interfaces/shortcuts.ui.h:6
+msgid "Toggle fullscreen"
+msgstr "Lülita täisekraanirežiim sisse-välja"
+
+#: ../data/interfaces/shortcuts.ui.h:7
+msgid "Exit fullscreen"
+msgstr "Lülita täisekraanirežiim välja"
+
+#: ../data/interfaces/shortcuts.ui.h:8
+msgid "Toggle menubar"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:9
+msgid "Volume"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:10
+msgid "Increase volume"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:11
+msgid "Decrease volume"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:12 ../src/parole-player.c:2382
+msgid "Mute"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:14
+msgid "Toggle playlist"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:15
+msgid "Select previous item"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:16
+msgid "Select next item"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:17
+msgid "Remove selected item"
+msgstr "Eemalda valitud kirje"
+
+#: ../data/interfaces/shortcuts.ui.h:18
+msgid "Playback"
+msgstr "Taasesitus"
+
+#: ../data/interfaces/shortcuts.ui.h:19
+#: ../data/desktop/org.xfce.Parole.desktop.in.in.h:3
+msgid "Play/Pause"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:20 ../src/main.c:241
+msgid "Previous track"
+msgstr "Eelmine pala"
+
+#: ../data/interfaces/shortcuts.ui.h:21 ../src/main.c:239
+msgid "Next track"
+msgstr "Järgmine pala"
+
+#: ../data/interfaces/shortcuts.ui.h:22
+msgid "Go back 10 seconds"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:23
+msgid "Go forward 10 seconds"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:24
+msgid "Go back 1 minute"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:25
+msgid "Go forward 1 minute"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:26
+msgid "Go back 10 minutes"
+msgstr ""
+
+#: ../data/interfaces/shortcuts.ui.h:27
+msgid "Go forward 10 minutes"
+msgstr ""
+
+#: ../data/desktop/org.xfce.Parole.desktop.in.in.h:2
+msgid "Play your media"
+msgstr ""
+
+#: ../data/desktop/org.xfce.Parole.desktop.in.in.h:4
+#: ../src/parole-player.c:3337 ../src/plugins/notify/notify-provider.c:190
+msgid "Previous Track"
+msgstr "Eelmine pala"
+
+#: ../data/desktop/org.xfce.Parole.desktop.in.in.h:5
+#: ../src/parole-player.c:3355 ../src/plugins/notify/notify-provider.c:202
+msgid "Next Track"
+msgstr "Järgmine pala"
+
+#: ../data/metainfo/parole.appdata.xml.in.h:1
+msgid ""
+"Parole is a modern simple media player based on the GStreamer framework and "
+"written to fit well in the Xfce desktop. It is designed with simplicity, "
+"speed and resource usage in mind."
+msgstr ""
+
+#: ../data/metainfo/parole.appdata.xml.in.h:2
+msgid ""
+"Parole features playback of local media files, including video with "
+"subtitles support, Audio CDs, DVDs, and live streams. Parole is also "
+"extensible via plugins."
+msgstr ""
+
+#: ../data/metainfo/parole.appdata.xml.in.h:3
+msgid "This is a minor translations-only release."
+msgstr ""
+
+#: ../data/metainfo/parole.appdata.xml.in.h:4
+msgid ""
+"This release marks the first stable release of the 1.0 series. A new "
+"Automatic video output option was added to improve usage on virtual machines"
+" and low power devices. A large number of bugs were also resolved, making "
+"this release suitable for all users."
+msgstr ""
+
+#: ../data/metainfo/parole.appdata.xml.in.h:5
+msgid ""
+"This development release is a large cleanup of the codebase, making Parole "
+"lighter and easier to improve. All URLs have been updated to HTTPS. A large "
+"number of bugs have been resolved and a new keyboard shortcuts helper has "
+"been introduced."
+msgstr ""
+
+#: ../data/metainfo/parole.appdata.xml.in.h:6
+msgid ""
+"This development release fixes several bugs, typos, and historical details "
+"present in the documentation. Tags are now processed on files delivered over"
+" HTTP/S. The clutter video backend is disabled for GTK+ 3.22 and newer due "
+"to significant API changes."
+msgstr ""
+
+#: ../data/metainfo/parole.appdata.xml.in.h:7
+msgid ""
+"This development release adds a new mini mode and the ability to play or "
+"replay content by clicking the circle icons. Theming is simplified and "
+"filenames are displayed when no ID3 tags are found."
+msgstr ""
+
+#: ../data/metainfo/parole.appdata.xml.in.h:8
+msgid ""
+"This release improves the build process and includes several bug fixes. This"
+" new stable release is a recommended upgrade for all users."
+msgstr ""
+
+#: ../data/metainfo/parole.appdata.xml.in.h:9
+msgid ""
+"This unstable development release adds the new clutter backend and cleans up"
+" deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
+"several bugs have been addressed."
+msgstr ""
+
+#: ../data/metainfo/parole.appdata.xml.in.h:10
+msgid "This release fixes a problem with detecting DVD drive locations."
+msgstr ""
+
+#: ../data/metainfo/parole.appdata.xml.in.h:11
+msgid ""
+"This release features the completed transition to the Gtk+3 toolkit, "
+"improvements in the user-interface (more streamlined menus), better "
+"playlists. Furthermore existing plugins have been improved and a new one has"
+" been added (MPRIS2). Most of the artwork has been updated for this release "
+"and we use the GStreamer1.0 framework now by default."
+msgstr ""
+
+#: ../src/common/parole-common.c:83
+msgid "Message"
+msgstr "Teade"
+
+#: ../src/common/parole-common.c:87
+msgid "Error"
+msgstr "Viga"
+
+#: ../src/gst/parole-gst.c:1092 ../src/parole-medialist.c:373
+#, c-format
+msgid "Track %i"
+msgstr "Pala %i"
+
+#: ../src/gst/parole-gst.c:1095
+msgid "Audio CD"
+msgstr ""
+
+#: ../src/gst/parole-gst.c:1267
+msgid "Unable to install missing codecs."
+msgstr ""
+
+#: ../src/gst/parole-gst.c:1270
+msgid "No available plugin installer was found."
+msgstr ""
+
+#: ../src/gst/parole-gst.c:1321
+msgid "Additional software is required."
+msgstr ""
+
+#: ../src/gst/parole-gst.c:1325
+msgid "Don't Install"
+msgstr ""
+
+#: ../src/gst/parole-gst.c:1327
+msgid "Install"
+msgstr ""
+
+#: ../src/gst/parole-gst.c:1330
+msgid "OK"
+msgstr ""
+
+#: ../src/gst/parole-gst.c:1337
+#, c-format
+msgid ""
+"Parole needs <b>%s</b> to play this file.\n"
+"It can be installed automatically."
+msgstr ""
+
+#: ../src/gst/parole-gst.c:1340
+#, c-format
+msgid "Parole needs <b>%s</b> to play this file."
+msgstr ""
+
+#: ../src/gst/parole-gst.c:1715
+msgid "The stream is taking too much time to load"
+msgstr ""
+
+#: ../src/gst/parole-gst.c:1717
+msgid "Do you want to continue loading or stop?"
+msgstr ""
+
+#: ../src/gst/parole-gst.c:1718
+msgid "Stop"
+msgstr ""
+
+#: ../src/gst/parole-gst.c:1719
+msgid "Continue"
+msgstr ""
+
+#: ../src/gst/parole-gst.c:1883
+msgid "GStreamer Error"
+msgstr ""
+
+#: ../src/gst/parole-gst.c:1884
+msgid "Parole Media Player cannot start."
+msgstr "Parole meediamängija käivitamine ei õnnestu."
+
+#: ../src/gst/parole-gst.c:1909 ../src/gst/parole-gst.c:1924
+#: ../src/gst/parole-gst.c:1958
+#, c-format
+msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
+msgstr ""
+
+#: ../src/gst/parole-gst.c:2516 ../src/gst/parole-gst.c:2520
+#, c-format
+msgid "Audio Track #%d"
+msgstr ""
+
+#: ../src/gst/parole-gst.c:2556 ../src/gst/parole-gst.c:2560
+#, c-format
+msgid "Subtitle #%d"
+msgstr ""
+
+#: ../src/main.c:59
+#, c-format
+msgid ""
+"\n"
+"Parole Media Player %s\n"
+"\n"
+"Part of the Xfce Goodies Project\n"
+"https://goodies.xfce.org\n"
+"\n"
+"Licensed under the GNU GPL.\n"
+"\n"
+"Please report bugs to <https://bugzilla.xfce.org/>.\n"
+"\n"
+msgstr ""
+
+#: ../src/main.c:227
+msgid "Open a new instance"
+msgstr ""
+
+#: ../src/main.c:229
+msgid "Do not load plugins"
+msgstr ""
+
+#: ../src/main.c:231
+msgid "Set Audio-CD/VCD/DVD device path"
+msgstr ""
+
+#: ../src/main.c:233
+msgid "Start in embedded mode"
+msgstr "Käivita põimitud režiimis"
+
+#: ../src/main.c:235
+msgid "Start in fullscreen mode"
+msgstr "Käivita täisekraanirežiimis"
+
+#: ../src/main.c:237
+msgid "Play or pause if already playing"
+msgstr ""
+
+#: ../src/main.c:243
+msgid "Raise volume"
+msgstr ""
+
+#: ../src/main.c:245
+msgid "Lower volume"
+msgstr ""
+
+#: ../src/main.c:247
+msgid "Mute volume"
+msgstr ""
+
+#: ../src/main.c:249
+msgid "Unmute (restore) volume"
+msgstr ""
+
+#: ../src/main.c:251
+msgid "Add files to playlist"
+msgstr "Lisa failid esitusloendisse"
+
+#: ../src/main.c:253
+msgid "Print version information and exit"
+msgstr "Kuva versiooniteavet ja lõpeta töö"
+
+#: ../src/main.c:257
+msgid "Media to play"
+msgstr ""
+
+#: ../src/main.c:279
+msgid "[FILES...] - Play movies and songs"
+msgstr ""
+
+#: ../src/main.c:290
+#, c-format
+msgid "Type %s --help to list all available command line options\n"
+msgstr ""
+
+#: ../src/main.c:307
+#, c-format
+msgid "Parole is already running, use -i to open a new instance\n"
+msgstr "Parole juba töötab. Uue protsessi avamiseks kasuta -i võtit.\n"
+
+#: ../src/parole-mediachooser.c:233 ../src/parole-player.c:1003
+msgid "All files"
+msgstr "Kõik failid"
+
+#: ../src/parole-medialist.c:215 ../src/parole-medialist.c:1470
+#, c-format
+msgid "Playlist (%i item)"
+msgid_plural "Playlist (%i items)"
+msgstr[0] "Esitusloend (%i kirje)"
+msgstr[1] "Esitusloend (%i kirjet)"
+
+#: ../src/parole-medialist.c:218 ../src/parole-medialist.c:1472
+#, c-format
+msgid "Playlist (%i chapter)"
+msgid_plural "Playlist (%i chapters)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../src/parole-medialist.c:387 ../src/parole-player.c:708
+#, c-format
+msgid "Chapter %i"
+msgstr ""
+
+#: ../src/parole-medialist.c:648
+msgid "Permission denied"
+msgstr ""
+
+#: ../src/parole-medialist.c:650
+msgid "Error saving playlist file"
+msgstr "Viga esitusloendi faili salvestamisel"
+
+#: ../src/parole-medialist.c:660
+msgid "Unknown playlist format"
+msgstr "Tundmatu esitusloendi vorming"
+
+#: ../src/parole-medialist.c:661
+msgid "Please choose a supported playlist format"
+msgstr "Palun vali esitusloendi toetatud vorming"
+
+#: ../src/parole-medialist.c:704 ../src/parole-plugins-manager.c:338
+msgid "Unknown"
+msgstr "Tundmatu"
+
+#: ../src/parole-medialist.c:788
+msgid "M3U Playlists"
+msgstr "M3U esitusloendid"
+
+#: ../src/parole-medialist.c:796
+msgid "PLS Playlists"
+msgstr "PLS esitusloendid"
+
+#: ../src/parole-medialist.c:804
+msgid "Advanced Stream Redirector"
+msgstr ""
+
+#: ../src/parole-medialist.c:812
+msgid "Shareable Playlist"
+msgstr "Jagatav esitusloend"
+
+#. Clear
+#: ../src/parole-medialist.c:1119
+msgid "Open Containing Folder"
+msgstr ""
+
+#: ../src/parole-player.c:526
+msgid "Hide Playlist"
+msgstr "Peida esitusloend"
+
+#: ../src/parole-player.c:526 ../src/parole-player.c:3397
+msgid "Show Playlist"
+msgstr "Näita esitusloendit"
+
+#. Build the FileChooser dialog for subtitle selection.
+#: ../src/parole-player.c:967
+msgid "Select Subtitle File"
+msgstr "Vali subtiitrifail"
+
+#: ../src/parole-player.c:972 ../src/parole-player.c:1159
+#: ../src/parole-player.c:2811 ../src/plugins/tray/tray-provider.c:319
+msgid "Cancel"
+msgstr "Tühista"
+
+#: ../src/parole-player.c:975
+msgid "Open"
+msgstr "Ava"
+
+#: ../src/parole-player.c:991
+msgid "Subtitle Files"
+msgstr "Subtiitrifailid"
+
+#: ../src/parole-player.c:1155 ../src/parole-player.c:1163
+msgid "Clear Recent Items"
+msgstr "Eemalda hiljuti esitatu"
+
+#: ../src/parole-player.c:1157
+msgid ""
+"Are you sure you wish to clear your recent items history?  This cannot be "
+"undone."
+msgstr "Kas sa oled kindel et soovid eemaldada kõik hiljuti esitatu? Seda tegevust ei saa tagasi pöörata."
+
+#: ../src/parole-player.c:1260 ../src/parole-player.c:1387
+msgid "Media stream is not seekable"
+msgstr ""
+
+#: ../src/parole-player.c:1270
+msgid "Play"
+msgstr "Esita"
+
+#: ../src/parole-player.c:1273
+msgid "Pause"
+msgstr "Peata"
+
+#: ../src/parole-player.c:1712
+msgid "GStreamer backend error"
+msgstr ""
+
+#: ../src/parole-player.c:1793
+msgid "Unknown Song"
+msgstr ""
+
+#: ../src/parole-player.c:1804 ../src/parole-player.c:1810
+#: ../src/parole-player.c:1818
+msgid "on"
+msgstr "albumil"
+
+#: ../src/parole-player.c:1818 ../src/plugins/notify/notify-provider.c:134
+msgid "Unknown Album"
+msgstr ""
+
+#: ../src/parole-player.c:1829 ../src/parole-player.c:1836
+msgid "by"
+msgstr "esitajaks"
+
+#: ../src/parole-player.c:1836 ../src/plugins/notify/notify-provider.c:136
+msgid "Unknown Artist"
+msgstr ""
+
+#: ../src/parole-player.c:1871
+msgid "Buffering"
+msgstr "Puhverdan"
+
+#: ../src/parole-player.c:1982 ../src/parole-player.c:3372
+msgid "Fullscreen"
+msgstr "Täisekraanirežiim"
+
+#: ../src/parole-player.c:1993
+msgid "Leave _Fullscreen"
+msgstr "Lülita _täisekraanirežiim välja"
+
+#: ../src/parole-player.c:1994
+msgid "Leave Fullscreen"
+msgstr "Lülita täisekraanirežiim välja"
+
+#. Play menu item
+#. * Play pause
+#: ../src/parole-player.c:2096 ../src/plugins/tray/tray-provider.c:119
+msgid "_Pause"
+msgstr "_Peata"
+
+#: ../src/parole-player.c:2096 ../src/plugins/tray/tray-provider.c:119
+msgid "_Play"
+msgstr "_Esita"
+
+#. * Previous item in playlist.
+#: ../src/parole-player.c:2112
+msgid "_Previous"
+msgstr "_Eelmine"
+
+#. * Next item in playlist.
+#: ../src/parole-player.c:2123
+msgid "_Next"
+msgstr "_Järgmine"
+
+#. * Un/Full screen
+#: ../src/parole-player.c:2134
+msgid "_Leave Fullscreen"
+msgstr "_Lülita täisekraanirežiim välja"
+
+#. * Un/Hide menubar
+#: ../src/parole-player.c:2149
+msgid "Show menubar"
+msgstr "Näita menüüriba"
+
+#: ../src/parole-player.c:2166
+msgid "Mini Mode"
+msgstr "Pisivaade"
+
+#: ../src/parole-player.c:2385
+msgid "Unmute"
+msgstr "Eemalda summutamine"
+
+#: ../src/parole-player.c:2782
+msgid "Unable to open default web browser"
+msgstr ""
+
+#: ../src/parole-player.c:2784
+msgid ""
+"Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
+msgstr ""
+
+#: ../src/parole-player.c:2812
+msgid "Go"
+msgstr ""
+
+#: ../src/parole-player.c:2825
+msgid "Position:"
+msgstr ""
+
+#. Clear Recent Menu Item
+#: ../src/parole-player.c:3229
+msgid "_Clear recent items..."
+msgstr "_Eemalda hiljuti esitatu"
+
+#: ../src/parole-player.c:3548
+msgid "Audio Track:"
+msgstr "Heliriba:"
+
+#: ../src/parole-player.c:3567
+msgid "Subtitles:"
+msgstr "Subtiitrid:"
+
+#. Add a close button to the Infobar
+#: ../src/parole-player.c:3573 ../src/plugins/tray/tray-provider.c:257
+msgid "Close"
+msgstr "Sulgeda"
+
+#: ../src/parole-about.c:74
+msgid "translator-credits"
+msgstr "Kristjan Siimson <epost@ksiimson.se> & tolge.pingviin.org"
+
+#: ../src/parole-about.c:77
+msgid "Visit Parole website"
+msgstr "Vaata Parole veebisaiti"
+
+#: ../src/parole-conf-dialog.c:287
+msgid "Clutter (OpenGL)"
+msgstr ""
+
+#: ../src/parole-disc.c:106
+msgid "Play Disc"
+msgstr ""
+
+#: ../src/parole-subtitle-encoding.c:162
+msgid "Current Locale"
+msgstr ""
+
+#: ../src/parole-subtitle-encoding.c:165 ../src/parole-subtitle-encoding.c:167
+#: ../src/parole-subtitle-encoding.c:169 ../src/parole-subtitle-encoding.c:171
+msgid "Arabic"
+msgstr "Araabia"
+
+#: ../src/parole-subtitle-encoding.c:174
+msgid "Armenian"
+msgstr "Armeenia"
+
+#: ../src/parole-subtitle-encoding.c:177 ../src/parole-subtitle-encoding.c:179
+#: ../src/parole-subtitle-encoding.c:181
+msgid "Baltic"
+msgstr "Balti"
+
+#: ../src/parole-subtitle-encoding.c:184
+msgid "Celtic"
+msgstr "Keldi"
+
+#: ../src/parole-subtitle-encoding.c:187 ../src/parole-subtitle-encoding.c:189
+#: ../src/parole-subtitle-encoding.c:191 ../src/parole-subtitle-encoding.c:193
+msgid "Central European"
+msgstr "Kesk-Euroopa"
+
+#: ../src/parole-subtitle-encoding.c:196 ../src/parole-subtitle-encoding.c:198
+#: ../src/parole-subtitle-encoding.c:200 ../src/parole-subtitle-encoding.c:202
+msgid "Chinese Simplified"
+msgstr "Hiina (lihtsustatud)"
+
+#: ../src/parole-subtitle-encoding.c:205 ../src/parole-subtitle-encoding.c:207
+#: ../src/parole-subtitle-encoding.c:209
+msgid "Chinese Traditional"
+msgstr "Hiina (traditsiooniline)"
+
+#: ../src/parole-subtitle-encoding.c:212
+msgid "Croatian"
+msgstr "Horvaadi"
+
+#: ../src/parole-subtitle-encoding.c:215 ../src/parole-subtitle-encoding.c:217
+#: ../src/parole-subtitle-encoding.c:219 ../src/parole-subtitle-encoding.c:221
+#: ../src/parole-subtitle-encoding.c:223 ../src/parole-subtitle-encoding.c:225
+msgid "Cyrillic"
+msgstr "Kirillitsa"
+
+#: ../src/parole-subtitle-encoding.c:228
+msgid "Cyrillic/Russian"
+msgstr "Vene kirillitsa"
+
+#: ../src/parole-subtitle-encoding.c:231 ../src/parole-subtitle-encoding.c:233
+msgid "Cyrillic/Ukrainian"
+msgstr "Ukraina kirillitsa"
+
+#: ../src/parole-subtitle-encoding.c:236
+msgid "Georgian"
+msgstr "Gruusia"
+
+#: ../src/parole-subtitle-encoding.c:239 ../src/parole-subtitle-encoding.c:241
+#: ../src/parole-subtitle-encoding.c:243
+msgid "Greek"
+msgstr "Kreeka"
+
+#: ../src/parole-subtitle-encoding.c:246
+msgid "Gujarati"
+msgstr "Gudžarati"
+
+#: ../src/parole-subtitle-encoding.c:249
+msgid "Gurmukhi"
+msgstr "Gurmukhi"
+
+#: ../src/parole-subtitle-encoding.c:252 ../src/parole-subtitle-encoding.c:254
+#: ../src/parole-subtitle-encoding.c:256 ../src/parole-subtitle-encoding.c:258
+msgid "Hebrew"
+msgstr "Heebrea"
+
+#: ../src/parole-subtitle-encoding.c:261
+msgid "Hebrew Visual"
+msgstr "Visuaalne heebrea"
+
+#: ../src/parole-subtitle-encoding.c:264
+msgid "Hindi"
+msgstr "Hindi"
+
+#: ../src/parole-subtitle-encoding.c:267
+msgid "Icelandic"
+msgstr "Islandi"
+
+#: ../src/parole-subtitle-encoding.c:270 ../src/parole-subtitle-encoding.c:272
+#: ../src/parole-subtitle-encoding.c:274
+msgid "Japanese"
+msgstr "Jaapani"
+
+#: ../src/parole-subtitle-encoding.c:277 ../src/parole-subtitle-encoding.c:279
+#: ../src/parole-subtitle-encoding.c:281 ../src/parole-subtitle-encoding.c:283
+msgid "Korean"
+msgstr "Korea"
+
+#: ../src/parole-subtitle-encoding.c:286
+msgid "Nordic"
+msgstr "Põhjala"
+
+#: ../src/parole-subtitle-encoding.c:289
+msgid "Persian"
+msgstr "Pärsia"
+
+#: ../src/parole-subtitle-encoding.c:292 ../src/parole-subtitle-encoding.c:294
+msgid "Romanian"
+msgstr "Rumeenia"
+
+#: ../src/parole-subtitle-encoding.c:297
+msgid "South European"
+msgstr "Lõuna-Euroopa"
+
+#: ../src/parole-subtitle-encoding.c:300
+msgid "Thai"
+msgstr "Tai"
+
+#: ../src/parole-subtitle-encoding.c:303 ../src/parole-subtitle-encoding.c:305
+#: ../src/parole-subtitle-encoding.c:307 ../src/parole-subtitle-encoding.c:309
+msgid "Turkish"
+msgstr "Türgi"
+
+#: ../src/parole-subtitle-encoding.c:312 ../src/parole-subtitle-encoding.c:314
+#: ../src/parole-subtitle-encoding.c:316 ../src/parole-subtitle-encoding.c:318
+#: ../src/parole-subtitle-encoding.c:320
+msgid "Unicode"
+msgstr "Unicode"
+
+#: ../src/parole-subtitle-encoding.c:323 ../src/parole-subtitle-encoding.c:325
+#: ../src/parole-subtitle-encoding.c:327 ../src/parole-subtitle-encoding.c:329
+#: ../src/parole-subtitle-encoding.c:331
+msgid "Western"
+msgstr "Lääne"
+
+#: ../src/parole-subtitle-encoding.c:334 ../src/parole-subtitle-encoding.c:336
+#: ../src/parole-subtitle-encoding.c:338
+msgid "Vietnamese"
+msgstr "Vietnami"
+
+#: ../src/parole-plugins-manager.c:253
+msgid "Plugin failed to load"
+msgstr ""
+
+#: ../src/parole-plugins-manager.c:254
+msgid "Please check your installation"
+msgstr ""
+
+#: ../src/parole-plugins-manager.c:375
+msgid "No installed plugins found on this system"
+msgstr ""
+
+#: ../src/parole-plugins-manager.c:376
+msgid "Please check your installation."
+msgstr ""
+
+#: ../src/misc/parole-filters.c:66
+msgid "Audio"
+msgstr ""
+
+#: ../src/misc/parole-filters.c:91
+msgid "Video"
+msgstr ""
+
+#: ../src/misc/parole-filters.c:115 ../src/misc/parole-filters.c:142
+msgid "Audio and video"
+msgstr ""
+
+#: ../src/misc/parole-filters.c:169 ../src/misc/parole-filters.c:193
+msgid "All supported files"
+msgstr ""
+
+#: ../src/misc/parole-filters.c:217
+msgid "Playlist files"
+msgstr ""
+
+#: ../src/plugins/notify/notify-provider.c:139
+#: ../src/plugins/notify/notify-provider.c:141
+msgid "<i>on</i>"
+msgstr "<i>albumil</i>"
+
+#: ../src/plugins/notify/notify-provider.c:139
+#: ../src/plugins/notify/notify-provider.c:141
+msgid "<i>by</i>"
+msgstr "<i>esitajaks</i>"
+
+#: ../src/plugins/notify/notify.desktop.in.h:1
+msgid "Notify"
+msgstr ""
+
+#: ../src/plugins/notify/notify.desktop.in.h:2
+msgid "Show notifications for currently playing tracks"
+msgstr "Näita hetkel esitatavate lugude kohta teavitusi"
+
+#. * Previous Track
+#: ../src/plugins/tray/tray-provider.c:128
+msgid "P_revious Track"
+msgstr "_Eelmine pala"
+
+#. * Next Track
+#: ../src/plugins/tray/tray-provider.c:137
+msgid "_Next Track"
+msgstr "_Järgmine pala"
+
+#. * Open
+#: ../src/plugins/tray/tray-provider.c:153
+msgid "_Open"
+msgstr "_Ava"
+
+#: ../src/plugins/tray/tray-provider.c:254
+msgid "Tray icon plugin"
+msgstr ""
+
+#: ../src/plugins/tray/tray-provider.c:264
+msgid "Always minimize to tray when window is closed"
+msgstr ""
+
+#: ../src/plugins/tray/tray-provider.c:307
+msgid "Are you sure you want to quit?"
+msgstr ""
+
+#: ../src/plugins/tray/tray-provider.c:310
+msgid "Parole can be minimized to the system tray instead."
+msgstr ""
+
+#: ../src/plugins/tray/tray-provider.c:313
+msgid "Minimize to tray"
+msgstr ""
+
+#: ../src/plugins/tray/tray-provider.c:334
+msgid "Remember my choice"
+msgstr "Jäta minu valik meelde"
+
+#: ../src/plugins/tray/system-tray.desktop.in.h:1
+msgid "Tray icon"
+msgstr ""
+
+#: ../src/plugins/tray/system-tray.desktop.in.h:2
+msgid "Show icon in the system tray"
+msgstr ""
+
+#: ../src/plugins/mpris2/mpris2.desktop.in.h:1
+msgid "MPRIS2"
+msgstr ""
+
+#: ../src/plugins/mpris2/mpris2.desktop.in.h:2
+msgid "MPRIS2 remote control"
+msgstr ""
