@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-23 00:31+0200\n"
-"PO-Revision-Date: 2020-05-06 21:02+0000\n"
+"PO-Revision-Date: 2020-05-09 22:32+0000\n"
 "Last-Translator: Priit Jõerüüt <transifex@joeruut.com>\n"
 "Language-Team: Estonian (http://www.transifex.com/xfce/xfce-apps/language/et/)\n"
 "MIME-Version: 1.0\n"
@@ -180,7 +180,7 @@ msgstr ""
 
 #: ../data/interfaces/parole.ui.h:39
 msgid "_Preferences"
-msgstr ""
+msgstr "_Eelistused"
 
 #: ../data/interfaces/parole.ui.h:40
 msgid "_Help"
@@ -713,7 +713,7 @@ msgstr ""
 
 #: ../src/gst/parole-gst.c:1330
 msgid "OK"
-msgstr ""
+msgstr "Sobib"
 
 #: ../src/gst/parole-gst.c:1337
 #, c-format
@@ -737,11 +737,11 @@ msgstr ""
 
 #: ../src/gst/parole-gst.c:1718
 msgid "Stop"
-msgstr ""
+msgstr "Peata"
 
 #: ../src/gst/parole-gst.c:1719
 msgid "Continue"
-msgstr ""
+msgstr "Jätka"
 
 #: ../src/gst/parole-gst.c:1883
 msgid "GStreamer Error"
