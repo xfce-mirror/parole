@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-23 00:31+0200\n"
-"PO-Revision-Date: 2020-05-09 22:32+0000\n"
+"PO-Revision-Date: 2020-05-19 22:38+0000\n"
 "Last-Translator: Priit Jõerüüt <transifex@joeruut.com>\n"
 "Language-Team: Estonian (http://www.transifex.com/xfce/xfce-apps/language/et/)\n"
 "MIME-Version: 1.0\n"
@@ -71,11 +71,11 @@ msgstr "_Sega järjekord"
 #. Create dialog
 #: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2808
 msgid "Go to position"
-msgstr ""
+msgstr "Hüppa konkreetsele ajale"
 
 #: ../data/interfaces/parole.ui.h:13
 msgid "_DVD"
-msgstr ""
+msgstr "_DVD"
 
 #: ../data/interfaces/parole.ui.h:14
 msgid "_DVD Menu"
@@ -95,39 +95,39 @@ msgstr ""
 
 #: ../data/interfaces/parole.ui.h:18
 msgid "_Chapters"
-msgstr ""
+msgstr "_Peatükid"
 
 #: ../data/interfaces/parole.ui.h:19
 msgid "_Chapter Menu"
-msgstr ""
+msgstr "_Peatükkide menüü"
 
 #: ../data/interfaces/parole.ui.h:20
 msgid "_Audio"
-msgstr ""
+msgstr "_Audio"
 
 #: ../data/interfaces/parole.ui.h:21
 msgid "_Audio Track"
-msgstr ""
+msgstr "_Heliriba"
 
 #: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:797
 msgid "Empty"
-msgstr ""
+msgstr "Puudub"
 
 #: ../data/interfaces/parole.ui.h:23
 msgid "Volume _Up"
-msgstr ""
+msgstr "Val_jemaks"
 
 #: ../data/interfaces/parole.ui.h:24
 msgid "Volume _Down"
-msgstr ""
+msgstr "Vai_ksemaks"
 
 #: ../data/interfaces/parole.ui.h:25
 msgid "_Mute"
-msgstr ""
+msgstr "_Summuta"
 
 #: ../data/interfaces/parole.ui.h:26
 msgid "_Video"
-msgstr ""
+msgstr "_Video"
 
 #: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:1981
 #: ../src/parole-player.c:2134
@@ -136,7 +136,7 @@ msgstr "_Täisekraanirežiim"
 
 #: ../data/interfaces/parole.ui.h:28
 msgid "_Aspect Ratio"
-msgstr ""
+msgstr "_Külgede suhe"
 
 #: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:728
 msgid "None"
@@ -148,7 +148,7 @@ msgstr "Automaatselt valitud"
 
 #: ../data/interfaces/parole.ui.h:31
 msgid "Square"
-msgstr ""
+msgstr "Ruut"
 
 #: ../data/interfaces/parole.ui.h:32
 msgid "4:3 (TV)"
@@ -168,7 +168,7 @@ msgstr "_Subtiitrid"
 
 #: ../data/interfaces/parole.ui.h:36
 msgid "Select Text Subtitles..."
-msgstr ""
+msgstr "Vali subtiitrid..."
 
 #: ../data/interfaces/parole.ui.h:37
 msgid "_Tools"
@@ -176,7 +176,7 @@ msgstr "_Tarvikud"
 
 #: ../data/interfaces/parole.ui.h:38
 msgid "P_lugins"
-msgstr ""
+msgstr "P_istikprogrammid"
 
 #: ../data/interfaces/parole.ui.h:39
 msgid "_Preferences"
@@ -188,7 +188,7 @@ msgstr "_Abi"
 
 #: ../data/interfaces/parole.ui.h:41
 msgid "_Report a Bug..."
-msgstr ""
+msgstr "_Teata veast..."
 
 #: ../data/interfaces/parole.ui.h:42
 msgid "_Keyboard Shortcuts"
@@ -224,7 +224,7 @@ msgstr "<big><span color='#BBBBBB'><i>esitajaks</i></span> <span color='#F4F4F4'
 
 #: ../data/interfaces/parole.ui.h:49
 msgid "0:00"
-msgstr ""
+msgstr "0:00"
 
 #: ../data/interfaces/parole.ui.h:51
 #, no-c-format
@@ -233,11 +233,11 @@ msgstr "Puhverdan (0%)"
 
 #: ../data/interfaces/parole.ui.h:52
 msgid "/"
-msgstr ""
+msgstr "/"
 
 #: ../data/interfaces/mediachooser.ui.h:1
 msgid "Open Media Files"
-msgstr ""
+msgstr "Ava meediafaile"
 
 #: ../data/interfaces/playlist.ui.h:1
 #: ../data/interfaces/parole-settings.ui.h:28
@@ -305,75 +305,75 @@ msgstr "Jäta esitusloend meelde"
 
 #: ../data/interfaces/plugins.ui.h:1
 msgid "Parole Plugins"
-msgstr ""
+msgstr "Pistikprogrammid Parole jaoks"
 
 #: ../data/interfaces/plugins.ui.h:2
 msgid "Extend your media player"
-msgstr ""
+msgstr "Laienda oma meediamängija võimalusi"
 
 #: ../data/interfaces/plugins.ui.h:3
 msgid "Plugin"
-msgstr ""
+msgstr "Pistikprogramm"
 
 #: ../data/interfaces/plugins.ui.h:4
 msgid "<b>Description</b>"
-msgstr ""
+msgstr "<b>Kirjeldus</b>"
 
 #: ../data/interfaces/plugins.ui.h:5
 msgid "<b>Author</b>"
-msgstr ""
+msgstr "<b>Autor</b>"
 
 #: ../data/interfaces/plugins.ui.h:6
 msgid "Visit Website"
-msgstr ""
+msgstr "Vaata veebisaiti"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "Automatic"
-msgstr ""
+msgstr "Vali automaatselt"
 
 #: ../data/interfaces/parole-settings.ui.h:2
 msgid "X Window System (X11/XShm/Xv)"
-msgstr ""
+msgstr "X Window System (X11/XShm/Xv)"
 
 #: ../data/interfaces/parole-settings.ui.h:3
 msgid "X Window System (No Xv)"
-msgstr ""
+msgstr "X Window System (ilma Xv'ta)"
 
 #: ../data/interfaces/parole-settings.ui.h:4
 msgid "Parole Settings"
-msgstr ""
+msgstr "Parole seadistused"
 
 #: ../data/interfaces/parole-settings.ui.h:5
 msgid "Configure your media player"
-msgstr ""
+msgstr "Seadista oma meediamängijat"
 
 #: ../data/interfaces/parole-settings.ui.h:6
 msgid "Disable screensaver when playing movies"
-msgstr ""
+msgstr "Filmide vaatamise ajaks lülita ekraanisäästja välja"
 
 #: ../data/interfaces/parole-settings.ui.h:7
 msgid "<b>Screensaver</b>"
-msgstr ""
+msgstr "<b>Ekraanisäästja</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:8
 msgid "Show visual effects when an audio file is played"
-msgstr ""
+msgstr "Näita helifaili esitamise ajal visuaalseid efekte"
 
 #: ../data/interfaces/parole-settings.ui.h:9
 msgid "Visualization type:"
-msgstr ""
+msgstr "Visualiseeringu tüüp:"
 
 #: ../data/interfaces/parole-settings.ui.h:10
 msgid "<b>Audio Visualization</b>"
-msgstr ""
+msgstr "<b>Heli visualiseerimine</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:11
 msgid "Enable keyboard multimedia keys"
-msgstr ""
+msgstr "Kasuta klaviatuuril asuvaid multimeediaklahve"
 
 #: ../data/interfaces/parole-settings.ui.h:12
 msgid "<b>Keyboard</b>"
-msgstr ""
+msgstr "<b>Klaviatuur</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:13
 #: ../data/interfaces/shortcuts.ui.h:1
@@ -390,31 +390,31 @@ msgstr "<b>Videoväljund</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:16
 msgid "Brightness:"
-msgstr ""
+msgstr "Heledus:"
 
 #: ../data/interfaces/parole-settings.ui.h:17
 msgid "Contrast:"
-msgstr ""
+msgstr "Kontrast:"
 
 #: ../data/interfaces/parole-settings.ui.h:18
 msgid "Hue:"
-msgstr ""
+msgstr "Värvitoon:"
 
 #: ../data/interfaces/parole-settings.ui.h:19
 msgid "Saturation:"
-msgstr ""
+msgstr "Värviküllastus:"
 
 #: ../data/interfaces/parole-settings.ui.h:20
 msgid "Reset to defaults"
-msgstr ""
+msgstr "Määra vaikeväärtused"
 
 #: ../data/interfaces/parole-settings.ui.h:21
 msgid "<b>Color Balance</b>"
-msgstr ""
+msgstr "<b>Värvustasakaal</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:22
 msgid "Display"
-msgstr ""
+msgstr "Ekraan"
 
 #: ../data/interfaces/parole-settings.ui.h:23
 msgid "Always replace playlist with opened files"
@@ -434,15 +434,15 @@ msgstr "<b>Esitusloendi eelistused</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:29
 msgid "Automatically show subtitles when playing movie file"
-msgstr ""
+msgstr "Filmi esitamisel näita automaatselt subtiitreid"
 
 #: ../data/interfaces/parole-settings.ui.h:30
 msgid "Font:"
-msgstr ""
+msgstr "Font:"
 
 #: ../data/interfaces/parole-settings.ui.h:31
 msgid "Encoding:"
-msgstr ""
+msgstr "Kodeering:"
 
 #: ../data/interfaces/parole-settings.ui.h:32
 msgid "<b>Subtitle Settings</b>"
@@ -454,7 +454,7 @@ msgstr "Subtiitrid"
 
 #: ../data/interfaces/save-playlist.ui.h:1
 msgid "By Extension"
-msgstr ""
+msgstr "Faililaiendi alusel"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "Save Playlist as..."
@@ -466,11 +466,11 @@ msgstr "Faili tüüp"
 
 #: ../data/interfaces/save-playlist.ui.h:4
 msgid "Extension"
-msgstr ""
+msgstr "Laiend"
 
 #: ../data/interfaces/save-playlist.ui.h:5
 msgid "Select File Types (By Extension)"
-msgstr ""
+msgstr "Vali failitüübid (faililaiendi alusel)"
 
 #: ../data/interfaces/open-location.ui.h:1
 msgid "Open Network Location"
@@ -510,35 +510,35 @@ msgstr "Lülita täisekraanirežiim välja"
 
 #: ../data/interfaces/shortcuts.ui.h:8
 msgid "Toggle menubar"
-msgstr ""
+msgstr "Näita või peida menüüriba"
 
 #: ../data/interfaces/shortcuts.ui.h:9
 msgid "Volume"
-msgstr ""
+msgstr "Helitugevus"
 
 #: ../data/interfaces/shortcuts.ui.h:10
 msgid "Increase volume"
-msgstr ""
+msgstr "Heli valjemaks"
 
 #: ../data/interfaces/shortcuts.ui.h:11
 msgid "Decrease volume"
-msgstr ""
+msgstr "Heli vaiksemaks"
 
 #: ../data/interfaces/shortcuts.ui.h:12 ../src/parole-player.c:2382
 msgid "Mute"
-msgstr ""
+msgstr "Summuta"
 
 #: ../data/interfaces/shortcuts.ui.h:14
 msgid "Toggle playlist"
-msgstr ""
+msgstr "Näita või peida esitlusloendit"
 
 #: ../data/interfaces/shortcuts.ui.h:15
 msgid "Select previous item"
-msgstr ""
+msgstr "Vali eelmine kirje"
 
 #: ../data/interfaces/shortcuts.ui.h:16
 msgid "Select next item"
-msgstr ""
+msgstr "Vali järgmine kirje"
 
 #: ../data/interfaces/shortcuts.ui.h:17
 msgid "Remove selected item"
@@ -551,7 +551,7 @@ msgstr "Taasesitus"
 #: ../data/interfaces/shortcuts.ui.h:19
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:3
 msgid "Play/Pause"
-msgstr ""
+msgstr "Esita/peata"
 
 #: ../data/interfaces/shortcuts.ui.h:20 ../src/main.c:241
 msgid "Previous track"
@@ -563,31 +563,31 @@ msgstr "Järgmine pala"
 
 #: ../data/interfaces/shortcuts.ui.h:22
 msgid "Go back 10 seconds"
-msgstr ""
+msgstr "Hüppa 10 sekundit tagasi"
 
 #: ../data/interfaces/shortcuts.ui.h:23
 msgid "Go forward 10 seconds"
-msgstr ""
+msgstr "Hüppa 10 sekundit edasi"
 
 #: ../data/interfaces/shortcuts.ui.h:24
 msgid "Go back 1 minute"
-msgstr ""
+msgstr "Hüppa 1 minut tagasi"
 
 #: ../data/interfaces/shortcuts.ui.h:25
 msgid "Go forward 1 minute"
-msgstr ""
+msgstr "Hüppa 1 minut edasi"
 
 #: ../data/interfaces/shortcuts.ui.h:26
 msgid "Go back 10 minutes"
-msgstr ""
+msgstr "Hüppa 10 minutit tagasi"
 
 #: ../data/interfaces/shortcuts.ui.h:27
 msgid "Go forward 10 minutes"
-msgstr ""
+msgstr "Hüppa 10 minutit edasi"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:2
 msgid "Play your media"
-msgstr ""
+msgstr "Esita oma meediafaile"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:4
 #: ../src/parole-player.c:3337 ../src/plugins/notify/notify-provider.c:190
@@ -604,14 +604,14 @@ msgid ""
 "Parole is a modern simple media player based on the GStreamer framework and "
 "written to fit well in the Xfce desktop. It is designed with simplicity, "
 "speed and resource usage in mind."
-msgstr ""
+msgstr "Parole on tänapäevane ja lihtne meediamängija, mis kasutab GStreamer'i multimeedia raamistikku ning on mõeldud ideaalselt sobima kasutamiseks Xfce töölauakeskkonnas. Parole on loodud arvestades lihtsust, kiirust ja ressursikasutust."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:2
 msgid ""
 "Parole features playback of local media files, including video with "
 "subtitles support, Audio CDs, DVDs, and live streams. Parole is also "
 "extensible via plugins."
-msgstr ""
+msgstr "Parole oskab esitada kohalikke meediafaile, sealhulgas videofaile koos subtiitritega, samuti Heli-CD'sid, DVD'sid ja voogedastust võrgust. Parole on ka laiendatav pistikprogrammide abil."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:3
 msgid "This is a minor translations-only release."
@@ -689,11 +689,11 @@ msgstr "Pala %i"
 
 #: ../src/gst/parole-gst.c:1095
 msgid "Audio CD"
-msgstr ""
+msgstr "Heli-CD"
 
 #: ../src/gst/parole-gst.c:1267
 msgid "Unable to install missing codecs."
-msgstr ""
+msgstr "Puuduvate kodekite paigaldamine ei õnnestunud."
 
 #: ../src/gst/parole-gst.c:1270
 msgid "No available plugin installer was found."
@@ -701,15 +701,15 @@ msgstr ""
 
 #: ../src/gst/parole-gst.c:1321
 msgid "Additional software is required."
-msgstr ""
+msgstr "Täiendava tarkvara paigaldamine on vajalik."
 
 #: ../src/gst/parole-gst.c:1325
 msgid "Don't Install"
-msgstr ""
+msgstr "Ära paigalda"
 
 #: ../src/gst/parole-gst.c:1327
 msgid "Install"
-msgstr ""
+msgstr "Paigalda"
 
 #: ../src/gst/parole-gst.c:1330
 msgid "OK"
@@ -720,20 +720,20 @@ msgstr "Sobib"
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
-msgstr ""
+msgstr "Selle faili esitamiseks vajab Parole pistikprogrammi <b>%s</b>,\nmida saab automaatselt paigaldada."
 
 #: ../src/gst/parole-gst.c:1340
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
-msgstr ""
+msgstr "Selle faili esitamiseks vajab Parole pistikprogrammi <b>%s</b>."
 
 #: ../src/gst/parole-gst.c:1715
 msgid "The stream is taking too much time to load"
-msgstr ""
+msgstr "Meediavoo laadimisele kulub liiga palju aega"
 
 #: ../src/gst/parole-gst.c:1717
 msgid "Do you want to continue loading or stop?"
-msgstr ""
+msgstr "Kas sa soovid laadimist jätkta või seda peatada?"
 
 #: ../src/gst/parole-gst.c:1718
 msgid "Stop"
@@ -745,7 +745,7 @@ msgstr "Jätka"
 
 #: ../src/gst/parole-gst.c:1883
 msgid "GStreamer Error"
-msgstr ""
+msgstr "GStreamer'i viga"
 
 #: ../src/gst/parole-gst.c:1884
 msgid "Parole Media Player cannot start."
@@ -755,17 +755,17 @@ msgstr "Parole meediamängija käivitamine ei õnnestu."
 #: ../src/gst/parole-gst.c:1958
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
-msgstr ""
+msgstr "Ei õnnestu laadida \"%s\" pistikprogrammi. Palun kontrolli GStreamer'i paigalduse korrektsust."
 
 #: ../src/gst/parole-gst.c:2516 ../src/gst/parole-gst.c:2520
 #, c-format
 msgid "Audio Track #%d"
-msgstr ""
+msgstr "Heliriba #%d"
 
 #: ../src/gst/parole-gst.c:2556 ../src/gst/parole-gst.c:2560
 #, c-format
 msgid "Subtitle #%d"
-msgstr ""
+msgstr "Subtiiter #%d"
 
 #: ../src/main.c:59
 #, c-format
@@ -780,19 +780,19 @@ msgid ""
 "\n"
 "Please report bugs to <https://bugzilla.xfce.org/>.\n"
 "\n"
-msgstr ""
+msgstr "\nParole meediamängija %s\n\nOsa Xfce Goodies projektist\nhttps://goodies.xfce.org\n\nLitsenseeritud GNU GPL alusel.\n\nPalun teata vigadest <https://bugzilla.xfce.org/> lehel.\n\n"
 
 #: ../src/main.c:227
 msgid "Open a new instance"
-msgstr ""
+msgstr "Ava programmist uus koopia"
 
 #: ../src/main.c:229
 msgid "Do not load plugins"
-msgstr ""
+msgstr "Ära lae pistikprogramme"
 
 #: ../src/main.c:231
 msgid "Set Audio-CD/VCD/DVD device path"
-msgstr ""
+msgstr "Anna ette otsirada Heli-CD/VCD/DVD jaoks"
 
 #: ../src/main.c:233
 msgid "Start in embedded mode"
@@ -804,23 +804,23 @@ msgstr "Käivita täisekraanirežiimis"
 
 #: ../src/main.c:237
 msgid "Play or pause if already playing"
-msgstr ""
+msgstr "Esita faili või peata käimasolev esitus"
 
 #: ../src/main.c:243
 msgid "Raise volume"
-msgstr ""
+msgstr "Heli valjemaks"
 
 #: ../src/main.c:245
 msgid "Lower volume"
-msgstr ""
+msgstr "Heli vaiksemaks"
 
 #: ../src/main.c:247
 msgid "Mute volume"
-msgstr ""
+msgstr "Summuta heli"
 
 #: ../src/main.c:249
 msgid "Unmute (restore) volume"
-msgstr ""
+msgstr "Eemalda summutamine (taasta) helitugevus"
 
 #: ../src/main.c:251
 msgid "Add files to playlist"
@@ -832,16 +832,16 @@ msgstr "Kuva versiooniteavet ja lõpeta töö"
 
 #: ../src/main.c:257
 msgid "Media to play"
-msgstr ""
+msgstr "Esitatav meedia"
 
 #: ../src/main.c:279
 msgid "[FILES...] - Play movies and songs"
-msgstr ""
+msgstr "[FAILID...] - esita video- ja helifaile"
 
 #: ../src/main.c:290
 #, c-format
 msgid "Type %s --help to list all available command line options\n"
-msgstr ""
+msgstr "Et näha kõiki käsurea valikuid kirjuta %s --help\n"
 
 #: ../src/main.c:307
 #, c-format
@@ -863,17 +863,17 @@ msgstr[1] "Esitusloend (%i kirjet)"
 #, c-format
 msgid "Playlist (%i chapter)"
 msgid_plural "Playlist (%i chapters)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Esitusloend (%i peatükk)"
+msgstr[1] "Esitusloend (%i peatükki)"
 
 #: ../src/parole-medialist.c:387 ../src/parole-player.c:708
 #, c-format
 msgid "Chapter %i"
-msgstr ""
+msgstr "Peatükk %i"
 
 #: ../src/parole-medialist.c:648
 msgid "Permission denied"
-msgstr ""
+msgstr "Õigusi ei ole"
 
 #: ../src/parole-medialist.c:650
 msgid "Error saving playlist file"
@@ -901,7 +901,7 @@ msgstr "PLS esitusloendid"
 
 #: ../src/parole-medialist.c:804
 msgid "Advanced Stream Redirector"
-msgstr ""
+msgstr "Windows Media Advanced Stream Redirector"
 
 #: ../src/parole-medialist.c:812
 msgid "Shareable Playlist"
@@ -910,7 +910,7 @@ msgstr "Jagatav esitusloend"
 #. Clear
 #: ../src/parole-medialist.c:1119
 msgid "Open Containing Folder"
-msgstr ""
+msgstr "Ava kaust, kus see fail paikneb"
 
 #: ../src/parole-player.c:526
 msgid "Hide Playlist"
@@ -950,7 +950,7 @@ msgstr "Kas sa oled kindel et soovid eemaldada kõik hiljuti esitatu? Seda tegev
 
 #: ../src/parole-player.c:1260 ../src/parole-player.c:1387
 msgid "Media stream is not seekable"
-msgstr ""
+msgstr "Meediavoog ei ole keritav"
 
 #: ../src/parole-player.c:1270
 msgid "Play"
@@ -962,11 +962,11 @@ msgstr "Peata"
 
 #: ../src/parole-player.c:1712
 msgid "GStreamer backend error"
-msgstr ""
+msgstr "GStreamer'i taustarakenduse viga"
 
 #: ../src/parole-player.c:1793
 msgid "Unknown Song"
-msgstr ""
+msgstr "Tundmatu lugu"
 
 #: ../src/parole-player.c:1804 ../src/parole-player.c:1810
 #: ../src/parole-player.c:1818
@@ -975,7 +975,7 @@ msgstr "albumil"
 
 #: ../src/parole-player.c:1818 ../src/plugins/notify/notify-provider.c:134
 msgid "Unknown Album"
-msgstr ""
+msgstr "Teadmata album"
 
 #: ../src/parole-player.c:1829 ../src/parole-player.c:1836
 msgid "by"
@@ -983,7 +983,7 @@ msgstr "esitajaks"
 
 #: ../src/parole-player.c:1836 ../src/plugins/notify/notify-provider.c:136
 msgid "Unknown Artist"
-msgstr ""
+msgstr "Teadmata esitaja"
 
 #: ../src/parole-player.c:1871
 msgid "Buffering"
@@ -1041,20 +1041,20 @@ msgstr "Eemalda summutamine"
 
 #: ../src/parole-player.c:2782
 msgid "Unable to open default web browser"
-msgstr ""
+msgstr "Vaikimisi kasutatava veebibrauseri avamine ei õnnestunud"
 
 #: ../src/parole-player.c:2784
 msgid ""
 "Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
-msgstr ""
+msgstr "Vigadest teatamiseks palun ava leht https://docs.xfce.org/apps/parole/bugs"
 
 #: ../src/parole-player.c:2812
 msgid "Go"
-msgstr ""
+msgstr "Mine"
 
 #: ../src/parole-player.c:2825
 msgid "Position:"
-msgstr ""
+msgstr "Aeg (t/m/s):"
 
 #. Clear Recent Menu Item
 #: ../src/parole-player.c:3229
@@ -1088,11 +1088,11 @@ msgstr ""
 
 #: ../src/parole-disc.c:106
 msgid "Play Disc"
-msgstr ""
+msgstr "Esita plaat"
 
 #: ../src/parole-subtitle-encoding.c:162
 msgid "Current Locale"
-msgstr ""
+msgstr "Praegune lokaat"
 
 #: ../src/parole-subtitle-encoding.c:165 ../src/parole-subtitle-encoding.c:167
 #: ../src/parole-subtitle-encoding.c:169 ../src/parole-subtitle-encoding.c:171
@@ -1233,39 +1233,39 @@ msgstr "Vietnami"
 
 #: ../src/parole-plugins-manager.c:253
 msgid "Plugin failed to load"
-msgstr ""
+msgstr "Pistikprogrammi laadimine ei õnnestunud"
 
 #: ../src/parole-plugins-manager.c:254
 msgid "Please check your installation"
-msgstr ""
+msgstr "Palun kontrolli paigaldust"
 
 #: ../src/parole-plugins-manager.c:375
 msgid "No installed plugins found on this system"
-msgstr ""
+msgstr "Sellest arvutist ei leitud paigaldatud pistikprogramme"
 
 #: ../src/parole-plugins-manager.c:376
 msgid "Please check your installation."
-msgstr ""
+msgstr "Palun kontrolli paigaldust"
 
 #: ../src/misc/parole-filters.c:66
 msgid "Audio"
-msgstr ""
+msgstr "Helifailid"
 
 #: ../src/misc/parole-filters.c:91
 msgid "Video"
-msgstr ""
+msgstr "Videofailid"
 
 #: ../src/misc/parole-filters.c:115 ../src/misc/parole-filters.c:142
 msgid "Audio and video"
-msgstr ""
+msgstr "Audio ja video"
 
 #: ../src/misc/parole-filters.c:169 ../src/misc/parole-filters.c:193
 msgid "All supported files"
-msgstr ""
+msgstr "Kõik toetatud failid"
 
 #: ../src/misc/parole-filters.c:217
 msgid "Playlist files"
-msgstr ""
+msgstr "Esitusloendite failid"
 
 #: ../src/plugins/notify/notify-provider.c:139
 #: ../src/plugins/notify/notify-provider.c:141
@@ -1279,7 +1279,7 @@ msgstr "<i>esitajaks</i>"
 
 #: ../src/plugins/notify/notify.desktop.in.h:1
 msgid "Notify"
-msgstr ""
+msgstr "Teavita"
 
 #: ../src/plugins/notify/notify.desktop.in.h:2
 msgid "Show notifications for currently playing tracks"
@@ -1302,23 +1302,23 @@ msgstr "_Ava"
 
 #: ../src/plugins/tray/tray-provider.c:254
 msgid "Tray icon plugin"
-msgstr ""
+msgstr "Süsteemisalve ikooni pistikprogramm"
 
 #: ../src/plugins/tray/tray-provider.c:264
 msgid "Always minimize to tray when window is closed"
-msgstr ""
+msgstr "Akna sulgemisel alati minimeeri teguimiribale"
 
 #: ../src/plugins/tray/tray-provider.c:307
 msgid "Are you sure you want to quit?"
-msgstr ""
+msgstr "Kas sa oled kindel et soovid programmist väljuda?"
 
 #: ../src/plugins/tray/tray-provider.c:310
 msgid "Parole can be minimized to the system tray instead."
-msgstr ""
+msgstr "Selle asemel saad Parole minimeerida tegumiribale."
 
 #: ../src/plugins/tray/tray-provider.c:313
 msgid "Minimize to tray"
-msgstr ""
+msgstr "Minimeeri tegumiribale"
 
 #: ../src/plugins/tray/tray-provider.c:334
 msgid "Remember my choice"
@@ -1326,16 +1326,16 @@ msgstr "Jäta minu valik meelde"
 
 #: ../src/plugins/tray/system-tray.desktop.in.h:1
 msgid "Tray icon"
-msgstr ""
+msgstr "Süsteemisalve ikoon"
 
 #: ../src/plugins/tray/system-tray.desktop.in.h:2
 msgid "Show icon in the system tray"
-msgstr ""
+msgstr "Näita ikooni süsteemisalves"
 
 #: ../src/plugins/mpris2/mpris2.desktop.in.h:1
 msgid "MPRIS2"
-msgstr ""
+msgstr "MPRIS2"
 
 #: ../src/plugins/mpris2/mpris2.desktop.in.h:2
 msgid "MPRIS2 remote control"
-msgstr ""
+msgstr "MPRIS2-põhine kaugjuhtimislahendus"
