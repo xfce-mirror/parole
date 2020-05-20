@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-23 00:31+0200\n"
-"PO-Revision-Date: 2020-05-19 22:38+0000\n"
+"PO-Revision-Date: 2020-05-19 23:21+0000\n"
 "Last-Translator: Priit Jõerüüt <transifex@joeruut.com>\n"
 "Language-Team: Estonian (http://www.transifex.com/xfce/xfce-apps/language/et/)\n"
 "MIME-Version: 1.0\n"
@@ -79,19 +79,19 @@ msgstr "_DVD"
 
 #: ../data/interfaces/parole.ui.h:14
 msgid "_DVD Menu"
-msgstr ""
+msgstr "_DVD Menüü"
 
 #: ../data/interfaces/parole.ui.h:15
 msgid "_Title Menu"
-msgstr ""
+msgstr "_Põhimenüü"
 
 #: ../data/interfaces/parole.ui.h:16
 msgid "_Audio Menu"
-msgstr ""
+msgstr "_Heliribade menüü"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "A_ngle Menu"
-msgstr ""
+msgstr "_Vaatenurkade menüü"
 
 #: ../data/interfaces/parole.ui.h:18
 msgid "_Chapters"
@@ -248,7 +248,7 @@ msgstr " Esitusloend"
 
 #: ../data/interfaces/playlist.ui.h:2
 msgid "Disc Playlist"
-msgstr ""
+msgstr "Plaadi esitusloend"
 
 #: ../data/interfaces/playlist.ui.h:3
 msgid "Add to playlist..."
@@ -697,7 +697,7 @@ msgstr "Puuduvate kodekite paigaldamine ei õnnestunud."
 
 #: ../src/gst/parole-gst.c:1270
 msgid "No available plugin installer was found."
-msgstr ""
+msgstr "Saadaolevate pistikprogrammide paigaldajat ei leidunud."
 
 #: ../src/gst/parole-gst.c:1321
 msgid "Additional software is required."
@@ -1076,7 +1076,7 @@ msgstr "Sulgeda"
 
 #: ../src/parole-about.c:74
 msgid "translator-credits"
-msgstr "Kristjan Siimson <epost@ksiimson.se> & tolge.pingviin.org"
+msgstr "Kristjan Siimson <epost@ksiimson.se> &amp; tolge.pingviin.org\nPriit Jõerüüt 2020"
 
 #: ../src/parole-about.c:77
 msgid "Visit Parole website"
@@ -1084,7 +1084,7 @@ msgstr "Vaata Parole veebisaiti"
 
 #: ../src/parole-conf-dialog.c:287
 msgid "Clutter (OpenGL)"
-msgstr ""
+msgstr "Clutter graafikateek (OpenGL)"
 
 #: ../src/parole-disc.c:106
 msgid "Play Disc"
