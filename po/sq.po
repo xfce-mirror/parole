@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-23 00:31+0200\n"
-"PO-Revision-Date: 2020-05-25 09:03+0000\n"
+"PO-Revision-Date: 2020-06-12 10:03+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: Albanian (http://www.transifex.com/xfce/xfce-apps/language/sq/)\n"
 "MIME-Version: 1.0\n"
@@ -303,7 +303,7 @@ msgstr "Luaji kartela të hapura"
 #: ../data/interfaces/playlist.ui.h:15
 #: ../data/interfaces/parole-settings.ui.h:26
 msgid "Remember playlist"
-msgstr "Mbani mend luajlistë"
+msgstr "Mba mend luajlistë"
 
 #: ../data/interfaces/plugins.ui.h:1
 msgid "Parole Plugins"
@@ -351,11 +351,11 @@ msgstr "Formësoni lojtësin tuaj të mediave"
 
 #: ../data/interfaces/parole-settings.ui.h:6
 msgid "Disable screensaver when playing movies"
-msgstr "Çaktivizo kursyes ekrani kur luhen filma"
+msgstr "Çaktivizo ekrankursyes kur luhen filma"
 
 #: ../data/interfaces/parole-settings.ui.h:7
 msgid "<b>Screensaver</b>"
-msgstr "<b>Kursyes ekrani</b>"
+msgstr "<b>Ekrankursyes</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:8
 msgid "Show visual effects when an audio file is played"
@@ -1281,7 +1281,7 @@ msgstr "<i>nga</i>"
 
 #: ../src/plugins/notify/notify.desktop.in.h:1
 msgid "Notify"
-msgstr "Njofto"
+msgstr "Njoftime"
 
 #: ../src/plugins/notify/notify.desktop.in.h:2
 msgid "Show notifications for currently playing tracks"
