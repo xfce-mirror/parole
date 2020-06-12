@@ -6,14 +6,15 @@
 # Elishai Eliyahu <e1907@mm.st>, 2016-2019
 # GenghisKhan <genghiskhan@gmx.ca>, 2015
 # GenghisKhan <genghiskhan@gmx.ca>, 2015-2016
+# Omer, 2020
 # Yaron Shahrabani <sh.yaron@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-23 00:31+0200\n"
-"PO-Revision-Date: 2019-08-17 18:28+0000\n"
-"Last-Translator: Elishai Eliyahu <e1907@mm.st>\n"
+"PO-Revision-Date: 2020-06-12 10:37+0000\n"
+"Last-Translator: Omer\n"
 "Language-Team: Hebrew (http://www.transifex.com/xfce/xfce-apps/language/he/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,7 +28,7 @@ msgstr ""
 #: ../src/parole-player.c:1788 ../src/parole-about.c:68
 #: ../src/plugins/mpris2/mpris2-provider.c:189
 msgid "Parole Media Player"
-msgstr "Parole Media Player"
+msgstr "נגן המדיה Parole"
 
 #: ../data/interfaces/parole.ui.h:2
 msgid "_Media"
@@ -74,7 +75,7 @@ msgstr "_ערבל"
 #. Create dialog
 #: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2808
 msgid "Go to position"
-msgstr "עבור אל מיקום"
+msgstr "עבור אל אזור"
 
 #: ../data/interfaces/parole.ui.h:13
 msgid "_DVD"
@@ -271,11 +272,11 @@ msgstr "הסר"
 
 #: ../data/interfaces/playlist.ui.h:7
 msgid "Clear playlist"
-msgstr "טהר רשימת נגינה"
+msgstr "נקה פלייליסט"
 
 #: ../data/interfaces/playlist.ui.h:8
 msgid "Clear"
-msgstr "טהר"
+msgstr "נקה"
 
 #: ../data/interfaces/playlist.ui.h:9
 msgid "Repeat"
@@ -421,7 +422,7 @@ msgstr "תצוגה"
 
 #: ../data/interfaces/parole-settings.ui.h:23
 msgid "Always replace playlist with opened files"
-msgstr "החלף תמיד רשימת נגינה עם קבצים פתוחים"
+msgstr "החלף תמיד פלייליסט עם קבצים פתוחים"
 
 #: ../data/interfaces/parole-settings.ui.h:24
 msgid "Check and remove duplicate media entries"
@@ -433,7 +434,7 @@ msgstr "התחל לנגן קבצים פתוחים"
 
 #: ../data/interfaces/parole-settings.ui.h:27
 msgid "<b>Playlist Settings</b>"
-msgstr "<b>הגדרות רשימת נגינה</b>"
+msgstr "<b>הגדרות פלייליסט</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:29
 msgid "Automatically show subtitles when playing movie file"
@@ -723,7 +724,7 @@ msgstr "אישור"
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
-msgstr "‏Parole צריך <b>%s</b> כדי לנגן את קובץ זה.\nזה ניתן להתקנה אוטומטית."
+msgstr "‏Parole צריך <b>%s</b> כדי לנגן את קובץ זה.\nהוא ניתן להתקנה אוטומטית."
 
 #: ../src/gst/parole-gst.c:1340
 #, c-format
@@ -752,7 +753,7 @@ msgstr "שגיאת GStreamer"
 
 #: ../src/gst/parole-gst.c:1884
 msgid "Parole Media Player cannot start."
-msgstr "‭.Parole Media Player תא ליחהתל ןתינ אל"
+msgstr "לא ניתן להתחיל את נגן המדיה Parole."
 
 #: ../src/gst/parole-gst.c:1909 ../src/gst/parole-gst.c:1924
 #: ../src/gst/parole-gst.c:1958
@@ -783,35 +784,35 @@ msgid ""
 "\n"
 "Please report bugs to <https://bugzilla.xfce.org/>.\n"
 "\n"
-msgstr "\nParole נגן מדיה %s\n\nחלק מפרויקט דברים טובים של Xfce \nhttps://goodies.xfce.org\n\nרישיון תחת GNU GPL.\n\nאנא דווח באגים ב<https://bugzilla.xfce.org/>.\n\n"
+msgstr "\nנגן המדיה Parole %s\n\nחלק מפרויקט דברים טובים של Xfce \nhttps://goodies.xfce.org\n\nרישיון תחת GNU GPL.\n\nאנא דווח על באגים ל־<https://bugzilla.xfce.org/>.\n\n"
 
 #: ../src/main.c:227
 msgid "Open a new instance"
-msgstr "שדח ךילהת חתפ"
+msgstr "פתח תהליך חדש"
 
 #: ../src/main.c:229
 msgid "Do not load plugins"
-msgstr "םיפסות ןיעטת לא"
+msgstr "אל תטען תוספים"
 
 #: ../src/main.c:231
 msgid "Set Audio-CD/VCD/DVD device path"
-msgstr "CD/VCD/DVD עמש רוטילקת ביתנ רדגה"
+msgstr "קבע נטיב תקליט שמע CD/VCD/DVD"
 
 #: ../src/main.c:233
 msgid "Start in embedded mode"
-msgstr "ץבושמ בצמב לחתה"
+msgstr "התחל במצב מוטמע"
 
 #: ../src/main.c:235
 msgid "Start in fullscreen mode"
-msgstr "אלמ ךסמ בצמב לחתה"
+msgstr "התחל במצב מסך מלא"
 
 #: ../src/main.c:237
 msgid "Play or pause if already playing"
-msgstr "ןגנמ רבכ םא ההשה וא ןגנ"
+msgstr "נגן או השהה אם כבר כעת מתנגן"
 
 #: ../src/main.c:243
 msgid "Raise volume"
-msgstr "עמש תמצוע רבגה"
+msgstr "הגבר את עוצמת השמע"
 
 #: ../src/main.c:245
 msgid "Lower volume"
@@ -835,21 +836,21 @@ msgstr "אצו אסרג עדימ ספדה"
 
 #: ../src/main.c:257
 msgid "Media to play"
-msgstr "הניגנל הידמ"
+msgstr "מדיה לניגון"
 
 #: ../src/main.c:279
 msgid "[FILES...] - Play movies and songs"
-msgstr "[םיצבק...] - םירישו םיטרס ןגנ"
+msgstr "[קבצים...] - נגן סרטים ושירים"
 
 #: ../src/main.c:290
 #, c-format
 msgid "Type %s --help to list all available command line options\n"
-msgstr "תונימזה תויורשפאה לכ תא תונמל ידכ %s --help ספדה\n"
+msgstr "הקלד %s --help על מנת לראות את רשימת כל האפשרויות זמינות בשורת הפקודה\n"
 
 #: ../src/main.c:307
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
-msgstr "שדח ךילהת חותפל ידכ -i טנמוגראב שמתשה ,רבכ ץרומ וניה Parole\n"
+msgstr "Parole כבר כעת רץ, השתמש ב־-i על מנת לפתוח תהליך חדש\n"
 
 #: ../src/parole-mediachooser.c:233 ../src/parole-player.c:1003
 msgid "All files"
@@ -896,7 +897,7 @@ msgstr "אנא בחר פורמט רשימת נגינה נתמך"
 
 #: ../src/parole-medialist.c:704 ../src/parole-plugins-manager.c:338
 msgid "Unknown"
-msgstr "לא מוכר"
+msgstr "לא ידוע"
 
 #: ../src/parole-medialist.c:788
 msgid "M3U Playlists"
@@ -1053,7 +1054,7 @@ msgstr "לא מסוגל לפתוח דפדפן רשת"
 #: ../src/parole-player.c:2784
 msgid ""
 "Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
-msgstr "אנא דווח את הבאג שלך ב-https://docs.xfce.org/apps/parole/bugs."
+msgstr "אנא היכנס לאתר https://docs.xfce.org/apps/parole/bugs על מנת לדווח על הבאג שלך."
 
 #: ../src/parole-player.c:2812
 msgid "Go"
@@ -1083,7 +1084,7 @@ msgstr "סגור"
 
 #: ../src/parole-about.c:74
 msgid "translator-credits"
-msgstr "גינגס חאן וכנופייתו"
+msgstr "שבחים למתרגמים"
 
 #: ../src/parole-about.c:77
 msgid "Visit Parole website"
@@ -1225,7 +1226,7 @@ msgstr "טורקי"
 #: ../src/parole-subtitle-encoding.c:316 ../src/parole-subtitle-encoding.c:318
 #: ../src/parole-subtitle-encoding.c:320
 msgid "Unicode"
-msgstr "Unicode"
+msgstr "יוניקוד"
 
 #: ../src/parole-subtitle-encoding.c:323 ../src/parole-subtitle-encoding.c:325
 #: ../src/parole-subtitle-encoding.c:327 ../src/parole-subtitle-encoding.c:329
@@ -1256,7 +1257,7 @@ msgstr "אנא בדוק את ההתקנה שלך."
 
 #: ../src/misc/parole-filters.c:66
 msgid "Audio"
-msgstr "אודיו"
+msgstr "שמע"
 
 #: ../src/misc/parole-filters.c:91
 msgid "Video"
@@ -1264,7 +1265,7 @@ msgstr "וידאו"
 
 #: ../src/misc/parole-filters.c:115 ../src/misc/parole-filters.c:142
 msgid "Audio and video"
-msgstr "אודיו וגם וידאו"
+msgstr "שמע ווידאו"
 
 #: ../src/misc/parole-filters.c:169 ../src/misc/parole-filters.c:193
 msgid "All supported files"
@@ -1295,12 +1296,12 @@ msgstr "הצג התראות לרצועות המנוגנות ברגע נתון"
 #. * Previous Track
 #: ../src/plugins/tray/tray-provider.c:128
 msgid "P_revious Track"
-msgstr "_רצועה קודמת"
+msgstr "הר_צועה קודמת"
 
 #. * Next Track
 #: ../src/plugins/tray/tray-provider.c:137
 msgid "_Next Track"
-msgstr "רצועה ה_באה"
+msgstr "הרצועה ה_באה"
 
 #. * Open
 #: ../src/plugins/tray/tray-provider.c:153
