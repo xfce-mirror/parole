@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-23 00:31+0200\n"
-"PO-Revision-Date: 2020-06-12 10:37+0000\n"
+"PO-Revision-Date: 2020-06-21 13:39+0000\n"
 "Last-Translator: Omer\n"
 "Language-Team: Hebrew (http://www.transifex.com/xfce/xfce-apps/language/he/)\n"
 "MIME-Version: 1.0\n"
@@ -200,7 +200,7 @@ msgstr "_קיצורי מקלדת"
 
 #: ../data/interfaces/parole.ui.h:43
 msgid "Display Parole user manual"
-msgstr "הצג מדריך משתמש Parole"
+msgstr "הצג מדריך המשתמש של Parole"
 
 #: ../data/interfaces/parole.ui.h:44
 msgid "_Contents"
@@ -329,7 +329,7 @@ msgstr "<b>מחבר</b>"
 
 #: ../data/interfaces/plugins.ui.h:6
 msgid "Visit Website"
-msgstr "בקר אתר רשת"
+msgstr "בקר באתר הרשת"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "Automatic"
@@ -482,7 +482,7 @@ msgstr "פתח מיקום רשת"
 
 #: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:181
 msgid "Clear History"
-msgstr "טהר היסטוריה"
+msgstr "נקה היסטוריה"
 
 #: ../data/interfaces/open-location.ui.h:3
 msgid "<big><b>Open Network Location</b></big>"
@@ -559,11 +559,11 @@ msgstr "נגן/השהה"
 
 #: ../data/interfaces/shortcuts.ui.h:20 ../src/main.c:241
 msgid "Previous track"
-msgstr "תמדוק העוצר"
+msgstr "הרצועה הקודמת"
 
 #: ../data/interfaces/shortcuts.ui.h:21 ../src/main.c:239
 msgid "Next track"
-msgstr "האבה העוצר"
+msgstr "הרצועה הבאה"
 
 #: ../data/interfaces/shortcuts.ui.h:22
 msgid "Go back 10 seconds"
@@ -824,15 +824,15 @@ msgstr "עמש תמצוע קתשה"
 
 #: ../src/main.c:249
 msgid "Unmute (restore) volume"
-msgstr "לוק תמצוע (רזחש) תקתשה לטב"
+msgstr "בטל את השתקת (שחזר את) העוצמה"
 
 #: ../src/main.c:251
 msgid "Add files to playlist"
-msgstr "הניגנ תמישרל םיצבק ףסוה"
+msgstr "הוסף קבצים לפלייליסט"
 
 #: ../src/main.c:253
 msgid "Print version information and exit"
-msgstr "אצו אסרג עדימ ספדה"
+msgstr "הדפס את מידע הגרסה וצא"
 
 #: ../src/main.c:257
 msgid "Media to play"
@@ -881,7 +881,7 @@ msgstr "פרק %i"
 
 #: ../src/parole-medialist.c:648
 msgid "Permission denied"
-msgstr "הרשאה נדחתה"
+msgstr "ההרשאה נדחתה"
 
 #: ../src/parole-medialist.c:650
 msgid "Error saving playlist file"
@@ -1318,11 +1318,11 @@ msgstr "תמיד מזער למגש כאשר החלון סגור"
 
 #: ../src/plugins/tray/tray-provider.c:307
 msgid "Are you sure you want to quit?"
-msgstr "האם אתה בטוח כי ברצונך לצאת?"
+msgstr "האם אתה בטוח שברצונך לצאת?"
 
 #: ../src/plugins/tray/tray-provider.c:310
 msgid "Parole can be minimized to the system tray instead."
-msgstr "‏Parole ניתן למזעור למגש מערכת במקום."
+msgstr "‏Parole ניתן למזעור אל מגש המערכת במקום."
 
 #: ../src/plugins/tray/tray-provider.c:313
 msgid "Minimize to tray"
