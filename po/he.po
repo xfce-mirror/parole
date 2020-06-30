@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-23 00:31+0200\n"
-"PO-Revision-Date: 2020-06-22 17:30+0000\n"
+"PO-Revision-Date: 2020-06-30 16:41+0000\n"
 "Last-Translator: Omer\n"
 "Language-Team: Hebrew (http://www.transifex.com/xfce/xfce-apps/language/he/)\n"
 "MIME-Version: 1.0\n"
@@ -48,7 +48,7 @@ msgstr "פתח _אחרונים"
 
 #: ../data/interfaces/parole.ui.h:6
 msgid "_Save Playlist..."
-msgstr "_שמור פלייליסט..."
+msgstr "_שמור רשימת נגינה..."
 
 #: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:105
 #: ../src/parole-disc.c:140
@@ -256,7 +256,7 @@ msgstr "רשימת נגינה דיסק"
 
 #: ../data/interfaces/playlist.ui.h:3
 msgid "Add to playlist..."
-msgstr "הוסף לפלייליסט..."
+msgstr "הוסף אל רשימת נגינה..."
 
 #: ../data/interfaces/playlist.ui.h:4
 msgid "Add"
@@ -272,7 +272,7 @@ msgstr "הסר"
 
 #: ../data/interfaces/playlist.ui.h:7
 msgid "Clear playlist"
-msgstr "נקה פלייליסט"
+msgstr "נקה רשימת נגינה"
 
 #: ../data/interfaces/playlist.ui.h:8
 msgid "Clear"
@@ -422,7 +422,7 @@ msgstr "תצוגה"
 
 #: ../data/interfaces/parole-settings.ui.h:23
 msgid "Always replace playlist with opened files"
-msgstr "החלף תמיד פלייליסט עם קבצים פתוחים"
+msgstr "החלף תמיד רשימת נגינה עם קבצים פתוחים"
 
 #: ../data/interfaces/parole-settings.ui.h:24
 msgid "Check and remove duplicate media entries"
@@ -434,7 +434,7 @@ msgstr "התחל לנגן קבצים פתוחים"
 
 #: ../data/interfaces/parole-settings.ui.h:27
 msgid "<b>Playlist Settings</b>"
-msgstr "<b>הגדרות פלייליסט</b>"
+msgstr "<b>הגדרות רשימת נגינה</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:29
 msgid "Automatically show subtitles when playing movie file"
@@ -462,7 +462,7 @@ msgstr "לפי סיומת"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "Save Playlist as..."
-msgstr "שמור פלייליסט בשם..."
+msgstr "שמור רשימת נגינה בשם..."
 
 #: ../data/interfaces/save-playlist.ui.h:3
 msgid "File Type"
@@ -534,7 +534,7 @@ msgstr "השתק"
 
 #: ../data/interfaces/shortcuts.ui.h:14
 msgid "Toggle playlist"
-msgstr "הפעל פלייליסט"
+msgstr "הפעל רשימת נגינה"
 
 #: ../data/interfaces/shortcuts.ui.h:15
 msgid "Select previous item"
@@ -828,7 +828,7 @@ msgstr "בטל את השתקת (שחזר את) העוצמה"
 
 #: ../src/main.c:251
 msgid "Add files to playlist"
-msgstr "הוסף קבצים לפלייליסט"
+msgstr "הוסף קבצים אל רשימת נגינה"
 
 #: ../src/main.c:253
 msgid "Print version information and exit"
