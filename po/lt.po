@@ -4,13 +4,13 @@
 # 
 # Translators:
 # Algimantas Margevičius <margevicius.algimantas@gmail.com>, 2012
-# Moo, 2015-2019
+# Moo, 2015-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-23 00:31+0200\n"
-"PO-Revision-Date: 2019-07-23 10:58+0000\n"
+"PO-Revision-Date: 2020-08-20 09:26+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/xfce/xfce-apps/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -660,7 +660,7 @@ msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
-msgstr "Ši nestabili laida prideda naują clutter vidinę pusę bei išvalo nebereikalingus Gtk3 simbolius. Taip pat joje pridedama ypatybė \"Pereiti į laiką\" bei ištaisytos kelios klaidos."
+msgstr "Ši nestabili laida prideda naują clutter vidinę pusę bei išvalo nebereikalingus Gtk3 simbolius. Taip pat joje pridedama ypatybė „Pereiti į laiką“ bei ištaisytos kelios klaidos."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:10
 msgid "This release fixes a problem with detecting DVD drive locations."
@@ -756,7 +756,7 @@ msgstr "Parole medijos leistuvė negali būti paleista."
 #: ../src/gst/parole-gst.c:1958
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
-msgstr "Nepavyko įkelti \"%s\" įskiepio, patikrinkite savo GStreamer diegimą."
+msgstr "Nepavyko įkelti „%s“ įskiepio, patikrinkite savo GStreamer diegimą."
 
 #: ../src/gst/parole-gst.c:2516 ../src/gst/parole-gst.c:2520
 #, c-format
