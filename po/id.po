@@ -7,12 +7,13 @@
 # Ardjuna <Asyura.x@gmail.com>, 2014
 # se7entime <se7entime@disroot.org>, 2013
 # se7entime <se7entime@disroot.org>, 2013
+# se7entime <se7entime@disroot.org>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-23 00:31+0200\n"
-"PO-Revision-Date: 2020-08-22 13:33+0000\n"
+"PO-Revision-Date: 2020-09-07 06:34+0000\n"
 "Last-Translator: Triyan W. Nugroho <triyan.wn@gmail.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/xfce/xfce-apps/language/id/)\n"
 "MIME-Version: 1.0\n"
@@ -39,7 +40,7 @@ msgstr "_Buka ..."
 
 #: ../data/interfaces/parole.ui.h:4
 msgid "Open _Location..."
-msgstr ""
+msgstr "Buka _Lokasi..."
 
 #: ../data/interfaces/parole.ui.h:5
 msgid "Open _Recent"
@@ -47,7 +48,7 @@ msgstr "Berkas Te_rakhir"
 
 #: ../data/interfaces/parole.ui.h:6
 msgid "_Save Playlist..."
-msgstr ""
+msgstr "_Simpan Senarai Putar..."
 
 #: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:105
 #: ../src/parole-disc.c:140
@@ -191,7 +192,7 @@ msgstr "Ba_ntuan"
 
 #: ../data/interfaces/parole.ui.h:41
 msgid "_Report a Bug..."
-msgstr ""
+msgstr "_Laporkan Kutu..."
 
 #: ../data/interfaces/parole.ui.h:42
 msgid "_Keyboard Shortcuts"
@@ -255,7 +256,7 @@ msgstr "Daftar Putar Cakram"
 
 #: ../data/interfaces/playlist.ui.h:3
 msgid "Add to playlist..."
-msgstr ""
+msgstr "Tambah ke senarai putar..."
 
 #: ../data/interfaces/playlist.ui.h:4
 msgid "Add"
@@ -312,7 +313,7 @@ msgstr "Plugin Parole"
 
 #: ../data/interfaces/plugins.ui.h:2
 msgid "Extend your media player"
-msgstr "Memperluas kemampuan pemutar media anda"
+msgstr "Memperluas kemampuan pemutar media Anda"
 
 #: ../data/interfaces/plugins.ui.h:3
 msgid "Plugin"
@@ -332,7 +333,7 @@ msgstr "Kunjungi Situs Web"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "Automatic"
-msgstr ""
+msgstr "Otomatis"
 
 #: ../data/interfaces/parole-settings.ui.h:2
 msgid "X Window System (X11/XShm/Xv)"
@@ -461,7 +462,7 @@ msgstr "Berdasarkan Ekstensi"
 
 #: ../data/interfaces/save-playlist.ui.h:2
 msgid "Save Playlist as..."
-msgstr ""
+msgstr "Simpan Senarai Putar sebagai..."
 
 #: ../data/interfaces/save-playlist.ui.h:3
 msgid "File Type"
@@ -533,7 +534,7 @@ msgstr "Bisukan"
 
 #: ../data/interfaces/shortcuts.ui.h:14
 msgid "Toggle playlist"
-msgstr "Jungkitkan daftar putar"
+msgstr "Jungkitkan senarai putar"
 
 #: ../data/interfaces/shortcuts.ui.h:15
 msgid "Select previous item"
@@ -574,11 +575,11 @@ msgstr "Maju 10 detik"
 
 #: ../data/interfaces/shortcuts.ui.h:24
 msgid "Go back 1 minute"
-msgstr ""
+msgstr "Mundur 1 menit"
 
 #: ../data/interfaces/shortcuts.ui.h:25
 msgid "Go forward 1 minute"
-msgstr ""
+msgstr "Maju 1 menit"
 
 #: ../data/interfaces/shortcuts.ui.h:26
 msgid "Go back 10 minutes"
@@ -626,7 +627,7 @@ msgid ""
 "Automatic video output option was added to improve usage on virtual machines"
 " and low power devices. A large number of bugs were also resolved, making "
 "this release suitable for all users."
-msgstr ""
+msgstr "Rilis ini menandai rilis stabil pertama dari seri 1.0. Opsi keluaran video otomatis yang baru telah ditambahkan untuk meningkatkan penggunaan pada mesin virtual dan perangkat berdaya rendah. Sejumlah besar kutu juga telah diselesaikan, menjadikan rilis ini sesuai untuk semua pengguna."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:5
 msgid ""
@@ -675,7 +676,7 @@ msgid ""
 "playlists. Furthermore existing plugins have been improved and a new one has"
 " been added (MPRIS2). Most of the artwork has been updated for this release "
 "and we use the GStreamer1.0 framework now by default."
-msgstr "Rilis ini menampilkan transisi yang telah selesai ke toolkit Gtk+ 3, peningkatan pada antarmuka pengguna (menu yang lebih ramping), daftar putar yang lebih baik. Selanjutnya pengaya yang ada telah diperbaiki dan yang baru telah ditambahkan (MPRIS2). Sebagian besar karya seni telah diperbarui untuk rilis ini dan kami menggunakan kerangka GStreamer1.0 sekarang secara bawaan."
+msgstr "Rilis ini menampilkan transisi yang telah selesai ke toolkit Gtk+ 3, peningkatan pada antarmuka pengguna (menu yang lebih ramping), senarai putar yang lebih baik. Selanjutnya pengaya yang ada telah diperbaiki dan yang baru telah ditambahkan (MPRIS2). Sebagian besar karya seni telah diperbarui untuk rilis ini dan kami menggunakan kerangka GStreamer1.0 sekarang secara bawaan."
 
 #: ../src/common/parole-common.c:83
 msgid "Message"
@@ -696,11 +697,11 @@ msgstr "CD Audio"
 
 #: ../src/gst/parole-gst.c:1267
 msgid "Unable to install missing codecs."
-msgstr ""
+msgstr "Tak dapat memasang codec yang dibutuhkan."
 
 #: ../src/gst/parole-gst.c:1270
 msgid "No available plugin installer was found."
-msgstr ""
+msgstr "Tak ditemukan pemasang plugin yang tersedia."
 
 #: ../src/gst/parole-gst.c:1321
 msgid "Additional software is required."
@@ -859,13 +860,13 @@ msgstr "Semua berkas"
 #, c-format
 msgid "Playlist (%i item)"
 msgid_plural "Playlist (%i items)"
-msgstr[0] "Daftar putar (%i item)"
+msgstr[0] "Senarai putar (%i item)"
 
 #: ../src/parole-medialist.c:218 ../src/parole-medialist.c:1472
 #, c-format
 msgid "Playlist (%i chapter)"
 msgid_plural "Playlist (%i chapters)"
-msgstr[0] "Daftar puter (%i bagian)"
+msgstr[0] "Senarai puter (%i bagian)"
 
 #: ../src/parole-medialist.c:387 ../src/parole-player.c:708
 #, c-format
@@ -915,7 +916,7 @@ msgstr "Buka Isi Folder"
 
 #: ../src/parole-player.c:526
 msgid "Hide Playlist"
-msgstr "Sembunyikan Daftar Putar"
+msgstr "Sembunyikan Senarai Putar"
 
 #: ../src/parole-player.c:526 ../src/parole-player.c:3397
 msgid "Show Playlist"
@@ -1060,7 +1061,7 @@ msgstr "Posisi:"
 #. Clear Recent Menu Item
 #: ../src/parole-player.c:3229
 msgid "_Clear recent items..."
-msgstr ""
+msgstr "_Bersihkan item baru-baru ini..."
 
 #: ../src/parole-player.c:3548
 msgid "Audio Track:"
@@ -1077,7 +1078,7 @@ msgstr "Tutup"
 
 #: ../src/parole-about.c:74
 msgid "translator-credits"
-msgstr "Kukuh Syafaat <syafaatkukuh@gmail.com>, 2017."
+msgstr "Kukuh Syafaat <syafaatkukuh@gmail.com>, 2017.\nTriyan W. Nugroho <triyan.wn@gmail.com>, 2020."
 
 #: ../src/parole-about.c:77
 msgid "Visit Parole website"
