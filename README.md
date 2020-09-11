@@ -14,25 +14,25 @@ contains some useful examples.
 
 ### Homepage
 
-[parole documentation](https://docs.xfce.org/xfce/parole/start)
+[parole documentation](https://docs.xfce.org/apps/parole/start)
 
 ### Changelog
 
-See [NEWS](https://gitlab.xfce.org/xfce/parole/-/blob/master/NEWS) for details on changes and fixes made in the current release.
+See [NEWS](https://gitlab.xfce.org/apps/parole/-/blob/master/NEWS) for details on changes and fixes made in the current release.
 
 ### Source Code Repository
 
-[parole source code](https://gitlab.xfce.org/xfce/parole)
+[parole source code](https://gitlab.xfce.org/apps/parole)
 
 ### Download A Release Tarball
 
-[parole archive](https://archive.xfce.org/src/xfce/parole)
+[parole archive](https://archive.xfce.org/src/apps/parole)
     or
-[parole tags](https://gitlab.xfce.org/xfce/parole/-/tags)
+[parole tags](https://gitlab.xfce.org/apps/parole/-/tags)
 
 ### Installation
 
-From source: 
+From source code repository: 
 
     % cd parole
     % ./autogen.sh
@@ -49,5 +49,5 @@ From release tarball:
 
 ### Reporting Bugs
 
-Visit the [reporting bugs](https://docs.xfce.org/xfce/parole/bugs) page to view currently open bug reports and instructions on reporting new bugs or submitting bugfixes.
+Visit the [reporting bugs](https://docs.xfce.org/apps/parole/bugs) page to view currently open bug reports and instructions on reporting new bugs or submitting bugfixes.
 
