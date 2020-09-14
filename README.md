@@ -1,4 +1,4 @@
-[![License](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://gitlab.xfce.org/xfce/parole/COPYING)
+[![License](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://gitlab.xfce.org/apps/parole/-/blob/master/COPYING)
 
 # parole
 
@@ -6,15 +6,15 @@ Parole is a modern simple media player based on the GStreamer framework and
 written to fit well in the Xfce desktop. Parole features playback of local 
 media files, DVD/CD and live streams.
 
-Parole is extensible via plugins, for a complete how to write a plugin for
-Parole see the Plugins API documentation and the plugins directory which 
+Parole is extensible via plugins, for a complete how-to on writing a plugin for
+Parole, see the Plugins API documentation and the plugins directory which 
 contains some useful examples.
 
 ----
 
 ### Homepage
 
-[parole documentation](https://docs.xfce.org/apps/parole/start)
+[Parole documentation](https://docs.xfce.org/apps/parole/start)
 
 ### Changelog
 
@@ -22,13 +22,13 @@ See [NEWS](https://gitlab.xfce.org/apps/parole/-/blob/master/NEWS) for details o
 
 ### Source Code Repository
 
-[parole source code](https://gitlab.xfce.org/apps/parole)
+[Parole source code](https://gitlab.xfce.org/apps/parole)
 
-### Download A Release Tarball
+### Download a Release Tarball
 
-[parole archive](https://archive.xfce.org/src/apps/parole)
+[Parole archive](https://archive.xfce.org/src/apps/parole)
     or
-[parole tags](https://gitlab.xfce.org/apps/parole/-/tags)
+[Parole tags](https://gitlab.xfce.org/apps/parole/-/tags)
 
 ### Installation
 
