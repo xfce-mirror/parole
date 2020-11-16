@@ -5,13 +5,13 @@
 # Translators:
 # Aputsiak Niels Janussen <aj@isit.gl>, 2013-2014
 # Chris Darnell <chris@cedeel.com>, 2013
-# scootergrisen, 2016-2019
+# scootergrisen, 2016-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-23 00:31+0200\n"
-"PO-Revision-Date: 2020-10-13 16:17+0000\n"
+"PO-Revision-Date: 2020-11-16 23:46+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -747,7 +747,7 @@ msgstr "Fortsæt"
 
 #: ../src/gst/parole-gst.c:1883
 msgid "GStreamer Error"
-msgstr "GStreamer-fejl"
+msgstr "Fejl ved GStreamer"
 
 #: ../src/gst/parole-gst.c:1884
 msgid "Parole Media Player cannot start."
@@ -757,7 +757,7 @@ msgstr "Parole Media Player kan ikke starte."
 #: ../src/gst/parole-gst.c:1958
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
-msgstr "Kan ikke indlæse pluginet \"%s\", kontroller din GStreamer-installation."
+msgstr "Kan ikke indlæse pluginet \"%s\", tjek din GStreamer-installation."
 
 #: ../src/gst/parole-gst.c:2516 ../src/gst/parole-gst.c:2520
 #, c-format
@@ -964,7 +964,7 @@ msgstr "Pause"
 
 #: ../src/parole-player.c:1712
 msgid "GStreamer backend error"
-msgstr "GStreamer-backend-fejl"
+msgstr "Fejl ved GStreamer-backend"
 
 #: ../src/parole-player.c:1793
 msgid "Unknown Song"
@@ -1239,7 +1239,7 @@ msgstr "Plugin kunne ikke indlæses"
 
 #: ../src/parole-plugins-manager.c:254
 msgid "Please check your installation"
-msgstr "Kontroller venligst din installation"
+msgstr "Tjek venligst din installation"
 
 #: ../src/parole-plugins-manager.c:375
 msgid "No installed plugins found on this system"
@@ -1247,7 +1247,7 @@ msgstr "Ingen installerede plugins fundet på dette system"
 
 #: ../src/parole-plugins-manager.c:376
 msgid "Please check your installation."
-msgstr "Kontroller venligst din installation."
+msgstr "Tjek venligst din installation."
 
 #: ../src/misc/parole-filters.c:66
 msgid "Audio"
