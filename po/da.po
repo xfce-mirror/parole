@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-23 00:31+0200\n"
-"PO-Revision-Date: 2020-11-16 23:46+0000\n"
+"PO-Revision-Date: 2020-11-16 23:51+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -757,7 +757,7 @@ msgstr "Parole Media Player kan ikke starte."
 #: ../src/gst/parole-gst.c:1958
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
-msgstr "Kan ikke indlæse pluginet \"%s\", tjek din GStreamer-installation."
+msgstr "Kan ikke indlæse pluginet \"%s\", tjek din installation af GStreamer."
 
 #: ../src/gst/parole-gst.c:2516 ../src/gst/parole-gst.c:2520
 #, c-format
@@ -989,7 +989,7 @@ msgstr "Ukendt kunstner"
 
 #: ../src/parole-player.c:1871
 msgid "Buffering"
-msgstr "Opbygger buffer"
+msgstr "Mellemlagrer"
 
 #: ../src/parole-player.c:1982 ../src/parole-player.c:3372
 msgid "Fullscreen"
