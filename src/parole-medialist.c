@@ -190,6 +190,7 @@ enum {
     URI_OPENED,
     SHOW_PLAYLIST,
     ISO_OPENED,
+    KEY_FWD_EVENT,
     LAST_SIGNAL
 };
 
@@ -519,15 +520,9 @@ void    parole_media_list_drag_data_received_cb(GtkWidget *widget,
     gtk_drag_finish(drag_context, added == i ? TRUE : FALSE, FALSE, drag_time);
 }
 
-static GtkWidget *
-parole_media_list_get_player_widget(ParoleMediaList *list) {
-    GtkWidget *paned = gtk_widget_get_ancestor(GTK_WIDGET(list->priv->view), GTK_TYPE_PANED);
-    GtkWidget *player = GTK_WIDGET(gtk_container_get_children(GTK_CONTAINER(paned))[0].data);
-    return player;
-}
-
 gboolean parole_media_list_key_press(GtkWidget *widget, GdkEventKey *ev, ParoleMediaList *list) {
     GtkWidget *vbox_player;
+    GdkEvent *event;
     switch ( ev->keyval ) {
         case GDK_KEY_Delete:
             parole_media_list_remove_clicked_cb(NULL, list);
@@ -537,9 +532,8 @@ gboolean parole_media_list_key_press(GtkWidget *widget, GdkEventKey *ev, ParoleM
         case GDK_KEY_Left:
         case GDK_KEY_Page_Down:
         case GDK_KEY_Page_Up:
-        case GDK_KEY_Escape:
-            vbox_player = parole_media_list_get_player_widget(list);
-            gtk_widget_grab_focus(vbox_player);
+            event = gdk_event_copy ((GdkEvent *)ev);
+            g_signal_emit(G_OBJECT(list), signals[KEY_FWD_EVENT], 0, event);
             return TRUE;
             break;
         default:
@@ -1362,6 +1356,15 @@ parole_media_list_class_init(ParoleMediaListClass *klass) {
                       NULL, NULL,
                       g_cclosure_marshal_VOID__STRING,
                       G_TYPE_NONE, 1, G_TYPE_STRING);
+
+    signals[KEY_FWD_EVENT] =
+        g_signal_new("key-forward",
+                      PAROLE_TYPE_MEDIA_LIST,
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET(ParoleMediaListClass, key_fwd_event),
+                      NULL, NULL,
+                      g_cclosure_marshal_VOID__POINTER,
+                      G_TYPE_NONE, 1, G_TYPE_POINTER);
 
     parole_media_list_dbus_class_init(klass);
 }

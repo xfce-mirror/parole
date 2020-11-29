@@ -82,6 +82,9 @@ typedef struct {
 
     void            (*dvd_chapter_count)            (ParoleMediaList *list,
                                                      gint chapter_count);
+
+    void            (*key_fwd_event)                (ParoleMediaList *list,
+                                                     gpointer *event);
 } ParoleMediaListClass;
 
 GType               parole_media_list_get_type      (void) G_GNUC_CONST;

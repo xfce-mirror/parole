@@ -152,11 +152,15 @@ void        parole_player_playpause_action_cb(GSimpleAction *action);
 void        parole_player_pause_clicked(GtkButton *button,
                                                      ParolePlayer *player);
 
+void        parole_player_playlist_toggled_cb(GtkWidget *button,
+                                              ParolePlayer    *player);
+
+void        parole_player_playlist_menu_toggled_cb(GtkWidget *button,
+                                              ParolePlayer    *player);
+
 void        parole_player_next_action_cb(GSimpleAction *action);
 
 void        parole_player_previous_action_cb(GSimpleAction *action);
-
-void        parole_player_toggle_playlist_action_cb(GSimpleAction *action);
 
 void        parole_player_fullscreen_action_cb(GSimpleAction *action);
 
@@ -218,6 +222,9 @@ gboolean    parole_player_volume_scroll_event_cb(GtkWidget *widget,
                                                      GdkEventScroll *ev,
                                                      ParolePlayer *player);
 
+static void parole_player_volume_popdown_cb(GtkWidget *widget,
+                                            ParolePlayer *player);
+
 static void parole_player_clear_subtitles(ParolePlayer *player);
 
 static void parole_player_clear_audio_tracks(ParolePlayer *player);
@@ -253,6 +260,10 @@ gboolean    parole_player_gst_widget_button_press(GtkWidget *widget,
 gboolean    parole_player_gst_widget_button_release(GtkWidget *widget,
                                                      GdkEventButton *ev,
                                                      ParolePlayer *player);
+
+void
+parole_player_schedule_hide_controls                (ParolePlayer *player,
+                                                     gint seconds);
 
 gboolean
 parole_player_gst_widget_motion_notify_event(GtkWidget *widget,
@@ -323,6 +334,11 @@ void        parole_player_widget_activate_action(GtkWidget *widget,
 static void parole_player_set_cursor_visible(ParolePlayer *player,
                                                      gboolean visible);
 
+static gboolean
+parole_player_handle_key_value                      (guint keyval,
+                                                     guint state,
+                                                     ParolePlayer *player);
+
 gboolean parole_player_hide_controls(gpointer data);
 
 static GtkTargetEntry target_entry[] = {
@@ -359,14 +375,13 @@ struct ParolePlayerPrivate {
 
     GtkWidget          *window;
     GtkWidget          *playlist_nt;
+    GtkWidget          *playlist_popover;
     /* Parole Player layouts */
     gboolean            embedded;
     gboolean            full_screen;
     gboolean            mini_mode;
     /* Remembered window sizes */
     gint                last_h, last_w;
-    /* HPaned handle-width for calculating size with playlist */
-    gint                handle_width;
 
     /* Menubar */
     GtkWidget          *menu_bar;
@@ -393,8 +408,8 @@ struct ParolePlayerPrivate {
     GtkWidget          *progressbar_buffering;
     GtkWidget          *volume;
     GtkWidget          *mute;
-    GtkWidget          *showhide_playlist_button;
     GtkWidget          *showhide_playlist_menu_item;
+    GtkWidget          *showhide_playlist_button;
     GtkWidget          *repeat_menu_item;
     GtkWidget          *shuffle_menu_item;
     GtkWidget          *revealer;
@@ -453,7 +468,6 @@ struct ParolePlayerPrivate {
     GSimpleAction      *media_playpause_action;
     GSimpleAction      *media_previous_action;
     GSimpleAction      *media_fullscreen_action;
-    GSimpleAction      *toggle_playlist_action;
     GSimpleAction      *toggle_repeat_action;
     GSimpleAction      *toggle_shuffle_action;
 
@@ -521,54 +535,45 @@ static void toggle_action_cb(GtkWidget *widget, GSimpleAction *action) {
                                        !g_simple_toggle_action_get_active(action));
 }
 
-void parole_player_set_playlist_visible(ParolePlayer *player, gboolean visibility) {
-    gint window_w, window_h, playlist_w;
-    GtkAllocation *allocation = g_new0(GtkAllocation, 1);
-
-    gtk_widget_set_tooltip_text(GTK_WIDGET(player->priv->showhide_playlist_button),
-        visibility ? _("Hide Playlist") : _("Show Playlist"));
-
-    if (gtk_widget_get_visible (player->priv->playlist_nt) == visibility)
-        return;
-
-    gtk_window_get_size(GTK_WINDOW(player->priv->window), &window_w, &window_h);
-
-    /* Get the playlist width.  If we fail to get it, use the default 220. */
-    gtk_widget_get_allocation(GTK_WIDGET(player->priv->playlist_nt), allocation);
-    playlist_w = allocation->width;
-    if (playlist_w == 1)
-        playlist_w = 220;
-
-    g_simple_toggle_action_set_active(player->priv->toggle_playlist_action, visibility);
-    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(player->priv->showhide_playlist_menu_item), visibility);
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(player->priv->showhide_playlist_button), visibility);
-    if ( visibility ) {
-        if ( !player->priv->full_screen )
-            gtk_window_resize(GTK_WINDOW(player->priv->window),
-                window_w+playlist_w+player->priv->handle_width, window_h);
-
-        gtk_widget_show(player->priv->playlist_nt);
-        g_object_set(G_OBJECT(player->priv->conf),
-                        "showhide-playlist", TRUE,
-                        NULL);
-    } else {
-        gtk_widget_hide(player->priv->playlist_nt);
-        g_object_set(G_OBJECT(player->priv->conf),
-                        "showhide-playlist", FALSE,
-                        NULL);
-
-        if ( !player->priv->full_screen )
-            gtk_window_resize(GTK_WINDOW(player->priv->window),
-                window_w-playlist_w-player->priv->handle_width, window_h);
-    }
+gboolean parole_player_get_playlist_visible(ParolePlayer *player) {
+    return gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(player->priv->showhide_playlist_button));
 }
 
-void parole_player_toggle_playlist_action_cb(GSimpleAction *action) {
-    gboolean   visible;
+gboolean parole_player_get_volume_visible(ParolePlayer *player) {
+    GtkWidget *popup;
 
-    visible = gtk_widget_get_visible(parole_player->priv->playlist_nt);
+    popup = gtk_scale_button_get_popup (GTK_SCALE_BUTTON (player->priv->volume));
 
-    parole_player_set_playlist_visible(parole_player, !visible);
+    return gtk_widget_get_visible (popup);
+}
+
+void parole_player_set_playlist_visible(ParolePlayer *player, gboolean visibility) {
+    if (visibility && player->priv->control != NULL) {
+        gtk_widget_show(gtk_widget_get_parent(player->priv->control));
+        gtk_revealer_set_reveal_child(GTK_REVEALER(player->priv->revealer), TRUE);
+        parole_player_set_cursor_visible(player, TRUE);
+    }
+
+    if (gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(player->priv->showhide_playlist_menu_item)) != visibility)
+        gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(player->priv->showhide_playlist_menu_item), visibility);
+
+    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(player->priv->showhide_playlist_button)) != visibility)
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(player->priv->showhide_playlist_button), visibility);
+
+    if (!visibility)
+        parole_player_schedule_hide_controls (player, 1);
+    
+    g_object_set(G_OBJECT(player->priv->conf),
+                    "showhide-playlist", visibility,
+                    NULL);
+}
+
+void parole_player_playlist_menu_toggled_cb(GtkWidget *menu_item, ParolePlayer *player) {
+    parole_player_set_playlist_visible(player, gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(menu_item)));
+}
+
+void parole_player_playlist_toggled_cb(GtkWidget *button, ParolePlayer *player) {
+    parole_player_set_playlist_visible(player, gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(button)));
 }
 
 static void
@@ -1142,6 +1147,12 @@ parole_player_iso_opened_cb(ParoleMediaList *list, const gchar *uri, ParolePlaye
 }
 
 static void
+parole_player_key_forward_cb(ParoleMediaList *list, GdkEventKey *event, ParolePlayer *player) {
+    parole_player_handle_key_value(event->keyval, event->state, player);
+    gdk_event_free ((GdkEvent *)event);
+}
+
+static void
 parole_player_recent_menu_clear_activated_cb(GtkWidget *widget, ParolePlayer *player) {
     GtkWidget *dlg;
     GtkWidget *clear_button;
@@ -1391,18 +1402,12 @@ parole_player_playing(ParolePlayer *player, const ParoleStream *stream) {
 
     parole_player_save_uri(player, stream);
     parole_media_list_select_row(player->priv->list, player->priv->row);
-    gtk_widget_grab_focus(player->priv->gst);
+    if (!parole_player_get_playlist_visible (player)) {
+        gtk_widget_grab_focus(player->priv->gst);
+    }
     parole_player_update_languages(player, PAROLE_GST(player->priv->gst));
 
-    g_object_get(G_OBJECT(player->priv->conf),
-                 "hide-controls-timeout", &hide_controls_timeout,
-                 NULL);
-    if (hide_controls_timeout != 0 || player->priv->full_screen) {
-        if (player->priv->full_screen)
-            g_timeout_add_seconds(4, (GSourceFunc)parole_player_hide_controls, player);
-        else
-            g_timeout_add_seconds(hide_controls_timeout, (GSourceFunc)parole_player_hide_controls, player);
-    }
+    parole_player_schedule_hide_controls(player, -1);
 }
 
 static void
@@ -1966,7 +1971,6 @@ void
 parole_player_reset_controls(ParolePlayer *player, gboolean fullscreen) {
     static gint current_page = 0;
 
-    gboolean show_playlist;
     gboolean always_hide_menubar = FALSE;
 
     gint h, w;
@@ -1985,26 +1989,18 @@ parole_player_reset_controls(ParolePlayer *player, gboolean fullscreen) {
             else if (always_hide_menubar == TRUE)
                 gtk_widget_hide(player->priv->menu_bar);
 
-            show_playlist = g_simple_toggle_action_get_active(player->priv->toggle_playlist_action);
-            gtk_widget_show(player->priv->playlist_nt);
-            parole_player_set_playlist_visible(player, show_playlist);
-
             gtk_menu_item_set_label(GTK_MENU_ITEM(player->priv->fullscreen_menu_item), _("_Fullscreen"));
             gtk_widget_set_tooltip_text(player->priv->fullscreen_button, _("Fullscreen"));
             gtk_image_set_from_icon_name(GTK_IMAGE(player->priv->fullscreen_image), "view-fullscreen-symbolic", 24);
-            gtk_widget_set_visible(GTK_WIDGET(player->priv->showhide_playlist_button), TRUE);
 
             gtk_window_unfullscreen(GTK_WINDOW(player->priv->window));
             gtk_notebook_set_current_page(GTK_NOTEBOOK(player->priv->playlist_nt), current_page);
             player->priv->full_screen = FALSE;
         } else {
             gtk_widget_hide(player->priv->menu_bar);
-            gtk_widget_hide(player->priv->playlist_nt);
-            parole_player_set_playlist_visible(player, FALSE);
             gtk_menu_item_set_label(GTK_MENU_ITEM(player->priv->fullscreen_menu_item), _("Leave _Fullscreen"));
             gtk_widget_set_tooltip_text(player->priv->fullscreen_button, _("Leave Fullscreen"));
             gtk_image_set_from_icon_name(GTK_IMAGE(player->priv->fullscreen_image), "view-restore-symbolic", 24);
-            gtk_widget_set_visible(GTK_WIDGET(player->priv->showhide_playlist_button), FALSE);
 
             current_page = gtk_notebook_get_current_page(GTK_NOTEBOOK(player->priv->playlist_nt));
 
@@ -2015,15 +2011,11 @@ parole_player_reset_controls(ParolePlayer *player, gboolean fullscreen) {
 
     if ( player->priv->embedded ) {
         gtk_widget_hide(player->priv->menu_bar);
-        gtk_widget_hide(player->priv->playlist_nt);
         gtk_widget_hide(player->priv->fullscreen_button);
-        gtk_widget_hide(player->priv->showhide_playlist_button);
     } else {
         if ( player->priv->mini_mode ) {
             gtk_widget_hide(player->priv->menu_bar);
-            gtk_widget_hide(player->priv->playlist_nt);
             gtk_widget_hide(player->priv->fullscreen_button);
-            gtk_widget_hide(player->priv->showhide_playlist_button);
             gtk_widget_hide(player->priv->audiobox_text);
             gtk_widget_set_halign(player->priv->audiobox_cover, GTK_ALIGN_CENTER);
 
@@ -2047,9 +2039,6 @@ parole_player_reset_controls(ParolePlayer *player, gboolean fullscreen) {
 
             if ( !player->priv->full_screen ) {
                 gtk_widget_show(player->priv->menu_bar);
-                gtk_widget_show(player->priv->showhide_playlist_button);
-                if ( gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (player->priv->showhide_playlist_button)) )
-                    gtk_widget_show(player->priv->playlist_nt);
                 gtk_window_resize(GTK_WINDOW(player->priv->window), w, h);
             }
         }
@@ -2248,6 +2237,12 @@ gboolean parole_player_hide_controls(gpointer data) {
 
     player = PAROLE_PLAYER(data);
 
+    if (parole_player_get_playlist_visible (player))
+        return FALSE;
+
+    if (parole_player_get_volume_visible (player))
+        return FALSE;
+
     gtk_revealer_set_reveal_child(GTK_REVEALER(player->priv->revealer), FALSE);
 
     parole_player_set_cursor_visible(player, FALSE);
@@ -2255,8 +2250,8 @@ gboolean parole_player_hide_controls(gpointer data) {
     return FALSE;
 }
 
-gboolean
-parole_player_gst_widget_motion_notify_event(GtkWidget *widget, GdkEventMotion *ev, ParolePlayer *player) {
+void
+parole_player_schedule_hide_controls (ParolePlayer *player, gint seconds) {
     static gulong hide_timeout;
     int hide_controls_timeout;
 
@@ -2265,30 +2260,38 @@ parole_player_gst_widget_motion_notify_event(GtkWidget *widget, GdkEventMotion *
         hide_timeout = 0;
     }
 
+    if (!gtk_revealer_get_reveal_child(GTK_REVEALER(player->priv->revealer)))
+        return;
+    if ( player->priv->state != PAROLE_STATE_PLAYING )
+        return;
+
+    g_object_get(G_OBJECT(player->priv->conf),
+                    "hide-controls-timeout", &hide_controls_timeout,
+                    NULL);
+    if (hide_controls_timeout == 0)
+        return;
+
+    if (seconds < 0) {
+        seconds = (gint)hide_controls_timeout;
+    }
+
+    hide_timeout = g_timeout_add_seconds((guint)seconds,
+                                         (GSourceFunc) parole_player_hide_controls, player);
+
+    return;
+}
+
+gboolean
+parole_player_gst_widget_motion_notify_event(GtkWidget *widget, GdkEventMotion *ev, ParolePlayer *player) {
     gtk_widget_show(gtk_widget_get_parent(player->priv->control));
 
     parole_player_set_cursor_visible(player, TRUE);
 
-    if (gtk_revealer_get_reveal_child(GTK_REVEALER(player->priv->revealer))) {
-        if ((gdouble)gtk_widget_get_allocated_height(widget) - ev->y >= 32.0) {
-            if ( player->priv->state == PAROLE_STATE_PLAYING ) {
-                g_object_get(G_OBJECT(player->priv->conf),
-                              "hide-controls-timeout", &hide_controls_timeout,
-                              NULL);
-
-                if (hide_controls_timeout != 0 || player->priv->full_screen) {
-                    if (player->priv->full_screen)
-                        hide_timeout = g_timeout_add_seconds(4,
-                                                      (GSourceFunc) parole_player_hide_controls, player);
-                    else
-                        hide_timeout = g_timeout_add_seconds(hide_controls_timeout,
-                                                      (GSourceFunc) parole_player_hide_controls, player);
-                }
-            }
-        }
-    } else {
+    if (!gtk_revealer_get_reveal_child(GTK_REVEALER(player->priv->revealer))) {
         gtk_revealer_set_reveal_child(GTK_REVEALER(player->priv->revealer), TRUE);
     }
+
+    parole_player_schedule_hide_controls (player, -1);
 
     return FALSE;
 }
@@ -2339,6 +2342,10 @@ parole_property_notify_cb_volume(ParoleGst *gst, GParamSpec *spec, ParolePlayer 
 static void
 parole_player_change_volume(ParolePlayer *player, gdouble value) {
     parole_gst_set_volume(PAROLE_GST(player->priv->gst), value);
+}
+
+static void parole_player_volume_popdown_cb(GtkWidget *widget, ParolePlayer *player) {
+    parole_player_schedule_hide_controls (player, 1);
 }
 
 gboolean
@@ -2543,25 +2550,16 @@ parole_player_reset_saver_changed_cb(ParolePlayer *player) {
 }
 
 static gboolean
-parole_player_handle_key_press(GdkEventKey *ev, ParolePlayer *player) {
-    GtkWidget *focused;
+parole_player_handle_key_value(guint keyval, guint state, ParolePlayer *player) {
     /* Seek duration in seconds */
     gdouble seek_short = 10, seek_medium = 60, seek_long = 600;
 
     gboolean ret_val = FALSE;
 
-    focused = gtk_window_get_focus(GTK_WINDOW(player->priv->window));
-
-    if ( focused ) {
-        if (gtk_widget_is_ancestor(focused, player->priv->playlist_nt)) {
-            return FALSE;
-        }
-    }
-
-    if (ev->state & GDK_MOD1_MASK)
+    if (state & GDK_MOD1_MASK)
         return FALSE;
 
-    switch (ev->keyval) {
+    switch (keyval) {
         case GDK_KEY_f:
         case GDK_KEY_F:
             if ( player->priv->embedded != TRUE ) {
@@ -2578,7 +2576,7 @@ parole_player_handle_key_press(GdkEventKey *ev, ParolePlayer *player) {
         case GDK_KEY_Right:
             /* Media seekable ?*/
             if (gtk_widget_get_sensitive(player->priv->range)) {
-                if (ev->state & GDK_CONTROL_MASK) {
+                if (state & GDK_CONTROL_MASK) {
                     parole_player_seekf_cb(NULL, player, seek_medium);
                 } else {
                     parole_player_seekf_cb(NULL, player, seek_short);
@@ -2588,7 +2586,7 @@ parole_player_handle_key_press(GdkEventKey *ev, ParolePlayer *player) {
             break;
         case GDK_KEY_Left:
             if (gtk_widget_get_sensitive(player->priv->range)) {
-                if (ev->state & GDK_CONTROL_MASK) {
+                if (state & GDK_CONTROL_MASK) {
                     parole_player_seekb_cb(NULL, player, seek_medium);
                 } else {
                     parole_player_seekb_cb(NULL, player, seek_short);
@@ -2612,7 +2610,7 @@ parole_player_handle_key_press(GdkEventKey *ev, ParolePlayer *player) {
             parole_player_full_screen(player, FALSE);
             break;
         case GDK_KEY_m:
-            if (ev->state & GDK_CONTROL_MASK) {
+            if (state & GDK_CONTROL_MASK) {
                 parole_player_hide_menubar_cb(NULL, player);
             }
             ret_val = TRUE;
@@ -2629,7 +2627,7 @@ parole_player_handle_key_press(GdkEventKey *ev, ParolePlayer *player) {
             break;
         case GDK_KEY_q:
         case GDK_KEY_Q:
-            if (ev->state & GDK_CONTROL_MASK) {
+            if (state & GDK_CONTROL_MASK) {
                 parole_player_quit(player);
                 ret_val = TRUE;
             }
@@ -2665,6 +2663,21 @@ parole_player_handle_key_press(GdkEventKey *ev, ParolePlayer *player) {
     }
 
     return ret_val;
+}
+
+static gboolean
+parole_player_handle_key_press(GdkEventKey *ev, ParolePlayer *player) {
+    GtkWidget *focused;
+
+    focused = gtk_window_get_focus(GTK_WINDOW(player->priv->window));
+
+    if ( focused ) {
+        if (gtk_widget_is_ancestor(focused, player->priv->playlist_nt)) {
+            return FALSE;
+        }
+    }
+
+    return parole_player_handle_key_value(ev->keyval, ev->state, player);
 }
 
 gboolean
@@ -2989,6 +3002,8 @@ parole_player_configure_event_cb(GtkWidget *widget, GdkEventConfigure *ev, Parol
         }
     }
 
+    gtk_widget_set_size_request(player->priv->playlist_popover, -1, new_h - 100);
+
     return FALSE;
 }
 
@@ -3104,9 +3119,6 @@ parole_player_init(ParolePlayer *player) {
     GtkWidget *infobar_close, *close_icon;
     GtkCellRenderer *cell, *sub_cell;
 
-    /* Content / Media List Panes */
-    GtkWidget *hpaned;
-
     /* Content Area */
     GtkWidget *controls_overlay;
     GtkWidget *controls_parent;
@@ -3115,6 +3127,8 @@ parole_player_init(ParolePlayer *player) {
 
     /* Player Controls */
     GList *widgets;
+    GtkWidget *playlist;
+    GtkWidget *playlist_popover;
 
     /* Properties */
     gchar *videosink = NULL;
@@ -3213,10 +3227,7 @@ parole_player_init(ParolePlayer *player) {
                               GTK_WIDGET(player->priv->list),
                               gtk_label_new(_("Playlist")));
 
-    // Playlist divider/handle
-    hpaned = GTK_WIDGET(gtk_builder_get_object(builder, "hpaned"));
-    gtk_widget_style_get(hpaned, "handle-size", &player->priv->handle_width, NULL);
-
+    player->priv->playlist_popover = GTK_WIDGET(gtk_builder_get_object(builder, "notebook-playlist-popover"));
 
     /* Menu Bar */
     player->priv->menu_bar = GTK_WIDGET(gtk_builder_get_object(builder, "menubar"));
@@ -3411,28 +3422,20 @@ parole_player_init(ParolePlayer *player) {
 
 
     /* Toggle Playlist */
-    // GSimpleAction
-    player->priv->toggle_playlist_action = g_simple_toggle_action_new("toggle_playlist_action", NULL);
-    g_simple_action_set_enabled(player->priv->toggle_playlist_action, TRUE);
-
-    // Button
-    player->priv->showhide_playlist_button = GTK_WIDGET(gtk_builder_get_object(builder, "media_toggleplaylist"));
 
     // Menu Item
     player->priv->showhide_playlist_menu_item = GTK_WIDGET(gtk_builder_get_object(builder, "show-hide-list"));
-    gtk_menu_item_set_label(GTK_MENU_ITEM(player->priv->showhide_playlist_menu_item), _("Show Playlist"));
 
-    // Set playlist visible before signals are connected
+    // Button
+    player->priv->showhide_playlist_button = GTK_WIDGET(gtk_builder_get_object(builder, "media_playlist"));
+
     parole_player_set_playlist_visible(player, showhide);
 
     // Signals
-    g_signal_connect(G_OBJECT(player->priv->toggle_playlist_action), "activate",
-            G_CALLBACK(parole_player_toggle_playlist_action_cb), NULL);
     g_signal_connect(G_OBJECT(player->priv->showhide_playlist_menu_item), "activate",
-            G_CALLBACK(parole_player_widget_activate_action), player->priv->toggle_playlist_action);
-    g_signal_connect(G_OBJECT(player->priv->showhide_playlist_button), "clicked",
-            G_CALLBACK(parole_player_widget_activate_action), player->priv->toggle_playlist_action);
-
+            G_CALLBACK(parole_player_playlist_menu_toggled_cb), player);
+    g_signal_connect(G_OBJECT(player->priv->showhide_playlist_button), "toggled",
+            G_CALLBACK(parole_player_playlist_toggled_cb), player);
 
     /* Toggle Repeat */
     // GSimpleAction
@@ -3534,6 +3537,8 @@ parole_player_init(ParolePlayer *player) {
     player->priv->volume = GTK_WIDGET(gtk_builder_get_object(builder, "media_volumebutton"));
     player->priv->mute = GTK_WIDGET(gtk_builder_get_object(builder, "volume-mute-menu"));
     parole_player_change_volume(player, (gdouble)(volume/100.));
+
+    g_signal_connect(gtk_scale_button_get_popup(GTK_SCALE_BUTTON(player->priv->volume)), "hide", G_CALLBACK(parole_player_volume_popdown_cb), player);
 
     gtk_widget_set_direction(GTK_WIDGET(gtk_builder_get_object(builder, "ltrbox")), GTK_TEXT_DIR_LTR);
     g_signal_connect(player->priv->control, "draw", G_CALLBACK(parole_overlay_expose_event), NULL);
@@ -3697,6 +3702,9 @@ parole_player_init(ParolePlayer *player) {
 
     g_signal_connect(player->priv->list, "iso-opened",
               G_CALLBACK(parole_player_iso_opened_cb), player);
+
+    g_signal_connect(player->priv->list, "key-forward",
+              G_CALLBACK(parole_player_key_forward_cb), player);
 
     /*
      * Load auto saved media list.
