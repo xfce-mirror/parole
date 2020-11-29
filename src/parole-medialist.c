@@ -206,20 +206,66 @@ parole_media_list_set_widget_sensitive(ParoleMediaList *list, gboolean sensitive
     gtk_widget_set_sensitive(GTK_WIDGET(list->priv->clear_button), sensitive);
 }
 
+static gint
+parole_media_list_get_current_page(ParoleMediaList *list) {
+    return gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook));
+}
+
+static GtkTreeViewColumn *
+parole_media_list_get_current_treeview_column(ParoleMediaList *list) {
+    if (parole_media_list_get_current_page(list) == 0) {
+        return list->priv->col;
+    }
+    return list->priv->disc_col;
+}
+
+static GtkTreeModel *
+parole_media_list_get_current_tree_model(ParoleMediaList *list) {
+    if (parole_media_list_get_current_page(list) == 0) {
+        return GTK_TREE_MODEL(list->priv->store);
+    }
+    return GTK_TREE_MODEL(list->priv->disc_store);
+}
+
+static GtkTreeModelSort *
+parole_media_list_get_current_tree_model_sort(ParoleMediaList *list) {
+    if (parole_media_list_get_current_page(list) == 0)
+        return GTK_TREE_MODEL_SORT(gtk_tree_view_get_model(GTK_TREE_VIEW(list->priv->view)));
+    return GTK_TREE_MODEL_SORT(gtk_tree_view_get_model(GTK_TREE_VIEW(list->priv->disc_view)));
+}
+
+static GtkTreeModelSort *
+parole_media_list_get_tree_model_sort(ParoleMediaList *list, gboolean disc) {
+    if (!disc)
+        return GTK_TREE_MODEL_SORT(gtk_tree_view_get_model(GTK_TREE_VIEW(list->priv->view)));
+    return GTK_TREE_MODEL_SORT(gtk_tree_view_get_model(GTK_TREE_VIEW(list->priv->disc_view)));
+}
+
+static GtkListStore *
+parole_media_list_get_current_list_store(ParoleMediaList *list) {
+    return GTK_LIST_STORE(gtk_tree_model_sort_get_model(parole_media_list_get_current_tree_model_sort(list)));
+}
+
+static GtkListStore *
+parole_media_list_get_list_store(ParoleMediaList *list, gboolean disc) {
+    return GTK_LIST_STORE(gtk_tree_model_sort_get_model(parole_media_list_get_tree_model_sort(list, disc)));
+}
+
 static void
 parole_media_list_set_playlist_count(ParoleMediaList *list, gint n_items) {
+    gchar *title;
+
     /* Toggle sensitivity based on playlist count */
     parole_media_list_set_widget_sensitive(list, n_items != 0);
     gtk_widget_set_sensitive(list->priv->remove_button, n_items != 0);
     gtk_widget_set_sensitive(list->priv->clear_button, n_items != 0);
 
-    if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0) {
-        gtk_tree_view_column_set_title(list->priv->col,
-        g_strdup_printf(ngettext("Playlist (%i item)", "Playlist (%i items)", n_items), n_items));
+    if (parole_media_list_get_current_page(list) == 0) {
+        title = g_strdup_printf(ngettext("Playlist (%i item)", "Playlist (%i items)", n_items), n_items);
     } else {
-        gtk_tree_view_column_set_title(list->priv->disc_col,
-        g_strdup_printf(ngettext("Playlist (%i chapter)", "Playlist (%i chapters)", n_items), n_items));
+        title = g_strdup_printf(ngettext("Playlist (%i chapter)", "Playlist (%i chapters)", n_items), n_items);
     }
+    gtk_tree_view_column_set_title(parole_media_list_get_current_treeview_column(list), title);
 
     /*
      * Will emit the signal media_cursor_changed with FALSE because there is no any
@@ -230,11 +276,7 @@ parole_media_list_set_playlist_count(ParoleMediaList *list, gint n_items) {
 
 gint
 parole_media_list_get_playlist_count(ParoleMediaList *list) {
-    if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0) {
-        return gtk_tree_model_iter_n_children(GTK_TREE_MODEL(list->priv->store), NULL);
-    } else {
-        return gtk_tree_model_iter_n_children(GTK_TREE_MODEL(list->priv->disc_store), NULL);
-    }
+    return gtk_tree_model_iter_n_children(parole_media_list_get_current_tree_model(list), NULL);
 }
 
 /**
@@ -255,7 +297,6 @@ parole_media_list_add(ParoleMediaList *list, ParoleFile *file, gboolean disc, gb
     GtkTreePath *path;
     GtkTreeRowReference *row;
     GtkTreeIter iter;
-    GtkTreeModel *sort_model;
     gint nch;
 
     /* Objects used for the remove-duplicates functionality. */
@@ -267,11 +308,7 @@ parole_media_list_add(ParoleMediaList *list, ParoleFile *file, gboolean disc, gb
                   NULL);
 
     /* Set the list_store variable based on with store we're viewing. */
-    if (disc)
-        sort_model = gtk_tree_view_get_model(GTK_TREE_VIEW(list->priv->disc_view));
-    else
-        sort_model = gtk_tree_view_get_model(GTK_TREE_VIEW(list->priv->view));
-    list_store = GTK_LIST_STORE(gtk_tree_model_sort_get_model(GTK_TREE_MODEL_SORT(sort_model)));
+    list_store = parole_media_list_get_list_store(list, disc);
 
     /* Remove duplicates functionality. If the file being added is already in the
      * playlist, remove it from its current position in the playlist before
@@ -478,11 +515,14 @@ parole_media_list_get_files(ParoleMediaList *list) {
     GtkTreeIter iter;
     gboolean valid;
     GSList *files_list = NULL;
+    GtkTreeModelSort *model;
 
-    for ( valid = gtk_tree_model_get_iter_first (GTK_TREE_MODEL (list->priv->store), &iter);
+    model = parole_media_list_get_current_tree_model_sort(list);
+
+    for ( valid = gtk_tree_model_get_iter_first (GTK_TREE_MODEL(model), &iter);
         valid;
-        valid = gtk_tree_model_iter_next(GTK_TREE_MODEL(list->priv->store), &iter)) {
-        gtk_tree_model_get(GTK_TREE_MODEL(list->priv->store), &iter,
+        valid = gtk_tree_model_iter_next(GTK_TREE_MODEL(model), &iter)) {
+        gtk_tree_model_get(GTK_TREE_MODEL(model), &iter,
                             DATA_COL, &file,
                             -1);
 
@@ -617,11 +657,14 @@ parole_media_list_get_first_selected_file(ParoleMediaList *list) {
     ParoleFile *file = NULL;
     GtkTreeRowReference *row;
     GtkTreeIter iter;
+    GtkTreeModelSort *model;
+
+    model = parole_media_list_get_current_tree_model_sort (list);
 
     row = parole_media_list_get_first_selected_row(list);
 
-    if (gtk_tree_model_get_iter(GTK_TREE_MODEL(list->priv->store), &iter, gtk_tree_row_reference_get_path(row))) {
-        gtk_tree_model_get(GTK_TREE_MODEL(list->priv->store), &iter, DATA_COL, &file, -1);
+    if (gtk_tree_model_get_iter(GTK_TREE_MODEL(model), &iter, gtk_tree_row_reference_get_path(row))) {
+        gtk_tree_model_get(GTK_TREE_MODEL(model), &iter, DATA_COL, &file, -1);
     }
 
     return file;
@@ -686,17 +729,20 @@ gboolean    parole_media_list_query_tooltip(GtkWidget *widget,
                                             GtkTooltip *tooltip,
                                             ParoleMediaList *list) {
     GtkTreePath *path;
+    GtkTreeModelSort *model;
+
+    model = parole_media_list_get_current_tree_model_sort(list);
 
     if (gtk_tree_view_get_path_at_pos(GTK_TREE_VIEW(list->priv->view), x, y, &path, NULL, NULL, NULL)) {
         GtkTreeIter iter;
 
-        if (path && gtk_tree_model_get_iter(GTK_TREE_MODEL(list->priv->store), &iter, path)) {
+        if (path && gtk_tree_model_get_iter(GTK_TREE_MODEL(model), &iter, path)) {
             ParoleFile *file;
             gchar *tip;
             gchar *name;
             gchar *len;
 
-            gtk_tree_model_get(GTK_TREE_MODEL(list->priv->store), &iter,
+            gtk_tree_model_get(GTK_TREE_MODEL(model), &iter,
                                DATA_COL, &file,
                                NAME_COL, &name,
                                LENGTH_COL, &len,
@@ -948,7 +994,7 @@ parole_media_list_remove_clicked_cb(GtkButton *button, ParoleMediaList *list) {
      * As a special case, if iter is NULL,
      * then the number of toplevel nodes is returned. Gtk API doc.
      */
-    nch = gtk_tree_model_iter_n_children(GTK_TREE_MODEL(list->priv->store), NULL);
+    nch = gtk_tree_model_iter_n_children(GTK_TREE_MODEL(model), NULL);
 
     /* No row was selected, then select the first one*/
     if (!row_selected && nch != 0) {
@@ -980,16 +1026,16 @@ parole_media_list_move_up_clicked_cb(GtkButton *button, ParoleMediaList *list) {
 
         /* Get first item */
         path = g_list_nth_data(path_list, 0);
-        if (gtk_tree_model_get_iter(GTK_TREE_MODEL(list->priv->store), &current, path)) {
+        if (gtk_tree_model_get_iter(GTK_TREE_MODEL(model), &current, path)) {
             /* copy it as we don't mess with the list*/
             prev = gtk_tree_path_copy(path);
 
             if (gtk_tree_path_prev(prev)) {
-                if (gtk_tree_model_get_iter(GTK_TREE_MODEL(list->priv->store), &iter, prev)) {
+                if (gtk_tree_model_get_iter(GTK_TREE_MODEL(model), &iter, prev)) {
                     /* Move each item about the previous path */
                     for (i=0; i < g_list_length(path_list); i++) {
                         path = g_list_nth_data(path_list, i);
-                        if (gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &current, path))
+                        if (gtk_tree_model_get_iter (GTK_TREE_MODEL (model), &current, path))
                             gtk_list_store_move_before(GTK_LIST_STORE(model), &current, &iter);
                     }
                 }
@@ -1023,17 +1069,17 @@ parole_media_list_move_down_clicked_cb(GtkButton *button, ParoleMediaList *list)
 
         /* Get first item */
         path = g_list_nth_data(path_list, 0);
-        if (gtk_tree_model_get_iter(GTK_TREE_MODEL(list->priv->store), &current, path)) {
+        if (gtk_tree_model_get_iter(GTK_TREE_MODEL(model), &current, path)) {
             /* copy it as we don't mess with the list*/
             next = gtk_tree_path_copy(path);
 
             gtk_tree_path_next(next);
 
-            if (gtk_tree_model_get_iter(GTK_TREE_MODEL(list->priv->store), &iter, next)) {
+            if (gtk_tree_model_get_iter(GTK_TREE_MODEL(model), &iter, next)) {
                 /* Move each item about the previous path */
                 for (i=0; i < g_list_length(path_list); i++) {
                     path = g_list_nth_data(path_list, i);
-                    if (gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &current, path))
+                    if (gtk_tree_model_get_iter (GTK_TREE_MODEL (model), &current, path))
                         gtk_list_store_move_after(GTK_LIST_STORE(model), &current, &iter);
                 }
             }
@@ -1095,16 +1141,19 @@ parole_media_list_open_folder(GtkWidget *menu) {
 static void
 parole_media_list_add_open_containing_folder(ParoleMediaList *list, GtkWidget *menu, gint x, gint y) {
     GtkTreePath *path;
+    GtkTreeModelSort *model;
+
+    model = parole_media_list_get_current_tree_model_sort(list);
 
     if (gtk_tree_view_get_path_at_pos(GTK_TREE_VIEW(list->priv->view), x, y, &path, NULL, NULL, NULL)) {
         GtkTreeIter iter;
 
-        if (path && gtk_tree_model_get_iter(GTK_TREE_MODEL(list->priv->store), &iter, path)) {
+        if (path && gtk_tree_model_get_iter(GTK_TREE_MODEL(model), &iter, path)) {
             ParoleFile *file;
             const gchar *filename;
             const gchar *uri;
 
-            gtk_tree_model_get(GTK_TREE_MODEL(list->priv->store), &iter,
+            gtk_tree_model_get(GTK_TREE_MODEL(model), &iter,
                                DATA_COL, &file,
                                -1);
 
@@ -1153,7 +1202,7 @@ parole_media_list_clear_disc_list(ParoleMediaList *list) {
 void
 parole_media_list_clear_list(ParoleMediaList *list) {
     TRACE("CLEAR START");
-    gtk_list_store_clear(GTK_LIST_STORE(list->priv->store));
+    gtk_list_store_clear(parole_media_list_get_current_list_store(list));
     parole_media_list_set_playlist_count(list, 0);
     TRACE("CLEAR END");
 }
@@ -1722,19 +1771,17 @@ GtkTreeRowReference *parole_media_list_get_row_n(ParoleMediaList *list, gint wan
     GtkTreeRowReference *row = NULL;
     GtkTreePath *path;
     GtkTreeIter iter;
+    GtkTreeModelSort *model;
 
     if (wanted_row == -1)
         return NULL;
 
+    model = parole_media_list_get_current_tree_model_sort(list);
+
     path = gtk_tree_path_new_from_string(g_strdup_printf("%i", wanted_row));
 
-    if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0) {
-        if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path))
-            row = gtk_tree_row_reference_new(GTK_TREE_MODEL(list->priv->store), path);
-    } else {
-        if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->disc_store), &iter, path))
-            row = gtk_tree_row_reference_new(GTK_TREE_MODEL(list->priv->disc_store), path);
-    }
+    if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (model), &iter, path))
+        row = gtk_tree_row_reference_new(GTK_TREE_MODEL(model), path);
 
     gtk_tree_path_free(path);
 
@@ -1753,11 +1800,11 @@ gboolean parole_media_list_is_selected_row(ParoleMediaList *list) {
 
 gboolean parole_media_list_is_empty(ParoleMediaList *list) {
     GtkTreeIter iter;
+    GtkTreeModelSort *model;
 
-    if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0)
-        return !gtk_tree_model_get_iter_first (GTK_TREE_MODEL (list->priv->store), &iter);
-    else
-        return !gtk_tree_model_get_iter_first (GTK_TREE_MODEL (list->priv->disc_store), &iter);
+    model = parole_media_list_get_current_tree_model_sort(list);
+
+    return !gtk_tree_model_get_iter_first (GTK_TREE_MODEL (model), &iter);
 }
 
 /**
@@ -1770,14 +1817,12 @@ gboolean parole_media_list_is_empty(ParoleMediaList *list) {
 GtkTreeRowReference *parole_media_list_get_first_row(ParoleMediaList *list) {
     GtkTreeRowReference *row = NULL;
     GtkTreeIter iter;
+    GtkTreeModelSort *model;
 
-    if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0) {
-        if ( gtk_tree_model_get_iter_first (GTK_TREE_MODEL (list->priv->store), &iter) )
-            row = parole_media_list_get_row_reference_from_iter(list, &iter, TRUE);
-    } else {
-        if ( gtk_tree_model_get_iter_first (GTK_TREE_MODEL (list->priv->disc_store), &iter) )
-            row = parole_media_list_get_row_reference_from_iter(list, &iter, TRUE);
-    }
+    model = parole_media_list_get_current_tree_model_sort(list);
+
+    if ( gtk_tree_model_get_iter_first (GTK_TREE_MODEL (model), &iter) )
+        row = parole_media_list_get_row_reference_from_iter(list, &iter, TRUE);
 
     return row;
 }
@@ -1816,41 +1861,19 @@ void parole_media_list_select_row(ParoleMediaList *list, GtkTreeRowReference *ro
     }
 }
 
-static void
-parole_media_list_store_set_uint(ParoleMediaList *list, GtkTreeRowReference *row, guint col, guint value) {
-    GtkTreeIter iter;
-    GtkTreePath *path;
-
-    if ( gtk_tree_row_reference_valid(row) ) {
-        path = gtk_tree_row_reference_get_path(row);
-
-        if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0) {
-            if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path) )
-                gtk_list_store_set(list->priv->store, &iter, col, value, -1);
-        } else {
-            if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->disc_store), &iter, path) )
-                gtk_list_store_set(list->priv->disc_store, &iter, col, value, -1);
-        }
-
-        gtk_tree_path_free(path);
-    }
-}
-
 guint parole_media_list_store_get_uint(ParoleMediaList *list, GtkTreeRowReference *row, guint col) {
     GtkTreeIter iter;
     GtkTreePath *path;
     guint val = 0;
+    GtkTreeModelSort *model;
+
+    model = parole_media_list_get_current_tree_model_sort(list);
 
     if (gtk_tree_row_reference_valid(row)) {
         path = gtk_tree_row_reference_get_path(row);
 
-        if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0) {
-            if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path) )
-                gtk_tree_model_get(GTK_TREE_MODEL(list->priv->store), &iter, col, &val, -1);
-        } else {
-            if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->disc_store), &iter, path) )
-                gtk_tree_model_get(GTK_TREE_MODEL(list->priv->disc_store), &iter, col, &val, -1);
-        }
+        if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (model), &iter, path) )
+            gtk_tree_model_get(GTK_TREE_MODEL(model), &iter, col, &val, -1);
 
         gtk_tree_path_free(path);
     }
@@ -1862,17 +1885,15 @@ static void
 parole_media_list_store_set_int(ParoleMediaList *list, GtkTreeRowReference *row, guint col, gint value) {
     GtkTreeIter iter;
     GtkTreePath *path;
+    GtkListStore *model;
+
+    model = parole_media_list_get_current_list_store(list);
 
     if ( gtk_tree_row_reference_valid(row) ) {
         path = gtk_tree_row_reference_get_path(row);
 
-        if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0) {
-            if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path) )
-                gtk_list_store_set(list->priv->store, &iter, col, value, -1);
-        } else {
-            if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->disc_store), &iter, path) )
-                gtk_list_store_set(list->priv->disc_store, &iter, col, value, -1);
-        }
+        if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (model), &iter, path) )
+            gtk_list_store_set(model, &iter, col, value, -1);
 
         gtk_tree_path_free(path);
     }
@@ -1882,17 +1903,15 @@ static void
 parole_media_list_store_set_str(ParoleMediaList *list, GtkTreeRowReference *row, guint col, const gchar *value) {
     GtkTreeIter iter;
     GtkTreePath *path;
+    GtkListStore *model;
+
+    model = parole_media_list_get_current_list_store(list);
 
     if ( gtk_tree_row_reference_valid(row) ) {
         path = gtk_tree_row_reference_get_path(row);
 
-        if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0) {
-            if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path) )
-                gtk_list_store_set(list->priv->store, &iter, col, value, -1);
-        } else {
-            if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->disc_store), &iter, path) )
-                gtk_list_store_set(list->priv->disc_store, &iter, col, value, -1);
-        }
+        if (gtk_tree_model_get_iter(GTK_TREE_MODEL(model), &iter, path))
+            gtk_list_store_set(GTK_LIST_STORE(model), &iter, col, value, -1);
 
         gtk_tree_path_free(path);
     }
@@ -1902,17 +1921,15 @@ gchar* parole_media_list_store_get_str(ParoleMediaList *list, GtkTreeRowReferenc
     GtkTreeIter iter;
     GtkTreePath *path;
     gchar *str = NULL;
+    GtkTreeModelSort *model;
+
+    model = parole_media_list_get_current_tree_model_sort(list);
 
     if (gtk_tree_row_reference_valid(row)) {
         path = gtk_tree_row_reference_get_path(row);
 
-        if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0) {
-            if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->store), &iter, path) )
-                gtk_tree_model_get(GTK_TREE_MODEL(list->priv->store), &iter, col, &str, -1);
-        } else {
-            if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (list->priv->disc_store), &iter, path) )
-                gtk_tree_model_get(GTK_TREE_MODEL(list->priv->disc_store), &iter, col, &str, -1);
-        }
+        if (gtk_tree_model_get_iter(GTK_TREE_MODEL(model), &iter, path))
+            gtk_tree_model_get(GTK_TREE_MODEL(model), &iter, col, &str, -1);
 
         gtk_tree_path_free(path);
     }
@@ -2105,11 +2122,8 @@ shuffle_tree_model (GtkTreeModel *model) {
 
 static void
 parole_media_list_shuffle_tree_model (ParoleMediaList *list) {
-    if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0) {
-        shuffle_tree_model(GTK_TREE_MODEL(list->priv->store));
-    } else {
-        shuffle_tree_model(GTK_TREE_MODEL(list->priv->disc_store));
-    }
+    GtkTreeModelSort *model = parole_media_list_get_current_tree_model_sort (list);
+    shuffle_tree_model(GTK_TREE_MODEL(model));
 }
 
 static void
@@ -2130,11 +2144,8 @@ unshuffle_tree_model (GtkTreeModel *model) {
 
 static void
 parole_media_list_unshuffle_tree_model (ParoleMediaList *list) {
-    if (gtk_notebook_get_current_page(GTK_NOTEBOOK(list->priv->playlist_notebook)) == 0) {
-        unshuffle_tree_model(GTK_TREE_MODEL(list->priv->store));
-    } else {
-        unshuffle_tree_model(GTK_TREE_MODEL(list->priv->disc_store));
-    }
+    GtkTreeModelSort *model = parole_media_list_get_current_tree_model_sort(list);
+    unshuffle_tree_model(GTK_TREE_MODEL(model));
 }
 
 static void
