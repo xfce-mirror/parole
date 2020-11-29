@@ -38,6 +38,8 @@ enum {
     NAME_COL,
     LENGTH_COL,
     DATA_COL,
+    ENTRY_COL,
+    SORT_COL,
     COL_NUMBERS
 };
 
@@ -133,10 +135,8 @@ GtkTreeRowReference
 
 GtkTreeRowReference
 *parole_media_list_get_prev_row                     (ParoleMediaList *list,
-                                                     GtkTreeRowReference *row);
-
-GtkTreeRowReference
-*parole_media_list_get_row_random                   (ParoleMediaList *list);
+                                                     GtkTreeRowReference *row,
+                                                     gboolean repeat);
 
 void
 parole_media_list_set_row_playback_state            (ParoleMediaList *list,

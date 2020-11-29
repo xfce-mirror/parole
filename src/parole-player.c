@@ -1497,10 +1497,7 @@ parole_player_play_next(ParolePlayer *player, gboolean allow_shuffle) {
     if ( player->priv->row ) {
         parole_media_list_set_row_playback_state(player->priv->list, player->priv->row, PAROLE_MEDIA_STATE_NONE);
 
-        if ( shuffle && allow_shuffle )
-            row = parole_media_list_get_row_random(player->priv->list);
-        else
-            row = parole_media_list_get_next_row(player->priv->list, player->priv->row, repeat);
+        row = parole_media_list_get_next_row(player->priv->list, player->priv->row, repeat);
 
         if ( row ) {
             parole_player_media_activated_cb(player->priv->list, row, player);
@@ -1517,6 +1514,7 @@ parole_player_play_next(ParolePlayer *player, gboolean allow_shuffle) {
 
 static void
 parole_player_play_prev(ParolePlayer *player) {
+    gboolean repeat;
     GtkTreeRowReference *row;
 
     if ( player->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD ) {
@@ -1524,10 +1522,14 @@ parole_player_play_prev(ParolePlayer *player) {
         return;
     }
 
+    g_object_get(G_OBJECT(player->priv->conf),
+                 "repeat", &repeat,
+                 NULL);
+
     if ( player->priv->row ) {
         parole_media_list_set_row_playback_state(player->priv->list, player->priv->row, PAROLE_MEDIA_STATE_NONE);
 
-        row = parole_media_list_get_prev_row(player->priv->list, player->priv->row);
+        row = parole_media_list_get_prev_row(player->priv->list, player->priv->row, repeat);
 
         if ( row ) {
             parole_player_media_activated_cb(player->priv->list, row, player);
