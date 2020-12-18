@@ -2102,27 +2102,26 @@ static void
 shuffle_tree_model (GtkTreeModel *model) {
     GtkTreeIter iter, iter2;
     guint n_children = gtk_tree_model_iter_n_children(model, NULL);
-    gint  rnd = 0;
     guint order = 0;
-
-    srand(time(NULL));
+    GRand *grand = g_rand_new();
 
     if (gtk_tree_model_get_iter_first(model, &iter)) {
       do {
-        rnd = rand() % ((n_children * 100) + 1);
-        gtk_list_store_set(GTK_LIST_STORE(model), 
-                           &iter, 
-                           ENTRY_COL, order, 
-                           SORT_COL, rnd, 
+        gtk_list_store_set(GTK_LIST_STORE(model),
+                           &iter,
+                           ENTRY_COL, order,
+                           SORT_COL, g_rand_int_range (grand, 0, n_children),
                            -1);
         order++;
       } while (gtk_tree_model_iter_next(model, &iter));
-  }
+    }
+
+    g_rand_free (grand);
 }
 
 static void
 parole_media_list_shuffle_tree_model (ParoleMediaList *list) {
-    GtkTreeModelSort *model = parole_media_list_get_current_tree_model_sort (list);
+    GtkTreeModel *model = parole_media_list_get_current_tree_model (list);
     shuffle_tree_model(GTK_TREE_MODEL(model));
 }
 
@@ -2144,7 +2143,7 @@ unshuffle_tree_model (GtkTreeModel *model) {
 
 static void
 parole_media_list_unshuffle_tree_model (ParoleMediaList *list) {
-    GtkTreeModelSort *model = parole_media_list_get_current_tree_model_sort(list);
+    GtkTreeModel *model = parole_media_list_get_current_tree_model (list);
     unshuffle_tree_model(GTK_TREE_MODEL(model));
 }
 
