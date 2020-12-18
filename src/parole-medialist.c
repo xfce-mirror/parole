@@ -2103,14 +2103,21 @@ shuffle_tree_model (GtkTreeModel *model) {
     GtkTreeIter iter, iter2;
     guint n_children = gtk_tree_model_iter_n_children(model, NULL);
     guint order = 0;
+    guint sort = 0;
+    guint state = 0;
     GRand *grand = g_rand_new();
 
     if (gtk_tree_model_get_iter_first(model, &iter)) {
       do {
+        gtk_tree_model_get(model, &iter, STATE_COL, &state, -1);
+        if (state != PAROLE_MEDIA_STATE_NONE)
+            sort = 0;
+        else
+            sort = g_rand_int_range (grand, 1, n_children + 1);
         gtk_list_store_set(GTK_LIST_STORE(model),
                            &iter,
                            ENTRY_COL, order,
-                           SORT_COL, g_rand_int_range (grand, 0, n_children),
+                           SORT_COL, sort,
                            -1);
         order++;
       } while (gtk_tree_model_iter_next(model, &iter));
@@ -2130,8 +2137,6 @@ unshuffle_tree_model (GtkTreeModel *model) {
     GtkTreeIter iter, iter2;
     guint n_children = gtk_tree_model_iter_n_children(model, NULL);
     gint  order = 0;
-
-    srand(time(NULL));
 
     if (gtk_tree_model_get_iter_first(model, &iter)) {
       do {
