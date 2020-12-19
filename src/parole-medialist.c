@@ -153,6 +153,9 @@ gboolean    parole_media_list_query_tooltip(GtkWidget *widget,
                                                      GtkTooltip *tooltip,
                                                      ParoleMediaList *list);
 
+GtkTreePath *parole_media_list_sorted_row_reference_get_path (ParoleMediaList     *list,
+                                                              GtkTreeRowReference *row);
+
 /*
  * End of GtkBuilder callbacks
  */
@@ -932,7 +935,7 @@ parole_media_list_paths_to_row_list(GList *path_list, GtkTreeModel *model) {
 /* Callback for the remove-from-playlist button */
 void
 parole_media_list_remove_clicked_cb(GtkButton *button, ParoleMediaList *list) {
-    GtkTreeModel *model;
+    GtkTreeModel *sort_model, *model;
     GList *path_list = NULL;
     GList *row_list = NULL;
     GtkTreeIter iter;
@@ -941,7 +944,8 @@ parole_media_list_remove_clicked_cb(GtkButton *button, ParoleMediaList *list) {
     guint len, i;
 
     /* Get the GtkTreePath GList of all selected rows */
-    path_list = gtk_tree_selection_get_selected_rows(list->priv->sel, &model);
+    path_list = gtk_tree_selection_get_selected_rows(list->priv->sel, &sort_model);
+    model = gtk_tree_model_sort_get_model(GTK_TREE_MODEL_SORT(sort_model));
 
     /**
      * Convert them to row references so when we remove one the others always points
@@ -978,7 +982,7 @@ parole_media_list_remove_clicked_cb(GtkButton *button, ParoleMediaList *list) {
         GtkTreePath *path;
         GtkTreeRowReference *row;
         row = g_list_nth_data(row_list, i);
-        path = gtk_tree_row_reference_get_path(row);
+        path = parole_media_list_sorted_row_reference_get_path(list, row);
 
         if (G_LIKELY(gtk_tree_model_get_iter(model, &iter, path) == TRUE)) {
             gtk_list_store_remove(GTK_LIST_STORE(model),
@@ -1849,6 +1853,17 @@ ParoleFile *parole_media_list_get_selected_file(ParoleMediaList *list) {
     return parole_media_list_get_first_selected_file (list);
 }
 
+GtkTreePath *parole_media_list_sorted_row_reference_get_path(ParoleMediaList *list, GtkTreeRowReference *row) {
+    GtkTreePath *sorted_path, *path;
+    GtkTreeModelSort *sort;
+
+    sort = parole_media_list_get_current_tree_model_sort (list);
+    sorted_path = gtk_tree_row_reference_get_path(row);
+
+    path = gtk_tree_model_sort_convert_path_to_child_path(sort, sorted_path);
+    return path;
+}
+
 void parole_media_list_select_row(ParoleMediaList *list, GtkTreeRowReference *row) {
     GtkTreePath *path;
 
@@ -1870,7 +1885,7 @@ guint parole_media_list_store_get_uint(ParoleMediaList *list, GtkTreeRowReferenc
     model = parole_media_list_get_current_tree_model_sort(list);
 
     if (gtk_tree_row_reference_valid(row)) {
-        path = gtk_tree_row_reference_get_path(row);
+        path = parole_media_list_sorted_row_reference_get_path(list, row);
 
         if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (model), &iter, path) )
             gtk_tree_model_get(GTK_TREE_MODEL(model), &iter, col, &val, -1);
@@ -1890,7 +1905,7 @@ parole_media_list_store_set_int(ParoleMediaList *list, GtkTreeRowReference *row,
     model = parole_media_list_get_current_list_store(list);
 
     if ( gtk_tree_row_reference_valid(row) ) {
-        path = gtk_tree_row_reference_get_path(row);
+        path = parole_media_list_sorted_row_reference_get_path(list, row);
 
         if ( gtk_tree_model_get_iter (GTK_TREE_MODEL (model), &iter, path) )
             gtk_list_store_set(model, &iter, col, value, -1);
@@ -1908,7 +1923,7 @@ parole_media_list_store_set_str(ParoleMediaList *list, GtkTreeRowReference *row,
     model = parole_media_list_get_current_list_store(list);
 
     if ( gtk_tree_row_reference_valid(row) ) {
-        path = gtk_tree_row_reference_get_path(row);
+        path = parole_media_list_sorted_row_reference_get_path(list, row);
 
         if (gtk_tree_model_get_iter(GTK_TREE_MODEL(model), &iter, path))
             gtk_list_store_set(GTK_LIST_STORE(model), &iter, col, value, -1);
@@ -1926,7 +1941,7 @@ gchar* parole_media_list_store_get_str(ParoleMediaList *list, GtkTreeRowReferenc
     model = parole_media_list_get_current_tree_model_sort(list);
 
     if (gtk_tree_row_reference_valid(row)) {
-        path = gtk_tree_row_reference_get_path(row);
+        path = parole_media_list_sorted_row_reference_get_path(list, row);
 
         if (gtk_tree_model_get_iter(GTK_TREE_MODEL(model), &iter, path))
             gtk_tree_model_get(GTK_TREE_MODEL(model), &iter, col, &str, -1);
