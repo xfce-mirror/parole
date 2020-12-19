@@ -1011,40 +1011,105 @@ parole_media_list_remove_clicked_cb(GtkButton *button, ParoleMediaList *list) {
     parole_media_list_set_playlist_count(list, nch);
 }
 
+static void
+parole_media_list_tree_iter_swap (GtkTreeModel *tree_model, GtkTreeIter *first_iter, GtkTreeIter *second_iter, gboolean shuffled) {
+    guint first_entry_pos, first_sort_pos, second_entry_pos, second_sort_pos;
+
+    gtk_tree_model_get(GTK_TREE_MODEL(tree_model), first_iter,
+                       ENTRY_COL, &first_entry_pos,
+                       SORT_COL, &first_sort_pos,
+                       -1);
+
+    gtk_tree_model_get(GTK_TREE_MODEL(tree_model), second_iter,
+                       ENTRY_COL, &second_entry_pos,
+                       SORT_COL, &second_sort_pos,
+                       -1);
+
+    if (first_sort_pos == second_sort_pos) {
+        second_sort_pos++;
+    }
+
+    if (shuffled) {
+        gtk_list_store_set(GTK_LIST_STORE(tree_model), first_iter,
+                           SORT_COL, second_sort_pos,
+                           -1);
+
+        gtk_list_store_set(GTK_LIST_STORE(tree_model), second_iter,
+                           SORT_COL, first_sort_pos,
+                           -1);
+    } else {
+        gtk_list_store_set(GTK_LIST_STORE(tree_model), first_iter,
+                           ENTRY_COL, second_entry_pos,
+                           SORT_COL, second_sort_pos,
+                           -1);
+
+        gtk_list_store_set(GTK_LIST_STORE(tree_model), second_iter,
+                           ENTRY_COL, first_entry_pos,
+                           SORT_COL, first_sort_pos,
+                           -1);
+    }
+}
+
+static gboolean tree_path_prev (GtkTreeModelSort *sort, GtkTreePath **path, GtkTreePath **realpath) {
+    if (!gtk_tree_path_prev (*path)) {
+        return FALSE;
+    }
+    *realpath = gtk_tree_model_sort_convert_path_to_child_path(sort, *path);
+    if (*realpath == NULL)
+        return FALSE;
+    return TRUE;
+}
+
+static gboolean tree_path_next (GtkTreeModelSort *sort, GtkTreePath **path, GtkTreePath **realpath) {
+    gtk_tree_path_next (*path);
+    *realpath = gtk_tree_model_sort_convert_path_to_child_path(sort, *path);
+    if (*realpath == NULL)
+        return FALSE;
+    return TRUE;
+}
+
 void
 parole_media_list_move_up_clicked_cb(GtkButton *button, ParoleMediaList *list) {
-    GtkTreeModel *model;
+    GtkTreeModel *sort_model, *model;
     GList *path_list = NULL;
     GtkTreeIter current, iter;
+    gboolean shuffled;
 
     /* Get the GtkTreePath GList of all selected rows */
-    path_list = gtk_tree_selection_get_selected_rows(list->priv->sel, &model);
+    path_list = gtk_tree_selection_get_selected_rows(list->priv->sel, &sort_model);
+    model = gtk_tree_model_sort_get_model (GTK_TREE_MODEL_SORT (sort_model));
+    shuffled = gtk_toggle_tool_button_get_active (GTK_TOGGLE_TOOL_BUTTON (list->priv->shuffle_button));
 
     /**
      * Select first path before the first path
      * that we going to move.
      **/
     if (g_list_length(path_list) != 0) {
-        GtkTreePath *path, *prev;
+        GtkTreePath *sorted_path, *path, *sorted_prev, *prev;
         guint i;
 
         /* Get first item */
-        path = g_list_nth_data(path_list, 0);
+        sorted_path = g_list_nth_data(path_list, 0);
+        path = gtk_tree_model_sort_convert_path_to_child_path(GTK_TREE_MODEL_SORT(sort_model), sorted_path);
         if (gtk_tree_model_get_iter(GTK_TREE_MODEL(model), &current, path)) {
             /* copy it as we don't mess with the list*/
-            prev = gtk_tree_path_copy(path);
+            sorted_prev = gtk_tree_path_copy(sorted_path);
 
-            if (gtk_tree_path_prev(prev)) {
+            if (tree_path_prev(GTK_TREE_MODEL_SORT (sort_model), &sorted_prev, &prev)) {
                 if (gtk_tree_model_get_iter(GTK_TREE_MODEL(model), &iter, prev)) {
                     /* Move each item about the previous path */
                     for (i=0; i < g_list_length(path_list); i++) {
-                        path = g_list_nth_data(path_list, i);
+                        sorted_path = g_list_nth_data(path_list, i);
+                        path = gtk_tree_model_sort_convert_path_to_child_path(GTK_TREE_MODEL_SORT(sort_model), sorted_path);
+
                         if (gtk_tree_model_get_iter (GTK_TREE_MODEL (model), &current, path))
-                            gtk_list_store_move_before(GTK_LIST_STORE(model), &current, &iter);
+                            parole_media_list_tree_iter_swap (GTK_TREE_MODEL (model), &iter, &current, shuffled);
                     }
                 }
+                gtk_tree_path_free(prev);
             }
-            gtk_tree_path_free(prev);
+
+            gtk_tree_path_free(sorted_prev);
         }
     }
 
@@ -1054,12 +1119,16 @@ parole_media_list_move_up_clicked_cb(GtkButton *button, ParoleMediaList *list) {
 
 void
 parole_media_list_move_down_clicked_cb(GtkButton *button, ParoleMediaList *list) {
-    GtkTreeModel *model;
+    GtkTreeModel *sort_model, *model;
     GList *path_list = NULL;
     GtkTreeIter current, iter;
+    gboolean shuffled;
 
     /* Get the GtkTreePath GList of all selected rows */
-    path_list = gtk_tree_selection_get_selected_rows(list->priv->sel, &model);
+    path_list = gtk_tree_selection_get_selected_rows(list->priv->sel, &sort_model);
+    model = gtk_tree_model_sort_get_model (GTK_TREE_MODEL_SORT (sort_model));
+    shuffled = gtk_toggle_tool_button_get_active (GTK_TOGGLE_TOOL_BUTTON (list->priv->shuffle_button));
+
     /* Reverse the list to repopulate in the right order */
     path_list = g_list_reverse(path_list);
 
@@ -1068,27 +1137,31 @@ parole_media_list_move_down_clicked_cb(GtkButton *button, ParoleMediaList *list)
      * that we going to move.
      **/
     if (g_list_length(path_list) != 0) {
-        GtkTreePath *path, *next;
+        GtkTreePath *sorted_path, *path, *sorted_next, *next;
         guint i;
 
         /* Get first item */
-        path = g_list_nth_data(path_list, 0);
+        sorted_path = g_list_nth_data(path_list, 0);
+        path = gtk_tree_model_sort_convert_path_to_child_path(GTK_TREE_MODEL_SORT(sort_model), sorted_path);
         if (gtk_tree_model_get_iter(GTK_TREE_MODEL(model), &current, path)) {
             /* copy it as we don't mess with the list*/
-            next = gtk_tree_path_copy(path);
+            sorted_next = gtk_tree_path_copy(sorted_path);
 
-            gtk_tree_path_next(next);
+            if (tree_path_next(GTK_TREE_MODEL_SORT(sort_model), &sorted_next, &next)) {
+                if (gtk_tree_model_get_iter(GTK_TREE_MODEL(model), &iter, next)) {
+                    /* Move each item about the previous path */
+                    for (i=0; i < g_list_length(path_list); i++) {
+                        sorted_path = g_list_nth_data(path_list, i);
+                        path = gtk_tree_model_sort_convert_path_to_child_path(GTK_TREE_MODEL_SORT(sort_model), sorted_path);
 
-            if (gtk_tree_model_get_iter(GTK_TREE_MODEL(model), &iter, next)) {
-                /* Move each item about the previous path */
-                for (i=0; i < g_list_length(path_list); i++) {
-                    path = g_list_nth_data(path_list, i);
-                    if (gtk_tree_model_get_iter (GTK_TREE_MODEL (model), &current, path))
-                        gtk_list_store_move_after(GTK_LIST_STORE(model), &current, &iter);
+                        if (gtk_tree_model_get_iter (GTK_TREE_MODEL (model), &current, path))
+                            parole_media_list_tree_iter_swap (GTK_TREE_MODEL (model), &current, &iter, shuffled);
+                    }
                 }
+                gtk_tree_path_free(next);
             }
 
-            gtk_tree_path_free(next);
+            gtk_tree_path_free(sorted_next);
         }
     }
 
@@ -2115,9 +2188,8 @@ void parole_media_list_connect_repeat_action(ParoleMediaList *list, GSimpleActio
 
 static void
 shuffle_tree_model (GtkTreeModel *model) {
-    GtkTreeIter iter, iter2;
+    GtkTreeIter iter, iter2, active_iter;
     guint n_children = gtk_tree_model_iter_n_children(model, NULL);
-    guint order = 0;
     guint sort = 0;
     guint state = 0;
     GRand *grand = g_rand_new();
@@ -2128,13 +2200,11 @@ shuffle_tree_model (GtkTreeModel *model) {
         if (state != PAROLE_MEDIA_STATE_NONE)
             sort = 0;
         else
-            sort = g_rand_int_range (grand, 1, n_children + 1);
+            sort = g_rand_int_range(grand, 100, n_children * 100);
         gtk_list_store_set(GTK_LIST_STORE(model),
                            &iter,
-                           ENTRY_COL, order,
                            SORT_COL, sort,
                            -1);
-        order++;
       } while (gtk_tree_model_iter_next(model, &iter));
     }
 
@@ -2155,8 +2225,12 @@ unshuffle_tree_model (GtkTreeModel *model) {
 
     if (gtk_tree_model_get_iter_first(model, &iter)) {
       do {
-        gtk_tree_model_get(model, &iter, ENTRY_COL, &order, -1);
-        gtk_list_store_set(GTK_LIST_STORE(model), &iter, SORT_COL, order, -1);
+        gtk_tree_model_get(GTK_TREE_MODEL(model), &iter,
+                           ENTRY_COL, &order,
+                           -1);
+        gtk_list_store_set(GTK_LIST_STORE(model), &iter,
+                           SORT_COL, order,
+                           -1);
       } while (gtk_tree_model_iter_next(model, &iter));
   }
 }
