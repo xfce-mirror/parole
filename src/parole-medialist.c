@@ -179,12 +179,6 @@ struct ParoleMediaListPrivate {
     GtkWidget *shuffle_button;
 
     char *history[3];
-    /*
-     * n_shuffled_items stores the number of already shuffled items in the list.
-     * The special value -1 is only used when Repeat mode is on to skip the
-     * control process on this variable.
-     */
-    gint  n_shuffled_items;
 
     guint entry_pos;
 };
@@ -2151,26 +2145,12 @@ void parole_media_list_grab_focus(ParoleMediaList *list) {
 }
 
 static void
-update_media_list_n_shuffled_items(void) {
-    gboolean repeat = gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(media_list->priv->repeat_button));
-    if (repeat) {
-        /* Disable the control on the number of shuffled items in case of randomization */
-        media_list->priv->n_shuffled_items = -1;
-    } else {
-        /* Enable the control on the number of shuffled items in case of randomization */
-        media_list->priv->n_shuffled_items = 0;
-    }
-}
-
-static void
 repeat_action_state_changed(GSimpleAction *simple, GVariant *value, gpointer user_data) {
     gboolean active = g_simple_toggle_action_get_active(simple);
 
     if (gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(media_list->priv->repeat_button)) != active) {
         gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(media_list->priv->repeat_button), active);
     }
-
-    update_media_list_n_shuffled_items();
 }
 
 static void
@@ -2254,7 +2234,6 @@ shuffle_action_state_changed(GSimpleAction *simple, GVariant *value, gpointer us
     } else {
         parole_media_list_unshuffle_tree_model(media_list);
     }
-    update_media_list_n_shuffled_items();
 }
 
 static void
