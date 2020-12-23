@@ -73,9 +73,6 @@ typedef struct {
     void            (*uri_opened)                   (ParoleMediaList *list,
                                                      const gchar *uri);
 
-    void            (*show_playlist)                (ParoleMediaList *list,
-                                                     gboolean show_playlist);
-
     void            (*gst_dvd_nav_message)          (ParoleMediaList *list,
                                                      gint gst_dvd_nav_message);
 

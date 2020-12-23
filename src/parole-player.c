@@ -562,10 +562,6 @@ void parole_player_set_playlist_visible(ParolePlayer *player, gboolean visibilit
 
     if (!visibility)
         parole_player_schedule_hide_controls (player, 1);
-    
-    g_object_set(G_OBJECT(player->priv->conf),
-                    "showhide-playlist", visibility,
-                    NULL);
 }
 
 void parole_player_playlist_menu_toggled_cb(GtkWidget *menu_item, ParolePlayer *player) {
@@ -1243,13 +1239,6 @@ parole_player_media_cursor_changed_cb(ParoleMediaList *list, gboolean media_sele
     /* Next */
     gtk_widget_set_sensitive(player->priv->next_button, enabled);
     g_simple_action_set_enabled(player->priv->media_next_action, enabled);
-}
-
-static void
-parole_player_media_list_show_playlist_cb(ParoleMediaList *list, gboolean show_playlist, ParolePlayer *player) {
-    parole_media_list_set_playlist_view(player->priv->list,
-                                        player->priv->current_media_type == PAROLE_MEDIA_TYPE_DVD);
-    parole_player_set_playlist_visible(player, show_playlist);
 }
 
 static void
@@ -2262,6 +2251,8 @@ parole_player_schedule_hide_controls (ParolePlayer *player, gint seconds) {
         hide_timeout = 0;
     }
 
+    if (player->priv->revealer == NULL)
+        return;
     if (!gtk_revealer_get_reveal_child(GTK_REVEALER(player->priv->revealer)))
         return;
     if ( player->priv->state != PAROLE_STATE_PLAYING )
@@ -3136,7 +3127,6 @@ parole_player_init(ParolePlayer *player) {
     gchar *videosink = NULL;
     gint w, h;
     gboolean maximized;
-    gboolean showhide;
     gboolean always_hide_menubar = FALSE;
     gint volume;
 
@@ -3202,7 +3192,6 @@ parole_player_init(ParolePlayer *player) {
 
     /* Get properties from ParoleConf */
     g_object_get(G_OBJECT(player->priv->conf),
-                  "showhide-playlist", &showhide,
                   "videosink", &videosink,
                   "volume", &volume,
                   "window-width", &w,
@@ -3430,8 +3419,6 @@ parole_player_init(ParolePlayer *player) {
 
     // Button
     player->priv->showhide_playlist_button = GTK_WIDGET(gtk_builder_get_object(builder, "media_playlist"));
-
-    parole_player_set_playlist_visible(player, showhide);
 
     // Signals
     g_signal_connect(G_OBJECT(player->priv->showhide_playlist_menu_item), "activate",
@@ -3698,9 +3685,6 @@ parole_player_init(ParolePlayer *player) {
 
     g_signal_connect(player->priv->list, "uri-opened",
               G_CALLBACK(parole_player_uri_opened_cb), player);
-
-    g_signal_connect(player->priv->list, "show-playlist",
-              G_CALLBACK(parole_player_media_list_show_playlist_cb), player);
 
     g_signal_connect(player->priv->list, "iso-opened",
               G_CALLBACK(parole_player_iso_opened_cb), player);

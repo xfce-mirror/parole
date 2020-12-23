@@ -187,7 +187,6 @@ enum {
     MEDIA_ACTIVATED,
     MEDIA_CURSOR_CHANGED,
     URI_OPENED,
-    SHOW_PLAYLIST,
     ISO_OPENED,
     KEY_FWD_EVENT,
     LAST_SIGNAL
@@ -389,9 +388,6 @@ parole_media_list_files_open(ParoleMediaList *list, GSList *files, gboolean disc
 
     len = g_slist_length(files);
     TRACE("Adding %i files", len);
-
-    if ( len > 1 && !disc )
-        g_signal_emit(G_OBJECT(list), signals[SHOW_PLAYLIST], 0, TRUE);
 
     if ( len != 0 ) {
         if ( replace )
@@ -1472,15 +1468,6 @@ parole_media_list_class_init(ParoleMediaListClass *klass) {
                       NULL, NULL,
                       g_cclosure_marshal_VOID__STRING,
                       G_TYPE_NONE, 1, G_TYPE_STRING);
-
-    signals[SHOW_PLAYLIST] =
-        g_signal_new("show-playlist",
-                      PAROLE_TYPE_MEDIA_LIST,
-                      G_SIGNAL_RUN_LAST,
-                      G_STRUCT_OFFSET(ParoleMediaListClass, show_playlist),
-                      NULL, NULL,
-                      g_cclosure_marshal_VOID__BOOLEAN,
-                      G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
 
     signals[ISO_OPENED] =
         g_signal_new("iso-opened",
