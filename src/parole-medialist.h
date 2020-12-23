@@ -38,6 +38,8 @@ enum {
     NAME_COL,
     LENGTH_COL,
     DATA_COL,
+    ENTRY_COL,
+    SORT_COL,
     COL_NUMBERS
 };
 
@@ -71,9 +73,6 @@ typedef struct {
     void            (*uri_opened)                   (ParoleMediaList *list,
                                                      const gchar *uri);
 
-    void            (*show_playlist)                (ParoleMediaList *list,
-                                                     gboolean show_playlist);
-
     void            (*gst_dvd_nav_message)          (ParoleMediaList *list,
                                                      gint gst_dvd_nav_message);
 
@@ -82,6 +81,9 @@ typedef struct {
 
     void            (*dvd_chapter_count)            (ParoleMediaList *list,
                                                      gint chapter_count);
+
+    void            (*key_fwd_event)                (ParoleMediaList *list,
+                                                     gpointer *event);
 } ParoleMediaListClass;
 
 GType               parole_media_list_get_type      (void) G_GNUC_CONST;
@@ -130,10 +132,8 @@ GtkTreeRowReference
 
 GtkTreeRowReference
 *parole_media_list_get_prev_row                     (ParoleMediaList *list,
-                                                     GtkTreeRowReference *row);
-
-GtkTreeRowReference
-*parole_media_list_get_row_random                   (ParoleMediaList *list);
+                                                     GtkTreeRowReference *row,
+                                                     gboolean repeat);
 
 void
 parole_media_list_set_row_playback_state            (ParoleMediaList *list,

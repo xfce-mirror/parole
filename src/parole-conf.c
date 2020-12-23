@@ -62,7 +62,6 @@ enum {
     PROP_REMOVE_DUPLICATED_PLAYLIST_ENTRIES,
     PROP_REPEAT,
     PROP_REPLACE_PLAYLIST,
-    PROP_SHOWHIDE_PLAYLIST,
     PROP_SHUFFLE,
     PROP_START_PLAYING_OPENED_FILES,
     /* Subtitles */
@@ -271,8 +270,6 @@ gchar *parole_conf_map_xfconf_property_name(const gchar *prop_name) {
         value = g_strdup("repeat");
     if (g_strcmp0(prop_name, "/playlist/replace-playlist") == 0)
         value = g_strdup("replace-playlist");
-    if (g_strcmp0(prop_name, "/playlist/show-playlist") == 0)
-        value = g_strdup("showhide-playlist");
     if (g_strcmp0(prop_name, "/playlist/shuffle") == 0)
         value = g_strdup("shuffle");
     if (g_strcmp0(prop_name, "/playlist/play-opened-files") == 0)
@@ -581,21 +578,6 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     PROP_REPLACE_PLAYLIST,
                                     g_param_spec_boolean("replace-playlist",
                                     "/playlist/replace-playlist",
-                                    NULL,
-                                    FALSE,
-                                    G_PARAM_READWRITE));
-
-    /**
-     * ParoleConf:showhide-playlist:
-     *
-     * Xfconf property: /playlist/show-playlist
-     *
-     * If the playlist is shown or hidden.
-     **/
-    g_object_class_install_property(object_class,
-                                    PROP_SHOWHIDE_PLAYLIST,
-                                    g_param_spec_boolean("showhide-playlist",
-                                    "/playlist/show-playlist",
                                     NULL,
                                     FALSE,
                                     G_PARAM_READWRITE));
