@@ -538,11 +538,11 @@ static void toggle_action_cb(GtkWidget *widget, GSimpleAction *action) {
                                        !g_simple_toggle_action_get_active(action));
 }
 
-gboolean parole_player_get_playlist_visible(ParolePlayer *player) {
+static gboolean parole_player_get_playlist_visible(ParolePlayer *player) {
     return gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(player->priv->showhide_playlist_button));
 }
 
-gboolean parole_player_get_volume_visible(ParolePlayer *player) {
+static gboolean parole_player_get_volume_visible(ParolePlayer *player) {
     GtkWidget *popup;
 
     popup = gtk_scale_button_get_popup (GTK_SCALE_BUTTON (player->priv->volume));

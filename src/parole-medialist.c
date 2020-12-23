@@ -1975,7 +1975,7 @@ void parole_media_list_select_row(ParoleMediaList *list, GtkTreeRowReference *ro
     }
 }
 
-guint parole_media_list_store_get_uint(ParoleMediaList *list, GtkTreeRowReference *row, guint col) {
+static guint parole_media_list_store_get_uint(ParoleMediaList *list, GtkTreeRowReference *row, guint col) {
     GtkTreeIter iter;
     GtkTreePath *path;
     guint val = 0;
@@ -2031,7 +2031,7 @@ parole_media_list_store_set_str(ParoleMediaList *list, GtkTreeRowReference *row,
     }
 }
 
-gchar* parole_media_list_store_get_str(ParoleMediaList *list, GtkTreeRowReference *row, guint col) {
+static gchar* parole_media_list_store_get_str(ParoleMediaList *list, GtkTreeRowReference *row, guint col) {
     GtkTreeIter iter;
     GtkTreePath *path;
     gchar *str = NULL;

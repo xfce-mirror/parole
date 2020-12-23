@@ -31,7 +31,7 @@ G_BEGIN_DECLS
 guint32          parole_power_manager_inhibit   (GDBusConnection *connection);
 void             parole_power_manager_uninhibit (GDBusConnection *connection,
                                                  guint32          cookie);
-GDBusConnection *parole_power_manager_dbus_init ();
+GDBusConnection *parole_power_manager_dbus_init (void);
 
 G_END_DECLS
 
