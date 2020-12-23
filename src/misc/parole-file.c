@@ -458,15 +458,13 @@ parole_file_new_cdda_track(const gint track_num, const gchar *display_name) {
 ParoleFile *
 parole_file_new_dvd_chapter(gint chapter_num, const gchar *display_name) {
     ParoleFile *file = NULL;
-    gchar *uri = "dvd:/";
+    const gchar uri[] = "dvd:/";
 
     file = g_object_new(PAROLE_TYPE_FILE,
                         "filename", uri,
                         "display-name", display_name,
                         "dvd-chapter", chapter_num,
                         NULL);
-
-    // g_free(uri); FIXME This should probably be freed.
     return file;
 }
 
