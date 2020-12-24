@@ -4,6 +4,6 @@ EXTRA_DIST =				\
 Datadir = $(datadir)/icons/hicolor/16x16/apps
 
 Data_DATA =				\
-	parole.png			\
+	org.xfce.parole.png			\
 	parole-extension.png \
 	parole-extension-symbolic.svg
