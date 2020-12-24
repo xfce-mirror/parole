@@ -4,4 +4,4 @@ EXTRA_DIST =				\
 Datadir = $(datadir)/icons/hicolor/scalable/apps
 
 Data_DATA =				\
-	parole.svg
+	org.xfce.parole.svg

@@ -4,4 +4,4 @@ EXTRA_DIST =				\
 Datadir = $(datadir)/icons/hicolor/24x24/apps
 
 Data_DATA =				\
-	parole.png
+	org.xfce.parole.png
