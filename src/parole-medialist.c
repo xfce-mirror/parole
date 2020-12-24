@@ -63,7 +63,7 @@
 
 typedef struct {
     GtkWidget *chooser;
-    GtkTreeSelection *sel;
+    GtkWidget *combo;
     ParoleMediaList *list;
     gboolean closing;
 } ParolePlaylistSave;
@@ -140,7 +140,7 @@ gboolean    parole_media_list_key_press(GtkWidget *widget,
                                                      ParoleMediaList *list);
 
 void
-parole_media_list_format_cursor_changed_cb(GtkTreeView *view,
+parole_media_list_format_combo_changed_cb(GtkComboBox *combo,
                                                      ParolePlaylistSave *data);
 
 void        parole_media_list_save_playlist_cb(GtkButton *button,
@@ -677,7 +677,8 @@ parole_media_list_save_playlist_response_cb(GtkDialog *dialog, gint response_id,
         filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(data->chooser));
         dirname = g_path_get_dirname(filename);
 
-        if (gtk_tree_selection_get_selected(data->sel, &model, &iter)) {
+        if (gtk_combo_box_get_active_iter(GTK_COMBO_BOX(data->combo), &iter)) {
+            model = gtk_combo_box_get_model(GTK_COMBO_BOX(data->combo));
             gtk_tree_model_get(model, &iter, 2, &format, -1);
         }
 
@@ -764,16 +765,31 @@ gboolean    parole_media_list_query_tooltip(GtkWidget *widget,
     return FALSE;
 }
 
-void parole_media_list_format_cursor_changed_cb(GtkTreeView *view, ParolePlaylistSave *data) {
+static void
+parole_media_list_set_filter(ParolePlaylistSave *data, const gchar *extension) {
+    GtkFileFilter *filter;
+    gchar *pattern;
+
+    if (g_strcmp0(extension, "") == 0)
+        pattern = g_strdup("*.*");
+    else
+        pattern = g_strdup_printf("*.%s", extension);
+
+    filter = gtk_file_filter_new();
+    gtk_file_filter_add_pattern (filter, pattern);
+    gtk_file_chooser_set_filter (GTK_FILE_CHOOSER(data->chooser), filter);
+
+    g_free(pattern);
+}
+
+void parole_media_list_format_combo_changed_cb(GtkComboBox *combo, ParolePlaylistSave *data) {
     GtkTreeIter iter;
     GtkTreeModel *model;
     ParolePlFormat format;
     gchar *filename;
     gchar *fbasename;
-
-    /* Workaround for bug where cursor-changed is emitted on destroy */
-    if (data->closing)
-        return;
+    gchar *extension;
+    GtkFileFilter *filter;
 
     // FIXME: replaces entered filename with Playlist.
     filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(data->chooser));
@@ -781,11 +797,14 @@ void parole_media_list_format_cursor_changed_cb(GtkTreeView *view, ParolePlaylis
         fbasename = g_path_get_basename(filename);
     else
         fbasename = g_strconcat(_("Playlist"), ".m3u", NULL);
-
     g_free(filename);
 
-    if (gtk_tree_selection_get_selected(data->sel, &model, &iter)) {
-        gtk_tree_model_get(model, &iter, 2, &format, -1);
+    if (gtk_combo_box_get_active_iter(combo, &iter)) {
+        model = gtk_combo_box_get_model(combo);
+        gtk_tree_model_get(model, &iter,
+            1, &extension,
+            2, &format,
+            -1);
         if ( format != PAROLE_PL_FORMAT_UNKNOWN ) {
             gchar *name, *new_name;
             name = parole_get_name_without_extension(fbasename);
@@ -794,6 +813,7 @@ void parole_media_list_format_cursor_changed_cb(GtkTreeView *view, ParolePlaylis
             g_free(new_name);
             g_free(name);
         }
+        parole_media_list_set_filter(data, extension);
     }
     g_free(fbasename);
 }
@@ -802,17 +822,19 @@ void parole_media_list_format_cursor_changed_cb(GtkTreeView *view, ParolePlaylis
 void parole_media_list_save_cb(GtkWidget *widget, ParoleMediaList *list) {
     ParolePlaylistSave *data;
     GtkWidget *chooser;
-    GtkWidget *view;
     GtkListStore *store;
     GtkBuilder *builder;
     gchar *filename;
     GtkTreeIter iter;
+    gchar *label;
+    GtkWidget *combo;
 
     data = g_new0(ParolePlaylistSave, 1);
 
     builder = parole_builder_new_from_string(save_playlist_ui, save_playlist_ui_length);
     chooser = GTK_WIDGET(gtk_builder_get_object(builder, "filechooserdialog"));
     store = GTK_LIST_STORE(gtk_builder_get_object(builder, "liststore"));
+    combo = GTK_WIDGET(gtk_builder_get_object(builder, "format_combo"));
 
     gtk_window_set_transient_for(GTK_WINDOW(chooser),
                                   GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(list))));
@@ -826,43 +848,60 @@ void parole_media_list_save_cb(GtkWidget *widget, ParoleMediaList *list) {
     gtk_list_store_append(store, &iter);
     gtk_list_store_set(store,
                         &iter,
-                        0, _("M3U Playlists"),
+                        0, _("All files"),
+                        1, "",
+                        2, PAROLE_PL_FORMAT_UNKNOWN,
+                        -1);
+
+    label = g_strdup_printf (_("M3U Playlist (%s)"), ".m3u");
+    gtk_list_store_append(store, &iter);
+    gtk_list_store_set(store,
+                        &iter,
+                        0, label,
                         1, "m3u",
                         2, PAROLE_PL_FORMAT_M3U,
                         -1);
+    g_free (label);
 
+    label = g_strdup_printf (_("PLS Playlist (%s)"), ".pls");
     gtk_list_store_append(store, &iter);
     gtk_list_store_set(store,
                         &iter,
-                        0, _("PLS Playlists"),
+                        0, label,
                         1, "pls",
                         2, PAROLE_PL_FORMAT_PLS,
                         -1);
+    g_free (label);
 
+    label = g_strdup_printf (_("Advanced Stream Redirector (%s)"), ".asx");
     gtk_list_store_append(store, &iter);
     gtk_list_store_set(store,
                         &iter,
-                        0, _("Advanced Stream Redirector"),
+                        0, label,
                         1, "asx",
                         2, PAROLE_PL_FORMAT_ASX,
                         -1);
+    g_free (label);
 
+    label = g_strdup_printf(_("Shareable Playlist (%s)"), ".xspf");
     gtk_list_store_append(store, &iter);
     gtk_list_store_set(store,
                         &iter,
-                        0, _("Shareable Playlist"),
+                        0, label,
                         1, "xspf",
                         2, PAROLE_PL_FORMAT_XSPF,
                         -1);
-
-    view = GTK_WIDGET(gtk_builder_get_object(builder, "treeview"));
+    g_free (label);
 
     g_signal_connect(G_OBJECT(chooser), "response", G_CALLBACK(parole_media_list_save_playlist_response_cb), data);
 
     data->chooser = chooser;
+    data->combo = combo;
     data->closing = FALSE;
-    data->sel = gtk_tree_view_get_selection(GTK_TREE_VIEW(view));
     data->list = list;
+
+    gtk_combo_box_set_active(GTK_COMBO_BOX(combo), 1);
+    parole_media_list_set_filter(data, "m3u");
 
     gtk_builder_connect_signals(builder, data);
     gtk_widget_show_all(chooser);
