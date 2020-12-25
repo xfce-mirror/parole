@@ -2823,7 +2823,7 @@ on_contents_clicked(GtkWidget *w, ParolePlayer *player) {
 static gboolean
 on_goto_position_clicked(GtkWidget *w, ParolePlayer *player) {
     GtkWidget *dialog;
-    GtkWidget *vbox, *hbox, *label;
+    GtkWidget *vbox, *hbox, *cbox, *label;
     GtkWidget *spin_hrs, *spin_mins, *spin_secs;
     GtkAdjustment *adjustment;
     gint response;
@@ -2834,11 +2834,11 @@ on_goto_position_clicked(GtkWidget *w, ParolePlayer *player) {
 
     /* Create dialog */
     dialog = gtk_dialog_new_with_buttons(_("Go to position"),
-                                        GTK_WINDOW(player->priv->window),
-                                        GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-                                        _("Cancel"), GTK_RESPONSE_CANCEL,
-                                        _("Go"), GTK_RESPONSE_OK,
-                                        NULL);
+                                         GTK_WINDOW(player->priv->window),
+                                         GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_USE_HEADER_BAR,
+                                         _("Cancel"), GTK_RESPONSE_CANCEL,
+                                         _("Go"), GTK_RESPONSE_OK,
+                                         NULL);
     gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_OK);
     gtk_window_set_resizable(GTK_WINDOW(dialog), FALSE);
 
@@ -2850,10 +2850,8 @@ on_goto_position_clicked(GtkWidget *w, ParolePlayer *player) {
     hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 12);
     gtk_box_pack_start(GTK_BOX(vbox), hbox, TRUE, TRUE, 0);
 
-    label = gtk_label_new(_("Position:"));
-    gtk_box_pack_start(GTK_BOX(hbox), label, TRUE, TRUE, 0);
-    gtk_widget_set_halign(GTK_WIDGET(label), GTK_ALIGN_START);
-    gtk_widget_set_valign(GTK_WIDGET(label), GTK_ALIGN_CENTER);
+    cbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 12);
+    gtk_box_set_center_widget(GTK_BOX(hbox), cbox);
 
     /* Get the stream length and set that as maximum for hours and minutes */
     adjustment = gtk_range_get_adjustment(GTK_RANGE(player->priv->range));
@@ -2864,11 +2862,19 @@ on_goto_position_clicked(GtkWidget *w, ParolePlayer *player) {
         max_mins = (int) duration/60;
 
     spin_hrs = gtk_spin_button_new_with_range(0, max_hrs, 1);
+    gtk_orientable_set_orientation (GTK_ORIENTABLE(spin_hrs), GTK_ORIENTATION_VERTICAL);
+    gtk_entry_set_activates_default (GTK_ENTRY(spin_hrs), TRUE);
     spin_mins = gtk_spin_button_new_with_range(0, max_mins, 1);
+    gtk_orientable_set_orientation (GTK_ORIENTABLE(spin_mins), GTK_ORIENTATION_VERTICAL);
+    gtk_entry_set_activates_default (GTK_ENTRY(spin_mins), TRUE);
     spin_secs = gtk_spin_button_new_with_range(0, 59, 1);
-    gtk_box_pack_start(GTK_BOX(hbox), spin_hrs, FALSE, FALSE, 0);
-    gtk_box_pack_start(GTK_BOX(hbox), spin_mins, FALSE, FALSE, 0);
-    gtk_box_pack_start(GTK_BOX(hbox), spin_secs, FALSE, FALSE, 0);
+    gtk_orientable_set_orientation (GTK_ORIENTABLE(spin_secs), GTK_ORIENTATION_VERTICAL);
+    gtk_entry_set_activates_default (GTK_ENTRY(spin_secs), TRUE);
+    gtk_box_pack_start(GTK_BOX(cbox), spin_hrs, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(cbox), gtk_label_new(":"), FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(cbox), spin_mins, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(cbox), gtk_label_new(":"), FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(cbox), spin_secs, FALSE, FALSE, 0);
 
     if ( duration < 3600 )
         gtk_widget_set_sensitive(GTK_WIDGET(spin_hrs), FALSE);
