@@ -974,11 +974,8 @@ parole_player_select_custom_subtitle(GtkMenuItem *widget, gpointer data) {
                                            NULL);
     gtk_window_set_icon_name(GTK_WINDOW(chooser), "parole");
     button = gtk_dialog_add_button(GTK_DIALOG(chooser), _("Cancel"), GTK_RESPONSE_CANCEL);
-    img = gtk_image_new_from_icon_name("gtk-cancel", GTK_ICON_SIZE_BUTTON);
-    gtk_button_set_image(GTK_BUTTON(button), img);
     button = gtk_dialog_add_button(GTK_DIALOG(chooser), _("Open"), GTK_RESPONSE_OK);
-    img = gtk_image_new_from_icon_name("document-open", GTK_ICON_SIZE_BUTTON);
-    gtk_button_set_image(GTK_BUTTON(button), img);
+    gtk_dialog_set_default_response(GTK_DIALOG(chooser), GTK_RESPONSE_OK);
 
     gtk_file_chooser_set_select_multiple(GTK_FILE_CHOOSER(chooser), FALSE);
     gtk_file_chooser_set_local_only(GTK_FILE_CHOOSER(chooser), FALSE);
