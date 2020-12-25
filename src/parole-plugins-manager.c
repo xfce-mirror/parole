@@ -286,7 +286,7 @@ void parole_plugins_manager_tree_cursor_changed_cb(GtkTreeView *view, PrefData *
     site = info->website;
 
     gtk_label_set_markup(GTK_LABEL(pref->desc), info->desc);
-    gtk_label_set_markup(GTK_LABEL(pref->author), info->authors);
+    gtk_label_set_text(GTK_LABEL(pref->author), info->authors);
 
     gtk_link_button_set_uri(GTK_LINK_BUTTON(pref->site), site);
 
