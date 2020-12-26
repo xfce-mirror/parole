@@ -395,7 +395,7 @@ tray_provider_set_player(ParoleProviderPlugin *plugin, ParoleProviderPlayer *pla
     tray->menu = NULL;
 
     pix = gtk_icon_theme_load_icon(gtk_icon_theme_get_default(),
-                                    "parole",
+                                    "org.xfce.parole",
                                     48,
                                     GTK_ICON_LOOKUP_USE_BUILTIN,
                                     NULL);

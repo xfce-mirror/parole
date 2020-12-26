@@ -69,7 +69,7 @@ void parole_about(GtkWindow *parent) {
         "documenters", documenters,
         "copyright", copyrights,
         "license", XFCE_LICENSE_GPL,
-        "logo-icon-name", "parole",
+        "logo-icon-name", "org.xfce.parole",
         "program-name", _("Parole Media Player"),
         "translator-credits", _("translator-credits"),
         "version", PACKAGE_VERSION,

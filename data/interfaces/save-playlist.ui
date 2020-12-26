@@ -34,7 +34,7 @@
     <property name="title" translatable="yes">Save Playlist as...</property>
     <property name="role">GtkFileChooserDialog</property>
     <property name="window_position">center-on-parent</property>
-    <property name="icon_name">parole</property>
+    <property name="icon_name">org.xfce.parole</property>
     <property name="type_hint">dialog</property>
     <property name="action">save</property>
     <property name="do_overwrite_confirmation">True</property>
