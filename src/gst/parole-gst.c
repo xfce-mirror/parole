@@ -1726,8 +1726,10 @@ parole_gst_check_state_change_timeout(gpointer data) {
         if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_CANCEL) {
             parole_gst_terminate_internal(gst);
             gst->priv->state_change_id = 0;
+            gtk_widget_destroy (GTK_WIDGET(dialog));
             return FALSE;
         }
+        gtk_widget_destroy (GTK_WIDGET(dialog));
     }
     return TRUE;
 }
