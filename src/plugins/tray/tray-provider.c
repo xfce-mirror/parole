@@ -253,7 +253,7 @@ configure_plugin(TrayProvider *tray, GtkWidget *widget) {
 
     dialog = gtk_dialog_new_with_buttons(_("Tray icon plugin"),
                                             GTK_WINDOW(widget),
-                                            GTK_DIALOG_DESTROY_WITH_PARENT,
+                                            GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_MODAL,
                                             _("Close"),
                                             GTK_RESPONSE_CANCEL,
                                             NULL);
