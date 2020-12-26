@@ -1,35 +1,35 @@
 [encoding: UTF-8]
-[type: gettext/glade]data/interfaces/parole.ui
 [type: gettext/glade]data/interfaces/mediachooser.ui
+[type: gettext/glade]data/interfaces/open-location.ui
+[type: gettext/glade]data/interfaces/parole-settings.ui
+[type: gettext/glade]data/interfaces/parole.ui
 [type: gettext/glade]data/interfaces/playlist.ui
 [type: gettext/glade]data/interfaces/plugins.ui
-[type: gettext/glade]data/interfaces/parole-settings.ui
 [type: gettext/glade]data/interfaces/save-playlist.ui
-[type: gettext/glade]data/interfaces/open-location.ui
 [type: gettext/glade]data/interfaces/shortcuts.ui
 data/desktop/org.xfce.Parole.desktop.in.in
 data/metainfo/parole.appdata.xml.in
 src/common/parole-common.c
 src/gst/parole-gst.c
 src/main.c
-src/parole-mediachooser.c
-src/parole-medialist.c
-src/parole-player.c
+src/misc/parole-filters.c
+src/misc/parole-pl-parser.c
 src/parole-about.c
 src/parole-conf-dialog.c
 src/parole-disc.c
-src/parole-subtitle-encoding.c
+src/parole-mediachooser.c
+src/parole-medialist.c
 src/parole-open-location.c
+src/parole-player.c
 src/parole-plugins-manager.c
-src/misc/parole-filters.c
-src/misc/parole-pl-parser.c
+src/parole-subtitle-encoding.c
+src/plugins/mpris2/mpris2-provider.c
+src/plugins/mpris2/mpris2.desktop.in
 src/plugins/notify/notify-plugin.c
 src/plugins/notify/notify-provider.c
 src/plugins/notify/notify-provider.h
 src/plugins/notify/notify.desktop.in
+src/plugins/tray/system-tray.desktop.in
 src/plugins/tray/tray-plugin.c
 src/plugins/tray/tray-provider.c
 src/plugins/tray/tray-provider.h
-src/plugins/tray/system-tray.desktop.in
-src/plugins/mpris2/mpris2-provider.c
-src/plugins/mpris2/mpris2.desktop.in
