@@ -1,7 +1,7 @@
 /*
  * * Copyright (C) 2009-2011 Ali <aliov@xfce.org>
- * * Copyright (C) 2012-2017 Sean Davis <smd.seandavis@gmail.com>
  * * Copyright (C) 2012-2017 Simon Steinbeiß <ochosi@xfce.org>
+ * * Copyright (C) 2012-2020 Sean Davis <bluesabre@xfce.org>
  *
  * Licensed under the GNU General Public License Version 2
  *
@@ -46,8 +46,8 @@ void parole_about(GtkWindow *parent) {
     /* List of authors */
     static const gchar *authors[] = {
         "Ali Abdallah <aliov@xfce.org>",
-        "Sean Davis <bluesabre@xfce.org>",
         "Simon Steinbeiss <simon@xfce.org>",
+        "Sean Davis <bluesabre@xfce.org>",
         NULL,
     };
 
@@ -61,7 +61,8 @@ void parole_about(GtkWindow *parent) {
     /* Copyright information */
     static const gchar *copyrights =
     "Copyright \302\251 2009-2011 Ali Abdallah\n"
-    "Copyright \302\251 2012-2017 Sean Davis, Simon Steinbeiss";
+    "Copyright \302\251 2012-2017 Simon Steinbeiss\n"
+    "Copyright \302\251 2012-2020 Sean Davis";
 
     gtk_show_about_dialog(parent,
         "authors", authors,

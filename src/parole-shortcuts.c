@@ -1,5 +1,5 @@
 /*
- * * Copyright (C) 2017 Sean Davis <smd.seandavis@gmail.com>
+ * * Copyright (C) 2017-2020 Sean Davis <bluesabre@xfce.org>
  *
  * Licensed under the GNU General Public License Version 2
  *

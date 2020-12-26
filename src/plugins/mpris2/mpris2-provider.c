@@ -2,8 +2,8 @@
  * * Copyright (C) 2009-2011 Ali <aliov@xfce.org>
  * * Copyright (C) 2013 Hakan Erduman <smultimeter@gmail.com>
  * * Copyright (C) 2013 matiasdelellis <mati86dl@hotmail.com>
- * * Copyright (C) 2012-2017 Sean Davis <smd.seandavis@gmail.com>
  * * Copyright (C) 2012-2017 Simon Steinbeiß <ochosi@xfce.org>
+ * * Copyright (C) 2012-2020 Sean Davis <bluesabre@xfce.org>
  *
  * Licensed under the GNU General Public License Version 2
  *
