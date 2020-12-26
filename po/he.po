@@ -4,17 +4,18 @@
 # 
 # Translators:
 # Elishai Eliyahu <elishai@mailfence.com>, 2016-2019
+# Elishai Eliyahu <elishai@mailfence.com>, 2020
 # GenghisKhan <genghiskhan@gmx.ca>, 2015
 # GenghisKhan <genghiskhan@gmx.ca>, 2015-2016
-# Omer I.S., 2020
+# Omer I.S. <omeritzicschwartz@gmail.com>, 2020
 # Yaron Shahrabani <sh.yaron@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-23 00:31+0200\n"
-"PO-Revision-Date: 2020-06-30 16:41+0000\n"
-"Last-Translator: Omer I.S.\n"
+"POT-Creation-Date: 2020-12-25 00:46+0100\n"
+"PO-Revision-Date: 2020-12-26 12:41+0000\n"
+"Last-Translator: Elishai Eliyahu <elishai@mailfence.com>\n"
 "Language-Team: Hebrew (http://www.transifex.com/xfce/xfce-apps/language/he/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,8 +25,8 @@ msgstr ""
 
 #: ../data/interfaces/parole.ui.h:1
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:1
-#: ../src/parole-player.c:591 ../src/parole-player.c:1437
-#: ../src/parole-player.c:1788 ../src/parole-about.c:68
+#: ../src/parole-player.c:595 ../src/parole-player.c:1434
+#: ../src/parole-player.c:1795 ../src/parole-about.c:68
 #: ../src/plugins/mpris2/mpris2-provider.c:189
 msgid "Parole Media Player"
 msgstr "נגן המדיה Parole"
@@ -72,170 +73,174 @@ msgstr "_חזור"
 msgid "_Shuffle"
 msgstr "_ערבל"
 
+#: ../data/interfaces/parole.ui.h:12
+msgid "Show Playlist"
+msgstr "הצג רשימת נגינה"
+
 #. Create dialog
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2808
+#: ../data/interfaces/parole.ui.h:13 ../src/parole-player.c:2836
 msgid "Go to position"
 msgstr "עבור אל אזור"
 
-#: ../data/interfaces/parole.ui.h:13
+#: ../data/interfaces/parole.ui.h:14
 msgid "_DVD"
 msgstr "_DVD"
 
-#: ../data/interfaces/parole.ui.h:14
+#: ../data/interfaces/parole.ui.h:15
 msgid "_DVD Menu"
 msgstr "_DVD תפריט"
 
-#: ../data/interfaces/parole.ui.h:15
+#: ../data/interfaces/parole.ui.h:16
 msgid "_Title Menu"
 msgstr "תפריט _כותרת"
 
-#: ../data/interfaces/parole.ui.h:16
+#: ../data/interfaces/parole.ui.h:17
 msgid "_Audio Menu"
 msgstr "תפריט _אודיו"
 
-#: ../data/interfaces/parole.ui.h:17
+#: ../data/interfaces/parole.ui.h:18
 msgid "A_ngle Menu"
 msgstr "תפריט _מבט"
 
-#: ../data/interfaces/parole.ui.h:18
+#: ../data/interfaces/parole.ui.h:19
 msgid "_Chapters"
 msgstr "_פרקים"
 
-#: ../data/interfaces/parole.ui.h:19
+#: ../data/interfaces/parole.ui.h:20
 msgid "_Chapter Menu"
 msgstr "תפריט _פרק"
 
-#: ../data/interfaces/parole.ui.h:20
+#: ../data/interfaces/parole.ui.h:21
 msgid "_Audio"
 msgstr "_אודיו"
 
-#: ../data/interfaces/parole.ui.h:21
+#: ../data/interfaces/parole.ui.h:22
 msgid "_Audio Track"
 msgstr "_רצועת שמע"
 
-#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:797
+#: ../data/interfaces/parole.ui.h:23 ../src/parole-player.c:801
 msgid "Empty"
 msgstr "ריק"
 
-#: ../data/interfaces/parole.ui.h:23
+#: ../data/interfaces/parole.ui.h:24
 msgid "Volume _Up"
 msgstr "ה_גבר עצמה"
 
-#: ../data/interfaces/parole.ui.h:24
+#: ../data/interfaces/parole.ui.h:25
 msgid "Volume _Down"
 msgstr "ה_נמך עצמה"
 
-#: ../data/interfaces/parole.ui.h:25
+#: ../data/interfaces/parole.ui.h:26
 msgid "_Mute"
 msgstr "ה_שתק"
 
-#: ../data/interfaces/parole.ui.h:26
+#: ../data/interfaces/parole.ui.h:27
 msgid "_Video"
 msgstr "_וידאו"
 
-#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:1981
-#: ../src/parole-player.c:2134
+#: ../data/interfaces/parole.ui.h:28 ../src/parole-player.c:1983
+#: ../src/parole-player.c:2125
 msgid "_Fullscreen"
 msgstr "_מסך מלא"
 
-#: ../data/interfaces/parole.ui.h:28
+#: ../data/interfaces/parole.ui.h:29
 msgid "_Aspect Ratio"
 msgstr "י_חס תצוגה"
 
-#: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:728
+#: ../data/interfaces/parole.ui.h:30 ../src/parole-player.c:732
 msgid "None"
 msgstr "ללא"
 
-#: ../data/interfaces/parole.ui.h:30
+#: ../data/interfaces/parole.ui.h:31
 msgid "Auto"
 msgstr "אוטומטי"
 
-#: ../data/interfaces/parole.ui.h:31
+#: ../data/interfaces/parole.ui.h:32
 msgid "Square"
 msgstr "ריבוע"
 
-#: ../data/interfaces/parole.ui.h:32
+#: ../data/interfaces/parole.ui.h:33
 msgid "4:3 (TV)"
 msgstr "4:3 (טלוויזיה)"
 
-#: ../data/interfaces/parole.ui.h:33
+#: ../data/interfaces/parole.ui.h:34
 msgid "16:9 (Widescreen)"
 msgstr "16:9 (מסך רחב)"
 
-#: ../data/interfaces/parole.ui.h:34
+#: ../data/interfaces/parole.ui.h:35
 msgid "20:9 (DVB)"
 msgstr "‫20:9 (DVB)"
 
-#: ../data/interfaces/parole.ui.h:35
+#: ../data/interfaces/parole.ui.h:36
 msgid "_Subtitles"
 msgstr "_כתוביות"
 
-#: ../data/interfaces/parole.ui.h:36
+#: ../data/interfaces/parole.ui.h:37
 msgid "Select Text Subtitles..."
 msgstr "בחירת תמליל כתוביות..."
 
-#: ../data/interfaces/parole.ui.h:37
+#: ../data/interfaces/parole.ui.h:38
 msgid "_Tools"
 msgstr "_כלים"
 
-#: ../data/interfaces/parole.ui.h:38
+#: ../data/interfaces/parole.ui.h:39
 msgid "P_lugins"
 msgstr "_תוספים"
 
-#: ../data/interfaces/parole.ui.h:39
+#: ../data/interfaces/parole.ui.h:40
 msgid "_Preferences"
 msgstr "_העדפות"
 
-#: ../data/interfaces/parole.ui.h:40
+#: ../data/interfaces/parole.ui.h:41
 msgid "_Help"
 msgstr "_עזרה"
 
-#: ../data/interfaces/parole.ui.h:41
+#: ../data/interfaces/parole.ui.h:42
 msgid "_Report a Bug..."
 msgstr "_דווח על באג..."
 
-#: ../data/interfaces/parole.ui.h:42
+#: ../data/interfaces/parole.ui.h:43
 msgid "_Keyboard Shortcuts"
 msgstr "_קיצורי מקלדת"
 
-#: ../data/interfaces/parole.ui.h:43
+#: ../data/interfaces/parole.ui.h:44
 msgid "Display Parole user manual"
 msgstr "הצג מדריך המשתמש של Parole"
 
-#: ../data/interfaces/parole.ui.h:44
+#: ../data/interfaces/parole.ui.h:45
 msgid "_Contents"
 msgstr "_תכנים"
 
-#: ../data/interfaces/parole.ui.h:45
+#: ../data/interfaces/parole.ui.h:46
 msgid "_About"
 msgstr "_אודות"
 
-#: ../data/interfaces/parole.ui.h:46
+#: ../data/interfaces/parole.ui.h:47
 msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
 msgstr "<span color='#F4F4F4'><b><big>שיר לא ידוע</big></b></span>"
 
-#: ../data/interfaces/parole.ui.h:47
+#: ../data/interfaces/parole.ui.h:48
 msgid ""
 "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
 "Album</span></big>"
 msgstr "<big><span color='#BBBBBB'><i>מתוך</i></span> <span color='#F4F4F4'>אלבום לא ידוע</span></big>"
 
-#: ../data/interfaces/parole.ui.h:48
+#: ../data/interfaces/parole.ui.h:49
 msgid ""
 "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
 "Artist</span></big>"
 msgstr "<big><span color='#BBBBBB'><i>מאת</i></span> <span color='#F4F4F4'>אמן לא ידוע</span></big>"
 
-#: ../data/interfaces/parole.ui.h:49
+#: ../data/interfaces/parole.ui.h:50
 msgid "0:00"
 msgstr "0:00"
 
-#: ../data/interfaces/parole.ui.h:51
+#: ../data/interfaces/parole.ui.h:52
 #, no-c-format
 msgid "Buffering (0%)"
 msgstr "כעת אוגר (0%)"
 
-#: ../data/interfaces/parole.ui.h:52
+#: ../data/interfaces/parole.ui.h:53
 msgid "/"
 msgstr "/"
 
@@ -245,8 +250,8 @@ msgstr "פתח קבצי מדיה"
 
 #: ../data/interfaces/playlist.ui.h:1
 #: ../data/interfaces/parole-settings.ui.h:28
-#: ../data/interfaces/shortcuts.ui.h:13 ../src/parole-medialist.c:742
-#: ../src/parole-medialist.c:781 ../src/parole-player.c:3188
+#: ../data/interfaces/shortcuts.ui.h:13 ../src/parole-medialist.c:799
+#: ../src/parole-medialist.c:844 ../src/parole-player.c:3219
 msgid "Playlist"
 msgstr "רשימת נגינה"
 
@@ -457,24 +462,8 @@ msgid "Subtitles"
 msgstr "כתוביות"
 
 #: ../data/interfaces/save-playlist.ui.h:1
-msgid "By Extension"
-msgstr "לפי סיומת"
-
-#: ../data/interfaces/save-playlist.ui.h:2
 msgid "Save Playlist as..."
 msgstr "שמור רשימת נגינה בשם..."
-
-#: ../data/interfaces/save-playlist.ui.h:3
-msgid "File Type"
-msgstr "טיפוס קובץ"
-
-#: ../data/interfaces/save-playlist.ui.h:4
-msgid "Extension"
-msgstr "סיומת"
-
-#: ../data/interfaces/save-playlist.ui.h:5
-msgid "Select File Types (By Extension)"
-msgstr "בחר טיפוסי קובץ (לפי סיומת)"
 
 #: ../data/interfaces/open-location.ui.h:1
 msgid "Open Network Location"
@@ -528,7 +517,7 @@ msgstr "הגבר עוצמה"
 msgid "Decrease volume"
 msgstr "הנמך עוצמה"
 
-#: ../data/interfaces/shortcuts.ui.h:12 ../src/parole-player.c:2382
+#: ../data/interfaces/shortcuts.ui.h:12 ../src/parole-player.c:2393
 msgid "Mute"
 msgstr "השתק"
 
@@ -594,12 +583,12 @@ msgid "Play your media"
 msgstr "נגן את המדיה שלך"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:4
-#: ../src/parole-player.c:3337 ../src/plugins/notify/notify-provider.c:190
+#: ../src/parole-player.c:3365 ../src/plugins/notify/notify-provider.c:190
 msgid "Previous Track"
 msgstr "רצועה קודמת"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:5
-#: ../src/parole-player.c:3355 ../src/plugins/notify/notify-provider.c:202
+#: ../src/parole-player.c:3383 ../src/plugins/notify/notify-provider.c:202
 msgid "Next Track"
 msgstr "רצועה הבאה"
 
@@ -686,7 +675,7 @@ msgstr "הודעה"
 msgid "Error"
 msgstr "שגיאה"
 
-#: ../src/gst/parole-gst.c:1092 ../src/parole-medialist.c:373
+#: ../src/gst/parole-gst.c:1092 ../src/parole-medialist.c:412
 #, c-format
 msgid "Track %i"
 msgstr "רצועה %i"
@@ -695,78 +684,78 @@ msgstr "רצועה %i"
 msgid "Audio CD"
 msgstr "תקליטור שמע"
 
-#: ../src/gst/parole-gst.c:1267
+#: ../src/gst/parole-gst.c:1273
 msgid "Unable to install missing codecs."
 msgstr "לא ניתן להתקין מקודדים חסרים."
 
-#: ../src/gst/parole-gst.c:1270
+#: ../src/gst/parole-gst.c:1276
 msgid "No available plugin installer was found."
 msgstr "לא נמצא מתקין תוסף זמין."
 
-#: ../src/gst/parole-gst.c:1321
+#: ../src/gst/parole-gst.c:1327
 msgid "Additional software is required."
 msgstr "נחוצה תוכנה נוספת."
 
-#: ../src/gst/parole-gst.c:1325
+#: ../src/gst/parole-gst.c:1331
 msgid "Don't Install"
 msgstr "אל תתקין"
 
-#: ../src/gst/parole-gst.c:1327
+#: ../src/gst/parole-gst.c:1333
 msgid "Install"
 msgstr "התקן"
 
-#: ../src/gst/parole-gst.c:1330
+#: ../src/gst/parole-gst.c:1336
 msgid "OK"
 msgstr "אישור"
 
-#: ../src/gst/parole-gst.c:1337
+#: ../src/gst/parole-gst.c:1343
 #, c-format
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
 msgstr "‏Parole צריך <b>%s</b> כדי לנגן את קובץ זה.\nהוא ניתן להתקנה אוטומטית."
 
-#: ../src/gst/parole-gst.c:1340
+#: ../src/gst/parole-gst.c:1346
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
 msgstr "‏Parole צריך <b>%s</b> כדי לנגן את קובץ זה."
 
-#: ../src/gst/parole-gst.c:1715
+#: ../src/gst/parole-gst.c:1721
 msgid "The stream is taking too much time to load"
 msgstr "לזרם לוקח יותר מדי זמן לעלות"
 
-#: ../src/gst/parole-gst.c:1717
+#: ../src/gst/parole-gst.c:1723
 msgid "Do you want to continue loading or stop?"
 msgstr "האם ברצונך להמשיך בטעינה או לעצור?"
 
-#: ../src/gst/parole-gst.c:1718
+#: ../src/gst/parole-gst.c:1724
 msgid "Stop"
 msgstr "עצור"
 
-#: ../src/gst/parole-gst.c:1719
+#: ../src/gst/parole-gst.c:1725
 msgid "Continue"
 msgstr "המשך"
 
-#: ../src/gst/parole-gst.c:1883
+#: ../src/gst/parole-gst.c:1889
 msgid "GStreamer Error"
 msgstr "שגיאת GStreamer"
 
-#: ../src/gst/parole-gst.c:1884
+#: ../src/gst/parole-gst.c:1890
 msgid "Parole Media Player cannot start."
 msgstr "לא ניתן להתחיל את נגן המדיה Parole."
 
-#: ../src/gst/parole-gst.c:1909 ../src/gst/parole-gst.c:1924
-#: ../src/gst/parole-gst.c:1958
+#: ../src/gst/parole-gst.c:1915 ../src/gst/parole-gst.c:1930
+#: ../src/gst/parole-gst.c:1964
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
 msgstr "‭.ךלש GStreamer תנקתה תא קודב ,\"%s\" ףסות תולעהל לוכי אל."
 
-#: ../src/gst/parole-gst.c:2516 ../src/gst/parole-gst.c:2520
+#: ../src/gst/parole-gst.c:2522 ../src/gst/parole-gst.c:2526
 #, c-format
 msgid "Audio Track #%d"
 msgstr "רצועת שמע מס׳ %d"
 
-#: ../src/gst/parole-gst.c:2556 ../src/gst/parole-gst.c:2560
+#: ../src/gst/parole-gst.c:2562 ../src/gst/parole-gst.c:2566
 #, c-format
 msgid "Subtitle #%d"
 msgstr "כתובית מס׳ %d"
@@ -852,11 +841,12 @@ msgstr "הקלד %s --help על מנת לראות את רשימת כל האפש�
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole כבר כעת רץ, השתמש ב־-i על מנת לפתוח תהליך חדש\n"
 
-#: ../src/parole-mediachooser.c:233 ../src/parole-player.c:1003
+#: ../src/parole-mediachooser.c:233 ../src/parole-medialist.c:851
+#: ../src/parole-player.c:1007
 msgid "All files"
 msgstr "כל הקבצים"
 
-#: ../src/parole-medialist.c:215 ../src/parole-medialist.c:1470
+#: ../src/parole-medialist.c:260 ../src/parole-medialist.c:1640
 #, c-format
 msgid "Playlist (%i item)"
 msgid_plural "Playlist (%i items)"
@@ -865,7 +855,7 @@ msgstr[1] "רשימת נגינה (%i פריטים)"
 msgstr[2] "רשימת נגינה (%i פריטים)"
 msgstr[3] "רשימת נגינה (%i פריטים)"
 
-#: ../src/parole-medialist.c:218 ../src/parole-medialist.c:1472
+#: ../src/parole-medialist.c:262 ../src/parole-medialist.c:1642
 #, c-format
 msgid "Playlist (%i chapter)"
 msgid_plural "Playlist (%i chapters)"
@@ -874,211 +864,207 @@ msgstr[1] "רשימת נגינה (%i פרקים)"
 msgstr[2] "רשימת נגינה (%i פרקים)"
 msgstr[3] "רשימת נגינה (%i פרקים)"
 
-#: ../src/parole-medialist.c:387 ../src/parole-player.c:708
+#: ../src/parole-medialist.c:426 ../src/parole-player.c:712
 #, c-format
 msgid "Chapter %i"
 msgstr "פרק %i"
 
-#: ../src/parole-medialist.c:648
+#: ../src/parole-medialist.c:687
 msgid "Permission denied"
 msgstr "ההרשאה נדחתה"
 
-#: ../src/parole-medialist.c:650
+#: ../src/parole-medialist.c:689
 msgid "Error saving playlist file"
 msgstr "שגיאה בשמירת קובץ רשימת נגינה"
 
-#: ../src/parole-medialist.c:660
+#: ../src/parole-medialist.c:699
 msgid "Unknown playlist format"
 msgstr "פורמט רשימת נגינה לא מוכר"
 
-#: ../src/parole-medialist.c:661
+#: ../src/parole-medialist.c:700
 msgid "Please choose a supported playlist format"
 msgstr "אנא בחר פורמט רשימת נגינה נתמך"
 
-#: ../src/parole-medialist.c:704 ../src/parole-plugins-manager.c:338
+#: ../src/parole-medialist.c:746 ../src/parole-plugins-manager.c:338
 msgid "Unknown"
 msgstr "לא ידוע"
 
-#: ../src/parole-medialist.c:788
-msgid "M3U Playlists"
-msgstr "רשימות נגינה M3U"
+#: ../src/parole-medialist.c:856
+#, c-format
+msgid "M3U Playlist (%s)"
+msgstr "רשימת נגינה M3U (%s)"
 
-#: ../src/parole-medialist.c:796
-msgid "PLS Playlists"
-msgstr "רשימות נגינה PLS"
+#: ../src/parole-medialist.c:866
+#, c-format
+msgid "PLS Playlist (%s)"
+msgstr "רשימת נגינה PLS (%s)"
 
-#: ../src/parole-medialist.c:804
-msgid "Advanced Stream Redirector"
-msgstr "מפנה תזרימים מתקדם"
+#: ../src/parole-medialist.c:876
+#, c-format
+msgid "Advanced Stream Redirector (%s)"
+msgstr "מנתב זרם מתקדם (%s)"
 
-#: ../src/parole-medialist.c:812
-msgid "Shareable Playlist"
-msgstr "רשימת נגינה ברת שיתוף"
+#: ../src/parole-medialist.c:886
+#, c-format
+msgid "Shareable Playlist (%s)"
+msgstr "רשימת נגינה הניתנת לשיתוף (%s)"
 
 #. Clear
-#: ../src/parole-medialist.c:1119
+#: ../src/parole-medialist.c:1276
 msgid "Open Containing Folder"
 msgstr "פתח תיקייה מכילה"
 
-#: ../src/parole-player.c:526
-msgid "Hide Playlist"
-msgstr "הסתר רשימת נגינה"
-
-#: ../src/parole-player.c:526 ../src/parole-player.c:3397
-msgid "Show Playlist"
-msgstr "הצג רשימת נגינה"
-
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:967
+#: ../src/parole-player.c:971
 msgid "Select Subtitle File"
 msgstr "בחר קובץ כתוביות"
 
-#: ../src/parole-player.c:972 ../src/parole-player.c:1159
-#: ../src/parole-player.c:2811 ../src/plugins/tray/tray-provider.c:319
+#: ../src/parole-player.c:976 ../src/parole-player.c:1169
+#: ../src/parole-player.c:2839 ../src/plugins/tray/tray-provider.c:319
 msgid "Cancel"
 msgstr "ביטול"
 
-#: ../src/parole-player.c:975
+#: ../src/parole-player.c:979
 msgid "Open"
 msgstr "פתח"
 
-#: ../src/parole-player.c:991
+#: ../src/parole-player.c:995
 msgid "Subtitle Files"
 msgstr "קבצי כתוביות"
 
-#: ../src/parole-player.c:1155 ../src/parole-player.c:1163
+#: ../src/parole-player.c:1165 ../src/parole-player.c:1173
 msgid "Clear Recent Items"
 msgstr "טהר פריטים אחרונים"
 
-#: ../src/parole-player.c:1157
+#: ../src/parole-player.c:1167
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
 msgstr "האם אתה בטוח כי ברצונך לטהר היסטוריית פריטים אחרונים?  פעולה זו הינה בלתי הפיכה."
 
-#: ../src/parole-player.c:1260 ../src/parole-player.c:1387
+#: ../src/parole-player.c:1263 ../src/parole-player.c:1390
 msgid "Media stream is not seekable"
 msgstr "זרם מדיה אינו בר חיפוש"
 
-#: ../src/parole-player.c:1270
+#: ../src/parole-player.c:1273
 msgid "Play"
 msgstr "נגן"
 
-#: ../src/parole-player.c:1273
+#: ../src/parole-player.c:1276
 msgid "Pause"
 msgstr "השהה"
 
-#: ../src/parole-player.c:1712
+#: ../src/parole-player.c:1719
 msgid "GStreamer backend error"
 msgstr "שגיאת מגשר עורפי GStreamer"
 
-#: ../src/parole-player.c:1793
+#: ../src/parole-player.c:1800
 msgid "Unknown Song"
 msgstr "שיר לא ידוע"
 
-#: ../src/parole-player.c:1804 ../src/parole-player.c:1810
-#: ../src/parole-player.c:1818
+#: ../src/parole-player.c:1811 ../src/parole-player.c:1817
+#: ../src/parole-player.c:1825
 msgid "on"
 msgstr "מתוך"
 
-#: ../src/parole-player.c:1818 ../src/plugins/notify/notify-provider.c:134
+#: ../src/parole-player.c:1825 ../src/plugins/notify/notify-provider.c:134
 msgid "Unknown Album"
 msgstr "אלבום לא ידוע"
 
-#: ../src/parole-player.c:1829 ../src/parole-player.c:1836
+#: ../src/parole-player.c:1836 ../src/parole-player.c:1843
 msgid "by"
 msgstr "מאת"
 
-#: ../src/parole-player.c:1836 ../src/plugins/notify/notify-provider.c:136
+#: ../src/parole-player.c:1843 ../src/plugins/notify/notify-provider.c:136
 msgid "Unknown Artist"
 msgstr "אמן לא ידוע"
 
-#: ../src/parole-player.c:1871
+#: ../src/parole-player.c:1878
 msgid "Buffering"
 msgstr "כעת אוגר"
 
-#: ../src/parole-player.c:1982 ../src/parole-player.c:3372
+#: ../src/parole-player.c:1984 ../src/parole-player.c:3400
 msgid "Fullscreen"
 msgstr "מסך מלא"
 
-#: ../src/parole-player.c:1993
+#: ../src/parole-player.c:1992
 msgid "Leave _Fullscreen"
 msgstr "עזוב _מסך מלא"
 
-#: ../src/parole-player.c:1994
+#: ../src/parole-player.c:1993
 msgid "Leave Fullscreen"
 msgstr "עזוב מסך מלא"
 
 #. Play menu item
 #. * Play pause
-#: ../src/parole-player.c:2096 ../src/plugins/tray/tray-provider.c:119
+#: ../src/parole-player.c:2087 ../src/plugins/tray/tray-provider.c:119
 msgid "_Pause"
 msgstr "_השהה"
 
-#: ../src/parole-player.c:2096 ../src/plugins/tray/tray-provider.c:119
+#: ../src/parole-player.c:2087 ../src/plugins/tray/tray-provider.c:119
 msgid "_Play"
 msgstr "_נגן"
 
 #. * Previous item in playlist.
-#: ../src/parole-player.c:2112
+#: ../src/parole-player.c:2103
 msgid "_Previous"
 msgstr "_קודם"
 
 #. * Next item in playlist.
-#: ../src/parole-player.c:2123
+#: ../src/parole-player.c:2114
 msgid "_Next"
 msgstr "ה_בא"
 
 #. * Un/Full screen
-#: ../src/parole-player.c:2134
+#: ../src/parole-player.c:2125
 msgid "_Leave Fullscreen"
 msgstr "_עזוב מסך מלא"
 
 #. * Un/Hide menubar
-#: ../src/parole-player.c:2149
+#: ../src/parole-player.c:2140
 msgid "Show menubar"
 msgstr "הצג שורת תפריט"
 
-#: ../src/parole-player.c:2166
+#: ../src/parole-player.c:2157
 msgid "Mini Mode"
 msgstr "מצב מיני"
 
-#: ../src/parole-player.c:2385
+#: ../src/parole-player.c:2396
 msgid "Unmute"
 msgstr "בטל השתקה"
 
-#: ../src/parole-player.c:2782
+#: ../src/parole-player.c:2810
 msgid "Unable to open default web browser"
 msgstr "לא מסוגל לפתוח דפדפן רשת"
 
-#: ../src/parole-player.c:2784
+#: ../src/parole-player.c:2812
 msgid ""
 "Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr "אנא היכנס לאתר https://docs.xfce.org/apps/parole/bugs על מנת לדווח על הבאג שלך."
 
-#: ../src/parole-player.c:2812
+#: ../src/parole-player.c:2840
 msgid "Go"
 msgstr "עבור"
 
-#: ../src/parole-player.c:2825
+#: ../src/parole-player.c:2853
 msgid "Position:"
 msgstr "מיקום:"
 
 #. Clear Recent Menu Item
-#: ../src/parole-player.c:3229
+#: ../src/parole-player.c:3257
 msgid "_Clear recent items..."
 msgstr "_נקה פריטים אחרונים..."
 
-#: ../src/parole-player.c:3548
+#: ../src/parole-player.c:3568
 msgid "Audio Track:"
 msgstr "רצועת שמע:"
 
-#: ../src/parole-player.c:3567
+#: ../src/parole-player.c:3587
 msgid "Subtitles:"
 msgstr "כתוביות:"
 
 #. Add a close button to the Infobar
-#: ../src/parole-player.c:3573 ../src/plugins/tray/tray-provider.c:257
+#: ../src/parole-player.c:3593 ../src/plugins/tray/tray-provider.c:257
 msgid "Close"
 msgstr "סגור"
 
