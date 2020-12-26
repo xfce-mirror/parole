@@ -43,7 +43,7 @@ static void parole_open_location_finalize(GObject *object);
 
 struct ParoleOpenLocation {
     GObject             parent;
-
+    GtkWidget          *dialog;
     GtkWidget          *entry;
 };
 
@@ -76,20 +76,32 @@ parole_open_location_response_cb(GtkDialog *dialog, gint response_id, ParoleOpen
     if ( response_id == 0 )
         return;
 
-    if ( response_id == GTK_RESPONSE_OK ) {
-        location = gtk_combo_box_text_get_active_text(GTK_COMBO_BOX_TEXT(self->entry));
+    gtk_widget_destroy(GTK_WIDGET(dialog));
+}
 
-        if ( !location || strlen (location) == 0)
-            goto out;
+static void
+parole_open_location_close(ParoleOpenLocation *self)
+{
+    gtk_widget_destroy(GTK_WIDGET(self->dialog));
+}
 
-        TRACE("Location %s", location);
+static void
+parole_open_location_open(ParoleOpenLocation *self)
+{
+    const gchar *location;
 
-        gtk_widget_hide(GTK_WIDGET(dialog));
-        g_signal_emit(G_OBJECT(self), signals[LOCATION_OPENED], 0, location);
-    }
+    location = gtk_combo_box_text_get_active_text(GTK_COMBO_BOX_TEXT(self->entry));
+
+    if (!location || strlen(location) == 0)
+        goto out;
+
+    TRACE("Location %s", location);
+
+    gtk_widget_hide(GTK_WIDGET(self->dialog));
+    g_signal_emit(G_OBJECT(self), signals[LOCATION_OPENED], 0, location);
 
 out:
-    gtk_widget_destroy(GTK_WIDGET(dialog));
+    gtk_widget_destroy(GTK_WIDGET(self->dialog));
 }
 
 /* Populate the history-popup */
@@ -154,7 +166,6 @@ parole_open_location_clear_history(GtkTreeModel *model) {
 /* Main function to open the "open location" dialog */
 ParoleOpenLocation *parole_open_location(GtkWidget *parent) {
     ParoleOpenLocation *self;
-    GtkWidget *dialog;
     GtkTreeModel *model;
     GtkBuilder *builder;
 
@@ -162,31 +173,36 @@ ParoleOpenLocation *parole_open_location(GtkWidget *parent) {
 
     builder = parole_builder_new_from_string(open_location_ui, open_location_ui_length);
 
-    dialog = GTK_WIDGET(gtk_builder_get_object(builder, "open-location"));
+    self->dialog = GTK_WIDGET(gtk_builder_get_object(builder, "open-location"));
 
     if ( parent )
-        gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(parent));
+        gtk_window_set_transient_for(GTK_WINDOW(self->dialog), GTK_WINDOW(parent));
 
-    gtk_window_set_position(GTK_WINDOW(dialog), GTK_WIN_POS_CENTER_ON_PARENT);
+    gtk_window_set_position(GTK_WINDOW(self->dialog), GTK_WIN_POS_CENTER_ON_PARENT);
 
     self->entry = GTK_WIDGET(gtk_builder_get_object(builder, "entry"));
     model = parole_open_location_get_completion_model();
 
     gtk_combo_box_set_model(GTK_COMBO_BOX(self->entry), model);
 
-    gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_OK);
+    gtk_dialog_set_default_response(GTK_DIALOG(self->dialog), GTK_RESPONSE_OK);
 
     g_signal_connect_swapped(gtk_builder_get_object(builder, "clear-history"), "clicked",
                               G_CALLBACK(parole_open_location_clear_history), model);
     gtk_widget_set_tooltip_text(GTK_WIDGET(gtk_builder_get_object(builder, "clear-history")), _("Clear History"));
 
-    g_signal_connect(dialog, "delete-event",
+    g_signal_connect_swapped(gtk_builder_get_object(builder, "cancel"), "clicked",
+                             G_CALLBACK(parole_open_location_close), self);
+    g_signal_connect_swapped(gtk_builder_get_object(builder, "open"), "clicked",
+                             G_CALLBACK(parole_open_location_open), self);
+
+    g_signal_connect(self->dialog, "delete-event",
                       G_CALLBACK(gtk_widget_destroy), NULL);
 
-    g_signal_connect(dialog, "response",
+    g_signal_connect(self->dialog, "response",
                       G_CALLBACK(parole_open_location_response_cb), self);
 
-    gtk_widget_show_all(dialog);
+    gtk_widget_show_all(self->dialog);
     g_object_unref(builder);
 
     return self;
