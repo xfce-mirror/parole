@@ -152,6 +152,10 @@ parole_media_list_set_row_length                    (ParoleMediaList *list,
                                                      GtkTreeRowReference *row,
                                                      const gchar *length);
 
+guint
+parole_media_list_get_row_entry_order               (ParoleMediaList *list,
+                                                     GtkTreeRowReference *row);
+
 void                parole_media_list_open          (ParoleMediaList *list);
 
 void                parole_media_list_open_location (ParoleMediaList *list);
