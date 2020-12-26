@@ -73,6 +73,9 @@ static GdkPixbuf *parole_gst_tag_list_get_cover_embedded(ParoleGst *gst,
 static GdkPixbuf *parole_gst_tag_list_get_cover(ParoleGst *gst,
                                                           GstTagList *tag_list);
 
+static gboolean   parole_gst_check_dvd_state_change_timeout (gpointer data);
+static gboolean   parole_gst_dvd_menu_timeout (gpointer data);
+
 typedef enum {
     GST_PLAY_FLAG_VIDEO         = (1 << 0),
     GST_PLAY_FLAG_AUDIO         = (1 << 1),
@@ -776,6 +779,13 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
         if ( gst->priv->state_change_id != 0 ) {
             g_source_remove(gst->priv->state_change_id);
             gst->priv->state_change_id = 0;
+
+            // If it's a DVD, fire up the menu if nothing happens
+            if (parole_gst_get_current_stream_type(gst) == PAROLE_MEDIA_TYPE_DVD) {
+                gst->priv->state_change_id = g_timeout_add_seconds(5,
+                                                (GSourceFunc) parole_gst_dvd_menu_timeout,
+                                                gst);
+            }
         }
     }
 
@@ -1582,11 +1592,15 @@ parole_gst_send_navigation_command(ParoleGst *gst, gint command) {
     switch (command) {
         case GST_DVD_ROOT_MENU:
             TRACE("Root Menu");
-            gst_navigation_send_command(nav, GST_NAVIGATION_COMMAND_DVD_MENU);
+            gst_navigation_send_command(nav, GST_NAVIGATION_COMMAND_DVD_ROOT_MENU);
             break;
         case GST_DVD_TITLE_MENU:
             TRACE("Title Menu");
             gst_navigation_send_command(nav, GST_NAVIGATION_COMMAND_DVD_TITLE_MENU);
+            break;
+        case GST_DVD_SUBPICTURE_MENU:
+            TRACE("Subpicture Menu");
+            gst_navigation_send_command(nav, GST_NAVIGATION_COMMAND_DVD_SUBPICTURE_MENU);
             break;
         case GST_DVD_AUDIO_MENU:
             TRACE("Audio Menu");
@@ -1726,10 +1740,48 @@ parole_gst_check_state_change_timeout(gpointer data) {
         if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_CANCEL) {
             parole_gst_terminate_internal(gst);
             gst->priv->state_change_id = 0;
+            gtk_widget_destroy (GTK_WIDGET(dialog));
             return FALSE;
         }
+        gtk_widget_destroy (GTK_WIDGET(dialog));
     }
     return TRUE;
+}
+
+static gboolean
+parole_gst_dvd_menu_timeout(gpointer data) {
+    ParoleGst *gst;
+    GtkWidget *dialog;
+    gint64     duration;
+
+    gst = PAROLE_GST(data);
+
+    duration = parole_gst_get_stream_duration(gst);
+
+    if ( duration == 0 ) {
+        parole_gst_send_navigation_command(gst, GST_NAVIGATION_COMMAND_DVD_MENU);
+        gst->priv->state_change_id = 0;
+        return TRUE;
+    }
+    return FALSE;
+}
+
+static gboolean
+parole_gst_check_dvd_state_change_timeout(gpointer data) {
+    ParoleGst *gst;
+    GtkWidget *dialog;
+    gint64     duration;
+
+    gst = PAROLE_GST(data);
+
+    TRACE("target =%d current state=%d", gst->priv->target, gst->priv->state);
+
+    if ( gst->priv->state != gst->priv->target ) {
+        parole_gst_send_navigation_command(gst, GST_NAVIGATION_COMMAND_DVD_MENU);
+        gst->priv->state_change_id = 0;
+        return TRUE;
+    }
+    return FALSE;
 }
 
 static void
@@ -2241,10 +2293,17 @@ void parole_gst_play_uri(ParoleGst *gst, const gchar *uri, const gchar *subtitle
 
     g_mutex_unlock(&gst->priv->lock);
 
-    if ( gst->priv->state_change_id == 0 )
-    gst->priv->state_change_id = g_timeout_add_seconds(20,
-                                 (GSourceFunc) parole_gst_check_state_change_timeout,
-                                 gst);
+    if ( gst->priv->state_change_id == 0 ) {
+        if (parole_gst_get_current_stream_type(gst) == PAROLE_MEDIA_TYPE_DVD) {
+            gst->priv->state_change_id = g_timeout_add_seconds(3,
+                                        (GSourceFunc) parole_gst_check_dvd_state_change_timeout,
+                                        gst);
+        } else {
+            gst->priv->state_change_id = g_timeout_add_seconds(20,
+                                        (GSourceFunc) parole_gst_check_state_change_timeout,
+                                        gst);
+        }
+    }
 
     parole_window_busy_cursor(gtk_widget_get_window(GTK_WIDGET(gst)));
 

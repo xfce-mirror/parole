@@ -223,6 +223,15 @@
                       </object>
                     </child>
                     <child>
+                      <object class="GtkMenuItem" id="dvd_subpicture-menu">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">_Subpicture Menu</property>
+                        <property name="use_underline">True</property>
+                        <signal name="activate" handler="parole_player_dvd_subpicture_activated" swapped="no"/>
+                      </object>
+                    </child>
+                    <child>
                       <object class="GtkMenuItem" id="dvd_audio-menu">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>

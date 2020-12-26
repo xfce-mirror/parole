@@ -315,6 +315,9 @@ void        parole_player_dvd_menu_activated(GtkMenuItem *widget,
 void        parole_player_dvd_title_activated(GtkMenuItem *widget,
                                                      ParolePlayer *player);
 
+void        parole_player_dvd_subpicture_activated(GtkMenuItem *widget,
+                                                     ParolePlayer *player);
+
 void        parole_player_dvd_audio_activated(GtkMenuItem *widget,
                                                      ParolePlayer *player);
 
@@ -636,6 +639,11 @@ parole_player_dvd_menu_activated(GtkMenuItem *widget, ParolePlayer *player) {
 void
 parole_player_dvd_title_activated(GtkMenuItem *widget, ParolePlayer *player) {
     parole_gst_send_navigation_command(PAROLE_GST(player->priv->gst), GST_DVD_TITLE_MENU);
+}
+
+void
+parole_player_dvd_subpicture_activated(GtkMenuItem *widget, ParolePlayer *player) {
+    parole_gst_send_navigation_command(PAROLE_GST(player->priv->gst), GST_DVD_SUBPICTURE_MENU);
 }
 
 void
