@@ -972,7 +972,7 @@ parole_player_select_custom_subtitle(GtkMenuItem *widget, gpointer data) {
                                            GTK_FILE_CHOOSER_ACTION_OPEN,
                                            NULL,
                                            NULL);
-    gtk_window_set_icon_name(GTK_WINDOW(chooser), "parole");
+    gtk_window_set_icon_name(GTK_WINDOW(chooser), "org.xfce.parole");
     button = gtk_dialog_add_button(GTK_DIALOG(chooser), _("Cancel"), GTK_RESPONSE_CANCEL);
     button = gtk_dialog_add_button(GTK_DIALOG(chooser), _("Open"), GTK_RESPONSE_OK);
     gtk_dialog_set_default_response(GTK_DIALOG(chooser), GTK_RESPONSE_OK);

@@ -13,7 +13,7 @@
     <property name="modal">True</property>
     <property name="default_width">640</property>
     <property name="default_height">480</property>
-    <property name="icon_name">parole</property>
+    <property name="icon_name">org.xfce.parole</property>
     <property name="type_hint">dialog</property>
     <signal name="destroy" handler="parole_media_chooser_destroy_cb" swapped="no"/>
     <child type="titlebar">

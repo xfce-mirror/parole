@@ -13,7 +13,7 @@
     <property name="resizable">False</property>
     <property name="modal">True</property>
     <property name="default_width">450</property>
-    <property name="icon_name">parole</property>
+    <property name="icon_name">org.xfce.parole</property>
     <property name="type_hint">dialog</property>
     <child type="titlebar">
       <object class="GtkHeaderBar">
