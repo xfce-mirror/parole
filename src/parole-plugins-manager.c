@@ -66,9 +66,6 @@ typedef struct {
     GtkWidget *window;
     GtkWidget *view;
     GtkListStore *store;
-    GtkWidget *desc;
-    GtkWidget *author;
-    GtkWidget *site;
     GtkWidget *configure;
 } PrefData;
 
@@ -185,6 +182,37 @@ void parole_plugins_manager_show_configure(GtkButton *button, PrefData *pref) {
     parole_provider_plugin_configure(PAROLE_PROVIDER_PLUGIN(module), pref->window);
 }
 
+void parole_plugins_manager_show_about(GtkButton *button, PrefData *pref) {
+    ParoleProviderModule *module;
+    ParolePluginInfo     *info;
+    GtkAboutDialog       *about;
+    gchar               **authors;
+
+    parole_plugins_manager_get_selected_module_data(pref, &module, &info);
+
+    if ( G_UNLIKELY (!module) )
+        return;
+
+    about = GTK_ABOUT_DIALOG(gtk_about_dialog_new());
+    gtk_about_dialog_set_program_name(about, info->name);
+
+    gtk_about_dialog_set_comments(about, info->desc);
+    gtk_about_dialog_set_website(about, info->website);
+
+    authors = g_strsplit(info->authors, ", ", -1);
+    gtk_about_dialog_set_authors(about, (const gchar **)authors);
+
+    gtk_about_dialog_set_logo_icon_name(about, "parole-extension");
+
+    gtk_window_set_transient_for(GTK_WINDOW(about), GTK_WINDOW(pref->window));
+    gtk_window_set_destroy_with_parent(GTK_WINDOW(about), TRUE);
+
+    gtk_dialog_run(GTK_DIALOG(about));
+    gtk_widget_destroy(GTK_WIDGET(about));
+
+    g_strfreev(authors);
+}
+
 static void
 parole_plugins_manager_save_rc(ParolePluginsManager *manager, gchar *filename, gboolean active) {
     gchar **saved_plugins;
@@ -285,13 +313,6 @@ void parole_plugins_manager_tree_cursor_changed_cb(GtkTreeView *view, PrefData *
 
     site = info->website;
 
-    gtk_label_set_markup(GTK_LABEL(pref->desc), info->desc);
-    gtk_label_set_markup(GTK_LABEL(pref->author), info->authors);
-
-    gtk_link_button_set_uri(GTK_LINK_BUTTON(pref->site), site);
-
-    gtk_widget_set_tooltip_text(pref->site, site);
-
     if (parole_provider_module_get_is_active(module)) {
         configurable = parole_provider_plugin_get_is_configurable(PAROLE_PROVIDER_PLUGIN(module));
     }
@@ -387,9 +408,6 @@ parole_plugins_manager_show_plugins_pref(GtkWidget *widget, ParolePluginsManager
     pref->manager = manager;
     pref->store = GTK_LIST_STORE(gtk_builder_get_object(builder, "liststore"));
 
-    pref->desc = GTK_WIDGET(gtk_builder_get_object(builder, "description"));
-    pref->author = GTK_WIDGET(gtk_builder_get_object(builder, "author"));
-    pref->site = GTK_WIDGET(gtk_builder_get_object(builder, "sitebutton"));
     pref->configure = GTK_WIDGET(gtk_builder_get_object(builder, "configure"));
 
     gtk_window_set_transient_for(GTK_WINDOW(pref->window),
@@ -398,14 +416,16 @@ parole_plugins_manager_show_plugins_pref(GtkWidget *widget, ParolePluginsManager
     for (i = 0; i < manager->priv->array->len; i++) {
         ParoleProviderModule *module;
         ParolePluginInfo *info;
+        gchar *desc;
         module = g_ptr_array_index(manager->priv->array, i);
 
         info = parole_plugins_manager_get_plugin_info(module->desktop_file);
+        desc = g_strdup_printf("<b>%s</b>\n%s", info->name, info->desc);
 
         gtk_list_store_append(pref->store, &iter);
         gtk_list_store_set(pref->store, &iter,
                             COL_ACTIVE, parole_provider_module_get_is_active(module),
-                            COL_PLUGIN, info->name,
+                            COL_PLUGIN, desc,
                             COL_MODULE, module,
                             COL_INFO, info,
                             -1);

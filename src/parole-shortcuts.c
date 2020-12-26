@@ -86,7 +86,7 @@ ParoleShortcuts *parole_shortcuts(GtkWidget *parent) {
     if ( parent )
         gtk_window_set_transient_for(GTK_WINDOW(window), GTK_WINDOW(parent));
 
-    gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER_ON_PARENT);
+    gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER_ALWAYS);
 
     g_signal_connect(window, "delete-event",
                       G_CALLBACK(gtk_widget_destroy), NULL);

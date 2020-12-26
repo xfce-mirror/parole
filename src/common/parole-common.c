@@ -67,7 +67,7 @@ parole_dialog_show(GtkWindow *parent,
                         title);
 
     gtk_window_set_title(GTK_WINDOW(dialog), window_title);
-    gtk_window_set_icon_name(GTK_WINDOW(dialog), "parole");
+    gtk_window_set_icon_name(GTK_WINDOW(dialog), "org.xfce.parole");
 
     gtk_message_dialog_format_secondary_markup(GTK_MESSAGE_DIALOG(dialog), "%s", msg);
 

@@ -200,6 +200,7 @@ parole_media_chooser_open_internal(ParoleMediaChooser *media_chooser) {
     GtkWidget      *file_chooser;
     GtkBuilder     *builder;
     GtkWidget      *recursive;
+    GtkWidget      *box;
     GtkFileFilter  *filter, *audio_filter, *video_filter, *playlist_filter, *all_files;
     gboolean        scan_recursive;
     gboolean        replace_playlist;
@@ -257,6 +258,9 @@ parole_media_chooser_open_internal(ParoleMediaChooser *media_chooser) {
     g_object_set_data(G_OBJECT(media_chooser), "recursive", recursive);
 
     gtk_builder_connect_signals(builder, media_chooser);
+
+    box = GTK_WIDGET(gtk_builder_get_object(builder, "dialog-action_area1"));
+    gtk_widget_hide(box);
 
     g_object_unref(builder);
 }

@@ -836,6 +836,12 @@ void parole_media_list_save_cb(GtkWidget *widget, ParoleMediaList *list) {
     store = GTK_LIST_STORE(gtk_builder_get_object(builder, "liststore"));
     combo = GTK_WIDGET(gtk_builder_get_object(builder, "format_combo"));
 
+    gtk_dialog_add_buttons(GTK_DIALOG(chooser),
+                           _("Cancel"), GTK_RESPONSE_CANCEL,
+                           _("Save"), GTK_RESPONSE_APPLY,
+                           NULL);
+    gtk_dialog_set_default_response(GTK_DIALOG(chooser), GTK_RESPONSE_APPLY);
+
     gtk_window_set_transient_for(GTK_WINDOW(chooser),
                                   GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(list))));
 

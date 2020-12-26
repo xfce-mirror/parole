@@ -972,13 +972,10 @@ parole_player_select_custom_subtitle(GtkMenuItem *widget, gpointer data) {
                                            GTK_FILE_CHOOSER_ACTION_OPEN,
                                            NULL,
                                            NULL);
-    gtk_window_set_icon_name(GTK_WINDOW(chooser), "parole");
+    gtk_window_set_icon_name(GTK_WINDOW(chooser), "org.xfce.parole");
     button = gtk_dialog_add_button(GTK_DIALOG(chooser), _("Cancel"), GTK_RESPONSE_CANCEL);
-    img = gtk_image_new_from_icon_name("gtk-cancel", GTK_ICON_SIZE_BUTTON);
-    gtk_button_set_image(GTK_BUTTON(button), img);
     button = gtk_dialog_add_button(GTK_DIALOG(chooser), _("Open"), GTK_RESPONSE_OK);
-    img = gtk_image_new_from_icon_name("document-open", GTK_ICON_SIZE_BUTTON);
-    gtk_button_set_image(GTK_BUTTON(button), img);
+    gtk_dialog_set_default_response(GTK_DIALOG(chooser), GTK_RESPONSE_OK);
 
     gtk_file_chooser_set_select_multiple(GTK_FILE_CHOOSER(chooser), FALSE);
     gtk_file_chooser_set_local_only(GTK_FILE_CHOOSER(chooser), FALSE);
@@ -2003,11 +2000,13 @@ parole_player_reset_controls(ParolePlayer *player, gboolean fullscreen) {
     if ( player->priv->embedded ) {
         gtk_widget_hide(player->priv->menu_bar);
         gtk_widget_hide(player->priv->fullscreen_button);
+        gtk_widget_hide(player->priv->showhide_playlist_button);
     } else {
         if ( player->priv->mini_mode ) {
             gtk_widget_hide(player->priv->menu_bar);
             gtk_widget_hide(player->priv->fullscreen_button);
             gtk_widget_hide(player->priv->audiobox_text);
+            gtk_widget_hide(player->priv->showhide_playlist_button);
             gtk_widget_set_halign(player->priv->audiobox_cover, GTK_ALIGN_CENTER);
 
             gtk_widget_hide(player->priv->range);
@@ -2026,6 +2025,7 @@ parole_player_reset_controls(ParolePlayer *player, gboolean fullscreen) {
             gtk_widget_show(player->priv->fullscreen_button);
             gtk_widget_hide(player->priv->label_divider);
             gtk_widget_show(player->priv->range);
+            gtk_widget_show(player->priv->showhide_playlist_button);
             gtk_widget_set_halign(player->priv->audiobox_cover, GTK_ALIGN_END);
 
             if ( !player->priv->full_screen ) {
@@ -2683,6 +2683,12 @@ parole_player_key_press(GtkWidget *widget, GdkEventKey *ev, ParolePlayer *player
                 g_action_activate(G_ACTION(player->priv->media_fullscreen_action), NULL);
             }
             return TRUE;
+        case GDK_KEY_F9:
+            if ( player->priv->full_screen == TRUE ) {
+                enabled = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(player->priv->showhide_playlist_button));
+                parole_player_set_playlist_visible(player, !enabled);
+                return TRUE;
+            }
         default:
             break;
     }
@@ -2823,7 +2829,7 @@ on_contents_clicked(GtkWidget *w, ParolePlayer *player) {
 static gboolean
 on_goto_position_clicked(GtkWidget *w, ParolePlayer *player) {
     GtkWidget *dialog;
-    GtkWidget *vbox, *hbox, *label;
+    GtkWidget *vbox, *hbox, *cbox, *label;
     GtkWidget *spin_hrs, *spin_mins, *spin_secs;
     GtkAdjustment *adjustment;
     gint response;
@@ -2834,11 +2840,11 @@ on_goto_position_clicked(GtkWidget *w, ParolePlayer *player) {
 
     /* Create dialog */
     dialog = gtk_dialog_new_with_buttons(_("Go to position"),
-                                        GTK_WINDOW(player->priv->window),
-                                        GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-                                        _("Cancel"), GTK_RESPONSE_CANCEL,
-                                        _("Go"), GTK_RESPONSE_OK,
-                                        NULL);
+                                         GTK_WINDOW(player->priv->window),
+                                         GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_USE_HEADER_BAR,
+                                         _("Cancel"), GTK_RESPONSE_CANCEL,
+                                         _("Go"), GTK_RESPONSE_OK,
+                                         NULL);
     gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_OK);
     gtk_window_set_resizable(GTK_WINDOW(dialog), FALSE);
 
@@ -2850,10 +2856,8 @@ on_goto_position_clicked(GtkWidget *w, ParolePlayer *player) {
     hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 12);
     gtk_box_pack_start(GTK_BOX(vbox), hbox, TRUE, TRUE, 0);
 
-    label = gtk_label_new(_("Position:"));
-    gtk_box_pack_start(GTK_BOX(hbox), label, TRUE, TRUE, 0);
-    gtk_widget_set_halign(GTK_WIDGET(label), GTK_ALIGN_START);
-    gtk_widget_set_valign(GTK_WIDGET(label), GTK_ALIGN_CENTER);
+    cbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 12);
+    gtk_box_set_center_widget(GTK_BOX(hbox), cbox);
 
     /* Get the stream length and set that as maximum for hours and minutes */
     adjustment = gtk_range_get_adjustment(GTK_RANGE(player->priv->range));
@@ -2864,11 +2868,19 @@ on_goto_position_clicked(GtkWidget *w, ParolePlayer *player) {
         max_mins = (int) duration/60;
 
     spin_hrs = gtk_spin_button_new_with_range(0, max_hrs, 1);
+    gtk_orientable_set_orientation (GTK_ORIENTABLE(spin_hrs), GTK_ORIENTATION_VERTICAL);
+    gtk_entry_set_activates_default (GTK_ENTRY(spin_hrs), TRUE);
     spin_mins = gtk_spin_button_new_with_range(0, max_mins, 1);
+    gtk_orientable_set_orientation (GTK_ORIENTABLE(spin_mins), GTK_ORIENTATION_VERTICAL);
+    gtk_entry_set_activates_default (GTK_ENTRY(spin_mins), TRUE);
     spin_secs = gtk_spin_button_new_with_range(0, 59, 1);
-    gtk_box_pack_start(GTK_BOX(hbox), spin_hrs, FALSE, FALSE, 0);
-    gtk_box_pack_start(GTK_BOX(hbox), spin_mins, FALSE, FALSE, 0);
-    gtk_box_pack_start(GTK_BOX(hbox), spin_secs, FALSE, FALSE, 0);
+    gtk_orientable_set_orientation (GTK_ORIENTABLE(spin_secs), GTK_ORIENTATION_VERTICAL);
+    gtk_entry_set_activates_default (GTK_ENTRY(spin_secs), TRUE);
+    gtk_box_pack_start(GTK_BOX(cbox), spin_hrs, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(cbox), gtk_label_new(":"), FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(cbox), spin_mins, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(cbox), gtk_label_new(":"), FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(cbox), spin_secs, FALSE, FALSE, 0);
 
     if ( duration < 3600 )
         gtk_widget_set_sensitive(GTK_WIDGET(spin_hrs), FALSE);
@@ -2995,7 +3007,7 @@ parole_player_configure_event_cb(GtkWidget *widget, GdkEventConfigure *ev, Parol
         }
     }
 
-    gtk_widget_set_size_request(player->priv->playlist_popover, -1, new_h - 100);
+    gtk_widget_set_size_request(player->priv->playlist_popover, -1, new_h - 60);
 
     return FALSE;
 }
