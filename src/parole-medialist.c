@@ -562,7 +562,6 @@ void    parole_media_list_drag_data_received_cb(GtkWidget *widget,
 }
 
 gboolean parole_media_list_key_press(GtkWidget *widget, GdkEventKey *ev, ParoleMediaList *list) {
-    GtkWidget *vbox_player;
     GdkEvent *event;
     switch ( ev->keyval ) {
         case GDK_KEY_Delete:
@@ -789,7 +788,6 @@ void parole_media_list_format_combo_changed_cb(GtkComboBox *combo, ParolePlaylis
     gchar *filename;
     gchar *fbasename;
     gchar *extension;
-    GtkFileFilter *filter;
 
     // FIXME: replaces entered filename with Playlist.
     filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(data->chooser));
@@ -2200,7 +2198,7 @@ void parole_media_list_connect_repeat_action(ParoleMediaList *list, GSimpleActio
 
 static void
 shuffle_tree_model (GtkTreeModel *model) {
-    GtkTreeIter iter, iter2, active_iter;
+    GtkTreeIter iter;
     guint n_children = gtk_tree_model_iter_n_children(model, NULL);
     guint sort = 0;
     guint state = 0;
@@ -2231,8 +2229,7 @@ parole_media_list_shuffle_tree_model (ParoleMediaList *list) {
 
 static void
 unshuffle_tree_model (GtkTreeModel *model) {
-    GtkTreeIter iter, iter2;
-    guint n_children = gtk_tree_model_iter_n_children(model, NULL);
+    GtkTreeIter iter;
     gint  order = 0;
 
     if (gtk_tree_model_get_iter_first(model, &iter)) {

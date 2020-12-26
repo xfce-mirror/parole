@@ -22,6 +22,7 @@ distuninstallcheck_listfiles = \
 
 distclean-local:
 	rm -rf *.cache
+	rm -rf *.cache *~ po/.intltool-merge-cache.lock
 
 rpm: dist
 	rpmbuild -ta $(PACKAGE)-$(VERSION).tar.gz
