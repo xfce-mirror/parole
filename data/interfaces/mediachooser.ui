@@ -40,6 +40,9 @@
             <property name="has_default">True</property>
             <property name="receives_default">True</property>
             <signal name="clicked" handler="parole_media_chooser_add_clicked" swapped="no"/>
+            <style>
+              <class name="suggested-action"/>
+            </style>
           </object>
           <packing>
             <property name="pack_type">end</property>
