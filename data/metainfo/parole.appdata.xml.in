@@ -24,20 +24,20 @@
   <screenshots>
     <screenshot type="default">
       <caption>Parole playing Big Buck Bunny</caption>
-      <image>https://screenshots.smdavis.us/parole/parole-01.png</image>
+      <image>https://screenshots.bluesabre.org/parole/parole-01.png</image>
     </screenshot>
     <screenshot>
       <caption>Parole playing a LAS podcast</caption>
-      <image>https://screenshots.smdavis.us/parole/parole-02.png</image>
+      <image>https://screenshots.bluesabre.org/parole/parole-02.png</image>
     </screenshot>
     <screenshot>
       <caption>Parole playing a LAS podcast in Mini Mode (0.9+)</caption>
-      <image>https://screenshots.smdavis.us/parole/parole-03.png</image>
+      <image>https://screenshots.bluesabre.org/parole/parole-03.png</image>
     </screenshot>
   </screenshots>
 
   <url type="homepage">https://www.xfce.org/</url>
-  <url type="bugtracker">https://bugzilla.xfce.org/</url>
+  <url type="bugtracker">https://gitlab.xfce.org/apps/parole/-/issues</url>
   <url type="help">https://docs.xfce.org/apps/parole/start</url>
 
   <project_group>XFCE</project_group>
@@ -47,6 +47,44 @@
   </provides>
 
   <releases>
+    <release version="4.15.0" date="2020-12-27">
+      <description>
+        <_p>This release refreshes the playlist and dialog look and feel.
+        Shuffling the playlist is more efficient and can be reversed. DVD support
+        has also been improved and will no longer freeze when started.
+        </_p>
+      </description>
+    </release>
+
+    <release version="1.0.5" date="2019-11-15">
+      <description>
+        <_p>This release improves thumbnail management and storage and fixes
+        volume hotkeys when viewing fullscreen content.
+        </_p>
+      </description>
+    </release>
+
+    <release version="1.0.4" date="2019-08-11">
+      <description>
+        <_p>This release inhibits power management during video playback.
+        </_p>
+      </description>
+    </release>
+
+    <release version="1.0.3" date="2019-07-27">
+      <description>
+        <_p>This is a minor bugfix release.
+        </_p>
+      </description>
+    </release>
+
+    <release version="1.0.2" date="2019-04-04">
+      <description>
+        <_p>This release adds support for automatic codec installation.
+        </_p>
+      </description>
+    </release>
+
     <release version="1.0.1" date="2018-04-11">
       <description>
         <_p>This is a minor translations-only release.
