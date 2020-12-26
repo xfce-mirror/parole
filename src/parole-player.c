@@ -2000,11 +2000,13 @@ parole_player_reset_controls(ParolePlayer *player, gboolean fullscreen) {
     if ( player->priv->embedded ) {
         gtk_widget_hide(player->priv->menu_bar);
         gtk_widget_hide(player->priv->fullscreen_button);
+        gtk_widget_hide(player->priv->showhide_playlist_button);
     } else {
         if ( player->priv->mini_mode ) {
             gtk_widget_hide(player->priv->menu_bar);
             gtk_widget_hide(player->priv->fullscreen_button);
             gtk_widget_hide(player->priv->audiobox_text);
+            gtk_widget_hide(player->priv->showhide_playlist_button);
             gtk_widget_set_halign(player->priv->audiobox_cover, GTK_ALIGN_CENTER);
 
             gtk_widget_hide(player->priv->range);
@@ -2023,6 +2025,7 @@ parole_player_reset_controls(ParolePlayer *player, gboolean fullscreen) {
             gtk_widget_show(player->priv->fullscreen_button);
             gtk_widget_hide(player->priv->label_divider);
             gtk_widget_show(player->priv->range);
+            gtk_widget_show(player->priv->showhide_playlist_button);
             gtk_widget_set_halign(player->priv->audiobox_cover, GTK_ALIGN_END);
 
             if ( !player->priv->full_screen ) {
@@ -2680,6 +2683,12 @@ parole_player_key_press(GtkWidget *widget, GdkEventKey *ev, ParolePlayer *player
                 g_action_activate(G_ACTION(player->priv->media_fullscreen_action), NULL);
             }
             return TRUE;
+        case GDK_KEY_F9:
+            if ( player->priv->full_screen == TRUE ) {
+                enabled = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(player->priv->showhide_playlist_button));
+                parole_player_set_playlist_visible(player, !enabled);
+                return TRUE;
+            }
         default:
             break;
     }
@@ -2998,7 +3007,7 @@ parole_player_configure_event_cb(GtkWidget *widget, GdkEventConfigure *ev, Parol
         }
     }
 
-    gtk_widget_set_size_request(player->priv->playlist_popover, -1, new_h - 100);
+    gtk_widget_set_size_request(player->priv->playlist_popover, -1, new_h - 60);
 
     return FALSE;
 }
