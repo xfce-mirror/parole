@@ -71,8 +71,6 @@ G_DEFINE_TYPE(ParoleOpenLocation, parole_open_location, G_TYPE_OBJECT)
 /* Callback for the open button which passes on the location and closes the dialog */
 static void
 parole_open_location_response_cb(GtkDialog *dialog, gint response_id, ParoleOpenLocation *self) {
-    const gchar *location;
-
     if ( response_id == 0 )
         return;
 

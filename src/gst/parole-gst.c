@@ -1751,7 +1751,6 @@ parole_gst_check_state_change_timeout(gpointer data) {
 static gboolean
 parole_gst_dvd_menu_timeout(gpointer data) {
     ParoleGst *gst;
-    GtkWidget *dialog;
     gint64     duration;
 
     gst = PAROLE_GST(data);
@@ -1769,8 +1768,6 @@ parole_gst_dvd_menu_timeout(gpointer data) {
 static gboolean
 parole_gst_check_dvd_state_change_timeout(gpointer data) {
     ParoleGst *gst;
-    GtkWidget *dialog;
-    gint64     duration;
 
     gst = PAROLE_GST(data);
 

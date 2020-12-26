@@ -258,7 +258,9 @@ int main(int argc, char **argv) {
         { NULL, },
     };
 
+#if !GLIB_CHECK_VERSION(2, 35, 0)
     if (g_thread_supported ())
+#endif
         dbus_threads_init_default();
 
     /* initialize xfconf */

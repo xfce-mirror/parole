@@ -965,7 +965,7 @@ parole_player_select_custom_subtitle(GtkMenuItem *widget, gpointer data) {
     ParolePlayer  *player;
     ParoleFile    *file;
 
-    GtkWidget     *chooser, *button, *img;
+    GtkWidget     *chooser;
     GtkFileFilter *filter, *all_files;
     gint           response;
 
@@ -981,8 +981,10 @@ parole_player_select_custom_subtitle(GtkMenuItem *widget, gpointer data) {
                                            NULL,
                                            NULL);
     gtk_window_set_icon_name(GTK_WINDOW(chooser), "org.xfce.parole");
-    button = gtk_dialog_add_button(GTK_DIALOG(chooser), _("Cancel"), GTK_RESPONSE_CANCEL);
-    button = gtk_dialog_add_button(GTK_DIALOG(chooser), _("Open"), GTK_RESPONSE_OK);
+    gtk_dialog_add_buttons(GTK_DIALOG(chooser),
+                           _("Cancel"), GTK_RESPONSE_CANCEL,
+                           _("Open"), GTK_RESPONSE_OK,
+                           NULL);
     gtk_dialog_set_default_response(GTK_DIALOG(chooser), GTK_RESPONSE_OK);
 
     gtk_file_chooser_set_select_multiple(GTK_FILE_CHOOSER(chooser), FALSE);
@@ -1334,8 +1336,6 @@ parole_player_playing(ParolePlayer *player, const ParoleStream *stream) {
     gboolean seekable;
     gboolean live;
     gint height, width;
-
-    int hide_controls_timeout;
 
     gtk_widget_set_sensitive(player->priv->playpause_button, TRUE);
 
@@ -2837,7 +2837,7 @@ on_contents_clicked(GtkWidget *w, ParolePlayer *player) {
 static gboolean
 on_goto_position_clicked(GtkWidget *w, ParolePlayer *player) {
     GtkWidget *dialog;
-    GtkWidget *vbox, *hbox, *cbox, *label;
+    GtkWidget *vbox, *hbox, *cbox;
     GtkWidget *spin_hrs, *spin_mins, *spin_secs;
     GtkAdjustment *adjustment;
     gint response;
@@ -3140,8 +3140,6 @@ parole_player_init(ParolePlayer *player) {
 
     /* Player Controls */
     GList *widgets;
-    GtkWidget *playlist;
-    GtkWidget *playlist_popover;
 
     /* Properties */
     gchar *videosink = NULL;

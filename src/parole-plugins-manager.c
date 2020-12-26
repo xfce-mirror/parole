@@ -304,14 +304,11 @@ void parole_plugins_manager_tree_cursor_changed_cb(GtkTreeView *view, PrefData *
     ParoleProviderModule *module;
     ParolePluginInfo *info;
     gboolean configurable = FALSE;
-    const gchar *site;
 
     parole_plugins_manager_get_selected_module_data(pref, &module, &info);
 
     if ( G_UNLIKELY (!module || !info))
         return;
-
-    site = info->website;
 
     if (parole_provider_module_get_is_active(module)) {
         configurable = parole_provider_plugin_get_is_configurable(PAROLE_PROVIDER_PLUGIN(module));
