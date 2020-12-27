@@ -1,10 +1,10 @@
 4.15.0
 ======
 - Playlist Improvements
-  - Playlist is now an in-window popover instead of resizing the player window
-  - Shuffle functionality now utilizes a sort filter instead of shuffling in
-    place, making it possible to un-shuffle and make playlist history more
-    accurate (#32)
+  - Playlist is now an in-window popover instead of a slide-out panel
+  - Shuffle functionality now utilizes a sort filter instead of randomly
+    selecting the next track, making it possible makeing the playback history
+    more accurate (#32)
 - DVD Support
   - Added a menu option to activate the subpicture menu
   - DVD chapter selection from the playlist is functional again
@@ -13,15 +13,15 @@
 - Dialog Appearance Improvements
   Each of the dialogs were ported to CSD with some cleanup and default buttons
   marked as "suggested". The following dialogs had some additional improvements:
-  - Go To Position: Input orientation changed to vertical for better clock-like
-    appearance
+  - Go To Position: Timestamp inputs changed to vertical orientation for better
+    clock-like appearance
   - Keyboard Shortcuts: Adjusted to "always-center" positioning since transient
     positioning failed
   - Open File: Spinner configured as the FileChooser "extra" widget
   - Open Location: Removed some duplicated text
-  - Plugins: Rearranged the plugins manager, giving each plugin a proper About
-    dialog
-  - Save Playlist: Extension treeview replaced with a combobox and now filters
+  - Plugins: Rearranged the plugins manager, and moved credits to a per-plugin
+    About dialog
+  - Save Playlist: File type panel replaced with a combobox that also filters
     the FileChooser
 - General
   - Added basic GitLab pipeline
@@ -36,11 +36,11 @@
   - Sort POTFILES.in to make it easier to review
 - Translation Updates
   Albanian, Arabic, Armenian (Armenia), Basque, Belarusian, Bulgarian,
-  Chinese (China), Chinese (Taiwan), Croatian, Danish, Dutch, Eastern Armenian,
-  English (Australia), Estonian, Galician, German, Greek, Hebrew, Hungarian,
-  Icelandic, Indonesian, Interlingue, Italian, Kazakh, Lithuanian,
-  Occitan (post 1500), Polish, Portuguese, Slovak, Slovenian, Spanish, Swedish,
-  Telugu, Turkish, Ukrainian, Uyghur
+  Chinese (China), Chinese (Taiwan), Croatian, Czech, Danish, Dutch,
+  Eastern Armenian, English (Australia), Estonian, Galician, German, Greek,
+  Hebrew, Hungarian, Icelandic, Indonesian, Interlingue, Italian, Japanese,
+  Kazakh, Lithuanian, Occitan (post 1500), Polish, Portuguese, Slovak,
+  Slovenian, Spanish, Swedish, Telugu, Turkish, Ukrainian, Uyghur
 
 1.0.5
 ======
