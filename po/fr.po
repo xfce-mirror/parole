@@ -6,7 +6,7 @@
 # Charles Monzat <c.monzat@laposte.net>, 2018
 # Charles Monzat <c.monzat@laposte.net>, 2017-2018
 # jc1 <jc1.quebecos@gmail.com>, 2013
-# jc1 <jc1.quebecos@gmail.com>, 2013-2014,2017
+# jc1 <jc1.quebecos@gmail.com>, 2013-2014,2017,2020
 # Urien Desterres <urien.desterres@gmail.com>, 2014,2016-2018
 # Yannick Le Guen <leguen.yannick@gmail.com>, 2014-2015,2017-2020
 msgid ""
@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-27 00:47+0100\n"
-"PO-Revision-Date: 2020-12-27 19:05+0000\n"
-"Last-Translator: Yannick Le Guen <leguen.yannick@gmail.com>\n"
+"PO-Revision-Date: 2020-12-28 19:57+0000\n"
+"Last-Translator: jc1 <jc1.quebecos@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/xfce/xfce-apps/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -244,7 +244,7 @@ msgstr "Menu _Titre "
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "_Subpicture Menu"
-msgstr ""
+msgstr "Menu sous-image"
 
 #: ../data/interfaces/parole.ui.h:18
 msgid "_Audio Menu"
@@ -612,25 +612,25 @@ msgid ""
 "This release refreshes the playlist and dialog look and feel. Shuffling the "
 "playlist is more efficient and can be reversed. DVD support has also been "
 "improved and will no longer freeze when started."
-msgstr ""
+msgstr "Cette version actualise l'apparence de la liste de lecture et du dialogue. La lecture aléatoire de la liste de lecture est plus efficace et peut être inversée. La prise en charge des DVD a également été améliorée et ne gèlera plus au démarrage."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:4
 msgid ""
 "This release improves thumbnail management and storage and fixes volume "
 "hotkeys when viewing fullscreen content."
-msgstr ""
+msgstr "Cette version améliore la gestion et le stockage des miniatures et corrige les raccourcis clavier lors de l'affichage du contenu en plein écran."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:5
 msgid "This release inhibits power management during video playback."
-msgstr ""
+msgstr "Cette version empêche la gestion de l'alimentation pendant la lecture vidéo."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:6
 msgid "This is a minor bugfix release."
-msgstr ""
+msgstr "Il s'agit d'une version de correction de bogue mineure."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:7
 msgid "This release adds support for automatic codec installation."
-msgstr ""
+msgstr "Cette version ajoute la prise en charge de l'installation automatique du codec."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:8
 msgid "This is a minor translations-only release."
@@ -974,12 +974,12 @@ msgstr "Liste de lecture PLS (%s)"
 #: ../src/parole-medialist.c:880
 #, c-format
 msgid "Advanced Stream Redirector (%s)"
-msgstr ""
+msgstr "Redirecteur de flux avancé (%s)"
 
 #: ../src/parole-medialist.c:890
 #, c-format
 msgid "Shareable Playlist (%s)"
-msgstr ""
+msgstr "Liste de lecture partageable (%s)"
 
 #. Clear
 #: ../src/parole-medialist.c:1280
