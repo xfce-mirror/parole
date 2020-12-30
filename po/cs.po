@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-27 00:47+0100\n"
-"PO-Revision-Date: 2020-12-27 15:38+0000\n"
+"PO-Revision-Date: 2020-12-30 21:17+0000\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech (http://www.transifex.com/xfce/xfce-apps/language/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -120,7 +120,7 @@ msgstr "<b>Vyvážení barev</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:22
 msgid "Display"
-msgstr "Obrazovka"
+msgstr "Displej"
 
 #: ../data/interfaces/parole-settings.ui.h:23
 msgid "Always replace playlist with opened files"
@@ -858,7 +858,7 @@ msgstr "[SOUBORY] - Přehraje filmy a skladby"
 #: ../src/main.c:292
 #, c-format
 msgid "Type %s --help to list all available command line options\n"
-msgstr "Seznam všech dostupných možností příkazové řádky získáte zadáním %s --help\n"
+msgstr "Seznam všech dostupných možností příkazového řádku získáte příkazem %s --help\n"
 
 #: ../src/main.c:309
 #, c-format
