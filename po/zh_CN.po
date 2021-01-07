@@ -10,13 +10,13 @@
 # Xiaobo Zhou <zhouxiaobo.500@gmail.com>, 2017
 # 玉堂白鹤 <yjwork@qq.com>, 2013-2014
 # Xiaobo Zhou <zhouxiaobo.500@gmail.com>, 2014
-# 玉堂白鹤 <yjwork@qq.com>, 2014-2015,2017-2020
+# 玉堂白鹤 <yjwork@qq.com>, 2014-2015,2017-2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-27 00:47+0100\n"
-"PO-Revision-Date: 2020-12-29 00:20+0000\n"
+"PO-Revision-Date: 2021-01-07 01:27+0000\n"
 "Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/xfce/xfce-apps/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -624,15 +624,15 @@ msgstr ""
 
 #: ../data/metainfo/parole.appdata.xml.in.h:5
 msgid "This release inhibits power management during video playback."
-msgstr ""
+msgstr "此版本禁止在视频播放期间进行电源管理。"
 
 #: ../data/metainfo/parole.appdata.xml.in.h:6
 msgid "This is a minor bugfix release."
-msgstr ""
+msgstr "这是一个小的错误修复版本。"
 
 #: ../data/metainfo/parole.appdata.xml.in.h:7
 msgid "This release adds support for automatic codec installation."
-msgstr ""
+msgstr "此版本增加了对自动编解码器安装的支持。"
 
 #: ../data/metainfo/parole.appdata.xml.in.h:8
 msgid "This is a minor translations-only release."
