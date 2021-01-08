@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Priit Jõerüüt <transifex@joeruut.com>, 2020
+# Priit Jõerüüt <transifex@joeruut.com>, 2020-2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-27 00:47+0100\n"
-"PO-Revision-Date: 2020-12-28 17:23+0000\n"
+"PO-Revision-Date: 2021-01-08 19:42+0000\n"
 "Last-Translator: Priit Jõerüüt <transifex@joeruut.com>\n"
 "Language-Team: Estonian (http://www.transifex.com/xfce/xfce-apps/language/et/)\n"
 "MIME-Version: 1.0\n"
@@ -653,20 +653,20 @@ msgid ""
 "present in the documentation. Tags are now processed on files delivered over"
 " HTTP/S. The clutter video backend is disabled for GTK+ 3.22 and newer due "
 "to significant API changes."
-msgstr ""
+msgstr "Selles arendusjärgus oleme parandanud mitmeid koodi- ja vormistusvigu ning täiendanud ajalooga seotud teavet dokumentatsioonis. Http/https vahendusel laetud failidest loeme nüüd silte. Märgatavate API muudatuste tõttu oleme lülitanud clutter taustateenuse GTK+ 3.22 ja  uuemate versioonide puhul."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:12
 msgid ""
 "This development release adds a new mini mode and the ability to play or "
 "replay content by clicking the circle icons. Theming is simplified and "
 "filenames are displayed when no ID3 tags are found."
-msgstr ""
+msgstr "Selles arendusjärgus oleme lisanud pisivaate ning võimaluse alustada esitamist või peatada seda klõpside ringikujulistele ikoonidele. Teemade kasutamine on nüüd lihtsam ning meediafaili ID3 siltide puudumisel kuvame faili nime."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:13
 msgid ""
 "This release improves the build process and includes several bug fixes. This"
 " new stable release is a recommended upgrade for all users."
-msgstr ""
+msgstr "Selles versioonis oleme parandanud kompileerimise töövoogu ning parandanud mitmeid vigu. Tegemist on soovitusliku uuendusega kõikidele kasutajatele."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:14
 msgid ""
@@ -888,7 +888,7 @@ msgstr "Tänapäevane ja lihtne meediamängija  Xfce töölauakeskkonna jaoks."
 
 #: ../src/parole-about.c:75
 msgid "translator-credits"
-msgstr "Kristjan Siimson <epost@ksiimson.se> &amp; tolge.pingviin.org\nPriit Jõerüüt 2020"
+msgstr "Kristjan Siimson <epost@ksiimson.se> &amp; tolge.pingviin.org\nPriit Jõerüüt 2020-2021"
 
 #: ../src/parole-about.c:78
 msgid "Visit Parole website"
