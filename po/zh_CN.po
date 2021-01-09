@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-27 00:47+0100\n"
-"PO-Revision-Date: 2021-01-07 01:27+0000\n"
+"PO-Revision-Date: 2021-01-09 13:48+0000\n"
 "Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/xfce/xfce-apps/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -246,7 +246,7 @@ msgstr "标题菜单(_T)"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "_Subpicture Menu"
-msgstr ""
+msgstr "子画面菜单(_S)"
 
 #: ../data/interfaces/parole.ui.h:18
 msgid "_Audio Menu"
@@ -614,13 +614,13 @@ msgid ""
 "This release refreshes the playlist and dialog look and feel. Shuffling the "
 "playlist is more efficient and can be reversed. DVD support has also been "
 "improved and will no longer freeze when started."
-msgstr ""
+msgstr "此版本更新了播放列表与对话框的外观与感觉。随机播放列表现在效率更好且可撤消。DVD支持也有所改善，且不再于启动时冻结。"
 
 #: ../data/metainfo/parole.appdata.xml.in.h:4
 msgid ""
 "This release improves thumbnail management and storage and fixes volume "
 "hotkeys when viewing fullscreen content."
-msgstr ""
+msgstr "此版本改进了缩图管理与储存，并修复了观看全屏幕内容时的音量快捷键。 "
 
 #: ../data/metainfo/parole.appdata.xml.in.h:5
 msgid "This release inhibits power management during video playback."
