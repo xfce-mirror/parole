@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-23 00:31+0200\n"
-"PO-Revision-Date: 2019-07-22 22:31+0000\n"
+"POT-Creation-Date: 2020-12-27 00:47+0100\n"
+"PO-Revision-Date: 2020-12-26 23:47+0000\n"
 "Last-Translator: Nick Schermer <nick@xfce.org>\n"
 "Language-Team: Uyghur (http://www.transifex.com/xfce/xfce-apps/language/ug/)\n"
 "MIME-Version: 1.0\n"
@@ -17,314 +17,17 @@ msgstr ""
 "Language: ug\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../data/interfaces/parole.ui.h:1
-#: ../data/desktop/org.xfce.Parole.desktop.in.in.h:1
-#: ../src/parole-player.c:591 ../src/parole-player.c:1437
-#: ../src/parole-player.c:1788 ../src/parole-about.c:68
-#: ../src/plugins/mpris2/mpris2-provider.c:189
-msgid "Parole Media Player"
-msgstr "پارولې(Parole) ۋاسىتە قويغۇ"
-
-#: ../data/interfaces/parole.ui.h:2
-msgid "_Media"
-msgstr "ۋاسىتە(_M)"
-
-#: ../data/interfaces/parole.ui.h:3
-msgid "_Open..."
-msgstr "ئاچ(_O)…"
-
-#: ../data/interfaces/parole.ui.h:4
-msgid "Open _Location..."
-msgstr ""
-
-#: ../data/interfaces/parole.ui.h:5
-msgid "Open _Recent"
-msgstr ""
-
-#: ../data/interfaces/parole.ui.h:6
-msgid "_Save Playlist..."
-msgstr ""
-
-#: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:105
-#: ../src/parole-disc.c:140
-msgid "Insert Disc"
-msgstr "دىسكا سېلىش"
-
-#. * Exit
-#: ../data/interfaces/parole.ui.h:8 ../src/plugins/tray/tray-provider.c:168
-msgid "_Quit"
-msgstr "ئاخىرلاشتۇر(_Q)"
-
-#: ../data/interfaces/parole.ui.h:9
-msgid "_Playback"
-msgstr "قوي(_P)"
-
-#: ../data/interfaces/parole.ui.h:10
-msgid "_Repeat"
-msgstr "قايتىلا(_R)"
-
-#: ../data/interfaces/parole.ui.h:11
-msgid "_Shuffle"
-msgstr "تەرتىپسىز(_S)"
-
-#. Create dialog
-#: ../data/interfaces/parole.ui.h:12 ../src/parole-player.c:2808
-msgid "Go to position"
-msgstr ""
-
-#: ../data/interfaces/parole.ui.h:13
-msgid "_DVD"
-msgstr ""
-
-#: ../data/interfaces/parole.ui.h:14
-msgid "_DVD Menu"
-msgstr ""
-
-#: ../data/interfaces/parole.ui.h:15
-msgid "_Title Menu"
-msgstr ""
-
-#: ../data/interfaces/parole.ui.h:16
-msgid "_Audio Menu"
-msgstr ""
-
-#: ../data/interfaces/parole.ui.h:17
-msgid "A_ngle Menu"
-msgstr ""
-
-#: ../data/interfaces/parole.ui.h:18
-msgid "_Chapters"
-msgstr ""
-
-#: ../data/interfaces/parole.ui.h:19
-msgid "_Chapter Menu"
-msgstr ""
-
-#: ../data/interfaces/parole.ui.h:20
-msgid "_Audio"
-msgstr ""
-
-#: ../data/interfaces/parole.ui.h:21
-msgid "_Audio Track"
-msgstr ""
-
-#: ../data/interfaces/parole.ui.h:22 ../src/parole-player.c:797
-msgid "Empty"
-msgstr "قۇرۇق"
-
-#: ../data/interfaces/parole.ui.h:23
-msgid "Volume _Up"
-msgstr "ئاۋازنى چوڭايت(_U)"
-
-#: ../data/interfaces/parole.ui.h:24
-msgid "Volume _Down"
-msgstr "ئاۋازنى كىچىكلەت(_D)"
-
-#: ../data/interfaces/parole.ui.h:25
-msgid "_Mute"
-msgstr "ئۈنسىزلە(_M)"
-
-#: ../data/interfaces/parole.ui.h:26
-msgid "_Video"
-msgstr ""
-
-#: ../data/interfaces/parole.ui.h:27 ../src/parole-player.c:1981
-#: ../src/parole-player.c:2134
-msgid "_Fullscreen"
-msgstr "تولۇق ئېكران(_F)"
-
-#: ../data/interfaces/parole.ui.h:28
-msgid "_Aspect Ratio"
-msgstr "ئۇزۇنلۇق كەڭلىك نىسبىتى(_A)"
-
-#: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:728
-msgid "None"
-msgstr "يوق"
-
-#: ../data/interfaces/parole.ui.h:30
-msgid "Auto"
-msgstr "ئاپتوماتىك"
-
-#: ../data/interfaces/parole.ui.h:31
-msgid "Square"
-msgstr "كۋادرات"
-
-#: ../data/interfaces/parole.ui.h:32
-msgid "4:3 (TV)"
-msgstr "4:3 (TV)"
-
-#: ../data/interfaces/parole.ui.h:33
-msgid "16:9 (Widescreen)"
-msgstr "16:9 (كەڭ ئېكران)"
-
-#: ../data/interfaces/parole.ui.h:34
-msgid "20:9 (DVB)"
-msgstr "20:9 (DVB)"
-
-#: ../data/interfaces/parole.ui.h:35
-msgid "_Subtitles"
-msgstr "فىلىم خېتى(_S)"
-
-#: ../data/interfaces/parole.ui.h:36
-msgid "Select Text Subtitles..."
-msgstr "فىلىم خېتىنى تاللاش…"
-
-#: ../data/interfaces/parole.ui.h:37
-msgid "_Tools"
-msgstr ""
-
-#: ../data/interfaces/parole.ui.h:38
-msgid "P_lugins"
-msgstr ""
-
-#: ../data/interfaces/parole.ui.h:39
-msgid "_Preferences"
-msgstr ""
-
-#: ../data/interfaces/parole.ui.h:40
-msgid "_Help"
-msgstr "ياردەم(_H)"
-
-#: ../data/interfaces/parole.ui.h:41
-msgid "_Report a Bug..."
-msgstr ""
-
-#: ../data/interfaces/parole.ui.h:42
-msgid "_Keyboard Shortcuts"
-msgstr ""
-
-#: ../data/interfaces/parole.ui.h:43
-msgid "Display Parole user manual"
-msgstr ""
-
-#: ../data/interfaces/parole.ui.h:44
-msgid "_Contents"
-msgstr "مەزمۇن(_C)"
-
-#: ../data/interfaces/parole.ui.h:45
-msgid "_About"
-msgstr "ھەققىدە(_A)"
-
-#: ../data/interfaces/parole.ui.h:46
-msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
-msgstr ""
-
-#: ../data/interfaces/parole.ui.h:47
-msgid ""
-"<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
-"Album</span></big>"
-msgstr ""
-
-#: ../data/interfaces/parole.ui.h:48
-msgid ""
-"<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
-"Artist</span></big>"
-msgstr ""
-
-#: ../data/interfaces/parole.ui.h:49
-msgid "0:00"
-msgstr ""
-
-#: ../data/interfaces/parole.ui.h:51
-#, no-c-format
-msgid "Buffering (0%)"
-msgstr "يىغىۋاتىدۇ (0%)"
-
-#: ../data/interfaces/parole.ui.h:52
-msgid "/"
-msgstr ""
-
 #: ../data/interfaces/mediachooser.ui.h:1
 msgid "Open Media Files"
 msgstr "ۋاسىتە ھۆججەتلىرىنى ئېچىش"
 
-#: ../data/interfaces/playlist.ui.h:1
-#: ../data/interfaces/parole-settings.ui.h:28
-#: ../data/interfaces/shortcuts.ui.h:13 ../src/parole-medialist.c:742
-#: ../src/parole-medialist.c:781 ../src/parole-player.c:3188
-msgid "Playlist"
-msgstr "قويۇش تىزىمى"
-
-#: ../data/interfaces/playlist.ui.h:2
-msgid "Disc Playlist"
+#: ../data/interfaces/open-location.ui.h:1
+msgid "Open Network Location"
 msgstr ""
 
-#: ../data/interfaces/playlist.ui.h:3
-msgid "Add to playlist..."
-msgstr ""
-
-#: ../data/interfaces/playlist.ui.h:4
-msgid "Add"
-msgstr "قوش"
-
-#: ../data/interfaces/playlist.ui.h:5
-msgid "Remove selected media"
-msgstr ""
-
-#: ../data/interfaces/playlist.ui.h:6
-msgid "Remove"
-msgstr "ئۆچۈر"
-
-#: ../data/interfaces/playlist.ui.h:7
-msgid "Clear playlist"
-msgstr ""
-
-#: ../data/interfaces/playlist.ui.h:8
-msgid "Clear"
-msgstr "تازىلا"
-
-#: ../data/interfaces/playlist.ui.h:9
-msgid "Repeat"
-msgstr "قايتىلا"
-
-#: ../data/interfaces/playlist.ui.h:10
-msgid "Shuffle"
-msgstr "تەرتىپسىز"
-
-#: ../data/interfaces/playlist.ui.h:11
-msgid "Move Up"
-msgstr ""
-
-#: ../data/interfaces/playlist.ui.h:12
-msgid "Move Down"
-msgstr ""
-
-#: ../data/interfaces/playlist.ui.h:13
-msgid "Replace playlist when opening files"
-msgstr "ئېچىلغان ھۆججەتلەر بىلەن قويۇش تىزىمىنى ئالماشتۇر"
-
-#: ../data/interfaces/playlist.ui.h:14
-msgid "Play opened files"
-msgstr "ئېچىلغان ھۆججەتلەرنى قوي"
-
-#: ../data/interfaces/playlist.ui.h:15
-#: ../data/interfaces/parole-settings.ui.h:26
-msgid "Remember playlist"
-msgstr "قويۇش تىزىمىنى ئەستە تۇتسۇن"
-
-#: ../data/interfaces/plugins.ui.h:1
-msgid "Parole Plugins"
-msgstr "پارولې(Parole) قىستۇرمىلىرى"
-
-#: ../data/interfaces/plugins.ui.h:2
-msgid "Extend your media player"
-msgstr "ۋاسىتە قويغۇڭىزنى كېڭەيتىڭ"
-
-#: ../data/interfaces/plugins.ui.h:3
-msgid "Plugin"
-msgstr "قىستۇرما"
-
-#: ../data/interfaces/plugins.ui.h:4
-msgid "<b>Description</b>"
-msgstr "<b>چۈشەندۈرۈش</b>"
-
-#: ../data/interfaces/plugins.ui.h:5
-msgid "<b>Author</b>"
-msgstr "<b>ئاپتور</b>"
-
-#: ../data/interfaces/plugins.ui.h:6
-msgid "Visit Website"
-msgstr "تورتۇرانى زىيارەت قىلىش"
+#: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:190
+msgid "Clear History"
+msgstr "ئىزنى ئۆچۈرۈش"
 
 #: ../data/interfaces/parole-settings.ui.h:1
 msgid "Automatic"
@@ -427,9 +130,21 @@ msgstr "تەكرارلانغان ۋاسىتىلەرنى تەكشۈرۈپ ئۆچ�
 msgid "Start playing opened files"
 msgstr "ئېچىلغان ھۆججەتلەرنى قوي"
 
+#: ../data/interfaces/parole-settings.ui.h:26
+#: ../data/interfaces/playlist.ui.h:15
+msgid "Remember playlist"
+msgstr "قويۇش تىزىمىنى ئەستە تۇتسۇن"
+
 #: ../data/interfaces/parole-settings.ui.h:27
 msgid "<b>Playlist Settings</b>"
 msgstr ""
+
+#: ../data/interfaces/parole-settings.ui.h:28
+#: ../data/interfaces/playlist.ui.h:1 ../data/interfaces/shortcuts.ui.h:13
+#: ../src/parole-medialist.c:797 ../src/parole-medialist.c:848
+#: ../src/parole-player.c:3237
+msgid "Playlist"
+msgstr "قويۇش تىزىمى"
 
 #: ../data/interfaces/parole-settings.ui.h:29
 msgid "Automatically show subtitles when playing movie file"
@@ -451,36 +166,310 @@ msgstr ""
 msgid "Subtitles"
 msgstr "فىلىم خېتى"
 
+#: ../data/interfaces/parole.ui.h:1
+#: ../data/desktop/org.xfce.Parole.desktop.in.in.h:1 ../src/parole-about.c:74
+#: ../src/parole-player.c:598 ../src/parole-player.c:1439
+#: ../src/parole-player.c:1800 ../src/plugins/mpris2/mpris2-provider.c:189
+msgid "Parole Media Player"
+msgstr "پارولې(Parole) ۋاسىتە قويغۇ"
+
+#: ../data/interfaces/parole.ui.h:2
+msgid "_Media"
+msgstr "ۋاسىتە(_M)"
+
+#: ../data/interfaces/parole.ui.h:3
+msgid "_Open..."
+msgstr "ئاچ(_O)…"
+
+#: ../data/interfaces/parole.ui.h:4
+msgid "Open _Location..."
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:5
+msgid "Open _Recent"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:6
+msgid "_Save Playlist..."
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:105
+#: ../src/parole-disc.c:139
+msgid "Insert Disc"
+msgstr "دىسكا سېلىش"
+
+#. * Exit
+#: ../data/interfaces/parole.ui.h:8 ../src/plugins/tray/tray-provider.c:168
+msgid "_Quit"
+msgstr "ئاخىرلاشتۇر(_Q)"
+
+#: ../data/interfaces/parole.ui.h:9
+msgid "_Playback"
+msgstr "قوي(_P)"
+
+#: ../data/interfaces/parole.ui.h:10
+msgid "_Repeat"
+msgstr "قايتىلا(_R)"
+
+#: ../data/interfaces/parole.ui.h:11
+msgid "_Shuffle"
+msgstr "تەرتىپسىز(_S)"
+
+#: ../data/interfaces/parole.ui.h:12
+msgid "Show Playlist"
+msgstr ""
+
+#. Create dialog
+#: ../data/interfaces/parole.ui.h:13 ../src/parole-player.c:2850
+msgid "Go to position"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:14
+msgid "_DVD"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:15
+msgid "_DVD Menu"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:16
+msgid "_Title Menu"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:17
+msgid "_Subpicture Menu"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:18
+msgid "_Audio Menu"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:19
+msgid "A_ngle Menu"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:20
+msgid "_Chapters"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:21
+msgid "_Chapter Menu"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:22
+msgid "_Audio"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:23
+msgid "_Audio Track"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:24 ../src/parole-player.c:809
+msgid "Empty"
+msgstr "قۇرۇق"
+
+#: ../data/interfaces/parole.ui.h:25
+msgid "Volume _Up"
+msgstr "ئاۋازنى چوڭايت(_U)"
+
+#: ../data/interfaces/parole.ui.h:26
+msgid "Volume _Down"
+msgstr "ئاۋازنى كىچىكلەت(_D)"
+
+#: ../data/interfaces/parole.ui.h:27
+msgid "_Mute"
+msgstr "ئۈنسىزلە(_M)"
+
+#: ../data/interfaces/parole.ui.h:28
+msgid "_Video"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:1988
+#: ../src/parole-player.c:2133
+msgid "_Fullscreen"
+msgstr "تولۇق ئېكران(_F)"
+
+#: ../data/interfaces/parole.ui.h:30
+msgid "_Aspect Ratio"
+msgstr "ئۇزۇنلۇق كەڭلىك نىسبىتى(_A)"
+
+#: ../data/interfaces/parole.ui.h:31 ../src/parole-player.c:740
+msgid "None"
+msgstr "يوق"
+
+#: ../data/interfaces/parole.ui.h:32
+msgid "Auto"
+msgstr "ئاپتوماتىك"
+
+#: ../data/interfaces/parole.ui.h:33
+msgid "Square"
+msgstr "كۋادرات"
+
+#: ../data/interfaces/parole.ui.h:34
+msgid "4:3 (TV)"
+msgstr "4:3 (TV)"
+
+#: ../data/interfaces/parole.ui.h:35
+msgid "16:9 (Widescreen)"
+msgstr "16:9 (كەڭ ئېكران)"
+
+#: ../data/interfaces/parole.ui.h:36
+msgid "20:9 (DVB)"
+msgstr "20:9 (DVB)"
+
+#: ../data/interfaces/parole.ui.h:37
+msgid "_Subtitles"
+msgstr "فىلىم خېتى(_S)"
+
+#: ../data/interfaces/parole.ui.h:38
+msgid "Select Text Subtitles..."
+msgstr "فىلىم خېتىنى تاللاش…"
+
+#: ../data/interfaces/parole.ui.h:39
+msgid "_Tools"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:40
+msgid "P_lugins"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:41
+msgid "_Preferences"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:42
+msgid "_Help"
+msgstr "ياردەم(_H)"
+
+#: ../data/interfaces/parole.ui.h:43
+msgid "_Report a Bug..."
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:44
+msgid "_Keyboard Shortcuts"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:45
+msgid "Display Parole user manual"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:46
+msgid "_Contents"
+msgstr "مەزمۇن(_C)"
+
+#: ../data/interfaces/parole.ui.h:47
+msgid "_About"
+msgstr "ھەققىدە(_A)"
+
+#: ../data/interfaces/parole.ui.h:48
+msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:49
+msgid ""
+"<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
+"Album</span></big>"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:50
+msgid ""
+"<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
+"Artist</span></big>"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:51
+msgid "0:00"
+msgstr ""
+
+#: ../data/interfaces/parole.ui.h:53
+#, no-c-format
+msgid "Buffering (0%)"
+msgstr "يىغىۋاتىدۇ (0%)"
+
+#: ../data/interfaces/parole.ui.h:54
+msgid "/"
+msgstr ""
+
+#: ../data/interfaces/playlist.ui.h:2
+msgid "Disc Playlist"
+msgstr ""
+
+#: ../data/interfaces/playlist.ui.h:3
+msgid "Add to playlist..."
+msgstr ""
+
+#: ../data/interfaces/playlist.ui.h:4
+msgid "Add"
+msgstr "قوش"
+
+#: ../data/interfaces/playlist.ui.h:5
+msgid "Remove selected media"
+msgstr ""
+
+#: ../data/interfaces/playlist.ui.h:6
+msgid "Remove"
+msgstr "ئۆچۈر"
+
+#: ../data/interfaces/playlist.ui.h:7
+msgid "Clear playlist"
+msgstr ""
+
+#: ../data/interfaces/playlist.ui.h:8
+msgid "Clear"
+msgstr "تازىلا"
+
+#: ../data/interfaces/playlist.ui.h:9
+msgid "Repeat"
+msgstr "قايتىلا"
+
+#: ../data/interfaces/playlist.ui.h:10
+msgid "Shuffle"
+msgstr "تەرتىپسىز"
+
+#: ../data/interfaces/playlist.ui.h:11
+msgid "Move Up"
+msgstr ""
+
+#: ../data/interfaces/playlist.ui.h:12
+msgid "Move Down"
+msgstr ""
+
+#: ../data/interfaces/playlist.ui.h:13
+msgid "Replace playlist when opening files"
+msgstr "ئېچىلغان ھۆججەتلەر بىلەن قويۇش تىزىمىنى ئالماشتۇر"
+
+#: ../data/interfaces/playlist.ui.h:14
+msgid "Play opened files"
+msgstr "ئېچىلغان ھۆججەتلەرنى قوي"
+
+#: ../data/interfaces/plugins.ui.h:1
+msgid "Parole Plugins"
+msgstr "پارولې(Parole) قىستۇرمىلىرى"
+
+#: ../data/interfaces/plugins.ui.h:2
+msgid "Extend your media player"
+msgstr "ۋاسىتە قويغۇڭىزنى كېڭەيتىڭ"
+
+#. Add a close button to the Infobar
+#: ../data/interfaces/plugins.ui.h:3 ../src/parole-player.c:3611
+#: ../src/plugins/tray/tray-provider.c:257
+msgid "Close"
+msgstr "تاقا"
+
+#: ../data/interfaces/plugins.ui.h:4
+msgid "Plugin"
+msgstr "قىستۇرما"
+
+#: ../data/interfaces/plugins.ui.h:5
+msgid "Preferences"
+msgstr "تەڭشەكلەر"
+
+#: ../data/interfaces/plugins.ui.h:6
+msgid "About"
+msgstr ""
+
 #: ../data/interfaces/save-playlist.ui.h:1
-msgid "By Extension"
-msgstr "كېڭەيتمە ئاتى بويىچە"
-
-#: ../data/interfaces/save-playlist.ui.h:2
 msgid "Save Playlist as..."
-msgstr ""
-
-#: ../data/interfaces/save-playlist.ui.h:3
-msgid "File Type"
-msgstr ""
-
-#: ../data/interfaces/save-playlist.ui.h:4
-msgid "Extension"
-msgstr ""
-
-#: ../data/interfaces/save-playlist.ui.h:5
-msgid "Select File Types (By Extension)"
-msgstr "ھۆججەت تىپىنى تاللاش(كېڭەيتمە ئاتى بويىچە)"
-
-#: ../data/interfaces/open-location.ui.h:1
-msgid "Open Network Location"
-msgstr ""
-
-#: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:181
-msgid "Clear History"
-msgstr "ئىزنى ئۆچۈرۈش"
-
-#: ../data/interfaces/open-location.ui.h:3
-msgid "<big><b>Open Network Location</b></big>"
 msgstr ""
 
 #: ../data/interfaces/shortcuts.ui.h:2
@@ -523,7 +512,7 @@ msgstr ""
 msgid "Decrease volume"
 msgstr ""
 
-#: ../data/interfaces/shortcuts.ui.h:12 ../src/parole-player.c:2382
+#: ../data/interfaces/shortcuts.ui.h:12 ../src/parole-player.c:2401
 msgid "Mute"
 msgstr "ئۈنسىز"
 
@@ -589,12 +578,12 @@ msgid "Play your media"
 msgstr "ۋاسىتە قويۇش"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:4
-#: ../src/parole-player.c:3337 ../src/plugins/notify/notify-provider.c:190
+#: ../src/parole-player.c:3383 ../src/plugins/notify/notify-provider.c:190
 msgid "Previous Track"
 msgstr "ئالدىنقى نەغمە"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:5
-#: ../src/parole-player.c:3355 ../src/plugins/notify/notify-provider.c:202
+#: ../src/parole-player.c:3401 ../src/plugins/notify/notify-provider.c:202
 msgid "Next Track"
 msgstr "كېيىنكى نەغمە"
 
@@ -613,10 +602,35 @@ msgid ""
 msgstr ""
 
 #: ../data/metainfo/parole.appdata.xml.in.h:3
-msgid "This is a minor translations-only release."
+msgid ""
+"This release refreshes the playlist and dialog look and feel. Shuffling the "
+"playlist is more efficient and can be reversed. DVD support has also been "
+"improved and will no longer freeze when started."
 msgstr ""
 
 #: ../data/metainfo/parole.appdata.xml.in.h:4
+msgid ""
+"This release improves thumbnail management and storage and fixes volume "
+"hotkeys when viewing fullscreen content."
+msgstr ""
+
+#: ../data/metainfo/parole.appdata.xml.in.h:5
+msgid "This release inhibits power management during video playback."
+msgstr ""
+
+#: ../data/metainfo/parole.appdata.xml.in.h:6
+msgid "This is a minor bugfix release."
+msgstr ""
+
+#: ../data/metainfo/parole.appdata.xml.in.h:7
+msgid "This release adds support for automatic codec installation."
+msgstr ""
+
+#: ../data/metainfo/parole.appdata.xml.in.h:8
+msgid "This is a minor translations-only release."
+msgstr ""
+
+#: ../data/metainfo/parole.appdata.xml.in.h:9
 msgid ""
 "This release marks the first stable release of the 1.0 series. A new "
 "Automatic video output option was added to improve usage on virtual machines"
@@ -624,7 +638,7 @@ msgid ""
 "this release suitable for all users."
 msgstr ""
 
-#: ../data/metainfo/parole.appdata.xml.in.h:5
+#: ../data/metainfo/parole.appdata.xml.in.h:10
 msgid ""
 "This development release is a large cleanup of the codebase, making Parole "
 "lighter and easier to improve. All URLs have been updated to HTTPS. A large "
@@ -632,7 +646,7 @@ msgid ""
 "been introduced."
 msgstr ""
 
-#: ../data/metainfo/parole.appdata.xml.in.h:6
+#: ../data/metainfo/parole.appdata.xml.in.h:11
 msgid ""
 "This development release fixes several bugs, typos, and historical details "
 "present in the documentation. Tags are now processed on files delivered over"
@@ -640,31 +654,31 @@ msgid ""
 "to significant API changes."
 msgstr ""
 
-#: ../data/metainfo/parole.appdata.xml.in.h:7
+#: ../data/metainfo/parole.appdata.xml.in.h:12
 msgid ""
 "This development release adds a new mini mode and the ability to play or "
 "replay content by clicking the circle icons. Theming is simplified and "
 "filenames are displayed when no ID3 tags are found."
 msgstr ""
 
-#: ../data/metainfo/parole.appdata.xml.in.h:8
+#: ../data/metainfo/parole.appdata.xml.in.h:13
 msgid ""
 "This release improves the build process and includes several bug fixes. This"
 " new stable release is a recommended upgrade for all users."
 msgstr ""
 
-#: ../data/metainfo/parole.appdata.xml.in.h:9
+#: ../data/metainfo/parole.appdata.xml.in.h:14
 msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
 msgstr ""
 
-#: ../data/metainfo/parole.appdata.xml.in.h:10
+#: ../data/metainfo/parole.appdata.xml.in.h:15
 msgid "This release fixes a problem with detecting DVD drive locations."
 msgstr ""
 
-#: ../data/metainfo/parole.appdata.xml.in.h:11
+#: ../data/metainfo/parole.appdata.xml.in.h:16
 msgid ""
 "This release features the completed transition to the Gtk+3 toolkit, "
 "improvements in the user-interface (more streamlined menus), better "
@@ -681,87 +695,87 @@ msgstr "ئۇچۇر"
 msgid "Error"
 msgstr "خاتالىق"
 
-#: ../src/gst/parole-gst.c:1092 ../src/parole-medialist.c:373
+#: ../src/gst/parole-gst.c:1102 ../src/parole-medialist.c:412
 #, c-format
 msgid "Track %i"
 msgstr "نەغمە %i"
 
-#: ../src/gst/parole-gst.c:1095
+#: ../src/gst/parole-gst.c:1105
 msgid "Audio CD"
 msgstr "ئۈن CD سى"
 
-#: ../src/gst/parole-gst.c:1267
+#: ../src/gst/parole-gst.c:1283
 msgid "Unable to install missing codecs."
 msgstr ""
 
-#: ../src/gst/parole-gst.c:1270
+#: ../src/gst/parole-gst.c:1286
 msgid "No available plugin installer was found."
 msgstr ""
 
-#: ../src/gst/parole-gst.c:1321
+#: ../src/gst/parole-gst.c:1337
 msgid "Additional software is required."
 msgstr ""
 
-#: ../src/gst/parole-gst.c:1325
+#: ../src/gst/parole-gst.c:1341
 msgid "Don't Install"
 msgstr "قاچىلىما"
 
-#: ../src/gst/parole-gst.c:1327
+#: ../src/gst/parole-gst.c:1343
 msgid "Install"
 msgstr "ئورنات"
 
-#: ../src/gst/parole-gst.c:1330
+#: ../src/gst/parole-gst.c:1346
 msgid "OK"
 msgstr ""
 
-#: ../src/gst/parole-gst.c:1337
+#: ../src/gst/parole-gst.c:1353
 #, c-format
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
 msgstr ""
 
-#: ../src/gst/parole-gst.c:1340
+#: ../src/gst/parole-gst.c:1356
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
 msgstr ""
 
-#: ../src/gst/parole-gst.c:1715
+#: ../src/gst/parole-gst.c:1735
 msgid "The stream is taking too much time to load"
 msgstr "ئېقىمنى ئوقۇش ئوقۇش ئۈچۈن نۇرغۇن ۋاقىت كېتىدۇ"
 
-#: ../src/gst/parole-gst.c:1717
+#: ../src/gst/parole-gst.c:1737
 msgid "Do you want to continue loading or stop?"
 msgstr ""
 
-#: ../src/gst/parole-gst.c:1718
+#: ../src/gst/parole-gst.c:1738
 msgid "Stop"
 msgstr "توختا"
 
-#: ../src/gst/parole-gst.c:1719
+#: ../src/gst/parole-gst.c:1739
 msgid "Continue"
 msgstr "داۋاملاشتۇر"
 
-#: ../src/gst/parole-gst.c:1883
+#: ../src/gst/parole-gst.c:1938
 msgid "GStreamer Error"
 msgstr ""
 
-#: ../src/gst/parole-gst.c:1884
+#: ../src/gst/parole-gst.c:1939
 msgid "Parole Media Player cannot start."
 msgstr ""
 
-#: ../src/gst/parole-gst.c:1909 ../src/gst/parole-gst.c:1924
-#: ../src/gst/parole-gst.c:1958
+#: ../src/gst/parole-gst.c:1964 ../src/gst/parole-gst.c:1979
+#: ../src/gst/parole-gst.c:2013
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
 msgstr ""
 
-#: ../src/gst/parole-gst.c:2516 ../src/gst/parole-gst.c:2520
+#: ../src/gst/parole-gst.c:2578 ../src/gst/parole-gst.c:2582
 #, c-format
 msgid "Audio Track #%d"
 msgstr "ئۈن نەغمە #%d"
 
-#: ../src/gst/parole-gst.c:2556 ../src/gst/parole-gst.c:2560
+#: ../src/gst/parole-gst.c:2618 ../src/gst/parole-gst.c:2622
 #, c-format
 msgid "Subtitle #%d"
 msgstr "فىلىم خېتى #%d"
@@ -833,251 +847,49 @@ msgstr "نەشر ئۇچۇرىنى كۆرسىتىپ ئاخىرلاشتۇرۇش"
 msgid "Media to play"
 msgstr "قويىدىغان  ۋاسىتە"
 
-#: ../src/main.c:279
+#: ../src/main.c:281
 msgid "[FILES...] - Play movies and songs"
 msgstr ""
 
-#: ../src/main.c:290
+#: ../src/main.c:292
 #, c-format
 msgid "Type %s --help to list all available command line options\n"
 msgstr ""
 
-#: ../src/main.c:307
+#: ../src/main.c:309
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "پارولې(Parole) ئىجرا بولۇۋېتىپتۇ، يېڭىدىن بىرنى ئېچىش ئۈچۈن -i نى ئىشلىتىڭ\n"
 
-#: ../src/parole-mediachooser.c:233 ../src/parole-player.c:1003
-msgid "All files"
-msgstr "ھەممە ھۆججەتلەر"
+#: ../src/misc/parole-filters.c:66
+msgid "Audio"
+msgstr "ئۈن"
 
-#: ../src/parole-medialist.c:215 ../src/parole-medialist.c:1470
-#, c-format
-msgid "Playlist (%i item)"
-msgid_plural "Playlist (%i items)"
-msgstr[0] ""
-msgstr[1] ""
+#: ../src/misc/parole-filters.c:91
+msgid "Video"
+msgstr "سىن"
 
-#: ../src/parole-medialist.c:218 ../src/parole-medialist.c:1472
-#, c-format
-msgid "Playlist (%i chapter)"
-msgid_plural "Playlist (%i chapters)"
-msgstr[0] ""
-msgstr[1] ""
+#: ../src/misc/parole-filters.c:115 ../src/misc/parole-filters.c:142
+msgid "Audio and video"
+msgstr "ئۈن ۋە سىن"
 
-#: ../src/parole-medialist.c:387 ../src/parole-player.c:708
-#, c-format
-msgid "Chapter %i"
-msgstr "باب %i"
+#: ../src/misc/parole-filters.c:169 ../src/misc/parole-filters.c:193
+msgid "All supported files"
+msgstr "قويالايدىغان ھۆججەتلەر"
 
-#: ../src/parole-medialist.c:648
-msgid "Permission denied"
-msgstr "ھوقۇقىڭىز يەتمىدى"
+#: ../src/misc/parole-filters.c:217
+msgid "Playlist files"
+msgstr "قويۇش تىزىمى ھۆججىتى"
 
-#: ../src/parole-medialist.c:650
-msgid "Error saving playlist file"
-msgstr "قويۇش تىزىمى ھۆججىتىنى ساقلاشتا خاتالىق كۆرۈلدى"
-
-#: ../src/parole-medialist.c:660
-msgid "Unknown playlist format"
-msgstr "قويۇش تىزىمىنىڭ پىچىمىنى نامەلۇم"
-
-#: ../src/parole-medialist.c:661
-msgid "Please choose a supported playlist format"
+#: ../src/parole-about.c:69
+msgid "A modern simple media player for the Xfce Desktop Environment."
 msgstr ""
 
-#: ../src/parole-medialist.c:704 ../src/parole-plugins-manager.c:338
-msgid "Unknown"
-msgstr "نامەلۇم"
-
-#: ../src/parole-medialist.c:788
-msgid "M3U Playlists"
-msgstr "M3U قويۇش تىزىمى"
-
-#: ../src/parole-medialist.c:796
-msgid "PLS Playlists"
-msgstr "PLS قويۇش تىزىمى"
-
-#: ../src/parole-medialist.c:804
-msgid "Advanced Stream Redirector"
-msgstr "ئالىي ئېقىم Redirector"
-
-#: ../src/parole-medialist.c:812
-msgid "Shareable Playlist"
-msgstr "ھەمبەھىرلىگىلى بولىدىغان قويۇش تىزىمى"
-
-#. Clear
-#: ../src/parole-medialist.c:1119
-msgid "Open Containing Folder"
-msgstr "قىسقۇچنى ئاچ"
-
-#: ../src/parole-player.c:526
-msgid "Hide Playlist"
-msgstr ""
-
-#: ../src/parole-player.c:526 ../src/parole-player.c:3397
-msgid "Show Playlist"
-msgstr ""
-
-#. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:967
-msgid "Select Subtitle File"
-msgstr "ئېكران خەت ھۆججىتىنى تاللاش"
-
-#: ../src/parole-player.c:972 ../src/parole-player.c:1159
-#: ../src/parole-player.c:2811 ../src/plugins/tray/tray-provider.c:319
-msgid "Cancel"
-msgstr ""
-
-#: ../src/parole-player.c:975
-msgid "Open"
-msgstr "ئاچ"
-
-#: ../src/parole-player.c:991
-msgid "Subtitle Files"
-msgstr "ئېكران خەت ھۆججەتلىرى"
-
-#: ../src/parole-player.c:1155 ../src/parole-player.c:1163
-msgid "Clear Recent Items"
-msgstr ""
-
-#: ../src/parole-player.c:1157
-msgid ""
-"Are you sure you wish to clear your recent items history?  This cannot be "
-"undone."
-msgstr ""
-
-#: ../src/parole-player.c:1260 ../src/parole-player.c:1387
-msgid "Media stream is not seekable"
-msgstr "ۋاسىتە ئېقىمىدىن ئىزدىگىلى بولمايدىكەن"
-
-#: ../src/parole-player.c:1270
-msgid "Play"
-msgstr "قوي"
-
-#: ../src/parole-player.c:1273
-msgid "Pause"
-msgstr "ۋاقىتلىق توختا"
-
-#: ../src/parole-player.c:1712
-msgid "GStreamer backend error"
-msgstr "GStreamer ئارقا ئۇچ خاتالىقى"
-
-#: ../src/parole-player.c:1793
-msgid "Unknown Song"
-msgstr "نامەلۇم نەغمە"
-
-#: ../src/parole-player.c:1804 ../src/parole-player.c:1810
-#: ../src/parole-player.c:1818
-msgid "on"
-msgstr "ئوچۇق"
-
-#: ../src/parole-player.c:1818 ../src/plugins/notify/notify-provider.c:134
-msgid "Unknown Album"
-msgstr "نامەلۇم ئالبوم"
-
-#: ../src/parole-player.c:1829 ../src/parole-player.c:1836
-msgid "by"
-msgstr "ئورۇنلىغۇچى"
-
-#: ../src/parole-player.c:1836 ../src/plugins/notify/notify-provider.c:136
-msgid "Unknown Artist"
-msgstr "نامەلۇم ئورۇنلىغۇچى"
-
-#: ../src/parole-player.c:1871
-msgid "Buffering"
-msgstr "يىغىۋاتىدۇ"
-
-#: ../src/parole-player.c:1982 ../src/parole-player.c:3372
-msgid "Fullscreen"
-msgstr "تولۇق ئېكران"
-
-#: ../src/parole-player.c:1993
-msgid "Leave _Fullscreen"
-msgstr "تولۇق ئېكران ھالىتىدىن چىق(_F)"
-
-#: ../src/parole-player.c:1994
-msgid "Leave Fullscreen"
-msgstr "تولۇق ئېكراندىن چىقىدۇ"
-
-#. Play menu item
-#. * Play pause
-#: ../src/parole-player.c:2096 ../src/plugins/tray/tray-provider.c:119
-msgid "_Pause"
-msgstr "ۋاقىتلىق توختات(_P)"
-
-#: ../src/parole-player.c:2096 ../src/plugins/tray/tray-provider.c:119
-msgid "_Play"
-msgstr "قوي(_P)"
-
-#. * Previous item in playlist.
-#: ../src/parole-player.c:2112
-msgid "_Previous"
-msgstr "ئالدى(_P)"
-
-#. * Next item in playlist.
-#: ../src/parole-player.c:2123
-msgid "_Next"
-msgstr "كەينى(_N)"
-
-#. * Un/Full screen
-#: ../src/parole-player.c:2134
-msgid "_Leave Fullscreen"
-msgstr "تولۇق ئېكران ھالىتىدىن چىق(_L)"
-
-#. * Un/Hide menubar
-#: ../src/parole-player.c:2149
-msgid "Show menubar"
-msgstr ""
-
-#: ../src/parole-player.c:2166
-msgid "Mini Mode"
-msgstr ""
-
-#: ../src/parole-player.c:2385
-msgid "Unmute"
-msgstr "ئاۋازلىق"
-
-#: ../src/parole-player.c:2782
-msgid "Unable to open default web browser"
-msgstr ""
-
-#: ../src/parole-player.c:2784
-msgid ""
-"Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
-msgstr ""
-
-#: ../src/parole-player.c:2812
-msgid "Go"
-msgstr ""
-
-#: ../src/parole-player.c:2825
-msgid "Position:"
-msgstr ""
-
-#. Clear Recent Menu Item
-#: ../src/parole-player.c:3229
-msgid "_Clear recent items..."
-msgstr ""
-
-#: ../src/parole-player.c:3548
-msgid "Audio Track:"
-msgstr "ئۇن:"
-
-#: ../src/parole-player.c:3567
-msgid "Subtitles:"
-msgstr "فىلىم خېتى:"
-
-#. Add a close button to the Infobar
-#: ../src/parole-player.c:3573 ../src/plugins/tray/tray-provider.c:257
-msgid "Close"
-msgstr "تاقا"
-
-#: ../src/parole-about.c:74
+#: ../src/parole-about.c:75
 msgid "translator-credits"
 msgstr "غەيرەت ت.كەنجى <gheyret@gmail.com>"
 
-#: ../src/parole-about.c:77
+#: ../src/parole-about.c:78
 msgid "Visit Parole website"
 msgstr "پارولې(Parole) تورتۇراسىنى زىيارەت قىلىش"
 
@@ -1088,6 +900,241 @@ msgstr ""
 #: ../src/parole-disc.c:106
 msgid "Play Disc"
 msgstr "دىسكا قويۇش"
+
+#: ../src/parole-mediachooser.c:234 ../src/parole-medialist.c:855
+#: ../src/parole-player.c:1014
+msgid "All files"
+msgstr "ھەممە ھۆججەتلەر"
+
+#: ../src/parole-medialist.c:260 ../src/parole-medialist.c:1644
+#, c-format
+msgid "Playlist (%i item)"
+msgid_plural "Playlist (%i items)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../src/parole-medialist.c:262 ../src/parole-medialist.c:1646
+#, c-format
+msgid "Playlist (%i chapter)"
+msgid_plural "Playlist (%i chapters)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../src/parole-medialist.c:426 ../src/parole-player.c:720
+#, c-format
+msgid "Chapter %i"
+msgstr "باب %i"
+
+#: ../src/parole-medialist.c:686
+msgid "Permission denied"
+msgstr "ھوقۇقىڭىز يەتمىدى"
+
+#: ../src/parole-medialist.c:688
+msgid "Error saving playlist file"
+msgstr "قويۇش تىزىمى ھۆججىتىنى ساقلاشتا خاتالىق كۆرۈلدى"
+
+#: ../src/parole-medialist.c:698
+msgid "Unknown playlist format"
+msgstr "قويۇش تىزىمىنىڭ پىچىمىنى نامەلۇم"
+
+#: ../src/parole-medialist.c:699
+msgid "Please choose a supported playlist format"
+msgstr ""
+
+#: ../src/parole-medialist.c:745 ../src/parole-plugins-manager.c:356
+msgid "Unknown"
+msgstr "نامەلۇم"
+
+#: ../src/parole-medialist.c:838 ../src/parole-player.c:985
+#: ../src/parole-player.c:1176 ../src/parole-player.c:2853
+#: ../src/plugins/tray/tray-provider.c:319
+msgid "Cancel"
+msgstr ""
+
+#: ../src/parole-medialist.c:839
+msgid "Save"
+msgstr "ساقلا"
+
+#: ../src/parole-medialist.c:860
+#, c-format
+msgid "M3U Playlist (%s)"
+msgstr ""
+
+#: ../src/parole-medialist.c:870
+#, c-format
+msgid "PLS Playlist (%s)"
+msgstr ""
+
+#: ../src/parole-medialist.c:880
+#, c-format
+msgid "Advanced Stream Redirector (%s)"
+msgstr ""
+
+#: ../src/parole-medialist.c:890
+#, c-format
+msgid "Shareable Playlist (%s)"
+msgstr ""
+
+#. Clear
+#: ../src/parole-medialist.c:1280
+msgid "Open Containing Folder"
+msgstr "قىسقۇچنى ئاچ"
+
+#. Build the FileChooser dialog for subtitle selection.
+#: ../src/parole-player.c:979
+msgid "Select Subtitle File"
+msgstr "ئېكران خەت ھۆججىتىنى تاللاش"
+
+#: ../src/parole-player.c:986
+msgid "Open"
+msgstr "ئاچ"
+
+#: ../src/parole-player.c:1002
+msgid "Subtitle Files"
+msgstr "ئېكران خەت ھۆججەتلىرى"
+
+#: ../src/parole-player.c:1172 ../src/parole-player.c:1180
+msgid "Clear Recent Items"
+msgstr ""
+
+#: ../src/parole-player.c:1174
+msgid ""
+"Are you sure you wish to clear your recent items history?  This cannot be "
+"undone."
+msgstr ""
+
+#: ../src/parole-player.c:1270 ../src/parole-player.c:1395
+msgid "Media stream is not seekable"
+msgstr "ۋاسىتە ئېقىمىدىن ئىزدىگىلى بولمايدىكەن"
+
+#: ../src/parole-player.c:1280
+msgid "Play"
+msgstr "قوي"
+
+#: ../src/parole-player.c:1283
+msgid "Pause"
+msgstr "ۋاقىتلىق توختا"
+
+#: ../src/parole-player.c:1724
+msgid "GStreamer backend error"
+msgstr "GStreamer ئارقا ئۇچ خاتالىقى"
+
+#: ../src/parole-player.c:1805
+msgid "Unknown Song"
+msgstr "نامەلۇم نەغمە"
+
+#: ../src/parole-player.c:1816 ../src/parole-player.c:1822
+#: ../src/parole-player.c:1830
+msgid "on"
+msgstr "ئوچۇق"
+
+#: ../src/parole-player.c:1830 ../src/plugins/notify/notify-provider.c:134
+msgid "Unknown Album"
+msgstr "نامەلۇم ئالبوم"
+
+#: ../src/parole-player.c:1841 ../src/parole-player.c:1848
+msgid "by"
+msgstr "ئورۇنلىغۇچى"
+
+#: ../src/parole-player.c:1848 ../src/plugins/notify/notify-provider.c:136
+msgid "Unknown Artist"
+msgstr "نامەلۇم ئورۇنلىغۇچى"
+
+#: ../src/parole-player.c:1883
+msgid "Buffering"
+msgstr "يىغىۋاتىدۇ"
+
+#: ../src/parole-player.c:1989 ../src/parole-player.c:3418
+msgid "Fullscreen"
+msgstr "تولۇق ئېكران"
+
+#: ../src/parole-player.c:1997
+msgid "Leave _Fullscreen"
+msgstr "تولۇق ئېكران ھالىتىدىن چىق(_F)"
+
+#: ../src/parole-player.c:1998
+msgid "Leave Fullscreen"
+msgstr "تولۇق ئېكراندىن چىقىدۇ"
+
+#. Play menu item
+#. * Play pause
+#: ../src/parole-player.c:2095 ../src/plugins/tray/tray-provider.c:119
+msgid "_Pause"
+msgstr "ۋاقىتلىق توختات(_P)"
+
+#: ../src/parole-player.c:2095 ../src/plugins/tray/tray-provider.c:119
+msgid "_Play"
+msgstr "قوي(_P)"
+
+#. * Previous item in playlist.
+#: ../src/parole-player.c:2111
+msgid "_Previous"
+msgstr "ئالدى(_P)"
+
+#. * Next item in playlist.
+#: ../src/parole-player.c:2122
+msgid "_Next"
+msgstr "كەينى(_N)"
+
+#. * Un/Full screen
+#: ../src/parole-player.c:2133
+msgid "_Leave Fullscreen"
+msgstr "تولۇق ئېكران ھالىتىدىن چىق(_L)"
+
+#. * Un/Hide menubar
+#: ../src/parole-player.c:2148
+msgid "Show menubar"
+msgstr ""
+
+#: ../src/parole-player.c:2165
+msgid "Mini Mode"
+msgstr ""
+
+#: ../src/parole-player.c:2404
+msgid "Unmute"
+msgstr "ئاۋازلىق"
+
+#: ../src/parole-player.c:2824
+msgid "Unable to open default web browser"
+msgstr ""
+
+#: ../src/parole-player.c:2826
+msgid ""
+"Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
+msgstr ""
+
+#: ../src/parole-player.c:2854
+msgid "Go"
+msgstr ""
+
+#. Clear Recent Menu Item
+#: ../src/parole-player.c:3275
+msgid "_Clear recent items..."
+msgstr ""
+
+#: ../src/parole-player.c:3586
+msgid "Audio Track:"
+msgstr "ئۇن:"
+
+#: ../src/parole-player.c:3605
+msgid "Subtitles:"
+msgstr "فىلىم خېتى:"
+
+#: ../src/parole-plugins-manager.c:281
+msgid "Plugin failed to load"
+msgstr ""
+
+#: ../src/parole-plugins-manager.c:282
+msgid "Please check your installation"
+msgstr ""
+
+#: ../src/parole-plugins-manager.c:393
+msgid "No installed plugins found on this system"
+msgstr "سىستېمىغا تېخى قىستۇرما ئورنىتىلماپتۇ"
+
+#: ../src/parole-plugins-manager.c:394
+msgid "Please check your installation."
+msgstr ""
 
 #: ../src/parole-subtitle-encoding.c:162
 msgid "Current Locale"
@@ -1230,41 +1277,13 @@ msgstr "غەربچە"
 msgid "Vietnamese"
 msgstr "ۋىيېتنامچە"
 
-#: ../src/parole-plugins-manager.c:253
-msgid "Plugin failed to load"
+#: ../src/plugins/mpris2/mpris2.desktop.in.h:1
+msgid "MPRIS2"
 msgstr ""
 
-#: ../src/parole-plugins-manager.c:254
-msgid "Please check your installation"
+#: ../src/plugins/mpris2/mpris2.desktop.in.h:2
+msgid "MPRIS2 remote control"
 msgstr ""
-
-#: ../src/parole-plugins-manager.c:375
-msgid "No installed plugins found on this system"
-msgstr "سىستېمىغا تېخى قىستۇرما ئورنىتىلماپتۇ"
-
-#: ../src/parole-plugins-manager.c:376
-msgid "Please check your installation."
-msgstr ""
-
-#: ../src/misc/parole-filters.c:66
-msgid "Audio"
-msgstr "ئۈن"
-
-#: ../src/misc/parole-filters.c:91
-msgid "Video"
-msgstr "سىن"
-
-#: ../src/misc/parole-filters.c:115 ../src/misc/parole-filters.c:142
-msgid "Audio and video"
-msgstr "ئۈن ۋە سىن"
-
-#: ../src/misc/parole-filters.c:169 ../src/misc/parole-filters.c:193
-msgid "All supported files"
-msgstr "قويالايدىغان ھۆججەتلەر"
-
-#: ../src/misc/parole-filters.c:217
-msgid "Playlist files"
-msgstr "قويۇش تىزىمى ھۆججىتى"
 
 #: ../src/plugins/notify/notify-provider.c:139
 #: ../src/plugins/notify/notify-provider.c:141
@@ -1283,6 +1302,14 @@ msgstr "ئۇقتۇرۇش"
 #: ../src/plugins/notify/notify.desktop.in.h:2
 msgid "Show notifications for currently playing tracks"
 msgstr ""
+
+#: ../src/plugins/tray/system-tray.desktop.in.h:1
+msgid "Tray icon"
+msgstr "قونداق سىنبەلگىسى"
+
+#: ../src/plugins/tray/system-tray.desktop.in.h:2
+msgid "Show icon in the system tray"
+msgstr "سىنبەلگىنى سىستېما قوندىقىدا كۆرسەت"
 
 #. * Previous Track
 #: ../src/plugins/tray/tray-provider.c:128
@@ -1322,19 +1349,3 @@ msgstr "قونداققا كىچىكلەت"
 #: ../src/plugins/tray/tray-provider.c:334
 msgid "Remember my choice"
 msgstr "مېنىڭ تاللىشىمنى ئەستە ساقلا"
-
-#: ../src/plugins/tray/system-tray.desktop.in.h:1
-msgid "Tray icon"
-msgstr "قونداق سىنبەلگىسى"
-
-#: ../src/plugins/tray/system-tray.desktop.in.h:2
-msgid "Show icon in the system tray"
-msgstr "سىنبەلگىنى سىستېما قوندىقىدا كۆرسەت"
-
-#: ../src/plugins/mpris2/mpris2.desktop.in.h:1
-msgid "MPRIS2"
-msgstr ""
-
-#: ../src/plugins/mpris2/mpris2.desktop.in.h:2
-msgid "MPRIS2 remote control"
-msgstr ""
