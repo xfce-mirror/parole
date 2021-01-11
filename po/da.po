@@ -5,13 +5,13 @@
 # Translators:
 # Aputsiak Niels Janussen <aj@isit.gl>, 2013-2014
 # Chris Darnell <chris@cedeel.com>, 2013
-# scootergrisen, 2016-2020
+# scootergrisen, 2016-2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-27 00:47+0100\n"
-"PO-Revision-Date: 2020-12-26 23:47+0000\n"
+"PO-Revision-Date: 2021-01-11 18:16+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -241,7 +241,7 @@ msgstr "_Titelmenu"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "_Subpicture Menu"
-msgstr ""
+msgstr "_Underbilledmenu"
 
 #: ../data/interfaces/parole.ui.h:18
 msgid "_Audio Menu"
@@ -619,15 +619,15 @@ msgstr ""
 
 #: ../data/metainfo/parole.appdata.xml.in.h:5
 msgid "This release inhibits power management during video playback."
-msgstr ""
+msgstr "Udgivelsen forhindrer strømstyring under videoafspilning."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:6
 msgid "This is a minor bugfix release."
-msgstr ""
+msgstr "Dette er en udgivelse der retter et mindre antal fejl."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:7
 msgid "This release adds support for automatic codec installation."
-msgstr ""
+msgstr "Udgivelsen tilføjer undestøttelse af automatisk installation af codecs."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:8
 msgid "This is a minor translations-only release."
@@ -886,7 +886,7 @@ msgstr "Afspilningslistefiler"
 
 #: ../src/parole-about.c:69
 msgid "A modern simple media player for the Xfce Desktop Environment."
-msgstr ""
+msgstr "En moderne simpel medieafspiller til Xfce-skrivebordsmiljøet."
 
 #: ../src/parole-about.c:75
 msgid "translator-credits"
@@ -961,22 +961,22 @@ msgstr "Gem"
 #: ../src/parole-medialist.c:860
 #, c-format
 msgid "M3U Playlist (%s)"
-msgstr ""
+msgstr "M3U-afspilningsliste (%s)"
 
 #: ../src/parole-medialist.c:870
 #, c-format
 msgid "PLS Playlist (%s)"
-msgstr ""
+msgstr "PLS-afspilningsliste (%s)"
 
 #: ../src/parole-medialist.c:880
 #, c-format
 msgid "Advanced Stream Redirector (%s)"
-msgstr ""
+msgstr "Avanceret omdirigering af strøm (%s)"
 
 #: ../src/parole-medialist.c:890
 #, c-format
 msgid "Shareable Playlist (%s)"
-msgstr ""
+msgstr "Delbar afspilningsliste (%s)"
 
 #. Clear
 #: ../src/parole-medialist.c:1280
