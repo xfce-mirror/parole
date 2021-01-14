@@ -4,7 +4,7 @@
 # 
 # Translators:
 # Alexandre Fidalgo <alexandremagnos15@gmail.com>, 2014
-# Hugo Carvalho <hugokarvalho@hotmail.com>, 2019-2020
+# Hugo Carvalho <hugokarvalho@hotmail.com>, 2019-2021
 # José Vieira <jvieira33@sapo.pt>, 2018,2020
 # Nuno Miguel <nunomgue@gmail.com>, 2013-2015,2017-2018
 # Sérgio Marques <smarquespt@gmail.com>, 2013-2014
@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-27 00:47+0100\n"
-"PO-Revision-Date: 2020-12-27 16:49+0000\n"
+"PO-Revision-Date: 2021-01-14 13:27+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/xfce/xfce-apps/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -664,7 +664,7 @@ msgid ""
 "This development release adds a new mini mode and the ability to play or "
 "replay content by clicking the circle icons. Theming is simplified and "
 "filenames are displayed when no ID3 tags are found."
-msgstr "Esta versão adiciona um novo modo de miniatura e a possibilidade de tocar ou voltar a tocar conteúdo ao clicar nos ícones circulares. Os temas são simplificados e os nomes dos ficheiros são mostrados quando nehuma etiqueta ID3 é encontrada."
+msgstr "Esta versão adiciona um novo modo de miniatura e a possibilidade de tocar ou voltar a reproduzir conteúdo ao clicar nos ícones circulares. Os temas são simplificados e os nomes dos ficheiros são mostrados quando nenhuma etiqueta ID3 é encontrada."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:13
 msgid ""
@@ -1093,7 +1093,7 @@ msgstr "Mostrar barra de menu"
 
 #: ../src/parole-player.c:2165
 msgid "Mini Mode"
-msgstr "Modo mini"
+msgstr "Modo miniatura"
 
 #: ../src/parole-player.c:2404
 msgid "Unmute"
