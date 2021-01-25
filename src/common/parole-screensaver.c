@@ -70,7 +70,7 @@ parole_screen_saver_new(void) {
 
 void parole_screen_saver_inhibit(ParoleScreenSaver *saver, GtkWindow *window) {
     gchar *cmd;
-    gint returncode;
+    G_GNUC_UNUSED gint returncode;
 
     g_return_if_fail(PAROLE_IS_SCREENSAVER(saver));
 
@@ -84,7 +84,7 @@ void parole_screen_saver_inhibit(ParoleScreenSaver *saver, GtkWindow *window) {
 
 void parole_screen_saver_uninhibit(ParoleScreenSaver *saver, GtkWindow *window) {
     gchar *cmd;
-    gint returncode;
+    G_GNUC_UNUSED gint returncode;
 
     g_return_if_fail(PAROLE_IS_SCREENSAVER(saver));
 
