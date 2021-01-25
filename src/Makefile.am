@@ -6,7 +6,7 @@ SUBDIRS = 					\
 	dbus					\
 	plugins
 
-INCLUDES =					\
+AM_CPPFLAGS =					\
 	-I$(top_srcdir)				\
 	-I$(top_srcdir)/src/misc			\
 	-I$(top_srcdir)/data			\
@@ -99,7 +99,7 @@ parole_glib_enum_headers =			\
 	parole-button.h
 
 if PAROLE_CLUTTER_BACKEND
-INCLUDES +=			\
+AM_CPPFLAGS +=			\
 	$(CLUTTER_CFLAGS)				\
 	$(CLUTTERGTK_CFLAGS)
 parole_SOURCES +=				\
