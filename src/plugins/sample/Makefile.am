@@ -1,7 +1,7 @@
 noinst_LTLIBRARIES =				\
 	sample-plugin.la
 
-INCLUDES =					\
+AM_CPPFLAGS =					\
 	-I$(top_builddir)			\
 	-I$(top_srcdir)				\
 	-I$(top_srcdir)/src			\
