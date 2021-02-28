@@ -14,7 +14,7 @@ AC_PREREQ(2.59c)
 AC_CONFIG_MACRO_DIR([m4])
 
 AM_INIT_AUTOMAKE([1.8 dist-bzip2 tar-ustar no-dist-gzip foreign])
-AM_CONFIG_HEADER([config.h])
+AC_CONFIG_HEADERS([config.h])
 
 if test x${enable_gtk_doc} = x"yes"; then
     AM_MAINTAINER_MODE([enable])
@@ -74,7 +74,6 @@ AC_DEFINE([PAROLE_VERSION_SHORT], [parole_version_short], [Short version string 
 # ===================================================== #
 #   Check for headers needed for standard interfaces    #
 # ===================================================== #
-AC_HEADER_STDC
 AC_CHECK_HEADERS([errno.h signal.h stddef.h sys/ioctl.h fcntl.h\
                   string.h sys/stat.h sys/types.h sys/wait.h time.h \
                   unistd.h])
@@ -245,7 +244,7 @@ XDT_FEATURE_DEBUG()
 # ===================================================== #
 GTK_DOC_CHECK(1.9)
 
-AC_OUTPUT([
+AC_CONFIG_FILES([
 Makefile
 data/Makefile
 data/pixmaps/Makefile
@@ -275,6 +274,7 @@ docs/plugin-api/version.xml
 docs/plugin-api/Makefile
 po/Makefile.in
 ])
+AC_OUTPUT
 
 echo "
 ------------------------------------------------------
