@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Dušan Kazik <prescott66@gmail.com>, 2015,2017,2020
+# Dušan Kazik <prescott66@gmail.com>, 2015,2017,2020-2021
 # Robert Hartl <hartl.robert@gmail.com>, 2009-2010
 # 7dcd6f74323fe8d9c477949ff8fcbb1c_c427b63 <3fcd202e3dfab15fda15b8e88e54d449_7173>, 2011
 # 7dcd6f74323fe8d9c477949ff8fcbb1c_c427b63 <3fcd202e3dfab15fda15b8e88e54d449_7173>, 2011
@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-27 00:47+0100\n"
-"PO-Revision-Date: 2020-12-26 23:47+0000\n"
+"PO-Revision-Date: 2021-03-01 21:24+0000\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak (http://www.transifex.com/xfce/xfce-apps/language/sk/)\n"
 "MIME-Version: 1.0\n"
@@ -242,7 +242,7 @@ msgstr "Ponuka _titulov"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "_Subpicture Menu"
-msgstr ""
+msgstr "_Ponuka podobrazu"
 
 #: ../data/interfaces/parole.ui.h:18
 msgid "_Audio Menu"
@@ -887,7 +887,7 @@ msgstr "Súbory zoznamov skladieb"
 
 #: ../src/parole-about.c:69
 msgid "A modern simple media player for the Xfce Desktop Environment."
-msgstr ""
+msgstr "Moderný jednoduchý multimediálny prehrávač pre pracovné prostredie Xfce."
 
 #: ../src/parole-about.c:75
 msgid "translator-credits"
@@ -966,22 +966,22 @@ msgstr "Uložiť"
 #: ../src/parole-medialist.c:860
 #, c-format
 msgid "M3U Playlist (%s)"
-msgstr ""
+msgstr "Zoznam skladieb M3U (%s)"
 
 #: ../src/parole-medialist.c:870
 #, c-format
 msgid "PLS Playlist (%s)"
-msgstr ""
+msgstr "Zoznam skladieb PLS (%s)"
 
 #: ../src/parole-medialist.c:880
 #, c-format
 msgid "Advanced Stream Redirector (%s)"
-msgstr ""
+msgstr "Pokročilé presmerovanie prúdu (%s)"
 
 #: ../src/parole-medialist.c:890
 #, c-format
 msgid "Shareable Playlist (%s)"
-msgstr ""
+msgstr "Zdielateľný zoznam skladieb (%s)"
 
 #. Clear
 #: ../src/parole-medialist.c:1280
