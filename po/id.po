@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-27 00:47+0100\n"
-"PO-Revision-Date: 2020-12-26 23:47+0000\n"
+"PO-Revision-Date: 2021-03-23 13:06+0000\n"
 "Last-Translator: Triyan W. Nugroho <triyan.wn@gmail.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/xfce/xfce-apps/language/id/)\n"
 "MIME-Version: 1.0\n"
@@ -243,7 +243,7 @@ msgstr "Menu Judul"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "_Subpicture Menu"
-msgstr ""
+msgstr "Menu _Sub-gambar"
 
 #: ../data/interfaces/parole.ui.h:18
 msgid "_Audio Menu"
@@ -611,25 +611,25 @@ msgid ""
 "This release refreshes the playlist and dialog look and feel. Shuffling the "
 "playlist is more efficient and can be reversed. DVD support has also been "
 "improved and will no longer freeze when started."
-msgstr ""
+msgstr "Rilis ini menyegarkan tampilan dan nuansa senarai putar dan dialog. Mengacak senarai putar menjadi lebih efisien dan dapat dibalik. Dukungan DVD juga telah ditingkatkan dan tidak lagi macet saat dimulai."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:4
 msgid ""
 "This release improves thumbnail management and storage and fixes volume "
 "hotkeys when viewing fullscreen content."
-msgstr ""
+msgstr "Rilis ini meningkatkan pengelolaan gambar miniatur dan penyimpanan, dan memperbaiki tombol cepat volume ketika menampilkan konten layar penuh."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:5
 msgid "This release inhibits power management during video playback."
-msgstr ""
+msgstr "Rilis ini mencegah pengelola daya aktif selama memutar video."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:6
 msgid "This is a minor bugfix release."
-msgstr ""
+msgstr "Ini adalah rilis perbaikan kutu minor."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:7
 msgid "This release adds support for automatic codec installation."
-msgstr ""
+msgstr "Rilis ini menambahkan dukungan untuk instalasi codec otomatis."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:8
 msgid "This is a minor translations-only release."
@@ -888,11 +888,11 @@ msgstr "Berkas senarai putar"
 
 #: ../src/parole-about.c:69
 msgid "A modern simple media player for the Xfce Desktop Environment."
-msgstr ""
+msgstr "Sebuah pemutar media modern yang sederhana untuk Lingkungan Desktop Xfce."
 
 #: ../src/parole-about.c:75
 msgid "translator-credits"
-msgstr "Kukuh Syafaat <syafaatkukuh@gmail.com>, 2017.\nTriyan W. Nugroho <triyan.wn@gmail.com>, 2020."
+msgstr "Kukuh Syafaat <syafaatkukuh@gmail.com>, 2017.\nTriyan W. Nugroho <triyan.wn@gmail.com>, 2020, 2021."
 
 #: ../src/parole-about.c:78
 msgid "Visit Parole website"
@@ -921,7 +921,7 @@ msgstr[0] "Senarai putar (%i item)"
 #, c-format
 msgid "Playlist (%i chapter)"
 msgid_plural "Playlist (%i chapters)"
-msgstr[0] "Senarai puter (%i bagian)"
+msgstr[0] "Senarai putar (%i bagian)"
 
 #: ../src/parole-medialist.c:426 ../src/parole-player.c:720
 #, c-format
@@ -961,22 +961,22 @@ msgstr "Simpan"
 #: ../src/parole-medialist.c:860
 #, c-format
 msgid "M3U Playlist (%s)"
-msgstr ""
+msgstr "Senarai Putar M3U (%s)"
 
 #: ../src/parole-medialist.c:870
 #, c-format
 msgid "PLS Playlist (%s)"
-msgstr ""
+msgstr "Senarai Putar PLS (%s)"
 
 #: ../src/parole-medialist.c:880
 #, c-format
 msgid "Advanced Stream Redirector (%s)"
-msgstr ""
+msgstr "Advanced Stream Redirector (%s)"
 
 #: ../src/parole-medialist.c:890
 #, c-format
 msgid "Shareable Playlist (%s)"
-msgstr ""
+msgstr "Senarai Putar Dapat Dibagikan (%s)"
 
 #. Clear
 #: ../src/parole-medialist.c:1280
