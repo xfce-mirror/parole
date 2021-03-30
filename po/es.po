@@ -27,7 +27,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-27 00:47+0100\n"
-"PO-Revision-Date: 2021-03-29 18:50+0000\n"
+"PO-Revision-Date: 2021-03-30 08:10+0000\n"
 "Last-Translator: Toni Estévez <toni.estevez@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/xfce/xfce-apps/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -403,7 +403,7 @@ msgstr "0:00"
 #: ../data/interfaces/parole.ui.h:53
 #, no-c-format
 msgid "Buffering (0%)"
-msgstr "Almacenando en búfer (0 %)"
+msgstr "Cargando (0%)"
 
 #: ../data/interfaces/parole.ui.h:54
 msgid "/"
@@ -594,7 +594,7 @@ msgstr "Avanzar 10 minutos"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:2
 msgid "Play your media"
-msgstr "Reproduzca sus medios"
+msgstr "Reproduzca sus contenidos multimedia"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:4
 #: ../src/parole-player.c:3383 ../src/plugins/notify/notify-provider.c:190
@@ -625,17 +625,17 @@ msgid ""
 "This release refreshes the playlist and dialog look and feel. Shuffling the "
 "playlist is more efficient and can be reversed. DVD support has also been "
 "improved and will no longer freeze when started."
-msgstr "Esta versión actualiza la apariencia de la lista de reproducción y el diálogo. La reproducción aleatoria de la lista de reproducción es más eficiente y se puede invertir. La compatibilidad con DVD también se ha mejorado y ya no se congelará cuando se inicie."
+msgstr "Esta versión renueva el aspecto de la lista de reproducción y la del diálogo. La reproducción aleatoria de la lista de reproducción es más eficaz y se puede revertir. También se ha mejorado la compatibilidad con los DVD y ya no se congela al iniciarse."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:4
 msgid ""
 "This release improves thumbnail management and storage and fixes volume "
 "hotkeys when viewing fullscreen content."
-msgstr "Esta versión mejora la administración y el almacenamiento de miniaturas y corrige las teclas de acceso rápido de volumen al ver contenido en pantalla completa."
+msgstr "Esta versión mejora la gestión y el almacenamiento de las miniaturas y corrige las teclas de acceso directo al volumen al reproducir contenido a pantalla completa."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:5
 msgid "This release inhibits power management during video playback."
-msgstr "Esta versión inhibe la administración de energía durante la reproducción de video."
+msgstr "Esta versión inhibe la gestión de la energía durante la reproducción de vídeo."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:6
 msgid "This is a minor bugfix release."
@@ -643,7 +643,7 @@ msgstr "Esta es una versión de corrección de errores menores."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:7
 msgid "This release adds support for automatic codec installation."
-msgstr "Esta versión añade soporte para la instalación automática de códecs."
+msgstr "Esta versión añade compatibilidad con la instalación automática de códecs."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:8
 msgid "This is a minor translations-only release."
@@ -655,7 +655,7 @@ msgid ""
 "Automatic video output option was added to improve usage on virtual machines"
 " and low power devices. A large number of bugs were also resolved, making "
 "this release suitable for all users."
-msgstr "Este lanzamiento marca la primera versión estable de la serie 1.0. Se agregó una nueva opción de salida de video automática para mejorar el uso en máquinas virtuales y dispositivos de baja potencia. También se resolvió una gran cantidad de errores, lo que hace que esta versión sea adecuada para todos los usuarios."
+msgstr "Esta publicación marca la primera versión estable de la serie 1.0. Se ha añadido una nueva opción de salida de vídeo automática para mejorar el uso en máquinas virtuales y dispositivos de baja potencia. También se han resuelto muchos errores, por lo que esta versión es apta para todos los usuarios."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:10
 msgid ""
@@ -663,7 +663,7 @@ msgid ""
 "lighter and easier to improve. All URLs have been updated to HTTPS. A large "
 "number of bugs have been resolved and a new keyboard shortcuts helper has "
 "been introduced."
-msgstr "Este lanzamiento de desarrollo es una limpieza grande del código base, haciendo a Parole más ligero y más fácil de mejorar. Todas las direcciones URL se han actualizado a HTTPS. Se ha resuelto un gran número de errores y se ha introducido un nuevo ayudante de atajos de teclado."
+msgstr "Esta versión de desarrollo implica una gran limpieza del código base, haciendo que Parole sea más ligero y fácil de mejorar. Todas las URL se han actualizado a HTTPS. Se han resuelto muchos errores y se ha introducido una nueva ayuda para los atajos de teclado."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:11
 msgid ""
@@ -671,14 +671,14 @@ msgid ""
 "present in the documentation. Tags are now processed on files delivered over"
 " HTTP/S. The clutter video backend is disabled for GTK+ 3.22 and newer due "
 "to significant API changes."
-msgstr "Esta versión de desarrollo corrige varios fallos, errores tipográficos y detalles históricos presentes en la documentación. Las etiquetas se tramitan mediante archivos enviados usando HTTP/S. Se ha desactivado el motor de video «clutter» a partir de GTK 3.22 en adelante debido a cambios significativos en la API"
+msgstr "Esta versión de desarrollo corrige varios fallos, erratas y detalles históricos presentes en la documentación. Las etiquetas se procesan ahora en los archivos recibidos a través de HTTP/S. Se ha desactivado el motor de vídeo Clutter para GTK+ 3.22 y versiones posteriores debido a cambios significativos en la API."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:12
 msgid ""
 "This development release adds a new mini mode and the ability to play or "
 "replay content by clicking the circle icons. Theming is simplified and "
 "filenames are displayed when no ID3 tags are found."
-msgstr "Esta versión de desarrollo agrega un nuevo modo mini y la capacidad de reproducir o volver a reproducir el contenido haciendo clic en los iconos de círculo. La personalización por temas se simplifica y los nombres de archivo se muestran cuando no se encuentran etiquetas ID3."
+msgstr "Esta versión de desarrollo añade un nuevo modo mínimo y la posibilidad de reproducir el contenido haciendo clic en los iconos circulares. Se ha simplificado la personalización del aspecto y se muestran los nombres de los archivos cuando no se encuentran etiquetas ID3."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:13
 msgid ""
@@ -691,11 +691,11 @@ msgid ""
 "This unstable development release adds the new clutter backend and cleans up"
 " deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
 "several bugs have been addressed."
-msgstr "Esta versión de desarrollo añade un nuevo motor de «clutter» y elimina símbolos GTK3 obsoletos. Además añade la funcionalidad «Ir a la posición» y corrige un sinnúmero de errores."
+msgstr "Esta versión de desarrollo inestable añade el nuevo motor Clutter y elimina los símbolos GTK3 obsoletos. También añade la función de ir a la posición y se han corregido varios errores."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:15
 msgid "This release fixes a problem with detecting DVD drive locations."
-msgstr "Esta nueva versión arregla un error al detectar la localización de las unidades DVD."
+msgstr "Esta versión corrige un problema con la detección de la ubicación de las unidades de DVD."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:16
 msgid ""
@@ -704,7 +704,7 @@ msgid ""
 "playlists. Furthermore existing plugins have been improved and a new one has"
 " been added (MPRIS2). Most of the artwork has been updated for this release "
 "and we use the GStreamer1.0 framework now by default."
-msgstr "Esta nueva versión comprende una completa transición a GTK+3, mejorando la interfaz de usuario (menús simplificados) y la lista de reproducción. Además, los complementos existentes han sido mejoradas y uno nuevo se ha añadido (MPRIS2). La mayor parte del arte en esta versión se actualizó y ahora la infraestructura digital de GStreamer 1.0 es la utilizada de forma predeterminada."
+msgstr "Esta versión incluye la transición completa a la caja de herramientas GTK3, mejoras en la interfaz de usuario (menús más sencillos) y en la lista de reproducción. Además, se han mejorado los complementos existentes y se ha añadido uno nuevo (MPRIS2). Se ha actualizado la mayor parte del diseño gráfico y ahora se usa el motor GStreamer 1.0 por defecto."
 
 #: ../src/common/parole-common.c:83
 msgid "Message"
@@ -752,7 +752,7 @@ msgstr "Aceptar"
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
-msgstr "Parole necesita <b>%s</b> para reproducir el archivo.\nPuede instalarse automáticamente."
+msgstr "Parole necesita <b>%s</b> para reproducir este archivo.\nSe puede automáticamente."
 
 #: ../src/gst/parole-gst.c:1356
 #, c-format
@@ -797,7 +797,7 @@ msgstr "Pista de audio núm. %d"
 #: ../src/gst/parole-gst.c:2618 ../src/gst/parole-gst.c:2622
 #, c-format
 msgid "Subtitle #%d"
-msgstr "Pista de subtítulos núm. %d"
+msgstr "Subtítulos núm. %d"
 
 #: ../src/main.c:59
 #, c-format
@@ -828,7 +828,7 @@ msgstr "Configurar la ruta del dispositivo de CD/VCD/DVD"
 
 #: ../src/main.c:233
 msgid "Start in embedded mode"
-msgstr "Iniciar en modo integrado"
+msgstr "Iniciar en modo compacto"
 
 #: ../src/main.c:235
 msgid "Start in fullscreen mode"
@@ -868,7 +868,7 @@ msgstr "Medios para reproducir"
 
 #: ../src/main.c:281
 msgid "[FILES...] - Play movies and songs"
-msgstr "[ARCHIVOS…] - Reproducir películas y canciones"
+msgstr "[ARCHIVOS…] - Reproduce películas y canciones"
 
 #: ../src/main.c:292
 #, c-format
@@ -1036,7 +1036,7 @@ msgstr "Pausar"
 
 #: ../src/parole-player.c:1724
 msgid "GStreamer backend error"
-msgstr "Error en el motor de GStreamer"
+msgstr "Error en el motor GStreamer"
 
 #: ../src/parole-player.c:1805
 msgid "Unknown Song"
@@ -1061,7 +1061,7 @@ msgstr "Artista desconocido"
 
 #: ../src/parole-player.c:1883
 msgid "Buffering"
-msgstr "Almacenando en búfer"
+msgstr "Cargando"
 
 #: ../src/parole-player.c:1989 ../src/parole-player.c:3418
 msgid "Fullscreen"
@@ -1107,11 +1107,11 @@ msgstr "Mostrar la barra de menús"
 
 #: ../src/parole-player.c:2165
 msgid "Mini Mode"
-msgstr "Modo mini"
+msgstr "Modo mínimo"
 
 #: ../src/parole-player.c:2404
 msgid "Unmute"
-msgstr "Activar el sonido"
+msgstr "Restaurar el volumen"
 
 #: ../src/parole-player.c:2824
 msgid "Unable to open default web browser"
@@ -1268,7 +1268,7 @@ msgstr "Rumano"
 
 #: ../src/parole-subtitle-encoding.c:297
 msgid "South European"
-msgstr "Europeo del Sur"
+msgstr "Europa del Sur"
 
 #: ../src/parole-subtitle-encoding.c:300
 msgid "Thai"
@@ -1328,7 +1328,7 @@ msgstr "Icono en el área de notificación"
 
 #: ../src/plugins/tray/system-tray.desktop.in.h:2
 msgid "Show icon in the system tray"
-msgstr "Mostrar un icono en el área de notificación"
+msgstr "Mostrar el icono en el área de notificación"
 
 #. * Previous Track
 #: ../src/plugins/tray/tray-provider.c:128
