@@ -850,7 +850,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     NULL,
                                     1,
                                     G_MAXINT16,
-                                    4,
+                                    1,
                                     G_PARAM_READWRITE));
 
     /**
