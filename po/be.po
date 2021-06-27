@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-27 00:47+0100\n"
-"PO-Revision-Date: 2020-12-29 11:25+0000\n"
+"PO-Revision-Date: 2021-06-27 12:15+0000\n"
 "Last-Translator: Źmicier Turok <nashtlumach@gmail.com>\n"
 "Language-Team: Belarusian (http://www.transifex.com/xfce/xfce-apps/language/be/)\n"
 "MIME-Version: 1.0\n"
@@ -104,11 +104,11 @@ msgstr "Яркасць:"
 
 #: ../data/interfaces/parole-settings.ui.h:17
 msgid "Contrast:"
-msgstr "Кантраснасць:"
+msgstr "Кантраст:"
 
 #: ../data/interfaces/parole-settings.ui.h:18
 msgid "Hue:"
-msgstr "Адценне:"
+msgstr "Тон:"
 
 #: ../data/interfaces/parole-settings.ui.h:19
 msgid "Saturation:"
@@ -128,7 +128,7 @@ msgstr "Выгляд"
 
 #: ../data/interfaces/parole-settings.ui.h:23
 msgid "Always replace playlist with opened files"
-msgstr "Заўсёды замяняць плэйліст адкрытымі файламі"
+msgstr "Заўсёды замяняць спіс прайгравання адкрытымі файламі"
 
 #: ../data/interfaces/parole-settings.ui.h:24
 msgid "Check and remove duplicate media entries"
@@ -141,18 +141,18 @@ msgstr "Пачаць прайграванне адкрытых файлаў"
 #: ../data/interfaces/parole-settings.ui.h:26
 #: ../data/interfaces/playlist.ui.h:15
 msgid "Remember playlist"
-msgstr "Запомніць плэйліст"
+msgstr "Запомніць спіс прайгравання"
 
 #: ../data/interfaces/parole-settings.ui.h:27
 msgid "<b>Playlist Settings</b>"
-msgstr "<b>Налады плэйлістоў</b>"
+msgstr "<b>Налады спісаў прайгравання</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:28
 #: ../data/interfaces/playlist.ui.h:1 ../data/interfaces/shortcuts.ui.h:13
 #: ../src/parole-medialist.c:797 ../src/parole-medialist.c:848
 #: ../src/parole-player.c:3237
 msgid "Playlist"
-msgstr "Плэйліст"
+msgstr "Спіс прайгравання"
 
 #: ../data/interfaces/parole-settings.ui.h:29
 msgid "Automatically show subtitles when playing movie file"
@@ -179,7 +179,7 @@ msgstr "Субцітры"
 #: ../src/parole-player.c:598 ../src/parole-player.c:1439
 #: ../src/parole-player.c:1800 ../src/plugins/mpris2/mpris2-provider.c:189
 msgid "Parole Media Player"
-msgstr "Медыяпрайгравальнік Parole"
+msgstr "Parole"
 
 #: ../data/interfaces/parole.ui.h:2
 msgid "_Media"
@@ -191,7 +191,7 @@ msgstr "_Адкрыць..."
 
 #: ../data/interfaces/parole.ui.h:4
 msgid "Open _Location..."
-msgstr "Адкрыць _месца…"
+msgstr "Адкрыць _размяшчэнне..."
 
 #: ../data/interfaces/parole.ui.h:5
 msgid "Open _Recent"
@@ -199,7 +199,7 @@ msgstr "Адкрыць _нядаўнія"
 
 #: ../data/interfaces/parole.ui.h:6
 msgid "_Save Playlist..."
-msgstr "_Захаваць плэйліст..."
+msgstr "_Захаваць спіс прайгравання..."
 
 #: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:105
 #: ../src/parole-disc.c:139
@@ -225,7 +225,7 @@ msgstr "_Выпадкова"
 
 #: ../data/interfaces/parole.ui.h:12
 msgid "Show Playlist"
-msgstr "Паказаць плэйліст"
+msgstr "Паказаць спіс прайгравання"
 
 #. Create dialog
 #: ../data/interfaces/parole.ui.h:13 ../src/parole-player.c:2850
@@ -246,7 +246,7 @@ msgstr "Меню _загалоўкаў"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "_Subpicture Menu"
-msgstr "Меню _ўкладзенага малюнка"
+msgstr "Меню _далучанага малюнка"
 
 #: ../data/interfaces/parole.ui.h:18
 msgid "_Audio Menu"
@@ -254,7 +254,7 @@ msgstr "Меню _аўдыё"
 
 #: ../data/interfaces/parole.ui.h:19
 msgid "A_ngle Menu"
-msgstr "Меню _вуглоў"
+msgstr "Меню _кутоў"
 
 #: ../data/interfaces/parole.ui.h:20
 msgid "_Chapters"
@@ -270,7 +270,7 @@ msgstr "_Гук"
 
 #: ../data/interfaces/parole.ui.h:23
 msgid "_Audio Track"
-msgstr "_Аўдыятрэк"
+msgstr "_Гукавая дарожка"
 
 #: ../data/interfaces/parole.ui.h:24 ../src/parole-player.c:809
 msgid "Empty"
@@ -335,7 +335,7 @@ msgstr "Абраць тэкст субцітраў..."
 
 #: ../data/interfaces/parole.ui.h:39
 msgid "_Tools"
-msgstr "_Прылады"
+msgstr "_Інструменты"
 
 #: ../data/interfaces/parole.ui.h:40
 msgid "P_lugins"
@@ -367,7 +367,7 @@ msgstr "_Змест"
 
 #: ../data/interfaces/parole.ui.h:47
 msgid "_About"
-msgstr "_Пра праграму"
+msgstr "_Звесткі"
 
 #: ../data/interfaces/parole.ui.h:48
 msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
@@ -400,11 +400,11 @@ msgstr "/"
 
 #: ../data/interfaces/playlist.ui.h:2
 msgid "Disc Playlist"
-msgstr "Дыскавы плэйліст"
+msgstr "Дыскавы спіс прайгравання"
 
 #: ../data/interfaces/playlist.ui.h:3
 msgid "Add to playlist..."
-msgstr "Дадаць у плэйліст..."
+msgstr "Дадаць у спіс прайгравання..."
 
 #: ../data/interfaces/playlist.ui.h:4
 msgid "Add"
@@ -420,7 +420,7 @@ msgstr "Выдаліць"
 
 #: ../data/interfaces/playlist.ui.h:7
 msgid "Clear playlist"
-msgstr "Ачысціць плэйліст"
+msgstr "Ачысціць спіс прайгравання"
 
 #: ../data/interfaces/playlist.ui.h:8
 msgid "Clear"
@@ -444,7 +444,7 @@ msgstr "Перамясціць ніжэй"
 
 #: ../data/interfaces/playlist.ui.h:13
 msgid "Replace playlist when opening files"
-msgstr "Замяняць плэйліст файламі, што адкрываюцца"
+msgstr "Замяняць спіс прайгравання файламі, што адкрываюцца"
 
 #: ../data/interfaces/playlist.ui.h:14
 msgid "Play opened files"
@@ -478,7 +478,7 @@ msgstr "Пра праграму"
 
 #: ../data/interfaces/save-playlist.ui.h:1
 msgid "Save Playlist as..."
-msgstr "Захаваць плэйліст як..."
+msgstr "Захаваць спіс прайгравання як..."
 
 #: ../data/interfaces/shortcuts.ui.h:2
 msgid "Open file"
@@ -494,7 +494,7 @@ msgstr "Выхад"
 
 #: ../data/interfaces/shortcuts.ui.h:5
 msgid "View"
-msgstr "Выгляд"
+msgstr "Агляд"
 
 #: ../data/interfaces/shortcuts.ui.h:6
 msgid "Toggle fullscreen"
@@ -526,7 +526,7 @@ msgstr "Сцішыць"
 
 #: ../data/interfaces/shortcuts.ui.h:14
 msgid "Toggle playlist"
-msgstr "Пераключыць плэйліст"
+msgstr "Пераключыць спіс прайгравання"
 
 #: ../data/interfaces/shortcuts.ui.h:15
 msgid "Select previous item"
@@ -551,11 +551,11 @@ msgstr "Прайграць/Прыпыніць"
 
 #: ../data/interfaces/shortcuts.ui.h:20 ../src/main.c:241
 msgid "Previous track"
-msgstr "Папярэдні трэк"
+msgstr "Папярэдняя кампазіцыя"
 
 #: ../data/interfaces/shortcuts.ui.h:21 ../src/main.c:239
 msgid "Next track"
-msgstr "Наступны трэк"
+msgstr "Наступная кампазіцыя"
 
 #: ../data/interfaces/shortcuts.ui.h:22
 msgid "Go back 10 seconds"
@@ -571,7 +571,7 @@ msgstr "Перайсці на 1 хвіліну назад"
 
 #: ../data/interfaces/shortcuts.ui.h:25
 msgid "Go forward 1 minute"
-msgstr "Перайсці на 1 хвілін уперад"
+msgstr "Перайсці на 1 хвіліну ўперад"
 
 #: ../data/interfaces/shortcuts.ui.h:26
 msgid "Go back 10 minutes"
@@ -588,12 +588,12 @@ msgstr "Прайграванне медыяфайлаў"
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:4
 #: ../src/parole-player.c:3383 ../src/plugins/notify/notify-provider.c:190
 msgid "Previous Track"
-msgstr "Папярэдні трэк"
+msgstr "Папярэдняя кампазіцыя"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:5
 #: ../src/parole-player.c:3401 ../src/plugins/notify/notify-provider.c:202
 msgid "Next Track"
-msgstr "Наступны трэк"
+msgstr "Наступная кампазіцыя"
 
 #: ../data/metainfo/parole.appdata.xml.in.h:1
 msgid ""
@@ -614,7 +614,7 @@ msgid ""
 "This release refreshes the playlist and dialog look and feel. Shuffling the "
 "playlist is more efficient and can be reversed. DVD support has also been "
 "improved and will no longer freeze when started."
-msgstr "У гэтым выпуску абноўлены выгляд спісаў прайгравання і дыялогаў. Змешванне кампазіцый у спісе стала больш эфектыўнай. Была палепшана падтрымка DVD."
+msgstr "У гэтым выпуску абноўлены выгляд спісаў прайгравання і дыялогаў. Змешванне кампазіцый у спісе стала больш эфектыўным. Была палепшана падтрымка DVD."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:4
 msgid ""
@@ -636,7 +636,7 @@ msgstr "У гэтым выпуску дададзена падтрымка аў�
 
 #: ../data/metainfo/parole.appdata.xml.in.h:8
 msgid "This is a minor translations-only release."
-msgstr "У гэтым прамежкавым выпуску абноўленыя лакалізацыі."
+msgstr "Гэта нязначны выпуск з абнаўленнем перакладаў."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:9
 msgid ""
@@ -693,7 +693,7 @@ msgid ""
 "playlists. Furthermore existing plugins have been improved and a new one has"
 " been added (MPRIS2). Most of the artwork has been updated for this release "
 "and we use the GStreamer1.0 framework now by default."
-msgstr "Ад гэтага выпуску праграма цалкам перайшла на GTK+3, спрошчана меню інтэрфейсу, палепшаныя плэйлісты. Палепшаныя існыя ўбудовы і дададзена новая - MPRIS2. Абноўлена большая частка аздаблення і здзейснены пераход на GStreamer1.0."
+msgstr "Ад гэтага выпуску праграма цалкам перайшла на GTK+3, спрошчана меню інтэрфейсу, палепшаныя спісы прайгравання. Палепшаны існыя ўбудовы і дададзеная новая - MPRIS2. Абноўлена большая частка аздаблення і здзейснены пераход на GStreamer1.0."
 
 #: ../src/common/parole-common.c:83
 msgid "Message"
@@ -706,7 +706,7 @@ msgstr "Памылка"
 #: ../src/gst/parole-gst.c:1102 ../src/parole-medialist.c:412
 #, c-format
 msgid "Track %i"
-msgstr "Трэк №%i"
+msgstr "Кампазіцыя №%i"
 
 #: ../src/gst/parole-gst.c:1105
 msgid "Audio CD"
@@ -734,7 +734,7 @@ msgstr "Усталяваць"
 
 #: ../src/gst/parole-gst.c:1346
 msgid "OK"
-msgstr "Добра"
+msgstr "ДОБРА"
 
 #: ../src/gst/parole-gst.c:1353
 #, c-format
@@ -758,7 +758,7 @@ msgstr "Працягнуць загрузку ці спыніць?"
 
 #: ../src/gst/parole-gst.c:1738
 msgid "Stop"
-msgstr "Спыніць"
+msgstr "Прыпыненне"
 
 #: ../src/gst/parole-gst.c:1739
 msgid "Continue"
@@ -776,12 +776,12 @@ msgstr "Медыяпрайгравальнік Parole немагчыма зап�
 #: ../src/gst/parole-gst.c:2013
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
-msgstr "Немагчыма загрузіць убудову \"%s\". Праверце ці ўсталяваныя ўсе неабходныя пакункі GStreamer."
+msgstr "Немагчыма загрузіць убудову \"%s\". Праверце, ці ўсталяваныя ўсе неабходныя пакункі GStreamer."
 
 #: ../src/gst/parole-gst.c:2578 ../src/gst/parole-gst.c:2582
 #, c-format
 msgid "Audio Track #%d"
-msgstr "Аўдыятрэк №%d"
+msgstr "Кампазіцыя №%d"
 
 #: ../src/gst/parole-gst.c:2618 ../src/gst/parole-gst.c:2622
 #, c-format
@@ -845,7 +845,7 @@ msgstr "Аднавіць гучнасць"
 
 #: ../src/main.c:251
 msgid "Add files to playlist"
-msgstr "Дадаць файлы ў плэйліст"
+msgstr "Дадаць файлы ў спіс прайгравання"
 
 #: ../src/main.c:253
 msgid "Print version information and exit"
@@ -887,7 +887,7 @@ msgstr "Усе падтрымліваемыя файлы"
 
 #: ../src/misc/parole-filters.c:217
 msgid "Playlist files"
-msgstr "Плэйлісты"
+msgstr "Спісы прайгравання"
 
 #: ../src/parole-about.c:69
 msgid "A modern simple media player for the Xfce Desktop Environment."
@@ -895,7 +895,7 @@ msgstr "Сучасны просты прайгравальнік для прац
 
 #: ../src/parole-about.c:75
 msgid "translator-credits"
-msgstr "Zmicer Turok zmicerturok@gmail.com"
+msgstr "Źmicier Turok <nashtlumach@gmail.com>"
 
 #: ../src/parole-about.c:78
 msgid "Visit Parole website"
@@ -918,19 +918,19 @@ msgstr "Усе файлы"
 #, c-format
 msgid "Playlist (%i item)"
 msgid_plural "Playlist (%i items)"
-msgstr[0] "Плэйліст (%i элемент)"
-msgstr[1] "Плэйліст (%i элементы)"
-msgstr[2] "Плэйліст (%i элементаў)"
-msgstr[3] "Плэйліст (%i элементаў)"
+msgstr[0] "Спіс прайгравання (%i элемент)"
+msgstr[1] "Спіс прайгравання (%i элементы)"
+msgstr[2] "Спіс прайгравання (%i элементаў)"
+msgstr[3] "Спіс прайгравання (%i элементаў)"
 
 #: ../src/parole-medialist.c:262 ../src/parole-medialist.c:1646
 #, c-format
 msgid "Playlist (%i chapter)"
 msgid_plural "Playlist (%i chapters)"
-msgstr[0] "Плэйліст (%i фрагмент)"
-msgstr[1] "Плэйліст (%i фрагменты)"
-msgstr[2] "Плэйліст (%i фрагментаў)"
-msgstr[3] "Плэйліст (%iфрагментаў)"
+msgstr[0] "Спіс прайгравання (%i фрагмент)"
+msgstr[1] "Спіс прайгравання (%i фрагменты)"
+msgstr[2] "Спіс прайгравання (%i фрагментаў)"
+msgstr[3] "Спіс прайгравання (%i фрагментаў)"
 
 #: ../src/parole-medialist.c:426 ../src/parole-player.c:720
 #, c-format
@@ -943,15 +943,15 @@ msgstr "Доступ забаронены"
 
 #: ../src/parole-medialist.c:688
 msgid "Error saving playlist file"
-msgstr "Не атрымалася захаваць плэйліст"
+msgstr "Не атрымалася захаваць спіс прайгравання"
 
 #: ../src/parole-medialist.c:698
 msgid "Unknown playlist format"
-msgstr "Невядомы фармат плэйліста"
+msgstr "Невядомы фармат спіса прайгравання"
 
 #: ../src/parole-medialist.c:699
 msgid "Please choose a supported playlist format"
-msgstr "Абярыце падтрымліваемы фармат плэйліста"
+msgstr "Абярыце фармат спіса прайгравання, які падтрымліваецца"
 
 #: ../src/parole-medialist.c:745 ../src/parole-plugins-manager.c:356
 msgid "Unknown"
@@ -961,7 +961,7 @@ msgstr "Невядома"
 #: ../src/parole-player.c:1176 ../src/parole-player.c:2853
 #: ../src/plugins/tray/tray-provider.c:319
 msgid "Cancel"
-msgstr "Скасавана"
+msgstr "Скасаваць"
 
 #: ../src/parole-medialist.c:839
 msgid "Save"
@@ -1025,7 +1025,7 @@ msgstr "Прайграць"
 
 #: ../src/parole-player.c:1283
 msgid "Pause"
-msgstr "Прыпыніць"
+msgstr "Паўза"
 
 #: ../src/parole-player.c:1724
 msgid "GStreamer backend error"
@@ -1038,7 +1038,7 @@ msgstr "Невядомая песня"
 #: ../src/parole-player.c:1816 ../src/parole-player.c:1822
 #: ../src/parole-player.c:1830
 msgid "on"
-msgstr "выключыць"
+msgstr "уключыць"
 
 #: ../src/parole-player.c:1830 ../src/plugins/notify/notify-provider.c:134
 msgid "Unknown Album"
@@ -1062,7 +1062,7 @@ msgstr "Поўнаэкранны рэжым"
 
 #: ../src/parole-player.c:1997
 msgid "Leave _Fullscreen"
-msgstr "Выйсці з _рэжыму \"на ўвесь экран\""
+msgstr "Выйсці з _поўнаэкраннага рэжыму"
 
 #: ../src/parole-player.c:1998
 msgid "Leave Fullscreen"
@@ -1081,17 +1081,17 @@ msgstr "_Прайграць"
 #. * Previous item in playlist.
 #: ../src/parole-player.c:2111
 msgid "_Previous"
-msgstr "_Папярэдняя"
+msgstr "_Назад"
 
 #. * Next item in playlist.
 #: ../src/parole-player.c:2122
 msgid "_Next"
-msgstr "_Наступная"
+msgstr "Нас_тупная"
 
 #. * Un/Full screen
 #: ../src/parole-player.c:2133
 msgid "_Leave Fullscreen"
-msgstr "Выйсці з _поўнаэкраннага рэжыму"
+msgstr "_Выйсці з поўнаэкраннага рэжыму"
 
 #. * Un/Hide menubar
 #: ../src/parole-player.c:2148
@@ -1126,7 +1126,7 @@ msgstr "_Ачысціць гісторыю..."
 
 #: ../src/parole-player.c:3586
 msgid "Audio Track:"
-msgstr "Аўдыятрэк:"
+msgstr "Гукавая дарожка:"
 
 #: ../src/parole-player.c:3605
 msgid "Subtitles:"
@@ -1313,7 +1313,7 @@ msgstr "Апавяшчэнне"
 
 #: ../src/plugins/notify/notify.desktop.in.h:2
 msgid "Show notifications for currently playing tracks"
-msgstr "Паказваць апавяшчэнні для бягучых трэкаў"
+msgstr "Паказваць апавяшчэнні для бягучых кампазіцый"
 
 #: ../src/plugins/tray/system-tray.desktop.in.h:1
 msgid "Tray icon"
@@ -1326,12 +1326,12 @@ msgstr "Паказваць значок на прасторы апавяшчэн
 #. * Previous Track
 #: ../src/plugins/tray/tray-provider.c:128
 msgid "P_revious Track"
-msgstr "_Папярэдні трэк"
+msgstr "_Папярэдняя кампазіцыя"
 
 #. * Next Track
 #: ../src/plugins/tray/tray-provider.c:137
 msgid "_Next Track"
-msgstr "_Наступны трэк"
+msgstr "_Наступная кампазіцыя"
 
 #. * Open
 #: ../src/plugins/tray/tray-provider.c:153
@@ -1344,7 +1344,7 @@ msgstr "Убудова адлюстравання значка на прасто
 
 #: ../src/plugins/tray/tray-provider.c:264
 msgid "Always minimize to tray when window is closed"
-msgstr "Заўсёды згортваць на прастору апавяшчэнняў калі акно закрыта"
+msgstr "Заўсёды згортваць на прастору апавяшчэнняў, калі акно закрыта"
 
 #: ../src/plugins/tray/tray-provider.c:307
 msgid "Are you sure you want to quit?"
