@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-27 00:47+0100\n"
-"PO-Revision-Date: 2020-12-26 23:47+0000\n"
+"PO-Revision-Date: 2021-07-03 10:09+0000\n"
 "Last-Translator: Theppitak Karoonboonyanan <theppitak@gmail.com>\n"
 "Language-Team: Thai (http://www.transifex.com/xfce/xfce-apps/language/th/)\n"
 "MIME-Version: 1.0\n"
@@ -241,7 +241,7 @@ msgstr "เมนู_ชื่อเรื่อง"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "_Subpicture Menu"
-msgstr ""
+msgstr "เมนู_ใต้ภาพ"
 
 #: ../data/interfaces/parole.ui.h:18
 msgid "_Audio Menu"
@@ -609,25 +609,25 @@ msgid ""
 "This release refreshes the playlist and dialog look and feel. Shuffling the "
 "playlist is more efficient and can be reversed. DVD support has also been "
 "improved and will no longer freeze when started."
-msgstr ""
+msgstr "รุ่นนี้มีการปรับปรุงหน้าตาและการใช้งานกล่องโต้ตอบผังเล่น การสุ่มลำดับผังเล่นมีประสิทธิภาพสูงขึ้นและสามารถย้อนกลับคืนได้ การรองรับดีวีดีก็มีการปรับปรุงและจะไม่ค้างขณะเปิดแล้ว"
 
 #: ../data/metainfo/parole.appdata.xml.in.h:4
 msgid ""
 "This release improves thumbnail management and storage and fixes volume "
 "hotkeys when viewing fullscreen content."
-msgstr ""
+msgstr "รุ่นนี้มีการปรับปรุงการจัดการและการจัดเก็บภาพย่อ และแก้ปัญหาปุ่มลัดปรับเสียงขณะเล่นแบบเต็มจอ"
 
 #: ../data/metainfo/parole.appdata.xml.in.h:5
 msgid "This release inhibits power management during video playback."
-msgstr ""
+msgstr "รุ่นนี้มีการระงับการจัดการพลังงานขณะเล่นวีดิทัศน์"
 
 #: ../data/metainfo/parole.appdata.xml.in.h:6
 msgid "This is a minor bugfix release."
-msgstr ""
+msgstr "นี่เป็นรุ่นแก้บั๊กเล็กๆ น้อยๆ"
 
 #: ../data/metainfo/parole.appdata.xml.in.h:7
 msgid "This release adds support for automatic codec installation."
-msgstr ""
+msgstr "รุ่นนี้เพิ่มการรองรับการติดตั้งตัวอ่าน-ลงรหัสแบบอัตโนมัติ"
 
 #: ../data/metainfo/parole.appdata.xml.in.h:8
 msgid "This is a minor translations-only release."
@@ -886,7 +886,7 @@ msgstr "แฟ้มผังเล่น"
 
 #: ../src/parole-about.c:69
 msgid "A modern simple media player for the Xfce Desktop Environment."
-msgstr ""
+msgstr "โปรแกรมเล่นสื่อที่เรียบหรูสำหรับสภาพแวดล้อมเดสก์ท็อป Xfce"
 
 #: ../src/parole-about.c:75
 msgid "translator-credits"
@@ -959,22 +959,22 @@ msgstr "บันทึก"
 #: ../src/parole-medialist.c:860
 #, c-format
 msgid "M3U Playlist (%s)"
-msgstr ""
+msgstr "ผังเล่น M3U (%s)"
 
 #: ../src/parole-medialist.c:870
 #, c-format
 msgid "PLS Playlist (%s)"
-msgstr ""
+msgstr "ผังเล่น PLS (%s)"
 
 #: ../src/parole-medialist.c:880
 #, c-format
 msgid "Advanced Stream Redirector (%s)"
-msgstr ""
+msgstr "Advanced Stream Redirector (%s)"
 
 #: ../src/parole-medialist.c:890
 #, c-format
 msgid "Shareable Playlist (%s)"
-msgstr ""
+msgstr "Shareable Playlist (%s)"
 
 #. Clear
 #: ../src/parole-medialist.c:1280
