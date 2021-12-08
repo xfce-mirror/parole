@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-27 00:47+0100\n"
-"PO-Revision-Date: 2021-09-04 23:22+0000\n"
+"PO-Revision-Date: 2021-12-08 22:19+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/xfce/xfce-apps/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -125,7 +125,7 @@ msgstr "Visualização"
 
 #: ../data/interfaces/parole-settings.ui.h:23
 msgid "Always replace playlist with opened files"
-msgstr "Substituir sempre lista de reprodução pelos ficheiros abertos"
+msgstr "Substituir sempre a lista de reprodução pelos ficheiros abertos"
 
 #: ../data/interfaces/parole-settings.ui.h:24
 msgid "Check and remove duplicate media entries"
@@ -180,7 +180,7 @@ msgstr "Reprodutor multimédia Parole"
 
 #: ../data/interfaces/parole.ui.h:2
 msgid "_Media"
-msgstr "_Multimédia"
+msgstr "_Ficheiro"
 
 #: ../data/interfaces/parole.ui.h:3
 msgid "_Open..."
@@ -188,7 +188,7 @@ msgstr "_Abrir..."
 
 #: ../data/interfaces/parole.ui.h:4
 msgid "Open _Location..."
-msgstr "Abrir _Localização..."
+msgstr "Abrir _localização..."
 
 #: ../data/interfaces/parole.ui.h:5
 msgid "Open _Recent"
@@ -417,7 +417,7 @@ msgstr "Remover"
 
 #: ../data/interfaces/playlist.ui.h:7
 msgid "Clear playlist"
-msgstr "Limpar lista de reprodução"
+msgstr "Limpar a lista de reprodução"
 
 #: ../data/interfaces/playlist.ui.h:8
 msgid "Clear"
@@ -818,7 +818,7 @@ msgstr "Iniciar no modo incorporado"
 
 #: ../src/main.c:235
 msgid "Start in fullscreen mode"
-msgstr "Iniciar em ecrã completo"
+msgstr "Iniciar em ecrã inteiro"
 
 #: ../src/main.c:237
 msgid "Play or pause if already playing"
@@ -1051,15 +1051,15 @@ msgstr "A processar"
 
 #: ../src/parole-player.c:1989 ../src/parole-player.c:3418
 msgid "Fullscreen"
-msgstr "Ecrã completo"
+msgstr "Ecrã inteiro"
 
 #: ../src/parole-player.c:1997
 msgid "Leave _Fullscreen"
-msgstr "Sair de _ecrã completo"
+msgstr "Sair de _ecrã inteiro"
 
 #: ../src/parole-player.c:1998
 msgid "Leave Fullscreen"
-msgstr "Sair de ecrã completo"
+msgstr "Sair de ecrã inteiro"
 
 #. Play menu item
 #. * Play pause
