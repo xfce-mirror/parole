@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Anders Jonsson <transifex@norsjovallen.se>, 2021
 # Arve Eriksson <031299870@telia.com>, 2020
 # Daniel Nylander <po@danielnylander.se>, 2009
 # Luna Jernberg <bittin@cafe8bitar.se>, 2020-2021
@@ -14,8 +15,8 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-27 00:47+0100\n"
-"PO-Revision-Date: 2021-05-03 06:15+0000\n"
-"Last-Translator: Luna Jernberg <bittin@cafe8bitar.se>\n"
+"PO-Revision-Date: 2021-12-24 00:33+0000\n"
+"Last-Translator: Anders Jonsson <transifex@norsjovallen.se>\n"
 "Language-Team: Swedish (http://www.transifex.com/xfce/xfce-apps/language/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -244,7 +245,7 @@ msgstr "_Titelmeny"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "_Subpicture Menu"
-msgstr "_Underbilder meny"
+msgstr "_Underbildsmeny"
 
 #: ../data/interfaces/parole.ui.h:18
 msgid "_Audio Menu"
@@ -500,7 +501,7 @@ msgstr "Växla fullskärmsläge"
 
 #: ../data/interfaces/shortcuts.ui.h:7
 msgid "Exit fullscreen"
-msgstr "Avluta Fullskärmsläge"
+msgstr "Avsluta fullskärmsläge"
 
 #: ../data/interfaces/shortcuts.ui.h:8
 msgid "Toggle menubar"
@@ -540,7 +541,7 @@ msgstr "Ta bort markerat objekt"
 
 #: ../data/interfaces/shortcuts.ui.h:18
 msgid "Playback"
-msgstr "Uppspeling"
+msgstr "Uppspelning"
 
 #: ../data/interfaces/shortcuts.ui.h:19
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:3
@@ -598,7 +599,7 @@ msgid ""
 "Parole is a modern simple media player based on the GStreamer framework and "
 "written to fit well in the Xfce desktop. It is designed with simplicity, "
 "speed and resource usage in mind."
-msgstr "Parole är en modern enkel mediaspelare baserad på GStreamer ramverket och skriven för att passa bra in i Xfce-skrivbordet. Den är utformad med enkelhet, snabbhet och resursanvändning i åtanke."
+msgstr "Parole är en modern enkel mediaspelare baserad på GStreamer-ramverket och skriven för att passa bra in i Xfce-skrivbordet. Den är utformad med enkelhet, snabbhet och resursanvändning i åtanke."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:2
 msgid ""
@@ -612,7 +613,7 @@ msgid ""
 "This release refreshes the playlist and dialog look and feel. Shuffling the "
 "playlist is more efficient and can be reversed. DVD support has also been "
 "improved and will no longer freeze when started."
-msgstr "Denna release uppdaterar spellistan och dialogers utseende. Blandning av spellistan är effektivare och kan vändas. DVD-stöd har också förbättrats och kommer inte längre att frysa när det startas. "
+msgstr "Denna version uppdaterar spellistan och dialogers utseende. Blandning av spellistan är effektivare och kan vändas. DVD-stöd har också förbättrats och kommer inte längre att frysa när det startas. "
 
 #: ../data/metainfo/parole.appdata.xml.in.h:4
 msgid ""
@@ -622,15 +623,15 @@ msgstr "Denna version förbättrar tumnagelhantering och lagring och fixar snabb
 
 #: ../data/metainfo/parole.appdata.xml.in.h:5
 msgid "This release inhibits power management during video playback."
-msgstr "Denna release förhindrar strömhantering under videouppspelning."
+msgstr "Denna version förhindrar strömhantering under videouppspelning."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:6
 msgid "This is a minor bugfix release."
-msgstr "Detta är en mindre bugfix-release."
+msgstr "Detta är en mindre bugfix-version."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:7
 msgid "This release adds support for automatic codec installation."
-msgstr "Denna release lägger till stöd för automatisk kodek-installation."
+msgstr "Denna version lägger till stöd för automatisk kodek-installation."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:8
 msgid "This is a minor translations-only release."
@@ -964,12 +965,12 @@ msgstr "Spara"
 #: ../src/parole-medialist.c:860
 #, c-format
 msgid "M3U Playlist (%s)"
-msgstr "M3U spellista (%s)"
+msgstr "M3U-spellista (%s)"
 
 #: ../src/parole-medialist.c:870
 #, c-format
 msgid "PLS Playlist (%s)"
-msgstr "PLS spellista (%s)"
+msgstr "PLS-spellista (%s)"
 
 #: ../src/parole-medialist.c:880
 #, c-format
@@ -997,7 +998,7 @@ msgstr "Öppna"
 
 #: ../src/parole-player.c:1002
 msgid "Subtitle Files"
-msgstr "Untertextfiler"
+msgstr "Undertextfiler"
 
 #: ../src/parole-player.c:1172 ../src/parole-player.c:1180
 msgid "Clear Recent Items"
@@ -1167,7 +1168,7 @@ msgstr "Keltisk"
 #: ../src/parole-subtitle-encoding.c:187 ../src/parole-subtitle-encoding.c:189
 #: ../src/parole-subtitle-encoding.c:191 ../src/parole-subtitle-encoding.c:193
 msgid "Central European"
-msgstr "Central europeisk"
+msgstr "Centraleuropeisk"
 
 #: ../src/parole-subtitle-encoding.c:196 ../src/parole-subtitle-encoding.c:198
 #: ../src/parole-subtitle-encoding.c:200 ../src/parole-subtitle-encoding.c:202
