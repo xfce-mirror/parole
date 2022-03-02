@@ -925,15 +925,17 @@ parole_gst_tag_list_get_cover_external(ParoleGst *gst) {
         else if ( g_strcmp0(lower, "albumartsmall.jpg") == 0 )
             cover = g_strdup(listing);
 
+        g_free(lower);
+
         if (cover) {
             cover_filename = g_build_filename(directory, cover, NULL);
+            g_free(cover);
             break;
         }
     }
     g_free(uri);
     g_free(filename);
     g_free(directory);
-    g_free(lower);
     g_dir_close(file_dir);
 
     if (!cover_filename)
