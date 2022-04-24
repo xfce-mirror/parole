@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# abuyop <abuyop@gmail.com>, 2014-2015,2017-2019
+# abuyop <abuyop@gmail.com>, 2014-2015,2017-2019,2022
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-27 00:47+0100\n"
-"PO-Revision-Date: 2020-12-26 23:47+0000\n"
-"Last-Translator: abuyop <abuyop@gmail.com>\n"
+"PO-Revision-Date: 2013-07-03 18:28+0000\n"
+"Last-Translator: abuyop <abuyop@gmail.com>, 2014-2015,2017-2019,2022\n"
 "Language-Team: Malay (http://www.transifex.com/xfce/xfce-apps/language/ms/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -239,7 +239,7 @@ msgstr "Menu _Tajuk"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "_Subpicture Menu"
-msgstr ""
+msgstr "Menu _Subgambar"
 
 #: ../data/interfaces/parole.ui.h:18
 msgid "_Audio Menu"
@@ -607,25 +607,25 @@ msgid ""
 "This release refreshes the playlist and dialog look and feel. Shuffling the "
 "playlist is more efficient and can be reversed. DVD support has also been "
 "improved and will no longer freeze when started."
-msgstr ""
+msgstr "Keluaran ini menyegar semula penampilan senarai main dan dialog. Pengocokan senarai main lebih cekap dan boleh dikembalikan. Sokongan DVD juga telah ditambah baik dan tidak lagi menjadi kaku bila dimulakan."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:4
 msgid ""
 "This release improves thumbnail management and storage and fixes volume "
 "hotkeys when viewing fullscreen content."
-msgstr ""
+msgstr "Keluaran ini menambah baik pengurusan dan storan imej kenit serta membaiki kekunci panas volum ketika melihat kandungan berskrin penuh."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:5
 msgid "This release inhibits power management during video playback."
-msgstr ""
+msgstr "Keluaran ini menghalang pengurusan kuasa ketika main balik video."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:6
 msgid "This is a minor bugfix release."
-msgstr ""
+msgstr "Ini adalah keluaran pembaikan pepijat kecil-kecilan sahaja."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:7
 msgid "This release adds support for automatic codec installation."
-msgstr ""
+msgstr "Keluaran ini menambah sokongan untuk pemasangan kodeks secara automatik."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:8
 msgid "This is a minor translations-only release."
@@ -884,7 +884,7 @@ msgstr "Fail senarai main"
 
 #: ../src/parole-about.c:69
 msgid "A modern simple media player for the Xfce Desktop Environment."
-msgstr ""
+msgstr "Sebuah pemain media ringkas untuk Persekitaran Atas Meja Xfce."
 
 #: ../src/parole-about.c:75
 msgid "translator-credits"
@@ -957,22 +957,22 @@ msgstr "Simpan"
 #: ../src/parole-medialist.c:860
 #, c-format
 msgid "M3U Playlist (%s)"
-msgstr ""
+msgstr "Senarai Main M3U (%s)"
 
 #: ../src/parole-medialist.c:870
 #, c-format
 msgid "PLS Playlist (%s)"
-msgstr ""
+msgstr "Senarai Main PLS (%s)"
 
 #: ../src/parole-medialist.c:880
 #, c-format
 msgid "Advanced Stream Redirector (%s)"
-msgstr ""
+msgstr "Arah Semula Strim Lanjutan (%s)"
 
 #: ../src/parole-medialist.c:890
 #, c-format
 msgid "Shareable Playlist (%s)"
-msgstr ""
+msgstr "Senarai  Main Boleh Kongsi (%s)"
 
 #. Clear
 #: ../src/parole-medialist.c:1280
