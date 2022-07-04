@@ -4,14 +4,14 @@
 # 
 # Translators:
 # 박정규(Jung-Kyu Park) <bagjunggyu@gmail.com>, 2017
-# Seong-ho Cho <darkcircle.0426@gmail.com>, 2013-2015,2018-2019
+# Seong-ho Cho <darkcircle.0426@gmail.com>, 2013-2015,2018-2019,2022
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-27 00:47+0100\n"
-"PO-Revision-Date: 2020-12-26 23:47+0000\n"
-"Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
+"PO-Revision-Date: 2013-07-03 18:28+0000\n"
+"Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>, 2013-2015,2018-2019,2022\n"
 "Language-Team: Korean (http://www.transifex.com/xfce/xfce-apps/language/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -240,7 +240,7 @@ msgstr "제목 메뉴(_T)"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "_Subpicture Menu"
-msgstr ""
+msgstr "삽화 메뉴(_S)"
 
 #: ../data/interfaces/parole.ui.h:18
 msgid "_Audio Menu"
@@ -608,25 +608,25 @@ msgid ""
 "This release refreshes the playlist and dialog look and feel. Shuffling the "
 "playlist is more efficient and can be reversed. DVD support has also been "
 "improved and will no longer freeze when started."
-msgstr ""
+msgstr "이번 출시작에서는 재생 목록과 대화 상자 모양새를 새로 바꾸었습니다. 재생 목록 뒤섞기를 더 효율적으로 동작하게 만들었으며, 목록 순서를 뒤집을 수도 있습니다. DVD 지원 기능 또한 개선했으며, 프로그램을 시작할 때 더이상 멈추지 않습니다."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:4
 msgid ""
 "This release improves thumbnail management and storage and fixes volume "
 "hotkeys when viewing fullscreen content."
-msgstr ""
+msgstr "이번 출시작에서는 미리 보기 그림 관리와 저장소 기능을 개선했으며, 내용을 전체 화면으로 볼 때 나타나는 음량 단축키 문제를 수정했습니다."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:5
 msgid "This release inhibits power management during video playback."
-msgstr ""
+msgstr "이번 출시작에서는 영상 재생시 전원 관리 기능을 개선했습니다."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:6
 msgid "This is a minor bugfix release."
-msgstr ""
+msgstr "이 버전은 부차적인 버그 수정판입니다."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:7
 msgid "This release adds support for automatic codec installation."
-msgstr ""
+msgstr "이번 출시작에서는 자동 코덱 설치 기능을 추가했습니다."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:8
 msgid "This is a minor translations-only release."
@@ -885,7 +885,7 @@ msgstr "재생 목록 파일"
 
 #: ../src/parole-about.c:69
 msgid "A modern simple media player for the Xfce Desktop Environment."
-msgstr ""
+msgstr "XFCE 데스크톱 환경용 최신 단순 미디어 재생 프로그램."
 
 #: ../src/parole-about.c:75
 msgid "translator-credits"
@@ -958,22 +958,22 @@ msgstr "저장"
 #: ../src/parole-medialist.c:860
 #, c-format
 msgid "M3U Playlist (%s)"
-msgstr ""
+msgstr "M3U 재생 목록 (%s)"
 
 #: ../src/parole-medialist.c:870
 #, c-format
 msgid "PLS Playlist (%s)"
-msgstr ""
+msgstr "PLS 재생 목록 (%s)"
 
 #: ../src/parole-medialist.c:880
 #, c-format
 msgid "Advanced Stream Redirector (%s)"
-msgstr ""
+msgstr "고급 스트림 리다이렉터 (%s)"
 
 #: ../src/parole-medialist.c:890
 #, c-format
 msgid "Shareable Playlist (%s)"
-msgstr ""
+msgstr "공유 재생 목록(%s)"
 
 #. Clear
 #: ../src/parole-medialist.c:1280
