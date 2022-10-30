@@ -17,5 +17,4 @@ EOF
   exit 1
 }
 
-mkdir m4
 xdt-autogen $@
