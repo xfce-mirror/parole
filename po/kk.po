@@ -60,7 +60,7 @@ msgstr "<b>Экран қорғаушысы</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:8
 msgid "Show visual effects when an audio file is played"
-msgstr ""
+msgstr "Аудио файл ойнатылған кезде визуалды эффекттерді көрсету"
 
 #: ../data/interfaces/parole-settings.ui.h:9
 msgid "Visualization type:"
@@ -68,7 +68,7 @@ msgstr "Визуализация түрі:"
 
 #: ../data/interfaces/parole-settings.ui.h:10
 msgid "<b>Audio Visualization</b>"
-msgstr ""
+msgstr "<b>Аудио визуализациясы</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:11
 msgid "Enable keyboard multimedia keys"
@@ -389,7 +389,7 @@ msgstr "Буферлеу (0%)"
 
 #: ../data/interfaces/parole.ui.h:54
 msgid "/"
-msgstr ""
+msgstr "/"
 
 #: ../data/interfaces/playlist.ui.h:2
 msgid "Disc Playlist"
@@ -397,7 +397,7 @@ msgstr "Дисктің ойнату тізімі"
 
 #: ../data/interfaces/playlist.ui.h:3
 msgid "Add to playlist..."
-msgstr ""
+msgstr "Ойнату тізіміне қосу..."
 
 #: ../data/interfaces/playlist.ui.h:4
 msgid "Add"
@@ -471,15 +471,15 @@ msgstr "Осы туралы"
 
 #: ../data/interfaces/save-playlist.ui.h:1
 msgid "Save Playlist as..."
-msgstr ""
+msgstr "Ойнату тізімін қалайша сақтау…"
 
 #: ../data/interfaces/shortcuts.ui.h:2
 msgid "Open file"
-msgstr ""
+msgstr "Файлды ашу"
 
 #: ../data/interfaces/shortcuts.ui.h:3
 msgid "Open location"
-msgstr ""
+msgstr "Орналасуды ашу"
 
 #: ../data/interfaces/shortcuts.ui.h:4 ../src/plugins/tray/tray-provider.c:325
 msgid "Quit"
@@ -491,27 +491,27 @@ msgstr "Түрі"
 
 #: ../data/interfaces/shortcuts.ui.h:6
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "Толық экран режиміне өту/одан шығу"
 
 #: ../data/interfaces/shortcuts.ui.h:7
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "Толық экраннан шығу"
 
 #: ../data/interfaces/shortcuts.ui.h:8
 msgid "Toggle menubar"
-msgstr ""
+msgstr "Мәзір жолағын көрсету/жасыру"
 
 #: ../data/interfaces/shortcuts.ui.h:9
 msgid "Volume"
-msgstr ""
+msgstr "Дыбыс деңгейі"
 
 #: ../data/interfaces/shortcuts.ui.h:10
 msgid "Increase volume"
-msgstr ""
+msgstr "Дыбысын көтеру"
 
 #: ../data/interfaces/shortcuts.ui.h:11
 msgid "Decrease volume"
-msgstr ""
+msgstr "Дыбысын азайту"
 
 #: ../data/interfaces/shortcuts.ui.h:12 ../src/parole-player.c:2401
 msgid "Mute"
@@ -519,19 +519,19 @@ msgstr "Дыбысын басу"
 
 #: ../data/interfaces/shortcuts.ui.h:14
 msgid "Toggle playlist"
-msgstr ""
+msgstr "Ойнату тізімін іске қосу/сөндіру"
 
 #: ../data/interfaces/shortcuts.ui.h:15
 msgid "Select previous item"
-msgstr ""
+msgstr "Алдыңғы нәрсені таңдау"
 
 #: ../data/interfaces/shortcuts.ui.h:16
 msgid "Select next item"
-msgstr ""
+msgstr "Келесі нәрсені таңдау"
 
 #: ../data/interfaces/shortcuts.ui.h:17
 msgid "Remove selected item"
-msgstr ""
+msgstr "Таңдалған нәрсені өшіру"
 
 #: ../data/interfaces/shortcuts.ui.h:18
 msgid "Playback"
@@ -1106,7 +1106,7 @@ msgstr ""
 
 #: ../src/parole-player.c:2854
 msgid "Go"
-msgstr ""
+msgstr "Өту"
 
 #. Clear Recent Menu Item
 #: ../src/parole-player.c:3275
