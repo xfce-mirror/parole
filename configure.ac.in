@@ -88,7 +88,7 @@ XDT_I18N([@LINGUAS@])
 #             Check for required packages               #
 # ===================================================== #
 m4_define([gtk_minimum_version], [3.20.0])
-m4_define([glib_minimum_version], [2.32.0])
+m4_define([glib_minimum_version], [2.38.0])
 m4_define([clutter_minimum_version], [1.16.4])
 m4_define([cluttergtk_minimum_version], [1.4.4])
 m4_define([clutter_gtk_blacklist_version], [3.22.0])
