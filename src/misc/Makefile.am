@@ -5,6 +5,7 @@ AM_CPPFLAGS =                              	\
         -I$(top_srcdir)                 	\
 	-I$(top_srcdir)/src                 	\
         -DLOCALEDIR=\"$(localedir)\"		\
+	-DPIXMAPS_DIR=\"$(datadir)/parole/pixmaps\" \
 	-DPAROLE_COMPILATION
 
 INST_HFILES =					\

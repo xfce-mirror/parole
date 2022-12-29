@@ -19,6 +19,7 @@ AM_CPPFLAGS =					\
 	-DG_LOG_DOMAIN=\"parole\"		\
 	-DPAROLE_PLUGINS_DIR=\"$(libdir)/parole-$(PAROLE_VERSION_API)\"\
 	-DPAROLE_PLUGINS_DATA_DIR=\"$(datadir)/parole/parole-plugins-$(PAROLE_VERSION_API)\"\
+	-DPIXMAPS_DIR=\"$(datadir)/parole/pixmaps\" \
 	-DPAROLE_COMPILATION			\
 	$(GTHREAD_CFLAGS)                       \
 	$(GIO_CFLAGS)				\

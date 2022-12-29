@@ -3,6 +3,8 @@ pixmaps =					\
 	replay.png				\
 	no-cover.png
 
+pixmapsdir = $(datadir)/parole/pixmaps
+
 pixmaps_DATA =					\
 	$(pixmaps)
 

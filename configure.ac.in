@@ -136,20 +136,6 @@ GST_LIBS="$GST_LIBS -lgstbase-$GST_API_VERSION -lgstvideo-$GST_API_VERSION -lgst
 
 XDT_CHECK_LIBX11()
 
-# Taken from Gnome system tools
-# ===================================================== #
-#                    Pixmaps files                      #
-# ===================================================== #
-if test "x${prefix}" = "xNONE"; then
-  AC_DEFINE_UNQUOTED(PIXMAPS_DIR, "${ac_default_prefix}/${DATADIRNAME}/${PACKAGE}/pixmaps", [pixmaps directory])
-  pixmapsdir="${ac_default_prefix}/${DATADIRNAME}/${PACKAGE}/pixmaps"
-else
-  AC_DEFINE_UNQUOTED(PIXMAPS_DIR, "${prefix}/${DATADIRNAME}/${PACKAGE}/pixmaps", [pixmaps directory])
-  pixmapsdir="${prefix}/${DATADIRNAME}/${PACKAGE}/pixmaps"
-fi
-
-AC_SUBST(pixmapsdir)
-
 # ===================================================== #
 #                  Check XF86keysysm                    #
 # ===================================================== #
@@ -284,7 +270,6 @@ echo "
         Installation:
         =============
         prefix:                         $prefix
-        pixmapsdir:                     $pixmapsdir
         Debug:                          $enable_debug
         Building plugin api docs:       ${enable_gtk_doc}
         GStreamer API version:          ${gstreamer_api_version}
