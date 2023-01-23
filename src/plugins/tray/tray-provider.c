@@ -318,13 +318,13 @@ delete_event_cb(GtkWidget *widget, GdkEvent *ev, TrayProvider *tray) {
     button = gtk_dialog_add_button(GTK_DIALOG(dialog),
                                    _("Cancel"),
                                    GTK_RESPONSE_CANCEL);
-    img = gtk_image_new_from_icon_name("gtk-cancel", GTK_ICON_SIZE_BUTTON);
+    img = gtk_image_new_from_icon_name("process-stop", GTK_ICON_SIZE_BUTTON);
     gtk_button_set_image(GTK_BUTTON(button), img);
 
     button = gtk_dialog_add_button(GTK_DIALOG(dialog),
                                    _("Quit"),
                                    GTK_RESPONSE_CLOSE);
-    img = gtk_image_new_from_icon_name("gtk-quit", GTK_ICON_SIZE_BUTTON);
+    img = gtk_image_new_from_icon_name("application-exit", GTK_ICON_SIZE_BUTTON);
     gtk_button_set_image(GTK_BUTTON(button), img);
 
     gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_OK);

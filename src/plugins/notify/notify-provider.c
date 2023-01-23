@@ -159,7 +159,7 @@ notify_playing(NotifyProvider *notify, const ParoleStream *stream) {
 
     if (media_type == PAROLE_MEDIA_TYPE_CDDA)
         pix = gtk_icon_theme_load_icon(gtk_icon_theme_get_default(),
-                                        "media-cdrom-audio",
+                                        "media-optical",
                                         48,
                                         GTK_ICON_LOOKUP_USE_BUILTIN,
                                         NULL);
