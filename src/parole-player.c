@@ -3609,7 +3609,7 @@ parole_player_init(ParolePlayer *player) {
 
     // Add a close button to the Infobar
     infobar_close = gtk_button_new_with_label(_("Close"));
-    close_icon = gtk_image_new_from_icon_name("gtk-close", GTK_ICON_SIZE_BUTTON);
+    close_icon = gtk_image_new_from_icon_name("window-close-symbolic", GTK_ICON_SIZE_BUTTON);
     gtk_button_set_image(GTK_BUTTON(infobar_close), close_icon);
     g_signal_connect(infobar_close, "clicked",
               G_CALLBACK(on_infobar_close_clicked), player);
