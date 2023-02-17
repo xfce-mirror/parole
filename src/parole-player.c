@@ -374,7 +374,7 @@ struct ParolePlayerPrivate {
     GtkFileFilter      *video_filter;
     GtkRecentManager   *recent;
 
-    gdouble             last_volume;
+    gint                last_volume;
 
     GtkWidget          *window;
     GtkWidget          *playlist_nt;
@@ -2366,14 +2366,18 @@ parole_player_volume_scroll_event_cb(GtkWidget *widget, GdkEventScroll *ev, Paro
 
 void
 parole_player_volume_value_changed_cb(GtkScaleButton *widget, gdouble value, ParolePlayer *player) {
+    gint volume = (gint)(value * 100);
+
     parole_player_change_volume(player, value);
 
-    /* Do not update the value unless it has changed! */
-    if ((int)(value*100) != (int)(player->priv->last_volume*100)) {
-        player->priv->last_volume = value;
+    /* Do not update the value unless it has changed! Since we use integer truncation
+     * everywhere in the code, we are only accurate to within one unit. A higher precision
+     * would require the use of rounding. */
+    if (ABS(volume - player->priv->last_volume) > 1) {
+        player->priv->last_volume = volume;
         if ( value > 0.0 )
             g_object_set(G_OBJECT(player->priv->conf),
-                          "volume", (gint)(value * 100),
+                          "volume", volume,
                           NULL);
     }
 }
