@@ -62,7 +62,8 @@ void parole_about(GtkWindow *parent) {
     static const gchar *copyrights =
     "Copyright \302\251 2009-2011 Ali Abdallah\n"
     "Copyright \302\251 2012-2017 Simon Steinbeiss\n"
-    "Copyright \302\251 2012-2020 Sean Davis";
+    "Copyright \302\251 2012-2020 Sean Davis\n"
+    "Copyright \302\251 2021-2023 The Xfce development team";
 
     gtk_show_about_dialog(parent,
         "authors", authors,
