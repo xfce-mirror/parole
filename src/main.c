@@ -61,7 +61,8 @@ show_version(void) {
              "Part of the Xfce Goodies Project\n"
              "https://goodies.xfce.org\n\n"
              "Licensed under the GNU GPL.\n\n"
-             "Please report bugs to <https://bugzilla.xfce.org/>.\n\n"), VERSION);
+             "Please report bugs to <%s>.\n\n"),
+             VERSION, PACKAGE_BUGREPORT);
     exit(EXIT_SUCCESS);
 }
 

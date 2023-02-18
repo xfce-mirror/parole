@@ -8,7 +8,7 @@ m4_define([parole_version_build],     [@REVISION@])
 m4_define([parole_version_tag],       [git])
 m4_define([parole_version], [parole_version_major().parole_version_minor().parole_version_micro()ifelse(parole_version_tag(), [git], [parole_version_tag().parole_version_build()], [parole_version_tag()])])
 
-AC_INIT([parole], [parole_version], [https://docs.xfce.org/apps/parole/bugs])
+AC_INIT([parole], [parole_version], [https://gitlab.xfce.org/apps/parole])
 AC_PREREQ(2.59c)
 
 AC_CONFIG_MACRO_DIRS([m4])
