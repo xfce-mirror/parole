@@ -1,3 +1,29 @@
+4.18.0 (2023-02-18)
+======
+- Update copyright year
+- Update bug report address
+- player: Prevent infinite cycle when setting volume (#119)
+- Update some icon names (!17)
+- Reduce hiding controls to 2 seconds (Fixes #80, !12)
+- autoconf: Some updates
+- Update `.gitignore`
+- build: Replace DATADIRNAME no longer set by xfce4-dev-tools >= 4.17.0
+- build: Bump GLib minimum required to 2.38
+- autoconf: Use AC_CONFIG_MACRO_DIRS (!14)
+- Fix memory leak when loading cover image (#98)
+- Fix compilation warnings (!11)
+- Makefile.am: INCLUDES -> AM_CPPFLAGS
+- autoconf: Some updates
+- Remove the deprecated keys from desktop file (!9)
+- Translation Updates:
+  Arabic, Armenian (Armenia), Belarusian, Bulgarian, Catalan, Chinese
+  (China), Croatian, Danish, Eastern Armenian, English (Australia),
+  English (United Kingdom), Estonian, Galician, Greek, Hebrew,
+  Hungarian, Icelandic, Indonesian, Interlingue, Japanese, Kazakh,
+  Korean, Malay, Norwegian Bokmål, Occitan (post 1500), Polish,
+  Portuguese, Russian, Slovak, Slovenian, Spanish, Swedish, Thai,
+  Turkish, Ukrainian, Uyghur
+
 4.16.0
 ======
 - Add README.md to EXTRA_DIST (#72)
