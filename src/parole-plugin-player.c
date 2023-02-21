@@ -62,14 +62,24 @@ G_DEFINE_TYPE_WITH_CODE(ParolePluginPlayer, parole_plugin_player, G_TYPE_OBJECT,
                                               parole_plugin_player_iface_init))
 
 static void
-parole_plugin_player_send_message(const gchar *message) {
-    DBusGProxy *proxy;
+parole_plugin_player_call_method(const gchar *method) {
+    GDBusProxy *proxy;
+    GError *error = NULL;
 
     proxy = parole_get_proxy(PAROLE_DBUS_PATH, PAROLE_DBUS_INTERFACE);
 
-    dbus_g_proxy_call_no_reply(proxy, message,
-                                G_TYPE_INVALID,
-                                G_TYPE_INVALID);
+    g_dbus_proxy_call_sync(proxy,
+                           method,
+                           NULL,
+                           G_DBUS_CALL_FLAGS_NONE,
+                           -1,
+                           NULL,
+                           &error);
+
+    if ( error ) {
+        g_critical("Failed to call method : %s : %s", method, error->message);
+        g_error_free(error);
+    }
 
     g_object_unref(proxy);
 }
@@ -167,14 +177,14 @@ parole_plugin_player_stop(ParoleProviderPlayer *provider) {
 
 static gboolean
 parole_plugin_player_play_previous(ParoleProviderPlayer *provider) {
-    parole_plugin_player_send_message("PrevTrack");
+    parole_plugin_player_call_method("PrevTrack");
 
     return TRUE;
 }
 
 static gboolean
 parole_plugin_player_play_next(ParoleProviderPlayer *provider) {
-    parole_plugin_player_send_message("NextTrack");
+    parole_plugin_player_call_method("NextTrack");
 
     return TRUE;
 }
