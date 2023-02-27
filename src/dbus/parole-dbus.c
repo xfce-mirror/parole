@@ -29,32 +29,27 @@
 #include <string.h>
 
 #include <glib.h>
+#include <gio/gio.h>
 
 #include <dbus/dbus.h>
-#include <dbus/dbus-glib-lowlevel.h>
 
 #include "parole-dbus.h"
 
 static void
-proxy_destroy_cb(DBusGConnection *bus) {
-    dbus_g_connection_unref(bus);
+proxy_destroy_cb(GDBusConnection *bus) {
+    g_object_unref(bus);
 }
 
-static DBusConnection *
-parole_session_bus_get(void) {
-    return dbus_g_connection_get_connection (parole_g_session_bus_get ());
-}
-
-DBusGConnection *
+GDBusConnection *
 parole_g_session_bus_get(void) {
     static gboolean session_bus_connected = FALSE;
-    DBusGConnection *bus;
+    GDBusConnection *bus;
     GError *error = NULL;
 
     if ( G_LIKELY(session_bus_connected) ) {
-        bus = dbus_g_bus_get(DBUS_BUS_SESSION, NULL);
+        bus = g_bus_get_sync(G_BUS_TYPE_SESSION, NULL, NULL);
     } else {
-        bus = dbus_g_bus_get(DBUS_BUS_SESSION, &error);
+        bus = g_bus_get_sync(G_BUS_TYPE_SESSION, NULL, &error);
 
         if ( error ) {
             g_error("%s", error->message);
@@ -65,20 +60,25 @@ parole_g_session_bus_get(void) {
     return bus;
 }
 
-DBusGProxy *
+GDBusProxy *
 parole_get_proxy(const gchar *path, const gchar *iface) {
-    DBusGConnection *bus;
-    DBusGProxy *proxy;
+    GDBusConnection *bus;
+    GDBusProxy *proxy;
+    GError *error = NULL;
 
     bus = parole_g_session_bus_get();
 
-    proxy = dbus_g_proxy_new_for_name(bus,
-                                       PAROLE_DBUS_NAME,
-                                       path,
-                                       iface);
+    proxy = g_dbus_proxy_new_sync(bus,
+                                  G_DBUS_PROXY_FLAGS_NONE,
+                                  NULL,
+                                  PAROLE_DBUS_NAME,
+                                  path,
+                                  iface,
+                                  NULL,
+                                  &error);
 
-    if ( !proxy )
-        g_error("Unable to create proxy for %s", PAROLE_DBUS_NAME);
+    if ( error )
+        g_error("Unable to create proxy: %s", error->message);
 
     g_signal_connect_swapped(proxy, "destroy",
                               G_CALLBACK(proxy_destroy_cb), bus);
@@ -88,73 +88,99 @@ parole_get_proxy(const gchar *path, const gchar *iface) {
 
 gboolean
 parole_dbus_name_has_owner(const gchar *name) {
-    DBusConnection *bus;
-    DBusError error;
+    GDBusConnection *bus;
+    GError *error = NULL;
+    GVariant *res;
     gboolean ret;
 
-    bus = parole_session_bus_get();
+    bus = parole_g_session_bus_get();
 
-    dbus_error_init(&error);
+    res = g_dbus_connection_call_sync(bus,
+                                      "org.freedesktop.DBus",
+                                      "/org/freedesktop/DBus",
+                                      "org.freedesktop.DBus",
+                                      "NameHasOwner",
+                                      g_variant_new("(s)", name),
+                                      G_VARIANT_TYPE("(b)"),
+                                      G_DBUS_CALL_FLAGS_NO_AUTO_START,
+                                      -1,
+                                      NULL,
+                                      &error);
 
-    ret = dbus_bus_name_has_owner(bus, name, &error);
-
-    dbus_connection_unref(bus);
-
-    if (dbus_error_is_set(&error)) {
-        g_warning("Failed to get name owner: %s\n", error.message);
-        dbus_error_free(&error);
+    if ( error ) {
+        g_warning("Failed to get name owner: %s\n", error->message);
+        g_error_free(error);
     }
+
+    g_variant_get(res, "(b)", &ret);
+    g_variant_unref(res);
 
     return ret;
 }
 
-gboolean parole_dbus_register_name(const gchar *name) {
-    DBusConnection *bus;
-    DBusError error;
-    int ret;
+gboolean
+parole_dbus_register_name(const gchar *name) {
+    GDBusConnection *bus;
+    GError *error = NULL;
+    GVariant *res;
+    guint32 ret;
+    int flags = G_BUS_NAME_OWNER_FLAGS_ALLOW_REPLACEMENT;
 
-    bus = parole_session_bus_get();
+    bus = parole_g_session_bus_get();
 
-    dbus_error_init(&error);
+    res = g_dbus_connection_call_sync(bus,
+                                      "org.freedesktop.DBus",
+                                      "/org/freedesktop/DBus",
+                                      "org.freedesktop.DBus",
+                                      "RequestName",
+                                      g_variant_new("(su)", name, flags),
+                                      G_VARIANT_TYPE("(u)"),
+                                      G_DBUS_CALL_FLAGS_NO_AUTO_START,
+                                      -1,
+                                      NULL,
+                                      &error);
 
-    ret =
-        dbus_bus_request_name(bus,
-                               name,
-                               DBUS_NAME_FLAG_ALLOW_REPLACEMENT,
-                               &error);
-
-    dbus_connection_unref(bus);
-
-    if (dbus_error_is_set(&error)) {
-        g_warning("Error: %s\n", error.message);
-        dbus_error_free(&error);
+    if (error) {
+        g_warning("Error: %s\n", error->message);
+        g_error_free(error);
         return FALSE;
     }
+
+    g_variant_get(res, "(u)", &ret);
+    g_variant_unref(res);
 
     return ret == DBUS_REQUEST_NAME_REPLY_PRIMARY_OWNER ? TRUE : FALSE;
 }
 
-gboolean parole_dbus_release_name(const gchar *name) {
-    DBusConnection *bus;
-    DBusError error;
-    int ret;
+gboolean
+parole_dbus_release_name(const gchar *name) {
+    GDBusConnection *bus;
+    GError *error = NULL;
+    GVariant *res;
+    guint32 ret;
 
-    bus = parole_session_bus_get();
+    bus = parole_g_session_bus_get();
 
-    dbus_error_init(&error);
+    res = g_dbus_connection_call_sync(bus,
+                                      "org.freedesktop.DBus",
+                                      "/org/freedesktop/DBus",
+                                      "org.freedesktop.DBus",
+                                      "ReleaseName",
+                                      g_variant_new("(s)", name),
+                                      G_VARIANT_TYPE("(u)"),
+                                      G_DBUS_CALL_FLAGS_NO_AUTO_START,
+                                      -1,
+                                      NULL,
+                                      &error);
 
-    ret =
-        dbus_bus_release_name(bus,
-                               name,
-                               &error);
-
-    dbus_connection_unref(bus);
-
-    if (dbus_error_is_set(&error)) {
-        g_warning("Error: %s\n", error.message);
-        dbus_error_free(&error);
+    if (error) {
+        g_warning("Error: %s\n", error->message);
+        g_error_free(error);
         return FALSE;
     }
 
-    return ret == -1 ? FALSE : TRUE;
+    g_variant_get(res, "(u)", &ret);
+    g_variant_unref(res);
+
+    return ret == DBUS_RELEASE_NAME_REPLY_RELEASED ? TRUE : FALSE;
 }

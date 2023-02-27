@@ -33,15 +33,11 @@
 
 #include <gtk/gtk.h>
 #include <glib.h>
-#include <gio/gio.h>
 
 #include <gst/gst.h>
 
 #include <libxfce4util/libxfce4util.h>
 #include <xfconf/xfconf.h>
-
-#include <dbus/dbus-glib.h>
-#include <dbus/dbus-glib-lowlevel.h>
 
 #include <X11/X.h>
 #include <X11/Xlib.h>
@@ -82,7 +78,7 @@ parole_sig_handler(gint sig, gpointer data) {
  **/
 static void
 parole_send_play_disc(const gchar *uri, const gchar *device) {
-    DBusGProxy *proxy;
+    GDBusProxy *proxy;
     GError *error = NULL;
     gchar *uri_local;
 
@@ -94,11 +90,13 @@ parole_send_play_disc(const gchar *uri, const gchar *device) {
 
     proxy = parole_get_proxy(PAROLE_DBUS_PATH, PAROLE_DBUS_INTERFACE);
 
-    dbus_g_proxy_call(proxy, "PlayDisc", &error,
-                       G_TYPE_STRING, uri_local,
-                       G_TYPE_STRING, device,
-                       G_TYPE_INVALID,
-                       G_TYPE_INVALID);
+    g_dbus_proxy_call_sync(proxy,
+                           "PlayDisc",
+                           g_variant_new ("(ss)", uri_local, device),
+                           G_DBUS_CALL_FLAGS_NONE,
+                           -1,
+                           NULL,
+                           &error);
 
     g_free(uri_local);
 
@@ -120,38 +118,37 @@ parole_send_play_disc(const gchar *uri, const gchar *device) {
  **/
 static void
 parole_send_files(gchar **filenames, gboolean enqueue) {
-    DBusGProxy *proxy;
+    GDBusProxy *proxy;
     GFile *file;
-    gchar **out_paths;
+    GVariantBuilder builder;
+    GVariant *out_paths;
     GError *error = NULL;
-    guint i;
+    int i;
 
     proxy = parole_get_proxy(PAROLE_DBUS_PLAYLIST_PATH, PAROLE_DBUS_PLAYLIST_INTERFACE);
 
-    if ( !proxy )
-        g_error("Unable to create proxy for %s", PAROLE_DBUS_NAME);
-
-    out_paths = g_new0(gchar *, g_strv_length(filenames) + 1);
-
+    g_variant_builder_init(&builder, G_VARIANT_TYPE("as"));
     for (i = 0; filenames && filenames[i]; i++) {
         file = g_file_new_for_commandline_arg(filenames[i]);
-        out_paths[i] = g_file_get_path(file);
+        g_variant_builder_add(&builder, "s", g_file_get_path(file));
         g_object_unref(file);
     }
+    out_paths = g_variant_builder_end(&builder);
 
-    dbus_g_proxy_call(proxy, "AddFiles", &error,
-                       G_TYPE_STRV, out_paths,
-                       G_TYPE_BOOLEAN, enqueue,
-                       G_TYPE_INVALID,
-                       G_TYPE_INVALID);
-
+    g_dbus_proxy_call_sync(proxy,
+                           "AddFiles",
+                           g_variant_new("(asb)", out_paths, enqueue),
+                           G_DBUS_CALL_FLAGS_NONE,
+                           -1,
+                           NULL,
+                           &error);
 
     if ( error ) {
         g_critical("Unable to send media files to Parole: %s", error->message);
         g_error_free(error);
     }
 
-    g_strfreev(out_paths);
+    g_variant_unref(out_paths);
     g_object_unref(proxy);
 }
 
@@ -173,24 +170,28 @@ parole_send(gchar **filenames, gchar *device, gboolean enqueue) {
 }
 
 /**
- * parole_send_message:
- * @message : message string to be sent to DBUS
+ * parole_call_method:
+ * @method : method to call on the D-Bus proxy
  *
- * Send a message via DBUS to Parole.
+ * Call a method via D-Bus proxy.
  **/
 static void
-parole_send_message(const gchar *message) {
-    DBusGProxy *proxy;
+parole_call_method(const gchar *method) {
+    GDBusProxy *proxy;
     GError *error = NULL;
 
     proxy = parole_get_proxy(PAROLE_DBUS_PATH, PAROLE_DBUS_INTERFACE);
 
-    dbus_g_proxy_call(proxy, message, &error,
-                       G_TYPE_INVALID,
-                       G_TYPE_INVALID);
+    g_dbus_proxy_call_sync(proxy,
+                           method,
+                           NULL,
+                           G_DBUS_CALL_FLAGS_NONE,
+                           -1,
+                           NULL,
+                           &error);
 
     if ( error ) {
-        g_critical("Failed to send message : %s : %s", message, error->message);
+        g_critical("Failed to call method : %s : %s", method, error->message);
         g_error_free(error);
     }
 
@@ -315,25 +316,25 @@ int main(int argc, char **argv) {
             parole_send_play_disc(NULL, device);
 
         if ( play )
-            parole_send_message("Play");
+            parole_call_method("Play");
 
         if ( next_track )
-            parole_send_message("NextTrack");
+            parole_call_method("NextTrack");
 
         if ( prev_track )
-            parole_send_message("PrevTrack");
+            parole_call_method("PrevTrack");
 
         if ( raise_volume )
-            parole_send_message("RaiseVolume");
+            parole_call_method("RaiseVolume");
 
         if ( lower_volume )
-            parole_send_message("LowerVolume");
+            parole_call_method("LowerVolume");
 
         if ( mute )
-            parole_send_message("Mute");
+            parole_call_method("Mute");
 
         if ( unmute )
-            parole_send_message("Unmute");
+            parole_call_method("Unmute");
 
     /* Create a new instance because Parole isn't running */
     } else {
