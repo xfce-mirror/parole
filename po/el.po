@@ -8,7 +8,7 @@
 # Ápo. <apostolos.papadimitriu@gmail.com>, 2017
 # Efstathios Iosifidis <iefstathios@gmail.com>, 2015
 # Ioannis LM, 2020
-# Ioannis LM, 2020
+# Ioannis LM, 2020,2023
 # Spyros <Spyros_Stravoravdis@hotmail.com>, 2014
 # Spyros <Spyros_Stravoravdis@hotmail.com>, 2014
 msgid ""
@@ -17,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-19 00:47+0100\n"
 "PO-Revision-Date: 2013-07-03 18:28+0000\n"
-"Last-Translator: Spyros <Spyros_Stravoravdis@hotmail.com>, 2014\n"
+"Last-Translator: Ioannis LM, 2020,2023\n"
 "Language-Team: Greek (http://www.transifex.com/xfce/xfce-apps/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -185,7 +185,7 @@ msgstr "Υπότιτλοι"
 #: ../src/parole-player.c:598 ../src/parole-player.c:1439
 #: ../src/parole-player.c:1800 ../src/plugins/mpris2/mpris2-provider.c:189
 msgid "Parole Media Player"
-msgstr "Αναπαραγωγή πολυμέσων Parole"
+msgstr "Εφαρμογή αναπαραγωγή πολυμέσων Parole"
 
 #: ../data/interfaces/parole.ui.h:2
 msgid "_Media"
@@ -801,7 +801,7 @@ msgid ""
 "\n"
 "Please report bugs to <%s>.\n"
 "\n"
-msgstr ""
+msgstr "\nΕφαρμογή αναπαραγωγή πολυμέσων Parole %s\n\nΣτοιχείο του Xfce Goodies Project\nhttps://goodies.xfce.org\n\nΆδεια χρήσης υπό την GNU GPL.\n\nΠαρακαλώ αναφέρετε τα σφάλματα στο <%s>.\n"
 
 #: ../src/main.c:228
 msgid "Open a new instance"
