@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Andi Chandler <andi@gowling.com>, 2023
 # Jason Collins <JasonPCollins@protonmail.com>, 2019
 # Jeff Bailes <thepizzaking@gmail.com>, 2010
 msgid ""
@@ -11,8 +12,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-19 00:47+0100\n"
 "PO-Revision-Date: 2013-07-03 18:28+0000\n"
-"Last-Translator: Jason Collins <JasonPCollins@protonmail.com>, 2019\n"
-"Language-Team: English (United Kingdom) (http://www.transifex.com/xfce/xfce-apps/language/en_GB/)\n"
+"Last-Translator: Andi Chandler <andi@gowling.com>, 2023\n"
+"Language-Team: English (United Kingdom) (http://app.transifex.com/xfce/xfce-apps/language/en_GB/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -246,7 +247,7 @@ msgstr "_Title Menu"
 
 #: ../data/interfaces/parole.ui.h:17
 msgid "_Subpicture Menu"
-msgstr ""
+msgstr "_Subpicture Menu"
 
 #: ../data/interfaces/parole.ui.h:18
 msgid "_Audio Menu"
@@ -468,7 +469,7 @@ msgstr "Preferences"
 
 #: ../data/interfaces/plugins.ui.h:6
 msgid "About"
-msgstr ""
+msgstr "About"
 
 #: ../data/interfaces/save-playlist.ui.h:1
 msgid "Save Playlist as..."
@@ -608,25 +609,25 @@ msgid ""
 "This release refreshes the playlist and dialog look and feel. Shuffling the "
 "playlist is more efficient and can be reversed. DVD support has also been "
 "improved and will no longer freeze when started."
-msgstr ""
+msgstr "This release refreshes the playlist and dialogue look and feel. Shuffling the playlist is more efficient and can be reversed. DVD support has also been improved and will no longer freeze when started."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:4
 msgid ""
 "This release improves thumbnail management and storage and fixes volume "
 "hotkeys when viewing fullscreen content."
-msgstr ""
+msgstr "This release improves thumbnail management and storage and fixes volume hotkeys when viewing fullscreen content."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:5
 msgid "This release inhibits power management during video playback."
-msgstr ""
+msgstr "This release inhibits power management during video playback."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:6
 msgid "This is a minor bugfix release."
-msgstr ""
+msgstr "This is a minor bugfix release."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:7
 msgid "This release adds support for automatic codec installation."
-msgstr ""
+msgstr "This release adds support for automatic codec installation."
 
 #: ../data/metainfo/parole.appdata.xml.in.h:8
 msgid "This is a minor translations-only release."
@@ -795,7 +796,7 @@ msgid ""
 "\n"
 "Please report bugs to <%s>.\n"
 "\n"
-msgstr ""
+msgstr "\nParole Media Player %s\n\nPart of the Xfce Goodies Project\nhttps://goodies.xfce.org\n\nLicensed under the GNU GPL.\n\nPlease report bugs to <%s>.\n\n"
 
 #: ../src/main.c:228
 msgid "Open a new instance"
@@ -885,7 +886,7 @@ msgstr "Playlist files"
 
 #: ../src/parole-about.c:70
 msgid "A modern simple media player for the Xfce Desktop Environment."
-msgstr ""
+msgstr "A modern simple media player for the Xfce Desktop Environment."
 
 #: ../src/parole-about.c:76
 msgid "translator-credits"
@@ -960,22 +961,22 @@ msgstr "Save"
 #: ../src/parole-medialist.c:860
 #, c-format
 msgid "M3U Playlist (%s)"
-msgstr ""
+msgstr "M3U Playlist (%s)"
 
 #: ../src/parole-medialist.c:870
 #, c-format
 msgid "PLS Playlist (%s)"
-msgstr ""
+msgstr "PLS Playlist (%s)"
 
 #: ../src/parole-medialist.c:880
 #, c-format
 msgid "Advanced Stream Redirector (%s)"
-msgstr ""
+msgstr "Advanced Stream Redirector (%s)"
 
 #: ../src/parole-medialist.c:890
 #, c-format
 msgid "Shareable Playlist (%s)"
-msgstr ""
+msgstr "Shareable Playlist (%s)"
 
 #. Clear
 #: ../src/parole-medialist.c:1280
