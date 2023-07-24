@@ -206,6 +206,8 @@ parole_media_chooser_open_internal(ParoleMediaChooser *media_chooser) {
     gboolean        replace_playlist;
     gboolean        play;
     const gchar    *folder;
+    GtkSettings *settings;
+    gboolean use_header;
 
     builder = parole_builder_new_from_string(mediachooser_ui, mediachooser_ui_length);
 
@@ -259,8 +261,27 @@ parole_media_chooser_open_internal(ParoleMediaChooser *media_chooser) {
 
     gtk_builder_connect_signals(builder, media_chooser);
 
+    settings = gtk_settings_get_default();
+    g_object_get(settings, "gtk-dialogs-use-header", &use_header, NULL);
+
     box = GTK_WIDGET(gtk_builder_get_object(builder, "dialog-action_area1"));
-    gtk_widget_hide(box);
+    if ( !use_header ) {
+        GtkWidget *cancel, *open;
+
+        gtk_window_set_titlebar(GTK_WINDOW(media_chooser->window), NULL);
+        gtk_widget_show_all(box);
+
+        cancel = gtk_button_new_with_label(_("Cancel"));
+        open = gtk_button_new_with_label(_("Open"));
+
+        gtk_box_pack_start(GTK_BOX(box), cancel, FALSE, TRUE, 0);
+        gtk_box_pack_start(GTK_BOX(box), open, FALSE, TRUE, 0);
+
+        g_signal_connect(cancel, "clicked", G_CALLBACK(parole_media_chooser_close_clicked), media_chooser);
+        g_signal_connect(open, "clicked", G_CALLBACK(parole_media_chooser_add_clicked), media_chooser);
+    } else {
+        gtk_widget_hide(box);
+    }
 
     g_object_unref(builder);
 }
