@@ -78,6 +78,9 @@ parole_SOURCES =				\
 	parole-plugin-player.c			\
 	parole-plugin-player.h
 
+# for <signal> elements in GtkBuilder ui files, so that signal handlers are found
+parole_LDFLAGS = -export-dynamic
+
 parole_LDADD =						   	\
 	$(top_builddir)/src/misc/libparole.la 		   	\
 	$(top_builddir)/src/dbus/libparoledbus.la 	   	\
