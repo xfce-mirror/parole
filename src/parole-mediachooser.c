@@ -266,19 +266,21 @@ parole_media_chooser_open_internal(ParoleMediaChooser *media_chooser) {
 
     box = GTK_WIDGET(gtk_builder_get_object(builder, "dialog-action_area1"));
     if ( !use_header ) {
-        GtkWidget *cancel, *open;
+        GtkWidget *titlebar, *close, *open;
 
         gtk_window_set_titlebar(GTK_WINDOW(media_chooser->window), NULL);
-        gtk_widget_show_all(box);
 
-        cancel = gtk_button_new_with_label(_("Cancel"));
-        open = gtk_button_new_with_label(_("Open"));
+        titlebar = GTK_WIDGET(gtk_builder_get_object(builder, "titlebar"));
+        close = GTK_WIDGET(g_object_ref(gtk_builder_get_object(builder, "close")));
+        open = GTK_WIDGET(g_object_ref(gtk_builder_get_object(builder, "open")));
 
-        gtk_box_pack_start(GTK_BOX(box), cancel, FALSE, TRUE, 0);
+        gtk_container_remove(GTK_CONTAINER(titlebar), close);
+        gtk_container_remove(GTK_CONTAINER(titlebar), open);
+        gtk_box_pack_start(GTK_BOX(box), close, FALSE, TRUE, 0);
         gtk_box_pack_start(GTK_BOX(box), open, FALSE, TRUE, 0);
 
-        g_signal_connect(cancel, "clicked", G_CALLBACK(parole_media_chooser_close_clicked), media_chooser);
-        g_signal_connect(open, "clicked", G_CALLBACK(parole_media_chooser_add_clicked), media_chooser);
+        g_object_unref(close);
+        g_object_unref(open);
     } else {
         gtk_widget_hide(box);
     }
