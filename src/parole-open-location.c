@@ -167,6 +167,7 @@ ParoleOpenLocation *parole_open_location(GtkWidget *parent) {
     GtkTreeModel *model;
     GtkBuilder *builder;
     GtkSettings *settings;
+    GtkWidget *cancel, *open;
     gboolean use_header;
 
     self = g_object_new(PAROLE_TYPE_OPEN_LOCATION, NULL);
@@ -194,26 +195,28 @@ ParoleOpenLocation *parole_open_location(GtkWidget *parent) {
     settings = gtk_settings_get_default();
     g_object_get(settings, "gtk-dialogs-use-header", &use_header, NULL);
 
+    cancel = GTK_WIDGET(g_object_ref(gtk_builder_get_object(builder, "cancel")));
+    open = GTK_WIDGET(g_object_ref(gtk_builder_get_object(builder, "open")));
+
     if ( !use_header ) {
-        GtkWidget *cancel, *open, *action_area;
+        GtkWidget *titlebar, *action_area;
+
         gtk_window_set_titlebar(GTK_WINDOW(self->dialog), NULL);
 
+        titlebar = GTK_WIDGET(gtk_builder_get_object(builder, "titlebar"));
         action_area = GTK_WIDGET(gtk_builder_get_object(builder, "dialog-action_area1"));
 
-        cancel = gtk_button_new_with_label(_("Cancel"));
-        open = gtk_button_new_with_label(_("Open"));
-
+        gtk_container_remove(GTK_CONTAINER(titlebar), cancel);
+        gtk_container_remove(GTK_CONTAINER(titlebar), open);
         gtk_box_pack_start (GTK_BOX(action_area), cancel, FALSE, TRUE, 0);
         gtk_box_pack_start (GTK_BOX(action_area), open, FALSE, TRUE, 0);
-
-        g_signal_connect_swapped(cancel, "clicked", G_CALLBACK(parole_open_location_close), self);
-        g_signal_connect_swapped(open, "clicked", G_CALLBACK(parole_open_location_open), self);
-    } else {
-        g_signal_connect_swapped(gtk_builder_get_object(builder, "cancel"), "clicked",
-                                G_CALLBACK(parole_open_location_close), self);
-        g_signal_connect_swapped(gtk_builder_get_object(builder, "open"), "clicked",
-                                G_CALLBACK(parole_open_location_open), self);
     }
+
+    g_signal_connect_swapped(cancel, "clicked",
+                      G_CALLBACK(parole_open_location_close), self);
+
+    g_signal_connect_swapped(open, "clicked",
+                      G_CALLBACK(parole_open_location_open), self);
 
     g_signal_connect(self->dialog, "delete-event",
                       G_CALLBACK(gtk_widget_destroy), NULL);
