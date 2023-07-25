@@ -206,8 +206,8 @@ parole_media_chooser_open_internal(ParoleMediaChooser *media_chooser) {
     gboolean        replace_playlist;
     gboolean        play;
     const gchar    *folder;
-    GtkSettings *settings;
-    gboolean use_header;
+    GtkSettings    *settings;
+    gboolean        use_header;
 
     builder = parole_builder_new_from_string(mediachooser_ui, mediachooser_ui_length);
 
