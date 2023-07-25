@@ -206,6 +206,8 @@ parole_media_chooser_open_internal(ParoleMediaChooser *media_chooser) {
     gboolean        replace_playlist;
     gboolean        play;
     const gchar    *folder;
+    GtkSettings    *settings;
+    gboolean        use_header;
 
     builder = parole_builder_new_from_string(mediachooser_ui, mediachooser_ui_length);
 
@@ -259,8 +261,29 @@ parole_media_chooser_open_internal(ParoleMediaChooser *media_chooser) {
 
     gtk_builder_connect_signals(builder, media_chooser);
 
+    settings = gtk_settings_get_default();
+    g_object_get(settings, "gtk-dialogs-use-header", &use_header, NULL);
+
     box = GTK_WIDGET(gtk_builder_get_object(builder, "dialog-action_area1"));
-    gtk_widget_hide(box);
+    if ( !use_header ) {
+        GtkWidget *titlebar, *close, *open;
+
+        gtk_window_set_titlebar(GTK_WINDOW(media_chooser->window), NULL);
+
+        titlebar = GTK_WIDGET(gtk_builder_get_object(builder, "titlebar"));
+        close = GTK_WIDGET(g_object_ref(gtk_builder_get_object(builder, "close")));
+        open = GTK_WIDGET(g_object_ref(gtk_builder_get_object(builder, "open")));
+
+        gtk_container_remove(GTK_CONTAINER(titlebar), close);
+        gtk_container_remove(GTK_CONTAINER(titlebar), open);
+        gtk_box_pack_start(GTK_BOX(box), close, FALSE, TRUE, 0);
+        gtk_box_pack_start(GTK_BOX(box), open, FALSE, TRUE, 0);
+
+        g_object_unref(close);
+        g_object_unref(open);
+    } else {
+        gtk_widget_hide(box);
+    }
 
     g_object_unref(builder);
 }
