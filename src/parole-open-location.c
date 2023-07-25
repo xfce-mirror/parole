@@ -195,8 +195,8 @@ ParoleOpenLocation *parole_open_location(GtkWidget *parent) {
     settings = gtk_settings_get_default();
     g_object_get(settings, "gtk-dialogs-use-header", &use_header, NULL);
 
-    cancel = GTK_WIDGET(g_object_ref(gtk_builder_get_object(builder, "cancel")));
-    open = GTK_WIDGET(g_object_ref(gtk_builder_get_object(builder, "open")));
+    cancel = GTK_WIDGET(gtk_builder_get_object(builder, "cancel"));
+    open = GTK_WIDGET(gtk_builder_get_object(builder, "open"));
 
     if ( !use_header ) {
         GtkWidget *titlebar, *action_area;
@@ -206,10 +206,14 @@ ParoleOpenLocation *parole_open_location(GtkWidget *parent) {
         titlebar = GTK_WIDGET(gtk_builder_get_object(builder, "titlebar"));
         action_area = GTK_WIDGET(gtk_builder_get_object(builder, "dialog-action_area1"));
 
+        g_object_ref(cancel);
+        g_object_ref(open);
         gtk_container_remove(GTK_CONTAINER(titlebar), cancel);
         gtk_container_remove(GTK_CONTAINER(titlebar), open);
         gtk_box_pack_start (GTK_BOX(action_area), cancel, FALSE, TRUE, 0);
         gtk_box_pack_start (GTK_BOX(action_area), open, FALSE, TRUE, 0);
+        g_object_unref(cancel);
+        g_object_unref(open);
     }
 
     g_signal_connect_swapped(cancel, "clicked",
