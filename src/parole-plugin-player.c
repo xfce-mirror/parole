@@ -190,6 +190,20 @@ parole_plugin_player_seek(ParoleProviderPlayer *provider, gdouble pos) {
     return TRUE;
 }
 
+static gboolean
+parole_plugin_player_volume_up(ParoleProviderPlayer *provider) {
+    parole_plugin_player_send_message("RaiseVolume");
+
+    return TRUE;
+}
+
+static gboolean
+parole_plugin_player_volume_down(ParoleProviderPlayer *provider) {
+    parole_plugin_player_send_message("LowerVolume");
+
+    return TRUE;
+}
+
 static gdouble
 parole_plugin_player_get_stream_position(ParoleProviderPlayer *provider) {
     ParolePluginPlayer *player;
@@ -249,6 +263,8 @@ static void parole_plugin_player_iface_init(ParoleProviderPlayerIface *iface) {
     iface->play_previous = parole_plugin_player_play_previous;
     iface->play_next = parole_plugin_player_play_next;
     iface->seek = parole_plugin_player_seek;
+    iface->volume_up = parole_plugin_player_volume_up;
+    iface->volume_down = parole_plugin_player_volume_down;
     iface->get_stream_position = parole_plugin_player_get_stream_position;
     iface->open_media_chooser = parole_plugin_player_open_media_chooser;
     iface->get_action = parole_plugin_player_get_action;
