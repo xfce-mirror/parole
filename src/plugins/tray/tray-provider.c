@@ -81,13 +81,17 @@ exit_activated_cb(TrayProvider *tray) {
 }
 
 static void
-play_pause_activated_cb(TrayProvider *tray) {
-    menu_selection_done_cb(tray);
-
+toggle_pause(TrayProvider *tray) {
     if ( tray->state == PAROLE_STATE_PLAYING )
         parole_provider_player_pause(tray->player);
     else if ( tray->state == PAROLE_STATE_PAUSED )
         parole_provider_player_resume(tray->player);
+}
+
+static void
+play_pause_activated_cb(TrayProvider *tray) {
+    menu_selection_done_cb(tray);
+    toggle_pause(tray);
 }
 
 static void
@@ -285,6 +289,31 @@ action_on_hide_confirmed_cb(GtkWidget *widget, gpointer data) {
 }
 
 static gboolean
+button_press_event_cb(GtkWidget *widget, GdkEventButton *event, TrayProvider *tray) {
+    if (event->button == GDK_BUTTON_MIDDLE)
+      toggle_pause(tray);
+
+    return FALSE;
+}
+
+static gboolean
+scroll_event_cb(GtkWidget *widget, GdkEventScroll *event, TrayProvider *tray) {
+    switch (event->direction) {
+        case GDK_SCROLL_DOWN:
+        case GDK_SCROLL_LEFT:
+            parole_provider_player_volume_down(tray->player);
+            break;
+        case GDK_SCROLL_UP:
+        case GDK_SCROLL_RIGHT:
+            parole_provider_player_volume_up(tray->player);
+            break;
+        default:
+            break;
+    }
+    return FALSE;
+}
+
+static gboolean
 delete_event_cb(GtkWidget *widget, GdkEvent *ev, TrayProvider *tray) {
     GtkWidget *dialog, *check, *content_area, *button;
     GtkWidget *minimize, *img;
@@ -413,6 +442,12 @@ tray_provider_set_player(ParoleProviderPlugin *plugin, ParoleProviderPlayer *pla
 
     g_signal_connect(tray->tray, "activate",
               G_CALLBACK(tray_activate_cb), tray);
+
+    g_signal_connect(tray->tray, "button-press-event",
+              G_CALLBACK(button_press_event_cb), tray);
+
+    g_signal_connect(tray->tray, "scroll-event",
+              G_CALLBACK(scroll_event_cb), tray);
 
     tray->sig = g_signal_connect(tray->window, "delete-event",
               G_CALLBACK(delete_event_cb), NULL);

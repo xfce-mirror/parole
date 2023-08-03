@@ -106,6 +106,10 @@ struct _ParoleProviderPlayerIface {
     gboolean     (*seek)                        (ParoleProviderPlayer *player,
                                                  gdouble pos);
 
+    gboolean     (*volume_up)                   (ParoleProviderPlayer *player);
+
+    gboolean     (*volume_down)                 (ParoleProviderPlayer *player);
+
     gdouble      (*get_stream_position)         (ParoleProviderPlayer *player);
 
     gboolean     (*get_fullscreen)              (ParoleProviderPlayer *player);
@@ -160,6 +164,9 @@ gboolean    parole_provider_player_play_next    (ParoleProviderPlayer *player);
 
 gboolean    parole_provider_player_seek         (ParoleProviderPlayer *player,
                                                  gdouble pos);
+gboolean    parole_provider_player_volume_up    (ParoleProviderPlayer *player);
+
+gboolean    parole_provider_player_volume_down  (ParoleProviderPlayer *player);
 
 gdouble parole_provider_player_get_stream_position(ParoleProviderPlayer *player);
 
