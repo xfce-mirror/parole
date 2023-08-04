@@ -79,11 +79,6 @@ GTKDOC_LIBS=                    \
 
 if ENABLE_GTK_DOC
 include $(top_srcdir)/gtk-doc.make
-doccheck: $(GTKDOC_CHECK)
-	$(AM_V_GEN)ln -s $< $@
-
-MOSTLYCLEANFILES = doccheck
-TESTS = doccheck
 else
 EXTRA_DIST=
 endif
