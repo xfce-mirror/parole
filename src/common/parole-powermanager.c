@@ -96,8 +96,9 @@ parole_power_manager_uninhibit (GDBusConnection *connection,
     if (error) {
         g_warning ("Uninhibiting power management failed: %s", error->message);
         g_error_free (error);
+    } else {
+        g_variant_unref (reply);
     }
-    g_variant_unref (reply);
 }
 
 GDBusConnection *
