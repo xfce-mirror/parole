@@ -951,8 +951,8 @@ mpris2_provider_set_player(ParoleProviderPlugin *plugin, ParoleProviderPlayer *p
                                          plugin,
                                          NULL);
 
-    g_signal_connect(player, "state_changed",
-                      G_CALLBACK(state_changed_cb), plugin);
+    g_signal_connect_object(player, "state_changed",
+                      G_CALLBACK(state_changed_cb), plugin, 0);
 
 /*
     g_signal_connect(player, "seeked",
@@ -961,14 +961,14 @@ mpris2_provider_set_player(ParoleProviderPlugin *plugin, ParoleProviderPlayer *p
 
     provider->conf = parole_conf_new();
 
-    g_signal_connect(provider->conf, "notify::repeat",
-                      G_CALLBACK(conf_changed_cb), plugin);
+    g_signal_connect_object(provider->conf, "notify::repeat",
+                      G_CALLBACK(conf_changed_cb), plugin, 0);
 
-    g_signal_connect(provider->conf, "notify::shuffle",
-                      G_CALLBACK(conf_changed_cb), plugin);
+    g_signal_connect_object(provider->conf, "notify::shuffle",
+                      G_CALLBACK(conf_changed_cb), plugin, 0);
 
-    g_signal_connect(provider->conf, "notify::volume",
-                      G_CALLBACK(conf_changed_cb), plugin);
+    g_signal_connect_object(provider->conf, "notify::volume",
+                      G_CALLBACK(conf_changed_cb), plugin, 0);
 
     window = parole_provider_player_get_main_window(provider->player);
     provider->window_state_changed = g_signal_connect(G_OBJECT(window),
