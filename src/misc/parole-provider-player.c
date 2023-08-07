@@ -392,6 +392,52 @@ gboolean parole_provider_player_seek(ParoleProviderPlayer *player, gdouble pos) 
     return ret;
 }
 
+
+/**
+ * parole_provider_player_volume_up
+ * @player: a #ParoleProviderPlayer
+ *
+ * Issue a volume up command to the player.
+ *
+ * Returns: TRUE if the command is processed, FALSE otherwise
+ *
+ * Since: 4.18.1
+ **/
+gboolean parole_provider_player_volume_up(ParoleProviderPlayer *player) {
+    gboolean ret = FALSE;
+
+    g_return_val_if_fail(PAROLE_IS_PROVIDER_PLAYER(player), FALSE);
+
+    if (PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->volume_up) {
+        ret =(*PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->volume_up)(player);
+    }
+
+    return ret;
+}
+
+
+/**
+ * parole_provider_player_volume_down
+ * @player: a #ParoleProviderPlayer
+ *
+ * Issue a volume down command to the player.
+ *
+ * Returns: TRUE if the command is processed, FALSE otherwise
+ *
+ * Since: 4.18.1
+ **/
+gboolean parole_provider_player_volume_down(ParoleProviderPlayer *player) {
+    gboolean ret = FALSE;
+
+    g_return_val_if_fail(PAROLE_IS_PROVIDER_PLAYER(player), FALSE);
+
+    if (PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->volume_down) {
+        ret =(*PAROLE_PROVIDER_PLAYER_GET_INTERFACE(player)->volume_down)(player);
+    }
+
+    return ret;
+}
+
 /**
  * parole_provider_player_get_stream_position:
  * @player: a #ParoleProviderPlayer
