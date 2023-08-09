@@ -3070,7 +3070,7 @@ parole_player_set_cursor_visible(ParolePlayer *player, gboolean visible) {
 
 static void
 parole_player_window_notify_is_active(ParolePlayer *player) {
-    if (!gtk_window_is_active(GTK_WINDOW(player->priv->window))) {
+    if (!gtk_window_is_active(GTK_WINDOW(player->priv->window)) || parole_player_get_playlist_visible (player)) {
         parole_player_set_cursor_visible(player, TRUE);
     } else {
         parole_player_set_cursor_visible(player, FALSE);
