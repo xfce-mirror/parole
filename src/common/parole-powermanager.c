@@ -29,7 +29,6 @@
 #include <glib.h>
 #include <gio/gio.h>
 #include <gtk/gtk.h>
-#include <gdk/gdkx.h>
 
 #include <libxfce4util/libxfce4util.h>
 

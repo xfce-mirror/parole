@@ -22,7 +22,6 @@
 
 #include <gtk/gtk.h>
 #include <glib.h>
-#include <gdk/gdkx.h>
 
 #include <clutter/clutter.h>
 #include <clutter-gtk/clutter-gtk.h>

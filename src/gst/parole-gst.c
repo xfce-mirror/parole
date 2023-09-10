@@ -43,7 +43,10 @@
 #include <gst/tag/tag.h>
 #include <gst/video/video.h>
 
+#include <gtk/gtk.h>
+#ifdef GDK_WINDOWING_X11
 #include <gdk/gdkx.h>
+#endif
 
 #include <libxfce4util/libxfce4util.h>
 
@@ -440,10 +443,14 @@ parole_gst_set_video_overlay(ParoleGst *gst) {
 
     g_assert(video_sink != NULL);
 
-    if (GDK_IS_WINDOW (gtk_widget_get_window(GTK_WIDGET (gst)))) {
-        gst_video_overlay_set_window_handle(GST_VIDEO_OVERLAY(video_sink),
-                          GDK_WINDOW_XID(gtk_widget_get_window(GTK_WIDGET(gst))));
+#ifdef GDK_WINDOWING_X11
+    if (GDK_IS_X11_DISPLAY(gdk_display_get_default())) {
+        if (GDK_IS_WINDOW(gtk_widget_get_window(GTK_WIDGET (gst)))) {
+            gst_video_overlay_set_window_handle(GST_VIDEO_OVERLAY(video_sink),
+                              GDK_WINDOW_XID(gtk_widget_get_window(GTK_WIDGET(gst))));
+        }
     }
+#endif
 
     gst_object_unref(video_sink);
 }
@@ -1460,9 +1467,11 @@ parole_gst_bus_event(GstBus *bus, GstMessage *msg, gpointer data) {
                  ctx = gst_install_plugins_context_new();
 
 #ifdef GDK_WINDOWING_X11
-                if (gtk_widget_get_window(GTK_WIDGET(gst)) != NULL && gtk_widget_get_realized(GTK_WIDGET(gst))) {
-                    gst_install_plugins_context_set_xid(ctx,
-                        gdk_x11_window_get_xid(gtk_widget_get_window(GTK_WIDGET(gst))));
+                if (GDK_IS_X11_DISPLAY(gdk_display_get_default())) {
+                    if (gtk_widget_get_window(GTK_WIDGET(gst)) != NULL && gtk_widget_get_realized(GTK_WIDGET(gst))) {
+                        gst_install_plugins_context_set_xid(ctx,
+                            gdk_x11_window_get_xid(gtk_widget_get_window(GTK_WIDGET(gst))));
+                    }
                 }
 #endif /* GDK_WINDOWING_X11 */
 

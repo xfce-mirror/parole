@@ -86,7 +86,6 @@ parole_LDADD =						   	\
 	$(top_builddir)/src/dbus/libparoledbus.la 	   	\
 	$(top_builddir)/src/gst/libparolegst.la 	   	\
 	$(top_builddir)/src/common/libparolecommon.la      	\
-	$(top_builddir)/src/common/libparolescreensaver.la 	\
 	$(GTHREAD_LIBS)                         \
 	$(GIO_LIBS)				\
 	$(GMODULE_LIBS)				\
@@ -97,6 +96,11 @@ parole_LDADD =						   	\
 	$(GST_INTERFACES_LIBS)			\
 	$(TAGLIBC_LIBS)				\
 	$(LIBX11_LIBS)
+
+if HAVE_LIBX11
+parole_LDADD +=						   	\
+	$(top_builddir)/src/common/libparolescreensaver.la
+endif
 
 parole_glib_enum_headers =			\
 	parole-conf.h				\

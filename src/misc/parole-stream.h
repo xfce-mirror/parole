@@ -28,7 +28,7 @@
 #define SRC_MISC_PAROLE_STREAM_H_
 
 #include <glib-object.h>
-#include <gdk/gdkx.h>
+#include <gdk-pixbuf/gdk-pixbuf.h>
 
 G_BEGIN_DECLS
 

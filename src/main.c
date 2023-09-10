@@ -43,8 +43,11 @@
 #include <dbus/dbus-glib.h>
 #include <dbus/dbus-glib-lowlevel.h>
 
+#ifdef HAVE_LIBX11
 #include <X11/X.h>
 #include <X11/Xlib.h>
+#include <gdk/gdkx.h>
+#endif
 
 #include "src/dbus/parole-dbus.h"
 
@@ -271,7 +274,10 @@ int main(int argc, char **argv) {
         return EXIT_FAILURE;
     }
 
-    XInitThreads();
+#ifdef HAVE_LIBX11
+    if (GDK_IS_X11_DISPLAY(gdk_display_get_default()))
+        XInitThreads();
+#endif
 
     xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
 
