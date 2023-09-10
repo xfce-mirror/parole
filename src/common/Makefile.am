@@ -1,6 +1,5 @@
 noinst_LTLIBRARIES = 			\
-	libparolecommon.la		\
-	libparolescreensaver.la
+	libparolecommon.la
 
 libparolecommon_la_SOURCES =		\
 	parole-common.c			\
@@ -14,6 +13,11 @@ libparolecommon_la_CFLAGS =		\
 	$(GTK_CFLAGS)			\
 	$(LIBXFCE4UTIL_CFLAGS)
 
+if HAVE_LIBX11
+
+noinst_LTLIBRARIES += 			\
+	libparolescreensaver.la
+
 libparolescreensaver_la_SOURCES = 	\
 	parole-screensaver.c		\
 	parole-screensaver.h
@@ -24,3 +28,5 @@ libparolescreensaver_la_CFLAGS =		\
 
 libparolescreensaver_la_LIBADD = 		\
 	$(LIBXFCE4UTIL_LIBS)
+
+endif

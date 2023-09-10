@@ -101,6 +101,7 @@ m4_define([libxfce4ui_minimum_version],[4.11.0])
 m4_define([libxfce4util_minimum_version],[4.10.0])
 m4_define([libxfconf_minimum_version], [4.10.0])
 m4_define([libnotify_minimum_version], [0.4.1])
+m4_define([libx11_minimum_version], [1.6.7])
 
 
 XDT_CHECK_PACKAGE([GLIB], [glib-2.0], [glib_minimum_version])
@@ -135,16 +136,18 @@ XDT_CHECK_PACKAGE([GST_VIDEO], [gstreamer-video-${gstreamer_api_version}], [${gs
 XDT_CHECK_PACKAGE([GST_PBUTILS], [gstreamer-pbutils-${gstreamer_api_version}], [${gstreamer_minimum_version}])
 GST_LIBS="$GST_LIBS -lgstbase-$GST_API_VERSION -lgstvideo-$GST_API_VERSION -lgstaudio-$GST_API_VERSION -lgstpbutils-$GST_API_VERSION -lgsttag-$GST_API_VERSION"
 
-XDT_CHECK_LIBX11()
+XDT_CHECK_OPTIONAL_PACKAGE([LIBX11], [x11], [libx11_minimum_version], [libx11], [Libx11 support])
 
 # ===================================================== #
 #                  Check XF86keysysm                    #
 # ===================================================== #
 # Check for the AudioPlay sym other should exist
 # if this one exists.
-AC_CHECK_DECL(XF86XK_AudioPlay,have_XF86XK_AudioPlay=1,have_XF86XK_AudioPlay=0,[#include <X11/XF86keysym.h>])
-if test "x${ac_cv_have_decl_XF86XK_AudioPlay}" != "xno"; then
-  AC_DEFINE(HAVE_XF86_KEYSYM, 1, [Define if XF86keysysm.h is available])
+if test x"$LIBX11_FOUND" = x"yes"; then
+  AC_CHECK_DECL(XF86XK_AudioPlay,have_XF86XK_AudioPlay=1,have_XF86XK_AudioPlay=0,[#include <X11/XF86keysym.h>])
+  if test "x${ac_cv_have_decl_XF86XK_AudioPlay}" != "xno"; then
+    AC_DEFINE(HAVE_XF86_KEYSYM, 1, [Define if XF86keysysm.h is available])
+  fi
 fi
 
 # ===================================================== #
@@ -277,12 +280,13 @@ echo "
         Debug:                          $enable_debug
         Building plugin api docs:       ${enable_gtk_doc}
         GStreamer API version:          ${gstreamer_api_version}
-        GTK+ version:                   GTK+-3
+        GTK+ version:                   ${GTK_VERSION}
 
         Optional dependencies:
         ======================
         Clutter Backend:                ${ac_clutter}
-        Taglib:                         $TAGLIB_FOUND
+        Taglib:                         ${TAGLIB_FOUND:-no}
+        Libx11:                         ${LIBX11_FOUND:-no}
 
         Plugins to build:
         =================
