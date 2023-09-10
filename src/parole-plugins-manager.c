@@ -29,6 +29,12 @@
 #include <string.h>
 
 #include <glib.h>
+#include <gtk/gtk.h>
+#ifdef GDK_WINDOWING_X11
+#include <gdk/gdkx.h>
+#else
+#define GDK_IS_X11_DISPLAY(display) FALSE
+#endif
 
 #ifdef XFCE_DISABLE_DEPRECATED
 #undef XFCE_DISABLE_DEPRECATED
@@ -651,6 +657,10 @@ void parole_plugins_manager_load(ParolePluginsManager *manager) {
     while ((name = g_dir_read_name(dir))) {
         gchar *library_name;
         gchar *desktop_file;
+
+        /* FIXME: https://gitlab.xfce.org/apps/parole/-/issues/126 */
+        if (g_strcmp0(name, "system-tray.desktop") == 0 && !GDK_IS_X11_DISPLAY(gdk_display_get_default()))
+            continue;
 
         desktop_file = g_build_filename(PAROLE_PLUGINS_DATA_DIR, name, NULL);
         library_name = parole_plugins_manager_get_module_name(desktop_file);
