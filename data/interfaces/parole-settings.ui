@@ -39,7 +39,7 @@
   </object>
   <object class="XfceTitledDialog" id="settings-dialog">
     <property name="can_focus">False</property>
-    <property name="title" translatable="yes">Parole Settings</property>
+    <property name="title" translatable="yes">Parole Preferences</property>
     <property name="modal">True</property>
     <property name="icon_name">org.xfce.parole</property>
     <property name="type_hint">dialog</property>
@@ -798,7 +798,7 @@
                   <object class="GtkLabel" id="label16">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">&lt;b&gt;Playlist Settings&lt;/b&gt;</property>
+                    <property name="label" translatable="yes">&lt;b&gt;Playlist Preferences&lt;/b&gt;</property>
                     <property name="use_markup">True</property>
                   </object>
                 </child>
@@ -950,7 +950,7 @@
                   <object class="GtkLabel" id="label13">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">&lt;b&gt;Subtitle Settings&lt;/b&gt;</property>
+                    <property name="label" translatable="yes">&lt;b&gt;Subtitle Preferences&lt;/b&gt;</property>
                     <property name="use_markup">True</property>
                   </object>
                 </child>
