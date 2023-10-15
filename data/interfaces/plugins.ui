@@ -3,11 +3,6 @@
 <interface>
   <requires lib="gtk+" version="3.20"/>
   <requires lib="libxfce4ui-2" version="4.11"/>
-  <object class="GtkImage" id="image1">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">close</property>
-  </object>
   <object class="GtkListStore" id="liststore">
     <columns>
       <!-- column-name toggle -->
@@ -30,7 +25,6 @@
     <property name="type_hint">dialog</property>
     <property name="skip_taskbar_hint">True</property>
     <property name="skip_pager_hint">True</property>
-    <property name="subtitle" translatable="yes">Extend your media player</property>
     <signal name="response" handler="parole_plugins_manager_pref_response_cb" swapped="no"/>
     <child internal-child="vbox">
       <object class="GtkBox" id="dialog-vbox1">
@@ -50,7 +44,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="image">image1</property>
               </object>
               <packing>
                 <property name="expand">False</property>
