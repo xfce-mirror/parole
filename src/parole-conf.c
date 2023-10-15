@@ -320,12 +320,16 @@ static void parole_conf_prop_changed(XfconfChannel  *channel,
                                      const gchar    *prop_name,
                                      const GValue   *value,
                                      ParoleConf     *conf) {
-    GParamSpec *pspec;
+    GParamSpec *pspec = NULL;
+    gchar *g_prop_name = parole_conf_map_xfconf_property_name(prop_name);
 
     /* check if the property exists and emit change */
-    pspec = g_object_class_find_property(G_OBJECT_GET_CLASS(conf), parole_conf_map_xfconf_property_name(prop_name));
-    if (G_LIKELY (pspec != NULL))
-        g_object_notify_by_pspec(G_OBJECT(conf), pspec);
+    if (g_prop_name != NULL) {
+        pspec = g_object_class_find_property(G_OBJECT_GET_CLASS(conf), g_prop_name);
+        if (G_LIKELY(pspec != NULL))
+            g_object_notify_by_pspec(G_OBJECT(conf), pspec);
+        g_free(g_prop_name);
+    }
 
     g_debug("Propchange:%s,%p", prop_name, pspec);
 }
