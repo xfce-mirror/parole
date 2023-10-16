@@ -14,10 +14,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-19 00:47+0100\n"
+"POT-Creation-Date: 2023-10-16 00:48+0200\n"
 "PO-Revision-Date: 2013-07-03 18:28+0000\n"
 "Last-Translator: heskjestad <cato@heskjestad.xyz>, 2023\n"
-"Language-Team: Norwegian Bokmål (http://www.transifex.com/xfce/xfce-apps/language/nb/)\n"
+"Language-Team: Norwegian Bokmål (http://app.transifex.com/xfce/xfce-apps/language/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -32,7 +32,7 @@ msgstr "Åpne mediafiler"
 msgid "Open Network Location"
 msgstr "Åpne nettverksplassering"
 
-#: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:190
+#: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:193
 msgid "Clear History"
 msgstr "Tøm historikk"
 
@@ -49,140 +49,136 @@ msgid "X Window System (No Xv)"
 msgstr "X vindussystem (ingen Xv)"
 
 #: ../data/interfaces/parole-settings.ui.h:4
-msgid "Parole Settings"
-msgstr "Parole-innstillinger"
-
-#: ../data/interfaces/parole-settings.ui.h:5
-msgid "Configure your media player"
-msgstr "Oppsett av din mediaspiller"
+msgid "Parole Preferences"
+msgstr ""
 
 #. Add a close button to the Infobar
-#: ../data/interfaces/parole-settings.ui.h:6 ../data/interfaces/plugins.ui.h:3
-#: ../src/parole-player.c:3615 ../src/plugins/tray/tray-provider.c:257
+#: ../data/interfaces/parole-settings.ui.h:5 ../data/interfaces/plugins.ui.h:2
+#: ../src/parole-player.c:3638 ../src/plugins/tray/tray-provider.c:261
 msgid "Close"
 msgstr "Lukk"
 
-#: ../data/interfaces/parole-settings.ui.h:7
+#: ../data/interfaces/parole-settings.ui.h:6
 msgid "Disable screensaver when playing movies"
 msgstr "Skru av skjermsparer ved videoavspilling"
 
-#: ../data/interfaces/parole-settings.ui.h:8
+#: ../data/interfaces/parole-settings.ui.h:7
 msgid "<b>Screensaver</b>"
 msgstr "<b>Skjermsparer</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:9
+#: ../data/interfaces/parole-settings.ui.h:8
 msgid "Show visual effects when an audio file is played"
 msgstr "Vis visuelle effekter når en lydfil avspilles"
 
-#: ../data/interfaces/parole-settings.ui.h:10
+#: ../data/interfaces/parole-settings.ui.h:9
 msgid "Visualization type:"
 msgstr "Visualiseringstype:"
 
-#: ../data/interfaces/parole-settings.ui.h:11
+#: ../data/interfaces/parole-settings.ui.h:10
 msgid "<b>Audio Visualization</b>"
 msgstr "<b>Audiovisualisering</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:12
+#: ../data/interfaces/parole-settings.ui.h:11
 msgid "Enable keyboard multimedia keys"
 msgstr "Skru på multimedia-knapper på tastaturet"
 
-#: ../data/interfaces/parole-settings.ui.h:13
+#: ../data/interfaces/parole-settings.ui.h:12
 msgid "<b>Keyboard</b>"
 msgstr "<b>Tastatur</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:14
+#: ../data/interfaces/parole-settings.ui.h:13
 #: ../data/interfaces/shortcuts.ui.h:1
 msgid "General"
 msgstr "Generelt"
 
-#: ../data/interfaces/parole-settings.ui.h:15
+#: ../data/interfaces/parole-settings.ui.h:14
 msgid "Please restart Parole for this change to take effect."
 msgstr "Start Parole på nytt for at denne endringen skal tre i kraft."
 
-#: ../data/interfaces/parole-settings.ui.h:16
+#: ../data/interfaces/parole-settings.ui.h:15
 msgid "<b>Video Output</b>"
 msgstr "<b>Video-utgang</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:17
+#: ../data/interfaces/parole-settings.ui.h:16
 msgid "Brightness:"
 msgstr "Lysstyrke:"
 
-#: ../data/interfaces/parole-settings.ui.h:18
+#: ../data/interfaces/parole-settings.ui.h:17
 msgid "Contrast:"
 msgstr "Kontrast:"
 
-#: ../data/interfaces/parole-settings.ui.h:19
+#: ../data/interfaces/parole-settings.ui.h:18
 msgid "Hue:"
 msgstr "Kulør:"
 
-#: ../data/interfaces/parole-settings.ui.h:20
+#: ../data/interfaces/parole-settings.ui.h:19
 msgid "Saturation:"
 msgstr "Metning:"
 
-#: ../data/interfaces/parole-settings.ui.h:21
+#: ../data/interfaces/parole-settings.ui.h:20
 msgid "Reset to defaults"
 msgstr "Tilbakestill til forvalg"
 
-#: ../data/interfaces/parole-settings.ui.h:22
+#: ../data/interfaces/parole-settings.ui.h:21
 msgid "<b>Color Balance</b>"
 msgstr "<b>Fargebalanse</b>"
 
-#: ../data/interfaces/parole-settings.ui.h:23
+#: ../data/interfaces/parole-settings.ui.h:22
 msgid "Display"
 msgstr "Skjerm"
 
-#: ../data/interfaces/parole-settings.ui.h:24
+#: ../data/interfaces/parole-settings.ui.h:23
 msgid "Always replace playlist with opened files"
 msgstr "Alltid erstatt spilleliste med åpnede filer"
 
-#: ../data/interfaces/parole-settings.ui.h:25
+#: ../data/interfaces/parole-settings.ui.h:24
 msgid "Check and remove duplicate media entries"
 msgstr "Sjekk og fjern media-duplikater"
 
-#: ../data/interfaces/parole-settings.ui.h:26
+#: ../data/interfaces/parole-settings.ui.h:25
 msgid "Start playing opened files"
 msgstr "Start avspilling av åpnede filer"
 
-#: ../data/interfaces/parole-settings.ui.h:27
+#: ../data/interfaces/parole-settings.ui.h:26
 #: ../data/interfaces/playlist.ui.h:15
 msgid "Remember playlist"
 msgstr "Husk spilleliste"
 
-#: ../data/interfaces/parole-settings.ui.h:28
-msgid "<b>Playlist Settings</b>"
-msgstr "<b>Spilleliste-innstillinger</b>"
+#: ../data/interfaces/parole-settings.ui.h:27
+msgid "<b>Playlist Preferences</b>"
+msgstr ""
 
-#: ../data/interfaces/parole-settings.ui.h:29
+#: ../data/interfaces/parole-settings.ui.h:28
 #: ../data/interfaces/playlist.ui.h:1 ../data/interfaces/shortcuts.ui.h:13
 #: ../src/parole-medialist.c:797 ../src/parole-medialist.c:848
-#: ../src/parole-player.c:3241
+#: ../src/parole-player.c:3264
 msgid "Playlist"
 msgstr "Spilleliste"
 
-#: ../data/interfaces/parole-settings.ui.h:30
+#: ../data/interfaces/parole-settings.ui.h:29
 msgid "Automatically show subtitles when playing movie file"
 msgstr "Automatisk visning av undertitler når det vises film"
 
-#: ../data/interfaces/parole-settings.ui.h:31
+#: ../data/interfaces/parole-settings.ui.h:30
 msgid "Font:"
 msgstr "Skriftype:"
 
-#: ../data/interfaces/parole-settings.ui.h:32
+#: ../data/interfaces/parole-settings.ui.h:31
 msgid "Encoding:"
 msgstr "Tegnkoding:"
 
-#: ../data/interfaces/parole-settings.ui.h:33
-msgid "<b>Subtitle Settings</b>"
-msgstr "<b>Undertittel-innstillinger</b>"
+#: ../data/interfaces/parole-settings.ui.h:32
+msgid "<b>Subtitle Preferences</b>"
+msgstr ""
 
-#: ../data/interfaces/parole-settings.ui.h:34
+#: ../data/interfaces/parole-settings.ui.h:33
 msgid "Subtitles"
 msgstr "Undertekster"
 
 #: ../data/interfaces/parole.ui.h:1
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:1 ../src/parole-about.c:75
-#: ../src/parole-player.c:598 ../src/parole-player.c:1439
-#: ../src/parole-player.c:1800 ../src/plugins/mpris2/mpris2-provider.c:189
+#: ../src/parole-player.c:601 ../src/parole-player.c:1442
+#: ../src/parole-player.c:1811 ../src/plugins/mpris2/mpris2-provider.c:189
 msgid "Parole Media Player"
 msgstr "Parole mediaspiller"
 
@@ -212,7 +208,7 @@ msgid "Insert Disc"
 msgstr "Sett inn disk"
 
 #. * Exit
-#: ../data/interfaces/parole.ui.h:8 ../src/plugins/tray/tray-provider.c:168
+#: ../data/interfaces/parole.ui.h:8 ../src/plugins/tray/tray-provider.c:172
 msgid "_Quit"
 msgstr "_Avslutt"
 
@@ -233,7 +229,7 @@ msgid "Show Playlist"
 msgstr "Vis spilleliste"
 
 #. Create dialog
-#: ../data/interfaces/parole.ui.h:13 ../src/parole-player.c:2854
+#: ../data/interfaces/parole.ui.h:13 ../src/parole-player.c:2870
 msgid "Go to position"
 msgstr "Gå til posisjon"
 
@@ -277,7 +273,7 @@ msgstr "_Lyd"
 msgid "_Audio Track"
 msgstr "_Lydspor"
 
-#: ../data/interfaces/parole.ui.h:24 ../src/parole-player.c:809
+#: ../data/interfaces/parole.ui.h:24 ../src/parole-player.c:812
 msgid "Empty"
 msgstr "Tom"
 
@@ -297,8 +293,8 @@ msgstr "_Demp"
 msgid "_Video"
 msgstr "_Video"
 
-#: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:1988
-#: ../src/parole-player.c:2133
+#: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:1999
+#: ../src/parole-player.c:2144
 msgid "_Fullscreen"
 msgstr "_Fullskjerm"
 
@@ -306,7 +302,7 @@ msgstr "_Fullskjerm"
 msgid "_Aspect Ratio"
 msgstr "_Størrelsesforhold"
 
-#: ../data/interfaces/parole.ui.h:31 ../src/parole-player.c:740
+#: ../data/interfaces/parole.ui.h:31 ../src/parole-player.c:743
 msgid "None"
 msgstr "Ingen"
 
@@ -459,19 +455,15 @@ msgstr "Spill åpnede filer"
 msgid "Parole Plugins"
 msgstr "Parole-tillegg "
 
-#: ../data/interfaces/plugins.ui.h:2
-msgid "Extend your media player"
-msgstr "Utvid din mediaspiller"
-
-#: ../data/interfaces/plugins.ui.h:4
+#: ../data/interfaces/plugins.ui.h:3
 msgid "Plugin"
 msgstr "Tillegg"
 
-#: ../data/interfaces/plugins.ui.h:5
+#: ../data/interfaces/plugins.ui.h:4
 msgid "Preferences"
 msgstr "Innstillinger"
 
-#: ../data/interfaces/plugins.ui.h:6
+#: ../data/interfaces/plugins.ui.h:5
 msgid "About"
 msgstr "Om"
 
@@ -487,7 +479,7 @@ msgstr "Åpne fil"
 msgid "Open location"
 msgstr "Åpne plassering"
 
-#: ../data/interfaces/shortcuts.ui.h:4 ../src/plugins/tray/tray-provider.c:325
+#: ../data/interfaces/shortcuts.ui.h:4 ../src/plugins/tray/tray-provider.c:354
 msgid "Quit"
 msgstr "Avslutt"
 
@@ -519,7 +511,7 @@ msgstr "Øk lydstyrke"
 msgid "Decrease volume"
 msgstr "Senk lydstyrke"
 
-#: ../data/interfaces/shortcuts.ui.h:12 ../src/parole-player.c:2405
+#: ../data/interfaces/shortcuts.ui.h:12 ../src/parole-player.c:2416
 msgid "Mute"
 msgstr "Demp"
 
@@ -548,11 +540,11 @@ msgstr "Avspilling"
 msgid "Play/Pause"
 msgstr "Spill av/Pause"
 
-#: ../data/interfaces/shortcuts.ui.h:20 ../src/main.c:242
+#: ../data/interfaces/shortcuts.ui.h:20 ../src/main.c:245
 msgid "Previous track"
 msgstr "Forrige spor"
 
-#: ../data/interfaces/shortcuts.ui.h:21 ../src/main.c:240
+#: ../data/interfaces/shortcuts.ui.h:21 ../src/main.c:243
 msgid "Next track"
 msgstr "Neste spor"
 
@@ -585,12 +577,12 @@ msgid "Play your media"
 msgstr "Spill dine mediafiler"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:4
-#: ../src/parole-player.c:3387 ../src/plugins/notify/notify-provider.c:190
+#: ../src/parole-player.c:3410 ../src/plugins/notify/notify-provider.c:190
 msgid "Previous Track"
 msgstr "Forrige spor"
 
 #: ../data/desktop/org.xfce.Parole.desktop.in.in.h:5
-#: ../src/parole-player.c:3405 ../src/plugins/notify/notify-provider.c:202
+#: ../src/parole-player.c:3428 ../src/plugins/notify/notify-provider.c:202
 msgid "Next Track"
 msgstr "Neste spor"
 
@@ -702,92 +694,92 @@ msgstr "Melding"
 msgid "Error"
 msgstr "Feil"
 
-#: ../src/gst/parole-gst.c:1104 ../src/parole-medialist.c:412
+#: ../src/gst/parole-gst.c:1111 ../src/parole-medialist.c:412
 #, c-format
 msgid "Track %i"
 msgstr "Spor %i"
 
-#: ../src/gst/parole-gst.c:1107
+#: ../src/gst/parole-gst.c:1114
 msgid "Audio CD"
 msgstr "Lyd-CD"
 
-#: ../src/gst/parole-gst.c:1285
+#: ../src/gst/parole-gst.c:1292
 msgid "Unable to install missing codecs."
 msgstr "Kunne ikke installere manglende kodeker."
 
-#: ../src/gst/parole-gst.c:1288
+#: ../src/gst/parole-gst.c:1295
 msgid "No available plugin installer was found."
 msgstr "Ingen tilgjengelig installerer for plugin ble funnet."
 
-#: ../src/gst/parole-gst.c:1339
+#: ../src/gst/parole-gst.c:1346
 msgid "Additional software is required."
 msgstr "Ytterligere programvare påkrevd"
 
-#: ../src/gst/parole-gst.c:1343
+#: ../src/gst/parole-gst.c:1350
 msgid "Don't Install"
 msgstr "Ikke installer"
 
-#: ../src/gst/parole-gst.c:1345
+#: ../src/gst/parole-gst.c:1352
 msgid "Install"
 msgstr "Installer"
 
-#: ../src/gst/parole-gst.c:1348
+#: ../src/gst/parole-gst.c:1355
 msgid "OK"
 msgstr "OK"
 
-#: ../src/gst/parole-gst.c:1355
+#: ../src/gst/parole-gst.c:1362
 #, c-format
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
 msgstr "Parole trenger <b>%s</b> som kan installeres automatisk, for avspilling av denne filen."
 
-#: ../src/gst/parole-gst.c:1358
+#: ../src/gst/parole-gst.c:1365
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
 msgstr "Parole trenger <b>%s</b> for å spille denne filen."
 
-#: ../src/gst/parole-gst.c:1737
+#: ../src/gst/parole-gst.c:1746
 msgid "The stream is taking too much time to load"
 msgstr "Det tar for lang tid å laste inn strømmen"
 
-#: ../src/gst/parole-gst.c:1739
+#: ../src/gst/parole-gst.c:1748
 msgid "Do you want to continue loading or stop?"
 msgstr "Ønsker du å fortsette innlasting eller å stoppe?"
 
-#: ../src/gst/parole-gst.c:1740
+#: ../src/gst/parole-gst.c:1749
 msgid "Stop"
 msgstr "Stopp"
 
-#: ../src/gst/parole-gst.c:1741
+#: ../src/gst/parole-gst.c:1750
 msgid "Continue"
 msgstr "Fortsett"
 
-#: ../src/gst/parole-gst.c:1940
+#: ../src/gst/parole-gst.c:1949
 msgid "GStreamer Error"
 msgstr "GStreamer-feil"
 
-#: ../src/gst/parole-gst.c:1941
+#: ../src/gst/parole-gst.c:1950
 msgid "Parole Media Player cannot start."
 msgstr "Parole mediaspiller kan ikke starte opp."
 
-#: ../src/gst/parole-gst.c:1966 ../src/gst/parole-gst.c:1981
-#: ../src/gst/parole-gst.c:2015
+#: ../src/gst/parole-gst.c:1975 ../src/gst/parole-gst.c:1990
+#: ../src/gst/parole-gst.c:2024
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
 msgstr "Kan ikke laste inn tillegget «%s», sjekk din GStreamer-installasjon"
 
-#: ../src/gst/parole-gst.c:2580 ../src/gst/parole-gst.c:2584
+#: ../src/gst/parole-gst.c:2589 ../src/gst/parole-gst.c:2593
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Lydspor #%d"
 
-#: ../src/gst/parole-gst.c:2620 ../src/gst/parole-gst.c:2624
+#: ../src/gst/parole-gst.c:2629 ../src/gst/parole-gst.c:2633
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Undertekst #%d"
 
-#: ../src/main.c:59
+#: ../src/main.c:62
 #, c-format
 msgid ""
 "\n"
@@ -802,68 +794,68 @@ msgid ""
 "\n"
 msgstr "\nParole Mediaspiller %s\n\nInngår i Xfce Goodies-prosjektet\nhttps://goodies.xfce.org\n\nLisensiert under GNU GPL.\n\nMeld fra om feil til <%s>.\n\n"
 
-#: ../src/main.c:228
+#: ../src/main.c:231
 msgid "Open a new instance"
 msgstr "Åpne en ny instans"
 
-#: ../src/main.c:230
+#: ../src/main.c:233
 msgid "Do not load plugins"
 msgstr "Ikke last tillegg"
 
-#: ../src/main.c:232
+#: ../src/main.c:235
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "Velg Audio-CD/VCD/DVD enhetssti"
 
-#: ../src/main.c:234
+#: ../src/main.c:237
 msgid "Start in embedded mode"
 msgstr "Start i innebygd modus"
 
-#: ../src/main.c:236
+#: ../src/main.c:239
 msgid "Start in fullscreen mode"
 msgstr "Start i fullskjermsmodus"
 
-#: ../src/main.c:238
+#: ../src/main.c:241
 msgid "Play or pause if already playing"
 msgstr "Spill eller pause av spillende"
 
-#: ../src/main.c:244
+#: ../src/main.c:247
 msgid "Raise volume"
 msgstr "Øk lydstyrke"
 
-#: ../src/main.c:246
+#: ../src/main.c:249
 msgid "Lower volume"
 msgstr "Senk lydstyrke"
 
-#: ../src/main.c:248
+#: ../src/main.c:251
 msgid "Mute volume"
 msgstr "Stilne lydstyrke"
 
-#: ../src/main.c:250
+#: ../src/main.c:253
 msgid "Unmute (restore) volume"
 msgstr "Gjennopprett (tidligere) lydstyrke"
 
-#: ../src/main.c:252
+#: ../src/main.c:255
 msgid "Add files to playlist"
 msgstr "Legg til filer til spilleliste"
 
-#: ../src/main.c:254
+#: ../src/main.c:257
 msgid "Print version information and exit"
 msgstr "Skriv ut versjonsinformasjon og avslutt"
 
-#: ../src/main.c:258
+#: ../src/main.c:261
 msgid "Media to play"
 msgstr "Media til avspilling"
 
-#: ../src/main.c:282
+#: ../src/main.c:288
 msgid "[FILES...] - Play movies and songs"
 msgstr "[FILES…] - Spill filmer og låter"
 
-#: ../src/main.c:293
+#: ../src/main.c:299
 #, c-format
 msgid "Type %s --help to list all available command line options\n"
 msgstr "Skriv %s --hjelp for å se full liste over tilgjengelige kommandolinje-tilvalg\n"
 
-#: ../src/main.c:310
+#: ../src/main.c:316
 #, c-format
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole kjører allerede, bruk -i for å åpne en ny instans\n\n"
@@ -908,8 +900,8 @@ msgstr "Clutter (OpenGL)"
 msgid "Play Disc"
 msgstr "Spill disk"
 
-#: ../src/parole-mediachooser.c:234 ../src/parole-medialist.c:855
-#: ../src/parole-player.c:1014
+#: ../src/parole-mediachooser.c:236 ../src/parole-medialist.c:855
+#: ../src/parole-player.c:1017
 msgid "All files"
 msgstr "Alle filer"
 
@@ -927,7 +919,7 @@ msgid_plural "Playlist (%i chapters)"
 msgstr[0] "Spilleliste (%i kapittel)"
 msgstr[1] "Spilleliste (%i kapitler)"
 
-#: ../src/parole-medialist.c:426 ../src/parole-player.c:720
+#: ../src/parole-medialist.c:426 ../src/parole-player.c:723
 #, c-format
 msgid "Chapter %i"
 msgstr "Kapittel %i"
@@ -948,13 +940,13 @@ msgstr "Ukjent spillelisteformat"
 msgid "Please choose a supported playlist format"
 msgstr "Velg et støttet spilleliste-format"
 
-#: ../src/parole-medialist.c:745 ../src/parole-plugins-manager.c:356
+#: ../src/parole-medialist.c:745 ../src/parole-plugins-manager.c:363
 msgid "Unknown"
 msgstr "Ukjent"
 
-#: ../src/parole-medialist.c:838 ../src/parole-player.c:985
-#: ../src/parole-player.c:1176 ../src/parole-player.c:2857
-#: ../src/plugins/tray/tray-provider.c:319
+#: ../src/parole-medialist.c:838 ../src/parole-player.c:988
+#: ../src/parole-player.c:1179 ../src/parole-player.c:2873
+#: ../src/plugins/tray/tray-provider.c:348
 msgid "Cancel"
 msgstr "Avbryt"
 
@@ -988,158 +980,158 @@ msgid "Open Containing Folder"
 msgstr "Åpne mappe som inneholder denne"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:979
+#: ../src/parole-player.c:982
 msgid "Select Subtitle File"
 msgstr "Velg undertekst-fil"
 
-#: ../src/parole-player.c:986
+#: ../src/parole-player.c:989
 msgid "Open"
 msgstr "Åpne"
 
-#: ../src/parole-player.c:1002
+#: ../src/parole-player.c:1005
 msgid "Subtitle Files"
 msgstr "Undertekstfiler"
 
-#: ../src/parole-player.c:1172 ../src/parole-player.c:1180
+#: ../src/parole-player.c:1175 ../src/parole-player.c:1183
 msgid "Clear Recent Items"
 msgstr "Slett nylige elementer"
 
-#: ../src/parole-player.c:1174
+#: ../src/parole-player.c:1177
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
 msgstr "Er du sikker på at du vil slette nylig elementhistorikk? Dette kan ikke omgjøres."
 
-#: ../src/parole-player.c:1270 ../src/parole-player.c:1395
+#: ../src/parole-player.c:1273 ../src/parole-player.c:1398
 msgid "Media stream is not seekable"
 msgstr "Mediastrøm er ikke søkbar"
 
-#: ../src/parole-player.c:1280
+#: ../src/parole-player.c:1283
 msgid "Play"
 msgstr "Spill"
 
-#: ../src/parole-player.c:1283
+#: ../src/parole-player.c:1286
 msgid "Pause"
 msgstr "Pause"
 
-#: ../src/parole-player.c:1724
+#: ../src/parole-player.c:1732
 msgid "GStreamer backend error"
 msgstr "Feil i Gstreamer-bakstykke"
 
-#: ../src/parole-player.c:1805
+#: ../src/parole-player.c:1816
 msgid "Unknown Song"
 msgstr "Ukjent sang"
 
-#: ../src/parole-player.c:1816 ../src/parole-player.c:1822
-#: ../src/parole-player.c:1830
+#: ../src/parole-player.c:1827 ../src/parole-player.c:1833
+#: ../src/parole-player.c:1841
 msgid "on"
 msgstr "på"
 
-#: ../src/parole-player.c:1830 ../src/plugins/notify/notify-provider.c:134
+#: ../src/parole-player.c:1841 ../src/plugins/notify/notify-provider.c:134
 msgid "Unknown Album"
 msgstr "Ukjent album"
 
-#: ../src/parole-player.c:1841 ../src/parole-player.c:1848
+#: ../src/parole-player.c:1852 ../src/parole-player.c:1859
 msgid "by"
 msgstr "av"
 
-#: ../src/parole-player.c:1848 ../src/plugins/notify/notify-provider.c:136
+#: ../src/parole-player.c:1859 ../src/plugins/notify/notify-provider.c:136
 msgid "Unknown Artist"
 msgstr "Ukjent artist"
 
-#: ../src/parole-player.c:1883
+#: ../src/parole-player.c:1894
 msgid "Buffering"
 msgstr "Mellomlagrer"
 
-#: ../src/parole-player.c:1989 ../src/parole-player.c:3422
+#: ../src/parole-player.c:2000 ../src/parole-player.c:3445
 msgid "Fullscreen"
 msgstr "Fullskjerm"
 
-#: ../src/parole-player.c:1997
+#: ../src/parole-player.c:2008
 msgid "Leave _Fullscreen"
 msgstr "Forlat _fullskjerm"
 
-#: ../src/parole-player.c:1998
+#: ../src/parole-player.c:2009
 msgid "Leave Fullscreen"
 msgstr "Forlat fullskjerm"
 
 #. Play menu item
 #. * Play pause
-#: ../src/parole-player.c:2095 ../src/plugins/tray/tray-provider.c:119
+#: ../src/parole-player.c:2106 ../src/plugins/tray/tray-provider.c:123
 msgid "_Pause"
 msgstr "_Pause"
 
-#: ../src/parole-player.c:2095 ../src/plugins/tray/tray-provider.c:119
+#: ../src/parole-player.c:2106 ../src/plugins/tray/tray-provider.c:123
 msgid "_Play"
 msgstr "_Spill"
 
 #. * Previous item in playlist.
-#: ../src/parole-player.c:2111
+#: ../src/parole-player.c:2122
 msgid "_Previous"
 msgstr "_Forrige"
 
 #. * Next item in playlist.
-#: ../src/parole-player.c:2122
+#: ../src/parole-player.c:2133
 msgid "_Next"
 msgstr "_Neste"
 
 #. * Un/Full screen
-#: ../src/parole-player.c:2133
+#: ../src/parole-player.c:2144
 msgid "_Leave Fullscreen"
 msgstr "_Forlat fullskjerm"
 
 #. * Un/Hide menubar
-#: ../src/parole-player.c:2148
+#: ../src/parole-player.c:2159
 msgid "Show menubar"
 msgstr "Vis menylinje"
 
-#: ../src/parole-player.c:2165
+#: ../src/parole-player.c:2176
 msgid "Mini Mode"
 msgstr "Mini-modus"
 
-#: ../src/parole-player.c:2408
+#: ../src/parole-player.c:2419
 msgid "Unmute"
 msgstr "Skru på lyden"
 
-#: ../src/parole-player.c:2828
+#: ../src/parole-player.c:2844
 msgid "Unable to open default web browser"
 msgstr "Kunne ikke åpne forvalgt nettleser"
 
-#: ../src/parole-player.c:2830
+#: ../src/parole-player.c:2846
 msgid ""
 "Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr "Gå til https://docs.xfce.org/apps/parole/bugs for å rapportere feil."
 
-#: ../src/parole-player.c:2858
+#: ../src/parole-player.c:2874
 msgid "Go"
 msgstr "Gå"
 
 #. Clear Recent Menu Item
-#: ../src/parole-player.c:3279
+#: ../src/parole-player.c:3302
 msgid "_Clear recent items..."
 msgstr "_Tøm nylige elementer …"
 
-#: ../src/parole-player.c:3590
+#: ../src/parole-player.c:3613
 msgid "Audio Track:"
 msgstr "Lydspor:"
 
-#: ../src/parole-player.c:3609
+#: ../src/parole-player.c:3632
 msgid "Subtitles:"
 msgstr "Undertekster:"
 
-#: ../src/parole-plugins-manager.c:281
+#: ../src/parole-plugins-manager.c:288
 msgid "Plugin failed to load"
 msgstr "Tillegg kunne ikke innlastes"
 
-#: ../src/parole-plugins-manager.c:282
+#: ../src/parole-plugins-manager.c:289
 msgid "Please check your installation"
 msgstr "Sjekk din installasjon"
 
-#: ../src/parole-plugins-manager.c:393
+#: ../src/parole-plugins-manager.c:400
 msgid "No installed plugins found on this system"
 msgstr "Fant ingen installerte tillegg på dette systemet"
 
-#: ../src/parole-plugins-manager.c:394
+#: ../src/parole-plugins-manager.c:401
 msgid "Please check your installation."
 msgstr "Sjekk din installasjon"
 
@@ -1319,40 +1311,40 @@ msgid "Show icon in the system tray"
 msgstr "Vis ikon i systemkurv"
 
 #. * Previous Track
-#: ../src/plugins/tray/tray-provider.c:128
+#: ../src/plugins/tray/tray-provider.c:132
 msgid "P_revious Track"
 msgstr "F_orrige spor"
 
 #. * Next Track
-#: ../src/plugins/tray/tray-provider.c:137
+#: ../src/plugins/tray/tray-provider.c:141
 msgid "_Next Track"
 msgstr "_Neste spor"
 
 #. * Open
-#: ../src/plugins/tray/tray-provider.c:153
+#: ../src/plugins/tray/tray-provider.c:157
 msgid "_Open"
 msgstr "_Åpne"
 
-#: ../src/plugins/tray/tray-provider.c:254
+#: ../src/plugins/tray/tray-provider.c:258
 msgid "Tray icon plugin"
 msgstr "Systemkurvikon-tillegg"
 
-#: ../src/plugins/tray/tray-provider.c:264
+#: ../src/plugins/tray/tray-provider.c:268
 msgid "Always minimize to tray when window is closed"
 msgstr "Alltid minimer til systemkurv når vinduet lukkes"
 
-#: ../src/plugins/tray/tray-provider.c:307
+#: ../src/plugins/tray/tray-provider.c:336
 msgid "Are you sure you want to quit?"
 msgstr "Er du sikker på at du ønsker å avslutte?"
 
-#: ../src/plugins/tray/tray-provider.c:310
+#: ../src/plugins/tray/tray-provider.c:339
 msgid "Parole can be minimized to the system tray instead."
 msgstr "Parole kan alternativt minimeres til systemkurven."
 
-#: ../src/plugins/tray/tray-provider.c:313
+#: ../src/plugins/tray/tray-provider.c:342
 msgid "Minimize to tray"
 msgstr "Minimer til systemkurv"
 
-#: ../src/plugins/tray/tray-provider.c:334
+#: ../src/plugins/tray/tray-provider.c:363
 msgid "Remember my choice"
 msgstr "Husk mitt valg"
