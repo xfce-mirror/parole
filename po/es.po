@@ -17,6 +17,7 @@
 # gabrieltandil <gabriel.tandil@gmail.com>, 2014
 # Hernan Gabriel Alvarez Guerra <hernan.alvarez.guerra@gmail.com>, 2013
 # Ignacio Poggi <ignaciop.3@gmail.com>, 2020
+# Joel Barrios <darkshram@gmail.com>, 2023
 # 629cf3e396111bb8c5fb6664e2dbc91d, 2017
 # mc <correomc2000-ing@yahoo.es>, 2013
 # Miguel Hernández <mhdez@protonmail.com>, 2015
@@ -32,7 +33,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-16 00:48+0200\n"
 "PO-Revision-Date: 2013-07-03 18:28+0000\n"
-"Last-Translator: Casper, 2023\n"
+"Last-Translator: Joel Barrios <darkshram@gmail.com>, 2023\n"
 "Language-Team: Spanish (http://app.transifex.com/xfce/xfce-apps/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -66,7 +67,7 @@ msgstr "Sistema de Ventanas X (Sin Xv)"
 
 #: ../data/interfaces/parole-settings.ui.h:4
 msgid "Parole Preferences"
-msgstr ""
+msgstr "Preferencias de Parole"
 
 #. Add a close button to the Infobar
 #: ../data/interfaces/parole-settings.ui.h:5 ../data/interfaces/plugins.ui.h:2
@@ -162,7 +163,7 @@ msgstr "Recordar la lista de reproducción"
 
 #: ../data/interfaces/parole-settings.ui.h:27
 msgid "<b>Playlist Preferences</b>"
-msgstr ""
+msgstr "<b>Preferencias de Lista de Reproducción</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:28
 #: ../data/interfaces/playlist.ui.h:1 ../data/interfaces/shortcuts.ui.h:13
@@ -185,7 +186,7 @@ msgstr "Codificación:"
 
 #: ../data/interfaces/parole-settings.ui.h:32
 msgid "<b>Subtitle Preferences</b>"
-msgstr ""
+msgstr "<b>Preferencias de Subtítulos</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:33
 msgid "Subtitles"
