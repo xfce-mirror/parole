@@ -30,7 +30,7 @@
 
 #include <glib.h>
 #include <gtk/gtk.h>
-#ifdef GDK_WINDOWING_X11
+#ifdef ENABLE_X11
 #include <gdk/gdkx.h>
 #define WINDOWING_IS_X11() GDK_IS_X11_DISPLAY (gdk_display_get_default ())
 #else

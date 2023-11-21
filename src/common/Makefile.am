@@ -13,7 +13,7 @@ libparolecommon_la_CFLAGS =		\
 	$(GTK_CFLAGS)			\
 	$(LIBXFCE4UTIL_CFLAGS)
 
-if HAVE_LIBX11
+if ENABLE_X11
 
 noinst_LTLIBRARIES += 			\
 	libparolescreensaver.la

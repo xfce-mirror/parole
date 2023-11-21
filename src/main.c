@@ -43,7 +43,7 @@
 #include <dbus/dbus-glib.h>
 #include <dbus/dbus-glib-lowlevel.h>
 
-#ifdef HAVE_LIBX11
+#ifdef ENABLE_X11
 #include <X11/X.h>
 #include <X11/Xlib.h>
 #include <gdk/gdkx.h>
@@ -274,7 +274,7 @@ int main(int argc, char **argv) {
         return EXIT_FAILURE;
     }
 
-#ifdef HAVE_LIBX11
+#ifdef ENABLE_X11
     if (GDK_IS_X11_DISPLAY(gdk_display_get_default()))
         XInitThreads();
 #endif
