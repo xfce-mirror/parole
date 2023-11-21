@@ -241,6 +241,8 @@ parole_file_constructed(GObject *object) {
 out:
     file->priv->uri = g_file_get_uri(gfile);
     g_object_unref(gfile);
+
+    G_OBJECT_CLASS(parole_file_parent_class)->constructed(object);
 }
 
 static void

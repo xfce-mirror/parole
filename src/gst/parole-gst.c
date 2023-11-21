@@ -2070,6 +2070,8 @@ parole_gst_constructed(GObject *object) {
     parole_gst_set_subtitle_font(gst);
 
     TRACE("End");
+
+    G_OBJECT_CLASS(parole_gst_parent_class)->constructed(object);
 }
 
 static void

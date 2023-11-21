@@ -97,13 +97,6 @@ parole_clutter_hide(GtkWidget *widget) {
 }
 
 static void
-parole_clutter_constructed(GObject *object) {
-    // ParoleClutter *clutter;
-
-    // clutter = PAROLE_CLUTTER (object);
-}
-
-static void
 parole_clutter_get_video_output_size(ParoleClutter *clutter, gint *ret_w, gint *ret_h) {
     guint video_w, video_h;
     guint video_par_n, video_par_d;
@@ -271,7 +264,6 @@ parole_clutter_class_init(ParoleClutterClass *klass) {
     GtkWidgetClass *widget_class = GTK_WIDGET_CLASS(klass);
 
     object_class->finalize = parole_clutter_finalize;
-    object_class->constructed = parole_clutter_constructed;
 
     object_class->set_property = parole_clutter_set_property;
     object_class->get_property = parole_clutter_get_property;

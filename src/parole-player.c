@@ -2523,6 +2523,8 @@ parole_player_constructed(GObject *object) {
     }
 
     g_free(current_dir);
+
+    G_OBJECT_CLASS(parole_player_parent_class)->constructed(object);
 }
 #endif
 
