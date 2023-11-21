@@ -28,7 +28,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#ifdef HAVE_LIBX11
+#ifdef ENABLE_X11
 #ifdef HAVE_XF86_KEYSYM
 #include <X11/XF86keysym.h>
 #endif
@@ -358,7 +358,7 @@ struct ParolePlayerPrivate {
     DBusGConnection    *bus;
     ParoleMediaList    *list;
     ParoleDisc         *disc;
-#ifdef HAVE_LIBX11
+#ifdef ENABLE_X11
     ParoleScreenSaver  *screen_saver;
 #endif
     GDBusConnection    *connection;
@@ -1541,7 +1541,7 @@ parole_player_play_prev(ParolePlayer *player) {
     parole_gst_stop(PAROLE_GST(player->priv->gst));
 }
 
-#ifdef HAVE_LIBX11
+#ifdef ENABLE_X11
 static void
 parole_player_reset_saver_changed(ParolePlayer *player, const ParoleStream *stream) {
     gboolean reset_saver;
@@ -1583,7 +1583,7 @@ parole_player_media_state_cb(ParoleGst *gst, const ParoleStream *stream, ParoleS
     PAROLE_DEBUG_ENUM("State callback", state, PAROLE_ENUM_TYPE_STATE);
 
     player->priv->state = state;
-#ifdef HAVE_LIBX11
+#ifdef ENABLE_X11
     if (player->priv->screen_saver != NULL)
         parole_player_reset_saver_changed(player, stream);
 #endif
@@ -1730,7 +1730,7 @@ parole_player_range_value_changed(GtkRange *range, ParolePlayer *player) {
 static void
 parole_player_error_cb(ParoleGst *gst, const gchar *error, ParolePlayer *player) {
     parole_dialog_error(GTK_WINDOW(player->priv->window), _("GStreamer backend error"), error);
-#ifdef HAVE_LIBX11
+#ifdef ENABLE_X11
     if (player->priv->screen_saver != NULL)
         parole_screen_saver_uninhibit(player->priv->screen_saver, GTK_WINDOW(player->priv->window));
 #endif
@@ -2440,7 +2440,7 @@ parole_player_finalize(GObject *object) {
     g_object_unref(player->priv->conf);
     g_object_unref(player->priv->video_filter);
     g_object_unref(player->priv->disc);
-#ifdef HAVE_LIBX11
+#ifdef ENABLE_X11
     if (player->priv->screen_saver != NULL)
         g_object_unref(player->priv->screen_saver);
 #endif
@@ -2559,7 +2559,7 @@ parole_player_class_init(ParolePlayerClass *klass) {
  * while playing movies or not.
  *
  */
-#ifdef HAVE_LIBX11
+#ifdef ENABLE_X11
 static void
 parole_player_reset_saver_changed_cb(ParolePlayer *player) {
     if (player->priv->screen_saver != NULL) {
@@ -3093,7 +3093,7 @@ parole_player_window_notify_is_active(ParolePlayer *player) {
     }
 }
 
-#ifdef HAVE_LIBX11
+#ifdef ENABLE_X11
 /**
  *
  * Sets the _NET_WM_WINDOW_OPACITY_LOCKED wm hint
@@ -3209,7 +3209,7 @@ parole_player_init(ParolePlayer *player) {
 #endif
 
     /* ParoleScreenSaver */
-#ifdef HAVE_LIBX11
+#ifdef ENABLE_X11
     if (GDK_IS_X11_DISPLAY(gdk_display_get_default())) {
         player->priv->screen_saver = parole_screen_saver_new();
         g_signal_connect_swapped(player->priv->conf, "notify::reset-saver",
@@ -3770,7 +3770,7 @@ parole_player_init(ParolePlayer *player) {
     if (always_hide_menubar == TRUE)
         parole_player_hide_menubar_cb(NULL, player);
 
-#ifdef HAVE_LIBX11
+#ifdef ENABLE_X11
     if (GDK_IS_X11_DISPLAY(gdk_display_get_default()))
         parole_player_set_wm_opacity_hint(player->priv->window);
 #endif

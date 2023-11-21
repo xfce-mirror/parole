@@ -136,14 +136,29 @@ XDT_CHECK_PACKAGE([GST_VIDEO], [gstreamer-video-${gstreamer_api_version}], [${gs
 XDT_CHECK_PACKAGE([GST_PBUTILS], [gstreamer-pbutils-${gstreamer_api_version}], [${gstreamer_minimum_version}])
 GST_LIBS="$GST_LIBS -lgstbase-$GST_API_VERSION -lgstvideo-$GST_API_VERSION -lgstaudio-$GST_API_VERSION -lgstpbutils-$GST_API_VERSION -lgsttag-$GST_API_VERSION"
 
-XDT_CHECK_OPTIONAL_PACKAGE([LIBX11], [x11], [libx11_minimum_version], [libx11], [Libx11 support])
+XDT_CHECK_OPTIONAL_FEATURE([X11],
+                           [x11],
+                           [
+                             XDT_FEATURE_DEPENDENCY([GDK_X11], [gdk-x11-3.0], [gtk_minimum_version])
+                             XDT_FEATURE_DEPENDENCY([LIBX11], [x11], [libx11_minimum_version])
+                           ],
+                           [the X11 windowing system])
+XDT_CHECK_OPTIONAL_FEATURE([WAYLAND],
+                           [wayland],
+                           [
+                             XDT_FEATURE_DEPENDENCY([GDK_WAYLAND], [gdk-wayland-3.0], [gtk_minimum_version])
+                           ],
+                           [the Wayland windowing system])
+if test x"$ENABLE_X11" != x"yes" -a x"$ENABLE_WAYLAND" != x"yes"; then
+  AC_MSG_ERROR([Either both X11 and Wayland support was disabled, or required dependencies are missing. One of the two must be enabled.])
+fi
 
 # ===================================================== #
 #                  Check XF86keysysm                    #
 # ===================================================== #
 # Check for the AudioPlay sym other should exist
 # if this one exists.
-if test x"$LIBX11_FOUND" = x"yes"; then
+if test x"$ENABLE_X11" = x"yes"; then
   AC_CHECK_DECL(XF86XK_AudioPlay,have_XF86XK_AudioPlay=1,have_XF86XK_AudioPlay=0,[#include <X11/XF86keysym.h>])
   if test "x${ac_cv_have_decl_XF86XK_AudioPlay}" != "xno"; then
     AC_DEFINE(HAVE_XF86_KEYSYM, 1, [Define if XF86keysysm.h is available])
@@ -286,7 +301,8 @@ echo "
         ======================
         Clutter Backend:                ${ac_clutter}
         Taglib:                         ${TAGLIB_FOUND:-no}
-        Libx11:                         ${LIBX11_FOUND:-no}
+        X11:                            ${ENABLE_X11:-no}
+        Wayland:                        ${ENABLE_WAYLAND:-no}
 
         Plugins to build:
         =================

@@ -97,7 +97,7 @@ parole_LDADD =						   	\
 	$(TAGLIBC_LIBS)				\
 	$(LIBX11_LIBS)
 
-if HAVE_LIBX11
+if ENABLE_X11
 parole_LDADD +=						   	\
 	$(top_builddir)/src/common/libparolescreensaver.la
 endif
