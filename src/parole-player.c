@@ -2439,7 +2439,8 @@ parole_player_finalize(GObject *object) {
         g_object_unref(player->priv->screen_saver);
     if (player->priv->client_id)
         g_free(player->priv->client_id);
-    g_object_unref(player->priv->sm_client);
+    if (player->priv->sm_client != NULL)
+        g_object_unref(player->priv->sm_client);
 #ifdef HAVE_XF86_KEYSYM
     if (player->priv->button)
         g_object_unref(player->priv->button);
@@ -2501,6 +2502,9 @@ parole_player_constructed(GObject *object) {
         "--new-instance",
         NULL
     };
+
+    if (!GDK_IS_X11_DISPLAY(gdk_display_get_default()))
+        return;
 
     player = PAROLE_PLAYER(object);
 
