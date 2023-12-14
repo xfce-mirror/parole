@@ -5,7 +5,7 @@
 # Translators:
 # Nikola Radovanović <cobisimo@gmail.com>, 2018
 # Саша Петровић <salepetronije@gmail.com>, 2012
-# Саша Петровић <salepetronije@gmail.com>, 2012-2014,2017,2019
+# Саша Петровић <salepetronije@gmail.com>, 2012-2014,2017,2019,2023
 # Саша Петровић <salepetronije@gmail.com>, 2014-2015
 # Саша Петровић <salepetronije@gmail.com>, 2017-2018
 # Саша Петровић <salepetronije@gmail.com>, 2019
@@ -16,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-16 00:48+0200\n"
 "PO-Revision-Date: 2013-07-03 18:28+0000\n"
-"Last-Translator: Саша Петровић <salepetronije@gmail.com>, 2012-2014,2017,2019\n"
+"Last-Translator: Саша Петровић <salepetronije@gmail.com>, 2012-2014,2017,2019,2023\n"
 "Language-Team: Serbian (http://app.transifex.com/xfce/xfce-apps/language/sr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -50,7 +50,7 @@ msgstr "Систем прозора икс (без ИксВ)"
 
 #: ../data/interfaces/parole-settings.ui.h:4
 msgid "Parole Preferences"
-msgstr ""
+msgstr "Поставке Часноречца"
 
 #. Add a close button to the Infobar
 #: ../data/interfaces/parole-settings.ui.h:5 ../data/interfaces/plugins.ui.h:2
@@ -146,7 +146,7 @@ msgstr "Запамти списак за извођење"
 
 #: ../data/interfaces/parole-settings.ui.h:27
 msgid "<b>Playlist Preferences</b>"
-msgstr ""
+msgstr "<b>Поставке списка за извођење</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:28
 #: ../data/interfaces/playlist.ui.h:1 ../data/interfaces/shortcuts.ui.h:13
@@ -169,7 +169,7 @@ msgstr "Кодирање:"
 
 #: ../data/interfaces/parole-settings.ui.h:32
 msgid "<b>Subtitle Preferences</b>"
-msgstr ""
+msgstr "<b>Поставке поднаслова</b>"
 
 #: ../data/interfaces/parole-settings.ui.h:33
 msgid "Subtitles"
