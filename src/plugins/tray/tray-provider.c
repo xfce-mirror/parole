@@ -76,7 +76,7 @@ exit_activated_cb(TrayProvider *tray) {
     ev.window = gtk_widget_get_window(tray->window);
     ev.send_event = TRUE;
 
-    g_signal_handler_block(tray->window, tray->sig);
+    g_signal_handler_disconnect(tray->window, tray->sig);
     gtk_main_do_event((GdkEvent *) &ev);
 }
 
@@ -449,8 +449,8 @@ tray_provider_set_player(ParoleProviderPlugin *plugin, ParoleProviderPlayer *pla
     g_signal_connect(tray->tray, "scroll-event",
               G_CALLBACK(scroll_event_cb), tray);
 
-    tray->sig = g_signal_connect(tray->window, "delete-event",
-              G_CALLBACK(delete_event_cb), NULL);
+    tray->sig = g_signal_connect_object(tray->window, "delete-event",
+              G_CALLBACK(delete_event_cb), tray, 0);
 
     g_signal_connect(player, "state_changed",
               G_CALLBACK(state_changed_cb), tray);
@@ -484,9 +484,6 @@ static void tray_provider_finalize(GObject *object) {
     TrayProvider *tray;
 
     tray = TRAY_PROVIDER(object);
-
-    if ( GTK_IS_WIDGET (tray->window) && g_signal_handler_is_connected (tray->window, tray->sig) )
-        g_signal_handler_disconnect(tray->window, tray->sig);
 
     g_object_unref(G_OBJECT(tray->tray));
 
