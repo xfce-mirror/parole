@@ -1,4 +1,3 @@
-m4_define([intltool_minimum_version], [0.35])
 m4_define([parole_verinfo],           [0:8:1])
 m4_define([parole_version_api],       [0])
 m4_define([parole_version_major],     [4])
@@ -39,7 +38,6 @@ AC_PROG_CXX()
 AM_PROG_CC_C_O()
 LT_PATH_LD()
 AC_PROG_INSTALL()
-IT_PROG_INTLTOOL([intltool_minimum_version], [no-xml])
 
 # ===================================================== #
 #                 Initialize libtool                    #
@@ -82,8 +80,12 @@ AC_CHECK_HEADERS([errno.h signal.h stddef.h sys/ioctl.h fcntl.h\
 # ===================================================== #
 #               Check for i18n support                  #
 # ===================================================== #
+GETTEXT_PACKAGE="$PACKAGE"
+AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE], ["$GETTEXT_PACKAGE"], [Name of default gettext domain])
+AC_SUBST([GETTEXT_PACKAGE])
 
-XDT_I18N([@LINGUAS@])
+AM_GNU_GETTEXT([external])
+AM_GNU_GETTEXT_VERSION([0.19.8])
 
 # ===================================================== #
 #             Check for required packages               #

@@ -41,7 +41,9 @@ parole_mpris2_la_LIBADD =				\
 desktop_in_files = mpris2.desktop.in
 desktopdir = $(datadir)/parole/parole-plugins-$(PAROLE_VERSION_API)
 desktop_DATA =  $(desktop_in_files:.desktop.in=.desktop)
-@INTLTOOL_DESKTOP_RULE@
+
+mpris2.desktop: mpris2.desktop.in
+	$(AM_V_GEN)$(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
 EXTRA_DIST = 		  	\
 	$(desktop_in_files)

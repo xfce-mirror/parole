@@ -9,14 +9,14 @@
   <translation type="gettext">parole</translation>
 
   <description>
-    <_p>Parole is a modern simple media player based on the GStreamer
+    <p>Parole is a modern simple media player based on the GStreamer
        framework and written to fit well in the Xfce desktop. It is
        designed with simplicity, speed and resource usage in mind.
-    </_p>
-    <_p>Parole features playback of local media files, including
+    </p>
+    <p>Parole features playback of local media files, including
        video with subtitles support, Audio CDs, DVDs, and live streams.
        Parole is also extensible via plugins.
-    </_p>
+    </p>
   </description>
 
   <launchable type="desktop-id">org.xfce.Parole.desktop</launchable>
@@ -49,127 +49,127 @@
   <releases>
     <release version="4.15.0" date="2020-12-27">
       <description>
-        <_p>This release refreshes the playlist and dialog look and feel.
+        <p>This release refreshes the playlist and dialog look and feel.
         Shuffling the playlist is more efficient and can be reversed. DVD support
         has also been improved and will no longer freeze when started.
-        </_p>
+        </p>
       </description>
     </release>
 
     <release version="1.0.5" date="2019-11-15">
       <description>
-        <_p>This release improves thumbnail management and storage and fixes
+        <p>This release improves thumbnail management and storage and fixes
         volume hotkeys when viewing fullscreen content.
-        </_p>
+        </p>
       </description>
     </release>
 
     <release version="1.0.4" date="2019-08-11">
       <description>
-        <_p>This release inhibits power management during video playback.
-        </_p>
+        <p>This release inhibits power management during video playback.
+        </p>
       </description>
     </release>
 
     <release version="1.0.3" date="2019-07-27">
       <description>
-        <_p>This is a minor bugfix release.
-        </_p>
+        <p>This is a minor bugfix release.
+        </p>
       </description>
     </release>
 
     <release version="1.0.2" date="2019-04-04">
       <description>
-        <_p>This release adds support for automatic codec installation.
-        </_p>
+        <p>This release adds support for automatic codec installation.
+        </p>
       </description>
     </release>
 
     <release version="1.0.1" date="2018-04-11">
       <description>
-        <_p>This is a minor translations-only release.
-        </_p>
+        <p>This is a minor translations-only release.
+        </p>
       </description>
     </release>
 
     <release version="1.0.0" date="2018-02-28">
       <description>
-        <_p>This release marks the first stable release of the 1.0 series. A
+        <p>This release marks the first stable release of the 1.0 series. A
         new Automatic video output option was added to improve usage on
         virtual machines and low power devices. A large number of bugs were
         also resolved, making this release suitable for all users.
-        </_p>
+        </p>
       </description>
     </release>
 
     <release version="0.9.2" date="2017-06-03">
       <description>
-        <_p>This development release is a large cleanup of the codebase, making
+        <p>This development release is a large cleanup of the codebase, making
         Parole lighter and easier to improve. All URLs have been updated to
         HTTPS. A large number of bugs have been resolved and a new keyboard
         shortcuts helper has been introduced.
-        </_p>
+        </p>
       </description>
     </release>
 
     <release version="0.9.1" date="2017-02-26">
       <description>
-        <_p>This development release fixes several bugs, typos, and historical
+        <p>This development release fixes several bugs, typos, and historical
         details present in the documentation. Tags are now processed on files
         delivered over HTTP/S. The clutter video backend is disabled for GTK+
         3.22 and newer due to significant API changes.
-        </_p>
+        </p>
       </description>
     </release>
 
     <release version="0.9.0" date="2017-02-11">
       <description>
-        <_p>This development release adds a new mini mode and the ability to play
+        <p>This development release adds a new mini mode and the ability to play
         or replay content by clicking the circle icons. Theming is simplified
         and filenames are displayed when no ID3 tags are found.
-        </_p>
+        </p>
       </description>
     </release>
 
     <release version="0.8.1" date="2015-10-15">
       <description>
-        <_p>This release improves the build process and includes several bug fixes.
+        <p>This release improves the build process and includes several bug fixes.
         This new stable release is a recommended upgrade for all users.
-        </_p>
+        </p>
       </description>
     </release>
 
     <release version="0.8.0" date="2015-02-28">
       <description>
-        <_p>This release improves the build process and includes several bug fixes.
+        <p>This release improves the build process and includes several bug fixes.
         This new stable release is a recommended upgrade for all users.
-        </_p>
+        </p>
       </description>
     </release>
 
     <release version="0.7.0" date="2014-03-29">
       <description>
-        <_p>This unstable development release adds the new clutter backend and cleans up
+        <p>This unstable development release adds the new clutter backend and cleans up
         deprecated Gtk3 symbols. It also adds a "go to position" feature and several bugs
         have been addressed.
-        </_p>
+        </p>
       </description>
     </release>
 
     <release version="0.6.1" date="2014-03-29">
       <description>
-        <_p>This release fixes a problem with detecting DVD drive locations.
-        </_p>
+        <p>This release fixes a problem with detecting DVD drive locations.
+        </p>
       </description>
     </release>
 
     <release version="0.6.0" date="2014-01-25">
       <description>
-        <_p>This release features the completed transition to the Gtk+3 toolkit, improvements
+        <p>This release features the completed transition to the Gtk+3 toolkit, improvements
         in the user-interface (more streamlined menus), better playlists. Furthermore existing
         plugins have been improved and a new one has been added (MPRIS2). Most of the artwork
         has been updated for this release and we use the GStreamer1.0 framework now by default.
-        </_p>
+        </p>
       </description>
     </release>
 
