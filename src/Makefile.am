@@ -28,7 +28,6 @@ AM_CPPFLAGS =					\
 	$(LIBXFCE4UI_CFLAGS)                   \
 	$(XFCONF_CFLAGS)                   \
 	$(GST_VIDEO_CFLAGS)			\
-	$(GST_INTERFACES_CFLAGS)		\
 	$(TAGLIBC_CFLAGS)			\
 	$(LIBX11_CFLAGS)
 
@@ -93,7 +92,6 @@ parole_LDADD =						   	\
 	$(LIBXFCE4UI_LIBS)                     \
 	$(XFCONF_LIBS)                     \
 	$(GST_VIDEO_LIBS)			\
-	$(GST_INTERFACES_LIBS)			\
 	$(TAGLIBC_LIBS)				\
 	$(LIBX11_LIBS)
 

@@ -131,7 +131,9 @@ GSTPLUG_REQS=1.0.0
 XDT_CHECK_PACKAGE([GST], [gstreamer-${gstreamer_api_version}], [${gstreamer_minimum_version}])
 XDT_CHECK_PACKAGE([GST_BASE], [gstreamer-base-${gstreamer_api_version}], [${gstreamer_minimum_version}])
 XDT_CHECK_PACKAGE([GST_VIDEO], [gstreamer-video-${gstreamer_api_version}], [${gstreamer_minimum_version}])
+XDT_CHECK_PACKAGE([GST_AUDIO], [gstreamer-audio-${gstreamer_api_version}], [${gstreamer_minimum_version}])
 XDT_CHECK_PACKAGE([GST_PBUTILS], [gstreamer-pbutils-${gstreamer_api_version}], [${gstreamer_minimum_version}])
+XDT_CHECK_PACKAGE([GST_TAG], [gstreamer-tag-${gstreamer_api_version}], [${gstreamer_minimum_version}])
 GST_LIBS="$GST_LIBS -lgstbase-$GST_API_VERSION -lgstvideo-$GST_API_VERSION -lgstaudio-$GST_API_VERSION -lgstpbutils-$GST_API_VERSION -lgsttag-$GST_API_VERSION"
 
 XDT_CHECK_OPTIONAL_FEATURE([X11],
