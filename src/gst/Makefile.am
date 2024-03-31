@@ -24,7 +24,6 @@ libparolegst_la_SOURCES =		\
 libparolegst_la_CFLAGS =		\
 	$(GST_TAG_CFLAGS)		\
 	$(GST_VIDEO_CFLAGS)		\
-	$(GST_INTERFACES_CFLAGS)	\
 	$(GTHREAD_CFLAGS)		\
 	$(LIBXFCE4UI_CFLAGS)		\
 	$(PBUTILS_CFLAGS)
