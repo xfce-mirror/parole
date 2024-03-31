@@ -22,10 +22,11 @@ libparolegst_la_SOURCES =		\
 	parole-gst.h
 
 libparolegst_la_CFLAGS =		\
-	$(GST_VIDEO_CFLAGS)             \
-        $(GST_INTERFACES_CFLAGS)	\
-	$(GTHREAD_CFLAGS)               \
-	$(LIBXFCE4UI_CFLAGS)            \
+	$(GST_TAG_CFLAGS)		\
+	$(GST_VIDEO_CFLAGS)		\
+	$(GST_INTERFACES_CFLAGS)	\
+	$(GTHREAD_CFLAGS)		\
+	$(LIBXFCE4UI_CFLAGS)		\
 	$(PBUTILS_CFLAGS)
 
 libparolegst_la_LIBADD =		\
