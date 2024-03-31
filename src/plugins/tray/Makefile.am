@@ -42,7 +42,9 @@ tray_icon_la_LIBADD =				\
 desktop_in_files = system-tray.desktop.in
 desktopdir = $(datadir)/parole/parole-plugins-$(PAROLE_VERSION_API)
 desktop_DATA =  $(desktop_in_files:.desktop.in=.desktop)
-@INTLTOOL_DESKTOP_RULE@
+
+system-tray.desktop: system-tray.desktop.in
+	$(AM_V_GEN)$(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
 EXTRA_DIST = 		  	\
 	$(desktop_in_files)

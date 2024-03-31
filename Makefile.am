@@ -6,24 +6,11 @@ SUBDIRS =  			\
 	docs			\
 	po
 
-
-EXTRA_DIST = \
-	intltool-extract.in \
-	intltool-merge.in \
-	intltool-update.in \
-	README.md
-
-DISTCLEANFILES = \
-	intltool-extract \
-	intltool-merge \
-	intltool-update
-
 distuninstallcheck_listfiles = \
 	find -type f \! -name icon-theme.cache
 
 distclean-local:
-	rm -rf *.cache
-	rm -rf *.cache *~ po/.intltool-merge-cache.lock
+	rm -rf *.cache *~
 
 rpm: dist
 	rpmbuild -ta $(PACKAGE)-$(VERSION).tar.gz

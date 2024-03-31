@@ -1,16 +1,11 @@
-m4_define([intltool_minimum_version], [0.35])
 m4_define([parole_verinfo],           [0:8:1])
 m4_define([parole_version_api],       [0])
-m4_define([parole_version_major],     [4])
-m4_define([parole_version_minor],     [18])
-m4_define([parole_version_micro],     [1])
-m4_define([parole_version_build],     [@REVISION@])
-m4_define([parole_version_tag],       [git])
-m4_define([parole_version], [parole_version_major().parole_version_minor().parole_version_micro()ifelse(parole_version_tag(), [git], [parole_version_tag().parole_version_build()], [parole_version_tag()])])
+XDT_VERSION_INIT([4.18.1], [git])
 
 AC_COPYRIGHT([Copyright (c) 2009-2023 The Xfce development team])
-AC_INIT([parole], [parole_version], [https://gitlab.xfce.org/apps/parole])
-AC_PREREQ(2.59c)
+AC_INIT([parole], [xdt_version], [https://gitlab.xfce.org/apps/parole])
+AC_PREREQ([2.69])
+AC_REVISION([xdt_version_build])
 
 AC_CONFIG_MACRO_DIRS([m4])
 
@@ -39,7 +34,6 @@ AC_PROG_CXX()
 AM_PROG_CC_C_O()
 LT_PATH_LD()
 AC_PROG_INSTALL()
-IT_PROG_INTLTOOL([intltool_minimum_version], [no-xml])
 
 # ===================================================== #
 #                 Initialize libtool                    #
@@ -53,9 +47,9 @@ m4_ifdef([LT_OUTPUT], [LT_OUTPUT])
 # ===================================================== #
 PAROLE_VERINFO=parole_verinfo()
 PAROLE_VERSION_API=parole_version_api()
-PAROLE_VERSION_MAJOR=parole_version_major()
-PAROLE_VERSION_MINOR=parole_version_minor()
-PAROLE_VERSION_MICRO=parole_version_micro()
+PAROLE_VERSION_MAJOR=xdt_version_major()
+PAROLE_VERSION_MINOR=xdt_version_minor()
+PAROLE_VERSION_MICRO=xdt_version_micro()
 AC_SUBST([PAROLE_VERINFO])
 AC_SUBST([PAROLE_VERSION_API])
 AC_SUBST([PAROLE_VERSION_MAJOR])
@@ -64,9 +58,9 @@ AC_SUBST([PAROLE_VERSION_MICRO])
 
 dnl define a short version string for parole
 m4_append([parole_version_short], ["])
-m4_append([parole_version_short], [parole_version_major])
+m4_append([parole_version_short], [xdt_version_major])
 m4_append([parole_version_short], [.])
-m4_append([parole_version_short], [parole_version_minor])
+m4_append([parole_version_short], [xdt_version_minor])
 m4_append([parole_version_short], ["])
 
 dnl define parole's short version (major.minor)
@@ -82,8 +76,12 @@ AC_CHECK_HEADERS([errno.h signal.h stddef.h sys/ioctl.h fcntl.h\
 # ===================================================== #
 #               Check for i18n support                  #
 # ===================================================== #
+GETTEXT_PACKAGE="$PACKAGE"
+AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE], ["$GETTEXT_PACKAGE"], [Name of default gettext domain])
+AC_SUBST([GETTEXT_PACKAGE])
 
-XDT_I18N([@LINGUAS@])
+AM_GNU_GETTEXT([external])
+AM_GNU_GETTEXT_VERSION([0.19.8])
 
 # ===================================================== #
 #             Check for required packages               #
@@ -242,7 +240,7 @@ AC_MSG_RESULT([$ac_mpris2_plugin])
 # ===================================================== #
 #             Check for debugging support               #
 # ===================================================== #
-XDT_FEATURE_DEBUG()
+XDT_FEATURE_DEBUG([xdt_debug_default])
 
 # ===================================================== #
 #                  Check for Gtk doc                    #

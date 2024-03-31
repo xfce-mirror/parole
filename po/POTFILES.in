@@ -1,12 +1,11 @@
-[encoding: UTF-8]
-[type: gettext/glade]data/interfaces/mediachooser.ui
-[type: gettext/glade]data/interfaces/open-location.ui
-[type: gettext/glade]data/interfaces/parole-settings.ui
-[type: gettext/glade]data/interfaces/parole.ui
-[type: gettext/glade]data/interfaces/playlist.ui
-[type: gettext/glade]data/interfaces/plugins.ui
-[type: gettext/glade]data/interfaces/save-playlist.ui
-[type: gettext/glade]data/interfaces/shortcuts.ui
+data/interfaces/mediachooser.ui
+data/interfaces/open-location.ui
+data/interfaces/parole-settings.ui
+data/interfaces/parole.ui
+data/interfaces/playlist.ui
+data/interfaces/plugins.ui
+data/interfaces/save-playlist.ui
+data/interfaces/shortcuts.ui
 data/desktop/org.xfce.Parole.desktop.in.in
 data/metainfo/parole.appdata.xml.in
 src/common/parole-common.c

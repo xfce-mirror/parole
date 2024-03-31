@@ -1,6 +1,6 @@
 [Desktop Entry]
-_Name=Parole Media Player
-_Comment=Play your media
+Name=Parole Media Player
+Comment=Play your media
 Icon=org.xfce.parole
 Exec=parole %F
 Terminal=false
@@ -12,15 +12,15 @@ Actions=Play;Previous;Next;
 
 [Desktop Action Play]
 Exec=parole --play
-_Name=Play/Pause
+Name=Play/Pause
 Icon=media-playback-start-symbolic
 
 [Desktop Action Previous]
 Exec=parole --previous
-_Name=Previous Track
+Name=Previous Track
 Icon=media-skip-backward-symbolic
 
 [Desktop Action Next]
 Exec=parole --next
-_Name=Next Track
+Name=Next Track
 Icon=media-skip-forward-symbolic
