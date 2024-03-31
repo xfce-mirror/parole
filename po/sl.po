@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-16 00:48+0200\n"
+"POT-Creation-Date: 2024-03-31 12:51+0200\n"
 "PO-Revision-Date: 2013-07-03 18:28+0000\n"
 "Last-Translator: Arnold Marko <arnold.marko@gmail.com>, 2019-2021,2023\n"
 "Language-Team: Slovenian (http://app.transifex.com/xfce/xfce-apps/language/sl/)\n"
@@ -18,668 +18,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: sl\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
-
-#: ../data/interfaces/mediachooser.ui.h:1
-msgid "Open Media Files"
-msgstr "Odpri medijske datoteke"
-
-#: ../data/interfaces/open-location.ui.h:1
-msgid "Open Network Location"
-msgstr "Odpri omrežno mesto"
-
-#: ../data/interfaces/open-location.ui.h:2 ../src/parole-open-location.c:193
-msgid "Clear History"
-msgstr "Počisti zgodovino"
-
-#: ../data/interfaces/parole-settings.ui.h:1
-msgid "Automatic"
-msgstr "Samodejno"
-
-#: ../data/interfaces/parole-settings.ui.h:2
-msgid "X Window System (X11/XShm/Xv)"
-msgstr "X Window System (X11/XShm/Xv)"
-
-#: ../data/interfaces/parole-settings.ui.h:3
-msgid "X Window System (No Xv)"
-msgstr "X Window System (No Xv)"
-
-#: ../data/interfaces/parole-settings.ui.h:4
-msgid "Parole Preferences"
-msgstr "Nastavitve Parole"
-
-#. Add a close button to the Infobar
-#: ../data/interfaces/parole-settings.ui.h:5 ../data/interfaces/plugins.ui.h:2
-#: ../src/parole-player.c:3638 ../src/plugins/tray/tray-provider.c:261
-msgid "Close"
-msgstr "Zapri"
-
-#: ../data/interfaces/parole-settings.ui.h:6
-msgid "Disable screensaver when playing movies"
-msgstr "Izklopi ohranjevalnik zaslona med predvajanjem videa"
-
-#: ../data/interfaces/parole-settings.ui.h:7
-msgid "<b>Screensaver</b>"
-msgstr "<b>Ohranjevalnik zaslona</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:8
-msgid "Show visual effects when an audio file is played"
-msgstr "Prikaži vizualne učnike med predvajanjem zvoka"
-
-#: ../data/interfaces/parole-settings.ui.h:9
-msgid "Visualization type:"
-msgstr "Vrsta vizualizacije:"
-
-#: ../data/interfaces/parole-settings.ui.h:10
-msgid "<b>Audio Visualization</b>"
-msgstr "<b>Vizualizacija zvoka</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:11
-msgid "Enable keyboard multimedia keys"
-msgstr "Vklopi multimedijske tipke na tipkovnici"
-
-#: ../data/interfaces/parole-settings.ui.h:12
-msgid "<b>Keyboard</b>"
-msgstr "<b>Tipkovnica</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:13
-#: ../data/interfaces/shortcuts.ui.h:1
-msgid "General"
-msgstr "Splošno"
-
-#: ../data/interfaces/parole-settings.ui.h:14
-msgid "Please restart Parole for this change to take effect."
-msgstr "Ponovno zaženite Parole za uveljavitev teh sprememb."
-
-#: ../data/interfaces/parole-settings.ui.h:15
-msgid "<b>Video Output</b>"
-msgstr "<b>Video izhod</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:16
-msgid "Brightness:"
-msgstr "Svetlost:"
-
-#: ../data/interfaces/parole-settings.ui.h:17
-msgid "Contrast:"
-msgstr "Kontrast:"
-
-#: ../data/interfaces/parole-settings.ui.h:18
-msgid "Hue:"
-msgstr "Odtenek (hue):"
-
-#: ../data/interfaces/parole-settings.ui.h:19
-msgid "Saturation:"
-msgstr "Nasičenost:"
-
-#: ../data/interfaces/parole-settings.ui.h:20
-msgid "Reset to defaults"
-msgstr "Ponastavi privzeto"
-
-#: ../data/interfaces/parole-settings.ui.h:21
-msgid "<b>Color Balance</b>"
-msgstr "<b>Ravnovesje barv</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:22
-msgid "Display"
-msgstr "Prikaz"
-
-#: ../data/interfaces/parole-settings.ui.h:23
-msgid "Always replace playlist with opened files"
-msgstr "vedno zamenjaj seznam predvajanja z odprtimi datotekami"
-
-#: ../data/interfaces/parole-settings.ui.h:24
-msgid "Check and remove duplicate media entries"
-msgstr "Preveri in odstrani podvojene vnose medijev"
-
-#: ../data/interfaces/parole-settings.ui.h:25
-msgid "Start playing opened files"
-msgstr "Začni predvajati odprte datoteke"
-
-#: ../data/interfaces/parole-settings.ui.h:26
-#: ../data/interfaces/playlist.ui.h:15
-msgid "Remember playlist"
-msgstr "Zapomni si seznam predvajanja"
-
-#: ../data/interfaces/parole-settings.ui.h:27
-msgid "<b>Playlist Preferences</b>"
-msgstr "<b>Nastavitve seznama predvajanja</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:28
-#: ../data/interfaces/playlist.ui.h:1 ../data/interfaces/shortcuts.ui.h:13
-#: ../src/parole-medialist.c:797 ../src/parole-medialist.c:848
-#: ../src/parole-player.c:3264
-msgid "Playlist"
-msgstr "Seznam predvajanja"
-
-#: ../data/interfaces/parole-settings.ui.h:29
-msgid "Automatically show subtitles when playing movie file"
-msgstr "Samojedno prikaži podnapise pri predvajanju filmov"
-
-#: ../data/interfaces/parole-settings.ui.h:30
-msgid "Font:"
-msgstr "Pisava:"
-
-#: ../data/interfaces/parole-settings.ui.h:31
-msgid "Encoding:"
-msgstr "Kodiranje:"
-
-#: ../data/interfaces/parole-settings.ui.h:32
-msgid "<b>Subtitle Preferences</b>"
-msgstr "</b>Nastavitve podnapisov</b>"
-
-#: ../data/interfaces/parole-settings.ui.h:33
-msgid "Subtitles"
-msgstr "Podnapisi"
-
-#: ../data/interfaces/parole.ui.h:1
-#: ../data/desktop/org.xfce.Parole.desktop.in.in.h:1 ../src/parole-about.c:75
-#: ../src/parole-player.c:601 ../src/parole-player.c:1442
-#: ../src/parole-player.c:1811 ../src/plugins/mpris2/mpris2-provider.c:189
-msgid "Parole Media Player"
-msgstr "Parole medijski predvajalnik"
-
-#: ../data/interfaces/parole.ui.h:2
-msgid "_Media"
-msgstr "_Medij"
-
-#: ../data/interfaces/parole.ui.h:3
-msgid "_Open..."
-msgstr "_Odpri..."
-
-#: ../data/interfaces/parole.ui.h:4
-msgid "Open _Location..."
-msgstr "Odpri _lokacijo..."
-
-#: ../data/interfaces/parole.ui.h:5
-msgid "Open _Recent"
-msgstr "Odpri _nedavno"
-
-#: ../data/interfaces/parole.ui.h:6
-msgid "_Save Playlist..."
-msgstr "_Shrani seznam predvajanja..."
-
-#: ../data/interfaces/parole.ui.h:7 ../src/parole-disc.c:105
-#: ../src/parole-disc.c:139
-msgid "Insert Disc"
-msgstr "Vstavi disk"
-
-#. * Exit
-#: ../data/interfaces/parole.ui.h:8 ../src/plugins/tray/tray-provider.c:172
-msgid "_Quit"
-msgstr "_Končaj"
-
-#: ../data/interfaces/parole.ui.h:9
-msgid "_Playback"
-msgstr "_Predvajanje"
-
-#: ../data/interfaces/parole.ui.h:10
-msgid "_Repeat"
-msgstr "_Ponovi"
-
-#: ../data/interfaces/parole.ui.h:11
-msgid "_Shuffle"
-msgstr "_Premešaj"
-
-#: ../data/interfaces/parole.ui.h:12
-msgid "Show Playlist"
-msgstr "Pokaži seznam predvajanja"
-
-#. Create dialog
-#: ../data/interfaces/parole.ui.h:13 ../src/parole-player.c:2870
-msgid "Go to position"
-msgstr "Pojdi na položaj"
-
-#: ../data/interfaces/parole.ui.h:14
-msgid "_DVD"
-msgstr "_DVD"
-
-#: ../data/interfaces/parole.ui.h:15
-msgid "_DVD Menu"
-msgstr "_DVD meni"
-
-#: ../data/interfaces/parole.ui.h:16
-msgid "_Title Menu"
-msgstr "_Naslovni meni"
-
-#: ../data/interfaces/parole.ui.h:17
-msgid "_Subpicture Menu"
-msgstr "Meni s pod_slikami"
-
-#: ../data/interfaces/parole.ui.h:18
-msgid "_Audio Menu"
-msgstr "_Zvočni meni"
-
-#: ../data/interfaces/parole.ui.h:19
-msgid "A_ngle Menu"
-msgstr "Me_ni kotov"
-
-#: ../data/interfaces/parole.ui.h:20
-msgid "_Chapters"
-msgstr "_Poglavja"
-
-#: ../data/interfaces/parole.ui.h:21
-msgid "_Chapter Menu"
-msgstr "Meni _poglavji"
-
-#: ../data/interfaces/parole.ui.h:22
-msgid "_Audio"
-msgstr "_Zvok"
-
-#: ../data/interfaces/parole.ui.h:23
-msgid "_Audio Track"
-msgstr "_Zvočni zapis"
-
-#: ../data/interfaces/parole.ui.h:24 ../src/parole-player.c:812
-msgid "Empty"
-msgstr "Prazno"
-
-#: ../data/interfaces/parole.ui.h:25
-msgid "Volume _Up"
-msgstr "Glasnost _gor"
-
-#: ../data/interfaces/parole.ui.h:26
-msgid "Volume _Down"
-msgstr "Glasnost _dol"
-
-#: ../data/interfaces/parole.ui.h:27
-msgid "_Mute"
-msgstr "_Nemo"
-
-#: ../data/interfaces/parole.ui.h:28
-msgid "_Video"
-msgstr "_Video"
-
-#: ../data/interfaces/parole.ui.h:29 ../src/parole-player.c:1999
-#: ../src/parole-player.c:2144
-msgid "_Fullscreen"
-msgstr "_Celozaslonski način"
-
-#: ../data/interfaces/parole.ui.h:30
-msgid "_Aspect Ratio"
-msgstr "R_azmerje slike"
-
-#: ../data/interfaces/parole.ui.h:31 ../src/parole-player.c:743
-msgid "None"
-msgstr "Noben"
-
-#: ../data/interfaces/parole.ui.h:32
-msgid "Auto"
-msgstr "Samodejno"
-
-#: ../data/interfaces/parole.ui.h:33
-msgid "Square"
-msgstr "Kvadrat"
-
-#: ../data/interfaces/parole.ui.h:34
-msgid "4:3 (TV)"
-msgstr "4:3 (TV)"
-
-#: ../data/interfaces/parole.ui.h:35
-msgid "16:9 (Widescreen)"
-msgstr "16:9 (Širok zaslon)"
-
-#: ../data/interfaces/parole.ui.h:36
-msgid "20:9 (DVB)"
-msgstr "20:9 (DVB)"
-
-#: ../data/interfaces/parole.ui.h:37
-msgid "_Subtitles"
-msgstr "_Podnapisi"
-
-#: ../data/interfaces/parole.ui.h:38
-msgid "Select Text Subtitles..."
-msgstr "Izberite podnapise..."
-
-#: ../data/interfaces/parole.ui.h:39
-msgid "_Tools"
-msgstr "_Orodja"
-
-#: ../data/interfaces/parole.ui.h:40
-msgid "P_lugins"
-msgstr "V_tičniki"
-
-#: ../data/interfaces/parole.ui.h:41
-msgid "_Preferences"
-msgstr "_Možnosti"
-
-#: ../data/interfaces/parole.ui.h:42
-msgid "_Help"
-msgstr "_Pomoč"
-
-#: ../data/interfaces/parole.ui.h:43
-msgid "_Report a Bug..."
-msgstr "P_rijavite hrošča..."
-
-#: ../data/interfaces/parole.ui.h:44
-msgid "_Keyboard Shortcuts"
-msgstr "Bljižnice na tip_kovnici"
-
-#: ../data/interfaces/parole.ui.h:45
-msgid "Display Parole user manual"
-msgstr "Prikaži Parole uporabniški priročnik"
-
-#: ../data/interfaces/parole.ui.h:46
-msgid "_Contents"
-msgstr "_Vsebina"
-
-#: ../data/interfaces/parole.ui.h:47
-msgid "_About"
-msgstr "_O programu"
-
-#: ../data/interfaces/parole.ui.h:48
-msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
-msgstr "<span color='#F4F4F4'><b><big>neznana skladba</big></b></span>"
-
-#: ../data/interfaces/parole.ui.h:49
-msgid ""
-"<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
-"Album</span></big>"
-msgstr "<big><span color='#BBBBBB'><i>na</i></span> <span color='#F4F4F4'>neznanem albumu</span></big>"
-
-#: ../data/interfaces/parole.ui.h:50
-msgid ""
-"<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
-"Artist</span></big>"
-msgstr "<big><span color='#BBBBBB'><i>od</i></span> <span color='#F4F4F4'>neznanega izvajalca</span></big>"
-
-#: ../data/interfaces/parole.ui.h:51
-msgid "0:00"
-msgstr "0:00"
-
-#: ../data/interfaces/parole.ui.h:53
-#, no-c-format
-msgid "Buffering (0%)"
-msgstr "Polnjenje medpomnilnika (0%)"
-
-#: ../data/interfaces/parole.ui.h:54
-msgid "/"
-msgstr "/"
-
-#: ../data/interfaces/playlist.ui.h:2
-msgid "Disc Playlist"
-msgstr "Seznam predvajanja za disk"
-
-#: ../data/interfaces/playlist.ui.h:3
-msgid "Add to playlist..."
-msgstr "Dodaj na seznam predvajanja..."
-
-#: ../data/interfaces/playlist.ui.h:4
-msgid "Add"
-msgstr "Dodaj"
-
-#: ../data/interfaces/playlist.ui.h:5
-msgid "Remove selected media"
-msgstr "Odstrani izbrane medije"
-
-#: ../data/interfaces/playlist.ui.h:6
-msgid "Remove"
-msgstr "Odstrani"
-
-#: ../data/interfaces/playlist.ui.h:7
-msgid "Clear playlist"
-msgstr "Počisti seznam predvajanja"
-
-#: ../data/interfaces/playlist.ui.h:8
-msgid "Clear"
-msgstr "Počisti"
-
-#: ../data/interfaces/playlist.ui.h:9
-msgid "Repeat"
-msgstr "Ponavljaj"
-
-#: ../data/interfaces/playlist.ui.h:10
-msgid "Shuffle"
-msgstr "Premešaj"
-
-#: ../data/interfaces/playlist.ui.h:11
-msgid "Move Up"
-msgstr "Premakni gor"
-
-#: ../data/interfaces/playlist.ui.h:12
-msgid "Move Down"
-msgstr "Premakni dol"
-
-#: ../data/interfaces/playlist.ui.h:13
-msgid "Replace playlist when opening files"
-msgstr "Zamenjaj seznam predvajanja od odpiranju datotek"
-
-#: ../data/interfaces/playlist.ui.h:14
-msgid "Play opened files"
-msgstr "Predvajaj odprte datoteke"
-
-#: ../data/interfaces/plugins.ui.h:1
-msgid "Parole Plugins"
-msgstr "Parloe vtičniki"
-
-#: ../data/interfaces/plugins.ui.h:3
-msgid "Plugin"
-msgstr "Vtičnik"
-
-#: ../data/interfaces/plugins.ui.h:4
-msgid "Preferences"
-msgstr "Nastavitve"
-
-#: ../data/interfaces/plugins.ui.h:5
-msgid "About"
-msgstr "O programu"
-
-#: ../data/interfaces/save-playlist.ui.h:1
-msgid "Save Playlist as..."
-msgstr "Shrani seznam predvajanja kot"
-
-#: ../data/interfaces/shortcuts.ui.h:2
-msgid "Open file"
-msgstr "Odpri datoteko"
-
-#: ../data/interfaces/shortcuts.ui.h:3
-msgid "Open location"
-msgstr "Odpri lokacijo"
-
-#: ../data/interfaces/shortcuts.ui.h:4 ../src/plugins/tray/tray-provider.c:354
-msgid "Quit"
-msgstr "Končaj"
-
-#: ../data/interfaces/shortcuts.ui.h:5
-msgid "View"
-msgstr "Pogled"
-
-#: ../data/interfaces/shortcuts.ui.h:6
-msgid "Toggle fullscreen"
-msgstr "Cel zaslon"
-
-#: ../data/interfaces/shortcuts.ui.h:7
-msgid "Exit fullscreen"
-msgstr "Uokvirjen zaslon"
-
-#: ../data/interfaces/shortcuts.ui.h:8
-msgid "Toggle menubar"
-msgstr "Preklopi menu"
-
-#: ../data/interfaces/shortcuts.ui.h:9
-msgid "Volume"
-msgstr "Glasnost"
-
-#: ../data/interfaces/shortcuts.ui.h:10
-msgid "Increase volume"
-msgstr "Povečaj glasnost"
-
-#: ../data/interfaces/shortcuts.ui.h:11
-msgid "Decrease volume"
-msgstr "Zmanjšaj glasnost"
-
-#: ../data/interfaces/shortcuts.ui.h:12 ../src/parole-player.c:2416
-msgid "Mute"
-msgstr "Nemo"
-
-#: ../data/interfaces/shortcuts.ui.h:14
-msgid "Toggle playlist"
-msgstr "Preklopi seznam predvajanja"
-
-#: ../data/interfaces/shortcuts.ui.h:15
-msgid "Select previous item"
-msgstr "Izberi prejšnji predmet"
-
-#: ../data/interfaces/shortcuts.ui.h:16
-msgid "Select next item"
-msgstr "Izberi naslednji predmet"
-
-#: ../data/interfaces/shortcuts.ui.h:17
-msgid "Remove selected item"
-msgstr "Odstrani izbrani predmet"
-
-#: ../data/interfaces/shortcuts.ui.h:18
-msgid "Playback"
-msgstr "Predvajanje"
-
-#: ../data/interfaces/shortcuts.ui.h:19
-#: ../data/desktop/org.xfce.Parole.desktop.in.in.h:3
-msgid "Play/Pause"
-msgstr "Predvajaj/Pavza"
-
-#: ../data/interfaces/shortcuts.ui.h:20 ../src/main.c:245
-msgid "Previous track"
-msgstr "Prejšnji zapis"
-
-#: ../data/interfaces/shortcuts.ui.h:21 ../src/main.c:243
-msgid "Next track"
-msgstr "Naslednji zapis"
-
-#: ../data/interfaces/shortcuts.ui.h:22
-msgid "Go back 10 seconds"
-msgstr "Nazaj za 10 sekund"
-
-#: ../data/interfaces/shortcuts.ui.h:23
-msgid "Go forward 10 seconds"
-msgstr "Naprej za 10 sekund"
-
-#: ../data/interfaces/shortcuts.ui.h:24
-msgid "Go back 1 minute"
-msgstr "Nazaj za minuto"
-
-#: ../data/interfaces/shortcuts.ui.h:25
-msgid "Go forward 1 minute"
-msgstr "Naprej za minuto"
-
-#: ../data/interfaces/shortcuts.ui.h:26
-msgid "Go back 10 minutes"
-msgstr "Nazaj za 10 minut"
-
-#: ../data/interfaces/shortcuts.ui.h:27
-msgid "Go forward 10 minutes"
-msgstr "Naprej za 10 minut"
-
-#: ../data/desktop/org.xfce.Parole.desktop.in.in.h:2
-msgid "Play your media"
-msgstr "Predvajaj svoje medije"
-
-#: ../data/desktop/org.xfce.Parole.desktop.in.in.h:4
-#: ../src/parole-player.c:3410 ../src/plugins/notify/notify-provider.c:190
-msgid "Previous Track"
-msgstr "Prejšnji zapis"
-
-#: ../data/desktop/org.xfce.Parole.desktop.in.in.h:5
-#: ../src/parole-player.c:3428 ../src/plugins/notify/notify-provider.c:202
-msgid "Next Track"
-msgstr "Naslednji zapis"
-
-#: ../data/metainfo/parole.appdata.xml.in.h:1
-msgid ""
-"Parole is a modern simple media player based on the GStreamer framework and "
-"written to fit well in the Xfce desktop. It is designed with simplicity, "
-"speed and resource usage in mind."
-msgstr "Parole je moderen in preprost predvajalnik, ki temelji na GStreamer okvirju in je napisan, da se dobro zlije z Xfce namizjem. Načrtovan je z mislijo na enostavnost, hitrost in varčevanje z viri."
-
-#: ../data/metainfo/parole.appdata.xml.in.h:2
-msgid ""
-"Parole features playback of local media files, including video with "
-"subtitles support, Audio CDs, DVDs, and live streams. Parole is also "
-"extensible via plugins."
-msgstr "Parole omogoča predvajanje lokalnih medijskih datotek, videov s podnapisi, zvočnih zgoščenk, DVDjev in živih tokov. Parole je mogoče tudi nadgraditi s pomočjo vtičnikov."
-
-#: ../data/metainfo/parole.appdata.xml.in.h:3
-msgid ""
-"This release refreshes the playlist and dialog look and feel. Shuffling the "
-"playlist is more efficient and can be reversed. DVD support has also been "
-"improved and will no longer freeze when started."
-msgstr "Ta izdaja osvežuje videz in občutek seznamov predvajanj in dialogov. Premešanje seznama predvajanja je mogoče razveljaviti, izboljšana je podpora za DVD in ob zagonu ne bo več zamrzovanj."
-
-#: ../data/metainfo/parole.appdata.xml.in.h:4
-msgid ""
-"This release improves thumbnail management and storage and fixes volume "
-"hotkeys when viewing fullscreen content."
-msgstr "Ta izdaja izboljšuje upravljanje predoglednih sličic in njihovo shranjevanje ter popravlja hitre tipke za določanje glasnosti v celozaslonskem načinu."
-
-#: ../data/metainfo/parole.appdata.xml.in.h:5
-msgid "This release inhibits power management during video playback."
-msgstr "Ta izdaja onemogoči upavljalnik rabe energije med predvajanjem videa."
-
-#: ../data/metainfo/parole.appdata.xml.in.h:6
-msgid "This is a minor bugfix release."
-msgstr "To je izdaja z manjšimi popravki."
-
-#: ../data/metainfo/parole.appdata.xml.in.h:7
-msgid "This release adds support for automatic codec installation."
-msgstr "Ta izdaja doda podporo za samodejno nameščanje kodekov."
-
-#: ../data/metainfo/parole.appdata.xml.in.h:8
-msgid "This is a minor translations-only release."
-msgstr "To je manjši popravek prevodov."
-
-#: ../data/metainfo/parole.appdata.xml.in.h:9
-msgid ""
-"This release marks the first stable release of the 1.0 series. A new "
-"Automatic video output option was added to improve usage on virtual machines"
-" and low power devices. A large number of bugs were also resolved, making "
-"this release suitable for all users."
-msgstr "Ta izdaja je prva stabilna 1.0 različica. Dodana je opcija za samodejni video izhod, za boljšo izrabo slabših računalnikov in virtualnih naprav. Odpravljno je veliko število hroščev, zaradi česar je izdaja primerna za vse uproabnike."
-
-#: ../data/metainfo/parole.appdata.xml.in.h:10
-msgid ""
-"This development release is a large cleanup of the codebase, making Parole "
-"lighter and easier to improve. All URLs have been updated to HTTPS. A large "
-"number of bugs have been resolved and a new keyboard shortcuts helper has "
-"been introduced."
-msgstr "Ta razvojna izdaja je doživela očiščenje kode, kar ima za posledico, da je program manjši in lažji za posodobaljanje. Posodobljeni so bili vsi URLji na HTTPS. Odpravljeni so bili številni hrošči, vpeljan pa je bil nov pomočnik za rabo tipkovnice."
-
-#: ../data/metainfo/parole.appdata.xml.in.h:11
-msgid ""
-"This development release fixes several bugs, typos, and historical details "
-"present in the documentation. Tags are now processed on files delivered over"
-" HTTP/S. The clutter video backend is disabled for GTK+ 3.22 and newer due "
-"to significant API changes."
-msgstr "V teh dlovni izdaji so odpravljeni številni hrošči, tipkarske napake in podrobnosti v dokumentaciji. Oznake so na novo obdelane na datotekah, ki so dostavljene preko HTTP/S. Clutter podpora za GTK+3.22 in novejše je odpravljena zaradi sprememb v API."
-
-#: ../data/metainfo/parole.appdata.xml.in.h:12
-msgid ""
-"This development release adds a new mini mode and the ability to play or "
-"replay content by clicking the circle icons. Theming is simplified and "
-"filenames are displayed when no ID3 tags are found."
-msgstr "Ta razvojna izdaja dodaja novi mini način, ki omogoča predvajanje preko okroglih ikon. Poenostavljeno je tematiziranje, imena datotek so prikazana, ko niso najdene ID3 oznake."
-
-#: ../data/metainfo/parole.appdata.xml.in.h:13
-msgid ""
-"This release improves the build process and includes several bug fixes. This"
-" new stable release is a recommended upgrade for all users."
-msgstr "Ta izdaja poenosatvi proces gradnje in vsebuje številne popravke hroščev. Je priporočena za sve uporabnike."
-
-#: ../data/metainfo/parole.appdata.xml.in.h:14
-msgid ""
-"This unstable development release adds the new clutter backend and cleans up"
-" deprecated Gtk3 symbols. It also adds a \"go to position\" feature and "
-"several bugs have been addressed."
-msgstr "Ta nestabilna izdaja dodaj novi clutter in očisti zastarele Gtk3 simbole. Dodaj tudi funkcijo \"pojdi na\" ter odpravlja hrošče."
-
-#: ../data/metainfo/parole.appdata.xml.in.h:15
-msgid "This release fixes a problem with detecting DVD drive locations."
-msgstr "Ta izdaja odpravlja težavo z odkrivanjem lokacije DVDja"
-
-#: ../data/metainfo/parole.appdata.xml.in.h:16
-msgid ""
-"This release features the completed transition to the Gtk+3 toolkit, "
-"improvements in the user-interface (more streamlined menus), better "
-"playlists. Furthermore existing plugins have been improved and a new one has"
-" been added (MPRIS2). Most of the artwork has been updated for this release "
-"and we use the GStreamer1.0 framework now by default."
-msgstr "Ta izdaja zaključuje prehod na Gtk+3. Ima izboljšan vmesnik (boljši meiji) in bolješ delo s seznami predvajanja. Obstoječi vtičniki so bili izboljšani (MPRIS2). Grafika je bila posodobljena, GStreamer 1.0 pa je sedaj standard."
 
 #: ../src/common/parole-common.c:83
 msgid "Message"
@@ -764,12 +102,12 @@ msgstr "Medijskega predvajalnika Parole ni mogoče zagnati."
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
 msgstr "Nalaganje vtičnika \"%s\" ni uspelo. Preverite namestitev Gstreamerja"
 
-#: ../src/gst/parole-gst.c:2589 ../src/gst/parole-gst.c:2593
+#: ../src/gst/parole-gst.c:2591 ../src/gst/parole-gst.c:2595
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Zvočni zapis #%d"
 
-#: ../src/gst/parole-gst.c:2629 ../src/gst/parole-gst.c:2633
+#: ../src/gst/parole-gst.c:2631 ../src/gst/parole-gst.c:2635
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Podnapis #%d"
@@ -812,6 +150,14 @@ msgstr "Zaženi v celozaslonskem načinu"
 #: ../src/main.c:241
 msgid "Play or pause if already playing"
 msgstr "Predvajaj ali pavziraj, če se že predvaja"
+
+#: ../src/main.c:243
+msgid "Next track"
+msgstr "Naslednji zapis"
+
+#: ../src/main.c:245
+msgid "Previous track"
+msgstr "Prejšnji zapis"
 
 #: ../src/main.c:247
 msgid "Raise volume"
@@ -879,6 +225,12 @@ msgstr "Datoteke seznamov predvajanj"
 msgid "A modern simple media player for the Xfce Desktop Environment."
 msgstr "Modern in preprost predvajalnik vsebin za namizno okolje Xfce."
 
+#: ../src/parole-about.c:75 ../src/parole-player.c:599
+#: ../src/parole-player.c:1440 ../src/parole-player.c:1809
+#: ../src/plugins/mpris2/mpris2-provider.c:189
+msgid "Parole Media Player"
+msgstr "Parole medijski predvajalnik"
+
 #: ../src/parole-about.c:76
 msgid "translator-credits"
 msgstr "zasluge-prevajalcev"
@@ -891,12 +243,16 @@ msgstr "Obiščite spletno stran Parole"
 msgid "Clutter (OpenGL)"
 msgstr "Clutter (OpenGL)"
 
+#: ../src/parole-disc.c:105 ../src/parole-disc.c:139
+msgid "Insert Disc"
+msgstr "Vstavi disk"
+
 #: ../src/parole-disc.c:106
 msgid "Play Disc"
 msgstr "Predvajaj disk"
 
 #: ../src/parole-mediachooser.c:236 ../src/parole-medialist.c:855
-#: ../src/parole-player.c:1017
+#: ../src/parole-player.c:1015
 msgid "All files"
 msgstr "Vse datoteke"
 
@@ -918,7 +274,7 @@ msgstr[1] "Seznam predvajanja (%i poglavja)"
 msgstr[2] "Seznam predvajanja (%i poglavja)"
 msgstr[3] "Seznam predvajanja (%i poglavji)"
 
-#: ../src/parole-medialist.c:426 ../src/parole-player.c:723
+#: ../src/parole-medialist.c:426 ../src/parole-player.c:721
 #, c-format
 msgid "Chapter %i"
 msgstr "Poglavje %i"
@@ -943,8 +299,13 @@ msgstr "Izberite podprt format seznama predvajanja"
 msgid "Unknown"
 msgstr "Neznano"
 
-#: ../src/parole-medialist.c:838 ../src/parole-player.c:988
-#: ../src/parole-player.c:1179 ../src/parole-player.c:2873
+#: ../src/parole-medialist.c:797 ../src/parole-medialist.c:848
+#: ../src/parole-player.c:3270
+msgid "Playlist"
+msgstr "Seznam predvajanja"
+
+#: ../src/parole-medialist.c:838 ../src/parole-player.c:986
+#: ../src/parole-player.c:1177 ../src/parole-player.c:2877
 #: ../src/plugins/tray/tray-provider.c:348
 msgid "Cancel"
 msgstr "Prekliči"
@@ -978,145 +339,183 @@ msgstr "Seznam predvajanja v skupni rabi (%s)"
 msgid "Open Containing Folder"
 msgstr "Odpri vsebujočo mapo"
 
+#: ../src/parole-open-location.c:193
+msgid "Clear History"
+msgstr "Počisti zgodovino"
+
+#: ../src/parole-player.c:741
+msgid "None"
+msgstr "Noben"
+
+#: ../src/parole-player.c:810
+msgid "Empty"
+msgstr "Prazno"
+
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:982
+#: ../src/parole-player.c:980
 msgid "Select Subtitle File"
 msgstr "Izberi datoteko podnapisov"
 
-#: ../src/parole-player.c:989
+#: ../src/parole-player.c:987
 msgid "Open"
 msgstr "Odpri"
 
-#: ../src/parole-player.c:1005
+#: ../src/parole-player.c:1003
 msgid "Subtitle Files"
 msgstr "Datoteke podnapisov"
 
-#: ../src/parole-player.c:1175 ../src/parole-player.c:1183
+#: ../src/parole-player.c:1173 ../src/parole-player.c:1181
 msgid "Clear Recent Items"
 msgstr "Počisti nedavne predmete"
 
-#: ../src/parole-player.c:1177
+#: ../src/parole-player.c:1175
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
 msgstr "Ali res želite izbrisati zgodovino predmetov? Tega ni mogoče razveljaviti."
 
-#: ../src/parole-player.c:1273 ../src/parole-player.c:1398
+#: ../src/parole-player.c:1271 ../src/parole-player.c:1396
 msgid "Media stream is not seekable"
 msgstr "Po pretok medijske vsebine se ni mogoče premikati"
 
-#: ../src/parole-player.c:1283
+#: ../src/parole-player.c:1281
 msgid "Play"
 msgstr "Predvajaj"
 
-#: ../src/parole-player.c:1286
+#: ../src/parole-player.c:1284
 msgid "Pause"
 msgstr "Pavza"
 
-#: ../src/parole-player.c:1732
+#: ../src/parole-player.c:1730
 msgid "GStreamer backend error"
 msgstr "Napaka na GStreamer podstati"
 
-#: ../src/parole-player.c:1816
+#: ../src/parole-player.c:1814
 msgid "Unknown Song"
 msgstr "Neznana pesem"
 
-#: ../src/parole-player.c:1827 ../src/parole-player.c:1833
-#: ../src/parole-player.c:1841
+#: ../src/parole-player.c:1825 ../src/parole-player.c:1831
+#: ../src/parole-player.c:1839
 msgid "on"
 msgstr "na"
 
-#: ../src/parole-player.c:1841 ../src/plugins/notify/notify-provider.c:134
+#: ../src/parole-player.c:1839 ../src/plugins/notify/notify-provider.c:134
 msgid "Unknown Album"
 msgstr "Neznan album"
 
-#: ../src/parole-player.c:1852 ../src/parole-player.c:1859
+#: ../src/parole-player.c:1850 ../src/parole-player.c:1857
 msgid "by"
 msgstr "od"
 
-#: ../src/parole-player.c:1859 ../src/plugins/notify/notify-provider.c:136
+#: ../src/parole-player.c:1857 ../src/plugins/notify/notify-provider.c:136
 msgid "Unknown Artist"
 msgstr "Neznan izvajalec"
 
-#: ../src/parole-player.c:1894
+#: ../src/parole-player.c:1892
 msgid "Buffering"
 msgstr "Polnjenje medpomnilnika"
 
-#: ../src/parole-player.c:2000 ../src/parole-player.c:3445
+#: ../src/parole-player.c:1997 ../src/parole-player.c:2142
+msgid "_Fullscreen"
+msgstr "_Celozaslonski način"
+
+#: ../src/parole-player.c:1998 ../src/parole-player.c:3451
 msgid "Fullscreen"
 msgstr "Cel zaslon"
 
-#: ../src/parole-player.c:2008
+#: ../src/parole-player.c:2006
 msgid "Leave _Fullscreen"
 msgstr "Zapusti _celozaslonski način"
 
-#: ../src/parole-player.c:2009
+#: ../src/parole-player.c:2007
 msgid "Leave Fullscreen"
 msgstr "Zapusti celozaslonski način"
 
 #. Play menu item
 #. * Play pause
-#: ../src/parole-player.c:2106 ../src/plugins/tray/tray-provider.c:123
+#: ../src/parole-player.c:2104 ../src/plugins/tray/tray-provider.c:123
 msgid "_Pause"
 msgstr "_Predvajaj"
 
-#: ../src/parole-player.c:2106 ../src/plugins/tray/tray-provider.c:123
+#: ../src/parole-player.c:2104 ../src/plugins/tray/tray-provider.c:123
 msgid "_Play"
 msgstr "_Zaženi"
 
 #. * Previous item in playlist.
-#: ../src/parole-player.c:2122
+#: ../src/parole-player.c:2120
 msgid "_Previous"
 msgstr "_Prehodno"
 
 #. * Next item in playlist.
-#: ../src/parole-player.c:2133
+#: ../src/parole-player.c:2131
 msgid "_Next"
 msgstr "_Naslednje"
 
 #. * Un/Full screen
-#: ../src/parole-player.c:2144
+#: ../src/parole-player.c:2142
 msgid "_Leave Fullscreen"
 msgstr "_Zapusti Celozaslonski način"
 
 #. * Un/Hide menubar
-#: ../src/parole-player.c:2159
+#: ../src/parole-player.c:2157
 msgid "Show menubar"
 msgstr "Pokaži vrstico menija"
 
-#: ../src/parole-player.c:2176
+#: ../src/parole-player.c:2174
 msgid "Mini Mode"
 msgstr "Mini način"
 
-#: ../src/parole-player.c:2419
+#: ../src/parole-player.c:2414
+msgid "Mute"
+msgstr "Nemo"
+
+#: ../src/parole-player.c:2417
 msgid "Unmute"
 msgstr "Izključi nemo"
 
-#: ../src/parole-player.c:2844
+#: ../src/parole-player.c:2848
 msgid "Unable to open default web browser"
 msgstr "Privzetega brskalnik ni bilo mogoče odpreti"
 
-#: ../src/parole-player.c:2846
+#: ../src/parole-player.c:2850
 msgid ""
 "Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr "Pojdite na https://docs.xfce.org/apps/parole/bugs za prijavo hrošča."
 
+#. Create dialog
 #: ../src/parole-player.c:2874
+msgid "Go to position"
+msgstr "Pojdi na položaj"
+
+#: ../src/parole-player.c:2878
 msgid "Go"
 msgstr "Pojdi"
 
 #. Clear Recent Menu Item
-#: ../src/parole-player.c:3302
+#: ../src/parole-player.c:3308
 msgid "_Clear recent items..."
 msgstr "I_zbriši nedavne predmete"
 
-#: ../src/parole-player.c:3613
+#: ../src/parole-player.c:3416 ../src/plugins/notify/notify-provider.c:190
+msgid "Previous Track"
+msgstr "Prejšnji zapis"
+
+#: ../src/parole-player.c:3434 ../src/plugins/notify/notify-provider.c:202
+msgid "Next Track"
+msgstr "Naslednji zapis"
+
+#: ../src/parole-player.c:3619
 msgid "Audio Track:"
 msgstr "Zvočni zapis:"
 
-#: ../src/parole-player.c:3632
+#: ../src/parole-player.c:3638
 msgid "Subtitles:"
 msgstr "Podnapisi:"
+
+#. Add a close button to the Infobar
+#: ../src/parole-player.c:3644 ../src/plugins/tray/tray-provider.c:261
+msgid "Close"
+msgstr "Zapri"
 
 #: ../src/parole-plugins-manager.c:288
 msgid "Plugin failed to load"
@@ -1275,14 +674,6 @@ msgstr "Zahodno"
 msgid "Vietnamese"
 msgstr "Vietnamska"
 
-#: ../src/plugins/mpris2/mpris2.desktop.in.h:1
-msgid "MPRIS2"
-msgstr "MPRIS2"
-
-#: ../src/plugins/mpris2/mpris2.desktop.in.h:2
-msgid "MPRIS2 remote control"
-msgstr "MPRIS2 daljinsko upravljanje"
-
 #: ../src/plugins/notify/notify-provider.c:139
 #: ../src/plugins/notify/notify-provider.c:141
 msgid "<i>on</i>"
@@ -1292,22 +683,6 @@ msgstr "<i>na</i>"
 #: ../src/plugins/notify/notify-provider.c:141
 msgid "<i>by</i>"
 msgstr "<i>od</i>"
-
-#: ../src/plugins/notify/notify.desktop.in.h:1
-msgid "Notify"
-msgstr "Obvesti"
-
-#: ../src/plugins/notify/notify.desktop.in.h:2
-msgid "Show notifications for currently playing tracks"
-msgstr "Prikaži obvestila za trenutno predvajane skladbe"
-
-#: ../src/plugins/tray/system-tray.desktop.in.h:1
-msgid "Tray icon"
-msgstr "Ikona sistemske vrstice"
-
-#: ../src/plugins/tray/system-tray.desktop.in.h:2
-msgid "Show icon in the system tray"
-msgstr "Pokaži ikono v sistemski vrstici"
 
 #. * Previous Track
 #: ../src/plugins/tray/tray-provider.c:132
@@ -1323,6 +698,11 @@ msgstr "_Naslednja skladba"
 #: ../src/plugins/tray/tray-provider.c:157
 msgid "_Open"
 msgstr "_Odpri"
+
+#. * Exit
+#: ../src/plugins/tray/tray-provider.c:172
+msgid "_Quit"
+msgstr "_Končaj"
 
 #: ../src/plugins/tray/tray-provider.c:258
 msgid "Tray icon plugin"
@@ -1343,6 +723,10 @@ msgstr "Parole je mogoče zmanjšati v sistemsko vrstico."
 #: ../src/plugins/tray/tray-provider.c:342
 msgid "Minimize to tray"
 msgstr "Zmanjšaj v sistemsko vrstico"
+
+#: ../src/plugins/tray/tray-provider.c:354
+msgid "Quit"
+msgstr "Končaj"
 
 #: ../src/plugins/tray/tray-provider.c:363
 msgid "Remember my choice"
