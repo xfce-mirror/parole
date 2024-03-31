@@ -22,6 +22,7 @@ libparolegst_la_SOURCES =		\
 	parole-gst.h
 
 libparolegst_la_CFLAGS =		\
+	$(GST_AUDIO_CFLAGS)		\
 	$(GST_TAG_CFLAGS)		\
 	$(GST_VIDEO_CFLAGS)		\
 	$(GTHREAD_CFLAGS)		\
