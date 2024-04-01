@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR Xfce
+# This file is distributed under the same license as the xfce-apps.parole package.
 # 
 # Translators:
 # 1763f4a4329a2376c933c5e919a36cbc_341ca53 <1f851310383599d03339229d772e1290_119292>, 2017
@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-31 12:51+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
+"POT-Creation-Date: 2024-04-01 00:52+0200\n"
 "PO-Revision-Date: 2013-07-03 18:28+0000\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>, 2013-2015,2018-2019,2022-2023\n"
 "Language-Team: Korean (http://app.transifex.com/xfce/xfce-apps/language/ko/)\n"
@@ -19,100 +19,691 @@ msgstr ""
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../src/common/parole-common.c:83
+#: data/interfaces/mediachooser.ui:23
+msgid "Open Media Files"
+msgstr "미디어 파일 열기"
+
+#: data/interfaces/open-location.ui:23
+msgid "Open Network Location"
+msgstr "네트워크 위치 열기"
+
+#: data/interfaces/open-location.ui:65 src/parole-open-location.c:193
+msgid "Clear History"
+msgstr "기록 지우기"
+
+#: data/interfaces/parole-settings.ui:28
+msgid "Automatic"
+msgstr "자동"
+
+#: data/interfaces/parole-settings.ui:32
+msgid "X Window System (X11/XShm/Xv)"
+msgstr "X 윈도 시스템(X11/XShm/Xv)"
+
+#: data/interfaces/parole-settings.ui:36
+msgid "X Window System (No Xv)"
+msgstr "X 윈도 시스템(No Xv)"
+
+#: data/interfaces/parole-settings.ui:42
+msgid "Parole Preferences"
+msgstr ""
+
+#. Add a close button to the Infobar
+#: data/interfaces/parole-settings.ui:62 data/interfaces/plugins.ui:43
+#: src/parole-player.c:3644 src/plugins/tray/tray-provider.c:261
+msgid "Close"
+msgstr "닫기"
+
+#: data/interfaces/parole-settings.ui:121
+msgid "Disable screensaver when playing movies"
+msgstr "동영상 재생중 화면 보호기 비활성화"
+
+#: data/interfaces/parole-settings.ui:148
+msgid "<b>Screensaver</b>"
+msgstr "<b>화면 보호기</b>"
+
+#: data/interfaces/parole-settings.ui:189
+msgid "Show visual effects when an audio file is played"
+msgstr "오디오 파일 재생중 시각 효과 보이기"
+
+#: data/interfaces/parole-settings.ui:224
+msgid "Visualization type:"
+msgstr "시각화 유형:"
+
+#: data/interfaces/parole-settings.ui:266
+msgid "<b>Audio Visualization</b>"
+msgstr "<b>오디오 시각화</b>"
+
+#: data/interfaces/parole-settings.ui:300
+msgid "Enable keyboard multimedia keys"
+msgstr "키보드 멀티미디어 키 활성화"
+
+#: data/interfaces/parole-settings.ui:327
+msgid "<b>Keyboard</b>"
+msgstr "<b>키보드</b>"
+
+#: data/interfaces/parole-settings.ui:344 data/interfaces/shortcuts.ui:15
+msgid "General"
+msgstr "일반"
+
+#: data/interfaces/parole-settings.ui:446
+msgid "Please restart Parole for this change to take effect."
+msgstr "바꾼 내용을 적용하려면 빠롤을 재시작하십시오."
+
+#: data/interfaces/parole-settings.ui:482
+msgid "<b>Video Output</b>"
+msgstr "<b>비디오 출력</b>"
+
+#: data/interfaces/parole-settings.ui:521
+msgid "Brightness:"
+msgstr "밝기:"
+
+#: data/interfaces/parole-settings.ui:533
+msgid "Contrast:"
+msgstr "대비:"
+
+#: data/interfaces/parole-settings.ui:545
+msgid "Hue:"
+msgstr "색상:"
+
+#: data/interfaces/parole-settings.ui:557
+msgid "Saturation:"
+msgstr "채도:"
+
+#: data/interfaces/parole-settings.ui:627
+msgid "Reset to defaults"
+msgstr "기본으로 재설정"
+
+#: data/interfaces/parole-settings.ui:655
+msgid "<b>Color Balance</b>"
+msgstr "<b>색상 균형</b>"
+
+#: data/interfaces/parole-settings.ui:675
+msgid "Display"
+msgstr "디스플레이"
+
+#: data/interfaces/parole-settings.ui:710
+msgid "Always replace playlist with opened files"
+msgstr "항상 재생 목록을 열린 파일로 바꾸기"
+
+#: data/interfaces/parole-settings.ui:722
+msgid "Check and remove duplicate media entries"
+msgstr "중복된 미디어 항목을 검사하고 제거"
+
+#: data/interfaces/parole-settings.ui:734
+msgid "Start playing opened files"
+msgstr "연 파일 재생 시작하기"
+
+#: data/interfaces/parole-settings.ui:746 data/interfaces/playlist.ui:234
+msgid "Remember playlist"
+msgstr "재생 목록 기억하기"
+
+#: data/interfaces/parole-settings.ui:801
+msgid "<b>Playlist Preferences</b>"
+msgstr ""
+
+#: data/interfaces/parole-settings.ui:814 data/interfaces/playlist.ui:43
+#: data/interfaces/shortcuts.ui:99 src/parole-medialist.c:797
+#: src/parole-medialist.c:848 src/parole-player.c:3270
+msgid "Playlist"
+msgstr "재생 목록"
+
+#: data/interfaces/parole-settings.ui:854
+msgid "Automatically show subtitles when playing movie file"
+msgstr "동영상 파일을 재생할 때 자막 자동으로 보이기"
+
+#: data/interfaces/parole-settings.ui:892
+msgid "Font:"
+msgstr "글꼴:"
+
+#: data/interfaces/parole-settings.ui:904
+msgid "Encoding:"
+msgstr "인코딩:"
+
+#: data/interfaces/parole-settings.ui:953
+msgid "<b>Subtitle Preferences</b>"
+msgstr ""
+
+#: data/interfaces/parole-settings.ui:966
+msgid "Subtitles"
+msgstr "자막"
+
+#: data/interfaces/parole.ui:40 data/desktop/org.xfce.Parole.desktop.in.in:3
+#: src/parole-about.c:75 src/parole-player.c:599 src/parole-player.c:1440
+#: src/parole-player.c:1809 src/plugins/mpris2/mpris2-provider.c:189
+msgid "Parole Media Player"
+msgstr "빠롤 미디어 플레이어"
+
+#: data/interfaces/parole.ui:63
+msgid "_Media"
+msgstr "미디어(_M)"
+
+#: data/interfaces/parole.ui:73
+msgid "_Open..."
+msgstr "열기(_O)..."
+
+#: data/interfaces/parole.ui:83
+msgid "Open _Location..."
+msgstr "위치 열기(_L)..."
+
+#: data/interfaces/parole.ui:93
+msgid "Open _Recent"
+msgstr "최근 목록 열기(_R)"
+
+#: data/interfaces/parole.ui:107
+msgid "_Save Playlist..."
+msgstr "재생 목록 저장(_S)..."
+
+#: data/interfaces/parole.ui:122 src/parole-disc.c:105 src/parole-disc.c:139
+msgid "Insert Disc"
+msgstr "디스크를 삽입하십시오"
+
+#. * Exit
+#: data/interfaces/parole.ui:135 src/plugins/tray/tray-provider.c:172
+msgid "_Quit"
+msgstr "끝내기(_Q)"
+
+#: data/interfaces/parole.ui:149
+msgid "_Playback"
+msgstr "재생 목록(_P)"
+
+#: data/interfaces/parole.ui:159
+msgid "_Repeat"
+msgstr "반복(_R)"
+
+#: data/interfaces/parole.ui:167
+msgid "_Shuffle"
+msgstr "뒤섞기(_S)"
+
+#: data/interfaces/parole.ui:181 data/interfaces/parole.ui:962
+msgid "Show Playlist"
+msgstr "재생 목록을 표시합니다"
+
+#. Create dialog
+#: data/interfaces/parole.ui:189 src/parole-player.c:2874
+msgid "Go to position"
+msgstr "위치로 이동"
+
+#: data/interfaces/parole.ui:201
+msgid "_DVD"
+msgstr " _DVD"
+
+#: data/interfaces/parole.ui:211
+msgid "_DVD Menu"
+msgstr "DVD 메뉴(_D)"
+
+#: data/interfaces/parole.ui:220
+msgid "_Title Menu"
+msgstr "제목 메뉴(_T)"
+
+#: data/interfaces/parole.ui:229
+msgid "_Subpicture Menu"
+msgstr "삽화 메뉴(_S)"
+
+#: data/interfaces/parole.ui:238
+msgid "_Audio Menu"
+msgstr "오디오 메뉴(_A)"
+
+#: data/interfaces/parole.ui:247
+msgid "A_ngle Menu"
+msgstr "앵글 메뉴(_N)"
+
+#: data/interfaces/parole.ui:262
+msgid "_Chapters"
+msgstr "챕터(_C)"
+
+#: data/interfaces/parole.ui:272
+msgid "_Chapter Menu"
+msgstr "챕터 메뉴(_C)"
+
+#: data/interfaces/parole.ui:295
+msgid "_Audio"
+msgstr "오디오(_A)"
+
+#: data/interfaces/parole.ui:305
+msgid "_Audio Track"
+msgstr "오디오 트랙(_A)"
+
+#: data/interfaces/parole.ui:316 src/parole-player.c:810
+msgid "Empty"
+msgstr "비어 있음"
+
+#: data/interfaces/parole.ui:334
+msgid "Volume _Up"
+msgstr "음량 크게(_U)"
+
+#: data/interfaces/parole.ui:344
+msgid "Volume _Down"
+msgstr "음량 작게(_D)"
+
+#: data/interfaces/parole.ui:354
+msgid "_Mute"
+msgstr "음소거(_M)"
+
+#: data/interfaces/parole.ui:368
+msgid "_Video"
+msgstr "동영상(_V)"
+
+#: data/interfaces/parole.ui:378 src/parole-player.c:1997
+#: src/parole-player.c:2142
+msgid "_Fullscreen"
+msgstr "최대 화면(_F)"
+
+#: data/interfaces/parole.ui:393
+msgid "_Aspect Ratio"
+msgstr "영상 비율(_A)"
+
+#: data/interfaces/parole.ui:403 data/interfaces/parole.ui:488
+#: src/parole-player.c:741
+msgid "None"
+msgstr "없음"
+
+#: data/interfaces/parole.ui:413
+msgid "Auto"
+msgstr "자동"
+
+#: data/interfaces/parole.ui:424
+msgid "Square"
+msgstr "정사각형"
+
+#: data/interfaces/parole.ui:435
+msgid "4:3 (TV)"
+msgstr "4:3 (TV)"
+
+#: data/interfaces/parole.ui:446
+msgid "16:9 (Widescreen)"
+msgstr "16:9 (와이드스크린)"
+
+#: data/interfaces/parole.ui:457
+msgid "20:9 (DVB)"
+msgstr "20:9 (DVB)"
+
+#: data/interfaces/parole.ui:478
+msgid "_Subtitles"
+msgstr "자막(_S)"
+
+#: data/interfaces/parole.ui:504
+msgid "Select Text Subtitles..."
+msgstr "텍스트 자막을 선택하십시오..."
+
+#: data/interfaces/parole.ui:526
+msgid "_Tools"
+msgstr "도구(_T)"
+
+#: data/interfaces/parole.ui:536
+msgid "P_lugins"
+msgstr "플러그인(_L)"
+
+#: data/interfaces/parole.ui:544
+msgid "_Preferences"
+msgstr "기본 설정(_P)"
+
+#: data/interfaces/parole.ui:557
+msgid "_Help"
+msgstr "도움말(_H)"
+
+#: data/interfaces/parole.ui:567
+msgid "_Report a Bug..."
+msgstr "버그 보고(_R)..."
+
+#: data/interfaces/parole.ui:575
+msgid "_Keyboard Shortcuts"
+msgstr "단축키(_K)"
+
+#: data/interfaces/parole.ui:585
+msgid "Display Parole user manual"
+msgstr "빠롤 사용자 설명서를 표시합니다"
+
+#: data/interfaces/parole.ui:586
+msgid "_Contents"
+msgstr "내용(_C)"
+
+#: data/interfaces/parole.ui:595
+msgid "_About"
+msgstr "정보(_A)"
+
+#: data/interfaces/parole.ui:696
+msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
+msgstr "<span color='#F4F4F4'><b><big>알 수 없는 곡</big></b></span>"
+
+#: data/interfaces/parole.ui:712
+msgid ""
+"<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
+"Album</span></big>"
+msgstr "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>알 수 없는 앨범</span></big>"
+
+#: data/interfaces/parole.ui:728
+msgid ""
+"<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
+"Artist</span></big>"
+msgstr "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>알 수 없는 음악가</span></big>"
+
+#: data/interfaces/parole.ui:833 data/interfaces/parole.ui:892
+msgid "0:00"
+msgstr "0:00"
+
+#: data/interfaces/parole.ui:847
+msgid "Buffering (0%)"
+msgstr "버퍼링(0%)"
+
+#: data/interfaces/parole.ui:879
+msgid "/"
+msgstr "/"
+
+#: data/interfaces/playlist.ui:75
+msgid "Disc Playlist"
+msgstr "디스크 재생 목록"
+
+#: data/interfaces/playlist.ui:99
+msgid "Add to playlist..."
+msgstr "재생 목록에 추가..."
+
+#: data/interfaces/playlist.ui:100
+msgid "Add"
+msgstr "추가"
+
+#: data/interfaces/playlist.ui:115
+msgid "Remove selected media"
+msgstr "선택한 미디어 제거"
+
+#: data/interfaces/playlist.ui:116
+msgid "Remove"
+msgstr "제거"
+
+#: data/interfaces/playlist.ui:131
+msgid "Clear playlist"
+msgstr "재생 목록 지우기"
+
+#: data/interfaces/playlist.ui:132 data/interfaces/playlist.ui:248
+msgid "Clear"
+msgstr "지우기"
+
+#: data/interfaces/playlist.ui:146 data/interfaces/playlist.ui:147
+msgid "Repeat"
+msgstr "반복"
+
+#: data/interfaces/playlist.ui:160 data/interfaces/playlist.ui:161
+msgid "Shuffle"
+msgstr "무작위"
+
+#: data/interfaces/playlist.ui:174 data/interfaces/playlist.ui:175
+msgid "Move Up"
+msgstr "위로 이동"
+
+#: data/interfaces/playlist.ui:189 data/interfaces/playlist.ui:190
+msgid "Move Down"
+msgstr "아래로 이동"
+
+#: data/interfaces/playlist.ui:218
+msgid "Replace playlist when opening files"
+msgstr "파일을 열 때 재생 목록 바꾸기"
+
+#: data/interfaces/playlist.ui:226
+msgid "Play opened files"
+msgstr "열어놓은 파일 재생하기"
+
+#: data/interfaces/plugins.ui:20
+msgid "Parole Plugins"
+msgstr "빠롤 플러그인"
+
+#: data/interfaces/plugins.ui:100
+msgid "Plugin"
+msgstr "플러그인"
+
+#: data/interfaces/plugins.ui:133
+msgid "Preferences"
+msgstr "기본 설정"
+
+#: data/interfaces/plugins.ui:146
+msgid "About"
+msgstr "정보"
+
+#: data/interfaces/save-playlist.ui:34
+msgid "Save Playlist as..."
+msgstr "다른 이름으로 재생 목록 저장..."
+
+#: data/interfaces/shortcuts.ui:20
+msgid "Open file"
+msgstr "파일 열기"
+
+#: data/interfaces/shortcuts.ui:27
+msgid "Open location"
+msgstr "위치 열기"
+
+#: data/interfaces/shortcuts.ui:34 src/plugins/tray/tray-provider.c:354
+msgid "Quit"
+msgstr "끝내기"
+
+#: data/interfaces/shortcuts.ui:43
+msgid "View"
+msgstr "보기"
+
+#: data/interfaces/shortcuts.ui:48
+msgid "Toggle fullscreen"
+msgstr "전체 화면으로 전환"
+
+#: data/interfaces/shortcuts.ui:55
+msgid "Exit fullscreen"
+msgstr "전체 화면 나가기"
+
+#: data/interfaces/shortcuts.ui:62
+msgid "Toggle menubar"
+msgstr "메뉴 표시줄 표시"
+
+#: data/interfaces/shortcuts.ui:71
+msgid "Volume"
+msgstr "볼륨"
+
+#: data/interfaces/shortcuts.ui:76
+msgid "Increase volume"
+msgstr "볼륭 올리기"
+
+#: data/interfaces/shortcuts.ui:83
+msgid "Decrease volume"
+msgstr "볼륨 줄이기"
+
+#: data/interfaces/shortcuts.ui:90 src/parole-player.c:2414
+msgid "Mute"
+msgstr "음소거"
+
+#: data/interfaces/shortcuts.ui:104
+msgid "Toggle playlist"
+msgstr "재생 목록 보이기"
+
+#: data/interfaces/shortcuts.ui:111
+msgid "Select previous item"
+msgstr "이전 항목 선택"
+
+#: data/interfaces/shortcuts.ui:118
+msgid "Select next item"
+msgstr "다음 항목 선택"
+
+#: data/interfaces/shortcuts.ui:125
+msgid "Remove selected item"
+msgstr "선택한 항목 제거"
+
+#: data/interfaces/shortcuts.ui:134
+msgid "Playback"
+msgstr "플레이"
+
+#: data/interfaces/shortcuts.ui:139
+#: data/desktop/org.xfce.Parole.desktop.in.in:16
+msgid "Play/Pause"
+msgstr "재생/일시정지"
+
+#: data/interfaces/shortcuts.ui:146 src/main.c:245
+msgid "Previous track"
+msgstr "이전 트랙"
+
+#: data/interfaces/shortcuts.ui:153 src/main.c:243
+msgid "Next track"
+msgstr "다음 트랙"
+
+#: data/interfaces/shortcuts.ui:160
+msgid "Go back 10 seconds"
+msgstr "10초 전으로 돌아가기"
+
+#: data/interfaces/shortcuts.ui:167
+msgid "Go forward 10 seconds"
+msgstr "10초 후로 가기"
+
+#: data/interfaces/shortcuts.ui:174
+msgid "Go back 1 minute"
+msgstr "1분 되감기"
+
+#: data/interfaces/shortcuts.ui:181
+msgid "Go forward 1 minute"
+msgstr "1분 빨리감기"
+
+#: data/interfaces/shortcuts.ui:188
+msgid "Go back 10 minutes"
+msgstr "10분 전으로 돌아가기"
+
+#: data/interfaces/shortcuts.ui:195
+msgid "Go forward 10 minutes"
+msgstr "10분 후로 가기"
+
+#: data/desktop/org.xfce.Parole.desktop.in.in:4
+msgid "Play your media"
+msgstr "미디어 재생"
+
+#: data/desktop/org.xfce.Parole.desktop.in.in:21 src/parole-player.c:3416
+#: src/plugins/notify/notify-provider.c:190
+msgid "Previous Track"
+msgstr "이전 트랙"
+
+#: data/desktop/org.xfce.Parole.desktop.in.in:26 src/parole-player.c:3434
+#: src/plugins/notify/notify-provider.c:202
+msgid "Next Track"
+msgstr "다음 트랙"
+
+#: data/metainfo/parole.appdata.xml.in:7
+msgid "Parole"
+msgstr ""
+
+#: data/metainfo/parole.appdata.xml.in:8
+msgid "Modern and simple media player"
+msgstr ""
+
+#: data/metainfo/parole.appdata.xml.in:12
+msgid ""
+"Parole is a modern simple media player based on the GStreamer framework and "
+"written to fit well in the Xfce desktop. It is designed with simplicity, "
+"speed and resource usage in mind."
+msgstr "빠롤은 지스트리머 프레임워크를 기반으로 한 간단한 최신 미디어 플레이어이며, Xfce 데스크톱에 적합하게 작성했습니다. 단순함, 속도, 자원 활용을 염두에 두고 설계했습니다."
+
+#: data/metainfo/parole.appdata.xml.in:16
+msgid ""
+"Parole features playback of local media files, including video with "
+"subtitles support, Audio CDs, DVDs, and live streams. Parole is also "
+"extensible via plugins."
+msgstr "빠롤은 자막과 더불어 동영상과 같은 로컬 미디어 파일, 오디오 CD, DVD, 라이브 스트림을 재생합니다. 플러그인을 통해 기능을 확장할 수 있습니다."
+
+#: data/metainfo/parole.appdata.xml.in:26
+msgid "Parole playing Big Buck Bunny"
+msgstr ""
+
+#: data/metainfo/parole.appdata.xml.in:30
+msgid "Parole playing a LAS podcast"
+msgstr ""
+
+#: data/metainfo/parole.appdata.xml.in:34
+msgid "Parole playing a LAS podcast in Mini Mode (0.9+)"
+msgstr ""
+
+#: src/common/parole-common.c:83
 msgid "Message"
 msgstr "메시지"
 
-#: ../src/common/parole-common.c:87
+#: src/common/parole-common.c:87
 msgid "Error"
 msgstr "오류"
 
-#: ../src/gst/parole-gst.c:1111 ../src/parole-medialist.c:412
+#: src/gst/parole-gst.c:1111 src/parole-medialist.c:412
 #, c-format
 msgid "Track %i"
 msgstr "%i번 트랙"
 
-#: ../src/gst/parole-gst.c:1114
+#: src/gst/parole-gst.c:1114
 msgid "Audio CD"
 msgstr "음악 CD"
 
-#: ../src/gst/parole-gst.c:1292
+#: src/gst/parole-gst.c:1292
 msgid "Unable to install missing codecs."
 msgstr "빠진 코덱을 설치할 수 없습니다."
 
-#: ../src/gst/parole-gst.c:1295
+#: src/gst/parole-gst.c:1295
 msgid "No available plugin installer was found."
 msgstr "사용할 수 있는 플러그인 설치 관리자를 찾지 못했습니다."
 
-#: ../src/gst/parole-gst.c:1346
+#: src/gst/parole-gst.c:1346
 msgid "Additional software is required."
 msgstr "추가 프로그램이 필요합니다."
 
-#: ../src/gst/parole-gst.c:1350
+#: src/gst/parole-gst.c:1350
 msgid "Don't Install"
 msgstr "설치하지 않음"
 
-#: ../src/gst/parole-gst.c:1352
+#: src/gst/parole-gst.c:1352
 msgid "Install"
 msgstr "설치"
 
-#: ../src/gst/parole-gst.c:1355
+#: src/gst/parole-gst.c:1355
 msgid "OK"
 msgstr "확인"
 
-#: ../src/gst/parole-gst.c:1362
+#: src/gst/parole-gst.c:1362
 #, c-format
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
 msgstr "빠롤은 이 파일을 재생하기 위해 <b>%s</b>을(를) 필요로 합니다.\n자동으로 설치할 수 있습니다."
 
-#: ../src/gst/parole-gst.c:1365
+#: src/gst/parole-gst.c:1365
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
 msgstr "빠롤은 이 파일을 재생하기 위해 <b>%s</b>을(를) 필요로 합니다."
 
-#: ../src/gst/parole-gst.c:1746
+#: src/gst/parole-gst.c:1746
 msgid "The stream is taking too much time to load"
 msgstr "스트림을 불러오는데 너무나 많은 시간이 걸립니다"
 
-#: ../src/gst/parole-gst.c:1748
+#: src/gst/parole-gst.c:1748
 msgid "Do you want to continue loading or stop?"
 msgstr "계속 불러오거나 중지하시렵니까?"
 
-#: ../src/gst/parole-gst.c:1749
+#: src/gst/parole-gst.c:1749
 msgid "Stop"
 msgstr "멈춤"
 
-#: ../src/gst/parole-gst.c:1750
+#: src/gst/parole-gst.c:1750
 msgid "Continue"
 msgstr "계속"
 
-#: ../src/gst/parole-gst.c:1949
+#: src/gst/parole-gst.c:1949
 msgid "GStreamer Error"
 msgstr "지스트리머 오류"
 
-#: ../src/gst/parole-gst.c:1950
+#: src/gst/parole-gst.c:1950
 msgid "Parole Media Player cannot start."
 msgstr "빠롤 미디어 재생기를 시작할 수 없습니다."
 
-#: ../src/gst/parole-gst.c:1975 ../src/gst/parole-gst.c:1990
-#: ../src/gst/parole-gst.c:2024
+#: src/gst/parole-gst.c:1975 src/gst/parole-gst.c:1990
+#: src/gst/parole-gst.c:2024
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
 msgstr "\"%s\" 플러그인을 불러올 수 없습니다. 지스트리머를 설치했는지 확인하십시오."
 
-#: ../src/gst/parole-gst.c:2591 ../src/gst/parole-gst.c:2595
+#: src/gst/parole-gst.c:2591 src/gst/parole-gst.c:2595
 #, c-format
 msgid "Audio Track #%d"
 msgstr "%d번 트랙"
 
-#: ../src/gst/parole-gst.c:2631 ../src/gst/parole-gst.c:2635
+#: src/gst/parole-gst.c:2631 src/gst/parole-gst.c:2635
 #, c-format
 msgid "Subtitle #%d"
 msgstr "%d번 자막"
 
-#: ../src/main.c:62
+#: src/main.c:62
 #, c-format
 msgid ""
 "\n"
@@ -127,601 +718,540 @@ msgid ""
 "\n"
 msgstr "\n빠롤 미디어 재생기 %s\n\nXfce Goodies 프로젝트의 구성항목입니다\nhttps://goddies.xfce.org\n\nGNU 일반 공중 사용 허가서에 따라 사용을 허가합니다.\n\n<%s>에 버그를 알려주십시오.\n\n"
 
-#: ../src/main.c:231
+#: src/main.c:231
 msgid "Open a new instance"
 msgstr "새 인스턴스 열기"
 
-#: ../src/main.c:233
+#: src/main.c:233
 msgid "Do not load plugins"
 msgstr "플러그인 불러오지 않음"
 
-#: ../src/main.c:235
+#: src/main.c:235
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "Audio-CD/VCD/DVD 장치 경로 설정"
 
-#: ../src/main.c:237
+#: src/main.c:237
 msgid "Start in embedded mode"
 msgstr "내장 모드로 시작"
 
-#: ../src/main.c:239
+#: src/main.c:239
 msgid "Start in fullscreen mode"
 msgstr "전체 화면 상태로 시작하기"
 
-#: ../src/main.c:241
+#: src/main.c:241
 msgid "Play or pause if already playing"
 msgstr "이미 재생중이라면 재생 또는 일시정지 하기"
 
-#: ../src/main.c:243
-msgid "Next track"
-msgstr "다음 트랙"
-
-#: ../src/main.c:245
-msgid "Previous track"
-msgstr "이전 트랙"
-
-#: ../src/main.c:247
+#: src/main.c:247
 msgid "Raise volume"
 msgstr "음량 키우기"
 
-#: ../src/main.c:249
+#: src/main.c:249
 msgid "Lower volume"
 msgstr "음량 줄이기"
 
-#: ../src/main.c:251
+#: src/main.c:251
 msgid "Mute volume"
 msgstr "음소거"
 
-#: ../src/main.c:253
+#: src/main.c:253
 msgid "Unmute (restore) volume"
 msgstr "음량 음소거 취소(복귀)"
 
-#: ../src/main.c:255
+#: src/main.c:255
 msgid "Add files to playlist"
 msgstr "재생 목록에 파일 추가"
 
-#: ../src/main.c:257
+#: src/main.c:257
 msgid "Print version information and exit"
 msgstr "버전 정보를 출력하고 끝냅니다"
 
-#: ../src/main.c:261
+#: src/main.c:261
 msgid "Media to play"
 msgstr "재생할 미디어"
 
-#: ../src/main.c:288
+#: src/main.c:288
 msgid "[FILES...] - Play movies and songs"
 msgstr "<파일...> - 동영상과 노래를 재생합니다"
 
-#: ../src/main.c:299
+#: src/main.c:299
 #, c-format
 msgid "Type %s --help to list all available command line options\n"
 msgstr "모든 존재하는 명령행 옵션을 보려면 %s --help를 입력하십시오.\n"
 
-#: ../src/main.c:316
-#, c-format
+#: src/main.c:316
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "빠롤이 이미 실행중입니다. 새 인스턴스를 열려면 -i를 사용합니다\n"
 
-#: ../src/misc/parole-filters.c:66
+#: src/misc/parole-filters.c:66
 msgid "Audio"
 msgstr "음악"
 
-#: ../src/misc/parole-filters.c:91
+#: src/misc/parole-filters.c:91
 msgid "Video"
 msgstr "동영상"
 
-#: ../src/misc/parole-filters.c:115 ../src/misc/parole-filters.c:142
+#: src/misc/parole-filters.c:115 src/misc/parole-filters.c:142
 msgid "Audio and video"
 msgstr "음악과 동영상"
 
-#: ../src/misc/parole-filters.c:169 ../src/misc/parole-filters.c:193
+#: src/misc/parole-filters.c:169 src/misc/parole-filters.c:193
 msgid "All supported files"
 msgstr "지원하는 모든 파일"
 
-#: ../src/misc/parole-filters.c:217
+#: src/misc/parole-filters.c:217
 msgid "Playlist files"
 msgstr "재생 목록 파일"
 
-#: ../src/parole-about.c:70
+#: src/parole-about.c:70
 msgid "A modern simple media player for the Xfce Desktop Environment."
 msgstr "XFCE 데스크톱 환경용 최신 단순 미디어 재생 프로그램."
 
-#: ../src/parole-about.c:75 ../src/parole-player.c:599
-#: ../src/parole-player.c:1440 ../src/parole-player.c:1809
-#: ../src/plugins/mpris2/mpris2-provider.c:189
-msgid "Parole Media Player"
-msgstr "빠롤 미디어 플레이어"
-
-#: ../src/parole-about.c:76
+#: src/parole-about.c:76
 msgid "translator-credits"
 msgstr "Seong-ho Cho <darkcircle.0426@gmail.com>, 2012"
 
-#: ../src/parole-about.c:79
+#: src/parole-about.c:79
 msgid "Visit Parole website"
 msgstr "빠롤 웹사이트 방문하기"
 
-#: ../src/parole-conf-dialog.c:287
+#: src/parole-conf-dialog.c:287
 msgid "Clutter (OpenGL)"
 msgstr "클러터(OpenGL)"
 
-#: ../src/parole-disc.c:105 ../src/parole-disc.c:139
-msgid "Insert Disc"
-msgstr "디스크를 삽입하십시오"
-
-#: ../src/parole-disc.c:106
+#: src/parole-disc.c:106
 msgid "Play Disc"
 msgstr "디스크 재생"
 
-#: ../src/parole-mediachooser.c:236 ../src/parole-medialist.c:855
-#: ../src/parole-player.c:1015
+#: src/parole-mediachooser.c:236 src/parole-medialist.c:855
+#: src/parole-player.c:1015
 msgid "All files"
 msgstr "모든 파일"
 
-#: ../src/parole-medialist.c:260 ../src/parole-medialist.c:1644
+#: src/parole-medialist.c:260 src/parole-medialist.c:1644
 #, c-format
 msgid "Playlist (%i item)"
 msgid_plural "Playlist (%i items)"
 msgstr[0] "재생 목록(항목 %i개)"
 
-#: ../src/parole-medialist.c:262 ../src/parole-medialist.c:1646
+#: src/parole-medialist.c:262 src/parole-medialist.c:1646
 #, c-format
 msgid "Playlist (%i chapter)"
 msgid_plural "Playlist (%i chapters)"
 msgstr[0] "재생 목록(%i장)"
 
-#: ../src/parole-medialist.c:426 ../src/parole-player.c:721
+#: src/parole-medialist.c:426 src/parole-player.c:721
 #, c-format
 msgid "Chapter %i"
 msgstr "%i번 장"
 
-#: ../src/parole-medialist.c:686
+#: src/parole-medialist.c:686
 msgid "Permission denied"
 msgstr "권한 거부함"
 
-#: ../src/parole-medialist.c:688
+#: src/parole-medialist.c:688
 msgid "Error saving playlist file"
 msgstr "재생 목록 파일을 저장하는데 오류가 발생했습니다"
 
-#: ../src/parole-medialist.c:698
+#: src/parole-medialist.c:698
 msgid "Unknown playlist format"
 msgstr "알 수 없는 재생 목록 형식"
 
-#: ../src/parole-medialist.c:699
+#: src/parole-medialist.c:699
 msgid "Please choose a supported playlist format"
 msgstr "지원하는 재생 목록 형식을 선택하십시오"
 
-#: ../src/parole-medialist.c:745 ../src/parole-plugins-manager.c:363
+#: src/parole-medialist.c:745 src/parole-plugins-manager.c:363
 msgid "Unknown"
 msgstr "알 수 없음"
 
-#: ../src/parole-medialist.c:797 ../src/parole-medialist.c:848
-#: ../src/parole-player.c:3270
-msgid "Playlist"
-msgstr "재생 목록"
-
-#: ../src/parole-medialist.c:838 ../src/parole-player.c:986
-#: ../src/parole-player.c:1177 ../src/parole-player.c:2877
-#: ../src/plugins/tray/tray-provider.c:348
+#: src/parole-medialist.c:838 src/parole-player.c:986 src/parole-player.c:1177
+#: src/parole-player.c:2877 src/plugins/tray/tray-provider.c:348
 msgid "Cancel"
 msgstr "취소"
 
-#: ../src/parole-medialist.c:839
+#: src/parole-medialist.c:839
 msgid "Save"
 msgstr "저장"
 
-#: ../src/parole-medialist.c:860
+#: src/parole-medialist.c:860
 #, c-format
 msgid "M3U Playlist (%s)"
 msgstr "M3U 재생 목록 (%s)"
 
-#: ../src/parole-medialist.c:870
+#: src/parole-medialist.c:870
 #, c-format
 msgid "PLS Playlist (%s)"
 msgstr "PLS 재생 목록 (%s)"
 
-#: ../src/parole-medialist.c:880
+#: src/parole-medialist.c:880
 #, c-format
 msgid "Advanced Stream Redirector (%s)"
 msgstr "고급 스트림 리다이렉터 (%s)"
 
-#: ../src/parole-medialist.c:890
+#: src/parole-medialist.c:890
 #, c-format
 msgid "Shareable Playlist (%s)"
 msgstr "공유 재생 목록(%s)"
 
 #. Clear
-#: ../src/parole-medialist.c:1280
+#: src/parole-medialist.c:1280
 msgid "Open Containing Folder"
 msgstr "내용이 있는 폴더 열기"
 
-#: ../src/parole-open-location.c:193
-msgid "Clear History"
-msgstr "기록 지우기"
-
-#: ../src/parole-player.c:741
-msgid "None"
-msgstr "없음"
-
-#: ../src/parole-player.c:810
-msgid "Empty"
-msgstr "비어 있음"
-
 #. Build the FileChooser dialog for subtitle selection.
-#: ../src/parole-player.c:980
+#: src/parole-player.c:980
 msgid "Select Subtitle File"
 msgstr "자막 파일 선택"
 
-#: ../src/parole-player.c:987
+#: src/parole-player.c:987
 msgid "Open"
 msgstr "열기"
 
-#: ../src/parole-player.c:1003
+#: src/parole-player.c:1003
 msgid "Subtitle Files"
 msgstr "자막 파일"
 
-#: ../src/parole-player.c:1173 ../src/parole-player.c:1181
+#: src/parole-player.c:1173 src/parole-player.c:1181
 msgid "Clear Recent Items"
 msgstr "최근 항목 지우기"
 
-#: ../src/parole-player.c:1175
+#: src/parole-player.c:1175
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
 msgstr "최근 항목 기록을 정말로 지우시렵니까? 되돌릴 수 없습니다."
 
-#: ../src/parole-player.c:1271 ../src/parole-player.c:1396
+#: src/parole-player.c:1271 src/parole-player.c:1396
 msgid "Media stream is not seekable"
 msgstr "미디어 스트림을 탐색할 수 없습니다."
 
-#: ../src/parole-player.c:1281
+#: src/parole-player.c:1281
 msgid "Play"
 msgstr "재생"
 
-#: ../src/parole-player.c:1284
+#: src/parole-player.c:1284
 msgid "Pause"
 msgstr "일시 정지"
 
-#: ../src/parole-player.c:1730
+#: src/parole-player.c:1730
 msgid "GStreamer backend error"
 msgstr "GStreamer 백엔드 오류"
 
-#: ../src/parole-player.c:1814
+#: src/parole-player.c:1814
 msgid "Unknown Song"
 msgstr "알 수 없는 곡"
 
-#: ../src/parole-player.c:1825 ../src/parole-player.c:1831
-#: ../src/parole-player.c:1839
+#: src/parole-player.c:1825 src/parole-player.c:1831 src/parole-player.c:1839
 msgid "on"
 msgstr "on"
 
-#: ../src/parole-player.c:1839 ../src/plugins/notify/notify-provider.c:134
+#: src/parole-player.c:1839 src/plugins/notify/notify-provider.c:134
 msgid "Unknown Album"
 msgstr "알 수 없는 앨범"
 
-#: ../src/parole-player.c:1850 ../src/parole-player.c:1857
+#: src/parole-player.c:1850 src/parole-player.c:1857
 msgid "by"
 msgstr "by"
 
-#: ../src/parole-player.c:1857 ../src/plugins/notify/notify-provider.c:136
+#: src/parole-player.c:1857 src/plugins/notify/notify-provider.c:136
 msgid "Unknown Artist"
 msgstr "알 수 없는 음악가"
 
-#: ../src/parole-player.c:1892
+#: src/parole-player.c:1892
 msgid "Buffering"
 msgstr "버퍼링"
 
-#: ../src/parole-player.c:1997 ../src/parole-player.c:2142
-msgid "_Fullscreen"
-msgstr "최대 화면(_F)"
-
-#: ../src/parole-player.c:1998 ../src/parole-player.c:3451
+#: src/parole-player.c:1998 src/parole-player.c:3451
 msgid "Fullscreen"
 msgstr "전체 화면"
 
-#: ../src/parole-player.c:2006
+#: src/parole-player.c:2006
 msgid "Leave _Fullscreen"
 msgstr "최대 화면 상태에서 복귀(_F)"
 
-#: ../src/parole-player.c:2007
+#: src/parole-player.c:2007
 msgid "Leave Fullscreen"
 msgstr "최대 화면 상태에서 나갑니다"
 
 #. Play menu item
 #. * Play pause
-#: ../src/parole-player.c:2104 ../src/plugins/tray/tray-provider.c:123
+#: src/parole-player.c:2104 src/plugins/tray/tray-provider.c:123
 msgid "_Pause"
 msgstr "일시정지(_P)"
 
-#: ../src/parole-player.c:2104 ../src/plugins/tray/tray-provider.c:123
+#: src/parole-player.c:2104 src/plugins/tray/tray-provider.c:123
 msgid "_Play"
 msgstr "재생(_P)"
 
 #. * Previous item in playlist.
-#: ../src/parole-player.c:2120
+#: src/parole-player.c:2120
 msgid "_Previous"
 msgstr "이전(_P)"
 
 #. * Next item in playlist.
-#: ../src/parole-player.c:2131
+#: src/parole-player.c:2131
 msgid "_Next"
 msgstr "다음(_N)"
 
 #. * Un/Full screen
-#: ../src/parole-player.c:2142
+#: src/parole-player.c:2142
 msgid "_Leave Fullscreen"
 msgstr "화면 복귀(_L)"
 
 #. * Un/Hide menubar
-#: ../src/parole-player.c:2157
+#: src/parole-player.c:2157
 msgid "Show menubar"
 msgstr "메뉴 표시줄 표시"
 
-#: ../src/parole-player.c:2174
+#: src/parole-player.c:2174
 msgid "Mini Mode"
 msgstr "미니 모드"
 
-#: ../src/parole-player.c:2414
-msgid "Mute"
-msgstr "음소거"
-
-#: ../src/parole-player.c:2417
+#: src/parole-player.c:2417
 msgid "Unmute"
 msgstr "음소거 해제"
 
-#: ../src/parole-player.c:2848
+#: src/parole-player.c:2848
 msgid "Unable to open default web browser"
 msgstr "기본 웹 브라우저를 열 수 없습니다"
 
-#: ../src/parole-player.c:2850
+#: src/parole-player.c:2850
 msgid ""
 "Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr "버그 리포트는 이곳에서 해주세요 https://docs.xfce.org/apps/parole/bugs."
 
-#. Create dialog
-#: ../src/parole-player.c:2874
-msgid "Go to position"
-msgstr "위치로 이동"
-
-#: ../src/parole-player.c:2878
+#: src/parole-player.c:2878
 msgid "Go"
 msgstr "이동"
 
 #. Clear Recent Menu Item
-#: ../src/parole-player.c:3308
+#: src/parole-player.c:3308
 msgid "_Clear recent items..."
 msgstr "최근 항목 지우기(_C)..."
 
-#: ../src/parole-player.c:3416 ../src/plugins/notify/notify-provider.c:190
-msgid "Previous Track"
-msgstr "이전 트랙"
-
-#: ../src/parole-player.c:3434 ../src/plugins/notify/notify-provider.c:202
-msgid "Next Track"
-msgstr "다음 트랙"
-
-#: ../src/parole-player.c:3619
+#: src/parole-player.c:3619
 msgid "Audio Track:"
 msgstr "오디오 트랙:"
 
-#: ../src/parole-player.c:3638
+#: src/parole-player.c:3638
 msgid "Subtitles:"
 msgstr "자막:"
 
-#. Add a close button to the Infobar
-#: ../src/parole-player.c:3644 ../src/plugins/tray/tray-provider.c:261
-msgid "Close"
-msgstr "닫기"
-
-#: ../src/parole-plugins-manager.c:288
+#: src/parole-plugins-manager.c:288
 msgid "Plugin failed to load"
 msgstr "플러그인을 불러오는데 실패했습니다"
 
-#: ../src/parole-plugins-manager.c:289
+#: src/parole-plugins-manager.c:289
 msgid "Please check your installation"
 msgstr "설치 여부 확인"
 
-#: ../src/parole-plugins-manager.c:400
+#: src/parole-plugins-manager.c:400
 msgid "No installed plugins found on this system"
 msgstr "이 시스템에 설치한 플러그인을 찾을 수 없습니다"
 
-#: ../src/parole-plugins-manager.c:401
+#: src/parole-plugins-manager.c:401
 msgid "Please check your installation."
 msgstr "설치 여부를 확인하십시오."
 
-#: ../src/parole-subtitle-encoding.c:162
+#: src/parole-subtitle-encoding.c:162
 msgid "Current Locale"
 msgstr "현재 언어"
 
-#: ../src/parole-subtitle-encoding.c:165 ../src/parole-subtitle-encoding.c:167
-#: ../src/parole-subtitle-encoding.c:169 ../src/parole-subtitle-encoding.c:171
+#: src/parole-subtitle-encoding.c:165 src/parole-subtitle-encoding.c:167
+#: src/parole-subtitle-encoding.c:169 src/parole-subtitle-encoding.c:171
 msgid "Arabic"
 msgstr "아랍어"
 
-#: ../src/parole-subtitle-encoding.c:174
+#: src/parole-subtitle-encoding.c:174
 msgid "Armenian"
 msgstr "아르메니아어"
 
-#: ../src/parole-subtitle-encoding.c:177 ../src/parole-subtitle-encoding.c:179
-#: ../src/parole-subtitle-encoding.c:181
+#: src/parole-subtitle-encoding.c:177 src/parole-subtitle-encoding.c:179
+#: src/parole-subtitle-encoding.c:181
 msgid "Baltic"
 msgstr "발트해 연안 어"
 
-#: ../src/parole-subtitle-encoding.c:184
+#: src/parole-subtitle-encoding.c:184
 msgid "Celtic"
 msgstr "켈트어"
 
-#: ../src/parole-subtitle-encoding.c:187 ../src/parole-subtitle-encoding.c:189
-#: ../src/parole-subtitle-encoding.c:191 ../src/parole-subtitle-encoding.c:193
+#: src/parole-subtitle-encoding.c:187 src/parole-subtitle-encoding.c:189
+#: src/parole-subtitle-encoding.c:191 src/parole-subtitle-encoding.c:193
 msgid "Central European"
 msgstr "중앙 유럽어"
 
-#: ../src/parole-subtitle-encoding.c:196 ../src/parole-subtitle-encoding.c:198
-#: ../src/parole-subtitle-encoding.c:200 ../src/parole-subtitle-encoding.c:202
+#: src/parole-subtitle-encoding.c:196 src/parole-subtitle-encoding.c:198
+#: src/parole-subtitle-encoding.c:200 src/parole-subtitle-encoding.c:202
 msgid "Chinese Simplified"
 msgstr "중국어 간체"
 
-#: ../src/parole-subtitle-encoding.c:205 ../src/parole-subtitle-encoding.c:207
-#: ../src/parole-subtitle-encoding.c:209
+#: src/parole-subtitle-encoding.c:205 src/parole-subtitle-encoding.c:207
+#: src/parole-subtitle-encoding.c:209
 msgid "Chinese Traditional"
 msgstr "중국어 번체"
 
-#: ../src/parole-subtitle-encoding.c:212
+#: src/parole-subtitle-encoding.c:212
 msgid "Croatian"
 msgstr "크로아티아어"
 
-#: ../src/parole-subtitle-encoding.c:215 ../src/parole-subtitle-encoding.c:217
-#: ../src/parole-subtitle-encoding.c:219 ../src/parole-subtitle-encoding.c:221
-#: ../src/parole-subtitle-encoding.c:223 ../src/parole-subtitle-encoding.c:225
+#: src/parole-subtitle-encoding.c:215 src/parole-subtitle-encoding.c:217
+#: src/parole-subtitle-encoding.c:219 src/parole-subtitle-encoding.c:221
+#: src/parole-subtitle-encoding.c:223 src/parole-subtitle-encoding.c:225
 msgid "Cyrillic"
 msgstr "키릴어"
 
-#: ../src/parole-subtitle-encoding.c:228
+#: src/parole-subtitle-encoding.c:228
 msgid "Cyrillic/Russian"
 msgstr "키릴/러시아어"
 
-#: ../src/parole-subtitle-encoding.c:231 ../src/parole-subtitle-encoding.c:233
+#: src/parole-subtitle-encoding.c:231 src/parole-subtitle-encoding.c:233
 msgid "Cyrillic/Ukrainian"
 msgstr "키릴/우크라이나어"
 
-#: ../src/parole-subtitle-encoding.c:236
+#: src/parole-subtitle-encoding.c:236
 msgid "Georgian"
 msgstr "그루지야어"
 
-#: ../src/parole-subtitle-encoding.c:239 ../src/parole-subtitle-encoding.c:241
-#: ../src/parole-subtitle-encoding.c:243
+#: src/parole-subtitle-encoding.c:239 src/parole-subtitle-encoding.c:241
+#: src/parole-subtitle-encoding.c:243
 msgid "Greek"
 msgstr "그리스어"
 
-#: ../src/parole-subtitle-encoding.c:246
+#: src/parole-subtitle-encoding.c:246
 msgid "Gujarati"
 msgstr "구자라티어"
 
-#: ../src/parole-subtitle-encoding.c:249
+#: src/parole-subtitle-encoding.c:249
 msgid "Gurmukhi"
 msgstr "구르무키(펀자브) 어"
 
-#: ../src/parole-subtitle-encoding.c:252 ../src/parole-subtitle-encoding.c:254
-#: ../src/parole-subtitle-encoding.c:256 ../src/parole-subtitle-encoding.c:258
+#: src/parole-subtitle-encoding.c:252 src/parole-subtitle-encoding.c:254
+#: src/parole-subtitle-encoding.c:256 src/parole-subtitle-encoding.c:258
 msgid "Hebrew"
 msgstr "히브리어"
 
-#: ../src/parole-subtitle-encoding.c:261
+#: src/parole-subtitle-encoding.c:261
 msgid "Hebrew Visual"
 msgstr "히브리 상형문자"
 
-#: ../src/parole-subtitle-encoding.c:264
+#: src/parole-subtitle-encoding.c:264
 msgid "Hindi"
 msgstr "힌두어"
 
-#: ../src/parole-subtitle-encoding.c:267
+#: src/parole-subtitle-encoding.c:267
 msgid "Icelandic"
 msgstr "아이슬란드어"
 
-#: ../src/parole-subtitle-encoding.c:270 ../src/parole-subtitle-encoding.c:272
-#: ../src/parole-subtitle-encoding.c:274
+#: src/parole-subtitle-encoding.c:270 src/parole-subtitle-encoding.c:272
+#: src/parole-subtitle-encoding.c:274
 msgid "Japanese"
 msgstr "일본어"
 
-#: ../src/parole-subtitle-encoding.c:277 ../src/parole-subtitle-encoding.c:279
-#: ../src/parole-subtitle-encoding.c:281 ../src/parole-subtitle-encoding.c:283
+#: src/parole-subtitle-encoding.c:277 src/parole-subtitle-encoding.c:279
+#: src/parole-subtitle-encoding.c:281 src/parole-subtitle-encoding.c:283
 msgid "Korean"
 msgstr "한국어"
 
-#: ../src/parole-subtitle-encoding.c:286
+#: src/parole-subtitle-encoding.c:286
 msgid "Nordic"
 msgstr "노르웨이어"
 
-#: ../src/parole-subtitle-encoding.c:289
+#: src/parole-subtitle-encoding.c:289
 msgid "Persian"
 msgstr "페르시아어"
 
-#: ../src/parole-subtitle-encoding.c:292 ../src/parole-subtitle-encoding.c:294
+#: src/parole-subtitle-encoding.c:292 src/parole-subtitle-encoding.c:294
 msgid "Romanian"
 msgstr "루마니아어"
 
-#: ../src/parole-subtitle-encoding.c:297
+#: src/parole-subtitle-encoding.c:297
 msgid "South European"
 msgstr "남유럽어"
 
-#: ../src/parole-subtitle-encoding.c:300
+#: src/parole-subtitle-encoding.c:300
 msgid "Thai"
 msgstr "타이어"
 
-#: ../src/parole-subtitle-encoding.c:303 ../src/parole-subtitle-encoding.c:305
-#: ../src/parole-subtitle-encoding.c:307 ../src/parole-subtitle-encoding.c:309
+#: src/parole-subtitle-encoding.c:303 src/parole-subtitle-encoding.c:305
+#: src/parole-subtitle-encoding.c:307 src/parole-subtitle-encoding.c:309
 msgid "Turkish"
 msgstr "터키어"
 
-#: ../src/parole-subtitle-encoding.c:312 ../src/parole-subtitle-encoding.c:314
-#: ../src/parole-subtitle-encoding.c:316 ../src/parole-subtitle-encoding.c:318
-#: ../src/parole-subtitle-encoding.c:320
+#: src/parole-subtitle-encoding.c:312 src/parole-subtitle-encoding.c:314
+#: src/parole-subtitle-encoding.c:316 src/parole-subtitle-encoding.c:318
+#: src/parole-subtitle-encoding.c:320
 msgid "Unicode"
 msgstr "유니코드"
 
-#: ../src/parole-subtitle-encoding.c:323 ../src/parole-subtitle-encoding.c:325
-#: ../src/parole-subtitle-encoding.c:327 ../src/parole-subtitle-encoding.c:329
-#: ../src/parole-subtitle-encoding.c:331
+#: src/parole-subtitle-encoding.c:323 src/parole-subtitle-encoding.c:325
+#: src/parole-subtitle-encoding.c:327 src/parole-subtitle-encoding.c:329
+#: src/parole-subtitle-encoding.c:331
 msgid "Western"
 msgstr "서유럽어"
 
-#: ../src/parole-subtitle-encoding.c:334 ../src/parole-subtitle-encoding.c:336
-#: ../src/parole-subtitle-encoding.c:338
+#: src/parole-subtitle-encoding.c:334 src/parole-subtitle-encoding.c:336
+#: src/parole-subtitle-encoding.c:338
 msgid "Vietnamese"
 msgstr "베트남어"
 
-#: ../src/plugins/notify/notify-provider.c:139
-#: ../src/plugins/notify/notify-provider.c:141
+#: src/plugins/mpris2/mpris2.desktop.in:4
+msgid "MPRIS2"
+msgstr "MPRIS2"
+
+#: src/plugins/notify/notify-provider.c:139
+#: src/plugins/notify/notify-provider.c:141
 msgid "<i>on</i>"
 msgstr "<i>on</i>"
 
-#: ../src/plugins/notify/notify-provider.c:139
-#: ../src/plugins/notify/notify-provider.c:141
+#: src/plugins/notify/notify-provider.c:139
+#: src/plugins/notify/notify-provider.c:141
 msgid "<i>by</i>"
 msgstr "<i>by</i>"
 
+#: src/plugins/notify/notify.desktop.in:4
+msgid "Notify"
+msgstr "알림"
+
+#: src/plugins/tray/system-tray.desktop.in:4
+msgid "Tray icon"
+msgstr "표시줄 아이콘"
+
 #. * Previous Track
-#: ../src/plugins/tray/tray-provider.c:132
+#: src/plugins/tray/tray-provider.c:132
 msgid "P_revious Track"
 msgstr "이전 트랙(_R)"
 
 #. * Next Track
-#: ../src/plugins/tray/tray-provider.c:141
+#: src/plugins/tray/tray-provider.c:141
 msgid "_Next Track"
 msgstr "다음 트랙(_N)"
 
 #. * Open
-#: ../src/plugins/tray/tray-provider.c:157
+#: src/plugins/tray/tray-provider.c:157
 msgid "_Open"
 msgstr "열기(_O)"
 
-#. * Exit
-#: ../src/plugins/tray/tray-provider.c:172
-msgid "_Quit"
-msgstr "끝내기(_Q)"
-
-#: ../src/plugins/tray/tray-provider.c:258
+#: src/plugins/tray/tray-provider.c:258
 msgid "Tray icon plugin"
 msgstr "트레이 아이콘 플러그인"
 
-#: ../src/plugins/tray/tray-provider.c:268
+#: src/plugins/tray/tray-provider.c:268
 msgid "Always minimize to tray when window is closed"
 msgstr "창을 닫을 때 트레이로 항상 최소화"
 
-#: ../src/plugins/tray/tray-provider.c:336
+#: src/plugins/tray/tray-provider.c:336
 msgid "Are you sure you want to quit?"
 msgstr "정말로 끝내시렵니까?"
 
-#: ../src/plugins/tray/tray-provider.c:339
+#: src/plugins/tray/tray-provider.c:339
 msgid "Parole can be minimized to the system tray instead."
 msgstr "빠롤을 시스템 표시줄에 대신 최소화 할 수 있습니다."
 
-#: ../src/plugins/tray/tray-provider.c:342
+#: src/plugins/tray/tray-provider.c:342
 msgid "Minimize to tray"
 msgstr "트레이로 최소화하기"
 
-#: ../src/plugins/tray/tray-provider.c:354
-msgid "Quit"
-msgstr "끝내기"
-
-#: ../src/plugins/tray/tray-provider.c:363
+#: src/plugins/tray/tray-provider.c:363
 msgid "Remember my choice"
 msgstr "내 설정 기억"
