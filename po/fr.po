@@ -9,7 +9,7 @@
 # jc1 <jc1.quebecos@gmail.com>, 2013
 # jc1 <jc1.quebecos@gmail.com>, 2013-2014,2017,2020,2023
 # Urien Desterres <urien.desterres@gmail.com>, 2014,2016-2018
-# Wallon Wallon, 2023
+# Wallon Wallon, 2023-2024
 # Yannick Le Guen <leguen.yannick@gmail.com>, 2014-2015,2017-2020
 msgid ""
 msgstr ""
@@ -17,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2024-04-01 00:52+0200\n"
 "PO-Revision-Date: 2013-07-03 18:28+0000\n"
-"Last-Translator: David D, 2023\n"
+"Last-Translator: Wallon Wallon, 2023-2024\n"
 "Language-Team: French (http://app.transifex.com/xfce/xfce-apps/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -534,7 +534,7 @@ msgstr "Lecture"
 #: data/interfaces/shortcuts.ui:139
 #: data/desktop/org.xfce.Parole.desktop.in.in:16
 msgid "Play/Pause"
-msgstr ""
+msgstr "Lecture ou pause"
 
 #: data/interfaces/shortcuts.ui:146 src/main.c:245
 msgid "Previous track"
@@ -584,11 +584,11 @@ msgstr "Piste suivante"
 
 #: data/metainfo/parole.appdata.xml.in:7
 msgid "Parole"
-msgstr ""
+msgstr "Parole"
 
 #: data/metainfo/parole.appdata.xml.in:8
 msgid "Modern and simple media player"
-msgstr ""
+msgstr "Lecteur multimédia moderne et simple"
 
 #: data/metainfo/parole.appdata.xml.in:12
 msgid ""
@@ -606,15 +606,15 @@ msgstr "Parole permet de lire les fichiers multimédias locaux, incluant les vid
 
 #: data/metainfo/parole.appdata.xml.in:26
 msgid "Parole playing Big Buck Bunny"
-msgstr ""
+msgstr "Parole jouant Big Buck Bunny"
 
 #: data/metainfo/parole.appdata.xml.in:30
 msgid "Parole playing a LAS podcast"
-msgstr ""
+msgstr "Parole jouant un podcast LAS"
 
 #: data/metainfo/parole.appdata.xml.in:34
 msgid "Parole playing a LAS podcast in Mini Mode (0.9+)"
-msgstr ""
+msgstr "Parole jouant un podcast LAS en mode Mini (0.9+)"
 
 #: src/common/parole-common.c:83
 msgid "Message"
