@@ -5,7 +5,7 @@
 # Translators:
 # Aleksey Kabanov <ak099@mail.ru>, 2014
 # Anatoly Chernov <aichernov@umail.ru>, 2009
-# Andrei Stepanov, 2022-2023
+# Andrei Stepanov, 2022-2024
 # Andrey Ivankov <andrey.ivankov@gmail.com>, 2014
 # Sergey Alyoshin <alyoshin.s@gmail.com>, 2013
 # Igor <f2404@yandex.ru>, 2016-2019
@@ -26,7 +26,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2024-04-01 00:52+0200\n"
 "PO-Revision-Date: 2013-07-03 18:28+0000\n"
-"Last-Translator: Andrei Stepanov, 2022-2023\n"
+"Last-Translator: Andrei Stepanov, 2022-2024\n"
 "Language-Team: Russian (http://app.transifex.com/xfce/xfce-apps/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -322,7 +322,7 @@ msgstr "Квадрат"
 
 #: data/interfaces/parole.ui:435
 msgid "4:3 (TV)"
-msgstr "4:3 (TV)"
+msgstr "4:3 (ТВ)"
 
 #: data/interfaces/parole.ui:446
 msgid "16:9 (Widescreen)"
@@ -342,7 +342,7 @@ msgstr "Выбрать субтитры..."
 
 #: data/interfaces/parole.ui:526
 msgid "_Tools"
-msgstr "_Инструменты"
+msgstr "_Сервис"
 
 #: data/interfaces/parole.ui:536
 msgid "P_lugins"
@@ -406,7 +406,7 @@ msgstr "/"
 
 #: data/interfaces/playlist.ui:75
 msgid "Disc Playlist"
-msgstr "Список воспроизведения"
+msgstr "Плейлист диска"
 
 #: data/interfaces/playlist.ui:99
 msgid "Add to playlist..."
@@ -593,11 +593,11 @@ msgstr "Следующий трек"
 
 #: data/metainfo/parole.appdata.xml.in:7
 msgid "Parole"
-msgstr ""
+msgstr "Parole"
 
 #: data/metainfo/parole.appdata.xml.in:8
 msgid "Modern and simple media player"
-msgstr ""
+msgstr "Современный и простой медиапроигрыватель"
 
 #: data/metainfo/parole.appdata.xml.in:12
 msgid ""
@@ -615,15 +615,15 @@ msgstr "Parole воспроизводит локальные медиафайл�
 
 #: data/metainfo/parole.appdata.xml.in:26
 msgid "Parole playing Big Buck Bunny"
-msgstr ""
+msgstr "Parole играет Big Buck Bunny"
 
 #: data/metainfo/parole.appdata.xml.in:30
 msgid "Parole playing a LAS podcast"
-msgstr ""
+msgstr "Parole играет подкаст LAS"
 
 #: data/metainfo/parole.appdata.xml.in:34
 msgid "Parole playing a LAS podcast in Mini Mode (0.9+)"
-msgstr ""
+msgstr "Parole играет подкаст LAS в мини-режиме (0.9+)"
 
 #: src/common/parole-common.c:83
 msgid "Message"
@@ -1027,7 +1027,7 @@ msgstr "Показать строку меню"
 
 #: src/parole-player.c:2174
 msgid "Mini Mode"
-msgstr "Минимальный режим"
+msgstr "Мини-режим"
 
 #: src/parole-player.c:2417
 msgid "Unmute"
