@@ -4,14 +4,14 @@
 # 
 # Translators:
 # 1763f4a4329a2376c933c5e919a36cbc_341ca53 <1f851310383599d03339229d772e1290_119292>, 2017
-# Seong-ho Cho <darkcircle.0426@gmail.com>, 2013-2015,2018-2019,2022-2023
+# Seong-ho Cho <darkcircle.0426@gmail.com>, 2013-2015,2018-2019,2022-2024
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2024-04-01 00:52+0200\n"
 "PO-Revision-Date: 2013-07-03 18:28+0000\n"
-"Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>, 2013-2015,2018-2019,2022-2023\n"
+"Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>, 2013-2015,2018-2019,2022-2024\n"
 "Language-Team: Korean (http://app.transifex.com/xfce/xfce-apps/language/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -45,7 +45,7 @@ msgstr "X 윈도 시스템(No Xv)"
 
 #: data/interfaces/parole-settings.ui:42
 msgid "Parole Preferences"
-msgstr ""
+msgstr "빠롤 기본 설정"
 
 #. Add a close button to the Infobar
 #: data/interfaces/parole-settings.ui:62 data/interfaces/plugins.ui:43
@@ -139,7 +139,7 @@ msgstr "재생 목록 기억하기"
 
 #: data/interfaces/parole-settings.ui:801
 msgid "<b>Playlist Preferences</b>"
-msgstr ""
+msgstr "<b>재생 목록 기본 설정</b>"
 
 #: data/interfaces/parole-settings.ui:814 data/interfaces/playlist.ui:43
 #: data/interfaces/shortcuts.ui:99 src/parole-medialist.c:797
@@ -161,7 +161,7 @@ msgstr "인코딩:"
 
 #: data/interfaces/parole-settings.ui:953
 msgid "<b>Subtitle Preferences</b>"
-msgstr ""
+msgstr "<b>자막 기본 설정</b>"
 
 #: data/interfaces/parole-settings.ui:966
 msgid "Subtitles"
@@ -578,11 +578,11 @@ msgstr "다음 트랙"
 
 #: data/metainfo/parole.appdata.xml.in:7
 msgid "Parole"
-msgstr ""
+msgstr "빠롤"
 
 #: data/metainfo/parole.appdata.xml.in:8
 msgid "Modern and simple media player"
-msgstr ""
+msgstr "단순한 최신 미디어 재생 프로그램"
 
 #: data/metainfo/parole.appdata.xml.in:12
 msgid ""
@@ -600,15 +600,15 @@ msgstr "빠롤은 자막과 더불어 동영상과 같은 로컬 미디어 파�
 
 #: data/metainfo/parole.appdata.xml.in:26
 msgid "Parole playing Big Buck Bunny"
-msgstr ""
+msgstr "빅 벅 버니를 재생하는 빠롤"
 
 #: data/metainfo/parole.appdata.xml.in:30
 msgid "Parole playing a LAS podcast"
-msgstr ""
+msgstr "LAS 팟캐스트를 재생하는 빠롤"
 
 #: data/metainfo/parole.appdata.xml.in:34
 msgid "Parole playing a LAS podcast in Mini Mode (0.9+)"
-msgstr ""
+msgstr "미니 모드(0.9+)로 LAS 팟캐스트를 재생하는 빠롤"
 
 #: src/common/parole-common.c:83
 msgid "Message"
