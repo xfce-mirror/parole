@@ -757,10 +757,7 @@ static void
 parole_player_set_subtitles_list(ParolePlayer *player, GList *subtitle_list) {
     GList *l;
     gchar* language;
-
     GtkTreeIter iter;
-    gint counter = 0;
-
     GtkWidget *menu_item;
 
     parole_player_clear_subtitles(player);
@@ -782,8 +779,6 @@ parole_player_set_subtitles_list(ParolePlayer *player, GList *subtitle_list) {
                             G_CALLBACK(parole_player_subtitles_radio_menu_item_changed_cb), player);
 
         g_free(language);
-
-        counter++;
     }
 
     if (g_list_length(subtitle_list) != 1) {
