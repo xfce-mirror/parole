@@ -291,7 +291,6 @@ parole_pl_parser_parse_m3u(const gchar *filename) {
     gchar *path, *pl_filename = NULL;
     GSList *list = NULL;
     gsize size;
-    guint num_lines;
     const gchar *split_char;
     guint i;
 
@@ -324,9 +323,6 @@ parole_pl_parser_parse_m3u(const gchar *filename) {
 
     // Regular expression for stream protocols, such as http:// and smb://
     regex = g_regex_new("^(?!/)[a-zA-Z_0-9]+://", 0, 0, NULL);
-
-    num_lines = g_strv_length(lines);
-    num_lines--; /* Drop the terminating NULL */
 
     for (i = 0; lines[i] != NULL; i++) {
         if ( lines[i][0] == '\0' || lines[i][0] == '#')
