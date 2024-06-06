@@ -86,7 +86,7 @@ AM_GNU_GETTEXT_VERSION([0.19.8])
 # ===================================================== #
 #             Check for required packages               #
 # ===================================================== #
-m4_define([gtk_minimum_version], [3.20.0])
+m4_define([gtk_minimum_version], [3.22.0])
 m4_define([glib_minimum_version], [2.38.0])
 m4_define([clutter_minimum_version], [1.16.4])
 m4_define([cluttergtk_minimum_version], [1.4.4])
@@ -98,7 +98,7 @@ m4_define([dbus_glib_minimum_version], [0.70])
 m4_define([libxfce4ui_minimum_version],[4.11.0])
 m4_define([libxfce4util_minimum_version],[4.10.0])
 m4_define([libxfconf_minimum_version], [4.10.0])
-m4_define([libnotify_minimum_version], [0.4.1])
+m4_define([libnotify_minimum_version], [0.7.8])
 m4_define([libx11_minimum_version], [1.6.7])
 
 

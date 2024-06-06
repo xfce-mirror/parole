@@ -145,15 +145,7 @@ notify_playing(NotifyProvider *notify, const ParoleStream *stream) {
     g_free(artist);
     g_free(album);
 
-#ifdef NOTIFY_CHECK_VERSION
-#if NOTIFY_CHECK_VERSION (0, 7, 0)
     notify->notification = notify_notification_new(title, message, NULL);
-#else
-    notify->notification = notify_notification_new(title, message, NULL, NULL);
-#endif
-#else
-    notify->notification = notify_notification_new(title, message, NULL, NULL);
-#endif
     g_free(title);
     g_free(message);
 

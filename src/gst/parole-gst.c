@@ -217,10 +217,7 @@ parole_gst_realize(GtkWidget *widget) {
     ParoleGst *gst;
     GtkAllocation *allocation = g_new0(GtkAllocation, 1);
     GdkWindowAttr attr;
-#if GTK_CHECK_VERSION(3, 22, 0)
-#else
     GdkRGBA color;
-#endif
     gint mask;
 
     gtk_widget_set_realized(widget, TRUE);
@@ -249,11 +246,8 @@ parole_gst_realize(GtkWidget *widget) {
 
     gdk_window_set_user_data(gtk_widget_get_window(widget), widget);
 
-#if GTK_CHECK_VERSION(3, 22, 0)
-#else
     gdk_rgba_parse(&color, "black");
     gdk_window_set_background_rgba(gtk_widget_get_window(widget), &color);
-#endif
 
     g_signal_connect(gtk_widget_get_toplevel(widget), "configure_event",
                          G_CALLBACK(parole_gst_configure_event_cb), gst);
