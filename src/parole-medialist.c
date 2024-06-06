@@ -1238,12 +1238,7 @@ parole_media_list_open_folder(GtkWidget *menu) {
         gchar *uri;
         uri = g_filename_to_uri(dirname, NULL, NULL);
         TRACE("Opening %s", dirname);
-#if GTK_CHECK_VERSION(3, 22, 0)
         gtk_show_uri_on_window(GTK_WINDOW(gtk_menu_get_attach_widget(GTK_MENU(menu))), uri, GDK_CURRENT_TIME, NULL);
-#else
-        gtk_show_uri(gtk_widget_get_screen(menu),  uri, GDK_CURRENT_TIME, NULL);
-#endif
-
         g_free(uri);
     }
 }
@@ -1364,14 +1359,7 @@ parole_media_list_destroy_menu(GtkWidget *menu) {
 static void
 parole_media_list_show_menu(ParoleMediaList *list, GdkEventButton *ev) {
     gboolean val;
-#if GTK_CHECK_VERSION(3, 22, 0)
-#else
-    guint button = ev->button;
-    guint activate_time = ev->time;
-#endif
-
     GtkBuilder *builder;
-
     GtkMenu *menu;
     GtkMenuItem *clear;
     GtkCheckMenuItem *replace, *play_opened;
@@ -1414,15 +1402,7 @@ parole_media_list_show_menu(ParoleMediaList *list, GdkEventButton *ev) {
 
     g_signal_connect_swapped(menu, "selection-done",
                               G_CALLBACK(parole_media_list_destroy_menu), menu);
-
-#if GTK_CHECK_VERSION(3, 22, 0)
     gtk_menu_popup_at_pointer(GTK_MENU(menu), NULL);
-#else
-    gtk_menu_popup(GTK_MENU(menu),
-                    NULL, NULL,
-                    NULL, NULL,
-                    button, activate_time);
-#endif
 }
 
 gboolean

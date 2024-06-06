@@ -2176,15 +2176,7 @@ parole_player_show_menu(ParolePlayer *player, guint button, guint activate_time)
 
     g_signal_connect_swapped(menu, "selection-done",
                               G_CALLBACK(gtk_widget_destroy), menu);
-
-#if GTK_CHECK_VERSION(3, 22, 0)
     gtk_menu_popup_at_pointer(GTK_MENU(menu), NULL);
-#else
-    gtk_menu_popup(GTK_MENU(menu),
-                    NULL, NULL,
-                    NULL, NULL,
-                    button, activate_time);
-#endif
 }
 
 gboolean
@@ -2828,14 +2820,10 @@ parole_gst_set_default_aspect_ratio(ParolePlayer *player, GtkBuilder *builder) {
 static void
 on_bug_report_clicked(GtkWidget *w, ParolePlayer *player) {
     GtkWidget *dialog;
-#if GTK_CHECK_VERSION(3, 22, 0)
     if (!gtk_show_uri_on_window(GTK_WINDOW(player->priv->window),
                                 "https://docs.xfce.org/apps/parole/bugs",
                                 GDK_CURRENT_TIME,
                                 NULL)) {
-#else
-    if (!gtk_show_uri(NULL, "https://docs.xfce.org/apps/parole/bugs", GDK_CURRENT_TIME, NULL)) {
-#endif
         dialog = gtk_message_dialog_new(GTK_WINDOW(player->priv->window),
                                         GTK_DIALOG_DESTROY_WITH_PARENT,
                                         GTK_MESSAGE_ERROR,
@@ -2954,12 +2942,11 @@ on_goto_position_clicked(GtkWidget *w, ParolePlayer *player) {
  **/
 static gboolean
 parole_overlay_expose_event(GtkWidget *widget, cairo_t *cr, gpointer user_data) {
-    GtkAllocation *allocation = g_new0(GtkAllocation, 1);
+    GtkAllocation allocation = { 0 };
     GtkStyleContext *context;
 
-    gtk_widget_get_allocation(widget, allocation);
-    cairo_rectangle(cr, 0, 0, allocation->width, allocation->height);
-    g_free(allocation);
+    gtk_widget_get_allocation(widget, &allocation);
+    cairo_rectangle(cr, 0, 0, allocation.width, allocation.height);
 
     context = gtk_widget_get_style_context(GTK_WIDGET(widget));
     gtk_style_context_add_class(context, "background");
@@ -2971,13 +2958,12 @@ parole_overlay_expose_event(GtkWidget *widget, cairo_t *cr, gpointer user_data) 
 /* This function allows smoothly adjusting the window alignment with coverart */
 static gboolean
 parole_audiobox_expose_event(GtkWidget *w, GdkEventExpose *ev, ParolePlayer *player) {
-    GtkAllocation *allocation = g_new0(GtkAllocation, 1);
+    GtkAllocation allocation = { 0 };
     gboolean homogeneous;
 
     /* Float the cover and text together in the middle if there is space */
-    gtk_widget_get_allocation(w, allocation);
-    homogeneous = allocation->width > 536;
-    g_free(allocation);
+    gtk_widget_get_allocation(w, &allocation);
+    homogeneous = allocation.width > 536;
 
     /* Nothing to do if the homogeneous setting is already good */
     if (gtk_box_get_homogeneous(GTK_BOX(w)) == homogeneous)
