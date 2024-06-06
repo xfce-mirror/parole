@@ -2942,12 +2942,11 @@ on_goto_position_clicked(GtkWidget *w, ParolePlayer *player) {
  **/
 static gboolean
 parole_overlay_expose_event(GtkWidget *widget, cairo_t *cr, gpointer user_data) {
-    GtkAllocation *allocation = g_new0(GtkAllocation, 1);
+    GtkAllocation allocation = { 0 };
     GtkStyleContext *context;
 
-    gtk_widget_get_allocation(widget, allocation);
-    cairo_rectangle(cr, 0, 0, allocation->width, allocation->height);
-    g_free(allocation);
+    gtk_widget_get_allocation(widget, &allocation);
+    cairo_rectangle(cr, 0, 0, allocation.width, allocation.height);
 
     context = gtk_widget_get_style_context(GTK_WIDGET(widget));
     gtk_style_context_add_class(context, "background");
@@ -2959,13 +2958,12 @@ parole_overlay_expose_event(GtkWidget *widget, cairo_t *cr, gpointer user_data) 
 /* This function allows smoothly adjusting the window alignment with coverart */
 static gboolean
 parole_audiobox_expose_event(GtkWidget *w, GdkEventExpose *ev, ParolePlayer *player) {
-    GtkAllocation *allocation = g_new0(GtkAllocation, 1);
+    GtkAllocation allocation = { 0 };
     gboolean homogeneous;
 
     /* Float the cover and text together in the middle if there is space */
-    gtk_widget_get_allocation(w, allocation);
-    homogeneous = allocation->width > 536;
-    g_free(allocation);
+    gtk_widget_get_allocation(w, &allocation);
+    homogeneous = allocation.width > 536;
 
     /* Nothing to do if the homogeneous setting is already good */
     if (gtk_box_get_homogeneous(GTK_BOX(w)) == homogeneous)

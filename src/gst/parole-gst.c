@@ -215,7 +215,7 @@ parole_gst_parent_expose_event(GtkWidget *widget, cairo_t *cr, gpointer user_dat
 static void
 parole_gst_realize(GtkWidget *widget) {
     ParoleGst *gst;
-    GtkAllocation *allocation = g_new0(GtkAllocation, 1);
+    GtkAllocation allocation = { 0 };
     GdkWindowAttr attr;
     GdkRGBA color;
     gint mask;
@@ -223,12 +223,12 @@ parole_gst_realize(GtkWidget *widget) {
     gtk_widget_set_realized(widget, TRUE);
     gst = PAROLE_GST(widget);
 
-    gtk_widget_get_allocation(widget, allocation);
+    gtk_widget_get_allocation(widget, &allocation);
 
-    attr.x = allocation->x;
-    attr.y = allocation->y;
-    attr.width = allocation->width;
-    attr.height = allocation->height;
+    attr.x = allocation.x;
+    attr.y = allocation.y;
+    attr.width = allocation.width;
+    attr.height = allocation.height;
     attr.visual = gtk_widget_get_visual(widget);
     attr.wclass = GDK_INPUT_OUTPUT;
     attr.window_type = GDK_WINDOW_CHILD;
@@ -254,8 +254,6 @@ parole_gst_realize(GtkWidget *widget) {
 
     g_signal_connect(gtk_widget_get_parent(gtk_widget_get_parent(widget)), "draw",
                          G_CALLBACK(parole_gst_parent_expose_event), NULL);
-
-    g_free(allocation);
 }
 
 static void
@@ -275,11 +273,10 @@ parole_gst_get_video_output_size(ParoleGst *gst, gint *ret_w, gint *ret_h) {
      * 2) Playing audio.
      * 3) Playing video but we don't have its correct size yet.
      */
-    GtkAllocation *allocation = g_new0(GtkAllocation, 1);
-    gtk_widget_get_allocation(GTK_WIDGET(gst), allocation);
-    *ret_w = allocation->width;
-    *ret_h = allocation->height;
-    g_free(allocation);
+    GtkAllocation allocation = { 0 };
+    gtk_widget_get_allocation(GTK_WIDGET(gst), &allocation);
+    *ret_w = allocation.width;
+    *ret_h = allocation.height;
 
     if ( gst->priv->state >= GST_STATE_PAUSED ) {
         gboolean has_video;
@@ -626,7 +623,7 @@ static void
 parole_gst_get_pad_capabilities(GObject *object, GParamSpec *pspec, ParoleGst *gst) {
     GstPad *pad;
     GstStructure *st;
-    GtkAllocation *allocation;
+    GtkAllocation allocation = { 0 };
     gint width;
     gint height;
     guint num;
@@ -642,7 +639,6 @@ parole_gst_get_pad_capabilities(GObject *object, GParamSpec *pspec, ParoleGst *g
     if ( !caps )
         return;
 
-    allocation = g_new0(GtkAllocation, 1);
     st = gst_caps_get_structure(caps, 0);
 
     if ( st ) {
@@ -664,10 +660,9 @@ parole_gst_get_pad_capabilities(GObject *object, GParamSpec *pspec, ParoleGst *g
                           NULL);
         }
 
-        gtk_widget_get_allocation(GTK_WIDGET(gst), allocation);
-        parole_gst_size_allocate(GTK_WIDGET(gst), allocation);
+        gtk_widget_get_allocation(GTK_WIDGET(gst), &allocation);
+        parole_gst_size_allocate(GTK_WIDGET(gst), &allocation);
     }
-    g_free(allocation);
     gst_caps_unref(caps);
 }
 
@@ -768,7 +763,7 @@ parole_gst_update_vis(ParoleGst *gst) {
 
 static void
 parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState pending) {
-    GtkAllocation *allocation = g_new0(GtkAllocation, 1);
+    GtkAllocation allocation = { 0 };
     TRACE ("State change new %i old %i pending %i", new, old, pending);
 
     gst->priv->state = new;
@@ -829,8 +824,8 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
             } else if (gst->priv->target == GST_STATE_PAUSED) {
                 parole_gst_change_state(gst, GST_STATE_PAUSED);
             } else if (gst->priv->target == GST_STATE_READY) {
-                gtk_widget_get_allocation(GTK_WIDGET(gst), allocation);
-                parole_gst_size_allocate(GTK_WIDGET(gst), allocation);
+                gtk_widget_get_allocation(GTK_WIDGET(gst), &allocation);
+                parole_gst_size_allocate(GTK_WIDGET(gst), &allocation);
             }
             break;
         }
@@ -846,8 +841,6 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
         default:
             break;
     }
-
-    g_free(allocation);
 }
 
 static void
@@ -1265,14 +1258,13 @@ parole_gst_get_meta_data(ParoleGst *gst, GstTagList *tag) {
 
 static void
 parole_gst_application_message(ParoleGst *gst, GstMessage *msg) {
-    GtkAllocation *allocation = g_new0(GtkAllocation, 1);
+    GtkAllocation allocation = { 0 };
     if (gst_message_has_name(msg, "notify-streaminfo")) {
         parole_gst_update_stream_info(gst);
     } else if (gst_message_has_name(msg, "video-size")) {
-        gtk_widget_get_allocation(GTK_WIDGET(gst), allocation);
-        parole_gst_size_allocate(GTK_WIDGET(gst), allocation);
+        gtk_widget_get_allocation(GTK_WIDGET(gst), &allocation);
+        parole_gst_size_allocate(GTK_WIDGET(gst), &allocation);
     }
-    g_free(allocation);
 }
 
 static void
@@ -1818,7 +1810,7 @@ parole_gst_about_to_finish_cb(GstElement *elm, gpointer data) {
 
 static void
 parole_gst_conf_notify_cb(GObject *object, GParamSpec *spec, ParoleGst *gst) {
-    GtkAllocation *allocation = g_new0(GtkAllocation, 1);
+    GtkAllocation allocation = { 0 };
     if ( !g_strcmp0("vis-enabled", spec->name) || !g_strcmp0("vis-name", spec->name) ) {
         gst->priv->update_vis = TRUE;
     } else if (!g_strcmp0("subtitle-font", spec->name) || !g_strcmp0("enable-subtitle", spec->name)) {
@@ -1838,10 +1830,9 @@ parole_gst_conf_notify_cb(GObject *object, GParamSpec *spec, ParoleGst *gst) {
                       "aspect-ratio", &gst->priv->aspect_ratio,
                       NULL);
 
-        gtk_widget_get_allocation(GTK_WIDGET(gst), allocation);
-        parole_gst_size_allocate(GTK_WIDGET(gst), allocation);
+        gtk_widget_get_allocation(GTK_WIDGET(gst), &allocation);
+        parole_gst_size_allocate(GTK_WIDGET(gst), &allocation);
     }
-    g_free(allocation);
 }
 
 static void

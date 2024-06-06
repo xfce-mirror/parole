@@ -105,11 +105,10 @@ parole_clutter_get_video_output_size(ParoleClutter *clutter, gint *ret_w, gint *
     /*
      * TODO: FIX Aspect Ratios following change
      */
-    GtkAllocation *allocation = g_new0(GtkAllocation, 1);
-    gtk_widget_get_allocation(GTK_WIDGET(clutter->priv->embed), allocation);
-    *ret_w = allocation->width;
-    *ret_h = allocation->height;
-    g_free(allocation);
+    GtkAllocation allocation = { 0 };
+    gtk_widget_get_allocation(GTK_WIDGET(clutter->priv->embed), &allocation);
+    *ret_w = allocation.width;
+    *ret_h = allocation.height;
 
     disp_par_n = 1;
     disp_par_d = 1;
@@ -203,15 +202,14 @@ parole_clutter_size_allocate(GtkWidget *widget, GtkAllocation *allocation) {
 
 static void
 parole_clutter_conf_notify_cb(GObject *object, GParamSpec *spec, ParoleClutter *clutter) {
-    GtkAllocation *allocation = g_new0(GtkAllocation, 1);
+    GtkAllocation allocation = { 0 };
     if (!g_strcmp0("aspect-ratio", spec->name)) {
         g_object_get(G_OBJECT(clutter->priv->conf),
                      "aspect-ratio", &clutter->priv->aspect_ratio,
                      NULL);
 
-        gtk_widget_get_allocation(GTK_WIDGET(clutter), allocation);
-        parole_clutter_size_allocate(GTK_WIDGET(clutter->priv->embed), allocation);
-        g_free(allocation);
+        gtk_widget_get_allocation(GTK_WIDGET(clutter), &allocation);
+        parole_clutter_size_allocate(GTK_WIDGET(clutter->priv->embed), &allocation);
     }
 }
 
