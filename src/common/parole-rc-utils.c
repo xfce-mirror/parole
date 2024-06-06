@@ -77,18 +77,18 @@ void parole_insert_line_history(const gchar *line) {
 
 void parole_insert_line_history_full(const gchar *relpath, const gchar *line) {
     gchar *history = NULL;
+    FILE *f;
 
     history = xfce_resource_save_location(XFCE_RESOURCE_CACHE, relpath, TRUE);
 
-    if ( history ) {
-        FILE *f;
-        f = fopen(history, "a");
+    if (history && (f = fopen(history, "a")) != NULL) {
         fprintf(f, "%s\n", line);
         fclose(f);
-        g_free(history);
     } else {
         g_warning("Unable to open cache file");
     }
+
+    g_free(history);
 }
 
 void parole_clear_history_file(void) {
