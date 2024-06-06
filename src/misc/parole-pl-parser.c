@@ -667,6 +667,10 @@ gboolean parole_pl_parser_save_from_files(GSList *files, const gchar *filename, 
     PAROLE_DEBUG_ENUM_FULL(format, PAROLE_ENUM_TYPE_PL_FORMAT, "Saving playlist %s ", filename);
 
     f = fopen(filename, "w");
+    if (f == NULL) {
+        g_warning("Failed to open %s", filename);
+        return FALSE;
+    }
 
     switch (format) {
         case PAROLE_PL_FORMAT_M3U:

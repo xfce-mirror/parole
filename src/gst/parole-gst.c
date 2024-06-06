@@ -632,7 +632,7 @@ static void
 parole_gst_get_pad_capabilities(GObject *object, GParamSpec *pspec, ParoleGst *gst) {
     GstPad *pad;
     GstStructure *st;
-    GtkAllocation *allocation = g_new0(GtkAllocation, 1);
+    GtkAllocation *allocation;
     gint width;
     gint height;
     guint num;
@@ -648,6 +648,7 @@ parole_gst_get_pad_capabilities(GObject *object, GParamSpec *pspec, ParoleGst *g
     if ( !caps )
         return;
 
+    allocation = g_new0(GtkAllocation, 1);
     st = gst_caps_get_structure(caps, 0);
 
     if ( st ) {
@@ -671,8 +672,8 @@ parole_gst_get_pad_capabilities(GObject *object, GParamSpec *pspec, ParoleGst *g
 
         gtk_widget_get_allocation(GTK_WIDGET(gst), allocation);
         parole_gst_size_allocate(GTK_WIDGET(gst), allocation);
-        g_free(allocation);
     }
+    g_free(allocation);
     gst_caps_unref(caps);
 }
 
@@ -836,7 +837,6 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
             } else if (gst->priv->target == GST_STATE_READY) {
                 gtk_widget_get_allocation(GTK_WIDGET(gst), allocation);
                 parole_gst_size_allocate(GTK_WIDGET(gst), allocation);
-                g_free(allocation);
             }
             break;
         }
@@ -852,6 +852,8 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
         default:
             break;
     }
+
+    g_free(allocation);
 }
 
 static void
@@ -1275,8 +1277,8 @@ parole_gst_application_message(ParoleGst *gst, GstMessage *msg) {
     } else if (gst_message_has_name(msg, "video-size")) {
         gtk_widget_get_allocation(GTK_WIDGET(gst), allocation);
         parole_gst_size_allocate(GTK_WIDGET(gst), allocation);
-        g_free(allocation);
     }
+    g_free(allocation);
 }
 
 static void
@@ -1844,8 +1846,8 @@ parole_gst_conf_notify_cb(GObject *object, GParamSpec *spec, ParoleGst *gst) {
 
         gtk_widget_get_allocation(GTK_WIDGET(gst), allocation);
         parole_gst_size_allocate(GTK_WIDGET(gst), allocation);
-        g_free(allocation);
     }
+    g_free(allocation);
 }
 
 static void
