@@ -577,7 +577,7 @@ msgstr "Келесі трек"
 
 #: data/metainfo/parole.appdata.xml.in:7
 msgid "Parole"
-msgstr ""
+msgstr "Parole"
 
 #: data/metainfo/parole.appdata.xml.in:8
 msgid "Modern and simple media player"
@@ -588,14 +588,14 @@ msgid ""
 "Parole is a modern simple media player based on the GStreamer framework and "
 "written to fit well in the Xfce desktop. It is designed with simplicity, "
 "speed and resource usage in mind."
-msgstr ""
+msgstr "Parole – GStreamer үстіне негізделген және Xfce жұмыс үстеліне сәйкес келетіндей жазылған заманауи қарапайым медиа плеері. Ол қарапайымдылықты, жылдамдықты және ресурстарды пайдалануды ескере отырып жасалған."
 
 #: data/metainfo/parole.appdata.xml.in:16
 msgid ""
 "Parole features playback of local media files, including video with "
 "subtitles support, Audio CDs, DVDs, and live streams. Parole is also "
 "extensible via plugins."
-msgstr ""
+msgstr "Parole жергілікті медиа файлдарын, соның ішінде субтитрлерді қолдауы бар видеоны, аудио CD, DVD дискілерін және тікелей ағындарды ойнату мүмкіндігін береді. Parole плагиндер арқылы да кеңейтіледі."
 
 #: data/metainfo/parole.appdata.xml.in:26
 msgid "Parole playing Big Buck Bunny"
@@ -715,7 +715,7 @@ msgid ""
 "\n"
 "Please report bugs to <%s>.\n"
 "\n"
-msgstr ""
+msgstr "\nParole мультимедиа ойнатқышы %s\n\nXfce Goodies жобасының бөлігі\nhttps://goodies.xfce.org\n\nGNU GPL аясында лицензияланған.\n\nАқаулықтар туралы <%s> адресіне хабарлаңыз.\n\n"
 
 #: src/main.c:231
 msgid "Open a new instance"
@@ -816,7 +816,7 @@ msgstr "Parole веб сайтын шолу"
 
 #: src/parole-conf-dialog.c:287
 msgid "Clutter (OpenGL)"
-msgstr ""
+msgstr "Clutter (OpenGL)"
 
 #: src/parole-disc.c:106
 msgid "Play Disc"
@@ -831,8 +831,8 @@ msgstr "Барлық файлдар"
 #, c-format
 msgid "Playlist (%i item)"
 msgid_plural "Playlist (%i items)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ойнату тізімі (%i нәрсе)"
+msgstr[1] "Ойнату тізімі (%i нәрсе)"
 
 #: src/parole-medialist.c:262 src/parole-medialist.c:1646
 #, c-format
@@ -878,12 +878,12 @@ msgstr "Сақтау"
 #: src/parole-medialist.c:860
 #, c-format
 msgid "M3U Playlist (%s)"
-msgstr ""
+msgstr "M3U ойнату тізімі (%s)"
 
 #: src/parole-medialist.c:870
 #, c-format
 msgid "PLS Playlist (%s)"
-msgstr ""
+msgstr "PLS ойнату тізімі (%s)"
 
 #: src/parole-medialist.c:880
 #, c-format
@@ -1007,7 +1007,7 @@ msgstr "Мәзір жолағын көрсету"
 
 #: src/parole-player.c:2174
 msgid "Mini Mode"
-msgstr ""
+msgstr "Минималды режимі"
 
 #: src/parole-player.c:2417
 msgid "Unmute"
