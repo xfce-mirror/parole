@@ -6,7 +6,7 @@
 # Edin Veskovic <edin.lockedin@gmail.com>, 2018-2019
 # Edin Veskovic <edin.lockedin@gmail.com>, 2014-2015,2017
 # Edin Veskovic <edin.lockedin@gmail.com>, 2014
-# Ivica  Kolić <ikoli@yahoo.com>, 2013-2014,2016-2018,2021
+# Ivica  Kolić <ikoli@yahoo.com>, 2013-2014,2016-2018,2021,2024
 # Ivica  Kolić <ikoli@yahoo.com>, 2011
 # Lovro Kudelić <lovro.kudelic@outlook.com>, 2017
 msgid ""
@@ -15,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2024-04-01 00:52+0200\n"
 "PO-Revision-Date: 2013-07-03 18:28+0000\n"
-"Last-Translator: Ivica  Kolić <ikoli@yahoo.com>, 2013-2014,2016-2018,2021\n"
+"Last-Translator: Ivica  Kolić <ikoli@yahoo.com>, 2013-2014,2016-2018,2021,2024\n"
 "Language-Team: Croatian (http://app.transifex.com/xfce/xfce-apps/language/hr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -49,7 +49,7 @@ msgstr "X prozorski sustav (Ne Xv)"
 
 #: data/interfaces/parole-settings.ui:42
 msgid "Parole Preferences"
-msgstr ""
+msgstr "Parole osobitosti"
 
 #. Add a close button to the Infobar
 #: data/interfaces/parole-settings.ui:62 data/interfaces/plugins.ui:43
@@ -143,7 +143,7 @@ msgstr "Zapamti listu izvođenja"
 
 #: data/interfaces/parole-settings.ui:801
 msgid "<b>Playlist Preferences</b>"
-msgstr ""
+msgstr "<b>Osobitosti liste izvođenja</b>"
 
 #: data/interfaces/parole-settings.ui:814 data/interfaces/playlist.ui:43
 #: data/interfaces/shortcuts.ui:99 src/parole-medialist.c:797
@@ -165,7 +165,7 @@ msgstr "Kodiranje:"
 
 #: data/interfaces/parole-settings.ui:953
 msgid "<b>Subtitle Preferences</b>"
-msgstr ""
+msgstr "<b>Osobitosti podnapisa</b>"
 
 #: data/interfaces/parole-settings.ui:966
 msgid "Subtitles"
@@ -582,11 +582,11 @@ msgstr "Slijedeći zapis"
 
 #: data/metainfo/parole.appdata.xml.in:7
 msgid "Parole"
-msgstr ""
+msgstr "Parole"
 
 #: data/metainfo/parole.appdata.xml.in:8
 msgid "Modern and simple media player"
-msgstr ""
+msgstr "Moderan i jednostavan izvođač medija"
 
 #: data/metainfo/parole.appdata.xml.in:12
 msgid ""
@@ -809,7 +809,7 @@ msgstr "Datoteke liste izvođenja"
 
 #: src/parole-about.c:70
 msgid "A modern simple media player for the Xfce Desktop Environment."
-msgstr ""
+msgstr "Moderan i jednostavan izvođač medija za Xfce radno okruženje."
 
 #: src/parole-about.c:76
 msgid "translator-credits"
