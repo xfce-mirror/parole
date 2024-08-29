@@ -184,8 +184,6 @@ void                parole_media_list_save_list     (ParoleMediaList *list);
 void                parole_media_list_save_cb       (GtkWidget *widget,
                                                      ParoleMediaList *list);
 
-void                parole_media_list_grab_focus    (ParoleMediaList *list);
-
 void
 parole_media_list_connect_repeat_action             (ParoleMediaList *list,
                                                      GSimpleAction *simple);

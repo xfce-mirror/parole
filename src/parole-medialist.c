@@ -2149,11 +2149,6 @@ static gboolean  parole_media_list_dbus_add_files(ParoleMediaList *list,
     return TRUE;
 }
 
-void parole_media_list_grab_focus(ParoleMediaList *list) {
-    if (gtk_widget_get_visible (list->priv->view) )
-        gtk_widget_grab_focus(list->priv->view);
-}
-
 static void
 repeat_action_state_changed(GSimpleAction *simple, GVariant *value, gpointer user_data) {
     gboolean active = g_simple_toggle_action_get_active(simple);

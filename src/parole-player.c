@@ -2650,16 +2650,6 @@ parole_player_handle_key_value(guint keyval, guint state, ParolePlayer *player) 
             parole_media_list_open_location(player->priv->list);
             break;
 #endif
-        /*
-         * Pass these to the media list and tell it to
-         * grab the focus
-         */
-        case GDK_KEY_Up:
-        case GDK_KEY_Down:
-            if (!player->priv->full_screen && gtk_widget_get_visible(player->priv->playlist_nt)) {
-                parole_media_list_grab_focus(player->priv->list);
-            }
-            break;
         case GDK_KEY_plus:
         case GDK_KEY_equal:
             parole_player_volume_up(NULL, player);
