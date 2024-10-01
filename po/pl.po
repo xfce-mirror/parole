@@ -205,7 +205,7 @@ msgstr "_Zapisz listę odtwarzania..."
 
 #: data/interfaces/parole.ui:122 src/parole-disc.c:105 src/parole-disc.c:139
 msgid "Insert Disc"
-msgstr "Proszę wsunąć płytę"
+msgstr "Wsuń płytę"
 
 #. * Exit
 #: data/interfaces/parole.ui:135 src/plugins/tray/tray-provider.c:172
@@ -1254,7 +1254,7 @@ msgstr "Ikona obszaru powiadamiania"
 
 #: src/plugins/tray/tray-provider.c:268
 msgid "Always minimize to tray when window is closed"
-msgstr "Minimalizuje okno programu do obszaru powiadamiania, po próbie jego zamknięcia"
+msgstr "Minimalizuje okno programu do obszaru powiadamiania, gdy okno jest zamknięte"
 
 #: src/plugins/tray/tray-provider.c:336
 msgid "Are you sure you want to quit?"
