@@ -667,7 +667,7 @@ parole_media_list_save_playlist_response_cb(GtkDialog *dialog, gint response_id,
     gchar *filename = NULL;
     gchar *dirname = NULL;
 
-    if (response_id == GTK_RESPONSE_ACCEPT) {
+    if (response_id == GTK_RESPONSE_APPLY) {
         ParolePlFormat format = PAROLE_PL_FORMAT_UNKNOWN;
         GSList *list = NULL;
         GtkTreeModel *model;
