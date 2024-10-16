@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-04-01 00:52+0200\n"
+"POT-Creation-Date: 2024-10-15 00:49+0200\n"
 "PO-Revision-Date: 2013-07-03 18:28+0000\n"
 "Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2020,2024\n"
 "Language-Team: Japanese (http://app.transifex.com/xfce/xfce-apps/language/ja/)\n"
@@ -50,7 +50,7 @@ msgstr "Parole の設定"
 
 #. Add a close button to the Infobar
 #: data/interfaces/parole-settings.ui:62 data/interfaces/plugins.ui:43
-#: src/parole-player.c:3644 src/plugins/tray/tray-provider.c:261
+#: src/parole-player.c:3615 src/plugins/tray/tray-provider.c:261
 msgid "Close"
 msgstr "閉じる"
 
@@ -144,7 +144,7 @@ msgstr "<b>プレイリストの設定</b>"
 
 #: data/interfaces/parole-settings.ui:814 data/interfaces/playlist.ui:43
 #: data/interfaces/shortcuts.ui:99 src/parole-medialist.c:797
-#: src/parole-medialist.c:848 src/parole-player.c:3270
+#: src/parole-medialist.c:848 src/parole-player.c:3241
 msgid "Playlist"
 msgstr "プレイリスト"
 
@@ -169,8 +169,8 @@ msgid "Subtitles"
 msgstr "字幕"
 
 #: data/interfaces/parole.ui:40 data/desktop/org.xfce.Parole.desktop.in.in:3
-#: src/parole-about.c:75 src/parole-player.c:599 src/parole-player.c:1440
-#: src/parole-player.c:1809 src/plugins/mpris2/mpris2-provider.c:189
+#: src/parole-about.c:75 src/parole-player.c:599 src/parole-player.c:1435
+#: src/parole-player.c:1804 src/plugins/mpris2/mpris2-provider.c:189
 msgid "Parole Media Player"
 msgstr "Parole メディアプレーヤー"
 
@@ -220,7 +220,7 @@ msgid "Show Playlist"
 msgstr "プレイリストを表示"
 
 #. Create dialog
-#: data/interfaces/parole.ui:189 src/parole-player.c:2874
+#: data/interfaces/parole.ui:189 src/parole-player.c:2847
 msgid "Go to position"
 msgstr "指定時間に移動"
 
@@ -264,7 +264,7 @@ msgstr "オーディオ(_A)"
 msgid "_Audio Track"
 msgstr "オーディオトラック(_A)"
 
-#: data/interfaces/parole.ui:316 src/parole-player.c:810
+#: data/interfaces/parole.ui:316 src/parole-player.c:805
 msgid "Empty"
 msgstr "空"
 
@@ -284,8 +284,8 @@ msgstr "ミュート(_M)"
 msgid "_Video"
 msgstr "ビデオ(_V)"
 
-#: data/interfaces/parole.ui:378 src/parole-player.c:1997
-#: src/parole-player.c:2142
+#: data/interfaces/parole.ui:378 src/parole-player.c:1992
+#: src/parole-player.c:2137
 msgid "_Fullscreen"
 msgstr "全画面化(_F)"
 
@@ -502,7 +502,7 @@ msgstr "音量を上げる"
 msgid "Decrease volume"
 msgstr "音量を下げる"
 
-#: data/interfaces/shortcuts.ui:90 src/parole-player.c:2414
+#: data/interfaces/shortcuts.ui:90 src/parole-player.c:2401
 msgid "Mute"
 msgstr "ミュート"
 
@@ -527,7 +527,7 @@ msgid "Playback"
 msgstr "再生"
 
 #: data/interfaces/shortcuts.ui:139
-#: data/desktop/org.xfce.Parole.desktop.in.in:16
+#: data/desktop/org.xfce.Parole.desktop.in.in:17
 msgid "Play/Pause"
 msgstr "再生/一時停止"
 
@@ -567,13 +567,17 @@ msgstr "10分進む"
 msgid "Play your media"
 msgstr "映像や音楽メディアを再生します。"
 
-#: data/desktop/org.xfce.Parole.desktop.in.in:21 src/parole-player.c:3416
-#: src/plugins/notify/notify-provider.c:190
+#: data/desktop/org.xfce.Parole.desktop.in.in:11
+msgid "Media;Player;Audio;Video;Music;Playback;Xfce;"
+msgstr "メディア;プレーヤー;オーディオ;ビデオ;音楽;再生;Xfce;"
+
+#: data/desktop/org.xfce.Parole.desktop.in.in:22 src/parole-player.c:3387
+#: src/plugins/notify/notify-provider.c:182
 msgid "Previous Track"
 msgstr "前のトラック"
 
-#: data/desktop/org.xfce.Parole.desktop.in.in:26 src/parole-player.c:3434
-#: src/plugins/notify/notify-provider.c:202
+#: data/desktop/org.xfce.Parole.desktop.in.in:27 src/parole-player.c:3405
+#: src/plugins/notify/notify-provider.c:194
 msgid "Next Track"
 msgstr "次のトラック"
 
@@ -619,87 +623,87 @@ msgstr "メッセージ"
 msgid "Error"
 msgstr "エラー"
 
-#: src/gst/parole-gst.c:1111 src/parole-medialist.c:412
+#: src/gst/parole-gst.c:1100 src/parole-medialist.c:412
 #, c-format
 msgid "Track %i"
 msgstr "トラック %i"
 
-#: src/gst/parole-gst.c:1114
+#: src/gst/parole-gst.c:1103
 msgid "Audio CD"
 msgstr "オーディオ CD"
 
-#: src/gst/parole-gst.c:1292
+#: src/gst/parole-gst.c:1280
 msgid "Unable to install missing codecs."
 msgstr "不足しているコーデックをインストールできません。"
 
-#: src/gst/parole-gst.c:1295
+#: src/gst/parole-gst.c:1283
 msgid "No available plugin installer was found."
 msgstr "利用可能なプラグインインストーラーは見つかりませんでした。"
 
-#: src/gst/parole-gst.c:1346
+#: src/gst/parole-gst.c:1334
 msgid "Additional software is required."
 msgstr "追加のソフトウェアが必要です。"
 
-#: src/gst/parole-gst.c:1350
+#: src/gst/parole-gst.c:1338
 msgid "Don't Install"
 msgstr "インストールしない"
 
-#: src/gst/parole-gst.c:1352
+#: src/gst/parole-gst.c:1340
 msgid "Install"
 msgstr "インストール"
 
-#: src/gst/parole-gst.c:1355
+#: src/gst/parole-gst.c:1343
 msgid "OK"
 msgstr "OK"
 
-#: src/gst/parole-gst.c:1362
+#: src/gst/parole-gst.c:1350
 #, c-format
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
 msgstr "Parole がこのファイルを再生するためには <b>%s</b> が必要です。\nこれを自動的にインストールできます。"
 
-#: src/gst/parole-gst.c:1365
+#: src/gst/parole-gst.c:1353
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
 msgstr "Parole がこのファイルを再生するためには <b>%s</b> が必要です。"
 
-#: src/gst/parole-gst.c:1746
+#: src/gst/parole-gst.c:1734
 msgid "The stream is taking too much time to load"
 msgstr "このストリームを読み込むにはかなり時間がかかります"
 
-#: src/gst/parole-gst.c:1748
+#: src/gst/parole-gst.c:1736
 msgid "Do you want to continue loading or stop?"
 msgstr "読み込みを続けますか、それとも停止しますか?"
 
-#: src/gst/parole-gst.c:1749
+#: src/gst/parole-gst.c:1737
 msgid "Stop"
 msgstr "停止"
 
-#: src/gst/parole-gst.c:1750
+#: src/gst/parole-gst.c:1738
 msgid "Continue"
 msgstr "続行"
 
-#: src/gst/parole-gst.c:1949
+#: src/gst/parole-gst.c:1936
 msgid "GStreamer Error"
 msgstr "GStreamer エラー"
 
-#: src/gst/parole-gst.c:1950
+#: src/gst/parole-gst.c:1937
 msgid "Parole Media Player cannot start."
 msgstr "Parole メディアプレーヤー を起動できません。"
 
-#: src/gst/parole-gst.c:1975 src/gst/parole-gst.c:1990
-#: src/gst/parole-gst.c:2024
+#: src/gst/parole-gst.c:1962 src/gst/parole-gst.c:1977
+#: src/gst/parole-gst.c:2011
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
 msgstr "\"%s\" プラグインを読み込めません。GStreamer が正しくインストールされているか確認してください。"
 
-#: src/gst/parole-gst.c:2591 src/gst/parole-gst.c:2595
+#: src/gst/parole-gst.c:2578 src/gst/parole-gst.c:2582
 #, c-format
 msgid "Audio Track #%d"
 msgstr "オーディオトラック #%d"
 
-#: src/gst/parole-gst.c:2631 src/gst/parole-gst.c:2635
+#: src/gst/parole-gst.c:2618 src/gst/parole-gst.c:2622
 #, c-format
 msgid "Subtitle #%d"
 msgstr "字幕 #%d"
@@ -771,16 +775,16 @@ msgstr "バージョン情報を表示して終了する"
 msgid "Media to play"
 msgstr "再生するメディア"
 
-#: src/main.c:288
+#: src/main.c:285
 msgid "[FILES...] - Play movies and songs"
 msgstr "[ファイル...] - 動画と楽曲を再生する"
 
-#: src/main.c:299
+#: src/main.c:296
 #, c-format
 msgid "Type %s --help to list all available command line options\n"
 msgstr "%s --help と入力すると利用可能なすべてのコマンドラインオプションを表示する\n"
 
-#: src/main.c:316
+#: src/main.c:313
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole はすでに起動しています。新しいインスタンスを開くには -i を使用してください\n"
 
@@ -825,17 +829,17 @@ msgid "Play Disc"
 msgstr "ディスクの再生"
 
 #: src/parole-mediachooser.c:236 src/parole-medialist.c:855
-#: src/parole-player.c:1015
+#: src/parole-player.c:1010
 msgid "All files"
 msgstr "すべてのファイル"
 
-#: src/parole-medialist.c:260 src/parole-medialist.c:1644
+#: src/parole-medialist.c:260 src/parole-medialist.c:1624
 #, c-format
 msgid "Playlist (%i item)"
 msgid_plural "Playlist (%i items)"
 msgstr[0] "プレイリスト (%i 個のアイテム)"
 
-#: src/parole-medialist.c:262 src/parole-medialist.c:1646
+#: src/parole-medialist.c:262 src/parole-medialist.c:1626
 #, c-format
 msgid "Playlist (%i chapter)"
 msgid_plural "Playlist (%i chapters)"
@@ -866,8 +870,8 @@ msgstr "サポートされているプレイリスト形式を選択してくだ
 msgid "Unknown"
 msgstr "不明"
 
-#: src/parole-medialist.c:838 src/parole-player.c:986 src/parole-player.c:1177
-#: src/parole-player.c:2877 src/plugins/tray/tray-provider.c:348
+#: src/parole-medialist.c:838 src/parole-player.c:981 src/parole-player.c:1172
+#: src/parole-player.c:2850 src/plugins/tray/tray-provider.c:348
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -896,146 +900,146 @@ msgid "Shareable Playlist (%s)"
 msgstr "共有プレイリスト (%s)"
 
 #. Clear
-#: src/parole-medialist.c:1280
+#: src/parole-medialist.c:1275
 msgid "Open Containing Folder"
 msgstr "このファイルのあるフォルダーを開く"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: src/parole-player.c:980
+#: src/parole-player.c:975
 msgid "Select Subtitle File"
 msgstr "字幕ファイルの選択"
 
-#: src/parole-player.c:987
+#: src/parole-player.c:982
 msgid "Open"
 msgstr "開く"
 
-#: src/parole-player.c:1003
+#: src/parole-player.c:998
 msgid "Subtitle Files"
 msgstr "字幕ファイル"
 
-#: src/parole-player.c:1173 src/parole-player.c:1181
+#: src/parole-player.c:1168 src/parole-player.c:1176
 msgid "Clear Recent Items"
 msgstr "最近開いたアイテムのクリア"
 
-#: src/parole-player.c:1175
+#: src/parole-player.c:1170
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
 msgstr "最近開いたアイテムの履歴をクリアしますか? これはやり直せません。"
 
-#: src/parole-player.c:1271 src/parole-player.c:1396
+#: src/parole-player.c:1266 src/parole-player.c:1391
 msgid "Media stream is not seekable"
 msgstr "メディアストリームはシークできません"
 
-#: src/parole-player.c:1281
+#: src/parole-player.c:1276
 msgid "Play"
 msgstr "再生"
 
-#: src/parole-player.c:1284
+#: src/parole-player.c:1279
 msgid "Pause"
 msgstr "一時停止"
 
-#: src/parole-player.c:1730
+#: src/parole-player.c:1725
 msgid "GStreamer backend error"
 msgstr "GStreamer バックエンドエラー"
 
-#: src/parole-player.c:1814
+#: src/parole-player.c:1809
 msgid "Unknown Song"
 msgstr "未知の楽曲"
 
-#: src/parole-player.c:1825 src/parole-player.c:1831 src/parole-player.c:1839
+#: src/parole-player.c:1820 src/parole-player.c:1826 src/parole-player.c:1834
 msgid "on"
 msgstr "なし"
 
-#: src/parole-player.c:1839 src/plugins/notify/notify-provider.c:134
+#: src/parole-player.c:1834 src/plugins/notify/notify-provider.c:134
 msgid "Unknown Album"
 msgstr "未知のアルバム"
 
-#: src/parole-player.c:1850 src/parole-player.c:1857
+#: src/parole-player.c:1845 src/parole-player.c:1852
 msgid "by"
 msgstr "by"
 
-#: src/parole-player.c:1857 src/plugins/notify/notify-provider.c:136
+#: src/parole-player.c:1852 src/plugins/notify/notify-provider.c:136
 msgid "Unknown Artist"
 msgstr "未知のアーティスト"
 
-#: src/parole-player.c:1892
+#: src/parole-player.c:1887
 msgid "Buffering"
 msgstr "バッファーしています"
 
-#: src/parole-player.c:1998 src/parole-player.c:3451
+#: src/parole-player.c:1993 src/parole-player.c:3422
 msgid "Fullscreen"
 msgstr "全画面化"
 
-#: src/parole-player.c:2006
+#: src/parole-player.c:2001
 msgid "Leave _Fullscreen"
 msgstr "元に戻す(_F)"
 
-#: src/parole-player.c:2007
+#: src/parole-player.c:2002
 msgid "Leave Fullscreen"
 msgstr "元に戻す"
 
 #. Play menu item
 #. * Play pause
-#: src/parole-player.c:2104 src/plugins/tray/tray-provider.c:123
+#: src/parole-player.c:2099 src/plugins/tray/tray-provider.c:123
 msgid "_Pause"
 msgstr "一時停止(_P)"
 
-#: src/parole-player.c:2104 src/plugins/tray/tray-provider.c:123
+#: src/parole-player.c:2099 src/plugins/tray/tray-provider.c:123
 msgid "_Play"
 msgstr "再生(_P)"
 
 #. * Previous item in playlist.
-#: src/parole-player.c:2120
+#: src/parole-player.c:2115
 msgid "_Previous"
 msgstr "前(_P)"
 
 #. * Next item in playlist.
-#: src/parole-player.c:2131
+#: src/parole-player.c:2126
 msgid "_Next"
 msgstr "次(_N)"
 
 #. * Un/Full screen
-#: src/parole-player.c:2142
+#: src/parole-player.c:2137
 msgid "_Leave Fullscreen"
 msgstr "元に戻す(_L)"
 
 #. * Un/Hide menubar
-#: src/parole-player.c:2157
+#: src/parole-player.c:2152
 msgid "Show menubar"
 msgstr "メニューバーを表示"
 
-#: src/parole-player.c:2174
+#: src/parole-player.c:2169
 msgid "Mini Mode"
 msgstr "ミニモード"
 
-#: src/parole-player.c:2417
+#: src/parole-player.c:2404
 msgid "Unmute"
 msgstr "ミュート解除"
 
-#: src/parole-player.c:2848
+#: src/parole-player.c:2821
 msgid "Unable to open default web browser"
 msgstr "デフォルトのウェブブラウザーを開けません"
 
-#: src/parole-player.c:2850
+#: src/parole-player.c:2823
 msgid ""
 "Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr "バグを報告するには https://docs.xfce.org/apps/parole/bugs にアクセスしてください。"
 
-#: src/parole-player.c:2878
+#: src/parole-player.c:2851
 msgid "Go"
 msgstr "移動"
 
 #. Clear Recent Menu Item
-#: src/parole-player.c:3308
+#: src/parole-player.c:3279
 msgid "_Clear recent items..."
 msgstr "最近開いたアイテムのクリア(_C)…"
 
-#: src/parole-player.c:3619
+#: src/parole-player.c:3590
 msgid "Audio Track:"
 msgstr "オーディオトラック:"
 
-#: src/parole-player.c:3638
+#: src/parole-player.c:3609
 msgid "Subtitles:"
 msgstr "字幕:"
 
