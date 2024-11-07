@@ -47,7 +47,7 @@ msgstr "Sistema de xanelas X (Non Xv)"
 
 #: data/interfaces/parole-settings.ui:42
 msgid "Parole Preferences"
-msgstr ""
+msgstr "Preferencias do Parole"
 
 #. Add a close button to the Infobar
 #: data/interfaces/parole-settings.ui:62 data/interfaces/plugins.ui:43
@@ -129,7 +129,7 @@ msgstr "Substituír sempre a lista de reprodución polos ficheiros abertos"
 
 #: data/interfaces/parole-settings.ui:722
 msgid "Check and remove duplicate media entries"
-msgstr ""
+msgstr "Comprobar e retirar as entradas multimedia duplicadas"
 
 #: data/interfaces/parole-settings.ui:734
 msgid "Start playing opened files"
@@ -141,7 +141,7 @@ msgstr "Lembrar a lista de reprodución"
 
 #: data/interfaces/parole-settings.ui:801
 msgid "<b>Playlist Preferences</b>"
-msgstr ""
+msgstr "<b>Preferencias das listas de reprodución</b>"
 
 #: data/interfaces/parole-settings.ui:814 data/interfaces/playlist.ui:43
 #: data/interfaces/shortcuts.ui:99 src/parole-medialist.c:797
@@ -163,7 +163,7 @@ msgstr "Codificación:"
 
 #: data/interfaces/parole-settings.ui:953
 msgid "<b>Subtitle Preferences</b>"
-msgstr ""
+msgstr "<b>Preferencias dos subtítulos</b>"
 
 #: data/interfaces/parole-settings.ui:966
 msgid "Subtitles"
@@ -570,7 +570,7 @@ msgstr "Reproducir o contido multimedia"
 
 #: data/desktop/org.xfce.Parole.desktop.in.in:11
 msgid "Media;Player;Audio;Video;Music;Playback;Xfce;"
-msgstr ""
+msgstr "Media;Player;Audio;Video;Music;Playback;Xfce;reproductor;son;musica;reproducir;"
 
 #: data/desktop/org.xfce.Parole.desktop.in.in:22 src/parole-player.c:3387
 #: src/plugins/notify/notify-provider.c:182
@@ -584,11 +584,11 @@ msgstr "Pista seguinte"
 
 #: data/metainfo/parole.appdata.xml.in:7
 msgid "Parole"
-msgstr ""
+msgstr "Parole"
 
 #: data/metainfo/parole.appdata.xml.in:8
 msgid "Modern and simple media player"
-msgstr ""
+msgstr "Reprodutor multimedia moderno e sinxelo"
 
 #: data/metainfo/parole.appdata.xml.in:12
 msgid ""
@@ -606,15 +606,15 @@ msgstr "O Parole reproduce os ficheiros multimedia locais, incluído o vídeo co
 
 #: data/metainfo/parole.appdata.xml.in:26
 msgid "Parole playing Big Buck Bunny"
-msgstr ""
+msgstr "O Parole reproducindo Big Buck Bunny"
 
 #: data/metainfo/parole.appdata.xml.in:30
 msgid "Parole playing a LAS podcast"
-msgstr ""
+msgstr "O Parole reproducindo un podcast LAS"
 
 #: data/metainfo/parole.appdata.xml.in:34
 msgid "Parole playing a LAS podcast in Mini Mode (0.9+)"
-msgstr ""
+msgstr "O Parole reproducindo un podcast LAS no modo Mini (0.9+)"
 
 #: src/common/parole-common.c:83
 msgid "Message"
@@ -722,7 +722,7 @@ msgid ""
 "\n"
 "Please report bugs to <%s>.\n"
 "\n"
-msgstr ""
+msgstr "\nReprodutor multimedia Parole %s\n\nParte do Proxecto de Extras de Xfce\nhttps://goodies.xfce.org\n\nLicenciado baixo a GNU GPL.\n\nPor favor, informe dos fallos en <%s>.\n\n"
 
 #: src/main.c:231
 msgid "Open a new instance"
