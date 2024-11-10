@@ -89,7 +89,7 @@ msgstr "Obecné"
 
 #: data/interfaces/parole-settings.ui:446
 msgid "Please restart Parole for this change to take effect."
-msgstr "Restartujte prosím aplikaci Parole, aby se změny projevily."
+msgstr "Změny se projeví po restartu aplikace Parole."
 
 #: data/interfaces/parole-settings.ui:482
 msgid "<b>Video Output</b>"
@@ -509,11 +509,11 @@ msgstr "Ztlumit"
 
 #: data/interfaces/shortcuts.ui:104
 msgid "Toggle playlist"
-msgstr "Přepnout seznam skladeb"
+msgstr "Zobrazit nebo skrýt seznam médií"
 
 #: data/interfaces/shortcuts.ui:111
 msgid "Select previous item"
-msgstr "Vybrat předcházející položku"
+msgstr "Vybrat předchozí položku"
 
 #: data/interfaces/shortcuts.ui:118
 msgid "Select next item"
@@ -662,7 +662,7 @@ msgstr "OK"
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
-msgstr "K přehrání tohoto souboru Parole potřebuje <b>%s</b>.\nMůže být automaticky nainstalované."
+msgstr "K přehrání tohoto souboru Parole potřebuje <b>%s</b>.\nLze jej nainstalovat automaticky."
 
 #: src/gst/parole-gst.c:1353
 #, c-format
