@@ -321,7 +321,7 @@ msgstr "4:3 (TV)"
 
 #: data/interfaces/parole.ui:446
 msgid "16:9 (Widescreen)"
-msgstr "16:9 (Szerokoekranowe)"
+msgstr "16:9 (szerokoekranowe)"
 
 #: data/interfaces/parole.ui:457
 msgid "20:9 (DVB)"
@@ -695,7 +695,7 @@ msgstr "Wznów"
 
 #: src/gst/parole-gst.c:1936
 msgid "GStreamer Error"
-msgstr "Błąd GStreamer"
+msgstr "Błąd programu GStreamer"
 
 #: src/gst/parole-gst.c:1937
 msgid "Parole Media Player cannot start."
@@ -799,7 +799,7 @@ msgstr "Program Parole jest już uruchomiony. Proszę użyć opcji -i, aby uruch
 
 #: src/misc/parole-filters.c:66
 msgid "Audio"
-msgstr "Dźwięk"
+msgstr "Pliki dźwiękowe"
 
 #: src/misc/parole-filters.c:91
 msgid "Video"
