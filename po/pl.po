@@ -137,7 +137,7 @@ msgstr "Zastępowanie zawartości listy odtwarzania otwieranymi plikami"
 
 #: data/interfaces/parole-settings.ui:722
 msgid "Check and remove duplicate media entries"
-msgstr "Wyszukiwanie i usuwanie powielonych pozycji"
+msgstr "Wyszukiwanie i usuwanie powielonych pozycji"
 
 #: data/interfaces/parole-settings.ui:734
 msgid "Start playing opened files"
@@ -433,7 +433,7 @@ msgstr "Powtarzaj"
 
 #: data/interfaces/playlist.ui:160 data/interfaces/playlist.ui:161
 msgid "Shuffle"
-msgstr "Odtwarzaj w losowej kolejności"
+msgstr "Odtwarzaj w losowej kolejności"
 
 #: data/interfaces/playlist.ui:174 data/interfaces/playlist.ui:175
 msgid "Move Up"
@@ -596,21 +596,21 @@ msgstr "Parole"
 
 #: data/metainfo/parole.appdata.xml.in:8
 msgid "Modern and simple media player"
-msgstr "Nowoczesny i prosty odtwarzacz multimedialny"
+msgstr "Nowoczesny i prosty odtwarzacz multimedialny"
 
 #: data/metainfo/parole.appdata.xml.in:12
 msgid ""
 "Parole is a modern simple media player based on the GStreamer framework and "
 "written to fit well in the Xfce desktop. It is designed with simplicity, "
 "speed and resource usage in mind."
-msgstr "Parole jest nowoczesnym i prostym odtwarzaczem mediów opartym o szkielet GStreamer i napisanym, aby jak najlepiej pasować do pulpitu Xfce. Jest zaprojektowany z myślą o prostocie, szybkości i niskim zużyciu zasobów systemu."
+msgstr "Parole jest nowoczesnym i prostym odtwarzaczem mediów opartym o szkielet GStreamer i napisanym, aby jak najlepiej pasować do pulpitu Xfce. Jest zaprojektowany z myślą o prostocie, szybkości i niskim zużyciu zasobów systemu."
 
 #: data/metainfo/parole.appdata.xml.in:16
 msgid ""
 "Parole features playback of local media files, including video with "
 "subtitles support, Audio CDs, DVDs, and live streams. Parole is also "
 "extensible via plugins."
-msgstr "Parole zapewnia odtwarzanie lokalnych plików mediów, wliczając w to pliki filmowe z napisami, dźwiękowe płyty CD, płyty DVD, oraz strumienie na żywo. Parole może być także rozbudowywane w oparciu o wtyczki."
+msgstr "Parole zapewnia odtwarzanie lokalnych plików mediów, wliczając w to pliki filmowe z napisami, dźwiękowe płyty CD, płyty DVD, oraz strumienie na żywo. Parole może być także rozbudowywany w oparciu o wtyczki."
 
 #: data/metainfo/parole.appdata.xml.in:26
 msgid "Parole playing Big Buck Bunny"
@@ -622,7 +622,7 @@ msgstr "Parole odtwarzający podcast LAS"
 
 #: data/metainfo/parole.appdata.xml.in:34
 msgid "Parole playing a LAS podcast in Mini Mode (0.9+)"
-msgstr "Parole odtwarzający podcast LAS w trybie miniaturowym (0.9+)"
+msgstr "Parole odtwarzający podcast LAS w trybie miniaturowym (0.9+)"
 
 #: src/common/parole-common.c:83
 msgid "Message"
@@ -746,11 +746,11 @@ msgstr "Określa położenie napędu płyt Audio-CD/VCD/DVD"
 
 #: src/main.c:237
 msgid "Start in embedded mode"
-msgstr "Uruchamia w trybie zintegrowanym"
+msgstr "Uruchamia w trybie zintegrowanym"
 
 #: src/main.c:239
 msgid "Start in fullscreen mode"
-msgstr "Uruchamia w trybie pełnego ekranu"
+msgstr "Uruchamia w trybie pełnoekranowym"
 
 #: src/main.c:241
 msgid "Play or pause if already playing"
@@ -786,7 +786,7 @@ msgstr "Określa nagranie do odtworzenia"
 
 #: src/main.c:285
 msgid "[FILES...] - Play movies and songs"
-msgstr "[PLIK...] - Odtwarza nagrania dźwięku i wideo"
+msgstr "[PLIK...] - Odtwarza nagrania dźwięku i wideo"
 
 #: src/main.c:296
 #, c-format
@@ -807,7 +807,7 @@ msgstr "Pliki wideo"
 
 #: src/misc/parole-filters.c:115 src/misc/parole-filters.c:142
 msgid "Audio and video"
-msgstr "Pliki dźwiękowe i wideo"
+msgstr "Pliki dźwiękowe i wideo"
 
 #: src/misc/parole-filters.c:169 src/misc/parole-filters.c:193
 msgid "All supported files"
