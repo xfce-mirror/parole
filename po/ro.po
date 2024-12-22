@@ -1,0 +1,1266 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Xfce
+# This file is distributed under the same license as the xfce-apps.parole package.
+# 
+# Translators:
+# Marius Ghita, 2022
+# Marius Ghita, 2022
+# Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>, 2024
+msgid ""
+msgstr ""
+"Project-Id-Version: Xfce Apps\n"
+"Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
+"POT-Creation-Date: 2024-10-15 00:49+0200\n"
+"PO-Revision-Date: 2013-07-03 18:28+0000\n"
+"Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>, 2024\n"
+"Language-Team: Romanian (http://app.transifex.com/xfce/xfce-apps/language/ro/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ro\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
+
+#: data/interfaces/mediachooser.ui:23
+msgid "Open Media Files"
+msgstr "Deschide fișiere media"
+
+#: data/interfaces/open-location.ui:23
+msgid "Open Network Location"
+msgstr "Deschide locație în rețea"
+
+#: data/interfaces/open-location.ui:65 src/parole-open-location.c:193
+msgid "Clear History"
+msgstr "Șterge istoricul"
+
+#: data/interfaces/parole-settings.ui:28
+msgid "Automatic"
+msgstr "Automatic"
+
+#: data/interfaces/parole-settings.ui:32
+msgid "X Window System (X11/XShm/Xv)"
+msgstr "Sistemul de ferestre X (X11/XShm/Xv)"
+
+#: data/interfaces/parole-settings.ui:36
+msgid "X Window System (No Xv)"
+msgstr "Sistemul de ferestre X (fără Xv)"
+
+#: data/interfaces/parole-settings.ui:42
+msgid "Parole Preferences"
+msgstr "Preferințe pentru Parole"
+
+#. Add a close button to the Infobar
+#: data/interfaces/parole-settings.ui:62 data/interfaces/plugins.ui:43
+#: src/parole-player.c:3615 src/plugins/tray/tray-provider.c:261
+msgid "Close"
+msgstr "Închide"
+
+#: data/interfaces/parole-settings.ui:121
+msgid "Disable screensaver when playing movies"
+msgstr "Dezactivează protectorul de ecran la redarea filmelor"
+
+#: data/interfaces/parole-settings.ui:148
+msgid "<b>Screensaver</b>"
+msgstr "<b>Protector de ecran</b>"
+
+#: data/interfaces/parole-settings.ui:189
+msgid "Show visual effects when an audio file is played"
+msgstr "Afișează efecte vizuale atunci când este redat un fișier audio"
+
+#: data/interfaces/parole-settings.ui:224
+msgid "Visualization type:"
+msgstr "Tipul de vizualizare:"
+
+#: data/interfaces/parole-settings.ui:266
+msgid "<b>Audio Visualization</b>"
+msgstr "<b>Vizualizare audio</b>"
+
+#: data/interfaces/parole-settings.ui:300
+msgid "Enable keyboard multimedia keys"
+msgstr "Activează tastele multimedia ale tastaturii"
+
+#: data/interfaces/parole-settings.ui:327
+msgid "<b>Keyboard</b>"
+msgstr "<b>Tastatură</b>"
+
+#: data/interfaces/parole-settings.ui:344 data/interfaces/shortcuts.ui:15
+msgid "General"
+msgstr "Generale"
+
+#: data/interfaces/parole-settings.ui:446
+msgid "Please restart Parole for this change to take effect."
+msgstr "Reporniți Parole pentru ca această modificare să intre în vigoare."
+
+#: data/interfaces/parole-settings.ui:482
+msgid "<b>Video Output</b>"
+msgstr "<b>Ieșire video</b>"
+
+#: data/interfaces/parole-settings.ui:521
+msgid "Brightness:"
+msgstr "Luminozitate:"
+
+#: data/interfaces/parole-settings.ui:533
+msgid "Contrast:"
+msgstr "Contrast:"
+
+#: data/interfaces/parole-settings.ui:545
+msgid "Hue:"
+msgstr "Nuanță:"
+
+#: data/interfaces/parole-settings.ui:557
+msgid "Saturation:"
+msgstr "Saturație:"
+
+#: data/interfaces/parole-settings.ui:627
+msgid "Reset to defaults"
+msgstr "Restabilirea valorilor implicite"
+
+#: data/interfaces/parole-settings.ui:655
+msgid "<b>Color Balance</b>"
+msgstr "<b>Balansul culorilor</b>"
+
+#: data/interfaces/parole-settings.ui:675
+msgid "Display"
+msgstr "Afișare"
+
+#: data/interfaces/parole-settings.ui:710
+msgid "Always replace playlist with opened files"
+msgstr "Înlocuiește întotdeauna lista de redare cu fișierele deschise"
+
+#: data/interfaces/parole-settings.ui:722
+msgid "Check and remove duplicate media entries"
+msgstr "Verifică și elimină intrările media duplicate"
+
+#: data/interfaces/parole-settings.ui:734
+msgid "Start playing opened files"
+msgstr "Începe redarea fișierelor deschise"
+
+#: data/interfaces/parole-settings.ui:746 data/interfaces/playlist.ui:234
+msgid "Remember playlist"
+msgstr "Reține lista de redare"
+
+#: data/interfaces/parole-settings.ui:801
+msgid "<b>Playlist Preferences</b>"
+msgstr "<b>Preferințe listă de redare</b>"
+
+#: data/interfaces/parole-settings.ui:814 data/interfaces/playlist.ui:43
+#: data/interfaces/shortcuts.ui:99 src/parole-medialist.c:797
+#: src/parole-medialist.c:848 src/parole-player.c:3241
+msgid "Playlist"
+msgstr "Listă de redare"
+
+#: data/interfaces/parole-settings.ui:854
+msgid "Automatically show subtitles when playing movie file"
+msgstr "Afișează automat subtitrările la redarea fișierului de film"
+
+#: data/interfaces/parole-settings.ui:892
+msgid "Font:"
+msgstr "Font:"
+
+#: data/interfaces/parole-settings.ui:904
+msgid "Encoding:"
+msgstr "Codificarea:"
+
+#: data/interfaces/parole-settings.ui:953
+msgid "<b>Subtitle Preferences</b>"
+msgstr "<b>Preferințe subtitrare</b>"
+
+#: data/interfaces/parole-settings.ui:966
+msgid "Subtitles"
+msgstr "Subtitrare"
+
+#: data/interfaces/parole.ui:40 data/desktop/org.xfce.Parole.desktop.in.in:3
+#: src/parole-about.c:75 src/parole-player.c:599 src/parole-player.c:1435
+#: src/parole-player.c:1804 src/plugins/mpris2/mpris2-provider.c:189
+msgid "Parole Media Player"
+msgstr "Reproducător multimedia Parole"
+
+#: data/interfaces/parole.ui:63
+msgid "_Media"
+msgstr "_Mediu"
+
+#: data/interfaces/parole.ui:73
+msgid "_Open..."
+msgstr "_Deschide..."
+
+#: data/interfaces/parole.ui:83
+msgid "Open _Location..."
+msgstr "Deschide _locația…"
+
+#: data/interfaces/parole.ui:93
+msgid "Open _Recent"
+msgstr "Deschide _recent"
+
+#: data/interfaces/parole.ui:107
+msgid "_Save Playlist..."
+msgstr "_Salvează lista de redare..."
+
+#: data/interfaces/parole.ui:122 src/parole-disc.c:105 src/parole-disc.c:139
+msgid "Insert Disc"
+msgstr "Introduceți un disc"
+
+#. * Exit
+#: data/interfaces/parole.ui:135 src/plugins/tray/tray-provider.c:172
+msgid "_Quit"
+msgstr "_Ieșire"
+
+#: data/interfaces/parole.ui:149
+msgid "_Playback"
+msgstr "_Redare"
+
+#: data/interfaces/parole.ui:159
+msgid "_Repeat"
+msgstr "_Repetare"
+
+#: data/interfaces/parole.ui:167
+msgid "_Shuffle"
+msgstr "Redare aleatorie a li_stei de redare"
+
+#: data/interfaces/parole.ui:181 data/interfaces/parole.ui:962
+msgid "Show Playlist"
+msgstr "Afișează lista de redare"
+
+#. Create dialog
+#: data/interfaces/parole.ui:189 src/parole-player.c:2847
+msgid "Go to position"
+msgstr "Mergi la poziție"
+
+#: data/interfaces/parole.ui:201
+msgid "_DVD"
+msgstr "_DVD"
+
+#: data/interfaces/parole.ui:211
+msgid "_DVD Menu"
+msgstr "Meniu _DVD"
+
+#: data/interfaces/parole.ui:220
+msgid "_Title Menu"
+msgstr "Meniu _titlu"
+
+#: data/interfaces/parole.ui:229
+msgid "_Subpicture Menu"
+msgstr "Meniu _subimagine"
+
+#: data/interfaces/parole.ui:238
+msgid "_Audio Menu"
+msgstr "Meniu _audio"
+
+#: data/interfaces/parole.ui:247
+msgid "A_ngle Menu"
+msgstr "Meniu u_nghi"
+
+#: data/interfaces/parole.ui:262
+msgid "_Chapters"
+msgstr "_Capitole"
+
+#: data/interfaces/parole.ui:272
+msgid "_Chapter Menu"
+msgstr "Meniu _capitole"
+
+#: data/interfaces/parole.ui:295
+msgid "_Audio"
+msgstr "_Audio"
+
+#: data/interfaces/parole.ui:305
+msgid "_Audio Track"
+msgstr "Pistă _audio"
+
+#: data/interfaces/parole.ui:316 src/parole-player.c:805
+msgid "Empty"
+msgstr "Gol"
+
+#: data/interfaces/parole.ui:334
+msgid "Volume _Up"
+msgstr "Măr_ește volumul:"
+
+#: data/interfaces/parole.ui:344
+msgid "Volume _Down"
+msgstr "Micșorea_ză volumul"
+
+#: data/interfaces/parole.ui:354
+msgid "_Mute"
+msgstr "_Dezactivare sunet"
+
+#: data/interfaces/parole.ui:368
+msgid "_Video"
+msgstr "_Video"
+
+#: data/interfaces/parole.ui:378 src/parole-player.c:1992
+#: src/parole-player.c:2137
+msgid "_Fullscreen"
+msgstr "_Ecran complet"
+
+#: data/interfaces/parole.ui:393
+msgid "_Aspect Ratio"
+msgstr "Raportul de _aspect"
+
+#: data/interfaces/parole.ui:403 data/interfaces/parole.ui:488
+#: src/parole-player.c:741
+msgid "None"
+msgstr "Niciunul"
+
+#: data/interfaces/parole.ui:413
+msgid "Auto"
+msgstr "Automat"
+
+#: data/interfaces/parole.ui:424
+msgid "Square"
+msgstr "Pătrat"
+
+#: data/interfaces/parole.ui:435
+msgid "4:3 (TV)"
+msgstr "4:3 (TV)"
+
+#: data/interfaces/parole.ui:446
+msgid "16:9 (Widescreen)"
+msgstr "1.6:9 (Ecran lat)"
+
+#: data/interfaces/parole.ui:457
+msgid "20:9 (DVB)"
+msgstr "20:9 (DVB)"
+
+#: data/interfaces/parole.ui:478
+msgid "_Subtitles"
+msgstr "_Subtitrare"
+
+#: data/interfaces/parole.ui:504
+msgid "Select Text Subtitles..."
+msgstr "Selectează fișierul de subtitrare..."
+
+#: data/interfaces/parole.ui:526
+msgid "_Tools"
+msgstr "_Unelte"
+
+#: data/interfaces/parole.ui:536
+msgid "P_lugins"
+msgstr "Modu_le"
+
+#: data/interfaces/parole.ui:544
+msgid "_Preferences"
+msgstr "_Preferințe"
+
+#: data/interfaces/parole.ui:557
+msgid "_Help"
+msgstr "_Ajutor"
+
+#: data/interfaces/parole.ui:567
+msgid "_Report a Bug..."
+msgstr "_Raportați o eroare…"
+
+#: data/interfaces/parole.ui:575
+msgid "_Keyboard Shortcuts"
+msgstr "Taste de comenzi rapide"
+
+#: data/interfaces/parole.ui:585
+msgid "Display Parole user manual"
+msgstr "Afișează manualul de utilizare Parole"
+
+#: data/interfaces/parole.ui:586
+msgid "_Contents"
+msgstr "_Conținut"
+
+#: data/interfaces/parole.ui:595
+msgid "_About"
+msgstr "_Despre"
+
+#: data/interfaces/parole.ui:696
+msgid "<span color='#F4F4F4'><b><big>Unknown Song</big></b></span>"
+msgstr "<span color='#F4F4F4'><b><big>Melodie necunoscută</big></b></span>"
+
+#: data/interfaces/parole.ui:712
+msgid ""
+"<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Unknown "
+"Album</span></big>"
+msgstr "<big><span color='#BBBBBB'><i>on</i></span> <span color='#F4F4F4'>Album necunoscut</span></big>"
+
+#: data/interfaces/parole.ui:728
+msgid ""
+"<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Unknown "
+"Artist</span></big>"
+msgstr "<big><span color='#BBBBBB'><i>by</i></span> <span color='#F4F4F4'>Artist necunoscut</span></big>"
+
+#: data/interfaces/parole.ui:833 data/interfaces/parole.ui:892
+msgid "0:00"
+msgstr "0:00"
+
+#: data/interfaces/parole.ui:847
+msgid "Buffering (0%)"
+msgstr "Se preîncarcă (0%)"
+
+#: data/interfaces/parole.ui:879
+msgid "/"
+msgstr "/"
+
+#: data/interfaces/playlist.ui:75
+msgid "Disc Playlist"
+msgstr "Lista de redare a discului"
+
+#: data/interfaces/playlist.ui:99
+msgid "Add to playlist..."
+msgstr "Adaugă la lista de redare..."
+
+#: data/interfaces/playlist.ui:100
+msgid "Add"
+msgstr "Adaugă"
+
+#: data/interfaces/playlist.ui:115
+msgid "Remove selected media"
+msgstr "Elimină mediul selectat"
+
+#: data/interfaces/playlist.ui:116
+msgid "Remove"
+msgstr "Elimină"
+
+#: data/interfaces/playlist.ui:131
+msgid "Clear playlist"
+msgstr "Golește lista de redare"
+
+#: data/interfaces/playlist.ui:132 data/interfaces/playlist.ui:248
+msgid "Clear"
+msgstr "Golește"
+
+#: data/interfaces/playlist.ui:146 data/interfaces/playlist.ui:147
+msgid "Repeat"
+msgstr "Repetare"
+
+#: data/interfaces/playlist.ui:160 data/interfaces/playlist.ui:161
+msgid "Shuffle"
+msgstr "Amestecă"
+
+#: data/interfaces/playlist.ui:174 data/interfaces/playlist.ui:175
+msgid "Move Up"
+msgstr "Mutați în sus"
+
+#: data/interfaces/playlist.ui:189 data/interfaces/playlist.ui:190
+msgid "Move Down"
+msgstr "Mutați în jos"
+
+#: data/interfaces/playlist.ui:218
+msgid "Replace playlist when opening files"
+msgstr "Înlocuiește lista de redare la deschiderea fișierelor"
+
+#: data/interfaces/playlist.ui:226
+msgid "Play opened files"
+msgstr "Redă fișierele deschise"
+
+#: data/interfaces/plugins.ui:20
+msgid "Parole Plugins"
+msgstr "Module Parole"
+
+#: data/interfaces/plugins.ui:100
+msgid "Plugin"
+msgstr "Modul"
+
+#: data/interfaces/plugins.ui:133
+msgid "Preferences"
+msgstr "Preferințe"
+
+#: data/interfaces/plugins.ui:146
+msgid "About"
+msgstr "Despre"
+
+#: data/interfaces/save-playlist.ui:34
+msgid "Save Playlist as..."
+msgstr "Salvează lista de redare ca..."
+
+#: data/interfaces/shortcuts.ui:20
+msgid "Open file"
+msgstr "Deschide fișier"
+
+#: data/interfaces/shortcuts.ui:27
+msgid "Open location"
+msgstr "Deschide locația"
+
+#: data/interfaces/shortcuts.ui:34 src/plugins/tray/tray-provider.c:354
+msgid "Quit"
+msgstr "Ieșire"
+
+#: data/interfaces/shortcuts.ui:43
+msgid "View"
+msgstr "Vizualizare"
+
+#: data/interfaces/shortcuts.ui:48
+msgid "Toggle fullscreen"
+msgstr "Activează/dezactivează modul de ecran complet"
+
+#: data/interfaces/shortcuts.ui:55
+msgid "Exit fullscreen"
+msgstr "Ieșire din modul de ecran complet"
+
+#: data/interfaces/shortcuts.ui:62
+msgid "Toggle menubar"
+msgstr "Afișează/ascunde bara de meniu"
+
+#: data/interfaces/shortcuts.ui:71
+msgid "Volume"
+msgstr "Volum"
+
+#: data/interfaces/shortcuts.ui:76
+msgid "Increase volume"
+msgstr "Crește volumul"
+
+#: data/interfaces/shortcuts.ui:83
+msgid "Decrease volume"
+msgstr "Scade volumul"
+
+#: data/interfaces/shortcuts.ui:90 src/parole-player.c:2401
+msgid "Mute"
+msgstr "Dezactivare sunet"
+
+#: data/interfaces/shortcuts.ui:104
+msgid "Toggle playlist"
+msgstr "Afișează/ascunde lista de redare"
+
+#: data/interfaces/shortcuts.ui:111
+msgid "Select previous item"
+msgstr "Selectează elementul anterior"
+
+#: data/interfaces/shortcuts.ui:118
+msgid "Select next item"
+msgstr "Selectează elementul următor"
+
+#: data/interfaces/shortcuts.ui:125
+msgid "Remove selected item"
+msgstr "Elimină elementul selectat"
+
+#: data/interfaces/shortcuts.ui:134
+msgid "Playback"
+msgstr "Redare"
+
+#: data/interfaces/shortcuts.ui:139
+#: data/desktop/org.xfce.Parole.desktop.in.in:17
+msgid "Play/Pause"
+msgstr "Redare/Pauză"
+
+#: data/interfaces/shortcuts.ui:146 src/main.c:245
+msgid "Previous track"
+msgstr "Piesa precedentă"
+
+#: data/interfaces/shortcuts.ui:153 src/main.c:243
+msgid "Next track"
+msgstr "Piesa următoare"
+
+#: data/interfaces/shortcuts.ui:160
+msgid "Go back 10 seconds"
+msgstr "Mergi înapoi cu 10 secunde"
+
+#: data/interfaces/shortcuts.ui:167
+msgid "Go forward 10 seconds"
+msgstr "Mergi înainte cu 10 secunde"
+
+#: data/interfaces/shortcuts.ui:174
+msgid "Go back 1 minute"
+msgstr "Mergi înapoi cu 1 minut"
+
+#: data/interfaces/shortcuts.ui:181
+msgid "Go forward 1 minute"
+msgstr "Mergi înainte cu 1 minut"
+
+#: data/interfaces/shortcuts.ui:188
+msgid "Go back 10 minutes"
+msgstr "Mergi înainte cu 10 minute"
+
+#: data/interfaces/shortcuts.ui:195
+msgid "Go forward 10 minutes"
+msgstr "Mergi înapoi cu 10 minute"
+
+#: data/desktop/org.xfce.Parole.desktop.in.in:4
+msgid "Play your media"
+msgstr "Redă conținutul multimedia"
+
+#: data/desktop/org.xfce.Parole.desktop.in.in:11
+msgid "Media;Player;Audio;Video;Music;Playback;Xfce;"
+msgstr "Multimedia;Reproducător;Audio;Video;Muzică;Redare;Xfce;"
+
+#: data/desktop/org.xfce.Parole.desktop.in.in:22 src/parole-player.c:3387
+#: src/plugins/notify/notify-provider.c:182
+msgid "Previous Track"
+msgstr "Melodia precedentă"
+
+#: data/desktop/org.xfce.Parole.desktop.in.in:27 src/parole-player.c:3405
+#: src/plugins/notify/notify-provider.c:194
+msgid "Next Track"
+msgstr "Melodia următoare"
+
+#: data/metainfo/parole.appdata.xml.in:7
+msgid "Parole"
+msgstr "Parole"
+
+#: data/metainfo/parole.appdata.xml.in:8
+msgid "Modern and simple media player"
+msgstr "Reproducător multimedia simplu și modern"
+
+#: data/metainfo/parole.appdata.xml.in:12
+msgid ""
+"Parole is a modern simple media player based on the GStreamer framework and "
+"written to fit well in the Xfce desktop. It is designed with simplicity, "
+"speed and resource usage in mind."
+msgstr "Parole este un reproducător media simplu și modern bazat pe motorul GStreamer și scris pentru a se potrivi bine în mediul grafic de birou Xfce. Acesta este proiectat ținând cont de simplitate, viteză și utilizarea resurselor."
+
+#: data/metainfo/parole.appdata.xml.in:16
+msgid ""
+"Parole features playback of local media files, including video with "
+"subtitles support, Audio CDs, DVDs, and live streams. Parole is also "
+"extensible via plugins."
+msgstr "Parole permite redarea fișierelor media locale, inclusiv video cu suport pentru subtitrări, CD-uri audio, DVD-uri și fluxuri live. Parole este, de asemenea, extensibil prin intermediul modulelor."
+
+#: data/metainfo/parole.appdata.xml.in:26
+msgid "Parole playing Big Buck Bunny"
+msgstr "Parole redând Big Buck Bunny"
+
+#: data/metainfo/parole.appdata.xml.in:30
+msgid "Parole playing a LAS podcast"
+msgstr "Parole redând un podcast LAS"
+
+#: data/metainfo/parole.appdata.xml.in:34
+msgid "Parole playing a LAS podcast in Mini Mode (0.9+)"
+msgstr "Parole redând un podcast LAS în modul mini (0.9+)"
+
+#: src/common/parole-common.c:83
+msgid "Message"
+msgstr "Mesaj"
+
+#: src/common/parole-common.c:87
+msgid "Error"
+msgstr "Eroare"
+
+#: src/gst/parole-gst.c:1100 src/parole-medialist.c:412
+#, c-format
+msgid "Track %i"
+msgstr "Pista %i"
+
+#: src/gst/parole-gst.c:1103
+msgid "Audio CD"
+msgstr "CD audio"
+
+#: src/gst/parole-gst.c:1280
+msgid "Unable to install missing codecs."
+msgstr "Nu se pot instala codec-urile lipsă."
+
+#: src/gst/parole-gst.c:1283
+msgid "No available plugin installer was found."
+msgstr "Nu a fost găsit niciun instalator de modul disponibil."
+
+#: src/gst/parole-gst.c:1334
+msgid "Additional software is required."
+msgstr "Se necesită software suplimentar."
+
+#: src/gst/parole-gst.c:1338
+msgid "Don't Install"
+msgstr "Nu instala"
+
+#: src/gst/parole-gst.c:1340
+msgid "Install"
+msgstr "Instalează"
+
+#: src/gst/parole-gst.c:1343
+msgid "OK"
+msgstr "Ok"
+
+#: src/gst/parole-gst.c:1350
+#, c-format
+msgid ""
+"Parole needs <b>%s</b> to play this file.\n"
+"It can be installed automatically."
+msgstr "Parole are nevoie de <b>%s</b> pentru a reda acest fișier.\nAcesta poate fi instalat automat."
+
+#: src/gst/parole-gst.c:1353
+#, c-format
+msgid "Parole needs <b>%s</b> to play this file."
+msgstr "Parole are nevoie de <b>%s</b> pentru a reda acest fișier."
+
+#: src/gst/parole-gst.c:1734
+msgid "The stream is taking too much time to load"
+msgstr "Încărcarea fluxului durează prea mult timp"
+
+#: src/gst/parole-gst.c:1736
+msgid "Do you want to continue loading or stop?"
+msgstr "Doriți să continuați încărcarea sau să o opriți?"
+
+#: src/gst/parole-gst.c:1737
+msgid "Stop"
+msgstr "Stop"
+
+#: src/gst/parole-gst.c:1738
+msgid "Continue"
+msgstr "Continuă"
+
+#: src/gst/parole-gst.c:1936
+msgid "GStreamer Error"
+msgstr "Eroare GStreamer"
+
+#: src/gst/parole-gst.c:1937
+msgid "Parole Media Player cannot start."
+msgstr "Reproducătorul multimedia Parole nu poate fi inițiat."
+
+#: src/gst/parole-gst.c:1962 src/gst/parole-gst.c:1977
+#: src/gst/parole-gst.c:2011
+#, c-format
+msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
+msgstr "Nu s-a putut încărca modulul „%s”, verificați instalarea GStreamer."
+
+#: src/gst/parole-gst.c:2578 src/gst/parole-gst.c:2582
+#, c-format
+msgid "Audio Track #%d"
+msgstr "Pista audio nr.%d"
+
+#: src/gst/parole-gst.c:2618 src/gst/parole-gst.c:2622
+#, c-format
+msgid "Subtitle #%d"
+msgstr "Subtitlul nr.%d"
+
+#: src/main.c:62
+#, c-format
+msgid ""
+"\n"
+"Parole Media Player %s\n"
+"\n"
+"Part of the Xfce Goodies Project\n"
+"https://goodies.xfce.org\n"
+"\n"
+"Licensed under the GNU GPL.\n"
+"\n"
+"Please report bugs to <%s>.\n"
+"\n"
+msgstr "\nReproducător multimedia Parole %s\n\nParte a proiectului Xfce Goodies\nhttps://goodies.xfce.org\n\nLicențiat sub GNU GPL.\n\nVă rugăm să raportați problemele la <%s>.\n"
+
+#: src/main.c:231
+msgid "Open a new instance"
+msgstr "Deschide o nouă instanță"
+
+#: src/main.c:233
+msgid "Do not load plugins"
+msgstr "Nu încărca modulele"
+
+#: src/main.c:235
+msgid "Set Audio-CD/VCD/DVD device path"
+msgstr "Definiți ruta dispozitivului Audio-CD/VCD/DVD"
+
+#: src/main.c:237
+msgid "Start in embedded mode"
+msgstr "Pornește în modul încorporat"
+
+#: src/main.c:239
+msgid "Start in fullscreen mode"
+msgstr "Pornește în modul de ecran complet"
+
+#: src/main.c:241
+msgid "Play or pause if already playing"
+msgstr "Redă sau pune pauză dacă redă deja"
+
+#: src/main.c:247
+msgid "Raise volume"
+msgstr "Crește volumul"
+
+#: src/main.c:249
+msgid "Lower volume"
+msgstr "Redu volumul"
+
+#: src/main.c:251
+msgid "Mute volume"
+msgstr "Dezactivează sunetul"
+
+#: src/main.c:253
+msgid "Unmute (restore) volume"
+msgstr "Activează sunetul (restaurează volumul)"
+
+#: src/main.c:255
+msgid "Add files to playlist"
+msgstr "Adaugă fișiere la lista de redare"
+
+#: src/main.c:257
+msgid "Print version information and exit"
+msgstr "Afișează informațiile despre versiune și iese"
+
+#: src/main.c:261
+msgid "Media to play"
+msgstr "Mediu pentru redare"
+
+#: src/main.c:285
+msgid "[FILES...] - Play movies and songs"
+msgstr "[FIȘIERE...] - Redă filme și melodii"
+
+#: src/main.c:296
+#, c-format
+msgid "Type %s --help to list all available command line options\n"
+msgstr "Tastați «%s --help» pentru a lista toate opțiunile disponibile în linia de comandă\n"
+
+#: src/main.c:313
+msgid "Parole is already running, use -i to open a new instance\n"
+msgstr "Parole rulează deja, utilizați opțiunea „-i” pentru a deschide o nouă instanță\n"
+
+#: src/misc/parole-filters.c:66
+msgid "Audio"
+msgstr "Audio"
+
+#: src/misc/parole-filters.c:91
+msgid "Video"
+msgstr "Video"
+
+#: src/misc/parole-filters.c:115 src/misc/parole-filters.c:142
+msgid "Audio and video"
+msgstr "Audio și video"
+
+#: src/misc/parole-filters.c:169 src/misc/parole-filters.c:193
+msgid "All supported files"
+msgstr "Toate fișierele acceptate"
+
+#: src/misc/parole-filters.c:217
+msgid "Playlist files"
+msgstr "Fișiere din lista de redare"
+
+#: src/parole-about.c:70
+msgid "A modern simple media player for the Xfce Desktop Environment."
+msgstr "Un reproducător multimedia simplu și modern pentru mediul grafic de birou Xfce."
+
+#: src/parole-about.c:76
+msgid "translator-credits"
+msgstr "Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>, 2024"
+
+#: src/parole-about.c:79
+msgid "Visit Parole website"
+msgstr "Vizitați situl web Parole"
+
+#: src/parole-conf-dialog.c:287
+msgid "Clutter (OpenGL)"
+msgstr "Clutter (OpenGL)"
+
+#: src/parole-disc.c:106
+msgid "Play Disc"
+msgstr "Redă discul"
+
+#: src/parole-mediachooser.c:236 src/parole-medialist.c:855
+#: src/parole-player.c:1010
+msgid "All files"
+msgstr "Toate fișierele"
+
+#: src/parole-medialist.c:260 src/parole-medialist.c:1624
+#, c-format
+msgid "Playlist (%i item)"
+msgid_plural "Playlist (%i items)"
+msgstr[0] "Lista de redare (%i element)"
+msgstr[1] "Lista de redare (%i elemente)"
+msgstr[2] "Lista de redare (%i de elemente)"
+
+#: src/parole-medialist.c:262 src/parole-medialist.c:1626
+#, c-format
+msgid "Playlist (%i chapter)"
+msgid_plural "Playlist (%i chapters)"
+msgstr[0] "Lista de redare (%i capitol)"
+msgstr[1] "Liste de redare (%i capitole)"
+msgstr[2] "Liste de redare (%i de capitole)"
+
+#: src/parole-medialist.c:426 src/parole-player.c:721
+#, c-format
+msgid "Chapter %i"
+msgstr "Capitolul %i"
+
+#: src/parole-medialist.c:686
+msgid "Permission denied"
+msgstr "Permisiune refuzată"
+
+#: src/parole-medialist.c:688
+msgid "Error saving playlist file"
+msgstr "Eroare la salvarea fișierului de listă de redare"
+
+#: src/parole-medialist.c:698
+msgid "Unknown playlist format"
+msgstr "Format necunoscut al listei de redare"
+
+#: src/parole-medialist.c:699
+msgid "Please choose a supported playlist format"
+msgstr "Vă rugăm să alegeți un format de listă de redare acceptat"
+
+#: src/parole-medialist.c:745 src/parole-plugins-manager.c:363
+msgid "Unknown"
+msgstr "Necunoscut"
+
+#: src/parole-medialist.c:838 src/parole-player.c:981 src/parole-player.c:1172
+#: src/parole-player.c:2850 src/plugins/tray/tray-provider.c:348
+msgid "Cancel"
+msgstr "Anulați"
+
+#: src/parole-medialist.c:839
+msgid "Save"
+msgstr "Salvează"
+
+#: src/parole-medialist.c:860
+#, c-format
+msgid "M3U Playlist (%s)"
+msgstr "Listă de redare M3U (%s)"
+
+#: src/parole-medialist.c:870
+#, c-format
+msgid "PLS Playlist (%s)"
+msgstr "Listă de redare PLS (%s)"
+
+#: src/parole-medialist.c:880
+#, c-format
+msgid "Advanced Stream Redirector (%s)"
+msgstr "Redirecționare de flux avansată (%s)"
+
+#: src/parole-medialist.c:890
+#, c-format
+msgid "Shareable Playlist (%s)"
+msgstr "Listă de redare partajabilă (%s)"
+
+#. Clear
+#: src/parole-medialist.c:1275
+msgid "Open Containing Folder"
+msgstr "Deschide dosarul container"
+
+#. Build the FileChooser dialog for subtitle selection.
+#: src/parole-player.c:975
+msgid "Select Subtitle File"
+msgstr "Selectați fișierul de subtitrare"
+
+#: src/parole-player.c:982
+msgid "Open"
+msgstr "Deschide"
+
+#: src/parole-player.c:998
+msgid "Subtitle Files"
+msgstr "Fișiere de subtitrare"
+
+#: src/parole-player.c:1168 src/parole-player.c:1176
+msgid "Clear Recent Items"
+msgstr "Ștergeți elementele recente"
+
+#: src/parole-player.c:1170
+msgid ""
+"Are you sure you wish to clear your recent items history?  This cannot be "
+"undone."
+msgstr "Sunteți sigur că doriți să ștergeți istoricul elementelor recente?  Această operație nu poate fi anulată."
+
+#: src/parole-player.c:1266 src/parole-player.c:1391
+msgid "Media stream is not seekable"
+msgstr "Fluxul media nu poate fi explorat (nu se poate căuta în el)"
+
+#: src/parole-player.c:1276
+msgid "Play"
+msgstr "Redare"
+
+#: src/parole-player.c:1279
+msgid "Pause"
+msgstr "Pauză"
+
+#: src/parole-player.c:1725
+msgid "GStreamer backend error"
+msgstr "Eroare a motorului GStreamer"
+
+#: src/parole-player.c:1809
+msgid "Unknown Song"
+msgstr "Melodie necunoscută"
+
+#: src/parole-player.c:1820 src/parole-player.c:1826 src/parole-player.c:1834
+msgid "on"
+msgstr "pe"
+
+#: src/parole-player.c:1834 src/plugins/notify/notify-provider.c:134
+msgid "Unknown Album"
+msgstr "Album necunoscut"
+
+#: src/parole-player.c:1845 src/parole-player.c:1852
+msgid "by"
+msgstr "de"
+
+#: src/parole-player.c:1852 src/plugins/notify/notify-provider.c:136
+msgid "Unknown Artist"
+msgstr "Artist necunoscut"
+
+#: src/parole-player.c:1887
+msgid "Buffering"
+msgstr "Se preîncarcă"
+
+#: src/parole-player.c:1993 src/parole-player.c:3422
+msgid "Fullscreen"
+msgstr "Ecran complet"
+
+#: src/parole-player.c:2001
+msgid "Leave _Fullscreen"
+msgstr "Iese din modul de ecran _complet"
+
+#: src/parole-player.c:2002
+msgid "Leave Fullscreen"
+msgstr "Ieșire din modul de ecran complet"
+
+#. Play menu item
+#. * Play pause
+#: src/parole-player.c:2099 src/plugins/tray/tray-provider.c:123
+msgid "_Pause"
+msgstr "_Pauză"
+
+#: src/parole-player.c:2099 src/plugins/tray/tray-provider.c:123
+msgid "_Play"
+msgstr "_Redare"
+
+#. * Previous item in playlist.
+#: src/parole-player.c:2115
+msgid "_Previous"
+msgstr "Înain_te"
+
+#. * Next item in playlist.
+#: src/parole-player.c:2126
+msgid "_Next"
+msgstr "Î_napoi"
+
+#. * Un/Full screen
+#: src/parole-player.c:2137
+msgid "_Leave Fullscreen"
+msgstr "_Iese din modul de ecran complet"
+
+#. * Un/Hide menubar
+#: src/parole-player.c:2152
+msgid "Show menubar"
+msgstr "Afișează bara de meniu"
+
+#: src/parole-player.c:2169
+msgid "Mini Mode"
+msgstr "Modul mini"
+
+#: src/parole-player.c:2404
+msgid "Unmute"
+msgstr "Activează sunetul"
+
+#: src/parole-player.c:2821
+msgid "Unable to open default web browser"
+msgstr "Nu se poate deschide navigatorul web implicit"
+
+#: src/parole-player.c:2823
+msgid ""
+"Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
+msgstr "Vă rugăm să accesați https://docs.xfce.org/apps/parole/bugs pentru a raporta problema dumneavoastră."
+
+#: src/parole-player.c:2851
+msgid "Go"
+msgstr "Navigare"
+
+#. Clear Recent Menu Item
+#: src/parole-player.c:3279
+msgid "_Clear recent items..."
+msgstr "_Șterge elementele recente..."
+
+#: src/parole-player.c:3590
+msgid "Audio Track:"
+msgstr "Pista audio:"
+
+#: src/parole-player.c:3609
+msgid "Subtitles:"
+msgstr "Subtitrare:"
+
+#: src/parole-plugins-manager.c:288
+msgid "Plugin failed to load"
+msgstr "Încărcarea modulului nu a reușit"
+
+#: src/parole-plugins-manager.c:289
+msgid "Please check your installation"
+msgstr "Verificați instalarea"
+
+#: src/parole-plugins-manager.c:400
+msgid "No installed plugins found on this system"
+msgstr "Nu s-au găsit module instalate în acest sistem"
+
+#: src/parole-plugins-manager.c:401
+msgid "Please check your installation."
+msgstr "Verificați instalarea."
+
+#: src/parole-subtitle-encoding.c:162
+msgid "Current Locale"
+msgstr "Configurația regională curentă"
+
+#: src/parole-subtitle-encoding.c:165 src/parole-subtitle-encoding.c:167
+#: src/parole-subtitle-encoding.c:169 src/parole-subtitle-encoding.c:171
+msgid "Arabic"
+msgstr "Arabă"
+
+#: src/parole-subtitle-encoding.c:174
+msgid "Armenian"
+msgstr "Armeană"
+
+#: src/parole-subtitle-encoding.c:177 src/parole-subtitle-encoding.c:179
+#: src/parole-subtitle-encoding.c:181
+msgid "Baltic"
+msgstr "Baltică"
+
+#: src/parole-subtitle-encoding.c:184
+msgid "Celtic"
+msgstr "Celtică"
+
+#: src/parole-subtitle-encoding.c:187 src/parole-subtitle-encoding.c:189
+#: src/parole-subtitle-encoding.c:191 src/parole-subtitle-encoding.c:193
+msgid "Central European"
+msgstr "Central Europeană"
+
+#: src/parole-subtitle-encoding.c:196 src/parole-subtitle-encoding.c:198
+#: src/parole-subtitle-encoding.c:200 src/parole-subtitle-encoding.c:202
+msgid "Chinese Simplified"
+msgstr "Chineză simplificată"
+
+#: src/parole-subtitle-encoding.c:205 src/parole-subtitle-encoding.c:207
+#: src/parole-subtitle-encoding.c:209
+msgid "Chinese Traditional"
+msgstr "Chineză tradițională"
+
+#: src/parole-subtitle-encoding.c:212
+msgid "Croatian"
+msgstr "Croată"
+
+#: src/parole-subtitle-encoding.c:215 src/parole-subtitle-encoding.c:217
+#: src/parole-subtitle-encoding.c:219 src/parole-subtitle-encoding.c:221
+#: src/parole-subtitle-encoding.c:223 src/parole-subtitle-encoding.c:225
+msgid "Cyrillic"
+msgstr "Chirilică"
+
+#: src/parole-subtitle-encoding.c:228
+msgid "Cyrillic/Russian"
+msgstr "Chirilică/Rusă"
+
+#: src/parole-subtitle-encoding.c:231 src/parole-subtitle-encoding.c:233
+msgid "Cyrillic/Ukrainian"
+msgstr "Chirilică/Ucrainiană"
+
+#: src/parole-subtitle-encoding.c:236
+msgid "Georgian"
+msgstr "Georgiană"
+
+#: src/parole-subtitle-encoding.c:239 src/parole-subtitle-encoding.c:241
+#: src/parole-subtitle-encoding.c:243
+msgid "Greek"
+msgstr "Greacă"
+
+#: src/parole-subtitle-encoding.c:246
+msgid "Gujarati"
+msgstr "Gujarati"
+
+#: src/parole-subtitle-encoding.c:249
+msgid "Gurmukhi"
+msgstr "Gurmukhi"
+
+#: src/parole-subtitle-encoding.c:252 src/parole-subtitle-encoding.c:254
+#: src/parole-subtitle-encoding.c:256 src/parole-subtitle-encoding.c:258
+msgid "Hebrew"
+msgstr "Ebraică"
+
+#: src/parole-subtitle-encoding.c:261
+msgid "Hebrew Visual"
+msgstr "Ebraică vizuală"
+
+#: src/parole-subtitle-encoding.c:264
+msgid "Hindi"
+msgstr "Hindusă"
+
+#: src/parole-subtitle-encoding.c:267
+msgid "Icelandic"
+msgstr "Islandeză"
+
+#: src/parole-subtitle-encoding.c:270 src/parole-subtitle-encoding.c:272
+#: src/parole-subtitle-encoding.c:274
+msgid "Japanese"
+msgstr "Japoneză"
+
+#: src/parole-subtitle-encoding.c:277 src/parole-subtitle-encoding.c:279
+#: src/parole-subtitle-encoding.c:281 src/parole-subtitle-encoding.c:283
+msgid "Korean"
+msgstr "Coreeană"
+
+#: src/parole-subtitle-encoding.c:286
+msgid "Nordic"
+msgstr "Nordică"
+
+#: src/parole-subtitle-encoding.c:289
+msgid "Persian"
+msgstr "Persană"
+
+#: src/parole-subtitle-encoding.c:292 src/parole-subtitle-encoding.c:294
+msgid "Romanian"
+msgstr "Română"
+
+#: src/parole-subtitle-encoding.c:297
+msgid "South European"
+msgstr "Sud-Europeană"
+
+#: src/parole-subtitle-encoding.c:300
+msgid "Thai"
+msgstr "Thailandeză"
+
+#: src/parole-subtitle-encoding.c:303 src/parole-subtitle-encoding.c:305
+#: src/parole-subtitle-encoding.c:307 src/parole-subtitle-encoding.c:309
+msgid "Turkish"
+msgstr "Turcă"
+
+#: src/parole-subtitle-encoding.c:312 src/parole-subtitle-encoding.c:314
+#: src/parole-subtitle-encoding.c:316 src/parole-subtitle-encoding.c:318
+#: src/parole-subtitle-encoding.c:320
+msgid "Unicode"
+msgstr "Unicode"
+
+#: src/parole-subtitle-encoding.c:323 src/parole-subtitle-encoding.c:325
+#: src/parole-subtitle-encoding.c:327 src/parole-subtitle-encoding.c:329
+#: src/parole-subtitle-encoding.c:331
+msgid "Western"
+msgstr "Vestică"
+
+#: src/parole-subtitle-encoding.c:334 src/parole-subtitle-encoding.c:336
+#: src/parole-subtitle-encoding.c:338
+msgid "Vietnamese"
+msgstr "Vietnameză"
+
+#: src/plugins/mpris2/mpris2.desktop.in:4
+msgid "MPRIS2"
+msgstr "MPRIS2"
+
+#: src/plugins/notify/notify-provider.c:139
+#: src/plugins/notify/notify-provider.c:141
+msgid "<i>on</i>"
+msgstr "<i>pe</i>"
+
+#: src/plugins/notify/notify-provider.c:139
+#: src/plugins/notify/notify-provider.c:141
+msgid "<i>by</i>"
+msgstr "<i>de</i>"
+
+#: src/plugins/notify/notify.desktop.in:4
+msgid "Notify"
+msgstr "Notifică"
+
+#: src/plugins/tray/system-tray.desktop.in:4
+msgid "Tray icon"
+msgstr "Pictograma din tava sistemului"
+
+#. * Previous Track
+#: src/plugins/tray/tray-provider.c:132
+msgid "P_revious Track"
+msgstr "Pista ante_rioară"
+
+#. * Next Track
+#: src/plugins/tray/tray-provider.c:141
+msgid "_Next Track"
+msgstr "Pista ur_mătoare"
+
+#. * Open
+#: src/plugins/tray/tray-provider.c:157
+msgid "_Open"
+msgstr "_Deschide"
+
+#: src/plugins/tray/tray-provider.c:258
+msgid "Tray icon plugin"
+msgstr "Modulul pictogramei din tava sistemului"
+
+#: src/plugins/tray/tray-provider.c:268
+msgid "Always minimize to tray when window is closed"
+msgstr "Minimizează întotdeauna în tava sistemului atunci când fereastra este închisă"
+
+#: src/plugins/tray/tray-provider.c:336
+msgid "Are you sure you want to quit?"
+msgstr "Sunteți sigur că vreți să ieșiți?"
+
+#: src/plugins/tray/tray-provider.c:339
+msgid "Parole can be minimized to the system tray instead."
+msgstr "În schimb, Parole poate fi minimizat în tava sistemului."
+
+#: src/plugins/tray/tray-provider.c:342
+msgid "Minimize to tray"
+msgstr "Minimizare în tava sistemului"
+
+#: src/plugins/tray/tray-provider.c:363
+msgid "Remember my choice"
+msgstr "Reține alegerea mea"
