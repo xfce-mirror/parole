@@ -2,7 +2,7 @@ m4_define([parole_verinfo],           [0:8:1])
 m4_define([parole_version_api],       [0])
 XDT_VERSION_INIT([4.18.1], [git])
 
-AC_COPYRIGHT([Copyright (c) 2009-2023 The Xfce development team])
+AC_COPYRIGHT([Copyright (c) 2009-2024 The Xfce development team])
 AC_INIT([parole], [xdt_version], [https://gitlab.xfce.org/apps/parole])
 AC_PREREQ([2.69])
 AC_REVISION([xdt_version_build])
