@@ -4,7 +4,7 @@
 # 
 # Translators:
 # Carles Muñoz Gorriz <carlesmu@internautas.org>, 2009
-# Davidmp <medipas@gmail.com>, 2015-2016
+# Davidmp <medipas@gmail.com>, 2015-2016,2025
 # Oscar Perez <oscarpc@gmail.com>, 2023-2024
 # Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>, 2017-2020
 # Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>, 2016
@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-04-01 00:52+0200\n"
+"POT-Creation-Date: 2024-10-15 00:49+0200\n"
 "PO-Revision-Date: 2013-07-03 18:28+0000\n"
-"Last-Translator: Oscar Perez <oscarpc@gmail.com>, 2023-2024\n"
+"Last-Translator: Davidmp <medipas@gmail.com>, 2015-2016,2025\n"
 "Language-Team: Catalan (http://app.transifex.com/xfce/xfce-apps/language/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -52,7 +52,7 @@ msgstr "Preferències de Parole"
 
 #. Add a close button to the Infobar
 #: data/interfaces/parole-settings.ui:62 data/interfaces/plugins.ui:43
-#: src/parole-player.c:3644 src/plugins/tray/tray-provider.c:261
+#: src/parole-player.c:3615 src/plugins/tray/tray-provider.c:261
 msgid "Close"
 msgstr "Tanca"
 
@@ -122,7 +122,7 @@ msgstr "<b>Balanç de color</b>"
 
 #: data/interfaces/parole-settings.ui:675
 msgid "Display"
-msgstr ""
+msgstr "Pantalla"
 
 #: data/interfaces/parole-settings.ui:710
 msgid "Always replace playlist with opened files"
@@ -146,7 +146,7 @@ msgstr "<b>Preferències de la llista de reproducció</b>"
 
 #: data/interfaces/parole-settings.ui:814 data/interfaces/playlist.ui:43
 #: data/interfaces/shortcuts.ui:99 src/parole-medialist.c:797
-#: src/parole-medialist.c:848 src/parole-player.c:3270
+#: src/parole-medialist.c:848 src/parole-player.c:3241
 msgid "Playlist"
 msgstr "Llista de reproducció"
 
@@ -171,8 +171,8 @@ msgid "Subtitles"
 msgstr "Subtítols"
 
 #: data/interfaces/parole.ui:40 data/desktop/org.xfce.Parole.desktop.in.in:3
-#: src/parole-about.c:75 src/parole-player.c:599 src/parole-player.c:1440
-#: src/parole-player.c:1809 src/plugins/mpris2/mpris2-provider.c:189
+#: src/parole-about.c:75 src/parole-player.c:599 src/parole-player.c:1435
+#: src/parole-player.c:1804 src/plugins/mpris2/mpris2-provider.c:189
 msgid "Parole Media Player"
 msgstr "Reproductor de mitjans audiovisuals Parole"
 
@@ -222,7 +222,7 @@ msgid "Show Playlist"
 msgstr "Mostra la llista de reproducció"
 
 #. Create dialog
-#: data/interfaces/parole.ui:189 src/parole-player.c:2874
+#: data/interfaces/parole.ui:189 src/parole-player.c:2847
 msgid "Go to position"
 msgstr "Vés a la posició"
 
@@ -266,7 +266,7 @@ msgstr "_Àudio"
 msgid "_Audio Track"
 msgstr "_Pista d'àudio"
 
-#: data/interfaces/parole.ui:316 src/parole-player.c:810
+#: data/interfaces/parole.ui:316 src/parole-player.c:805
 msgid "Empty"
 msgstr "Buit"
 
@@ -286,8 +286,8 @@ msgstr "S_ilencia"
 msgid "_Video"
 msgstr "_Vídeo"
 
-#: data/interfaces/parole.ui:378 src/parole-player.c:1997
-#: src/parole-player.c:2142
+#: data/interfaces/parole.ui:378 src/parole-player.c:1992
+#: src/parole-player.c:2137
 msgid "_Fullscreen"
 msgstr "_Pantalla completa"
 
@@ -504,7 +504,7 @@ msgstr "Apuja el volum"
 msgid "Decrease volume"
 msgstr "Abaixa el volum"
 
-#: data/interfaces/shortcuts.ui:90 src/parole-player.c:2414
+#: data/interfaces/shortcuts.ui:90 src/parole-player.c:2401
 msgid "Mute"
 msgstr "Silencia"
 
@@ -529,7 +529,7 @@ msgid "Playback"
 msgstr "Reproducció"
 
 #: data/interfaces/shortcuts.ui:139
-#: data/desktop/org.xfce.Parole.desktop.in.in:16
+#: data/desktop/org.xfce.Parole.desktop.in.in:17
 msgid "Play/Pause"
 msgstr "Reprodueix/Pausa"
 
@@ -569,13 +569,17 @@ msgstr "Avança 10 minuts"
 msgid "Play your media"
 msgstr "Reproduïu els vostres mitjans audiovisuals"
 
-#: data/desktop/org.xfce.Parole.desktop.in.in:21 src/parole-player.c:3416
-#: src/plugins/notify/notify-provider.c:190
+#: data/desktop/org.xfce.Parole.desktop.in.in:11
+msgid "Media;Player;Audio;Video;Music;Playback;Xfce;"
+msgstr ""
+
+#: data/desktop/org.xfce.Parole.desktop.in.in:22 src/parole-player.c:3387
+#: src/plugins/notify/notify-provider.c:182
 msgid "Previous Track"
 msgstr "Pista anterior"
 
-#: data/desktop/org.xfce.Parole.desktop.in.in:26 src/parole-player.c:3434
-#: src/plugins/notify/notify-provider.c:202
+#: data/desktop/org.xfce.Parole.desktop.in.in:27 src/parole-player.c:3405
+#: src/plugins/notify/notify-provider.c:194
 msgid "Next Track"
 msgstr "Pista següent"
 
@@ -621,87 +625,87 @@ msgstr "Missatge"
 msgid "Error"
 msgstr "Error"
 
-#: src/gst/parole-gst.c:1111 src/parole-medialist.c:412
+#: src/gst/parole-gst.c:1100 src/parole-medialist.c:412
 #, c-format
 msgid "Track %i"
 msgstr "Pista %i"
 
-#: src/gst/parole-gst.c:1114
+#: src/gst/parole-gst.c:1103
 msgid "Audio CD"
 msgstr "CD d'àudio"
 
-#: src/gst/parole-gst.c:1292
+#: src/gst/parole-gst.c:1280
 msgid "Unable to install missing codecs."
 msgstr "No es poden instal·lar els còdecs que falten."
 
-#: src/gst/parole-gst.c:1295
+#: src/gst/parole-gst.c:1283
 msgid "No available plugin installer was found."
 msgstr "No s'ha trobat cap instal·lador de connectors disponible."
 
-#: src/gst/parole-gst.c:1346
+#: src/gst/parole-gst.c:1334
 msgid "Additional software is required."
 msgstr "Cal programari addicional."
 
-#: src/gst/parole-gst.c:1350
+#: src/gst/parole-gst.c:1338
 msgid "Don't Install"
 msgstr "No ho instal·lis"
 
-#: src/gst/parole-gst.c:1352
+#: src/gst/parole-gst.c:1340
 msgid "Install"
 msgstr "Instal·la"
 
-#: src/gst/parole-gst.c:1355
+#: src/gst/parole-gst.c:1343
 msgid "OK"
 msgstr "D'acord"
 
-#: src/gst/parole-gst.c:1362
+#: src/gst/parole-gst.c:1350
 #, c-format
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
 msgstr "Parole necessita <b>%s</b> per reproduir aquest fitxer.\nEs pot instal·lar automàticament."
 
-#: src/gst/parole-gst.c:1365
+#: src/gst/parole-gst.c:1353
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
 msgstr "Parole necessita <b>%s</b> per reproduir aquest fitxer."
 
-#: src/gst/parole-gst.c:1746
+#: src/gst/parole-gst.c:1734
 msgid "The stream is taking too much time to load"
 msgstr "Cal massa temps per carregar el flux"
 
-#: src/gst/parole-gst.c:1748
+#: src/gst/parole-gst.c:1736
 msgid "Do you want to continue loading or stop?"
 msgstr "Voleu que continuï la càrrega o la voleu aturar?"
 
-#: src/gst/parole-gst.c:1749
+#: src/gst/parole-gst.c:1737
 msgid "Stop"
 msgstr "Atura"
 
-#: src/gst/parole-gst.c:1750
+#: src/gst/parole-gst.c:1738
 msgid "Continue"
 msgstr "Continua"
 
-#: src/gst/parole-gst.c:1949
+#: src/gst/parole-gst.c:1936
 msgid "GStreamer Error"
 msgstr "Error del GStreamer"
 
-#: src/gst/parole-gst.c:1950
+#: src/gst/parole-gst.c:1937
 msgid "Parole Media Player cannot start."
 msgstr "No es pot iniciar el reproductor de mitjans audiovisuals Parole."
 
-#: src/gst/parole-gst.c:1975 src/gst/parole-gst.c:1990
-#: src/gst/parole-gst.c:2024
+#: src/gst/parole-gst.c:1962 src/gst/parole-gst.c:1977
+#: src/gst/parole-gst.c:2011
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
 msgstr "No es pot carregar el connector «%s», comproveu la instal·lació de GStreamer."
 
-#: src/gst/parole-gst.c:2591 src/gst/parole-gst.c:2595
+#: src/gst/parole-gst.c:2578 src/gst/parole-gst.c:2582
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Pista d'àudio #%d"
 
-#: src/gst/parole-gst.c:2631 src/gst/parole-gst.c:2635
+#: src/gst/parole-gst.c:2618 src/gst/parole-gst.c:2622
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Subtítol #%d"
@@ -773,16 +777,16 @@ msgstr "Imprimeix la informació de la versió i surt"
 msgid "Media to play"
 msgstr "Mitjà audiovisual a reproduir"
 
-#: src/main.c:288
+#: src/main.c:285
 msgid "[FILES...] - Play movies and songs"
 msgstr "[FITXERS...] - Reprodueix pel·lícules i cançons"
 
-#: src/main.c:299
+#: src/main.c:296
 #, c-format
 msgid "Type %s --help to list all available command line options\n"
 msgstr "Teclegeu %s --help per a llistar totes les opcions de la línia d'ordres\n"
 
-#: src/main.c:316
+#: src/main.c:313
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Ja s'està executant Parole, utilitzeu -i per obrir una instància nova\n"
 
@@ -827,18 +831,18 @@ msgid "Play Disc"
 msgstr "Reprodueix el disc"
 
 #: src/parole-mediachooser.c:236 src/parole-medialist.c:855
-#: src/parole-player.c:1015
+#: src/parole-player.c:1010
 msgid "All files"
 msgstr "Tots els fitxers"
 
-#: src/parole-medialist.c:260 src/parole-medialist.c:1644
+#: src/parole-medialist.c:260 src/parole-medialist.c:1624
 #, c-format
 msgid "Playlist (%i item)"
 msgid_plural "Playlist (%i items)"
 msgstr[0] "Llista de reproducció (%i ítem)"
 msgstr[1] "Llista de reproducció (%i ítems)"
 
-#: src/parole-medialist.c:262 src/parole-medialist.c:1646
+#: src/parole-medialist.c:262 src/parole-medialist.c:1626
 #, c-format
 msgid "Playlist (%i chapter)"
 msgid_plural "Playlist (%i chapters)"
@@ -870,8 +874,8 @@ msgstr "Trieu un format de llista de reproducció compatible"
 msgid "Unknown"
 msgstr "Desconegut"
 
-#: src/parole-medialist.c:838 src/parole-player.c:986 src/parole-player.c:1177
-#: src/parole-player.c:2877 src/plugins/tray/tray-provider.c:348
+#: src/parole-medialist.c:838 src/parole-player.c:981 src/parole-player.c:1172
+#: src/parole-player.c:2850 src/plugins/tray/tray-provider.c:348
 msgid "Cancel"
 msgstr "Cancel·la"
 
@@ -900,146 +904,146 @@ msgid "Shareable Playlist (%s)"
 msgstr "Llista de reproducció compartible (%s)"
 
 #. Clear
-#: src/parole-medialist.c:1280
+#: src/parole-medialist.c:1275
 msgid "Open Containing Folder"
 msgstr "Obre la carpeta contenidora"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: src/parole-player.c:980
+#: src/parole-player.c:975
 msgid "Select Subtitle File"
 msgstr "Seleccioneu el fitxer de subtítols"
 
-#: src/parole-player.c:987
+#: src/parole-player.c:982
 msgid "Open"
 msgstr "Obre"
 
-#: src/parole-player.c:1003
+#: src/parole-player.c:998
 msgid "Subtitle Files"
 msgstr "Fitxers de subtítols"
 
-#: src/parole-player.c:1173 src/parole-player.c:1181
+#: src/parole-player.c:1168 src/parole-player.c:1176
 msgid "Clear Recent Items"
 msgstr "Neteja els ítems recents"
 
-#: src/parole-player.c:1175
+#: src/parole-player.c:1170
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
 msgstr "Esteu segur que voleu netejar l'historial dels ítems recents? L'acció no es pot desfer."
 
-#: src/parole-player.c:1271 src/parole-player.c:1396
+#: src/parole-player.c:1266 src/parole-player.c:1391
 msgid "Media stream is not seekable"
 msgstr "El flux del mitjà audiovisual no és reubicable"
 
-#: src/parole-player.c:1281
+#: src/parole-player.c:1276
 msgid "Play"
 msgstr "Reprodueix"
 
-#: src/parole-player.c:1284
+#: src/parole-player.c:1279
 msgid "Pause"
 msgstr "Pausa"
 
-#: src/parole-player.c:1730
+#: src/parole-player.c:1725
 msgid "GStreamer backend error"
 msgstr "Error del rerefons de GStreamer"
 
-#: src/parole-player.c:1814
+#: src/parole-player.c:1809
 msgid "Unknown Song"
 msgstr "Cançó desconeguda"
 
-#: src/parole-player.c:1825 src/parole-player.c:1831 src/parole-player.c:1839
+#: src/parole-player.c:1820 src/parole-player.c:1826 src/parole-player.c:1834
 msgid "on"
 msgstr "a"
 
-#: src/parole-player.c:1839 src/plugins/notify/notify-provider.c:134
+#: src/parole-player.c:1834 src/plugins/notify/notify-provider.c:134
 msgid "Unknown Album"
 msgstr "Àlbum desconegut"
 
-#: src/parole-player.c:1850 src/parole-player.c:1857
+#: src/parole-player.c:1845 src/parole-player.c:1852
 msgid "by"
 msgstr "de"
 
-#: src/parole-player.c:1857 src/plugins/notify/notify-provider.c:136
+#: src/parole-player.c:1852 src/plugins/notify/notify-provider.c:136
 msgid "Unknown Artist"
 msgstr "Artista desconegut"
 
-#: src/parole-player.c:1892
+#: src/parole-player.c:1887
 msgid "Buffering"
 msgstr "Memòria intermèdia"
 
-#: src/parole-player.c:1998 src/parole-player.c:3451
+#: src/parole-player.c:1993 src/parole-player.c:3422
 msgid "Fullscreen"
 msgstr "Pantalla completa"
 
-#: src/parole-player.c:2006
+#: src/parole-player.c:2001
 msgid "Leave _Fullscreen"
 msgstr "_Surt de la pantalla completa"
 
-#: src/parole-player.c:2007
+#: src/parole-player.c:2002
 msgid "Leave Fullscreen"
 msgstr "Surt de la pantalla completa"
 
 #. Play menu item
 #. * Play pause
-#: src/parole-player.c:2104 src/plugins/tray/tray-provider.c:123
+#: src/parole-player.c:2099 src/plugins/tray/tray-provider.c:123
 msgid "_Pause"
 msgstr "_Pausa"
 
-#: src/parole-player.c:2104 src/plugins/tray/tray-provider.c:123
+#: src/parole-player.c:2099 src/plugins/tray/tray-provider.c:123
 msgid "_Play"
 msgstr "_Reprodueix"
 
 #. * Previous item in playlist.
-#: src/parole-player.c:2120
+#: src/parole-player.c:2115
 msgid "_Previous"
 msgstr "_Anterior"
 
 #. * Next item in playlist.
-#: src/parole-player.c:2131
+#: src/parole-player.c:2126
 msgid "_Next"
 msgstr "_Següent"
 
 #. * Un/Full screen
-#: src/parole-player.c:2142
+#: src/parole-player.c:2137
 msgid "_Leave Fullscreen"
 msgstr "_Surt de la pantalla completa"
 
 #. * Un/Hide menubar
-#: src/parole-player.c:2157
+#: src/parole-player.c:2152
 msgid "Show menubar"
 msgstr "Mostra la barra de menús"
 
-#: src/parole-player.c:2174
+#: src/parole-player.c:2169
 msgid "Mini Mode"
 msgstr "Mode reduït"
 
-#: src/parole-player.c:2417
+#: src/parole-player.c:2404
 msgid "Unmute"
 msgstr "Activa el so"
 
-#: src/parole-player.c:2848
+#: src/parole-player.c:2821
 msgid "Unable to open default web browser"
 msgstr "No es pot obrir el navegador predeterminat"
 
-#: src/parole-player.c:2850
+#: src/parole-player.c:2823
 msgid ""
 "Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr "Aneu a https://docs.xfce.org/apps/parole/bugs per informar de l'error."
 
-#: src/parole-player.c:2878
+#: src/parole-player.c:2851
 msgid "Go"
 msgstr "Vés-hi"
 
 #. Clear Recent Menu Item
-#: src/parole-player.c:3308
+#: src/parole-player.c:3279
 msgid "_Clear recent items..."
 msgstr "_Neteja els ítems recents..."
 
-#: src/parole-player.c:3619
+#: src/parole-player.c:3590
 msgid "Audio Track:"
 msgstr "Pista d'àudio:"
 
-#: src/parole-player.c:3638
+#: src/parole-player.c:3609
 msgid "Subtitles:"
 msgstr "Subtítols:"
 
