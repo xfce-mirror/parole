@@ -5,12 +5,16 @@
 # Translators:
 # Andre Miranda <andre@andreldm.com>, 2018-2019
 # Andre Miranda <andre@andreldm.com>, 2017
+# Andre Miranda <andre@andreldm.com>, 2017
 # Andre Miranda <andre@andreldm.com>, 2014-2015
 # Enrico Nicoletto <enrico.BR@gmx.co.uk>, 2013
 # Michael Martins, 2014,2017
+# Michael Martins, 2014,2017-2018,2024
 # Michael Martins, 2018,2024
 # Rafael Fontenelle <rffontenelle@gmail.com>, 2012-2014
 # secipolla <secipolla@gmail.com>, 2011
+# secipolla <secipolla@gmail.com>, 2011
+# The Cat, 2020,2023
 # The Cat, 2023
 # The Cat, 2020
 msgid ""
@@ -19,7 +23,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2024-10-15 00:49+0200\n"
 "PO-Revision-Date: 2013-07-03 18:28+0000\n"
-"Last-Translator: Michael Martins, 2018,2024\n"
+"Last-Translator: The Cat, 2020,2023\n"
 "Language-Team: Portuguese (Brazil) (http://app.transifex.com/xfce/xfce-apps/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -45,11 +49,11 @@ msgstr "Automático"
 
 #: data/interfaces/parole-settings.ui:32
 msgid "X Window System (X11/XShm/Xv)"
-msgstr "Sistema de Janelas X (X11/XShm/Xv)"
+msgstr "Sistema de janelas X (X11/XShm/Xv)"
 
 #: data/interfaces/parole-settings.ui:36
 msgid "X Window System (No Xv)"
-msgstr "Sistema de Janelas X (Sem Xv)"
+msgstr "Sistema de janelas X (sem Xv)"
 
 #: data/interfaces/parole-settings.ui:42
 msgid "Parole Preferences"
@@ -83,7 +87,7 @@ msgstr "<b>Visualização de áudio</b>"
 
 #: data/interfaces/parole-settings.ui:300
 msgid "Enable keyboard multimedia keys"
-msgstr "Habilitar as teclas de teclado de multimídia"
+msgstr "Habilitar teclas multimídia do teclado"
 
 #: data/interfaces/parole-settings.ui:327
 msgid "<b>Keyboard</b>"
@@ -95,7 +99,7 @@ msgstr "Geral"
 
 #: data/interfaces/parole-settings.ui:446
 msgid "Please restart Parole for this change to take effect."
-msgstr "Por favor, reinicie o Parole para que esta alteração tenha efeito."
+msgstr "Reinicie o Parole para que esta alteração tenha efeito."
 
 #: data/interfaces/parole-settings.ui:482
 msgid "<b>Video Output</b>"
@@ -119,11 +123,11 @@ msgstr "Saturação:"
 
 #: data/interfaces/parole-settings.ui:627
 msgid "Reset to defaults"
-msgstr "Restaurar padrões"
+msgstr "Redefinir para os padrões"
 
 #: data/interfaces/parole-settings.ui:655
 msgid "<b>Color Balance</b>"
-msgstr "<b>Balanço de cores</b>"
+msgstr "<b>Equilíbrio de cores</b>"
 
 #: data/interfaces/parole-settings.ui:675
 msgid "Display"
@@ -135,7 +139,7 @@ msgstr "Sempre substituir a lista de reprodução pelos arquivos abertos"
 
 #: data/interfaces/parole-settings.ui:722
 msgid "Check and remove duplicate media entries"
-msgstr "Verificar e remover entradas de mídias duplicadas"
+msgstr "Verifique e remova entradas de mídia duplicadas"
 
 #: data/interfaces/parole-settings.ui:734
 msgid "Start playing opened files"
@@ -169,7 +173,7 @@ msgstr "Codificação:"
 
 #: data/interfaces/parole-settings.ui:953
 msgid "<b>Subtitle Preferences</b>"
-msgstr "<b>Preferências de legendas</b>"
+msgstr "<b>Preferências de legenda</b>"
 
 #: data/interfaces/parole-settings.ui:966
 msgid "Subtitles"
@@ -203,7 +207,7 @@ msgstr "_Salvar lista de reprodução..."
 
 #: data/interfaces/parole.ui:122 src/parole-disc.c:105 src/parole-disc.c:139
 msgid "Insert Disc"
-msgstr "Insira disco"
+msgstr "Inserir disco"
 
 #. * Exit
 #: data/interfaces/parole.ui:135 src/plugins/tray/tray-provider.c:172
@@ -229,7 +233,7 @@ msgstr "Mostrar lista de reprodução"
 #. Create dialog
 #: data/interfaces/parole.ui:189 src/parole-player.c:2847
 msgid "Go to position"
-msgstr "Ir para posição"
+msgstr "Ir para a posição"
 
 #: data/interfaces/parole.ui:201
 msgid "_DVD"
@@ -319,7 +323,7 @@ msgstr "4:3 (TV)"
 
 #: data/interfaces/parole.ui:446
 msgid "16:9 (Widescreen)"
-msgstr "16:9 (Tela plana)"
+msgstr "16:9 (Widescreen)"
 
 #: data/interfaces/parole.ui:457
 msgid "20:9 (DVB)"
@@ -331,7 +335,7 @@ msgstr "_Legendas"
 
 #: data/interfaces/parole.ui:504
 msgid "Select Text Subtitles..."
-msgstr "Selecione legendas..."
+msgstr "Selecionar legendas de texto..."
 
 #: data/interfaces/parole.ui:526
 msgid "_Tools"
@@ -347,15 +351,15 @@ msgstr "_Preferências"
 
 #: data/interfaces/parole.ui:557
 msgid "_Help"
-msgstr "Ajuda"
+msgstr "_Ajuda"
 
 #: data/interfaces/parole.ui:567
 msgid "_Report a Bug..."
-msgstr "_Relatar um erro..."
+msgstr "_Relatar um bug..."
 
 #: data/interfaces/parole.ui:575
 msgid "_Keyboard Shortcuts"
-msgstr "Atal_hos de Teclado"
+msgstr "Atal_hos de teclado"
 
 #: data/interfaces/parole.ui:585
 msgid "Display Parole user manual"
@@ -403,7 +407,7 @@ msgstr "Lista de reprodução de discos"
 
 #: data/interfaces/playlist.ui:99
 msgid "Add to playlist..."
-msgstr "Adicionar arquivos à lista de reprodução..."
+msgstr "Adicionar à lista de reprodução..."
 
 #: data/interfaces/playlist.ui:100
 msgid "Add"
@@ -443,7 +447,7 @@ msgstr "Mover para baixo"
 
 #: data/interfaces/playlist.ui:218
 msgid "Replace playlist when opening files"
-msgstr "Substituir a lista de reprodução quando abrir arquivos"
+msgstr "Substituir a lista de reprodução ao abrir arquivos"
 
 #: data/interfaces/playlist.ui:226
 msgid "Play opened files"
@@ -491,7 +495,7 @@ msgstr "Alternar tela cheia"
 
 #: data/interfaces/shortcuts.ui:55
 msgid "Exit fullscreen"
-msgstr "Sair do modo tela cheia"
+msgstr "Sair da tela cheia"
 
 #: data/interfaces/shortcuts.ui:62
 msgid "Toggle menubar"
@@ -511,7 +515,7 @@ msgstr "Diminuir volume"
 
 #: data/interfaces/shortcuts.ui:90 src/parole-player.c:2401
 msgid "Mute"
-msgstr "Sem áudio"
+msgstr "Mudo"
 
 #: data/interfaces/shortcuts.ui:104
 msgid "Toggle playlist"
@@ -536,7 +540,7 @@ msgstr "Reprodução"
 #: data/interfaces/shortcuts.ui:139
 #: data/desktop/org.xfce.Parole.desktop.in.in:17
 msgid "Play/Pause"
-msgstr "Reproduzir/Pausar"
+msgstr "Reproduzir/pausar"
 
 #: data/interfaces/shortcuts.ui:146 src/main.c:245
 msgid "Previous track"
@@ -544,7 +548,7 @@ msgstr "Faixa anterior"
 
 #: data/interfaces/shortcuts.ui:153 src/main.c:243
 msgid "Next track"
-msgstr "Faixa seguinte"
+msgstr "Próxima faixa"
 
 #: data/interfaces/shortcuts.ui:160
 msgid "Go back 10 seconds"
@@ -586,7 +590,7 @@ msgstr "Faixa anterior"
 #: data/desktop/org.xfce.Parole.desktop.in.in:27 src/parole-player.c:3405
 #: src/plugins/notify/notify-provider.c:194
 msgid "Next Track"
-msgstr "Faixa seguinte"
+msgstr "Próxima faixa"
 
 #: data/metainfo/parole.appdata.xml.in:7
 msgid "Parole"
@@ -601,14 +605,14 @@ msgid ""
 "Parole is a modern simple media player based on the GStreamer framework and "
 "written to fit well in the Xfce desktop. It is designed with simplicity, "
 "speed and resource usage in mind."
-msgstr "Parole é um tocador de mídia simples e moderno, baseado no framework GStreamer e escrito para caber bem no ambiente de trabalho Xfce. Ele é desenhado com simplicidade, velocidade e uso de recursos em mente."
+msgstr "Parole é um reprodutor de mídia simples e moderno, baseado no framework GStreamer e escrito para se encaixar bem no desktop Xfce. Ele foi projetado com simplicidade, velocidade e uso de recursos em mente."
 
 #: data/metainfo/parole.appdata.xml.in:16
 msgid ""
 "Parole features playback of local media files, including video with "
 "subtitles support, Audio CDs, DVDs, and live streams. Parole is also "
 "extensible via plugins."
-msgstr "Parole apresenta a reprodução de arquivos de mídia locais, incluindo vídeo com suporte a legendas, CDs de áudio, DVDs e transmissões ao vivo. Parole também é extensível através de plugins."
+msgstr "O Parole apresenta a reprodução de arquivos de mídia locais, incluindo vídeo com suporte a legendas, CDs de áudio, DVDs e transmissões ao vivo. Também é extensível via plugins."
 
 #: data/metainfo/parole.appdata.xml.in:26
 msgid "Parole playing Big Buck Bunny"
@@ -620,7 +624,7 @@ msgstr "Parole reproduzindo um podcast LAS"
 
 #: data/metainfo/parole.appdata.xml.in:34
 msgid "Parole playing a LAS podcast in Mini Mode (0.9+)"
-msgstr "Parole reproduzindo um podcast LAS no Mini Mode (0.9+)"
+msgstr "Parole reproduzindo um podcast LAS no modo mini (0.9+)"
 
 #: src/common/parole-common.c:83
 msgid "Message"
@@ -641,7 +645,7 @@ msgstr "CD de áudio"
 
 #: src/gst/parole-gst.c:1280
 msgid "Unable to install missing codecs."
-msgstr "Incapaz de instalar codecs ausentes."
+msgstr "Não foi possível instalar os codecs ausentes."
 
 #: src/gst/parole-gst.c:1283
 msgid "No available plugin installer was found."
@@ -649,7 +653,7 @@ msgstr "Nenhum instalador de plugins disponível foi encontrado."
 
 #: src/gst/parole-gst.c:1334
 msgid "Additional software is required."
-msgstr "Softwares adicionais são necessários."
+msgstr "É necessário software adicional."
 
 #: src/gst/parole-gst.c:1338
 msgid "Don't Install"
@@ -668,20 +672,20 @@ msgstr "OK"
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
-msgstr "Parole precisa de <b>%s</b> para reproduzir este arquivo.\nEle pode ser instalado automaticamente."
+msgstr "O Parole precisa de <b>%s</b> para reproduzir este arquivo.\nEle pode ser instalado automaticamente."
 
 #: src/gst/parole-gst.c:1353
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
-msgstr "Parole precisa de <b>%s</b> para reproduzir este arquivo."
+msgstr "O Parole precisa de <b>%s</b> para reproduzir este arquivo."
 
 #: src/gst/parole-gst.c:1734
 msgid "The stream is taking too much time to load"
-msgstr "A transmissão está levando muito tempo para carregar"
+msgstr "A transmissão está demorando muito para carregar"
 
 #: src/gst/parole-gst.c:1736
 msgid "Do you want to continue loading or stop?"
-msgstr "Você deseja continuar o carregamento ou parar?"
+msgstr "Deseja continuar o carregamento ou parar?"
 
 #: src/gst/parole-gst.c:1737
 msgid "Stop"
@@ -708,12 +712,12 @@ msgstr "Não foi possível carregar o plugin \"%s\"; verifique sua instalação 
 #: src/gst/parole-gst.c:2578 src/gst/parole-gst.c:2582
 #, c-format
 msgid "Audio Track #%d"
-msgstr "Faixa #%d"
+msgstr "Faixa de áudio n° %d"
 
 #: src/gst/parole-gst.c:2618 src/gst/parole-gst.c:2622
 #, c-format
 msgid "Subtitle #%d"
-msgstr "Legenda #%d"
+msgstr "Legenda n° %d"
 
 #: src/main.c:62
 #, c-format
@@ -728,7 +732,7 @@ msgid ""
 "\n"
 "Please report bugs to <%s>.\n"
 "\n"
-msgstr "\nParole Media Player %s\n\nParte do Projeto Xfce Goodies\nhttps://goodies.xfce.org\n\nLicenciado sob a GNU GPL.\n\nReporte problemas para <%s>.\n\n"
+msgstr "\nReprodutor de mídia Parole %s\n\nParte do Projeto Xfce Goodies\nhttps://goodies.xfce.org\n\nLicenciado sob a GNU GPL.\n\nRelatar bugs para <%s>.\n\n"
 
 #: src/main.c:231
 msgid "Open a new instance"
@@ -740,11 +744,11 @@ msgstr "Não carregar plugins"
 
 #: src/main.c:235
 msgid "Set Audio-CD/VCD/DVD device path"
-msgstr "Definir o caminho do dispositivo CD/VCD/DVD"
+msgstr "Definir caminho do dispositivo de CD de áudio/VCD/DVD"
 
 #: src/main.c:237
 msgid "Start in embedded mode"
-msgstr "Iniciar no modo embutido"
+msgstr "Iniciar no modo incorporado"
 
 #: src/main.c:239
 msgid "Start in fullscreen mode"
@@ -752,7 +756,7 @@ msgstr "Iniciar em tela cheia"
 
 #: src/main.c:241
 msgid "Play or pause if already playing"
-msgstr "Reproduzir ou pausar se em execução"
+msgstr "Reproduzir ou pausar se já estiver tocando"
 
 #: src/main.c:247
 msgid "Raise volume"
@@ -764,11 +768,11 @@ msgstr "Diminuir volume"
 
 #: src/main.c:251
 msgid "Mute volume"
-msgstr "Emudecer volume"
+msgstr "Volume mudo"
 
 #: src/main.c:253
 msgid "Unmute (restore) volume"
-msgstr "Desemudecer (restaurar) volume"
+msgstr "Reativar (restaurar) o volume"
 
 #: src/main.c:255
 msgid "Add files to playlist"
@@ -776,7 +780,7 @@ msgstr "Adicionar arquivos à lista de reprodução"
 
 #: src/main.c:257
 msgid "Print version information and exit"
-msgstr "Exibe a informação da versão e sai"
+msgstr "Mostra informação de versão e sai"
 
 #: src/main.c:261
 msgid "Media to play"
@@ -784,7 +788,7 @@ msgstr "Mídia a ser reproduzida"
 
 #: src/main.c:285
 msgid "[FILES...] - Play movies and songs"
-msgstr "[ARQUIVOS...] - Reproduz filmes e áudios"
+msgstr "[ARQUIVOS...] - Reproduz filmes e músicas"
 
 #: src/main.c:296
 #, c-format
@@ -817,15 +821,15 @@ msgstr "Arquivos de lista de reprodução"
 
 #: src/parole-about.c:70
 msgid "A modern simple media player for the Xfce Desktop Environment."
-msgstr "Um reprodutor multimídia moderno e simples para o ambiente de trabalho Xfce."
+msgstr "Um reprodutor multimídia moderno e simples para o ambiente de desktop Xfce."
 
 #: src/parole-about.c:76
 msgid "translator-credits"
-msgstr "Sérgio Cipolla\nRafael Ferreira"
+msgstr "Sérgio Cipolla\nRafael Ferreira\nMichael Martins"
 
 #: src/parole-about.c:79
 msgid "Visit Parole website"
-msgstr "Visitar website do Parole"
+msgstr "Visitar o site do Parole"
 
 #: src/parole-conf-dialog.c:287
 msgid "Clutter (OpenGL)"
@@ -838,7 +842,7 @@ msgstr "Reproduzir disco"
 #: src/parole-mediachooser.c:236 src/parole-medialist.c:855
 #: src/parole-player.c:1010
 msgid "All files"
-msgstr "Todos arquivos"
+msgstr "Todos os arquivos"
 
 #: src/parole-medialist.c:260 src/parole-medialist.c:1624
 #, c-format
@@ -875,7 +879,7 @@ msgstr "Formato de lista de reprodução desconhecido"
 
 #: src/parole-medialist.c:699
 msgid "Please choose a supported playlist format"
-msgstr "Por favor, escolha um formato de lista de reprodução suportado"
+msgstr "Escolha um formato de lista de reprodução suportado"
 
 #: src/parole-medialist.c:745 src/parole-plugins-manager.c:363
 msgid "Unknown"
@@ -903,22 +907,22 @@ msgstr "Lista de reprodução PLS (%s)"
 #: src/parole-medialist.c:880
 #, c-format
 msgid "Advanced Stream Redirector (%s)"
-msgstr "Redirecionador Avançado de Transmissões (%s)"
+msgstr "Redirecionador avançado de transmissões (%s)"
 
 #: src/parole-medialist.c:890
 #, c-format
 msgid "Shareable Playlist (%s)"
-msgstr "Lista de Reprodução Compartilhável (%s)"
+msgstr "Lista de reprodução compartilhável (%s)"
 
 #. Clear
 #: src/parole-medialist.c:1275
 msgid "Open Containing Folder"
-msgstr "Abrir a pasta do arquivo"
+msgstr "Abrir pasta de conteúdo"
 
 #. Build the FileChooser dialog for subtitle selection.
 #: src/parole-player.c:975
 msgid "Select Subtitle File"
-msgstr "Selecione o arquivo de legendas"
+msgstr "Selecione o arquivo de legenda"
 
 #: src/parole-player.c:982
 msgid "Open"
@@ -926,7 +930,7 @@ msgstr "Abrir"
 
 #: src/parole-player.c:998
 msgid "Subtitle Files"
-msgstr "Arquivos de legendas"
+msgstr "Arquivos de legenda"
 
 #: src/parole-player.c:1168 src/parole-player.c:1176
 msgid "Clear Recent Items"
@@ -936,7 +940,7 @@ msgstr "Limpar itens recentes"
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
-msgstr "Você tem certeza que quer limpar seu histórico recente? Esta operação não pode ser desfeita."
+msgstr "Tem certeza que deseja limpar seu histórico recente?  Esta operação não pode ser desfeita."
 
 #: src/parole-player.c:1266 src/parole-player.c:1391
 msgid "Media stream is not seekable"
@@ -956,7 +960,7 @@ msgstr "Erro no backend GStreamer"
 
 #: src/parole-player.c:1809
 msgid "Unknown Song"
-msgstr "Canção desconhecida"
+msgstr "Música desconhecida"
 
 #: src/parole-player.c:1820 src/parole-player.c:1826 src/parole-player.c:1834
 msgid "on"
@@ -984,11 +988,11 @@ msgstr "Tela cheia"
 
 #: src/parole-player.c:2001
 msgid "Leave _Fullscreen"
-msgstr "Sair do modo de tela _cheia"
+msgstr "Sair da tela _cheia"
 
 #: src/parole-player.c:2002
 msgid "Leave Fullscreen"
-msgstr "Sair do modo tela cheia"
+msgstr "Sair da tela cheia"
 
 #. Play menu item
 #. * Play pause
@@ -1013,7 +1017,7 @@ msgstr "_Próximo"
 #. * Un/Full screen
 #: src/parole-player.c:2137
 msgid "_Leave Fullscreen"
-msgstr "Deixar em Tela Cheia"
+msgstr "Sair da tela cheia"
 
 #. * Un/Hide menubar
 #: src/parole-player.c:2152
@@ -1022,20 +1026,20 @@ msgstr "Mostrar barra de menu"
 
 #: src/parole-player.c:2169
 msgid "Mini Mode"
-msgstr "Modo Miniatura"
+msgstr "Modo mini"
 
 #: src/parole-player.c:2404
 msgid "Unmute"
-msgstr "Com áudio"
+msgstr "Ativar som"
 
 #: src/parole-player.c:2821
 msgid "Unable to open default web browser"
-msgstr "Não foi possível abrir o navegador web padrão"
+msgstr "Não foi possível abrir o navegador padrão"
 
 #: src/parole-player.c:2823
 msgid ""
 "Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
-msgstr "Por favor, acesse https://docs.xfce.org/apps/parole/bugs para relatar o seu problema."
+msgstr "Acesse https://docs.xfce.org/apps/parole/bugs para relatar seu bug."
 
 #: src/parole-player.c:2851
 msgid "Go"
@@ -1060,7 +1064,7 @@ msgstr "Falha ao carregar plugin"
 
 #: src/parole-plugins-manager.c:289
 msgid "Please check your installation"
-msgstr "Por favor, verifique sua instalação"
+msgstr "Verifique sua instalação"
 
 #: src/parole-plugins-manager.c:400
 msgid "No installed plugins found on this system"
@@ -1068,11 +1072,11 @@ msgstr "Não foram encontrados plugins neste sistema"
 
 #: src/parole-plugins-manager.c:401
 msgid "Please check your installation."
-msgstr "Por favor, verifique sua instalação."
+msgstr "Verifique sua instalação."
 
 #: src/parole-subtitle-encoding.c:162
 msgid "Current Locale"
-msgstr "Locale atual"
+msgstr "Localidade atual"
 
 #: src/parole-subtitle-encoding.c:165 src/parole-subtitle-encoding.c:167
 #: src/parole-subtitle-encoding.c:169 src/parole-subtitle-encoding.c:171
@@ -1119,11 +1123,11 @@ msgstr "Cirílico"
 
 #: src/parole-subtitle-encoding.c:228
 msgid "Cyrillic/Russian"
-msgstr "Cirílico/Russo"
+msgstr "Cirílico/russo"
 
 #: src/parole-subtitle-encoding.c:231 src/parole-subtitle-encoding.c:233
 msgid "Cyrillic/Ukrainian"
-msgstr "Cirílico/Ucraniano"
+msgstr "Cirílico/ucraniano"
 
 #: src/parole-subtitle-encoding.c:236
 msgid "Georgian"
@@ -1183,7 +1187,7 @@ msgstr "Romeno"
 
 #: src/parole-subtitle-encoding.c:297
 msgid "South European"
-msgstr "Europeu do sul"
+msgstr "Sul europeu"
 
 #: src/parole-subtitle-encoding.c:300
 msgid "Thai"
@@ -1231,7 +1235,7 @@ msgstr "Notificar"
 
 #: src/plugins/tray/system-tray.desktop.in:4
 msgid "Tray icon"
-msgstr "Ícone na bandeja"
+msgstr "Ícone da bandeja"
 
 #. * Previous Track
 #: src/plugins/tray/tray-provider.c:132
@@ -1241,7 +1245,7 @@ msgstr "Faixa anterio_r"
 #. * Next Track
 #: src/plugins/tray/tray-provider.c:141
 msgid "_Next Track"
-msgstr "Faixa _seguinte"
+msgstr "_Próxima faixa"
 
 #. * Open
 #: src/plugins/tray/tray-provider.c:157
@@ -1254,15 +1258,15 @@ msgstr "Plugin do ícone da bandeja"
 
 #: src/plugins/tray/tray-provider.c:268
 msgid "Always minimize to tray when window is closed"
-msgstr "Sempre minimizar para a bandeja ao fechar a janela"
+msgstr "Sempre minimizar para a bandeja quando a janela estiver fechada"
 
 #: src/plugins/tray/tray-provider.c:336
 msgid "Are you sure you want to quit?"
-msgstr "Tem certeza que quer sair?"
+msgstr "Tem certeza de que deseja sair?"
 
 #: src/plugins/tray/tray-provider.c:339
 msgid "Parole can be minimized to the system tray instead."
-msgstr "Parole pode ser minimizado para a bandeja do sistema."
+msgstr "O Parole pode ser minimizado para a bandeja do sistema."
 
 #: src/plugins/tray/tray-provider.c:342
 msgid "Minimize to tray"
