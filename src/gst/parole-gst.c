@@ -95,8 +95,7 @@ typedef enum {
 typedef enum {
     AUTOIMAGESINK,
     XIMAGESINK,
-    XVIMAGESINK,
-    CLUTTERSINK
+    XVIMAGESINK
 } ParoleGstVideoSink;
 
 struct ParoleGstPrivate {
@@ -342,15 +341,7 @@ parole_gst_get_video_output_size(ParoleGst *gst, gint *ret_w, gint *ret_h) {
 
 static void
 parole_gst_size_allocate(GtkWidget *widget, GtkAllocation *allocation) {
-#ifdef HAVE_CLUTTER
-    ParoleGst *gst;
-#endif
     g_return_if_fail(allocation != NULL);
-#ifdef HAVE_CLUTTER
-    gst = PAROLE_GST(parole_gst_get());
-    if (gst->priv->image_sink == CLUTTERSINK)
-        return;
-#endif
 
     gtk_widget_set_allocation(widget, allocation);
 
@@ -1992,13 +1983,6 @@ parole_gst_constructed(GObject *object) {
         gst->priv->image_sink = XVIMAGESINK;
         gst->priv->video_sink = gst_element_factory_make("xvimagesink", "video");
     }
-
-#ifdef HAVE_CLUTTER
-    if (g_strcmp0(videosink, "cluttersink") == 0) {
-        gst->priv->image_sink = CLUTTERSINK;
-        gst->priv->video_sink = gst_element_factory_make("cluttersink", "video");
-    }
-#endif
 
     if (G_UNLIKELY(gst->priv->video_sink == NULL)) {
         gst->priv->image_sink = XIMAGESINK;

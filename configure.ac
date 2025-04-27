@@ -88,9 +88,6 @@ AM_GNU_GETTEXT_VERSION([0.19.8])
 # ===================================================== #
 m4_define([gtk_minimum_version], [3.22.0])
 m4_define([glib_minimum_version], [2.38.0])
-m4_define([clutter_minimum_version], [1.16.4])
-m4_define([cluttergtk_minimum_version], [1.4.4])
-m4_define([clutter_gtk_blacklist_version], [3.22.0])
 
 m4_define([dbus_minimum_version], [0.60])
 m4_define([dbus_glib_minimum_version], [0.70])
@@ -165,22 +162,6 @@ if test x"$ENABLE_X11" = x"yes"; then
   if test "x${ac_cv_have_decl_XF86XK_AudioPlay}" != "xno"; then
     AC_DEFINE(HAVE_XF86_KEYSYM, 1, [Define if XF86keysysm.h is available])
   fi
-fi
-
-# ===================================================== #
-#                   Clutter support                     #
-# ===================================================== #
-XDT_CHECK_PACKAGE([GTK], [gtk+-3.0], [clutter_gtk_blacklist_version], [ac_clutter=blacklisted], [
-    AC_ARG_ENABLE([clutter], AS_HELP_STRING([--enable-clutter], [Include clutter backend]),
-      [ac_clutter=$enableval], [ac_clutter=no])
-])
-AC_MSG_CHECKING([whether to build the clutter backend])
-AM_CONDITIONAL([PAROLE_CLUTTER_BACKEND], [test x"$ac_clutter" = x"yes"])
-AC_MSG_RESULT([$ac_clutter])
-if test "x$ac_clutter" = "xyes"; then
-    XDT_CHECK_PACKAGE([CLUTTER], [clutter-1.0], [clutter_minimum_version])
-    XDT_CHECK_PACKAGE([CLUTTERGTK], [clutter-gtk-1.0], [cluttergtk_minimum_version])
-    AC_DEFINE(HAVE_CLUTTER, 1, [Define to 1 if clutter is found])
 fi
 
 # ===================================================== #
@@ -301,7 +282,6 @@ echo "
 
         Optional dependencies:
         ======================
-        Clutter Backend:                ${ac_clutter}
         Taglib:                         ${TAGLIB_FOUND:-no}
         X11:                            ${ENABLE_X11:-no}
         Wayland:                        ${ENABLE_WAYLAND:-no}

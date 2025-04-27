@@ -105,18 +105,6 @@ parole_glib_enum_headers =			\
 	parole-conf.h				\
 	parole-button.h
 
-if PAROLE_CLUTTER_BACKEND
-AM_CPPFLAGS +=			\
-	$(CLUTTER_CFLAGS)				\
-	$(CLUTTERGTK_CFLAGS)
-parole_SOURCES +=				\
-	parole-clutter.c			\
-	parole-clutter.h
-parole_LDADD +=				\
-	$(CLUTTER_LIBS)				\
-	$(CLUTTERGTK_LIBS)
-endif
-
 if MAINTAINER_MODE
 
 BUILT_SOURCES = 				\
