@@ -28,8 +28,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "data/interfaces/parole-settings_ui.h"
-
 #include "src/gst/parole-gst.h"
 
 #include "src/misc/parole.h"
@@ -405,7 +403,7 @@ void parole_conf_dialog_open(ParoleConfDialog *self, GtkWidget *parent) {
     GtkAdjustment *adjustment;
     GValue step_increment = {0};
 
-    builder = parole_builder_new_from_string(parole_settings_ui, parole_settings_ui_length);
+    builder = parole_builder_new_from_resource("/org/xfce/parole/parole-settings.ui");
 
     dialog = GTK_WIDGET(gtk_builder_get_object(builder, "settings-dialog"));
     combox = GTK_WIDGET(gtk_builder_get_object(builder, "vis-combobox"));

@@ -32,6 +32,7 @@ AM_CPPFLAGS =					\
 	$(LIBX11_CFLAGS)
 
 GENERATED_FILES =				\
+	$(top_srcdir)/data/interfaces/parole-resources.c \
 	gmarshal.c				\
 	gmarshal.h				\
 	enum-gtypes.c				\

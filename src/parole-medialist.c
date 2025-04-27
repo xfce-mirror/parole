@@ -38,9 +38,6 @@
 
 #include <libxfce4util/libxfce4util.h>
 
-#include "data/interfaces/playlist_ui.h"
-#include "data/interfaces/save-playlist_ui.h"
-
 #include "src/common/parole-common.h"
 
 #include "src/dbus/parole-dbus.h"
@@ -829,7 +826,7 @@ void parole_media_list_save_cb(GtkWidget *widget, ParoleMediaList *list) {
 
     data = g_new0(ParolePlaylistSave, 1);
 
-    builder = parole_builder_new_from_string(save_playlist_ui, save_playlist_ui_length);
+    builder = parole_builder_new_from_resource("/org/xfce/parole/save-playlist.ui");
     chooser = GTK_WIDGET(gtk_builder_get_object(builder, "filechooserdialog"));
     store = GTK_LIST_STORE(gtk_builder_get_object(builder, "liststore"));
     combo = GTK_WIDGET(gtk_builder_get_object(builder, "format_combo"));
@@ -1365,7 +1362,7 @@ parole_media_list_show_menu(ParoleMediaList *list, GdkEventButton *ev) {
     GtkCheckMenuItem *replace, *play_opened;
     GtkCheckMenuItem *remember;
 
-    builder = parole_builder_new_from_string(playlist_ui, playlist_ui_length);
+    builder = parole_builder_new_from_resource("/org/xfce/parole/playlist.ui");
 
     menu = GTK_MENU(gtk_builder_get_object(builder, "playlist-menu"));
     replace = GTK_CHECK_MENU_ITEM(gtk_builder_get_object(builder, "menu-replace"));
@@ -1653,7 +1650,7 @@ parole_media_list_init(ParoleMediaList *list) {
 
     list->priv->conf = parole_conf_new();
 
-    builder = parole_builder_new_from_string(playlist_ui, playlist_ui_length);
+    builder = parole_builder_new_from_resource("/org/xfce/parole/playlist.ui");
 
     list->priv->playlist_controls = GTK_WIDGET(gtk_builder_get_object(builder, "playlist_controls"));
     list->priv->playlist_notebook = GTK_WIDGET(gtk_builder_get_object(builder, "playlist_notebook"));

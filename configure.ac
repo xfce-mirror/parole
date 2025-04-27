@@ -9,7 +9,7 @@ AC_REVISION([xdt_version_build])
 
 AC_CONFIG_MACRO_DIRS([m4])
 
-AM_INIT_AUTOMAKE([1.8 dist-bzip2 tar-ustar no-dist-gzip foreign])
+AM_INIT_AUTOMAKE([1.8 dist-bzip2 tar-ustar no-dist-gzip foreign subdir-objects])
 AC_CONFIG_HEADERS([config.h])
 
 if test x${enable_gtk_doc} = x"yes"; then
@@ -113,6 +113,8 @@ XDT_CHECK_PACKAGE([DBUS_GLIB], [dbus-glib-1], [dbus_glib_minimum_version])
 
 XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0],[libxfce4util_minimum_version])
 XDT_CHECK_PACKAGE([XFCONF], [libxfconf-0], [libxfconf_minimum_version])
+
+XDT_CHECK_PACKAGE_BINARY([GLIB_COMPILE_RESOURCES], [gio-2.0], [glib_compile_resources], [glib-compile-resources])
 
 dnl ************************************
 dnl *** Compile against GTK3 ***
