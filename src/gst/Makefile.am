@@ -56,7 +56,7 @@ stamp-enum-types.h: $(parole_glib_enum_headers) Makefile
 	( cd $(srcdir) && glib-mkenums \
 		--fhead "#ifndef SRC_GST_GST_ENUM_TYPES_H_\n#define SRC_GST_GST_ENUM_TYPES_H_\n#include <glib-object.h>\nG_BEGIN_DECLS\n" \
 		--fprod "/* enumerations from \"@filename@\" */\n" \
-		--vhead "GType @enum_name@_get_type (void);\n#define GST_ENUM_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n" \
+		--vhead "GType @enum_name@_get_type (void);\n#define @ENUMPREFIX@_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n" \
 		--ftail "G_END_DECLS\n\n#endif /* SRC_GST_GST_ENUM_TYPES_H_ */" \
 		$(parole_glib_enum_headers) ) > xgen-enum.h \
 	&& (cmp -s xgen-enum.h gst-enum-types.h || cp xgen-enum.h gst-enum-types.h) \
