@@ -1559,7 +1559,7 @@ parole_player_reset_saver_changed(ParolePlayer *player, const ParoleStream *stre
 
 static void
 parole_player_media_state_cb(ParoleGst *gst, const ParoleStream *stream, ParoleState state, ParolePlayer *player) {
-    PAROLE_DEBUG_ENUM("State callback", state, PAROLE_ENUM_TYPE_STATE);
+    PAROLE_DEBUG_ENUM("State callback", state, PAROLE_TYPE_STATE);
 
     player->priv->state = state;
 #ifdef ENABLE_X11
@@ -2736,7 +2736,7 @@ parole_player_button_pressed_cb(ParoleButton *button, ParoleButtonKey key, Parol
     if (!enabled)
         return;
 
-    PAROLE_DEBUG_ENUM("Button Press:", key, ENUM_GTYPE_BUTTON_KEY);
+    PAROLE_DEBUG_ENUM("Button Press:", key, PAROLE_TYPE_BUTTON_KEY);
 
     switch (key) {
         case PAROLE_KEY_AUDIO_PLAY:

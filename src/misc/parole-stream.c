@@ -129,7 +129,7 @@ parole_stream_get_media_type_from_uri(ParoleStream *stream, const gchar *uri) {
     else
         type = PAROLE_MEDIA_TYPE_UNKNOWN;
 
-    g_value_init(&val, PAROLE_ENUM_TYPE_MEDIA_TYPE);
+    g_value_init(&val, PAROLE_TYPE_MEDIA_TYPE);
     g_value_set_enum(&val, type);
     g_object_set_property(G_OBJECT(stream), "media-type", &val);
     g_value_unset(&val);
@@ -518,7 +518,7 @@ parole_stream_class_init(ParoleStreamClass *klass) {
                                     g_param_spec_enum("media-type",
                                     "Media type",
                                     "Media type",
-                                    PAROLE_ENUM_TYPE_MEDIA_TYPE,
+                                    PAROLE_TYPE_MEDIA_TYPE,
                                     PAROLE_MEDIA_TYPE_UNKNOWN,
                                     G_PARAM_READWRITE));
 

@@ -664,7 +664,7 @@ gboolean parole_pl_parser_save_from_files(GSList *files, const gchar *filename, 
     FILE *f;
     gboolean ret_val = FALSE;
 
-    PAROLE_DEBUG_ENUM_FULL(format, PAROLE_ENUM_TYPE_PL_FORMAT, "Saving playlist %s ", filename);
+    PAROLE_DEBUG_ENUM_FULL(format, PAROLE_TYPE_PL_FORMAT, "Saving playlist %s ", filename);
 
     f = fopen(filename, "w");
     if (f == NULL) {
@@ -715,7 +715,7 @@ GSList *parole_pl_parser_parse_from_file_by_extension(const gchar *filename) {
         goto out;
     }
 
-    PAROLE_DEBUG_ENUM_FULL(format, PAROLE_ENUM_TYPE_PL_FORMAT, "playlist %s ", filename);
+    PAROLE_DEBUG_ENUM_FULL(format, PAROLE_TYPE_PL_FORMAT, "playlist %s ", filename);
     list = parole_pl_parser_parse(format, filename);
 
 out:
