@@ -78,7 +78,9 @@ gst-enum-types.c: $(parole_glib_enum_headers) Makefile
 endif
 
 EXTRA_DIST =					\
-	gstmarshal.list
+	gstmarshal.list				\
+	meson.build				\
+	$(NULL)
 
 DISTCLEANFILES =				\
 	$(BUILT_SOURCES)			\

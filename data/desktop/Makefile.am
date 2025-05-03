@@ -15,6 +15,7 @@ org.xfce.Parole.desktop: org.xfce.Parole.desktop.in
 
 EXTRA_DIST =					\
 	desktop.sh				\
+	meson.build				\
 	org.xfce.Parole.desktop.in.in
 
 CLEANFILES =					\

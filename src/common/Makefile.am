@@ -30,3 +30,7 @@ libparolescreensaver_la_LIBADD = 		\
 	$(LIBXFCE4UTIL_LIBS)
 
 endif
+
+EXTRA_DIST =		\
+	meson.build	\
+	$(NULL)
