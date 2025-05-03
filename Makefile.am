@@ -34,3 +34,10 @@ snapshot: dist
 snapshot-bz2: dist-bz2
 	mv $(PACKAGE)-$(VERSION).tar.bz2 \
 	$(PACKAGE)-$(VERSION)-r@REVISION@.tar.bz2
+
+EXTRA_DIST = \
+	meson.build \
+	meson_options.txt \
+	po/meson.build \
+	xfce-revision.h.in \
+	$(NULL)

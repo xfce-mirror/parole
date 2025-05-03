@@ -153,6 +153,7 @@ endif
 
 EXTRA_DIST =					\
 	gmarshal.list               \
+	meson.build					\
 	org.parole.media.player.xml \
 	org.parole.media.list.xml
 

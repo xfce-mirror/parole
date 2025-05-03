@@ -2814,7 +2814,7 @@ on_bug_report_clicked(GtkWidget *w, ParolePlayer *player) {
 
 static void
 on_contents_clicked(GtkWidget *w, ParolePlayer *player) {
-    xfce_dialog_show_help_with_version(NULL, "parole", "start", NULL, PAROLE_VERSION_SHORT);
+    xfce_dialog_show_help_with_version(NULL, "parole", "start", NULL, VERSION_SHORT);
 }
 
 static gboolean

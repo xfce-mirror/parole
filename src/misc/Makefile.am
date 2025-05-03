@@ -101,6 +101,7 @@ parole-enum-types.c: $(parole_glib_enum_headers) Makefile
 endif
 
 EXTRA_DIST =					\
+	meson.build				\
 	parole-marshal.list			\
 	parole.h.in
 

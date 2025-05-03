@@ -21,5 +21,6 @@ DISTCLEANFILES =				\
 
 EXTRA_DIST =					\
 	$(interfaces)				\
+	meson.build				\
 	parole-resources.c			\
 	parole.gresource.xml
