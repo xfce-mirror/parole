@@ -23,6 +23,9 @@
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
+#ifdef HAVE_XFCE_REVISION_H
+#include "xfce-revision.h"
+#endif
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -74,7 +77,7 @@ void parole_about(GtkWindow *parent) {
         "logo-icon-name", "org.xfce.parole",
         "program-name", _("Parole Media Player"),
         "translator-credits", _("translator-credits"),
-        "version", PACKAGE_VERSION,
+        "version", VERSION_FULL,
         "website", "https://docs.xfce.org/apps/parole/start",
         "website-label", _("Visit Parole website"),
         NULL);
