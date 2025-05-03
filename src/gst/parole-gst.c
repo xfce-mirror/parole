@@ -2071,7 +2071,7 @@ parole_gst_class_init(ParoleGstClass *klass) {
                         NULL, NULL,
                         _gmarshal_VOID__OBJECT_ENUM,
                         G_TYPE_NONE, 2,
-                        PAROLE_TYPE_STREAM, PAROLE_ENUM_TYPE_STATE);
+                        PAROLE_TYPE_STREAM, PAROLE_TYPE_STATE);
 
     signals[MEDIA_PROGRESSED] =
         g_signal_new("media-progressed",
