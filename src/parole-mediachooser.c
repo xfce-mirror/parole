@@ -31,8 +31,6 @@
 #include <gtk/gtk.h>
 #include <glib.h>
 
-#include "data/interfaces/mediachooser_ui.h"
-
 #include "src/common/parole-common.h"
 #include "src/common/parole-rc-utils.h"
 
@@ -209,7 +207,7 @@ parole_media_chooser_open_internal(ParoleMediaChooser *media_chooser) {
     GtkSettings    *settings;
     gboolean        use_header;
 
-    builder = parole_builder_new_from_string(mediachooser_ui, mediachooser_ui_length);
+    builder = parole_builder_new_from_resource("/org/xfce/parole/mediachooser.ui");
 
     media_chooser->window = GTK_WIDGET(gtk_builder_get_object(builder, "chooser"));
     media_chooser->spinner = GTK_WIDGET(gtk_builder_get_object(builder, "spinner"));

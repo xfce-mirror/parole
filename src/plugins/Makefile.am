@@ -11,3 +11,7 @@ endif
 if PAROLE_MPRIS2_PLUGIN
 SUBDIRS+=mpris2
 endif
+
+EXTRA_DIST = \
+	meson.build \
+	$(NULL)

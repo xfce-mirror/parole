@@ -28,8 +28,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "data/interfaces/parole-settings_ui.h"
-
 #include "src/gst/parole-gst.h"
 
 #include "src/misc/parole.h"
@@ -276,20 +274,6 @@ parole_conf_dialog_add_vis_plugins(gpointer key, gpointer value, GtkWidget *comb
     g_object_unref(store);
 }
 
-#ifdef HAVE_CLUTTER
-static void
-parole_conf_dialog_add_clutter_sink(ParoleConfDialog *dialog, GtkComboBox *combobox) {
-    GtkListStore *store = GTK_LIST_STORE(gtk_combo_box_get_model(GTK_COMBO_BOX(combobox)));
-    GtkTreeIter iter;
-
-    gtk_list_store_append(store, &iter);
-    gtk_list_store_set(store, &iter, 0, g_strdup("cluttersink"), -1);
-    gtk_list_store_set(store, &iter, 1, g_strdup(_("Clutter (OpenGL)")), -1);
-
-    g_object_unref(store);
-}
-#endif
-
 /* Set the combobox to the default visualization plugin */
 static gboolean
 parole_conf_dialog_set_default_vis_plugin(GtkTreeModel *model,
@@ -342,11 +326,6 @@ parole_conf_dialog_set_default_sink_plugin(ParoleConfDialog *self) {
     } else if (g_strcmp0(sink_name, "ximagesink") == 0) {
         gtk_combo_box_set_active(GTK_COMBO_BOX(self->priv->sink_combox), 2);
         return TRUE;
-    #ifdef HAVE_CLUTTER
-    } else if (g_strcmp0(sink_name, "cluttersink") == 0) {
-        gtk_combo_box_set_active(GTK_COMBO_BOX(self->priv->sink_combox), 3);
-        return TRUE;
-    #endif
     } else {
         gtk_combo_box_set_active(GTK_COMBO_BOX(self->priv->sink_combox), 0);
         return FALSE;
@@ -405,7 +384,7 @@ void parole_conf_dialog_open(ParoleConfDialog *self, GtkWidget *parent) {
     GtkAdjustment *adjustment;
     GValue step_increment = {0};
 
-    builder = parole_builder_new_from_string(parole_settings_ui, parole_settings_ui_length);
+    builder = parole_builder_new_from_resource("/org/xfce/parole/parole-settings.ui");
 
     dialog = GTK_WIDGET(gtk_builder_get_object(builder, "settings-dialog"));
     combox = GTK_WIDGET(gtk_builder_get_object(builder, "vis-combobox"));
@@ -423,9 +402,6 @@ void parole_conf_dialog_open(ParoleConfDialog *self, GtkWidget *parent) {
 
     self->priv->vis_combox = combox;
     self->priv->sink_combox = GTK_WIDGET(gtk_builder_get_object(builder, "combobox-sink"));
-    #ifdef HAVE_CLUTTER
-        parole_conf_dialog_add_clutter_sink(self, GTK_COMBO_BOX(self->priv->sink_combox));
-    #endif
     self->priv->backend_infobar = GTK_WIDGET(gtk_builder_get_object(builder, "backend-infobar"));
 
     parole_conf_dialog_set_defaults(self);
