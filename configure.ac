@@ -1,12 +1,16 @@
 m4_define([parole_verinfo],           [0:8:1])
 m4_define([parole_version_api],       [0])
 XDT_VERSION_INIT([4.18.2], [git])
+m4_define([copyright_year], [2025])
 
-AC_COPYRIGHT([Copyright (c) 2009-2024 The Xfce development team])
+AC_COPYRIGHT([Copyright (c) 2009-copyright_year() The Xfce development team])
 AC_INIT([parole], [xdt_version], [https://gitlab.xfce.org/apps/parole])
 AC_PREREQ([2.69])
 AC_REVISION([xdt_version_build])
 AC_DEFINE([VERSION_FULL], [PACKAGE_VERSION], [Alias for VERSION and PACKAGE_VERSION for meson compatibility])
+COPYRIGHT_YEAR=copyright_year()
+AC_DEFINE_UNQUOTED([COPYRIGHT_YEAR], ["$COPYRIGHT_YEAR"], [Copyright year])
+AC_SUBST([COPYRIGHT_YEAR])
 
 AC_CONFIG_MACRO_DIRS([m4])
 
