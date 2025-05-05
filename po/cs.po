@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-10-15 00:49+0200\n"
+"POT-Creation-Date: 2025-05-05 12:48+0200\n"
 "PO-Revision-Date: 2013-07-03 18:28+0000\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>, 2014-2015,2017-2021,2024\n"
 "Language-Team: Czech (http://app.transifex.com/xfce/xfce-apps/language/cs/)\n"
@@ -29,7 +29,7 @@ msgstr "Otevřít soubory médií"
 msgid "Open Network Location"
 msgstr "Otevřít umístění v síti"
 
-#: data/interfaces/open-location.ui:65 src/parole-open-location.c:193
+#: data/interfaces/open-location.ui:65 src/parole-open-location.c:191
 msgid "Clear History"
 msgstr "Vymazat historii"
 
@@ -51,7 +51,7 @@ msgstr "Předvolby aplikace Parole"
 
 #. Add a close button to the Infobar
 #: data/interfaces/parole-settings.ui:62 data/interfaces/plugins.ui:43
-#: src/parole-player.c:3615 src/plugins/tray/tray-provider.c:261
+#: src/parole-player.c:3601 src/plugins/tray/tray-provider.c:261
 msgid "Close"
 msgstr "Zavřít"
 
@@ -144,8 +144,8 @@ msgid "<b>Playlist Preferences</b>"
 msgstr "<b>Nastavení seznamu médií</b>"
 
 #: data/interfaces/parole-settings.ui:814 data/interfaces/playlist.ui:43
-#: data/interfaces/shortcuts.ui:99 src/parole-medialist.c:797
-#: src/parole-medialist.c:848 src/parole-player.c:3241
+#: data/interfaces/shortcuts.ui:99 src/parole-medialist.c:794
+#: src/parole-medialist.c:845 src/parole-player.c:3227
 msgid "Playlist"
 msgstr "Seznam médií"
 
@@ -170,8 +170,8 @@ msgid "Subtitles"
 msgstr "Titulky"
 
 #: data/interfaces/parole.ui:40 data/desktop/org.xfce.Parole.desktop.in.in:3
-#: src/parole-about.c:75 src/parole-player.c:599 src/parole-player.c:1435
-#: src/parole-player.c:1804 src/plugins/mpris2/mpris2-provider.c:189
+#: src/parole-about.c:78 src/parole-player.c:590 src/parole-player.c:1421
+#: src/parole-player.c:1790 src/plugins/mpris2/mpris2-provider.c:189
 msgid "Parole Media Player"
 msgstr "Přehrávač médií Parole"
 
@@ -221,7 +221,7 @@ msgid "Show Playlist"
 msgstr "Zobrazit seznam médií"
 
 #. Create dialog
-#: data/interfaces/parole.ui:189 src/parole-player.c:2847
+#: data/interfaces/parole.ui:189 src/parole-player.c:2833
 msgid "Go to position"
 msgstr "Jít na pozici"
 
@@ -265,7 +265,7 @@ msgstr "_Zvuk"
 msgid "_Audio Track"
 msgstr "_Zvuková stopa"
 
-#: data/interfaces/parole.ui:316 src/parole-player.c:805
+#: data/interfaces/parole.ui:316 src/parole-player.c:796
 msgid "Empty"
 msgstr "Prázdný"
 
@@ -285,8 +285,8 @@ msgstr "Z_tlumit"
 msgid "_Video"
 msgstr "_Video"
 
-#: data/interfaces/parole.ui:378 src/parole-player.c:1992
-#: src/parole-player.c:2137
+#: data/interfaces/parole.ui:378 src/parole-player.c:1978
+#: src/parole-player.c:2123
 msgid "_Fullscreen"
 msgstr "_Režim celé obrazovky"
 
@@ -295,7 +295,7 @@ msgid "_Aspect Ratio"
 msgstr "_Poměr stran"
 
 #: data/interfaces/parole.ui:403 data/interfaces/parole.ui:488
-#: src/parole-player.c:741
+#: src/parole-player.c:732
 msgid "None"
 msgstr "Žádné"
 
@@ -503,7 +503,7 @@ msgstr "Zvýšit hlasitost"
 msgid "Decrease volume"
 msgstr "Snížit hlasitost"
 
-#: data/interfaces/shortcuts.ui:90 src/parole-player.c:2401
+#: data/interfaces/shortcuts.ui:90 src/parole-player.c:2387
 msgid "Mute"
 msgstr "Ztlumit"
 
@@ -528,15 +528,15 @@ msgid "Playback"
 msgstr "Přehrávání"
 
 #: data/interfaces/shortcuts.ui:139
-#: data/desktop/org.xfce.Parole.desktop.in.in:17
+#: data/desktop/org.xfce.Parole.desktop.in.in:18
 msgid "Play/Pause"
 msgstr "Přehrát/Pozastavit"
 
-#: data/interfaces/shortcuts.ui:146 src/main.c:245
+#: data/interfaces/shortcuts.ui:146 src/main.c:248
 msgid "Previous track"
 msgstr "Předchozí stopa"
 
-#: data/interfaces/shortcuts.ui:153 src/main.c:243
+#: data/interfaces/shortcuts.ui:153 src/main.c:246
 msgid "Next track"
 msgstr "Další stopa"
 
@@ -572,12 +572,12 @@ msgstr "Přehrát vaše média"
 msgid "Media;Player;Audio;Video;Music;Playback;Xfce;"
 msgstr "média;přehrávač;audio;video;hudba;přehrávání;Xfce;"
 
-#: data/desktop/org.xfce.Parole.desktop.in.in:22 src/parole-player.c:3387
+#: data/desktop/org.xfce.Parole.desktop.in.in:23 src/parole-player.c:3373
 #: src/plugins/notify/notify-provider.c:182
 msgid "Previous Track"
 msgstr "Předchozí stopa"
 
-#: data/desktop/org.xfce.Parole.desktop.in.in:27 src/parole-player.c:3405
+#: data/desktop/org.xfce.Parole.desktop.in.in:28 src/parole-player.c:3391
 #: src/plugins/notify/notify-provider.c:194
 msgid "Next Track"
 msgstr "Další stopa"
@@ -624,92 +624,92 @@ msgstr "Zpráva"
 msgid "Error"
 msgstr "Chyba"
 
-#: src/gst/parole-gst.c:1100 src/parole-medialist.c:412
+#: src/gst/parole-gst.c:1091 src/parole-medialist.c:409
 #, c-format
 msgid "Track %i"
 msgstr "Stopa %i"
 
-#: src/gst/parole-gst.c:1103
+#: src/gst/parole-gst.c:1094
 msgid "Audio CD"
 msgstr "Zvukový disk CD"
 
-#: src/gst/parole-gst.c:1280
+#: src/gst/parole-gst.c:1271
 msgid "Unable to install missing codecs."
 msgstr "Nelze nainstalovat chybějící kodeky."
 
-#: src/gst/parole-gst.c:1283
+#: src/gst/parole-gst.c:1274
 msgid "No available plugin installer was found."
 msgstr "Nebyl nalezen žádný instalátor zásuvných modulů."
 
-#: src/gst/parole-gst.c:1334
+#: src/gst/parole-gst.c:1325
 msgid "Additional software is required."
 msgstr "Je požadován další software."
 
-#: src/gst/parole-gst.c:1338
+#: src/gst/parole-gst.c:1329
 msgid "Don't Install"
 msgstr "Neinstalovat"
 
-#: src/gst/parole-gst.c:1340
+#: src/gst/parole-gst.c:1331
 msgid "Install"
 msgstr "Instalovat"
 
-#: src/gst/parole-gst.c:1343
+#: src/gst/parole-gst.c:1334
 msgid "OK"
 msgstr "OK"
 
-#: src/gst/parole-gst.c:1350
+#: src/gst/parole-gst.c:1341
 #, c-format
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
 msgstr "K přehrání tohoto souboru Parole potřebuje <b>%s</b>.\nLze jej nainstalovat automaticky."
 
-#: src/gst/parole-gst.c:1353
+#: src/gst/parole-gst.c:1344
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
 msgstr "K přehrání tohoto souboru Parole potřebuje <b>%s</b>"
 
-#: src/gst/parole-gst.c:1734
+#: src/gst/parole-gst.c:1725
 msgid "The stream is taking too much time to load"
 msgstr "Načtení streamu trvá příliš dlouho"
 
-#: src/gst/parole-gst.c:1736
+#: src/gst/parole-gst.c:1727
 msgid "Do you want to continue loading or stop?"
 msgstr "Chcete pokračovat v nahrávání nebo zastavit?"
 
-#: src/gst/parole-gst.c:1737
+#: src/gst/parole-gst.c:1728
 msgid "Stop"
 msgstr "Zastavit"
 
-#: src/gst/parole-gst.c:1738
+#: src/gst/parole-gst.c:1729
 msgid "Continue"
 msgstr "Pokračovat"
 
-#: src/gst/parole-gst.c:1936
+#: src/gst/parole-gst.c:1927
 msgid "GStreamer Error"
 msgstr "Chyba GStreameru"
 
-#: src/gst/parole-gst.c:1937
+#: src/gst/parole-gst.c:1928
 msgid "Parole Media Player cannot start."
 msgstr "Přehrávač médií Parole nelze spustit."
 
-#: src/gst/parole-gst.c:1962 src/gst/parole-gst.c:1977
-#: src/gst/parole-gst.c:2011
+#: src/gst/parole-gst.c:1953 src/gst/parole-gst.c:1968
+#: src/gst/parole-gst.c:1995
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
 msgstr "Nelze zavést zásuvný modul \"%s\", zkontrolujte instalaci GStreameru."
 
-#: src/gst/parole-gst.c:2578 src/gst/parole-gst.c:2582
+#: src/gst/parole-gst.c:2562 src/gst/parole-gst.c:2566
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Zvuková stopa č. %d"
 
-#: src/gst/parole-gst.c:2618 src/gst/parole-gst.c:2622
+#: src/gst/parole-gst.c:2602 src/gst/parole-gst.c:2606
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Titulek č. %d"
 
-#: src/main.c:62
+#: src/main.c:65
 #, c-format
 msgid ""
 "\n"
@@ -724,68 +724,68 @@ msgid ""
 "\n"
 msgstr "\nPřehrávač médií Parole %s\n\nSoučást projektu Xfce Goodies\nhttps://goodies.xfce.org\n\nLicencováno pod GNU GPL.\n\nProsím nahlaste chyby na <%s>.\n\n"
 
-#: src/main.c:231
+#: src/main.c:234
 msgid "Open a new instance"
 msgstr "Otevřít novou instanci"
 
-#: src/main.c:233
+#: src/main.c:236
 msgid "Do not load plugins"
 msgstr "Nezavádět zásuvné moduly"
 
-#: src/main.c:235
+#: src/main.c:238
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "Nastavit cestu zařízení zvukových disků CD/VCD/DVD"
 
-#: src/main.c:237
+#: src/main.c:240
 msgid "Start in embedded mode"
 msgstr "Spustit v embedded módu"
 
-#: src/main.c:239
+#: src/main.c:242
 msgid "Start in fullscreen mode"
 msgstr "Spustit v režimu celé obrazovky"
 
-#: src/main.c:241
+#: src/main.c:244
 msgid "Play or pause if already playing"
 msgstr "Přehrát nebo pozastavit, pokud se již přehrává"
 
-#: src/main.c:247
+#: src/main.c:250
 msgid "Raise volume"
 msgstr "Zvýšit hlasitost"
 
-#: src/main.c:249
+#: src/main.c:252
 msgid "Lower volume"
 msgstr "Snížit hlasitost"
 
-#: src/main.c:251
+#: src/main.c:254
 msgid "Mute volume"
 msgstr "Ztlumit"
 
-#: src/main.c:253
+#: src/main.c:256
 msgid "Unmute (restore) volume"
 msgstr "Zrušit (obnovit) ztlumení"
 
-#: src/main.c:255
+#: src/main.c:258
 msgid "Add files to playlist"
 msgstr "Přidat soubory do seznamu médií"
 
-#: src/main.c:257
+#: src/main.c:260
 msgid "Print version information and exit"
 msgstr "Zobrazí informace o verzi a ukončí se"
 
-#: src/main.c:261
+#: src/main.c:264
 msgid "Media to play"
 msgstr "Přehrávaná média"
 
-#: src/main.c:285
+#: src/main.c:288
 msgid "[FILES...] - Play movies and songs"
 msgstr "[SOUBORY] - Přehraje filmy a skladby"
 
-#: src/main.c:296
+#: src/main.c:299
 #, c-format
 msgid "Type %s --help to list all available command line options\n"
 msgstr "Seznam všech dostupných možností příkazového řádku získáte příkazem %s --help\n"
 
-#: src/main.c:313
+#: src/main.c:316
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Aplikace Parole je již spuštěna, novou instanci otevřete použitím parametru -i\n"
 
@@ -809,32 +809,28 @@ msgstr "Všechny podporované soubory"
 msgid "Playlist files"
 msgstr "Soubory seznamů médií"
 
-#: src/parole-about.c:70
+#: src/parole-about.c:73
 msgid "A modern simple media player for the Xfce Desktop Environment."
 msgstr "Jednoduchý moderní přehrávač médií pro pracovní prostředí Xfce."
 
-#: src/parole-about.c:76
+#: src/parole-about.c:79
 msgid "translator-credits"
 msgstr "Michal Várady (miko.vaji@gmail.com)\nAlois Nešpor (info@aloisnespor.info)"
 
-#: src/parole-about.c:79
+#: src/parole-about.c:82
 msgid "Visit Parole website"
 msgstr "Navštívit webovou stránku aplikace Parole"
-
-#: src/parole-conf-dialog.c:287
-msgid "Clutter (OpenGL)"
-msgstr "Clutter (OpenGL)"
 
 #: src/parole-disc.c:106
 msgid "Play Disc"
 msgstr "Přehrát disk"
 
-#: src/parole-mediachooser.c:236 src/parole-medialist.c:855
-#: src/parole-player.c:1010
+#: src/parole-mediachooser.c:234 src/parole-medialist.c:852
+#: src/parole-player.c:1001
 msgid "All files"
 msgstr "Všechny soubory"
 
-#: src/parole-medialist.c:260 src/parole-medialist.c:1624
+#: src/parole-medialist.c:257 src/parole-medialist.c:1621
 #, c-format
 msgid "Playlist (%i item)"
 msgid_plural "Playlist (%i items)"
@@ -843,7 +839,7 @@ msgstr[1] "Seznam médií (%i položky)"
 msgstr[2] "Seznam médií (%i položek)"
 msgstr[3] "Seznam médií (%i položek)"
 
-#: src/parole-medialist.c:262 src/parole-medialist.c:1626
+#: src/parole-medialist.c:259 src/parole-medialist.c:1623
 #, c-format
 msgid "Playlist (%i chapter)"
 msgid_plural "Playlist (%i chapters)"
@@ -852,217 +848,217 @@ msgstr[1] "Seznam médií (%i kapitoly)"
 msgstr[2] "Seznam médií (%i kapitol)"
 msgstr[3] "Seznam médií (%i kapitol)"
 
-#: src/parole-medialist.c:426 src/parole-player.c:721
+#: src/parole-medialist.c:423 src/parole-player.c:712
 #, c-format
 msgid "Chapter %i"
 msgstr "Kapitola %i"
 
-#: src/parole-medialist.c:686
+#: src/parole-medialist.c:683
 msgid "Permission denied"
 msgstr "Přístup zamítnut"
 
-#: src/parole-medialist.c:688
+#: src/parole-medialist.c:685
 msgid "Error saving playlist file"
 msgstr "Chyba při ukládání souboru seznamu médií"
 
-#: src/parole-medialist.c:698
+#: src/parole-medialist.c:695
 msgid "Unknown playlist format"
 msgstr "Neznámý formát seznamu médií"
 
-#: src/parole-medialist.c:699
+#: src/parole-medialist.c:696
 msgid "Please choose a supported playlist format"
 msgstr "Prosím vyberte podporovaný formát seznamu médií"
 
-#: src/parole-medialist.c:745 src/parole-plugins-manager.c:363
+#: src/parole-medialist.c:742 src/parole-plugins-manager.c:361
 msgid "Unknown"
 msgstr "Neznámý"
 
-#: src/parole-medialist.c:838 src/parole-player.c:981 src/parole-player.c:1172
-#: src/parole-player.c:2850 src/plugins/tray/tray-provider.c:348
+#: src/parole-medialist.c:835 src/parole-player.c:972 src/parole-player.c:1163
+#: src/parole-player.c:2836 src/plugins/tray/tray-provider.c:348
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: src/parole-medialist.c:839
+#: src/parole-medialist.c:836
 msgid "Save"
 msgstr "Uložit"
 
-#: src/parole-medialist.c:860
+#: src/parole-medialist.c:857
 #, c-format
 msgid "M3U Playlist (%s)"
 msgstr "Seznam médií M3U (%s)"
 
-#: src/parole-medialist.c:870
+#: src/parole-medialist.c:867
 #, c-format
 msgid "PLS Playlist (%s)"
 msgstr "Seznam médií PLS (%s)"
 
-#: src/parole-medialist.c:880
+#: src/parole-medialist.c:877
 #, c-format
 msgid "Advanced Stream Redirector (%s)"
 msgstr "Pokročilé přesměrování streamu (%s)"
 
-#: src/parole-medialist.c:890
+#: src/parole-medialist.c:887
 #, c-format
 msgid "Shareable Playlist (%s)"
 msgstr "Seznam médií umožňující sdílení (%s)"
 
 #. Clear
-#: src/parole-medialist.c:1275
+#: src/parole-medialist.c:1272
 msgid "Open Containing Folder"
 msgstr "Otevřít složku obsahující soubor"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: src/parole-player.c:975
+#: src/parole-player.c:966
 msgid "Select Subtitle File"
 msgstr "Vyberte soubor s titulky"
 
-#: src/parole-player.c:982
+#: src/parole-player.c:973
 msgid "Open"
 msgstr "Otevřít"
 
-#: src/parole-player.c:998
+#: src/parole-player.c:989
 msgid "Subtitle Files"
 msgstr "Soubory s titulky"
 
-#: src/parole-player.c:1168 src/parole-player.c:1176
+#: src/parole-player.c:1159 src/parole-player.c:1167
 msgid "Clear Recent Items"
 msgstr "Vymazat nedávné položky"
 
-#: src/parole-player.c:1170
+#: src/parole-player.c:1161
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
 msgstr "Opravdu chcete vymazat historii nedávných položek? Tuto akci nelze vrátit zpět."
 
-#: src/parole-player.c:1266 src/parole-player.c:1391
+#: src/parole-player.c:1257 src/parole-player.c:1377
 msgid "Media stream is not seekable"
 msgstr "Stream neumožňuje přesouvání"
 
-#: src/parole-player.c:1276
+#: src/parole-player.c:1267
 msgid "Play"
 msgstr "Přehrát"
 
-#: src/parole-player.c:1279
+#: src/parole-player.c:1270
 msgid "Pause"
 msgstr "Pozastavit"
 
-#: src/parole-player.c:1725
+#: src/parole-player.c:1711
 msgid "GStreamer backend error"
 msgstr "Chyba služby GStreamer"
 
-#: src/parole-player.c:1809
+#: src/parole-player.c:1795
 msgid "Unknown Song"
 msgstr "Neznámá píseň"
 
-#: src/parole-player.c:1820 src/parole-player.c:1826 src/parole-player.c:1834
+#: src/parole-player.c:1806 src/parole-player.c:1812 src/parole-player.c:1820
 msgid "on"
 msgstr "na"
 
-#: src/parole-player.c:1834 src/plugins/notify/notify-provider.c:134
+#: src/parole-player.c:1820 src/plugins/notify/notify-provider.c:134
 msgid "Unknown Album"
 msgstr "Neznámé album"
 
-#: src/parole-player.c:1845 src/parole-player.c:1852
+#: src/parole-player.c:1831 src/parole-player.c:1838
 msgid "by"
 msgstr "od"
 
-#: src/parole-player.c:1852 src/plugins/notify/notify-provider.c:136
+#: src/parole-player.c:1838 src/plugins/notify/notify-provider.c:136
 msgid "Unknown Artist"
 msgstr "Neznámý umělec"
 
-#: src/parole-player.c:1887
+#: src/parole-player.c:1873
 msgid "Buffering"
 msgstr "Ukládání do vyrovnávací paměti"
 
-#: src/parole-player.c:1993 src/parole-player.c:3422
+#: src/parole-player.c:1979 src/parole-player.c:3408
 msgid "Fullscreen"
 msgstr "Režim celé obrazovky"
 
-#: src/parole-player.c:2001
+#: src/parole-player.c:1987
 msgid "Leave _Fullscreen"
 msgstr "Opustit režim _celé obrazovky"
 
-#: src/parole-player.c:2002
+#: src/parole-player.c:1988
 msgid "Leave Fullscreen"
 msgstr "Opustit režim celé obrazovky"
 
 #. Play menu item
 #. * Play pause
-#: src/parole-player.c:2099 src/plugins/tray/tray-provider.c:123
+#: src/parole-player.c:2085 src/plugins/tray/tray-provider.c:123
 msgid "_Pause"
 msgstr "_Pozastavit"
 
-#: src/parole-player.c:2099 src/plugins/tray/tray-provider.c:123
+#: src/parole-player.c:2085 src/plugins/tray/tray-provider.c:123
 msgid "_Play"
 msgstr "_Přehrát"
 
 #. * Previous item in playlist.
-#: src/parole-player.c:2115
+#: src/parole-player.c:2101
 msgid "_Previous"
 msgstr "_Předchozí"
 
 #. * Next item in playlist.
-#: src/parole-player.c:2126
+#: src/parole-player.c:2112
 msgid "_Next"
 msgstr "_Následující"
 
 #. * Un/Full screen
-#: src/parole-player.c:2137
+#: src/parole-player.c:2123
 msgid "_Leave Fullscreen"
 msgstr "_Opustit režim celé obrazovky"
 
 #. * Un/Hide menubar
-#: src/parole-player.c:2152
+#: src/parole-player.c:2138
 msgid "Show menubar"
 msgstr "Zobrazit panel s nabídkou"
 
-#: src/parole-player.c:2169
+#: src/parole-player.c:2155
 msgid "Mini Mode"
 msgstr "Režim zmenšeného zobrazení"
 
-#: src/parole-player.c:2404
+#: src/parole-player.c:2390
 msgid "Unmute"
 msgstr "Zrušit ztlumení"
 
-#: src/parole-player.c:2821
+#: src/parole-player.c:2807
 msgid "Unable to open default web browser"
 msgstr "Nelze otevřít výchozí webový prohlížeč"
 
-#: src/parole-player.c:2823
+#: src/parole-player.c:2809
 msgid ""
 "Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr "Prosím přejděte na https://docs.xfce.org/apps/parole/bugs k nahlášení vaší chyby."
 
-#: src/parole-player.c:2851
+#: src/parole-player.c:2837
 msgid "Go"
 msgstr "Přejít"
 
 #. Clear Recent Menu Item
-#: src/parole-player.c:3279
+#: src/parole-player.c:3265
 msgid "_Clear recent items..."
 msgstr "_Vyčistit nedávné položky..."
 
-#: src/parole-player.c:3590
+#: src/parole-player.c:3576
 msgid "Audio Track:"
 msgstr "Zvuková stopa:"
 
-#: src/parole-player.c:3609
+#: src/parole-player.c:3595
 msgid "Subtitles:"
 msgstr "Titulky:"
 
-#: src/parole-plugins-manager.c:288
+#: src/parole-plugins-manager.c:286
 msgid "Plugin failed to load"
 msgstr "Zavedení zásuvného modulu se nezdařilo"
 
-#: src/parole-plugins-manager.c:289
+#: src/parole-plugins-manager.c:287
 msgid "Please check your installation"
 msgstr "Prosím zkontrolujte vaši instalaci"
 
-#: src/parole-plugins-manager.c:400
+#: src/parole-plugins-manager.c:398
 msgid "No installed plugins found on this system"
 msgstr "V systému nebyly nalezeny žádné zásuvné moduly"
 
-#: src/parole-plugins-manager.c:401
+#: src/parole-plugins-manager.c:399
 msgid "Please check your installation."
 msgstr "Prosím zkontrolujte vaši instalaci."
 
