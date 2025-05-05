@@ -1,0 +1,48 @@
+option(
+  'x11',
+  type: 'feature',
+  value: 'auto',
+  description: 'Support for the X11 windowing system',
+)
+
+option(
+  'wayland',
+  type: 'feature',
+  value: 'auto',
+  description: 'Support for the Wayland windowing system',
+)
+
+option(
+  'taglib',
+  type: 'feature',
+  value: 'auto',
+  description: 'Taglib support',
+)
+
+option(
+  'notify-plugin',
+  type: 'feature',
+  value: 'auto',
+  description: 'Build parole notify plugin',
+)
+
+option(
+  'mpris2-plugin',
+  type: 'feature',
+  value: 'auto',
+  description: 'Build parole mpris2 plugin',
+)
+
+option(
+  'tray-plugin',
+  type: 'feature',
+  value: 'auto',
+  description: 'Build parole tray plugin',
+)
+
+option(
+  'gtk-doc',
+  type: 'boolean',
+  value: false,
+  description: 'Build gtk-doc HTML',
+)

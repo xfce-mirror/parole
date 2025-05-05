@@ -118,7 +118,7 @@ parole_button_filter_x_events(GdkXEvent *xevent, GdkEvent *ev, gpointer data) {
     if ( key != PAROLE_KEY_UNKNOWN ) {
         button = (ParoleButton *) data;
 
-        PAROLE_DEBUG_ENUM("Key press", key, ENUM_GTYPE_BUTTON_KEY);
+        PAROLE_DEBUG_ENUM("Key press", key, PAROLE_TYPE_BUTTON_KEY);
 
         g_signal_emit(G_OBJECT(button), signals[BUTTON_PRESSED], 0, key);
         return GDK_FILTER_REMOVE;
@@ -200,7 +200,7 @@ parole_button_xevent_key(ParoleButton *button, guint keysym , ParoleButtonKey ke
         return FALSE;
     }
 
-    PAROLE_DEBUG_ENUM_FULL(key, ENUM_GTYPE_BUTTON_KEY, "Grabbed key %li ", (long int)keycode);
+    PAROLE_DEBUG_ENUM_FULL(key, PAROLE_TYPE_BUTTON_KEY, "Grabbed key %li ", (long int)keycode);
 
     parole_key_map[key].key_code = keycode;
     parole_key_map[key].key = key;
@@ -245,7 +245,7 @@ parole_button_class_init(ParoleButtonClass *klass) {
                       G_STRUCT_OFFSET(ParoleButtonClass, button_pressed),
                       NULL, NULL,
                       g_cclosure_marshal_VOID__ENUM,
-                      G_TYPE_NONE, 1, ENUM_GTYPE_BUTTON_KEY);
+                      G_TYPE_NONE, 1, PAROLE_TYPE_BUTTON_KEY);
 
     object_class->finalize = parole_button_finalize;
 }

@@ -86,4 +86,5 @@ endif
 EXTRA_DIST +=			\
 	version.xml.in			\
 	$(DOC_MAIN_SGML_FILE)	\
+	meson.build				\
 	parole-plugins-tut.sgml

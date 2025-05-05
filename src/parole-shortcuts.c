@@ -28,8 +28,6 @@
 
 #include <libxfce4util/libxfce4util.h>
 
-#include "data/interfaces/shortcuts_ui.h"
-
 #include "src/common/parole-rc-utils.h"
 
 #include "src/parole-builder.h"
@@ -79,7 +77,7 @@ ParoleShortcuts *parole_shortcuts(GtkWidget *parent) {
 
     self = g_object_new(PAROLE_TYPE_SHORTCUTS, NULL);
 
-    builder = parole_builder_new_from_string(shortcuts_ui, shortcuts_ui_length);
+    builder = parole_builder_new_from_resource("/org/xfce/parole/shortcuts.ui");
 
     window = GTK_WIDGET(gtk_builder_get_object(builder, "shortcuts"));
 

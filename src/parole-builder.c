@@ -30,8 +30,6 @@
 
 #include <libxfce4util/libxfce4util.h>
 
-#include "data/interfaces/parole_ui.h"
-
 #include "src/parole-builder.h"
 
 
@@ -47,7 +45,7 @@ parole_builder_get_main_interface(void) {
     if ( G_LIKELY(parole_builder_object != NULL) ) {
         g_object_ref(parole_builder_object);
     } else {
-        parole_builder_object = parole_builder_new_from_string(parole_ui, parole_ui_length);
+        parole_builder_object = parole_builder_new_from_resource("/org/xfce/parole/parole.ui");
         g_object_add_weak_pointer(parole_builder_object, &parole_builder_object);
     }
 
@@ -55,14 +53,13 @@ parole_builder_get_main_interface(void) {
 }
 
 /**
- * parole_builder_new_from_string:
- * @ui     : the string containing parole's condensed glade interface
- * @length : the length of the ui string
+ * parole_builder_new_from_resource:
+ * @resource_path : the path of the resource file
  *
- * Build Parole's UI from the condensed glade string.
+ * Build Parole's UI from the resource file.
  **/
 GtkBuilder *
-parole_builder_new_from_string(const gchar *ui, gsize length) {
+parole_builder_new_from_resource(const gchar *resource_path) {
     GError *error = NULL;
     GtkBuilder *builder;
 
@@ -71,7 +68,7 @@ parole_builder_new_from_string(const gchar *ui, gsize length) {
     /* Set the locale before loading the GtkBuilder interface definition. */
     xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
 
-    gtk_builder_add_from_string(builder, ui, length, &error);
+    gtk_builder_add_from_resource(builder, resource_path, &error);
 
     if ( error ) {
         g_critical("%s", error->message);

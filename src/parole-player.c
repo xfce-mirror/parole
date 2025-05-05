@@ -66,10 +66,6 @@
 #include "src/parole-builder.h"
 #include "src/parole-button.h"
 
-#ifdef HAVE_CLUTTER
-#include "src/parole-clutter.h"
-#endif
-
 #include "src/parole-conf.h"
 #include "src/parole-conf-dialog.h"
 #include "src/parole-disc.h"
@@ -461,11 +457,6 @@ struct ParolePlayerPrivate {
     gboolean            internal_range_change;
     gboolean            buffering;
     gboolean            wait_for_gst_disc_info;
-
-#ifdef HAVE_CLUTTER
-    GtkWidget          *clutter;
-    gboolean            use_clutter;
-#endif
 
     /* Actions */
     GSimpleAction      *media_next_action;
@@ -1345,11 +1336,6 @@ parole_player_playing(ParolePlayer *player, const ParoleStream *stream) {
                  "live", &live,
                  NULL);
 
-#ifdef HAVE_CLUTTER
-    if (player->priv->use_clutter)
-        parole_clutter_set_video_dimensions(PAROLE_CLUTTER(player->priv->clutter), width, height);
-#endif
-
     if (player->priv->wait_for_gst_disc_info == TRUE) {
         parole_media_list_add_cdda_tracks(player->priv->list, parole_gst_get_num_tracks(PAROLE_GST(player->priv->gst)));
         player->priv->wait_for_gst_disc_info = FALSE;
@@ -1573,7 +1559,7 @@ parole_player_reset_saver_changed(ParolePlayer *player, const ParoleStream *stre
 
 static void
 parole_player_media_state_cb(ParoleGst *gst, const ParoleStream *stream, ParoleState state, ParolePlayer *player) {
-    PAROLE_DEBUG_ENUM("State callback", state, PAROLE_ENUM_TYPE_STATE);
+    PAROLE_DEBUG_ENUM("State callback", state, PAROLE_TYPE_STATE);
 
     player->priv->state = state;
 #ifdef ENABLE_X11
@@ -2750,7 +2736,7 @@ parole_player_button_pressed_cb(ParoleButton *button, ParoleButtonKey key, Parol
     if (!enabled)
         return;
 
-    PAROLE_DEBUG_ENUM("Button Press:", key, ENUM_GTYPE_BUTTON_KEY);
+    PAROLE_DEBUG_ENUM("Button Press:", key, PAROLE_TYPE_BUTTON_KEY);
 
     switch (key) {
         case PAROLE_KEY_AUDIO_PLAY:
@@ -2828,7 +2814,7 @@ on_bug_report_clicked(GtkWidget *w, ParolePlayer *player) {
 
 static void
 on_contents_clicked(GtkWidget *w, ParolePlayer *player) {
-    xfce_dialog_show_help_with_version(NULL, "parole", "start", NULL, PAROLE_VERSION_SHORT);
+    xfce_dialog_show_help_with_version(NULL, "parole", "start", NULL, VERSION_SHORT);
 }
 
 static gboolean
@@ -3625,44 +3611,14 @@ parole_player_init(ParolePlayer *player) {
     player->priv->updated_subs = FALSE;
     /* End Info Bar */
 
-    #ifdef HAVE_CLUTTER
-        player->priv->use_clutter = g_strcmp0(videosink, "cluttersink") == 0;
-        if (player->priv->use_clutter) {
-            GtkWidget *clutterbox;
-            GstElement *video_sink;
+    gtk_box_pack_start(GTK_BOX(player->priv->videobox),
+                       player->priv->gst,
+                       TRUE, TRUE, 0);
 
-            player->priv->clutter = parole_clutter_new(player->priv->conf);
-            clutterbox = parole_clutter_get_embed_widget(PAROLE_CLUTTER(player->priv->clutter));
+    gtk_widget_realize(player->priv->gst);
+    gtk_widget_show(player->priv->gst);
 
-            gtk_box_pack_start(GTK_BOX(player->priv->videobox),
-                                         clutterbox,
-                                         TRUE, TRUE, 0);
-
-            video_sink = parole_gst_video_sink(PAROLE_GST(player->priv->gst));
-            parole_clutter_apply_texture(PAROLE_CLUTTER(player->priv->clutter), &video_sink);
-
-            gtk_widget_show(player->priv->clutter);
-            gtk_widget_grab_focus(player->priv->clutter);
-        } else {
-            gtk_box_pack_start(GTK_BOX(player->priv->videobox),
-                                         player->priv->gst,
-                                         TRUE, TRUE, 0);
-
-            gtk_widget_realize(player->priv->gst);
-            gtk_widget_show(player->priv->gst);
-
-            gtk_widget_grab_focus(player->priv->gst);
-        }
-    #else
-        gtk_box_pack_start(GTK_BOX(player->priv->videobox),
-                                     player->priv->gst,
-                                     TRUE, TRUE, 0);
-
-        gtk_widget_realize(player->priv->gst);
-        gtk_widget_show(player->priv->gst);
-
-        gtk_widget_grab_focus(player->priv->gst);
-    #endif
+    gtk_widget_grab_focus(player->priv->gst);
 
     parole_gst_set_default_aspect_ratio(player, builder);
 

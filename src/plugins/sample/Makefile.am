@@ -27,3 +27,7 @@ sample_plugin_la_LDFLAGS =			\
 	-export-dynamic				\
 	-module					\
 	$(PLATFORM_LDFLAGS)
+
+EXTRA_DIST = 		  			\
+	meson.build				\
+	$(NULL)

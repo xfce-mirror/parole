@@ -23,6 +23,9 @@
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
+#ifdef HAVE_XFCE_REVISION_H
+#include "xfce-revision.h"
+#endif
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -65,7 +68,7 @@ show_version(void) {
              "https://goodies.xfce.org\n\n"
              "Licensed under the GNU GPL.\n\n"
              "Please report bugs to <%s>.\n\n"),
-             VERSION, PACKAGE_BUGREPORT);
+             VERSION_FULL, PACKAGE_BUGREPORT);
     exit(EXIT_SUCCESS);
 }
 

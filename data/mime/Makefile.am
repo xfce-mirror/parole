@@ -7,6 +7,7 @@ parole-mime-types.h: mime-type-include.sh mime-type-list.txt mime-functions.sh
 	> $@
 
 EXTRA_DIST =			\
+	meson.build		\
 	mime-functions.sh	\
 	mime-type-include.sh	\
 	mime-type-list.txt

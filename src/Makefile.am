@@ -32,6 +32,7 @@ AM_CPPFLAGS =					\
 	$(LIBX11_CFLAGS)
 
 GENERATED_FILES =				\
+	$(top_srcdir)/data/interfaces/parole-resources.c \
 	gmarshal.c				\
 	gmarshal.h				\
 	enum-gtypes.c				\
@@ -104,18 +105,6 @@ parole_glib_enum_headers =			\
 	parole-conf.h				\
 	parole-button.h
 
-if PAROLE_CLUTTER_BACKEND
-AM_CPPFLAGS +=			\
-	$(CLUTTER_CFLAGS)				\
-	$(CLUTTERGTK_CFLAGS)
-parole_SOURCES +=				\
-	parole-clutter.c			\
-	parole-clutter.h
-parole_LDADD +=				\
-	$(CLUTTER_LIBS)				\
-	$(CLUTTERGTK_LIBS)
-endif
-
 if MAINTAINER_MODE
 
 BUILT_SOURCES = 				\
@@ -134,7 +123,7 @@ stamp-enum-gtypes.h: $(parole_glib_enum_headers) Makefile
 	( cd $(srcdir) && glib-mkenums \
 		--fhead "#ifndef SRC_ENUM_GTYPES_H_\n#define SRC_ENUM_GTYPES_H_\n#include <glib-object.h>\nG_BEGIN_DECLS\n" \
 		--fprod "/* enumerations from \"@filename@\" */\n" \
-		--vhead "GType @enum_name@_get_type (void);\n#define ENUM_GTYPE_@ENUMSHORT@ (@enum_name@_get_type())\n" \
+		--vhead "GType @enum_name@_get_type (void);\n#define @ENUMPREFIX@_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n" \
 		--ftail "G_END_DECLS\n\n#endif /* SRC_ENUM_GTYPES_H_ */" \
 		$(parole_glib_enum_headers) ) > xgen-enum.h \
 	&& (cmp -s xgen-enum.h enum-gtypes.h || cp xgen-enum.h enum-gtypes.h) \
@@ -164,6 +153,7 @@ endif
 
 EXTRA_DIST =					\
 	gmarshal.list               \
+	meson.build					\
 	org.parole.media.player.xml \
 	org.parole.media.list.xml
 

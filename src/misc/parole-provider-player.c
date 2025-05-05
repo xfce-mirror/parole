@@ -79,7 +79,7 @@ static void parole_provider_player_base_init(gpointer klass) {
                         NULL, NULL,
                         parole_marshal_VOID__OBJECT_ENUM,
                         G_TYPE_NONE, 2,
-                        PAROLE_TYPE_STREAM, PAROLE_ENUM_TYPE_STATE);
+                        PAROLE_TYPE_STREAM, PAROLE_TYPE_STATE);
 
         /**
          * ParoleProviderPlayerIface::tag-message:

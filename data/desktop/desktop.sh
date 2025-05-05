@@ -1,31 +1,18 @@
 #!/bin/sh
 
-echo_mime () {
-	printf "$i;";
-}
+desktop_in_in=$1
+mime_type_list=$2
+desktop_in=$3
 
-MIMETYPES=`grep -v ^# $1`
-printf MimeType=;
-for i in $MIMETYPES ; do
-	echo_mime;
-done
-
-echo ""
-echo ""
-echo "Actions=Play;Previous;Next;"
-echo ""
-echo "[Desktop Action Play]"
-echo "Exec=parole --play"
-echo "Name=Play/Pause"
-echo "Icon=media-playback-start-symbolic"
-echo ""
-echo "[Desktop Action Previous]"
-echo "Exec=parole --previous"
-echo "Name=Previous Track"
-echo "Icon=media-skip-backward-symbolic"
-echo ""
-echo "[Desktop Action Next]"
-echo "Exec=parole --next"
-echo "Name=Next Track"
-echo "Icon=media-skip-forward-symbolic"
-echo ""
+while read -r line; do
+	if [ "$line" = "MimeType=@MIMETYPE@" ]; then
+		MIMETYPES=$(grep -v ^# "$mime_type_list")
+		printf "MimeType=" >> "$desktop_in"
+		for i in $MIMETYPES; do
+			printf "%s;" "$i" >> "$desktop_in"
+		done
+		echo "" >> "$desktop_in"
+	else
+		echo "$line" >> "$desktop_in"
+	fi
+done < "$desktop_in_in"

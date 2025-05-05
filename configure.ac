@@ -1,15 +1,20 @@
 m4_define([parole_verinfo],           [0:8:1])
 m4_define([parole_version_api],       [0])
 XDT_VERSION_INIT([4.18.2], [git])
+m4_define([copyright_year], [2025])
 
-AC_COPYRIGHT([Copyright (c) 2009-2024 The Xfce development team])
+AC_COPYRIGHT([Copyright (c) 2009-copyright_year() The Xfce development team])
 AC_INIT([parole], [xdt_version], [https://gitlab.xfce.org/apps/parole])
 AC_PREREQ([2.69])
 AC_REVISION([xdt_version_build])
+AC_DEFINE([VERSION_FULL], [PACKAGE_VERSION], [Alias for VERSION and PACKAGE_VERSION for meson compatibility])
+COPYRIGHT_YEAR=copyright_year()
+AC_DEFINE_UNQUOTED([COPYRIGHT_YEAR], ["$COPYRIGHT_YEAR"], [Copyright year])
+AC_SUBST([COPYRIGHT_YEAR])
 
 AC_CONFIG_MACRO_DIRS([m4])
 
-AM_INIT_AUTOMAKE([1.8 dist-bzip2 tar-ustar no-dist-gzip foreign])
+AM_INIT_AUTOMAKE([1.8 dist-bzip2 tar-ustar no-dist-gzip foreign subdir-objects])
 AC_CONFIG_HEADERS([config.h])
 
 if test x${enable_gtk_doc} = x"yes"; then
@@ -64,7 +69,7 @@ m4_append([parole_version_short], [xdt_version_minor])
 m4_append([parole_version_short], ["])
 
 dnl define parole's short version (major.minor)
-AC_DEFINE([PAROLE_VERSION_SHORT], [parole_version_short], [Short version string of parole])
+AC_DEFINE([VERSION_SHORT], [parole_version_short], [Short version string of parole])
 
 # ===================================================== #
 #   Check for headers needed for standard interfaces    #
@@ -88,9 +93,6 @@ AM_GNU_GETTEXT_VERSION([0.19.8])
 # ===================================================== #
 m4_define([gtk_minimum_version], [3.22.0])
 m4_define([glib_minimum_version], [2.38.0])
-m4_define([clutter_minimum_version], [1.16.4])
-m4_define([cluttergtk_minimum_version], [1.4.4])
-m4_define([clutter_gtk_blacklist_version], [3.22.0])
 
 m4_define([dbus_minimum_version], [0.60])
 m4_define([dbus_glib_minimum_version], [0.70])
@@ -113,6 +115,8 @@ XDT_CHECK_PACKAGE([DBUS_GLIB], [dbus-glib-1], [dbus_glib_minimum_version])
 
 XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0],[libxfce4util_minimum_version])
 XDT_CHECK_PACKAGE([XFCONF], [libxfconf-0], [libxfconf_minimum_version])
+
+XDT_CHECK_PACKAGE_BINARY([GLIB_COMPILE_RESOURCES], [gio-2.0], [glib_compile_resources], [glib-compile-resources])
 
 dnl ************************************
 dnl *** Compile against GTK3 ***
@@ -163,22 +167,6 @@ if test x"$ENABLE_X11" = x"yes"; then
   if test "x${ac_cv_have_decl_XF86XK_AudioPlay}" != "xno"; then
     AC_DEFINE(HAVE_XF86_KEYSYM, 1, [Define if XF86keysysm.h is available])
   fi
-fi
-
-# ===================================================== #
-#                   Clutter support                     #
-# ===================================================== #
-XDT_CHECK_PACKAGE([GTK], [gtk+-3.0], [clutter_gtk_blacklist_version], [ac_clutter=blacklisted], [
-    AC_ARG_ENABLE([clutter], AS_HELP_STRING([--enable-clutter], [Include clutter backend]),
-      [ac_clutter=$enableval], [ac_clutter=no])
-])
-AC_MSG_CHECKING([whether to build the clutter backend])
-AM_CONDITIONAL([PAROLE_CLUTTER_BACKEND], [test x"$ac_clutter" = x"yes"])
-AC_MSG_RESULT([$ac_clutter])
-if test "x$ac_clutter" = "xyes"; then
-    XDT_CHECK_PACKAGE([CLUTTER], [clutter-1.0], [clutter_minimum_version])
-    XDT_CHECK_PACKAGE([CLUTTERGTK], [clutter-gtk-1.0], [cluttergtk_minimum_version])
-    AC_DEFINE(HAVE_CLUTTER, 1, [Define to 1 if clutter is found])
 fi
 
 # ===================================================== #
@@ -299,7 +287,6 @@ echo "
 
         Optional dependencies:
         ======================
-        Clutter Backend:                ${ac_clutter}
         Taglib:                         ${TAGLIB_FOUND:-no}
         X11:                            ${ENABLE_X11:-no}
         Wayland:                        ${ENABLE_WAYLAND:-no}

@@ -77,7 +77,7 @@ stamp-enum-types.h: $(parole_glib_enum_headers) Makefile
 	( cd $(srcdir) && glib-mkenums \
 		--fhead "#ifndef SRC_MISC_PAROLE_ENUM_TYPES_H_\n#define SRC_MISC_PAROLE_ENUM_TYPES_H_\n#include <glib-object.h>\nG_BEGIN_DECLS\n" \
 		--fprod "/* enumerations from \"@filename@\" */\n" \
-		--vhead "#ifndef __GTK_DOC_IGNORE__\nGType @enum_name@_get_type (void);\n#define PAROLE_ENUM_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n#endif\n" \
+		--vhead "#ifndef __GTK_DOC_IGNORE__\nGType @enum_name@_get_type (void);\n#define @ENUMPREFIX@_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n#endif\n" \
 		--ftail "G_END_DECLS\n\n#endif /* SRC_MISC_PAROLE_ENUM_TYPES_H_ */" \
 		$(parole_glib_enum_headers) ) > xgen-enum.h \
 	&& (cmp -s xgen-enum.h parole-enum-types.h || cp xgen-enum.h parole-enum-types.h) \
@@ -101,6 +101,7 @@ parole-enum-types.c: $(parole_glib_enum_headers) Makefile
 endif
 
 EXTRA_DIST =					\
+	meson.build				\
 	parole-marshal.list			\
 	parole.h.in
 

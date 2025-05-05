@@ -415,8 +415,8 @@ parole_conf_class_init(ParoleConfClass *klass) {
     if (!g_value_type_transformable (G_TYPE_STRING, G_TYPE_BOOLEAN))
         g_value_register_transform_func(G_TYPE_STRING, G_TYPE_BOOLEAN, transform_string_to_boolean);
 
-    if (!g_value_type_transformable (G_TYPE_STRING, GST_ENUM_TYPE_ASPECT_RATIO))
-        g_value_register_transform_func(G_TYPE_STRING, GST_ENUM_TYPE_ASPECT_RATIO, transform_string_to_enum);
+    if (!g_value_type_transformable (G_TYPE_STRING, PAROLE_TYPE_ASPECT_RATIO))
+        g_value_register_transform_func(G_TYPE_STRING, PAROLE_TYPE_ASPECT_RATIO, transform_string_to_enum);
 
     /**
      * ParoleConf:vis-enabled:
@@ -689,7 +689,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     g_param_spec_enum("aspect-ratio",
                                     "/video/aspect-ratio",
                                     NULL,
-                                    GST_ENUM_TYPE_ASPECT_RATIO,
+                                    PAROLE_TYPE_ASPECT_RATIO,
                                     PAROLE_ASPECT_RATIO_AUTO,
                                     G_PARAM_READWRITE));
 

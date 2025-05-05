@@ -9,7 +9,9 @@ parole.appdata.xml: parole.appdata.xml.in
 	$(AM_V_GEN)$(MSGFMT) --xml --template $< -d $(top_srcdir)/po -o $@
 
 EXTRA_DIST =					\
-	$(appdata_in_files)
+	$(appdata_in_files)			\
+	meson.build				\
+	$(NULL)
 
 CLEANFILES =					\
 	$(appdata_DATA)

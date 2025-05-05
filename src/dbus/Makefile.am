@@ -7,3 +7,7 @@ libparoledbus_la_SOURCES =		\
 
 libparoledbus_la_CFLAGS =		\
 	$(DBUS_GLIB_CFLAGS)
+
+EXTRA_DIST =		\
+	meson.build	\
+	$(NULL)

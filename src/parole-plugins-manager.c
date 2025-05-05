@@ -43,8 +43,6 @@
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4ui/libxfce4ui.h>
 
-#include "data/interfaces/plugins_ui.h"
-
 #include "src/common/parole-common.h"
 
 #include "src/gst/parole-gst.h"
@@ -402,7 +400,7 @@ parole_plugins_manager_show_plugins_pref(GtkWidget *widget, ParolePluginsManager
         return;
     }
 
-    builder = parole_builder_new_from_string(plugins_ui, plugins_ui_length);
+    builder = parole_builder_new_from_resource("/org/xfce/parole/plugins.ui");
 
     pref = g_new0(PrefData, 1);
 

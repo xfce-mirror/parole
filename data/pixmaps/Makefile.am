@@ -9,4 +9,6 @@ pixmaps_DATA =					\
 	$(pixmaps)
 
 EXTRA_DIST =					\
-	$(pixmaps)
+	$(pixmaps)				\
+	meson.build				\
+	$(NULL)

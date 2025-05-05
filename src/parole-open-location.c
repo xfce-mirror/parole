@@ -30,8 +30,6 @@
 
 #include <libxfce4util/libxfce4util.h>
 
-#include "data/interfaces/open-location_ui.h"
-
 #include "src/common/parole-rc-utils.h"
 
 #include "src/parole-builder.h"
@@ -172,7 +170,7 @@ ParoleOpenLocation *parole_open_location(GtkWidget *parent) {
 
     self = g_object_new(PAROLE_TYPE_OPEN_LOCATION, NULL);
 
-    builder = parole_builder_new_from_string(open_location_ui, open_location_ui_length);
+    builder = parole_builder_new_from_resource("/org/xfce/parole/open-location.ui");
 
     self->dialog = GTK_WIDGET(gtk_builder_get_object(builder, "open-location"));
 

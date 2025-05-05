@@ -1,0 +1,6 @@
+subdir('desktop')
+subdir('icons')
+subdir('interfaces')
+subdir('metainfo')
+subdir('mime')
+subdir('pixmaps')
