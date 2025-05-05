@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-10-15 00:49+0200\n"
+"POT-Creation-Date: 2025-05-05 12:48+0200\n"
 "PO-Revision-Date: 2013-07-03 18:28+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>, 2024\n"
 "Language-Team: Romanian (http://app.transifex.com/xfce/xfce-apps/language/ro/)\n"
@@ -28,7 +28,7 @@ msgstr "Deschide fișiere media"
 msgid "Open Network Location"
 msgstr "Deschide locație în rețea"
 
-#: data/interfaces/open-location.ui:65 src/parole-open-location.c:193
+#: data/interfaces/open-location.ui:65 src/parole-open-location.c:191
 msgid "Clear History"
 msgstr "Șterge istoricul"
 
@@ -50,7 +50,7 @@ msgstr "Preferințe pentru Parole"
 
 #. Add a close button to the Infobar
 #: data/interfaces/parole-settings.ui:62 data/interfaces/plugins.ui:43
-#: src/parole-player.c:3615 src/plugins/tray/tray-provider.c:261
+#: src/parole-player.c:3601 src/plugins/tray/tray-provider.c:261
 msgid "Close"
 msgstr "Închide"
 
@@ -143,8 +143,8 @@ msgid "<b>Playlist Preferences</b>"
 msgstr "<b>Preferințe listă de redare</b>"
 
 #: data/interfaces/parole-settings.ui:814 data/interfaces/playlist.ui:43
-#: data/interfaces/shortcuts.ui:99 src/parole-medialist.c:797
-#: src/parole-medialist.c:848 src/parole-player.c:3241
+#: data/interfaces/shortcuts.ui:99 src/parole-medialist.c:794
+#: src/parole-medialist.c:845 src/parole-player.c:3227
 msgid "Playlist"
 msgstr "Listă de redare"
 
@@ -169,8 +169,8 @@ msgid "Subtitles"
 msgstr "Subtitrare"
 
 #: data/interfaces/parole.ui:40 data/desktop/org.xfce.Parole.desktop.in.in:3
-#: src/parole-about.c:75 src/parole-player.c:599 src/parole-player.c:1435
-#: src/parole-player.c:1804 src/plugins/mpris2/mpris2-provider.c:189
+#: src/parole-about.c:78 src/parole-player.c:590 src/parole-player.c:1421
+#: src/parole-player.c:1790 src/plugins/mpris2/mpris2-provider.c:189
 msgid "Parole Media Player"
 msgstr "Reproducător multimedia Parole"
 
@@ -220,7 +220,7 @@ msgid "Show Playlist"
 msgstr "Afișează lista de redare"
 
 #. Create dialog
-#: data/interfaces/parole.ui:189 src/parole-player.c:2847
+#: data/interfaces/parole.ui:189 src/parole-player.c:2833
 msgid "Go to position"
 msgstr "Mergi la poziție"
 
@@ -264,7 +264,7 @@ msgstr "_Audio"
 msgid "_Audio Track"
 msgstr "Pistă _audio"
 
-#: data/interfaces/parole.ui:316 src/parole-player.c:805
+#: data/interfaces/parole.ui:316 src/parole-player.c:796
 msgid "Empty"
 msgstr "Gol"
 
@@ -284,8 +284,8 @@ msgstr "_Dezactivare sunet"
 msgid "_Video"
 msgstr "_Video"
 
-#: data/interfaces/parole.ui:378 src/parole-player.c:1992
-#: src/parole-player.c:2137
+#: data/interfaces/parole.ui:378 src/parole-player.c:1978
+#: src/parole-player.c:2123
 msgid "_Fullscreen"
 msgstr "_Ecran complet"
 
@@ -294,7 +294,7 @@ msgid "_Aspect Ratio"
 msgstr "Raportul de _aspect"
 
 #: data/interfaces/parole.ui:403 data/interfaces/parole.ui:488
-#: src/parole-player.c:741
+#: src/parole-player.c:732
 msgid "None"
 msgstr "Niciunul"
 
@@ -502,7 +502,7 @@ msgstr "Crește volumul"
 msgid "Decrease volume"
 msgstr "Scade volumul"
 
-#: data/interfaces/shortcuts.ui:90 src/parole-player.c:2401
+#: data/interfaces/shortcuts.ui:90 src/parole-player.c:2387
 msgid "Mute"
 msgstr "Dezactivare sunet"
 
@@ -527,15 +527,15 @@ msgid "Playback"
 msgstr "Redare"
 
 #: data/interfaces/shortcuts.ui:139
-#: data/desktop/org.xfce.Parole.desktop.in.in:17
+#: data/desktop/org.xfce.Parole.desktop.in.in:18
 msgid "Play/Pause"
 msgstr "Redare/Pauză"
 
-#: data/interfaces/shortcuts.ui:146 src/main.c:245
+#: data/interfaces/shortcuts.ui:146 src/main.c:248
 msgid "Previous track"
 msgstr "Piesa precedentă"
 
-#: data/interfaces/shortcuts.ui:153 src/main.c:243
+#: data/interfaces/shortcuts.ui:153 src/main.c:246
 msgid "Next track"
 msgstr "Piesa următoare"
 
@@ -571,12 +571,12 @@ msgstr "Redă conținutul multimedia"
 msgid "Media;Player;Audio;Video;Music;Playback;Xfce;"
 msgstr "Multimedia;Reproducător;Audio;Video;Muzică;Redare;Xfce;"
 
-#: data/desktop/org.xfce.Parole.desktop.in.in:22 src/parole-player.c:3387
+#: data/desktop/org.xfce.Parole.desktop.in.in:23 src/parole-player.c:3373
 #: src/plugins/notify/notify-provider.c:182
 msgid "Previous Track"
 msgstr "Melodia precedentă"
 
-#: data/desktop/org.xfce.Parole.desktop.in.in:27 src/parole-player.c:3405
+#: data/desktop/org.xfce.Parole.desktop.in.in:28 src/parole-player.c:3391
 #: src/plugins/notify/notify-provider.c:194
 msgid "Next Track"
 msgstr "Melodia următoare"
@@ -623,92 +623,92 @@ msgstr "Mesaj"
 msgid "Error"
 msgstr "Eroare"
 
-#: src/gst/parole-gst.c:1100 src/parole-medialist.c:412
+#: src/gst/parole-gst.c:1091 src/parole-medialist.c:409
 #, c-format
 msgid "Track %i"
 msgstr "Pista %i"
 
-#: src/gst/parole-gst.c:1103
+#: src/gst/parole-gst.c:1094
 msgid "Audio CD"
 msgstr "CD audio"
 
-#: src/gst/parole-gst.c:1280
+#: src/gst/parole-gst.c:1271
 msgid "Unable to install missing codecs."
 msgstr "Nu se pot instala codec-urile lipsă."
 
-#: src/gst/parole-gst.c:1283
+#: src/gst/parole-gst.c:1274
 msgid "No available plugin installer was found."
 msgstr "Nu a fost găsit niciun instalator de modul disponibil."
 
-#: src/gst/parole-gst.c:1334
+#: src/gst/parole-gst.c:1325
 msgid "Additional software is required."
 msgstr "Se necesită software suplimentar."
 
-#: src/gst/parole-gst.c:1338
+#: src/gst/parole-gst.c:1329
 msgid "Don't Install"
 msgstr "Nu instala"
 
-#: src/gst/parole-gst.c:1340
+#: src/gst/parole-gst.c:1331
 msgid "Install"
 msgstr "Instalează"
 
-#: src/gst/parole-gst.c:1343
+#: src/gst/parole-gst.c:1334
 msgid "OK"
 msgstr "Ok"
 
-#: src/gst/parole-gst.c:1350
+#: src/gst/parole-gst.c:1341
 #, c-format
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
 msgstr "Parole are nevoie de <b>%s</b> pentru a reda acest fișier.\nAcesta poate fi instalat automat."
 
-#: src/gst/parole-gst.c:1353
+#: src/gst/parole-gst.c:1344
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
 msgstr "Parole are nevoie de <b>%s</b> pentru a reda acest fișier."
 
-#: src/gst/parole-gst.c:1734
+#: src/gst/parole-gst.c:1725
 msgid "The stream is taking too much time to load"
 msgstr "Încărcarea fluxului durează prea mult timp"
 
-#: src/gst/parole-gst.c:1736
+#: src/gst/parole-gst.c:1727
 msgid "Do you want to continue loading or stop?"
 msgstr "Doriți să continuați încărcarea sau să o opriți?"
 
-#: src/gst/parole-gst.c:1737
+#: src/gst/parole-gst.c:1728
 msgid "Stop"
 msgstr "Stop"
 
-#: src/gst/parole-gst.c:1738
+#: src/gst/parole-gst.c:1729
 msgid "Continue"
 msgstr "Continuă"
 
-#: src/gst/parole-gst.c:1936
+#: src/gst/parole-gst.c:1927
 msgid "GStreamer Error"
 msgstr "Eroare GStreamer"
 
-#: src/gst/parole-gst.c:1937
+#: src/gst/parole-gst.c:1928
 msgid "Parole Media Player cannot start."
 msgstr "Reproducătorul multimedia Parole nu poate fi inițiat."
 
-#: src/gst/parole-gst.c:1962 src/gst/parole-gst.c:1977
-#: src/gst/parole-gst.c:2011
+#: src/gst/parole-gst.c:1953 src/gst/parole-gst.c:1968
+#: src/gst/parole-gst.c:1995
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
 msgstr "Nu s-a putut încărca modulul „%s”, verificați instalarea GStreamer."
 
-#: src/gst/parole-gst.c:2578 src/gst/parole-gst.c:2582
+#: src/gst/parole-gst.c:2562 src/gst/parole-gst.c:2566
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Pista audio nr.%d"
 
-#: src/gst/parole-gst.c:2618 src/gst/parole-gst.c:2622
+#: src/gst/parole-gst.c:2602 src/gst/parole-gst.c:2606
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Subtitlul nr.%d"
 
-#: src/main.c:62
+#: src/main.c:65
 #, c-format
 msgid ""
 "\n"
@@ -723,68 +723,68 @@ msgid ""
 "\n"
 msgstr "\nReproducător multimedia Parole %s\n\nParte a proiectului Xfce Goodies\nhttps://goodies.xfce.org\n\nLicențiat sub GNU GPL.\n\nVă rugăm să raportați problemele la <%s>.\n"
 
-#: src/main.c:231
+#: src/main.c:234
 msgid "Open a new instance"
 msgstr "Deschide o nouă instanță"
 
-#: src/main.c:233
+#: src/main.c:236
 msgid "Do not load plugins"
 msgstr "Nu încărca modulele"
 
-#: src/main.c:235
+#: src/main.c:238
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "Definiți ruta dispozitivului Audio-CD/VCD/DVD"
 
-#: src/main.c:237
+#: src/main.c:240
 msgid "Start in embedded mode"
 msgstr "Pornește în modul încorporat"
 
-#: src/main.c:239
+#: src/main.c:242
 msgid "Start in fullscreen mode"
 msgstr "Pornește în modul de ecran complet"
 
-#: src/main.c:241
+#: src/main.c:244
 msgid "Play or pause if already playing"
 msgstr "Redă sau pune pauză dacă redă deja"
 
-#: src/main.c:247
+#: src/main.c:250
 msgid "Raise volume"
 msgstr "Crește volumul"
 
-#: src/main.c:249
+#: src/main.c:252
 msgid "Lower volume"
 msgstr "Redu volumul"
 
-#: src/main.c:251
+#: src/main.c:254
 msgid "Mute volume"
 msgstr "Dezactivează sunetul"
 
-#: src/main.c:253
+#: src/main.c:256
 msgid "Unmute (restore) volume"
 msgstr "Activează sunetul (restaurează volumul)"
 
-#: src/main.c:255
+#: src/main.c:258
 msgid "Add files to playlist"
 msgstr "Adaugă fișiere la lista de redare"
 
-#: src/main.c:257
+#: src/main.c:260
 msgid "Print version information and exit"
 msgstr "Afișează informațiile despre versiune și iese"
 
-#: src/main.c:261
+#: src/main.c:264
 msgid "Media to play"
 msgstr "Mediu pentru redare"
 
-#: src/main.c:285
+#: src/main.c:288
 msgid "[FILES...] - Play movies and songs"
 msgstr "[FIȘIERE...] - Redă filme și melodii"
 
-#: src/main.c:296
+#: src/main.c:299
 #, c-format
 msgid "Type %s --help to list all available command line options\n"
 msgstr "Tastați «%s --help» pentru a lista toate opțiunile disponibile în linia de comandă\n"
 
-#: src/main.c:313
+#: src/main.c:316
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole rulează deja, utilizați opțiunea „-i” pentru a deschide o nouă instanță\n"
 
@@ -808,32 +808,28 @@ msgstr "Toate fișierele acceptate"
 msgid "Playlist files"
 msgstr "Fișiere din lista de redare"
 
-#: src/parole-about.c:70
+#: src/parole-about.c:73
 msgid "A modern simple media player for the Xfce Desktop Environment."
 msgstr "Un reproducător multimedia simplu și modern pentru mediul grafic de birou Xfce."
 
-#: src/parole-about.c:76
+#: src/parole-about.c:79
 msgid "translator-credits"
 msgstr "Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>, 2024"
 
-#: src/parole-about.c:79
+#: src/parole-about.c:82
 msgid "Visit Parole website"
 msgstr "Vizitați situl web Parole"
-
-#: src/parole-conf-dialog.c:287
-msgid "Clutter (OpenGL)"
-msgstr "Clutter (OpenGL)"
 
 #: src/parole-disc.c:106
 msgid "Play Disc"
 msgstr "Redă discul"
 
-#: src/parole-mediachooser.c:236 src/parole-medialist.c:855
-#: src/parole-player.c:1010
+#: src/parole-mediachooser.c:234 src/parole-medialist.c:852
+#: src/parole-player.c:1001
 msgid "All files"
 msgstr "Toate fișierele"
 
-#: src/parole-medialist.c:260 src/parole-medialist.c:1624
+#: src/parole-medialist.c:257 src/parole-medialist.c:1621
 #, c-format
 msgid "Playlist (%i item)"
 msgid_plural "Playlist (%i items)"
@@ -841,7 +837,7 @@ msgstr[0] "Lista de redare (%i element)"
 msgstr[1] "Lista de redare (%i elemente)"
 msgstr[2] "Lista de redare (%i de elemente)"
 
-#: src/parole-medialist.c:262 src/parole-medialist.c:1626
+#: src/parole-medialist.c:259 src/parole-medialist.c:1623
 #, c-format
 msgid "Playlist (%i chapter)"
 msgid_plural "Playlist (%i chapters)"
@@ -849,217 +845,217 @@ msgstr[0] "Lista de redare (%i capitol)"
 msgstr[1] "Liste de redare (%i capitole)"
 msgstr[2] "Liste de redare (%i de capitole)"
 
-#: src/parole-medialist.c:426 src/parole-player.c:721
+#: src/parole-medialist.c:423 src/parole-player.c:712
 #, c-format
 msgid "Chapter %i"
 msgstr "Capitolul %i"
 
-#: src/parole-medialist.c:686
+#: src/parole-medialist.c:683
 msgid "Permission denied"
 msgstr "Permisiune refuzată"
 
-#: src/parole-medialist.c:688
+#: src/parole-medialist.c:685
 msgid "Error saving playlist file"
 msgstr "Eroare la salvarea fișierului de listă de redare"
 
-#: src/parole-medialist.c:698
+#: src/parole-medialist.c:695
 msgid "Unknown playlist format"
 msgstr "Format necunoscut al listei de redare"
 
-#: src/parole-medialist.c:699
+#: src/parole-medialist.c:696
 msgid "Please choose a supported playlist format"
 msgstr "Vă rugăm să alegeți un format de listă de redare acceptat"
 
-#: src/parole-medialist.c:745 src/parole-plugins-manager.c:363
+#: src/parole-medialist.c:742 src/parole-plugins-manager.c:361
 msgid "Unknown"
 msgstr "Necunoscut"
 
-#: src/parole-medialist.c:838 src/parole-player.c:981 src/parole-player.c:1172
-#: src/parole-player.c:2850 src/plugins/tray/tray-provider.c:348
+#: src/parole-medialist.c:835 src/parole-player.c:972 src/parole-player.c:1163
+#: src/parole-player.c:2836 src/plugins/tray/tray-provider.c:348
 msgid "Cancel"
 msgstr "Anulați"
 
-#: src/parole-medialist.c:839
+#: src/parole-medialist.c:836
 msgid "Save"
 msgstr "Salvează"
 
-#: src/parole-medialist.c:860
+#: src/parole-medialist.c:857
 #, c-format
 msgid "M3U Playlist (%s)"
 msgstr "Listă de redare M3U (%s)"
 
-#: src/parole-medialist.c:870
+#: src/parole-medialist.c:867
 #, c-format
 msgid "PLS Playlist (%s)"
 msgstr "Listă de redare PLS (%s)"
 
-#: src/parole-medialist.c:880
+#: src/parole-medialist.c:877
 #, c-format
 msgid "Advanced Stream Redirector (%s)"
 msgstr "Redirecționare de flux avansată (%s)"
 
-#: src/parole-medialist.c:890
+#: src/parole-medialist.c:887
 #, c-format
 msgid "Shareable Playlist (%s)"
 msgstr "Listă de redare partajabilă (%s)"
 
 #. Clear
-#: src/parole-medialist.c:1275
+#: src/parole-medialist.c:1272
 msgid "Open Containing Folder"
 msgstr "Deschide dosarul container"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: src/parole-player.c:975
+#: src/parole-player.c:966
 msgid "Select Subtitle File"
 msgstr "Selectați fișierul de subtitrare"
 
-#: src/parole-player.c:982
+#: src/parole-player.c:973
 msgid "Open"
 msgstr "Deschide"
 
-#: src/parole-player.c:998
+#: src/parole-player.c:989
 msgid "Subtitle Files"
 msgstr "Fișiere de subtitrare"
 
-#: src/parole-player.c:1168 src/parole-player.c:1176
+#: src/parole-player.c:1159 src/parole-player.c:1167
 msgid "Clear Recent Items"
 msgstr "Ștergeți elementele recente"
 
-#: src/parole-player.c:1170
+#: src/parole-player.c:1161
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
 msgstr "Sunteți sigur că doriți să ștergeți istoricul elementelor recente?  Această operație nu poate fi anulată."
 
-#: src/parole-player.c:1266 src/parole-player.c:1391
+#: src/parole-player.c:1257 src/parole-player.c:1377
 msgid "Media stream is not seekable"
 msgstr "Fluxul media nu poate fi explorat (nu se poate căuta în el)"
 
-#: src/parole-player.c:1276
+#: src/parole-player.c:1267
 msgid "Play"
 msgstr "Redare"
 
-#: src/parole-player.c:1279
+#: src/parole-player.c:1270
 msgid "Pause"
 msgstr "Pauză"
 
-#: src/parole-player.c:1725
+#: src/parole-player.c:1711
 msgid "GStreamer backend error"
 msgstr "Eroare a motorului GStreamer"
 
-#: src/parole-player.c:1809
+#: src/parole-player.c:1795
 msgid "Unknown Song"
 msgstr "Melodie necunoscută"
 
-#: src/parole-player.c:1820 src/parole-player.c:1826 src/parole-player.c:1834
+#: src/parole-player.c:1806 src/parole-player.c:1812 src/parole-player.c:1820
 msgid "on"
 msgstr "pe"
 
-#: src/parole-player.c:1834 src/plugins/notify/notify-provider.c:134
+#: src/parole-player.c:1820 src/plugins/notify/notify-provider.c:134
 msgid "Unknown Album"
 msgstr "Album necunoscut"
 
-#: src/parole-player.c:1845 src/parole-player.c:1852
+#: src/parole-player.c:1831 src/parole-player.c:1838
 msgid "by"
 msgstr "de"
 
-#: src/parole-player.c:1852 src/plugins/notify/notify-provider.c:136
+#: src/parole-player.c:1838 src/plugins/notify/notify-provider.c:136
 msgid "Unknown Artist"
 msgstr "Artist necunoscut"
 
-#: src/parole-player.c:1887
+#: src/parole-player.c:1873
 msgid "Buffering"
 msgstr "Se preîncarcă"
 
-#: src/parole-player.c:1993 src/parole-player.c:3422
+#: src/parole-player.c:1979 src/parole-player.c:3408
 msgid "Fullscreen"
 msgstr "Ecran complet"
 
-#: src/parole-player.c:2001
+#: src/parole-player.c:1987
 msgid "Leave _Fullscreen"
 msgstr "Iese din modul de ecran _complet"
 
-#: src/parole-player.c:2002
+#: src/parole-player.c:1988
 msgid "Leave Fullscreen"
 msgstr "Ieșire din modul de ecran complet"
 
 #. Play menu item
 #. * Play pause
-#: src/parole-player.c:2099 src/plugins/tray/tray-provider.c:123
+#: src/parole-player.c:2085 src/plugins/tray/tray-provider.c:123
 msgid "_Pause"
 msgstr "_Pauză"
 
-#: src/parole-player.c:2099 src/plugins/tray/tray-provider.c:123
+#: src/parole-player.c:2085 src/plugins/tray/tray-provider.c:123
 msgid "_Play"
 msgstr "_Redare"
 
 #. * Previous item in playlist.
-#: src/parole-player.c:2115
+#: src/parole-player.c:2101
 msgid "_Previous"
 msgstr "Înain_te"
 
 #. * Next item in playlist.
-#: src/parole-player.c:2126
+#: src/parole-player.c:2112
 msgid "_Next"
 msgstr "Î_napoi"
 
 #. * Un/Full screen
-#: src/parole-player.c:2137
+#: src/parole-player.c:2123
 msgid "_Leave Fullscreen"
 msgstr "_Iese din modul de ecran complet"
 
 #. * Un/Hide menubar
-#: src/parole-player.c:2152
+#: src/parole-player.c:2138
 msgid "Show menubar"
 msgstr "Afișează bara de meniu"
 
-#: src/parole-player.c:2169
+#: src/parole-player.c:2155
 msgid "Mini Mode"
 msgstr "Modul mini"
 
-#: src/parole-player.c:2404
+#: src/parole-player.c:2390
 msgid "Unmute"
 msgstr "Activează sunetul"
 
-#: src/parole-player.c:2821
+#: src/parole-player.c:2807
 msgid "Unable to open default web browser"
 msgstr "Nu se poate deschide navigatorul web implicit"
 
-#: src/parole-player.c:2823
+#: src/parole-player.c:2809
 msgid ""
 "Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr "Vă rugăm să accesați https://docs.xfce.org/apps/parole/bugs pentru a raporta problema dumneavoastră."
 
-#: src/parole-player.c:2851
+#: src/parole-player.c:2837
 msgid "Go"
 msgstr "Navigare"
 
 #. Clear Recent Menu Item
-#: src/parole-player.c:3279
+#: src/parole-player.c:3265
 msgid "_Clear recent items..."
 msgstr "_Șterge elementele recente..."
 
-#: src/parole-player.c:3590
+#: src/parole-player.c:3576
 msgid "Audio Track:"
 msgstr "Pista audio:"
 
-#: src/parole-player.c:3609
+#: src/parole-player.c:3595
 msgid "Subtitles:"
 msgstr "Subtitrare:"
 
-#: src/parole-plugins-manager.c:288
+#: src/parole-plugins-manager.c:286
 msgid "Plugin failed to load"
 msgstr "Încărcarea modulului nu a reușit"
 
-#: src/parole-plugins-manager.c:289
+#: src/parole-plugins-manager.c:287
 msgid "Please check your installation"
 msgstr "Verificați instalarea"
 
-#: src/parole-plugins-manager.c:400
+#: src/parole-plugins-manager.c:398
 msgid "No installed plugins found on this system"
 msgstr "Nu s-au găsit module instalate în acest sistem"
 
-#: src/parole-plugins-manager.c:401
+#: src/parole-plugins-manager.c:399
 msgid "Please check your installation."
 msgstr "Verificați instalarea."
 
