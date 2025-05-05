@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-04-01 00:52+0200\n"
+"POT-Creation-Date: 2025-05-05 12:48+0200\n"
 "PO-Revision-Date: 2013-07-03 18:28+0000\n"
 "Last-Translator: se7entime <se7entime@disroot.org>, 2013\n"
 "Language-Team: Indonesian (http://app.transifex.com/xfce/xfce-apps/language/id/)\n"
@@ -30,7 +30,7 @@ msgstr "Buka Berkas Media"
 msgid "Open Network Location"
 msgstr "Buka Lokasi Jaringan"
 
-#: data/interfaces/open-location.ui:65 src/parole-open-location.c:193
+#: data/interfaces/open-location.ui:65 src/parole-open-location.c:191
 msgid "Clear History"
 msgstr "Hapus Riwayat"
 
@@ -52,7 +52,7 @@ msgstr ""
 
 #. Add a close button to the Infobar
 #: data/interfaces/parole-settings.ui:62 data/interfaces/plugins.ui:43
-#: src/parole-player.c:3644 src/plugins/tray/tray-provider.c:261
+#: src/parole-player.c:3601 src/plugins/tray/tray-provider.c:261
 msgid "Close"
 msgstr "Tutup"
 
@@ -145,8 +145,8 @@ msgid "<b>Playlist Preferences</b>"
 msgstr ""
 
 #: data/interfaces/parole-settings.ui:814 data/interfaces/playlist.ui:43
-#: data/interfaces/shortcuts.ui:99 src/parole-medialist.c:797
-#: src/parole-medialist.c:848 src/parole-player.c:3270
+#: data/interfaces/shortcuts.ui:99 src/parole-medialist.c:794
+#: src/parole-medialist.c:845 src/parole-player.c:3227
 msgid "Playlist"
 msgstr "Daftar Putar"
 
@@ -171,8 +171,8 @@ msgid "Subtitles"
 msgstr "<b>Subtitel</b>"
 
 #: data/interfaces/parole.ui:40 data/desktop/org.xfce.Parole.desktop.in.in:3
-#: src/parole-about.c:75 src/parole-player.c:599 src/parole-player.c:1440
-#: src/parole-player.c:1809 src/plugins/mpris2/mpris2-provider.c:189
+#: src/parole-about.c:78 src/parole-player.c:590 src/parole-player.c:1421
+#: src/parole-player.c:1790 src/plugins/mpris2/mpris2-provider.c:189
 msgid "Parole Media Player"
 msgstr "Pemutar Media Parole"
 
@@ -222,7 +222,7 @@ msgid "Show Playlist"
 msgstr "Tampilkan Daftar Putar"
 
 #. Create dialog
-#: data/interfaces/parole.ui:189 src/parole-player.c:2874
+#: data/interfaces/parole.ui:189 src/parole-player.c:2833
 msgid "Go to position"
 msgstr "Pergi ke posisi"
 
@@ -266,7 +266,7 @@ msgstr "_Audio"
 msgid "_Audio Track"
 msgstr "Trek _Audio"
 
-#: data/interfaces/parole.ui:316 src/parole-player.c:810
+#: data/interfaces/parole.ui:316 src/parole-player.c:796
 msgid "Empty"
 msgstr "Kosong"
 
@@ -286,8 +286,8 @@ msgstr "Dia_m"
 msgid "_Video"
 msgstr "_Video"
 
-#: data/interfaces/parole.ui:378 src/parole-player.c:1997
-#: src/parole-player.c:2142
+#: data/interfaces/parole.ui:378 src/parole-player.c:1978
+#: src/parole-player.c:2123
 msgid "_Fullscreen"
 msgstr "_Layar Penuh"
 
@@ -296,7 +296,7 @@ msgid "_Aspect Ratio"
 msgstr "Rasio _Aspek"
 
 #: data/interfaces/parole.ui:403 data/interfaces/parole.ui:488
-#: src/parole-player.c:741
+#: src/parole-player.c:732
 msgid "None"
 msgstr "Tak ada"
 
@@ -504,7 +504,7 @@ msgstr "Naikkan volume"
 msgid "Decrease volume"
 msgstr "Turunkan volume"
 
-#: data/interfaces/shortcuts.ui:90 src/parole-player.c:2414
+#: data/interfaces/shortcuts.ui:90 src/parole-player.c:2387
 msgid "Mute"
 msgstr "Bisukan"
 
@@ -529,15 +529,15 @@ msgid "Playback"
 msgstr "Putar"
 
 #: data/interfaces/shortcuts.ui:139
-#: data/desktop/org.xfce.Parole.desktop.in.in:16
+#: data/desktop/org.xfce.Parole.desktop.in.in:18
 msgid "Play/Pause"
 msgstr "Mainkan/Jeda"
 
-#: data/interfaces/shortcuts.ui:146 src/main.c:245
+#: data/interfaces/shortcuts.ui:146 src/main.c:248
 msgid "Previous track"
 msgstr "Trek sebelumnya"
 
-#: data/interfaces/shortcuts.ui:153 src/main.c:243
+#: data/interfaces/shortcuts.ui:153 src/main.c:246
 msgid "Next track"
 msgstr "Trek berikutnya"
 
@@ -569,13 +569,17 @@ msgstr "Maju 10 menit"
 msgid "Play your media"
 msgstr "Mainkan media anda"
 
-#: data/desktop/org.xfce.Parole.desktop.in.in:21 src/parole-player.c:3416
-#: src/plugins/notify/notify-provider.c:190
+#: data/desktop/org.xfce.Parole.desktop.in.in:11
+msgid "Media;Player;Audio;Video;Music;Playback;Xfce;"
+msgstr ""
+
+#: data/desktop/org.xfce.Parole.desktop.in.in:23 src/parole-player.c:3373
+#: src/plugins/notify/notify-provider.c:182
 msgid "Previous Track"
 msgstr "Trek Sebelumnya"
 
-#: data/desktop/org.xfce.Parole.desktop.in.in:26 src/parole-player.c:3434
-#: src/plugins/notify/notify-provider.c:202
+#: data/desktop/org.xfce.Parole.desktop.in.in:28 src/parole-player.c:3391
+#: src/plugins/notify/notify-provider.c:194
 msgid "Next Track"
 msgstr "Trek Selanjutnya"
 
@@ -621,92 +625,92 @@ msgstr "Pesan"
 msgid "Error"
 msgstr "Galat"
 
-#: src/gst/parole-gst.c:1111 src/parole-medialist.c:412
+#: src/gst/parole-gst.c:1091 src/parole-medialist.c:409
 #, c-format
 msgid "Track %i"
 msgstr "Trek %i"
 
-#: src/gst/parole-gst.c:1114
+#: src/gst/parole-gst.c:1094
 msgid "Audio CD"
 msgstr "CD Audio"
 
-#: src/gst/parole-gst.c:1292
+#: src/gst/parole-gst.c:1271
 msgid "Unable to install missing codecs."
 msgstr "Tak dapat memasang codec yang dibutuhkan."
 
-#: src/gst/parole-gst.c:1295
+#: src/gst/parole-gst.c:1274
 msgid "No available plugin installer was found."
 msgstr "Tak ditemukan pemasang plugin yang tersedia."
 
-#: src/gst/parole-gst.c:1346
+#: src/gst/parole-gst.c:1325
 msgid "Additional software is required."
 msgstr "Diperlukan perangkat lunak tambahan."
 
-#: src/gst/parole-gst.c:1350
+#: src/gst/parole-gst.c:1329
 msgid "Don't Install"
 msgstr "Jangan dipasang"
 
-#: src/gst/parole-gst.c:1352
+#: src/gst/parole-gst.c:1331
 msgid "Install"
 msgstr "Pasang"
 
-#: src/gst/parole-gst.c:1355
+#: src/gst/parole-gst.c:1334
 msgid "OK"
 msgstr "OK"
 
-#: src/gst/parole-gst.c:1362
+#: src/gst/parole-gst.c:1341
 #, c-format
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
 msgstr "Parole membutuhkan <b>%s</b> untuk memainkan berkas ini.\nPlugin ini dapat diinstal secara otomatis."
 
-#: src/gst/parole-gst.c:1365
+#: src/gst/parole-gst.c:1344
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
 msgstr "Parole membutuhkan <b>%s</b> untuk memainkan berkas ini."
 
-#: src/gst/parole-gst.c:1746
+#: src/gst/parole-gst.c:1725
 msgid "The stream is taking too much time to load"
 msgstr "Aliran data terlalu lama untuk dimuat"
 
-#: src/gst/parole-gst.c:1748
+#: src/gst/parole-gst.c:1727
 msgid "Do you want to continue loading or stop?"
 msgstr "Apakah ingin melanjutkan proses memuat?"
 
-#: src/gst/parole-gst.c:1749
+#: src/gst/parole-gst.c:1728
 msgid "Stop"
 msgstr "Stop"
 
-#: src/gst/parole-gst.c:1750
+#: src/gst/parole-gst.c:1729
 msgid "Continue"
 msgstr "Lanjutkan"
 
-#: src/gst/parole-gst.c:1949
+#: src/gst/parole-gst.c:1927
 msgid "GStreamer Error"
 msgstr "Galat pada GStreamer"
 
-#: src/gst/parole-gst.c:1950
+#: src/gst/parole-gst.c:1928
 msgid "Parole Media Player cannot start."
 msgstr "Parole tidak dapat dijalankan."
 
-#: src/gst/parole-gst.c:1975 src/gst/parole-gst.c:1990
-#: src/gst/parole-gst.c:2024
+#: src/gst/parole-gst.c:1953 src/gst/parole-gst.c:1968
+#: src/gst/parole-gst.c:1995
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
 msgstr "Gagal memuat plugin \"%s\", mohon periksa instalasi GStreamer anda."
 
-#: src/gst/parole-gst.c:2591 src/gst/parole-gst.c:2595
+#: src/gst/parole-gst.c:2562 src/gst/parole-gst.c:2566
 #, c-format
 msgid "Audio Track #%d"
 msgstr "Trek Audio #%d"
 
-#: src/gst/parole-gst.c:2631 src/gst/parole-gst.c:2635
+#: src/gst/parole-gst.c:2602 src/gst/parole-gst.c:2606
 #, c-format
 msgid "Subtitle #%d"
 msgstr "Subtitel #%d"
 
-#: src/main.c:62
+#: src/main.c:65
 #, c-format
 msgid ""
 "\n"
@@ -721,55 +725,55 @@ msgid ""
 "\n"
 msgstr ""
 
-#: src/main.c:231
+#: src/main.c:234
 msgid "Open a new instance"
 msgstr "Jalankan instansiasi baru"
 
-#: src/main.c:233
+#: src/main.c:236
 msgid "Do not load plugins"
 msgstr "Jangan muat plugin"
 
-#: src/main.c:235
+#: src/main.c:238
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "Atur alamat divais CD/ VCD / DVD"
 
-#: src/main.c:237
+#: src/main.c:240
 msgid "Start in embedded mode"
 msgstr "Jalankan pada mode lekat"
 
-#: src/main.c:239
+#: src/main.c:242
 msgid "Start in fullscreen mode"
 msgstr "Jalankan di mode layar penuh"
 
-#: src/main.c:241
+#: src/main.c:244
 msgid "Play or pause if already playing"
 msgstr "Mainkan atau jeda"
 
-#: src/main.c:247
+#: src/main.c:250
 msgid "Raise volume"
 msgstr "Besarkan volume"
 
-#: src/main.c:249
+#: src/main.c:252
 msgid "Lower volume"
 msgstr "Kecilkan volume"
 
-#: src/main.c:251
+#: src/main.c:254
 msgid "Mute volume"
 msgstr "Diamkan volume"
 
-#: src/main.c:253
+#: src/main.c:256
 msgid "Unmute (restore) volume"
 msgstr "Suarakan"
 
-#: src/main.c:255
+#: src/main.c:258
 msgid "Add files to playlist"
 msgstr "Tambahkan ke daftar putar"
 
-#: src/main.c:257
+#: src/main.c:260
 msgid "Print version information and exit"
 msgstr "Tampilkan informasi versi"
 
-#: src/main.c:261
+#: src/main.c:264
 msgid "Media to play"
 msgstr "Media untuk dimainkan"
 
@@ -806,254 +810,250 @@ msgstr "Semua berkas yang didukung"
 msgid "Playlist files"
 msgstr "Berkas senarai putar"
 
-#: src/parole-about.c:70
+#: src/parole-about.c:73
 msgid "A modern simple media player for the Xfce Desktop Environment."
 msgstr "Sebuah pemutar media modern yang sederhana untuk Lingkungan Desktop Xfce."
 
-#: src/parole-about.c:76
+#: src/parole-about.c:79
 msgid "translator-credits"
 msgstr "Kukuh Syafaat <syafaatkukuh@gmail.com>, 2017.\nTriyan W. Nugroho <triyan.wn@gmail.com>, 2020, 2021."
 
-#: src/parole-about.c:79
+#: src/parole-about.c:82
 msgid "Visit Parole website"
 msgstr "Kunjungi situs web Parole"
-
-#: src/parole-conf-dialog.c:287
-msgid "Clutter (OpenGL)"
-msgstr "Clutter (OpenGL)"
 
 #: src/parole-disc.c:106
 msgid "Play Disc"
 msgstr "Putar Cakram"
 
-#: src/parole-mediachooser.c:236 src/parole-medialist.c:855
-#: src/parole-player.c:1015
+#: src/parole-mediachooser.c:234 src/parole-medialist.c:852
+#: src/parole-player.c:1001
 msgid "All files"
 msgstr "Semua berkas"
 
-#: src/parole-medialist.c:260 src/parole-medialist.c:1644
+#: src/parole-medialist.c:257 src/parole-medialist.c:1621
 #, c-format
 msgid "Playlist (%i item)"
 msgid_plural "Playlist (%i items)"
 msgstr[0] "Senarai putar (%i item)"
 
-#: src/parole-medialist.c:262 src/parole-medialist.c:1646
+#: src/parole-medialist.c:259 src/parole-medialist.c:1623
 #, c-format
 msgid "Playlist (%i chapter)"
 msgid_plural "Playlist (%i chapters)"
 msgstr[0] "Senarai putar (%i bagian)"
 
-#: src/parole-medialist.c:426 src/parole-player.c:721
+#: src/parole-medialist.c:423 src/parole-player.c:712
 #, c-format
 msgid "Chapter %i"
 msgstr "Penggalan %i"
 
-#: src/parole-medialist.c:686
+#: src/parole-medialist.c:683
 msgid "Permission denied"
 msgstr "Hak akses ditolak"
 
-#: src/parole-medialist.c:688
+#: src/parole-medialist.c:685
 msgid "Error saving playlist file"
 msgstr "Galat menyimpan berkas senarai putar"
 
-#: src/parole-medialist.c:698
+#: src/parole-medialist.c:695
 msgid "Unknown playlist format"
 msgstr "Format daftar putar tak dikenal"
 
-#: src/parole-medialist.c:699
+#: src/parole-medialist.c:696
 msgid "Please choose a supported playlist format"
 msgstr "Silakan pilih format senarai putar yang didukung"
 
-#: src/parole-medialist.c:745 src/parole-plugins-manager.c:363
+#: src/parole-medialist.c:742 src/parole-plugins-manager.c:361
 msgid "Unknown"
 msgstr "Tak Dikenal"
 
-#: src/parole-medialist.c:838 src/parole-player.c:986 src/parole-player.c:1177
-#: src/parole-player.c:2877 src/plugins/tray/tray-provider.c:348
+#: src/parole-medialist.c:835 src/parole-player.c:972 src/parole-player.c:1163
+#: src/parole-player.c:2836 src/plugins/tray/tray-provider.c:348
 msgid "Cancel"
 msgstr "Batal"
 
-#: src/parole-medialist.c:839
+#: src/parole-medialist.c:836
 msgid "Save"
 msgstr "Simpan"
 
-#: src/parole-medialist.c:860
+#: src/parole-medialist.c:857
 #, c-format
 msgid "M3U Playlist (%s)"
 msgstr "Senarai Putar M3U (%s)"
 
-#: src/parole-medialist.c:870
+#: src/parole-medialist.c:867
 #, c-format
 msgid "PLS Playlist (%s)"
 msgstr "Senarai Putar PLS (%s)"
 
-#: src/parole-medialist.c:880
+#: src/parole-medialist.c:877
 #, c-format
 msgid "Advanced Stream Redirector (%s)"
 msgstr "Advanced Stream Redirector (%s)"
 
-#: src/parole-medialist.c:890
+#: src/parole-medialist.c:887
 #, c-format
 msgid "Shareable Playlist (%s)"
 msgstr "Senarai Putar Dapat Dibagikan (%s)"
 
 #. Clear
-#: src/parole-medialist.c:1280
+#: src/parole-medialist.c:1272
 msgid "Open Containing Folder"
 msgstr "Buka Isi Folder"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: src/parole-player.c:980
+#: src/parole-player.c:966
 msgid "Select Subtitle File"
 msgstr "Pilih Berkas Subtitel"
 
-#: src/parole-player.c:987
+#: src/parole-player.c:973
 msgid "Open"
 msgstr "Buka"
 
-#: src/parole-player.c:1003
+#: src/parole-player.c:989
 msgid "Subtitle Files"
 msgstr "Berkas Subtitel"
 
-#: src/parole-player.c:1173 src/parole-player.c:1181
+#: src/parole-player.c:1159 src/parole-player.c:1167
 msgid "Clear Recent Items"
 msgstr "Bersihkan Item Terakhir"
 
-#: src/parole-player.c:1175
+#: src/parole-player.c:1161
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
 msgstr "Daftar riwayat konten yang pernah dibuka akan dibersihkan dan tidak dapat dibatalkan setelah ini. Apakah anda ingin melanjutkan?"
 
-#: src/parole-player.c:1271 src/parole-player.c:1396
+#: src/parole-player.c:1257 src/parole-player.c:1377
 msgid "Media stream is not seekable"
 msgstr "Arus media tidak ditemukan"
 
-#: src/parole-player.c:1281
+#: src/parole-player.c:1267
 msgid "Play"
 msgstr "Mainkan"
 
-#: src/parole-player.c:1284
+#: src/parole-player.c:1270
 msgid "Pause"
 msgstr "Jeda"
 
-#: src/parole-player.c:1730
+#: src/parole-player.c:1711
 msgid "GStreamer backend error"
 msgstr "Galat pada GStreamer"
 
-#: src/parole-player.c:1814
+#: src/parole-player.c:1795
 msgid "Unknown Song"
 msgstr "Lagu tak dikenal"
 
-#: src/parole-player.c:1825 src/parole-player.c:1831 src/parole-player.c:1839
+#: src/parole-player.c:1806 src/parole-player.c:1812 src/parole-player.c:1820
 msgid "on"
 msgstr "di"
 
-#: src/parole-player.c:1839 src/plugins/notify/notify-provider.c:134
+#: src/parole-player.c:1820 src/plugins/notify/notify-provider.c:134
 msgid "Unknown Album"
 msgstr "Album Tak Dikenal"
 
-#: src/parole-player.c:1850 src/parole-player.c:1857
+#: src/parole-player.c:1831 src/parole-player.c:1838
 msgid "by"
 msgstr "oleh"
 
-#: src/parole-player.c:1857 src/plugins/notify/notify-provider.c:136
+#: src/parole-player.c:1838 src/plugins/notify/notify-provider.c:136
 msgid "Unknown Artist"
 msgstr "Artis Tak Dikenal"
 
-#: src/parole-player.c:1892
+#: src/parole-player.c:1873
 msgid "Buffering"
 msgstr "Menyangga"
 
-#: src/parole-player.c:1998 src/parole-player.c:3451
+#: src/parole-player.c:1979 src/parole-player.c:3408
 msgid "Fullscreen"
 msgstr "Layar Penuh"
 
-#: src/parole-player.c:2006
+#: src/parole-player.c:1987
 msgid "Leave _Fullscreen"
 msgstr "Tinggalkan Mode _Layar Penuh"
 
-#: src/parole-player.c:2007
+#: src/parole-player.c:1988
 msgid "Leave Fullscreen"
 msgstr "Tinggalkan Mode Layar Penuh"
 
 #. Play menu item
 #. * Play pause
-#: src/parole-player.c:2104 src/plugins/tray/tray-provider.c:123
+#: src/parole-player.c:2085 src/plugins/tray/tray-provider.c:123
 msgid "_Pause"
 msgstr "_Jeda"
 
-#: src/parole-player.c:2104 src/plugins/tray/tray-provider.c:123
+#: src/parole-player.c:2085 src/plugins/tray/tray-provider.c:123
 msgid "_Play"
 msgstr "_Mainkan"
 
 #. * Previous item in playlist.
-#: src/parole-player.c:2120
+#: src/parole-player.c:2101
 msgid "_Previous"
 msgstr "Se_belumnya"
 
 #. * Next item in playlist.
-#: src/parole-player.c:2131
+#: src/parole-player.c:2112
 msgid "_Next"
 msgstr "Selanjut_nya"
 
 #. * Un/Full screen
-#: src/parole-player.c:2142
+#: src/parole-player.c:2123
 msgid "_Leave Fullscreen"
 msgstr "Tinggalkan _Layar Penuh"
 
 #. * Un/Hide menubar
-#: src/parole-player.c:2157
+#: src/parole-player.c:2138
 msgid "Show menubar"
 msgstr "Tampilkan Mistar Menu"
 
-#: src/parole-player.c:2174
+#: src/parole-player.c:2155
 msgid "Mini Mode"
 msgstr "Mode Mini"
 
-#: src/parole-player.c:2417
+#: src/parole-player.c:2390
 msgid "Unmute"
 msgstr "Suarakan"
 
-#: src/parole-player.c:2848
+#: src/parole-player.c:2807
 msgid "Unable to open default web browser"
 msgstr "Gagal membuka peramban web"
 
-#: src/parole-player.c:2850
+#: src/parole-player.c:2809
 msgid ""
 "Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr "Mohon pergi ke https://docs.xfce.org/apps/parole/bugs untuk melaporkan kutu Anda."
 
-#: src/parole-player.c:2878
+#: src/parole-player.c:2837
 msgid "Go"
 msgstr "Pergi"
 
 #. Clear Recent Menu Item
-#: src/parole-player.c:3308
+#: src/parole-player.c:3265
 msgid "_Clear recent items..."
 msgstr "_Bersihkan item baru-baru ini..."
 
-#: src/parole-player.c:3619
+#: src/parole-player.c:3576
 msgid "Audio Track:"
 msgstr "Trek Audio:"
 
-#: src/parole-player.c:3638
+#: src/parole-player.c:3595
 msgid "Subtitles:"
 msgstr "Subtitel:"
 
-#: src/parole-plugins-manager.c:288
+#: src/parole-plugins-manager.c:286
 msgid "Plugin failed to load"
 msgstr "Gagal memuat plugin"
 
-#: src/parole-plugins-manager.c:289
+#: src/parole-plugins-manager.c:287
 msgid "Please check your installation"
 msgstr "Mohon periksa instalasi perangkat lunak anda"
 
-#: src/parole-plugins-manager.c:400
+#: src/parole-plugins-manager.c:398
 msgid "No installed plugins found on this system"
 msgstr "Tak ada plugin terinstal yang ditemukan di sistem ini"
 
-#: src/parole-plugins-manager.c:401
+#: src/parole-plugins-manager.c:399
 msgid "Please check your installation."
 msgstr "Mohon periksa instalasi perangkat lunak anda."
 
