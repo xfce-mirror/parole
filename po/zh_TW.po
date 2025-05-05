@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-10-15 00:49+0200\n"
+"POT-Creation-Date: 2025-05-05 12:48+0200\n"
 "PO-Revision-Date: 2013-07-03 18:28+0000\n"
 "Last-Translator: 黃柏諺 <s8321414@gmail.com>, 2019-2020,2023-2024\n"
 "Language-Team: Chinese (Taiwan) (http://app.transifex.com/xfce/xfce-apps/language/zh_TW/)\n"
@@ -29,7 +29,7 @@ msgstr "開啟媒體檔案"
 msgid "Open Network Location"
 msgstr "開啟網路位置"
 
-#: data/interfaces/open-location.ui:65 src/parole-open-location.c:193
+#: data/interfaces/open-location.ui:65 src/parole-open-location.c:191
 msgid "Clear History"
 msgstr "清除歷史"
 
@@ -51,7 +51,7 @@ msgstr "Parole 偏好設定"
 
 #. Add a close button to the Infobar
 #: data/interfaces/parole-settings.ui:62 data/interfaces/plugins.ui:43
-#: src/parole-player.c:3615 src/plugins/tray/tray-provider.c:261
+#: src/parole-player.c:3601 src/plugins/tray/tray-provider.c:261
 msgid "Close"
 msgstr "關閉"
 
@@ -144,8 +144,8 @@ msgid "<b>Playlist Preferences</b>"
 msgstr "<b>播放清單偏好設定</b>"
 
 #: data/interfaces/parole-settings.ui:814 data/interfaces/playlist.ui:43
-#: data/interfaces/shortcuts.ui:99 src/parole-medialist.c:797
-#: src/parole-medialist.c:848 src/parole-player.c:3241
+#: data/interfaces/shortcuts.ui:99 src/parole-medialist.c:794
+#: src/parole-medialist.c:845 src/parole-player.c:3227
 msgid "Playlist"
 msgstr "播放清單"
 
@@ -170,8 +170,8 @@ msgid "Subtitles"
 msgstr "字幕"
 
 #: data/interfaces/parole.ui:40 data/desktop/org.xfce.Parole.desktop.in.in:3
-#: src/parole-about.c:75 src/parole-player.c:599 src/parole-player.c:1435
-#: src/parole-player.c:1804 src/plugins/mpris2/mpris2-provider.c:189
+#: src/parole-about.c:78 src/parole-player.c:590 src/parole-player.c:1421
+#: src/parole-player.c:1790 src/plugins/mpris2/mpris2-provider.c:189
 msgid "Parole Media Player"
 msgstr "Parole 媒體播放器"
 
@@ -221,7 +221,7 @@ msgid "Show Playlist"
 msgstr "顯示播放清單"
 
 #. Create dialog
-#: data/interfaces/parole.ui:189 src/parole-player.c:2847
+#: data/interfaces/parole.ui:189 src/parole-player.c:2833
 msgid "Go to position"
 msgstr "到位置"
 
@@ -265,7 +265,7 @@ msgstr "音訊(_A)"
 msgid "_Audio Track"
 msgstr "音軌(_A)"
 
-#: data/interfaces/parole.ui:316 src/parole-player.c:805
+#: data/interfaces/parole.ui:316 src/parole-player.c:796
 msgid "Empty"
 msgstr "空"
 
@@ -285,8 +285,8 @@ msgstr "靜音(_M)"
 msgid "_Video"
 msgstr "視訊(_V)"
 
-#: data/interfaces/parole.ui:378 src/parole-player.c:1992
-#: src/parole-player.c:2137
+#: data/interfaces/parole.ui:378 src/parole-player.c:1978
+#: src/parole-player.c:2123
 msgid "_Fullscreen"
 msgstr "全螢幕(_F)"
 
@@ -295,7 +295,7 @@ msgid "_Aspect Ratio"
 msgstr "長寬比(_A)"
 
 #: data/interfaces/parole.ui:403 data/interfaces/parole.ui:488
-#: src/parole-player.c:741
+#: src/parole-player.c:732
 msgid "None"
 msgstr "無"
 
@@ -503,7 +503,7 @@ msgstr "增加音量"
 msgid "Decrease volume"
 msgstr "降低音量"
 
-#: data/interfaces/shortcuts.ui:90 src/parole-player.c:2401
+#: data/interfaces/shortcuts.ui:90 src/parole-player.c:2387
 msgid "Mute"
 msgstr "靜音"
 
@@ -528,15 +528,15 @@ msgid "Playback"
 msgstr "播放"
 
 #: data/interfaces/shortcuts.ui:139
-#: data/desktop/org.xfce.Parole.desktop.in.in:17
+#: data/desktop/org.xfce.Parole.desktop.in.in:18
 msgid "Play/Pause"
 msgstr "播放/暫停"
 
-#: data/interfaces/shortcuts.ui:146 src/main.c:245
+#: data/interfaces/shortcuts.ui:146 src/main.c:248
 msgid "Previous track"
 msgstr "上個軌道"
 
-#: data/interfaces/shortcuts.ui:153 src/main.c:243
+#: data/interfaces/shortcuts.ui:153 src/main.c:246
 msgid "Next track"
 msgstr "下個軌道"
 
@@ -572,12 +572,12 @@ msgstr "播放您的媒體"
 msgid "Media;Player;Audio;Video;Music;Playback;Xfce;"
 msgstr "Media;Player;Audio;Video;Music;Playback;Xfce;"
 
-#: data/desktop/org.xfce.Parole.desktop.in.in:22 src/parole-player.c:3387
+#: data/desktop/org.xfce.Parole.desktop.in.in:23 src/parole-player.c:3373
 #: src/plugins/notify/notify-provider.c:182
 msgid "Previous Track"
 msgstr "上一軌"
 
-#: data/desktop/org.xfce.Parole.desktop.in.in:27 src/parole-player.c:3405
+#: data/desktop/org.xfce.Parole.desktop.in.in:28 src/parole-player.c:3391
 #: src/plugins/notify/notify-provider.c:194
 msgid "Next Track"
 msgstr "下一軌"
@@ -624,92 +624,92 @@ msgstr "訊息"
 msgid "Error"
 msgstr "錯誤"
 
-#: src/gst/parole-gst.c:1100 src/parole-medialist.c:412
+#: src/gst/parole-gst.c:1091 src/parole-medialist.c:409
 #, c-format
 msgid "Track %i"
 msgstr "第 %i 軌"
 
-#: src/gst/parole-gst.c:1103
+#: src/gst/parole-gst.c:1094
 msgid "Audio CD"
 msgstr "音訊 CD"
 
-#: src/gst/parole-gst.c:1280
+#: src/gst/parole-gst.c:1271
 msgid "Unable to install missing codecs."
 msgstr "無法安裝遺失的編解碼器。"
 
-#: src/gst/parole-gst.c:1283
+#: src/gst/parole-gst.c:1274
 msgid "No available plugin installer was found."
 msgstr "找不到可用的外掛程式之安裝程式。"
 
-#: src/gst/parole-gst.c:1334
+#: src/gst/parole-gst.c:1325
 msgid "Additional software is required."
 msgstr "需要額外軟體"
 
-#: src/gst/parole-gst.c:1338
+#: src/gst/parole-gst.c:1329
 msgid "Don't Install"
 msgstr "不安裝"
 
-#: src/gst/parole-gst.c:1340
+#: src/gst/parole-gst.c:1331
 msgid "Install"
 msgstr "安裝"
 
-#: src/gst/parole-gst.c:1343
+#: src/gst/parole-gst.c:1334
 msgid "OK"
 msgstr "確定"
 
-#: src/gst/parole-gst.c:1350
+#: src/gst/parole-gst.c:1341
 #, c-format
 msgid ""
 "Parole needs <b>%s</b> to play this file.\n"
 "It can be installed automatically."
 msgstr "Parole 需要有 <b>%s</b> 才能播放這類檔案。\n它可以自動安裝。"
 
-#: src/gst/parole-gst.c:1353
+#: src/gst/parole-gst.c:1344
 #, c-format
 msgid "Parole needs <b>%s</b> to play this file."
 msgstr "Parole 需要有 <b>%s</b> 才能播放此檔案。"
 
-#: src/gst/parole-gst.c:1734
+#: src/gst/parole-gst.c:1725
 msgid "The stream is taking too much time to load"
 msgstr "串流花費過多時間載入"
 
-#: src/gst/parole-gst.c:1736
+#: src/gst/parole-gst.c:1727
 msgid "Do you want to continue loading or stop?"
 msgstr "要繼續載入還是停止？"
 
-#: src/gst/parole-gst.c:1737
+#: src/gst/parole-gst.c:1728
 msgid "Stop"
 msgstr "停止"
 
-#: src/gst/parole-gst.c:1738
+#: src/gst/parole-gst.c:1729
 msgid "Continue"
 msgstr "繼續"
 
-#: src/gst/parole-gst.c:1936
+#: src/gst/parole-gst.c:1927
 msgid "GStreamer Error"
 msgstr "GStreamer 出錯"
 
-#: src/gst/parole-gst.c:1937
+#: src/gst/parole-gst.c:1928
 msgid "Parole Media Player cannot start."
 msgstr "Parole 媒體播放器無法停止。"
 
-#: src/gst/parole-gst.c:1962 src/gst/parole-gst.c:1977
-#: src/gst/parole-gst.c:2011
+#: src/gst/parole-gst.c:1953 src/gst/parole-gst.c:1968
+#: src/gst/parole-gst.c:1995
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
 msgstr "無法載入「%s」插件，請檢查 GStreamer 是否安裝妥當。"
 
-#: src/gst/parole-gst.c:2578 src/gst/parole-gst.c:2582
+#: src/gst/parole-gst.c:2562 src/gst/parole-gst.c:2566
 #, c-format
 msgid "Audio Track #%d"
 msgstr "第 %d 音軌"
 
-#: src/gst/parole-gst.c:2618 src/gst/parole-gst.c:2622
+#: src/gst/parole-gst.c:2602 src/gst/parole-gst.c:2606
 #, c-format
 msgid "Subtitle #%d"
 msgstr "第 %d 字幕"
 
-#: src/main.c:62
+#: src/main.c:65
 #, c-format
 msgid ""
 "\n"
@@ -724,68 +724,68 @@ msgid ""
 "\n"
 msgstr "\nParole 媒體播放器 %s\n\nXfce 好物專案的一部份\nhttps://goodies.xfce.org\n\n以 GNU GPL 授權。\n\n若有問題請回報至 <%s>。\n\n"
 
-#: src/main.c:231
+#: src/main.c:234
 msgid "Open a new instance"
 msgstr "開啟新的實體"
 
-#: src/main.c:233
+#: src/main.c:236
 msgid "Do not load plugins"
 msgstr "不要載入插件"
 
-#: src/main.c:235
+#: src/main.c:238
 msgid "Set Audio-CD/VCD/DVD device path"
 msgstr "設定音訊 CD/VCD/DVD 裝置路徑"
 
-#: src/main.c:237
+#: src/main.c:240
 msgid "Start in embedded mode"
 msgstr "以內嵌模式啟動"
 
-#: src/main.c:239
+#: src/main.c:242
 msgid "Start in fullscreen mode"
 msgstr "以全螢幕模式啟動"
 
-#: src/main.c:241
+#: src/main.c:244
 msgid "Play or pause if already playing"
 msgstr "如果已經在播放中要播放或暫停"
 
-#: src/main.c:247
+#: src/main.c:250
 msgid "Raise volume"
 msgstr "提高音量"
 
-#: src/main.c:249
+#: src/main.c:252
 msgid "Lower volume"
 msgstr "降低音量"
 
-#: src/main.c:251
+#: src/main.c:254
 msgid "Mute volume"
 msgstr "靜音"
 
-#: src/main.c:253
+#: src/main.c:256
 msgid "Unmute (restore) volume"
 msgstr "取消靜音 (回復) 音量"
 
-#: src/main.c:255
+#: src/main.c:258
 msgid "Add files to playlist"
 msgstr "為播放清單加入檔案"
 
-#: src/main.c:257
+#: src/main.c:260
 msgid "Print version information and exit"
 msgstr "顯示版本資訊並結束"
 
-#: src/main.c:261
+#: src/main.c:264
 msgid "Media to play"
 msgstr "要播放的媒體"
 
-#: src/main.c:285
+#: src/main.c:288
 msgid "[FILES...] - Play movies and songs"
 msgstr "[檔案...] - 播放電影和歌曲"
 
-#: src/main.c:296
+#: src/main.c:299
 #, c-format
 msgid "Type %s --help to list all available command line options\n"
 msgstr "鍵入 %s --help 列出所有可用的指令列選項\n"
 
-#: src/main.c:313
+#: src/main.c:316
 msgid "Parole is already running, use -i to open a new instance\n"
 msgstr "Parole 已經在執行中，使用 -i 來開啟新的實體\n"
 
@@ -809,254 +809,250 @@ msgstr "所有支援的檔案"
 msgid "Playlist files"
 msgstr "播放清單檔案"
 
-#: src/parole-about.c:70
+#: src/parole-about.c:73
 msgid "A modern simple media player for the Xfce Desktop Environment."
 msgstr "Xfce 桌面環境的現代簡潔媒體播放器。"
 
-#: src/parole-about.c:76
+#: src/parole-about.c:79
 msgid "translator-credits"
 msgstr "Walter Cheuk <wwycheuk@gmail.com>, 2014.\nCheng-Chia Tseng <pswo10680@gmail.com>"
 
-#: src/parole-about.c:79
+#: src/parole-about.c:82
 msgid "Visit Parole website"
 msgstr "造訪 Parole 網站"
-
-#: src/parole-conf-dialog.c:287
-msgid "Clutter (OpenGL)"
-msgstr "Clutter (OpenGL)"
 
 #: src/parole-disc.c:106
 msgid "Play Disc"
 msgstr "播放光碟"
 
-#: src/parole-mediachooser.c:236 src/parole-medialist.c:855
-#: src/parole-player.c:1010
+#: src/parole-mediachooser.c:234 src/parole-medialist.c:852
+#: src/parole-player.c:1001
 msgid "All files"
 msgstr "所有檔案"
 
-#: src/parole-medialist.c:260 src/parole-medialist.c:1624
+#: src/parole-medialist.c:257 src/parole-medialist.c:1621
 #, c-format
 msgid "Playlist (%i item)"
 msgid_plural "Playlist (%i items)"
 msgstr[0] "播放清單 (%i 個項目)"
 
-#: src/parole-medialist.c:262 src/parole-medialist.c:1626
+#: src/parole-medialist.c:259 src/parole-medialist.c:1623
 #, c-format
 msgid "Playlist (%i chapter)"
 msgid_plural "Playlist (%i chapters)"
 msgstr[0] "播放清單 (%i 個章節)"
 
-#: src/parole-medialist.c:426 src/parole-player.c:721
+#: src/parole-medialist.c:423 src/parole-player.c:712
 #, c-format
 msgid "Chapter %i"
 msgstr "第 %i 章"
 
-#: src/parole-medialist.c:686
+#: src/parole-medialist.c:683
 msgid "Permission denied"
 msgstr "許可請求遭拒"
 
-#: src/parole-medialist.c:688
+#: src/parole-medialist.c:685
 msgid "Error saving playlist file"
 msgstr "儲存播放清單檔時發生錯誤"
 
-#: src/parole-medialist.c:698
+#: src/parole-medialist.c:695
 msgid "Unknown playlist format"
 msgstr "未知的播放清單格式"
 
-#: src/parole-medialist.c:699
+#: src/parole-medialist.c:696
 msgid "Please choose a supported playlist format"
 msgstr "請選擇支援的播放清單格式"
 
-#: src/parole-medialist.c:745 src/parole-plugins-manager.c:363
+#: src/parole-medialist.c:742 src/parole-plugins-manager.c:361
 msgid "Unknown"
 msgstr "未知"
 
-#: src/parole-medialist.c:838 src/parole-player.c:981 src/parole-player.c:1172
-#: src/parole-player.c:2850 src/plugins/tray/tray-provider.c:348
+#: src/parole-medialist.c:835 src/parole-player.c:972 src/parole-player.c:1163
+#: src/parole-player.c:2836 src/plugins/tray/tray-provider.c:348
 msgid "Cancel"
 msgstr "取消"
 
-#: src/parole-medialist.c:839
+#: src/parole-medialist.c:836
 msgid "Save"
 msgstr "儲存"
 
-#: src/parole-medialist.c:860
+#: src/parole-medialist.c:857
 #, c-format
 msgid "M3U Playlist (%s)"
 msgstr "M3U 播放清單 (%s)"
 
-#: src/parole-medialist.c:870
+#: src/parole-medialist.c:867
 #, c-format
 msgid "PLS Playlist (%s)"
 msgstr "PLS 播放清單 (%s)"
 
-#: src/parole-medialist.c:880
+#: src/parole-medialist.c:877
 #, c-format
 msgid "Advanced Stream Redirector (%s)"
 msgstr "進階串流重新導向程式 (%s)"
 
-#: src/parole-medialist.c:890
+#: src/parole-medialist.c:887
 #, c-format
 msgid "Shareable Playlist (%s)"
 msgstr "可分享的播放清單 (%s)"
 
 #. Clear
-#: src/parole-medialist.c:1275
+#: src/parole-medialist.c:1272
 msgid "Open Containing Folder"
 msgstr "開啟所在資料夾"
 
 #. Build the FileChooser dialog for subtitle selection.
-#: src/parole-player.c:975
+#: src/parole-player.c:966
 msgid "Select Subtitle File"
 msgstr "選取字幕檔"
 
-#: src/parole-player.c:982
+#: src/parole-player.c:973
 msgid "Open"
 msgstr "開啟"
 
-#: src/parole-player.c:998
+#: src/parole-player.c:989
 msgid "Subtitle Files"
 msgstr "字幕檔"
 
-#: src/parole-player.c:1168 src/parole-player.c:1176
+#: src/parole-player.c:1159 src/parole-player.c:1167
 msgid "Clear Recent Items"
 msgstr "清除最近播放項目"
 
-#: src/parole-player.c:1170
+#: src/parole-player.c:1161
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
 msgstr "您確定要清除您最近的播放歷史？這無法還原。"
 
-#: src/parole-player.c:1266 src/parole-player.c:1391
+#: src/parole-player.c:1257 src/parole-player.c:1377
 msgid "Media stream is not seekable"
 msgstr "媒體串流無法跳查"
 
-#: src/parole-player.c:1276
+#: src/parole-player.c:1267
 msgid "Play"
 msgstr "播放"
 
-#: src/parole-player.c:1279
+#: src/parole-player.c:1270
 msgid "Pause"
 msgstr "暫停"
 
-#: src/parole-player.c:1725
+#: src/parole-player.c:1711
 msgid "GStreamer backend error"
 msgstr "GStreamer 後端出錯"
 
-#: src/parole-player.c:1809
+#: src/parole-player.c:1795
 msgid "Unknown Song"
 msgstr "未知的歌曲"
 
-#: src/parole-player.c:1820 src/parole-player.c:1826 src/parole-player.c:1834
+#: src/parole-player.c:1806 src/parole-player.c:1812 src/parole-player.c:1820
 msgid "on"
 msgstr "專輯："
 
-#: src/parole-player.c:1834 src/plugins/notify/notify-provider.c:134
+#: src/parole-player.c:1820 src/plugins/notify/notify-provider.c:134
 msgid "Unknown Album"
 msgstr "未知的專輯"
 
-#: src/parole-player.c:1845 src/parole-player.c:1852
+#: src/parole-player.c:1831 src/parole-player.c:1838
 msgid "by"
 msgstr "演出："
 
-#: src/parole-player.c:1852 src/plugins/notify/notify-provider.c:136
+#: src/parole-player.c:1838 src/plugins/notify/notify-provider.c:136
 msgid "Unknown Artist"
 msgstr "未知的演出者"
 
-#: src/parole-player.c:1887
+#: src/parole-player.c:1873
 msgid "Buffering"
 msgstr "緩衝中"
 
-#: src/parole-player.c:1993 src/parole-player.c:3422
+#: src/parole-player.c:1979 src/parole-player.c:3408
 msgid "Fullscreen"
 msgstr "全螢幕"
 
-#: src/parole-player.c:2001
+#: src/parole-player.c:1987
 msgid "Leave _Fullscreen"
 msgstr "離開全螢幕(_F)"
 
-#: src/parole-player.c:2002
+#: src/parole-player.c:1988
 msgid "Leave Fullscreen"
 msgstr "離開全螢幕"
 
 #. Play menu item
 #. * Play pause
-#: src/parole-player.c:2099 src/plugins/tray/tray-provider.c:123
+#: src/parole-player.c:2085 src/plugins/tray/tray-provider.c:123
 msgid "_Pause"
 msgstr "暫停(_P)"
 
-#: src/parole-player.c:2099 src/plugins/tray/tray-provider.c:123
+#: src/parole-player.c:2085 src/plugins/tray/tray-provider.c:123
 msgid "_Play"
 msgstr "播放(_P)"
 
 #. * Previous item in playlist.
-#: src/parole-player.c:2115
+#: src/parole-player.c:2101
 msgid "_Previous"
 msgstr "前一個(_P)"
 
 #. * Next item in playlist.
-#: src/parole-player.c:2126
+#: src/parole-player.c:2112
 msgid "_Next"
 msgstr "下一個(_N)"
 
 #. * Un/Full screen
-#: src/parole-player.c:2137
+#: src/parole-player.c:2123
 msgid "_Leave Fullscreen"
 msgstr "離開全螢幕(_L)"
 
 #. * Un/Hide menubar
-#: src/parole-player.c:2152
+#: src/parole-player.c:2138
 msgid "Show menubar"
 msgstr "顯示選單列"
 
-#: src/parole-player.c:2169
+#: src/parole-player.c:2155
 msgid "Mini Mode"
 msgstr "迷你模式"
 
-#: src/parole-player.c:2404
+#: src/parole-player.c:2390
 msgid "Unmute"
 msgstr "取消靜音"
 
-#: src/parole-player.c:2821
+#: src/parole-player.c:2807
 msgid "Unable to open default web browser"
 msgstr "無法開啟預設網頁瀏覽器"
 
-#: src/parole-player.c:2823
+#: src/parole-player.c:2809
 msgid ""
 "Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
 msgstr "若要報告問題，請到 https://docs.xfce.org/apps/parole/bugs 。"
 
-#: src/parole-player.c:2851
+#: src/parole-player.c:2837
 msgid "Go"
 msgstr "到"
 
 #. Clear Recent Menu Item
-#: src/parole-player.c:3279
+#: src/parole-player.c:3265
 msgid "_Clear recent items..."
 msgstr "清除最近的項目……(_C)"
 
-#: src/parole-player.c:3590
+#: src/parole-player.c:3576
 msgid "Audio Track:"
 msgstr "音訊軌道："
 
-#: src/parole-player.c:3609
+#: src/parole-player.c:3595
 msgid "Subtitles:"
 msgstr "字幕："
 
-#: src/parole-plugins-manager.c:288
+#: src/parole-plugins-manager.c:286
 msgid "Plugin failed to load"
 msgstr "未能載入插件"
 
-#: src/parole-plugins-manager.c:289
+#: src/parole-plugins-manager.c:287
 msgid "Please check your installation"
 msgstr "請檢查軟體是否安裝妥當"
 
-#: src/parole-plugins-manager.c:400
+#: src/parole-plugins-manager.c:398
 msgid "No installed plugins found on this system"
 msgstr "此系統找不到安裝的插件"
 
-#: src/parole-plugins-manager.c:401
+#: src/parole-plugins-manager.c:399
 msgid "Please check your installation."
 msgstr "請檢查軟體是否安裝妥當。"
 
