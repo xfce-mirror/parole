@@ -1,6 +1,6 @@
 m4_define([parole_verinfo],           [0:8:1])
 m4_define([parole_version_api],       [0])
-XDT_VERSION_INIT([4.20.0])
+XDT_VERSION_INIT([4.20.0], [git])
 m4_define([copyright_year], [2025])
 
 AC_COPYRIGHT([Copyright (c) 2009-copyright_year() The Xfce development team])

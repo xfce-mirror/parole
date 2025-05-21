@@ -1,7 +1,7 @@
 project(
   'parole',
   'c',
-version : '4.20.0',
+version : '4.20.0-dev',
   license : 'GPL-2.0-or-later',
   meson_version : '>= 0.56.0',
   default_options : ['c_std=gnu11', 'buildtype=debugoptimized', 'warning_level=2']
