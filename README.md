@@ -35,17 +35,17 @@ See [NEWS](https://gitlab.xfce.org/apps/parole/-/blob/master/NEWS) for details o
 From source code repository: 
 
     % cd parole
-    % ./autogen.sh
-    % make
-    % make install
+    % meson setup build
+    % meson compile -C build
+    % meson install -C build
 
 From release tarball:
 
-    % tar xf parole-<version>.tar.bz2
+    % tar xf parole-<version>.tar.xz
     % cd parole-<version>
-    % ./configure
-    % make
-    % make install
+    % meson setup build
+    % meson compile -C build
+    % meson install -C build
 
 ### Reporting Bugs
 
