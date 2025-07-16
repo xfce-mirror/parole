@@ -20,10 +20,6 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #include <libxfce4util/libxfce4util.h>
 
 #include "src/plugins/notify/notify-provider.h"
