@@ -22,10 +22,6 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #include <gst/tag/tag.h>
 
 #include "src/plugins/mpris2/mpris2-provider.h"

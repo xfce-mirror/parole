@@ -23,10 +23,6 @@
 #ifndef SRC_MISC_PAROLE_DEBUG_H_
 #define SRC_MISC_PAROLE_DEBUG_H_
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #include <stdarg.h>
 #include <glib.h>
 
