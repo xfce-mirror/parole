@@ -1,6 +1,6 @@
 i18n.merge_file(
-  input: 'parole.appdata.xml.in',
-  output: 'parole.appdata.xml',
+  input: 'org.xfce.Parole.appdata.xml.in',
+  output: 'org.xfce.Parole.appdata.xml',
   po_dir: '..' / '..' / 'po',
   type: 'xml',
   install: true,
