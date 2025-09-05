@@ -37,15 +37,15 @@ msgstr "Automatic"
 
 #: data/interfaces/parole-settings.ui:32
 msgid "X Window System (X11/XShm/Xv)"
-msgstr ""
+msgstr "Sistèma de fenèstra X (X11/XShm/Xv)"
 
 #: data/interfaces/parole-settings.ui:36
 msgid "X Window System (No Xv)"
-msgstr ""
+msgstr "Sistèma de fenèstra (cap de Xv)"
 
 #: data/interfaces/parole-settings.ui:42
 msgid "Parole Preferences"
-msgstr ""
+msgstr "Preferéncias de Parole"
 
 #. Add a close button to the Infobar
 #: data/interfaces/parole-settings.ui:62 data/interfaces/plugins.ui:43
@@ -87,11 +87,11 @@ msgstr "General"
 
 #: data/interfaces/parole-settings.ui:446
 msgid "Please restart Parole for this change to take effect."
-msgstr ""
+msgstr "Mercés de reaviar Parole per aplicar aquesta modificacion."
 
 #: data/interfaces/parole-settings.ui:482
 msgid "<b>Video Output</b>"
-msgstr ""
+msgstr "<b>Sortida vidèo</b>"
 
 #: data/interfaces/parole-settings.ui:521
 msgid "Brightness:"
@@ -139,7 +139,7 @@ msgstr "Se remembrar de la lista de lectura"
 
 #: data/interfaces/parole-settings.ui:801
 msgid "<b>Playlist Preferences</b>"
-msgstr ""
+msgstr "<b>Preferéncias de lista de lectura</b>"
 
 #: data/interfaces/parole-settings.ui:814 data/interfaces/playlist.ui:43
 #: data/interfaces/shortcuts.ui:99 src/parole-medialist.c:790
@@ -161,7 +161,7 @@ msgstr "Encodatge :"
 
 #: data/interfaces/parole-settings.ui:953
 msgid "<b>Subtitle Preferences</b>"
-msgstr ""
+msgstr "<b>Preferéncias de sostítols</b>"
 
 #: data/interfaces/parole-settings.ui:966
 msgid "Subtitles"
@@ -191,7 +191,7 @@ msgstr "Dobrir _Recent"
 
 #: data/interfaces/parole.ui:107
 msgid "_Save Playlist..."
-msgstr ""
+msgstr "_Enregistrar la lista de lectura..."
 
 #: data/interfaces/parole.ui:122 src/parole-disc.c:101 src/parole-disc.c:135
 msgid "Insert Disc"
@@ -221,7 +221,7 @@ msgstr "Veire la lista de lectura"
 #. Create dialog
 #: data/interfaces/parole.ui:189 src/parole-player.c:2829
 msgid "Go to position"
-msgstr ""
+msgstr "Anar a la posicion"
 
 #: data/interfaces/parole.ui:201
 msgid "_DVD"
@@ -237,7 +237,7 @@ msgstr "Menú _Títol"
 
 #: data/interfaces/parole.ui:229
 msgid "_Subpicture Menu"
-msgstr ""
+msgstr "_Menú sos imatge"
 
 #: data/interfaces/parole.ui:238
 msgid "_Audio Menu"
@@ -323,7 +323,7 @@ msgstr "_Sostítols"
 
 #: data/interfaces/parole.ui:504
 msgid "Select Text Subtitles..."
-msgstr ""
+msgstr "Seleccionar lo tèxte dels sostítols..."
 
 #: data/interfaces/parole.ui:526
 msgid "_Tools"
@@ -343,7 +343,7 @@ msgstr "Aju_da"
 
 #: data/interfaces/parole.ui:567
 msgid "_Report a Bug..."
-msgstr ""
+msgstr "_Senhalar una anomalia..."
 
 #: data/interfaces/parole.ui:575
 msgid "_Keyboard Shortcuts"
@@ -351,7 +351,7 @@ msgstr "_Acorchis clavièr"
 
 #: data/interfaces/parole.ui:585
 msgid "Display Parole user manual"
-msgstr ""
+msgstr "Afichar lo manual d'utilizacion de Parole"
 
 #: data/interfaces/parole.ui:586
 msgid "_Contents"
@@ -387,7 +387,7 @@ msgstr "Mesa en tampon (0%)"
 
 #: data/interfaces/parole.ui:879
 msgid "/"
-msgstr ""
+msgstr "/"
 
 #: data/interfaces/playlist.ui:75
 msgid "Disc Playlist"
@@ -487,7 +487,7 @@ msgstr "Sortir de l’ecran complèt"
 
 #: data/interfaces/shortcuts.ui:62
 msgid "Toggle menubar"
-msgstr ""
+msgstr "Alternar la barra de menú"
 
 #: data/interfaces/shortcuts.ui:71
 msgid "Volume"
@@ -495,11 +495,11 @@ msgstr "Volum"
 
 #: data/interfaces/shortcuts.ui:76
 msgid "Increase volume"
-msgstr ""
+msgstr "Aumentar lo volum"
 
 #: data/interfaces/shortcuts.ui:83
 msgid "Decrease volume"
-msgstr ""
+msgstr "Reduire lo volum"
 
 #: data/interfaces/shortcuts.ui:90 src/parole-player.c:2383
 msgid "Mute"
@@ -507,23 +507,23 @@ msgstr "Metre en sordina"
 
 #: data/interfaces/shortcuts.ui:104
 msgid "Toggle playlist"
-msgstr ""
+msgstr "Bascular la lista de lectura"
 
 #: data/interfaces/shortcuts.ui:111
 msgid "Select previous item"
-msgstr ""
+msgstr "Seleccionar l'element precedent"
 
 #: data/interfaces/shortcuts.ui:118
 msgid "Select next item"
-msgstr ""
+msgstr "Seleccionar l'element seguent"
 
 #: data/interfaces/shortcuts.ui:125
 msgid "Remove selected item"
-msgstr ""
+msgstr "Suprimir l'element seleccionat"
 
 #: data/interfaces/shortcuts.ui:134
 msgid "Playback"
-msgstr ""
+msgstr "Lectura"
 
 #: data/interfaces/shortcuts.ui:139
 #: data/desktop/org.xfce.Parole.desktop.in.in:18
@@ -540,27 +540,27 @@ msgstr "Pista seguenta"
 
 #: data/interfaces/shortcuts.ui:160
 msgid "Go back 10 seconds"
-msgstr ""
+msgstr "Recular de 10 segondas"
 
 #: data/interfaces/shortcuts.ui:167
 msgid "Go forward 10 seconds"
-msgstr ""
+msgstr "Avançar de 10 segondas"
 
 #: data/interfaces/shortcuts.ui:174
 msgid "Go back 1 minute"
-msgstr ""
+msgstr "Recular d'una minuta"
 
 #: data/interfaces/shortcuts.ui:181
 msgid "Go forward 1 minute"
-msgstr ""
+msgstr "Avançar d'una minuta"
 
 #: data/interfaces/shortcuts.ui:188
 msgid "Go back 10 minutes"
-msgstr ""
+msgstr "Recular de 10 minutas"
 
 #: data/interfaces/shortcuts.ui:195
 msgid "Go forward 10 minutes"
-msgstr ""
+msgstr "Avançar de 10 minutas"
 
 #: data/desktop/org.xfce.Parole.desktop.in.in:4
 msgid "Play your media"
@@ -568,7 +568,7 @@ msgstr "Legir vòstre mèdia"
 
 #: data/desktop/org.xfce.Parole.desktop.in.in:11
 msgid "Media;Player;Audio;Video;Music;Playback;Xfce;"
-msgstr ""
+msgstr "Mèdia;lector;àudio;vidèo;musica;lectura;xfce;"
 
 #: data/desktop/org.xfce.Parole.desktop.in.in:23 src/parole-player.c:3369
 #: src/plugins/notify/notify-provider.c:178
@@ -582,37 +582,37 @@ msgstr "Pista seguenta"
 
 #: data/metainfo/parole.appdata.xml.in:7
 msgid "Parole"
-msgstr ""
+msgstr "Parole"
 
 #: data/metainfo/parole.appdata.xml.in:8
 msgid "Modern and simple media player"
-msgstr ""
+msgstr "Lector multimèdia modèrne e simple"
 
 #: data/metainfo/parole.appdata.xml.in:12
 msgid ""
 "Parole is a modern simple media player based on the GStreamer framework and "
 "written to fit well in the Xfce desktop. It is designed with simplicity, "
 "speed and resource usage in mind."
-msgstr ""
+msgstr "Parole es un lector multimèdia simple e modèrne basat sul quadre logicial GStreamer e escrich per s'integrar plan dins lo burèu Xfce. Es concebut en tenent compte de la simplicitat, de la velocitat e de l'utilizacion de las ressorsas."
 
 #: data/metainfo/parole.appdata.xml.in:16
 msgid ""
 "Parole features playback of local media files, including video with "
 "subtitles support, Audio CDs, DVDs, and live streams. Parole is also "
 "extensible via plugins."
-msgstr ""
+msgstr "Parole permet la lectura de fichièrs multimèdia locals, inclutz la vidèo amb la presa en carga dels sostítols, los CD àudio, los DVD e los fluxes en dirècte. Parole es tanben extensible via de plugins."
 
 #: data/metainfo/parole.appdata.xml.in:26
 msgid "Parole playing Big Buck Bunny"
-msgstr ""
+msgstr "Parole a legir Big Buck Bunny"
 
 #: data/metainfo/parole.appdata.xml.in:30
 msgid "Parole playing a LAS podcast"
-msgstr ""
+msgstr "Parole a legir lo podcast LAS"
 
 #: data/metainfo/parole.appdata.xml.in:34
 msgid "Parole playing a LAS podcast in Mini Mode (0.9+)"
-msgstr ""
+msgstr "PArole a legir lo podcast LAS en mode mini (0.9+)"
 
 #: src/common/parole-common.c:79
 msgid "Message"
@@ -633,11 +633,11 @@ msgstr "CD Àudio"
 
 #: src/gst/parole-gst.c:1267
 msgid "Unable to install missing codecs."
-msgstr ""
+msgstr "Impossible d'installar los còdecs mancants."
 
 #: src/gst/parole-gst.c:1270
 msgid "No available plugin installer was found."
-msgstr ""
+msgstr "Cap d'installador de plugin disponible es pas estat trobat."
 
 #: src/gst/parole-gst.c:1321
 msgid "Additional software is required."
@@ -720,7 +720,7 @@ msgid ""
 "\n"
 "Please report bugs to <%s>.\n"
 "\n"
-msgstr ""
+msgstr "\nLector Mèdia Parole %s\n\nUna partida del projècte Xfce Goodies\nhttps://goodies.xfce.org\n\nJos licéncia GNU GPL.\n\nSe vos plai, senhalatz los bugs a <%s>.\n\n"
 
 #: src/main.c:231
 msgid "Open a new instance"
@@ -809,7 +809,7 @@ msgstr "Fichièrs de la lista de lectura"
 
 #: src/parole-about.c:70
 msgid "A modern simple media player for the Xfce Desktop Environment."
-msgstr ""
+msgstr "Un lector multimèdia simple e modèrne per l'environament de burèu Xfce."
 
 #: src/parole-about.c:76
 msgid "translator-credits"
@@ -832,15 +832,15 @@ msgstr "Totes los fichièrs"
 #, c-format
 msgid "Playlist (%i item)"
 msgid_plural "Playlist (%i items)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Lista de lectura (%i element)"
+msgstr[1] "Lista de lectura (%i elements)"
 
 #: src/parole-medialist.c:255 src/parole-medialist.c:1619
 #, c-format
 msgid "Playlist (%i chapter)"
 msgid_plural "Playlist (%i chapters)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Lista de lectura (%i capítol)"
+msgstr[1] "Lista de lectura (%i capítols)"
 
 #: src/parole-medialist.c:419 src/parole-player.c:708
 #, c-format
@@ -879,22 +879,22 @@ msgstr "Enregistrar"
 #: src/parole-medialist.c:853
 #, c-format
 msgid "M3U Playlist (%s)"
-msgstr ""
+msgstr "lista de lectura M3U (%s)"
 
 #: src/parole-medialist.c:863
 #, c-format
 msgid "PLS Playlist (%s)"
-msgstr ""
+msgstr "lista de lectura PLS (%s)"
 
 #: src/parole-medialist.c:873
 #, c-format
 msgid "Advanced Stream Redirector (%s)"
-msgstr ""
+msgstr "Redirector avançat de fluxes (%s)"
 
 #: src/parole-medialist.c:883
 #, c-format
 msgid "Shareable Playlist (%s)"
-msgstr ""
+msgstr "Lista de lectura partejabla (%s) "
 
 #. Clear
 #: src/parole-medialist.c:1268
@@ -1008,7 +1008,7 @@ msgstr "Veire la barra de menú"
 
 #: src/parole-player.c:2151
 msgid "Mini Mode"
-msgstr ""
+msgstr "Mode mini"
 
 #: src/parole-player.c:2386
 msgid "Unmute"
@@ -1021,16 +1021,16 @@ msgstr "Impossible de dobrir lo navigador Web per defaut"
 #: src/parole-player.c:2805
 msgid ""
 "Please go to https://docs.xfce.org/apps/parole/bugs to report your bug."
-msgstr ""
+msgstr "Anatz a https://docs.xfce.org/apps/parole/bugs per senhalar vòstre bug."
 
 #: src/parole-player.c:2833
 msgid "Go"
-msgstr ""
+msgstr "Zo"
 
 #. Clear Recent Menu Item
 #: src/parole-player.c:3261
 msgid "_Clear recent items..."
-msgstr ""
+msgstr "_Escafar los elements recents..."
 
 #: src/parole-player.c:3572
 msgid "Audio Track:"
@@ -1199,7 +1199,7 @@ msgstr "Vietnamian"
 
 #: src/plugins/mpris2/mpris2.desktop.in:4
 msgid "MPRIS2"
-msgstr ""
+msgstr "MPRIS2"
 
 #: src/plugins/notify/notify-provider.c:135
 #: src/plugins/notify/notify-provider.c:137
