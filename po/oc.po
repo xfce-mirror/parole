@@ -4,6 +4,8 @@
 # 
 # Translators:
 # Cédric Valmary <cvalmary@yahoo.fr>, 2013
+# Cédric Valmary <cvalmary@yahoo.fr>, 2013
+# Quentin PAGÈS, 2022,2025
 # Quentin PAGÈS, 2022,2025
 msgid ""
 msgstr ""
@@ -111,7 +113,7 @@ msgstr "Saturacion :"
 
 #: data/interfaces/parole-settings.ui:627
 msgid "Reset to defaults"
-msgstr "Reïnicializar "
+msgstr "Reïnicializar a las valors per defaut"
 
 #: data/interfaces/parole-settings.ui:655
 msgid "<b>Color Balance</b>"
@@ -813,7 +815,7 @@ msgstr "Un lector multimèdia simple e modèrne per l'environament de burèu Xfc
 
 #: src/parole-about.c:76
 msgid "translator-credits"
-msgstr "Lista dels traductors"
+msgstr "Cédric Valmary (totenoc.eu)\nQuentin PAGÈS"
 
 #: src/parole-about.c:79
 msgid "Visit Parole website"
@@ -894,7 +896,7 @@ msgstr "Redirector avançat de fluxes (%s)"
 #: src/parole-medialist.c:883
 #, c-format
 msgid "Shareable Playlist (%s)"
-msgstr "Lista de lectura partejabla (%s) "
+msgstr "Lista de lectura partejabla (%s)"
 
 #. Clear
 #: src/parole-medialist.c:1268
@@ -922,7 +924,7 @@ msgstr "Escafar los elements recents"
 msgid ""
 "Are you sure you wish to clear your recent items history?  This cannot be "
 "undone."
-msgstr "Sètz segur que volètz escafar vòstre istoric d'elements recents ? Aquò pòt pas èsser anullat."
+msgstr "Volètz vertadièrament escafar vòstre istoric d'elements recents ? Aquò pòt pas èsser anullat."
 
 #: src/parole-player.c:1253 src/parole-player.c:1373
 msgid "Media stream is not seekable"
@@ -950,7 +952,7 @@ msgstr "actiu"
 
 #: src/parole-player.c:1816 src/plugins/notify/notify-provider.c:130
 msgid "Unknown Album"
-msgstr "Album desconegut "
+msgstr "Album desconegut"
 
 #: src/parole-player.c:1827 src/parole-player.c:1834
 msgid "by"
@@ -970,7 +972,7 @@ msgstr "Ecran complèt"
 
 #: src/parole-player.c:1983
 msgid "Leave _Fullscreen"
-msgstr "Daissar en ecran com_plet"
+msgstr "Daissar en ecran com_plèt"
 
 #: src/parole-player.c:1984
 msgid "Leave Fullscreen"
@@ -1105,7 +1107,7 @@ msgstr "Cirillic"
 
 #: src/parole-subtitle-encoding.c:224
 msgid "Cyrillic/Russian"
-msgstr "Cirillic / Rus "
+msgstr "Cirillic / Rus"
 
 #: src/parole-subtitle-encoding.c:227 src/parole-subtitle-encoding.c:229
 msgid "Cyrillic/Ukrainian"
@@ -1244,7 +1246,7 @@ msgstr "Redusir totjorn dins la zòna de notificacion quand la fenèstra es tamp
 
 #: src/plugins/tray/tray-provider.c:332
 msgid "Are you sure you want to quit?"
-msgstr "Sètz segur que volètz quitar ?"
+msgstr "Volètz vertadièrament quitar ?"
 
 #: src/plugins/tray/tray-provider.c:335
 msgid "Parole can be minimized to the system tray instead."
