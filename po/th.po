@@ -6,13 +6,14 @@
 # Theppitak Karoonboonyanan <thep@linux.thai.net>, 2014
 # Theppitak Karoonboonyanan <theppitak@gmail.com>, 2014-2015,2017-2018
 # Theppitak Karoonboonyanan <theppitak@gmail.com>, 2017
+# Warut Bunprasert <warut.b@disroot.org>, 2025
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2025-07-18 11:03+0200\n"
 "PO-Revision-Date: 2013-07-03 18:28+0000\n"
-"Last-Translator: Theppitak Karoonboonyanan <theppitak@gmail.com>, 2014-2015,2017-2018\n"
+"Last-Translator: Warut Bunprasert <warut.b@disroot.org>, 2025\n"
 "Language-Team: Thai (http://app.transifex.com/xfce/xfce-apps/language/th/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -46,7 +47,7 @@ msgstr "ระบบ X Window (ไม่มี Xv)"
 
 #: data/interfaces/parole-settings.ui:42
 msgid "Parole Preferences"
-msgstr ""
+msgstr "ปรับแต่ง Parole"
 
 #. Add a close button to the Infobar
 #: data/interfaces/parole-settings.ui:62 data/interfaces/plugins.ui:43
@@ -140,7 +141,7 @@ msgstr "จำผังเล่น"
 
 #: data/interfaces/parole-settings.ui:801
 msgid "<b>Playlist Preferences</b>"
-msgstr ""
+msgstr "<b>ปรับแต่งรายการเพลง</b>"
 
 #: data/interfaces/parole-settings.ui:814 data/interfaces/playlist.ui:43
 #: data/interfaces/shortcuts.ui:99 src/parole-medialist.c:790
@@ -162,7 +163,7 @@ msgstr "รหัสอักขระ:"
 
 #: data/interfaces/parole-settings.ui:953
 msgid "<b>Subtitle Preferences</b>"
-msgstr ""
+msgstr "<b>ปรับแต่งคำบรรยาย</b>"
 
 #: data/interfaces/parole-settings.ui:966
 msgid "Subtitles"
@@ -569,7 +570,7 @@ msgstr "เล่นสื่อของคุณ"
 
 #: data/desktop/org.xfce.Parole.desktop.in.in:11
 msgid "Media;Player;Audio;Video;Music;Playback;Xfce;"
-msgstr ""
+msgstr "สื่อ;เครื่องเล่น;เสียง;วีดิโอ;เพลง;การเล่นเพลง;Xfce;"
 
 #: data/desktop/org.xfce.Parole.desktop.in.in:23 src/parole-player.c:3369
 #: src/plugins/notify/notify-provider.c:178
@@ -583,11 +584,11 @@ msgstr "ร่องถัดไป"
 
 #: data/metainfo/parole.appdata.xml.in:7
 msgid "Parole"
-msgstr ""
+msgstr "Parole"
 
 #: data/metainfo/parole.appdata.xml.in:8
 msgid "Modern and simple media player"
-msgstr ""
+msgstr "โปรแกรมเล่นสื่อที่ทันสมัยและเรียบง่าย"
 
 #: data/metainfo/parole.appdata.xml.in:12
 msgid ""
@@ -605,15 +606,15 @@ msgstr "Parole รองรับการเล่นแฟ้มสื่อ�
 
 #: data/metainfo/parole.appdata.xml.in:26
 msgid "Parole playing Big Buck Bunny"
-msgstr ""
+msgstr "Parole กำลังเล่น Big Buck Bunny"
 
 #: data/metainfo/parole.appdata.xml.in:30
 msgid "Parole playing a LAS podcast"
-msgstr ""
+msgstr "Parole กำลังเล่น LAS podcast"
 
 #: data/metainfo/parole.appdata.xml.in:34
 msgid "Parole playing a LAS podcast in Mini Mode (0.9+)"
-msgstr ""
+msgstr "Parole กำลังเล่น LAS podcast ในโหมดมินิ (0.9+)"
 
 #: src/common/parole-common.c:79
 msgid "Message"
@@ -721,7 +722,7 @@ msgid ""
 "\n"
 "Please report bugs to <%s>.\n"
 "\n"
-msgstr ""
+msgstr "\nโปรแกรมเล่นสื่อ Parole %s\n\nซึ่งเป็นส่วนหนึ่งของโครงการ  the Xfce Goodies Project\nhttps://goodies.xfce.org\n\nภายใต้สัญญาอนุญาต GNU GPL.\n\nโปรดแจ้งบั๊กมายัง <%s>\n\n"
 
 #: src/main.c:231
 msgid "Open a new instance"
