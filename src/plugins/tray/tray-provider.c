@@ -203,6 +203,14 @@ state_changed_cb(ParoleProviderPlayer *player, const ParoleStream *stream, Parol
     }
 }
 
+static void
+icon_theme_changed_cb (GtkIconTheme *icon_theme, TrayProvider *tray)
+{
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+    gtk_status_icon_set_from_icon_name(tray->tray, "org.xfce.parole");
+    G_GNUC_END_IGNORE_DEPRECATIONS
+}
+
 static gboolean
 read_entry_bool(const gchar *entry, gboolean fallback) {
     XfconfChannel *channel;
@@ -402,7 +410,6 @@ static gboolean tray_provider_is_configurable(ParoleProviderPlugin *plugin) {
 static void
 tray_provider_set_player(ParoleProviderPlugin *plugin, ParoleProviderPlayer *player) {
     TrayProvider *tray;
-    GdkPixbuf *pix;
 
     tray = TRAY_PROVIDER(plugin);
 
@@ -413,25 +420,11 @@ tray_provider_set_player(ParoleProviderPlugin *plugin, ParoleProviderPlayer *pla
     tray->window = parole_provider_player_get_main_window(player);
 
     G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-    tray->tray = gtk_status_icon_new();
+    tray->tray = gtk_status_icon_new_from_icon_name("org.xfce.parole");
     G_GNUC_END_IGNORE_DEPRECATIONS
 
     tray->player = player;
     tray->menu = NULL;
-
-    pix = gtk_icon_theme_load_icon(gtk_icon_theme_get_default(),
-                                    "org.xfce.parole",
-                                    48,
-                                    GTK_ICON_LOOKUP_USE_BUILTIN,
-                                    NULL);
-
-    if ( pix ) {
-        G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-        gtk_status_icon_set_from_pixbuf(tray->tray, pix);
-        G_GNUC_END_IGNORE_DEPRECATIONS
-
-        g_object_unref(pix);
-    }
 
     g_signal_connect(tray->tray, "popup-menu",
               G_CALLBACK(popup_menu_cb), tray);
@@ -450,6 +443,9 @@ tray_provider_set_player(ParoleProviderPlugin *plugin, ParoleProviderPlayer *pla
 
     g_signal_connect(player, "state_changed",
               G_CALLBACK(state_changed_cb), tray);
+
+    g_signal_connect_object(gtk_icon_theme_get_default(), "changed",
+              G_CALLBACK(icon_theme_changed_cb), tray, 0);
 }
 
 static void
