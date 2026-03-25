@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the xfce-apps.parole package.
 # 
 # Translators:
+# Dejweed, 2026
 # 8b03701f910565d01acaec9ce3f558ab_e9f0fee <b5b06e8f85fb8288fe43ad0bc2422d94_32848>, 2017
 # Arnold Marko <arnold.marko@gmail.com>, 2019-2021,2023-2024
 msgid ""
@@ -11,7 +12,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2025-07-18 11:03+0200\n"
 "PO-Revision-Date: 2013-07-03 18:28+0000\n"
-"Last-Translator: Arnold Marko <arnold.marko@gmail.com>, 2019-2021,2023-2024\n"
+"Last-Translator: Dejweed, 2026\n"
 "Language-Team: Slovenian (http://app.transifex.com/xfce/xfce-apps/language/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -123,7 +124,7 @@ msgstr "Prikaz"
 
 #: data/interfaces/parole-settings.ui:710
 msgid "Always replace playlist with opened files"
-msgstr "vedno zamenjaj seznam predvajanja z odprtimi datotekami"
+msgstr "Vedno zamenjaj seznam predvajanja z odprtimi datotekami"
 
 #: data/interfaces/parole-settings.ui:722
 msgid "Check and remove duplicate media entries"
@@ -161,7 +162,7 @@ msgstr "Kodiranje:"
 
 #: data/interfaces/parole-settings.ui:953
 msgid "<b>Subtitle Preferences</b>"
-msgstr "</b>Nastavitve podnapisov</b>"
+msgstr "<b>Nastavitve podnapisov</b>"
 
 #: data/interfaces/parole-settings.ui:966
 msgid "Subtitles"
@@ -212,7 +213,7 @@ msgstr "_Ponovi"
 
 #: data/interfaces/parole.ui:167
 msgid "_Shuffle"
-msgstr "_Premešaj"
+msgstr "_Naključno"
 
 #: data/interfaces/parole.ui:181 data/interfaces/parole.ui:962
 msgid "Show Playlist"
@@ -339,7 +340,7 @@ msgstr "_Možnosti"
 
 #: data/interfaces/parole.ui:557
 msgid "_Help"
-msgstr "Pomoč"
+msgstr "Pomo_č"
 
 #: data/interfaces/parole.ui:567
 msgid "_Report a Bug..."
@@ -993,7 +994,7 @@ msgstr "_Zaženi"
 #. * Previous item in playlist.
 #: src/parole-player.c:2097
 msgid "_Previous"
-msgstr "_Prehodno"
+msgstr "P_rejšnje"
 
 #. * Next item in playlist.
 #: src/parole-player.c:2108
