@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the xfce-apps.parole package.
 # 
 # Translators:
+# Junghee Lee <daemul72@gmail.com>, 2026
 # 1763f4a4329a2376c933c5e919a36cbc_341ca53 <1f851310383599d03339229d772e1290_119292>, 2017
 # Seong-ho Cho <darkcircle.0426@gmail.com>, 2013-2015,2018-2019,2022-2024
 msgid ""
@@ -11,7 +12,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2025-07-18 11:03+0200\n"
 "PO-Revision-Date: 2013-07-03 18:28+0000\n"
-"Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>, 2013-2015,2018-2019,2022-2024\n"
+"Last-Translator: Junghee Lee <daemul72@gmail.com>, 2026\n"
 "Language-Team: Korean (http://app.transifex.com/xfce/xfce-apps/language/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -568,7 +569,7 @@ msgstr "미디어 재생"
 
 #: data/desktop/org.xfce.Parole.desktop.in.in:11
 msgid "Media;Player;Audio;Video;Music;Playback;Xfce;"
-msgstr ""
+msgstr "Media;Player;Audio;Video;Music;Playback;Xfce;미디어;재생기;오디오;비디오;"
 
 #: data/desktop/org.xfce.Parole.desktop.in.in:23 src/parole-player.c:3369
 #: src/plugins/notify/notify-provider.c:178
