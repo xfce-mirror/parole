@@ -1734,8 +1734,22 @@ parole_player_get_filename_from_uri(gchar *uri) {
     } else {
         gchar *decoded;
         decoded = g_filename_from_uri(uri, NULL, NULL);
-        filename = g_path_get_basename(decoded);
-        g_free(decoded);
+        if (decoded) {
+            filename = g_path_get_basename(decoded);
+            g_free(decoded);
+        } else {
+            /* g_filename_from_uri() only handles file://; for any other
+             * scheme (smb://, sftp://, ...) it returns NULL.  This branch
+             * runs whenever the caller has no ID3/embedded title to show
+             * - either because the stream has none at all, or briefly at
+             * playback start before the tag list arrives.  Fall back to
+             * the last path component of the raw URI, percent-decoded,
+             * so the UI shows a meaningful name instead of "Unknown Song"
+             * (and so g_path_get_basename(NULL) is never reached). */
+            const gchar *last_slash = strrchr(uri, '/');
+            if (last_slash && last_slash[1])
+                filename = g_uri_unescape_string(last_slash + 1, NULL);
+        }
     }
 
     g_free(scheme);
