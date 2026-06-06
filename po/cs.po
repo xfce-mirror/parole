@@ -4,7 +4,7 @@
 # 
 # Translators:
 # Alois Nešpor <info@aloisnespor.info>, 2013-2014
-# Michal Várady <miko.vaji@gmail.com>, 2014-2015,2017-2021,2024
+# Michal Várady <miko.vaji@gmail.com>, 2014-2015,2017-2021,2024,2026
 # Pavel Borecki <pavel.borecki@gmail.com>, 2018
 # Petr Šimáček <petr.simacek@gmail.com>, 2015,2017
 msgid ""
@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2025-07-18 11:03+0200\n"
 "PO-Revision-Date: 2013-07-03 18:28+0000\n"
-"Last-Translator: Michal Várady <miko.vaji@gmail.com>, 2014-2015,2017-2021,2024\n"
+"Last-Translator: Michal Várady <miko.vaji@gmail.com>, 2014-2015,2017-2021,2024,2026\n"
 "Language-Team: Czech (http://app.transifex.com/xfce/xfce-apps/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -47,7 +47,7 @@ msgstr "X Window System (bez Xv)"
 
 #: data/interfaces/parole-settings.ui:42
 msgid "Parole Preferences"
-msgstr "Předvolby aplikace Parole"
+msgstr "Nastavení aplikace Parole"
 
 #. Add a close button to the Infobar
 #: data/interfaces/parole-settings.ui:62 data/interfaces/plugins.ui:43
@@ -121,7 +121,7 @@ msgstr "<b>Vyvážení barev</b>"
 
 #: data/interfaces/parole-settings.ui:675
 msgid "Display"
-msgstr "Displej"
+msgstr "Zobrazení"
 
 #: data/interfaces/parole-settings.ui:710
 msgid "Always replace playlist with opened files"
@@ -181,7 +181,7 @@ msgstr "_Média"
 
 #: data/interfaces/parole.ui:73
 msgid "_Open..."
-msgstr "_Otevřít…"
+msgstr "_Otevřít..."
 
 #: data/interfaces/parole.ui:83
 msgid "Open _Location..."
@@ -223,7 +223,7 @@ msgstr "Zobrazit seznam médií"
 #. Create dialog
 #: data/interfaces/parole.ui:189 src/parole-player.c:2829
 msgid "Go to position"
-msgstr "Jít na pozici"
+msgstr "Přejít na pozici"
 
 #: data/interfaces/parole.ui:201
 msgid "_DVD"
@@ -313,7 +313,7 @@ msgstr "4:3 (TV)"
 
 #: data/interfaces/parole.ui:446
 msgid "16:9 (Widescreen)"
-msgstr "16:9 (Širokoúhle)"
+msgstr "16:9 (Širokoúhlé)"
 
 #: data/interfaces/parole.ui:457
 msgid "20:9 (DVB)"
@@ -325,7 +325,7 @@ msgstr "_Titulky"
 
 #: data/interfaces/parole.ui:504
 msgid "Select Text Subtitles..."
-msgstr "Vyberte titulky..."
+msgstr "Vybrat titulky..."
 
 #: data/interfaces/parole.ui:526
 msgid "_Tools"
@@ -385,7 +385,7 @@ msgstr "0:00"
 
 #: data/interfaces/parole.ui:847
 msgid "Buffering (0%)"
-msgstr "Ukládání do vyrovnávací paměti (0%)"
+msgstr "Načítání do vyrovnávací paměti (0%)"
 
 #: data/interfaces/parole.ui:879
 msgid "/"
@@ -521,7 +521,7 @@ msgstr "Vybrat další položku"
 
 #: data/interfaces/shortcuts.ui:125
 msgid "Remove selected item"
-msgstr "Odstranit vybranou položku"
+msgstr "Odebrat vybranou položku"
 
 #: data/interfaces/shortcuts.ui:134
 msgid "Playback"
@@ -566,7 +566,7 @@ msgstr "Přeskočit o 10 minut vpřed"
 
 #: data/desktop/org.xfce.Parole.desktop.in.in:4
 msgid "Play your media"
-msgstr "Přehrát vaše média"
+msgstr "Přehrávejte svá média"
 
 #: data/desktop/org.xfce.Parole.desktop.in.in:11
 msgid "Media;Player;Audio;Video;Music;Playback;Xfce;"
@@ -643,7 +643,7 @@ msgstr "Nebyl nalezen žádný instalátor zásuvných modulů."
 
 #: src/gst/parole-gst.c:1321
 msgid "Additional software is required."
-msgstr "Je požadován další software."
+msgstr "Je vyžadován další software."
 
 #: src/gst/parole-gst.c:1325
 msgid "Don't Install"
@@ -675,7 +675,7 @@ msgstr "Načtení streamu trvá příliš dlouho"
 
 #: src/gst/parole-gst.c:1723
 msgid "Do you want to continue loading or stop?"
-msgstr "Chcete pokračovat v nahrávání nebo zastavit?"
+msgstr "Chcete pokračovat v načítání, nebo jej zastavit?"
 
 #: src/gst/parole-gst.c:1724
 msgid "Stop"
@@ -697,7 +697,7 @@ msgstr "Přehrávač médií Parole nelze spustit."
 #: src/gst/parole-gst.c:1991
 #, c-format
 msgid "Unable to load \"%s\" plugin, check your GStreamer installation."
-msgstr "Nelze zavést zásuvný modul \"%s\", zkontrolujte instalaci GStreameru."
+msgstr "Nelze načíst zásuvný modul \"%s\". Zkontrolujte instalaci GStreameru."
 
 #: src/gst/parole-gst.c:2558 src/gst/parole-gst.c:2562
 #, c-format
@@ -730,7 +730,7 @@ msgstr "Otevřít novou instanci"
 
 #: src/main.c:233
 msgid "Do not load plugins"
-msgstr "Nezavádět zásuvné moduly"
+msgstr "Nenačítat zásuvné moduly"
 
 #: src/main.c:235
 msgid "Set Audio-CD/VCD/DVD device path"
@@ -738,7 +738,7 @@ msgstr "Nastavit cestu zařízení zvukových disků CD/VCD/DVD"
 
 #: src/main.c:237
 msgid "Start in embedded mode"
-msgstr "Spustit v embedded módu"
+msgstr "Spustit ve vloženém režimu"
 
 #: src/main.c:239
 msgid "Start in fullscreen mode"
@@ -770,7 +770,7 @@ msgstr "Přidat soubory do seznamu médií"
 
 #: src/main.c:257
 msgid "Print version information and exit"
-msgstr "Zobrazí informace o verzi a ukončí se"
+msgstr "Vypsat informace o verzi a skončit"
 
 #: src/main.c:261
 msgid "Media to play"
@@ -905,7 +905,7 @@ msgstr "Seznam médií umožňující sdílení (%s)"
 #. Clear
 #: src/parole-medialist.c:1268
 msgid "Open Containing Folder"
-msgstr "Otevřít složku obsahující soubor"
+msgstr "Otevřít umístění souboru"
 
 #. Build the FileChooser dialog for subtitle selection.
 #: src/parole-player.c:962
@@ -932,7 +932,7 @@ msgstr "Opravdu chcete vymazat historii nedávných položek? Tuto akci nelze vr
 
 #: src/parole-player.c:1253 src/parole-player.c:1373
 msgid "Media stream is not seekable"
-msgstr "Stream neumožňuje přesouvání"
+msgstr "Ve streamu nelze měnit pozici přehrávání"
 
 #: src/parole-player.c:1263
 msgid "Play"
@@ -944,11 +944,11 @@ msgstr "Pozastavit"
 
 #: src/parole-player.c:1707
 msgid "GStreamer backend error"
-msgstr "Chyba služby GStreamer"
+msgstr "Chyba backendu GStreamer"
 
 #: src/parole-player.c:1791
 msgid "Unknown Song"
-msgstr "Neznámá píseň"
+msgstr "Neznámá skladba"
 
 #: src/parole-player.c:1802 src/parole-player.c:1808 src/parole-player.c:1816
 msgid "on"
@@ -1010,11 +1010,11 @@ msgstr "_Opustit režim celé obrazovky"
 #. * Un/Hide menubar
 #: src/parole-player.c:2134
 msgid "Show menubar"
-msgstr "Zobrazit panel s nabídkou"
+msgstr "Zobrazit panel nabídek"
 
 #: src/parole-player.c:2151
 msgid "Mini Mode"
-msgstr "Režim zmenšeného zobrazení"
+msgstr "Kompaktní režim"
 
 #: src/parole-player.c:2386
 msgid "Unmute"
@@ -1036,7 +1036,7 @@ msgstr "Přejít"
 #. Clear Recent Menu Item
 #: src/parole-player.c:3261
 msgid "_Clear recent items..."
-msgstr "_Vyčistit nedávné položky..."
+msgstr "_Vymazat nedávné položky..."
 
 #: src/parole-player.c:3572
 msgid "Audio Track:"
@@ -1048,11 +1048,11 @@ msgstr "Titulky:"
 
 #: src/parole-plugins-manager.c:282
 msgid "Plugin failed to load"
-msgstr "Zavedení zásuvného modulu se nezdařilo"
+msgstr "Zásuvný modul se nepodařilo načíst"
 
 #: src/parole-plugins-manager.c:283
 msgid "Please check your installation"
-msgstr "Prosím zkontrolujte vaši instalaci"
+msgstr "Zkontrolujte instalaci"
 
 #: src/parole-plugins-manager.c:394
 msgid "No installed plugins found on this system"
@@ -1060,7 +1060,7 @@ msgstr "V systému nebyly nalezeny žádné zásuvné moduly"
 
 #: src/parole-plugins-manager.c:395
 msgid "Please check your installation."
-msgstr "Prosím zkontrolujte vaši instalaci."
+msgstr "Zkontrolujte instalaci."
 
 #: src/parole-subtitle-encoding.c:158
 msgid "Current Locale"
@@ -1078,7 +1078,7 @@ msgstr "Arménské"
 #: src/parole-subtitle-encoding.c:173 src/parole-subtitle-encoding.c:175
 #: src/parole-subtitle-encoding.c:177
 msgid "Baltic"
-msgstr "Pobalstské jazyky"
+msgstr "Pobalstské"
 
 #: src/parole-subtitle-encoding.c:180
 msgid "Celtic"
@@ -1092,12 +1092,12 @@ msgstr "Středoevropské"
 #: src/parole-subtitle-encoding.c:192 src/parole-subtitle-encoding.c:194
 #: src/parole-subtitle-encoding.c:196 src/parole-subtitle-encoding.c:198
 msgid "Chinese Simplified"
-msgstr "Čínské zjednodučené"
+msgstr "Zjednodušená čínština"
 
 #: src/parole-subtitle-encoding.c:201 src/parole-subtitle-encoding.c:203
 #: src/parole-subtitle-encoding.c:205
 msgid "Chinese Traditional"
-msgstr "Čínské tradiční"
+msgstr "Tradiční čínština"
 
 #: src/parole-subtitle-encoding.c:208
 msgid "Croatian"
@@ -1111,11 +1111,11 @@ msgstr "Cyrilice"
 
 #: src/parole-subtitle-encoding.c:224
 msgid "Cyrillic/Russian"
-msgstr "Cyrilice/Rusky"
+msgstr "Cyrilice / ruština"
 
 #: src/parole-subtitle-encoding.c:227 src/parole-subtitle-encoding.c:229
 msgid "Cyrillic/Ukrainian"
-msgstr "Cyrilice/Ukrajinsky"
+msgstr "Cyrilice / ukrajinština"
 
 #: src/parole-subtitle-encoding.c:232
 msgid "Georgian"
@@ -1242,7 +1242,7 @@ msgstr "_Otevřít"
 
 #: src/plugins/tray/tray-provider.c:254
 msgid "Tray icon plugin"
-msgstr "Ikona zásuvného modulu v oznamovací oblasti "
+msgstr "Ikona zásuvného modulu v oznamovací oblasti"
 
 #: src/plugins/tray/tray-provider.c:264
 msgid "Always minimize to tray when window is closed"
@@ -1254,7 +1254,7 @@ msgstr "Opravdu chcete aplikaci ukončit?"
 
 #: src/plugins/tray/tray-provider.c:335
 msgid "Parole can be minimized to the system tray instead."
-msgstr "Místo toho lze Parole minimalizovat do systémové oblasti."
+msgstr "Místo toho lze Parole minimalizovat do oznamovací oblasti."
 
 #: src/plugins/tray/tray-provider.c:338
 msgid "Minimize to tray"
