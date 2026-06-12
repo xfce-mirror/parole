@@ -344,14 +344,14 @@ parole_pl_parser_parse_pls(const gchar *filename) {
         nentries = xfce_rc_read_int_entry(rcfile, "NumberOfEntries", 0);
 
         for (i = 1; i <= nentries; i++) {
-            g_snprintf(key, 128, "File%d", i);
+            g_snprintf(key, 128, "File%u", i);
 
             file_entry = xfce_rc_read_entry(rcfile, key, NULL);
 
             if (!file_entry)
                 continue;
 
-            g_snprintf(key, 128, "Title%d", i);
+            g_snprintf(key, 128, "Title%u", i);
 
             title_entry = xfce_rc_read_entry(rcfile, key, NULL);
 
@@ -481,16 +481,16 @@ parole_pl_parser_save_pls(FILE *f, GSList *files) {
 
     len = g_slist_length(files);
 
-    fprintf(f, "[playlist]\nNumberOfEntries=%d\n", len);
+    fprintf(f, "[playlist]\nNumberOfEntries=%u\n", len);
 
     for (i = 1; i <= len; i++) {
         ParoleFile *file;
         file = g_slist_nth_data(files, i - 1);
-        g_snprintf(key, 128, "File%d", i);
+        g_snprintf(key, 128, "File%u", i);
         gchar *utf8 = parole_filename_to_utf8(parole_file_get_file_name(file));
         fprintf(f, "%s=%s\n", key, utf8);
         g_free(utf8);
-        g_snprintf(key, 128, "Title%d", i);
+        g_snprintf(key, 128, "Title%u", i);
         fprintf(f, "%s=%s\n\n", key, parole_file_get_display_name(file));
     }
 
