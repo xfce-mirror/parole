@@ -440,16 +440,16 @@ parole_guess_uri_from_mount(GMount *mount) {
         for (i = 0; content_type && content_type[i]; i++) {
             TRACE("Checking disc content type : %s", content_type[i]);
 
-            if ( !g_strcmp0(content_type[i], "x-content/video-dvd") ) {
+            if ( g_strcmp0(content_type[i], "x-content/video-dvd") == 0 ) {
                 uri = g_strdup("dvd:/");
                 break;
-            } else if ( !g_strcmp0(content_type[i], "x-content/video-vcd") ) {
+            } else if ( g_strcmp0(content_type[i], "x-content/video-vcd") == 0 ) {
                 uri = g_strdup("vcd:/");
                 break;
-            } else if ( !g_strcmp0(content_type[i], "x-content/video-svcd") ) {
+            } else if ( g_strcmp0(content_type[i], "x-content/video-svcd") == 0 ) {
                 uri = g_strdup("svcd:/");
                 break;
-            } else if ( !g_strcmp0(content_type[i], "x-content/audio-cdda") ) {
+            } else if ( g_strcmp0(content_type[i], "x-content/audio-cdda") == 0 ) {
                 uri = g_strdup("cdda://");
                 break;
             }
@@ -500,7 +500,7 @@ parole_get_uri_from_unix_device(const gchar *device) {
             gchar *unix_device;
             unix_device = g_volume_get_identifier(volume, G_VOLUME_IDENTIFIER_KIND_UNIX_DEVICE);
 
-            if (!g_strcmp0(unix_device, device)) {
+            if (g_strcmp0(unix_device, device) == 0) {
                 GMount *mount;
                 mount = g_volume_get_mount(volume);
 

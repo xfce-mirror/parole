@@ -1792,21 +1792,21 @@ parole_gst_about_to_finish_cb(GstElement *elm, gpointer data) {
 static void
 parole_gst_conf_notify_cb(GObject *object, GParamSpec *spec, ParoleGst *gst) {
     GtkAllocation allocation = { 0 };
-    if ( !g_strcmp0("vis-enabled", spec->name) || !g_strcmp0("vis-name", spec->name) ) {
+    if ( g_strcmp0("vis-enabled", spec->name) == 0 || g_strcmp0("vis-name", spec->name) == 0 ) {
         gst->priv->update_vis = TRUE;
-    } else if (!g_strcmp0("subtitle-font", spec->name) || !g_strcmp0("enable-subtitle", spec->name)) {
+    } else if (g_strcmp0("subtitle-font", spec->name) == 0 || g_strcmp0("enable-subtitle", spec->name) == 0) {
         parole_gst_set_subtitle_font(gst);
-    } else if (!g_strcmp0("subtitle-encoding", spec->name)) {
+    } else if (g_strcmp0("subtitle-encoding", spec->name) == 0) {
         parole_gst_set_subtitle_encoding(gst);
-    } else if (!g_strcmp0("brightness", spec->name) ||
-               !g_strcmp0("hue", spec->name) ||
-               !g_strcmp0("contrast", spec->name) ||
-               !g_strcmp0("saturation", spec->name)) {
+    } else if (g_strcmp0("brightness", spec->name) == 0 ||
+               g_strcmp0("hue", spec->name) == 0 ||
+               g_strcmp0("contrast", spec->name) == 0 ||
+               g_strcmp0("saturation", spec->name) == 0) {
         gst->priv->update_color_balance = TRUE;
 
         if ( gst->priv->state >= GST_STATE_PAUSED )
             parole_gst_set_video_color_balance(gst);
-    } else if ( !g_strcmp0("aspect-ratio", spec->name) ) {
+    } else if ( g_strcmp0("aspect-ratio", spec->name) == 0 ) {
         g_object_get(G_OBJECT(gst->priv->conf),
                       "aspect-ratio", &gst->priv->aspect_ratio,
                       NULL);

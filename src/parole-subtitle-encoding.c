@@ -434,7 +434,7 @@ subtitle_encoding_create_store(void) {
   store = gtk_tree_store_new(2, G_TYPE_INT, G_TYPE_STRING);
 
   for (i = 0; i < SUBTITLE_ENCODING_LAST; i++) {
-    if (strcmp(lastlang, encodings[i].name)) {
+    if (strcmp(lastlang, encodings[i].name) != 0) {
       lastlang = g_strdup(encodings[i].name);
       gtk_tree_store_append(store, &iter, NULL);
       gtk_tree_store_set(store, &iter, INDEX_COL,

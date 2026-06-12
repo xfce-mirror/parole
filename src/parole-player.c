@@ -1293,7 +1293,7 @@ parole_player_save_uri(ParolePlayer *player, const ParoleStream *stream) {
 
     if (lines) {
         for (i = 0; lines[i]; i++) {
-            if (!g_strcmp0(lines[i], uri)) {
+            if (g_strcmp0(lines[i], uri) == 0) {
                 save = FALSE;
                 break;
             }

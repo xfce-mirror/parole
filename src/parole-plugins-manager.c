@@ -536,8 +536,8 @@ parole_plugins_manager_load_plugins(ParolePluginsManager *manager) {
         module = g_ptr_array_index(manager->priv->array, j);
 
         for (i = 0; i < len; i++) {
-            if ( !g_strcmp0 (plugins_rc[i], module->name) ||
-                 !g_strcmp0(plugins_rc[i], PAROLE_PROVIDER_MODULE(module)->library_name) ) {
+            if ( g_strcmp0 (plugins_rc[i], module->name) == 0 ||
+                 g_strcmp0(plugins_rc[i], PAROLE_PROVIDER_MODULE(module)->library_name) == 0 ) {
                 TRACE("Loading plugin :%s", module->name);
                 if ( !parole_provider_module_use (PAROLE_PROVIDER_MODULE(module)) ) {
                     parole_plugins_manager_save_rc(manager, module->name, FALSE);
