@@ -36,21 +36,13 @@
 G_BEGIN_DECLS
 
 #define PAROLE_TYPE_PROVIDER_PLAYER                 (parole_provider_player_get_type ())
-#define PAROLE_PROVIDER_PLAYER(o)                   (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_PROVIDER_PLAYER, ParoleProviderPlayer))
-#define PAROLE_IS_PROVIDER_PLAYER(o)                (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_PROVIDER_PLAYER))
-#define PAROLE_PROVIDER_PLAYER_GET_INTERFACE(o)     (G_TYPE_INSTANCE_GET_INTERFACE((o), PAROLE_TYPE_PROVIDER_PLAYER, ParoleProviderPlayerIface))
+#define PAROLE_PROVIDER_PLAYER_GET_IFACE(provider) PAROLE_PROVIDER_PLAYER_GET_INTERFACE(provider)
+G_DECLARE_INTERFACE(ParoleProviderPlayer, parole_provider_player, PAROLE, PROVIDER_PLAYER, GObject)
 
 /**
  * ParoleProviderPlayerIface:
  *
  * Interface for #ParoleProviderPlayer
- *
- * Since: 0.2
- */
-typedef struct _ParoleProviderPlayerIface ParoleProviderPlayerIface;
-
-/**
- * ParoleProviderPlayer:
  *
  * The player interface that the plugins should use in order to, issue playback
  * commands to the Parole GStreamer backend or to get information about the
@@ -58,7 +50,7 @@ typedef struct _ParoleProviderPlayerIface ParoleProviderPlayerIface;
  *
  * Since: 0.2
  */
-typedef struct _ParoleProviderPlayer      ParoleProviderPlayer;
+typedef ParoleProviderPlayerInterface ParoleProviderPlayerIface;
 
 /**
  * ParolePluginContainer:
@@ -75,7 +67,7 @@ typedef enum {
 
 
 
-struct _ParoleProviderPlayerIface {
+struct _ParoleProviderPlayerInterface {
     GTypeInterface __parent__;
 
     /*< private >*/
@@ -133,8 +125,6 @@ struct _ParoleProviderPlayerIface {
                                                  const ParoleStream *stream,
                                                  ParoleState state);
 };
-
-GType        parole_provider_player_get_type    (void) G_GNUC_CONST;
 
 GtkWidget   *parole_provider_player_get_main_window
                                                 (ParoleProviderPlayer *player);

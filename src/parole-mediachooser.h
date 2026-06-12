@@ -30,12 +30,13 @@
 
 G_BEGIN_DECLS
 
+typedef struct ParoleMediaChooser ParoleMediaChooser;
+typedef struct ParoleMediaChooserClass ParoleMediaChooserClass;
+
 #define PAROLE_TYPE_MEDIA_CHOOSER        (parole_media_chooser_get_type () )
 #define PAROLE_MEDIA_CHOOSER(o)          (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_MEDIA_CHOOSER, ParoleMediaChooser))
 #define PAROLE_IS_MEDIA_CHOOSER(o)       (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_MEDIA_CHOOSER))
-
-typedef struct ParoleMediaChooser ParoleMediaChooser;
-typedef struct ParoleMediaChooserClass ParoleMediaChooserClass;
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(ParoleMediaChooser, g_object_unref)
 
 GType                    parole_media_chooser_get_type      (void) G_GNUC_CONST;
 

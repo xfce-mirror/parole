@@ -93,6 +93,7 @@ typedef enum {
 typedef struct _ParoleStream        ParoleStream;
 typedef struct _ParoleStreamClass   ParoleStreamClass;
 typedef struct _ParoleStreamPrivate ParoleStreamPrivate;
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(ParoleStream, g_object_unref)
 
 struct _ParoleStream {
     GObject              parent;

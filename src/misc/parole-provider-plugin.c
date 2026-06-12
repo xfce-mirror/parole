@@ -22,28 +22,9 @@
 
 #include "src/misc/parole-provider-plugin.h"
 
-GType
-parole_provider_plugin_get_type(void) {
-    static GType type = G_TYPE_INVALID;
+G_DEFINE_INTERFACE(ParoleProviderPlugin, parole_provider_plugin, G_TYPE_OBJECT)
 
-    if (G_UNLIKELY(type == G_TYPE_INVALID)) {
-        static const GTypeInfo info = {
-            sizeof (ParoleProviderPluginIface),
-            NULL,
-            NULL,
-            NULL,
-            NULL,
-            NULL,
-            0,
-            0,
-            NULL,
-            NULL,
-        };
-
-        type = g_type_register_static(G_TYPE_INTERFACE, "ParoleProviderPlugin", &info, 0);
-    }
-
-    return type;
+static void parole_provider_plugin_default_init(ParoleProviderPluginInterface *klass) {
 }
 
 /**

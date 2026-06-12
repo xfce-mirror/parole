@@ -25,36 +25,9 @@
 
 #include "src/misc/parole-provider-player.h"
 
-static void parole_provider_player_base_init(gpointer klass);
-static void parole_provider_player_class_init(gpointer klass);
+G_DEFINE_INTERFACE(ParoleProviderPlayer, parole_provider_player, G_TYPE_OBJECT)
 
-GType
-parole_provider_player_get_type(void) {
-    static GType type = G_TYPE_INVALID;
-
-    if (G_UNLIKELY(type == G_TYPE_INVALID)) {
-        static const GTypeInfo info = {
-            sizeof (ParoleProviderPlayerIface),
-            (GBaseInitFunc) parole_provider_player_base_init,
-            NULL,
-            (GClassInitFunc) (void (*)(void)) parole_provider_player_class_init,
-            NULL,
-            NULL,
-            0,
-            0,
-            NULL,
-            NULL,
-        };
-
-        type = g_type_register_static(G_TYPE_INTERFACE, "ParoleProviderPlayerIface", &info, 0);
-
-        g_type_interface_add_prerequisite(type, G_TYPE_OBJECT);
-    }
-
-    return type;
-}
-
-static void parole_provider_player_base_init(gpointer klass) {
+static void parole_provider_player_default_init(ParoleProviderPlayerInterface *klass) {
     static gboolean initialized = FALSE;
 
     if (G_UNLIKELY(!initialized)) {
@@ -113,9 +86,6 @@ static void parole_provider_player_base_init(gpointer klass) {
 
         initialized = TRUE;
     }
-}
-
-static void parole_provider_player_class_init(gpointer klass) {
 }
 
 /**

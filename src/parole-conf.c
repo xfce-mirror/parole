@@ -103,10 +103,6 @@ static void parole_conf_load_rc_file(ParoleConf     *conf);
 
 
 
-struct _ParoleConfClass {
-    GObjectClass __parent__;
-};
-
 struct _ParoleConf {
     GObject __parent__;
 
