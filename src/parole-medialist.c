@@ -1607,10 +1607,12 @@ parole_media_list_setup_view(ParoleMediaList *list) {
     gtk_tree_view_append_column(GTK_TREE_VIEW(list->priv->view), list->priv->col);
     gtk_tree_view_append_column(GTK_TREE_VIEW(list->priv->disc_view), list->priv->disc_col);
 
-    gtk_tree_view_column_set_title(list->priv->col,
-            g_strdup_printf(ngettext("Playlist (%i item)", "Playlist (%i items)", 0), 0));
-    gtk_tree_view_column_set_title(list->priv->disc_col,
-            g_strdup_printf(ngettext("Playlist (%i chapter)", "Playlist (%i chapters)", 0), 0));
+    gchar *title = g_strdup_printf(ngettext("Playlist (%i item)", "Playlist (%i items)", 0), 0);
+    gtk_tree_view_column_set_title(list->priv->col, title);
+    g_free(title);
+    title = g_strdup_printf(ngettext("Playlist (%i chapter)", "Playlist (%i chapters)", 0), 0);
+    gtk_tree_view_column_set_title(list->priv->disc_col, title);
+    g_free(title);
 
     gtk_drag_dest_set(list->priv->view, GTK_DEST_DEFAULT_ALL, target_entry, G_N_ELEMENTS(target_entry),
                        GDK_ACTION_COPY | GDK_ACTION_MOVE);

@@ -334,8 +334,9 @@ delete_event_cb(GtkWidget *widget, GdkEvent *ev, TrayProvider *tray) {
                                     GTK_BUTTONS_NONE,
                                     NULL);
 
-    gtk_message_dialog_set_markup(GTK_MESSAGE_DIALOG(dialog),
-                                    g_strdup_printf("<big><b>%s</b></big>", _("Are you sure you want to quit?")));
+    gchar *markup = g_strdup_printf("<big><b>%s</b></big>", _("Are you sure you want to quit?"));
+    gtk_message_dialog_set_markup(GTK_MESSAGE_DIALOG(dialog), markup);
+    g_free(markup);
 
     gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog),
             _("Parole can be minimized to the system tray instead."));
