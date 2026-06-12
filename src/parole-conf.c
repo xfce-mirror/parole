@@ -79,7 +79,7 @@ enum {
     PROP_WINDOW_WIDTH,
     PROP_HIDE_CONTROLS_TIMEOUT,
     PROP_ALWAYS_HIDE_MENUBAR,
-    N_PROP
+    N_PROPS
 };
 
 
@@ -808,7 +808,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
      * If Parole should start maximized.
      **/
     g_object_class_install_property(object_class,
-                                    PROP_WINDOW_MINIMIZED,
+                                    PROP_WINDOW_MAXIMIZED,
                                     g_param_spec_boolean("window-maximized",
                                     "/window/maximized",
                                     NULL,
