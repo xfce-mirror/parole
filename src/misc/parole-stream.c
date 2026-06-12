@@ -429,7 +429,7 @@ parole_stream_class_init(ParoleStreamClass *klass) {
                                     "Uri",
                                     "Uri",
                                     NULL,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleStream:subtitles:
@@ -445,7 +445,7 @@ parole_stream_class_init(ParoleStreamClass *klass) {
                                     "Subtitles",
                                     "Subtitle file",
                                     NULL,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleStream:has-audio:
@@ -460,7 +460,7 @@ parole_stream_class_init(ParoleStreamClass *klass) {
                                     "Has audio",
                                     "Has audio",
                                     FALSE,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleStream:has-video:
@@ -475,7 +475,7 @@ parole_stream_class_init(ParoleStreamClass *klass) {
                                     "Has video",
                                     "Has video",
                                     FALSE,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleStream:has-artwork:
@@ -490,7 +490,7 @@ parole_stream_class_init(ParoleStreamClass *klass) {
                                     "Has artwork",
                                     "Has artwork",
                                     FALSE,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleStream:live:
@@ -505,7 +505,7 @@ parole_stream_class_init(ParoleStreamClass *klass) {
                                     "Live",
                                     "Live",
                                     FALSE,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleStream:media-type:
@@ -521,7 +521,7 @@ parole_stream_class_init(ParoleStreamClass *klass) {
                                     "Media type",
                                     PAROLE_TYPE_MEDIA_TYPE,
                                     PAROLE_MEDIA_TYPE_UNKNOWN,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleStream:seekable:
@@ -537,7 +537,7 @@ parole_stream_class_init(ParoleStreamClass *klass) {
                                     "Seekable",
                                     "Seekable",
                                     FALSE,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleStream:duration:
@@ -553,7 +553,7 @@ parole_stream_class_init(ParoleStreamClass *klass) {
                                     "Duration",
                                     0, G_MAXINT64,
                                     0,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleStream:tag-available:
@@ -568,7 +568,7 @@ parole_stream_class_init(ParoleStreamClass *klass) {
                                     "Tag available",
                                     "Tag available",
                                     FALSE,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleStream:absolute-duration:
@@ -584,7 +584,7 @@ parole_stream_class_init(ParoleStreamClass *klass) {
                                     "Absolution duration",
                                     0, G_MAXINT64,
                                     0,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleStream:disp-par-n:
@@ -600,7 +600,7 @@ parole_stream_class_init(ParoleStreamClass *klass) {
                                     "Disp par n",
                                     1, G_MAXUINT,
                                     1,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleStream:disp-par-n:
@@ -616,7 +616,7 @@ parole_stream_class_init(ParoleStreamClass *klass) {
                                     "Disp par d",
                                     1, G_MAXUINT,
                                     1,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleStream:video-width:
@@ -632,7 +632,7 @@ parole_stream_class_init(ParoleStreamClass *klass) {
                                     "Video width",
                                     0, G_MAXINT,
                                     0,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleStream:video-height:
@@ -648,7 +648,7 @@ parole_stream_class_init(ParoleStreamClass *klass) {
                                     "Video height",
                                     0, G_MAXINT,
                                     0,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleStream:num-tracks:
@@ -665,7 +665,7 @@ parole_stream_class_init(ParoleStreamClass *klass) {
                                     "Number of tracks in the audio disc",
                                     1, 99,
                                     1,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleStream:track:
@@ -683,7 +683,7 @@ parole_stream_class_init(ParoleStreamClass *klass) {
                                     "Track",
                                     0, 99,
                                     1,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
     /**
      * ParoleStream:title:
      *
@@ -697,7 +697,7 @@ parole_stream_class_init(ParoleStreamClass *klass) {
                                     "Title",
                                     "Title",
                                     NULL,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
 
     /**
@@ -713,7 +713,7 @@ parole_stream_class_init(ParoleStreamClass *klass) {
                                     "Artist",
                                     "Artist",
                                     NULL,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleStream:year:
@@ -728,7 +728,7 @@ parole_stream_class_init(ParoleStreamClass *klass) {
                                     "Year",
                                     "Year",
                                     NULL,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleStream:album:
@@ -743,7 +743,7 @@ parole_stream_class_init(ParoleStreamClass *klass) {
                                     "Album",
                                     "Album",
                                     NULL,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleStream:comment:
@@ -758,7 +758,7 @@ parole_stream_class_init(ParoleStreamClass *klass) {
                                     "Comment",
                                     "Comment",
                                     NULL,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleStream:genre:
@@ -773,7 +773,7 @@ parole_stream_class_init(ParoleStreamClass *klass) {
                                     "Genre",
                                     "Genre",
                                     NULL,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleStream:image_uri:
@@ -788,7 +788,7 @@ parole_stream_class_init(ParoleStreamClass *klass) {
                                     "Image URI",
                                     "URI for the album artwork",
                                     NULL,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleStream:bitrate:
@@ -804,7 +804,7 @@ parole_stream_class_init(ParoleStreamClass *klass) {
                                     "Bitrate",
                                     0, 2147483647,
                                     0,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 }
 
 static void

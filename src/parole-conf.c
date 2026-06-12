@@ -423,7 +423,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     "/audio/visualization-enabled",
                                     NULL,
                                     FALSE,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleConf:vis-name:
@@ -438,7 +438,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     "/audio/visualization-name",
                                     NULL,
                                     "none",
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleConf:volume:
@@ -455,7 +455,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     0,
                                     100,
                                     50,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleConf:media-chooser-folder:
@@ -470,7 +470,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     "/folders/last-used-media",
                                     NULL,
                                     "none",
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleConf:multimedia-keys:
@@ -485,7 +485,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     "/parole/multimedia-keys",
                                     NULL,
                                     TRUE,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleConf:plugins:
@@ -500,7 +500,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     "/parole/plugins",
                                     NULL,
                                     "none",
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleConf:scan-recursive:
@@ -515,7 +515,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     "/parole/scan-recursive",
                                     NULL,
                                     TRUE,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleConf:remember-playlist:
@@ -530,7 +530,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     "/playlist/remember-playlist",
                                     NULL,
                                     FALSE,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleConf:remove-duplicated:
@@ -545,7 +545,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     "/playlist/remove-duplicates",
                                     NULL,
                                     FALSE,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleConf:repeat:
@@ -560,7 +560,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     "/playlist/repeat",
                                     NULL,
                                     FALSE,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleConf:replace-playlist:
@@ -576,7 +576,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     "/playlist/replace-playlist",
                                     NULL,
                                     FALSE,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleConf:shuffle:
@@ -591,7 +591,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     "/playlist/shuffle",
                                     NULL,
                                     FALSE,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleConf:play-opened-files:
@@ -607,7 +607,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     "/playlist/play-opened-files",
                                     NULL,
                                     TRUE,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleConf:enable-subtitle:
@@ -622,7 +622,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     "/subtitles/enabled",
                                     NULL,
                                     TRUE,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleConf:subtitle-encoding:
@@ -637,7 +637,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     "/subtitles/encoding",
                                     NULL,
                                     "UTF-8",
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleConf:subtitle-font:
@@ -652,7 +652,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     "/subtitles/font",
                                     NULL,
                                     "Sans Bold 20",
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleConf:videosink:
@@ -667,7 +667,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     "/video/videosink",
                                     NULL,
                                     "autoimagesink",
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleConf:aspect-ratio:
@@ -683,7 +683,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     NULL,
                                     PAROLE_TYPE_ASPECT_RATIO,
                                     PAROLE_ASPECT_RATIO_AUTO,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleConf:brightness:
@@ -700,7 +700,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     -1000,
                                     1000,
                                     0,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleConf:contrast:
@@ -717,7 +717,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     -1000,
                                     1000,
                                     0,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleConf:reset-saver:
@@ -732,7 +732,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     "/video/disable-screensaver",
                                     NULL,
                                     TRUE,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleConf:hue:
@@ -749,7 +749,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     -1000,
                                     1000,
                                     0,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleConf:saturation:
@@ -766,7 +766,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     -1000,
                                     1000,
                                     0,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleConf:window-height:
@@ -783,7 +783,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     1,
                                     G_MAXINT16,
                                     420,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleConf:minimized:
@@ -798,7 +798,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     "/window/minimized",
                                     NULL,
                                     FALSE,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleConf:maximized:
@@ -813,7 +813,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     "/window/maximized",
                                     NULL,
                                     FALSE,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleConf:window-width:
@@ -830,7 +830,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     1,
                                     G_MAXINT16,
                                     760,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleConf:hide-controls-timeout:
@@ -847,7 +847,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     1,
                                     G_MAXINT16,
                                     2,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleConf:always-hide-menubar:
@@ -862,7 +862,7 @@ parole_conf_class_init(ParoleConfClass *klass) {
                                     "/always-hide-menubar",
                                     NULL,
                                     FALSE,
-                                    G_PARAM_READWRITE));
+                                    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 }
 
 /**

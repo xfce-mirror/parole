@@ -2134,8 +2134,7 @@ parole_gst_class_init(ParoleGstClass *klass) {
                                         PROP_CONF_OBJ,
                                         g_param_spec_pointer("conf-object",
                                             NULL, NULL,
-                                            G_PARAM_CONSTRUCT_ONLY|
-                                            G_PARAM_READWRITE));
+                                            G_PARAM_CONSTRUCT_ONLY | G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     g_object_class_install_property(object_class,
                                         PROP_VOLUME,
@@ -2149,7 +2148,7 @@ parole_gst_class_init(ParoleGstClass *klass) {
                                         g_param_spec_boolean("tags",
                                             NULL, NULL,
                                             TRUE,
-                                            G_PARAM_READWRITE));
+                                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 }
 
 static void

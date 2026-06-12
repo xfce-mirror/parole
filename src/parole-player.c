@@ -2532,7 +2532,7 @@ parole_player_class_init(ParolePlayerClass *klass) {
                               NULL,
                               NULL,
                               NULL,
-                              G_PARAM_READWRITE|G_PARAM_CONSTRUCT_ONLY));
+                              G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS));
 
     parole_player_dbus_class_init(klass);
 }

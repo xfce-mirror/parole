@@ -566,8 +566,7 @@ parole_plugins_manager_class_init(ParolePluginsManagerClass *klass) {
                                         g_param_spec_boolean("load-plugins",
                                                               NULL, NULL,
                                                               TRUE,
-                                                              G_PARAM_CONSTRUCT_ONLY|
-                                                              G_PARAM_READWRITE));
+                                                              G_PARAM_CONSTRUCT_ONLY | G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 }
 
 static void
