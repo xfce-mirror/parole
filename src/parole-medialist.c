@@ -171,8 +171,6 @@ struct ParoleMediaListPrivate {
     GtkWidget *repeat_button;
     GtkWidget *shuffle_button;
 
-    char *history[3];
-
     guint entry_pos;
 };
 
