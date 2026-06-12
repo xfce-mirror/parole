@@ -437,7 +437,7 @@ static void mpris_Player_put_Shuffle(GVariant *value, GError **error, Mpris2Prov
 
 static GVariant * handle_get_trackid(const ParoleStream *stream) {
     // TODO: Returning a path requires TrackList interface implementation
-    gchar *o = alloca(260);
+    gchar o[260];
     if (NULL == stream)
         return g_variant_new_object_path("/");
 
