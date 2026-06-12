@@ -2166,7 +2166,7 @@ static void
 shuffle_tree_model (GtkTreeModel *model) {
     GtkTreeIter iter;
     guint n_children = gtk_tree_model_iter_n_children(model, NULL);
-    guint sort = 0;
+    guint sort;
     guint state = 0;
     GRand *grand = g_rand_new();
 

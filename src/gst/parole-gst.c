@@ -507,7 +507,6 @@ parole_gst_tick(ParoleGst *gst) {
 static void
 parole_gst_query_duration(ParoleGst *gst) {
     gint64 absolute_duration = 0;
-    gint64 duration = 0;
     gboolean live;
     GstFormat gst_time = GST_FORMAT_TIME;
 
@@ -518,7 +517,7 @@ parole_gst_query_duration(ParoleGst *gst) {
     }
 
     if (gst_time == GST_FORMAT_TIME) {
-        duration =  absolute_duration / GST_SECOND;
+        gint64 duration =  absolute_duration / GST_SECOND;
         live = (absolute_duration == 0);
 
         TRACE("Duration %" G_GINT64_FORMAT ", is_live=%d", duration, live);
@@ -1019,7 +1018,6 @@ static void
 parole_gst_get_meta_data_dvd(ParoleGst *gst) {
     gint n_chapters;
     guint num_chapters = 1;
-    guint chapter = 1;
     guint current_num_chapters;
     guint current_chapter;
     gint64 val = -1;
@@ -1052,7 +1050,7 @@ parole_gst_get_meta_data_dvd(ParoleGst *gst) {
     /* Get the current chapter. */
     val = -1;
     if (gst_element_query_position(gst->priv->playbin, format, &val)) {
-        chapter = (guint)(gint) val;
+        guint chapter = val;
         TRACE("Current chapter: %i", chapter);
         if ( chapter != current_chapter || num_chapters != 1 ) {
             g_object_set(G_OBJECT(gst->priv->stream),
