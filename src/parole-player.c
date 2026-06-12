@@ -863,8 +863,7 @@ parole_player_update_audio_tracks(ParolePlayer *player, ParoleGst *gst) {
     parole_player_set_audio_list(player, list);
 
     g_free(list->data);
-    g_list_free(list);
-    list = NULL;
+    g_clear_list(&list, NULL);
 }
 
 static void
@@ -898,8 +897,7 @@ parole_player_update_subtitles(ParolePlayer *player, ParoleGst *gst) {
         gtk_widget_show(player->priv->infobar);
     }
     g_free(list->data);
-    g_list_free(list);
-    list = NULL;
+    g_clear_list(&list, NULL);
 }
 
 static void

@@ -107,7 +107,7 @@ struct ParoleGstPrivate {
     ParoleState         media_state;
 
     ParoleStream       *stream;
-    gulong              tick_id;
+    guint               tick_id;
     GdkPixbuf          *logo;
     gchar              *device;
 
@@ -129,7 +129,7 @@ struct ParoleGstPrivate {
     gchar*              custom_subtitles;
 
     ParoleAspectRatio   aspect_ratio;
-    gulong              state_change_id;
+    guint               state_change_id;
 
     /*
      * xvimage sink has brightness+hue+saturation+contrast.
@@ -173,11 +173,7 @@ parole_gst_finalize(GObject *object) {
 
     TRACE("start");
 
-    if (gst->priv->tick_id != 0) {
-        g_source_remove(gst->priv->tick_id);
-        gst->priv->tick_id = 0;
-    }
-
+    g_clear_handle_id(&gst->priv->tick_id, g_source_remove);
     parole_stream_init_properties(gst->priv->stream);
 
     if ( gst->priv->stream )
@@ -503,9 +499,8 @@ parole_gst_tick(ParoleGst *gst) {
             return;
         }
         gst->priv->tick_id = g_timeout_add(250, (GSourceFunc)parole_gst_tick_timeout, gst);
-    } else if (gst->priv->tick_id != 0) {
-        g_source_remove(gst->priv->tick_id);
-        gst->priv->tick_id = 0;
+    } else {
+        g_clear_handle_id(&gst->priv->tick_id, g_source_remove);
     }
 }
 
@@ -761,8 +756,7 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
         gtk_widget_queue_draw(GTK_WIDGET(gst));
         parole_window_normal_cursor(gtk_widget_get_window(GTK_WIDGET(gst)));
         if ( gst->priv->state_change_id != 0 ) {
-            g_source_remove(gst->priv->state_change_id);
-            gst->priv->state_change_id = 0;
+            g_clear_handle_id(&gst->priv->state_change_id, g_source_remove);
 
             // If it's a DVD, fire up the menu if nothing happens
             if (parole_gst_get_current_stream_type(gst) == PAROLE_MEDIA_TYPE_DVD) {
@@ -2294,11 +2288,7 @@ void parole_gst_play_device_uri(ParoleGst *gst, const gchar *uri, const gchar *d
 
     TRACE("device : %s", device);
 
-    if ( gst->priv->device ) {
-        g_free(gst->priv->device);
-        gst->priv->device = NULL;
-    }
-
+    g_clear_pointer(&gst->priv->device, g_free);
     gst->priv->device = g_strdup(device);
 
     /*

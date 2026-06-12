@@ -94,19 +94,11 @@ parole_xspf_xml_text(GMarkupParseContext *context,
     element_name = g_markup_parse_context_get_element(context);
 
     if (!g_ascii_strcasecmp(element_name, "location")) {
-        if (data->uri) {
-            g_free(data->uri);
-            data->uri = NULL;
-        }
-
+        g_clear_pointer(&data->uri, g_free);
         if (text_len > 0)
             data->uri = g_strdup(text);
     } else if (!g_ascii_strcasecmp(element_name, "title")) {
-        if (data->title) {
-            g_free(data->title);
-            data->title = NULL;
-        }
-
+        g_clear_pointer(&data->title, g_free);
         if (text_len > 0)
             data->title = g_strdup(text);
     }
@@ -127,15 +119,10 @@ parole_xspf_xml_end(GMarkupParseContext *context, const gchar *element_name, gpo
         if (data->uri) {
             file = parole_file_new_with_display_name(data->uri, data->title);
             data->list = g_slist_append(data->list, file);
-
-            g_free(data->uri);
-            data->uri = NULL;
+            g_clear_pointer(&data->uri, g_free);
         }
 
-        if (data->title) {
-            g_free(data->title);
-            data->title = NULL;
-        }
+        g_clear_pointer(&data->title, g_free);
     }
 }
 
@@ -154,10 +141,7 @@ parole_asx_xml_start(GMarkupParseContext *context, const gchar *element_name,
     }
 
     if (!g_ascii_strcasecmp(element_name, "ref")) {
-        if (data->uri) {
-            g_free(data->uri);
-            data->uri = NULL;
-        }
+        g_clear_pointer(&data->uri, g_free);
 
         for (i = 0; attribute_names[i]; i++) {
             if (!g_ascii_strcasecmp(attribute_names[i], "href")) {
@@ -181,10 +165,7 @@ parole_asx_xml_text(GMarkupParseContext *context,
     element_name = g_markup_parse_context_get_element(context);
 
     if (!g_ascii_strcasecmp(element_name, "title")) {
-        if (data->title) {
-            g_free(data->title);
-            data->title = NULL;
-        }
+        g_clear_pointer(&data->title, g_free);
 
         if (text_len > 0)
             data->title = g_strdup(text);
@@ -206,15 +187,10 @@ parole_asx_xml_end(GMarkupParseContext *context, const gchar *element_name, gpoi
         if (data->uri) {
             file = parole_file_new_with_display_name(data->uri, data->title);
             data->list = g_slist_append(data->list, file);
-
-            g_free(data->uri);
-            data->uri = NULL;
+            g_clear_pointer(&data->uri, g_free);
         }
 
-        if (data->title) {
-            g_free(data->title);
-            data->title = NULL;
-        }
+        g_clear_pointer(&data->title, g_free);
     }
 }
 

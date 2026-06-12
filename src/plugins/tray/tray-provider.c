@@ -58,8 +58,7 @@ PAROLE_DEFINE_TYPE_WITH_CODE(TrayProvider,
 
 static void
 menu_selection_done_cb(TrayProvider *tray) {
-    gtk_widget_destroy(tray->menu);
-    tray->menu = NULL;
+    g_clear_pointer(&tray->menu, gtk_widget_destroy);
 }
 
 static void
@@ -197,8 +196,7 @@ state_changed_cb(ParoleProviderPlayer *player, const ParoleStream *stream, Parol
     tray->state = state;
 
     if ( tray->menu ) {
-        gtk_widget_destroy(tray->menu);
-        tray->menu = NULL;
+        g_clear_pointer(&tray->menu, gtk_widget_destroy);
         g_signal_emit_by_name(G_OBJECT(tray->tray), "popup-menu", 0, gtk_get_current_event_time());
     }
 }

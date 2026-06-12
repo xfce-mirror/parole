@@ -53,8 +53,7 @@ PAROLE_DEFINE_TYPE_WITH_CODE(NotifyProvider,
 
 static void
 notification_closed_cb(NotifyNotification *n, NotifyProvider *notify) {
-    g_object_unref(notify->notification);
-    notify->notification = NULL;
+    g_clear_object(&notify->notification);
 }
 
 static void
@@ -66,8 +65,7 @@ close_notification(NotifyProvider *notify) {
             g_warning("Failed to close notification : %s", error->message);
             g_error_free(error);
         }
-        g_object_unref(notify->notification);
-        notify->notification = NULL;
+        g_clear_object(&notify->notification);
     }
 }
 

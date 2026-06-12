@@ -234,15 +234,8 @@ void parole_provider_module_free_plugin(ParoleProviderModule *module) {
 
     g_return_if_fail(PAROLE_IS_PROVIDER_MODULE(module));
 
-    if ( module->instance ) {
-        g_object_unref(module->instance);
-        module->instance = NULL;
-    }
-
-    if ( module->player ) {
-        g_object_unref(module->player);
-        module->player = NULL;
-    }
+    g_clear_object(&module->instance);
+    g_clear_object(&module->player);
 }
 
 gboolean

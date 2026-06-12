@@ -239,8 +239,7 @@ parole_get_subtitle_in_dir(const gchar *dir_path, const gchar *file) {
         if ( g_file_test (sub_path, G_FILE_TEST_EXISTS | G_FILE_TEST_IS_REGULAR ) )
             break;
 
-        g_free(sub_path);
-        sub_path = NULL;
+        g_clear_pointer(&sub_path, g_free);
     }
 
     g_free(file_no_ext);

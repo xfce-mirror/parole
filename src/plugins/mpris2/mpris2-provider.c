@@ -488,8 +488,7 @@ static void handle_get_metadata(const ParoleStream *stream, GVariantBuilder *b) 
                  NULL);
 
     if (has_video) {
-        g_free(image_uri);
-        image_uri = NULL;
+        g_clear_pointer(&image_uri, g_free);
     }
 
     g_variant_builder_add(b, "{sv}", "mpris:trackid",
