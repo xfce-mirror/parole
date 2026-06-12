@@ -338,7 +338,7 @@ parole_file_class_init(ParoleFileClass *klass) {
      **/
     g_object_class_install_property(object_class,
                                     PROP_CUSTOM_SUBTITLES,
-                                    g_param_spec_string("custom_subtitles",
+                                    g_param_spec_string("custom-subtitles",
                                                         "Custom Subtitles",
                                                         "The custom subtitles set by the user",
                                                         NULL,

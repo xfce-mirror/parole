@@ -784,7 +784,7 @@ parole_stream_class_init(ParoleStreamClass *klass) {
      **/
     g_object_class_install_property(object_class,
                                     PROP_IMAGE_URI,
-                                    g_param_spec_string("image_uri",
+                                    g_param_spec_string("image-uri",
                                     "Image URI",
                                     "URI for the album artwork",
                                     NULL,

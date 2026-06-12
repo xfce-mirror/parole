@@ -481,7 +481,7 @@ static void handle_get_metadata(const ParoleStream *stream, GVariantBuilder *b) 
                  "duration", &duration,
                  "uri", &stream_uri,
                  "genre", &genre,
-                 "image_uri", &image_uri,
+                 "image-uri", &image_uri,
                  "track", &track_id,
                  "bitrate", &bitrate,
                  "has-video", &has_video,

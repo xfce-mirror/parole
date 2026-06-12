@@ -1173,7 +1173,7 @@ parole_gst_get_meta_data_file(ParoleGst *gst, GstTagList *tag) {
     }
 
     g_object_get(G_OBJECT(gst->priv->stream),
-                 "has_artwork", &has_artwork,
+                 "has-artwork", &has_artwork,
                  NULL);
     if (!has_artwork) {
         pixbuf = parole_gst_tag_list_get_cover(gst, tag);
