@@ -267,7 +267,7 @@ gchar *parole_get_subtitle_path(const gchar *uri) {
 
     info = g_file_query_info(file,
                   "standard::*,",
-                  0,
+                  G_FILE_QUERY_INFO_NONE,
                   NULL,
                   &error);
 

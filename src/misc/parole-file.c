@@ -180,7 +180,7 @@ parole_file_constructed(GObject *object) {
 
     info = g_file_query_info(gfile,
                              "standard::*,",
-                             0,
+                             G_FILE_QUERY_INFO_NONE,
                              NULL,
                              &error);
 
