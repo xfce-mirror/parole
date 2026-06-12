@@ -221,7 +221,7 @@ notify_provider_set_player(ParoleProviderPlugin *plugin, ParoleProviderPlayer *p
     notify->notification = NULL;
     notify_init("parole-notify");
 
-    g_signal_connect(player, "state_changed",
+    g_signal_connect(player, "state-changed",
                       G_CALLBACK(state_changed_cb), notify);
 }
 

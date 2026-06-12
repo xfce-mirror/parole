@@ -3665,10 +3665,10 @@ parole_player_init(ParolePlayer *player) {
     /*
      * Media List Signals
      */
-    g_signal_connect(player->priv->list, "media_activated",
+    g_signal_connect(player->priv->list, "media-activated",
               G_CALLBACK(parole_player_media_activated_cb), player);
 
-    g_signal_connect(player->priv->list, "media_cursor_changed",
+    g_signal_connect(player->priv->list, "media-cursor-changed",
               G_CALLBACK(parole_player_media_cursor_changed_cb), player);
 
     g_signal_connect(player->priv->list, "uri-opened",

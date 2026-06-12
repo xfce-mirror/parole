@@ -244,7 +244,7 @@ parole_gst_realize(GtkWidget *widget) {
     gdk_rgba_parse(&color, "black");
     gdk_window_set_background_rgba(gtk_widget_get_window(widget), &color);
 
-    g_signal_connect(gtk_widget_get_toplevel(widget), "configure_event",
+    g_signal_connect(gtk_widget_get_toplevel(widget), "configure-event",
                          G_CALLBACK(parole_gst_configure_event_cb), gst);
 
     g_signal_connect(gtk_widget_get_parent(gtk_widget_get_parent(widget)), "draw",

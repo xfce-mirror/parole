@@ -441,7 +441,7 @@ tray_provider_set_player(ParoleProviderPlugin *plugin, ParoleProviderPlayer *pla
     tray->sig = g_signal_connect_object(tray->window, "delete-event",
               G_CALLBACK(delete_event_cb), tray, 0);
 
-    g_signal_connect(player, "state_changed",
+    g_signal_connect(player, "state-changed",
               G_CALLBACK(state_changed_cb), tray);
 
     g_signal_connect_object(gtk_icon_theme_get_default(), "changed",

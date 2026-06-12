@@ -468,10 +468,10 @@ parole_media_list_open_internal(ParoleMediaList *list) {
 
     chooser = parole_media_chooser_open_local(gtk_widget_get_toplevel(GTK_WIDGET(list)));
 
-    g_signal_connect(G_OBJECT(chooser), "media_files_opened",
+    g_signal_connect(G_OBJECT(chooser), "media-files-opened",
                      G_CALLBACK(parole_media_list_files_opened_cb), list);
 
-    g_signal_connect(G_OBJECT(chooser), "iso_opened",
+    g_signal_connect(G_OBJECT(chooser), "iso-opened",
                      G_CALLBACK(parole_media_list_iso_opened_cb), list);
 }
 
