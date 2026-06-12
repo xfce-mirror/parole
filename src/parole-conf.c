@@ -89,8 +89,6 @@ static void parole_conf_get_property(GObject        *object,
                                          guint           prop_id,
                                          GValue         *value,
                                          GParamSpec     *pspec);
-gchar
-*parole_conf_map_xfconf_property_name(const gchar *prop_name);
 static void parole_conf_set_property(GObject        *object,
                                          guint           prop_id,
                                          const GValue   *value,
@@ -238,64 +236,64 @@ static void parole_conf_get_property(GObject *object,
 }
 
 /* Facilitate the conversion from xfconf property name to parole property name */
-gchar *parole_conf_map_xfconf_property_name(const gchar *prop_name) {
+static const gchar * parole_conf_map_xfconf_property_name(const gchar *prop_name) {
     gchar *value = NULL;
     if (g_strcmp0(prop_name, "/audio/visualization-enabled") == 0)
-        value = g_strdup("vis-enabled");
-    if (g_strcmp0(prop_name, "/audio/visualization-name") == 0)
-        value = g_strdup("vis-name");
-    if (g_strcmp0(prop_name, "/audio/volume") == 0)
-        value = g_strdup("volume");
-    if (g_strcmp0(prop_name, "/folders/last-used-media") == 0)
-        value = g_strdup("media-chooser-folder");
-    if (g_strcmp0(prop_name, "/parole/multimedia-keys") == 0)
-        value = g_strdup("multimedia-keys");
-    if (g_strcmp0(prop_name, "/parole/plugins") == 0)
-        value = g_strdup("plugins");
-    if (g_strcmp0(prop_name, "scan-recursive") == 0)
-        value = g_strdup("/parole/scan-recursive");
-    if (g_strcmp0(prop_name, "/playlist/remember-playlist") == 0)
-        value = g_strdup("remember-playlist");
-    if (g_strcmp0(prop_name, "/playlist/remove-duplicates") == 0)
-        value = g_strdup("remove-duplicated");
-    if (g_strcmp0(prop_name, "/playlist/repeat") == 0)
-        value = g_strdup("repeat");
-    if (g_strcmp0(prop_name, "/playlist/replace-playlist") == 0)
-        value = g_strdup("replace-playlist");
-    if (g_strcmp0(prop_name, "/playlist/shuffle") == 0)
-        value = g_strdup("shuffle");
-    if (g_strcmp0(prop_name, "/playlist/play-opened-files") == 0)
-        value = g_strdup("play-opened-files");
-    if (g_strcmp0(prop_name, "/subtitles/enabled") == 0)
-        value = g_strdup("enable-subtitle");
-    if (g_strcmp0(prop_name, "/subtitles/encoding") == 0)
-        value = g_strdup("subtitle-encoding");
-    if (g_strcmp0(prop_name, "/subtitles/font") == 0)
-        value = g_strdup("subtitle-font");
-    if (g_strcmp0(prop_name, "/video/videosink") == 0)
-        value = g_strdup("videosink");
-    if (g_strcmp0(prop_name, "/video/aspect-ratio") == 0)
-        value = g_strdup("aspect-ratio");
-    if (g_strcmp0(prop_name, "/video/brightness") == 0)
-        value = g_strdup("brightness");
-    if (g_strcmp0(prop_name, "/video/contrast") == 0)
-        value = g_strdup("contrast");
-    if (g_strcmp0(prop_name, "/video/disable-screensaver") == 0)
-        value = g_strdup("reset-saver");
-    if (g_strcmp0(prop_name, "/video/hue") == 0)
-        value = g_strdup("hue");
-    if (g_strcmp0(prop_name, "/video/saturation") == 0)
-        value = g_strdup("saturation");
-    if (g_strcmp0(prop_name, "/window/height") == 0)
-        value = g_strdup("window-height");
-    if (g_strcmp0(prop_name, "/window/minimized") == 0)
-        value = g_strdup("minimized");
-    if (g_strcmp0(prop_name, "/window/maximized") == 0)
-        value = g_strdup("window-maximized");
-    if (g_strcmp0(prop_name, "/window/width") == 0)
-        value = g_strdup("window-width");
-    if (g_strcmp0(prop_name, "/hide-controls-timeout") == 0)
-        value = g_strdup("hide-controls-timeout");
+        value = "vis-enabled";
+    else if (g_strcmp0(prop_name, "/audio/visualization-name") == 0)
+        value = "vis-name";
+    else if (g_strcmp0(prop_name, "/audio/volume") == 0)
+        value = "volume";
+    else if (g_strcmp0(prop_name, "/folders/last-used-media") == 0)
+        value = "media-chooser-folder";
+    else if (g_strcmp0(prop_name, "/parole/multimedia-keys") == 0)
+        value = "multimedia-keys";
+    else if (g_strcmp0(prop_name, "/parole/plugins") == 0)
+        value = "plugins";
+    else if (g_strcmp0(prop_name, "scan-recursive") == 0)
+        value = "/parole/scan-recursive";
+    else if (g_strcmp0(prop_name, "/playlist/remember-playlist") == 0)
+        value = "remember-playlist";
+    else if (g_strcmp0(prop_name, "/playlist/remove-duplicates") == 0)
+        value = "remove-duplicated";
+    else if (g_strcmp0(prop_name, "/playlist/repeat") == 0)
+        value = "repeat";
+    else if (g_strcmp0(prop_name, "/playlist/replace-playlist") == 0)
+        value = "replace-playlist";
+    else if (g_strcmp0(prop_name, "/playlist/shuffle") == 0)
+        value = "shuffle";
+    else if (g_strcmp0(prop_name, "/playlist/play-opened-files") == 0)
+        value = "play-opened-files";
+    else if (g_strcmp0(prop_name, "/subtitles/enabled") == 0)
+        value = "enable-subtitle";
+    else if (g_strcmp0(prop_name, "/subtitles/encoding") == 0)
+        value = "subtitle-encoding";
+    else if (g_strcmp0(prop_name, "/subtitles/font") == 0)
+        value = "subtitle-font";
+    else if (g_strcmp0(prop_name, "/video/videosink") == 0)
+        value = "videosink";
+    else if (g_strcmp0(prop_name, "/video/aspect-ratio") == 0)
+        value = "aspect-ratio";
+    else if (g_strcmp0(prop_name, "/video/brightness") == 0)
+        value = "brightness";
+    else if (g_strcmp0(prop_name, "/video/contrast") == 0)
+        value = "contrast";
+    else if (g_strcmp0(prop_name, "/video/disable-screensaver") == 0)
+        value = "reset-saver";
+    else if (g_strcmp0(prop_name, "/video/hue") == 0)
+        value = "hue";
+    else if (g_strcmp0(prop_name, "/video/saturation") == 0)
+        value = "saturation";
+    else if (g_strcmp0(prop_name, "/window/height") == 0)
+        value = "window-height";
+    else if (g_strcmp0(prop_name, "/window/minimized") == 0)
+        value = "minimized";
+    else if (g_strcmp0(prop_name, "/window/maximized") == 0)
+        value = "window-maximized";
+    else if (g_strcmp0(prop_name, "/window/width") == 0)
+        value = "window-width";
+    else if (g_strcmp0(prop_name, "/hide-controls-timeout") == 0)
+        value = "hide-controls-timeout";
     return value;
 }
 
@@ -313,14 +311,13 @@ static void parole_conf_prop_changed(XfconfChannel  *channel,
                                      const GValue   *value,
                                      ParoleConf     *conf) {
     GParamSpec *pspec = NULL;
-    gchar *g_prop_name = parole_conf_map_xfconf_property_name(prop_name);
+    const gchar *g_prop_name = parole_conf_map_xfconf_property_name(prop_name);
 
     /* check if the property exists and emit change */
     if (g_prop_name != NULL) {
         pspec = g_object_class_find_property(G_OBJECT_GET_CLASS(conf), g_prop_name);
         if (G_LIKELY(pspec != NULL))
             g_object_notify_by_pspec(G_OBJECT(conf), pspec);
-        g_free(g_prop_name);
     }
 
     g_debug("Propchange:%s,%p", prop_name, pspec);

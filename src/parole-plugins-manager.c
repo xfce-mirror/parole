@@ -642,8 +642,8 @@ void parole_plugins_manager_load(ParolePluginsManager *manager) {
 
     dir = g_dir_open(PAROLE_PLUGINS_DATA_DIR, 0, &error);
 
-    if ( error ) {
-        g_debug("No installed plugins found");
+    if (dir == NULL) {
+        g_debug("No installed plugins found: %s", error->message);
         g_error_free(error);
         return;
     }

@@ -255,6 +255,7 @@ parole_media_list_set_playlist_count(ParoleMediaList *list, gint n_items) {
         title = g_strdup_printf(ngettext("Playlist (%i chapter)", "Playlist (%i chapters)", n_items), n_items);
     }
     gtk_tree_view_column_set_title(parole_media_list_get_current_treeview_column(list), title);
+    g_free(title);
 
     /*
      * Will emit the signal media_cursor_changed with FALSE because there is no any
@@ -458,6 +459,7 @@ parole_media_list_iso_opened_cb(ParoleMediaChooser *chooser, gchar *filename, Pa
     gchar *uri;
     uri = g_strdup_printf("dvd://%s", filename);
     g_signal_emit(G_OBJECT(list), signals[ISO_OPENED], 0, uri);
+    g_free(uri);
 }
 
 static void

@@ -866,7 +866,6 @@ parole_gst_tag_list_get_cover_external(ParoleGst *gst) {
     gchar *filename;
     gchar *directory;
     GDir  *file_dir;
-    GError *error = NULL;
     const gchar *listing = NULL;
     gchar *lower = NULL;
     gchar *cover = NULL;
@@ -883,9 +882,10 @@ parole_gst_tag_list_get_cover_external(ParoleGst *gst) {
 
     directory = g_path_get_dirname(filename);
 
-    file_dir = g_dir_open(directory, 0, &error);
-    if (error) {
-        g_error_free(error);
+    file_dir = g_dir_open(directory, 0, NULL);
+    if (file_dir == NULL) {
+        g_free(directory);
+        g_free(filename);
         return NULL;
     }
 
@@ -1917,6 +1917,7 @@ parole_gst_show_error(GtkWindow *window, GError *error) {
                                      _("GStreamer Error"));
     message = g_strdup_printf("%s\n%s", error->message, _("Parole Media Player cannot start."));
     gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog), message, "%s");
+    g_free(message);
     gtk_dialog_run(GTK_DIALOG(dialog));
 }
 

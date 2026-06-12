@@ -1262,6 +1262,7 @@ parole_player_set_playpause_button_from_stock(ParolePlayer *player, const gchar 
 
     gtk_image_set_from_icon_name(GTK_IMAGE(player->priv->playpause_image), icon_name, 24);
     gtk_widget_set_tooltip_text(GTK_WIDGET(player->priv->playpause_button), tooltip);
+    g_free(icon_name);
 }
 
 static void
