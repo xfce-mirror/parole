@@ -1139,7 +1139,6 @@ parole_player_key_forward_cb(ParoleMediaList *list, GdkEventKey *event, ParolePl
 static void
 parole_player_recent_menu_clear_activated_cb(GtkWidget *widget, ParolePlayer *player) {
     GtkWidget *dlg;
-    GtkWidget *clear_button;
     gint response;
 
     dlg = gtk_message_dialog_new(GTK_WINDOW(player->priv->window),
@@ -1155,10 +1154,7 @@ parole_player_recent_menu_clear_activated_cb(GtkWidget *widget, ParolePlayer *pl
     _("Are you sure you wish to clear your recent items history?  This cannot be undone."));
 
     gtk_dialog_add_button(GTK_DIALOG(dlg), _("Cancel"), 0);
-    clear_button = gtk_dialog_add_button(GTK_DIALOG(dlg),
-                                         "edit-clear",
-                                         1);
-    gtk_button_set_label(GTK_BUTTON(clear_button), _("Clear Recent Items"));
+    gtk_dialog_add_button(GTK_DIALOG(dlg), _("Clear Recent Items"), 1);
 
     gtk_widget_show_all(dlg);
 
