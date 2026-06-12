@@ -263,8 +263,7 @@ parole_disc_add_mount_to_menu(ParoleDisc *disc, GMount *mount, const gchar *devi
         }
     }
 
-    if ( content_type )
-        g_strfreev(content_type);
+    g_strfreev(content_type);
 
 got_cdda:
     if ( kind != PAROLE_DISC_UNKNOWN ) {
@@ -276,8 +275,7 @@ got_cdda:
         data = parole_disc_get_mount_data(disc, uri, device, kind);
         parole_disc_show_menu_item(disc, data, name);
 
-        if ( uri )
-            g_free(uri);
+        g_free(uri);
 
         g_ptr_array_add(disc->priv->array, data);
         g_free(name);
@@ -407,8 +405,7 @@ parole_disc_get_drives(ParoleDisc *disc) {
         if (g_drive_can_eject(drive) && g_drive_has_media(drive)) {
             device = g_drive_get_identifier(drive, G_VOLUME_IDENTIFIER_KIND_UNIX_DEVICE);
             parole_disc_add_drive(disc, drive, device);
-            if ( device )
-                g_free(device);
+            g_free(device);
         }
     }
 

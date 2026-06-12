@@ -455,8 +455,7 @@ parole_guess_uri_from_mount(GMount *mount) {
             }
         }
 
-        if ( content_type )
-            g_strfreev(content_type);
+        g_strfreev(content_type);
     }
 
     g_object_unref(file);

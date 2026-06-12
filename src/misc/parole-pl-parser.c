@@ -316,8 +316,7 @@ parole_pl_parser_parse_m3u(const gchar *filename) {
         list = g_slist_append(list, parole_file_new(pl_filename));
     }
 
-    if (pl_filename)
-        g_free(pl_filename);
+    g_free(pl_filename);
     g_strfreev(lines);
 
     g_match_info_free(match_info);
@@ -468,11 +467,8 @@ parole_pl_parser_save_m3u(FILE *f, GSList *files) {
         }
     }
 
-    if (display_name)
-        g_free(display_name);
-
-    if (file_name)
-        g_free(file_name);
+    g_free(display_name);
+    g_free(file_name);
 
     return TRUE;
 }

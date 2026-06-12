@@ -1338,14 +1338,8 @@ remember_playlist_activated_cb(GtkWidget *mi, ParoleConf *conf) {
 
 static void
 parole_media_list_destroy_menu(GtkWidget *menu) {
-    gchar *dirname;
-
-    dirname =(gchar *) g_object_get_data(G_OBJECT(menu), "folder");
-
-    if (dirname) {
-        g_free(dirname);
-    }
-
+    gchar *dirname = (gchar *)g_object_get_data(G_OBJECT(menu), "folder");
+    g_free(dirname);
     gtk_widget_destroy(menu);
 }
 

@@ -1828,8 +1828,7 @@ parole_player_media_tag_cb(ParoleGst *gst, const ParoleStream *stream, ParolePla
                     _("on"), _("Unknown Album")));
         }
 
-        if (year)
-            g_free(year);
+        g_free(year);
 
         if ( artist ) {
             gtk_label_set_markup(
