@@ -35,21 +35,13 @@
 G_BEGIN_DECLS
 
 #define PAROLE_TYPE_PROVIDER_PLUGIN                 (parole_provider_plugin_get_type ())
-#define PAROLE_PROVIDER_PLUGIN(o)                   (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_PROVIDER_PLUGIN, ParoleProviderPlugin))
-#define PAROLE_IS_PROVIDER_PLUGIN(o)                (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_PROVIDER_PLUGIN))
-#define PAROLE_PROVIDER_PLUGIN_GET_INTERFACE(o)     (G_TYPE_INSTANCE_GET_INTERFACE((o), PAROLE_TYPE_PROVIDER_PLUGIN, ParoleProviderPluginIface))
+#define PAROLE_PROVIDER_PLUGIN_GET_INTERFACE(provider) PAROLE_PROVIDER_PLUGIN_GET_IFACE(provider)
+G_DECLARE_INTERFACE(ParoleProviderPlugin, parole_provider_plugin, PAROLE, PROVIDER_PLUGIN, GObject)
 
 /**
  * ParoleProviderPluginIface:
  *
  * Interface for #ParoleProviderPlugin
- *
- * Since: 0.2
- */
-typedef struct _ParoleProviderPluginIface ParoleProviderPluginIface;
-
-/**
- * ParoleProviderPlugin:
  *
  * The methods of this interface should be overridden by the plugin, the Parole
  * player calls these methods to determine if the plugin is configurable, to ask
@@ -59,9 +51,9 @@ typedef struct _ParoleProviderPluginIface ParoleProviderPluginIface;
  *
  * Since: 0.2
  */
-typedef struct _ParoleProviderPlugin      ParoleProviderPlugin;
+typedef ParoleProviderPluginInterface ParoleProviderPluginIface;
 
-struct _ParoleProviderPluginIface {
+struct _ParoleProviderPluginInterface {
     GTypeInterface  __parent__;
 
     /*< public >*/
@@ -73,8 +65,6 @@ struct _ParoleProviderPluginIface {
     void         (*set_player)                      (ParoleProviderPlugin *provider,
                                                      ParoleProviderPlayer *player);
 };
-
-GType            parole_provider_plugin_get_type    (void) G_GNUC_CONST;
 
 gboolean
 parole_provider_plugin_get_is_configurable          (ParoleProviderPlugin *provider);

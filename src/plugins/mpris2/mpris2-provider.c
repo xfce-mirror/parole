@@ -437,7 +437,7 @@ static void mpris_Player_put_Shuffle(GVariant *value, GError **error, Mpris2Prov
 
 static GVariant * handle_get_trackid(const ParoleStream *stream) {
     // TODO: Returning a path requires TrackList interface implementation
-    gchar *o = alloca(260);
+    gchar o[260];
     if (NULL == stream)
         return g_variant_new_object_path("/");
 
@@ -481,15 +481,14 @@ static void handle_get_metadata(const ParoleStream *stream, GVariantBuilder *b) 
                  "duration", &duration,
                  "uri", &stream_uri,
                  "genre", &genre,
-                 "image_uri", &image_uri,
+                 "image-uri", &image_uri,
                  "track", &track_id,
                  "bitrate", &bitrate,
                  "has-video", &has_video,
                  NULL);
 
     if (has_video) {
-        g_free(image_uri);
-        image_uri = NULL;
+        g_clear_pointer(&image_uri, g_free);
     }
 
     g_variant_builder_add(b, "{sv}", "mpris:trackid",
@@ -676,7 +675,7 @@ static void parole_mpris_update_any(Mpris2Provider *provider) {
         g_variant_builder_add(&b, "{sv}", "Volume", mpris_Player_get_Volume(NULL, provider));
     }
     if (parole_provider_player_get_state(player) == PAROLE_STATE_PLAYING) {
-        if (g_strcmp0(provider->saved_title, stream_uri)) {
+        if (g_strcmp0(provider->saved_title, stream_uri) != 0) {
             change_detected = TRUE;
             if (provider->saved_title)
                 g_free(provider->saved_title);

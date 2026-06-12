@@ -171,8 +171,6 @@ struct ParoleMediaListPrivate {
     GtkWidget *repeat_button;
     GtkWidget *shuffle_button;
 
-    char *history[3];
-
     guint entry_pos;
 };
 
@@ -255,6 +253,7 @@ parole_media_list_set_playlist_count(ParoleMediaList *list, gint n_items) {
         title = g_strdup_printf(ngettext("Playlist (%i chapter)", "Playlist (%i chapters)", n_items), n_items);
     }
     gtk_tree_view_column_set_title(parole_media_list_get_current_treeview_column(list), title);
+    g_free(title);
 
     /*
      * Will emit the signal media_cursor_changed with FALSE because there is no any
@@ -458,6 +457,7 @@ parole_media_list_iso_opened_cb(ParoleMediaChooser *chooser, gchar *filename, Pa
     gchar *uri;
     uri = g_strdup_printf("dvd://%s", filename);
     g_signal_emit(G_OBJECT(list), signals[ISO_OPENED], 0, uri);
+    g_free(uri);
 }
 
 static void
@@ -468,10 +468,10 @@ parole_media_list_open_internal(ParoleMediaList *list) {
 
     chooser = parole_media_chooser_open_local(gtk_widget_get_toplevel(GTK_WIDGET(list)));
 
-    g_signal_connect(G_OBJECT(chooser), "media_files_opened",
+    g_signal_connect(G_OBJECT(chooser), "media-files-opened",
                      G_CALLBACK(parole_media_list_files_opened_cb), list);
 
-    g_signal_connect(G_OBJECT(chooser), "iso_opened",
+    g_signal_connect(G_OBJECT(chooser), "iso-opened",
                      G_CALLBACK(parole_media_list_iso_opened_cb), list);
 }
 
@@ -1338,14 +1338,8 @@ remember_playlist_activated_cb(GtkWidget *mi, ParoleConf *conf) {
 
 static void
 parole_media_list_destroy_menu(GtkWidget *menu) {
-    gchar *dirname;
-
-    dirname =(gchar *) g_object_get_data(G_OBJECT(menu), "folder");
-
-    if (dirname) {
-        g_free(dirname);
-    }
-
+    gchar *dirname = (gchar *)g_object_get_data(G_OBJECT(menu), "folder");
+    g_free(dirname);
     gtk_widget_destroy(menu);
 }
 
@@ -1613,10 +1607,12 @@ parole_media_list_setup_view(ParoleMediaList *list) {
     gtk_tree_view_append_column(GTK_TREE_VIEW(list->priv->view), list->priv->col);
     gtk_tree_view_append_column(GTK_TREE_VIEW(list->priv->disc_view), list->priv->disc_col);
 
-    gtk_tree_view_column_set_title(list->priv->col,
-            g_strdup_printf(ngettext("Playlist (%i item)", "Playlist (%i items)", 0), 0));
-    gtk_tree_view_column_set_title(list->priv->disc_col,
-            g_strdup_printf(ngettext("Playlist (%i chapter)", "Playlist (%i chapters)", 0), 0));
+    gchar *title = g_strdup_printf(ngettext("Playlist (%i item)", "Playlist (%i items)", 0), 0);
+    gtk_tree_view_column_set_title(list->priv->col, title);
+    g_free(title);
+    title = g_strdup_printf(ngettext("Playlist (%i chapter)", "Playlist (%i chapters)", 0), 0);
+    gtk_tree_view_column_set_title(list->priv->disc_col, title);
+    g_free(title);
 
     gtk_drag_dest_set(list->priv->view, GTK_DEST_DEFAULT_ALL, target_entry, G_N_ELEMENTS(target_entry),
                        GDK_ACTION_COPY | GDK_ACTION_MOVE);
@@ -2168,7 +2164,7 @@ static void
 shuffle_tree_model (GtkTreeModel *model) {
     GtkTreeIter iter;
     guint n_children = gtk_tree_model_iter_n_children(model, NULL);
-    guint sort = 0;
+    guint sort;
     guint state = 0;
     GRand *grand = g_rand_new();
 

@@ -536,8 +536,8 @@ parole_plugins_manager_load_plugins(ParolePluginsManager *manager) {
         module = g_ptr_array_index(manager->priv->array, j);
 
         for (i = 0; i < len; i++) {
-            if ( !g_strcmp0 (plugins_rc[i], module->name) ||
-                 !g_strcmp0(plugins_rc[i], PAROLE_PROVIDER_MODULE(module)->library_name) ) {
+            if ( g_strcmp0 (plugins_rc[i], module->name) == 0 ||
+                 g_strcmp0(plugins_rc[i], PAROLE_PROVIDER_MODULE(module)->library_name) == 0 ) {
                 TRACE("Loading plugin :%s", module->name);
                 if ( !parole_provider_module_use (PAROLE_PROVIDER_MODULE(module)) ) {
                     parole_plugins_manager_save_rc(manager, module->name, FALSE);
@@ -566,8 +566,7 @@ parole_plugins_manager_class_init(ParolePluginsManagerClass *klass) {
                                         g_param_spec_boolean("load-plugins",
                                                               NULL, NULL,
                                                               TRUE,
-                                                              G_PARAM_CONSTRUCT_ONLY|
-                                                              G_PARAM_READWRITE));
+                                                              G_PARAM_CONSTRUCT_ONLY | G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 }
 
 static void
@@ -643,8 +642,8 @@ void parole_plugins_manager_load(ParolePluginsManager *manager) {
 
     dir = g_dir_open(PAROLE_PLUGINS_DATA_DIR, 0, &error);
 
-    if ( error ) {
-        g_debug("No installed plugins found");
+    if (dir == NULL) {
+        g_debug("No installed plugins found: %s", error->message);
         g_error_free(error);
         return;
     }

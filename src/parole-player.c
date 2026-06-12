@@ -863,8 +863,7 @@ parole_player_update_audio_tracks(ParolePlayer *player, ParoleGst *gst) {
     parole_player_set_audio_list(player, list);
 
     g_free(list->data);
-    g_list_free(list);
-    list = NULL;
+    g_clear_list(&list, NULL);
 }
 
 static void
@@ -898,8 +897,7 @@ parole_player_update_subtitles(ParolePlayer *player, ParoleGst *gst) {
         gtk_widget_show(player->priv->infobar);
     }
     g_free(list->data);
-    g_list_free(list);
-    list = NULL;
+    g_clear_list(&list, NULL);
 }
 
 static void
@@ -1141,7 +1139,6 @@ parole_player_key_forward_cb(ParoleMediaList *list, GdkEventKey *event, ParolePl
 static void
 parole_player_recent_menu_clear_activated_cb(GtkWidget *widget, ParolePlayer *player) {
     GtkWidget *dlg;
-    GtkWidget *clear_button;
     gint response;
 
     dlg = gtk_message_dialog_new(GTK_WINDOW(player->priv->window),
@@ -1150,17 +1147,14 @@ parole_player_recent_menu_clear_activated_cb(GtkWidget *widget, ParolePlayer *pl
                                   GTK_BUTTONS_NONE,
                                   NULL);
 
-    gtk_message_dialog_set_markup(GTK_MESSAGE_DIALOG(dlg),
-                                    g_strdup_printf("<big><b>%s</b></big>",
-                                    _("Clear Recent Items")));
+    gchar *markup = g_strdup_printf("<big><b>%s</b></big>", _("Clear Recent Items"));
+    gtk_message_dialog_set_markup(GTK_MESSAGE_DIALOG(dlg), markup);
+    g_free(markup);
     gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dlg),
     _("Are you sure you wish to clear your recent items history?  This cannot be undone."));
 
     gtk_dialog_add_button(GTK_DIALOG(dlg), _("Cancel"), 0);
-    clear_button = gtk_dialog_add_button(GTK_DIALOG(dlg),
-                                         "edit-clear",
-                                         1);
-    gtk_button_set_label(GTK_BUTTON(clear_button), _("Clear Recent Items"));
+    gtk_dialog_add_button(GTK_DIALOG(dlg), _("Clear Recent Items"), 1);
 
     gtk_widget_show_all(dlg);
 
@@ -1268,6 +1262,7 @@ parole_player_set_playpause_button_from_stock(ParolePlayer *player, const gchar 
 
     gtk_image_set_from_icon_name(GTK_IMAGE(player->priv->playpause_image), icon_name, 24);
     gtk_widget_set_tooltip_text(GTK_WIDGET(player->priv->playpause_button), tooltip);
+    g_free(icon_name);
 }
 
 static void
@@ -1295,7 +1290,7 @@ parole_player_save_uri(ParolePlayer *player, const ParoleStream *stream) {
 
     if (lines) {
         for (i = 0; lines[i]; i++) {
-            if (!g_strcmp0(lines[i], uri)) {
+            if (g_strcmp0(lines[i], uri) == 0) {
                 save = FALSE;
                 break;
             }
@@ -1779,73 +1774,72 @@ parole_player_media_tag_cb(ParoleGst *gst, const ParoleStream *stream, ParolePla
         if ( title ) {
             parole_media_list_set_row_name(player->priv->list, player->priv->row, title);
             gtk_window_set_title(GTK_WINDOW(player->priv->window), title);
-            gtk_label_set_markup(
-                GTK_LABEL(player->priv->audiobox_title),
-                g_markup_printf_escaped(
-                    "<span color='#F4F4F4'><b><big>%s</big></b></span>",
-                    title));
+            gchar *markup = g_markup_printf_escaped(
+                "<span color='#F4F4F4'><b><big>%s</big></b></span>",
+                title);
+            gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), markup);
+            g_free(markup);
             g_free(title);
         } else {
             /* No ID3, no problem! Show the filename instead */
             filename = parole_player_get_filename_from_uri(uri);
             if ( filename ) {
                 gtk_window_set_title(GTK_WINDOW(player->priv->window), filename);
-                gtk_label_set_markup(
-                    GTK_LABEL(player->priv->audiobox_title),
-                    g_markup_printf_escaped(
-                        "<span color='#F4F4F4'><b><big>%s</big></b></span>",
-                        filename));
+                gchar *markup = g_markup_printf_escaped(
+                    "<span color='#F4F4F4'><b><big>%s</big></b></span>",
+                    filename);
+                gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), markup);
+                g_free(markup);
                 g_free(filename);
             } else {
                 gtk_window_set_title(GTK_WINDOW(player->priv->window), _("Parole Media Player"));
-                gtk_label_set_markup(
-                    GTK_LABEL(player->priv->audiobox_title),
-                    g_markup_printf_escaped(
-                        "<span color='#F4F4F4'><b><big>%s</big></b></span>",
-                        _("Unknown Song")));
+                gchar *markup = g_markup_printf_escaped(
+                    "<span color='#F4F4F4'><b><big>%s</big></b></span>",
+                    _("Unknown Song"));
+                gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_title), markup);
+                g_free(markup);
             }
         }
         g_free(uri);
 
         if ( album ) {
-            if (year)
-                gtk_label_set_markup(
-                    GTK_LABEL(player->priv->audiobox_album),
-                    g_markup_printf_escaped(
-                        "<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s (%s)</span></big>",
-                        _("on"), album, year));
-            else
-                gtk_label_set_markup(
-                    GTK_LABEL(player->priv->audiobox_album),
-                    g_markup_printf_escaped(
-                        "<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s</span></big>",
-                        _("on"), album));
-
+            if (year) {
+                gchar *markup = g_markup_printf_escaped(
+                    "<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s (%s)</span></big>",
+                    _("on"), album, year);
+                gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), markup);
+                g_free(markup);
+            } else {
+                gchar *markup = g_markup_printf_escaped(
+                    "<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s</span></big>",
+                    _("on"), album);
+                gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), markup);
+                g_free(markup);
+            }
             g_free(album);
         } else {
-            gtk_label_set_markup(
-                GTK_LABEL(player->priv->audiobox_album),
-                g_markup_printf_escaped(
-                    "<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s</span></big>",
-                    _("on"), _("Unknown Album")));
+            gchar *markup = g_markup_printf_escaped(
+                "<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s</span></big>",
+                _("on"), _("Unknown Album"));
+            gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_album), markup);
+            g_free(markup);
         }
 
-        if (year)
-            g_free(year);
+        g_free(year);
 
         if ( artist ) {
-            gtk_label_set_markup(
-                GTK_LABEL(player->priv->audiobox_artist),
-                g_markup_printf_escaped(
-                    "<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s</span></big>",
-                    _("by"), artist));
+            gchar *markup = g_markup_printf_escaped(
+                "<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s</span></big>",
+                _("by"), artist);
+            gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_artist), markup);
+            g_free(markup);
             g_free(artist);
         } else {
-            gtk_label_set_markup(
-                GTK_LABEL(player->priv->audiobox_artist),
-                g_markup_printf_escaped(
-                    "<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s</span></big>",
-                    _("by"), _("Unknown Artist")));
+            gchar *markup = g_markup_printf_escaped(
+                "<big><span color='#BBBBBB'><i>%s</i></span> <span color='#F4F4F4'>%s</span></big>",
+                _("by"), _("Unknown Artist"));
+            gtk_label_set_markup(GTK_LABEL(player->priv->audiobox_artist), markup);
+            g_free(markup);
         }
 
         image = parole_stream_get_image(G_OBJECT(stream));
@@ -2535,7 +2529,7 @@ parole_player_class_init(ParolePlayerClass *klass) {
                               NULL,
                               NULL,
                               NULL,
-                              G_PARAM_READWRITE|G_PARAM_CONSTRUCT_ONLY));
+                              G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS));
 
     parole_player_dbus_class_init(klass);
 }
@@ -3665,10 +3659,10 @@ parole_player_init(ParolePlayer *player) {
     /*
      * Media List Signals
      */
-    g_signal_connect(player->priv->list, "media_activated",
+    g_signal_connect(player->priv->list, "media-activated",
               G_CALLBACK(parole_player_media_activated_cb), player);
 
-    g_signal_connect(player->priv->list, "media_cursor_changed",
+    g_signal_connect(player->priv->list, "media-cursor-changed",
               G_CALLBACK(parole_player_media_cursor_changed_cb), player);
 
     g_signal_connect(player->priv->list, "uri-opened",

@@ -180,7 +180,7 @@ parole_file_constructed(GObject *object) {
 
     info = g_file_query_info(gfile,
                              "standard::*,",
-                             0,
+                             G_FILE_QUERY_INFO_NONE,
                              NULL,
                              &error);
 
@@ -264,8 +264,7 @@ parole_file_class_init(ParoleFileClass *klass) {
                                                         "File name",
                                                         "The file name",
                                                         NULL,
-                                                        G_PARAM_CONSTRUCT_ONLY|
-                                                        G_PARAM_READWRITE));
+                                                        G_PARAM_CONSTRUCT_ONLY | G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleFile:display-name:
@@ -280,8 +279,7 @@ parole_file_class_init(ParoleFileClass *klass) {
                                                         "Display name",
                                                         "A UTF-8 name that can be displayed in the UI",
                                                         NULL,
-                                                        G_PARAM_CONSTRUCT_ONLY|
-                                                        G_PARAM_READWRITE));
+                                                        G_PARAM_CONSTRUCT_ONLY | G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleFile:uri:
@@ -296,7 +294,7 @@ parole_file_class_init(ParoleFileClass *klass) {
                                                         "Uri",
                                                         "The uri of the file",
                                                         NULL,
-                                                        G_PARAM_READABLE));
+                                                        G_PARAM_READABLE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleFile:content-type:
@@ -311,7 +309,7 @@ parole_file_class_init(ParoleFileClass *klass) {
                                                         "Content type",
                                                         "The content type of the file",
                                                         NULL,
-                                                        G_PARAM_READABLE));
+                                                        G_PARAM_READABLE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleFile:directory:
@@ -326,8 +324,7 @@ parole_file_class_init(ParoleFileClass *klass) {
                                                         "Parent directory",
                                                         "The parent directory of the file",
                                                         NULL,
-                                                        G_PARAM_CONSTRUCT_ONLY|
-                                                        G_PARAM_READWRITE));
+                                                        G_PARAM_CONSTRUCT_ONLY | G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleFile:custom_subtitles:
@@ -338,12 +335,11 @@ parole_file_class_init(ParoleFileClass *klass) {
      **/
     g_object_class_install_property(object_class,
                                     PROP_CUSTOM_SUBTITLES,
-                                    g_param_spec_string("custom_subtitles",
+                                    g_param_spec_string("custom-subtitles",
                                                         "Custom Subtitles",
                                                         "The custom subtitles set by the user",
                                                         NULL,
-                                                        G_PARAM_CONSTRUCT_ONLY|
-                                                        G_PARAM_READWRITE));
+                                                        G_PARAM_CONSTRUCT_ONLY | G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     /**
      * ParoleFile:dvd_chapter:
@@ -360,8 +356,7 @@ parole_file_class_init(ParoleFileClass *klass) {
                                                      -1,
                                                      1000,
                                                      -1,
-                                                     G_PARAM_CONSTRUCT_ONLY|
-                                                     G_PARAM_READWRITE));
+                                                     G_PARAM_CONSTRUCT_ONLY | G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 }
 
 static void

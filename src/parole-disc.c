@@ -244,27 +244,26 @@ parole_disc_add_mount_to_menu(ParoleDisc *disc, GMount *mount, const gchar *devi
     for (i = 0; content_type && content_type[i]; i++) {
         TRACE("Checking disc content type : %s", content_type[i]);
 
-        if ( !g_strcmp0(content_type[i], "x-content/video-dvd") ) {
+        if ( g_strcmp0(content_type[i], "x-content/video-dvd") == 0 ) {
             kind = PAROLE_DISC_DVD;
             uri = g_strdup("dvd:/");
             break;
-        } else if ( !g_strcmp0(content_type[i], "x-content/video-vcd") ) {
+        } else if ( g_strcmp0(content_type[i], "x-content/video-vcd") == 0 ) {
             kind = PAROLE_DISC_VCD;
             uri = g_strdup("vcd:/");
             break;
-        } else if ( !g_strcmp0(content_type[i], "x-content/video-svcd") ) {
+        } else if ( g_strcmp0(content_type[i], "x-content/video-svcd") == 0 ) {
             kind = PAROLE_DISC_SVCD;
             uri = g_strdup("svcd:/");
             break;
-        } else if ( !g_strcmp0(content_type[i], "x-content/audio-cdda") ) {
+        } else if ( g_strcmp0(content_type[i], "x-content/audio-cdda") == 0 ) {
             kind = PAROLE_DISC_CDDA;
             uri = g_strdup("cdda://");
             break;
         }
     }
 
-    if ( content_type )
-        g_strfreev(content_type);
+    g_strfreev(content_type);
 
 got_cdda:
     if ( kind != PAROLE_DISC_UNKNOWN ) {
@@ -276,8 +275,7 @@ got_cdda:
         data = parole_disc_get_mount_data(disc, uri, device, kind);
         parole_disc_show_menu_item(disc, data, name);
 
-        if ( uri )
-            g_free(uri);
+        g_free(uri);
 
         g_ptr_array_add(disc->priv->array, data);
         g_free(name);
@@ -407,8 +405,7 @@ parole_disc_get_drives(ParoleDisc *disc) {
         if (g_drive_can_eject(drive) && g_drive_has_media(drive)) {
             device = g_drive_get_identifier(drive, G_VOLUME_IDENTIFIER_KIND_UNIX_DEVICE);
             parole_disc_add_drive(disc, drive, device);
-            if ( device )
-                g_free(device);
+            g_free(device);
         }
     }
 

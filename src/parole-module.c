@@ -33,39 +33,8 @@
 
 static void     parole_provider_module_plugin_init(ParoleProviderPluginIface  *iface);
 
-static void     parole_provider_module_class_init(ParoleProviderModuleClass  *klass);
-static void     parole_provider_module_init(ParoleProviderModule *module);
-
-GType
-parole_provider_module_get_type(void) {
-    static GType type = G_TYPE_INVALID;
-
-    if (G_UNLIKELY(type == G_TYPE_INVALID)) {
-        static const GTypeInfo info = {
-            sizeof (ParoleProviderModuleClass),
-            NULL,
-            NULL,
-            (GClassInitFunc) (void (*)(void)) parole_provider_module_class_init,
-            NULL,
-            NULL,
-            sizeof (ParoleProviderModule),
-            0,
-            (GInstanceInitFunc) (void (*)(void)) parole_provider_module_init,
-            NULL,
-        };
-
-        static const GInterfaceInfo plugin_info = {
-            (GInterfaceInitFunc) (void (*)(void)) parole_provider_module_plugin_init,
-            NULL,
-            NULL,
-        };
-
-        type = g_type_register_static(G_TYPE_TYPE_MODULE, "ParoleProviderModule", &info, 0);
-        g_type_add_interface_static(type, PAROLE_TYPE_PROVIDER_PLUGIN, &plugin_info);
-    }
-
-    return type;
-}
+G_DEFINE_TYPE_WITH_CODE(ParoleProviderModule, parole_provider_module, G_TYPE_TYPE_MODULE,
+                        G_IMPLEMENT_INTERFACE(PAROLE_TYPE_PROVIDER_PLUGIN, parole_provider_module_plugin_init))
 
 static gboolean
 parole_module_load(GTypeModule *gtype_module) {
@@ -234,15 +203,8 @@ void parole_provider_module_free_plugin(ParoleProviderModule *module) {
 
     g_return_if_fail(PAROLE_IS_PROVIDER_MODULE(module));
 
-    if ( module->instance ) {
-        g_object_unref(module->instance);
-        module->instance = NULL;
-    }
-
-    if ( module->player ) {
-        g_object_unref(module->player);
-        module->player = NULL;
-    }
+    g_clear_object(&module->instance);
+    g_clear_object(&module->player);
 }
 
 gboolean

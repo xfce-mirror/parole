@@ -94,19 +94,11 @@ parole_xspf_xml_text(GMarkupParseContext *context,
     element_name = g_markup_parse_context_get_element(context);
 
     if (!g_ascii_strcasecmp(element_name, "location")) {
-        if (data->uri) {
-            g_free(data->uri);
-            data->uri = NULL;
-        }
-
+        g_clear_pointer(&data->uri, g_free);
         if (text_len > 0)
             data->uri = g_strdup(text);
     } else if (!g_ascii_strcasecmp(element_name, "title")) {
-        if (data->title) {
-            g_free(data->title);
-            data->title = NULL;
-        }
-
+        g_clear_pointer(&data->title, g_free);
         if (text_len > 0)
             data->title = g_strdup(text);
     }
@@ -127,15 +119,10 @@ parole_xspf_xml_end(GMarkupParseContext *context, const gchar *element_name, gpo
         if (data->uri) {
             file = parole_file_new_with_display_name(data->uri, data->title);
             data->list = g_slist_append(data->list, file);
-
-            g_free(data->uri);
-            data->uri = NULL;
+            g_clear_pointer(&data->uri, g_free);
         }
 
-        if (data->title) {
-            g_free(data->title);
-            data->title = NULL;
-        }
+        g_clear_pointer(&data->title, g_free);
     }
 }
 
@@ -154,10 +141,7 @@ parole_asx_xml_start(GMarkupParseContext *context, const gchar *element_name,
     }
 
     if (!g_ascii_strcasecmp(element_name, "ref")) {
-        if (data->uri) {
-            g_free(data->uri);
-            data->uri = NULL;
-        }
+        g_clear_pointer(&data->uri, g_free);
 
         for (i = 0; attribute_names[i]; i++) {
             if (!g_ascii_strcasecmp(attribute_names[i], "href")) {
@@ -181,10 +165,7 @@ parole_asx_xml_text(GMarkupParseContext *context,
     element_name = g_markup_parse_context_get_element(context);
 
     if (!g_ascii_strcasecmp(element_name, "title")) {
-        if (data->title) {
-            g_free(data->title);
-            data->title = NULL;
-        }
+        g_clear_pointer(&data->title, g_free);
 
         if (text_len > 0)
             data->title = g_strdup(text);
@@ -206,15 +187,10 @@ parole_asx_xml_end(GMarkupParseContext *context, const gchar *element_name, gpoi
         if (data->uri) {
             file = parole_file_new_with_display_name(data->uri, data->title);
             data->list = g_slist_append(data->list, file);
-
-            g_free(data->uri);
-            data->uri = NULL;
+            g_clear_pointer(&data->uri, g_free);
         }
 
-        if (data->title) {
-            g_free(data->title);
-            data->title = NULL;
-        }
+        g_clear_pointer(&data->title, g_free);
     }
 }
 
@@ -340,8 +316,7 @@ parole_pl_parser_parse_m3u(const gchar *filename) {
         list = g_slist_append(list, parole_file_new(pl_filename));
     }
 
-    if (pl_filename)
-        g_free(pl_filename);
+    g_free(pl_filename);
     g_strfreev(lines);
 
     g_match_info_free(match_info);
@@ -369,14 +344,14 @@ parole_pl_parser_parse_pls(const gchar *filename) {
         nentries = xfce_rc_read_int_entry(rcfile, "NumberOfEntries", 0);
 
         for (i = 1; i <= nentries; i++) {
-            g_snprintf(key, 128, "File%d", i);
+            g_snprintf(key, 128, "File%u", i);
 
             file_entry = xfce_rc_read_entry(rcfile, key, NULL);
 
             if (!file_entry)
                 continue;
 
-            g_snprintf(key, 128, "Title%d", i);
+            g_snprintf(key, 128, "Title%u", i);
 
             title_entry = xfce_rc_read_entry(rcfile, key, NULL);
 
@@ -492,11 +467,8 @@ parole_pl_parser_save_m3u(FILE *f, GSList *files) {
         }
     }
 
-    if (display_name)
-        g_free(display_name);
-
-    if (file_name)
-        g_free(file_name);
+    g_free(display_name);
+    g_free(file_name);
 
     return TRUE;
 }
@@ -509,14 +481,16 @@ parole_pl_parser_save_pls(FILE *f, GSList *files) {
 
     len = g_slist_length(files);
 
-    fprintf(f, "[playlist]\nNumberOfEntries=%d\n", len);
+    fprintf(f, "[playlist]\nNumberOfEntries=%u\n", len);
 
     for (i = 1; i <= len; i++) {
         ParoleFile *file;
         file = g_slist_nth_data(files, i - 1);
-        g_snprintf(key, 128, "File%d", i);
-        fprintf(f, "%s=%s\n", key, parole_filename_to_utf8(parole_file_get_file_name(file)));
-        g_snprintf(key, 128, "Title%d", i);
+        g_snprintf(key, 128, "File%u", i);
+        gchar *utf8 = parole_filename_to_utf8(parole_file_get_file_name(file));
+        fprintf(f, "%s=%s\n", key, utf8);
+        g_free(utf8);
+        g_snprintf(key, 128, "Title%u", i);
         fprintf(f, "%s=%s\n\n", key, parole_file_get_display_name(file));
     }
 

@@ -58,8 +58,7 @@ PAROLE_DEFINE_TYPE_WITH_CODE(TrayProvider,
 
 static void
 menu_selection_done_cb(TrayProvider *tray) {
-    gtk_widget_destroy(tray->menu);
-    tray->menu = NULL;
+    g_clear_pointer(&tray->menu, gtk_widget_destroy);
 }
 
 static void
@@ -197,8 +196,7 @@ state_changed_cb(ParoleProviderPlayer *player, const ParoleStream *stream, Parol
     tray->state = state;
 
     if ( tray->menu ) {
-        gtk_widget_destroy(tray->menu);
-        tray->menu = NULL;
+        g_clear_pointer(&tray->menu, gtk_widget_destroy);
         g_signal_emit_by_name(G_OBJECT(tray->tray), "popup-menu", 0, gtk_get_current_event_time());
     }
 }
@@ -336,8 +334,9 @@ delete_event_cb(GtkWidget *widget, GdkEvent *ev, TrayProvider *tray) {
                                     GTK_BUTTONS_NONE,
                                     NULL);
 
-    gtk_message_dialog_set_markup(GTK_MESSAGE_DIALOG(dialog),
-                                    g_strdup_printf("<big><b>%s</b></big>", _("Are you sure you want to quit?")));
+    gchar *markup = g_strdup_printf("<big><b>%s</b></big>", _("Are you sure you want to quit?"));
+    gtk_message_dialog_set_markup(GTK_MESSAGE_DIALOG(dialog), markup);
+    g_free(markup);
 
     gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog),
             _("Parole can be minimized to the system tray instead."));
@@ -441,7 +440,7 @@ tray_provider_set_player(ParoleProviderPlugin *plugin, ParoleProviderPlayer *pla
     tray->sig = g_signal_connect_object(tray->window, "delete-event",
               G_CALLBACK(delete_event_cb), tray, 0);
 
-    g_signal_connect(player, "state_changed",
+    g_signal_connect(player, "state-changed",
               G_CALLBACK(state_changed_cb), tray);
 
     g_signal_connect_object(gtk_icon_theme_get_default(), "changed",

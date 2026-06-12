@@ -192,7 +192,7 @@ parole_button_xevent_key(ParoleButton *button, guint keysym , ParoleButtonKey ke
     }
 
     if (!parole_button_grab_keystring(button, keycode)) {
-        g_warning("Failed to grab %i\n", keycode);
+        g_warning("Failed to grab %u\n", keycode);
         return FALSE;
     }
 

@@ -107,7 +107,7 @@ struct ParoleGstPrivate {
     ParoleState         media_state;
 
     ParoleStream       *stream;
-    gulong              tick_id;
+    guint               tick_id;
     GdkPixbuf          *logo;
     gchar              *device;
 
@@ -129,7 +129,7 @@ struct ParoleGstPrivate {
     gchar*              custom_subtitles;
 
     ParoleAspectRatio   aspect_ratio;
-    gulong              state_change_id;
+    guint               state_change_id;
 
     /*
      * xvimage sink has brightness+hue+saturation+contrast.
@@ -173,11 +173,7 @@ parole_gst_finalize(GObject *object) {
 
     TRACE("start");
 
-    if (gst->priv->tick_id != 0) {
-        g_source_remove(gst->priv->tick_id);
-        gst->priv->tick_id = 0;
-    }
-
+    g_clear_handle_id(&gst->priv->tick_id, g_source_remove);
     parole_stream_init_properties(gst->priv->stream);
 
     if ( gst->priv->stream )
@@ -244,7 +240,7 @@ parole_gst_realize(GtkWidget *widget) {
     gdk_rgba_parse(&color, "black");
     gdk_window_set_background_rgba(gtk_widget_get_window(widget), &color);
 
-    g_signal_connect(gtk_widget_get_toplevel(widget), "configure_event",
+    g_signal_connect(gtk_widget_get_toplevel(widget), "configure-event",
                          G_CALLBACK(parole_gst_configure_event_cb), gst);
 
     g_signal_connect(gtk_widget_get_parent(gtk_widget_get_parent(widget)), "draw",
@@ -503,16 +499,14 @@ parole_gst_tick(ParoleGst *gst) {
             return;
         }
         gst->priv->tick_id = g_timeout_add(250, (GSourceFunc)parole_gst_tick_timeout, gst);
-    } else if (gst->priv->tick_id != 0) {
-        g_source_remove(gst->priv->tick_id);
-        gst->priv->tick_id = 0;
+    } else {
+        g_clear_handle_id(&gst->priv->tick_id, g_source_remove);
     }
 }
 
 static void
 parole_gst_query_duration(ParoleGst *gst) {
     gint64 absolute_duration = 0;
-    gint64 duration = 0;
     gboolean live;
     GstFormat gst_time = GST_FORMAT_TIME;
 
@@ -523,7 +517,7 @@ parole_gst_query_duration(ParoleGst *gst) {
     }
 
     if (gst_time == GST_FORMAT_TIME) {
-        duration =  absolute_duration / GST_SECOND;
+        gint64 duration =  absolute_duration / GST_SECOND;
         live = (absolute_duration == 0);
 
         TRACE("Duration %" G_GINT64_FORMAT ", is_live=%d", duration, live);
@@ -761,8 +755,7 @@ parole_gst_evaluate_state (ParoleGst *gst, GstState old, GstState new, GstState 
         gtk_widget_queue_draw(GTK_WIDGET(gst));
         parole_window_normal_cursor(gtk_widget_get_window(GTK_WIDGET(gst)));
         if ( gst->priv->state_change_id != 0 ) {
-            g_source_remove(gst->priv->state_change_id);
-            gst->priv->state_change_id = 0;
+            g_clear_handle_id(&gst->priv->state_change_id, g_source_remove);
 
             // If it's a DVD, fire up the menu if nothing happens
             if (parole_gst_get_current_stream_type(gst) == PAROLE_MEDIA_TYPE_DVD) {
@@ -872,7 +865,6 @@ parole_gst_tag_list_get_cover_external(ParoleGst *gst) {
     gchar *filename;
     gchar *directory;
     GDir  *file_dir;
-    GError *error = NULL;
     const gchar *listing = NULL;
     gchar *lower = NULL;
     gchar *cover = NULL;
@@ -889,9 +881,10 @@ parole_gst_tag_list_get_cover_external(ParoleGst *gst) {
 
     directory = g_path_get_dirname(filename);
 
-    file_dir = g_dir_open(directory, 0, &error);
-    if (error) {
-        g_error_free(error);
+    file_dir = g_dir_open(directory, 0, NULL);
+    if (file_dir == NULL) {
+        g_free(directory);
+        g_free(filename);
         return NULL;
     }
 
@@ -1025,7 +1018,6 @@ static void
 parole_gst_get_meta_data_dvd(ParoleGst *gst) {
     gint n_chapters;
     guint num_chapters = 1;
-    guint chapter = 1;
     guint current_num_chapters;
     guint current_chapter;
     gint64 val = -1;
@@ -1058,7 +1050,7 @@ parole_gst_get_meta_data_dvd(ParoleGst *gst) {
     /* Get the current chapter. */
     val = -1;
     if (gst_element_query_position(gst->priv->playbin, format, &val)) {
-        chapter = (guint)(gint) val;
+        guint chapter = val;
         TRACE("Current chapter: %i", chapter);
         if ( chapter != current_chapter || num_chapters != 1 ) {
             g_object_set(G_OBJECT(gst->priv->stream),
@@ -1179,7 +1171,7 @@ parole_gst_get_meta_data_file(ParoleGst *gst, GstTagList *tag) {
     }
 
     g_object_get(G_OBJECT(gst->priv->stream),
-                 "has_artwork", &has_artwork,
+                 "has-artwork", &has_artwork,
                  NULL);
     if (!has_artwork) {
         pixbuf = parole_gst_tag_list_get_cover(gst, tag);
@@ -1798,21 +1790,21 @@ parole_gst_about_to_finish_cb(GstElement *elm, gpointer data) {
 static void
 parole_gst_conf_notify_cb(GObject *object, GParamSpec *spec, ParoleGst *gst) {
     GtkAllocation allocation = { 0 };
-    if ( !g_strcmp0("vis-enabled", spec->name) || !g_strcmp0("vis-name", spec->name) ) {
+    if ( g_strcmp0("vis-enabled", spec->name) == 0 || g_strcmp0("vis-name", spec->name) == 0 ) {
         gst->priv->update_vis = TRUE;
-    } else if (!g_strcmp0("subtitle-font", spec->name) || !g_strcmp0("enable-subtitle", spec->name)) {
+    } else if (g_strcmp0("subtitle-font", spec->name) == 0 || g_strcmp0("enable-subtitle", spec->name) == 0) {
         parole_gst_set_subtitle_font(gst);
-    } else if (!g_strcmp0("subtitle-encoding", spec->name)) {
+    } else if (g_strcmp0("subtitle-encoding", spec->name) == 0) {
         parole_gst_set_subtitle_encoding(gst);
-    } else if (!g_strcmp0("brightness", spec->name) ||
-               !g_strcmp0("hue", spec->name) ||
-               !g_strcmp0("contrast", spec->name) ||
-               !g_strcmp0("saturation", spec->name)) {
+    } else if (g_strcmp0("brightness", spec->name) == 0 ||
+               g_strcmp0("hue", spec->name) == 0 ||
+               g_strcmp0("contrast", spec->name) == 0 ||
+               g_strcmp0("saturation", spec->name) == 0) {
         gst->priv->update_color_balance = TRUE;
 
         if ( gst->priv->state >= GST_STATE_PAUSED )
             parole_gst_set_video_color_balance(gst);
-    } else if ( !g_strcmp0("aspect-ratio", spec->name) ) {
+    } else if ( g_strcmp0("aspect-ratio", spec->name) == 0 ) {
         g_object_get(G_OBJECT(gst->priv->conf),
                       "aspect-ratio", &gst->priv->aspect_ratio,
                       NULL);
@@ -1923,6 +1915,7 @@ parole_gst_show_error(GtkWindow *window, GError *error) {
                                      _("GStreamer Error"));
     message = g_strdup_printf("%s\n%s", error->message, _("Parole Media Player cannot start."));
     gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog), message, "%s");
+    g_free(message);
     gtk_dialog_run(GTK_DIALOG(dialog));
 }
 
@@ -2140,8 +2133,7 @@ parole_gst_class_init(ParoleGstClass *klass) {
                                         PROP_CONF_OBJ,
                                         g_param_spec_pointer("conf-object",
                                             NULL, NULL,
-                                            G_PARAM_CONSTRUCT_ONLY|
-                                            G_PARAM_READWRITE));
+                                            G_PARAM_CONSTRUCT_ONLY | G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     g_object_class_install_property(object_class,
                                         PROP_VOLUME,
@@ -2155,7 +2147,7 @@ parole_gst_class_init(ParoleGstClass *klass) {
                                         g_param_spec_boolean("tags",
                                             NULL, NULL,
                                             TRUE,
-                                            G_PARAM_READWRITE));
+                                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 }
 
 static void
@@ -2294,11 +2286,7 @@ void parole_gst_play_device_uri(ParoleGst *gst, const gchar *uri, const gchar *d
 
     TRACE("device : %s", device);
 
-    if ( gst->priv->device ) {
-        g_free(gst->priv->device);
-        gst->priv->device = NULL;
-    }
-
+    g_clear_pointer(&gst->priv->device, g_free);
     gst->priv->device = g_strdup(device);
 
     /*

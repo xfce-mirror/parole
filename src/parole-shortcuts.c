@@ -32,12 +32,8 @@
 
 static void parole_shortcuts_finalize(GObject *object);
 
-struct ParoleShortcuts {
+struct _ParoleShortcuts {
     GObject             parent;
-};
-
-struct ParoleShortcutsClass {
-    GObjectClass    parent_class;
 };
 
 G_DEFINE_TYPE(ParoleShortcuts, parole_shortcuts, G_TYPE_OBJECT)

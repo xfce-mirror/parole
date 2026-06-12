@@ -28,12 +28,13 @@
 
 G_BEGIN_DECLS
 
+typedef struct ParoleOpenLocation       ParoleOpenLocation;
+typedef struct ParoleOpenLocationClass  ParoleOpenLocationClass;
+
 #define PAROLE_TYPE_OPEN_LOCATION       (parole_open_location_get_type () )
 #define PAROLE_OPEN_LOCATION(o)         (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_OPEN_LOCATION, ParoleOpenLocation))
 #define PAROLE_IS_OPEN_LOCATION(o)      (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_OPEN_LOCATION))
-
-typedef struct ParoleOpenLocation       ParoleOpenLocation;
-typedef struct ParoleOpenLocationClass  ParoleOpenLocationClass;
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(ParoleOpenLocation, g_object_unref)
 
 GType                parole_open_location_get_type   (void) G_GNUC_CONST;
 

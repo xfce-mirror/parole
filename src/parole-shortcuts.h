@@ -27,13 +27,7 @@
 G_BEGIN_DECLS
 
 #define PAROLE_TYPE_SHORTCUTS       (parole_shortcuts_get_type () )
-#define PAROLE_SHORTCUTS(o)         (G_TYPE_CHECK_INSTANCE_CAST ((o), PAROLE_TYPE_SHORTCUTS, ParoleShortcuts))
-#define PAROLE_IS_SHORTCUTS(o)      (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_SHORTCUTS))
-
-typedef struct ParoleShortcuts       ParoleShortcuts;
-typedef struct ParoleShortcutsClass  ParoleShortcutsClass;
-
-GType                parole_shortcuts_get_type   (void) G_GNUC_CONST;
+G_DECLARE_FINAL_TYPE(ParoleShortcuts, parole_shortcuts, PAROLE, SHORTCUTS, GObject)
 
 ParoleShortcuts     *parole_shortcuts            (GtkWidget *parent);
 

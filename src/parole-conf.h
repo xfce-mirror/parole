@@ -27,17 +27,8 @@
 
 G_BEGIN_DECLS;
 
-typedef struct _ParoleConfClass ParoleConfClass;
-typedef struct _ParoleConf      ParoleConf;
-
 #define PAROLE_TYPE_CONF             (parole_conf_get_type () )
-#define PAROLE_CONF(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), PAROLE_TYPE_CONF, ParoleConf))
-#define PAROLE_CONF_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), PAROLE_TYPE_CONF, ParoleConfClass))
-#define PAROLE_IS_CONF(o)            (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_CONF))
-#define PAROLE_IS_CONF_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), PAROLE_TYPE_CONF))
-#define PAROLE_CONF_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), PAROLE_TYPE_CONF, ParoleConfClass))
-
-GType                    parole_conf_get_type           (void) G_GNUC_CONST;
+G_DECLARE_FINAL_TYPE(ParoleConf, parole_conf, PAROLE, CONF, GObject)
 
 ParoleConf              *parole_conf_new                (void);
 

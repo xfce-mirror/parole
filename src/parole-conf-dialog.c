@@ -291,10 +291,10 @@ parole_conf_dialog_set_default_vis_plugin(GtkTreeModel *model,
 
     f = g_hash_table_lookup(self->priv->vis_plugins, combox_text);
 
-    if ( !g_strcmp0(vis_name, "none") ) {
-        if ( !g_strcmp0 (gst_object_get_name (GST_OBJECT (f)), "Goom") )
+    if ( g_strcmp0(vis_name, "none") == 0 ) {
+        if ( g_strcmp0 (gst_object_get_name (GST_OBJECT (f)), "Goom") == 0 )
             ret = TRUE;
-    } else if ( !g_strcmp0(gst_object_get_name(GST_OBJECT(f)), vis_name) ) {
+    } else if ( g_strcmp0(gst_object_get_name(GST_OBJECT(f)), vis_name) == 0 ) {
         ret = TRUE;
     }
 

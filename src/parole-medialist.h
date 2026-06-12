@@ -192,8 +192,6 @@ void
 parole_media_list_connect_shuffle_action            (ParoleMediaList *list,
                                                      GSimpleAction *simple);
 
-void parole_media_list_add_dvd (ParoleMediaList *list, gchar *dvd_name);
-
 
 G_END_DECLS
 
