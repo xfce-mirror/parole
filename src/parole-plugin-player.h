@@ -42,7 +42,7 @@ typedef struct {
     GObjectClass                parent_class;
 } ParolePluginPlayerClass;
 
-GType                           parole_plugin_player_get_type        (void) G_GNUC_CONST;
+GType                           parole_plugin_player_get_type        (void);
 
 ParolePluginPlayer             *parole_plugin_player_new             (void);
 

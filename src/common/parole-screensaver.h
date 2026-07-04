@@ -40,7 +40,7 @@ typedef struct {
     GObjectClass    parent_class;
 } ParoleScreenSaverClass;
 
-GType               parole_screen_saver_get_type    (void) G_GNUC_CONST;
+GType               parole_screen_saver_get_type    (void);
 ParoleScreenSaver  *parole_screen_saver_new         (void);
 
 void                parole_screen_saver_inhibit     (ParoleScreenSaver *saver, GtkWindow *window);

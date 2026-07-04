@@ -43,7 +43,7 @@ typedef struct {
     GObjectClass                parent_class;
 } ParoleConfDialogClass;
 
-GType                   parole_conf_dialog_get_type     (void) G_GNUC_CONST;
+GType                   parole_conf_dialog_get_type     (void);
 ParoleConfDialog       *parole_conf_dialog_new          (void);
 
 void                    parole_conf_dialog_open         (ParoleConfDialog *self,

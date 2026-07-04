@@ -59,7 +59,7 @@ typedef enum {
     PAROLE_PLAYER_ACTION_PLAYPAUSE
 } ParolePlayerAction;
 
-GType                           parole_player_get_type          (void) G_GNUC_CONST;
+GType                           parole_player_get_type          (void);
 ParolePlayer                   *parole_player_new               (const gchar *client_id);
 
 ParoleMediaList                *parole_player_get_media_list    (ParolePlayer *player);

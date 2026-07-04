@@ -57,7 +57,7 @@ struct _ParoleFileClass {
     GObjectClass        parent_class;
 };
 
-GType           parole_file_get_type                (void) G_GNUC_CONST;
+GType           parole_file_get_type                (void);
 
 ParoleFile     *parole_file_new                     (const gchar *filename);
 

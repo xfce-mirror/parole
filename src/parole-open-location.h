@@ -36,7 +36,7 @@ typedef struct ParoleOpenLocationClass  ParoleOpenLocationClass;
 #define PAROLE_IS_OPEN_LOCATION(o)      (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_OPEN_LOCATION))
 G_DEFINE_AUTOPTR_CLEANUP_FUNC(ParoleOpenLocation, g_object_unref)
 
-GType                parole_open_location_get_type   (void) G_GNUC_CONST;
+GType                parole_open_location_get_type   (void);
 
 ParoleOpenLocation  *parole_open_location            (GtkWidget *parent);
 

@@ -38,7 +38,7 @@ typedef struct ParoleMediaChooserClass ParoleMediaChooserClass;
 #define PAROLE_IS_MEDIA_CHOOSER(o)       (G_TYPE_CHECK_INSTANCE_TYPE ((o), PAROLE_TYPE_MEDIA_CHOOSER))
 G_DEFINE_AUTOPTR_CLEANUP_FUNC(ParoleMediaChooser, g_object_unref)
 
-GType                    parole_media_chooser_get_type      (void) G_GNUC_CONST;
+GType                    parole_media_chooser_get_type      (void);
 
 ParoleMediaChooser      *parole_media_chooser_open_local    (GtkWidget *parent);
 

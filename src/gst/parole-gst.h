@@ -92,7 +92,7 @@ typedef struct {
                                              gint dvd_chapter_change);
 } ParoleGstClass;
 
-GType       parole_gst_get_type             (void) G_GNUC_CONST;
+GType       parole_gst_get_type             (void);
 GtkWidget  *parole_gst_new                  (gpointer conf_obj);
 GtkWidget  *parole_gst_get                  (void);
 

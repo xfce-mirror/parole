@@ -56,7 +56,7 @@ typedef struct {
                                                      ParoleButtonKey type);
 } ParoleButtonClass;
 
-GType                       parole_button_get_type  (void) G_GNUC_CONST;
+GType                       parole_button_get_type  (void);
 
 ParoleButton               *parole_button_new       (void);
 

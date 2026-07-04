@@ -44,7 +44,7 @@ typedef struct {
     GObjectClass                    parent_class;
 } ParolePluginsManagerClass;
 
-GType                               parole_plugins_manager_get_type   (void) G_GNUC_CONST;
+GType                               parole_plugins_manager_get_type   (void);
 
 ParolePluginsManager               *parole_plugins_manager_new        (gboolean load_plugins);
 

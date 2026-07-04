@@ -58,7 +58,7 @@ typedef struct {
 
 } ParoleDiscClass;
 
-GType               parole_disc_get_type        (void) G_GNUC_CONST;
+GType               parole_disc_get_type        (void);
 
 ParoleDisc         *parole_disc_new             (void);
 

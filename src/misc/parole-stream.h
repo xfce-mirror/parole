@@ -104,7 +104,7 @@ struct _ParoleStreamClass {
     GObjectClass         parent_class;
 };
 
-GType                   parole_stream_get_type          (void) G_GNUC_CONST;
+GType                   parole_stream_get_type          (void);
 
 void                    parole_stream_set_image         (GObject *object,
                                                          GdkPixbuf *pixbuf);

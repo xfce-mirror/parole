@@ -86,7 +86,7 @@ typedef struct {
                                                      gpointer *event);
 } ParoleMediaListClass;
 
-GType               parole_media_list_get_type      (void) G_GNUC_CONST;
+GType               parole_media_list_get_type      (void);
 
 GtkWidget          *parole_media_list_get           (void);
 
