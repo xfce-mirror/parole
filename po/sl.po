@@ -180,11 +180,11 @@ msgstr "_Medij"
 
 #: data/interfaces/parole.ui:73
 msgid "_Open..."
-msgstr "_Odpri..."
+msgstr "_Odpri ..."
 
 #: data/interfaces/parole.ui:83
 msgid "Open _Location..."
-msgstr "Odpri _lokacijo..."
+msgstr "Odpri _lokacijo ..."
 
 #: data/interfaces/parole.ui:93
 msgid "Open _Recent"
@@ -192,7 +192,7 @@ msgstr "Odpri _nedavno"
 
 #: data/interfaces/parole.ui:107
 msgid "_Save Playlist..."
-msgstr "_Shrani seznam predvajanja..."
+msgstr "_Shrani seznam predvajanja ..."
 
 #: data/interfaces/parole.ui:122 src/parole-disc.c:101 src/parole-disc.c:135
 msgid "Insert Disc"
@@ -324,7 +324,7 @@ msgstr "_Podnapisi"
 
 #: data/interfaces/parole.ui:504
 msgid "Select Text Subtitles..."
-msgstr "Izberite podnapise..."
+msgstr "Izberite podnapise ..."
 
 #: data/interfaces/parole.ui:526
 msgid "_Tools"
@@ -344,7 +344,7 @@ msgstr "Pomo_č"
 
 #: data/interfaces/parole.ui:567
 msgid "_Report a Bug..."
-msgstr "P_rijavite hrošča..."
+msgstr "P_rijavite hrošča ..."
 
 #: data/interfaces/parole.ui:575
 msgid "_Keyboard Shortcuts"
@@ -396,7 +396,7 @@ msgstr "Seznam predvajanja za disk"
 
 #: data/interfaces/playlist.ui:99
 msgid "Add to playlist..."
-msgstr "Dodaj na seznam predvajanja..."
+msgstr "Dodaj na seznam predvajanja ..."
 
 #: data/interfaces/playlist.ui:100
 msgid "Add"
@@ -460,7 +460,7 @@ msgstr "O programu"
 
 #: data/interfaces/save-playlist.ui:34
 msgid "Save Playlist as..."
-msgstr "Shrani seznam predvajanja kot"
+msgstr "Shrani seznam predvajanja kot ..."
 
 #: data/interfaces/shortcuts.ui:20
 msgid "Open file"
@@ -569,7 +569,7 @@ msgstr "Predvajaj svoje medije"
 
 #: data/desktop/org.xfce.Parole.desktop.in.in:11
 msgid "Media;Player;Audio;Video;Music;Playback;Xfce;"
-msgstr ""
+msgstr "Multimedija,Predvajalnik,Avdio,Video,Glasba,Predvajanje;Xfce;Media;Player;Video;Music;Playback;"
 
 #: data/desktop/org.xfce.Parole.desktop.in.in:23 src/parole-player.c:3369
 #: src/plugins/notify/notify-provider.c:178
@@ -777,7 +777,7 @@ msgstr "Medij za predvajanje"
 
 #: src/main.c:285
 msgid "[FILES...] - Play movies and songs"
-msgstr "[FILES...] - Predvajaj filme in skladbe"
+msgstr "[DATOTEKE ...] - Predvajaj filme in skladbe"
 
 #: src/main.c:296
 #, c-format
@@ -1035,7 +1035,7 @@ msgstr "Pojdi"
 #. Clear Recent Menu Item
 #: src/parole-player.c:3261
 msgid "_Clear recent items..."
-msgstr "I_zbriši nedavne predmete"
+msgstr "I_zbriši nedavne predmete ..."
 
 #: src/parole-player.c:3572
 msgid "Audio Track:"
