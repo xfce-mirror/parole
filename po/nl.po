@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the xfce-apps.parole package.
 # 
 # Translators:
-# Pjotr <pjotrvertaalt@gmail.com>, 2013-2015,2017-2020,2023-2025
+# Pjotr <pjotrvertaalt@gmail.com>, 2013-2015,2017-2020,2023-2026
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2025-07-18 11:03+0200\n"
 "PO-Revision-Date: 2013-07-03 18:28+0000\n"
-"Last-Translator: Pjotr <pjotrvertaalt@gmail.com>, 2013-2015,2017-2020,2023-2025\n"
+"Last-Translator: Pjotr <pjotrvertaalt@gmail.com>, 2013-2015,2017-2020,2023-2026\n"
 "Language-Team: Dutch (http://app.transifex.com/xfce/xfce-apps/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -531,11 +531,11 @@ msgstr "Afspelen/Pauzeren"
 
 #: data/interfaces/shortcuts.ui:146 src/main.c:245
 msgid "Previous track"
-msgstr "Vorige nummer"
+msgstr "Vorig nummer"
 
 #: data/interfaces/shortcuts.ui:153 src/main.c:243
 msgid "Next track"
-msgstr "Volgende nummer"
+msgstr "Volgend nummer"
 
 #: data/interfaces/shortcuts.ui:160
 msgid "Go back 10 seconds"
@@ -577,7 +577,7 @@ msgstr "Vorig nummer"
 #: data/desktop/org.xfce.Parole.desktop.in.in:28 src/parole-player.c:3387
 #: src/plugins/notify/notify-provider.c:190
 msgid "Next Track"
-msgstr "Volgende nummer"
+msgstr "Volgend nummer"
 
 #: data/metainfo/parole.appdata.xml.in:7
 msgid "Parole"
@@ -676,7 +676,7 @@ msgstr "Wilt u doorgaan met laden of ophouden?"
 
 #: src/gst/parole-gst.c:1724
 msgid "Stop"
-msgstr "Stop"
+msgstr "Ophouden"
 
 #: src/gst/parole-gst.c:1725
 msgid "Continue"
@@ -723,7 +723,7 @@ msgstr "\nParole Mediaspeler %s\n\nDeel van het Xfce Goodies Project\nhttps://go
 
 #: src/main.c:231
 msgid "Open a new instance"
-msgstr "Open een nieuwe instantie"
+msgstr "Open een nieuw exemplaar"
 
 #: src/main.c:233
 msgid "Do not load plugins"
@@ -792,11 +792,11 @@ msgstr "Audio"
 
 #: src/misc/parole-filters.c:87
 msgid "Video"
-msgstr "Beeld"
+msgstr "Video"
 
 #: src/misc/parole-filters.c:111 src/misc/parole-filters.c:138
 msgid "Audio and video"
-msgstr "Geluid en beeld"
+msgstr "Audio en video"
 
 #: src/misc/parole-filters.c:165 src/misc/parole-filters.c:189
 msgid "All supported files"
@@ -812,7 +812,7 @@ msgstr "Een moderne en eenvoudige mediaspeler voor de werkomgeving Xfce."
 
 #: src/parole-about.c:76
 msgid "translator-credits"
-msgstr "vertalers"
+msgstr "Pjotr <pjotrvertaalt@gmail.com>"
 
 #: src/parole-about.c:79
 msgid "Visit Parole website"
@@ -869,7 +869,7 @@ msgstr "Onbekend"
 #: src/parole-medialist.c:831 src/parole-player.c:968 src/parole-player.c:1159
 #: src/parole-player.c:2832 src/plugins/tray/tray-provider.c:344
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "Afbreken"
 
 #: src/parole-medialist.c:832
 msgid "Save"
@@ -979,11 +979,11 @@ msgstr "Volledig scherm verlaten"
 #. * Play pause
 #: src/parole-player.c:2081 src/plugins/tray/tray-provider.c:119
 msgid "_Pause"
-msgstr "Pauzeren"
+msgstr "_Pauzeren"
 
 #: src/parole-player.c:2081 src/plugins/tray/tray-provider.c:119
 msgid "_Play"
-msgstr "Afspelen"
+msgstr "_Afspelen"
 
 #. * Previous item in playlist.
 #: src/parole-player.c:2097
@@ -1045,7 +1045,7 @@ msgstr "Invoegsel kon niet worden geladen"
 
 #: src/parole-plugins-manager.c:283
 msgid "Please check your installation"
-msgstr "Controleer a.u.b. uw installatie"
+msgstr "Kijk a.u.b. uw installatie na"
 
 #: src/parole-plugins-manager.c:394
 msgid "No installed plugins found on this system"
@@ -1053,7 +1053,7 @@ msgstr "Geen geïnstalleerde invoegsels gevonden in dit systeem"
 
 #: src/parole-plugins-manager.c:395
 msgid "Please check your installation."
-msgstr "Controleer a.u.b. uw installatie."
+msgstr "Kijk a.u.b. uw installatie na."
 
 #: src/parole-subtitle-encoding.c:158
 msgid "Current Locale"
@@ -1221,12 +1221,12 @@ msgstr "Systeemvakpictogram"
 #. * Previous Track
 #: src/plugins/tray/tray-provider.c:128
 msgid "P_revious Track"
-msgstr "Vorig nummer"
+msgstr "Vo_rig nummer"
 
 #. * Next Track
 #: src/plugins/tray/tray-provider.c:137
 msgid "_Next Track"
-msgstr "Volgend nummer"
+msgstr "Vo_lgend nummer"
 
 #. * Open
 #: src/plugins/tray/tray-provider.c:153
